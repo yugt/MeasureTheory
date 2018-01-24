@@ -1,0 +1,705 @@
+\frfilename{mt2a1.tex} 
+\versiondate{20.1.13} 
+\copyrightdate{1996} 
+      
+\def\chaptername{Appendix} 
+\def\sectionname{Set theory} 
+      
+\def\Enderton{{\smc Enderton 77}} 
+\def\Halmos{{\smc Halmos 60}} 
+\def\Henle{{\smc Henle 86}} 
+\def\Krivine{{\smc Krivine 71}} 
+\def\Lipschutz{{\smc Lipschutz 64}} 
+\def\Roitman{{\smc Roitman 90}} 
+      
+\newsection{2A1} 
+      
+Especially for the examples in Chapter 21, we need some non-trivial set 
+theory, which is best approached through the standard theory of 
+cardinals and ordinals;  and elsewhere in this volume I make use of 
+Zorn's Lemma. 
+Here I give a very brief outline of the results involved, largely 
+omitting proofs. 
+Most of this material should be in any sound introduction to set theory. 
+The references I give are to books which happen to have come my way and 
+which I can recommend as reasonably suitable for beginners. 
+      
+I do not discuss axiom systems or logical foundations.   The set theory 
+I employ is `naive' in the sense that I rely on my understanding of 
+the collective experience of the last hundred years, rather than on any 
+attempt at formal description, to distinguish legitimate from unsafe 
+arguments.   There are, however, points in Volume 5 at which such a 
+relaxed philosophy becomes inappropriate, and I therefore use arguments 
+which can, I believe, be translated into standard 
+Zermelo-Fraenkel set theory without new ideas being invoked. 
+      
+Although in this volume I use the axiom of choice without scruple 
+whenever appropriate, I will divide this section into two parts, 
+starting with ideas and results not dependent on the axiom of choice 
+(2A1A-2A1I) and continuing with the remainder 
+(2A1J-2A1P).   I believe that even at this level it helps us to 
+understand the nature of the arguments better if we maintain a degree of 
+separation. 
+      
+\leader{2A1A}{Ordered sets (a)} Recall that a {\bf partially ordered 
+set} is a set $P$ together with a relation $\le$ on $P$ such that 
+      
+\inset{if $p\le q$ and $q\le r$ then $p\le r$, 
+      
+$p\le p$ for every $p\in P$, 
+      
+if $p\le q$ and $q\le p$ then $p=q$.} 
+      
+\noindent In this context, I will write $p\ge q$ to mean $q\le p$, and 
+$p<q$ or $q>p$ to mean `$p\le q$ and $p\ne q$'.   $\le$ is a 
+{\bf partial order} on $P$. 
+      
+\header{2A1A}{\bf (b)} Let $(P,\le)$ be a partially ordered set, and 
+$A\subseteq P$.   A {\bf maximal} element of $A$ 
+is a $p\in A$ such that $p\not<a$ for any $a\in A$.   Note that $A$ may 
+have more than one maximal element.  An {\bf upper bound} for $A$ is a 
+$p\in P$ such that $a\le p$ for every $a\in A$;  a {\bf supremum} or 
+{\bf least upper bound} is an upper bound $p$ such that $p\le q$ for 
+every upper bound $q$ of $A$.   There can be at most one 
+such\cmmnt{, because 
+if $p$, $p'$ are both least upper bounds then $p\le p'$ and $p'\le p$}. 
+Accordingly we may safely write $p=\sup A$ if $p$ is the least upper 
+bound of $A$. 
+      
+Similarly, a {\bf minimal} element of $A$ is a $p\in A$ such that 
+$p\not>a$ for every $a\in A$;  a {\bf lower bound} of $A$ is a $p\in P$ 
+such that $p\le a$ for every $a\in A$;  and 
+$\inf A=p$ means that 
+      
+\Centerline{for every $q\in P$, $p\ge q\iff a\ge q\Forall a\in A$.} 
+      
+A subset $A$ of $P$ is {\bf order-bounded} if it has both an upper bound 
+and a lower bound. 
+      
+A subset $A$ of $P$ is {\bf upwards-directed} if for any $p$, $p'\in A$ 
+there is a $q\in A$ such that $p\le q$ and $p'\le q$\cmmnt{;  that is, 
+if any non-empty finite subset of $A$ has an upper bound in $A$}. 
+Similarly, $A\subseteq P$ is {\bf downwards-directed} if for any $p$, 
+$p'\in A$ there is a $q\in A$ such that $q\le p$ and $q\le p'$\cmmnt{; 
+that is, if any non-empty finite subset of $A$ has a lower bound in 
+$A$}. 
+      
+\cmmnt{It is sometimes convenient to adapt the notation for closed 
+intervals to arbitrary partially ordered sets:}  $[p,q]$ will be 
+$\{r:p\le r\le q\}$. 
+ 
+\wheader{2A1A}{0}{0}{0}{24pt} 
+      
+\header{2A1Ac}{\bf (c)} A {\bf totally ordered set} is a partially 
+ordered set $(P,\le)$ such that 
+      
+\inset{for any $p$, $q\in P$, either $p\le q$ or $q\le p$.} 
+      
+\noindent $\le$ is then a {\bf total} or {\bf linear} order on $P$.    
+ 
+In any 
+totally ordered set we have a {\bf median function}:  for $p$, $q$,  
+$r\in P$ set  
+ 
+$$\eqalign{\med(p,q,r) 
+&=\max(\min(p,q),\min(p,r),\min(q,r))\cr 
+&=\min(\max(p,q),\max(p,r),\max(q,r))\dvro{.}{,}\cr}$$ 
+ 
+\cmmnt{\noindent so that $\med(p,q,r)=q$ if $p\le q\le r$.} 
+      
+\header{2A1Ad}{\bf (d)} A {\bf lattice} is a partially ordered set 
+$(P,\le)$ such that 
+      
+\inset{for any $p$, $q\in P$, $p\vee q=\sup\{p,q\}$ and 
+$p\wedge q=\inf\{p,q\}$ are defined in $P$.} 
+      
+\header{2A1Ae}{\bf (e)} A {\bf well-ordered set} is a totally ordered 
+set $(P,\le)$ such that\cmmnt{ $\inf A$ exists and belongs to $A$ for 
+every non-empty set $A\subseteq P$;  that is,} every non-empty subset of 
+$P$ has a least element.   In this case 
+$\le$ is a {\bf well-ordering} of $P$. 
+      
+\leader{2A1B}{Transfinite Recursion:  Theorem}  Let $(P,\le)$ be a 
+well-ordered set and $X$ any class.   For $p\in P$ write $L_p$ for the 
+set $\{q:q\in P,\,q<p\}$ and $X^{L_p}$ for the class of all functions 
+from $L_p$ to 
+$X$.   Let $F:\bigcup_{p\in P}X^{L_p}\to X$ be any function.   Then 
+there is a unique function $f:P\to X$ such that $f(p)=F(f\restr L_p)$ 
+for every $p\in P$. 
+      
+\proof{ There are versions of this result in \Enderton\ (p.\ 175) and 
+\Halmos\ (\S18).   Nevertheless I write out a proof, since it seems to 
+me that most elementary books on set theory do not give it its proper 
+place at the very beginning of the theory of well-ordered sets. 
+      
+\medskip 
+      
+{\bf (a)} Let $\Phi$ be the class of all functions $\phi$ such that 
+      
+\quad ($\alpha$) $\dom\phi$ is a subset of $P$, and 
+$L_p\subseteq\dom\phi$ for every $p\in\dom\phi$; 
+      
+\quad ($\beta$) $\phi(p)\in X$ for every $p\in\dom\phi$, and 
+$\phi(p)=F(\phi\restr L_p)$ for every $p\in\dom\phi$. 
+      
+\medskip 
+      
+{\bf (b)} If $\phi$, $\psi\in\Phi$ then $\phi$ and $\psi$ agree on 
+$\dom\phi\cap\dom\psi$.   \Prf\Quer\ If not, then 
+$A=\{q:q\in\dom\phi\cap\dom\psi,\,\phi(q)\ne\psi(q)\}$ is non-empty. 
+Because $P$ is well-ordered, $A$ has a least element $p$ say.   Now 
+$L_p\subseteq\dom\phi\cap\dom\psi$ and $L_p\cap A=\emptyset$, so 
+      
+\Centerline{$\phi(p)=F(\phi\restr L_p)=F(\psi\restr L_p)=\psi(p)$,} 
+      
+\noindent which is impossible.\ \Bang\Qed 
+      
+\medskip 
+      
+{\bf (c)} It follows that $\Phi$ is a set, since the function 
+$\phi\mapsto\dom\phi$ is an injective function from $\Phi$ to  $\Cal 
+PP$, and its inverse is a surjection from a subset of $\Cal PP$ onto 
+$\Phi$.    We can therefore, without inhibitions, define a function $f$ 
+by writing 
+      
+\Centerline{$\dom f=\bigcup_{\phi\in\Phi}\dom\phi$, 
+\quad$f(p)=\phi(p)$ whenever $\phi\in\Phi$ and $p\in\dom\phi$.} 
+      
+\noindent (If you think that a function $\phi$ is just the set of 
+ordered pairs $\{(p,\phi(p)):p\in\dom\phi\}$, then $f$ becomes 
+$\bigcup\Phi$.)   Then $f\in\Phi$.   \Prf\ Of course $f$ is a function 
+from a subset of $P$ to $X$.   If $p\in\dom f$, then there is a 
+$\phi\in\Phi$ such that $p\in\dom\phi$, in which case 
+      
+\Centerline{$L_p\subseteq\dom\phi\subseteq\dom f$, 
+\quad$f(p)=\phi(p)=F(\phi\restr L_p)=F(f\restr L_p)$. \Qed} 
+      
+\medskip 
+      
+{\bf (d)} $f$ is defined everywhere in $P$.   \Prf\Quer\  Otherwise, 
+$P\setminus\dom f$ is non-empty and has a least element $r$ say.   Now 
+$L_r\subseteq\dom f$.   Define a function $\psi$ by saying that 
+$\dom\psi=\{r\}\cup\dom f$, $\psi(p)=f(p)$ for $p\in\dom f$ and 
+$\psi(r)=F(f\restr L_r)$.   Then $\psi\in\Phi$, because if 
+$p\in\dom\psi$ 
+      
+\inset{{\it either} $p\in\dom f$ so 
+$L_p\subseteq\dom f\subseteq\dom\psi$ and 
+      
+\Centerline{$\psi(p)=f(p)=F(f\restr L_p)=F(\psi\restr L_p)$}} 
+      
+\inset{{\it or} $p=r$ so $L_p=L_r\subseteq\dom f\subseteq\dom\psi$ and 
+      
+\Centerline{$\psi(p)=F(f\restr L_r)=F(\psi\restr L_r)$.}} 
+      
+\noindent Accordingly $\psi\in \Phi$ and 
+$r\in\dom\psi\subseteq\dom f$.\ \Bang\Qed 
+      
+\medskip 
+      
+{\bf (e)} Thus $f:P\to X$ is a function such that $f(p)=F(f\restr L_p)$ 
+for every $p$.   To see that $f$ is unique, observe that any function of 
+this type must belong to $\Phi$, so must agree with $f$ on their common 
+domain, which is the whole of $P$. 
+}%end of proof of 2A1B 
+      
+\cmmnt{\medskip 
+      
+\noindent{\bf Remark} If you have been taught to distinguish between the 
+words `set' and `class', you will observe that my naive set theory 
+is a relatively tolerant one in that it is willing to allow class 
+variables in its theorems. 
+} 
+      
+\vleader{48pt}{2A1C}{Ordinals} An {\bf ordinal} (sometimes called a `von 
+Neumann ordinal') is a set $\xi$ such that 
+      
+\inset{if $\eta\in\xi$ then $\eta$ is a set and $\eta\not\in\eta$, 
+      
+if $\eta\in\zeta\in\xi$ then $\eta\in\xi$, 
+      
+writing `$\eta\le\zeta$' to mean `$\eta\in\zeta$ or 
+$\eta=\zeta$', $(\xi,\le)$ is well-ordered\dvro{.}{}} 
+      
+\prooflet{ 
+\noindent(\Enderton, p.\ 191;  \Halmos, \S19;  \Henle, p.\ 27; \Krivine, 
+p.\ 24;  \Roitman, 3.2.8.\cmmnt{ Of course many set 
+theories do not allow sets to belong to themselves, and/or take it for 
+granted that every object of discussion is a set, but I prefer not to 
+take a view on such points in general.}) 
+} 
+      
+\leader{2A1D}{Basic facts about ordinals (a)} If $\xi$ is an ordinal, 
+then every member of $\xi$ is an ordinal. \prooflet{(\Enderton, p.\ 192; 
+\Henle, 6.4; 
+\Krivine, p.\ 14;  \Roitman, 3.2.10.)} 
+      
+\header{2A1Db}{\bf (b)} If $\xi$, $\eta$ are ordinals then either 
+$\xi\in\eta$ or $\xi=\eta$ or $\eta\in\xi$ (and no two of these can 
+occur together).   \prooflet{(\Enderton, 
+p.\ 192;  \Henle, 6.4;  \Krivine, p.\ 14;  \Lipschutz, 11.12;  \Roitman, 
+3.2.13.)}   It is customary\cmmnt{, in this case,} to 
+write $\eta<\xi$ if $\eta\in\xi$ and $\eta\le\xi$ if either $\eta\in\xi$ 
+or $\eta=\xi$.   Note that $\eta\le\xi$ iff $\eta\subseteq\xi$. 
+      
+\header{2A1Dc}{\bf (c)} If $A$ is any non-empty class of ordinals, then 
+there is an $\alpha\in A$ such that $\alpha\le\xi$ for every 
+$\xi\in A$.   \prooflet{(\Henle, 6.7;  \Krivine, p.\ 15.)} 
+      
+\header{2A1Dd}{\bf (d)} If $\xi$ is an ordinal, so is $\xi\cup\{\xi\}$; 
+call it `$\xi+1$'.   \cmmnt{If $\xi<\eta$ then $\xi+1\le\eta$;}  $\xi+1$ is 
+the least ordinal greater than $\xi$.   \prooflet{(\Enderton, p.\ 193; 
+\Henle, 6.3; 
+\Krivine, p.\ 15.)}   For any ordinal $\xi$, either there is a greatest 
+ordinal $\eta<\xi$, in which case $\xi=\eta+1$ and we call $\xi$ a {\bf 
+successor ordinal}, or $\xi=\bigcup\xi$, in which case we call $\xi$ a 
+{\bf limit ordinal}. 
+      
+\header{2A1De}{\bf (e)} The first few ordinals are $0=\emptyset$, 
+$1=0+1=\{0\}=\{\emptyset\}$, 
+$2=1+1=\{0,1\}=\{\emptyset,\{\emptyset\}\}$, 
+$3=2+1=\{0,1,2\}$, $\ldots$.   The first infinite ordinal is 
+$\omega=\{0,1,2,\ldots\}$, which may be identified with $\Bbb N$. 
+      
+\header{2A1Df}{\bf (f)} The union of any set of ordinals is an ordinal. 
+\prooflet{(\Enderton, p.\ 193; \Henle, 6.8;   \Krivine, p.\ 15; 
+\Roitman, 3.2.19.)} 
+      
+\header{2A1Dg}{\bf (g)} If $(P,\le)$ is any well-ordered set, there is a 
+unique ordinal $\xi$ such that $P$ is order-isomorphic to $\xi$, and the 
+order-isomorphism is unique.   \prooflet{(\Enderton, pp.\ 187-189; 
+\Henle, 6.13;  \Halmos, \S20.)} 
+      
+\leader{2A1E}{Initial ordinals} An {\bf initial ordinal} is an ordinal 
+$\kappa$ such that there is no bijection between $\kappa$ and any member 
+of $\kappa$.  \prooflet{(\Enderton, p.\ 197;  \Halmos, \S25;  \Henle, 
+p.\ 34;  \Krivine, p.\ 24;  \Roitman, 5.1.10, p.\ 79).} 
+      
+\leader{2A1F}{Basic facts about initial ordinals (a)} All finite 
+ordinals, and the first infinite ordinal $\omega$, are initial ordinals. 
+      
+\header{2A1Fb}{\bf (b)} For every well-ordered set $P$ there is a unique 
+initial ordinal $\kappa$ such that there is a bijection between $P$ and 
+$\kappa$. 
+      
+\header{2A1Fc}{\bf (c)} For every ordinal $\xi$ there is a least initial 
+ordinal greater than $\xi$.   \prooflet{(\Enderton, p.\ 195;  \Henle, 
+7.2.1.)}   If 
+$\kappa$ is an initial ordinal, write $\kappa^+$ for the least initial 
+ordinal greater than $\kappa$.   We write $\omega_1$ for $\omega^+$, 
+$\omega_2$ for $\omega_1^+$, and so on. 
+      
+\header{2A1Fd}{\bf (d)} For any initial ordinal $\kappa\ge\omega$ there 
+is a bijection between $\kappa\times\kappa$ and $\kappa$;  consequently 
+there are bijections between $\kappa$ and $\kappa^r$ for every $r\ge 1$. 
+      
+\leader{2A1G}{Schr\"oder-Bernstein theorem} I\cmmnt{ remind you of the 
+following 
+fundamental result:  i}f $X$ and $Y$ are sets and there are injections 
+$f:X\to Y$, $g:Y\to X$ then there is a bijection $h:X\to Y$. 
+\prooflet{(\Enderton, p.\ 147;  \Halmos, \S22;  \Henle, 7.4; 
+\Lipschutz, p.\ 145;  \Roitman, 5.1.2.   \cmmnt{It is also a special 
+case of 344D in Volume 3.})} 
+      
+\leader{2A1H}{Countable subsets of $\Cal P\Bbb N$} \cmmnt{The 
+following results will be needed below. 
+      
+\medskip 
+      
+}{\bf (a)} There is a bijection between $\Cal P\Bbb N$ and $\Bbb R$. 
+\cmmnt{(\Enderton, p.\ 149;  \Lipschutz, p.\ 146.)} 
+      
+\spheader 2A1Hb Suppose that $X$ is any set such that there is 
+an injection from $X$ into $\Cal P\Bbb N$.   Let $\Cal C$ be the set of 
+countable subsets of $X$.   Then there is a surjection from 
+$\Cal P\Bbb N$ onto $\Cal C$.   \prooflet{\Prf\ Let $f:X\to\Cal P\Bbb N$ be an injection.   Set $f_1(x)=\{0\}\cup\{i+1:i\in f(x)\}$;  then 
+$f_1:X\to\Cal P\Bbb N$ is injective and $f_1(x)\ne\emptyset$ for every 
+$x\in X$.   Define $g:\Cal P\Bbb N\to\Cal PX$ by setting 
+      
+\Centerline{$g(A)=\{x:\exists\,n\in\Bbb N,\,f_1(x) 
+=\{i:2^n(2i+1)\in A\}\}$} 
+      
+\noindent for each $A\subseteq\Bbb N$.    Then $g(A)$ is countable, 
+since we have an injection 
+      
+\Centerline{$x\mapsto\min\{n:f_1(x)=\{i:2^n(2i+1)\in A\}\}$} 
+      
+\noindent from $g(A)$ to $\Bbb N$.   Thus $g$ is a function from $\Cal 
+P\Bbb N$ to $\Cal C$.   To see that $g$ is surjective, observe that 
+$\emptyset=g(\emptyset)$, while if $C\subseteq X$ is countable and not 
+empty there is a surjection $h:\Bbb N\to C$;  now set 
+      
+\Centerline{$A=\{2^n(2i+1):n\in\Bbb N,\,i\in f_1(h(n))\}$,} 
+      
+\noindent and see that $g(A)=C$.\ \Qed} 
+      
+\spheader 2A1Hc Again suppose that $X$ is a set such that there 
+is an injection from $X$ to $\Cal P\Bbb N$, and write $H$ for the set of 
+functions $h$ such that $\dom h$ is a countable subset of $X$ and $h$ 
+takes values in $\{0,1\}$.   Then there is a surjection from $\Cal P\Bbb 
+N$ onto $H$.   \prooflet{\Prf\ Let $\Cal C$ be the set of countable 
+subsets of $X$ and let $g:\Cal P\Bbb N\to\Cal C$ be a surjection, as in 
+(a).   For $A\subseteq\Bbb N$ set 
+      
+\Centerline{$g_0(A)=g(\{i:2i\in A\})$,\quad$g_1(A)=g(\{i:2i+1\in A\})$,} 
+      
+\noindent so that $g_0(A)$, $g_1(A)$ are countable subsets of $X$, and 
+$A\mapsto(g_0(A),g_1(A))$ is a surjection from $\Cal P\Bbb N$ onto 
+$\Cal C\times\Cal C$.   Let $h_A$ be the function with domain $g_0(A)\cup g_1(A)$ such that $h_A(x)=1$ if $x\in g_1(A)$, $0$ if 
+$x\in g_0(A)\setminus g_1(A)$.   Then $A\mapsto h_A$ is a surjection from $\Cal P\Bbb N$ onto $H$.\ \Qed} 
+      
+\leader{2A1I}{Filters} \cmmnt{I pause for a moment to discuss a 
+construction which is of great value in investigating topological 
+spaces, but has 
+other uses, and in its nature belongs to elementary set theory (much 
+more elementary, indeed, than the work above). 
+      
+\header{2A1Ia}}{\bf (a)} Let $X$ be a non-empty set.   A {\bf filter} on 
+$X$ is a family $\Cal F$ of subsets of $X$ such that 
+      
+\inset{$X\in\Cal F$,\quad $\emptyset\notin\Cal F$, 
+      
+$E\cap F\in\Cal F$ whenever $E$, $F\in\Cal F$, 
+      
+$E\in\Cal F$ whenever $X\supseteq E\supseteq F\in\Cal F$.} 
+      
+\noindent The second condition implies (inducing on $n$) that 
+$F_0\cap\ldots\cap F_n\in\Cal F$ whenever $F_0,\ldots,F_n\in\Cal F$. 
+          
+\header{2A1Ib}{\bf (b)} Let $X$, $Y$ be non-empty sets, $\Cal F$ a 
+filter on $X$ and $f:D\to Y$ a function, where $D\in\Cal F$.   Then 
+      
+\Centerline{$\{E:E\subseteq Y,\,f^{-1}[E]\in\Cal F\}$} 
+      
+\noindent is a filter on $Y$\prooflet{ (because $f^{-1}[Y]=D$, 
+$f^{-1}[\emptyset]=\emptyset$, 
+$f^{-1}[E\cap F]=f^{-1}[E]\cap f^{-1}[F]$, 
+$X\supseteq f^{-1}[E]\supseteq f^{-1}[F]$ whenever  
+$Y\supseteq E\supseteq F$)};  I will call it $f[[\Cal F]]$,  
+the {\bf image filter} of $\Cal F$ under $f$. 
+      
+\cmmnt{\medskip 
+      
+\noindent{\bf Remark} Of course there is a hidden variable in this 
+notation.   Ordinarily in this book I regard a function $f$ as being 
+defined by its domain $\dom f$ and its values on its domain;  that is, 
+it is determined by its graph $\{(x,f(x)):x\in\dom f\}$, and indeed I 
+normally do not distinguish between a function and its graph.   This 
+means that when I write `$f:D\to Y$ is a function' then the class 
+$D=\dom f$ can be recovered from the function, but the class $Y$ cannot; 
+all I promise is that $Y$ includes the class $f[D]$ of values of $f$. 
+Now in the notation $f[[\Cal F]]$ above we do actually need to know 
+which set $Y$ it is to be a filter on, even though this cannot be 
+discovered from knowledge of $f$ and $\Cal F$.   So you will always have 
+to infer it from the context. 
+} 
+      
+\leader{2A1J}{The Axiom of Choice}\cmmnt{ I come now to the second 
+half of this 
+section, in which I discuss concepts and theorems dependent on the Axiom 
+of Choice.}   Let me remind you of the statement of this axiom: 
+      
+\inset{\hskip-20pt (AC) `whenever $I$ is a set and $\familyiI{X_i}$ 
+is a family of non-empty sets indexed by $I$, there is a function $f$, 
+with domain $I$, such that $f(i)\in X_i$ for every $i\in I$'.} 
+      
+\noindent The function $f$ is a {\bf choice function}\cmmnt{;  it picks  
+out one member of each of the given family of non-empty sets  $X_i$}. 
+      
+\cmmnt{I believe that one's attitude to this principle is a matter for 
+individual choice.   It is an indispensable foundation for very large 
+parts of twentieth-century pure mathematics, including a substantial 
+fraction of the present volume;  but there are also significant areas in 
+which principles actually contradictory to it can be employed to 
+striking effect, leading -- in my view -- to equally valid mathematics. 
+(I will describe one of these in \S567 of Volume 5.) 
+At present it is the case that more current mathematical activity, by 
+volume, 
+depends on asserting the axiom of choice than on all its rivals put 
+together;  but it is a matter of judgement and taste where the most 
+important, or exciting, ideas are to be found.   For the present volume 
+I follow standard practice in twentieth-century abstract analysis, using 
+the axiom of choice whenever necessary.} 
+      
+\vleader{60pt}{2A1K}{Zermelo's Well-Ordering Theorem (a)} The Axiom of  
+Choice is equiveridical with each of the statements 
+      
+\inset{`for every set $X$ there is a well-ordering of $X$',} 
+      
+\inset{`for every set $X$ there is a bijection between $X$ and some 
+ordinal',} 
+      
+\inset{`for every set $X$ there is a unique initial ordinal $\kappa$ 
+such that there is a bijection between $X$ and $\kappa$.'} 
+
+\prooflet{\noindent(\Enderton, p.\ 196 et 
+seq.; \Halmos, \S17;  \Henle, 9.1-9.3;  \Krivine, p.\ 20;  \Lipschutz, 
+12.1;  \Roitman, 3.6.38.)} 
+      
+\header{2A1Kb}{\bf (b)} When assuming the axiom of choice, \cmmnt{as I 
+do 
+nearly everywhere in this treatise,} I write $\#(X)$ for that initial 
+ordinal $\kappa$ such that there is a bijection between $\kappa$ and 
+$X$;  I call this the {\bf cardinal} of $X$. 
+      
+\leader{2A1L}{Fundamental consequences of the Axiom of Choice (a)} For 
+any two sets $X$ and $Y$, there is a bijection between $X$ and $Y$ iff 
+$\#(X)=\#(Y)$.   More generally, there is an injection from $X$ to $Y$ 
+iff $\#(X)\le\#(Y)$, and a surjection from $X$ onto $Y$ iff 
+either $\#(X)\ge\#(Y)>0$ or $\#(X)=\#(Y)=0$. 
+      
+\spheader 2A1Lb\cmmnt{ In particular,} 
+$\#(\Cal P\Bbb N)=\#(\Bbb R)$; 
+write $\frak c$ for this common value, the {\bf cardinal of the 
+continuum}.   \cmmnt{Cantor's theorem that $\Cal P\Bbb N$ and $\Bbb R$ are uncountable becomes the result $\omega<\frak c$, that is,} 
+$\omega_1\le\frak c$. 
+      
+\header{2A1Lc}{\bf (c)} 
+If $X$ is any infinite set, and $r\ge 1$, then there is a bijection 
+between $X^r$ and $X$.   \prooflet{(\Enderton, p.\ 162;  \Halmos, 
+\S24.)}   \cmmnt{(I note that we need some form of the axiom of 
+choice to prove the result in this generality.   But of course for most 
+of the infinite sets arising naturally in mathematics -- sets like $\Bbb 
+N$ and $\Cal P\Bbb R$ -- it is easy to prove the result without appeal 
+to the axiom of choice.)} 
+      
+\header{2A1Ld}{\bf (d)} Suppose that $\kappa$ is an infinite cardinal. 
+If $I$ is a set with cardinal at most $\kappa$ and  
+$\langle A_i\rangle_{i\in I}$ is a family of sets with $\#(A_i)\le\kappa$  
+for 
+every $i\in I$, then  $\#(\bigcup_{i\in I}A_i)\le\kappa$.   Consequently 
+$\#(\bigcup\Cal A)\le\kappa$ whenever $\Cal A$ is a family of sets such 
+that $\#(\Cal A)\le\kappa$ and $\#(A)\le\kappa$ for every $A\in\Cal A$. 
+\cmmnt{In particular,} $\omega_1$ cannot be expressed as a countable union of 
+countable sets, and $\omega_2$ cannot be expressed as a countable union 
+of sets with cardinal at most $\omega_1$. 
+      
+\header{2A1Le}{\bf (e)} Now we can rephrase 2A1Hc as:  if  
+$\#(X)\le\frak c$, then $\#(H)\le\frak c$,  
+where $H$ is the set of functions from a 
+countable subset of $X$ to $\{0,1\}$.   \prooflet{\Prf\ For we have an 
+injection from $X$ into $\Cal P\Bbb N$, and therefore a surjection from 
+$\Cal P\Bbb N$ onto $H$.\ \Qed} 
+      
+\spheader 2A1Lf Any non-empty class of cardinals has a least 
+member\cmmnt{ (by 2A1Dc)}.   
+      
+\leader{2A1M}{Zorn's Lemma}\cmmnt{ In 2A1K I described the 
+well-ordering 
+principle.}   I come now to another proposition which is equiveridical with 
+the axiom of choice: 
+      
+\inset{`Let $(P,\le)$ be a non-empty partially ordered set such that 
+every non-empty totally ordered subset of $P$ has an upper bound in $P$. 
+Then $P$ has a maximal element.'} 
+      
+\noindent This is {\bf Zorn's Lemma}.   \prooflet{For the proof that the 
+axiom of 
+choice implies, and is implied by, Zorn's Lemma, see \Enderton, p.\ 151; 
+\Halmos, \S16;  \Henle, 9.1-9.3;  \Roitman, 3.6.38.} 
+      
+\leader{2A1N}{Ultrafilters} A filter $\Cal F$ on a set $X$ is an {\bf 
+ultrafilter} if for 
+every $A\subseteq X$ either $A\in\Cal F$ or $X\setminus A\in\Cal F$. 
+      
+If $\Cal F$ is an ultrafilter on $X$ and $f:D\to Y$ is a function, where 
+$D\in\Cal F$, then 
+$f[[\Cal F]]$ is an ultrafilter on $Y$\prooflet{ (because 
+$f^{-1}[Y\setminus A]=D\setminus f^{-1}[A]$ for every $A\subseteq Y$)}. 
+      
+One type of ultrafilter can be described easily:  if $x$ is 
+any point of a set $X$, then $\Cal F=\{F:x\in F\subseteq X\}$ is an 
+ultrafilter on $X$.   (\prooflet{You need only read the 
+definitions.  }Ultrafilters of this type are called {\bf principal ultrafilters}.) 
+\cmmnt{But it is not obvious that there are any further ultrafilters, 
+and 
+indeed it is not possible to prove that there are any, without using a 
+strong form of the axiom of choice, as follows.} 
+      
+\leader{2A1O}{The Ultrafilter Theorem}\cmmnt{ As an example of the use 
+of Zorn's lemma which will be of great value in studying compact 
+topological spaces (2A3N {\it et seq.}, and \S247), I give the following 
+result. 
+      
+\medskip 
+      
+\noindent{\bf Theorem}} Let $X$ be any non-empty set, and $\Cal F$ a 
+filter on $X$.   Then there is an ultrafilter $\Cal H$ on $X$ such that 
+$\Cal F\subseteq\Cal H$. 
+      
+\proof{ (Cf.\ \Henle, 9.4;  \Roitman, 3.6.37.)   Let $\frak P$ be the 
+set of all filters on $X$ 
+including $\Cal F$, and order $\frak P$ by inclusion, so that, for 
+$\Cal G_1$, $\Cal G_2\in\frak P$, $\Cal G_1\le \Cal G_2$ in $\frak P$ iff $\Cal G_1\subseteq\Cal G_2$.  It is easy to see that $\frak P$ is a 
+partially ordered set, and it is non-empty because $\Cal F\in \frak P$.   If $\frak Q$ is any non-empty totally ordered 
+subset of $\frak P$, then $\Cal H_{\frak Q}=\bigcup\frak Q\in\frak P$. 
+\Prf\ Of course $\Cal H_{\frak Q}$ is a family of subsets of $X$. (i) 
+Take any $\Cal G_0\in\frak Q$;  then 
+$X\in\Cal G_0\subseteq\Cal H_{\frak Q}$.   If $\Cal G\in\frak Q$, then $\Cal G$ is a filter, so 
+$\emptyset\notin\Cal G$;  accordingly $\emptyset\notin\Cal H_{\frak Q}$. 
+(ii) If $E$, $F\in\Cal H_{\frak Q}$, then there are $\Cal G_1$, $\Cal 
+G_2\in\frak Q$ such that $E\in\Cal G_1$ and $F\in\Cal G_2$.   Because 
+$\frak Q$ is totally ordered, either $\Cal G_1\subseteq\Cal G_2$ or 
+$\Cal G_2\subseteq\Cal G_1$.   In either case, $\Cal G=\Cal G_1\cup\Cal 
+G_2\in\frak Q$.   Now $\Cal G$ is a filter containing both $E$ and $F$, 
+so it contains $E\cap F$, and $E\cap F\in\Cal H_{\frak Q}$.   (iii) If 
+$X\supseteq E\supseteq F\in\Cal H_{\frak Q}$, there is a $\Cal G\in\frak 
+Q$ such that $F\in\Cal G$;   and $E\in\Cal G\subseteq\Cal H_{\frak Q}$. 
+This shows that $\Cal H_{\frak Q}$ is a filter on $X$.   (iv)  Finally, 
+$\Cal H_{\frak Q}\supseteq\Cal G_0\supseteq\Cal F$, so 
+$\Cal H_{\frak Q}\in\frak P$.\ \QeD\ Now $\Cal H_{\frak Q}$ is evidently  an upper bound for $\frak Q$ in $\frak P$. 
+      
+We may therefore apply Zorn's Lemma to find a maximal element $\Cal H$ 
+of $\frak P$.   This $\Cal H$ is surely a filter on $X$ including 
+$\Cal F$. 
+      
+Now let $A\subseteq X$ be such that $A\notin \Cal H$.   Consider 
+      
+\Centerline{$\Cal H_1=\{E:E\subseteq X,\,E\cup A\in\Cal H\}$.} 
+      
+\noindent This is a filter on $X$.   \Prf\ Of course it is a family of 
+subsets of $X$.   (i) $X\cup A=X\in\Cal H$, so $X\in\Cal H_1$. 
+$\emptyset\cup A=A\notin\Cal H$ so $\emptyset\notin\Cal H_1$.   (ii) If 
+$E$, $F\in\Cal H_1$ then 
+      
+\Centerline{$(E\cap F)\cup A=(E\cup A)\cap(F\cup A) 
+\in\Cal 
+H$,} 
+      
+\noindent so $E\cap F\in\Cal H_1$.   (iii) If 
+$X\supseteq E\supseteq F\in\Cal H_1$ then 
+$E\cup A\supseteq F\cup A\in\Cal H$, so $E\cup A\in\Cal H$ and 
+$E\in\Cal H_1$.\ \QeD\  Also $\Cal H_1\supseteq\Cal H$, so 
+$\Cal H_1\in\frak P$.   But $\Cal H$ is a maximal element of $\frak P$, so $\Cal H_1=\Cal H$.   Since $(X\setminus A)\cup A=X\in\Cal H$, 
+$X\setminus A\in\Cal H_1$ and $X\setminus A\in\Cal H$. 
+      
+As $A$ is arbitrary, $\Cal H$ is an ultrafilter, as required. 
+}%end of proof of 2A1O 
+      
+      
+      
+\leader{2A1P}{}\cmmnt{ I come now to a result from infinitary 
+combinatorics for 
+which I give a detailed proof, not because it cannot be found in many 
+textbooks, but because it is usually given in enormously greater 
+generality, to the point indeed that it may be harder to understand why 
+the stated theorem covers the present result than to prove the latter 
+from first principles. 
+      
+\medskip 
+      
+\noindent}{\bf Theorem} (a) Let 
+$\langle K_{\alpha}\rangle_{\alpha\in A}$ be 
+a family of countable sets, with $\#(A)$ strictly greater than 
+$\frak c$, the cardinal of the continuum.   Then there are a set $M$, with cardinal at 
+most $\frak c$, and a set $B\subseteq A$, with cardinal strictly greater 
+than $\frak c$, such that $K_{\alpha}\cap K_{\beta}\subseteq M$ whenever 
+$\alpha$, $\beta$ are distinct members of $B$. 
+      
+(b) Let $I$ be a set, and 
+$\langle f_{\alpha}\rangle_{\alpha\in A}$ a family in $\{0,1\}^I$, the set of functions from $I$ to $\{0,1\}$, with $\#(A)>\frak c$.    If $\langle K_{\alpha}\rangle_{\alpha\in A}$ is any family of countable subsets of 
+$I$, then there is a set $B\subseteq A$, with cardinal greater than 
+$\frak c$, such that $f_{\alpha}$ and $f_{\beta}$ agree on 
+$K_{\alpha}\cap K_{\beta}$ for all $\alpha$, $\beta\in B$. 
+      
+(c) In particular, under the conditions of (b), there are distinct 
+$\alpha$, $\beta\in A$ such that $f_{\alpha}$ and $f_{\beta}$ agree on 
+$K_{\alpha}\cap K_{\beta}$. 
+      
+\proof{{\bf (a)} Choose inductively a family 
+$\langle M_{\xi}\rangle_{\xi<\omega_1}$ of sets by the rule 
+      
+\inset{if there is any set $N$ such that 
+      
+\inset{($*$) $N$ is disjoint from $\bigcup_{\eta<\xi}M_{\eta}$, 
+$\#(N)\le\frak c$ and
+%
+%\qquad\qquad
+$\#(\{\alpha:\alpha\in A,\,K_{\alpha}\cap N=\emptyset\}) 
+  \le\frak c$,} 
+      
+\noindent choose such a set for $M_{\xi}$; 
+      
+otherwise set $M_{\xi}=\emptyset$.} 
+      
+\noindent When $M_{\xi}$ has been chosen for every $\xi<\omega_1$, set 
+$M=\bigcup_{\xi<\omega_1}M_{\xi}$.   The rule ensures that $\ofamily{\xi}{\omega_1}{M_{\xi}}$ is disjoint and that 
+$\#(M_{\xi})\le\frak c$ for every $\xi<\omega_1$, while 
+$\omega_1\le\frak c$, so $\#(M)\le\frak c$. 
+      
+Let $\frak P$ be the family of sets $P\subseteq A$ such that 
+$K_{\alpha}\cap K_{\beta}\subseteq M$ for all distinct $\alpha$, $\beta\in P$.   Order 
+$\frak P$ by inclusion, so that it is a partially ordered set.   If 
+$\frak Q\subseteq\frak P$ is totally ordered, then $\bigcup\frak Q\in\frak P$. 
+\Prf\ If $\alpha$, $\beta$ are distinct members of $\bigcup\frak Q$, 
+there are $Q_1$, $Q_2\in \frak Q$ such that $\alpha\in Q_1$, 
+$\beta\in Q_2$; now 
+$P=Q_1\cup Q_2$ is equal to one of $Q_1$, $Q_2$, and in either case 
+belongs to $\frak P$ and contains both $\alpha$ and $\beta$, so $K_{\alpha}\cap K_{\beta}\subseteq M$.\ \QeD\  By Zorn's Lemma, 
+$\frak P$ has a maximal 
+element $B$, and we surely have $K_{\alpha}\cap K_{\beta}\subseteq M$ 
+for all distinct $\alpha$, $\beta\in B$. 
+      
+\Quer\ Suppose, if possible, that $\#(B)\le\frak c$.   Set 
+$N=\bigcup_{\alpha\in B}K_{\alpha}\setminus M$.   Then $N$ has cardinal 
+at most $\frak c$, being included in a union of at most $\frak c$ 
+countable sets.   For every $\gamma\in A\setminus B$, 
+$B\cup\{\gamma\}\notin\frak P$, so there must be some $\alpha\in B$ such 
+that $K_{\alpha}\cap K_{\gamma}\not\subseteq M$;  that is, 
+$K_{\gamma}\cap N\ne\emptyset$.   Thus 
+$\{\gamma:K_{\gamma}\cap N=\emptyset\}\subseteq B$ 
+has cardinal at most $\frak c$.   But this means that in the rule for 
+choosing $M_{\xi}$, there was always an $N$ satisfying the condition 
+($*$), and therefore $M_{\xi}$ also did.   Thus 
+$C_{\xi}=\{\alpha:K_{\alpha}\cap M_{\xi}=\emptyset\}$ has cardinal at most $\frak c$ for every 
+$\xi<\omega_1$.   So $C=\bigcup_{\xi<\omega_1}C_{\xi}$ also has.   But 
+the original hypothesis was that $\#(A)>\frak c$, so there is an $\alpha\in A\setminus C$.   In this case, 
+$K_{\alpha}\cap M_{\xi}\ne\emptyset$ for 
+every $\xi<\omega_1$.   But this means that we have a surjection 
+$\phi:K_{\alpha}\cap M\to\omega_1$ given by setting 
+      
+\Centerline{$\phi(i)=\xi$ if $i\in K_{\alpha}\cap M_{\xi}$.} 
+      
+\noindent Since $\#(K_{\alpha})\le\omega<\omega_1$, this is 
+impossible.\ \Bang 
+      
+Accordingly $\#(B)>\frak c$ and we have found a suitable pair $M$, $B$. 
+      
+\medskip 
+      
+{\bf (b)} By (a), we can find a set $M$, with cardinal at most $\frak c$, 
+and a set $B_0\subseteq A$, with cardinal greater than $\frak c$, such that $K_{\alpha}\cap K_{\beta}\subseteq M$ for all distinct $\alpha$, 
+$\beta\in B_0$.   Let $H$ be the set of functions from countable subsets of $M$ to $\{0,1\}$;  then 
+$f'_{\alpha}=f_{\alpha}\restr(K_{\alpha}\cap M)\in H$ for 
+each $\alpha\in B_0$.   Now 
+$B_0=\bigcup_{h\in H}\{\alpha:\alpha\in B_0,\,f'_{\alpha}=h\}$ has cardinal greater than $\frak c$, while 
+$\#(H)\le\frak c$ (2A1Le), so there must be some $h\in H$ such that 
+$B=\{\alpha:\alpha\in B_0,\,f'_{\alpha}=h\}$ has cardinal greater than 
+$\frak c$. 
+      
+If $\alpha$, $\beta$ are distinct members of $B$, then 
+$K_{\alpha}\cap K_{\beta}\subseteq M$, because $\alpha$, $\beta\in B_0$;  but this means that 
+      
+\Centerline{$f_{\alpha}\restr K_{\alpha}\cap K_{\beta} 
+=h\restr K_{\alpha}\cap K_{\beta} 
+=f_{\beta}\restr K_{\alpha}\cap K_{\beta}$.} 
+      
+\noindent Thus $B$ has the required property.   (Of course $f_{\alpha}$ 
+and $f_{\beta}$ agree on $K_{\alpha}\cap K_{\beta}$ if $\alpha=\beta$.) 
+      
+\medskip 
+      
+{\bf (c)} follows at once. 
+}%end of proof of 2A1P 
+%elementary submodel argument 
+      
+\cmmnt{\medskip 
+      
+\noindent{\bf Remark} The result we need in this volume (in 216E) is 
+part (c) above.   There are other proofs of this,  
+perhaps a little simpler; but the stronger result in part (b) will be 
+useful in Volume 3. 
+}%end of comment 
+      
+\discrpage 
+      

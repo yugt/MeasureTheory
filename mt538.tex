@@ -1,0 +1,3820 @@
+\frfilename{mt538.tex}
+\versiondate{18.2.14}
+\copyrightdate{2009}
+
+\def\chaptername{Topologies and Measures III}
+\def\sectionname{Filters and limits}
+
+\def\FS{\mathop{\text{FS}}\nolimits}
+
+\newsection{538}
+
+A great many special types of filter have been studied.   In this section I
+look at some which are particularly interesting from the point of view of
+measure theory:  Ramsey ultrafilters, measure-converging filters and
+filters with the Fatou property.   About half the section is directed
+towards Benedikt's theorem (538M) on extensions of perfect probability
+measures;  on the way we need to look at
+measure-centering ultrafilters (538G-538K) %538G 538H 538I 538J 538K
+and iterated
+products of filters (538E, 538L).   The second major topic here is a study
+of `medial limits' (538P-538S); %538P 538Q 538R 538S
+these are Banach limits of a very special type.
+In between, the measure-converging property (538N)
+and the Fatou property (538O) offer some intriguing patterns.
+
+%538A definitions - filter types
+%538B R-K ordering
+%538C ultrafilters and R-K
+%538D \Cal F\ltimes\Cal G
+%538E iteration
+%538F Ramsey ufilters
+%538H measure-centering ultrafilters
+%538G characterizations
+%538I extending perfect probabilities
+%538J   properties of construction
+%538K   more
+%538L iterated product of Ramsey ufilters is measure-centering
+%538M universal extension of perfect probability
+%538N measure-converging filters.
+%538O Fatou property
+%538P medial functionals:  equivalent conditions
+%538Q    definition
+%538R    properties
+%538S    existence
+
+\leader{538A}{\dvrocolon{Filters}}\cmmnt{ For ease of reference, I begin
+the section with a list of the special types of filter on $\Bbb N$
+which we shall be looking at later.
+
+\medskip
+
+\noindent}{\bf  Definitions}
+Let $\Cal F$ be a filter on $\Bbb N$.
+
+\spheader 538Aa $\Cal F$ is {\bf free} if it\cmmnt{ contains every cofinite
+subset of $\Bbb N$, that is,} includes the Fr\'echet filter.
+
+\spheader 538Ab $\Cal F$ is a {\bf $p$-point filter} if it is free and
+for every sequence
+$\sequencen{A_n}$ in $\Cal F$ there is an $A\in\Cal F$ such that
+$A\setminus A_n$ is finite for every $n\in\Bbb N$.
+\cmmnt{(Compare 5A6Ga.)}
+
+\spheader 538Ac $\Cal F$ is {\bf Ramsey} or {\bf selective}
+if it is free and for every
+$f:[\Bbb N]^2\to\{0,1\}$ there is an $A\in\Cal F$ such that $f$ is constant
+on $[A]^2$.
+%C&N p 212 gives defn for uniform ultrafilters on other cardinals
+
+\spheader 538Ad $\Cal F$ is {\bf rapid} if it is free and for
+every sequence $\sequencen{t_n}$
+of real numbers which converges to $0$, there is an $A\in\Cal F$ such that
+$\sum_{n\in A}|t_n|$ is finite.   Note that a free filter $\Cal F$ on
+$\Bbb N$ is rapid iff for every $f\in\BbbN^{\Bbb N}$ there is an
+$A\in\Cal F$ such that $\#(A\cap f(k))\le k$ for every $k\in\Bbb N$.
+\prooflet{\Prf\ (i) If $\Cal F$ is rapid and $f\in\BbbN^{\Bbb N}$, let
+$g\in\BbbN^{\Bbb N}$ be a strictly increasing sequence such that $f\le g$.
+Set $t_i=2$ if $i<g(0)$, $\Bover1{k+1}$ if $g(k)\le i<g(k+1)$;  then there
+is an $A\in\Cal F$ such that $\sum_{i\in A}t_i$ is finite;  as $\Cal F$ is
+free, there is an $A\in\Cal F$ such that $\sum_{i\in A}t_i\le 1$, in which
+case $\#(A\cap f(k))\le\#(A\cap g(k))\le k$ for every $k\in\Bbb N$.
+(ii) If $\Cal F$ satisfies the condition and $\sequence{i}{t_i}\to 0$, take
+a strictly increasing
+$f\in\BbbN^{\Bbb N}$ such that $|t_i|\le 2^{-k}$ whenever $k\in\Bbb N$ and
+$i\ge f(k)$;  let $A\in\Cal F$ be such that $\#(A\cap f(k))\le k$ for every
+$k$;  then $\sum_{i\in A}|t_i|
+\le\sum_{k=0}^{\infty}2^{-k}\#(A\cap f(k+1)\setminus f(k))$ is finite.\
+\Qed}
+
+\spheader 538Ae $\Cal F$ is {\bf nowhere dense} if for every sequence
+$\sequencen{t_n}$ in $\Bbb R$ there is an $A\in\Cal F$ such that
+$\{t_n:n\in A\}$ is nowhere dense.
+
+\spheader 538Af $\Cal F$ is {\bf measure-centering} or has {\bf property M}
+if whenever $\frak A$ is a Boolean algebra,
+$\nu:\frak A\to\coint{0,\infty}$ is an additive functional, and
+$\sequencen{a_n}$ is a sequence in $\frak A$ such that
+$\inf_{n\in\Bbb N}\nu a_n>0$, there is an $A\in\Cal F$ such that
+$\{a_n:n\in A\}$ is centered.
+
+\spheader 538Ag $\Cal F$ is {\bf measure-converging} if
+whenever $(X,\Sigma,\mu)$ is a probability space,
+$\sequencen{E_n}$ is a sequence in
+$\Sigma$, and $\lim_{n\to\infty}\mu E_n=1$, then
+$\bigcup_{A\in\Cal F}\bigcap_{n\in A}E_n$ is conegligible.
+%this is "measure-converging over the Frechet filter"
+
+\spheader 538Ah $\Cal F$ has the {\bf Fatou property} if whenever
+$(X,\Sigma,\mu)$ is a probability space, $\sequencen{E_n}$ is a sequence in
+$\Sigma$, and $X=\bigcup_{A\in\Cal F}\bigcap_{n\in A}E_n$, then
+$\lim_{n\to\Cal F}\mu E_n$ is defined and equal to $1$.
+
+\spheader 538Ai For any countably infinite set $I$, I will say that a
+filter $\Cal F$ on $I$ is free, or a $p$-point filter, or Ramsey, etc., if
+it is isomorphic to such a filter on $\Bbb N$.   \cmmnt{Of course this
+usage is
+possible only because every property here is invariant under permutations
+of $\Bbb N$.}   For `rapid' and `measure-converging'
+filters, we need an appropriate translation of
+`sequence converging to $0$';  the corresponding notion on an arbitrary
+index set $I$ is a function $u\in\pmb{c}_0(I)$, that is,
+a real-valued function $u$ on $I$ such that
+$\{i:i\in I$, $|u(i)|\ge\epsilon\}$ is finite for every
+$\epsilon>0$\cmmnt{;  if we give $I$
+its discrete topology, $c_0(I)$ is $C_0(I)$ as defined in 436I}.
+
+%rare=Q-point:  for any partition of \Bbb N into finite sets,
+%\exists A\in\Cal F  meeting each member of the partition in at most
+%one point.   Rare => rapid;  Ramsey <=> rare p-point ultrafilter.
+
+\leader{538B}{}\cmmnt{ We need a number of basic ideas which can
+profitably be examined in a rather more general context.   I start with a
+fundamental pre-order on the class of all filters.
+
+\medskip
+
+\noindent}{\bf The Rudin-Keisler ordering} If
+$\Cal F$, $\Cal G$ are filters on sets $I$, $J$ respectively, I will
+say that
+$\Cal F\leRK\Cal G$ if there is a function $f:J\to I$ such that
+
+\Centerline{$\Cal F=f[[\Cal G]]=\{A:A\subseteq I$, $f^{-1}[A]\in\Cal G\}$,}
+
+\noindent the filter on $I$ generated by
+$\{f[B]:B\in\Cal G\}$.\cmmnt{  (I ought to remark that while this is a
+standard idea for ultrafilters, in the case of general filters the
+terminology is not well established.)}\cmmnt{   Of course}
+$\leRK$ is reflexive and transitive.   If $\Cal F\leRK\Cal G$ and
+$\Cal G$ is an ultrafilter, then $\Cal F$ is an
+ultrafilter\cmmnt{ (2A1N)}.   If
+$\Cal F$ is a principal ultrafilter then $\Cal F\leRK\Cal G$ for every
+filter $\Cal G$.
+%check Mildenberger
+%C&N p 206 for ultrafilters
+
+\leader{538C}{Lemma} (a) If $I$ is a set, $\Cal F$ is an ultrafilter on
+$I$ and $f:I\to I$ is a function such that $f[[\Cal F]]=\Cal F$, then
+$\{i:f(i)=i\}\in\Cal F$.
+%C&N 9.2a
+
+(b) If $I$ is a set, $\Cal F$ and $\Cal G$ are ultrafilters on $I$,
+$\Cal F\leRK\Cal G$ and $\Cal G\leRK\Cal F$, then there is a permutation
+$h:I\to I$ such that $h[[\Cal F]]=\Cal G$;  that is, $\Cal F$ and
+$\Cal G$ are isomorphic.
+%C&N 9.2b/9.3
+
+\proof{{\bf (a)} It is enough to consider the case in which $I=\kappa$ is a
+cardinal.
+
+\medskip
+
+\quad{\bf (i)} $\{\xi:\xi<\kappa$, $\xi\le f(\xi)\}\in\Cal F$.
+\Prf\ Define $\sequencen{D_n}$, $\sequencen{E_n}$ by saying that
+
+\Centerline{$D_0=\kappa$,
+\quad$D_{n+1}=\{\xi:\xi\in D_n$, $f(\xi)\in D_n$, $f(\xi)<\xi\}$,
+\quad$E_n=D_n\setminus D_{n+1}$}
+
+\noindent for $n\in\Bbb N$.   If $\xi\in D_n$ then
+$\xi>f(\xi)>\ldots>f^n(\xi)$, so $\bigcap_{n\in\Bbb N}D_n=\emptyset$ and
+$\sequencen{E_n}$ is a partition of $\kappa$.   If $\xi\in E_{n+1}$ then
+$f^{n+1}(\xi)<f^n(\xi)<\ldots<\xi$, $f^{n+1}(\xi)\le f^{n+2}(\xi)$, so
+$f(\xi)\in E_n$.   Set $E=\bigcup_{n\ge 1}E_{2n}$,
+$E'=\bigcup_{n\in\Bbb N}E_{2n+1}$;  then $f[E]\subseteq E'$ is disjoint
+from $E$, so $E\notin\Cal F$.   Also $f[E']\subseteq E\cup E_0$ is disjoint
+from $E'$, so $E'\notin\Cal F$.   Because $\Cal F$ is an ultrafilter,
+$E_0\in\Cal F$, as claimed.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} If $A\subseteq I$ and $A\notin\Cal F$ then
+$B=\bigcup_{n\in\Bbb N}(f^n)^{-1}[A]$ does not belong to $\Cal F$.   \Prf\
+For $\xi\in B$ set $m(\xi)=\min\{n:n\in\Bbb N$, $f^n(\xi)\in A\}$.
+If $m(\xi)>0$ then $m(f(\xi))=m(\xi)-1$.   So setting
+$C=\{\xi:m(\xi)$ is even and not $0\}$, $C'=\{\xi:m(\xi)$ is odd$\}$ we
+have $f[C]\cap C=\emptyset$, $f[C']\cap C'=\emptyset$ and
+$B\subseteq A\cup C\cup C'$;  so $B\notin\Cal F$.\ \Qed
+
+Turning this round, if $A\in\Cal F$ then
+$\bigcup_{n\in\Bbb N}(f^n)^{-1}[\kappa\setminus A]\notin\Cal F$ and
+$\bigcap_{n\in\Bbb N}(f^n)^{-1}[A]\in\Cal F$.
+
+\medskip
+
+\quad{\bf (iii)} For $\xi<\kappa$ set
+
+\Centerline{$g(\xi)=\min\{\zeta:$ there is some $n\in\Bbb N$ such that
+$f^n(\zeta)=\xi\}$.}
+
+\noindent Then $g[[\Cal F]]=\Cal F$.   \Prf\ If $A\in\Cal F$ then
+$\Cal F$ contains $\bigcap_{n\in\Bbb N}(f^n)^{-1}[A]\subseteq g^{-1}[A]$,
+so $g^{-1}[A]\in\Cal F$.   Thus $\Cal F\subseteq g[[\Cal F]]$;  as $\Cal F$
+is an ultrafilter, $\Cal F=g[[\Cal F]]$.\ \Qed
+
+Now $g(\xi)\le\xi$ for every $\xi<\kappa$;  applying (i) to $g$,
+we see that $G=\{\xi:g(\xi)=\xi\}\in\Cal F$.   But consider
+$H=\{\xi:\xi<f(\xi)\}$.   Then $g(\eta)<\eta$ for every $\eta\in f[H]$, so
+$f[H]\notin\Cal F$ and $H\notin\Cal F$.   Since we already know that
+$\{\xi:\xi\le f(\xi)\}\in\Cal F$, we see that $\{\xi:f(\xi)=\xi\}$ belongs
+to $\Cal F$, as claimed.
+
+\medskip
+
+{\bf (b)} Let $f$, $g:I\to I$ be such that $f[[\Cal F]]=\Cal G$ and
+$g[[\Cal G]]=\Cal F$.   Then $(gf)[[\Cal F]]=g[[f[[\Cal F]]\,]]=\Cal F$, so
+$J_0=\{i:g(f(i))=i\}\in\Cal F$, by (a).   Similarly, $J_1=\{i:f(g(i))=i\}$
+belongs to $\Cal G$.   Set $J=J_0\cap f^{-1}[J_1]\in\Cal F$;
+then $g(f(i))=i$ for
+every $i\in J$ and $f(g(j))=j$ for every $j\in f[J]$, so $f\restr J$ and
+$g\restr f[J]$ are inverse bijections between $J\in\Cal F$ and
+$f[J]\in\Cal G$.   If $J$ is finite, then certainly
+$\#(I\setminus J)=\#(I\setminus f[J])$ and there is an extension of
+$f\restr J$ to a permutation of $I$.   If $J$ is infinite, let
+$J'\subseteq J$ be a set such that $\#(J')=\#(J\setminus J')=\#(J)$ and
+$J'\in\Cal F$;  then $\#(I\setminus J')=\#(I\setminus f[J'])=\#(I)$
+so there is an extension of $f\restr J'$ to a permutation of $I$.
+
+Thus in either case we have a permutation
+$h:I\to I$ and a $K\in\Cal F$ such
+that $K\subseteq J$ and $h\restr K=f\restr K$.   But now
+$h[[\Cal F]]=\Cal G$ and $h$ is an isomorphism between $(I,\Cal F)$ and
+$(I,\Cal G)$.
+}%end of proof of 538C
+
+\leader{538D}{Finite products of filters (a)}
+Suppose that $\Cal F$, $\Cal G$ are filters on sets $I$, $J$ respectively.
+I will write $\Cal F\ltimes\Cal G$ for
+
+\Centerline{$\{A:A\subseteq I\times J$,
+$\{i:A[\{i\}]\in\Cal G\}\in\Cal F\}$.}
+
+\noindent\cmmnt{It is easy to check that }$\Cal F\ltimes\Cal G$
+is a filter.
+\cmmnt{ (Compare the skew product $\Cal I\ltimes\Cal J$ of ideals
+defined in 527Ba.)}
+
+\spheader 538Db
+If $\Cal F$ and $\Cal G$ are ultrafilters, so is $\Cal F\ltimes\Cal G$.
+\prooflet{\Prf\ If $A\subseteq I\times J$ and $A\notin\Cal F\ltimes\Cal G$,
+then $\{i:A[\{i\}]\in\Cal G\}\notin\Cal F\}$ and
+
+\Centerline{$\{i:((I\times J)\setminus A)[\{i\}]\in\Cal G\}
+=\{i:i\in I,\,J\setminus A[\{i\}]\in\Cal G\}
+=I\setminus\{i:A[\{i\}]\in\Cal G\}
+\in\Cal F$,}
+
+\noindent so $(I\times J)\setminus A\in\Cal F\ltimes\Cal G$.\ \Qed}
+
+\spheader 538Dc If $\Cal F$, $\Cal G$ and $\Cal H$ are filters on $I$,
+$J$, $K$ respectively, then the natural bijection between
+$(I\times J)\times K$ and $I\times(J\times K)$ is an isomorphism between
+$(\Cal F\ltimes\Cal G)\ltimes\Cal H$ and
+$\Cal F\ltimes(\Cal G\ltimes\Cal H)$.   \prooflet{\Prf\ If
+$A\subseteq I\times(J\times K)$ and $B=\{(i,j),k):(i,(j,k))\in A\}$, then
+
+$$\eqalign{A\in\Cal F\ltimes(\Cal G\ltimes\Cal H)
+&\iff\{i:A[\{i\}]\in\Cal G\times\Cal H\}\in\Cal F\cr
+&\iff\{i:\{j:(A[\{i\}])[\{j\}]\in\Cal H\}\in\Cal G\}\in\Cal F\cr
+&\iff\{(i,j):(A[\{i\}])[\{j\}]\in\Cal H\}\in\Cal F\ltimes\Cal G\cr
+&\iff\{(i,j):B[\{(i,j)\}]\in\Cal H\}\in\Cal F\ltimes\Cal G\cr
+&\iff B\in(\Cal F\ltimes\Cal G)\ltimes\Cal H.  \text{ \Qed}\cr}$$}
+
+\spheader 538Dd It follows that we can define a product
+$\Cal F_0\ltimes\ldots\ltimes\Cal F_n$ of any finite string
+$\Cal F_0,\ldots,\Cal F_n$ of filters, and under the natural
+identifications of the base sets we shall have
+$(\Cal F_0\ltimes\ldots\ltimes\Cal F_n)
+\ltimes(\Cal F_{n+1}\ltimes\ldots\ltimes\Cal F_m)$ identified with
+$\Cal F_0\ltimes\ldots\ltimes\Cal F_m$ whenever
+$\Cal F_0,\ldots,\Cal F_n,\ldots,\Cal F_m$ are filters.
+
+\spheader 538De\cmmnt{ For any filters $\Cal F$ and $\Cal G$,
+$\Cal F\leRK\Cal F\ltimes\Cal G$ and $\Cal G\leRK\Cal F\ltimes\Cal G$.
+\prooflet{\Prf\ Taking the base sets to be $I$, $J$ respectively and
+$f(i,j)=i$, $g(i,j)=j$ for $i\in I$ and $j\in J$, we have
+$\Cal F=f[[\Cal F\ltimes\Cal G]]$ and $\Cal G=g[[\Cal F\ltimes\Cal G]]$.\
+\Qed}
+
+Inducing on $n$, we see that
+$\Cal F_n\leRK\Cal F_0\ltimes\ldots\ltimes\Cal F_n$ whenever
+$\Cal F_0,\ldots,\Cal F_n$ are filters;  consequently}
+$\Cal F_m\leRK\Cal F_0\ltimes\ldots\ltimes\Cal F_n$ whenever
+$\Cal F_0,\ldots,\Cal F_n$ are filters and $m\le n$.
+
+\spheader 538Df If $\Cal F$, $\Cal F'$, $\Cal G$ and $\Cal G'$ are
+filters, with $\Cal F\leRK\Cal F'$ and $\Cal G\leRK\Cal G'$, then
+$\Cal F\ltimes\Cal G\leRK\Cal F'\ltimes\Cal G'$.   \prooflet{\Prf\ Let the
+base sets of the filters be $I$, $I'$, $J$ and $J'$, and let $f:I'\to I$
+and $g:J'\to J$ be such that $\Cal F=f[[\Cal F']]$ and
+$\Cal G=g[[\Cal G']]$.   Set $h(i,j)=(f(i),g(j))$ for $i\in I$ and
+$j\in J$.   If $A\subseteq I\times J$, then
+
+$$\eqalign{h^{-1}[A]\in\Cal F'\ltimes\Cal G'
+&\iff\{i:(h^{-1}[A])[\{i\}]\in\Cal G'\}\in\Cal F'\cr
+&\iff\{i:g^{-1}[A[\{f(i)\}]]\in\Cal G'\}\in\Cal F'\cr
+&\iff\{i:A[\{f(i)\}]\in\Cal G\}\in\Cal F'\cr
+&\iff\{i:A[\{i\}]\in\Cal G\}\in\Cal F
+\iff A\in\Cal F\ltimes\Cal G.\cr}$$
+
+\noindent So $\Cal F\ltimes\Cal G=h[[\Cal F'\ltimes\Cal G']]$ and
+$\Cal F\ltimes\Cal G\leRK\Cal F'\ltimes\Cal G'$.\ \Qed}
+
+\cmmnt{Accordingly} $\Cal F_0\ltimes\ldots\ltimes\Cal F_n
+\leRK\Cal G_0\ltimes\ldots\ltimes\Cal G_n$ whenever
+$\Cal F_i\leRK\Cal G_i$ for every $i\le n$.
+
+\spheader 538Dg It follows that if $\Cal F_0,\ldots,\Cal F_n$ are filters
+and $k_0<\ldots<k_m\le n$, then
+$\Cal F_{k_0}\ltimes\ldots\ltimes\Cal F_{k_m}
+\leRK\Cal F_0\ltimes\ldots\ltimes\Cal F_n$.   \prooflet{\Prf\ Induce on $m$
+to see that $\Cal F_{k_0}\ltimes\ldots\ltimes\Cal F_{k_m}
+\leRK\Cal F_0\ltimes\ldots\ltimes\Cal F_{k_m}$.\ \Qed}
+
+\vleader{72pt}{538E}{}\cmmnt{ There are many variations on the construction
+here.   A fairly elaborate extension will be needed in 538L below.
+
+\medskip
+
+\noindent}{\bf Iterated products of filters (a)}\cmmnt{ First,
+a scrap of notation for the rest of the first half of this section (down to
+538M).}   Set $S=\bigcup_{i\in\Bbb N}\BbbN^i$.
+If $i$, $j\in\Bbb N$, $\sigma\in\BbbN^i$ and
+$\tau\in\BbbN^j$, define $\sigma^{\smallfrown}\tau\in\BbbN^{i+j}$ by
+setting
+
+$$\eqalign{(\sigma^{\smallfrown}\tau)(k)
+&=\sigma(k)\text{ if }k<i,\cr
+&=\tau(k-i)\text{ if }i\le k<i+j.\cr}$$
+
+\noindent For $k\in\Bbb N$ write $\fraction{k}$ for the member of $\BbbN^1$
+with value $k$.
+
+Fix on a family
+$\langle\theta(\xi,k)\rangle_{1\le\xi<\omega_1,k\in\Bbb N}$
+such that each $\sequence{k}{\theta(\xi,k)}$ is a non-decreasing sequence
+running over a cofinal subset of $\xi$.
+\cmmnt{(You will
+probably prefer to suppose that when $\xi=\eta+1$ is a successor ordinal,
+then $\theta(\xi,k)=\eta$ for every $k\in\Bbb N$.)}
+
+\spheader 538Eb Now suppose that $\zeta$ is a non-zero
+countable ordinal.
+Let $\langle\Cal F_{\xi}\rangle_{1\le\xi\le\zeta}$ be a family of
+filters on
+$\Bbb N$.   For $\xi\le\zeta$, define $\Cal G_{\xi}\subseteq\Cal PS$ as
+follows.   Start by taking $\Cal G_0$ to be
+the principal filter generated by
+$\{\emptyset\}$.   For $1\le\xi\le\zeta$, set
+
+\Centerline{$\Cal G_{\xi}
+=\{A:A\subseteq S,\,\{k:k\in\Bbb N,\,
+    \{\tau:\fraction{k}^{\smallfrown}\tau\in A\}
+    \in\Cal G_{\theta(\xi,k)}\}\in\Cal F_{\xi}\}$.}
+
+\noindent It is elementary to check that every $\Cal G_{\xi}$ is a
+filter, and that if every $\Cal F_{\xi}$ is free, so is every
+$\Cal G_{\xi}$.
+Moreover, if every $\Cal F_{\xi}$ is an ultrafilter, so is every
+$\Cal G_{\xi}$.
+
+\spheader 538Ec \cmmnt{Continuing from (b), we find that}
+$\Cal F_{\xi}\leRK\Cal G_{\xi}$ whenever $1\le\xi\le\zeta$
+and $\Cal G_{\eta}\leRK\Cal G_{\xi}$
+whenever $0\le\eta\le\xi\le\zeta$.   \prooflet{\Prf\ Induce on $\xi$.
+(i) If $\xi\ge 1$, define $f:S\to\Bbb N$ by setting $f(\tau)=\tau(0)$ if
+$\tau\ne\emptyset$,
+$f(\emptyset)=0$.   Then, for $B\subseteq\Bbb N$,
+
+$$\eqalign{f^{-1}[B]\in\Cal G_{\xi}
+&\iff\{k:\{\tau:\fraction{k}^{\smallfrown}\tau\in f^{-1}[B]\}
+   \in\Cal G_{\theta(\xi,k)}\}\in\Cal F_{\xi}\cr
+&\iff B\in\Cal F_{\xi},\cr}$$
+
+\noindent so $\Cal F_{\xi}=f[[\Cal G_{\xi}]]\leRK\Cal G_{\xi}$.
+(ii) If $\eta=\xi\le\zeta$ then of course $\Cal G_{\eta}\leRK\Cal G_{\xi}$.
+(iii) If $0\le\eta<\xi$ then there is a $k_0$ such that
+$\eta\le\theta(\xi,k)$
+for $k\ge k_0$.   For $k\ge k_0$,
+$\Cal G_{\eta}\leRK\Cal G_{\theta(\xi,k)}$ by the inductive hypothesis;
+let $g_k:S\to S$ be such that
+$\Cal G_{\eta}=g_k[[\Cal G_{\theta(\xi,k)}]]$.   Now define $g:S\to S$
+by setting
+
+$$\eqalign{g(\tau)
+&=g_k(\sigma)\text{ if }k\ge k_0
+    \text{ and }\tau=\fraction{k}^{\smallfrown}\sigma,\cr
+&=\emptyset\text{ otherwise}.\cr}$$
+
+\noindent For $B\subseteq S$,
+
+$$\eqalignno{g^{-1}[B]\in\Cal G_{\xi}
+&\iff\{k:\{\sigma:\fraction{k}^{\smallfrown}\sigma\in g^{-1}[B]\}
+  \in\Cal G_{\theta(\xi,k)}\}\in\Cal F_{\xi}\cr
+&\iff\{k:k\ge k_0,\,
+  \{\sigma:g(\fraction{k}^{\smallfrown}\sigma)\in B\}
+  \in\Cal G_{\theta(\xi,k)}\}\in\Cal F_{\xi}\cr
+\displaycause{because $\Cal F_{\xi}$ is free}
+&\iff\{k:k\ge k_0,\,
+  \{\sigma:g_k(\sigma)\in B\}
+  \in\Cal G_{\theta(\xi,k)}\}\in\Cal F_{\xi}\cr
+&\iff\{k:k\ge k_0,\,
+  B\in\Cal G_{\eta}\}\in\Cal F_{\xi}
+\iff B\in\Cal G_{\eta},\cr}$$
+
+\noindent so $\Cal G_{\eta}=g[[\Cal G_{\xi}]]\leRK\Cal G_{\xi}$.\ \Qed}
+
+\spheader 538Ed\cmmnt{ It follows that if
+$1\le\xi_0<\ldots<\xi_n\le\zeta$ then
+$\Cal F_{\xi_n}\ltimes\ldots\ltimes\Cal F_{\xi_0}\leRK\Cal G_{\xi_n}$.
+\prooflet{\Prf\ Induce on the pair $(\xi_n,n)$.   If $\xi_n=1$ then $n=0$
+and we just have $\Cal F_1\leRK\Cal G_1$, as in part (i) of the proof of
+(c).   For the inductive step to
+$\xi_n=\xi>1$, if $n=0$ then again we need only note that
+$\Cal F_{\xi_0}=\Cal F_{\xi}\leRK\Cal G_{\xi}$.    If $n>0$, let
+$k_0\ge 1$ be such that $\xi_{n-1}\le\theta(\xi,k)$ for every
+$k\ge k_0$.   For $k\ge k_0$,
+
+\Centerline{$\Cal F_{\xi_{n-1}}\ltimes\ldots\ltimes\Cal F_{\xi_0}
+\leRK\Cal G_{\xi_{n-1}}\le\Cal G_{\theta(\xi,k)}$}
+
+\noindent by the inductive hypothesis, so
+we have a function $g_k:S\to\BbbN^n$ such that
+$\Cal F_{\xi_{n-1}}\ltimes\ldots\ltimes\Cal F_{\xi_0}
+=g_k[[\Cal G_{\theta(\xi,k)}]]$.   Define $g:S\to\BbbN^{n+1}$ by setting
+
+$$\eqalign{g(\tau)
+&=\fraction{k}^{\smallfrown}g_k(\sigma)\text{ if }k\ge k_0
+    \text{ and }\tau=\fraction{k}^{\smallfrown}\sigma,\cr
+&=\text{the constant function with value }0\text{ otherwise}.\cr}$$
+
+\noindent Then, for $B\subseteq\BbbN^{n+1}$,
+
+$$\eqalignno{g^{-1}[B]\in\Cal G_{\xi}
+&\iff\{k:\{\sigma:g(\fraction{k}^{\smallfrown}\sigma)\in B\}
+  \in\Cal G_{\theta(\xi,k)}\}\in\Cal F_{\xi}\cr
+&\iff\{k:k\ge k_0,\,\{\sigma:\fraction{k}^{\smallfrown}g_k(\sigma)\in B\}
+  \in\Cal G_{\theta(\xi,k)}\}\in\Cal F_{\xi}\cr
+&\iff\{k:k\ge k_0,\,\{\sigma:g_k(\sigma)\in B_k\}
+  \in\Cal G_{\theta(\xi,k)}\}\in\Cal F_{\xi}\cr
+\displaycause{writing
+$B_k=\{\sigma:\fraction{k}^{\smallfrown}\sigma\in B\}\subseteq\BbbN^n$
+for $k\in\Bbb N$}
+&\iff\{k:k\ge k_0,\,
+  B_k\in\Cal F_{\xi_{n-1}}\ltimes\ldots\ltimes\Cal F_{\xi_0}\}
+  \in\Cal F_{\xi}\cr
+&\iff\{k:k\in\Bbb N,\,
+  B_k\in\Cal F_{\xi_{n-1}}\ltimes\ldots\ltimes\Cal F_{\xi_0}\}
+  \in\Cal F_{\xi}\cr
+&\iff B\in\Cal F_{\xi_n}\ltimes\ldots\ltimes\Cal F_{\xi_0}.\cr}$$
+
+\noindent Thus $g$ witnesses that
+$\Cal F_{\xi_n}\ltimes\ldots\ltimes\Cal F_{\xi_0}\leRK\Cal G_{\xi_n}$, and
+the induction proceeds.\ \Qed}
+
+Consequently}
+$\Cal F_{\xi_n}\ltimes\ldots\ltimes\Cal F_{\xi_0}\leRK\Cal G_{\zeta}$
+whenever $1\le\xi_0<\ldots<\xi_n\le\zeta$.
+
+\spheader 538Ee \cmmnt{The following special remark will be useful in
+Theorem 538L.}
+Suppose that we are given $A_{\xi}\in\Cal F_{\xi}$ for each
+$\xi\in[1,\zeta]$.   Define $T\subseteq S$ and $\alpha:T\to[0,\zeta]$ as
+follows.   Start by saying that $\emptyset\in T$ and
+$\alpha(\emptyset)=\zeta$.   Having determined $T\cap\BbbN^n$ and
+$\alpha\restr T\cap\BbbN^n$, where $n\in\Bbb N$, then for
+$\tau\in\BbbN^{n+1}$ say that $\tau\in T$ iff $\tau$ is of the form
+$\sigma^{\smallfrown}\fraction{k}$ where
+
+\Centerline{$\sigma\in T\cap\BbbN^n$,
+\quad$\alpha(\sigma)>0$,
+\quad$k\in A_{\alpha(\sigma)}$,
+\quad$\sigma(i)<k$ for every $i<n$,}
+
+\noindent and in this case set $\alpha(\tau)=\theta(\alpha(\sigma),k)$.
+Continue.   Observe that $\alpha(\tau)<\alpha(\sigma)$ whenever $\sigma$,
+$\tau\in T$ and $\tau$ properly extends $\sigma$.
+
+Suppose that $D\in\bigcap_{1\le\xi\le\zeta}\Cal F_{\xi}$.   Then
+$T^*_D=\{\tau:\tau\in T\cap\bigcup_{n\in\Bbb N}D^n$, $\alpha(\tau)=0\}$
+belongs to $\Cal G_{\zeta}$.
+\prooflet{\Prf\ I aim to show by induction on
+$\xi$ that if $\tau\in T\cap\bigcup_{n\in\Bbb N}D^n$ and
+$\alpha(\tau)=\xi$ then
+$\{\sigma:\tau^{\smallfrown}\sigma\in T_D^*\}$ belongs to $\Cal G_{\xi}$.
+If $\xi=0$ then of course
+$\{\sigma:\tau^{\smallfrown}\sigma\in T_D^*\}=\{\emptyset\}\in\Cal G_0$.
+For the inductive step to $\xi>0$,
+
+$$\eqalignno{\{k:
+  \{\sigma:\tau^{\smallfrown}\fraction{k}^{\smallfrown}&\sigma\in T_D^*\}
+       \in\Cal G_{\theta(\xi,k)}\}\cr
+&\supseteq\{k:k\in D,\,\tau^{\smallfrown}\fraction{k}\in T,\,
+    \alpha(\tau^{\smallfrown}\fraction{k})=\theta(\xi,k)\}\cr
+\displaycause{by the inductive hypothesis}
+&\supseteq\{k:k\in A_{\xi}\cap D,\,
+    \tau(i)<k\text{ for every }i<\dom\tau\}\cr
+&\in\Cal F_{\xi},\cr}$$
+
+\noindent so $\{\sigma:\tau^{\smallfrown}\sigma\in T_D^*\}\in\Cal G_{\xi}$.
+At the end of the induction, we can apply this to $\tau=\emptyset$
+and $\xi=\zeta$.\ \Qed}
+
+\leader{538F}{Ramsey \dvrocolon{filters}}\cmmnt{ There is an extensive
+and fascinating theory of Ramsey filters;
+see, for instance, {\smc Comfort
+\& Negrepontis 74}.   Here, however, I will give only those fragments which
+are directly relevant to the other work of this section.
+
+\medskip
+
+\noindent}{\bf Proposition} (a) A Ramsey filter on $\Bbb N$ is a
+rapid $p$-point ultrafilter.
+
+(b) If $\Cal F$ is a Ramsey ultrafilter on $\Bbb N$, $\Cal G$ is a
+non-principal ultrafilter on $\Bbb N$, and $\Cal G\leRK\Cal F$,
+then $\Cal F$ and $\Cal G$ are isomorphic and $\Cal G$
+is a Ramsey ultrafilter.
+
+(c) Let $\Cal F$ be a Ramsey filter on $\Bbb N$.
+Suppose that $\sequencen{A_n}$ is any sequence in $\Cal F$.   Then
+there is an $A\in\Cal F$ such that $n\in A_m$ whenever $m$, $n\in A$ and
+$m<n$.
+
+(d) Let $\Cal F$ be a Ramsey filter on $\Bbb N$.   Let
+$\Cal S\subseteq[\Bbb N]^{<\omega}$ be such that $\emptyset\in\Cal S$ and
+$\{n:I\cup\{n\}\in\Cal S\}\in\Cal F$ for every $I\in\Cal S$.   Then there
+is an $A\in\Cal F$ such that $[A]^{<\omega}\subseteq\Cal S$.
+
+(e) If $\frak F$ is a countable family of distinct Ramsey filters on
+$\Bbb N$, there is a disjoint family $\family{\Cal F}{\frak F}{A_{\Cal F}}$
+of subsets of $\Bbb N$ such that $A_{\Cal F}\in\Cal F$ for every
+$\Cal F\in\frak F$.
+
+(f) Let $\frak F$ be a countable
+family of non-isomorphic Ramsey ultrafilters on $\Bbb N$, and
+$\frak h:\Bbb N\to[\frak F]^{<\omega}$ a function.
+Suppose that we are given
+an $A_{\Cal F}\in\Cal F$ for each $\Cal F\in\frak F$.
+Then there is an $A\in\bigcap\frak F$ such that whenever $i$, $j\in A$,
+$\Cal F\in\frak h(i)$ and $i<j$, there is a $k\in A_{\Cal F}$ such that
+$i<k<j$.
+
+(g) If $\frakmctbl=\frak c$, there is a Ramsey ultrafilter on $\Bbb N$.
+
+\woddheader{538F}{0}{0}{0}{54pt}
+
+\proof{{\bf (a)} Let $\Cal F$ be a Ramsey filter on $\Bbb N$.
+
+\medskip
+
+\quad{\bf (i)} $\Cal F$ is an ultrafilter.   \Prf\ Let $A$ be any subset of
+$\Bbb N$.   Define $f:[\Bbb N]^2\to\{0,1\}$ by setting $f(I)=1$ if
+$\#(I\cap A)=1$, $0$ otherwise.   Then we have an $I\in\Cal F$ such that
+$f$ is constant on $[I]^2$.   As $\Cal F$ is free, $\#(I)\ge 3$ and
+the constant value of $f$ cannot be $1$.   So either $I\subseteq A$ and
+$A\in\Cal F$, or $I\cap A=\emptyset$ and $\Bbb N\setminus A\in\Cal F$.
+As $A$ is arbitrary, $\Cal F$ is an ultrafilter.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} $\Cal F$ is a $p$-point filter.   \Prf\ Let
+$\sequencen{I_n}$ be a sequence in $\Cal F$.   Set
+$K_n=(\Bbb N\setminus n)\cap\bigcap_{i<n}I_i$,
+$J_n=K_n\setminus K_{n+1}$ for each $n$;
+then $\sequencen{J_n}$ is a partition of $\Bbb N$.
+Define $f:[\Bbb N]^2\to\{0,1\}$ by
+setting $f(a)=0$ if there is an $n\in\Bbb N$ such that $a\subseteq J_n$,
+$1$ otherwise.   Let $I\in\Cal F$ be such that $f$ is constant on $[I]^2$.
+
+Since $\Bbb N\setminus J_n\in\Cal F$ for every $n$, there must be two
+points in $I$ belonging to different $J_n$;  so that the constant value of
+$f$ must be $1$, and no two points of $I$ belong to the same $J_n$.
+In particular, $I\cap J_n$ is always finite, and
+$I\setminus I_n\subseteq\bigcup_{i\le n}I\cap J_i$ is always finite.
+As $\sequencen{I_n}$ is arbitrary, $\Cal F$ is a $p$-point filter.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} $\Cal F$ is rapid.   \Prf\ Let $\sequencen{t_n}$ be a
+sequence converging to $0$.   For each $n$, set
+$I_n=\{i:|t_i|\le 2^{-n}\}$;  as $\Cal F$ is free, $I_n\in\Cal F$.
+Looking again at the proof of (ii) above, we see that the construction
+there gives us an $I\in\Cal F$ such that $\#(I\setminus I_n)\le n+1$ for
+every $n$.   We can therefore enumerate $I$ as $\sequencen{k_n}$ in such a
+way that $k_{n+1}\in I_n$ for every $n$.   But this means that
+
+\Centerline{$\sum_{i\in I}|t_i|=\sum_{n=0}^{\infty}|t_{k_n}|
+\le|t_{k_0}|+\sum_{n=1}^{\infty}2^{-n+1}<\infty$.}
+
+\noindent As $\sequencen{t_n}$ is arbitrary, $\Cal F$ is rapid.\ \Qed
+
+\medskip
+
+{\bf (b)} Let $f:\Bbb N\to\Bbb N$ be
+such that $f[[\Cal F]]=\Cal G$.   For $K\in[\Bbb N]^2$, set
+$h(K)=0$ if $f\restr K$ is constant, $1$ otherwise.
+Then there is an $A\in\Cal F$ such that $h$ is constant on $[A]^2$,
+that is, $f$ is either
+constant or injective on $A$.   Since $f[A]\in\Cal G$, $f[A]$ is infinite,
+so $f$ is injective on $A$.   Let $g:\Bbb N\to\Bbb N$ be any function
+extending $(f\restr A)^{-1}$;  then $gf(n)=n$ for every $n\in A$, so
+
+\Centerline{$(gf)[[\Cal F]]
+=\{I:(gf)^{-1}[I]\in\Cal F\}
+=\{I:A\cap(gf)^{-1}[I]\in\Cal F\}
+=\{I:A\cap I\in\Cal F\}
+=\Cal F$.}
+
+\noindent But this means that $g[[\Cal G]]=\Cal F$ and $\Cal F\leRK\Cal G$.
+
+By 538Cb, $\Cal F$ and $\Cal G$ are isomorphic, so $\Cal G$ also must be a
+Ramsey ultrafilter.
+
+\medskip
+
+{\bf (c)} For $m<n$ in $\Bbb N$, set $h(\{m,n\})=1$ if $n\in A_m$, $0$
+otherwise.   Then there is an $A\in\Cal F$ such that $h\restr[A]^2$ is
+constant.   Setting $k=\min A$, $A$ meets $A_k\setminus(k+1)$, so $h$ takes
+the value $1$ on $[A]^2$;   consequently
+$n\in A_m$ whenever $m$, $n\in A$ and $m<n$.
+
+\medskip
+
+{\bf (d)} For $n\in\Bbb N$, set
+
+\Centerline{$A_n
+=\{i:I\cup\{i\}\in\Cal S$ whenever $I\subseteq n+1$ and $I\in\Cal S\}
+\in\Cal F$.}
+
+\noindent By (c), there is an $A\in\Cal F$ such that $n\in A_m$ whenever
+$m$, $n\in A$ and $m<n$;  and we can suppose that $A\subseteq A_0$, so that
+$\{n\}\in\Cal S$ for every $n\in A$.   Now an easy induction on $n$ shows
+that $\Cal P(A\cap n)\subseteq\Cal S$ for every $n$, so
+$[A]^{<\omega}\subseteq\Cal S$.
+
+\medskip
+
+{\bf (e)} Enumerate $\frak F$ as $\ofamily{n}{\#(\frak F)}{\Cal F_n}$.
+For distinct $m$, $n<\#(\frak F)$ there is a
+$B_{mn}\in\Cal F_m\setminus\Cal F_n$.
+\Prf\ We know that there is a set in $\Cal F_m\symmdiff\Cal F_n$;  now
+either this set or its complement will serve for $B_{mn}$.\ \QeD\  Because
+every member of $\frak F$ is a $p$-point filter ((a) above), we can find
+for each $n<\#(\frak F)$ a set $C_n\in\Cal F_n$ such that
+$C_n\setminus(B_{nm}\setminus B_{mn})$ is finite for every $m<\#(\frak F)$
+such that $m\ne n$.   Set $A_{\Cal F_n}=C_n\setminus\bigcup_{m<n}C_m$ for
+$n<\#(\frak F)$;  then $\family{\Cal F}{\frak F}{A_{\Cal F}}$ is disjoint.
+Since
+
+\Centerline{$C_m\cap C_n
+\subseteq(C_m\setminus B_{mn})\cup(C_n\cap B_{mn})$}
+
+\noindent is finite whenever $m\ne n$, $C_n\setminus A_{\Cal F_n}$ is
+finite and  $A_{\Cal F_n}\in\Cal F_n$ for each $n<\#(\frak F)$.
+
+\medskip
+
+{\bf (f)(i)} We can suppose that $\frak h(i)\subseteq\frak h(j)$ whenever
+$i\le j$, and that $\frak F=\bigcup_{i\in\Bbb N}\frak h(i)$.
+Let $g:\Bbb N\to\Bbb N$ be a strictly increasing function
+such that $g(0)>0$ and whenever $i\in\Bbb N$ and
+$\Cal F\in \frak h(i)$, there is a $k\in A_{\Cal F}$ such that $i<k<g(i)$.
+Set $l_m=g^m(0)$ and
+$J_m=l_{m+1}\setminus l_m$ for each $m$, so that $\sequence{m}{J_m}$ is a
+partition of $\Bbb N$.   Let $\ofamily{\xi}{\omega_1}{a_{\xi}}$ be a family
+of infinite subsets of $\Bbb N$, all containing $0$,
+such that $a_{\xi}\cap a_{\eta}$ is finite
+for all distinct $\xi$, $\eta<\omega_1$ (5A1Fa), and set
+$M_{\xi}=\bigcup_{m\in a_{\xi}}J_m$ for each $\xi$;  then
+$M_{\xi}\cap M_{\eta}$ is finite for all distinct $\xi$, $\eta<\omega_1$.
+It follows that each member of $\frak F$ can contain at most one $M_{\xi}$,
+and there is a $\xi<\omega_1$ such that $M_{\xi}$ does not belong to any
+member of $\frak F$, that is, $M=\Bbb N\setminus M_{\xi}$ belongs to
+$\bigcap\frak F$.
+
+\medskip
+
+\quad{\bf (ii)} Define $f:\Bbb N\to\Bbb N$ by setting
+$f(n)=\max\{m:m\in a_{\xi}$, $l_m\le n\}$ for $n\in\Bbb N$.   For each
+$\Cal F\in\frak F$, $f[[\Cal F]]$ is isomorphic to $\Cal F$, by (b).
+It follows that if $\Cal F$, $\Cal F'$ are distinct
+members of $\frak F$, $f[[\Cal F]]\ne f[[\Cal F']]$.   Because $\frak F$ is
+countable,
+there is a disjoint family $\family{\Cal F}{\frak F}{K_{\Cal F}}$ of sets
+such that $K_{\Cal F}\in f[[\Cal F]]$ for every $\Cal F\in\frak F$
+((e) above).   Set $L_{\Cal F}=f^{-1}[K_{\Cal F}]\in\Cal F$ for each
+$\Cal F\in\frak F$.
+
+\medskip
+
+\quad{\bf (iii)} For $i<j$ in $\Bbb N$, set $h(\{i,j\})=1$ if
+$j<g(i)$, $0$ otherwise.
+$\Cal F\in\frak F$, there is an $L'_{\Cal F}\in\Cal F$ such that
+$L'_{\Cal F}\subseteq L_{\Cal F}$ and $h$ is constant on
+$[L'_{\Cal F}]^2$.   As $L'_{\Cal F}$ is infinite, the constant value
+cannot be $1$ and must be $0$, that is, $g(i)\le j$ whenever $i$,
+$j\in L'_{\Cal F}$ and $i<j$.
+
+\medskip
+
+\quad{\bf (iv)} Consider
+$A=\bigcup_{\Cal F\in\frak F}L'_{\Cal F}\cap M$.   Then
+$A\in\bigcap\frak F$.   Suppose that $i$, $j\in A$ and $i<j$;
+then $g(i)\le j$.   \Prf\ Let
+$\Cal F$, $\Cal F'\in\frak F$ be such that
+$i\in L'_{\Cal F}$ and $j\in L'_{\Cal F'}$.
+
+\medskip
+
+\qquad{\bf case 1} If $\Cal F=\Cal F'$, then both $i$ and $j$ belong to
+$L'_{\Cal F}$, so $g(i)\le j$ by (iii).
+
+\medskip
+
+\qquad{\bf case 2} If $\Cal F\ne\Cal F'$, then $i\in L_{\Cal F}$ and
+$j\in L_{\Cal F'}$, so $f(i)\in K_{\Cal F}$ and $f(j)\in K_{\Cal F'}$ and
+$f(i)\ne f(j)$.   Let $m$, $n\in\Bbb N$ be such that $i\in J_m$ and
+$j\in J_n$;  since $j\notin M_{\xi}$,
+$n\notin a_{\xi}$ and $f(j)<n$.   As $K_{\Cal F}$ and
+$K_{\Cal F'}$ are disjoint, $f(i)<f(j)$.   It follows that $m<f(j)<n$, so
+
+\Centerline{$g(i)\le g(l_{m+1})\le g(l_{f(j)})\le l_n\le j$}
+
+\noindent and $g(i)\le j$ in this case also.\ \Qed
+
+By the choice of $g$,
+this means that if $\Cal F\in\frak h(i)$ there must be a
+$k\in A_{\Cal F}$ such that $i<k<j$, as required.
+
+\medskip
+
+{\bf (g)(i)} Suppose that $\Cal E\subseteq\Cal P\Bbb N$ is a filter base,
+containing $\Bbb N\setminus n$ for every $n\in\Bbb N$, and of size less
+than $\frakmctbl$.   Let $f:[\Bbb N]^2\to\{0,1\}$ be a function.
+Then there is an $F\subseteq\Bbb N$ such that $f$ is constant on $[F]^2$
+and $F$ meets every member of $\Cal E$.   \Prf\ Set
+
+\Centerline{$\Cal E^+=\{J:J\subseteq\Bbb N$, $J\cap E\ne\emptyset$ for
+every $E\in\Cal E\}$,}
+
+\Centerline{$S_n
+=\{n\}\cup\{i:i\in\Bbb N\setminus\{n\}$, $f(\{i,n\})=1\}$,}
+
+\Centerline{$S'_n
+=\{n\}\cup\{i:i\in\Bbb N\setminus\{n\}$, $f(\{i,n\})=0\}$}
+
+\noindent for $n\in\Bbb N$.
+
+\medskip
+
+\qquad{\bf case 1} Suppose that $\{n:n\in J$, $J\cap S_n\in\Cal E^+\}$
+belongs to $\Cal E^+$ for every $J\in\Cal E^+$.   Set
+
+\Centerline{$\Cal I
+=\{I:I\in[\Bbb N]^{<\omega}$, $f(K)=1$ for every $K\in[I]^2$,
+$\Bbb N\cap\bigcap_{i\in I}S_i\in\Cal E^+\}$.}
+
+\noindent
+If $I\in\Cal I$, $J=\Bbb N\cap\bigcap_{i\in I}S_i$ and $E\in\Cal E$, then
+$J\in\Cal E^+$;  because $\Cal E$ is a filter base, $J\cap E\in\Cal E^+$;
+by hypothesis, $\{n:n\in J\cap E$, $J\cap E\cap S_n\in\Cal E^+\}$ belongs
+to $\Cal E^+$ and is not empty.   There is therefore some $n\in J\cap E$
+such that $J\cap S_n\in\Cal E^+$, in which case
+$I\cup\{n\}\in\Cal I$.
+
+In particular, there is some $k\in\Bbb N$ such that $\{k\}\in\Cal I$.   Set
+
+\Centerline{$C
+=\{\alpha:\alpha\in\NN$, $\{\alpha(i):i<m\}\in\Cal I$ for every
+$m\in\Bbb N\}$.}
+
+\noindent Then $C$ is compact, and it is non-empty because the constant
+function with value $k$ belongs to $C$.   Moreover, if $\alpha\in C$ and
+$m\in\Bbb N$ and $E\in\Cal E$, there is an $n\in E$ such that
+$\{\alpha(i):i<m\}\cup\{n\}\in\Cal I$, so there is a $\beta\in C$ such that
+$\beta(i)=\alpha(i)$ for $i<m$ and $\beta(m)=n$.   Thus
+$\{\beta:\beta\in C$, $E\cap\beta[\Bbb N]\ne\emptyset\}$ is a dense open
+subset of $C$.   Writing $\Cal M(C)$ for the ideal of meager subsets of
+$C$, $\cov\Cal M(C)$ is either $\infty$ (if $C$ has an isolated point)
+or $\cov\Cal M(\Bbb R)=\frakmctbl$, by 522Wb and 522Sb;
+in either case, it is greater than
+$\#(\Cal E)$.   There is therefore some $\alpha\in C$ such that
+$F=\alpha[\Bbb N]$ meets every member of $\Cal E$;  in this case,
+$f$ is equal to $1$ everywhere in $[F]^2$, so we have an appropriate $F$.
+
+\medskip
+
+\qquad{\bf case 2} Otherwise, there is a $K\in\Cal E^+$ such that
+$\{n:n\in K$, $K\cap S_n\in\Cal E^+\}$ does not belong to $\Cal E^+$.
+Let $E_0\in\Cal E$ be disjoint from
+$\{n:n\in K$, $K\cap S_n\in\Cal E^+\}$.
+Set $\Cal G=\Cal E\cup\{K\cap E:E\in\Cal E\}$,
+so that $\Cal G$ is a filter base and $\#(\Cal G)<\frakmctbl$.
+If $n\in E_0$ then there is an
+$E'_n\in\Cal E$ disjoint from $K\cap S_n$.
+So if $J\in\Cal G^+$,
+$J\cap S'_n\supseteq(J\cap K\cap E'_n)\setminus\{n\}$ belongs to
+$\Cal G^+$ for every $n\in E_0$;  accordingly
+$\{n:n\in J$, $J\cap S'_n\in\Cal G^+\}\supseteq J\cap E_0$
+belongs to $\Cal G^+$.
+
+We can therefore apply the argument of case 1 to $\Cal G$ and
+the function $1-f$ to see that there is an $F\subseteq\Bbb N$, meeting
+every member of $\Cal G\supseteq\Cal E$, such that $f=0$ on
+$[F]^2$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)}
+Enumerate the set of functions from $[\Bbb N]^2$ to $\{0,1\}$ as
+$\ofamily{\xi}{\frak c}{f_{\xi}}$.   Choose a non-decreasing family
+$\langle\Cal E_{\xi}\rangle_{\xi\le\frak c}$ inductively, as follows;
+the inductive
+hypothesis will be that $\Cal E_{\xi}\subseteq\Cal P\Bbb N$ is a
+filter base with cardinal at most $\max(\omega,\#(\xi))$.
+Start with $\Cal E_0=\{\Bbb N\setminus n:n\in\Bbb N\}$.
+Given $\Cal E_{\xi}$, where $\xi<\frak c=\frakmctbl$,
+use (i) to find a set $F_{\xi}$, meeting every member of $\Cal E_{\xi}$,
+such that $f_{\xi}$ is constant on $[F_{\xi}]^2$;  take
+$\Cal E_{\xi+1}=\Cal E_{\xi}\cup\{E\cap F_{\xi}:E\in\Cal E_{\xi}\}$.
+Given $\ofamily{\eta}{\xi}{\Cal E_{\eta}}$, where $\xi\le\frak c$ is a
+non-zero limit ordinal, set $\Cal E_{\xi}=\bigcup_{\eta<\xi}\Cal E_{\eta}$.
+
+At the end of the induction, let $\Cal F$ be the filter generated by
+$\Cal E_{\frakc}$;  then $\Cal F$ is a Ramsey filter.
+}%end of proof of 538F
+
+\vleader{60pt}{538G}{Measure-centering filters:  Theorem}
+Let $\Cal F$ be a free filter on $\Bbb N$.   Write
+$\nu_{\omega}$ for the usual measure on $\{0,1\}^{\Bbb N}$,
+$\Tau_{\omega}$ for its domain and $(\frak B_{\omega},\bar\nu_{\omega})$
+for its measure algebra.   Then the following are equiveridical:
+
+(i) $\Cal F$ is measure-centering;
+
+(ii) whenever $\sequencen{a_n}$ is a sequence in $\frak B_{\omega}$ such
+that $\inf_{n\in\Bbb N}\bar\nu_{\omega}a_n>0$, there is an $A\in\Cal F$
+such that $\{a_n:n\in A\}$ is centered;
+
+(iii) whenever $\sequencen{F_n}$ is a sequence in $\Tau_{\omega}$ such that
+$\inf_{n\in\Bbb N}\nu_{\omega}F_n>0$, there is an $A\in\Cal F$ such that
+$\bigcap_{n\in A}F_n\ne\emptyset$;
+
+\allowmorestretch{468}{
+(iv) whenever $(X,\Sigma,\mu)$ is a perfect totally finite measure space
+and $\sequencen{F_n}$ is a sequence in $\Sigma$,
+$\mu^*(\bigcup_{A\in\Cal F}\bigcap_{n\in A}F_n)
+\ge\liminf_{n\to\Cal F}\mu F_n$;
+}
+
+(v) whenever $\mu$ is a Radon probability measure on $\Cal P\Bbb N$, then
+$\mu^*\Cal F\ge\liminf_{n\to\Cal F}\mu E_n$, where
+$E_n=\{a:n\in a\subseteq\Bbb N\}$ for each $n$.
+
+\proof{{\bf (i)$\Rightarrow$(ii)} is trivial.
+
+\medskip
+
+\allowmorestretch{468}{
+{\bf not-(iv)$\Rightarrow$not-(ii)} Suppose there are
+a perfect totally finite measure space $(X,\Sigma,\mu)$ and a sequence
+$\sequencen{F_n}$ in $\Sigma$ such that
+$\liminf_{n\in\Bbb N}\mu F_n
+>\mu^*(\bigcup_{A\in\Cal F}\bigcap_{n\in A}F_n)$.
+Let $F$ be a measurable envelope of
+$\bigcup_{A\in\Cal F}\bigcap_{n\in A}F_n$.
+Let $\Tau$ be the $\sigma$-subalgebra of
+$\Sigma$ generated by $\{F\}\cup\{F_n:n\in\Bbb N\}$;
+then $\mu\restrp\Tau$ is a compact measure (451F).   Let
+$\nu$ be its normalization $\Bover1{\mu X}\mu\restrp\Tau$;
+then $\nu$ is a compact probability measure.   We see that
+$\liminf_{n\to\Cal F}\nu F_n>\nu F$;  take $\gamma$ such that
+$\nu F<\gamma<\liminf_{n\to\Cal F}\nu F_n$, and set
+$C=\{n:\nu F_n>\gamma\}$, so that $C\in\Cal F$.
+}%end of allowmorestretch
+
+Let $\Cal K$ be a compact class such that
+$\nu$ is inner regular with respect to $\Cal K$.   For $n\in C$, let
+$K_n\in\Cal K\cap\Tau$
+be such that $K_n\subseteq F_n\setminus F$ and
+$\nu K_n\ge\gamma-\nu F$;  for $n\in\Bbb N\setminus C$ set $K_n=X$.
+
+The measure algebra $(\frak B,\bar\nu)$ of $\nu$ is a probability algebra
+with countable Maharam type, so there is a measure-preserving Boolean
+homomorphism $\pi:\frak B\to\frak B_{\omega}$ (332P or 333D).   Set
+$a_n=\pi K_n^{\ssbullet}$ for each $n$.   Then
+
+\Centerline{$\bar\nu_{\omega}a_n=\nu K_n\ge\gamma-\nu F>0$}
+
+\noindent for every $n$.   On the other hand, if $A\in\Cal F$, then
+$A\cap C\in\Cal F$ so
+$\bigcap_{n\in A\cap C}K_n\subseteq\bigcap_{n\in A\cap C}F_n\setminus F$ is
+empty.   As $K_n$ belongs to the compact class $\Cal K$ for every
+$n\in A\cap C$, there must be a finite set $I\subseteq A\cap C$ such that
+$\bigcap_{n\in I}K_n=\emptyset$, in which case
+$\inf_{n\in I}a_n=\pi(\bigcap_{n\in I}K_n)^{\ssbullet}=0$.   This shows
+that $\{a_n:n\in A\}$ is not centered.   So $\sequencen{a_n}$ witnesses
+that (ii) is false.
+
+\medskip
+
+{\bf (iv)$\Rightarrow$(i)} Suppose that (iv) is true.   Take a Boolean
+algebra $\frak A$, an additive functional $\nu:\frak A\to\coint{0,\infty}$
+and a sequence $\sequencen{a_n}$ in $\frak A$ such that
+$\inf_{n\in\Bbb N}\nu a_n>0$.   By 311E and 311H, we can suppose that
+$\frak A$ is the algebra of open-and-closed subsets of a compact
+zero-dimensional space $Z$.   In this case, there is a Radon measure
+$\mu$ on $Z$ extending $\nu$ (416Qa).   Of course $\mu$ is perfect
+(416Wa), and $\liminf_{n\to\Cal F}\mu a_n\ge\inf_{n\in\Bbb N}\nu a_n>0$,
+so (iv) tells us that there is an $A\in\Cal F$ such that
+$\bigcap_{n\in A}a_n\ne\emptyset$, in which case $\{a_n:n\in\Bbb N\}$ is
+centered in $\frak A$.   As
+$\frak A$, $\nu$ and $\sequencen{a_n}$ are arbitrary, $\Cal F$ is
+measure-centering.
+
+\medskip
+
+{\bf (iv)$\Rightarrow$(v)} The point is simply that $\mu$ is perfect
+(416Wa again) and that
+
+\Centerline{$\bigcup_{A\in\Cal F}\bigcap_{n\in A}E_n
+=\bigcup_{A\in\Cal F}\{a:A\subseteq a\subseteq\Bbb N\}
+=\Cal F$.}
+
+\medskip
+
+{\bf (v)$\Rightarrow$(iii)} Suppose that (v) is true, and that
+$\sequencen{F_n}$ is a sequence in $\Tau_{\omega}$ such that
+$\inf_{n\in\Bbb N}\nu_{\omega}F_n>0$.   Define
+$\phi:\{0,1\}^{\Bbb N}\to\Cal P\Bbb N$ by setting
+$\phi(x)=\{n:x\in F_n\}$ for each $n$.   Then $\phi$ is almost continuous
+(418J), so the image measure $\mu=\nu_{\omega}\phi^{-1}$ is a Radon
+probability measure on $\Cal P\Bbb N$ (418I).
+Defining $E_n$ as in (v), we have
+
+\Centerline{$\mu E_n=\nu_{\omega}\phi^{-1}[E_n]=\nu_{\omega}F_n$}
+
+\noindent for every $n\in\Bbb N$, so
+
+\Centerline{$0<\inf_{n\in\Bbb N}\bar\nu_{\omega}a_n
+\le\liminf_{n\to\Cal F}\mu E_n\le\mu^*\Cal F
+=\nu_{\omega}^*\phi^{-1}[\Cal F]$}
+
+\noindent (451Pc).   In particular, there must be an
+$x\in\phi^{-1}[\Cal F]$, so that $A=\{n:x\in F_n\}$ belongs to $\Cal F$,
+and $\bigcap_{n\in A}F_n$ is non-empty.
+
+\medskip
+
+{\bf (iii)$\Rightarrow$(ii)} Assume (iii).   Let $\sequencen{a_n}$ be a
+sequence in $\frak B_{\omega}$ such that
+$\inf_{n\in\Bbb N}\bar\nu_{\omega}a_n>0$.   Let
+$\theta:\frak B_{\omega}\to\Tau_{\omega}$ be a lifting (341K), and set
+$F_n=\theta a_n$ for each $n$.   Then $\nu_{\omega}F_n=\bar\nu_{\omega}a_n$
+for every $n$, so (iii) tells us that there is an $A\in\Cal F$ such that
+$\bigcap_{n\in A}F_n\ne\emptyset$.   In this case,
+$\theta(\inf_{n\in I}a_n)=\bigcap_{n\in I}F_n\ne\emptyset$
+for every non-empty finite $I\subseteq A$, so $\{a_n:n\in A\}$ is centered.
+}%end of proof of 538G
+
+\leader{538H}{Proposition}
+(a) Any measure-centering filter on $\Bbb N$ is an ultrafilter.
+
+(b) If $\Cal F$ is a measure-centering
+ultrafilter on $\Bbb N$ and $\Cal G$ is a filter on
+$\Bbb N$ such that $\Cal G\leRK\Cal F$, then $\Cal G$ is measure-centering.
+
+(c) Every Ramsey ultrafilter on $\Bbb N$ is measure-centering.
+
+(d)\cmmnt{ ({\smc Shelah 98b})} Every
+measure-centering ultrafilter on $\Bbb N$ is a nowhere dense ultrafilter.
+
+(e)\cmmnt{ ({\smc Benedikt 99})} If $\cov\Cal N=\frak c$, where $\Cal N$
+is the Lebesgue null ideal, then there is a measure-centering ultrafilter
+on $\Bbb N$.
+%would  \cov\Cal N=\cf\Cal N  be enough?
+
+\proof{{\bf (a)} Let $a$, $b$ be disjoint non-zero elements of
+$\frak B_{\omega}$, where $(\frak B_{\omega},\bar\nu_{\omega})$ is the
+measure algebra of the usual measure on $\{0,1\}^{\Bbb N}$, as in 538G.
+Given $I\subseteq\Bbb N$, set $a_n=a$ if $n\in I$, $b$ if
+$n\in\Bbb N\setminus I$.   Then $\inf_{n\in\Bbb N}\bar\nu_{\omega}a_n>0$,
+so there is a $J\in\Cal F$ such that $\{a_n:n\in J\}$ is
+centered, in which case either $J\subseteq I$ or $J\cap I=\emptyset$;  so
+that one of $I$, $\Bbb N\setminus I$ must belong to $\Cal F$.
+
+\medskip
+
+{\bf (b)} Let $f:\Bbb N\to\Bbb N$ be such that $f[[\Cal F]]=\Cal G$.
+Let $(\frak A,\bar\mu)$ be a totally finite measure algebra and
+$\sequencen{a_n}$ a sequence in
+$\frak A$ with $\inf_{n\in\Bbb N}\bar\mu a_n>0$.   Then
+$\sequencen{a_{f(n)}}$ has the same property, so there is an
+$A\in\Cal F$ such that $\{a_{f(n)}:n\in A\}$ is centered.   Now
+$f[A]\in\Cal G$ and $\{a_m:m\in f[A]\}$ is centered.
+
+\medskip
+
+{\bf (c)} Let $\Cal F$ be a Ramsey ultrafilter
+and $\sequencen{b_n}$ a sequence in $\frak B_{\omega}$
+such that $\gamma=\inf_{n\in\Bbb N}\bar\nu_{\omega}b_n$ is greater than
+$0$.
+Set $b=\inf_{A\in\Cal F}\sup_{n\in A}b_n$;  then
+$\bar\nu_{\omega}b\ge\gamma$.
+Set $\Cal S=\{I:I\in[\Bbb N]^{<\omega}$, $b\Bcap\inf_{n\in I}b_n\ne 0\}$.
+Then $\emptyset\in\Cal S$.   If $I\in\Cal S$, set
+$c=b\Bcap\inf_{n\in I}b_n$ and $C=\{n:c\Bcap b_n=0\}$.   Then
+$\sup_{n\in C}b_n$ does not meet $c$ so does not include $b$, and
+$C\notin\Cal F$.   Accordingly
+
+\Centerline{$\{n:I\cup\{n\}\in\Cal S\}=\Bbb N\setminus C\in\Cal F$.}
+
+\noindent By 538Fd, there is an $A\in\Cal F$ such that
+$[A]^{<\omega}\subseteq\Cal S$, in which case $\{b_n:n\in A\}$ is centered.
+As $\sequencen{b_n}$ is arbitrary, $\Cal F$ is measure-centering.
+
+\medskip
+
+{\bf (d)} Let $\Cal F$ be a measure-centering ultrafilter, and
+$\sequencen{t_n}$ a sequence in $\Bbb R$.   Let $F\subseteq\coint{0,1}$ be
+a nowhere dense set with non-zero Lebesgue measure, and set
+$H=\bigcup_{k\in\Bbb Z}F+k$, so that $H$ is nowhere dense in $\Bbb R$;  let
+$\mu$ be Lebesgue measure on $[0,1]$.
+For $n\in\Bbb N$ set
+
+\Centerline{$E_n=\{x:x\in[0,1]$, $x+t_n\in H\}
+=[0,1]\cap\bigcup_{k\in\Bbb Z}F-t_n+k$,}
+
+\noindent so that $\mu E_n=\mu F>0$.   By 538G(iv), there is an
+$A\in\Cal F$ such that $\bigcap_{n\in A}E_n$ is non-empty;  take
+$x\in\bigcap_{n\in A}E_n$, so that $t_n\in H-x$ for every $n\in A$, and
+$\{t_n:n\in A\}$ is nowhere dense.
+As $\sequencen{t_n}$ is arbitrary, $\Cal F$ is a nowhere dense filter.
+
+\medskip
+
+{\bf (e)(i)} Let $\sequencen{a_n}$ be a sequence in
+$\frak B_{\omega}$ such that $\inf_{n\in\Bbb N}\bar\nu_{\omega}a_n>0$, and
+$\Cal C\subseteq\Cal P\Bbb N$ a filter base such that
+$\#(\Cal C)<\cov\Cal N$.   Then there is an $A\subseteq\Bbb N$ such that
+$A$ meets every member of $C$ and
+$\{a_n:n\in A\}$ is centered.   \Prf\ Set
+$\epsilon=\inf_{n\in\Bbb N}\bar\nu_{\omega}a_n$.
+For $C\in\Cal C$ set $b_C=\sup_{n\in C}a_n$;  because $C\ne\emptyset$,
+$\bar\nu_{\omega}b_C\ge\epsilon$.
+Set $b=\inf_{C\in\Cal C}b_C$;  because $\Cal C$ is downwards-directed,
+$\bar\nu_{\omega}b\ge\epsilon$ (321F) and $b\ne 0$.
+
+Let $\theta:\frak B_{\omega}\to\Tau_{\omega}$ be a lifting (341K).   For
+$C\in\Cal C$, set $F_C=\bigcup_{n\in C}\theta a_n$;  then
+
+\Centerline{$F_C^{\ssbullet}=b_C\Bsupseteq b$,}
+
+\noindent so $\theta b\setminus F_C$ is negligible.   Because
+$b\ne 0$, $\theta b$ is not negligible;  because
+$\#(\Cal C)<\cov\Cal N$, $\theta b\cap\bigcap_{C\in\Cal C}F_C$ is non-empty
+(apply 522Wa to the subspace measure on $\theta b$).   Take any $x$ in the
+intersection, and set $A=\{n:x\in\theta a_n\}$.   For every $C\in\Cal C$,
+there is an $n\in C$ such that $x\in\theta a_n$, so $A\cap C\ne\emptyset$.
+If $I\subseteq A$ is finite and not empty, then
+$\theta(\inf_{n\in I}a_n)=\bigcap_{n\in I}\theta a_n$ contains $x$, so
+$\inf_{n\in I}a_n\ne 0$;  thus $\{a_n:n\in A\}$ is centered.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Since $\#(\frak B_{\omega})=\frak c$ (524Ma), we can
+enumerate as $\ofamily{\xi}{\frak c}{\sequencen{a_{\xi n}}}$ the family of
+all sequences $\sequencen{a_n}$ in $\frak B_{\omega}$ such that
+$\inf_{n\in\Bbb N}\bar\nu_{\omega}a_n>0$.   Choose
+$\ofamily{\xi}{\frak c}{\Cal C_{\xi}}$ inductively, as follows.
+The inductive hypothesis will be that $\Cal C_{\xi}\subseteq\Cal P\Bbb N$
+is a filter base and $\#(\Cal C_{\xi})\le\max(\omega,\#(\xi))$.
+Start with $\Cal C_0=\{\Bbb N\setminus n:n\in\Bbb N\}$.
+Given $\Cal C_{\xi}$, where $\xi<\frak c$, such that
+
+\Centerline{$\#(\Cal C_{\xi})\le\max(\omega,\#(\xi))<\frak c=\cov\Cal N$,}
+
+\noindent (i) tells us that there is an $A_{\xi}\subseteq\Bbb N$, meeting
+every member of $\Cal C_{\xi}$, such
+that $\{a_{\xi n}:n\in A_{\xi}\}$ is centered;  set
+
+\Centerline{$\Cal C_{\xi+1}
+=\Cal C_{\xi}\cup\{C\cap A_{\xi}:C\in\Cal C_{\xi}\}$.}
+
+\noindent For a non-zero limit ordinal $\xi\le\frak c$, set
+$\Cal C_{\xi}=\bigcup_{\eta<\xi}\Cal C_{\eta}$.
+Let $\Cal F$ be
+the filter generated by $\Cal C_{\frak c}$;  then $\Cal F$ is a free filter
+satisfying 538G(ii), so is measure-centering.
+}%end of proof of 538H
+
+\leader{538I}{Theorem} Suppose that $\Cal F$ is a measure-centering
+ultrafilter on $\Bbb N$, and that $(X,\Sigma,\mu)$ is a perfect probability
+space.   Let $\Cal A$ be the family of all sets of the form
+$\lim_{n\to\Cal F}E_n$ where $\sequencen{E_n}$ is a sequence in $\Sigma$.
+Then there is a unique complete measure $\lambda$ on $X$ such that
+$\lambda$ is inner regular with respect to $\Cal A$ and
+$\lambda(\lim_{n\to\Cal F}E_n)=\lim_{n\to\Cal F}\mu E_n$
+for every sequence $\sequencen{E_n}$ in $\Sigma$;  and $\lambda$ extends
+$\mu$.
+
+\medskip
+
+\noindent{\bf Remark} By `$\lim_{n\to\Cal F}E_n$' I mean the limit in the
+compact Hausdorff space $\Cal PX$, that is,
+
+\Centerline{$\{x:\{n:x\in E_n\}\in\Cal F\}
+=\bigcup_{A\in\Cal F}\bigcap_{n\in A}E_n
+=\bigcap_{A\in\Cal F}\bigcup_{n\in A}E_n$.}
+
+\proof{{\bf (a)}
+$\Cal A$ is an algebra of subsets of $X$.   \Prf\ If $\sequencen{E_n}$,
+$\sequencen{F_n}$ are sequences in $\Sigma$, then
+
+\Centerline{$\lim_{n\to\Cal F}(E_n\cap F_n)
+=(\lim_{n\to\Cal F}E_n)\cap(\lim_{n\to\Cal F}F_n)$,}
+
+\Centerline{$\lim_{n\to\Cal F}(E_n\symmdiff F_n)
+=(\lim_{n\to\Cal F}E_n)\symmdiff(\lim_{n\to\Cal F}F_n)$}
+
+\noindent because $\Cal F$ is an ultrafilter.\ \QeD\   Of course
+$\Sigma\subseteq\Cal A$, because if $E_n=E$ for every $n$ then
+$\lim_{n\to\Cal F}E_n=E$.
+
+\wheader{538I}{6}{2}{2}{72pt}
+
+{\bf (b)} If $\sequencen{E_n}$ and $\sequencen{F_n}$ are sequences in
+$\Sigma$ and $\lim_{n\to\Cal F}E_n=\lim_{n\to\Cal F}F_n$, then
+$\lim_{n\to\Cal F}\mu E_n=\lim_{n\to\Cal F}\mu F_n$.   \Prf\
+
+$$\eqalignno{|\lim_{n\to\Cal F}\mu E_n-\lim_{n\to\Cal F}\mu F_n|
+&=\lim_{n\to\Cal F}|\mu E_n-\mu F_n|
+\le\lim_{n\to\Cal F}\mu(E_n\symmdiff F_n)
+\le\mu^*(\lim_{n\to\Cal F}E_n\symmdiff F_n)\cr
+\displaycause{538G(iv)}
+&=\mu^*(\lim_{n\to\Cal F}E_n\symmdiff\lim_{n\to\Cal F}F_n)
+=\mu^*\emptyset
+=0.  \text{ \Qed}\cr}$$
+
+\medskip
+
+{\bf (c)} We therefore have a functional $\phi:\Cal A\to[0,1]$ defined by
+setting $\phi(\lim_{n\to\Cal F}E_n)=\lim_{n\to\Cal F}\mu E_n$ for every
+sequence $\sequencen{E_n}$ in $\Sigma$.   Clearly $\phi$ extends $\mu$.
+Also $\phi$ is additive.   \Prf\ If $\sequencen{E_n}$, $\sequencen{F_n}$
+are sequences in $\Sigma$ such that $\lim_{n\to\Cal F}E_n$ and
+$\lim_{n\to\Cal F}F_n$ are disjoint, then
+
+$$\eqalign{\phi(\lim_{n\to\Cal F}E_n\cup\lim_{n\to\Cal F}F_n)
+&=\phi(\lim_{n\to\Cal F}E_n\cup F_n)
+=\lim_{n\to\Cal F}\mu(E_n\cup F_n)\cr
+&=\lim_{n\to\Cal F}\mu E_n+\mu F_n-\mu(E_n\cap F_n)\cr
+&=\lim_{n\to\Cal F}\mu E_n
+  +\lim_{n\to\Cal F}\mu F_n
+  -\lim_{n\to\Cal F}\mu(E_n\cap F_n)\cr
+&=\phi(\lim_{n\to\Cal F}E_n)
+  +\phi(\lim_{n\to\Cal F}F_n)
+  -\phi(\lim_{n\to\Cal F}E_n\cap F_n)\cr
+&=\phi(\lim_{n\to\Cal F}E_n)
+  +\phi(\lim_{n\to\Cal F}F_n).  \text{ \Qed}\cr}$$
+
+\medskip
+
+{\bf (d)} Next, if
+$\sequence{m}{A_m}$ is a non-increasing sequence in $\Cal A$, and
+$0\le\gamma<\inf_{m\in\Bbb N}\phi A_m$,
+there is an $A\in\Cal A$ such that
+$A\subseteq\bigcap_{m\in\Bbb N}A_m$ and $\phi A\ge\gamma$.
+\Prf\ We can suppose that $A_0=X$.   For each
+$m\in\Bbb N$, let $\sequencen{E_{mn}}$ be a sequence in $\Sigma$ such that
+$A_m=\lim_{n\to\Cal F}E_{mn}$, starting with $E_{0n}=X$ for every $n$.
+For $m\in\Bbb N$, set $E'_{mn}=\bigcap_{i\le m}E_{in}$ for
+$n\in\Bbb N$;  then
+
+\Centerline{$A_m=\bigcap_{i\le m}A_i=\lim_{n\to\Cal F}E'_{mn}$;}
+
+\noindent set $I_m=\{n:n\in\Bbb N$, $\mu E'_{mn}\ge\gamma\}$.  Since
+$\lim_{n\to\Cal F}\mu E'_{mn}=\phi A_m>\gamma$, $I_m\in\Cal F$.
+For $n\in\Bbb N$, set
+$F_n=\bigcap\{E'_{mn}:m\in\Bbb N$, $\mu E'_{mn}\ge\gamma\}$;
+set $A=\lim_{n\to\Cal F}F_n$.   Then $\mu F_n\ge\gamma$ for every $n$,
+so $\phi A\ge\gamma$.   Also, for $m\in\Bbb N$,
+$F_n\subseteq E'_{mn}$ whenever $n\in I_m$, so
+$A\subseteq\lim_{n\to\Cal F}E'_{mn}=A_m$.\ \Qed
+
+\medskip
+
+{\bf (e)} In particular, $\inf_{m\in\Bbb N}\phi A_m$ must be $0$ whenever
+$\sequence{m}{A_m}$ is a non-increasing sequence in $\Cal A$ with empty
+intersection.   By 413J, there is a complete measure $\lambda$ on $X$
+extending $\phi$ and inner regular with respect to $\Cal A_{\delta}$, the
+set of intersections of sequences in $\Cal A$.   But
+$\lambda C=\sup\{\lambda A:A\in\Cal A$, $A\subseteq C\}$ for every
+$C\in\Cal A_{\delta}$.   \Prf\ Suppose that $0\le\gamma<\lambda C$.
+There is a sequence $\sequence{m}{A_m}$ in
+$\Cal A$ with intersection $C$;  because $\Cal A$ is an algebra of sets, we
+can suppose that $\sequence{m}{A_m}$ is non-increasing.   Now
+
+\Centerline{$\gamma<\lambda C=\inf_{m\in\Bbb N}\lambda A_m
+=\inf_{m\in\Bbb N}\phi A_m$,}
+
+\noindent so (d) tells us that there is an $A\in\Cal A$ such that
+$A\subseteq C$ and $\gamma\le\phi A=\lambda A$.\ \QeD\  It follows at once
+that $\lambda$ is inner regular with respect to $\Cal A$.
+
+\medskip
+
+{\bf (f)} If $E\in\Sigma$ and we set $E_n=E$ for every $n\in\Bbb N$, then
+$E=\lim_{n\to\Cal F}E_n$ belongs to $\Cal A$ and
+
+\Centerline{$\lambda E=\phi E=\lim_{n\to\Cal F}\mu E_n=\mu E$.}
+
+\noindent So $\lambda$ extends $\mu$.   Finally, we see from 412L, as
+usual, that $\lambda$ is uniquely defined.
+}%end of proof of 538I
+
+\medskip
+
+\noindent{\bf Notation} In this context, I will call $\lambda$ the
+{\bf $\Cal F$-extension} of $\mu$.
+
+\leader{538J}{Proposition} Let $\Cal F$ be a measure-centering ultrafilter
+on $\Bbb N$ and $(X,\Sigma,\mu)$ a
+perfect probability space;  let $\lambda$ be the
+$\Cal F$-extension of $\mu$ as defined in 538I.
+
+(a) Let $(\frak A,\bar\mu)$ be the measure algebra of $\mu$,
+$(\frak B,\bar\lambda)$ the measure algebra of $\lambda$, and
+$(\frak C,\bar\nu)$ the probability algebra reduced power
+$(\frak A,\bar\mu)^{\Bbb N}|\Cal F$
+(328C).  Then we have a
+measure-preserving isomorphism $\pi:\frak B\to\frak C$ defined by saying
+that
+
+\Centerline{$\pi((\lim_{n\to\Cal F}E_n)^{\ssbullet})
+=\sequencen{E_n^{\ssbullet}}^{\ssbullet}$}
+
+\noindent for every sequence $\sequencen{E_n}$ in $\Sigma$.
+
+(b) Let $(X',\Sigma',\mu')$ be another
+perfect probability space, and $\phi:X\to X'$ an \imp\ function.
+Let $\lambda'$ be the $\Cal F$-extension of $\mu'$.
+Then $\phi$ is \imp\ for $\lambda$ and $\lambda'$.
+
+(c) Let $\Cal F'$ be a filter on $\Bbb N$ such that $\Cal F'\leRK\Cal F$,
+and $\lambda'$ the
+$\Cal F'$-extension of $\mu$.   Then $\lambda$ extends $\lambda'$.
+
+\proof{{\bf (a)(i)} I had better check first that the formula for $\pi$
+defines a function.   If $\sequencen{E_n}$, $\sequencen{F_n}$ are sequences
+in $\Sigma$ such that
+$(\lim_{n\to\Cal F}E_n)^{\ssbullet}=(\lim_{n\to\Cal F}F_n)^{\ssbullet}$ in
+$\frak B$, then
+
+$$\eqalign{0
+&=\lambda(\lim_{n\to\Cal F}E_n\symmdiff\lim_{n\to\Cal F}F_n)
+=\lim_{n\to\Cal F}\mu(E_n\symmdiff F_n)\cr
+&=\lim_{n\to\Cal F}\bar\mu(E^{\ssbullet}_n\Bsymmdiff F_n^{\ssbullet})
+=\bar\nu(\sequencen{E_n^{\ssbullet}}^{\ssbullet}
+  \Bsymmdiff\sequencen{F_n^{\ssbullet}}^{\ssbullet}),\cr}$$
+
+\noindent so $\sequencen{E_n^{\ssbullet}}^{\ssbullet}
+=\sequencen{F_n^{\ssbullet}}^{\ssbullet}$ in $\frak C$.
+
+\medskip
+
+\quad{\bf (ii)} Setting $\frak B_0=\{E^{\ssbullet}:E\in\Cal A\}$, where
+$\Cal A$ is as in 538I, it is now routine to check that
+$\pi:\frak B_0\to\frak C$ is a surjective
+measure-preserving Boolean homomorphism.   (Recall that $\frak C$ is, by
+definition, the quotient of $\frak A^{\Bbb N}$ by the ideal
+$\{\sequencen{a_n}:\lim_{n\to\Cal F}\bar\mu a_n=0\}$.)
+But of course this means that
+$\frak B_0$ is isomorphic to $\frak C$, therefore Dedekind complete.
+Since $\lambda$ is inner regular with respect to $\Cal A$ (538I),
+$\frak B_0$ is order-dense in $\frak B$, and must be the whole of
+$\frak B$.
+
+\wheader{538J}{6}{2}{2}{36pt}
+
+{\bf (b)} Setting
+
+\Centerline{$\Cal A
+=\{\lim_{n\to\Cal F}E_n:E_n\in\Sigma\Forall n\in\Bbb N\}$,
+\quad$\Cal A'
+=\{\lim_{n\to\Cal F}F_n:F_n\in\Sigma'\Forall n\in\Bbb N\}$}
+
+\noindent as in 538I, $\phi^{-1}[C]\in\Cal A$ and
+$\lambda\phi^{-1}[C]=\lambda'C$ for every $C\in\Cal A'$.   \Prf\ Let
+$\sequencen{F_n}$ be a sequence in $\Sigma'$ such that
+$C=\lim_{n\to\Cal F}F_n$;  then
+
+$$\eqalign{\lambda\phi^{-1}[C]
+&=\lambda\phi^{-1}[\lim_{n\to\Cal F}F_n]
+=\lambda(\lim_{n\to\Cal F}\phi^{-1}[F_n])\cr
+&=\lim_{n\to\Cal F}\mu\phi^{-1}[F_n]
+=\lim_{n\to\Cal F}\mu'F_n
+=\lambda'C.  \text{ \Qed}\cr}$$
+
+\noindent By 412K, $\phi$ is \imp\ for $\lambda$ and $\lambda'$.
+
+\medskip
+
+{\bf (c)} By 538Hb, $\Cal F'$ is measure-centering.
+Let $f:\Bbb N\to\Bbb N$ be such that $\Cal F'=f[[\Cal F]]$.
+Setting
+
+\Centerline{$\Cal A
+=\{\lim_{n\to\Cal F}E_n:E_n\in\Sigma\Forall n\in\Bbb N\}$,
+\quad$\Cal A'
+=\{\lim_{n\to\Cal F'}E_n:E_n\in\Sigma\Forall n\in\Bbb N\}$,}
+
+\noindent $\Cal A'\subseteq\Cal A$ and $\lambda A=\lambda'A$ for every
+$A\in\Cal A'$.   \Prf\ Let
+$\sequencen{E_n}$ be a sequence in $\Sigma$ such that
+$A=\lim_{n\to\Cal F'}E_n$;  then $A=\lim_{n\to\Cal F}E_{f(n)}$, so
+
+\Centerline{$\lambda A=\lim_{n\to\Cal F}\mu E_{f(n)}
+=\lim_{n\to\Cal F'}\mu E_n=\lambda'A$.  \Qed}
+
+\noindent By 412K again, the identity map from $X$ to itself is
+\imp\ for $\lambda$ and $\lambda'$, that is, $\lambda$ extends $\lambda'$.
+}%end of proof of 538J
+
+\leader{538K}{}\cmmnt{ Having identified the measure algebra of a
+measure-centering-ultrafilter extension $\lambda$
+as a probability algebra reduced
+product (538Ja), we are in a position to apply the results of \S377.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a perfect probability
+space, $\Cal F$ a measure-centering ultrafilter on $\Bbb N$ and $\lambda$
+the $\Cal F$-extension of $\mu$\cmmnt{ as constructed in 538I}.
+
+(a)(i) Let $\sequencen{f_n}$ be a sequence in $\eusm L^0(\mu)$ such that
+$\{f_n^{\ssbullet}:n\in\Bbb N\}$ is bounded in the linear topological space
+$L^0(\mu)$.   Then
+
+\qquad($\alpha$) $f(x)=\lim_{n\to\Cal F}f_n(x)$ is defined in $\Bbb R$
+for $\lambda$-almost every $x\in X$;
+
+\qquad($\beta$) $f\in\eusm L^0(\lambda)$.
+
+\quad(ii) For every $f\in\eusm L^0(\lambda)$ there is a sequence
+$\sequencen{f_n}$ in $\eusm L^0(\mu)$, bounded in the sense of (i), such
+that $f=\lim_{n\to\Cal F}f_n\,\,\lambda$-a.e.
+
+(b) Suppose that $1\le p\le\infty$, and
+$\sequencen{f_n}$ is a sequence in
+$\eusm L^p(\mu)$ such that $\sup_{n\in\Bbb N}\|f_n\|_p$ is finite.
+Set $f(x)=\lim_{n\to\Cal F}f_n(x)$ whenever this is defined in $\Bbb R$.
+
+\quad(i)($\alpha$) $f\in\eusm L^p(\lambda)$;
+
+\qquad($\beta$) $\|f\|_p\le\lim_{n\to\Cal F}\|f_n\|_p$.
+%Fatou's Lemma
+
+\quad(ii) Let $g$ be a conditional expectation of $f$ on $\Sigma$.
+
+\qquad($\alpha$) If $p=1$ and $\{f_n:n\in\Bbb N\}$ is uniformly integrable, then
+then $\|f\|_1=\lim_{n\to\Cal F}\|f_n\|_1$ and
+$g^{\ssbullet}=\lim_{n\to\Cal F}f_n^{\ssbullet}$ for the weak topology
+of $L^1(\mu)$.
+
+\qquad($\beta$) If $1<p<\infty$, then
+$g^{\ssbullet}=\lim_{n\to\Cal F}f_n^{\ssbullet}$ for the weak topology of
+$L^p(\mu)$.
+
+\woddheader{538K}{0}{0}{0}{36pt}
+
+(c) Suppose that $1\le p\le\infty$ and $f\in\eusm L^p(\lambda)$.
+
+\quad(i) There is a
+sequence $\sequencen{f_n}$ in $\eusm L^p(\mu)$ such that
+$f=\lim_{n\to\Cal F}f_n\,\,\lambda$-a.e.\
+and $\|f\|_p=\sup_{n\in\Bbb N}\|f_n\|_p$.
+
+\quad(ii) If $p=1$, we can arrange that $\sequencen{f_n}$ should
+be uniformly integrable.
+
+(d) Let $(X',\Sigma',\mu')$ be another perfect measure space, and
+$\lambda'$ the $\Cal F$-extension of $\mu'$.
+Let $S:L^1(\mu)\to L^1(\mu')$ be a bounded linear operator.
+
+\allowmorestretch{468}{
+\quad(i) There is a unique bounded linear operator
+$\hat S:L^1(\lambda)\to L^1(\lambda')$ such that
+$\hat Sf^{\ssbullet}=g^{\ssbullet}$
+whenever $\sequencen{f_n}$, $\sequencen{g_n}$ are uniformly integrable
+sequences in $\eusm L^1(\mu)$, $\eusm L^1(\nu)$ respectively,
+$f=\lim_{n\to\Cal F}f_n\,\,\lambda$-a.e.,
+$g=\lim_{n\to\Cal F}g_n\,\,\lambda'$-a.e.,
+and $g_n^{\ssbullet}=Sf_n^{\ssbullet}$ for every $n\in\Bbb N$.
+}
+
+\quad(ii) The map
+$S\mapsto\hat S:\eurm B(L^1(\mu);L^1(\mu'))
+\to\eurm B(L^1(\lambda);L^1(\lambda'))$
+is a norm-preserving Riesz homomorphism.
+
+\proof{ We shall find that most of the work for this result has been done
+in \S377.   The only new step is in (a)(i), but we shall have some checking
+to do.
+
+\medskip
+
+{\bf (a)(i)} Let $\sequencen{\tilde f_n}$ be a sequence of
+$\Sigma$-measurable functions from $X$ to $\Bbb R$ such that
+$\tilde f_n=f_n\,\,\mu$-a.e.\ for every $n\in\Bbb N$.
+
+\medskip
+
+\qquad\grheada\ Let $\epsilon>0$.   Applying 367Rd\Latereditions\ to
+$\{\tilde f_n^{\ssbullet}:n\in\Bbb N\}=\{f_n^{\ssbullet}:n\in\Bbb N\}$,
+there is a $\gamma>0$ such that
+$\mu E_n\le\epsilon$ for every
+$n\in\Bbb N$, where $E_n=\{x:|\tilde f_n(x)|\ge\gamma\}$.
+Set $E=\lim_{n\to\Cal F}E_n$,
+so that $\lambda E\le\epsilon$.   For $x\in X\setminus E$,
+$\{n:|\tilde f_n(x)|\le\gamma\}\in\Cal F$, so
+$\lim_{n\to\Cal F}\tilde f_n(x)$ is defined in $\Bbb R$.   As $\epsilon$ is
+arbitrary, $\lim_{n\to\Cal F}\tilde f_n(x)$ is defined in $\Bbb R$ for
+$\lambda$-almost every $x$.   Since
+
+\Centerline{$\{x:x\in\dom f_n$ and
+$f_n(x)=\tilde f_n(x)$ for every $n\in\Bbb N\}$}
+
+\noindent is $\mu$-conegligible, therefore $\lambda$-conegligible,
+$\lim_{n\to\Cal F}f_n$ is defined in $\Bbb R\,\,\lambda$-a.e.
+
+\medskip
+
+\qquad\grheadb\ For any $\alpha\in\Bbb R$,
+
+\Centerline{$\{x:\lim_{n\to\Cal F}\tilde f_n(x)>\alpha\}
+=\bigcup_{k\in\Bbb N}\lim_{n\to\Cal F}\{x:f_n(x)\ge\alpha+2^{-k}\}
+\in\dom\lambda$.}
+
+\noindent So $f\eae\lim_{n\to\Cal F}\tilde f_n$ belongs to
+$\eusm L^0(\lambda)$.
+
+\medskip
+
+\quad{\bf (ii)} At this point I seek to import the machinery of \S377.
+
+\medskip
+
+\qquad\grheada\
+Let $(\frak A,\bar\mu)$ and $(\frak B,\bar\lambda)$ be the measure algebras
+of $\mu$, $\lambda$ respectively;  recall that we can identify
+$L^0(\mu)$ and $L^0(\lambda)$ with $L^0(\frak A)$ and $L^0(\frak B)$
+(364Ic).   Write
+$(\frak C,\bar\nu)$ for the probability algebra reduced power
+$(\frak A,\bar\mu)^{\Bbb N}|\Cal F$;  let
+$\phi:\frak A^{\Bbb N}\to\frak C$ be the canonical surjection, and
+$\pi:\frak B\to\frak C$ the isomorphism of 538Ja;  set
+$\psi=\pi^{-1}\phi:\frak A^{\Bbb N}\to\frak B$.   Then
+$\bar\lambda\psi(\sequencen{a_n})=\lim_{n\to\Cal F}\bar\mu a_n$ for every
+sequence $\sequencen{a_n}$ in $\frak A$, and $\psi$ is surjective.
+
+\medskip
+
+\qquad\grheadb\
+Let $W_0\subseteq L^0(\frak A)^{\Bbb N}$ be the set of sequences bounded
+for the topology of convergence in measure, and
+$\eusm W_0\subseteq\eusm L^0(\mu)^{\Bbb N}$ the set of sequences
+$\sequencen{f_n}$ such that $\sequencen{f_n^{\ssbullet}}\in W_0$.
+Then we have a Riesz
+homomorphism $T:W^0\to L^0(\frak B)$ defined by saying that
+$T(\sequencen{f_n^{\ssbullet}})=(\lim_{n\to\Cal F}f_n)^{\ssbullet}$
+whenever $\sequencen{f_n}\in\eusm W_0$.   \Prf\ We know from (i) that
+$(\lim_{n\to\Cal F}f_n)^{\ssbullet}$ is defined in
+$L^0(\lambda)\cong L^0(\frak B)$ whenever $\sequencen{f_n}\in\eusm W_0$.
+(I am taking the domain of $\lim_{n\to\Cal F}f_n$ to be
+$\{x:\lim_{n\to\Cal F}f_n(x)$ is defined in $\Bbb R\}$.)   Since
+
+\Centerline{$\lim_{n\to\Cal F}f_n\eae\lim_{n\to\Cal F}g_n$}
+
+\noindent whenever $f_n\eae g_n$ for every $n$, $T$ is
+well-defined.   Since
+
+\Centerline{$\lim_{n\to\Cal F}f_n+g_n
+\eae\lim_{n\to\Cal F}f_n+\lim_{n\to\Cal F}g_n$,}
+
+\Centerline{$\lim_{n\to\Cal F}\alpha f_n
+\eae\alpha\lim_{n\to\Cal F}f_n$,
+\quad$\lim_{n\to\Cal F}|f_n|
+\eae|\lim_{n\to\Cal F}f_n|$}
+
+\noindent whenever $\sequencen{f_n}$, $\sequencen{g_n}\in\eusm W_0$ and
+$\alpha\in\Bbb R$, $T$ is a Riesz homomorphism.\ \Qed
+
+\medskip
+
+\qquad\grheadc\ If $\sequencen{a_n}$ is any sequence in $\frak A$,
+$T(\sequencen{\chi a_n})=\chi\psi(\sequencen{a_n})$.   \Prf\
+Express each $a_n$ as $E_n^{\ssbullet}$, where $E_n\in\Sigma$, and set
+$F=\lim_{n\to\Cal F}E_n$.   In the language of 538Ja,
+
+\Centerline{$\psi(\sequencen{a_n})
+=\pi^{-1}\phi(\sequencen{a_n})
+=\pi^{-1}(\sequencen{a_n}^{\ssbullet})
+=F^{\ssbullet}$,}
+
+\noindent so
+
+\Centerline{$T(\sequencen{\chi a_n})
+=(\lim_{n\to\Cal F}\chi E_n)^{\ssbullet}
+=(\chi F)^{\ssbullet}
+=\chi(F^{\ssbullet})
+=\chi\psi(\sequencen{a_n})$.  \Qed}
+
+\medskip
+
+\qquad\grheadd\ Recalling that $W_0$ is just the family of sequences
+$\sequencen{u_n}$ in $L^0$ such that
+$\inf_{k\in\Bbb N}\sup_{n\in\Bbb N}\bar\mu\Bvalue{|u_n|>k}=0$
+(367Rd again),
+($\gamma$) means that we can identify $T:W_0\to L^0(\frak B)$
+with the Riesz homomorphism described in 377B.   By 377D(d-i),
+$T[W_0]=L^0(\frak B)$, which is what we need to prove the immediate result
+here.
+
+\medskip
+
+{\bf (b)(i)} As in part (a) of the proof of
+377C, we see that a $\|\,\|_p$-bounded
+sequence in $\eusm L^p(\mu)$ will belong to $\eusm W_0$.   So we can use
+377Db.
+
+\medskip
+
+\quad{\bf (ii)} Use 377Ec.
+
+\medskip
+
+{\bf (c)} Use 377Dd.
+
+\medskip
+
+{\bf (d)} Use 377F.
+}%end of proof of 538K
+
+\leader{538L}{Theorem} Suppose that $\zeta$ is a non-zero
+countable ordinal and
+$\langle\Cal F_{\xi}\rangle_{1\le\xi\le\zeta}$ is a family of Ramsey
+ultrafilters on $\Bbb N$, no two isomorphic.   Let
+$\langle\Cal G_{\xi}\rangle_{\xi\le\zeta}$ be the corresponding iterated
+product system, as described in 538E.   Then
+$\Cal G_{\zeta}$ is a measure-centering ultrafilter.
+
+\proof{{\bf (a)}
+Define $\langle(\frak A_{\xi},\bar\mu_{\xi})\rangle_{\xi\le\zeta}$
+inductively, as follows.
+$(\frak A_0,\bar\mu_0)=(\frak B_{\omega},\bar\nu_{\omega})$ is to be
+the measure
+algebra of the usual measure on $\{0,1\}^{\Bbb N}$.   Given
+$\ofamily{\eta}{\xi}{(\frak A_{\eta},\bar\mu_{\eta})}$, where
+$0<\xi\le\zeta$,
+let $(\frak A_{\xi},\bar\mu_{\xi})$ be the probability algebra reduced
+product
+$\prod_{k\in\Bbb N}(\frak A_{\theta(\xi,k)},\bar\mu_{\theta(\xi,k)})
+|\Cal F_{\xi}$, as described in 328A-328C.  %328A 328B 328C
+At the end of the induction, write
+$(\frak C,\bar\nu)$ for $(\frak A_{\zeta},\bar\mu_{\zeta})$.
+
+\medskip
+
+{\bf (b)} We have a family
+$\langle\phi_{\xi\eta}\rangle_{\eta\le\xi\le\zeta}$
+defined by induction on $\xi$, as follows.
+The inductive hypothesis will be that $\phi_{\eta'\eta}$ is a
+measure-preserving Boolean homomorphism from $\frak A_{\eta}$ to
+$\frak A_{\eta'}$, and that
+$\phi_{\eta''\eta}=\phi_{\eta''\eta'}\phi_{\eta'\eta}$ whenever
+$\eta\le\eta'\le\eta''<\xi$.   For the inductive step to $\xi$,
+take $\phi_{\xi\xi}$ to be the identity map on $\frak A_{\xi}$.
+If $\xi>0$, set $\tilde\phi_{kj}=\phi_{\theta(\xi,k),\theta(\xi,j)}$ for
+$j\le k$ in $\Bbb N$;  then 328Ea
+tells us that we have measure-preserving Boolean homomorphisms
+$\tilde\phi_k:\frak A_{\theta(\xi,k)}\to\frak A_{\xi}$ such that
+$\tilde\phi_j=\tilde\phi_k\tilde\phi_{kj}$ for $j\le k$.   If $j\le k$ and
+$\eta\le\theta(\xi,j)$, then
+
+\Centerline{$\tilde\phi_k\phi_{\theta(\xi,k),\eta}
+=\tilde\phi_k\tilde\phi_{kj}\phi_{\theta(\xi,j),\eta}
+=\tilde\phi_j\phi_{\theta(\xi,j),\eta}$}
+
+\noindent whenever $k\ge j$;  so we can take this common value for
+$\phi_{\xi\eta}$.   If $\eta\le\eta'<\xi$, then take $k$ such that
+$\eta'\le\theta(\xi,k)$, and see that
+
+\Centerline{$\phi_{\xi\eta'}\phi_{\eta'\eta}
+=\tilde\phi_k\phi_{\theta(\xi,k),\eta'}\phi_{\eta'\eta}
+=\tilde\phi_k\phi_{\theta(\xi,k),\eta}
+=\phi_{\xi\eta}$,}
+
+\noindent so the induction proceeds.
+
+For each $\xi\le\zeta$,
+write $\pi_{\xi}$ for $\phi_{\zeta\xi}:\frak A_{\xi}\to\frak C$, and
+$\frak C_{\xi}$ for the subalgebra $\pi_{\xi}[\frak A_{\xi}]$.   Of
+course $\pi_{\xi}\phi_{\xi\eta}=\pi_{\eta}$,
+so that $\frak C_{\eta}\subseteq\frak C_{\xi}$,
+whenever $\eta\le\xi\le\zeta$.
+
+\medskip
+
+{\bf (c)} For each $\xi>0$, we have a canonical map
+$\sequence{k}{a_k}\to\sequence{k}{a_k}^{\ssbullet}:
+\prod_{k\in\Bbb N}\frak A_{\theta(\xi,k)}\to\frak A_{\xi}$.   Since every
+$\pi_{\xi}:\frak A_{\xi}\to\frak C_{\xi}$ is a measure-preserving
+isomorphism, we have a corresponding map
+$\psi_{\xi}:\prod_{k\in\Bbb N}\frak C_{\theta(\xi,k)}\to\frak C_{\xi}$.
+Reading off the basic facts of 328Ab and 328Eb, we see that
+
+\inset{----- $\bar\nu\psi_{\xi}(\sequence{k}{c_k})
+=\lim_{k\to\Cal F_{\xi}}\bar\nu c_k$ for every sequence
+$\sequence{k}{c_k}\in\prod_{k\in\Bbb N}\frak C_{\theta(\xi,k)}$,
+
+----- $\psi_{\xi}(\sequence{k}{c_k})\Bsubseteq\sup_{k\in A}c_k$ whenever
+$\sequence{k}{c_k}\in\prod_{k\in\Bbb N}\frak C_{\theta(\xi,k)}$ and
+$A\in\Cal F_{\xi}$}
+
+\noindent (we can take the supremum in $\frak C$ because $\frak C_{\xi}$ is
+regularly embedded in $\frak C$, as noted in 314Ga).
+
+\medskip
+
+{\bf (d)} Let $\family{\tau}{S}{a_{\tau}}$ be a family in
+$\frak A_0=\frak B_{\omega}$ such that
+$\gamma=\inf_{\tau\in S}\bar\mu a_{\tau}$ is non-zero.
+By 538Fe, we can find a
+disjoint family $\langle A_{\xi}\rangle_{1\le\xi\le\zeta}$ of subsets of
+$\Bbb N$ such that $A_{\xi}\in\Cal F_{\xi}$ for every $\xi$.
+Use these to define $T\subseteq S$ and $\alpha:T\to[0,\zeta]$ as in
+538Ee.   Set $c_{\tau}=0$ for $\tau\in S\setminus T$.
+For $\tau\in T$ define $c_{\tau}\in\frak C_{\alpha(\tau)}$
+by induction on $\alpha(\tau)$, as
+follows.   If $\alpha(\tau)=0$, set $c_{\tau}=\pi_0a_{\tau}$.   For the
+inductive step to $\alpha(\tau)=\xi>0$, we know that
+$\tau^{\smallfrown}\fraction{k}\in T$ and
+$\alpha(\tau^{\smallfrown}\fraction{k})=\theta(\xi,k)$ whenever
+$k\in A_{\xi}$ and $\tau(i)<k$ for every $i<\dom\tau$;  for other
+$k$, $\tau^{\smallfrown}\fraction{k}\notin T$ so
+$c_{\tau^{\smallfrown}\fraction{k}}=0\in\frak C_{\theta(\xi,k)}$.
+Thus $c_{\tau^{\smallfrown}\fraction{k}}\in\frak C_{\theta(\xi,k)}$ for
+every $k$, and
+$\psi_{\xi}(\sequence{k}{c_{\tau^{\smallfrown}\fraction{k}}})
+\in\frak C_{\xi}$;  take this for $c_{\tau}$.   Note that
+
+\Centerline{$\bar\nu c_{\tau}
+=\lim_{k\to\Cal F_{\xi}}\bar\nu c_{\tau^{\smallfrown}\fraction{k}}
+\ge\inf\{\bar\nu c_{\tau^{\smallfrown}\fraction{k}}:k\in\Bbb N$,
+   $\tau^{\smallfrown}\fraction{k}\in T\}$.}
+
+\noindent
+Inducing on $\alpha(\tau)$, we see that $\bar\nu c_{\tau}\ge\gamma$ for
+every $\tau\in T$.   In particular, $\bar\nu c_{\emptyset}\ge\gamma$.
+
+\medskip
+
+{\bf (e)} For $I\subseteq\Bbb N$, set $T_I=T\cap\bigcup_{n\in\Bbb N}I^n$
+and $e_I=\inf_{\tau\in T_I}c_{\tau}$;  let $\Cal S$ be the family of those
+finite subsets $I$ of $\Bbb N$ such that $e_I\ne\emptyset$.   Then
+$T_{\emptyset}=\{\emptyset\}$, $e_{\emptyset}=c_{\emptyset}$ and
+$\emptyset\in\Cal S$.   Moreover, if $I\in\Cal S$ and $1\le\xi\le\zeta$,
+then $\{k:I\cup\{k\}\in\Cal S\}\in\Cal F_{\xi}$.   \Prf\ Set
+$k_0=\sup I+1$.  If $k\in A_{\xi}$ and $k\ge k_0$, set
+
+\Centerline{$d_k
+=\inf\{c_{\tau^{\smallfrown}\fraction{k}}:
+  \tau\in T_I$, $\alpha(\tau)=\xi\}$.}
+
+\noindent Set $B=\{k:k\in A_{\xi},\,k\ge k_0,\,d_k\Bcap e_I\ne 0\}$.
+If $k\in B$, then
+
+\Centerline{$T_{I\cup\{k\}}
+=T_I\cup\{\tau^{\smallfrown}\fraction{k}:\tau\in T_I$,
+  $\alpha(\tau)=\xi\}$,}
+
+\noindent because every member of $T$ is strictly increasing
+and $\tau^{\smallfrown}\fraction{k}$ can belong to $T$ only when
+$k\in A_{\alpha(\tau)}$, that is, $\alpha(\tau)=\xi$.   So
+$e_{I\cup\{k\}}=d_k\Bcap e_I\ne 0$ and $I\cup\{k\}\in\Cal S$.
+
+\Quer\ If $B\notin\Cal F_{\xi}$, then
+$B'=\{k:k\in A_{\xi}$, $k\ge k_0$, $d_k\Bcap e_I=0\}$ belongs to
+$\Cal F_{\xi}$.   So
+
+$$\eqalignno{e_I
+&\Bsubseteq\inf\{c_{\tau}:\tau\in T_I,\,\alpha(\tau)=\xi\}\cr
+&=\inf_{\Atop{\tau\in T_I}{\alpha(\tau)=\xi}}
+   \psi_{\xi}(\sequence{k}{c_{\tau^{\smallfrown}\fraction{k}}})
+=\psi_{\xi}(\sequence{k}{\inf_{\Atop{\tau\in T_I}{\alpha(\tau)=\xi}}
+   c_{\tau^{\smallfrown}\fraction{k}}})\cr
+\displaycause{because $\psi_{\xi}$ is a Boolean homomorphism and $T_I$ is
+finite}
+&\Bsubseteq\sup_{k\in B'}\inf_{\Atop{\tau\in T_I}{\alpha(\tau)=\xi}}
+   c_{\tau^{\smallfrown}\fraction{k}}\cr
+\displaycause{by (c)}
+&=\sup_{k\in B'}d_k.\cr}$$
+
+\noindent But $e_I\Bcap d_k=0$ for every $k\in B'$ and $e_I\ne 0$.\ \Bang
+
+Thus $\{k:I\cup\{k\}\in\Cal S\}\supseteq B\in\Cal F_{\xi}$.\ \Qed
+
+\medskip
+
+{\bf (f)} For $i\in\Bbb N$ set
+
+\Centerline{$C_i=\{k:I\cup\{k\}\in\Cal S$ whenever $I\in\Cal S$ and
+  $I\subseteq i\}$,}
+
+\noindent so that $C_i\in\Cal F_{\xi}$ for every $\xi\in[1,\zeta]$.
+At this point, recall that every $\Cal F_{\xi}$ is supposed to be a Ramsey
+ultrafilter.   So for each $\xi\in[1,\zeta]$ we have an
+$A'_{\xi}\in\Cal F_{\xi}$ such that $A'_{\xi}\subseteq A_{\xi}\cap C_0$ and
+$j\in C_i$ whenever $i$, $j\in A'_{\xi}$ and $i<j$ (538Fc).
+Next, for $i\in\Bbb N$ set
+$M_i=\{\alpha(\tau):\tau\in T$, $\tau(j)\le i$ whenever $j<\dom\tau\}$;
+then $M_i$ is finite, so there is a
+$D\in\bigcap_{1\le\xi\le\zeta}\Cal F_{\xi}$ such that whenever
+$i$, $j\in D$, $i<j$ and $\xi\in M_i$, there is a $k\in A'_{\xi}$ such that
+$i<k<j$ (538Ff).   Of course we can suppose that
+$D\subseteq\bigcup_{1\le\xi\le\zeta}A'_{\xi}$, so that
+$D\cap A_{\xi}=D\cap A'_{\xi}$ for every $\xi$.
+
+\medskip
+
+{\bf (g)} $J\in\Cal S$ for every finite subset $J$ of $D$.   \Prf\ Induce
+on $\#(J)$.   We know that $\emptyset\in\Cal S$.   If
+$i\in D$, then $\{i\}\in\Cal S$ because $D\subseteq C_0$.   For the
+inductive step to $\#(J)\ge 2$, set $j=\max J$, $I=J\setminus\{j\}$ and
+$i=\max I$.   Then $I\in\Cal S$, by the inductive hypothesis;  so if
+$T_J=T_I$, we certainly have $J\in\Cal S$.   Otherwise, there is a
+member of $T_J\setminus T_I$, and this must be of the form
+$\tau^{\smallfrown}\fraction{j}$ where $\tau\in T_I$ and
+$j\in A_{\alpha(\tau)}$;  as $j\in D$, $j\in A'_{\alpha(\tau)}$.
+But this means that $\alpha(\tau)\in M_i$ and
+there is a $k\in A'_{\alpha(\tau)}$ such that $i<k<j$.   In this case,
+$j\in C_k$ and $I\subseteq k$, so $J=I\cup\{k\}$ belongs to $\Cal S$, and
+the induction proceeds.\ \Qed
+
+\medskip
+
+{\bf (h)} Thus $\{c_{\tau}:\tau\in T_D\}$ is centered;  setting
+$T^*_D=\{\tau:\tau\in T_D$, $\alpha(\tau)=0\}$,
+$\{c_{\tau}:\tau\in T^*_D\}$ and therefore
+$\{a_{\tau}:\tau\in T^*_D\}$ are centered.   But $T^*_D$ belongs to
+$\Cal G_{\zeta}$, by 538Ee.
+
+Since $\family{\tau}{S}{a_{\tau}}$ was chosen arbitrarily in (d) above,
+$\Cal G_{\zeta}$ satisfies the condition of 538G(ii), translated to the
+countably infinite set $S$, and is measure-centering.
+}%end of proof of 538L
+
+\leader{538M}{Benedikt's theorem}\cmmnt{ ({\smc Benedikt 98})}
+Let $(X,\Sigma,\mu)$
+be a perfect probability space.   Then there is a measure
+$\lambda$ on $X$, extending $\mu$, such that
+$\lambda(\lim_{n\to\Cal F}E_n)$ is defined and equal to
+$\lim_{n\to\Cal F}\mu E_n$ for every sequence $\sequencen{E_n}$ in
+$\Sigma$ and every Ramsey filter $\Cal F$ on $\Bbb N$.
+
+%what is the Maharam type of $\lambda$?
+
+\proof{{\bf (a)} If there are no Ramsey filters, we can take $\lambda=\mu$ and
+stop;  so let us suppose that there is at least one Ramsey filter.
+Let $\frak F$ be a family of Ramsey filters consisting of just one member
+of each isomorphism class, so that every Ramsey filter is isomorphic to
+some member of $\frak F$, and no two members of $\frak F$ are isomorphic.
+Fix a well-ordering $\preccurlyeq$ of $\frak F$ with a greatest member
+$\Cal F^*$ and a family
+$\langle\theta(\xi,k)\rangle_{1\le\xi<\omega_1,k\in\Bbb N}$ such that
+$\sequence{k}{\theta(\xi,k)}$ is always a non-decreasing sequence of
+ordinals less than $\xi$ such that $\{\theta(\xi,k):k\in\Bbb N\}$ is
+cofinal with $\xi$.
+
+\medskip
+
+{\bf (b)(i)} For any
+non-empty countable set $D\subseteq\frak F$ containing $\Cal F^*$,
+enumerate it in $\preccurlyeq$-increasing order as
+$\langle\Cal F_{\xi}\rangle_{1\le\xi\le\zeta}$, and let $\Cal G_D$ be the
+measure-centering ultrafilter constructed from
+$\langle\Cal F_{\xi}\rangle_{1\le\xi\le\zeta}$ and
+$\langle\theta(\xi,k)\rangle_{1\le\xi\le\zeta,k\in\Bbb N}$ by the method of
+538E-538L;  let $\lambda_D$ be the $\Cal G_D$-extension of $\mu$ as
+defined in 538I.
+
+\medskip
+
+\quad{\bf (ii)} For any non-empty finite set $I\subseteq\frak F$,
+list it in $\preccurlyeq$-increasing order as $\Cal F_0,\ldots,\Cal F_n$,
+and set $\Cal H_I=\Cal F_n\ltimes\ldots\ltimes\Cal F_0$ as defined in 538D.
+By 538Ed, or otherwise, $\Cal H_I\leRK\Cal G_I$, so $\Cal H_I$ is
+measure-centering (538Hb);
+let $\lambda'_I$ be the $\Cal H_I$-extension of $\mu$.
+
+\medskip
+
+{\bf (c)} If $\emptyset\ne I\subseteq J\in[\frak F]^{<\omega}$, then
+$\Cal H_I\leRK\Cal H_J$, by 538Dg, and $\lambda'_J$ extends $\lambda'_I$,
+by 538Jc.   Thus
+$\langle\lambda'_I\rangle_{\emptyset\ne I\in[\frak F]^{<\omega}}$ is an
+upwards-directed family of probability measures on $X$.
+
+If $\Cal I\subseteq[\frak F]^{<\omega}\setminus\{\emptyset\}$ is
+countable, we have a non-empty
+countable set $D\subseteq\frak F$
+including $\{\Cal F^*\}\cup\bigcup\Cal I$.   Now 538Ed
+tells us that $\Cal H_I\leRK\Cal G_D$ for every $I\in\Cal I$, so that
+$\lambda_D$ extends $\lambda'_I$ for every $I\in\Cal I$
+(538Jc again).   Thus for every countable subset of
+$\{\lambda'_I:I\in[\frak F]^{<\omega}\setminus\{\emptyset\}\}$ there is a
+measure on $X$ extending them all.   By 457G, there is a measure $\lambda$
+on $X$ extending every $\lambda'_I$.
+
+\medskip
+
+{\bf (d)} If $\Cal F$ is a Ramsey ultrafilter and $\sequencen{E_n}$ is a
+sequence in $\Sigma$, there is an $\Cal F'\in\frak F$ such that
+$\Cal F$ and $\Cal F'$ are isomorphic.   In particular,
+$\Cal F\leRK\Cal F'$, so $\tilde\lambda_{\Cal F'}$ extends
+$\tilde\lambda_{\Cal F}$, where
+$\tilde\lambda_{\Cal F}$, $\tilde\lambda_{\Cal F'}$ are the
+$\Cal F$-extension and $\Cal F'$-extension of
+$\mu$.   But $\lambda$ extends
+$\lambda'_{\{\Cal F'\}}=\tilde\lambda_{\Cal F'}$ and therefore extends
+$\tilde\lambda_{\Cal F}$.   Accordingly $\lambda(\lim_{n\to\Cal F}E_n)$ is
+defined and equal to
+$\tilde\lambda_{\Cal F}(\lim_{n\to\Cal F}E_n)=\lim_{n\to\Cal F}\mu E_n$, as
+required.
+}%end of proof of 538M
+
+\leader{538N}{Measure-converging filters:  Proposition} (a) Let $\Cal F$
+be a free filter on $\Bbb N$.
+Let $\nu_{\omega}$ be the usual measure on $\{0,1\}^{\Bbb N}$, and
+$\Tau_{\omega}$ its domain.   Then the following are equiveridical:
+
+\inset{(i) $\Cal F$ is measure-converging;
+
+(ii) whenever $\sequencen{F_n}$ is a sequence in $\Tau_{\omega}$
+and $\lim_{n\to\infty}\nu_{\omega}F_n=1$, then
+$\bigcup_{A\in\Cal F}\bigcap_{n\in A}F_n$ is conegligible;
+
+(iii) whenever $(X,\Sigma,\mu)$ is a measure space with locally determined
+negligible sets\cmmnt{ (definition:  213I)}, and $\sequencen{f_n}$ is a
+sequence in $\eusm L^0\cmmnt{\mskip5mu=\eusm L^0(\mu)}$
+which converges in measure to
+$f\in\eusm L^0$, then $\lim_{n\to\Cal F}f_n\eae f$;
+
+(iv) whenever $\mu$ is a Radon measure on $\Cal P\Bbb N$ such that
+$\lim_{n\to\infty}\mu E_n=1$, where $E_n=\{a:n\in a\subseteq\Bbb N\}$ for
+each $n$, then $\mu\Cal F=1$.}
+
+(b)\dvAnew{2012} Every measure-converging filter is free.
+
+(c)\dvAnew{2012} Suppose that $\Cal F$ is a measure-converging filter.
+
+\quad(i) If $\Cal G$ is a filter on $\Bbb N$ including $\Cal F$, then
+$\Cal G$ is measure-converging.
+
+\quad(ii) If $\Cal G$ is a filter on $\Bbb N$ and
+$\Cal G\leRB\Cal F$\cmmnt{ (definition:  5A6Ic)}, then $\Cal G$ is
+measure-converging.
+
+(d)\cmmnt{ (M.Foreman)} Every rapid filter is measure-converging.
+
+(e)\cmmnt{ (M.Talagrand)} If there is a measure-converging filter,
+there is a measure-converging filter which is not rapid.
+
+(f) Let $\Cal F$ be a measure-converging filter on $\Bbb N$ and
+$\Cal G$ any filter on $\Bbb N$.   Then $\Cal G\ltimes\Cal F$ is
+measure-converging.
+
+(g) If $\frakmctbl=\frak d$, there is a rapid filter.
+
+\proof{{\bf (a)(i)$\Rightarrow$(iii)} Suppose that $\Cal F$ is
+measure-converging, and that $(X,\Sigma,\mu)$, $\sequencen{f_n}$ and $f$
+are as in (iii).   Let $H\in\Sigma$ be a conegligible
+set such that $H\subseteq\dom f\cap\dom f_n$ and $f\restr H$ and
+$f_n\restr H$ are measurable for
+every $n\in\Bbb N$.   Let $k\in\Bbb N$;  set
+$H_k=\{x:x\in H$, $\limsup_{n\to\Cal F}|f_n(x)-f(x)|>2^{-k}\}$.   Then
+$H_k\cap F$ is negligible whenever $F\in\Sigma$ and $\mu F<\infty$.   \Prf\
+If $\mu F=0$ this is trivial.   Otherwise, let $\nu=\Bover1{\mu F}\mu_F$ be
+the normalized subspace measure on $F$.   For each $n\in\Bbb N$, set
+$F_n=\{x:x\in F\cap H$, $|f_n(x)-f(x)|\le 2^{-k}\}$.   Then
+
+\Centerline{$\lim_{n\to\infty}\nu(F\setminus F_n)
+\le\Bover{2^k}{\mu F}\lim_{n\to\infty}\int\min(|f_n-f|,\chi F)d\mu
+=0$}
+
+\noindent because $\sequencen{f_n}\to f$ in measure.   So
+$\lim_{n\to\infty}\nu F_n=1$ and
+$H'=\bigcup_{A\in\Cal F}\bigcap_{n\in A}F_n$ is $\nu$-conegligible.
+But $H'\cap H_k=\emptyset$, so $\mu^*(H_k\cap F)=\nu^*(H_k\cap F)=0$.\ \Qed
+
+Since $\mu$ has locally determined negligible sets, $H_k$ is negligible.
+This is true for every $k\in\Bbb N$, so $H\setminus\bigcup_{k\in\Bbb N}H_k$
+is conegligible;  and $\lim_{n\to\Cal F}f_n(x)=f(x)$ for every
+$x\in H\setminus\bigcup_{k\in\Bbb N}H_k$, so $\lim_{n\to\Cal F}f_n=f$ a.e.,
+as required.
+
+\medskip
+
+\quad{\bf (iii)$\Rightarrow$(iv)} Assuming (iii), let $\mu$ and
+$\sequencen{E_n}$ be as in (iv).   Set
+$f_n=\chi(\Cal P\Bbb N\setminus E_n)$ for each $n$;  then
+$\lim_{n\to\infty}\int f_nd\mu=0$, so $\sequencen{f_n}\to 0$ in measure,
+and $H=\{a:\lim_{n\to\Cal F}f_n(a)=0\}$ is conegligible.
+But for any $a\in H$,
+
+\Centerline{$a=\{n:a\in E_n\}=\{n:f_n(x)\le\Bover12\}$}
+
+\noindent belongs to $\Cal F$, so $H\subseteq\Cal F$ and $\mu\Cal F=1$.
+
+\medskip
+
+\quad{\bf (iv)$\Rightarrow$(ii)} Assume (iv), and let $\sequencen{F_n}$ be
+as in (ii).   Define $\phi:\{0,1\}^{\Bbb N}\to\Cal P\Bbb N$ by setting
+$\phi(x)=\{n:x\in F_n\}$ for $x\in\{0,1\}^{\Bbb N}$.   Then $\phi$ is
+almost continuous (418J), so the image measure
+$\mu=\nu_{\omega}\phi^{-1}$ on $\Cal P\Bbb N$ is a Radon measure (418I).
+Since $F_n=\phi^{-1}[E_n]$ for each $n$, $\lim_{n\to\infty}\mu E_n=1$ and
+$1=\mu\Cal F=\nu_{\omega}\phi^{-1}[\Cal F]$.   But now
+
+\Centerline{$\bigcup_{a\in\Cal F}\bigcap_{n\in a}F_n
+=\bigcup_{a\in\Cal F}\{x:a\subseteq\phi(x)\}
+=\phi^{-1}[\Cal F]$}
+
+\noindent is $\nu_{\omega}$-conegligible, as required.
+
+\medskip
+
+\quad{\bf (ii)$\Rightarrow$(i)} Assume (ii), and take a probability space
+$(X,\Sigma,\mu)$ and a sequence $\sequencen{H_n}$ in $\Sigma$ such that
+$\lim_{n\to\infty}\mu H_n\penalty-50=1$;  set
+$G=\bigcup_{A\in\Cal F}\bigcap_{n\in A}H_n$.
+
+Let $\lambda$ be the c.l.d. product
+measure on $X\times\{0,1\}^{\Bbb N}$, and set
+
+\Centerline{$W_n=H_n\times\{0,1\}^{\Bbb N}$,
+\quad$V_n=\{(x,y):x\in X$, $y\in\{0,1\}^{\Bbb N}$, $y(n)=1\}$}
+
+\noindent for $n\in\Bbb N$.   Let $\Lambda_1$ be the $\sigma$-algebra of
+subsets of $X\times\{0,1\}^{\Bbb N}$ generated by
+$\{W_n:n\in\Bbb N\}\cup\{V_n:n\in\Bbb N\}$, and $\lambda_1$ the completion
+of the restriction $\lambda\restr\Lambda_1$.   Note that as the identity
+map from $X\times\{0,1\}^{\Bbb N}$ is \imp\ for $\lambda$ and
+$\lambda\restr\Lambda_1$, it is \imp\ for their completions
+(234Ba);  but
+$\lambda$ is complete, so this just means that $\lambda$ extends
+$\lambda_1$.   Then $\lambda_1$ is a complete
+atomless probability measure with countable Maharam type.   Its measure
+algebra $\frak C$ is therefore isomorphic, as measure algebra, to the
+measure algebra $\frak B_{\omega}$ of $\nu_{\omega}$;  let
+$\pi:\frak B_{\omega}\to\frak C$ be a measure-preserving isomorphism.
+By 343B, or otherwise, there is a realization
+$\phi:X\times\{0,1\}^{\Bbb N}\to\{0,1\}^{\Bbb N}$,
+\imp\ for $\lambda_1$ and $\nu_{\omega}$, such that
+$\phi^{-1}[F]^{\ssbullet}=\pi F^{\ssbullet}$ in $\frak C$ for every
+$F\in\Tau_{\omega}$.   Because $\pi$ is surjective, there is for each
+$n\in\Bbb N$ an $F_n\in\Tau_{\omega}$ such that
+$\phi^{-1}[F_n]\symmdiff W_n$ is $\lambda_1$-negligible.
+
+Since
+
+\Centerline{$\lim_{n\to\infty}\nu_{\omega}F_n
+=\lim_{n\to\infty}\lambda_1W_n
+=\lim_{n\to\infty}\lambda W_n
+=\lim_{n\to\infty}\mu H_n=1$,}
+
+\noindent $F=\bigcup_{A\in\Cal F}\bigcap_{n\in A}F_n$ is
+$\nu_{\omega}$-conegligible, and
+$\phi^{-1}[F]=\bigcup_{A\in\Cal F}\bigcap_{n\in A}\phi^{-1}[F_n]$ is
+$\lambda_1$-conegligible.   We have
+$G\times\{0,1\}^{\Bbb N}=\bigcup_{A\in\Cal F}\bigcap_{n\in A}W_n$,
+so
+
+\Centerline{$(G\times\{0,1\}^{\Bbb N})\symmdiff\phi^{-1}[F]
+\subseteq\bigcup_{n\in\Bbb N}W_n\symmdiff\phi^{-1}[F_n]$}
+
+\noindent is $\lambda_1$-negligible.
+Thus $G\times\{0,1\}^{\Bbb N}$ is $\lambda_1$-conegligible, therefore
+$\lambda$-conegligible.   But this means that $G$ is $\mu$-conegligible, by
+252D applied to $G\times\{0,1\}^{\Bbb N}$;  and this is what we
+needed to know.
+
+\medskip
+
+{\bf (b)} Let $\Cal F$ be a measure-converging filter and $m\in\Bbb N$.
+Take a singleton set $X=\{x\}$ and the probability measure $\mu$ on $X$;
+set $E_i=\emptyset$ for $i<n$, $X$ for $i\ge n$.   Then
+$\lim_{i\to\infty}\mu E_i=1$, so there is an $A\in\Cal F$ such that
+$\bigcap_{i\in A}E_i$ is non-empty.   Now $\Bbb N\setminus n\supseteq A$
+belongs to $\Cal F$;  as $n$ is arbitrary, $\Cal F$ is free.
+
+\medskip
+
+{\bf (c)(i)} Immediate from the definition in 538Ag.
+
+\medskip
+
+\quad{\bf (ii)} Let $f:\Bbb N\to\Bbb N$ be a finite-to-one function such
+that $\Cal G=f[[\Cal F]]$.
+Let $(X,\Sigma,\mu)$ be a probability space and
+$\sequencen{E_n}$ a sequence in $\Sigma$ such that
+$\lim_{n\to\infty}\mu E_n=1$.   Set $F_n=E_{f(n)}$ for $n\in\Bbb N$;
+because $f$ is finite-to-one, $\lim_{n\to\infty}\mu F_n=1$.   So
+$H=\bigcup_{A\in\Cal F}\bigcap_{n\in A}F_n$ is conegligible.   If
+$x\in H$, set $A_x=\{n:x\in E_n\}$;  then
+
+\Centerline{$f^{-1}[A_x]=\{n:x\in E_{f(n)}\}=\{n:x\in F_n\}$}
+
+\noindent belongs to $\Cal F$ so $A_x\in f[[\Cal F]]$ and
+$x\in\bigcup_{B\in f[[\Cal F]]}\bigcap_{n\in B}E_n$.   Thus
+$\bigcup_{B\in f[[\Cal F]]}\bigcap_{n\in B}E_n\supseteq H$ is conegligible.
+As $(X,\Sigma,\mu)$ and $\sequencen{E_n}$ are arbitrary, $f[[\Cal F]]$ is
+measure-converging.
+
+\medskip
+
+{\bf (d)} Let $\Cal F$ be a rapid filter on $\Bbb N$,
+and $\sequencen{H_n}$ a sequence in $\Tau_{\omega}$ such that
+$\lim_{n\to\infty}\nu_{\omega}H_n=1$.   Set
+$G=\bigcup_{A\in\Cal F}\bigcap_{n\in A}H_n$.   Since
+$\lim_{n\to\infty}(1-\nu_{\omega}H_n)=0$, there is an $A\in\Cal F$ such
+that $\sum_{n\in A}1-\nu_{\omega}H_n<\infty$;   set
+$H=\bigcup_{m\in\Bbb N}\bigcap_{n\in A\setminus m}H_n\subseteq G$.
+Then
+
+\Centerline{$\nu_{\omega}H
+\ge\sup_{m\in\Bbb N}1-\sum_{n\in A\setminus m}(1-\nu_{\omega}H_n)
+=1$,}
+
+\noindent so $G$ is conegligible.   Thus $\Cal F$ satisfies (a-ii) and is
+measure-converging.
+
+\medskip
+
+{\bf (e)} Let $\Cal F$ be a measure-converging filter.
+Let $\sequencen{I_n}$ be a
+sequence of non-empty finite subsets of $\Bbb N$ such that
+$\lim_{n\to\infty}\#(I_n)=\infty$.   Let $\Cal G$ be
+
+\Centerline{$\{A:A\subseteq\Bbb N$,
+$\lim_{n\to\Cal F}\Bover1{\#(I_n)}\#(A\cap I_n)=1\}$.}
+
+\noindent Then $\Cal G$ is a filter on $\Bbb N$.
+
+\medskip
+
+\quad{\bf (i)} $\Cal G$ is measure-converging.  \Prf\ Let
+$\sequence{i}{H_i}$ be a sequence in $\Tau_{\omega}$ such that
+$\lim_{i\to\infty}\nu_{\omega}H_i=1$, and set
+$G=\bigcup_{A\in\Cal G}\bigcap_{i\in A}H_i$.   Set
+$g_n=\Bover1{\#(I_n)}\sum_{i\in I_n}\chi H_i$ for each $n$;  then
+
+\Centerline{$\lim_{n\to\infty}\int g_n
+=\lim_{n\to\infty}\Bover1{\#(I_n)}\sum_{i\in I_n}\nu_{\omega}H_i
+=1$}
+
+\noindent because $\lim_{n\to\infty}\#(I_n)=\infty$ and
+$\lim_{i\to\infty}\nu_{\omega}H_i=1$.   Since
+$0\le g_n\le\chi\{0,1\}^{\Bbb N}$ for every $n$,
+$\sequencen{g_n}\to\chi\{0,1\}^{\Bbb N}$ in measure.   By (a-iii) above,
+$H=\{x:\lim_{n\to\Cal F}g_n(x)=1\}$ is conegligible.
+
+For $x\in H$, set $A_x=\{i:x\in H_i\}$.   Then
+
+\Centerline{$\Bover1{\#(I_n)}\#(I_n\cap A_x)
+=g_n(x)\to 1$}
+
+\noindent as $n\to\Cal F$, so $A_x\in\Cal G$ and $x\in G$.   Accordingly
+$G\supseteq H$ is conegligible.   As $\sequence{i}{H_i}$ is arbitrary,
+$\Cal G$ is measure-converging.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} $\Cal G$ is not rapid.   \Prf\
+Define $\sequence{i}{t_i}$ by saying that
+
+\Centerline{$t_i=\sup\{\Bover1{\#(I_n)}:n\in\Bbb N$, $i\in I_n\}$}
+
+\noindent for $i\in\Bbb N$, counting $\sup\emptyset$ as $0$.
+Then $\lim_{i\to\infty}t_i=0$.   If $A\in\Cal G$ and $m\in\Bbb N$, then
+$B=\{n:\#(A\cap I_n)\ge\bover23\#(I_n)\}$
+belongs to $\Cal F$, and must be infinite, by (b) above.
+So there is an $n\in B$ such that $\#(I_n)\ge 3m$, and now
+
+\Centerline{$\sum_{i\in A\setminus m}t_i
+\ge\#(A\cap I_n\setminus m)\cdot\Bover1{\#(I_n)}\ge\Bover13$.}
+
+\noindent As $m$ is arbitrary, $\sum_{i\in A}t_i=\infty$;  as $A$ is
+arbitrary, $\Cal G$ is not rapid.\ \Qed
+
+\medskip
+
+{\bf (f)} Let
+$\langle E_{ij}\rangle_{i,j\in\Bbb N}$ be a family in $\Tau_{\omega}$
+such that $\sequence{n}{\nu_{\omega}E_{i_nj_n}}\to 1$ for some, or
+any, enumeration $\sequencen{(i_n,j_n)}$ of $\Bbb N\times\Bbb N$.
+Set $G=\bigcup_{C\in\Cal G\ltimes\Cal F}\bigcap_{(i,j)\in C}E_{ij}$.
+For each $i\in\Bbb N$, $\lim_{j\to\infty}\nu_{\omega}E_{ij}=1$, so
+$G_i=\bigcup_{A\in\Cal F}\bigcap_{j\in A}E_{ij}$ is conegligible;  set
+$H=\bigcap_{i\in\Bbb N}G_i$.   For $x\in H$, set
+$A_x=\{(i,j):x\in E_{ij}\}$.   As $x\in G_i$, $A_x[\{i\}]\in\Cal F$ for
+every $i\in\Bbb N$;  thus $A_x\in\Cal G\ltimes\Cal F$ and $x\in G$.
+So $G$ includes the conegligible set $H$, and is itself conegligible.
+As $\langle E_{ij}\rangle_{i,j\in\Bbb N}$ is arbitrary, $\Cal G$ is
+measure-converging.
+
+\medskip
+
+{\bf (g)(i)} Suppose that $\Cal E\subseteq[\Bbb N]^{\omega}$ is a
+family with $\#(\Cal E)<\frakmctbl$, and that $f\in\NN$
+is non-decreasing.   Then there
+is an $A\subseteq\Bbb N$, meeting every member of $\Cal E$,
+such that $\#(A\cap f(n))\le n$ for every $n\in\Bbb N$.   \Prf\
+Consider
+$X=\prod_{n\in\Bbb N}\Bbb N\setminus f(n)$.   Then $X$ is a closed subset
+of $\NN$, homeomorphic to $\NN$.   For $E\in\Cal E$, set
+
+\Centerline{$G_E=\{x:x\in X$, $E\cap x[\Bbb N]\ne\emptyset\}$;}
+
+\noindent then $G_E$ is a dense open subset of $X$.   Writing $\Cal M(X)$
+for the ideal of meager subsets of $X$,
+$\#(\Cal E)<\frakmctbl=\cov\Cal M(X)$, so there is an
+$x\in X\cap\bigcap_{E\in\Cal E}G_E$;  set $A=x[\Bbb N]$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Let $\ofamily{\xi}{\frak d}{f_{\xi}}$ be a cofinal family
+in $\BbbN^{\Bbb N}$;  we may suppose that every $f_{\xi}$ is
+strictly increasing.    Choose a non-decreasing family
+$\langle\Cal E_{\xi}\rangle_{\xi\le\frak d}$
+inductively, as follows.
+$\Cal E_0=\{\Bbb N\setminus n:n\in\Bbb N\}$.   Given that
+$\xi<\frak d=\frakmctbl$ and that
+$\Cal E_{\xi}\subseteq[\Bbb N]^{<\omega}$ is a filter base with cardinal at
+most $\max(\omega,\#(\xi))$, use (i) to find a set
+$A_{\xi}\subseteq\Bbb N$, meeting every member of $\Cal E_{\xi}$, such that
+$\#(A_{\xi}\cap f_{\xi}(n))\le n$ for every $n$;  set
+
+\Centerline{$\Cal E_{\xi+1}
+=\Cal E_{\xi}\cup\{A_{\xi}\cap E:E\in\Cal E_{\xi}\}$.}
+
+\noindent For non-zero limit ordinals $\xi\le\frak d$ set
+$\Cal E_{\xi}=\bigcup_{\eta<\xi}\Cal E_{\eta}$.
+
+At the end of the induction, let $\Cal F$ be the filter on $\Bbb N$
+generated by $\Cal E_{\frak d}$.   Then $\Cal F$ is rapid.   \Prf\ It is
+free because $\Cal E_0\subseteq\Cal F$.   If $\sequencen{t_n}$ is a
+sequence in $\Bbb R$ converging to $0$, let $f\in\NN$ be such that
+$|t_i|\le 2^{-n}$ whenever $n\in\Bbb N$ and $i\ge f(n)$, and let
+$\xi<\frak d$ be such that $f\le f_{\xi}$.   Then $A_{\xi}\in\Cal F$ and
+
+\Centerline{$\sum_{i\in A_{\xi}}|t_i|
+\le\sum_{n=0}^{\infty}
+   2^{-n}\#(A_{\xi}\cap f_{\xi}(n+1)\setminus f_{\xi}(n))
+\le\sum_{n=0}^{\infty}2^{-n}(n+1)$}
+
+\noindent is finite.\ \Qed
+}%end of proof of 538N
+
+\leader{538O}{The Fatou property:  Proposition} (a)
+Let $\Cal F$ be a filter on $\Bbb N$.   Let $\nu_{\omega}$ be the usual
+measure on $\{0,1\}^{\Bbb N}$, and $\Tau_{\omega}$ its domain.   Then the
+following are equiveridical:
+
+\inset{(i) $\Cal F$ has the Fatou property;
+
+(ii) whenever $\sequencen{F_n}$ is a sequence in $\Tau_{\omega}$ and
+$\nu_{\omega}^*(\bigcup_{A\in\Cal F}\bigcap_{n\in A}F_n)=1$, then
+$\lim_{n\to\Cal F}\nu_{\omega}F_n=1$;
+
+(iii) whenever $(X,\Sigma,\mu)$ is a measure space and
+$\sequencen{f_n}$ is a sequence of non-negative functions in
+$\eusm L^0(\mu)$, then $\overline{\int}\liminf_{n\to\Cal F}f_nd\mu
+\le\liminf_{n\to\Cal F}\int f_nd\mu$;
+
+(iv) whenever $\mu$ is a Radon
+probability measure on $\Cal P\Bbb N$, then
+$\mu^*\Cal F\le\liminf_{n\to\Cal F}\mu E_n$, where
+$E_n=\{a:n\in a\subseteq\Bbb N\}$ for each
+$n\in\Bbb N$.}
+
+(b) If $\Cal F$ and $\Cal G$ are filters on $\Bbb N$, $\Cal G\leRK\Cal F$
+and $\Cal F$ has the Fatou property, then $\Cal G$ has the Fatou property.
+
+(c) If $\Cal F$ and $\Cal G$ are filters on $\Bbb N$ with
+the Fatou property, then $\Cal F\ltimes\Cal G$ has the Fatou property.
+
+\medskip
+
+\proof{{\bf (a) not-(iii)$\Rightarrow$not-(i)}
+Suppose that $(X,\Sigma,\mu)$ is a measure space and
+$\sequencen{f_n}$ a sequence of non-negative functions
+in $\eusm L^0$ such that
+$\overline{\int}\liminf_{n\to\Cal F}f_nd\mu
+>\liminf_{n\to\Cal F}\int f_nd\mu$.   Changing the $f_n$ on negligible sets
+does not change either $\overline{\int}\liminf_{n\to\Cal F}f_nd\mu$ or
+$\overline{\int}\liminf_{n\to\Cal F}f_nd\mu$, so we may
+assume that every $f_n$ is defined everywhere in $X$ and is
+$\Sigma$-measurable.   Take $\alpha$ such that
+$\overline{\int}\liminf_{n\to\Cal F}f_nd\mu
+>\alpha>\liminf_{n\to\Cal F}\int f_nd\mu$;  set
+$A=\{n:\int f_nd\mu\le\alpha\}$;  then $A$ meets every member of
+$\Cal F$.   Since $f_n$ is integrable for every $n\in A$,
+the set $G=\{x:\sup_{n\in A}f_n(x)>0\}$ is a countable
+union of sets of finite measure.
+
+Let $\lambda$ be the c.l.d.\ product measure on $G\times\Bbb R$, and
+consider the ordinate sets
+$W_n=\{(x,\beta):x\in G$, $0\le\beta<f_n(x)\}$ for $n\in A$.   Set
+$W=\bigcup_{C\in\Cal F}\bigcap_{n\in C\cap A}W_n$;
+writing $g$ for $\liminf_{n\to\Cal F}f_n$,
+
+\Centerline{$\{(x,\beta):x\in G,\,0\le\beta<g(x)\}
+\subseteq W$.}
+
+\noindent Since $\lambda$ is a product of two $\sigma$-finite measures it
+is $\sigma$-finite, and $W$ has a measurable envelope $\tilde W$ say.
+Now $\lambda^*W>\alpha$.   \Prf\Quer\ Otherwise,
+$\lambda\tilde W\le\alpha$.   Writing $\mu_L$ for Lebesgue measure on
+$\Bbb R$,
+
+$$\eqalignno{\alpha
+\ge\lambda\tilde W
+&=\int_G\mu_L\tilde W[\{x\}]\mu(dx)\cr
+\displaycause{252D}
+&\ge\overline{\int}_Gg\,d\mu
+>\alpha.  \text{ \Bang\Qed}\cr}$$
+
+There is therefore a set $V\subseteq\tilde W$ such that
+$\alpha<\lambda V<\infty$, and now $\lambda^*(V\cap W)>\alpha$.
+Let $\nu$ be the subspace measure on $V\cap W$.   Set
+
+$$\eqalign{V_n
+&=V\cap W\cap W_n\text{ if }n\in A,\cr
+&=V\cap W\text{ if }n\in\Bbb N\setminus A.\cr}$$
+
+\noindent Then
+
+$$\eqalign{\liminf_{n\to\Cal F}\nu V_n
+&=\sup_{C\in\Cal F}\inf_{n\in C}\nu V_n
+\le\sup_{n\in A}\nu V_n\cr
+&\le\sup_{n\in A}\lambda W_n
+=\sup_{n\in A}\int f_nd\mu
+\le\alpha.\cr}$$
+
+\noindent On the other hand,
+
+\Centerline{$\bigcup_{C\in\Cal F}\bigcap_{n\in C}V_n
+=\bigcup_{C\in\Cal F}\bigcap_{n\in C\cap A}V\cap W\cap W_n
+=V\cap W$}
+
+\noindent and $\nu(V\cap W)=\lambda^*(V\cap W)>\alpha$.
+Moving to a normalization of $\nu$, we see that (i) is false.
+
+\medskip
+
+\quad{\bf (iii)$\Rightarrow$(iv)} If $\Cal F$ satisfies (iii) and
+$\mu$ is a Radon probability measure on $\Cal P\Bbb N$, set
+$g=\liminf_{n\to\Cal F}\chi E_n$.   If $a\in\Cal F$, then
+$\{n:\chi E_n(a)=1\}=a\in\Cal F$, so $g(a)=1$;  thus
+
+$$\eqalignno{\mu^*\Cal F
+&=\overline{\int}\chi\Cal Fd\mu\cr
+\displaycause{133Je}
+&\le\overline{\int}g\,d\mu
+\le\liminf_{n\to\Cal F}\int\chi E_n
+=\liminf_{n\to\Cal F}\mu E_n,\cr}$$
+
+\noindent as required.
+
+\medskip
+
+\quad{\bf (iv)$\Rightarrow$(ii)} Given (iv),
+suppose that $\sequencen{F_n}$ is a sequence in $\Tau_{\omega}$
+and $\nu_{\omega}^*(\bigcup_{A\in\Cal F}\bigcap_{n\in A}F_n)=1$.
+As in the corresponding part of the argument for 538Na, define
+$\phi:\{0,1\}^{\Bbb N}\to\Cal P\Bbb N$ by setting
+$\phi(x)=\{n:x\in F_n\}$, and let $\mu$ be the Radon measure
+$\nu_{\omega}\phi^{-1}$.   Then
+
+\Centerline{$\mu^*\Cal F=\nu_{\omega}^*\phi^{-1}[\Cal F]
+=\nu_{\omega}^*(\bigcup_{A\in\Cal F}\bigcap_{n\in A}F_n)=1$}
+
+\noindent (using 451Pc again for the first equality),
+so $\lim_{n\to\Cal F}\nu_{\omega}F_n=\lim_{n\to\Cal F}\mu E_n=1$.
+
+\medskip
+
+\quad{\bf (ii)$\Rightarrow$(i)}
+Assume (ii), and take a probability space
+$(X,\Sigma,\mu)$ and a sequence $\sequencen{H_n}$ in $\Sigma$ such that
+$X=\bigcup_{A\in\Cal F}\bigcap_{n\in A}H_n$.
+
+As in the corresponding part of the argument for 538Na,
+let $\lambda$ be the c.l.d. product
+measure on $X\times\{0,1\}^{\Bbb N}$, and set
+
+\Centerline{$W_n=H_n\times\{0,1\}^{\Bbb N}$,
+\quad$V_n=\{(x,y):x\in X$, $y\in\{0,1\}^{\Bbb N}$, $y(n)=1\}$}
+
+\noindent for $n\in\Bbb N$.   Let $\Lambda_1$ be the $\sigma$-algebra of
+subsets of $X\times\{0,1\}^{\Bbb N}$ generated by
+$\{W_n:n\in\Bbb N\}\cup\{V_n:n\in\Bbb N\}$, and $\lambda_1$ the completion
+of the restriction $\lambda\restr\Lambda_1$.   As before, there is a
+function
+$\phi:X\times\{0,1\}^{\Bbb N}\to\{0,1\}^{\Bbb N}$, \imp\ for
+$\lambda_1$ and $\nu_{\omega}$, such that there is for each
+$n\in\Bbb N$ an $F_n\in\Tau_{\omega}$ such that
+$\phi^{-1}[F_n]\symmdiff W_n$ is $\lambda_1$-negligible.
+Set $G=\bigcup_{A\in\Cal F}\bigcap_{n\in A}F_n$.
+
+Since $X=\bigcup_{A\in\Cal F}\bigcap_{n\in A}H_n$,
+$X\times\{0,1\}^{\Bbb N}=\bigcup_{A\in\Cal F}\bigcap_{n\in A}W_n$ and
+
+\Centerline{$(X\times\{0,1\}^{\Bbb N})\setminus\phi^{-1}[G]
+\subseteq\bigcup_{n\in\Bbb N}\phi^{-1}[F_n]\symmdiff W_n$}
+
+\noindent is $\lambda_1$-negligible.   By 413Eh,
+
+\Centerline{$\nu^*_{\omega}G\ge\lambda_1\phi^{-1}[G]=1$.}
+
+\noindent By (ii), $\lim_{n\to\Cal F}\nu_{\omega}F_n=1$.   But
+
+\Centerline{$\nu_{\omega}F_n
+=\lambda_1\phi^{-1}[F_n]=\lambda_1W_n=\lambda W_n=\mu H_n$}
+
+\noindent for each $n$, so $\lim_{n\to\Cal F}\mu H_n=1$.
+As $(X,\Sigma,\mu)$ and $\sequencen{H_n}$ are arbitrary, $\Cal F$ has the
+Fatou property.
+
+\medskip
+
+{\bf (b)} Let $h:\Bbb N\to\Bbb N$ be such that $\Cal G=h[[\Cal F]]$.
+Let $(X,\Sigma,\mu)$ be a probability space and $\sequencen{H_n}$ a
+sequence in $\Sigma$ such that
+
+$$\eqalign{X
+&=\bigcup_{A\in\Cal G}\bigcap_{n\in A}H_n\cr
+&=\bigcup_{A\subseteq\Bbb N,h^{-1}[A]\in\Cal F}\bigcap_{n\in A}H_n
+=\bigcup_{A\in\Cal F}\bigcap_{n\in A}H_{h(n)}.\cr}$$
+
+\noindent Then
+
+$$\eqalign{1
+&=\liminf_{n\to\Cal F}\mu H_{h(n)}
+=\sup_{A\in\Cal F}\inf_{n\in A}\mu H_{h(n)}\cr
+&\le\sup_{A\in\Cal G}\inf_{n\in A}\mu H_n
+=\liminf_{n\to\Cal G}\mu H_n.\cr}$$
+
+\noindent As $(X,\Sigma,\mu)$ and $\sequencen{H_n}$ are arbitrary,
+$\Cal G$ has the Fatou property.
+
+\medskip
+
+{\bf (c)} Let $(X,\Sigma,\mu)$ be a probability space and
+$\langle E_{ij}\rangle_{i,j\in\Bbb N}$ a family in $\Sigma$ such that
+$X=\bigcup_{C\in\Cal F\ltimes\Cal G}\bigcap_{(i,j)\in C}E_{ij}$.
+For each $i\in\Bbb N$, set
+$F_i=\bigcup_{B\in\Cal G}\bigcap_{j\in B}E_{ij}$, and let $G_i\in\Sigma$ be
+a measurable envelope of $F_i$.   Then
+$\bigcup_{A\in\Cal F}\bigcap_{i\in A}G_i=X$.   \Prf\ If $x\in X$, there is
+a $C\in\Cal F\ltimes\Cal G$ such that $x\in E_{ij}$ whenever
+$(i,j)\in C$.   Set $A=\{i:C[\{i\}]\in\Cal G\}\in\Cal F$.
+If $i\in A$, then
+
+\Centerline{$x\in\bigcap_{j\in C[\{i\}]}E_{ij}\subseteq F_i
+\subseteq G_i$,}
+
+\noindent so $x\in\bigcap_{i\in A}G_i$.\ \Qed
+
+Accordingly $\lim_{i\to\Cal F}\mu G_i=1$.   Take $\epsilon>0$;  then
+$A=\{i:\mu G_i\ge 1-\epsilon\}$ belongs to $\Cal F$.   For each
+$i\in A$,
+
+$$\eqalignno{1-\epsilon
+&\le\mu G_i
+=\mu^*F_i
+=\overline{\int}\chi F_i
+=\overline{\int}\liminf_{j\to\Cal G}\chi E_{ij}
+\le\liminf_{j\to\Cal G}\int\chi E_{ij}\cr
+\displaycause{by (a-iii) above}
+&=\liminf_{j\to\Cal G}\mu E_{ij},\cr}$$
+
+\noindent so $\{j:\mu E_{ij}\ge 1-2\epsilon\}\in\Cal G$.   But this means
+that $\{(i,j):\mu E_{ij}\ge 1-2\epsilon\}\in\Cal F\ltimes\Cal G$.
+As $\epsilon$ is arbitrary,
+$\lim_{(i,j)\to\Cal F\ltimes\Cal G}\mu E_{ij}=1$.   As $(X,\Sigma,\mu)$ and
+$\langle E_{ij}\rangle_{i,j\in\Bbb N}$ are arbitrary, $\Cal F\ltimes\Cal G$
+has the Fatou property.
+}%end of proof of 538O
+
+\leader{538P}{Theorem} Let $\nu:\Cal P\Bbb N\to\Bbb R$ be a bounded
+finitely additive functional.   Write $\dashint\ldots d\nu$ for the
+associated linear functional on $\ell^{\infty}$\cmmnt{ (see 363L)},
+and set $E_n=\{a:n\in a\subseteq\Bbb N\}$ for each
+$n\in\Bbb N$.   Then the following are equiveridical:
+
+(i) whenever $\mu$ is a Radon probability measure on $\Cal P\Bbb N$,
+$\int\nu(a)\mu(da)$ is defined and equal to $\dashint\mu E_n\nu(dn)$;
+
+\allowmorestretch{468}{
+(ii) whenever $\mu$ is a Radon probability measure on $[0,1]^{\Bbb N}$,
+$\idashint x\,d\nu\,\mu(dx)$ is defined and equal to
+\penalty-100$\dashiint x(n)\mu(dx)\nu(dn)$;
+}
+
+(iii) whenever $(X,\Sigma,\mu)$ is a probability space and
+$\sequencen{f_n}$ is a uniformly bounded sequence of measurable
+real-valued functions on $X$, then $\idashint f_n(x)\nu(dn)\mu(dx)$ is
+defined and equal to $\dashiint f_nd\mu\,\nu(dn)$;
+
+(iv) whenever $\sequencen{F_n}$ is a sequence of Borel subsets of
+$\{0,1\}^{\Bbb N}$, $\idashint\chi F_n(x)\nu(dn)\nu_{\omega}(dx)$ is defined
+and equal to $\dashint\nu_{\omega}F_n\nu(dn)$, where $\nu_{\omega}$ is the
+usual measure on $\{0,1\}^{\Bbb N}$.
+
+\proof{{\bf (i)$\Rightarrow$(ii)}\grheada\
+For $t\in[0,1]$ define $h_t:[0,1]^{\Bbb N}\to\Cal P\Bbb N$ by setting
+$h_t(x)=\{n:x(n)\ge t\}$ for $x\in[0,1]^{\Bbb N}$, and let
+$\mu_t=\mu h_t^{-1}$ be the image measure on $\Cal P\Bbb N$.   Then
+$\mu_t$ is a Radon measure for each $t$.   \Prf\
+Because $h_t$ is Borel measurable and
+$\Cal P\Bbb N$ is metrizable, $h_t$ is almost continuous (418J),
+so $\mu_t$ is a Radon measure (418I).\ \Qed
+
+\medskip
+
+\quad\grheadb\
+For $m\in\Bbb N$ define $v_m\in[0,1]^{\Bbb N}$ by setting
+
+\Centerline{$v_m(n)=2^{-m}\sum_{k=1}^{2^m}\mu\{x:x(n)\ge 2^{-m}k\}$.}
+
+\noindent Then $\|v_{m+1}-v_m\|_{\infty}\le 2^{-m-1}$.   \Prf\ For any
+$n\in\Bbb N$,
+
+$$\eqalign{v_m(n)-v_{m+1}(n)
+&=2^{-m}\sum_{k=1}^{2^m}\mu\{x:x(n)\ge 2^{-m}k\}
+  -2^{-m-1}\sum_{k=1}^{2^{m+1}}\mu\{x:x(n)\ge 2^{-m-1}k\}\cr
+&=2^{-m-1}\sum_{k=1}^{2^m}(2\mu\{x:x(n)\ge 2^{-m}k\}
+  -\mu\{x:x(n)\ge 2^{-m}k\}\cr
+&\mskip150mu-\mu\{x:x(n)\ge 2^{-m-1}(2k+1)\})\cr
+&=2^{-m-1}\sum_{k=1}^{2^m}\mu\{x:2^{-m}k\le x(n)<2^{-m-1}(2k+1)\}
+\le 2^{-m-1}.  \text{ \Qed}\cr}$$
+
+\noindent So $v=\lim_{m\to\infty}v_m$ is defined in $\ell^{\infty}$ and
+$\dashint v\,d\nu=\lim_{m\to\infty}\dashint v_md\nu$.
+Also $v(n)=\int x(n)\mu(dx)$ for every $n\in\Bbb N$, so
+$\dashiint x(n)\mu(dx)\nu(dn)=\dashint v\,d\nu$.
+
+\medskip
+
+\quad\grheadc\ Set
+
+\Centerline{$f(t)=\dashint\mu_tE_n\nu(dn)=\int\nu(a)\mu_t(da)$}
+
+\noindent for each $t\in[0,1]$ (using (i)).
+Then, for any $m\in\Bbb N$,
+
+$$\eqalignno{\dashint v_md\nu
+&=2^{-m}\sum_{k=1}^{2^m}\dashint\mu\{x:x(n)\ge 2^{-m}k\}\nu(dn)\cr
+&=2^{-m}\sum_{k=1}^{2^m}\dashint\mu\{x:h_{2^{-m}k}(x)\in E_n\}\nu(dn)\cr
+&=2^{-m}\sum_{k=1}^{2^m}\dashint\mu_{2^{-m}k}E_n\nu(dn)
+=2^{-m}\sum_{k=1}^{2^m}f(2^{-m}k).\cr}$$
+
+\medskip
+
+\quad\grheadd\ Next, for $m\in\Bbb N$ and $x\in[0,1]^{\Bbb N}$, set
+$q_m(x)=2^{-m}\sum_{k=1}^{2^m}\chi h_{2^{-m}k}(x)$, so that
+$\sequence{m}{q_m(x)}$ is non-decreasing and
+$\|x-q_m(x)\|_{\infty}\le 2^{-m}$ for each $m$, while
+$q_m:[0,1]^{\Bbb N}\to[0,1]^{\Bbb N}$ is Borel measurable.   Now
+
+$$\eqalign{\dashiint q_m(x)d\nu\,\mu(dx)
+&=2^{-m}\sum_{k=1}^{2^m}\int\nu(h_{2^{-m}k}(x))\mu(dx)\cr
+&=2^{-m}\sum_{k=1}^{2^m}\int\nu(a)\mu_{2^{-m}k}(da)
+=2^{-m}\sum_{k=1}^{2^m}f(2^{-m}k).\cr}$$
+
+\noindent Also $\sequence{m}{\dashint q_m(x)d\nu}\to\dashint x\,d\nu$
+uniformly for
+$x\in[0,1]^{\Bbb N}$, so $\idashint x\,d\nu\,\mu(dx)$ is defined and equal to
+
+$$\eqalign{\lim_{m\to\infty}\idashint q_m(x)d\nu\,\mu(dx)
+&=\lim_{m\to\infty}2^{-m}\sum_{k=1}^{2^m}f(2^{-m}k)
+=\lim_{m\to\infty}\dashint v_md\nu\cr
+&=\dashint v\,d\nu
+=\dashiint x(n)\mu(dx)\nu(dn).\cr}$$
+
+\noindent As $\mu$ is arbitrary, (ii) is true.
+
+\medskip
+
+{\bf (ii)$\Rightarrow$(iii)} Assume (ii), and let
+$(X,\Sigma,\mu)$ be a probability space and $\sequencen{f_n}$ a
+uniformly bounded sequence of measurable
+real-valued functions on $X$.   As completing $\mu$ does not affect the
+integral $\int\ldots d\mu$ (212Fb),
+we may suppose that $\mu$ is complete.   Let
+$\gamma>0$ be such that $|f_n(x)|\le\gamma$ for every $n\in\Bbb N$ and
+$x\in X$,
+and set $q(x)(n)=\Bover1{2\gamma}(\gamma+f_n(x))$ for all $n$ and $x$.
+Then
+$q:X\to[0,1]^{\Bbb N}$ is measurable, so there is a Radon probability
+measure $\lambda$ on $[0,1]^{\Bbb N}$ such that $q$ is \imp\ for $\mu$
+and $\lambda$.   \Prf\ Taking $\lambda_0E=\mu q^{-1}[E]$ for Borel sets
+$E\subseteq[0,1]^{\Bbb N}$, $q$ is \imp\ for $\mu$ and $\lambda_0$;  taking
+$\lambda$ to be the completion of $\lambda_0$, $q$ is \imp\ for $\mu$ and
+$\lambda$, by 234Ba;  and $\lambda$ is a Radon measure by 433Cb.\ \QeD\
+Now
+
+$$\eqalignno{\dashiint f_nd\mu\,\nu(dn)
+&=2\gamma\dashiint q(x)(n)\mu(dx)\nu(dn)-\gamma\cr
+&=2\gamma\dashiint z(n)\lambda(dz)\nu(dn)-\gamma\cr
+\displaycause{235Gc}
+&=2\gamma\idashint z(n)\nu(dn)\lambda(dz)-\gamma\cr
+\displaycause{by (ii)}
+&=2\gamma\idashint q(x)(n)\nu(dn)\mu(dx)-\gamma
+=\idashint f_n(x)\nu(dn)\mu(dx).\cr}$$
+
+\noindent As $\mu$ and $\sequencen{f_n}$ are arbitrary, (iii) is true.
+
+\medskip
+
+{\bf (iii)$\Rightarrow$(iv)} is elementary, taking $f_n=\chi F_n$ and
+$\mu=\nu_{\omega}$.
+
+\medskip
+
+{\bf (iv)$\Rightarrow$(i)} If (iv) is true and $\mu$ is a Radon
+probability measure on $\Cal P\Bbb N$, there is an \imp\ function $\phi$
+from $(\{0,1\}^{\Bbb N},\nu_{\omega})$ to $(\Cal P\Bbb N,\mu)$
+(343Cd).    For each $n\in\Bbb N$, set $F_n=\phi^{-1}[E_n]$ for each $n$
+and choose a Borel set $F'_n\subseteq\{0,1\}^{\Bbb N}$ such that
+$\nu_{\omega}(F'_n\symmdiff F_n)=0$.   Then
+$\idashint\chi F'_n(x)\nu(dn)\nu_{\omega}(dx)$ is defined and equal to
+
+\Centerline{$\dashint\nu_{\omega}F'_n\nu(dn)
+=\dashint\nu_{\omega}F_n\nu(dn)=\dashint\mu E_n\nu(dn)$.}
+
+\noindent Now
+
+$$\eqalignno{\dashint\mu E_n\nu(dn)
+&=\idashint\chi F'_n(x)\nu(dn)\nu_{\omega}(dx)
+=\idashint\chi F_n(x)\nu(dn)\nu_{\omega}(dx)\cr
+\displaycause{because for almost every $x$, $\chi F_n(x)=\chi F'_n(x)$ for
+every $n$}
+&=\idashint\chi E_n(\phi(x))\nu(dn)\nu_{\omega}(dx)
+=\idashint\chi E_n(a)\nu(dn)\mu(da)\cr
+\displaycause{235Gc again}
+&=\idashint\chi a(n)\nu(dn)\mu(da)
+=\int\nu(a)\,\mu(da).\cr}$$
+
+\noindent As $\mu$ is arbitrary, (i) is true.
+}%end of proof of 538P
+
+\leader{538Q}{Definition} I will say that a bounded
+finitely additive functional
+$\nu$ satisfying (i)-(iv) of 538P is a {\bf medial functional};
+if, in addition, $\nu$ is non-negative, $\nu a=0$ for every finite set
+$a\subseteq\Bbb N$ and $\nu\Bbb N=1$, I will call $\nu$
+a {\bf medial limit}.
+\cmmnt{I should remark that the term `medial limit' is
+normally used for the associated linear
+functional $\dashint\ldots d\nu$ on $\ell^{\infty}$, rather than
+the additive functional $\nu$ on $\Cal P\Bbb N$;
+thus $h\in(\ell^{\infty})^*$
+is a medial limit if $h\ge 0$, $h(w)=\lim_{n\to\infty}w(n)$ for every
+convergent sequence $w\in\ell^{\infty}$ and
+$\int h(\sequencen{f_n(x)})\mu(dx)$ is defined and equal to
+$h(\sequencen{\int f_nd\mu})$ whenever $(X,\Sigma,\mu)$ is a
+probability space and $\sequencen{f_n}$ is a uniformly bounded sequence
+of measurable real-valued functions on $X$.}
+
+\cmmnt{Note that }538P(i) tells us that a medial
+limit\cmmnt{ $\nu:\Cal P\Bbb N\to\Bbb R$} is universally
+Radon-measurable\cmmnt{ (definition:  434Ec)}, therefore universally
+measurable\cmmnt{ (434Fc)}.
+
+\vleader{48pt}{538R}{Proposition}
+Let $M\cmmnt{\mskip5mu\cong(\ell^{\infty})^*}$
+be the $L$-space of bounded finitely additive
+functionals on $\Cal P\Bbb N$, and $M_{\text{med}}\subseteq M$ the set of
+medial functionals.
+
+(a) $M_{\text{med}}$ is a band in $M$, and if
+$T\in L^{\times}(\ell^{\infty};\ell^{\infty})$\cmmnt{ (definition:
+355G)} and $T':M\to M$ is its
+adjoint, then $T'\nu\in M_{\text{med}}$ for every $\nu\in M_{\text{med}}$.
+
+(b) Taking $M_{\tau}$ to be the band of completely additive functionals
+on $\Cal P\Bbb N$ and $M_{\text{m}}$ the band of measurable functionals,
+as described in \S464,
+$M_{\tau}\subseteq M_{\text{med}}\subseteq M_{\text{m}}$.
+
+(c) Suppose that $\sequence{k}{\nu_k}$ is a norm-bounded sequence in
+$M_{\text{med}}$, and that $\nu\in M_{\text{med}}$.   Set
+$\tilde\nu(a)=\dashint\nu_k(a)\nu(dk)$ for $a\subseteq\Bbb N$.   Then
+$\tilde\nu\in M_{\text{med}}$.
+
+(d) Suppose that $\nu\in M$ is a medial limit, and set
+$\Cal F=\{a:a\subseteq\Bbb N$, $\nu(a)=1\}$.   Then $\Cal F$ is a
+measure-converging filter with the Fatou property.
+%any hope of `rapid'?  did Matt know?
+
+(e) Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\lambda)$ be probability spaces, and
+$T\in L^{\times}(L^{\infty}(\mu);L^{\infty}(\lambda))$.
+Let $\sequencen{f_n}$, $\sequencen{g_n}$ be sequences in
+$\eusm L^{\infty}(\mu)$, $\eusm L^{\infty}(\nu)$ respectively such that
+$Tf_n^{\ssbullet}=g_n^{\ssbullet}$ for every $n$ and
+$\sequencen{f_n^{\ssbullet}}$ is norm-bounded in $L^{\infty}(\mu)$.
+Let $\nu\in M$ be a medial functional.   Then
+$f(x)=\dashint f_n(x)\nu(dn)$ and
+$g(y)=\dashint g_n(y)\nu(dn)$ are defined for almost every $x\in X$ and
+$y\in Y$;  moreover,
+$f\in\eusm L^{\infty}(\mu)$, $g\in\eusm L^{\infty}(\lambda)$ and
+$Tf^{\ssbullet}=g^{\ssbullet}$.
+
+\proof{{\bf (a)(i)}
+Any of the four conditions of 538P makes it clear that
+$M_{\text{med}}$ is a linear subspace of $M$.
+
+We see also that $M_{\text{med}}$ is norm-closed in $M$.   \Prf\ Let
+$\sequencen{\nu_n}$ be a sequence in $M_{\text{med}}$ which is
+norm-convergent to $\nu\in M$.   If $\mu$ is a Radon probability measure on
+$[0,1]^{\Bbb N}$, then
+$\sequencen{\dashint x\,d\nu_n}\to\dashint x\,d\nu$ uniformly for
+$x\in[0,1]^{\Bbb N}$, so
+
+$$\eqalign{\idashint x\,d\nu\,\mu(dx)
+&=\lim_{n\to\infty}\idashint x\,d\nu_n\mu(dx)\cr
+&=\lim_{n\to\infty}\dashiint x(i)\mu(dx)\nu_n(di)
+=\dashiint x(i)\,\mu(dx)\nu(di).\cr}$$
+
+\noindent As $\mu$ is arbitrary, $\nu\in M_{\text{med}}$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Before completing the proof that $M_{\text{med}}$ is a
+band, I deal with the second clause of (a).
+
+\medskip
+
+\qquad\grheada\ Recall from \S355 that
+$L^{\times}(\ell^{\infty};\ell^{\infty})$ is the set of differences of
+order-continuous positive linear operators from $\ell^{\infty}$ to itself.
+Since $M$ can be identified with $(\ell^{\infty})^*$, any
+$T\in L^{\times}(\ell^{\infty};\ell^{\infty})$ has an adjoint
+$T':M\to M$ defined by saying that
+$(T'\nu)(a)=\dashint T(\chi a)d\nu$ for every $a\subseteq\Bbb N$.
+Since $x\mapsto\dashint Tx\,d\nu$ and $x\mapsto\dashint x\,d(T'\nu)$
+both belong to $(\ell^{\infty})^*$ and agree on
+$\{\chi a:a\subseteq\Bbb N\}$, they are equal, that is,
+$\dashint Tx\,d\nu=\dashint x\,d(T'\nu)$ for every $x\in\ell^{\infty}$.
+
+\medskip
+
+\qquad\grheadb\
+If $T:\ell^{\infty}\to\ell^{\infty}$ is an order-continuous positive linear
+operator, it is a norm-bounded linear operator (355C), and all the functionals
+$x\mapsto(Tx)(n)$ are order-continuous, therefore represented by members of
+$\ell^1$;  that is, we have a family
+$\langle\alpha_{ni}\rangle_{n,i\in\Bbb N}$ in $\coint{0,\infty}$ such that
+
+\Centerline{$(Tx)(n)
+=\sum_{i=0}^{\infty}\alpha_{ni}x(i)$ whenever $x\in\ell^{\infty}$
+and $n\in\Bbb N$,}
+
+\Centerline{$\sup_{n\in\Bbb N}\sum_{i=0}^{\infty}\alpha_{ni}
+=\|T\|$ is finite.}
+
+\noindent In this case, if $\nu\in M$ and $\nu'=T'\nu$ in $M$,
+
+\Centerline{$\dashint x\,d\nu'
+=\dashint(Tx)(n)\nu(dn)
+=\dashint\sum_{i=0}^{\infty}\alpha_{ni}x(i)\nu(dn)$}
+
+\noindent for every $x\in\ell^{\infty}$.
+
+Now suppose that that $\|T\|\le 1$, so that
+$\sum_{i=0}^{\infty}\alpha_{ni}\le 1$ for every $n$.   Consider the
+function $\phi=T\restr[0,1]^{\Bbb N}$.   This is a function from
+$[0,1]^{\Bbb N}$ to itself, and it is continuous for the product topology
+on $\Bbb N$.
+
+Take any $\nu\in M$ and Radon probability measure $\mu$ on
+$[0,1]^{\Bbb N}$;  then the image measure $\mu_1=\mu\phi^{-1}$ on
+$[0,1]^{\Bbb N}$ is a Radon probability measure (418I), and
+$\int f(\phi(x))\mu(dx)=\int f(x)\mu_1(dx)$ for any $\mu_1$-integrable
+function $f$.   In particular, setting $f(x)=\dashint x\,d\nu$,
+
+\Centerline{$\idashint\phi(x)\,d\nu\,\mu(dx)
+=\idashint x\,d\nu\,\mu_1(dx)=\dashiint x(n)\mu_1(dx)\nu(dn)$}
+
+\noindent because $\nu\in M_{\text{med}}$.
+
+Set $\nu'=T'\nu$.   Then we can calculate
+
+$$\eqalignno{\dashiint x(n)\mu(dx)\nu'(dn)
+&=\dashint\sum_{i=0}^{\infty}\alpha_{ni}\int x(i)\mu(dx)\nu(dn)
+=\dashiint\sum_{i=0}^{\infty}\alpha_{ni}x(i)\mu(dx)\nu(dn)\cr
+\displaycause{the inner integral is with respect to a genuine
+$\sigma$-additive measure, so we have B.Levi's theorem}
+&=\dashiint\phi(x)(n)\mu(dx)\nu(dn)
+=\dashiint x(n)\mu_1(dx)\nu(dn)\cr
+&=\idashint\phi(x)\,d\nu\,\mu(dx)
+=\idashint Tx\,d\nu\,\mu(dx)
+=\idashint x\,d\nu'\,\mu(dx).\cr}$$
+
+\noindent As $\mu$ is arbitrary, $\nu'$ satisfies 538P(ii), and is a medial
+functional.
+
+\medskip
+
+\qquad\grheadc\ Thus $T'\nu\in M_{\text{med}}$ whenever
+$\nu\in M_{\text{med}}$ and $T:\ell^{\infty}\to\ell^{\infty}$ is positive,
+order-continuous and of norm at most $1$.   As $M_{\text{med}}$ is a linear
+subspace of $M$, the same is true for every positive order-continuous $T$
+and for differences of such operators, that is, for every
+$T\in L^{\times}(\ell^{\infty};\ell^{\infty})$, as claimed.
+
+\medskip
+
+\quad{\bf (iii)} I now return to the question of showing that
+$M_{\text{med}}$ is a band.   The point is that if
+$\nu$ is a medial functional and $b\subseteq\Bbb N$, then $\nu_b$ is a
+medial functional, where $\nu_b(a)=\nu(a\cap b)$ for every
+$a\subseteq\Bbb N$.   \Prf\ Define $T:\ell^{\infty}\to\ell^{\infty}$ by
+setting $Tx=x\times\chi b$ for $x\in\ell^{\infty}$.   Then $T$ is a
+positive order-continuous operator, and $T'\nu\in M_{\text{med}}$, by
+(iii) above.   But
+
+\Centerline{$(T'\nu)(a)=\dashint T(\chi a)d\nu=\dashint\chi(a\cap b)d\nu
+=\nu(a\cap b)=\nu_b(a)$}
+
+\noindent for every $a\subseteq\Bbb N$, so $\nu_b=T'\nu$ is a medial
+functional.\ \Qed
+
+By 436M, this is enough to ensure that $M_{\text{med}}$ is a band in $M$.
+
+\medskip
+
+{\bf (b)(i)} Recall that an additive functional on $\Cal P\Bbb N$
+is completely additive iff it corresponds to an element of $\ell^1$,
+that is,
+belongs to the band generated by the elementary functionals $\delta_k$
+where $\delta_k(a)=\chi a(k)$ for $k\in\Bbb N$ and $a\subseteq\Bbb N$.
+To see that $\delta_k$ belongs to $M_{\text{med}}$, all we have to do is
+to note that $\delta_k=\chi E_k$ where $E_k$ is defined as in 538P;
+so if $\mu$ is a  Radon probability measure on $\Cal P\Bbb N$, we shall
+have
+
+\Centerline{$\int\delta_kd\mu=\mu E_k=\dashint\mu E_n\delta_k(dn)$.}
+
+\noindent Since $M_{\text{med}}$ is a band, it must include $M_{\tau}$.
+
+\medskip
+
+\quad{\bf (ii)} On the other side, 538P(i) tells us that every member of
+$M_{\text{med}}$ is universally measurable, and therefore belongs to
+$M_{\text{m}}$, which is just the set of bounded additive
+functionals which are $\Sigma$-measurable, where $\Sigma$ is the domain of
+the usual measure on $\Cal P\Bbb N$.
+
+\medskip
+
+{\bf (c)(i)} Because $\sequence{k}{\nu_k}$ is norm-bounded, $\tilde\nu$ is
+well-defined and additive;  also it is bounded.
+\Prf\ If $\gamma$ is such that
+$\|\nu\|\le\gamma$ and $\|\nu_k\|\le\gamma$ for every $k$, then
+
+\Centerline{$|\tilde\nu(a)|
+\le\gamma\sup_{k\in\Bbb N}|\nu_k(a)|\le\gamma^2$}
+
+\noindent for every $a\subseteq\Bbb N$.\ \Qed
+
+Note that
+
+\Centerline{$\dashint\chi a\,d\tilde\nu=\tilde\nu(a)
+=\dashint\nu_k(a)\nu(dk)=\dashidashint\chi a\,d\nu_k\nu(dk)$}
+
+\noindent for every $a\subseteq\Bbb N$, so that
+
+\Centerline{$\dashint x\,d\tilde\nu
+=\dashint x(n)\,\tilde\nu(dn)
+=\dashidashint x(n)\,\nu_k(dn)\nu(dk)
+=\dashidashint x\,d\nu_k\nu(dk)$}
+
+\noindent whenever $x\in\ell^{\infty}$ is a linear combination of
+indicator functions, and therefore for every $x\in\ell^{\infty}$.
+
+\medskip
+
+\quad{\bf (ii)}
+Now suppose that $(X,\Sigma,\mu)$ is a probability space and that
+$\sequencen{f_n}$ is a uniformly bounded sequence of measurable real-valued
+functions on $X$.   Let $(X,\hat\Sigma,\hat\mu)$ be the completion of
+$(X,\Sigma,\mu)$.   For $k\in\Bbb N$ and $x\in X$ set
+$g_k(x)=\dashint f_n(x)\nu_k(dn)$;  because $\nu_k$ is a medial functional,
+we know that
+$\int g_kd\mu=\dashiint f_n(x)\mu(dx)\nu_k(dn)$ is defined, so $g_k$ is
+$\hat\Sigma$-measurable.   Consequently $\idashint g_k(x)\nu(dk)\hat\mu(dx)$
+is defined and equal to $\dashiint g_k(x)\hat\mu(dx)\nu(dk)$.   It follows that
+
+$$\eqalign{\dashiint f_n(x)\mu(dx)\tilde\nu(dn)
+&=\dashidashiint f_n(x)\mu(dx)\nu_k(dn)\nu(dk)\cr
+&=\dashiidashint f_n(x)\nu_k(dn)\mu(dx)\nu(dk)
+=\dashiint g_k(x)\hat\mu(dx)\nu(dk)\cr
+&=\idashint g_k(x)\nu(dk)\hat\mu(dx)
+=\idashidashint f_n(x)\nu_k(dn)\nu(dk)\hat\mu(dx)\cr
+&=\idashint f_n(x)\tilde\nu(dn)\hat\mu(dx)
+=\idashint f_n(x)\tilde\nu(dn)\mu(dx).\cr}$$
+
+\noindent (Recall that $\mu$ and $\hat\mu$ give rise to the same integrals,
+by 212Fb again.)
+As $(X,\Sigma,\mu)$ and $\sequencen{f_n}$ are arbitrary,
+$\tilde\nu\in M_{\text{med}}$.
+
+\medskip
+
+{\bf (d)} Of course $\Cal F=\{\Bbb N\setminus a:\nu(a)=0\}$ is a filter.
+
+\medskip
+
+\quad{\bf (i)}
+If $(X,\Sigma,\mu)$ is a probability space, $\sequencen{E_n}$ is a sequence
+in $\Sigma$, and $\lim_{n\to\infty}\mu E_n=1$, then
+
+\Centerline{$\idashint\chi E_n(x)\nu(dn)\mu(dx)
+=\dashiint\chi E_nd\mu\,\nu(dn)=\dashint\mu E_n\nu(dn)=1$.}
+
+\noindent So $E=\{x:\dashint\chi E_n(x)\nu(dn)=1\}$ is $\mu$-conegligible.
+But if $x\in E$ and $a=\{n:x\in E_n\}$, then
+$\nu a=\dashint\chi E_n(x)\nu(dn)=1$ and $a\in\Cal F$ and
+$x\in\bigcap_{n\in a}E_n$.   Thus
+$\bigcup_{a\in\Cal F}\bigcap_{n\in a}E_n\supseteq E$ is conegligible.
+As $(X,\Sigma,\mu)$ and $\sequencen{E_n}$ are arbitrary,
+$\Cal F$ is measure-converging.
+
+\medskip
+
+\quad{\bf (ii)} If $(X,\Sigma,\mu)$ is a probability space,
+$\sequencen{E_n}$ is a sequence in $\Sigma$, and
+$X=\bigcup_{A\in\Cal F}\bigcap_{n\in A}E_n$, then $\{n:x\in E_n\}\in\Cal F$
+for every $x\in X$, and
+
+\Centerline{$\dashint\mu E_n\nu(dn)
+=\idashint\chi E_n(x)\nu(dn)\mu(dx)
+=\int\nu\{n:x\in E_n\}\mu(dx)=1$.}
+
+\noindent So for any $\epsilon>0$, $\nu\{n:\mu E_n\le 1-\epsilon\}=0$
+and $\{n:\mu E_n\ge 1-\epsilon\}\in\Cal F$;  accordingly
+$\lim_{n\to\Cal F}\mu E_n=1$.   As $(X,\Sigma,\mu)$ and $\sequencen{E_n}$
+are arbitrary, $\Cal F$ has the Fatou property.
+
+\medskip
+
+{\bf (e)(i)}
+For each $n\in\Bbb N$, we can find a $\Sigma$-measurable function
+$f'_n:X\to\Bbb R$, equal almost everywhere to $f_n$, and such that
+$\sup_{x\in X}|f'_n(x)|=\esssup|f_n|$.   Now $\sequencen{f'_n}$ is
+uniformly bounded, so $f'(x)=\dashint f'_n(x)\nu(dn)$ is defined for every
+$x\in X$;  and $f(x)$ is defined and equal to $f'(x)$ for
+$\mu$-almost every $x$.   Since $f'$ is integrable, $f'$ and $f$ are
+$\mu$-virtually measurable and essentially bounded, and
+$f\in\eusm L^{\infty}(\mu)$.
+Similarly, $g\in\eusm L^{\infty}(\lambda)$.
+
+\medskip
+
+\quad{\bf (ii)} If $h\in\eusm L^1(\mu)$, then
+$\int f\times h\,d\mu=\dashiint f_n\times h\,d\mu\,\nu(dn)$.   \Prf\ ($\alpha$)
+If $h$ is defined everywhere, measurable and bounded, then, taking $f'_n$
+and $f'$ as in (i),
+$(f'\times h)(x)=\dashint f'_n(x)h(x)\nu(dn)$ for every $x\in X$, so
+
+$$\eqalign{\int f\times h\,d\mu
+&=\int f'\times h\,d\mu
+=\idashint(f'_n\times h)(x)\nu(dn)\mu(dx)\cr
+&=\dashiint f'_n\times h\,d\mu\,\nu(dn)
+=\dashiint f_n\times h\,d\mu\,\nu(dn).\cr}$$
+
+\noindent($\beta$) In general, set $\gamma=\sup_{n\in\Bbb N}\esssup f_n$.
+Given $\epsilon>0$, there is a simple
+function $h'$ such that $\|h-h'\|_1\le\epsilon$, and now
+
+$$\eqalign{|\int f\times h\,d\mu&-\dashiint f_n\times h\,d\mu\,\nu(dn)|\cr
+&\le|\int f\times h\,d\mu-\int f\times h'\,d\mu|
++|\int f\times h'\,d\mu-\dashiint f_n\times h'\,d\mu\,\nu(dn)|\cr
+&\mskip200mu
++|\dashiint f_n\times h'\,d\mu\,\nu(dn)-\dashiint f_n\times h\,d\mu\,\nu(dn)|\cr
+&\le\|f\|_{\infty}\|h-h'\|_1
++\sup_{n\in\Bbb N}|\int f_n\times h'\,d\mu-\int f_n\times h\,d\mu|
+\le 2\epsilon\gamma.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary,
+$\int f\times h\,d\mu=\dashiint f_n\times h\,d\mu\,\nu(dn)$.\ \Qed
+
+Similarly, $\int g\times h\,d\lambda=\dashiint g_n\times h\,d\lambda\,\nu(dn)$
+for every $\lambda$-integrable $h$.
+
+\medskip
+
+\quad{\bf (iii)} If $h\in\eusm L^1(\lambda)$ there is an
+$\tilde h\in\eusm L^1(\mu)$ such that
+$\int\tilde h^{\ssbullet}\times v=\int h^{\ssbullet}\times Tv$ for every
+$v\in L^{\infty}(\mu)$.   \Prf\ Recall that $L^1(\mu)$, $L^1(\lambda)$ can
+be identified with $L^{\infty}(\mu)^{\times}$ and
+$L^{\infty}(\nu)^{\times}$ (365Lb\formerly{3{}65Mb});  
+perhaps I should remark that the
+formulae $\int\tilde h^{\ssbullet}\times v$,
+$\int h^{\ssbullet}\times Tv$ represent abstract integrals taken in
+$L^1(\mu)$, $L^1(\lambda)$ respectively (242B).   Setting
+$\phi(w)=\int h^{\ssbullet}\times w$ for $w\in L^{\infty}(\lambda)$,
+$\phi\in L^{\infty}(\lambda)^{\times}$, so
+$\phi T\in L^{\infty}(\mu)^{\times}$ (355G) and there is an
+$\tilde h\in\eusm L^1(\mu)$ such that
+
+\Centerline{$\int\tilde h^{\ssbullet}\times v=\phi(Tv)
+=\int h^{\ssbullet}\times Tv$}
+
+\noindent for every $v\in L^{\infty}(\mu)$.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} Take $h$ and $\tilde h$ as in (iii), and consider
+
+$$\eqalignno{\int h^{\ssbullet}\times g^{\ssbullet}
+&=\int h\times g\,d\lambda
+=\dashiint h\times g_n\,d\lambda\,\nu(dn)\cr
+\displaycause{by (ii)}
+&=\dashint(\int h^{\ssbullet}\times g_n^{\ssbullet})\nu(dn)
+=\dashint(\int h^{\ssbullet}\times Tf_n^{\ssbullet})\nu(dn)\cr
+&=\dashint(\int\tilde h^{\ssbullet}\times f_n^{\ssbullet})\nu(dn)
+=\dashiint\tilde h\times f_nd\mu\,\nu(dn)
+=\int\tilde h\times fd\mu\cr
+\displaycause{by (ii) again}
+&=\int\tilde h^{\ssbullet}\times f^{\ssbullet}
+=\int h^{\ssbullet}\times Tf^{\ssbullet}.\cr}$$
+
+\noindent As $h$ is arbitrary, and the duality between $L^{\infty}(\mu)$
+and $L^1(\lambda)$ is separating, $Tf^{\ssbullet}=g^{\ssbullet}$, as
+required.
+}%end of proof of 538R
+
+\leader{538S}{Theorem} (a) If
+$\frakmctbl=\frak c$, there is a medial limit.
+%Foreman thinks enough if $\frakmctbl=\frak d$, email 5.9.07
+
+(b)\dvAnew{2011}\cmmnt{ ({\smc Larson 09})} Suppose that the filter
+dichotomy\cmmnt{ (5A6Id)} is true.   If $I$ is any set and $\nu$ is a
+finitely additive real-valued functional on $\Cal PI$ which is universally
+measurable for the usual topology on $\Cal PI$, then $\nu$ is completely
+additive.\cmmnt{\footnote{The result developed into this form in the
+course of
+correspondence with J.Pachl.}} %6.11
+Consequently there is no medial limit.
+%universally Radon-measurable will do I suppose, but demands a little
+%more from Chap 43
+
+\proof{{\bf (a)(i)}
+Let $M$ be the $L$-space of bounded additive functionals
+on $\Cal P\Bbb N$.   Let us say that a subset $C$ of
+$M$ is {\bf rationally convex} if $\alpha\nu+(1-\alpha)\nu'\in C$
+whenever $\nu$, $\nu'\in C$ and $\alpha\in[0,1]\cap\Bbb Q$;  for
+$A\subseteq M$, write $\Gamma_{\Bbb Q}(A)$ for the smallest
+rationally convex set including $A$.   Set
+$Q=\Gamma_{\Bbb Q}(\{\delta_n:n\in\Bbb N\})$ where
+$\delta_n(a)=\chi a(n)$ for $a\subseteq\Bbb N$ and $n\in\Bbb N$.
+In the language of 538Rb, $Q\subseteq M_{\tau}\subseteq M_{\text{med}}$,
+so 538P(i) tells us that $\int\nu\,d\mu=\dashint\mu E_n\nu(dn)$ for every
+$\nu\in Q$, where $E_n=\{a:n\in a\subseteq\Bbb N\}$ as usual.
+
+\medskip
+
+\quad{\bf (ii)}
+Suppose that $\Cal F$ is a filter base on $Q$, consisting of rationally
+convex sets, with cardinal less than $\frakmctbl$.   Let
+$\mu$ be a Radon probability measure on $\Cal P\Bbb N$.
+Then there is a sequence
+$\sequence{k}{\nu_k}$ in $Q$ such that
+
+\inset{$\sum_{k=0}^{\infty}\int|\nu_{k+1}(a)-\nu_k(a)|\mu(da)<\infty$,
+
+$\{k:k\in\Bbb N$, $\nu_k\in F\}$ is infinite for every $F\in\Cal F$.}
+
+\noindent\Prf\ Each $\nu\in Q$ is a
+bounded Borel measurable real-valued function
+on $\Cal P\Bbb N$;  let $u\in L^2=L^2(\mu)$ be a
+$\frak T_s(L^2,L^2)$-cluster point
+of $\family{\nu}{Q}{\nu^{\ssbullet}}$
+along the filter generated by $\Cal F$.   For
+any $F\in\Cal F$, the $\|\,\|_2$-closure of the
+rationally convex set $\{\nu^{\ssbullet}:\nu\in F\}\subseteq L^2$
+is convex, so
+includes the weak closure of $\{\nu^{\ssbullet}:\nu\in F\}$ and
+therefore contains $u$.   So $\{\nu^{\ssbullet}:\nu\in F\}$ meets
+$\{v:v\in L^2$, $\|v-u\|_2\le\epsilon\}$ for every $\epsilon>0$.
+
+Set $H_k=\{\nu:\nu\in Q$, $\|\nu^{\ssbullet}-u\|_2\le 2^{-k}\}$ for
+each $k\in\Bbb N$;  then every $H_k$ meets every member of $\Cal F$.
+If we give each $H_k$ its discrete topology, and take $H$ to be the product
+$\prod_{k\in\Bbb N}H_k$, then $H$ is homeomorphic to $\NN$.   Writing
+$\Cal M(H)$ for the ideal of meager subsets of $H$,
+$\cov\Cal M(H)=\frakmctbl>\#(\Cal F)$, while
+
+\Centerline{$\bigcup_{k\ge n}\{\alpha:\alpha\in H$, $\alpha(k)\in F\}$}
+
+\noindent is a dense open subset of $H$ for every $F\in\Cal F$
+and $n\in\Bbb N$.   There is
+therefore an $\alpha\in H$ such that $\{k:\alpha(k)\in F\}$ is infinite for
+every $F\in\Cal F$;  take $\nu_k=\alpha(k)$ for each $k$.   Since
+$\mu$ is a probability measure,
+
+$$\eqalignno{\int|\nu_{k+1}-\nu_k|d\mu
+&\le\|\nu_{k+1}^{\ssbullet}-\nu_k^{\ssbullet}\|_2\cr
+\displaycause{244E;  see 244Xd}
+&\le 2^{-k-1}+2^{-k}\cr}$$
+
+\noindent for every $k$, and
+$\sum_{k=0}^{\infty}\int|\nu_{k+1}-\nu_k|d\mu$
+is finite.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} Because a Radon
+probability measure on $\Cal P\Bbb N$ is defined by its
+values on the countable algebra $\frak B$ of open-and-closed sets, the
+number of such measures is at most $\#(\BbbR^{\frak B})=\frak c$.
+Enumerate them as $\ofamily{\xi}{\frakc}{\mu_{\xi}}$.   Choose a
+non-decreasing family
+$\langle\Cal F_{\xi}\rangle_{\xi\le\frakc}$ of filter bases on $Q$, as
+follows.   The inductive hypothesis will be that $\Cal F_{\xi}$ has
+cardinal at most $\max(\omega,\#(\xi))$ and consists of rationally convex
+sets.   Start with $\Cal F_0=\{F_n:n\in\Bbb N\}$ where
+$F_n=\Gamma_{\Bbb Q}(\{\delta_i:i\ge n\})$ for each $n$.
+Given $\Cal F_{\xi}$ where $\xi<\frak c$, apply (ii) with
+$\mu=\mu_{\xi}$ to see that there is
+a sequence $\sequence{k}{\nu_{\xi k}}$ in $Q$ such that
+
+\inset{$\sum_{k\in\Bbb N}\int|\nu_{\xi,k+1}-\nu_{\xi k}|d\mu_{\xi}<\infty$,
+
+$\{k:\nu_{\xi k}\in F\}$ is infinite for every $F\in\Cal F_{\xi}$.}
+
+\noindent Let $\Cal F_{\xi+1}$ be
+
+\Centerline{$\Cal F_{\xi}
+\cup\{F\cap\Gamma_{\Bbb Q}(\{\nu_{\xi k}:k\ge l\}):
+F\in\Cal F_{\xi}$, $l\in\Bbb N\}$.}
+
+\noindent For non-zero limit ordinals $\xi\le\frak c$, set
+$\Cal F_{\xi}=\bigcup_{\eta<\xi}\Cal F_{\eta}$.
+
+\medskip
+
+\quad{\bf (iv)} At the end of the induction, let $\Cal F$ be the filter on
+$M\cong(\ell^{\infty})^*$
+generated by $\Cal F_{\frakc}$, and let $\theta$ be a cluster point of
+$\Cal F$ for the
+weak* topology of $(\ell^{\infty})^*$.   Then $\theta$ is a medial limit.
+\Prf\ If $\mu$ is a Radon probability measure on $\Cal P\Bbb N$,
+take $\xi<\frak c$ such that $\mu=\mu_{\xi}$.   Because
+$\Gamma_{\Bbb Q}(\{\nu_{\xi k}:k\ge l\})$ belongs to $\Cal F$ for every
+$l\in\Bbb N$,
+$\dashint u(n)\theta(dn)=\lim_{k\to\infty}\dashint u(n)\nu_{\xi k}(dn)$ for every
+$u\in\ell^{\infty}$ for which the limit is defined.   In particular,
+$\theta(a)=\lim_{k\to\infty}\nu_{\xi k}(a)$ whenever $a\subseteq\Bbb N$ is
+such that the limit is defined.   Because
+$\sum_{k\in\Bbb N}\int|\nu_{\xi,k+1}-\nu_{\xi k}|d\mu$ is finite,
+this is the case for $\mu$-almost every $a$, so
+
+\Centerline{$\int\theta(a)\mu(da)
+=\lim_{k\to\infty}\int\nu_{\xi k}(a)\mu(da)
+=\lim_{k\to\infty}\dashint\mu E_n\nu_{\xi k}(dn)$;}
+
+\noindent and because the latter limit is defined it is equal to
+$\dashint\mu E_n\theta(dn)$.   As $\mu$ is arbitrary, $\theta$ satisfies
+condition (i) of 538P, and is a medial functional;  because $Q\in\Cal F$,
+$\theta\Bbb N=1$;  and because $\Cal F_0\subseteq\Cal F$, $\theta(a)=0$ for
+every finite $a\subseteq\Bbb N$, so $\theta$ is a medial limit.\ \Qed
+
+\medskip
+
+{\bf (b)(i)} The key is the following.   Suppose that
+$\nu:\Cal PI\to\Bbb R$ is a universally measurable additive
+functional.
+
+\medskip
+
+\qquad\grheada\ For every set $J$ and function
+$\phi:I\to J$, $\nu\phi^{-1}$ is
+universally measurable, where $(\nu\phi^{-1})(b)=\nu(\phi^{-1}[b])$ for
+every $b\subseteq J$.   \Prf\ We have only to observe that
+$b\mapsto\phi^{-1}[b]:\Cal PJ\to\Cal PI$ is continuous, and
+apply 434Df.\ \Qed
+
+\medskip
+
+\qquad\grheadb\ $\nu$ is bounded.   \Prf\Quer\
+Otherwise, there is a disjoint sequence
+$\sequence{k}{c_k}$ of subsets of $I$ such that
+$\lim_{k\to\infty}|\nu c_k|=\infty$ (326D(ii)).   Enlarging $c_0$ if
+necessary, we can suppose that $\bigcup_{k\in\Bbb N}c_k=I$.
+Set $\phi(i)=k$ for $k\in\Bbb N$ and $i\in c_k$.   Then
+$\nu\phi^{-1}[\{k\}]\to\infty$ as $k\to\infty$.   But $\nu'=\nu\phi^{-1}$
+is universally measurable, therefore
+$\Tau_{\Bbb N}$-measurable, where $\Tau_{\Bbb N}$ is the
+domain of the usual measure $\lambda_{\Bbb N}$ on $\Cal P\Bbb N$.
+Let $M$ be such
+that $\lambda_{\Bbb N}E>0$ where $E=\{a:|\nu'a|\le M\}$.   Then there are
+an $n\in\Bbb N$ such that for every $k\ge n$ there are $a$, $b\in E$ such
+that $a\symmdiff b=\{k\}$ (345E;  recall that the natural
+bijection $a\to\chi a:\Cal P\Bbb N\to\{0,1\}^{\Bbb N}$ identifies
+$\lambda_{\Bbb N}$ with the usual measure on $\{0,1\}^{\Bbb N}$).
+In this case, $k$ belongs to
+exactly one of $a$, $b$;  suppose that $k\in a\setminus b$;  then
+$|\nu'\{k\}|=|\nu a-\nu'b|\le 2M$.   This is supposed to be true for
+every $k\ge n$, so $\limsup_{k\to\infty}|\nu'\{k\}|\le 2M$.\ \Bang\Qed
+
+\medskip
+
+\qquad\grheadc\ $|\nu|$ is universally measurable.
+\Prf\ As in part (b-i) of the proof of 464K, there is a sequence
+$\sequencen{c_n}$ in $\Cal PI$ such that
+$\nu^+a=\lim_{n\to\infty}\nu(a\cap c_n)$ for every $a\subseteq I$.
+Since all the functions $a\mapsto a\cap c_n$ are continuous,
+$a\mapsto\nu(a\cap c_n)$ is universally measurable for every $n$, and
+$\nu^+$ is universally measurable (use 418C).
+Consequently $|\nu|=2\nu^+-\nu$ is universally measurable.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} If $\nu:\Cal P\Bbb N\to\coint{0,\infty}$
+is a universally measurable additive functional and $\nu\{n\}=0$ for every
+$n\in\Bbb N$, then $\nu=0$.   \Prf\Quer\ Otherwise, consider
+$\Cal F=\{a:\nu a=\nu\Bbb N\}$.   This is a filter on $\Bbb N$
+containing every cofinite set.   Let $\phi:\Bbb N\to\Bbb N$ be
+finite-to-one, and write $\nu'$ for $\nu\phi^{-1}$.
+Setting $\Cal I=\{a:\nu'a=0\}$, we have
+a strictly positive additive functional on the quotient algebra
+$\Cal P\Bbb N/\Cal I$, so $\Cal P\Bbb N/\Cal I$ is ccc and $\Cal I$ cannot
+be $[\Bbb N]^{<\omega}$, that is, $\phi[[\Cal F]]$ is not
+the Fr\'echet filter.   On the other hand,
+$\nu'$ is universally measurable, by (i-$\alpha$), so
+
+\Centerline{$\phi[[\Cal F]]=\{a:\phi^{-1}[a]\in\Cal F\}
+=\{a:\nu'a=\nu'\Bbb N\}$}
+
+\noindent is a universally measurable subset of $\Cal P\Bbb N$, and
+cannot be an ultrafilter (464Ca).   Thus $\Cal F$ witnesses that the filter
+dichotomy is false.\ \Bang\Qed
+
+\medskip
+
+\quad{\bf (iii)} Returning to the general case of a universally measurable
+additive functional $\nu:\Cal PI\to\Bbb R$, set $\gamma_i=\nu\{i\}$ for
+$i\in I$.   By (i-$\beta$),
+$\sup_{J\in[I]^{<\omega}}|\sum_{j\in J}\gamma_j|
+=\sup_{J\in[I]^{<\omega}}|\nu J|$ is finite, so
+$\sum_{i\in I}|\gamma_i|<\infty$, and we have a functional
+$\nu_1:\Cal PI\to\Bbb R$ defined by setting $\nu_1a=\sum_{i\in a}\gamma_i$
+for every $a\subseteq I$.   $\nu_1$ is continuous for the topology of
+$\Cal PI$, so $\nu_2=\nu-\nu_1$ is universally measurable, and
+$\nu'=|\nu_2|$ is universally measurable, by (i-$\gamma$).
+
+$\nu'J=0$ for every countable set $J\subseteq I$.   \Prf\ If $J$ is finite,
+this is trivial, because
+
+\Centerline{$|\nu_2|\{i\}
+=|\nu_2\{i\}|=|\nu\{i\}-\nu_1\{i\}|=|\gamma_i-\gamma_i|=0$}
+
+\noindent for every $i\in I$.   If $J$ is countably infinite, then
+the embedding $\Cal PJ\embedsinto\Cal PI$ is continuous, so
+$\nu'\restr\Cal PJ$ is universally measurable for the usual topology on
+$\Cal PJ$;  also it is still zero on singletons, so (ii) tells us that it
+is zero on the whole of $\Cal PJ$.\ \Qed
+
+It follows that
+$\nu'$ is zero everywhere.   \Prf\ Take $c\subseteq I$ and $\epsilon>0$.
+$\nu'$ must be $\Tau_I$-measurable, where $\Tau_I$ is the domain of
+the usual measure $\lambda_I$ on $\Cal PI$.   Since $\lambda_I$ is a
+completion regular Radon measure (416Ub), there must be a non-negligible
+zero set $K\subseteq\Cal PI$ such that $|\nu'a-\nu'b|\le\epsilon$ for all
+$a$, $b\in K$;  and there is a countable set $J\subseteq I$ such that $K$
+is determined by coordinates in $J$ (4A3Nc, applied to
+$\{0,1\}^I\cong\Cal PI$).   Take any $a\in K$.   Then
+$c_1=(c\setminus J)\cup(a\cap J)$ and $a\cap J$ both belong to $K$.
+But as $\nu'(c\cap J)=0$,
+
+\Centerline{$|\nu'c|=|\nu'c_1-\nu'(a\cap J)|\le\epsilon$.}
+
+\noindent As $c$ and $\epsilon$ are arbitrary, $\nu'=0$.\ \Qed
+
+Accordingly $\nu_2=0$ and $\nu=\nu_1$.   But of course $\nu_1$ is
+completely additive.
+
+\medskip
+
+\quad{\bf (iv)} Finally, a medial limit would be a non-zero additive
+functional from $\Cal P\Bbb N$ to $[0,1]$
+which was universally measurable, as noted in
+538Q, and zero on singletons;  and this has already been ruled out by (ii).
+}%end of proof of 538S
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} It is possible to have medial limits when
+$\frakmctbl\ll\frak c$;  see 553N.}
+
+\exercises{\leader{538X}{Basic exercises (a)}
+%\spheader 538Xa
+Let $\Cal F$ be a filter on $\Bbb N$, and $I$ an infinite
+subset of $\Bbb N$ such that $\Bbb N\setminus I\notin\Cal F$;  write
+$\Cal F\lceil I$ for the filter $\{A\cap I:A\in\Cal F\}$.
+Show that if
+$\Cal F$ is free, or a $p$-point filter, or Ramsey, or rapid, or nowhere
+dense, or measure-centering,
+or measure-converging, or with the Fatou property, then so is
+$\Cal F\lceil I$.
+%538A
+
+\spheader 538Xb
+For $A\in[\Bbb N]^{\omega}$ let $f_A:\Bbb N\to A$ be the
+increasing enumeration of $A$.   Let $\Cal F$ be a free filter on $\Bbb N$.
+Show that $\Cal F$ is rapid iff $\{f_A:A\in\Cal F\}$ is cofinal with $\NN$.
+%538A
+
+\spheader 538Xc\dvAnew{2009}
+Let $\Cal F$ be a filter which is universally
+measurable (regarded as a subset
+of $\Cal P(\bigcup\Cal F)$ with its usual topology), and
+$\Cal G$ another filter such that $\Cal G\leRK\Cal F$.   Show that $\Cal G$
+is universally measurable.
+%538B Also works for universally Radon-measurable.
+
+\spheader 538Xd
+Let $\CalFr$ be the Fr\'echet filter and $\Cal F_d$ the
+asymptotic density filter, the filter
+of subsets of $\Bbb N$ with asymptotic density $1$.   (i) Show that
+$\CalFr$ and $\Cal F_d$ are $p$-point filters.   (ii) Show that
+$\CalFr\leRB\Cal F_d$ but that $\CalFr\ltimes\CalFr\not\leRK\Cal F_d$.
+%538D
+
+\spheader 538Xe(i) Let $\sequencen{\Cal F_n}$ be a sequence of
+filters on $\Bbb N$, and $\Cal F$ a filter on $\Bbb N$.   Write
+$\lim_{n\to\Cal F}\Cal F_n$ for the filter
+$\{A:A\subseteq\Bbb N$, $\{n:n\in\Bbb N$, $A\in\Cal F_n\}\in\Cal F\}$.
+Show that if every $\Cal F_n$ is rapid, then
+$\lim_{n\to\Cal F}\Cal F_n$ is rapid.
+(ii) Let $\Cal F$ be a rapid filter, and $\Cal G$ any filter on $\Bbb N$.
+Show that $\Cal G\ltimes\Cal F$ is
+rapid.   (iii) In 538E, suppose that $\Cal F_1$ is rapid.   Show that
+$\Cal G_{\xi}$ is rapid for every $\xi\ge 1$.
+%538E
+
+\spheader 538Xf(i) Let $\Cal F$ be a nowhere dense filter, and
+$\Cal G$ a filter on $\Bbb N$ such that $\Cal G\leRK\Cal F$.   Show that
+$\Cal G$ is nowhere dense.
+(ii)\dvAnew{2009} Show that a $p$-point ultrafilter is nowhere dense.
+(iii)\dvAnew{2009}
+In 538E, show that if every $\Cal F_{\xi}$ is a nowhere dense ultrafilter,
+then $\Cal G_{\zeta}$ is a nowhere dense ultrafilter.
+%538E 538Xe
+
+\sqheader 538Xg
+Let $\Cal F$ be a free filter on $\Bbb N$.   Show that the
+following are equiveridical:  (i) $\Cal F$ is a Ramsey filter;  (ii)
+whenever $K$ is finite, $k\in\Bbb N$ and $f:[\Bbb N]^k\to K$ is a function,
+there is an $F\in\Cal F$ such that $f$ is constant on $[F]^k$;
+(iii) $\Cal F$ is a $p$-point filter and whenever $\sequencen{E_n}$ is a
+disjoint sequence in $[\Bbb N]^{<\omega}$, there is an $F\in\Cal F$
+such that $\#(F\cap E_n)\le 1$ for every $n$;  (iv) whenever
+$\sequencen{E_n}$ is a disjoint sequence in $\Cal P\Bbb N\setminus\Cal F$,
+there is an $F\in\Cal F$ such that $\#(F\cap E_n)\le 1$ for every $n$.
+%538F
+
+\spheader 538Xh Let $\frak F$ be a countable family of distinct $p$-point
+ultrafilters on $\Bbb N$.   Show that there is a disjoint family
+$\family{\Cal F}{\frak F}{A_{\Cal F}}$ of subsets of $\Bbb N$ such that
+$A_{\Cal F}\in\Cal F$ for every $\Cal F\in\frak F$.
+%538F
+
+\spheader 538Xi\dvAnew{2010}
+Let $(X,\Sigma,\mu)$ be a complete
+perfect probability space, $(Y,\frak S)$ a
+perfectly normal compact Hausdorff space,
+$\sequencen{f_n}$ a sequence of measurable functions from $X$ to $Y$,
+$\Cal F$ a measure-centering ultrafilter on $\Bbb N$ and $\lambda$ the
+$\Cal F$-extension of $\mu$.   (i) Setting
+$f(x)=\lim_{n\to\Cal F}f_n(x)$ for $x\in X$, show that $f$ is
+$\dom\lambda$-measurable.   (ii) For each $n\in\Bbb N$, show that there is
+a unique Radon measure $\nu_n$ on $Y$ such that $f_n$ is \imp\ for $\mu$
+and $\nu_n$.
+(iii) Let $\nu$ be the limit $\lim_{n\to\Cal F}\nu_n$ for the
+narrow topology on the space of Radon probability measures on $Y$ (437Jd).
+Show that $f$ is \imp\ for $\lambda$ and $\nu$.   \Hint{look at the Radon
+measure associated with the image measure $\lambda f^{-1}$.   You may
+prefer to begin with metrizable $Y$.}
+%538I
+
+\spheader 538Xj Let $\familyiI{(\frak A_i,\bar\mu_i)}$ be a family of
+probability algebras, $\Cal F$ an ultrafilter on $I$, and
+$(\frak A,\bar\mu)$ the probability algebra reduced product of
+$\prod_{i\in I}(\frak A_i,\bar\mu_i)|\Cal F$.   For each $i\in I$,
+let $\Bsubseteqshort_i$ be the order relation on $\frak A_i$;  set
+$P=\prod_{i\in I}\frak A_i$ and let $P|\Cal F$ be the
+partial order reduced product of $\familyiI{(\frak A_i,\Bsubseteqshort_i)}$
+modulo $\Cal F$ as defined in 5A2A.   Describe a canonical order-preserving
+map from $P|\Cal F$ to $\frak A$.
+%538J
+
+\spheader 538Xk(i) Let $(\frak A,\bar\mu)$ be a homogeneous
+probability algebra with Maharam type $\kappa$,
+$I$ a non-empty set, $\Cal F$ an ultrafilter on $I$ and
+$(\frak C,\bar\nu)$ the probability algebra reduced power
+$(\frak A,\bar\mu)^I|\Cal F$.   Show that $\frak C$ is homogeneous, with
+Maharam type the transversal number $\Tr_{\Cal I}(I;\kappa)$
+(definition:  5A1L), where $\Cal I=\{I\setminus A:A\in\Cal F\}$.
+\Hint{5A1Md, 521Eb.} %\Tr attained, M type=top density
+(ii)\dvAnew{2009} % {\smc Farah Hart \& Sherman p09}
+Show that if $(\frak A,\bar\mu)$ is any probability algebra
+and $\Cal F$ and $\Cal G$ are non-principal
+ultrafilters on $\Bbb N$, then the probability algebra reduced powers
+$(\frak A,\bar\mu)^{\Bbb N}|\Cal F$ and
+$(\frak A,\bar\mu)^{\Bbb N}|\Cal G$ are isomorphic.
+%538J
+
+\spheader 538Xl Let $(X,\Sigma,\mu)$ be a perfect probability space and
+$\mu'$ an indefinite-integral measure over $\mu$ which is also a
+probability measure.   Let $\Cal F$ be a measure-centering ultrafilter on
+$\Bbb N$ and $\lambda$, $\lambda'$ the $\Cal F$-extensions of $\mu$ and
+$\mu'$.   Show that $\lambda'$ is an
+indefinite-integral measure over $\lambda$.
+%538K  take care over  \dom(\lambda')
+
+\sqheader 538Xm  ({\smc Benedikt 98})
+(i) Let $\Cal F$ be any free filter on $\Bbb N$.   Show that
+$\Cal F\ltimes\Cal F$ is not measure-centering.   \Hint{let
+$\sequencen{e_n}$ be the standard generating family in $\frak B_{\omega}$,
+and consider $a_{mn}=e_m\Bsetminus e_n$ if $m<n$, $1$ otherwise.}
+(ii) Let $\Cal F$ be a measure-centering ultrafilter on $\Bbb N$.
+Show that if $f$, $g\in\NN$ and $\{n:f(n)\ne g(n)\}\in\Cal F$, then
+$f[[\Cal F]]\ne g[[\Cal F]]$.   \Hint{consider
+$a_n=e_{f(n)}\Bsetminus e_{g(n)}$ if $f(n)\ne g(n)$.}
+%538L "Hausdorff filter"
+
+\spheader 538Xn\dvAnew{2009}
+Let $X$ be a locally compact Hausdorff topological group,
+and $\mu$ a left Haar measure on $X$.   Show that there is a
+complete locally determined \lti\ measure
+$\lambda$ on $X$ such that
+$\lambda(\lim_{n\to\Cal F}E_n)$ is defined and equal to
+$\sup_{K\subseteq X\text{ is compact}}\lim_{n\to\Cal F}\mu(E_n\cap K)$
+whenever $\Cal F$ is a Ramsey ultrafilter on
+$\Bbb N$ and $\sequencen{E_n}$ is a sequence of Haar measurable subsets of
+$X$.
+%538M
+
+\spheader 538Xo(i) Let $\sequencen{\Cal F_n}$ be a sequence of
+measure-converging filters on $\Bbb N$.
+Show that $\bigcap_{n\in\Bbb N}\Cal F_n$ is measure-converging, so that
+$\lim_{n\to\Cal F}\Cal F_n$ (538Xe) is measure-converging for any
+filter $\Cal F$ on $\Bbb N$.
+(ii) In 538E, suppose that $\Cal F_1$ is measure-converging.
+Show that $\Cal G_{\xi}$ is measure-converging for every $\xi\in[1,\zeta]$.
+%538N 538Xg
+
+\spheader 538Xp\dvAnew{2012} Suppose that
+$\ofamily{\xi}{\kappa}{\Cal F_{\xi}}$ is a family of measure-converging
+filters, where $\kappa$ is non-zero and
+less than the additivity $\add\Cal N$ of
+Lebesgue measure.   Show that $\bigcap_{\xi<\kappa}\Cal F_{\xi}$ is
+measure-converging.
+%538N(iv) 538Xo
+
+\spheader 538Xq(i)\dvAnew{2014}
+Let $\Cal F$ be a filter on $\Bbb N$.   Show that
+$\Cal F$ has the Fatou property iff $\int fd\mu$ and
+$\lim_{n\to\Cal F}\int f_nd\mu$ are defined and
+equal whenever $(X,\Sigma,\mu)$ is a
+measure space, $g:X\to\coint{0,\infty}$ is an integrable function and
+$\sequencen{f_n}$ is a sequence of measurable functions on $X$ such that
+$|f_n|\leae g$ for every $n$ and $\lim_{n\to\Cal F}f_n\eae f$.
+(ii) Show that a non-principal ultrafilter on $\Bbb N$ cannot
+have the Fatou property.   \Hint{464Ca.}
+%538O
+
+\spheader 538Xr
+Show that the asymptotic density filter (538Xd) has the Fatou property.
+%538O 538Xd 538Ym
+
+\spheader 538Xs(i)
+Let $\sequencen{\Cal F_n}$ be a sequence of filters with
+the Fatou property, and $\Cal F$ a filter with the Fatou property.   Show
+that $\lim_{n\to\Cal F}\Cal F_n$ (538Xe) has the Fatou property.
+(ii) In 538E, suppose that $\Cal F_{\xi}$ has the Fatou property for every
+$\xi\in[1,\zeta]$.
+Show that $\Cal G_{\xi}$ has the Fatou property for every $\xi\le\zeta$.
+%538O
+
+\spheader 538Xt Let $\nu:\Cal P\Bbb N\to\Bbb R$ be a bounded additive
+functional.   (i) Show that $\nu$ is a medial functional iff
+$\int\nu\{n:x\in E_n\}\mu(dx)$ is defined and equal to
+$\dashint\mu E_n\nu(dn)$ whenever
+$(X,\Sigma,\mu)$ is a probability space and $\sequencen{E_n}$ is a sequence
+in $\Sigma$.   (ii) Show that in this case $a\mapsto\nu\phi^{-1}[a]$ is a
+medial functional for any $\phi:\Bbb N\to\Bbb N$.
+%538Q
+
+\sqheader 538Xu Let $(X,\Sigma,\mu)$ be a probability space, and $\Tau$ a
+$\sigma$-subalgebra of $\Sigma$.   Let $\sequencen{f_n}$ be a sequence in
+$\eusm L^{\infty}(\mu)$ such that $\sup_{n\in\Bbb N}\esssup|f_n|$ is
+finite, and for each $n\in\Bbb N$ let $g_n$ be a conditional expectation of
+$f_n$ on $\Tau$.   Suppose that $\nu$ is a medial functional.   Show that
+$f(x)=\dashint f_n(x)\nu(dn)$ and
+$g(x)=\dashint g_n(x)\nu(dn)$ are defined for
+almost every $x$, that $f\in\eusm L^{\infty}(\mu)$, and that $g$ is a
+conditional expectation of $f$ on $\Tau$.
+%538R
+
+\spheader 538Xv (V.Bergelson) Show that there are a probability algebra
+$(\frak A,\bar\mu)$ and a sequence $\sequencen{a_n}$ in $\frak A$ such that
+$\inf_{n\in\Bbb N}\bar\mu a_n\penalty-100>0$
+but $a_m\Bcap a_n\Bcap a_{m+n}=0$ whenever
+$m$, $n>0$.   \Hint{for $n\ge 1$, set
+$E_n=\{x:x\in[0,1]$, $\lfloor 3nx\rfloor\equiv 1\mod 3\}$.}
+%538+
+
+\leader{538Y}{Further exercises (a)}\dvAnew{2014}
+%\spheader 538Ya
+Show that if $\Cal F$ and $\Cal G$ are
+filters and $\Cal F\leRK\Cal G$, then, in the language of
+512A, $(\Cal F,\supseteq,\Cal F)\prGT(\Cal G,\supseteq,\Cal G)$, so that
+$\ci\Cal F\le\ci\Cal G$ and $\Cal F$ is $\kappa$-complete whenever
+$\kappa$ is a cardinal and $\Cal G$ is $\kappa$-complete.
+%538B
+
+\spheader 538Yb
+Let $\Cal F$ be a free ultrafilter on $\Bbb N$, and suppose
+that whenever $\Cal G$ is a free filter on $\Bbb N$ and
+$\Cal G\leRK\Cal F$, then $\Cal F\leRK\Cal G$.   Show that $\Cal F$ is a
+Ramsey ultrafilter.   \Hint{{\smc Comfort \& Negrepontis 74}.} %Th 9.6
+%538D
+
+\spheader 538Yc Show that if $\frak p=\frak c$ then there are
+$2^{\frakc}$
+Ramsey ultrafilters on $\Bbb N$, and therefore $2^{\frakc}$ isomorphism
+classes of Ramsey ultrafilters.
+%538F
+
+\spheader 538Yd Let $\Cal F$ be an ultrafilter on $\Bbb N$.   Show that
+$\Cal F$ is measure-centering iff whenever $\frak A$ is a Boolean algebra,
+$D\subseteq\frak A\setminus\{0\}$ has intersection number greater than
+$0$ (definition: 391H) and $\sequencen{a_n}$ is a sequence in $D$, then
+there is an $A\in\Cal F$ such that $\{a_n:n\in A\}$ is centered.
+%538G out of order query
+
+\spheader 538Ye(i) Show that if $\cov\Cal N=\frak c$, there is a
+measure-centering ultrafilter on $\Bbb N$
+including the asymptotic density filter (538Xd).   (ii) Show that an
+ultrafilter on
+$\Bbb N$ including the asymptotic density filter cannot be a
+$p$-point filter.
+(iii) Show that a filter on $\Bbb N$ including the asymptotic density
+filter cannot be a rapid filter.
+%538H out of order query 53bits
+
+\spheader 538Yf(i) Let $\Cal F$, $\Cal G$ be free filters on $\Bbb N$ such
+that $\Cal F\ltimes\Cal G$ is measure-centering.   Show that there is no
+free filter $\Cal H$ such that $\Cal H\leRK\Cal F$ and $\Cal H\leRK\Cal G$.
+(ii) Show that if there are two non-isomorphic Ramsey
+ultrafilters on $\Bbb N$, then there are  two
+non-isomorphic measure-centering ultrafilters $\Cal F$, $\Cal G$ on
+$\Bbb N$ such that $\Cal F\ltimes\Cal G$ is not measure-centering.
+% either  \CalH_1 , \CalH_1\ltimes\CalH_2  or
+%  \CalH_1\ltimes\CalH_2, \CalH_2
+%538Xm 538L
+
+\spheader 538Yg For an uncountable set $I$,
+let us say that a filter $\Cal F$
+on $I$ is {\bf uniform and measure-centering} if $\#(A)=\#(I)$ for every
+$A\in\Cal F$ and whenever $\frak A$ is a Boolean algebra,
+$\nu:\frak A\to\coint{0,\infty}$ is an additive functional, and
+$\familyiI{a_i}$ is a family in $\frak A$ with
+$\inf_{i\in I}\nu a_i>0$, there is an $A\in\Cal F$ such that
+$\{a_i:i\in A\}$ is centered.   (i) State and prove a result corresponding
+to 538G for such filters.   \Hint{in the part corresponding to 538G(iv),
+use `compact' measures rather than `perfect' measures.}   (ii) State and
+prove a result corresponding to 538H.   \Hint{set $\kappa=\#(I)$.
+In the part corresponding to
+538Hc, suppose that you have a $\kappa$-complete ultrafilter on $I$,
+rather than a
+Ramsey ultrafilter;  see 4A1L.   In the part corresponding to 538He,
+suppose that $\kappa$ is regular and that
+$\cov\Cal N_{\kappa}=2^{\kappa}$, where $\Cal N_{\kappa}$ is
+the null ideal of the usual measure on $\{0,1\}^{\kappa}$.}
+(iii) State and prove results corresponding to 538I-538K. %538I 538J 538K
+(iv) State and prove results corresponding to 538L-538M, but with
+`normal ultrafilters' in place of `Ramsey ultrafilters'.
+%538M
+%question:  can there be a uniform measure-centering ultrafilter on
+%\frak c ?
+
+\spheader 538Yh\dvAnew{2009} Show that if $\Cal F$ and $\Cal G$ are filters
+on $\Bbb N$, $\Cal F$ is rapid and $\Cal G\leRB\Cal F$, then $\Cal G$ is
+rapid.
+%538N
+
+\spheader 538Yi Give an example of filters $\Cal F$, $\Cal G$ on $\Bbb N$
+such that $\Cal F$ has the Fatou property, $\Cal G\subseteq\Cal F$ and
+$\Cal G$ does not have the Fatou property.
+%538O  \Cal G=\Cal F_d\cap\Cal H  where  \Cal H  ultrafilter containing
+%set of density  0
+
+\spheader 538Yj(i) Let $\Cal F$ be a nowhere dense filter on $\Bbb N$,
+and $\Cal I$ the
+ideal $\{\Bbb N\setminus A:A\in\Cal F\}$.   Show that
+$\Cal P\Bbb N/\Cal I$ is finite.
+(ii) Show that a free filter with the Fatou property cannot be nowhere
+dense.
+%538Xq 538O
+
+\spheader 538Yk\dvAnew{2009} Let $(X,\Sigma,\mu)$ be a probability space
+and $\sequence{m}{f_m}$, $\sequencen{g_n}$ two uniformly bounded
+sequences of real-valued measurable functions defined on $X$.
+Let $\nu$,
+$\nu':\Cal P\Bbb N\to\Bbb R$ be bounded additive functionals.   Show that
+$\dashidashiint f_m\times g_nd\mu\,\nu(dm)\nu'(dn)
+=\dashidashiint f_m\times g_nd\mu\,\nu'(dn)\nu(dm)$.
+%538P
+%both equal to $\int f\times g$.
+
+\spheader 538Yl ({\smc Meyer 73})
+Let $\nu$ be a medial limit.   Write $U$ for the set of
+sequences $u\in\BbbR^{\Bbb N}$ such that
+$\sup\{\dashint v\,d\nu:v\in\ell^{\infty}$, $v\le|u|\}$ is
+finite;  for $u\in U$, write $\dashint u\,d\nu$ for
+$\lim_{m\to\infty}\dashint\med(-m,u(n),m)\nu(dn)$
+(see 364Xj).
+Suppose that $(X,\Sigma,\mu)$ is a probability space and
+$\sequencen{f_n}$ a sequence of $\mu$-integrable real-valued functions
+on $X$ such that $\sequencen{\int|f_n|d\mu}\in U$.
+(i) Show that $\sequencen{f_n(x)}\in U$ for $\mu$-almost every
+$x\in X$.   Set $f(x)=\dashint f_n(x)\nu(dn)$ whenever
+$\sequencen{f_n(x)}\in U$.
+(ii) Show that if every $f_n$ is non-negative then
+$\int fd\mu\le\dashiint f_nd\mu\,\nu(dn)$.
+(iii) Show that if $\{f_n:n\in\Bbb N\}$ is uniformly integrable then
+$\int fd\mu=\dashiint f_nd\mu\,\nu(dn)$.
+(iv)\dvAnew{2012}
+Show that if $\sequencen{f_n^{\ssbullet}}$ is weakly convergent to $0$
+in $L^1(\mu)$, then $f\eae 0$.   (v)\dvAnew{2012}
+Suppose that $\sequencen{f_n}$ is uniformly integrable.
+Let $\Tau$ be a $\sigma$-subalgebra of $\Sigma$, and for
+each $n\in\Bbb N$ let $g_n$ be a conditional expectation of $f_n$ on
+$\Tau$;  set
+$g(x)=\dashint g_n(x)\nu(dn)$ whenever $\sequencen{g_n(x)}\in U$.
+Show that
+$g$ is a conditional expectation of $f$ on $\Tau$.
+%538R 53bits 538Xu
+
+\spheader 538Ym\dvAnew{2014}
+Suppose that $\Cal F$ is a filter on $\Bbb N$ with the Fatou property, and
+$\sequence{n}{\nu_n}$ a sequence of medial limits.   Set
+$\Cal G=\{A:A\subseteq\Bbb N$, $\lim_{n\to\Cal F}\nu_nA=1\}$.   Show that
+$\Cal G$ is a filter with the Fatou property.
+%538Xr 538R mt53bits
+
+\spheader 538Yn\dvAnew{2009} Show that
+$\frak u\ge\frak r(\omega,\omega)\ge\max(\cov\Cal N,\frakmctbl)$
+(definitions:  5A6Ia, 529G).
+%538S 529Xg
+
+\spheader 538Yo\dvAnew{2009}(i) Show that if $\Cal F$ is a rapid filter
+on $\Bbb N$, then
+$\ci\Cal F\ge\frak d$.   (ii) Show that $\frak d\ge\frak g$ (definition:
+5A6I(b-ii)).   (iii) Show that if $\frak u<\frak g$ there are no rapid
+filters on $\Bbb N$, and if there is a measure-converging filter
+there is a measure-converging ultrafilter with coinitiality $\frak u$.
+%538S 5A6J 538Ya 53bits
+
+\spheader 538Yp\dvAnew{2011} Suppose that the filter dichotomy is true.
+(i) Let $\frak A$ be a Dedekind $\sigma$-complete
+Boolean algebra.   Show that if $\nu:\frak A\to\Bbb R$ is an additive
+functional which is universally measurable for the order-sequential
+topology of $\frak A$, then
+$\nu$ is countably additive.   (ii) Let $(\frak A,\bar\mu)$ be a
+localizable measure algebra.   Show that if $\nu:\frak A\to\Bbb R$ is an
+additive functional which is universally measurable for the measure-algebra
+topology on $\frak A$, then it is continuous.
+%538S
+
+\spheader 538Yq(i) Show that there is a semigroup operation $\dot+$ on
+the set $\beta\Bbb N$ of ultrafilters on $\Bbb N$ defined by saying that
+$\Cal F\dot+\Cal G=+[[\Cal F\ltimes\Cal G]]$ for all $\Cal F$,
+$\Cal G\in\beta\Bbb N$, where $+:\Bbb N\times\Bbb N\to\Bbb N$ is addition.
+(ii) Show that if we identify $\beta\Bbb N$ with the Stone-\v{C}ech
+compactification of $\Bbb N$ (4A2I(b-i)), then $\dot+$ is
+continuous in the first variable.   (iii) Show that there is a
+non-principal ultrafilter $\Cal F$ on $\Bbb N$ which is {\bf idempotent},
+that is, $\Cal F\dot+\Cal F=\Cal F$.
+\Hint{consider a minimal closed sub-semigroup of the set of non-principal
+ultrafilters.}
+(iv) For any function $f\in\NN$, write $\FS(f)$ for
+$\{\sum_{n\in K}f(n):K\in[\Bbb N]^{<\omega}\}$;  say a {\bf finite sum set}
+is a set of the form $\FS(f)$ for some strictly increasing function
+$f\in\NN$.   Show that if $\Cal F$ is a non-principal idempotent
+ultrafilter on $\Bbb N$ and $I\in\Cal F$, then $I$ includes a finite sum
+set.   (This is a version of {\bf Hindman's theorem}.)
+(v) Show that if $I\subseteq\Bbb N$ is a finite sum set
+there is an idempotent ultrafilter containing $I$.
+(vi) Suppose that $(\frak A,\bar\mu)$ is a probability algebra and
+$\pi:\frak A\to\frak A$ is a measure-preserving Boolean homomorphism.
+($\alpha$) Show that if $\Cal F$ is an idempotent ultrafilter on $\Bbb N$,
+then
+$\lim_{n\to\Cal F}\mu(a\Bcap\pi^na)\ge(\mu a)^2$ for every $a\in\frak A$
+($\beta$) Show that there is a finite sum set $I\subseteq\Bbb N$ such that
+$\{\pi^na:n\in I\}$ is centered.
+(vii) Show that no idempotent ultrafilter is measure-centering.
+\Hint{538Xv.}
+(viii) Show that if $\Cal F$ is a $p$-point ultrafilter then
+$\Cal F\dot+\Cal F$ is isomorphic to $\Cal F\ltimes\Cal F$ and is
+not measure-centering.
+%mt53bits
+(ix) Repeat, as far as possible, for semigroups other than $(\Bbb N,+)$.
+%538+
+
+\spheader 538Yr (V.Bergelson-M.Talagrand) Show that there are a probability
+algebra $(\frak A,\bar\mu)$ and a sequence $\sequencen{a_n}$ in $\frak A$
+such that $\bar\mu a_n=\bover12$ for every $n\in\Bbb N$ but
+$\inf_{m,n\in I}\bar\mu(a_m\Bcap a_n)=0$ whenever
+$I\subseteq\Bbb N$ does not have asymptotic density $0$.
+%538+ n08707.tex
+}%end of exercises
+
+\leader{538Z}{Problem}
+Show that it is relatively consistent with ZFC to suppose that there are
+no measure-converging filters on $\Bbb N$.
+%What happens if we add Cohen reals to a model of GCH?
+%What if  \frak u < \frak g ? 538Ys
+
+\leaveitout{For a function $f:\Bbb N\to\Bbb N$, write $\FS(f)$ for
+$\{\sum_{n\in I}f(n):I\in[\Bbb N]^{<\omega}\}$.   A {\bf finite sum set} is
+a set of the form $\FS(f)$ for a strictly increasing sequence $f$.
+Suppose that $(\frak A,\bar\mu)$ is a probability algebra and
+$\sequencen{a_n}$ is a sequence in $\frak A$ such that
+$\inf_{n\in\Bbb N}\mu a_n>0$.   Must there be a finite sum set
+$F\subseteq\Bbb N$ such that $\{a_n:n\in F\}$ is centered?
+
+In 538Yq(vi-$\beta$), if $\Cal F$ is idempotent,
+do we actually have a set $I\in\Cal F$ such that $\{\pi^na:n\in I\}$ is
+centered?
+}
+
+\endnotes{
+\Notesheader{538} This is a long section, and rather a lot of ideas are
+crowded into it, starting with the list in 538A.   If you have looked at
+ultrafilters on $\Bbb N$ at all, you are likely to have encountered
+`$p$-point', `rapid' and `Ramsey' ultrafilters, and most of
+538B-538D %538B 538C 538D
+and 538F will probably be familiar.   The `iterated products' of 538E will
+also be a matter of adapting known concepts to my particular formulation.
+
+Some of the slightly contorted language of 538Fe and 538Ff
+(with references to
+`$\#(\frak F)$') is there because we do not know how many isomorphism
+classes of Ramsey filters there are.   If there are none (as in random real
+models, see 553H), or one ({\smc Shelah 82}, \S VI.5),
+then things are very simple.   If there are infinitely many then we could
+rephrase 538Ff in terms of sequences of non-isomorphic filters.
+But it is possible that there should be two, or seventeen ({\smc Shelah
+98a}, p.\ 335).
+%e-mail to S.S., 9.7.07;  reply 4.5.14
+
+In 538H-538M %538I 538L 538M
+I try to set out, and expand, some of the principal ideas of
+{\smc Benedikt 98}.   The starting point is the observation that a Ramsey
+ultrafilter gives us an extension of Lebesgue measure on $[0,1]$,
+indeed of any perfect probability measure.   Observing that this property
+is preserved by iterations, we are led to `measure-centering' ultrafilters.
+Once we have the idea of measure-centering-ultrafilter extension
+of a perfect
+probability measure, we can set out to look at its properties in terms of
+the (by now very extensive) general theory of this treatise.   The first
+step has to be the identification of its measure algebra (538Ja, 538Xk),
+followed, if
+possible, by the identification of the corresponding Banach function
+spaces.   It turns out that these can be reached by an alternative route
+{\it not} involving special properties of the ultrafilter or the
+probability space, which I have expressed in general forms in
+\S\S328 and 377.   This gives a
+long list of facts, which I have written out in 538Ja and 538K.
+Minor variations of the measure and the filter are straightforward
+(538Jb, 538Jc, 538Xl).   For iterated products of filters we have more
+work to do (538L), especially if we are
+to express them in a form adequate for
+the objective, the universal-extension result of 538M.
+
+You will have noticed that in the statement of 538G I speak of
+`$\bigcup_{A\in\Cal F}\bigcap_{n\in A}F_n$' and
+`$\liminf_{n\to\Cal F}\mu F_n$'.   Something of the sort is necessary since
+in that theorem I do not insist from the outset
+that $\Cal F$ should be an ultrafilter.   Of course only ultrafilters are
+of interest in this context, by 538Ha, and for these we have
+$\bigcup_{A\in\Cal F}\bigcap_{n\in A}F_n=\lim_{n\to\Cal F}F_n$ and
+$\liminf_{n\to\Cal F}\mu F_n=\lim_{n\to\Cal F}\mu F_n$, as in 538I.
+
+For most of this section I have kept firmly to the study of filters on
+$\Bbb N$.   For measure-centering filters, at least, there are interesting
+extensions to filters on uncountable sets, which I mention in 538Yg.   We
+can do a good deal with the ideas of 538G-538K on cardinals less than
+$\frak c$ in the presence of (for instance) Martin's axiom;  but for
+anything corresponding to 538L-538M it seems that we must use a \2vm\
+cardinal (541M below).
+
+Measure-converging filters (538N) and filters with the Fatou property
+(538O) form an oddly complementary pair.   I have tried to emphasize the
+correspondence in the
+characterizations 538Na and 538Oa
+(compare 538G(v), 538Na(iv) and 538Oa(iv)),
+but after this they seem to diverge.   The phrase `Fatou
+property' comes from 538O(a-iii);  if you like, Fatou's Lemma says that the
+Fr\'echet filter has the Fatou property.   From 538Xq(i) I see that I could
+just as well have called it the `Lebesgue property'.
+Note that any filter
+larger than a measure-converging filter is again measure-converging, so
+that if there is a measure-converging filter there is a measure-converging
+ultrafilter;  but that no non-principal ultrafilter can have the Fatou
+property (538Xq(ii)).   On the other hand, there are many free filters with the
+Fatou property, but it is not known for sure whether there have to be
+measure-converging filters.   It is possible for a
+measure-converging filter to have the Fatou property (538Rd).
+
+In the last part of the section I look at a different kind of limit.   A
+`Banach limit' is an extension to $\ell^{\infty}$
+of the ordinary limit regarded as a linear functional on the closed
+subspace of convergent sequences;  a `medial limit' is a Banach limit which
+commutes with integration in appropriate settings.   To study these
+I use the formulae of repeated integration to do some
+surprising things.   In 363L I tried to explain what I meant by the formula
+`$\dashint\ldots d\nu$' for a {\it finitely} additive functional $\nu$.
+This defines linear functionals which are positive for non-negative $\nu$.
+In `repeated integrals' like $\dashiint f_n(x)\mu(dx)\nu(dn)$ (538P(iii)),
+we must interpret the formula
+as $\dashint\bigl(\int f_n(x)\mu(dx)\bigr)\nu(dn)$;  the `inner
+integral' is an ordinary integral with respect to the countably additive
+measure $\mu$, and the `outer integral' is a name for a linear functional.
+In the integral $\dashint\ldots d\nu$
+we have no problem with measurability,
+though we must check that the integrand $n\mapsto\int f_nd\mu$ is bounded
+(or, at least, satisfies the condition in 538Yl);
+but when we look at the other repeated integrals, $\int\nu(a)\mu(da)$ or
+$\idashint x\,d\nu\,\mu(dx)$ or $\idashint f_n(x)\nu(dn)\mu(dx)$,
+the conditions of 538P must explicitly assert
+that the outer integrals are defined.
+
+Because we don't need to consider measurability, the `finitely additive
+integrals' here are in some ways easy to deal with;  `disintegrations' like
+$\tilde\nu=\dashint\nu_k\,\nu(dk)$
+(538Rc) slide past all the usual questions.
+However we must always be vigilant against the temptations of limiting
+processes.   As with the Riemann integral, of course, we can integrate
+the limit of a uniformly convergent sequence of functions.   But see the
+manoeuvres of part (a-iii) of the proof of 538R, where
+the sums $\sum_{i=0}^{\infty}\alpha_{ni}...$ demand different treatments at
+different points.   And Fubini's theorem nearly disappears;  the point of
+`medial functionals' is that something extraordinary has to happen before
+we can expect to change the order of integration.
+
+I have used the language of Volume 3 to express 538Re in a general form.
+Of course by far the most important example is when the operator $T$ is a
+conditional expectation operator (538Xu).   For more examples of operators
+in $L^{\times}(L^{\infty};L^{\infty})$, see \S\S373-374.
+
+For most of the classes of filter here, there is a question concerning
+their existence.   Subject to the continuum hypothesis, there are many
+Ramsey ultrafilters, and refining the argument we find that the same is
+true if $\frak p=\frak c$ (538Yc).
+There are many ways of forcing non-existence
+of Ramsey ultrafilters, of which one of
+the simplest is in 553H below.   With more difficulty, we can eliminate
+$p$-point ultrafilters ({\smc Wimmers 82})
+or rapid filters ({\smc Miller 80}) or nowhere dense
+filters and therefore measure-centering ultrafilters
+(538Hd, {\smc Shelah 98b}).   It is not known for sure that we can
+eliminate measure-converging filters (538Z).
+
+}%end of notes
+
+\discrpage
+

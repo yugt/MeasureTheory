@@ -1,0 +1,2559 @@
+\frfilename{mt495.tex}
+\versiondate{20.12.08}
+\copyrightdate{2003}
+
+\def\chaptername{Further topics}
+\def\sectionname{Poisson point processes}
+
+\newsection{495}
+
+A classical challenge in probability theory is to formulate a consistent
+notion of `random set'.   Simple geometric considerations lead us to a
+variety of measures which are both interesting and important.
+All these are manifestly special constructions.   Even in the most
+concrete structures, we have to make choices which come to seem
+arbitrary as soon as we are conscious of the many alternatives.   There
+is however one construction which has a claim to pre-eminence because it
+is both robust under the transformations of abstract measure theory and
+has striking properties when applied to familiar measures (to the point,
+indeed, that it is relevant to questions in physics and chemistry).
+This gives the `Poisson point processes' of 495D-495E.   In this section
+I give a brief introduction to the measure-theoretic aspects of this
+construction.
+
+\leader{495A}{Poisson distributions}\cmmnt{ We need a little of the
+elementary theory of Poisson distributions.
+
+\medskip
+
+}{\bf (a)} The {\bf Poisson distribution} with parameter $\gamma>0$
+is the point-supported Radon probability measure $\nu_{\gamma}$ on
+$\Bbb R$ such that $\nu_{\gamma}\{n\}=\Bover{\gamma^n}{n!}e^{-\gamma}$
+for every $n\in\Bbb N$.   \cmmnt{(See 285Q and 285Xo.)}   Its
+expectation is
+$\cmmnt{\sum_{n=1}^{\infty}\Bover{\gamma^n}{(n-1)!}e^{-\gamma}
+=\mskip5mu}\gamma$.
+\cmmnt{Since
+$\nu_{\gamma}\Bbb N=1$, }$\nu_{\gamma}$ can be identified with the
+corresponding subspace measure on $\Bbb N$.
+It will be convenient to allow $\gamma=0$, so that the Dirac
+measure on $\Bbb R$ or $\Bbb N$ concentrated at $0$ becomes a `Poisson
+distribution with expectation $0$'.
+
+\spheader 495Ab The convolution of two Poisson distributions is a
+Poisson distribution.   \prooflet{\Prf\ If $\alpha$, $\beta>0$ then
+
+$$\eqalignno{(\nu_{\alpha}*\nu_{\beta})(\{n\})
+&=\int\nu_{\beta}(\{n\}-t)\nu_{\alpha}(dt)\cr
+\displaycause{444A}
+&=\sum_{i=0}^n\Bover{\beta^{n-i}}{(n-i)!}e^{-\beta}
+  \cdot\Bover{\alpha^i}{i!}e^{-\alpha}\cr
+&=e^{-\alpha-\beta}\Bover1{n!}
+   \sum_{i=0}^n\Bover{n!}{i!(n-i)!}\alpha^i\beta^{n-i}
+=\Bover{(\alpha+\beta)^n}{n!}e^{-\alpha-\beta}\cr}$$
+
+\noindent for every $n\in\Bbb N$, so
+$\nu_{\alpha}*\nu_{\beta}=\nu_{\alpha+\beta}$.\ \QeD}
+So if $f$ and $g$ are independent random variables with Poisson
+distributions then $f+g$ has a Poisson distribution\cmmnt{
+(272T\formerly{2{}72S})}.
+
+\spheader 495Ac If $\familyiI{f_i}$ is a countable independent family of
+random variables with Poisson distributions, and
+$\alpha=\sum_{i\in I}\Expn(f_i)$ is finite, then $f=\sum_{i\in I}f_i$ is
+defined a.e.\ and has a Poisson distribution with expectation $\alpha$.
+\prooflet{\Prf\ For finite $I$ we can induce on $\#(I)$, using (b) (and
+272L) for the inductive step.   For the infinite case we can suppose
+that $I=\Bbb N$.   In this case $f_i\ge 0$ a.e.\ for each $i$ so
+$f=\sum_{i=0}^{\infty}f_i$ is defined a.e.\ and has expectation
+$\alpha$, by B.Levi's theorem.   Setting $g_n=\sum_{i=0}^nf_i$ for each
+$n$, so that $g_n$ has a Poisson distribution with expectation
+$\beta_n=\sum_{i=0}^n\alpha_i$, we have
+
+$$\Pr(f\le\gamma)
+=\lim_{n\to\infty}\Pr(g_n\le\gamma)
+=\lim_{n\to\infty}\sum_{i=0}^{\lfloor\gamma\rfloor}
+  \Bover{\beta_n^i}{i!}e^{-\beta_n}
+=\sum_{i=0}^{\lfloor\gamma\rfloor}\Bover{\alpha^i}{i!}e^{-\alpha}$$
+
+\noindent for every $\gamma\ge 0$, so $f$ has a Poisson distribution
+with expectation $\alpha$.\ \Qed}
+
+\spheader 495Ad
+\cmmnt{I find myself repeatedly calling on the simple fact that}
+$1-e^{-\gamma}(1+\gamma)=\nu_{\gamma}(\Bbb N\setminus\{0,1\})$ is at most
+$\bover12\gamma^2$ for every $\gamma\ge 0$\prooflet{;  this is because
+$\bover{d}{dt}(\bover12t^2+e^{-t}(1+t))=t(1-e^{-t})\ge 0$ for $t\ge 0$}.
+
+\leader{495B}{Theorem} Let $(X,\Sigma,\mu)$ be a measure
+space.   Set $\Sigma^f=\{E:E\in\Sigma$, $\mu E<\infty\}$.   Then for any
+$\gamma>0$ there
+are a probability space $(\Omega,\Lambda,\lambda)$ and a family
+$\family{E}{\Sigma^f}{g_E}$ of random variables on $\Omega$ such that
+
+\inset{(i) for every $E\in\Sigma^f$, $g_E$ has a Poisson distribution
+with expectation $\gamma\mu E$;
+
+(ii) whenever $\familyiI{E_i}$ is a disjoint family in $\Sigma^f$, then
+$\familyiI{g_{E_i}}$ is stochastically independent;
+
+(iii) whenever $\sequence{i}{E_i}$ is a disjoint sequence in $\Sigma^f$
+with union $E\in\Sigma^f$, then $g_E\eae\sum_{i=0}^{\infty}g_{E_i}$.}
+
+\proof{{\bf (a)} Let
+$\Cal H\subseteq\{H:H\in\Sigma$, $0<\mu H<\infty\}$ be a maximal family
+such that $H\cap H'$ is negligible for all distinct $H$, $H'\in\Cal H$.
+For $H\in\Cal H$, let $\mu'_H$ be the normalized subspace measure
+defined by setting $\mu'_HE=\mu E/\mu H$ for $E\in\Sigma\cap\Cal PH$,
+and $\lambda_H$ the corresponding product probability measure on
+$H^{\Bbb N}$.   Next, for
+$H\in\Cal H$, let $\nu_H$ be the Poisson distribution with expectation
+$\gamma\mu H$,
+regarded as a probability measure on $\Bbb N$.   Let $\lambda$ be the
+product measure on
+$\Omega=\prod_{H\in\Cal H}(\Bbb N\times H^{\Bbb N})$, giving each
+$\Bbb N\times H^{\Bbb N}$ the product measure $\nu_H\times\lambda_H$.
+For $\omega\in\Omega$, write $m_H(\omega)$, $x_{Hj}(\omega)$ for its
+coordinates, so that
+$\omega=\family{H}{\Cal H}{(m_H(\omega),\sequence{j}{x_{Hj}(\omega)})}$.
+
+\medskip
+
+{\bf (b)} For $H\in\Cal H$ and $E\in\Sigma$, set
+$g_{HE}(\omega)=\#(\{j:j<m_H(\omega)$, $x_{Hj}(\omega)\in E\})$
+when this is finite.
+Then $g_{HE}$ is measurable and has a Poisson distribution with
+expectation
+$\gamma\mu(H\cap E)$;  moreover, if $E_0,\ldots,E_r\in\Sigma$ are
+disjoint,
+then $g_{HE_0},\ldots,g_{HE_r}$ are independent.   \Prf\ It is enough to
+examine the case in which the $E_i$ cover $X$.   Then for any
+$n_0,\ldots,n_r\in\Bbb N$ with sum $n$,
+
+$$\eqalignno{\lambda\{\omega:g_{HE_i}&(\omega)=n_i
+   \text{ for every }i\le r\}\cr
+&=\lambda\{\omega:\#(\{j:j<m_H(\omega),\,x_{Hj}\in E_i\})=n_i
+   \text{ for every }i\le r\}\cr
+&=\lambda\{\omega:m_H(\omega)=n,\,\#(\{j:j<n,\,x_{Hj}\in E_i\})=n_i
+   \text{ for every }i\le r\}\cr
+&=\sum_{\Atop{J_0,\ldots,J_r\text{ partition }n}
+   {\#(J_i)=n_i\text{ for each }i\le r}}
+   \lambda\{\omega:m_H(\omega)=n,\,
+   x_{Hj}\in E_i\text{ whenever }i\le r,\,j\in J_i\}\cr
+&=\sum_{\Atop{J_0,\ldots,J_r\text{ partition }n}
+   {\#(J_i)=n_i\text{ for each }i\le r}}
+   \Bover{(\gamma\mu H)^n}{n!}e^{-\gamma\mu H}
+     \prod_{i=0}^r\bigl(\Bover{\mu(H\cap E_i)}{\mu H}\bigr)^{n_i}\cr
+&=\Bover{n!}{n_0!\ldots n_r!}\Bover1{n!}e^{-\gamma\mu H}
+     \prod_{i=0}^r(\gamma\mu(H\cap E_i))^{n_i}\cr
+&=\prod_{i=0}^r\Bover{(\gamma\mu(H\cap E_i))^{n_i}}{n_i!}
+     e^{-\gamma\mu(H\cap E_i)},\cr}$$
+
+\noindent which is just what we wanted to know.\ \Qed
+
+Obviously $g_{HE}=\sum_{i=0}^{\infty}g_{HE_i}$ whenever
+$\sequence{i}{E_i}$ is a disjoint sequence in $\Sigma$ with union
+$E$, and $g_{HE}=0$ a.e.\ if $\mu(H\cap E)=0$.
+
+\medskip
+
+{\bf (c)} Suppose that $H_0,\ldots,H_m\in\Cal H$ are distinct and
+$E_0,\ldots,E_r\in\Sigma$ are disjoint.   Then the random variables
+$g_{H_jE_i}$ are independent.   \Prf\ For each $j\le m$, $g_{H_jE_i}$ is
+$\Lambda_{H_j}$-measurable, where $\Lambda_{H_j}$ is the
+$\sigma$-algebra of subsets of $\Omega$ which are measured by $\lambda$
+and determined by the single coordinate $H_j$ in the product
+$\prod_{H\in\Cal H}(\Bbb N\times H^{\Bbb N})$.   Now the
+$\sigma$-algebras $\Lambda_{H_j}$ are independent (272Ma).   So if we
+have any family $\langle n_{ij}\rangle_{i\le r,j\le m}$ in $\Bbb N$,
+
+$$\eqalign{\lambda\{\omega:g_{H_jE_i}(\omega)=n_{ij}
+&  \text{ for every }i\le r,j\le m\}\cr
+&=\prod_{j=0}^m\lambda\{\omega:g_{H_jE_i}(\omega)=n_{ij}
+  \text{ for every }i\le r\}\cr
+&=\prod_{j=0}^m\prod_{i=0}^r
+  \lambda\{\omega:g_{H_jE_i}(\omega)=n_{ij}\}\cr}$$
+
+\noindent by (b);  and this is what we need to know.\ \Qed
+
+\medskip
+
+{\bf (d)} For $E\in\Sigma^f$, set
+$\Cal H_E=\{H:H\in\Cal H$, $\mu(E\cap H)>0\}$;  then $\Cal H_E$ is
+countable, because $\Cal H$ is almost disjoint, and
+$\mu E=\sum_{H\in\Cal H_E}\mu(H\cap E)$, because $\Cal H$ is maximal.
+Set $g_E(\omega)=\sum_{H\in\Cal H_E}g_{HE}(\omega)$ when this is finite.
+Then $g_E$ is defined a.e.\ and has a Poisson distribution with
+expectation
+$\gamma\mu E$ (495Ac).   Also $\familyiI{g_{E_i}}$ are independent
+whenever $\familyiI{E_i}$ is a disjoint family in $\Sigma^f$.   \Prf\ It
+is enough to deal with the case of finite $I$ (272Bb).    Set
+$\Cal H^*=\bigcup_{i\in I}\Cal H_{E_i}$, so that $\Cal H^*$ is
+countable, and for $i\in I$ set $g'_i=\sum_{H\in\Cal H^*}g_{HE_i}$.
+Then each $g'_i$ is equal almost everywhere to the corresponding
+$g_{E_i}$, and
+$\familyiI{g'_i}$ is independent, by 272K.   (The point is that each
+$g'_i$ is $\Lambda^*_i$-measurable, where $\Lambda^*_i$ is the
+$\sigma$-algebra generated by $\{g_{HE_i}:H\in\Cal H\}$, and 272K, with (c)
+above,
+assures us that the $\Lambda^*_i$ are independent.)   It follows at once
+that $\familyiI{g_{E_i}}$ is independent (272H).\ \QeD\  This proves (i)
+and (ii).
+
+\medskip
+
+{\bf (e)} Similarly, if $\sequence{i}{E_i}$ is a disjoint sequence in
+$\Sigma^f$ with union $E\in\Sigma^f$, set
+$\Cal H^*=\Cal H_E\cup\bigcup_{i\in\Bbb N}\Cal H_{E_i}$.   For each
+$i\in\Bbb N$, set $g'_i=\sum_{H\in\Cal H^*}g_{HE_i}$;  then
+$g'_i\eae g_{E_i}$.   Now
+
+$$\sum_{i=0}^{\infty}g_{E_i}
+=_{\text{a.e.}}\sum_{i=0}^{\infty}g'_i
+=\sum_{H\in\Cal H^*}\sum_{i=0}^{\infty}g_{HE_i}
+=\sum_{H\in\Cal H^*}g_{HE}
+=_{\text{a.e.}}g_E,$$
+
+\noindent as required by (iii).
+}%end of proof of 495B
+
+\vleader{48pt}{495C}{Lemma} Let $X$ be a set and $\Cal E$ a subring of
+the Boolean algebra $\Cal PX$.   Let $\Cal H$ be the family of sets
+of the form
+
+\Centerline{$\{S:S\subseteq X$, $\#(S\cap E_i)=n_i$ for every
+$i\in I\}$}
+
+\noindent where $\familyiI{E_i}$ is a finite disjoint family in $\Cal E$
+and $n_i\in I$ for every $i\in I$.   Then the Dynkin class
+$\Tau\subseteq\Cal P(\Cal PX)$
+generated by $\Cal H$ is the $\sigma$-algebra of subsets of $\Cal PX$
+generated by $\Cal H$.
+
+\proof{ Let $Q$ be the set of functions $q$ from finite subsets
+of $\Cal E$ to $\Bbb N$, and for $q\in Q$ set
+
+\Centerline{$H_q=\{S:S\subseteq X$, $\#(S\cap E)=q(E)$ for every
+$E\in\dom q\}$.}
+
+\noindent Our family $\Cal H$ is just
+$\{H_q:q\in Q$, $\dom q$ is disjoint$\}$.
+
+If $q\in Q$ and $\dom q$ is a subring of $\Cal E$, then $H_q\in\Tau$.
+\Prf\ Being a finite Boolean ring, $\dom q$ is a Boolean algebra;  let
+$\Cal A$ be the set of its atoms.   Then $H_q$ is either empty or equal
+to $H_{q\restr\Cal A}$;  in either case it belongs to $\Tau$.\ \Qed
+
+If $q$ is any member of $Q$, then $H_q\in\Tau$.   \Prf\ Let $\Cal E$ be
+the subring of $\Cal PX$ generated by $\dom q$.   Then
+$H_q=\bigcup_{q\subseteq q'\in Q,\dom q'=\Cal E}H_{q'}$ is the union of
+a finite disjoint family in $\Tau$, so belongs to $\Tau$.\ \Qed
+
+Now observe that $\Cal H_1=\{H_q:q\in Q\}\cup\{\emptyset\}$ is a subset
+of $\Tau$ closed under finite intersections, so by the Monotone Class
+Theorem (136B) $\Tau$ includes the $\sigma$-algebra generated by
+$\Cal H_1$, and must be precisely the $\sigma$-algebra generated by
+$\Cal H$.
+}%end of proof of 495C
+
+\leader{495D}{Theorem} Let $(X,\Sigma,\mu)$ be an atomless measure
+space.   Set $\Sigma^f=\{E:E\in\Sigma$, $\mu E<\infty\}$;  for
+$E\in\Sigma^f$, set $f_E(S)=\#(S\cap E)$ when $S\subseteq X$ meets $E$
+in a finite set.   Let $\Tau$ be the $\sigma$-algebra of subsets of
+$\Cal PX$ generated by sets of the form $\{S:f_E(S)=n\}$ where
+$E\in\Sigma^f$ and $n\in\Bbb N$.   Then for any $\gamma>0$ there
+is a unique probability measure $\nu$ with domain $\Tau$ such that
+
+(i) for every $E\in\Sigma^f$, $f_E$ is
+measurable and has a Poisson distribution with expectation
+$\gamma\mu E$;
+
+(ii) whenever $\familyiI{E_i}$ is a disjoint family in $\Sigma^f$, then
+$\familyiI{f_{E_i}}$ is stochastically independent.
+
+\proof{{\bf (a)} Let $\Cal H$, $\family{H}{\Cal H}{\nu_H}$,
+$\family{H}{\Cal H}{\mu_H}$,
+$\family{H}{\Cal H}{\mu'_H}$,
+$\family{H}{\Cal H}{\lambda_H}$, $\Omega$, $\lambda$,
+$\family{E}{\Sigma^f}{\Cal H_E}$ and $\family{E}{\Sigma^f}{g_E}$ be as
+in the proof of 495B.   Note that all the $\mu'_H$ are atomless
+(234Nf\formerly{2{}34F}).
+Define $\phi:\Omega\to\Cal PX$ by setting
+
+\Centerline{$\phi(\omega)
+=\{x_{Hj}(\omega):H\in\Cal H$, $j<m_H(\omega)\}$}
+
+\noindent for $\omega\in\Omega$.
+
+\medskip
+
+{\bf (b)} For $E\in\Sigma^f$, let $A_E$ be the set of those
+$\omega\in\Omega$ such that
+
+\inset{{\it either} there are $H\in\Cal H\setminus\Cal H_E$,
+$j\in\Bbb N$ such that $x_{Hj}(\omega)\in E$
+
+{\it or} there are distinct $H$, $H'\in\Cal H_E$ and $j\in\Bbb N$ such
+that $x_{Hj}(\omega)\in H'$
+
+{\it or} there is an $H\in\Cal H$ such that the
+$x_{Hj}(\omega)$, for $j\in\Bbb N$, are not all distinct.}
+
+\noindent Then for any sequence $\sequence{i}{E_i}$ in $\Sigma^f$,
+$\lambda_*(\bigcup_{i\in\Bbb N}A_{E_i})=0$.    \Prf\ Set
+$\Cal H^*=\bigcup_{i\in\Bbb N}\Cal H_{E_i}$, so that $\Cal H^*$ is a
+countable subset of $\Cal H$.   For $H\in\Cal H$, set
+
+\Centerline{$F_H=H\setminus(\bigcup\{E_i:i\in\Bbb N$, $H\cap E_i$ is
+negligible$\}\cup\bigcup\{H':H'\in\Cal H^*$, $H'\ne H\})$,}
+
+\Centerline{$W_H=\{\pmb{x}:\pmb{x}\in H^{\Bbb N}$ is injective$\}$,}
+
+\noindent so that $F_H$ is $\mu'_H$-conegligible and $W_H$ is
+$\lambda_H$-conegligible (because $\mu'_H$ is atomless, see 254V).
+Now
+
+\Centerline{$\Omega\setminus\bigcup_{k\in\Bbb N}A_{E_k}
+\supseteq\prod_{H\in\Cal H}
+  (\Bbb N\times(W_H\cap F_H^{\Bbb N}))$}
+
+\noindent has full outer measure in $\Omega$, by 254Lb, and its
+complement has zero inner measure (413Ec).\ \Qed
+
+It follows that there is a probability measure $\tilde\lambda$ on
+$\Omega$, extending $\lambda$, such that $\tilde\lambda A_E=0$ for every
+$E\in\Sigma^f$ (417A).
+Let $\nu_0$ be the image measure $\tilde\lambda\phi^{-1}$.
+
+\medskip
+
+{\bf (c)} If $E\in\Sigma^f$ and $\omega\in\Omega\setminus A_E$,
+then $f_E(\phi(\omega))=g_E(\omega)$ if either is defined.   \Prf\
+If $H\in\Cal H$, then all the $x_{Hj}(\omega)$ are distinct;  if
+$H\in\Cal H\setminus\Cal H_E$, no $x_{Hj}(\omega)$ can belong to $E$;
+if $H$, $H'\in\Cal H_E$ are distinct, then no $x_{Hj}(\omega)$ can
+belong to $H'$.   So all the $x_{Hj}(\omega)$, $x_{H'k}(\omega)$ for
+$H$, $H'\in\Cal H_E$ and $j$, $k\in\Bbb N$ must be distinct, and
+
+$$\eqalign{f_E(\phi(\omega))
+&=\#(\{x_{Hj}(\omega):H\in\Cal H,\,j<m_H(\omega),\,
+   x_{Hj}(\omega)\in E\})\cr
+&=\#(\{(H,j):H\in\Cal H_E,\,j<m_H(\omega),\,
+   x_{Hj}(\omega)\in E\})\cr
+&=\sum_{H\in\Cal H_E}g_{HE}(\omega)
+=g_E(\omega)}$$
+
+\noindent if any of these is finite.\ \QeD\   It follows at once that if
+$E_0,\ldots,E_r\in\Sigma^f$ are disjoint, then
+$\{\omega:f_{E_i}(\phi(\omega))=g_{E_i}(\omega)$ for every $i\le r\}$ is
+$\tilde\lambda$-conegligible, so that if $n_0,\ldots,n_r\in\Bbb N$ then
+
+$$\eqalign{\nu_0\{S:f_{E_i}(S)=n_i\text{ for every }i\le r\}
+&=\tilde\lambda\{\omega:f_{E_i}(\phi(\omega))=n_i
+  \text{ for every }i\le r\}\cr
+&=\tilde\lambda\{\omega:g_{E_i}(\omega)=n_i\text{ for every }i\le r\}\cr
+&=\lambda\{\omega:g_{E_i}(\omega)=n_i\text{ for every }i\le r\}\cr
+&=\prod_{i=0}^r\Bover{(\gamma\mu E_i)^{n_i}}{n_i!}
+  e^{-\gamma\mu E_i}.\cr}$$
+
+\noindent Thus every $f_{E_i}$ is finite $\nu_0$-a.e., belongs to
+$\eusm L^0(\nu_0)$ and has a Poisson
+distribution with the appropriate expectation, and they are independent.
+
+\medskip
+
+{\bf (d)} As $\Tau$ is defined to be the $\sigma$-algebra generated by
+the family $\{f_E:E\in\Sigma^f\}$, it is included in the domain of
+$\nu_0$.   Set $\nu=\nu_0\restr\Tau$;  then $\nu$ has the properties (i)
+and (ii).   To see that it is unique, observe that if $\nuprime$ also
+has these properties,
+then $\{A:\nu A=\nuprime A\}$ is a Dynkin class containing every set of
+the form
+
+\Centerline{$\{S:f_{E_i}(S)=n_i$ for $i\le r\}$}
+
+\noindent where $E_0,\ldots,E_r\in\Sigma^f$ are disjoint and
+$n_0,\ldots,n_r\in\Bbb N$.   By 495C it contains the $\sigma$-algebra
+generated by this family, which is $\Tau$.   So $\nu$ and $\nuprime$
+agree on $\Tau$, and are equal.
+}%end of proof of 495D
+
+\leader{495E}{Definition} In the context of 495D, I will call the
+completion of $\nu$ the
+{\bf Poisson point process} on $X$ with density $\gamma$.
+
+\cmmnt{Note that the Poisson point process on $(X,\mu)$ with density
+$\gamma>0$ is identical with the Poisson point process on
+$(X,\gamma\mu)$ with density $1$.   There would therefore be no real
+loss of generality in the main theorems of this section if I spoke only
+of point processes with density $1$.   I retain the extra parameter
+because applications frequently demand it, and the formulae will be more
+useful with the
+$\gamma$s in their proper places;  moreover, there are important ideas
+associated with variations in $\gamma$, as in 495Xe.
+}%end of comment
+
+\leader{495F}{Proposition} Let $(X,\Sigma,\mu)$ be a perfect atomless
+measure space, and $\gamma>0$.   Then the Poisson point process on $X$
+with density $\gamma$ is a perfect probability measure.
+
+\proof{ I refer to the construction in 495B-495D.   In (b) of the proof
+of 495D, use
+the construction set out in the proof of 417A, so that the domain
+$\tilde\Lambda$ of $\tilde\lambda$ is precisely the family of sets of
+the form
+$W\symmdiff A$ where $W$ belongs to the domain $\Lambda$ of the product
+measure $\lambda$ and $A$ belongs to the $\sigma$-ideal $\Cal A^*$
+generated by $\{A_E:E\in\Sigma^f\}$.   Then $\tilde\lambda$ is perfect.
+\Prf\ Let $h:\Omega\to\Bbb R$ be a $\tilde\Lambda$-measurable function
+and $W\in\tilde\Lambda$ a set of non-zero measure.   Then there are a
+$W'\in\Lambda$ and an $A\in\Cal A^*$ such that
+$W\symmdiff W'\subseteq A$ and $h\restr\Omega\setminus A$ is
+$\Lambda$-measurable;  let $\sequencen{E_n}$ be a sequence in $\Sigma^f$
+such that $A\subseteq\bigcup_{n\in\Bbb N}A_{E_n}$, and
+$h_1:\Omega\to\Bbb R$ a $\Lambda$-measurable function agreeing with $h$
+on $\Omega\setminus A$.   Set
+$\Cal H^*=\bigcup_{n\in\Bbb N}\Cal H_{E_n}$, so that $\Cal H^*$ is
+countable.   As in the proof of 495D, set
+
+\Centerline{$F_H=H\setminus(\bigcup\{E_n:n\in\Bbb N$, $H\cap E_n$ is
+negligible$\}\cup\bigcup\{H':H'\in\Cal H^*$, $H'\ne H\})$,}
+
+\Centerline{$W_H=\{\pmb{x}:\pmb{x}\in H^{\Bbb N}$ is injective$\}$,}
+
+\noindent for $H\in\Cal H$, so that
+$W'_H=W_H\cap F_H^{\Bbb N}$ is $\lambda_H$-conegligible.
+Set $\Omega'=\prod_{H\in\Cal H}(\Bbb N\times W'_H)$.   This is disjoint
+from every $A_{E_n}$ (as in 495D) and therefore from $A$.   The subspace
+measure $\lambda_{\Omega'}$ on $\Omega'$ induced by $\lambda$ is just
+the product of the
+measures on $\Bbb N\times W'_H$ (254La).   All of these are perfect
+(451Jc, 451Dc), so $\lambda_{\Omega'}$ also is perfect (451Jc again).
+Now
+
+\Centerline{$\lambda_{\Omega'}(W\cap\Omega')
+=\lambda_{\Omega'}(W'\cap\Omega')=\lambda W'=\tilde\lambda W>0$.}
+
+\noindent It follows that there is a compact set
+$K\subseteq h_1[W\cap\Omega']$ such that
+$\lambda_{\Omega'}(h_1^{-1}[K]\cap\Omega')>0$.   As $h$ and $h_1$ agree
+on $\Omega'$, $K\subseteq h[W]$, while
+
+$$\eqalignno{\tilde\lambda h^{-1}[K]
+&=\tilde\lambda h_1^{-1}[K]\cr
+\displaycause{because $\tilde\lambda A=0$}
+&=\lambda h_1^{-1}[K]
+=\lambda_{\Omega'}(h^{-1}[K]\cap\Omega')
+>0.\cr}$$
+
+\noindent As $W$ and $h$ are arbitrary, $\tilde\lambda$ is perfect.\
+\Qed
+
+It follows at once that the image measure $\tilde\lambda\phi^{-1}$
+and its restriction to $\Tau$ are perfect (451Ea);  finally, the
+completion is perfect, by 451Gc.
+}%end of proof of 495F
+
+\leader{495G}{Proposition} Let $(X_1,\Sigma_1,\mu_1)$ and
+$(X_2,\Sigma_2,\mu_2)$ be
+atomless measure spaces, and $f:X_1\to X_2$ an \imp\ function.   Let
+$\gamma>0$, and let $\nu_1$, $\nu_2$ be the Poisson point processes on
+$X_1$, $X_2$ respectively with density $\gamma$.   Then
+$S\mapsto f[S]:\Cal PX_1\to\Cal PX_2$ is \imp\ for $\nu_1$ and $\nu_2$;
+in particular, $\Cal PA$ has full outer measure for $\nu_2$ whenever
+$A\subseteq X_2$ has full outer measure for $\mu_2$.
+
+\proof{ Set $\psi(S)=f[S]$ for $S\subseteq X_1$.
+
+\medskip
+
+{\bf (a)} If $F\in\Sigma_2^f$, then
+$\{S:S\subseteq X_1$, $f\restr f^{-1}[F]\cap S$ is not injective$\}$ is
+$\nu_1$-negligible.   \Prf\ Let $n\in\Bbb N$.   Set
+$\alpha=\bover1{n+1}\mu_2F$.   Because $\mu_2$ is atomless, we can find
+a partition of $F$ into sets $F_0,\ldots,F_n$ of measure $\alpha$.
+Now
+
+\Centerline{$\{S:f\restr f^{-1}[F]\cap S$
+  is not injective$\}
+\subseteq\bigcup_{i\le n}\{S:\#(S\cap f^{-1}[F_i])>1\}$}
+
+\noindent has $\nu_1$-outer measure at most
+
+\Centerline{$(n+1)(1-e^{-\gamma\alpha}(1+\gamma\alpha))
+\le\Bover12(n+1)\alpha^2\gamma^2=\Bover1{2(n+1)}(\gamma\mu_2F)^2$.}
+
+\noindent As $n$ is arbitrary,
+$\{S:f\restr f^{-1}[F]\cap S$ is not injective$\}$ is negligible.\ \Qed
+
+\medskip
+
+{\bf (b)} It follows that, for any $F\in\Sigma_2^f$ and $n\in\Bbb N$,
+
+\Centerline{$\{S:\#(f[S]\cap F)=n\}
+\symmdiff\{S:\#(S\cap f^{-1}[F])=n\}$}
+
+\noindent is $\nu_1$-negligible and $\{S:\#(f[S]\cap F)=n\}$ is measured
+by $\nu_1$.   So if $\Tau_2$ is the
+$\sigma$-algebra of subsets of
+$\Cal PX_2$ generated by sets of the form $\{T:\#(F\cap T)=n\}$ for
+$F\in\Sigma_2^f$ and $n\in\Bbb N$, then $\nu_1$ measures
+$\psi^{-1}[H]$ for every $H\in\Tau_2$.   Next,
+if $\familyiI{F_i}$ is a finite disjoint family in $\Sigma_2^f$ and
+$n_i\in\Bbb N$ for $i\in I$,
+
+$$\eqalignno{\nu_1\{S:\#(f[S]\cap F_i)=n_i&\text{ for every }i\in I\}\cr
+&=\nu_1\{S:\#(S\cap f^{-1}[F_i])=n_i\text{ for every }i\in I\}\cr
+&=\prod_{i\in I}\Bover{(\gamma\mu_1f^{-1}[F_i])^n}{n!}
+  e^{-\gamma\mu_1f^{-1}[F_i]}\cr
+\displaycause{because $\familyiI{f^{-1}[F_i]}$ is a disjoint family in
+$\Sigma_1^f$}
+&=\prod_{i\in I}\Bover{(\gamma\mu_2F_i)^n}{n!}e^{-\gamma\mu_2F_i}.\cr}$$
+
+\noindent So the image measure $\nu_1\psi^{-1}$ satisfies (i) and (ii)
+of 495D, and must agree with $\nu_2$ on $\Tau_2$;  that is, $\psi$ is
+\imp\ for $\nu_1$ and $\nu_2\restr\Tau_2$.   As $\nu_1$ is complete,
+$\psi$ is \imp\ for $\nu_1$ and $\nu_2$ (234Ba\formerly{2{}35Hc}).
+
+\medskip
+
+{\bf (c)} If $A\subseteq X_2$ has full outer measure, then we can take
+$\mu_1$ to be the subspace measure on $X_1=A$ and $f(x)=x$ for $x\in A$.
+In this case, $\Cal PA=\psi[\Cal PA]$ must have full outer measure for
+$\nu_2$.
+}%end of proof of 495G
+
+\leader{495H}{Lemma} Let $(\tilde X,\tilde\Sigma,\tilde\mu)$ be an
+atomless $\sigma$-finite measure space, and $\gamma>0$.   Write $\mu_L$
+for Lebesgue measure on $[0,1]$, $\mu'$ for the product measure on
+$X'=\tilde X\times[0,1]$, and $\lambda'$ for the product measure on
+$\Omega'=[0,1]^{\tilde X}$.   Let $\tilde\nu$, $\nuprime$ be the Poisson
+point processes on $\tilde X$, $X'$ respectively with density $\gamma$.
+For $T\subseteq\tilde X$ define $\psi_T:\Omega'\to\Cal PX'$ by setting
+$\psi_T(z)=\{(t,z(t)):t\in T\}$ for $z\in\Omega'$;  let $\nuprime_T$ be
+the
+image measure $\lambda'\psi_T^{-1}$ on $\Cal PX'$.   Then
+$\langle\nuprime_T\rangle_{T\subseteq\tilde X}$ is a disintegration of
+$\nuprime$ over $\tilde\nu$\cmmnt{ (definition:  452E)}.
+
+\proof{{\bf (a)} Let $E\subseteq X'$ be a measurable set with finite
+measure, and write $H_E=\{S:S\cap E\ne\emptyset\}$.   Then
+$\nuprime H_E=1-e^{-\gamma\mu'E}\le\gamma\mu'E$;  but
+also $\overline{\int}\nuprime_T(H_E)\tilde\nu(dT)\le 2\gamma\mu'E$.
+\Prf\ We know that $\int\mu_LE[\{t\}]\tilde\mu(dt)=\mu'E$ (252D).   Let
+$Y\subseteq\tilde X$ be a conegligible set such that $E[\{t\}]$ is
+measurable for every $t\in Y$ and $t\mapsto\mu_LE[\{t\}]:Y\to[0,1]$ is
+measurable.   Set $F_i=\{t:t\in Y$, $2^{-i-1}<\mu_LE[\{t\}]\le 2^{-i}\}$
+for each $i\in\Bbb N$;  let $\sequence{i}{F'_i}$ be a sequence of sets
+of finite measure with union $\tilde X\setminus\bigcup_{i\in\Bbb N}F_i$.
+Let $W$ be the set of those $T\subseteq\tilde X$ such that
+$T\cap(\tilde X\setminus Y)$ is empty and $T\cap F_i$, $T\cap F'_i$ are
+finite for every $i\in\Bbb N$;  then $W$ is $\tilde\nu$-conegligible.
+
+For any $T\in W$,
+
+$$\eqalign{\psi_T^{-1}[H_E]
+&=\{z:\psi_T(z)\cap E\ne\emptyset\}\cr
+&=\bigcup_{i\in\Bbb N}\bigcup_{t\in T\cap F_i}\{z:z(t)\in E[\{t\}]\}
+   \cup\bigcup_{i\in\Bbb N}\bigcup_{t\in T\cap F'_i}
+   \{z:z(t)\in E[\{t\}]\}\cr}$$
+
+\noindent is measured by $\lambda'$ and has measure at most
+$\sum_{i=0}^{\infty}2^{-i}\#(T\cap F_i)$, because $\mu_LE[\{t\}]$ has
+measure at most $2^{-i}$ if $t\in T\cap F_i$, and is zero if
+$t\in T\cap F'_i$.   So
+
+$$\eqalignno{\overline{\int}\nuprime_T(H_E)\tilde\nu(dT)
+&=\overline{\int}\lambda'\psi_T^{-1}[H_E]\tilde\nu(dT)
+\le\int\sum_{i=0}^{\infty}2^{-i}\#(T\cap F_i)\tilde\nu(dT)\cr
+&=\sum_{i=0}^{\infty}2^{-i}\int\#(T\cap F_i)\tilde\nu(dT)
+=\sum_{i=0}^{\infty}2^{-i}\gamma\tilde\mu F_i\cr
+\displaycause{because $T\mapsto\#(T\cap F_i)$ has expectation
+$\gamma\tilde\mu F_i$}
+&\le 2\gamma\int\mu_LE[\{t\}]\tilde\nu(dt)
+=2\gamma\mu'E.  \text{ \Qed}\cr}$$
+
+\medskip
+
+{\bf (b)} Suppose that $\ofamily{j}{s}{F_j}$,
+$\langle C_{ij}\rangle_{i<r,j<s}$ and
+$\langle n_{ij}\rangle_{i<r,j<s}$ are such that
+
+\inset{$r$, $s\in\Bbb N$,
+
+$n_{ij}\in\Bbb N$ for $i<r$, $j<s$,
+
+$\ofamily{j}{s}{F_j}$ is a disjoint family of subsets of $\tilde X$ with
+finite measure,
+
+for each $j<s$, $\ofamily{i}{r}{C_{ij}}$ is a disjoint family of
+measurable subsets of $[0,1]$.}
+
+\noindent Set $E_{ij}=F_j\times C_{ij}$ for $i<r$ and $j<s$, and
+$H=\{S:S\subseteq X'$,
+$\#(S\cap E_{ij})=n_{ij}$ for every $i<r$, $j<s\}$.
+Then $\int\nuprime_T(H)\tilde\nu(dT)=\nuprime H$.
+
+\medskip
+
+\Prf\ {\bf (i)} To begin with, suppose that
+$\bigcup_{i<r}C_{ij}=[0,1]$ for every $j$.   Set
+$n_j=\sum_{i=0}^{r-1}n_{ij}$ for each $j$, and let $W$
+be the set of those $T\subseteq\tilde X$ such that $\#(T\cap F_j)=n_j$
+for every $j$.   Then
+$\tilde\nu W=\prod_{j=0}^{s-1}
+\Bover{(\gamma\tilde\mu F_j)^{n_j}}{n_j!}e^{-\gamma\tilde\mu F_j}$.
+If $T\subseteq\tilde X$ and $z\in\psi_T^{-1}[H]$, then for each $j<s$ we
+must have
+
+$$\eqalign{\#(T\cap F_j)
+&=\#(\{t:t\in T\cap F_j,\,z(t)\in\bigcup_{i<r}C_{ij}\})\cr
+&=\sum_{i=0}^{r-1}\#(\{t:t\in T\cap F_j,\,z(t)\in C_{ij}\})\cr
+&=\sum_{i=0}^{r-1}\#(\psi_T(z)\cap E_{ij})
+=\sum_{i=0}^{r-1}n_{ij}
+=n_j.\cr}$$
+
+\noindent Turning this round, we see that if $T\notin W$ then
+$\psi_T^{-1}[H]=\emptyset$ and $\nuprime_TH=0$.
+
+If $T\in W$, let $Q$ be the set of all
+$q=\langle q(i,j)\rangle_{i<r,j<s}$ such that $\ofamily{i}{r}{q(i,j)}$
+is a disjoint family of subsets of $T\cap F_j$ for each $j$ and
+$\#(q(i,j))=n_{ij}$ for all $i$ and $j$.   Then
+$\#(Q)=\prod_{j=0}^{s-1}\Bover{n_j!}{\prod_{i=0}^{r-1}n_{ij}!}$.
+Accordingly
+
+$$\eqalignno{\nuprime_TH
+&=\lambda'\{z:\psi_T(z)\in H\}\cr
+&=\lambda'\{z:\#(\{t:t\in T\cap F_j,\,z(t)\in C_{ij}\})=n_{ij}
+   \text{ for all }i,\,j\}\cr
+&=\sum_{q\in Q}\lambda\{z:z(t)\in C_{ij}
+   \text{ whenever }i<r,\,j<s\text{ and }t\in q(i,j)\}\cr
+&=\sum_{q\in Q}\prod_{\Atop{i<r,j<s}{t\in q(i,j)}}\mu_LC_{ij}
+=\sum_{q\in Q}\prod_{i<r,j<s}(\mu_LC_{ij})^{n_{ij}}
+=\prod_{j=0}^{s-1}\bigl(n_j!\prod_{i=0}^{r-1}
+   \bover{(\mu_LC_{ij})^{n_{ij}}}{n_{ij}!}\bigr).\cr}$$
+
+\noindent It follows that
+
+$$\eqalignno{\int\nuprime_T(H)\tilde\nu(dT)
+&=\tilde\nu W\cdot\prod_{j=0}^{s-1}\bigl(n_j!
+  \prod_{i=0}^{r-1}\bover{(\mu_LC_{ij})^{n_{ij}}}{n_{ij}!}\bigr)\cr
+&=\prod_{j=0}^{s-1}
+  \bover{(\gamma\tilde\mu F_j)^{n_j}}{n_j!}e^{-\gamma\tilde\mu F_j}
+  \cdot\prod_{j=0}^{s-1}\bigl(n_j!
+  \prod_{i=0}^{r-1}\bover{(\mu_LC_{ij})^{n_{ij}}}{n_{ij}!}\bigr)\cr
+&=\prod_{j=0}^{s-1}
+  (\gamma\tilde\mu F_j)^{n_j}e^{-\gamma\tilde\mu F_j}
+  \prod_{i=0}^{r-1}\bover{(\mu_LC_{ij})^{n_{ij}}}{n_{ij}!}\cr
+&=\prod_{j=0}^{s-1}\prod_{i=0}^{r-1}e^{-\gamma\mu'E_{ij}}
+  \bover{(\gamma\mu'E_{ij})^{n_{ij}}}{n_{ij}!}
+=\nuprime H,\cr}$$
+
+\noindent as required.
+
+\medskip
+
+\quad{\bf (ii)} For the general case, set
+$C_{rj}=[0,1]\setminus\bigcup_{i<r}C_{ij}$,
+$E_{rj}=F_j\times C_{rj}$ for each $j<s$.
+For $\sigma\in\Bbb N^{(r+1)\times s}$, set
+
+\Centerline{$H_{\sigma}=\{S:S\subseteq X'$, $\#(S\cap E_{ij})=\sigma(i,j)$
+for every $i\le r$ and $j<s\}$.}
+
+\noindent By (i), we have
+$\nuprime H_{\sigma}=\int\nuprime_T(H_{\sigma})\tilde\nu(dT)$ for every
+$\sigma\in\Bbb N^{(r+1)\times s}$.
+
+Set
+
+\Centerline{$J=\{\sigma:\sigma\in\Bbb N^{(r+1)\times s}$,
+$\sigma(i,j)=n_{ij}$ for $i<r$, $j<s\}$,
+\quad$K=\Bbb N^{(r+1)\times s}\setminus J$,}
+
+\Centerline{$H'_1=\bigcup_{\sigma\in J}H_{\sigma}$,
+\quad$H'_2=\bigcup_{\sigma\in K}H_{\sigma}$.}
+
+\noindent Then $H'_1\subseteq H$, $H'_2\cap H=\emptyset$ and
+
+\Centerline{$H'_1\cup H'_2
+=\{S:S\cap E_{ij}$ is finite for all $i\le r$, $j<s\}$}
+
+\noindent is $\nuprime$-conegligible.   Accordingly we have
+
+$$\eqalignno{\underline{\int}(\nuprime_T)_*(H)\tilde\nu(dT)
+&\ge\underline{\int}(\nuprime_T)_*(H'_1)\tilde\nu(dT)
+\ge\sum_{\sigma\in J}\int\nuprime_T(H_{\sigma})\tilde\nu(dT)\cr
+&=\sum_{\sigma\in J}\nuprime H_{\sigma}
+=1-\sum_{\sigma\in K}\nuprime H_{\sigma}\cr
+\displaycause{because $\bigcup_{\sigma\in J\cup K}H_{\sigma}$ is
+$\nuprime$-conegligible}
+&=1-\sum_{\sigma\in K}\int\nuprime_T(H_{\sigma})\tilde\nu(dT)
+=\int 1-\sum_{\sigma\in K}\nuprime_T(H_{\sigma})\,\tilde\nu(dT)\cr
+&=\int\nuprime_T(\Cal PX'\setminus H'_2)\tilde\nu(dT)
+\ge\overline{\int}(\nuprime_T)^*(H)\tilde\nu(dT).\cr}$$
+
+\noindent But this means, first, that $(\nuprime_T)_*(H)=(\nuprime_T)^*(H)$
+for $\tilde\nu$-almost every $T$;  since $\nuprime_T$, being an image of
+the complete measure $\lambda'$, is always complete, $\nuprime_T(H)$ is
+defined for $\tilde\nu$-almost every $T$.   Finally,
+
+\Centerline{$\nuprime H=\nuprime H'_1=\sum_{\sigma\in J}\nuprime H_{\sigma}
+=\int\nuprime_T(H)\tilde\nu(dT)$,}
+
+\noindent as required.\ \Qed
+
+\medskip
+
+{\bf (c)} Suppose that $\ofamily{i}{r}{E_i}$ is a disjoint family in
+$\tilde\Sigma\otimes\Sigma_L$ such that all the projections of the $E_i$
+onto $\tilde X$ have finite measure, and $n_i\in\Bbb N$ for each $i<r$.
+Set $H=\{S:S\subseteq X'$,
+$\#(S\cap E_i)=n_i$ for every $i<r\}$.
+Then $\int\nuprime_T(H)\tilde\nu(dT)=\nuprime H$.
+
+\Prf\ Let $\Cal E$ be a finite subalgebra of $\tilde\Sigma$ such that
+every $E_i$ belongs to
+$\Cal E\otimes\Sigma_L$, and let $\ofamily{j}{s}{F_j}$ enumerate the
+atoms of $\Cal E$ of finite measure;  extend this to an enumeration
+$\ofamily{j}{s'}{F_j}$ of all the atoms of $\Cal E$.   Then we can
+express each $E_i$ as $\bigcup_{j<s'}F_j\times C_{ij}$ where each
+$C_{ij}\in\Sigma_L$;  but as the projection of $E_i$ has finite measure,
+$C_{ij}$ must be empty for every $j\ge s$, so
+$E_i=\bigcup_{j<s}F_j\times C_{ij}$.   Let $Q$ be the set of all
+$q\in\BbbN^{r\times s}$ such that $\sum_{j=0}^{s-1}q(i,j)=n_i$ for every
+$i<r$.   For $q\in Q$ set
+
+\Centerline{$H_q=\{S:S\subseteq X'$,
+$\#(S\cap(F_j\times C_{ij}))=q(i,j)$ for every $i<r$, $j<s\}$.}
+
+\noindent Then $\family{q}{Q}{H_q}$ is disjoint and has union $H$, so
+
+\Centerline{$\biggerint\nuprime_T(H)\tilde\nu(dT)
+=$$\sum_{q\in Q}$$\biggerint\nuprime_T(H_q)\tilde\nu(dT)
+=$$\sum_{q\in Q}\nuprime H_q
+=\nuprime H$,}
+
+\noindent using (b) for the middle equality.\ \Qed
+
+\medskip
+
+{\bf (d)} Now let $\ofamily{i}{r}{E_i}$ be a finite disjoint family of
+subsets of $X'$ of finite measure, and $\ofamily{i}{r}{n_i}$ a family in
+$\Bbb N$.   Set $H=\{S:S\subseteq X'$, $\#(S\cap E_i)=n_i$ for every
+$i<r\}$.   Then $\int\nuprime_T(H)\tilde\nu(dT)$ is defined and equal to
+$\nuprime H$.
+
+\Prf\ Let $\epsilon>0$.   For each $i<r$ we can find an
+$E'_i\in\tilde\Sigma\otimes\Sigma_L$ such that
+$\mu'(E_i\symmdiff E'_i)\le\epsilon$ (251Ie).   Discarding a negligible
+set from $E'_i$ if
+necessary, we may suppose that the projection of $E'_i$ on $\tilde X$
+has finite measure.   Set
+$\hat E_i=E'_i\setminus\bigcup_{k<i}E'_k$ for each $i$, so that
+$\ofamily{i}{r}{\hat E_i}$ is a disjoint family in
+$\tilde\Sigma\otimes\Sigma_L$, and the projections of the $\hat E_i$ are
+still of finite measure.   Set
+$\hat H=\{S:S\subseteq X'$, $\#(S\cap\hat E_i)=n_i$ for every $i<r\}$.
+Then (c) tells us that
+$\int\nuprime_T(\hat H)\tilde\nu(dT)=\nuprime\hat H$.
+
+Set $E=\bigcup_{i<r}(E_i\symmdiff E'_i)$.   Then $\mu'E\le r\epsilon$,
+while $E$ includes $E_i\symmdiff\hat E_i$ for every $i$, so
+
+\Centerline{$\hat H\setminus H_E\subseteq H\subseteq\hat H\cup H_E$,}
+
+\noindent where $H_E=\{S:S\cap E\ne\emptyset\}$ as in (a).   Accordingly
+
+$$\eqalignno{\nuprime H-3r\gamma\epsilon
+&\le\nuprime\hat H-2r\gamma\epsilon\cr
+\displaycause{by (a)}
+&=\int\nuprime_T(\hat H)\tilde\nu(dT)-2r\gamma\epsilon\cr
+\displaycause{by (c)}
+&\le\int\nuprime_T(\hat H)-\nuprime_T(H_E)\tilde\nu(dT)\cr
+\displaycause{by the other part of (a)}
+&\le\underline{\int}(\nuprime_T)_*(H)\tilde\nu(dT)
+\le\overline{\int}(\nuprime_T)^*(H)\tilde\nu(dT)\cr
+&\le\int\nuprime_T(\hat H)+\nuprime_T(H_E)\tilde\nu(dT)
+\le\nuprime\hat H+2r\gamma\epsilon
+\le\nuprime H+3r\gamma\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary,
+
+\Centerline{$
+\nuprime H=\underline{\intop}(\nuprime_T)_*(H)\tilde\nu(dT)
+=\overline{\intop}(\nuprime_T)^*(H)\tilde\nu(dT)$.}
+
+\noindent As in (c-ii) above, it follows that
+$\int\nuprime_T(H)\tilde\nu(dT)$ is defined and equal to
+$\nuprime H$.\ \Qed
+
+\medskip
+
+{\bf (e)} So if we write $\Cal H$ for the family of subsets $H$ of
+$\Cal PX'$ such that $\int\nuprime_T(H)\tilde\nu(dT)$ is defined and
+equal
+to $\nuprime H$, and $\Cal H_0$ for the family of sets of the form
+$H=\{S:S\subseteq X'$, $\#(S\cap E_i)=n_i$ for every $i<r\}$
+where $\ofamily{i}{r}{E_i}$ is a disjoint family of sets of finite
+measure and $n_i\in\Bbb N$ for $i<r$, we have $\Cal H\supseteq\Cal H_0$.
+But $\Cal H$ is a Dynkin class, so includes the $\sigma$-algebra $\Tau'$
+generated by $\Cal H_0$, by 495C.   Since every $\nuprime$-negligible
+set is
+included in a $\nuprime$-negligible member of $\Tau'$, $\Cal H$ contains
+every $\nuprime$-negligible set, and therefore every set measured by
+$\nuprime$;  which is what we need to know.
+}%end of proof of 495H
+
+\leader{495I}{Theorem} Let $(X,\Sigma,\mu)$ and
+$(\tilde X,\tilde\Sigma,\tilde\mu)$ be atomless $\sigma$-finite measure
+spaces and $\gamma>0$.   Let $\nu$, $\tilde\nu$ be the Poisson point
+processes on $X$, $\tilde X$ respectively with density $\gamma$.
+Suppose that $f:X\to\tilde X$ is \imp\ and that
+$\family{t}{\tilde X}{\mu_t}$ is a disintegration of $\mu$ over
+$\tilde\mu$ consistent with $f$\cmmnt{ (definition:  452E)} such that
+every $\mu_t$ is a probability measure.   Write $\lambda$ for the
+product measure $\prod_{t\in\tilde X}\mu_t$ on
+$\Omega=X^{\tilde X}$, and for $T\subseteq\tilde X$ define
+$\phi_T:\Omega\to\Cal PX$ by setting $\phi_T(z)=z[T]$ for $z\in\Omega$;
+let $\nu_T$ be the image measure $\lambda\phi_T^{-1}$ on $\Cal PX$.
+Then $\langle\nu_T\rangle_{T\subseteq\tilde X}$ is a disintegration of
+$\nu$ over $\tilde\nu$.   Moreover
+
+(i) setting $\tilde f(S)=f[S]$ for $S\subseteq X$,
+$\langle\nu_T\rangle_{T\subseteq\tilde X}$ is consistent with
+$\tilde f:\Cal PX\to\Cal P\tilde X$;
+
+(ii) if $\family{t}{\tilde X}{\mu_t}$ is strongly consistent with $f$, then
+$\langle\nu_T\rangle_{T\subseteq\tilde X}$ is strongly consistent with
+$\tilde f$.
+
+\proof{{\bf (a)} For $T\subseteq\tilde X$ let $V_T$ be the set of those
+$z\in\Omega$ such that $fz\restr T$ is injective.   We need to know that
+
+\Centerline{$W=\{T:T\subseteq\tilde X$, $T$ is countable, $V_T$ is
+$\lambda$-conegligible$\}$}
+
+\noindent is $\tilde\nu$-conegligible.   \Prf\ Write
+$\tilde\Sigma^f=\{F:F\in\tilde\Sigma$, $\tilde\mu F<\infty\}$.   Because
+$\tilde\mu$ is atomless and $\sigma$-finite, there is a countable
+subalgebra $\Cal E$ of $\tilde\Sigma$ such that for every
+$\epsilon>0$ there is a cover of $\tilde X$ by members of $\Cal E$ of
+measure at most $\epsilon$.   Set
+
+\Centerline{$Y=\{t:t\in\tilde X$, $\mu_tf^{-1}[F]=(\chi F)(t)$ for
+every $F\in\Cal E\}$,}
+
+\noindent so that $Y$ is $\tilde\mu$-conegligible and $\Cal PY$ is
+$\tilde\nu$-conegligible.   For $F\in\Cal E$, let $W_F$ be the set of
+those $T\subseteq Y$ such that for every
+$t\in T\cap F$ there is an $F'\in\Cal E$ such that $T\cap F'=\{t\}$.
+Now, given $F\in\Cal E\cap\tilde\Sigma^f$ and $\epsilon>0$, there is a
+partition $\familyiI{F_i}$ of $F$ into members of $\Cal E$ of measure
+at most $\epsilon$.   Then
+
+$$\eqalign{\tilde\nu^*(\Cal PY\setminus W_F)
+&\le\tilde\nu\{T:\#(T\cap F_i)>1\text{ for some }i\in I\}\cr
+&\le\sum_{i\in I}1-e^{-\gamma\tilde\mu F_i}(1+\gamma\tilde\mu F_i)
+\le\sum_{i\in I}\Bover12(\gamma\tilde\mu F_i)^2
+\le\Bover12\epsilon\gamma^2\sum_{i\in I}\tilde\mu F_i
+=\Bover12\epsilon\gamma^2\tilde\mu F.\cr}$$
+
+\noindent As $\epsilon$ is arbitary, $W_F$ is $\tilde\nu$-conegligible;
+accordingly $W'=\bigcap\{W_F:F\in\Cal E\cap\tilde\Sigma^f\}$ is
+$\tilde\nu$-conegligible.
+
+Now suppose that $T\in W'$.   Because $\tilde X$ is covered by
+$\Cal E\cap\tilde\Sigma^f$, we see that for every $t\in T$ there is an
+$F\in\Cal E\cap\tilde\Sigma^f$ containing $t$, and now there is an
+$F'\in\Cal E$ such that $T\cap F'=\{t\}$.   In particular, $T$ is
+countable, so
+
+\Centerline{$U_T
+=\{z:z(t)\in f^{-1}[F]$ whenever $F\in\Cal E$ and $t\in T\cap F\}$}
+
+\noindent is $\lambda$-conegligible.   Take $z\in U_T$.   If $t$, $t'$
+are distinct points of $T$, there is an $F\in\Cal E$ containing $t$ but
+not $t'$, and now $F$ contains $f(z(t))$ but not $f(z(t'))$.   So
+$fz\restr T$ is injective.   Thus $U_T\subseteq V_T$ and $V_T$ is
+$\lambda$-conegligible.   This is true for every $T\in W'$, so
+$W\supseteq W'$ is $\tilde\nu$-conegligible.\ \Qed
+
+\medskip
+
+{\bf (b)} Suppose that $\ofamily{i}{r}{E_i}$ is a disjoint family of
+subsets of $X$ with finite measure, and $n_i\in\Bbb N$ for $i<r$.   Set
+$H=\{S:S\subseteq X$, $\#(S\cap E_i)=n_i$ for every $i<r\}$.   Then
+$\int\nu_T(H)\tilde\nu(dT)$ is defined and equal to $\nu H$.   \Prf\
+As in 495H, set $X'=\tilde X\times[0,1]$ with the product measure
+$\mu'$, and write $\lambda'$ for the product measure on
+$\Omega'=[0,1]^{\tilde X}$.   Let $\nuprime$ be the Poisson point
+process on
+$X'$ with density $\gamma$.   For $T\subseteq\tilde X$ define
+$\psi_T:\Omega'\to\Cal PX'$ by setting $\psi_T(z)=\{(t,z(t)):t\in T\}$
+for $z\in\Omega'$ and let $\nuprime_T$ be the image measure
+$\lambda'\psi_T^{-1}$ on $\Cal PX'$.   By 495H,
+$\langle\nuprime_T\rangle_{T\subseteq\tilde X}$ is a disintegration of
+$\nuprime$ over $\tilde\nu$.
+
+For each $i<r$, $\int\mu_t(E_i)\tilde\mu(dt)=\mu E_i$;  set
+$Y_1=\{t:\mu_tE_i$ is defined for every $i<r\}$, so that
+$Y_1\subseteq\tilde X$ is $\tilde\nu$-conegligible.   Set
+$g_i(t)=\sum_{j<i}\mu_tE_j$ for $t\in Y_1$ and $i\le r$, and
+
+\Centerline{$E'_i
+=\{(t,\alpha):t\in Y_1$, $g_i(t)\le\alpha<g_{i+1}(t)\}$}
+
+\noindent for $i<r$.   Then
+$\mu'E'_i=\int g_{i+1}-g_i\,d\tilde\nu=\mu E_i$ for each $i$, by 252N.
+
+Set
+
+\Centerline{$H'
+=\{S:S\subseteq X'$, $\#(S'\cap E_i')=n_i$ for every $i<r\}$,}
+
+\Centerline{$W_1
+=\{T:T\in W$, $T\subseteq Y_1$, $\nuprime_TH'$ is defined$\}$,}
+
+\noindent so $H'$ is measured by $\nu'$ and
+$W_1$ is $\tilde\nu$-conegligible.   Let $T$ be any
+member of $W_1$.   Let $Q$ be the set of partitions
+$q=\langle q(i)\rangle_{i\le r}$ of $T$ such that $\#(q(i))=n_i$ for
+every $i<r$;  because $T$ is countable, so is $Q$.   Set
+$E_r=X\setminus\bigcup_{i<r}E_i$ and
+$E'_r=X'\setminus\bigcup_{i<r}E'_i$.   Then
+
+\Centerline{$\mu_tE_r=1-\sum_{i=0}^{r-1}\mu_tE_i
+=1-g_r(t)=\mu_LE'_r[\{t\}]$}
+
+\noindent for every $t\in Y_1$.   Now
+
+$$\eqalignno{\nuprime_TH'
+&=\lambda'\{z:z\in\Omega',\,\psi_T(z)\in H'\}\cr
+&=\lambda'\{z:z\in\Omega',\,\#(\{t:t\in T,\,z(t)\in E'_i[\{t\}]\})=n_i
+       \text{ for every }i<r\}\cr
+&=\sum_{q\in Q}\lambda'\{z:z\in\Omega',\,z(t)\in E'_i[\{t\}]
+       \text{ whenever }i\le r\text{ and }t\in q(i)\}\cr
+&=\sum_{q\in Q}\prod_{i=0}^r\prod_{t\in q(i)}\mu_LE'_i[\{t\}]\cr
+&=\sum_{q\in Q}\prod_{i=0}^r\prod_{t\in q(i)}\mu_tE_i\cr
+&=\sum_{q\in Q}\lambda\{z:z\in\Omega,\,z(t)\in E_i
+       \text{ whenever }i\le r\text{ and }t\in q(i)\}\cr
+&=\lambda\{z:z\in\Omega,\,\#(\{t:t\in T,\,z(t)\in E_i\})=n_i
+       \text{ for every }i<r\}\cr
+&=\lambda\{z:z\in V_T,\,\#(\{t:t\in T,\,z(t)\in E_i\})=n_i
+       \text{ for every }i<r\}\cr
+&=\lambda\{z:z\in V_T,\,\#(z[T]\cap E_i)=n_i
+       \text{ for every }i<r\}\cr
+&=\lambda\{z:z\in V_T,\,\phi_T(z)\in H\}
+=\nu_TH.\cr}$$
+
+\noindent Since this is true for $\tilde\nu$-almost every $T$,
+
+$$\eqalignno{\int\nu_T(H)\tilde\nu(dT)
+&=\int\nuprime_T(H')\tilde\nu(dT)
+=\nuprime H'\cr
+&=\prod_{i<r}\Bover{(\gamma\mu'E'_i)^{n_i}}{n_i!}e^{-\gamma\mu'E'_i}
+=\prod_{i<r}\Bover{(\gamma\mu E_i)^{n_i}}{n_i!}e^{-\gamma\mu E_i}
+=\nu H.  \text{ \Qed}\cr}$$
+
+\noindent Now, just as in part (e) of the proof of 495H, 495C tells us
+that $\int\nu_T(H)\tilde\nu(dT)=\nu H$ whenever $\nu$ measures $H$, so
+that $\langle\nu_T\rangle_{T\subseteq\tilde X}$ is a disintegration of
+$\nu$ over $\tilde\nu$.
+
+\medskip
+
+{\bf (c)} Let $\ofamily{i}{r}{F_i}$ be a disjoint family in
+$\tilde\Sigma^f$, and take $n_i\in\Bbb N$ for $i<r$.   Set
+
+\Centerline{$F_r=\tilde X\setminus\bigcup_{i<r}F_i$,}
+
+\Centerline{$Y_2=\{t:t\in\tilde X$,
+$\mu_tf^{-1}[F_i]=(\chi F_i)(t)$ for every $i\le r\}$,}
+
+\Centerline{$W_2=\{T:T\in W$, $T\subseteq Y_2\}$,}
+
+\noindent so that $Y_2$ is $\tilde\mu$-conegligible and $W_2$ is
+$\tilde\nu$-conegligible.   Set
+
+\Centerline{$\tilde H
+=\{T:T\in W_2$, $\#(T\cap F_i)=n_i$ for every $i<r\}$,}
+
+\Centerline{$H=\tilde f^{-1}[\tilde H]
+=\{S:S\subseteq X$, $f[S]\in\tilde H\}$.}
+
+\noindent Then $\nu_TH=\chi\tilde H(T)$ for every
+$T\in\tilde H$.   \Prf\ For $i\le r$ and $t\in T\cap F_i$, we
+have
+
+\Centerline{$\lambda\{z:z(t)\in f^{-1}[F_i]\}=\mu_tf^{-1}[F_i]=1$}
+
+\noindent because $T\subseteq Y_2$.   So
+
+\Centerline{$V=\{z:z\in V_T$,
+$f(z(t))\in F_i$ whenever $i\le r$ and $t\in T\cap F_i\}$}
+
+\noindent is $\lambda$-conegligible.   But if $z\in V$ then $fz\restr T$
+is injective, so
+
+\Centerline{$\#(f[z[T]]\cap F_i)=\#(T\cap(fz)^{-1}[F_i])
+=\#(T\cap F_i)$}
+
+\noindent for every $i<r$, and $z[T]\in H$ iff $T\in\tilde H$.
+Thus
+
+$$\eqalign{\nu_TH
+=\lambda\{z:z[T]\in H\}
+&=\lambda V=1\text{ if }T\in\tilde H,\cr
+&=\lambda(\Omega\setminus V)=0\text{ otherwise.  \Qed}\cr}$$
+
+Setting
+
+\Centerline{$\Cal H=\{\tilde H:\tilde H\subseteq\tilde X$,
+$\nu_T\tilde f^{-1}[\tilde H]=\chi\tilde H(T)$ for $\tilde\nu$-almost
+every $T\in\tilde H\}$,}
+
+\noindent it is easy to check that $\Cal H$ is a Dynkin class containing
+all sets of the form
+$\{T:T\subseteq\tilde X$, $\#(T\cap F_i)=n_i$ for every $i<r\}$ where
+$\ofamily{i}{r}{F_i}$ is a disjoint family in $\tilde\Sigma^f$, and
+therefore including the $\sigma$-algebra generated by such sets, by
+495C.   But as $\Cal H$ also contains any subset of a negligible set
+belonging to $\Cal H$ (remember that all the $\nu_T$ are complete
+probability measures, like $\lambda$), it includes the domain of
+$\tilde\nu$, and $\langle\nu_T\rangle_{T\subseteq\tilde X}$ is
+consistent with $\tilde f$.
+
+\medskip
+
+{\bf (d)} Now suppose that $\family{t}{\tilde X}{\mu_t}$ is strongly
+consistent with $f$.   Set $Y_3=\{t:\mu_tf^{-1}[\{t\}]=1\}$ and
+$W_3=\{T:T\in W$, $T\subseteq Y_3\}$.   Then
+$\nu_T\tilde f^{-1}[\{T\}]=1$ for every $T\in W_3$.   \Prf\ Set
+$V'_T=\{z:z\in\Omega$, $f(z(t))=t$ for every $t\in T\}$.   For
+each $t\in T$,
+
+\Centerline{$\lambda\{z:f(z(t))=t\}=\mu_tf^{-1}[\{t\}]=1$,}
+
+\noindent because $T\subseteq W_3$.   As $T$ is countable, $V'_T$ is
+$\lambda$-conegligible.   But now
+
+\Centerline{$\nu_T\tilde f^{-1}[\{T\}]=\lambda\{z:f[z[T]]=T\}
+\ge\lambda V'_T=1$.  \Qed}
+
+As $W_3$ is $\tilde\nu$-conegligible,
+$\langle\nu_T\rangle_{T\subseteq\tilde X}$ is strongly consistent with
+$\tilde f$.
+}%end of proof of 495I
+
+\vleader{72pt}{495J}{Proposition} 
+Let $(\frak A,\bar\mu)$ be a measure algebra,
+and $\gamma>0$.   Then there are a probability algebra
+$(\frak B,\bar\lambda)$ and a function $\theta:\frak A\to\frak B$ such
+that
+
+(i) $\theta(\sup A)=\sup\theta[A]$ for every non-empty
+$A\subseteq\frak A$ such that $\sup A$ is defined in $\frak A$;
+
+(ii) $\bar\lambda\theta(a)=1-e^{-\gamma\bar\mu a}$ for every
+$a\in\frak A$, interpreting $e^{-\infty}$ as $0$;
+
+(iii) whenever $\familyiI{a_i}$ is a disjoint family in
+$\frak A$ and $\frak C_i$ is the closed subalgebra of $\frak B$
+generated by $\{\theta(a):a\Bsubseteq a_i\}$ for
+each $i$, then $\familyiI{\frak C_i}$ is stochastically independent.
+
+\proof{{\bf (a)} We may suppose that $(\frak A,\bar\mu)$ is the measure
+algebra of a measure space $(X,\Sigma,\mu)$ (321J).   Set
+$\Sigma^f=\{E:E\in\Sigma$, $\mu E<\infty\}$ and
+$\frak A^f=\{a:a\in\frak A$, $\bar\mu a<\infty\}$.   Let
+$(\Omega,\Lambda,\lambda)$ and $\family{E}{\Sigma^f}{g_E}$ be as in
+495B, and take $(\frak B,\bar\lambda)$ to be the measure algebra of
+$(\Omega,\Lambda,\lambda)$.   Note that if $E$, $F\in\Sigma^f$ and
+$\mu(E\symmdiff F)=0$, then $g_{E\setminus F}$ and $g_{F\setminus E}$
+have Poisson distributions with expectation $0$, so are zero almost
+everywhere, while $g_E\eae g_{E\cap F}+g_{E\setminus F}$ and
+$g_F\eae g_{E\cap F}+g_{F\setminus E}$;  so that $g_E\eae g_F$.   This
+means that we can define
+$\theta:\frak A^f\to\frak B$ by setting
+$\theta(E^{\ssbullet})=\{\omega:g_E(\omega)\ne 0\}^{\ssbullet}$ whenever
+$E\in\Sigma^f$, and we shall have
+$\bar\lambda(\theta a)=1-e^{-\gamma\bar\mu a}$ because $g_E$ has a
+Poisson distribution with expectation $\bar\mu a$ whenever
+$E\in\Sigma^f$ and $E^{\ssbullet}=a$.   For $a\in\frak A\setminus\frak
+A^f$ set $\theta(a)=1_{\frak B}$.
+
+\medskip
+
+{\bf (b)} If $a$, $b\in\frak A^f$ are disjoint, they can be represented
+as $E^{\ssbullet}$, $F^{\ssbullet}$ where $E$, $F\in\Sigma^f$ are
+disjoint.   In this case, $g_{E\cup F}\eae g_E+g_F$, so
+$\theta(a\Bcup b)=\theta(a)\Bcup\theta(b)$.   Of course the same is true
+if $a$, $b\in\frak A$ are disjoint and either has infinite measure.   It
+follows at once that for any $a$, $b\in\frak A$,
+
+\Centerline{$\theta(a\Bcup b)
+=\theta(a\Bsetminus b)\Bcup\theta(a\Bcap b)\Bcup\theta(b\Bsetminus a)
+=\theta(a)\Bcup\theta(b)$.}
+
+\noindent Consequently $\theta(\sup A)=\sup\theta[A]$ for any finite set
+$A\Bsubseteq\frak A$.   If $A\Bsubseteq\frak A$ is an infinite set with
+supremum $a^*$, then $A'=\{\sup B:B\in[A]^{<\omega}\}$ is an
+upwards-directed set with supremum $a^*$, so there is a non-decreasing
+sequence $\sequencen{a_n}$ in $A'$ such that
+$\lim_{n\to\infty}\bar\mu a_n=\bar\mu a^*$ (321D).   In this case,
+$b^*=\sup_{n\in\Bbb N}\theta(a_n)$ is defined in $\frak B$ and
+
+\Centerline{$\bar\lambda b^*=\lim_{n\to\infty}\bar\lambda\theta(a_n)
+=\lim_{n\to\infty}1-e^{-\gamma\bar\mu a_n}
+=1-e^{-\gamma\bar\mu a^*}
+=\bar\lambda\theta(a^*)$.}
+
+\noindent So $b^*=\theta(a^*)$;  since $\theta(a^*)$ is certainly an
+upper bound of $\theta[A']$, it must actually be the supremum of
+$\theta[A']$ and therefore (because $\theta$ preserves finite suprema)
+of $\theta[A]$.
+
+\medskip
+
+{\bf (c)} Thus $\theta$ satisfies (i) and (ii).   As for (iii), note
+first that if
+$\familyiI{a_i}$ is a finite disjoint family in $\frak A$, then
+$\bar\lambda(\inf_{i\in I}\theta(a_i))
+=\prod_{i\in I}\bar\lambda\theta(a_i)$.  \Prf\ Set
+$J=\{i:i\in I$, $\bar\mu a_i<\infty\}$.   For $i\in J$, represent $a_i$
+as $E_i^{\ssbullet}$ where $\family{i}{J}{E_i}$ is a disjoint family in
+$\Sigma^f$.   Then $\family{i}{J}{g_{E_i}}$ is independent, so
+
+$$\eqalign{\bar\lambda(\inf_{i\in I}\theta(a_i))
+&=\bar\lambda(\inf_{i\in J}\theta(a_i))
+=\lambda(\Omega\cap\bigcap_{i\in J}\{\omega:g_{E_i}(\omega)=0\})\cr
+&=\prod_{i\in J}\lambda\{\omega:g_{E_i}(\omega)=0\}
+=\prod_{i\in J}\bar\lambda\theta(a_i)
+=\prod_{i\in I}\bar\lambda\theta(a_i).  \text{ \Qed}\cr}$$
+
+Now suppose that $\familyiI{a_i}$ is a finite disjoint family in
+$\frak A$ and that $\frak D_i$ is the subalgebra of $\frak B$ generated
+by $D_i=\{\theta(a):a\Bsubseteq a_i\}$ for each $i$.   We know that each
+$D_i$ is closed under $\Bcup$ (by (i)) and that
+$\bar\lambda(\inf_{i\in J}d_i)=\prod_{i\in J}\bar\lambda d_i$ whenever
+$J\subseteq I$ and $d_i\in D_i$ for each $i\in J$, that is, that
+$\familyiI{d_i}$ is stochastically independent whenever $d_i\in D_i$ for
+each $i$.   Setting $D'_i=\{1\Bsetminus d:d\in D_i\}\cup\{0\}$, we see
+that $D'_i$ is closed under $\Bcap$ and that $\familyiI{d_i}$ is
+stochastically independent whenever $d_i\in D'_i$ for each $i$ (as in
+272F).   An induction on $\#(J)$, using 313Ga for the inductive step,
+shows that if $J\subseteq I$, $d_i\in\frak D_i$ for $i\in J$, and
+$d_i\in D'_i$ for $i\in I\setminus J$, then
+$\bar\lambda(\inf_{i\in I}d_i)=\prod_{i\in I}\bar\lambda d_i$.   At the
+end of the induction, we see that
+$\bar\lambda(\inf_{i\in I}d_i)=\prod_{i\in I}\bar\lambda d_i$ whenever
+$d_i\in\frak D_i$ for each $i$, and therefore whenever $d_i$ belongs to
+the topological closure of $\frak D_i$ for each $i$, where $\frak B$ is
+given its measure-algebra topology (\S323).
+
+Finally, suppose that $\familyiI{a_i}$ is any disjoint family in
+$\frak A$, and $\frak C_i$ is the closed subalgebra of $\frak B$
+generated by $D_i=\{\theta(a):a\Bsubseteq a_i\}$ for each $i$.   Take a
+finite set $J\subseteq I$ and $c_i\in\frak C_i$ for each $i\in J$.   By
+323J, $\frak C_i$ is the topological closure of the subalgebra
+$\frak D_i$ of $\frak B$ generated by $\{\theta(a):a\Bsubseteq a_i\}$;
+so $\bar\lambda(\inf_{i\in J}c_i)=\prod_{i\in J}\bar\lambda c_i$.   As
+$\family{i}{J}{c_i}$ is arbitrary, $\familyiI{\frak C_i}$ is
+independent.
+}%end of proof of 495J
+
+\leader{495K}{Proposition} Let $U$ be any $L$-space.
+Then there are a probability space $(\Omega,\Lambda,\lambda)$ and a
+positive linear operator $T:U\to L^1(\lambda)$ such that
+$\|Tu\|_1=\|u\|_1$ whenever $u\in L^1(\mu)^+$ and $\familyiI{Tu_i}$ is
+stochastically independent in $L^0(\lambda)$ whenever $\familyiI{u_i}$
+is a disjoint family in $L^1(\mu)$.
+
+\medskip
+
+\noindent{\bf Remarks}\cmmnt{ Recall that a family $\familyiI{u_i}$ in
+a Riesz space is `disjoint' if $|u_i|\wedge|u_j|=0$ for all distinct
+$i$, $j\in I$ (352C).}   \cmmnt{A family} $\familyiI{v_i}$ in
+$L^0(\lambda)$ is `independent' if $\familyiI{g_i}$ is an independent
+family of random variables whenever $g_i\in\eusm L^0(\lambda)$
+represents $v_i$ for each $i$\cmmnt{;  compare 367W}.
+
+\proof{{\bf (a)} By Kakutani's theorem, there is a measure algebra
+$(\frak A,\bar\mu)$ such that $U$ is isomorphic, as Banach lattice, to
+$L^1(\frak A,\bar\mu)$;  now $(\frak A,\bar\mu)$ can be represented as
+the measure algebra of a measure space $(X,\Sigma,\mu)$, and we
+can identify $U$ and $L^1(\frak A,\bar\mu)$ with $L^1(\mu)$ (365B).
+Set $\Sigma^f=\{E:E\in\Sigma$, $\mu E<\infty\}$ and
+$\frak A^f=\{a:a\in\frak A$, $\bar\mu a<\infty\}$ as usual.   Take
+$(\Omega,\Lambda,\lambda)$ and $\family{E}{\Sigma^f}{g_E}$ from
+495B, with $\gamma=1$.   As in the proof of 495J, we have $g_E\eae g_F$
+whenever $E$, $F\in\Sigma^f$ and $\mu(E\symmdiff F)=0$;  consequently we
+can define $\psi:\frak A^f\to L^1(\lambda)$ by setting
+$\psi a=g_E^{\ssbullet}$ whenever $E\in\Sigma^f$ and $E^{\ssbullet}=a$.
+Again as in 495J, $g_{E\cup F}\eae g_E+g_F$ whenever $E$, $F\in\Sigma^f$
+are disjoint, so $\psi$ is additive.   Also
+
+\Centerline{$\|\psi a\|_1=\biggerint g_Ed\lambda=\mu E=\bar\mu a$}
+
+\noindent whenever $E\in\Sigma^f$ represents $a\in\frak A^f$.   By 365I,
+there is a
+unique bounded linear operator $T:L^1(\frak A,\bar\mu)\to L^1(\lambda)$
+such that $T(\chi a)=\psi a$ for every $a\in\frak A^f$.   By 365Ka, $T$
+is a positive operator.   The set
+$\{u:u\in L^1(\frak A,\bar\mu)^+, \|Tu\|_1=\|u\|_1\}$ is closed under
+addition, norm-closed and contains $\alpha\chi a$ for every
+$a\in\frak A^f$ and $\alpha\ge 0$,
+so is the whole of $L^1(\frak A,\bar\mu)^+$, by 365F.
+
+Note that if $\familyiI{a_i}$ is a disjoint family in $\frak A^f$, then
+$\familyiI{\psi a_i}$ is stochastically independent, by
+495B(ii).
+
+\medskip
+
+{\bf (b)} Now let $\familyiI{u_i}$ be a disjoint family in
+$L^1(\frak A,\bar\mu)$.   Then $\familyiI{Tu_i}$ is independent.
+\Prf\Quer\ Otherwise, there are a finite set $J\subseteq I$ and a family
+$\family{i}{J}{V_i}$ such that $V_i$ is a neighbourhood of $Tu_i$ in the
+topology of convergence in measure on $L^0(\mu)$ for each $i\in J$, and
+$\family{i}{J}{v_i}$ is not independent whenever $v_i\in V_i$ for each
+$i$ (367W).   Because the embedding
+$L^1(\lambda)\embedsinto L^0(\lambda)$ is continuous for the norm topology
+on $L^1(\lambda)$ and the topology of convergence in measure (245G),
+there is a $\delta>0$ such that $Tu'_i\in V_i$ whenever $i\in J$,
+$u'_i\in L^1(\frak A,\bar\mu)$ and $\|u'_i-u_i\|_1\le\delta$.   Now we
+can find such $u'_i\in S(\frak A^f)$ with $|u'_i|\le|u_i|$ (365F).
+
+Express each $u'_i$ as $\sum_{k=0}^{n_i}\alpha_{ik}\chi a_{ik}$ where
+$\langle a_{ik}\rangle_{k\le n_i}$ is a disjoint family in
+$\frak A^f$ and no $\alpha_{ik}$ is zero (361Eb).   In this case, all
+the $a_{ik}$, for $i\in J$ and $k\le n_i$, are disjoint, so all the
+$\psi(a_{ik})$ are independent.   But this means that
+$\family{i}{J}{Tu'_i}
+=\family{i}{J}{\sum_{k=0}^{n_i}\alpha_{ik}\psi(a_{ik})}$ is independent
+(272K);  which is impossible, because $Tu'_i\in V_i$ for every
+$i\in J$.\ \Bang\Qed
+
+So $T$, regarded as a function from $U$ to $L^1(\lambda)$, has the
+required properties.
+}%end of proof of 495K
+
+\leader{495L}{}\cmmnt{ The following is a more concrete expression of
+the same ideas.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be an atomless measure
+space, and $\nu$ the Poisson point process on $X$ with density
+$\gamma>0$.
+
+(a) If $h\in\eusm L^1(\mu)$, $Q_h(S)=\sum_{x\in S\cap\dom h}h(x)$ is
+defined and finite for $\nu$-almost every $S\subseteq X$, and
+$\int Q_hd\nu=\gamma\int h\,d\mu$.
+
+(b) We have a positive linear operator $T:L^1(\mu)\to L^1(\nu)$
+defined by setting $T(h^{\ssbullet})=Q_h^{\ssbullet}$ for every
+$h\in\eusm L^1(\mu)$.
+
+(c) $\|Tu\|_1=\gamma\|u\|_1$ whenever $u\in L^1(\mu)^+$ and
+$\familyiI{Tu_i}$ is stochastically independent in $L^0(\lambda)$
+whenever $\familyiI{u_i}$ is a disjoint family in $L^1(\mu)$.
+
+\proof{{\bf (a)} In the language of 495D, $Q_{\chi E}=f_E$ for every
+$E\in\Sigma^f$.   So $Q_{\chi E}\in\eusm L^1(\nu)$ and
+$\int Q_{\chi E}d\nu=\gamma\mu E$ for every $E\in\Sigma^f$.   If
+$h=\sum_{i=0}^r\alpha_i\chi E_i$ is a simple function on $X$, then
+$Q_h\eae\sum_{i=0}^r\alpha_iQ_{\chi E_i}\in\eusm L^1(\nu)$ and
+$\int Q_hd\nu=\int h\,d\mu$.   If $h\in\eusm L^1(\mu)$ is zero a.e.,
+then $\{S:S\subseteq h^{-1}[\{0\}]\}$ is $\nu$-conegligible, so
+$Q_h=0$ a.e.   It follows that if $h\in\eusm L^1(\mu)$ is non-negative,
+and $\sequencen{h_n}$ is a non-decreasing sequence of simple functions
+converging to $h$ almost everywhere, then
+$Q_h\eae\lim_{n\to\infty}Q_{h_n}$, while $Q_{h_n}\leae Q_{h_{n+1}}$ for
+every $n$;  so $Q_h$ is $\nu$-integrable and
+
+\Centerline{$\int Q_hd\nu=\lim_{n\to\infty}\int Q_{h_n}d\nu
+=\lim_{n\to\infty}\gamma\int h_nd\mu=\gamma\int hd\mu$.}
+
+\medskip
+
+{\bf (b)} Since $Q_h\eae Q_{h'}$ whenever $h\eae h'$ in
+$\eusm L^1(\mu)$, we can define $T:L^1(\mu)\to L^1(\nu)$ by setting
+$T(h^{\ssbullet})=(Q_h)^{\ssbullet}$ for every $h\in\eusm L^1(\mu)$;
+because $Q_{\alpha h}\eae\alpha Q_h$ and $Q_{h+h'}\eae Q_h+Q_{h'}$
+whenever $h$, $h'\in\eusm L^1(\mu)$ and $\alpha\in\Bbb R$, $T$ is
+linear;  because $Q_h\ge 0$ a.e.\ whenever $h\ge 0$ a.e., $T$ is positive.
+
+\medskip
+
+{\bf (c)} Because $\int Q_hd\nu=\gamma\int h\,d\mu$ for every
+$h\in\eusm L^1(\mu)$, and $T$ is positive, $\|Tu\|_1=\gamma\|u\|_1$ for
+every $u\in L^1(\mu)^+$.   Finally, if $\familyiI{u_i}$ is a finite
+disjoint family in $L^1(\mu)$, we can find a family $\familyiI{h_i}$ of
+measurable functions from $X$ to $\Bbb R$ such that
+$h_i^{\ssbullet}=u_i$ for each $i$ and the sets $E_i=\{x:h_i(x)\ne 0\}$
+are disjoint.   For each $i\in I$, let $\Tau_i$ be the $\sigma$-algebra
+of subsets of $\Cal PX$ generated by sets of the form
+$\{S:\#(S\cap E)=n\}$ where $E\subseteq E_i$ has finite measure and
+$n\in\Bbb N$.   Then $\familyiI{\Tau_i}$ is independent (as in part (c)
+of the proof of 495J), and each $Q_{h_i}$ is $\Tau_i$-measurable, so
+$\familyiI{Q_{h_i}}$ is independent and $\familyiI{Tu_i}$ is
+independent.
+}%end of proof of 495L
+
+\leader{495M}{}\cmmnt{ We can identify the characteristic functions of
+the random variables $Q_f$ as defined above.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be an atomless measure
+space, and $\nu$ the Poisson point process on $X$ with density
+$\gamma>0$.   For $f\in\eusm L^1(\mu)$ set
+$Q_f(S)=\sum_{x\in S\cap\dom f}f(x)$ when $S\subseteq X$ and the sum is
+defined in $\Bbb R$.   Then
+
+\Centerline{$\biggerint_{\Cal PX}e^{iyQ_f}d\nu
+=\exp\bigl(\gamma\int_X(e^{iyf}-1)d\mu\bigr)$}
+
+\noindent for any $y\in\Bbb R$.
+
+\proof{ Note that $Q_f$ is defined $\nu$-almost everywhere, by 495La.
+
+\medskip
+
+{\bf (a)} Consider first the case in which $f$ is a simple function,
+expressed as $\sum_{j=0}^n\alpha_j\chi F_j$ where
+$\langle F_j\rangle_{j\le n}$ is a disjoint family of sets of finite
+measure and $\alpha_j\in\Bbb R$ for each $j$.   Then
+$Q_f(S)=\sum_{j=0}^n\alpha_j\#(S\cap F_j)$ for
+$\nu$-almost every $S$, so
+
+$$\eqalignno{\biggerint e^{iyQ_f}d\nu
+&=\int\prod_{j=0}^ne^{iy\alpha_j\#(S\cap F_j)}\nu(dS)
+=\prod_{j=0}^n\int e^{iy\alpha_j\#(S\cap F_j)}\nu(dS)\cr
+\displaycause{because the functions $S\mapsto\#(S\cap F_j)$ are
+independent}
+&=\prod_{j=0}^n\sum_{k=0}^{\infty}\bover{(\gamma\mu F_j)^k}{k!}
+   e^{-\gamma\mu F_j}e^{iy\alpha_jk}
+=\prod_{j=0}^ne^{-\gamma\mu F_j}\sum_{k=0}^{\infty}
+  \bover{(e^{iy\alpha_j}\gamma\mu F_j)^k}{k!}\cr
+&=\prod_{j=0}^n\exp\bigl((e^{iy\alpha_j}-1)\gamma\mu F_j)\bigr)
+=\exp\bigl(\gamma\sum_{j=0}^n(e^{iy\alpha_j}-1)\mu F_j\bigr)\cr
+&=\exp\bigl(\gamma\int(e^{iyf}-1)d\mu\bigr).\cr}$$
+
+\medskip
+
+{\bf (b)} Now suppose that $f$ is any integrable function.   Then there
+is a sequence $\sequencen{f_n}$ of simple functions such that
+$|f_n|\leae|f|$ for every $n$ and $\lim_{n\to\infty}f_n\eae f$.   Write
+$q_n$, $q$ for $Q_{f_n}$, $Q_f$.   Set
+
+\Centerline{$D=\{x:x\in\dom f$, $|f_n(x)|\le|f(x)|$ for every $n$ and
+$\lim_{n\to\infty}f_n(x)=f(x)\}$,}
+
+\noindent so that $D$ is $\mu$-conegligible.   If $S\subseteq D$ and
+$Q_{|f|}(S)$ is defined, then $q(S)=\lim_{n\to\infty}q_n(S)$, and this
+is true for $\nu$-almost every $S$;  so
+$\int e^{iyq}d\nu=\lim_{n\to\infty}e^{iyq_n}d\nu$, by Lebesgue's
+Dominated Convergence Theorem.   On the other hand,
+
+\Centerline{$|e^{i\alpha}-1|
+=|\biggerint_0^{\alpha}\Bover1ie^{it}dt|\le\alpha$,
+\quad$|e^{-i\alpha}-1|
+=|\biggerint_0^{\alpha}\Bover1ie^{-it}dt|\le\alpha$}
+
+\noindent for every $\alpha\ge 0$.   So if we set
+$g(x)=e^{iyf(x)}-1$, $g_n(x)=e^{iyf_n(x)}-1$ when these are defined, we
+have $|g_n|\leae|yf_n|\leae|yf|$ for every $n$.   Accordingly
+
+\Centerline{$\biggerint(e^{iyf}-1)d\mu
+=\int\lim_{n\to\infty}(e^{iyf_n}-1)d\mu
+=\lim_{n\to\infty}\int(e^{iyf_n}-1)d\mu$}
+
+\noindent by Lebesgue's theorem again.   It follows that
+
+$$\eqalignno{\int e^{iyQ_f}d\nu
+&=\lim_{n\to\infty}\int e^{iyq_n}d\nu
+=\lim_{n\to\infty}
+  \exp\bigl(\gamma\int(e^{iyf_n}-1)d\mu\bigr)\cr
+\displaycause{by (a)}
+&=\exp\bigl(\gamma\lim_{n\to\infty}
+  \int(e^{iyf_n}-1)d\mu\bigr)
+=\exp\bigl(\gamma\int(e^{iyf}-1)d\mu\bigr),\cr}$$
+
+\noindent as claimed.
+}%end of proof of 495M
+
+\cmmnt{\medskip
+
+\allowmorestretch{468}{
+\noindent{\bf Remark} Recall that a Poisson random variable with
+expectation $\gamma$ has characteristic function
+$y\mapsto\exp(\gamma(e^{iy}-1))$ (part (a) of the proof of 285Q),
+corresponding to the case $f=\chi F$ where $\mu F=1$.   The random
+variables $Q_f$ have {\bf compound Poisson} distributions.
+}%end of allowmorestretch
+}%end of comment
+
+\leader{495N}{}\cmmnt{ If our underlying measure is a Radon measure,
+we can look for Radon measures on $\Cal PX$ to represent the Poisson
+point processes on $X$.   There seem to be difficulties in general, but
+I can offer the following.   See also 495Yd.
+
+\medskip
+
+\noindent}{\bf Proposition}\discrversionA{\footnote{Revised 2008.}}{}
+Let $(X,\frak T,\Sigma,\mu)$ be a Radon measure
+space such that $\mu$ is outer regular with respect to the open sets,
+and $\gamma>0$.
+Give the space $\Cal C$ of closed subsets of $X$ its
+Fell topology\cmmnt{ (4A2T)}.
+
+(a) There is a unique quasi-Radon probability measure
+$\tilde\nu$ on $\Cal C$ such that
+
+\Centerline{$\tilde\nu\{C:\#(C\cap E)=\emptyset\}=e^{-\gamma\mu E}$}
+
+\noindent whenever $E\subseteq X$ is a measurable set of
+finite measure.
+
+(b) If $E_0,\ldots,E_r$ are disjoint sets of finite measure, none
+including any singleton set of non-zero measure, and $n_i\in\Bbb N$ for
+$i\le r$, then
+
+\Centerline{$\tilde\nu\{C:\#(C\cap E_i)=n_i$ for every $i\le r\}
+=\prod_{i=0}^r\Bover{(\gamma\mu E_i)^{n_i}}{n_i!}e^{-\gamma\mu E_i}$.}
+
+(c) Suppose that $\mu$ is atomless and $\nu$ is the Poisson point process on $X$
+with density $\gamma$.
+
+\quad(i) $\Cal C$ has full outer measure for $\nu$, and
+$\tilde\nu$ extends the subspace measure $\nu_{\Cal C}$.
+
+\quad(ii) If moreover $\mu$ is $\sigma$-finite, then $\Cal C$ is
+$\nu$-conegligible.
+
+(d) If $X$ is locally compact then $\tilde\nu$ is a Radon measure.
+
+(e) If $X$ is second-countable and $\mu$ is atomless
+then $\tilde\nu=\nu_{\Cal C}$.
+%new 2008
+
+\proof{{\bf (a)(i)} Set $\Sigma^f=\{E:\mu E<\infty\}$.
+There is a disjoint family $\Cal H$ of non-empty self-supporting
+measurable subsets of $X$ of finite measure such that
+$\mu E=\sum_{H\in\Cal H}\mu(E\cap H)$ for every $E\in\Sigma$ (412I);
+so if $G\subseteq X$ is an open set of finite measure,
+$\{H:H\in\Cal H$, $G\cap H\ne\emptyset\}$ is countable.   If $E$ is any set
+of finite measure, it is included in an open set of finite measure, because
+$\mu$ is outer regular with respect to the open sets;  so once again
+$\{H:H\in\Cal H$, $E\cap H\ne\emptyset\}$ is countable.
+
+Build $\Omega=\prod_{H\in\Cal H}\Bbb N\times H^{\Bbb N}$,
+$\langle g_{HE}\rangle_{H\in\Cal H,E\in\Sigma}$ and the product
+measure $\lambda$ on $\Omega$ as in the proof of
+495B;  as in the proof of 495D, set
+
+\Centerline{$\phi(\omega)=\{x_{Hj}(\omega):H\in\Cal H$, $j<m_H(\omega)\}$}
+
+\noindent for $\omega\in\Omega$.
+
+\medskip
+
+\quad{\bf (ii)} If $E\in\Sigma^f$,
+$\lambda\{\omega:E\cap\phi(\omega)=\emptyset\}=e^{-\gamma\mu E}$.
+\Prf\ $\Cal H'=\{H:H\in\Cal H$, $E\cap H\ne\emptyset\}$ is countable.
+Now
+
+\Centerline{$\{\omega:E\cap\phi(\omega)=\emptyset\}
+=\bigcap_{H\in\Cal H'}\{\omega:x_{Hj}\notin E$ for every $j<m_H(\omega)\}$}
+
+\noindent has measure
+
+\Centerline{$\prod_{H\in\Cal H'}\lambda\{\omega:g_{HE}(\omega)=0\}
+=\prod_{H\in\Cal H'}e^{-\gamma\mu(H\cap E)}
+=e^{-\gamma\mu E}$}
+
+\noindent because $\mu E=\sum_{H\in\Cal H'}\mu(H\cap E)$.\ \Qed
+
+Let $\Tau_0$ be the $\sigma$-algebra of subsets of $\Cal PX$
+generated by sets of the form $\{S:S\cap E=\emptyset\}$ where
+$E\in\Sigma^f$.   By the Monotone Class Theorem (136B),
+$\lambda$ measures $\phi^{-1}[W]$ for every
+$W\in\Tau_0$;  set $\nu_0W=\lambda\phi^{-1}[W]$ for $W\in\Tau_0$, so that
+if $E\in\Sigma$ then $\nu_0\{S:S\cap E=\emptyset\}=e^{-\gamma\mu E}$.
+
+\medskip
+
+\quad{\bf (iii)} Give $\Cal PX$ the topology $\frak S$ generated by sets of
+the form
+
+\Centerline{$\{S:S\cap G\ne\emptyset\}$,
+\quad$\{S:S\cap K=\emptyset\}$}
+
+\noindent for open sets $G\subseteq X$ and compact sets $K\subseteq X$.
+(Thus the Fell topology on $\Cal C$ is the subspace topology induced by
+$\frak S$.)   Then $\Cal PX$ is compact.   \Prf\ Follow the proof of
+4A2T(b-iii) word for word, but replacing every $\Cal C$ with $\Cal PX$.\
+\Qed
+
+\medskip
+
+\quad{\bf (iv)} $\nu_0$ is inner regular with respect to the
+$\frak S$-closed sets.   \Prf\ Write $\Cal L$ for the family of
+$\frak S$-closed sets belonging to $\Tau_0$.   Of course $\Cal L$ is closed
+under finite unions and countable intersections.
+
+($\alpha$) Suppose that $E\in\Sigma^f$ and
+$W=\{S:S\cap E\ne\emptyset\}$.   Let $\epsilon>0$.   Then there is a
+compact set $K\subseteq E$ such that $\mu(E\setminus K)\le\epsilon$.
+Set $V=\{S:S\cap K\ne\emptyset\}$;  then $V\in\Cal L$, $V\subseteq W$ and
+
+\Centerline{$\nu_0(W\setminus V)
+\le\nu_0\{S:S\cap E\setminus K\ne\emptyset\}
+\le 1-e^{-\gamma\epsilon}$.}
+
+\noindent As $\epsilon$ is arbitrary,
+$\nu_0W=\sup\{\nu_0V:V\in\Cal L$, $V\subseteq W\}$.
+
+($\beta$) Suppose that $E\in\Sigma^f$ and
+$W=\{S:S\cap E=\emptyset\}$.   Let $\epsilon>0$.   Then there is an
+open set $G\supseteq E$ such that $\mu(G\setminus E)\le\epsilon$.
+Set $V=\{S:S\cap G=\emptyset\}$;  then $V\in\Cal L$, $V\subseteq W$ and
+
+\Centerline{$\nu_0(W\setminus V)
+\le\nu_0\{S:S\cap G\setminus E\ne\emptyset\}
+\le 1-e^{-\gamma\epsilon}$.}
+
+\noindent As $\epsilon$ is arbitrary,
+$\nu_0W=\sup\{\nu_0V:V\in\Cal L$, $V\subseteq W\}$.
+
+($\gamma$) By 412C, $\nu_0$ is inner regular with respect to the
+$\frak S$-closed sets.\ \Qed
+
+\medskip
+
+\quad{\bf (v)} Since $\frak S$ is a compact topology, the family of
+$\frak S$-closed sets is a compact class, so 413O tells us that $\nu_0$ has
+an extension to a complete topological measure $\tilde\nu_0$ on
+$\Cal PX$, inner regular with respect to the closed sets.
+Of course $\tilde\nu_0$, being a probability measure, is
+effectively locally finite and locally determined, so it is a quasi-Radon
+measure with respect to the topology $\frak S$.   Consequently the subspace
+measure $\tilde\nu$ on $\Cal C$ is a quasi-Radon measure for the
+Fell topology on $\Cal C$ (415B).
+
+\medskip
+
+\quad{\bf (vi)} $\Cal C$ has full outer measure for $\tilde\nu_0$.
+\Prf\Quer\ Otherwise, there is a non-empty closed set
+$V\subseteq\Cal PX\setminus\Cal C$.
+Consider the family $\Cal U$ of subsets of $\Cal PX$ of the form
+
+\Centerline{$\{S:S\cap K=\emptyset$, $S\cap G_i\ne\emptyset$ for
+$i<r\}$}
+
+\noindent where $K\subseteq X$ is compact and $G_i\subseteq X$ is an open
+set of finite measure for every $i<r$.
+Because $\mu$ is locally finite, this is a base for $\frak S$.   So
+$\Cal U'=\{U:U\in\Cal U$, $U\cap W=\emptyset\}$ is a cover of
+$\Cal PX\setminus W\supseteq\Cal C$.   Of course $U\cap\Cal C$ is open in
+the Fell topology for every $U\in\Cal U$;  because $\Cal C$ is compact,
+there are $U_0,\ldots,U_m\in\Cal U'$ covering $\Cal C$.
+
+Express each $U_j$ as
+$\{S:S\cap K_j=\emptyset$, $S\cap G_{ji}\ne\emptyset$ for
+$i<r_j\}$, where the $K_j$ are all compact and the $G_{ji}$ are all open.
+Because $\bigcup_{j\le m}U_j$ is disjoint from $V$, there is an
+$S\subseteq\Cal PX$ which does not belong to any $U_j$.   Let $\Cal E$ be
+the finite algebra of subsets of $X$ generated by
+$\{K_j:j\le m\}\cup\{G_{ji}:j\le m$, $i<r_j\}$;  then there is a finite set
+$C\subseteq S$ such that $C\cap E\ne\emptyset$ whenever $E\in\Cal E$ and
+$S\cap E\ne\emptyset$.   In this case,
+$C\in\Cal C\setminus\bigcup_{j\le m}U_j$;  which is supposed to be
+impossible.\ \Bang\Qed
+
+\medskip
+
+\quad{\bf (vii)} Consequently $\tilde\nu$ is a probability measure.
+If $E\in\Sigma^f$, then
+
+$$\eqalign{\tilde\nu\{C:C\in\Cal C,\,C\cap E=\emptyset\}
+&=\tilde\nu(\Cal C\cap\{S:S\subseteq X,\,S\cap E=\emptyset\})\cr
+&=\tilde\nu_0\{S:S\cap E=\emptyset\}
+=\nu_0\{S:S\cap E=\emptyset\}
+=e^{-\gamma\mu E}.\cr}$$
+
+\medskip
+
+\quad{\bf (viii)} To see that $\tilde\nu$ is uniquely defined, let
+$\tilde\nuprime$ be another quasi-Radon probability measure on $\Cal C$
+with the same property.
+
+\medskip
+
+\qquad\grheada\ Suppose that $E_0,\ldots,E_r\subseteq X$ are disjoint
+measurable sets of finite measure, and
+
+\Centerline{$W
+=\{C:C\in\Cal C$, $C\cap E_0=\emptyset$, $C\cap E_i\ne\emptyset$ for
+$1\le i\le r\}$.}
+
+\noindent Then $\tilde\nu W=\tilde\nu'W$.   \Prf\ Induce on $r$.   If
+$r=0$ the result is immediate.   For the inductive step to $r\ge 1$,
+consider
+$\{C:C\cap E_0=\emptyset$, $C\cap E_i\ne\emptyset$ for $1\le i<r\}$ and
+$\{C:C\cap(E_0\cup E_r)=\emptyset$,
+$C\cap E_i\ne\emptyset$ for $1\le i<r\}$.   By the inductive hypothesis,
+$\tilde\nu$ and $\tilde\nu'$ agree on these two sets, and therefore on
+their difference
+$\{C:C\in\Cal C$, $C\cap E_0=\emptyset$, $C\cap E_i\ne\emptyset$ for
+$1\le i\le r\}$.\ \Qed
+
+\medskip
+
+\qquad\grheadb\
+Suppose that we have a compact set $K\subseteq X$
+and open sets $G_i\subseteq X$ of finite measure, for $i<r$, and set
+
+\Centerline{$V=\{C:C\in\Cal C$, $C\cap K=\emptyset$,
+$C\cap G_i\ne\emptyset$ for every $i<r\}$.}
+
+\noindent Then $\tilde\nu V=\tilde\nuprime V$.   \Prf\ Let $\Cal E$
+be the finite subalgebra of $\Cal PX$ generated
+by $\{G_i:i<r\}\cup\{K\}$, and $\Cal A$ the set of atoms of $\Cal E$
+included in $K\cup\bigcup_{i<r}G_i$.
+For $\Cal I\subseteq\Cal A$ set
+
+\Centerline{$V_{\Cal I}=\{C:C\in\Cal C$, $C\cap E\ne\emptyset$ for
+$E\in\Cal I$, $C\cap E=\emptyset$ for $E\in\Cal A\setminus\Cal I\}$.}
+
+\noindent Then $V=\bigcup_{\Cal I\in\frak I}V_{\Cal I}$, where
+
+$$\eqalign{\frak I
+&=\{\Cal I:\Cal I\subseteq\Cal A,\,A\cap K=\emptyset
+  \text{ for every }A\in\Cal I,\cr
+&\mskip100mu\text{ for every }i<r\text{ there is an }A\in\Cal I
+  \text{ such that }A\subseteq G_i\}.\cr}$$
+
+\noindent Now ($\alpha$) shows that
+$\tilde\nu V_{\Cal I}=\tilde\nuprime V_{\Cal I}$ for every
+$\Cal I\subseteq\Cal A$, so that $\tilde\nu V=\tilde\nuprime V$.
+Since sets $V$ of the type described form a base for the Fell
+topology closed under finite intersections, $\tilde\nu=\tilde\nuprime$
+(415H(v)).\ \Qed
+
+This completes the proof of (a).
+
+\medskip
+
+{\bf (b)(i)} In the construction of 495B and (a-i) above, all the
+normalized subspace measures $\mu'_H$ are Radon measures (416Rb), while of
+course all the Poisson distributions $\nu_H$ are Radon measures, so the
+product measure $\lambda$ on
+$\Omega=\prod_{H\in\Cal H}\Bbb N\times H^{\Bbb N}$ has an extension to a
+Radon measure $\tilde\lambda$ (417Q).
+Let $\Cal W$ be the family of those sets $W\subseteq\Cal PX$
+such that $\tilde\nu_0W$ and $\tilde\lambda\phi^{-1}[E]$ are defined and
+equal.   Then $\Cal W$ is a Dynkin class.   So if
+$\Cal W_0\subseteq\Cal W$ is closed under finite intersections,
+the $\sigma$-algebra of subsets of $\Cal PX$ generated by $\Cal W_0$ is
+included in $\Cal W$.   By (a-ii), $\Tau_0\subseteq\Cal W$.
+
+\medskip
+
+\quad{\bf (ii)} Let $\frak S_0$ be the topology on $\Cal PX$ generated by
+sets of the form $\{S:S\cap G\ne\emptyset\}$ where $G\subseteq X$ is open.
+(So $\frak S_0$ is coarser than the topology $\frak S$ of (a-iii) above.)
+Then $\phi:\Omega\to\Cal PX$ is continuous for the product topology
+$\frak U$ on $\Omega$ and $\frak S_0$ on $\Cal PX$.   \Prf\ If
+$G\subseteq X$ is open, then
+
+\Centerline{$\phi^{-1}[\{S:S\cap G\ne\emptyset\}]
+=\Omega\cap\bigcap_{i<r}\bigcup_{H\in\Cal H,j\in\Bbb N}
+  \{\omega:j<m_H(\omega),\,x_{Hj}(\omega)\in G_i\}$}
+
+\noindent is open;  by 4A2B(a-ii), this is enough.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} $\frak S_0\subseteq\Cal W$.   \Prf\ Because $\mu$ is
+locally finite, the family $\Cal U$ of sets of the form
+
+\Centerline{$\{S:S\cap G_i\ne\emptyset$ for $i<r\}$,}
+
+\noindent where $G_i\subseteq X$ is an open set of finite measure for each
+$i<r$, is a base for $\frak S_0$;  and
+$\Cal U\subseteq\Tau_0\subseteq\Cal W$.   So if $W\in\frak S_0$,
+$\Cal V=\{V:V\in\frak S_0\cap\Tau_0$, $V\subseteq W\}$ is an
+upwards-directed family of sets with union $W$.   Since $\tilde\nu_0$ and
+$\tilde\lambda$ are both $\tau$-additive, and $\phi^{-1}[V]$ is open for
+every $V\in\Cal V$,
+
+\Centerline{$\tilde\lambda\phi^{-1}[W]
+=\sup_{V\in\Cal V}\tilde\lambda\phi^{-1}[V]
+=\sup_{V\in\Cal V}\tilde\nu_0V
+=\tilde\nu_0W$,}
+
+\noindent and $W\in\Cal W$.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} If $G\subseteq X$ is open and $n\in\Bbb N$,
+$W=\{S:\#(S\cap G)\ge n\}$ belongs to $\frak S_0$.   \Prf\
+
+$$\eqalign{W
+&=\bigcup\{\{S:S\cap G_i\ne\emptyset\text{ for every }i<n\}:
+  \ofamily{i}{n}{G_i}\text{ is a disjoint family}\cr
+&\mskip100mu
+  \text{of open subsets of }G\text{ of finite measure}\}.
+  \text{ \Qed}\cr}$$
+
+\medskip
+
+\quad{\bf (v)} If $E_0,\ldots,E_r\subseteq X$ are sets of finite measure,
+and $n_0,\ldots,n_r\in\Bbb N$, then
+
+\Centerline{$V=\{S:\#(S\cap E_i)\ge n_i$ for $i\le r\}$}
+
+\noindent belongs to $\Cal W$.   \Prf\ Let $\epsilon>0$.   Then there is a
+$\delta>0$ such that $1-e^{-\gamma\delta}\le\epsilon$.   Let
+$G_0,\ldots,G_r$ be open sets such that $E_i\subseteq G_i$ for $i\le r$ and
+$\sum_{i=0}^r\mu(G_i\setminus E_i)\le\delta$.   Set
+
+\Centerline{$W=\{S:\#(S\cap G_i)\ge n_i$ for $i\le r\}$,
+\quad$W_0=\{S:S\cap\bigcup_{i\le r}G_i\setminus E_i\ne\emptyset\}$;}
+
+\noindent then $W\in\frak S_0$ and $W_0\in\Tau_0$, so both belong to
+$\Cal W$, while
+
+\Centerline{$\tilde\nu_0W_0=\tilde\lambda\phi^{-1}[W_0]
+=1-\exp(-\gamma\mu(\bigcup_{i\le r}G_i\setminus E_i))\le\epsilon$.}
+
+Now
+
+\Centerline{$W\setminus W_0\subseteq V\subseteq W$,
+\quad$\phi^{-1}[W]\setminus\phi^{-1}[W_0]\subseteq\phi^{-1}[V]
+\subseteq\phi^{-1}[W]$.}
+
+\noindent So
+
+\Centerline{$\tilde\nu_0^*V-(\tilde\nu_0)_*V\le\epsilon$,
+\quad$\tilde\lambda^*(\phi^{-1}[V])-\tilde\lambda_*(\phi^{-1}[V])
+\le\epsilon$,
+\quad$|\tilde\nu_0^*V-\tilde\lambda^*(\phi^{-1}[V])|\le\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary (and $\tilde\nu_0$, $\tilde\lambda$
+are complete), $V$ is measured by $\tilde\nu_0$, $\phi^{-1}[V]$ is measured
+by $\tilde\lambda$, and
+
+\Centerline{$|\tilde\nu_0V-\tilde\lambda\phi^{-1}[V]|
+=|\tilde\nu_0^*V-\tilde\lambda^*(\phi^{-1}[V])|
+=0$.  \Qed}
+
+\medskip
+
+\quad{\bf (vi)} If $E_0,\ldots,E_r\subseteq X$ are sets of finite measure,
+$n_0,\ldots,n_r\in\Bbb N$ and $j\le r$, then
+
+\Centerline{$\{S:\#(S\cap E_i)=n_i$ for $i<j$,
+$\#(S\cap E_i)\ge n_i$ for $j\le i\le r\}$}
+
+\noindent belongs to $\Cal W$.   \Prf\ Induce on $j$.   For $j=0$ we just
+have the case of (v).   For the inductive step to $j+1$, we have
+
+$$\eqalign{\{S:\#&(S\cap E_i)=n_i\text{ for }i\le j,\,
+\#(S\cap E_i)\ge n_i\text{ for }j<i\le r\}\cr
+&=\{S:\#(S\cap E_i)=n_i\text{ for }i<j,\,
+\#(S\cap E_i)\ge n_i\text{ for }j\le i\le r\}\cr
+&\mskip50mu
+  \setminus\{S:\#(S\cap E_i)=n_i\text{ for }i<j,\,
+    \#(S\cap E_j)\ge n_j+1,\cr
+&\mskip308mu
+    \#(S\cap E_i)\ge n_i\text{ for }j<i\le r\}\cr
+&\in\Cal W\cr}$$
+
+\noindent because $\Cal W$ is a Dynkin class.\ \Qed
+
+\medskip
+
+\quad{\bf (vii)}
+If $E\in\Sigma$ has finite measure and does not include any
+non-negligible singleton, then $\#(E\cap\phi(\omega))=g_E(\omega)$, as
+defined in 495B, for
+$\lambda$-almost every $\omega\in\Omega$.
+\Prf\ Let $A_E$ be the set of those $\omega\in\Omega$ such that
+
+\inset{{\it either} there are an $H\in\Cal H$ and $j\in\Bbb N$ such that
+$\mu(H\cap E)=0$ and $x_{Hj}(\omega)\in E$
+
+{\it or} there are an $H\in\Cal H$ and distinct $i$, $j\in\Bbb N$
+such that $x_{Hi}(\omega)=x_{Hj}(\omega)\in E$.}
+
+\noindent As observed in (a-i) above,
+$\{H:H\in\Cal H$, $H\cap E\ne\emptyset\}$ is countable;  while
+for any $H\in\Cal H$ and distinct $i$, $j\in\Bbb N$ the set
+$\{\omega:x_{Hi}(\omega)=x_{Hj}(\omega)\in E\}$ is negligible because the
+subspace measure on $E$ is atomless (414G/416Xa), so the
+diagonal $\{(x,x):x\in E\}$ is negligible in $X^2$.   Consequently
+$\lambda A_E=0$.   But $\#(E\cap\phi(\omega))=g_E(\omega)$ for every
+$\omega\in\Omega\setminus A_E$.\ \Qed
+
+\medskip
+
+\quad{\bf (viii)} Now suppose that $E_0,\ldots,E_r\subseteq X$ are disjoint
+sets of finite measure, none including any non-negligible singleton, and
+$n_0,\ldots,n_r\in\Bbb N$.   Then
+
+\Centerline{$V=\{S:S\subseteq X$,
+$\#(S\cap E_i)=n_i$ for every $i\le r\}$}
+
+\noindent belongs to $\Cal W$, by (vi).   Next,
+
+\Centerline{$\phi^{-1}[V]=\{\omega:\#(E_i\cap\phi(\omega))=n_i$
+for every $i\le r\}$,}
+
+\noindent so
+
+$$\eqalignno{\tilde\nu_0V
+&=\tilde\lambda\phi^{-1}[V]
+=\tilde\lambda\{\omega:g_{E_i}(\omega)=n_i\text{ for every }i\le r\}\cr
+\displaycause{by (vii)}
+&=\prod_{i=0}^r\tilde\lambda\{\omega:g_{E_i}(\omega)=n_i\}
+=\prod_{i=0}^r\Bover{(\gamma\mu E_i)^{n_i}}{n_i!}e^{-\gamma\mu E_i}.\cr}$$
+
+Finally, because $\tilde\nu_0^*\Cal C=1$ and $\tilde\nu$ is the subspace
+measure on $\Cal C$,
+
+$$\eqalign{\tilde\nu\{C:C\in\Cal C,\,\#(C\cap E_i)=n_i
+\text{ for every }i\le r\}
+&=\tilde\nu(V\cap\Cal C)
+=\tilde\nu_0V\cr
+&=\prod_{i=0}^r\Bover{(\gamma\mu E_i)^{n_i}}{n_i!}e^{-\gamma\mu E_i}.\cr}$$
+
+\noindent This completes the proof of (b).
+
+\medskip
+
+{\bf (c)(i)} Taking $\Tau\supseteq\Tau_0$ to be the $\sigma$-algebra of
+subsets of $\Cal PX$ generated by sets of the form
+$\{S:\#(S\cap E)=n\}$ where $E\in\Sigma^f$ and $n\in\Bbb N$,
+(b-viii) tells us that $\tilde\nu_0\restr\Tau$ satisfies the conditions
+of 495D, so its completion $\nu$
+is the Poisson point process as defined in 495E.   Because $\tilde\nu_0$
+is complete, it extends $\nu$.  (The identity map from $\Cal PX$ to itself
+is \imp\ for $\tilde\nu_0$ and $\tilde\nu_0\restr\Tau$, therefore also for
+their completions $\tilde\nu_0$ and $\nu$.)   Since $\Cal C$ has full outer
+measure for $\tilde\nu_0$, by (a-v), it has full outer measure for $\nu$,
+and
+
+\Centerline{$\nu_{\Cal C}(V\cap\Cal C)=\nu V=\tilde\nu_0V
+=\tilde\nu(V\cap\Cal C)$}
+
+\noindent whenever $\nu$ measures $V$, so $\tilde\nu$ extends
+$\nu_{\Cal C}$.
+
+\medskip
+
+\quad{\bf (ii)} If $\mu$ is $\sigma$-finite, then there is a sequence
+$\sequencen{H_n}$ of open sets of finite measure covering $X$.   For each
+$n\in\Bbb N$, $\{S:S\subseteq X$, $S\cap H_n$ is finite$\}$ is
+$\nu$-conegligible.   So $W=\{S:S\cap H_n$ is finite for every $n\}$ is
+$\nu$-conegligible.   But $W\subseteq\Cal C$, so $\Cal C$ is
+$\nu$-conegligible.
+
+\medskip
+
+{\bf (d)} If $X$ is locally compact then $\Cal C$ is Hausdorff
+(4A2T(e-ii));  so $\tilde\nu$, being a quasi-Radon probability
+measure on a compact
+Hausdorff space, is a Radon measure (416G).
+
+\medskip
+
+{\bf (e)} Now suppose that $X$ is second-countable.
+
+\medskip
+
+\quad{\bf (i)} $\Cal C$ has a
+countable network consisting of sets in $\Tau_{\Cal C}$, the subspace
+$\sigma$-algebra induced by the $\sigma$-algebra $\Tau$ of (c-i).
+\Prf\ Let $\Cal U$ be a countable base for $\frak T$,
+closed under finite unions, consisting of sets of finite measure.
+For $U_0\in\Cal U$ and finite $\Cal U_0\subseteq\Cal U$, set
+
+\Centerline{$V(U_0,\Cal U_0)
+=\{C:C\in\Cal C$, $C\cap U_0=\emptyset$,
+$C\cap U\ne\emptyset$ for every $U\in\Cal U\}\in\Tau_{\Cal C}$.}
+
+\noindent If $W\subseteq\Cal C$ is open for the Fell topology and
+$C_0\in W$, there are a compact set $K\subseteq X$ and a finite family
+$\Cal G\subseteq\frak T$ such that
+
+\Centerline{$C_0
+\in\{C:C\in\Cal C$, $C\cap K=\emptyset$, $C\cap G\ne\emptyset$ for every
+$G\in\Cal G\}$.}
+
+\noindent For $G\in\Cal G$ let $y_G$ be a point of $C_0\cap G$.
+Now there are a $U_0\in\Cal U$ such that
+$K\subseteq U_0\subseteq X\setminus C$ and a family
+$\family{G}{\Cal G}{U_G}$ in $\Cal U$ such that $x_G\in U_G\subseteq G$ for
+every $G\in\Cal G$.   In this case,
+
+\Centerline{$C_0\in V(U_0,\{U_G:G\in\Cal G\})\subseteq W$.}
+
+\noindent As $C_0$ and $W$ are arbitrary, the countable set
+$\{V(U_0,\Cal U_0):U_0\in\Cal U$, $\Cal U_0\in[\Cal U]^{<\omega}\}$ is a
+network for the topology of $\Cal C$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Since $\nu_{\Cal C}$ measures every set in this countable
+network, it is a topological measure.
+Since it is also complete, and $\tilde\nu$, being a quasi-Radon probability
+measure, is the completion of its restriction to the Borel $\sigma$-algebra
+of $\Cal C$, $\nu_{\Cal C}$ extends $\tilde\nu$, and the two must be equal.
+}%end of proof of 495N
+
+\leader{495O}{Proposition}\discrversionA{\footnote{Revised 2008.}}{}
+Let $(X,\frak T)$ be a $\sigma$-compact
+locally compact Hausdorff space and $M^{\infty+}_{\text{R}}(X)$ the set
+of Radon measures on $X$.   Give $M^{\infty+}_{\text{R}}(X)$ the topology
+generated by sets of the form $\{\mu:\mu G>\alpha\}$ and
+$\{\mu:\mu K<\alpha\}$ where $G\subseteq X$ is open, $K\subseteq X$ is
+compact and $\alpha\in\Bbb R$.   Let $\Cal C$ be the space of closed
+subsets of $X$ with its Fell topology, and
+$P_{\text{R}}(\Cal C)$ the set of Radon probability measures on
+$\Cal C$ with its narrow topology\cmmnt{ (definition:  437Jd)}.   For
+$\mu\in M^{\infty+}_{\text{R}}(X)$ and $\gamma>0$ let
+$\tilde\nu_{\mu,\gamma}$ be the Radon measure on
+$\Cal C$ defined from $\mu$ and $\gamma$ as in 495N.   Then the function
+$(\mu,\gamma)\mapsto\tilde\nu_{\mu,\gamma}:
+M^{\infty+}_{\text{R}}(X)\times\ooint{0,\infty}\to P_{\text{R}}(\Cal C)$ is
+continuous.
+
+\proof{{\bf (a)} Note that because $X$ is $\sigma$-compact, every Radon
+measure on $X$ is $\sigma$-finite, therefore outer regular with respect to
+the open sets (412Wb), and we can apply 495N to build the measures
+$\tilde\nu_{\mu,\gamma}$.
+Just as in 495E for ordinary Poisson point processes, the
+uniqueness assertion in 495Na assures us that
+$\tilde\nu_{\mu,\gamma}=\tilde\nu_{\gamma\mu,1}$ for all $\gamma$ and
+$\mu$.   Of course the sets
+
+\Centerline{$\{(\mu,\gamma):\gamma\mu G>\alpha\}$,
+\quad$\{(\mu,\gamma):\gamma\mu K<\alpha\}$}
+
+\noindent where $G\subseteq X$ is open,
+$K\subseteq X$ is compact and $\alpha\in\Bbb R$, are all open in
+$M^{\infty+}_{\text{R}}(X)\times\ooint{0,\infty}$;  so the map
+$(\mu,\gamma)\mapsto\gamma\mu$ is continuous.
+It will therefore be enough to show that the map
+$\mu\mapsto\tilde\nu_{\mu,1}:M^{\infty+}_{\text{R}}(X)\to P_{\text{R}}(\Cal C)$ is
+continuous.   Write $\tilde\nu_{\mu}$ for $\tilde\nu_{\mu,1}$.
+
+\medskip
+
+{\bf (b)} Fix an open set $W_0\subseteq\Cal C$, $\alpha_0>0$ and
+$\mu_0\in M^{\infty+}_{\text{R}}(X)$ such that $\tilde\nu_{\mu_0}W_0>\alpha_0$.
+Let $\Cal E$ be the family of relatively compact Borel subsets $E$ of
+$X$ such that $\mu_0(\partial E)=0$.   Then $\Cal E$ is a subring of
+$\Cal PX$ (4A2Bi).   Also
+$\mu\mapsto\mu E:M^{\infty+}_{\text{R}}(X)\to\coint{0,\infty}$ is
+continuous at $\mu_0$ for every $E\in\Cal E$.   \Prf\ If $E\in\Cal E$
+and $\epsilon>0$, then
+
+$$\eqalign{\{\mu:\mu_0E-\epsilon&<\mu E<\mu_0E+\epsilon\}\cr
+&\supseteq\{\mu:\mu(\interior E)>\mu_0(\interior E)-\epsilon,\,
+  \mu\overline{E}<\mu_0\overline{E}+\epsilon\}\cr}$$
+
+\noindent is a neighbourhood of $\mu_0$.\ \Qed
+
+\medskip
+
+{\bf (c)} Next, $\Cal U=\Cal E\cap\frak T$ is a base for $\frak T$
+(411Gi).   It follows that the family $\Cal V$ of sets of the form
+
+\Centerline{$\{C:C\in\Cal C$, $C\cap U_i\ne\emptyset$ for $i<r$,
+$C\cap\overline{U}=\emptyset\}$,}
+
+\noindent where $U$, $U_0,\ldots\in\Cal U$, is a base for the
+Fell topology on $\Cal C$.   \Prf\
+If $W\subseteq\Cal C$ is open for the Fell topology and
+$C_0\in W$, there are $r\in\Bbb N$, open sets $G_i\subseteq X$ for
+$i<r$ and a compact set $K\subseteq X$ such that
+
+\Centerline{$C_0\in\{C:C\cap G_i\ne\emptyset$ for each $i<r$,
+$C\cap K=\emptyset\}\subseteq W$.}
+
+\noindent For each $i<r$ choose $x_i\in C_0\cap G_i$ and
+$U_i\in\Cal U$
+such that $x_i\in U_i\subseteq G_i$.   Because $X$ is locally compact
+and Hausdorff, it is regular, so every point of $K$ belongs to a member
+of $\Cal U$ with closure disjoint from $C_0$;  because $\Cal U$ is
+closed under finite unions, there is a $U\in\Cal U$ such that
+$K\subseteq U$ and $C_0\cap\overline{U}=\emptyset$.   Now
+
+\Centerline{$\{C:C\in\Cal C$, $C\cap U_i\ne\emptyset$ for $i<r$,
+$C\cap\overline{U}=\emptyset\}$}
+
+\noindent belongs to $\Cal V$, contains $C_0$ and is included in
+$W$.   As $C_0$ and $W$ are arbitrary, $\Cal V$ is a base for the
+Fell topology on $\Cal C$.\ \Qed
+
+\medskip
+
+{\bf (d)} If $V\in\Cal V$, then
+$\mu\mapsto\tilde\nu_{\mu}V:M^{\infty+}_{\text{R}}(X)\to[0,1]$ is
+continuous at $\mu_0$.   \Prf\ Express $V$ as
+$\{C:C\in\Cal C$, $C\cap U_i\ne\emptyset$ for $i<r$,
+$C\cap\overline{U}=\emptyset\}$, where $U_i$, $U\in\Cal U$.
+Let $\Cal A$ be the set of atoms of the finite subring of $\Cal E$
+generated by $\{U_i:i<r\}\cup\{\overline{U}\}$.   For
+$\Cal I\subseteq\Cal A$ set
+
+\Centerline{$V_{\Cal I}=\{C:C\in\Cal C$,
+$\Cal I=\{A:A\in\Cal A$, $C\cap A\ne\emptyset\}\}$.}
+
+\noindent Let $\frak I$ be the set of those $\Cal I\subseteq\Cal A$ such
+that $A\cap\overline{U}=\emptyset$ for every $A\in\Cal I$ and for every
+$i<r$ there is an $A\in\Cal I$ such that $A\subseteq U_i$.   Then
+$\family{\Cal I}{\frak I}{V_{\Cal I}}$ is a partition of $V$.
+Moreover, for any $\mu\in M^{\infty+}_{\text{R}}(X)$ and
+$\Cal I\subseteq\Cal A$,
+
+\Centerline{$\tilde\nu_{\mu}V_{\Cal I}
+=\prod_{A\in\Cal A\setminus\Cal I}e^{-\mu A}
+  \cdot\prod_{A\in\Cal I}(1-e^{-\mu A})$.}
+
+\noindent Since each $\mu\mapsto\mu A$ is continuous at $\mu_0$, by (a),
+so are the functionals $\mu\mapsto\tilde\nu_{\mu}V_{\Cal I}$, for
+$\Cal I\subseteq\Cal A$, and $\mu\mapsto\tilde\nu_{\mu}V
+=\sum_{\Cal I\in\frak I}\tilde\nu_{\mu}V_{\Cal I}$.\ \Qed
+
+\medskip
+
+{\bf (e)} Let $\Cal V^*$ be the family of Borel subsets $V$ of $\Cal C$
+such that
+$\mu\mapsto\tilde\nu_{\mu}V:M^{\infty+}_{\text{R}}(X)\to\coint{0,\infty}$
+is continuous at $\mu_0$.   Then $\Cal V\subseteq\Cal V^*$ (by (c)),
+$\Cal C\in\Cal V^*$ and $V\setminus V'\in\Cal V^*$ whenever $V$,
+$V'\in\Cal V^*$ and $V'\subseteq V$.   Because $\Cal V$ is closed under
+finite intersections, it follows that $\Cal V^*$ includes the algebra of
+subsets of $\Cal C$ generated by $\Cal V$ (313Ga);  in particular, any
+finite union of members of $\Cal V$ belongs to $\Cal V^*$.
+
+\medskip
+
+{\bf (f)} Let us return to the open set $W_0\subseteq\Cal C$ and the
+$\alpha_0\in\Bbb R$ of part (a).   Because $\tilde\nu_{\mu_0}$ is
+$\tau$-additive and $\Cal V$ is a base for the topology of $\Cal C$ ((b)
+above), there is a finite family $\Cal V_0\subseteq\Cal V$ such that
+$V_0=\bigcup\Cal V_0$ is included in $W_0$ and
+$\tilde\nu_{\mu_0}V_0>\alpha_0$.   But this means that
+
+\Centerline{$\{\mu:\mu\in M^{\infty+}_{\text{R}}(X)$,
+$\tilde\nu_{\mu}W_0>\alpha_0\}
+\supseteq\{\mu:\mu\in M^{\infty+}_{\text{R}}(X)$,
+$\tilde\nu_{\mu}V_0>\alpha_0\}$}
+
+\noindent is a neighbourhood of $\mu_0$.   As $\mu_0$ is arbitrary,
+$\{\mu:\tilde\nu_{\mu}W_0>\alpha_0\}$ is open;  as $W_0$ and $\alpha_0$
+are arbitrary, $\mu\mapsto\tilde\nu_{\mu}$ is continuous.
+}%end of proof of 495O
+
+\leader{495P}{}\cmmnt{ There are many constructions which, in
+particular cases, can be used as an alternative to the method of
+495B-495D in setting up Poisson point processes.   I give one which
+applies to the half-line $\coint{0,\infty}$ with Lebesgue measure.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $\gamma>0$, and let $\nu$ be the Poisson
+point process on $\coint{0,\infty}$, with Lebesgue measure, with density
+$\gamma$.   Let $\lambda_0$ be the exponential distribution with
+expectation $1/\gamma$, regarded as a Radon probability measure on
+$\ooint{0,\infty}$, and $\lambda$  the corresponding product measure on
+$\ooint{0,\infty}^{\Bbb N}$.   Define
+$\phi:\ooint{0,\infty}^{\Bbb N}\to\Cal P(\coint{0,\infty})$ by setting
+$\phi(x)=\{\sum_{i=0}^nx(i):n\in\Bbb N\}$ for
+$x\in\ooint{0,\infty}^{\Bbb N}$.   Then $\phi$ is a measure space
+isomorphism between $\ooint{0,\infty}^{\Bbb N}$ and a $\nu$-conegligible
+subset of $\Cal P(\coint{0,\infty})$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} As I seem not to have mentioned exponential
+distributions earlier in this treatise, I remark now that the
+{\bf exponential distribution} with parameter $\gamma$ has distribution
+function
+
+\Centerline{$F(t)=0$ if $t<0$, $1-e^{-\gamma t}$ if $t\ge 0$,}
+
+\noindent and probability density function
+
+\Centerline{$f(t)=0$ if $t\le 0$, $\gamma e^{-\gamma t}$ if $t>0$;}
+
+\noindent its expectation is
+
+\Centerline{$\biggerint_0^{\infty}\gamma te^{-\gamma t}dt
+=-\int_0^{\infty}\Bover{d}{dt}
+  \bigl(\Bover{\gamma t+1}{\gamma}e^{-\gamma t}\bigr)dt
+=\Bover1{\gamma}$.}
+
+\noindent Because (when regarded as a Radon probability measure on
+$\Bbb R$, following my ordinary rule set out in \S271) it gives
+measure zero to $\ocint{-\infty,0}$, it can be identified with the
+subspace measure on $\ooint{0,\infty}$, as here.
+}%end of comment
+
+\proof{{\bf (a)} For each $n\in\Bbb N$, $\#(S\cap[0,n])$ is finite for
+$\nu$-almost every $S$;  so the set
+
+\Centerline{$Q_0
+=\{S:S\subseteq\coint{0,\infty}$, $\#(S\cap[0,n])$ is finite for every
+$n\}$}
+
+\noindent is $\nu$-conegligible.   Next, the sets
+$\{S:S\cap\coint{n,n+1}\ne\emptyset\}$ are $\nu$-independent and have
+measure $1-e^{-\gamma}>0$, so
+
+\Centerline{$\{S:S\cap\coint{n,n+1}\ne\emptyset$ for infinitely many
+$n\}$}
+
+\noindent is $\nu$-conegligible (273K).   Finally, $\nu\{S:0\in S\}=0$,
+so $Q=\{S:S\in Q_0$, $0\notin S$, $S$ is infinite$\}$ is
+$\nu$-conegligible.   For
+$S\in Q$, let $\sequencen{g_n(S)}$ be the increasing enumeration of $S$.
+Let $\Tau$ be the $\sigma$-algebra of subsets of
+$\Cal P(\coint{0,\infty})$ generated by sets of the form
+$\{S:\#(S\cap E)=n\}$ where $E\subseteq\coint{0,\infty}$ has finite
+measure and $n\in\Bbb N$.   Then, for $n\in\Bbb N$ and $\alpha\ge 0$,
+$\{S:g_n(S)\le\alpha\}=\{S:\#(S\cap[0,\alpha])\ge n+1\}$ belongs to
+$\Tau$, so $g_n$ is $\Tau$-measurable.   Set $h_0(S)=g_0(S)$,
+$h_n(S)=g_n(S)-g_{n-1}(S)$ for $n\ge 1$,
+and $h(S)=\sequencen{h_n(S)}$;  then $h:Q\to\ooint{0,\infty}^{\Bbb N}$
+is a bijection, and its inverse is $\phi$.
+
+\medskip
+
+{\bf (b)} For each $k\in\Bbb N$,
+$I_S=\{i:i\in\Bbb N$, $S\cap\coint{2^{-k}i,2^{-k}(i+1)}\ne\emptyset\}$
+is infinite for every $S\in Q$.   So we can define
+$g_{kn}:Q\to\ooint{0,\infty}$, for each $n$, by taking
+$g_{kn}(S)=2^{-k}(j+1)$ if $j\in I_S$ and $\#(I_S\cap j)=n$.   Because
+all the sets $\{S:j\in I_S\}$ belong to $\Tau$, each $g_{kn}$ is
+$\Tau$-measurable, and $\sequence{k}{g_{kn}}$ is a non-increasing
+sequence with limit $g_n$.   Set $h_{k0}(S)=g_{k0}(S)$ and
+$h_{kn}(S)=g_{kn}(S)-g_{k,n-1}(S)$ for $n\ge 1$.   Then
+$h_n=\lim_{k\to\infty}h_{kn}$.
+
+\medskip
+
+{\bf (c)} For any $n\in\Bbb N$, $j_0,\ldots,j_n\in\Bbb N$, $k\in\Bbb N$,
+set $j'_r=\sum_{i=0}^rj_i$ for $r\le n$.   Then
+
+$$\eqalignno{\nu\{S:S\in Q,\,&h_{ki}(S)
+=2^{-k}(j_i+1)\text{ for every }i\le n\}\cr
+&=\nu\{S:S\in Q,\,g_{kr}(S)=2^{-k}(r+1+j'_r)
+   \text{ for every }r\le n\}\cr
+&=\nu\{S:S\cap\coint{2^{-k}(r+j'_r),2^{-k}(r+1+j'_r)}\ne\emptyset
+     \text{ for every }r\le n,\cr
+&\mskip70mu
+  S\cap\coint{0,2^{-k}j_0}=\emptyset,\cr
+&\mskip70mu
+  S\cap\coint{2^{-k}(r+1+j'_r),2^{-k}(r+1+j'_{r+1})}=\emptyset
+     \text{ for every }r<n\}\cr
+&=(1-\exp(-2^{-k}\gamma))^{n+1}\exp(-2^{-k}\gamma j_0)
+  \prod_{r<n}\exp(-2^{-k}\gamma(j'_{r+1}-j'_r))\cr
+&=\prod_{i=0}^n(1-\exp(-2^{-k}\gamma))\exp(-2^{-k}\gamma j_i).\cr}$$
+
+\noindent This means that the $h_{ki}$, for $i\in\Bbb N$ are
+independent, with
+
+\Centerline{$\Pr(h_{ki}=2^{-k}(j+1))
+=(1-e^{-2^{-k}\gamma})e^{-2^{-k}\gamma j}$}
+
+\noindent for each $j$.
+Since $h_{ki}\to h_i\,\,\nu$-a.e.\ for each $i$, $\sequence{i}{h_i}$ is
+also independent (367W).   Now, for any $\alpha>0$,
+
+$$\eqalignno{\Pr(h_{ki}\le\alpha)
+&=\sum_{2^{-k}(j+1)\le\alpha}
+  (1-\exp(-2^{-k}\gamma))\exp(-2^{-k}\gamma j)\cr
+&=1-\exp(-2^{-k}\gamma\lfloor 2^k\alpha\rfloor)
+\to 1-e^{-\gamma\alpha}\cr}$$
+
+\noindent as $k\to\infty$.   So
+
+$$\eqalignno{\Pr(h_i\le\alpha)
+&=\inf_{\beta>\alpha}\liminf_{k\to\infty}\Pr(h_{ki}\le\beta)\cr
+\displaycause{271L}
+&=\inf_{\beta>\alpha}1-e^{-\gamma\beta}
+=1-e^{-\gamma\alpha}\cr}$$
+
+\noindent for every $\alpha\ge 0$ and every $i\in\Bbb N$.
+
+\medskip
+
+{\bf (d)} Accordingly $\sequence{i}{h_i}$ is an independent sequence of
+random variables, each exponentially distributed with expectation
+$1/\gamma$.   It follows that
+$h:Q\to\ooint{0,\infty}^{\Bbb N}$ is \imp\ for the subspace measure
+$\nu_Q$ and $\lambda$ (254G).
+
+Observe next that if $E\subseteq\coint{0,\infty}$ is Lebesgue measurable
+and $n\in\Bbb N$, then
+
+\Centerline{$\{x:x\in\ooint{0,\infty}^{\Bbb N}$, $\#(\phi(x)\cap E)=n\}
+=\bigcup_{I\in[\Bbb N]^n}\{x:\sum_{i=0}^jx(i)\in E\iff j\in I\}
+\in\Lambda$,}
+
+\noindent writing $\Lambda$ for the domain of $\lambda$.   So $\phi$
+is $(\Lambda,\Tau)$-measurable.   Now, for any $W\in\Tau$,
+
+\Centerline{$\lambda\phi^{-1}[W]=\nu(h^{-1}[\phi^{-1}[W]])
+=\nu(W\cap Q)=\nu W$.}
+
+\noindent So $\phi$ is \imp\ for $\lambda$ and for $\nu\restr\Tau$.
+Since $\lambda$ is complete and $\nu$ is defined as the completion of
+its restriction to $\Tau$, $\phi$ is \imp\ for $\lambda$ and $\nu$.
+Thus $\phi$ and $h$ are the two halves of an isomorphism between
+$(\ooint{0,\infty}^{\Bbb N},\lambda)$ and the subspace $(Q,\nu_Q)$, as
+claimed.
+}%end of proof of 495P
+
+\exercises{\leader{495X}{Basic exercises $\pmb{>}$(a)}
+%\spheader 495Xa
+\discrversionA{\footnote{New 2008.
+Other exercises have been rearranged:
+%4{}95Xa is now 495Xb
+%4{}95Xb is now 495Xc
+%4{}95Xc is now 495Xd
+%4{}95Xd is now 495Xe
+%4{}95Xe is now 495Xf
+%4{}95Xf is now 495Xg
+%4{}95Xg is now 495Xh
+4{}95Xa-4{}95Xg are now 495Xb-495Xh,
+4{}95Xh is now 495Yb,
+%4{}95Xi is now 495Xi,
+%4{}95Xj is now 495Xj,
+%4{}95Xk is now 495Xk,
+%4{}95Xl is now 495Xl,
+4{}95Xm has been deleted,
+%4{}95Xn is now 495Xm,
+%4{}95Xo is now 495Xn
+%4{}95Xp is now 495Xo
+4{}95Xn-4{}95Xp are now 495Xm-495Xo,
+%4{}95Ya is now 495Ya
+4{}95Yb is now 495Yc,
+4{}95Yc is now 495Yd.
+}}{}
+Let $(X,\Sigma,\mu)$ be an atomless countably separated measure
+space\cmmnt{ (definition:  343D)} and $\gamma>0$.   Let $\nu$ be a complete
+probability measure on $\Cal PX$ such that
+$\nu\{S:S\subseteq X$, $S\cap E=\emptyset\}$ is defined and equal to
+$e^{-\gamma\mu E}$ whenever $E\in\Sigma$ has finite measure.   Show that
+$\nu$ extends the Poisson process with density $\gamma$ defined in 495D.
+%495D
+
+\spheader 495Xb
+Let $(X,\Sigma,\mu)$ be an atomless measure space, and
+$\nu$ a Poisson point process on $X$.   (i)
+Show that $[X]^{\le\omega}$ has full outer measure for $\nu$.   (ii)
+Show that if $\mu$ is semi-finite then $[X]^{\le\omega}$ is
+conegligible iff $\mu$ is $\sigma$-finite.   (iii) Show that if $\mu$ is
+semi-finite, then $[X]^{<\omega}$ is non-negligible iff $[X]^{<\omega}$
+is conegligible iff $\mu$ is totally finite.
+%495E
+
+\spheader 495Xc(i) Let $(X,\Sigma,\mu)$ be an atomless measure space and
+$\Cal E$ a countable partition of $X$ into measurable sets.
+Let $\nu$ be the Poisson point process on $X$ with density
+$1$, and for each $E\in\Cal E$ let $\nu_E$ be the Poisson point
+process on $E$ with density $1$ corresponding to the subspace
+measure $\mu_E$ on $E$. Let $\lambda$ be the product of the family
+$\family{E}{\Cal E}{\nu_E}$.   Show that the map
+$S\mapsto\family{E}{\Cal E}{S\cap E}:
+\Cal PX\to\prod_{E\in\Cal E}\Cal PE$ is a measure space isomorphism for
+$\nu$ and $\lambda$.
+(ii) Let $(X,\Sigma,\mu)$ be a strictly localizable measure space and
+$\familyiI{X_i}$ a decomposition of $X$.
+Let $\nu$ be the Poisson point process on $X$ with density
+$1$, and for each $i\in I$ let $\nu_i$ be the Poisson point
+process on $X_i$ with density $1$ corresponding to the subspace
+measure $\mu_{X_i}$ on $X_i$. Let $\lambda$ be the product of the family
+$\familyiI{\nu_i}$.   Show that the map
+$S\mapsto\familyiI{S\cap X_i}:\Cal PX\to\prod_{i\in I}\Cal PX_i$
+is \imp\ for $\nu$ and $\lambda$.
+%495E
+
+\sqheader 495Xd Let $(X,\Sigma,\mu)$ be an atomless
+measure space and $\frak T$ a topology on $X$ such that $X$ is covered
+by a sequence of open sets of finite outer measure.   Let $\nu$
+be a Poisson point process on $X$.   Show that
+$\nu$-almost every set $S\subseteq X$ is locally finite in the sense
+that $X$ is covered by the open sets meeting $S$ in finite sets;  in
+particular, if $X$ is T$_1$, then
+$\nu$-almost every subset of $X$ is closed.
+%495E
+
+\sqheader 495Xe(i) Let $(X,\Sigma,\mu)$ be an atomless measure space, and
+for $\gamma>0$ let $\nu_{\gamma}$ be the Poisson point process on $X$
+with density $\gamma$.   Show that for any $\gamma$, $\delta>0$ the map
+$(S,T)\mapsto S\cup T:\Cal PX\times\Cal PX\to\Cal PX$ is \imp\ for the
+product measure $\nu_{\gamma}\times\nu_{\delta}$ and
+$\nu_{\gamma+\delta}$.   (ii) Let $X$ be a set, $\Sigma$ a $\sigma$-algebra
+of subsets of $X$, and $\familyiI{\mu_i}$ a
+countable family of measures with domain
+$\Sigma$ such that $\mu=\sum_{i\in I}\mu_i$ is atomless.   Let $\nu$,
+$\nu_i$ be the Poisson point processes with density $1$ corresponding to
+the measures $\mu$, $\mu_i$.   Show that the map
+$\familyiI{S_i}\mapsto\bigcup_{i\in I}S_i:(\Cal PX)^I\to\Cal PX$ is \imp\
+for the product measure $\prod_{i\in I}\nu_i$ and $\nu$.
+(iii) Compare with 495Xc(i).
+%495E
+
+\spheader 495Xf Let $(X,\Sigma,\mu)$ be an atomless semi-finite measure
+space, and $\nu$ the Poisson point process on $X$ with density $1$.
+Show that $\nu$ is perfect iff $\mu$ is.
+%495F
+
+\spheader 495Xg Let $(\frak A,\bar\mu)$ be a measure algebra.   Show
+that there is a probability measure $\lambda$ on $\BbbR^{\frak A^f}$
+such that (i) for every $a\in\frak A^f$ the corresponding marginal
+measure on $\Bbb R$ is the Poisson distribution with expectation
+$\bar\mu a$ (ii) whenever $a_0,\ldots,a_n\in\frak A^f$ are disjoint, the
+functions $z\mapsto z(a_i):\BbbR^{\frak A^f}\to\Bbb R$ are
+stochastically independent with respect to $\lambda$.   \Hint{prove the
+result for finite $\frak A$ and use 454D.}   Use this to prove 495J.
+%495J
+
+\spheader 495Xh Let $U$ be a Hilbert space.   Show
+that there are a probability algebra $(\frak B,\bar\lambda)$ and a
+linear operator $T:U\to L^2(\frak B)$ such that (i)
+for every $u\in U$, $Tu$ has a normal distribution
+with expectation $0$ and variance $\|u\|_2^2$ (ii) if $\familyiI{u_i}$
+is an orthogonal family in $U$ then $\familyiI{Tu_i}$
+is $\bar\lambda$-independent.   \Hint{see the proof of 456K.}
+%495K
+
+\spheader 495Xi Let $\nu$ be the Poisson point process with density $1$
+on $\coint{0,\infty}$ with Lebesgue measure.   Set
+$Q_0=\{S:S\subseteq\coint{0,\infty}$, $S\cap[0,n]$ is finite for every
+$n\}$ and for $S\in Q_0$ set $\psi(S)(t)=\#(S\cap[0,t])$ for
+$t\in\coint{0,\infty}$.   Show that $\psi$ is \imp\ for the subspace
+measure $\nu_{Q_0}$ and the distribution on $\BbbR^{\coint{0,\infty}}$
+corresponding to the Poisson process of 455Xh.
+%495K
+
+\spheader 495Xj Let $(Y,\Tau,\nu)$ be a probability space, and
+$\lambda_0$ the exponential distribution with expectation $1$, regarded
+as a Radon measure on $\ooint{0,\infty}$.   Let
+$\lambda$ be the product measure $\lambda_0^{\Bbb N}\times\nu^{\Bbb N}$
+on $\ooint{0,\infty}^{\Bbb N}\times Y^{\Bbb N}$.   Set
+$\phi(x,y)=\{(\sum_{i=0}^nx(i),y(n)):n\in\Bbb N\}$ for
+$x\in\ooint{0,\infty}^{\Bbb N}$ and $y\in Y^{\Bbb N}$.   Show that
+$\phi:\ooint{0,\infty}^{\Bbb N}\times Y^{\Bbb N}
+\to\Cal P(\ooint{0,\infty}\times Y)$ is a measure space isomorphism
+between $(\ooint{0,\infty}^{\Bbb N}\times Y^{\Bbb N},\lambda)$ and a
+conegligible set for the Poisson point process on
+$\ooint{0,\infty}\times Y$ with density $1$ for the c.l.d.\ product
+measure $\mu_L\times\nu$, where $\mu_L$ is Lebesgue measure.
+%495K
+
+\spheader 495Xk Let $\Cal C$ be the family of closed subsets of
+$\coint{0,\infty}$.   Let $\rho$ be the usual metric on
+$\coint{0,\infty}$ and $\tilde\rho$ the corresponding Hausdorff metric
+on $\Cal C\setminus\{\emptyset\}$ (4A2T).
+Let $\nu$ be the Poisson point process
+on $\coint{0,\infty}$ with density $1$ over Lebesgue measure.   Show that
+every member of $\Cal C\setminus\{\emptyset\}$ has a $\nu$-negligible
+$\tilde\rho$-neighbourhood.
+%495N
+
+\spheader 495Xl Show that the topology on $M_{\text{R}}^+(X)$
+described in 495O is just the topology induced by the natural embedding
+of $M_{\text{R}}(X)$ into $C_k(X)^{\sim}$ (436J) and the weak topology
+$\frak T_s(C_k(X)^{\sim},C_k(X))$, where $C_k(X)$ is the Riesz space
+of continuous real-valued functions on $X$ with compact support.
+
+\spheader 495Xm Let $\Cal C$ be the set of closed subsets of
+$\coint{0,\infty}$ with its Fell topology.   For
+$\delta\in\ocint{0,1}$ let $\lambda_{\delta}$ be the measure on
+$\{0,1\}^{\Bbb N}$ which is the product of copies of the measure on
+$\{0,1\}$ in which $\{1\}$ is given measure $\delta$.   Define
+$\phi_{\delta}:\{0,1\}^{\Bbb N}\to\Cal C$ by setting
+$\phi_{\delta}(x)=\{n\delta:n\in\Bbb N$, $x(n)=1\}$, and let
+$\tilde\nu_{\delta}$ be the Radon measure
+$\lambda_{\delta}\phi_{\delta}^{-1}$ on $\Cal C$.   Show that the Radon
+measure on $\Cal C$ representing the Poisson
+point process on $\coint{0,\infty}$ with density $1$ over Lebesgue
+measure is the limit
+$\lim_{\delta\downarrow 0}\tilde\nu_{\delta}$ for the narrow
+topology on the space of Radon probability measures on $\Cal C$.
+%495O
+
+\spheader 495Xn Show that the standard gamma distribution with
+expectation $1$ is the exponential distribution with expectation $1$.
+%495P
+
+\spheader 495Xo Let $r\ge 1$ be an integer;  let $\mu$ be Lebesgue
+measure on $\BbbR^r$ and $\beta_r$ the volume of the unit ball in
+$\BbbR^r$.   Set $\psi(t)=(t/\beta_r)^{1/r}$ for $t\ge 0$, so that the
+volume of a ball of radius $\psi(t)$ is $t$.   Let $S_{r-1}$ be the unit
+sphere in $\BbbR^r$ and $\theta$ the invariant Radon probability measure
+on $S_{r-1}$, so that $\theta$ is a multiple of $(r-1)$-dimensional
+Hausdorff measure (see 476I).   Let $\lambda_0$ be the exponential
+distribution with expectation $1$, regarded as a Radon probability
+measure on $\ooint{0,\infty}$, and $\lambda$ the product measure
+$\lambda_0^{\Bbb N}\times\theta^{\Bbb N}$ on
+$\ooint{0,\infty}^{\Bbb N}\times S_{r-1}^{\Bbb N}$.   Set
+
+\Centerline{$\phi(x,z)=\{\psi(\sum_{i=0}^nx(i))z(n):n\in\Bbb N\}$}
+
+\noindent for $x\in\ooint{0,\infty}^{\Bbb N}$ and
+$z\in S_{r-1}^{\Bbb N}$.   Show that
+$\phi:\ooint{0,\infty}^{\Bbb N}\times S_{r-1}^{\Bbb N}
+\to\Cal P(\BbbR^r)$ is a measure space isomorphism between
+$\ooint{0,\infty}^{\Bbb N}\times S_{r-1}^{\Bbb N}$ and a conegligible
+set for the Poisson point process on $\BbbR^r$ with density $1$.
+%495Xj 495P
+
+\leader{495Y}{Further exercises (a)}
+%\spheader 495Ya
+Let $U$ be an $L$-space.   Show that there are a
+probability algebra $(\frak B,\bar\lambda)$ and a linear operator
+$T:U\to L^0(\frak B)$ such that (i) for every
+$u\in U$, $Tu$ has a Cauchy distribution with centre
+$0$ and scale parameter $\|u\|$ (ii) if $\familyiI{u_i}$ is a disjoint
+family in $U$ then $\familyiI{Tu_i}$ is $\bar\lambda$-independent.
+%495K
+
+\spheader 495Yb Let $U$ be an $L$-space.   Show
+that there are a probability algebra $(\frak B,\bar\lambda)$ and a
+linear operator $T:U\to L^1(\frak B,\bar\lambda)$ such that (i)
+for every $u\in U^+$, $Tu$ has a standard gamma distribution (definition:
+455Xj) with expectation $\|u\|$ (ii) if
+$\familyiI{u_i}$ is a disjoint family in $U$ then
+$\familyiI{Tu_i}$ is $\bar\lambda$-independent.
+%495K
+
+\spheader 495Yc Let $(\frak A,\bar\mu)$ be a measure algebra.   For
+$\alpha$, $y\in\Bbb R$ set $h_y(\alpha)=e^{iy\alpha}$, and let
+$\bar h_y:L^0(\frak A)\to L^0_{\Bbb C}(\frak A)$ (definition: 
+366M\formerly{3{}64Yn}) be
+the corresponding operator (to be defined, following the ideas of
+364H\formerly{3{}64I}
+or otherwise).    Show that there are a probability algebra
+$(\frak B,\bar\lambda)$ and a positive linear operator
+$T:L^1(\frak A,\bar\mu)\to L^1(\frak B,\bar\lambda)$ such that
+(i) $\|Tu\|_1=\|u\|_1$ whenever $u\in L^1(\frak A,\bar\mu)^+$ (ii)
+$\familyiI{Tu_i}$ is $\bar\lambda$-independent in $L^0(\frak B)$
+whenever $\familyiI{u_i}$ is a disjoint family in
+$L^1(\frak A,\bar\mu)$ (iii)
+$\int\bar h_y(Tu)d\bar\lambda=\exp(\int(\bar h_y(u)-\chi 1)d\bar\mu)$
+for every $u\in L^1(\frak A,\bar\mu)$ and $y\in\Bbb R$.
+%495M
+
+\spheader 495Yd
+\discrversionA{\footnote{Revised 2008.}}{}
+Let $(X,\rho)$ be a totally bounded metric space,
+$\mu$ a Radon measure on $X$ and $\gamma>0$.   Let
+$\Cal C$ be the set of closed subsets of $X$, and $\tilde\nu$ the
+quasi-Radon measure of 495N;  let $\tilde\rho$ be the
+Hausdorff metric on $\Cal C\setminus\{\emptyset\}$.   Show that the
+subspace measure on $\Cal C\setminus\{\emptyset\}$ induced by $\tilde\nu$
+is a Radon measure for the topology induced by $\tilde\rho$.
+%495N
+}%end of exercises
+
+\endnotes{
+\Notesheader{495} The underlying fact on which this section relies is
+that the Poisson distributions form a one-parameter semigroup of
+infinitely divisible distributions, with
+$\nu_{\alpha}*\nu_{\beta}=\nu_{\alpha+\beta}$ for all $\alpha$,
+$\beta>0$.   Other well-known families with this property are normal
+distributions, Cauchy distributions and gamma distributions;  for each
+of these we have results corresponding to 495B and 495K (495Xh, 495Ya,
+495Yb).   The same distributions appeared, for the same reason, in the
+L\'evy processes of \S455. % 455Xh 455Xi 455Xj
+Observe that the version for the normal distribution is related to the
+Gaussian processes of \S456.   The `compound Poisson' distributions of
+495M provide further examples, which approach the general form of
+infinitely divisible distributions ({\smc Lo\`eve 77}, \S23, or
+{\smc Fristedt \& Gray 97}, \S16.3).
+
+The special feature of the Poisson point process, in this context, is
+the fact that (for atomless measure spaces $(X,\mu)$) it can be
+represented by a measure on $\Cal PX$ rather than on some abstract
+auxiliary space (495D);  so that we have a notion of `random subset',
+and can discuss the expected topological properties of subsets of $X$
+(495Xb, 495Xd).   In Euclidean spaces the geometric properties of these
+random subsets are also of great interest;  see
+{\smc Meester \& Roy 96}.   Here I look at the relations between this construction and others
+which have been prominent in this book, such as \imp\ functions (495G)
+and disintegrations (495H-495I).   In the latter we find ourselves in an
+interesting difficulty.   If, as in 495H, we have a measure space
+$X=\tilde X\times[0,1]$, where $\tilde X$ is an atomless measure space,
+then it is natural to suppose that our Poisson process on $X$ can be
+represented by picking a random subset $T$ of $\tilde X$ and then, for
+each $t\in T$, a random $(t,\alpha)\in X$.   The obvious model for this
+idea is the map $(T,z)\mapsto\{(t,z(t)):t\in T\}:
+\Cal P\tilde X\times[0,1]^{\tilde X}\to\Cal PX$.   The problem with this
+model is that the map is simply not measurable for the standard
+$\sigma$-algebras on $\Cal P\tilde X$,
+$\Cal P\tilde X\times[0,1]^{\tilde X}$ and $\Cal PX$.   When we have a
+canonical ordering in order type $\omega$ of almost every subset of
+$\tilde X$ (`almost every' with respect to the Poisson point process on
+$\tilde X$, of course), as in 495Xo, there can be a way around this,
+cutting $[0,1]^{\tilde X}$ down to a countable product and re-inventing
+the representation of pairs $(T,z)$ as subsets of $X$.   But in the
+general case it seems that we have to set up a disintegration of the
+Poisson point process on $X$ over the Poisson point process on
+$\tilde X$ which does not correspond to any measure on a product
+$\Cal P\tilde X\times\Omega$.
+
+Following my usual custom, I have expressed the theorems of this section
+in terms of arbitrary (atomless) measure spaces.   The results are not
+quite without interest when applied to totally finite measures, but
+their natural domain is the class of non-totally-finite $\sigma$-finite
+measures, as in 495N-495P.   There is an unavoidable obstacle if we wish
+to extend the ideas to measure spaces which are not atomless.   The
+functions $S\mapsto\#(S\cap E)$ may no longer have Poisson
+distributions, since if $E$ is a singleton of positive measure then we
+shall have a non-trivial two-valued random variable.   In 495N-495O I
+take one of the possible resolutions of this, with measures $\tilde\nu$
+on spaces of subsets for which at least the sets
+$\{S:S\cap E=\emptyset\}$, for disjoint $E$, are independent.   An
+alternative which is sometimes appropriate is to work with functions
+$h:X\to\Bbb N$ and $\sum_{x\in E}h(x)$ in place of subsets $S$ of $X$
+and $\#(S\cap E)$;  see {\smc Fristedt \& Gray 97}, \S29.
+
+In 495J-495L we have a little cluster of results which are relevant to
+rather different questions, to which I will return in Chapter 52 of
+Volume 5.   % 526D 528H
+The objective here is to connect the structure of a measure
+algebra or Banach lattice of arbitrarily large cellularity with
+something which can be realized in a probability space.   In each case,
+disjointness is transformed into stochastic independence.
+Once again, the special feature of the Poisson point process is that we
+have a concrete representation of a linear operator which can also be
+described in a more abstract way (495L).
+
+The construction of 495B-495D seems to be the most straightforward way
+to generate Poisson point processes.   It fails however to give a direct
+interpretation of one of the most important approaches to these
+processes, as limits of purely atomic processes in which sets are chosen
+by including or excluding individual points independently
+(495Xm).   In order to make sense of the limit here it seems that
+we need to put some further structure onto the underlying measure space,
+and `$\sigma$-finite locally compact Radon measure space' is sufficient
+to give a positive result (495O).
+
+}%end of notes
+
+\discrpage
+

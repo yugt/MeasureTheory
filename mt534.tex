@@ -1,0 +1,1830 @@
+\frfilename{mt534.tex}
+\versiondate{21.11.05/1.8.10}
+\copyrightdate{2003}
+
+\def\chaptername{Topology and measure III}
+\def\sectionname{Hausdorff measures and strong measure zero}
+\def\czz{ CHECK\query\ }
+
+\newsection{534}
+
+In this section I look at constructions which are primarily metric
+rather than topological.   I start with a note on Hausdorff
+measures, spelling out connexions between Hausdorff $r$-dimensional
+measure on a
+separable metric space and the basic $\sigma$-ideal $\Cal N$ (534B).
+
+The main part of the section section is a brief introduction to a
+class of ideals which are of
+great interest in set-theoretic analysis.   While the most important
+ones are based on separable metric spaces, some of the ideas can be
+expressed in more general contexts, and I give the definition and most
+elementary properties in terms of uniformities (534C-534D).   An
+associated topological notion is what I call `Rothberger's property'
+(534E-534G).   %534E 534F 534G
+A famous
+characterization of sets of strong measure zero in $\Bbb R$ in terms
+of translations of meager sets can also be represented as a theorem about
+$\sigma$-compact groups (534H).   There are few elementary results
+describing the cardinal functions of strong measure zero ideals, but I
+give some information on their uniformities (534I) and additivities
+(534K).   There seem to be some interesting questions concerning
+spaces with isomorphic strong measure zero ideals, which I consider in
+534L-534N.  %534L 534M 534N
+A particularly important question, from the very beginning of the
+topic in {\smc Borel 1919}, concerns the possible cardinals of sets of
+strong measure zero;  in 534O-534P I give some sample facts and a pair of
+illustrative examples.
+
+\leader{534A}{}\cmmnt{ An elementary lemma will be useful.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $(X,\rho)$ be a separable metric space.
+Then there is a countable family $\Cal C$ of subsets of $X$ such that
+whenever $A\subseteq X$ has finite diameter and $\eta>0$ then there
+is a $C\in\Cal C$ such that $A\subseteq C$ and $\diam C\le\eta+2\diam A$.
+
+\proof{ Let $D$ be a countable dense subset of $X$ and set
+$\Cal C=\{\emptyset\}\cup\{B(x,q):x\in D$, $q\in\Bbb Q$, $q\ge 0\}$.
+If $A\subseteq X$ has finite diameter and $\eta>0$, then if
+$A=\emptyset$ we can take $C=\emptyset$.   Otherwise, take $y\in A$
+and $q\in\Bbb Q$ such that
+$\diam A+\bover14\eta\le q\le\diam A+\bover12\eta$.   Let $x\in D$ be
+such that $\rho(x,y)\le\bover14\eta$;  then $C=B(x,q)\in\Cal C$,
+$A\subseteq B(y,\diam A)\subseteq C$ and $\diam C\le 2q\le\eta+2\diam A$.
+}%end of proof of 534A
+
+\leader{534B}{Hausdorff \dvrocolon{measures}}\cmmnt{ There are
+difficult questions concerning the cardinals associated with
+even the most
+familiar Hausdorff measures.   However we do have some easy results.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $(X,\rho)$ be a metric space and
+$r>0$.   Write $\mu_{Hr}$ for $r$-dimensional Hausdorff measure on
+$X$, $\Cal N(\mu_{Hr})$ for its null ideal,
+$\Cal N$ for the null ideal of Lebesgue measure on $\Bbb R$ and
+$\Cal M$ for the ideal of meager subsets of $\Bbb R$.
+
+(a) $\add\mu_{Hr}=\add\Cal N(\mu_{Hr})$.
+
+(b) If $X$ is separable,
+$\Cal N(\mu_{Hr})\prT\Cal N$, so that
+$\add\mu_{Hr}\ge\add\Cal N$ and $\cf\Cal N(\mu_{Hr})\le\cf\Cal N$.
+
+(c) If $X$ is separable,
+$(X,\in,\Cal N(\mu_{Hr}))\prGT(\Cal M,\not\ni,\Bbb R)$, so that
+$\cov\Cal N(\mu_{Hr})\le\non\Cal M$ and
+$\frakmctbl\le\non\Cal N(\mu_{Hr})$.
+
+(d) If $X$ is analytic and $\mu_{Hr}X>0$, then
+$\add\mu_{Hr}=\add\Cal N$, $\cf\Cal N(\mu_{Hr})=\cf\Cal N$,
+$\non\Cal N(\mu_{Hr})\le\non\Cal N$ and
+$\cov\Cal N(\mu_{Hr})\ge\cov\Cal N$.
+
+\proof{{\bf (a)} 521Ac.
+
+\medskip
+
+{\bf (b)(i)} Let $\Cal C$ be a countable family of subsets of $X$ such
+that whenever $A\subseteq X$ has finite diameter and $\eta>0$ there
+is a $C\in\Cal C$
+such that $A\subseteq C$ and $\diam C\le\eta+2\diam A$ (534A).
+
+If $A\subseteq X$, then $A\in\Cal N(\mu_{Hr})$ iff for
+every $\epsilon>0$ there is a sequence $\sequencen{C_n}$ in $\Cal C$
+such that $A\subseteq\bigcup_{n\in\Bbb N}C_n$ and
+$\sum_{n=0}^{\infty}(\diam C_n)^r\le\epsilon$.   \Prf\ If $A$ is
+negligible and $\epsilon>0$, then (by the definition in 471A) there
+must be a sequence $\sequencen{A_n}$ of subsets of $X$ such that
+$A\subseteq\bigcup_{n\in\Bbb N}A_n$ and
+$\sum_{n=0}^{\infty}(\diam A_n)^r<2^{-r}\epsilon$.   Let
+$\sequencen{\eta_n}$ be a sequence of strictly positive real numbers
+such that $\sum_{n=0}^{\infty}(\eta_n+2\diam A_n)^r\le\epsilon$.
+For each $n$ we
+can find $C_n\in\Cal C_n$ such that $A_n\subseteq C_n$ and
+$\diam C_n\le\eta_n+2\diam A_n$, so that
+$\sum_{n=0}^{\infty}(\diam C_n)^r\le\epsilon$, while
+$A\subseteq\bigcup_{n\in\Bbb N}C_n$.
+
+On the other hand, if $A$ satisfies the condition, then for every
+$\epsilon$, $\delta>0$ there is a sequence $\sequencen{C_n}$ of
+subsets of $X$ such that $A\subseteq\bigcup_{n\in\Bbb N}C_n$ and
+$\sum_{n=0}^{\infty}(\diam C_n)^r\le\min(\epsilon,\delta^r)$.   In
+this case, $\diam C_n\le\delta$ for every $n$, so $\theta_{r\delta}A$, as
+defined in 471A, is at most $\epsilon$.   As $\epsilon$ is arbitrary,
+$\theta_{r\delta}A=0$;  as $\delta$ is arbitrary, $A$ is
+$\mu_{Hr}$-negligible.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} It follows that
+$(\Cal N(\mu_{Hr}),\subseteq,\Cal N(\mu_{Hr}))
+\prGT(\BbbN^{\Bbb N},\subseteq^*,\Cal S)$, where
+$(\BbbN^{\Bbb N},\subseteq^*,\Cal S)$ is the $\Bbb N$-localization relation
+(522K).
+
+\Prf\grheada\ For each $n\in\Bbb N$, let $\Cal I_n$ be the family of
+finite subsets $I$ of $\Cal C$ such that
+$\sum_{C\in I}(\diam C)^r\le 4^{-n}$.   Let $\sequence{j}{I_{nj}}$ be
+a sequence running over $\Cal I_n$.   Now, given $A\in\Cal N(\mu_{Hr})$,
+then for each $n\in\Bbb N$ let $\sequence{i}{C_{ni}}$ be a sequence in
+$\Cal C$, covering $A$, such that
+$\sum_{i=0}^{\infty}(\diam C_{ni})^r\le 2^{-n-1}$.   Let
+$\sequence{i}{C_i}$ be a re-indexing of the family
+$\langle C_{ni}\rangle_{n,i\in\Bbb N}$, so that $\sequence{i}{C_i}$
+is a sequence in $\Cal C$, $\sum_{i=0}^{\infty}(\diam C_i)^r\le 1$, and
+$A\subseteq\bigcap_{m\ge n}\bigcup_{i\ge m}C_i$.   Let
+$\sequencen{k(n)}$ be a strictly increasing sequence in $\Bbb N$ such
+that $k(0)=0$ and $\sum_{i=k(n)}^{\infty}(\diam C_i)^r\le 4^{-n}$ for
+every $n$.   Now, for $n\in\Bbb N$, let $\phi(A)(n)$ be such that
+$\{C_i:k(n)\le i<k(n+1)\}=I_{n,\phi(A)(n)}$.
+
+This process defines a function $\phi:\Cal N(\mu_{Hr})\to\BbbN^{\Bbb N}$
+such that
+
+\Centerline{$A
+\subseteq\bigcap_{m\in\Bbb N}\bigcup_{n\ge m}\bigcup I_{n,\phi(A)(n)}$}
+
+\noindent for every $A\in\Cal N(\mu_{Hr})$.
+
+\medskip
+
+\qquad\grheadb\ For $S\in\Cal S$, set
+
+\Centerline{$\psi(S)
+=\bigcap_{m\in\Bbb N}\bigcup_{n\ge m}\bigcup_{i\in S[\{n\}]}\bigcup I_{ni}
+\subseteq X$.}
+
+\noindent If $n\in\Bbb N$, then
+
+\Centerline{$\sum\{(\diam C)^r:C\in\bigcup_{i\in S[\{n\}]}I_{ni}\}
+\le 2^n\cdot 4^{-n}=2^{-n}$,}
+
+\noindent because $\#(S[\{n\}])\le 2^n$ and
+$\sum\{(\diam C)^r:C\in I_{ni}\}\le 4^{-n}$ for every $i$.   But this
+means that, for any $m\in\Bbb N$,
+
+\Centerline{$\sum\{(\diam C)^r:C\in\bigcup_{n\ge m}
+  \bigcup_{i\in S[\{n\}]}I_{ni}\}
+\le 2^{-m+1}$,}
+
+\noindent while
+
+\Centerline{$\psi(S)
+\subseteq\bigcup(\bigcup_{n\ge m}\bigcup_{i\in S[\{n\}]}I_{ni})$.}
+
+\noindent So $\psi(S)\in\Cal N(\mu_{Hr})$ for every $S\in\Cal S$.
+
+\medskip
+
+\qquad\grheadc\ Suppose that $A\in\Cal N(\mu_{Hr})$ and
+$\phi(A)\subseteq^*S\in\Cal S$.   Then there is some $m_0\in\Bbb N$
+such
+that $(n,\phi(A)(n))\in S$ for every $n\ge m_0$.   Now, for any
+$m\in\Bbb N$, we have
+
+$$\eqalign{A
+&\subseteq\bigcup_{n\ge\max(m,m_0)}\bigcup I_{n,\phi(A)(n)}\cr
+&\subseteq\bigcup_{n\ge\max(m,m_0)}\bigcup_{i\in S[\{n\}]}\bigcup
+I_{ni}
+\subseteq\bigcup_{n\ge m}\bigcup_{i\in S[\{n\}]}\bigcup I_{ni},\cr}$$
+
+\noindent so $A\subseteq\psi(S)$.   This shows that $(\phi,\psi)$ is a
+Galois-Tukey connection from
+$(\Cal N(\mu_{Hr}),\subseteq\nobreak,\penalty-100\Cal N(\mu_{Hr}))$
+to $(\BbbN^{\Bbb N},\subseteq^*,\Cal S)$, and
+$(\Cal N(\mu_{Hr}),\subseteq,\Cal N(\mu_{Hr}))
+\prGT(\BbbN^{\Bbb N},\subseteq^*,\Cal S)$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} Since $(\Cal N,\subseteq,\Cal N)
+\equivGT(\BbbN^{\Bbb N},\subseteq^*,\Cal S)$ (522M),
+$(\Cal N(\mu_{Hr}),\subseteq,\Cal N(\mu_{Hr}))
+\prGT(\Cal N,\subseteq\nobreak,\penalty-100\Cal N)$,
+that is, $\Cal N(\mu_{Hr})\penalty-100\prT\Cal N$.
+
+\medskip
+
+\quad{\bf (iv)} By 513Ee, as usual, we can conclude that
+$\add\Cal N(\mu_{Hr})\ge\add\Cal N$ and
+$\cf\Cal N(\mu_{Hr})\le\cf\Cal N$.
+
+\medskip
+
+{\bf (c)(i)} If $\mu_{Hr}X=0$, the result is trivial.   \Prf\
+Set $\phi(x)=\emptyset$ for $x\in X$, $\psi(t)=X$ for
+$t\in\Bbb R$;  then $(\phi,\psi)$ is a Galois-Tukey connection from
+$(X,\in,\Cal N(\mu_{Hr}))$ to $(\Cal M,\not\ni,\Bbb R)$.\ \QeD\  So
+let
+us suppose that $X$ is infinite.
+
+\medskip
+
+\quad{\bf (ii)} Let $F$ be the set of $1$-Lipschitz functions
+$f:X\to[0,1]$.   Define $T:X\to\ell^{\infty}(F)$ by setting
+$(Tx)(f)=f(x)$ for $f\in F$ and $x\in X$.   Then
+
+\Centerline{$\|Tx-Ty\|_{\infty}
+=\sup_{f\in F}|f(x)-f(y)|=\min(1,\rho(x,y))$}
+
+\noindent for all $x$, $y\in X$.   \Prf\ Of course
+$\sup_{f\in F}|f(x)-f(y)|\le\min(1,\rho(x,y))$, by the definition of
+$F$.   On the other hand, given $x\in X$, we can set
+$f(z)=\min(1,\rho(z,x))$ for every $z\in X$;  then $f\in F$ and
+$|f(x)-f(y)|=\min(1,\rho(x,y))$.   So we have equality.\ \QeD\   Thus
+$T$ is $1$-Lipschitz for $\rho$ and the usual metric on
+$\ell^{\infty}(F)$, and $T[X]$ is a separable subset of
+$\ell^{\infty}(F)$ (4A2B(e-iii)).   Let $V$ be the closed linear
+subspace of $\ell^{\infty}(F)$ generated by $T[X]$;  then $V$ is
+separable (4A4Bg).   Being a closed subset of the complete metric
+space
+$\ell^{\infty}(F)$, $V$ is a Polish space.   Since $X$ has more than
+one
+point, and $T$ is injective, $V$ is non-empty and has no isolated
+points.
+
+Let $\sequencen{v_n}$ enumerate a dense subset of $V$.   Set
+
+\Centerline{$E
+=\bigcap_{n\in\Bbb N}\bigcup_{i\ge n}U(v_i,2^{-i-1})$}
+
+\noindent where $U(v,\delta)=\{u:u\in V$, $\|u-v\|_{\infty}<\delta\}$
+for $v\in V$, $\delta>0$.   Then $E$ is the intersection of a sequence
+of dense open sets in $V$, so is comeager, and $M=V\setminus E$
+belongs to the ideal $\Cal M(V)$ of meager subsets of $V$.
+For any $v\in V$, the map $u\mapsto u-v:V\to V$ is a
+homeomorphism, so $M-v\in\Cal M(V)$.   Define $\phi:X\to\Cal M(V)$ by
+setting $\phi(x)=M-Tx$ for $x\in X$.
+
+In the other direction, define $\psi:V\to\Cal PX$ by setting
+$\psi(v)=T^{-1}[E-v]$ for $v\in V$.   Then $\psi(v)\in\Cal
+N(\mu_{Hr})$
+for every $v\in V$.   \Prf\ If $v\in V$ and $\delta\le\bover12$, then
+$\|u-u'\|_{\infty}<1$ for all $u$, $u'\in U(v,\delta)$, so
+$\rho(x,x')\le\|Tx-Tx'\|_{\infty}$ whenever $x$,
+$x'\in T^{-1}[U(v,\delta)]$.   Accordingly
+$\diam T^{-1}[U(v_i-v,2^{-i-1})]\le 2^{-i}$ for every $i\in\Bbb N$.
+This means that
+
+$$\eqalign{\mu_{Hr}^*T^{-1}[E-v]
+&=\mu_{Hr}^*(\bigcap_{n\in\Bbb N}\bigcup_{i\ge n}
+  T^{-1}[U(v_i-v,2^{-i-1})]\cr
+&\le\inf_{n\in\Bbb N}\sum_{i=n}^{\infty}(2^{-i})^r
+=0.  \text{ \Qed}\cr}$$
+
+\noindent So $\psi$ is a function from $V$ to $\Cal N(\mu_{Hr})$.   We
+now see that
+
+$$\eqalign{\phi(x)\not\ni v
+&\Longrightarrow v\notin M-Tx
+\Longrightarrow Tx\notin M-v\cr
+&\Longrightarrow Tx\in E-v
+\Longrightarrow x\in\psi(v).\cr}$$
+
+\noindent Thus $(\phi,\psi)$ is a Galois-Tukey connection from
+$(X,\in,\Cal N(\mu_{Hr}))$ to $(\Cal M(V),\not\ni,V)$ and
+
+\Centerline{$(X,\in,\Cal N(\mu_{Hr}))\prGT(\Cal M(V),\not\ni,V)
+\cong(\Cal M,\not\ni,\Bbb R)$}
+
+\noindent (522Wb).
+
+\medskip
+
+\quad{\bf (iii)} Now
+
+\Centerline{$\cov\Cal N(\mu_{Hr})=\cov(X,\in,\Cal N(\mu_{Hr}))
+\le\cov(\Cal M,\not\ni,\Bbb R)=\non\Cal M$,}
+
+\Centerline{$\non\Cal N(\mu_{Hr})=\add(X,\in,\Cal N(\mu_{Hr}))
+\ge\add(\Cal M,\not\ni,\Bbb R)=\cov\Cal M=\frakmctbl$}
+
+\noindent (512D, 512Ed, 522Sa).
+
+\medskip
+
+{\bf (d)} If $X$ is analytic and $\mu_{Hr}X>0$, then by Howroyd's
+theorem (471S) there is a compact set $K\subseteq X$ such that
+$0<\mu_{Hr}K<\infty$.   Now the subspace measure $\mu_{Hr}^{(K)}$ on $K$
+is an atomless Radon measure (471E, 471Dg, 471F)
+on a compact metric space, so
+
+\Centerline{$\add\Cal N\le\add\Cal N(\mu_{Hr})
+\le\add\Cal N(\mu_{Hr}^{(K)})=\add\Cal N$,}
+
+\Centerline{$\cf\Cal N\ge\cf(X,\Cal N(\mu_{Hr}))
+\ge\cf(K,\Cal N(\mu_{Hr}^{(K)}))=\cf\Cal N$,}
+
+\Centerline{$\non\Cal N(\mu_{Hr})
+\le\non\Cal N(\mu_{Hr}^{(K)})=\non\Cal N$,}
+
+\Centerline{$\cov(X,\Cal N(\mu_{Hr}))
+\ge\cov(K,\Cal N(\mu_{Hr}^{(K)}))=\cov\Cal N$}
+
+\noindent by (b) above, 521F and 522Wa.
+}%end of proof of 534B
+
+\leader{534C}{Strong measure zero} Let $(X,\Cal W)$ be a uniform space.
+I say that $X$ has {\bf strong measure zero} or {\bf property C} if
+for any sequence $\sequencen{W_n}$ in $\Cal W$ there is a
+cover $\sequencen{A_n}$ of $X$ such that $A_n\times A_n\subseteq W_n$
+for every $n\in\Bbb N$.   A subset $A$ of $X$ has strong measure zero
+if it has strong measure zero in its subspace uniformity\cmmnt{, that
+is, if for any sequence $\sequencen{W_n}$ in $\Cal W$ there is a
+cover $\sequencen{A_n}$ of $A$ such that $A_n\times A_n\subseteq W_n$
+for every $n\in\Bbb N$}.   If $(X,\rho)$
+is a metric space, it has strong measure zero if it has strong measure
+zero for the uniformity associated with the metric\cmmnt{ (3A4B),
+that is, for any
+sequence $\sequencen{\epsilon_n}$ of strictly positive real numbers
+there is a
+cover $\sequencen{A_n}$ of $X$ such that $\diam A_n\le\epsilon_n$ for
+every $n\in\Bbb N$}.
+
+I will write $\CalSmz(X,\Cal W)$ or $\CalSmz(X,\rho)$ for the family of
+sets of strong measure zero in a uniform space $(X,\Cal W)$ or a metric
+space $(X,\rho)$.
+
+\leader{534D}{Proposition} (a) If $(X,\Cal W)$ is a uniform space,
+then $\CalSmz(X,\Cal W)$ is a $\sigma$-ideal
+containing all the countable subsets of $X$.
+
+(b) If $(X,\Cal W)$ is a uniform space with strong measure zero,
+$(Y,\Cal V)$ is a uniform space, and $f:X\to Y$ is uniformly
+continuous, then $f[X]\in\CalSmz(Y,\Cal V)$.
+
+(c) Let $(X,\Cal W)$ be a uniform space and $A\subseteq X$.   Then
+$A\in\CalSmz(X,\Cal W)$ iff $f[A]\in\CalSmz(Y,\rho)$ whenever $(Y,\rho)$ is
+a metric space and $f:X\to Y$ is uniformly continuous.
+
+(d) Let $(X,\Cal W)$ be a uniform space and $A\in\CalSmz(X,\Cal W)$.
+If $B\subseteq X$ is such that $B\setminus G\in\CalSmz(X,\Cal W)$
+whenever $G$ is an open set including $A$, then
+$B\in\CalSmz(X,\Cal W)$.
+
+(e) If $(X,\rho)$ is a metric space with
+strong measure zero, then $X$ is separable and universally negligible.
+%Consequently all compact subsets of $X$ are countable.
+
+\proof{{\bf (a)} It is immediate from the definition that any subset of
+a set in $\CalSmz(X,\Cal W)$ belongs to $\CalSmz(X,\Cal W)$,
+and so does any countable set.   Now suppose that
+$\sequencen{A_n}$ is a sequence in $\CalSmz(X,\Cal W)$.
+Let $\sequencen{W_n}$ be any sequence in
+$\Cal W$.   For each $k\in\Bbb N$, $\sequence{i}{W_{2^k(2i+1)}}$ is a
+sequence in $\Cal W$, so there is a sequence $\sequence{i}{A_{ki}}$,
+covering $A_k$, such that $A_{ki}\times A_{ki}\subseteq W_{2^k(2i+1)}$
+for every $i$.   Set $B_0=\emptyset$, $B_n=A_{ki}$ if $n=2^k(2i+1)$
+where $k$, $i\in\Bbb N$;  then $A\subseteq\bigcup_{n\in\Bbb N}B_n$ and
+$B_n\times B_n\subseteq W_n$ for every $n$.   As $\sequencen{W_n}$ is
+arbitrary, $A$ has strong measure zero;  as $\sequencen{A_n}$ is
+arbitrary, $\CalSmz(X,\Cal W)$ is a $\sigma$-ideal.
+
+\medskip
+
+{\bf (b)} Let $\sequencen{V_n}$ be a sequence in $\Cal V$.   For each
+$n\in\Bbb N$, there is a $W_n\in\Cal W$
+such that $(f(x),f(x'))\in V_n$ whenever
+$(x,x')\in W_n$.   Because $X\in\CalSmz(X,\Cal W)$, there is
+a cover $\sequencen{A_n}$ of $X$ such that
+$A_n\times A_n\subseteq W_n$
+for every $n$;  now $f[A_n]\times f[A_n]\subseteq V_n$ for every $n$
+and $\bigcup_{n\in\Bbb N}f[A_n]=f[X]$.   As $\sequencen{V_n}$ is
+arbitrary, $f[X]\in\CalSmz(Y,\Cal V)$.
+
+\medskip
+
+{\bf (c)} If $A$ has strong measure zero, then of course $f[A]$ has
+strong measure zero for any uniformly continuous function $f$ from $X$
+to a metric space, by (b) applied to $f\restr A$.   Now suppose that
+$A$ satisfies the
+condition, and that $\sequencen{W_n}$ is a sequence in $\Cal W$.   Then
+there is a pseudometric $\rho$ on $X$, compatible with the uniformity in
+the sense that $\{(x,y):\rho(x,y)\le\epsilon\}\in\Cal W$ for every
+$\epsilon>0$, such that $\{(x,y):\rho(x,y)<2^{-n}\}\subseteq W_n$ for
+every $n$ (4A2Ja).   Set $\sim\mskip5mu=\{(x,y):\rho(x,y)=0\}$.   Then
+$\sim$ is
+an equivalence relation on $X$.   If $Y$ is the set of equivalence
+classes, we have a metric $\tilde\rho$ on $Y$ defined by setting
+$\tilde\rho(x^{\ssbullet},y^{\ssbullet})=\rho(x,y)$ for all $x$,
+$y\in X$.   Setting $f(x)=x^{\ssbullet}$ for $x\in X$, $f:X\to Y$ is
+uniformly continuous.   So $f[A]\in\CalSmz(Y,\tilde\rho)$.   Let
+$\sequencen{B_n}$ be a cover of $f[A]$ such that $\diam B_n\le 2^{-n-1}$
+for every $n$, and set $A_n=f^{-1}[B_n]$ for each $n$.   Then
+$\sequencen{A_n}$ is a cover of $A$.   If $n\in\Bbb N$ and $x$,
+$y\in A_n$, then $\rho(x,y)=\tilde\rho(f(x),f(y))\le 2^{-n-1}$, so
+$(x,y)\in W_n$.   Thus $A_n\times A_n\subseteq W_n$.   As
+$\sequencen{W_n}$ is arbitrary, $A\in\CalSmz(X,\Cal W)$.
+
+\medskip
+
+{\bf (d)} Let $\sequencen{W_n}$ be any sequence in $\Cal W$.   For each
+$n\in\Bbb N$, let $V_n\in\Cal W$ be such that
+$V_n\frsmallcirc V_n\frsmallcirc V_n^{-1}\subseteq W_{2n}$.   Then there
+is a sequence $\sequencen{A_n}$, covering $A$, such that
+$A_n\times A_n\subseteq V_n$ for every $n$.   Set
+$B_{2n}=\interior V_n[A_n]$ for
+each $n$, and $G=\bigcup_{n\in\Bbb N}B_{2n}$;  then
+$B_{2n}\times B_{2n}\subseteq W_{2n}$ for every $n$ and $G$ is an open
+set including $A$.   Accordingly $B\setminus G\in\CalSmz(X,\Cal W)$
+and there is a sequence $\sequencen{B_{2n+1}}$, covering $B\setminus G$,
+such that $B_{2n+1}\times B_{2n+1}\subseteq W_{2n+1}$ for every $n$.
+Now $\sequencen{B_n}$ covers $B$ and $B_n\times B_n\subseteq W_n$ for
+every $n$.   As $\sequencen{W_n}$ is arbitrary, $B$ has strong measure
+zero.
+
+\medskip
+
+{\bf (e)} \Quer\ If $X$ is not separable, there is an uncountable
+$A\subseteq X$ such that $\epsilon=\inf_{x,y\in A,x\ne y}\rho(x,y)$ is
+greater than $0$ (5A4B(h-iii)).
+Now there can be no cover $\sequencen{A_n}$ of $X$ by sets of
+diameter less than $\epsilon$.\ \BanG\ Thus $X$ is separable.
+
+Now suppose that $\mu$ is a Borel probability measure on $X$.   Then
+there is a $\delta>0$ such that for every $n\in\Bbb N$ there is a
+Borel
+set $E_n$ with $\diam E_n\le 2^{-n}$ and $\mu E_n\ge\delta$.
+\Prf\Quer\ Otherwise, we can find for each $n\in\Bbb N$ an
+$\epsilon_n>0$ such that $\mu E\le 2^{-n-2}$ whenever $E$ is a Borel
+set
+and $\diam E\le\epsilon_n$.   Let $\sequencen{A_n}$ be a cover of $X$
+such that $\diam A_n\le\epsilon_n$ for every $n$;  then
+$\diam\overline{A}_n\le\epsilon_n$, so $\mu\overline{A}_n\le 2^{-n-2}$
+for every $n$, and
+
+\Centerline{$\mu X\le\sum_{n=0}^{\infty}\mu\overline{A}_n<1$.
+\Bang\Qed}
+
+Now consider $E=\bigcap_{n\in\Bbb N}\bigcup_{m\ge n}E_m$.   Since
+$\mu E\ge\delta>0$, there is an $x\in E$.   For any $n\in\Bbb N$,
+there
+is an $m\ge n$ such that
+
+\Centerline{$x\in E_m\subseteq B(x,2^{-m})\subseteq B(x,2^{-n})$,}
+
+\noindent so
+
+\Centerline{$\mu\{x\}=\inf_{n\in\Bbb N}\mu B(x,2^{-n})\ge\delta>0$.}
+
+\noindent As $\mu$ is arbitrary, this shows that $X$ is universally
+negligible.
+
+%If $K\subseteq X$ is compact, it must be scattered (439C(a-v));
+%because it is first-countable, it must be countable (4A2G(j-vi)).
+}%end of proof of 534D
+
+\leader{534E}{Rothberger's property}\cmmnt{ `Strong measure zero' is
+a uniform-space property.   The topological notion closest to it seems
+to be the following.}   If $X$ is a topological space and $A$ is a
+subset of $X$, I will say that $A$ has {\bf Rothberger's property in}
+$X$ if for every sequence
+$\sequencen{\Cal G_n}$ of non-empty open covers of $X$ there is a
+sequence $\sequencen{G_n}$ such that $G_n\in\Cal G_n$ for every
+$n\in\Bbb N$ and $A\subseteq\bigcup_{n\in\Bbb N}G_n$.   \cmmnt{Note
+that this is a
+relative property of the pair $(A,X)$, not an intrinsic property of
+the set $A$ (see 534Xe, 534Xo).}   I will write $\CalRbg(X)$ for the family
+of subsets of $X$ with Rothberger's property.
+
+\vleader{48pt}{534F}{Proposition} Let $X$ be a topological space.
+
+(a) $\CalRbg(X)$ is
+a $\sigma$-ideal containing all the countable subsets of $X$.
+
+(b) If $Y$ is another topological space, $f:X\to Y$ is continuous and
+$A\in\CalRbg(X)$, then $f[A]\in\CalRbg(Y)$.
+
+(c) If $X$ is completely regular, and $\Cal W$ is any uniformity on
+$X$ compatible with its topology, then
+$\CalRbg(X)\subseteq\CalSmz(X,\Cal W)$.
+
+(d) If $X$ is $\sigma$-compact and completely regular, and $\Cal W$ is
+any uniformity on $X$ compatible with its topology, then
+$\CalRbg(X)=\CalSmz(X,\Cal W)$.
+
+\proof{{\bf (a)} (Cf.\ 534Da.)
+It is immediate from the definition that any subset
+of a set in $\CalRbg(X)$, and any countable subset of $X$, belong to
+$\CalRbg(X)$.   Now
+suppose that $\sequencen{A_n}$ is a sequence in $\CalRbg(X)$,
+with union $A$.   Let $\sequencen{\Cal G_n}$ be any sequence of
+non-empty open covers of $X$.   For each $k\in\Bbb N$,
+$\sequence{i}{\Cal G_{2^k(2i+1)}}$ is a
+sequence of open covers of $X$, so there is a sequence
+$\sequence{i}{G_{ki}}$,
+covering $A_k$, such that $G_{ki}\in\Cal G_{2^k(2i+1)}$
+for every $i$.   Take $H_0$ to be any member of $\Cal G_0$, and set
+$H_n=G_{ki}$ if $n=2^k(2i+1)$
+where $k$, $i\in\Bbb N$;  then $A\subseteq\bigcup_{n\in\Bbb N}H_n$ and
+$H_n\in\Cal G_n$ for every $n$.   As $\sequencen{\Cal G_n}$ is
+arbitrary, $A$ has Rothberger's property in $X$.
+
+\medskip
+
+{\bf (b)} (Cf.\ 534Db.)
+Let $\sequencen{\Cal H_n}$ be a sequence of non-empty open
+covers of $Y$.   For each $n\in\Bbb N$, set
+$\Cal G_n=\{f^{-1}[H]:H\in\Cal H_n\}$;  then $\Cal G_n$ is a non-empty
+open cover of $X$.   Because $A\in\CalRbg(X)$, there
+is a cover $\sequencen{G_n}$ of $A$ such that $G_n\in\Cal G_n$ for
+every $n\in\Bbb N$.   Express $G_n$ as $f^{-1}[H_n]$,
+where $H_n\in\Cal H_n$,
+for each $n\in\Bbb N$;   then $f[A]\subseteq\bigcup_{n\in\Bbb N}H_n$.
+As $\sequencen{\Cal H_n}$ is
+arbitrary, $f[A]$ has Rothberger's property in $Y$.
+
+\medskip
+
+{\bf (c)} Suppose that $A\in\CalRbg(X)$,
+and that $\sequencen{W_n}$ is any sequence in $\Cal W$.   For each
+$n\in\Bbb N$, set
+$\Cal G_n=\{G:G\subseteq X$ is open, $G\times G\subseteq W_n\}$;  then
+$\Cal G_n$ is a non-empty open cover of $X$.   So we can find a cover
+$\sequencen{G_n}$ of $A$ such that $G_n\in\Cal G_n$, that is,
+$G_n\times G_n\subseteq W_n$,  for each $n$.   As $\sequencen{W_n}$ is
+arbitrary, $A\in\CalSmz(X,\Cal W)$.
+
+\medskip
+
+{\bf (d)(i)} Let $K\subseteq X$ be compact and $\Cal G$ an open cover
+of $X$.   Then there is a $W\in\Cal W$ such that whenever $x\in K$ there
+is a $G\in\Cal G$ such that $W[\{x\}]\subseteq G$.   \Prf\ (Cf.\ 2A2Ed.)
+Set
+
+\Centerline{$Q
+=\{(x,V):x\in X$, $V\in\Cal W$, $V[V[\{x\}]]\subseteq G$ for some
+$G\in\Cal G\}$.}
+
+\noindent Then for every $x\in X$ there are a $G\in\Cal G$ such that
+$x\in G$ and a $V\in\Cal W$ such that $V[V[\{x\}]]\subseteq G$, and in
+this case $(x,V)\in Q$ and $x\in\interior V[\{x\}]$.   So
+$\{\interior V[\{x\}]:(x,V)\in Q\}$ is an open cover of $X$ and
+there is a finite set $Q_0\subseteq Q$ such that
+$K\subseteq\bigcup\{\interior V[\{x\}]:(x,V)\in Q_0\}$.
+Let $W\in\Cal W$ be such
+that $W\subseteq V$ whenever $(x,V)\in Q_0$.   If $x\in K$, there
+is an $(x',V)\in Q_0$ such that $x\in V[\{x'\}]$;  and now there is a
+$G\in\Cal G$ including $V[V[\{x'\}]]\supseteq W[\{x\}]$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Let $K\subseteq X$ be compact and $A\in\CalSmz(X,\Cal W)$.
+Then $A\cap K\in\CalRbg(X)$.
+\Prf\ Let $\sequencen{\Cal G_n}$ be a sequence of non-empty open
+covers of $X$.   For each $n\in\Bbb N$ let $W_n\in\Cal W$ be such that
+$\{W[\{x\}]:x\in K\}$ refines $\Cal G_n$.   Let $\sequencen{A_n}$ be a
+cover of $A$ such that $A_n\times A_n\subseteq W_n$ for every $n$.
+If
+$n\in\Bbb N$ and $A_n\cap K=\emptyset$, take any $G_n\in\Cal G_n$.
+Otherwise, take $x_n\in A_n\cap K$ and $G_n\in\Cal G_n$ such that
+$W_n[\{x_n\}]\subseteq G_n$.   If $x\in A\cap K$, there is an
+$n\in\Bbb N$ such that $x\in A_n$;  now
+$(x_n,x)\in A_n\times A_n\subseteq W_n$ and
+$x\in W_n[\{x_n\}]\subseteq G_n$.  As $x$ is arbitrary,
+$A\cap K\subseteq\bigcup_{n\in\Bbb N}G_n$.   As $\sequencen{\Cal G_n}$
+is arbitrary, $A\cap K$ has Rothberger's property in $X$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} $\CalSmz(X,\Cal W)\subseteq\CalRbg(X)$.
+\Prf\ If $A\in\CalSmz(X,\Cal W)$, let
+$\sequencen{K_n}$ be a sequence of compact subsets of $X$ covering $X$.
+By (iii), $A\cap K_n\in\CalRbg(X)$ for each $n$;
+by (a) above, $A\in\CalRbg(X)$.\ \QeD\  By (c), we have equality.
+}%end of proof of 534F
+
+\leader{534G}{Corollary} If $X$ is a $\sigma$-compact completely
+regular topological space, then any uniformity on $X$ compatible with
+its topology gives the same sets of strong measure zero.
+
+\proof{ Immediate from 534Fd.
+}%end of proof of 534G
+
+\vleader{48pt}{534H}{Theorem} Let $X$ be a $\sigma$-compact locally compact
+Hausdorff topological group and $A$ a subset of $X$.   Then the
+following are equiveridical:
+
+(i) $A$ has Rothberger's property in $X$;
+
+(ii) for any sequence $\sequencen{U_n}$ of neighbourhoods of the
+identity $e$ of $X$, there is a sequence $\sequencen{x_n}$ in $X$ such
+that $A\subseteq\bigcup_{n\in\Bbb N}U_nx_n$;
+
+(iii) $FA\ne X$ for any nowhere dense set $F\subseteq X$;
+
+(iv) $EA\ne X$ for any meager set $E\subseteq X$;
+
+(v) $AF\ne X$ for any nowhere dense set $F\subseteq X$;
+
+(vi) $AE\ne X$ for any meager set $E\subseteq X$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} For the general theory of topological groups see
+\S4A5 and Chapter 44.   Readers unfamiliar with this theory, or
+impatient with the extra discipline needed to deal with
+non-commutative
+groups, may prefer to start by assuming that $X=\BbbR^2$, so that
+every $xU$ becomes $x+U$, and every $V^{-1}V$ becomes $V-V$.
+}%end of comment
+
+\proof{{\bf (i)$\Rightarrow$(ii)} Suppose that (i) is true, and that
+$\sequencen{U_n}$ is any sequence of neighbourhoods of $e$.   Then
+$\Cal G_n=\{\interior U_nx:x\in X\}$ is an open cover of $X$, so there
+is a sequence $\sequencen{x_n}$ such that
+$A\subseteq\bigcup_{n\in\Bbb N}U_nx_n$.
+
+
+\medskip
+
+{\bf (ii)$\Rightarrow$(i)} Suppose that (ii) is true, and that
+$\sequencen{W_n}$ is any sequence in the right uniformity of $X$.   Then
+for each $n\in\Bbb N$ there is a neighbourhood $U_n$ of $e$ such that
+$W_n\supseteq\{(x,y):xy^{-1}\in U_n\}$;  let $V_n$ be a neighbourhood
+of $e$ such that $V_nV_n^{-1}\subseteq U_n$.   By (ii), there is a
+sequence $\sequencen{x_n}$ such
+that $A\subseteq\bigcup_{n\in\Bbb N}V_nx_n$.   Set $A_n=V_nx_n$ for
+each $n$.   Then $A_nA_n^{-1}=V_nV_n^{-1}\subseteq U_n$, so
+$A_n\times A_n\subseteq W_n$, for each $n$, while $\sequencen{A_n}$
+covers $A$.   As $\sequencen{W_n}$ is arbitrary, $A$ has strong
+measure zero.   By 534Fd, $A\in\CalRbg(X)$.
+
+\medskip
+
+{\bf (ii)$\Rightarrow$(iv)} Suppose that $A$ satisfies (ii), and that
+$E\subseteq X$ is meager.
+
+\medskip
+
+\quad\grheada\
+If $K\subseteq X$ is compact and nowhere dense, then
+there is a sequence $\sequencen{U_n}$ of neighbourhoods of $e$ such
+that $K'=\bigcap_{n\in\Bbb N}U_nK$ is still compact and nowhere dense.
+\Prf\ By 443N(ii), there is a nowhere dense zero set $F\supseteq K$.
+Now $F$ is a G$_{\delta}$ set;  suppose that $F=\bigcap_{n\in\Bbb N}G_n$
+where $G_n$ is open for each $n$.   As $K\subseteq G_n$,
+the open set $U'_n=\{x:xK\subseteq G\}$ (4A5Ei) contains $e$;  let
+$U_n$ be a compact
+neighbourhood of $e$ included in $U'_n$.   Then $U_nK\subseteq G_n$
+for every $n$, so $K'=\bigcap_{n\in\Bbb N}U_nK\subseteq F$ is nowhere
+dense, while $K'$ is compact (use 4A5Ef).\ \Qed
+
+\medskip
+
+\quad\grheadb\ Let $K\subseteq X$ be compact and nowhere dense and
+$U$ a neighbourhood of $e$.   Then there is a neighbourhood $V$ of $e$ such
+that for every $x\in X$ there is an $x'\in Ux$ such that
+$Vx'\cap K=\emptyset$.   \Prf\ Let $\sequencen{U_n}$ be a sequence of
+neighbourhoods of $e$ such that $K'=\bigcap_{n\in\Bbb N}U_nK$ is
+compact and nowhere dense (($\alpha$) above).   Choose a sequence
+$\sequencen{V_n}$ of compact neighbourhoods of $e$ such that
+$V_0\subseteq U$ and $V_{n+1}V_{n+1}^{-1}\subseteq U_n\cap V_n$ for
+each $n\in\Bbb N$.   Then $Y=\bigcap_{n\in\Bbb N}V_n$ is a compact subgroup
+of $X$ (see the proof of 4A5S), and $YK=\bigcap_{n\in\Bbb N}V_nK$
+(4A5Eh).   \Quer\ If for every $n\in\Bbb N$ there is an
+$x_n\in X$ such that $V_n^{-1}x'\cap K\ne\emptyset$ for every
+$x'\in Ux_n$, then, in particular, $V_n^{-1}x_n\cap K\ne\emptyset$, so
+$x_n\in V_nK$.   Since $\sequencen{V_nK}$ is a non-increasing sequence
+of compact sets, $\sequencen{x_n}$ has a cluster point
+
+\Centerline{$x^*\in\bigcap_{n\in\Bbb N}V_nK=YK\subseteq K'$.}
+
+Because $K'$ is nowhere dense, $V_1x^*\not\subseteq K'$;  take
+$x\in V_1x^*\setminus K'$.   Let $W$ be an open
+neighbourhood of $e$ such that $Wx\cap K'=\emptyset$.   Then $Wx$ is
+disjoint from $YK=Y^{-1}YK$ so $YWx\cap YK=\emptyset$.   Now
+$YW$ is an open set including $Y=\bigcap_{n\in\Bbb N}V_n$, and
+all the $V_n$ are compact, so there is an $m\ge 1$ such that
+$V_m\subseteq Y W$ and $V_mx\cap YK=\emptyset$.
+
+But observe that there is an $n>m$ such that
+$x_n\in V_1x^*$, so that
+
+\Centerline{$x\in V_1V_1^{-1}x_n\subseteq V_0x_n\subseteq Ux_n$,}
+
+\noindent while $V_n^{-1}x\cap K\subseteq V_mx\cap YK$ is empty.\
+\Bang
+
+Thus we can take $V=V_n^{-1}$ for some $n$.\ \Qed
+
+\medskip
+
+\quad\grheadc\ Because $X$ is
+$\sigma$-compact, any F$_{\sigma}$ set in $X$ is actually K$_{\sigma}$,
+and there is
+a sequence $\sequencen{K_n}$ of nowhere dense compact sets covering $E$;
+we can suppose that $\sequencen{K_n}$ is non-decreasing.   Choose
+inductively sequences $\sequencen{U_n}$, $\sequencen{V_n}$,
+$\sequencen{V'_n}$ and $\sequencen{V''_n}$ of neighbourhoods of $e$
+such that
+
+\inset{$U_0$ is any compact neighbourhood of $e$,
+
+given $U_n$, $V_n$ is to be a neighbourhood of $e$ such that
+$V_nV_n\subseteq U_n$,
+
+given $V_n$, $V'_n$ is to be a neighbourhood of $e$ such that for
+every $y\in X$ there is a $z\in V_ny$ such that $V'_nz\cap
+K_{n+1}=\emptyset$}
+
+\noindent (using ($\beta$)),
+
+\inset{given $V'_n$, $V''_n$ is to be an open neighbourhood of $e$
+such that $(V''_n)^{-1}V''_n\subseteq V'_n$,
+
+given $V''_n$, $U_{n+1}$ is to be a compact neighbourhood of $e$,
+included in $V_n\cap V''_n$, such that
+$K_{n+1}U_{n+1}\subseteq V''_nK_{n+1}$.}
+
+\noindent (This last is possible by 4A5Ei, because $V''_nK_{n+1}$ is
+an open set including $K_{n+1}$,
+so $\{x:K_{n+1}x\subseteq V''_nK_{n+1}\}$ is
+an open set containing $e$.)
+
+\medskip
+
+\quad\grheadd\ For each $k\in\Bbb N$, $\sequence{i}{U_{2^k(2i+1)}}$
+is a sequence of neighbourhoods of $e$, so there must be a sequence
+$\sequence{i}{x^{(k)}_i}$ such that
+$A\subseteq\bigcup_{i\in\Bbb N}U_{2^k(2i+1)}x^{(k)}_i$.
+Set $x_0=e$ and $x_n=x^{(k)}_i$ if $n=2^k(2i+1)$.   For any $k\in\Bbb N$,
+
+\Centerline{$A\subseteq\bigcup_{i\in\Bbb N}A_{ki}
+\subseteq\bigcup_{i\in\Bbb N}U_{2^k(2i+1)}x^{(k)}_i
+\subseteq\bigcup_{n\ge 2^k}U_nx_n\subseteq\bigcup_{n\ge k}U_nx_n$.}
+
+\noindent This means that $EA\subseteq\bigcup_{n\ge 1}K_nU_nx_n$.
+\Prf\ If $z\in EA$, we can express it as $xy$ where $x\in E$ and
+$y\in A$.   There are a $k\ge 1$ such that $x\in K_k$ and an
+$n\ge k$ such that $y\in U_nx_n$, in which case $z\in K_nU_nx_n$.\
+\Qed
+
+\medskip
+
+\quad\grheade\ Now choose $\sequencen{y_n}$, $\sequencen{z_n}$ as
+follows.   Start from $y_0=e$.   Given $y_n$, let
+$z_n\in V_ny_nx_{n+1}^{-1}$ be such that
+$V'_nz_n\cap K_{n+1}=\emptyset$;  this is possible by the choice of
+$V'_n$.   Now set $y_{n+1}=z_nx_{n+1}$, and continue.
+
+For each $n$,
+
+$$\eqalignno{U_{n+1}y_{n+1}
+&\subseteq V_ny_{n+1}\cr
+\displaycause{by the choice of $U_{n+1}$}
+&=V_nz_nx_{n+1}
+\subseteq V_nV_ny_nx_{n+1}^{-1}x_{n+1}\cr
+\displaycause{by the choice of $z_n$}
+&\subseteq U_ny_n\cr}$$
+
+\noindent by the choice of $V_n$.   Consequently,
+$U_{n+1}y_{n+1}\cap K_{n+1}U_{n+1}x_{n+1}=\emptyset$.   \Prf\ We chose
+$z_n$ such that $V'_nz_n\cap K_{n+1}=\emptyset$.   Because
+$(V''_n)^{-1}V''_n\subseteq V'_n$,
+$V''_nz_n\cap V''_nK_{n+1}=\emptyset$.   Because
+$K_{n+1}U_{n+1}\subseteq V''_nK_{n+1}$ and $U_{n+1}\subseteq V''_n$,
+$U_{n+1}z_n\cap K_{n+1}U_{n+1}=\emptyset$, that is,
+$U_{n+1}y_{n+1}\cap K_{n+1}U_{n+1}x_{n+1}=\emptyset$.\ \Qed
+
+\medskip
+
+\quad{\bf ($\pmb{\zeta}$)} From ($\epsilon$) we see that
+$\sequencen{U_ny_n}$ is a non-increasing sequence of compact sets, so
+has non-empty intersection.   Take any $x\in\bigcap_{n\in\Bbb
+N}U_ny_n$.
+Then $x\notin K_{n+1}U_{n+1}x_{n+1}$ for any $n$, so
+$x\notin\bigcup_{n\ge 1}K_nU_nx_n\supseteq EA$.   Thus $EA\ne X$.   As
+$E$ is arbitrary, (iv) is true.
+
+\medskip
+
+{\bf (iv)$\Rightarrow$(iii)} is trivial.
+
+\medskip
+
+{\bf (iii)$\Rightarrow$(ii)} Suppose that (iii) is true.   Let
+$\sequencen{U_n}$ be any sequence of open neighbourhoods of $e$.
+Then there is a sequence $\sequencen{x_n}$ in $X$ such that
+$G=\bigcup_{n\in\Bbb N}x_nU_n^{-1}$ is dense.   \Prf\ Let
+$\sequencen{V_n}$ be a sequence of neighbourhoods of $e$ such that
+$V_{n+1}V_{n+1}^{-1}\subseteq V_n\cap U_n^{-1}$ for every $n\in\Bbb N$.
+Then there is a compact normal subgroup $Y$ of $X$ such that
+$Y\subseteq\bigcap_{n\in\Bbb N}V_n$ and $X/Y$ is metrizable (4A5S).
+The canonical map $x\mapsto x^{\ssbullet}:X\to X/Y$ is continuous, so
+$X/Y$ is $\sigma$-compact, therefore separable (4A2P(a-ii)).   Let
+$\sequencen{x_n}$ be a sequence in $X$ such that
+$\{x_n^{\ssbullet}:n\in\Bbb N\}$ is dense in $X/Y$.   Set
+$G_0=\bigcup_{n\in\Bbb N}x_nV_{n+1}Y$.   \Quer\ If
+$H=X\setminus\overline{G}_0$ is non-empty, then
+$\{x^{\ssbullet}:x\in H\}$
+is open (4A5Ja) so contains $x_n^{\ssbullet}$ for some $n$.   But
+$x_nY\subseteq x_nV_{n+1}Y\subseteq G_0$, so there can be no $x\in H$
+such that $x^{\ssbullet}=x_n^{\ssbullet}$.\ \BanG\  Thus $G_0$ is
+dense. But, for any $n\in\Bbb N$,
+$Y\subseteq V_{n+1}^{-1}$ so $V_{n+1}Y\subseteq U_n^{-1}$, and
+$G=\bigcup_{n\in\Bbb N}x_nU_n^{-1}$ includes $G_0$.   Thus $G$ is dense,
+as required.\ \Qed
+
+Accordingly $F=X\setminus G$ is nowhere dense, and
+$FA\ne X$;  suppose $x\in X\setminus FA$.   Then
+$F\cap xA^{-1}=\emptyset$, that is,
+$xA^{-1}\subseteq\bigcup_{n\in\Bbb N}x_nU_n^{-1}$, that is,
+$A^{-1}\subseteq\bigcup_{n\in\Bbb N}x^{-1}x_nU_n^{-1}$, that is,
+$A\subseteq\bigcup_{n\in\Bbb N}U_nx_n^{-1}x$.   As $\sequencen{U_n}$ is
+arbitrary, (ii) is true.
+
+\medskip
+
+{\bf (i)$\Leftrightarrow$(v)$\Leftrightarrow$(vi)} Because $x\mapsto
+x^{-1}$ is a
+homeomorphism,
+
+$$\eqalignno{A\in\CalRbg(X)
+&\mskip-6mu\iff A^{-1}\in\CalRbg(X)\cr
+& \Longrightarrow EA^{-1}\ne X
+  \text{ whenever }E\subseteq X\text{ is meager}\cr
+& \Longrightarrow E^{-1}A^{-1}\ne X
+  \text{ whenever }E\subseteq X\text{ is meager}\cr
+\displaycause{because $E^{-1}$ is meager if $E$ is}
+&\mskip-6mu\iff AE\ne X\text{ whenever }E\subseteq X
+  \text{ is meager}\cr
+& \Longrightarrow AF^{-1}\ne X\text{ whenever }F\subseteq X
+  \text{ is nowhere dense}\cr
+\displaycause{because $F^{-1}$ is nowhere dense if $F$ is}
+& \Longrightarrow FA^{-1}\ne X\text{ whenever }F\subseteq X
+  \text{ is nowhere dense}\cr
+& \Longrightarrow A^{-1}\in\CalRbg(X).\cr}$$
+}%end of proof of 534H
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The case $X=\Bbb R$ is due to {\smc Galvin
+Mycielski \& Solovay 79}.
+}%end of comment
+
+\leader{534I}{Proposition} (a) Let $X$ be a Lindel\"of space.
+Then $\non\CalRbg(X)\ge\frakmctbl$.
+
+(b)\cmmnt{ ({\smc Fremlin \& Miller 88})} Give $\NN$ the metric
+$\rho$ defined by setting
+
+\Centerline{$\rho(x,y)
+=\inf\{2^{-n}:n\in\Bbb N$, $x\restr n=y\restr n\}$.}
+
+\noindent Then $\non\CalSmz(\NN,\rho)=\frakmctbl$.
+
+\proof{{\bf (a)} Suppose that $A\subseteq X$ and $\#(A)<\frakmctbl$.
+Let $\sequencen{\Cal G_n}$ be a sequence of non-empty open covers of
+$X$.   Because $X$ is Lindel\"of, we can choose for each $n$ a
+non-empty
+countable $\Cal G'_n\subseteq\Cal G_n$ covering $X$.
+Let $P$ be the set of finite sequences $p=\ofamily{i}{n}{p(i)}$ such
+that $p(i)\in\Cal G'_i$ for every $i<n$;  say
+that $p\le q$ in $P$ if $q$ extends $P$.   Then $P$ is a countable
+partially ordered set.   For each $x\in A$, the set
+$Q_x=\{p:x\in p(i)$
+for some $i<\#(p)\}$ is cofinal with $P$.   \Prf\ Given $p\in P$, set
+$n=\#(p)$;  let $G\in\Cal G'_n$ be such that $x\in G$;  set
+$q=p\cup\{(n,G)\}$;  then $p\le q\in Q_x$.\ \Qed
+
+Because $\#(A)<\frakmctbl\le\frak m^{\uparrow}(P)$ (517Pc), there is
+an upwards-directed family $R\subseteq P$ meeting every $Q_x$ (517B(iv)).
+Now $p^*=\bigcup R$ is a function;  its domain $I$ is either $\Bbb N$ or
+a natural number;  in either case, $A\subseteq\bigcup_{i\in I}p^*(i)$
+and $p^*(i)\in\Cal G_i$ for every $i\in I$.   As
+$\sequencen{\Cal G_n}$ is arbitrary, $A$ has Rothberger's property in
+$X$;  as $A$ is arbitrary, $\non\CalRbg(X)\ge\frakmctbl$.
+
+\medskip
+
+{\bf (b)} By (a) and 534Fc, $\non\CalSmz(\NN,\rho)\ge\frakmctbl$.   By
+522Sb, there is a set
+$A\subseteq\NN$, with cardinal $\frakmctbl$, such that for every $y\in\NN$
+there is an $x\in A$ such that $x(n)\ne y(n)$ for every $n$.   \Quer\
+If $A\in\CalSmz(\NN,\rho)$, take a sequence $\sequencen{y_n}$ in $\NN$ such that
+$A\subseteq\bigcup_{n\in\Bbb N}B(y_n,2^{-n-1})$.   Set $y(n)=y_n(n)$
+for every $n$.   Then there is an $x\in A$ such that $x(n)\ne y(n)$ for
+every $n$.   But in this case $x(n)\ne y_n(n)$ and
+$x\restr n+1\ne y_n\restr n+1$ and $x\notin B(y_n,2^{-n-1})$ for every
+$n$.\ \Bang
+
+Thus $A$ witnesses that $\non\CalSmz(\NN,\rho)\le\frakmctbl$.
+}%end of proof of 534I
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Observe that $(\NN,\rho)$, as described in (b)
+above, is isometric with $\BbbZ^{\Bbb N}$ with the metric defined by
+the same formula, and that this metric is translation-invariant, so
+induces
+the topological group uniformity of $\BbbZ^{\Bbb N}$\cmmnt{ (4A5He)}.
+}
+
+%re  cov(\CalSmz) see Barto & Judah 8.4.7
+
+\leader{534J}{Proposition}\cmmnt{ ({\smc Fremlin 91})} Let
+$(X,\rho)$ be a separable metric space.
+Then $\CalSmz(X,\rho)\prT\Cal N^{\frak d}$\cmmnt{,
+where $\Cal N$ is the null ideal
+of Lebesgue measure on $\Bbb R$ and $\frak d$ is the dominating
+number (522A)}.
+
+\proof{{\bf (a)} By 534A, there is a countable family $\Cal C$ of
+subsets of $X$ such that whenever $A\subseteq X$ has finite diameter
+and $\eta>0$, there is a $C\in\Cal C$ such that $A\subseteq C$ and
+$\diam C\le\eta+2\diam A$.   For each $i\in\Bbb N$, let
+$\sequence{j}{C_{ij}}$ be a sequence running over $\{C:C\in\Cal C$,
+$\diam C\le 2^{-i}\}$.   Let $(\NN,\subseteq^*,\Cal S)$ be the
+$\Bbb N$-localization relation.
+
+\medskip
+
+{\bf (b)} Let $D\subseteq\NN$ be a cofinal set with cardinal $\frak d$.
+For each $d\in D$ we can find a function $\phi_d:\CalSmz(X,\rho)\to\NN$ such
+that $A\subseteq\bigcap_{n\in\Bbb N}\bigcup_{i\ge n}
+C_{d(i),\phi_d(A)(i)}$ for every $A\in\CalSmz(X,\rho)$.   \Prf\ For
+$A\in\CalSmz(X,\rho)$ and $k\in\Bbb N$, choose a sequence
+$\sequence{i}{A_{ki}}$
+of sets covering $A$ such that $2\diam A_{ki}<2^{-d(2^k(2i+1))}$ for
+every $i\in\Bbb N$.   For $n=2^k(2i+1)$, let $A_n\in\Cal C$ be such
+that $A_{ki}\subseteq A_n$ and $\diam A_n\le 2^{-d(n)}$;  choose
+$\phi_d(A)(n)$ such that $A_n=C_{d(n),\phi_d(A)(n)}$.\ \QeD\  Define
+$\phi:\CalSmz(X,\rho)\to(\NN)^D$ by setting
+$\phi(A)=\family{d}{D}{\phi_d(A)}$
+for $A\in\CalSmz(X,\rho)$.
+
+\medskip
+
+{\bf (c)} For $S\in\Cal S$ and $d\in D$, define
+
+\Centerline{$\psi_d(S)
+=\bigcap_{n\in\Bbb N}\bigcup_{i\ge n}\bigcup_{j\in S[\{i\}]}C_{d(i),j}
+\subseteq X$.}
+
+\noindent For $\family{d}{D}{S_d}\in\Cal S^D$ set
+$\psi(\family{d}{D}{S_d})=\bigcap_{d\in D}\psi_d(S_d)$.   Then
+$A=\psi(\family{d}{D}{S_d})$ has strong measure zero.   \Prf\ Let
+$\sequence{i}{\epsilon_i}$ be any family of strictly positive real
+numbers.   Let $d\in D$ be such that $2^{-d(k)}\le\epsilon_i$ whenever
+$k\in\Bbb N$ and $i<2^{k+1}$.   For each $k\in\Bbb N$,
+$\#(S_d[\{k\}])\le 2^k$, so we can find a sequence $\sequence{i}{A_i}$
+such that
+$\langle A_i\rangle_{2^k\le i<2^{k+1}}$ is a re-enumeration of
+$\family{j}{S[\{k\}]}{C_{d(k),j}}$ supplemented by empty sets if
+necessary.   This will ensure that if $2^k\le i<2^{k+1}$ then $\diam
+A_i\le 2^{-d(k)}\le\epsilon_i$, while
+
+\Centerline{$A\subseteq\psi_d(S_d)
+\subseteq\bigcup_{(k,j)\in S_d}C_{d(k),j}
+=\bigcup_{i\in\Bbb N}A_i$.}
+
+\noindent As $\sequence{i}{\epsilon_i}$ is arbitrary, $A\in\CalSmz(X,\rho)$.\
+\Qed
+
+\medskip
+
+{\bf (d)} Now $(\phi,\psi)$ is a Galois-Tukey connection from
+$(\CalSmz(X,\rho),\subseteq,\CalSmz(X,\rho))$ to
+$(\NN,\penalty-100\subseteq^*\nobreak,\penalty-100\Cal S)^D$, that is,
+$((\NN)^D,T,\penalty-100\Cal S^D)$,
+where $T$ is the simple product relation as defined in 512H.   \Prf\
+$\phi:\CalSmz(X,\rho)\to(\NN)^D$
+and $\psi:\Cal S^D\to\CalSmz(X,\rho)$ are functions.   Suppose that
+$A\in\CalSmz(X,\rho)$ and $\family{d}{D}{S_d}$ are such that
+$(\phi(A),\family{d}{D}{S_d})\in T$, that is,
+$\phi_d(A)\subseteq^*S_d$
+for every $d$.   Fix $d\in D$ for the moment.   Then there is an
+$n\in\Bbb N$ such that $(i,\phi_d(A)(i))\in S_d$ for every $i\ge n$.
+Now, for any $m\ge n$,
+
+\Centerline{$A\subseteq\bigcup_{i\ge m}C_{d(i),\phi_d(A)(i)}
+\subseteq\bigcup_{i\ge m}\bigcup_{j\in S_d[\{i\}]}C_{d(i),j}$.}
+
+\noindent Thus
+
+\Centerline{$A\subseteq
+\bigcap_{m\in\Bbb N}\bigcup_{i\ge m}\bigcup_{j\in
+S_d[\{i\}]}C_{d(i),j)}
+=\psi_d(S_d)$.}
+
+\noindent This is true for every $d$, so
+$A\subseteq\psi(\family{d}{D}{S_d})$.   As $A$ and
+$\family{d}{D}{S_d}$
+are arbitrary, $(\phi,\psi)$ is a Galois-Tukey connection.\ \Qed
+
+\medskip
+
+{\bf (e)} Thus
+$(\CalSmz(X,\rho),\subseteq,\CalSmz(X,\rho))
+\prGT(\NN,\subseteq^*,\Cal S)^D$.   But
+$(\NN,\subseteq^*,\Cal S)
+\equivGT(\Cal N,\penalty-100\subseteq\nobreak,\penalty-100\Cal N)$ (522M), so
+$(\NN,\subseteq^*,\penalty-100\Cal S)^D
+\equivGT(\Cal N,\subseteq,\Cal N)^D$ (512Hb) and
+
+\Centerline{$(\CalSmz(X,\rho),\subseteq,\CalSmz(X,\rho))
+\prGT(\Cal N,\subseteq,\Cal N)^D=(\Cal N^D,\le,\Cal N^D)$}
+
+\noindent where $\le$ is the natural partial order of the product
+partially ordered set $\Cal N^D$.   Accordingly
+$\CalSmz(X,\rho)\prT\Cal N^D\cong\Cal N^{\frak d}$, as claimed.
+}%end of proof of 534J
+
+\leader{534K}{Corollary} Let $(X,\Cal W)$ be a Lindel\"of uniform
+space.   Then $\add\CalSmz(X,\Cal W)\ge\add\Cal N$,
+where $\Cal N$ is the null ideal of Lebesgue measure on $\Bbb R$.
+
+\proof{{\bf (a)} Suppose to begin with that $\Cal W$ is metrizable.
+Then $X$ is separable (4A2Pd), so $\CalSmz(X,\rho)\prT\Cal N^{\frak d}$,
+and $\add\Cal N=\add\Cal N^{\frak d}\le\add\CalSmz(X,\rho)$ by 513E(e-ii).
+
+\medskip
+
+{\bf (b)} For the general case, suppose that
+$\Cal A\subseteq\CalSmz(X,\Cal W)$
+and $\#(\Cal A)<\add\Cal N$, and set $A^*=\bigcup\Cal A$.   Let $f$ be a
+uniformly continuous function from $X$ to a metric space $Y$.   Then
+$f[X]$ is Lindel\"of (5A4Bc), and $f[A]$ has strong measure zero in
+$f[X]$ for every $A\in\Cal A$ (534Db), so
+$f[A^*]=\bigcup_{A\in\Cal A}f[A]$ has strong measure zero, by (a).
+As $f$ is arbitrary, $A^*$ has strong measure zero, by 534Dc;  as $\Cal A$
+is arbitrary, $\add\CalSmz(X,\Cal W)\ge\add\Cal N$.
+}%end of proof of 534K
+
+\leader{534L}{$\CalSmz$-equivalence (a)} If $(X,\Cal V)$ and
+$(Y,\Cal W)$ are uniform spaces, \cmmnt{I say that} they are
+{\bf $\CalSmz$-equivalent} if there is a bijection $f:X\to Y$ such
+that
+a set $A\subseteq X$ has strong measure zero in $X$ iff $f[A]$ has
+strong measure zero in $Y$.   \cmmnt{Of course this is an
+equivalence
+relation on the class of uniform spaces.}
+
+\spheader 534Lb If $(X,\Cal V)$ and $(Y,\Cal W)$ are uniform
+spaces,\cmmnt{ I
+say that} $X$ is {\bf $\CalSmz$-embeddable} in $Y$ if it is
+$\CalSmz$-equivalent to a subspace of $Y$\cmmnt{ (with the subspace
+uniformity, of course)}.   Evidently this is transitive in the sense
+that if $X$ is $\CalSmz$-embeddable in $Y$ and $Y$ is
+$\CalSmz$-embeddable in $Z$ then $X$ is $\CalSmz$-embeddable in $Z$.
+
+\spheader 534Lc When $X$ and $Y$ are topological spaces,\cmmnt{ I
+will say that} they are {\bf $\CalRbg$-equivalent} if there is a
+bijection $f:X\to Y$ such that
+$A\subseteq X$ has Rothberger's property in $X$ iff $f[A]$ has
+Rothberger's property in $Y$.
+
+\leader{534M}{Lemma} (a) Suppose that $(X,\Cal V$) and $(Y,\Cal W)$
+are uniform spaces, and that $\sequencen{X_n}$, $\sequencen{Y_n}$ are
+partitions of $X$, $Y$ respectively such that $X_n$ is
+$\CalSmz$-equivalent to $Y_n$ for every $n$.   Then $X$ is
+$\CalSmz$-equivalent to $Y$.
+
+(b) Suppose that $(X,\Cal V)$ and $(Y,\Cal W)$ are uniform spaces, and
+that $X$ is $\CalSmz$-embeddable in $Y$ and $Y$ is
+$\CalSmz$-embeddable
+in $X$.   Then $X$ and $Y$ are $\CalSmz$-equivalent.
+
+\proof{{\bf (a)} For each $n\in\Bbb N$, let $f_n:X_n\to Y_n$ be a
+bijection identifying the ideals of sets with strong measure zero.
+Then $f=\bigcup_{n\in\Bbb N}f_n$ is a bijection identifying
+$\CalSmz(X,\Cal V)$ and $\CalSmz(Y,\Cal W)$.
+
+\medskip
+
+{\bf (b)} (Compare 344D.) Let $X_1\subseteq X$ and $Y_1\subseteq Y$ be
+$\CalSmz$-equivalent to $Y$, $X$ respectively;  let $f:X\to Y_1$ and
+$g:Y\to X_1$ be bijections identifying the ideals of strong measure
+zero in each pair.   Set $X_0=X$, $Y_0=Y$, $X_{n+1}=g[Y_n]$ and
+$Y_{n+1}=f[X_n]$ for
+each $n\in\Bbb N$;  then $\sequencen{X_n}$ is a non-increasing sequence
+of subsets of $X$ and $\sequencen{Y_n}$ is a non-increasing sequence of
+subsets of $Y$.   Set $X_{\infty}=\bigcap_{n\in\Bbb N}X_n$,
+$Y_{\infty}=\bigcap_{n\in\Bbb N}Y_n$.   Then
+$f\restr X_{2k}\setminus X_{2k+1}$ is an $\CalSmz$-equivalence between
+$X_{2k}\setminus X_{2k+1}$ and $Y_{2k+1}\setminus Y_{2k+2}$, while
+$g\restrp Y_{2k}\setminus Y_{2k+1}$ is an $\CalSmz$-equivalence
+between
+$Y_{2k}\setminus Y_{2k+1}$ and $X_{2k+1}\setminus X_{2k+2}$;  and
+$g\restrp Y_{\infty}$ is an $\CalSmz$-equivalence between $Y_{\infty}$
+and $X_{\infty}$.    So (a) gives the required $\CalSmz$-equivalence
+between $X$ and $Y$.
+}%end of proof of 534M
+
+\leader{534N}{Proposition} $\BbbR^r$, $[0,1]^r$ and $\{0,1\}^{\Bbb N}$
+are $\CalRbg$-equivalent for every integer $r\ge 1$.
+
+\proof{{\bf (a)} Give $\Bbb R$ its usual uniformity.   Of course the
+identity map is an $\CalSmz$-embedding of
+$[0,1]$ in $\Bbb R$.   In the other direction, any homeomorphism from
+$\Bbb R$ to
+$\ooint{0,1}$ is an $\CalRbg$-equivalence between $\Bbb R$ and
+$\ooint{0,1}$ and therefore, because $\Bbb R$ and
+$\ooint{0,1}$ are $\sigma$-compact, an $\CalSmz$-embedding of $\Bbb R$ in
+$[0,1]$ (534Fd).   By 534Mb, $\Bbb R$ and $[0,1]$ and $\ooint{0,1}$ are
+$\CalSmz$-equivalent.
+
+\medskip
+
+{\bf (b)} Give $\{0,1\}^{\Bbb N}$ the metric $\rho$ defined by saying
+that
+
+\Centerline{$\rho(x,y)
+=\inf\{2^{-n}:n\in\Bbb N$, $x\restr n=y\restr n\}$}
+
+\noindent for $x$, $y\in\{0,1\}^{\Bbb N}$.   Define
+$f:\{0,1\}^{\Bbb N}\to[0,1]$ by setting
+$f(x)=\sum_{n=0}^{\infty}2^{-n-1}x(n)$ for $x\in\{0,1\}^{\Bbb N}$.
+Then $f$ is continuous, therefore uniformly continuous, so $f[A]$ has
+strong measure zero in $[0,1]$ whenever $A\subseteq\{0,1\}^{\Bbb N}$
+has strong measure zero in $\{0,1\}^{\Bbb N}$.   It is also the case that
+$f^{-1}[B]$ has strong measure zero whenever $B\subseteq[0,1]$ does.
+\Prf\ Let $\sequencen{\epsilon_n}$ be any sequence of strictly
+positive
+numbers.   Then there is a sequence $\sequencen{B_n}$, covering $B$,
+such that $\diam B_n<\bover12\min(1,\epsilon_{2n},\epsilon_{2n+1})$
+for every $n$.   Fix $n$ for the moment and consider $f^{-1}[B_n]$.   If
+$k$ is such that $2^{-k-1}\le\diam B_n<2^{-k}$, then $B_n$ can meet at
+most two intervals of the type $I_{ki}=[2^{-k}i,2^{-k}(i+1)]$.   So
+$f^{-1}[B_n]$
+can meet at most two sets of the type $\{x:x\restr k=z\}$, and we can
+express it as $A_{2n}\cup A_{2n+1}$ where
+
+\Centerline{$\max(\diam A_{2n},\diam A_{2n+1})
+\le 2^{-k}\le 2\diam B_n\le\min(\epsilon_{2n},\epsilon_{2n+1})$.}
+
+\noindent Putting these together, we have a cover $\sequencen{A_n}$ of
+$\bigcup_{n\in\Bbb N}f^{-1}[B_n]\supseteq f^{-1}[B]$ such that
+$\diam A_n\le\epsilon_n$ for every $n$;  as $\sequencen{\epsilon_n}$
+is arbitrary, $f^{-1}[B]$ has strong measure zero.\ \Qed
+
+Of course $f$ is not a bijection, so it is not in itself an
+$\CalSmz$-equivalence.   But if we set
+
+\Centerline{$D_1
+=\{x:x\in\{0,1\}^{\Bbb N}$, $x$ is eventually constant$\}$,}
+
+\Centerline{$D_2=\{2^{-k}i:k\in\Bbb N$, $i\le 2^k\}$,}
+
+\noindent then $D_1\subseteq\{0,1\}^{\Bbb N}$ and $D_2\subseteq[0,1]$
+are countably infinite, and $f\restr\{0,1\}^{\Bbb N}\setminus D_1$ is
+an $\CalSmz$-equivalence between $\{0,1\}^{\Bbb N}\setminus D_1$ and
+$[0,1]\setminus D_2$.   Putting this together with any bijection
+between $D_1$ and $D_2$, we have an $\CalSmz$-equivalence between
+$\{0,1\}^{\Bbb N}$ and $[0,1]$.
+
+\medskip
+
+{\bf (c)(i)} I show by induction on $r$ that $[0,1]^r$ is
+$\CalSmz$-equivalent to $\Bbb R$ and therefore to $[0,1]$.   The case
+$r=1$ is covered by (a).   For the inductive step to $r\ge 2$, I adapt
+the method of (b).   Give $\{0,1\}^{\Bbb N\times r}$ the metric $\rho$
+defined by setting
+
+\Centerline{$\rho(x,y)
+=\inf\{2^{-n}:n\in\Bbb N$, $x\restr(n\times r)=y\restr(n\times r)\}$}
+
+\noindent for $x$, $y\in\{0,1\}^{\Bbb N\times r}$.   Define
+$f:\{0,1\}^{\Bbb N\times r}\to[0,1]^r$ by setting
+
+\Centerline{$f(x)=\ofamily{j}{r}{\sum_{i=0}^{\infty}2^{-i-1}x(i,j)}$}
+
+\noindent for $x\in \{0,1\}^{\Bbb N\times r}$.   Then $f$ is uniformly
+continuous, so $f[A]$ has strong measure zero in $[0,1]^r$ whenever
+$A$
+has strong measure zero in $\{0,1\}^{\Bbb N\times r}$.   Moreover, we
+find once again that $f^{-1}[B]$ has strong measure zero whenever
+$B\subseteq[0,1]^r$ has strong measure zero.   \Prf\ Let
+$\sequencen{\epsilon_n}$ be a sequence of strictly positive real
+numbers.   This time, set $m=2^r$ and let $\sequence{n}{B_n}$ be a
+cover of $B$ such that
+$\diam B_n<\bover12\min(1,\inf_{mn\le i<mn+m}\epsilon_i)$ for every
+$n$.   (For definiteness, let me say that I am giving $[0,1]^r$ its
+Euclidean
+metric.)   In this case, if $2^{-k-1}\le\diam B_n<2^{-k}$, $B_n$ can
+meet at most $2^r$ intervals of the form
+$[2^{-k}\pmb{n},2^{-k}(\pmb{n}+\pmb{1})]$ where $\pmb{n}\in\BbbN^r$ and
+$\pmb{1}=(1,\ldots,1)$.   So $f^{-1}[B_n]$ can meet at most $2^r=m$ sets
+of the form $\{x:x\restr(k\times r)=z\}$, and can be covered by $m$
+sets $\langle A_j\rangle_{mn\le j<mn+m}$ where
+
+\Centerline{$\diam A_j\le 2^{-k}\le 2\diam B_n\le\epsilon_j$}
+
+\noindent for every $j$.   Putting these together, we have a cover
+$\sequence{j}{A_j}$ of $f^{-1}[B]$ such that $\diam A_j\le\epsilon_j$
+for every $j$;  as $\sequencen{\epsilon_n}$ is arbitrary, $f^{-1}[B]$
+has strong measure zero.\ \Qed
+
+The function $f$ here is very far from being one-to-one.   But if we
+set
+
+\Centerline{$D_1^*=\bigcup_{j<r}\{x:x\in\{0,1\}^{\Bbb N\times r}$,
+$\sequence{i}{x(i,j)}\in D_1\}$,}
+
+\Centerline{$D_2^*=\bigcup_{j<r}\{z:z\in[0,1]^r$, $z(j)\in D_2\}$,}
+
+\noindent where $D_1\subseteq\{0,1\}^{\Bbb N}$, $D_2\subseteq[0,1]$
+are defined as in the proof of (b), then $f$ is a bijection between
+$\{0,1\}^{\Bbb N\times r}\setminus D^*_1$ and
+$[0,1]^r\setminus D^*_2$,
+so is an $\CalSmz$-equivalence between these.   Accordingly
+$[0,1]^r\setminus D^*_2$ is $\CalSmz$-embeddable in
+$\{0,1\}^{\Bbb N\times r}$, which is homeomorphic, therefore uniformly
+equivalent, to $\{0,1\}^{\Bbb N}$, which is in turn
+$\CalSmz$-equivalent
+to $\ooint{0,1}$;  so  $[0,1]^r\setminus D^*_2$ is
+$\CalSmz$-embeddable in $\ooint{0,1}$.
+
+Now consider $D_2^*$.   This is a countable union of sets which are
+isometric, therefore $\CalSmz$-equivalent, to $[0,1]^{r-1}$ and
+therefore to $\ooint{0,1}$, by the inductive hypothesis.   We can
+therefore express $D_2^*$ as $\bigcup_{n\in\Bbb N}X_n$ where
+$\sequencen{X_n}$ is disjoint and every $X_n$ is $\CalSmz$-embeddable
+in $\ooint{0,1}$ and therefore in $\ooint{n+1,n+2}$.   Assembling these
+with the $\CalSmz$-equivalence between $[0,1]^r\setminus D_2^*$ and
+$\ooint{0,1}$ we have already found, we have a $\CalSmz$-embedding
+from $[0,1]^r$ to $\Bbb R$.   In the other direction, we certainly have an
+isometric embedding of $[0,1]$ in $[0,1]^r$ and therefore a
+$\CalSmz$-embedding of $\Bbb R$ in $[0,1]^r$;  so $\Bbb R$ and
+$[0,1]^r$ are $\CalSmz$-equivalent.   Thus the induction proceeds.
+
+\medskip
+
+\quad{\bf (ii)} As for $\BbbR^r$, we have a homeomorphism between
+$\BbbR^r$ and $\ooint{0,1}^r$, which (because these again are
+$\sigma$-compact) is a $\CalSmz$-equivalence and therefore a
+$\CalSmz$-embedding of $\BbbR^r$ in $[0,1]^r$.   So 534Mb, once more,
+tells us that $\BbbR^r$ and $[0,1]^r$ and $[0,1]$ are
+$\CalSmz$-equivalent.
+
+\medskip
+
+{\bf (d)} So $\BbbR^r$, $[0,1]^r$ and
+$\{0,1\}^{\Bbb N}$ are $\CalSmz$-equivalent, for their usual
+uniformities.
+Now 534Fd tells us that they are also $\CalRbg$-equivalent.
+}%end of proof of 534N
+
+\leader{534O}{Large sets with strong measure
+\dvrocolon{zero}}\cmmnt{
+It is a remarkable fact that it is relatively consistent with ZFC to
+suppose that the only subsets of $\Bbb R$ with strong measure zero are
+the countable sets ({\smc Laver 76}, {\smc Ihoda 88} or
+{\smc Bartoszy\'nski \& Judah 95}, \S8.3).   We therefore find
+ourselves
+investigating constructions of non-trivial sets with strong measure
+zero
+under special axioms.   I start by clearing the ground a little.
+
+\medskip
+
+\noindent}{\bf Proposition} (a) If $(X,\rho)$ is a separable metric
+space and
+$A\subseteq X$ has cardinal less than $\frak c$, there is a Lipschitz
+function $f:X\to\Bbb R$ such that $f\restr A$ is injective.
+
+(b)\cmmnt{ ({\smc Carlson 93})} For any cardinal $\kappa<\frak c$,
+if there is any separable metric space with a set of size $\kappa$ which
+is of strong measure zero, then there is a subset of $\Bbb R$ of size
+$\kappa$ which has strong measure zero.
+
+(c)\dvArevised{2010}(i) If
+$\cf(\frakmctbl)=\frak b$ there is a
+subset of $\Bbb R$ of size $\frakmctbl$ which has strong measure zero.
+
+\quad(ii) If $\frakmctbl=\frak d$ there is a
+subset of $\Bbb R$ of size $\frakmctbl$ which has strong measure zero.
+
+\quad(iii)\cmmnt{ ({\smc Rothberger 41})}
+If $\frak b=\omega_1$ there is a subset of $\Bbb R$ of size
+$\omega_1$ which has strong measure zero.
+
+\proof{{\bf (a)} If $X=\emptyset$ this is trivial.   Otherwise, let
+$\sequencen{x_n}$ run over a dense sequence in $X$, and for $x\in X$
+define $g_x:\Bbb R\to\Bbb R$ by setting
+
+\Centerline{$g_x(t)
+=\sum_{n=0}^{\infty}\Bover{\min(1,\rho(x,x_n))}{n!}t^n$}
+
+\noindent for $t\in\Bbb R$.   Then $g_x$ is a real-entire function
+(5A5A).   If $x$, $y\in X$ are distinct, then there must be some $n$
+such that $\min(1,\rho(x,x_n))\ne\min(1,\rho(y,x_n))$, so that one of
+the coefficients of $g_x-g_y$ is non-zero, and $\{t:g_x(t)=g_y(t)\}$
+is countable (5A5A).   So if $A\subseteq X$ and $\#(A)<\frak c$, we can
+find a $t\ge 0$ such that $g_x(t)\ne g_y(t)$ for all distinct $x$,
+$y\in A$.   Set $f(x)=g_x(t)$ for $x\in X$;  then $f:X\to\Bbb R$ is a
+function such that $f\restr A$ is injective.   If $x$, $y\in X$ then
+
+$$\eqalign{|f(x)-f(y)|
+&=|\sum_{n=0}^{\infty}(\min(1,\rho(x,x_n))-\min(1,\rho(y,y_n))
+  \Bover{t^n}{n!}|\cr
+&\le\exp(t)\sup_{n\in\Bbb N}|\rho(x,x_n)-\rho(y,y_n)|
+\le\exp(t)\rho(x,y),\cr}$$
+
+\noindent so that $f$ is Lipschitz.
+
+\medskip
+
+{\bf (b)} Let $(X,\rho)$ be a separable metric space with a set
+$A\in[X]^{\kappa}$ of strong measure zero.   Then (a) tells us that we
+have a uniformly continuous function $f:X\to\Bbb R$ which is injective
+on $A$, so that $f[A]\in[\Bbb R]^{\kappa}$ has strong measure zero
+(534Db).
+
+\medskip
+
+{\bf (c)(i)} Let
+$\ofamily{\xi}{\frak b}{x_{\xi}}$ be a family
+in $\NN$ which is increasing and
+unbounded for the pre-order $\le^*$ of 522C(i).   Let
+$C\subseteq\frakmctbl$ be a closed cofinal set with cardinal $\frak b$
+(5A1Ad), and
+$\ofamily{\xi}{\frak b}{\zeta_{\xi}}$ the increasing enumeration of $C$;
+let $\ofamily{\eta}{\frakmctbl}{y_{\eta}}$ be a family of distinct elements
+of $\NN$ such that $y_{\eta}\ge x_{\xi}$ whenever $\xi<\frak b$ and
+$\zeta_{\xi}\le\eta<\zeta_{\xi+1}$.
+
+If $K\subseteq\NN$ is compact, then $\{\eta:y_{\eta}\in K\}$ has cardinal
+strictly less than $\frakmctbl$.   \Prf\ Set $x(n)=\sup_{y\in K}y(n)$ for
+each $n\in\Bbb N$ (I pass over the trivial case $K=\emptyset$).   Then
+there is a $\xi<\frak b$ such that $x_{\xi}\not\le^*x$.   If
+$\zeta_{\xi}\le\eta<\frakmctbl$, there is a $\xi'\ge\xi$ such that
+$\zeta_{\xi'}\le\eta<\zeta_{\xi'+1}$ (this is where we need to know that
+$C$ is closed), and now
+
+\Centerline{$y_{\eta}\ge x_{\xi'}\ge^*x_{\xi}$,
+\quad$y_{\eta}\not\le x$,
+\quad$y_{\eta}\notin K$.}
+
+\noindent So $\{\eta:y_{\eta}\in K\}\subseteq\zeta_{\xi}$ has cardinal less
+than $\frakmctbl$.\ \Qed
+
+Let $f:\NN\to[0,1]\setminus\Bbb Q$ be any homeomorphism (4A2Ub), and
+consider $A=\{f(y_{\eta}):\eta<\frakmctbl\}$.   Then $\#(A)=\frakmctbl$.
+Also $A$ has strong measure zero.   \Prf\ Of course $\Bbb Q$, being
+countable, has strong measure zero.   Let $G\subseteq\Bbb R$ be an
+open set including $\Bbb Q$.   Then $[0,1]\setminus G$ and
+$K=f^{-1}[\,[0,1]\setminus G]$ are compact.   Now
+$\#(A\setminus G)=\#(\{\eta:y_{\eta}\in K\})<\frakmctbl$, so
+$A\setminus G$ has Rothberger's property (534Ia) and strong measure zero
+(534Fc).   By
+534Dd, this is enough to show that $A$ has strong measure zero.\ \Qed
+
+Thus we have a set of the required kind.
+
+\medskip
+
+\quad{\bf (ii)} The argument is similar.   This time, let
+$\ofamily{\xi}{\frak d}{x_{\xi}}$ be a cofinal family in $\NN$.   For each
+$\xi<\frak d$, let $y_{\xi}\in\NN$ be such that $y_{\xi}\ge x_{\xi}$ and
+$y_{\xi}\not\le x_{\eta}$ for any $\eta<\xi$.   Again, if
+$K\subseteq\NN$ is compact, then $\{\eta:y_{\eta}\in K\}$ has cardinal
+strictly less than $\frakmctbl$.   \Prf\ Taking $x=\sup K$ as before,
+there is a $\xi<\frak d=\frakmctbl$
+such that $x\le x_{\xi}$;  now for any $\eta>\xi$
+we know that $y_{\eta}\not\le x_{\xi}$ so $y_{\eta}\notin K$.\ \QeD\
+The rest of the proof proceeds as before.   (The set
+$\{y_{\eta}:\eta<\frak d\}$ has cardinal $\frak d$ because it is cofinal
+with $\NN$.)
+
+\medskip
+
+\quad{\bf (iii)} If $\frakmctbl=\omega_1$, this is immediate from (i);
+otherwise it is a consequence of 534Ia and 534Fc, as used in the arguments
+above.
+}%end of proof of 534O
+
+\leader{534P}{}{ Subject to the continuum hypothesis we have many
+ways of building sets with strong measure zero, in addition to that in
+534Oc.   I give one example to
+suggest what can be done with a weak form of Martin's axiom.
+
+\medskip
+
+\noindent}{\bf Example} Suppose that $\frakmctbl=\frak c$.   Then
+there
+is a set $A\subseteq\Bbb R\setminus\Bbb Q$, with Rothberger's property
+in $\Bbb R$, such that
+
+(i) $A+A=\Bbb R$,
+
+(ii) $A\times A\notin\CalRbg(\BbbR^2)$,
+
+(iii) there is a continuous surjection from $A$ onto $\Bbb R$,
+
+(iv) $A\notin\CalRbg(\Bbb R\setminus\Bbb Q)$.
+
+\proof{{\bf (a)} For $x\in\NN$, define $\psi(x)\in\{0,1\}^{\Bbb N}$ by
+setting $\psi(x)(n)=0$ if $x(n)$ is even, $1$ if $x(n)$ is odd.
+Then $\psi:\NN\to\{0,1\}^{\Bbb N}$ is a continuous surjection.   Let
+$\phi:\NN\to[0,1]\setminus\Bbb Q$ be a homeomorphism (4A2Ub again).
+Enumerate $\NN$ as
+$\ofamily{\xi}{\frak c}{x_{\xi}}$ and $\Bbb R$ as
+$\ofamily{\xi}{\frak c}{t_{\xi}}$ and $\Bbb Q$ as $\sequencen{q_n}$.
+For $\xi\le\frak C$, set $K_{\xi}=\{x:x\in\NN$, $x\le x_{\xi}\}$, so that
+$K_{\xi}$ is compact, and $\phi[K_{\eta}]$ is a compact subset of
+$[0,1]\setminus\Bbb Q$, therefore nowhere dense in $\Bbb R$.
+Write $\Cal M$ for the ideal of meager subsets of $\Bbb R$, as in
+\S522.
+
+Choose $\ofamily{\xi}{\frak c}{a_{\xi}}$,
+$\ofamily{\xi}{\frak c}{b_{\xi}}$ and $\ofamily{\xi}{\frak
+c}{c_{\xi}}$
+as follows.   For each $\xi<\frak c$, $\{x_{\eta}:\eta\le\xi\}$ is not
+cofinal with $\NN$, because
+
+\Centerline{$\cf\NN=\frak d\ge\cov\Cal M=\frakmctbl=\frak c$}
+
+\noindent (522I, 522Sa), so we can find a $y_{\xi}\in\NN$ such that
+$y_{\xi}\not\le x_{\eta}$ for any $\eta\le\xi$;   raising $y_{\xi}$ if
+need be, we can arrange that
+$\psi(y_{\xi})=\psi(x_{\xi})$.   Set $a_{\xi}=\phi(y_{\xi})$.   Consider
+
+\Centerline{$\Cal E_{\xi}
+=\{\phi[K_{\eta}]+\Bbb Z:\eta\le\xi\}
+ \cup\{t_{\xi}-\phi[K_{\eta}]+\Bbb Z:\eta\le\xi\}
+ \cup\{\Bbb Q\}\cup\{t_{\xi}-\Bbb Q\}$.}
+
+\noindent This is a family of fewer than $\frak c=\frakmctbl$ meager
+subsets of $\Bbb R$, so does not cover $\Bbb R$ (522Sa once more).
+Take any $b_{\xi}\in\Bbb R\setminus\bigcup\Cal E_{\xi}$;  then neither
+$b_{\xi}$ nor $c_{\xi}=t_{\xi}-b_{\xi}$ belongs to
+$\Bbb Q\cup\bigcup_{\eta\le\xi}(\Bbb Z+\phi[K_{\eta}])$.
+
+\medskip
+
+{\bf (b)} At the end of the process, set
+
+\Centerline{$A_0=\{a_{\xi}:\xi<\frak c\}\cup\{b_{\xi}:\xi<\frak c\}
+\cup\{c_{\xi}:\xi<\frak c\}$,
+\quad$A=A_0+\Bbb Z$.}
+
+\noindent Then $A\cap[0,1]$ has strong measure zero.   \Prf\ Let
+$G\subseteq\Bbb R$ be any open set including $\Bbb Q$.    Then
+$[0,1]\setminus G$ is a compact subset of $[0,1]\setminus\Bbb Q$, and
+$K=\phi^{-1}[\,[0,1]\setminus G]$ is a compact subset of $\NN$.
+There is therefore some $\xi<\frak c$ such that
+$K\subseteq\{x:x\le x_{\xi}\}$
+and $[0,1]\setminus G\subseteq \phi[K_{\xi}]$.   Now if $\eta\ge\xi$,
+neither
+$b_{\eta}$ nor $c_{\eta}$ belongs to $\phi[K_{\xi}]+\Bbb Z$;  and also
+$a_{\eta}\in\ooint{0,1}\setminus \phi[K_{\xi}]$, so $a_{\eta}$ also
+does
+not belong to $\phi[K_{\xi}]+\Bbb Z$.   What this means is that
+
+\Centerline{$A\cap[0,1]\setminus G
+\subseteq(\{a_{\eta}:\eta\le\xi\}\cup\{b_{\eta}:\eta\le\xi\}
+\cup\{c_{\eta}:\eta\le\xi\})+\Bbb Z$}
+
+\noindent has cardinal less than $\frak c=\frakmctbl$.   By 534Ia
+and 534Fc, it has
+strong measure zero.   As $G$ is arbitrary, $A\cap[0,1]$ has strong
+measure zero, by 534Dd.\ \Qed
+
+Because $A+\Bbb Z=A$,
+
+\Centerline{$A=\bigcup_{n\in\Bbb Z}(A\cap[0,1])+n$}
+
+\noindent also has strong measure zero, therefore has Rothberger's
+property (534Fd).
+
+\medskip
+
+{\bf (c)} Let us consider the properties (i)-(iv).   Because no
+$a_{\xi}$, $b_{\xi}$ or $c_{\xi}$ belongs to $\Bbb Q$,
+$A\cap\Bbb Q=\emptyset$.   For every $\xi<\frak c$,
+$t_{\xi}=b_{\xi}+c_{\xi}\in A+A$;  as
+$\ofamily{\xi}{\frak c}{t_{\xi}}$
+is an enumeration of $\Bbb R$, $A+A=\Bbb R$.   Since
+$+:\BbbR^2\to\Bbb R$ is continuous, and $+[A\times A]=A+A$
+does not have Rothberger's property, nor does $A\times A$ (534Fb).
+Thus we have (i) and (ii).
+
+Let $h:\{0,1\}^{\Bbb N}\to[0,1]$ be a continuous surjection, and let
+$f:\Bbb R\setminus\Bbb Q\to\Bbb R$ be the continuous
+function
+defined by setting $f(a)=h\psi\phi^{-1}(a-n)+n$ if
+$a\in\ooint{n,n+1}\setminus\Bbb Q$ where $n\in\Bbb Z$.   For every
+$\xi<\frak c$ such that $x_{\xi}\in\{0,1\}^{\Bbb N}$,
+
+\Centerline{$f(a_{\xi})=h\psi\phi^{-1}(a_{\xi})=h(x_{\xi})$;}
+
+\noindent because
+$\{x_{\xi}:\xi<\frak c\}=\NN\supseteq\{0,1\}^{\Bbb N}$, $f[A]=[0,1]$.
+
+Thus $A$ satisfies (iii).   As for (iv), define a metric $\rho$ on
+$\Bbb R\setminus\Bbb Q$ by setting $\rho(s,t)=|s-t|+|f(s)-f(t)|$ for
+$s$, $t\in\Bbb R\setminus\Bbb Q$.   Because $f$ is continuous, this
+defines the usual topology of $\Bbb R\setminus\Bbb Q$.   But $f$ is
+uniformly continuous for $\rho$ and the usual metric of $\Bbb R$, and
+$f[A]$ does not have strong measure zero, so $A$ cannot have strong
+measure zero for the metric $\rho$ (534Db), and does not have Rothberger's
+property in $\Bbb R\setminus\Bbb Q$ (534Fc).   This completes the proof.
+}%end of proof of 534P
+
+\exercises{\leader{534X}{Basic exercises (a)}%
+%\spheader 534Xa
+(i) Let $(X,\rho)$ be a metric space, $r>0$ and $A\subseteq X$ a set
+with strong measure zero.   Show that $A$ has zero Hausdorff
+$r$-dimensional measure.   (ii) Find a subset of $\BbbR^2$ which is
+universally
+negligible but does not have strong measure zero (for the usual metric
+on $\BbbR^2$).   \Hint{439H.}   (iii)
+Find a subset of $\{0,1\}^{\Bbb N}$ which is universally negligible
+but does not have strong measure zero for the metric of 534Ib.
+%534D
+
+\spheader 534Xb Let $r$, $s\ge 1$ be integers.   Let
+$A\subseteq\BbbR^r$
+be a set with strong measure zero, and $f:A\to\BbbR^s$ a function which
+is differentiable relative to its domain at every point of $A$.   Show
+that $f[A]$ has strong measure zero.  \Hint{262N.}
+%534D
+
+\spheader 534Xc Let $(X,\Cal W)$ be a Hausdorff uniform space with
+strong measure zero.   Show that $X$ is universally negligible iff it
+is a Radon space.
+%534D
+
+\spheader 534Xd Give $\omega_1+1$ its order topology and the
+corresponding uniformity (4A2Jg).   Show that it has strong measure zero
+but is not universally negligible.
+%534D
+
+\spheader 534Xe(i) Show that a topological space which has
+Rothberger's property in itself must be Lindel\"of.
+(ii) Give $X=\omega_1+1$ its order topology.   Show that $\omega_1$
+has Rothberger's property in $\omega_1+1$ but not in itself.
+%534E
+
+\spheader 534Xf Let $X$ be a topological space and $A\subseteq X$.
+Show that $A\in\CalRbg(X)$ iff $A\in\CalRbg(\overline{A})$.
+%534F
+
+\spheader 534Xg Let $X$ be a $\sigma$-compact topological space
+which is either Hausdorff or regular, and $A\subseteq X$.   Show that
+$A\in\CalRbg(X)$ iff for every sequence
+$\sequencen{\Cal G_n}$ of finite open
+covers of $X$, there is a sequence $\sequencen{G_n}$, covering $A$,
+such that $G_n\in\Cal G_n$ for every $n$.
+%534F
+
+\spheader 534Xh Let $X$ be a topological space and $A\in\CalRbg(X)$.
+Suppose that $B\subseteq X$
+is such that $B\setminus G\in\CalRbg(X)$ for every
+open subset $G$ of $X$ including $A$.   Show that $B\in\CalRbg(X)$.
+%534F
+
+\spheader 534Xi Let $X$ be a paracompact Hausdorff space, and $A$ a subset
+of $X$.   Show that the following are equiveridical:  (i)
+$A\in\CalRbg(X)$;  (ii) $f[A]\in\CalRbg(Y)$
+whenever $Y$ is a metrizable space and $f:X\to Y$ is continuous;
+(iii) $f[A]\in\CalSmz(Y,\rho)$ whenever $(Y,\rho)$ is a metric space
+and $f:X\to Y$ is continuous;  (iv) $A\in\CalSmz(X,\Cal W)$ whenever
+$\Cal W$ is a uniformity on $X$ inducing the topology of $X$.
+\Hint{5A4Fb.}
+%534F
+
+\spheader 534Xj(i) Let $X$ be a Hausdorff topological space.   Show
+that if $A\in\CalRbg(X)$ then $A$ is
+universally $\tau$-negligible (definition: 439Xh).   (ii) Let $X$ be a
+Hausdorff uniform space.   Show that if $X$ has strong measure zero
+then it is universally $\tau$-negligible.
+%534F
+
+\spheader 534Xk Let $X$ be a locally compact Hausdorff topological
+group.   Show that a subset of $X$ has Rothberger's property in $X$
+iff it has strong measure zero for the right uniformity of $X$
+iff it has strong measure zero for the bilateral uniformity of $X$.
+%534H
+
+\spheader 534Xl Show that $\non\CalRbg(\NN)=\frakmctbl$.
+%534I  \ge 534Ia, \le 534Ib
+
+\spheader 534Xm Let $(X,\Cal W)$ be a Lindel\"of uniform space.   Show
+that there is some $\kappa$ such that
+$\CalSmz(X,\Cal W)\prT\Cal N^{\kappa}$,
+where $\Cal N$ is the null ideal of Lebesgue measure on $\Bbb R$.
+%534K   idea of "uniform weight" would specify \kappa
+
+\spheader 534Xn Show that every separable metric space $(X,\rho)$ is
+uniformly equivalent to a subspace of $[0,1]^{\Bbb N}$ and is
+therefore $\CalSmz$-embeddable in $[0,1]^{\Bbb N}$.
+%534L
+
+\spheader 534Xo Suppose that $\frak d=\omega_1$.   Show that there is a
+set $A\subseteq\Bbb R\setminus\Bbb Q$ such that $A$ has Rothberger's
+property in $\Bbb R$ but not in $\Bbb R\setminus\Bbb Q$.
+%534O, 534E
+
+\spheader 534Xp Let $A$ be the set constructed in 534P on the assumption
+that $\frakmctbl=\frak c$.   Show that $A\cup\Bbb Q$ has Rothberger's
+property in itself, but $A$ does not have Rothberger's property in
+itself.
+%534P
+
+\leader{534Y}{Further exercises (a)}
+%\spheader 534Ya
+Let $(X,\rho)$ be an analytic metric space and $\mu_{Hr}$ Hausdorff
+$r$-dimensional measure on $X$, where $r>0$;  suppose that
+$\mu_{Hr}X>0$.   Let $\Cal I$ be the
+$\sigma$-ideal of subsets of $X$ generated by
+$\{A:\mu_{Hr}^*A<\infty\}$.   Show that
+
+$$\eqalign{\non\Cal N(\mu_{Hr})
+=\min(\non\Cal N,\non\Cal I)
+&=\non\Cal N\text{ if }\mu_{Hr}\text{ is }\sigma\text{-finite},\cr
+&=\non\Cal I\text{ otherwise}.\cr}$$
+%\noindent\Hint{if $\mu_{Hr}$ is not $\sigma$-finite, then by 471S there
+%is an uncountable disjoint family of Borel sets of non-zero finite
+%measure.}
+%534B mt53bits
+
+\spheader 534Yb (i) Set
+$\Cal I=\{\coint{4^{-m}i,4^{-m}(i+1)}:m\in\Bbb N$, $i\in\Bbb Z\}$.   For
+$A\subseteq\Bbb R$ set
+$\theta(A)=\inf\{\sum_{I\in\Cal I'}\sqrt{\diam I}:
+\Cal I'\subseteq\Cal I$ covers $A\}$.
+Show that if $\mu^{(1)}_{H,1/2}$ is Hausdorff $\bover12$-dimensional
+measure on $\Bbb R$, then $\mu^{(1)}_{H,1/2}(A)=0$ iff $\theta(A)=0$.
+(ii) Set $\Cal J
+=\{\coint{2^{-m}i,2^{-m}(i+1)}\times\coint{2^{-m}j,2^{-m}(j+1)}:
+  m\in\Bbb N$, $i$, $j\in\Bbb Z\}$, and for $A\subseteq\BbbR^2$ set
+$\theta'(A)=\inf\{\sum_{J\in\Cal J'}\diam J:\Cal J'\subseteq\Cal J$
+covers $A\}$.
+Show that if $\mu^{(2)}_{H1}$ is Hausdorff $1$-dimensional measure on
+$\BbbR^2$, then $\mu^{(2)}_{H1}(A)=0$ iff $\theta'(A)=0$.
+(iii) Show that the null ideals $\Cal N(\mu^{(1)}_{H,1/2})$ and
+$\Cal N(\mu^{(2)}_{H1})$ are isomorphic.
+%534B
+
+\spheader 534Yc Show that if {\it either}
+$\non\Cal N=\cf\Cal N$ {\it or} $\non\Cal N<\cov\Cal N$, where $\Cal N$ is
+the null ideal of Lebesgue measure on $\Bbb R$,
+then Hausdorff one-dimensional measure on $\BbbR^2$ does not have the
+measurable envelope property.
+%Problem:  is it consistent to suppose that \mu_{H1} *does* have the
+%measurable envelope property?
+%534B mt53bits
+
+\spheader 534Yd Let $X$ be a Hausdorff space.   Show that a compact
+subset of $X$ has Rothberger's property in $X$ iff it is scattered.
+%534F induce on Cantor-Bendixson rank
+
+\spheader 534Ye Suppose that $\frakmctbl=\frak c$.   Let $X$ be the
+group of all permutations of $\Bbb N$, regarded as the isometry group of
+$\Bbb N$ with its $\{0,1\}$-valued metric, so that $X$ is a Polish group
+(441Xp-441Xq).   Show that there is a subset $A$ of $X$ such that $A$
+has strong measure zero for the right uniformity of $X$ but $A^{-1}$
+does not.
+%534H mt53bits
+
+\spheader 534Yf
+Let $\frak G$ be a collection of families of sets.   Let us say that a
+set $A$ has the
+{\bf $\frak G$-Rothberger property} if for every sequence
+$\sequencen{\Cal G_n}$ in $\frak G$ there is a cover $\sequencen{G_n}$
+of $A$ such that $G_n\in\Cal G_n$ for every $n\in\Bbb N$.   (i) Show
+that the family $\Cal I$ of sets with the $\frak G$-Rothberger
+property
+is a $\sigma$-ideal of sets containing every countable subset of
+$\bigcap_{\Cal G\in\frak G}\bigcup\Cal G$.
+(ii) Show that if $\frak H$ is another collection of families of sets,
+and $f$ is a function such that for every $\Cal H\in\frak H$ there is
+a member of $\frak G$ refining $\{f^{-1}[H]:H\in\Cal H\}$, then $f[A]$
+has the $\frak H$-Rothberger property whenever $A\in\Cal I$.   (iii)
+Suppose that $\frak G$ is a collection of families of open subsets of a
+topological space  $X$, that $A\in\Cal I$ has the
+$\frak G$-Rothberger property, and that $B\subseteq X$ is such that
+$B\setminus G\in\Cal I$ for every open set $G\supseteq A$.   Show that
+$B\in\Cal I$.   (iv) Suppose that $X=\bigcup\Cal G$ for every
+$\Cal G\in\frak G$, and that every member of $\frak G$ is countable.
+Show that $\non(\Cal I,X)\ge\frakmctbl$.
+%534K
+
+\spheader 534Yg Let $X$ be a Lindel\"of topological space.   Show that
+$\add\CalRbg(X)\ge\add\Cal N$, where
+$\Cal N$ is the null ideal of Lebesgue measure on $\Bbb R$.
+%534K
+
+\leaveitout{
+\spheader 534Y? Let $(X,\Cal W)$ be a uniform space.
+Consider the following infinite game for two players, `Cover' and
+`Noncover'.   (Compare 451V.)
+Noncover chooses $W_0\in\Cal W$;  Cover chooses
+$A_0$ such that $A_0\times A_0\subseteq W_0$;
+Noncover chooses $W_1\in\Cal W$;  Cover chooses
+$A_1$ such that $A_1\times A_1\subseteq W_1$;  and so on.   At the end of
+the game, Cover wins iff $X\subseteq\bigcup_{n\in\Bbb N}A_n$.   $X$ is {\bf
+strategically of strong measure zero} if Cover has a winning strategy in
+this game.   (i) Show that $\omega_1+1$, with its usual uniformity, is
+strategically of strong measure zero.   (ii) Show that a metric space is
+strategically of strong measure zero iff it is countable.
+}%end of leaveitout
+}%end of exercises
+
+\leader{534Z}{Problems (a)}
+%\spheader 534Za
+Let $\mu^{(2)}_{H1}$ be one-dimensional
+Hausdorff measure on $\BbbR^2$.
+Is the covering number $\cov\Cal N(\mu^{(2)}_{H1})$ necessarily equal
+to $\cov\Cal N$?
+\cmmnt{As observed in 534Bc-534Bd, we have
+$\cov\Cal N\le\cov\Cal N(\mu^{(2)}_{H1})\le\non\Cal M$.
+We can ask the same question for $r$-dimensional Hausdorff
+measure on $\BbbR^n$ whenever $0<r<n$;
+in particular, for $r$-dimensional Hausdorff measure on $[0,1]$, where
+$0<r<1$, and these questions are strongly connected (534Yb).
+{\smc Shelah \& Stepr\=ans 05} show that
+$\non\Cal N(\mu^{(2)}_{H1})$ can be less than $\non\Cal N$;
+of course this is possible only because $\mu^{(2)}_{H1}$ is not
+semi-finite (439H, 521Xg).
+}%end of comment
+
+\spheader 534Zb Can $\cf\CalRbg(\Bbb R)$ be $\omega_1$?
+
+\spheader 534Zc How many types of Polish spaces under
+$\CalSmz$-equivalence can there be?   If we give $\NN$ the metric of
+534Ib, can it fail to be $\CalSmz$-equivalent to $[0,1]^{\Bbb N}$?
+
+\spheader 534Zd Suppose that there is a separable metric space
+of size $\frak c$ with strong measure zero.   Must
+there be a subset of $\Bbb R$ of size $\frak c$ with
+strong measure zero in $\Bbb R$?
+
+\endnotes{
+\Notesheader{534}
+I have very little to say about Hausdorff measures, and 534B is here
+only because it would seem even lonelier in a section by itself.   All I
+have tried to do is to run through the obvious questions connecting \S471
+with Chapter 52.   But at the next level there is surely much more to be
+done (534Za).
+
+`Strong measure zero' has attracted a great deal of attention, starting
+with the work of E.Borel, who suggested that every subset of
+$\Bbb R$ with strong measure zero must be countable;  this is the
+{\bf Borel conjecture}.   It turns out that this is undecidable in
+ZFC, and that if the Borel conjecture is true then there are no uncountable
+sets of strong measure zero in any separable metric space (534O).
+So we have some questions of a new kind:  in the ideals
+$\CalSmz(X,\Cal W)$ of sets
+of strong measure zero, in addition to the standard cardinals $\add$,
+$\non$, $\cov$ and $\cf$, we find ourselves asking for the possible
+cardinals of sets belonging to the ideal.
+
+The next point is that strong measure zero is not (or rather, not
+always) either a topological property or a metric property;  it is a
+property of uniform spaces.   We must therefore be prepared to examine
+uniformities, even if we are happy to stay with metrizable ones.   In
+534P(iv), using an axiom which is a consequence of the continuum
+hypothesis, I show that we can have a set which has strong measure
+zero for one of two equivalent metrics and not for the other.
+{\smc Goldstern Judah \& Shelah 93} describe a model in which the
+ideal $\CalRbg(\Bbb R)$ has
+$\add\CalRbg(\Bbb R)=\non\CalRbg(\Bbb R)=\omega_2$ while
+$\frakmctbl=\omega_1$.   So in this
+case 534Ib tells us that $\NN$, with the metric described there, is
+not even $\CalSmz$-embeddable in
+$\Bbb R$.   Of course in models of set theory in which the Borel
+conjecture is true we do have topologically determined structures, for
+trivial reasons.
+
+Note that for any uncountable complete separable metric space $X$, there
+is a subset of $X$ homeomorphic to $\{0,1\}^{\Bbb N}$ (423J), and the
+homeomorphism must be a uniform equivalence;  so that $\{0,1\}^{\Bbb N}$
+and its companions $[0,1]^r$, $\BbbR^r$ must be $\CalSmz$-embeddable
+in $X$.   In this sense they are the `simplest' uncountable complete
+metric spaces.   In the same sense,
+$[0,1]^{\Bbb N}$ is the most complex (534Xn).
+
+For $\sigma$-compact spaces, strong measure zero becomes a topological
+property (534Fd, 534G), corresponding to what I call
+`Rothberger's property'
+(534E).   {\smc Rothberger 38b} investigated subsets of $\Bbb R$
+which have Rothberger's property in themselves, under the name `property
+C$'$'.   The ideas of 534D and 534J-534K can all be re-presented as
+theorems about Rothberger's property (534F,
+534Xh, 534Xl, 534Yg);  the machinery of 534Yf is supposed to
+suggest a reason for this.   It is natural to be attracted to a
+topological concept, but there is a difficulty in that Rothberger's
+property is not hereditary in the usual way (534Xe, 534Xo, 534Xp).
+I note that while 534N is stated in terms of
+$\CalRbg$-equivalence, isomorphism of the ideals of sets with the
+appropriate Rothberger's property, the concept of strong measure zero
+seems to be necessary in the Schr\"oder-Bernstein arguments based on 534M.
+
+For a fuller discussion of strong measure zero in $\Bbb R$, see
+{\smc Bartoszy\'nski \& Judah 95}, chap.\ 8, from which much of the
+material of this section is taken.
+}%end of notes
+
+\discrpage
+
+\leaveitout{
+What about \shr(\CalSmz)?
+}

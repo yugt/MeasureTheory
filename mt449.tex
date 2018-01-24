@@ -1,0 +1,2736 @@
+\frfilename{mt449.tex}
+\versiondate{13.6.13}
+\copyrightdate{2003}
+
+\def\chaptername{Topological groups}
+\def\sectionname{Amenable groups}
+
+\def\length{\mathop{\text{length}}\nolimits}
+\def\BbbZ{\mathchoice{\hbox{$\Bbb Z$\hskip0.02em}}
+  {\hbox{$\Bbb Z$\hskip0.02em}}
+  {\hbox{$\scriptstyle\Bbb Z$\hskip0.04em}}
+  {\hbox{$\scriptscriptstyle\Bbb Z$\hskip0.04em}}}
+\def\trs{^{\top}}
+
+\newsection{449}
+
+I end this chapter with a brief introduction to `amenable' topological
+groups.   I start with the
+definition (449A) and straightforward results assuring us that there
+are many amenable groups (449C).   At a slightly deeper level we have a
+condition for a group to be amenable in terms of a universal object
+constructible from the group, not invoking `all compact Hausdorff
+spaces' (449E).   I give some notes on amenable locally compact
+groups, concentrating on a long list of properties equivalent to
+amenability (449J), and a version of Tarski's theorem characterizing
+amenable discrete groups (449M).   I end with Banach's theorem on extending
+Lebesgue measure in one and two dimensions.
+
+\leader{449A}{Definition} A topological group $G$ is {\bf amenable} if
+whenever $X$ is a non-empty compact Hausdorff space and $\action$ is a
+continuous action of $G$ on $X$, then there is a $G$-invariant
+Radon probability measure on $X$.
+
+\cmmnt{
+\medskip
+
+\noindent{\bf Warning}:  other definitions have been used, commonly
+based on conditions equivalent to amenability for locally compact
+Hausdorff groups, such as those listed in 449J(ii)-449J(xiv).   In
+addition, many authors use the phrase `amenable group' to
+mean a group which is amenable in its discrete topology.   The danger
+of this to the non-specialist is that many theorems concerning amenable
+discrete groups do not generalize in the ways one might expect.}
+
+\leader{449B}{Lemma} Let $G$ be a topological group, $X$ a locally
+compact Hausdorff space, and $\action$ a continuous action of $G$ on
+$X$.
+
+(a) Writing $C_0$ for the Banach space of continuous real-valued
+functions on $X$ vanishing at $\infty$\cmmnt{ (436I)}, the map
+$a\mapsto a^{-1}\action f:C_0\to C_0$\cmmnt{ (definition:  4A5Cc)}
+is uniformly continuous for the right uniformity on $G$ and the norm
+uniformity of $C_0$, for any $f\in C_0$.
+
+(b) If $\mu$ is a $G$-invariant Radon measure on $X$ and
+$1\le p<\infty$, then
+$a\mapsto a^{-1}\action u:G\to L^p$\cmmnt{ (definition: 441Kc)} is
+uniformly
+continuous for the right uniformity on $G$ and the norm uniformity of
+$L^p=L^p(\mu)$, for any $u\in L^p$.
+
+\proof{{\bf (a)(i)} Note first that if $a\in G$ and $f\in C_0$, then
+$x\mapsto a\action x:X\to X$ is a homeomorphism (4A5Bd), so
+$x\mapsto f(a\action x)$ belongs to $C_0$;  but this is just the
+function $a^{-1}\action f$.
+
+\medskip
+
+\quad{\bf (ii)} For any $\epsilon>0$ and $f\in C_0$ there is a
+neighbourhood $V$ of the identity $e$ of $G$ such that
+$\|f-a^{-1}\action_lf\|_{\infty}\le\epsilon$ for every $a\in V$.
+\Prf\Quer\
+Suppose, if possible, otherwise.   For each symmetric neighbourhood
+$V$ of $e$ set
+
+\Centerline{$Q_V
+=\{(a,x):a\in V,\,x\in X,\,|f(x)|\ge\Bover{\epsilon}2,\,
+ |f(x)-f(a\action x)|\ge\epsilon\}$.}
+
+\noindent We are supposing that there are $a\in V$ and $x\in X$ such
+that $|f(x)-f(a\action x)|\ge\epsilon$.   If
+$|f(x)|\ge\bover12\epsilon$
+then $(a,x)\in Q_V$.   Otherwise, $|f(a\action
+x)|\ge\bover12\epsilon$,
+$a^{-1}\in V$ and $|f(a\action x)-f(a^{-1}a\action x)|\ge\epsilon$, so
+$(a^{-1},a\action x)\in Q_V$.   Thus $Q_V$ is never empty.
+Since $Q_V\subseteq Q_{V'}$
+whenever $V\subseteq V'$, there is an ultrafilter $\Cal F$ on
+$G\times X$ such that $Q_V\in\Cal F$ for every neighbourhood $V$ of
+$e$.
+Setting $\pi_1(a,x)=a$ and $\pi_2(a,x)=x$ for $(a,x)\in G\times X$, we
+see that the image filter $\pi_1[[\Cal F]]$ contains every
+neighbourhood
+of $e$, so converges to $e$, while $\pi_2[[\Cal F]]$ contains the
+compact set $\{x:|f(x)|\ge\bover12\epsilon\}$, so must have a limit
+$x_0$ in $X$.   So $\Cal F\to(e,x_0)$ in
+$G\times X$.   Next, because the action is continuous,
+$\action[[\Cal F]]\to e\action x_0=x_0$, and there must be an
+$F\in\Cal F$ such that
+$|f(x_0)-f(a\action x)|\le\bover13\epsilon$ for
+every $(a,x)\in F$.   Also, of course, there is an $F'\in\Cal F$ such
+that $|f(x_0)-f(x)|\le\bover13\epsilon$ whenever $(a,x)\in F'$.   But
+now there is an $(a,x)\in Q_G\cap F\cap F'$, and we have
+
+\Centerline{$|f(x)-f(a\action x)|\ge\epsilon$,
+\quad$|f(x_0)-f(a\action x)|\le\bover13\epsilon$,
+\quad$|f(x_0)-f(x)|\le\bover13\epsilon$}
+
+\noindent simultaneously, which is impossible.\ \Bang\Qed
+
+Now we find that if $a$, $b\in G$, $ab^{-1}\in V$ and $x\in X$, then
+
+\Centerline{$|(a^{-1}\action f)(x)-(b^{-1}\action f)(x)|
+=|f(a\action x)-f(b\action x)|
+=|f(ab^{-1}\action(b\action x))-f(b\action x)|
+\le\epsilon$.}
+
+\noindent As $x$ is arbitrary,
+$\|a^{-1}\action f-b^{-1}\action f\|_{\infty}\le\epsilon$;  as
+$\epsilon$ is arbitrary, $a\mapsto a^{-1}\action f$ is uniformly
+continuous for the right uniformity.
+
+\medskip
+
+{\bf (b)(i)} Suppose that $f:X\to\Bbb R$ is continuous and has compact
+support $K=\overline{\{x:f(x)\ne 0\}}$.
+Let $H\supseteq K$ be an open set of finite measure.
+Then $V_0=\{a:a\in G,\,a\action x\in H$ for every $x\in K\}$ is a
+neighbourhood of $e$.   \Prf\ If we take a continuous function $f_0$
+with compact support such that $\chi K\le f_0\le\chi H$
+(4A2G(e-i)), then
+$V_0\supseteq\{a:\|f_0-a^{-1}\action f_0\|_{\infty}<1\}$, which
+is a neighbourhood of $e$ by (a).\ \QeD\  Let $\epsilon>0$.   By (a)
+again, there is a symmetric neighbourhood $V_1$ of $e$ such that
+$(\|f-a^{-1}\action f\|_{\infty})^p\mu H\le\epsilon^p$ for every
+$a\in V_1$;  we
+may suppose that $V_1\subseteq V_0$.   If $a\in V_1$,
+$f(x)=f(a\action x)=0$ for every $x\in X\setminus H$, so that
+
+\Centerline{$\|f-a^{-1}\action f\|_p^p
+=\biggerint_H|f-a^{-1}\action f|^pd\mu
+\le(\|f-a^{-1}\action f\|_{\infty})^p\mu H\le\epsilon^p$.}
+
+Now suppose that $a$, $b\in G$ and that $ab^{-1}\in V_1$.   Then
+
+$$\eqalignno{\|a^{-1}\action f-b^{-1}\action f\|_p^p
+&=\int|f(a\action x)-f(b\action x)|^p\mu(dx)\cr
+&=\int|f(a\action(b^{-1}\action x))
+  -f(b\action(b^{-1}\action x))|^p\mu(dx)\cr
+\displaycause{because $\mu$ is $G$-invariant, see 441L}
+&=\int|ba^{-1}\action f-f)|^pd\mu
+\le\epsilon^p,\cr}$$
+
+\noindent and $\|a^{-1}\action f-b^{-1}\action f\|_p\le\epsilon$.   As
+$\epsilon$ is
+arbitrary, $a\mapsto(a^{-1}\action f)^{\ssbullet}$ is uniformly
+continuous for the right uniformity.
+
+\medskip
+
+\quad{\bf (ii)} In general, given $u\in L^p(\mu)$ and $\epsilon>0$,
+there is an $f\in C_k(X)$ such that
+$\|u-f^{\ssbullet}\|_p\le\epsilon$
+(416I).   Let $V$ be a neighbourhood of $e$ such that
+$\|a^{-1}\action f-a^{-1}\action f\|_{\infty}\le\epsilon$ whenever
+$ab^{-1}\in V$;  then
+$\|a^{-1}\action u-(a^{-1}\action f)^{\ssbullet}\|_p
+=\|u-f^{\ssbullet}\|_p$ (because $\mu$ is $G$-invariant), so
+
+\Centerline{$\|a^{-1}\action u-b^{-1}\action u\|_p
+\le\|a^{-1}\action u-a^{-1}\action f^{\ssbullet}\|_p
++\|a^{-1}\action f-b^{-1}\action f\|_p
++\|b^{-1}\action f^{\ssbullet}-b^{-1}\action u\|_p
+\le 3\epsilon$}
+
+\noindent whenever $ab^{-1}\in V$ (using 441Kc).   As $\epsilon$ is
+arbitrary,
+$a\mapsto a^{-1}\action u$ is uniformly continuous for the right
+uniformity.   This completes the proof.
+}%end of proof of 449B
+
+\leader{449C}{Theorem} (a) Let $G$ and $H$ be topological groups such
+that there is a continuous surjective homomorphism from $G$ onto $H$.
+If $G$ is amenable, so is $H$.
+
+(b) Let $G$ be a topological group and suppose that there is a dense
+subset $A$ of $G$ such that every finite subset of $A$ is included in
+an amenable subgroup of $G$.    Then $G$ is amenable.
+
+(c) Let $G$ be a topological group and $H$ a normal subgroup of $G$.
+If $H$ and $G/H$ are both amenable, so is $G$.
+
+(d) Let $G$ be a topological group with two amenable subgroups $H_0$
+and
+$H_1$ such that $H_0$ is normal and $H_0H_1=G$.   Then $G$ is
+amenable.
+
+(e) The product of any family of amenable topological groups is
+amenable.
+
+(f) Any abelian topological group is amenable.
+
+(g) Any compact Hausdorff topological group is amenable.
+
+\proof{{\bf (a)} Let $\phi:G\to H$ be a continuous surjective
+homomorphism.   Let $X$ be a non-empty compact Hausdorff space and
+$\action:H\times X\to X$ a continuous action.   For $a\in G$ and
+$x\in X$, set $a\action_1x=\phi(a)\action x$.   Then $\action_1$ is a
+continuous action of $G$ on $X$, so there is a $G$-invariant Radon
+probability measure $\mu$ on $X$.   Because $\phi[G]=H$, $\mu$ is also
+$H$-invariant;  as $X$ and $\action$ are arbitrary, $H$ is amenable.
+
+\medskip
+
+{\bf (b)(i)} Let $X$ be a non-empty compact Hausdorff space and
+$\action$ a continuous action of $G$ on $X$.   Let $P=P_{\text{R}}(X)$
+be the set of
+Radon probability measures on $X$ with the narrow topology (437Jd),
+so that $P$
+is a compact Hausdorff space (437R(f-ii));  recall that in this context the
+vague and narrow topologies coincide (437Kc).   For $a\in G$ and
+$x\in X$, set
+$T_a(x)=a\action x$, so that $T_a:X\to X$ is a homeomorphism.
+For $a\in G$ and $\mu\in P$ write  $a\action\mu$ for the image measure
+$\mu T_a^{-1}$, so that $a\action\mu\in P$ (418I);  it is easy to
+check that $(a,\mu)\mapsto a\action\mu:G\times P\to P$ is an action.
+The point is that it is continuous.   \Prf\ Let $f\in C(X)$, $a_0\in
+G$,
+$\mu_0\in P$ and $\epsilon>0$.   By 449Ba, there is a neighbourhood
+$V$
+of $a_0$ in $G$ such that
+$\|a^{-1}\action f-a_0^{-1}\action f\|_{\infty}\le\bover12\epsilon$
+for
+every $a\in V$.   Next, there is a neighbourhood $W$ of $\mu_0$ in $P$
+such that
+$|\int a_0^{-1}\action fd\mu-\int a_0^{-1}\action fd\mu_0|
+\le\bover12\epsilon$
+for every $\mu\in W$.   But now, if $a\in V$ and $\mu\in W$,
+
+$$\eqalignno{|\int fd(a\action\mu)-\int fd(a_0\action\mu_0)|
+&=|\int fT_ad\mu-\int fT_{a_0}d\mu_0|\cr
+\displaycause{235J}
+&=|\int a^{-1}\action fd\mu-\int a_0^{-1}\action fd\mu_0|\cr
+&\le|\int a^{-1}\action fd\mu-\int a_0^{-1}\action fd\mu|
+  +|\int a_0^{-1}\action fd\mu-\int a_0^{-1}\action fd\mu_0|\cr
+&\le\|a^{-1}\action f-a_0^{-1}\action f\|_{\infty}+\Bover12\epsilon
+\le\epsilon.\cr}$$
+
+\noindent As $\epsilon$, $a_0$ and $\mu_0$ are arbitrary,
+$(a,\mu)\mapsto\int fd(a\action\mu)$ is continuous;  as $f$ is
+arbitrary, $\action$ is continuous.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Because the topology of $P$ is Hausdorff, it follows
+that $Q_a=\{\mu:\mu\in P,\,a\action\mu=\mu\}$ is closed in $P$ for any
+$a\in G$, and that  $G_{\mu}=\{a:a\in G,\,a\action\mu=\mu\}$ is closed
+in $G$ for any $\mu\in P$.
+Now for any finite subset $I$ of $A$ there is an amenable subgroup
+$H_I$ of $G$ including $I$.   The restriction of the action to
+$H_I\times X$ is a continuous action of $H_I$ on $X$, so has an
+$H_I$-invariant Radon
+probability measure, and
+$\bigcap_{a\in I}Q_a\supseteq\bigcap_{a\in H_I}Q_a$ is non-empty.
+Because $P$ is compact, there is a $\mu\in\bigcap_{a\in A}Q_a$.
+Since $G_{\mu}$ includes the dense set $A$, it is the whole
+of $G$, and $\mu$ is $G$-invariant.   As $X$ and $\action$ are
+arbitrary, $G$ is amenable.
+
+\medskip
+
+{\bf (c)} Let $X$ be a compact Hausdorff space and
+$\action$ a continuous action of $G$ on $X$.   Let $P$ be the space of
+Radon probability measures on $X$ with its narrow topology.   Define
+$a\action\mu$, for $a\in G$ and $\mu\in P$, as in (b-i) above, so that
+this is a continuous action of $G$ on $P$.   Set
+$Q=\{\mu:\mu\in P,\,a\action\mu=\mu$ for every $a\in H\}$;  then $Q$
+is a closed subset of $P$ and, because $H$ is amenable, is non-empty,
+since it is the set of $H$-invariant Radon probability measures on
+$X$.   Next, $b\action\mu\in Q$ for every $\mu\in Q$ and $b\in G$.
+\Prf\ If $a\in H$, then
+
+\Centerline{$a\action(b\action\mu)=(ab)\action\mu
+=(bb^{-1}ab)\action\mu=b\action((b^{-1}ab)\action\mu)=b\action\mu$,}
+
+\noindent because $H$ is normal, so $b^{-1}ab\in H$.  As $a$ is
+arbitrary, $b\action\mu\in Q$.\ \QeD\    Accordingly we have a
+continuous action of $G$ on the compact Hausdorff space $Q$.
+
+If $a\in H$ and $b\in G$, then $b\action\mu=(ba)\action\mu$ for every
+$\mu\in Q$.   We therefore have a map $\varaction:G/H\times Q\to Q$
+defined
+by setting $b^{\ssbullet}\varaction\mu=b\action\mu$ whenever $b\in G$
+and $\mu\in Q$.   It is easy to check that this is an action.
+Moreover, it is continuous, because if
+$W\subseteq Q$ is relatively open then $\{(b,\mu):b\action\mu\in W\}$
+is open in $G\times Q$, so its image
+$\{(b^{\ssbullet},\mu):b^{\ssbullet}\varaction\mu\in W\}$ is open in
+$(G/H)\times Q$ (using 4A2B(f-iv)).
+Because $G/H$ is amenable, there is a
+$(G/H)$-invariant Radon probability measure $\lambda$ on $Q$.
+
+Now consider the formula
+$p(f)=\int_Q(\int_X f(x)\mu(dx))\lambda(d\mu)$.   If $f\in C(X)$, then
+$\mu\mapsto\int_Xf(x)\mu(dx)$ is continuous for the vague topology on
+$Q$, so $p(f)$ is well-defined.   Clearly $p$ is a linear functional,
+$p(f)\ge 0$ if $f\ge 0$, and $p(\chi X)=1$;  so there is a Radon
+probability measure $\nu$ on $X$ such that $p(f)=\int fd\nu$ for every
+$f\in C(X)$ (436J/436K).   If $b\in G$, then, in the language of (b) above,
+
+$$\eqalignno{\int fd(b\action\nu)
+&=\int fT_bd\nu
+=p(fT_b)
+=\int_Q\bigl(\int_X fT_bd\mu\bigr)\lambda(d\mu)\cr
+&=\int_Q\int_X fd(b\action\mu)\lambda(d\mu)
+=\int_Q\int_X fd(b^{\ssbullet}\varaction\mu)\lambda(d\mu)
+=\int_Q\int_X fd\mu\,\lambda(d\mu)\cr
+\displaycause{because $\lambda$ is $G/H$-invariant}
+&=\int fd\nu\cr}$$
+
+\noindent for every $f\in C(X)$, so that $b\action\nu=\nu$.   Thus
+$\nu$
+is $G$-invariant.   As $X$ and $\action$ are arbitrary, $G$ is
+amenable.
+
+\medskip
+
+{\bf (d)} The canonical map from $H_1$ to $G/H_0$ is a continuous
+surjective homomorphism.   By (a), $G/H_0$ is amenable;  by (c), $G$
+is
+amenable.
+
+\medskip
+
+{\bf (e)} By (c) or (d), the product of two amenable topological
+groups
+is amenable, since each can be regarded as a normal subgroup of the
+product.   It follows that the product of finitely
+many amenable topological groups is amenable.   Now let
+$\familyiI{G_i}$
+be any family of amenable topological groups with product $G$.   For
+finite $J\subseteq I$ let $H_J$ be the set of those $a\in G$ such that
+$a(i)$ is the identity in $G_i$ for every $i\in I\setminus J$.   Then
+$H_J$ is isomorphic (as topological group) to $\prod_{i\in J}G_i$, so
+is
+amenable.   Since $\{H_J:J\in[I]^{<\omega}\}$ is an upwards-directed
+family of subgroups of $G$ with dense union, (b) tells us that $G$ is
+amenable.
+
+\medskip
+
+{\bf (f)(i)} The first step is to observe that the group $\Bbb Z$,
+with
+its discrete topology, is amenable.   \Prf\ Let $X$ be a compact
+Hausdorff space and $\action$ a continuous action of $\Bbb Z$ on $X$.
+Set $\phi(x)=1\action x$ for $x\in X$.   Then $\phi:X\to X$ is
+continuous, so by
+437T there is a Radon probability measure $\mu$ on $X$ such that
+$\mu$ is equal to the image measure $\mu\phi^{-1}$.   Because $\phi$
+is
+bijective, we see that, for $E\subseteq X$,
+$E\in\dom\mu$ iff $\phi[E]\in\dom(\mu\phi^{-1})=\dom\mu$, and in this
+case $\mu\phi[E]=\mu E$;  that is, $\phi^{-1}$, like $\phi$, is \imp.
+Now we can induce on $n$ to see
+that $\mu(\phi^n)^{-1}$ and $\mu(\phi^{-n})^{-1}$ are equal to $\mu$
+for
+every $n$.   Since $n\action x=\phi^n(x)$ for every $x\in X$ and
+$n\in\Bbb Z$, $\mu$ is $\Bbb Z$-invariant.
+As $X$ and $\action$ are arbitrary, $\Bbb Z$ is amenable.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Now let $G$ be any abelian topological group.   For
+each
+finite set $I\subseteq G$ let $\phi_I:\BbbZ^I\to G$ be the continuous
+homomorphism defined by setting $\phi_I(z)=\prod_{a\in I}a^{z(a)}$ for
+$z\in\BbbZ^I$.   By (i) just above and (e), we know that $\BbbZ^I$
+(with
+its discrete topology) is amenable, so (a) tells us that the subgroup
+$G_I=\phi_I[\BbbZ^I]$ is amenable.   But now
+$\{G_I:I\in[G]^{<\omega}\}$
+is an upwards-directed family of amenable subgroups of $G$ with union
+$G$, so from (b) we see that $G$ is amenable.
+
+\medskip
+
+{\bf (g)} This is immediate from 443Ub.   (See also 449Xe.)
+}%end of proof of 449C
+
+\leader{449D}{Theorem} Let $G$ be a topological group.
+
+(a) Write $U$ for the set of bounded real-valued functions on
+$G$ which are uniformly continuous for the right uniformity of $G$.
+Then $U$ is an $M$-space, and we have an action $\action_l$ of $G$ on
+$U$ defined by
+the formula $(a\action_lf)(y)=f(a^{-1}y)$ for $a$, $y\in G$ and
+$f\in U$.
+
+(b) Let $Z\subseteq\BbbR^U$ be the set of Riesz homomorphisms
+$z:U\to\Bbb R$ such that $z(\chi G)=1$.   Then $Z$ is a compact
+Hausdorff space, and we have a continuous action of $G$ on $Z$ defined
+by the formula $(a\action z)(f)=z(a^{-1}\action_lf)$ for
+$a\in G$, $z\in Z$ and $f\in U$.
+
+(c) Setting $\hat a(f)=f(a)$ for $a\in G$ and $f\in U$, the map
+$a\mapsto\hat a:G\to Z$ is a continuous function from $G$ onto a dense
+subset of $Z$.   If $a$, $b\in G$ then
+$a\action\hat b=\widehat{ab}$.
+
+(d) Now suppose that $X$ is a compact Hausdorff space,
+$(a,x)\mapsto a\action x$ is a continuous action of $G$ on $X$, and
+$x_0\in X$.    Then there is a unique
+continuous function $\phi:Z\to X$ such
+that $\phi(\hat e)=x_0$ and $\phi(a\action z)=a\action\phi(z)$ for
+every $a\in G$ and $z\in Z$.
+
+(e) If $G$ is Hausdorff then the action of $G$ on $Z$ is faithful and
+the map $a\mapsto\hat a$ is a homeomorphism between $G$ and its image
+in
+$Z$.
+
+\proof{{\bf (a)} Because $U$ is a norm-closed Riesz
+subspace of $C_b(G)$ containing the constant functions (4A2Jh), it is
+an $M$-space.   To see that the given
+formula defines an action, we need to check that $a\action_lf$
+belongs to $U$ whenever $a\in G$ and $f\in U$.   Of course
+$a\action_lf$
+is continuous and $\|a\action_lf\|_{\infty}=\|f\|_{\infty}$ is finite.
+If $\epsilon>0$ there is a neighbourhood $V$ of the identity $e$ in
+$G$
+such that
+$|f(b)-f(c)|\le\epsilon$ whenever $b$, $c\in G$ and
+$bc^{-1}\in V$;  now $a^{-1}Va$ is a neighbourhood of $e$, and if
+$bc^{-1}\in aVa^{-1}$ then $(a^{-1}b)(a^{-1}c)^{-1}\in V$, so
+$|(a\action_lf)(b)-(a\action_lf)(c)|
+=|f(a^{-1}b)-f(a^{-1}c)|\le\epsilon$.   As $\epsilon$ is arbitrary,
+$a\action_lf$ is uniformly continuous with respect to the right
+uniformity.   Now $\action_l$ is an action, just as in 4A5Cc.
+
+\medskip
+
+{\bf (b)(i)} Because $U$ is an $M$-space with standard order unit
+$\chi G$, $Z$ is a compact Hausdorff space and $U$ can be identified,
+as normed Riesz space, with $C(Z)$ (354L).
+For any $a\in G$, the map $f\mapsto a\action_lf:U\to U$ is a Riesz
+homomorphism leaving the constant functions fixed.   So we can define
+$a\action z$, for $z\in Z$, by saying that
+$(a\action z)(f)=z(a^{-1}\action_lf)$ for any $f\in U$, and
+$a\action z$
+will belong to $Z$ for any $a\in G$ and $z\in Z$.   As usual, it is
+easy to check that this formula defines an action of $G$ on $Z$.
+
+\medskip
+
+\quad{\bf (ii)} $(a,z)\mapsto a\action z$ is continuous.   \Prf\ Take
+$a_0\in G$, $z_0\in Z$ and any neighbourhood $W$ of $a_0\action z_0$
+in $Z$.   Because $U$ corresponds to the whole of $C(Z)$, and $Z$ is
+completely regular, there is an $f\in U^+$ such that
+$(a_0\action z_0)(f)=1$ and $z(f)=0$ for every $z\in Z\setminus W$.
+Set $W_0=\{z:z(a_0^{-1}\action_lf)>\bover12\}$.
+Observe that $z_0(a_0^{-1}\action_lf)=1$, so
+$W_0$ is an open subset of $Z$ containing $z_0$.   Next, set
+$V_0=\{a:a\in G,\,\|a^{-1}\action_lf-a_0^{-1}\action_lf\|_{\infty}
+\le\bover12\}$.
+There is a neighbourhood $V$ of $e$ such that
+$|f(b)-f(c)|\le\bover12$ whenever $b$, $c\in G$ and
+$bc^{-1}\in V$.   If $a\in Va_0$ then
+$ab(a_0b)^{-1}=aa_0^{-1}\in V$ so
+
+\Centerline{$|(a^{-1}\action_lf)(b)-(a_0^{-1}\action_lf)(b)|
+=|f(ab)-f(a_0b)|\le\Bover12$}
+
+\noindent for every $b\in G$, and $a\in V_0$.   Thus $V_0\supseteq Va_0$
+is a neighbourhood of $a_0$.
+
+Now if $a\in V_0$ and $z\in W_0$ we shall have
+
+\Centerline{$(a\action z)(f)=z(a^{-1}\action_lf)
+\ge z(a_0^{-1}\action_lf)-\Bover12>0$}
+
+\noindent and $a\action z\in W$.
+As $a_0$, $z_0$ and $W$ are arbitrary, the action of $G$ on $Z$ is
+continuous.\ \Qed
+
+\medskip
+
+{\bf (c)} Of course $\hat a$, as defined, is a Riesz homomorphism
+taking
+the correct value at $\chi G$, so belongs to $Z$.   Because
+$U\subseteq C(X)$, the map
+$a\mapsto\hat a$ is continuous.   \Quer\ If
+$\{\hat a:a\in G\}$ is not dense in $Z$, there is a non-zero $h\in
+C(Z)$
+such that $h(\hat a)=0$ for every $a\in G$;  but as $U$ is identified
+with $C(Z)$, there is an $f\in U$ such that $z(f)=h(z)$ for every
+$z\in Z$.   In this case, $f$ cannot be the zero function, but
+$f(a)=\hat a(f)=h(\hat a)=0$ for every $a\in G$.\ \BanG\  Thus the
+image of $G$ is dense, as claimed.
+
+If $a$, $b\in G$ and $f\in U$ then
+
+\Centerline{$(a\action\hat b)(f)
+=\hat b(a^{-1}\action_lf)
+=(a^{-1}\action_lf)(b)
+=f(ab)
+=\widehat{ab}(f)$,}
+
+\noindent so $a\action\hat b=\widehat{ab}$.
+
+\medskip
+
+{\bf (d)} We have a Riesz homomorphism $T:C(X)\to\BbbR^G$ defined by
+setting $(Tg)(a)=g(a\action x_0)$ for every $g\in C(X)$ and $a\in G$.
+Now $Tg\in U$ for every $g\in C(X)$.   \Prf\
+$Tg(a)=(a^{-1}\action g)(x_0)$;    since the map
+$a\mapsto a^{-1}\action g$ is
+uniformly continuous (449Ba), so is $Tg$.
+$\|Tg\|_{\infty}\le\|g\|_{\infty}$ is finite, so $Tg\in U$.\ \Qed
+
+Of course $T(\chi X)=\chi G$.   So if $z\in Z$, $zT:C(X)\to\Bbb R$ is
+a Riesz homomorphism such that $(zT)(\chi X)=1$.   There is therefore a
+unique $\phi(z)\in X$ such that $(zT)(g)=g(\phi(z))$ for every
+$g\in C(X)$ (354L again).   Since the function $z\mapsto g(\phi(z))=z(Tg)$
+is continuous for every $g\in C(X)$, $\phi$ is continuous.
+
+Now suppose that $a\in G$.   Then $\phi(\hat a)=a\action x_0$.   \Prf\
+If $g\in C(X)$, then
+
+\Centerline{$g(\phi(\hat a))=\hat a(Tg)=(Tg)(a)
+=g(a\action x_0)$.  \Qed}
+
+\noindent So if $a$, $b\in G$, then
+
+\Centerline{$\phi(a\action\hat b)
+=\phi(\widehat{ab})
+=(ab)\action x_0
+=a\action(b\action x_0)=a\action\phi(b)$.}
+
+\noindent Since $\{\hat b:b\in G\}$ is dense in $Z$, and all the
+functions here are continuous, $\phi(a\action z)=a\action\phi(z)$ for
+all $a\in G$ and $z\in Z$.
+
+To see that $\phi$ is unique, observe that if $a\in G$ then
+$\phi(\hat a)=\phi(\widehat{ae})=\phi(a\action\hat{e})$ must be
+$a\action\phi(\hat e)=a\action x_0$;  since $\{\hat a:a\in G\}$ is dense in
+$Z$, $X$ is Hausdorff and $\phi$ is declared to be continuous, $\phi$ is
+uniquely defined.
+
+\medskip
+
+{\bf (e)} Now suppose that the topology of $G$ is Hausdorff.   Then it
+is defined by the bounded uniformly continuous functions (4A2Ja);
+the map $a\mapsto\hat a$ is therefore injective and is a homeomorphism
+between $G$ and its image in $Z$.   If $a$, $b\in G$ are distinct,
+then
+$a\action\hat e=\hat a\ne\hat b=b\action\hat e$, so the action is
+faithful.
+}%end of proof of 449D
+
+\medskip
+
+\noindent{\bf Remark} \dvro{The}{Following {\smc Brook 70}, the} space
+$Z$, together
+with the canonical action of $G$ on it and the map
+$a\mapsto\hat a:G\to Z$, is called the {\bf greatest ambit} of the
+topological group $G$.
+
+\leader{449E}{Corollary} Let $G$ be a topological group.   Then the
+following are equiveridical:
+
+(i) $G$ is amenable;
+
+(ii) there is a $G$-invariant Radon probability measure on the
+greatest ambit of $G$;
+
+(iii) writing $U$ for the space of bounded real-valued functions on
+$G$ which are uniformly continuous for the right uniformity, there is
+a
+positive linear functional $p:U\to\Bbb R$ such that $p(\chi G)=1$ and
+$p(a\action_lf)=p(f)$ for every $f\in U$ and $a\in G$.
+
+\proof{ Let $Z$ be the greatest ambit of $G$.
+
+\medskip
+
+{\bf (i)$\Rightarrow$(ii)} As soon as we know that $Z$ is a
+compact Hausdorff space and the action of $G$ on $Z$ is continuous
+(449Db), this becomes a special case of the definition of `amenable
+topological group'.
+
+\medskip
+
+{\bf (ii)$\Rightarrow$(i)} Let $\mu$ be a $G$-invariant Radon
+probability measure on $Z$.   Given any continuous action of $G$ on a
+non-empty compact
+Hausdorff space $X$, fix $x_0\in X$ and let $\phi:Z\to X$ be
+a continuous function such that
+$\phi(a\action z)=a\action\phi(z)$ for every $a\in G$ and $z\in Z$,
+as in 449Dd.   Let $\nu$ be the image measure $\mu\phi^{-1}$.   Then
+$\nu$ is a Radon probability measure on $X$ (418I again).
+If $F\in\dom\nu$ and $a\in G$, then
+
+\Centerline{$\nu(a\action F)=\mu\phi^{-1}[a\action F]
+=\mu(a\action\phi^{-1}[F])=\mu\phi^{-1}[F]=\nu F$.}
+
+\noindent As $a$ and $F$ are arbitrary, $\nu$ is $G$-invariant;  as
+$X$
+and $\action$ are arbitrary, $G$ is amenable.
+
+\medskip
+
+{\bf (ii)$\Leftrightarrow$(iii)} The identification of $U$ with
+$C(Z)$ (see (b-i)
+of the proof of 449D) means that we have a one-to-one correspondence
+between Radon probability
+measures $\mu$ on $Z$ and positive linear functionals $p$ on $U$ such
+that $p(\chi G)=1$, given by the formula $p(f)=\int z(f)\mu(dz)$ for
+$f\in U$ (436J/436K again).   Now
+
+$$\eqalignno{\mu\text{ is }&G\text{-invariant}\cr
+&\iff\int (a\action z)(f)\mu(dz)=\int z(f)\mu(dz)
+  \text{ for every }f\in U,\,a\in G\cr
+\displaycause{441L}
+&\iff\int z(a^{-1}\action_lf)\mu(dz)=\int z(f)\mu(dz)
+  \text{ for every }f\in U,\,a\in G\cr
+&\iff\int z(a\action_lf)\mu(dz)=\int z(f)\mu(dz)
+  \text{ for every }f\in U,\,a\in G\cr
+&\iff p(a\action_lf)=p(f)
+  \text{ for every }f\in U,\,a\in G.\cr}$$
+
+\noindent So there is a $G$-invariant $\mu$, as required by (ii), iff
+there is a $G$-invariant $p$ as required by (iii).
+}%end of proof of 449E
+
+\leader{449F}{Corollary} Let $G$ be a topological group.
+
+(a) If $G$ is amenable, then
+
+\quad(i) every open subgroup of $G$ is amenable;
+
+\quad(ii)\dvAformerly{4{}49Xg} every dense subgroup of $G$ is amenable.
+
+(b)\dvAnew{2010}
+Suppose that for every sequence $\sequencen{V_n}$ of neighbourhoods of
+the identity $e$ of $G$ there is a normal subgroup $H$ of $G$ such that
+$H\subseteq\bigcap_{n\in\Bbb N}V_n$ and $G/H$ is amenable.   Then $G$ is
+amenable.
+
+\proof{ Write $U_G$ for
+the set of bounded real-valued functions on $G$ which are uniformly
+continuous for the right uniformity of $G$;  if $H$ is a subgroup of $G$,
+let $U_H$ the set of
+bounded real-valued functions on $H$ which are uniformly continuous
+for the right uniformity of $H$;  and if
+$H\normalsubgroup G$, let $U_{G/H}$ the set of
+bounded real-valued functions on the quotient
+$G/H$ which are uniformly continuous
+for the right uniformity of $G/H$.
+
+\medskip
+
+{\bf (a)(i)}\grheada\ Let $H$ be an open subgroup of $G$.
+Take a set $A\subseteq G$ meeting
+each right coset of $H$ in just one point, so that each member of $G$ is
+uniquely expressible as $ya$ where $y\in H$ and $a\in A$.   Define
+$T:U_H\to\BbbR^G$ by setting $(Tf)(ya)=f(y)$ whenever $f\in U_H$, $y\in H$
+and $a\in A$.   Then $T$ is a positive linear operator.   Also
+$T[U_H]\subseteq U_G$.   \Prf\ Let
+$f\in U_H$.   Of course $Tf$ is bounded.   If $\epsilon>0$, there is a
+neighbourhood $W$ of the identity in $H$ such that
+$|f(x)-f(y)|\le\epsilon$ whenever $x$, $y\in H$ and $xy^{-1}\in W$.
+Because $H$ is open, $W$ is also a neighbourhood of the identity in
+$G$.   Now suppose that $x$, $y\in G$ and $xy^{-1}\in W$.   Express $x$ as
+$x_0a$ and $y$ as $y_0b$ where $x_0$, $y_0\in H$ and $a$, $b\in A$.
+Then
+
+\Centerline{$x_0ab^{-1}y_0^{-1}\in W\subseteq H$,}
+
+\noindent so $ab^{-1}\in H$ and
+$a\in Hb$ and $a=b$ and $x_0y_0^{-1}\in W$ and
+
+\Centerline{$|(Tf)(x)-(Tf)(y)|=|f(x_0)-f(y_0)|\le\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, $Tf$ is uniformly continuous and
+belongs to $U_G$.\ \Qed
+
+\medskip
+
+\qquad\grheadb\ Next, $b\action_l(Tf)=T(b\action_lf)$ whenever $f\in U_H$
+and $b\in H$.   \Prf\ If $x\in G$, express it as $ya$ where $y\in H$ and
+$a\in A$.   Then
+
+\Centerline{$(b\action_lTf)(x)=(Tf)(b^{-1}x)=(Tf)(b^{-1}ya)
+=f(b^{-1}y)=(b\action_lf)(y)=T(b\action_lf)(x)$.  \Qed}
+
+\medskip
+
+\qquad\grheadc\ By 449E, there is a positive linear functional
+$p:U_G\to\Bbb R$
+such that $p(\chi G)=1$ and $p(a\action_lf)=p(f)$ whenever $f\in U_G$
+and $a\in G$.   Set $q(f)=p(Tf)$ for $f\in U_H$;  then $q$ is a positive
+linear operator, $q(\chi H)=1$ and $q$ is $H$-invariant, by (ii).   So
+by 449E in the other direction, $H$ is amenable.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $H$ is a dense subgroup of $G$.
+It is easy to see that the right
+uniformity of $H$ is the subspace uniformity induced by the right
+uniformity of $G$ (3A4D), so that $f\restr H\in U_H$ for every $f\in U_G$.
+In the other direction, if $g\in U_H$,
+then $g$ extends uniquely to a member
+of $U_G$, by 3A4G;  write $Tg$ for the extension.   In this case,
+$b\action_lTg=T(b\action_lg)$ for every $g\in U_H$ and $b\in H$.   \Prf\
+$b\action_lTg$ and $T(b\action_lg)$ are continuous, and for $a\in H$,
+
+\Centerline{$(b\action_lTg)(a)=Tg(b^{-1}a)=g(b^{-1}a)
+=(b\action_lg)(a)=T(b\action_lg)(a)$;}
+
+\noindent as $H$ is dense in $G$, $b\action_lTg=T(b\action_lg)$.\ \Qed
+
+Now we can use the same argument as in (i-$\gamma$) above to see that $H$
+is amenable.
+
+\woddheader{449F}{4}{2}{2}{48pt}
+
+{\bf (b)(i)} Let $\Cal H$ be the family of normal subgroups $H$ of $G$ such
+that $G/H$ is amenable.
+
+\medskip
+
+\qquad\grheada\ For $H\in\Cal H$,
+let $\pi_H:G\to G/H$ be the canonical homomorphism and
+$p_H:U_{G/H}\to\Bbb R$ a
+positive linear functional such that $p_H(\chi(G/H))=1$ and
+$p_H(c\action_lg)=p_H(g)$ whenever $g\in U_{G/H}$ and $c\in G/H$.
+Let $U'_H$ be
+$\{f:f\in U_G$, $f(x)=f(y)$ whenever $x$, $y\in G$ and $xy^{-1}\in H\}$.
+Then $U'_H$ is a linear subspace of $U_G$ containing $\chi G$.
+
+If $f\in U'_H$
+then there is a unique $g\in U_{G/H}$ such that $f=g\pi_H$.   \Prf\
+Because $f(x)=f(y)$ whenever $\pi_Hx=\pi_Hy$, and $\pi_H$ is surjective,
+there is a unique function $g:G/H\to\Bbb R$ such that $f=g\pi_H$;  because
+$f$ is bounded, so is $g$.   Given $\epsilon>0$, there is an open
+neighbourhood
+$W$ of $e$ such that $|f(x)-f(y)|\le\epsilon$ whenever $xy^{-1}\in W$.
+In this case, $\pi_H[W]$ is a neighbourhood of the identity in $G/H$
+(4A5J(a-i)).   Suppose that $c_0$, $c_1\in G/H$ are such that
+$c_0c_1^{-1}\in\pi_H[W]$.   Then there are $x_0$, $x_1\in G$ and $x\in W$
+such that $\pi_Hx_0=c_0$, $\pi_Hx_1=c_1$ and $\pi_Hx=c_0c_1^{-1}$.
+As $\pi_H(x_0x_1^{-1})=\pi_Hx$, there is a $y\in H$ such that
+$yx_0x_1^{-1}=x$ belongs to $W$;  so that $\pi_H(yx_0)=c_0$ and
+
+\Centerline{$|g_H(c_0)-g_H(c_1)|
+=|f(yx_0)-f(x_1)|\le\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, $g\in U_{G/H}$.\ \Qed
+
+We therefore have a functional $p'_H:U'_H\to\Bbb R$ defined by setting
+$p'_H(g\pi_H)=p_H(g)$ whenever $g\in U_{G/H}$.   Of course $g\ge 0$
+whenever $g\pi_H\ge 0$, so $p'_H$ is a positive linear functional, and
+$p'_H(\chi G)=1$.
+
+\medskip
+
+\qquad\grheadb\
+If $f\in U'_H$ and $a\in G$ then $a\action_lf\in U'_H$ and
+$p'_H(a\action_lf)=p'_H(f)$.   \Prf\ Let $g\in U_{G/H}$ be such that
+$f=g\pi_H$.   Then
+
+\Centerline{$(a\action_lf)(x)
+=f(a^{-1}x)
+=g\pi_H(a^{-1}x)
+=g(\pi_H(a)^{-1}\pi_H(x))
+=(\pi_H(a)\action_lg)(\pi_H(x))$}
+
+\noindent for every $x\in G$;  so $a\action_lf=(\pi_H(a)\action_lg)\pi_H$
+belongs to $U'_H$, and
+
+\Centerline{$p'_H(a\action_lf)=p_H(\pi_H(a)\action_lg)
+=p_H(g)=p'_H(f)$.  \Qed}
+
+\medskip
+
+\quad{\bf (ii)} For any family $\Cal V$ of neighbourhoods of $e$,
+set $\Cal H_{\Cal V}=\{H:H\in\Cal H$, $H\subseteq\bigcap\Cal V\}$.
+Now for any $f\in U_G$ there is a countable family $\Cal V$ of
+neighbourhoods of $e$ such that $f\in U'_H$ for every
+$H\in\Cal H_{\Cal V}$.
+\Prf\ For each $n\in\Bbb N$ choose a
+neighbourhood $V_n$ of $e$ such that $|f(x)-f(y)|\le 2^{-n}$ whenever
+$xy^{-1}\in V_n$, and set $\Cal V=\{V_n:n\in\Bbb N\}$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} We are supposing that $\Cal H_{\Cal V}$ is non-empty for
+every countable family $\Cal V$ of neighbourhoods of $e$.   There is
+therefore an ultrafilter $\Cal F$ on $\Cal H$ containing $\Cal H_{\Cal V}$
+for every countable $\Cal V$.   Now we see
+from (ii) that for any $f\in U_G$ the set
+$\{H:H\in\Cal H$, $f\in U'_H\}$ belongs to $\Cal F$, while
+$|p'_H(f)|\le\|f\|_{\infty}$ for any $H$ such that $f\in U'_H$;  so we can
+set $p(f)=\lim_{H\to\Cal F}p'_H(f)$ for every $f\in U_G$.    In this case,
+of course, $p$ is a positive linear functional and $p(\chi G)=1$.
+Also, given $f\in U_G$ and $a\in G$, then
+$p'_H(f)=p'_H(a\action_lf)$ whenever $f\in U'_H$, by (i-$\beta$), so
+$p(f)=p(a\action_lf)$.   Thus $p$ satisfies (iii) of 449E and $G$ is
+amenable.
+}%end of proof of 449F
+
+\leader{449G}{Example} Let $F_2$ be the free group on two generators,
+with its discrete topology.   Then $F_2$ is a $\sigma$-compact unimodular
+locally compact
+Polish group.   But it is not amenable.   \prooflet{\Prf\ Let $a$
+and $b$ be the generators of $F_2$.   Then every element of $F_2$ is
+uniquely expressible as a word (possibly empty) in the letters $a$,
+$b$,
+$a^{-1}$, $b^{-1}$ in which the letters $a$, $a^{-1}$ are never
+adjacent
+and the letters $b$, $b^{-1}$ are never adjacent.   Write $A$ for the
+set of elements of $F_2$ for which the canonical word does not begin
+with either $b$ or $b^{-1}$, and $B$ for the set of elements of $F_2$
+for which
+the canonical word does not begin with either $a$ or $a^{-1}$.   Then
+$A\cup B=F_2$ and $A\cap B=\{e\}$.   \Quer\ Suppose, if possible, that
+$F_2$ is amenable.   Every member of $\ell^{\infty}(F_2)$ is uniformly
+continuous with
+respect to the right uniformity.   So there is an $F_2$-invariant
+positive linear functional $p:\ell^{\infty}(F_2)\to\Bbb R$ such that
+$p(\chi F_2)=1$.   Let $\nu$ be the corresponding non-negative
+additive
+functional on $\Cal PF_2$, so that $\nu C=p(\chi C)$ for every
+$C\subseteq F_2$.   For $c\in F_2$ and $C\subseteq F_2$,
+$c\action_l\chi C=\chi(cC)$, so $\nu(cC)=\nu C$ for every
+$C\subseteq F_2$
+and $c\in F_2$.   In particular, $\nu(b^nA)=\nu A$ for every
+$n\in\Bbb Z$;
+but as all the $b^nA$, for $n\in\Bbb Z$, are disjoint, $\nu A=0$.
+Similarly $\nu B=0$ and
+
+\Centerline{$0=\nu(A\cup B)=\nu F_2=p(\chi F_2)=1$,}
+
+\noindent which is absurd.\ \BanG\
+Thus $F_2$ is not amenable, as claimed.\ \Qed}
+
+\leader{449H}{}\cmmnt{ In this section so far, I have taken care to
+avoid assuming that groups are locally compact.   Some of the most
+interesting amenable groups are very far from being locally compact
+(e.g., 449Xh).
+But of course a great deal of work has been done on amenable locally
+compact groups.   In particular, there is a remarkable list of equivalent
+properties, some of which I will present in the next theorem.
+It will be useful to have the following facts to hand.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $G$ be a locally compact Hausdorff topological
+group, and $U$ the space of bounded real-valued functions on $G$
+which are uniformly continuous for the right uniformity\cmmnt{, as
+in 449D-449E}.   Let $\mu$ be a left Haar measure on $G$, and $*$ the
+corresponding convolution on $\eusm L^0(\mu)$\cmmnt{ (444O)}.
+
+(a) If $h\in\eusm L^1(\mu)$ and $f\in\eusm L^{\infty}(\mu)$ then
+$h*f\in U$.
+
+(b) Let $p:U\to\Bbb R$ be a positive linear functional such that
+$p(a\action_lf)=p(f)$ whenever $f\in U$ and $a\in G$.   Then
+$p(h*f)=p(f)\int h\,d\mu$ for every $h\in\eusm L^1(\mu)$ and
+$f\in U$.
+
+%I suppose this works for groups carrying Haar measures?
+
+\proof{{\bf (a)} Recall that we know from 444Rc that $h*f$ is defined
+everywhere in $G$ and is continuous.   For any $x\in G$,
+
+\Centerline{$(h*f)(x)=\int h(xy)f(y^{-1})\mu(dy)
+=\int (x^{-1}\action_lh)\times\Reverse{f}$,}
+
+\noindent where $\Reverse{f}(y)=f(y^{-1})$ whenever $y^{-1}\in\dom f$
+(4A5C(c-ii)).   By 449Bb, applied to the left action of $G$ on itself,
+$x\mapsto(x^{-1}\action_lh)^{\ssbullet}:G\to L^1(\mu)$ is uniformly
+continuous for
+the right uniformity of $G$ and the norm uniformity of $L^1(\mu)$.
+Since $u\mapsto\int u\times v:L^1(\mu)\to\Bbb R$ is uniformly
+continuous for every $v\in L^{\infty}(\mu)$, $x\mapsto(h*f)(x)
+=\int(x^{-1}\action_lh)^{\ssbullet}\times\Reverse{f}^{\ssbullet}$ is
+uniformly continuous for the right uniformity (3A4Cb).
+Of course $\sup_{x\in G}|(h*f)(x)|\le\|h\|_1\|f\|_{\infty}$ is finite,
+so $h*f\in U$.
+
+\medskip
+
+{\bf (b)} Let $\epsilon>0$.   Then there are a compact set
+$K\subseteq G$ such that $\int_{G\setminus K}|h|d\mu\le\epsilon$
+(412Je) and a symmetric open neighbourhood $V_0$ of $e$ such that
+$|f(x)-f(y)|\le\epsilon$ whenever $xy^{-1}\in V_0$.   Let
+$a_0,\ldots,a_n\in G$ be such that
+$K\subseteq\bigcup_{i\le n}a_iV_0$, and set
+$E_i=a_iV_0\setminus\bigcup_{j<i}a_jV_0$, $\alpha_i=\int_{E_i}h\,d\mu$
+for each $i\le n$ and $F=G\setminus\bigcup_{j\le n}a_jV_0$.
+If $x\in G$ and $y\in E_i$, then
+$y^{-1}x(a_i^{-1}x)^{-1}=(a_i^{-1}y)^{-1}$ belongs to $V_0$, so
+$|f(y^{-1}x)-f(a_i^{-1}x)|\le\epsilon$.   So, for any $x\in G$,
+
+$$\eqalignno{\bigl|(h*f)(x)&-\sum_{i=0}^n\alpha_if(a_i^{-1}x)\bigr|\cr
+&=\bigl|\int h(y)f(y^{-1}x)\mu(dy)
+    -\sum_{i=0}^n\alpha_if(a_i^{-1}x)\bigr|\cr
+&=\bigl|\int_Fh(y)f(y^{-1}x)\mu(dy)
+  +\sum_{i=0}^n(\int_{E_i}h(y)f(y^{-1}x)\mu(dy)
+     -\alpha_if(a_i^{-1}x))\bigr|\cr
+&\le\|f\|_{\infty}\int_F|h|d\mu
+  +\sum_{i=0}^n\bigl|\int_{E_i}h(y)
+    (f(y^{-1}x)-f(a_i^{-1}x))\mu(dy)\bigr|\cr
+&\le\|f\|_{\infty}\int_{X\setminus K}|h|d\mu
+  +\epsilon\sum_{i=0}^n\int_{E_i}|h|d\mu
+\le\epsilon(\|f\|_{\infty}+\|h\|_1).\cr}$$
+
+\noindent Thus
+
+\Centerline{$\|h*f-\sum_{i=0}^n\alpha_ia_i\action_lf\|_{\infty}
+\le\epsilon(\|f\|_{\infty}+\|h\|_1)$.}
+
+\noindent Since $p(a_i\action_lf)=p(f)$ for every $i$, it follows that
+
+$$\eqalign{|p(h*f)-p(f)\int h\,d\mu|
+&\le\epsilon(\|f\|_{\infty}+\|h\|_1)p(\chi G)
+   +|\sum_{i=0}^n\alpha_i-\int h\,d\mu||p(f)|\cr
+&\le\epsilon(\|f\|_{\infty}+\|h\|_1)p(\chi G)
+   +|\int_Fh\,d\mu|\|f\|_{\infty}p(\chi G)\cr
+&\le\epsilon(2\|f\|_{\infty}+\|h\|_1)p(\chi G).\cr}$$
+
+\noindent As $\epsilon$ is arbitrary, $p(h*f)=p(f)\int h\,d\mu$, as
+claimed.
+}%end of proof of 449H
+
+\leader{449I}{Notation}\dvAnew{2010}
+It will save repeated explanations if I say now
+that for the next two results,
+given a locally compact Hausdorff group $G$,
+$\Sigma_G$ will be the algebra of Haar measurable subsets of $G$ and
+$\Cal N_G$ the ideal of Haar negligible subsets of $G$\cmmnt{ (443A)},
+while $\Cal B_G$ will be
+the Borel $\sigma$-algebra of $G$.   Recall that all three
+are left- and right-translation-invariant and inversion-invariant, and
+indeed autohomeomorphism-invariant, in that if $\gamma:G\to G$ is a
+function of any of the types
+
+\Centerline{$x\mapsto ax$,\quad$x\mapsto xa$,
+\quad$x\mapsto x^{-1}$}
+
+\noindent or is a group automorphism which is also a homeomorphism, and
+$E\subseteq G$, then
+$\gamma[E]$ belongs to $\Sigma_G$, $\Cal N_G$ or $\Cal B_G$ iff $E$
+does\cmmnt{ (443Aa)}.
+
+\woddheader{449J}{0}{0}{0}{108pt}
+
+\leader{449J}{Theorem} Let $G$ be a locally compact Hausdorff group;
+fix a left Haar measure $\mu$ on $G$.   Write $\eusm L^1$ for
+$\eusm L^1(\mu)$ and $L^{\infty}$ for $L^{\infty}(\mu)$, etc.
+Let $C_{k1}^+$ be the set of continuous
+functions $h:G\to\coint{0,\infty}$ with compact supports such that
+$\int h\,d\mu=1$, and suppose that $q\in\coint{1,\infty}$.
+Then the following are equiveridical:
+
+(i) $G$ is amenable;
+
+(ii) there is a positive linear functional $p:C_b(G)\to\Bbb R$ such
+that $p(\chi G)=1$ and $p(a\action_lf)=p(f)$ for every $f\in C_b(G)$ and
+every $a\in G$;
+
+(iii)\dvAnew{2010} there is a finitely additive functional
+$\phi:\Cal B_G\to[0,1]$ such that
+$\phi G=1$, $\phi(aE)=\phi E$ for every $E\in\Cal B_G$ and $a\in G$, and
+$\phi E=0$ for every Haar negligible $E\in\Cal B_G$;
+
+(iv)\dvAnew{2010}
+there is a finitely additive functional $\phi:\Sigma_G\to[0,1]$ such that
+$\phi G=1$, $\phi(aE)=\phi(Ea)=\phi(E^{-1})=\phi E$ for every
+$E\in\Sigma_G$ and $a\in G$, and $\phi E=0$ for every $E\in\Cal N_G$;
+
+(v)\dvAnew{2010} there is a positive
+linear functional $\tilde p:L^{\infty}\to\Bbb R$ such that
+$\tilde p(\chi G^{\ssbullet})=1$ and
+$\tilde p(a\action_lu)=\tilde p(a\action_ru)=\tilde p(a\action_cu)
+=\tilde p(\Reverse{u})=\tilde p(u)$ for
+every $u\in L^{\infty}$ and every $a\in G$\cmmnt{, where $\action_l$,
+$\action_r$, $\action_c$ and $\ssplrarrow$ are defined as in
+443Af and 443Gc};
+
+(vi) there is a positive
+linear functional $\tilde p:L^{\infty}\to\Bbb R$ such that
+$\tilde p(\chi G^{\ssbullet})=1$ and
+$\tilde p(a\action_lu)=\tilde p(u)$ for
+every $u\in L^{\infty}$ and every $a\in G$;
+
+(vii) there is a positive
+linear functional $\tilde p:L^{\infty}\to\Bbb R$ such that
+$\tilde p(\chi G^{\ssbullet})=1$ and
+$\tilde p(\nu*u)=\nu G\cdot\tilde p(u)$ for
+every $u\in L^{\infty}$ and every totally finite Radon measure
+$\nu$ on $G$\cmmnt{, where $\nu*u$ is defined as in 444Ma};
+
+(viii) there is a positive linear functional
+$\tilde p:L^{\infty}\to\Bbb R$ such that
+$\tilde p(\chi G^{\ssbullet})=1$ and
+$\tilde p(v*u)=\tilde p(u)\int v$ for
+every $v\in L^1$ and $u\in L^{\infty}$;
+
+(ix) for every finite set $J\subseteq\eusm L^1$ and
+$\epsilon>0$, there is an $h\in C_{k1}^+$ such that
+$\|g*h-(\int g\,d\mu)h\|_1\le\epsilon$ for every $g\in J$;
+
+(x) for every compact set $K\subseteq G$ and $\epsilon>0$, there is
+an $h\in C_{k1}^+$ such that $\|a\action_lh-h\|_1\le\epsilon$ for
+every $a\in K$;
+
+(xi)\dvAnew{2010}
+for any finite set $I\subseteq G$ and $\epsilon>0$, there is a
+$u\in L^q$ such that $\|u\|_q=1$ and $\|u-a\action_lu\|_q\le\epsilon$
+for every $a\in I$;
+
+(xii)\dvAnew{2010}
+for any finite set $I\subseteq G$ and $\epsilon>0$, there is a
+compact set $L\subseteq G$ with non-zero measure such that
+$\mu(L\symmdiff aL)\le\epsilon\mu L$ for every $a\in I$;
+
+(xiii)\dvArevised{2010}
+for every compact set $K\subseteq G$ and $\epsilon>0$, there is a
+symmetric compact neighbourhood $L$ of the identity $e$ in $G$
+such that $\mu(L\symmdiff aL)\le\epsilon\mu L$ for every $a\in K$;
+
+(xiv)\cmmnt{ ({\smc Emerson \& Greenleaf 67})} for every compact set
+$K\subseteq G$ and $\epsilon>0$, there is a
+compact set $L\subseteq G$ with non-zero measure such that
+$\mu(KL)\le(1+\epsilon)\mu L$.
+
+\proof{{\bf (a)(i)$\Rightarrow$(vii)} Write $U$ for the space
+of bounded real-valued functions on $G$ which are uniformly continuous
+for the right uniformity.   Then we have a positive linear functional
+$p:U\to\Bbb R$ such that $p(\chi G)=1$ and $p(a\action_lf)=p(f)$ for
+every $f\in U$ and $a\in G$ (449E).   Now if
+$f\in\eusm L^{\infty}$, $h_1$,
+$h_2\in\eusm L^1$ and $\int h_1d\mu=\int h_2d\mu$, then
+$p(h_1*f)=p(h_2*f)$.   \Prf\ By 449Ha, both $h_1*f$ and $h_2*f$ belong
+to $U$.   Set $h=h_1-h_2$.   By 444T, there is a neighbourhood $V$ of
+$e$ such that $\|h*\nu-h\|_1\le\epsilon$ whenever
+$\nu$ is a quasi-Radon measure on $G$ such that $\nu V=\nu G=1$,
+defining $h*\nu$ as in 444J.   In
+particular, taking $\nu$ to be the indefinite-integral measure over
+$\mu$ defined from
+$g=\Bover1{\mu V}\chi V$, $\|h*g-h\|_1\le\epsilon$ (using 444Pb).   Now
+
+$$\eqalignno{|p(h_1*f)-p(h_2*f)|
+&=|p(h*f)|
+\le |p((h*g)*f)|+|p((h*g-h)*f)|\cr
+&\le |p(h*(g*f))|+\|(h*g-h)*f\|_{\infty}\cr
+\displaycause{because $*$ is associative, 444Oe}
+&\le|p(g*f)\int h\,d\mu|+\|h*g-h\|_1\|f\|_{\infty}\cr
+\displaycause{449Hb}
+&\le\epsilon\|f\|_{\infty}.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary, $p(h_1*f)=p(h_2*f)$,
+as claimed.\ \Qed
+
+Of course $p(h*f)=0$ whenever $h\in\eusm L^1$, $f\in\eusm L^{\infty}$
+and $f=0$ a.e.\ (444Ob).   We can therefore define a functional
+$\tilde p:L^{\infty}\to\Bbb R$ by saying that
+$\tilde p(f^{\ssbullet})=p(h*f)$ whenever $f\in\eusm L^{\infty}$,
+$h\in\eusm L^1$ and $\int h\,d\mu=1$.   $\tilde p$ is positive and
+linear because $p$ is.   It follows that
+$p(h*f)=\tilde p(f^{\ssbullet})\int h\,d\mu$ whenever $h\in\eusm L^1$
+and $f\in\eusm L^{\infty}$.   Also
+$\tilde p(\chi G^{\ssbullet})=p(\chi G)=1$ because
+$h*\chi G=(\int h\,d\mu)\chi G$ for every $h\in\eusm L^1$.
+
+If $u\in L^{\infty}$ and $\nu$ is a totally finite Radon measure on
+$G$,
+express $u$ as $f^{\ssbullet}$ where
+$f\in\eusm L^{\infty}$, so that $\nu*u=(\nu*f)^{\ssbullet}$ (444Ma).
+Taking any non-negative
+$h\in\eusm L^1$ such that $\int h\,d\mu=1$, we have
+
+$$\eqalignno{h*(\nu*f)
+&=h\mu*(\nu*f)\cr
+\displaycause{444Pa;  here $h\mu$ is the indefinite-integral measure,
+as in 444J}
+&=(h\mu*\nu)*f\cr
+\displaycause{444Ic}
+&=(h*\nu)\mu*f\cr
+\displaycause{444K}
+&=(h*\nu)*f}$$
+
+\noindent (444Pa again).   So
+
+$$\eqalignno{\tilde p(\nu*u)
+&=\tilde p((\nu*f)^{\ssbullet})
+=p(h*(\nu*f))\cr
+&=p((h*\nu)*f)
+=\int h*\nu\,d\mu\cdot\tilde p(u)
+=\nu G\cdot\tilde p(u)\cr}$$
+
+\noindent (444K).  As $\nu$ and $u$ are arbitrary, $\tilde p$ has the
+required properties.
+
+\medskip
+
+{\bf (b)(vii)$\Rightarrow$(vi)} Take $\tilde p$ from (vii).
+If $a\in G$ and $u\in L^{\infty}$, consider the Dirac measure $\delta_a$
+on $G$ concentrated at $a$.   Then $\delta_a*u=a\action_lu$.
+\Prf\ Take $f\in\eusm L^{\infty}$ such that $f^{\ssbullet}=u$.
+Then
+
+\Centerline{$(\delta_a*f)(x)
+=\int f(y^{-1}x)\delta_a(dy)=f(a^{-1}x)=(a\action_lf)(x)$}
+
+\noindent whenever $a^{-1}x\in\dom f$, so $\delta_a*f=a\action_lf$ and
+
+\Centerline{$\delta_a*u=\delta_a*f^{\ssbullet}=(\delta_a*f)^{\ssbullet}
+=(a\action_lf)^{\ssbullet}=a\action_lu$.  \Qed}
+
+\noindent Accordingly, using (vii),
+
+\Centerline{$\tilde p(a\action_lu)
+=\tilde p(\delta_a*u)=\delta_a(G)\tilde p(u)=\tilde p(u)$,}
+
+\noindent as required by (vi).
+
+\medskip
+
+{\bf (c)(vi)$\Rightarrow$(v)}\grheada\ The first step is to note that
+since there is a left-invariant mean there must also be a right-invariant
+mean, that is, a positive linear functional
+$\tilde q:L^{\infty}\to\Bbb R$ such that
+$\tilde q(\chi G^{\ssbullet})=1$ and $\tilde q(a\action_ru)=\tilde q(u)$
+for every $u\in L^{\infty}$ and every $a\in G$.   \Prf\ Set
+$\tilde q(u)=\tilde p(\Reverse{u})$ for $u\in L^{\infty}$.
+Evidently $\tilde q$ is a positive linear functional and
+$\tilde q(\chi G^{\ssbullet})=1$.   By 443Gc,
+
+\Centerline{$\tilde q(a\action_ru)
+=\tilde p((a\action_ru)\ssplrarrow)
+=\tilde p(a\action_l\Reverse{u})
+=\tilde p(\Reverse{u})
+=\tilde q(u)$}
+
+\noindent whenever $u\in L^{\infty}$ and $a\in G$.\ \Qed
+
+\medskip
+
+\qquad\grheadb\ At this point, recall that $L^1$ is a Banach algebra
+under convolution (444Sb), and that $L^{\infty}$ can be identified
+with its normed space dual, because $\mu$ is a quasi-Radon measure,
+therefore localizable (415A), and we can use 243Gb.
+We therefore have an Arens
+multiplication on $(L^{\infty})^*\cong(L^1)^{**}$
+defined by the formulae of 4A6O.
+Of course $\tilde p$ and $\tilde q$ both belong to $(L^{\infty})^*$;
+write $\tilde r_0=\tilde p\frsmallcirc\tilde q$ for their Arens product.
+To see that $\tilde r_0(\chi G^{\ssbullet})=1$,
+note that if $u$, $v\in L^1$ then, defining
+$\chi G^{\ssbullet}\frsmallcirc u$ and
+$\tilde q\frsmallcirc\chi G^{\ssbullet}$ as in 4A6O, we have
+
+\Centerline{$\int(\chi G^{\ssbullet}\frsmallcirc u)\times v
+=\int\chi G^{\ssbullet}\times(u*v)
+=\int u\int v$}
+
+\noindent as noted in 444Sb;  consequently
+$\chi G^{\ssbullet}\frsmallcirc u=(\int u)\chi G^{\ssbullet}$,
+
+\Centerline{$\int(\tilde q\frsmallcirc\chi G^{\ssbullet})\times u
+=\tilde q(\chi G^{\ssbullet}\frsmallcirc u)
+=\tilde q((\int u)\chi G^{\ssbullet})
+=\int u$}
+
+\noindent and
+$\tilde q\frsmallcirc\chi G^{\ssbullet}=\chi G^{\ssbullet}$.   Now, of
+course,
+
+\Centerline{$\tilde r_0(\chi G^{\ssbullet})
+=\tilde p(\tilde q\frsmallcirc\chi G^{\ssbullet})
+=\tilde p(\chi G^{\ssbullet})
+=1$.}
+
+\noindent As noted in
+4A6O, $\|\tilde r_0\|\le\|\tilde p\|\|\tilde q\|=1$, so
+$\tilde r_0$ must be a positive linear functional.
+
+\medskip
+
+\qquad\grheadc\ We find next that
+$\tilde r_0(a\action_lu)
+=\tilde r_0(u)$ whenever $u\in L^{\infty}$ and
+$a\in G$.   \Prf\ By 443Ge, we have a bounded linear operator
+$S:L^1\to L^1$ defined by setting $Sv=a^{-1}\action_lv$ for every
+$v\in L^1$.    By 444Sa, $S(u*v)=(Su)*v$ for all $u$, $v\in L^1$.
+Identifying $L^{\infty}$ with
+$(L^1)^*$, we have the adjoint operator
+$S':L^{\infty}\to L^{\infty}$ given by saying that
+
+$$\eqalign{\int S'u\times v
+&=\int u\times Sv
+=\int u\times(a^{-1}\action_lv)\cr
+&=\int a\action_l(u\times a^{-1}\action_lv)
+=\int(a\action_lu)\times v\cr}$$
+
+\noindent whenever $u\in L^{\infty}$ and $v\in L^1$, so that
+$S'u=a\action_lu$ for every $u\in L^{\infty}$.   But this means that
+
+\Centerline{$(S''\tilde p)(u)=\tilde p(a\action_lu)=\tilde p(u)$}
+
+\noindent for every $u$, so that $S''\tilde p=\tilde p$.   By 4A6O(b-i),
+
+\Centerline{$S''\tilde r_0
+=S''(\tilde p\frsmallcirc\tilde q)
+=(S''\tilde p)\frsmallcirc\tilde q
+=\tilde p\frsmallcirc\tilde q=\tilde r_0$,}
+
+\noindent that is, $\tilde r_0(a\action_lu)=\tilde r_0(u)$ for every
+$u\in L^{\infty}$.\ \Qed
+
+\medskip
+
+\qquad\grheadd\ In the same way,
+$\tilde r_0(a\action_ru)
+=\tilde r_0(u)$ whenever $u\in L^{\infty}$ and
+$a\in G$.   \Prf\ This time, define $T:L^1\to L^1$ by
+setting $Tv=\Delta(a^{-1})a^{-1}\action_rv$ for every
+$v\in L^1$, where $\Delta$ is the left modular function of $G$;
+444Sa tells us that $T(u*v)=u*Tv$ for all $u$, $v\in L^1$.
+Since $\int fd\mu=\Delta(a)\int a\action_rfd\mu$
+for every $f\in\eusm L^1$ (442Kc),
+$\int v=\Delta(a)\int a\action_rv$ for every $v\in L^1$, and
+
+$$\eqalign{\int T'u\times v
+&=\int u\times Tv
+=\Delta(a^{-1})\int u\times(a^{-1}\action_rv)\cr
+&=\int a\action_r(u\times a^{-1}\action_rv)
+=\int(a\action_ru)\times v\cr}$$
+
+\noindent whenever $u\in L^{\infty}$ and $v\in L^1$.   Thus
+$T'u=a\action_ru$ for every $u\in L^{\infty}$.   But now we have
+
+\Centerline{$(T''\tilde q)(u)=\tilde q(a\action_ru)=\tilde q(u)$}
+
+\noindent for every $u$, so that $T''\tilde q=\tilde q$.   By 4A6O(b-ii),
+$T''\tilde r_0=\tilde r_0$, that is,
+$\tilde r_0(a\action_ru)=\tilde r_0(u)$ for every
+$u\in L^{\infty}$.\ \Qed
+
+\medskip
+
+\qquad\grheade\ Thus $\tilde r_0$ is both left- and
+right-invariant.   To get reversal-invariance, set
+
+\Centerline{$\tilde r(u)=\Bover12(\tilde r_0(u)+\tilde r_0(\Reverse{u}))$}
+
+\noindent for $u\in L^{\infty}$.   Then $\tilde r_0$ is a
+positive linear functional and $\tilde r_0(\chi G^{\ssbullet})=1$.
+Because
+
+\Centerline{$a\action_l\Reverse{u}=(a\action_ru)\ssplrarrow$,
+\quad$a\action_r\Reverse{u}=(a\action_lu)\ssplrarrow$,}
+
+\noindent $u\mapsto\tilde r_0(\Reverse{u})$ and $\tilde r$ are also
+both left- and right-invariant, and of course
+$\tilde r(\Reverse{u}) =\tilde r(u)$ for every $u$.
+Finally,
+
+\Centerline{$\tilde r(a\action_cu)=\tilde r(a\action_l(a\action_ru))
+=\tilde r(u)$}
+
+\noindent for every $u\in L^{\infty}$ and $a\in G$, so
+$\tilde r$ has all the properties required by (v).
+
+\medskip
+
+{\bf (d)(v)$\Rightarrow$(iv)}
+Take $\tilde p$ from (v), and set
+$\phi E=\tilde p(\chi E^{\ssbullet})$ for every $E\in\Sigma_G$.
+Then $\phi:\Sigma_G\to[0,1]$ is additive and $\phi G=1$;  also, if
+$E\in\Cal N_G$, $\chi E^{\ssbullet}=0$ in $L^{\infty}$ and
+$\phi E=0$.   If $E\in\Sigma_G$ and $a\in G$,
+then  $\chi(aE)=a\action_l(\chi E)$ (4A5C(c-ii)) and
+
+\Centerline{$\phi(aE)
+=\tilde p(\chi(aE)^{\ssbullet})
+=\tilde p((a\action_l\chi E)^{\ssbullet})
+=\tilde p(a\action_l(\chi E^{\ssbullet}))
+=\tilde p(\chi E^{\ssbullet})
+=\phi E$.}
+
+\noindent Next, $\chi E^{-1}=(\chi E)\ssplrarrow$ and
+$(\chi E^{-1})^{\ssbullet}=(\chi E^{\ssbullet})\ssplrarrow$, so
+
+\Centerline{$\phi(E^{-1})
+=\tilde p((\chi E^{\ssbullet})\ssplrarrow)
+=\tilde p(\chi E^{\ssbullet})
+=\phi E$.}
+
+\noindent Consequently, for $E\in\Sigma_G$ and $a\in G$,
+
+\Centerline{$\phi(Ea)=\phi((Ea)^{-1})
+=\phi(a^{-1}E^{-1})=\phi(E^{-1})=\phi E$.}
+
+\noindent Thus $\phi$ satisfies the requirements of (iv).
+
+\medskip
+
+{\bf (e)(iv)$\Rightarrow$(iii)} This is trivial;  we have only to take
+$\phi:\Sigma_G\to[0,1]$ as in (iv)
+and consider $\phi\restr\Cal B_G$.
+
+\medskip
+
+{\bf (f)(iii)$\Rightarrow$(ii)} Given $\phi:\Cal B_G\to[0,1]$ as in (iii),
+set $p(f)=\dashint fd\phi$ for $f\in C_b(G)$, where $\dashint\,d\phi$
+is as defined in 363L, that is, the unique $\|\,\|_{\infty}$-continuous
+linear functional on the space
+$L^{\infty}(\Cal B_G)$ of bounded Borel measurable functions from
+$G$ to $\Bbb R$ such that $\dashint\chi E\,d\phi=\phi E$ for every
+$E\in\Cal B_G$.   $p$ is positive because $\phi$ is non-negative (363Lc),
+and $p(\chi G)=\phi G=1$.   If $a\in G$, then
+
+\Centerline{$\dashint a\action_l\chi E\,d\phi=\dashint\chi(aE)d\phi
+=\phi(aE)=\phi E=\dashint\chi E\,d\phi$}
+
+\noindent for every $E\in\Cal B_G$;  because
+$f\mapsto\dashint fd\phi$ and $f\mapsto\dashint a\action_lfd\phi$ are both
+linear and $\|\,\|_{\infty}$-continuous, they agree on
+$L^{\infty}(\Cal B_G)\supseteq C_b(G)$, and
+
+\Centerline{$p(a\action_lf)=\dashint a\action_lfd\phi
+=\dashint fd\phi=p(f)$}
+
+\noindent for every $f\in C_b(G)$, as required.
+
+\medskip
+
+{\bf (g)(ii)$\Rightarrow$(i)} Given $p$ as in (ii), its restriction to
+the space of bounded right-uniformly-continuous functions  is
+positive, linear and $G$-invariant, so $G$ is amenable, by 449E.
+
+\medskip
+
+{\bf (h)(vii)$\Rightarrow$(viii)} Take $\tilde p$ as in (vii).   If
+$g\in\eusm L^1$, $f\in\eusm L^{\infty}$ and $g\ge 0$, then
+
+$$\eqalign{\tilde p(g*f)^{\ssbullet}
+&=\tilde p(g\mu*f)^{\ssbullet}
+=\tilde p(g\mu*f^{\ssbullet})\cr
+&=(g\mu)(G)\tilde p(f^{\ssbullet})
+=\int g\,d\mu\cdot\tilde p(f^{\ssbullet});\cr}$$
+
+\noindent translating into terms of $L^1$ and $L^{\infty}$ as in 444Sa,
+we get $\tilde p(v*u)=\int v\cdot\tilde p(u)$ for all
+$u\in L^{\infty}$ and $v\in(L^1)^+$.   By linearity, the same is
+true for all $v\in L^1$, as required by (viii).
+
+\woddheader{449J}{4}{2}{2}{60pt}
+
+{\bf (i)(viii)$\Rightarrow$(ix)} Suppose that (viii) is true.
+
+\medskip
+
+\quad\grheada\ Note first that if
+$J\subseteq\eusm L^{\infty}$ is finite and $\epsilon>0$, then
+
+\Centerline{$A(J,\epsilon)
+=\{h:h\in C_{k1}^+,\,|\int f\times h\,d\mu-\tilde p(f^{\ssbullet})|
+  \le\epsilon$ for every $f\in J\}$}
+
+\noindent is non-empty.   \Prf\ It is enough to consider the case in which
+$\chi G\in J$.   Let $\eta\in\ooint{0,\bover12}$ be such
+that $\eta+5\eta\sup_{f\in J}\|f^{\ssbullet}\|_{\infty}\le\epsilon$.
+Because
+$\tilde p\in(L^{\infty})^*\cong(L^1)^{**}$, there is a $u_0\in L^1$ such
+that $\|u_0\|_1\le 1$ and
+$|\tilde p(f^{\ssbullet})-\int f^{\ssbullet}\times u_0|\le\eta$ for
+every $f\in J$ (4A4If).   In particular,
+$\int u_0\ge\tilde p(\chi G^{\ssbullet})-\eta=1-\eta$.   By 416I, there is
+a continuous $h_0:G\to\Bbb R$ with compact support such that
+$\|u_0-h_0^{\ssbullet}\|_1\le\eta$.   Now $\int h_0d\mu\ge 1-2\eta$
+and $\int|h_0|d\mu\le 1+\eta$.   So if we set $h_0^+=h_0\vee 0$,
+$\gamma=\int h_0^+d\mu$ and $h=\Bover1{\gamma}h_0^+$, we shall have
+
+\Centerline{$\gamma\le 1+\eta$,
+\quad$\|h_0^+-h_0\|_1=\Bover12\int|h_0|-h_0\le 2\eta$,
+\quad$\|h-h_0^+\|=|\gamma-1|\le 2\eta$,}
+
+\noindent so
+$\|u_0-h^{\ssbullet}\|_1\le 5\eta$, while $h\in C_{k1}^+$.   This will mean
+that
+
+\Centerline{$|\tilde p(f^{\ssbullet})-\int f\times h\,d\mu|
+\le\eta+5\eta\|f^{\ssbullet}\|_{\infty}\le\epsilon$}
+
+\noindent for every $f\in J$.\ \QeD\
+
+We therefore have a filter $\Cal F$ on $C_{k1}^+$
+containing every $A(J,\epsilon)$, and
+$\tilde p(f^{\ssbullet})=\lim_{h\to\Cal F}\int f\times h\,d\mu$ for
+every $f\in\eusm L^{\infty}$.
+
+\medskip
+
+\quad\grheadb\ Now
+$0=\lim_{h\to\Cal F}(g*h)^{\ssbullet}-(\int g\,d\mu)h^{\ssbullet}$ for
+the weak topology of $L^1$, for every $g\in\eusm L^1$.   \Prf\ Set
+$\gamma=\int g\,d\mu$.   Let $f\in\eusm L^{\infty}$.   Define $g'$ by
+setting $g'(x)=\Delta(x^{-1})g(x^{-1})$ whenever this is defined,
+where $\Delta$ is the left modular function of $G$, as before;
+then $g'\in\eusm L^1$
+and $\int g'd\mu=\gamma$ (442K(b-ii)).
+Set $v=(g')^{\ssbullet}\in L^1$.   If $h\in C_{k1}^+$, then
+
+$$\eqalignno{\int f\times(g*h)d\mu
+&=\iint f(xy)g(x)h(y)\mu(dx)\mu(dy)\cr
+\displaycause{444Od}
+&=\int\bigl(\int\Delta(x^{-1})g'(x^{-1})f(xy)\mu(dx)\bigr)h(y)\mu(dy)\cr
+&=\int (g'*f)(y)h(y)\mu(dy)\cr
+\displaycause{444Oa}
+&=\int (g'*f)\times h\,d\mu.\cr}$$
+
+\noindent By (viii), we have
+
+\Centerline{$\tilde p(g'*f)^{\ssbullet}
+=\tilde p(v*f^{\ssbullet})
+=\tilde p(f^{\ssbullet})\int v
+=\gamma\tilde p(f^{\ssbullet})$,}
+
+\noindent so we get
+
+$$\eqalign{\lim_{h\to\Cal F}\int f\times(g*h-\gamma h)d\mu
+&=\lim_{h\to\Cal F}\int (g'*f-\gamma f)\times h\,d\mu\cr
+&=\tilde p(g'*f)^{\ssbullet}-\gamma\tilde p(f^{\ssbullet})
+=0.\cr}$$
+
+\noindent As $f$ is arbitrary, and $(L^1)^*$ can be identified with
+$L^{\infty}$, this is all we need.\ \Qed
+
+\medskip
+
+\quad\grheadc\ Now take any finite set $J\subseteq\eusm L^1$ and
+$\epsilon>0$.   On $(L^1)^J$ let $\frak T$ be the locally convex linear
+space topology which is the product topology when each copy of $L^1$ is
+given the norm topology, and $\frak S$ the corresponding weak topology.
+Define $T:C_k(G)\to(L^1)^J$ by setting
+
+\Centerline{$Th
+=\bigl\langle\hbox{$(g*h)^{\ssbullet}
+  -(\int g\,d\mu)h^{\ssbullet}$}\bigr\rangle_{g\in J}$}
+
+\noindent for $h\in C_k(G)$, where $C_k(G)$ is the linear space of
+continuous real-valued functions on $G$ with compact support.    Then
+$T$ is linear.   Moreover, by ($\beta$), $\lim_{h\to\Cal F}Th=0$ in
+$(L^1)^J$ for the product topology, if each copy of $L^1$ is given its
+weak topology.   By 4A4Be, this is just $\frak S$.   In particular,
+$0$ belongs to the $\frak S$-closure of $T[C_{k1}^+]$.   But $C_{k1}^+$
+is convex and
+$T$ is linear, so $T[C_{k1}^+]$ is convex;  by 4A4Ed, $0$ belongs to the
+$\frak T$-closure of $T[C_{k1}^+]$.   There is therefore an
+$h\in C_{k1}^+$ such that
+$\|(g*h)^{\ssbullet}-(\int g\,d\mu)h^{\ssbullet}\|_1\le\epsilon$ for
+every $g\in J$.   As $J$ and $\epsilon$ are arbitrary, (ix) is true.
+
+\medskip
+
+{\bf (j)(ix)$\Rightarrow$(x)} Suppose that (ix) is true and that
+we are given a compact set $K\subseteq G$ and $\epsilon>0$.   Set
+$\eta=\bover13\epsilon$.
+Fix any $h_0\in C_{k1}^+$.   Let $V$ be a neighbourhood of $e$ such
+that $\|c\action_lh_0-h_0\|_1\le\eta$ whenever $c\in V$ (443Gf).   Let
+$I\subseteq G$ be a finite set such that $K\subseteq IV$.   By (ix),
+there is an $h_1\in C_{k1}^+$ such that
+
+\Centerline{$\|b\action_lh_0*h_1-h_1\|_1\le\eta$ for every $b\in I$,
+\quad$\|h_0*h_1-h_1\|_1\le\eta$.}
+
+\noindent (I omit brackets because
+$(b\action_lh_0)*h_1=b\action_l(h_0*h_1)$, see 444Of.)
+Set $h=h_0*h_1$.   Then $h\in C_{k1}^+$.   \Prf\ $h$ is
+continuous, by
+444Rc (or otherwise).   If we write $M_i$ for the support $\supp(h_i)$ of
+$h_i$ for both $i$, then $h(x)=0$ for every $x\in G\setminus M_0M_1$,
+so $h$ has compact support.   Of course $h\ge 0$, and
+$\int h\,d\mu=\int h_0d\mu\int h_1d\mu=1$ (444Qb), so $h\in C_{k1}^+$.\
+\Qed
+
+If $a\in K$, there are $b\in I$, $c\in V$ such that $a=bc$, so that
+
+$$\eqalignno{\|a\action_lh-h\|_1
+&=\|b\action_l(c\action_lh_0*h_1)-h_0*h_1\|_1\cr
+&\le\|b\action_l(c\action_lh_0-h_0)*h_1\|_1
+  +\|b\action_lh_0*h_1-h_1\|_1+\|h_1-h_0*h_1\|_1\cr
+&\le\|c\action_lh_0-h_0\|_1+\eta+\eta
+\le 3\eta=\epsilon.\cr}$$
+
+\noindent So this $h$ will serve.
+
+\medskip
+
+{\bf (k)(x)$\Rightarrow$(xiii)} Suppose that (x) is true.
+
+\medskip
+
+\quad\grheada\ I show first that for any compact set $K\subseteq G$ and
+$\epsilon>0$ there is an $h\in C_{k1}^+$ such that
+
+\Centerline{$\Reverse{h}=h$,
+\quad$h(e)=\|h\|_{\infty}$,}
+
+\Centerline{$\|a\action_lh-h\|_1\le\epsilon$ for every $a\in K$.}
+
+\noindent \Prf\ By (x), there is an $h_0\in C_{k1}^+$ such that
+$\|a\action_lh_0-h_0\|_1\le\epsilon$ for every $a\in K$.   Set
+$\gamma=\int\Reverse{h}_0d\mu$;  because
+$\Reverse{h}_0\in C_k(X)^+\setminus\{0\}$, $\gamma$ is finite and not $0$.
+Try $h=h_0*\bover1{\gamma}\Reverse{h}_0$, so that
+$h(x)=\bover1{\gamma}\int h_0(y)h_0(x^{-1}y)\mu(dy)$ for every $x\in G$.
+By 444Rc, $h\in C_b(G)$ and
+
+\Centerline{$\|h\|_{\infty}\le\|h_0\|_2\|\Bover1{\gamma}h_0\|_2
+=\Bover1{\gamma}\int h_0^2d\mu=h(e)$.}
+
+\noindent Because $h_0\ge 0$, $h\ge 0$;   by 444Qb, $\int h\,d\mu=1$;  and
+(as in (j) above) $\supp(h)$ is included in the compact set
+$\supp(h_0)\supp(\Reverse{h}_0)$, so
+$h\in C_{k1}^+$.   By 444Rb, or otherwise, $h=\Reverse{h}$.
+
+Finally, if $a\in K$, then
+
+$$\eqalignno{\|a\action_lh-h\|_1
+&=\Bover1{\gamma}\|a\action_l(h_0*\Reverse{h}_0)-h_0*\Reverse{h}_0\|_1
+=\Bover1{\gamma}\|(a\action_lh_0-h_0)*\Reverse{h}_0\|_1\cr
+\displaycause{444Of once more}
+&\le\Bover1{\gamma}\|a\action_lh_0-h_0\|_1\|\Reverse{h}_0\|_1\cr
+\displaycause{444Qb again}
+&=\|a\action_lh_0-h_0\|_1
+\le\epsilon,\cr}$$
+
+\noindent as required.\ \Qed
+
+\medskip
+
+\quad\grheadb\ Next, for any $\epsilon$, $\delta>0$ and
+any compact set $K\subseteq G$ there are an open
+symmetric neighbourhood $V$ of $e$ and a closed set $F$ such
+that $\mu V<\infty$, $\mu F\le\delta$ and
+$\mu(aV\symmdiff V)\le\epsilon\mu V$ whenever $a\in K\setminus F$.
+\Prf\ Of course it is enough to deal with the case in which $\mu K>0$.
+Set $\eta=\epsilon\delta/\mu K$.   By ($\alpha$), there is an
+$h\in C_{k1}^+$ such that
+$h(e)=\|h\|_{\infty}$, $h=\Reverse{h}$ and
+$\|a\action_lh-h\|_1<\eta$ for every $a\in K$.
+
+Set $K_0=\supp(h)$ and $K^*=K_0\cup KK_0$, so that
+$K^*\subseteq G$ is compact.   Set
+
+$$\eqalign{Q&=\{(a,x,t):a\in K,\,x\in G,\,t\in\Bbb R,\cr
+&\mskip150mu\text{either }h(x)\le t<h(a^{-1}x)
+  \text{ or }h(a^{-1}x)\le t<h(x)\}.\cr}$$
+
+\noindent Then $Q$ is a Borel subset of $G\times G\times\Bbb R$ included
+in the compact set $K\times K^*\times[0,h(e)]$.   Let $\mu_L$
+be Lebesgue measure on $\Bbb R$, and let $\mu\times\mu\times\mu_L$ be
+the $\tau$-additive product measure on $G\times G\times\Bbb R$ (417D).
+(Of course this is actually a Radon measure.)   For $t\in\Bbb R$ let
+$V_t$ be the open set $\{x:h(x)>t\}$.   Now 417H tells us that
+
+$$\eqalignno{(\mu\times\mu\times\mu_L)(Q)
+&=\int_{G\times G}\mu_L\{t:(a,x,t)\in Q\}(\mu\times\mu)(d(a,x))\cr
+\displaycause{where $\mu\times\mu$ is the $\tau$-additive product
+measure on $G\times G$, so that we can identify
+$\mu\times\mu\times\mu_L$ with $(\mu\times\mu)\times\mu_L)$, as in
+417Db}
+&=\int_K\int_G|h(a^{-1}x)-h(x)|\mu(dx)\mu(da)\cr
+\displaycause{we can use 417H again because
+$\{x:h(a^{-1}x)\ne h(x)\}\subseteq K^*$ if $a\in K$, and $\mu K^*$ is
+finite}
+&=\int_K\|a\action_lh-h\|_1\mu(da)
+<\eta\mu K\cr
+\displaycause{by the choice of $h$}
+&=\eta\mu K\int h\,d\mu
+=\eta\mu K(\mu\times\mu_L)\{(x,t):0\le t<h(x)\}\cr
+&=\eta\mu K\int_0^{h(e)}\mu V_t\,\mu_L(dt)\cr}$$
+
+\noindent as in 252N.   (The c.l.d.\ and $\tau$-additive product
+measures on $G\times\Bbb R$ coincide, by 417T.)   On the other hand,
+
+$$\eqalignno{(\mu\times\mu\times\mu_L)(Q)
+&=\int_{K\times\Bbb R}\mu\{x:(a,x,t)\in Q\}(\mu\times\mu_L)(d(a,t))\cr
+\displaycause{again, we can use 417H because $x\in K^*$ whenever
+$(a,x,t)\in Q$}
+&=\int_{K\times\Bbb R}\mu(V_t\symmdiff aV_t)(\mu\times\mu_L)(d(a,t))\cr
+&=\int_0^{\infty}\int_K
+  \mu(V_t\symmdiff aV_t)\mu(da)\mu_L(dt)\cr}$$
+
+\noindent because $V_t=aV_t=G$ whenever $t<0$ and $a\in G$.   So there
+must be some $t\in\ooint{0,h(e)}$ such that
+
+\Centerline{$\int_K\mu(V_t\symmdiff aV_t)\mu(da)
+<\eta\mu K\mu V_t=\epsilon\delta\mu V_t$.}
+
+\noindent Set $V=V_t$ and
+$F=\{a:a\in K,\,\mu(V_t\symmdiff aV_t)\ge\epsilon\mu V_t\}$;  then
+$V$ is open, $F$ is closed (443C) and $\mu(V\symmdiff aV)\le\epsilon\mu V$
+for every $a\in K\setminus F$;  also $0<\mu V<\infty$,
+$V$ is symmetric (because $h=\Reverse{h}$) and $e\in V$
+(because $t<h(e)$).\ \Qed
+
+\medskip
+
+\quad\grheadc\ Now let $K\subseteq G$ be a compact set and
+$\epsilon>0$,
+as in the statement of (xiii);  enlarging $K$ and lowering $\epsilon$ if
+necessary, we may suppose that $\mu K>0$ and $\epsilon\le 1$.   Set
+$K_1=K\cup KK$, so that $K_1$ is still compact.   By ($\beta$), we
+have a symmetric open neighbourhood $V$ of $e$, of finite measure,
+such that
+$W=\{a:a\in K_1,\,\mu(aV\symmdiff V)>\bover13\epsilon\mu V\}$ has
+measure less than $\bover12\mu K$.   If $a\in K$, then $W\cup a^{-1}W$
+cannot cover $K$, so there is a $b\in K\setminus W$ such that
+$ab\notin W$;  thus $b$ and $ab$ both belong to $K_1\setminus W$, and
+
+\Centerline{$\mu(aV\symmdiff V)
+\le\mu(aV\symmdiff abV)+\mu(abV\symmdiff V)
+\le\mu(V\symmdiff bV)+\Bover13\epsilon\mu V
+\le\Bover23\epsilon\mu V$.}
+
+We can now find a compact symmetric neighbourhood $L$ of $e$, included in
+$V$, with $8\mu(V\setminus L)\le\epsilon\mu L$.   In this case,
+we shall have $\mu L>0$ and
+
+$$\eqalign{\mu(aL\symmdiff L)
+&\le\mu(aV\setminus aL)+\mu(aV\symmdiff V)+\mu(V\setminus L)\cr
+&\le 2\mu(V\setminus L)+\Bover23\epsilon(\mu L+\mu(V\setminus L))
+\le\epsilon\mu L\cr}$$
+
+\noindent for every $a\in K$, as required.
+
+\medskip
+
+{\bf (l)(xiii)$\Rightarrow$(xiv)} Suppose that (xiii) is true, and that
+$K\subseteq G$ is compact and $\epsilon>0$.   Enlarging $K$ if
+necessary, we may
+suppose that it includes a neighbourhood of $e$.   Of course we may
+also suppose that $\epsilon\le 1$.
+
+\medskip
+
+\quad\grheada\ The first thing to note is that there is a set
+$I\subseteq G$ such that $KI=G$ and
+$m=\sup_{y\in G}\#(\{x:x\in I,\,y\in Kx\})$ is finite.   \Prf\ Let $V$
+be an open neighbourhood of $e$ such that $VV^{-1}\subseteq K$.   Let
+$I\subseteq G$ be maximal subject to $x^{-1}V\cap y^{-1}V=\emptyset$
+for all distinct $x$, $y\in I$.   If $x\in G$, there must be a $y\in I$
+such that $x^{-1}V\cap y^{-1}V\ne\emptyset$, so that
+$x^{-1}\in y^{-1}VV^{-1}$ and $x\in VV^{-1}y\subseteq Ky\subseteq KI$;
+as $x$ is arbitrary, $G\subseteq KI$.   If $y\in G$ and
+$I_y=\{x:x\in I,\,y\in Kx\}$, then $I_y\subseteq K^{-1}y$, so that
+$\{x^{-1}V:x\in I_y\}$ is a disjoint family of subsets of $y^{-1}KV$.
+But this means that $\#(I_y)\mu V\le\mu(y^{-1}KV)=\mu(KV)$.
+Accordingly $\sup_{y\in G}\#(I_y)\le\Bover{\mu(KV)}{\mu V}$ is
+finite.\
+\Qed
+
+\medskip
+
+\quad\grheadb\ Set $\gamma=\sup_{a\in K}\Delta(a)$, $K^*=KKK^{-1}$.
+Let $\delta>0$ be such that
+
+\Centerline{$\delta\gamma m<\epsilon(\mu K-\delta\gamma)$,}
+
+\noindent and let $\eta>0$ be such that
+
+\Centerline{$1+\Bover{\delta\gamma m}{\mu K-\delta\gamma}
+\le(1+\epsilon)(1-\Bover{\eta}{\delta}\mu K^*)$.}
+
+\noindent By (xiii), there is a non-negligible
+compact set $L^*\subseteq G$ such that
+$\mu(aL^*\symmdiff L^*)\le\eta\mu L^*$ for every $a\in K^*$.
+Set $L=\{x:x\in L^*,\,\mu(K^*\setminus L^*x^{-1})\le\delta\}$;  note
+that $L$ is closed (because $x\mapsto\mu(K^*\cap L^*x^{-1})$ is
+continuous, see 443C), therefore compact.
+
+\medskip
+
+\quad\grheadc\ $\mu L\ge(1-\Bover{\eta}{\delta}\mu K^*)\mu L^*$.
+\Prf\
+Set $W=\{(x,y):x\in K^*,\,y\in L^*\setminus L,\,xy\notin L^*\}$.
+Then $W$ is a relatively compact Borel subset of $G\times G$, so we may
+apply Fubini's theorem (in the form 417H, as usual) to see that
+
+$$\eqalign{\delta\mu(L^*\setminus L)
+&\le\int_{L^*\setminus L}\mu(K^*\setminus L^*y^{-1})\mu(dy)
+=\int\mu W^{-1}[\{y\}]\mu(dy)\cr
+&=\int\mu W[\{x\}]\mu(dx)
+=\int_{K^*}\mu((L^*\setminus L)\setminus x^{-1}L^*)\mu(dx)\cr
+&\le\int_{K^*}\mu(L^*\setminus x^{-1}L^*)\mu(dx)
+=\int_{K^*}\mu(xL^*\setminus L^*)\mu(dx)
+\le\eta\mu K^*\mu L^*\cr}$$
+
+\noindent by the choice of $L^*$.   Accordingly
+
+\Centerline{$\mu L=\mu L^*-\mu(L^*\setminus L)
+\ge(1-\Bover{\eta}{\delta}\mu K^*)\mu L^*$.  \Qed}
+
+\noindent In particular, $\mu L>0$.
+
+\medskip
+
+\quad\grheadd\ Set $J=\{x:x\in I,\,L\cap Kx\ne\emptyset\}$.
+For each $x\in J$, choose $z_x\in Kx\cap L$.   Then
+$\Delta(z_x)\le\gamma\Delta(x)$ and
+$\Delta(x)(\mu K-\gamma\delta)\le\mu(Kx\cap L^*)$ for every $x\in J$.
+\Prf\ $\Delta(z_x)=\Delta(z_xx^{-1})\Delta(x)\le\gamma\Delta(x)$ because
+$z_xx^{-1}\in K$.   Next, because $z_x\in L$,
+
+\Centerline{$\mu(K^*z_x\setminus L^*)
+=\Delta(z_x)\mu(K^*\setminus L^*z_x^{-1})\le\delta\Delta(z_x)$.}
+
+\noindent Since $x\in K^{-1}z_x$, $Kx\subseteq KK^{-1}z_x\subseteq K^*z_x$,
+
+\Centerline{$\mu(Kx\setminus L^*)
+\le\mu(K^*z_x\setminus L^*)\le\delta\Delta(z_x)\le\delta\gamma\Delta(x)$}
+
+\noindent and
+
+\Centerline{$\mu(Kx\cap L^*)=\mu(Kx)-\mu(Kx\setminus L^*)
+\ge\Delta(x)\mu K-\delta\gamma\Delta(x)
+=\Delta(x)(\mu K-\delta\gamma)$.  \Qed}
+
+\wheader{449J}{6}{2}{2}{48pt}
+
+\quad\grheade\ Now recall that $\sum_{x\in I}\chi(Kx)\le m\chi G$, by
+the definition of $m$, so that
+
+\Centerline{$(\mu K-\delta\gamma)\sum_{x\in J}\Delta(x)
+\le\sum_{x\in J}\mu(Kx\cap L^*)
+\le m\mu L^*$.}
+
+\noindent
+Since $KI=G$, $L\subseteq KJ$ and
+
+$$\eqalign{KL&\subseteq\bigcup_{x\in J}KKx
+\subseteq\bigcup_{x\in J}KKK^{-1}z_x=\bigcup_{x\in J}K^*z_x,\cr
+\cr
+\mu(KL\setminus L^*)
+&\le\sum_{x\in J}\mu(K^*z_x\setminus L^*)
+=\sum_{x\in J}\Delta(z_x)\mu(K^*\setminus L^*z_x^{-1})\cr
+&\le\delta\sum_{x\in J}\Delta(z_x)
+\le\delta\gamma\sum_{x\in J}\Delta(x)
+\le\Bover{\delta\gamma m}{\mu K-\delta\gamma}\mu L^*.\cr}$$
+
+\noindent Accordingly
+
+$$\eqalignno{\mu(KL)
+&\le\mu L^*(1+\Bover{\delta\gamma m}{\mu K-\delta\gamma})
+\le\mu L\cdot\bover{1+\bover{\delta\gamma m}
+  {\mu K-\delta\gamma}}{1-\bover{\eta}{\delta}\mu K^*}\cr
+\displaycause{by ($\gamma$) above}
+&\le(1+\epsilon)\mu L,\cr}$$
+
+\noindent by the choice of $\delta$ and $\eta$.   Thus we have found
+an
+appropriate set $L$.
+
+\medskip
+
+{\bf (m)(xiv)$\Rightarrow$(xii)} If $I\subseteq G$ is finite and
+$\epsilon>0$,
+$I\cup\{e\}$ is compact, so there is a compact set $L\subseteq G$, of
+non-zero measure, such that
+$\mu(IL\cup L)\le(1+\bover12\epsilon)\mu L$.   Consequently
+
+\Centerline{$\mu(L\symmdiff aL)
+=2\mu(aL\setminus L)
+\le 2\mu(IL\setminus L)
+\le\epsilon\mu L$}
+
+\noindent for every $a\in I$, as required by (xii).
+
+\medskip
+
+{\bf (n)(xii)$\Rightarrow$(ii)} Write $\Cal L$ for the family of all
+compact subsets of $G$ with non-zero measure.   For $L\in\Cal L$,
+define $p_L:C_b(G)\to\Bbb R$ by setting $p_L(f)=\Bover1{\mu L}\int_Lfd\mu$
+for $f\in C_b(G)$.   Of course $|p_L(f)|\le\|f\|_{\infty}$.
+For finite $I\subseteq G$, $\epsilon>0$ set
+
+\Centerline{$\Cal A(I,\epsilon)
+=\{L:L\in\Cal L,\,\mu(aL\symmdiff L)\le\epsilon\mu L$ for
+every $a\in I\}$.}
+
+\noindent By (xii), no $\Cal A(I,\epsilon)$ is empty.   So we have an
+ultrafilter $\Cal F$ on $\Cal L$ containing every $\Cal A(I,\epsilon)$.
+Set $p(f)=\lim_{L\to\Cal F}p_L(f)$ for $f\in C_b(G)$;  then
+$p:C_b(G)\to\Bbb R$ is a positive linear functional and $p(\chi G)=1$.
+
+If $a\in G$, $f\in C_b(G)$ and $L\in\Cal A(\{a\},\epsilon)$, then
+
+$$\eqalign{|p_L(a\action_lf)-p_L(f)|
+&=\Bover1{\mu L}\bigl|\int_Lf(a^{-1}x)\mu(dx)-\int_Lf(x)\mu(dx)\bigr|\cr
+&=\Bover1{\mu L}\bigl|\int_{aL}fd\mu-\int_Lfd\mu\bigr|
+\le\Bover1{\mu L}\|f\|_{\infty}\mu(aL\symmdiff L)
+\le\epsilon\|f\|_{\infty}.\cr}$$
+
+\noindent
+Since $\Cal F$ contains $\Cal A(\{a\},\epsilon)$ for every
+$\epsilon>0$,
+
+\Centerline{$|p(a\action_lf)-p(f)|
+=\lim_{L\to\Cal F}|p_L(a\action_lf)-p_L(f)|=0$.}
+
+\noindent As $f$ and $a$ are arbitrary, $p$ witnesses that (ii) is true.
+
+\medskip
+
+{\bf (o)(xii)$\Rightarrow$(xi)} Given a finite set $I\subseteq G$ and
+$\epsilon>0$, (xii) tells us that there is a compact set $L\subseteq G$
+of non-zero measure such
+that $\mu(aL\symmdiff L)\le\epsilon^q\mu L$ for every $a\in I$.   Try
+$u=\Bover1{(\mu L)^{1/q}}(\chi L)^{\ssbullet}$.   Then $\|u\|_q=1$.
+If $a\in I$, then $a\action_lu=\Bover1{(\mu L)^{1/q}}\chi(aL)^{\ssbullet}$,
+so
+
+\Centerline{$\int|u-a\action_lu|^q
+=\int(\Bover1{(\mu L)^{1/q}}\chi(aL\symmdiff L)^{\ssbullet})^q
+=\Bover{\mu(aL\symmdiff L)}{\mu L}
+\le\epsilon^q$}
+
+\noindent and $\|u-a\action_lu\|_q\le\epsilon$, as required by (xi).
+
+\medskip
+
+{\bf (p)(xi)$\Rightarrow$(xii)} Now assume that (xi) is true.   Let
+$I\subseteq G$ be a finite set, and $\epsilon>0$.   Set
+$\delta=\Bover{\epsilon}{4+\epsilon}$, and let
+$\eta>0$ be such that that $(1+\eta\#(I))^q\le 1+\delta$.
+
+Take $u\in L^q$ such that $\|u\|_q=1$ and
+$\|u-a\action_lu\|_q\le\eta$ for every $a\in I$.   Setting $v=|u|$, we
+see that $a\action_lv=|a\action_lu|$, so
+$|v-a\action_lv|\le|u-a\action_lu|$ and $\|v-a\action_lv\|_q\le\eta$ for
+every $a\in I$, while $\|v\|_q=1$.   Let $f:G\to\coint{0,\infty}$ be
+a function such
+that $f^{\ssbullet}=v$ in $L^q$;  then $\|f\|_q=1$ while
+$\|f-a\action_lf\|_q\le\eta$ for every $a\in I$.   Set
+$g=\sup_{a\in I\cup\{e\}}a\action_lf$;  then
+
+\Centerline{$f\le g\le f+\sum_{a\in I}(a\action_lf-f)^+$,}
+
+\noindent so
+
+\Centerline{$\|g\|_q\le 1+\sum_{a\in I}\|a\action_lf-f\|_q
+\le 1+\eta\#(I)$,
+\quad$\int g^qd\mu\le(1+\eta\#(I))^q\le 1+\delta$.}
+
+\noindent For $t>0$, set $E_t=\{x:f(x)^q\ge t\}$, $F_t=\{t:g(x)^q\ge t\}$.
+Then
+
+\Centerline{$\int_0^{\infty}\mu E_tdt=\int f^qd\mu=1$,
+\quad$\int_0^{\infty}\mu F_tdt=\int g^qd\mu\le 1+\delta$,}
+
+\noindent where the integrals here are with respect to Lebesgue measure
+(252O).   There must therefore be a $t>0$ such that $\mu E_t>0$ and
+$\mu F_t\le(1+\delta)\mu E_t$.
+
+If $a\in I$,
+then $a\action_lf\le g$, so $aE_t=\{x:(a\action_lf)(x)\ge t\}$
+is included in $F_t$;  also, of course, $E_t\subseteq F_t$.
+We therefore have
+
+\Centerline{$\mu(E_t\symmdiff aE_t)=2\mu(aE_t\setminus E_t)
+\le 2\mu(F_t\setminus E_t)\le 2\delta\mu E_t$.}
+
+\noindent There is no reason why $E_t$ should be compact, so it may
+not itself be the $L$ we seek.   However, $\mu E_t$ is certainly finite, so
+there must be a compact $L\subseteq E$ such that
+$\mu L\ge(1-\delta)\mu E_t$.   In this case, $\mu L>0$ and
+
+$$\eqalign{\mu(aL\symmdiff L)
+&\le\mu(aL\symmdiff aE_t)+\mu(aE_t\symmdiff E_t)+\mu(E_t\symmdiff L)\cr
+&\le 2\mu(E_t\setminus L)+2\delta\mu E_t
+\le 4\delta\mu E_t
+\le\Bover{4\delta}{1-\delta}\mu L
+=\epsilon\mu L\cr}$$
+
+\noindent for every $a\in I$.   So this $L$ will serve.
+}%end of proof of 449J
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Of course there are many variations possible in the
+conditions listed above, some of which are in
+449Xk-449Xm.  %449Xk 449Xl 449Xm
+}
+
+\leader{449K}{Proposition} Let $G$ be an amenable locally compact
+Hausdorff group, and $H$ a subgroup of $G$.   Then $H$ is amenable.
+
+\proof{\cmmnt{({\smc Paterson 88}, 1.12)}
+{\bf (a)} For most of the proof (down to the end of (g) below), suppose
+that $H$ is closed.   Let $V$ be a compact neighbourhood of the identity in
+$G$.   Let $I\subseteq G$ be a maximal set such that
+$VzH\cap Vz'H=\emptyset$ for all distinct $z$, $z'\in I$.
+Then $V^{-1}VIH=G$.   \Prf\ If $x\in G$, there is a $z\in I$ such that
+$VxH\cap VzH\ne\emptyset$, that is,
+
+\Centerline{$x\in V^{-1}VzHH^{-1}=V^{-1}VzH\subseteq V^{-1}VIH$.  \Qed}
+
+\medskip
+
+{\bf (b)} If $x\in G$ then
+
+\Centerline{$I\cap V^{-1}xH
+=\{z:z\in I$, $z\in V^{-1}xH\}
+=\{z:z\in I$, $x\in VzH^{-1}=VzH\}$}
+
+\noindent has at most one element.   If $K\subseteq G$ is compact, then
+there is a finite set $J\subseteq G$ such that $K\subseteq V^{-1}J$, and
+now
+
+\Centerline{$I\cap KH\subseteq\bigcup_{x\in J}I\cap V^{-1}xH$}
+
+\noindent is finite.
+
+\medskip
+
+{\bf (c)} Let $h\in C_k(X)^+$ be such that $h\ge\chi(V^{-1}V)$;  write
+$W$ for the support of $h$.   Set $g(x)=\sum_{z\in I}h(xz^{-1})$ for
+$x\in G$.
+
+If $K\subseteq G$ is compact, then
+
+$$\eqalign{&\{z:z\in I,\,h(xyz^{-1})\ne 0
+   \text{ for some }x\in K\text{ and }y\in H\}\cr
+&\mskip100mu
+\subseteq I\cap\{z:KHz^{-1}\cap W\ne\emptyset\}\cr
+&\mskip100mu
+=I\cap\{z:zH^{-1}K^{-1}\cap W^{-1}\ne\emptyset\}
+=I\cap W^{-1}KH\cr}$$
+
+\noindent is finite.   In particular, $\{z:z\in I$, $h(xz^{-1})\ne 0\}$
+and $g(x)$ are finite for every $x\in G$.   Next, if $x_0\in G$,
+then $J=\{z:h(xz^{-1})\ne 0$ for some $x\in x_0V\}$ is finite, and
+$g(x)=\sum_{z\in J}h(xz^{-1})$ for $x\in x_0V$, so $g$ is continuous at
+$x_0$;  as $x_0$ is arbitrary, $g\in C(G)$.   Of course $g\ge 0$ because
+$h\ge 0$.
+
+\medskip
+
+{\bf (d)(i)} For $x\in G$, set $g_x(y)=g(x^{-1}y)$ for $y\in H$.   Then
+$g_x\in C_k(H)$.   \Prf\ $g_x$ is continuous because $g$ is.   Now
+$J=\{z:z\in I,\,h(x^{-1}yz^{-1})\ne 0$ for some $y\in H\}$ is finite, and
+
+$$\eqalign{\{y:g_x(y)\ne 0\}
+&\subseteq\{y:\text{ there is a }z\in I
+   \text{ such that }h(x^{-1}yz^{-1})\ne 0\}
+   \cr
+&\subseteq\{y:\text{ there is a }z\in J
+   \text{ such that }x^{-1}yz^{-1}\in W\}
+=xWJ\cr}$$
+
+\noindent which is compact.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Moreover, for any $x_0\in G$ there is a compact set
+$L\subseteq H$ such that
+$\{x:|g_x-g_{x_0}|\le\epsilon\chi L\}$ is a neighbourhood of $x_0$ for
+every $\epsilon>0$.   \Prf\
+
+\Centerline{$J=\{z:z\in I,\,h(x^{-1}yz^{-1})\ne 0
+   \text{ for some }x\in x_0V\text{ and }y\in H\}$}
+
+\noindent is finite, by (c) in its full strength.   Let $L$ be the compact
+set $H\cap x_0VWJ$.
+
+Take any $\epsilon>0$.   If $x\in x_0V$, then
+$g_x(y)=\sum_{z\in J}h(x^{-1}yz^{-1})$ for every $y\in H$, and
+$g_x(y)=0$ for $y\in H\setminus L$.   Moreover, setting
+$g'_x(y)=\sum_{z\in J}h(x^{-1}yz^{-1})$ for $x\in G$ and $y\in H$,
+$(x,y)\mapsto g'_x(y)$ is continuous, so $x\mapsto g'_x:G\to C(H)$ is
+continuous if we give $C(H)$ the topology of uniform convergence on compact
+subsets of $H$ (4A2G(g-i)).   In particular, $x\mapsto g'_x\restr L$ is
+continuous for the norm topology of $C(L)$, and
+$U
+=\{x:x\in x_0V$, $\|g'_x\restr L-g'_{x_0}\restr L\|_{\infty}\le\epsilon\}$
+is a neighbourhood of $x_0$.   But if $x\in U$, then
+
+\Centerline{$g_x(y)=g_{x_0}(y)=0$ for $y\in H\setminus L$,}
+
+\Centerline{$|g_x(y)-g_{x_0}(y)|=|g'_x(y)-g'_{x_0}(y)|\le\epsilon$
+for $y\in L$,}
+
+\noindent so $|g_x-g_{x_0}|\le\epsilon\chi L$.\ \Qed
+
+\medskip
+
+{\bf (e)} Now take a left Haar measure $\nu$ on $H$.   (This is where it
+really matters whether $H$ is closed.)   Define $T:C_b(H)\to\BbbR^G$ by
+setting
+
+\Centerline{$(Tf)(x)=\int g_x\times fd\nu
+=\int_Hg(x^{-1}y)f(y)\nu(dy)$}
+
+\noindent for $f\in C_b(H)$ and $x\in G$.   Then $Tf\in C(G)$ for every
+$f\in C_b(H)$.   \Prf\ Given $x_0\in G$ and $\epsilon>0$, let
+$L\subseteq H$ be a compact set as in (d-ii).   Let $\delta>0$ be such that
+$\delta\int_L|f|d\nu\le\epsilon$.   Then
+
+\Centerline{$\{x:|(Tf)(x)-(Tf)(x_0)|\le\epsilon\}
+\supseteq\{x:|g_x-g_{x_0}|\le\delta\chi L\}$}
+
+\noindent is a neighbourhood of $x_0$.   As $x_0$ and $\epsilon$ are
+arbitrary, $Tf$ is continuous.\ \Qed
+
+Clearly, $T:C_b(H)\to C(G)$ is a positive linear operator.   Next, if
+$f\in C_b(H)$ and $b\in H$, $T(b\action_lf)=b\action_l(Tf)$.    \Prf\
+
+$$\eqalign{T(b\action_lf)(x)
+&=\int_Hg(x^{-1}y)(b\action_lf)(y)\nu(dy)
+=\int_Hg(x^{-1}y)f(b^{-1}y)\nu(dy)\cr
+&=\int_Hg(x^{-1}by)f(y)\nu(dy)
+=(Tf)(b^{-1}x)
+=(b\action_lTf)(x)\cr}$$
+
+\noindent for every $x\in G$.\ \Qed
+
+We need to know that $T(\chi H)(x)>0$ for every $x\in G$.   \Prf\
+There is a $z\in I$ such that $x^{-1}\in V^{-1}VzH$, as remarked in (a).
+Now $x^{-1}Hz^{-1}$ meets $V^{-1}V$, so there is a $y\in H$ such that
+
+\Centerline{$1\le h(x^{-1}yz^{-1})\le g(x^{-1}y)=g_x(y)$}
+
+\noindent and $T(\chi H)(x)=\int_Hg_xd\nu>0$
+because $g_x$ is continuous and non-negative and $\nu$ is 
+strictly positive.\ \Qed
+
+\medskip
+
+{\bf (f)} We therefore have a positive linear operator
+$S:C_b(H)\to C(G)$ defined by setting $Sf=\Bover{Tf}{T(\chi H)}$ for
+$f\in C_b(H)$.   Since $S(\chi H)=\chi G$,
+$S[C_b(H)]\subseteq C_b(G)$;  moreover, for $f\in C_b(H)$ and
+$b\in H$,
+
+$$\eqalign{S(b\action_lf)
+&=\Bover{T(b\action_lf)}{T(\chi H)}
+=\Bover{T(b\action_lf)}{T(b\action_l\chi H)}\cr
+&=\Bover{b\action_l(Tf)}{b\action_l(T\chi H)}
+=b\action_l\Bover{Tf}{T\chi H}
+=b\action_lSf.\cr}$$
+
+\medskip
+
+{\bf (g)} At this point, recall that by 449J(ii) there is a positive linear
+functional $p:C_b(G)\to\Bbb R$ such that $p(\chi G)=1$ and
+$p(a\action_lf)=p(f)$ whenever $f\in C_b(G)$ and $a\in G$.
+Set $q=pS:C_b(H)\to\Bbb R$;  then
+$q$ is a positive linear functional, $q(\chi H)=1$ and
+$q(b\action_lf)=q(f)$ whenever $f\in C_b(H)$ and $b\in H$.   So $q$
+witnesses that 449J(ii) is true for $H$, and $H$ is amenable.
+
+\medskip
+
+{\bf (h)} All this has been on the assumption that $H$ is closed.   But in
+general $\overline{H}$ is a closed subgroup of $G$, therefore amenable by
+(a)-(g) here, and $H$ is dense in $\overline{H}$, therefore amenable by
+449F(a-ii).
+}%end of proof of 449K
+
+%can't we improve the argument in (b), or at least move much of it to 4A5,
+%by showing that  \phi  is continuous in a more general case?
+
+%Very likely the method of Paterson 88, 1.12, would be better still,
+%if I knew what a Bruhat function was.
+
+\leader{449L}{}\cmmnt{ If we make a further step back towards the
+origin of this topic, and suppose that our group is discrete, then we
+have a striking further condition to add to the lists above.   I give
+this as a corollary of a general result on group actions recalling the
+main theorems of \S\S395 and 448.
+
+\medskip
+
+\noindent}{\bf Tarski's theorem} Let $G$ be a group acting on a
+non-empty set $X$.   Then the following are equiveridical:
+
+(i) there is an additive functional
+$\nu:\Cal PX\to[0,1]$ such that $\nu X=1$ and $\nu(a\action A)=\nu A$
+whenever $A\subseteq X$ and $a\in G$;
+
+(ii) there are no
+$A_0,\ldots,A_n$, $a_0,\ldots,a_n$, $b_0,\ldots,b_n$ such that
+$A_0,\ldots,A_n$ are subsets of $X$ covering $X$,
+$a_0,\ldots,a_n,b_0,\penalty-100\ldots,b_n$ belong to $G$, and 
+$a_0\action A_0$, $b_0\action A_0$, $a_1\action A_1$,
+$b_1\action A_1,\ldots,b_n\action A_n$ are all disjoint.
+
+\proof{{\bf (a)(i)$\Rightarrow$(ii)} This is elementary, for if
+$\nu:\Cal PX\to[0,1]$ is a non-zero additive functional and
+$A_0,\ldots,A_n$ cover $X$ and $a_0,\ldots,b_n\in G$, then
+
+\Centerline{$\sum_{i=0}^n\nu(a_i\action A_i)
+  +\sum_{i=0}^n\nu(b_i\action A_i)
+=2\sum_{i=0}^n\nu A_i\ge 2\nu X>\nu X$,}
+
+\noindent and $a_0\action A_0,\ldots,b_n\action A_n$ cannot all be
+disjoint.
+
+\medskip
+
+{\bf (b)(ii)$\Rightarrow$(i)} Now suppose that (ii) is true.
+
+\medskip
+
+\quad\grheada\ Suppose that $c_0,\ldots,c_n\in G$.   Then there is a
+finite set $I\subseteq X$ such that
+$\#(\{c_i\action x:i\le n,\,x\in I\})<2\#(I)$.   \Prf\Quer\ Otherwise,
+by the Marriage Lemma in the form 4A1H, applied to the set
+
+\Centerline{$R=\{((x,j),c_i\action x):x\in X,\,j\in\{0,1\},\,i\le n\}
+\subseteq(X\times\{0,1\})\times X$,}
+
+\noindent there is an injective function $\phi:X\times\{0,1\}\to X$
+such
+that $\phi(x,j)\in\{c_i\action x:i\le n\}$ for every $x\in X$ and
+$j\in\{0,1\}$.   Now set
+$B_{ij}=\{x:\phi(x,0)=c_i\action x,\,\phi(x,1)=c_j\action x\}$ for $i$,
+$j\le n$, so that $X=\bigcup_{i,j\le n}B_{ij}$.   Let
+$A_{ij}\subseteq B_{ij}$ be such that $\langle A_{ij}\rangle_{i,j\le n}$
+is a partition of $X$, and set $a_{ij}=c_i$, $b_{ij}=c_j$ for $i$,
+$j\le n$;  then $a_{ij}\action A_{ij}\subseteq\phi[A_{ij}\times\{0\}]$,
+$b_{ij}\action A_{ij}\subseteq\phi[A_{ij}\times\{1\}]$ are all
+disjoint, which is supposed to be impossible.\ \Bang\Qed
+
+\medskip
+
+\quad\grheadb\ Suppose that $J\subseteq G$ is finite and $\epsilon>0$.
+Then there is a non-empty finite set $I\subseteq X$ such that
+$\#(I\symmdiff c\action I)\le\epsilon\#(I)$ for every $c\in J$.
+\Prf\ It is enough to consider the case in which the identity $e$ of
+$G$ belongs to $J$.   \Quer\ Suppose, if possible, that there is no such
+set $I$.    Let $m\ge 1$ be such that $(1+\bover12\epsilon)^m\ge 2$.   Set
+$K=J^m=\{c_1c_2\ldots c_m:c_1,\ldots,c_m\in J\}$.   By ($\alpha$),
+there
+is a finite set $I_0\subseteq X$ such that $\#(I_0^*)<2\#(I_0)$, where
+$I_0^*=\{a\action x:a\in K,\,x\in I_0\}$.   Choose $c_1,\ldots,c_m$
+and $I_1,\ldots,I_m$ inductively such that
+
+\inset{\noindent given that $I_k$ is a non-empty finite subset of $X$,
+where $0\le k<m$, take $c_{k+1}\in J$ such that
+$\#(I_k\symmdiff c_{k+1}\action I_k)>\epsilon\#(I_k)$ and set
+$I_{k+1}=I_k\cup c_{k+1}\action I_k$.}
+
+\noindent Then $I_k\subseteq\{a\action x:a\in J^k,\,x\in I_0\}$ for
+each $k\le m$, and in particular $I_m\subseteq I_0^*$.   But also
+
+$$\eqalign{\#(I_{k+1})
+&=\#(I_k)+\#((c_{k+1}\action I_k)\setminus I_k)\cr
+&=\#(I_k)+\Bover12\#((c_{k+1}\action I_k)\symmdiff I_k)
+\ge(1+\Bover12\epsilon)\#(I_k)\cr}$$
+
+\noindent for every $k<m$, so
+
+\Centerline{$\#(I^*_0)\ge\#(I_m)\ge(1+\Bover12\epsilon)^m\#(I_0)
+\ge 2\#(I_0)$,}
+
+\noindent contrary to the choice of $I_0$.\ \Bang\Qed
+
+\medskip
+
+\quad\grheadc\ There is therefore an ultrafilter $\Cal F$ on
+$[X]^{<\omega}\setminus\{\emptyset\}$ such that
+
+\Centerline{$\Cal A_{c\epsilon}
+=\{I:I\in[X]^{<\omega}\setminus\{\emptyset\},\,
+\#(I\symmdiff c\action I)\le\epsilon\#(I)\}$}
+
+\noindent belongs to $\Cal F$ for every $c\in G$ and $\epsilon>0$.
+For
+$I\in[X]^{<\omega}\setminus\{\emptyset\}$ and $A\subseteq X$ set
+$\nu_I(A)=\#(A\cap I)/\#(I)$, and set $\nu A=\lim_{I\to\Cal F}\nu_IA$
+for every $A\subseteq X$, so that $\nu:\Cal PX\to[0,1]$ is an additive
+functional and $\nu X=1$.
+
+Now $\nu$ is $G$-invariant.   \Prf\ If $A\subseteq X$ and $c\in G$ and
+$\epsilon>0$, then $\Cal A_{c^{-1},\epsilon}\in\Cal F$.   If
+$I\in\Cal A_{c^{-1},\epsilon}$, then
+
+$$\eqalign{|\nu_I(c\action A)-\nu_I(A)|
+&=\Bover1{\#(I)}|\#(I\cap(c\action A))-\#(I\cap A)|\cr
+&=\Bover1{\#(I)}|\#((c^{-1}\action I)\cap A)-\#(I\cap A)|\cr
+&\le\Bover1{\#(I)}\#((c^{-1}\action I)\symmdiff I)
+\le\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary,
+$\lim_{I\to\Cal F}\nu_I(c\action A)-\nu_I(A)=0$, and
+$\nu(c\action A)=\nu A$.   As $A$ and $c$ are arbitrary, $\nu$ is
+$G$-invariant.\ \Qed
+
+So $\nu$ witnesses that (i) is true, and the proof is complete.
+}%end of proof of 449L
+
+\leader{449M}{Corollary} Let $G$ be a group with its discrete
+topology.   Then the following are equiveridical:
+
+(i) $G$ is amenable;
+
+(ii) there are no
+$A_0,\ldots,A_n$, $a_0,\ldots,a_n$, $b_0,\ldots,b_n$ such that
+$G=\bigcup_{i\le n}A_i$
+$a_0,\ldots,a_n,b_0,\ldots,b_n$ belong to $G$, and $a_0A_0$,
+$b_0A_0$, $a_1A_1$,
+$b_1A_1,\ldots,b_nA_n$ are disjoint.
+
+\proof{ All we have to observe is that ($\alpha$) every function from
+$G$ to $\Bbb R$ is uniformly continuous for the right uniformity of
+$G$,
+so that $G$ is amenable iff there is an invariant positive linear
+functional $p:\ell^{\infty}(G)\to\Bbb R$ such that $p(\chi G)=1$
+($\beta$) that a positive linear functional on $\ell^{\infty}(G)$ is
+$G$-invariant iff the corresponding additive functional on $\Cal PG$
+is
+$G$-invariant.   So (i) of 449L is equivalent to amenability of $G$ as
+defined in 449A.
+}%end of proof of 449M
+
+\leader{449N}{Theorem} Let $G$ be a group which is amenable in its
+discrete topology, $X$ a set, and $\action$ an action of $G$ on $X$.
+Let $\Cal E$ be a subring of $\Cal PX$ and
+$\nu:\Cal E\to\coint{0,\infty}$ a finitely additive functional which
+is $G$-invariant in the sense that $g\action E\in\Cal E$ and
+$\nu(g\action E)=\nu E$ whenever $E\in\Cal E$ and $g\in G$.   Then
+there is an extension of $\nu$ to a $G$-invariant non-negative finitely
+additive functional $\tilde\nu$ defined on the ideal $\Cal I$ of
+subsets of $X$ generated by $\Cal E$.
+
+\proof{{\bf (a)} There is a non-negative finitely additive functional
+$\theta:\Cal I\to\Bbb R$ extending $\nu$.   \Prf\ Let $V$ be the
+linear subspace of $\ell^{\infty}(X)$ generated by $\{\chi E:E\in\Cal E\}$,
+so that $V$ can be identified with the Riesz space $S(\Cal E)$ (361L).
+Let $U$ be the solid linear subspace of $\ell^{\infty}(X)$ generated
+by $V$.   For $u\in U$ set
+$q(u)=\inf\{\dashint v\,d\nu:v\in V$, $|u|\le v\}$, where
+$\dashint\,\,d\nu:S(\Cal E)\to\Bbb R$ is the positive linear functional
+corresponding to $\nu:\Cal E\to\coint{0,\infty}$ as in 361F-361G.
+Then $q$ is a seminorm, and $|\dashint v\,d\nu|\le q(v)$ for every
+$v\in V$.   So there is a linear functional $f:U\to\Bbb R$ such that
+$f(v)=\dashint v\,d\nu$ for every $v\in V$ and $|f(u)|\le q(u)$ for every
+$u\in U$ (4A4D(a-i)).   Set $\theta A=f(\chi A)$ for $A\in\Cal I$.
+Then $\theta:\Cal I\to\Bbb R$ is additive and extends $\nu$.   If
+$A\in\Cal I$, there is an $E\in\Cal E$ including $A$.   Now we have
+
+\Centerline{$\theta(E\setminus A)=f(\chi E-\chi A)
+\le q(\chi E-\chi A)\le\dashint\chi E\,d\nu=\nu E=\theta E$,}
+
+\noindent so $\theta A\ge 0$.   So $\theta$ is non-negative.\ \Qed
+
+\medskip
+
+{\bf (b)} As in the proof of 449M, we have a positive $G$-invariant
+linear functional $p:\ell^{\infty}(G)\to\Bbb R$ such that $p(\chi G)=1$.
+For $A\in\Cal I$, set $f_A(a)=\theta(a^{-1}\action A)$ for $a\in G$, and
+$\tilde\nu A=p(f_A)$.   Then $\tilde\nu:\Cal I\to\coint{0,\infty}$ is
+additive.   If $E\in\Cal E$ then $f_A(a)=\nu E$ for every $a$, so
+$\tilde\nu$ extends $\nu$.   If $A\in\Cal I$ and $a$, $b\in G$, then
+$f_{aA}(b)=\theta(b^{-1}aA)=f_A(a^{-1}b)$, so $f_{aA}=a\action_lf_A$
+and
+
+\Centerline{$\tilde\nu(aA)=p(f_{aA})=p(f_A)=\tilde\nu A$.}
+
+\noindent Thus $\tilde\nu$ is $G$-invariant, as required.
+}%end of proof of 449N
+
+\leader{449O}{Corollary}\cmmnt{ ({\smc Banach 1923})} If $r=1$ or $r=2$,
+there is a functional $\theta:\Cal P\BbbR^r\to[0,\infty]$ such that
+(i) $\theta(A\cup B)=\theta A+\theta B$ whenever $A$,
+$B\subseteq\BbbR^r$ are disjoint (ii) $\theta E$ is the Lebesgue
+measure of $E$ whenever $E\subseteq\BbbR^r$ is Lebesgue measurable
+(iii) $\theta(g[A])=\theta A$ whenever $A\subseteq\BbbR^r$ and
+$g:\BbbR^r\to\BbbR^r$ is an isometry.
+
+\proof{{\bf (a)} The point is that the group $G$ of all isometries of
+$\BbbR^r$, with its discrete topology, is amenable.   \Prf\ Let
+$G_0\subseteq G$ be the subgroup consisting of rotations about
+$\tbf{0}$;  because $r\le 2$, this is abelian, therefore amenable
+(449Cf).   Let $G_1\subseteq G$ be the subgroup consisting of
+isometries
+keeping $\tbf{0}$ fixed;  then $G_0$ is a normal subgroup of $G_1$,
+and $G_1/G_0$ is abelian, so $G_1$ is amenable (449Cc).   Let
+$G_2\subseteq G$ be the normal subgroup consisting of translations;
+then $G_2$ is abelian, therefore amenable.   Now $G=G_1G_2$, so $G$ is
+amenable (449Cd).\ \Qed
+
+\medskip
+
+{\bf (b)} Let $\Cal E$ be the ring of subsets of $\BbbR^r$ with finite
+Lebesgue measure, and let $\nu$ be the restriction of Lebesgue measure
+to $\Cal E$.   Then $\nu$ is $G$-invariant.   By 449N, there is a
+$G$-invariant extension $\tilde\nu$ of $\nu$ to the ideal $\Cal I$
+generated by
+$\Cal E$.   Setting $\theta A=\tilde\nu A$ for $A\in\Cal I$,
+$\infty$
+for $A\in\Cal P\BbbR^r\setminus\Cal I$, we have a suitable functional
+$\theta$.
+}%end of proof of 449O
+
+\exercises{\leader{449X}{Basic exercises $\pmb{>}$(a)}
+%\sqheader 449Xa
+Let $G$ be a topological group.   On $G$ define a binary operation
+$\diamond$ by saying that $x\diamond y=yx$ for all $x$,
+$y\in G$.   Show that $(G,\diamond)$ is a topological group isomorphic
+to $G$, so is amenable iff $G$ is.
+%449A
+
+\spheader 449Xb
+Show that any finite topological group is amenable.
+%449C
+
+\sqheader 449Xc Show that, for any $r\in\Bbb N$, the isometry group of
+$\BbbR^r$, with the topology of pointwise convergence, is amenable.
+\Hint{443Xw, 449Cd.}
+%441G isometry group, 449C
+
+\spheader 449Xd Find a locally compact Polish
+group which is amenable but not unimodular.
+\Hint{442Xf, 449Cd.}
+%449C
+
+\spheader 449Xe\dvAnew{2013} Prove 449Cg directly from 441C, without
+mentioning Haar measure.
+%449C 
+
+\spheader 449Xf Let $G$ be a topological group and $U$ the space of
+bounded real-valued functions on $G$ which are uniformly continuous
+for the right uniformity of $G$.   Show that $\action_r$, as defined in
+4A5Cc, gives an action of $G$ on $U$.
+%449D
+
+%find example in which it is not continuous for $\|\,\|_{\infty}$ on
+%$U$?
+
+\spheader 449Xg Let $\action$ be an action of a group $G$ on a set
+$X$, and $U$ a Riesz subspace of $\ell^{\infty}(X)$, containing the
+constant functions, such that $a\action f\in U$ whenever $f\in U$
+and $a\in G$.
+Show that the following are equiveridical:  (i) there is a
+$G$-invariant
+positive linear functional $p:U\to\Bbb R$ such that $p(\chi X)=1$;
+(ii)
+$\sup_{x\in X}\sum_{i=0}^nf_i(x)-f_i(a_i\action x)\ge 0$ whenever
+$f_0,\ldots,f_n\in U$ and $a_0,\ldots,a_n\in G$.   \Hint{if (ii) is
+true, let $V$ be the linear subspace generated by
+$\{f-a\action f:f\in U$, $a\in G\}$ and show that
+$\inf_{g\in V}\|g-\chi X\|_{\infty}=1$.}
+%449E
+
+\sqheader 449Xh Let $X$ be a set and $G$ the group of all
+permutations of $X$.   (i) Give $X$ the zero-one metric,
+so that $G$ is the
+isometry group of $X$.   Show that $G$, with the topology of
+pointwise convergence (441G), is amenable.   \Hint{for any
+$I\in[X]^{<\omega}$,
+$\{a:a\in G,\,a(x)=x$ for every $x\in X\setminus I\}$ is amenable.}
+(ii) Show that if $X$ is infinite then $G$, with its discrete
+topology, is not amenable.   \Hint{the left action of $F_2$ on itself
+can be regarded as an embedding of $F_2$ in $G$.}
+%449C 449Fa 449G
+
+\spheader 449Xi Let $G$ be a Hausdorff topological group, and $\hat G$
+its completion with respect to its bilateral uniformity (definition:
+4A5Hb).   Show that $G$ is amenable iff $\hat G$ is.
+%449Cb 449Fa
+
+\spheader 449Xj(i) Let $G$ be the group with generators $a$, $b$ and
+relations $a^2=b^3=e$ (that is, the quotient of the free group on two
+generators $a$ and $b$ by the normal subgroup generated by
+$\{a^2,b^3\}$).   Show that $G$, with its discrete topology, is not
+amenable.
+(ii) Let $G$ be the group with generators $a$, $b$ and
+relations $a^2=b^2=e$.   Show that $G$, with its discrete topology, is
+amenable.   \Hint{we have a function $\length:G\to\Bbb N$ such that
+$\length(ab)\le\length(a)+\length(b)$ for all $a$, $b\in G$ and
+$\limsup_{n\to\infty}\Bover1n\#(\{a:\length(a)\le n\})$ is finite.
+See also 449Yf.}
+%449Xj 449G
+
+\spheader 449Xk Let $G$ be a locally compact Hausdorff group, and $\mu$ a
+left Haar measure on $G$.   Show that $G$ is amenable iff
+for every finite set $I\subseteq G$, finite set
+$J\subseteq\eusm L^{\infty}(\mu)$ and $\epsilon>0$, there is an
+$h\in C_{k1}(G)^+$ (definition:  449J) such that
+$|\int f(ax)h(x)\mu(dx)-\int f(x)h(x)\mu(dx)|\le\epsilon$
+for every $a\in I$ and $f\in J$.   \Hint{the image of the unit ball in
+$L^1$ is weak* dense in the unit ball of $(L^{\infty})^*$.}
+%449J
+
+\spheader 449Xl Let $G$ be a locally compact Hausdorff group,
+and $\mu$ a left Haar measure on $G$.   Show that the following are
+equiveridical:
+(i) $G$ is amenable;
+(ii) there is a positive linear functional
+$p^{\#}:L^{\infty}(\mu)\to\Bbb R$ such that
+$p^{\#}(\chi G^{\ssbullet})=1$ and
+$p^{\#}(a\action_ru)=p^{\#}(u)$ for every $u\in L^{\infty}(\mu)$ and
+every $a\in G$;
+(iii) for every finite set $I\subseteq G$, finite set
+$J\subseteq\eusm L^{\infty}(\mu)$ and $\epsilon>0$, there is an
+$h\in C_{k1}^+$
+such that $|\int f(xa)h(x)\mu(dx)-\int f(x)h(x)\mu(dx)|\le\epsilon$
+for every $a\in I$ and $f\in J$.
+%449J
+
+\spheader 449Xm\dvAnew{2010} Let $G$ be a locally compact Hausdorff
+group and
+$\CalBa_G$ its Baire $\sigma$-algebra.    Show that
+$G$ is amenable iff there is a non-zero finitely additive
+$\phi:\CalBa_G\to[0,1]$
+such that $\phi(aE)=\nu E$ for every $a\in G$ and $E\in\CalBa_G$.
+%449J
+
+\spheader 449Xn A {\bf symmetric F{\o}lner sequence} in a group $G$ is a
+sequence $\sequencen{L_n}$ of non-empty finite
+symmetric subsets of $G$ such that
+$\lim_{n\to\infty}\Bover{\#(L_n\symmdiff aL_n)}{\#(L_n)}=0$ for every
+$a\in G$.   Show that a group $G$ has a symmetric F{\o}lner sequence iff
+it is countable and amenable when given its discrete topology.
+%449J
+
+\sqheader 449Xo Let $G$ be a group which is amenable when given its
+discrete topology.   Let $\phi:\Cal PG\to[0,1]$ be an additive
+functional such that $\phi G=1$ and $\phi(aE)=\phi E$ whenever
+$E\subseteq G$ and $a\in G$.   For $E\subseteq G$ set
+$\psi E=\dashint\phi(Ex)\phi(dx)$.   Show that
+$\psi:\Cal PG\to[0,1]$ is an additive functional, that
+$\psi G=1$ and that $\psi(aE)=\psi(Ea)=\psi E$ for
+every $E\subseteq G$ and $a\in G$.
+%449M
+
+\spheader 449Xp Let $X$ be a non-empty set, $G$ a group and $\action$
+an action of $G$ on $X$.   Suppose that $G$ is an amenable group when
+given its discrete topology.   Show that there is an additive functional
+$\nu:\Cal PX\to[0,1]$ such that $\nu X=1$ and
+$\nu(a\action A)=\nu A$ for every $A\subseteq X$ and every $a\in G$.
+%449M
+
+\spheader 449Xq
+Let $G$ be a locally compact Hausdorff group and
+$\mu$ a left Haar measure on $G$.   Show that if $G$, with its discrete
+topology, is amenable, then there is a functional
+$\phi:\Cal PG\to[0,\infty]$, extending $\mu$, such that
+$\phi(A\cup B)=\phi A+\phi B$ whenever $A$, $B\subseteq G$
+are disjoint and $\phi(xA)=\phi A$ for every $x\in G$ and
+$A\subseteq G$.
+%449N
+
+\spheader 449Xr Let $X$ be a compact metrizable space, $\phi:X\to X$ a
+continuous function and $\mu$ a Radon probability measure on $X$ such
+that $\mu\phi^{-1}=\mu$.   Show that for $\mu$-almost every $x\in X$,
+$\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf(\phi^i(x))$ is defined for
+every $f\in C(X)$.   \Hint{4A2Pe, 372J.}
+%+  372J Ergodic Theorem %4A2Pe  $C(X)$ is separable.
+
+\leader{449Y}{Further exercises (a)}
+%\spheader 449Ya
+If $S$ is a semigroup with identity $e$ and $X$ is a set, an
+{\bf action} of $S$ on $X$ is a map
+$(s,x)\mapsto s\action x:S\times X\to X$
+such that $s\action(t\action x)=(st)\action x$ and $e\action x=x$ for
+every $s$, $t\in S$ and $x\in X$.   A topological semigroup $S$ with
+identity is {\bf amenable} if for every non-empty compact Hausdorff
+space $X$ and every continuous action of $S$ on $X$ there is a Radon
+probability measure $\mu$ on $X$ such that
+$\int f(s\action x)\mu(dx)=\int f(x)\mu(dx)$ for every $s\in S$ and
+$f\in C(X)$.   Show that
+
+\quad(i) $(\Bbb N,+)$, with its discrete topology, is amenable;
+
+\quad(ii) if $S$ is a topological semigroup and $\Cal S$ is an
+upwards-directed family of amenable sub-semigroups of $S$ with dense
+union in $S$, then $S$ is amenable;
+
+\quad(iii) if $\familyiI{S_i}$ is a family of amenable topological
+semigroups with product $S$ then $S$ is amenable;
+
+\quad(iv) if $S$ is an amenable topological semigroup, $S'$ is a
+topological
+semigroup, and there is a continuous multiplicative surjection from
+$S$ onto $S'$, then $S'$ is amenable;
+
+\quad(v) if $S$ is an abelian topological semigroup, then it is
+amenable.
+%449C
+
+\spheader 449Yb Give an example of a topological semigroup  $S$ with
+identity such that $S$ is amenable
+in the sense of 449Ya but $(S,\diamond)$ is not, where $a\diamond b=ba$
+for $a$, $b\in S$.
+%449Ya 449C 44bits
+
+\spheader 449Yc Let $G$ be a topological group and $U$ the space of
+bounded real-valued functions on $G$ which are uniformly
+continuous for the right uniformity.   Let $M_{\text{qR}}^+$ be the
+space of totally finite quasi-Radon measures on $G$.   (i) Show that if
+$\nu\in M_{\text{qR}}^+$ then $\nu*f$ (definition:
+444H) belongs to $U$ for every $f\in U$.
+(ii) Show that $(\nu,f)\mapsto\nu*f:M_{\text{qR}}^+\times U\to U$ is
+continuous if $M_{\text{qR}}^+$ is given its narrow topology and $U$ is
+given its norm topology.   (iii) Show that if
+$p:U\to\Bbb R$ is a continuous linear functional such that
+$p(a\action_lf)=p(f)$ for every $f\in U$ and $a\in G$, then
+$p(\nu*f)=\nu G\cdot p(f)$ for every $f\in U$ and every totally finite
+quasi-Radon measure $\nu$ on $G$.
+%449H
+
+\spheader 449Yd Re-work 449J for general groups carrying Haar
+measures.
+%449J
+
+\spheader 449Ye Let $G$ be a group with a symmetric F{\o}lner sequence
+$\sequencen{L_n}$ (449Xn), and $\action$ an action of $G$ on a reflexive
+Banach space $U$ such that $u\mapsto a\action u$ is a linear operator of
+norm at most $1$ for every $a\in G$.   For $n\in\Bbb N$ set
+$T_nu=\Bover1{\#(L_n)}\sum_{a\in L_n}a\action u$ for $u\in U$.
+Show that
+for every $u\in U$ the sequence $\sequencen{T_nu}$ is norm-convergent
+to a $v\in U$ such that $a\action v=v$ for every $a\in G$.   \Hint{372A.
+See also 461Yg below.}
+%449Xn 372A 449J
+
+\spheader 449Yf
+Let $G$ be a locally compact Hausdorff group and
+$\mu$ a left Haar measure on $G$.   Suppose that $G$ is {\bf exponentially
+bounded}, that is,
+$\limsup_{n\to\infty}(\mu(K^n))^{1/n}\le 1$ for every compact set
+$K\subseteq G$.    Show that $G$ is amenable.
+%449J(xiv)
+
+\spheader 449Yg\dvAnew{2010} Let
+$G$ be a group and $\action$ an action of $G$ on a set
+$X$.   Let $\Tau$ be an algebra of subsets of $X$ such that
+$g\action E\in\Tau$ for every $E\in\Tau$ and $g\in G$, and $H$ a member
+of $\Tau$;   write $\Tau_H$ for $\{E:E\in\Tau$, $E\subseteq H\}$.
+Let $\nu:\Tau_H\to[0,\infty]$ be
+a functional which is additive in the sense that $\nu\emptyset=0$ and
+$\nu(E\cup F)=\nu E+\nu F$ whenever $E$, $F\in\Tau_H$ are disjoint,
+and locally $G$-invariant in the sense that $g\action E\in\Tau$ and
+$\nu(g\action E)=\nu E$ whenever $E\in\Tau_H$, $g\in G$ and
+$g\action E\subseteq H$.   Show that
+there is an extension of $\nu$ to a $G$-invariant additive functional
+$\tilde\nu:\Tau\to[0,\infty]$.
+%for 449Yh
+
+\spheader 449Yh
+Let $X$ be a set, $A$ a subset of $X$, and $\action$ an
+action of a group $G$ on $X$.
+Show that the following are equiveridical:  (i)
+there is a functional $\theta:\Cal PX\to[0,\infty]$ such that
+$\theta A=1$, $\theta(B\cup C)=\theta B+\theta C$ and
+$\theta(a\action B)=\theta B$ for all disjoint
+$B$, $C\subseteq X$ and $a\in G$;   (ii) there are no
+$A_0,\ldots,A_n$, $a_0,\ldots,a_n$, $b_0,\ldots,b_n$ such that
+$A_0,\ldots,A_n$ are subsets of $G$ covering $A$,
+$a_0,\ldots,b_n$ belong to $G$, and $a_0\action A_0$,
+$b_0\action A_0$,
+$a_1\action A_1$, $b_1\action A_1,\ldots,b_n\action A_n$ are
+disjoint subsets of $A$.
+%449Yg 449L mt44bits
+
+\spheader 449Yi ({\smc Swierczkowski 58}) Let $G$ be the group of
+orthogonal $3\times 3$ matrices.   Set
+$S=\Matrix{\bover35&\bover45&0\\-\bover45&\bover35&0\\0&0&1}$ and
+$T=\Matrix{1&0&0\\0&\bover35&\bover45\\0&-\bover45&\bover35}$.   Show
+that $S$ and $T$ are free in $G$ (that is, no non-trivial product
+of the form $S^{n_0}T^{n_1}S^{n_2}T^{n_3}\ldots
+S^{n_{2k}}$ can be the identity), so that
+$G$ is not amenable in its discrete topology.   \Hint{let $R$ be the
+ring of $3\times 3$ matrices over the field $\Bbb Z_5$.   In $R$ set
+$\sigma=\Matrix{3&4&0\\1&3&0\\0&0&0}$,
+$\tau=\Matrix{0&0&0\\0&3&4\\0&1&3}$.   Show that
+$\sigma^2=\sigma$.   Now suppose $\rho\in R$ is defined as a
+non-trivial
+product of the elements $\sigma$, $\tau$ and their transposes $\sigma\trs$,
+$\tau\trs$ in which $\sigma$ and $\sigma\trs$ are never adjacent,
+$\tau$ and $\tau\trs$ are never adjacent, and the last term is
+$\sigma$.   Set $\Matrix{a\\b\\c}=\rho\Matrix{1\\0\\0}$.   Show that if
+the first term in the product is $\sigma$ or $\sigma\trs$, then $c=0$
+and $b\ne 0$, and otherwise $a=0$ and $b\ne 0$.}
+%449O
+
+\spheader 449Yj
+Let $F_2$ be the free group on two generators $a$,
+$b$.   (i) Show that there is a partition $(A,B,C,D)$ of
+$F_2$ such that $aA=A\cup B\cup C$ and $bB=A\cup B\cup D$.
+(ii) Let $S_2$ be the unit
+sphere in $\BbbR^3$.   Show that if $S$, $T$ are the matrices of
+449Yi, there is a partition $(A,B,C,D,E)$ of $S^2$ such that
+$E$ is countable, $S[A]=A\cup B\cup C$ and $T[B]=A\cup B\cup D$.
+(This is a version of the {\bf Hausdorff paradox}.)
+(iii) Show that there is no non-zero rotation-invariant additive
+functional from $\Cal PS_2$ to $[0,1]$.   (iv) Show that there is no
+rotation-invariant additive
+extension of Lebesgue measure to all subsets of the
+unit ball $B(\tbf{0},1)$.   (See {\smc Wagon 85}.)
+%449Yi 449O Wagon
+}%end of exercises
+
+\endnotes{
+\Notesheader{449}
+The general theory of amenable groups is outside the scope of this book.
+Here I have tried only to indicate some of the specifically
+measure-theoretic arguments which are used in the theory.   Primarily we
+have the Riesz representation theorem, enabling us to move between
+linear functionals and measures.   Since the invariant measures
+considered in the definition of `amenable group' are all Radon measures
+on compact Hausdorff spaces, they can equally well be thought of as
+linear functionals on spaces of continuous functions.   What is striking
+is that the definition in terms of continuous actions on arbitrary
+compact Hausdorff spaces can be reduced to a question concerning an
+invariant mean on a single space easily constructed from the group
+(449E).
+
+The first part of this section deals with general topological groups.
+It is a remarkable fact that some of the most important
+non-locally-compact topological groups are amenable.   For most of
+these we shall have to wait until we have done `concentration of measure'
+(\S\S476, 492) and can approach `extremely amenable' groups (\S493).
+But there is an easy example in 449Xh which already indicates one of
+the basic methods.
+
+For a much fuller account of the theory of amenable locally compact groups,
+see {\smc Paterson 88}.
+Theorem 449J here is mostly taken from {\smc Greenleaf 69}, where you
+will find many references to its development.   Historically the subject
+was dominated by the case of discrete groups, in which combinatorial
+rather than measure-theoretic formulations seem more appropriate.   In
+449J, conditions (ii)-(viii) relate to invariant means of one kind or
+another, strengthening that of 449E.
+Note that the means of
+449E(iii) and 449J(ii)-(viii) are normalized by conditions
+$p(\chi G)=\tilde p(\chi G^{\ssbullet})=\phi G=1$,
+while the left Haar
+measure $\mu$ of 449J has a degree of freedom;  so that when they come
+together in 449J(viii) the two sides of the equation
+$\tilde p(g*f)^{\ssbullet}=\tilde p(f^{\ssbullet})\int g\,d\mu$ must
+move together if we change $\mu$ by a scalar factor.   Of course this
+happens through the hidden dependence of the convolution operation on
+$\mu$.   (The convolutions in 449J(vii) do {\it not} involve $\mu$.)
+Between 449J(i) and 449J(viii) there is a double step.   First
+we note that a convolution $g*f$ is a kind of weighted average of left
+translates of $f$, so that if we have a mean which is invariant under
+translations we can hope that it will be invariant under convolutions
+(449H, 449Yc).   What is more remarkable is that an invariant mean on
+the space $U$ of bounded uniformly continuous functions should in the first
+place give rise to a left-invariant mean on the space
+$L^{\infty}$ of (equivalence classes of) bounded Haar measurable
+functions (449J(vi)), and then even a two-sided-invariant mean (449J(v)).
+
+Condition (xii) in 449J looks at a different aspect of the
+phenomenon.   In effect, it amounts to saying that not only is there
+an invariant mean, but that there is an invariant mean defined by the
+formula $p(f)=\lim_{L\to\Cal F}\Bover1{\mu L}\int_Lf$ for a suitable
+filter $\Cal F$ on the family of sets of non-zero finite measure.
+This may be called a `F{\o}lner condition', following
+{\smc F{\o}lner 55}.   (449Xk looks for an invariant mean of
+the form $p(f)=\lim_{h\to\Cal F}\int f\times h\,d\mu$, where $\Cal F$
+is a suitable filter on $\eusm L^1(\mu)$.)   In 449J(xi), the case $q=1$
+is just a weaker version of condition (x), but the case $q=2$ tells us
+something new.
+
+The techniques developed in \S444 to handle Haar measures on groups
+which are not locally compact can also be used in 449H-449J, using
+`totally bounded for the bilateral uniformity' in place of `compact'
+when appropriate (449Yd).   443L provides another route to the same
+generalization.
+
+In 449K, it is natural to ask whether the hypothesis `locally compact' is
+necessary.   It certainly cannot be dropped completely;  there is an
+important
+amenable Polish group with a closed subgroup which is not amenable
+(493Xf).
+
+The words `right' and `left' appear repeatedly in this section, and it
+is not perhaps immediately clear which of the ordinary symmetries we can
+expect to find.   The fact that the operation $x\mapsto x^{-1}:G\to G$
+always gives us an isomorphism between a group and the same set with the
+multiplication reversed (449Xa) means that we do not have to distinguish
+between `left amenable' and `right amenable' groups, at least if we
+start from the definition in 449A.   In 449C also there is nothing to
+break the symmetry between left and right.   In 449B and 449D-449E,
+however, we must commit ourselves to the {\it left} action of the group
+on the space of functions which are uniformly continuous with respect to
+the {\it right} uniformity.   If we wish to change one, we must also
+expect to change the other.   In the list of conditions
+in 449J, some can be reflected straightforwardly (see 449Xl),
+but in groups which are not unimodular there seem to be difficulties.
+For semigroups we do have a difference
+between `left' and `right' amenability (449Yb).
+
+It is not surprising that in the search for invariant means we should
+repeatedly use averaging and limiting processes.   The
+`finitely additive integrals' $\dashint\,d\phi$, $\dashint\,d\nu$
+in part (f) the proof of 449J and part (a) of the proof of 449N
+are an effective way of using one
+invariant additive functional $\phi$ or $\nu$ to build another.
+Similarly, because we are looking only for finite additivity,
+we can be optimistic about taking cluster
+points of families of almost-invariant functionals, as in the proofs of
+449F, 449J and 449L.
+
+In the case of discrete groups, in which all considerations of
+measurability and continuity evaporate, we have a completely different
+technique available, as in 449L.   Here we can go directly from a
+non-paradoxicality condition, a weaker version of conditions already
+introduced in 395E and 448E,
+to a F{\o}lner condition (($\beta$) in part
+(b) of the proof of 449L) which easily implies amenability.   I remind
+you that I still do not know how far these ideas can be applied to
+other algebras than $\Cal PX$ (395Z).   The difficulty is that the
+unscrupulous use of the axiom of choice in the infinitary Marriage
+Lemma seems to give us no control over the nature of the sets
+$A_{ij}$ described in (b-$\alpha$) of the proof of 449L;  moreover, the
+structure
+of the proof depends on having a suitable invariant measure (counting
+measure on $X$) to begin with.   For more on amenable discrete groups
+and their connexions with measure theory see {\smc Laczkovich 02}.
+}%end of notes
+
+\discrpage
+

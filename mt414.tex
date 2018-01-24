@@ -1,0 +1,919 @@
+\frfilename{mt414.tex}
+\versiondate{26.1.10}
+\copyrightdate{2002}
+
+\def\chaptername{Topologies and measures I}
+\def\sectionname{$\tau$-additivity}
+\def\IMPLY#1#2{{\bf (#1)$\Rightarrow$(#2)}}
+\def\undphi{\underline{\phi}}
+\def\undpsi{\underline{\psi}}
+
+\newsection{414}
+
+The second topic I wish to treat is that of `$\tau$-additivity'.   Here
+I collect results which do not depend on any strong kind of inner
+regularity.   I begin with what I think of as the most characteristic
+feature of $\tau$-additivity, its effect on the properties of
+semi-continuous functions (414A), with a variety of corollaries, up to
+the behaviour of subspace measures
+(414K).   A very important property of $\tau$-additive topological
+measures is that they are often strictly localizable (414J).
+
+The theory of inner regular
+$\tau$-additive measures belongs to the next section, but here I give
+two introductory results:  conditions under which a $\tau$-additive
+measure will be inner regular with respect to closed sets (414M) and
+conditions under which a measure which is inner regular
+with respect to closed sets will be $\tau$-additive (414N).   I end the
+section with notes on `density' and `lifting' topologies (414P-414R).
+
+\leader{414A}{Theorem} Let $(X,\frak T)$ be a topological space and
+$\mu$ an effectively locally finite $\tau$-additive measure on $X$ with
+domain $\Sigma$ and measure algebra $\frak A$.
+
+(a) Suppose that $\Cal G$ is a non-empty family in $\Sigma\cap\frak T$
+such that $H=\bigcup\Cal G$ also belongs to $\Sigma$.   Then
+$\sup_{G\in\Cal G}G^{\ssbullet}=H^{\ssbullet}$ in $\frak A$.
+
+(b) Write $\eusm L$ for the family of
+$\Sigma$-measurable lower semi-continuous functions from $X$ to
+$\Bbb R$.   Suppose that
+$\emptyset\ne A\subseteq\eusm L$ and set $g(x)=\sup_{f\in A}f(x)$ for
+every $x\in X$.   If $g$ is $\Sigma$-measurable and finite almost
+everywhere, then $\tilde g^{\ssbullet}=\sup_{f\in A}f^{\ssbullet}$ in
+$L^0(\mu)$, where $\tilde g(x)=g(x)$ whenever $g(x)$ is finite.
+
+(c) Suppose that $\Cal F$ is a non-empty family of measurable closed
+sets such that $\bigcap\Cal F\in\Sigma$.   Then
+$\inf_{F\in\Cal F}F^{\ssbullet}=(\bigcap\Cal F)^{\ssbullet}$ in
+$\frak A$.
+
+(d) Write $\eusm U$ for the family of
+$\Sigma$-measurable upper semi-continuous functions from $X$ to
+$\Bbb R$.   Suppose that $A\subseteq\eusm U$ is non-empty and set
+$g(x)=\inf_{f\in A}f(x)$ for every $x\in X$.   If $g$ is
+$\Sigma$-measurable and finite almost everywhere, then
+$\tilde g^{\ssbullet}=\inf_{f\in A}f^{\ssbullet}$ in $L^0(\mu)$, where
+$\tilde g(x)=g(x)$ whenever $g(x)$ is finite.
+
+\proof{{\bf (a)} \Quer\ If
+$H^{\ssbullet}\ne\sup_{G\in\Cal G}G^{\ssbullet}$, there is a non-zero
+$a\in\frak A$ such that $a\Bsubseteq H^{\ssbullet}$ but
+$a\Bcap G^{\ssbullet}=0$ for every $G\in\Cal G$.   Express $a$ as
+$E^{\ssbullet}$
+where $E\in\Sigma$ and $E\subseteq H$.   Because $\mu$ is effectively
+locally finite, there is a measurable open set $H_0$ of finite measure
+such that $\mu(H_0\cap E)>0$.   Now $\{H_0\cap G:G\in\Cal G\}$ is an
+upwards-directed family of measurable open sets with union
+$H_0\cap H\supseteq H_0\cap E$;  as $\mu$ is $\tau$-additive, there is a
+$G\in\Cal G$
+such that $\mu(H_0\cap G)>\mu H_0-\mu(H_0\cap E)$.   But in this case
+$\mu(G\cap E)>0$, which is impossible, because
+$G^{\ssbullet}\Bcap E^{\ssbullet}=0$.\ \Bang
+
+\medskip
+
+{\bf (b)} For any $\alpha\in\Bbb R$,
+
+\Centerline{$\{x:g(x)>\alpha\}=\bigcup_{f\in A}\{x:f(x)>\alpha\}$,}
+
+\noindent and these are all measurable open sets.   Identifying
+$\{x:g(x)>\alpha\}^{\ssbullet}\in\frak A$ with
+$\Bvalue{\tilde g^{\ssbullet}>\alpha}$ (364Ib\formerly{3{}64Jb}),
+we see from (a) that
+$\Bvalue{\tilde g^{\ssbullet}>\alpha}
+=\sup_{f\in A}\Bvalue{f^{\ssbullet}>\alpha}$ for every $\alpha$.   But
+this means that $\tilde g^{\ssbullet}=\sup_{f\in A}f^{\ssbullet}$, by
+364L(a-ii)\formerly{3{}64Mb}.
+
+\medskip
+
+{\bf (c)} Apply (a) to $\Cal G=\{X\setminus F:F\in\Cal F\}$.
+
+\medskip
+
+{\bf (d)} Apply (b) to $\{-f:f\in A\}$.
+}%end of proof of 414A
+
+\leader{414B}{Corollary} Let $X$ be a topological space and $\mu$ an
+effectively locally finite $\tau$-additive topological measure on $X$.
+
+(a) Suppose that $A$ is a non-empty upwards-directed family of lower
+semi-continuous functions from $X$ to $[0,\infty]$.   Set
+$g(x)=\sup_{f\in A}f(x)$ in $[0,\infty]$ for every $x\in X$.   Then
+$\int g=\sup_{f\in A}\int f$ in $[0,\infty]$.
+
+(b) Suppose that $A$ is a non-empty downwards-directed family of
+non-negative continuous real-valued functions on $X$, and that
+$g(x)=\inf_{x\in A}f(x)$ for every $x\in X$.   If any member of $A$ is
+integrable, then $\int g=\inf_{f\in A}\int f$.
+
+\proof{{\bf (a)} Of course all the $f\in A$, and also $g$, are
+measurable functions.   Set $g_n=g\wedge n\chi X$ for every
+$n\in\Bbb N$.   Then
+
+\Centerline{$g_n(x)=\sup_{f\in A}(f\wedge n\chi X)(x)$}
+
+\noindent for every $x\in X$, so
+$g_n^{\ssbullet}=\sup_{f\in A}(f\wedge n\chi X)^{\ssbullet}$, by 414Ab,
+and
+
+\Centerline{$\int g_n=\int g_n^{\ssbullet}
+=\sup_{f\in A}\int(f\wedge n\chi X)^{\ssbullet}
+=\sup_{f\in A}\int f\wedge n\chi X$}
+
+\noindent by 365Dh.   But now, of course,
+
+\Centerline{$\int g=\sup_{n\in\Bbb N}\int g_n
+=\sup_{n\in\Bbb N,f\in A}\int f\wedge n\chi X=\sup_{f\in A}\int f$,}
+
+\noindent as claimed.
+
+\medskip
+
+{\bf (b)} Take an integrable $f_0\in A$, and apply (a) to
+$\{(f_0-f)^+:f\in A\}$.
+}%end of proof of 414B
+
+\leader{414C}{Corollary} Let $(X,\frak T,\Sigma,\mu)$ be an effectively
+locally finite $\tau$-additive
+topological measure space and $\Cal F$ a non-empty
+downwards-directed family of closed sets.   If $\inf_{F\in\Cal F}\mu F$
+is finite, this is the measure of $\bigcap\Cal F$.
+
+\proof{ Setting $F_0=\bigcap\Cal F$, then
+$F_0^{\ssbullet}=\inf_{F\in\Cal F}F^{\ssbullet}$, by 414Ac;  now
+
+\Centerline{$\mu F_0=\bar\mu F_0^{\ssbullet}
+=\inf_{F\in\Cal F}\bar\mu F^{\ssbullet}=\inf_{F\in\Cal F}\mu F$}
+
+\noindent by 321F.
+}%end of 414C
+
+\leader{414D}{Corollary} Let $\mu$ be an effectively locally finite
+$\tau$-additive measure on a topological space $X$.   If $\nu$ is a
+totally finite measure with the same domain as $\mu$, truly continuous
+with respect to $\mu$, then $\nu$ is $\tau$-additive.   In particular,
+if $\mu$ is $\sigma$-finite and $\nu$ is absolutely continuous with
+respect to $\mu$, then $\nu$ is $\tau$-additive.
+
+\proof{ We have a functional $\bar\nu:\frak A\to\coint{0,\infty}$, where
+$\frak A$ is the measure algebra of $\mu$, such that
+$\bar\nu E^{\ssbullet}=\nu E$ for every $E$ in the common domain
+$\Sigma$ of $\mu$ and $\nu$.   Now $\bar\nu$ is continuous for the
+measure-algebra topology of
+$\frak A$ (327Cd), therefore completely additive (327Ba), therefore
+order-continuous (326Oc\formerly{3{}26Kc}).
+So if $\Cal G$ is an upwards-directed family
+of open sets belonging to $\Sigma$ with union $G_0\in\Sigma$,
+
+\Centerline{$\sup_{G\in\Cal G}\nu G
+=\sup_{G\in\Cal G}\bar\nu G^{\ssbullet}
+=\bar\nu G_0^{\ssbullet}
+=\nu G_0$}
+
+\noindent because $G_0^{\ssbullet}=\sup_{G\in\Cal G}G^{\ssbullet}$.
+
+The last sentence follows at once, because on a $\sigma$-finite space an
+absolutely continuous countably additive functional is truly continuous
+(232Bc).
+}%end of proof of 414D
+
+\leader{414E}{Corollary} Let $(X,\frak T,\Sigma,\mu)$ be an effectively
+locally finite $\tau$-additive topological measure space.   Suppose that
+$\Cal G\subseteq\frak T$ is non-empty and upwards-directed, and
+$H=\bigcup\Cal G$.   Then
+
+(a) $\mu(E\cap H)=\sup_{G\in\Cal G}\mu(E\cap G)$ for every
+$E\in\Sigma$;
+
+(b) if $f$ is a non-negative virtually measurable real-valued function
+defined almost everywhere in $X$, then $\int_Hf=\sup_{G\in\Cal G}\int_Gf$
+in $[0,\infty]$.
+
+\proof{{\bf (a)} In the measure algebra $(\frak A,\bar\mu)$ of $\mu$,
+
+$$\eqalign{(E\cap H)^{\ssbullet}
+&=E^{\ssbullet}\Bcap H^{\ssbullet}
+=E^{\ssbullet}\Bcap\sup_{G\in\Cal G}G^{\ssbullet}\cr
+&=\sup_{G\in\Cal G}E^{\ssbullet}\Bcap G^{\ssbullet}
+=\sup_{G\in\Cal G}(E\cap G)^{\ssbullet},\cr}$$
+
+\noindent using 414Aa and the distributive law 313Ba.   So
+
+\Centerline{$\mu(E\cap H)
+=\bar\mu(E\cap H)^{\ssbullet}
+=\sup_{G\in\Cal G}\bar\mu(E\cap G)^{\ssbullet}
+=\sup_{G\in\Cal G}\mu(E\cap G)$}
+
+\noindent by 321D, because $\Cal G$ and
+$\{(E\cap G)^{\ssbullet}:G\in\Cal G\}$ are upwards-directed.
+
+\wheader{414E}{4}{2}{2}{30pt}
+
+{\bf (b)} For each $G\in\Cal G$,
+
+\Centerline{$\int_Gf=\int f\times\chi G
+=\int(f\times\chi G)^{\ssbullet}
+=\int f^{\ssbullet}\times\chi G^{\ssbullet}$,}
+
+\noindent where $\chi G^{\ssbullet}$ can be interpreted either as
+$(\chi G)^{\ssbullet}$ (in $L^0(\mu)$) or as $\chi(G^{\ssbullet})$ (in
+$L^0(\frak A)$, where $\frak A$ is the measure algebra of $\mu$);  see
+364J\formerly{3{}64K}.
+Now $H^{\ssbullet}=\sup_{G\in\Cal G}G^{\ssbullet}$ (414Aa);
+since $\chi$ and $\times$ are order-continuous (364Jc,
+364N\formerly{3{}64P}),
+$f^{\ssbullet}\times\chi H^{\ssbullet}
+=\sup_{G\in\Cal G}f^{\ssbullet}\times\chi G^{\ssbullet}$;  so
+
+\Centerline{$\int_Hf
+=\int f^{\ssbullet}\times\chi H^{\ssbullet}
+=\sup_{G\in\Cal G}\int f^{\ssbullet}\times\chi G^{\ssbullet}
+=\sup_{G\in\Cal G}\int_Gf$}
+
+\noindent by 365Dh again.
+}%end of proof of 414E
+
+\leader{414F}{Corollary} Let $(X,\frak T,\Sigma,\mu)$ be an effectively
+locally finite $\tau$-additive topological measure space.   Then for
+every $E\in\Sigma$ there is a unique relatively closed self-supporting
+set $F\subseteq E$ such that $\mu(E\setminus F)=0$.
+
+\proof{ Let $\Cal G$ be the set $\{G:G\in\frak T,\,\mu(G\cap E)=0\}$.
+Then $\Cal G$ is upwards-directed, so
+$\mu(E\cap G^*)=\sup_{G\in\Cal G}\mu(E\cap G)=0$, where
+$G^*=\bigcup\Cal G$.   Set $F=E\setminus G^*$.   Then $F\subseteq E$ is
+relatively closed, and $\mu(E\setminus F)=0$.   If $H\in\frak T$ and
+$H\cap F\ne\emptyset$, then $H\notin\Cal G$ so
+$\mu(F\cap H)=\mu(E\cap H)>0$;  thus $F$ is self-supporting.   If
+$F'\subseteq E$ is another self-supporting relatively closed set such
+that $\mu(E\setminus F')=0$, then
+$\mu(F\setminus F')=\mu(F'\setminus F)=0$;  but
+as $F\setminus F'$ is relatively open in $F$, and $F'\setminus F$ is
+relatively open in $F'$, these must both be empty, and $F=F'$.
+}%end of proof of 414F
+
+\leader{414G}{Corollary} If $(X,\frak T,\Sigma,\mu)$ is a Hausdorff
+effectively locally finite $\tau$-additive topological measure space and
+$E\in\Sigma$ is an atom for $\mu$\cmmnt{ (definition:  211I)}, then
+there is an $x\in E$ such that $E\setminus\{x\}$ is negligible.
+
+\proof{ Let $F\subseteq E$ be a self-supporting set such that
+$\mu(E\setminus F)=0$.   Since $\mu F=\mu E>0$, $F$ is not empty;  take
+$x\in F$.   \Quer\ If $F\ne\{x\}$, let $y\in F\setminus\{x\}$.   Because
+$\frak T$ is Hausdorff, there are disjoint open sets $G$, $H$ containing
+$x$, $y$ respectively;  and in this case $\mu(E\cap G)=\mu(F\cap G)$ and
+$\mu(E\cap H)=\mu(F\cap H)$ are both non-zero, which is impossible,
+since $E$ is an atom.\ \Bang
+
+So $F=\{x\}$ and $E\setminus\{x\}$ is negligible.
+}%end of proof of 414G
+
+\leader{414H}{Corollary} If $(X,\frak T,\Sigma,\mu)$ is an effectively
+locally finite $\tau$-additive topological measure space and $\nu$ is an
+indefinite-integral measure over $\mu$\cmmnt{ (definition:
+234J\footnote{Formerly 2{}34B.})},
+then $\nu$ is a $\tau$-additive topological measure.
+
+\proof{ Because $\nu$ measures every set in $\Sigma$
+(234La\footnote{Formerly 2{}34D.}), it is a
+topological measure.   To see that it is $\tau$-additive, apply 414Eb to
+a Radon-Nikod\'ym derivative of $\nu$.
+}%end of proof of 414H
+
+\leader{414I}{Proposition} Let $(X,\frak T,\Sigma,\mu)$ be a complete
+locally determined effectively locally finite $\tau$-additive
+topological measure space.   If
+$E\subseteq X$ and $\Cal G\subseteq\frak T$ are such that
+$E\subseteq\bigcup\Cal G$ and $E\cap G\in\Sigma$ for every $G\in\Cal G$,
+then $E\in\Sigma$.
+
+\proof{ Set $\Cal K=\{K:K\in\Sigma$, $E\cap K\in\Sigma\}$.   Then
+whenever $F\in\Sigma$ and $\mu F>0$ there is a $K\in\Cal K$ included in
+$F$ with $\mu K>0$.   \Prf\ Set $K_1=F\setminus\bigcup\Cal G$.   Then
+$K_1$ is a member of $\Cal K$ included in $F$.   If $\mu K_1>0$ then we
+can stop.   Otherwise,
+$\Cal G^*=\{G_0\cup\ldots\cup G_n:G_0,\ldots,G_n\in\Cal G\}$ is an
+upwards-directed family of open sets, and
+
+\Centerline{$\sup_{G\in\Cal G^*}\mu(F\cap G)
+=\mu(F\cap\bigcup\Cal G^*)
+=\mu F>0$,}
+
+\noindent by 414Ea.   So there is a $G\in\Cal G^*$ such that
+$\mu(F\cap G)>0$;  but now $E\cap G\in\Sigma$ so $F\cap G\in\Cal K$.\
+\Qed
+
+By 412Aa, $\mu$ is inner regular with respect to $\Cal K$;  by 412Ja,
+$E\in\Sigma$.
+}%end of proof of 414I
+
+\leader{414J}{Theorem} Let $(X,\frak T,\Sigma,\mu)$ be a complete
+locally determined effectively locally finite $\tau$-additive
+topological measure space.   Then $\mu$ is strictly localizable.
+
+% question: will "locally finite" do in place of "eff loc fin"?
+% at least to make $\mu$ localizable
+
+\proof{ Let $\Cal F$ be a maximal disjoint family of self-supporting
+measurable sets of
+finite measure.   Then whenever $E\in\Sigma$ and $\mu E>0$, there is an
+$F\in\Cal F$ such that $\mu(E\cap F)>0$.   \Prf\Quer\ Otherwise, let $G$
+be an open set of finite measure such that $\mu(G\cap E)>0$, and set
+$\Cal F_0=\{F:F\in\Cal F,\,F\cap G\ne\emptyset\}$.   Then
+$\mu(F\cap G)>0$ for every $F\in\Cal F_0$, while $\mu G<\infty$ and
+$\Cal F_0$ is disjoint, so
+$\Cal F_0$ is countable and $\bigcup\Cal F_0\in\Sigma$.   Set
+$E'=E\setminus\bigcup\Cal F_0$;  then
+$E\setminus E'=E\cap\bigcup\Cal F_0$ is negligible, so
+$\mu(G\cap E')>0$.   By 414F, there is a self-supporting set
+$F'\subseteq G\cap E'$ such that $\mu F'>0$.   But in this case
+$F'\cap F=\emptyset$ for
+every $F\in\Cal F$, so we ought to have added $F'$ to
+$\Cal F$.\ \Bang\Qed
+
+This means that $\Cal F$ satisfies the criterion of 213Oa.   Because
+$(X,\Sigma,\mu)$ is complete and locally determined, it is strictly
+localizable.
+}%end of proof of 414J
+
+\leader{414K}{Proposition} Let $(X,\Sigma,\mu)$ be a measure space and
+$\frak T$ a topology on $X$, and $Y\subseteq X$ a subset such that the
+subspace measure $\mu_Y$ is semi-finite\cmmnt{ (see the remark
+following 412O)}.
+If $\mu$ is an effectively locally finite $\tau$-additive
+topological measure, so is $\mu_Y$.
+
+\proof{ By 412Pe, $\mu_Y$ is an effectively locally finite topological
+measure.   Now
+suppose that $\Cal H$ is a non-empty upwards-directed family in
+$\frak T_Y$ with union $H^*$.   Set
+
+\Centerline{$\Cal G=\{G:G\in\frak T,\,G\cap Y\in\Cal H\}$,
+\quad $G^*=\bigcup\Cal G$,}
+
+\noindent so that $\Cal G$ is upwards-directed and $H^*=Y\cap G^*$.
+Let $\Cal K$ be the family of sets $K\subseteq X$ such that
+$K\cap G^*\setminus G=\emptyset$ for some $G\in\Cal G$.   If
+$E\in\Sigma$,
+
+$$\eqalignno{\mu E
+&=\mu(E\setminus G^*)+\mu(E\cap G^*)
+=\mu(E\setminus G^*)+\sup_{G\in\Cal G}\mu(E\cap G)\cr
+\displaycause{414Ea}
+&=\sup_{G\in\Cal G}\mu(E\setminus(G^*\setminus G)),\cr}$$
+
+\noindent so $\mu$ is inner regular with respect to $\Cal K$.   By
+412Ob, $\mu_Y$ is inner regular with respect to
+$\{K\cap Y:K\in\Cal K\}$.   So if $\gamma<\mu_YH^*$, there is a
+$K\in\Cal K$ such that $K\cap Y\subseteq H^*$ and
+$\mu_Y(K\cap Y)\ge\gamma$.   But now there is a $G\in\Cal G$ such that
+$K\cap G^*\setminus G=\emptyset$, so that
+$K\cap Y\subseteq G\cap Y\in\Cal H$ and
+$\sup_{H\in\Cal H}\mu H\ge\gamma$.   As $\Cal H$ and $\gamma$ are
+arbitrary, $\mu$ is $\tau$-additive.
+}%end of proof of 414K
+
+\cmmnt{\medskip
+
+\noindent{\bf Remarks} Recall from 214Ic that if $(X,\Sigma,\mu)$ has
+locally determined negligible sets (in particular, is either strictly
+localizable or complete and locally
+determined), then all its subspaces are semi-finite.   In 419C below I
+describe a tight locally finite Borel measure with a subset on which the
+subspace measure is not
+semi-finite, therefore not effectively locally finite or
+$\tau$-additive.   In 419A I describe a $\sigma$-finite locally finite
+$\tau$-additive topological measure, inner regular with respect to the
+closed sets, with a closed subset on which the subspace measure is
+totally finite but not $\tau$-additive.
+}%end of comment
+
+\leader{414L}{Lemma} Let $(X,\frak T)$ be a topological space, and
+$\mu$, $\nu$ two effectively locally finite Borel measures on $X$ which
+agree on the open sets.   Then they are equal.
+
+\proof{ Write $\frak T^f$ for the family of open sets of finite measure.
+(I do not need to specify which measure I am using here.)   For
+$G\in\frak T^f$, set $\mu_GE=\mu(G\cap E)$, $\nu_GE=\nu(G\cap E)$ for
+every Borel
+set $E$.   Then $\mu_G$ and $\nu_G$ are totally finite Borel measures
+which agree on $\frak T$.   By the Monotone Class Theorem (136C),
+$\mu_G$ and $\nu_G$ agree on the $\sigma$-algebra generated by
+$\frak T$, that is, the Borel $\sigma$-algebra $\Cal B$.   Now, for any
+$E\in\Cal B$,
+
+\Centerline{$\mu E=\sup_{G\in\frak T^f}\mu_GE=\sup_{G\in\frak T^f}\nu_GE
+=\nu E$,}
+
+\noindent by 412F.   So $\mu=\nu$.
+}%end of proof of 414L
+
+\leader{414M}{Proposition} Let $(X,\Sigma,\mu)$ be a measure space with
+a regular topology $\frak T$ such that $\mu$ is effectively locally
+finite and $\tau$-additive and $\Sigma$ includes a base for $\frak T$.
+
+(a) $\mu G=\sup\{\mu F:F\in\Sigma$ is closed, $F\subseteq G\}$ for every
+open set $G\in\Sigma$.
+
+(b) If $\mu$ is inner regular with respect to the $\sigma$-algebra
+generated by $\frak T\cap\Sigma$, it is inner regular with respect to
+the closed sets.
+
+\proof{{\bf (a)} For $U\in\Sigma\cap\frak T$, the set
+
+\Centerline{$\Cal H_U=\{H:H\in\Sigma\cap\frak T$,
+$\overline{H}\subseteq U\}$}
+
+\noindent is an upwards-directed family of open sets, and
+$\bigcup\Cal H_U=U$ because $\frak T$ is regular and $\Sigma$ includes a
+base for $\frak T$.   Because $\mu$ is $\tau$-additive,
+$\mu U=\sup\{\mu H:H\in\Cal H_U\}$.
+Now, given $\gamma<\mu G$, we can choose $\sequencen{U_n}$ in
+$\Sigma\cap\frak T$ inductively, as follows.   Start by taking
+$U_0\subseteq G$ such that $\gamma<\mu U_0<\infty$ (using the hypothesis
+that $\mu$ is
+effectively locally finite).   Given $U_n\in\Sigma\cap\frak T$ and
+$\mu U_n>\gamma$, take $U_{n+1}\in\Sigma\cap\frak T$ such that
+$\overline{U}_{n+1}\subseteq U_n$ and $\mu U_{n+1}>\gamma$.   On
+completing the induction, set
+
+\Centerline{$F=\bigcap_{n\in\Bbb N}U_n
+=\bigcap_{n\in\Bbb N}\overline{U}_n$;}
+
+\noindent then $F$ is a closed set belonging to $\Sigma$, $F\subseteq G$
+and $\mu F\ge\gamma$.   As $\gamma$ is arbitrary, we have the result.
+
+\medskip
+
+{\bf (b)} Let $\Sigma_0$ be the $\sigma$-algebra generated by
+$\Sigma\cap\frak T$ and set $\mu_0=\mu\restr\Sigma_0$.   Then
+$\Sigma_0\cap\frak T=\Sigma\cap\frak T$ is still a base for $\frak T$
+and $\mu_0$ is still $\tau$-additive and effectively locally finite, so
+by (a) and 412G it is inner regular with respect to the closed sets.
+Now we are supposing that $\mu$ is inner regular with respect to
+$\Sigma_0$, so $\mu$ is inner regular with respect to the closed sets,
+by 412Ab.
+}%end of proof of 414M
+
+\leader{414N}{Proposition} Let $(X,\Sigma,\mu)$ be a measure
+space and $\frak T$ a topology on $X$.
+Suppose that (i) $\mu$ is semi-finite and inner regular with respect
+to the closed sets (ii) whenever $\Cal F$ is a
+non-empty downwards-directed family of measurable closed sets with empty
+intersection and $\inf_{F\in\Cal F}\mu F<\infty$, then $\inf_{F\in\Cal
+F}\mu F=0$.   Then $\mu$ is $\tau$-additive.
+
+\proof{ Let $\Cal G$ be a non-empty upwards-directed family of
+measurable open sets with measurable union $H$.   Take any
+$\gamma<\mu H$.    Because $\mu$ is semi-finite, there is a measurable
+set $E\subseteq H$ such that $\gamma<\mu E<\infty$.   Now there is a
+measurable closed set $F\subseteq E$ such that $\mu F\ge\gamma$.
+Consider $\Cal F=\{F\setminus G:G\in\Cal G\}$.   This is a
+downwards-directed family of closed sets of finite measure with empty
+intersection.   So $\inf_{G\in\Cal G}\mu(F\setminus G)=0$, that is,
+
+\Centerline{$\gamma\le\mu F=\sup_{G\in\Cal G}\mu(F\cap G)
+\le\sup_{G\in\Cal G}\mu G$.}
+
+\noindent As $\gamma$ is arbitrary, $\mu H=\sup_{G\in\Cal G}\mu G$;  as
+$\Cal G$ is arbitrary, $\mu$ is $\tau$-additive.
+}%end of proof of 414N
+
+\leader{414O}{}\cmmnt{ The following elementary result is worth
+noting.
+
+\medskip
+
+\noindent}{\bf Proposition} If $X$ is a hereditarily Lindel\"of
+space\cmmnt{ (e.g., if it is separable and metrizable)}
+then every measure on $X$ is $\tau$-additive.
+
+\proof{ If $\mu$ is a measure on $X$, with domain $\Sigma$, and
+$\Cal G\subseteq\Sigma$ is a non-empty upwards-directed family of
+measurable open sets, then there is a sequence $\sequencen{G_n}$ in
+$\Cal G$ such that $\bigcup\Cal G=\bigcup_{n\in\Bbb N}G_n$.   Now
+
+\Centerline{$\mu(\bigcup\Cal G)
+=\lim_{n\to\infty}\mu(\bigcup_{i\le n}G_i)\le\sup_{G\in\Cal G}\mu G$.}
+
+\noindent As $\Cal G$ is arbitrary, $\mu$ is $\tau$-additive.
+}%end of proof of 414O
+
+\leader{414P}{Density \dvrocolon{topologies}}\cmmnt{ Recall that a
+lower density for a measure space $(X,\Sigma,\mu)$ is a function
+$\undphi:\Sigma\to\Sigma$ such that $\undphi E=\undphi F$ whenever $E$,
+$F\in\Sigma$ and $\mu(E\symmdiff F)=0$,  $\mu(E\symmdiff\undphi E)=0$
+for every $E\in\Sigma$, $\undphi\emptyset=\emptyset$ and
+$\undphi(E\cap F)=\undphi E\Bcap\undphi F$ for all $E$, $F\in\Sigma$
+(341C).
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a complete locally
+determined measure space and $\undphi:\Sigma\to\Sigma$ a lower density
+such that $\undphi X=X$.   Set
+
+\Centerline{$\frak T=\{E:E\in\Sigma,\,E\subseteq\undphi E\}$.}
+
+\noindent Then $\frak T$ is a topology on $X$, the {\bf density
+topology} associated with $\undphi$, and $(X,\frak T,\Sigma,\mu)$ is an
+effectively
+locally finite $\tau$-additive topological measure space;  $\mu$ is
+strictly positive and inner regular with respect to the open sets.
+
+\proof{{\bf (a)(i)} For any $E\in\Sigma$,
+$\undphi(E\cap\undphi E)=\undphi E$ because $E\setminus\undphi E$ is
+negligible;  consequently $E\cap\undphi E\in\frak T$.   In particular,
+$\emptyset=\emptyset\cap\undphi\emptyset$ and
+$X=X\cap\undphi X$ belong to $\frak T$.   If $E$, $F\in\frak T$ then
+
+\Centerline{$\undphi(E\cap F)=\undphi E\cap\undphi F\supseteq E\cap F$,}
+
+\noindent so $E\cap F\in\frak T$.
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $\Cal G\subseteq\frak T$ and
+$H=\bigcup\Cal G$.   By 341M, $\mu$ is (strictly) localizable, so
+$\Cal G$ has an essential supremum $F\in\Sigma$ such that
+$F^{\ssbullet}=\sup_{G\in\Cal G}G^{\ssbullet}$ in the measure algebra
+$\frak A$ of $\mu$;  that is,
+for $E\in\Sigma$, $\mu(G\setminus E)=0$ for every $G\in\Cal G$ iff
+$\mu(F\setminus E)=0$.   Now $F\setminus H$ is negligible, by 213K.  On
+the other hand,
+
+\Centerline{$G\subseteq\undphi G=\undphi(G\cap F)\subseteq\undphi F$}
+
+\noindent for every $G\in\Cal G$, so $H\subseteq\undphi F$, and
+$H\setminus F\subseteq\undphi F\setminus F$ is negligible.   But as
+$\mu$ is complete, this means that $H\in\Sigma$.   Also
+$\undphi H=\undphi F\supseteq H$, so $H\in\frak T$.
+Thus $\frak T$ is closed under arbitrary unions and is a topology.
+
+\medskip
+
+{\bf (b)} By its definition, $\frak T$ is included in $\Sigma$, so $\mu$
+is a topological measure.   If $E\in\Sigma$ then $E\cap\undphi E$
+belongs to $\frak T$, is
+included in $E$ and has the same measure as $E$;  so $\mu$ is inner
+regular with respect to the open sets.
+As $\mu$ is semi-finite, it is inner regular with respect to the open sets
+of finite measure, and is effectively locally finite.
+If $E\in\frak T$ is non-empty,
+then $\undphi E\supseteq E$ is non-empty, so $\mu E>0$;  thus $\mu$ is
+strictly positive.   Finally, if $\Cal G$ is a
+non-empty upwards-directed family
+in $\frak T$, then the argument of (a-ii) shows that
+$(\bigcup\Cal G)^{\ssbullet}=\sup_{G\in\Cal G}G^{\ssbullet}$ in
+$\frak A$, so that
+$\mu(\bigcup\Cal G)=\sup_{G\in\Cal G}\mu G$.   Thus $\mu$ is
+$\tau$-additive.
+}%end of proof of 414P
+
+\leader{414Q}{Lifting topologies} Let $(X,\Sigma,\mu)$ be a measure
+space and $\phi:\Sigma\to\Sigma$ a lifting\cmmnt{, that is, a Boolean
+homomorphism such that $\phi E=\emptyset$ whenever $\mu E=0$ and
+$\mu(E\symmdiff\phi E)=0$ for every $E\in\Sigma$ (341A)}.   The {\bf
+lifting topology} associated with $\phi$ is the topology generated by
+$\{\phi E:E\in\Sigma\}$.   \cmmnt{Note that $\{\phi E:E\in\Sigma\}$ is
+a topology base, so is a base for the lifting topology.}
+
+\leader{414R}{Proposition} Let $(X,\Sigma,\mu)$ be a complete locally
+determined measure space and $\phi:\Sigma\to\Sigma$ a lifting with
+lifting topology $\frak S$ and density topology $\frak T$.   Then
+$\frak S\subseteq\frak T\subseteq\Sigma$, and $\mu$ is $\tau$-additive,
+effectively locally finite and strictly positive with respect to
+$\frak S$.   Moreover, $\frak S$ is zero-dimensional.
+
+\proof{ Of course $\phi$ is a lower density, so we can talk of its
+density topology, and since $\phi^2E=\phi E$, $\phi E\in\frak T$ for
+every $E\in\Sigma$, so $\frak S\subseteq\frak T$.   Because $\mu$ is
+$\tau$-additive and strictly positive with respect to $\frak T$, it must
+also be $\tau$-additive and strictly positive with respect to $\frak S$.
+If $E\in\Sigma$ and
+$\mu E>0$ there is an $F\subseteq E$ such that $0<\mu F<\infty$, and now
+$\phi F$ is an $\frak S$-open set of finite measure meeting $E$ in a
+non-negligible set;
+so $\mu$ is effectively locally finite with respect to $\frak S$.   Of
+course $\frak S$ is
+zero-dimensional because $\phi[\Sigma]$ is a base for $\frak S$
+consisting of open-and-closed sets.
+}%end of proof of 414R
+
+\exercises{
+\leader{414X}{Basic exercises $\pmb{>}$(a)}
+%\spheader 414Xa
+Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be measure spaces with
+topologies $\frak T$ and $\frak S$, and $f:X\to Y$ a continuous \imp\
+function.   Show
+that if $\mu$ is $\tau$-additive with respect to $\frak T$ then $\nu$ is
+$\tau$-additive with respect to $\frak S$.   Show that if $\nu$ is
+locally finite, so is $\mu$.
+%414/
+%useful in 452(?)
+
+\spheader 414Xb Let $\familyiI{(X_i,\Sigma_i,\mu_i)}$ be a family of
+measure spaces, with direct sum $(X,\Sigma,\mu)$;  suppose that we are
+given a
+topology $\frak T_i$ on $X_i$ for each $i$, and let $\frak T$ be the
+disjoint union topology on $X$.   Show that $\mu$ is $\tau$-additive iff
+every $\mu_i$ is.
+%414/
+
+\sqheader 414Xc Let $(X,\frak T)$ be a topological space and $\mu$ a
+totally finite measure on $X$ which is inner regular with respect to the
+closed sets.   Suppose that $\mu X=\sup_{G\in\Cal G}\mu G$ whenever
+$\Cal G$ is an upwards-directed family of measurable open sets covering
+$X$.   Show that $\mu$ is $\tau$-additive.
+%414/
+
+\spheader 414Xd Let $\mu$ be an effectively locally finite
+$\tau$-additive $\sigma$-finite measure on a topological space $X$, and
+$\nu:\dom\mu\to\coint{0,\infty}$ a countably additive functional which is
+absolutely continuous with respect to $\mu$.   Show from first
+principles that $\nu$ is $\tau$-additive.
+%414D
+
+\spheader 414Xe Give an example
+of an indefinite-integral measure over Lebesgue measure on $\Bbb R$
+which is not effectively locally finite.   \Hint{arrange for every
+non-trivial interval to have infinite measure.}
+%414D
+
+\spheader 414Xf Let $(X,\frak T)$ be a topological space and $\mu$ a complete locally determined effectively locally finite
+$\tau$-additive topological measure on $X$.
+Show that if $f$ is a real-valued function, defined on a subset of $X$,
+which is locally integrable in the sense of 411Fc, then $f$ is measurable.
+%414E
+
+\spheader 414Xg Let $(X,\frak T)$ be a topological space and $\mu$ an
+effectively locally finite $\tau$-additive measure on $X$.   Let $\Cal
+G$ be a cover of $X$ consisting of measurable open sets, and $\Cal K$
+the ideal of subsets of $X$ generated by $\Cal G$.   Show that $\mu$ is
+inner regular with respect to $\Cal K$.
+%414I
+
+\spheader 414Xh Let $(X,\frak T,\Sigma,\mu)$ be a complete locally
+determined effectively locally finite $\tau$-additive topological
+measure space, and $A$ a subset of $X$.   Suppose that for every $x\in A$
+there is an open set $G$ containing
+$x$ such that $A\cap G$ is negligible.   Show that $A$ is negligible.
+%414I
+
+\spheader 414Xi Give an alternative proof of 414K based on the fact
+that the canonical map from the measure algebra of $\mu$ to the measure
+algebra of $\mu_Y$ is order-continuous (322Yd).
+%414K
+
+\sqheader 414Xj(i) If $\mu$ is an effectively locally finite
+$\tau$-additive Borel measure on a regular topological space, show that
+the c.l.d.\ version of $\mu$ is a quasi-Radon measure.
+(ii) If $\mu$ is a locally finite, effectively locally finite
+$\tau$-additive Borel measure on a locally compact Hausdorff space, show
+that $\mu$ is tight, so that
+the c.l.d.\ version of $\mu$ is a Radon measure.
+%414M
+
+\sqheader 414Xk Let $(X,\Sigma,\mu)$ be a complete locally determined
+measure space and $\undphi$ a lower density for $\mu$ such that
+$\undphi X=X$;  let $\frak T$ be the corresponding density topology.
+(i) Show that a
+dense open subset of $X$ must be conegligible.   (ii) Show that a subset
+of $X$ is nowhere dense for $\frak T$ iff it is negligible iff it is
+meager for $\frak T$.   (iii) Show that a function $f:X\to\Bbb R$ is
+$\Sigma$-measurable iff it is $\frak T$-continuous at almost every point
+of $X$.   \Hint{if $f$ is measurable, set $E_q=\{x:f(x)>q\}$,
+$F_q=\{x:f(x)<q\}$;  show that $f$ is continuous at every point of
+$X\setminus\bigcup_{q\in\Bbb Q}((E_q\setminus\undphi E_q)
+\cup(F_q\setminus\undphi F_q))$.}  (iv) Show that $\Sigma$ is both the
+Borel $\sigma$-algebra of $(X,\frak T)$ and the Baire-property algebra of
+$(X,\frak T)$.   (v) Show that $(X,\frak T)$ is a Baire space.
+%414P
+
+\spheader 414Xl Let $(X,\Sigma,\mu)$ be a complete locally determined
+measure space and $\undphi:\Sigma\to\Sigma$ a lower density such that
+$\undphi X=X$, with density topology $\frak T$.   Show that if
+$A\subseteq X$ and $E$ is a measurable envelope of $A$ then the
+$\frak T$-closure of $A$ is just
+$A\cup(X\setminus\undphi(X\setminus E))$.
+%414P
+
+\spheader 414Xm Let $\mu$ be Lebesgue measure on $\BbbR^r$, $\Sigma$
+its domain, $\intstar:\Sigma\to\Sigma$ lower Lebesgue density (341E) and
+$\frak T$ the corresponding density topology.   (i) Show that $\frak T$ is
+finer than the usual Euclidean topology of $\BbbR^r$.
+(ii) Show that for any
+$A\subseteq\Bbb R$, the closure of $A$ for $\frak T$ is just
+$A\cup\{x:\limsup_{\delta\downarrow 0}
+ \Bover{\mu^*(A\cap B(x,\delta))}{\mu B(x,\delta)}>0\}$, and the
+interior is $A\cap\{x:\lim_{\delta\downarrow 0}
+ \Bover{\mu_*(A\cap B(x,\delta))}{\mu B(x,\delta)}=1\}$.
+%414P
+
+\spheader 414Xn Let $(X,\Sigma,\mu)$ be a complete locally determined
+measure space and $\undphi:\Sigma\to\Sigma$ a lower density such that
+$\undphi X=X$;  let $\frak T$ be the associated density topology.   Let
+$A$ be a subset of $X$ and $E$ a measurable envelope of $A$;  let
+$\Sigma_A$ be
+the subspace $\sigma$-algebra and $\mu_A$ the subspace measure on $A$.
+(i) Show that we have a lower density
+$\hbox{$\undphi$}_A:\Sigma_A\to\Sigma_A$ defined by setting
+$\hbox{$\undphi$}_A(F\cap A)=A\cap\undphi(E\cap F)$ for every
+$F\in\Sigma$.   (ii) Show that $\hbox{$\undphi$}_AA=A$ iff
+$A\subseteq\undphi E$, and that in this case the density topology on $A$
+derived from $\hbox{$\undphi$}_A$ is just the subspace topology.
+%414P
+
+\spheader 414Xo Let $(X,\Sigma,\mu)$ be a complete locally determined
+measure space and $\phi:\Sigma\to\Sigma$ a lifting, with density
+topology $\frak T$ and lifting topology $\frak S$.   (i) Show that
+
+\Centerline{$\frak T=\{H\cap G:G\in\frak S,\,H$ is conegligible$\}
+=\{H\cap\phi E:E\in\Sigma,\,H$ is conegligible$\}$.}
+
+\noindent (ii) Show that if $A\subseteq X$ and $E$ is a measurable
+envelope of $A$ then the $\frak T$-closure of $A$ is $A\cup\phi E$.
+%414R
+
+\spheader 414Xp Let $(X,\Sigma,\mu)$ be a complete locally determined
+measure space and $\phi:\Sigma\to\Sigma$ a lifting;  let $\frak S$ be
+its lifting topology.   Let $A$ be a subset of $X$ such that
+$A\subseteq\phi E$ for some (therefore any) measurable
+envelope $E$ of $A$.  Let $\Sigma_A$ be the
+subspace $\sigma$-algebra and $\mu_A$ the subspace measure on $A$.   (i)
+Show that we have a lifting $\phi_A:\Sigma_A\to\Sigma_A$ defined by
+setting $\phi_A(F\cap A)=A\cap\phi F$ for every $F\in\Sigma$.   (ii)
+Show that the lifting topology on $A$ derived from $\phi_A$ is just the
+subspace topology.
+%414R
+
+\spheader 414Xq Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+complete locally determined
+measure spaces and $f:X\to Y$ an \imp\ function.
+Suppose that we have lower densities $\undphi:\Sigma\to\Sigma$ and
+$\undpsi:\Tau\to\Tau$ such that $\undphi X=X$, $\undpsi Y=Y$ and
+$\undphi f^{-1}[F]=f^{-1}[\undpsi F]$ for every $F\in\Tau$.   (i) Show that
+$f$ is continuous for the density topologies of $\undphi$ and $\undpsi$.
+(ii) Show that if $\undphi$ and $\undpsi$ are liftings then $f$ is
+continuous for the lifting topologies.
+%414R
+
+\spheader 414Xr Let $(X,\Sigma,\mu)$ be a complete locally determined
+measure space and $\phi:\Sigma\to\Sigma$ a lifting, with associated
+lifting topology $\frak S$.   Show that a function $f:X\to\Bbb R$ is
+$\Sigma$-measurable iff there is a conegligible set $H$ such that
+$f\restr H$ is $\frak S$-continuous.   (Compare 414Xk, 414Xt.)
+%414Xk, 414R
+
+\spheader 414Xs Let $(X,\Sigma,\mu)$ be a complete locally determined
+measure space and $\phi:\Sigma\to\Sigma$ a lifting.   Let $(Z,\Tau,\nu)$
+be the Stone space of the measure algebra of $\mu$, and $f:X\to Z$ the
+\imp\ function associated with $\phi$ (341P).   Show that the lifting
+topology on $X$ is just $\{f^{-1}[G]:G\subseteq Z$ is open$\}$.
+%414R
+
+\spheader 414Xt Let $(X,\Sigma,\mu)$ be a strictly localizable measure
+space and $\phi:\Sigma\to\Sigma$ a lifting.   Write $\eusm L^{\infty}$
+for the Banach lattice of bounded $\Sigma$-measurable real-valued
+functions on $X$, identified with $\eusm L^{\infty}(\Sigma)$ (363H);
+let $T:\eusm L^{\infty}\to\eusm L^{\infty}$ be the Riesz homomorphism
+associated with $\phi$ (363F).   (i) Show that $T^2=T$.  (ii) Show that
+if $X$ is given the lifting topology $\frak S$ defined by $\phi$, then
+$T[\eusm L^{\infty}]$ is precisely the space of bounded continuous
+real-valued functions on $X$.   (iii) Show that if
+$f\in\eusm L^{\infty}$, $x\in X$ and $\epsilon>0$ there is an
+$\frak S$-open set $U$ containing $x$ such that
+$|(Tf)(x)-\Bover1{\mu V}\int_Vfd\mu|\le\epsilon$ for every
+non-negligible measurable set $V$ included in $U$.
+%414R
+
+\leader{414Y}{Further exercises (a)}
+%\spheader 414Ya
+Let $(X,\frak T,\Sigma,\mu)$ be a totally finite topological
+measure space.   For $E\in\Sigma$ set
+
+\Centerline{$\mu_{\tau}E
+=\inf\{\sup_{G\in\Cal G}\mu(E\cap G):\Cal G\subseteq\frak T$
+  is an upwards-directed set with union $X\}$.}
+
+\noindent Suppose {\it either} that $\mu$ is inner regular with respect
+to the closed sets {\it or} that $\frak T$ is regular.   Show that
+$\mu_{\tau}$ is a $\tau$-additive measure, the
+largest $\tau$-additive measure with domain $\Sigma$ which is dominated
+by $\mu$.
+%/
+
+\spheader 414Yb Let $X$ be a set, $\Sigma$ an algebra of subsets of $X$,
+and $\frak T$ a topology on $X$.   Let $M$ be the $L$-space of bounded
+finitely additive real-valued functionals on $\Sigma$ (362B).   Let
+$N\subseteq M$ be the set of those functionals $\nu$ such that
+$\inf_{G\in\Cal G}|\nu|(H\setminus G)=0$ whenever
+$\Cal G\subseteq\frak T\cap\Sigma$ is a non-empty upwards-directed
+family with union
+$H\in\Sigma$.   Show that $N$ is a band in $M$.   (Cf.\ 362Xi.)
+%414Ya
+
+\spheader 414Yc Find a probability space $(X,\Sigma,\mu)$ and a topology
+$\frak T$ on $X$ such that $\Sigma$ includes a base for $\frak T$ and
+$\mu$ is $\tau$-additive, but there is a set $E\in\Sigma$ such that the
+subspace measure $\mu_E$ is not $\tau$-additive.
+%414K %mt41bits
+
+\spheader 414Yd Let $\intstar$ be lower Lebesgue density on $\BbbR^r$,
+and $\frak T$ the associated density topology.   Show that every
+$\frak T$-Borel set is an F$_{\sigma}$ set for $\frak T$.
+%414P, 414Xm
+
+\spheader 414Ye Let $(X,\rho)$ be a metric space and $\mu$ a strictly
+positive locally finite quasi-Radon measure on $X$;  write $\frak T$ for
+the topology of $X$ and $\Sigma$ for the domain of $\mu$.   For
+$E\in\Sigma$ set $\undphi(E)=\{x:x\in X$, $\lim_{\delta\downarrow 0}
+\Bover{\mu(E\cap B(x,\delta))}{\mu B(x,\delta)}=1\}$.   Suppose that
+$E\setminus\undphi(E)$ is
+negligible for every $E\in\Sigma$ (cf.\ 261D, 472D).   (i) Show that
+$\undphi$ is a lower density for $\mu$, with $\undphi(X)=X$.   Let
+$\frak T_d$ be the associated density topology.   (ii) Suppose that
+$H\in\frak T_d$ and that $K\subseteq H$ is $\frak T$-closed and
+$\rho$-totally bounded.   Show that there is a $\frak T$-closed,
+$\rho$-totally bounded $K'\subseteq H$ such that $K$ is included in the
+$\frak T_d$-interior of $K'$.   (iii) Show that $\frak T_d$ is
+completely regular.   \Hint{{\smc Luke\v{s} Mal\'y \& Zaj\'\i\v{c}ek 86}.}
+%414P mt41bits
+
+\spheader 414Yf Show that the density topology on $\Bbb R$ associated
+with lower Lebesgue density is not normal.
+%414P 414Ye mt41bits
+
+\spheader 414Yg Let $\mu$ be Lebesgue measure on $\BbbR^r$, $\Sigma$
+its domain, $\intstar:\Sigma\to\Sigma$ lower Lebesgue density and
+$\frak T$ the corresponding density topology.   (i) Show that if
+$f:\Bbb R^r\to\Bbb R^r$ is a permutation such that $f$ and $f^{-1}$ are
+both differentiable
+everywhere, with continuous derivatives, then $f$ is a homeomorphism for
+$\frak T$.   \Hint{263D.}  (ii) Show that if $\phi:\Sigma\to\Sigma$ is a
+lifting and $\frak S$ the corresponding lifting topology, then
+$x\mapsto -x$ is not a homeomorphism for $\frak S$.   \Hint{345Xc.}
+%414R
+}%end of exercises
+
+\cmmnt{\Notesheader{414} I have remarked before that it is one of the
+abiding frustrations of measure theory, at least for anyone ambitious to
+apply the power of modern general topology to measure-theoretic
+problems, that the basic convergence theorems are irredeemably
+confined to
+sequences.   In Volume 3 I showed that if we move to measure algebras
+and function spaces, we can hope that the countable chain condition or
+the countable sup property will enable us to replace arbitrary directed
+sets with monotonic sequences, thereby giving theorems which apply to
+apparently more general types of convergence.   In 414A and its
+corollaries we come to a
+quite different context in which a measure, or integral, behaves like an
+order-continuous functional.   Of course the theorems here depend
+directly on the hypothesis of $\tau$-additivity, which rather begs the
+question;  but we shall see in the rest of the chapter that this
+property does indeed often appear.   For the moment, I remark only that
+as Lebesgue measure is $\tau$-additive we certainly have a non-trivial
+example to work with.
+
+The hypotheses of the results above move a touch awkwardly between those
+with the magic phrase `topological measure' and those without.   The
+point is that (as in 412G, for instance) it is sometimes useful to be
+able to apply these ideas to Baire measures on completely regular
+spaces, which are defined on a base for the topology but may not be
+defined on every open set.   The device I have used in the definition of
+$\tau$-additivity (411C) makes this possible, at the cost of occasional
+paradoxical phenomena like 414Yc.
+
+I hope that no confusion will arise between the two topologies
+associated with a lifting on a complete locally determined space.   I
+have called
+them the `density topology' and the `lifting topology' because the
+former can be defined directly from a lower density;  but it would be
+equally reasonable to call them the `fine' and `coarse' lifting
+topologies.   The
+density topology has the apparent advantage of giving us a measure which
+is inner regular with respect to the Borel sets, but at the cost of
+being rather odd regarded as a topological space (414P, 414Xk, 414Ye,
+414Yf).   It has the
+important advantage that there are densities (like the Lebesgue lower
+density) which have some claim to be called canonical, and others with
+useful special properties, as in \S346, while liftings are always
+arbitrary and invariance properties for them sometimes unachievable.
+So, for instance, the Lebesgue density topology on $\BbbR^r$ is
+invariant under diffeomorphisms, which no lifting topology can be
+(414Yg).  The lifting topology is well-behaved as a topology, but only
+in special circumstances (as in 453Xd) is the measure inner regular with
+respect to its Borel sets, and even the closure of a set can be
+difficult to determine.
+
+As with inner regularity, $\tau$-additivity can be associated with the
+band structure of the space of bounded additive functionals on an
+algebra (414Yb);  there will therefore be corresponding decompositions
+of measures into $\tau$-additive and `purely non-$\tau$-additive' parts
+(cf.\ 414Ya).
+}%end of notes
+
+\discrpage
+

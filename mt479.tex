@@ -1,0 +1,4444 @@
+\frfilename{mt479.tex}
+\versiondate{15.2.10/28.4.10}
+
+\def\hp{\mathop{\text{hp}}\nolimits}
+\def\rdtf{rapidly decreasing test function}
+\def\varinnerprod#1#2{#1\dotproduct#2}
+\def\zz{}
+\def\trs{^{\top}}
+
+
+\def\chaptername{Geometric measure theory}
+\def\sectionname{Newtonian capacity}
+
+\newsection{479}
+I end the chapter with a sketch of fragments of the theory of Newtonian
+capacity.   I introduce equilibrium measures as integrals
+of harmonic measures (479B);  this gives a quick definition of capacity
+(479C), with a substantial number of basic properties (479D, 479E),
+including its extendability to a Choquet capacity (479Ed).
+I give sufficient fragments of the theory of Newtonian potentials (479F,
+479J) and harmonic analysis (479G, 479I) to support the classical
+definitions of capacity and equilibrium measures in terms of potential and
+energy (479K, 479N).   The method demands some Fourier analysis extending
+that of Chapter 28 (479H).
+479P is a portmanteau theorem on generalized equilibrium measures and
+potentials with an exact description of the latter in terms of outer
+Brownian hitting probabilities.
+I continue with notes on
+capacity and Hausdorff measure (479Q), self-intersecting Brownian
+paths (479R) and an example of a discontinuous equilibrium potential
+(479S).   Yet another definition of capacity, for
+compact sets, can be formulated in terms of gradients of potential
+functions (479U);  this leads to a simple inequality relating
+capacity to Lebesgue measure (479V).   The section ends with an alternative
+description of capacity in terms of a measure on the family of closed
+subsets of $\BbbR^r$ (479W).
+
+\leader{479A}{Notation} In this section, unless otherwise stated,
+$r$ will be a fixed integer greater than or equal to $3$.
+\cmmnt{As in \S478, }$\mu$ will be Lebesgue measure on $\BbbR^r$,
+and $\beta_r$ the measure of\cmmnt{ the unit ball} $B(\tbf{0},1)$;
+$\nu$ will be normalized $(r-1)$-dimensional Hausdorff
+measure on $\BbbR^r$\cmmnt{, so that
+$\nu(\partial B(\tbf{0},1))=r\beta_r$}.
+
+Recall that if $\zeta$ is a measure on a space $X$, and
+$E\in\dom\zeta$, then $\zeta\LLcorner E$ is defined by saying that
+$(\zeta\LLcorner E)(F)=\zeta(E\cap F)$ whenever $F\subseteq X$ and
+$\zeta$ measures $E\cap F$\cmmnt{ (234M\formerly{2{}34E})}.
+If $\zeta$ is a Radon measure, so is
+$\zeta\LLcorner E$\cmmnt{ (416S)}.
+
+\cmmnt{As in \S478, }$\Omega$ will be $C(\coint{0,\infty};\BbbR^r)_0$,
+with the topology of
+uniform convergence on compact sets;
+$\mu_W$ will be Wiener measure on $\Omega$.
+Recall that the Brownian hitting probability $\hp(D)$
+of a set $D\subseteq\BbbR^r$
+is $\mu_W\{\omega:\omega^{-1}[D]\ne\emptyset\}$ if this is
+defined, and that for any $D\subseteq\BbbR^r$ the outer
+Brownian hitting probability is
+$\hp^*(D)=\mu_W^*\{\omega:\omega^{-1}[D]\ne\emptyset\}$\cmmnt{ (477Ia)}.
+%this is $\min\{\hp(E):E\supseteq D$ is G$_{\delta}\}$.
+
+If $x\in\BbbR^r$ and $A\subseteq\BbbR^r$ is an analytic set, $\mu_x^{(A)}$
+will be the harmonic measure for arrivals in $A$ from $x$\cmmnt{ (478P)};
+note that $\mu_x^{(A)}(\BbbR^r)=\mu_x^{(A)}(\partial A)=\hp(A-x)$.
+
+I will write $\rhotv$ for the total variation metric on the space
+$M^+_{\text{R}}(\BbbR^r)$ of totally finite Radon measures on $\BbbR^r$, so
+that
+
+\Centerline{$\rhotv(\lambda,\zeta)
+=\sup_{E,F\subseteq\BbbR^r\text{ are Borel}}
+ \lambda E-\zeta E-\lambda F+\zeta F$}
+
+\noindent for $\lambda$,
+$\zeta\in M^+_{\text{R}}(\BbbR^r)$\cmmnt{ (437Qa)}.
+
+\leader{479B}{Theorem} Let $A\subseteq\BbbR^r$ be a bounded analytic set.
+
+\quad(i) There is a Radon measure $\lambda_A$ on $\BbbR^r$, with support
+included in $\partial A$, defined by saying that
+\discretionary{}{}{}$\family{x}{\partial B(\tbf{0},\gamma)}
+{\Bover1{r\beta_r\gamma}\mu_x^{(A)}}$ is a
+disintegration of $\lambda_A$ over the subspace measure
+$\nu_{\partial B(\tbf{0},\gamma)}$ whenever $\gamma>0$ and
+$\overline{A}\subseteq\interior B(\tbf{0},\gamma)$.
+
+\quad(ii) $\lambda_A$ is the limit
+$\lim_{\|x\|\to\infty}\|x\|^{r-2}\mu_x^{(A)}$ for
+the total variation metric on $M^+_{\text{R}}(\BbbR^r)$.
+
+\leaveitout{Whenever $\gamma>0$ is such that
+$\overline{A}\subseteq\interior B(\tbf{0},\gamma)$, $M>1$ and $\|x\|=M\gamma$,
+then
+
+\Centerline{$|\lambda_AE-\|x\|^{r-2}\mu_x^{(A)}E|
+\le\gamma^{r-2}
+  \bigl(|\Bover{M^r}{(M-1)^r}-1|+\Bover{M^{r-2}}{(M-1)^r}\bigr)$}
+
+\noindent for every Borel set $E\subseteq\BbbR^r$.}
+
+\proof{{\bf (a)} Suppose that $\gamma>0$ is such that
+$\overline{A}\subseteq\interior B(\tbf{0},\gamma)$.   By 478T,
+$x\mapsto\mu^{(A)}_x(E):\partial B(\tbf{0},\gamma)\to\coint{0,\infty}$ is
+continuous for every Borel set $E\subseteq\BbbR^r$,
+and $\mu^{(A)}_x(\BbbR^r\setminus\overline{A})=0$ for every $x$, so
+$\{\mu^{(A)}_x:x\in\partial B(\tbf{0},\gamma)\}$ is uniformly tight.
+By 452Da, we have a unique
+totally finite Radon measure $\zeta_{\gamma}$ such that
+$\family{x}{\partial B(\tbf{0},\gamma)}{\Bover1{r\beta_r\gamma}\mu_x^{(A)}}$ is a
+disintegration of $\zeta_{\gamma}$ over the subspace measure
+$\nu_{\partial B(\tbf{0},\gamma)}$.   Since $\BbbR^r\setminus\partial A$ is
+$\mu_x^{(A)}$-negligible for every $x\in\partial B(\tbf{0},\gamma)$ (478Pa),
+it is also $\zeta_{\gamma}$-negligible.
+
+\medskip
+
+{\bf (b)} Now suppose that $\overline{A}\subseteq\interior B(\tbf{0},\gamma)$ and
+that $\|x\|=M\gamma$, where $M>1$.   Then 478R tells us that
+$\family{y}{\BbbR^r}{\mu^{(A)}_y}$ is a disintegration of
+$\mu_x^{(A)}$ over $\mu_x^{(B(\tbf{0},\gamma))}$.  So, for any Borel set
+$E\subseteq\BbbR^r$,
+
+$$\eqalignno{|\zeta_{\gamma}E-\|x\|^{r-2}\mu_x^{(A)}E|
+&=\Bover1{r\beta_r\gamma}\bigl|\int_S\mu_y^{(A)}E\,\nu(dy)
+  -\|x\|^{r-2}\int_{\BbbR^r}\mu_y^{(A)}E\,\mu_x^{(B(\tbf{0},\gamma))}(dy)\bigr|
+  \cr
+\displaycause{where $S=\partial B(\tbf{0},\gamma)$}
+&=\Bover1{r\beta_r\gamma}\bigl|\int_S\mu_y^{(A)}E\,\nu(dy)
+  -\|x\|^{r-2}\int_S\mu_y^{(A)}E\,\mu_x^{(S)}(dy)\bigr|\cr
+\displaycause{478Pa}
+&=\Bover1{r\beta_r\gamma}\bigl|\int_S\mu_y^{(A)}E\,\nu(dy)
+  -\|x\|^{r-2}\int_S\Bover{\|x\|^2-\gamma^2}{r\beta_r\gamma\|x-y\|^r}
+     \mu_y^{(A)}E\,\nu(dy)\bigr|\cr
+\displaycause{478Q}
+&\le\Bover1{r\beta_r\gamma}\int_S
+  |1-\|x\|^{r-2}\,\Bover{\|x\|^2-\gamma^2}{\|x-y\|^r}|
+  \mu_y^{(A)}E\nu(dy)\cr
+&\le\Bover{\nu S}{r\beta_r\gamma}
+  \sup_{y\in S}|1-\|x\|^{r-2}\,\Bover{\|x\|^2-\gamma^2}{\|x-y\|^r}|\cr
+&\le\gamma^{r-2}
+  \sup_{y\in S}(|1-\Bover{\|x\|^r}{\|x-y\|^r}|
+     +\Bover{\gamma^2\|x\|^{r-2}}{\|x-y\|^r})
+  \cr
+&=\gamma^{r-2}
+  \bigl(|\Bover{M^r\gamma^r}{(M\gamma-\gamma)^r}-1|
+     +\Bover{\gamma^rM^{r-2}}{\gamma^r(M-1)^r}\bigr)
+  \cr
+&=\gamma^{r-2}\bigl(|\Bover{M^{r-2}}{(M-1)^r}-1|
+  +\Bover{M^r}{(M-1)^r}\bigr).\cr}$$
+
+\medskip
+
+{\bf (c)} Accordingly
+
+\Centerline{$\rhotv(\zeta_{\gamma},\|x\|^{r-2}\mu_x^{(A)})
+\le 2\gamma^{r-2}
+   \bigl(|\Bover{M^r}{(M-1)^r}-1|+\Bover{M^{r-2}}{(M-1)^r}\bigr)$}
+
+\noindent whenever $\gamma>0$,
+$\overline{A}\subseteq\interior B(\tbf{0},\gamma)$ and
+$\|x\|=M\gamma>\gamma$;  so that
+
+\Centerline{$\zeta_{\gamma}=\lim_{\|x\|\to\infty}\|x\|^{r-2}\mu_x^{(A)}$}
+
+\noindent for the total variation metric whenever $\gamma>0$ and
+$\overline{A}\subseteq\interior B(\tbf{0},\gamma)$.   We can therefore write
+$\lambda_A$ for the limit, and both (i) and (ii) will be true, since I have
+already checked that $\supp(\zeta_{\gamma})\subseteq\partial A$ for all
+large $\gamma$.
+}%end of proof of 479B
+
+\leader{479C}{Definitions (a)(i)} In the context of 479B, I will call
+$\lambda_A$ the {\bf equilibrium measure} of the bounded analytic set
+$A$, and $\lambda_A\BbbR^r\cmmnt{\mskip5mu=\lambda_A(\partial A)}$ the
+{\bf Newtonian capacity} $\capacity A$ of $A$.
+
+\medskip
+
+\quad{\bf (ii)} For any $D\subseteq\BbbR^r$, its {\bf Choquet-Newton
+capacity} will be
+
+\Centerline{$c(D)
+=\inf_{G\supseteq D\text{ is open}}\sup_{K\subseteq G\text{ is compact}}
+\capacity K$.}
+
+\noindent\cmmnt{(I will confirm in 479Ed below
+that $c$ is in fact a capacity as defined in \S432.) }Sets with zero
+Choquet-Newton capacity are called {\bf polar}.
+
+\spheader 479Cb If $\zeta$ is a Radon
+measure on $\BbbR^r$, the {\bf Newtonian potential} associated with
+$\zeta$ is
+the function $W_{\zeta}:\BbbR^r\to[0,\infty]$ defined by the formula
+
+\Centerline{$W_{\zeta}(x)=\int_{\BbbR^r}\Bover1{\|y-x\|^{r-2}}\zeta(dy)$}
+
+\noindent for $x\in\BbbR^r$.   The {\bf energy} of $\zeta$ is now
+
+\Centerline{$\energy(\zeta)=\int W_{\zeta}d\zeta
+=\int_{\BbbR^r}\int_{\BbbR^r}\Bover1{\|x-y\|^{r-2}}\zeta(dy)\zeta(dx)$.}
+
+\noindent If $A$ is a bounded analytic subset of $\BbbR^r$, the potential
+$\tilde W_A=W_{\lambda_A}$ is the {\bf equilibrium potential} of $A$.
+
+\cmmnt{(In 479P below I will describe constructions of equilibrium
+measures and
+potentials for arbitrary subsets $D$ of $\BbbR^r$ such that $c(D)$ is
+finite.)}
+
+\spheader 479Cc If $\zeta$ is a Radon measure on $\BbbR^r$,
+I will write $U_{\zeta}$ for the
+{\bf ($r-1$)-potential} of $\zeta$, defined by saying that
+$U_{\zeta}(x)
+=\biggerint_{\BbbR^r}\Bover1{\|x-y\|^{r-1}}\zeta(dy)\in[0,\infty]$ for
+$x\in\BbbR^r$.
+
+\leader{479D}{}\cmmnt{ The machinery in Theorem 479B gives an efficient
+method of approaching
+several fundamental properties of equilibrium measures.   I start with
+some elementary calculations.
+
+\medskip
+
+\noindent}{\bf Proposition}
+(a) For any $\gamma>0$ and $z\in\BbbR^r$,
+the Newtonian capacity of
+$B(z,\gamma)$ is $\gamma^{r-2}$, the equilibrium measure
+of $B(z,\gamma)$ is
+$\Bover1{r\beta_r\gamma}\nu\LLcorner\partial B(z,\gamma)$, and the
+equilibrium potential of $B(z,\gamma)$ is given by
+
+\Centerline{$\tilde W_{B(z,\gamma)}(x)
+=\min(1,\Bover{\gamma^{r-2}}{\|x-z\|^{r-2}})$}
+
+\noindent for every $x\in\BbbR^r$.
+
+(b) Let $A\subseteq\BbbR^r$ be a bounded analytic
+set with equilibrium measure $\lambda_A$ and equilibrium potential
+$\tilde W_A$.
+
+\quad(i) $\tilde W_A(x)\le 1$ for every $x\in\BbbR^r$.
+
+\quad(ii) If $B\subseteq A$ is another analytic set,
+$\tilde W_B\le\tilde W_A$.
+
+\quad(iii) $\tilde W_A(x)=1$ for every $x\in\interior A$.
+
+(c) Let $A$, $B\subseteq\BbbR^r$ be bounded analytic sets.
+
+\quad(i)\cmmnt{ Defining $+$ and $\le$ as in 234G\formerly{1{}12Xe} and
+234P,} $\lambda_{A\cup B}\le\lambda_A+\lambda_B$.
+
+\quad(ii) $\lambda_AB\le\capacity B$.
+
+\proof{{\bf (a)} For $x\in\BbbR^r\setminus B(z,\gamma)$,
+$\mu_x^{(B(z,\gamma))}$ is the indefinite-integral measure over
+$\nu\LLcorner\partial B(z,\gamma)$ defined by the function
+$y\mapsto\Bover{\|x-z\|^2-\gamma^2}{r\beta_r\gamma\|x-y\|^r}$ (478Qc).
+So $\|x\|^{r-2}\mu_x^{(B(z,\gamma))}$ is the indefinite-integral measure
+defined by
+
+\Centerline{$y\mapsto f_x(y)
+=\Bover{\|x\|^{r-2}(\|x-z\|^2-\gamma^2)}{r\beta_r\gamma\|x-y\|^r}$.}
+
+\noindent As $\|x\|\to\infty$, $f_x(y)\to\Bover1{r\beta_r\gamma}$
+uniformly for $y\in\partial B(z,\gamma)$, so
+$\lambda_{B(\tbf{0},\gamma)}
+=\lim_{\|x\|\to\infty}\|x\|^{r-2}\mu_x^{(B(z,\gamma))}$ is
+$\Bover1{r\beta_r\gamma}\nu\LLcorner\partial B(z,\gamma)$.
+Consequently the capacity of $B(z,\gamma)$ is
+$\Bover1{r\beta_r\gamma}\nu(\partial B(z,\gamma))=\gamma^{r-2}$, and the
+equilibrium potential is
+
+$$\eqalignno{\tilde W_{B(z,\gamma)}(x)
+&=\Bover1{r\beta_r\gamma}\int_{\partial B(z,\gamma)}
+   \Bover1{\|y-x\|^{r-2}}\nu(dy)\cr
+&=\Bover1{r\beta_r\gamma}\int_{\partial B(\tbf{0},\gamma)}
+   \Bover1{\|y+z-x\|^{r-2}}\nu(dy)
+=\Bover1{r\beta_r\gamma}
+  \cdot\Bover{\nu(\partial B(\tbf{0},\gamma))}{\max(\gamma,\|x-z\|)^{r-2}}\cr
+\displaycause{478Ga}
+&=\min(1,\Bover{\gamma^{r-2}}{\|x-z\|^{r-2}}).\cr}$$
+
+\medskip
+
+{\bf (b)(i)} Let $\gamma>0$ be such that
+$\overline{A}\subseteq\interior B(\tbf{0},\gamma)$.   Then
+
+$$\eqalignno{\tilde W_A(x)
+&=\int_{\BbbR^r}\Bover1{\|x-y\|^{r-2}}\lambda_A(dy)
+=\Bover1{r\beta_r\gamma}\int_{\partial B(\tbf{0},\gamma)}\int_{\BbbR^r}
+  \Bover1{\|x-y\|^{r-2}}\mu_z^{(A)}(dy)\nu(dz)\cr
+\displaycause{452F}
+&\le\Bover1{r\beta_r\gamma}\int_{\partial B(\tbf{0},\gamma)}
+  \Bover1{\|x-z\|^{r-2}}\nu(dz)\cr
+\displaycause{478Pb, 478H}
+&=\Bover{\nu(\partial B(\tbf{0},\gamma))}{r\beta_r\gamma}
+  \Bover1{\max(\gamma,\|x\|)^{r-2}}\cr
+\displaycause{478Ga}
+&\le 1.\cr}$$
+
+\medskip
+
+\quad{\bf (ii)} Let $\gamma>0$ be such that
+$\overline{A}\subseteq\interior B(\tbf{0},\gamma)$.   Then
+
+$$\eqalignno{\tilde W_B(x)
+&=\int_{\BbbR^r}\Bover1{\|x-y\|^{r-2}}\lambda_B(dy)\cr
+&=\Bover1{r\beta_r\gamma}\int_{\partial B(\tbf{0},\gamma)}
+   \int_{\BbbR^r}\Bover1{\|x-y\|^{r-2}}\mu_z^{(B)}(dy)\nu(dz)\cr
+&=\Bover1{r\beta_r\gamma}\int_{\partial B(\tbf{0},\gamma)}
+   \int_{\BbbR^r}\int_{\BbbR^r}\Bover1{\|x-y\|^{r-2}}
+   \mu_w^{(B)}(dy)\mu_z^{(A)}(dw)\nu(dz)\cr
+\displaycause{because $\family{w}{\BbbR^r}{\mu_w^{(B)}}$ is a
+disintegration of $\mu_z^{(B)}$ over $\mu_z^{(A)}$ for every $z$, by
+478R}
+&\le\Bover1{r\beta_r\gamma}\int_{\partial B(\tbf{0},\gamma)}
+   \int_{\BbbR^r}\Bover1{\|x-w\|^{r-2}}\mu_z^{(A)}(dw)\nu(dz)\cr
+\displaycause{by 478Pb, because $y\mapsto\Bover1{\|x-y\|^{r-2}}$ is
+continuous and superharmonic}
+&=\tilde W_A(x).\cr}$$
+
+\medskip
+
+\quad{\bf (iii)} If $x\in\interior A$, there is a $\gamma>0$ such that
+$B(x,\gamma)\subseteq A$;  now, putting (a) and (ii) above together,
+
+\Centerline{$\tilde W_A(x)\ge\tilde W_{B(x,\gamma)}(x)=1$.}
+
+\noindent Since we know from (i) that $\tilde W_A(x)\le 1$, we have
+equality.
+
+\medskip
+
+{\bf (c)(i)} Suppose that $K\subseteq\BbbR^r$ is
+compact  and that $x\in\BbbR^r$.
+Let $\tau_A$, $\tau_B$ and $\tau_{A\cup B}$ be the Brownian
+hitting times to $A-x$, $B-x$ and $(A\cup B)-x$ respectively.   Then
+$\tau_{A\cup B}=\tau_A\wedge\tau_B$.   Now
+
+$$\eqalign{\mu^{(A\cup B)}_x(K)
+&=\mu_W\{\omega:\tau_{A\cup B}(\omega)<\infty,\,
+   x+\omega(\tau_{A\cup B}(\omega))\in K\}\cr
+&\le\mu_W\{\omega:\tau_{A\cup B}(\omega)=\tau_A(\omega)<\infty,\,
+      x+\omega(\tau_A(\omega))\in K\}\cr
+&\mskip150mu
+  +\mu_W\{\omega:\tau_{A\cup B}(\omega)=\tau_B(\omega)<\infty,\,
+      x+\omega(\tau_B(\omega))\in K\}\cr
+&\le\mu^{(A)}_x(K)+\mu^{(B)}_x(K).\cr}$$
+
+\noindent Multiplying by $\|x\|^{r-2}$ and letting $\|x\|\to\infty$,
+
+\Centerline{$\lambda_{A\cup B}(K)\le\lambda_AK+\lambda_BK
+=(\lambda_A+\lambda_B)(K)$}
+
+\noindent for every $K$, which is the criterion of 416E(a-ii).
+
+\medskip
+
+\quad{\bf (ii)} For any $x\in\BbbR^r$,
+
+$$\eqalignno{\mu^{(A)}_x(B)
+&=\mu_W\{\omega:\tau_A(\omega)<\infty,\,x+\omega(\tau_A(\omega))\in B\}\cr
+\displaycause{where $\tau_A(\omega)$ is the Brownian hitting time
+to $A-x$}
+&\le\mu_W\{\omega:\omega^{-1}[B-x]\ne\emptyset\}
+=\mu^{(B)}_x(\BbbR^r).\cr}$$
+
+\noindent Multiplying by $\|x\|^{r-2}$ and taking the limit as
+$\|x\|\to\infty$, $\lambda_AB\le\capacity B$.
+}%end of proof of 479D
+
+\leader{479E}{Theorem} (a) Newtonian capacity $\capacity$ is
+submodular\cmmnt{ (definition:  432Jc)}.
+
+(b) Suppose that $\sequencen{A_n}$ is a
+non-decreasing sequence of analytic subsets of
+$\BbbR^r$ with bounded union $A$.
+
+\quad(i) The equilibrium measure $\lambda_A$ is the limit
+$\lim_{n\to\infty}\lambda_{A_n}$ for the narrow topology on the space
+$M^+_{\text{R}}(\BbbR^r)$ of
+totally finite Radon measures on $\BbbR^r$.
+
+\quad(ii) $\capacity A=\lim_{n\to\infty}\capacity A_n$.
+
+\quad(iii) The equilibrium potential
+$\tilde W_A$ is
+$\lim_{n\to\infty}\tilde W_{A_n}=\sup_{n\in\Bbb N}\tilde W_{A_n}$.
+
+(c) Suppose that $\sequencen{A_n}$ is a non-increasing sequence of bounded
+analytic subsets of $\BbbR^r$ such that
+$\bigcap_{n\in\Bbb N}A_n=\bigcap_{n\in\Bbb N}\overline{A_n}=A$ say.
+
+\quad(i) $\lambda_A$ is the limit
+$\lim_{n\to\infty}\lambda_{A_n}$ for the narrow topology on
+$M^+_{\text{R}}(\BbbR^r)$.
+
+\quad(ii) $\capacity A=\lim_{n\to\infty}\capacity A_n$.
+
+(d)(i) Choquet-Newton capacity $c:\Cal P\BbbR^r\to[0,\infty]$ is the unique
+outer regular Choquet capacity on $\BbbR^r$ extending $\capacity$.
+
+\quad(ii) $c$ is submodular.
+
+\quad(iii) $c(A)=\sup\{\capacity K:K\subseteq A\text{ is compact}\}$
+for every analytic set $A\subseteq\BbbR^r$.
+
+\proof{{\bf (a)} Let $A$, $B\subseteq\BbbR^r$ be bounded analytic sets.
+If $x\in\BbbR^r$, then
+
+\Centerline{$\hp((A\cup B)-x)+\hp((A\cap B)-x)
+\le\hp(A-x)+\hp(B-x)$.}
+
+\noindent\Prf\ For $C\subseteq\BbbR^r$ set
+
+\Centerline{$H_C=\{\omega:\omega\in\Omega$,
+there is some $t\ge 0$ such that $x+\omega(t)\in C\}$,}
+
+\noindent so that if $C$ is an analytic set,
+$\hp(C-x)=\mu_WH_C$.   Then
+
+\Centerline{$H_{A\cup B}=H_A\cup H_B$,
+\quad$H_{A\cap B}\subseteq H_A\cap H_B$,}
+
+\noindent so
+
+$$\eqalign{\hp((A\cup B)-x)+\hp((A\cap B)-x)
+&=\mu_WH_{A\cup B}+\mu_WH_{A\cap B}\cr
+&\le\mu_W(H_A\cup H_B)+\mu_W(H_A\cap H_B)\cr
+&=\mu_WH_A+\mu_WH_B\cr
+&=\hp(A-x)+\hp(B-x).  \text{ \Qed}\cr}$$
+
+\noindent Consequently
+
+$$\eqalign{\capacity(A\cup B)+\capacity(A\cap B)
+&=\lambda_{A\cup B}(\BbbR^r)+\lambda_{A\cap B}(\BbbR^r)\cr
+&=\lim_{\|x\|\to\infty}\|x\|^{r-2}
+  (\hp((A\cup B)-x)+\hp((A\cap B)-x)\cr
+&\le\lim_{\|x\|\to\infty}\|x\|^{r-2}
+  (\hp(A-x)+\hp(B-x))\cr
+&=\capacity A+\capacity B.\cr}$$
+
+\noindent As $A$ and $B$ are arbitrary, $\capacity$ is submodular.
+
+\medskip
+
+{\bf (b)(i)} Let $f:\BbbR^r\to\Bbb R$ be any bounded continuous function.
+For any $x\in\BbbR^r$,
+$\int fd\mu_x^{(A)}=\lim_{n\to\infty}\int fd\mu_x^{(A_n)}$.
+\Prf\ Let $\tau$, $\tau_n$ be the Brownian hitting times to $A-x$, $A_n-x$
+respectively.   Observe that $\sequencen{\tau_n(\omega)}$ is non-increasing
+and
+
+\Centerline{$\tau(\omega)=\inf\{t:x+\omega(t)\in\bigcup_{n\in\Bbb N}A_n\}
+=\lim_{n\to\infty}\tau_n(\omega)$}
+
+\noindent for every $\omega\in\Omega$.
+Set $H=\{\omega:\tau(\omega)<\infty\}$,
+$H_n=\{\omega:\tau_n(\omega)<\infty\}$.   Then $\sequencen{H_n}$ is a
+non-decreasing sequence with union $H$, and for $\omega\in H$
+
+\Centerline{$f(x+\tau(\omega))=\lim_{n\to\infty}f(x+\tau_n(\omega))$}
+
+\noindent because $f$ and $\omega$ are continuous.   Accordingly
+
+$$\eqalign{\int fd\mu^{(A)}_x
+&=\int_Hf(x+\omega(\tau(\omega)))\cr
+&=\lim_{n\to\infty}\int_{H_n}f(x+\omega(\tau_n(\omega)))
+=\lim_{n\to\infty}\int fd\mu^{(A_n)}_x. \text{ \Qed}\cr}$$
+
+\woddheader{479E}{}{}{}{48pt}
+
+Taking $\gamma>0$ such that $\overline{A}\subseteq\interior B(\tbf{0},\gamma)$,
+
+$$\eqalignno{\int fd\lambda_A
+&=\Bover1{r\beta_r\gamma}
+   \int_{\partial B(\tbf{0},\gamma)}\int fd\mu_x^{(A)}\nu(dx)\cr
+\displaycause{452F}
+&=\Bover1{r\beta_r\gamma}\int_{\partial B(\tbf{0},\gamma)}
+   \lim_{n\to\infty}\int fd\mu_x^{(A_n)}\nu(dx)\cr\cr
+&=\lim_{n\to\infty}\Bover1{r\beta_r\gamma}
+   \int_{\partial B(\tbf{0},\gamma)}\int fd\mu_x^{(A_n)}\nu(dx)
+=\lim_{n\to\infty}\int fd\lambda_{A_n}.\cr}$$
+
+\noindent As $f$ is arbitrary, $\lambda_A=\lim_{n\to\infty}\lambda_{A_n}$
+for the narrow topology (437Kc).
+
+\medskip
+
+\quad{\bf (ii)} Taking $f=\chi\BbbR^r$ in (i), we see that
+$\capacity A=\lim_{n\to\infty}\capacity A_n$.
+
+\medskip
+
+\quad{\bf (iii)} For any $x\in\BbbR^r$,
+
+\Centerline{$\tilde W_A(x)
+=\int\Bover1{\|y-x\|^{r-2}}\lambda_A(dy)
+\le\liminf_{n\to\infty}\int\Bover1{\|y-x\|^{r-2}}\lambda_{A_n}(dy)$}
+
+\noindent because $y\mapsto\Bover1{\|y-x\|^{r-2}}$ is non-negative and
+continuous (437Jg).   As $\tilde W_{A_n}(x)\le\tilde W_A(x)$
+for every $n$ (479D(b-ii)),
+$\tilde W_A(x)=\lim_{n\to\infty}\tilde W_{A_n}(x)
+=\sup_{n\in\Bbb N}\tilde W_{A_n}(x)$.
+
+\medskip
+
+{\bf (c)} Most of the ideas of (b) still work.   Again take
+$f\in C_b(\BbbR^r)$.   Then
+$\int fd\mu_x^{(A)}=\lim_{n\to\infty}\int fd\mu_x^{(A_n)}$
+for any $x\in\BbbR^r$.
+\Prf\ As before, let $\tau$, $\tau_n$ be the Brownian hitting times to
+$A-x$, $A_n-x$
+respectively.   This time, $\sequencen{\tau_n}$ is non-decreasing.
+Let $\Omega'$ be the conegligible subset of $\Omega$ consisting of those
+functions $\omega$ such that $\lim_{t\to\infty}\|\omega(t)\|=\infty$.
+If $\omega\in\Omega'$ and $t=\lim_{n\to\infty}\tau_n(\omega)$ is finite,
+then for every $n\in\Bbb N$ there is a $t_n\le t+2^{-n}$ such that
+$x+\omega(t_n)\in A_n$.   Let $s\in[0,t]$ be a cluster point of
+$\sequencen{t_n}$;  then $x+\omega(s)$ is a cluster point of
+$\sequencen{x+\omega(t_n)}$, so belongs to
+$\bigcap_{n\in\Bbb N}\overline{A}_n=A$, and $\tau(\omega)\le s\le t$.
+Since $\tau(\omega)\ge\tau(\omega_n)$ for every $n$,
+we have $\tau(\omega)=\lim_{n\to\infty}\tau(\omega_n)$.
+
+Setting $H=\{\omega:\tau(\omega)<\infty\}$ and
+$H_n=\{\omega:\tau_n(\omega)<\infty\}$, $\sequencen{H_n}$ is a
+non-increasing sequence with intersection $H$, and for $\omega\in H$
+
+\Centerline{$f(x+\tau(\omega))=\lim_{n\to\infty}f(x+\tau_n(\omega))$.}
+
+\noindent So once again
+
+$$\eqalign{\int fd\mu^{(A)}_x
+&=\int_Hf(x+\omega(\tau(\omega)))\mu_W(d\omega)\cr
+&=\lim_{n\to\infty}\int_{H_n}f(x+\omega(\tau_n(\omega)))\mu_W(d\omega)
+=\lim_{n\to\infty}\int fd\mu^{(A_n)}_x. \text{ \Qed}\cr}$$
+
+\noindent The rest of the argument follows (b-i) and (b-ii) unchanged.
+
+\medskip
+
+{\bf (d)(i)} I seek to apply 432Lb.
+
+\medskip
+
+\qquad\grheada\ Let $\Cal K$ be the family of compact
+subsets of $\BbbR^r$ and set $c_1=\capacity\restr\Cal K$.   By
+(a), $c_1$ is submodular.
+If $G\subseteq\BbbR^r$ is a bounded open set, then it is
+expressible as the union of a
+non-decreasing sequence of compact sets, so by (b-ii) we
+have $\capacity G=\sup\{c_1(L):L\in\Cal K$, $L\subseteq G\}$;  and if
+$K\in\Cal K$, there is a non-increasing sequence $\sequencen{G_n}$ of
+bounded open sets such that
+$K=\bigcap_{n\in\Bbb N}G_n=\bigcap_{n\in\Bbb N}\overline{G}_n$, and now
+$c_1(K)=\lim_{n\to\infty}\capacity G_n$, by (c-ii).   But this means that
+
+\Centerline{$c_1(K)
+\le\inf_{G\supseteq K\text{ is open}}
+  \sup_{L\subseteq G\text{ is compact}}c_1(L)
+\le\inf_{n\in\Bbb N}\capacity G_n
+=c_1(K)$.}
+
+\noindent So all the conditions of 432Lb are satisfied, and $c$, as defined
+in 479C(a-ii), is the unique extension of $c_1$
+to an outer regular Choquet capacity on $\BbbR^r$.
+
+\medskip
+
+\qquad\grheadb\ Now $c(A)=\capacity A$ for every bounded analytic set
+$A\subseteq\BbbR^r$.   \Prf\
+
+$$\eqalignno{c(A)
+&=\sup_{K\subseteq A\text{ is compact}}c(K)\cr
+\displaycause{432K}
+&=\sup_{K\subseteq A\text{ is compact}}\capacity K
+\le\capacity A
+\le\inf_{G\supseteq A\text{ is bounded and open}}\capacity G\cr
+&=\mathop{\text{inf}\hbox{\vrule depth2pt width0pt}}
+  _{G\supseteq A\text{ is open}}
+   \,\,\sup_{L\subseteq G\text{ is compact}}c(L)
+=c(A).  \text{ \Qed}\cr}$$
+
+\noindent So $c$ extends $\capacity$, as claimed, and must be the unique
+outer regular Choquet capacity doing so.
+
+\medskip
+
+\quad{\bf (ii)-(iii)} By 432Lb, $c$ is submodular;  and (iii) is covered by
+the argument in (i-$\beta$).
+}%end of proof of 479E
+
+\leader{479F}{}\cmmnt{ I now wish to describe an entirely different
+characterization of the capacity and equilibrium measure of a compact set,
+which demands a substantial investment in harmonic analysis (down to
+479I) and an excursion into Fourier analysis (479H).   I begin with general
+remarks about Newtonian potentials.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $\zeta$ be a totally finite Radon measure on
+$\BbbR^r$, and set $G=\BbbR^r\setminus\supp\zeta$\cmmnt{, where
+$\supp\zeta$ is the support of $\zeta$ (411Nd)}.   Let $W_{\zeta}$ be the
+Newtonian potential associated with $\zeta$.
+
+(a) $W_{\zeta}:\BbbR^r\to[0,\infty]$ is lower semi-continuous,
+and $W_{\zeta}\restr G:G\to\coint{0,\infty}$ is continuous.
+
+(b) $W_{\zeta}$ is superharmonic, and $W_{\zeta}\restr G$ is harmonic.
+
+(c) $W_{\zeta}$ is locally $\mu$-integrable;  in particular, it is finite
+$\mu$-a.e.
+
+(d) If $\zeta$ has compact support, then
+$\zeta\BbbR^r=\lim_{\|x\|\to\infty}\|x\|^{r-2}W_{\zeta}(x)$.
+
+(e) If $W_{\zeta}\restr\supp\zeta$ is continuous then $W_{\zeta}$ is
+continuous.
+
+(f) If $K$ is a compact set such that $W_{\zeta}\restr K$ is continuous
+and finite-valued then $W_{\zeta\LLcorner K}$ is continuous.
+
+(g) If $W_{\zeta}$ is finite $\zeta$-a.e.\ and
+$f:\BbbR^r\to[0,\infty]$ is a lower semi-continuous superharmonic
+function such that $f\ge W_{\zeta}\,\,\zeta$-a.e., then $f\ge W_{\zeta}$.
+%index as `domination principle'
+
+(h) If $\zeta'$ is another Radon measure on $\BbbR^r$ and
+$\zeta'\le\zeta$, then $W_{\zeta'}\le W_{\zeta}$ and
+$\energy(\zeta')\le\energy(\zeta)$.
+
+%If $h:\BbbR^r\to[0,\infty]$ a Lebesgue integrable function, then
+%$W_{\zeta*h\mu}=W_{\zeta}*h$, where $h\mu$ is the indefinite-integral
+%measure over $\mu$ defined by $h$ and
+%the convolution $\zeta*h\mu$ is defined as in 444A or 257A.
+%see 479Q
+
+\proof{{\bf (a)}
+If $\sequencen{x_n}$ is a convergent sequence in
+$\BbbR^r$ with limit $x$, then
+$\Bover1{\|y-x\|^{r-2}}=\lim_{n\to\infty}\Bover1{\|y-x_n\|^{r-2}}$
+for every $y$
+(counting $\Bover10$ as $\infty$, as usual), so that
+$W_{\zeta}(x)\le\liminf_{n\to\infty}W_{\zeta}(x_n)$, by Fatou's Lemma.   As $x$ and
+$\sequencen{x_n}$ are arbitrary, $W_{\zeta}$ is lower semi-continuous.
+
+If $x\in G$, then
+$\Bover1{\|y-x_n\|^{r-2}}\le\Bover2{\rho(x,\supp\zeta)^{r-2}}$ for all $n$
+large enough and all $y\in\supp\zeta$, so Lebesgue's Dominated Convergence Theorem
+tells us that $W_{\zeta}(x)=\lim_{n\to\infty}W_{\zeta}(x_n)$ and that
+$W_{\zeta}$ is continuous at $x$, as well as finite-valued there.
+
+\medskip
+
+{\bf (b)} If $x\in\BbbR^r$ and $\delta>0$, then
+
+$$\eqalign{\Bover1{\nu(\partial B(x,\delta))}\int_{\partial B(x,\delta)}
+  W_{\zeta}d\nu
+&=\Bover1{\nu(\partial B(x,\delta))}\int_{\partial B(x,\delta)}
+  \int_{\BbbR^r}\Bover1{\|z-y\|^{r-2}}\zeta(dz)\nu(dy)\cr
+&=\int_{\BbbR^r}\Bover1{\nu(\partial B(x,\delta))}
+  \int_{\partial B(x,\delta)}\Bover1{\|z-y\|^{r-2}}\nu(dy)\zeta(dz)\cr
+&=\int_{\BbbR^r}\Bover1{\nu(\partial B(\tbf{0},\delta))}
+  \int_{\partial B(\tbf{0},\delta)}\Bover1{\|z-x-y\|^{r-2}}\nu(dy)\zeta(dz)\cr
+&\ge\int_{\BbbR^r}\Bover1{\|z-x\|^{r-2}}\zeta(dz)
+=W_{\zeta}(x)\cr}$$
+
+\noindent (478Ga) with equality if $B(x,\delta)$ does not meet
+$\supp\zeta$, since then $z-x\notin B(\tbf{0},\delta)$ and
+
+\Centerline{$\Bover1{\nu(\partial B(x,\delta))}
+  \int_{\partial B(x,\delta)}\Bover1{\|z-x-y\|^{r-2}}\nu(dy)
+=\Bover1{\|z-x\|^{r-2}}$}
+
+\noindent for $\zeta$-almost every $z$.
+
+\medskip
+
+{\bf (c)} For any $\gamma>0$ and $y\in\BbbR^r$,
+$\biggerint_{B(\tbf{0},\gamma)}\Bover1{\|y-x\|^{r-2}}\mu(dx)
+\le\Bover12r\beta_r\gamma^2$ (478Gc), so
+
+$$\eqalign{\int_{B(\tbf{0},\gamma)}W_{\zeta}d\mu
+&=\int_{B(\tbf{0},\gamma)}\int_{\BbbR^r}\Bover1{\|y-x\|^{r-2}}\zeta(dy)\mu(dx)\cr
+&=\int_{\BbbR^r}\int_{B(\tbf{0},\gamma)}\Bover1{\|y-x\|^{r-2}}\mu(dx)\zeta(dy)
+\le\Bover12r\beta_r\gamma^2\zeta\BbbR^r\cr}$$
+
+\noindent is finite.
+
+\medskip
+
+{\bf (d)} If $\zeta$ has compact support, there is an $\gamma>0$ such that
+$\supp\zeta\subseteq B(\tbf{0},\gamma)$.
+In this case, for $\|x\|>\gamma$, we have
+
+\Centerline{$\Bover{\|x\|^{r-2}}{(\|x\|+\gamma)^{r-2}}\zeta\BbbR^r
+\le\int_{\BbbR^r}\Bover{\|x\|^{r-2}}{\|x-y\|^{r-2}}\zeta(dy)
+=W_{\zeta}(x)\|x\|^{r-2}
+\le\Bover{\|x\|^{r-2}}{(\|x\|-\gamma)^{r-2}}\zeta\BbbR^r$}
+
+\noindent so all the terms converge to $\zeta\BbbR^r$ as
+$\|x\|\to\infty$.
+
+\medskip
+
+{\bf (e)} Since $W_{\zeta}$ is lower semi-continuous, it will be
+enough to show that $H=\{x:W_{\zeta}(x)<\gamma\}$ is open for every
+$\gamma\in\Bbb R$.   Take $x_0\in H$.
+If $x_0\notin\supp\zeta$ then $W_{\zeta}$ is continuous at $x_0$,
+by 479Fa, and
+$H$ is certainly a neighbourhood of $x_0$.   If $x_0\in\supp\zeta$
+take $\eta\in\ooint{0,2^{-r}(\gamma-W_{\zeta}(x_0))}$.
+Because $W_{\zeta}(x_0)$ is finite, $\zeta\{x_0\}=0$;
+because $W_{\zeta}\restr\supp\zeta$ is continuous, there is a $\delta>0$
+such that
+$\biggerint_{B(x_0,\delta)}\Bover1{\|x_0-y\|^{r-2}}\zeta(dy)\le\eta$ and
+$|W_{\zeta}(x)-W_{\zeta}(x_0)|\le\eta$ whenever
+$x\in B(x_0,\delta)\cap\supp\zeta$.   Let
+$\delta'\in\ooint{0,\delta}$ be such that
+
+\Centerline{$\bigl|\Bover1{\|x-y\|^{r-2}}-\Bover1{\|x_0-y\|^{r-2}}\bigr|
+   \le\Bover{\eta}{\zeta\BbbR^r}$}
+
+\noindent whenever $\|x-x_0\|\le\delta'$ and $\|y-x_0\|\ge\delta$;
+then
+
+\Centerline{$
+|\int_{\BbbR^r\setminus B(x_0,\delta)}\Bover1{\|x-y\|^{r-2}}\zeta(dy)
+  -\int_{\BbbR^r\setminus B(x_0,\delta)}\Bover1{\|x_0-y\|^{r-2}}\zeta(dy)|
+\le\eta$}
+
+\noindent whenever $x\in B(x_0,\delta')$.
+
+Take $x\in B(x_0,\bover12\delta')$, and let
+$z\in B(x_0,\delta)\cap\supp\zeta$ be such that
+$\|x-z\|=\rho(x,B(x_0,\delta)\cap\supp\zeta)$.
+We have $\|x-z\|\le\|x-x_0\|$ so $\|z-x_0\|\le 2\|x-x_0\|\le\delta'$.
+If $y\in B(x_0,\delta)\cap\supp\zeta$, then
+$\|y-z\|\le\|x-y\|+\|x-z\|\le 2\|x-y\|$;  so
+
+$$\eqalign{\int_{B(x_0,\delta)}\Bover1{\|x-y\|^{r-2}}\zeta(dy)
+&\le 2^{r-2}\int_{B(x_0,\delta)}\Bover1{\|z-y\|^{r-2}}\zeta(dy)\cr
+&=2^{r-2}(W_{\zeta}(z)
+  -\int_{\BbbR^r\setminus B(x_0,\delta)}\Bover1{\|z-y\|^{r-2}}\zeta(dy))\cr
+&\le 2^{r-2}(2\eta+W_{\zeta}(x_0)
+  -\int_{\BbbR^r\setminus B(x_0,\delta)}
+     \Bover1{\|x_0-y\|^{r-2}}\zeta(dy))\cr
+&=2^{r-1}\eta+2\int_{B(x_0,\delta)}\Bover1{\|x_0-y\|^{r-2}}\zeta(dy)\cr
+&\le 2^{r-1}\eta+2\eta\le(2^r-1)\eta,\cr}$$
+
+$$\eqalign{W_{\zeta}(x)
+&\le (2^r-1)\eta+\int_{\BbbR^r\setminus B(x_0,\delta)}
+  \Bover1{\|x-y\|^{r-2}}\zeta(dy)\cr
+&\le 2^r\eta+\int_{\BbbR^r\setminus B(x_0,\delta)}
+  \Bover1{\|x_0-y\|^{r-2}}\zeta(dy)
+\le 2^r\eta+W_{\zeta}(x_0)
+<\gamma.\cr}$$
+
+\noindent Thus $B(x_0,\bover12\delta')\subseteq H$ and again $H$ is a
+neighbourhood of $x_0$.   As $x_0$ is arbitrary, $H$ is open;  as
+$\gamma$ is arbitrary, $W_{\zeta}$ is continuous.
+
+\medskip
+
+{\bf (f)} Setting $H=\BbbR^r\setminus K$,
+$\zeta=\zeta\LLcorner K+\zeta\LLcorner H$, so
+$W_{\zeta}=W_{\zeta\LLcorner K}+W_{\zeta\LLcorner H}$
+(234Hc\formerly{2{}12Xh}).   Now
+$W_{\zeta\LLcorner K}$ and $W_{\zeta\LLcorner H}$ are both lower
+semi-continuous and non-negative,
+so if $W_{\zeta}\restr K$ is continuous and finite-valued
+then $W_{\zeta\LLcorner K}\restr K$
+is continuous (4A2B(d-ix)).   Since $\supp(\zeta\LLcorner K)\subseteq K$,
+(e) tells us that $W_{\zeta\LLcorner K}$ is continuous.
+
+\medskip
+
+{\bf (g)} \Quer\ Suppose that $f(x_0)<W_{\zeta}(x_0)$.   Since
+$\{x:f(x)\ge W_{\zeta}(x)$, $W_{\zeta}(x)<\infty\}$ is
+$\zeta$-conegligible, and $W_{\zeta}$ is measurable therefore
+$\zeta$-almost continuous (418J), there is a compact set $K$ such that
+$W_{\zeta}(x)<\infty$ and $W_{\zeta}(x)\le f(x)$ for every $x\in K$,
+$W_{\zeta}\restr K$ is continuous and
+$\biggerint_K\Bover1{\|x_0-y\|^{r-2}}\zeta(dy)>f(x_0)$.   Set
+$\zeta'=\zeta\LLcorner K$.   By (f), $W_{\zeta'}$ is
+continuous;  $W_{\zeta'}(x_0)>f(x_0)$;  and
+$f(x)\ge W_{\zeta}(x)\ge W_{\zeta'}(x)$ for every
+$x\in K\supseteq\supp\zeta'$.
+
+Set $g=f-W_{\zeta'}$ and $\alpha=\inf_{x\in\BbbR^r}g(x)<0$.
+Because $f$ is lower semi-continuous and $W_{\zeta'}$ is continuous,
+$g$ is lower semi-continuous;  because $\zeta'$ has compact
+support, $\lim_{\|x\|\to\infty}W_{\zeta'}(x)=0$ ((d) above) and
+$\liminf_{\|x\|\to\infty}g(x)\ge 0$;  so
+$L=\{x:g(x)=\alpha\}$ is non-empty and compact.   Note that
+$L$ is disjoint from $K$.
+Let $x_1\in L$ be a point of maximum norm.   Then $x_1\notin K$, while
+$W_{\zeta'}\restr\BbbR^r\setminus K$ is harmonic ((b) above).
+Let $\delta>0$
+be such that $B(x_1,\delta)\cap K=\emptyset$.   Then we have
+
+\Centerline{$\Bover1{\nu(\partial B(x_1,\delta))}
+   \int_{\partial B(x_1,\delta)}g\,d\nu
+>\alpha$}
+
+\noindent because $g(x)\ge\alpha$ for every $x$ and
+$g(x)>\alpha$ whenever $x\ne x_1$ and
+$(x-x_1)\dotproduct x_1\ge 0$.   But we also have
+
+$$\eqalign{\Bover1{\nu(\partial B(x_1,\delta))}
+   \int_{\partial B(x_1,\delta)}g\,d\nu
+&=\Bover1{\nu(\partial B(x_1,\delta))}
+   \int_{\partial B(x_1,\delta)}f\,d\nu
+   -\Bover1{\nu(\partial B(x_1,\delta))}
+     \int_{\partial B(x_1,\delta)}W_{\zeta'}\,d\nu\cr
+&\le f(x_1)-W_{\zeta'}(x_1)
+=\alpha,\cr}$$
+
+\noindent which is impossible.\ \Bang
+
+\medskip
+
+{\bf (h)} By 234Qc, $W_{\zeta'}\le W_{\zeta}$;  so
+
+\Centerline{$\energy(\zeta')=\int W_{\zeta'}d\zeta'
+\le\int W_{\zeta}d\zeta'\le\int W_{\zeta}d\zeta=\energy(\zeta)$.}
+
+}%end of proof of 479F
+
+\leader{479G}{}\cmmnt{ At this point
+I embark on an extended parenthesis, down to 479I, covering
+some essential material from harmonic analysis and Fourier analysis.
+The methods here apply equally to the cases $r=1$ and $r=2$.
+
+\medskip
+
+\noindent}{\bf Lemma} (In this result, $r$ may be any integer greater than
+or equal to $1$.)   For $\alpha\in\Bbb R$, set
+$k_{\alpha}(x)=\Bover1{\|x\|^{\alpha}}$ for $x\in\BbbR^r\setminus\{0\}$.
+If $\alpha<r$, $\beta<r$ and $\alpha+\beta>r$, then
+$k_{\alpha+\beta-r}$ is a constant multiple of the convolution
+$k_{\alpha}*k_{\beta}$\cmmnt{ (definition:  255E, 444O)}.
+
+\proof{{\bf (a)} First note that
+
+\Centerline{$\int_{B(\tbf{0},1)}k_{\alpha}(x)\mu(dx)
+=r\beta_r\int_0^1\Bover{t^{r-1}}{t^{\alpha}}dt
+=\Bover{r\beta_r}{r-\alpha}$}
+
+\noindent is finite.   Consequently $k_{\alpha}$ is expressible as the sum
+of an integrable function and a bounded function, and in particular is
+locally integrable.
+
+\medskip
+
+{\bf (b)} For $x\in\BbbR^r$, set
+$f(x)=\int_{\BbbR^r}k_{\alpha}(x-y)k_{\beta}(x-y)\mu(dy)\in[0,\infty]$.
+If $e\in\BbbR^r$ is a unit vector, then $f(e)$ is finite.
+\Prf\ For any $y\in\BbbR^r$,
+at least one of $\|e-y\|$, $\|e+y\|$ is greater than or equal to $1$, so
+$k_{\alpha}(e-y)k_{\beta}(e+y)\le k_{\alpha}(e-y)+k_{\beta}(e+y)$.
+Consequently
+
+\Centerline{$\int_{B(\tbf{0},2)}k_{\alpha}(e-y)k_{\alpha}(e+y)\mu(dy)
+\le\int_{B(\tbf{0},2)}k_{\alpha}(e-y)+k_{\alpha}(e+y)\mu(dy)$}
+
+\noindent is finite.   On the other hand, if $\|y\|\ge 2$,
+$\|e-y\|$ and $\|e-y\|$ are both at least $\bover12\|y\|$, so
+
+$$\eqalign{\int_{\BbbR^r\setminus B(\tbf{0},2)}
+  k_{\alpha}(e-y)k_{\beta}(e+y)\mu(dy)
+&\le\int_{\BbbR^r\setminus B(\tbf{0},2)}\Bover{2^{\alpha}}{\|y\|^{\alpha}}
+  \cdot\Bover{2^{\beta}}{\|y\|^{\beta}}\mu(dy)\cr
+&=2^{\alpha+\beta}r\beta_r\int_2^{\infty}
+   \Bover{t^{r-1}}{t^{\alpha+\beta}}dt
+=\Bover{2^rr\beta_r}{\alpha+\beta-r}\cr}$$
+
+\noindent is finite.   Putting these together,
+$f(e)=\int_{\BbbR^r}k_{\alpha}(e-y)k_{\beta}(e-y)\mu(dy)$ is finite.\
+\Qed
+
+\medskip
+
+{\bf (c)} If $e$, $e'\in\BbbR^r$ are unit vectors, then $f(e)=f(e')$.
+\Prf\ Let $T:\BbbR^r\to\BbbR^r$ be an orthogonal transformation such that
+$Te=e'$.   Then
+
+$$\eqalignno{f(e')
+&=\int_{\BbbR^r}k_{\alpha}(Te-y)k_{\beta}(Te-y)\mu(dy)
+=\int_{\BbbR^r}k_{\alpha}(Te-Ty)k_{\beta}(Te-Ty)\mu(dy)\cr
+\displaycause{because $T$ is an automorphism of $(\BbbR^r,\mu)$}
+&=\int_{\BbbR^r}k_{\alpha}(e-y)k_{\beta}(e-y)\mu(dy)\cr
+\displaycause{because $k_{\alpha}(x)$, $k_{\beta}(x)$ are functions of
+$\|x\|$}
+&=f(e).  \text{ \Qed}\cr}$$
+
+Let $c$ be the constant value of $f(e)$ for $\|e\|=1$.
+
+\woddheader{479G}{4}{2}{2}{72pt}
+
+{\bf (d)} If $x\in\BbbR^r\setminus\{0\}$,
+$f(x)=\Bover{c}{\|x\|^{\alpha+\beta-r}}$.   \Prf\ Set $t=\|x\|$,
+$e=\bover1tx$.   Then
+
+$$\eqalignno{f(x)
+&=\int_{\BbbR^r}k_{\alpha}(te-y)k_{\beta}(te-y)\mu(dy)
+=\int_{\BbbR^r}t^rk_{\alpha}(te-tz)k_{\beta}(te-tz)\mu(dz)\cr
+\displaycause{substituting $y=tz$}
+&=t^{r-\alpha-\beta}\int_{\BbbR^r}k_{\alpha}(e-z)k_{\beta}(e-z)\mu(dz)
+=\Bover{c}{\|x\|^{\alpha+\beta-r}}. \text{ \Qed}\cr}$$
+
+\medskip
+
+{\bf (e)} If $x\in\BbbR^r\setminus\{0\}$,
+$(k_{\alpha}*k_{\beta})(x)=2^{\alpha+\beta-r}ck_{\alpha+\beta-r}(x)$.
+\Prf\ Set $z=\bover12x$.   Then
+
+$$\eqalign{(k_{\alpha}*k_{\beta})(x)
+&=\int_{\BbbR^r}\Bover1{\|x-y\|^{\alpha}\|y\|^{\beta}}\mu(dy)
+=\int_{\BbbR^r}\Bover1{\|x-y-z\|^{\alpha}\|y+z\|^{\beta}}\mu(dy)\cr
+&=\int_{\BbbR^r}\Bover1{\|z-y\|^{\alpha}\|z+y\|^{\beta}}\mu(dy)
+=\Bover{c}{\|z\|^{\alpha+\beta-r}}
+=2^{\alpha+\beta-r}ck_{\alpha+\beta-r}(x).  \text{ \Qed}\cr}$$
+
+\medskip
+
+{\bf (f)} Of course it is of no importance what happens at $0$, but for
+completeness:  $k_{\alpha+\beta-r}$ is declared to be undefined there, and
+$\biggerint_{\BbbR^r}\Bover1{\|y\|^{\alpha}\|y\|^{\beta}}\mu(dy)$ is
+infinite for
+any $\alpha$ and $\beta$, so $k_{\alpha}*k_{\beta}$ also is undefined at
+$0$ on the convention of 255E or 444O.   Thus we have
+$k_{\alpha}*k_{\beta}=2^{\alpha+\beta-r}ck_{\alpha+\beta-r}$ in the strict
+sense.
+}%end of proof of 479G
+
+\medskip
+
+\noindent{\bf Remark}\cmmnt{ The functions $k_{\alpha}$ are called
+{\bf Riesz kernels}.   It will be helpful later to have a name
+for the constant arising here in a special case.}   If $r\ge 3$,
+I will take $c_r>0$
+to be the constant such that $c_rk_{r-2}=k_{r-1}*k_{r-1}$.
+
+\leader{479H}{}\cmmnt{ Now for some Fourier analysis which wasn't
+quite reached in Chapter 28.   In the following, I will define the Fourier
+transform $\varhatf$ and the inverse Fourier transform
+$\varcheckf$, for $\mu$-measurable complex-valued functions $f$ defined
+$\mu$-almost everywhere in $\BbbR^r$, as in 283W and 284W, and
+$\varhat{\zeta}$, for a totally finite Radon measure $\zeta$ on $\BbbR^r$,
+by the formula offered in 285Ya for probability measures.   The convolution
+$\zeta*f$ of a measure and a function will be defined as in 444H.   Thus
+the basic formulae are
+
+\Centerline{$\varhatf(y)=\Bover1{(\sqrt{2\pi})^r}
+  \int_{\BbbR^r}e^{-iy\dotproduct x}f(x)\mu(dx)$,
+\quad$\varcheckf(y)=\Bover1{(\sqrt{2\pi})^r}
+  \int_{\BbbR^r}e^{iy\dotproduct x}f(x)\mu(dx)$}
+
+\noindent for $\mu$-integrable $f$,
+
+\Centerline{$\varhat{\zeta}(y)=\Bover1{(\sqrt{2\pi})^r}
+  \int_{\BbbR^r}e^{-iy\dotproduct x}\zeta(dx)$,
+\quad$(\zeta*f)(x)
+  =\int_{\BbbR^r}f(x-y)\zeta(dy)$.}
+
+\medskip
+
+\noindent}{\bf Theorem} (In this result, $r$ may be any integer greater
+than or equal to $1$.)   Let $\zeta$ be a totally finite Radon measure on
+$\BbbR^r$\dvro{ and $\varhat{\zeta}$ its Fourier transform}{}.
+
+(a) If $f\in\eusm L^1_{\Bbb C}(\mu)$, then $\zeta*f$ is
+$\mu$-integrable and
+$(\zeta*f)\varsphat=(\sqrt{2\pi})^r\varhat{\zeta}\times\varhatf$.
+
+(b) If $\zeta$ has compact support and
+$h:\BbbR^r\to\Bbb C$ is a rapidly decreasing test
+function\cmmnt{ (284Wa)},
+then $\zeta*h$ and $h\times\varhat{\zeta}$ are rapidly decreasing test
+functions.
+
+(c) Suppose that $f$ is a tempered function on $\BbbR^r$\cmmnt{ (284Wa)}.
+If {\it either} $\zeta$ has compact support {\it or} $f$ is expressible as
+the sum of a $\mu$-integrable function and a bounded function, then
+$\zeta*f$ is defined $\mu$-almost everywhere and is a tempered function.
+
+(d) Suppose that $f$, $g$ are tempered functions on
+$\BbbR^r$ such that $g$ represents the Fourier transform
+of $f$\cmmnt{ (284Wd)}.   If {\it either} $\zeta$ has compact support
+{\it or} $f$ is expressible as the sum of a bounded function and a
+$\mu$-integrable function, then
+$(\sqrt{2\pi})^r\varhat{\zeta}\times g$ represents the Fourier transform of
+$\zeta*f$.
+
+\proof{{\bf (a)(i)} To begin with, suppose that $f$ is real-valued and
+non-negative.   As in \S444, I will write $f\mu$ for the
+indefinite-integral measure defined by $f$ over $\mu$.
+By 444K, $\zeta*f$ is $\mu$-integrable and $(\zeta*f)\mu=\zeta*f\mu$.
+
+As the formula used here for $\varhat{\zeta}$ does not
+quite match that of 445C, whatever parametrization we use for the
+characters of the topological group $\BbbR^r$, I had better not try to
+quote Chapter 44 when discussing Fourier transforms.
+Going back to first principles,
+
+$$\eqalignno{(\zeta*f)\varsphat(y)
+&=\Bover1{(\sqrt{2\pi})^r}\int e^{-iy\dotproduct x}(\zeta*f)(x)\mu(dx)
+=\Bover1{(\sqrt{2\pi})^r}\int e^{-iy\dotproduct x}(\zeta*f)\mu(dx)\cr
+&=\Bover1{(\sqrt{2\pi})^r}\int e^{-iy\dotproduct x}(\zeta*f\mu)(dx)
+=\Bover1{(\sqrt{2\pi})^r}\iint e^{-iy\dotproduct(x+z)}
+  \zeta(dz)(f\mu)(dx)\cr
+\displaycause{444C}
+&=\Bover1{(\sqrt{2\pi})^r}\int e^{-iy\dotproduct z}\zeta(dz)
+   \int e^{-iy\dotproduct x}(f\mu)(dx)\cr
+&=\varhat{\zeta}(y)\int e^{-iy\dotproduct x}f(x)\mu(dx)
+=(\sqrt{2\pi})^r\varhat{\zeta}(y)\varhatf(y)\cr}$$
+
+\noindent for every $y\in\BbbR^r$.
+
+\medskip
+
+\quad{\bf (ii)} For general integrable complex-valued functions $f$,
+apply (i) to the positive and negative parts of the real and imaginary
+parts of $f$.
+
+\medskip
+
+{\bf (b)(i)} Because $h$ is continuous, so is $\zeta*h$ (444Ib).
+If $j<r$, then, as in 123D,
+
+\Centerline{$(\Pd{}{\xi_j}(\zeta*h))(x)
+=\Pd{}{\xi_j}\int h(x-y)\zeta(dy)
+=\int\Pd{}{\xi_j}h(x-y)\zeta(dy)
+=(\zeta*\Pd{h}{\xi_j})(x)$}
+
+\noindent because $\Pd{h}{\xi_j}$ is bounded.
+Since $\Pd{h}{\xi_j}$ is again a \rdtf,
+we can repeat this process
+to see that $\zeta*h$ is smooth.   Next, let $\gamma>0$ be such that
+the support of $\zeta$ is included in $B(\tbf{0},\gamma)$.
+If $k\in\Bbb N$, then
+$M=\sup_{x\in\BbbR^r}(\gamma^k+\|x\|^k)|h(x)|$ is finite, and
+
+\Centerline{$\|x\|^k|h(y)|\le(\|y\|+\gamma)^k|h(y)|
+\le 2^kM$}
+
+\noindent whenever $\|x-y\|\le\gamma$.   So
+
+\Centerline{$\|x\|^k|(\zeta*h)(x)|
+\le\zeta\BbbR^r\cdot\|x\|^k\sup_{\|y-x\|\le\gamma}|h(y)|
+\le 2^kM\zeta\BbbR^r$}
+
+\noindent for every $x\in\BbbR^r$.   Applying this to all the partial
+derivatives of $h$, we see that $\zeta*h$ is a \rdtf.
+
+\medskip
+
+\quad{\bf (ii)} Again suppose that $j<r$.
+Because $\zeta$ has compact support, $\int\|x\|\zeta(dx)$ is finite, so
+$\Pd{}{\eta_j}\varhat{\zeta}(y)$ is defined and equal to
+$-i\int\xi_je^{-iy\dotproduct x}\zeta(dx)$ for every $y\in\BbbR^r$
+(cf.\ 285Fd).   More generally, whenever $j_1,\ldots,j_m<r$,
+
+\Centerline{$
+\Bover{\partial^m}{\partial\eta_{j_1}\ldots\partial\eta_{j_m}}
+  \varhat{\zeta}(y)
+=(-i)^m\int\xi_{j_1}\ldots\xi_{j_m}e^{-iy\dotproduct x}\zeta(dx)$,}
+
+\noindent so all the partial derivatives of $\varhat{\zeta}$
+are defined everywhere and bounded.   It follows that $\varhat{\zeta}$ is
+smooth and $h\times\varhat{\zeta}$ is a \rdtf.
+
+\medskip
+
+{\bf (c)(i)} To begin with, suppose that $f$ is real and non-negative, and
+that $\zeta$ has compact support.
+Set $f_n=f\times\chi B(\tbf{0},n)$ for each $n\in\Bbb N$.   Then $f_n$ is
+integrable, so $\zeta*f_n$ is defined $\mu$-a.e.;  also
+$\sequencen{\zeta*f_n}$ is non-decreasing, and
+$(\zeta*f)(x)=\sup_{n\in\Bbb N}(\zeta*f_n)(x)$ whenever the latter is
+defined and finite.
+
+Let $\gamma\ge 1$ be such that the support of $\zeta$ is included in
+$B(\tbf{0},\gamma)$, and let $k\in\Bbb N$ be such that
+$\biggerint_{\BbbR^r}\Bover1{1+\|x\|^k}f(x)\mu(dx)$ is finite.
+If $y\in B(\tbf{0},\gamma)$ and $x\in\BbbR^r$, then
+$\|x\|\le 2\max(\gamma,\|x+y\|)$, so
+$\Bover1{1+\|x+y\|^k}\le\Bover{M}{1+\|x\|^k}$, where $M=1+2^k\gamma^k$.
+It follows that
+
+$$\eqalign{\int_{\BbbR^r}\Bover1{1+\|x\|^k}(\zeta*f_n)(x)\mu(dx)
+&=\int_{\BbbR^r}\int_{B(\tbf{0},\gamma)}\Bover1{1+\|x\|^k}
+  f_n(x-y)\zeta(dy)\mu(dx)\cr
+&=\int_{B(\tbf{0},\gamma)}\int_{\BbbR^r}\Bover1{1+\|x\|^k}
+  f_n(x-y)\mu(dx)\zeta(dy)\cr
+&=\int_{B(\tbf{0},\gamma)}\int_{\BbbR^r}\Bover1{1+\|x+y\|^k}
+  f_n(x)\mu(dx)\zeta(dy)\cr
+&\le M\int_{B(\tbf{0},\gamma)}\int_{\BbbR^r}\Bover1{1+\|x\|^k}
+  f(x)\mu(dx)\zeta(dy)}$$
+
+\noindent for every $n\in\Bbb N$.   Consequently
+$\biggerint_{\BbbR^r}\Bover1{1+\|x\|^k}(\zeta*f)(x)\mu(dx)$ is defined and
+finite.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $f$ is expressible as $f_1+f_{\infty}$,
+where $f_1$ is $\mu$-integrable, $f_{\infty}$ is bounded and both are
+real-valued and non-negative.
+Adjusting $f_1$ and $f_2$ on a $\mu$-negligible set if necessary, we can
+suppose that $f_{\infty}$ is Borel measurable and defined everywhere on
+$\BbbR^r$.
+By (a), $\zeta*f_1$ is defined and $\mu$-integrable.   Next,
+$\zeta*f_{\infty}$
+is defined everywhere, is bounded, and is Borel measurable (444Ia).    So
+$\zeta*f\eae\zeta*f_1+\zeta*f_{\infty}$ is the sum of
+a $\mu$-integrable function and a bounded Borel measurable function, and is
+tempered.
+
+\medskip
+
+\quad{\bf (iii)} These arguments deal with the case in which $f\ge 0$.
+For the general case, apply (i) or (ii) to the four parts of $f$,
+as in (a-ii).
+
+\medskip
+
+{\bf (d)(i)} Suppose to begin with that $\zeta$ has compact support.
+Let $h$ be a \rdtf.
+Set $\Reverse{h}(x)=h(-x)$ for every $x\in\BbbR^r$.   Then $\Reverse{h}$
+is a \rdtf, and
+
+\Centerline{$(\zeta*\Reverse{h})(-x)
+=\int\Reverse{h}(-x-y)\zeta(dy)
+=\int h(x+y)\zeta(dy)$}
+
+\noindent for every $x\in\BbbR^r$.   Accordingly
+
+$$\eqalignno{\int(\zeta*f)\times h\,d\mu
+&=\iint h(x)f(x-y)\zeta(dy)\mu(dx)\cr
+&=\iint h(x)f(x-y)\mu(dx)\zeta(dy)\cr
+\displaycause{because $\zeta*|f|$ is tempered, so
+$\iint|h(x)f(x-y)|\zeta(dy)\mu(dx)=\int|h|\times(\zeta*|f|)d\mu$ is finite}
+&=\iint h(x+y)f(x)\mu(dx)\zeta(dy)\cr
+&=\iint h(x+y)f(x)\zeta(dy)\mu(dx)\cr
+\displaycause{because $\iint|h(x+y)f(x)|\mu(dx)\zeta(dy)
+=\iint|h(x)f(x-y)|\mu(dx)\zeta(dy)$ is finite}
+&=\int f\times(\zeta*\Reverse{h})^{\scriptscriptstyle\leftrightarrow}
+  d\mu
+=\int g\times((\zeta*\Reverse{h})^{\scriptscriptstyle\leftrightarrow})
+  \varspcheck d\mu\cr
+\displaycause{because $\zeta*\Reverse{h}$ and
+$(\zeta*\Reverse{h})^{\scriptscriptstyle\leftrightarrow}$ are \rdtf s,
+by (b)}
+&=\int g\times(\zeta*\Reverse{h})\varsphat d\mu
+=(\sqrt{2\pi})^r\int g\times\varhat{\zeta}\times(\Reverse{h})\varsphat
+  d\mu\cr
+\displaycause{by (a)}
+&=(\sqrt{2\pi})^r\int g\times\varhat{\zeta}\times\varcheck{h}\,d\mu.\cr}$$
+
+\noindent As $h$ is arbitrary, $(\sqrt{2\pi})^rg\times\varhat{\zeta}$
+represents the Fourier transform of $\zeta*f$.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $f$ is expressible as $f_1+f_{\infty}$
+where $f_1$ is $\mu$-integrable and $f_{\infty}$ is bounded.   By (c),
+$\zeta*|f|$ is defined almost everywhere and is a tempered function.
+Set $\zeta_n=\zeta\LLcorner B(\tbf{0},n)$ for each $n$.   Then
+$(\sqrt{2\pi})^rg\times\varhat{\zeta}_n$ represents the Fourier transform
+of $\zeta_n*f$, for each $n$.   Now $\sequencen{\varhat{\zeta}_n}$
+converges uniformly to $\varhat{\zeta}$, and $\sequencen{\zeta_n*f}$
+converges to $\zeta*f$ at every point at which $\zeta*|f|$ is defined and
+finite, which is $\mu$-almost everywhere.   So if $h$ is a \rdtf,
+
+$$\eqalignno{\int h\times(\sqrt{2\pi})^rg\times\varhat{\zeta}
+&=\lim_{n\to\infty}\int h\times(\sqrt{2\pi})^rg\times\varhat{\zeta}_n\cr
+\displaycause{the convergence is dominated by the integrable function
+$(\sqrt{2\pi})^r\zeta\BbbR^r\cdot|h\times g|$}
+&=\lim_{n\to\infty}\int\varhat{h}\times(\zeta_n*f)
+=\int\varhat{h}\times(\zeta*f)\cr}$$
+
+\noindent(this convergence being dominated by the integrable function
+$|\varhat{h}|\times(\zeta*|f|)$).   As $h$ is arbitrary,
+$(\sqrt{2\pi})^rg\times\varhat{\zeta}$
+represents the Fourier transform of $\zeta*f$.
+}%end of proof of 479H
+
+\vleader{60pt}{479I}{Proposition} (In this result,
+$r$ may be any integer greater than or equal to $1$.)
+
+(a) Suppose that $0<\alpha<r$.
+
+\quad(i) There is a tempered function representing the
+Fourier transform of $k_{\alpha}$.
+
+\quad(ii) There is a measurable function $g_0$, defined almost everywhere
+on $\coint{0,\infty}$, such that $y\mapsto g_0(\|y\|)$ represents the
+Fourier transform of $k_{\alpha}$.
+
+\quad(iii) In (ii),
+
+\Centerline{$2^{\alpha/2}\Gamma(\bover{\alpha}2)
+   \int_0^{\infty}t^{r-1}g_0(t)e^{-\epsilon t^2}dt
+=2^{(r-\alpha)/2}\Gamma(\bover{r-\alpha}2)
+   \int_0^{\infty}t^{\alpha-1}e^{-\epsilon t^2}dt$}
+
+\noindent for every $\epsilon>0$.
+
+\quad(iv) $2^{\alpha/2}\Gamma(\bover{\alpha}2)g_0(t)
+=2^{(r-\alpha)/2}\Gamma(\bover{r-\alpha}2)t^{\alpha-r}$ for
+almost every $t>0$.
+
+\quad(v) $2^{(r-\alpha)/2}\Gamma(\bover{r-\alpha}2)k_{r-\alpha}$
+represents the Fourier transform
+of $2^{\alpha/2}\Gamma(\bover{\alpha}2)k_{\alpha}$.
+
+(b) Suppose that
+$\zeta_1$, $\zeta_2$ are totally finite Radon measures on $\BbbR^r$, and
+$0<\alpha<r$.   If $\zeta_1*k_{\alpha}=\zeta_2*k_{\alpha}\,\,\mu$-a.e.,
+then $\zeta_1=\zeta_2$.
+
+\proof{{\bf (a)(i)} Set $\beta=\bover12(\alpha+r)$.
+Then $k_{\beta}$ is expressible as $f_1+f_2$ where
+$f_1$ is integrable and $f_2$ is square-integrable.
+\Prf\
+
+\Centerline{$\int_{B(\tbf{0},1)}k_{\beta}d\mu
+=r\beta_r\int_0^1\Bover{t^{r-1}}{t^{\beta}}dt$}
+
+\noindent is finite because $\beta<r$;
+
+\Centerline{$\int_{\BbbR^r\setminus B(\tbf{0},1)}k_{\beta}^2d\mu
+=r\beta_r\int_1^{\infty}\Bover{t^{r-1}}{t^{2\beta}}dt$}
+
+\noindent is finite because $2\beta>r$.   So we can take
+$f_1=k_{\alpha}\times\chi B(\tbf{0},1)$ and $f_2=k_{\alpha}-f_1$.\ \Qed
+
+479G tells us that there is a constant $c$ such that
+
+\Centerline{$k_{\alpha}
+=ck_{\beta}*k_{\beta}
+=c(f_1*f_1+2f_1*f_2+f_2*f_2)$.}
+
+\noindent Now $f_1*f_1$ is integrable and $f_1*f_2$ is square-integrable
+(444Ra), so both have Fourier transforms represented by tempered functions;
+while the continuous function $f_2*f_2$ also has a Fourier transform
+represented by an integrable function (284Wi).   Assembling these,
+$k_{\alpha}$ has a Fourier transform represented by a tempered function.
+
+\medskip
+
+\quad{\bf (ii)} We can
+therefore represent the Fourier transform of $k_{\alpha}$ by
+the function $g$, where
+
+\Centerline{$g(y)=\lim_{n\to\infty}\Bover1{(\sqrt{2\pi})^r}
+  \int e^{-iy\dotproduct x}e^{-\|x\|^2/n}k_{\alpha}(x)\mu(dx)$}
+
+\noindent is defined $\mu$-almost everywhere
+(284M/284Wg).   Now suppose that $T:\BbbR^r\to\BbbR^r$ is any orthogonal
+transformation, and that $y\in\dom g$.   Then
+
+$$\eqalignno{g(y)
+&=\lim_{n\to\infty}\Bover1{(\sqrt{2\pi})^r}
+  \int e^{-iy\dotproduct x}e^{-\|x\|^2/n}k_{\alpha}(x)\mu(dx)\cr
+&=\lim_{n\to\infty}\Bover1{(\sqrt{2\pi})^r}
+  \int e^{-iy\dotproduct T\trs x}e^{-\|T\trs x\|^2/n}k_{\alpha}(T\trs x)
+  \mu(dx)\cr
+\displaycause{because the transpose $T\trs$ of $T$ 
+acts as an automorphism of $(\BbbR^r,\mu)$}
+&=\lim_{n\to\infty}\Bover1{(\sqrt{2\pi})^r}
+  \int e^{-iTy\dotproduct x}e^{-\|x\|^2/n}k_{\alpha}(x)\mu(dx),\cr}$$
+
+\noindent and $g(Ty)$ is defined and equal to $g(y)$.   So we can set
+$g_0(t)=g(y)$ whenever $y\in\dom g$ and $\|y\|=t$, and we shall have
+$y\mapsto g_0(\|y\|)$ representing the Fourier transform of $k_{\alpha}$.
+
+\medskip
+
+\quad{\bf (iii)} If $\epsilon>0$, then $x\mapsto e^{-\epsilon\|x\|^2}$ is a
+\rdtf, and its Fourier transform is the function
+$x\mapsto\Bover1{(\sqrt{2\epsilon})^r}e^{-\|x\|^2/4\epsilon}$
+(283N/283Wi\formerly{2{}83We}).   We therefore have
+
+\Centerline{$\int g_0(\|y\|)e^{-\epsilon\|y\|^2}\mu(dy)
+=\Bover1{(\sqrt{2\epsilon})^r}\int k_{\alpha}(x)e^{-\|x\|^2/4\epsilon}
+   \mu(dx)$,}
+
+\noindent that is,
+
+\Centerline{$r\beta_r\int_0^{\infty}t^{r-1}g_0(t)e^{-\epsilon t^2}dt
+=\Bover{r\beta_r}{(\sqrt{2\epsilon})^r}\int_0^{\infty}
+  \Bover{t^{r-1}}{t^{\alpha}}e^{-t^2/4\epsilon}dt$;}
+
+\noindent simplifying,
+
+$$\eqalignno{\int_0^{\infty}t^{r-1}g_0(t)e^{-\epsilon t^2}dt
+&=\Bover1{(\sqrt{2\epsilon})^r}\int_0^{\infty}
+  t^{r-1-\alpha}e^{-t^2/4\epsilon}dt\cr
+&=\Bover{2^{r-\alpha}}{2\cdot 2^{r/2}\epsilon^{\alpha/2}}
+  \int_0^{\infty}u^{(r-\alpha-2)/2}e^{-u}du\cr
+\displaycause{substituting $u=t^2/4\epsilon$}
+&=\Bover{2^{r-\alpha}}{2\cdot 2^{r/2}\epsilon^{\alpha/2}}
+  \Gamma(\Bover{r-\alpha}2).\cr}$$
+
+\noindent On the other hand,
+
+\Centerline{$\int_0^{\infty}t^{\alpha-1}e^{-\epsilon t^2}dt
+=\int_0^{\infty}
+  \Bover{(\sqrt u)^{\alpha-2}}{2\epsilon^{\alpha/2}}
+  e^{-u}du
+=\Bover1{2\epsilon^{\alpha/2}}\Gamma(\Bover{\alpha}2)$.}
+
+\noindent Putting these together,
+
+\Centerline{$2^{\alpha/2}\Gamma(\bover{\alpha}2)
+   \int_0^{\infty}t^{r-1}g_0(t)e^{-\epsilon t^2}dt
+=2^{(r-\alpha)/2}\Gamma(\bover{r-\alpha}2)
+   \int_0^{\infty}t^{(r-1)-(r-\alpha)}e^{-\epsilon t^2}dt$}
+
+\noindent for every $\epsilon>0$.
+
+\medskip
+
+\quad{\bf (iv)} Set
+
+\Centerline{$g_1(t)=t^{r-1}e^{-t^2}
+  \bigl(2^{\alpha/2}\Gamma(\bover{\alpha}2)g_0(t)
+    -2^{(r-\alpha)/2}\Gamma(\bover{r-\alpha}2)t^{\alpha-r}\bigr)$}
+
+\noindent for $t>0$.   Then $g_1$ is integrable and
+$\int_0^{\infty}g_1(t)e^{-\epsilon t^2}dt=0$ for every $\epsilon\ge 0$.
+It follows that $g_1=0$ a.e.   \Prf\ Consider the linear span $A$ of the
+functions $t\mapsto e^{-\epsilon t^2}$ for $\epsilon\ge 0$.   This is a
+subalgebra of $C_b(\coint{0,\infty})$ containing the constant functions and
+separating the points of $\coint{0,\infty}$.   It follows that for every
+$\gamma\ge 0$, $\delta>0$ and $h\in C_b(\coint{0,\infty})$, there
+is an $f\in A$ such that $|f(t)-h(t)|\le\delta$ for $t\in[0,\gamma]$ and
+$\|f\|_{\infty}\le\|h\|_{\infty}$ (281E).   Since
+$\int_0^{\infty}g_1\times f=0$, we must have
+
+\Centerline{$|\int_0^{\infty}g_1\times h|
+\le\delta\|g_1\|_1+2\|h\|_{\infty}\int_{\gamma}^{\infty}|g_1(t)|dt$.}
+
+\noindent As $\delta$ and $\gamma$ are arbitrary,
+$\int_0^{\infty}g_1\times h=0$;  as $h$ is arbitrary, $\int_0^ag_1=0$
+for every $a\ge 0$, and $g_1$ must be zero almost
+everywhere (222D).\ \Qed
+
+Accordingly
+$2^{\alpha/2}\Gamma(\bover{\alpha}2)g_0(t)
+  =2^{(r-\alpha)/2}\Gamma(\bover{r-\alpha}2)t^{\alpha-r}$
+for almost every $t\ge 0$.
+
+\medskip
+
+\quad{\bf (v)} Now
+
+\Centerline{$y
+\mapsto 2^{(r-\alpha)/2}\Gamma(\bover{r-\alpha}2)k_{r-\alpha}(y)
+\eae 2^{\alpha/2}\Gamma(\bover{\alpha}2)g_0(\|y\|)$}
+
+\noindent represents the Fourier transform of
+$2^{\alpha/2}\Gamma(\bover{\alpha}2)k_{\alpha}$.
+
+\medskip
+
+{\bf (b)} By (a), the Fourier transform of $k_{\alpha}$ is represented by a
+tempered function $g$ which is non-zero $\mu$-a.e.
+As $k_{\alpha}$ is the sum of an integrable function and a bounded
+function, 479Hd tells us that the Fourier
+transform of $\zeta_1*k_{\alpha}$ is represented by
+$(\sqrt{2\pi})^r\varhat{\zeta}_1\times g$;  and similarly for $\zeta_2$.
+As $\zeta_1*k_{\alpha}\eae\zeta_2*k_{\alpha}$,
+$\varhat{\zeta}_1\times g\eae\varhat{\zeta}_2\times g$ (284Ib) and
+$\varhat{\zeta}_1\eae\varhat{\zeta}_2$.   Since $\varhat{\zeta}_1$ and
+$\varhat{\zeta}_2$ are both continuous (285Fb), they are equal everywhere;
+in particular,
+
+\Centerline{$\zeta_1\BbbR^r=\varhat{\zeta}_1(0)
+=\varhat{\zeta}_2(0)=\zeta_2\BbbR^r$.}
+
+\noindent If $\zeta_1=\zeta_2$ is the zero measure, we can stop.
+Otherwise, they can be expressed as $\gamma\zeta'_1$ and $\gamma\zeta'_2$
+where $\zeta'_1$ and $\zeta'_2$ are probability measures and $\gamma>0$.
+In this case, $\zeta'_1$ and $\zeta'_2$ have the same characteristic
+function (285D) and must be equal (285M);  so $\zeta_1=\zeta_2$, as
+claimed.
+}%end of proof of 479I
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The functions $\zeta*k_{\alpha}$ are called {\bf
+Riesz potentials}.
+}
+
+\leader{479J}{}\cmmnt{ Now I return to the study of
+Newtonian potential when $r\ge 3$.
+
+\medskip
+
+\noindent}{\bf Lemma} (a) Let $\zeta$ be a totally finite Radon measure on
+$\BbbR^r$.   Let $U_{\zeta}$ be the $(r-1)$-potential of $\zeta$ and
+$W_{\zeta}$ the Newtonian potential of $\zeta$;  let
+$k_{r-1}$ and $k_{r-2}$ be the Riesz kernels.
+Then $U_{\zeta}\eae\zeta*k_{r-1}$ and $W_{\zeta}\eae\zeta*k_{r-2}$.
+
+(b) Let $\zeta$,
+$\zeta_1$ and $\zeta_2$ be totally finite Radon measures on $\BbbR^r$.
+
+\quad(i) $\int_{\BbbR^r}W_{\zeta_1}d\zeta_2
+=\int_{\BbbR^r}W_{\zeta_2}d\zeta_1
+=\Bover1{c_r}\int_{\BbbR^r}U_{\zeta_1}\times U_{\zeta_2}d\mu$\cmmnt{,
+where $c_r$ is the constant of 479G}.
+
+\quad(ii) The energy $\energy(\zeta)$ of $\zeta$
+is $\Bover1{c_r}\|U_{\zeta}\|_2^2$, counting
+$\|U_{\zeta}\|_2$ as $\infty$ if $U_{\zeta}\notin\eusm L^2(\mu)$.
+
+\quad(iii) If $\zeta=\zeta_1+\zeta_2$
+then $U_{\zeta}=U_{\zeta_1}+U_{\zeta_2}$ and
+$W_{\zeta}=W_{\zeta_1}+W_{\zeta_2}$;  similarly,
+$U_{\alpha\zeta}=\alpha U_{\zeta}$ and $W_{\alpha\zeta}=\alpha W_{\zeta}$
+for $\alpha\ge 0$.
+
+\quad(iv) If $U_{\zeta_1}=U_{\zeta_2}\,\,\mu$-a.e., then $\zeta_1=\zeta_2$.
+
+\quad(v) If $W_{\zeta_1}=W_{\zeta_2}\,\,\mu$-a.e., then $\zeta_1=\zeta_2$.
+
+\quad(vi) $\zeta\BbbR^r
+=\lim_{\gamma\to\infty}\Bover1{r\beta_r\gamma}
+  \int_{\partial B(0,\gamma)}W_{\zeta}d\nu$.
+
+(c) Let $M^+_{\text{R}}(\BbbR^r)$
+be the set of totally finite Radon measures on
+$\BbbR^r$, with its narrow topology.   Then
+$\energy:M^+_{\text{R}}(\BbbR^r)\to[0,\infty]$ is lower semi-continuous.
+
+\proof{{\bf (a)} As $k_{r-1}$ and $k_{r-2}$
+are both expressible as sums
+of integrable functions and bounded functions, $\zeta*k_{r-1}$ and
+$\zeta*k_{r-2}$ are both defined a.e.\ (479Hc);  and now we have only to
+read the definitions to see that $U_{\zeta}$ and $W_{\zeta}$ are these
+convolutions with the technical adjustment that they are permitted to take
+the value $\infty$.
+
+\medskip
+
+{\bf (b)(i)} For any $x$, $y\in\BbbR^r$,
+
+$$\eqalign{\Bover1{\|x-y\|^{r-2}}
+&=k_{r-2}(x-y)
+=\Bover1{c_r}(k_{r-1}*k_{r-1})(x-y)\cr
+&=\Bover1{c_r}\int_{\BbbR^r}\Bover1{\|x-y-z\|^{r-1}\|z\|^{r-1}}\mu(dz)\cr
+&=\Bover1{c_r}\int_{\BbbR^r}\Bover1{\|x-z\|^{r-1}\|z-y\|^{r-1}}\mu(dz)
+=\Bover1{c_r}\int_{\BbbR^r}\Bover1{\|x-z\|^{r-1}\|y-z\|^{r-1}}\mu(dz).
+  \cr}$$
+
+\noindent So
+
+$$\eqalignno{\int_{\BbbR^r}W_{\zeta_1}d\zeta_2
+&=\int_{\BbbR^r}\int_{\BbbR^r}\Bover1{\|x-y\|^{r-2}}\zeta_1(dx)\zeta_2(dy)
+  \cr
+&=\Bover1{c_r}\int_{\BbbR^r}\int_{\BbbR^r}\int_{\BbbR^r}
+  \Bover1{\|x-z\|^{r-1}\|y-z\|^{r-1}}\mu(dz)\zeta_1(dx)\zeta_2(dy)\cr
+&=\Bover1{c_r}\int_{\BbbR^r}\int_{\BbbR^r}\int_{\BbbR^r}
+  \Bover1{\|x-z\|^{r-1}\|y-z\|^{r-1}}\zeta_1(dx)\zeta_2(dy)\mu(dz)\cr
+&=\Bover1{c_r}\int_{\BbbR^r}U_{\zeta_1}(z)U_{\zeta_2}(z)\mu(dz)
+=\int_{\BbbR^r}U_{\zeta_1}\times U_{\zeta_2}d\mu.\cr}$$
+
+\noindent Hence (or otherwise)
+
+\Centerline{$\int_{\BbbR^r}W_{\zeta_2}d\zeta_1
+=\Bover1{c_r}\int_{\BbbR^r}U_{\zeta_2}\times U_{\zeta_1}d\mu
+=\int_{\BbbR^r}W_{\zeta_1}d\zeta_2$.}
+
+\medskip
+
+\quad{\bf (ii)} Take $\zeta_1=\zeta_2=\zeta$ in (i).
+
+\medskip
+
+\quad{\bf (iii)} This is immediate from
+234Hc.
+
+\medskip
+
+\quad{\bf (iv)-(v)} Put (a) and 479Ib together.
+
+\medskip
+
+\quad{\bf (vi)} For any $\gamma>0$,
+
+$$\eqalignno{\Bover1{r\beta_r\gamma}
+  \int_{\partial B(0,\gamma)}W_{\zeta}d\nu
+&=\int W_{\zeta}d\lambda_{B(0,\gamma)}\cr
+\displaycause{479Da}
+&=\int\tilde W_{B(0,\gamma)}d\zeta\cr
+\displaycause{(i) above}
+&=\int\min(1,\Bover{\gamma^{r-2}}{\|x-z\|^{r-2}})\zeta(dx)\cr
+\displaycause{479Da again}
+&\to\zeta\BbbR^r\cr}$$
+
+\noindent as $\gamma\to\infty$.
+
+\medskip
+
+{\bf (c)} The map
+$\zeta\mapsto\zeta\times\zeta:M^+_{\text{R}}(\BbbR^r)
+\to M^+_{\text{R}}(\BbbR^r\times\BbbR^r)$ is
+continuous, by 437Ma.   Next, the function
+$\lambda\mapsto\biggerint_{\BbbR^r}\Bover1{\|x-y\|^{r-2}}\lambda(d(x,y)):
+M^+_{\text{R}}(\BbbR^r\times\BbbR^r)\to[0,\infty]$ is
+lower semi-continuous, by 437Jg again.
+So $\energy$ is the composition of a lower semi-continuous function with
+a continuous function, and is lower semi-continuous (4A2B(d-ii)).
+}%end of proof of 479J
+
+\leader{479K}{Lemma} Let $K\subseteq\BbbR^r$ be a compact set, with
+equilibrium measure $\lambda_K$.
+Then $\lambda_KK=\capacity K=\energy(\lambda_K)$, and if
+$\zeta$ is any Radon measure on $\BbbR^r$ such that
+$\zeta K\ge\capacity K\ge\energy(\zeta)$, $\zeta=\lambda_K$.
+
+\proof{{\bf (a)} We know that $\lambda_KK=\lambda_K\BbbR^r=\capacity K$
+(479C(a-i)).   So if $K$ has zero capacity then $\lambda_K$ is the zero
+measure
+and $\energy(\lambda_K)=0$;  also the only Radon measure on $\BbbR^r$
+with zero energy is
+$\lambda_K$, and we can stop.   So henceforth let us suppose that
+$\capacity K>0$.
+
+Set
+
+\Centerline{$e=\inf\{\energy(\zeta):\zeta$ is a Radon
+probability measure on $\BbbR^r$ such that $\zeta K\ge\capacity K\}$.}
+
+\noindent Because $\tilde W_K(x)\le 1$ for every $x\in\BbbR^r$
+(479D(b-i)),
+
+\Centerline{$e\le\energy(\lambda_K)=\int\tilde W_Kd\lambda_K
+\le\lambda_K\BbbR^r=\capacity K$}
+
+\noindent is finite.
+
+\medskip
+
+{\bf (b)} Consider the set $Q$ of Radon measures $\zeta$ on $\BbbR^r$ such
+that $\zeta K=\zeta\BbbR^r=\capacity K$.   With its narrow topology,
+$Q$ is homeomorphic to the set of Radon measures on $K$ of magnitude
+$\capacity K$, which is compact (437R(f-ii)).
+Since $\energy:Q\to[0,\infty]$ is
+lower semi-continuous (479Jc), there is a $\lambda\in Q$ with
+energy $e$ (4A2B(d-viii)).
+
+In fact there is exactly one such member of $Q$.   \Prf\
+Suppose that $\zeta$ is any other member of $Q$ with energy $e$.
+Write $u_{\zeta}$ for the
+equivalence class of $U_{\zeta}$ in $L^2$.   Then
+$\bover12(\zeta+\lambda)$ belongs to $Q$ and
+$U_{\bover12(\zeta+\lambda)}=\bover12(U_{\zeta}+U_{\lambda})$
+(479J(b-iii)).   So, defining $c_r$ as in 479G,
+
+$$\eqalignno{e+\Bover1{c_r}\|u_{\zeta}-u_{\lambda}\|_2^2
+&\le\energy(\Bover12(\zeta+\lambda))
+  +\Bover1{4c_r}\innerprod{u_{\zeta}-u_{\lambda}}{u_{\zeta}-u_{\lambda}}\cr
+&=\Bover1{4c_r}\innerprod{u_{\zeta}+u_{\lambda}}{u_{\zeta}+u_{\lambda}}
+  +\Bover1{4c_r}\innerprod{u_{\zeta}-u_{\lambda}}{u_{\zeta}-u_{\lambda}}\cr
+\displaycause{479J(b-ii)}
+&=\Bover1{2c_r}(\|u_{\zeta}\|_2^2+\|u_{\lambda}\|_2^2)
+=e.\cr}$$
+
+\noindent It follows that $\|u_{\zeta}-u_{\lambda}\|_2=0$ and
+$U_{\zeta}\eae U_{\lambda}$.   Consequently $\zeta=\lambda$
+(479J(b-iv)).\ \Qed
+
+\medskip
+
+{\bf (c)(i)} If $\zeta$ is any Radon measure on $\BbbR^r$ with finite
+energy, then $\int W_{\zeta}d\lambda\ge\Bover{e\,\zeta K}{\capacity K}$.
+\Prf\ If $\zeta K=0$ this is trivial.   Otherwise, set
+$\zeta'=\Bover{\capacity K}{\zeta K}\zeta\LLcorner K$.   Then
+$\zeta'$ has finite energy (479Fh) and belongs to $Q$, so for any
+$\alpha\in[0,1]$ we have $\alpha\zeta'+(1-\alpha)\lambda\in Q$, and
+
+$$\eqalign{c_re
+&\le c_r\energy(\alpha\zeta'+(1-\alpha)\lambda)
+=\|\alpha u_{\zeta'}+(1-\alpha)u_{\lambda}\|_2^2\cr
+&=\alpha^2\|u_{\zeta'}\|_2^2
+  +2\alpha(1-\alpha)\innerprod{u_{\zeta'}}{u_{\lambda}}
+  +(1-\alpha)^2\|u_{\lambda}\|_2^2\cr
+&=\alpha^2\|u_{\zeta'}\|_2^2
+  +2\alpha(1-\alpha)\innerprod{u_{\zeta'}}{u_{\lambda}}
+  +(1-\alpha)^2c_re\cr
+&=c_re
+  +2\alpha(\innerprod{u_{\zeta'}}{u_{\lambda}}-c_re)
+  +\alpha^2(\|u_{\zeta'}\|_2^2
+    -2\innerprod{u_{\zeta'}}{u_{\lambda}}
+    +c_re).\cr}$$
+
+\noindent It follows that
+$\innerprod{u_{\zeta'}}{u_{\lambda}}-c_re\ge 0$ and
+
+$$\eqalignno{\int W_{\zeta}d\lambda
+&\ge\int W_{\zeta\LLcorner K}d\lambda\cr
+\displaycause{479Fh}
+&=\Bover{\zeta K}{\capacity K}\int W_{\zeta'}d\lambda
+=\Bover{\zeta K}{c_r\capacity K}\int U_{\zeta'}\times U_{\lambda}d\mu\cr
+\displaycause{479J(b-i)}
+&=\Bover{\zeta K}{c_r\capacity K}\innerprod{u_{\zeta'}}{u_{\zeta}}
+\ge\Bover{\zeta K}{c_r\capacity K}c_re
+=\Bover{e\,\zeta K}{\capacity K},\cr}$$
+
+\noindent as claimed.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} If $\zeta$ is any Radon measure on $\BbbR^r$ with finite
+energy, then $W_{\lambda}(x)\ge\Bover{e}{\capacity K}$ for $\zeta$-almost
+every $x\in K$.   \Prf\Quer\ Otherwise, set
+$E=\{x:x\in K$, $W_{\lambda}(x)<\Bover{e}{\capacity K}\}$,
+and consider $\zeta'=\zeta\LLcorner E$.   Then
+
+$$\eqalignno{\int W_{\zeta'}d\lambda
+&=\int W_{\lambda}d\zeta'\cr
+\displaycause{479J(b-i)}
+&<\Bover{e}{\capacity K}\zeta'E
+\le\Bover{e\zeta'K}{\capacity K},\cr}$$
+
+\noindent contradicting (i).\ \Bang\Qed
+
+\medskip
+
+\quad{\bf (iii)} $W_{\lambda}(x)=\Bover{e}{\capacity K}$ for
+$\lambda$-almost every $x\in K$.   \Prf\
+Since $\lambda$ has finite energy,
+(ii) tells us that $W_{\lambda}(x)\ge\Bover{e}{\capacity K}$
+for $\lambda$-almost every $x\in K$.   Since
+
+\Centerline{$\int_KW_{\lambda}d\lambda\le\int W_{\lambda}d\lambda
+=e=\Bover{e}{\capacity K}\lambda K$,}
+
+\noindent we must have $W_{\lambda}(x)=\Bover{e}{\capacity K}$ for
+$\lambda$-almost every $x\in K$.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} Since $\lambda K=\lambda\BbbR^r$, 479Fg,
+with $f$ the constant function with value $\Bover{e}{\capacity K}$,
+tells us that $W_{\lambda}(x)\le\Bover{e}{\capacity K}$ for every
+$x\in\BbbR^r$.
+
+\medskip
+
+{\bf (d)} For $x\in\BbbR^r\setminus K$,
+$W_{\lambda}(x)\le\Bover{e}{\capacity K}\hp(K-x)$.   \Prf\
+Set $G=\BbbR^r\setminus K$, and
+let $\tau$ be the Brownian exit time from $G-x$.   Define
+$f:\overline{G}^{\infty}\to[0,1]$ by setting
+
+$$\eqalign{f(y)
+&=0\text{ if }y\in\partial G=\partial K,\cr
+&=\Bover{e}{\capacity K}-W_{\lambda}(y)\text{ if }y\in G,\cr
+&=\Bover{e}{\capacity K}\text{ if }y=\infty.\cr}$$
+
+\noindent Because $W_{\lambda}\restr G$ is continuous
+and harmonic (479Fa), so is $f\restr G$.
+Because $\lambda$ has compact support,
+$\lim_{y\to\infty}W_{\lambda}(y)=0$ (479Fd), so $f$ is continuous
+at $\infty$;
+because $W_{\lambda}(y)\le\Bover{e}{\capacity K}$ for every $y$, $f$ is
+lower semi-continuous.   So
+
+$$\eqalignno{\Bover{e}{\capacity K}-W_{\lambda}(x)
+&=f(x)
+\ge\Expn(f(x+X_{\tau}))\cr
+\displaycause{478O, because $r\ge 3$ and $\BbbR^r$ has few wandering paths}
+&=\Bover{e}{\capacity K}\Pr(\tau=\infty)
+=\Bover{e}{\capacity K}(1-\Pr(\tau<\infty)).\cr}$$
+
+\noindent Thus $W_{\lambda}(x)$ is at most
+$\Bover{e}{\capacity K}\Pr(\tau<\infty)$.    But $\Pr(\tau<\infty)$ is just
+the Brownian hitting probability $\hp(K-x)$.\ \Qed
+
+\medskip
+
+{\bf (e)} $e=\energy(\lambda_K)$.   \Prf\
+
+$$\eqalignno{e
+&\le\energy(\lambda_K)
+\le\capacity K\cr
+\displaycause{(a) above}
+&=\lambda K
+=\lambda\BbbR^r
+=\lim_{\|x\|\to\infty}\|x\|^{r-2}W_{\lambda}(x)\cr
+\displaycause{479Fd}
+&\le\Bover{e}{\capacity K}
+   \liminf_{\|x\|\to\infty}\|x\|^{r-2}\hp(K-x)\cr
+\displaycause{by (d) of this proof}
+&=\Bover{e}{\capacity K}\cdot\capacity K\cr
+\displaycause{479B(ii)}
+&=e. \text{ \Qed}\cr}$$
+
+\medskip
+
+{\bf (f)} From this we see at once
+that $\lambda=\lambda_K$ and $\capacity K=\energy(\lambda_K)$.
+Now suppose that
+$\zeta$ is a Radon measure on $\BbbR^r$ such that
+$\zeta K\ge\capacity K\ge\energy(\zeta)$.
+Set $\zeta'=\Bover{\capacity K}{\zeta K}\zeta\LLcorner K$;  then
+$\zeta'\in Q$, while $\zeta'\le\zeta$, so
+
+\Centerline{$e=\capacity K\ge\energy(\zeta)\ge\energy(\zeta')$}
+
+\noindent by 479Fh.   It follows that $\zeta'=\lambda$ and
+$\lambda\le\zeta$.   Accordingly $W_{\lambda}\le W_{\zeta}$ (479Fh again),
+
+$$\eqalignno{\energy(\zeta)
+&=\int W_{\zeta}d\zeta
+\ge\int W_{\lambda}d\zeta
+\ge\int_KW_{\lambda}d\zeta
+\ge\zeta K\cr
+\displaycause{(c-ii) above}
+&\ge\capacity K
+\ge\energy(\zeta),\cr}$$
+
+\noindent and we have equality throughout.   Since $\lambda$ is non-zero
+and the kernel $(x,y)\mapsto\Bover1{\|x-y\|^{r-2}}$ is strictly positive,
+$W_{\lambda}$ is strictly positive.
+It follows that $\zeta(\BbbR^r\setminus K)=0$ and $\zeta\in Q$;
+consequently $\zeta=\lambda=\lambda_K$, as required.
+}%end of proof of 479K
+
+\leader{479L}{}\cmmnt{ I shall wish later to quote a couple of
+the facts which
+appeared in the course of the proof above, and I think it will be safer to
+list them now.
+
+\medskip
+
+\noindent}{\bf Corollary} Let $K\subseteq\BbbR^r$ be a compact set with
+equilibrium potential $\tilde W_K$.
+
+(a) If $\zeta$ is any Radon measure on $\BbbR^r$ with finite energy,
+then $\tilde W_K(x)=1$ for $\zeta$-almost every $x\in K$.
+
+(b) If $\zeta$ is a Radon measure on $\BbbR^r$ such that $W_{\zeta}\le 1$
+everywhere on $K$, $\zeta K\le\capacity K$.
+
+(c) $\tilde W_K(x)\le\hp(K-x)$ for every $x\in\BbbR^r\setminus K$.
+
+\proof{{\bf (a)(i)} Suppose first that $\capacity K>0$.
+Working through the proof of 479K, we discover, in parts
+(e)-(f) of the proof, that
+$e=\capacity K$ and $\lambda=\lambda_K$,
+so we just have to put (c-ii) of the proof together with 479D(b-i).
+
+\medskip
+
+\quad{\bf (ii)} If $\capacity K=0$, let $B$ be a non-trivial closed
+ball disjoint from $A$, and consider $L=K\cup B$.   Then
+$\capacity B=\capacity L$ (479Ea) and
+$\lambda_LK=0$, by 479D(c-ii), so
+
+\Centerline{$\lambda_LB=\lambda_LL=\capacity L=\energy(\lambda_L)
+=\capacity B$}
+
+\noindent and $\lambda_L=\lambda_B$ (479K).   Now
+$\tilde W_L=1\,\,\zeta$-a.e.\ on $L$, while
+
+\Centerline{$\tilde W_L(x)=\tilde W_B(x)<1$}
+
+\noindent for every $x\in\BbbR^r\setminus B$ (479Da), and in particular
+for every $x\in K$;  so $K$ must be $\zeta$-negligible.
+
+\medskip
+
+{\bf (b)} Set $\zeta'=\zeta\LLcorner K$;  then $W_{\zeta'}\le W_{\zeta}$,
+so $\energy(\zeta')=\int_KW_{\zeta'}d\zeta'\le\zeta'K$ is finite.
+By (a), $\tilde W_K\ge 1\,\,\zeta'$-a.e., so
+
+$$\eqalignno{\zeta K
+&=\zeta'K
+\le\int\tilde W_Kd\zeta'
+=\int W_{\zeta'}d\lambda_K\cr
+\displaycause{479J(b-i)}
+&\le\lambda_K\BbbR^r
+=\capacity K.\cr}$$
+
+\medskip
+
+{\bf (c)} If $\capacity K=0$ then $\lambda_K$ is the zero measure and the
+result is trivial.   Otherwise, again look at the proof of 479K;  in part
+(d), we saw that $W_{\lambda}(x)\le\Bover{e}{\capacity K}\hp(K-x)$;  but we
+now know that $e=\capacity K$ and $\lambda=\lambda_K$, so we get
+$\tilde W_K(x)\le\hp(K-x)$, as claimed.
+}%end of proof of 479L
+
+\leader{479M}{}\cmmnt{ In 479Ed we saw that there is a natural extension
+of Newtonian capacity to a Choquet capacity defined on every subset of
+$\BbbR^r$.   However the importance of Newtonian capacity lies as much in
+the equilibrium measures and potentials as in the simple quantity of
+capacity itself, and the methods of 479B-479E %479B 479C 479D 479E
+do not seem to yield these by
+any direct method.   With the new ideas of 479K-479L, we can now
+approach the problem of defining equilibrium measures for unbounded
+analytic sets of finite capacity.
+
+\wheader{479M}{4}{2}{2}{60pt}
+
+\noindent}{\bf Lemma} Let $A\subseteq\BbbR^r$ be an analytic set with
+finite Choquet-Newton capacity $c(A)$.
+
+(a) $\lim_{\gamma\to\infty}c(A\setminus B(\tbf{0},\gamma))=0$.
+
+(b) $\lambda_A=\lim_{\gamma\to\infty}\lambda_{A\cap B(\tbf{0},\gamma)}$
+is defined for the total variation metric on the space
+$M^+_{\text{R}}(\BbbR^r)$ of totally finite Radon measures on $\BbbR^r$.
+
+(c)(i) $\lambda_A\BbbR^r=c(A)$.
+
+\quad(ii) $\supp(\lambda_A)\subseteq\partial A$.
+
+\quad(iii) If $B\subseteq\BbbR^r$ is another analytic set such that
+$c(B)<\infty$, then $\lambda_{A\cup B}\le\lambda_A+\lambda_B$.
+
+(d)(i) $\tilde W_A=W_{\lambda_A}$ is the limit
+$\lim_{\gamma\to\infty}\tilde W_{A\cap B(\tbf{0},\gamma)}
+=\sup_{\gamma\ge 0}\tilde W_{A\cap B(\tbf{0},\gamma)}$.
+
+\quad(ii) $\tilde W_A(x)\le 1$ for every $x\in\BbbR^r$.
+
+\quad(iii) If $\zeta$ is any Radon measure on $\BbbR^r$ with finite energy,
+$\tilde W_A(x)=1$ for $\zeta$-almost every $x\in A$.
+
+\quad(iv) $\energy(\lambda_A)=c(A)$.
+
+\proof{{\bf (a)} \Quer\ Otherwise, set
+
+\Centerline{$\alpha=\lim_{\gamma\to\infty}c(A\setminus B(\tbf{0},\gamma))
+=\inf_{\gamma>0}c(A\setminus B(\tbf{0},\gamma))>0$.}
+
+\noindent Set $\epsilon=\bover18\alpha$
+and $\delta=\bover32\sqrt{\alpha}$.
+Let $\gamma$ be such that
+$c(A\setminus B(\tbf{0},\gamma))\le\alpha+\epsilon$, and let
+$K\subseteq A\setminus B(\tbf{0},\gamma)$ be a compact set such that
+$\capacity K\ge\alpha-\epsilon$ (479E(d-iii)).   Let $\gamma'$ be such that
+$K\subseteq B(\tbf{0},\gamma')$, and
+let $L\subseteq A\setminus B(\tbf{0},\gamma'+\delta)$ be a compact set such that
+$\capacity L\ge\alpha-\epsilon$.
+
+Set $\zeta=\bover23(\lambda_K+\lambda_L)$.   Then
+$W_{\zeta}=\bover23(\tilde W_K+\tilde W_L)$.   If $x\in K$, then
+$\|x-y\|\ge\delta$ for every $y\in L$, so
+
+\Centerline{$\tilde W_L(x)
+\le\Bover1{\delta^2}\lambda_LL\le\Bover{\alpha+\epsilon}{\delta^2}
+=\Bover12$;}
+
+\noindent similarly, $\tilde W_K(x)\le\Bover12$ for every $x\in L$.
+So $W_{\zeta}(x)\le 1$ for every $x\in K\cup L$, and therefore for every
+$x\in\BbbR^r$, by 479Fg.   But this means that
+
+$$\eqalignno{c(A\setminus B(\tbf{0},\gamma))
+&\ge\capacity(K\cup L)
+\ge\zeta(K\cup L)\cr
+\displaycause{479Lb}
+&=\Bover23(\capacity K+\capacity L)
+\ge\Bover43(\alpha-\epsilon)
+>\alpha+\epsilon,\cr}$$
+
+\noindent which is impossible.\ \Bang
+
+\medskip
+
+{\bf (b)} For $\gamma\ge 0$ set
+$\alpha_{\gamma}=c(A\setminus B(\tbf{0},\gamma))$
+and $\zeta_{\gamma}=\lambda_{A\cap B(\tbf{0},\gamma)}$.
+If $0\le\gamma\le\gamma'$ and $E\subseteq\BbbR^r$ is Borel, then
+$|\zeta_{\gamma}E-\zeta_{\gamma'}E|\le\alpha_{\gamma}$.
+\Prf\
+
+$$\eqalignno{\zeta_{\gamma'}E
+&\le\zeta_{\gamma}E+\lambda_{E\cap B(\tbf{0},\gamma')\setminus B(\tbf{0},\gamma)}(K)\cr
+\displaycause{479D(c-i)}
+&\le\zeta_{\gamma}E+c(A\cap B(\tbf{0},\gamma')\setminus B(\tbf{0},\gamma))
+\le\zeta_{\gamma}E+c(A\setminus B(\tbf{0},\gamma))
+=\zeta_{\gamma}E+\alpha_{\gamma}.\cr}$$
+
+\noindent On the other side we now have
+
+$$\eqalign{\zeta_{\gamma}E
+&=c(A\cap B(\tbf{0},\gamma))-\zeta_{\gamma}(\BbbR^r\setminus E)\cr
+&\le c(A\cap B(\tbf{0},\gamma'))-\zeta_{\gamma'}(\BbbR^r\setminus E)
+   +\alpha_{\gamma}
+=\zeta_{\gamma'}E+\alpha_{\gamma}.\cr}$$
+
+\noindent So
+$|\zeta_{\gamma}E-\zeta_{\gamma'}E|\le\alpha_{\gamma}$.\ \QeD\   It follows
+at once that $\rhotv(\zeta_{\gamma},\zeta_{\gamma'})\le 2\alpha_{\gamma}$.
+
+Since $\lim_{\gamma\to\infty}\alpha_{\gamma}=0$, by (a),
+$\sequencen{\zeta_n}$ is a Cauchy sequence for $\rhotv$.
+As noted in 437Q(a-iii), $M^+_{\text{R}}(\BbbR^r)$ is complete, so
+$\lim_{\gamma\to\infty}\lambda_{A\cap B(\tbf{0},\gamma)}
+=\lim_{n\to\infty}\zeta_n$ is defined, and we have our measure $\lambda_A$.
+
+\medskip
+
+{\bf (c)(i)} Now
+
+\Centerline{$\lambda_A\BbbR^r
+=\lim_{n\to\infty}\lambda_{A\cap B(\tbf{0},n)}(\BbbR^r)
+=\lim_{n\to\infty}c(A\cap B(\tbf{0},n))=c(A)$.}
+
+\medskip
+
+\quad{\bf (ii)} For any $\gamma\ge 0$,
+
+$$\eqalignno{\lambda_{A\cap B(\tbf{0},\gamma)}(\BbbR^r\setminus\partial A)
+&\le\lambda_{A\cap B(\tbf{0},\gamma)}(\partial B(\tbf{0},\gamma))\cr
+\displaycause{because the support of
+$\lambda_{A\cap B(\tbf{0},\gamma)}$ is included in
+$\partial(A\cap B(\tbf{0},\gamma))\subseteq\partial A\cup\partial B(\tbf{0},\gamma)$}
+&\le|\lambda_A(\partial B(\tbf{0},\gamma))
+  -\lambda_{A\cap B(\tbf{0},\gamma)}(\partial B(\tbf{0},\gamma))|
+  +\lambda_A(\partial B(\tbf{0},\gamma))\cr
+&\le\rhotv(\lambda_A,\lambda_{A\cap B(\tbf{0},\gamma)})
+  +\lambda_A(\partial B(\tbf{0},\gamma)).\cr}$$
+
+\noindent So
+
+$$\eqalign{\lambda_A(\BbbR^r\setminus\partial A)
+&=\lim_{\gamma\to\infty}
+  \lambda_{A\cap B(\tbf{0},\gamma)}(\BbbR^r\setminus\partial A)\cr
+&\le\lim_{\gamma\to\infty}\rhotv(\lambda_A,\lambda_{A\cap B(\tbf{0},\gamma)})
+  +\lim_{\gamma\to\infty}\lambda_A(\partial B(\tbf{0},\gamma))
+=0.\cr}$$
+
+\medskip
+
+\quad{\bf (iii)} For any compact set $K\subseteq\BbbR^r$,
+
+$$\eqalignno{\lambda_{A\cup B}(K)
+&=\lim_{\gamma\to\infty}\lambda_{(A\cup B)\cap B(\tbf{0},\gamma)}(K)
+\le\lim_{\gamma\to\infty}
+  \lambda_{A\cap B(\tbf{0},\gamma)}(K)+\lambda_{B\cap B(\tbf{0},\gamma)}(K)\cr
+\displaycause{479D(c-i)}
+&=\lambda_A(K)+\lambda_B(K)
+=(\lambda_A+\lambda_B)(K).\cr}$$
+
+\noindent By 416Ea, $\lambda_{A\cup B}\le\lambda_A+\lambda_B$.
+
+\medskip
+
+{\bf (d)(i)} By 479D(b-ii), the supremum and the limit are the same.
+Suppose that $x\in\BbbR^r$ and $\epsilon>0$.
+Start with $\gamma>\|x\|$.   Since $\tilde W_{A\cap B(\tbf{0},\gamma)}(x)$ is
+finite, there is a $\delta\in\ooint{0,\gamma-\|x\|}$ such that
+$\biggerint_{B(\tbf{0},\delta)}\Bover1{\|x-y\|^{r-2}}
+  \lambda_{A\cap B(\tbf{0},\gamma)}(dy)\le\epsilon$.
+If $\gamma'\ge\gamma\ge 0$, then
+
+\Centerline{$\lambda_{A\cap B(\tbf{0},\gamma')}
+\le\lambda_{A\cap B(\tbf{0},\gamma)}
+  +\lambda_{A\cap B(\tbf{0},\gamma')\setminus B(\tbf{0},\gamma)}$,}
+
+\noindent so
+
+$$\eqalignno{\int_{B(\tbf{0},\delta)}\Bover1{\|x-y\|^{r-2}}
+   \lambda_{A\cap B(\tbf{0},\gamma')}(dy)
+&\le\int_{B(\tbf{0},\delta)}\Bover1{\|x-y\|^{r-2}}
+  \lambda_{A\cap B(\tbf{0},\gamma)}(dy)\cr
+&\mskip75mu
+  +\int_{B(\tbf{0},\delta)}\Bover1{\|x-y\|^{r-2}}
+   \lambda_{A\cap B(\tbf{0},\gamma')\setminus B(\tbf{0},\gamma)}(dy)\cr
+\displaycause{234Hc, 234Qc}
+% if \mu\le\nu then \int fd\mu\le\int fd\nu whenever f\ge 0 and
+% latter is defined in [0,\infty]
+&=\int_{B(\tbf{0},\delta)}\Bover1{\|x-y\|^{r-2}}
+   \lambda_{A\cap B(\tbf{0},\gamma)}(dy)\cr
+\displaycause{because $\interior B(\tbf{0},\gamma)$ is
+$\lambda_{A\cap B(\tbf{0},\gamma')\setminus B(\tbf{0},\gamma)}$-negligible}
+&\le\epsilon.\cr}$$
+
+\noindent So, setting $M=\Bover1{\delta^{r-2}}$,
+
+\Centerline{$|\tilde W_{A\cap B(\tbf{0},\gamma')}(x)
+  -\int\min(M,\Bover1{\|x-y\|^{r-2}})\lambda_{A\cap B(\tbf{0},\gamma')}(dy)|
+\le\epsilon$.}
+
+\noindent Using (c-ii) and (c-iii) to apply
+the same argument with $A$ in place of $A\cap B(\tbf{0},\gamma')$, we get
+
+\Centerline{$|\tilde W_A(x)
+  -\int\min(M,\Bover1{\|x-y\|^{r-2}})\lambda_A(dy)|
+\le\epsilon$.}
+
+\noindent On the other hand,
+
+\Centerline{$\int\min(M,\Bover1{\|x-y\|^{r-2}})\lambda_A(dy)
+=\lim_{\gamma'\to\infty}\int\min(M,\Bover1{\|x-y\|^{r-2}})
+  \lambda_{A\cap B(\tbf{0},\gamma')}(dy)$}
+
+\noindent (437Q(a-ii)), so
+
+\Centerline{$\limsup_{\gamma'\to\infty}|\tilde W_{A\cap B(\tbf{0},\gamma')}(x)
+  -\tilde W_A(x)|\le 2\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary,
+$W_A(x)=\lim_{\gamma'\to\infty}W_{A\cap B(\tbf{0},\gamma')}(x)$, as claimed.
+
+\medskip
+
+\quad{\bf (ii)} It follows at once that $\tilde W_A\le 1$ everywhere.
+
+\medskip
+
+\quad{\bf (iii)} Write $E=\{x:x\in A,\,\tilde W_A(x)<1\}$, and let $\zeta$
+be a Radon measure on $\BbbR^r$ of finite energy.   \Quer\ If
+$\zeta E>0$, there is a compact set $K\subseteq E$ such that
+$\zeta K>0$.   Now there is a $\gamma>0$ such that
+$K\subseteq B(\tbf{0},\gamma)$, in which case
+
+\Centerline{$\tilde W_K(x)\le\tilde W_{A\cap B(\tbf{0},\gamma)}(x)<1$}
+
+\noindent for every $x\in K$, and $\zeta K=0$, by 479La.\ \BanG\  So
+$\zeta E=0$, as required.
+
+\medskip
+
+\quad{\bf (iv)} By (ii) and (c-i),
+
+\Centerline{$\energy(\lambda_A)=\int\tilde W_Ad\lambda_A
+\le\lambda_A\BbbR^r=c(A)$.}
+
+\noindent In the other direction, for any $\gamma\ge 0$,
+
+$$\eqalignno{\energy(\lambda_A)
+&=\int\tilde W_Ad\lambda_A
+\ge\int\tilde W_{A\cap B(\tbf{0},\gamma)}d\lambda_A
+=\int\tilde W_Ad\lambda_{A\cap B(\tbf{0},\gamma)}\cr
+\displaycause{479J(b-i)}
+&\ge\int\tilde W_{A\cap B(\tbf{0},\gamma)}d\lambda_{A\cap B(\tbf{0},\gamma)}
+=c(A\cap B(\tbf{0},\gamma));\cr}$$
+
+\noindent taking the limit as $\gamma\to\infty$,
+$\energy(\lambda_A)\ge c(A)$ and we have equality.
+}%end of proof of 479M
+
+\leader{479N}{}\cmmnt{ We are ready to match the definitions
+in 479C to some alternative definitions of capacity.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $A\subseteq\BbbR^r$ be an analytic set with
+finite Choquet-Newton capacity $c(A)$.
+
+(a) Writing $W_{\zeta}$ for the Newtonian potential of a Radon measure
+$\zeta$ on $\BbbR^r$,
+
+\Centerline{$c(A)
+=\sup\{\zeta A:\zeta\text{ is a Radon measure on }\BbbR^r,\,
+  W_{\zeta}(x)\le 1\text{ for every }x\in\BbbR^r\}$;}
+
+\noindent if $A$ is closed, the supremum is attained.
+
+(b) $c(A)
+=\inf\{\energy(\zeta):\zeta\text{ is a Radon measure on }\BbbR^r,\,
+  \zeta A\ge c(A)\}$;
+if $A$ is closed, the infimum is attained.
+
+(c) If $A\ne\emptyset$, $c(A)
+=\sup\{\Bover1{\energy(\zeta)}:\zeta$ is a Radon measure on
+$\BbbR^r$ such that $\zeta A=1\}$, counting $\Bover1{\infty}$ as zero;
+if $A$ is closed, the supremum is attained.
+
+\proof{ Note first that if there is
+a Radon measure $\zeta$ on $\BbbR^r$, with finite energy, such that
+$\zeta A>0$, then $c(A)>0$.   \Prf\ By 479M(d-iii),
+$\tilde W_A=1\,\,\zeta$-a.e.\ on $A$.   So $\tilde W_A$ cannot be
+identically $0$, and $0<\lambda_A\BbbR^r=c(A)$, by 479M(c-i).\ \Qed
+
+\medskip
+
+{\bf (a)(i)} We know from 479E(d-i) and 479D(b-i) that
+
+$$\eqalign{c(A)
+&=\sup\{\capacity K:K\subseteq A\text{ is compact}\}
+=\sup\{\lambda_KK:K\subseteq A\text{ is compact}\}\cr
+&=\sup\{\lambda_KA:K\subseteq A\text{ is compact}\}
+\le\sup\{\zeta A:W_{\zeta}\le\chi\BbbR^r\}.\cr}$$
+
+\medskip
+
+\quad{\bf (ii)} If $\zeta$ is a Radon measure on $\BbbR^r$ and
+$W_{\zeta}\le\chi\BbbR^r$, then
+
+$$\eqalignno{\zeta A
+&=\sup_{K\subseteq A\text{ is compact}}\zeta K
+\le\sup_{K\subseteq A\text{ is compact}}\capacity K\cr
+\displaycause{479Lb}
+&=c(A).\cr}$$
+
+\noindent Thus $\sup\{\zeta A:W_{\zeta}\le\chi\BbbR^r\}\le c(A)$ and we
+have equality.
+
+\medskip
+
+\quad{\bf (iii)} If $A$ is closed, then by 479M(c-ii)
+
+\Centerline{$\lambda_AA=\lambda_A(\partial A)=\lambda_A\BbbR^r
+=c(A)$}
+
+\noindent so $\lambda_A$ witnesses that the supremum is attained.
+
+\medskip
+
+{\bf (b)(i)} \Quer\ Suppose, if possible, that there is a Radon
+measure $\zeta$ on $\BbbR^r$ such
+that $\zeta A\ge c(A)>\energy(\zeta)$.   Let $\alpha\in\ooint{0,1}$
+be such that $\alpha^4c(A)\ge\energy(\zeta)$.   Since
+
+\Centerline{$\zeta A=\sup\{\zeta K:K\subseteq A$ is compact$\}$,
+\quad$c(A)=\sup\{\capacity K:K\subseteq A$ is compact$\}$,}
+
+\noindent there is a compact $K\subseteq A$ such that
+$\zeta K\ge\alpha\zeta A$ and $\capacity K>\alpha^2c(A)$.
+Set $\zeta'=\Bover{\capacity K}{\zeta K}\zeta$.   Then
+
+$$\eqalign{\energy(\zeta')
+&=\bigl(\Bover{\capacity K}{\zeta K}\bigr)^2\energy(\zeta)
+\le\bigl(\Bover{c(A)}{\alpha\zeta A}\bigr)^2\alpha^4c(A)\cr
+&\le\alpha^2c(A)
+<\capacity K
+=\zeta'K;\cr}$$
+
+\noindent which is impossible, by 479K.\ \Bang
+
+So $c(A)\le\inf\{\energy(\zeta):\zeta A\ge c(A)\}$.
+
+\medskip
+
+\quad{\bf (ii)} Take any $\epsilon>0$.
+Then there is a compact set $K\subseteq A$ such that
+$(1+\epsilon)\capacity K\ge c(A)$.   Set
+$\zeta=(1+\epsilon)\lambda_K$;  then
+
+\Centerline{$\zeta A\ge c(A)$,
+\quad$\energy(\zeta)=(1+\epsilon)^2\energy(\lambda_K)
+=(1+\epsilon)^2\capacity K\le(1+\epsilon)^2c(A)$.}
+
+\noindent As $\epsilon$ is arbitrary,
+$c(A)\ge\inf\{\energy(\zeta):\zeta A\ge c(A)\}$
+and we have equality.
+
+\medskip
+
+\quad{\bf (iii)} If $A$ is closed, then
+
+\Centerline{$\lambda_AA=\lambda_A(\partial A)=\lambda_A\BbbR^r=c(A)$}
+
+\noindent by 479M(c-i) and (c-ii), while $\energy(\lambda_A)=c(A)$ by
+479M(d-iv).   So $\lambda_A$ witnesses that
+$c(A)=\min\{\energy(\zeta):\zeta A\ge c(A)\}$.
+
+\medskip
+
+{\bf (c)(i)} Suppose that
+$\zeta$ is a Radon measure on $\BbbR^r$
+such that $\zeta A=1$.   If $\energy(\zeta)=\infty$ then of course
+$\Bover1{\energy(\zeta)}\le c(A)$.   Otherwise, $c(A)>0$, as
+remarked at the beginning of this part of the proof.   Set
+$\zeta'=c(A)\zeta$.   By (b),
+
+\Centerline{$c(A)\le\energy(\zeta')=c(A)^2\energy(\zeta)$,}
+
+\noindent so $\Bover1{\energy(\zeta)}\le c(A)$.
+
+Thus $\sup\{\Bover1{\energy(\zeta)}:\zeta A=\zeta\BbbR^r=1\}\le c(A)$.
+
+\medskip
+
+\quad{\bf (ii)} If $c(A)=0$ then the supremum is attained by any
+Radon measure $\zeta$ such that $\zeta A=1$, so we can stop.
+If $c(A)>0$, then for any $\alpha\in\ooint{0,1}$ there is a compact set
+$K\subseteq A$ such that $\capacity K\ge\alpha c(A)$.   Set
+$\zeta=\Bover1{\capacity K}\lambda_K$;  then
+
+\Centerline{$\zeta K=\zeta\BbbR^r=\zeta A=1$}
+
+\noindent and
+
+\Centerline{$\Bover1{\energy(\zeta)}
+=\Bover{(\capacity K)^2}{\energy(\lambda_K)}
+=\capacity K\ge\alpha c(A)$.}
+
+\noindent As $\alpha$ is arbitrary,
+$c(A)\le\sup\{\Bover1{\energy(\zeta)}:\zeta A=\zeta\BbbR^r=1\}$ and
+we have equality.
+
+\medskip
+
+\quad{\bf (iii)} If $A$ is closed and $c(A)>0$, then
+$\zeta=\Bover1{c(A)}\lambda_A$ witnesses that the supremum is
+attained, as in (b) above.
+}%end of proof of 479N
+
+\leader{479O}{Polar \dvrocolon{sets}}\cmmnt{ To make the final step, to
+arbitrary sets with finite Choquet-Newton capacity, we seem to
+need an alternative description of polar sets.
+
+\medskip
+
+\noindent}{\bf Proposition} For a set $D\subseteq\BbbR^r$,
+the following are equiveridical:
+
+(i) $D$ is polar\cmmnt{, that is, $c(D)=0$};
+
+(ii) there is a totally finite Radon measure $\zeta$ on $\BbbR^r$ such that
+its Newtonian potential $W_{\zeta}$ is infinite at every point of $D$;
+
+(iii) there is an analytic set $E\supseteq D$ such that
+$\zeta E=0$ whenever $\zeta$ is a Radon measure on $\BbbR^r$ with
+finite energy.
+
+\proof{{\bf (i)$\Rightarrow$(ii)} If (i) is true, then for each
+$n\in\Bbb N$ there is a bounded open set
+$G_n\supseteq D\cap B(\tbf{0},n)$ such that
+$c(G_n)\le 2^{-n}$.   Try $\zeta=\sum_{n=0}^{\infty}\lambda_{G_n}$,
+defining the sum as in 234G.   Then
+$\zeta\BbbR^r=\sum_{n=0}^{\infty}c(G_n)$ is finite, and
+$W_{\zeta}=\sum_{n=0}^{\infty}\tilde W_{G_n}$ (234Hc).
+If $x\in D\cap B(\tbf{0},n)$, then $\tilde W_{G_m}(x)=1$ for every $m\ge n$
+(479D(b-iii)), so $W_{\zeta}(x)=\infty$.   Thus $\zeta$ witnesses that (ii)
+is true.
+
+\medskip
+
+{\bf (ii)$\Rightarrow$(iii)} Suppose that $\lambda$ is a totally finite
+Radon measure such that $W_{\lambda}(x)=\infty$ for every $x\in D$.
+Set $E=\{x:W_{\lambda}(x)=\infty\}$;  then $E$ is a G$_{\delta}$ set,
+because $W_{\lambda}$ is lower semi-continuous (479Fa).
+\Quer\ If there is a Radon
+measure $\zeta$ on $\BbbR^r$, with finite energy, such that $\zeta E>0$,
+let $K\subseteq E$ be a compact set such that $\zeta K>0$.   Set
+$\zeta_1=\Bover1{\zeta K}\zeta\LLcorner K$;  then $\zeta_1$ has finite
+energy and $\zeta_1K=1$, so $\capacity K\ge\Bover1{\energy(\zeta_1)}>0$,
+by 479Nc.
+
+Let $G\supseteq K$ be a bounded open set;  set
+$\lambda_1=\lambda\LLcorner G$ and
+$\lambda_2=\lambda\LLcorner(\BbbR^r\setminus G)$, so that
+$\lambda=\lambda_1+\lambda_2$ and $W_{\lambda}=W_{\lambda_1}+W_{\lambda_2}$
+(234Hc).   Since $W_{\lambda_2}(x)$ is finite for $x\in G$ (479Fa),
+$W_{\lambda_1}(x)=\infty$ for every $x\in K$.   Let $\epsilon>0$ be such
+that $\epsilon\lambda_1\BbbR^r<\capacity K$.   Then
+$\epsilon W_{\lambda_1}$ is a lower
+semi-continuous superharmonic function greater than or equal to
+$\tilde W_K$ on $K\supseteq\supp(\lambda_K)$, so
+$\epsilon W_{\lambda_1}\ge\tilde W_K$ everywhere (479Fg).   But this
+means that
+
+$$\eqalignno{\epsilon\lambda_1\BbbR^r
+&=\epsilon\lim_{\|x\|\to\infty}\|x\|^{r-2}W_{\lambda_1}(x)\cr
+\displaycause{479Fd}
+&\ge\lim_{\|x\|\to\infty}\|x\|^{r-2}\tilde W_K(x)
+=\lambda_K\BbbR^r
+=\capacity K
+>\epsilon\lambda_1\BbbR^r,\cr}$$
+
+\noindent which is absurd.\ \Bang
+
+So $E$ witnesses that (iii) is true.
+
+\medskip
+
+{\bf (iii)$\Rightarrow$(i)} Suppose that $E\supseteq D$ is analytic and
+that $\zeta E=0$ whenever $\energy(\zeta)$ is finite.   If
+$K\subseteq E$ is compact and $\zeta$ is a Radon probability measure on
+$\BbbR^r$ such that $\zeta K=1$, then $\energy(\zeta)$ must be infinite;
+by 479Nc, $\capacity K=0$.   As $K$ is arbitrary, $c(E)=0$ and
+$c(D)=0$.
+}%end of proof of 479O
+
+\leader{479P}{}\cmmnt{ At last I come to my final extension of the
+notions of equilibrium measure and potential, together with a direct
+expression of the latter in terms of Brownian hitting probabilities.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $D\subseteq\BbbR^r$ be a set with finite
+Choquet-Newton capacity $c(D)$.
+
+(a) There is a totally finite Radon
+measure $\lambda_D$ on $\BbbR^r$ such that
+$\lambda_D=\lambda_A$, as defined in 479Mb, whenever
+$A\supseteq D$ is analytic and $c(A)=c(D)$.
+
+(b) Write
+$\tilde W_D=W_{\lambda_D}$ for the equilibrium potential
+corresponding to the equilibrium measure $\lambda_D$.   Then
+$\tilde W_D(x)=\hp^*((D\setminus\{x\})-x)$ for every $x\in\BbbR^r$.
+
+(c)(i)($\alpha$) $\lambda_D\BbbR^r=c(D)$;
+
+\qquad($\beta$) if $\zeta$ is any Radon measure on $\BbbR^r$ with finite energy,
+$\tilde W_D(x)=1$ for $\zeta$-almost every $x\in D$;
+
+\qquad($\gamma$) $\energy(\lambda_D)=c(D)$;
+
+\qquad($\delta$) if $D'\subseteq D$ and $c(D')=c(D)$, then
+$\lambda_{D'}=\lambda_D$.
+
+\quad(ii) $\supp(\lambda_D)\subseteq\partial D$.
+
+\quad(iii) For any $D'\subseteq\BbbR^r$ such that $c(D')<\infty$,
+
+\qquad($\alpha$) $\lambda_D^*(D')\le c(D')$;
+
+\qquad($\beta$) $\lambda_{D\cup D'}\le\lambda_D+\lambda_{D'}$;
+
+\qquad($\gamma$) $\tilde W_{D\cap D'}+\tilde W_{D\cup D'}
+\le\tilde W_D+\tilde W_{D'}$;
+
+\qquad($\delta$) $\rhotv(\lambda_D,\lambda_{D'})\le 2c(D\symmdiff D')$.
+
+\quad(iv) If $\sequencen{D_n}$ is a non-decreasing sequence of sets with
+union $D$, then
+
+\qquad($\alpha$) $\tilde W_D=\lim_{n\to\infty}\tilde W_{D_n}
+=\sup_{n\in\Bbb N}\tilde W_{D_n}$;
+
+\qquad($\beta$) $\sequencen{\lambda_{D_n}}\to\lambda_D$ for the narrow
+topology on $M^+_{\text{R}}(\BbbR^r)$.
+
+\quad(v) $c(D)
+=\inf\{\zeta\BbbR^r:\zeta\text{ is a Radon measure on }\BbbR^r,\,
+   W_{\zeta}\ge\chi D\}$
+
+\quad$\phantom{\text{(v) }c(D)}
+=\inf\{\energy(\zeta):\zeta\text{ is a Radon measure on }\BbbR^r,\,
+   W_{\zeta}\ge\chi D\}$.
+
+\quad(vi) Writing $\clstar D$ for the essential closure of $D$,
+$c(\clstar D)\le c(D)$ and $\tilde W_{\clstar D}\le\tilde W_D$.
+
+\quad(vii) Suppose that $f:D\to\BbbR^r$ is $\gamma$-Lipschitz, where
+$\gamma\ge 0$.   Then $c(f[D])\le\gamma^{r-2}c(D)$.
+
+\proof{{\bf (a)(i)} If $A$, $B\subseteq\BbbR^r$ are analytic sets,
+$c(B)<\infty$ and $A\subseteq B$, then
+
+$$\eqalignno{\tilde W_A
+&=\sup_{n\in\Bbb N}\tilde W_{A\cap B(\tbf{0},n)}\cr
+\displaycause{479M(d-i)}
+&\le\sup_{n\in\Bbb N}\tilde W_{B\cap B(\tbf{0},n)}\cr
+\displaycause{479D(b-ii)}
+&=\tilde W_B.\cr}$$
+
+\noindent If $c(A)=c(B)$, then $\lambda_A=\lambda_B$.   \Prf\
+
+$$\eqalignno{c(A)
+&=\energy(\lambda_A)\cr
+\displaycause{479M(d-iv)}
+&=\int\tilde W_Ad\lambda_A
+\le\int\tilde W_Bd\lambda_A
+=\int\tilde W_Ad\lambda_B\cr
+\displaycause{479J(b-i)}
+&\le\int\tilde W_Bd\lambda_A
+=\energy(\lambda_B)
+=c(B)
+=\lambda_B\BbbR^r}$$
+
+\noindent (479M(c-i)).   So we must have equality throughout, and
+$\tilde W_A=\tilde W_B\,\,\lambda_B$-a.e.   By 479Fg,
+$\tilde W_A\ge\tilde W_B$ everywhere and
+
+\Centerline{$W_{\lambda_B}=\tilde W_B=\tilde W_A=W_{\lambda_A}$.}
+
+\noindent By 479J(b-v), $\lambda_B=\lambda_A$. \Qed
+
+\quad{\bf (ii)} Now consider the given set $D$.
+By 479E(d-i), there is an analytic set $A\supseteq D$ such
+that $c(A)=c(D)$.   If $B$ is another such set, then
+$c(A\cap B)=c(A)=c(B)$, so $\lambda_{A\cap B}=\lambda_A=\lambda_B$.
+We therefore have a common measure which we can take to be
+$\lambda_D$.   Of course this agrees with 479Mb if $D$ itself is analytic,
+and with 479B if $D$ is bounded and analytic.
+
+\medskip
+
+{\bf (b)} Write $h_D(x)$ for $\hp^*((D\setminus\{x\})-x)$.
+
+\medskip
+
+\quad{\bf (i)} To begin with, suppose that
+$D=K$ is compact and that $x\notin K$, so that $h_D(x)=h_K(x)=\hp(K-x)$.
+
+\medskip
+
+\qquad\grheada\ $h_K(x)\ge\tilde W_K(x)$.   \Prf\ 479Lc.\ \Qed
+
+\medskip
+
+\qquad\grheadb\ In fact $h_K(x)=\tilde W_K(x)$.  \Prf\ Let $\epsilon>0$.
+Set $E=\{y:y\in K$, $\tilde W_K(y)<1\}$.   Because $\tilde W_K$ is lower
+semi-continuous, $E$ is an F$_{\sigma}$ set, therefore analytic;
+by 479M(d-iii), $E$ satisfies condition (iii) of 479O, and is polar.
+By 479O(ii), there is a totally finite Radon measure $\zeta$
+on $\BbbR^r$ such that $W_{\zeta}(y)=\infty$ for every $y\in E$.
+Let $H$ be a bounded open set, including $K$, such that
+$x\notin\overline{H}$;  set $\zeta_1=\zeta\LLcorner H$ and
+$\zeta_2=\zeta\LLcorner(\BbbR^r\setminus H)$.
+Then $\zeta=\zeta_1+\zeta_2$, so
+$W_{\zeta}=W_{\zeta_1}+W_{\zeta_2}$ (479J(b-iii)).
+Since $H$ is open and $\zeta_2$-negligible, $W_{\zeta_2}(y)$ is
+finite for every $y\in K$ (479Fa), and $W_{\zeta_1}(y)=\infty$ for every
+$y\in E$;  while $W_{\zeta_1}(x)$ is finite because the support of
+$\zeta_1$ is included in $\overline{H}$.
+
+There is therefore an $\eta>0$ such that $\eta W_{\zeta_1}(x)\le\epsilon$.
+Consider $\lambda=\lambda_K+\eta\zeta_1$.   We have
+$W_{\lambda}(y)\ge 1$ for every $y\in K$, while $W_{\lambda}$ is
+superharmonic and lower semi-continuous (479Fa, 479Fb);  as
+the support of $\lambda$ is included in the compact set $\overline{H}$,
+$\lim_{\|y\|\to\infty}W_{\lambda}(y)=0$ (479Fd).   Consequently
+
+$$\eqalignno{h_K(x)
+&=\mu_x^{(K)}(K)
+\le\int W_{\lambda}d\mu_x^{(K)}
+\le W_{\lambda}(x)\cr
+\displaycause{478Pc, with $G=\BbbR^r\setminus K$}
+&\le\tilde W_K(x)+\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary, $h_K(x)\le\tilde W_K(x)$ and we
+have equality.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} If $D=A$ is analytic,
+note that $\capacity\{x\}=0$ (479Da, or otherwise), so
+$c(A\setminus\{x\})=c(A)$, because $c$ is monotonic and submodular,
+therefore subadditive (479E(d-ii)).   Now we know that
+
+\Centerline{$h_A(x)
+=\sup\{\hp(K-x):K\subseteq A\setminus\{x\}$ is compact$\}$}
+
+\noindent (477Ie) and
+
+\Centerline{$c(A\setminus\{x\})
+=\sup\{\capacity K:K\subseteq A\setminus\{x\}$ is compact$\}$}
+
+\noindent (479E(d-iii)).   So there is a non-decreasing sequence
+$\sequencen{K_n}$ of compact subsets of $A\setminus\{x\}$ such that
+
+\Centerline{$h_A(x)
+=\sup_{n\in\Bbb N}\hp(K_n-x)$,
+\quad$c(A\setminus\{x\})
+=\sup_{n\in\Bbb N}\capacity K_n$.}
+
+\noindent Set $E=\bigcup_{n\in\Bbb N}K_n$;  then $E\subseteq A$ and
+$c(E)=c(A)$, so $\lambda_E=\lambda_A$ ((a-i) above) and
+$\tilde W_E=\tilde W_A$.   Accordingly
+
+$$\eqalignno{h_A(x)
+&=\sup_{n\in\Bbb N}\hp(K_n-x)
+=\sup_{n\in\Bbb N}\tilde W_{K_n}(x)\cr
+\displaycause{(a-i) above}
+&=\sup_{m,n\in\Bbb N}\tilde W_{K_n\cap B(\tbf{0},m)}(x)
+=\sup_{m\in\Bbb N}\tilde W_{E\cap B(\tbf{0},m)}(x)\cr
+\displaycause{apply 479E(b-iii) twice}
+&=\tilde W_E(x)
+=\tilde W_A(x).\cr}$$
+
+\medskip
+
+\quad{\bf (iii)} For the general case, note first that
+$h_D\le\tilde W_D$.   \Prf\
+There is a G$_{\delta}$ set $E\supseteq D$ such that $c(E)=c(D)$, so
+$\lambda_E=\lambda_D$.   Now, for any $x\in\BbbR^r$,
+
+\Centerline{$h_D(x)\le h_E(x)=\tilde W_E(x)=\tilde W_D(x)$,}
+
+\noindent using (ii) for the central equality.\ \Qed
+
+Equally, $h_D\ge\tilde W_D$.   \Prf\ If $x\in\BbbR^r$,
+there is a G$_{\delta}$ set $H\supseteq(D\setminus\{x\})-x$ such that
+
+\Centerline{$h_D(x)=\hp^*((D\setminus\{x\})-x)=\hp H$}
+
+\noindent (477Id).   Set $A=(H+x)\cup\{x\}$;  then $A\supseteq D$ and
+
+\Centerline{$h_D(x)=h_A(x)=\tilde W_A(x)\ge\tilde W_{A\cap E}(x)
+=\tilde W_D(x)$,}
+
+\noindent using (a-i) again for the inequality.\ \Qed
+
+So $h_D=\tilde W_D$, as claimed.
+
+\medskip
+
+{\bf (c)} Fix an analytic set $A\supseteq D$ such that $c(A)=c(D)$;
+replacing $A$ by $A\cap\overline{D}$ if necessary, we may suppose that
+$A\subseteq\overline{D}$.   We have
+$\lambda_D=\lambda_A$ and $\tilde W_D=\tilde W_A$.
+
+\medskip
+
+\quad{\bf (i)}\grheada\
+
+\Centerline{$\lambda_D\BbbR^r=\lambda_A\BbbR^r=c(A)=c(D)$}
+
+\noindent by 479M(c-i).
+
+\medskip
+
+\qquad\grheadb-\grheadc\ 479M(d-iii) tells us that
+$\tilde W_D(x)=\tilde W_A(x)=1$ for $\zeta$-almost every $x\in A$, and
+therefore for $\zeta$-almost every $x\in D$.
+At the same time,
+
+\Centerline{$\energy(\lambda_D)=\energy(\lambda_A)=c(A)=c(D)$}
+
+\noindent by 479M(d-iv).
+
+\medskip
+
+\qquad\grheadd\ Of course $A\supseteq D'$ and $c(A)=c(D')$, so
+$\lambda_{D'}=\lambda_A=\lambda_D$.
+
+\medskip
+
+\quad{\bf (ii)}
+$\overline{A}=\overline{D}$ and $\interior A\supseteq\interior D$, so
+$\partial A\subseteq\partial D$ and
+
+\Centerline{$\lambda_D(\BbbR^r\setminus\partial D)
+=\lambda_A(\BbbR^r\setminus\partial D)
+\le\lambda_A(\BbbR^r\setminus\partial A)
+=0$}
+
+\noindent by 479M(c-ii).   As $\partial D$ is closed, it includes
+$\supp(\lambda_D)$.
+
+\medskip
+
+\quad{\bf (iii)} Let $A'\supseteq D'$ be an analytic set such that
+$c(A')=c(D')$.
+
+\qquad\grheada\
+
+$$\eqalignno{\lambda^*_D(D')
+&\le\lambda_D(A')
+=\lambda_A(A')
+\le\sup_{m\in\Bbb N}\lambda_{A\cap B(\tbf{0},m)}(A')\cr
+\displaycause{479Mb}
+&=\sup_{m,n\in\Bbb N}
+    \lambda_{A\cap B(\tbf{0},m)}(A'\cap B(\tbf{0},n))
+\le\sup_{n\in\Bbb N}c(A'\cap B(\tbf{0},n))\cr
+\displaycause{479D(c-ii)}
+&=c(A')\cr
+\displaycause{because $c$ is a capacity}
+&=c(D').\cr}$$
+
+\medskip
+
+\qquad\grheadb\ Because $c$ is subadditive, we know that $c(D\cup D')$ is
+finite.   Let $B\supseteq D\cup D'$ be an analytic set such that
+$c(B)=c(D\cup D')$.   Then
+
+$$\eqalignno{\lambda_{D\cup D'}
+&=\lambda_{B\cap(A\cup A')}
+\le\lambda_{B\cap A}+\lambda_{B\cap A'}\cr
+\displaycause{479M(c-iii)}
+&=\lambda_D+\lambda_{D'}.\cr}$$
+
+\medskip
+
+\qquad\grheadc\ This is immediate from (b) and the general fact that
+$\zeta^*(U\cap V)+\zeta^*(U\cup V)\le\zeta^*U+\zeta^*V$ for any measure
+$\zeta$ and any sets $U$ and $V$ (132Xk).
+
+\medskip
+
+\qquad\grheadd\ As usual, it will be enough to show that
+$|\lambda_DE-\lambda_{D'}E|\le c(D\symmdiff D')$ for every Borel set
+$E\subseteq\BbbR^r$;  by symmetry, all we need to check is that
+$\lambda_{D'}E\le\lambda_DE+c(D\symmdiff D')$ for every Borel set $E$.
+\Prf
+
+\medskip
+
+\qquad\quad{\bf case 1} Suppose that $D$ and $D'$ are both bounded Borel
+sets.   Take $x\in\BbbR^r$, and let $\tau$, $\tau':\Omega\to[0,\infty]$
+be the Brownian arrival times to $D-x$, $D'-x$ respectively.   Then
+
+$$\eqalign{\mu_x^{(D')}E
+&=\mu_W\{\omega:\tau'(\omega)<\infty,\,x+\omega(\tau'(\omega))\in E\}\cr
+&\le\mu_W\{\omega:\tau(\omega)<\infty,\,x+\omega(\tau(\omega))\in E\}
+   +\mu_W\{\omega:\tau(\omega)\ne\tau'(\omega)\}\cr
+&\le\mu_x^{(D)}E+\mu_W\{\omega:\text{there is some }t\ge 0
+   \text{ such that }x+\omega(t)\in D\symmdiff D'\}\cr
+&=\mu_x^{(D)}E+\mu_x^{(D\symmdiff D')}\BbbR^r.\cr}$$
+
+\noindent So
+
+$$\eqalign{\lambda_{D'}E
+&=\lim_{\|x\|\to\infty}\|x\|^{r-2}\mu_x^{(D')}E\cr
+&\le\lim_{\|x\|\to\infty}\|x\|^{r-2}\mu_x^{(D)}E
+   +\lim_{\|x\|\to\infty}\|x\|^{r-2}\mu_x^{(D\symmdiff D')}\BbbR^r
+=\lambda_DE+c(D\symmdiff D').\cr}$$
+
+\medskip
+
+\qquad\quad{\bf case 2} Suppose that $D$, $D'$ are Borel sets, not
+necessarity bounded.   Set $D_n=D\cap B(\tbf{0},n)$, $D'_n=D'\cap B(\tbf{0},n)$.
+Then
+
+$$\eqalignno{\lambda_{D'}E
+&=\lim_{n\to\infty}\lambda_{D'_n}E\cr
+\displaycause{479Mb}
+&\le\lim_{n\to\infty}\lambda_{D_n}E
+   +\lim_{n\to\infty}c(D_n\symmdiff D'_n)\cr
+\displaycause{by case 1}
+&=\lambda_DE
+   +\lim_{n\to\infty}c((D\symmdiff D')\cap B(\tbf{0},n))
+=\lambda_DE+c(D\symmdiff D')\cr}$$
+
+\noindent because $c$ is a capacity.
+
+\medskip
+
+\qquad\quad{\bf case 3} In general, let $G\supseteq D$, $G'\supseteq D'$
+and $H\supseteq D\symmdiff D'$ be G$_{\delta}$ sets such that
+$c(G)=c(D)$, $c(G')=c(D')$ and $c(H)=c(D\symmdiff D')$.   Set
+
+\Centerline{$G_1=G\cap(G'\cup H)$,
+\quad$G'_1=G'\cap(G\cup H)$;}
+
+\noindent these are Borel sets, while $D\subseteq G_1\subseteq G$,
+$D'\subseteq G'_1\subseteq G'$ and $G_1\symmdiff G_2\subseteq H$.
+So
+
+$$\eqalignno{\lambda_{D'}E
+&=\lambda_{G'_1}E
+\le\lambda_{G_1}E+c(G\symmdiff G_1)\cr
+\displaycause{by case 2}
+&\le\lambda_DE+c(H)
+=\lambda_DE+c(D\symmdiff D')\cr}$$
+
+\noindent and we have the result in this case also.   So we're done.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)}\grheada\ This follows immediately from (b) above.
+
+\medskip
+
+\qquad\grheadb\
+Consider first the case in which every $D_n$ is analytic.
+Returning to the proof of 479M, or putting 479Ma together
+with (iii-$\delta$) here, we see that for any $m$, $n\in\Bbb N$ we shall
+have
+
+\Centerline{$\rhotv(\lambda_{D_n},\lambda_{D_n\cap B(\tbf{0},m)})
+\le 2c(D_n\setminus B(\tbf{0},m))\le 2c(D\setminus B(\tbf{0},m))=2\alpha_m$}
+
+\noindent say, and that $\lim_{m\to\infty}\alpha_m=0$.   So if
+$G\subseteq\BbbR^r$ is any open set,
+
+$$\eqalignno{\lambda_DG
+&=\lim_{m\to\infty}\lambda_{D\cap B(\tbf{0},m)}G
+\le\lim_{m\to\infty}\liminf_{n\to\infty}\lambda_{D_n\cap B(\tbf{0},m)}G\cr
+\displaycause{479E(c-i)}
+&\le\lim_{m\to\infty}\liminf_{n\to\infty}\lambda_{D_n}G+2\alpha_m
+=\liminf_{n\to\infty}\lambda_{D_n}G.\cr}$$
+
+\noindent Since we know also that
+
+\Centerline{$\lambda_D\BbbR^r=c(D)=\lim_{n\to\infty}c(D_n)
+=\lim_{n\to\infty}\lambda_{D_n}\BbbR^r$,}
+
+\noindent $\sequencen{\lambda_{D_n}}\to\lambda_D$ for the narrow topology.
+
+For the general case, take analytic sets $A_n\supseteq D_n$, $A\supseteq D$
+such that $c(A_n)=c(D_n)$ for every $n$ and $c(A)=c(D)$.   Set
+$A'_n=A\cap\bigcap_{m\ge n}A_m$ for each $n$, $A'=\bigcup_{n\in\Bbb N}A_n$;
+then
+
+\Centerline{$\sequencen{\lambda_{D_n}}
+=\sequencen{\lambda_{A'_n}}\to\lambda_{A'}=\lambda_D$}
+
+\noindent for the narrow topology.
+
+\medskip
+
+{\bf (v)} Let $Q$ be the set of Radon measures $\zeta$ on $\BbbR^r$ such
+that $W_{\zeta}\ge\chi D$.
+
+\medskip
+
+\qquad\grheada\ I show first that
+$\inf_{\zeta\in Q}\zeta\BbbR^r$ and $\inf_{\zeta\in Q}\energy(\zeta)\}$
+are both less than or equal to $c(D)$.
+\Prf\ Let $\epsilon>0$.   Because $c$ is outer regular (479E(d-i)),
+there is an open set $G\supseteq D$ such that $c(G)\le c(D)+\epsilon$.
+Set $\zeta=\lambda_G$.   Then
+
+\Centerline{$W_{\zeta}=\tilde W_G\ge\chi G\ge\chi D$}
+
+\noindent (479D(b-iii)), so $\zeta\in Q$, while
+
+\Centerline{$\zeta\BbbR^r=\energy(\zeta)=c(G)\le c(D)+\epsilon$.  \Qed}
+
+\medskip
+
+\qquad\grheadb\ Now suppose that $\zeta\in Q$.   Then
+$c(D)\le\min(\zeta\BbbR^r,\energy(\zeta))$.   \Prf\
+Take any $\gamma<c(D)$ and $\epsilon>0$.
+Let $A\supseteq D$ be an analytic set such that
+$c(A)=c(D)$;  replacing $A$ by $\{x:x\in A$, $W_{\zeta}(x)\ge 1\}$ if
+necessary, we can suppose that $W_{\zeta}\ge\chi A$.
+For each $n\in\Bbb N$, let $\zeta_n$ be the totally finite measure
+$(1+\epsilon)\zeta\LLcorner B(\tbf{0},n)$.
+Then $\sequencen{W_{\zeta_n}}$ is non-decreasing
+and has supremum $(1+\epsilon)W_{\zeta}$ (479M(d-i)),
+so $A=\bigcup_{n\in\Bbb N}A_n$,
+where $A_n=\{x:x\in A$, $W_{\zeta_n}(x)\ge 1\}$.   There are an
+$n\in\Bbb N$ such that $c(A_n)>\gamma$ and a compact
+$K\subseteq A_n$ such that $\capacity K\ge\gamma$ (432K).   Now
+$W_{\zeta_n}\ge\tilde W_K\,\,\lambda_K$-a.e., so
+$W_{\zeta_n}\ge\tilde W_K$ everywhere (479Fg) and
+
+$$\eqalignno{\gamma
+&\le\capacity K
+=\int\tilde W_Kd\lambda_K
+\le\int W_{\zeta_n}d\lambda_K
+=\int\tilde W_Kd\zeta_n\cr
+\displaycause{479J(b-i)}
+&\le\int W_{\zeta_n}d\zeta_n
+\le(1+\epsilon)\int W_{\zeta}d\zeta_n
+\le(1+\epsilon)^2\int W_{\zeta}d\zeta
+=(1+\epsilon)^2\energy(\zeta).\cr}$$
+
+\noindent Moreover, 479J(c-vi), applied to $\zeta_n$ and $\lambda_K$,
+tells us that
+
+\Centerline{$\zeta\BbbR^r\ge\zeta_n\BbbR^r\ge\lambda_K\BbbR^r
+=\capacity K\ge\gamma$.}
+
+\noindent As $\gamma$ and $\epsilon$ are arbitrary,
+$c(D)\le\min(\energy(\zeta),\zeta\BbbR^r)$, as claimed.\ \Qed
+
+\medskip
+
+\qquad\grheadc\ Putting these together, we see that
+$c(D)=\inf_{\zeta\in Q}\zeta\BbbR^r=\inf_{\zeta\in Q}\energy(\zeta)$.
+
+\medskip
+
+\quad{\bf (vi)} If $x\in\clstar A$, then
+$0\in\clstar((A\setminus\{x\})-x)$ and
+$\tilde W_A(x)=\hp^*((A\setminus\{x\})-x)=1$ for every $x\in\clstar E$, by
+478U and (b) above.   Now
+
+$$\eqalignno{c(\clstar D)
+&\le c(\clstar A)
+\le\energy(\lambda_A)\cr
+\displaycause{(v) above}
+&=c(A)\cr
+\displaycause{479M(d-iv)}
+&=c(D).\cr}$$
+
+\medskip
+
+\quad{\bf (vii)}\grheada\ Consider first the case $D=A$, so
+that $f[D]=f[A]$ is analytic.   We can suppose that $c(f[A])>0$,
+in which case $A\ne\emptyset$ and $\gamma>0$.   Take any
+$\epsilon>0$.   By 479Nc there is a Radon measure $\zeta$ on
+$\BbbR^r$ such that $\zeta f[A]=1$ and
+$c(f[A])\le\Bover{1+\epsilon}{\energy(\zeta)}$.   Applying 433D to
+the subspace measure $\zeta_{f[A]}$, we see that there is a Radon
+probability measure $\zeta'$ on $A$ such that $\zeta_{f[A]}$ is the image
+measure $\zeta'f^{-1}$;  let $\lambda$ be the Radon probability measure on
+$\BbbR^r$ extending $\zeta'$.   Then
+
+$$\eqalignno{\energy(\zeta)
+&=\int_{\BbbR^r}\int_{\BbbR^r}\Bover1{\|x-y\|^{r-2}}\zeta(dx)\zeta(dy)
+\ge\int_{f[A]}\int_{f[A]}\Bover1{\|x-y\|^{r-2}}\zeta(dx)\zeta(dy)\cr
+&=\int_A\int_{f[A]}\Bover1{\|x-f(v)\|^{r-2}}\zeta(dx)\zeta'(dv)
+=\int_A\int_A\Bover1{\|f(u)-f(v)\|^{r-2}}\zeta'(du)\zeta'(dv)\cr
+\displaycause{applying 235J\formerly{2{}35L} twice}
+&\ge\int_A\int_A\Bover1{\gamma^{r-2}\|u-v\|^{r-2}}\zeta'(du)\zeta'(dv)\cr
+&=\Bover1{\gamma^{r-2}}\int_{\BbbR^r}\int_{\BbbR^r}
+   \Bover1{\|u-v\|^{r-2}}\lambda(du)\lambda(dv)
+=\Bover1{\gamma^{r-2}}\energy(\lambda).\cr}$$
+
+\noindent By 479Nc in the other direction,
+
+\Centerline{$c(A)\ge\Bover1{\energy(\lambda)}
+\ge\Bover1{\gamma^{r-2}\energy(\zeta)}
+\ge\Bover1{(1+\epsilon)\gamma^{r-2}}c(f[A])$.}
+
+\noindent As $\epsilon$ is arbitrary, $c(f[A])\le\gamma^{r-2}c(A)$.
+
+\medskip
+
+\qquad\grheadb\ In general, since $f:D\to\BbbR^r$ is certainly uniformly
+continuous, it has a continuous extension $g:\overline{D}\to\BbbR^r$
+(3A4G), which is still $\gamma$-Lipschitz.   Now ($\alpha$) tells us that
+
+\Centerline{$c(f[D])\le c(g[A])
+\le\gamma^{r-2}c(A)=\gamma^{r-2}c(D)$,}
+
+\noindent as required.
+}%end of proof of 479P
+
+\leader{479Q}{Hausdorff measure:  Theorem}
+For $s\in\ooint{0,\infty}$ let $\mu_{Hs}$ be
+Hausdorff $s$-dimensional measure on $\BbbR^r$.
+Let $D$ be any subset of $\BbbR^r$.
+
+(a) If the Choquet-Newton capacity $c(D)$ is non-zero,
+then $\mu^*_{H,r-2}D=\infty$.
+
+(b) If $s>r-2$ and $\mu^*_{Hs}D>0$, then $c(D)>0$.
+%Mattila 8.9
+
+\proof{{\bf (a)} Let $E\supseteq D$ be a G$_{\delta}$ set such that
+$\mu_{H,r-2}E=\mu^*_{H,r-2}D$ (471Db).   Then $c(E)>0$.
+Let $K\subseteq E$ be a compact set such that $\capacity K>0$.   Then
+
+\Centerline{$\capacity K
+=\int_K\int_K\Bover1{\|x-y\|^{r-2}}\lambda_K(dx)\lambda_K(dy)$}
+
+\noindent is finite and not $0$;  applying 471Tb to the subspace measure on
+$K$,
+
+\Centerline{$\infty=\mu_{H,r-2}K=\mu_{H,r-2}E=\mu^*_{H,r-2}D$.}
+
+\medskip
+
+{\bf (b)} Let $E\supseteq D$ be a G$_{\delta}$ set such that
+$c(E)=c(D)$ (479E(d-i)).   Then $\mu_{Hs}E>0$.
+By 471Ta, there is a non-zero topological measure $\zeta_0$ on $E$ such
+that
+$\biggerint_E\biggerint_E\Bover1{\|x-y\|^{r-2}}\zeta_0(dx)\zeta_0(dy)$
+is finite.
+Let $K\subseteq E$ be a compact set such that $\zeta_0K>0$, and let $\zeta$
+be the Radon measure on $\BbbR^r$ such that $\zeta H=\zeta_0(K\cap H)$ for
+every Borel set $H\subseteq\BbbR^r$;  then
+
+\Centerline{$\energy(\zeta)
+=\int_K\int_K\Bover1{\|x-y\|^{r-2}}\zeta_0(dx)\zeta_0(dy)$}
+
+\noindent is finite, while $K$ is $\zeta$-conegligible.
+By 479Nc (or, more directly, by the first remark in the proof of 479N),
+$\capacity K>0$, so that $c(D)=c(E)\ge\capacity K>0$.
+}%end of proof of 479Q
+
+\leader{479R}{}\cmmnt{ I come to the promised difference between Brownian
+motion in $\BbbR^3$ and in higher dimensions, following 478M.
+
+\medskip
+
+\noindent}{\bf Proposition} (a) Suppose that $r=3$.
+Then almost every $\omega\in\Omega$ is not injective.
+
+(b) If $r\ge 4$, then almost every $\omega\in\Omega$ is injective.
+
+\proof{ In this proof, I will take $X_t(\omega)=\omega(t)$ for
+$\omega\in\Omega$ and $t\ge 0$.
+
+\medskip
+
+{\bf (a)(i)} For $\omega\in\Omega$ set
+$F_{\omega}=\{\omega(t):t\in[0,1]\}$.   Then $\capacity F_{\omega}>0$ for
+$\mu_W$-almost every $\omega$.   \Prf\ By 477Lb,
+$\mu_{H,3/2}F_{\omega}=\infty$ for almost every $\omega$.   For any such
+$\omega$, there is a non-zero
+Radon measure $\zeta_0$ on $F_{\omega}$ such that
+$\int_{F_{\omega}}\int_{F_{\omega}}\Bover1{\|x-y\|}\zeta_0(dx)\zeta_0(dy)$
+is finite (471Ta).   Let $\zeta$ be the Radon measure on $\BbbR^r$,
+extending $\zeta_0$, for which $F_{\omega}$ is conegligible.   Then
+$\zeta(F_{\omega})>0$ and $\energy(\zeta)<\infty$.   (This is where we need
+to know that $r=3$.)   So $\capacity F_{\omega}>0$ (479Nc).\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Consider
+$E_0=\{\omega:$ there are $s\le 1$ and
+$t\ge 2$ such that $\omega(s)=\omega(t)\}$.   (This is an F$_{\sigma}$ set,
+so is measurable.)   Take $\tau$ to be the stopping time with constant
+value $2$ and $\phi_{\tau}:\Omega\times\Omega\to\Omega$ the corresponding
+\imp\ function as in 477G;  set
+$H=\{\omega:\omega\in\Omega$, $\omega(2)\notin F_{\omega}\}$.   Then
+
+$$\eqalignno{\mu_WE_0
+&=\int_{\Omega}\mu_W\{\omega':\phi_{\tau}(\omega,\omega')\in E_0\}
+  \mu_W(d\omega)\cr
+&=\int_{\Omega}\mu_W\{\omega':\text{ there is some }t\ge 0\text{ such that }
+  \omega(2)+\omega'(t)\in F_{\omega}\}\mu_W(d\omega)\cr
+&=\mu_W(\Omega\setminus H)
+  +\int_H\tilde W_{F_{\omega}}(\omega(2))\mu_W(d\omega)\cr
+\displaycause{479Pb}
+&>0\cr}$$
+
+\noindent because $\tilde W_{F_{\omega}}(\omega(2))>0$ whenever
+$\omega\in H$ and $\capacity F_{\omega}>0$, which is so for almost every
+$\omega\in H$.
+
+\medskip
+
+\quad{\bf (iii)} Now, setting
+
+\Centerline{$E_n=\{\omega:$ there are $s\in[n,n+1]$ and
+$t\ge n+2$ such that $\omega(s)=\omega(t)\}$,}
+
+\noindent we have $\mu_WE_n=\mu_WE_0$ for every $n$, because
+$\langle X_{s+n}-X_n\rangle_{s\ge 0}$ has the same distribution as
+$\langle X_s\rangle_{s\ge 0}$.   So if
+$E=\bigcap_{n\in\Bbb N}\bigcup_{m\ge n}E_m$, $\mu_WE>0$.   But $E$ belongs
+to the tail $\sigma$-algebra
+$\bigcap_{t\ge 0}\Tau_{\coint{t,\infty}}$,
+so has measure either $0$ or $1$ (477Hd), and must be conegligible.
+Since every $\omega\in E$ is self-intersecting, we see that almost every
+Brownian path is self-intersecting.
+
+\medskip
+
+{\bf (b)(i)} Suppose that $q$, $q'\in\Bbb Q$ are such that
+$0\le q<q'$.   This time, set
+$F_{\omega}=\{\omega(t):t\in[0,q]\}$.   For almost every $\omega$,
+$F_{\omega}$ has
+zero two-dimensional Hausdorff measure (477La), so has zero
+$(r-2)$-dimensional Hausdorff measure (because $r\ge 4$),
+and therefore has zero capacity (479Qa).   Also
+
+\Centerline{$\mu_W\{\omega:\omega(q')\in F_{\omega}\}
+  =(\mu_W\times\mu_W)\{(\omega,\omega'):
+     \omega'(q'-q)\in F_{\omega}-\omega(q)\}=0$}
+
+\noindent because the distribution of $X_{q'-q}$ is absolutely continuous
+with respect to Lebesgue measure and $\mu F_{\omega}=0$ for $\mu_W$-almost
+every $\omega$.   But this means that
+
+$$\eqalign{\mu_W\{\omega:&\text{ there is a }t\ge q'
+  \text{ such that }\omega(t)\in F_{\omega}\}\cr
+&=(\mu_W\times\mu_W)\{(\omega,\omega'):\text{there is a }t\ge 0
+  \text{ such that }\omega'(t)\in F_{\omega}-\omega(q')\}\cr
+&=\int_{\Omega}\tilde W_{F_{\omega}}(\omega(q'))\mu(d\omega)
+=0,\cr}$$
+
+\noindent that is,
+
+\Centerline{$\{\omega:$ there are $s\le q$, $t\ge q'$ such that
+$\omega(s)=\omega(t)\}$}
+
+\noindent is negligible.   As $q$ and $q'$ are arbitrary, almost every
+sample path is injective.
+}%end of proof of 479R
+
+\leader{479S}{}\cmmnt{ A famous classical problem concerned, in effect,
+the continuity of potential functions, in particular the continuity of
+functions of the form $\tilde W_K$.   I think
+that even with the modern theory
+as sketched above, this is not quite trivial, so I spell out an example.
+
+\medskip
+
+\noindent}{\bf Example} Suppose that $e\in\BbbR^r$ is a unit vector.   Then
+there is a sequence $\sequencen{\delta_n}$ of strictly positive real
+numbers such that the equilibrium potential
+$\tilde W_K$ is discontinuous at $e$ whenever
+$K\subseteq B(\tbf{0},1)$ is compact, $e\in\overline{\interior K}$ and
+$\|x-te\|\le\delta_n$ whenever $n\in\Bbb N$, $t\in[1-2^{-n},1]$, $x\in K$
+and $\|x\|=t$.
+
+\proof{ For $n\in\Bbb N$, let $K_n$ be the line segment
+$\{te:1-2^{-n}\le t\le 1-2^{-n-1}\}$.   Then the one-dimensional Hausdorff
+measure of $K_n$ is finite, so $\capacity K_n=0$ (479Qa).
+By 479E(c-ii), $\lim_{\delta\downarrow 0}\capacity(K_n+B(\tbf{0},\delta))=0$;
+let $\delta_n\in\ooint{0,2^{-n-2}}$
+be such that $\capacity(K_n+B(\tbf{0},\delta_n))\le 2^{-3n-6}$.
+Setting $L_n=K_n+B(\tbf{0},\delta_n)$, the distance from $e$ to $L_n$ is at least
+$2^{-n-2}$.   By 479Pb,
+
+\Centerline{$\hp(L_n-e)
+=\tilde W_{L_n}(e)
+\le 4^{n+2}\lambda_{L_n}(\BbbR^r)
+=4^{n+2}\capacity L_n
+\le 2^{-n-2}$.}
+
+Suppose that
+$K\subseteq B(\tbf{0},1)$ is compact, $e\in\overline{\interior K}$ and
+$\|x-te\|\le\delta_n$ whenever $n\in\Bbb N$, $t\in[1-2^{-n},1]$, $x\in K$
+and $\|x\|=t$.   Then
+$K\subseteq\bigcup_{n\in\Bbb N}L_n\cup\{e\}$.   Using the full strength of
+479Pb,
+
+\Centerline{$\tilde W_K(e)=\hp((K\setminus\{e\})-e)
+\le\hp(\bigcup_{n\in\Bbb N}L_n-e)
+\le\sum_{n=0}^{\infty}\hp(L_n-e)
+\le\Bover12$.}
+
+\noindent On the other hand, $\tilde W_K(x)=1$ for every
+$x\in\interior K$ (479D(b-iii)), so $\tilde W_K$ is not continuous at
+$e$.
+}%end of proof of 479S
+
+\leader{*479T}{}\cmmnt{ This concludes the main argument of the section,
+which you may feel is quite enough.   However, there is an important
+alternative method of calculating the capacity of a compact set,
+based on gradients of potential functions (479U), and a couple of further
+results are reasonably accessible (479V-479W) which reflect other concerns
+of this volume.
+
+\medskip
+
+\noindent}{\bf Lemma} (a) If $g:\BbbR^r\to\Bbb R$ is a smooth function with
+compact support,
+
+\Centerline{$\int_{\BbbR^r}\Bover1{\|x-y\|^{r-2}}\nabla^2g\,d\mu
+=-r(r-2)\beta_rg(x)$}
+
+\noindent for every $x\in\BbbR^r$.
+%this ought to work for general $r$
+
+(b) Let $g$, $h:\BbbR^r\to\Bbb R$ be smooth functions with compact support.
+Then
+
+\Centerline{$\int_{\BbbR^r}h\times\nabla^2g\,d\mu
+=\int_{\BbbR^r}g\times\nabla^2h
+=-\int_{\BbbR^r}\varinnerprod{\grad h}{\grad g}\,d\mu$.}
+
+(c) Let $\zeta$ be a totally finite Radon measure on $\BbbR^r$, and
+$W_{\zeta}:\BbbR^r\to[0,\infty]$ the associated Newtonian potential.   Then
+$\int_{\BbbR^r}W_{\zeta}\times\nabla^2g\,d\mu
+=-r(r-2)\beta_r\int_{\BbbR^r}g\,d\zeta$ for every smooth
+function $g:\BbbR^r\to\Bbb R$ with compact support.
+
+(d) Let $\zeta$ be a totally finite Radon measure on $\BbbR^r$ such that
+$W_{\zeta}$ is finite-valued everywhere and Lipschitz.   Then
+$\int_{\BbbR^r}\varinnerprod{\grad f}{\grad W_{\zeta}}d\mu
+=r(r-2)\beta_r\int_{\BbbR^r}f\,d\zeta$ for every Lipschitz function
+$f:\BbbR^r\to\Bbb R$ with compact support.
+
+%maybe can make this work with Lipschitz $f\in C_0(\BbbR^r)$
+%what about $\energy(\zeta)$ and $\int\|\grad W_{\zeta}\|^2$?
+
+(e) Let $K\subseteq\BbbR^r$ be a compact set, and $\epsilon>0$.   Then
+there is a Radon measure $\zeta$ on $\BbbR^r$, with support included in
+$K+B(\tbf{0},\epsilon)$, such that $W_{\zeta}$ is a smooth function with compact
+support, $W_{\zeta}\ge\chi K$, $\zeta\BbbR^r\le\capacity K+\epsilon$ and
+
+\Centerline{$\int_{\BbbR^r}\|\grad W_{\zeta}\|^2d\mu
+=r(r-2)\beta_r\energy(\zeta)\le r(r-2)\beta_r\zeta\BbbR^r$.}
+
+\proof{{\bf (a)(i)} Consider first the case $x=0$.
+Setting $f(y)=\Bover1{\|y\|^{r-2}}$ for $y\ne 0$, we have
+$\grad f(y)=-\Bover{r-2}{\|y\|^r}y$ and $(\nabla^2f)(y)=0$ for $y\ne 0$
+(478Fa);   also $f$ is locally integrable, by 478Ga.
+So $\int_{\BbbR^r}f\times\nabla^2g\,d\mu$ is well-defined.
+
+Let $R>0$ be such that $g$ is zero outside $B(\tbf{0},R)$, and set
+$M=\|\grad g\|_{\infty}$;
+take $\epsilon\in\ooint{0,R}$.    Then
+
+$$\eqalignno{\int_{\BbbR^r\setminus B(\tbf{0},\epsilon)}f\times\nabla^2g\,d\mu
+&=\int_{B(\tbf{0},R)\setminus B(\tbf{0},\epsilon)}
+  f\times\nabla^2g-g\times\nabla^2f\,d\mu\cr
+&=\int_{B(\tbf{0},R)\setminus B(\tbf{0},\epsilon)}
+  \diverg(f\times\grad g-g\times\grad f)d\mu\cr
+\displaycause{use 474Bb}
+&=\int_{\partial B(\tbf{0},R)}
+  (\Bover1{\|y\|^{r-2}}\grad g(y)+\Bover{(r-2)g(y)}{\|y\|^r}y)
+  \dotproduct\Bover{y}{\|y\|}\nu(dy)\cr
+&\mskip100mu
+ -\int_{\partial B(\tbf{0},\epsilon)}
+  (\Bover1{\|y\|^{r-2}}\grad g(y)+\Bover{(r-2)g(y)}{\|y\|^r}y)
+  \dotproduct\Bover{y}{\|y\|}\nu(dy)\cr
+\displaycause{475Nc}
+&=-\int_{\partial B(\tbf{0},\epsilon)}
+  (\Bover1{\|y\|^{r-1}}y\dotproduct\grad g(y)
+     +\Bover{(r-2)g(y)}{\|y\|^{r-1}})\nu(dy)\cr
+&=-\Bover1{\epsilon^{r-1}}\int_{\partial B(\tbf{0},\epsilon)}
+  (y\dotproduct\grad g(y)+(r-2)g(y))\nu(dy).
+  \cr}$$
+
+\noindent Now we have
+
+\Centerline{$|\int_{\partial B(\tbf{0},\epsilon)}
+  y\dotproduct\grad g(y)\nu(dy)|
+\le\epsilon M\nu(\partial B(\tbf{0},\epsilon))\le r\beta_r\epsilon^rM$,}
+
+\noindent so
+
+$$\eqalign{
+|\int_{\BbbR^r\setminus B(\tbf{0},\epsilon)}f\times&\nabla^2g\,d\mu
+   +r(r-2)\beta_rg(0)|\cr
+&\le r\beta_r\epsilon M
+ +\Bover1{\epsilon^{r-1}}|r\beta_r\epsilon^{r-1}(r-2)g(0)
+   -\int_{\partial B(\tbf{0},\epsilon)}(r-2)g(y)\nu(dy)|\cr
+&\le r\beta_r\epsilon M
+ +\Bover{r-2}{\epsilon^{r-1}}\int_{\partial B(\tbf{0},\epsilon)}
+    |g(0)-g(y)|\nu(dy)\cr
+&\le r\beta_r\epsilon M
+ +r(r-2)\beta_r\sup_{y\in\partial B(\tbf{0},\epsilon)}|g(0)-g(y)|
+\to 0\cr}$$
+
+\noindent as $\epsilon\downarrow 0$;  that is,
+
+\Centerline{$\int_{\BbbR^r}f\times\nabla^2g\,d\mu=-r(r-2)\beta_rg(0)$.}
+
+\medskip
+
+\quad{\bf (ii)} For the general case, apply (i) to the function
+$y\mapsto g(x+y)$.
+
+\medskip
+
+{\bf (b)} Take $R>0$ so large that both $g$ and $h$ are zero outside
+$B(\tbf{0},R)$, and $M\ge\max(\|\nabla^2g\|_{\infty},\|\nabla^2h\|_{\infty})$.
+
+\medskip
+
+\quad{\bf (i)} We have
+
+$$\eqalignno{\int_{\BbbR^r}\int_{\BbbR^r}&\Bover1{\|x-y\|^{r-2}}
+  |(\nabla^2g)(x)(\nabla^2h)(y)|\mu(dx)\mu(dy)\cr
+&\le M^2\int_{B(\tbf{0},R)}\int_{B(\tbf{0},R)}\Bover1{\|x-y\|^{r-2}}\mu(dx)\mu(dy)
+\le M^2\int_{B(\tbf{0},R)}\Bover12r\beta_rR^2\mu(dy)\cr
+\displaycause{478Gc}
+&<\infty.\cr}$$
+
+\noindent So
+
+$$\eqalignno{-r(r-2)\beta_r\int_{\BbbR^r}h\times\nabla^2g\,d\mu
+&=\int_{\BbbR^r}\int_{\BbbR^r}\Bover1{\|x-y\|^{r-2}}
+   (\nabla^2h)(x)(\nabla^2g)(y)\mu(dx)\mu(dy)\cr
+\displaycause{by (a)}
+&=\int_{\BbbR^r}\int_{\BbbR^r}\Bover1{\|x-y\|^{r-2}}
+   (\nabla^2g)(y)(\nabla^2h)(x)\mu(dy)\mu(dx)\cr
+&=-r(r-2)\beta_r\int_{\BbbR^r}g\times\nabla^2h\,d\mu.\cr}$$
+
+\noindent Thus $\int_{\BbbR^r}g\times\nabla^2h\,d\mu
+=\int_{\BbbR^r}h\times\nabla^2g\,d\mu$.
+
+\medskip
+
+\quad{\bf (ii)} By 473Bd, $\grad(g\times h)=g\times\grad h+h\times\grad g$,
+so 474Bb tells us that
+$\nabla^2(g\times h)
+=2\varinnerprod{\grad g}{\grad h}+g\times\nabla^2h+h\times\nabla^2g$, and
+
+$$\eqalign{\int_{\BbbR^r}\nabla^2(g\times h)d\mu
+&=\int_{B(\tbf{0},R)}\nabla^2(g\times h)d\mu\cr
+&=\int_{\partial B(\tbf{0},R)}\varinnerprod{\grad(g\times h)}{\Bover{x}{\|x\|}}
+   \nu(dx)
+=0,\cr}$$
+
+\noindent so
+
+\Centerline{$\int_{\BbbR^r}\varinnerprod{\grad g}{\grad h}\,d\mu
+=-\Bover12\int_{\BbbR^r}g\times\nabla^2h+h\times\nabla^2g\,d\mu
+=-\int_{\BbbR^r}g\times\nabla^2h\,d\mu$.}
+
+\medskip
+
+{\bf (c)} If $g(x)=0$ for $\|x\|\ge R$ and
+$|(\nabla^2g)(x)|\le M$ for every $x$, then
+
+\Centerline{$\int_{\BbbR^r}\Bover1{\|x-y\|^{r-2}}|(\nabla^2g)(x)|\mu(dx)
+\le M\int_{B(\tbf{0},R)}\Bover1{\|x-y\|^{r-2}}\mu(dx)
+\le\Bover12Mr\beta_rR^2$}
+
+\noindent for every $y$ (478Gc again).
+We can therefore apply (a) and
+integrate with respect to $\zeta$ to see that
+
+$$\eqalign{-r(r-2)\beta_r\int_{\BbbR^r}g\,d\zeta
+&=\int_{\BbbR^r}\int_{\BbbR^r}
+  \Bover1{\|x-y\|^{r-2}}(\nabla^2g)(x)\mu(dx)\zeta(dy)\cr
+&=\int_{\BbbR^r}\int_{\BbbR^r}
+  \Bover1{\|x-y\|^{r-2}}(\nabla^2g)(x)\zeta(dy)\mu(dx) \cr
+&=\int_{\BbbR^r}W_{\zeta}(x)(\nabla^2g)(x)\mu(dx),\cr}$$
+
+\noindent as required.
+
+\medskip
+
+{\bf (d)} Let $\sequencen{\tilde h_n}$ be the
+smoothing sequence of 473E.
+
+\medskip
+
+\quad{\bf (i)} Suppose to begin with that $f$ is smooth.    For
+$n\in\Bbb N$ set $g_n=\tilde h_n*W_{\zeta}$.   As $W_{\zeta}$ is
+continuous, $\lim_{n\to\infty}g_n=W_{\zeta}$ (473Ec);  as
+$\|W_{\zeta}\|_{\infty}\le 1$, $\|g_n\|_{\infty}\le 1$ for every $n$
+(473Da).   Because $f$ has compact support,
+
+\Centerline{$\lim_{n\to\infty}\int_{\BbbR^r}g_n\times\nabla^2f\,d\mu
+=\int_{\BbbR^r}W_{\zeta}\times\nabla^2f\,d\mu$}
+
+\noindent by the dominated convergence theorem.   Next,
+$\grad g_n=\tilde h_n*\grad W_{\zeta}$ for each $n$ (473Dd).   As
+$\grad W_{\zeta}$ is essentially bounded (473Cc), all its coordinates are
+locally integrable, so
+$\grad W_{\zeta}\eae\lim_{n\to\infty}\grad g_n$ (473Ee).   We therefore
+have
+
+$$\eqalignno{\int_{\BbbR^r}\varinnerprod{\grad f}{\grad W_{\zeta}}d\mu
+&=\lim_{n\to\infty}\int_{\BbbR^r}
+   \varinnerprod{\grad f}{\grad g_n}d\mu\cr
+&=-\lim_{n\to\infty}\int_{\BbbR^r}g_n\times\nabla^2f\,d\mu\cr
+\displaycause{(b) above}
+&=-\int_{\BbbR^r}W_{\zeta}\times\nabla^2f\,d\mu
+=r(r-2)\beta_r\int_{\BbbR^r}f\,d\zeta\cr}$$
+
+\noindent by (c).
+
+\medskip
+
+\quad{\bf (ii)} For the general case, smooth on the other side, setting
+$f_n=\tilde h_n*f$ for every $n$.   This time, $f_n\to f$ uniformly
+(473Ed), so
+$\int_{\BbbR^r}fd\zeta=\lim_{n\to\infty}\int_{\BbbR^r}f_nd\zeta$.
+On the other hand, if $f$ is $M$-Lipschitz,
+$\grad f_n=\tilde h_n*\grad f$ converges $\mu$-a.e.\ to
+$\grad f$, and $\|\grad f_n\|_{\infty}$ is at most $M$ for every $n$;
+also there is a bounded set outside which all
+the $f_n$ and $\grad f_n$ are zero, and $\|\grad W_{\zeta}\|$ is bounded.
+So
+
+\Centerline{$\int_{\BbbR^r}\varinnerprod{\grad f}{\grad W_{\zeta}}d\mu
+=\lim_{n\to\infty}\int_{\BbbR^r}
+  \varinnerprod{\grad f_n}{\grad W_{\zeta}}d\mu$.}
+
+\noindent
+Applying (i) to each $f_n$ and taking the limit, we get the equality we
+seek.
+
+\medskip
+
+{\bf (e)(i)} There is a compact set $L\subseteq K+B(\tbf{0},\bover{\epsilon}2)$
+such that $K\subseteq\interior L$ and $\capacity L\le\capacity K+\epsilon$
+(479Ed).   Let $n\in\Bbb N$ be such that
+$\Bover1{n+1}\le\Bover{\epsilon}2$
+and $K+B(\tbf{0},\bover1{n+1})\subseteq L$.   Set
+$h=\lambda_L*\tilde h_n$, where $\tilde h_n$ is the
+function of 473E, as before;  let $\zeta=h\mu$ be the corresponding
+indefinite-integral measure over $\mu$.   Because $\tilde h_n$ is zero
+outside $B(\tbf{0},\bover1{n+1})$
+and the support of $\lambda_L$ is included in $L$,
+the support of $\zeta$ is included in
+$L+B(\tbf{0},\bover1{n+1})\subseteq K+B(\tbf{0},\epsilon)$.
+
+\medskip
+
+\quad{\bf (ii)} By 444Pa, we have
+
+\Centerline{$W_{\zeta}=\zeta*k_{r-2}=(h\mu)*k_{r-2}=h*k_{r-2}$}
+
+\noindent where $k_{r-2}$ is the Riesz kernel (479G).
+Now $W_{\zeta}=\tilde W_L*\tilde h_n$.   \Prf\ For $m\in\Bbb N$, set
+$f_m=k_{r-2}\times\chi B(\tbf{0},m)$, so that $f_m$ is $\mu$-integrable.
+Observe that
+
+$$\eqalign{\tilde W_L(x)
+&=\int_{\BbbR^r} k_{r-2}(x-y)\lambda_L(dy)
+=\int_{\BbbR^r}\lim_{m\to\infty}f_m(x-y)\lambda_L(dy)\cr
+&=\lim_{m\to\infty}\int_{\BbbR^r} f_m(x-y)\lambda_L(dy)
+=\lim_{m\to\infty}(\lambda_L*f_m)(x)\cr}$$
+
+\noindent for each $x$;  moreover, because $\sequence{m}{f_m}$ is
+non-decreasing, so is $\sequence{m}{\lambda_L*f_m}$.
+For each $m$,
+
+$$\eqalignno{h*f_m
+&=(h\mu)*f_m
+=(\lambda_L*\tilde h_n)\mu*f_m
+=(\lambda_L*\tilde h_n\mu)*f_m\cr
+\displaycause{444K}
+&=\lambda_L*(\tilde h_n\mu*f_m)\cr
+\displaycause{444Ic}
+&=\lambda_L*(\tilde h_n*f_m)
+=\lambda_L*(f_m*\tilde h_n)
+=\lambda_L*(f_m\mu*\tilde h_n)\cr
+&=(\lambda_L*f_m\mu)*\tilde h_n
+=(\lambda_L*f_m)\mu*\tilde h_n
+=(\lambda_L*f_m)*\tilde h_n.\cr}$$
+
+\noindent Now, for each $x$,
+
+$$\eqalign{W_{\zeta}(x)
+&=\int_{\BbbR^r} h(x-y)k_{r-2}(y)\mu(dy)
+=\lim_{m\to\infty}\int_{\BbbR^r} h(x-y)f_m(y)\mu(dy)\cr
+&=\lim_{m\to\infty}(h*f_m)(x)
+=\lim_{m\to\infty}((\lambda_L*f_m)*\tilde h_n)(x)\cr
+&=\lim_{m\to\infty}\int_{\BbbR^r}(\lambda_L*f_m)(y)\tilde h_n(x-y)\mu(dy)
+  \cr
+&=\int_{\BbbR^r}\lim_{m\to\infty}(\lambda_L*f_m)(y)
+   \tilde h_n(x-y)\mu(dy)\cr
+&=\int_{\BbbR^r}\tilde W_L(y)\tilde h_n(x-y)\mu(dy)
+=(\tilde W_L*\tilde h_n)(x).  \text{ \Qed}\cr}$$
+
+\medskip
+
+\quad{\bf (iii)} Since $\tilde W_L(x)=1$ whenever $x\in\interior L$
+(479D(b-iii)), and
+$x+y\in\interior L$ whenever $x\in K$ and $\tilde h_n(y)\ne 0$,
+$W_{\zeta}(x)=1$ for every $x\in K$.   Because both $\tilde W_L$ and
+$\tilde h_n$ have compact support, so does $W_{\zeta}$;
+because $\tilde h_n$ is smooth, so is $W_{\zeta}$ (473De).
+
+\medskip
+
+\quad{\bf (iv)} Now
+
+$$\eqalignno{\int_{\BbbR^r}\|\grad W_{\zeta}\|^2d\mu
+&=-\int_{\BbbR^r}W_{\zeta}\times\nabla^2W_{\zeta}\,d\mu\cr
+\displaycause{(b) above}
+&=r(r-2)\beta_r\int_{\BbbR^r}W_{\zeta}\,d\zeta\cr
+\displaycause{(c) above}
+&=r(r-2)\beta_r\energy(\zeta)
+\le r(r-2)\beta_r\zeta\BbbR^r\cr}$$
+
+\noindent because
+$\|W_{\zeta}\|_{\infty}\le\|\tilde W_L\|_{\infty}\|\tilde h_n\|_1\le 1$.
+
+\medskip
+
+\quad{\bf (v)} Finally,
+
+$$\eqalign{\zeta\BbbR^r=(h\mu)\BbbR^r
+&=(\lambda_L*\tilde h_n\mu)\BbbR^r
+=\lambda_L\BbbR^r\cdot(\tilde h_n\mu)\BbbR^r\cr
+&=\lambda_L\BbbR^r
+=\capacity L
+\le\epsilon+\capacity K.\cr}$$
+}%end of proof of 479T
+
+\leader{*479U}{Theorem} Let $K\subseteq\BbbR^r$ be compact,
+and let $\Phi$ be
+the set of Lipschitz functions $g:\BbbR^r\to\Bbb R$ such that
+$g(x)\ge 1$ for every $x\in K$ and $\lim_{\|x\|\to\infty}g(x)=0$.   Then
+
+$$\eqalign{r(r-2)\beta_r\capacity K
+&=\inf\{\int_{\BbbR^r}\|\grad g\|^2d\mu:g\in\Phi\text{ is smooth and has
+compact support}\}\cr
+&=\inf\{\int_{\BbbR^r}\|\grad g\|^2d\mu:g\in\Phi\}.\cr}$$
+
+\proof{{\bf (a)} By 479Te,
+
+\Centerline{$\inf\{\int_{\BbbR^r}\|\grad g\|^2d\mu:g\in\Phi$
+  is smooth and has compact support$\}
+\le r(r-2)\beta_r\capacity K$.}
+
+\medskip
+
+{\bf (b)} Now suppose that $g\in\Phi$ is a smooth function with compact
+support.   Then
+$r(r-2)\beta_r\capacity K\le\int_{\BbbR^r}\|\grad g\|^2d\mu$.   \Prf\
+Take any $\epsilon\in\ooint{0,1}$.
+Then there is a $\delta>0$ such that $g(x)\ge 1-\epsilon$ for every
+$x\in K+B(\tbf{0},\delta)$.   By 479Te, there is a Radon measure $\zeta$ on
+$\BbbR^r$, with support included in $K+B(\tbf{0},\delta)$, such that $W_{\zeta}$
+is smooth and has compact support, $W_{\zeta}\ge\chi K$,
+$\zeta\BbbR^r\le\capacity K+\epsilon$ and
+
+\Centerline{$\int_{\BbbR^r}\|\grad W_{\zeta}\|^2d\mu
+=r(r-2)\beta_r\energy(\zeta)\le r(r-2)\beta_r\zeta\BbbR^r$.}
+
+\noindent In this case,
+
+$$\eqalignno{\int_{\BbbR^r}\varinnerprod{\grad g}{\grad W_{\zeta}}d\mu
+&=r(r-2)\beta_r\int_{\BbbR^r}g\,d\zeta\cr
+\displaycause{479Td}
+&\ge(1-\epsilon)r(r-2)\beta_r\zeta\BbbR^r
+\ge(1-\epsilon)\int_{\BbbR^r}\|\grad W_{\zeta}\|^2.\cr}$$
+
+\noindent Setting $v=(1-\epsilon)\grad W_{\zeta}$, we have
+
+\Centerline{$\int_{\BbbR^r}\varinnerprod{v}{\grad g}d\mu
+\ge\int_{\BbbR^r}\|v\|^2d\mu$.}
+
+\noindent But this means that
+
+$$\eqalignno{\int_{\BbbR^r}\|\grad g\|^2d\mu
+&=2\int_{\BbbR^r}\varinnerprod{v}{\grad g}d\mu-\int_{\BbbR^r}\|v\|^2d\mu
+   +\int_{\BbbR^r}\|v-\grad g\|^2d\mu\cr
+&\ge\int_{\BbbR^r}\|v\|^2d\mu
+\ge(1-\epsilon)^2\int_{\BbbR^r}\|\grad W_{\zeta}\|^2d\mu\cr
+&=(1-\epsilon)^2r(r-2)\beta_r\int_{\BbbR^r}W_{\zeta}d\zeta
+\ge(1-\epsilon)^2r(r-2)\beta_r\int_{\BbbR^r}\tilde W_Kd\zeta\cr
+\displaycause{because $W_{\zeta}\ge\tilde W_K$ on $K$, so
+$W_{\zeta}\ge\tilde W_K$ everywhere, by 479Fg}
+&=(1-\epsilon)^2r(r-2)\beta_r\int_{\BbbR^r}W_{\zeta}d\lambda_K\cr
+\displaycause{479J(b-i)}
+&\ge(1-\epsilon)^2r(r-2)\beta_r\int_{\BbbR^r}\tilde W_Kd\lambda_K
+=(1-\epsilon)^2r(r-2)\beta_r\capacity K.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary,
+$r(r-2)\beta_r\capacity K\le\int_{\BbbR^r}\|\grad g\|^2d\mu$.\ \Qed
+
+\medskip
+
+{\bf (c)} If $g\in\Phi$ has compact support, then
+$\int_{\BbbR^r}\|\grad g\|^2d\mu\ge r(r-2)\beta_r\capacity K$.   \Prf\
+Let $R>0$ be such that $g$ is zero outside $B(\tbf{0},R)$.   Let $M\ge 0$ be such
+that $g$ is $M$-Lipschitz;   then
+$\|\grad g(x)\|\le M$ for every $x\in\dom\grad g$ (473Cc).
+Take any $\epsilon>0$.   As in 479T, let $\sequencen{\tilde h_n}$ be
+the smoothing sequence of 473E.
+For $n\in\Bbb N$, set $g_n=(1+\epsilon)\tilde h_n*g$.   Then
+$\grad g_n=(1+\epsilon)\tilde h_n*\grad g$ (473Dd) and
+$\|\grad g_n\|_{\infty}\le M(1+\epsilon)$ (473Da).   In the limit,
+$(1+\epsilon)\grad g\eae\lim_{n\to\infty}\grad g_n$ (473Ee).
+
+There is an $m\in\Bbb N$ such that $(1+\epsilon)g(x)\ge 1$ for every
+$x\in K+B(\tbf{0},\bover1{m+1})$;  now if $n\ge m$,
+
+\Centerline{$g_n(x)\ge(1+\epsilon)\inf_{\|y\|\le 1/(n+1)}g(x-y)\ge 1$}
+
+\noindent for every $x\in K$.   So
+
+$$\eqalignno{(1+\epsilon)^2\int_{\BbbR^r}\|\grad g\|^2d\mu
+&=(1+\epsilon)^2\int_{B(\tbf{0},R+1)}\|\grad g\|^2d\mu\cr
+&=\lim_{n\to\infty}\int_{B(\tbf{0},R+1)}\|\grad g_n\|^2d\mu\cr
+\displaycause{by the dominated convergence theorem}
+&=\lim_{n\to\infty}\int_{\BbbR^r}\|\grad g_n\|^2d\mu\cr
+\displaycause{because every $g_n$ is zero outside $B(\tbf{0},R+1)$}
+&\ge r(r-2)\beta_r\capacity K\cr}$$
+
+\noindent (applying (b) to $g_n$ for $n\ge m$).
+As $\epsilon$ is arbitrary,
+$r(r-2)\beta_r\capacity K\le\int_{\BbbR^r}\|\grad g\|^2d\mu$.\ \Qed
+
+\medskip
+
+{\bf (d)} If $g\in\Phi$, then
+$\int_{\BbbR^r}\|\grad g\|^2d\mu\ge r(r-2)\beta_r\capacity K$.   \Prf\
+Let $\epsilon>0$.   Set
+$g_1(x)=\max(0,(1+\epsilon)g(x)-\epsilon)$ for $x\in\BbbR^r$.
+Then $g_1\in\Phi$ has compact support, and
+$\|g_1(x)-g_1(y)\|\le(1+\epsilon)\|g(x)-g(y)\|$ for all $x$,
+$y\in\Bbb R^r$, so
+$\|\grad g_1(x)\|\le(1+\epsilon)\|\grad g(x)\|$ whenever both gradients are
+defined.   Accordingly
+
+\Centerline{$(1+\epsilon)^2\int_{\BbbR^r}\|\grad g\|^2d\mu
+\ge\int_{\BbbR^r}\|\grad g_1\|^2d\mu
+\ge r(r-2)\beta_r\capacity K$}
+
+\noindent by (c).   As $\epsilon$ is arbitrary, we have the result.\ \Qed
+
+\medskip
+
+{\bf (e)} Putting (a) and (d) together, the theorem is proved.
+}%end of proof of 479U
+
+\leader{*479V}{}\cmmnt{ We are ready for another theorem
+along the lines of 476H, this time relating capacity and Lebesgue
+measure.
+
+%what about capacity and r-1-dimensional measure?
+
+\medskip
+
+\noindent}{\bf Theorem} Let $D\subseteq\BbbR^r$ be a set of finite outer
+Lebesgue measure, and $B_D$ the closed ball with centre $0$ and
+the same outer measure as $D$.   Then
+the Choquet-Newton capacity $c(D)$ of $D$ is at least $\capacity B_D$.
+
+\proof{{\bf (a)} We need an elementary fact about gradients.   Suppose that
+$f$, $g:\BbbR^r\to\Bbb R$ and $x\in\BbbR^r$ are such that $\grad f$,
+$\grad g$, $\grad(f\vee g)$ and $\grad(f\wedge g)$ are all defined at $x$.
+Then $\{\grad(f\vee g)(x),\grad(f\wedge g)(x)\}=\{\grad f(x),\grad g(x)\}$.
+\Prf\ (i) If $f(x)>g(x)$ then (because $f$ and $g$ are both continuous at
+$x$) we have $\grad(f\vee g)(x)=\grad f(x)$,
+$\grad(f\wedge g)(x)=\grad g(x)$ and the result is immediate.   (ii) The
+same argument applies if $f(x)<g(x)$.   (iii) If $f(x)=g(x)$, consider
+$h=|f-g|=(f\vee g)-(f\wedge g)$.   Then $\grad h(x)$ is defined, and
+$h(x)=0\le h(y)$ for every $y$.   So all the partial derivatives of $h$
+have to be zero at $x$, and $\grad h(x)=0$, that is,
+$\lim_{y\to x}\Bover1{\|y-x\|}h(y)=0$.   It follows at once that
+$\grad f(x)=\grad g(x)$, and therefore both are equal to
+$\grad(f\vee g)(x)$ and $\grad(f\wedge g)(x)$.   So again we have the
+result.\ \Qed
+
+\medskip
+
+{\bf (b)} Now for a further clause to add to Lemma 476E.   Suppose that
+$e\in S_{r-1}=\partial B(\tbf{0},1)$ and $\alpha\in\Bbb R$;
+let $R=R_{e\alpha}$ be the
+reflection in the plane $\{x:\varinnerprod{x}{e}=\alpha\}$, and
+$\psi=\psi_{e\alpha}:\Cal P\BbbR^r\to\Cal P\BbbR^r$ the partial-reflection
+operator of 476D-476E, that is,
+
+\Centerline{$\psi(D)=(W\cap(D\cup R[D]))\cup(W'\cap D\cap R[D])$}
+
+\noindent for $D\subseteq\BbbR^r$, where
+$W=\{x:\varinnerprod{x}{e}\ge\alpha\}$ and
+$W'=\{x:\varinnerprod{x}{e}\le\alpha\}$.   Then $c(\psi(D))\le c(D)$ for
+every $D\subseteq\BbbR^r$.
+
+\medskip
+
+\Prf{\bf (i)} Suppose first that $D=K$ is compact.   Take any
+$\gamma>r(r-2)\beta_r\capacity K$.   By 479U, there is a Lipschitz function
+$f:\BbbR^r\to\Bbb R$ such that $f(x)\ge 1$ for every $x\in K$,
+$\lim_{\|x\|\to\infty}f(x)=0$ and
+$\int_{\BbbR^r}\|\grad f\|^2d\mu\le\gamma$.   Set $g=fR$.   Of course
+$g$ is Lipschitz and
+$\int_{\BbbR^r}\|\grad g\|^2d\mu=\int_{\BbbR^r}\|\grad f\|^2d\mu$.
+Now $f\vee g$ and $f\wedge g$ are also Lipschitz, so for almost every
+$x\in\BbbR^r$ all the gradients $\grad f(x)$, $\grad g(x)$,
+$\grad(f\vee g)(x)$ and $\grad(f\wedge g)(x)$ are defined;  by (a),
+$\|\grad f\|^2+\|\grad g\|^2
+\eae\|\grad(f\vee g)\|^2+\|\grad(f\wedge g)\|^2$.
+
+Now consider the function $h$ defined by saying that
+
+$$\eqalign{h(x)
+&=(f\vee g)(x)\text{ if }x\in W,\cr
+&=(f\wedge g)(x)\text{ if }x\in W'.\cr}$$
+
+\noindent $h$ is Lipschitz and $\lim_{\|x\|\to\infty}h(x)=0$;  also
+$h(x)\ge 1$ for every $x\in\psi(K)$.   For $x\in W\setminus W'$,
+$h(x)=(f\vee g)(x)$ and $h(Rx)=(f\wedge g)(x)$, so
+$\{\grad h(x),\grad(hR)(x)\}=\{\grad(f\vee g)(x),\grad(f\wedge g)(x)\}$ if
+the gradients are defined;  for $x\in W'\setminus W$,
+$h(x)=(f\wedge g)(x)$ and $h(Rx)=(f\vee g)(x)$, so
+$\{\grad h(x),\grad(hR)(x)\}=\{\grad(f\vee g)(x),\grad(f\wedge g)(x)\}$ if
+the gradients are defined.   Accordingly
+
+$$\eqalign{\|\grad h\|^2+\|\grad(hR)\|^2
+&\eae\|\grad(f\vee g)\|^2+\|\grad(f\wedge g)\|^2\cr
+&\eae\|\grad f\|^2+\|\grad g\|^2.\cr}$$
+
+\noindent By 479U again,
+
+$$\eqalign{r(r-2)\beta_r\capacity(\psi(K))
+&\le\int_{\BbbR^r}\|\grad h\|^2d\mu
+=\Bover12\int_{\BbbR^r}(\|\grad h\|^2+\|\grad(hR)\|^2)d\mu\cr
+&=\Bover12\int_{\BbbR^r}(\|\grad f\|^2+\|\grad g\|^2)d\mu
+\le\gamma.\cr}$$
+
+\noindent As $\gamma$ is arbitrary, $\capacity(\psi(K))\le\capacity K$.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $D=G$ is open.   Then there is a
+non-decreasing sequence $\sequencen{K_n}$ of compact sets with union $G$,
+and $\sequencen{\psi(K_n)}$ is a non-decreasing sequence with union
+$\psi(G)$.   So
+
+\Centerline{$c(\psi(G))=\sup_{n\in\Bbb N}\capacity(\psi(K_n))
+\le\sup_{n\in\Bbb N}\capacity K_n=c(G)$.}
+
+\medskip
+
+\quad{\bf (iii)} Finally, for arbitrary $D\subseteq\BbbR^r$, take any
+$\gamma>c(D)$.   Then
+there is an open set $G$ such that $D\subseteq G$ and $c(G)\le\gamma$
+(because $c$ is outer regular, see 479E(d-i)).   In this case,
+$\psi(D)\subseteq\psi(G)$, so
+
+\Centerline{$c(\psi(D))\le c(\psi(G))\le c(G)\le\gamma$.}
+
+\noindent As $\gamma$ is arbitrary, $c(\psi(D))\le c(D)$ and we are done.\
+\Qed
+
+\medskip
+
+{\bf (c)} Now suppose that $E$ is a bounded Lebesgue measurable subset of
+$\BbbR^r$ with finite perimeter.
+
+\medskip
+
+\quad{\bf (i)} Let $M\ge 0$ be such that
+$E\subseteq B(\tbf{0},M)$.   Consider
+
+$$\eqalign{\Cal E
+&=\{F:F\subseteq B(\tbf{0},M)\text{ is Lebesgue measurable},\cr
+&\mskip100mu
+\mu F=\mu E,\,\per F\le\per E,\,c(F)\le c(E)\}.\cr}$$
+
+\noindent Then $\Cal E$ is compact for the topology $\frak T_m$ of
+convergence in measure as described in 474T.   \Prf\ By 474T,
+
+\Centerline{$\Cal E_1=\{F:F$ is Lebesgue measurable,
+$\per F\le\per E\}$}
+
+\noindent is compact.   So if $\sequencen{F_n}$ is any sequence in
+$\Cal E$, it has a subsequence $\sequencen{F'_n}$ which is
+$\frak T_m$-convergent to $F\in\Cal E_1$ say (4A2Le;  recall that, as noted
+in the proof of 474T, $\frak T_m$ is pseudometrizable).
+Taking a further subsequence
+if necessary, we can suppose that
+$\mu((F\symmdiff F'_n)\cap B(\tbf{0},M))\le 2^{-n}$ for every
+$n\in\Bbb N$.   Set $F'=\bigcup_{m\in\Bbb N}\bigcap_{n\ge m}F'_n$.
+Because every $F'_n$ is included in $B(\tbf{0},M)$,
+$F'$ is a $\frak T_m$-limit of $\sequencen{F'_n}$.   So
+$\mu F'=\lim_{n\to\infty}\mu F'_n=\mu E$, and
+
+\Centerline{$c(F')
+=\lim_{m\to\infty}c(\bigcap_{n\ge m}F'_n)\le c(E)$.}
+
+\noindent Finally, $F'\symmdiff F$ is negligible, so
+$\partstar F'=\partstar F$ and $\per(F')=\per F\le\per E$.   Thus
+$F'\in\Cal E$.   As $\sequencen{F_n}$ is arbitrary,
+$\Cal E$ is relatively compact, by 4A2Le in the opposite direction.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Because $B(\tbf{0},M)$ is bounded,
+the function $F\mapsto\int_F\|x\|\mu(dx):\Cal E\to\coint{0,\infty}$ is
+continuous, and must attain its infimum at $H$ say.   Let $B_E$ be the ball
+with centre $0$ and the same measure as $E$.   Then
+$B_E\subseteq\clstar H$.   \Prf\ (Compare part (b) of the proof of
+476H.)  \Quer\ Otherwise, take $z\in B_E\setminus\clstar H$.
+Then
+
+\Centerline{$\lim_{\delta>0}
+  \Bover{\mu(B(z,\delta)\setminus H)}{\mu B(z,\delta)}=1$,
+\quad$\lim_{\delta>0}
+  \Bover{\mu(B(z,\delta)\setminus B_E)}{\mu B(z,\delta)}\le\Bover12$,}
+
+\noindent so there is a $\delta>0$ such that
+$\mu(B(z,\delta)\setminus B_E)<\mu(B(z,\delta)\setminus H)$ and
+$\mu(B_E\setminus H)>0$.   Because
+
+\Centerline{$\mu(\clstar H)=\mu H=\mu E=\mu B_E$,}
+
+\noindent $\clstar H\setminus B_E$ is also non-negligible.
+Take $x_1\in\clstar H\setminus B_E$ and $x_0\in B_E\setminus\clstar H$.
+Then $\delta_0=\|x_1\|-\|x_0\|$ is greater than $0$.
+Since
+
+\Centerline{$\limsup_{\delta\downarrow 0}
+  \Bover{\mu(H\cap B(x_1,\delta))}{\mu B(x_1,\delta)}
+>0=\lim_{\delta\downarrow 0}
+  \Bover{\mu(H\cap B(x_0,\delta))}{\mu B(x_0,\delta)}$,}
+
+\noindent there is a $\delta\in\ooint{0,\bover12\delta_0}$ such that
+$\mu(H\cap B(x_1,\delta))>\mu(H\cap B(x_0,\delta))$.   Now let $e$ be the
+unit vector $\Bover1{\|x_0-x_1\|}(x_0-x_1)$, and set
+$\alpha=\varinnerprod{e}{\bover12(x_0+x_1)}$.   Consider the reflection
+$R=R_{e\alpha}$ and the operator $\psi=\psi_{e\alpha}$;  set $H_1=\psi(H)$
+and let $\phi=\phi_{H_1}:H\to H_1$ be the function of 476E.   As
+$\alpha<0$, $\|\phi(x)\|\le\|x\|$ for every $x\in H$;   moreover,
+$R[B(x_1,\delta)]=B(x_0,\delta)$, so
+
+\Centerline{$\{x:\|\phi(x)\|<\|x\|\}
+\supseteq\{x:x\in B(x_1,\delta)\cap H$, $Rx\notin H\}$}
+
+\noindent is not negligible.   So
+$\int_{H_1}\|x\|\mu(dx)<\int_H\|x\|\mu(dx)$.   On the other hand, we
+surely have $H_1\subseteq B(\tbf{0},M)$, $\mu H_1=\mu H=\mu E$ and
+$\per H_1\le\per H\le\per E$ (476Ee);  and, finally,
+$c(H_1)\le c(H)\le c(E)$, by (b) of this proof.   Thus $H_1\in\Cal E$ and
+the functional $F\mapsto\int_F\|x\|\mu(dx)$ is not minimized at $H$.\
+\Bang\Qed
+
+\medskip
+
+\quad{\bf (iii)} Accordingly
+
+$$\eqalignno{\capacity B_E
+&\le c(\clstar H)\le c(H)\cr
+\displaycause{479P(c-vi)}
+&\le c(E).\cr}$$
+
+\medskip
+
+{\bf (d)} Thus $\capacity B_E\le c(E)$ whenever $E\subseteq\BbbR^r$ is
+Lebesgue
+measurable, bounded and has finite perimeter.   Consequently
+$\capacity B_K\le\capacity K$ for every compact set $K\subseteq\BbbR^r$.
+\Prf\ If $\epsilon>0$, there is an open set $G\supseteq K$ such that
+$c(G)\le\capacity K+\epsilon$.   Now there is a set $E$, a finite union
+of balls,
+such that $K\subseteq E\subseteq G$.   In this case, $E$ has finite
+perimeter and is bounded, while of course $B_E\supseteq B_K$.   So
+
+\Centerline{$\capacity B_K
+\le\capacity B_E\le c(E)\le c(G)\le\capacity K+\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, $\capacity B_K\le\capacity K$.\ \Qed
+
+It follows that $\capacity B_E\le c(E)$ for every measurable set
+$E\subseteq\BbbR^r$ of finite measure.   \Prf\ If $K\subseteq E$
+is compact, then $\capacity B_K\le\capacity K\le c(E)$.   But as
+$\mu E=\sup\{\mu K:K\subseteq E$ is compact$\}$,
+$\diam B_E=\sup\{\diam B_K:K\subseteq E$ is compact$\}$;
+because capacity is a continuous function of radius (479Da),
+
+$$\eqalign{\capacity B_E)
+&=\sup\{\capacity B_K:K\subseteq E\text{ is compact}\}\cr
+&\le\sup\{\capacity K:K\subseteq E\text{ is compact }\}
+\le c(E).  \text{ \Qed}\cr}$$
+
+Finally, if $D$ is any set of finite outer measure, there is a G$_{\delta}$
+set $E\supseteq D$ such that $c(E)=c(D)$ and $\mu E=\mu^*D$, so that
+
+\Centerline{$\capacity B_D=\capacity B_E\le c(E)=c(D)$,}
+
+\noindent and we have the general result claimed.
+}%end of proof of 479V
+
+\leader{*479W}{}\cmmnt{ I conclude with an alternative representation of
+Choquet-Newton capacity $c$ in terms of a measure on the space of closed
+subsets of $\BbbR^r$.
+
+\medskip
+
+\noindent}{\bf Theorem}
+Let $\Cal C^+$ be the family of non-empty closed subsets of $\BbbR^r$,
+with its Fell topology\cmmnt{ (4A2T)}.   Then there is a unique Radon
+measure $\theta$ on $\Cal C^+$ such that
+$\theta^*\{C:C\in\Cal C^+$, $D\cap C\ne\emptyset\}$ is the Choquet-Newton
+capacity $c(D)$ of $D$ for every $D\subseteq\BbbR^r$.
+
+\proof{{\bf (a)} Recall that the Fell topology on
+$\Cal C=\Cal C^+\cup\{\emptyset\}$ is compact (4A2T(b-iii)) and metrizable
+(4A2Tf), so $\Cal C^+$ is locally compact and Polish.
+For $D\subseteq\BbbR^r$, set
+$\Psi D=\{C:C\in\Cal C^+$, $C\cap D\ne\emptyset\}$.   Of course
+$\Psi(\bigcup\Cal A)=\bigcup_{D\in\Cal A}\Psi D$ for every family
+$\Cal A$ of subsets of $\BbbR^r$.
+
+\medskip
+
+{\bf (b)} Let $\Omega'$ be the set of those $\omega\in\Omega$ such that
+$\lim_{t\to\infty}\|\omega(t)\|=\infty$;  because $r\ge 3$, $\Omega'$ is
+conegligible in $\Omega$ (478Md).   If $\omega\in\Omega'$, then
+$\omega[\,\coint{0,\infty}\,]$ is closed.
+For $x\in\BbbR^r$ and $\omega\in\Omega'$, set
+$h_x(\omega)=x+\omega[\,\coint{0,\infty}\,]\in\Cal C^+$.   Then
+$h_x:\Omega'\to\Cal C^+$ is Borel measurable.   \Prf\ ($\alpha$) If
+$G\subseteq\BbbR^r$ is open, then
+
+\Centerline{$\{\omega:\omega\in\Omega'$, $h_x(\omega)\cap G\ne\emptyset\}
+=\bigcup_{t\ge 0}\{\omega:x+\omega(t)\in G\}$}
+
+\noindent is relatively open in $\Omega'$.
+($\beta$) If $K\subseteq\BbbR^r$ is compact,
+
+\Centerline{$\{(\omega,t):x+\omega(t)\in K\}$}
+
+\noindent is closed in $\Omega\times\coint{0,\infty}$, so its projection
+$\{\omega:x+\omega[\,\coint{0,\infty}\,]\cap K\ne\emptyset\}$ is
+F$_{\sigma}$, and
+$\{\omega:\omega\in\Omega'$, $h_x(\omega)\cap K=\emptyset\}$ is a
+G$_{\delta}$ set in $\Omega'$.   ($\gamma$)
+Because $\Cal C^+$ is hereditarily Lindel\"of, this is enough to prove that
+$h_x$ is Borel measurable (4A3Db).\ \Qed
+
+\medskip
+
+{\bf (c)} Let $\Tau$ be the ring of subsets of $\Cal C^+$ generated by
+sets of the form $\Psi E$ where $E\subseteq\BbbR^r$ is bounded and is
+either compact or open.   Then we have an additive functional
+$\phi:\Tau\to\coint{0,\infty}$ such that
+$\phi(\Psi K)=\capacity K$ for every compact set $K\subseteq\BbbR^r$.
+\Prf\ For $x\in\BbbR^r$ let $h_x:\Omega'\to\Cal C^+$ be as in (b).
+Then we have a corresponding scaled Radon
+image measure $\phi_x=\|x\|^{r-2}(\mu_W)_{\Omega'}h_x^{-1}$ on $\Cal C^+$
+(418I), defined by setting
+$\phi_xH=\|x\|^{r-2}\mu_W\{\omega:x+\omega[\,\coint{0,\infty}\,]\in H\}$
+whenever this is defined.   If $E\subseteq\BbbR^r$ is either compact or
+open, then
+
+\Centerline{$\{\omega:x+\omega[\,\coint{0,\infty}\,]\cap E\ne\emptyset\}$}
+
+\noindent is F$_{\sigma}$ or open, respectively, so $\phi_x(\Psi E)$ is
+defined;
+accordingly $\phi_xH$ is defined for every $H\in\Tau$.   If
+$\gamma>0$, $E\subseteq B(\tbf{0},\gamma)$ and
+$\|x\|>\gamma$, then
+
+\Centerline{$\phi_x^*(\Psi E)
+\le\phi_x(\Psi(B(\tbf{0},\gamma)))
+=\|x\|^{r-2}\hp(B(\tbf{0},\gamma)-x)
+=\gamma^{r-2}$}
+
+\noindent(478Qc).   So $\limsup_{\|x\|\to\infty}\phi_xH$ is finite for
+every $H\in\Tau$.   Take an ultrafilter $\Cal F$ on $\BbbR^r$ containing
+$\BbbR^r\setminus B(\tbf{0},\gamma)$ for every $\gamma>0$;  then
+$\phi H=\lim_{x\to\Cal F}\phi_xH$ is defined in $\coint{0,\infty}$
+for every $H\in\Tau$, and $\phi$ is additive.   If $E\subseteq\BbbR^r$ is
+bounded and either compact or open, then
+
+\Centerline{$\phi(\Psi E)
+=\lim_{x\to\Cal F}\|x\|^{r-2}\hp(E-x)=c(E)$}
+
+\noindent by 479B(ii).\ \Qed
+
+\medskip
+
+{\bf (d)} $\phi$ is inner regular with respect to the compact sets, in the
+sense that $\phi H=\sup\{\phi L:L\in\Tau$ is compact, $L\subseteq H\}$
+for every $H\in\Tau$.   \Prf\ Note first that the set
+
+\Centerline{$\Cal H
+=\{H:H\in\Tau$,
+  $\phi H=\sup\{\phi L:L\in\Tau$ is compact, $L\subseteq H\}\}$}
+
+\noindent is a sublattice of $\Tau$.   Suppose that $E$,
+$H\subseteq\BbbR^r$ are bounded sets which are either compact or open, and
+$\epsilon>0$.   Then there are a compact $K\subseteq E$ and a bounded open
+$G\supseteq H$ such that $c(E)\le\epsilon+\capacity K$ and
+$c(G)\le\epsilon+c(H)$ (479E).   Now $\Psi K$ is a closed
+subset of $\Cal C$ included in $\Cal C^+$, so is a compact subset of
+$\Cal C^+$, while $\Psi G$ is open;  thus
+$L=\Psi K\setminus\Psi G$ is a compact subset of
+$\Psi E\setminus\Psi H$, and of course $L\in\Tau$.   Now
+
+$$\eqalign{\phi(\Psi E\setminus\Psi H)
+&\le\phi L+\phi(\Psi E\setminus\Psi K)+\phi(\Psi G\setminus\Psi H)\cr
+&=\phi L+\phi(\Psi E)-\phi(\Psi K)+\phi(\Psi G)-\phi(\Psi H)\cr
+&=\phi L+c(E)-\capacity K+c(G)-c(H)
+\le\phi L+2\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary, $\Psi E\setminus\Psi H$ belongs to
+$\Cal H$.
+
+Since any member of $\Tau$ is expressible as a finite union of finite
+intersections of sets of this kind, $\Tau\subseteq\Cal H$, as required.\
+\Qed
+
+\medskip
+
+{\bf (e)} Let $\Cal L$ be the family of compact subsets of $\Cal C^+$.
+If $L\in\Cal L$, it is a closed subset of $\Cal C$ not containing
+$\emptyset$, so there must be a compact set $K\subseteq\BbbR^r$ such that
+$L\subseteq\Psi K$.   Thus every member of $\Cal L$ is covered by a member
+of $\Tau$, and we have a functional $\phi_1:\Cal L\to\coint{0,\infty}$
+defined by setting $\phi_1L=\inf\{\phi E:E\in\Tau$, $L\subseteq E\}$ for
+$L\in\Cal L$.
+
+I seek to apply 413I.   Of course $\emptyset\in\Cal L$ and $\Cal L$ is
+closed under finite disjoint unions and countable intersections;  moreover,
+if $\sequencen{L_n}$ is a non-increasing sequence in $\Cal L$ with empty
+intersection, one of the $L_n$ must be empty, so
+$\inf_{n\in\Bbb N}\phi_1L_n=0$.   Now turn to condition ($\alpha$) of the
+theorem:
+
+\Centerline{$\phi_1L_1
+=\phi_1L_0+\sup\{\phi_1L:L\in\Cal L$, $L\subseteq L_1\setminus L_0\}$
+whenever $L_0$, $L_1\in\Cal L$ and $L_0\subseteq L_1$.}
+
+\medskip
+
+\quad{\bf (i)} If $L_0$, $L\in\Cal L$ are disjoint, then
+$\phi_1(L_0\cup L)\ge\phi_1L_0+\phi_1L$.   \Prf\ The topology $\frak S$ of
+$\Cal C^+$ is generated by sets of the form $\Psi G$, where
+$G\subseteq\BbbR^r$ is open, and by sets of the form
+$\Cal C^+\setminus\Psi K$, where $K\subseteq\BbbR^r$ is compact.
+It is therefore generated by
+
+\Centerline{$\{\Psi G\setminus\Psi K:G\subseteq\BbbR^r$ is bounded and
+open, $K\subseteq\BbbR^r$ is compact$\}
+\subseteq\Tau$.}
+
+\noindent So $\frak S\cap\Tau$ is a base for $\frak S$ and disjoint
+compact sets in $\Cal C^+$ can be separated by members of $\Tau$
+(4A2F(h-i));  let $E_0\in\Tau$ be such that
+$L_0\subseteq E_0\subseteq\Cal C^+\setminus L$.   Now if $E\in\Tau$ and
+$E\supseteq L_0\cup L$,
+
+\Centerline{$\phi E=\phi(E\cap E_0)+\phi(E\setminus E_0)
+\ge\phi_1L_0+\phi_1L$;}
+
+\noindent as $E$ is arbitrary,
+$\phi_1(L_0\cup L)\ge\phi_1L_0+\phi_1L$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} If $L_0$, $L_1\in\Cal L$, $L_0\subseteq L_1$ and
+$\epsilon>0$, there is an $L\in\Cal L$ such that
+$L\subseteq L_1\cup L_0$ and $\phi_1L_1\le\phi_1L_0+\phi_1L+3\epsilon$.
+\Prf\ Let $E_0$, $E_1\in\Tau$ be such that $L_0\subseteq E_0$,
+$L_1\subseteq E_1$ and $\phi E_0\le\phi_1L_0+\epsilon$.
+By (d), there is an
+$L'\in\Cal L\cap\Tau$ such that $L'\subseteq E_1\setminus E_0$ and
+$\phi L'\ge\phi(E_1\setminus E_0)-\epsilon$.   Set $L=L'\cap L_1$.
+Then $L\in\Cal L$ and $L\subseteq L_1\setminus L_0$.   Let $E\in\Tau$ be
+such that $L\subseteq E$ and $\phi E\le\phi_1L+\epsilon$.   Then
+$L_1\subseteq E_0\cup E\cup((E_1\setminus E_0)\setminus L')$, so
+
+\Centerline{$\phi_1L_1
+\le\phi E_0+\phi E+\phi(E_1\setminus E_0)-\phi L'
+\le\phi_1L_1+\phi L+3\epsilon$,}
+
+\noindent as required.\ \Qed
+
+Putting this together with (i), the final condition of 413I is satisfied.
+
+\medskip
+
+{\bf (f)} We therefore have a complete locally determined measure $\theta$
+on $\Cal C^+$ extending $\phi_1$ and inner regular with respect to
+$\Cal L$.   For $E\subseteq\Cal C^+$, $\theta$ measures $E$ iff $\theta$
+measures $E\cap L$ for every $L\in\Cal L$ (412Ja);
+so $\theta$ measures all
+closed subsets of $\Cal C^+$, and is a topological measure.   Of course
+$\theta$ is inner regular with respect to the compact sets.   If
+$C\in\Cal C^+$, there is a bounded open set $G\subseteq\BbbR^r$ meeting
+$C$, and now $\Psi G$ is an open set containing $C$ and included in the
+compact set $\Psi\overline{G}$;  accordingly
+
+\Centerline{$\theta(\Psi G)\le\theta(\Psi\overline{G})
+=\phi_1(\Psi\overline{G})=\phi(\Psi\overline{G})
+=\capacity\overline{G}$}
+
+\noindent is finite.   Thus $\theta$ is locally finite and is a Radon
+measure.
+
+\medskip
+
+{\bf (g)} As in (f), we have
+
+\Centerline{$\theta(\Psi K)=\phi_1(\Psi K)=\phi(\Psi K)=\capacity K$}
+
+\noindent for every compact $K\subseteq\BbbR^r$.   Next,
+$\theta(\Psi G)=c(G)$ for every open $G\subseteq\BbbR^r$.   \Prf\
+If $G$ is bounded,
+
+$$\eqalign{\theta(\Psi G)
+&=\sup\{\theta L:L\subseteq\Psi G\text{ is compact}\}\cr
+&=\sup\{\phi_1L:L\subseteq\Psi G\text{ is compact}\}
+\le\phi(\Psi G)
+=c(G)\cr
+&=\sup\{\capacity K:K\subseteq G\text{ is compact}\}\cr
+&=\sup\{\theta(\Psi K):K\subseteq G\text{ is compact}\}
+\le\theta(\Psi G).\cr}$$
+
+\noindent If $G$ is unbounded, then there is a non-decreasing sequence
+$\sequencen{G_n}$ of bounded open sets with union $G$, so
+
+\Centerline{$\theta(\Psi G)
+=\theta(\bigcup_{n\in\Bbb N}\Psi G_n)
+=\sup_{n\in\Bbb N}\theta(\Psi G_n)
+=\sup_{n\in\Bbb N}c(G_n)
+=c(G)$.  \Qed}
+
+\medskip
+
+{\bf (h)} Now suppose that $D\subseteq\BbbR^r$ is any bounded set.   We
+have
+
+\Centerline{$\theta^*(\Psi D)
+\le\inf\{\theta(\Psi G):G\supseteq D\text{ is open}\}
+=\inf\{c(G):G\supseteq D\text{ is open}\}
+=c(D)$.}
+
+\noindent\Quer\ Suppose, if possible, that $\theta^*(\Psi D)<c(D)$.
+Let $G\supseteq D$ be a bounded open set.   Then there is a compact
+$L\subseteq\Psi G\setminus\Psi D$ such that
+$\theta L>\theta(\Psi G)-c(D)$.   Set $F=\bigcup_{C\in L}C$;  then $F$
+is closed (4A2T(e-iii)) and disjoint from $D$, so $G\setminus F$ is open,
+$D\subseteq G\setminus F$ and $\Psi(G\setminus F)$ is disjoint from $L$.
+But this means that
+
+\Centerline{$c(D)\le c(G\setminus F)=\theta(\Psi(G\setminus F))
+\le\theta(\Psi G)-\theta L<c(D)$,}
+
+\noindent which is absurd.\ \BanG\  So $\theta^*(\Psi D)=c(D)$.
+
+If $D\subseteq\BbbR^r$ is any set, then it is expressible as the union of a
+non-decreasing sequence $\sequencen{D_n}$ of bounded sets, so
+
+\Centerline{$c(D)
+=\lim_{n\to\infty}c(D_n)
+=\lim_{n\to\infty}\theta^*(\Psi D_n)
+=\theta^*(\bigcup_{n\in\Bbb N}\Psi D_n)
+=\theta^*(\Psi D)$.}
+
+\noindent Thus $\theta$ has all the properties declared.
+
+\medskip
+
+{\bf (i)} To see that $\theta$ is unique, consider the base $\Cal V$ for
+the topology of $\Cal C^+$ consisting of sets of the form
+$\bigcap_{i\in I}\Psi G_i\setminus\Psi K$ where $\familyiI{G_i}$ is a
+non-empty finite family of bounded open sets in $\BbbR^r$ and
+$K\subseteq\BbbR^r$ is compact.   The conditions that $\theta$ must satisfy
+determine its value on any set of the form
+$\Psi(G\cup K)=\Psi G\cup\Psi K$ where $G\subseteq\BbbR^r$ is open and
+$K\subseteq\BbbR^r$ is compact, and therefore determine its values on
+$\Cal V$.   By 415H(iv), $\theta$ is fixed by these.
+}%end of proof of 479W
+
+\exercises{\leader{479X}{Basic exercises (a)}
+%\spheader 479Xa
+Let $\zeta$ be a Radon measure on $\BbbR^r$.  Show that
+
+\Centerline{$\zeta\BbbR^r
+=\lim_{\gamma\to\infty}\Bover2{r\beta_r\gamma^2}
+  \int_{B(\tbf{0},\gamma)}W_{\zeta}d\mu$.}
+%479J out of order query
+
+\sqheader 479Xb(i) Show directly from 479B-479C that Choquet-Newton
+capacity $c$ is
+invariant under isometries of $\BbbR^r$.
+(ii) Show that $c(\alpha D)=\alpha^{r-2}c(D)$
+whenever $\alpha\ge 0$ and $D\subseteq\BbbR^r$.
+%479C
+
+\spheader 479Xc Suppose that $\zeta_1$ and $\zeta_2$ are totally finite
+Radon measures on $\BbbR^r$.
+Show that $W_{\zeta_1*\zeta_2}=\zeta_1*W_{\zeta_2}=\zeta_2*W_{\zeta_1}$.
+%479J
+
+\spheader 479Xd Show that there is a closed set $F\subseteq\Bbb R^r$
+such that $\hp(F)<1$ but $c(F)=\infty$.   \Hint{look at the proof of
+479Ma.}
+%479M
+
+\spheader 479Xe Let $K\subseteq\BbbR^r$ be compact.  Show that
+$\interior\{x:\tilde W_K(x)<1\}$ is the unbounded component of
+$\BbbR^r\setminus\supp\lambda_K$.   \Hint{setting $L=\supp\lambda_K$,
+show that $\capacity(\supp\lambda_K)=\capacity K$ so that
+$\tilde W_K=\tilde W_L$.}
+%479N
+
+\spheader 479Xf Let $A\subseteq\BbbR^r$ be an analytic set such that
+$c(A)<\infty$.   Show that
+$\tilde W_A=\sup\{W_{\zeta}:\zeta$ is a Radon measure on $\BbbR^r$,
+$A$ is $\zeta$-conegligible, $W_{\zeta}\le 1\}$.
+%479N 479M query out of order
+
+\sqheader 479Xg Show that there
+is a universally negligible set $D\subseteq B(\tbf{0},1)$ such that
+$c(D)=1$.   \Hint{use the ideas of 439F to find $D$ such that
+$\{\|x\|:x\in D\}$ is universally negligible and
+$x\mapsto\|x\|:D\to[0,1]$ is injective, but
+$\nu^*\{\Bover{x}{\|x\|}:x\in D$, $\|x\|\ge 1-\delta\}=r\beta_r$
+for every $\delta\in\ooint{0,1}$;  compute $c(D)$ with the aid of
+479D, 479P(c-iii-$\alpha$) and 479P(c-vii).}
+		
+\spheader 479Xh Suppose that $D\subseteq D'\subseteq\BbbR^r$ and
+$c(D')<\infty$.
+Show that $\int fd\lambda_D\le\int fd\lambda_{D'}$
+for every lower semi-continuous superharmonic $f:\BbbR^r\to[0,\infty]$.
+%479P
+
+%if W_{\zeta}\le W_{\zeta'} does it follow that
+%\int fd\zeta\le\int fd\zeta'  for non-neg lsc superharmonic f ?
+%yes I think, see 479qS in mt47bits.tex
+%so in fact  \zeta*f\le\zeta'*f
+
+\spheader 479Xi Let $D\subseteq\BbbR^r$ be a bounded set.   Show that
+$c(D)=\lim_{\|x\|\to\infty}\|x\|^{r-2}\hp^*(D-x)$.  \Hint{477Id.}
+%479P
+
+\spheader 479Xj Let $T:\BbbR^r\to\BbbR^r$ be an isometry, and
+$D\subseteq\BbbR^r$ a set such that $c(D)<\infty$.   Show that
+$\tilde W_{T[D]}Tx)=\tilde W_D(x)$ for every $x\in\BbbR^r$ and that
+$\lambda_{T[D]}$ is the image measure $\lambda_DT^{-1}$.
+%479P
+
+\spheader 479Xk Let $D\subseteq\BbbR^r$ be a set such that
+$c(D)<\infty$, and $\alpha>0$.   Show that
+$\tilde W_{\alpha D}(x)=\tilde W_D(\bover1{\alpha}x)$
+for every $x\in\BbbR^r$, and that
+$\lambda_{\alpha D}=\alpha^{r-2}\lambda_DT^{-1}$,
+where $T(x)=\alpha x$ for $x\in\BbbR^r$.
+%479P 479Xj
+
+\spheader 479Xl Show that
+$c(D)
+=\inf\{\zeta\BbbR^r:\zeta$ is a Radon measure on $\BbbR^r$,
+$W_{\zeta}\ge\chi D\}
+=\inf\{\energy(\zeta):\zeta$ is a Radon measure on $\BbbR^r$,
+$W_{\zeta}\ge\chi D\}$
+for any $D\subseteq\BbbR^r$.
+%479P
+
+\spheader 479Xm Let $K\subseteq\BbbR^r$ be a compact set, with complement
+$G$, and $\Phi$ the set of
+continuous harmonic functions $f:G\to[0,1]$ such that
+$\lim_{\|x\|\to\infty}f(x)=0$.   Show that
+$\tilde W_K\restr G$ is the greatest element of $\Phi$.
+\Hint{479Pb, 478Pc.}
+%479P
+
+\spheader 479Xn(i) Show that if $G$ is a convex open set then
+$\hp(G-x)=1$ for every $x\in\overline{G}$.   (ii) Show that if
+$D\subseteq\BbbR^r$ is a convex bounded set with non-empty
+interior, then $\tilde W_D$ is continuous.
+%479P
+
+\spheader 479Xo Show that if $D$, $D'\subseteq\BbbR^r$
+and $c(D\cup D')<\infty$, then
+$\tilde W_{D\cap D'}+\tilde W_{D\cup D'}\le\tilde W_D+\tilde W_{D'}$.
+%479P
+
+\spheader 479Xp Let $D\subseteq\BbbR^r$ be a set such that
+$c(D)<\infty$, and set $\tilde D=\{x:\tilde W_D(x)=1\}$.   Show that
+(i) $D\setminus\tilde D$ is polar (ii)
+$\lambda_{\tilde D}=\lambda_D$.   \Hint{reduce to the case in which $D=A$
+is analytic;  use 479Fg to show that $\tilde W_{\tilde A}\le\tilde W_A$;
+use 479J(b-v).}
+%479P
+
+\spheader 479Xq Let $\Cal A$ be the set of subsets of $\BbbR^r$
+with finite Choquet-Newton capacity, and
+$\rho$ the pseudometric $(D,D')\mapsto 2c(D\cup D')-c(D)-c(D')$ (432Xj).
+(i) Show that $\|U_{\lambda_D}-U_{\lambda_{D'}}\|^2_2\le 2c_r\rho(D,D')$
+for $D$, $D'\in\Cal A$.
+(ii) Show that $\rho(D,D')=0$ iff $\lambda_D=\lambda_{D'}$.
+%479P query out of order
+
+\spheader 479Xr Suppose that $D\subseteq\BbbR^r$.   Show that the
+following are equiveridical:  (i) $D$ is polar;  (ii) there is some
+$x\in\BbbR^r$ such that $\hp(D-x)=0$;  (iii)
+$\hp((D\setminus\{x\})-x)=0$ for every $x\in\BbbR^r$.
+%479P
+%if (i), enlarge $D$ to analytic polar, then $\lambda_D=0$ so
+%$\tilde W_D=0$ so (iii).   If (ii), again can enlarge to analytic,
+%and $\tilde W_D=0$ so (iii) and (i).
+%if (iii), $D\ne\BbbR^r$ so (ii).
+
+\spheader 479Xs Suppose that $\sequencen{D_n}$ is a non-increasing sequence
+of subsets of $\BbbR^r$ such that $\inf_{n\in\Bbb N}c(D_n)$ is finite and
+$\bigcap_{n\in\Bbb N}D_n=\bigcap_{n\in\Bbb N}\overline{D_n}=F$ say.   Show
+that $\sequencen{\lambda_{D_n}}\to\lambda_D$ for the narrow topology, and
+that $\sequencen{c(D_n)}\to c(F)$.   (Compare 479Ye.)
+%479P 479Ec
+
+\spheader 479Xt For $\omega\in\Omega$ set
+$\tau(\omega)=\sup\{t:\|\omega(t)\|\le 1\}$.   (i) Show that 
+$\tau:\Omega\to[0,\infty]$ is measurable.
+(ii) Show that if $r\le 2$ then $\tau=\infty$ a.e.   (iii) Show that if
+$r\ge 3$ then $\tau$ is not a stopping time.   (iv) Show that if
+$3\le r\le 4$ then $\tau$ is finite a.e., but has infinite expectation.
+(v) Show that if $r\ge 5$ then $\tau$ has finite expectation.
+({\it Hint\/}:  show that if $r\ge 2$ then
+
+\Centerline{$\Pr(\tau\ge t)
+=\Bover1{(\sqrt{2\pi})^r}\int e^{-\|x\|^2/2}
+\Bover1{\max(1,(\sqrt t)^{r-2}\|x\|^{r-2})}dx$.)}
+%479R 479Da 479Pb {\smc Chung 95}, chap 11
+
+\leader{479Y}{Further exercises (a)}%
+%\spheader 479Ya
+(i) Show that there is an open set $G\subseteq B(\tbf{0},1)$,
+dense in $B(\tbf{0},1)$, such that $c(G)<1$.   (ii) Show that
+$\capacity(\supp\lambda_G)=1$.
+%479E
+
+\spheader 479Yb In 479G, suppose that $0<\alpha<r$, $0<\beta<r$ and
+$\alpha+\beta>r$.   Show that
+
+$$k_{\alpha+\beta-r}
+=\bover{\Gamma(r-\bover{\alpha+\beta}2)\Gamma(\bover{\alpha}2)
+                  \Gamma(\bover{\beta}2)}
+   {(\sqrt\pi)^r\Gamma(\bover{\alpha+\beta-r}2)\Gamma(\bover{r-\alpha}2)
+                  \Gamma(\bover{r-\beta}2)}
+   k_{\alpha}*k_{\beta}.$$
+%479Ia
+
+\spheader 479Yc Let $A\subseteq\BbbR^r$ be an analytic set with
+$c(A)<\infty$.   (i) Show that for every $\gamma>0$ there is a Radon
+measure $\zeta_{\gamma}$ on $\BbbR^r$ such that
+$\family{x}{\partial B(\tbf{0},\gamma)}{\Bover1{r\beta_r\gamma}\mu^{(A)}_x}$ is a
+disintegration of $\zeta_{\gamma}$ over the subspace measure
+$\nu_{\partial B(\tbf{0},\gamma)}$.
+(ii) Show that $\lim_{\gamma\to\infty}\zeta_{\gamma}=\lambda_A$ for the
+total variation metric on $M^+_{\text{R}}(\BbbR^r)$.
+%479M
+
+\spheader 479Yd Set $c'(D)=\sup\{\zeta^*D:\zeta$ is a Radon measure on
+$\BbbR^r$ such that $W_{\zeta}\le 1$ everywhere$\}$ for
+$D\subseteq\BbbR^r$.   Show that $c'$ is a Choquet capacity on $\BbbR^r$,
+extending Newtonian capacity for compact sets, which is different from
+Choquet-Newton capacity.
+%479N 479Xg 479P
+
+\spheader 479Ye
+Let $\sequencen{D_n}$ be a non-increasing sequence of
+subsets of $\BbbR^r$ with finite Choquet-Newton capacity.
+For each $n\in\Bbb N$, set $\tilde D_n=\{x:\tilde W_{D_n}(x)=1\}$, and set
+$A=\bigcap_{n\in\Bbb N}\tilde D_n$.   Show that
+$c(A)=\inf_{n\in\Bbb N}c(D_n)$ and that $\lambda_A$ is the limit of
+$\sequencen{\lambda_{D_n}}$ for the narrow topology on
+$M^+_{\text{R}}(\BbbR^r)$.
+%479Xp 479P 478Yi
+
+\spheader 479Yf Let $\Cal A$, $\rho$ be as in 479Xq, and let
+$(\bar{\Cal A},\bar\rho)$ be the corresponding metric space, identifying
+members of $\Cal A$
+which are zero distance apart.   Show that $\bar{\Cal A}$ is complete.
+%479Ye 479P
+
+\spheader 479Yg
+Let $E\subseteq\BbbR^r$ be a set of finite Lebesgue
+measure, and $B_E$ the ball with centre $0$ and the same measure as $E$.
+Show that $\energy(\mu\LLcorner E)\le\energy(\mu\LLcorner B_E)$.
+%479V mt47bits
+
+\spheader 479Yh Prove 479V from 479U and 476Yb.
+%479V
+
+\spheader 479Yi(i) Show that $c$ is alternating of all orders, that is,
+
+\Centerline{$\sum_{J\subseteq I,\#(J)\text{ is even}}
+   c(D\cup\bigcup_{i\in J}D_i)
+\le\sum_{J\subseteq I,\#(J)\text{ is odd}}c(D\cup\bigcup_{i\in J}D_i)$}
+
+\noindent whenever $I$ is a
+non-empty finite set, $\familyiI{D_i}$ is a family of
+subsets of $\BbbR^r$ and $D$ is another subset of
+$\BbbR^r$.   (Cf.\ 132Yf.)
+(ii) Show that if $c(D\cup\bigcup_{i\in I}D_i)<\infty$, then
+
+\Centerline{$\sum_{J\subseteq I,\#(J)\text{ is even}}
+   \tilde W_{D\cup\bigcupop_{i\in J}D_i}
+\le\sum_{J\subseteq I,\#(J)\text{ is odd}}
+   \tilde W_{D\cup\bigcupop_{i\in J}D_i}$.}
+%479W
+
+\spheader 479Yj Let us say that if $X$ is a Polish space, a set
+$A\subseteq X$ is {\bf projectively universally measurable} if $W[A]$ is
+universally measurable whenever $Y$ is a Polish space and
+$W\subseteq X\times Y$ is analytic.   Show that we can replace
+the word `analytic' by the phrase `projectively universally measurable' in
+all the theorems of this section.
+%479 notes
+
+\spheader 479Yk Suppose that $A\subseteq\BbbR^r$ is analytic and non-empty,
+and $x\in\BbbR^r$ is such that $\rho(x,A)=\delta>0$.
+Show that $\energy(\mu^{(A)}_x)\le\Bover1{\delta^{r-2}}$.
+%479C out of order query mt47bits
+
+\def\clcap{\text{cl}_{\text{cap}}}
+\spheader 479Yl Show that if $D\subseteq\BbbR^r$ and $c(D)<\infty$, then
+$c(\{x:\tilde W_D(x)\ge\gamma\})\le\Bover1{\gamma}c(D)$ for every
+$\gamma>0$.
+%479P mt47bits
+
+\spheader 479Ym
+For a set $D\subseteq\BbbR^r$ with $c(D)<\infty$, set
+$\clcap D=\{x:\tilde W_D(x)=1\}$.   Show that
+$c(D)=c(\clcap D)=c(D\cup\clcap D)$.
+%479P mt47bits 479Yl
+}%end of exercises
+
+\endnotes{
+\Notesheader{479} Newtonian potential is another of the great concepts of
+mathematics, and is one of the points at which physical problems and
+intuitions have stimulated and illuminated the development of analysis.
+As with all the best ideas of mathematics, there is more than one route to
+it, and any proper understanding of it must include a matching of the
+different approaches.   In the exposition here I start with a description
+of equilibrium measures in terms of harmonic measures (479B), themselves
+defined in 478P in terms of Brownian motion.   We are led quickly to
+definitions of capacity and equilibrium potential (479C), with some
+elementary properties (479D).   Moreover, some very striking further
+results (479E, 479W) are already accessible.
+
+However we are still rather
+far from the original physical concept of `capacity' of a conductor.
+If you have ever studied electrostatics, the ideas here may recall some
+basic physical principles.   The kernel $x\mapsto\Bover1{\|x\|^{r-2}}$
+represents the potential energy field of a point mass or charge;
+the potential $W_{\zeta}$ represents the field due to a mass or
+charge with distribution $\zeta$.   The capacity of a set $K$ is the
+largest charge that can be put on $K$ without raising the potential of
+any point above $1$ (479Na), and the infimum of the charges
+which raise the potential of every point of $K$ to $1$ (479P(c-v)).
+The result that $\lambda_K$ is supported by $\partial K$ (479B(i))
+corresponds to the principle that the charge on a conductor always collects
+on the surface of the conductor;  479D(b-iii)
+corresponds to the principle that there is no electric field
+inside a conductor.
+
+At the same time, the
+equilibrium measure is supposed to be the (unique) distribution of the
+charge, which on physical grounds ought to be the distribution with least
+energy, as in 479K.   To reach these ideas, it seems that we need to know
+various non-trivial facts from classical analysis, which I set out in
+479G-479I.  %479G 479H 479I
+The deepest of these is in 479Ib:  for the Riesz kernels $k_{\alpha}$,
+the convolution $\zeta*k_{\alpha}$ determines the totally finite Radon
+measure $\zeta$.   I do not know of any way of establishing this except
+through the Fourier analysis of 479H and the detailed calculations of 479G
+and 479Ia.
+
+The ideas here are connected in so many ways that there is no clear flow to
+the logic, and we are more than usually in danger of using circular
+arguments.   In my style of exposition, this complexity manifests itself in
+an exceptional density of detailed back-references;  I hope that these
+will enable you to check the proofs effectively.   On a larger scale,
+the laborious zigzag
+progression from the original notion of capacity of compact
+sets, as in 479K and 479U, through bounded analytic sets (479B, 479E)
+and general analytic sets (479M, 479N) to arbitrary sets (479P),
+displays a choice of path to which there are surely many
+alternatives.
+
+Of course we cannot expect all the properties of
+Newtonian capacity to have recognizable forms in such a general context
+as that of 479P
+(see 479Xg, which shows that we cannot hope to replicate the ideas of
+479Na-479Nc), but the elementary results if 479D mostly extend (479Pc).
+More importantly, we have a quite new characterization of
+equilibrium potentials (479Pb).
+With these techniques available, we can learn a good deal more about
+Brownian motion.   479R is a curious
+and striking fact to go with 477K, 477L and 478M.   It is not a surprise
+that capacity and Hausdorff dimension should be linked, but it is notable
+that the phase change is at dimension $r-2$ (479Q);  this goes naturally
+with 479P(c-vii).   I know of no such dramatic difference between four and
+five dimensions, but for some purposes 479Xt marks a significant change.
+
+My treatment is an unconventional one, so perhaps I should indicate points
+where you should expect other authors to diverge from it.
+While the notions of Newtonian
+capacity, equilibrium measure and equilibrium potential are solidly
+established for compact sets in $\BbbR^r$ (at least up to scalar factors,
+and for $r\ge 3$),
+the extension to general bounded analytic sets is not I think standard.
+(I try to signal this by writing $c(A)$ in place of $\capacity A$, after
+479E, for sets which are not guaranteed to be compact, even when the
+definition in 479C(a-i) is applicable.
+The fact that this step gives very little extra trouble is a
+demonstration of the power of the Brownian-motion approach.)   The
+further extension of Newtonian
+capacity, defined on compact sets, to a Choquet capacity, defined on every
+subset of $\BbbR^r$ (479Ed), is surely not standard, which is why I
+give the extension a different name.   (While Choquet certainly
+considered the capacity which I here call `Choquet-Newton capacity', I
+fear that the phrase has no real historical justification;
+but I hope it will convey some of the right ideas.)
+You may have noticed that I
+give essentially nothing concerning differential equations, which have
+traditionally been one of the central concerns of potential theory;  there
+are hints in 479Xm and 479T.
+
+A weakness in the formulae of 479B is that
+they are not self-evidently translation-invariant.   Of course it is
+easy to show that in fact we have an isometry-invariant construction
+(479Xb), and this can also be seen from the descriptions of capacity
+and equilibrium potentials in 479N and 479Pb.
+Because the capacity $c$ is countably subadditive,
+it is easy to build a dense open subset $G$ of $\BbbR^r$ such that
+$c(G)$ is finite (see 479Ya), and for such a set we cannot ask that
+$\lambda_G$ should be
+describable as a limit of $\|x\|^{r-2}\mu_x^{(G)}$ as $\|x\|\to\infty$.
+But if we start from 479B(i) rather than 479B(ii), we do have an averaged
+form, with
+
+\Centerline{$\lambda_A=\lim_{\gamma\to\infty}\Bover1{r\beta_r\gamma}
+  \int_{\partial B(\tbf{0},\gamma)}\mu_x^{(A)}\nu(dx)$}
+
+\noindent whenever $A$ is an analytic set and $c(A)<\infty$ (479Yc; see
+also 479J(b-vi) and 479Xa).
+
+The factor $(\sqrt{2\pi})^r$ in 479H repeats that of
+283Wg\formerly{2{}83Wj}.   The
+appearance of $\sqrt{2\pi}$ in 283M, but not 445G, is proof that
+the conventions of Chapter 28 are not reconcilable with those of
+\S445.
+
+In 479O I describe one of the important notions of `small' set in
+Euclidean space, to go with `negligible' and `meager'.   I have no space to
+deal with it properly here,
+but the applications in the proofs of 479P, 479R
+and 479S will give an idea of its uses;  another is in 479Xm.   As another
+example of the logical complexity of the patterns here, consider the
+problem of either proving 479Pb without 479O, or extending 479O to cover
+479Xr without passing through a version of 479P.
+
+Quite a lot of the work here is caused by the need to accommodate
+discontinuous equilibrium potentials (479S).   This has been an
+important theme in general potential theory.   479Pb shows that
+the problem is essentially geometric:  if a compact set $K$ has a
+sufficiently narrow spike at $e$, then a Brownian path starting at $e$ can
+easily fail to enter $K$ again.
+
+As I have written the theory out, 479T-479U are rather separate from the
+rest, being closer in spirit to the work of \S\S473-475.   They explore
+some more of the basic principles of potential theory.   Note, in
+particular, the formula of 479Ta, which amounts to saying that (under the
+right conditions) a function $g$ is a multiple of $k_{r-2}*\nabla^2g$;
+of course this can be thought of as a method of finding a
+particular solution of the equation $\nabla^2g=f$;  equally, it gives an
+approach to the problem of expressing a given $g$ as a potential
+$W_{\zeta}$.   From 479Tb and 479Tc we see that in the sense of
+distributional
+derivatives we can think of $r(r-2)\beta_r\zeta$ as representing
+the Laplacian $-\nabla^2W_{\zeta}$;  recall that as $W_{\zeta}$ is
+superharmonic (479Fb), we expect $\nabla^2W_{\zeta}$ to be negative (478E).
+
+I give a bit of space to 479V because it links the material here to that of
+\S476, and this book is about such linkages, and because it supports
+my thesis that capacity is a geometrical concept.
+479W is characteristic of
+Choquet capacities which are alternating of all orders (479Yi).
+I spell it out
+here because it calls on the Fell topology, which is important
+elsewhere in this volume.
+
+It is natural to ask which of the ideas here applying to analytic sets
+can be extended to wider classes.   If you look back
+to where analytic sets first entered the discussion, in the theory of
+hitting times
+(455M), you will see that we needed a class of universally measurable
+sets which would be invariant under various operations, notably
+projections (479Yj).   In Volume 5 we shall meet axiom systems in which
+there are various interesting possibilities.
+
+This section is firmly directed at Euclidean space of three or more
+dimensions.
+The harmonic and Fourier analysis of 479G-479I %479G 479H 479I
+applies unchanged to dimensions $1$ and $2$;  so does 479Tb.
+On the line, Brownian
+hitting probabilities are trivial;  in the plane, they are very
+different from hitting probabilities in higher dimensions, but still of
+considerable interest.   Theorems 479B, 479E and 479W still work,
+but `capacity', if defined by the formulation of 479Ca, is bounded by
+$1$.   The geometric nature of
+the results changes dramatically, and 479I cannot be applied in the
+same way, since we no longer have $0<r-2$.
+}%end of notes
+
+\discrpage
+

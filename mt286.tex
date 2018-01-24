@@ -1,0 +1,3293 @@
+\frfilename{mt286.tex}
+\versiondate{30.3.16}
+\copyrightdate{2000}
+\newdimen\sparewidth
+
+\def\chaptername{Fourier analysis}
+\def\sectionname{Carleson's theorem}
+
+\def\energy{\mathop{\text{energy}}\nolimits}
+\def\Innerprod#1#2{\bigl(#1\bigr|#2\bigr)}
+\def\mass{\mathop{\text{mass}}\nolimits}
+\def\recheck{\discrversionA{\immediate\write0{query}
+    \global\advance\footnotenumber by 1
+    \oldfootnote{$^{\the\footnotenumber}$}{recheck}}{}}
+\def\vartildef{\tilde{\hbox{$f$}}}
+
+%try:  f\in\eusm L^2
+%      h rapidly decr test fn
+%      g other
+
+\newsection{286}
+
+Carleson's theorem ({\smc Carleson 66}) was the (unexpected)
+%Dorothy Maharam once said
+solution to
+a long-standing problem.   Remarkably, it can be proved by `elementary'
+methods.   The hardest part of the work below, in 286J-286L, demands
+only the laborious verification of inequalities.   How the inequalities
+were chosen is a different matter;  for once, some of the ideas of
+the proof are embodied in the statements of the lemmas.   The argument here is a
+greatly expanded version of {\smc Lacey \& Thiele 00}.
+
+The Hardy-Littlewood Maximal Theorem (286A) is important, and worth
+learning even if you
+leave the rest of the section as an unexamined monument.   I bring
+286B-286D %286B 286C 286D
+forward to the beginning of the section, even though they are little
+more than worked exercises, because they also have potential uses in
+other contexts.
+
+%mention subsupersubscripts?
+
+\cmmnt{The complexity of the argument is such that it is useful to introduce a
+substantial number of special notations.   Rather than include
+these in
+the general index, I give a list in 286W.   Among them are ten
+constants $C_1,\ldots,C_{10}$.
+The values of these numbers are of no significance.   The method of
+proof here is quite inappropriate if we want to estimate rates of
+convergence.   I give recipes for the calculation of the $C_n$ only
+for the sake of the linear logic in which this treatise is written, and
+because they occasionally offer clues concerning the tactics being used.
+}
+
+In this section all integrals are with respect to Lebesgue measure $\mu$
+on $\Bbb R$ unless otherwise stated.
+
+\leader{286A}{The Maximal Theorem}
+% Hardy \& Littlewood 30, but not best constant
+Suppose that $1<p<\infty$ and that
+$f\in\eusm L_{\Bbb C}^p(\mu)$\cmmnt{ (definition:  244P)}.   Set
+
+\Centerline{$f^*(x)=\sup\{\Bover1{b-a}\int_a^b|f|:a\le x\le b$, $a<b\}$}
+
+\noindent for $x\in\Bbb R$.   Then
+$\|f^*\|_p\le\Bover{2^{1/p}p}{p-1}\|f\|_p$.
+
+\proof{{\bf (a)} It is enough to consider the case $f=|f|$.   Note that
+if $E\subseteq\Bbb R$ has finite measure, then
+
+\Centerline{$\int_Ef
+=\int(f\times\chi E)\times\chi E
+\le\|f\times\chi E\|_p(\mu E)^{1/q}\le\|f\|_p(\mu E)^{1/q}$}
+
+\noindent is finite, where $q=\Bover{p}{p-1}$, by H\"older's inequality
+(244Eb).   Consequently, if $t>0$ and
+$\int_Ef\ge t\mu E$, we must have
+$t\mu E\le\|f\times\chi E\|_p(\mu E)^{1/q}$,
+$t(\mu E)^{1/p}\le\|f\times\chi E\|_p$ and
+
+\Centerline{$\mu E\le\Bover1{t^p}\|f\times\chi E\|^p_p
+=\Bover1{t^p}\int_Ef^p$.}
+
+\medskip
+
+{\bf (b)} For $t>0$, set
+
+\Centerline{$G_t=\{x:t(y-x)<\int_x^yf$ for some $y>x\}$.}
+
+\medskip
+
+\quad{\bf (i)} $G_t$ is an open set.  \Prf\ For any $y\in\Bbb R$,
+
+\Centerline{$G_{ty}=\{x:x<y$, $t(y-x)<\int_x^yf\}$}
+
+\noindent is open, because $x\mapsto t(y-x)$ and $x\mapsto\int_x^yf$ are
+continuous (225A);  so $G_t=\bigcup_{y\in\Bbb R}G_{ty}$ is open.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} By 2A2I, there is a partition $\Cal C$ of $G_t$ into
+open intervals.
+Now $C$ is bounded and $t\mu C\le\int_Cf$ for every $C\in\Cal C$.
+
+\medskip
+
+\quad\Prf\grheada\ For $x\in C$, consider 
+$F_x=\{y:y\ge x$, $t(y-x)\le\int_x^yf\}$.
+$x\in F_x$
+and $y-x\le\Bover1{t^p}\int_{-\infty}^{\infty}f^p$ for every $y\in F_x$, 
+by (a), so
+$F_x$ is bounded above.   Set $z_x=\sup F_x$.   Because
+$y\mapsto t(y-x)-\int_x^yf$ is continuous, $z_x\in F_x$.   
+\Quer\ If $z_x\in G_t$, there is a
+$y>z_x$ such that $t(y-z_x)<\int_{z_x}^yf$;  but now 
+
+\Centerline{$t(y-x)
+\le\int_x^{z_x}f+\int_{z_x}^yf=\int_x^yf$}
+
+\noindent and $y\in F_x$, which is impossible.\ \BanG\  Thus $z_x\notin G_t$
+and $z_x\notin C$, so that $z_x$ is an upper bound of $C$.
+
+\medskip
+
+\qquad\grheadb\ This shows that 
+
+\Centerline{$\sup C\le z_x\le x+\Bover1{t^p}\int_{-\infty}^{\infty}f^p$}
+
+\noindent for every $x\in C$.   So in fact $C$ is
+bounded and is of the form $\ooint{a,b}$ where $a<b$ in $\Bbb R$.   
+\Quer\ If $t(b-a)>\int_a^bf$, there is an $x\in\ooint{a,b}$ such that
+$t(b-x)>\int_x^bf$.   Now we know that $b\le z_x$ and $b\notin G_t$, 
+so we have $t(z_x-b)\ge\int_b^{z_x}f$.   Adding,
+$t(z_x-x)>\int_x^{z_x}f$ and $z_x\notin F_x$.\ \Bang
+
+\medskip
+
+\qquad\grheadc\ Thus $t\mu C\le\int_Cf$, as claimed.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} Accordingly, because $\Cal C$ is countable and
+$f$ is non-negative, we can apply (a) in its full strength to see that
+
+\Centerline{$\mu G_t=\sum_{C\in\Cal C}\mu C
+\le\sum_{C\in\Cal C}\Bover1{t^p}\int_Cf^p
+\le\Bover1{t^p}\int_{-\infty}^{\infty}f^p$}
+
+\noindent is finite, and
+
+\Centerline{$\int_{G_t}f=\sum_{C\in\Cal C}\int_Cf
+\ge\sum_{C\in\Cal C}t\mu C=t\mu G_t$.}
+
+\medskip
+
+{\bf (c)} All this is true for every $t>0$.   Now if we set
+
+\Centerline{$f_1^*(x)=\sup_{b>x}\Bover1{b-x}\int_b^af$}
+
+\noindent for $x\in\Bbb R$, we have $\{x:f_1^*(x)>t\}=G_t$ for
+every $t>0$.
+
+For any $t>0$,
+
+\Centerline{$\Bover1pt\mu G_t
+=(1-\Bover1q)t\mu G_t
+\le\int_{G_t}f-\Bover1q t\chi\Bbb R
+\le\int_{-\infty}^{\infty}(f-\Bover1q t\chi\Bbb R)^+$.}
+
+\noindent So
+
+$$\eqalignno{\int_{-\infty}^{\infty}(f_1^*)^p
+&=\int_0^{\infty}\mu\{x:f_1^*(x)^p>t\}dt\cr
+\displaycause{see 252O}
+&=p\int_0^{\infty}u^{p-1}\mu\{x:f_1^*(x)>u\}du\cr
+\displaycause{substituting $t=u^p$}
+&=p\int_0^{\infty}u^{p-1}\mu G_udu
+\le p^2\int_0^{\infty}u^{p-2}
+  \bigl(\int_{-\infty}^{\infty}(f-\Bover1q u\chi\Bbb R)^+\bigr)du\cr
+&=p^2\int_{-\infty}^{\infty}\int_0^{\infty}
+  \max(0,f(x)-\Bover1q u)u^{p-2}dudx\cr
+\displaycause{by Fubini's theorem, 252B, because
+$(x,u)\mapsto u^{p-2}\max(0,f(x)-\bover1qu)$ is measurable and
+non-negative}
+&=p^2\int_{-\infty}^{\infty}\int_0^{qf(x)}
+  u^{p-2}(f(x)-\Bover1q u)dudx\cr
+&=\Bover{p^2q^{p-1}}{p(p-1)}\int_{-\infty}^{\infty}f^p
+=(\Bover{p}{p-1})^p\|f\|_p^p.\cr}$$
+
+\medskip
+
+{\bf (d)} Similarly, setting $f_2^*(x)=\sup_{a<x}\Bover1{x-a}\int_a^xf$
+for $x\in\Bbb R$,
+$\int_{-\infty}^{\infty}(f_2^*)^p\le(\Bover{p}{p-1})^p\|f\|_p^p$.   But
+$f^*=\max(f_1^*,f_2^*)$.   \Prf\ Of course $f_1^*\le f^*$ and
+$f_2^*\le f^*$.   But also, if $f^*(x)>t$, there must be a non-trivial
+interval $I$ containing $x$ such that $\int_If>t\mu I$;  if $a=\inf I$
+and $b=\sup I$, then either $\int_a^xf>(x-a)t$ and $f_2^*(x)>t$, or
+$\int_x^bf>(b-x)t$ and $f_1^*(x)>t$.   As $x$ and $t$ are arbitrary,
+$f^*=\max(f_1^*,f_2^*)$.\ \Qed
+
+Accordingly
+
+$$\eqalign{\|f^*\|_p^p
+&=\int_{-\infty}^{\infty}(f^*)^p
+=\int_{-\infty}^{\infty}\max((f_1^*)^p,(f_2^*)^p)\cr
+&\le\int_{-\infty}^{\infty}(f_1^*)^p+(f_2^*)^p
+\le 2(\Bover{p}{p-1})^p\|f\|^p_p.\cr}$$
+
+\noindent Taking $p$th roots, we have the inequality we seek.
+}%end of proof of 286A
+
+\leader{286B}{Lemma} Let $g:\Bbb R\to\coint{0,\infty}$ be a function
+which is non-decreasing on $\ocint{-\infty,\alpha}$, non-increasing on
+$\coint{\beta,\infty}$ and constant on $[\alpha,\beta]$, where
+$\alpha\le\beta$.   Then for any measurable function
+$f:\Bbb R\to[0,\infty]$,
+$\int_{-\infty}^{\infty}f\times g\le\int_{-\infty}^{\infty}g
+  \cdot\sup_{a\le\alpha,b\ge\beta,a<b}\Bover1{b-a}\int_a^bf$.
+
+\proof{ Set
+$\gamma=\sup_{a\le\alpha,b\ge\beta,a<b}\Bover1{b-a}\int_a^bf$.   For
+$n$, $k\in\Bbb N$ set
+$E_{nk}=\{x:\alpha-2^n\le x\le\beta+2^n$, $g(x)\ge 2^{-n}(k+1)\}$, so
+that $E_{nk}$
+is either empty or a bounded interval including $[\alpha,\beta]$,
+and $\int_{E_{nk}}f\le\gamma\mu E_{nk}$.   For
+$n\in\Bbb N$, set $g_n=2^{-n}\sum_{k=0}^{4^n-1}\chi E_{nk}$;  then
+$\sequencen{g_n}$ is a non-decreasing sequence of functions with
+supremum $g$, and
+
+$$\eqalign{\int_{-\infty}^{\infty} f\times g
+&=\sup_{n\in\Bbb N}\int_{-\infty}^{\infty} f\times g_n
+=\sup_{n\in\Bbb N}2^{-n}\sum_{k=0}^{4^n-1}\int_{E_{nk}}f\cr
+&\le\sup_{n\in\Bbb N}2^{-n}\sum_{k=0}^{4^n-1}\gamma\mu E_{nk}
+=\sup_{n\in\Bbb N}\gamma\int_{-\infty}^{\infty} g_n
+=\gamma\int_{-\infty}^{\infty} g,\cr}$$
+
+\noindent as claimed.
+}%end of proof of 286B
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Compare 224J.}
+
+\vleader{48pt}{286C}{Shift, modulation and dilation}\cmmnt{ Some of
+the
+calculations below will be easier if we use the following formalism.}
+For any function $f$ with domain included in $\Bbb R$, and
+$\alpha\in\Bbb R$, we can define
+
+\Centerline{$(S_{\alpha}f)(x)=f(x+\alpha)$,
+\quad$(M_{\alpha}f)(x)=e^{i\alpha x}f(x)$,
+\quad$(D_{\alpha}f)(x)=f(\alpha x)$}
+
+\noindent whenever the right-hand sides are defined.   \cmmnt{In the
+case of $S_{\alpha}f$ and $D_{\alpha}f$ it is sometimes convenient to
+allow $\pm\infty$ as a value of the function.   We have the following
+elementary facts.}
+
+\spheader 286Ca $S_{-\alpha}S_{\alpha}f=f$, $D_{1/\alpha}D_{\alpha}f=f$
+if $\alpha\ne 0$.
+
+\spheader 286Cb
+$S_{\alpha}(f\times g)=S_{\alpha}f\times S_{\alpha}g$,
+$D_{\alpha}(f\times g)=D_{\alpha}f\times D_{\alpha}g$.
+
+\spheader 286Cc $D_{\alpha}|f|=|D_{\alpha}f|$.
+
+\spheader 286Cd If $f$ is integrable, then
+
+\Centerline{$(M_{\alpha}f)\varsphat=S_{-\alpha}\varhatf$,
+\quad$(S_{\alpha}f)\varsphat=M_{\alpha}\varhatf$,
+\quad$(S_{\alpha}f)\varspcheck=M_{-\alpha}\varcheckf$;}
+
+\noindent if moreover $\alpha>0$, then
+
+\Centerline{$\alpha(D_{\alpha}f)\varsphat
+=D_{1/\alpha}\varhatf$,
+\quad$\alpha(D_{\alpha}f)\varspcheck
+=D_{1/\alpha}\varcheckf$\dvro{.}{}}
+
+\cmmnt{\noindent (283Cc-283Ce).}
+
+\spheader 286Ce If $f$ belongs to
+$\eusm L^1_{\Bbb C}=\eusm L^1_{\Bbb C}(\mu)$, so do $S_{\alpha}f$,
+$M_{\alpha}f$ and (if $\alpha\ne 0$) $D_{\alpha}f$, and in this case
+
+\Centerline{$\|S_{\alpha}f\|_1=\|M_{\alpha}f\|_1=\|f\|_1$,
+\quad$\|D_{\alpha}f\|_1=\Bover1{|\alpha|}\|f\|_1$.}
+
+\spheader 286Cf If $f$ belongs to
+$\eusm L^2_{\Bbb C}$ so do $S_{\alpha}f$, $M_{\alpha}f$ and (if
+$\alpha\ne 0$) $D_{\alpha}f$, and in this case
+
+\Centerline{$\|S_{\alpha}f\|_2=\|M_{\alpha}f\|_2=\|f\|_2$,
+\quad$\|D_{\alpha}f\|_2=\Bover1{\sqrt{|\alpha|}}\|f\|_2$.}
+
+\spheader 286Cg If $h$ is a rapidly decreasing test
+function\cmmnt{ (284A)}, so are
+$M_{\alpha}h$ and $S_{\alpha}h$ and (if $\alpha\ne 0$) $D_{\alpha}h$.
+
+\leader{286D}{Lemma} Suppose that $g:\Bbb R\to[0,\infty]$ is a
+measurable function such that, for some constant $C\ge 0$,
+$\int_Eg\le C\sqrt{\mu E}$ whenever $\mu E<\infty$.   Then $g$ is finite
+almost everywhere and
+$\biggerint_{-\infty}^{\infty}\Bover1{1+|x|}g(x)dx$ is finite.
+
+\proof{ For any $n\ge 1$, set $E_n=\{x:|x|\le n,\,g(x)\ge n\}$;  then
+
+\Centerline{$n\mu E_n\le\int_{E_n}g\le C\sqrt{\mu E_n}$,}
+
+\noindent so $\mu E_n\le\Bover{C^2}{n^2}$ and
+
+\Centerline{$\{x:g(x)=\infty\}=\bigcap_{n\ge 1}\bigcup_{m\ge n}E_m$}
+
+\noindent has measure at most
+$\inf_{n\ge 1}\sum_{m=n}^{\infty}\mu E_m=0$.
+
+As for the integral,
+set $G(x)=\int_0^xg$ for $x\ge 0$.   Then, for any $a\ge 0$,
+
+$$\eqalignno{\int_0^a\Bover{g(x)}{1+x}dx
+&=\Bover{G(a)}{1+a}+\int_0^a\Bover{G(x)}{(1+x)^2}dx\cr
+\displaycause{225F}
+&\le C\bigl(\Bover{\sqrt{a}}{1+a}
+  +\int_0^a\Bover{\sqrt{x}}{(1+x)^2}dx\bigr)
+\le C\bigl(1+\int_0^{\infty}\Bover{\sqrt{x}}{(1+x)^2}dx\bigr),\cr}$$
+
+\noindent so
+
+\Centerline{$\int_0^{\infty}\Bover{g(x)}{1+x}dx
+\le C\bigl(1+\int_0^{\infty}\Bover{\sqrt{x}}{(1+x)^2}dx\bigr)$}
+
+
+\noindent is finite.   Similarly,
+$\biggerint_{-\infty}^0\Bover{g(x)}{1-x}dx$
+is finite, so we have the result.
+}%end of proof of 286D
+
+\allowmorestretch{500}{
+\leader{286E}{The Lacey-Thiele construction (a)}
+Let $\Cal I$ be the family of all {\bf dyadic intervals} of the form
+\penalty-100$\coint{2^kn,2^k(n+1)}$ where $k$, $n\in\Bbb Z$.   The essential
+geometric property of $\Cal I$ is that if $I$, $J\in\Cal I$ then either
+$I\subseteq J$ or $J\subseteq I$ or $I\cap J=\emptyset$.   Let $Q$ be
+the set of all pairs $\sigma=(I_{\sigma},J_{\sigma})\in\Cal I^2$ such
+that $\mu I_{\sigma}\cdot\mu J_{\sigma}=1$.   For $\sigma\in Q$, let
+$k_{\sigma}\in\Bbb Z$
+be such that $\mu J_{\sigma}=2^{k_{\sigma}}$ and
+$\mu I_{\sigma}=2^{-k_{\sigma}}$;  let $x_{\sigma}$
+be the midpoint of $I_{\sigma}$, $y_{\sigma}$ the midpoint of
+$J_{\sigma}$, $J^l_{\sigma}\in\Cal I$ the left-hand half-interval of
+$J_{\sigma}$, $J^r_{\sigma}\in\Cal I$ the
+right-hand half-interval of $J_{\sigma}$, and $y^l_{\sigma}$ the lower
+quartile of $J_{\sigma}$\cmmnt{, that is, the midpoint of
+$J^l_{\sigma}$}.
+}%end of allowmorestretch
+
+\spheader 286Eb There is a rapidly decreasing test function $\phi$ such
+that $\varhat{\phi}$ is real-valued and
+$\chi[-\bover16,\bover16]\le\varhat{\phi}\le\chi[-\bover15,\bover15]$.
+\prooflet{\Prf\ Look at parts (b)-(d) of the proof
+of 284G.   The process there can be used to provide us with a smooth
+function $\psi_1$ which is zero outside the interval
+$[\bover16,\bover15]$ and strictly positive on
+$\ooint{\bover16,\bover15}$;  multiplying by a suitable factor, we
+can arrange that $\int_{-\infty}^{\infty}\psi_1=1$.   So if we set
+$\psi_2(x)=1-\int_{-\infty}^x\psi_1$ for $x\in\Bbb R$, $\psi_2$ will be
+smooth, and
+$\chi\ocint{-\infty,\bover16}\le\psi_2\le\chi\ocint{-\infty,\bover15}$.
+Now set $\psi_0(x)=\psi_2(x)\psi_2(-x)$ for $x\in\Bbb R$, and
+$\phi=\varcheck{\psi}_0$;  $\varhat{\phi}=\psi_0$ (284C) will have
+the required property.\ \Qed}
+%wouldn't it be nicer if $\|\phi\|_2=1$?  but it is helpful at one
+%point to have $\varhat\phi(0)=1$
+
+For $\sigma\in Q$, set\cmmnt{ $\phi_{\sigma}
+=2^{k_{\sigma}/2}M_{y^l_{\sigma}}S_{-x_{\sigma}}D_{2^{k_{\sigma}}}\phi$,
+so that}
+
+\Centerline{$\phi_{\sigma}(x)
+=\sqrt{\mu J_{\sigma}}e^{iy^l_{\sigma}x}
+  \phi((x-x_{\sigma})\mu J_{\sigma})$.}
+
+\noindent\cmmnt{Observe that }$\phi_{\sigma}$ is a rapidly decreasing
+test function.   \cmmnt{Now
+$\varhat{\phi}_{\sigma}=2^{-k_{\sigma}/2}S_{-y^l_{\sigma}}
+M_{-x_{\sigma}}D_{2^{-k_{\sigma}}}\varhat{\phi}$, that is,}
+
+\Centerline{$\varhat{\phi}_{\sigma}(y)
+=\sqrt{\mu I_{\sigma}}e^{-ix_{\sigma}(y-y^l_{\sigma})}
+  \varhat{\phi}((y-y^l_{\sigma})\mu I_{\sigma})$,}
+
+\noindent which is zero
+unless\cmmnt{ $|y-y^l_{\sigma}|\le\bover15\mu J_{\sigma}$;  since the
+length of $J^l_{\sigma}$ is $\bover12\mu J_{\sigma}$, this can be so
+only when} $y\in J^l_{\sigma}$.   \cmmnt{We have the following simple
+facts.}
+
+\quad(i) $\|\phi_{\sigma}\|_2
+=\cmmnt{\sqrt{\mu J_{\sigma}}\cdot\sqrt{\mu I_{\sigma}}\|\phi\|_2
+=}\|\phi\|_2$
+for every $\sigma\in Q$.
+
+\quad(ii) $\|\varhat{\phi}_{\sigma}\|_1
+=\cmmnt{\sqrt{\mu I_{\sigma}}\cdot\mu J_{\sigma}\|\varhat{\phi}\|_1
+=}\sqrt{\mu J_{\sigma}}\|\varhat{\phi}\|_1$ for every $\sigma\in Q$.
+
+\quad(iii) If $\sigma$, $\tau\in Q$ and
+$J^l_{\sigma}\cap J^l_{\tau}=\emptyset$ then
+
+\Centerline{$\innerprod{\phi_{\sigma}}{\phi_{\tau}}
+=\innerprod{\varhat{\phi}_{\sigma}}{\varhat{\phi}_{\tau}}=0$\dvro{.}{,}}
+
+\noindent\cmmnt{by 284Ob.   }(For $f$,
+$g\in\eusm L_{\Bbb C}^2$, I
+write $\innerprod{f}{g}$ for $\int_{-\infty}^{\infty}f\times\bar g$.)
+
+\quad(iv) If $\sigma$, $\tau\in Q$ and
+$J_{\sigma}\ne J_{\tau}$ and $J^r_{\sigma}\cap J^r_{\tau}$ is
+non-empty, then\cmmnt{ $J^l_{\sigma}\cap J^l_{\tau}=\emptyset$ so}
+$\innerprod{\phi_{\sigma}}{\phi_{\tau}}=0$.
+
+\spheader 286Ec Set $w(x)=\Bover1{(1+|x|)^3}$ for $x\in\Bbb R$.
+For $\sigma\in Q$, set\cmmnt{ $w_{\sigma}
+=2^{k_{\sigma}}S_{-x_{\sigma}}D_{2^{k_{\sigma}}}w$, so that}
+
+\Centerline{$w_{\sigma}(x)=w((x-x_{\sigma})\mu J_{\sigma})\mu J_{\sigma}
+\le\mu J_{\sigma}=2^{k_{\sigma}}$}
+
+\noindent for every
+$x$.   Note that $w_{\sigma}=w_{\tau}$ whenever $I_{\sigma}=I_{\tau}$.
+
+\leader{286F}{A partial order (a)} For $\sigma$, $\tau\in Q$ say that
+$\tau\le\sigma$ if $J_{\tau}\subseteq J_{\sigma}$ and
+$I_{\sigma}\subseteq I_{\tau}$.   Then $\le$ is a partial order on $Q$.
+\cmmnt{We have the following elementary facts. }
+
+\quad(i) If $\tau\le\sigma$, then $k_{\tau}\le k_{\sigma}$.
+
+\quad(ii) If $\sigma$ and $\tau$ are incomparable\cmmnt{ (that is,
+$\sigma\not\le\tau$ and $\tau\not\le\sigma$)}, then
+$(I_{\sigma}\times J_{\sigma})\cap(I_{\tau}\times J_{\tau})$ is empty.
+\prooflet{\Prf\ We may suppose that $k_{\sigma}\le k_{\tau}$.   If
+$J_{\sigma}\cap J_{\tau}\ne\emptyset$, then
+$J_{\sigma}\subseteq J_{\tau}$, because both are dyadic intervals, and
+$J_{\sigma}$ is the shorter;  but as $\sigma\not\le\tau$, this means
+that $I_{\tau}\not\subseteq I_{\sigma}$ and
+$I_{\sigma}\cap I_{\tau}=\emptyset$.\ \Qed}
+
+\quad(iii) If $\sigma$, $\sigma'$ are incomparable and both greater
+than or equal to $\tau$, then
+$I_{\sigma}\cap I_{\sigma'}=\emptyset$\cmmnt{, because
+$J_{\tau}\subseteq J_{\sigma}\cap J_{\sigma'}$}.
+
+\quad(iv) If $\tau\le\sigma$ and $k_{\tau}\le k\le k_{\sigma}$, then
+there is
+a (unique) $\upsilon$ such that $\tau\le\upsilon\le\sigma$ and
+$k_{\upsilon}=k$.   \prooflet{(The point is that there is a unique
+$I\in\Cal I$ such that $I_{\sigma}\subseteq I\subseteq I_{\tau}$ and
+$\mu I=2^{-k}$;  and similarly there is just one candidate for
+$J_{\upsilon}$.)}
+
+\spheader 286Fb\dvro{ If}{ It will be convenient to have a shorthand for
+the following:  if} $R\subseteq Q$, say that 
+
+\Centerline{$R^+=\bigcup_{\tau\in R}\{\sigma:\tau\le\sigma\in Q\}$.}
+
+ 
+\spheader 286Fc For $\tau\in Q$ set
+
+\Centerline{$T_{\tau}=\{\sigma:\sigma\in Q$, $\tau\le\sigma$,
+$J^r_{\tau}\subseteq J^r_{\sigma}\}$.}
+
+\noindent Note that if $\sigma$, $\sigma'\in T_{\tau}$
+and $k_{\sigma}\ne k_{\sigma'}$ then\cmmnt{ $J_{\sigma}\ne J_{\sigma'}$ and
+$J^r_{\sigma}\cap J^r_{\sigma'}\ne\emptyset$, so}
+$\innerprod{\phi_{\sigma}}{\phi_{\sigma'}}=0$\cmmnt{ (286E(b-iv))}.
+
+\vleader{72pt}{286G}{}\cmmnt{ We shall need the results of some elementary
+calculations.   The first four are nearly trivial.
+
+\medskip
+
+\noindent}{\bf Lemma} (a)
+$\int_{-\infty}^{\infty}w_{\sigma}=\int_{-\infty}^{\infty}w=1$ for every
+$\sigma\in Q$.
+
+(b) For any $m\in\Bbb N$,
+$\sum_{n=m}^{\infty}w(n+\bover12)\le\Bover1{2(1+m)^2}$.
+
+(c) Suppose that $\sigma\in Q$ and that $I$ is an interval not
+containing $x_{\sigma}$ in its interior.   Then
+$\int_Iw_{\sigma}\ge w_{\sigma}(x)\mu I$, where $x$ is the midpoint of
+$I$.
+
+(d) For any $x\in\Bbb R$,
+$\sum_{n=-\infty}^{\infty}w(x-n)\le 2$.
+
+(e) There is a constant $C_1\ge 0$ such that
+$|\phi(x)|\le C_1\min(w(3),w(x)^2)$ for every $x\in\Bbb R$ and
+
+\Centerline{$|\phi_{\sigma}(x)|
+\le C_1\sqrt{\mu I_{\sigma}}w_{\sigma}(x)
+  \min(1,w_{\sigma}(x)\mu I_{\sigma})$}
+
+\noindent for every $x\in\Bbb R$ and $\sigma\in Q$.
+
+(f) There is a constant $C_2\ge 0$ such that
+$\int_{-\infty}^{\infty}w(x)w(\alpha x+\beta)dx\le C_2w(\beta)$ whenever
+$0\le\alpha\le 1$ and $\beta\in\Bbb R$.
+
+(g) There is a constant $C_3\ge 0$ such that
+$|\innerprod{\phi_{\sigma}}{\phi_{\tau}}|
+\le C_3\sqrt{\mu I_{\sigma}}\sqrt{\mu J_{\tau}}\int_{I_{\tau}}w_{\sigma}$
+whenever $\sigma$, $\tau\in Q$ and $k_{\sigma}\le k_{\tau}$.
+
+(h) There is a constant $C_4\ge 0$ such that
+
+\Centerline{$\sum_{\sigma\in Q,\sigma\ge\tau,k_{\sigma}=k}
+\int_{\Bbb R\setminus I_{\tau}}w_{\sigma}\le C_4$}
+
+\noindent whenever $\tau\in Q$ and $k\in\Bbb Z$.
+
+\proof{{\bf (a)} Immediate from the definition in 286Ec,
+the formulae in 286Ce and the fact that
+$\biggerint_0^{\infty}\Bover1{(1+x)^3}dx=\Bover12$.
+
+\medskip
+
+{\bf (b)} The point is just that $w$ is convex on
+$\ocint{-\infty,0}$ and
+$\coint{0,\infty}$.   So we can apply 233Ib with $f(x)=x$, or
+argue directly from the fact that
+$w(n+\bover12)\le\bover12(w(n+\bover12+x)+w(n+\bover12-x))$ for
+$|x|\le\bover12$, to see that $w(n+\bover12)\le\int_n^{n+1}w$
+for every $n\ge 0$.   Accordingly
+
+\Centerline{$\sum_{n=m}^{\infty}w(n+\bover12)
+\le\int_m^{\infty}w=\Bover1{2(1+m)^2}$.}
+
+\medskip
+
+{\bf (c)} Similarly, because $I$ lies all on the same side of
+$x_{\sigma}$, $w_{\sigma}$ is convex on $I$, so the same inequality
+yields $w_{\sigma}(x)\mu I\le\int_Iw_{\sigma}$.
+
+\medskip
+
+{\bf (d)} Let $m$ be such that $|x-m|\le\bover12$.   Then,
+using the same inequalities as before to estimate $w(x-n)$ for
+$n\ne m$, we have
+
+$$\eqalign{\sum_{n=-\infty}^{\infty}w(x-n)
+&\le w(x-m)+\int_{-\infty}^{x-m-\bover12}w
+  +\int_{x-m+\bover12}^{\infty}w\cr
+&\le 1+\int_{-\infty}^{\infty}w
+=2.\cr}$$
+
+\medskip
+
+{\bf (e)} Because
+$\lim_{x\to\infty}x^6\phi(x)=\lim_{x\to-\infty}x^6\phi(x)=0$,
+there is a $C_1>0$ such that
+$|\phi(x)|\le C_1\min(w(3),w(x)^2)$ for every $x\in\Bbb R$.  Now
+$|\phi(x)|\le C_1w(x)^2=C_1w(x)\min(1,w(x))$ for every $x$, so
+
+$$\eqalign{|\phi_{\sigma}(x)|
+&=\sqrt{\mu J_{\sigma}}|\phi((x-x_{\sigma})\mu J_{\sigma}|
+\le C_1\sqrt{\mu J_{\sigma}}w((x-x_{\sigma})\mu J_{\sigma})
+   \min(1,w((x-x_{\sigma})\mu J_{\sigma}))\cr
+&=C_1\sqrt{\mu J_{\sigma}}w_{\sigma}(x)\mu I_{\sigma}
+   \min(1,w_{\sigma}(x)\mu I_{\sigma})
+=C_1\sqrt{\mu I_{\sigma}}w_{\sigma}(x)
+   \min(1,w_{\sigma}(x)\mu I_{\sigma})\cr}$$
+
+\noindent whenever $\sigma\in Q$ and $x\in\Bbb R$.
+
+\medskip
+
+{\bf (f)(i)} The first step is to note that
+
+$$\bover{w(\bover12(1+\beta))}{w(\beta)}
+=\bover{8(1+\beta)^3}{(3+\beta)^3}\le 8$$
+
+\noindent for every $\beta\ge 0$.   Now
+$\alpha w(\alpha+\alpha\beta)\le 4w(\beta)$ whenever $\beta\ge 0$ and
+$\alpha\ge\bover12$.   \Prf\ For $t\ge\bover12$,
+
+\Centerline{$\Bover{d}{dt}tw(t+t\beta)
+=\Bover{1-2t(1+\beta)}{(1+t+t\beta)^4}\le 0$,}
+
+\noindent so
+
+\Centerline{$\alpha w(\alpha+\alpha\beta)
+\le\bover12w(\bover12+\bover12\beta)\le 4w(\beta)$. \Qed}
+
+Of course this means that
+
+\Centerline{$\Bover1{\alpha}w(\Bover{1+\beta}{2\alpha})\le 8w(\beta)$}
+
+\noindent whenever $\beta\ge 0$ and $0<\alpha\le 1$.
+
+\medskip
+
+\quad{\bf (ii)} Try $C_2=16$.   If $0<\alpha\le 1$ and $\beta\ge 0$, set
+$\gamma=\Bover{1+\beta}{2\alpha}$.   Then, for any $x\ge-\gamma$,
+
+\Centerline{$1+\alpha x+\beta
+=(1+\beta)(1+\Bover{\alpha x}{1+\beta})\ge\Bover12(1+\beta)$,}
+
+\noindent so $w(\alpha x+\beta)\le 8w(\beta)$ and
+
+\Centerline{$\int_{-\gamma}^{\infty}w(x)w(\alpha x+\beta)dx
+\le 8w(\beta)\int_{-\gamma}^{\infty}w\le 8w(\beta)$.}
+
+\noindent On the other hand,
+
+$$\eqalign{\int_{-\infty}^{-\gamma}w(x)w(\alpha x+\beta)dx
+&\le w(\gamma)\int_{-\infty}^{\infty}w(\alpha x+\beta)dx\cr
+&=\Bover1{\alpha}w(\Bover{1+\beta}{2\alpha})
+  \int_{-\infty}^{\infty}w
+\le 8w(\beta).\cr}$$
+
+\noindent Putting these together,
+$\int_{-\infty}^{\infty}w(x)w(\alpha x+\beta)dx
+\le 16w(\beta)$;  and this is true whenever $0<\alpha\le 1$ and
+$\beta\ge 0$.
+
+\medskip
+
+\quad{\bf (iii)} If $\alpha=0$, then
+
+\Centerline{$\int_{-\infty}^{\infty}w(x)w(\alpha x+\beta)dx
+=w(\beta)\int_{-\infty}^{\infty}w=w(\beta)\le C_2w(\beta)$}
+
+\noindent for any $\beta$.   If $0<\alpha\le 1$ and $\beta<0$, then
+
+$$\eqalignno{\int_{-\infty}^{\infty}w(x)w(\alpha x+\beta)dx
+&=\int_{-\infty}^{\infty}w(-x)w(-\alpha x-\beta)dx\cr
+\displaycause{because $w$ is an even function}
+&=\int_{-\infty}^{\infty}w(x)w(\alpha x-\beta)dx
+\le C_2w(-\beta)\cr
+\displaycause{by (ii) above}
+&=C_2w(\beta).\cr}$$
+
+\noindent So we have the required inequality in all cases.
+
+\medskip
+
+{\bf (g)} Set $C_3=\max(C_1^2C_2,\|\phi\|_2^2/\int_{-1/2}^{1/2}w)$.
+
+\medskip
+
+\quad{\bf (i)} It is worth disposing immediately of the case
+$\sigma=\tau$.   In this case,
+
+\Centerline{$|\innerprod{\phi_{\sigma}}{\phi_{\tau}}|
+=\|\phi_{\sigma}\|_2^2=\|\phi\|_2^2$,}
+
+\noindent while
+
+$$\eqalign{\int_{I_{\tau}}w_{\sigma}
+&=\mu J_{\sigma}\int_{x_{\sigma}-\bover12\mu I_{\sigma}}
+  ^{x_{\sigma}+\bover12\mu I_{\sigma}}w((x-x_{\sigma})\mu J_{\sigma})dx
+=\int_{-1/2}^{1/2}w,\cr}$$
+
+\noindent so certainly
+$|\innerprod{\phi_{\sigma}}{\phi_{\tau}}|
+\le C_3\int_{I_{\tau}}w_{\sigma}$.
+
+\medskip
+
+\quad{\bf (ii)} If $\sigma\ne\tau$ and $I_{\sigma}=I_{\tau}$ then
+$J_{\sigma}\cap J_{\tau}=\emptyset$ so
+$\innerprod{\phi_{\sigma}}{\phi_{\tau}}=0$, by 286E(b-iii).
+
+\medskip
+
+\quad{\bf (iii)} Now suppose that $I_{\sigma}\ne I_{\tau}$.   In this
+case, because $\mu I_{\tau}\le\mu I_{\sigma}$,
+$I_{\tau}$ must lie all on the same side of $x_{\sigma}$, so
+$\int_{I_{\tau}}w_{\sigma}\ge w_{\sigma}(x_{\tau})\mu I_{\tau}$, by (c).
+Accordingly
+
+$$\eqalignno{|\innerprod{\phi_{\sigma}}{\phi_{\tau}}|
+&\le\int_{-\infty}^{\infty}|\phi_{\sigma}|\times|\phi_{\tau}|
+\le C_1^2\sqrt{\mu I_{\sigma}}\sqrt{\mu I_{\tau}}
+  \int_{-\infty}^{\infty}w_{\sigma}\times w_{\tau}
+\Displaycause{using (e) twice}
+=C_1^2\sqrt{\mu J_{\sigma}}\sqrt{\mu J_{\tau}}\int_{-\infty}^{\infty}
+  w((x-x_{\sigma})\mu J_{\sigma})w((x-x_{\tau})\mu J_{\tau})dx\cr&
+=C_1^2\sqrt{\mu J_{\sigma}}\sqrt{\mu I_{\tau}}\int_{-\infty}^{\infty}
+  w(x\mu J_{\sigma}\mu I_{\tau}
+    +(x_{\tau}-x_{\sigma})\mu J_{\sigma})w(x)dx\cr&
+\le C_1^2C_2\sqrt{\mu J_{\sigma}}\sqrt{\mu I_{\tau}}
+  w((x_{\tau}-x_{\sigma})\mu J_{\sigma})
+\Displaycause{by (f), since $\mu J_{\sigma}\mu I_{\tau}\le 1$}
+\le C_3\sqrt{\mu I_{\sigma}}\sqrt{\mu I_{\tau}}w_{\sigma}(x_{\tau})
+\le C_3\sqrt{\mu I_{\sigma}}\sqrt{\mu J_{\tau}}
+   \int_{I_{\tau}}w_{\sigma},\cr}$$
+
+\noindent as required.
+
+\medskip
+
+{\bf (h)} Set
+$C_4=2\sum_{j=0}^{\infty}\int_{j+\bover12}^{\infty}w$;  this is
+finite because $\int_{\alpha}^{\infty}w=\Bover1{2(1+\alpha)^2}$
+for every $\alpha\ge 0$.
+
+If $k<k_{\tau}$ then $k_{\sigma}\ne k$ for any $\sigma\ge\tau$, so the
+result is trivial.   If $k\ge k_{\tau}$, then for each dyadic
+subinterval $I$ of $I_{\tau}$ of length $2^{-k}$ there is exactly one
+$\sigma\ge\tau$ such that $I_{\sigma}=I$, since $J_{\sigma}$ must be the
+unique dyadic interval of length $2^k$ including $J_{\tau}$.
+List these as
+$\sigma_0,\ldots$ in ascending order of the centres $x_{\sigma_j}$, so
+that if $I_{\tau}=\coint{m\mu I_{\tau},(m+1)\mu I_{\tau}}$ then
+$x_{\sigma_j}=m\mu I_{\tau}+2^{-k}(j+\bover12)$, for
+$j<2^{k-k_{\tau}}$.   Now
+
+$$\eqalign{\sum_{j=0}^{2^{k-k_{\tau}}-1}
+  \int_{-\infty}^{m\mu I_{\tau}}w_{\sigma_j}
+&=2^k\sum_{j=0}^{2^{k-k_{\tau}}-1}\int_{-\infty}^{m\mu I_{\tau}}
+  w(2^k(x-m\mu I_{\tau})-j-\Bover12)dx\cr
+&=\sum_{j=0}^{2^{k-k_{\tau}}-1}
+  \int_{-\infty}^0w(x-j-\Bover12)dx\cr
+&\le\sum_{j=0}^{\infty}
+  \int_{j+\bover12}^{\infty}w
+=\Bover12C_4.\cr}$$
+
+\noindent Similarly (since $w$ is an even function, so the whole picture
+is symmetric about $x_{\tau}$)
+
+\Centerline{$\sum_{j=0}^{2^{k-k_{\tau}}-1}
+  \int_{(m+1)\mu I_{\tau}}^{\infty}w_{\sigma_j}
+\le\Bover12C_4$,}
+
+\noindent and
+
+\Centerline{$\sum_{\sigma\ge\tau,k_{\sigma}=k}
+  \int_{\Bbb R\setminus I_{\tau}}w_{\sigma}\le C_4$,}
+
+\noindent as required.
+}%end of proof of 286G
+
+\leader{286H}{`Mass' and `energy'}\cmmnt{ ({\smc Lacey \& Thiele 00})}
+If $P$ is a subset of $Q$, $E\subseteq\Bbb R$ is measurable,
+$g:\Bbb R\to\Bbb R$ is measurable, and $f\in\eusm L^2_{\Bbb C}$, set
+
+\Centerline{$\mass_{Eg}(P)
+=\sup_{\sigma\in P,\tau\in Q,\tau\le\sigma}
+  \int_{E\cap g^{-1}[J_{\tau}]}w_{\tau}
+\le\sup_{\tau\in Q}\int_{-\infty}^{\infty}w_{\tau}=1$,}
+
+\Centerline{$\Delta_f(P)
+=\sum_{\sigma\in P}|\innerprod{f}{\phi_{\sigma}}|^2$,}
+
+\Centerline{$\energy_f(P)
+=\sup_{\tau\in Q}\sqrt{\mu J_{\tau}}\sqrt{\Delta_f(P\cap T_{\tau})}$.}
+
+\noindent If $P'\subseteq P$ then $\mass_{Eg}(P')\le\mass_{Eg}(P)$ and
+$\energy_f(P')\le\energy_f(P)$.   \cmmnt{Note that}
+$\energy_f(\{\sigma\})=\sqrt{\mu J_{\sigma}}|\innerprod{f}{\phi_{\sigma}}|$
+for any $\sigma\in Q$\cmmnt{, since if $\sigma\in T_{\tau}$ then
+$\mu J_{\tau}\le\mu J_{\sigma}$}.
+%end of 286H
+
+\leader{286I}{Lemma} If $P\subseteq Q$ is finite and
+$f\in\eusm L^2_{\Bbb C}$, then
+
+(a) $\Delta_f(P)\le\|\sum_{\sigma\in P}
+  \innerprod{f}{\phi_{\sigma}}\phi_{\sigma}\|_2\|f\|_2$,
+
+(b) $\sum_{\sigma,\tau\in P,J_{\sigma}=J_{\tau}}
+  \bigl|\innerprod{f}{\phi_{\sigma}}
+    \innerprod{\phi_{\sigma}}{\phi_{\tau}}
+    \innerprod{\phi_{\tau}}{f}\bigr|\le C_3\Delta_f(P)$.
+
+\proof{{\bf (a)}
+
+\Centerline{$\Delta_f(P)
+=\sum_{\sigma\in P}
+  \innerprod{f}{\phi_{\sigma}}\innerprod{\phi_{\sigma}}{f}
+=\Innerprod{\sum_{\sigma\in P}
+  \innerprod{f}{\phi_{\sigma}}\phi_{\sigma}}{f}
+\le\|\sum_{\sigma\in P}
+  \innerprod{f}{\phi_{\sigma}}\phi_{\sigma}\|_2\|f\|_2$}
+
+\noindent by Cauchy's inequality (244Eb).
+
+\medskip
+
+{\bf (b)}
+
+$$\eqalignno{\sum_{\Atop{\sigma,\tau\in P}{J_{\sigma}=J_{\tau}}}
+  \bigl|\innerprod{f}{\phi_{\sigma}}
+    \innerprod{\phi_{\sigma}}{\phi_{\tau}}
+    \innerprod{\phi_{\tau}}{f}\bigr|
+&\le\sum_{\Atop{\sigma,\tau\in P}{J_{\sigma}=J_{\tau}}}
+  \Bover12\bigl(|\innerprod{f}{\phi_{\sigma}}|^2
+             +|\innerprod{f}{\phi_{\tau}}|^2\bigr)
+  |\innerprod{\phi_{\sigma}}{\phi_{\tau}}|\cr
+\displaycause{because $|\xi\zeta|\le\bover12(|\xi|^2+|\zeta|^2)$ for
+all complex numbers $\xi$, $\zeta$}
+&=\sum_{\sigma\in P}\sum_{\Atop{\tau\in P}{J_{\sigma}=J_{\tau}}}
+  |\innerprod{f}{\phi_{\sigma}}|^2
+  |\innerprod{\phi_{\sigma}}{\phi_{\tau}}|\cr
+&\le\sum_{\sigma\in P}|\innerprod{f}{\phi_{\sigma}}|^2
+  \sum_{\Atop{\tau\in P}{J_{\sigma}=J_{\tau}}}
+     C_3\int_{I_{\tau}}w_{\sigma}\cr
+\displaycause{by 286Gg, since $k_{\sigma}=k_{\tau}$ if
+$J_{\sigma}=J_{\tau}$}
+&\le\sum_{\sigma\in P}|\innerprod{f}{\phi_{\sigma}}|^2
+  C_3\int_{-\infty}^{\infty}w_{\sigma}\cr
+\displaycause{because if $\tau$, $\tau'$ are distinct members of $P$ and
+$J_{\tau}=J_{\tau'}$, then $I_{\tau}$ and $I_{\tau'}$ are disjoint}
+&=C_3\sum_{\sigma\in P}|\innerprod{f}{\phi_{\sigma}}|^2
+=C_3\Delta_f(P).\cr}$$
+}%end of proof of 286I
+
+\leader{286J}{Lemma} Set $C_5=2^{12}$.   If $P\subseteq Q$ is finite,
+$E\subseteq\Bbb R$ is
+measurable, $g:\Bbb R\to\Bbb R$ is measurable, and
+$\gamma\ge\mass_{Eg}(P)$, then we can find 
+$R\subseteq Q$ such that
+$\gamma\sum_{\tau\in R}\mu I_{\tau}\le C_5\mu E$
+and\cmmnt{ (in the notation of 286Fb)} 
+$\mass_{Eg}(P\setminus R^+)\le\bover14\gamma$.
+
+\proof{{\bf (a)} If $\gamma=0$ we can take $R=\emptyset$.
+Otherwise, set 
+$P_1=\{\sigma:\sigma\in P$, $\mass_{Eg}(\{\sigma\})>\bover14\gamma\}$.   
+For each $\sigma\in P_1$ let
+$\sigma'\in Q$ be such that $\sigma'\le\sigma$ and
+$\int_{E\cap g^{-1}[J_{\sigma'}]}w_{\sigma'}>\bover14\gamma$.   Let
+$R$ be the set of elements of $\{\sigma':\sigma\in P_1\}$
+which are minimal for $\le$.   Then
+$P\setminus R^+\subseteq\{\sigma:\mass_{Eg}(\{\sigma\})\le\bover14\gamma\}$
+so $\mass_{Eg}(P\setminus R^+)\le\bover14\gamma$.
+
+\medskip
+
+{\bf (b)} For $k\in\Bbb N$ set
+
+\Centerline{$R_k
+=\{\tau:\tau\in R$,
+  $\mu J_{\tau}\cdot\mu(E\cap g^{-1}[J_{\tau}]\cap I^{(k)}_{\tau})
+  \ge 2^{2k-9}\gamma\}$,}
+
+\noindent where $I^{(k)}_{\tau}$ is the half-open
+interval with the same centre as
+$I_{\tau}$ and $2^k$ times its length.   Now
+$R=\bigcup_{k\in\Bbb N}R_k$.   \Prf\ Take $\tau\in R$.   If
+$k\in\Bbb N$ and $x\in\Bbb R\setminus I^{(k)}_{\tau}$, then
+$|x-x_{\tau}|\ge\bover12\mu I^{(k)}_{\tau}=2^{k-1}\mu I_{\tau}$, so
+
+\Centerline{$w_{\tau}(x)
+=w((x-x_{\tau})\mu J_{\tau})\mu J_{\tau}
+\le w(2^{k-1})\mu J_{\tau}
+=(1+2^{k-1})^{-3}\mu J_{\tau}$.}
+
+\noindent Accordingly
+
+$$\eqalign{\Bover14\gamma
+&<\int_{E\cap g^{-1}[J_{\tau}]}w_{\tau}
+=\int_{E\cap g^{-1}[J_{\tau}]\cap I_{\tau}}w_{\tau}
+  +\sum_{k=0}^{\infty}\int_{E\cap g^{-1}[J_{\tau}]
+    \cap I^{(k+1)}_{\tau}\setminus I^{(k)}_{\tau}}w_{\tau}\cr
+&\le \mu J_{\tau}\cdot\mu(E\cap g^{-1}[J_{\tau}]\cap I_{\tau})
+  +\sum_{k=0}^{\infty}(1+2^{k-1})^{-3}\mu J_{\tau}\cdot
+   \mu(E\cap g^{-1}[J_{\tau}]\cap I^{(k+1)}_{\tau}).\cr}$$
+
+\noindent It follows that either
+
+\Centerline{$\mu J_{\tau}\cdot\mu(E\cap g^{-1}[J_{\tau}]\cap I_{\tau})
+\ge\Bover18\gamma$}
+
+\noindent and $\tau\in R_0$, or there is some $k\in\Bbb N$ such that
+
+\Centerline{$(1+2^{k-1})^{-3}\mu J_{\tau}
+  \cdot\mu(E\cap g^{-1}[J_{\tau}]\cap I^{(k+1)}_{\tau})
+  \ge 2^{-k-4}\gamma$}
+
+\noindent and
+
+\Centerline{$\mu J_{\tau}
+  \cdot\mu(E\cap g^{-1}[J_{\tau}]\cap I^{(k+1)}_{\tau})
+\ge(1+2^{k-1})^32^{-k-4}\gamma
+\ge 2^{2k-7}\gamma$,}
+
+\noindent so that $\tau\in R_{k+1}$.\ \Qed
+
+\medskip
+
+{\bf (c)} For every $k\in\Bbb N$,
+$\gamma\sum_{\tau\in R_k}\mu I_{\tau}\le 2^{11-k}\mu E$.   \Prf\ If
+$R_k=\emptyset$, this is trivial.   Otherwise, enumerate $R_k$ as
+$\langle\tau_j\rangle_{j\le n}$ in such a way that
+$k_{\tau_j}\le k_{\tau_l}$ if $j\le l\le n$.   Define
+$q:\{0,\ldots,n\}\to\{0,\ldots,n\}$ inductively by the rule
+
+\Centerline{$q(l)
+=\min(\{l\}\cup\{j:j<l$, $q(j)=j$,
+$(I^{(k)}_{\tau_j}\times J_{\tau_j})
+  \cap(I^{(k)}_{\tau_l}\times J_{\tau_l})\ne\emptyset\})$}
+
+\noindent for each $l\le n$.   Note that, for $l\le n$, 
+$q(q(l))=q(l)\le l$ and
+$I^{(k)}_{\tau_{q(l)}}\cap I^{(k)}_{\tau_l}\ne\emptyset$,
+so that
+
+\Centerline{$I_{\tau_l}\subseteq I^{(k)}_{\tau_l}
+\subseteq I^{(k+2)}_{\tau_{q(l)}}$, }
+
+\noindent because $\mu I_{\tau_l}^{(k)}\le\mu I_{\tau_{q(l)}}^{(k)}$.
+Moreover, if $j<l\le n$ and $q(j)=q(l)$, then both $J_{\tau_j}$ and
+$J_{\tau_l}$ meet $J_{\tau_{q(j)}}$, therefore include it, and
+$J_{\tau_j}\subseteq J_{\tau_l}$.   But as $\tau_j$ and $\tau_l$ are
+distinct members of $R$, $\tau_j\not\le\tau_l$ and
+$I_{\tau_j}\cap I_{\tau_l}$ must be empty.
+
+Set $M=\{q(j):j\le n\}$.   We have
+
+$$\eqalign{\gamma\sum_{\tau\in R_k}\mu I_{\tau}
+&=\gamma\sum_{m\in M}\sum_{\Atop{j\le n}{q(j)=m}}\mu I_{\tau_j}
+\le\gamma\sum_{m\in M}\mu I^{(k+2)}_{\tau_m}
+=2^{k+2}\gamma\sum_{m\in M}\mu I_{\tau_m}\cr
+&\le 2^{k+2}\sum_{m\in M}
+  2^{9-2k}\mu(E\cap g^{-1}[J_{\tau_m}]\cap I^{(k)}_{\tau_m})\cr
+&\le 2^{k+2}\cdot 2^{9-2k}\mu E
+=2^{11-k}\mu E\cr}$$
+
+\noindent because if $l$, $m\in M$ and $l<m$ then
+$I^{(k)}_{\tau_l}\times J_{\tau_l}$ and
+$I^{(k)}_{\tau_m}\times J_{\tau_m}$ are disjoint (since $q(m)=m$)),
+so that $g^{-1}[J_{\tau_l}]\cap I^{(k)}_{\tau_l}$ and
+$g^{-1}[J_{\tau_m}]\cap I^{(k)}_{\tau_m}$ are disjoint.\ \Qed
+
+\medskip
+
+{\bf (d)} Accordingly
+
+\Centerline{$\gamma\sum_{\tau\in R}\mu I_{\tau}
+\le\gamma\sum_{k=0}^{\infty}\sum_{\tau\in R_k}\mu I_{\tau}
+\le 2^{12}\mu E$,}
+
+\noindent as required.
+}%end of proof of 286J
+
+\leader{286K}{Lemma}
+Set $C_6=4(C_3+4C_3\sqrt{2C_4})$.   Suppose that $P\subseteq Q$ is a finite set,
+$f\in\eusm L^2_{\Bbb C}$, $\|f\|_2=1$ and $\gamma\ge\energy_f(P)$.
+Then we can find $R\subseteq Q$ such that 
+$\gamma^2\sum_{\tau\in R}\mu I_{\tau}\le C_6$ and 
+$\energy_f(P\setminus R^+)\le\bover12\gamma$.
+
+\proof{{\bf (a)} We may suppose that $\gamma>0$ and that
+$P\ne\emptyset$, since otherwise we can take $R=\emptyset$.
+
+\medskip
+
+\quad{\bf (i)}
+There are only finitely many sets of the form $P\cap T_{\tau}$
+for $\tau\in Q$;  let $\tilde R\subseteq Q$ be a non-empty finite set
+such that whenever $\tau\in Q$
+and $P\cap T_{\tau}$ is not empty, there is a $\tau'\in \tilde R$ such that
+$P\cap T_{\tau}=P\cap T_{\tau'}$ and $k_{\tau'}\ge k_{\tau}$;
+this is possible because if $A\subseteq P$ is not empty then
+$k_{\tau}\le\min_{\sigma\in A}k_{\sigma}$ whenever $T_{\tau}\supseteq A$.
+
+\medskip
+
+\quad{\bf (ii)} Choose $\tau_0,\tau_1,\ldots$, $P_0,P_1,\ldots$
+inductively, as follows.   $P_0=P$.   Given that $P_j\subseteq P$ is
+not empty, consider
+
+\Centerline{$R_j
+=\{\tau:\tau\in\tilde R$, $\Delta_f(P_j\cap T_{\tau})
+  \ge\Bover14\gamma^2\mu I_{\tau}\}$.}
+
+\noindent If $R_j=\emptyset$, stop the induction and set $n=j$ and
+$R=\{\tau_l:l<j\}$.   Otherwise, among the members of
+$R_j$ take one with $y_{\tau}$ as far to the left as possible, and call
+it $\tau_j$;  set $P_{j+1}=P_j\setminus\{\tau_j\}^+$, and
+continue.   Note that as $R_{j+1}\subseteq R_j$ for every $j$,
+$y_{\tau_{j+1}}\ge y_{\tau_j}$ for every $j$.
+
+The induction must stop at a finite stage because if it does not stop
+with $n=j$ then
+$\Delta_f(P_j\cap T_{\tau_j})>0$, so $P_j\cap T_{\tau_j}$ is not empty
+and $P_{j+1}\subseteq P_j\setminus T_{\tau_j}$ is a proper subset of
+$P_j$, while $P_0=P$ is finite.   Since $R_n=\emptyset$,
+
+$$\eqalign{\energy_f(P\setminus R^+)
+&=\energy_f(P_n)
+=\sup_{\tau\in Q}\sqrt{\mu J_{\tau}}\sqrt{\Delta_f(P_n\cap T_{\tau})}\cr&
+=\max_{\tau\in\tilde R}\sqrt{\mu J_{\tau}}\sqrt{\Delta_f(P_n\cap T_{\tau})}
+\le\Bover12\gamma.\cr}$$
+
+\medskip
+
+\quad{\bf (iii)} Set
+$P'_j=P_j\cap T_{\tau_j}\subseteq P_j\setminus P_{j+1}$ for $j<n$,
+so that $\ofamily{j}{n}{P'_j}$ is disjoint, and
+$P'=\bigcup_{j<n}P'_j\subseteq P$.
+Then if $\sigma\in P'$, $j<n$ and $J_{\tau_j}\subseteq J^l_{\sigma}$,
+$I_{\sigma}\cap I_{\tau_j}=\emptyset$.   \Prf\
+Let $l<n$ be such that $\sigma\in P'_l$.   Then
+$y_{\tau_j}\in J_{\tau_j}\subseteq J^l_{\sigma}$ and
+$y_{\tau_l}\in J^r_{\tau_l}\subseteq J^r_{\sigma}$, so
+$y_{\tau_j}<y_{\tau_l}$ and $j<l$.   Accordingly $P_{j+1}\supseteq P_l$
+contains $\sigma$, so $\sigma\not\ge\tau_j$;  as
+$J_{\tau_j}\subseteq J_{\sigma}$, $I_{\sigma}\not\subseteq I_{\tau_j}$,
+while $\mu I_{\sigma}\le\mu I_{\tau_j}$, so $I_{\sigma}$ is disjoint from
+$I_{\tau_j}$.\ \Qed
+
+It follows that if $\sigma$, $\tau\in P'$ are distinct and
+$J^l_{\sigma}\cap J^l_{\tau}$ is not empty, then
+$I_{\sigma}\cap I_{\tau}=\emptyset$.   \Prf\ If $J_{\sigma}=J_{\tau}$
+this is true just because $\sigma\ne\tau$.   Otherwise, since
+$J_{\sigma}$ and $J_{\tau}$ intersect, one is included in the other;
+suppose that $J_{\sigma}\subset J_{\tau}$.   Since $J_{\sigma}$ meets
+$J^l_{\tau}$, $J_{\sigma}\subseteq J^l_{\tau}$.   Now let $j<n$ be such
+that $\sigma\in P'_j$;  then $\sigma\ge\tau_j$, so
+$J_{\tau_j}\subseteq J_{\sigma}\subseteq J^l_{\tau}$, and
+$I_{\sigma}\cap I_{\tau}\subseteq I_{\tau_j}\cap I_{\tau}=\emptyset$ by
+the last remark.\ \Qed
+
+\medskip
+
+{\bf (b)} Now let us estimate
+
+\Centerline{$\gamma^2\sum_{j<n}\mu I_{\tau_j}
+\le 4\sum_{j<n}\Delta_f(P'_j)=4\Delta_f(P')=4\alpha$}
+
+\noindent say.   Because $\|f\|_2=1$, we have
+$\alpha\le\|\sum_{\sigma\in P'}
+  \innerprod{f}{\phi_{\sigma}}\phi_{\sigma}\|_2$ (286Ia).    So
+
+$$\eqalignno{\alpha^2
+&\le\|\sum_{\sigma\in P'}
+  \innerprod{f}{\phi_{\sigma}}\phi_{\sigma}\|^2_2
+=\sum_{\sigma,\tau\in P'}
+  \innerprod{f}{\phi_{\sigma}}\innerprod{\phi_{\sigma}}{\phi_{\tau}}
+  \innerprod{\phi_{\tau}}{f}\cr
+&=\sum_{\Atop{\sigma,\tau\in P'}{J_{\sigma}=J_{\tau}}}
+  \innerprod{f}{\phi_{\sigma}}\innerprod{\phi_{\sigma}}{\phi_{\tau}}
+  \innerprod{\phi_{\tau}}{f}\cr
+&\mskip100mu
+ +\sum_{\Atop{\sigma,\tau\in P'}{J_{\sigma}\subseteq J^l_{\tau}}}
+  \innerprod{f}{\phi_{\sigma}}\innerprod{\phi_{\sigma}}{\phi_{\tau}}
+  \innerprod{\phi_{\tau}}{f}
+ +\sum_{\Atop{\sigma,\tau\in P'}{J_{\tau}\subseteq J^l_{\sigma}}}
+  \innerprod{f}{\phi_{\sigma}}\innerprod{\phi_{\sigma}}{\phi_{\tau}}
+  \innerprod{\phi_{\tau}}{f}\cr}$$
+
+\noindent because $\innerprod{\phi_{\sigma}}{\phi_{\tau}}=0$ unless
+$J^l_{\sigma}\cap J^l_{\tau}\ne\emptyset$, as noted in 286E(b-iii).
+
+Take
+these three terms separately.   For the first, we have
+
+\Centerline{$\sum_{\sigma,\tau\in P',J_{\sigma}=J_{\tau}}
+  \bigl|\innerprod{f}{\phi_{\sigma}}
+    \innerprod{\phi_{\sigma}}{\phi_{\tau}}
+    \innerprod{\phi_{\tau}}{f}\bigr|
+\le C_3\alpha$}
+
+\noindent by 286Ib.   For the second term, we have
+
+$$\eqalign{\sum_{\Atop{\sigma,\tau\in P'}{J_{\sigma}\subseteq J^l_{\tau}}}
+  \bigl|\innerprod{f}{\phi_{\sigma}}
+   \innerprod{\phi_{\sigma}}{\phi_{\tau}}
+   \innerprod{\phi_{\tau}}{f}\bigr|
+&\le\sum_{\sigma\in P'}|\innerprod{f}{\phi_{\sigma}}|
+  \sum_{\Atop{\tau\in P'}{J_{\sigma}\subseteq J^l_{\tau}}}
+   |\innerprod{\phi_{\sigma}}{\phi_{\tau}}
+   \innerprod{\phi_{\tau}}{f}|\cr
+&\le\sqrt{\sum_{\sigma\in P'}|\innerprod{f}{\phi_{\sigma}}|^2}
+  \sqrt{\sum_{\sigma\in P'}
+   \bigl(\sum_{\Atop{\tau\in P'}{J_{\sigma}\subseteq J^l_{\tau}}}
+     |\innerprod{\phi_{\sigma}}{\phi_{\tau}}
+     \innerprod{\phi_{\tau}}{f}|\bigr)^2}\cr
+&=\sqrt{\alpha}\sqrt{\sum_{j<n}H_j},\cr}$$
+
+\noindent where for $j<n$ I set
+
+$$H_j=\sum_{\sigma\in P'_j}
+   \bigl(\sum_{\Atop{\tau\in P'}{J_{\sigma}\subseteq J^l_{\tau}}}
+     |\innerprod{\phi_{\sigma}}{\phi_{\tau}}
+     \innerprod{\phi_{\tau}}{f}|\bigr)^2.$$
+
+\noindent Now we can estimate $H_j$ by observing that, for any
+$\tau\in P'$,
+
+\Centerline{$|\innerprod{\phi_{\tau}}{f}|
+=\sqrt{\mu I_{\tau}}\energy_f(\{\tau\})\le\gamma\sqrt{\mu I_{\tau}}$,}
+
+\noindent while if $\sigma$, $\tau\in P'$ and
+$J_{\tau}^l\supseteq J_{\sigma}$ then
+
+\Centerline{$|\innerprod{\phi_{\sigma}}{\phi_{\tau}}|
+\le C_3\sqrt{\mu I_{\sigma}}\sqrt{\mu J_{\tau}}\int_{I_{\tau}}w_{\sigma}$}
+
+\noindent by 286Gg.   We also need to know that if
+$\sigma\in P'_j$ and $\tau$, $\tau'$ are distinct elements of
+$P'$ such that $J_{\sigma}\subseteq J^l_{\tau}\cap J^l_{\tau'}$, then
+$I_{\tau}$, $I_{\tau'}$ and $I_{\tau_j}$ are all disjoint, by (a-iii)
+above, because $J_{\tau_j}\subseteq J_{\sigma}$.   So we have
+
+$$\eqalignno{H_j
+&\le\sum_{\sigma\in P'_j}
+   \bigl(\sum_{\Atop{\tau\in P'}{J_{\sigma}\subseteq J^l_{\tau}}}
+    \gamma\sqrt{\mu I_{\tau}}
+      \cdot C_3\sqrt{\mu I_{\sigma}}\sqrt{\mu J_{\tau}}
+      \int_{I_{\tau}}w_{\sigma}\bigr)^2\cr
+&=C_3^2\gamma^2\sum_{\sigma\in P'_j}\mu I_{\sigma}
+   \bigl(\sum_{\Atop{\tau\in P'}{J_{\sigma}\subseteq J^l_{\tau}}}
+     \int_{I_{\tau}}w_{\sigma}\bigr)^2
+\le C_3^2\gamma^2\sum_{\sigma\in P'_j}\mu I_{\sigma}
+   (\int_{\Bbb R\setminus I_{\tau_j}}w_{\sigma})^2\cr
+&\le C_3^2\gamma^2\sum_{k=k_{\tau_j}}^{\infty}2^{-k}
+   \sum_{\Atop{\sigma\in P'_j}{k_{\sigma}=k}}
+   \int_{\Bbb R\setminus I_{\tau_j}}w_{\sigma}
+   \cdot\int_{-\infty}^{\infty}w_{\sigma}
+\le C_3^2\gamma^2\sum_{k=k_{\tau_j}}^{\infty}2^{-k}C_4\cr
+\displaycause{by 286Ga and 286Gh, since $\sigma\ge\tau_j$ for every
+$\sigma\in P'_j$}
+&=C_3^2\gamma^22^{-k_{\tau_j}+1}C_4
+=2C_3^2C_4\gamma^2\mu I_{\tau_j}.\cr}$$
+
+\noindent Accordingly
+
+\Centerline{$\sum_{j<n}H_j
+\le 2C_3^2\gamma^2C_4\sum_{j<n}\mu I_{\tau_j}
+\le 2C_3^2C_4\cdot 4\alpha$,}
+
+\noindent and
+
+\Centerline{$\sum_{\sigma,\tau\in P',J_{\sigma}\subseteq J^l_{\tau}}
+  |\innerprod{f}{\phi_{\sigma}}
+   \innerprod{\phi_{\sigma}}{\phi_{\tau}}
+   \innerprod{\phi_{\tau}}{f}|
+\le\sqrt{\alpha\sumop_{j<n}H_j}
+\le 2C_3\alpha\sqrt{2C_4}$.}
+
+Similarly,
+
+\Centerline{$\sum_{\sigma,\tau\in P',J_{\tau}\subseteq J^l_{\sigma}}
+  |\innerprod{f}{\phi_{\sigma}}
+   \innerprod{\phi_{\sigma}}{\phi_{\tau}}
+   \innerprod{\phi_{\tau}}{f}|
+\le 2C_3\alpha\sqrt{2C_4}$;}
+
+\noindent putting these together,
+
+\Centerline{$\alpha^2
+\le\alpha(C_3+4C_3\sqrt{2C_4})
+=\Bover14\alpha C_6$}
+
+\noindent and $\alpha\le\bover14C_6$.   But this means that
+
+\Centerline{$\gamma^2\sum_{j<n}\mu I_{\tau_j}
+\le 4\alpha\le C_6$,}
+
+\noindent and $R=\{\tau_j:j<n\}$ has both the properties required.
+}%end of proof of 286K
+
+\leader{286L}{Lemma} Set
+
+\Centerline{$C_7
+=C_1\bigl(\Bover{7}2+\Bover87+\Bover{28}{w(3/2)}
+  +\Bover{4\sqrt{14 C_3}}{w(3/2)}\bigr)$.}
+
+\noindent Suppose that $P$ is a finite subset of $Q$ with a lower bound
+$\tau$ in $Q$ for the ordering $\le$,
+$E\subseteq\Bbb R$ is measurable,
+$g:\Bbb R\to\Bbb R$ is measurable and $f\in\eusm L^2_{\Bbb C}$.   Then
+
+\Centerline{$\sum_{\sigma\in P}|\innerprod{f}{\phi_{\sigma}}
+  \int_{E\cap g^{-1}[J^r_{\sigma}]}\phi_{\sigma}|
+\le C_7\energy_f(P)\mass_{Eg}(P)\mu I_{\tau}$.}
+
+\proof{ Set $\gamma=\energy_f(P)$, $\gamma'=\mass_{Eg}(P)$.   If
+$P=\emptyset$ the result is trivial, so suppose that $P\ne\emptyset$.
+
+\medskip
+
+{\bf (a)(i)} Note that $\bigcup_{\sigma\in P}I_{\sigma}\subseteq I_{\tau}$,
+$J_{\tau}\subseteq\bigcap_{\sigma\in P}J_{\sigma}$ and
+$k_{\tau}\le\min_{\sigma\in P}k_{\sigma}$.
+So if $\sigma$, $\sigma'\in P$ are distinct and
+$\mu I_{\sigma}=\mu I_{\sigma'}$, then $J_{\sigma}=J_{\sigma'}$ and
+$I_{\sigma}\cap I_{\sigma'}=\emptyset$.
+
+\medskip
+
+\quad{\bf (ii)}
+For a dyadic interval $I$ let
+$I^*$ be the half-open interval with the same
+centre as $I$ and three times its length.   Let $\Cal J$ be the family
+of those $I\in\Cal I$ such that $I_{\sigma}\not\subseteq I^*$ for any
+$\sigma\in P$ such that $\mu I_{\sigma}\le\mu I$.   Because $P$ is
+finite, all sufficiently small intervals belong to $\Cal J$, and
+$\bigcup\Cal J=\Bbb R$;  let $\Cal K$ be the set of maximal members of
+$\Cal J$, so that $\Cal K$ is disjoint.  Then $\bigcup\Cal K=\Bbb R$.
+\Prf\ The point is that $P\ne\emptyset$;  fix $\sigma\in P$ for the
+moment.   If $I\in\Cal J$, consider for each $n\in\Bbb N$ the interval
+$\tilde I^{(n)}\in\Cal I$ including $I$ with length $2^n\mu I$.   Then
+there is some $n\in\Bbb N$ such that
+$\mu\tilde I^{(n)}\ge\mu I_{\sigma}$ and
+$I_{\sigma}\subseteq(\tilde I^{(n)})^*$, so that
+$\tilde I^{(k)}\notin\Cal J$ for any
+$k\ge n$, and there must be some $k<n$ such that
+$\tilde I^{(k)}\in\Cal K$.   Thus
+$I\subseteq\tilde I^{(k)}\subseteq\bigcup\Cal K$;  as $I$ is arbitrary,
+$\bigcup\Cal K=\bigcup\Cal J=\Bbb R$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} For $K\in\Cal K$, let $l_K\in\Bbb Z$ be such that
+$\mu K=2^{-l_K}$.   If $l_K\ge k_{\tau}$, that is,
+$\mu K\le\mu I_{\tau}$, then $K$ must lie within the half-open
+interval $\hat I$
+with centre $x_{\tau}$ and length $7\mu I_{\tau}$, since otherwise we
+should have $I_{\tau}\cap\tilde K^*=\emptyset$, where $\tilde K$ is
+the dyadic interval of length $2\mu K$ including $K$, and $\tilde K$
+would belong to $\Cal J$.   But this means that
+
+\Centerline{$\sum_{K\in\Cal K,\mu K\le\mu I_{\tau}}\mu K
+  \le\mu\hat I=7\mu I_{\tau}$,}
+
+\noindent because $\Cal K$ is disjoint.
+
+\medskip
+
+\quad{\bf (iv)} For any $l<k_{\tau}$, there are just three members $K$
+of $\Cal K$ such that $l_K=l$.   \Prf\ If $I\in\Cal I$ and
+$\mu I>\mu I_{\tau}$, then either $I_{\tau}\subseteq I^*$ or
+$I_{\tau}\cap I^*=\emptyset$, and $I\in\Cal J$ iff $I_{\tau}\cap I^*$ is
+empty.   This means that if $K\in\Cal I$ and $\mu K=2^{-l}$,
+$K\in\Cal K$ iff $I_{\tau}\cap K^*$ is empty and
+$I_{\tau}\subseteq\tilde K^*$.   So if
+$I_{\tau}\subseteq\coint{2^{-l}n,2^{-l}(n+1)}$ and
+$K=\coint{2^{-l}m,2^{-l}(m+1)}$, we shall have $K\in\Cal K$ iff
+
+\Centerline{{\it either} $m=n-2$
+{\it or} $m=n+2$
+{\it or} $m=n-3$ is even
+{\it or} $m=n+3$ is odd;}
+
+\noindent which for any given $n$ happens for just three values of
+$m$.\ \Qed
+
+\medskip
+
+{\bf (b)} For $\sigma\in P$, let $\zeta_{\sigma}$ be a complex number of
+modulus $1$ such that
+$\zeta_{\sigma}\innerprod{f}{\phi_{\sigma}}
+   \int_{E\cap g^{-1}[J^r_{\sigma}]}\phi_{\sigma}$ is real and
+non-negaive.   Set $W=P\times\Cal K$.   For $(\sigma,K)\in W$, set
+
+\Centerline{$\alpha_{\sigma K}
+=\innerprod{f}{\phi_{\sigma}}
+  \int_{E\cap g^{-1}[J^r_{\sigma}]\cap K}\phi_{\sigma}$.}
+
+\noindent The aim of the proof is to estimate
+
+\Centerline{$\sum_{\sigma\in P}\bigl|\innerprod{f}{\phi_{\sigma}}
+  \int_{E\cap g^{-1}[J^r_{\sigma}]}\phi_{\sigma}\bigr|
+=\sum_{(\sigma,K)\in W}\zeta_{\sigma}\alpha_{\sigma K}$.}
+
+\noindent It will be helpful to note straight away that
+
+\Centerline{$\sum_{(\sigma,K)\in W}|\alpha_{\sigma K}|
+\le\sum_{\sigma\in P}|\innerprod{f}{\phi_{\sigma}}|
+  \int_{-\infty}^{\infty}|\phi_{\sigma}|$}
+
+\noindent is finite.
+
+Set
+
+\Centerline{$W_0
+=\{(\sigma,K):\sigma\in P$, $K\in\Cal K$,
+$\mu I_{\sigma}\le\mu K\le\mu I_{\tau}\}$,}
+
+\Centerline{$W_1
+=\{(\sigma,K):\sigma\in P$, $K\in\Cal K$, $\mu I_{\tau}<\mu K\}$,}
+
+\Centerline{$W_2
+=\{(\sigma,K):\sigma\in P\setminus T_{\tau}$, $K\in\Cal K$,
+$\mu K<\mu I_{\sigma}\}$,}
+
+\Centerline{$W_3
+=\{(\sigma,K):\sigma\in P\cap T_{\tau}$, $K\in\Cal K$,
+$\mu K<\mu I_{\sigma}\}$.}
+
+\noindent Because $\mu I_{\sigma}\le\mu I_{\tau}$
+for every $\sigma\in P$,
+$W=W_0\cup W_1\cup W_2\cup W_3$.   I will give estimates for
+
+\Centerline{$\alpha_j
+=\sum_{(\sigma,K)\in W_j}\zeta_{\sigma}\alpha_{\sigma K}$}
+
+\noindent for each $j$;  the four components in the expression for
+$C_7$ given above are bounds for $|\alpha_0|, |\alpha_1|$, $|\alpha_2|$
+and $|\alpha_3|$ respectively.
+
+\wheader{286L}{6}{2}{2}{36pt}
+
+{\bf (c)(i)} If $K\in\Cal K$ and $l_K=l$, then for any $k\ge l$
+
+\Centerline{$\sum_{\sigma\in P,k_{\sigma}=k}|\alpha_{\sigma K}|
+\le 2^{-k}C_1\gamma\gamma'(1+2^{k-l})^{-2}
+\le 2^{-k-2}C_1\gamma\gamma'$.}
+
+\noindent\Prf\ For any $\sigma\in P$,
+
+\Centerline{$|\innerprod{f}{\phi_{\sigma}}|
+=\sqrt{\mu I_{\sigma}}\energy_f(\{\sigma\})
+\le\gamma\sqrt{\mu I_{\sigma}}$}
+
+\noindent as noted in 286H, and
+
+$$\eqalignno{\int_{E\cap g^{-1}[J^r_{\sigma}]\cap K}|\phi_{\sigma}|
+&\le C_1\mu I_{\sigma}\sqrt{\mu I_{\sigma}}
+  \int_{E\cap g^{-1}[J^r_{\sigma}]\cap K}w_{\sigma}^2\cr
+\displaycause{286Ge}
+&\le C_1\mu I_{\sigma}\sqrt{\mu I_{\sigma}}
+  \int_{E\cap g^{-1}[J_{\sigma}]}w_{\sigma}
+  \cdot\sup_{x\in K}w_{\sigma}(x)\cr
+&\le C_1\mu I_{\sigma}\sqrt{\mu I_{\sigma}}\gamma'
+  \sup_{x\in K}w_{\sigma}(x)
+=C_1\sqrt{\mu I_{\sigma}}\gamma'w(\mu J_{\sigma}\rho(x_{\sigma},K)),\cr}$$
+
+\noindent where I write $\rho(x_{\sigma},K)$ for
+$\inf_{x\in K}|x-x_{\sigma}|$.   So, for $k\ge l$,
+
+$$\eqalign{\sum_{\Atop{\sigma\in P}{k_{\sigma}=k}}
+  |\alpha_{\sigma K}|
+&\le\sum_{\Atop{\sigma\in P}{k_{\sigma}=k}}
+  C_1\gamma\gamma'\mu I_{\sigma}w(\mu J_{\sigma}\rho(x_{\sigma},K))\cr
+&=2^{-k}C_1\gamma\gamma'
+  \sum_{\Atop{\sigma\in P}{k_{\sigma}=k}}
+    w(2^k\rho(x_{\sigma},K))
+\le 2^{-k}C_1\gamma\gamma'
+  \cdot 2\sum_{n=2^{k-l}}^{\infty}w(n+\hbox{$\bover12$})\cr}$$
+
+\noindent because the $x_{\sigma}$, for $\sigma\in P$ and
+$k_{\sigma}=k$, are all distinct (see (a-i) above)
+and all a distance at least $\mu K=2^{k-l}2^{-k}$
+from $K$ (because $I_{\sigma}\not\subseteq K^*$);  so there are at most
+two such
+$\sigma$ with $\rho(x_{\sigma},K)=2^{-k}(n+\bover12)$ for each
+$n\ge 2^{k-l}$.   So we have
+
+\Centerline{$\sum_{\sigma\in P,k_{\sigma}=k}
+  |\alpha_{\sigma K}|
+\le 2^{-k}C_1\gamma\gamma'(1+2^{k-l})^{-2}
+\le 2^{-k-2}C_1\gamma\gamma'$}
+
+\noindent by 286Gb.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Now
+
+$$\eqalign{|\alpha_0|
+&\le\sum_{(\sigma,K)\in W_0}|\alpha_{\sigma K}|
+=\sum_{\Atop{K\in\Cal K}{\mu K\le\mu I_{\tau}}}
+  \sum_{\Atop{\sigma\in P}{\mu I_{\sigma}\le\mu K}}
+   |\alpha_{\sigma K}|\cr
+&=\sum_{\Atop{K\in\Cal K}{\mu K\le\mu I_{\tau}}}\sum_{k=l_K}^{\infty}
+   \sum_{\Atop{\sigma\in P}{k_{\sigma}=k}}
+   |\alpha_{\sigma K}|
+\le\sum_{\Atop{K\in\Cal K}{\mu K\le\mu I_{\tau}}}\sum_{k=l_K}^{\infty}
+   2^{-k-2}C_1\gamma\gamma'\cr
+&=C_1\gamma\gamma'\sum_{\Atop{K\in\Cal K}{\mu K\le\mu I_{\tau}}}
+  2^{-l_K-1}
+=\Bover12C_1\gamma\gamma'
+   \sum_{\Atop{K\in\Cal K}{\mu K\le\mu I_{\tau}}}\mu K
+\le\Bover{7}2C_1\gamma\gamma'\mu I_{\tau}\cr}$$
+
+\noindent by the formula in (a-iii).   This deals with $\alpha_0$.
+
+\medskip
+
+{\bf (d)} Next consider $W_1$.   We have
+
+$$\eqalignno{|\alpha_1|
+&\le\sum_{(\sigma,K)\in W_1}|\alpha_{\sigma K}|
+=\sum_{l=-\infty}^{k_{\tau}-1}\sum_{k=k_{\tau}}^{\infty}
+   \sum_{\Atop{K\in\Cal K}{l_K=l}}\sum_{\Atop{\sigma\in P}{k_{\sigma}=k}}
+   |\alpha_{\sigma K}|\cr
+&\le\sum_{l=-\infty}^{k_{\tau}-1}\sum_{k=k_{\tau}}^{\infty}
+   \sum_{\Atop{K\in\Cal K}{l_K=l}}
+   2^{-k}C_1\gamma\gamma'(1+2^{k-l})^{-2}\cr
+\displaycause{by (c-i) above}
+&=3C_1\gamma\gamma'\sum_{l=-\infty}^{k_{\tau}-1}\sum_{k=k_{\tau}}^{\infty}
+   2^{-k}(1+2^{k-l})^{-2}\cr
+\displaycause{by (a-iv)}
+&\le 3C_1\gamma\gamma'\sum_{l=-\infty}^{k_{\tau}-1}
+  \sum_{k=k_{\tau}}^{\infty}2^{-3k}2^{2l}
+=3C_1\gamma\gamma'2^{2(k_{\tau}-1)}2^{-3k_{\tau}}
+  \sum_{l=0}^{\infty}2^{-2l}\sum_{k=0}^{\infty}2^{-3k}\cr
+&=\Bover34C_1\gamma\gamma'2^{-k_{\tau}}\cdot\Bover43\cdot\Bover87
+=\Bover87C_1\gamma\gamma'\mu I_{\tau}.\cr}$$
+
+\noindent This deals with $\alpha_1$.
+
+\medskip
+
+{\bf (e)} For $K\in\Cal K$, set $G_K
+=K\cap E\cap\bigcup_{\sigma\in P,\mu I_{\sigma}>\mu K}g^{-1}[J_{\sigma}]$.
+Then $\mu G_K\le 2\gamma'\mu K/w(\bover32)$.   \Prf\
+If $\mu I_{\tau}\le\mu K$, then $G_K=\emptyset$, so we may suppose that
+$\mu K<\mu I_{\tau}$.   Let $\tilde K\in\Cal I$ be the dyadic interval
+containing $K$ and with twice the length.   Then
+$\tilde K\notin\Cal J$, so there is a $\sigma\in P$ such that
+$\tilde K^*\supseteq I_{\sigma}$ and
+
+\Centerline{$\mu I_{\sigma}\le\mu\tilde K=2\mu K\le\mu I_{\tau}$.}
+
+\noindent Let $\upsilon\in Q$ be such
+that $\tau\le\upsilon\le\sigma$ and
+$\mu I_{\upsilon}=2\mu K$ (286F(a-iv)).   Then
+$I_{\upsilon}$ meets $\tilde K^*$, so $\tilde K$ is either equal to
+$I_{\upsilon}$ or adjacent to it, and
+$|x-x_{\upsilon}|\le\bover32\cdot\mu I_{\upsilon}$ for every
+$x\in\tilde K$, therefore for every $x\in K$.   Accordingly
+
+\Centerline{$w_{\upsilon}(x)\ge w(\bover32)\mu J_{\upsilon}
+=w(\bover32)/2\mu K$}
+
+\noindent for every
+$x\in K$.   On the other hand, because $\sigma\in P$ and
+$\upsilon\le\sigma$,
+$\int_{E\cap g^{-1}[J_{\upsilon}]}w_{\upsilon}\le\gamma'$.   So
+
+\Centerline{$\mu(E\cap g^{-1}[J_{\upsilon}]\cap K)
+\le 2\gamma'\mu K/w(\bover32)$.}
+
+Now suppose that $\sigma'\in P$ and $\mu I_{\sigma'}>\mu K$.   Then
+$k_{\sigma'}\le k_{\upsilon}$ and
+$J_{\sigma'}$ is the dyadic interval of length $2^{k_{\sigma'}}$
+including $J_{\tau}$.   But $J_{\upsilon}$ is the dyadic interval of
+length $2^{k_{\upsilon}}$ including $J_{\tau}$, so includes
+$J_{\sigma'}$, and
+$g^{-1}[J_{\sigma'}]\subseteq g^{-1}[J_{\upsilon}]$.   As $\sigma'$ is
+arbitrary, $G_K\subseteq E\cap g^{-1}[J_{\upsilon}]\cap K$ and
+$\mu G_K\le 2\gamma'\mu K/w(\bover32)$, as claimed.\ \Qed
+
+\medskip
+
+{\bf (f)(i)} If $\sigma$, $\upsilon\in P\setminus T_{\tau}$ and
+$k_{\sigma}\ne k_{\upsilon}$, then
+$J^r_{\sigma}\cap J^r_{\upsilon}=\emptyset$.   \Prf\
+It is enough to consider the case $\mu J_{\sigma}<\mu J_{\upsilon}$, so
+that $\mu J_{\sigma}\le\mu J^r_{\upsilon}$.   As $J_{\sigma}$ includes
+$J_{\tau}$, but $J^r_{\upsilon}$ does not, $J_{\sigma}$ is disjoint from
+$J^r_{\upsilon}$ and we have the result.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} For $x\in\Bbb R$, set
+
+\Centerline{$v_2(x)=\bigl|\sum_{(\sigma,K)\in W_2}
+   \zeta_{\sigma}\innerprod{f}{\phi_{\sigma}}\phi_{\sigma}(x)
+   \chi(E\cap g^{-1}[J^r_{\sigma}]\cap K)(x)\bigr|$.}
+
+\noindent (The sum is finite because there is at most one $K\in\Cal K$
+containing $x$.)   Then for any $x\in\Bbb R$ there is a
+$k\ge k_{\tau}$ such that
+
+\Centerline{$v_2(x)
+=\bigl|\sum_{\sigma\in P,k_{\sigma}=k}
+   \zeta_{\sigma}\innerprod{f}{\phi_{\sigma}}\phi_{\sigma}(x)\bigl|$.}
+
+\noindent\Prf\ If $v_2(x)=0$, any sufficiently large $k$ will serve.
+Otherwise, $x\in E$ and we have a pair
+$(\upsilon,L)\in W_2$ such that
+$x\in g^{-1}[J^r_{\upsilon}]\cap L$.   Try $k=k_{\upsilon}$.
+$L$ is the only member of $\Cal K$ containing $x$, so
+
+\Centerline{$v_2(x)
+=\bigl|\sum_{\sigma\in P_x}
+  \innerprod{f}{\phi_{\sigma}}\phi_{\sigma}(x)\bigr|$,}
+
+\noindent where $P_x=\{\sigma:\sigma\in P\setminus T_{\tau}$,
+$\mu I_{\sigma}>\mu L$, $g(x)\in J^r_{\sigma}\}$.   Now if
+$\sigma\in P$ and $k_{\sigma}=k$, then
+$\mu I_{\sigma}=\mu I_{\upsilon}>\mu L$, $J_{\sigma}=J_{\upsilon}$ and
+$J^r_{\sigma}=J^r_{\upsilon}$ does not include $J^r_{\tau}$, so that
+$\sigma\in P\setminus T_{\tau}$, $g(x)\in J^r_{\sigma}$ and
+$\sigma\in P_x$.   On the other hand, (i) above tells us that
+$k_{\sigma}=k$ whenever $\sigma\in P\setminus T_{\tau}$ and
+$g(x)\in J^r_{\sigma}$.   So
+$P_x=\{\sigma:\sigma\in P$, $k_{\sigma}=k\}$ and
+
+\Centerline{$v_2(x)
+=\bigl|\sum_{\sigma\in P,k_{\sigma}=k}
+   \zeta_{\sigma}\innerprod{f}{\phi_{\sigma}}\phi_{\sigma}(x)\bigl|$.
+\Qed}
+
+\medskip
+
+\quad{\bf (iii)} It follows that $v_2(x)\le 2C_1\gamma$ for every
+$x\in\Bbb R$.   \Prf\ If $v_2(x)=0$ this is trivial.   Otherwise, take
+$k$ from (ii).   Then
+
+$$\eqalignno{v_2(x)
+&\le\sum_{\Atop{\sigma\in P}{k_{\sigma}=k}}
+  |\innerprod{f}{\phi_{\sigma}}\phi_{\sigma}(x)|
+\le\sum_{\Atop{\sigma\in P}{k_{\sigma}=k}}\sqrt{\mu I_{\sigma}}\gamma
+  \cdot\sqrt{\mu I_{\sigma}}C_1w_{\sigma}(x)\cr
+\displaycause{by 286H and 286Ge}
+&=C_1\gamma\sum_{\Atop{\sigma\in P}{k_{\sigma}=k}}w(2^k(x-x_{\sigma}))
+\le C_1\gamma\sum_{n=-\infty}^{\infty}w(2^kx-n-\hbox{$\bover12$})\cr
+\displaycause{because the $x_{\sigma}$, for $\sigma\in P$ and
+$k_{\sigma}=k$, are all distinct and of the form $2^{-k}(n+\bover12)$}
+&\le 2C_1\gamma\cr}$$
+
+\noindent by 286Gd.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} Note also that, if $v_2(x)>0$, there is a pair
+$(\sigma,K)\in W_2$ such that $x\in g^{-1}[J_{\sigma}]\cap K$, so that
+$\mu K<\mu I_{\sigma}\le\mu I_{\tau}$ and $x\in G_K$.   But now we have
+
+$$\eqalignno{|\alpha_2|
+&=\bigl|\sum_{(\sigma,K)\in W_2}
+  \zeta_{\sigma}\innerprod{f}{\phi_{\sigma}}\int_{-\infty}^{\infty}
+  \phi_{\sigma}\times\chi(E\cap g^{-1}[J^r_{\sigma}]\cap K)\bigr|\cr
+&\le\int_{-\infty}^{\infty}v_2
+\le\sum_{\Atop{K\in\Cal K}{\mu K<\mu I_{\tau}}}\int_{G_K}v_2
+\le\sum_{\Atop{K\in\Cal K}{\mu K<\mu I_{\tau}}}
+  \bover{4C_1\gamma\gamma'\mu K}{w(\bover32)}\cr
+\displaycause{putting the estimates in (e) and (iii) just above together}
+&\le\bover{28\cdot C_1\gamma\gamma'\mu I_{\tau}}{w(\bover32)}\cr}$$
+
+\noindent by (a-iii).   This deals with $\alpha_2$.
+
+\medskip
+
+{\bf (g)} Set $P'=P\cap T_{\tau}$ and
+$\tilde f=\sum_{\sigma\in P'}
+\zeta_{\sigma}\innerprod{f}{\phi_{\sigma}}\phi_{\sigma}$.   Then
+
+\Centerline{$\|\tilde f\|^2_2
+\le C_3\gamma^2\mu I_{\tau}$.}
+
+\noindent\Prf\ If $\sigma$, $\sigma'\in P'$ and
+$k_{\sigma}\ne k_{\sigma'}$, then
+$\innerprod{\phi_{\sigma}}{\phi_{\sigma'}}=0$ (286Fc).   While if
+$k_{\sigma}=k_{\sigma'}$, then $J_{\sigma}=J_{\sigma'}$, by (a-i).   So
+
+$$\eqalignno{\|\tilde f\|_2^2
+&=\sum_{\sigma,\sigma'\in P'}
+  \zeta_{\sigma}\innerprod{f}{\phi_{\sigma}}
+  \innerprod{\phi_{\sigma}}{\phi_{\sigma'}}
+  \innerprod{\phi_{\sigma'}}{f}\bar\zeta_{\sigma'}\cr
+&\le\sum_{\Atop{\sigma,\sigma'\in P'}{J_{\sigma}=J_{\sigma'}}}
+  \bigl|\innerprod{f}{\phi_{\sigma}}
+  \innerprod{\phi_{\sigma}}{\phi_{\sigma'}}
+  \innerprod{\phi_{\sigma'}}{f}\bigr|
+\le C_3\Delta_f(P')\cr
+\displaycause{286Ib}
+&\le C_3\gamma^2\mu I_{\tau}\cr}$$
+
+\noindent by the definition of `energy', because $P'\subseteq T_{\tau}$.\
+\Qed
+
+\medskip
+
+{\bf (h)} For $m\in\Bbb N$, set
+
+\Centerline{$\tilde f_m=\sum_{\sigma\in P',k_{\sigma}\le m}
+  \zeta_{\sigma}\innerprod{f}{\phi_{\sigma}}\phi_{\sigma}$.}
+
+\noindent Then whenever $x$, $x'\in\Bbb R$ and $|x-x'|\le 2^{-m}$,
+$|\tilde f_m(x)|\le\bover12C_1\tilde f^*(x')$, where
+
+\Centerline{$\tilde f^*(x')
+=\sup_{a\le x'\le b,a<b}\Bover1{b-a}\int_a^b|\tilde f|$}
+
+\noindent as in 286A.   \Prf\ {\bf (i)} Since $k_{\sigma}\ge k_{\tau}$
+for every $\sigma\in P'$, we may take it that $m\ge k_{\tau}$.   Let
+$\hat J$ be the dyadic interval
+of length $2^m$ including $J_{\tau}$, and $\hat y$ its midpoint.  Set
+$\psi=S_{-\hat y}D_{2^{-m}/3}\varhat{\phi}$, that is,
+$\psi(y)=\varhat{\phi}(\bover132^{-m}(y-\hat y))$ for $y\in\Bbb R$.
+
+\medskip
+
+\quad{\bf (ii)} If $\sigma\in P'$ and $k_{\sigma}\le m$ and
+$\varhat{\phi}_{\sigma}(y)\ne 0$,
+then $y\in J^l_{\sigma}$.   But $J_{\sigma}\cap\hat J\supseteq J_{\tau}$
+is not empty, so $J_{\sigma}\subseteq\hat J$,
+$|y-\hat y|\le\bover122^m$, $|\bover132^{-m}(y-\hat y)|\le\bover16$ and
+$\psi(y)=1$.
+
+\medskip
+
+\quad{\bf (iii)} If $\sigma\in P'$ and $k_{\sigma}>m$ and
+$\varhat{\phi}_{\sigma}(y)\ne 0$, then
+$J^r_{\sigma}\cap\hat J\supseteq J^r_{\tau}$ is non-empty, so
+$\hat J\subseteq J^r_{\sigma}$ and $y\le y_{\sigma}\le\hat y$;  now
+
+\Centerline{$\hat y-y
+=(\hat y-y_{\sigma})+(y_{\sigma}-y)
+\ge\Bover12\cdot 2^m+\Bover1{20}\mu J_{\sigma}
+\ge\Bover35\cdot 2^m$,
+\quad$|\Bover13\cdot 2^{-m}(y-\hat y)|\ge\Bover15$}
+
+\noindent and $\psi(y)=0$.
+\medskip
+
+\quad{\bf (iv)}  What this means is that if $\sigma\in P'$ then
+
+$$\eqalign{\varhat{\phi}_{\sigma}\times\psi
+&=\varhat{\phi}_{\sigma}\text{ if }k_{\sigma}\le m,\cr
+&=0\text{ if }k_{\sigma}>m,\cr}$$
+
+\noindent so that $\varhat{\vartildef}_m=\psi\times\varhat{\vartildef}$.
+
+\medskip
+
+\quad{\bf (v)} By 283M,
+$\tilde f_m=\Bover1{\sqrt{2\pi}}\tilde f*\varcheck{\psi}$,
+where $\tilde f*\varcheck{\psi}$ is the convolution of $\tilde f$ and
+the inverse Fourier transform $\varcheck{\psi}$ of $\psi$.   (Strictly
+speaking, 283M, with the help of 284C, tells us that $\tilde f_m$ and
+$\Bover1{\sqrt{2\pi}}\tilde f*\varcheck{\psi}$ have the same Fourier
+transforms.   By 283G, they are equal almost everywhere;  by 255K,
+the convolution is defined everywhere and is continuous;  so in fact
+they are the same function.)   Now
+
+\Centerline{$\varcheck{\psi}
+=3\cdot 2^mM_{\hat y}D_{3\cdot 2^m}
+\varhat{\phi}\varcheck{\phantom{\phi}}
+=3\cdot 2^mM_{\hat y}D_{3\cdot 2^m}\phi$,}
+
+\noindent that is,
+
+\Centerline{$\varcheck{\psi}(x)
+=3\cdot 2^me^{ix\hat y}\phi(3\cdot 2^mx)$}
+
+\noindent for $x\in\Bbb R$.
+
+\medskip
+
+\quad{\bf (vi)} Set $w_1(x)=\min(w(3),w(x))$ for $x\in\Bbb R$, so
+that $w_1$ is
+non-decreasing on $\ocint{-\infty,-3}$, non-increasing on
+$\coint{3,\infty}$, and constant on $[-3,3]$, and
+$|\phi(x)|\le C_1w_1(x)$ for every $x$, by the choice of $C_1$
+(286Ge).   Take $x$, $x'\in\Bbb R$ such that $|x-x'|\le 2^{-m}$.
+Then
+
+$$\eqalignno{|\tilde f_m(x)|
+&\le\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+  |\tilde f(x-t)||\varcheck{\psi}(t)|dt
+=\Bover{3\cdot 2^m}{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+  |\tilde f(x-t)||\phi(3\cdot 2^mt)|dt\cr
+&\le\Bover{3\cdot 2^m}{\sqrt{2\pi}}C_1\int_{-\infty}^{\infty}
+  |\tilde f(x-t)|w_1(3\cdot 2^mt)dt
+=\Bover{3\cdot 2^m}{\sqrt{2\pi}}C_1\int_{-\infty}^{\infty}
+  |\tilde f(x+t)|w_1(3\cdot 2^mt)dt\cr
+\displaycause{because $w_1$ is an even function}
+&\le\Bover{3\cdot 2^m}{\sqrt{2\pi}}C_1
+  \int_{-\infty}^{\infty}w_1(3\cdot 2^mt)dt
+  \cdot\sup_{\Atop{a\le-2^{-m}}{b\ge 2^{-m}}}
+  \Bover1{b-a}\int_a^b|\tilde f(x+t)|dt\cr
+\displaycause{by 286B, because $t\mapsto w_1(3\cdot 2^mt)$ is
+non-decreasing on $\ocint{-\infty,-2^{-m}}$, non-increasing on
+$\coint{2^{-m},\infty}$ and constant on $[-2^{-m},2^{-m}]$}
+&=\Bover1{\sqrt{2\pi}}C_1\int_{-\infty}^{\infty}w_1
+  \cdot\sup_{\Atop{a\le x-2^{-m}}{b\ge x+2^{-m}}}
+  \Bover1{b-a}\int_a^b|\tilde f|
+\le\Bover12C_1\int_{-\infty}^{\infty}w
+  \cdot\tilde f^*(x')\cr
+\displaycause{because if $a\le x-2^{-m}$ and $b\ge x+2^{-m}$ then
+$a\le x'\le b$}
+&=\Bover12C_1\tilde f^*(x')\cr}$$
+
+\noindent (286Ga), as required.\ \Qed
+
+\medskip
+
+{\bf (i)} For $x\in\Bbb R$, set
+
+\Centerline{$v_3(x)=\bigl|\sum_{(\sigma,K)\in W_3}
+   \zeta_{\sigma}\innerprod{f}{\phi_{\sigma}}\phi_{\sigma}(x)
+   \chi(E\cap g^{-1}[J^r_{\sigma}]\cap K)(x)\bigr|$.}
+
+\noindent Then whenever $L\in\Cal K$ and $x$, $x'\in L$,
+$|v_3(x)|\le C_1\tilde f^*(x')$.   \Prf\ We may suppose that
+$v_3(x)\ne 0$, so that, in particular, $x\in E$.   The only pairs
+$(\sigma,K)$ contributing to the sum forming $v_3(x)$ are those in which
+$x\in K$, so that $K=L$, and $g(x)\in J^r_{\sigma}$.   Moreover, since
+we are looking only at $\sigma\in T_{\tau}$, so that
+$J^r_{\tau}\subseteq J^r_{\sigma}$, $J^r_{\sigma}$ will always be
+the dyadic interval of length $2^{k_{\sigma}-1}$ including $J^r_{\tau}$.
+So these intervals are nested, and there will be some $m$ such that (for
+$\sigma\in T_{\tau}$) $g(x)\in J^r_{\sigma}$ iff $k_{\sigma}\ge m$.
+Accordingly
+
+\Centerline{$v_3(x)
+=\bigl|\sum_{\sigma\in P',m\le k_{\sigma}<l_L}
+   \zeta_{\sigma}\innerprod{f}{\phi_{\sigma}}\phi_{\sigma}(x)\bigr|
+=|\tilde f_{l_L-1}(x)-\tilde f_{m-1}(x)|$}
+
+\noindent (we must have $m<l_L$ because $v_3(x)\ne 0$).   Now
+$|x-x'|\le 2^{-l_L}\le 2^{-m}$, so (h) tells us that
+both $|\tilde f_{l_L-1}(x)|$ and $|\tilde f_{m-1}(x)|$ are at most
+$\bover12C_1\tilde f^*(x')$, and $v_3(x)\le C_1\tilde f^*(x')$, as
+claimed.\ \Qed
+
+It follows that $v_3(x)\le\Bover{C_1}{\mu L}\biggerint_L\tilde f^*$
+for every $x\in L$.
+
+\wheader{286L}{6}{2}{2}{108pt}
+
+{\bf (j)} Now we are in a position to estimate
+
+$$\eqalignno{|\alpha_3|
+&=|\sum_{(\sigma,K)\in W_3}\zeta_{\sigma}\alpha_{\sigma K}|
+\le\int_{-\infty}^{\infty}v_3
+\le\sum_{\Atop{K\in\Cal K}{\mu K<\mu I_{\tau}}}\int_{G_K}v_3\cr
+\displaycause{because if $v_3(x)\ne 0$ there are $(\sigma,K)\in W_3$
+such that $x\in K$, and in this case $x\in G_K$ and
+$\mu K<\mu I_{\sigma}\le\mu I_{\tau}$}
+&\le\sum_{\Atop{K\in\Cal K}{\mu K<\mu I_{\tau}}}
+  \mu G_K\cdot\Bover{C_1}{\mu K}\int_K\tilde f^*\cr
+\displaycause{by (i) above, because $G_K\subseteq K$}
+&\le C_1\sum_{\Atop{K\in\Cal K}{\mu K<\mu I_{\tau}}}
+  \bover{2\gamma'}{w(\bover32)}\int_K\tilde f^*\cr
+\displaycause{by (e)}
+&\le\bover{2C_1\gamma'}{w(\bover32)}\int_{\hat I}\tilde f^*\cr
+\displaycause{because if $\mu K<\mu I_{\tau}$ then $K\subseteq\hat I$, as
+noted in (a-iii)}
+&\le\bover{2C_1\gamma'}{w(\bover32)}\sqrt{\mu\hat I}
+  \cdot\|\tilde f^*\|_2\cr
+\displaycause{by Cauchy's inequality}
+&\le\bover{2C_1\gamma'}{w(\bover32)}\sqrt{7\mu I_{\tau}}
+  \cdot\sqrt{8}\|\tilde f\|_2\cr
+\displaycause{by the Maximal Theorem, 286A}
+&\le\bover{4C_1\gamma'\sqrt{14}}{w(\bover32)}\sqrt{\mu I_{\tau}}
+  \cdot\gamma\sqrt{C_3\mu I_{\tau}}\cr
+\displaycause{by (g)}
+&=\bover{4C_1\sqrt{14 C_3}}{w(\bover32)}
+  \gamma\gamma'\mu I_{\tau}.\cr}$$
+
+\medskip
+
+{\bf (k)} Assembling these,
+
+$$\eqalign{\sum_{\sigma\in P}\bigl|\innerprod{f}{\phi_{\sigma}}
+  \int_{E\cap g^{-1}[J^r_{\sigma}]}\phi_{\sigma}\bigr|
+&=\sum_{\Atop{\sigma\in P}{K\in\Cal K}}\zeta_{\sigma}\alpha_{\sigma K}
+=\sum_{j=0}^3\sum_{(\sigma,K)\in W_j}\zeta_{\sigma}\alpha_{\sigma K}
+\le\sum_{j=0}^3|\alpha_j|\cr
+&\le\Bover72\cdot C_1\gamma\gamma'\mu I_{\tau}
+  +\Bover87\cdot C_1\gamma\gamma'\mu I_{\tau}
+  +28\cdot C_1\gamma\gamma'\mu I_{\tau}/w(\hbox{$\bover32$})\cr
+&\qquad\qquad\qquad\qquad
+  +4\sqrt{14C_3}\cdot
+      C_1\gamma\gamma'\mu I_{\tau}/w(\hbox{$\bover32$})\cr
+&=C_7\gamma\gamma'\mu I_{\tau},\cr}$$
+
+\noindent as claimed.
+}%end of proof of 286L
+
+\leader{286M}{The Lacey-Thiele lemma} Set $C_8=3C_7(C_5+C_6)$.   Then
+
+\Centerline{$\sum_{\sigma\in Q}|\innerprod{f}{\phi_{\sigma}}
+  \int_{E\cap g^{-1}[J^r_{\sigma}]}\phi_{\sigma}|
+\le C_8$}
+
+\noindent whenever $f\in\eusm L^2_{\Bbb C}$, $\|f\|_2=1$,
+$\mu E\le 1$ and $g:\Bbb R\to\Bbb R$ is measurable.
+
+\proof{%
+{\bf (a)} The first step is to combine 286J and 286K, as follows:
+if $P\subseteq Q$ is finite and
+$\max(\sqrt{\mass_{Eg}(P)},\energy_f(P))\penalty-100\le\gamma$, there is an
+$R\subseteq Q$ such that
+$\gamma^2\sum_{\tau\in R}\mu I_{\tau}\le C_5+C_6$ and
+$\max(\sqrt{\mass_{Eg}(P\setminus R^+)},
+\energy_f(P\setminus R^+))
+\le\bover12\gamma$.
+\Prf\ Since $\mass_{Eg}(P)\le\gamma^2$, 286J tells us that there is an
+$R_0\subseteq Q$ such that
+$\gamma^2\sum_{\tau\in R_0}\mu I_{\tau}\le C_5$ and
+$\mass_{Eg}(P\setminus R_0^+)\le\bover14\gamma^2$.
+Turn to 286K:  since
+$\energy_f(P\setminus R_0^+)\le\energy_f(P)\le\gamma$, we can find
+$R_1\subseteq Q$ such that
+$\gamma^2\sum_{\tau\in R_1}\mu I_{\tau}\le C_6$ and
+$\energy_f((P\setminus R_0^+)\setminus R_1^+)\le\bover12\gamma$.
+Set $R=R_0\cup R_1$.   Then
+
+\Centerline{$\gamma^2\sum_{\tau\in R}\mu I_{\tau}\le C_5+C_6$, 
+\quad$\mass_{Eg}(P\setminus R^+)\le\mass_{Eg}(P\setminus R_0^+)
+\le\bover14\gamma^2$}
+
+\noindent so
+$\max(\sqrt{\mass_{Eg}(P\setminus R^+)},\energy_f(P\setminus R^+))
+\le\bover12\gamma$.\ \Qed
+\fontdimen3\tenrm=1.67pt
+
+\medskip
+
+{\bf (b)} Now take any finite $P\subseteq Q$.
+Let $k\in\Bbb N$ be such that
+$\max(\sqrt{\mass_{Eg}(P)},\energy_f(P))\le 2^k$.   By (a), we can
+choose $\sequencen{P_n}$, $\sequencen{R_n}$ inductively such that
+$P_0=P$ and, for each $n\in\Bbb N$,
+
+\Centerline{$P_{n+1}=P_n\setminus R_n^+$,}
+
+\Centerline{$2^{2k-2n}\sum_{\tau\in R_n}\mu I_{\tau}\le C_5+C_6$,
+\quad$\max(\sqrt{\mass_{Eg}(P_n)},\energy_f(P_n))\le 2^{k-n}$.}
+
+\noindent Since
+$\energy_f(\{\sigma\})=\sqrt{\mu J_{\sigma}}|\innerprod{f}{\phi_{\sigma}}|>0$
+whenever $\innerprod{f}{\phi_{\sigma}}\ne 0$ (286H),
+$\innerprod{f}{\phi_{\sigma}}=0$ whenever
+$\sigma\in\bigcap_{n\in\Bbb N}P_n$, and
+
+$$\eqalignno{\sum_{\sigma\in P}\bigl|\innerprod{f}{\phi_{\sigma}}
+  \int_{E\cap g^{-1}[J^r_{\sigma}]}\phi_{\sigma}\bigr|
+&=\sum_{\sigma\in\bigcup_{n\in\Bbb N}P_n\setminus P_{n+1}}
+  \bigl|\innerprod{f}{\phi_{\sigma}}
+  \int_{E\cap g^{-1}[J^r_{\sigma}]}\phi_{\sigma}\bigr|\cr
+&=\sum_{n=0}^{\infty}\sum_{\sigma\in P_n\setminus P_{n+1}}
+  \bigl|\innerprod{f}{\phi_{\sigma}}
+  \int_{E\cap g^{-1}[J^r_{\sigma}]}\phi_{\sigma}\bigr|\cr
+&\le\sum_{n=0}^{\infty}\sum_{\tau\in R_n}
+  \sum_{\Atop{\sigma\in P_n}{\sigma\ge\tau}}
+     \bigl|\innerprod{f}{\phi_{\sigma}}
+       \int_{E\cap g^{-1}[J^r_{\sigma}]}\phi_{\sigma}\bigr|\cr
+&\le\sum_{n=0}^{\infty}\sum_{\tau\in R_n}C_7
+  \energy_f(P_n)\mass_{Eg}(P_n)\mu I_{\tau}\cr
+\displaycause{by 286L}
+&\le C_7\sum_{n=0}^{\infty}2^{k-n}\min(1,2^{2k-2n})
+  \sum_{\tau\in R_n}\mu I_{\tau}\cr
+\displaycause{because $\mass_{Eg}(P_n)\le 1$ for every $n$, as noted in
+286H}
+&\le C_7\sum_{n=0}^{\infty}2^{k-n}\min(1,2^{2k-2n})2^{2n-2k}(C_5+C_6)
+  \cr
+&=C_7(C_5+C_6)\sum_{n=0}^{\infty}\min(2^{n-k},2^{k-n})\cr
+&\le C_7(C_5+C_6)\sum_{n=-\infty}^{\infty}\min(2^n,2^{-n})
+=3C_7(C_5+C_6).\cr}$$
+
+\medskip
+
+{\bf (c)} Since this true for every finite $P\subseteq Q$,
+
+\Centerline{$\sum_{\sigma\in Q}|\innerprod{f}{\phi_{\sigma}}
+  \int_{E\cap g^{-1}[J^r_{\sigma}]}\phi_{\sigma}|
+\le 3C_7(C_5+C_6)=C_8$,}
+
+\noindent as claimed.
+}%end of proof of 286M
+
+\leader{286N}{Lemma} Set $C_9=C_8\sqrt{2}$.   Suppose that
+$f\in\eusm L^2_{\Bbb C}$, $g:\Bbb R\to\Bbb R$ is
+measurable and $\mu F<\infty$.   Then
+
+\Centerline{$\sum_{\sigma\in Q}|\innerprod{f}{\phi_{\sigma}}
+  \int_{F\cap g^{-1}[J^r_{\sigma}]}\phi_{\sigma}|
+\le C_9\|f\|_2\sqrt{\mu F}$.}
+
+\proof{ This is trivial if $\|f\|_2=0$, that is, $f=0$ a.e.   So we may
+take it that $\|f\|_2>0$.   Dividing both sides by $\|f\|_2$, we may
+suppose that $\|f\|_2=1$.
+
+Let $k\in\Bbb Z$ be such that $2^{k-1}<\mu F\le 2^k$.   We have a
+permutation $\sigma\mapsto\sigma^*:Q\to Q$ defined by saying that
+$\sigma^*=(2^{-k}I_{\sigma},2^kJ_{\sigma})$;  so that
+$k_{\sigma^*}=k_{\sigma}+k$, $x_{\sigma^*}=2^{-k}x_{\sigma}$,
+$y^l_{\sigma^*}=2^ky^l_{\sigma}$, $J^r_{\sigma^*}=2^kJ^r_{\sigma}$, and
+for every $x\in\Bbb R$
+
+$$\eqalign{\phi_{\sigma}(2^kx)
+&=\sqrt{\mu J_{\sigma}}e^{2^kiy^l_{\sigma}x}
+  \phi((2^kx-x_{\sigma})\mu J_{\sigma})\cr
+&=\sqrt{\mu J_{\sigma}}e^{iy^l_{\sigma^*}x}
+  \phi(2^{k_{\sigma}+k}(x-2^{-k}x_{\sigma}))\cr
+&=2^{-k/2}\sqrt{\mu J_{\sigma^*}}e^{iy^l_{\sigma^*}x}
+  \phi((x-x_{\sigma^*})\mu J_{\sigma^*})
+=2^{-k/2}\phi_{\sigma^*}(x).\cr}$$
+
+\noindent Write $\tilde F=2^{-k}F$, so that $\mu\tilde F\le 1$, and
+$\tilde g(x)=2^kg(2^kx)$ for every $x$.   Then, for $\sigma\in Q$,
+
+$$\eqalign{F\cap g^{-1}[J^r_{\sigma}]
+&=\{x:x\in F,\,g(x)\in J^r_{\sigma}\}
+=\{x:2^{-k}x\in\tilde F,\,2^{-k}\tilde g(2^{-k}x)\in J^r_{\sigma}\}\cr
+&=\{x:2^{-k}x\in\tilde F,\,\tilde g(2^{-k}x)\in J^r_{\sigma^*}\}
+=2^k\{x:x\in\tilde F,\,\tilde g(x)\in J^r_{\sigma^*}\}.\cr}$$
+
+\noindent Write $\tilde f(x)=2^{k/2}f(2^kx)$, so that
+
+\Centerline{$\|\tilde f\|_2=2^{k/2}\|D_{2^k}f\|_2=\|f\|_2=1$,}
+
+\noindent while
+
+\Centerline{$\innerprod{f}{\phi_{\sigma}}
+=\int_{-\infty}^{\infty}f\times\bar\phi_{\sigma}
+=2^k\int_{-\infty}^{\infty}
+f(2^kx)\overline{\phi_{\sigma}(2^kx)}dx
+=\innerprod{\tilde f}{\phi_{\sigma^*}}$}
+
+\noindent for every $\sigma\in Q$.   Putting all these together,
+
+$$\eqalignno{\sum_{\sigma\in Q}\bigl|\innerprod{f}{\phi_{\sigma}}
+  \int_{F\cap g^{-1}[J^r_{\sigma}]}\phi_{\sigma}\bigr|
+&=2^k\sum_{\sigma\in Q}\bigl|\innerprod{f}{\phi_{\sigma}}
+  \int_{2^{-k}(F\cap g^{-1}[J^r_{\sigma}])}
+     \phi_{\sigma}(2^kx)dx\bigr|\cr
+&=2^{k/2}\sum_{\sigma\in Q}\bigl|\innerprod{\tilde f}{\phi_{\sigma^*}}
+  \int_{\tilde F\cap\tilde g^{-1}[J^r_{\sigma^*}]}
+    \phi_{\sigma^*}\bigr|\cr
+&=2^{k/2}\sum_{\tau\in Q}\bigl|\innerprod{\tilde f}{\phi_{\tau}}
+  \int_{\tilde F\cap\tilde g^{-1}[J^r_{\tau}]}\phi_{\tau}\bigr|\cr
+&\le 2^{k/2}C_8\cr
+\displaycause{by the Lacey-Thiele lemma, applied to $\tilde g$,
+$\tilde F$ and $\tilde f$}
+&\le C_9\sqrt{\mu F}
+=C_9\|f\|_2\sqrt{\mu F}.\cr}$$
+}%end of proof of 286N
+
+\leader{286O}{Lemma}\dvArevised{2013} (a) For $z\in\Bbb R$, define
+$\theta_z:\Bbb R\to[0,1]$ by setting
+
+\Centerline{$\theta_z(y)=\varhat{\phi}(2^{-k}(y-\hat y))^2$}
+
+\noindent whenever there is a dyadic interval $J\in\Cal I$ of length
+$2^k$ such that $z$ belongs to the right-hand half of $J$ and $y$
+belongs to the left-hand half of $J$ and $\hat y$ is the lower quartile
+of $J$, and zero if there is no such $J$.   
+Then $(y,z)\mapsto\theta_z(y)$ is Borel measurable,
+$0\le\theta_z(y)\le 1$
+for all $y$, $z\in\Bbb R$, and $\theta_z(y)=0$ if $y\ge z$.
+
+(b) For $k\in\Bbb Z$, set $Q_k=\{\sigma:\sigma\in Q$, $k_{\sigma}=k\}$.
+Let $[Q]^{<\omega}$ be the set of finite subsets of
+$Q$, $[\Bbb Z]^{<\omega}$ the set of finite subsets of $\Bbb Z$
+and $\Cal L$ the set of subsets $L$ of $Q$ such that $L\cap Q_k$ is
+finite for every $k$.
+If $K\in[\Bbb Z]^{<\omega}$ and $L\in\Cal L$, set
+
+$$\eqalign{\Cal P_{KL}
+&=\{P:P\in[Q]^{<\omega},\,P\cap Q_k\supseteq L\cap Q_k
+  \text{ whenever }k\in\Bbb Z
+\cr&\mskip200mu  
+   \text{and either }k\in K\text{ or }P\cap Q_k\ne\emptyset\};\cr}$$
+   
+\noindent set
+
+\Centerline{$\Cal F=\{\Cal P:\Cal P\subseteq[Q]^{<\omega}$ and there are 
+  $K\in[\Bbb Z]^{<\omega}$, $L\in\Cal L$ such that 
+  $\Cal P\supseteq\Cal P_{KL}\}$.}
+  
+\noindent Then $\Cal F$ is a filter on $[Q]^{<\omega}$ and
+
+\Centerline{$2\pi\int_F(\varhat h\times\theta_z)\varspcheck
+=\lim_{P\to\Cal F}\sum_{\sigma\in P,z\in J^r_{\sigma}}
+   \innerprod{h}{\phi_{\sigma}}\int_F\phi_{\sigma}$}
+   
+\noindent for every $z\in\Bbb R$ and rapidly decreasing test function $h$ and measurable set
+$F\subseteq\Bbb R$ of finite measure.
+
+\proof{{\bf (a)(i)} I had better start by explaining why the recipe above
+defines a function $\theta_z$.   Let $M$ be the set of those
+$k\in\Bbb Z$ such that $z$ belongs to the right-hand half of the dyadic
+interval $\hat J_k$ of length $2^k$ containing $z$.
+For $k\in M$, let $\hat y_k$ be the midpoint of the left-hand half
+$\hat J^l_k$ of $\hat J_k$, and set
+$\psi_k(y)=\varhat{\phi}(2^{-k}(y-\hat y_k))^2$ for $y\in\Bbb R$;  then
+$\psi_k$ is smooth and zero outside $\hat J^l_k$.   But now observe that
+if $k$, $k'$ are distinct members of $M$, then $\hat J^l_k$ and
+$\hat J^l_{k'}$ are disjoint, as remarked in
+286E(b-iv).   So $\theta_z$ is just the sum $\sum_{k\in M}\psi_k$.
+Because $\varhat{\phi}$ takes values in $[0,1]$, so does $\theta_z$.
+If $y\ge z$, then of course $y\notin\hat J^l_k$ for any $k\in M$, so
+$\theta_z(y)=0$.
+
+\medskip
+
+\quad{\bf (ii)} To see that $(y,z)\mapsto\theta_z(y)$ is Borel
+measurable, observe that
+
+\Centerline{$\{(y,z):\theta_z(y)\ge\gamma\}
+=\bigcup_{\sigma\in Q}\{(y,z):
+  \hat\phi((y-y^l_{\sigma})\mu I_{\sigma})^2\ge\gamma$,
+  $z\in J^r_{\sigma}\}$}
+
+\noindent for every $\gamma\in\Bbb R$.
+
+\medskip
+
+{\bf (b)(i)} $\emptyset$ belongs to both $[\Bbb Z]^{<\omega}$ and $\Cal L$ and
+$[Q]^{<\omega}=\Cal P_{\emptyset\emptyset}$ belongs to $\Cal F$.
+If $K\in[\Bbb Z]^{<\omega}$ and $L\in\Cal L$ then
+$\bigcup_{k\in K}L\cap Q_k$ belongs to $\Cal P_{KL}$.   So no
+$\Cal P_{KL}$ is empty and $\emptyset\notin\Cal F$.
+
+If $\Cal P$, $\Cal P'\in\Cal F$, there are
+$K$, $K'\in[\Bbb Z]^{<\omega}$ and $L$, $L'\in\Cal L$ 
+such that $\Cal P_{KL}\subseteq\Cal P$ and $\Cal P_{K'L'}\subseteq\Cal P'$.
+Now $K\cup K'\in[\Bbb Z]^{<\omega}$, $L\cup L'\in\Cal L$ and
+
+\Centerline{$\Cal P_{K\cup K',L\cup L'}
+\subseteq\Cal P_{KL}\cap\Cal P_{K'L'}\subseteq\Cal P\cap\Cal P'$,}
+
+\noindent so $\Cal P\cap\Cal P'\in\Cal F$.
+
+If $\Cal P\in\Cal F$ and $\Cal P\subseteq\Cal P'\subseteq[Q]^{<\omega}$,
+then of course $\Cal P'\in\Cal F$.   So $\Cal F$ is a filter on
+$[Q]^{<\omega}$.
+
+\medskip
+
+\quad{\bf (ii)} Now fix on $z\in\Bbb R$, a rapidly decreasing test function $h$ and a set $F$ of
+finite measure.   Take $M$ and
+$\psi_k$, $\hat J_k$, $\hat y_k$ for $k\in M$ from (a-i) above;
+it will be convenient to set $\psi_k=0$ for $k\in\Bbb Z\setminus M$, so
+that $\theta_z=\sum_{k\in\Bbb Z}\psi_k$.
+
+For $k\in\Bbb Z$,
+
+\Centerline{$2\pi\int_F(\varhat h\times\psi_k)\varspcheck
+=\sum_{\sigma\in Q_k,z\in J^r_{\sigma}}
+  \innerprod{h}{\phi_{\sigma}}\int_F\phi_{\sigma}$.}
+  
+\noindent\Prf\ If $k\notin M$, then $z\notin J^r_{\sigma}$ for any
+$\sigma\in Q_k$, while $\psi_k=0$, so the result is trivial.   So I will
+suppose that $k\in M$ and that $\hat y_k$ is defined.
+If $\sigma\in Q_k$ and $z\in J^r_{\sigma}$, 
+$y^l_{\sigma}=\hat y_k$ and $x_{\sigma}$ is
+of the form $2^{-k}(n+\bover12)$ for some $n\in\Bbb Z$.   So
+
+$$\eqalignno{\innerprod{h}{\phi_{\sigma}}
+&=\int_{-\infty}^{\infty}
+  \varhat h\times\bar\varhat{\phi}_{\sigma}\cr
+\displaycause{284O}
+&=\int_{-\infty}^{\infty}\varhat h(t)
+  \cdot 2^{-k/2}e^{2^{-k}i(n+\bover12)(t-\hat y_k)}
+  \varhat\phi(2^{-k}(t-\hat y_k))dt\cr
+\displaycause{by the formula in 286Eb, because $\varhat{\phi}$ is
+real-valued}
+&=2^{k/2}\int_{-\infty}^{\infty}\varhat h(2^kt+\hat y_k)
+  e^{i(n+\bover12)t}\varhat\phi(t)dt
+=2^{k/2}\int_{-\pi}^{\pi}\varhat h(2^kt+\hat y_k)
+  e^{i(n+\bover12)t}\varhat\phi(t)dt\cr
+\displaycause{because $\varhat{\phi}(t)=0$ if $|t|\ge\bover15$}
+&=2^{k/2}\int_{-\pi}^{\pi}g(t)e^{int}dt,\cr}$$
+
+\noindent where $g(t)=\varhat h(2^kt+\hat y_k)e^{it/2}\varhat{\phi}(t)$
+for $-\pi<t\le\pi$.   So if we set
+$c_n=\Bover1{2\pi}\int_{-\pi}^{\pi}g(t)e^{-int}dt$, as in 282A, we have
+
+\Centerline{$\innerprod{h}{\phi_{\sigma}}=2^{k/2}\cdot 2\pi c_{-n}$}
+
+\noindent when $\sigma\in Q_k$, $z\in J^r_{\sigma}$
+and $x_{\sigma}=2^{-k}(n+\bover12)$.
+Note that as $g$ is smooth and zero outside
+$[-\bover15,\bover15]$, $\sum_{n=-\infty}^{\infty}|c_n|<\infty$
+(282Rb).
+
+Now, for any $y\in\hat J^l_k$, writing
+$R_k$ for 
+
+\Centerline{$\{\sigma:\sigma\in Q_k$, $z\in J^r_{\sigma}\}
+=\{\sigma:\sigma\in Q_k$, $J_{\sigma}=\hat J_k\}
+=\{(I,\hat J_k):I\in\Cal I$, $\mu I=2^{-k}\}$,}
+
+\noindent we have
+
+$$\eqalignno{\sum_{\sigma\in R_k}
+  \innerprod{h}{\phi_{\sigma}}\varhat{\phi}_{\sigma}(y)
+&=\sum_{n=-\infty}^{\infty}2^{k/2}\cdot 2\pi c_{-n}
+   \cdot 2^{-k/2}e^{-2^{-k}i(n+\bover12)(y-\hat y_k)}
+   \varhat{\phi}(2^{-k}(y-\hat y_k))\cr
+&=2\pi\varhat{\phi}(2^{-k}(y-\hat y_k))
+   e^{-2^{-k-1}i(y-\hat y_k)}
+   \sum_{n=-\infty}^{\infty}c_{-n}e^{-2^{-k}in(y-\hat y_k)}\cr
+&=2\pi\varhat{\phi}(2^{-k}(y-\hat y_k))
+   e^{-2^{-k-1}i(y-\hat y_k)}
+   \sum_{n=-\infty}^{\infty}c_ne^{in 2^{-k}(y-\hat y_k)}\cr
+&=2\pi\varhat{\phi}(2^{-k}(y-\hat y_k))
+   e^{-2^{-k-1}i(y-\hat y_k)}g(2^{-k}(y-\hat y_k))\cr
+\displaycause{by 282L(i), because $2^{-k}|y-\hat y_k|\le\bover14<\pi$
+and $g$ is smooth}
+&=2\pi e^{-2^{-k-1}i(y-\hat y_k)}\varhat{\phi}(2^{-k}(y-\hat y_k))
+  \varhat h(y)e^{2^{-k-1}i(y-\hat y_k)}
+  \varhat{\phi}(2^{-k}(y-\hat y_k))\cr
+&=2\pi\varhat h(y)\psi_k(y).\cr}$$
+
+\noindent On the other hand, if $y\in\Bbb R\setminus\hat J^l_k$,
+$\psi_k(y)=\varhat{\phi}_{\sigma}(y)=0$ for every $\sigma\in R_k$, so
+again
+$\sum_{\sigma\in R_k}
+  \innerprod{h}{\phi_{\sigma}}\varhat{\phi}_{\sigma}(y)
+=2\pi\varhat h(y)\psi_k(y)$.
+
+Next,
+
+\Centerline{$\sum_{\sigma\in R_k}|\innerprod{h}{\phi_{\sigma}}|
+=2\pi\cdot 2^{k/2}\sum_{n=-\infty}^{\infty}|c_n|$}
+
+\noindent and
+
+\Centerline{$\sup_{\sigma\in R_k}\int_{-\infty}^{\infty}
+  |\varhat{\phi}_{\sigma}|
+  =2^{k/2}\int_{-\infty}^{\infty}|\varhat{\phi}|$}
+
+\noindent are finite, while of course $\varhat{\chi F}$ is bounded.
+So
+
+$$\eqalignno{2\pi\int_F(\varhat h\times\psi_k)\varspcheck
+&=2\pi\innerprod{\varhat h\times\psi_k)\varspcheck}{\chi F}
+=2\pi\innerprod{(\varhat h\times\psi_k)\varspcheck)\varsphat}
+  {\varhat{\chi F}}\cr
+\displaycause{284Ob again}
+&=2\pi\innerprod{\varhat h\times\psi_k}{\varhat{\chi F}}
+=\int_{-\infty}^{\infty}
+    2\pi\varhat h\times\psi_k\times\overline{\varhat{\chi F}}
+\cr&=\int_{-\infty}^{\infty}\sum_{\sigma\in R_k}
+   \innerprod{h}{\phi_{\sigma}}\varhat{\phi}_{\sigma}
+   \times\overline{\varhat{\chi F}}
+=\sum_{\sigma\in R_k}\innerprod{h}{\phi_{\sigma}}\int_{-\infty}^{\infty}
+   \varhat{\phi}_{\sigma}\times\overline{\varhat{\chi F}}\cr
+\displaycause{226E}   
+&=\sum_{\sigma\in R_k}\innerprod{h}{\phi_{\sigma}}
+   \int_F{\phi}_{\sigma}
+=\sum_{\sigma\in Q_k,z\in J^r_{\sigma}}\innerprod{h}{\phi_{\sigma}}
+   \int_F{\phi}_{\sigma}.  \text{ \Qed}\cr}$$
+   
+\medskip
+
+\quad{\bf (iii)} In the last sentence of the argument just above, 
+I quoted B.Levi's
+theorem in the form 226E, even though $R_k$ has a natural
+enumeration, because I shall specifically want to say later that
+
+\inset{\noindent
+for every $\epsilon>0$ there is a finite $L_0\subseteq R_k$ such that
+
+\centerline{$|2\pi\int_F(\varhat h\times\psi_k)\varspcheck
+-\sum_{\sigma\in L}\innerprod{h}{\phi_{\sigma}}
+   \int_F{\phi}_{\sigma}|\le\epsilon$}
+   
+\noindent whenever $L\subseteq R_k$ is finite and $L\supseteq L_0$;}
+
+\noindent it follows at once that
+   
+\inset{\noindent
+for every $\epsilon>0$ there is a finite $L_0\subseteq Q_k$ such that
+
+\centerline{$|2\pi\int_F(\varhat h\times\psi_k)\varspcheck
+-\sum_{\sigma\in L,z\in J^r_{\sigma}}\innerprod{h}{\phi_{\sigma}}
+   \int_F{\phi}_{\sigma}|\le\epsilon$}
+   
+\noindent whenever $L\subseteq Q_k$ is finite and $L\supseteq L_0$.}
+
+\medskip
+
+\quad{\bf (iv)} Now let us consider $(\varhat h\times\theta_z)\varspcheck$.
+Because every $\psi_k$ is non-negative, $\theta_z=\sum_{k\in\Bbb Z}\psi_k$
+is bounded above by $1$, and $\varhat h$ is integrable,
+
+$$\eqalign{\int_F(\varhat h\times\theta_z)\varspcheck
+&=\int_{-\infty}^{\infty}\varhat h\times\theta_z\times\varhat{\chi F}
+\cr&=\sum_{k\in\Bbb Z}\int_{-\infty}^{\infty}\varhat h\times\psi_k\times\varhat{\chi F}
+=\sum_{k\in\Bbb Z}\int_F(\varhat h\times\psi_k)\varspcheck.\cr}$$
+
+\noindent So here we can say
+
+\inset{\noindent for every $\epsilon>0$ there is a 
+$K_0\in[\Bbb Z]^{<\omega}$ such that 
+
+\centerline{$|\int_F(\varhat h\times\theta_z)\varspcheck
+  -\sum_{k\in K}\int_F(\varhat h\times\psi_k)\varspcheck|\le\epsilon$}
+
+\noindent whenever $K\in[\Bbb Z]^{<\omega}$ and $K\supseteq K_0$.}  
+
+\medskip
+
+\quad{\bf (v)} To express the facts above in terms of a limit along the
+filter $\Cal F$, we can argue as follows.   Take any $\epsilon>0$.
+For each $k\in\Bbb Z$, (iii) tells us that there is a finite set
+$L_k\subseteq Q_k$ such that 
+
+\Centerline{$|2\pi\int_F(\varhat h\times\psi_k)\varspcheck
+-\sum_{\sigma\in L',z\in J^r_{\sigma}}\innerprod{h}{\phi_{\sigma}}
+   \int_F{\phi}_{\sigma}|\le 2^{-|k|}\epsilon$}
+   
+\noindent whenever $L'\subseteq Q_k$ is finite and $L'\supseteq L_k$;  of
+course we can suppose that every $L_k$ is non-empty.
+Set $L=\bigcup_{k\in\Bbb Z}L_k$, so that $L\cap Q_k=L_k$ is finite for each
+$k$, and $L\in\Cal L$.   Next, there is a $K\in[\Bbb Z]^{<\omega}$ such
+that
+
+\Centerline{$|\int_F(\varhat h\times\theta_z)\varspcheck
+  -\sum_{k\in K'}\int_F(\varhat h\times\psi_k)\varspcheck|
+  \le\epsilon$}
+
+\noindent whenever $K'\in[\Bbb Z]^{<\omega}$ and $K'\supseteq K$.
+Take any $P\in\Cal P_{KL}$.   Setting $K'=\{k:P\cap Q_k\ne\emptyset\}$,
+we have $K'\supseteq K$ and $P\cap Q_k\supseteq L\cap Q_k$ for
+every $k\in K'$.   Accordingly
+
+$$\eqalign{&|2\pi\int_F(\varhat h\times\theta_z)\varspcheck
+   -\sum_{\sigma\in P,z\in J^r_{\sigma}}
+      \innerprod{h}{\phi_{\sigma}}\int_F\phi_{\sigma}|
+\cr&\mskip100mu
+=|2\pi\int_F(\varhat h\times\theta_z)\varspcheck
+   -\sum_{k\in K'}\sum_{\Atop{\sigma\in P\cap Q_k}{z\in J^r_{\sigma}}}
+      \innerprod{h}{\phi_{\sigma}}\int_F\phi_{\sigma}|
+\cr&\mskip100mu
+\le 2\pi|\int_F(\varhat h\times\theta_z)\varspcheck
+   -\sum_{k\in K'}\int_F(\varhat h\times\psi_k)\varspcheck|      
+\cr&\mskip200mu
++\sum_{k\in K'}|2\pi\int_F(\varhat h\times\psi_k)\varspcheck
+   -\sum_{\Atop{\sigma\in P\cap Q_k}{z\in J^r_{\sigma}}}
+      \innerprod{h}{\phi_{\sigma}}\int_F\phi_{\sigma}|
+\cr&\mskip100mu
+\le 2\pi\epsilon+\sum_{k\in K'}2^{-|k|}\epsilon
+\le (2\pi+3)\epsilon.\cr}$$
+
+\noindent As $\Cal P_{KL}\in\Cal F$, and $\epsilon$ was arbitrary,
+
+\Centerline{$2\pi\int_F(\varhat h\times\theta_z)\varspcheck
+=\lim_{P\to\Cal F}\sum_{\sigma\in P,z\in J^r_{\sigma}}
+   \innerprod{h}{\phi_{\sigma}}\int_F\phi_{\sigma}$}
+
+\noindent as claimed.
+}%end of proof of 286O
+   
+\leader{286P}{Lemma}\dvArevised{2013} 
+Suppose that $h$ is a rapidly decreasing test function.   
+For $x\in\Bbb R$, set
+
+\Centerline{$Ah(x)
+=\sup_{z\in\Bbb R}|2\pi(\varhat h\times\theta_z)\varspcheck(x)|$.}
+
+\noindent Then $Ah:\Bbb R\to[0,\infty]$ is Borel measurable, and
+$\int_FAh\le 4C_9\|h\|_2\sqrt{\mu F}$ whenever $\mu F<\infty$.
+
+\proof{{\bf (a)} As $(\varhat h\times\theta_z)\varspcheck$ is continuous
+for every $z$, $Ah$ is lower semi-continuous, therefore Borel measurable,
+by 256Ma.   By 256Mb,
+
+\Centerline{$\int_FAh
+=\sup\{\int_F\sup_{i\le n}
+  |2\pi(\varhat h\times\theta_{z_i})\varspcheck|:
+  z_0,\ldots,z_n\in\Bbb R\}$.}
+
+\medskip
+
+{\bf (b)} Fix $z_0,\ldots,z_n\in\Bbb R$ for the moment.
+
+\medskip
+
+\quad{\bf (i)} Set  
+$v_i=2\pi(\varhat h\times\theta_{z_i})\varspcheck$ for $i\le n$, and
+$v=\sup_{i\le n}|v_i|$.   Set 
+$E_i=\{x:v(x)=|v_i(x)|\}\setminus\bigcup_{j<i}\{x:v(x)=|v_j(x)|\}$ for
+$i\le n$, so that $(E_0,\ldots,E_n)$ is a partition of $\Bbb R$ into
+Borel sets, and 
+
+\Centerline{$\int_Fv
+=\int_F\sum_{i=0}^n|v_i|\times\chi E_i
+=\int_F|\sum_{i=0}^nv_i\times\chi E_i|
+\le 4|\int_{F'}\sum_{i=0}^nv_i\times\chi E_i|$}
+
+\noindent for a suitable measurable $F'\subseteq F$ (246K).
+Setting $g(x)=z_i$ for $x\in E_i$, $g:\Bbb R\to\Bbb R$ is Borel measurable.
+
+\medskip
+
+\quad{\bf (ii)} For each $i\le n$,
+
+$$\eqalignno{\int_{F'}v_i\times\chi E_i
+&=\int_{F'\cap E_i}v_i
+=\lim_{P\to\Cal F}\sum_{\sigma\in P,z_i\in J^r_{\sigma}}
+  \innerprod{h}{\phi_{\sigma}}\int_{F'\cap E_i}\phi_{\sigma}\cr
+\displaycause{where $\Cal F$ is the filter on $[Q]^{<\omega}$ described in
+286O}  
+&=\lim_{P\to\Cal F}\int_{F'\cap E_i}
+  \sum_{\sigma\in P,z_i\in J^r_{\sigma}}
+  \innerprod{h}{\phi_{\sigma}}\phi_{\sigma}
+\cr&=\lim_{P\to\Cal F}\int_{F'\cap E_i}
+  \sum_{\sigma\in P,g(x)\in J^r_{\sigma}}
+  \innerprod{h}{\phi_{\sigma}}\phi_{\sigma}(x)dx.\cr}$$
+  
+\noindent So
+
+$$\eqalign{\int_{F'}\sum_{i=0}^nv_i\times\chi E_i  
+&=\lim_{P\to\Cal F}\sum_{i=0}^n\int_{F'\cap E_i}
+  \sum_{\sigma\in P,g(x)\in J^r_{\sigma}}
+  \innerprod{h}{\phi_{\sigma}}\phi_{\sigma}(x)dx
+\cr&=\lim_{P\to\Cal F}\int_{F'}
+  \sum_{\sigma\in P,g(x)\in J^r_{\sigma}}
+  \innerprod{h}{\phi_{\sigma}}\phi_{\sigma}(x)dx.\cr}$$
+  
+\noindent Now for any finite set $P\subseteq Q$,
+
+\Centerline{$\int_{F'}\sum_{\sigma\in P,g(x)\in J^r_{\sigma}}
+  \innerprod{h}{\phi_{\sigma}}\phi_{\sigma}(x)dx
+=\sum_{\sigma\in P}\int_{F'\cap g^{-1}[J^r_{\sigma}]}
+  \innerprod{h}{\phi_{\sigma}}\phi_{\sigma}$;}
+  
+\noindent if you like, you can think of this as an application of
+Fubini's theorem, if you give counting measure to $Q$ and look at the 
+function
+
+$$\eqalign{(x,\sigma)
+&\mapsto\innerprod{h}{\phi_{\sigma}}\phi_{\sigma}(x)
+  \text{ if }x\in F',\,\sigma\in P\text{ and }g(x)\in J^r_{\sigma},
+\cr&\mapsto 0\text{ otherwise}.\cr}$$  
+
+\noindent But this means that
+
+\Centerline{$|\int_{F'}\sum_{\sigma\in P,g(x)\in J^r_{\sigma}}
+  \innerprod{h}{\phi_{\sigma}}\phi_{\sigma}(x)dx|
+\le\sum_{\sigma\in P}|\innerprod{h}{\phi_{\sigma}}
+   \int_{F'\cap g^{-1}[J^r_{\sigma}]}\phi_{\sigma}|
+\le C_9\|h\|_2\sqrt{\mu F'}$}
+
+\noindent by 286N.   Taking the limit as $P\to\Cal F$,
+
+\Centerline{$|\int_{F'}\sum_{i=0}^nv_i\times\chi E_i|
+\le C_9\|h\|_2\sqrt{\mu F'}$.}
+
+\medskip
+
+\quad{\bf (iii)} Thus we have
+
+$$\eqalign{\int_F\sup_{i\le n}
+   |2\pi(\varhat h\times\theta_{z_i})\varspcheck|
+=\int_Fv
+&\le 4|\int_{F'}\sum_{i=0}^nv_i\times\chi E_i|
+\cr&\le 4C_9\|h\|_2\sqrt{\mu F'}
+\le 4C_9\|h\|_2\sqrt{\mu F}.\cr}$$
+
+\medskip
+
+{\bf (c)} As $z_0,\ldots,z_n$ were arbitrary,
+$\int_FAh\le 4C_9\|h\|_2\sqrt{\mu F}$, as claimed.
+}%end of proof of 286P
+
+\leader{286Q}{Lemma} For $\alpha>0$ and $y$, $z$, $\beta\in\Bbb R$, set
+$\theta'_{z\alpha\beta}(y)=\theta_{\alpha z+\beta}(\alpha y+\beta)$.
+Then
+
+(a) the function $(\alpha,\beta,y,z)\mapsto\theta'_{z\alpha\beta}(y):
+\ooint{0,\infty}\times\BbbR^3\to[0,1]$ is Borel measurable;
+
+(b) $\theta'_{z\alpha\beta}(y)=0$ whenever $y\ge z$;
+
+(c) for any rapidly decreasing test function $h$, and any $z\in\Bbb R$,
+
+\Centerline{$2\pi|(\varhat h\times\theta'_{z\alpha\beta})\varspcheck|
+\le D_{1/\alpha}AM_{\beta}D_{\alpha}h$}
+
+\noindent\cmmnt{(in the notation of 286C)} at every point.
+
+\proof{{\bf (a)} We need only recall that
+$(y,z)\mapsto\theta_z(y):\BbbR^2\to\Bbb R$
+is Borel measurable (286Oa), and that
+$(\alpha,\beta,y,z)\mapsto\theta'_{z\alpha\beta}(y)$ is built up from
+this, $+$ and $\times$.
+
+\medskip
+
+{\bf (b)} Again, this is immediate from 286Oa, because $\alpha>0$.
+
+\medskip
+
+{\bf (c)} Set $v=\alpha z+\beta$, so that
+$\theta'_{z\alpha\beta}=D_{\alpha}S_{\beta}\theta_v$.   Then
+
+$$\eqalign{\varhat h\times\theta'_{z\alpha\beta}
+&=\varhat h\times D_{\alpha}S_{\beta}\theta_v
+=D_{\alpha}S_{\beta}(S_{-\beta}D_{1/\alpha}\varhat h\times\theta_v)\cr
+&=\alpha D_{\alpha}S_{\beta}
+  (S_{-\beta}(D_{\alpha}h)\varsphat\times\theta_v)
+=\alpha D_{\alpha}S_{\beta}
+  ((M_{\beta}D_{\alpha}h)\varsphat\times\theta_v),\cr}$$
+
+\noindent so
+
+$$\eqalign{(\varhat h\times\theta'_{z\alpha\beta})\varspcheck
+&=\alpha\bigl(D_{\alpha}S_{\beta}
+  ((M_{\beta}D_{\alpha}h)\varsphat\times\theta_v)\bigr)\varspcheck\cr
+&=D_{1/\alpha}\bigl(S_{\beta}
+  ((M_{\beta}D_{\alpha}h)\varsphat\times\theta_v)\bigr)\varspcheck
+=D_{1/\alpha}M_{-\beta}\bigl(
+  (M_{\beta}D_{\alpha}h)\varsphat\times\theta_v\bigr)\varspcheck\cr}$$
+
+\noindent and
+
+\Centerline{$2\pi|(\varhat h\times\theta'_{z\alpha\beta})\varspcheck|
+=2\pi D_{1/\alpha}\bigl|\bigl(
+  (M_{\beta}D_{\alpha}h)\varsphat
+  \times\theta_v\bigr)\varspcheck\bigr|
+\le D_{1/\alpha}A(M_{\beta}D_{\alpha}h)$.}
+}%end of proof of 286Q
+
+\leader{286R}{Lemma} For any $y$, $z\in\Bbb R$,
+
+\Centerline{$\tilde\theta_z(y)
+=\int_1^2\Bover1{\alpha}\bigl(\lim_{n\to\infty}
+  \Bover1n\int_0^n\theta'_{z\alpha\beta}(y)d\beta\bigr)d\alpha$}
+
+\noindent is defined, and
+
+$$\eqalign{\tilde\theta_z(y)&=\tilde\theta_1(0)>0\text{ if }y<z,\cr
+&=0\text{ if }y\ge z.\cr}$$
+
+\proof{{\bf (a)} The case $y\ge z$ is trivial, because if $y\ge z$ then
+$\theta'_{z\alpha\beta}(y)=0$ for all $\alpha>0$ and
+$\beta\in\Bbb R$ (286Qb) and $\tilde\theta_z(y)=0$.   For the rest of the proof,
+therefore, I look at the case $y<z$.
+
+\medskip
+
+{\bf (b)(i)} Given $y<z\in\Bbb R$ and $\alpha>0$, set
+$l=\lfloor\log_2(20\alpha(z-y))\rfloor$.   Then
+$\theta'_{z,\alpha,\beta+2^l}(y)=\theta'_{z\alpha\beta}(y)$ for every
+$\beta\in\Bbb R$.   \Prf\ If
+$\theta'_{z\alpha\beta}(y)=\theta_{\alpha z+\beta}(\alpha y+\beta)$ is
+non-zero, there must be $k$, $m\in\Bbb Z$ such that
+
+\Centerline{$2^k(m+\Bover12)\le\alpha z+\beta<2^k(m+1)$}
+
+\noindent and
+
+\Centerline{$\varhat{\phi}(2^{-k}(\alpha y+\beta)-(m+\Bover14))^2
+=\theta'_{z\alpha\beta}(y)\ne 0$,}
+
+\noindent so
+
+\Centerline{$2^km\le\alpha y+\beta\le 2^k(m+\Bover9{20})$}
+
+\noindent because $\varhat\phi$ is zero outside $[-\bover15,\bover15]$.
+In this case,
+$\Bover1{20}\cdot 2^k<\alpha(z-y)$, so that $k\le l$.   We therefore
+have
+
+\Centerline{$2^k(m+2^{l-k}+\Bover12)\le\alpha z+\beta+2^l
+<2^k(m+2^{l-k}+1)$,}
+
+\Centerline{$2^k(m+2^{l-k})\le\alpha y+\beta+2^l
+<2^k(m+2^{l-k}+\Bover12)$,}
+
+\noindent so
+
+\Centerline{$\theta'_{z,\alpha,\beta+2^l}(y)
+=\varhat{\phi}(2^{-k}(\alpha y+\beta+2^l)-(m+2^{l-k}+\Bover14))^2
+=\theta'_{z\alpha\beta}(y)$.}
+
+\noindent Similarly,
+
+\Centerline{$2^k(m-2^{l-k}+\Bover12)\le\alpha z+\beta-2^l
+<2^k(m-2^{l-k}+1)$,}
+
+\Centerline{$2^k(m-2^{l-k})\le\alpha y+\beta-2^l
+<2^k(m-2^{l-k}+\Bover12)$,}
+
+\noindent so
+
+\Centerline{$\theta'_{z,\alpha,\beta-2^l}(y)
+=\varhat{\phi}(2^{-k}(\alpha y+\beta-2^l)-(m-2^{l-k}+\Bover14))^2
+=\theta'_{z\alpha\beta}(y)$.}
+
+\noindent What this shows is that
+$\theta'_{z,\alpha,\beta+2^l}(y)=\theta'_{z\alpha\beta}(y)$ if either is
+non-zero, so we have the equality in any case.\ \Qed
+
+\medskip
+
+{\bf (ii)} It follows that $g(\alpha,y,z)
+=\lim_{b\to\infty}\Bover1b\biggerint_0^b\theta'_{z\alpha\beta}(y)d\beta$ is
+defined.   \Prf\ Set
+
+\Centerline{$\gamma
+=2^{-l}\int_0^{2^l}\theta'_{z\alpha\beta}(y)d\beta$.}
+
+\noindent From (i) we see that
+
+\Centerline{$\gamma
+=2^{-l}\int_{2^lm}^{2^l(m+1)}\theta'_{z\alpha\beta}(y)d\beta$}
+
+\noindent for every $m\in\Bbb Z$, and therefore that
+
+\Centerline{$\gamma
+=\Bover1{2^lm}\int_0^{2^lm}\theta'_{z\alpha\beta}(y)d\beta$}
+
+\noindent for every $m\ge 1$.   Now $\theta'_{z\alpha\beta}(y)$ is always
+greater than or equal to $0$, so if $2^lm\le b\le 2^l(m+1)$ then
+
+\Centerline{$\Bover{m}{m+1}\gamma
+=\Bover1{2^l(m+1)}\int_0^{2^lm}\theta'_{z\alpha\beta}
+\le\Bover1b\int_0^b\theta'_{z\alpha\beta}
+\le\Bover1{2^lm}\int_0^{2^l(m+1)}\theta'_{z\alpha\beta}
+=\Bover{m+1}{m}\gamma$,}
+
+\noindent which approach $\gamma$ as $b\to\infty$.\ \Qed
+
+\medskip
+
+{\bf (c)} Because $(\alpha,y)\mapsto\theta'_{z\alpha\beta}(y)$ is
+always Borel measurable, each of the functions
+$\alpha\mapsto\Bover1n\int_0^n\theta'_{z\alpha\beta}$, for
+$n\ge 1$, is Borel measurable (putting 251M and 252P together), and
+$\alpha\mapsto g(\alpha,y,z):\ooint{0,\infty}\to\Bbb R$ is Borel
+measurable;  at the same time, since
+$0\le\theta'_{z\alpha\beta}(y)\le 1$ for all $\alpha$ and $\beta$,
+$0\le g(\alpha,y,z)\le 1$ for every $\alpha$, and
+$\tilde\theta_z(y)=\int_1^2\Bover1{\alpha}g(\alpha,y,z)d\alpha$ is
+defined in $[0,1]$.
+
+\medskip
+
+{\bf (d)} For any $y<z$, $\gamma\in\Bbb R$ and $\alpha>0$,
+$g(\alpha,y+\gamma,z+\gamma)=g(\alpha,y,z)$.   \Prf\ It is enough to
+consider the case $\gamma\ge 0$.   In this case
+
+$$\eqalign{g(\alpha,y+\gamma,z+\gamma)
+&=\lim_{b\to\infty}\Bover1b\int_0^b
+  \theta'_{z+\gamma,\alpha,\beta}(y+\gamma)d\beta\cr
+&=\lim_{b\to\infty}\Bover1b\int_0^b
+  \theta_{\alpha z+\alpha\gamma+\beta}
+    (\alpha y+\alpha\gamma+\beta)d\beta\cr
+&=\lim_{b\to\infty}\Bover1b\int_{\alpha\gamma}^{b+\alpha\gamma}
+  \theta_{\alpha z+\beta}(\alpha y+\beta)d\beta
+=\lim_{b\to\infty}\Bover1b\int_{\alpha\gamma}^{b+\alpha\gamma}
+  \theta'_{z\alpha\beta}(y)d\beta,\cr}$$
+
+\noindent so
+
+$$\eqalign{|g(\alpha,y+\gamma,z+\gamma)-g(\alpha,y,z)|
+&=\lim_{b\to\infty}\Bover1b\bigl
+  |\int_b^{b+\alpha\gamma}\theta'_{z\alpha\beta}(y)d\beta
+  -\int_0^{\alpha\gamma}\theta'_{z\alpha\beta}(y)d\beta\bigr|\cr
+&\le\lim_{b\to\infty}\Bover{2\alpha\gamma}{b}=0. \text{ \Qed}\cr}$$
+
+It follows that whenever $y<z$ and $\gamma\in\Bbb R$,
+
+\Centerline{$\tilde\theta_{z+\gamma}(y+\gamma)
+=\int_{0}^{1}\Bover1{\alpha}g(\alpha,y+\gamma,z+\gamma)d\alpha
+=\int_{0}^{1}\Bover1{\alpha}g(\alpha,y,z)d\alpha
+=\tilde\theta_z(y)$.}
+
+\medskip
+
+{\bf (e)} The next essential fact to note is that $\theta_{2z}(2y)$ is
+always equal to $\theta_z(y)$.   \Prf\ If $\theta_z(y)\ne 0$, then (as
+in (b) above) there are $k$, $m\in\Bbb Z$ such that
+
+\Centerline{$2^k(m+\Bover12)\le z<2^k(m+1)$,
+\quad$2^km\le y<2^k(m+\Bover12)$,
+\quad$\theta_z(y)=\varhat{\phi}(2^{-k}y-(m+\Bover14))^2$.}
+
+\noindent In this case,
+
+\Centerline{$2^{k+1}(m+\Bover12)\le 2z<2^{k+1}(m+1)$,
+\quad$2^{k+1}m\le 2y<2^{k+1}(m+\Bover12)$,}
+
+\noindent so
+
+\Centerline{$\theta_{2z}(2y)
+=\varhat{\phi}(2^{-k-1}\cdot 2y-(m+\Bover14))^2
+=\theta_z(y)$.}
+
+\noindent Similarly,
+
+\Centerline{$2^{k-1}(m+\Bover12)\le \Bover12z<2^{k-1}(m+1)$,
+\quad$2^{k-1}m\le \Bover12y<2^{k-1}(m+\Bover12)$,}
+
+\noindent so
+
+\Centerline{$\theta_{\bover12z}(\Bover12y)
+=\varhat{\phi}(2^{-k+1}\cdot\Bover12y-(m+\Bover14))^2
+=\theta_z(y)$.}
+
+\noindent This shows that $\theta_{2z}(2y)=\theta_z(y)$ if either is
+non-zero, and therefore in all cases.\ \Qed
+
+Accordingly
+
+\Centerline{$\theta'_{z,2\alpha,2\beta}(y)
+=\theta_{2\alpha z+2\beta}(2\alpha y+2\beta)
+=\theta_{\alpha z+\beta}(\alpha y+\beta)
+=\theta'_{z\alpha\beta}(y)$}
+
+\noindent for all $y$, $z$, $\beta\in\Bbb R$ and all $\alpha>0$.
+
+\medskip
+
+{\bf (f)} Consequently
+
+$$\eqalign{g(2\alpha,y,z)
+&=\lim_{b\to\infty}\Bover1b\int_0^b\theta'_{z,2\alpha,\beta}(y)d\beta
+=\lim_{b\to\infty}\Bover2b\int_0^{b/2}
+  \theta'_{z,2\alpha,2\beta}(y)d\beta\cr
+&=\lim_{b\to\infty}\Bover2b\int_0^{b/2}
+  \theta'_{z\alpha\beta}(y)d\beta
+=\lim_{b\to\infty}\Bover1b\int_0^b\theta'_{z\alpha\beta}(y)d\beta
+=g(\alpha,y,z)\cr}$$
+
+\noindent whenever $\alpha>0$ and $y$, $z\in\Bbb R$.   It follows that
+
+\Centerline{$\int_{\gamma}^{\delta}
+   \Bover1{\alpha}g(\alpha,y,z)d\alpha
+=\int_{\gamma}^{\delta}\Bover1{\alpha}g(2\alpha,y,z)d\alpha
+=\int_{2\gamma}^{2\delta}\Bover1{\alpha}g(\alpha,y,z)d\alpha$}
+
+\noindent whenever $0<\gamma\le\delta$, and therefore that
+
+\Centerline{$\int_{\gamma}^{2\gamma}
+  \Bover1{\alpha}g(\alpha,y,z)d\alpha
+=\int_1^2\Bover1{\alpha}g(\alpha,y,z)d\alpha$}
+
+\noindent for every $\gamma>0$.   \Prf\ Take $k\in\Bbb Z$ such that
+$2^k\le\gamma<2^{k+1}$.   Then
+
+$$\eqalign{\int_{\gamma}^{2\gamma}\Bover1{\alpha}g(\alpha,y,z)d\alpha
+&=\int_{2^k}^{2^{k+1}}\Bover1{\alpha}g(\alpha,y,z)d\alpha
+  -\int_{2^k}^{\gamma}\Bover1{\alpha}g(\alpha,y,z)d\alpha
+  +\int_{2^{k+1}}^{2\gamma}\Bover1{\alpha}g(\alpha,y,z)d\alpha\cr
+&=\int_{2^k}^{2^{k+1}}\Bover1{\alpha}g(\alpha,y,z)d\alpha
+=\int_1^2\Bover1{\alpha}g(\alpha,y,z)d\alpha.\text{  \Qed}\cr}$$
+
+\medskip
+
+{\bf (g)} Now if $\alpha$, $\gamma>0$ and $y<z$,
+
+\Centerline{$g(\alpha,\gamma y,\gamma z)
+=\lim_{b\to\infty}\Bover1b\int_0^b
+  \theta_{\alpha\gamma z+\beta}(\alpha\gamma y+\beta)d\beta
+=g(\alpha\gamma,y,z)$.}
+
+\noindent So if $\gamma>0$ and $y<z$,
+
+$$\eqalign{\tilde\theta_{\gamma z}(\gamma y)
+&=\int_1^2\Bover1{\alpha}g(\alpha,\gamma y,\gamma z)d\alpha
+=\int_1^2\Bover1{\alpha}g(\alpha\gamma,y,z)d\alpha\cr
+&=\int_{\gamma}^{2\gamma}\Bover1{\alpha}g(\alpha,y,z)d\alpha
+=\int_1^2\Bover1{\alpha}g(\alpha,y,z)d\alpha
+=\tilde\theta_z(y).\cr}$$
+
+\noindent Putting this together with (d), we see that if $y<z$ then
+
+\Centerline{$\tilde\theta_z(y)
+=\tilde\theta_{z-y}(0)
+=\tilde\theta_1(0)$.}
+
+\medskip
+
+{\bf (h)} I have still to check that $\tilde\theta_1(0)$ is not zero.
+But suppose that $1\le\alpha<\bover76$ and that there is some
+$m\in\Bbb Z$ such that $2(m+\bover1{12})\le\beta\le 2(m+\bover5{12})$.
+Then $2(m+\bover12)\le\alpha+\beta<2(m+1)$, while
+$|\bover12\beta-(m+\bover14)|\le\bover16$, so
+
+\Centerline{$\theta_{\alpha+\beta}(\beta)
+=\varhat{\phi}(\Bover12\beta-(m+\Bover14))^2
+=1$.}
+
+\noindent What this means is that, for $1\le\alpha<\bover76$,
+
+$$\eqalign{g(\alpha,0,1)
+&=\lim_{m\to\infty}\Bover1{2m}\int_0^{2m}
+  \theta_{\alpha+\beta}(\beta)d\beta\cr
+&\ge\lim_{m\to\infty}\Bover{1}{2m}
+  \sum_{j=0}^{m-1}\mu[2(j+\Bover1{12}),2(j+\Bover5{12})]
+=\Bover13.\cr}$$
+
+\noindent So
+
+\Centerline{$\tilde\theta_1(0)
+=\int_1^2\Bover1{\alpha}g(\alpha,0,1)d\alpha
+\ge\Bover13\int_1^{7/6}\Bover1{\alpha}d\alpha
+>0$.}
+
+\noindent This completes the proof.
+}%end of proof of 286R
+
+\leader{286S}{Lemma} Suppose that $h$ is a rapidly decreasing test function.
+
+(a) For every $x\in\Bbb R$,
+
+\Centerline{$(\tilde Ah)(x)
+=\liminf_{n\to\infty}\Bover1n\int_1^2\Bover1{\alpha}\int_0^n
+  (D_{1/\alpha}AM_{\beta}D_{\alpha}h)(x)d\beta d\alpha$}
+
+\noindent is defined in $[0,\infty]$, and
+$\tilde Ah:\Bbb R\to[0,\infty]$ is Borel measurable.
+
+(b) $\int_F\tilde Ah\le 3C_9\|h\|_2\sqrt{\mu F}$ whenever $\mu F<\infty$.
+
+(c) If $z\in\Bbb R$,
+$2\pi|(\varhat h\times\tilde\theta_z)\varspcheck|\le\tilde Ah$ at every
+point.
+
+\proof{{\bf (a)} The point here is that the function
+
+\Centerline{$(\alpha,\beta,x)
+\mapsto(D_{1/\alpha}AM_{\beta}D_{\alpha}h)(x):
+  \ooint{0,\infty}\times\BbbR^2\to[0,\infty]$}
+
+\noindent is Borel measurable.   \Prf\
+
+$$\eqalign{(D_{1/\alpha}AM_{\beta}D_{\alpha}h)(x)
+&=(AM_{\beta}D_{\alpha}h)(\Bover{x}{\alpha})
+\cr&=\sup_{z\in\Bbb R}
+  |2\pi((M_{\beta}D_{\alpha}h)\varsphat\times\theta_z)\varspcheck
+     (\Bover{x}{\alpha})|
+\cr&=\Bover{2\pi}{\alpha}\sup_{z\in\Bbb R}
+  |(S_{-\beta}D_{1/\alpha}\varhat h\times\theta_z)\varspcheck
+     (\Bover{x}{\alpha})|.
+\cr}$$
+  
+\noindent Now, for any $z\in\Bbb R$, 
+
+\Centerline{$(S_{-\beta}D_{1/\alpha}\varhat h\times\theta_z)\varspcheck
+     (\bover{x}{\alpha})
+=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{ixy/\alpha}
+   \varhat h(\bover{y-\beta}{\alpha})\theta_z(y)dy$.}
+
+\noindent We know that $\varhat h$ is a rapidly decreasing test function, 
+so there is some 
+$\gamma\ge 0$ such that $|\varhat h(t)|\le\Bover{\gamma}{1+t^2}$ for every
+$t\in\Bbb R$.   This means that if $\alpha>0$ and $\beta\in\Bbb R$
+and $\sequencen{\alpha_n}$,
+$\sequencen{\beta_n}$ are sequences in $\ocint{0,2\alpha}$ and
+$[\beta-1,\beta+1]$, converging to $\alpha$, $\beta$ respectively, 
+and we set $g(t)
+=\sup_{n\in\Bbb N}|\varhat h(\Bover{t-\beta_n}{\alpha_n})\theta_z(t)|$,
+then 
+
+$$\eqalign{g(t)
+&\le\Bover{4\gamma\alpha^2}{(|t|-|\beta|-1)^2}\text{ if }|t|\ge|\beta|+2,
+  \cr
+&\le\gamma\text{ otherwise},\cr}$$
+
+\noindent and $g$ is integrable.   (Remember that 
+$0\le\theta_z(y)\le 1$ for every $y$, as noted in 286Oa.)   So Lebesgue's
+Dominated Convergence Theorem tells us that if
+$\sequencen{\alpha_n}\to\alpha$ and $\sequencen{\beta_n}\to\beta$ and
+$\sequencen{x_n}\to x$, then
+
+\Centerline{$\int_{-\infty}^{\infty}e^{ix_ny/\alpha_n}
+   \varhat h(\bover{y-\beta_n}{\alpha_n})\theta_z(y)dy
+\to\int_{-\infty}^{\infty}e^{ixy/\alpha}
+   \varhat h(\bover{y-\beta}{\alpha})\theta_z(y)dy$.}
+   
+\noindent Thus 
+$(\alpha,\beta,x)
+\mapsto(S_{-\beta}D_{1/\alpha}\varhat h\times\theta_z)\varspcheck
+(\bover{x}{\alpha})$ is continuous;  and this is true for every
+$z\in\Bbb R$.   Consequently
+
+\Centerline{$(\alpha,\beta,x)\mapsto\sup_{z\in\Bbb R}
+  |(S_{-\beta}D_{1/\alpha}\varhat h\times\theta_z)\varspcheck
+     (\Bover{x}{\alpha})|$}   
+
+\noindent and $(\alpha,\beta,x)
+\mapsto(D_{1/\alpha}AM_{\beta}D_{\alpha}h)(x)$ are lower semi-continuous,
+therefore Borel measurable, by 256Ma again.\ \Qed
+
+It follows that the repeated integrals
+
+\Centerline{$\int_1^2\Bover1{\alpha}\int_0^n
+(D_{1/\alpha}AM_{\beta}D_{\alpha}h)(x)d\beta d\alpha$}
+
+\noindent are defined in $[0,\infty]$ and are Borel measurable functions
+of $x$ (252P again), so that $\tilde Af$ is Borel measurable.
+
+\medskip
+
+{\bf (b)} For any $n\in\Bbb N$,
+
+$$\eqalignno{\int_F\Bover1n\int_1^2\Bover1\alpha\int_0^n
+&(D_{1/\alpha}AM_{\beta}D_{\alpha}h)(x)d\beta d\alpha dx\cr
+&=\Bover1n\int_1^2\Bover1\alpha\int_0^n\!\int_F
+  (D_{1/\alpha}AM_{\beta}D_{\alpha}h)(x)dx d\beta d\alpha\cr
+\displaycause{by Fubini's theorem, 252H}
+&=\Bover1n\int_1^2\!\int_0^n\!\int_F\Bover1\alpha
+  (AM_{\beta}D_{\alpha}h)(\Bover{x}{\alpha})dx d\beta d\alpha\cr
+&=\Bover1n\int_1^2\!\int_0^n\int_{\alpha^{-1}F}
+  (AM_{\beta}D_{\alpha}h)(x)dx d\beta d\alpha\cr
+&\le\Bover1n\int_1^2\!\int_0^n 4C_9
+  \|M_{\beta}D_{\alpha}h\|_2\sqrt{\mu(\alpha^{-1}F)} d\beta d\alpha\cr
+\displaycause{286P}
+&=4C_9\cdot\Bover1n\int_1^2\!\int_0^n
+  \Bover1{\sqrt{\alpha}}\|h\|_2\cdot\Bover1{\sqrt{\alpha}}\sqrt{\mu F}
+    d\beta d\alpha\cr
+&=4C_9\|h\|_2\sqrt{\mu F}\cdot\Bover1n\int_1^2\Bover1{\alpha}\int_0^n
+ d\beta d\alpha\cr
+&=4C_9\|h\|_2\sqrt{\mu F}\ln 2
+\le 3C_9\|h\|_2\sqrt{\mu F}.\cr}$$
+
+\noindent So
+
+$$\eqalignno{\int_F\tilde Ah
+&=\int_F\liminf_{n\to\infty}\Bover1n\int_1^2\Bover1\alpha\int_0^n
+  (D_{1/\alpha}AM_{\beta}D_{\alpha}h)(x)d\beta d\alpha dx\cr
+&\le\liminf_{n\to\infty}\int_F\Bover1n\int_1^2\Bover1\alpha\int_0^n
+  (D_{1/\alpha}AM_{\beta}D_{\alpha}h)(x)d\beta d\alpha dx\cr
+\displaycause{by Fatou's lemma}
+&\le 3C_9\|h\|_2\sqrt{\mu F}.\cr}$$
+
+\medskip
+
+{\bf (c)} For any $x\in\Bbb R$,
+
+\Centerline{$\int_{-\infty}^{\infty}
+  |\varhat h(y)|\int_1^2\Bover1{\alpha}
+  \bigl(\sup_{n\in\Bbb N}\Bover1n\int_0^n
+  \theta'_{z\alpha\beta}(y)d\beta\bigr)d\alpha dy
+\le\ln 2\cdot\int_{-\infty}^{\infty}|\varhat h|$}
+
+\noindent is finite.   So
+
+$$\eqalignno{(\varhat h\times\tilde\theta_z)\varspcheck(x)
+&=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+  e^{ixy}\varhat h(y)\tilde\theta_z(y)dy\cr
+&=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+  e^{ixy}\varhat h(y)\int_1^2\Bover1{\alpha}\lim_{n\to\infty}
+  \Bover1n\int_0^n\theta'_{z\alpha\beta}(y)d\beta d\alpha dy\cr
+&=\Bover1{\sqrt{2\pi}}\lim_{n\to\infty}\int_{-\infty}^{\infty}
+  e^{ixy}\varhat h(y)\int_1^2\Bover1{\alpha n}
+  \int_0^n\theta'_{z\alpha\beta}(y)d\beta d\alpha dy\cr
+\displaycause{by Lebesgue's Dominated Convergence Theorem}
+&=\Bover1{\sqrt{2\pi}}\lim_{n\to\infty}\int_1^2\Bover1{\alpha n}
+  \int_0^n\int_{-\infty}^{\infty}
+  e^{ixy}\varhat h(y)\theta'_{z\alpha\beta}(y)dy d\beta d\alpha\cr
+\displaycause{by Fubini's theorem}
+&=\lim_{n\to\infty}\int_1^2\Bover1{\alpha n}
+  \int_0^n(\varhat h\times\theta'_{z\alpha\beta})\varspcheck(x)
+  d\beta d\alpha,\cr}$$
+
+\noindent and
+
+$$\eqalignno{2\pi|(\varhat h\times\tilde\theta_z)\varspcheck(x)|
+&=2\pi\bigl|\lim_{n\to\infty}\int_1^2\Bover1{\alpha n}
+  \int_0^n(\varhat h\times\theta'_{z\alpha\beta})\varspcheck(x)
+  d\beta d\alpha\bigr|\cr
+&\le 2\pi\liminf_{n\to\infty}\int_1^2\Bover1{\alpha n}
+  \int_0^n|(\varhat h\times\theta'_{z\alpha\beta})\varspcheck(x)|
+  d\beta d\alpha\cr
+&\le\liminf_{n\to\infty}\int_1^2\Bover1{\alpha n}
+  \int_0^n(D_{1/\alpha}AM_{\beta}D_{\alpha}h)(x)
+  d\beta d\alpha\cr
+\displaycause{286Qb}
+&=(\tilde Ah)(x).\cr}$$
+}%end of proof of 286S
+
+\leader{286T}{Lemma} Set $C_{10}=3C_9/\pi\tilde\theta_1(0)$.   For
+$f\in\eusm L^2_{\Bbb C}$, define $\hat Af:\Bbb R\to[0,\infty]$ by
+setting
+
+\Centerline{$(\hat Af)(y)
+=\sup_{a\le b}\Bover1{\sqrt{2\pi}}|\int_a^be^{-ixy}f(x)dx|$}
+
+\noindent for each $y\in\Bbb R$.   Then
+$\int_F\hat Af\le C_{10}\|f\|_2\sqrt{\mu F}$ whenever $\mu F<\infty$.
+
+\proof{{\bf (a)} As usual, the first step is to confirm that $\hat Af$
+is measurable.   \Prf\ For $a\le b$,
+$y\mapsto|\Bover1{\sqrt{2\pi}}\int_a^be^{-ixy}f(x)dx|$ is continuous (by
+283Cf, since $f\times\chi[a,b]$ is integrable), so $\hat Af$ is lower
+semi-continuous, therefore Borel measurable (256Ma once more).\ \Qed
+
+\medskip
+
+{\bf (b)} Suppose that $h$ is a rapidly decreasing test function.   Then
+
+\Centerline{$(\hat Ah)(y)
+\le\Bover1{\pi\tilde\theta_1(0)}(\tilde A\varcheck h)(-y)$}
+
+\noindent for every $y\in\Bbb R$.   \Prf\ If $a\in\Bbb R$ then
+
+$$\eqalignno{\Bover1{\sqrt{2\pi}}|\int_{-\infty}^ae^{-ixy}h(x)dx|
+&=\Bover1{\tilde\theta_1(0)\sqrt{2\pi}}|\int_{-\infty}^{\infty}
+  e^{-ixy}\tilde\theta_a(x)h(x)dx|\cr
+\displaycause{286R}
+&=\Bover1{\tilde\theta_1(0)}|(h\times\tilde\theta_a)\varspcheck(-y)|
+=\Bover1{\tilde\theta_1(0)}
+  |(\varcheck h\varhat{\phantom{h}}
+    \times\tilde\theta_a)\varspcheck(-y)|\cr
+\displaycause{284C once more}
+&\le\Bover1{2\pi\tilde\theta_1(0)}(\tilde A\varcheck{h})(-y)\cr}$$
+
+\noindent (286Sc).   So if $a\le b$ in $\Bbb R$,
+
+\Centerline{$\Bover1{\sqrt{2\pi}}|\int_{a}^{b}e^{-ixy}h(x)dx|
+\le\Bover1{\pi\tilde\theta_1(0)}(\tilde A\varcheck{h})(-y)$;}
+
+\noindent taking the supremum over $a$ and $b$, we have the result.\
+\Qed
+
+It follows that
+
+$$\eqalignno{\int_F\hat Ah
+&\le\Bover1{\pi\tilde\theta_1(0)}\int_{-F}\tilde A\varcheck h
+\le\Bover3{\pi\tilde\theta_1(0)}C_9\|h\|_2\sqrt{\mu(-F)}\cr
+\displaycause{286Sb, 284Oa}
+&=C_{10}\|h\|_2\sqrt{\mu F}.\cr}$$
+
+\medskip
+
+{\bf (c)} For general square-integrable $f$, take any $\epsilon>0$ and
+any $n\in\Bbb N$.   Set
+
+\Centerline{$(\hat A_nf)(y)
+=\sup_{-n\le a\le b\le n}\Bover1{\sqrt{2\pi}}|\int_a^be^{-ixy}f(x)dx|$}
+
+\noindent for each $y\in\Bbb R$.   Let $h$ be a rapidly decreasing test
+function such that $\|f-h\|_2\le\epsilon$ (284N).   Then
+
+\Centerline{$\hat Ah
+\ge\hat A_nh
+\ge\hat A_nf-\Bover{\sqrt{2n}}{\sqrt{2\pi}}\epsilon$}
+
+\noindent (using Cauchy's inequality), so
+
+\Centerline{$\int_F\hat A_nf
+\le\int_F\hat Ah+\sqrt{\bover{n}{\pi}}\epsilon\mu F
+\le C_{10}(\|f\|_2+\epsilon)\sqrt{\mu F}
+  +\sqrt{\bover{n}{\pi}}\epsilon\mu F$.}
+
+\noindent As $\epsilon$ is arbitrary,
+$\int_F\hat A_nf\le C_{10}\|f\|_2\sqrt{\mu F}$;  letting $n\to\infty$,
+we get $\int_F\hat Af\le C_{10}\|f\|_2\sqrt{\mu F}$.
+}%end of proof of 286T
+
+\vleader{72pt}{286U}{Theorem} If $f\in\eusm L^2_{\Bbb C}$ then
+
+\Centerline{$g(y)
+=\lim_{a\to-\infty,b\to\infty}
+  \Bover1{\sqrt{2\pi}}\int_a^be^{-ixy}f(x)dx$}
+
+\noindent is defined in $\Bbb C$ for almost every $y\in\Bbb R$, and $g$
+represents the Fourier transform of $f$.
+
+\proof{{\bf (a)} For $n\in\Bbb N$, $y\in\Bbb R$ set
+
+\Centerline{$\gamma_n(y)=\sup_{a\le -n,b\ge n}\Bover1{\sqrt{2\pi}}
+  \bigl|\int_a^be^{-ixy}f(x)dx-\int_{-n}^ne^{-ixy}f(x)dx\bigr|$.}
+
+\noindent Then $g(y)$ is defined whenever
+$\inf_{n\in\Bbb N}\gamma_n(y)=0$.   \Prf\ If
+$\inf_{n\in\Bbb N}\gamma_n(y)=0$ and $\epsilon>0$, take $m\in\Bbb N$
+such that $\gamma_m(y)\le\bover12\epsilon$;  then
+$\Bover1{\sqrt{2\pi}}
+|\int_a^be^{-ixy}f(x)dx-\int_{-n}^ne^{-ixy}f(x)dx|\le\epsilon$ whenever
+$n\ge m$, $a\le-n$ and $b\ge n$.   But this means, first, that
+$\sequencen{\int_{-n}^ne^{-ixy}f(x)dx}$ is a Cauchy sequence, so has a
+limit $\zeta$ say, and, second, that
+$\zeta=\lim_{a\to-\infty,b\to\infty}\int_a^be^{-ixy}f(x)dx$, so that
+$g(y)=\Bover{\zeta}{\sqrt{2\pi}}$ is defined.\ \Qed
+
+Also each $\gamma_n$ is lower-semicontinuous (cf.\ part (a) of the
+proof of 286T).
+
+\medskip
+
+{\bf (b)} \Quer\ Suppose, if possible, that
+$\{y:\inf_{n\in\Bbb N}\gamma_n(y)>0\}$ is not negligible.   Then
+
+\Centerline{$\lim_{m\to\infty}\mu\{y:|y|\le m,\,
+  \inf_{n\in\Bbb N}\gamma_n(y)\ge\Bover1m\}
+>0$,}
+
+\noindent so there is an $\epsilon>0$ such that
+
+\Centerline{$F=\{y:|y|\le\Bover1{\epsilon},\,
+  \inf_{n\in\Bbb N}\gamma_n(y)\ge\epsilon\}$}
+
+\noindent has measure greater than $\epsilon$.   Let $n\in\Bbb N$ be
+such that
+
+\Centerline{$4C^2_{10}
+  (\int_{-\infty}^{\infty}|f(x)|^2dx-\int_{-n}^n|f(x)|^2dx)
+\le\epsilon^3$,}
+
+\noindent and set $f_1=f-f\times\chi[-n,n]$;  then
+$2C_{10}\|f_1\|_2\le\epsilon^{3/2}$.
+
+We have
+
+$$\eqalign{\gamma_n(y)
+&=\sup_{a\le -n,b\ge n}\Bover1{\sqrt{2\pi}}
+  \bigl|\int_a^be^{-ixy}f_1(x)dx-\int_{-n}^ne^{-ixy}f_1(x)dx\bigr|\cr
+&\le 2\sup_{a\le b}\Bover1{\sqrt{2\pi}}
+  |\int_a^be^{-ixy}f_1(x)dx|
+\le 2(\hat Af_1)(y),\cr}$$
+
+\noindent so that
+
+$$\eqalignno{\epsilon\mu F
+&\le\int_F\gamma_n
+\le 2\int_F\hat Af_1
+\le 2C_{10}\|f_1\|_2\sqrt{\mu F}\cr
+\displaycause{286T}
+&\le\epsilon^{3/2}\sqrt{\mu F}\cr}$$
+
+\noindent and $\mu F\le\epsilon$;  but we chose $\epsilon$ so that
+$\mu F$ would be greater than $\epsilon$.\ \Bang
+
+\medskip
+
+{\bf (c)} Thus $g(y)$ is defined for almost every $y\in\Bbb R$.  Now $g$
+represents the Fourier transform of $f$.   \Prf\ Let $h$ be a rapidly
+decreasing test function.   The restriction of $\hat Af$ to the set
+on which it is finite is a tempered function, by 286D, so
+$\int_{-\infty}^{\infty}(\hat Af)\times|h|$ is finite, by 284F.   Now
+
+$$\eqalignno{\int_{-\infty}^{\infty}g\times h
+&=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+  \bigl(\lim_{n\to\infty}\int_{-n}^ne^{-ixy}f(x)dx\bigr)h(y)dy\cr
+&=\Bover1{\sqrt{2\pi}}\lim_{n\to\infty}\int_{-\infty}^{\infty}
+  \int_{-n}^ne^{-ixy}f(x)h(y)dxdy\cr
+\displaycause{because
+$\Bover1{\sqrt{2\pi}}|\int_{-n}^ne^{-ixy}f(x)dx|\le\hat Af(y)$ for every
+$n$ and $y$, so we can use Lebesgue's Dominated Convergence Theorem}
+&=\Bover1{\sqrt{2\pi}}\lim_{n\to\infty}
+  \int_{-n}^n\int_{-\infty}^{\infty}e^{-ixy}f(x)h(y)dydx\cr
+\displaycause{because $\int_{-\infty}^{\infty}\int_{-n}^n|f(x)h(y)|dxdy$
+is finite for each $n$}
+&=\lim_{n\to\infty}
+  \int_{-n}^nf\times\varhat{h}
+=\int_{-\infty}^{\infty}f\times\varhat{h}\cr}$$
+
+\noindent because $f\times\varhat{h}$ is certainly integrable.   As $h$
+is arbitrary, $g$ represents the Fourier transform of $f$.\ \Qed
+}%end of proof of 286U
+
+\leader{286V}{Theorem} For any square-integrable complex-valued function
+on $\ocint{-\pi,\pi}$, its sequence of
+Fourier sums converges to it almost everywhere.
+
+\proof{ Suppose that
+$f\in\eusm L^2_{\Bbb C}(\mu_{\ocint{-\pi,\pi}})$.
+Set $f_1(x)=f(x)$ for $x\in\dom f$, $0$ for
+$x\in\Bbb R\setminus\ocint{-\pi,\pi}$;  then
+$f_1\in\eusm L^2_{\Bbb C}(\mu)$.   Let $g\in\eusm L^2_{\Bbb C}(\mu)$
+represent the inverse Fourier transform of $f_1$ (284O).   Then 286U
+tells us that
+$f_2(x)=\lim_{a\to\infty}\Bover1{\sqrt{2\pi}}\int_{-a}^ae^{-ixy}g(y)dy$
+is defined for almost every $x$, and that $f_2$ represents the Fourier
+transform of $g$, so is equal almost everywhere to $f_1$ (284Ib).
+
+Now, for any $a\ge 0$, $x\in\Bbb R$,
+
+$$\eqalignno{\int_{-a}^ae^{-ixy}g(y)dy
+&=\innerprod{g}{h_{ax}}\cr
+\displaycause{where $h_{ax}(y)=e^{ixy}$ if $|y|\le a$, $0$ otherwise}
+&=\innerprod{f_2}{\varhat{h}_{ax}}\cr
+\displaycause{284Ob}
+&=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}f_2(t)
+  \overline{\int_{-\infty}^{\infty}e^{-ity}h_{ax}(y)dy}\,dt\cr
+&=\Bover2{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+  \Bover{\sin(x-t)a}{x-t}f_2(t)dt
+=\Bover2{\sqrt{2\pi}}\int_{-\pi}^{\pi}
+  \Bover{\sin(x-t)a}{x-t}f(t)dt.\cr}$$
+
+\noindent So
+
+\Centerline{$f(x)=f_2(x)
+=\lim_{a\to\infty}\Bover1{\pi}\int_{-\pi}^{\pi}
+  \Bover{\sin(x-t)a}{x-t}f(t)dt$}
+
+\noindent for almost every $x\in\ocint{-\pi,\pi}$.
+
+On the other hand, writing $\sequencen{s_n}$ for the sequence of Fourier
+sums of $f$, we have, for any $x\in\ooint{-\pi,\pi}$,
+
+\Centerline{$s_n(x)
+=\Bover1{2\pi}\int_{-\pi}^{\pi}f(t)
+\Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})(x-t)}
+  {\sin{1\over 2}(x-t)}dt$}
+
+\noindent for each $n$, by 282Da.   Now
+
+$$\eqalign{\Bover1{2\pi}\int_{-\pi}^{\pi}f(t)
+  &\Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})(x-t)}
+  {\sin{1\over 2}(x-t)}dt
+-\Bover1{\pi}\int_{-\pi}^{\pi}f(t)
+  \Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})(x-t)}
+  {x-t}dt\cr
+&=\Bover1{\pi}\int_{-\pi}^{\pi}f(t)
+  \bigl(\Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})(x-t)}
+    {2\sin{1\over 2}(x-t)}
+  -\Bover{\sin(n+\bover12\pushbottom{3.5pt})(x-t)}{x-t}\bigr)dt\cr
+&=\Bover1{\pi}\int_{x-\pi}^{x+\pi}\bigl
+  (\Bover1{2\sin{1\over 2}t}-\Bover1{t}\bigr)
+  f(x-t)\sin(n+\hbox{$\bover12$})t\,dt.\cr}$$
+
+\noindent But if we look at the function
+
+$$\eqalign{p_x(t)
+&=\bigl(\Bover1{2\sin\bover12t}-\Bover1t\bigr)f(x-t)
+  \text{ if }x-\pi<t<x+\pi\text{ and }t\ne 0,\cr
+&=0\text{ otherwise},\cr}$$
+
+\noindent $p_x$ is integrable, because $f$ is integrable over
+$\ocint{-\pi,\pi}$ and
+$\lim_{t\to 0}\Bover1{2\sin\bover12t}-\Bover1t=0$, so
+$\sup_{t\ne 0,x-\pi\le t\le x+\pi}|\Bover1{2\sin\bover12t}-\Bover1t|$ is
+finite.   (This is where we need to know that $|x|<\pi$.)   So
+
+$$\eqalign{\lim_{n\to\infty}s_n(x)-\Bover1{\pi}\int_{-\pi}^{\pi}f(t)
+  \Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})(x-t)}
+  {x-t}dt
+=\lim_{n\to\infty}\int_{-\infty}^{\infty}
+       p_x(t)\sin(n+\hbox{$\bover12$})t\,dt
+=0\cr}$$
+
+\noindent by the Riemann-Lebesgue lemma (282Fb).   But this means that
+$\lim_{n\to\infty}s_n(x)=f(x)$ for any $x\in\ooint{-\pi,\pi}$ such that
+$f(x)=\lim_{a\to\infty}\Bover1{\pi}\int_{-\pi}^{\pi}
+  \Bover{\sin(x-t)a}{x-t}f(t)dt$, which is almost every
+$x\in\ocint{-\pi,\pi}$.
+}%end of proof of 286V
+
+\cmmnt{
+\vleader{108pt}{286W}{Glossary} The following special notations are
+used in more than one paragraph of this section:
+
+\def\vta{$\mu$ for Lebesgue measure on $\Bbb R$.}
+\def\vtb{286A:  $f^*$.}
+\def\vtc{286C:  $S_{\alpha}f$, $M_{\alpha}f$, $D_{\alpha}f$.}
+\def\vtd{286Ea:  $\Cal I$, $Q$, $I_{\sigma}$, $J_{\sigma}$,
+  $k_{\sigma}$, $x_{\sigma}$, $y_{\sigma}$, $J^l_{\sigma}$,
+  $J^r_{\sigma}$, $y^l_{\sigma}$.}
+\def\vte{286Eb:  $\phi$, $\phi_{\sigma}$, $\innerprod{f}{g}$.}
+\def\vtf{286Ec:  $w$, $w_{\sigma}$.}
+\def\vtg{286F:  $\le$, $R^+$, $T_{\tau}$.}
+\def\vth{286G:  $C_1$, $C_2$, $C_3$, $C_4$.}
+\def\vti{286H:  $\mass$, $\Delta_f$, $\energy$.}
+\def\vtj{286J:  $C_5$.}
+\def\vtk{286K:  $C_6$.}
+\def\vtl{286L:  $C_7$.}
+\def\vtm{286M:  $C_8$.}
+\def\vtn{286N:  $C_9$.}
+\def\vto{286O:  $\theta_z$, $\Cal F$.}
+\def\vtp{286P:  $Ah$.}
+\def\vtq{286Q:  $\theta'_{z\alpha\beta}$.}
+\def\vtr{286R:  $\tilde\theta_z$.}
+\def\vts{286S:  $\tilde Ah$.}
+\def\vtt{286T:  $C_{10}$, $\hat Af$.}
+\sparewidth=\pagewidth
+\advance\sparewidth by -370pt
+\divide\sparewidth by 4
+
+\medskip
+
+\halign{\hskip\sparewidth#\hfil&\hskip\sparewidth#\hfil
+&\hskip\sparewidth#\hfil\cr
+\vta&\vth&\vto\cr
+\vtb&\vti&\vtp\cr
+\vtc&\vtj&\vtq\cr
+\vtd&\vtk&\vtr\cr
+\vte&\vtl&\vts\cr
+\vtf&\vtm&\vtt\cr
+\vtg&\vtn\cr}
+}%end of comment
+
+\exercises{\leader{286X}{Basic exercises (a)}
+%\spheader 286Xa
+Use 284Oa and 284Xg to shorten part (c) of the proof of 286U.
+%286U
+
+\spheader 286Xb Show that if $\sequence{k}{c_k}$ is a sequence of
+complex numbers such that $\sum_{k=0}^{\infty}|c_k|^2$ is finite, then
+$\sum_{k=0}^{\infty}c_ke^{ikx}$ is defined in $\Bbb C$ for almost all
+$x\in\Bbb R$.
+%286V
+
+\leader{286Y}{Further exercises (a)}
+%\spheader 286Ya
+Show that if $f$ is a square-integrable function on
+$\BbbR^r$, where $r\ge 2$, then
+
+\Centerline{$g(y)
+=\Bover1{(\sqrt{2\pi})^r}
+ \lim_{\alpha_1,\ldots,\alpha_r\to-\infty,
+  \beta_1,\ldots,\beta_r\to\infty}
+ \int_{a}^{b}e^{-iy\dotproduct x}f(x)dx$}
+
+\noindent is defined in $\Bbb C$ for almost every $y\in\BbbR^r$, and
+that $g$ represents the Fourier transform of $f$.
+}%end of exercises
+
+\endnotes{
+\Notesheader{286} This is not the longest single section in this
+treatise as a whole, but it is by a substantial margin the longest in
+the present volume, and thirty pages of sub-superscripts must tax the
+endurance of the most enthusiastic.   You will easily understand why
+Carleson's theorem is not usually presented at this level.   But I am
+trying in this book to present complete proofs of the principal
+theorems, there is no natural place for Carleson's theorem in later
+volumes as at present conceived, and it is (just) accessible at this
+point;  so I take the space to do it here.
+
+The proof here divides naturally into two halves:  the `combinatorial'
+part in 286E-286M, up to the Lacey-Thiele lemma, followed by the
+`analytic' part in 286N-286V, in which the averaging process
+
+\Centerline{$\int_1^2\Bover1{\alpha}\lim_{b\to\infty}
+\Bover1b\int_0^b\ldots d\beta d\alpha$}
+
+\noindent is used to transform the geometrically coherent, but
+analytically irregular, functions $\theta_z$ into the characteristic
+functions $\Bover1{\tilde\theta_1(0)}\tilde\theta_z$.   From the
+standpoint of ordinary Fourier analysis, this second part is essentially
+routine;  there are many paths we could follow, and we have only to take
+the ordinary precautions against illegitimate operations.   
+\footnote{I ought at this
+point to confess that I blundered badly in the 2001 edition of this
+volume, and failed to notice my error until it was brought to my attention
+by A.Derighetti at the end of 2013.   I hope that the version presented
+here is essentially correct.}
+
+Carleson ({\smc Carleson 66}) stated his theorem in the Fourier-series
+form of 286V;  but it had long been understood that this was
+equiveridical
+with the Fourier-transform version in 286U.   There are of course many
+ways of extending the theorem.   In particular, there are
+corresponding
+results for functions in $\eusm L^p$ for any $p>1$, and even for
+functions $f$ such that $f\times\ln(1+|f|)\times\ln\ln\ln(16+|f|)$ is
+integrable ({\smc Antonov 96}).   The methods here do not seem to
+reach so far.   I ought also to remark that if we define $\hat Af$ as in
+286T, then there is for every $p>1$ a constant $C$ such that
+$\|\hat Af\|_p\le C\|f\|_p$ for every $f\in\eusm L^p_{\Bbb C}$
+({\smc Hunt 67}, {\smc Mozzochi 71}, {\smc J{\o}rsboe \& Mejlbro 82},
+{\smc Arias de Reyna 02}, {\smc Lacey 05}).
+
+Note that the point of Carleson's theorem, in either form, is that we
+take special limits.   In the formulae
+
+\Centerline{$\varhatf(y)
+=\Bover1{\sqrt{2\pi}}\lim_{a\to-\infty,b\to\infty}
+\int_a^be^{-ixy}f(x)dx$,}
+
+\Centerline{$f(x)=\lim_{n\to\infty}\sum_{-n}^nc_ke^{ikx}$,}
+
+\ifdim\pagewidth>467pt\tenrmstretch{3pt}\fi
+\noindent valid almost everywhere for square-integrable functions $f$,
+we are not taking the ordinary integral
+$\int_{-\infty}^{\infty}e^{-ixy}f(x)dx$ or the unconditional sum
+$\sum_{k\in\Bbb Z}c_ke^{ikx}$.   If $f$ is not integrable, or
+$\sum_{k=-\infty}^{\infty}|c_k|$ is infinite, these will not be defined
+at even one point.
+% Weyl's equidistribution theorem
+Carleson's theorem makes sense only because we have a natural
+preference for particular kinds of improper integral and conditional
+sum.   So when we return, in Chapter 44 of Volume 4, to Fourier analysis
+on general
+topological groups, there will simply be no language in which to express
+the theorem, and while versions have been proved for other groups (e.g.,
+{\smc Schipp 78}),
+they necessarily depend on some structure beyond the simple notion of
+`locally compact Hausdorff abelian topological group'.   Even in
+$\BbbR^2$, I understand that it is still unknown whether
+\tenrmstretch{1.67pt}
+
+\Centerline{$\lim_{a\to\infty}\Bover1{2\pi}\int_{B(\tbf{0},a)}
+e^{-iy\dotproduct x}f(x)dx$}
+
+\noindent will be defined a.e.\ for any square-integrable function $f$,
+if we use ordinary Euclidean balls $B(\tbf{0},a)$ in place of the
+rectangles in 286Ya.
+}%end of notes
+
+\frnewpage
+
+

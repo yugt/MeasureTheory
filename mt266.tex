@@ -1,0 +1,348 @@
+\frfilename{mt266.tex}
+\versiondate{28.1.09}
+\copyrightdate{2004}
+
+\def\chaptername{Change of variable in the integral}
+\def\sectionname{The Brunn-Minkowski inequality}
+
+\newsection{*266\dvAnew{2004}}
+
+We now have most of the essential ingredients for a proof of the
+Brunn-Minkowski inequality (266C) in a strong form.   I do not at
+present expect to use it in this treatise, but it is one of the
+basic results of geometric measure theory and from where we now stand is
+not difficult, so I include it here.   The preliminary results on
+arithmetic and geometric means (266A) and essential closures (266B) are
+of great importance for other reasons.
+
+\leader{266A}{Arithmetic and geometric \dvrocolon{means}}\cmmnt{ We
+shall need the following standard result.
+
+\medskip
+
+\noindent}{\bf Proposition} If
+$u_0,\ldots,u_n,p_0,\ldots,p_n\in\coint{0,\infty}$ and
+$\sum_{i=0}^np_i=1$, then $\prod_{i=0}^nu_i^{p_i}\le\sum_{i=0}^np_iu_i$.
+
+\proof{ Induce on $n$.   For $n=0$, $p_0=1$ the result is trivial.   If
+$n=1$, then if $u_1=0$ the result is trivial (even if, as is standard in
+this book, we interpret $0^0$ as $1$).   Otherwise, set
+$t=\Bover{u_0}{u_1}$;  then
+
+\Centerline{$t^{p_0}\le p_0t+1-p_0=p_0t+p_1$}
+
+\noindent(as in part (a) of the proof of 244E), so
+
+\Centerline{$u_0^{p_0}u_1^{p_1}=t^{p_0}u_1\le p_0tu_1+p_1u_1
+=p_0u_0+p_1u_1$.}
+
+\noindent For the inductive step to $n\ge 2$, if $p_0=\ldots=p_{n-1}=0$
+the result is trivial.   Otherwise, set $q=p_0+\ldots+p_{n-1}=1-p_n$;
+then
+
+$$\eqalignno{\prod_{i=0}^nu_i^{p_i}
+&=(\prod_{i=0}^{n-1}u_i^{p_i/q})^qu_n^{p_n}
+\le(\sum_{i=0}^{n-1}\Bover{p_i}qu_i)^qu_n^{p_n}\cr
+\displaycause{by the inductive hypothesis}
+&\le q(\sum_{i=0}^{n-1}\Bover{p_i}qu_i)+p_nu_n\cr
+\displaycause{by the two-term case just examined}
+&=\sum_{i=0}^np_iu_i,\cr}$$
+
+\noindent and the induction continues.
+}%end of proof of 266A
+
+\leader{266B}{Proposition} For any set $D\subseteq\BbbR^r$ set
+
+\Centerline{$\clstar D=\{x:\limsup_{\delta\downarrow 0}
+\Bover{\mu^*(D\cap B(x,\delta))}{\mu B(x,\delta)}>0\}$,}
+
+\noindent where $\mu$ is Lebesgue measure on $\BbbR^r$.
+
+(a) $D\setminus\clstar D$ is negligible.
+
+(b) $\clstar D\subseteq\overline{D}$.
+
+(c) $\clstar D$ is a Borel set.
+
+(d) $\mu(\clstar D)=\mu^*D$.
+
+(e) If $C\subseteq\Bbb R$ then
+$\overline{C}+\clstar D\subseteq\clstar(C+D)$, writing $C+D$ for
+$\{x+y:x\in C$, $y\in D\}$.
+
+\proof{{\bf (a)} 261Da.
+
+\medskip
+
+{\bf (b)} If $x\in\BbbR^r\setminus\overline{D}$ then
+$D\cap B(x,\delta)=\emptyset$ for all small $\delta$.
+
+\medskip
+
+{\bf (c)} The point is just that
+$(x,\delta)\mapsto\mu^*(D\cap B(x,\delta))$ is continuous.   \Prf\ For
+any $x$, $y\in\BbbR^r$ and $\delta$, $\eta\ge 0$ we have
+
+$$\eqalignno{|\mu^*(D\cap B(y,\eta))-\mu^*(D\cap B(x,\delta))|
+&\le\mu(B(y,\eta)\symmdiff B(x,\delta))\cr
+&=2\mu(B(x,\delta)\cup B(y,\eta))-\mu B(x,\delta)-\mu B(y,\eta)\cr
+&\le\beta_r\bigl(2(\max(\delta,\eta)+\|x-y\|)^r-\delta^r-\eta^r\bigr)\cr
+\displaycause{where $\beta_r=\mu B(\tbf{0},1)$}
+&\to 0\cr}$$
+
+\noindent as $(y,\eta)\to(x,\delta)$.\ \QeD\  So
+
+\Centerline{$x\mapsto
+\limsup_{\delta\downarrow 0}
+  \Bover{\mu^*(D\cap B(x,\delta))}{\mu B(x,\delta)}
+=\inf_{\alpha\in\Bbb Q,\alpha>0}\sup_{\beta\in\Bbb Q,0<\beta\le\alpha}
+  \Bover1{\beta_r\beta^r}\mu^*(D\cap B(x,\beta))$}
+
+\noindent is Borel measurable, and
+
+\Centerline{$\clstar D=\{x:\limsup_{\delta\downarrow 0}
+  \Bover{\mu^*(D\cap B(x,\delta))}{\mu B(x,\delta)}>0\}$}
+
+\noindent is a Borel set.
+
+\medskip
+
+{\bf (d)} By (c), $\mu(\clstar D)$ is defined;  by (a),
+$\mu(\clstar D)\ge\mu^*D$.   On the other hand, let $E$ be a measurable
+envelope of $D$ (132Ee);  then 261Db tells us that
+
+\Centerline{$\limsup_{\delta\downarrow 0}
+  \Bover{\mu^*(D\cap B(x,\delta))}{\mu B(x,\delta)}
+\le\limsup_{\delta\downarrow 0}
+  \Bover{\mu(E\cap B(x,\delta))}{\mu B(x,\delta)}
+=0$}
+
+\noindent for almost every $x\in\BbbR^r\setminus E$, so
+$\clstar D\setminus E$ is negligible and
+
+\Centerline{$\mu(\clstar D)\le\mu E=\mu^*D$.}
+
+\medskip
+
+{\bf (e)} If
+$x\in\overline{C}$ and $y\in\clstar D$, set
+
+\Centerline{$\gamma=\Bover13\limsup_{\delta\downarrow 0}
+  \Bover{\mu^*(D\cap B(y,\delta))}{\mu B(y,\delta)}>0$.}
+
+\noindent For any $\eta>0$, there is a $\delta\in\ocint{0,\eta}$ such
+that $\mu^*(D\cap B(y,\delta))\ge 2\gamma\mu B(x,\delta)$.   Let
+$\delta_1\in\coint{0,\delta}$ be such that
+$\delta^r-\delta_1^r\le\gamma\delta^r$.   Then there is an $x'\in C$
+such that $\|x-x'\|\le\delta-\delta_1$.  In this case,
+
+$$\eqalign{\mu^*((C+D)\cap B(x+y,\delta))
+&\ge\mu^*((x'+D)\cap B(x'+y,\delta_1))
+=\mu^*(D\cap B(y,\delta_1))\cr
+&\ge\mu^*(D\cap B(y,\delta))-\mu B(y,\delta)+\mu B(y,\delta_1)\cr
+&\ge 2\beta_r\gamma\delta^r-\beta_r\delta^r+\beta_r\delta_1^r
+\ge\beta_r\gamma\delta^r.\cr}$$
+
+\noindent As $\eta$ is arbitrary,
+
+\Centerline{$\limsup_{\delta\downarrow 0}
+  \Bover{\mu^*((C+D)\cap B(x+y,\delta))}{\mu B(y,\delta)}
+\ge\gamma$}
+
+\noindent and $x+y\in\clstar(C+D)$;  as $x$ and $y$ are arbitrary,
+$\overline{C}+\clstar D\subseteq\clstar(C+D)$.
+}%end of proof of 266B
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} In this context, $\clstar D$ is called the {\bf
+essential closure} of $D$.
+}
+
+\leader{266C}{Theorem} Let $A$, $B\subseteq\BbbR^r$ be non-empty sets,
+where $r\ge 1$ is an integer.   If $\mu$ is Lebesgue measure on
+$\BbbR^r$, and $A+B=\{x+y:x\in A$, $y\in B\}$, then
+$\mu^*(A+B)^{1/r}\ge(\mu^*A)^{1/r}+(\mu^*B)^{1/r}$.
+
+\proof{{\bf (a)} Consider first the case in which $A=\coint{a,a'}$ and
+$B=\coint{b,b'}$ are half-open intervals.   In this case
+$A+B=\coint{a+b,a'+b'}$;  writing $a=(\alpha_1,\ldots,\alpha_r)$, etc.,
+as in \S115, set
+
+\Centerline{$u_i
+=\Bover{\alpha'_i-\alpha_i}{\alpha'_i+\beta'_i-\alpha_i-\beta_i}$,
+\quad$v_i
+=\Bover{\beta'_i-\beta_i}{\alpha'_i+\beta'_i-\alpha_i-\beta_i}$}
+
+\noindent for each $i$.   Then we have
+
+$$\eqalignno{(\mu A)^{1/r}+(\mu B)^{1/r}
+&=\prod_{i=0}^r(\alpha'_i-\alpha_i)^{1/r}
+  +\prod_{i=0}^r(\beta'_i-\beta_i)^{1/r}\cr
+&=\mu(A+B)^{1/r}(\prod_{i=1}^ru_i^{1/r}+\prod_{i=1}^rv_i^{1/r})\cr
+&\le\mu(A+B)^{1/r}(\Bover1r\sum_{i=1}^ru_i+\Bover1r\sum_{i=1}^rv_i)\cr
+\displaycause{266A}
+&=\mu(A+B)^{1/r}.\cr}$$
+
+\medskip
+
+{\bf (b)} Now I show by induction on $m+n$ that if
+$A=\bigcup_{j=0}^mA_j$ and $B=\bigcup_{j=0}^nB_j$, where
+$\langle A_j\rangle_{j\le m}$ and $\langle B_j\rangle_{j\le n}$ are both
+disjoint families of non-empty half-open intervals, then
+$\mu(A+B)^{1/r}\ge(\mu A)^{1/r}+(\mu B)^{1/r}$.   \Prf\ The induction
+starts with the case $m=n=0$, dealt with in (a).   For the inductive
+step to $m+n=l\ge 1$, one of $m$, $n$ is non-zero;  the argument is the
+same in both cases;  suppose the former.
+Since $A_0\cap A_1=\emptyset$, there must be some $j\le r$ and
+$\alpha\in\Bbb R$ such that $A_0$ and $A_1$ are separated by the
+hyperplane $\{x:\xi_j=\alpha\}$.   Set $A'=\{x:x\in A$, $\xi_j<\alpha\}$
+and $A''=\{x:x\in A$, $\xi_j\ge\alpha\}$;  then both $A'$ and $A''$ are
+non-empty and can be expressed as the union of at most $m-1$ disjoint
+half-open intervals.   Set $\gamma=\Bover{\mu A'}{\mu A}\in\ooint{0,1}$.
+The function $\beta\mapsto\mu\{x:x\in B$, $\xi_j<\beta\}$ is continuous,
+so there is a $\beta\in\Bbb R$ such that $\mu B'=\gamma\mu B$, where
+$B'=\{x:x\in B$, $\xi_j<\beta\}$;  set $B''=B\setminus B$.   Then $B'$
+and $B''$ can be expressed as unions of at most $n$ half-open intervals.
+By the inductive hypothesis,
+
+\Centerline{$\mu(A'+B')^{1/r}\ge(\mu A')^{1/r}+(\mu B')^{1/r}$,
+\quad$\mu(A''+B'')^{1/r}\ge(\mu A'')^{1/r}+(\mu B'')^{1/r}$.}
+
+\noindent Now $A'+B'\subseteq\{x:\xi_j<\alpha+\beta\}$, while
+$A''+B''\subseteq\{x:\xi_j\ge\alpha+\beta\}$.   So
+
+$$\eqalign{\mu(A+B)
+&\ge\mu(A'+B')+\mu(A''+B'')\cr
+&\ge\bigl((\mu A')^{1/r}+(\mu B')^{1/r}\bigr)^r
+  +\bigl((\mu A'')^{1/r}+(\mu B'')^{1/r}\bigr)^r\cr
+&=\bigl((\gamma\mu A)^{1/r}+(\gamma\mu B)^{1/r}\bigr)^r
+  +\bigl(((1-\gamma)\mu A)^{1/r}+((1-\gamma)\mu B)^{1/r}\bigr)^r\cr
+&=(\bigl(\mu A)^{1/r}+(\mu B)^{1/r}\bigr)^r.\cr}$$
+
+\noindent Taking $r$th roots,
+$\mu(A+B)^{1/r}\ge(\mu A)^{1/r}+(\mu B)^{1/r}$ and the induction
+proceeds.\ \Qed
+
+\medskip
+
+{\bf (c)} Now suppose that $A$ and $B$ are compact non-empty subsets of
+$\BbbR^r$.   Then $\mu(A+B)^{1/r}\ge(\mu A)^{1/r}+(\mu B)^{1/r}$.
+\Prf\ $A+B$ is compact (because $A\times B\subseteq\BbbR^r\times\BbbR^r$
+is compact, being closed and bounded, and addition is continuous, so we
+can use 2A2Eb).   Let $\epsilon>0$.   Let $G\supseteq A+B$ be an open set
+such that $\mu G\le\mu(A+B)+\epsilon$ (134Fa);  then there is a
+$\delta>0$ such that $B(x,2\delta)\subseteq G$ for every $x\in A+B$
+(2A2Ed).   Let $n\in\Bbb N$ be such that
+$2^{-n}\sqrt{r}\le\delta$, and let $A_1$ be the union of all the
+half-open
+intervals of the form $\coint{2^{-n}z,2^{-n}z+2^{-n}e}$ which meet $A$,
+where $z\in\BbbZ^r$ and $e=(1,1,\ldots,1)$.  Then $A_1$ is a finite
+disjoint union of half-open intervals, $A\subseteq A_1$ and every point
+of $A_1$ is within a distance $\delta$ of some point of $A$.
+Similarly, we can find a set $B_1$, a finite disjoint union of half-open
+intervals, including $B$ and such that every point of $B_1$ is within
+$\delta$ of some point of $B$.   But this means that every point of
+$A_1+B_1$ is within a distance $2\delta$ of some point of $A+B$, and
+belongs to $G$.   Accordingly
+
+$$\eqalignno{(\mu(A+B)+\epsilon)^{1/r}
+&\ge(\mu G)^{1/r}
+\ge\mu(A_1+B_1)^{1/r}
+\ge(\mu A_1)^{1/r}+(\mu B_1)^{1/r}\cr
+\displaycause{by (b)}
+&\ge(\mu A)^{1/r}+(\mu B)^{1/r}.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary,
+$\mu(A+B)^{1/r}\ge(\mu A)^{1/r}+(\mu B)^{1/r}$.\ \Qed
+
+\medskip
+
+{\bf (d)} Next suppose that $A$, $B\subseteq\BbbR^r$ are Lebesgue
+measurable.   Then
+
+$$\eqalignno{(\mu A)^{1/r}+(\mu B)^{1/r}
+&=\sup\{(\mu K)^{1/r}+(\mu L)^{1/r}:
+  K\subseteq A\text{ and }L\subseteq B\text{ are compact}\}\cr
+\displaycause{134Fb}
+&\le\sup\{\mu(K+L)^{1/r}:
+  K\subseteq A\text{ and }L\subseteq B\text{ are compact}\}\cr
+\displaycause{by (c)}
+&\le\mu^*(A+B)^{1/r}.\cr}$$
+
+\medskip
+
+{\bf (e)} For the penultimate step, 
+suppose that $A$, $B\subseteq\BbbR^r$ have
+non-zero outer Lebesgue measure.   Consider $\clstar A$, $\clstar B$ and
+$\clstar(A+B)$ as defined in 266B.   Then $\clstar A$ and $\clstar B$ are
+non-empty and their sum is included in
+$\clstar(A+B)$, by 266Bb and 266Be.   So we have
+
+$$\eqalignno{(\mu^*A)^{1/r}+(\mu^*B)^{1/r}
+&=\mu(\clstar A)^{1/r}+\mu(\clstar B)^{1/r}\cr
+\displaycause{266Bd}
+&\le\mu^*(\clstar A+\clstar B)^{1/r}\cr
+\displaycause{by (d) here}
+&\le\mu(\clstar(A+B))^{1/r}
+=\mu^*(A+B)^{1/r}.\cr}$$
+
+\medskip
+
+{\bf (f)} Finally, for arbitrary non-empty sets $A$,
+$B\subseteq\BbbR^r$, note that if (for instance) $A$ is negligible then
+we can take any $x\in A$ and see that
+
+\Centerline{$\mu^*(A+B)^{1/r}\ge\mu^*(x+B)^{1/r}=(\mu B)^{1/r}
+=(\mu^*A)^{1/r}+(\mu^*B)^{1/r}$,}
+
+\noindent and the result is similarly trivial if $B$ is negligible.   So
+all cases are covered.
+}%end of proof of 266C
+
+\exercises{\leader{266X}{Basic exercises (a)}
+Let $D$, $D'$ be subsets of $\BbbR^r$.   Show that (i)
+$\clstar(D\cup D')=\clstar D\cup\clstar D'$ (ii) $\clstar D=\clstar D'$
+iff $D$ and $D'$ have a common measurable envelope
+(iii) $\clstar D\setminus\clstar(\BbbR^r\setminus D')
+\subseteq\clstar(D\cap D')$ (iv) $D$ is Lebesgue measurable iff
+$\clstar D\cap\clstar(\BbbR^r\setminus D)$ is Lebesgue negligible (v)
+$D\cup\clstar D$ is a measurable envelope of $D$
+(vi) $\clstar(\clstar D)=\clstar D$.
+%266B
+
+\spheader 266Xb Show that, for a measurable set $E\subseteq\Bbb R$,
+$\clstar E$ is just the set of real numbers which are not density points of
+$\Bbb R\setminus E$.
+%266B
+
+\spheader 266Xc In 266C, show that if $A$ and $B$ are similar convex
+sets in the same orientation then $A+B$ is a convex set similar to both
+and $\mu(A+B)^{1/r}=(\mu A)^{1/r}+(\mu B)^{1/r}$.
+%266C
+
+%\leader{266Y}{Further exercises (a)}
+
+}%end of exercises
+
+\endnotes{
+\Notesheader{266}
+The proof of 266C is taken from {\smc Federer 69}.
+%Is there a Hausdorff-measure version?
+There is a slightly specious generality in the form given here.   If the
+sets $A$ and $B$ are at all irregular, then $\mu^*(A+B)^{1/r}$ is likely
+to be much greater than $(\mu^*A)^{1/r}+(\mu^*B)^{1/r}$.   The critical
+case, in which $A$ and $B$ are similar convex sets, is much easier
+(266Xc).   The theorem is therefore most useful when $A$ and $B$ are
+non-similar convex sets and we get a non-trivial estimate which may be
+hard to establish by other means.   For this case we do not need 266B.
+Theorem 266C is an instructive example of the way in which the
+dimension $r$ enters formulae when we seek results applying to general
+Euclidean spaces.   There will be many more when I return to geometric
+measure theory in Chapter 47 of Volume 4.
+}%end of notes
+
+\discrpage
+
+
+

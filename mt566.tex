@@ -1,0 +1,2229 @@
+\frfilename{mt566.tex}
+\versiondate{22.8.14}
+\copyrightdate{2006}
+
+\def\chaptername{Choice and determinacy}
+\def\sectionname{Countable choice}
+
+\def\spwidehat{\widehat{\phantom{m}}}
+
+\newsection{566}
+
+With AC($\omega$) measure theory becomes recognisable.   The
+definition of Lebesgue measure used in Volume 1 gives us a true
+countably additive Radon measure;  the most important divergence from the
+standard theory is the possibility that every subset of $\Bbb R$ is
+Lebesgue measurable\cmmnt{ (see 567G below)}.
+With occasional exceptions (most
+notably, in the theory of infinite products) we can use the work of Volume
+2.   In Volume 3, we lose the two best theorems in the abstract
+theory of measure algebras, Maharam's theorem and the Lifting Theorem;
+but function spaces and ergodic theory are relatively unaffected.
+Even in Volume 4, a good proportion of the ideas can be applied in some
+form.
+
+\cmmnt{\leader{566A}{} Nearly all
+mathematicians working on the topics of this treatise
+spend most of their time thinking in the framework of ZFC.   When we move
+to weaker theories, we have a number of alternative strategies available.
+
+\spheader 566Aa Some of the time, all we have to do is to check that our
+previous arguments remain valid.   In the present context, moving from full
+ZF + AC to ZF + AC($\omega$), this is true of
+most of Volumes 1 and 2 and useful fragments thereafter.   In particular,
+for most of the basic theory of the Lebesgue integral countable choice is
+adequate.
+Sometimes, of course, we have to trim our theorems back a bit\cmmnt{,
+as in 566E, 566I, 566M, 566N, 566R and 566Xc}.
+
+\spheader 566Ab Some results have to be dropped altogether.   For
+instance, we no longer have a construction of a non-Lebesgue-measurable
+subset of $\Bbb R$, and the Lifting Theorem disappears.
+
+\spheader 566Ac Some results become so much weaker that they change their
+character entirely.   For instance, the Hahn-Banach theorem, Baire's
+theorem, Stone's theorem and Maharam's theorem survive only in sharply
+restricted forms\cmmnt{ (561Xh, 561E, 561F, 566Nb)}.
+
+\spheader 566Ad Sometimes we find that while proofs rely on the axiom of
+choice, the results can be proved without it, or with something much
+weaker.   Of course this is often a reason to regard the original
+proof as inappropriate.
+\cmmnt{Some of the ultrafilters in Volume 4 are there
+just to save a couple of lines of argument, and renouncing them actually
+brings ideas into clearer focus.}   But there are occasions when
+the less scrupulous approach makes it a good deal easier for us to develop
+appropriate intuitions.
+\cmmnt{There is an example in the theory of the spaces
+$S(\frak A)$ and $L^{\infty}(\frak A)$ in Chapter 36.   If we think of
+$S(\frak A)$ as a quotient of a free linear space\cmmnt{ (361Ya)} and of
+$L^{\infty}(\frak A)$ as the $\|\,\|_{\infty}$-completion of $S(\frak A)$,
+we can prove all the basic results which come from their identification
+with spaces of functions on the Stone space of $\frak A$;  but for most of
+us such an approach would seriously complicate the process of understanding
+the nature of the objects being constructed.   I used the representation
+theorems in the theory of free products\cmmnt{ (\S315, \S325)} for
+the same reason.}
+
+On other occasions, we may need new ideas\cmmnt{,
+as in 566F-566H, %566F 566G 566H
+566L and 566P-566Q.   A deeper example is
+in \cmmnt{562V/}566O\cmmnt{, where I set out
+alternative routes to the results of 364F and 434T}.
+Here we have quite a lot of extra distance to travel,
+but at the same time we see some new territory}.
+
+\spheader 566Ae More subtly, it may be useful to re-consider some
+definitions\cmmnt{;  e.g., the distinction between `ccc' and `countable sup
+property' for Boolean algebras\cmmnt{ (566Xd)}}.
+I have made an effort in this book to use definitions which
+will be appropriate in the absence of the axiom of choice, but in a number
+of places this would lead to a division of a concept in potentially
+confusing ways.
+
+The ordinary theory of cardinals
+depends so essentially on the existence of well-orderings that
+it is often unclear what we can do without them.
+However some theorems, which appear to involve the
+theory of infinite cardinals, can be rescued if we re-interpret the
+statements.
+\cmmnt{Sometimes the cardinal $\frak c$ can be simply replaced by
+$\Bbb R$ or $\Cal P\Bbb N$\cmmnt{ (343I, 491G)}.   Sometimes a statement
+`$\#(X)\ge\frak c$' can be replaced by `there is
+an injection from $\Cal P\Bbb N$ into $X$' or
+`there is a surjection from $X$ onto
+$\Cal P\Bbb N$'\cmmnt{ (344H, 4A2G(j-ii))};  %mt56bits
+similarly, `$\#(X)\le\frak c$' might mean
+`there is an injection from $X$ into $\Cal P\Bbb N$'
+or `there is a surjection from $\Cal P\Bbb N$ onto
+$X\cup\{\emptyset\}$'\cmmnt{ (4A1O, 4A3Fa)}.
+Of course `$\#(X)=\frak c$' usually
+becomes `there is a bijection between $X$ and
+$\Cal P\Bbb N$'\cmmnt{ (423K)};  but
+it might mean `there are an injection from $\Cal P\Bbb N$ into $X$ and a
+surjection from $\Cal P\Bbb N$ onto $X$'\cmmnt{ (4A3Fb)},
+or the other way round, or just two surjections.}
+
+When dealing with a property which is invariant under
+equipollence, it may be right to drop the concept of `cardinal' altogether,
+and re-phrase a definition in more primitive terms\cmmnt{, as in 566Xl}.
+
+Elsewhere\cmmnt{, as in 2A1Fd and 4A1E,}
+we have results which refer to initial ordinals and hence to
+well-orderable sets.   But the theory of cardinal functions is so bound up
+with the idea that cardinal numbers form a well-ordered class that much
+greater adjustments are necessary.
+\cmmnt{I offer the following idea for
+consideration.   For a metric space $(X,\rho)$ and a dense set
+$D\subseteq X$, set
+
+\Centerline{$\Cal U(X,\rho,D)=\{\{y:y\in X$, $\rho(x,y)<2^{-n}\}:
+x\in D$, $n\in\Bbb N\}$,}
+
+\noindent so that $\Cal U(X,\rho,D)$ is a base for the topology of $X$.
+The existence (in ZF) of this function $\Cal U$
+corresponds to the ZFC result that
+`$w(X)$ is at most the cardinal product $\omega\times d(X)$ for every
+metrizable space $X$'.}
+
+\medskip
+
+\spheader 566Af Another way to preserve the ideas of a theorem in the new
+environment is to make some small variation in its hypotheses.
+\cmmnt{For
+instance, Urysohn's Lemma, in its usual form, demands DC.   So if we are
+working with AC($\omega$) alone, we cannot be sure that compact Hausdorff
+spaces are completely regular;  similarly, there may be uniformities
+not definable from pseudometrics.   For a general topologist, this is
+important.   But a measure theorist may be happy to simply add `completely
+regular' to the hypotheses of a theorem\cmmnt{, as in 561G and 566Xk}.
+In \S\S412-413 I repeatedly mention families $\Cal K$ which are closed
+under disjoint finite unions.   Results starting from this hypothesis tend
+to depend on DC;  but if we take $\Cal K$ to be closed under $\cup$,
+AC($\omega$) may well be enough\cmmnt{ (566D)}.
+A more dramatic change, but one which still leads to interesting results,
+is in 566I.}
+}%end of comment
+%so assume all uniform sps, in particular all top gps, are c reg
+
+\cmmnt{\leader{566B}{Volume 1} With countable choice,
+Lebesgue outer measure becomes an outer measure in the usual sense, so we
+can use \Caratheodory's method to define a measure space in the sense of
+112A.   No further
+difficulties arise in the work of Chapters 11 and 12, and we
+can proceed exactly as before to the convergence theorems.
+Indeed all the theorems of Volume 1 are available, with a single
+exceptional feature:
+the construction of non-measurable sets\cmmnt{ in 134B and 134D,} and a
+non-measurable function\cmmnt{ in 134Ib}.   \cmmnt{(I will return
+to this point in \S567.)}   In particular, the union of countably many
+countable sets is countable.
+}%end of comment
+
+\cmmnt{\leader{566C}{Volume 2}
+In Volume 2 also we find that arguments using more than countable choice
+are the exception rather than the rule.   \cmmnt{Naturally,
+they appear oftener in the more abstract topics of Chapter 21.}
+One is in 211L;  we can no longer
+be sure that a strictly localizable space is localizable, though a
+$\sigma$-finite measure space does have to be localizable\cmmnt{,
+since the choice demanded in the proof of 211Ld can then be performed
+over a countable index set}.   There is a similar problem in 213J;
+a strictly localizable space might fail to have locally determined
+negligible sets, and might have a subset without a measurable
+envelope.   Again\cmmnt{, in 214Ia}, it is not clear that a subspace of a
+strictly localizable space must be strictly localizable.
+\cmmnt{In 211P I ask for a non-Borel subset of
+$\Bbb R$, and give an answer involving a non-measurable set;  but with
+AC($\omega$) we have a non-Borel analytic set\cmmnt{ as in 423L}.
+\cmmnt{(See also 566Xb.)}}
+
+A more important gap arises in the theory of infinite products of
+probability spaces.   The first problem is that if we have an
+uncountable family $\familyiI{(X_i,\Sigma_i,\mu_i)}$ of probability spaces,
+there is no assurance that $\prod_{i\in I}X_i$ is non-empty.
+\cmmnt{In concrete
+cases, this is not usually a serious worry.}   But there is another one.
+\cmmnt{The proof of 254F makes an appeal to DC.}
+I do not think that there can be
+a construction of a product measure on even a sequence of arbitrary
+probability spaces which does not use some form of dependent choice.
+However a partial version, adequate for many purposes\cmmnt{ (including
+the essential needs of Chapter 27)}, can be done with countable choice
+alone\cmmnt{ (566I)}.
+We can now continue through \S254 with the proviso that
+every infinite family of probability spaces for which we consider a
+product measure
+should be a family of perfect probability spaces with non-empty
+product.   There will be a difficulty in 254L, concerning the product of
+subspaces of full outer measure\cmmnt{, where the modification
+essentially confines it to non-empty products of conegligible sets}.
+%so no 464C I think
+%but maybe under AD, all semi-finite measure spaces perfect?
+%495D might be fun to investigate, see 495F
+\cmmnt{For 254N, it will be helpful to know that (under the conditions
+of 566I)
+the product of perfect spaces is again perfect.   \prooflet{The
+proof of this fact
+(451Jc) is scattered through Volume 4, but (given that we have a product
+probability measure) needs only countably many choices at each step.}}
+
+When we come to products of probability spaces in Chapter 27, we shall
+again have to restrict the applications of the results, but at each point
+only sufficiently to ensure that we have the product probability measures
+discussed.
+}%end of comment
+
+\leader{566D}{\dvrocolon{Exhaustion}}\cmmnt{ The
+versions of the principle of exhaustion in 215A all seem to require
+DC rather than AC($\omega$).   For many applications, however, we can make
+do with a weaker result, as follows.   I
+include some corollaries showing that
+in many familiar cases we can continue to use the intuitions developed in
+the main text.
+
+\medskip
+
+\noindent}{\bf Proposition} [AC($\omega$)]
+(a) Let $P$ be a partially ordered set such that
+$p\vee q=\sup\{p,q\}$ is defined for all $p$, $q\in P$, and
+$f:P\to\Bbb R$ an order-preserving function.    Then there is a
+non-decreasing sequence $\sequencen{p_n}$ in $P$ such that
+$\lim_{n\to\infty}f(p_n)=\sup_{p\in P}f(p)$.
+
+(b) Let $(X,\Sigma,\mu)$ be a measure space and
+$\Cal E\subseteq\Sigma$ a non-empty set such that
+$\sup_{E\in\Cal E}\mu E$ is
+finite and $E\cup F\in\Cal E$ for every $E$, $F\in\Cal E$.
+Then there is a non-decreasing
+sequence $\sequencen{F_n}$ in $\Cal E$ such that, setting
+$F=\bigcup_{n\in\Bbb N}F_n$, $\mu F=\sup_{E\in\Cal E}\mu E$ and
+$E\setminus F$ is negligible for every $E\in\Cal E$.
+
+(c) Let $(X,\Sigma,\mu)$ be a measure space and
+$\Cal K$ a family of sets such that
+
+\inset{($\alpha$) $K\cup K'\in\Cal K$ for all $K$, $K'\in\Cal K$,
+
+($\beta$) whenever $E\in\Sigma$ is non-negligible there is a
+non-negligible $K\in\Cal K\cap\Sigma$ such that $K\subseteq E$.}
+
+\noindent Then $\mu$ is inner regular with respect to $\Cal K$.
+
+(d)(i) Let $(X,\Sigma,\mu)$ be a semi-finite measure space.
+Then $\mu$ is inner regular with respect to the family of sets of finite
+measure.
+
+\quad(ii) Let $(X,\Sigma,\mu)$ be a perfect measure space.   Then whenever
+$E\in\Sigma$, $f:X\to\Bbb R$ is measurable and $\gamma<\mu E$, there is a
+compact set $K\subseteq f[E]$ such that $\mu f^{-1}[K]\ge\gamma$.
+
+\proof{{\bf (a)} For each $n\in\Bbb N$, set
+$\gamma_n=\sup_{p\in P}\min(n,f(p)-2^{-n})$.   Then there is a sequence
+$\sequencen{q_n}$ in $P$ such that $f(q_n)\ge\gamma_n$ for each $n$;  set
+$p_n=\sup_{i\le n}q_i$ for each $n$.
+
+\medskip
+
+{\bf (b)} By (a) there is a non-decreasing
+sequence $\sequencen{F_n}$ in $\Cal E$ such that
+$\sup_{n\in\Bbb N}\mu F_n=\sup_{E\in\Cal E}\mu E$;  set
+$F=\bigcup_{n\in\Bbb N}F_n$.
+
+\medskip
+
+{\bf (c)} Because $\mu$ is inner regular with respect to $\Cal K$ iff it is
+inner regular with respect to $\Cal K\cup\{\emptyset\}$, we may suppose
+that $\emptyset\in\Cal K$.   Take $F\in\Sigma$, and consider
+$\Cal E=\{K:K\in\Cal K\cap\Sigma$, $K\subseteq F\}$.   \Quer\ If
+$\sup_{E\in\Cal E}\mu E<\mu F$, let $\sequencen{E_n}$ be a non-decreasing
+sequence in $\Cal E$ such that $\mu(E\setminus\bigcup_{n\in\Bbb N}E_n)=0$
+for every $E\in\Cal E$ ((b) above).
+Set $G=\bigcup_{n\in\Bbb N}E_n$;  then
+$\mu G=\sup_{n\in\Bbb N}\mu E_n<\mu F$, so $\mu(F\setminus G)>0$.
+But now there ought to be a non-negligible $K\in\Cal K\cap\Sigma$ such that
+$K\subseteq F\setminus G$, in which case $K\in\Cal E$ and
+$\mu(K\setminus G)>0$.\ \Bang
+
+\medskip
+
+{\bf (d)(i)} Apply (c) with $\Cal K$ the family of sets of finite measure.
+
+\medskip
+
+\quad{\bf (ii)} Apply (c) to the subspace measure $\mu_E$ and
+$\Cal K=\{f^{-1}[K]:K\subseteq f[E]$ is compact$\}$.
+}%end of proof of 566D
+
+\leader{566E}{}\cmmnt{ The problem recurs in parts of 215B, where
+I list characterizations of $\sigma$-finiteness, and in 215C.   It seems
+equally
+that a ccc semi-finite measure algebra may fail to be $\sigma$-finite,
+though a $\sigma$-finite measure algebra has to be ccc.
+%322G
+We have a stripped-down version of 215B, with one of its fragments used
+in \S235, as follows:
+
+\medskip
+
+\noindent}{\bf Proposition} [AC($\omega$)]
+Let $(X,\Sigma,\mu)$ be a semi-finite
+measure space.   Write $\Cal N$ for the $\sigma$-ideal
+of $\mu$-negligible sets.
+
+(a) The following are equiveridical:
+
+\quad(i) $\mu$ is $\sigma$-finite;
+
+\quad(ii) either $\mu X=0$ or there is a probability measure
+$\nu$ on $X$ with the same domain and the same negligible sets as $\mu$;
+
+\quad(iii) there is a measurable integrable function $f:X\to\ocint{0,1}$;
+
+\quad(iv) either $\mu X=0$ or there is a measurable function
+$f:X\to\ooint{0,\infty}$ such that $\int fd\mu=1$.
+
+(b) If $\mu$ is $\sigma$-finite, then
+
+\quad(i) every disjoint family in $\Sigma\setminus\Cal N$ is countable;
+
+\quad(ii) for every $\Cal E\subseteq\Sigma$ there is a countable
+$\Cal E_0\subseteq\Cal E$ such that $E\setminus\bigcup\Cal E_0$ is
+negligible for every $E\in\Cal E$.
+
+(c) Suppose that $\mu$ is $\sigma$-finite, $(Y,\Tau,\nu)$ is a
+semi-finite measure space, and $\phi:X\to Y$ is a
+$(\Sigma,\Tau)$-measurable function such that $\mu\phi^{-1}[F]>0$ whenever
+$\nu F>0$.   Then $\nu$ is $\sigma$-finite.
+
+\proof{{\bf (a)} Use the methods of 215B.
+
+\medskip
+
+{\bf (b)} By (a-ii), we may suppose that $\mu$ is totally finite.
+
+\medskip
+
+\quad{\bf (i)} If $\Cal E\subseteq\Sigma\setminus\Cal N$ is disjoint, then
+$\Cal E_n=\{E:E\in\Cal E$, $\mu E\ge 2^{-n}\}$ is finite for every $n$, so
+$\Cal E=\bigcup_{n\in\Bbb N}\Cal E_n$ is countable.
+
+\medskip
+
+\quad{\bf (ii)} Let $\Cal H$ be the set of finite unions of members of
+$\Cal E$.   By 566Db, there is a sequence $\sequencen{H_n}$ in $\Cal H$
+such that $\mu(H\setminus\bigcup_{n\in\Bbb N}H_n)=0$ for every
+$H\in\Cal H$.   For each $n\in\Bbb N$, choose a finite set
+$\Cal H_n\subseteq\Cal E$ such that $H_n=\bigcup\Cal H_n$;  then
+$\Cal E_0=\bigcup_{n\in\Bbb N}\Cal H_n$ has the required properties.
+
+\medskip
+
+{\bf (c)} Again, we may suppose that $\mu$ is totally finite.
+For each $m\in\Bbb N$ let $\Cal H_m$ be the set of those $F\in\Tau$ such
+that $\nu F<\infty$ and $\mu\phi^{-1}[F]\ge 2^{-m}$.   Then any disjoint
+family in $\Cal H_m$ has at most $\lfloor 2^m\mu X\rfloor$ members,
+so each $\Cal H_m$ has a maximal disjoint subset;  choose a sequence
+$\sequence{m}{\Cal E_m}$ such that $\Cal E_m$ is a maximal disjoint subset
+of $\Cal H_m$ for each $m$.   Then $\Cal E=\bigcup_{m\in\Bbb N}\Cal E_m$ is
+a countable family of sets of finite measure in $Y$.   Now
+$Z=Y\setminus\bigcup\Cal E$ is negligible.   \Prf\Quer\ Otherwise, there is a
+non-negligible set $F$ of finite measure disjoint from $\bigcup\Cal E$;
+now there is an $m$ such that $F\in\Cal H_m$, so that $\Cal E_m$ was not
+maximal.\ \Bang\QeD\   So $\Cal E\cup\{Z\}$ witnesses that $\nu$ is
+$\sigma$-finite.
+}%end of proof of 566E
+
+\leader{566F}{Atomless \dvrocolon{algebras}}\cmmnt{ To
+make atomless measure spaces and
+measure algebras recognisable, we need a more penetrating
+argument than that previously used in 215D.
+
+\medskip
+
+\noindent}{\bf Lemma}\dvArevised{2014} [AC($\omega$)]
+Let $\frak A$ be a Dedekind $\sigma$-complete Boolean algebra, and
+$\mu$ a positive countably additive functional on $\frak A$ such that
+$\mu 1=1$.   Suppose that whenever $a\in\frak A$ and $\mu a>0$ there is a
+$b\Bsubseteq a$ such that $0<\mu b<\mu a$.
+Then there is a function $f:\frak A\times[0,1]\to\frak A$ such that
+$f(a,\alpha)\Bsubseteq a$ and $\bar\mu f(a,\alpha)=\min(\alpha,\bar\mu a)$
+for $a\in\frak A$ and $\alpha\in[0,1]$, and
+$\alpha\mapsto f(a,\alpha)$ is non-decreasing for every $a\in\frak A$.
+
+\proof{{\bf (a)} Just as in part (a) of the proof of
+215D, we see by induction on $n$
+that for every $b\in\frak A$ such that $\mu b>0$ and every
+$n\in\Bbb N$, there is a
+$c\Bsubseteq b$ such that $0<\mu c\le 2^{-n}\mu b$.
+
+\medskip
+
+{\bf (b)} If $b\in\frak A$ and $\mu b>0$,
+there is a $c\subseteq b$ such that
+$\bover13\mu b<\mu c\le\bover23\mu b$.  \Prf\Quer\ Otherwise,
+set $\gamma=\sup\{\mu c:c\subseteq b$, $\mu c\le\bover23\mu b\}$
+and let
+$\sequencen{c_n}$ be a sequence in $\frak A$ such that
+$c_n\subseteq b$ and $\gamma-2^{-n}\le\mu c_n\le\gamma$ for every $n$.
+Set $d_n=\sup_{i\le n}c_i$ for each $n$, and
+$d=\sup_{n\in\Bbb N}d_n$.
+Inducing on $n$, we see that $\mu d_n\le\bover23\mu b$ so
+$\mu d_n\le\bover13\mu b$ for each $n$, and $\mu d\le\bover13\mu b$.
+Now by (a) there is an $e\subseteq b\setminus d$ such that
+$0<\mu e\le\bover13\mu b$.   In this case,
+$\mu(d\cup e)\le\bover23\mu b$, so
+
+\Centerline{$\gamma
+\ge\mu(d\cup e)\ge\mu e+\sup_{n\in\Bbb N}\mu c_n>\gamma$.
+\Bang\Qed}
+
+\medskip
+
+{\bf (c)} For each $n\in\Bbb N$
+there is a finite partition of unity into
+elements of measure at most $(\bover23)^n$.
+\Prf\ Induce on $n$, using (b) for the inductive step.\ \Qed
+
+\medskip
+
+{\bf (d)} Choose a sequence $\sequence{k}{C_k}$ of finite partitions of
+unity such that $\mu c\le 2^{-k}$ for every
+$k\in\Bbb N$ and $c\in C_n$.   Set $C=\bigcup_{k\in\Bbb N}C_k$;  then
+$C$ is countable.   Moreover, whenever $a\in\frak A$ and
+$\beta>0$, there must be a $c\in C$ such that
+$a\Bcap c\ne 0$ and $\mu c\le\beta$.
+Let $\sequencen{c_n}$ be a sequence running over $C$.
+
+\medskip
+
+{\bf (e)} Define
+$\sequencen{f_n}$, $\sequencen{g_n}$ inductively by saying that,
+for $a\in\frak A$ and $\alpha\in[0,1]$,
+
+\Centerline{$f_0(a,\alpha)=0$, \quad$g_0(a,\alpha)=a$}
+
+$$\eqalign{f_{n+1}(a,\alpha)
+&=f_n(a,\alpha)\Bcup(c_n\Bcap g_n(a,\alpha))
+   \text{ if }\mu(f_n(a,\alpha)\Bcup(c_n\Bcap g_n(a,\alpha)))\le\alpha,\cr
+&=f_n(a,\alpha)\text{ otherwise},\cr
+g_{n+1}(a,\alpha)
+&=g_n(a,\alpha)
+   \text{ if }\mu(f_n(a,\alpha)\Bcup(c_n\Bcap g_n(a,\alpha)))\le\alpha,\cr
+&=f_n(a,\alpha)\Bcup(c_n\Bcap g_n(a,\alpha))
+   \text{ otherwise}.\cr}$$
+
+\noindent Then
+
+\Centerline{$f_n(a,\alpha)\Bsubseteq f_{n+1}(a,\alpha)
+\Bsubseteq g_{n+1}(a,\alpha)\Bsubseteq g_n(a,\alpha)\Bsubseteq a$,}
+
+\Centerline{$\mu f_n(a,\alpha)\le\alpha$,
+\quad$\mu g_n(a,\alpha)\ge\min(\mu a,\alpha)$}
+
+\noindent for every $n\in\Bbb N$.   Set
+$f(a,\alpha)=\sup_{n\in\Bbb N}f_n(a,\alpha)$.   Then
+$f(a,\alpha)\Bsubseteq a$ and $\mu f(a,\alpha)\le\alpha$ whenever
+$a\in\frak A$ and $\alpha\in[0,1]$.
+
+\medskip
+
+{\bf (f)(i)} \Quer\ If $a\in\frak A$ and $\alpha\in[0,1]$ are such that
+$\mu f(a,\alpha)<\min(\mu a,\alpha)$, set
+$b=\inf_{n\in\Bbb N}g_n(a,\alpha)$.   Then $f(a,\alpha)\Bsubseteq b$ and
+$\mu b\ge\min(\mu a,\alpha)$.   By (d), there is an $n\in\Bbb N$ such that
+
+\Centerline{$c_n\Bcap b\Bsetminus f(a,\alpha)\ne 0$,
+\quad$\mu c_n\le\min(\mu a,\alpha)-\mu f(a,\alpha)$.}
+
+\noindent In this case,
+$\mu(f_n(a,\alpha)\Bcup(c_n\Bcap g_n(a,\alpha)))\le\min(\mu a,\alpha)$
+so
+
+\Centerline{$f(a,\alpha)\Bsupseteq f_{n+1}(a,\alpha)
+\Bsupseteq c_n\Bcap g_n(a,\alpha))
+\Bsupseteq c_n\Bcap b$,}
+
+\noindent which is impossible.\ \Bang
+
+So $\mu f(a,\alpha)=\min(\mu a,\alpha)$ for all $a\in\frak A$ and
+$\alpha\in[0,1]$.
+
+\medskip
+
+\quad{\bf (ii)} If $a\in\frak A$ and $0\le\alpha\le\beta\le 1$, then for
+every $n\in\Bbb N$
+
+\inset{{\it either} $f_n(a,\alpha)=f_n(a,\beta)$ and
+$g_n(a,\alpha)=g_n(a,\beta)$
+
+{\it or} $g_n(a,\alpha)\Bsubseteq f_n(a,\beta)$.}
+
+\noindent(Induce on $n$.)   So $f(a,\alpha)\Bsubseteq f(a,\beta)$.
+
+Thus we have a suitable function $f$.
+}%end of proof of 566F
+
+%216E looks problematic
+
+\cmmnt{
+\leader{566G}{Vitali's theorem}\cmmnt{ The arguments I presented
+for Vitali's theorem
+in 221A/261B and 471N-471O, and for the similar result in 472B, involve
+the inductive construction of a sequence, which
+ordinarily is a signal that DC is being used.   In 565F I suggested a
+weaker form of Vitali's theorem which is adequate for its most important
+applications in measure theory.}   With AC($\omega$)\cmmnt{, however,} we
+can get most of the results as previously stated\cmmnt{, if
+we refine our methods slightly}.
+
+\cmmnt{
+\spheader 566Ga In 261B, we have a family $\Cal I$ of closed balls
+in $\BbbR^r$ and
+we wish to choose inductively a disjoint sequence $\sequencen{I_n}$ in
+$\Cal I$ such that
+
+\Centerline{$\diam I_n
+\ge\Bover12\sup\{\diam I:I\in\Cal I$, $I\cap\bigcup_{i<n}I_i=\emptyset\}$}
+
+\noindent for every $n$.   We have already reduced the problem to the case
+in which
+$\sup_{I\in\Cal I}\diam I$ is finite and for any finite disjoint
+subset of $\Cal I$ there is a member of $\Cal I$ disjoint from all of them.
+Let $\sequence{m}{G_m}$ run over the family of all open balls with
+centres in $\BbbQ^r$ and rational radii.   For $m\in\Bbb N$ set
+$\Cal K_m=\Cal I\cap\Cal PG_m$, and let $\Cal I'\subseteq\Cal I$ be a
+countable set such that
+$\sup_{I\in\Cal I'\cap\Cal K_m}\diam I=\sup_{I\in\Cal K_m}\diam I$ for
+every $m\in\Bbb N$ such that $\Cal K_m$ is non-empty;  this can be found
+with countably many choices.
+
+Now, when we come to choose $I_n$, we can always pick a member of
+$\Cal I'$.   \Prf\ If
+$\Cal I_n=\{I:I\in\Cal I$, $I\cap\bigcup_{i<n}I_i=\emptyset\}$,
+$\gamma_n=\sup_{I\in\Cal I_n}\diam I$
+and $I\in\Cal I_n$ is such that $\diam I>\bover12\gamma_n$, there is an
+$m\in\Bbb N$ such that
+$I\subseteq G_m\subseteq\BbbR^r\setminus\bigcup_{i<n}I_i$, in which case
+there is an $I'\in\Cal I'\cap\Cal K_m$ such that
+$\diam I'\ge\bover12\gamma_n$, and $I'$ is eligible to be $I_n$.\
+\QeD\  Because $\Cal I'$ is well-orderable, we can set out a rule
+for making these choices, and the argument can proceed as written, without
+recourse to the devices of \S565.
+
+\spheader 566Gb A similar trick can be used in 472B.   Here, given a
+family $\Cal I$ of closed balls, we wish to choose a sequence
+$\sequencen{B_n}$ in $\Cal I$ such that the centre of $B_n$ does not belong
+to $\bigcup_{i<n}B_i$ and, subject to this, the diameter of $B_n$ is
+nearly as large as it
+could be.   This time, take $\Cal K_m$ to be the set of members of $\Cal I$
+with centres in $G_m$, use countably many choices to find a countable set
+$\Cal I'\subseteq\Cal I$ with adequately large intersections with every
+$\Cal K_m$, and choose $\sequencen{B_n}$ from $\Cal I'$.
+
+At the next step, in 472C, we have to do this repeatedly, but the same
+method works;  in fact, we can work inside a fixed family $\Cal I'$
+chosen as above.   (See 472Yd.)
+
+\spheader 566Gc The version in 471N-471O is not manageable in quite the
+same way.   If, however, we assume that the metric spaces there are
+locally compact and separable, we can use the same idea as in (a) above
+to limit our search to countable subfamilies of the given family $\Cal F$.
+}%end of comment
+}%end of comment
+
+\leader{566H}{Bounded additive \dvrocolon{functionals}}\cmmnt{ We
+come to another obstacle in the proof of 231E.   The
+argument given there
+relies on DC to show that a countably additive functional
+is bounded.   But we can avoid this, at the cost of an
+extra manoeuvre, as follows.
+
+\medskip
+
+\noindent}{\bf Lemma} [AC($\omega$)]
+Let $\frak A$ be a Boolean algebra and $\nu:\frak A\to\Bbb R$ an additive
+functional such that $\{\nu a_n:n\in\Bbb N\}$ is bounded
+for every disjoint
+sequence $\sequencen{a_n}$ in $\frak A$.   Then $\nu$ is bounded.
+
+\proof{ \Quer\ Suppose, if possible, otherwise.   Then there is a
+sequence $\sequencen{b_n}$ in $\Sigma$ such that $|\nu b_n|\ge 2^nn$ for
+every $n\in\Bbb N$.   For each $n\in\Bbb N$, let $\frak B_n$ be the
+subalgebra of $\frak A$
+generated by $\{b_i:i<n\}$;  then $\frak B_n$ has
+at most $2^n$ atoms, so there must be an atom $a$ of $\frak B_n$ such that
+$|\nu(a\Bcap b_n)|\ge n$.   Choose a sequence $\sequencen{c_n}$ such that
+$c_n$ is an atom of $\frak B_n$ and $|\nu d_n|\ge n$ for every $n$, where
+$d_n=c_n\Bcap b_n$;  note that $d_n$ is an atom of $\frak B_{n+1}$,
+so that if $n<m$ then
+either $d_m\Bsubseteq d_n$ or $d_m\Bcap d_n=0$.   By Ramsey's
+theorem (4A1G), there is an infinite $I\subseteq\Bbb N$ such that
+
+\inset{{\it either} $\family{n}{I}{d_n}$ is disjoint
+
+{\it or} $d_m\subseteq d_n$ whenever $m$, $n\in I$ and
+$n<m$.}
+
+\noindent Now the first alternative is certainly impossible, because
+$\{\nu d_n:n\in I\}$ is unbounded.
+So we have the second.   But in this case we can define a strictly
+increasing sequence $\sequence{k}{n_k}$ in $I$ such that
+$n_{k+1}\ge k+|\nu d_{n_k}|$ for each $k$.   Set
+$a_k=d_{n_k}\Bsetminus d_{n_{k+1}}$ for each $k$;  then $\sequence{k}{a_k}$
+is disjoint and $|\nu a_k|\ge k$ for each $k$, so again we have a
+contradiction.\ \Bang
+}%end of proof of 566H
+
+\leader{566I}{Infinite products:  Theorem} [AC($\omega$)] Let
+$\familyiI{(X_i,\Sigma_i,\mu_i)}$ be a family of perfect probability
+spaces such that $X=\prod_{i\in I}X_i$ is non-empty.
+Then there is a complete probability measure $\lambda$ on $X$ such that
+
+(i) if $E_i\in\Sigma_i$ for every $i\in I$, and $\{i:E_i\ne X_i\}$ is
+countable, then $\lambda(\prod_{i\in I}E_i)$ is defined and equal to
+$\prod_{i\in I}\mu_iE_i$;
+
+(ii) $\lambda$ is inner regular with respect to
+$\Tensorhat_{i\in I}\Sigma_i$.
+
+\proof{ The only point at which the construction in 254A-254F needs
+re-examination is in the proof that the standard outer measure on $X$ gives
+it outer measure $1$.
+
+\medskip
+
+{\bf (a)} I recall the definitions.   For a cylinder
+$C=\prod_{i\in I}C_i$, set $\theta_0C=\prod_{i\in I}\mu_iC_i$;  for
+$A\subseteq X$, set
+
+\Centerline{$\theta A
+=\inf\{\sum_{n=0}^{\infty}\theta_0C_n:C_n\in\Cal C
+  \text{ for every }n\in\Bbb N$, $A\subseteq\bigcup_{n\in\Bbb N}C_n\}$;}
+
+\noindent $\lambda$ will be the measure defined from $\theta$ by
+\Caratheodory's method.
+
+\Quer\ Suppose, if possible, that $\theta X<1$.
+Then we have a sequence
+$\sequencen{C_n}$ of cylinder sets, covering $X$, with
+$\sum_{n=0}^{\infty}\theta C_n=1-2\epsilon$ where $\epsilon>0$.
+Express each $C_n$ as
+$\prod_{i\in I}E_{ni}$ where
+$J_n=\{i:E_{ni}\ne X_i\}$ is finite;  let $J$ be the countable set
+$\bigcup_{n\in\Bbb N}J_n$;
+take $K=\#(J)$ (identifying $\Bbb N$ with $\omega$),
+and a bijection $k\mapsto i_k:K\to J$.
+
+For each $k\in K$ and $n\in\Bbb N$, set $L_k=\{i_j:j<k\}\subseteq J$ and
+$\alpha_{nk}=\prod_{i\in I\setminus L_k}\mu_iE_{ni}$.
+If $J$ is finite, $L_{\#(J)}=J$ and $\alpha_{n,\#(J)}=1$ for every
+$n$.   We have $\alpha_{n0}=\theta_0C_n$ for each $n$, so
+$\sum_{n=0}^{\infty}\alpha_{n0}=1-2\epsilon$.   For $n\in\Bbb N$,
+$k\in K$ and $t\in X_{i_k}$ set
+
+$$\eqalign{f_{nk}(t)&=\alpha_{n,k+1}\text{ if }t\in E_{n,i_k},\cr
+&=0\text{ otherwise}.\cr}$$
+
+\noindent Then
+
+\Centerline{$\int f_{nk}d\mu_{i_k}
+=\alpha_{n,k+1}\mu_{i_k}E_{ni_k}=\alpha_{nk}$.}
+
+\medskip
+
+{\bf (b)} For each $k\in K$, let $h_k:X_{i_k}\to\Bbb R$ be the Marczewski
+functional defined by setting
+
+\Centerline{$h_k(t)=\sum_{n=0}^{\infty}3^{-n}\chi E_{ni_k}(t)$}
+
+\allowmorestretch{468}{
+\noindent for $t\in X_k$.   Because $\mu_k$ is perfect, there is
+for each $k\in K$ a compact set $Q\subseteq h_k[X_{i_k}]$
+such that $\mu_{i_k}h_k^{-1}[Q]\ge 1-2^{-k}\epsilon$.
+Choose $\family{k}{K}{Q_k}$ such that $Q_k\subseteq h_k[X_{i_k}]$ is
+compact and
+$\mu_{i_k}h_k^{-1}[Q_k]\ge 1-2^{-k}\epsilon$ for every $k\in K$.
+Observe that if $k\in K$ and $n\in\Bbb N$ then
+$f_{nk}=\alpha_{nk}\chi E_{ni_k}$ is of the form $\alpha_{nk}g_nh_k$ where
+$g_n:\Bbb R\to[0,1]$ is continuous.
+}
+
+\medskip
+
+{\bf (c)} Define non-empty sets
+$F_k\subseteq H_k\subseteq X_{i_k}$ inductively, for $k\in K$,
+as follows.   The inductive hypothesis will be that
+$\sum_{n\in M_k}\alpha_{nk}\le 1-2^{-k+1}\epsilon$, where
+$M_k=\{n:n\in\Bbb N$, $F_j\subseteq E_{ni_j}$ whenever $j<k\}$;
+of course $M_0=\Bbb N$, so the induction starts.
+Given that $k\in K$ and that
+
+\Centerline{$1-2^{-k+1}\epsilon
+\ge\sum_{n\in M_k}\alpha_{nk}
+=\sum_{n\in M_k}\int f_{nk}d\mu_{i_k}
+=\int(\sum_{n\in M_k}f_{nk})d\mu_{i_k}$,}
+
+\noindent the set
+
+\Centerline{$H_k=\{t:t\in X_{i_k}$,
+  $\sum_{n\in M_k}f_{nk}(t)\le 1-2^{-k}\epsilon\}$}
+
+\allowmorestretch{468}{
+\noindent must have measure greater than $2^{-k}\epsilon$ and meets
+$h_k^{-1}[Q_k]$.   But observe
+that $\sum_{n\in M_k}f_{nk}=g'_kh_k$ where
+$g'_k=\penalty-100\sum_{n\in M_k}\alpha_{nk}g_n$ is lower semi-continuous, so that
+$H_k=h_k^{-1}[G_k]$ where
+$G_k=\{\alpha:g'_k(\alpha)\le 1-2^{-k}\epsilon\}$ is closed.
+Since $H_k$ meets $h_k^{-1}[Q_k]$, $Q_k\cap G_k$ is non-empty and has a
+least member $\beta_k$;  set $F_k=h_k^{-1}[\{\beta_k\}]$.
+Because $Q_k\subseteq h_k[X_{i_k}]$, $F_k$ is non-empty.
+}
+
+Examine
+
+\Centerline{$M_{k+1}=\{n:n\in M_k$, $F_k\subseteq E_{ni_k}\}$.}
+
+\noindent There certainly is some $t^*\in F_k$, and because $h_k\restr F_k$
+is constant, $M_{k+1}=\{n:n\in M_k$, $t^*\in E_{ni_k}\}$.   In this case
+
+\Centerline{$\sum_{n\in M_{k+1}}\alpha_{n,k+1}
+=\sum_{n\in M_k}f_{nk}(t^*)\le 1-2^{-k}\epsilon$}
+
+\noindent and the induction proceeds.
+
+\medskip
+
+{\bf (d)} At the end of the induction, either finite or infinite,
+choose $t_k\in F_k$ for $k\in K$.   We are supposing that $X$ has a member
+$x^*$;  define $x\in X$ by setting $x(i_k)=t_k$ for $k\in K$ and
+$x(i)=x^*(i)$ for $i\in I\setminus J$.   Then there is supposed to be an
+$m\in\Bbb N$ such that $x\in C_m$, so that $m\in M_k$ for every $k$.
+But at some stage we shall have
+$J_m\subseteq L_k$ (allowing $k=\#(K)$ if $K$ is finite) and
+$\alpha_{mk}=1$, which is impossible.\ \Bang
+}%end of proof of 566I
+
+\leader{566J}{}\cmmnt{ In
+particular, 566I applies to all products $\{0,1\}^I$ and
+$[0,1]^I$ with their usual measures.   For these we have Kakutani's theorem
+that the usual measures are topological measures (415E),
+which turns out to be valid with countable choice alone.
+
+\medskip
+
+\noindent}{\bf Theorem} [AC($\omega$)]
+(a) Let $\familyiI{(X_i,\frak T_i,\Sigma_i,\mu_i)}$ be a
+family of metrizable Radon probability spaces such that every $\mu_i$ is
+strictly positive and $X=\prod_{i\in I}X_i$ is non-empty.   
+Then the product measure on $X$ is a quasi-Radon measure.
+
+(b) If $I$ is well-orderable then the product measure on $\{0,1\}^I$ is a
+completion regular Radon measure.
+
+\proof{{\bf (a)(i)} We had better check immediately that every $X_i$ is
+separable.   The point is that because $\mu_i$ is a
+totally finite measure inner regular with respect to the compact sets,
+there is a conegligible K$_{\sigma}$ set;  because $\mu_i$ is strictly
+positive, this is dense;  and countable choice is enough to ensure that a
+compact metrizable space is second-countable, therefore separable.
+It follows that $\prod_{i\in J}X_i$ is separable, therefore
+second-countable, for every countable $J\subseteq I$.
+
+\medskip
+
+\quad{\bf (ii)} Because every $\mu_i$ is a Radon measure it is perfect,
+so we
+have a product probability measure on $X$.   Now we can repeat the argument
+of 416Ua.
+
+\medskip
+
+{\bf (b)} Put (a), 561D and 416G together.
+}%end of proof of 566J
+
+\cmmnt{\leader{566K}{Volume 3} Turning to the concerns of Volume 3,
+the elementary theory
+of measure algebras is not radically changed.   But Lemma 311D is
+hopelessly lost;  we no longer have Stone
+spaces, and need to re-examine any proof which appears to rely on them.
+Another result which changes is 313K;  order-dense sets\cmmnt{, as
+defined in
+313J,} need no longer give rise to partitions of unity.   So a localizable
+measure algebra does not need to be isomorphic to a simple product of
+totally finite measure algebras.   Similarly,
+condition (ii) of 316H is no longer sufficient to prove weak
+$(\sigma,\infty)$-distributivity.   However some of the
+constructions which I described in terms of Stone spaces, in particular,
+the Loomis-Sikorski theorem, the
+Dedekind completion of a Boolean algebra, the localization of a
+semi-finite measure algebra, free products and measure-algebra free
+products, can be done by other methods which remain effective with
+AC($\omega$) at most\cmmnt{;  see 566L, 561Yg, 323Xh and 325Yc}.
+
+The theory of ccc algebras is rather different\cmmnt{ (566M, 566Xd)}.
+Maharam's theorem\cmmnt{ (331I, 332B)} is surely unprovable
+without something like the full axiom of choice;  and the Lifting
+Theorem\cmmnt{ (341K)} is
+equally inaccessible under the rules of this section.    We do
+however have useful special cases of results in Chapters 33 and
+34\cmmnt{ (566N)}.
+%any hope for 332Q?
+
+A good start can be made on the elementary
+theory of Riesz spaces without any form of the axiom of
+choice\cmmnt{ (see 561H)}, and with
+AC($\omega$) we can go a long way\cmmnt{, as in 566Q}.   What is
+missing is the Hahn-Banach theorem (for non-separable spaces)
+and many representation theorems.   Similarly, the function spaces of
+Chapter 36 are recognisable, provided that (for general Boolean algebras
+$\frak A$)
+we think of $S(\frak A)$ as a quotient space of the free linear space
+generated by $\frak A$, and of
+$L^{\infty}(\frak A)$ as the $\|\,\|_{\infty}$-completion of
+$S(\frak A)$.   \cmmnt{Of
+course we have to take care at every point to avoid the
+use of Stone spaces.}   \cmmnt{One
+place at which this involves us in a new
+argument is in 566O.}   Most of the arguments of Chapter 24 remain valid,
+so the basic theory of $L^p$ spaces in \S\S365-366 survives.
+What is perhaps
+surprising is that if we take the trouble we can still reach the most
+important results on weak compactness (566P, 566Q).
+
+In the ergodic theory of Chapter 38, a good proportion of the classical
+results survive.   There are difficulties with some of the extensions
+of the classical theory in \S\S381-382.   For instance, the definition of
+`full subgroup' of the group of automorphisms of a Boolean
+algebra\cmmnt{ in 381Be} assumes that order-dense sets include
+partitions of unity.   \cmmnt{If not,
+this definition may fail to be equivalent to
+the formulation in 381Ia.   The latter would seem to be the more natural
+one to use.}   However, the definition as given seems to work for the
+principal needs of Chapter 38\cmmnt{ (see 381I)}.
+
+Frol\'\i k's theorem\cmmnt{ in the generality 382D-382E} needs
+something approaching AC, and with AC($\omega$) alone
+there seems no hope of getting results for
+general Dedekind complete algebras along the lines of the main theorems of
+\S382.   For measurable algebras, however, we do have a version of
+382Eb\cmmnt{ (566R)}.
+
+Many of the later results of Chapter 38 are equally robust,
+at least in their leading applications to measure algebras.   We
+have to remember that we do not know that measurable algebras have many
+involutions\cmmnt{, and
+even among those which do there is no assurance that 382Q
+will be true}.   So in \S\S383-384 we find ourselves restricted rather
+further, to those measurable algebras in which every
+non-zero element is the support of an involution;  but these include the
+standard examples (566N).
+}%end of comment
+
+\leader{566L}{The Loomis-Sikorski theorem} [AC($\omega$)] (a) Let $\frak A$
+be a Dedekind $\sigma$-complete Boolean algebra.   Then there are a set
+$X$, a $\sigma$-algebra $\Sigma$ of subsets of $X$ and a $\sigma$-ideal
+$\Cal I$ of $\Sigma$ such that $\frak A\cong\Sigma/\Cal I$.
+
+(b) Let $(\frak A,\bar\mu)$ be a measure algebra.   Then it is isomorphic
+to the measure algebra of a measure space.
+
+\proof{{\bf (a)(i)} Set $X=\{0,1\}^{\frak A}$, and
+$\Sigma=\Tensorhat_{\frak A}\Cal P(\{0,1\})$.   For $a\in\frak A$ set
+$\widehat{a}=\{x:x\in X$, $x(a)=1\}\in\Sigma$.   Let $\Cal I$ be the
+$\sigma$-ideal of $\Sigma$ generated by sets of the form
+
+\Centerline{$\widehat{a\Bsymmdiff b}\symmdiff\widehat{a}
+  \symmdiff\widehat{b}$,
+\quad$(\inf_{n\in\Bbb N}a_n)\spwidehat
+\symmdiff\bigcap_{n\in\Bbb N}\widehat{a_n}$}
+
+\noindent for $a$, $b\in\frak A$ and sequences $\sequencen{a_n}$ in
+$\frak A$, together with the set $\{x:x(1)=0\}$.
+
+\medskip
+
+\quad{\bf (ii)} (The key.) $\widehat{a}\notin\Cal I$ for any
+$a\in\frak A\setminus\{0\}$.   \Prf\ If $E\in\Cal I$ then (using
+AC($\omega$)) we can find sequences $\sequencen{a_n}$, $\sequencen{b_n}$ in
+$\frak A$, together with a double sequence
+$\langle c_{ni}\rangle_{n,i\in\Bbb N}$, such that, setting
+$c_n=\inf_{i\in\Bbb N}c_{ni}$ for each $n$,
+
+\Centerline{$F
+=\{x:x(1)=0\}
+ \cup\bigcup_{n\in\Bbb N}\bigl(\widehat{a_n\Bsymmdiff b_n}
+   \symmdiff\widehat{a_n}\symmdiff\widehat{b_n}\bigr)
+ \cup\bigcup_{n\in\Bbb N}\bigl(\widehat{c_n}
+   \symmdiff\bigcap_{i\in\Bbb N}\widehat{c_{ni}}\bigr)$}
+
+\noindent includes $E$.   Let $\frak B$ be the subalgebra of $\frak A$
+generated by
+
+\Centerline{$\{a\}\cup\{a_n:n\in\Bbb N\}\cup\{b_n:n\in\Bbb N\}
+  \cup\{c_n:n\in\Bbb N\}\cup\{c_{ni}:n,i\in\Bbb N\}$.}
+
+\noindent Then $\frak B$ is countable, so we can choose inductively a
+sequence $\sequencen{d_n}$ in $\frak B\setminus\{0\}$ such that $d_0=a$
+and, for each $n\in\Bbb N$,
+
+\inset{$d_{n+1}\Bsubseteq d_n$,
+
+either $d_{n+1}\Bsubseteq a_n$ or $d_{n+1}\Bcap a_n=0$,
+
+either $d_{n+1}\Bsubseteq b_n$ or $d_{n+1}\Bcap b_n=0$,
+
+either $d_{n+1}\Bsubseteq c_n$ or there is an $i\in\Bbb N$ such that
+$d_{n+1}\Bcap c_{ni}=0$.}
+
+\noindent Define $x\in X$ by saying that
+
+$$\eqalign{x(d)
+&=1\text{ if }d\Bsupseteq d_n\text{ for some }n\in\Bbb N,\cr
+&=0\text{ otherwise.}\cr}$$
+
+\noindent Then $x\in\widehat{a}\setminus F$ and
+$\widehat{a}\not\subseteq E$;  as $E$ is arbitrary,
+$\widehat{a}\notin\Cal I$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} Set
+
+\Centerline{$\Sigma_0=\{E:E\in\Sigma$, $E\symmdiff\widehat{a}\in\Cal I$ for
+some $a\in\frak A\}$.}
+
+\noindent Then $\Sigma_0$ is closed under symmetric difference and
+countable intersections and contains $X$ (because
+$X\symmdiff\widehat{1}\in\Cal I$).   So $\Sigma_0$ is a $\sigma$-algebra of
+sets;  as it contains $\widehat{a}$ for every $a\in\frak A$, it is equal to
+$\Sigma$.
+
+\medskip
+
+\quad{\bf (iv)} From (ii) we see that
+$\widehat{a\Bsymmdiff b}$, and therefore $\widehat{a}\symmdiff\widehat{b}$,
+do not belong to $\Cal I$ for any distinct $a$, $b\in\frak A$.   With
+(iii), this tells us that we have a function $\pi:\Sigma\to\frak A$ defined
+by setting $\pi E=a$ whenever $E\symmdiff\widehat{a}\in\Cal I$.   Now
+$\pi X=1$ and $\pi$ preserves symmetric difference and countable infima, so
+is a sequentially order-continuous Boolean homomorphism;  its kernel is
+$\Cal I$, so $\frak A\cong\Sigma/\Cal I$, as required.
+
+\medskip
+
+{\bf (b)} This is now easy;  we can use the familiar argument of 321J.
+}%end of proof of 566L
+
+\leader{566M}{Measure algebras:  Proposition} [AC($\omega$)]
+(a) Let $\frak A$ be a measurable algebra.
+
+\quad(i) For any $A\subseteq\frak A$ there is a countable $B\subseteq A$
+with the same upper bounds as $A$.
+
+\quad(ii) $\frak A$ is Dedekind complete.
+
+\quad(iii) If $D\subseteq\frak A$ is order-dense and $c\in D$ whenever
+$c\Bsubseteq d\in D$, there is a partition of unity included in $D$.
+
+(b) Let $(\frak A,\bar\mu)$ be a $\sigma$-finite measure algebra and
+$\frak B$ a subalgebra of $\frak A$ such that
+$(\frak B,\bar\mu\restrp\frak B)$ is a semi-finite measure algebra.
+Then $(\frak B,\bar\mu\restrp\frak B)$ is a $\sigma$-finite
+measure algebra.
+
+\proof{{\bf (a)} (Cf.\ 322G, 316E, 322Cc.)
+Let $\bar\mu$ be such that $(\frak A,\bar\mu)$
+is a totally finite measure algebra.
+
+\medskip
+
+\quad{\bf (i)}
+Let $A^*$ be the set of suprema of finite
+subsets of $A$, and set $\gamma=\sup_{a\in A^*}\bar\mu a$.
+There is a sequence $\sequencen{a_n}$ in $A^*$ such that
+$\sup_{n\in\Bbb N}\bar\nu a_n=\gamma$;  let
+$B\subseteq A$ be a countable set such that every $a_n$ is the supremum of
+a finite subset of $B$.   Then any upper bound $c$ of $B$ is an upper bound
+of $A$.   \Prf\ Take $d\in A$.   Then $a\Bcup a_n\in A^*$, so
+
+\Centerline{$\bar\mu(a\Bsetminus c)\le\bar\mu(a\Bsetminus a_n)
+=\bar\mu(a\Bcup a_n)-\bar\mu a_n\le\gamma-\bar\mu a_n$}
+
+\noindent for every $n$, and $\bar\mu(a\Bsetminus c)=0$, that is,
+$a\Bsubseteq c$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} follows at once from (i), since $\frak A$ is Dedekind
+$\sigma$-complete.
+
+\medskip
+
+\quad{\bf (iii)} By (i), there is a sequence $\sequencen{d_n}$ in $D$ with
+supremum $1$;  now $\sequencen{d_n\Bsetminus\sup_{i<n}d_i}$ is a partition
+of unity included in $D$.
+
+\medskip
+
+{\bf (b)} (Cf.\ 322Nc.)   Write $\frak B^f$ for the ring
+$\{b:b\in\frak B$, $\bar\mu b<\infty\}$.   Let $\sequencen{a_n}$ be a
+non-decreasing sequence in $\frak A$, with supremum $1$, such that
+$\bar\mu a_n<\infty$ for every $n$.    For each $n\in\Bbb N$, set
+$\alpha_n=\sup\{\bar\mu(b\Bcap a_n):b\in\frak B^f\}$;  choose a sequence
+$\sequencen{b_n}$ in $\frak B^f$ such that
+$\bar\mu(b_n\Bcap a_n)\ge\alpha_n-2^{-n}$ for every $n$.   \Quer\ If
+$1$ is not the supremum of $\{b_n:n\in\Bbb N\}$ in $\frak B$, let
+$b\in\frak B\setminus\{0\}$ be such that $b\Bcap b_n=0$ for every $n$.
+Because $\bar\mu\restrp\frak B$ is semi-finite, there is a non-zero
+$b'\in\frak B^f$ included in $b$.   But now
+$0<\bar\mu b'=\sup_{n\in\Bbb N}\bar\mu(b'\Bcap a_n)$, so there is an
+$n\in\Bbb N$ such that $\bar\mu(b'\Bcap a_n)>2^{-n}$;  in which case
+$b'\Bcup b_n\in\frak B^f$ and $\bar\mu((b'\Bcup b_n)\Bcap a_n)>\alpha_n$,
+which is impossible.\ \Bang
+}%end of proof of 566M
+
+\leader{566N}{Characterizing the usual measure on $\{0,1\}^{\Bbb N}$:
+Theorem} [AC($\omega$)]
+(a) Let $(X,\Sigma,\mu)$ be an atomless, perfect,
+complete, countably separated probability space.   Then it is isomorphic to
+$\{0,1\}^{\Bbb N}$ with its usual measure.
+
+(b) Let $(\frak A,\bar\mu)$ be an atomless
+probability algebra of countable Maharam type.   Then it
+is isomorphic to the measure algebra of the usual measure on
+$\{0,1\}^{\Bbb N}$.
+
+(c) An atomless measurable algebra of countable Maharam type is
+homogeneous.
+
+(d) For any infinite set $I$, the measure algebra of the usual measure on
+$\{0,1\}^I$ is homogeneous.
+
+\proof{{\bf (a)} (Cf.\ 344I.)   Write $\nu$ for the usual measure on
+$Y=\{0,1\}^{\Bbb N}$, and $\Tau$ for its domain.
+
+\medskip
+
+\quad{\bf (i)} Let $\Cal H$ be a countable subset of $\Sigma$ separating
+the points of $X$, and $\sequencen{E_n}$ a sequence running over
+$\Cal H$ with cofinal repetitions.   Let $f:\Sigma\times[0,1]\to\Sigma$ and
+be a function as in 566F.
+Define $g:\Sigma\times\Bbb N\to\frak A$ by setting
+
+$$\eqalign{g(E,n)&=f(E\Bcap E_n,\Bover12\bar\mu E)
+  \text{ if }\bar\mu(E\Bcap E_n)\ge\Bover12\bar\mu E,\cr
+&=f(E\setminus E_n,\Bover12\bar\mu E)\text{ otherwise }.\cr}$$
+
+\noindent
+Define $\sequencen{\Cal E_n}$ inductively by saying that
+$\Cal E_0=\{X\}$ and
+
+\Centerline{$\Cal E_{n+1}
+=\{g(E,n):E\in\Cal E_n\}\cup\{E\setminus g(E,n):E\in\Cal E_n\}$}
+
+\noindent for each $n$.   Then each $\Cal E_n$ is a partition of unity
+consisting of $2^n$ elements of measure $2^{-n}$.   Set
+$G_n=\bigcup_{E\in\Cal E_n}g(E,n)$ for each $n$, and let
+$\Sigma_0$ be the $\sigma$-subalgebra of $\Sigma$ generated by
+$\{G_n:n\in\Bbb N\}$.
+
+For $H\in\Sigma$ and $n\in\Bbb N$, set
+
+\Centerline{$\gamma_n(H)
+=2^{-n}\#(\{E:E\in\Cal E_n$, $E\cap H\ne\emptyset$ and
+$E\not\subseteq H\}$.}
+
+\noindent Then $\gamma_{n+1}(H)\le\gamma_n(H)$ for every $n$, and
+$\gamma_{n+1}(E_n)\le\bover12\gamma_n(E_n)$.   Since every member of
+$\Cal H$
+appears infinitely often as an $E_n$, $\lim_{n\to\infty}\gamma_n(H)=0$ for
+every $H\in\Cal H$.   But this means that if $H\in\Cal H$ and we set
+$H'=\bigcup\{E:E\in\bigcup_{n\in\Bbb N}\Cal E_n$, $E\subseteq H\}$ and
+$H''=X\setminus\bigcup\{E:E\in\bigcup_{n\in\Bbb N}\Cal E_n$,
+$H\cap E=\emptyset\}$, then $H'$ and $H''$ both belong to $\Sigma_0$,
+$H'\subseteq H\subseteq H''$ and $H''\setminus H'$ is negligible.
+
+\medskip
+
+\quad{\bf (ii)} Define $\phi_0:X\to Y$ by setting
+$\phi_0(x)=\sequencen{\chi G_n(x)}$ for $x\in Y$.   Then $\phi_0$ is
+$\Sigma_0$-measurable.   Consider the image measure $\mu\phi_0^{-1}$.
+This is a topological measure, and because $\mu$ is perfect and complete
+(and $Y$ is homeomorphic to a subset of $\Bbb R$)
+$\mu\phi_0^{-1}$ is a Radon measure.   If $n\in\Bbb N$ and $z\in\{0,1\}^n$
+then $\phi_0^{-1}\{y:z\subseteq y\in Y\}$ belongs to
+$\Cal E_n$ and has measure $2^{-n}$, so $\mu\phi_0^{-1}$ and
+$\nu$ agree on such sets;  both being Radon measures, they must be equal.
+
+\medskip
+
+\quad{\bf (iii)} Now observe that
+$\Sigma_0=\{\phi_0^{-1}[F]:F\subseteq Y$ is Borel$\}$.   We have seen that
+if $H\in\Cal H$ there are $H'$, $H''\in\Sigma_0$ such that
+$H'\subseteq H\subseteq H''$ and $H''\setminus H'$ is negligible.
+Set $X_1=X\setminus\bigcup_{H\in\Cal H}H\setminus H'$, so that
+$X_1\subseteq X$ is $\mu$-conegligible.   Now $\phi_0\restr X_1$ is
+injective.
+\Prf\ If $x$, $x'$ are distinct members of $X_0$, there is an
+$H\in\Cal H$ containing one and not the other;  as neither belongs to
+$H\setminus H'$, $H'$ contains one and not the other;  as
+$H'=\phi_0^{-1}[F]$ for some $F\subseteq Y$, $\phi_0(x)\ne\phi_0(x')$.\
+\QeD\   We also find that $\phi_0[X_1]$ is $\nu$-conegligible.   \Prf\
+Because $\nu=\mu\phi_0^{-1}$, $\phi_0[X]$ is $\nu$-conegligible.   For each
+$H\in\Cal H$,
+
+$$\eqalignno{\nu\phi_0[H\setminus H']
+&=\mu\phi_0^{-1}[\phi_0[H\setminus H']]
+\le\mu\phi_0^{-1}[\phi_0[H''\setminus H']]
+=\mu(H''\setminus H')
+\Displaycause{because $H''\setminus H'\in\Sigma_0$ so is the inverse image
+of a subset of $Y$}
+=0.
+\cr}$$
+
+\noindent So $\phi_0[\bigcup_{H\in\Cal H}H\setminus H']$ is
+$\nu$-negligible and $\phi_0[X_1]$ is $\nu$-conegligible.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)}
+It follows that if we set $\phi_1=\phi_0\restr X_1$ then the subspace
+measure $\nu_{Y_1}$ is just the image measure $\mu_{X_1}\phi_1^{-1}$.
+\Prf\ If $F\subseteq Y_1$ then
+
+\Centerline{$\mu_{X_1}\phi_1^{-1}[F]=\mu(X_1\cap\phi_0^{-1}[F])
+=\mu\phi_0^{-1}[F]=\nu F=\nu_{Y_1}F$}
+
+\noindent if any of these is defined.\ \QeD\  But as $\phi_1$ is a
+bijection, this means that it is an isomorphism between $(X_1,\mu_{X_1})$
+and $(Y_1,\nu_{Y_1})$.
+
+\medskip
+
+\quad{\bf (v)} There is no reason to suppose that $X\setminus X_1$ and
+$Y\setminus Y_1$ are equipollent, so $\phi_1$ may not be directly
+extendable to an isomorphism between $X$ and $Y$.   However, there is a
+negligible subset $D$ of $Y_1$ which is equipollent with
+$\Bbb R$.
+\Prf\ Let $K\subseteq Y_1$ be a non-negligible compact set.   Set
+$S_2=\bigcup_{n\in\Bbb N}\{0,1\}^n$ and define $\family{z}{S_2}{K_z}$
+inductively, as follows.   $K_{\emptyset}=K$.   Given that $z\in\{0,1\}^n$
+and that $K_z$ is a non-negligible compact set, take the first $m\ge 2n+2$
+such that $J=\{w:w\in\{0,1\}^m$, $\nu\{y:w\subseteq y\in K_z\}>0\}$ has
+more than one member, let $w$, $w'$ be the lexicographically two first
+members of $J$, and set
+
+\Centerline{$K_{z^{\smallfrown}0}=\{y:w\subseteq y\in K_z\}$,
+\quad$K_{z^{\smallfrown}1}=\{y:w'\subseteq y\in K_z\}$;}
+
+\noindent continue.   This will ensure that
+$0<\nu K_z\le 4^{-n}$ for every
+$z\in\{0,1\}^n$.   Set $D=\bigcap_{n\in\Bbb N}\bigcup_{z\in\{0,1\}^n}K_z$;
+then $D$ is negligible and
+equipollent with $\{0,1\}^{\Bbb N}$ and $\Bbb R$.\ \Qed
+
+Now set $X_2=X_1\setminus\phi_1^{-1}[D]$ and $Y_2=Y_1\setminus D$.
+$\phi_2=\phi_1\restr X_2$ is an isomorphism between the conegligible sets
+$X_2$ and $Y_2$ with their subspace measures.   Since $\Cal H$
+separates the points of $X$, we surely have an injective function from
+$X\setminus X_2$ to $\Bbb R$, while we also have an injective function from
+$\Bbb R$ to $\phi_1^{-1}[D]\subseteq X\setminus X_2$.   So $X\setminus X_2$
+is equipollent with $\Bbb R$.   Similarly, $Y\setminus Y_2$ is equipollent
+with $\Bbb R$.   So $\phi_2:X_2\to Y_2$ can be extended to a bijection
+$\phi:X\to Y$, which will be the required isomorphism between
+$(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$.
+
+\medskip
+
+{\bf (b)} (Cf.\ 331I.)   We can use the same idea as in (a).
+Let $\sequencen{a_n}$ be a sequence running over a
+$\tau$-generating set $A\subseteq\frak A$ with cofinal repetitions.
+Let $f:\frak A\times[0,1]\to\frak A$ be a function as in 566F.
+Define $g:\frak A\times\Bbb N\to\frak A$ by setting
+
+$$\eqalign{g(a,n)&=f(a\Bcap a_n,\Bover12\bar\mu a)
+  \text{ if }\bar\mu(a\Bcap a_n)\ge\Bover12\bar\mu a,\cr
+&=f(a\Bsetminus a_n,\Bover12\bar\mu a)\text{ otherwise }.\cr}$$
+
+\noindent
+Define $\sequencen{B_n}$ inductively by saying that
+$B_0=\{1\}$ and
+
+\Centerline{$B_{n+1}
+=\{g(b,n):b\in B_n\}\cup\{b\Bsetminus g(b,n):b\in B_n\}$}
+
+\noindent for each $n$.   Then each $B_n$ is a partition of unity
+consisting of $2^n$ elements of measure $2^{-n}$.   Let $\frak B$ be the
+closed subalgebra of $\frak A$ generated by $\bigcup_{n\in\Bbb N}B_n$;
+then $\frak B$ is isomorphic to the measure algebra of the usual measure on
+$\{0,1\}^{\Bbb N}$.
+
+For $a\in\frak A$ and $n\in\Bbb N$, set
+
+\Centerline{$\gamma_n(a)
+=2^{-n}\#(\{b:b\in B_n$, $a\cap b\notin\{0,b\}\})$.}
+
+\noindent Then $\gamma_{n+1}(a)\le\gamma_n(a)$ for every $n$, and
+$\gamma_{n+1}(a_n)\le\bover12\gamma_n(a_n)$.   Since every member of $A$
+appears infinitely often as an $a_n$, $\lim_{n\to\infty}\gamma_n(a)=0$ for
+every $a\in A$.   But this means that $A\subseteq\frak B$ and
+$\frak B=\frak A$.   So we have the required isomorphism.
+
+\medskip
+
+{\bf (c)} (Cf.\ 331N.)   If $\frak A$ is such an algebra,
+any non-zero principal ideal of $\frak A$ is atomless and of
+countable Maharam type and supports a probability measure,
+so must be isomorphic to the measure algebra of the usual measure on
+$\{0,1\}^{\Bbb N}$ and to $\frak A$.
+
+\medskip
+
+{\bf (d)} For $J\subseteq I$,
+write $\nu_J$ for the usual measure on $\{0,1\}^J$, $\Tau_J$ for its
+domain and $(\frak B_J,\bar\nu_J)$
+for its measure algebra.   If $a\in\frak B_I$ is
+non-zero, then it is of the form $E^{\ssbullet}$ for some $E\in\Tau_I$
+determined by coordinates in a countable subset $J$ of $I$.   Identifying
+$\{0,1\}^I$ with $\{0,1\}^J\times\{0,1\}^{I\setminus J}$, we have an
+$F\in\Tau_J$ such that $E=F\times\{0,1\}^{I\setminus J}$.   Let
+$b\in\frak B_J$ be the equivalence class of $F$.   Now we can
+think of the probability algebra free product
+$\frak B_J\tensorhat\frak B_{I\setminus J}$ as the metric completion of the
+algebraic free product $\frak B_J\otimes\frak B_{I\setminus J}$, and as
+such isomorphic to $\frak B_I$ under an isomorphism which identifies the
+principal ideal $(\frak B_I)_a$ with
+$(\frak B_J)_b\tensorhat\frak B_{I\setminus J}$.   By (b),
+$((\frak B_J)_b,\bar\nu_J\restr(\frak B_J)_b)$ is isomorphic, up to a
+scalar multiple of the measure, to $(\frak B_J,\bar\nu_J)$;  so we have
+
+\Centerline{$(\frak B_I)_a
+\cong(\frak B_J)_b\tensorhat\frak B_{I\setminus J}
+\cong\frak B_J\tensorhat\frak B_{I\setminus J}
+\cong\frak B_I$.}
+
+\noindent As $a$ is arbitrary, $\frak B_I$ is homogeneous.
+}%end of proof of 566N
+
+\leader{566O}{Boolean values:  Proposition} [AC($\omega$)]
+(a) Let $\frak B$ be the algebra
+of open-and-closed subsets of $\{0,1\}^{\Bbb N}$, and
+$\Cal B(\{0,1\}^{\Bbb N})$ the Borel $\sigma$-algebra.   If $\frak A$ is a
+Dedekind $\sigma$-complete Boolean algebra and $\pi:\frak B\to\frak A$ is
+a Boolean homomorphism, $\pi$ has a unique extension to a sequentially
+order-continuous Boolean homomorphism from $\Cal B(\{0,1\}^{\Bbb N})$ to
+$\frak A$.
+
+(b) Let $\frak A$ be a Dedekind
+$\sigma$-complete Boolean algebra.   Then there is a bijection between
+$L^0=L^0(\frak A)$ and the set $\Phi$ of sequentially order-continuous
+Boolean homomorphisms from the algebra $\Cal B(\Bbb R)$ of Borel subsets of
+$\Bbb R$ to $\frak A$, defined by saying that $u\in L^0$ corresponds to
+$\phi\in\Phi$ iff $\Bvalue{u>\alpha}=\phi(\ooint{\alpha,\infty})$ for
+every $\alpha\in\Bbb R$.
+
+(c) Let $(\frak A,\bar\mu)$ be a localizable
+measure algebra.   Write $\Sigma_{\text{um}}$ for the algebra of
+universally measurable subsets of $\Bbb R$.
+Then for any $u\in\cmmnt{ L^0=\mskip5mu}L^0(\frak A)$, we have a sequentially
+order-continuous Boolean homomorphism
+$E\mapsto\Bvalue{u\in E}:\Sigma_{\text{um}}\to\frak A$ such that
+
+$$\eqalign{\Bvalue{u\in E}
+&=\sup\{\Bvalue{u\in F}:F\subseteq E\text{ is Borel}\}
+=\sup\{\Bvalue{u\in K}:K\subseteq E\text{ is compact}\}\cr
+&=\inf\{\Bvalue{u\in F}:F\supseteq E\text{ is Borel}\}
+=\inf\{\Bvalue{u\in G}:G\supseteq E\text{ is open}\}\cr}$$
+
+\noindent for every $E\in\Sigma_{\text{um}}$, while
+
+\Centerline{$\Bvalue{u\in\ooint{\alpha,\infty}\,}=\Bvalue{u>\alpha}$}
+
+\noindent for every $\alpha\in\Bbb R$.
+
+\proof{{\bf (a)}
+As in \S562, let $\Cal T$ be the set of trees without
+infinite branches in $S^*=\bigcup_{n\ge 1}\BbbN^n$.   For $n\in\Bbb N$
+set $E_n=\{x:x\in\{0,1\}^{\Bbb N}$, $x(n)=1\}\in\frak B$ and
+$a_n=\pi E_n\in\frak A$.   Let $\phi:\Cal T\to\frak A$ and
+$\psi:\Cal T\to\Cal B(\{0,1\}^{\Bbb N})$ be the corresponding
+interpretations of Borel codes, as in 562V.
+Then $\phi(T)=\phi(T')$ whenever $\psi(T)=\psi(T')$ (562V), and (using
+AC($\omega$)) it is easy to check that
+$\psi[\Cal T]=\Cal B(\{0,1\}^{\Bbb N})$ (cf.\ 562Db), so
+we have a function $\tilde\pi:\Cal B(\{0,1\}^{\Bbb N})\to\frak A$ defined
+by saying that $\tilde\pi(\psi(T))=\phi(T)$ for every $T\in\Cal T$.
+Now if $\sequencen{F_n}$ is any sequence of Borel subsets of
+$\{0,1\}^{\Bbb N}$, we have a
+$T\in\Cal T$ such that $F_n=\psi(T_{\fraction{n}})$ for every $n$
+and no $T_{\fraction{n}}$ is empty (see 562Bb).   In this case
+
+$$\eqalign{\tilde\pi(\bigcup_{n\in\Bbb N}\{0,1\}^{\Bbb N}\setminus F_n)
+&=\tilde\pi(\psi(T))
+=\phi(T)\cr
+&=\sup_{n\in\Bbb N}1\Bsetminus\phi(T_{\fraction{n}})
+=\sup_{n\in\Bbb N}1\Bsetminus\tilde\pi F_n.\cr}$$
+
+\noindent So $\tilde\pi$ is a sequentially order-continuous Boolean
+homomorphism.   Since it agrees with $\pi$ on $\{E_n:n\in\Bbb N\}$ it must
+agree with $\pi$ on $\frak B$.
+
+Of course the extension is unique because if
+$\tilde\pi':\Cal B(\{0,1\}^{\Bbb N}\to\frak A$ is any
+sequentially order-continuous Boolean homomorphism extending $\pi$ then
+$\{E:\tilde\pi'E=\tilde\pi E\}$ is a $\sigma$-algebra of sets including
+$\frak B$ and therefore containing every open set.
+
+\medskip
+
+{\bf (b)} (Cf.\ 364F.)  Let $\Cal E$ be the algebra of subsets of $\Bbb R$
+generated by sets of the form $\ooint{q,\infty}$ for $q\in\Bbb Q$.   Then
+$\Cal E$ is an atomless countable Boolean algebra, so is isomorphic to the
+algebra $\frak B$;  let $\theta:\frak B\to\Cal E$ be an isomorphism.
+Define $f:\{0,1\}^{\Bbb N}\to[-\infty,\infty]$ by setting
+$f(x)=\sup\{q:q\in\Bbb Q$, $x\in\theta^{-1}\ooint{q,\infty}\}$.   Then $f$
+is Borel measurable.
+
+Take any $u$ in $L^0$.   It is easy to check that we
+have a Boolean homomorphism
+$\pi:\Cal E\to\frak A$ defined by saying that
+$\pi\ooint{q,\infty}=\Bvalue{u>q}$ for every $q\in\Bbb Q$.
+By (a), there is a sequentially order-continuous Boolean homomorphism
+$\tilde\pi:\Cal B(\{0,1\}^{\Bbb N})\to\frak A$ extending
+$\pi\theta:\frak B\to\frak A$.
+Set $\phi E=\tilde\pi(f^{-1}[E])$ for
+$E\in\Cal B(\Bbb R)$.
+
+If $\alpha\in\Bbb R$ then
+
+$$\eqalign{\phi(\ooint{\alpha,\infty})
+&=\tilde\pi\{x:f(x)>\alpha\}
+=\tilde\pi(\bigcup\{\theta^{-1}\ooint{q,\infty}:q\in\Bbb Q,\,q>\alpha\})
+  \cr
+&=\sup\{\tilde\pi(\theta^{-1}\ooint{q,\infty}):q\in\Bbb Q,\,q>\alpha\}\cr
+&=\sup\{\pi\ooint{q,\infty}:q\in\Bbb Q,\,q>\alpha\}\cr
+&=\sup\{\Bvalue{u>q}:q\in\Bbb Q,\,q>\alpha\}
+=\Bvalue{u>\alpha}.\cr}$$
+
+\noindent It follows that
+
+$$\eqalign{\phi\Bbb R
+&=\sup_{n\in\Bbb N}\tilde\pi(f^{-1}\ooint{-n,\infty})
+  \Bsetminus\inf_{n\in\Bbb N}\tilde\pi(f^{-1}\ooint{n,\infty})\cr
+&=\sup_{n\in\Bbb N}\Bvalue{u>-n}\Bsetminus\inf_{n\in\Bbb N}\Bvalue{u>n}
+=1,\cr}$$
+
+\noindent and therefore that $\phi\in\Phi$.   For the rest of the argument
+we can follow the method of 364F.
+
+\medskip
+
+{\bf (c)} (Cf.\ 434T.)
+
+\medskip
+
+\quad{\bf (i)}
+To begin with, consider the case in which $\bar\mu$ is
+totally finite.   In this case, we have a non-decreasing function
+$g:\Bbb R\to\coint{0,\infty}$ defined by saying that
+$g(\alpha)=\bar\mu 1-\bar\mu\Bvalue{u>\alpha})$ for
+$\alpha\in\Bbb R$.   Let $\nu_g$
+be the corresponding Lebesgue-Stieltjes measure (114Xa), and
+$(\frak C,\bar\nu_g)$ its measure algebra.   Note that $g$ is continuous on
+the right, so that
+$\nu_g\ocint{\alpha,\beta}
+=\bar\mu\Bvalue{u>\alpha}-\bar\mu\Bvalue{u>\beta}$
+whenever $\alpha\le\beta$ in $\Bbb R$.   Let $\frak D$ be the
+subalgebra of $\frak C$ generated by
+$\{\ocint{-\infty,\alpha}^{\ssbullet}:\alpha\in\Bbb R\}$.   Then we have a
+measure-preserving Boolean
+homomorphism $\pi:\frak D\to\frak A$ defined uniquely by saying
+that $\pi(\ooint{\alpha,\infty}^{\ssbullet})=\Bvalue{u>\alpha}$ for
+$\alpha\in\Bbb R$.   Because $\frak D$ is dense in $\frak C$ for the
+measure-algebra topology, $\pi$ has a unique extension to a
+measure-preserving Boolean homomorphism $\tilde\pi:\frak C\to\frak A$.
+
+Because $\Sigma_{\text{um}}\subseteq\dom\nu_g$, we can define
+$\Bvalue{u\in E}$ to be $\tilde\pi E^{\ssbullet}$ for
+$E\in\Sigma_{\text{um}}$, and this will give us a sequentially
+order-continuous Boolean homomorphism from $\Sigma_{\text{um}}$ to
+$\frak A$ such that
+$\Bvalue{u\in\ooint{\alpha,\infty}\,}=\Bvalue{u>\alpha}$
+for every $\alpha$.   As for the other formulae, they are immediate from
+the facts that $\nu_g$ is inner regular with respect to the compact sets
+and outer regular with respect to the open sets.
+
+\medskip
+
+\quad{\bf (ii)} We need to observe that these properties uniquely define
+$\Bvalue{u\in E}$.   \Prf\ Let $\Cal E$ be the algebra of subsets of
+$\Bbb R$ generated by $\{\ooint{\alpha,\infty}:\alpha\in\Bbb R\}$.
+The requirement
+$\Bvalue{u\in\ooint{\alpha,\infty}\,}=\Bvalue{u>\alpha}$
+determines the values of $\Bvalue{u\in E}$ for $E\in\Cal E$.
+Next, if $G\subseteq\Bbb R$ is open and
+$K\subseteq G$ is compact there is an $E\in\Cal E$ such that
+$K\subseteq E\subseteq G$.   Consequently
+$\Bvalue{u\in K}=\inf\{\Bvalue{u\in E}:E\in\Cal E$, $E\supseteq K\}$
+is fixed for every compact $K\subseteq\Bbb R$.   Finally, the inner
+regularity condition
+$\Bvalue{u\in E}=\sup\{\Bvalue{u\in K}:K\subseteq E$ is compact$\}$
+determines $\Bvalue{u\in E}$ for other $E\in\Sigma_{\text{um}}$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} Now turn to the general case of a localizable measure
+algebra $(\frak A,\bar\mu)$ and $u\in L^0(\frak A)$.   Let $\frak A^f$ be
+the ideal of elements of finite measure.   Then for each $a\in\frak A^f$ we
+have a corresponding homomorphism
+$E\mapsto\Bvalue{u\in E}_a$ from $\Sigma_{\text{um}}$ to the principal
+ideal $\frak A_a$.   If $a\Bsubseteq b\in\frak A^f$, we can use the
+uniqueness described in (ii) to see that
+$\Bvalue{u\in E}_a=a\Bcap\Bvalue{u\in E}_b$ for every $E$.   So if we set
+$\Bvalue{u\in E}=\sup_{a\in\frak A^f}\Bvalue{u\in E}_a$, we shall have
+$\Bvalue{u\in E}_a=a\Bcap\Bvalue{u\in E}$ whenever $a\in\frak A^f$ and
+$E\in\Sigma_{\text{um}}$.   It is now easy to check that
+$E\mapsto\Bvalue{u\in E}$ has the required properties.
+}%end of proof of 566O
+
+\leader{566P}{Weak \dvrocolon{compactness}}\cmmnt{ In the
+absence of
+Tychonoff's theorem, the theory of weak compactness in normed spaces
+becomes uncertain.   However AC($\omega$) is enough to give a couple of the
+principal results involving classical Banach spaces, starting with
+Hilbert space.
+
+\medskip
+
+\noindent}{\bf Theorem} [AC($\omega$)] Let $U$ be a Hilbert space.   Then
+bounded sets in $U$ are relatively weakly compact.
+
+\proof{ If $U$ is finite-dimensional, this is trivial;  so let us suppose
+that $U$ is infinite-dimensional.   Let $A\subseteq U$ be a bounded set,
+and $\overline{A}$ its closure for the weak topology;  let $\Cal F_0$ be a
+family of weakly closed subsets of $\overline{A}$
+with the finite intersection
+property, and $\Cal F$ the filter on $U$ generated by $\Cal F_0$.
+
+\medskip
+
+{\bf (a)} For closed subspaces $V$ of $U$, let
+$P_V:U\to V$ be the orthogonal projection from $U$ onto $V$ (561Ib), and
+set $\gamma_V=\liminf_{u\to\Cal F}\|P_Vu\|^2$.
+Because $\Cal F$ contains a
+bounded set, $\gamma_V\le\gamma_U<\infty$ for every $V$.
+If $V_0$, $V_1$ are
+orthogonal subspaces of $U$, then
+$\|P_{V_0+V_1}u\|^2=\|P_{V_0}u\|^2+\|P_{V_1}u\|^2$ for every $u\in U$, so
+$\gamma_{V_0+V_1}\ge\gamma_{V_0}+\gamma_{V_1}$.
+
+\medskip
+
+{\bf (b)} Set
+$\gamma=\sup\{\gamma_V:V$ is a finite-dimensional linear subspace of $U\}$,
+and choose a sequence $\sequencen{V_n}$ of finite-dimensional subspaces of
+$U$ such that $\gamma=\sup_{n\in\Bbb N}\gamma_{V_n}$;  because $U$ is
+infinite-dimensional, we can do this in such a way that $\dim V_n\ge n$ for
+each $n$.  Let $W$ be the
+closed linear span of $\bigcup_{n\in\Bbb N}V_n$.   If $V$ is a
+finite-dimensional linear subspace of $W^{\perp}$, then
+
+\Centerline{$\gamma\ge\gamma_{V+V_n}\ge\gamma_V+\gamma_{V_n}$}
+
+\noindent for every $n$, so $\gamma_V=0$.
+
+\medskip
+
+{\bf (c)} If $F\in\Cal F$, $V\subseteq W^{\perp}$ is a finite-dimensional
+linear subspace, and $\epsilon>0$, then $F\cap\{u:\|P_Vu\|\le\epsilon\}$ is
+non-empty.   We can therefore extend $\Cal F$ to the filter $\Cal G$
+generated by sets of this type, and $\lim_{u\to\Cal G}\innerprod{u}{w}=0$
+for every $w\in W^{\perp}$.
+
+\medskip
+
+{\bf (d)} Let $\sequencen{e_n}$ be an orthonormal basis for $W$.   Define
+$\sequencen{\Cal G_n}$ as follows.   $\Cal G_0=\Cal G$.   Given that
+$\Cal G_n$ is a filter on $U$ containing a bounded set, set
+$\alpha_n=\liminf_{u\to\Cal G_n}\innerprod{u}{e_n}$, and let $\Cal G_{n+1}$
+be the filter generated by
+$\Cal G_n\cup\{\{u:\innerprod{u}{e_n}<\alpha\}:\alpha>\alpha_n\}$;  then
+$\alpha_n=\lim_{u\to\Cal G_{n+1}}\innerprod{u}{e_n}$.   Set
+$\Cal H=\bigcup_{n\in\Bbb N}\Cal G_n$;  then
+$\alpha_n=\lim_{u\to\Cal H}\innerprod{u}{e_n}$ for each $n$.
+
+For any $n\in\Bbb N$,
+
+\Centerline{$\sum_{i=0}^n\alpha_i^2
+=\sum_{i=0}^n\lim_{u\to\Cal H}\innerprod{u}{e_i}^2
+=\lim_{u\to\Cal H}\sum_{i=0}^n\innerprod{u}{e_i}^2
+\le\limsup_{u\to\Cal H}\|u\|^2
+<\infty$}
+
+\noindent because $\Cal H$ contains a bounded set.   So
+$\sum_{n=0}^{\infty}\alpha_n^2$ is finite and
+$v=\sum_{n=0}^{\infty}\alpha_ne_n$ is defined in $U$.
+
+\medskip
+
+{\bf (e)} Now
+
+\Centerline{$\innerprod{v}{e_n}
+=\alpha_n=\lim_{u\to\Cal H}\innerprod{u}{e_n}$}
+
+\noindent for every $n$;  again because $\Cal H$ contains a bounded set,
+$\innerprod{v}{w}=\lim_{u\to\Cal H}\innerprod{u}{w}$ for every $w\in W$.
+On the other hand, if $w\in W^{\perp}$,
+
+\Centerline{$\lim_{u\to\Cal H}\innerprod{u}{w}
+=\lim_{u\to\Cal G}\innerprod{u}{w}=0=\innerprod{v}{w}$.}
+
+\noindent Since $W+W^{\perp}=U$,
+$\lim_{u\to\Cal H}\innerprod{u}{w}=\innerprod{v}{w}$ for every $w\in U$.
+By 561Ic, $v$ is the limit of $\Cal H$ for the weak topology on $U$,
+and must belong to every member of $\Cal F_0$.
+
+As $\Cal F_0$ is arbitrary, $\overline{A}$ is weakly
+compact and $A$ is relatively weakly compact.
+}%end of proof of 566P
+
+\leader{566Q}{\bf Theorem} [AC($\omega$)]
+Let $U$ be an $L$-space.   Then a subset of $U$ is weakly relatively
+compact iff it is uniformly integrable.
+
+\proof{{\bf (a)(i)}\grheada\ Recall that $U$ is a Banach lattice with an
+order-continuous norm (354N), so is Dedekind complete (354Ee) and all its
+bands are complemented (353I);  for a band $V$ in $U$, let $P_V:U\to V$ be
+the band projection onto $V$.
+
+\medskip
+
+\qquad\grheadb\ If $u\in U$ there is an $f\in U^*$ such that
+$\|f\|\le 1$ and
+$f(u)=\|u\|$.   \Prf\ Let $V$ be the band generated by $u^+$ and
+$W=V^{\perp}$ its band complement.
+Set $f(v)=\int P_Vv-\int P_Wv$ for $v\in U$.
+Since $\|v\|=\|P_Vv\|+\|P_Wv\|$ for
+every $v\in U$, $\|f\|\le 1$.   Also $P_Vu=u^+$ and $P_Wu=-u^-$
+so $f(u)=\int|u|=\|u\|$.\ \Qed
+
+\medskip
+
+\qquad\grheadc\ If $A\subseteq U$ is weakly bounded it is norm-bounded.
+\Prf\Quer\ Otherwise, choose for each $n\in\Bbb N$ a $u_n\in A$ and
+$f_n\in U^*$ such that
+$\|u_n\|\ge n$, $\|f_n\|=1$ and $f_n(u_n)=\|u_n\|\ge n$.
+For $f\in U^*$ set $\rho_A(f)=\sup_{u\in A}|f(u)|$.
+Define $\sequence{k}{n_k}$ by setting
+$n_k=\lceil 2\cdot 3^k(k+\sum_{i=0}^{k-1}3^{k-i}\rho_A(f_{n_i}))\rceil$
+for each $k$.
+Set $f=\sum_{i=0}^{\infty}3^{-i}f_{n_i}$.   Then for any $k\in\Bbb N$ we
+have
+
+$$\eqalign{\rho_A(f)
+&\ge f(u_{n_k})
+=\sum_{i=0}^{\infty}3^{-i}f_{n_i}(u_{n_k})\cr
+&\ge 3^{-k}f_{n_k}(u_{n_k})-\sum_{i=0}^{k-1}3^{-i}\rho_A(f_{n_i})
+     -\sum_{i=k+1}^{\infty}3^{-i}\|u_{n_k}\|\cr
+&=\Bover1{2\cdot 3^k}\|u_{n_k}\|-\sum_{i=0}^{k-1}3^{-i}\rho_A(f_{n_i})
+\ge k.  \text{ \Bang\Qed}\cr}$$
+
+\medskip
+
+\quad{\bf (ii)}
+Now let $K\subseteq U$ be a weakly relatively countably compact
+set.   Let $\frak A$ be the band algebra of $U$.   For $V\in\frak A$
+set $\nu V=\sup_{u\in K}\|P_Vu\|$ (counting $\sup\emptyset$ as $0$).
+Then $\nu$ is a submeasure on $\frak A$.   By (i-$\gamma$),
+$K$ is norm-bounded and $\nu$ is
+finite-valued;  set $\alpha=\nu U=\sup_{u\in K}\|u\|$.
+
+$\nu$ is exhaustive.
+\Prf\Quer\ Otherwise, let $\sequencen{V_n}$ be a disjoint sequence in
+$\frak A$ such that
+$\epsilon=\bover16\inf_{n\in\Bbb N}\nu V_n$ is greater than $0$.
+For each $n\in\Bbb N$ choose $u_n\in K$ and $f_n\in U^*$
+such that $\|f_n\|\le 1$ and
+$f_n(P_nu_n)=\|P_nu_n\|\ge 5\epsilon$, where here I write $P_n$
+for $P_{V_n}$.   Let $v_0$
+be a cluster point of $\sequencen{u_n}$ in $U$ for the weak topology of
+$U$.   Note that $\sum_{n=0}^{\infty}\|P_nu\|\le\|u\|$ for any $u\in U$;
+let $m\in\Bbb N$ be such that $\sum_{n=m}^{\infty}\|P_nv_0\|\le\epsilon$.
+For $n\in\Bbb N$, set $g_n(u)=f_n(P_nu)$ for $u\in U$.
+
+We can now build a strictly increasing sequence $\sequence{k}{n_k}$ such
+that
+
+\Centerline{$n_0\ge m$,}
+
+\Centerline{$\sum_{i=0}^{k-1}|g_{n_i}(u_{n_k})|
+\le\epsilon+\sum_{i=0}^{k-1}|g_{n_i}(v_0)|$,}
+
+\Centerline{$\|P_{n_k}u_{n_i}\|\le 2^{-k}\epsilon$ whenever $i<k$}
+
+\noindent for every $k\in\Bbb N$.   Let $v_1$ be a weak cluster point of
+$\sequence{k}{u_{n_k}}$, and $l\in\Bbb N$ such that
+$\sum_{k=l}^{\infty}\|P_{n_k}v_1\|\le\epsilon$.   Set
+$g=\sum_{k=l}^{\infty}g_{n_k}$;  this is defined in $U^*$ because
+
+\Centerline{$\sum_{k=l}^{\infty}|g_{n_k}(u)|
+\le\sum_{k=l}^{\infty}\|P_{n_k}u\|\le\|u\|$}
+
+\noindent for every $u\in U$.   Of course $|g(v_1)|\le\epsilon$.   On the
+other hand, for any $k\ge l$,
+
+$$\eqalign{g(u_{n_k})
+&=g_{n_k}(u_{n_k})+\sum_{i=l}^{k-1}g_{n_i}(u_{n_k})
+   +\sum_{i=k+1}^{\infty}g_{n_i}(u_{n_k})\cr
+&\ge 5\epsilon-\sum_{i=0}^{k-1}|g_{n_i}(u_{n_k})|
+   -\sum_{i=k+1}^{\infty}\|P_{n_i}u_{n_k}\|   \cr
+&\ge 5\epsilon-\sum_{i=0}^{k-1}|g_{n_i}(v_0)|-\epsilon
+   -\sum_{i=k+1}^{\infty}2^{-i}\epsilon\cr
+&\ge 4\epsilon-\sum_{n=m}^{\infty}\|P_nv_0\|
+   -2^{-k}\epsilon
+\ge 2\epsilon\cr}$$
+
+\noindent and $v_1$ cannot be a weak cluster point of
+$\sequence{k}{u_{n_k}}$.\ \Bang\Qed
+
+\medskip
+
+\quad{\bf (iii)} In fact $\nu$ is uniformly exhaustive.
+\Prf\Quer\ Otherwise, let $\epsilon>0$ be such that there are arbitrarily
+long disjoint strings in $\frak A$ of elements of submeasure greater than
+$2\epsilon$.   Set
+$q(n)=\lceil\Bover{2^nn\alpha}{\epsilon}\rceil$ for each $n$,
+and choose a family
+$\langle V_{ni}\rangle_{n\in\Bbb N,i\le q(n)}$ such that
+$\langle V_{ni}\rangle_{i\le q(n)}$ is a disjoint family in $\frak A$
+for each $n$ and $\nu V_{ni}>2\epsilon$ for all $n$ and $i$;
+adapting the temporary notation of (ii), I set $P_{ni}=P_{V_{ni}}$ for
+$i\le q(n)$.   Now choose
+$u_{ni}\in K$ such that $\|P_{ni}u_{ni}\|\ge 2\epsilon$ for all $i$ and
+$n$.   Because $\sum_{i=0}^{q(n)}\|P_{ni}u\|\le\|u\|$ for every $u\in U$
+and $n\in\Bbb N$, we can define inductively a sequence $\sequencen{i_n}$
+such that $i_n\le q(n)$ and
+$\|P_{ni_n}u_{mi_m}\|\le 2^{-n}\epsilon$ whenever $m<n$.
+
+Now set
+
+\Centerline{$W_{mn}=V_{mi_m}\cap\bigcap_{m<k\le n}V_{ki_k}^{\perp}$,
+\quad$Q_{mn}=P_{W_{mn}}$}
+
+\noindent for $m\le n$,
+
+\Centerline{$W_m=\bigcap_{n\ge m}W_{mn}$,
+\quad$Q_m=P_{W_m}$}
+
+\noindent for $m\in\Bbb N$.
+For any $u\in U$ and $m\le n$,
+
+\Centerline{$|P_{mi_m}u|
+=P_{mi_m}|u|\le Q_{mn}|u|+\sum_{k=m+1}^nP_{ki_k}|u|$,}
+
+\Centerline{$\|P_{mi_m}u\|
+\le\|Q_{mn}u\|+\sum_{k=m+1}^n\|P_{ki_k}u\|$,}
+
+\noindent so
+
+$$\eqalign{\|Q_{mn}u_{mi_m}\|
+&\ge\|P_{mi_m}u_{mi_m}\|-\sum_{k=m+1}^n\|P_{ki_k}u_{mi_m}\|\cr
+&\ge 2\epsilon-\sum_{k=m+1}^{\infty}2^{-k}\epsilon
+\ge\epsilon.\cr}$$
+
+\noindent Next, if $u\ge 0$, $\langle Q_{mn}u\rangle_{n\ge m}$ is a
+non-increasing sequence, and its infimum belongs to
+$\bigcap_{n\ge m}W_{mn}$, so must be equal to $Q_mu$;  accordingly
+$Q_mu$ is the norm-limit of $\langle Q_{mn}u\rangle_{n\ge m}$.   The same
+is therefore true for every $u\in U$, and in particular
+
+\Centerline{$\|Q_mu_{mi_m}\|=\lim_{n\to\infty}\|Q_{mn}u_{mi_m}\|
+\ge\epsilon$.}
+
+\noindent Consequently $\nu W_m\ge\epsilon$.   But
+$W_m\cap W_n\subseteq V_{ni_n}^{\perp}\cap V_{ni_n}=\{0\}$ whenever $n>m$,
+so this contradicts (ii).\ \Bang\Qed
+
+\medskip
+
+\quad{\bf (iv)} Now take any $\epsilon>0$.
+Then there is a $u^*\in U^+$ such
+that $\int(|u|-u^*)^+\le\epsilon$ for every $u\in K$.   \Prf\
+If $\alpha\le\epsilon$ we can take $u^*=0$ and stop.   Otherwise, there
+is a largest $n\in\Bbb N$ such that there are disjoint
+$V_0,\ldots,V_n\in\frak A$ such that $\nu V_i>\epsilon$ for every $n$.
+Take $u_0,\ldots,u_n\in K$ such that $\|P_{V_i}u_i\|>\epsilon$ for each
+$i$.   Let $\gamma>0$ be such that
+$\|P_{V_i}u_i\|-\Bover{\alpha}{\gamma}>\epsilon$ for every $i\le n$, and
+set $u^*=\gamma\sum_{i=0}^n|u_i|$.
+\Quer\ Suppose that $u\in K$ is such that $\int(|u|-u^*)^+>\epsilon$.
+Let $W$ be the band generated by $(|u|-u^*)^+$, so that
+$\nu W\ge\|P_Wu\|>\epsilon$.   For each $i\le n$, set
+$W_i=V_i\cap W^{\perp}$;  then
+
+\Centerline{$|P_Wu_i|\le\Bover1{\gamma}P_Wu^*\le\Bover1{\gamma}|u|$,
+\quad$|P_{W_i}u_i|\ge|P_{V_i}u_i|-\Bover1{\gamma}|u|$,}
+
+\Centerline{$\nu W_i\ge\|P_{W_i}u_i\|
+\ge\|P_{V_i}u_i\|-\Bover{\alpha}{\gamma}>\epsilon$.}
+
+\noindent
+But now $W_0,\ldots,W_n,W$ witnesses that $n$ was not maximal.\ \Bang\
+So $\sup_{u\in K}\int(|u|-u^*)^+\le\epsilon$, as required.\ \Qed
+
+As $\epsilon$ is arbitrary, $K$ is uniformly integrable.   Thus every
+relatively weakly compact subset of $U$ is uniformly integrable.
+
+\medskip
+
+{\bf (b)(i)} In the reverse direction, suppose to begin with
+that $(\frak A,\bar\mu)$ is a totally finite measure algebra, and
+that $A\subseteq L^1=L^1(\frak A,\bar\mu)$ is uniformly integrable;  let
+$\Cal F$ be a filter on $L^1$ containing $A$.    Write $\Cal V$ for the set
+of neighbourhoods of $0$ for the weak topology
+$\frak T_s(L^1,(L^1)^*)$.\footnote{\smallerfonts
+Of course $(L^1)^*$ can be identified
+with $L^{\infty}(\frak A)$, but if
+you don't wish to trace through the arguments for this, and confirm that
+they can be carried out without appealing to anything more than
+AC($\omega$), you can defer the exercise for the time being.}
+
+\medskip
+
+\qquad\grheada\ For each $n\in\Bbb N$ let $M_n\ge 0$ be such that
+$\|(|u|-M_n\chi 1)^+\|_1\le 2^{-n}$ for every $u\in A$, and
+define sets $K_n\subseteq[-M_n\chi 1,M_n\chi 1]$ and filters $\Cal F_n$
+as follows.   $\Cal F_0=\Cal F$.   Given that $\Cal F_n$ contains $A$,
+define $\phi_n:L^1\to L^2=L^2(\frak A,\bar\mu)$ by setting
+$\phi_n(u)=\med(-M_n\chi 1,u,M_n\chi 1)$ for each $u\in L^1$, and consider
+the filter $\phi_n[[\Cal F_n]]$.   This is a filter on the Hilbert space
+$L^2$ containing the $\|\,\|_2$-bounded set $[-M_n\chi 1,M_n\chi 1]$, so
+the set $K_n^*$ of its $\frak T_s(L^2,L^2)$-cluster points is non-empty, by
+566P;  as $K_n^*$ is $\frak T_s(L^2,L^2)$-closed, it is
+$\frak T_s(L^2,L^2)$-compact.
+As $[-M_n\chi 1,M_n\chi 1]$ is $\|\,\|_2$-closed and convex, it is
+$\frak T_s(L^2,L^2)$-closed (561Ie) and includes $K_n^*$.
+Set $\gamma_n=\inf\{\|u\|_2:u\in K_n^*\}$.   As all the sets
+$\{u:\|u\|_2\le\alpha\}$, for $\alpha>\gamma_n$, are
+$\frak T_s(L^2,L^2)$-closed and meet $K_n^*$,
+$K_n=\{u:u\in K_n^*$, $\|u\|_2\le\gamma_n\}$ is non-empty.
+
+Suppose that $G\in\Cal V$.
+Because the embedding $L^2\embedsinto L^1$ is norm-continuous, it is weakly
+continuous, and $G\cap L^2$ is a $\frak T_s(L^2,L^2)$-neighbourhood of $0$.
+It follows that
+$x+G$ meets every member of $\phi_n[[\Cal F_n]]$ for every $x\in K^*_n$;
+so $K_n+G$ meets every member of $\phi_n[[\Cal F_n]]$.   We can therefore
+extend $\Cal F_n$ to the filter $\Cal F_{n+1}$ generated by
+
+\Centerline{$\Cal F_n\cup\{\phi_n^{-1}[K_n+G]:G\in\Cal V\}$}
+
+\noindent and continue.
+
+\medskip
+
+\qquad\grheadb\
+Set $\Cal G=\bigcup_{n\in\Bbb N}\Cal F_n$ and
+$B=\{u:u\in L^1$, $\|u\|_1\le 1\}$.   Then for each $n\in\Bbb N$
+there is a finite set $J\subseteq L^1$ such that
+$J+G+2^{-n+1}B\in\Cal G$ for every $G\in\Cal V$.  \Prf\ $K_n$ is a
+$\frak T_s(L^2,L^2)$-closed subset of $K_n^*$, so is
+$\frak T_s(L^2,L^2)$-compact;  also it is included in the sphere
+$S=\{u:\|u\|_2=\gamma_n\}$.   Because $\|\,\|_2$ is locally uniformly
+rotund, it is a Kadec norm (467B)
+and the norm and weak topologies on $S$ coincide;  consequently $K_n$ is
+$\|\,\|_2$-compact.   Since $\|\,\|_1$ and $\|\,\|_2$ give rise to the same
+topology on any $\|\,\|_{\infty}$-bounded set, $K_n$ is $\|\,\|_1$-compact.
+There is therefore a finite set $J\subseteq K_n$ such that
+$K_n\subseteq J+2^{-n}B$.
+
+Take any $G\in\Cal V$.   Then
+$\|u-\phi_n(u)\|=\|(|u|-M_n\chi 1)^+\|\le 2^{-n}$ for
+every $u\in A$, so
+
+\Centerline{$J+G+2^{-n+1}B\supseteq(K_n+G)+2^{-n}B
+\supseteq A\cap\phi_n^{-1}[K_n+G]\in\Cal F_{n+1}\subseteq\Cal G$.\ \Qed}
+
+\medskip
+
+\qquad\grheadc\ For each $n\in\Bbb N$ choose a minimal
+finite set $J_n\subseteq L^1$ such that $J_n+G+2^{-n+1}B\in\Cal G$
+for every
+$G\in\Cal V$.   Note that $(x+G+2^{-n+1}B)\cap D$ must be non-empty
+whenever $n\in\Bbb N$, $x\in J_n$, $G\in\Cal V$ and $D\in\Cal G$.
+\Prf\Quer\ Otherwise,
+
+\Centerline{$(J_n\setminus\{x\})+G'+2^{-n+1}B
+\supseteq(J_n+(G\cap G')+2^{-n+1}B)\cap D$}
+
+\noindent belongs to $\Cal G$ for every $G'\in\Cal V$, and $J_n$ was not
+minimal.\ \Bang\Qed
+
+\medskip
+
+\qquad\grheadd\ For any $n\in\Bbb N$ and $u\in J_n$ there is a
+$v\in J_{n+1}$ such that $\|u-v\|_1\le 2^{-n+1}+2^{-n}$.   \Prf\Quer\
+Otherwise, by (a-i-$\beta$) above, we can
+choose for each $v\in J_{n+1}$ an $f_v\in(L^1)^*$ such that
+$\|f_v\|=1$ and
+$f_v(v-u)=\|v-u\|=2^{-n+1}+2^{-n}+\delta_v$ where $\delta_v>0$;  set
+
+\Centerline{$G
+=\{w:|f_v(w)|<\bover12\delta_v$ for every $v\in J_{n+1}\}\in\Cal V$.}
+
+\noindent Then $u+G+2^{-n+1}B$ does not meet $J_{n+1}+G+2^{-n}B$,
+contradicting ($\gamma$) here.\ \Bang\Qed
+
+\medskip
+
+\qquad\grheade\ Because $\bigcup_{n\in\Bbb N}J_n$ is countable, therefore
+well-orderable, we can define inductively a sequence $\sequencen{u_n}$ such
+that $u_n\in J_n$ and $\|u_n-u_{n+1}\|\le 2^{-n+1}+2^{-n}$ for every $n$.
+Now $\sequencen{u_n}$ is Cauchy, so has a limit $u$ in $L^1$.
+If $G\in\Cal V$ there is an $n\in\Bbb N$ such that
+$u+G\supseteq u_n+\bover12G+2^{-n}B$, so $u+G$ meets every member of
+$\Cal G$;  thus $u$ is a weak cluster point of $\Cal G$ and of $\Cal F$.
+As $\Cal F$ is arbitrary, $A$ is relatively weakly compact.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $U$ is an arbitrary $L$-space and
+$A\subseteq U$ is a uniformly integrable set.   Then we can choose a
+sequence $\sequencen{e_n}$ in $U^+$ such that
+$\|(|u|-e_n)^+\|\le 2^{-n}$ for every $n\in\Bbb N$ and $u\in A$.   Set
+$e=\sum_{n=0}^{\infty}\Bover1{1+2^n\|e_n\|}e_n$ in $U$, and let $V$ be the
+band in $U$ generated by $e$.   Then $A\subseteq V$, and of course $A$ is
+uniformly integrable in $V$.   By 561Hb, we have a
+totally finite measure algebra $(\frak A,\bar\mu)$ and a normed Riesz space
+isomorphism $T:V\to L^1(\frak A,\bar\mu)$;   now $T[A]$ is uniformly
+integrable in $L^1(\frak A,\bar\mu)$, therefore relatively weakly
+compact, by (i).   But this means that $A$ is relatively weakly compact in
+$V$;  as the embedding $V\embedsinto U$ is weakly continuous, $A$ is
+relatively weakly compact in $U$.
+
+This completes the proof.
+}%end of proof of 566Q
+
+\vleader{48pt}{566R}{Automorphisms of measurable algebras:
+Theorem} [AC($\omega$)] Let $\frak A$ be a measurable algebra.
+
+(a) Every automorphism of $\frak A$ has a separator.
+
+(b) Every $\pi\in\Aut\frak A$ is a product of at most three exchanging
+involutions belonging to the full subgroup of $\Aut\frak A$ generated by
+$\pi$.
+
+\proof{{\bf (a)}  (Cf.\ 382Eb.)   Take $\pi\in\Aut\frak A$.
+Let $\bar\mu$ be such that $(\frak A,\bar\mu)$ is a totally finite
+measure algebra.   For $a\in\Bbb N$ set $\psi(a)=\sup_{n\in\Bbb Z}\pi^na$,
+so that $\pi(\psi(a))=\psi(a)$.   Note that if $a\Bcap\psi(b)=0$ then
+$\psi(a)\Bcap\psi(b)=0$.   Set
+$A=\{a:a\in\frak A$, $a\Bcap\pi a=0\}$ and choose a sequence
+$\sequencen{a_n}$ in $A$ such that
+
+\Centerline{$\sup_{n\in\Bbb N}\bar\mu(\psi(a_n))
+=\sup_{a\in A}\bar\mu(\psi(a))$.}
+
+\noindent Define $\sequencen{b_n}$, $\sequencen{c_n}$ by saying that
+
+\Centerline{$c_0=0$,
+\quad$b_n=a_n\setminus\psi(c_n)$,
+\quad$c_{n+1}=b_n\Bcup c_n$}
+
+\noindent for each $n$.   Inducing on $n$ we see that $b_n$ and $c_n$
+belong to $A$ and that $\psi(c_{n+1})\Bsupseteq\psi(a_n)$ for every $n$.
+Set $c=\sup_{n\in\Bbb N}c_n$;  then $c\in A$ and
+$\psi(c)\Bsupseteq\psi(a_n)$ for every $n$.
+
+Now $c$ is a separator for $\pi$.   \Prf\Quer\ Otherwise, there is a
+non-zero $d\Bsubseteq 1\Bsetminus\psi(c)$ such that $d\Bcap\pi d=0$
+(381Ei).   In this case $d\Bcup c\in A$ and
+
+\Centerline{$\bar\mu(\psi(d\Bcup c))>\bar\mu(\psi(c))
+=\sup_{n\in\Bbb N}\bar\mu(\psi(a_n))=\sup_{a\in A}\bar\mu(\psi(a))$,}
+
+\noindent which is impossible.\ \Bang\Qed
+
+\medskip
+
+{\bf (b)} We can now work through the proofs of 382A-382M to confirm that
+there is no essential use of anything beyond countable choice there, so
+long as we suppose that we are working with measurable algebras.
+(There is an inductive construction in the proof of 382J.   To do this with
+AC($\omega$) rather than DC, we need to check that every element of the
+construction can be made determinate following an initial countable set of
+choices;  in the case there, we need to
+check that the existence assertions of 382D
+and 382I can be represented as functions, as in
+566Xh and 566Xj.) %566Xh 566Xi 566Xj
+Since the proof of 382K speaks of the Stone representation
+theorem, there seems to be a difficulty here, unless we take the
+alternative route suggested in 382Yb.
+But note that while the general Stone theorem
+has a strength little short of full AC, the representation of a
+{\it countable} Boolean algebra $\frak B$
+as the algebra of open-and-closed subsets
+of a compact Hausdorff Baire space can be done in ZF alone (561F).
+In part (f) of the proof of 382K, therefore,
+take $\frak B$ to be a countable subalgebra of $\frak A$ such that
+
+\inset{$e_n$, $u'_n$, $u''_n$, $v'_l$, $v''_l$, $d_{lj}$, $d'_{lj}$,
+$\supp(\pi\phi)^k$, $\supp(\pi\phi_1)^k\in\frak B$
+whenever $n\in\Bbb N$ and $j$, $k$, $l\ge 1$,
+
+$c_0$, $c_1$, $\supp\phi_2\in\frak B$,
+
+$\frak B$ is closed under the functions $\pi$, $\phi_1$, $\phi_2$, $\phi$
+and $\tilde\pi_n$ for $n\in\Bbb N$,}
+
+\noindent and let $Z$ be the Stone space of $\frak B$.   Now we can perform
+the arguments of the rest of the proof in $Z$ to show that
+$c_0=\inf_{n\ge 1}\supp(\pi\phi)^n$ is zero, as required.
+}%end of proof of 566R
+
+\cmmnt{\leader{566S}{Volume 4} In Volume 4, naturally,
+a rather larger proportion of the
+ideas become inaccessible without strong forms of the axiom of choice.
+Since we are missing the most useful representation theorems, many
+results have to be abandoned altogether.   More subtly, we seem to lose the
+result that Radon measures are localizable\cmmnt{ (416B)}.
+Nevertheless, a good deal can still be done\cmmnt{, if
+we follow the principles
+set out in 566Ae-566Af}.   Most notably, we have a workable theory of Haar
+measure on completely regular locally compact
+topological groups\cmmnt{, because the Riesz representation theorems of
+\S436 are still available, and we can use 561G instead of 441C}.
+I should remark, however, that in the absence of Tychonoff's theorem we may
+have fewer compact groups than we expect.
+And the theory of dual groups in \S445 depends heavily on AC.
+
+The descriptive set theory of Chapter 42 is hardly touched, and
+enough of the rest of the volume survives to make it worth
+checking any point of particular interest.   Most of Chapter 46 depends
+heavily on the Hahn-Banach theorem and therefore becomes limited to
+cases in which we have a good grasp of dual spaces\cmmnt{, as in 561Xh}.
+There are some difficulties in the geometric measure theory of arbitrary
+metric spaces in \S471, but the rest of the chapter seems to stand up.
+The abstract theory of
+gauge integrals in \S482 is expressed in forms which need DC at least, but
+I think that the basic facts about the Henstock
+integral\cmmnt{ (\S483)} are
+unaffected.   There are some interesting challenges in Chapter 49, but
+there the eclectic nature of the arguments
+means that we cannot expect much of the theory to keep its shape.
+}%end of comment
+
+\leader{566T}{}\cmmnt{ I give one result which may not be obvious and
+helps to keep things in order.
+
+\medskip
+
+\noindent}{\bf Proposition} [AC($\omega$)] Let $I$ be any set, and $X$ a
+separable metrizable space.
+Then the Baire $\sigma$-algebra $\CalBa(X^I)$ of
+$X^I$ is equal to the $\sigma$-algebra $\Tensorhat_I\Cal B(X)$ generated by
+sets of the form $\{x:x(i)\in E\}$ for $i\in I$ and Borel sets
+$E\subseteq X$.
+
+\proof{{\bf (a)} Every open set in $X$ is a cozero set, so $\Cal B(X)=\CalBa(X)$
+and $\{x:x(i)\in E\}\in\CalBa(X^I)$ whenever $i\in I$ and $E\in\Cal B(X)$;
+accordingly $\Tensorhat_I\Cal B(X)\subseteq\CalBa(X^I)$.
+
+\medskip
+
+{\bf (b)} Fix a sequence $\sequencen{U_n}$ running
+over a base for the topology of $X$.   For
+$\sigma\in S=\bigcup_{J\in[I]^{<\omega}}\Bbb N^J$ set
+
+\Centerline{$C_{\sigma}
+=\{x:x\in X$, $x(i)\in U_{\sigma(i)}$ for every $i\in\dom\sigma\}
+\in\Tensorhat_I\Cal B(X)$.}
+
+\noindent Then $\{C_{\sigma}:\sigma\in S\}$ is a base for the topology of
+$X^I$.   If $W\subseteq X^I$ is a regular open set, there is a countable
+set $R\subseteq S$ such that $W=\bigcup_{\sigma\in R}C_{\sigma}$.
+\Prf\ Let $R^*$ be the set of those $\sigma\in S$ such that
+$C_{\sigma}\subseteq W$, and $R$ the set of minimal members of $R^*$
+(ordering $S$ by extension of functions).   Then every member of $R^*$
+extends some member of $R$, so
+
+\Centerline{$\bigcup_{\sigma\in R}C_{\sigma}
+=\bigcup_{\sigma\in R^*}C_{\sigma}=W$.}
+
+\noindent For $n\in\Bbb N$ set
+$R_n=\{\sigma:\sigma\in R$, $\#(\sigma)=n$, $\sigma(i)<n$ for every
+$i\in\dom\sigma\}$.
+
+\Quer\ Suppose, if possible, that $n\in\Bbb N$ and $R_n$ is infinite.
+Then there is a sequence $\sequence{k}{\sigma_k}$ of distinct elements of
+$R_n$;  set $J_k=\dom\sigma_k$ for each $k$.   Let $M\subseteq\Bbb N$ be an
+infinite set such that $\family{k}{M}{J_k}$ is a $\Delta$-system with root
+$J$ say.   Then there is a $\sigma\in n^J$ such that
+$M'=\{k:k\in M$, $\sigma_k\restr J=\sigma\}$ is infinite.
+
+In this case, however,
+
+\Centerline{$C_{\sigma}
+\subseteq\interior\overline{\bigcupop_{k\in M'}C_{\sigma_k}}
+\subseteq\interior\overline{W}=W$}
+
+\noindent and $\sigma\in R^*$, so that $\sigma_k\notin R$ for $k\in M'$;
+which is impossible.\ \Bang
+
+Thus every $R_n$ is countable and $R=\bigcup_{n\in\Bbb N}R_n$ is
+countable.\  \Qed
+
+\medskip
+
+{\bf (c)} This shows that every regular open subset of $X^I$ is a countable
+union of open cylinder sets and belongs to
+$\Tensorhat_I\Cal B(X)$.   Consequently every cozero set belongs to
+$\Tensorhat_I\Cal B(X)$.   \Prf\ If $f:X^I\to\Bbb R$ is continuous, then
+for each rational $q>0$ set $W_q=\interior\{x:|f(x)|\ge q\}$.   Then
+$W_q$ is a regular open set so belongs to
+$\Tensorhat_I\Cal B(X)$.   But now
+$\{x:f(x)\ne 0\}=\bigcup_{q\in\Bbb Q,q>0}W_q$ is the union of countably
+many sets in $\Tensorhat_I\Cal B(X)$ and itself belongs to
+$\Tensorhat_I\Cal B(X)$.\ \Qed
+
+So $\Tensorhat_I\Cal B(X)\supseteq\CalBa(X^I)$ and the two are equal.
+}%end of proof of 566T
+
+\cmmnt{
+\leader{566U}{Dependent choice} If we allow ourselves to use the stronger
+principle DC rather than AC($\omega$) alone, we get some useful
+simplifications.   The difficulties with the principle of exhaustion in
+\S215 and 566D above
+disappear, and there is no longer any obstacle to the
+construction of product measures in 254F, provided only that we know we
+have a non-empty product space.   So a typical theorem on product measures
+will now begin `let $\familyiI{(X_i,\Sigma_i,\mu_i)}$ be a family of
+probability spaces such that $X=\prod_{i\in I}X_i$ is non-empty'.   Later,
+we now have Baire's theorem (both for complete metric spaces and for
+locally compact Hausdorff spaces) and Urysohn's Lemma (so we can drop the
+formulation `completely regular locally compact topological group').
+The most substantial gap in Volume 4
+which is now filled seems to be in the abstract
+theory of gauge integrals in \S482.
+But I cannot point to a result which is essential to the structure of
+this treatise and can be proved in ZF + DC but not in ZF + AC($\omega$).
+}%end of comment
+
+\exercises{\leader{566X}{Basic exercises (a)}
+%\spheader 566Xa
+[AC($\omega$)] Let $(X,\rho)$ be a metric space.
+(i) Show that $X$
+is compact iff it is sequentially compact iff it is countably compact
+iff it is complete and totally bounded.  (ii) Show that if $X$ is separable
+then every subspace of $X$ is separable.
+
+\spheader 566Xb [AC($\omega$)] Show that there is a surjection from
+$\Bbb R$ onto its Borel $\sigma$-algebra,
+so that there must be a non-Borel subset of $\Bbb R$.
+%566C
+
+\spheader 566Xc\dvAnew{2014}(i) (Cf.\ 313K)
+Let $\frak A$ be a Boolean algebra, and
+$D\subseteq\frak A$ an order-dense set.   Show that
+$a=\sup\{d:d\in D$, $d\Bsubseteq a\}$ for every $a\in\frak A$.
+(ii) (Cf.\ 322Eb)
+Let $(\frak A,\bar\mu)$ be a semi-finite measure algebra.   Show that
+$a=\sup\{b:b\Bsubseteq a$, $\bar\mu b<\infty\}$ for every $a\in\frak A$.
+%566M
+
+\spheader 566Xd
+Let us say that a Boolean algebra $\frak A$ has the
+{\bf countable sup property} if for every $A\subseteq\frak A$ there is a
+countable $B\subseteq A$ with the same upper bounds as $A$.
+(i) Show that a Dedekind $\sigma$-complete Boolean
+algebra with the countable sup property is Dedekind complete.
+(ii) Show that a countably additive functional on a
+Boolean algebra with the countable sup property is completely additive.
+%566M
+
+\spheader 566Xe [AC($\omega$)] Show that if there is a
+translation-invariant lifting for Lebesgue measure then there is a subset
+of $\Bbb R$ which is not Lebesgue measurable.   \Hint{345F.}
+%345F
+
+\spheader 566Xf [AC($\omega$)] Show that if $1<p<\infty$ and
+$(\frak A,\bar\mu)$ is a
+measure algebra, the unit ball of $L^p(\frak A,\bar\mu)$ (\S366) is weakly
+compact.   \Hint{part (b) of the proof of 566Q.}
+%566Q
+
+\spheader 566Xg [AC($\omega$)] (i) Let $\frak A$ be a measurable algebra.
+Show that the
+unit ball of $L^{\infty}=L^{\infty}(\frak A)$ is compact for
+$\frak T_s(L^{\infty},(L^{\infty})^{\times})$ (definition: 3A5Ea).
+(ii) Let $U$ be an $L$-space with a weak order unit.   Show
+that the unit ball of $U^*$ is weak*-compact.   \Hint{561Hb.}
+%566Q
+
+\spheader 566Xh Let $\frak A$ be a Dedekind $\sigma$-complete Boolean
+algebra.   Show that there is a function
+$f:\Aut\frak A\times\frak A\to\frak A$ such that if $\pi\in\Aut\frak A$ and
+$a$ is a separator for $\pi$ then $a\Bcap f(\pi,a)=0$ and
+$f(\pi,a)\Bcup\pi f(\pi,a)\Bcup\pi^2f(\pi,a)$ is the support of $\pi$.
+\Hint{382D.}
+%566R
+
+\spheader 566Xi Let $\frak A$ be a Dedekind complete Boolean
+algebra and $G$ a well-orderable subgroup of $\Aut\frak A$.
+Let $G^*$ be the full subgroup of $\Aut\frak A$ generated by $G$.
+Show that there is a function
+$f:G^*\times G\to\frak A$ such that $\family{\phi}{G}{f(\pi,\phi)}$ is a
+partition of unity for each $\pi\in G^*$ and $\pi a=\phi a$ whenever
+$\pi\in G^*$, $\phi\in G$ and $a\Bsubseteq f(\pi,\phi)$.   \Hint{381I.}
+%566R
+
+\spheader 566Xj [AC($\omega$)]
+Let $\frak A$ be a Dedekind complete Boolean algebra and
+$G$ a countable subgroup of $\Aut\frak A$ such that every
+member of $G$ has a separator.   Let $G^*$ be the full subgroup
+of $\Aut\frak A$ generated by $G$.    Show that there is a
+function
+$g:G^*\to\frak A$ such that $g(\pi)$ is a separator for $\pi$ for every
+$\pi\in G^*$.   \Hint{566Xi, 382Id.}
+%566R
+
+\spheader 566Xk [AC($\omega$)] Let $(X,\frak T)$ be a completely regular
+locally compact Hausdorff space, and $f:C_k(X)\to\Bbb R$ a positive
+linear functional.   Show that
+there is a unique Radon measure $\mu$ on $X$ such that
+$f(u)=\int u\,d\mu$ for every $u\in C_k(X)$.
+%436J
+
+\spheader 566Xl [AC($\omega$)]
+Say that a set $X$ is {\bf measure-free} if whenever $\mu$
+is a probability measure with domain $\Cal PX$ there is an $x\in X$ such
+that $\mu\{x\}>0$.   (i) Show that
+the following are equiveridical:
+($\alpha$) $\Bbb R$ is not measure-free;
+($\beta$) there is a semi-finite measure space $(X,\Cal PX,\mu)$ which
+is not purely atomic;
+($\gamma$) there is a measure $\mu$ on $[0,1]$ extending Lebesgue
+measure and measuring every subset of $[0,1]$.
+(ii) Prove 438B for point-finite families $\familyiI{E_i}$ such that
+the index set $I$ is measure-free.
+%438B
+
+\leader{566Y}{Further exercises (a)}
+%\spheader 566Ya
+[AC($\omega$)] Show that if $U$ is an $L$-space, and
+$\sequencen{u_n}$ is a bounded sequence in $U$, then there are a
+subsequence $\sequencen{v_n}$ of $\sequencen{u_n}$ and a $w\in U$ such that
+$\sequencen{\bover1{n+1}\sum_{i=0}^nw_i}$ is order*-convergent to $w$ for
+every subsequence $\sequencen{w_n}$ of $\sequencen{v_n}$.   \Hint{in the
+proof of 276H, show that we can find a countably-generated filter to
+replace the ultrafilter $\Cal F$.}
+%276H
+
+\spheader 566Yb [AC($\omega$)] Let
+$X$ be a completely regular compact Hausdorff topological group and $\mu$ a
+left Haar measure on $X$.   Show that if $w\in L^2(\mu)$ then
+$u\mapsto u*w:L^2(\mu)\to C(X)$ is a
+compact linear operator.   \Hint{444V.}
+%444
+
+\spheader 566Yc [AC($\omega$)]
+Let $\familyiI{(X_i,\sequencen{U_{in}})}$ be a family such
+that $X_i$ is a separable metrizable space and $\sequencen{U_{in}}$ is a
+base for the topology of $X_i$ for each $i\in I$.   Show that
+$\CalBa(\prod_{i\in I}X_i)=\Tensorhat_{i\in I}\Cal B(X_i)$.
+%566S
+
+\spheader 566Yd
+[DC] Let $U$ be an inner product space and $K\subseteq U$
+a convex weakly compact set.   Show that $K$ has an extreme point.
+}%end of exercises
+
+\leader{566Z}{Problem} Is it relatively consistent with ZF + AC($\omega$)
+to suppose that there is a non-zero atomless rigid measurable algebra?
+
+\endnotes{
+\Notesheader{566} In this section I have taken a lightning tour through the
+material of Volumes 1 to 4, pausing over a rather odd selection of results,
+mostly chosen to exhibit the alternative arguments which are available.
+In the first place, I am trying to suggest something of the quality of the
+world of measure theory, and of analysis in general, under this particular
+set of rules.   Perhaps I should say that my real objective is the next
+section, with DC rather than AC($\omega$), because DC is believed to be
+compatible with the axiom of determinacy, and ZF + DC + AD is not a poor
+relation of ZFC, as ZF + AC($\omega$) sometimes seems to be, but a
+potential rival.
+
+I have a second reason for taking all this trouble,
+which is a variation on one of the reasons
+for `generalization' as found in
+twentieth-century pure mathematics.   When we `generalize' an argument,
+moving (for example) from metric spaces to topological spaces, or from
+Lebesgue measure to abstract measures, we are usually stimulated by some
+particular question which demands the new framework.   But the process
+frequently has a lasting value which is quite independent of its
+motivation.
+It forces us to re-examine the nature of the proofs we are using,
+discarding or adapting those steps which depend on the original context,
+and isolating those which belong in some other class of ideas.   In the
+same way, renouncing the use of AC forces us to look more closely at
+critical points, and decide which of them correspond to some deeper
+principle.
+
+Something I have not attempted to do is to look for models in which my
+favourite theorems are actually false.
+An interesting class of problems is concerned with
+`exact engineering', that is, finding combinatorial propositions which will
+be equivalent, in ZF, to given results which are not provable in ZF.   For
+instance, Baire's theorem for complete metric spaces is actually equivalent
+to DC ({\smc Blair 77}), while Baire's theorem for compact Hausdorff spaces
+may be weaker ({\smc Fossy \& Morillon 98}).   I am not presenting any such
+results here.   However, if we take Maharam's theorem as an example of a
+central result of measure theory with ZFC which is surely unprovable
+without a strong form of AC, we can ask just how false it can be;  and I
+offer 566Z as a sample target.
+}%end of notes
+
+\discrpage
+

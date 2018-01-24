@@ -1,0 +1,1071 @@
+\frfilename{mt122.tex}
+\versiondate{4.1.04}
+\copyrightdate{1994}
+
+\def\chaptername{Integration}
+\def\sectionname{Definition of the integral}
+
+\newsection{122}
+
+I set out the definition of ordinary integration for real-valued
+functions defined on an arbitrary measure space, with its most basic
+properties.
+
+\leader{122A}{Definitions}  Let $(X,\Sigma,\mu)$ be a measure space.
+
+\header{122Aa}{\bf (a)} For any set $A\subseteq X$, I write $\chi A$
+for
+the {\bf characteristic function} of $A$, the function
+from $X$ to $\{0,1\}$ given by setting $\chi A(x)=1$ if $x\in A$, $0$
+if
+$x\in X\setminus A$.   \cmmnt{(Of course this notation depends on it
+being understood which is the `universal' set $X$ under consideration;
+perhaps I should call it the `characteristic function of $A$ as a
+subset of $X$'.)}
+\cmmnt{Observe that} $\chi A$ is $\Sigma$-measurable\cmmnt{, in
+the
+sense of 121C above,} iff $A\in\Sigma$\cmmnt{ (because
+$A=\{x:\chi A(x)>0\}$)}.
+
+\header{122Ab}{\bf (b)} Now a {\bf simple} function on $X$ is a
+function
+of the form
+$\sum_{i=0}^n a_i\chi E_i$, where $E_0,\ldots,E_n$ are measurable
+sets of finite measure and $a_0,\ldots, a_n$ belong to
+$\Bbb R$.   \cmmnt{{\bf Warning!} Some authors allow arbitrary sets
+$E_i$, so that a simple function on $X$ is any function taking only
+finitely many values.}
+
+\leader{122B}{Lemma} Let $(X,\Sigma,\mu)$ be a measure space.
+
+(a) Every simple function on $X$ is measurable.
+
+(b) If $f$, $g:X\to\Bbb R$ are simple functions, so is $f+g$.
+
+(c) If $f:X\to \Bbb R$ is a simple function and $c\in\Bbb R$, then
+$cf:X\to\Bbb R$ is a simple function.
+
+(d) The constant zero function is simple.
+
+\proof{ (a) comes from the facts that $\chi E$ is
+measurable for measurable $E$, and that sums and scalar multiples of
+measurable functions are measurable (121Eb-121Ec).  (b)-(d) are
+trivial.
+}%end of proof of 122B
+
+\vleader{42pt}{122C}{Lemma} Let $(X,\Sigma,\mu)$ be a measure space.
+
+(a) If $E_0,\ldots,E_n$ are measurable sets of finite measure,
+there are disjoint measurable sets $G_0,\ldots,G_m$ of finite measure
+such that each $E_i$ is expressible as a union of some of the $G_j$.
+
+(b) If $f:X\to\Bbb R$ is a simple function, it is expressible in the
+form $\sum_{j=0}^mb_j\chi G_j$ where $G_0,\ldots,G_m$ are disjoint
+measurable sets of finite measure.
+
+(c) If $E_0,\ldots,E_n$ are measurable sets of finite measure, and
+$a_0,\ldots,a_n\in\Bbb R$ are such that $\sum_{i=0}^na_i\chi E_i(x)\ge
+0$ for every $x\in X$, then $\sum_{i=0}^na_i\mu E_i\ge 0$.
+
+\proof{{\bf (a)} Set $m=2^{n+1}-2$, and enumerate the
+non-empty subsets of $\{0,\ldots,n\}$ as $I_0,\ldots,I_m$.   For each
+$j\le m$, set
+
+\Centerline{$G_j
+=\bigcap_{i\in I_j}E_i\setminus\bigcup_{i\le n,i\notin I_j}E_i$.}
+
+\noindent   Then every $G_j$ is a measurable set, being obtained from
+finitely many measurable sets by the operations $\cup$, $\cap$ and
+$\setminus$, and has finite measure, because $I_j\ne\emptyset$ and
+$G_j\subseteq E_i$ if $i\in I_j$.   Moreover, the $G_j$ are disjoint,
+for if $i\in I_j\setminus I_k$ then $G_j\subseteq E_i$ and $G_k\cap
+E_i=\emptyset$.   Finally, if $k\le n$ and $x\in E_k$, there is a
+$j\le
+m$ such that $I_j=\{i:i\le n,\,x\in E_i\}$, and in this case $x\in
+G_j\subseteq E_k$;  thus  $E_k$ is the union of those $G_j$ which it
+includes.
+
+\medskip
+
+{\bf (b)} Express $f$ as $\sum_{i=0}^na_i\chi E_i$ where
+$E_0,\ldots,E_n$ are measurable sets of finite measure and
+$a_0,\ldots,a_n$ are real numbers.   Let $G_0,\ldots,G_m$ be disjoint
+measurable sets of finite measure such that every $E_i$ is expressible
+as a union of appropriate $G_j$.   Set $c_{ij}=1$ if $G_j\subseteq
+E_i$,
+$0$ otherwise, so that, because the $G_j$ are disjoint, $\chi
+E_i=\sum_{j=0}^mc_{ij}\chi G_j$ for each $i$.      Then
+
+\Centerline{$f=\sum_{i=0}^na_i\chi E_i
+=\sum_{i=0}^n\sum_{j=0}^ma_ic_{ij}\chi G_j
+=\sum_{j=0}^mb_j\chi G_j$,}
+
+\noindent setting $b_j=\sum_{i=0}^na_ic_{ij}$ for each $j\le m$.
+
+\medskip
+
+{\bf (c)} Set $f=\sum_{i=0}^na_i\chi E_i$, and take $G_j$, $c_{ij}$,
+$b_j$ as in  (b).   Then $b_j\mu G_j\ge 0$ for every $j$.   \Prf\ If
+$G_j=\emptyset$, this is trivial.  Otherwise, let $x\in G_j$;  then
+
+\Centerline{$0\le f(x)=\sum_{i=0}^nb_i\chi G_i(x)=b_j\chi
+G_j(x)=b_j$,}
+
+\noindent so again $b_j\mu G_j\ge 0$.\ \Qed\    Next, because the
+$G_j$
+are disjoint,
+
+\Centerline{$\mu E_i=\sum_{j=0}^mc_{ij}\mu G_j$}
+
+\noindent for each $i$, so
+
+\Centerline{$\sum_{i=0}^na_i\mu E_i
+=\sum_{i=0}^n\sum_{j=0}^ma_ic_{ij}\mu G_j
+=\sum_{j=0}^mb_j\mu G_j
+\ge 0$,}
+
+\noindent as required.
+}%end of proof of 122C
+
+\leader{122D}{Corollary} Let $(X,\Sigma,\mu)$ be a measure space.   If
+
+\Centerline{$\sum_{i=0}^m a_i\chi E_i
+=\sum_{j=0}^n b_j\chi F_j$,}
+
+\noindent where all the $E_i$ and $F_j$ are
+measurable sets of finite measure and the $ a_i$, $ b_j$ are real
+numbers, then
+
+\Centerline{$\sum_{i=0}^m a_i\mu E_i=\sum_{j=0}^n b_j\mu F_j$.}
+
+\proof{ Apply 122Cc to
+$\sum_{i=0}^m a_i\chi E_i+\sum_{j=0}^n(-b_j)\chi F_j$ to see that
+$\sum_{i=0}^ma_i\mu E_i-\sum_{j=0}^nb_j\mu F_j\ge 0$;   now reverse
+the
+roles of the two sums to get the opposite inequality.
+}%end of proof of 122D
+
+
+\leader{122E}{Definition} Let $(X,\Sigma,\mu)$ be a measure space.
+Then we
+may define the {\bf integral} $\int f$ of $f$, for simple functions
+$f:X\to\Bbb R$, by saying that
+$\int f=\sum_{i=0}^m a_i\mu E_i$ whenever $f=\sum_{i=0}^m a_i\chi
+E_i$ and every $E_i$ is a measurable set of finite measure\cmmnt{;
+122D promises us that it won't matter which representation of $f$ we pick
+on for the calculation}.
+
+\leader{122F}{Proposition} Let $(X,\Sigma,\mu)$ be a measure space.
+
+(a) If $f$, $g:X\to\Bbb R$ are simple functions, then $f+g$ is a
+simple
+function and $\int f+g=\int f+\int g$.
+
+(b) If $f$ is a simple function and $c\in\Bbb R$, then $cf$ is a
+simple
+function and $\int cf=c\int f$.
+
+(c)  If $f$, $g$ are simple functions and $f(x)\le g(x)$ for every
+$x\in
+X$, then $\int f\le \int g$.
+
+\proof{ (a) and (b) are immediate from the formula given
+for $\int f$ in 122E.   As for (c), observe that $g-f$ is a
+non-negative
+simple function, so that $\int g-f\ge 0$, by 122Cc;  but this means
+that
+$\int g-\int f\ge 0$.
+}%end of proof of 122F
+
+
+\vleader{72pt}{122G}{Lemma} Let $(X,\Sigma,\mu)$ be a measure space.
+If $\langle f_n\rangle_{n\in\Bbb N}$ is a sequence of simple functions
+which is non-decreasing (in the sense that $f_n(x)\le f_{n+1}(x)$ for
+every $n\in\Bbb N$, $x\in X$) and $f$ is a simple function such that
+$f(x)\le\sup_{n\in\Bbb N}f_n(x)$ for almost every $x\in X$ (allowing
+$\sup_{n\in\Bbb N}f_n(x)=\infty$ in this formula), then
+$\int f\le\sup_{n\in\Bbb N}\int f_n$.
+
+\proof{  Note that $f-f_0$ is a simple function, so
+$H=\{x:(f-f_0)(x)\ne 0\}$ is a finite union of sets of finite measure,
+and $\mu H<\infty$;  also $f-f_0$ is bounded, so there is an $M\ge 0$
+such that $(f-f_0)(x)\le M$ for every $x\in X$.
+
+Let $\epsilon>0$.   For each $n\in\Bbb N$, set
+$H_n=\{x:(f-f_n)(x)\ge\epsilon\}$.   Then each $H_n$ is measurable (by
+121E), and $\langle H_n\rangle_{n\in\Bbb N}$ is a non-increasing
+sequence of sets with intersection
+
+\Centerline{$\bigcap_{n\in\Bbb N}H_n
+=\{x:f(x)\ge\epsilon+\sup_{n\in\Bbb N}f_n(x)\}
+\subseteq\{x:f(x)>\sup_{n\in\Bbb N}f_n(x)\}$.}
+
+\noindent Because $f(x)\le\sup_{n\in\Bbb N}f_n(x)$ for almost every
+$x$,
+$\{x:f(x)>\sup_{n\in\Bbb N}f_n(x)\}$ and $\bigcap_{n\in\Bbb N}H_n$ are
+negligible.   Also $\mu H_0<\infty$, because
+$H_0\subseteq H$.
+Consequently
+
+\Centerline{$\lim_{n\to\infty}\mu H_n=\mu(\bigcap_{n\in\Bbb N}H_n)=0$}
+
+\noindent (112Cf).   Let $n$ be so large that $\mu H_n\le\epsilon$.
+
+Consider the simple function $g=f_n+\epsilon\chi H+M\chi H_n$.   Then
+$f\le g$, so
+
+\Centerline{$\int f\le\int g=\int f_n+\epsilon\mu H+M\mu H_n
+\le\int f_n+\epsilon(M+\mu H)$.}
+
+\noindent As $\epsilon$ is arbitrary,
+$\int f\le\sup_{n\in\Bbb N}\int f_n$.
+}%end of proof of 122G
+
+
+\leader{122H}{Definition} Let $(X,\Sigma,\mu)$ be a measure space.
+For the rest of this section, I will write $U$ for the set of
+functions $f$ such that
+
+\quad(i) the domain of $f$ is a conegligible subset of $X$ and
+$f(x)\in\coint{0,\infty}$ for each $x\in\dom f$,
+
+\quad(ii) there is a non-decreasing sequence $\sequencen{f_n}$ of
+non-negative
+simple functions such that $\sup_{n\in\Bbb N}\int f_n<\infty$ and
+$\lim_{n\to\infty}f_n(x)\penalty-100=f(x)$ for almost
+every $x\in X$.
+
+\leader{122I}{Lemma} If $f$ and $\langle f_n\rangle_{n\in\Bbb N}$ are
+as
+in 122H, then
+
+\Centerline{$\sup_{n\in\Bbb N}\int f_n
+=\sup\{\int g:g$ is a simple function and $g\leae f\}$.}
+
+\proof{ Of course
+
+\Centerline{$\sup_{n\in\Bbb N}\int f_n
+\le \sup\{\int g:g$ is a simple function and $g\leae f\}$}
+
+\noindent because $f_n\leae f$  for each $n$.   On the other hand, if
+$g$ is a simple function and $g\leae f$, then
+$g(x)\le\sup_{n\in\Bbb N}f_n(x)$ for almost every $x$, so
+$\int g\le\sup_{n\in\Bbb N}\int f_n$ by 122G.   Thus
+
+\Centerline{$\sup_{n\in\Bbb N}\int f_n
+\ge \sup\{\int g:g$ is a simple function and $g\leae f\}$,}
+
+\noindent as required.
+}%end of proof of 122I
+
+
+\leader{122J}{Lemma} Let $(X,\Sigma,\mu)$ be a measure
+space\cmmnt{, and define $U$ as in 122H}.
+
+(a) If $f$ is a function defined on a conegligible subset of $X$ and
+taking values in $\coint{0,\infty}$, then $f\in U$ iff
+there is a conegligible measurable set $E\subseteq\dom f$ such that
+
+\inset{($\alpha$)
+$f\restr E$ is measurable,
+
+($\beta$) for every $\epsilon>0$,
+$\mu\{x:x\in E,\,f(x)\ge\epsilon\}<\infty$,
+
+($\gamma$)
+$\sup\{\int g:g$ is a simple function, $g\leae f\}<\infty$.}
+
+(b) Suppose that $f\in U$ and that $h$ is a function defined on a
+conegligible subset of $X$ and taking values in $\coint{0,\infty}$.
+Suppose that $h\leae f$ and there is a conegligible
+$F\subseteq X$ such that $h\restr F$ is measurable.   Then $h\in U$.
+
+\proof{{\bf (a)(i)} Suppose that $f\in U$.   Then there is an
+non-decreasing sequence $\langle f_n\rangle_{n\in\Bbb N}$ of
+non-negative
+simple functions such that $f\eae\lim_{n\to\infty}f_n$ and
+$\sup_{n\in\Bbb N}\int f_n=c<\infty$.   The set
+$\{x:f(x)=\lim_{n\to\infty}f_n(x)\}$ is conegligible, so includes a
+measurable conegligible set $E$ say.   Now
+$f\restr E=(\lim_{n\to\infty}f_n)\restr E$ is measurable, by 121Fa
+and 121Eh; thus ($\alpha$) is satisfied.   Next, given $\epsilon>0$,
+set $H_n=\{x:x\in E,\,f_n(x)\ge{1\over 2}\epsilon\}$;  then
+$f_n\ge{1\over 2}\epsilon\chi H_n$, so
+
+\Centerline{$\Bover12\epsilon\mu H_n
+=\int\bover12\epsilon\chi H_n\le\int f_n\le c$,}
+
+\noindent for each $n$.   Now $\langle H_n\rangle_{n\in\Bbb N}$ is
+non-decreasing, so
+
+\Centerline{$\mu(\bigcup_{n\in\Bbb N}H_n)
+=\sup_{n\in\Bbb N}\mu H_n\le 2c/\epsilon$,}
+
+\noindent by 112Ce.   Accordingly
+
+\Centerline{$\mu\{x:x\in E,\,f(x)\ge\epsilon\}
+\le\mu(\bigcup_{n\in\Bbb N}H_n)\le 2c/\epsilon<\infty$.}
+
+\noindent As $\epsilon$ is arbitrary, ($\beta$) is satisfied.
+Finally, ($\gamma$) is satisfied by 122I.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that the conditions ($\alpha$)-($\gamma$)
+are satisfied.   Take an appropriate conegligible $E\in\Sigma$, and
+for
+each $n\in\Bbb N$ define $f_n:X\to\Bbb R$ by setting
+
+$$\eqalign{f_n(x)&=2^{-n}k\text{ if }x\in E,\, 0\le k<4^n,\,
+2^{-n}k\le f(x)<2^{-n}(k+1),\cr
+&=0\text{ if }x\in X\setminus E,\cr
+&=2^n\text{ if }x\in E\text{ and }f(x)\ge 2^n.\cr}$$
+
+\noindent Then $f_n$ is a non-negative simple function, being
+expressible as
+
+\Centerline{$f_n
+=\sum_{k=1}^{4^n}2^{-n}\chi\{x:x\in E,\,f(x)\ge 2^{-n}k\}$;}
+
+\noindent all the sets $\{x:x\in E,\,f(x)\ge 2^{-n}k\}$ being
+measurable
+(because $f\restr E$ is measurable) and of finite measure, by
+($\beta$).
+Also it is easy to see that $\langle f_n\rangle_{n\in\Bbb N}$ is an
+non-decreasing sequence which converges to $f$ at every point of $E$,
+so
+that $f\eae\lim_{n\to\infty}f_n$.   Finally,
+
+\Centerline{$\lim_{n\to\infty}\int f_n
+=\sup_{n\in\Bbb N}\int f_n\le\sup\{\int g:g\le f\text{ is simple}\}
+<\infty$,}
+
+\noindent by ($\gamma$).   So $f\in U$.
+
+\medskip
+
+{\bf (b)} Let $E$ be a set as in (a).   The sets $E$, $F$ and
+$\{x:h(x)\le f(x)\}$ are all conegligible, so there is a conegligible
+measurable set $E'$ included in their intersection.   Now
+$E'\subseteq\dom h$, $h\restr E'$ is measurable,
+
+\Centerline{$\mu\{x:x\in E',\,h(x)\ge\epsilon\}
+\le\mu\{x:x\in E,\,f(x)\ge\epsilon\}<\infty$}
+
+\noindent for
+every $\epsilon>0$, and
+
+\Centerline{$\sup\{\int g:g\text{ is simple},\, g\leae h\}
+\le\sup\{\int g:g\text{ is simple},\,g\leae f\}<\infty$.}
+
+\noindent So $h\in U$.
+}%end of proof of 122J
+
+\leader{122K}{Definition} Let $(X,\Sigma,\mu)$ be a measure
+space\cmmnt{, and define $U$ as in 122H}.   For $f\in U$, set
+
+\Centerline{$\int f
+=\sup\{\int g:g$ is a simple function and $g\leae f\}$.}
+
+\cmmnt{\noindent By 122I, we see that
+$\int f=\lim_{n\to\infty}\int f_n$ whenever $\sequencen{f_n}$ is a
+non-decreasing sequence
+of simple functions converging to $f$ almost everywhere;  in
+particular,
+if $f\in U$ is itself a simple function, then $\int f$, as defined
+here,
+agrees with the original definition of $\int f$ in 122E, since we may
+take $f_n=f$ for every $n$.}
+
+
+
+\leader{122L}{Lemma} Let $(X,\Sigma,\mu)$ be a measure space.
+
+(a) If $f$, $g\in U$ then $f+g\in U$ and $\int f+g=\int f+\int g$.
+
+(b) If $f\in U$ and $c\ge 0$ then $cf\in U$ and $\int cf=c\int f$.
+
+(c) If $f$, $g\in U$ and $f\leae g$ then $\int f\le \int g$.
+
+(d) If $f\in U$ and $g$ is a function with domain a conegligible
+subset
+of $X$, taking values in $\coint{0,\infty}$, and equal to $f$ almost
+everywhere, then $g\in U$ and $\int g=\int f$.
+
+(e) If $f_1$, $g_1$, $f_2$, $g_2\in U$ and $f_1-f_2=g_1-g_2$, then
+$\int
+f_1-\int f_2=\int g_1-\int g_2$.
+
+\proof{{\bf (a)} We know that there are non-decreasing sequences
+$\langle f_n\rangle_{n\in\Bbb N}$, $\langle g_n\rangle_{n\in\Bbb N}$
+of
+non-negative simple functions such that $f\eae\lim_{n\to\infty}f_n$,
+$g\eae\lim_{n\to\infty}g_n$, $\sup_{n\in\Bbb N}\int f_n<\infty$ and
+$\sup_{n\in\Bbb N}\int g_n<\infty$.   Now $\langle
+f_n+g_n\rangle_{n\in\Bbb N}$ is a non-decreasing sequence of simple
+functions converging to $f+g$ a.e., and
+
+\Centerline{$\sup_{n\in\Bbb N}\int f_n+g_n
+=\lim_{n\to\infty}\int f_n+g_n
+=\lim_{n\to\infty}\int f_n+\lim_{n\to\infty}\int g_n=\int f+\int g$.}
+
+\noindent   Accordingly $f+g\in U$, and also, as remarked in 122K,
+
+\Centerline{$\int f+g=\lim_{n\to\infty}\int f_n+g_n=\int f+\int g$.}
+
+\medskip
+
+{\bf (b)} We know that there is a non-decreasing sequence
+$\langle f_n\rangle_{n\in\Bbb N}$ of
+non-negative simple functions such that $f\eae\lim_{n\to\infty}f_n$
+and $\sup_{n\in\Bbb N}\int f_n<\infty$.   Now
+$\langle cf_n\rangle_{n\in\Bbb N}$ is a non-decreasing sequence of
+simple functions converging to $cf$ a.e., and
+
+\Centerline{$\sup_{n\in\Bbb N}\int cf_n
+=\lim_{n\to\infty}\int cf_n=c\lim_{n\to\infty}\int f_n=c\int f$.}
+
+\noindent Accordingly $cf\in U$, and also, as remarked in 122K,
+
+\Centerline{$\int cf=\lim_{n\to\infty}\int cf_n=c\int f$.}
+
+\medskip
+
+{\bf (c)} This is obvious from 122K.
+
+\medskip
+
+{\bf (d)} If $\langle f_n\rangle_{n\in\Bbb N}$ is a non-decreasing
+sequence of simple functions converging to $f$ a.e., then it also
+converges to $g$ a.e.;  so $g\in U$ and
+
+\Centerline{$\int g=\lim_{n\to\infty}\int f_n=\int f$.}
+
+\medskip
+
+{\bf (e)} By (a), $f_1+g_2$ and $f_2+g_1$ both belong to $U$.   Also,
+they are equal at any point at which all four functions are defined,
+which is almost everywhere.   So
+
+\Centerline{$\int f_1+\int g_2=\int f_1+g_2
+=\int f_2+g_1=\int f_2+\int g_1$,}
+
+\noindent using (a) and (d).   Shifting $\int g_2$ and $\int f_2$
+across the equation, we have the result.
+}%end of proof of 122L
+
+
+\leader{122M}{Definition} Let $(X,\Sigma,\mu)$ be a measure space.
+\cmmnt{Define $U$ as in 122H.}   A real-valued function $f$ is {\bf
+integrable}, or {\bf integrable over
+$X$}, or {\bf $\mu$-integrable over $X$}, if it is expressible as
+$f_1-f_2$ with $f_1$, $f_2\in U$, and in this case its {\bf integral}
+is
+
+\Centerline{$\int f=\int f_1-\int f_2$.}
+
+\cmmnt{
+\leader{122N}{Remarks (a)} We see from 122Le that the
+integral
+$\int f$ is uniquely defined  by the
+formula in 122M.   Secondly, if $f\in U$, then $f=f-\tbf{0}$ is
+integrable, and the
+integral here agrees with that defined in 122K.   Finally, if $f$ is a
+simple function, then it can be expressed as $f_1-f_2$ where $f_1$,
+$f_2$ are non-negative simple functions (if $f=\sum_{i=0}^na_i\chi
+E_i$, where each $E_i$ is measurable and of finite measure, set
+
+\Centerline{$f_1=\sum_{i=0}^na_i^+\chi E_i$,
+\quad$f_2=\sum_{i=0}^na_i^-\chi E_i$,}
+
+\noindent writing $a_i^+=\max(a_i,0)$, $a_i^-=\max(-a_i,0)$);  so that
+
+\Centerline{$\int f=\int f_1-\int f_2=$$\sum_{i=0}^na_i\mu E_i$,}
+
+\noindent and the definition of 122M is consistent with the definition
+of 122E.
+
+
+\header{122Nb}{\bf (b)} Alternative notations which I will use for
+$\int
+f$ are $\int_Xf$,
+$\int fd\mu$, $\int f(x)\mu(dx)$, $\int f(x)dx$, $\int_Xf(x)\mu(dx)$,
+etc., according to which aspects of the context seem due for emphasis.
+
+When $\mu$ is Lebesgue measure on $\Bbb R$ or $\BbbR^r$ we say that
+$\int f$ is the {\bf Lebesgue integral} of $f$, and that $f$ is {\bf
+Lebesgue integrable} if this is defined.
+
+\header{122Nc}{\bf (c)} Note that when I say, in 122M, that `$f$ can
+be
+expressed as $f_1-f_2$', I mean
+to interpret $f_1-f_2$ according to the rules set out in 121E, so that
+$\dom f$ must be $\dom(f_1-f_2)=\dom f_1\cap\dom f_2$, and is surely
+conegligible.
+}%end of comment
+
+\leader{122O}{Theorem} Let $(X,\Sigma,\mu)$ be a measure space.
+
+(a) If $f$ and $g$ are integrable over $X$
+then $f+g$ is integrable and $\int f+g=\int f+\int g$.
+
+(b) If $f$ is integrable over $X$ and $c\in\Bbb R$ then $cf$
+is integrable and $\int cf=c\int f$.
+
+(c) If $f$ is integrable over $X$ and $f\ge 0$ a.e.\ then
+$\int f\ge 0$.
+
+(d) If $f$ and $g$ are integrable over $X$ and $f\leae g$
+then $\int f\le\int g$.
+
+\proof{{\bf (a)} Express $f$ as $f_1-f_2$ and $g$ as $g_1-g_2$
+where $f_1$, $f_2$, $g_1$ and $g_2$ belong to $U$, as defined in 122H.
+Then $f+g=(f_1+g_1)-(f_2+g_2)$ is integrable because $U$ is closed
+under addition (122La), and
+
+\Centerline{$\int f+g=\int f_1+g_1-\int f_2+g_2
+=\int f_1+\int g_1-\int f_2-\int g_2=\int f+\int g$.}
+
+\medskip
+
+{\bf (b)} Express $f$ as $f_1-f_2$ where $f_1$, $f_2$ belong to $U$.
+If $c\ge 0$ then $cf=cf_1-cf_2$ is integrable because $U$ is closed
+under multiplication by non-negative scalars (122Lb), and
+
+\Centerline{$\int cf=\int cf_1-\int cf_2=c\int f_1-c\int f_2=c\int
+f$.}
+
+\noindent   If $c=-1$ then $-f=f_2-f_1$ is integrable and
+
+\Centerline{$\int (-f)=\int f_2-\int f_1=-\int f$.}
+
+\noindent    Putting
+these together we get the result for $c<0$.
+
+\medskip
+
+{\bf (c)} Express $f$ as $f_1-f_2$ where $f_1$, $f_2\in U$.   Then
+$f_2\leae f_1$, so $\int f_2\le\int f_1$ (122Lc), and $\int f\ge 0$.
+
+\medskip
+
+{\bf (d)} Apply (c) to $g-f$.
+}%end of proof of 122O
+
+
+\leader{122P}{Theorem} Let $(X,\Sigma,\mu)$ be a measure space and
+$f$ a
+real-valued function defined on a conegligible subset of $X$.   Then
+the following are equiveridical:
+
+\quad(i)  $f$ is integrable;
+
+\quad(ii) $|f|\in U$\cmmnt{, as defined in 122H,} and there is a
+conegligible set $E\subseteq X$ such that $f\restr E$ is measurable;
+
+\quad(iii) there are a $g\in U$ and a
+conegligible set $E\subseteq X$  such that $|f|\leae g$
+and $f\restr E$ is measurable.
+
+\proof{{\bf (i)$\Rightarrow$(iii)} Suppose that $f$ is
+integrable.   Let $f_1$,
+$f_2\in U$ be such that $f=f_1-f_2$.   Then there are conegligible
+sets $E_1$, $E_2$ such that $f_1\restr E_1$ and $f_2\restr
+E_2$ are measurable;  set $E=E_1\cap E_2$, so that $E$ also is a
+conegligible set.   Now $f\restr E=f_1\restr E-f_2\restr E$
+is measurable.   Next, $f_1+f_2\in U$ (122La) and $|f|(x)\le
+f_1(x)+f_2(x)$ for every $x\in\dom f$, so we may take $g=f_1+f_2$.
+
+\medskip
+
+{\bf (iii)$\Rightarrow$(ii)} If $f\restr E$ is measurable, so is
+$|f|\restr E=|f\restr E|$ (121Eg);  so if $g\in U$ and
+$|f|\leae g$, then $|f|\in U$ by 122Jb.
+
+\medskip
+
+{\bf (ii)$\Rightarrow$(i)} Suppose that $f$ satisfies the conditions
+of
+(ii).   Set
+$f^+={1\over 2}(|f|+f)$ and $f^-={1\over 2}(|f|-f)$.    Of course
+$|f|\restr E$, $f^+\restr E$ and $f^-\restr E$ are all measurable.
+Also $0\le f^+(x)\le |f|(x)$ and $0\le f^-(x)\le |f|(x)$ for every
+$x\in\dom f$, while $|f|\in U$ by hypothesis, so $f^+$ and $f^-$
+belong
+to $U$ by 122Jb.  Finally, $f=f^+-f^-$, so $f$ is integrable.
+}%end of proof of 122P
+
+\leader{122Q}{Remark} The condition `there is a conegligible set $E$
+such that $f\restr E$ is measurable' recurs so often that I think it
+worth having a phrase for it;  I will call such functions {\bf
+virtually
+measurable}, or {\bf $\mu$-virtually measurable} if it seems necessary
+to specify the measure.
+
+\leader{122R}{Corollary} Let $(X,\Sigma,\mu)$ be a measure space.
+
+(a) A non-negative real-valued function, defined on a subset of $X$,
+is integrable iff it belongs to $U$\cmmnt{, as defined in 122H}.
+
+(b) If $f$ is integrable over $X$ and $h$ is a real-valued function,
+defined on a conegligible subset of $X$ and equal to $f$ almost
+everywhere, then $h$ is integrable, with $\int h=\int f$.
+
+(c) If $f$ is integrable over $X$, $f\ge 0$ a.e.\ and $\int f\le 0$,
+then $f=0$ a.e.
+
+(d) If $f$ and $g$ are integrable over $X$, $f\leae g$ and
+$\int g\le\int f$, then $f\eae g$.
+
+(e) If $f$ is integrable over $X$, so is $|f|$, and
+$|\int f|\le\int|f|$.
+
+\proof{{\bf (a)} If $f$ is integrable then $f=|f|\in U$, by
+122P(ii).   If $f\in U$ then $f=f-\tbf{0}$ is integrable, by 122M.
+
+\medskip
+
+{\bf (b)} Let $E$, $F$ be conegligible sets such that $f\restr E$ is
+measurable and $h\restr F=f\restr F$;  then $E\cap F$ is conegligible
+and $h\restr(E\cap F)=(f\restr E)\restr F$ is measurable.   Next,
+there
+is a $g\in U$ such that $|f|\leae g$, and of course $|h|\leae g$.
+So $h$ is integrable by 122P(iii).   By 122Od, applied to $f$ and $h$
+and then to $h$ and $f$, $\int h=\int f$.
+
+\medskip
+
+{\bf (c)} \Quer\ Suppose, if possible, otherwise.   Let $E\subseteq X$
+be a conegligible set such that $f\restr E$ is measurable (122P(ii)),
+and $E'\subseteq E\cap\dom f$ a conegligible measurable set.   Then
+$F=\{x:x\in E',\,f(x)>0\}$ must be non-negligible.   Set
+$F_k=\{x:x\in
+E',\,f(x)\ge 2^{-k}\}$ for each $k\in\Bbb N$, so that
+$F=\bigcup_{k\in\Bbb N}F_k$ and there is a $k$ such that $\mu F_k>0$.
+But consider $g=2^{-k}\chi F_k$.   Because $f\ge 0$ a.e.\ and
+$f\ge 2^{-k}$ on $F_k$, $f\geae g$, so that
+
+\Centerline{$ 0<2^{-k}\mu F_k=\int g\le\int f$,}
+
+\noindent by 122Od;  which is impossible.  \Bang
+
+\medskip
+
+{\bf (d)} Apply (c) to $g-f$.
+
+\medskip
+
+{\bf (e)} By (i)$\Rightarrow$(ii) of 122P, $|f|$ is integrable.   Now
+$f^+={1\over 2}(|f|+f)$ and $f^-={1\over 2}(|f|-f)$ are both
+integrable
+and non-negative, so have non-negative integrals, and
+
+\Centerline{$|\int f|=|\int f^+-\int f^-|\le\int f^++\int
+f^-=\int|f|$.}
+}%end of proof of 122R
+
+\exercises{
+\leader{122X}{Basic exercises (a)} Let $(X,\Sigma,\mu)$ be a measure
+space.   (i)
+Show that if $f:X\to\Bbb R$ is simple so is $|f|$, setting
+$|f|(x)=|f(x)|$ for
+$x\in\dom f=X$.  (ii) Show that if $f$, $g:X\to\Bbb R$ are simple
+functions so are $f\vee g$ and $f\wedge g$, as defined in 121Xb.
+%122D
+
+\sqheader 122Xb Let $(X,\Sigma,\mu)$ be a measure space and $f$
+a real-valued function which is integrable over $X$.   Show that for
+every $\epsilon>0$ there is a simple function $g:X\to\Bbb R$ such that
+$\int|f-g|\le\epsilon$.   \Hint{consider non-negative $f$ first.}
+%122O
+
+\spheader 122Xc Let $(X,\Sigma,\mu)$ be a measure space, and
+write $\eusm L^1$ for the set of all real-valued functions which are
+integrable over $X$.   Let $\Phi\subseteq\eusm L^1$ be such that
+
+\inset{(i) $\chi E\in\Phi$ whenever $E\in\Sigma$ and $\mu E<\infty$;
+
+(ii) $f+g\in\Phi$ for all $f$, $g\in\Phi$;
+
+(iii) $cf\in\Phi$ whenever $c\in\Bbb R$, $f\in\Phi$;
+
+(iv) $f\in\Phi$ whenever $f\in\eusm L^1$ is such that there is a
+non-decreasing sequence $\sequencen{f_n}$ in $\Phi$ for which
+$\lim_{n\to\infty}f_n=f$ almost everywhere.}
+
+\noindent Show that $\Phi=\eusm L^1$.
+%122O
+
+\sqheader 122Xd Let $\mu$ be counting measure on $\Bbb N$ (112Bd).
+Show that a function $f:\Bbb N\to\Bbb R$ (that is, a sequence
+$\sequencen{f(n)}$) is $\mu$-integrable iff it is absolutely summable,
+and in this case
+
+\Centerline{$\int fd\mu=\int_{\Bbb N}f(n)\mu(dn)
+=\sum_{n=0}^{\infty}f(n)$.}
+%122O
+
+\sqheader 122Xe Let $(X,\Sigma,\mu)$ be a measure space and $f$, $g$
+two
+virtually measurable real-valued functions defined on subsets of $X$.
+(i) Show that $f+g$, $f\times g$ and $f/g$, defined as in 121E, are
+all
+virtually measurable.   (ii) Show that if $h$ is a Borel
+measurable real-valued function defined on any subset of $\Bbb R$,
+then
+the composition $hf$ is virtually measurable.
+%122Q
+
+\sqheader 122Xf Let $(X,\Sigma,\mu)$ be a measure space and
+$\sequencen{f_n}$ a sequence of virtually measurable real-valued
+functions defined on subsets of $X$.   Show that
+$\lim_{n\to\infty}f_n$,
+$\sup_{n\in\Bbb N}f_n$, $\inf_{n\in\Bbb N}f_n$,
+$\limsup_{n\to\infty}f_n$
+and $\liminf_{n\to\infty}f_n$, defined as in 121F, are virtually
+measurable.
+%122Q
+
+\sqheader 122Xg Let $(X,\Sigma,\mu)$ be a measure space and $f$,
+$g$ real-valued functions which are integrable over $X$.   Show that
+$f\wedge g$ and $f\vee g$, as defined in 121Xb, are integrable.
+%122R
+
+\sqheader 122Xh Let $(X,\Sigma,\mu)$ be a measure space, $f$ a
+real-valued function which is integrable over $X$, and $g$ a bounded
+real-valued virtually measurable function defined on a conegligible
+subset of $X$.    Show that $f\times g$, defined as in 121Ed, is
+integrable.
+%122R
+
+%maybe better in 122Y?
+\spheader 122Xi Let $X$ be a set, $\Sigma$ a $\sigma$-algebra of
+subsets
+of $X$, and $\mu_1$, $\mu_2$ two measures with domain $\Sigma$.   Set
+$\mu E=\mu_1E+\mu_2E$ for $E\in\Sigma$.
+Show that for any
+real-valued function $f$ defined on a subset of $X$,
+$\int fd\mu=\int fd\mu_1+\int fd\mu_2$ in the sense that if one side
+is defined as a real
+number so is the other, and they are then equal.   \Hint{($\alpha$)
+Check that a subset of $X$ is $\mu$-conegligible iff it is
+$\mu_i$-conegligible for
+both $i$.  ($\beta$) Check the result for simple functions $f$.
+($\gamma$) Now consider general non-negative $f$.}
+
+\leader{122Y}{Further exercises (a)} Let $(X,\Sigma,\mu)$ be a
+`complete' measure space, that is, one
+in which all negligible sets are measurable (see, for instance,
+113Xa). Show that if
+$f$ is a virtually measurable real-valued function defined on a subset
+of $X$, then $f$ is measurable.   Use this fact to find appropriate
+simplifications of 122J and 122P for such spaces $(X,\Sigma,\mu)$.
+%122P
+
+\spheader 122Yb Write $\eusm L^1$ for the set of all Lebesgue
+integrable real-valued functions on
+$\Bbb R$.   Let $\Phi\subseteq\eusm L^1$ be such that
+
+\inset{(i) $\chi I\in\Phi$ whenever $I$ is a bounded half-open
+interval
+in $\Bbb R$;
+
+(ii) $f+g\in\Phi$ for all $f$, $g\in\Phi$;
+
+(iii) $cf\in\Phi$ whenever $c\in\Bbb R$, $f\in\Phi$;
+
+(iv) $f\in\Phi$ whenever $f\in\eusm L^1$ is such that there is a
+non-decreasing sequence $\sequencen{f_n}$ in $\Phi$ for which
+$\lim_{n\to\infty}f_n=f$ almost everywhere.}
+
+\noindent Show that $\Phi=\eusm L^1$.   \Hint{show that ($\alpha$)
+$\chi E\in\Phi$ whenever $E$ is expressible as the union of finitely
+many half-open intervals ($\beta$) $\chi E\in\Phi$ whenever $E$ has
+finite measure and is expressible as the union of a sequence of
+half-open
+intervals ($\gamma$) $\chi E\in\Phi$ whenever $E$ is measurable and
+has
+finite measure.}
+%122O, 122Xc
+
+\spheader 122Yc Let $X$ be any set, and let $\mu$ be counting
+measure on $X$.   Let $f:X\to\Bbb R$ be a function;  set
+$f^+(x)=\max(0,f(x))$, $f^-(x)=\max(0,-f(x))$ for $x\in X$.   Show
+that the following are equiveridical:  (i) $\int fd\mu$ exists in $\Bbb R$,
+and is equal to $s$;  (ii) for every $\epsilon>0$ there is a finite
+$K\subseteq X$ such that $|s-\sum_{i\in I}f(i)|\le\epsilon$ whenever
+$I\subseteq X$ is
+a finite set including $K$ (iii) $\sum_{x\in X}f^+(x)$ and
+$\sum_{x\in X}f^-(x)$, defined as in 112Bd, are finite, and
+$s=\sum_{x\in X}f^+(x)-\sum_{x\in X}f^-(x)$.
+%122Xd, 122O
+
+\spheader 122Yd Let $(X,\Sigma,\mu)$ be a measure space.   Let
+us say that a function $g:X\to\Bbb R$ is {\bf quasi-simple} if it is
+expressible as $\sum_{i=0}^{\infty}a_i\chi G_i$, where
+$\sequence{i}{G_i}$ is a partition of $X$ into measurable sets,
+$\sequence{i}{a_i}$ is a sequence in $\Bbb R$, and
+$\sum_{i=0}^{\infty}|a_i|\mu G_i<\infty$, counting $0\cdot\infty$ as
+$0$, so that there can be $G_i$ of infinite measure provided that the
+corresponding $a_i$ are zero.
+
+\quad(i) Show that if $g$ and $h$ are quasi-simple functions so are
+$g+h$, $|g|$ and $cg$, for any $c\in \Bbb R$.   \Hint{for $g+h$ you
+will need 111F(b-ii) or its equivalent.}
+
+\quad(ii) Show from first principles (I mean, without using anything
+later than 122F in this chapter) that if
+$g=\sum_{i=0}^{\infty}a_i\chi G_i$ and
+$h=\sum_{i=0}^{\infty}b_i\chi H_i$ are quasi-simple
+functions, and  $g\leae h$, then
+$\sum_{i=0}^{\infty}a_i\mu G_i\le\sum_{i=0}^{\infty}b_i\mu H_i$.
+
+\quad{(iii)} Hence show that we have a functional $I$ defined by
+saying that $I(g)=\sum_{i=0}^{\infty}a_i\mu G_i$ whenever $g$ is a
+quasi-simple
+function represented as $\sum_{i=0}^{\infty}a_i\chi G_i$.
+
+\quad{(iv)} Show that if $g$ and $h$ are quasi-simple functions and
+$c\in\Bbb R$,
+then $I(g+h)=I(g)+I(h)$ and $I(cg)=cI(g)$, and that $I(g)\le I(h)$ if
+$g\leae h$.
+
+\quad{(v)} Show that if $g$ is a quasi-simple function then $g$ is
+integrable and $\int g=I(g)$.   (I do now allow you to use
+122G-122R.)
+
+\quad{(vi)} Show that a real-valued function $f$, defined on a
+conegligible subset of $X$, is integrable iff for every $\epsilon>0$
+there are quasi-simple functions $g$, $h$ such that $g\leae f\leae h$
+and $I(h)-I(g)\le\epsilon$.
+%122R
+
+\spheader 122Ye Let $\mu$ be Lebesgue measure on $\Bbb R$.   Let
+us say (for this exercise only) that a real-valued function $g$ with
+$\dom
+g\subseteq\Bbb R$ is `pseudo-simple' if it is expressible as
+$\sum_{i=0}^{\infty}a_i\chi J_i$, where $\sequence{i}{J_i}$ is a
+sequence
+of bounded half-open intervals ({\it not} necessarily disjoint) and
+$\sum_{i=0}^{\infty}|a_i|\mu J_i<\infty$.    (Interpret the infinite
+sum
+$\sum_{i=0}^{\infty}a_i\chi J_i$ as in 121F, so that
+
+\Centerline{$\dom(\sum_{i=0}^{\infty}a_i\chi J_i)
+=\{x:\lim_{n\to\infty}\sum_{i=0}^na_i(\chi J_i)(x)
+  \text{ exists in }\Bbb R\}$.)}
+
+\quad(i) Show that if $g$, $h$ are pseudo-simple functions so are
+$g+h$
+and $cg$, for any $c\in \Bbb R$.
+
+\quad(ii) Show that if $g$ is a pseudo-simple function then $g$ is
+integrable.
+
+\quad(iii) Show that a real-valued function $f$, defined on a
+conegligible subset of $\Bbb R$, is integrable iff for every
+$\epsilon>0$
+there are pseudo-simple functions $g$, $h$ such that $g\leae f\leae h$
+and $\int h-g\,d\mu\le\epsilon$.   \Hint{Take $\Phi$ to be the set
+of integrable functions with this property, and show that it satisfies
+the
+conditions of 122Yb.}
+%122Yd, 122R
+
+\spheader 122Yf Repeat 122Yb and 122Ye for Lebesgue measure on
+$\BbbR^r$,
+where $r>1$.
+%122Yd, 122Yb, 122Ye, 122R
+
+\spheader 122Yg Let $(X,\Sigma,\mu)$ be a measure space, and
+assume that there is at least one partition of $X$ into infinitely
+many
+non-empty measurable sets.   Let $f$ be a real-valued function
+defined on a conegligible subset of $X$, and $a\in\Bbb R$.   Show that
+the following are equiveridical:
+
+\quad (i) $f$ is integrable, with $\int f=a$;
+
+\quad (ii) for every $\epsilon>0$ there is a partition
+$\sequencen{E_n}$
+of $X$ into non-empty measurable sets such that
+
+\Centerline{$\sum_{n=0}^{\infty}|f(t_n)|\mu E_n<\infty$,
+\quad$|a-\sum_{n=0}^{\infty}f(t_n)\mu E_n|\le\epsilon$}
+
+\noindent whenever $\sequencen{t_n}$ is a sequence such that
+$t_n\in E_n\cap\dom f$ for every $n$.   (As usual, take
+$0\cdot\infty=0$ in these formulae.)  \Hint{use 122Yd.}
+%122Yd, 122R
+
+\spheader 122Yh Find a re-formulation of (g) which covers the case
+of measure spaces which can {\it not} be partitioned into sequences of
+non-empty measurable sets.
+%122Yg, 122Yd, 122R
+
+\spheader 122Yi Let $X$ be a set, $\Sigma$ a $\sigma$-algebra of
+subsets
+of $X$, and $\sequencen{\mu_n}$ a sequence of measures with domain
+$\Sigma$.   Set $\mu E=\sum_{n=0}^{\infty}\mu_nE$ for $E\in\Sigma$.
+(i) Show that $\mu$ is a measure.
+(ii) Show that for any real-valued function $f$ defined on a subset of $X$,
+$f$ is $\mu$-integrable iff it is $\mu_n$-integrable for every $n$ and
+$\sum_{n=0}^{\infty}\int|f|d\mu_n$ is finite, and that then
+$\int fd\mu=\sum_{n=0}^{\infty}\int fd\mu_n$.
+%122Xi
+
+\spheader 122Yj Let $X$ be a set, $\Sigma$ a $\sigma$-algebra of
+subsets
+of $X$, and $\langle\mu_i\rangle_{i\in I}$ a family of measures with
+domain $\Sigma$.
+Set $\mu E=\sum_{i\in I}\mu_iE$ for $E\in\Sigma$.
+(i) Show that $\mu$ is a measure.
+(ii) Show that for any $\Sigma$-measurable function $f:X\to\Bbb R$,
+$f$ is $\mu$-integrable iff it is $\mu_i$-integrable for every $i$ and
+$\sum_{i\in I}\int|f|d\mu_i$ is finite.
+%122Yi, 122Xi
+}%end of exercises
+
+\endnotes{
+\Notesheader{122} Just as in \S121, some extra
+technical problems are caused by my insistence on trying to integrate
+(i) functions which are not defined on the whole of the measure space
+under consideration (ii) functions which are not, strictly speaking,
+measurable, but are only measurable on some conegligible set.   There
+is
+nothing in the present section to justify either of these
+elaborations.
+In the next section, however, we shall be looking at the limits of
+sequences of functions, and these limits need not be defined at every
+point;  and the examples in which the limits are not everywhere
+defined are not in any sense pathological, but are central to the most
+important applications of the theory.
+
+The question of integrating not-quite-measurable functions is more
+disputable.   I will discuss this point further after formally
+introducing
+`complete' measure spaces in Chapter 21.   For the moment, I will
+say only that I think it is worth taking the trouble to have a
+formalisation which integrates as many functions as is reasonably
+possible;  the original point of the Lebesgue integral being, in part,
+that it enables us to integrate more functions than its predecessors.
+
+The definition of `integration' here proceeds in three
+distinguishable stages:  (i) integration of simple functions
+(122A-122G);  (ii) integration of non-negative functions (122H-122L);
+(iii) integration of general real-valued functions (122M-122R).   I
+have
+taken each stage slowly, passing to non-negative integrable functions
+only when I have a full set of the requisite lemmas on simple
+functions,
+for instance.   There are, of course, innumerable alternative routes;
+see, for instance, 122Yd, which offers a definition using two steps
+rather than three.   I
+prefer the longer, gentler climb partly because (to my eye) it gives a
+clearer view of the ideas and partly because it corresponds to an
+almost
+canonical method of proving properties of integrable functions:  we
+prove them first for simple functions, then for non-negative
+integrable
+functions, then for general integrable functions.   (The hint I give
+for
+122Yb conforms to this philosophy.   See also 122Xc;  but I
+do not give this as a formally expressed theorem, because the exact
+order of proof varies from case to case, and I think it is best
+remembered as a method of attack rather than as a specific result to
+apply.)
+
+You have a right to feel that this section has been singularly
+abstract,
+and gives very little idea of which of your favourite functions are
+likely to be integrable, let alone what the integrals are.   I hope
+that
+Chapter 13 will provide some help in this direction, though I have to
+say that for really useful methods for calculating integrals we must
+wait for Chapters 22, 25 and 26 in the next volume.    If you want to
+know the true centre of the arguments of this section, I would myself
+locate it in 122G, 122H and 122K.   The point is that the ideas of
+122A-122F apply to a much wider class of structures $(X,\Sigma,\mu)$,
+because they involve only operations on finitely many members of
+$\Sigma$ at a time;  there is no mention of sequences of sets.   The
+key
+that makes all the rest possible is 122G, which is founded on 112Cf.
+And after 122G-122K, the rest of the section, although by no means
+elementary, really is no more than a careful series of checks to
+ensure
+that the functional defined in 122K behaves as we expect it to.
+
+Many of the results of this section (including the key one, 122G) will
+be superseded by stronger results in the following section.   But I
+should remark on Lemma 122Ja, which will periodically recur as a most
+useful criterion for integrability of non-negative functions (see
+122Ra).
+
+There is another point about the standard integral as defined here.   It
+is an `absolute' integral, meaning that if $f$ is integrable so is
+$|f|$ (122P).   This means that although the Lebesgue integral extends
+the `proper' Riemann integral (see 134K below), there are functions
+with
+finite `improper' Riemann integrals which are not Lebesgue integrable;
+a typical example is $f(x)=\bover{\sin x}x$, where
+$\lim_{a\to\infty}\int_0^af$ exists in $\Bbb R$, while
+$\lim_{a\to\infty}\int_0^a|f|=\infty$, so that $f$ is not integrable,
+in the sense defined here, over the whole interval $\ooint{0,\infty}$.
+(For full proofs of these assertions, see 283D and 282Xm in Volume
+2.)   If you have encountered the theory of `absolutely' and
+`conditionally'
+summable series, you will be aware that the latter can exhibit very
+confusing behaviour, and will appreciate that restricting the notion of
+`integrable' to mean `absolutely integrable' is a great convenience.
+
+Indeed, it is more than just a convenience;  it is necessary to make the
+definition work at the level of abstraction used in this chapter.
+Consider the example of counting measure $\mu$ on $\Bbb N$ (112Bd,
+122Xd).   The structure $(\Bbb N,\Cal P\Bbb N,\mu)$ is invariant under
+permutations;
+that is, $\mu(\pi[A])=\mu A$ for every $A\subseteq\Bbb N$ and every
+permutation $\pi:\Bbb N\to\Bbb N$.   Consequently, {\it any} definition
+of integration which depends only on the structure
+$(\Bbb N,\Cal P\Bbb N,\mu)$ must also be invariant under
+permutations, that is,
+
+\Centerline{$\int f(\pi(n))\mu(dn)=\int f(n)\mu(dn)$}
+
+\noindent for any integrable function $f$ and any permutation $\pi$.
+But of course (as I hope you have been told) a series
+$\sequencen{f(n)}$ such that
+$\sum_{n=0}^{\infty}f(\pi(n))=\sum_{n=0}^{\infty}f(n)\in\Bbb R$ for
+any permutation $\pi$ must be absolutely summable.   Thus if we are to
+define an integral on an abstract measure space $(X,\Sigma,\mu)$ in
+terms depending only on $\Sigma$ and $\mu$, we are nearly inevitably
+forced to define an absolute integral.
+
+Naturally there are important contexts in which this restriction is an
+embarrassment, and in which some kind of `improper' integral seems
+appropriate.   A typical one is the theory of Fourier transforms, in
+which we find ourselves looking at $\lim_{a\to\infty}\int_{-a}^af$ in
+place of $\int_{-\infty}^{\infty}f$ (see \S283).   A vast number of
+more or less abstract forms of improper integral have been proposed;
+ many are interesting and some are important;  but none rivals the
+`standard'
+integral as described in this chapter.   (For an attempt at a
+systematic examination of a particular class of such improper
+integrals, see Chapter 48 in Volume 4.)
+
+Much less work has been done on the integration of non-measurable
+functions -- to speak more exactly, of functions which are not equal
+almost everywhere to a measurable integrable function.   I am sure that
+this is simply because there are too few important problems to show us
+which way to turn.   In 134C below I mention the question of whether
+there is {\it any} non-measurable real-valued function on $\Bbb R$.
+The standard answer is `yes', but no such function can possibly arise
+as a result of any ordinary construction.    Consequently the
+majority of
+questions concerning non-measurable functions appear in very special
+contexts, and so far I have seen none which gives any useful hint of
+what a generally appropriate extension of the notion of
+`integrability' might be.
+}%end of notes
+
+\discrpage
+

@@ -1,0 +1,580 @@
+\frfilename{mt492.tex}
+\versiondate{30.12.06}
+\copyrightdate{2001}
+
+\def\chaptername{Further topics}
+\def\sectionname{Combinatorial concentration of measure}
+
+\newsection{492}
+
+`Concentration of measure' takes its most dramatic forms in the
+geometrically defined notions of concentration explored in \S476.   But the phenomenon is observable in many other contexts, if
+we can devise the right abstract geometries to capture it.   In this
+section I present one of Talagrand's theorems on the concentration of
+measure in product spaces, using the Hamming metric (492D), and Maurey's
+theorem on concentration of measure in permutation groups (492H).
+
+\leader{492A}{Lemma} Let $(X,\Sigma,\mu)$ be a totally finite measure
+space, $\alpha<\beta$ in $\Bbb R$, $\phi:[\alpha,\beta]\to\Bbb R$ a
+convex function, and $f:X\to[\alpha,\beta]$ a $\Sigma$-measurable
+function.   Then
+
+\Centerline{$\biggerint\phi(f(x))\mu(dx)
+\le\Bover{\phi(\beta)-\phi(\alpha)}{\beta-\alpha}\int fd\mu
+  +\Bover{\beta\phi(\alpha)-\alpha\phi(\beta)}{\beta-\alpha}\mu X$.}
+
+\proof{ %Solecki
+If $t\in[\alpha,\beta]$ then
+$t=\Bover{t-\alpha}{\beta-\alpha}\beta
++\Bover{\beta-t}{\beta-\alpha}\alpha$, so
+
+\Centerline{$\phi(t)
+\le\Bover{t-\alpha}{\beta-\alpha}\phi(\beta)
++\Bover{\beta-t}{\beta-\alpha}\phi(\alpha)
+=\Bover{\phi(\beta)-\phi(\alpha)}{\beta-\alpha}t
++\Bover{\beta\phi(\alpha)-\alpha\phi(\beta)}{\beta-\alpha}$.}
+
+\noindent Accordingly
+
+\Centerline{$\phi(f(x))
+\le\Bover{\phi(\beta)-\phi(\alpha)}{\beta-\alpha}f(x)
++\Bover{\beta\phi(\alpha)-\alpha\phi(\beta)}{\beta-\alpha}$}
+
+\noindent for every $x\in X$;  integrating with respect to $x$, we have the result.
+}%end of proof of 492A
+
+\leader{492B}{Corollary} Let $(X,\Sigma,\mu)$ be a probability space
+and $f:X\to[\alpha,1]$ a measurable function, where $0<\alpha\le 1$.
+Then $\biggerint\Bover1fd\mu\cdot\int fd\mu\le\Bover{(1+\alpha)^2}{4\alpha}$.
+
+\proof{ Set $\gamma=\int fd\mu$, so that $\alpha\le\gamma\le 1$.   By
+492A, with $\phi(t)=\Bover1t$,
+
+\Centerline{$\biggerint\Bover1fd\mu
+\le\Bover{\gamma}{1-\alpha}(1-\Bover1{\alpha})
+   +\Bover1{1-\alpha}(\Bover1{\alpha}-\alpha)
+=\Bover{1+\alpha-\gamma}{\alpha}$.}
+
+\noindent Now $\Bover{1+\alpha-\gamma}{\alpha}\cdot\gamma$ takes its
+maximum value $\Bover{(1+\alpha)^2}{4\alpha}$ when
+$\gamma=\Bover{1+\alpha}2$, so this is also the maximum possible value
+for $\int\bover1f\int f$.
+}%end of proof of 492B
+
+\leader{492C}{Lemma} $\Bover12(1+\cosh t)\le e^{t^2/4}$ for every $t\in\Bbb R$.
+
+\proof{ For $k\ge 1$, $4^kk!\le 2(2k)!$ (induce on $k$), so
+
+\Centerline{$1+\cosh t
+=2+\sum_{k=1}^{\infty}\Bover{t^{2k}}{(2k)!}
+\le 2+\sum_{k=1}^{\infty}\Bover{2t^{2k}}{4^kk!}
+=2e^{t^2/4}$.}
+}%end of proof of 492C
+
+\leader{492D}{Theorem}\cmmnt{ ({\smc Talagrand 95})} Let
+$\ofamily{i}{n}{(X_i,\Sigma_i,\mu_i)}$ be a non-empty finite family of
+probability
+spaces with product $(X,\Lambda,\lambda)$.   Let $\rho$ be the {\bf
+normalized Hamming metric} on
+$X$ defined by setting $\rho(x,y)=\Bover1n\#(\{i:i<n,\,x(i)\ne y(i)\})$
+for $x$, $y\in X$.   If $W\in\Lambda$ and $\lambda W>0$, then
+
+\Centerline{$\overlineint e^{t\rho(x,W)}\lambda(dx)
+\le\Bover1{\lambda W}e^{t^2/4n}$}
+
+\noindent for every $t\ge 0$.
+
+\proof{ The formulae below will go much more smoothly if we work with
+the simple Hamming metric $\sigma(x,y)=\#(\{i:x(i)\ne y(i)\})$ instead of
+$\rho$.   In this case, we can make sense of the case $n=0$, and this
+will be useful.   In terms of $\sigma$, our target is to prove that
+if $W\in\Lambda$ and $\lambda W>0$, then
+
+\Centerline{$\overlineint e^{t\sigma(x,W)}\lambda(dx)
+\le\Bover1{\lambda W}e^{nt^2/4}$}
+
+\noindent for every $t\ge 0$.
+
+
+\medskip
+
+{\bf (a)} To begin with, suppose that every
+$X_i=Z=\{0,1\}^{\Bbb N}$, every $\mu_i$ is a Borel measure, and $W$ is
+compact.   Note that in this case $\lambda$ is a Radon measure (because
+the $X_i$ are compact and metrizable), and
+
+\Centerline{$\{x:\sigma(x,W)\le m\}
+=\bigcup_{I\subseteq n,\#(I)\le m}\{x:\,\Exists y\in W,\,
+   x\restr n\setminus I=y\restr n\setminus I\}$}
+
+\noindent is compact for every $m$, so the function
+$x\mapsto\sigma(x,W)$ is measurable.
+
+Induce on $n$.   If $n=0$ we must have $W=X=\{\emptyset\}$ and
+$\sigma(x,W)=0$ for every $x$, so the result is trivial.   For the
+inductive step to $n\ge 1$, we have
+$W\subseteq X\times X_n$, where $X=\prod_{i<n}X_i$, and we are looking
+at $\iint e^{t\sigma((x,\xi),W)}\lambda(dx)\mu_n(d\xi)$.   Now, setting
+$V_{\xi}=\{x:(x,\xi)\in W\}$ for $\xi\in X_n$,
+
+\Centerline{$V=\bigcup_{\xi\in X_n}V_{\xi}
+=\{x:\,\Exists \xi\in X_n,\,(x,\xi)\in W\}$,}
+
+\noindent we have
+
+\Centerline{$\sigma((x,\xi),W)\le\min(\sigma(x,V_{\xi}),1+\sigma(x,V))$}
+
+\noindent for all $x$ and $\xi$, counting $\sigma(x,\emptyset)$ as $\infty$
+if $V_{\xi}$ is empty.   So, for any $\xi\in X_n$,
+
+$$\eqalign{\int e^{t\sigma((x,\xi),W)}\lambda(dx)
+&\le\min(\int e^{t\sigma(x,V_{\xi})}\lambda(dx),
+  e^t\int e^{t\sigma(x,V)}\lambda(dx))\cr
+&\le e^{nt^2/4}
+  \min(\Bover1{\lambda V_{\xi}},\Bover{e^t}{\lambda V})\cr}$$
+
+\noindent by the inductive hypothesis, counting
+$\min(\Bover10,\Bover{e^t}{\lambda V})$ as $\Bover{e^t}{\lambda V}$.
+
+It follows that if we set
+$f(\xi)=\max(e^{-t},\Bover{\lambda V_{\xi}}{\lambda V})$ for
+$\xi\in X_n$,
+
+$$\eqalignno{(\lambda\times\mu_n)(W)
+  &\int e^{t\sigma((x,\xi),W)}\lambda(dx)\mu_n(d\xi)\cr
+&\le\int\lambda V_{\xi}\mu_n(d\xi)\cdot e^{nt^2/4}
+\int\min(\Bover1{\lambda V_{\xi}},\Bover{e^t}{\lambda V})\mu_n(d\xi)\cr
+&=e^{nt^2/4}\int\Bover{\lambda V_{\xi}}{\lambda V}\mu_n(d\xi)
+  \cdot\int\min(e^t,\Bover{\lambda V}{\lambda V_{\xi}})\mu_n(d\xi)\cr
+&\le e^{nt^2/4}\int f(\xi)\mu_n(d\xi)
+  \cdot\int\Bover1{f(\xi)}\mu_n(d\xi)\cr
+&\le e^{nt^2/4}\cdot\Bover{(1+e^{-t})^2}{4e^{-t}}\cr
+\displaycause{492B}
+&=\Bover12 e^{nt^2/4}(1+\cosh t)
+\le e^{(n+1)t^2/4}\cr}$$
+
+\noindent by 492C, and
+
+\Centerline{$\biggerint e^{t\sigma((x,\xi),W)}\lambda(dx)\mu_n(d\xi)
+\le\Bover1{(\lambda\times\mu_n)(W)}e^{(n+1)t^2/4}$,}
+
+\noindent so the induction continues.
+
+\medskip
+
+{\bf (b)} Now turn to the general case.   If $W\in\Lambda$, there is a
+$W_1\subseteq W$ such that $W_1\in\Tensorhat_{i<n}\Sigma_i$ and
+$\lambda W_1=\lambda W$ (251Wf).   There must be countably-generated
+$\sigma$-subalgebras $\Sigma'_i$ of $\Sigma_i$ such that
+$W_1\in\Tensorhat_{i<n}\Sigma'_i$.   For each $i<n$, let
+$\sequence{k}{E_{ik}}$ be a sequence in $\Sigma_i$ generating
+$\Sigma'_i$, and let $h_i:X_i\to Z$ be the corresponding
+Marczewski functional, so that $h_i(\xi)=\sequence{k}{\chi E_{ik}(\xi)}$
+for $\xi\in X_i$.   Let $\mu'_i$ be the Borel measure on
+$Z$ defined by setting $\mu'_iF=\mu_ih_i^{-1}[F]$ for
+every Borel set $F\subseteq Z$, and let $\nu$ be the
+product of the measures $\mu'_i$ on $Y=Z^n$.   If we
+set $h(x)=\ofamily{i}{n}{h_i(x(i))}$ for $x\in X$, then $h:X\to Y$ is
+\imp\ for $\lambda$ and $\nu$ (254H).   Moreover, by the choice of the
+$E_{ik}$, $W_1=h^{-1}[V]$ for some Borel set $V\subseteq Y$.
+
+Because $Y$ is a compact metrizable space, $\nu$ is the completion of a
+Borel measure and is a Radon measure (433Cb).   For each $I\subseteq n$,
+write $\nu_I$ for the product measure on $Z^I$, and set
+
+\Centerline{$V_I=\{u:u\in Z^{n\setminus I},\,
+  \nu_I\{v:v\in Z^I,\,(u,v)\in V\}>0\}$,}
+
+\Centerline{$V_I'=\{y:y\in Y,\,y\restr n\setminus I\in V_I\}$.}
+
+\noindent Then $\nu(V\setminus V'_I)=0$ for every $I\subseteq n$, so if
+we set $V'=\bigcap_{I\subseteq n}V'_I$ then $\nu V'=\nu V$.   (Of course
+$V'\subseteq V'_{\emptyset}=V$.)
+
+Take any $\gamma\in\ooint{0,\lambda W}=\ooint{0,\nu V'}$.
+Let $K\subseteq V'$ be a compact set such that $\nu K\ge\gamma$.   Set
+$g(y)=e^{t\sigma(y,K)}$ for $y\in Y$, where I write $\sigma$ for the
+Hamming metric on $Y$ (regarded as a product of $n$ factor spaces).
+Then $g:Y\to\Bbb R$
+is Borel measurable and $gh:X\to\Bbb R$ is $\Lambda$-measurable.   Also,
+for any $x\in X$, $\sigma(x,W)\le\sigma(h(x),K)$.   \Prf\ Take $y\in K$
+such
+that $\sigma(h(x),y)=\sigma(h(x),K)$, and set
+
+\Centerline{$I=\{i:h(x)(i))\ne y(i)\}$,
+\quad$u=h(x)\restr n\setminus I=y\restr n\setminus I$.}
+
+\noindent Because $y\in V'$, $u\in V_I$ and $\nu_IH>0$, where
+$H=\{v:v\in Z^I,\,(u,v)\in V\}$.   But if we write $\lambda_I$ for
+the product measure on $\prod_{i\in I}X_i$, and
+$h_I(z)=\familyiI{h_i(z(i))}$ for $z\in\prod_{i\in I}X_i$, then $h_I$ is
+\imp\ for $\lambda_I$ and $\nu_I$;  in particular, $h_I^{-1}[H]$ is
+non-empty.   This means that we can find an $x'\in X$ such that
+$x'\restr n\setminus I=x\restr n\setminus I$ and
+$x'\restr I\in h_I^{-1}[H]$.   In this case, $h(x')\in V$, so
+$x'\in W_1\subseteq W$, and
+
+\Centerline{$\sigma(x,W)\le\sigma(x,x')\le\#(I)=\sigma(h(x),K)$.  \Qed}
+
+Accordingly
+
+\Centerline{$e^{t\sigma(x,W)}\le e^{t\sigma(h(x),K)}=g(h(x))$}
+
+\noindent for every $x\in X$, and
+
+$$\eqalignno{\overline{\int}e^{t\sigma(x,W)}\lambda(dx)
+&\le\int gh\,d\lambda
+=\int g\,d\nu\cr
+\displaycause{because $g$ is $\nu$-integrable and $h$ is \imp, see
+235G\formerly{2{}35I}}
+&\le\Bover1{\nu K}e^{nt^2/4}\cr
+\displaycause{by (a)}
+&\le\Bover1{\gamma}e^{nt^2/4}.\cr}$$
+
+\noindent As $\gamma$ is arbitrary,
+
+\Centerline{$\overlineint e^{t\sigma(x,W)}\lambda(dx)
+\le\Bover1{\lambda W}e^{nt^2/4}$,}
+
+\noindent as claimed.
+}%end of proof of 492D
+
+\leader{492E}{Corollary} %\cmmnt{ ({\smc Talagrand 95})}
+Let $\ofamily{i}{n}{(X_i,\Sigma_i,\mu_i)}$ be a non-empty finite family of
+probability spaces with product $(X,\Lambda,\lambda)$.
+
+(a) Let $\rho$ be the normalized Hamming metric on $X$.   If $W\in\Lambda$ and $\lambda W>0$, then
+
+\Centerline{$\lambda^*\{x:\rho(x,W)\ge\gamma\}
+  \le\Bover1{\lambda W}e^{-n\gamma^2}$}
+
+\noindent for every $\gamma\ge 0$.
+
+(b) If $W$, $W'\in\Lambda$ and $\gamma>0$ are such that
+$e^{-n\gamma^2}<\lambda W\cdot\lambda W'$ then there are $x\in W$,
+$x'\in W'$ such that $\#(\{i:i<n,\,x(i)\ne x'(i)\})<n\gamma$.
+
+\proof{{\bf (a)} Set $t=2n\gamma$.   By 492D, there is a measurable
+function $f:X\to\Bbb R$ such that $f(x)\ge e^{t\rho(x,W)}$ for every
+$x\in X$ and $\int fd\lambda\le\Bover1{\lambda W}e^{t^2/4n}$.   So
+
+$$\eqalign{\lambda^*\{x:\rho(x,W)\ge\gamma\}
+&\le\lambda\{x:f(x)\ge e^{t\gamma}\}
+\le e^{-t\gamma}\int fd\lambda\cr
+&\le\Bover1{\lambda W}e^{-t\gamma+t^2/4n}
+=\Bover1{\lambda W}e^{-n\gamma^2}.\cr}$$
+
+\medskip
+
+{\bf (b)} By (a), $\lambda^*\{x:\rho(x,W')\ge\gamma\}<\lambda W$, so
+there must be an $x\in W$ such that $\rho(x,W')<\gamma$.
+}%end of proof of 492E
+
+\leader{492F}{}\cmmnt{ The next theorem concerns concentration of
+measure in permutation groups.   I approach this through a general
+result about slowly-varying martingales (492G).
+
+\medskip
+
+\noindent}{\bf Lemma} $e^t\le t+e^{t^2}$ for every $t\in\Bbb R$.
+
+\proof{ If $t\ge 1$ then $t\le t^2$ so
+
+\Centerline{$e^t\le e^{t^2}\le t+e^{t^2}$.}
+
+\noindent If $0\le t\le 1$ then
+
+$$\eqalign{e^t
+&=1+t+\sum_{n=2}^{\infty}\Bover{t^n}{n!}
+\le 1+t
+  +\sum_{k=1}^{\infty}(\Bover{1}{(2k)!}+\Bover{1}{(2k+1)!})t^{2k}\cr
+&\le 1+t
+  +\sum_{k=1}^{\infty}\Bover{t^{2k}}{k!}
+=t+e^{t^2}.\cr}$$
+
+\noindent If $t\le 0$ then
+
+$$\eqalign{e^t
+&=1+t+\sum_{n=2}^{\infty}\Bover{t^n}{n!}
+\le 1+t+\sum_{k=1}^{\infty}\Bover{t^{2k}}{(2k)!}\cr
+&\le 1+t+\sum_{k=1}^{\infty}\Bover{t^{2k}}{k!}
+=t+e^{t^2}.\cr}$$
+}%end of proof of 492F
+
+\leader{492G}{Lemma}\cmmnt{ ({\smc Milman \& Schechtman 86})} Let
+$(X,\Sigma,\mu)$ be a probability space, and
+$\sequencen{f_n}$ a martingale on $X$.
+Suppose that $f_n\in\eusm L^{\infty}(\mu)$ for every $n$, and that
+$\alpha_n\ge\esssup|f_n-f_{n-1}|$ for $n\ge 1$.   Then for any
+$n\ge 1$ and $\gamma\ge 0$,
+
+\Centerline{$\Pr(f_n-f_0\ge\gamma)
+\le\exp(-\gamma^2/4\sum_{i=1}^n\alpha_i^2)$,}
+
+\noindent at least if $\sum_{i=1}^n\alpha_i^2>0$.
+
+\proof{ Let $\sequencen{\Sigma_n}$ be a non-decreasing
+sequence of $\sigma$-subalgebras of $\Sigma$ to which $\sequencen{f_n}$
+is a adapted.   Extending the functions $f_n$ if necessary, we may
+suppose that they are all defined on the whole of $X$.
+
+\medskip
+
+{\bf (a)} I show first that
+
+\Centerline{$\Expn(\exp(\lambda(f_n-f_0)))
+\le\exp(\lambda^2\sum_{i=1}^n\alpha_i^2)$}
+
+\noindent for any $n\ge 0$ and any $\lambda>0$.   \Prf\ Induce on $n$.
+For $n=0$, interpreting $\sum_{i=1}^0$ as $0$, this is trivial.   For
+the inductive step to $n+1$, set $g=f_n-f_{n-1}$ and let $g_1$, $g_2$ be
+conditional expectations of $\exp(\lambda g)$ and $\exp(\lambda^2g^2)$
+on $\Sigma_{n-1}$.   Because $|g|\le\alpha_n$ a.e.,
+$\exp(\lambda^2g^2)\le\exp(\lambda^2\alpha_n^2)$ a.e.\ and
+$g_2\le\exp(\lambda^2\alpha_n^2)$ a.e.   Because
+$\exp(\lambda g)\le\lambda g+\exp(\lambda^2g^2)$ wherever $g$ is defined
+(492F), and $0$ is a conditional expectation of $g$ on $\Sigma_{n-1}$,
+$g_1\le g_2\le\exp(\lambda^2\alpha_n^2)$ a.e.
+
+Now observe that $f_{n-1}-f_0$ is $\Sigma_{n-1}$-measurable, so that
+$\exp(\lambda(f_{n-1}-f_0))\times g_1$ is a conditional expectation of
+$\exp(\lambda(f_{n-1}-f_0))\times\exp(\lambda g)=\exp(\lambda(f_n-f_0))$
+on $\Sigma_{n-1}$ (233Eg).   Accordingly
+
+$$\eqalignno{\Expn(\exp(\lambda(f_n-f_0)))
+&=\Expn(\exp(\lambda(f_{n-1}-f_0))\times g_1)\cr
+&\le\esssup|g_1|\cdot\Expn(\exp(\lambda(f_{n-1}-f_0)))\cr
+&\le\exp(\lambda^2\alpha_n^2)
+  \exp(\lambda^2\sum_{i=1}^{n-1}\alpha_i^2)\cr
+\displaycause{by the inductive hypothesis}
+&=\exp(\lambda^2\sum_{i=1}^n\alpha_i^2)\cr}$$
+
+\noindent and the induction continues.\ \Qed
+
+\medskip
+
+{\bf (b)} Now take $n\ge 1$ and $\gamma\ge 0$.
+Set $\lambda=\gamma/2\sum_{i=1}^n\alpha_i^2$.   Then
+
+$$\eqalignno{\Pr(f_n-f_0\ge\gamma)
+&=\Pr(\exp(\lambda(f_n-f_0))\ge e^{\lambda\gamma})\cr
+&\le e^{-\lambda\gamma}\Expn(\exp(\lambda(f_n-f_0)))
+\le e^{-\lambda\gamma}\exp(\lambda^2\sum_{i=1}^n\alpha_i^2)\cr
+\displaycause{by (a) above}
+&=e^{-\lambda\gamma/2}
+=\exp(-\gamma^2/4\sum_{i=1}^n\alpha_i^2)\cr}$$
+
+\noindent as claimed.
+}%end of proof of 492G
+
+\leader{492H}{Theorem}\cmmnt{ ({\smc Maurey 79})} Let $X$ be a
+non-empty finite set and $G$ the
+group of all permutations of $X$ with its discrete topology.   For
+$\pi$, $\phi\in G$ set
+
+\Centerline{$\rho(\pi,\phi)
+=\Bover{\#(\{x:x\in X,\,\pi(x)\ne\phi(x)\})}{\#(X)}$.}
+
+\noindent Then $\rho$ is a metric on $G$.   Give $G$ its Haar
+probability measure, and let $f:G\to\Bbb R$ be a $1$-Lipschitz function.
+Then
+
+\Centerline{$\Pr(f-\Expn(f)\ge\gamma)\le\exp(-\Bover{\gamma^2\#(X)}{16})$}
+
+\noindent for any $\gamma\ge 0$.
+
+\proof{ We may suppose that $X=n=\{0,\ldots,n-1\}$ where $n=\#(X)$.
+For $m\le n$, $p:m\to n$ set $A_p=\{\pi:\pi\in G,\,\pi\restr m=p\}$, and
+let $\Sigma_m$ be the subalgebra of $\Cal PG$ generated by
+$\{A_p:p\in n^m\}$.   Then
+
+\Centerline{$\{\emptyset,G\}=\Sigma_0\subseteq\Sigma_1\subseteq\ldots
+\subseteq\Sigma_{n-1}=\Sigma_n=\Cal PG$;}
+
+\noindent for $m> n$ set $\Sigma_m=\Cal PG$.   For each $m$ let $f_m$ be
+the (unique) conditional expectation of $f$ on $\Sigma_m$, so that
+
+\Centerline{$f_m(\pi)=\Bover1{\#(A_p)}\sum_{\phi\in A_p}f(\phi)$}
+
+\noindent whenever $\pi\in G$ and $p=\pi\restr m$.   Now we find that
+$|f_m(\pi)-f_{m-1}(\pi)|\le\Bover2n$ for every $m\ge 1$ and $\pi\in G$.
+\Prf\ If $m>n$ this is trivial.   Otherwise, set $p=\pi\restr m-1$ and
+$k=\pi(m-1)$.   Set $J=p[m-1]=\{\pi(i):i<m-1\}$, and for
+$j\in n\setminus J$ let $p_j=p^{\smallfrown}\fraction{j}$ be that function from $m$
+to $n$ which extends $p$ and takes the value $j$ at $m-1$;  let
+$\alpha_j$ be the common value of $f_m(\phi)$ for $\phi\in A_{p_j}$, so
+that $f_m(\pi)=\alpha_k$.   Now, for each $j\in n\setminus(J\cup\{k\})$,
+the function $\phi\mapsto\cycle{j\,k}\phi$ is a bijection from
+$A_{p_k}$ to $A_{p_j}$, where $\cycle{j\,k}\in G$ is the transposition
+which exchanges $j$ and $k$.   But this means that
+
+$$\eqalign{|\alpha_j-\alpha_k|
+&=\bigl|\Bover1{(n-m)!}\sum_{\phi\in A_{p_j}}f(\phi)
+  -\Bover1{(n-m)!}\sum_{\phi\in A_{p_k}}f(\phi)\bigr|\cr
+&=\Bover1{(n-m)!}\bigl|\sum_{\phi\in A_{p_j}}f(\phi)
+  -f(\cycle{j\,k}\phi)\bigr|\cr
+&\le\sup_{\phi\in A_{p_j}}\bigl|f(\phi)-f(\cycle{j\,k}\phi)\bigr|
+\le\Bover2n\cr}$$
+
+\noindent because $f$ is $1$-Lipschitz and
+$\rho(\phi,\cycle{j\,k}\phi)=\bover2n$ for every $\phi$.
+And this is true for every $j\in n\setminus(J\cup\{k\})$.
+
+Accordingly
+
+$$\eqalign{|f_{m-1}(\pi)-f_m(\pi)|
+&=\bigl|\Bover1{(n-m+1)!}\sum_{\phi\in A_p}f(\phi)-\alpha_k\bigr|
+=\bigl|\Bover1{n-m+1}\sum_{j\in n\setminus J}\alpha_j-\alpha_k\bigr|\cr
+&\le\Bover1{n-m+1}\sum_{j\in n\setminus J}|\alpha_j-\alpha_k|
+\le\Bover1{n-m+1}\sum_{j\in n\setminus J}\Bover2n
+=\Bover2n,\cr}$$
+
+\noindent as claimed.\ \Qed
+
+\medskip
+
+{\bf (b)} Now observe that $f=f_{n-1}$ and that $f_0$ is the constant
+function with value $\Expn(f)$, so that
+
+$$\eqalignno{\Pr(f-\Expn(f)\ge\gamma)
+&=\Pr(f_{n-1}-f_0\ge\gamma)
+\le\exp(-\gamma^2/4\sum_{i=1}^{n-1}(\Bover2n)^2)\cr
+\displaycause{492G}
+&\le\exp(-\Bover{n\gamma^2}{16}),\cr}$$
+
+\noindent which is what we were seeking to prove.
+}%end of proof of 492H
+
+\vleader{48pt}{492I}{Corollary} 
+Let $X$ be a non-empty finite set, with $\#(X)=n$, and $G$ the
+group of all permutations of $X$.   Let $\mu$ be the
+Haar probability measure of $G$ when given its discrete topology.
+Suppose that $A\subseteq G$ and $\mu A\ge\bover12$.   Then
+
+\Centerline{$\mu\{\pi:\pi\in G,\,\Exists\phi\in A,\,
+  \#(\{x:x\in X,\,\pi(x)\ne\phi(x)\})\le k\}
+\ge 1-\exp(-\Bover{k^2}{64n})$}
+
+\noindent for every $k\le n$.
+
+\proof{ If $\exp(-\Bover{k^2}{64n})\ge\bover12$, this is trivial, since the
+left-hand-side of the inequality is surely at least $\bover12$.
+Otherwise, set
+$g(\pi)=\Bover1n\min_{\phi\in A}\#(\{x:x\in X,\,\pi(x)\ne\phi(x)\})$ for
+$\pi\in G$, so that $g$ is $1$-Lipschitz for the metric $\rho$ of 492H.
+Applying 492H to $f=-g$, we see that
+
+\Centerline{$\Pr(\Expn(g)-g\ge\Bover{k}{2n})
+\le\exp(-\Bover{k^2}{64n})<\Bover12$,}
+
+\noindent and there must be some $\pi\in A$ such that
+$\Expn(g)-g(\pi)<\Bover{k}{2n}$, so that $\Expn(g)<\Bover{k}{2n}$.
+This means that
+
+$$\eqalign{\mu\{\pi:\pi\in G,\,\Exists\phi\in A,\,
+&\#(\{x:x\in X,\,\pi(x)\ne\phi(x)\})\le k\}\cr
+&=1-\mu\{\pi:\pi\in G,\,g(\pi)>\Bover{k}{n}\}\cr
+&\ge 1-\Pr(g-\Expn(g)\ge\Bover{k}{2n})
+\ge 1-\exp(-\Bover{k^2}{64n}),\cr}$$
+
+\noindent applying 492H to $g$ itself.
+}%end of proof of 492I
+
+\exercises{\leader{492X}{Basic exercises (a)}
+%\spheader 492Xa
+Let $(X,\Sigma,\mu)$ be a probability space, and
+$\sequencen{f_n}$ a martingale on $X$.
+Suppose that $f_n\in\eusm L^{\infty}(\mu)$ for every $n$, and that
+$\sigma=\sqrt{\sum_{n=1}^{\infty}\alpha_n^2}$ is finite and not zero,
+where $\alpha_n=\esssup|f_n-f_{n-1}|$ for $n\ge 1$.   Show that
+$f=\lim_{n\to\infty}f_n$ is defined a.e., and that
+$\Pr(f-f_0\ge\gamma)\le\exp(-\gamma^2/4\sigma^2)$ for every
+$\gamma\ge 0$.
+\Hint{show first that $\|f_n\|_1\le\|f_n\|_2\le\sigma+\|f_0\|_2$ for
+every $n$, so that we can apply 275G.}
+%492G
+
+\spheader 492Xb Let $(X,\rho)$ be a metric space and $\mu$ a topological
+probability measure on $X$.   Suppose that $\gamma$, $\epsilon>0$ are
+such that
+$\Pr(f-\Expn(f)\ge\gamma)\le\epsilon$ whenever $f:X\to[-\gamma,\gamma]$ is
+$1$-Lipschitz.   Show that if $\mu F\ge\bover12$ then
+$\mu\{x:\rho(x,F)\ge 2\gamma\}\le\epsilon$.
+%492I
+
+\spheader 492Xc Let $(X,\rho)$ be a metric space and $\mu$ a topological
+probability measure on $X$.   Suppose that $\gamma$, $\epsilon>0$ are
+such that $\mu\{x:\rho(x,F)>\gamma\}\le\epsilon$ whenever
+$\mu F\ge\bover12$.   Show that if $f:X\to[-1,1]$ is a $1$-Lipschitz
+function then $\Pr(f-\Expn(f)>2\gamma+2\epsilon)\le\epsilon$.
+%492I
+
+\spheader 492Xd Use 492G to show that if
+$\ofamily{i}{n}{(X_i,\Sigma_i,\mu_i)}$ is a non-empty finite family of
+probability spaces with product $(X,\Lambda,\lambda)$, and $X$ is given
+its normalized Hamming metric, and $f\in\eusm L^{\infty}(\lambda)$ is
+$1$-Lipschitz, then $\Pr(f-\Expn(f)\ge\gamma)\le e^{-n\gamma^2/4}$ for
+every $\gamma\ge 0$.   \Hint{if $\Sigma_k\subseteq\Lambda$ is the
+$\sigma$-algebra of subsets of $X$ determined by coordinates in $k$, and
+$f_k$ is a conditional expectation of $f$ on $\Sigma_k$, then
+$\esssup|f_{k+1}-f_k|\le\bover1n$.}
+%492G
+
+%\leader{492Y}{Further exercises (a)}
+
+}%end of exercises
+
+\endnotes{
+\Notesheader{492}
+In metric
+spaces, we can say that a probability measure is `concentrated' if every
+Lipschitz function $f$ is almost constant in the sense that, for some
+$\alpha$, the sets $\{x:|f(x)-\alpha|\ge\gamma\}$ have small measure.
+What is astonishing is that this does not mean that the measure itself
+is concentrated on a small set.   In 492H, the measure is the Haar
+probability measure, spread as evenly as it well could be.   Of course,
+when I say that
+$\{x:|f(x)-\alpha|\ge\gamma\}$ has `small' measure, I have to let some
+other parameter -- in 492H, the size of $X$ -- vary, while $\gamma$
+itself is fixed.   Also the shapes of the formulae depend on which
+normalizations we choose (observe the effect of moving from $\rho$ to
+$\sigma$ in the proof of 492D).   But the value of 492H is that it gives
+a strong bound which is independent of the particular function $f$,
+provided that it is $1$-Lipschitz.   This kind of concentration of
+measure can be described either in terms of the variation of Lipschitz
+functions from their means or in terms of the measures of neighbourhoods
+of sets of measure $\bover12$ (492Xb-492Xc).   The latter, in a more
+abstract context, is what is described by the concentration functions of
+measures on uniform spaces;  there is an example of this in 493C.
+
+The martingale method can be used to prove a version of 492E (492Xd).
+The method of 492D gives a better exponent ($e^{-n\gamma^2}$ in place of
+$e^{-n\gamma^2/4}$) and also information of a slightly different kind,
+in that
+it can be applied directly to sets $W$ of small measure, at least
+provided that
+$\gamma>\Bover1{\sqrt n}$ in 492E.   We also need a little more measure
+theory here, since sets which are measured by product measures can be
+geometrically highly irregular, and our Lipschitz functions
+$x\mapsto\rho(x,W)$ need not be measurable.
+
+In the proof of 492G we have an interesting application of the idea of
+`martingale'.   The inequality here is quite different from the standard
+martingale inequalities like 275D or 275F or 275Yd-275Ye.   
+It gives a very
+strong inequality concerning the difference $f_n-f_0$, at the cost of
+correspondingly strong hypotheses on the differences $f_i-f_{i-1}$;  but
+since we need control of $\sum_i\esssup|f_i-f_{i-1}|^2$, not of
+$\sum_i\esssup|f_i-f_{i-1}|$, there is scope for applications like
+492H.   What the inequality tells us is that most of the time the
+differences $f_i-f_{i-1}$ cancel out, just as in the Central Limit
+Theorem, and that once again we have a vaguely Gaussian sum $f_n-f_0$.
+
+Concentration of measure, in many forms, has been studied intensively in
+the context of the geometry of normed spaces, 
+as in {\smc Milman \& Schechtman 86}, from which 492F-492I %492F 492G 492H 492I
+are taken.
+}%end of notes
+
+\discrpage
+

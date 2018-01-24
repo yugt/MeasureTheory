@@ -1,0 +1,1787 @@
+\frfilename{mt284.tex}
+\versiondate{30.8.13}
+\copyrightdate{1994}
+
+\def\rdtf{rapidly decreasing test function}
+\def\Ft{Fourier transform}
+
+\def\chaptername{Fourier analysis}
+\def\sectionname{Fourier transforms II}
+
+\newsection{284}
+
+The basic paradox
+of Fourier transforms is the fact that while for certain functions (see
+283J-283K) we have $(\varhatf)\varspcheck=f$, `ordinary' integrable
+functions $f$ (for instance, the indicator functions of non-trivial
+intervals) give rise to non-integrable Fourier transforms $\varhatf$
+for which there is no direct definition available for
+$\varhatf\varcheck{\phantom{f}}$, making it a puzzle to decide in what
+sense the formula
+$f=\varhatf\varcheck{\phantom{f}}$ might be true.   What now seems by
+far the most
+natural resolution of the problem lies in declaring the Fourier
+transform to be an operation on {\it distributions} rather than on {\it
+functions}.   I shall not attempt to describe this theory properly
+(almost any book on `Distributions' will cover the ground better than
+I can possibly do here), but will try to convey the fundamental ideas,
+so far as they are relevant to the questions dealt with here, in
+language which will make the transition to a fuller treatment
+straightforward.   At the same time, these methods make it easy to prove
+strong versions of the `classical' theorems concerning Fourier
+transforms.
+
+\leader{284A}{Test functions:  Definition} Throughout this section, a
+{\bf rapidly decreasing test function} or {\bf Schwartz function}
+will be a function  $h:\Bbb R\to\Bbb C$ such
+that $h$ is {\bf smooth}, that is, differentiable everywhere any finite
+number of times, and moreover
+
+\Centerline{$\sup_{x\in\Bbb R}|x|^k|h^{(m)}(x)|<\infty$}
+
+\noindent for all $k$, $m\in\Bbb N$, writing $h^{(m)}$ for the $m$th
+derivative of $h$.
+
+\leader{284B}{}\cmmnt{ The following elementary facts will be useful.
+
+\medskip
+
+\noindent}{\bf Lemma} (a) If $g$ and $h$ are rapidly decreasing test
+functions, so are $g+h$ and $ch$, for any $c\in\Bbb C$.
+
+(b) If $h$ is a rapidly decreasing test function and $y\in\Bbb R$, then
+$x\mapsto h(y-x)$ is a rapidly decreasing test function.
+
+(c) If $h$ is any rapidly decreasing test function, then $h$ and $h^2$
+are integrable.
+
+(d) If $h$ is a \rdtf, so is its derivative $h'$.
+
+
+(e) If $h$ is a \rdtf, so is the function $x\mapsto xh(x)$.
+
+(f) For any $\epsilon>0$, the function
+$x\mapsto e^{-\epsilon x^2}$ is a rapidly decreasing test function.
+
+\proof{{\bf (a)} is trivial.
+
+\medskip
+
+{\bf (b)} Write $g(x)=h(y-x)$ for $x\in\Bbb R$.   Then
+$g^{(m)}(x)=(-1)^mh^{(m)}(y-x)$ for every $m$, so $g$ is smooth.   For
+any $k\in\Bbb N$,
+
+\Centerline{$|x|^k\le 2^k(|y|^k+|y-x|^k)$}
+
+\noindent for every $x$, so
+
+$$\eqalign{\sup_{x\in\Bbb R}|x|^k|g^{(m)}(x)|
+&=\sup_{x\in\Bbb R}|x|^k|h^{(m)}(y-x)|\cr
+&\le 2^k|y|^k\sup_{x\in\Bbb R}|h^{(m)}(y-x)|
+   +2^k\sup_{x\in\Bbb R}|y-x|^k|h^{(m)}(y-x)|\cr
+&=2^k|y|^k\sup_{x\in\Bbb R}|h^{(m)}(x)|
+   +2^k\sup_{x\in\Bbb R}|x|^k|h^{(m)}(x)|
+<\infty.\cr}$$
+
+\medskip
+
+{\bf (c)} Because
+
+\Centerline{$M=\sup_{x\in\Bbb R}|h(x)|+x^2|h(x)|$}
+
+\noindent is finite, we have
+
+\Centerline{$\int|h|\le\int\Bover{M}{1+x^2}dx<\infty$.}
+
+\noindent Of course we now have $|h^2|\le M|h|$, so $h^2$ also is
+integrable.
+
+\medskip
+
+{\bf (d)} This is immediate from the definition, as every derivative of
+$h'$ is a derivative of $h$.
+
+\medskip
+
+{\bf (e)} Setting $g(x)=xh(x)$, $g^{(m)}(x)=xh^{(m)}(x)+mh^{(m-1)}(x)$
+for $m\ge 1$, so
+
+\Centerline{$\sup_{x\in\Bbb R}|x^kg^{(m)}(x)|
+\le\sup_{x\in\Bbb R}|x^{k+1}h^{(m)}(x)|
+   +m\sup_{x\in\Bbb R}|x^kh^{(m-1)}(x)|$}
+
+\noindent is finite, for all $k\in\Bbb N$, $m\ge 1$.
+
+\medskip
+
+{\bf (f)} If $h(x) = e^{-\epsilon x^2}$, then for each $m\in\Bbb N$ we
+have $h^{(m)}(x)=p_m(x)h(x)$, where $p_0(x)=1$ and
+$p_{m+1}(x)=p'_m(x)-2\epsilon xp_m(x)$, so that $p_m$ is a polynomial.
+Because $e^{\epsilon x^2}\ge\epsilon^{k+1}x^{2k+2}/(k+1)!$ for all $x$,
+$k\ge 0$,
+
+\Centerline{$\lim_{|x|\to\infty}|x|^kh(x)
+=\lim_{x\to\infty}x^k/e^{\epsilon x^2}=0$}
+
+\noindent for every $k$, and $\lim_{|x|\to\infty}p(x)h(x)=0$ for every
+polynomial $p$;  consequently
+
+\Centerline{$\lim_{|x|\to\infty}x^kh^{(m)}(x)
+=\lim_{|x|\to\infty}x^kp_m(x)h(x)=0$}
+
+\noindent for all $k$, $m$, and $h$ is a rapidly decreasing test
+function.
+}%end of proof of 284B
+
+
+\leader{284C}{Proposition} Let $h:\Bbb R\to\Bbb C$ be a rapidly
+decreasing test function.   Then $\varhat{h}:\Bbb R\to\Bbb C$ and
+$\varcheck{h}:\Bbb R\to\Bbb C$ are rapidly
+decreasing test functions, and $\varhat{h}\varcheck{\phantom{h}} =
+\varcheck{h}\varhat{\phantom{h}} = h$.
+
+\proof{{\bf (a)} Let $k$, $m\in\Bbb N$.   Then
+$\sup_{x\in\Bbb R}(|x|^m+|x|^{m+2})|h^{(k)}(x)|<\infty$ and
+$\int_{-\infty}^{\infty}|x^mh^{(k)}(x)|dx
+\ifdim\pagewidth=390pt\penalty-100\fi
+<\infty$.   We may therefore
+use 283Ch-283Ci to see that
+$y\mapsto i^{k+m}y^k\varhat{h}\vthsp^{(m)}(y)$ is the Fourier
+transform of $x\mapsto x^mh^{(k)}(x)$, and therefore that
+$\lim_{|y|\to\infty}y^k\varhat{h}\vthsp^{(m)}(y)=0$, by 283Cg, so that
+(because $\varhat{h}\vthsp^{(m)}$ is continuous)
+$\sup_{y\in\Bbb R}|y^k\varhat{h}\vthsp^{(m)}(y)|$ is finite.   As $k$
+and $m$ are arbitrary, $\varhat{h}$ is a rapidly decreasing test
+function.
+
+\medskip
+
+{\bf (b)} Since $\varcheck{h}(y)=\varhat{h}(-y)$ for every $y$, it
+follows at once that $\varcheck{h}$ is a rapidly decreasing test
+function.
+
+\medskip
+
+{\bf (c)} By 283J, it follows from (a) and (b) that
+$\varhat{h}\varcheck{\phantom{h}}=\varcheck{h}\varhat{\phantom{h}}=h$.
+}%end of proof of 284C
+
+\leader{284D}{Definition} I will use the phrase {\bf tempered function}
+on $\Bbb R$ to mean
+a measurable complex-valued function $f$, defined almost everywhere in
+$\Bbb R$, such that
+
+\Centerline{$\int_{-\infty}^{\infty}
+  \Bover1{1+|x|^k}|f(x)|dx<\infty$}
+
+\noindent for some $k\in\Bbb N$.
+
+\leader{284E}{}\cmmnt{ As in 284B I spell out some elementary facts.
+
+\medskip
+
+\noindent}{\bf Lemma} (a) If $f$ and $g$ are tempered functions, so are
+$|f|$, $f+g$ and $cf$, for any $c\in\Bbb C$.
+
+(b) If $f$ is a tempered function then it is integrable over any bounded
+interval.
+
+(c) If $f$ is a tempered function and $x\in\Bbb R$, then $t\mapsto
+f(x+t)$ and $t\mapsto f(x-t)$ are both tempered functions.
+
+\proof{{\bf (a)} is elementary;  if
+
+\Centerline{$\int_{-\infty}^{\infty}
+  \Bover1{1+|x|^j}f(x)dx<\infty$,
+\quad$\int_{-\infty}^{\infty}\Bover1{1+|x|^k}g(x)dx<\infty$,}
+
+\noindent then
+
+\Centerline{$\int_{-\infty}^{\infty}\Bover1{1+|x|^{j+k}}
+|(f+g)(x)|dx<\infty$}
+
+\noindent because
+
+\Centerline{$1+|x|^{j+k}\ge\max(1,|x|^{j+k})\ge\max(1,|x|^j,|x|^k)
+\ge\Bover12\max(1+|x|^j,1+|x|^k)$}
+
+\noindent for all $x$.
+
+\medskip
+
+{\bf (b)} If
+
+\Centerline{$\int_{-\infty}^{\infty}\Bover1{1+|x|^k}|f(x)|dx
+=M<\infty$,}
+
+\noindent then for any $a\le b$
+
+\Centerline{$\int_a^b|f|\le M(1+|a|^k+|b|^k)(b-a)<\infty$.}
+
+\medskip
+
+{\bf (c)} The idea is the same as in 284Bb.   If $k\in\Bbb N$ is such
+that
+
+\Centerline{$\int_{-\infty}^{\infty}\Bover1{1+|t|^k}|f(t)|dt
+=M<\infty$,}
+
+\noindent then we have
+
+\Centerline{$1+|x+t|^k
+\le 2^k(1+|x|^k)(1+|t|^k)$}
+
+\noindent so that
+
+\Centerline{$\Bover1{1+|t|^k}
+\le 2^k(1+|x|^k)\Bover1{1+|x+t|^k}$}
+
+\noindent for every $t$, and
+
+\Centerline{$\int_{-\infty}^{\infty}\Bover{|f(x+t)|}{1+|t|^k}dt
+\le 2^k(1+|x|^k)\int_{-\infty}^{\infty}
+   \Bover{|f(x+t)|}{1+|x+t|^k}dt
+\le 2^k(1+|x|^k)M<\infty$.}
+
+\noindent Similarly,
+
+\Centerline{$\int_{-\infty}^{\infty}\Bover{|f(x-t)|}{1+|t|^k}dt
+\le 2^k(1+|x|^k)M<\infty$.}
+}%end of proof of 284E
+
+\leader{284F}{}\cmmnt{ Linking the two concepts, we have the
+following.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $f$ be a tempered function on $\Bbb R$ and $h$
+a rapidly decreasing test function.   Then $f\times h$ is integrable.
+
+\proof{ Of course $f\times h$ is measurable.   Let
+$k\in\Bbb N$ be such that
+$\int_{-\infty}^{\infty}
+\bover1{1+|x|^k}|f(x)|dx<\infty$.
+There is an $M$ such that $(1+|x|^k)|h(x)|\le M$ for every
+$x\in\Bbb R$, so that
+
+\Centerline{$\int_{-\infty}^{\infty}|f\times h|
+\le M\int_{-\infty}^{\infty}\Bover1{1+|x|^k}|f(x)|dx<\infty$.}
+}%end of proof of 284F
+
+\leader{284G}{Lemma} Suppose that $f_1$ and $f_2$ are tempered functions
+and that $\int f_1\times h=\int f_2\times h$ for every rapidly
+decreasing test function $h$.   Then $f_1\eae f_2$.
+
+\proof{{\bf (a)} Set $g=f_1-f_2$;  then $\int g\times h=0$ for every
+rapidly decreasing test function $h$.   Of course $g$ is a tempered
+function, so is integrable over any bounded interval.   By 222D, it will
+be enough if I can show that $\int_a^bg=0$ whenever $a<b$, since then we
+shall have $g=0$ a.e.\ on every bounded interval and $f_1\eae f_2$.
+
+\medskip
+
+{\bf (b)} Consider the function $\tilde\phi(x)=e^{-1/x}$ for $x>0$.   Then
+$\tilde\phi$ is differentiable arbitrarily often everywhere in
+$\ooint{0,\infty}$, $0<\tilde\phi(x)<1$ for every $x>0$, and
+$\lim_{x\to\infty}\tilde\phi(x)=1$.   Moreover, writing $\tilde\phi^{(m)}$ for
+the $m$th derivative of $\tilde\phi$,
+
+\Centerline{$\lim_{x\downarrow 0}\tilde\phi^{(m)}(x)
+=\lim_{x\downarrow 0}\Bover1x\tilde\phi^{(m)}(x)=0$}
+
+\noindent for every $m\in\Bbb N$.   \Prf\ (Compare 284Bf.)   We have
+$\tilde\phi^{(m)}(x)=p_m(\bover1x)\tilde\phi(x)$, where $p_0(t)=1$ and
+$p_{m+1}(t)=t^2(p_m(t)-p_m'(t))$, so that $p_m$ is a polynomial for each
+$m\in\Bbb N$.   Now for any $k\in\Bbb N$,
+
+\Centerline{$0\le\limsup_{t\to\infty}t^ke^{-t}
+\le\lim_{t\to\infty}\Bover{(k+1)!t^k}{t^{k+1}}=0$,}
+
+\noindent so
+
+\Centerline{$\lim_{x\downarrow 0}\tilde\phi^{(m)}(x)
+=\lim_{t\to\infty}p_m(t)e^{-t}=0$,}
+
+\Centerline{$\lim_{x\downarrow 0}\Bover1x\tilde\phi^{(m)}(x)
+=\lim_{t\to\infty}tp_m(t)e^{-t}=0$. \Qed}
+
+\medskip
+
+{\bf (c)} Consequently, setting $\phi(x)=0$ for $x\le 0$, $e^{-1/x}$ for
+$x>0$, $\phi$ is smooth, with $m$th derivative
+
+\Centerline{$\phi^{(m)}(x)=0$ for $x\le 0$,
+\quad$\phi^{(m)}(x)=\tilde\phi^{(m)}(x)$ for $x>0$.}
+
+\noindent (The proof is an easy induction on $m$.)   Also
+$0\le\phi(x)\le 1$ for every $x\in\Bbb R$, and
+$\lim_{x\to\infty}\phi(x)=1$.
+
+\medskip
+
+{\bf (d)} Now take any $a<b$, and for $n\in\Bbb N$ set
+
+\Centerline{$\phi_n(x)=\phi(n(x-a))\phi(n(b-x))$.}
+
+\noindent Then $\phi_n$ will be smooth and  $\phi_n(x)=0$ if
+$x\notin\ooint{a,b}$, so surely $\phi_n$ is a rapidly decreasing test
+function, and
+
+\Centerline{$\int_{-\infty}^{\infty}g\times\phi_n=0$.}
+
+\noindent Next,  $0\le\phi_n(x)\le 1$ for every $x$, $n$, and if $a<x<b$
+then $\lim_{n\to\infty}\phi_n(x)=1$.   So
+
+\Centerline{$\int_a^bg=\int g\times\chi(\ooint{a,b})
+=\int g\times(\lim_{n\to\infty}\phi_n)
+=\lim_{n\to\infty}\int g\times\phi_n=0$,}
+
+\noindent using Lebesgue's Dominated Convergence Theorem.   As $a$ and
+$b$ are arbitrary, $g=0$ a.e., as required.
+}%end of proof of 284G
+
+\leader{284H}{Definition} Let $f$ and $g$ be tempered
+functions\cmmnt{ in
+the sense of 284D}.   Then I will say that $g$ {\bf represents the
+Fourier transform of} $f$ if
+
+\Centerline{$\int_{-\infty}^{\infty}g\times h
+=\int_{-\infty}^{\infty}f\times\varhat{h}$}
+
+\noindent for every rapidly decreasing test function $h$.
+
+\leader{284I}{Remarks (a)}\cmmnt{ As usual, when shifting definitions
+in this way, we have some checking to do.}
+If $f$ is an integrable complex-valued function on $\Bbb R$ and $\varhatf$
+is its Fourier transform, then\cmmnt{ surely $\varhatf$ is a tempered
+function,
+being a bounded continuous function;  and if $h$ is any rapidly
+decreasing test function, then
+$\int\varhatf\times h=\int f\times\varhat{h}$
+by 283O.   Thus} $\varhatf$ `represents the Fourier transform of
+$f$'\cmmnt{ in
+the sense of 284H above}.
+
+\header{284Ib}{\bf (b)} Note also that\cmmnt{ 284G assures us that} if
+$g_1$, $g_2$ are two tempered functions both representing the Fourier
+transform of $f$, then $g_1\eae g_2$\cmmnt{, since we must have
+
+\Centerline{$\int g_1\times h=\int f\times\varhat{h}=\int g_2\times h$}
+
+\noindent for every rapidly decreasing test function $h$.}
+
+\spheader 284Ic It is I suppose obvious that if $f_1$, $f_2$, $g_1$ and
+$g_2$ are tempered functions and $g_i$ represents the Fourier transform of
+$f_i$ for both $i$, then $cg_1+g_2$ represents the Fourier transform of
+$cf_1+f_2$ for every $c\in\Bbb C$.
+
+\cmmnt{\spheader 284Id
+Of course the value of this indirect approach is that we can assign
+Fourier transforms, in a sense, to many more functions.   But we must
+note at once that if $g$ `represents the Fourier transform of $f$'
+then so will any function equal almost everywhere to $g$;  we can no
+longer expect to be able to speak of `the' Fourier transform of $f$
+as a function.   We could say that `the' Fourier transform of $f$ is
+a functional
+$\phi$ on the space of rapidly decreasing test functions, defined by
+setting $\phi(h)=\int f\times\varhat{h}$;   alternatively, we could say
+that `the' Fourier transform of $f$ is a member of $L_{\Bbb C}^0$, the
+space of equivalence classes of almost-everywhere-defined measurable
+functions (241J).
+}%end of comment
+
+\spheader 284Ie\cmmnt{ It is now natural to say that} {\bf $g$
+represents the inverse Fourier transform of $f$}\cmmnt{ just when $f$
+represents the Fourier transform of $g$;  that is,}  when $\int f\times
+h=\int g\times\varhat{h}$ for every rapidly decreasing test function
+$h$.   \cmmnt{Because
+$\varhat{h}\varcheck{\phantom{h}}=\varcheck{h}\varhat{\phantom{h}}=h$
+for every such $h$ (284C), this is the same thing as saying that
+$\int g\times h=\int f\times\varcheck{h}$ for every rapidly decreasing test
+function $h$, which is the other natural expression of what it might
+mean to say that `$g$ represents the inverse Fourier transform of
+$f$'.}
+
+\spheader 284If If $f$, $g$ are tempered functions and we write
+$\Reverse{g}(x)=g(-x)$ whenever this is defined, then\cmmnt{ $\Reverse{g}$ will also
+be a tempered function, and we shall always have
+
+\Centerline{$\int\Reverse{g}\times\varhat{h}
+=\int g(-x)\varhat{h}(x)dx
+=\int g(x)\varhat{h}(-x)dx
+=\int g\times\varcheck{h}$,}
+
+\noindent so that}
+
+\qquad $g$ represents the Fourier transform of $f$
+
+\cmmnt{\qquad\qquad$\iff\,\int g\times h=\int f\times\varhat{h}$ for
+every test function $h$
+
+\qquad\qquad$\iff\,\int g\times\varcheck{h}=\int
+f\times\varcheck{h}\varhat{\phantom{h}}$ for every $h$
+
+\qquad\qquad$\iff\,\int\Reverse{g}\times\varhat{h}=\int f\times h$ for every
+$h$
+}%end of comment
+
+\qquad\qquad$\iff\,\Reverse{g}$ represents the inverse Fourier transform of
+$f$.
+
+\cmmnt{\noindent Combining this with (d), we get
+
+\qquad $g$ represents the \Ft\ of $f$
+
+%\qquad\qquad$\iff\,(\Reverse{f})\ssplrarrow=f$
+%represents the inverse \Ft\ of $g$
+
+\qquad\qquad$\iff\,\Reverse{\Reverse{f}}=f$
+represents the inverse \Ft\ of $g$
+
+\qquad\qquad$\iff\,\Reverse{f}$ represents the \Ft\ of $g$.
+}%end of comment
+
+\cmmnt{\spheader 284Ig Yet again, we ought to be conscious that a check
+is called for:  if
+$f$ is integrable and $\varcheckf$ is its inverse Fourier transform as
+defined in 283Ab, then
+
+\Centerline{$\int\varcheckf\times\varhat{h}
+=\int f\times\varhat{h}\varcheck{\phantom{h}}
+=\int f\times h$}
+
+\noindent for every rapidly decreasing test function $h$, so
+$\varcheckf$ `represents the inverse Fourier transform of $f$' in the
+sense given here.
+}%end of comment
+
+\leader{284J}{Lemma} Let $f$ be any tempered function and $h$ a rapidly
+decreasing test function.   Then $f*h$, defined by the formula
+
+\Centerline{$(f*h)(y)=\int_{-\infty}^{\infty}f(t)h(y-t)dt$,}
+
+\noindent is defined everywhere.
+
+\proof{ Take any $y\in\Bbb R$.   By 284Bb,
+$t\mapsto h(y-t)$ is a rapidly decreasing test function, so the integral
+is always defined in $\Bbb C$, by 284F.
+}%end of proof of 284J
+
+\leader{284K}{Proposition} Let $f$ and $g$ be tempered functions such
+that $g$ represents the Fourier transform of $f$, and $h$ a rapidly
+decreasing test function.
+
+(a) The Fourier transform of the integrable function $f\times h$ is
+$\bover1{\sqrt{2\pi}}g*\varhat{h}$.
+
+(b) The Fourier transform of the continuous function $f*h$ is
+represented by the
+product $\sqrt{2\pi}g\times\varhat{h}$.
+
+\proof{{\bf (a)} Of course $f\times h$ is integrable, by 284F,
+while $g*\varhat{h}$ is defined everywhere, by 284C and 284J.
+
+Fix $y\in\Bbb R$.   Set $h_1(x)=\varhat{h}(y-x)$ for $x\in\Bbb R$;
+then $h_1$ is a rapidly decreasing test function because $\varhat{h}$
+is (284Bb).   Now
+
+$$\eqalign{\varhat{h}_1(t)
+&=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+  e^{-itx}\varhat{h}(y-x)dx
+=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+  e^{-it(y-x)}\varhat{h}(x)dx\cr
+&=\Bover{1}{\sqrt{2\pi}}e^{-ity}
+   \int_{-\infty}^{\infty}e^{itx}\varhat{h}(x)dx
+=e^{-ity}\varhat{h}\varcheck{\phantom{h}}(t)
+=e^{-ity}h(t),\cr}$$
+
+\noindent using 284C.   Accordingly
+
+$$\eqalignno{(f\times h)\varsphat(y)
+&=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-ity}f(t)h(t)dt\cr
+&=\Bover1{\sqrt{2\pi}}
+  \int_{-\infty}^{\infty}f(t)\varhat{h}_1(t)dt
+=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}g(t)h_1(t)dt\cr
+\noalign{\noindent (because $g$ represents the Fourier transform of
+$f$)}
+&=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}g(t)\varhat{h}(y-t)dt
+=\Bover1{\sqrt{2\pi}}(g*\varhat{h})(y).\cr}$$
+
+\noindent As $y$ is arbitrary, $\Bover1{\sqrt{2\pi}}g*\varhat{h}$ is the
+Fourier transform of $f\times h$.
+
+
+\medskip
+
+{\bf (b)} Write $f_1$ for the Fourier transform of $g\times\varhat{h}$,
+$\Reverse{f}(x)=f(-x)$ when this is defined, and $\Reverse{h}(x)=h(-x)$ for every $x$,
+so that $\Reverse{f}$ represents the Fourier transform of $g$, by 284If, and
+$\Reverse{h}$ is the Fourier transform of $\varhat{h}$.   By (a), we have
+$f_1=\Bover1{\sqrt{2\pi}}\Reverse{f}*\Reverse{h}$.
+This means that the inverse Fourier transform of
+$\sqrt{2\pi}g\times\varhat{h}$ must be
+$\sqrt{2\pi}\Reverse{f}_1=(\Reverse{f}*\Reverse{h})\ssplrarrow$;
+and as
+
+$$\eqalign{(\Reverse{f}*\Reverse{h})\ssplrarrow(y)
+&=(\Reverse{f}*\Reverse{h})(-y)
+=\int_{-\infty}^{\infty}\Reverse{f}(t)\Reverse{h}(-y-t)dt\cr
+&=\int_{-\infty}^{\infty}f(-t)h(y+t)dt
+=\int_{-\infty}^{\infty}f(t)h(y-t)dt
+=(f*h)(y),\cr}$$
+
+\noindent the inverse Fourier transform of
+$\sqrt{2\pi}g\times\varhat{h}$ is $f*h$ (which is therefore continuous),
+and $\sqrt{2\pi}g\times\varhat{h}$ must represent the Fourier transform
+of $f*h$.
+}%end of proof of 284K
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Compare 283M.   It is typical of the theory of
+Fourier transforms that we have formulae valid in a wide variety of
+contexts, each requiring a different interpretation and a different
+proof.
+}%end of comment
+
+\leader{284L}{}\cmmnt{ We are now ready for a result corresponding to
+282H.   I use a different method, or at least a different arrangement of
+the ideas, through the following fact, which is important in other ways.
+
+\medskip
+
+\noindent}{\bf Proposition}  Let $f$ be a tempered function.
+Writing $\psi_{\sigma}(x) =\bover1{\sigma\sqrt{2\pi}}e^{-x^2/2\sigma^2}$
+for $x\in\Bbb R$ and $\sigma>0$, then
+
+\Centerline{$\lim_{\sigma\downarrow 0}(f*\psi_{\sigma})(x)=c$}
+
+\noindent whenever $x\in\Bbb R$ and $c\in\Bbb C$ are such that
+
+\Centerline{$\lim_{\delta\downarrow 0}
+\Bover1{\delta}\int_{0}^{\delta}|f(x+t)+f(x-t)-2c|dt=0$.}
+
+\proof{{\bf (a)} By 284Bf, every $\psi_{\sigma}$ is a rapidly
+decreasing test function, so that $f*\psi_{\sigma}$ is defined
+everywhere, by 284J.   We need to know that
+$\int_{-\infty}^{\infty}\psi_{\sigma}=1$;  this is because (substituting
+$u=x/\sigma$)
+
+\Centerline{$\int_{-\infty}^{\infty}\psi_{\sigma}
+=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-u^2/2}du=1$,}
+
+\noindent by 263G.   The argument now follows the lines of 282H.   Set
+
+\Centerline{$\phi(t)=|f(x+t)+f(x-t)-2c|$}
+
+\noindent when this is defined, which is almost everywhere, and
+$\Phi(t)=\int_0^t\phi$, defined for all $t\ge 0$ because $f$ is
+integrable over every bounded interval (284Eb).   We have
+
+$$\eqalignno{|(f*\psi_{\sigma})(x)-c|
+&=|\int_{-\infty}^{\infty}f(x-t)\psi_{\sigma}(t)dt
+-c\int_{-\infty}^{\infty}\psi_{\sigma}(t)dt|\cr
+&=|\int_{-\infty}^0(f(x-t)-c)\psi_{\sigma}(t)dt
++\int_{0}^{\infty}(f(x-t)-c)\psi_{\sigma}(t)dt|\cr
+&=|\int_{0}^{\infty}(f(x+t)-c)\psi_{\sigma}(t)dt
++\int_{0}^{\infty}(f(x-t)-c)\psi_{\sigma}(t)dt|\cr
+\noalign{\noindent (because $\psi_{\sigma}$ is an even function)}
+&=|\int_{0}^{\infty}(f(x+t)+f(x-t)-2c)\psi_{\sigma}(t)dt|\cr
+&\le\int_{0}^{\infty}|f(x+t)+f(x-t)-2c|\psi_{\sigma}(t)dt
+=\int_0^{\infty}\phi\times\psi_{\sigma}.\cr}$$
+
+\medskip
+
+{\bf (b)} I should explain why this last integral is finite.   Because
+$f$ is a tempered function, so are the functions $t\mapsto f(x+t)$,
+$t\mapsto f(x-t)$ (284Ec);  of course constant functions are tempered,
+so $t\mapsto\phi(t)=|f(x+t)+f(x-t)-2c|$ is tempered, and because
+$\psi_{\sigma}$ is a rapidly decreasing test function we may
+apply 284F
+to see that the product is integrable.
+
+\medskip
+
+{\bf (c)} Let $\epsilon>0$.   By hypothesis, $\lim_{t\downarrow
+0}\Phi(t)/t=0$;
+let $\delta>0$ be such that $\Phi(t)\le\epsilon t$ for
+every $t\in[0,\delta]$.   Take any $\sigma\in\ocint{0,\delta}$.   I
+break the
+integral $\int_0^{\infty}\phi\times\psi_{\sigma}$ up into three parts.
+
+\medskip
+
+\quad{\bf (i)} For the integral from $0$ to $\sigma$, we have
+
+$$\int_0^{\sigma}\phi\times\psi_{\sigma}
+\le\int_0^{\sigma}\Bover{1}{\sigma\sqrt{2\pi}}\phi
+=\Bover1{\sigma\sqrt{2\pi}}\Phi(\sigma)
+\le\Bover{\epsilon\sigma}{\sigma\sqrt{2\pi}}\le\epsilon,$$
+
+\noindent because $\psi_{\sigma}(t)\le\bover1{\sigma\sqrt{2\pi}}$ for
+every $t$.
+
+\medskip
+
+\quad{\bf (ii)} For the integral from $\sigma$ to $\delta$, we have
+
+$$\eqalignno{\int_{\sigma}^{\delta}\phi\times\psi_{\sigma}
+&\le\Bover1{\sigma\sqrt{2\pi}}\int_{\sigma}^{\delta}
+  \phi(t)\Bover{2\sigma^2}{t^2}dt\cr
+\noalign{\noindent (because $e^{-t^2/2\sigma^2}
+=1/e^{t^2/2\sigma^2}\le
+1/(t^2/2\sigma^2)=2\sigma^2/t^2$ for every $t\ne 0$)}
+&=\sigma\sqrt{\Bover2{\pi}}\int_{\sigma}^{\delta}
+  \Bover{\phi(t)}{t^2}dt
+=\sigma\sqrt{\Bover2{\pi}}\bigl(\Bover{\Phi(\delta)}{\delta^2}
+   -\Bover{\Phi(\sigma)}{\sigma^2}
+   +\int_{\sigma}^{\delta}\Bover{2\Phi(t)}{t^3}dt\bigr)\cr
+\noalign{\noindent (integrating by parts -- see 225F)}
+&\le\sigma\bigl(\Bover{\epsilon}{\delta}
+   +\int_{\sigma}^{\delta}\Bover{2\epsilon}{t^2}dt\bigr)\cr
+\noalign{\noindent (because $\Phi(t)\le\epsilon t$ for $0\le
+t\le\delta$ and $\sqrt{2/\pi}\le 1$)}
+&\le\sigma\bigl(\Bover{\epsilon}{\delta}
+   +\Bover{2\epsilon}{\sigma}\bigr)
+\le 3\epsilon.\cr}$$
+
+\medskip
+
+\quad{\bf (iii)} For the integral from $\delta$ to $\infty$, we have
+
+$$\eqalign{\int_{\delta}^{\infty}\phi\times\psi_{\sigma}
+&=\bover1{\sqrt{2\pi}}\int_{\delta}^{\infty}
+  \phi(t)\bover{e^{-t^2/2\sigma^2}}{\sigma}dt.\cr}$$
+
+\noindent Now for any $t\ge\delta$,
+
+\Centerline{$\sigma\mapsto\Bover1{\sigma}
+e^{-t^2/2\sigma^2}:\ocint{0,\delta}\to\Bbb R$}
+
+\noindent is monotonically increasing, because its derivative
+
+\Centerline{$\Bover{d}{d\sigma}\Bover1{\sigma}e^{-t^2/2\sigma^2}
+=\Bover1{\sigma^2}\bigl(\Bover{t^2}{\sigma^2}-1\bigr)
+e^{-t^2/2\sigma^2}$}
+
+\noindent is positive, and
+
+\Centerline{$\lim_{\sigma\downarrow 0}\Bover1{\sigma}
+e^{-t^2/2\sigma^2}=
+\lim_{a\to\infty}ae^{-a^2t^2/2}=0$.}
+
+\noindent So we may apply Lebesgue's Dominated Convergence Theorem to
+see that
+
+$$\lim_{n\to\infty}\int_{\delta}^{\infty}
+   \phi(t)\bover{e^{-t^2/2\sigma_n^2}}{\sigma_n}dt=0$$
+
+\noindent whenever $\sequencen{\sigma_n}$ is a sequence in
+$\ocint{0,\delta}$ converging to $0$, so that
+
+$$\lim_{\sigma\downarrow 0}\int_{\delta}^{\infty}
+   \phi(t)\bover{e^{-t^2/2\sigma^2}}{\sigma}dt=0.$$
+
+\noindent There must therefore
+be a $\sigma_0\in\ocint{0,\delta}$ such that
+
+\Centerline{$\int_{\delta}^{\infty}\phi\times\psi_{\sigma}
+\le\epsilon$}
+
+\noindent for every $\sigma\le \sigma_0$.
+
+\medskip
+
+\quad{\bf (iv)} Putting these together, we see that
+
+\Centerline{$|(f*\psi_{\sigma})(x)-c|
+\le\int_0^{\infty}\phi\times\psi_{\sigma}
+\le\epsilon+3\epsilon+\epsilon=5\epsilon$}
+
+\noindent whenever $0<\sigma\le\sigma_0$.   As $\epsilon$ is arbitrary,
+$\lim_{\sigma\downarrow 0}(f*\psi_{\sigma})(x)=c$, as claimed.
+}%end of proof of 284L
+
+\vleader{60pt}{284M}{Theorem} Let $f$ and $g$ be tempered functions such that
+$g$ represents the Fourier transform of $f$.   Then
+
+(a)(i) $g(y)
+=\lim_{\epsilon\downarrow 0}\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+e^{-iyx}e^{-\epsilon x^2}f(x)dx$ for almost every $y\in\Bbb R$.
+
+\quad(ii) If $y\in\Bbb R$ is such that $a=\lim_{t\in\dom g,t\uparrow
+y}g(t)$ and $b=\lim_{t\in\dom g,t\downarrow y}g(t)$ are both defined in
+$\Bbb C$, then
+
+\Centerline{$\lim_{\epsilon\downarrow 0}\Bover1{\sqrt{2\pi}}
+\int_{-\infty}^{\infty}
+e^{-iyx}e^{-\epsilon x^2}f(x)dx=\Bover12(a+b)$.}
+
+(b)(i) $f(x)
+=\lim_{\epsilon\downarrow 0}\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+e^{ixy}e^{-\epsilon y^2}g(y)dy$ for almost every $x\in\Bbb R$.
+
+\quad(ii) If $x\in\Bbb R$ is such that $a=\lim_{t\in\dom f,t\uparrow
+x}f(t)$ and $b=\lim_{t\in\dom f,t\downarrow x}f(t)$ are both defined in
+$\Bbb C$, then
+
+\Centerline{$\lim_{\epsilon\downarrow 0}\Bover1{\sqrt{2\pi}}
+\int_{-\infty}^{\infty}
+e^{ixy}e^{-\epsilon y^2}g(y)dy=\Bover12(a+b)$.}
+
+\proof{{\bf (a)(i)}  By 223D,
+
+\Centerline{$\lim_{\delta\downarrow 0}\Bover1{2\delta}
+\int_{-\delta}^{\delta}|g(y+t)-g(y)|dt=0$}
+
+\noindent for almost every $y\in\Bbb R$, because $g$ is integrable over
+any bounded interval.   Fix any such $y$.   Set
+$\phi(t)=|g(y+t)+g(y-t)-2g(y)|$ whenever this is defined.   Then, as in
+the proof of 282Ia,
+
+\Centerline{$\int_0^{\delta}\phi
+\le\int_{-\delta}^{\delta}|g(y+t)-g(y)|dt$,}
+
+\noindent so $\lim_{\delta\downarrow
+0}\bover1{\delta}\int_0^{\delta}\phi=0$.   Consequently, by 284L,
+
+\Centerline{$g(y)=\lim_{\sigma\to\infty}(g*\psi_{1/\sigma})(y)$.}
+
+\noindent We know from 283N that the Fourier transform of
+$\psi_{\sigma}$ is $\bover1{\sigma}\psi_{1/\sigma}$ for any $\sigma>0$.
+Accordingly, by 284K, $g*\psi_{1/\sigma}$ is the Fourier transform of
+$\sigma\sqrt{2\pi} f\times\psi_{\sigma}$, that is,
+
+\Centerline{$(g*\psi_{1/\sigma})(y)
+=\int_{-\infty}^{\infty}e^{-iyx}\sigma\psi_{\sigma}(x)f(x)dx$.}
+
+\noindent So
+
+$$\eqalign{g(y)
+&=\lim_{\sigma\to\infty}
+   \int_{-\infty}^{\infty}e^{-iyx}\sigma\psi_{\sigma}(x)f(x)dx\cr
+&=\lim_{\sigma\to\infty}\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+   e^{-iyx}e^{-x^2/2\sigma^2}f(x)dx\cr
+&=\lim_{\epsilon\downarrow 0}\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+   e^{-iyx}e^{-\epsilon x^2}f(x)dx.\cr}$$
+
+\noindent And this is true for almost every $y$.
+
+\medskip
+
+\quad{\bf (ii)} Again, setting $c=\bover12(a+b)$,
+$\phi(t)=|g(y+t)+g(y-t)-2c|$ whenever this is defined, we have
+$\lim_{t\in\dom\phi,t\downarrow 0}\phi(t)\penalty-100=0$, so of course
+$\lim_{\delta\downarrow 0}\bover{1}{\delta}\int_0^{\delta}\phi=0$, and
+
+$$c
+=\lim_{\sigma\to\infty}(g*\psi_{1/\sigma})(y)
+=\lim_{\epsilon\downarrow 0}\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+   e^{-iyx}e^{-\epsilon x^2}f(x)dx$$
+
+\noindent as before.
+
+
+\medskip
+
+{\bf (b)} This can be shown by similar arguments;  or it may be actually
+deduced from (a), by observing that $x\mapsto\Reverse{f}(x)=f(-x)$ represents
+the Fourier transform of $g$ (see 284Ie), and applying (a) to $g$ and
+$\Reverse{f}$.
+}%end of proof of 284M
+
+\leader{284N}{$L^2$ \dvrocolon{spaces}}\cmmnt{ We are now ready for
+results corresponding to 282J-282K.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $\eusm L_{\Bbb C}^2$ be the space of
+square-integrable
+complex-valued functions on $\Bbb R$, and $\eusm S$ the space of rapidly
+decreasing test functions.   Then for every $f\in\eusm L_{\Bbb C}^2$ and
+$\epsilon>0$ there is an $h\in\eusm S$ such that $\|f-h\|_2\le\epsilon$.
+
+\proof{ Set $\phi(x)=e^{-1/x}$ for $x>0$, zero for $x\le
+0$;  recall from the proof of 284G that $\phi$ is smooth.   For any
+$a<b$, the functions
+
+\Centerline{$x\mapsto\phi_n(x)=\phi(n(x-a))\phi(n(b-x))$}
+
+\noindent provide a sequence of test functions converging to
+$\chi\ooint{a,b}$ from below, so (as in 284G)
+
+\Centerline{$\inf_{h\in\eusm S}\,\|\chi\ooint{a,b}-h\|^2_2
+\le\lim_{n\to\infty}\int_a^b|1-\phi_n|^2
+=0$.}
+
+\noindent Because $\eusm S$ is a linear space (284Ba), it follows that
+for every step-function $g$ with bounded
+support and every $\epsilon>0$ there is an $h\in\eusm S$ such that
+$\|g-h\|_2\le\bover12\epsilon$.   But we know from 244H/244Pb
+that for every
+$f\in\eusm L_{\Bbb C}^2$ and $\epsilon>0$ there is  a step-function $g$
+with bounded
+support such that $\|f-g\|_2\le\bover12\epsilon$;  so there must be an
+$h\in\eusm S$ such that
+
+\Centerline{$\|f-h\|_2\le\|f-g\|_2+\|g-h\|_2\le \epsilon$.}
+
+\noindent As $f$ and $\epsilon$ are arbitrary, we have the result.
+}%end of proof of 284N
+
+\leader{284O}{Theorem} (a) Let $f$ be any complex-valued function which
+is square-integrable over $\Bbb R$.   Then $f$ is a tempered function
+and its Fourier transform is represented by another square-integrable
+function $g$, and $\|g\|_2=\|f\|_2$.
+
+(b) If $f_1$ and $f_2$ are complex-valued functions, square-integrable
+over $\Bbb R$, with Fourier transforms represented by functions $g_1$, $g_2$, then
+
+\Centerline{$\int_{-\infty}^{\infty}f_1\times\bar f_2
+=\int_{-\infty}^{\infty}g_1\times\bar g_2$.}
+
+(c) If $f_1$ and $f_2$ are complex-valued functions, square-integrable
+over $\Bbb R$, with Fourier transforms represented by functions $g_1$, $g_2$, then the integrable function $f_1\times f_2$ has Fourier transform $\bover1{\sqrt{2\pi}}g_1*g_2$.
+
+(d) If $f_1$ and $f_2$ are complex-valued functions, square-integrable
+over $\Bbb R$, with Fourier transforms represented by functions $g_1$, $g_2$, then $\sqrt{2\pi}g_1\times g_2$ represents the Fourier transform of the continuous function $f_1*f_2$.
+
+\proof{{\bf (a)(i)} Consider first the case in which $f$ is a
+rapidly decreasing test function and $g$ is its Fourier transform;  we
+know that $g$ is also a \rdtf, and that $f$ is the inverse \Ft\ of $g$
+(284C).   Now the complex conjugate $\overline{g}$ of $g$ is given by
+the formula
+
+\Centerline{$\overline{g}(y)
+=\overline{\Bover1{\sqrt{2\pi}}
+  \intop\nolimits_{-\infty}^{\infty}e^{-iyx}f(x)dx}
+=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{iyx}\overline{f}(x)dx$,}
+
+\noindent so that $\overline{g}$ is the inverse Fourier transform of
+$\overline{f}$.   Accordingly
+
+\Centerline{$\int f\times\overline{f}
+=\int\varcheck{g}\times\overline{f}
+=\int g\times\varcheck{\overline{f}}
+=\int g\times\overline{g}$,}
+
+\noindent using 283O for the middle equality.
+
+\medskip
+
+\quad{\bf (ii)}  Now suppose that $f\in\eusm L_{\Bbb C}^2$.   I said
+that $f$ is a tempered function;  this is simply because
+
+\Centerline{$\int_{-\infty}^{\infty}
+\bigl(\Bover{1}{1+|x|}\bigr)^2dx<\infty$,}
+
+\noindent so
+
+\Centerline{$\int_{-\infty}^{\infty}
+\Bover{|f(x)|}{1+|x|}dx<\infty$}
+
+\noindent (244Eb).   By 284N, there is a sequence $\sequencen{f_n}$
+of rapidly decreasing test functions such that
+$\lim_{n\to\infty}\|f-f_n\|_2=0$.   By (i),
+
+\Centerline{$\lim_{m,n\to\infty}\|\varhatf_m-\varhatf_n\|_2
+=\lim_{m,n\to\infty}\|f_m-f_n\|_2=0$,}
+
+\noindent and the sequence $\sequencen{{\varhatf}\vthsp_n^{\ssbullet}}$
+of equivalence classes is a Cauchy sequence in $L_{\Bbb C}^2$.
+Because $L_{\Bbb C}^2$ is complete (244G/244Pb),
+$\sequencen{{\varhatf}\vthsp_n^{\ssbullet}}$ has a limit in
+$L_{\Bbb C}^2$, which is
+representable as $g^{\ssbullet}$ for some $g\in\eusm L_{\Bbb C}^2$.
+Like $f$, $g$ must be a tempered function.   Of course
+
+\Centerline{$\|g\|_2=\lim_{n\to\infty}\|\varhatf_n\|_2
+=\lim_{n\to\infty}\|f_n\|_2=\|f\|_2$.}
+
+\noindent Now if $h$ is any rapidly decreasing test function,
+$h$ and $\varhat{h}$ are square-integrable (284Bc, 284C), so we shall have
+
+\Centerline{$\int g\times h
+=\lim_{n\to\infty}\int\varhatf_n\times h
+=\lim_{n\to\infty}\int f_n\times\varhat{h}
+=\int f\times\varhat{h}$.}
+
+\noindent So $g$ represents the Fourier transform of $f$.
+
+\medskip
+
+{\bf (b)} By 284Ib, any functions representing the Fourier transforms of
+$f_1$ and $f_2$ must be equal almost everywhere to square-integrable
+functions, and therefore square-integrable, with the right norms.   It
+follows as in 282K (part (d) of the proof) that if $g_1$, $g_2$
+represent the Fourier
+transforms of $f_1$, $f_2$, so that $ag_1+bg_2$ represents the Fourier
+transform of $af_1+bf_2$ and $\|ag_1+bg_2\|_2=\|af_1+bf_2\|_2$ for all
+$a$, $b\in\Bbb C$, we must have
+
+\Centerline{$\int f_1\times\overline{f}_2=(f_1|f_2)
+=(g_1|g_2)=\int g_1\times\overline{g}_2$.}
+
+\medskip
+
+{\bf (c)} Of course $f_1\times f_2$ is integrable because it is the
+product of two square-integrable functions (244E/244Pb).
+
+\medskip
+
+\quad{\bf (i)} Let $y\in\Bbb R$ and set $f(x)=\overline{f_2(x)}e^{iyx}$
+for $x\in\Bbb R$.   Then $f\in\eusm L_{\Bbb C}^2$.   We need to know
+that the Fourier transform of $f$ is represented by $g$, where
+$g(u)=\overline{g_2(y-u)}$.   \Prf\ Let $h$ be a rapidly decreasing test
+function.   Then
+
+$$\eqalign{\int g\times h
+&=\int\overline{g_2(y-u)}h(u)du
+=\int \overline{g_2(u)}h(y-u)du\cr
+&=\overline{\int g_2\times h_1}
+=\overline{\int f_2\times \varhat{h}_1},\cr}$$
+
+\noindent where $h_1(u)=\overline{h(y-u)}$.   To compute $\varhat{h}_1$,
+we have
+
+$$\eqalign{\varhat{h}_1(v)
+&=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-ivu}h_1(u)du
+=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+  e^{-ivu}\overline{h(y-u)}du\cr
+&=\overline{\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+  e^{ivu}h(y-u)du}
+=\overline{\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+  e^{iv(y-u)}h(u)du}
+=\overline{e^{ivy}\varhat{h}(v)}.\cr}$$
+
+\noindent So
+
+\Centerline{$\int g\times h
+=\overline{\intop f_2\times\varhat{h}_1}
+=\int\overline{f_2(v)\varhat{h}_1(v)}dv
+=\int\overline{f_2(v)}e^{ivy}\varhat{h}(v)dv
+=\int f\times\varhat{h}$;}
+
+\noindent as $h$ is arbitrary, $g$ represents the Fourier transform of
+$f$. \Qed
+
+\medskip
+
+\quad{\bf (ii)} We now have
+
+$$\eqalignno{(f_1\times f_2)\varsphat(y)
+&=\Bover1{\sqrt{2\pi}}
+  \int_{-\infty}^{\infty}e^{-iyx}f_1(x)f_2(x)dx\cr
+&=\Bover1{\sqrt{2\pi}}
+  \int_{-\infty}^{\infty}f_1\times\bar f
+=\Bover1{\sqrt{2\pi}}
+  \int_{-\infty}^{\infty}g_1\times\bar g\cr
+\noalign{\noindent (using part (b))}
+&=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}g_1(u)g_2(y-u)du
+=\Bover1{\sqrt{2\pi}}(g_1*g_2)(y).\cr}$$
+
+\noindent As $y$ is arbitrary,
+$(f_1\times f_2)\varsphat=\bover1{\sqrt{2\pi}}g_1*g_2$, as claimed.
+
+\medskip
+
+{\bf (d)} By (c), the Fourier transform of $\sqrt{2\pi}g_1\times g_2$ is
+$\Reverse{f}_1*\Reverse{f}_2$, writing $\Reverse{f}_1(x)=f_1(-x)$,
+so that $\Reverse{f}_1$ represents
+the Fourier transform of $g_1$.   So the inverse Fourier transform of
+$\sqrt{2\pi}g_1\times g_2$ is $(\Reverse{f}_1*\Reverse{f}_2)\ssplrarrow$.
+But, just as in the
+proof of 284Kb, $(\Reverse{f}_1*\Reverse{f}_2)\ssplrarrow=f_1*f_2$,
+so $f_1*f_2$ is the
+inverse Fourier transform of $\sqrt{2\pi}g_1\times g_2$, and
+$\sqrt{2\pi}g_1\times g_2$ represents the Fourier transform of
+$f_1*f_2$, as claimed.   Also $f_1*f_2$, being the Fourier transform of
+an integrable function, is continuous (283Cf;  see also 255K).
+}%end of proof of 284O
+
+\leader{284P}{Corollary} Writing $L_{\Bbb C}^2$ for the Hilbert space of
+equivalence classes of square-integrable complex-valued functions on
+$\Bbb R$, we have a linear isometry $T:L_{\Bbb C}^2\to L_{\Bbb C}^2$
+given by saying that
+$T(f^{\ssbullet})=g^{\ssbullet}$ whenever $f$, $g\in\eusm L_{\Bbb C}^2$
+and $g$ represents the Fourier transform of $f$.
+
+\cmmnt{
+\leader{284Q}{Remarks (a)} 284P corresponds, of course, to 282K, where
+the similar isometry between $\ell_{\Bbb C}^2(\Bbb Z)$ and
+$L_{\Bbb C}^2(\ocint{-\pi,\pi})$
+%terms reversed for sake of line break
+is described.   In that case there was a marked asymmetry which is
+absent from the present situation;  because the relevant measure on
+$\Bbb Z$, counting measure, gives non-zero mass to every point, members
+of $\ell_{\Bbb C}^2$ are true functions, and it is not surprising that
+we have a
+straightforward formula for $S(f^{\ssbullet})\in\ell_{\Bbb C}^2$ for
+every $f\in\eusm L_{\Bbb C}^2(\ocint{-\pi,\pi})$.   The difficulty of
+describing
+$S^{-1}:\ell_{\Bbb C}^2(\Bbb Z)\to L_{\Bbb C}^2(\ocint{-\pi,\pi})$ is
+very similar to the difficulty of describing
+$T:L_{\Bbb C}^2(\Bbb R)\to L_{\Bbb C}^2(\Bbb R)$ and its inverse.
+284Yg and 286U-286V show just how close this similarity is.
+
+\header{284Qb}{\bf (b)} I have spelt out parts (c) and (d) of 284O in
+detail, perhaps in unnecessary detail, because they give me an
+opportunity to insist on the difference between
+`$\sqrt{2\pi}g_1\times g_2$ {\it represents} the Fourier transform of
+$f_1*f_2$' and
+`$\bover1{\sqrt{2\pi}}g_1*g_2$ {\it is} the Fourier transform of
+$f_1\times f_2$'.   The actual functions $g_1$ and $g_2$ are not
+well-defined by the hypothesis that they represent the Fourier
+transforms of $f_1$ and $f_2$, though their equivalence classes
+$g_1^{\ssbullet}$, $g_2^{\ssbullet}\in L_{\Bbb C}^2$ are.   So the
+product
+$g_1\times g_2$ is also not uniquely defined as a function, though its
+equivalence class
+$(g_1\times g_2)^{\ssbullet}=g_1^{\ssbullet}\times g_2^{\ssbullet}$ is
+well-defined as a member of $L_{\Bbb C}^1$.   However the
+continuous function $g_1*g_2$ is unaffected by changes to $g_1$ and
+$g_2$ on negligible sets, so is well defined as a function;  and since
+$f_1\times f_2$ is integrable, and has a true Fourier transform, it is
+to be expected that $(f_1\times f_2)\varsphat$ should be exactly equal
+to $\bover1{\sqrt{2\pi}}g_1*g_2$.
+
+This distinction between `being' a Fourier transform and `representing' a
+Fourier transform echoes a question which arose in 233D concerning
+conditional expectations.   I spoke there of `a' conditional expectation
+on $\Tau$ of a function $f$
+as being `a $\mu\restr\Tau$-integrable function $g$ such that
+$\int_Fg\,d\mu=\int_Ffd\mu$ for every $F\in\Tau$';  the point being that
+any $\mu\restr\Tau$-integrable function equal almost everywhere to $g$
+would equally be a conditional expectation of $f$.   Here we see that if
+$g$ represents the Fourier transform of $f$ then any function almost
+everywhere equal to $g$ will also represent the Fourier transform of $f$.
+In 242J I suggested resolving this complication by regarding conditional
+expectation as a map between $L^1$ spaces rather than between $\eusm L^1$
+spaces.   Here, similarly, we could think of the Fourier transform
+considered in 284H as being a linear operator
+defined on a certain subspace of $L^0(\mu)$.
+
+In the case of conditional expectations, I think that there are solid
+reasons for taking the operators on $L^1$ spaces as the real embodiment of
+the idea;  I will expand on these in Chapter 36 of the next volume.   In
+the case of Fourier transforms, I do not think the arguments have the same
+force.   In 284R below, and in \S285, we
+shall see that there are important cases in which we want to talk about
+Fourier transforms which cannot be represented by members of $L^0$, so
+that this would still be only a half-way house.
+
+\spheader 284Qc Of course 284Oc-284Od also exhibit a
+characteristic
+feature of arguments involving Fourier transforms, the extension by
+continuity of relations valid for test functions.
+
+\spheader 284Qd 284Oa is a version of {\bf Plancherel's
+theorem}.   The formula $\|f\|_2=\|\varhatf\|_2$ is {\bf Parseval's
+identity}.
+}%end of comment
+
+\cmmnt{
+\leader{284R}{Dirac's delta function} Consider the tempered
+function $\chi\Bbb R$ with constant value $1$.   In what sense, if any, can
+we assign a Fourier transform to $\chi\Bbb R$?
+
+If we examine $\int\chi\Bbb R\times\varhat{h}$, as suggested in 284H, we
+get
+
+\Centerline{$\int_{-\infty}^{\infty}\chi\Bbb R\times\varhat{h}
+=\int_{-\infty}^{\infty}\varhat{h}
+=\sqrt{2\pi}\varhat{h}\varcheck{\phantom{h}}(0)
+=\sqrt{2\pi}h(0)$}
+
+\noindent for every rapidly decreasing test function $h$.   Of course
+there is no {\it function} $g$ such that
+$\int g\times h=\sqrt{2\pi}h(0)$ for every rapidly decreasing test
+function $h$, since
+(using the arguments of 284G) we should have to have
+$\int_{a}^bg=\sqrt{2\pi}$ whenever $a<0<b$, so that the indefinite
+integral of $g$ could not be continuous at $0$.   However there is a
+{\it measure} on $\Bbb R$ with exactly the right property, the Dirac
+measure $\delta_0$ concentrated at $0$;  this is a Radon probability
+measure (257Xa), and $\int h\,d\delta_0=h(0)$ for
+every function $h$ defined at $0$.   So we shall have
+
+\Centerline{$\int_{-\infty}^{\infty}\chi\Bbb R\times\varhat{h}
+=\sqrt{2\pi}\int h\,d\delta_0$}
+
+\noindent for every rapidly decreasing test function $h$, and we can
+reasonably say that the measure $\nu=\sqrt{2\pi}\delta_0$ `represents
+the Fourier transform of $\chi\Bbb R$'.
+
+We note with pleasure at this point that
+
+\Centerline{$\Bover1{\sqrt{2\pi}}\int e^{ixy}\nu(dy)=1$}
+
+\noindent for every $x\in\Bbb R$, so that $\chi\Bbb R$ can be called the
+inverse Fourier transform of $\nu$.
+
+If we look at the formulae of Theorem 284M, we get ideas consistent with
+this pairing of $\chi\Bbb R$ with $\nu$.   We have
+
+\Centerline{
+$\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+  e^{-iyx}e^{-\epsilon x^2}\chi\Bbb R(x)dx
+=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-iyx}e^{-\epsilon x^2}dx
+=\Bover1{\sqrt{2\epsilon}}e^{-y^2/4\epsilon}$}
+
+\noindent for every $y\in\Bbb R$, using 283N with
+$\sigma=1/\sqrt{2\epsilon}$.   So
+
+\Centerline{$\lim_{\epsilon\downarrow 0}\Bover1{\sqrt{2\pi}}
+\int_{-\infty}^{\infty}e^{-iyx}e^{-\epsilon x^2}\chi\Bbb R(x)dx=0$}
+
+\noindent for every $y\ne 0$, and the Fourier transform of $\chi\Bbb R$
+should be
+zero everywhere except at $0$.   On the other hand, the functions
+$y\mapsto \Bover1{\sqrt{2\epsilon}}e^{-y^2/4\epsilon}$ all have integral
+$\sqrt{2\pi}$, concentrated more and more closely about $0$ as
+$\epsilon$ decreases to $0$, so also point us directly to $\nu$, the
+measure which gives mass $\sqrt{2\pi}$ to $0$.
+
+Thus allowing measures, as well as functions, enables us to extend the
+notion of Fourier transform.   Of course we can go very much farther
+than this.   If $h$ is any rapidly decreasing test function, then (because
+$\varcheck{h}\varhat{\phantom{h}}=h$)
+
+\Centerline{$\int_{-\infty}^{\infty}x\varhat{h}(x)dx
+=-i\sqrt{2\pi}h'(0)$,}
+
+\noindent so that the identity function $x\mapsto x$ can be assigned, as
+a Fourier transform, the operator $h\mapsto -i\sqrt{2\pi}h'(0)$.
+
+At this point we are entering the true theory of (Schwartzian)
+distributions or `generalized functions', and I had better stop.
+The `Dirac delta function' is most naturally regarded as the measure
+$\delta_0$ above;  alternatively, as
+$\Bover1{\sqrt{2\pi}}\varhat{\chi\Bbb R}$.
+}%end of comment
+
+\exercises{\leader{284W}{The multidimensional case} As in \S283, I give
+exercises
+designed to point the way to the $r$-dimensional generalization.
+
+\header{284Wa}{\bf (a)} A {\bf rapidly decreasing test function} on
+$\BbbR^r$ is a function $h:\BbbR^r\to\Bbb C$ such that (i) $h$ is {\bf
+smooth}, that is, all repeated partial derivatives
+
+\Centerline{$\Bover{\partial^m h}{\partial
+\xi_{j_1}\ldots\partial\xi_{j_m}}$}
+
+\noindent are defined and continuous everywhere in $\BbbR^r$ (ii)
+
+\Centerline{$\sup_{x\in\BbbR^r}\|x\|^k|h(x)|<\infty$,
+\quad $\sup_{x\in\Bbb
+R^r}\|x\|^k|\Bover{\partial^m h}{\partial
+\xi_{j_1}\ldots\partial\xi_{j_m}}(x)|<\infty$}
+
+\noindent for every $k\in\Bbb N$, $j_1,\ldots,j_m\le r$.   A {\bf
+tempered function} on $\BbbR^r$ is a measurable complex-valued function
+$f$, defined almost everywhere in $\BbbR^r$, such that, for some
+$k\in\Bbb N$,
+
+\Centerline{$\int_{\Bbb R^r}\Bover1{1+\|x\|^k}|f(x)|dx<\infty$.}
+
+\noindent Show that if $f$ is a tempered function on $\BbbR^r$ and $h$
+is a rapidly decreasing test function on $\BbbR^r$ then $f\times h$ is
+integrable.
+
+\header{284Wb}{\bf (b)} Show that if $h$ is a rapidly decreasing test
+function on $\BbbR^r$ so is $\varhat{h}$, and that in this case
+$\varhat{h}\varcheck{\phantom{h}}=h$.
+
+\header{284Wc}{\bf (c)} Show that if $f$ is a tempered function on
+$\Bbb R^r$ and $\int f\times h=0$ for every rapidly decreasing test
+function $h$ on $\BbbR^r$, then $f=0$ a.e.
+
+\header{284Wd}{\bf (d)} If $f$ and $g$ are tempered functions on
+$\Bbb R^r$, I say that {\bf  $g$ represents the Fourier transform of $f$}
+if $\int g\times h=\int f\times\varhat{h}$ for every rapidly decreasing
+test function $h$ on $\BbbR^r$.   Show that if $f$ is integrable then
+$\varhatf$ represents the Fourier transform of $f$ in this sense.
+
+\header{284We}{\bf (e)} Let $f$ be any tempered function on $\BbbR^r$.
+Writing $\psi_{\sigma}(x)
+=\bover1{(\sigma\sqrt{2\pi})^r}e^{-x\dotproduct x/2\sigma^2}$
+for $x\in\BbbR^r$, show that
+$\lim_{\sigma\downarrow 0}(f*\psi_{\sigma})(x)=c$ whenever
+$x\in\BbbR^r$, $c\in\Bbb C$ are such that
+$\lim_{\delta\downarrow 0}\bover1{\delta^r}
+\int_{B(x,\delta)}|f(t)-c|dt=0$, writing
+$B(x,\delta)=\{t:\|t-x\|\le\delta\}$.
+
+\header{284Wf}{\bf (f)} Let $f$ and $g$ be tempered functions on
+$\BbbR^r$ such that $g$ represents the Fourier transform of $f$, and $h$
+a rapidly decreasing test function.   Show that (i) the Fourier
+transform of $f\times h$ is $\bover1{(\sqrt{2\pi})^r}g*\varhat{h}$ (ii)
+$(\sqrt{2\pi})^rg\times\varhat{h}$ represents the Fourier transform of
+$f*h$.
+
+\header{284Wg}{\bf (g)} Let $f$ and $g$ be tempered functions on
+$\BbbR^r$ such that $g$ represents the Fourier transform of $f$.   Show
+that
+
+\Centerline{$g(y)
+=\lim_{\epsilon\downarrow 0}\Bover1{(\sqrt{2\pi})^r}
+  \int_{\Bbb R^r}
+  e^{-iy\dotproduct x}e^{-\epsilon x\dotproduct x}f(x)dx$}
+
+\noindent for almost every $y\in\BbbR^r$.
+
+\header{284Wh}{\bf (h)} Show that for any square-integrable
+complex-valued function $f$ on $\BbbR^r$ and any $\epsilon>0$ there is
+a \rdtf\ $h$ such that $\|f-h\|_2\le\epsilon$.
+
+\header{284Wi}{\bf (i)} Let $\eusm L_{\Bbb C}^2$ be the space of
+square-integrable complex-valued functions on $\BbbR^r$.   Show that
+
+\quad (i) for every $f\in\eusm L_{\Bbb C}^2$ there is a
+$g\in\eusm L_{\Bbb C}^2$ which
+represents the Fourier transform of $f$, and in this case
+$\|g\|_2=\|f\|_2$;
+
+\quad (ii) if $g_1$, $g_2\in\eusm L_{\Bbb C}^2$ represent the Fourier
+transforms of $f_1$, $f_2\in\eusm L_{\Bbb C}^2$, then
+$\bover1{(\sqrt{2\pi})^r}g_1*g_2$ is
+the Fourier transform of $f_1\times f_2$, and
+$(\sqrt{2\pi})^rg_1\times g_2$ represents the Fourier transform of
+$f_1*f_2$.
+
+\spheader 284Wj Let $T$ be an invertible real $r\times r$ matrix, regarded
+as a linear operator from $\BbbR^r$ to itself.   (i) Show that
+$\varhatf=|\det T|(fT)\varsphat T\trs$ for every integrable
+complex-valued function $f$ on $\BbbR^r$.   (ii) Show that $hT$
+is a \rdtf\ for
+every \rdtf\ $h$.   (iii) Show that if $f$, $g$ are a tempered functions
+and $g$ represents the Fourier transform of $f$, then
+$\Bover1{|\det T|}g(T\trs)^{-1}$ represents the Fourier transform of $fT$;
+so that if $T$ is orthogonal, then $gT$ represents the
+Fourier transform of $fT$.
+%mt28bits
+}%end of exercises 284W
+
+\exercises{
+\leader{284X}{Basic exercises (a)} Show that if $g$ and $h$ are rapidly
+decreasing test functions, so is $g\times h$.
+%284A
+
+\spheader 284Xb Show that there are non-zero continuous integrable
+functions $f$, $g:\Bbb R\to\Bbb C$ such that $f*g=0$ everywhere.
+\Hint{take them to be \Ft s of suitable test functions.}
+%284C
+
+\spheader 284Xc Suppose that $f:\Bbb R\to\Bbb C$ is a
+differentiable function such that its derivative $f'$ is a tempered
+function and, for some $k\in\Bbb N$,
+
+\Centerline{$\lim_{x\to\infty}x^{-k}f(x)
+=\lim_{x\to-\infty}x^{-k}f(x)=0$.}
+
+\noindent   (i) Show that $\int f\times h'=-\int f'\times h$ for every
+rapidly decreasing test function $h$.   (ii) Show that if $g$ is a
+tempered function representing the Fourier transform of $f$, then
+$y\mapsto iyg(y)$ represents the Fourier transform of $f'$.
+%284H
+
+\spheader 284Xd\dvAnew{2013}
+For a tempered function $f$ and $\alpha\in\Bbb R$, set
+
+\Centerline{$(S_{\alpha}f)(x)=f(x+\alpha)$,
+\quad$(M_{\alpha}f)(x)=e^{i\alpha x}f(x)$,
+\quad$(D_{\alpha}f)(x)=f(\alpha x)$}
+
+\noindent whenever these are defined.   (i) Show that $S_{\alpha}f$,
+$M_{\alpha}f$ and (if $\alpha\ne 0$) $D_{\alpha}f$ are tempered functions.
+(ii) Show that if $g$ is a tempered function which represents the Fourier
+transform of $f$, then $M_{-\alpha}g$ represents the Fourier transform of
+$S_{\alpha}f$, $S_{-\alpha}g$ represents the Fourier transform of
+$M_{\alpha}f$, $\bar{\Reverse{g}}=\Reverse{\bar g}$ represents the 
+Fourier transform of
+$\bar f$, and if $\alpha\ne 0$ then $\Bover1{|\alpha|}D_{1/\alpha}g$
+represents the Fourier transform of $D_{\alpha}f$.
+%284I
+
+\spheader 284Xe Show that if $h$ is a rapidly decreasing test
+function and $f$ is any measurable complex-valued function, defined
+almost everywhere in $\Bbb R$, such that
+$\int_{-\infty}^{\infty}|x|^k|f(x)|dx<\infty$ for every $k\in\Bbb N$,
+then the convolution $f*h$ is a rapidly decreasing test function.
+\Hint{show that the Fourier transform of $f*h$ is a test
+function.}
+%284J
+
+\sqheader 284Xf Let $f$ be a tempered function such that
+$\lim_{a\to\infty}\int_{-a}^af$ exists in $\Bbb C$.   Show that
+this limit is also equal to
+$\lim_{\epsilon\downarrow 0}\int_{-\infty}^{\infty}
+e^{-\epsilon x^2}f(x)dx$.
+\Hint{set $g(x)=f(x)+f(-x)$.   Use 224J to show that if $0\le a\le b$
+then $|\int_a^bg(x)e^{-\epsilon x^2}dx|\le\sup_{c\in[a,b]}|\int_a^cg|$,
+so that $\lim_{a\to\infty}\int_0^ag(x)e^{-\epsilon x^2}dx$ exists
+uniformly in $\epsilon$, while
+$\lim_{\epsilon\downarrow 0}\int_0^ag(x)e^{-\epsilon x^2}dx
+=\int_0^ag$ for every $a\ge 0$.}
+%284L
+
+\sqheader 284Xg Let $f$ and $g$ be tempered functions on
+$\Bbb R$ such that $g$ represents the
+Fourier transform of $f$.   Show that
+
+\Centerline{$g(y)
+=\lim_{a\to\infty}\Bover1{\sqrt{2\pi}}\int_{-a}^ae^{-iyx}f(x)dx$}
+
+\noindent at almost all points $y$ for which the limit exists.
+\Hint{284Xf, 284M.}
+%284M, 284Xf, 284L
+
+\sqheader 284Xh Let $f$ be an integrable complex-valued function
+on $\Bbb R$ such that $\varhatf$ also is integrable.   Show that
+$\varhatf\varcheck{\phantom{f}}=f$ at any point at which $f$ is
+continuous.
+%284M
+
+\spheader 284Xi Show that for every $p\in\coint{1,\infty}$,
+$f\in\eusm L_{\Bbb C}^p$ and $\epsilon>0$ there is a rapidly decreasing
+test function $h$ such that $\|f-h\|_p\le\epsilon$.
+%284N
+
+\sqheader 284Xj Let $f$ and $g$ be square-integrable complex-valued
+functions on $\Bbb R$ such that $g$ represents the Fourier transform of
+$f$.   Show that
+
+\Centerline{$\int_c^df=\Bover{i}{\sqrt{2\pi}}
+\int_{-\infty}^{\infty}\Bover{e^{icy}-e^{idy}}{y}g(y)dy$}
+
+\noindent whenever $c<d$ in $\Bbb R$.
+%284O
+
+\spheader 284Xk Let $f$ be a measurable complex-valued function,
+defined almost everywhere in $\Bbb R$, such that $\int|f|^p<\infty$,
+where $1<p\le 2$.   Show that $f$ is a tempered function and that there
+is a tempered function $g$ representing the Fourier transform of $f$.
+\Hint{express $f$ as $f_1+f_2$, where $f_1$ is integrable and
+$f_2$ is square-integrable.}  ({\bf Remark} Defining $\|f\|_p$,
+$\|g\|_q$ as in 244D, where $q=p/(p-1)$, we have
+$\|g\|_q\le(2\pi)^{(p-2)/2p}\|f\|_p$;  see {\smc Zygmund 59}, XVI.3.2.)
+%284O
+
+\spheader 284Xl Let $f$, $g$ be square-integrable
+complex-valued functions on $\Bbb R$ such that $g$ represents the
+Fourier transform of $f$.
+
+\quad{(i)} Show that
+
+\Centerline{$\Bover1{\sqrt{2\pi}}\int_{-a}^ae^{ixy}g(y)dy
+=\Bover1{\pi}\int_{-\infty}^{\infty}\Bover{\sin at}{t}f(x-t)dt$}
+
+\noindent whenever $x\in\Bbb R$ and $a>0$.   \Hint{find the
+inverse Fourier transform of $y\mapsto e^{-ixy}\chi[-a,a](y)$, and use
+284Ob.}
+
+\quad{(ii)} Show that if $f(x)=0$ for $x\in\ooint{c,d}$ then
+
+\Centerline{$\Bover1{\sqrt{2\pi}}\lim_{a\to\infty}\int_{-a}^a
+e^{ixy}g(y)dy=0$}
+
+\noindent for $x\in\ooint{c,d}$.
+
+\quad{(iii)} Show that if $f$ is differentiable at $x\in\Bbb R$,
+then
+
+\Centerline{$\Bover1{\sqrt{2\pi}}\lim_{a\to\infty}\int_{-a}^a
+e^{ixy}g(y)dy=f(x)$.}
+
+\quad{(iv)} Show that if $f$ has bounded variation over some
+interval properly containing $x$, then
+
+\Centerline{$\Bover1{\sqrt{2\pi}}\lim_{a\to\infty}\int_{-a}^a
+e^{ixy}g(y)dy=\Bover12(\lim_{t\in\dom f,t\uparrow x}f(t)+\lim_{t\in\dom
+f,t\downarrow x}f(t))$.}
+%284O
+
+\spheader 284Xm Let $f$ be an integrable complex function on $\Bbb R$.
+Show that if $\varhatf$ is square-integrable, so is $f$.
+%284O
+
+\spheader 284Xn Let $f_1$, $f_2$ be square-integrable complex-valued
+functions on $\Bbb R$ with \Ft s represented by $g_1$, $g_2$.   Show
+that
+$\int_{-\infty}^{\infty}f_1(t)f_2(-t)dt
+=\int_{-\infty}^{\infty}g_1(t)g_2(t)dt$.
+%284O
+
+\spheader 284Xo Suppose $x\in\Bbb R$.
+Write $\delta_x$ for Dirac measure on $\Bbb R$ concentrated
+at $x$.   Describe a sense in which $\sqrt{2\pi}\delta_x$ can
+be regarded as
+the Fourier transform of the function $t\mapsto e^{ixt}$.
+%284R
+
+\spheader 284Xp For any tempered function $f$ and $x\in\Bbb R$,
+let $\delta_x$ be the Dirac measure on $\Bbb R$ concentrated at $x$,
+and set
+
+\Centerline{$(\delta_x*f)(u)=\int f(u-t)\delta_x(dt)=f(u-x)$}
+
+\noindent for every $u$ for which $u-x\in\dom f$ (cf.\ 257Xe).   If $g$
+represents
+the Fourier transform of $f$, find a corresponding representation of the
+Fourier transform of $\delta_x*f$, and relate it to the product of $g$
+with the Fourier transform of $\delta_x$.
+%284R, 284Xo
+
+\spheader 284Xq(i) Show that
+
+\Centerline{$\lim_{\delta\downarrow 0,a\to\infty}
+\bigl(\int_{-a}^{-\delta}\Bover1x e^{-iyx}dx
++\int_{\delta}^a\Bover1x e^{-iyx}dx\bigr)
+=-\pi i\sgn y$}
+
+\noindent for every $y\in\Bbb R$, writing $\sgn y=y/|y|$ if $y\ne 0$ and
+$\sgn 0=0$.   \Hint{283Da.}
+
+\quad{(ii)} Show that
+
+\Centerline{$\lim_{c\to\infty}\Bover1c\int_0^c
+  \int_{-a}^ae^{ixy}\sgn y\,dy\,da
+=\Bover{2i}x$}
+
+\noindent for every $x\ne 0$.
+
+\quad{(iii)} Show that for any rapidly decreasing test function $h$,
+
+$$\eqalign{\int_0^{\infty}\Bover1x(\varhat{h}(x)-\varhat{h}(-x))dx
+&=\lim_{\delta\downarrow 0,a\to\infty}\bigl(\int_{-a}^{-\delta}
+\Bover1x\varhat{h}(x)dx
++\int_{\delta}^{a}\Bover1x\varhat{h}(x)dx\bigr)\cr
+&=-\Bover{i\pi}{\sqrt{2\pi}}\int_{-\infty}^{\infty}h(y)\sgn
+y\,dy.\cr}$$
+
+\quad{(iv)} Show that for any rapidly decreasing test function $h$,
+
+\Centerline{$\Bover{i\pi}{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+  \varhat{h}(x)\sgn x\,dx
+=\int_0^{\infty}\Bover1y(h(y)-h(-y))dy$.}
+%284notes
+
+\spheader 284Xr Let $\sequencen{h_n}$ be a sequence of rapidly
+decreasing test functions such that
+$\phi(f)=\lim_{n\to\infty}\int_{-\infty}^{\infty}h_n\times f$ is defined
+for every rapidly decreasing test function $f$.   Show that
+$\lim_{n\to\infty}\int_{-\infty}^{\infty}h'_n\times f$,
+$\lim_{n\to\infty}\int_{-\infty}^{\infty}\varhat{h}_n\times f$ and
+$\lim_{n\to\infty}\int_{-\infty}^{\infty}(h_n*g)\times f$ are defined
+for all rapidly decreasing test functions $f$ and $g$, and are zero if
+$\phi$ is identically zero.   \Hint{255G will help with the last.}
+%284+
+
+\leader{284Y}{Further exercises (a)}
+%\spheader 284Ya
+Let $f$ be an integrable complex-valued function
+on $\ocint{-\pi,\pi}$, and $\tilde f$ its periodic extension, as in
+282Ae.   Show that $\tilde f$ is a tempered function.   Show that for
+any rapidly decreasing test function $h$,
+$\int\tilde f\times\varhat{h}
+=\sqrt{2\pi}\sum_{k=-\infty}^{\infty}c_kh(k)$, where
+$\sequence{k}{c_k}$ is the sequence of Fourier coefficients of $f$.
+({\it Hint\/}:  begin with the case $f(x)=e^{inx}$.   Next show that
+
+\Centerline{$M=\sum_{k=-\infty}^{\infty}|h(k)|
++\sum_{k=-\infty}^{\infty}
+\sup_{x\in[(2k-1)\pi,(2k+1)\pi]}|\varhat{h}(x)|<\infty$,}
+
+\noindent and that
+
+\Centerline{$|\int\tilde f\times\varhat{h}
+-\sqrt{2\pi}\sum_{k=-\infty}^{\infty}c_kh(k)|
+\le M\|f\|_1$.}
+
+\noindent Finally apply 282Ib.)
+%284C
+
+\header{284Yb}{\bf (b)} Let $f$ be a complex-valued function, defined
+almost everywhere in $\Bbb R$, such that $f\times h$ is integrable for
+every rapidly decreasing test function $h$.   Show that $f$ is tempered.
+%284F
+
+\spheader 284Yc Let $f$ and $g$ be tempered functions on $\Bbb
+R$ such that $g$ represents the Fourier transform of $f$.   Show that
+
+$$\int_c^df
+=\Bover{i}{\sqrt{2\pi}}\lim_{\sigma\to\infty}\int_{-\infty}^{\infty}
+\Bover{e^{icy}-e^{idy}}{y}e^{-y^2/2\sigma^2}g(y)dy$$
+
+\noindent whenever $c\le d$ in $\Bbb R$.   \Hint{set
+$\theta=\chi[c,d]$.   Show that both sides are
+$\lim_{\sigma\to\infty}\int f\times(\theta*\psi_{1/\sigma})$, defining
+$\psi_{\sigma}$ as in 283N and 284L.}
+%284H
+
+\spheader 284Yd Show that if $g:\Bbb R\to\Bbb R$ is an odd
+function of bounded variation such that
+$\int_1^{\infty}\bover1x g(x)dx=\infty$, then $g$ does not represent the
+Fourier transform of any tempered function.   \Hint{283Ye, 284Yc.}
+%284Yc, 284H
+
+\ifdim\pagewidth>467pt\fontdimen3\tenrm=1.84pt
+  \fontdimen4\tenrm=1.22pt\fi
+\spheader 284Ye
+Let $\eusm S$ be the space of
+rapidly decreasing test functions.   For $k$, $m\in\Bbb N$ set
+$\tau_{km}(h)=\sup_{x\in\Bbb R}|x|^k|h^{(m)}(x)|$ for every
+$h\in\eusm S$, writing $h^{(m)}$ for the $m$th derivative of $h$ as
+usual.   (i) Show
+that each $\tau_{km}$ is a seminorm and that $\eusm S$ is
+complete and separable for
+the metrizable linear space topology $\frak T$ they define.
+(ii) Show that $h\mapsto\varhat{h}:\eusm S\to\eusm S$
+is continuous for $\frak T$.   (iii) Show that if $f$ is any
+tempered function, then $h\mapsto\int f\times h$ is
+$\frak T$-continuous.   (iv) Show that if $f$ is an integrable
+function such that $\int|x^kf(x)|dx<\infty$ for every $k\in\Bbb N$, then
+$h\mapsto f*h:\eusm S\to\eusm S$ is $\frak T$-continuous.
+%284J
+\fontdimen3\tenrm=1.67pt\fontdimen4\tenrm=1.22pt
+
+\spheader 284Yf Show that if $f$ is a tempered function on $\Bbb R$ and
+
+\Centerline{$\gamma
+=\lim_{c\to\infty}\Bover1c\int_{0}^c\int_{-a}^af(x)dxda$}
+
+\noindent is defined in $\Bbb C$, then $\gamma$ is also
+
+\Centerline{$\lim_{\epsilon\downarrow 0}\int_{-\infty}^{\infty}
+f(x)e^{-\epsilon|x|}dx$.}
+%284Xf, 284L
+
+\spheader 284Yg Let $f$, $g$ be square-integrable
+complex-valued functions on $\Bbb R$ such that $g$ represents the
+Fourier transform of $f$.   Suppose that $m\in\Bbb Z$ and that
+$(2m-1)\pi<x<(2m+1)\pi$.   Set $\tilde f(t)=f(t+2m\pi)$ for those
+$t\in\ocint{-\pi,\pi}$ such that $t+2m\pi\in\dom f$.   Let
+$\langle c_k\rangle_{k\in\Bbb Z}$ be the sequence of Fourier
+coefficients of $\tilde f$.   Show that
+
+\Centerline{$\Bover1{\sqrt{2\pi}}\lim_{a\to\infty}\int_{-a}^a
+e^{ixy}g(y)dy
+=\lim_{n\to\infty}\sum_{k=-n}^nc_ke^{ikx}$}
+
+\noindent in the sense that if one limit exists in $\Bbb C$ so does the
+other, and they are then equal.   \Hint{284Xl(i), 282Da.}
+%284O, 284Xl
+
+\spheader 284Yh Show that if $f$ is integrable over $\Bbb R$ and there
+is some $M\ge 0$ such that $f(x)=\varhatf(x)=0$ for $|x|\ge M$, then
+$f=0$ a.e.   \Hint{reduce to the case $M=\pi$.   Looking at the Fourier
+series of $f\restr\ocint{-\pi,\pi}$, show that $f$ is expressible in the
+form $f(x)=\sum_{k=-m}^mc_ke^{ikx}$ for almost every
+$x\in\ocint{-\pi,\pi}$.   Now compute $\varhatf(2n+\bover12)$ for large
+$n$.}
+
+\spheader 284Yi Let $\nu$ be a Radon measure on $\Bbb R$ 
+which is `tempered' in the sense that
+$\int_{-\infty}^{\infty}\Bover1{1+|x|^k}\nu(dx)$ is finite for some
+$k\in\Bbb N$.   (i) Show that every rapidly decreasing test function is
+$\nu$-integrable.   (ii) Show that if $\nu$ has bounded support
+(definition:  256Xf), and $h$ is a rapidly decreasing test function,
+then $\nu*h$ is a rapidly decreasing test function, where
+$(\nu*h)(x)=\int_{-\infty}^{\infty}h(x-y)\nu(dy)$ for $x\in\Bbb R$.
+(iii) Show that there is a sequence $\sequencen{h_n}$ of rapidly
+decreasing test functions such that
+$\lim_{n\to\infty}\int_{-\infty}^{\infty}h_n\times f
+=\int_{-\infty}^{\infty}fd\nu$ for every rapidly decreasing test
+function $f$.
+%284Xr
+
+\spheader 284Yj Let $\phi:\eusm S\to\Bbb R$ be a functional defined by
+the formula of 284Xr.   Show that $\phi$ is continuous for the topology
+of 284Ye.
+({\it Note\/}:  it helps to know a little more about metrizable linear
+topological spaces than is covered in \S2A5.)
+%284Xr
+
+}%end of exercises
+
+\cmmnt{
+\Notesheader{284} Yet again I must warn you that the
+material above gives a very restricted view of the subject.   I have
+tried to indicate how the theory of Fourier transforms of `good'
+functions -- here taken to be the rapidly decreasing test
+functions -- may be extended, through a kind of duality,
+to a very much wider class
+of functions, the `tempered functions'.   Evidently, writing $\eusm S$
+for the linear space of rapidly decreasing test functions, we can seek
+to investigate a Fourier transform of any linear functional
+$\phi:\eusm S\to\Bbb C$, writing $\varhat\phi(h)=\phi(\varhat{h})$ for
+any $h\in\eusm S$.   (It is actually commoner at this point to restrict
+attention to functionals $\phi$ which are continuous for the standard
+topology on $\eusm S$, described in 284Ye;  these are called 
+{\bf tempered (Schwartzian) distributions}.)   
+By 284F-284G, we can identify some of these
+functionals with equivalence classes of tempered functions, and then set
+out to investigate those tempered functions whose Fourier transforms can
+again be represented by tempered functions.
+
+I suppose the structure of the theory of Fourier transforms is best laid
+out through the formulae involved.   Our aim is to set up pairs
+$(f,g)=(f,\varhatf)=(\varcheck{g},g)$ in such a way that we have
+
+\quad {\it Inversion\/}:  $\varhat{h}\varcheck{\phantom{h}}
+=\varcheck{h}\varhat{\phantom{h}}=h$;   %284If
+
+\quad {\it Reversal\/}:  $\varcheck{h}(y)=\varhat{h}(-y)$;  %284If
+
+\quad {\it Linearity\/}:
+$(h_1+h_2)\varsphat=\varhat{h}_1+\varhat{h}_2$,
+\quad$(ch)\varsphat=c\varhat{h}$;  %284Ic
+
+\quad {\it Differentiation\/}: $(h')\varsphat(y)=iy\varhat{h}(y)$;
+
+\quad {\it Shift\/}:  if $h_1(x)=h(x+c)$ then
+$\varhat{h}_1(y)=e^{iyc}\varhat{h}(y)$;  %284Xd
+
+\quad {\it Modulation\/}:  if $h_1(x)=e^{icx}h(x)$ then
+$\varhat{h}_1(y)=\varhat{h}(y-c)$;  %284Xd
+
+\quad {\it Symmetry\/}:  if $h_1(x)=h(-x)$ then $\varhat{h}_1(y)
+=\varhat{h}(-y)$;  %284Xd
+
+\quad {\it Complex Conjugate\/}:
+$(\overline{h})\varsphat(y)=\overline{\varhat{h}(-y)}$;  %284Xd
+
+\quad {\it Dilation\/}:  if $h_1(x)=h(cx)$, where $c>0$, then
+$\varhat{h}_1(y)=\Bover1c\varhat{h}(\Bover{y}{c})$;  %284Xd
+
+\quad {\it Convolution\/}:
+$(h_1*h_2)\varsphat=\sqrt{2\pi}\varhat{h}_1\times\varhat{h}_2$, %284Kb
+\quad $(h_1\times h_2)\varsphat
+=\Bover1{\sqrt{2\pi}}\varhat{h}_1*\varhat{h}_2$; %284Ka
+
+\quad {\it Duality\/}: $\int_{-\infty}^{\infty}h_1\times\varhat{h}_2
+=\int_{-\infty}^{\infty}\varhat{h}_1\times h_2$;
+
+\quad {\it Parseval\/}:  $\int_{-\infty}^{\infty}h_1\times\overline{h_2}
+=\int_{-\infty}^{\infty}\varhat{h}_1\times\overline{\varhat{h}_2}$; %284Ob
+
+\noindent and, of course,
+
+\Centerline{$\varhat{h}(y)
+=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-iyx}h(x)dx$,} %284Xg
+
+\Centerline{$\int_c^d\varhat{h}(y)dy
+=\Bover{i}{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+\Bover{e^{-icy}-e^{-idy}}{y}h(y)dy$.}  %284Xj
+
+\noindent (I have used the letter $h$ in the list above to suggest what
+is in fact the case, that all the formulae here are valid for rapidly
+decreasing test functions.)   On top of all this, it is often important
+that the operation $h\mapsto\varhat{h}$ should be continuous in some
+sense.
+
+The challenge of the `pure' theory of Fourier transforms is to find
+the widest possible variety of objects $h$ for which the formulae above
+will be valid, subject to appropriate interpretations of $\varsphat$,
+$*$ and $\int_{-\infty}^{\infty}$.
+I must of course remark here that from the very beginnings, the subject
+has been enriched by its applications in other parts of mathematics, the
+physical sciences and the social sciences, and that again and again
+these have suggested further possible pairs $(f,\varhatf)$, making new
+demands on our power to interpret the rules we seek to follow.   Even
+the theory of distributions does not seem to give a full canonical
+account of what can be done.   First, there are great difficulties in
+interpreting the `product' of two arbitrary distributions, making
+several of the formulae above problematic;  and second, it is not
+obvious that only one kind of distribution need be considered.   In this
+section I have looked at just one space of `test functions', the
+space $\eusm S$ of rapidly decreasing test functions;  but at least two
+others are significant, the space $\eusm D$ of smooth functions with
+bounded support and the space $\eusm Z$ of Fourier transforms of
+functions in
+$\eusm D$.   The advantage of starting with $\eusm S$ is that it gives a
+symmetric theory, since $\varhat{h}\in\eusm S$ for every $h\in\eusm S$;
+but it is easy to find objects (e.g., the function $x\mapsto e^{x^2}$,
+or the function $x\mapsto 1/|x|$) which cannot be interpreted as
+functionals on $\eusm S$, so that their Fourier transforms must be
+investigated by other methods, if at all.   In 284Xq I sketch some of
+the arguments which can be used to justify the assertion that the
+Fourier transform of the function $x\mapsto 1/x$ is, or can be
+represented by, the function
+$y\mapsto -i\sqrt{\bover{\pi}2}\sgn y$;  the general principle in this
+case being that we approach both $0$ and $\infty$ symmetrically.
+For a variety of such matching pairs, established by arguments based on
+the idea in 284Xr, see {\smc Lighthill 59}, chap.\ 3.
+
+Accordingly it seems that, after two centuries,
+% Fourier "Analytic Theory of Heat" 1822
+%    1807 Mémoire sur la propagation de la chaleur dans les corps solides
+% Wikipedia:  "When Fourier submitted a later competition essay in 1811,
+% the committee (which included Lagrange, Laplace, Malus and Legendre,
+% among others) concluded: ...the manner in which the author arrives at
+% these equations is not exempt of difficulties and...his analysis to
+% integrate them still leaves something to be desired on the score of
+% generality and even rigour [citation needed]"
+we must still
+proceed by carefully examining particular classes of function, and
+checking appropriate interpretations of the formulae.   In the work
+above I have repeatedly used the concepts
+
+\Centerline{$\lim_{a\to\infty}\int_{-a}^af$,
+\quad$\lim_{\epsilon\downarrow 0}\int_{-\infty}^{\infty}
+  e^{-\epsilon x^2}f(x)dx$}
+
+\noindent as alternative interpretations of $\int_{-\infty}^{\infty}f$.
+(Of course they are closely related;  see 284Xf.)   The reasons for
+using the particular kernel $e^{-\epsilon x^2}$ are that it belongs to
+$\eusm S$, it is an even function,
+its Fourier transform is calculable and easy to manipulate, and it is
+associated with the normal probability density function
+$\bover1{\sigma\sqrt{2\pi}}e^{-x^2/2\sigma^2}$, so that any
+miscellaneous facts we gather have a chance of being valuable elsewhere.
+But there are applications in which alternative kernels are more
+manageable -- e.g., $e^{-\epsilon|x|}$ (283Xq, 283Yc, 284Yf).
+
+One of the guiding principles here is that purely formal manipulations,
+along the lines of those in the list above, and (especially) changes in
+the order of integration, with other exchanges of limit, again and again
+give rise to formulae which, suitably interpreted, are valid.   First
+courses in analysis are often inhibitory;  students are taught to
+distrust any manipulation which they cannot justify.   To my own eye,
+the delight of this topic lies chiefly in the variety of the arguments
+demanded by a rigorous approach, the ground constantly shifting with the
+context;  but there is no doubt that cheerful sanguinity is often the
+best guide to the manipulations which it will be right to try to
+justify.
+
+This being a book on measure theory, I am of course particularly
+interested in the possibility of a measure appearing as a Fourier
+transform.   This is what happens if we seek the Fourier transform of
+the constant function $\chi\Bbb R$ (284R).   More generally, any periodic
+tempered function $f$ with period $2\pi$ can be assigned a Fourier
+transform which is a `signed measure' (for our present purposes, a
+complex linear combination of measures) concentrated on $\Bbb Z$, the
+mass at each $k\in\Bbb Z$ being determined by the corresponding Fourier
+coefficient of $f\restr\ocint{-\pi,\pi}$ (284Xo, 284Ya).   In the next
+section I will go farther in this direction, with particular reference
+to probability distributions on $\BbbR^r$.   But the reason why {\it
+positive} measures have not forced themselves on our attention so far is
+that we do not expect to get a positive function as a Fourier transform
+unless some very special conditions are satisfied, as in 283Yc.
+
+As in \S282, I have used the Hilbert space structure of $L_{\Bbb C}^2$
+as the basis of the discussion of Fourier transforms of functions in
+$\eusm L_{\Bbb C}^2$ (284O-284P).   But as with Fourier series,
+Carleson's theorem (286U) provides a more direct description.
+
+In 284Wj, I offer a calculation based on the change-of-variable formula in
+263A to present a multidimensional
+version of Reversal and Dilation.   But what I am really trying to do is
+to show that Fourier transforms on
+$\BbbR^r$ are based on the geometry of the
+Euclidean inner product, not on the Cartesian coordinate system.
+}%end of notes
+
+\discrpage
+

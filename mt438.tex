@@ -1,0 +1,1903 @@
+\frfilename{mt438.tex}
+\versiondate{13.12.06/10.10.07}
+\copyrightdate{2007}
+
+\def\Marik{Ma\v r\'\i k}
+
+\def\chaptername{Topologies and measures II}
+\def\sectionname{Measure-free cardinals}
+
+\newsection{438}
+
+At several points in \S418, and again in \S434, we had theorems about
+separable metrizable spaces in which the proofs undoubtedly needed some
+special property of these spaces (e.g., the fact that they are
+Lindel\"of), but left it unclear whether something more general could be
+said.   When we come to investigate further, asking (for instance)
+whether complete metric spaces in general are Radon (438H), we find
+ourselves once again approaching the
+Banach-Ulam problem, already mentioned at several points in previous
+volumes\cmmnt{, and in particular in 363S}.
+It seems to be undecidable, in
+ordinary set theory with the axiom of choice, whether or not every
+discrete space is Radon in the sense of 434C.
+On the other hand it
+is known that discrete spaces of cardinal at most $\omega_{\omega_1}$ (for
+instance) are indeed always Radon.   While as a rule I am deferring
+questions of this type to Volume 5, this particular phenomenon is so
+pervasive that I think it is worth taking a section now to clarify it.
+
+The central definition is that of `measure-free cardinal' (438A), and
+the basic results are 438B-438D.   In particular, `small' infinite
+cardinals are measure-free (438C).   From the point of view of
+measure theory, a metrizable space whose weight is measure-free is
+almost separable, and most of the results in \S418 concerning separable
+metrizable spaces can be extended (438E-438G).   In fact `measure-free
+weight' exactly determines whether a metrizable space is
+measure-compact (438J\cmmnt{, 438Xm}) and whether a complete metric
+space is Radon (438H).   If $\frak c$ is measure-free, some
+interesting spaces of functions are Radon (438T).   I approach these
+last spaces through the concept of `hereditary weak
+$\theta$-refinability' (438K), which enables us to do most of the work
+without invoking any special axiom.
+
+\leader{438A}{Measure-free cardinals:  Definition} A cardinal
+$\kappa$ is {\bf measure-free} or {\bf of measure zero} if whenever
+$\mu$ is a
+probability measure with domain $\Cal P\kappa$ then there is a
+$\xi<\kappa$ such that $\mu\{\xi\}>0$.
+\cmmnt{In 363S I discussed some statements equiveridical with the
+assertion `every cardinal is measure-free'.}%end of comment
+
+\leader{438B}{}\cmmnt{ It is worth getting some basic facts out
+into the open immediately.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $(X,\Sigma,\mu)$ be a semi-finite measure
+space and $\familyiI{E_i}$ a point-finite family of subsets of $X$ such
+that $\#(I)$ is measure-free and
+$\bigcup_{i\in J}E_i\in\Sigma$ for every $J\subseteq I$.   Set
+$E=\bigcup_{i\in I}E_i$.
+
+(a) $\mu E
+=\sup_{J\subseteq I\text{ is finite}}\mu(\bigcup_{i\in J}E_i)$.
+
+(b) If $\familyiI{E_i}$ is disjoint, then
+$\mu E=\sum_{i\in I}\mu E_i$.   In particular, if $\Sigma=\Cal PX$ and
+$A\subseteq X$ has measure-free cardinal, then
+$\mu A=\sum_{x\in A}\mu\{x\}$.
+
+(c) If $\mu$ is $\sigma$-finite, then $L=\{i:i\in I,\,\mu E_i>0\}$ is
+countable and $\bigcup_{i\in I\setminus L}E_i$ is negligible.
+
+\proof{{\bf (a)(i)} The first step is to show, by induction on $n$, that
+the result is true if $\mu X<\infty$ and every $E_i$ is negligible and
+$\#(\{i:i\in I,\,x\in E_i\})\le n$ for every $x\in X$.   If $n=0$ this
+is trivial, since every $E_i$ must be empty.   For the inductive
+step to $n\ge 1$, define $\nu:\Cal PI\to\coint{0,\infty}$ by setting
+$\nu J=\mu(\bigcup_{i\in J}E_i)$ for every $J\subseteq I$.   Then $\nu$
+is a measure on $I$.   \Prf\ Write $F_J=\bigcup_{i\in J}E_j$ for
+$J\subseteq I$.  ($\alpha$) If $J$, $K\subseteq I$ are disjoint, then
+for $i\in I$ set $E'_i=E_i\cap F_K$ for $i\in J$, $\emptyset$ for
+$i\in I\setminus J$.   In this case,
+$\family{i}{I}{E'_i}$ is a family of negligible subsets of $X$,
+$\bigcup_{i\in J'}E'_i=F_{J'\cap J}\cap F_K$ is measurable for every
+$J'\subseteq I$, and $\#(\{i:x\in E'_i\})\le n-1$ for every $x\in X$;
+so the inductive hypothesis tells us that
+
+\Centerline{$\mu(\bigcup_{i\in I}E'_i)
+=\sup_{J'\subseteq I\text{ is finite}}\mu(\bigcup_{i\in J'}\mu E'_i)
+=0$,}
+
+\noindent that is, $F_J\cap F_K$ is negligible.   But this means that
+
+\Centerline{$\nu(J\cup K)=\mu F_{J\cup K}=\mu(F_J\cup F_K)
+=\mu F_J+\mu F_K=\nu J+\nu K$.}
+
+\noindent As $J$ and $K$ are arbitrary, $\nu$ is additive.   ($\beta$)
+If $\sequencen{J_n}$ is a disjoint sequence in $\Cal PI$, then
+
+$$\eqalign{\nu(\bigcup_{n\in\Bbb N}J_n)
+&=\mu(\bigcup_{n\in\Bbb N}F_{J_n})
+=\lim_{n\to\infty}\mu(\bigcup_{m\le n}F_{J_m})\cr
+&=\lim_{n\to\infty}\sum_{m=0}^n\nu J_m
+=\sum_{n=0}^{\infty}\nu J_n,\cr}$$
+
+\noindent so $\nu$ is countably additive and is a measure.\ \Qed
+
+At the same time, $\nu\{i\}=\mu E_i=0$ for every $i$.   Because $\#(I)$
+is measure-free, $\nu I=0$.   \Prf\Quer\ Otherwise, let
+$f:I\to\kappa=\#(I)$ be any bijection and set
+$\lambda A=\Bover1{\nu I}\nu f^{-1}[A]$ for every $A\subseteq\kappa$;
+then $\lambda$ is a
+probability measure with domain $\Cal P\kappa$ which is zero on
+singletons, and $\kappa$ is not measure-free.\ \Bang\QeD\   But this
+means just that $\mu(\bigcup_{i\in I}E_i)=0$.
+Thus the induction proceeds.
+
+\medskip
+
+\quad{\bf (ii)} \Quer\ Now suppose, if possible, that the general result
+is false.   For finite sets $J\subseteq I$ set
+$F_J=\bigcup_{i\in J}E_i$, as before, and consider
+$\Cal E=\{F_J:J\in[\kappa]^{<\omega}\}$
+(see 3A1J for this notation).   Then $\Cal E$ is closed under finite unions
+and $\gamma=\sup_{H\in\Cal E}\mu H$ is finite, because it is less than
+$\mu E$;  let $\sequencen{H_n}$ be a non-decreasing sequence in
+$\Cal E$ such that $\mu(H\setminus H^*)=0$ for every $H\in\Cal E$, where
+$H^*=\bigcup_{n\in\Bbb N}H_n$ and $\mu H^*=\gamma$ (215Ab).
+
+Because $\mu$ is semi-finite, there is an $F\in\Sigma$ such that
+$F\subseteq E$ and $\gamma<\mu F<\infty$.   For each $n\in\Bbb N$, set
+
+\Centerline{$Y_n=\{x:x\in F\setminus H^*,\,\#(\{i:x\in E_i\})\le n\}$.}
+
+\noindent Then there is some $n\in\Bbb N$ such that $\mu^*Y_n>0$.   Let
+$\nu$ be the subspace measure on $Y_n$, so that $\nu$ is non-zero and
+totally finite.   Now
+$\familyiI{E_i\cap Y_n}$ is a family of negligible subsets of $Y_n$,
+$\bigcup_{i\in J}E_i\cap Y_n=Y_n\cap\bigcup_{i\in J}E_i$ is measured by
+$\nu$ for every $J\subseteq I$, and $\#(\{i:x\in E_i\cap Y_n\})\le n$
+for every $x\in Y_n$.   But this contradicts (i) above.\ \Bang
+
+This proves (a).
+
+\medskip
+
+{\bf (b)} If $\familyiI{E_i}$ is disjoint, then
+
+\Centerline{$\sup_{J\in[I]^{<\omega}}\mu(\bigcup_{i\in J}E_i)
+=\sup_{J\in[I]^{<\omega}}\sum_{i\in J}\mu E_i
+=\sum_{i\in I}\mu E_i$.}
+
+\noindent Setting $I=A$, $E_x=\{x\}$ for $x\in A$, we get the special
+case.
+
+\medskip
+
+{\bf (c)} Let
+$\sequencen{X_n}$ be a non-decreasing sequence of measurable sets of
+finite measure covering $X$.  For each $n$, set
+$L_n=\{i:i\in I,\,\mu(E_i\cap X_n)\ge 2^{-n}\}$.   \Quer\ If $L_n$ is
+infinite, take a
+sequence $\sequence{k}{i_k}$ of distinct elements in $L_n$, and consider
+$G_m=\bigcup_{k\ge m}E_{i_k}$ for $m\in\Bbb N$;  then every $G_m$ has
+measure at least $2^{-n}$, $G_0$ has finite measure, $\sequence{m}{G_m}$
+is non-increasing, and $\bigcap_{m\in\Bbb N}G_m$ is empty, because
+$\sequence{k}{E_{i_k}}$ is point-finite.   But this is impossible.\
+\Bang
+
+Thus every $L_n$ is finite and $L=\bigcup_{n\in\Bbb N}L_n$ is
+countable.
+
+Now (a), applied to $\familyiI{E'_i}$ where $E'_i=E_i$ if
+$i\in I\setminus L$, $\emptyset$ if $i\in L$, tells us that
+$\bigcup_{i\in I\setminus L}E_i$ is negligible.
+}%end of proof of 438B
+
+\leader{438C}{}\cmmnt{ I do not think we are ready for the most
+interesting set-theoretic results concerning measure-free cardinals.
+But the following facts may help to make sense of the general pattern.
+
+\medskip
+
+\noindent}{\bf Theorem}\cmmnt{ ({\smc Ulam 30})} (a) $\omega$ is
+measure-free.
+
+(b) If $\kappa$ is a measure-free cardinal and $\kappa'\le\kappa$ is
+a smaller cardinal, then $\kappa'$ is measure-free.
+
+(c) If $\ofamily{\xi}{\lambda}{\kappa_{\xi}}$ is a family of
+measure-free cardinals, and $\lambda$ also is measure-free, then
+$\kappa=\sup_{\xi<\lambda}\kappa_{\xi}$ is measure-free.
+
+(d) If $\kappa$ is a measure-free cardinal so is $\kappa^+$.
+
+(e) The following are equiveridical:
+
+\quad(i) $\frak c$ is not measure-free;
+
+\quad(ii) there is a semi-finite measure space $(X,\Cal PX,\mu)$ which
+is not purely atomic;
+
+\quad(iii) there is a measure $\mu$ on $[0,1]$ extending Lebesgue
+measure and measuring every subset of $[0,1]$.
+
+(f) If $\kappa\ge\frak c$ is a measure-free cardinal then
+$2^{\kappa}$ is measure-free.
+
+\proof{{\bf (a)} This is trivial.
+
+\medskip
+
+{\bf (b)} If $\mu$ is a probability measure with domain $\Cal P\kappa'$,
+set $\nu A=\mu(\kappa'\cap A)$ for every $A\subseteq\kappa$.   Then
+$\nu$ is a probability measure with domain $\Cal P\kappa$, so there is a
+$\xi<\kappa$ such that $\nu\{\xi\}>0$;  evidently $\xi<\kappa'$ and
+$\mu\{\xi\}>0$.
+
+\medskip
+
+{\bf (c)} Let $\mu$ be a probability measure on $\kappa$ with domain
+$\Cal P\kappa$.   Define $f:\kappa\to\lambda$ by setting
+$f(\alpha)=\min\{\xi:\alpha<\kappa_{\xi}\}$ for $\alpha<\kappa$.
+Then the image measure $\mu f^{-1}$ is a probability measure on
+$\lambda$ with domain $\Cal P\lambda$, so there is a $\xi<\lambda$ such
+that $\mu f^{-1}[\{\xi\}]>0$.   Now $\mu\kappa_{\xi}>0$.   Applying
+438Bb to $A=\kappa_{\xi}$, we see that there is an
+$\alpha<\kappa_{\xi}$ such that $\mu\{\alpha\}>0$.   As $\mu$ is
+arbitrary, $\kappa$ is measure-free.
+
+\medskip
+
+{\bf (d)} By (a) and (b), we need consider only the case
+$\kappa\ge\omega$.   \Quer\
+Suppose, if possible, that $\mu$ is a probability measure with domain
+$\Cal P\kappa^+$ such that $\mu\{\alpha\}=0$ for every
+$\alpha<\kappa^+$.   For each $\alpha<\kappa^+$, choose an injection
+$f_{\alpha}:\alpha\to\kappa$.   For $\beta<\kappa^+$,
+$\xi<\kappa$ set
+$A(\beta,\xi)=\{\alpha:\beta<\alpha<\kappa^+,\,f_{\alpha}(\beta)=\xi\}$.
+Then $\kappa^+\setminus\bigcup_{\xi<\kappa}A(\beta,\xi)=\beta+1$ has
+cardinal at most $\kappa$, which is measure-free, so $\mu(\beta+1)=0$
+and $\mu(\bigcup_{\xi<\kappa}A(\beta,\xi))>0$.   Also
+$\ofamily{\xi}{\kappa}{A(\beta,\xi)}$ is disjoint.   There is therefore
+a $\xi_{\beta}<\kappa$ such that $\mu A(\beta,\xi_{\beta})>0$, by
+438Bb.   Now $\kappa^+>\max(\omega,\kappa)$, so there must be an
+$\eta<\kappa$ such that $B=\{\beta:\xi_{\beta}=\eta\}$ is uncountable.
+In this case, however, $\family{\beta}{B}{A(\beta,\eta)}$ is an
+uncountable family of sets of measure greater than zero, and cannot be
+disjoint, because $\mu$ is totally finite (215B(iii));  but if
+$\alpha\in A(\beta,\eta)\cap A(\beta',\eta)$, where $\beta\ne\beta'$,
+then $f_{\alpha}(\beta)=f_{\alpha}(\beta')=\eta$, which is impossible,
+because $f_{\alpha}$ is supposed to be injective.\ \Bang
+
+So there is no such measure $\mu$, and $\kappa^+$ is measure-free.
+
+\medskip
+
+{\bf (e)(i)$\Rightarrow$(ii)} Suppose that $\frak c$ is not
+measure-free;  let $\mu$ be a probability measure with domain
+$\Cal P\frak c$
+such that $\mu\{\xi\}=0$ for every $\xi<\frak c$.   Then $\mu$ is
+atomless.   \Prf\Quer\ Suppose, if possible, that $A\subseteq\frak c$ is
+an atom for $\mu$.   Let $f:\frak c\to\Cal P\Bbb N$ be a bijection.
+For each $n\in\Bbb N$, set $E_n=\{\xi:n\in f(\xi)\}$.   Set
+$D=\{n:\mu(A\cap E_n)=\mu A\}$.   Because $A$ is an atom,
+$\mu(A\cap E_n)=0$ for every $n\in\Bbb N\setminus D$.   This means
+that $B=\bigcap_{n\in D}E_n\setminus\bigcup_{n\in\Bbb N\setminus D}E_n$
+has measure $\mu A>0$;  but $f(\xi)=D$ for every $\xi\in B$, so
+$\#(B)\le 1$, and $\mu\{\xi\}>0$ for some $\xi$, contrary to
+hypothesis.\ \Bang\Qed
+
+So (ii) is true.
+
+\medskip
+
+\quad{\bf (ii)$\Rightarrow$(iii)} Suppose that there is a semi-finite
+measure space $(X,\Cal PX,\mu)$ which is not purely atomic.   Then there
+is a non-negligible set $E\subseteq X$ which does not include any atom;
+let $F\subseteq E$ be a set of non-zero finite measure.   If we take
+$\nu$ to be $\Bover1{\mu F}\mu_F$, where $\mu_F$ is the subspace measure
+on $F$, then $\nu$ is an atomless probability measure with domain
+$\Cal PF$.
+Consequently there is a function $g:F\to[0,1]$ which is \imp\ for $\nu$
+and Lebesgue measure (343Cb).   But this means that the image measure
+$\nu g^{-1}$ is a measure defined on every subset of $[0,1]$ which
+extends Lebesgue measure.
+
+\medskip
+
+\quad{\bf not-(i)$\Rightarrow$not-(iii)} Conversely, if $\frak c$ is
+measure-free, then any probability measure on $[0,1]$ measuring every
+subset must give positive measure to some singleton, and cannot extend
+Lebesgue measure.
+
+\medskip
+
+{\bf (f)} We are supposing that $\kappa\ge\frak c$ is measure-free,
+so, in particular, $\frak c$ is measure-free.
+Let $\mu$ be a probability measure with domain
+$\Cal P(2^{\kappa})$.   By (e), it cannot be atomless;  let
+$E\subseteq 2^{\kappa}$ be an atom.   Let $f:2^{\kappa}\to\Cal P\kappa$
+be a bijection, and for $\xi<\kappa$ set
+$E_{\xi}=\{\alpha:\alpha<2^{\kappa},\,\xi\in f(\alpha)\}$;  set
+$D=\{\xi:\xi<\kappa,\,\mu(E\cap E_{\xi})=\mu E\}$.   Note that
+$\mu(E\cap E_{\xi})$ must be zero for every $\xi\in\kappa\setminus D$,
+so that $E\cap\{\alpha:\xi\in D\symmdiff f(\alpha)\}$ is always
+negligible.   Consider
+
+\Centerline{$A_{\xi}
+=\{\alpha:\alpha\in E,\,\xi=\min(D\symmdiff f(\alpha))\}$}
+
+\noindent for $\xi<\kappa$.   Then $\ofamily{\xi}{\kappa}{A_{\xi}}$ is a
+disjoint family of negligible sets, so its union $A$ is negligible, by
+438Bb, because $\kappa$ is measure-free.   But
+$E\setminus A\subseteq f^{-1}[\{D\}]$ has at most one element, and is
+not negligible;  so $\mu\{\alpha\}>0$ for some $\alpha$.   As $\mu$ is
+arbitrary, $2^{\kappa}$ is measure-free.
+}%end of proof of 438C
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} This extends the result of 419G, which used a
+different approach to show that $\omega_1$ is measure-free.
+
+We see from (d) above that $\omega_2$, $\omega_3,\ldots$ are all
+measure-free;  so, by (c), $\omega_{\omega}$ also is;  generally, if
+$\kappa$ is any measure-free cardinal, so is $\omega_{\kappa}$
+(438Xa).   I ought to point out that there are more powerful
+arguments showing that any cardinal which is not measure-free must be
+enormous (see 541L in Volume 5).   In this context,
+however, $\frak c=2^{\omega}$ can be `large', at least in the absence of
+an axiom like the continuum hypothesis to locate it in the hierarchy
+$\family{\xi}{\On}{\omega_{\xi}}$;  it is generally believed that it is
+consistent to suppose that $\frak c$ is not measure-free.
+}%end of comment
+
+\leader{438D}{}\cmmnt{ I turn now to the contexts in which
+measure-free cardinals behave as if they were `small'.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a $\sigma$-finite
+measure space, $Y$ a metrizable space with measure-free weight, and
+$f:X\to Y$ a measurable function.   Then there is a closed separable set
+$Y_0\subseteq Y$ such that
+$f^{-1}[Y_0]$ is conegligible;  that is, there is a conegligible
+measurable set $X_0\subseteq X$ such that $f[X_0]$ is separable.
+
+\proof{ Let $\Cal U$ be a $\sigma$-disjoint base for the topology of $Y$
+(4A2L(g-ii));  express it as $\bigcup_{n\in\Bbb N}\Cal U_n$ where each
+$\Cal U_n$ is a disjoint family of open sets.   If $n\in\Bbb N$,
+$\#(\Cal U_n)\le w(Y)$ (4A2Db) is a measure-free cardinal (438Cb),
+and $\family{U}{U_n}{f^{-1}[U]}$ is a disjoint family in $\Sigma$ such
+that $\bigcup_{u\in\Cal V}f^{-1}[U]=f^{-1}[\bigcup\Cal V]$ is measurable
+for every $\Cal V\subseteq\Cal U_n$;  so 438Bc tells us that there is a
+countable set $\Cal V_n\subseteq\Cal U_n$ such that
+
+\Centerline{$f^{-1}[\bigcup(\Cal U_n\setminus\Cal V_n)]
+=\bigcup_{U\in\Cal U_n\setminus\Cal V_n}f^{-1}[U]$}
+
+\noindent is negligible.    Set
+
+\Centerline{$Y_0
+=Y\setminus\bigcup_{n\in\Bbb N}\bigcup(\Cal U_n\setminus\Cal V_n)$.}
+
+\noindent Then $f^{-1}[Y\setminus Y_0]
+=\bigcup_{n\in\Bbb N}f^{-1}[\bigcup(\Cal U_n\setminus\Cal V_n)]$ is
+negligible.   On the other hand,
+
+\Centerline{$\{U\cap Y_0:U\in\Cal U\}
+\subseteq\{\emptyset\}
+  \cup\{V\cap Y_0:V\in\bigcup_{n\in\Bbb N}\Cal V_n\}$}
+
+\noindent is countable, and is a base for the subspace topology of $Y_0$
+(4A2B(a-vi));  so $Y_0$ is second-countable and must be separable
+(4A2Oc).
+
+Thus we have an appropriate $Y_0$.   Now $X_0=f^{-1}[Y_0]$ is
+conegligible and measurable and $f[X_0]\subseteq Y_0$ is separable
+(4A2P(a-iv)).
+}%end of proof of 438D
+
+\vleader{36pt}{438E}{Proposition}\cmmnt{ (cf.\ 418B)}
+Let $(X,\Sigma,\mu)$ be a complete locally determined measure space.
+
+(a) If $Y$ is a topological space, $Z$ is a
+metrizable space, $w(Z)$ is measure-free, and $f:X\to Y$, $g:X\to Z$
+are measurable functions, then $x\mapsto (f(x),g(x)):X\to Y\times Z$ is
+measurable.
+
+(b) If $\sequencen{Y_n}$ is a sequence of metrizable
+spaces, with product $Y$, $w(Y_n)$ is measure-free for every
+$n\in\Bbb N$, and $f_n:X\to Y_n$ is measurable for every $n\in\Bbb N$,
+then $x\mapsto f(x)=\sequencen{f_n(x)}:X\to\prod_{n\in\Bbb N}Y_n$ is
+measurable.
+
+\proof{{\bf (a)(i)} Consider first the case in which $\mu$ is totally
+finite.   Then there is a conegligible set $X_0\subseteq X$ such that
+$g[X_0]$ is separable (438D).   Applying 418Bb to $f\restr X_0$ and
+$g\restr X_0$, we see that $x\mapsto(f(x),g(x)):X_0\to Y\times g[Z_0]$
+is measurable.   As $\mu$ is complete, it follows that
+$x\mapsto(f(x),g(x)):X\to Y\times Z$ is measurable.
+
+\medskip
+
+\quad{\bf (ii)} In the general case, take any open set
+$W\subseteq Y\times Z$ and any measurable set $F\subseteq X$ of finite
+measure.
+Set $Q=\{x:(f(x),g(x))\in W\}$.   By (i), applied to $f\restr F$ and
+$g\restr F$, $F\cap Q\in\Sigma$;  as $F$ is arbitrary and $\mu$ is
+locally determined, $Q\in\Sigma$;  as $W$ is arbitrary,
+$x\mapsto(f(x),g(x))$ is measurable.
+
+\medskip
+
+{\bf (b)} As in (a), it is enough to consider the case in which $\mu$ is
+totally finite.    In this case, we have for each $n\in\Bbb N$ a
+conegligible set $X_n$ such that $f_n[X_n]$ is separable.   Set
+$X'=\bigcap_{n\in\Bbb N}X_n$;  then 418Bd tells us that $f\restr X'$ is
+measurable, so that $f$ is measurable.
+}%end of proof of 438E
+
+\leader{438F}{Proposition}\cmmnt{ (cf.\ 418J)} Let $(X,\Sigma,\mu)$ be
+a semi-finite measure
+space and $\frak T$ a topology on $X$ such that $\mu$ is inner regular
+with respect to the closed sets.   Suppose that $Y$ is a
+metrizable space, $w(Y)$ is measure-free and $f:X\to Y$ is
+measurable.   Then $f$ is almost continuous.
+
+\proof{ Take $E\in\Sigma$ and $\gamma<\mu E$.   Then there is a
+measurable set $F\subseteq E$ such that $\gamma<\mu F<\infty$.   Let
+$F_0\subseteq F$ be a measurable set such that $F\setminus F_0$ is
+negligible and
+$f[F_0]$ is separable (438D).   By 412Pc, the subspace measure on $F_0$
+is still inner regular with respect to the closed sets, so $f\restr F_0$
+is almost continuous (418J), and there is a measurable set
+$H\subseteq F_0$, of measure at least $\gamma$, such that $f\restr H$ is
+continuous.   As $E$ and $\gamma$ are arbitrary, $f$ is almost
+continuous.
+}%end of proof of 438F
+
+\leader{438G}{Corollary}\cmmnt{ (cf.\ 418K)} Let
+$(X,\frak T,\Sigma,\mu)$ be a quasi-Radon
+measure space and $Y$ a metrizable space such that $w(Y)$ is
+measure-free.   Then a function
+$f:X\to Y$ is measurable iff it is almost continuous.
+
+\leaveitout{438F}
+
+\leader{438H}{}\cmmnt{ Now let us turn to questions which arose in
+\S434.
+
+\medskip
+
+\noindent}{\bf Proposition} A complete metric space is Radon iff its
+weight is measure-free.
+
+\proof{ Let $(X,\rho)$ be a complete metric space, and $\kappa=w(X)$ its
+weight.
+
+\medskip
+
+{\bf (a)} If $\kappa$ is measure-free, let $\mu$ be any totally
+finite Borel measure on $X$.   Applying 438D to the identity map from
+$X$ to itself, we see that there is a closed separable conegligible
+subspace $X_0$.   Now $X_0$ is complete, so is a Polish space, and by
+434Kb is a Radon space.   The subspace measure $\mu_{X_0}$ is
+therefore tight (that is, inner regular with respect to the compact sets);  as $X_0$ is
+conegligible, it follows at once that $\mu$ also is.   As $\mu$ is
+arbitrary, $X$ is a Radon space.
+
+\medskip
+
+{\bf (b)} If $\kappa$ is not measure-free, take any $\sigma$-disjoint
+base $\Cal U$ for the topology of $X$.   Express $\Cal U$ as
+$\bigcup_{n\in\Bbb N}\Cal U_n$ where every $\Cal U_n$ is disjoint.
+Then $\kappa\le\#(\Cal U)$
+and there is a probability measure $\nu$ on $\Cal U$, with domain
+$\Cal P\Cal U$, such that $\nu\{U\}=0$ for every $U\in\Cal U$.
+Let $n\in\Bbb N$ be such that $\nu\Cal U_n>0$.
+For each $U\in\Cal U_n$ choose
+$x_U\in U$. For Borel sets $E\subseteq X$ set
+$\mu E=\nu\{U:U\in\Cal U_n,\,x_U\in E\}$;
+then $\mu$ is a Borel measure on $X$ and
+$\mu(\bigcup\Cal U_n)=\nu\Cal U_n>0$, while
+$\mu(\bigcup\Cal V)=\nu\Cal V=0$ for every finite
+$\Cal V\subseteq\Cal U_n$.
+Thus $\mu$ is not $\tau$-additive and cannot be tight,
+and $X$ is not a Radon space.
+}%end of proof of 438H
+
+\leader{438I}{Proposition} Let $X$ be a metrizable space and
+$\ofamily{\xi}{\kappa}{F_{\xi}}$ a non-decreasing family of closed
+subsets of $X$, where $\kappa$ is a measure-free cardinal.   Then
+
+\Centerline{$\mu(\bigcup_{\xi<\kappa}F_{\xi})
+=\sum_{\xi<\kappa}\mu(F_{\xi}\setminus\bigcup_{\eta<\xi}F_{\eta})$}
+
+\noindent for every semi-finite Borel measure $\mu$ on $X$.
+
+\proof{{\bf (a)} I had better begin by remarking that
+$H_{\xi}=\bigcup_{\eta<\xi}F_{\eta}$ is an F$_{\sigma}$ set for every
+ordinal $\xi\le\kappa$, by 4A2Ld and 4A2Ka.   So, setting
+$E_{\xi}=F_{\xi}\setminus H_{\xi}$, $\sum_{\xi<\kappa}\mu E_{\xi}$ is
+defined.
+
+\medskip
+
+{\bf (b)} I show by induction on $\zeta$ that
+$\mu H_{\zeta}=\sum_{\xi<\zeta}\mu E_{\xi}$ for every $\zeta\le\kappa$.
+The induction starts trivially with $\mu H_0=0$.   The inductive step to
+a successor ordinal $\zeta+1$ is also immediate, as
+$H_{\zeta+1}=H_{\zeta}\cup E_{\zeta}$.   For the inductive step to a
+limit ordinal $\zeta$ of countable cofinality, let $\sequencen{\zeta_n}$
+be a non-decreasing sequence in $\zeta$ with supremum $\zeta$;  then
+
+\Centerline{$\mu H_{\zeta}
+=\sup_{n\in\Bbb N}\mu H_{\zeta_n}
+=\sup_{n\in\Bbb N}\sum_{\xi<\zeta_n}\mu E_{\xi}
+=\sum_{\xi<\zeta}\mu E_{\xi}$,}
+
+\noindent as required.
+
+\medskip
+
+{\bf (c)} So we are left with the case in which $\zeta$ is a limit
+ordinal of uncountable cofinality.   In this case,
+$\mu(E\cap H_{\zeta})\le\sum_{\xi<\zeta}\mu E_{\xi}$ whenever $\mu E$ is
+finite.   \Prf\ Let $\Cal U$ be a $\sigma$-disjoint base for the
+topology of $X$ (4A2L(g-ii)), and express $\Cal U$ as
+$\bigcup_{n\in\Bbb N}\Cal U_n$ where each $\Cal U_n$ is disjoint.   For
+$n\in\Bbb N$, $\xi\le\zeta$ set
+
+\Centerline{$\Cal V_{n\xi}
+=\{U:U\in\Cal U_n,\,U\cap H_{\xi}\ne\emptyset\}$,
+\quad$V_{n\xi}=\bigcup\Cal V_{n\xi}$.}
+
+\noindent Define $\phi_n:V_{n\zeta}\to\zeta$ by saying that
+$\phi_n(x)=\min(\{\xi:\xi<\zeta,\,x\in V_{n\xi}\})$.   Then, for any
+$D\subseteq\zeta$,
+
+\Centerline{$\phi_n^{-1}[D]
+=\bigcup_{\xi\in D}
+  \bigcup(\Cal V_{n\xi}\setminus\bigcup_{\eta<\xi}\Cal V_{n\eta})$}
+
+\noindent is a union of members of $\Cal U_n$, so is open.   We
+therefore have a measure $\nu_n$ on $\Cal P\zeta$ defined by saying that
+$\nu_nD=\mu(E\cap\phi_n^{-1}[D])$ for every $D\subseteq\zeta$.   At this
+point, recall that we are supposing that $\kappa$ is measure-free, so
+$\#(\zeta)$ also is measure-free (438Cb) and
+$\nu_n\zeta=\sum_{\xi<\zeta}\nu_n\{\xi\}=\sup_{\xi<\zeta}\nu_n\xi$
+(438Bb).   Interpreting this in $X$, we have
+$\mu(E\cap V_{n\zeta})=\sup_{\xi<\zeta}\mu(E\cap V_{n\xi})$.
+
+This is true for every $n\in\Bbb N$.   So there is a countable set
+$C\subseteq\zeta$ such that
+$\mu(E\cap V_{n\zeta})=\sup_{\xi\in C}\mu(E\cap V_{n\xi})$ for every
+$n\in\Bbb N$.   Because $\cf\zeta>\omega$, there is an $\alpha<\zeta$
+such that $C\subseteq\alpha$, and
+$\mu(E\cap V_{n\zeta})=\mu(E\cap V_{n\alpha})$, that is,
+$E\cap V_{n\zeta}\setminus V_{n\alpha}$ is
+negligible, for every $n\in\Bbb N$.
+
+Now note that $F_{\alpha}$ is closed.   So
+
+$$\eqalign{H_{\zeta}\setminus F_{\alpha}
+&\subseteq\bigcup\{U:U\in\Cal U,\,H_{\zeta}\cap U\ne\emptyset,\,
+   U\cap F_{\alpha}=\emptyset\}\cr
+&=\bigcup_{n\in\Bbb N}V_{n\zeta}\setminus V_{n,\alpha+1},\cr}$$
+
+\noindent and $E\cap H_{\zeta}\setminus F_{\alpha}$ is negligible.
+Accordingly, using the inductive hypothesis,
+
+\Centerline{$\mu(E\cap H_{\zeta})
+\le\mu F_{\alpha}
+=\mu H_{\alpha+1}\le\sum_{\xi\le\alpha}\mu E_{\xi}
+\le\sum_{\xi<\zeta}\mu E_{\xi}$,}
+
+\noindent as claimed.\ \Qed
+
+Because $\mu$ is semi-finite, and $E$ is arbitrary,
+$\mu H_{\zeta}\le\sum_{\xi<\zeta}E_{\xi}$;  but the reverse inequality
+is trivial, so we have equality, and the induction proceeds in this case
+also.
+
+\medskip
+
+{\bf (d)} At the end of the induction we have
+$\mu H_{\kappa}=\sum_{\xi<\kappa}\mu E_{\xi}$, as stated.
+}%end of proof of 438I
+
+\leader{438J}{}\cmmnt{ So far we have been looking at metrizable
+spaces, the obvious first step.   But it turns out that the concept of
+`metacompactness' leads to generalizations of some of the results above.
+
+\medskip
+
+\noindent}{\bf Proposition}\cmmnt{ ({\smc Moran 70}, {\smc Haydon 74})}
+Let $X$ be a metacompact space with measure-free weight.
+
+(a) $X$ is Borel-measure-compact.
+
+(b) If $X$ is normal, it is measure-compact.
+
+(c) If $X$ is perfectly normal\cmmnt{ (for instance, if it is
+metrizable)}, it is Borel-measure-complete.
+
+\proof{{\bf (a)} \Quer\ If $X$ is not Borel-measure-compact, there are
+a non-zero totally finite Borel measure $\mu$ on $X$ and a cover
+$\Cal G$ of $X$ by negligible open sets (434H(a-v)).   Let $\Cal H$ be
+a point-finite open cover of $X$ refining $\Cal G$.   By 4A2Dc,
+$\#(\Cal H)$ is at most $\max(\omega,w(X))$, so is measure-free, by 438C.
+Because $\mu$ is a Borel measure,
+$\bigcup\Cal H'$ is
+measurable for every $\Cal H'\subseteq\Cal H$;  $\mu H=0$ for every
+$H\in\Cal H$;  while $\mu(\bigcup\Cal H)=\mu X>0$.   But this
+contradicts 438Ba.\ \Bang
+
+\medskip
+
+{\bf (b)} Now suppose that $X$ is normal, and that $\mu$ is a totally
+finite Baire measure on $X$.   Because a
+normal metacompact space is countably paracompact (4A2F(g-iii)), $\mu$
+has an extension to a Borel measure $\mu_1$ which is inner regular with
+respect to the closed sets, by \Marik's theorem (435C).   Now $\mu_1$ is
+$\tau$-additive, by (a) above, so $\mu$ also is (411C).   As $\mu$ is
+arbitrary, $X$ is measure-compact.
+
+\medskip
+
+{\bf (c)} Since on a perfectly normal space the Baire and Borel measures are the same, $X$ is Borel-measure-complete iff it is measure-compact, and we can use (b).
+}%end of proof of 438J
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The arguments here can be adapted in various
+ways, and in particular the hypotheses can be weakened;  see
+438Yd-438Yf. %438Yd 438Ye 438Yf
+}%end of comment
+
+\leader{438K}{Hereditarily weakly $\theta$-refinable spaces} A
+topological space $X$ is {\bf \hwtr}\cmmnt{ (also called {\bf
+hereditarily $\sigma$-relatively metacompact},
+{\bf hereditarily weakly submetacompact})} if for every family $\Cal G$
+of open subsets of $X$ there is a
+$\sigma$-isolated family $\Cal A$ of subsets of $X$, refining
+$\Cal G$, such that $\bigcup\Cal A=\bigcup\Cal G$.
+
+\vleader{48pt}{438L}{Lemma} (a) Any subspace of a \hwtr\ topological
+space is \hwtr.
+
+(b) A hereditarily metacompact
+space\cmmnt{ (e.g., any metrizable space, see 4A2Lb)} is \hwtr.
+
+(c) A hereditarily Lindel\"of space is \hwtr.
+
+(d) A topological space with a $\sigma$-isolated network is
+\hwtr.
+%in particular, any space with a development is \hwtr
+
+\proof{{\bf (a)} If $X$ is \hwtr, $Y$ is a subspace of $X$, and $\Cal H$
+is a family of open subsets of $Y$, set
+$\Cal G=\{G:G\subseteq X$ is open, $G\cap Y\in\Cal H\}$.   Then there is
+a $\sigma$-isolated family $\Cal A$, refining $\Cal G$, with union
+$\bigcup\Cal G$;  and $\{A\cap Y:A\in\Cal A\}$ is $\sigma$-isolated
+(4A2B(a-viii)), refines $\Cal H$, and has union $\bigcup\Cal H$.   As
+$\Cal H$ is arbitrary, $Y$ is \hwtr.
+
+\medskip
+
+{\bf (b)} If $X$ is hereditarily metacompact, and $\Cal G$ is any
+family of open sets in $X$ with union $W$, then $\Cal G$ is an open
+cover of the metacompact space $W$, so has a point-finite open
+refinement $\Cal H$ with the same union.   For each $x\in W$, set
+$\Cal H_x=\{H:x\in H\in\Cal H\}$, $V_x=\bigcap\Cal H_x$, so that
+$\Cal H_x$ is
+a non-empty finite set and $V_x$ is an open set containing $x$.   For
+$n\ge 1$, set
+$A_n=\{x:x\in W,\,\#(\Cal H_x)=n\}$;  then for any distinct $x$,
+$y\in A_n$, either $\Cal H_x=\Cal H_y$ and $V_x=V_y$, or
+$\#(\Cal H_x\cup\Cal H_y)>n$ and $V_x\cap V_y\cap A_n=\emptyset$.   This
+means that $\Cal A_n=\{V_x\cap A_n:x\in A_n\}$ is a partition of
+$A_n$ into relatively open sets, and is an isolated family.   Also,
+$\Cal A_n$ is a refinement of $\Cal H$ and therefore of $\Cal G$;  so
+$\bigcup_{n\ge 1}\Cal A_n$ is a $\sigma$-isolated refinement of
+$\Cal G$, and its union is $\bigcup_{n\ge 1}A_n=W$.   As $\Cal G$ is
+arbitrary, $X$ is \hwtr.
+
+\medskip
+
+{\bf (c)} If $X$ is hereditarily Lindel\"of and $\Cal G$ is a
+family of open subsets of $X$, there is a countable
+$\Cal G_0\subseteq\Cal G$ with the same union;  now $\Cal G_0$, being
+countable, is $\sigma$-isolated.   As $\Cal G$ is arbitrary, $X$
+is \hwtr.
+
+\medskip
+
+{\bf (d)} If $X$ has a $\sigma$-isolated network $\Cal A$, and
+$\Cal G$ is any family of open subsets of $X$, then
+
+\Centerline{$\Cal E=\{A:A\in\Cal A$, $A$ is included in some member of
+$\Cal G\}$}
+
+\noindent is a $\sigma$-isolated family (4A2B(a-viii) again), refining
+$\Cal G$, with union $\bigcup\Cal G$.
+}%end of proof of 438L
+
+\leader{438M}{Proposition}\cmmnt{ ({\smc Gardner 75})}
+If $X$ is a \hwtr\ topological space with measure-free weight, it is
+Borel-measure-complete.
+
+%Gardner & Pfeffer 10.2;  Gardner 75
+
+\proof{ Let $\mu$ be a Borel probability measure on $X$, and $\Cal G$
+the family of $\mu$-negligible open sets.   Let $\Cal A$ be a
+$\sigma$-isolated family refining $\Cal G$ with union $\bigcup\Cal G$.
+Express $\Cal A$ as $\bigcup_{n\in\Bbb N}\Cal A_n$ where each $\Cal A_n$
+is an isolated family;  for each $n\in\Bbb N$, set
+$X_n=\bigcup\Cal A_n$ and let
+$\mu_n$ be the subspace measure on $X_n$.   Then $\Cal A_n$ is a
+disjoint family of relatively open $\mu_n$-negligible sets;  as
+$\#(\Cal A_n)\le w(X_n)\le w(X)$ (4A2D) is measure-free, and $\mu_n$
+is a totally finite Borel measure on $X_n$,
+
+\Centerline{$\mu^*X_n=\mu_nX_n=\mu_n(\bigcup\Cal A_n)=0$,}
+
+\noindent by 438Bb.   Now
+$\mu(\bigcup\Cal G)=\mu^*(\bigcup_{n\in\Bbb N}X_n)=0$.   As $\mu$ is
+arbitrary, $X$ is Borel-measure-complete (434I(a-iv)).
+}%end of proof of 438M
+
+%[is a normal weakly $\theta$-refinable space countably paracompact?]
+
+\leader{438N}{}\cmmnt{ For the next few paragraphs, I will use the
+following notation.}   Let
+$X$ be a topological space and $\Cal G$ a family of subsets of $X$.
+Then $\Cal J(\Cal G)$ will be the family of subsets of $X$ expressible
+as $\bigcup\Cal A$ for some $\sigma$-isolated family $\Cal A$
+refining $\Cal G$.   \cmmnt{Observe that} $X$ is \hwtr\ iff
+$\bigcup\Cal G$
+belongs to $\Cal J(\Cal G)$ for every family $\Cal G$ of open subsets of
+$X$.
+
+\spheader 438Na $\Cal J(\Cal G)$ is always a $\sigma$-ideal of subsets
+of $X$.
+\prooflet{\Prf\ If $\Cal A$ is a $\sigma$-isolated family of
+subsets of $X$, refining $\Cal G$, and $B$ is any set, then
+$\{B\cap A:A\in\Cal A\}$ is still
+$\sigma$-isolated and still refines $\Cal G$;  so any subset of a
+member of $\Cal J(\Cal G)$ belongs to $\Cal J(\Cal G)$.   If
+$\sequencen{\Cal A_n}$ is a sequence of $\sigma$-isolated
+families refining $\Cal G$, then $\bigcup_{n\in\Bbb N}\Cal A_n$ is
+$\sigma$-isolated and refines $\Cal G$;  so the union of
+any sequence in $\Cal J(\Cal G)$ belongs to $\Cal J(\Cal G)$.\ \Qed}
+
+\spheader 438Nb If $\Cal H$ refines $\Cal G$, then
+$\Cal J(\Cal H)\subseteq\Cal J(\Cal G)$.  \prooflet{\Prf\ All we need to
+remember is that any family refining $\Cal H$ also refines $\Cal G$.\
+\Qed}
+
+\spheader 438Nc If $X$ and $Y$ are topological spaces, $A\subseteq X$,
+$f:A\to Y$ is
+continuous, and $\Cal H$ is a family of subsets of $Y$, set
+$\Cal G=\{f^{-1}[H]:H\in\Cal H\}$.   Then
+$\Cal J(\Cal G)\supseteq\{f^{-1}[B]:B\in\Cal J(\Cal H)\}$.
+\prooflet{\Prf\ If $B\in\Cal J(\Cal H)$, there is a $\sigma$-isolated
+family $\Cal D$ of subsets of $Y$, refining $\Cal H$, and with union
+$B$.   Now
+$\Cal A=\{f^{-1}[D]:D\in\Cal D\}$ refines $\Cal G$ and has union
+$f^{-1}[B]$.   We can express $\Cal D$ as
+$\bigcup_{n\in\Bbb N}\Cal D_n$, where each $\Cal D_n$ is an isolated
+family;  set
+$\Cal A_n=\{f^{-1}[D]:D\in\Cal D_n\}$, so that
+$\Cal A=\bigcup_{n\in\Bbb N}\Cal A_n$.   For each $n$, $\Cal A_n$ is
+disjoint, because $\Cal D_n$ is.   Moreover, if $D\in\Cal D_n$, then
+$D=H\cap\bigcup\Cal D_n$ for some open set $H\subseteq Y$, so that
+$f^{-1}[D]=f^{-1}[H]\cap\bigcup\Cal A_n$ is relatively open in
+$\bigcup\Cal A_n$;  this shows that $\Cal A_n$ is an isolated
+family.   Accordingly $\Cal A$ is $\sigma$-isolated and witnesses
+that $f^{-1}[B]\in\Cal J(\Cal G)$.   As $B$ is arbitrary, we have the
+result.\ \Qed}
+
+\spheader 438Nd If $X$ is a topological space, $\Cal G$ is a family of
+subsets of $X$,
+and $\familyiI{D_i}$ is an isolated family in $\Cal J(\Cal G)$,
+then $\bigcup_{i\in I}D_i\in\Cal J(\Cal G)$.   \prooflet{\Prf\ For each
+$i\in I$, let $\sequencen{\Cal A_{ni}}$ be a sequence of isolated
+families, all refining $\Cal G$, such that
+$D_i=\bigcup_{n\in\Bbb N}\bigcup\Cal A_{in}$.   Set
+$\Cal A_n=\bigcup_{i\in I}\Cal A_{in}$ for each $n$.   Then $\Cal A_n$
+refines $\Cal G$, and
+$\bigcup_{n\in\Bbb N}\bigcup\Cal A_n=\bigcup_{i\in I}D_i$.   It is easy
+to check that every $\Cal A_n$ is isolated, so that
+$\bigcup_{n\in\Bbb N}\Cal A_n$ witnesses that $\bigcup_{i\in I}D_i$
+belongs to $\Cal J(\Cal G)$.\ \Qed}
+
+\leader{438O}{Lemma} Give
+$\Bbb R$ the topology $\frak S$ generated by the closed intervals
+$\ocint{-\infty,t}$ for $t\in\Bbb R$, and let $r\ge 1$.   Then
+$\BbbR^r$, with the product topology corresponding to $\frak S$, is
+\hwtr.
+
+\proof{ Induce on $r$.   Write $\le$ for the usual partial order of
+$\BbbR^r$, and $\ocint{-\infty,x}$ for $\{y:y\le x\}$;  set
+$V_A=\bigcup_{x\in A}\ocint{-\infty,x}$ for $A\subseteq\BbbR^r$.   The
+sets $\ocint{-\infty,x}$, as $x$ runs over $\BbbR^r$, form a base for
+the topology of $\BbbR^r$.
+
+The induction starts easily because $\frak S$ itself is hereditarily
+Lindel\"of.   \Prf\ If $\Cal G\subseteq\frak S$, set
+
+\Centerline{$A
+=\{x:x\in\Bbb R$, there is some $G\in\Cal G$ such that
+$\ocint{-\infty,x}\subseteq G\}$.}
+
+\noindent Then $A$ has a
+countable cofinal set $D$, so that there is a corresponding countable
+subset of $\Cal G$ with the same union as $\Cal G$.\ \QeD\  By
+438Lc, $\frak S$ is \hwtr.
+
+For the inductive step to $r+1$, where $r\ge 1$, let $\Cal G$ be a
+family of open subsets of $\BbbR^{r+1}$, and set
+
+\Centerline{$A
+=\{x:x\in\BbbR^r$, there is some $G\in\Cal G$ such that
+$\ocint{-\infty,x}\subseteq G\}$.}
+
+\noindent For each $k\le r$, $q\in\Bbb Q$ set
+$K_k=(r+1)\setminus\{k\}$ and let $B_{kq}\subseteq\BbbR^{K_k}$ be the
+set $\{z:z^{\smallfrown}\fraction{q}\in V_A\}$,
+writing $z^{\smallfrown}\fraction{q}$ for that
+member $x$ of $\BbbR^{r+1}$ such that $x\restr K_k=z$ and $x(k)=q$.   (I
+am thinking of members of $\BbbR^{r+1}$ as functions from
+$r+1=\{0,\ldots,r\}$ to $\Bbb R$.)   Set
+$A_{kq}=\{x:x\in V_A,\,x(k)=q\}$,
+$\Cal G_{kq}=\{\ocint{-\infty,x}:x\in A_{kq}\}$.   Then, in the notation
+of 438N, $V_{A_{kq}}\in\Cal J(\Cal G)$.   \Prf\ Set $f(x)=x\restr K_k$
+for each $x\in V_{A_{kq}}$, so that $f:V_{A_{kq}}\to\BbbR^{K_k}$ is
+continuous.   For $x\in A_{kq}$,
+$\ocint{-\infty,x}=f^{-1}[\,\ocint{-\infty,f(x)}\,]$.   Now
+$\BbbR^{K_k}$ is \hwtr, by the inductive hypothesis, so if we set
+$\Cal H_{kq}=\{\ocint{-\infty,f(x)}:x\in A_{kq}\}$,
+$\bigcup\Cal H_{kq}\in\Cal J(\Cal H_{kq})$ and (by 438Nc)
+
+\Centerline{$V_{A_{kq}}=f^{-1}[\bigcup\Cal H_{kq}]
+\in\Cal J(\Cal G_{kq})\subseteq\Cal J(\Cal G)$.  \Qed}
+
+\noindent Accordingly $W\in\Cal J(\Cal G)$, where
+$W=\bigcup_{k\le r,q\in\Bbb Q}V_{A_{kq}}$, by 438Na.
+
+Now consider $V_A\setminus W$.   If $x$, $x'\in V_A\setminus W$ and
+$x\le x'$ then $x=x'$.   \Prf\Quer\ Otherwise, there are a $k\le n$ and
+a $q\in\Bbb Q$ such that $x(k)\le q\le x'(k)$.   In this case, setting
+$y\restr K_k=x\restr K_k$ and $y(k)=q$, we have $y\in A_{kq}$ and
+$x\in V_{A_{kq}}$.\ \Bang\Qed
+
+But this means that the subspace topology of $V_A\setminus W$ is
+discrete, so that $\{\{x\}:x\in V_A\setminus W\}$ is an isolated
+family covering $V_A\setminus W$ and refining $\Cal G$;  thus
+$V_A\setminus W\in\Cal J(\Cal G)$ and $\bigcup\Cal G=V_A$ belongs to
+$\Cal J(\Cal G)$.   As $\Cal G$ is arbitrary, $\BbbR^{r+1}$ is \hwtr\
+and the induction proceeds.
+}%end of proof of 438O
+
+\leader{438P}{Lemma} Let $X$ be a Polish space, and
+$\tildeClll=\tildeClll(X)$ the family of functions
+$\omega:\Bbb R\to X$ such that $\lim_{s\uparrow t}\omega(s)$ and
+$\lim_{s\downarrow t}\omega(s)$ are defined in $X$ for every
+$t\in\Bbb R$.
+
+(a) For $A\subseteq B\subseteq\Bbb R$ and $f\in X^B$, set
+
+$$\eqalign{\jump_A(f,\epsilon)
+&=\sup\{n:\text{ there is an }I\in[A]^n
+\text{ such that }\rho(f(s),f(t))>\epsilon\cr
+&\mskip180mu
+\text{ whenever }s<t\text{ are successive elements of }I\}.\cr}$$
+
+\noindent Now a function $\omega\in X^{\Bbb R}$ belongs to $\tildeClll$ iff
+$\jump_{[-n,n]}(\omega,\epsilon)$ is finite for every $n\in\Bbb N$ and
+$\epsilon>0$.
+
+(b) If $\omega\in\tildeClll$ then $\omega$ is continuous at all but
+countably many points of $\Bbb R$.
+
+(c) If $\omega\in\tildeClll$ then $\omega[\,[-n,n]\,]$ is relatively
+compact in $X$ for every $n\in\Bbb N$.
+
+\proof{Fix on a complete metric $\rho$ inducing the topology of $X$.
+
+\medskip
+
+{\bf (a)(i)} Suppose that $\omega\in\tildeClll$, $n\in\Bbb N$ and
+$\epsilon>0$.
+For every $t\in[-n,n]$, there is a $\delta_t>0$ such that
+$\rho(\omega(s),\omega(s'))\le\epsilon$ whenever either
+$t<s\le s'\le t+\delta_t$
+or $t-\delta_t\le s\le s'<t$.   Now there is an $m\ge 1$ such that
+whenever $s$, $s'\in[-n,n]$ and $|s-s'|\le\Bover{2n}{m}$ there is a
+$t\in[-n,n]$ such that both $s$ and $s'$ belong to
+$[t-\delta_t,t+\delta_t]$.   Suppose now that
+$-n\le t_0<t_1<\ldots<t_{3m}\le n$.   Then there must be
+an $i<m$ such that $t_{3i+3}-t_{3i}\le\Bover{2n}m$.    Let $t$ be such
+that both $t_{3i}$ and $t_{3i+3}$ belong to $[t-\delta_t,t+\delta_t]$.
+There is at least one $j$ such that $3i\le j\le 3i+2$ and
+$t\notin[t_j,t_{j+1}]$;  in which case
+$\rho(\omega(t_j),\omega(t_{j+1}))\le\epsilon$.
+So $\jump_{[-n,n]}(\omega,\epsilon)\le 3m$.   As $n$ and $\epsilon$ are
+arbitrary, the condition is satisfied.
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $\omega$ satisfies the condition.
+If $t\in\Bbb R$ and $\epsilon>0$, take $n\ge|t|+1$ and
+$m=\jump_{[-n,n]}(\omega,\epsilon)$;  then there must be a $\delta>0$
+such that $\diam\{\omega(s):t<s\le t+\delta\}\le 2\epsilon$, since
+otherwise we should be able to find $t_0>t_1>\ldots>t_m>t$ such that
+$t_0=t+1$ and
+$\rho(\omega(t_{i+1}),\omega(t_i))>\epsilon$ for $i<m$.   Because $X$ is
+$\rho$-complete, $\lim_{s\downarrow t}\omega(s)$ is defined.   Similarly,
+$\lim_{s\uparrow t}\omega(s)$ is defined;  as $t$ is arbitrary,
+$\omega\in\tildeClll$.
+
+\medskip
+
+{\bf (b)} For $k\in\Bbb N$, set
+set $A_k=\{t:t\in\Bbb R$,
+$\limsup_{s\to t}\rho(\omega(s),\omega(t))>2^{-k+1}\}$.
+Then $\#(A_k\cap\coint{-n,n})\le\jump_{[-n,n]}(\omega,2^{-k})$ for every
+$n\in\Bbb N$.   \Prf\ If $t_0,\ldots,t_m\in A_k$ and
+$-n\le t_0<\ldots<t_m<n$, then we can choose
+$s_0,\ldots,s_m$ such that $s_0=t_0$,
+
+\Centerline{$s_{i-1}<s_i<t_{i+1}$,
+\quad $\rho(\omega(s_i),\omega(s_{i-1}))>2^{-k}$}
+
+\noindent whenever $1\le i\le m$, interpreting $t_{m+1}$ as $n$.
+Now $\{s_i:i\le m\}$ witnesses that
+$\jump_{[-n,n]}(\omega,2^{-k})>m$.\ \Qed
+
+By (a), $A_k\cap\coint{-n,n}$ is finite for every $n$,
+and
+
+\Centerline{$\{t:\omega$ is discontinuous at $t\}=\bigcup_{k\in\Bbb N}A_k$}
+
+\noindent is countable.
+
+\medskip
+
+{\bf (c)} If $\sequence{k}{t_k}$ is any monotonic sequence in $\Bbb R$ with
+limit $t$,
+$\sequence{k}{\omega(t_k)}$ is convergent to one of
+$\lim_{s\uparrow t}\omega(s)$, $\lim_{s\downarrow t}\omega(s)$.
+But this means that if $\sequence{k}{t_k}$ is any sequence in
+$[-n,n]$, $\sequence{k}{\omega(t_k)}$ has a subsequence which is convergent
+in $X$;  by 4A2Le, $\omega[\,[-n,n]\,]$ is relatively compact in $X$.
+}%end of proof of 438P
+
+\leader{438Q}{Theorem} Let $X$ be a Polish space, and
+$\tildeClll=\tildeClll(X)$ the family of functions
+$\omega:\Bbb R\to X$ such that $\lim_{s\uparrow t}\omega(s)$ and
+$\lim_{s\downarrow t}\omega(s)$ are defined in $X$ for every
+$t\in\Bbb R$.
+
+(a) $\tildeClll$,
+with its topology of pointwise convergence
+inherited from the product topology of $X^{\Bbb R}$, is K-analytic.
+
+(b) $\tildeClll$ is \hwtr.
+
+\proof{ Fix on a complete metric $\rho$ inducing the topology of $X$.
+
+\medskip
+
+{\bf (a)} By 4A2Qg, $X$ can be regarded as a G$_{\delta}$ set in a compact
+metrizable space $Z$.
+
+\medskip
+
+\quad{\bf (i)}
+Give the space $\Cal C=\Cal C(Z)$ of closed subsets of $Z$ its
+Fell topology;  then $\Cal C$ is compact and metrizable (4A2T(b-iii),
+4A2Tf).    Let $\Cal K$ be the family of compact subsets of $X$, that is,
+the set of those $K\in\Cal C$ which are included in $X$.   Then $\Cal K$ is
+a G$_{\delta}$ set in $\Cal C$.   \Prf\ $Z\setminus X$ is an F$_{\sigma}$
+set in $Z$, so is expressible as the union of a sequence $\sequencen{L_n}$
+of compact sets;  now
+$\Cal K=\bigcap_{n\in\Bbb N}\{K:K\in\Cal C$, $K\cap L_n=\emptyset\}$ is
+G$_{\delta}$, by the definition of the Fell topology (4A2T(a-ii)).\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} For $n\in\Bbb N$, set
+
+\Centerline{$Q_n
+=\{\omega:\omega\in Z^{\Bbb R}$, $\omega[\,[-n,n]\,]$ is a
+relatively compact subset of $X\}$.}
+
+\noindent Then $Q_n$ is K-analytic.  \Prf\ Set
+
+\Centerline{$R_n
+=\{(K,\omega):K\in\Cal K$, $\omega\in Z^{\Bbb R}$,
+$\omega[\,[-n,n]\,]\subseteq K\}$.}
+
+\noindent Then
+
+\Centerline{$R_n
+=\bigcap_{t\in[-n,n]}\{(K,\omega):K\in\Cal K$, $\omega\in Z^{\Bbb R}$,
+$\omega(t)\in K\}$}
+
+\noindent is a closed set in $\Cal K\times Z^{\Bbb R}$, by 4A2T(e-i).
+Since $\Cal K$ is Polish and $Z^{\Bbb R}$ is compact,
+$R_n$ is K-analytic (423Ba, 423C, 422Ge, 422Gf).   But $Q_n$ is the
+projection of $R_n$ onto the second coordinate, so it too is K-analytic
+(422Gd).\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} Next, for $m$, $k\in\Bbb N$, defining the function
+$\jump_{[-n,n]}$ from $\rho$ as in 438P,
+
+\Centerline{$V_{mk}=\{\omega:\omega\in Q_n$,
+$\jump_{[-n,n]}(\omega,2^{-k})\le m\}$}
+
+\noindent is relatively closed in $Q_n$, therefore K-analytic, and
+
+\Centerline{$Q'_n=Q_n\cap\bigcap_{k\in\Bbb N}\bigcup_{m\in\Bbb N}V_{mk}$}
+
+\noindent is K-analytic (422Hc again).
+
+\medskip
+
+\quad{\bf (iv)} Consequently $Q=\bigcap_{n\in\Bbb N}Q'_n$ is K-analytic.
+But $Q=\tildeClll$.
+\Prf\ For $n$, $k\in\Bbb N$, $\tildeClll\subseteq Q_n$ by 438Pc,
+and $\tildeClll\subseteq\bigcup_{m\in\Bbb N}V_{mk}$ by 438Pa.
+So $\tildeClll\subseteq Q$.
+Conversely, if $\omega\in Q$, then surely
+$\omega(t)\in X$ for every $t\in\Bbb R$, and
+$\jump_{[-n,n]}(\omega,2^{-k})$ is finite for all $n$, $k\in\Bbb N$;  so
+$\omega\in\tildeClll$ by 438Pa in the other direction.\ \Qed
+
+Accordingly $\tildeClll$ is K-analytic, as claimed.
+
+\medskip
+
+{\bf (b)} Let $\Cal G$ be a family of open sets in $\tildeClll$.
+
+\medskip
+
+\quad{\bf (i)} In the
+notation of 438N, I seek to show that $\bigcup\Cal G$ belongs to
+$\Cal J(\Cal G)$.   Of course it will be enough to consider the case in
+which $\bigcup\Cal G$ is non-empty.   The following elementary remarks
+will be useful.
+
+\medskip
+
+\qquad\grheada\
+If $D\subseteq\bigcup\Cal G$, and $\Cal E$ is a partition of
+$D$ into relatively open sets such that $\Cal E$ refines $\Cal G$, then
+$D\in\Cal J(\Cal G)$.
+
+\medskip
+
+\qquad\grheadb\ If $\familyiI{D_i}$ is any family in $\Cal J(\Cal G)$, and
+$\familyiI{H_i}$ is a  family of open sets, and
+$D\subseteq\{\omega:\#(\{i:\omega\in H_i\})=1\}$, then
+$D\cap\bigcup_{i\in I}H_i\cap D_i$ belongs to
+$\Cal J(\Cal G)$.   \Prf\ $\familyiI{D\cap H_i\cap D_i}$ is an isolated
+family in $\Cal J(\Cal G)$;  use 438Nd.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Let $\Cal I$ be the family of non-empty open intervals in
+$\Bbb R$ with rational endpoints, and $\Cal U$ a countable base for the
+topology of $X$.   Write $Q$ for the family of all
+finite sequences
+
+\Centerline{$\pmb{q}=
+(I_0,U_0,V_0,W_0,I_1,U_1,V_1,W_1,\ldots,I_n,U_n,V_n,W_n)$}
+
+\noindent where $I_0,I_1,\ldots,I_n$ are disjoint members of $\Cal I$,
+all the $U_i$, $V_i$, $W_i$ belong to $\Cal U$, and, for each $i\le n$,
+any pair of $U_i$, $V_i$, $W_i$ are either equal or disjoint.   Fix
+$\pmb{q}=(I_0,\ldots,W_n)\in Q$ for the moment.
+
+\medskip
+
+\quad{\bf (iii)} Set $T_{\pmb{q}}=\prod_{i\le n}I_i$.   For
+$\tau\in T_{\pmb{q}}$, write $F_{\pmb{q}\tau}$ for the set of those
+$\omega\in\tildeClll$ such that, for every $i\le n$,
+$\omega(s)\in U_i$ for $s\in I_i\cap\ooint{-\infty,\tau(i)}$,
+$\omega(\tau(i))\in V_i$ and $\omega(s)\in W_i$ for
+$s\in I_i\cap\ooint{\tau(i),\infty}$.   Set
+$\Omega_{\pmb{q}}=\bigcup\{F_{\pmb{q}\tau}:\tau\in T_{\pmb{q}}\}$,
+and for $\tau\in T_{\pmb{q}}$ set
+$H_{\pmb{q}\tau}
+=\{\omega:\omega\in \Omega_{\pmb{q}},\,\omega(\tau(i))\in V_i$
+for every $i\le n\}$.
+Finally, set
+
+\Centerline{$S_{\pmb{q}}
+=\{\tau:\tau\in T_{\pmb{q}}$ and $H_{\pmb{q}\tau}$ is included in some
+member of $\Cal G\}$.}
+
+\medskip
+
+\quad{\bf (iv)} If $T\subseteq S_{\pmb{q}}$ then
+$H=\bigcup_{\tau\in T}H_{\pmb{q}\tau}$ belongs to $\Cal J(\Cal G)$.
+\Prf\ Induce on $\#(L(T))$, where
+
+\Centerline{$L(T)=\{i:i\le n$, there are $\tau$, $\tau'\in T$ such that
+$\tau(i)\ne\tau'(i)\}$.}
+
+\noindent If $L(T)=\emptyset$, then $\#(T)\le 1$, so $H$ is either empty
+or included in some member of $\Cal G$, and the induction
+starts.   For the inductive step to $\#(L(T))=k\ge 1$, consider three
+cases.
+
+\medskip
+
+\qquad{\bf case 1} Suppose there is a $j\in L(T)$ such that
+$U_j=V_j=W_j$.   Then $\omega(t)\in V_j$ whenever
+$\omega\in\Omega_{\pmb{q}}$ and
+$t\in I_j$.   Fix any $t^*\in I_j$ and for $\tau\in T_{\pmb{q}}$ define
+$\tau^*\in T_{\pmb{q}}$ by setting $\tau^*(j)=t^*$, $\tau^*(i)=\tau(i)$
+for $i\ne j$;  then $H_{\pmb{q}\tau^*}=H_{\pmb{q}\tau}$.   Set
+$T^*=\{\tau^*:\tau\in T\}$;  then $L(T^*)=L(T)\setminus\{j\}$, so
+$\#(L(T^*))<\#(L(T))$, while $T^*\subseteq S_{\pmb{q}}$.   By the
+inductive hypothesis, $H=\bigcup_{\tau\in T^*}H_{\pmb{q}\tau}$ belongs to
+$\Cal J(\Cal G)$.
+
+\medskip
+
+\qquad{\bf case 2} Suppose there is a $j\in L(T)$ such that $U_j\ne V_j$
+and $V_j\ne W_j$.   Then $V_j\cap(U_j\cup W_j)=\emptyset$.   For
+$s\in I_j$ set $T^*_s=\{\tau:\tau\in T,\,\tau(j)=s\}$.   Then
+$\#(L(T^*_s))<\#(L(T))$ so, by the inductive hypothesis,
+$H^*_s\in\Cal J(\Cal G)$,
+where $H^*_s=\bigcup_{\tau\in T^*_s}H_{\pmb{q}\tau}$.   But, for
+$\tau\in T$ and $\omega\in H_{\pmb{q}\tau}$, $\omega(s)\in V_j$ iff
+$s=\tau(j)$;
+so $H^*_s=\{\omega:\omega\in H,\,\omega(s)\in V_j\}$ and
+$\family{s}{I_j}{H^*_s}$ is a
+partition of $H$ into relatively open sets.   By (i-$\beta$),
+$H\in\Cal J(\Cal G)$.
+
+\medskip
+
+\qquad{\bf case 3} Otherwise, $L(T)=J\cup J'$ where
+$J=\{i:i\in L(T),\,U_i=V_i\}$ and $J'=\{i:i\in L(T),\,V_i=W_i\}$ are
+disjoint.   For $\omega\in H$ and $i\in J$ we see that there is a
+largest $t\in I_i$ such that $\omega(t)\in V_i$;  set $\phi_i(\omega)=-t$.
+Similarly, if $\omega\in H$, $i\in J'$ there is a smallest
+$t\in I_i$ such that $\omega(t)\in V_i$;  in this case, set
+$\phi_i(\omega)=t$.   Observe that, for $i\in J$ and $s\in\Bbb R$,
+
+$$\eqalign{\{\omega:\omega\in H,\,\phi_i(\omega)\le s\}
+&=\emptyset\text{ if }s<-t\text{ for every }t\in I_i,\cr
+&=H\text{ if }-t<s\text{ for every }t\in I_i,\cr
+&=\{\omega:\omega\in H,\,\omega(-s)\in V_i\}\text{ if }-s\in I_i,\cr}$$
+
+\noindent so is always relatively open in $H$, and $\phi_i:H\to\Bbb R$ is
+continuous if $\Bbb R$ is given the left-facing
+topology $\frak S$ of Lemma 438O.   Similarly, for $i\in J'$, $s\in\Bbb R$,
+
+$$\eqalign{\{\omega:\omega\in H,\,\phi_i(\omega)\le s\}
+&=\emptyset\text{ if }s<t\text{ for every }t\in I_i,\cr
+&=H\text{ if }t<s\text{ for every }t\in I_i,\cr
+&=\{\omega:\omega\in H,\,\omega(s)\in V_i\}\text{ if }s\in I_i.\cr}$$
+
+\noindent So in this case also $\phi_i$ is continuous.
+
+Accordingly, giving $\BbbR^{L(T)}$ the product topology corresponding to
+$\frak S$, we have a continuous map $\phi:H\to\BbbR^{L(T)}$
+defined by setting $\phi(\omega)=\family{i}{L(T)}{\phi_i(\omega)}$ for
+$\omega\in H$.   For $\tau\in T$, set $\tilde\tau(i)=-\tau(i)$ if $i\in J$,
+$\tau(i)$ if $i\in J'$, and
+$\tilde H_{\tau}=\ocint{-\infty,\tilde\tau}\subseteq\BbbR^{L(T)}$.  Then
+
+$$\eqalignno{H_{\pmb{q}\tau}
+&=\{\omega:\omega\in H,\,\omega(\tau(i))\in V_i
+  \text{ for every }i\le n\}\cr
+&=\{\omega:\omega\in H,\,\omega(\tau(i))\in V_i
+  \text{ for every }i\in L(T)\}\cr
+\displaycause{because if $\omega\in H$, $i\le n$ and $i\notin L(T)$ then
+there is some $\tau'\in T$ such that $\omega\in H_{\pmb{q}\tau'}$, so that
+$\omega(\tau'(i))\in V_i$ and therefore $\omega(\tau(i))\in V_i$}
+&=\{\omega:\omega\in H,\,\phi_i(\omega)\le\tilde\tau(i)
+  \text{ for every }i\in L(T)\}
+=\phi^{-1}[\tilde H_{\tau}].\cr}$$
+
+Set $\tilde\Cal G=\{\tilde H_{\tau}:\tau\in T\}$.   Because
+$\BbbR^{L(T)}$ is \hwtr\ (438O), and $\tilde\Cal G$ is a family of open
+subsets of $\BbbR^{L(T)}$,
+$\bigcup\tilde\Cal G\in\Cal J(\tilde\Cal G)$.   By 438Nc,
+$H=\bigcup_{\tau\in T}H_{\pmb{q}\tau}=\phi^{-1}[\bigcup\tilde\Cal G]$
+belongs to $\Cal J(\{H_{\pmb{q}\tau}:\tau\in T\}$ and therefore to
+$\Cal J(\Cal G)$, by 438Nb.
+
+Thus in all three cases the induction proceeds.\ \Qed
+
+\medskip
+
+\quad{\bf (v)} This means that, for any $\pmb{q}\in Q$,
+$Y_{\pmb{q}}=\bigcup\{H_{\pmb{q}\tau}:\tau\in S_{\pmb{q}}\}$ belongs to
+$\Cal J(\Cal G)$.   Since $Q$ is countable, $Y\in\Cal J(\Cal G)$, where
+$Y=\bigcup_{\pmb{q}\in Q}Y_{\pmb{q}}$.   But $\bigcup\Cal G\subseteq Y$.
+\Prf\ If $\omega\in G\in\Cal G$, there are $t_0<\ldots<t_n$ and
+$V'_i\in\Cal I$, for $i\le n$, such that
+
+\Centerline{$\omega
+\in\{\omega':\omega'\in\tildeClll,\,\omega'(t_i)\in V'_i$ for every
+  $i\le n\}\subseteq G$.}
+
+\noindent Set $x_i=\omega(t_i)$, $x^-_i=\lim_{s\uparrow t_i}\omega(s)$,
+$x^+_i=\lim_{s\downarrow t_i}\omega(s)$ for $i\le n$;  let $U_i$, $V_i$,
+$W_i\in\Cal U$ be such that $x^-_i\in U_i$, $x_i\in V_i\subseteq V'_i$,
+$x^+_i\in W_i$ and any pair of $U_i$, $V_i$, $W_i$ are either equal or
+disjoint;  and let $I_0,\ldots,I_n\in\Cal I$ be disjoint and such that
+$t_i\in I_i$, $\omega(s)\in U_i$ for $s\in I_i\cap\ooint{-\infty,t_i}$ and
+$\omega(s)\in W_i$ for $s\in I_i\cap\ooint{t_i,\infty}$ for each $i\le n$.
+Then, setting $\pmb{q}=(I_0,\ldots,W_n)$ and $\tau(i)=t_i$ for $i\le n$,
+
+\Centerline{$\omega\in F_{\pmb{q}\tau}
+\subseteq H_{\pmb{q}\tau}\subseteq G$,}
+
+\noindent so that $\tau\in S_{\pmb{q}}$ and
+$\omega\in Y_{\pmb{q}}\subseteq Y$.\ \Qed
+
+As $\Cal G$ is arbitrary, $\tildeClll $ is \hwtr.
+}%end of proof of 438Q
+
+\leader{438R}{Corollary} (a) Let $I^{\|}$ be the split
+interval\cmmnt{ (419L)}.   Then any countable power of $I^{\|}$ is a
+\hwtr\ compact Hausdorff space.
+
+(b) Let $Y$ be the `Helly space', the space of non-decreasing functions
+from $[0,1]$ to itself with the topology of pointwise convergence
+inherited from the product topology on
+$[0,1]^{[0,1]}$\cmmnt{ ({\smc Kelley 55}, Ex.\ 5M)}.
+Then $Y$ is a \hwtr\ compact Hausdorff space.
+
+\medskip
+
+\proof{ These are both (homeomorphic to) subspaces of the
+space $\tildeClll$ of Proposition 438Q, if we take $X$ there to be
+$\Bbb R$.   To see this, argue as follows.   For
+(a), observe that we have a function $f:I^{\|}\to\tildeClll$
+defined by setting
+$f(t^-)(s)=f(t^+)(s)=1$ if $s<t$, $f(t^-)(s)=f(t^+)(s)=0$ if $s>t$, and
+$f(t^-)(t)=0$, $f(t^+)(t)=1$, and that $f$ is a homeomorphism between
+$I^{\|}$ and its image.   Next, for any $L\subseteq\Bbb N$, we can
+define $g:(I^{\|})^L\to\tildeClll$ by setting
+
+$$\eqalign{g(\tbf{t})(s)
+&=f(t_n)(s-2n)\text{ if }n\in L\text{ and }2n\le s\le 2n+1,\cr
+&=0\text{ if }s\in\Bbb R\setminus\bigcup_{n\in L}[2n,2n+1]\cr}$$
+
+\noindent for $\tbf{t}=\family{n}{L}{t_n}\in (I^{\|})^L$;  it is
+easy to check that $g$ is a homeomorphism between $(I^{\|})^L$
+and its image in $\tildeClll$.
+As for (b), if we take $g(y)$ to be the extension of the function
+$y:[0,1]\to[0,1]$ to the function which is constant on each of the
+intervals $\ocint{-\infty,0}$ and $\coint{1,\infty}$, then
+$g:Y\to\tildeClll$ is
+a homeomorphism between $Y$ and its image $g[Y]$.
+
+Since both $(I^{\|})^L$ and $Y$ are compact, they are
+homeomorphic to closed subsets of $\tildeClll$, and are \hwtr\ (438La).
+}%end of proof of 438R
+
+\leader{*438S}{C\`all\`al \dvrocolon{functions}}\cmmnt{ To support some
+of the theory of L\'evy processes which I will present in \S455, I give a
+further consequence of 438Q.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $X$ be a
+Polish space.   Let $\Clll=\Clll(X)$ be the set of \callal\
+functions\cmmnt{ (definition:  4A2A)} from $\coint{0,\infty}$ to $X$,
+with its topology of
+pointwise convergence inherited from the product topology of
+$X^{\coint{0,\infty}}$.
+
+(a)(i) If $\omega\in\Clll$, then $\omega$ is continuous at all but
+countably many points of $\coint{0,\infty}$.
+
+\quad(ii) If $\omega$, $\omega'\in\Clll$, $D$ is a dense subset of
+$\coint{0,\infty}$ containing every point at which $\omega$ is
+discontinuous, and $\omega'\restr D=\omega\restr D$, then $\omega'=\omega$.
+
+(b) $\Clll$ is \hwtr.
+
+(c) $\Clll$ is K-analytic.
+
+\proof{ Fix a complete metric $\rho$ on $X$ defining its topology.
+Let $\tildeClll\subseteq X^{\Bbb R}$ be the space of 438P-438Q.
+
+\medskip
+
+{\bf (a)} If $X=\emptyset$ the results are trivial.
+Otherwise, fix $x_0\in X$, and for $\omega\in X^{\coint{0,\infty}}$ define
+$\tilde\omega\in X^{\Bbb R}$ to be that extension of $\omega$
+which takes the value $x_0$ everywhere on $\ooint{-\infty,0}$.
+
+\medskip
+
+\quad{\bf (i)}
+If $\omega\in\Clll$, then $\tilde\omega\in\tildeClll$;
+so the result follows from 438Pb.
+
+\medskip
+
+\quad{\bf (ii)} If $t\in D$, $\omega'(t)$ is certainly equal to
+$\omega(t)$.   Next,
+
+\Centerline{$\omega'(0)
+=\lim_{s\downarrow 0}\omega'(s)
+=\lim_{s\in D,s\downarrow 0}\omega'(s)
+=\lim_{s\in D,s\downarrow 0}\omega(s)
+=\omega(0)$.}
+
+\noindent If $t\in\ooint{0,\infty}\setminus D$, then $\omega$ is continuous
+at $t$, so
+
+\Centerline{$\lim_{s\uparrow t}\omega'(s)
+=\lim_{s\in D,s\uparrow t}\omega'(s)
+=\lim_{s\in D,s\uparrow 0}\omega(s)
+=\omega(t)$,}
+
+\Centerline{$\lim_{s\downarrow t}\omega'(s)
+=\lim_{s\in D,s\downarrow t}\omega'(s)
+=\lim_{s\in D,s\downarrow 0}\omega(s)
+=\omega(t)$.}
+
+\noindent Since $\omega'(t)$ must be either
+$\lim_{s\uparrow t}\omega'(s)$ or $\lim_{s\downarrow t}\omega'(s)$, it is
+again equal to $\omega(t)$.   So $\omega'=\omega$.
+
+\medskip
+
+{\bf (b)} Since $\Clll$ is homeomorphic to a subspace of $\tildeClll$, it
+is \hwtr\ (438Qb, 438La).
+
+\medskip
+
+{\bf (c)} Set $\tilde Q=\{\tilde\omega:\omega\in\Clll\}$;  then
+$\tilde Q\subseteq\tildeClll$ is homeomorphic to $\Clll$.   But
+$\tilde Q$ is a Souslin-F set in $\tildeClll$.   \Prf\ If $\omega\in\Clll$
+then it belongs to $\tilde Q$ iff $\omega(t)=x_0$ for every $t<0$.
+$\lim_{t\downarrow 0}\omega(t)=\omega(0)$, and
+$\omega(t)\in\{\lim_{s\uparrow t}\omega(s),\lim_{s\downarrow t}\omega(s)\}$
+for every $t>0$.   Now
+
+\Centerline{$\{\omega:\omega(t)=x_0$ for every $t<0\}$}
+
+\noindent is closed, while
+
+$$\eqalignno{\{\omega:\omega\in\tildeClll,\,
+  \omega(0)=\lim_{t\downarrow 0}\omega(t)\}
+&=\{\omega:\omega\in\tildeClll,\,
+  \omega(0)=\lim_{i\to\infty}\omega(2^{-i})\}\cr
+\displaycause{because $\lim_{t\downarrow 0}\omega(t)$ is defined for every
+$\omega\in\tildeClll$}
+&=\bigcap_{k\in\Bbb N}\bigcup_{m\in\Bbb N}\bigcap_{i\ge m}
+ \{\omega:\omega\in\tildeClll,\,\rho(\omega(2^{-i}),\omega(0))\le 2^{-k}\}
+\cr}$$
+
+\noindent is Souslin-F.   As for the other condition, note that for $t>0$
+and $\omega\in\tildeClll$,
+$\omega(t)$ belongs to
+$\{\lim_{s\uparrow t}\omega(s),\lim_{s\downarrow t}\omega(s)\}$
+iff for every $\epsilon>0$ there are distinct rational
+numbers $q$, $q'\in[t-\epsilon,t+\epsilon]$ such that
+$\omega(q)$ and $\omega(q')$ belong to $B(\omega(t),\epsilon)$.
+Let $\Cal U$ be a countable base for the topology of $X$ and
+$\Cal I$ a countable base for the topology of $\ooint{0,\infty}$ not
+containing $\emptyset$;  then for $\omega\in\tildeClll$,
+$\omega(t)\in\{\lim_{s\uparrow t}\omega(s),\lim_{s\downarrow t}\omega(s)\}$
+for every $t>0$ if and only if
+
+\inset{\noindent for every $U\in\Cal U$ and $I\in\Cal I$
+either $I\cap\omega^{-1}[U]=\emptyset$ or
+$I\cap\Bbb Q\cap\omega^{-1}[\overline{U}]$ has at least two members.}
+
+\noindent Since, for $U\in\Cal U$ and $I\in\Cal I$,
+
+\Centerline{$\{\omega:\omega\in\tildeClll$,
+$I\cap\omega^{-1}[U]=\emptyset\}
+=\bigcap_{t\in I}\{\omega:\omega\in\tildeClll$, $\omega(t)\notin U\}$}
+
+\noindent is closed in $\tildeClll$, and
+
+$$\eqalign{\{\omega:\omega\in\tildeClll,\,
+I\cap\Bbb Q\cap\omega^{-1}&[\overline{U}]\text{ has at least two members}\}
+\cr
+&=\bigcup_{\Atop{q,q'\in I\cap\Bbb Q}{q<q'}}
+   \{\omega:\omega(q),\,\omega(q')\in\overline{U}\}\cr}$$
+
+\noindent is F$_{\sigma}$ in $\tildeClll$, while $\Cal I$ and $\Cal U$ are
+countable,
+
+\Centerline{$\{\omega:\omega\in\tildeClll$,
+$\omega(t)\in\{\lim_{s\uparrow t}\omega(s),\lim_{s\downarrow t}\omega(s)\}$
+for every $t>0\}$}
+
+\noindent is Souslin-F in $\tildeClll$.   Taking the intersection, we see
+that $\tilde Q$ is Souslin-F.\  \Qed
+
+Accordingly $\tilde Q$ and $\Clll$ are K-analytic (422Hb).
+}%end of proof of 438S
+
+\leader{438T}{Proposition} Assume that $\frak c$ is measure-free.
+Then $(I^{\|})^{\Bbb N}$, the Helly
+space\cmmnt{ (438Rb)} and the spaces $\tildeClll(X)$, $\Clll(X)$ of 438Q
+and 438S, for any Polish space $X$, are all Radon spaces.
+
+\proof{ By 438Q-438S, %438Q 438R 438S
+they are K-analytic and \hwtr, also they have weight at most
+$w(X^{\Bbb R})\le\frak c$.   They are therefore
+pre-Radon (434Jf), Borel-measure-complete (438M) and Radon
+(434Ka).
+}%end of proof of 438T
+
+\leader{438U}{}\cmmnt{ In 434R I described a construction of
+product measures.   In accordance with my general practice of
+examining the measure algebra of any new measure, I give the
+following result.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $X$ and $Y$ be topological spaces with
+$\sigma$-finite Borel measures $\mu$, $\nu$ respectively.   Suppose that
+{\it either} $X$ is first-countable {\it or} $\nu$ is $\tau$-additive
+and effectively locally finite.   Write $\lambda$ for the Borel measure
+on $X\times Y$ defined by the formula
+
+\Centerline{$\lambda W=\int\nu W[\{x\}]\mu(dx)$
+for every Borel set $W\subseteq X\times Y$}
+
+\noindent as in 434R(ii).   If {\it either} the weight of $X$ {\it or}
+the Maharam type of $\nu$ is a measure-free cardinal, then for every
+Borel set $W\subseteq X\times Y$ there is a set
+$W'\in\Cal B(X)\tensorhat\Cal B(Y)$ such that
+$\lambda(W\symmdiff W')=0$;  consequently, the measure algebra of
+$\lambda$ can be identified with
+the localizable measure algebra free product of the measure algebras of
+$\mu$ and $\nu$.
+
+\proof{{\bf (a)} Write $(\frak B,\bar\nu)$ for the measure algebra of
+$\nu$.   With its measure-algebra topology, this is metrizable (323Gb).
+Let $\sequencen{Y_n}$ be
+a non-decreasing sequence of Borel sets of finite measure in $Y$ with
+union $Y$.
+
+\medskip
+
+{\bf (b)} For the moment (down to the end of (e) below) fix on an open
+set $W\subseteq X\times Y$.   For $x\in X$, set
+$f(x)=W[\{x\}]^{\ssbullet}$ in $\frak B$.   Then $f:X\to\frak B$ is
+Borel measurable.
+
+\medskip
+
+\Prf\ {\bf (i)} Let $H\subseteq\frak B$ be an open set.   For $k$,
+$n\in\Bbb N$ set
+
+\Centerline{$E_{nk}
+=\{x:x\in X,\,2^{-n}k\le\nu(Y_n\cap W[\{x\}])<2^{-n}(k+1)\}$.}
+
+\noindent Just as in part (a) of the proof of 434R, the function
+$x\mapsto\nu(Y_n\cap W[\{x\}])$ is lower semi-continuous, so $E_{nk}$ is
+a Borel set.   Set
+
+\Centerline{$G_{nk}
+=\bigcup\{G:G\subseteq X$ is open, $G\cap E_{nk}\subseteq f^{-1}[H]\}$;}
+
+\noindent then $E=\bigcup_{n,k\in\Bbb N}(G_{nk}\cap E_{nk})$ is a Borel
+set included in $f^{-1}[H]$.
+
+\medskip
+
+\quad{\bf (ii)} The point is that $E=f^{-1}[H]$.   To see this, take any
+$x$ such that $f(x)\in H$.   Then there are $b\in\frak B$, $\epsilon>0$
+such that $\bar\nu b<\infty$ and $c\in H$ whenever $c\in\frak B$ and
+$\bar\nu(b\Bcap(c\Bsymmdiff f(x)))\le 5\epsilon$.   Since
+$b=\sup_{n\in\Bbb N}b\Bcap Y_n^{\ssbullet}$, there is an $n\in\Bbb N$
+such that $\bar\nu(b\Bsetminus Y_n^{\ssbullet})\le\epsilon$ and
+$2^{-n}\le\epsilon$.   In this case $c\in H$ whenever $c\in\frak B$ and
+$\bar\nu(Y_n^{\ssbullet}\Bcap(c\Bsymmdiff f(x)))\le 4\epsilon$;  thus
+
+\Centerline{$\{x':\nu(Y_n\cap(W[\{x'\}]\symmdiff W[\{x\}]))\le
+4\epsilon\}\subseteq f^{-1}[H]$.}
+
+Let $k\in\Bbb N$ be such that
+$2^{-n}k\le\nu(Y_n\cap W[\{x\}])<2^{-n}(k+1)$, that is, $x\in E_{nk}$.
+Again using the ideas of part (a) of the proof of 434R, there are an
+open set $G$ containing $x$ and an open set $V\subseteq Y$ such that
+$G\times V\subseteq W$ and $\nu(Y_n\cap V)\ge 2^{-n}(k-1)$.   Now if
+$x'\in G\cap E_{nk}$, $V\subseteq W[\{x'\}]\cap W[\{x\}]$, so
+
+$$\eqalign{\nu(Y_n\cap(W[\{x'\}]\symmdiff W[\{x\}]))
+&\le\nu(Y_n\cap W[\{x'\}])+\nu(Y_n\cap W[\{x\}])-2\nu(Y_n\cap V)\cr
+&\le 2^{-n}((k+1)+(k+1)-2(k-1))
+=4\cdot 2^{-n}\le 4\epsilon.\cr}$$
+
+\noindent But this means that $G\cap E_{nk}\subseteq f^{-1}[H]$, so
+$G\subseteq G_{nk}$ and $x\in G\cap E_{nk}\subseteq E$.   As $x$ is
+arbitrary, $f^{-1}[H]\subseteq E$ and $E=f^{-1}[H]$.
+
+\medskip
+
+\quad{\bf (iii)} Thus $f^{-1}[H]$ is a Borel set.   As $H$ is arbitrary,
+$f$ is Borel measurable.\ \Qed
+
+\medskip
+
+{\bf (c)} We need to know also that if
+$\Cal H$ is a disjoint family of open subsets of $\frak B$ all meeting
+$f[X]$, then
+
+\Centerline{$\#(\Cal H)\le\max(\omega,\min(w(X),\tau(\frak B)))$}
+
+\noindent\Prf\ Repeat the ideas of (b) above, setting
+
+\Centerline{$G^{(H)}_{nk}=\bigcup\{G:G\subseteq X$ is open, $G\cap
+E_{nk}\subseteq f^{-1}[H]\}$}
+
+\noindent for $H\in\Cal H$ and $k$, $n\in\Bbb N$, so that
+$f^{-1}[H]=\bigcup_{n,k\in\Bbb N}G^{(H)}_{nk}\cap E_{nk}$.   For fixed
+$n$ and $k$ the family $\family{H}{\Cal H}{G^{(H)}_{nk}\cap E_{nk}}$ is
+disjoint, so can have at most $w(E_{nk})\le w(X)$ non-empty members
+(4A2D again).   But this means that
+
+\Centerline{$\Cal H
+=\bigcup_{n,k\in\Bbb N}\{H:G^{(H)}_{nk}\cap E_{nk}\ne\emptyset\}$}
+
+\noindent has cardinal at most $\max(\omega,w(X))$.
+
+On the other hand, there is a set $B\subseteq\frak B$, of cardinal
+$\tau(\frak B)$, which $\tau$-generates $\frak B$.   The algebra
+$\frak B_0$ generated by $B$ has cardinal at most $\max(\omega,\#(B))$
+(331Gc), and $\frak B_0$ is topologically dense in $\frak B$ (323J), so
+every member of $\Cal H$ meets $\frak B_0$, and
+
+\Centerline{$\#(\Cal H)\le\#(\frak B_0)\le\max(\omega,\tau(\frak B))$.}
+
+\noindent Putting these together, we have the result.\ \Qed
+
+In particular, under the hypotheses above, $\#(\Cal H)$ is measure-free
+whenever $\Cal H$ is a disjoint family of open subsets of $\frak B$
+all meeting $f[X]$.
+
+\medskip
+
+{\bf (d)} The next step is to observe that there is a conegligible Borel
+set $Z\subseteq X$ such that $f[Z]$ is separable.   \Prf\ Let $\Cal H$
+be a $\sigma$-disjoint base for the topology of $\frak B$;
+express it as $\bigcup_{n\in\Bbb N}\Cal H_n$ where each $\Cal H_n$ is
+disjoint.   Let $\sequence{m}{X_m}$ be a cover of $X$ by Borel sets of
+finite measure.   For $n\in\Bbb N$ consider
+$\Cal H'_n=\{H:H\in\Cal H_n,\,H\cap f[X]\ne\emptyset\}$.   For
+$m\in\Bbb N$, we have a totally
+finite measure $\nu_{nm}$ with domain $\Cal P\Cal H'_n$ defined by
+saying
+
+\Centerline{$\nu_{nm}\Cal E=\mu(X_m\cap f^{-1}(\bigcup\Cal E))$}
+
+\noindent for every $\Cal E\subseteq\Cal H'_n$.   Since $\Cal H'_n$ has
+measure-free cardinal, by (c), there must be a countable set
+$\Cal E_{nm}\subseteq\Cal H'_n$ such that
+$\nu_{nm}(\Cal H'_n\setminus\Cal E_{nm})=0$.   Set
+
+\Centerline{$Z=X\setminus\bigcup_{m,n\in\Bbb N}
+  (X_m\cap f^{-1}[\bigcup(\Cal H'_n\setminus\Cal E_{nm})])$;}
+
+\noindent then $Z$ is conegligible.   If $x\in Z$ and
+$f(x)\in H\in\Cal H_n$, then there is some $m\in\Bbb N$ such that
+$x\in X_m$, while
+$H\in\Cal H'_n$, so $H$ must belong to $\Cal E_{nm}$.   But this means
+that $\{f[Z]\cap H:H\in\Cal H\}$, which is a base for the topology of
+$f[Z]$, is just $\{f[Z]\cap H:H\in\bigcup_{m,n\in\Bbb N}\Cal E_{mn}\}$,
+and is countable.   So $f[Z]$ is separable (4A2Oc), as required.\
+\Qed
+
+\medskip
+
+{\bf (e)} 418T(a-ii) now tells us that there is a set
+$W'\in\Cal B(X)\tensorhat\Cal B(Y)$ such that
+$f(x)=W'[\{x\}]^{\ssbullet}$ for every $x\in Z$, so that
+$\nu(W[\{x\}]\symmdiff W'[\{x\}])=0$ for almost every $x$, that is,
+$\lambda(W\symmdiff W')=0$.
+And this is true for every open set $W\subseteq X\times Y$.
+
+\medskip
+
+{\bf (f)} Now let $\Cal W$ be the family of those Borel sets
+$W\subseteq X\times Y$ for which there is a
+$W'\in\Cal B(X)\tensorhat\Cal B(Y)$ such
+that $\lambda(W\symmdiff W')=0$.   This is a $\sigma$-algebra containing
+every open set, so is the whole Borel $\sigma$-algebra, as required.
+
+Since the c.l.d.\ product measure $\lambda_0$ on $X\times Y$ is just the
+completion of its restriction to $\Cal B(X)\tensorhat\Cal B(Y)$
+(251K), and $\lambda_0$ and $\lambda$ agree on
+$\Cal B(X)\tensorhat\Cal B(Y)$ (by Fubini's theorem), the embedding
+$\Cal B(X)\tensorhat\Cal B(Y)\embedsinto\Cal B(X\times Y)$ induces an
+isomorphism
+between the measure algebras of $\lambda$ and $\lambda_0$.   As remarked
+in 325Eb, because $\mu$ and $\nu$ are strictly localizable, the latter
+may be
+identified with `the' localizable measure algebra free product of the
+measure algebras of $\mu$ and $\nu$.
+}%end of proof of 438U
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The hypothesis on the weight of $X$ can be
+slightly weakened;  see 438Yg.   439L below shows that some restriction on
+$(X,\mu)$ and $(Y,\nu)$ is necessary.
+}%end of comment
+
+\exercises{\leader{438X}{Basic exercises (a)}
+%\spheader 438Xa
+Show that a cardinal $\kappa$ is measure-free iff
+$M_{\sigma}=M_{\tau}$, where $M_{\sigma}$, $M_{\tau}$ are the spaces of
+countably additive and completely additive functionals on the algebra
+$\Cal P\kappa$ (362B).
+%438A
+
+\spheader 438Xb Let $(X,\Sigma,\mu)$ be a localizable measure space with
+magnitude (definition:  332Ga) which is either finite or a measure-free
+cardinal.   Show that any absolutely continuous countably additive
+functional $\nu:\Sigma\to\Bbb R$ is truly continuous.   \Hint{363S.}
+%438A, 363S
+
+\spheader 438Xc Let $\frak A$ be a Dedekind complete Boolean algebra
+with measure-free cellularity.   Show that any countably additive
+functional $\nu:\frak A\to\Bbb R$ is completely additive.
+%438A, 363S
+
+\spheader 438Xd Let $U$ be a Dedekind complete Riesz space such that any
+disjoint order-bounded family in $U^+$ has measure-free cardinal.
+Show that $U^{\sim}_c=U^{\times}$.
+%438A, 363S
+
+\spheader 438Xe Let $(X,\Sigma,\mu)$ be a complete locally determined
+measure space, $(Y,\Tau,\nu)$ a strictly localizable measure space, and
+$f:X\to Y$ an \imp\ function.   Suppose that the magnitude of $\nu$ is
+either finite or a measure-free cardinal.   Show that $\mu$ is strictly
+localizable.
+%438B query out of order
+
+\spheader 438Xf Let $(X_1,\Sigma_1,\mu_1)$, $(X_2,\Sigma_2,\mu_2)$,
+$(Y_1,\Tau_1,\nu_1)$ and $(Y_2,\Tau_2,\nu_2)$ be measure spaces, and
+$\lambda_1$, $\lambda_2$ the c.l.d.\ product measures on $X_1\times Y_1$,
+$X_2\times Y_2$ respectively;   suppose that $f:X_1\to X_2$ and
+$g:Y_1\to Y_2$ are \imp\ functions, and that
+$h(x,y)=(f(x),g(y))$ for $x\in X_1$, $y\in Y_1$.   Show that if $\mu_2$ and
+$\nu_2$ are both strictly localizable, with
+magnitudes which are either finite or measure-free
+cardinals, then $h$ is \imp.   (Compare 251L.)
+%438Xe 438B
+
+\sqheader 438Xg Show that if $\kappa$ is a measure-free cardinal, so
+is $\omega_{\kappa}$.   \Hint{show by induction on ordinals $\xi$ that
+if $\#(\xi)$ is measure-free, then so is $\omega_{\xi}$.}
+%438C
+
+\sqheader 438Xh
+Let $(X,\Sigma,\mu)$ be a complete locally determined measure space,
+$(Y,\rho)$ a complete metric space with measure-free weight, and
+$\sequencen{f_n}$ a sequence of
+measurable functions from $X$ to $Y$.   Show that
+$\{x:\lim_{n\to\infty}f_n(x)$ is defined in $Y\}$ is measurable.
+(Cf.\ 418C.)
+%438E+
+
+\spheader 438Xi Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+$\sigma$-finite measure spaces with c.l.d.\
+product\discretionary{}{}{}
+$(X\times Y,\discretionary{}{}{}\Lambda,\lambda)$.   Give $L^0(\nu)$ the
+topology of convergence in measure.   Suppose that $f:X\to L^0(\nu)$ is
+measurable and there is a conegligible set
+$X_0\subseteq X$ such that $w(f[X_0])$ is measure-free.   Show that
+there is an $h\in\eusm L^0(\lambda)$ such that $f(x)=h_x^{\ssbullet}$
+for every $x\in X$, where $h_x(y)=h(x,y)$ for $(x,y)\in\dom h$.
+(Cf.\ 418S.)
+%438G+
+
+\spheader 438Xj Let $(Y,\Tau,\nu)$ be a
+$\sigma$-finite measure space, and $(\frak B,\bar\nu)$ its measure
+algebra,  with its usual topology;  assume that the Maharam type of
+$\frak B$ is measure-free.
+Let $(X,\Sigma,\mu)$ be a $\sigma$-finite measure space and
+$\Lambda$ the domain of the c.l.d.\ product measure $\lambda$ on
+$X\times Y$.   Show that if $f:X\to\frak B$ is measurable, then there is
+a $W\in\Lambda$ such that $f(x)=W[\{x\}]^{\ssbullet}$ for every
+$x\in X$.   (Cf.\ 418T(b-ii).)
+%438G+
+
+\spheader 438Xk Let $(X,\Sigma,\mu)$ be a complete locally determined
+measure space and $V$ a normed space such that $w(V)$ is measure-free.
+(i) Show that the space $\eusm L$ of measurable functions from
+$X$ to $V$ is a linear space, setting $(f+g)(x)=f(x)+g(x)$, etc.   (ii)
+Show that if $V$ is a Riesz space with a Riesz norm then $\eusm L$ is a
+Riesz space under the natural operations.
+%438G+
+
+\sqheader 438Xl Let $X$ be a topological space and $\Cal G$ a
+point-finite open cover of $X$ such that $\#(\Cal G)$ is measure-free.
+Suppose that $E\subseteq X$ is such that $E\cap G$ is
+universally measurable for every $G\in\Cal G$.   Show that $E$ is
+universally measurable.    (Compare 434Xe(iv).)
+%438J-
+%query:  do we need to know that \#(\Cal G) is measure-free?
+% or that \Cal G is point-finite?  for the latter, yes - try
+% X=\omega_1
+
+\sqheader 438Xm Show
+that for a metrizable space $X$, the following are equiveridical:
+(i) $X$ is Borel-measure-compact;  (ii) $X$ is
+Borel-measure-complete;  (iii) $X$ is measure-compact;
+(iv) $w(X)$ is measure-free.
+%438J
+
+\spheader 438Xn Let $X$ be a topological space and $\Cal G$ a family of
+open subsets of $X$.   Show that the following are equiveridical:  (i)
+there is a $\sigma$-isolated family $\Cal A$ of sets, refining $\Cal G$,
+such that $\bigcup\Cal A=\bigcup\Cal G$;  (ii) there is a sequence
+$\Cal H_n$ of families of open sets, all refining $\Cal G$,
+such that for every $x\in\bigcup\Cal G$ there is an $n\in\Bbb N$ such
+that $\{H:x\in H\in\Cal H_n\}$ is finite and not empty.
+%438K
+
+\spheader 438Xo Let $Y$ be the Helly space.  (i) Show that $Y$ is a compact convex subset of $\BbbR^{[0,1]}$ with its usual topology.   (ii) Show that there is
+a natural one-to-one correspondence between the split interval $I^{\|}$ and the set of extreme points of $Y$, matching $t^-\in I^{\|}$ with the function
+$\chi\coint{0,t}$ and $t^+$ with $\chi[0,t]$.
+(iii) Let $P_{\text{R}}$ be the set of Radon probability measures on
+$I^{\|}$ with its narrow topology (437J).   Show that
+there is a natural homeomorphism $\phi:P_{\text{R}}\to Y$
+defined by setting $\phi(\mu)(t)=\mu[0^-,t^-]$ for
+$\mu\in P_{\text{R}}$, $t\in[0,1]$.
+%438R
+
+\spheader 438Xp Give $\Bbb R$ the right-facing Sorgenfrey topology
+(415Xc).   Show that any countable power of $\Bbb R$ is \hwtr.
+%438R
+
+\sqheader 438Xq Let $I^{\|}$ be the split interval.   Show that
+$I^{\|}\times I^{\|}$ is a Radon space iff $\frak c$ is measure-free.
+\Hint{$\{(\alpha^+,(1-\alpha)^+):\alpha\in[0,1]\}$ is a discrete Borel
+subset of cardinal $\frak c$.}
+%438T
+
+\spheader 438Xr Give
+$\Bbb R$ the right-facing Sorgenfrey topology.   Show that the
+following are equiveridical:  (i) $\frak c$ is measure-free;  (ii)
+$\BbbR^{\Bbb N}$, with the corresponding product topology, is
+Borel-measure-complete;  (iii) $\BbbR^2$, with the product topology, is
+Borel-measure-compact.   (Compare 439Q.)
+%438T, 438Xq
+
+\spheader 438Xs Suppose that $\frak c$ is measure-free.   Let
+$X\subseteq\BbbR^{\Bbb R}$ be the set of functions of bounded variation
+on $\Bbb R$, with the topology of pointwise convergence inherited from
+the product
+topology of $\BbbR^{\Bbb R}$.   Show that $X$ is a Radon space.
+\Hint{$X$ is an F$_{\sigma}$ subset of the space $\tildeClll$ of 438Q.}
+%438T
+
+\leader{438Y}{Further exercises (a)}
+%\spheader 438Ya
+Let $(X,\Sigma,\mu)$ be a probability space and $\familyiI{E_i}$ a
+point-finite family of measurable sets such that
+$\nu J=\mu(\bigcup_{i\in J}E_i)$ is defined for every $J\subseteq I$.
+Show directly that $\nu$ is a uniformly exhaustive Maharam submeasure on
+$\Cal PI$, and use the Kalton-Roberts theorem to prove 438Ba.
+%438B
+
+\spheader 438Yb Suppose that $\frak c$ is measure-free, but that
+$\kappa>\frak c$ is not measure-free.   Show that there is a
+non-principal $\omega_1$-complete ultrafilter on $\kappa$.   \Hint{part
+(b) of the proof of 451Q.}
+
+\spheader 438Yc Show that if $X$ is a metrizable space and
+$\min(\frak c,w(X))$ is measure-free, then every $\sigma$-finite
+Borel measure on $X$ has countable Maharam type.
+%438H
+
+\spheader 438Yd Let $X$ be a metacompact T$_1$ space.   Show that $X$ is
+Borel-measure-compact iff every closed discrete
+subspace has measure-free cardinal.
+%438J
+
+\spheader 438Ye Let $X$ be a topological space such that every subspace
+of $X$ is metacompact and has measure-free cellularity.   Show that
+$X$ is Borel-measure-complete.
+%438J
+
+\spheader 438Yf Let $X$ be a normal metacompact Hausdorff space.   Show
+that it is measure-compact iff every closed discrete subspace has
+measure-free cardinal.
+%438J
+
+\spheader 438Yg In 438U, show that it would be enough to suppose that
+every discrete subset of $X$ has measure-free cardinal.
+%438U
+
+\spheader 438Yh Suppose that $\frak c$ is measure-free.   Let $D$ be
+any subset of $\Bbb R$ and $X\subseteq\BbbR^D$ the set of functions of
+bounded variation on $D$, with the topology of pointwise convergence
+inherited from the
+product topology of $\BbbR^D$.   Show that $X$ is a Radon space.
+%438T, 438Xs
+
+\spheader 438Yi Let $X$ be a totally ordered set with its order
+topology.   Show that if $c(X)$ is measure-free then every
+$\sigma$-finite Borel measure on $X$ has countable Maharam type.
+(Cf.\ 434Yo.)
+%+
+
+\spheader 438Yj Suppose that $X$ is a normal metacompact Hausdorff space
+which is not realcompact.   Show that there are a closed discrete subset
+$D$ of $X$ and a non-principal $\omega_1$-complete ultrafilter on $D$.
+\Hint{in 435C, if we start with a $\{0,1\}$-valued Baire measure we obtain
+a $\{0,1\}$-valued Borel measure;  in the proof of 438Ba,
+if $\mu$ is $\{0,1\}$-valued then $\nu$ is $\{0,1\}$-valued.}
+
+\spheader 438Yk Let $Z$ be a regular
+Hausdorff space, $T$ a Dedekind complete totally
+ordered space with least and greatest elements $a$, $b$,
+and $x:T\to Z$ a function such that
+$\lim_{s\uparrow t}x(s)$ and $\lim_{s\downarrow t}x(s)$ are defined in
+$Z$ for every $t\in T$ (except $t=a$ in the first case and $t=b$ in the
+second).   Show that $x[T]$ is relatively compact in $Z$.
+%438Q out of order query
+
+\spheader 438Yl\dvAnew{2009} Let $(X,\rho)$ be a metric space, and
+$P_{\text{Bor}}$ the set of Borel probability measures on $X$.
+For $\mu$, $\nu\in P_{\text{Bor}}$ set
+$\bar\rho_{\text{KR}}(\mu,\nu)
+=\sup\{|\int u\,d\mu-\int u\,d\nu|:u:X\to[-1,1]$ is $1$-Lipschitz$\}$.
+(i) Show that $\bar\rho_{\text{KR}}$ is a metric on
+$P_{\text{Bor}}$.   (ii) Let $\frak T_{\text{KR}}$ be the topology it
+induces on $P_{\text{Bor}}$.   Show that $\frak T_{\text{KR}}$ is finer
+than the narrow topology on $P_{\text{Bor}}$.   (iii) Show that the
+following are equiveridical:  ($\alpha$) the narrow topology on
+$P_{\text{Bor}}$ is metrizable;  ($\beta$) $\frak T_{\text{KR}}$ is the
+narrow topology on $P_{\text{Bor}}$;  ($\gamma$) $w(X)$ is measure-free.
+(Cf.\ 437Rg, 437Yp.)
+}%end of exercises
+
+\endnotes{
+\Notesheader{438} Since the axiom `every cardinal is measure-free' is
+admissible -- that is, will not lead to a paradox unless one is already
+latent in the Zermelo-Fraenkel axioms for set theory -- it is tempting,
+in the context of this section, to assume it;  so that `every complete
+metric space is Radon' becomes a theorem, along with `every measurable
+function from a quasi-Radon measure space to a metrizable space is
+almost continuous' (438G), `$U^{\sim}_c=U^{\times}$ for every Dedekind
+complete Riesz space $U$' (438Xd), `metacompact spaces are
+Borel-measure-compact' (438J), `the sum of two measurable functions
+from a complete probability space to a normed space is measurable'
+(438Xk) and `the Helly space is Radon' (438T).   Undoubtedly the
+consequent mathematical universe is tidier.   In my view, the tidiness
+is the tidiness of poverty.   Apart
+from anything else, it leads us to neglect such questions as `is every
+measurable function from a Radon measure space to a metrizable space
+almost continuous?', which have answers in ZFC (451T).
+
+From the point of view of measure theory, the really interesting
+question is whether $\frak c$ is measure-free.
+It is not quite clear from the results above why this should be so;
+438T is a very small part of the story.   There is a larger hint
+in 438Ce-438Cf:  if $\frak c$ is measure-free, but $\kappa>\frak c$
+is not measure-free, then the witnessing measures will be purely
+atomic.   I will return to this point in \S543 of Volume 5.   For a general
+exploration of universes in which $\frak c$ is {\it not} measure-free,
+see \S544 and {\smc Fremlin 93}.   For fragments of what happens if we
+suppose that we have an atom for a measure which witnesses that $\kappa$
+is not measure-free, see 438Yb and the notes on normal filters in
+4A1I-4A1L.  %4A1I 4A1J 4A1K 4A1L
+
+There are many further applications of 438Q besides those in 438R and
+438Xp-438Xs.  %438Xp 438Xr 438Xs
+But the most obvious candidate, the space $C(\Bbb R)$ of
+continuous real-valued functions on $\Bbb R$, although indeed it is a
+Borel subset of the potentially Radon space of 438Q, is in fact Radon
+whether or not $\frak c$ is measure-free (454Sa).   As soon as we
+start using any such special axiom as `$\frak c=\omega_1$' or `$\frak c$
+is measure-free', we must make a determined effort to check, through
+such examples as 438Xq, that our new theorems do indeed depend on
+something more than ZFC.
+}%end of notes
+
+\discrpage
+

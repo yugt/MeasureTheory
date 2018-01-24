@@ -1,0 +1,1938 @@
+\frfilename{mt471.tex}
+\versiondate{23.1.06}
+\copyrightdate{2000}
+
+\def\chaptername{Geometric measure theory}
+\def\sectionname{Hausdorff measures}
+
+\def\NN{\BbbN^{\Bbb N}}
+
+\newsection{471}
+
+I begin the chapter by returning to a class of measures which we have
+not examined since
+Chapter 26.  The primary importance of these measures is in studying the
+geometry of Euclidean space;  in \S265 I looked briefly at their use in
+describing surface measures, which will reappear in \S475.   Hausdorff
+measures are also one of the basic tools in
+the study of fractals, but for such applications I must refer you to
+{\smc Falconer 90} and {\smc Mattila 95}.
+All I shall attempt to do here is to indicate some of the principal
+ideas which are applicable to general metric spaces, and to look at some
+special properties of Hausdorff measures related to the concerns of this
+chapter and of \S261.
+
+\leader{471A}{Definition} Let $(X,\rho)$ be a metric space and
+$r\in\ooint{0,\infty}$.
+For $\delta>0$ and $A\subseteq X$, set
+
+$$\eqalign{\theta_{r\delta}A
+=\inf\{\sum_{n=0}^{\infty}(\diam D_n)^r:\sequencen{D_n}
+&\text{ is a sequence of subsets of }X\text{ covering }A,\cr
+&\qquad\qquad\qquad\quad
+  \diam D_n\le\delta\text{ for every }n\in\Bbb N\}.\cr}$$
+
+\noindent\cmmnt{(As in \S264, take $\diam\emptyset=0$ and
+$\inf\emptyset=\infty$.) }It will be useful to note that every
+$\theta_{r\delta}$ is an outer measure.   Now set
+
+\Centerline{$\theta_rA=\sup_{\delta>0}\theta_{r\delta}A$}
+
+\noindent for $A\subseteq X$;  $\theta_r$ also is an outer measure on
+$X$\cmmnt{, as in
+264B};  this is {\bf $r$-dimensional Hausdorff outer measure} on $X$.
+Let $\mu_{Hr}$ be the measure defined by \Caratheodory's method from
+$\theta_r$;  $\mu_{Hr}$ is {\bf $r$-dimensional Hausdorff measure} on
+$X$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Notation} It may help if I list some notation already used
+elsewhere.   Suppose that $(X,\rho)$ is a metric space.    I write
+
+\Centerline{$B(x,\delta)=\{y:\rho(y,x)\le\delta\}$,
+\quad$U(x,\delta)=\{y:\rho(y,x)<\delta\}$}
+
+\noindent for $x\in X$, $\delta\ge 0$;  recall that $U(x,\delta)$ is
+open (2A3G).   For $x\in X$ and $A$, $A'\subseteq X$ I write
+
+\Centerline{$\rho(x,A)=\inf_{y\in A}\rho(x,y)$,
+\quad$\rho(A,A')=\inf_{y\in A,z\in A'}\rho(y,z)$;}
+
+\noindent for definiteness, take $\inf\emptyset$ to be $\infty$, as
+before.}%end of comment
+
+\leader{471B}{Definition} Let $(X,\rho)$ be a metric space.   An outer
+measure $\theta$ on $X$ is a {\bf metric outer measure} if
+$\theta (A_1\cup A_2)=\theta A_1+\theta A_2$ whenever $A_1$,
+$A_2\subseteq X$ and $\rho(A_1,A_2)>0$.
+
+\leader{471C}{Proposition} Let $(X,\rho)$ be a metric space and $\theta$
+a metric outer measure on $X$.  Let $\mu$ be the measure on $X$ defined
+from $\theta$ by \Caratheodory's method.   Then $\mu$ is a topological
+measure.
+
+\proof{ (Compare 264E, part (b) of the proof.)  Let $G\subseteq X$ be
+open, and $A$ any subset of $X$ such that $\theta A<\infty$.   Set
+
+\Centerline{$A_n=\{x:x\in A,\,\rho(x,A\setminus G)\ge 2^{-n}\}$,}
+
+\Centerline{$B_0=A_0$,
+\quad$B_n=A_n\setminus A_{n-1}$ for $n>1$.}
+
+\noindent Observe that $A_n\subseteq A_{n+1}$ for every $n$ and
+$\bigcup_{n\in\Bbb N}A_n=\bigcup_{n\in\Bbb N}B_n=A\cap G$.   The point
+is that if $m$, $n\in\Bbb N$ and $n\ge m+2$, and if $x\in B_m$ and
+$y\in B_n$, then there is a $z\in A\setminus G$ such that
+$\rho(y,z)<2^{-n+1}\le 2^{-m-1}$, while $\rho(x,z)$ must be at least
+$2^{-m}$, so $\rho(x,y)\ge\rho(x,z)-\rho(y,z)\ge 2^{-m-1}$.   Thus
+$\rho(B_m,B_n)>0$ whenever $n\ge m+2$.   It follows
+that for any $k\ge 0$
+
+\Centerline{$\sum_{m=0}^k\theta B_{2m}
+=\theta(\bigcup_{m\le k}B_{2m})\le\theta(A\cap G)<\infty$,}
+
+\Centerline{$\sum_{m=0}^k\theta B_{2m+1}
+=\theta(\bigcup_{m\le k}B_{2m+1})\le\theta(A\cap G)<\infty$.}
+
+\noindent Consequently $\sum_{n=0}^{\infty}\theta B_n<\infty$.
+
+But now, given $\epsilon>0$, there is an $m$ such that
+$\sum_{n=m}^{\infty}\theta B_m\le\epsilon$, so that
+
+$$\eqalignno{\theta(A\cap G)+\theta(A\setminus G)
+&\le\theta A_m+\sum_{n=m}^{\infty}\theta B_n+\theta(A\setminus G)\cr
+&\le\epsilon+\theta A_m+\theta(A\setminus G)
+=\epsilon+\theta(A_m\cup(A\setminus G))\cr
+\noalign{\noindent (since $\rho(A_m,A\setminus G)\ge 2^{-m}$)}
+&\le\epsilon+\theta A.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary,
+$\theta(A\cap G)+\theta(A\setminus G)\le\theta A$.   As $A$ is
+arbitrary, $G$ is measured by $\mu$;  as $G$ is arbitrary, $\mu$ is a
+topological measure.
+}%end of proof of 471C
+
+\leader{471D}{Theorem} Let $(X,\rho)$ be a metric space and $r>0$.   Let
+$\mu_{Hr}$ be $r$-dimensional Hausdorff measure on $X$, and $\Sigma$ its
+domain;  write $\theta_r$ for $r$-dimensional Hausdorff outer measure on
+$X$\cmmnt{, as defined in 471A}.
+
+(a) $\mu_{Hr}$ is a topological measure.
+
+(b) For every $A\subseteq X$ there is a G$_{\delta}$ set
+$H\supseteq A$ such that $\mu_{Hr}H=\theta_rA$.
+
+(c) $\theta_r$ is the outer measure defined from $\mu_{Hr}$\cmmnt{
+(that is, $\theta_r$ is a regular outer measure)}.
+
+(d) $\Sigma$ is closed under Souslin's operation.
+
+(e) $\mu_{Hr}E=\sup\{\mu_{Hr}F:F\subseteq E$ is closed$\}$ whenever
+$E\in\Sigma$ and $\mu_{Hr}E<\infty$.
+
+(f) If $A\subseteq X$ and $\theta_rA<\infty$ then $A$ is separable and
+the set of isolated points of $A$ is $\mu_{Hr}$-negligible.
+
+(g) $\mu_{Hr}$ is atomless.
+
+(h) If $\mu_{Hr}$ is totally finite it is a quasi-Radon measure.
+
+\proof{{\bf (a)} The point is that $\theta_r$, as defined in 471A, is a
+metric outer measure.   \Prf\ (Compare 264E, part (a) of the proof.)
+Let $A_1$, $A_2$ be subsets of $X$ such that $\rho(A_1,A_2)>0$.   Of
+course $\theta_r(A\cup B)\le\theta_rA+\theta_rB$, because $\theta_r$ is an
+outer measure.   For the reverse inequality, we may suppose that
+$\theta_r(A\cup B)<\infty$, so that $\theta_rA$ and $\theta_rB$ are both
+finite.   Let $\epsilon>0$ and let $\delta_1$, $\delta_2>0$ be such that
+
+\Centerline{$\theta_rA_1+\theta_rA_2
+\le\theta_{r\delta_1}A_1+\theta_{r\delta_2}A_2+\epsilon$,}
+
+\noindent defining the $\theta_{r\delta_i}$ as in 471A.
+Set $\delta=\min(\delta_1,\delta_2,\bover12\rho(A_1,A_2))>0$ and let
+$\sequencen{D_n}$ be a sequence of sets of diameter at most $\delta$,
+covering $A_1\cup A_2$, and such that $\sum_{n=0}^{\infty}(\diam D_n)^r
+\le\theta_{r\delta}(A_1\cup A_2)+\epsilon$.   Set
+
+\Centerline{$K=\{n:D_n\cap A_1\ne\emptyset\}$,
+\quad$L=\{n:D_n\cap A_2\ne\emptyset\}$.}
+
+\noindent Because $\rho(x,y)>\diam D_n$ whenever $x\in A_1$, $y\in A_2$
+and $n\in\Bbb N$,
+$K\cap L=\emptyset$;  and of course $A_1\subseteq\bigcup_{n\in K}D_k$,
+$A_2\subseteq\bigcup_{n\in L}D_n$.   Consequently
+
+$$\eqalign{\theta_rA_1+\theta_rA_2
+&\le\epsilon+\theta_{r\delta_1}A_1+\theta_{r\delta_2}A_2
+\le\epsilon+\sum_{n\in K}(\diam D_n)^r+\sum_{n\in L}(\diam D_n)^r\cr
+&\le\epsilon+\sum_{n=0}^{\infty}(\diam D_n)^r
+\le 2\epsilon+\theta_{r\delta}(A_1\cup A_2)
+\le 2\epsilon+\theta_r(A_1\cup A_2).\cr}$$
+
+\noindent As $\epsilon$ is arbitrary,
+$\theta_r(A_1\cup A_2)\ge\theta_rA_1+\theta_rA_2$.   The reverse
+inequality is true just because $\theta_r$ is an outer measure, so
+$\theta_r(A_1\cup A_2)=\theta_rA_1+\theta_rA_2$.   As $A_1$ and $A_2$
+are
+arbitrary, $\theta_r$ is a metric outer measure.\ \Qed
+
+Now 471C tells us that $\mu_{Hr}$ must be a topological measure.
+
+\medskip
+
+{\bf (b)} (Compare 264Fa.)   If $\theta_rA=\infty$ this is trivial.
+Otherwise, for each $n\in\Bbb N$, let $\sequence{i}{D_{ni}}$ be a
+sequence of sets of diameter at most $2^{-n}$ such that
+$A\subseteq\bigcup_{i\in\Bbb N}D_i$ and
+$\sum_{i=0}^{\infty}(\diam D_{ni})^r\le\theta_{r,2^{-n}}(A)+2^{-n}$,
+defining $\theta_{r,2^{-n}}$
+as in 471A.   Let $\eta_{ni}\in\ocint{0,2^{-n}}$ be such that
+$(2\eta_{ni}+\diam D_{ni})^r\le 2^{-n-i}+(\diam D_{ni})^r$, and set
+$G_{ni}=\{x:\rho(x,D_{ni})<\eta_{ni}\}$ for all $n$, $i\in\Bbb N$;  then
+$G_{ni}=\bigcup_{x\in D_{ni}}U(x,\eta_{ni})$ is an open set including
+$D_{ni}$ and $(\diam G_{ni})^r\le 2^{-n-i}+(\diam D_{ni})^r$.   Set
+
+\Centerline{$H=\bigcap_{n\in\Bbb N}\bigcup_{i\in\Bbb N}G_{ni}$,}
+
+\noindent so that $H$ is a G$_{\delta}$ set including $A$.
+
+For any $\delta>0$, there is an $n\in\Bbb N$ such that
+$3\cdot 2^{-n}\le\delta$, so that
+$\diam G_{mi}\le\diam D_{mi}+2\eta_{mi}\le\delta$ for every
+$i\in\Bbb N$ and $m\ge n$, and
+
+$$\eqalign{\theta_{r\delta}H
+&\le\sum_{i=0}^{\infty}(\diam G_{mi})^r
+\le\sum_{i=0}^{\infty}2^{-m-i}+(\diam D_{mi})^r\cr
+&\le 2^{-m+1}+\theta_{r,2^{-m}}(A)+2^{-m}
+\le 2^{-m+2}+\theta_rA\cr}$$
+
+\noindent for every $m\ge n$.   Accordingly
+$\theta_{r\delta}H\le\theta_rA$ for every $\delta>0$, so
+$\theta_rH\le\theta_rA$.   Of course this means that
+$\theta_rH=\theta_rA$;  and since, by (a), $\mu_{Hr}$ measures $H$, we
+have $\mu_{Hr}H=\theta_rA$, as required.
+
+\medskip
+
+{\bf (c)} (Compare 264Fb.)   If $A\subseteq X$,
+
+$$\eqalignno{\theta_rA&\ge\mu_{Hr}^*A\cr
+\displaycause{by (b)}
+&=\inf\{\theta_rE:A\subseteq E\in\Sigma\}
+\ge\theta_rA.\cr}$$
+
+\medskip
+
+{\bf (d)} Use 431C.
+
+\medskip
+
+{\bf (e)} By (b), there is a Borel set $H\supseteq E$ such that
+$\mu_{Hr}H=\mu_{Hr}E$, and now there is a Borel set
+$H'\supseteq H\setminus E$ such that
+$\mu_{Hr}H'=\mu_{Hr}(H\setminus E)=0$, so that
+$G=H\setminus H'$ is a Borel set included in $E$ and
+$\mu_{Hr}G=\mu_{Hr}E$.   Now $G$ is a Baire set (4A3Kb), so is Souslin-F
+(421L), and $\mu_{Hr}G=\sup_{F\subseteq G\text{ is closed}}\mu_{Hr}F$,
+by 431E.
+
+\medskip
+
+{\bf (f)} For every $n\in\Bbb N$, there must be a sequence
+$\sequence{i}{D_{ni}}$ of sets of diameter at most
+$2^{-n}$ covering $A$;  now if $D\subseteq A$ is a countable set which
+meets $D_{ni}$ whenever $i$, $n\in\Bbb N$ and
+$A\cap D_{ni}\ne\emptyset$, $D$ will be dense in $A$.   Now if $A_0$ is
+the set of isolated points in $A$, it is still separable (4A2P(a-iv));
+but as the only dense subset of $A_0$ is itself, it is countable.
+Since $\theta_{r\delta}\{x\}=(\diam\{x\})^r=0$ for every $\delta>0$,
+$\mu_{Hr}\{x\}=0$ for every $x\in X$, and $A_0$ is negligible.
+
+\medskip
+
+{\bf (g)} In fact, if $A\subseteq X$ and $\theta_rA>0$, there are
+disjoint $A_0$, $A_1\subseteq A$ such that $\theta_rA_i>0$ for both $i$.
+\Prf\ (i) Suppose first that $A$ is not separable.   For each
+$n\in\Bbb N$, let $D_n\subseteq A$ be a maximal set such that
+$\rho(x,y)\ge 2^{-n}$ for all distinct $x$, $y\in D_n$;  then
+$\bigcup_{n\in\Bbb N}D_n$ is dense in $A$, so there is some $n\in\Bbb N$
+such that $D_n$ is uncountable;  if we take $A_1$, $A_2$ to be disjoint
+uncountable subsets of $D_n$, then $\theta_rA_1=\theta_rA_2=\infty$.
+(ii) If $A$ is separable, then set $\Cal G=\{G:G\subseteq X$ is open,
+$\theta_r(A\cap G)=0\}$.   Because $A$ is hereditarily Lindel\"of
+(4A2P(a-iii)), there is a countable subset $\Cal G_0$ of $\Cal G$ such
+that $A\cap\bigcup\Cal G=A\cap\bigcup\Cal G_0$ (4A2H(c-i)), so
+$A\cap\bigcup\Cal G$ is negligible and $A\setminus\bigcup\Cal G$ has at
+least two points $x_0$, $x_1$.   If we set
+$A_i=U(x_i,\bover12\rho(x_i,x_{1-i}))$ for each $i$, these are disjoint
+subsets of $A$ of non-zero outer measure.\ \Qed
+
+\medskip
+
+{\bf (h)} If $\mu_{Hr}$ is totally finite, then it is inner regular with
+respect to the closed sets, by (e).   Also, because $X$ must be
+separable, by (f), therefore hereditarily Lindel\"of, $\mu_{Hr}$ must be
+$\tau$-additive (414O).   Finally, $\mu_{Hr}$ is complete just
+because it is defined by \Caratheodory's method.   So $\mu_{Hr}$ is a
+quasi-Radon measure.
+}%end of proof of 471D
+
+\leader{471E}{Corollary} If $(X,\rho)$ is a metric space, $r>0$ and
+$Y\subseteq X$ then $r$-dimensional Hausdorff measure $\mu^{(Y)}_{Hr}$
+on $Y$ extends the subspace measure $(\mu^{(X)}_{Hr})_Y$ on $Y$ induced
+by $r$-dimensional Hausdorff measure $\mu^{(X)}_{Hr}$ on $X$;  and if
+either $Y$ is measured by $\mu^{(X)}_{Hr}$ or $Y$ has finite
+$r$-dimensional Hausdorff outer measure in $X$, then
+$\mu^{(Y)}_{Hr}=(\mu^{(X)}_{Hr})_Y$.
+
+\proof{ Write $\theta_r^{(X)}$ and $\theta_r^{(Y)}$ for the two
+$r$-dimensional Hausdorff outer measures.
+
+If $A\subseteq Y$ and $\sequencen{D_n}$ is any sequence of subsets of
+$X$ covering $A$, then $\sequencen{D_n\cap Y}$ is a sequence of subsets
+of $Y$ covering $A$, and $\sum_{n=0}^{\infty}(\diam(D_n\cap Y))^r
+\le\sum_{n=0}^{\infty}(\diam D_n)^r$;  moreover, when calculating
+$\diam(D_n\cap Y)$, it doesn't matter whether we use the metric $\rho$
+on $X$ or the subspace metric $\rho\restrp Y\times Y$ on $Y$.   What
+this means is that, for any $\delta>0$, $\theta_{r\delta}A$ is the same
+whether calculated in $Y$ or in $X$, so that
+$\theta^{(Y)}_rA=\sup_{\delta>0}\theta_{r\delta}A=\theta_r^{(X)}A$.
+
+Thus $\theta^{(Y)}_r=\theta^{(X)}_r\restrp\Cal PY$.   Also, by 471Db,
+$\theta^{(X)}_r$ is a regular outer measure.   So 214Hb gives the
+results.
+}%end of proof of 471E
+
+\leader{471F}{Corollary} Let $(X,\rho)$ be an analytic metric
+space\cmmnt{ (that is, a metric space in which the
+topology is analytic in the sense of \S423)}, and write $\mu_{Hr}$ for
+$r$-dimensional Hausdorff measure on $X$.
+Suppose that $\nu$ is a locally finite indefinite-integral measure over
+$\mu_{Hr}$.   Then $\nu$ is a Radon measure.
+
+\proof{ Since $\dom\nu\supseteq\dom\mu_{Hr}$, $\nu$ is a topological measure.
+Because $X$ is separable, therefore hereditarily Lindel\"of, $\nu$ is
+$\sigma$-finite and $\tau$-additive, therefore locally determined and
+effectively locally finite.   Next, it is inner regular with respect to
+the closed sets.   \Prf\ Let $f$ be a Radon-Nikod\'ym derivative of
+$\nu$.   If $\nu E>0$, there is an $E'\subseteq E$ such that
+
+\Centerline{$0<\nu E'=\biggerint f\times\chi E'\,d\mu_{Hr}<\infty$.}
+
+\noindent There is a $\mu_{Hr}$-simple function $g$ such that
+$g\le f\times\chi E'\,\,\mu_{Hr}$-a.e.\ and $\int g\,d\mu_{Hr}>0$;
+setting $H=E'\cap\{x:g(x)>0\}$, $\nu_{Hr}H<\infty$.
+Now there is a closed set $F\subseteq H$ such that $\mu_{Hr}F>0$, by
+471De, and in this case $\nu F\ge\int_Fg\,d\mu_{Hr}>0$.   By 412B, this
+is enough to show that $\nu$ is inner regular with respect to the closed
+sets.\ \Qed
+
+Since $\nu$ is complete (234I\formerly{2{}34A}), it is a
+quasi-Radon measure, therefore a Radon measure (434Jf, 434Jb).
+}%end of proof of 471F
+
+\leader{471G}{Increasing Sets Lemma}\cmmnt{ ({\smc Davies 70})} Let
+$(X,\rho)$ be a metric space and $r>0$.
+
+(a) Suppose that $\delta>0$ and that $\sequencen{A_n}$ is a
+non-decreasing sequence of subsets of $X$ with union $A$.   Then
+$\theta_{r,6\delta}(A)
+\le(5^r+2)\sup_{n\in\Bbb N}\theta_{r\delta}A_n$.
+
+(b) Suppose that $\delta>0$ and that $\sequencen{A_n}$ is a
+non-decreasing sequence of subsets of $X$ with union $A$.   Then
+$\theta_{r\delta}A\le\sup_{n\in\Bbb N}\theta_{r\delta}A_n$.
+
+\proof{{\bf (a)} If $\sup_{n\in\Bbb N}\theta_{r\delta}A_n=\infty$ this
+is trivial;  suppose otherwise.
+
+\medskip
+
+\quad{\bf (i)} Take any
+$\gamma>\gamma'>\sup_{n\in\Bbb N}\theta_{r\delta}A_n$.   For each
+$i\in\Bbb N$, let $\zeta_i\in\ocint{0,\bover14\delta}$ be such that
+$(\alpha+2\zeta_i)^r\le\alpha^r+2^{-i-1}(\gamma-\gamma')$ whenever
+$0\le\alpha\le\delta$.   For each
+$n\in\Bbb N$, there is a sequence $\sequence{i}{C_{ni}}$ of
+sets covering $A_n$ such that $\diam C_{ni}\le\delta$ for every $i$ and
+$\sum_{i=0}^{\infty}(\diam C_{ni})^r<\gamma'$;  let
+$\sequence{i}{\gamma_{ni}}$ be such that
+$\diam C_{ni}\le\gamma_{ni}\le\delta$ and $\gamma_{ni}>0$ for
+every $i$ and $\sum_{i=0}^{\infty}\gamma_{ni}^r\le\gamma'$.   Since
+$\sum_{i=0}^{\infty}\gamma_{ni}^r$ is finite,
+$\lim_{i\to\infty}\gamma_{ni}=0$.   Because $\gamma_{ni}>0$ for every $i$,
+we may rearrange the sequences $\sequence{i}{C_{ni}}$,
+$\sequence{i}{\gamma_{ni}}$ in such a way that
+$\gamma_{ni}\ge\gamma_{n,i+1}$ for each $i$.
+%(We may have singleton $C_{ni}$.)
+
+In this case, $\lim_{i\to\infty}\sup_{n\in\Bbb N}\gamma_{ni}=0$.
+\Prf\
+
+\Centerline{$(i+1)\gamma_{ni}^r\le\sum_{j=0}^i\gamma_{nj}^r\le\gamma$}
+
+\noindent for every $n$, $i\in\Bbb N$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} By Ramsey's theorem (4A1G, with $n=2$), there is an
+infinite set $I\subseteq\Bbb N$ such that
+
+\inset{for all $i$, $j\in\Bbb N$ there is an $s\in\Bbb N$ such that
+either $C_{mi}\cap C_{nj}=\emptyset$ whenever $m$, $n\in I$ and
+$s\le m<n$ or $C_{mi}\cap C_{nj}\ne\emptyset$ whenever $m$, $n\in I$ and
+$s\le m<n$,}
+
+\inset{for each $i\in\Bbb N$,
+$\alpha_i=\lim_{n\in I,n\to\infty}\gamma_{ni}$ is defined in $\Bbb R$.}
+
+\noindent (Apply 4A1Fb with the families
+
+$$\eqalign{\Cal J_{ij}&=\{J:J\in[\Bbb N]^{\omega},
+\text{ either }C_{mi}\cap C_{nj}=\emptyset
+  \text{ whenever }m,\,n\in J\text{ and }m<n\cr
+&\mskip150mu\text{ or }C_{mi}\cap C_{nj}\ne\emptyset
+  \text{ whenever }m,\,n\in J\text{ and }m<n\}\cr
+\Cal J'_{iq}&=\{J:J\in[\Bbb N]^{\omega},
+\text{ either }\gamma_{ni}\le q\text{ for every }n\in J\cr
+&\mskip200mu\text{ or }\gamma_{ni}\ge q\text{ for every }n\in J\}\cr}$$
+
+\noindent for $i$, $j\in\Bbb N$ and $q\in\Bbb Q$.)
+
+Of course $\alpha_j\le\alpha_i\le\delta$ whenever
+$i\le j$, because $\gamma_{nj}\le\gamma_{ni}\le\delta$ for
+every $n$.   Set $D_{ni}=\{x:\rho(x,C_{ni})\le 2\alpha_i+2\zeta_i\}$ for
+all $n$, $i\in\Bbb N$, and
+$D_i=\bigcup_{s\in\Bbb N}\bigcap_{n\in I\setminus s}D_{ni}$ for
+$i\in\Bbb N$.   (I am identifying each $s\in\Bbb N$ with the set of its
+predecessors.)
+
+\medskip
+
+\quad{\bf (iii)} Set
+
+\Centerline{$L=\{(i,j):i,\,j\in\Bbb N,\,
+  \Forall s\in\Bbb N\,\Exists m,\,n\in I,\,s\le m<n$
+  and $C_{mi}\cap C_{nj}\ne\emptyset\}$.}
+
+\noindent If $(i,j)\in L$ then there is an $s\in\Bbb N$ such that
+$C_{mi}\subseteq D_{\min(i,j)}$ whenever $m\in I$ and
+$m\ge s$.   \Prf\ By the choice of $I$, we know that there is an
+$s_0\in\Bbb N$ such
+that $C_{mi}\cap C_{nj}\ne\emptyset$ whenever $m$, $n\in I$ and
+$s_0\le m<n$.   Let $s_1\ge s_0$ be such that
+
+\Centerline{$\gamma C_{mi}\le\alpha_i+\min(\zeta_i,\zeta_j)$,
+\quad$\gamma C_{mj}\le\alpha_j+\min(\zeta_i,\zeta_j)$}
+
+\noindent whenever $m\in I$ and $m\ge s_1$.   Take $m_0\in I$ such that
+$m_0\ge s_1$, and set $s=m_0+1$.   Let $m\in I$ be such that $m\ge s$.
+
+\medskip
+
+\qquad\grheada\ Suppose that $i\le j$ and $x\in C_{mi}$.   Take any
+$n\in I$ such that $m\le n$.   Then there is an $n'\in I$ such that
+$n<n'$.   We know that
+$C_{mi}\cap C_{n'j}$ and $C_{ni}\cap C_{n'j}$ are both non-empty.   So
+
+\Centerline{$\rho(x,C_{ni})\le\diam C_{mi}+\diam C_{n'j}
+\le\gamma_{mi}+\gamma_{n'j}
+\le\alpha_i+\zeta_i+\alpha_j+\zeta_i\le 2\alpha_i+2\zeta_i$}
+
+\noindent and $x\in D_{ni}$.   This is true for all $n\in I$ such that
+$n\ge m$, so $x\in D_i$.   As $x$ is arbitrary, $C_{mi}\subseteq D_i$.
+
+\medskip
+
+\qquad\grheadb\ Suppose that $j\le i$ and $x\in C_{mi}$.   Take any
+$n\in I$ such that $n>m$.   Then $C_{mi}\cap C_{nj}$ is not empty, so
+
+\Centerline{$\rho(x,C_{nj})
+\le\diam C_{mi}\le\gamma_i\le\alpha_i+\zeta_j\le\alpha_j+\zeta_j$}
+
+\noindent and $x\in D_{nj}$.   As $x$ and $n$ are arbitrary,
+$C_{mi}\subseteq D_j$.
+
+Thus $C_{mi}\subseteq D_{\min(i,j)}$ in both cases.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} Set
+
+\Centerline{$D=\bigcup_{i\in\Bbb N}D_i$,
+\quad$J=\{i:i\in\Bbb N,\,\Exists s\in\Bbb N$, $C_{ni}\subseteq D$
+whenever $n\in I$ and $n\ge s\}$.}
+
+\noindent If $i\in\Bbb N\setminus J$ and $j\in\Bbb N$, then (iii) tells
+us that $(i,j)\notin L$, so there is some $s\in\Bbb N$ such that
+$C_{mi}\cap C_{nj}=\emptyset$ whenever $m$,
+$n\in I$ and $s\le m<n$.
+
+\medskip
+
+\quad{\bf (v)} For $l\in\Bbb N$,
+$\mu^*_{Hr}(A_l\setminus D)\le 2\gamma$.   \Prf\ Let $\epsilon>0$.
+Then there is a
+$k\in\Bbb N$ such that $\gamma_{ni}\le\epsilon$ whenever $n\in\Bbb N$
+and $i>k$.   Next, there is an $s\in\Bbb N$ such that
+
+\Centerline{$C_{ni}\subseteq D$ whenever $i\le k$, $i\in J$, $n\in I$
+and $s\le n$,}
+
+\Centerline{$C_{mi}\cap C_{nj}=\emptyset$ whenever $i$, $j\le k$,
+$i\notin J$, $m$, $n\in I$ and $s\le m<n$.}
+
+\noindent Take $m$, $n\in I$ such that $\max(l,s)\le m<n$.   Then
+
+$$\eqalign{A_l\setminus D
+&=\bigcup_{i\in\Bbb N}A_l\cap C_{mi}\setminus D\cr
+&\subseteq\bigcup_{i\le k}(A_n\cap C_{mi}\setminus D)
+  \cup\bigcup_{i>k}C_{mi}\cr
+&\subseteq\bigcup_{i\le k,i\notin J}(A_n\cap C_{mi})
+  \cup\bigcup_{i>k}C_{mi}\cr
+&\subseteq\bigcup_{i\le k,i\notin J,j\le k}(C_{mi}\cap C_{nj})
+  \cup\bigcup_{j>k}C_{nj}
+  \cup\bigcup_{i>k}C_{mi}\cr
+&=\bigcup_{j>k}C_{nj}\cup\bigcup_{i>k}C_{mi}.\cr}$$
+
+\noindent Since $\diam C_{nj}\le\gamma_j\le\epsilon$ and
+$\diam C_{mi}\le\gamma_i\le\epsilon$ for all $i$, $j>k$,
+
+\Centerline{$\theta_{r\epsilon}(A_l\setminus D)
+\le\sum_{i=k+1}^{\infty}\gamma_{ni}^r
+  +\sum_{i=k+1}^{\infty}\gamma_{mi}^r
+\le 2\gamma$.}
+
+\noindent This is true for every $\epsilon>0$, so
+$\mu^*_{Hr}(A_l\setminus D)\le 2\gamma$, as claimed.\ \Qed
+
+\medskip
+
+\quad{\bf (vi)} This is true for each $l\in\Bbb N$.   But this means
+that $\mu_{Hr}^*(A\setminus D)\le 2\gamma$ (132Ae).
+Now $\theta_{r,6\delta}D\le 5^r\gamma$.   \Prf\ For each $i\in\Bbb N$,
+
+$$\eqalign{\diam D_i
+&\le\lim_{n\in I,n\to\infty}\diam D_{ni}
+\le\lim_{n\in I,n\to\infty}\diam C_{ni}+4\alpha_i+4\zeta_i\cr
+&\le\lim_{n\in I,n\to\infty}\gamma_{ni}+4\alpha_i+4\zeta_i
+=5\alpha_i+4\zeta_i\le 6\delta.\cr}$$
+
+\noindent Next, for any $k\in\Bbb N$,
+
+\Centerline{$\sum_{i=0}^k\alpha_i^r
+=\lim_{n\in I,n\to\infty}\sum_{i=0}^k\gamma_{ni}^r
+\le\gamma'$,}
+
+\noindent so
+
+$$\eqalignno{\sum_{i=0}^k(\diam D_i)^r
+&\le 5^r\sum_{i=0}^k(\alpha_i+2\zeta_i)^r
+\le 5^r(\sum_{i=0}^k\alpha_i^r+2^{-i-1}(\gamma-\gamma'))\cr
+\displaycause{by the choice of the $\zeta_i$}
+&\le 5^r\gamma.\cr}$$
+
+\noindent Letting $k\to\infty$,
+
+\Centerline{$\theta_{r,6\delta}D\le\sum_{i=0}^{\infty}(\diam D_i)^r
+\le 5^r\gamma$.   \Qed}
+
+Putting these together,
+
+\Centerline{$\theta_{r,6\delta}A
+\le\theta_{r,6\delta}D+\theta_{r,6\delta}(A\setminus D)
+\le\theta_{r,6\delta}D+\mu^*_{Hr}(A\setminus D)
+\le(5^r+2)\gamma$.}
+
+\noindent As $\gamma$ is arbitrary, we have the preliminary result (a).
+
+\medskip
+
+{\bf (b)} Now let us turn to the sharp form (b).   Once again, we may
+suppose that $\sup_{n\in\Bbb N}\theta_{r\delta}A_n$ is finite.
+
+\medskip
+
+\quad{\bf (i)} Take $\gamma$, $\gamma'$ such that
+$\sup_{n\in\Bbb N}\theta_{r\delta}A_n<\gamma'<\gamma$.   As in (a)(i)
+above, we can find a family
+$\langle C_{ni}\rangle_{n,i\in\Bbb N}$ such that
+
+\Centerline{$A_n\subseteq\bigcup_{i\in\Bbb N}C_{ni}$,}
+
+\Centerline{$\diam C_{ni}\le\delta$ for every $i\in\Bbb N$,}
+
+\Centerline{$\sum_{i=0}^{\infty}(\diam C_{ni})^r\le\gamma'$}
+
+\noindent for each $n$, and
+
+\Centerline{$\lim_{i\to\infty}\sup_{n\in\Bbb N}\diam C_{ni}=0$.}
+
+\noindent Replacing each $C_{ni}$ by its closure if necessary, we may
+suppose that every $C_{ni}$ is a Borel set.
+
+Let $Q\subseteq X$ be a countable set which meets $C_{ni}$ whenever $n$,
+$i\in\Bbb N$ and $C_{ni}$ is not empty.   This time, let
+$I\subseteq\Bbb N$ be an infinite set such that
+
+\Centerline{$\alpha_i=\lim_{n\in I,n\to\infty}\diam C_{ni}$ is defined
+in $[0,\delta]$ for every $i\in\Bbb N$,}
+
+\Centerline{$\lim_{n\in I,n\to\infty}\rho(z,C_{ni})$ is defined in
+$[0,\infty]$ for every $i\in\Bbb N$ and every $z\in Q$.}
+
+\noindent (Take $\rho(z,\emptyset)=\infty$ if any of the $C_{ni}$ are
+empty.)   It will be helpful to note straight away that the limit
+$\lim_{n\in I,n\to\infty}\rho(x,C_{ni})$ is defined in $[0,\infty]$ for
+every $i\in\Bbb N$ and $x\in\overline{Q}$.   \Prf\ If
+$\lim_{n\in I,n\to\infty}\rho(y,C_{ni})=\infty$ for some $y\in Q$, then
+$\lim_{n\in I,n\to\infty}\rho(x,C_{ni})\penalty-100=\infty$,
+and we can stop.
+Otherwise, for any $\epsilon>0$, there are a $z\in Q$ such that
+$\rho(x,z)\le\epsilon$ and an $s\in\Bbb N$ such that $C_{mi}$ is not
+empty and $|\rho(z,C_{mi})-\rho(z,C_{ni})|\le\epsilon$ whenever $m$,
+$n\in I\setminus s$;  in which case
+$|\rho(x,C_{mi})-\rho(x,C_{ni})|\le 3\epsilon$ whenever $m$,
+$n\in I\setminus s$.   As $\epsilon$ is arbitrary,
+$\lim_{n\in I,n\to\infty}\rho(x,C_{ni})$ is defined in $\Bbb R$.\ \Qed
+
+Let $\Cal F$ be a non-principal ultrafilter on $\Bbb N$ containing $I$,
+and for $i\in\Bbb N$ set
+
+\Centerline{$D_i=\{x:\lim_{n\to\Cal F}\rho(x,C_{ni})=0\}$.}
+
+\noindent Set $D=\bigcup_{i\in\Bbb N}\overline{D}_i$.   (Actually it is
+easy to check that every $D_i$ is closed.)
+
+\medskip
+
+\quad{\bf (ii)} Set
+
+\Centerline{$A^*=\bigcup_{m\in\Bbb N}\bigcap_{n\in I\setminus m}
+  \bigcup_{i\in\Bbb N}C_{ni}\setminus D$;}
+
+\noindent note that $A^*$ is a Borel set.   For $k$, $m\in\Bbb N$, set
+
+\Centerline{$A^*_{km}
+=\bigcap_{n\in I\setminus m}\bigcup_{i\ge k}C_{ni}$.}
+
+\noindent For fixed $k$, $\sequence{m}{A^*_{km}}$ is a non-decreasing
+sequence of sets.   Also its union includes $A^*$.   \Prf\ Take
+$x\in A^*$.
+
+\medskip
+
+\qquad\grheada\Quer\ If $x\notin\overline{Q}$, let $\epsilon>0$ be such
+that $Q\cap B(x,\epsilon)=\emptyset$.   Let $l\in\Bbb N$ be such that
+$\diam C_{ni}\le\epsilon$ whenever $n\in\Bbb N$ and $i\ge l$;   then
+$x\notin C_{ni}$ whenever $n\in\Bbb N$ and $i\ge l$.   Let $m\in\Bbb N$
+be such that $x\in\bigcup_{i\in\Bbb N}C_{ni}$ whenever $n\in I$ and
+$n\ge m$.   Then $x\in\bigcup_{i<l}C_{ni}$ whenever $n\in I$ and
+$n\ge m$.   But this means that there must be some $i<l$ such that
+$\{n:x\in C_{ni}\}\in\Cal F$ and $x\in D_i\subseteq D$;  which is
+impossible.\ \Bang
+
+\medskip
+
+\qquad\grheadb\ Thus $x\in\overline{Q}$, so
+$\lim_{n\in I,n\to\infty}\rho(x,C_{ni})$ is defined for each $i$ (see
+(i) above), and must be greater than $0$, since $x\notin D_i$.   In
+particular, there is an $s\in\Bbb N$ such that $x\notin C_{ni}$ whenever
+$i<k$ and $n\in I\setminus s$;   there is also an $m\in\Bbb N$ such that
+$x\in\bigcap_{n\in I\setminus m}\bigcup_{i\in\Bbb N}C_{ni}$;  so that
+$x\in A^*_{k,\max(s,m)}$.   As $x$ is arbitrary,
+$A^*\subseteq\bigcup_{m\in\Bbb N}A^*_{km}$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} $\mu_{Hr}A^*$ is finite.   \Prf\ Take any $\epsilon>0$.
+Let $k\in\Bbb N$ be such that $\diam C_{ni}\le\epsilon$ whenever
+$i\ge k$ and $n\in\Bbb N$.   For any $m\in I$,
+$\theta_{r\epsilon}A^*_{km}
+\le\sum_{i=k}^{\infty}(\diam C_{mi})^r\le\gamma$.   By (a),
+
+$$\eqalignno{\theta_{r,6\epsilon}A^*
+&\le(5^r+2)\sup_{m\in\Bbb N}\theta_{r\epsilon}A^*_{km}\cr
+&=(5^r+2)\sup_{m\in I}\theta_{r\epsilon}A^*_{km}
+\le(5^r+2)\gamma.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary,
+$\mu_{Hr}A^*\le(5^r+2)\gamma<\infty$.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} Actually,
+$\mu_{Hr}A^*\le\gamma'-\sum_{i=0}^{\infty}\alpha_i^r$.  \Prf\Quer\
+Suppose, if possible, otherwise.   Take $\beta$ such that
+$\gamma'-\sum_{i=0}^{\infty}\alpha_i^r<\beta<\mu_{Hr}A^*$.
+For $x\in A^*$ and $k\in\Bbb N$, set
+$f_k(x)=\min\{n:n\in I$, $x\in A^*_{kn}\}$;   then $\sequence{k}{f_k}$
+is a non-decreasing sequence of Borel measurable functions from $A^*$ to
+$\Bbb N$.   Choose $\sequence{k}{s_k}$ inductively so that
+
+\Centerline{$\mu_{Hr}\{x:x\in A^*$, $f_j(x)\le s_j$ for every $j\le k\}
+>\beta$}
+
+\noindent for every $k\in\Bbb N$.   Set
+$\tilde A=\{x:x\in A^*$, $f_j(x)\le s_j$ for every $j\in\Bbb N\}$;
+because $\mu_{Hr}A^*$ is finite, $\mu_{Hr}\tilde A\ge\beta$.   Take
+$\epsilon>0$ such that
+$\theta_{r\epsilon}\tilde A>\gamma'-\sum_{i=0}^{\infty}\alpha_i^r$.
+Let $k\in\Bbb N$ be such that
+$\theta_{r\epsilon}\tilde A+\sum_{i=0}^{k-1}\alpha_i^r>\gamma'$ and
+$\diam C_{ni}\le\epsilon$ whenever $n\in\Bbb N$ and $i\ge k$.
+Take $n\in I$ such that $n\ge s_j$ for every $j\le k$ and
+$\theta_{r\epsilon}\tilde A+\sum_{i=0}^{k-1}(\diam C_{ni})^r>\gamma'$.
+If $x\in\tilde A$, then
+
+\Centerline{$f_k(x)\le s_k\le n$,
+\quad$x\in A^*_{kn}\subseteq\bigcup_{i\ge k}C_{ni}$,}
+
+\noindent so
+$\theta_{r\epsilon}\tilde A\le\sum_{i=k}^{\infty}(\diam C_{ni})^r$;
+but this means that $\sum_{i=0}^{\infty}(\diam C_{ni})^r>\gamma'$,
+contrary to the choice of the $C_{ni}$.\ \Bang\Qed
+
+\medskip
+
+\quad{\bf (v)} Now observe that
+
+\Centerline{$A
+\subseteq\bigcup_{m\in\Bbb N}\bigcap_{n\ge m}\bigcup_{i\in\Bbb N}C_{ni}
+\subseteq A^*\cup D$.}
+
+\noindent Moreover, for any $i\in\Bbb N$,
+$\diam\overline{D}_i\le\alpha_i\le\delta$.   \Prf\ If $x$, $y\in D_i$
+then for every $\epsilon>0$
+
+\Centerline{$\rho(x,C_{ni})\le\epsilon$,
+\quad$\rho(y,C_{ni})\le\epsilon$,
+\quad$\diam C_{ni}\le\alpha_i+\epsilon$}
+
+\noindent for all but finitely many $n\in I$.   So
+$\rho(x,y)\le\alpha_i+3\epsilon$.   As $x$, $y$ and $\epsilon$ are
+arbitrary, $\diam\overline{D}_i=\diam D_i\le\alpha_i$.   Of course
+$\alpha_i\le\delta$ because $\diam C_{ni}\le\delta$ for every $n$.\ \Qed
+
+Now
+
+\Centerline{$\theta_{r\delta}D
+\le\sum_{i=0}^{\infty}(\diam\overline{D}_i)^r
+\le\sum_{i=0}^{\infty}\alpha_i^r$.}
+
+\noindent Putting this together with (iv),
+
+\Centerline{$\theta_{r\delta}A
+\le\theta_{r\delta}D+\theta_{r\delta}A^*
+\le\theta_{r\delta}D+\mu_{Hr}A^*
+\le\gamma$.}
+
+\noindent As $\gamma$ and $\gamma'$ are arbitrary,
+
+\Centerline{$\theta_{r\delta}A
+\le\sup_{n\in\Bbb N}\theta_{r\delta}A_n$,}
+
+\noindent as required.
+}%end of proof of 471G
+
+\leader{471H}{Corollary} Let $(X,\rho)$ be a metric space, and $r>0$.
+For $A\subseteq X$, set
+
+\Centerline{$\theta_{r\infty}A
+=\inf\{\sum_{n=0}^{\infty}(\diam D_n)^r:\sequencen{D_n}$ is a sequence
+of subsets of $X$ covering $A\}$.}
+
+\noindent Then $\theta_{r\infty}$ is a Choquet capacity on $X$.
+
+\proof{{\bf (a)} Of course $0\le\theta_{r\infty}A\le\theta_{r\infty}B$
+whenever $A\subseteq B\subseteq X$.
+
+\medskip
+
+{\bf (b)} Suppose that $\sequencen{A_n}$ is a non-decreasing sequence of
+subsets of $A$ with union $A$.   By (a),
+$\gamma=\lim_{n\to\infty}\theta_{r\infty}A_n$ is defined
+and less than or equal to $\theta_{r\infty}A$.   If $\gamma=\infty$, of
+course it is equal to $\theta_{r\infty}A$.   Otherwise,
+take $\beta=(\gamma+1)^{1/r}$.   For $n$, $k\in\Bbb N$ there is a
+sequence
+$\sequence{i}{D_{nki}}$ of sets, covering $A_n$, such that
+$\sum_{i=0}^{\infty}(\diam D_{nki})^r\le\gamma+2^{-k}$.   But in this
+case $\diam D_{nki}\le\beta$ for all
+$n$, $k$ and $i$, so the $D_{nki}$ witness that
+$\theta_{r\beta}A_n\le\gamma$.   By 471Gb,
+$\gamma\ge\theta_{r\beta}A\ge\theta_{r\infty}A$ and again we have
+$\gamma=\theta_{r\infty}A$.
+
+\medskip
+
+{\bf (c)} Let $K\subseteq X$ be any set, and suppose that
+$\gamma>\theta_{r\infty}K$.   Let $\sequencen{D_n}$ be a sequence of
+sets, covering $K$, such that
+$\sum_{n=0}^{\infty}(\diam D_n)^r<\gamma$.   Let
+$\sequencen{\epsilon_n}$ be a sequence of strictly positive real numbers
+such that
+$\sum_{n=0}^{\infty}(\diam D_n+2\epsilon_n)^r\le\gamma$.   Set
+$G_n=\{x:\rho(x,D_n)<\epsilon_n\}$ for each $n$;  then $G_n$ is open and
+$\diam G_n\le\diam D_n+2\epsilon_n$.
+So $G=\bigcup_{n\in\Bbb N}G_n$ is an open set including $K$, and
+$\sequencen{G_n}$ witnesses that $\theta_{r\infty}G\le\gamma$.   As $K$
+and $\gamma$ are arbitrary,
+condition (iii) of 432Ja is satisfied and $\theta_{r\infty}$ is a
+Choquet capacity.
+}%end of proof of 471H
+
+\medskip
+
+\noindent{\bf Remark} $\theta_{r\infty}$ is {\bf $r$-dimensional
+Hausdorff capacity} on $X$.
+
+\leader{471I}{Theorem} Let $(X,\rho)$ be a metric space, and
+$r>0$.   Write $\mu_{Hr}$ for $r$-dimensional Hausdorff measure on
+$X$.   If $A\subseteq X$ is analytic, then $\mu_{Hr}A$ is defined and
+equal to $\sup\{\mu_{Hr}K:K\subseteq A$ is compact$\}$.
+
+\proof{{\bf (a)} Before embarking on the main line of the proof, it will
+be convenient to set out a preliminary result.   For $\delta>0$,
+$n\in\Bbb N$, $B\subseteq X$ set
+
+\Centerline{$\theta^{(n)}_{r\delta}(B)
+=\inf\{\sum_{i=0}^n(\diam D_i)^r:
+B\subseteq\bigcup_{i\le n}D_i,\,\diam D_i\le\delta$
+for every $i\le n\}$,}
+
+\noindent taking $\inf\emptyset=\infty$ as usual.   Then
+$\theta_{r\delta}B\le\theta^{(n)}_{r\delta}(B)$ for
+every $n$.   Now the point is that $\theta^{(n)}_{r\delta}(B)
+=\sup\{\theta^{(n)}_{r\delta}(I):I\subseteq B$ is finite$\}$.   \Prf\
+Set $\gamma=\sup_{I\in[B]^{<\omega}}\theta^{(n)}_{r\delta}(I)$.   Of
+course $\gamma\le\theta^{(n)}_{r\delta}(B)$.   If $\gamma=\infty$ there
+is nothing more to say.   Otherwise, take any $\gamma'>\gamma$.   For
+each $I\in[B]^{<\omega}$, we have a function $f_I:I\to\{0,\ldots,n\}$
+such that $\sum_{i\in J}\rho(x_i,y_i)^r\le\gamma'$ whenever
+$J\subseteq\{0,\ldots,n\}$ and $x_i$, $y_i\in I$ and
+$f_I(x_i)=f_I(y_i)=i$ for every $i\in J$, while $\rho(x,y)\le\delta$
+whenever $x$, $y\in I$ and $f_I(x)=f_I(y)$.   Let $\Cal F$ be an
+ultrafilter on $[B]^{<\omega}$ such that
+$\{I:x\in I\in[B]^{<\omega}\}\in\Cal F$ for every $x\in B$ (4A1Ia).
+Then for every $x\in B$ there is an $f(x)\in\{0,\ldots,n\}$ such that
+$\{I:x\in I\in[B]^{<\omega},\,f_I(x)=f(x)\}\in\Cal F$.   Set
+$D_i=f^{-1}[\{i\}]$ for $i\le n$.   If
+$x$, $y\in B$ and $f(x)=f(y)$, there is an $I\in[B]^{<\omega}$
+containing both $x$ and $y$ such that $f_I(x)=f(x)=f(y)=f_I(y)$, so that
+$\rho(x,y)\le\delta$;  thus $\diam D_i\le\delta$ for each $i$.   If
+$J\subseteq\{0,\ldots,n\}$ and
+for each $i\in J$ we take $x_i$, $y_i\in D_i$, then there is an
+$I\in[B]^{<\omega}$ such that $f_I(x_i)=f_I(y_i)=i$ for every $i\in J$,
+so $\sum_{i\in J}\rho(x_i,y_i)^r\le\gamma'$.   This means that
+$\sum_{i\le n}(\diam D_i)^r\le\gamma'$, so that
+$\theta^{(n)}_{r\delta}(B)\le\gamma'$.   As $\gamma'$ is arbitrary,
+$\theta^{(n)}_{r\delta}(B)\le\gamma$, as claimed.\ \Qed
+
+\medskip
+
+{\bf (b)} Now let us turn to the set $A$.
+Because $A$ is Souslin-F (422Ha), $\mu_{Hr}$ measures $A$ (471Da,
+471Dd).   Set
+$\gamma=\sup\{\mu_{Hr}K:K\subseteq A$ is compact$\}$.
+
+\Quer\ Suppose, if possible, that $\mu_{Hr}A>\gamma$.   Take
+$\gamma'\in\ooint{\gamma,\mu_{Hr}A}$.  Let $\delta>0$ be such that
+$\gamma'<\theta_{r\delta}A$.   Let $f:\NN\to A$ be a continuous
+surjection.   For
+$\sigma\in S=\bigcup_{n\in\Bbb N}\BbbN^n$, set
+
+\Centerline{$F_{\sigma}=\{\phi:\phi\in\NN$, $\phi(i)\le\sigma(i)$ for
+every $i<\#(\sigma)\}$,}
+
+\noindent so that $f[F_{\emptyset}]=A$.   Now choose $\psi\in\NN$ and
+a sequence $\sequencen{I_n}$ of finite subsets of $\NN$ inductively, as
+follows.   Given that $I_j\subseteq F_{\psi\restr n}$ for every $j<n$
+and that $\theta_{r\delta}(f[F_{\psi\restr n}])>\gamma'$, then
+$\theta^{(n)}_{r\delta}(f[F_{\psi\restr n}])>\gamma'$, so by (a) above
+there is a finite subset $I_n$ of $F_{\psi\restr n}$ such that
+$\theta^{(n)}_{r\delta}(f[I_n])\ge\gamma'$.   Next,
+
+$$\eqalignno{\lim_{i\to\infty}\theta_{r\delta}
+  f[F_{(\psi\restr n)^{\smallfrown}\fraction{i}}]
+&=\theta_{r\delta}
+  (\bigcup_{i\in\Bbb N}f[F_{(\psi\restr n)^{\smallfrown}\fraction{i}}])\cr
+\displaycause{by 471G}
+&=\theta_{r\delta}f[F_{\psi\restr n}]>\gamma',\cr}$$
+
+\noindent so we can take $\psi(n)$ such
+that $\bigcup_{j\le n}I_j\subseteq F_{\psi\restr n+1}$ and
+$\theta_{r\delta}f[F_{\psi\restr n+1}]>\gamma'$, and continue.
+
+At the end of the induction, set $K=\{\phi:\phi\le\psi\}$.   Then $f[K]$
+is a compact subset of $A$, and
+$I_n\subseteq K$ for every $n\in\Bbb N$, so
+
+\Centerline{$\theta^{(n)}_{r\delta}(f[K])
+\ge\theta^{(n)}_{r\delta}(f[I_n])\ge\gamma'$}
+
+\noindent for every $n\in\Bbb N$.   On the
+other hand, $\mu_{Hr}(f[K])\le\gamma$, so there is a sequence
+$\sequence{i}{D_i}$ of sets, covering $f[K]$, all of diameter less than
+$\delta$, such that $\sum_{i=0}^{\infty}(\diam D_i)^r<\gamma'$.
+Enlarging the $D_i$ slightly if need be, we may suppose that they are
+all open.   But in this case there is some finite $n$ such that
+$K\subseteq\bigcup_{i\le n}D_i$, and
+$\theta^{(n)}_{r\delta}(K)\le\sum_{i=0}^n(\diam D_i)^r<\gamma'$;  which
+is impossible.\ \Bang
+
+This contradiction shows that $\mu_{Hr}A=\gamma$, as required.
+}%end of proof of 471I
+
+\leader{471J}{Proposition} Let $(X,\rho)$ and $(Y,\sigma)$ be metric
+spaces, and $f:X\to Y$ a $\gamma$-Lipschitz function, where $\gamma\ge 0$.
+If $r>0$ and $\theta^{(X)}_r$,
+$\theta^{(Y)}_r$ are the $r$-dimensional Hausdorff outer measures on $X$
+and $Y$ respectively, then
+$\theta^{(Y)}_rf[A]\le\gamma^r\theta^{(X)}_rA$ for every $A\subseteq X$.
+
+\proof{ (Compare 264G.)  Let $\delta>0$.   Set
+$\eta=\delta/(1+\gamma)$ and consider
+$\theta^{(X)}_{r\eta}:\Cal PX\to[0,\infty]$, defined as in 471A.   We
+know that $\theta^{(X)}_rA\ge\theta^{(X)}_{r\eta}A$, so there is a
+sequence $\sequencen{D_n}$ of sets, all of
+diameter at most $\eta$, covering $A$, with
+$\sum_{n=0}^{\infty}(\diam D_n)^r\le\theta^{(X)}_rA+\delta$.
+Now $\phi[A]\subseteq\bigcup_{n\in\Bbb N}\phi[D_n]$ and
+
+\Centerline{$\diam\phi[D_n]
+\le\gamma\diam D_n\le\gamma\eta\le\delta$}
+
+\noindent for every $n$.   Consequently
+
+\Centerline{$\theta^{(Y)}_{r\delta}(\phi[A])
+\le\sum_{n=0}^{\infty}(\diam\phi[D_n])^r
+\le\sum_{n=0}^{\infty}\gamma^r(\diam D_n)^r
+\le\gamma^r(\theta_r^{(X)}A+\delta)$,}
+
+\noindent and
+
+\Centerline{$\theta^{(Y)}_r(\phi[A])
+=\lim_{\delta\downarrow 0}\theta^{(Y)}_{r\delta}(\phi[A])
+\le\gamma^r\theta_r^{(X)}A$,}
+
+\noindent as claimed.
+}%end of proof of 471J
+
+\leader{471K}{Lemma} Let $(X,\rho)$ be a metric space, and $r>0$.   Let
+$\mu_{Hr}$ be $r$-dimensional Hausdorff measure on $X$.   If
+$A\subseteq X$, then $\mu_{Hr}A=0$ iff for every $\epsilon>0$ there is a
+countable family $\Cal D$ of sets, covering $A$, such that
+$\sum_{D\in\Cal D}(\diam D)^r\le\epsilon$.
+
+\proof{ If $\mu_{Hr}A=0$ and $\epsilon>0$, then, in the language of
+471A, $\theta_{r1}A\le\epsilon$, so there is a sequence
+$\sequencen{D_n}$ of sets covering $A$ such that
+$\sum_{n=0}^{\infty}(\diam D_n)^r\le\epsilon$.
+
+If the condition is satisfied, then for any $\epsilon$, $\delta>0$ there
+is a countable family $\Cal D$ of sets, covering $A$, such that
+$\sum_{D\in\Cal D}(\diam D)^r\le\min(\epsilon,\delta^r)$.   If $\Cal D$
+is infinite, enumerate it as $\sequencen{D_n}$;  if it is finite,
+enumerate it as $\langle D_n\rangle_{n<m}$ and set $D_n=\emptyset$ for
+$n\ge m$.   Now $A\subseteq\bigcup_{n\in\Bbb N}D_n$ and
+$\diam D_n\le\delta$ for every $n\in\Bbb N$, so
+$\theta_{r\delta}A\le\sum_{n=0}^{\infty}(\diam D_n)^r\le\epsilon$.
+As $\epsilon$ is arbitrary, $\theta_{r\delta}A=0$;  as $\delta$ is
+arbitrary, $\theta_rA=0$;  it follows at once that $\mu_{Hr}A$ is
+defined and is zero (113Xa).
+}%end of proof of 471K
+
+\leader{471L}{Proposition} Let $(X,\rho)$ be a metric space and
+$0<r<s$.   If $A\subseteq X$ is such that $\mu^*_{Hr}A$ is finite, then
+$\mu_{Hs}A=0$.
+
+\proof{ Let $\epsilon>0$.   Let $\delta>0$ be such that
+$\delta^{s-r}(1+\mu^*_{Hr}A)\le\epsilon$.   Then there is a sequence
+$\sequencen{A_n}$ of sets of diameter at most $\delta$ such that
+$A\subseteq\bigcup_{n\in\Bbb N}A_n$ and
+$\sum_{n=0}^{\infty}(\diam A_n)^r\le 1+\mu^*_{Hr}A$.   But now, by the
+choice of $\delta$, $\sum_{n=0}^{\infty}(\diam A_n)^s\le\epsilon$.   As
+$\epsilon$ is arbitrary, $\mu_{Hs}A=0$, by 471K.
+}%end of proof of 471L
+
+\leader{471M}{}\cmmnt{ There is a generalization of the density
+theorems of \S\S223 and 261 for general Hausdorff measures, which (as
+one expects) depends on a kind of Vitali theorem.   I will use the
+following notation for the next few paragraphs.
+
+\medskip
+
+\noindent}{\bf Definition} If $(X,\rho)$ is a metric space and
+$A\subseteq X$, write $A^{\sim}$ for
+$\{x:x\in X,\,\rho(x,A)\le 2\diam A\}$, where
+$\rho(x,A)=\inf_{y\in A}\rho(x,y)$.   (\cmmnt{Following the
+conventions of 471A, }$\emptyset^{\sim}=\emptyset$.)
+
+\leader{471N}{Lemma} Let $(X,\rho)$ be a metric space.
+Let $\Cal F$ be a family of subsets of $X$ such that
+$\{\diam F:F\in\Cal F\}$ is bounded.   Set
+
+\Centerline{$Y
+=\bigcap_{\delta>0}\bigcup\{F:F\in\Cal F,\,\diam F\le\delta\}$.}
+
+\noindent Then there is a disjoint family $\Cal I\subseteq\Cal F$ such
+that
+
+(i) $\bigcup\Cal F\subseteq\bigcup_{F\in\Cal I}F^{\sim}$;
+
+(ii) $Y
+\subseteq\overline{\bigcup\Cal J}
+  \cup\bigcup_{F\in\Cal I\setminus\Cal J}F^{\sim}$
+for every $\Cal J\subseteq\Cal I$.
+
+\proof{{\bf (a)} Let $\gamma$ be an upper bound for
+$\{\diam F:F\in\Cal F\}$.   Choose
+$\sequencen{\Cal I_n}$, $\sequencen{\Cal J_n}$ inductively, as follows.
+$\Cal I_0=\emptyset$.   Given $\Cal I_n$, set
+$\Cal F_n'=\{F:F\in\Cal F,\,\diam F\ge 2^{-n}\gamma,\,
+F\cap\bigcup\Cal I_n=\emptyset\}$, and let $\Cal J_n\subseteq\Cal F'_n$
+be a maximal disjoint set;  now set $\Cal I_{n+1}=\Cal I_n\cup\Cal J_n$,
+and continue.
+
+At the end of the induction, set
+
+\Centerline{$\Cal I'=\bigcup_{n\in\Bbb N}\Cal I_n$,
+\quad$\Cal I
+=\Cal I'\cup\{\{x\}:x\in F\setminus\bigcup\Cal I',\,\{x\}\in\Cal F\}$.}
+
+\noindent The construction ensures that every $\Cal I_n$ is a disjoint
+subset of $\Cal F$, so $\Cal I'$ and $\Cal I$ are also disjoint
+subfamilies of $\Cal F$.
+
+\medskip
+
+{\bf (b)} \Quer\ Suppose, if possible, that there is a point $x$ in
+$\bigcup\Cal F\setminus\bigcup_{F\in\Cal I}F^{\sim}$.   Let $F\in\Cal F$
+be such that $x\in F$.   Since $x\notin\bigcup\Cal I'$ and
+$\{x\}\notin\Cal I$, $\{x\}\notin\Cal F$, and $\diam F>0$;  let
+$n\in\Bbb N$ be such that $2^{-n}\gamma\le\diam F\le 2^{-n+1}\gamma$.
+If $F\notin\Cal F'_n$, there is a $D\in\Cal I_n$ such that
+$F\cap D\ne\emptyset$;  otherwise, since $\Cal J_n$ is maximal and
+$F\notin\Cal J_n$, there is a $D\in\Cal J_n$ such that
+$F\cap D\ne\emptyset$.   In either case, we have a $D\in\Cal I$ such
+that $F\cap D\ne\emptyset$ and $\diam F\le 2\diam D$.   But in this case
+$\rho(x,D)\le\diam F\le 2\diam D$ and $x\in D^{\sim}$, which is
+impossible.\ \Bang
+
+\medskip
+
+{\bf (c)} \Quer\ Suppose, if possible, that there are a point $x\in Y$
+and a set $\Cal J\subseteq\Cal I$ such that
+$x\notin\overline{\bigcup\Cal J}
+  \cup\bigcup_{F\in\Cal I\setminus\Cal J}F^{\sim}$.   Then there is an
+$F\in\Cal F$ such that $x\in F$ and
+$\diam F<\rho(x,\bigcup\Cal J)$, so that
+$F\cap\bigcup\Cal J=\emptyset$.   As in (b), $F$ cannot be $\{x\}$, and
+there must be an $n\in\Bbb N$ such that
+$2^{-n}\gamma<\diam F\le 2^{-n+1}\gamma$.   As in (b), there must be a
+$D\in\Cal I_{n+1}$ such that $F\cap D\ne\emptyset$, so that
+$x\in D^{\sim}$;  and as $D$ cannot belong to $\Cal J$, we again have a
+contradiction.\ \Bang
+}%end of proof of 471N
+
+\leader{471O}{Lemma} Let $(X,\rho)$ be a metric space, and $r>0$.
+Suppose that $A$, $\Cal F$ are such that
+
+\inset{(i) $\Cal F$ is a family of closed subsets of $X$ such that
+$\sum_{n=0}^{\infty}(\diam F_n)^r$ is finite for every disjoint sequence
+$\sequencen{F_n}$ in $\Cal F$,
+
+(ii) for every $x\in A$, $\delta>0$ there is an $F\in\Cal F$ such that
+$x\in F$ and $0<\diam F\le\delta$.}
+
+\noindent Then there is a countable disjoint family
+$\Cal I\subseteq\Cal F$ such
+that $A\setminus\bigcup\Cal I$ has zero $r$-dimensional Hausdorff
+measure.
+
+\proof{ Replacing $\Cal F$ by $\{F:F\in\Cal F,\,0<\diam F\le 1\}$ if
+necessary, we may suppose that $\sup_{F\in\Cal F}\diam F$ is finite and
+that $\diam F>0$ for every $F\in\Cal F$.   Take a disjoint family
+$\Cal I\subseteq\Cal F$ as in 471N.   If $\Cal I$ is finite, then
+$A\subseteq Y\subseteq\bigcup\Cal I$, where $Y$ is defined as in 471N,
+so we can stop.   Otherwise, hypothesis (i) tells us that
+$\{F:F\in\Cal I,\,\diam F\ge\delta\}$ is finite for every $\delta>0$, so
+$\Cal I$ is countable;  enumerate it as $\sequencen{F_n}$;  we must have
+$\sum_{n=0}^{\infty}(\diam F_n)^r<\infty$.   Since
+$\diam F_n^{\sim}\le 5\diam F_n$ for every $n$,
+$\sum_{n=0}^{\infty}(\diam F_n^{\sim})^r$ is finite, and
+$\inf_{n\in\Bbb N}\sum_{i=n}^{\infty}(\diam F_i^{\sim})^r=0$.   But now
+observe that the construction ensures that
+$A\setminus\bigcup\Cal I\subseteq\bigcup_{i\ge n}F_i^{\sim}$ for every
+$n\in\Bbb N$.   By 471K, $\mu_{Hr}(A\setminus\bigcup\Cal I)=0$, as
+required.
+}%end of proof of 471O
+
+\leader{471P}{Theorem} Let $(X,\rho)$ be a metric space, and $r>0$.
+Let $\mu_{Hr}$ be $r$-dimensional Hausdorff measure on $X$.   Suppose
+that $A\subseteq X$ and $\mu_{Hr}^*A<\infty$.
+
+(a) $\lim_{\delta\downarrow 0}
+  \sup\{\Bover{\mu_{Hr}^*(A\cap D)}{(\diam D)^r}:
+    x\in D,\,0<\diam D\le\delta\}
+=1$ for $\mu_{Hr}$-almost every $x\in A$.
+
+(b) $\limsup_{\delta\downarrow 0}
+  \Bover{\mu_{Hr}^*(A\cap B(x,\delta))}{\delta^r}\ge 1$ for
+$\mu_{Hr}$-almost every $x\in A$.   So
+
+\Centerline{$2^{-r}
+\le\limsup_{\delta\downarrow 0}
+  \Bover{\mu_{Hr}^*(A\cap B(x,\delta))}{(\diam B(x,\delta))^r}
+\le 1$}
+
+\noindent for $\mu_{Hr}$-almost every $x\in A$.
+
+(c) If $A$ is measured by $\mu_{Hr}$, then
+
+\Centerline{$\lim_{\delta\downarrow 0}
+  \sup\{\Bover{\mu_{Hr}^*(A\cap D)}{(\diam D)^r}:
+    x\in D,\,0<\diam D\le\delta\}
+=0$}
+
+\noindent for $\mu_{Hr}$-almost every $x\in X\setminus A$.
+
+\proof{{\bf (a)(i)} Note first that as the quantities
+
+\Centerline{$\sup\{\Bover{\mu_{Hr}^*(A\cap D)}{(\diam D)^r}:
+x\in D,\,0<\diam D\le\delta\}$}
+
+\noindent decrease with $\delta$, the limit is defined in $[0,\infty]$
+for every $x\in X$.   Moreover, since $\diam D=\diam\overline{D}$ and
+$\mu_{Hr}^*(A\cap\overline{D})\ge\mu_{Hr}^*(A\cap D)$ for every $D$,
+
+$$\eqalign{&\sup\{\Bover{\mu_{Hr}^*(A\cap D)}{(\diam D)^r}:x
+\in D\subseteq X,\,0<\diam D\le\delta\}\cr
+&\qquad\qquad\qquad
+=\sup\{\Bover{\mu_{Hr}^*(A\cap F)}{(\diam F)^r}:
+    F\subseteq X\text{ is closed},\,x\in F,\,0<\diam F\le\delta\}\cr}$$
+
+\noindent for every $x$ and $\delta$.
+
+\medskip
+
+\quad{\bf (ii)} Fix $\epsilon$ for the moment, and set
+
+\Centerline{$A_{\epsilon}=\{x:x\in A,\,\lim_{\delta\downarrow 0}
+  \sup\{\Bover{\mu_{Hr}^*(A\cap D)}{(\diam D)^r}:
+    x\in D,\,0<\diam D\le\delta\}
+>1+\epsilon\}$.}
+
+\noindent Then $\theta_{r\eta}(A)
+\le\mu_{Hr}^*A-\Bover{\epsilon}{1+\epsilon}\mu^*_{Hr}A_{\epsilon}$ for
+every
+$\eta>0$, where $\theta_{r\eta}$ is defined in 471A.   \Prf\ Let
+$\Cal F$ be the family
+
+\Centerline{$\{F:F\subseteq X$ is closed, $0<\diam F\le\eta$,
+$(1+\epsilon)(\diam F)^r\le\mu_{Hr}^*(A\cap F)\}$.}
+
+\noindent Then every member of $A_{\epsilon}$ belongs to sets in
+$\Cal F$ of arbitrarily small diameter.   Also, if $\sequencen{F_n}$ is
+any disjoint sequence in $\Cal F$,
+
+\Centerline{$\sum_{n=0}^{\infty}(\diam F_n)^r
+\le\sum_{n=0}^{\infty}\mu^*_{Hr}(A\cap F_n)
+\le\mu^*_{Hr}A<\infty$}
+
+\noindent because every $F_n$, being closed, is measured by $\mu_{Hr}$.
+(If you like, $F_n\cap A$ is measured by the subspace measure on $A$ for
+every $n$.)   So 471O tells us that there is a countable disjoint family
+$\Cal I\subseteq\Cal F$ such that $A_{\epsilon}\setminus\bigcup\Cal I$
+is negligible, and
+$\mu_{Hr}^*A_{\epsilon}=\mu_{Hr}^*(A_{\epsilon}\cap\bigcup\Cal I)$.
+
+Because $\theta_{r\eta}$ is an outer measure and
+$\theta_{r\eta}\le\mu_{Hr}^*$,
+
+$$\eqalignno{\theta_{r\eta}A
+&\le\theta_{r\eta}(A\cap\bigcup\Cal I)
+  +\theta_{r\eta}(A\setminus\bigcup\Cal I)
+\le\sum_{F\in\Cal I}(\diam F)^r+\mu_{Hr}^*(A\setminus\bigcup\Cal I)\cr
+\displaycause{because $\Cal I$ is countable}
+&\le\Bover1{1+\epsilon}\mu_{Hr}^*(A\cap\bigcup\Cal I)
+  +\mu_{Hr}^*(A\setminus\bigcup\Cal I)
+=\mu_{Hr}^*A
+  -\Bover{\epsilon}{1+\epsilon}\mu_{Hr}^*(A\cap\bigcup\Cal I)\cr
+&\le\mu_{Hr}^*A-\Bover{\epsilon}{1+\epsilon}
+      \mu_{Hr}^*(A_{\epsilon}\cap\bigcup\Cal I)
+=\mu_{Hr}^*A
+  -\Bover{\epsilon}{1+\epsilon}\mu_{Hr}^*A_{\epsilon},\cr}$$
+
+\noindent as claimed.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} Taking the supremum as $\eta\downarrow 0$,
+$\mu_{Hr}^*A
+\le\mu_{Hr}^*A-\Bover{\epsilon}{1+\epsilon}\mu_{Hr}^*A_{\epsilon}$ and
+$\mu_{Hr}A_{\epsilon}=0$.
+
+\woddheader{471P}{0}{0}{0}{40pt}
+
+This is true for any $\epsilon>0$.   But
+
+\Centerline{$\{x:x\in A,\,\lim_{\delta\downarrow 0}
+  \sup\{\Bover{\mu_{Hr}^*(A\cap D)}{(\diam D)^r}:
+    x\in D,\,0<\diam D\le\delta\}
+>1\}$}
+
+\noindent is just $\bigcup_{n\in\Bbb N}A_{2^{-n}}$, so is negligible.
+
+\medskip
+
+\quad{\bf (iv)} Next, for $0<\epsilon\le 1$, set
+
+$$\eqalign{A'_{\epsilon}
+=\{x:x\in A,\,\mu_{Hr}^*(A\cap D)&\le(1-\epsilon)(\diam D)^r\cr
+&\text{ whenever }x\in D\text{ and }0<\diam D\le\epsilon\}.\cr}$$
+
+\noindent Then $A'_{\epsilon}$ is negligible.   \Prf\ Let
+$\sequencen{D_n}$ be any sequence of sets of diameter at most $\epsilon$
+covering $A'_{\epsilon}$.   Set
+$K=\{n:D_n\cap A'_{\epsilon}\ne\emptyset\}$.   Then
+
+$$\eqalign{\mu_{Hr}^*A'_{\epsilon}
+&\le\sum_{n\in K}\mu_{Hr}^*(A\cap D_n)\cr
+&\le(1-\epsilon)\sum_{n\in K}(\diam D_n)^r
+\le(1-\epsilon)\sum_{n=0}^{\infty}(\diam D_n)^r.\cr}$$
+
+\noindent As $\sequencen{D_n}$ is arbitrary,
+
+\Centerline{$\mu_{Hr}^*A'_{\epsilon}
+\le(1-\epsilon)\theta_{r\epsilon}A'_{\epsilon}
+\le(1-\epsilon)\mu_{Hr}^*A'_{\epsilon}$,}
+
+\noindent and $\mu_{Hr}^*A'_{\epsilon}$ (being finite) must be zero.\
+\Qed
+
+This means that
+
+\Centerline{$\{x:x\in A,\,\lim_{\delta\downarrow 0}
+  \sup\{\Bover{\mu_{Hr}^*(A\cap D)}{(\diam D)^r}:
+    x\in D,\,0<\diam D\le\delta\}<1\}
+\subseteq\bigcup_{n\in\Bbb N}A'_{2^{-n}}$}
+
+\noindent is also negligible, and we have the result.
+
+\medskip
+
+{\bf (b)} We need a slight modification of the argument in (a)(iv).
+This time, for $0<\epsilon\le 1$, set
+
+\Centerline{$\tilde A'_{\epsilon}
+=\{x:x\in A,\,\mu_{Hr}^*(A\cap B(x,\delta))\le(1-\epsilon)\delta^r$
+whenever $0<\delta\le\epsilon\}$.}
+
+\noindent Then $\mu_{Hr}^*\tilde A'_{\epsilon}\le\epsilon$.   \Prf\ Note
+first that, as $\mu_{Hr}\{x\}=0$ for every $x$,
+$\mu_{Hr}^*(A\cap B(x,\delta))\le(1-\epsilon)\delta^r$ whenever
+$x\in\tilde A'_{\epsilon}$ and $0\le\delta\le\epsilon$.   Let
+$\sequencen{D_n}$ be a sequence of sets of diameter at most $\epsilon$
+covering $\tilde A'_{\epsilon}$.   Set
+$K=\{n:D_n\cap\tilde A'_{\epsilon}\ne\emptyset\}$, and for $n\in K$
+choose $x_n\in D_n\cap\tilde A'_{\epsilon}$ and set
+$\delta_n=\diam D_n$.   Then
+$D_n\subseteq B(x_n,\delta_n)$ and $\delta_n\le\epsilon$ for each $n$,
+so $\tilde A'_{\epsilon}\subseteq\bigcup_{n\in K}B(x_n,\delta_n)$ and
+
+$$\eqalign{\mu_{Hr}^*\tilde A'_{\epsilon}
+&\le\sum_{n\in K}\mu_{Hr}^*(\tilde A'_{\epsilon}\cap B(x_n,\delta_n))\cr
+&\le\sum_{n\in K}(1-\epsilon)\delta_n^r
+\le(1-\epsilon)\sum_{n=0}^{\infty}(\diam D_n)^r.\cr}$$
+
+\noindent As $\sequencen{D_n}$ is arbitrary,
+$\mu_{Hr}^*\tilde A'_{\epsilon}
+\le(1-\epsilon)\mu_{Hr}^*\tilde A'_{\epsilon}$ and
+$\tilde A'_{\epsilon}$ must be negligible.\ \Qed
+
+Now
+
+\Centerline{$\{x:x\in A,\,\limsup_{\delta\downarrow 0}
+  \Bover{\mu_{Hr}^*(A\cap B(x,\delta))}{\delta^r}<1\}
+=\bigcup_{n\in\Bbb N}\tilde A'_{2^{-n}}$}
+
+\noindent is negligible.   As for the second formula, we need note only
+that $\diam B(x,\delta)\le 2\delta$ for every $x\in X$,
+$\delta>0$ to obtain the first inequality, and apply (a) to obtain the
+second.
+
+\medskip
+
+{\bf (c)} Let $\epsilon>0$.   This time, write $\tilde A_{\epsilon}$ for
+
+\Centerline{$\{x:x\in X,\,\lim_{\delta\downarrow 0}
+  \sup\{\Bover{\mu_{Hr}^*(A\cap D)}{(\diam D)^r}:
+    x\in D,\,0<\diam D\le\delta\}
+>\epsilon\}$.}
+
+\noindent Let $E\subseteq A$ be a closed set such that
+$\mu(A\setminus E)\le\epsilon^2$ (471De).   For $\eta>0$, let
+$\Cal F_{\eta}$ be the family
+
+\Centerline{$\{F:F\subseteq X\setminus E$ is closed, $0<\diam F\le\eta$,
+$\mu_{Hr}(A\cap F)\ge\epsilon(\diam F)^r\}$.}
+
+\noindent Just as in (a) above, every point in
+$\tilde A_{\epsilon}\setminus E$
+belongs to members of $\Cal F_{\eta}$ of arbitrarily small diameter.
+If $\familyiI{F_i}$ is a countable disjoint family in $\Cal F_{\eta}$,
+
+\Centerline{$\sum_{i\in I}(\diam F_i)^r
+\le\Bover1{\epsilon}\mu_{Hr}(A\setminus E)\le\epsilon$}
+
+\noindent is finite.   There is therefore a countable disjoint family
+$\Cal I_{\eta}\subseteq\Cal F_{\eta}$ such that
+$\mu_{Hr}((\tilde A_{\epsilon}\setminus E)
+  \setminus\bigcup\Cal I_{\eta})=0$.
+If $\theta_{r\eta}$ is the outer measure defined in 471A, we have
+
+$$\eqalign{\theta_{r\eta}(\tilde A_{\epsilon}\setminus A)
+&\le\theta_{r\eta}(\bigcup\Cal I_{\eta})
+  +\theta_{r\eta}(\tilde A_{\epsilon}
+      \setminus(E\cup\bigcup\Cal I_{\eta}))\cr
+&\le\sum_{F\in\Cal I_{\eta}}(\diam F)^r
+  +\mu_{Hr}^*(\tilde A_{\epsilon}\setminus(E\cup\bigcup\Cal I_{\eta}))
+\le\epsilon.\cr}$$
+
+\noindent As $\eta$ is arbitrary,
+$\mu_{Hr}^*(\tilde A_{\epsilon}\setminus A)\le\epsilon$.   But now
+
+\Centerline{$\{x:x\in X\setminus A,\,\lim_{\delta\downarrow 0}
+  \sup\{\Bover{\mu_{Hr}^*(A\cap D)}{(\diam D)^r}:
+    x\in D,\,0<\diam D\le\delta\}
+>0\}$}
+
+\noindent is $\bigcup_{n\in\Bbb N}\tilde A_{2^{-n}}\setminus A$, and is
+negligible.
+}%end of proof of 471P
+
+\leader{471Q}{}\cmmnt{ I now come to a remarkable fact about Hausdorff
+measures on analytic spaces:  their Borel versions are semi-finite
+(471S).   We need some new machinery.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $(X,\rho)$ be a metric space, and $r>0$,
+$\delta>0$.   Suppose that $\theta_{r\delta}X$, as defined in 471A, is
+finite.
+
+(a) There is a non-negative additive functional $\nu$ on $\Cal PX$ such
+that $\nu X=5^{-r}\theta_{r\delta}X$ and
+$\nu A\le(\diam A)^r$ whenever $A\subseteq X$ and
+$\diam A\le\bover15\delta$.
+
+(b) If $X$ is compact, there is a Radon measure $\mu$ on $X$ such that
+$\mu X=5^{-r}\theta_{r\delta}X$ and $\mu G\le(\diam G)^r$ whenever
+$G\subseteq X$ is open and $\diam G\le\bover15\delta$.
+
+\proof{{\bf (a)} I use 391E.   If $\theta_{r\delta}X=0$ the result is
+trivial.   Otherwise, set $\gamma=5^r/\theta_{r\delta}X$ and define
+$\phi:\Cal PX\to[0,1]$ by setting $\phi A=\min(1,\gamma(\diam A)^r)$ if
+$\diam A\le\bover15\delta$, $1$ for other $A\subseteq X$.   Now
+
+\inset{whenever $\familyiI{A_i}$ is a finite family of subsets of $X$,
+$m\in\Bbb N$ and $\sum_{i\in I}\chi A_i\ge m\chi X$,
+then $\sum_{i\in I}\phi A_i\ge m$.}
+
+\noindent\Prf\   Discarding any
+$A_i$ for which $\phi A_i=1$, if necessary, we may suppose that
+$\diam A_i\le\bover15\delta$ and $\phi A_i=\gamma(\diam A_i)^r$ for
+every $i$.   Choose
+$\langle I_j\rangle_{j\le m}$, $\langle J_j\rangle_{j<m}$ inductively,
+as follows.   $I_0=I$.   Given that $j<m$ and that $I_j\subseteq I$ is
+such that $\sum_{i\in I_j}\chi A_i\ge(m-j)\chi X$, apply 471N to
+$\{A_i:i\in I_j\}$ to find $J_j\subseteq I_j$ such that
+$\family{i}{J_j}{A_i}$ is disjoint and
+$\bigcup_{i\in I_j}A_i\subseteq\bigcup_{i\in J_j}A_j^{\sim}$.   Set
+$I_{j+1}=I_j\setminus J_j$.   Observe that
+$\sum_{i\in J_j}\chi A_j\le\chi X$, so
+$\sum_{i\in I_{j+1}}\chi A_i\ge(m-j-1)\chi X$ and the induction
+proceeds.
+
+Now note that, for each $j<m$, $\family{i}{J_j}{A_i^{\sim}}$ is a cover
+of $\bigcup_{i\in I_j}A_i=X$ by sets of diameter at most $\delta$.   So
+$\sum_{i\in J_j}(\diam A_i^{\sim})^r\ge\theta_{r\delta}X$ for each
+$j$, and $\sum_{i\in I}(\diam A_i^{\sim})^r\ge m\theta_{r\delta}X$.
+Accordingly
+
+$$\eqalign{\sum_{i\in I}\phi A_i
+&=\gamma\sum_{i\in I}(\diam A_i)^r
+\ge 5^{-r}\gamma\sum_{i\in I}(\diam A_i^{\sim})^r\cr
+&\ge 5^{-r}m\gamma\theta_{r\delta}X
+=m.  \text{ \Qed}\cr}$$
+
+By 391E, there is an additive functional $\nu_0:\Cal PX\to[0,1]$
+such that $\nu_0X=1$ and $\nu_0A\le\phi A$ for every $A\subseteq X$.
+Setting $\nu=5^{-r}\theta_{r\delta}X\nu_0$, we have the result.
+
+\medskip
+
+{\bf (b)} Now suppose that $X$ is compact.   By 416K, there is a Radon
+measure $\mu$ on $X$ such that $\mu K\ge\nu K$ for every compact
+$K\subseteq X$ and $\mu G\le\nu G$ for every open $G\subseteq X$.
+Because $X$ itself is compact, $\mu X=\nu X=5^{-r}\theta_{r\delta}X$.
+If $G$ is open and $\diam G\le\bover15\delta$,
+
+\Centerline{$\mu G\le\nu G\le(\diam G)^r$,}
+
+\noindent as required.
+}%end of proof of 471Q
+
+\leader{471R}{Lemma}\cmmnt{ ({\smc Howroyd 95})} Let $(X,\rho)$ be a
+compact metric space and $r>0$.   Let $\mu_{Hr}$ be $r$-dimensional
+Hausdorff measure on $X$.   If $\mu_{Hr}X>0$, there is a Borel set
+$H\subseteq X$ such that $0<\mu_{Hr}H<\infty$.
+
+\proof{{\bf (a)} Let $\delta>0$ be such that $\theta_{r,5\delta}(X)>0$,
+where $\theta_{r,5\delta}$ is defined as in 471A.   Then there is a
+family $\Cal V$ of open subsets of $X$ such that (i) $\diam V\le\delta$
+for every $V\in\Cal V$ (ii) $\{V:V\in\Cal V,\,\diam V\ge\epsilon\}$ is
+finite for every $\epsilon>0$ (iii) whenever $A\subseteq X$ and
+$0<\diam A<\bover14\delta$ there is a $V\in\Cal V$ such that
+$A\subseteq V$ and $\diam V\le 8\diam A$.   \Prf\ For each $k\in\Bbb N$,
+let $I_k$ be a finite subset of $X$ such that
+$X=\bigcup_{x\in I_k}B(x,2^{-k-2}\delta)$;  now set
+$\Cal V=\{U(x,2^{-k-1}\delta):k\in\Bbb N,\,x\in I_k\}$.   Then $\Cal V$
+is a family of open
+sets and (i) and (ii) are satisfied.   If $A\subseteq X$ and
+$0<\diam A<\bover14\delta$, let $k\in\Bbb N$ be such that
+$2^{-k-3}\delta\le\diam A<2^{-k-2}\delta$.   Take $x\in I_k$ such that
+$B(x,2^{-k-2}\delta)\cap A\ne\emptyset$;  then
+$A\subseteq U(x,2^{-k-1}\delta)\in\Cal V$ and
+$\diam U(x,2^{-k-1}\delta)\le 2^{-k}\delta\le 8\diam A$.\ \Qed
+
+In particular, $\{V:V\in\Cal V,\,\diam V\le\epsilon\}$ covers $X$ for
+every $\epsilon>0$.
+
+\medskip
+
+{\bf (b)} Set
+
+\Centerline{$P=\{\mu:\mu$ is a Radon measure on $X$,
+$\mu V\le(\diam V)^r$ for every $V\in\Cal V\}$.}
+
+\noindent $P$ is non-empty (it contains the zero measure, for instance).
+Now if $G\subseteq X$ is open,
+$\mu\mapsto\mu G$ is lower semi-continuous for the narrow topology
+(437Jd), so $P$ is a closed set in the narrow topology on the set of
+Radon measures on
+$X$, which may be identified with a subset of $C(X)^*$ with its
+weak* topology (437Kc).   Moreover, since there is a finite subfamily of
+$\Cal V$ covering
+$X$, $\gamma=\sup\{\mu X:\mu\in P\}$ is finite, and $P$ is compact
+(437Pb/437Rf).   Because $\mu\mapsto\mu X$ is continuous,
+$P_0=\{\mu:\mu\in P,\,\mu X=\gamma\}$ is non-empty.   Of course $P$ and
+$P_0$ are both convex, and $P_0$, like $P$, is compact.   By
+the \Krein-Mil'man theorem (4A4Gb), applied in $C(X)^*$, $P$ has an
+extreme point $\nu$ say.
+
+Note next that $\theta_{r,5\delta}(X)$ is certainly finite, again
+because $X$ is compact.   By 471Qb, $\gamma>0$, and $\nu$ is
+non-trivial.   For any $\epsilon>0$, there is a finite cover of $X$ by
+sets in $\Cal V$ of diameter at most $\epsilon$, which have measure at
+most $\epsilon^r$ (for $\nu$);  so $\nu$ is atomless.   In particular,
+$\nu\{x\}=0$ for every $x\in X$.
+
+\medskip
+
+{\bf (c)} For $\epsilon>0$, set
+
+\Centerline{$G_{\epsilon}
+=\bigcup\{V:V\in\Cal V,\,0<\diam V\le\epsilon$ and
+  $\nu V\ge\bover12(\diam V)^r\}$.}
+
+\noindent Then $G_{\epsilon}$ is $\nu$-conegligible.  \Prf\Quer\
+Otherwise, $\nu(X\setminus G_{\epsilon})>0$.   Because
+$\Cal V'_{\epsilon}=\{V:V\in\Cal V,\,\diam V>\epsilon\}$ is finite,
+there is a Borel set $E\subseteq X\setminus G_{\epsilon}$ such that
+$\nu E>0$ and, for every $V\in\Cal V'_{\epsilon}$, either $E\subseteq V$
+or $E\cap V=\emptyset$.   Because $\nu$ is atomless, there is a
+measurable set
+$E_0\subseteq E$ such that $\nu E_0=\bover12\nu E$ (215D);  set
+$E_1=E\setminus E_0$.
+
+Define Radon measures $\nu_0$, $\nu_1$ on $X$ by setting
+
+\Centerline{$\nu_i(F)=2\nu(F\cap E_i)+\nu(F\setminus E)$}
+
+\noindent whenever $\nu$ measures $F\setminus E_{1-i}$, for each $i$
+(use 416S if you feel the need to check that this defines a Radon
+measure on the definitions of this book).   If $V\in\Cal V$, then, by
+the choice of $E$,
+
+\inset{{\it either} $E\subseteq V$ and $\nu_iV=\nu V\le(\diam V)^r$
+
+{\it or} $E\cap V=\emptyset$ and $\nu_iV=\nu V\le(\diam V)^r$
+
+{\it or} $0<\diam V\le\epsilon$ and $\nu V<\bover12(\diam V)^r$, in
+which case $\nu_iV\le 2\nu V\le(\diam V)^r$
+
+{\it or} $\diam V=0$ and $\nu_iV=\nu V=0=(\diam V)^r$.}
+
+\noindent So both $\nu_i$ belong to $P$ and therefore to $P_0$, since
+$\nu_iX=\nu X=\gamma$.   But $\nu=\bover12(\nu_0+\nu_1)$ and
+$\nu_0\ne\nu_1$, so this is impossible, because $\nu$ is supposed to be
+an extreme point of $P_0$.\ \Bang\Qed
+
+\medskip
+
+{\bf (d)} Accordingly, setting $H=\bigcap_{n\in\Bbb N}G_{2^{-n}}$,
+$\nu H=\nu X=\gamma$.   Now examine $\mu_{Hr}H$.
+
+\medskip
+
+\quad{\bf (i)} $\mu_{Hr}H\ge 8^{-r}\gamma$.   \Prf\ Let
+$\sequencen{A_n}$ be a sequence of sets covering $H$ with
+$\diam A_n\le\bover18\delta$ for every $n$.   Set $K=\{n:\diam A_n>0\}$,
+$H'=H\cap\bigcup_{n\in K}A_n$;  then $H\setminus H'$ is countable, so
+$\nu H'=\nu H$.   For each $n\in K$, let $V_n\in\Cal V$ be such that
+$A_n\subseteq V_n$ and $\diam V_n\le 8\diam A_n$ ((a) above).   Then
+
+$$\eqalignno{\sum_{n=0}^{\infty}(\diam A_n)^r
+&=\sum_{n\in K}(\diam A_n)^r
+\ge 8^{-r}\sum_{n\in K}(\diam V_n)^r\cr
+&\ge 8^{-r}\sum_{n\in K}\nu V_n
+\ge 8^{-r}\nu H'
+=8^{-r}\gamma.\cr}$$
+
+\noindent As $\sequencen{A_n}$ is arbitrary,
+
+\Centerline{$8^{-r}\gamma\le\theta_{r,\delta/8}(H)\le\mu_{Hr}^*H
+=\mu_{Hr}H$.  \Qed}
+
+\medskip
+
+\quad{\bf (ii)} $\mu_{Hr}H\le 2\gamma$.   \Prf\ Let $\eta>0$.   Set
+$\Cal F=\{\overline{V}:V\in\Cal V,\,0<\diam V\le\eta,\,
+\nu V\ge\bover12(\diam V)^r\}$.   Then $\Cal F$ is a family of closed
+subsets of $X$, and (by the definition of $G_{\epsilon}$) every member
+of $H$ belongs to members of $\Cal F$ of arbitrarily small diameter.
+Also $\nu F\ge\bover12(\diam F)^r$ for every $F\in\Cal F$, so
+
+\Centerline{$\sum_{n=0}^{\infty}(\diam F_n)^r
+\le 2\sum_{n=0}^{\infty}\nu F_n<\infty$}
+
+\noindent for any disjoint sequence $\sequencen{F_n}$ in $\Cal F$.
+By 471O, there is a countable disjoint family $\Cal I\subseteq\Cal F$
+such that $\mu_{Hr}(H\setminus\bigcup\Cal I)=0$.   Accordingly
+
+\Centerline{$\theta_{r\eta}(H)
+\le\sum_{F\in\Cal I}(\diam F)^r+\theta_{r\eta}(H\setminus\bigcup\Cal I)
+\le\sum_{F\in\Cal I}2\nu F
+\le 2\gamma$.}
+
+\noindent As $\eta$ is arbitrary, $\mu_{Hr}H=\mu_{Hr}^*H\le 2\gamma$.\
+\Qed
+
+\medskip
+
+{\bf (e)} But this means that we have found a Borel set $H$ with
+$0<\mu_{Hr}H<\infty$, as required.
+}%end of proof of 471R
+
+\leader{471S}{Theorem}\cmmnt{ ({\smc Howroyd 95})} Let $(X,\rho)$ be
+an analytic metric space, and $r>0$.   Let
+$\mu_{Hr}$ be $r$-dimensional Hausdorff measure on $X$, and $\Cal B$ the
+Borel $\sigma$-algebra of $X$.   Then the Borel measure
+$\mu_{Hr}\restr\Cal B$ is semi-finite and tight\cmmnt{ (that is, inner
+regular with respect to the closed compact sets)}.
+
+\proof{ Suppose that $E\in\Cal B$ and $\mu_{Hr}E>0$.   Since
+$E$ is analytic (423Eb), 471I above tells us that there is a compact set
+$K\subseteq E$ such that $\mu_{Hr}K>0$.   Next, by 471R, there is
+a Borel set $H\subseteq K$ such that $0<\mu_{Hr}H<\infty$.   (Strictly
+speaking, $\mu_{Hr}H$ here should be calculated as the $r$-dimensional
+Hausdorff measure of $H$ defined by the subspace metric
+$\rho\restr K\times K$ on $K$.   By 471E we do not need to distinguish
+between this and the $r$-dimensional measure calculated from $\rho$
+itself.)   By 471I again (applied to the subspace metric on $H$), there
+is a compact set $L\subseteq H$ such that $\mu_{Hr}L>0$.
+
+Thus $E$ includes a non-negligible compact set of finite measure.   As
+$E$ is arbitrary, this is enough to show both that
+$\mu_{Hr}\restr\Cal B$ is semi-finite and that it is tight.
+}%end of proof of 471S
+
+\leader{471T}{Proposition} Let $(X,\rho)$ be a metric space, and $r>0$.
+
+(a) If $X$ is analytic and
+$\mu_{Hr}X>0$, then for every $s\in\ooint{0,r}$
+there is a non-zero Radon measure $\mu$ on $X$ such that
+$\biggeriint\Bover1{\rho(x,y)^s}\mu(dx)\mu(dy)<\infty$.
+
+(b) If there is a non-zero topological measure $\mu$ on $X$ such that
+$\biggeriint\Bover1{\rho(x,y)^r}\mu(dx)\mu(dy)$ is finite, then
+$\mu_{Hr}X=\infty$.
+
+\proof{{\bf (a)} By 471S, there is a compact set $K\subseteq X$ such that
+$\mu_{Hr}K>0$.   Set $\delta=5\diam K$ and define $\theta_{r\delta}$ as in
+471A.  Then $\theta_{r\delta}K>0$, by 471K, and
+$\theta_{r\delta}K\le(\diam K)^r<\infty$.   By 471Qb, there is
+a Radon measure $\nu$ on $K$ such that $\nu K>0$ and $\nu G\le(\diam G)^r$
+whenever $G\subseteq K$ is relatively
+open;  consequently $\nu^*A\le(\diam A)^r$ for
+every $A\subseteq K$.   Now, for any $y\in X$,
+
+$$\eqalign{\int_K\Bover1{\rho(x,y)^s}\nu(dx)
+&=\int_0^{\infty}\nu\{x:x\in K,\,\Bover1{\rho(x,y)^s}\ge t\}dt
+=\int_0^{\infty}\nu\{x:x\in K,\,\rho(x,y)\le\Bover1{t^{1/s}}\}dt\cr
+&=\int_0^{\infty}\nu(K\cap B(y,\Bover1{t^{1/s}}))dt
+\le\int_0^{\infty}(\diam(K\cap B(y,\Bover1{t^{1/s}})))^rdt\cr
+&\le\int_0^{\infty}(\min(\diam K,\Bover2{t^{1/s}}))^rdt
+\le 2^r\int_0^{\infty}\min((\diam K)^r,\Bover1{t^{r/s}})dt
+<\infty\cr}$$
+
+\noindent because $r>s$.   It follows at once that
+$\int_K\int_K\Bover1{\rho(x,y)^s}\nu(dx)\nu(dy)$ is finite.   Taking $\mu$
+to be the extension of $\nu$ to a Radon measure on $X$ for which
+$X\setminus K$ is negligible, we have an appropriate $\mu$.
+
+\medskip
+
+{\bf (b)(i)} We can suppose that $X$ is separable (471Df).
+Since the integrand
+is strictly positive, $\mu$ must be $\sigma$-finite, so that
+there is no difficulty with the repeated integral.   Replacing $\mu$ by
+$\mu\LLcorner F$ for some set $F$ of non-zero finite measure, we can
+suppose that $\mu$ is totally finite;  and replacing $\mu$ by a scalar
+multiple of itself, we can suppose that it is a probability measure.
+
+\medskip
+
+\quad{\bf (ii)} Let $\epsilon>0$.   Let $H$ be the conegligible set
+$\{y:\biggerint\Bover1{\rho(x,y)^r}\mu(dx)<\infty\}$.
+For any $y\in X$, $\mu\{y\}=0$, so
+
+\Centerline{$\lim_{\delta\downarrow 0}
+\int_{B(y,\delta)}\Bover1{\rho(x,y)^r}\mu(dx)=0$}
+
+\noindent for every $y\in H$.   For each $\delta>0$,
+
+\Centerline{$(x,y)\mapsto\Bover{\chi B(y,\delta)(x)}{\rho(x,y)^r}:
+X\times X\to[0,\infty]$}
+
+\noindent is Borel measurable, so
+
+\Centerline{$y\mapsto\int_{B(y,\delta)}\Bover1{\rho(x,y)^r}\mu(dx):
+X\to[0,\infty]$}
+
+\noindent is Borel measurable (252P, applied to the restriction of $\mu$ to
+the Borel $\sigma$-algebra of $X$).   There is therefore a $\delta>0$ such
+that $E=\{y:y\in H$,
+$\biggerint_{B(y,\delta)}\Bover1{\rho(x,y)^r}\mu(dy)\le\epsilon\}$ has
+measure
+$\mu E\ge\bover12$.   Note that if $C\subseteq X$ has diameter less than or
+equal to $\delta$ and meets $E$ then
+$\mu\overline{C}\le\epsilon(\diam C)^r$.   \Prf\ Set $\gamma=\diam C$ and
+take $y\in C\cap E$.   If $C=\{y\}$ then $\mu\overline{C}=0$.   Otherwise,
+
+\Centerline{$\mu\overline{C}
+\le\mu B(y,\gamma)
+\le\gamma^r\int_{B(y,\delta)}\Bover1{\rho(x,y)^r}\mu(dx)
+\le\gamma^r\epsilon$.  \Qed}
+
+Now suppose that $E\subseteq\bigcup_{i\in I}C_i$ where
+$\diam C_i\le\delta$ for every $i$, and each $C_i$ is either empty or meets
+$E$.   Then
+
+\Centerline{$\Bover12\le\mu E\le\sum_{i=0}^{\infty}\mu\overline{C}_i
+\le\sum_{i=0}^{\infty}\epsilon(\diam C_i)^r$.}
+
+\noindent As $\sequence{i}{C_i}$ is arbitrary,
+$\epsilon\mu_{Hr}E\ge\Bover12$ and $\mu_{Hr}X\ge\Bover1{2\epsilon}$.
+As $\epsilon$ is arbitrary, $\mu_{Hr}X=\infty$.
+}%end of proof of 471T
+
+\exercises{\leader{471X}{Basic exercises (a)}
+%\spheader 471Xa
+Define a metric $\rho$ on $X=\{0,1\}^{\Bbb N}$ by
+setting $\rho(x,y)=2^{-n}$ if $x\restr n=y\restr n$ and $x(n)\ne y(n)$.
+Show that the usual measure $\mu$ on $X$ is one-dimensional Hausdorff
+measure.   \Hint{$\diam F\ge\mu F$ for every closed set $F\subseteq X$.}
+%471A
+
+\spheader 471Xb Let $(X,\rho)$ be a metric space and $r>0$;  let
+$\mu_{Hr}$, $\theta_{r\infty}$ be $r$-dimensional Hausdorff measure and
+capacity on $X$.   (i) Show that, for $A\subseteq X$, $\mu_{Hr}A=0$ iff
+$\theta_{r\infty}A=0$.   (ii)  Suppose that $E\subseteq X$ and
+$\delta>0$ are such that
+$\delta\mu_{Hr}E<\theta_{r\infty}E$.   Show that there is a closed set
+$F\subseteq E$ such that $\mu_{Hr}F>0$ and
+$\delta\mu_{Hr}(F\cap G)\le(\diam G)^r$ whenever $\mu_{Hr}$ measures
+$G$.   \Hint{show that
+$\{G^{\ssbullet}:\theta_{r\infty}G<\delta\mu_{Hr}G\}$ cannot
+be order-dense in the measure algebra of $\mu_{Hr}$.   This is a version
+of `Frostman's Lemma'.}   (iii) Let $\Cal C$ be the family of closed
+subsets of $X$, with its Vietoris topology.
+Show that $\theta_{r\infty}\restr\Cal C$ is upper semi-continuous.
+%471H
+
+\spheader 471Xc Let $(X,\rho)$ be an analytic metric space, $(Y,\sigma)$
+a metric space, and $f:X\to Y$ a Lipschitz function.   Show that if $r>0$
+and $A\subseteq X$ is measured by Hausdorff $r$-dimensional measure on
+$X$, with finite measure, then $f[A]$ is measured by Hausdorff
+$r$-dimensional measure on $Y$.
+%471J
+
+\spheader 471Xd Let $(X,\rho)$ be a metric space and $r>0$.   Show that
+a set $A\subseteq X$ is negligible for Hausdorff $r$-dimensional measure
+on $X$ iff there is a sequence $\sequencen{A_n}$ of subsets of $X$ such
+that $\sum_{n=0}^{\infty}(\diam A_n)^r$ is finite and
+$A\subseteq\bigcap_{n\in\Bbb N}\bigcup_{m\ge n}A_m$.
+%471K
+
+\spheader 471Xe Let $(X,\rho)$ be a metric space.   (i) Show that there
+is a unique $\dim_H(X)\in[0,\infty]$ such that the $r$-dimensional
+Hausdorff measure of $X$ is infinite if $0<r<\dim_H(X)$, zero if
+$r>\dim_H(X)$.   ($\dim_H(X)$ is the {\bf Hausdorff dimension} of $X$.)
+(ii) Show that if $\sequencen{A_n}$ is any sequence of subsets of $X$,
+then $\dim_H(\bigcup_{n\in\Bbb N}A_n)=\sup_{n\in\Bbb N}\dim_H(A_n)$.
+%471L
+
+\spheader 471Xf Let $(X,\rho)$ be a metric space, and $\mu$ any
+topological measure on $X$.   Suppose that $E\subseteq X$ and that
+$\mu E$ is defined and finite.   (i) Show that
+$(x,\delta)\mapsto\mu(E\cap B(x,\delta)):
+X\times\coint{0,\infty}\to\Bbb R$ is upper semi-continuous.  (ii) Show
+that $x\mapsto\limsup_{\delta\downarrow 0}
+\Bover1{\delta^r}\mu(E\cap B(x,\delta)):X\to[0,\infty]$ is Borel
+measurable, for every $r\ge 0$.   (iii) Show that if $X$ is separable,
+then
+$\mu B(x,\delta)>0$ for every $\delta>0$, for almost every $x\in X$.
+%471P
+
+\spheader 471Xg Give $\Bbb R$ its usual metric.   Let $C\subseteq\Bbb R$
+be the Cantor set, and $r=\ln 2/\ln 3$.   Show that
+
+\Centerline{$\liminf_{\delta\downarrow 0}
+  \Bover{\mu_{Hr}(C\cap B(x,\delta))}{(\diam B(x,\delta))^r}
+\le 2^{-r}$}
+
+\noindent for every $x\in\Bbb R$.
+%471P
+
+\spheader 471Xh Let $(X,\rho)$ be a metric space and $r>0$.   Let
+$\mu_{Hr}$ be $r$-dimensional Hausdorff measure on $X$ and
+$\tilde\mu_{Hr}$ its c.l.d.\ version (213D-213E).   Show that
+$\tilde\mu_{Hr}$ is inner regular with respect to the closed sets, and
+that $\tilde\mu_{Hr}A=\mu_{Hr}A$ for every analytic set $A\subseteq X$.
+%471D, 471Q
+
+\spheader 471Xi Suppose that $g:\Bbb R\to\Bbb R$ is continuous and
+non-decreasing,
+and that $\nu$ is the corresponding Lebesgue-Stieltjes measure
+(114Xa).   Define $\rho(x,y)=|x-y|+\sqrt{|g(x)-g(y)|}$ for $x$, $y\in\Bbb R$.
+Show that $\rho$ is a metric on $\Bbb R$ defining the usual topology.   Show that $\nu$ is $2$-dimensional Hausdorff measure for the metric $\rho$.
+%471A
+
+\leader{471Y}{Further exercises (a)}
+%\spheader 471Ya
+The next few exercises (down to 471Yd) will be based on the
+following.    Let $(X,\rho)$ be a metric space and
+$\psi:\Cal PX\to[0,\infty]$ a function such that $\psi\emptyset=0$ and
+$\psi A\le\psi A'$ whenever $A\subseteq A'\subseteq X$.   Set
+
+$$\eqalign{\theta_{\psi\delta}A
+=\inf\{\sum_{n=0}^{\infty}\psi D_n:\sequencen{D_n}
+&\text{ is a sequence of subsets of }X\text{ covering }A,\cr
+&\qquad\qquad\qquad\quad
+  \diam D_n\le\delta\text{ for every }n\in\Bbb N\}\cr}$$
+
+\noindent for $\delta>0$, and
+$\theta_{\psi}A=\sup_{\delta>0}\theta_{\psi\delta}A$ for $A\subseteq X$
+Show that $\theta_{\psi}$ is a metric outer measure.   Let
+$\mu_{\psi}$ be the measure defined from $\theta_{\psi}$ by
+\Caratheodory's method.
+%471A
+
+\spheader 471Yb Suppose that
+$\psi A=\inf\{\psi E:E$ is a Borel set including $A\}$ for every
+$A\subseteq X$.   Show that $\theta_{\psi}=\mu_{\psi}^*$ and that
+$\mu_{\psi}E=\sup\{\mu_{\psi}F:F\subseteq E$ is closed$\}$ whenever
+$\mu_{\psi}E<\infty$.
+%471D, 471Ya
+
+\spheader 471Yc Suppose that $X$ is separable and that there is a
+$\beta\ge 0$ such that
+$\psi A^{\sim}\le\beta\psi A$ for every $A\subseteq X$, where
+$A^{\sim}$ is defined in 471M.   (i) Suppose that $A\subseteq X$ and
+$\Cal F$ is a family of closed subsets of $X$ such that
+$\sum_{n=0}^{\infty}\psi F_n$ is finite for every disjoint sequence
+$\sequencen{F_n}$ in $\Cal F$ and for every $x\in A$, $\delta>0$ there
+is an $F\in\Cal F$ such that $x\in F$ and $0<\diam F\le\delta$.   Show
+that there is a disjoint family $\Cal I\subseteq\Cal F$ such that
+$\mu_{\psi}(A\setminus\bigcup\Cal I)=0$.   (ii) Suppose that $\delta>0$
+and that $\theta_{\psi\delta}(X)<\infty$.   Show that there is a
+non-negative additive functional $\nu$ on $\Cal PX$ such that
+$\nu X=\bover1{\beta}\theta_{\psi\delta}(X)$ and $\nu A\le\psi A$
+whenever $A\subseteq X$ and $\diam A\le\bover15\delta$.
+(iii) Now suppose that for every $x\in X$, $\epsilon>0$ there is a
+$\delta>0$ such that $\psi B(x,\delta)\le\epsilon$.
+Show that if $X$ is compact and $\mu_{\psi}X>0$ there is a
+compact set $K\subseteq X$ such that $0<\mu_{\psi}K<\infty$.
+%471O, 471Q, 471R, 471Ya  mt43bits
+
+\spheader 471Yd State and prove a version of 471P appropriate to this
+context.
+%471P, 471Ya, 471Yc
+
+\spheader 471Ye Give an example of a set $A\subseteq\BbbR^2$ which is
+measured by Hausdorff 1-dimensional measure on $\BbbR^2$ but is such
+that its projection onto the first coordinate is not measured by
+Hausdorff 1-dimensional measure on $\Bbb R$.
+%471Xc, 471J
+
+\spheader 471Yf Show that the space $(X,\rho)$ of 471Xa can be
+isometrically embedded
+as a subset of a metric space $(Y,\sigma)$ in such a way that (i)
+$\diam B(y,\delta)=2\delta$ for every $y\in Y$ and $\delta\ge 0$ (ii)
+$Y\setminus X$ is countable.   Show that if $\mu_{H1}$ is
+one-dimensional Hausdorff measure on $Y$, then
+$\mu_{H1}B(y,\delta)\le\delta$ for every $y\in Y$ and $\delta\ge 0$, so
+that
+
+\Centerline{$\limsup_{\delta\downarrow 0}
+  \Bover{\mu_{H1}B(y,\delta)}{\diam B(x,\delta)}
+=\Bover12$}
+
+\noindent for every $y\in Y$.
+%471P
+
+\spheader 471Yg Let $\sequencen{k_n}$ be a sequence in
+$\Bbb N\setminus \{0,1,2,3\}$ such that
+$\sum_{n=0}^{\infty}\Bover1{k_n}<\infty$.   Set
+$X=\prod_{n\in\Bbb N}k_n$.
+% (regarding each $k_n$ as the set of its predecessors).   %471G
+Set $m_0=1$, $m_{n+1}=k_0k_1\ldots k_n$ for
+$n\in\Bbb N$.   Define a metric $\rho$ on $X$ by saying that
+
+$$\eqalign{\rho(x,y)
+&=1/2m_n\text{ if }n=\min\{i:x(i)\ne y(i)\}
+  \text{ and }\min(x(n),y(n))=0,\cr
+&=1/m_n\text{ if }n=\min\{i:x(i)\ne y(i)\}
+  \text{ and }\min(x(n),y(n))>0.\cr}$$
+
+\noindent Let $\nu$ be the product measure on $X$ obtained by giving
+each factor $k_n$ the uniform probability measure in which each
+singleton set has measure $1/k_n$.   (i) Show that if $A\subseteq X$
+then $\nu^*A\le\diam A$.   (ii) Show that $\nu$ is one-dimensional
+Hausdorff measure on $X$.   (iii) Set
+$E=\bigcup_{n\in\Bbb N}\{x:x\in X,\,x(n)=0\}$.   Show that $\nu E<1$.
+(iv) Show that
+
+\Centerline{$\limsup_{\delta\downarrow 0}
+\Bover{\nu(E\cap B(x,\delta))}{\nu B(x,\delta)}\ge\Bover12$}
+
+\noindent for every $x\in X$.   (v) Show that there is a family $\Cal F$
+of closed balls in $X$ such that every point of $X$ is the centre of
+arbitrarily small members of $\Cal F$, but $\nu(\bigcup\Cal I)<1$ for
+any disjoint subfamily $\Cal I$ of $\Cal F$.
+%471P   mt43bits
+
+\spheader 471Yh Let $\rho$ be the metric on $\{0,1\}^{\Bbb N}$ defined
+in 471Xa.
+Show that for any integer $s\ge 1$ there is a bijection
+$f:[0,1]^s\to\{0,1\}^{\Bbb N}$ such that whenever $0<r\le s$,
+$\mu^*_{Hr}$ is Hausdorff $r$-dimensional
+outer measure on $[0,1]^s$ (for its usual metric) and
+$\tilde\mu^*_{H,r/s}$ is Hausdorff $\bover{r}{s}$-dimensional measure on
+$\{0,1\}^{\omega}$, then there is an
+$\alpha>0$ such that
+$\mu_{Hr}^*f^{-1}[A]\le\mu^*_{H,r/s}A\le\alpha\mu_{Hr}^*f^{-1}[A]$
+for every $A\subseteq\{0,1\}^{\Bbb N}$.
+%+
+
+\spheader 471Yi Let $(X,\rho)$ be a metric space, and $r>0$;  let $s\ge
+1$ be an integer.   Write $\mu_{Hr}^{(X)}$ and
+$\mu_{H,r+s}^{(X\times\BbbR^s)}$ for
+Hausdorff $r$-dimensional measure on $X$ and Hausdorff $(r+s)$-dimensional
+measure on $X\times\BbbR^s$ respectively, and $\mu_{Ls}$ for Lebesgue
+measure on $\BbbR^s$.
+(i) Show that there are non-zero constants $c$, $c'$ such that
+$c\mu_{H,r+s}^{(X\times\BbbR^s)}(E\times F)
+\le\mu_{Hr}^{(X)}(E)\cdot\mu_{Ls}(F)
+\le c'\mu_{H,r+s}^{(X\times\BbbR^s)}(E\times F)$ for all Borel
+sets $E\subseteq X$, $F\subseteq\BbbR^s$.   \Hint{{\smc Federer 69},
+2.10.45.}   (ii) Write $\lambda$ for the c.l.d.\ product of
+$\mu_{Hr}^{(X)}$ and $\mu_{Ls}$, and
+$\tilde\mu_{H,r+s}^{(X\times\BbbR^s)}$ for the c.l.d.\ version of
+$\mu_{H,r+s}^{(X\times\BbbR^s)}$.   Show that these have the same domain
+$\Lambda$ and that
+$c\tilde\mu_{H,r+s}^{(X\times\BbbR^s)}(W)\le\lambda W\le
+c'\tilde\mu_{H,r+s}^{(X\times\BbbR^s)}(W)$ for every $W\in\Lambda$.
+%+
+
+\spheader 471Yj Let $(X,\rho)$ be a metric space and $0\le s<t$.
+Suppose that there is an analytic set $A\subseteq X$ such that
+$\mu_{Ht}A>0$.
+Show that there is a Borel surjection $f:X\to\Bbb R$ such that
+$\mu_{Hs}f^{-1}[\{\alpha\}]\ge 1$ for every $\alpha\in\Bbb R$.
+%471S
+
+\spheader 471Yk Let $(X,\rho)$ be a separable metric space and
+$r>0$.   Suppose that there is an atomless Borel probability measure $\mu$
+on $X$ such that $\iint\Bover1{\rho(x,y)^r}\mu(dx)\mu(dy)$ is finite.
+Show that $X$ has infinite $r$-dimensional Hausdorff measure.
+%the integral is called the `$r$-energy' of $\mu$
+
+\spheader 471Yl\dvAnew{2010} Let $(X,\rho)$ be a metric space, and $\mu$,
+$\nu$ two non-zero quasi-Radon measures on $X$
+such that $\mu B(x,\delta)=\mu B(y,\delta)$
+and $\nu B(x,\delta)=\nu B(y,\delta)$ for all $\delta>0$ and $x$, $y\in X$.
+Show that $\mu$ is a multiple of $\nu$.   \Hint{442B.}
+%442B out of order query mt47bits
+}%end of exercises
+
+\endnotes{
+\Notesheader{471} In the exposition above, I have worked throughout with
+simple $r$-dimensional measures for $r>0$.   As noted in 264Db, there
+are formulae in which it is helpful to interpret $\mu_{H0}$ as counting
+measure.   More interestingly, when we come to use Hausdorff measures to
+give us information about the geometric structure of an object (e.g., in
+the observation that the Cantor set has $\ln 2/\ln 3$-dimensional
+Hausdorff measure $1$, in 264J), it is sometimes useful to refine the
+technique by using other functionals than $A\mapsto(\diam A)^r$ in the
+basic formulae of 264A or 471A.   The most natural generalization is to
+functionals of the form $\psi A=h(\diam A)$ where
+$h:[0,\infty]\to[0,\infty]$ is a non-decreasing function (264Yo).   But
+it is easy to see that many of the arguments are valid in much greater
+generality, as in 471Ya-471Yc.   %471Ya 471Yb 471Yc 471Yc
+For more in these directions see {\smc Rogers 70} and {\smc Federer 69}.
+
+In the context of this book, the most conspicuous peculiarity of
+Hausdorff measures is that they are often very far from being
+semi-finite.   (This is trivial for non-separable spaces, by 471Df.
+That Hausdorff one-dimensional measure on a subset of $\BbbR^2$ can be
+purely infinite is not I think obvious;  I gave an example in 439H.)
+The response I ordinarily recommend in such cases is to take the c.l.d.\
+version.   But then of course we need to know just what effect this will
+have.   In geometric applications, one usually begins by checking that
+the sets one is interested in have $\sigma$-finite measure, and that
+therefore no problems arise;  but it is a striking fact that Hausdorff
+measures behave relatively well on analytic sets, even when not
+$\sigma$-finite, provided we ask exactly the right questions (471I,
+471S, 471Xh).
+
+The geometric applications of Hausdorff measures, naturally, tend to
+rely heavily on density theorems;  it is therefore useful to know that
+we have effective versions of Vitali's theorem available in this context
+(471N-471O), leading to a general density theorem (471P) similar to that
+in 261D;  see also 472D below.   I note that 471P is useful only
+after we have
+been able to concentrate our attention on a set of finite measure.   And
+traps remain.   For instance, the formulae of 261C-261D cannot be
+transferred to the present context without re-evaluation (471Yg).
+
+}%end of notes
+
+\discrpage
+

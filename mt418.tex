@@ -1,0 +1,1894 @@
+\frfilename{mt418.tex}
+\versiondate{19.8.05}
+\copyrightdate{2000}
+
+\def\undphi{\underline{\phi}}
+
+\def\chaptername{Topologies and measures I}
+\def\sectionname{Measurable functions and almost continuous functions}
+
+\newsection{418}
+
+In this section I work through the basic properties of measurable and
+almost continuous functions, as defined in 411L and 411M.   I give the
+results in
+the full generality allowed by the terminology so far introduced, but
+most of the ideas are already required even if you are interested only
+in Radon measure spaces as the domains of the functions involved.
+Concerning the
+codomains, however, there is a great difference between metrizable
+spaces and others, and among metrizable spaces separability is of
+essential importance.
+
+I start with the elementary properties of measurable functions
+(418A-418C) and almost continuous functions (418D).
+Under mild conditions on
+the domain space, almost continuous functions are measurable (418E);
+for a separable metrizable codomain, we can expect that measurable
+functions should be almost continuous (418J).   Before coming to this, I
+spend a couple of paragraphs on image
+measures:  a locally finite image
+measure under a measurable function is Radon if the measure
+on the domain is Radon and the function is almost continuous (418I).
+
+418L-418Q are important results on expressing given Radon measures as
+image measures associated with continuous functions, first dealing with
+ordinary functions $f:X\to Y$ (418L) and then coming to Prokhorov's
+theorem on projective limits of probability spaces (418M).
+
+The machinery of the first part of the section can also be used to
+investigate representations of vector-valued functions in terms of
+product spaces (418R-418T).
+
+\leader{418A}{Proposition} Let $X$ be a set, $\Sigma$ a $\sigma$-algebra
+of subsets of $X$, $Y$ a
+topological space and $f:X\to Y$ a measurable function.
+
+(a) $f^{-1}[F]\in\Sigma$ for every Borel set $F\subseteq Y$.
+
+(b) If $A\subseteq X$ is any set, endowed with the subspace
+$\sigma$-algebra, then $f\restr A:A\to Y$ is measurable.
+
+(c) Let $(Z,\frak T)$ be another topological space.   Then $gf:X\to Z$
+is measurable for every Borel measurable function $g:Y\to Z$;  in
+particular, for every continuous function $g:Y\to Z$.
+
+\proof{{\bf (a)} The set $\{F:F\subseteq Y,\,f^{-1}[F]\in\Sigma\}$ is a
+$\sigma$-algebra of subsets of $Y$ containing every open set, so
+contains every Borel subset of $Y$.
+
+\medskip
+
+{\bf (b)} is obvious from the definition of `subspace $\sigma$-algebra'
+(121A).
+
+\medskip
+
+{\bf (c)} If $H\subseteq Z$ is open, then $g^{-1}[H]$ is a Borel subset
+of $Y$ so $(gf)^{-1}[H]=f^{-1}[g^{-1}[H]]$ belongs to $\Sigma$.
+}%end of proof of 418A
+
+\leader{418B}{Proposition} Let $X$ be a set and $\Sigma$ a
+$\sigma$-algebra of subsets of $X$.
+
+(a) If $Y$ is a metrizable space and $\sequencen{f_n}$ is a
+sequence of measurable functions from $X$ to $Y$ such that
+$f(x)=\lim_{n\to\infty}f_n(x)$ is defined in $Y$ for every $x\in X$,
+then $f:X\to Y$ is measurable.
+
+(b) If $Y$ is a topological space, $Z$ is a
+separable metrizable space and $f:X\to Y$, $g:X\to Z$ are
+functions, then $x\mapsto (f(x),g(x)):X\to Y\times Z$ is measurable iff
+$f$ and $g$ are measurable.
+
+(c) If $Y$ is a hereditarily Lindel\"of space, $\Cal U$ a
+family of open sets generating its topology, and $f:X\to Y$ a
+function such that $f^{-1}[U]\in\Sigma$ for every $U\in\Cal U$, then $f$
+is measurable.
+
+(d) If $\familyiI{Y_i}$ is a countable family of separable metrizable
+spaces, with product $Y$, then a function $f:X\to Y$ is measurable iff
+$\pi_if:X\to Y_i$ is measurable for every $i$, writing $\pi_i(y)=y(i)$
+for $y\in Y$, $i\in\Bbb N$.
+
+\proof{{\bf (a)} Let $\rho$ be a metric defining the topology of $Y$.
+Let $G\subseteq Y$ be any open set, and for each $n\in\Bbb N$ set
+
+\Centerline{$F_n=\{y:y\in Y,\,\rho(y,z)\ge 2^{-n}$ for every $z\in
+Y\setminus G\}$.}
+
+\noindent Then $F_n$ is closed, so $f_i^{-1}[F_n]\in\Sigma$ for every
+$n$, $i\in\Bbb N$.   But this means that
+
+\Centerline{$f^{-1}[G]
+=\bigcup_{n\in\Bbb N}\bigcap_{i\ge n}f_i^{-1}[F_i]\in\Sigma$.}
+
+\noindent As $G$ is arbitrary, $f$ is measurable.
+
+\medskip
+
+{\bf (b)(i)} The functions $(y,z)\mapsto y$, $(y,z)\mapsto z$ are
+continuous, so if $x\mapsto(f(x),g(x))$ is measurable, so are $f$ and
+$g$, by 418Ac.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $f$ and $g$ are measurable, and that
+$W\subseteq Y\times Z$ is open.   By 4A2P(a-i), the topology of $Z$ has
+a countable base $\Cal H$;  let $\sequencen{H_n}$ be a sequence running
+over $\Cal H\cup\{\emptyset\}$.   For each $n$, set
+
+\Centerline{$G_n=\bigcup\{G:G\subseteq Y$ is open, $G\times H_n\subseteq
+W\}$;}
+
+\noindent then $G_n$ is open and $G_n\times H_n\subseteq W$.
+Accordingly
+$W\supseteq\bigcup_{n\in\Bbb N}G_n\times H_n$.   But in fact
+$W=\bigcup_{n\in\Bbb N}G_n\times H_n$.   \Prf\ If $(y,z)\in W$, there
+are open sets $G\subseteq Y$, $H\subseteq Z$ such that
+$(y,z)\in G\times H\subseteq W$.   Now there is an $n\in\Bbb N$ such
+that $z\in H_n\subseteq H$, in which case $G\times H_n\subseteq W$ and
+$G\subseteq G_n$ and $(y,z)\in G_n\times H_n$.\ \QeD\
+
+Accordingly
+
+\Centerline{$\{x:(f(x),g(x))\in W\}
+=\bigcup_{n\in\Bbb N}f^{-1}[G_n]\cap g^{-1}[H_n]\in\Sigma$.}
+
+\noindent As $W$ is arbitrary, $x\mapsto (f(x),g(x))$ is measurable.
+
+\medskip
+
+{\bf (c)} This is just 4A3Db.
+
+\medskip
+
+{\bf (d)} If $f$ is measurable, so is every $\pi_if$, by 418Ac.   If
+every $\pi_if$ is measurable, set
+
+\Centerline{$\Cal U=\{\pi_i^{-1}[H]:i\in I,\,H\subseteq Y_i$ is
+open$\}$.}
+
+\noindent Then $\Cal U$ generates the topology of $Y$, and if
+$U=\pi_i^{-1}[H]$ then $f^{-1}[U]=(\pi_if)^{-1}[H]$, so
+$f^{-1}[U]\in\Sigma$ for every $U$.   Also $Y$ is hereditarily
+Lindel\"of (4A2P(a-iii)), so $f$ is measurable, by (c).
+}%end of proof of 418B
+
+\leader{418C}{Proposition} Let $(X,\Sigma,\mu)$ be a measure space and
+$Y$ a Polish space.   Let $\sequencen{f_n}$ be a
+sequence of measurable functions from $X$ to $Y$.   Then
+
+\Centerline{$\{x:x\in X,\,\lim_{n\to\infty}f_n(x)$ is defined in $Y\}$}
+
+\noindent belongs to $\Sigma$.
+
+\proof{(Compare 121H.) Let $\rho$ be a complete metric on $Y$ defining
+the topology of $Y$.
+
+\medskip
+
+{\bf (a)} For $m$, $n\in\Bbb N$ and $\delta>0$, the set
+$\{x:\rho(f_m(x),f_n(x))\le\delta\}$ belongs to $\Sigma$.   \Prf\ The
+function $x\mapsto (f_m(x),f_n(x)):X\to Y^2$ is measurable, by 418Bb,
+and the function $\rho:Y^2\to\Bbb R$ is continuous, so
+$x\mapsto\rho(f_m(x),f_n(x))$ is measurable and
+$\{x:\rho(f_m(x),f_n(x))\le\delta\}\in\Sigma$.\ \Qed
+
+\medskip
+{\bf (b)} Now $\sequencen{f_n(x)}$ is convergent iff it is Cauchy,
+because
+$Y$ is complete.   But
+
+$$\eqalign{\{x:x\in X,\,&\sequencen{f_n(x)}\text{ is Cauchy}\}
+=\bigcap_{n\in\Bbb N}\bigcup_{m\in\Bbb N}\bigcap_{i\ge m}
+\{x:\rho(f_i(x),f_m(x))\le 2^{-n}\}\cr}$$
+
+\noindent belongs to $\Sigma$.
+}%end of proof of 418C
+
+\leader{418D}{Proposition} Let $(X,\Sigma,\mu)$ be a measure space and
+$\frak T$ a topology on $X$.
+
+(a) Suppose that $Y$ is a topological space.   Then any continuous
+function from $X$ to $Y$ is almost continuous.
+
+(b) Suppose that $Y$ and $Z$ are topological spaces, $f:X\to Y$ is
+almost continuous and $g:Y\to Z$ is continuous.   Then $gf:X\to Z$ is
+almost continuous.
+
+(c) Suppose that $(Y,\frak S,\Tau,\nu)$ is a $\sigma$-finite topological
+measure space, $Z$ is a topological space, $g:Y\to Z$ is almost
+continuous and $f:X\to Y$ is \imp\ and almost continuous.   Then
+$gf:X\to Z$ is almost continuous.
+
+(d) Suppose that $\mu$ is semi-finite, and that $\familyiI{Y_i}$ is a
+countable family of topological spaces with product $Y$.   Then a
+function $f:X\to Y$
+is almost continuous iff $f_i=\pi_if$ is almost continuous for every
+$i\in I$, writing $\pi_i(y)=y(i)$ for $i\in I$, $y\in Y$.
+
+\proof{{\bf (a)} is trivial.
+
+\medskip
+
+{\bf (b)} The set $\{A:A\subseteq X,\,gf\restr A$ is continuous$\}$
+includes
+$\{A:A\subseteq X,\,f\restr A$ is continuous$\}$;  so if $\mu$ is inner
+regular with respect to the latter, it is inner regular with respect to
+the former.
+
+\medskip
+
+{\bf (c)} Take $E\in\Sigma$ and $\gamma<\mu E$;  take $\epsilon>0$.   We
+have a cover of $Y$ by a non-decreasing sequence $\sequencen{Y_n}$ of
+measurable sets of finite measure;  now $\sequencen{f^{-1}[Y_n]}$ is a
+non-decreasing sequence covering $E$, so there is an $n\in\Bbb N$ such
+that $\mu(E\cap f^{-1}[Y_n])\ge\gamma$.   Because $f$ is \imp, $E\cap
+f^{-1}[Y_n]$ has finite measure.   Now we can find measurable sets
+$F\subseteq Y_n$, $E_1\subseteq E\cap f^{-1}[Y_n]$ such that $f\restr
+E_1$, $g\restr F$ are continuous and
+$\nu F\ge\nu Y_n-\epsilon$, $\mu E_1\ge\mu(E\cap f^{-1}[Y_n]\setminus
+E_1)-\epsilon$.   In this case $E_0=E_1\cap f^{-1}[F]$ has measure at
+least $\gamma-2\epsilon$ and $gf\restr E_0$ is continuous.   As $E$,
+$\gamma$ and $\epsilon$ are arbitrary, $gf$ is almost continuous.
+
+\medskip
+
+{\bf (d)(i)} If $f$ is almost continuous, every $f_i$ must be almost
+continuous, by (b).
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that every $f_i$ is almost continuous.
+Take $E\in\Sigma$ and $\gamma<\mu E$.   There is an
+$E_0\subseteq E$ such that $E_0\in\Sigma$ and $\gamma<\mu E_0<\infty$.
+Let $\langle\epsilon_i\rangle_{i\in I}$ be a family of strictly positive
+real numbers such that $\sum_{i\in I}\epsilon_i\le\mu E_0-\gamma$.   For
+each $i\in I$ choose a measurable set $F_i\subseteq E_0$ such that
+$\mu F_i\ge\mu E_0-\epsilon_i$ and $f_i\restr F_i$ is continuous.   Then
+$F=E_0\cap\bigcap_{i\in I}F_i$ is a subset of $E$ with measure at least
+$\gamma$, and $f\restr F$ is continuous because $f_i\restr F$ is
+continuous for every $i$ (3A3Ib).
+}%end of proof of 418D
+
+\leader{418E}{Theorem} Let $(X,\frak T,\Sigma,\mu)$ be a complete
+locally determined topological measure space, $Y$ a topological space,
+and $f:X\to Y$ an almost continuous function.   Then $f$ is measurable.
+
+\proof{ Set $\Cal K=\{K:K\in\Sigma,\,f\restr K$ is continuous$\}$;  then
+$\mu$ is inner regular with respect to $\Cal K$.   If $H\subseteq Y$ is
+open and $K\in\Cal K$, then $K\cap f^{-1}[H]$ is relatively open in $K$,
+that is, there is an open set $G\subseteq X$ such that
+$K\cap f^{-1}[H]=K\cap G$.
+Because $\mu$ is a topological measure, $G\in\Sigma$ so
+$K\cap f^{-1}[H]\in\Sigma$.   As $K$ is arbitrary, and $\mu$ is complete
+and locally determined, $f^{-1}[H]\in\Sigma$ (412Ja).   As $H$ is
+arbitrary, $f$ is measurable.
+}%end of proof of 418E
+
+\leader{418F}{Proposition} Let $(X,\frak T,\Sigma,\mu)$ be a
+semi-finite topological measure space, $Y$ a metrizable space, and
+$f:X\to Y$ a function.   Suppose there is a sequence $\sequencen{f_n}$
+of almost continuous functions from $X$ to $Y$ such that
+$f(x)=\lim_{n\to\infty}f_n(x)$ for almost every $x\in X$.   Then $f$ is
+almost continuous.
+
+\proof{ Suppose that $E\in\Sigma$ and that $\gamma<\mu E$, $\epsilon>0$.
+Then there is a measurable set $F\subseteq E$ such that
+$\gamma\le\mu F<\infty$;  discarding a negligible set if necessary, we
+may arrange that $f(x)=\lim_{n\to\infty}f_n(x)$ for every $x\in F$.
+Let $\rho$ be a metric on $Y$ defining its topology.   For each
+$n\in\Bbb N$, let $F_n\subseteq F$ be a measurable set such that
+$f_n\restr F_n$ is continuous and
+$\mu(F_n\setminus F)\le 2^{-n}\epsilon$;  set
+$G=\bigcap_{n\in\Bbb N}F_n$, so that $\mu G\ge\gamma-2\epsilon$ and
+$f_n\restr G$ is continuous for every $n\in\Bbb N$.
+
+For $m$, $n\in\Bbb N$, the functions $x\mapsto(f_m(x),f_n(x)):G\to Y^2$
+and $x\mapsto\rho(f_m(x),f_n(x)):G\to\Bbb R$ are continuous, therefore
+measurable, because $\mu$ is a topological measure.   Also
+$\sequencen{f_n(x)}$ is a Cauchy sequence for every $x\in G$.   So if we
+set $G_{kn}
+=\{x:x\in G,\,\rho(f_i(x),f_j(x))\le 2^{-k}$ for all $i$, $j\ge n\}$,
+$\sequencen{G_{kn}}$ is a non-decreasing sequence of measurable sets
+with union $G$ for each $k\in\Bbb N$, and we can find a strictly
+increasing sequence $\sequence{k}{n_k}$ such that $\mu(G\setminus
+G_{kn_k})\le 2^{-k}\epsilon$ for every $k$.   Setting
+$H=\bigcap_{k\in\Bbb N}G_{kn_k}$,
+$\mu H\ge\mu G-2\epsilon\ge\gamma-4\epsilon$ and
+$\rho(f_i(x),f_{n_k}(x))\le 2^{-k}$ whenever $x\in H$ and $i\ge n_k$;
+consequently $\rho(f(x),f_{n_k}(x))\le 2^{-k}$ whenever $x\in H$ and
+$k\in\Bbb N$.   But this means that $\sequence{k}{f_{n_k}}$ converges to
+$f$ uniformly on $H$, while every $f_{n_k}$ is continuous on $H$, so
+$f\restr H$ is continuous (3A3Nb).   And of course $H\subseteq E$.
+
+As $E$, $\gamma$ and $\epsilon$ are arbitrary, $f$ is almost continuous.
+}%end of proof of 418F
+%4@43
+
+\leader{418G}{Proposition} Let $(X,\frak T,\Sigma,\mu)$ be a
+$\sigma$-finite quasi-Radon measure space, $Y$ a metrizable space and
+$f:X\to Y$ an almost continuous function.   Then there is a conegligible
+set $X_0\subseteq X$ such that $f[X_0]$ is separable.
+
+\proof{{\bf (a)} Let $\Cal K$ be the family of self-supporting
+measurable sets $K$ of finite measure such that $f\restr K$ is
+continuous.   Then $\mu$ is inner regular with respect to $\Cal K$.
+\Prf\ If $E\in\Sigma$ and $\gamma<\mu E$, there is an $F\in\Sigma$ such
+that $F\subseteq E$ and $\gamma<\mu F<\infty$;  there is an $H\in\Sigma$
+such that $H\subseteq F$, $\gamma\le\mu H$ and $f\restr H$ is
+continuous;  and there is a measurable self-supporting $K\subseteq H$
+with the same measure as $H$ (414F), in which case $K\in\Cal K$ and
+$K\subseteq E$ and $\mu K\ge\gamma$.\ \Qed
+
+\medskip
+
+{\bf (b)} Now $f[K]$ is ccc for every $K\in\Cal K$.   \Prf\ If $\Cal G$
+is a disjoint family of non-empty relatively open subsets of $f[K]$,
+then $\family{G}{\Cal G}{K\cap f^{-1}[G]}$ is a disjoint family of
+non-empty relatively open subsets of $K$, because $f\restr K$ is
+continuous, and $\sum_{G\in\Cal G}\mu(K\cap f^{-1}[G])\le\mu K$.
+Because $K$ is self-supporting, $\mu(K\cap f^{-1}[G])>0$ for every
+$G\in\Cal G$;  because $\mu K$ is finite, $\Cal G$ is countable.   As
+$\Cal G$ is arbitrary, $f[K]$ is ccc.\ \Qed
+
+Because $Y$ is metrizable, $f[K]$ must be separable (4A2Pd).
+
+\medskip
+
+{\bf (c)} Because $\mu$ is $\sigma$-finite, there is a countable family
+$\Cal L\subseteq\Cal K$ such that $X_0=\bigcup\Cal L$ is conegligible
+(412Ic).   Now $f[X_0]=\bigcup_{L\in\Cal L}f[L]$ is a countable union of
+separable spaces, so is separable (4A2B(e-i)).
+}%end of proof of 418G
+
+\leader{418H}{Proposition} (a) Let $X$ and $Y$ be topological spaces,
+$\mu$ an effectively locally finite
+$\tau$-additive measure on $X$, and $f:X\to Y$ an almost continuous
+function.   Then the image measure $\mu f^{-1}$ is $\tau$-additive.
+
+(b) Let $(X,\frak T,\Sigma,\mu)$ be a totally
+finite quasi-Radon measure space, $(Y,\frak S)$ a regular topological
+space, and $f:X\to Y$ an almost continuous function.   Then there is a
+unique quasi-Radon measure $\nu$ on $Y$ such that $f$ is \imp\ for $\mu$
+and $\nu$.
+
+\proof{{\bf (a)} Let $\Cal H$ be an upwards-directed family of open
+subsets of $Y$, all measured by $\mu f^{-1}$, and suppose that
+$H^*=\bigcup\Cal H$ also is measurable.
+Take any $\gamma<(\mu f^{-1})(H^*)=\mu f^{-1}[H^*]$.   Then there is a
+measurable set $E\subseteq f^{-1}[H^*]$ such that $\mu E\ge\gamma$ and
+$f\restr E$ is continuous.
+Consider $\{E\cap f^{-1}[H]:H\in\Cal H\}$.   This is an upwards-directed
+family of relatively open measurable subsets of $E$ with measurable
+union $E$.   By 414K, the subspace measure on $E$ is $\tau$-additive, so
+
+\Centerline{$\gamma\le\mu E
+\le\sup_{H\in\Cal H}\mu(E\cap f^{-1}[H])
+\le\sup_{H\in\Cal H}\mu f^{-1}[H]$.}
+
+\noindent As $\gamma$ is arbitrary,
+$\mu f^{-1}[H^*]\le\sup_{H\in\Cal H}\mu f^{-1}[H]$;  as $\Cal H$ is
+arbitrary, $\mu f^{-1}$ is $\tau$-additive.
+
+\medskip
+
+{\bf (b)} By 418E, $f$ is measurable.   Let $\nu_0$ be the restriction
+of $\mu f^{-1}$ to the Borel $\sigma$-algebra of $Y$;  by (a), $\nu_0$
+is $\tau$-additive, and $f$ is \imp\ with respect to $\mu$ and $\nu_0$.
+Because $Y$ is regular, the completion $\nu$ of $\nu_0$ is a quasi-Radon
+measure (415Cb).   Because $\mu$ is complete, $f$ is still \imp\ with
+respect to $\mu$ and $\nu$ (234Ba\formerly{2{}35Hc}).
+
+To see that $\nu$ is unique, observe that its values on Borel sets are
+determined by the requirement that $f$ be \imp, so that 415H gives the
+result.
+}%end of proof of 418H
+
+\leader{418I}{}\cmmnt{ The next theorem is one of the central
+properties of Radon measures.   I have already presented what amounts to
+a special case in 256G.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $(X,\frak T,\Sigma,\mu)$ be a Radon measure
+space, $Y$ a Hausdorff space, and $f:X\to Y$ an almost continuous
+function.   If the image measure $\nu=\mu f^{-1}$ is locally finite, it
+is a Radon measure.
+
+\proof{{\bf (a)} By 418E, $f$ is measurable, that is,
+$f^{-1}[H]\in\Sigma$
+for every open set $H\subseteq Y$;  but this means that the domain
+$\Tau$ of $\nu$ contains every open set, and $\nu$ is a topological
+measure.
+
+\medskip
+
+{\bf (b)} $\nu$ is inner regular with respect to the
+compact sets.
+\Prf\ If $F\in\Tau$ and $\nu F>0$, then $\mu f^{-1}[F]>0$, so there is
+an $E\subseteq f^{-1}[F]$ such that $\mu E>0$ and $f\restr E$ is
+continuous.
+Next, there is a compact set $K\subseteq E$ such that $\mu K>0$.   In
+this case, $L=f[K]$ is a compact subset of $F$, and
+
+\Centerline{$\nu L=\mu f^{-1}[L]\ge\mu K>0$.}
+
+\noindent By 412B, this is enough to prove that $\nu$ is tight.\ \QeD\
+Note that because $\nu$ is
+locally finite, $\nu L<\infty$ for every compact $L\subseteq Y$ (411Ga).
+
+\medskip
+
+{\bf (c)} Because $\mu$ is complete, so is $\nu$ (234Eb\formerly{2{}12Bd}).
+Next, $\nu$ is locally
+determined.   \Prf\ Suppose that $H\subseteq Y$ is such that
+$H\cap F\in\Tau$ whenever $\nu F<\infty$.   Then, in particular,
+$H\cap f[K]\in\Tau$ whenever $K\subseteq X$ is compact and $f\restr K$
+is continuous.   But setting
+
+\Centerline{$\Cal K=\{K:K\subseteq X$ is compact, $f\restr K$ is
+continuous$\}$,}
+
+\noindent $\mu$ is inner regular with respect to $\Cal K$ (412Ac).
+And if $K\in\Cal K$,
+
+\Centerline{$K\cap f^{-1}[H]=K\cap f^{-1}[H\cap f[K]]\in\Sigma$.}
+
+\noindent Because $\mu$ is complete and locally determined, this is
+enough to show that $f^{-1}[H]\in\Sigma$ (412Ja), that is, $H\in\Tau$.
+As $H$ is arbitrary, $\nu$ is locally determined.\ \Qed
+
+\medskip
+
+{\bf (d)} Thus $\nu$ is a complete locally determined locally
+finite topological measure which is inner regular with respect to the
+compact sets;  that is, it is a Radon measure.
+}%end of proof of 418I
+
+\leader{418J}{Theorem} Let $(X,\Sigma,\mu)$ be a semi-finite measure
+space and $\frak T$ a topology on $X$ such that $\mu$ is inner regular
+with respect to the closed sets.   Suppose that $Y$ is a
+second-countable space\cmmnt{ (for instance, $Y$ might be separable and 
+metrizable),} and $f:X\to Y$ is measurable.   
+Then $f$ is almost continuous.
+
+\proof{ Let $\Cal H$ be a countable base for the topology of $Y$, and
+$\sequencen{H_n}$ a sequence running over $\Cal H\cup\{\emptyset\}$.
+Take $E\in\Sigma$ and $\gamma<\mu E$.   Choose $\sequencen{E_n}$
+inductively, as
+follows.   There is an $E_0\in\Sigma$ such that $E_0\subseteq E$ and
+$\gamma<\mu E_0<\infty$.   Given $E_n\in\Sigma$ with
+$\gamma<\mu E_n<\infty$, $E_n\setminus f^{-1}[H_n]\in\Sigma$,
+so there is a closed set $F_n\in\Sigma$ such that
+
+\Centerline{$F_n\subseteq E_n\setminus f^{-1}[H_n]$,
+\quad$\mu((E_n\setminus f^{-1}[H_n])\setminus F_n)<\mu E_n-\gamma$;}
+
+\noindent set $E_{n+1}=(E_n\cap f^{-1}[H_n])\cup F_n$, so that
+
+\Centerline{$E_{n+1}\in\Sigma$,
+\quad $E_{n+1}\subseteq E_n$,
+\quad$\mu E_{n+1}>\gamma$,
+\quad$E_{n+1}\setminus f^{-1}[H_n]=F_n$.}
+
+\noindent Continue.
+
+At the end of the induction, set $F=\bigcap_{n\in\Bbb N}E_n$.   Then
+$F\subseteq E$, $\mu F\ge\gamma$, and for every $n\in\Bbb N$
+
+\Centerline{$F\cap f^{-1}[H_n]=F\cap E_{n+1}\cap f^{-1}[H_n]
+=F\setminus F_n$}
+
+\noindent is relatively open in $F$.   It follows that $f\restr F$ is
+continuous (4A2B(a-ii)).   As $E$, $\gamma$ are arbitrary, $f$ is almost
+continuous.
+}%end of proof of 418J
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} For variations on this idea, see 418Yg, 433E and
+434Yb;  also 418Yh.
+}
+
+\leader{418K}{Corollary} Let $(X,\frak T,\Sigma,\mu)$ be a quasi-Radon
+measure space and $Y$ a separable metrizable space.   Then a function
+$f:X\to Y$ is measurable iff it is almost continuous.
+
+\proof{ Put 418E and 418J together.
+}%end of proof of 418K
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} This generalizes 256F.
+}%end of comment
+
+\leader{418L}{}\cmmnt{ In all the results above, the measure starts on
+the left of the diagram $f:X\to Y$;  in 418H-418I,
+it is transferred to an image measure on
+$Y$.   If $X$ has enough compact sets, a measure can move in the reverse
+direction, as follows.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $(X,\frak T)$ be a Hausdorff space,
+$(Y,\frak S,\Tau,\nu)$ a Radon measure space and $f:X\to Y$ a continuous
+function such that whenever $F\in\Tau$ and $\nu F>0$ there is a compact
+set $K\subseteq X$
+such that $\nu(F\cap f[K])>0$.   Then there is a Radon measure $\mu$ on
+$X$ such that $\nu$ is the image measure $\mu f^{-1}$ and the \imp\
+function $f$ induces an isomorphism between the measure algebras of
+$\nu$ and $\mu$.
+
+\proof{{\bf (a)} Note first that $\nu$ is inner regular with respect to
+$\Cal L=\{f[K]:K\in\Cal K\}$, where $\Cal K$ is the family of compact
+subsets of $X$.   \Prf\ If $\nu F>0$, there is a $K\in\Cal K$ such that
+$\nu(F\cap f[K])>0$;  now there is a closed set $F'\subseteq F\cap f[K]$
+such that $\nu F'>0$, and $K'=K\cap f^{-1}[F']$ is compact, while
+$f[K']\subseteq F$ has non-zero measure.   As $\Cal L$ is closed under
+finite unions, this is enough to show that $\nu$ is inner regular with
+respect to $\Cal L$ (412Aa).\ \Qed
+
+\medskip
+
+{\bf (b)} Consequently there is a disjoint set $\Cal L_0\subseteq\Cal L$
+such that every non-negligible $F\in\Tau$ meets some member of $\Cal L_0$
+in a non-negligible set (412Ib).   We can express $\Cal L_0$ as
+$\{f[K]:K\in\Cal K_0\}$ where $\Cal K_0\subseteq\Cal K$ is disjoint.
+Set $X_0=\bigcup\Cal K_0$.
+
+\medskip
+
+{\bf (c)} Set
+
+\Centerline{$\Sigma_0=\{X_0\cap f^{-1}[F]:F\in\Tau\}$.}
+
+\noindent Then $\Sigma_0$ is a $\sigma$-algebra of subsets of $X_0$.
+If $F$, $F'\in\Tau$ and $\nu F\ne\nu F'$, then there must be some
+$K\in\Cal
+K_0$ such that $f[K]\cap(F\symmdiff F')\ne\emptyset$, so that
+$X_0\cap f^{-1}[F]\ne X_0\cap f^{-1}[F']$;  we therefore have a
+functional
+$\mu_0:\Sigma_0\to[0,\infty]$ defined by setting
+$\mu_0(X_0\cap f^{-1}[F])=\nu F$ whenever $F\in\Tau$.   It is easy to
+check that $\mu_0$ is a measure on $X_0$.   Now $\mu_0$ is inner regular
+with respect to $\Cal K$.   \Prf\ If $E\in\Sigma_0$ and $\mu E>0$, there
+is an $F\in\Tau$ such that $E=X_0\cap f^{-1}[F]$ and $\nu F>0$.   There
+are a $K\in\Cal K_0$ such that $\nu(F\cap f[K])>0$, and a closed set
+$F'\subseteq F\cap f[K]$ such that $\nu F'>0$;  now
+$K\cap f^{-1}[F']=X_0\cap f^{-1}[F']$ belongs to $\Sigma_0\cap\Cal K$,
+is included in $E$ and has measure greater than $0$.   Because $\Cal K$
+is closed under finite unions, this is enough to show that $\mu_0$ is
+inner regular with respect to $\Cal K$.\ \Qed
+
+\medskip
+
+{\bf (d)} Set
+
+\Centerline{$\Sigma_1=\{E:E\subseteq X,\,E\cap X_0\in\Sigma_0\}$,
+\quad$\mu_1E=\mu_0(E\cap X_0)$ for every $E\in\Sigma_1$.}
+\noindent Then $\mu_1$ is a measure on $X$ (being the image measure
+$\mu_0\iota^{-1}$, where $\iota:X_0\to X$ is the identity map), and is
+inner regular with respect to $\Cal K$.   If $F\in\Tau$, then
+
+\Centerline{$\mu_1 f^{-1}[F]=\mu_0(X_0\cap f^{-1}[F])=\nu F$,}
+
+\noindent so $f$ is \imp\ for $\mu_1$ and $\nu$.   Consequently $\mu_1$
+is locally finite.   \Prf\ If $x\in X$, there is an open set $H\subseteq
+Y$ such that $f(x)\in H$ and $\nu H<\infty$;  now $f^{-1}[H]$ is an open
+subset of $X$ of finite measure containing $x$.\ \QeD\  In particular,
+$\mu_1^*K<\infty$ for every compact $K\subseteq X$ (411Ga).
+
+\medskip
+
+{\bf (e)} By 413O, there is an extension of $\mu_1$ to a complete
+locally determined measure $\mu$ on $X$ which is inner regular with
+respect to $\Cal K$, defined on every member of $\Cal K$, and such that
+whenever $E$
+belongs to the domain $\Sigma$ of $\mu$ and $\mu E<\infty$, there is an
+$E_1\in\Sigma_1$ such that $\mu(E\symmdiff E_1)=0$.   Now $\mu$ is
+locally finite because $\mu_1$ is, so $\mu$ is a Radon measure;  and $f$
+is \imp\ for $\mu$ and $\nu$ because it is \imp\ for $\mu_1$ and $\nu$.
+
+\medskip
+
+{\bf (f)} The image measure $\mu f^{-1}$ extends $\nu$, so is locally
+finite, and is therefore a Radon measure (418I);  since it agrees with
+$\nu$ on the compact subsets of $Y$, it must be identical with $\nu$.
+
+\medskip
+
+{\bf (g)} I have still to check that the corresponding
+measure-preserving
+homomorphism $\pi$ from the measure algebra $\frak B$ of $\nu$ to the
+measure algebra $\frak A$ of $\mu$ is actually an isomorphism, that is,
+is surjective.   If $a\in\frak A$ and $\bar\mu a<\infty$, we can find
+$E\in\Sigma$ such that $E^{\ssbullet}=a$ and $E_1\in\Sigma_1$ such that
+$\mu(E\symmdiff E_1)=0$.   Now $E_1\cap X_0=f^{-1}[F]\cap X_0$ for some
+$F\in\Tau$;  but in this case
+
+\Centerline{$\mu(E_1\symmdiff f^{-1}[F])
+=\mu_1(E_1\symmdiff f^{-1}[F])=0$,
+\quad$a=E_1^{\ssbullet}=(f^{-1}[F])^{\ssbullet}=\pi F^{\ssbullet}$.}
+
+Accordingly $\pi[\frak B]$ includes $\{a:\bar\mu a<\infty\}$, and is
+order-dense in $\frak A$.   But as $\pi$ is injective and $\frak B$ is
+Dedekind complete (being the measure algebra of a Radon measure, which
+is strictly localizable), it follows that $\pi[\frak B]=\frak A$
+(314Ia).   Thus $\pi$ is an isomorphism, as required.
+}%end of proof of 418L
+
+\cmmnt{\medskip
+
+\noindent{\bf Remarks} Of course this result is most commonly applied
+when $X$ and $Y$ are both compact and $f$ is a surjection, in which case
+the condition
+
+\inset{(*) whenever $F\in\Tau$ and $\nu F>0$ there is a compact set
+$K\subseteq X$ such that $\nu(F\cap f[K])>0$}
+
+\noindent is trivially satisfied.
+
+Evidently (*) is necessary if there is to be any Radon measure on $X$
+for which $f$ is \imp, so in this sense the result is best possible.
+In 433D, however, there is a version of the theorem in which $f$ is not
+required to be continuous.
+}%end of comment
+
+\leader{418M}{Prokhorov's theorem} Suppose that $(I,\le)$,
+$\familyiI{(X_i,\frak T_i,\Sigma_i,\mu_i)}$,
+$\langle f_{ij}\rangle_{i\le j\in I}$,
+$(X,\frak T)$ and $\familyiI{g_i}$ are such that
+
+\inset{$(I,\le)$ is a non-empty upwards-directed partially ordered set,}
+
+\inset{every $(X_i,\frak T_i,\Sigma_i,\mu_i)$ is a Radon probability
+space,}
+
+\inset{$f_{ij}:X_j\to X_i$ is an \imp\ function whenever $i\le j$ in
+$I$,}
+
+\inset{$(X,\frak T)$ is a Hausdorff space,}
+
+\inset{$g_i:X\to X_i$ is a continuous function for every $i\in I$,}
+
+\inset{$g_i=f_{ij}g_j$ whenever $i\le j$ in $I$.}
+
+\noindent Suppose moreover that
+
+\inset{for every $\epsilon>0$ there is a compact set
+$K\subseteq X$ such that $\mu_ig_i[K]\ge 1-\epsilon$ for every $i\in
+I$.}
+
+\noindent Then there is a Radon probability measure $\mu$ on $X$ such
+that every $g_i$ is \imp\ for $\mu$.   If the family $\familyiI{g_i}$
+separates the points of $X$, then $\mu$ is uniquely defined.
+
+\proof{{\bf (a)} Set
+
+\Centerline{$\Tau=\{g_i^{-1}[E]:i\in I,\,E\in\Sigma_i\}\subseteq\Cal PX$.}
+
+\noindent Then $\Tau$ is a subalgebra of $\Cal PX$.   \Prf\ (i) There is
+an $i\in I$, so $\emptyset=g_i^{-1}[\emptyset]$ belongs to $\Tau$.
+(ii) If $H\in\Tau$ there are $i\in I$, $E\in\Sigma_i$ such that
+$H=g_i^{-1}[E]$;
+now $X\setminus H=g_i^{-1}[X_i\setminus E]$ belongs to $\Tau$.   (iii)
+If $G$, $H\in\Tau$, there are $i$, $j\in I$ and $E\in\Sigma_i$,
+$F\in\Sigma_j$
+such that $G=g_i^{-1}[E]$ and $H=g_j^{-1}[F]$.   Now $I$ is
+upwards-directed, so there is a $k\in I$ such that $i\le k$ and $j\le
+k$.   Because $f_{ik}$ and $f_{jk}$ are \imp, $f_{ik}^{-1}[E]$ and
+$f_{jk}^{-1}[F]$ belong to $\Sigma_k$, so that
+
+$$\eqalign{G\cap H
+&=g_i^{-1}[E]\cap g_j^{-1}[F]
+=(f_{ik}g_k)^{-1}[E]\cap (f_{jk}g_k)^{-1}[F]\cr
+&=g_k^{-1}[f_{ik}^{-1}[E]\cap f_{jk}^{-1}[F]]
+\in\Tau.  \text{ \Qed}\cr}$$
+
+\medskip
+
+{\bf (b)} There is an additive functional $\nu:\Tau\to[0,1]$ defined by
+writing $\nu g_i^{-1}[E]=\mu_iE$ whenever $i\in I$ and $E\in\Sigma_i$.
+
+\medskip
+
+\Prf\ {\bf (i)} Suppose that $i$, $j\in I$ and $E\in\Sigma_i$,
+$F\in\Sigma_j$ are such that
+$g_i^{-1}[E]=g_j^{-1}[F]$.   Let $k\in I$ be such that $i\le k$ and
+$j\le k$.   Then
+
+\Centerline{$g_k^{-1}[f_{ik}^{-1}[E]\symmdiff f_{jk}^{-1}[F]]
+=g_i^{-1}[E]\symmdiff g_j^{-1}[F]=\emptyset$,}
+
+\noindent so $g_k[X]\cap(f_{ik}^{-1}[E]
+\symmdiff f_{jk}^{-1}[F])=\emptyset$.   But now remember that for every
+$\epsilon>0$ there is a set $K\subseteq X$ such that
+$\mu_kg_k[K]\ge 1-\epsilon$.   This means that $\mu_kg_k[X]$ must be
+$1$, so that $f_{ik}^{-1}[E]\symmdiff f_{jk}^{-1}[F]$ must be
+negligible, and
+
+\Centerline{$\mu_iE=\mu_kf_{ik}^{-1}[E]=\mu_kf_{jk}^{-1}[F]=\mu_jF$.}
+
+\noindent Thus the proposed formula for $\nu$ defines a function on
+$\Tau$.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $G$, $H\in\Tau$ are disjoint.   Again,
+take $i$, $j\in I$ and $E\in\Sigma_i$, $F\in\Sigma_j$ such that
+$G=g_i^{-1}[E]$ and $H=g_j^{-1}[F]$, and $k\in I$ such that $i\le k$ and
+$j\le k$.   Then
+
+$$\eqalign{\nu G+\nu H
+&=\mu_iE+\mu_jF
+=\mu_kf_{ik}^{-1}[E]+\mu_kf_{jk}^{-1}[F]\cr
+&=\mu_k(f_{ik}^{-1}[E]\cup f_{jk}^{-1}[F])
+  +\mu_k(f_{ik}^{-1}[E]\cap f_{jk}^{-1}[F])\cr
+&=\nu g_k^{-1}[f_{ik}^{-1}[E]\cup f_{jk}^{-1}[F]]
+  +\nu g_k^{-1}[f_{ik}^{-1}[E]\cap f_{jk}^{-1}[F]]\cr
+&=\nu(G\cup H)+\nu(G\cap H).\cr}$$
+
+\noindent But as $\nu\emptyset$ is certainly $0$, we get
+$\nu(G\cup H)=\nu G+\nu H$.   As $G$, $H$ are arbitrary, $\nu$ is
+additive.\ \Qed
+
+Note that $\nu X=1$.
+
+\medskip
+
+{\bf (c)} $\nu G=\sup\{\nu H:H\in\Tau$, $H\subseteq G$, $H$ is closed$\}$
+for every $G\in\Tau$.   \Prf\ If
+$\gamma<\nu G$, there are an $i\in I$ and an $E\in\Sigma_i$ such that
+$G=g_i^{-1}[E]$.
+In this case $\mu_iE=\nu G>\gamma$;  let $L\subseteq E$ be a compact set
+such that
+$\mu_iL\ge\gamma$;  then $H=g_i^{-1}[L]$ is a closed subset of $G$ and
+$\nu H=\mu_iL\ge\gamma$.\ \Qed
+
+$\nu X=\sup_{K\subseteq X\text{ is compact}}
+  \inf_{G\in\Tau,G\supseteq K}\nu G$.   \Prf\
+If $\epsilon>0$, there is a compact $K\subseteq X$ such that
+$\mu_ig_i[K]\ge 1-\epsilon$
+for every $i\in I$, by the final hypothesis of the theorem.   If
+$G\in\Tau$ and $G\supseteq K$,
+there are an $i\in I$ and an $E\in\Sigma_i$ such that $G=g_i^{-1}[E]$,
+in which case
+$g_i[K]\subseteq E$, so that
+
+\Centerline{$\nu G=\mu_iE\ge\mu_ig_i[K]\ge 1-\epsilon$.}
+
+\noindent Thus $\inf_{G\in\Tau,G\supseteq K}\nu G\ge 1-\epsilon$;  as
+$\epsilon$ is arbitrary,
+we have the result.\ \Qed
+
+This means that the conditions of 416O are satisfied, and there is a
+Radon measure $\mu$
+extending $\nu$.   Of course this means that every $g_i$ is \imp.
+
+\medskip
+
+{\bf (d)} Now suppose that $\familyiI{g_i}$ separates the points of $X$.
+Then whenever $K$, $L\subseteq X$ are disjoint there is an $i\in I$ such
+that $g_i[K]\cap g_i[L]=\emptyset$.   \Prf\ Set
+$V_i=\{(x,y):x\in K$, $y\in L$, $g_i(x)=g_i(y)\}$ for $i\in I$.
+Because $g_i$ is continuous and $\frak T_i$ is Hausdorff, $V_i$ is closed.
+If $i\le j$ in $I$, then $g_i=f_{ij}g_i$ so $V_j\subseteq V_i$;
+accordingly $\familyiI{V_i}$ is downwards-directed.   Because
+$\familyiI{g_i}$ separates the points of $X$, $\bigcap_{i\in I}V_i$ is
+empty.   As $K\times L$ is compact, there is an $i\in I$ such that
+$V_i=\emptyset$, that is, $g_i[K]$ and $g_i[L]$ are disjoint.\ \Qed
+
+Let $\nu$ be any Radon probability
+measure on $X$ such that $g_i$ is \imp\ for $\nu$ and $\mu_i$ for
+every $i\in I$.   Let $K\subseteq X$ be compact.   \Quer\ If $\mu K<\nu K$
+then there is a compact $L\subseteq X\setminus K$ such that
+$\mu L+\nu K>1$.   Let $i\in I$ be such that $g_i[K]\cap g_i[L]=\emptyset$;
+then
+
+\Centerline{$1<\mu L+\nu K
+\le\mu g_i^{-1}[g_i[L]]+\nu g_i^{-1}[g_i[K]]
+=\mu_ig_i[L]+\mu_ig_i[K]
+\le 1$,}
+
+\noindent which is impossible.\ \BanG\   So $\nu K\le\mu K$.   Similarly,
+$\mu K\le\nu K$.   By 416Eb, $\mu=\nu$.
+Thus $\mu$ is uniquely determined.
+}%end of proof of 418M
+
+\cmmnt{
+\leader{418N}{Remarks (a)} Taking $I$ to be a singleton,
+we get a version of 418L in which $Y$ is a probability space, and
+omitting the check that the function $g$ induces an isomorphism of the
+measure algebras.
+Taking $I$ to be the family of finite subsets of a set $T$, and every
+$X_i$ to be a product $\prod_{t\in i}Z_t$ of Radon probability
+spaces with its product Radon measure, we obtain a method of
+constructing
+products of arbitrary families of compact probability spaces from finite
+products.
+
+\spheader 418Nb In the hypotheses of 418M, I asked only that
+the $f_{ij}$ should be measurable, and omitted any check on the
+compositions
+$f_{ij}f_{jk}$ when $i\le j\le k$.   But it is easy to see that the
+$f_{ij}$ must in fact be almost continuous, and that $f_{ij}f_{jk}$ must
+be equal almost everywhere to $f_{ik}$ (418Xt), just as in 418P below.
+
+\spheader 418Nc In the theorem as written out above, the space
+$X$ and the functions $g_i:X\to X_i$ are part of the data.   Of course
+in many applications we start with a structure
+
+\Centerline{$(\familyiI{(X_i,\frak T_i,\Sigma_i,\mu_i)},
+\langle f_{ij}\rangle_{i\le j\in I})$,}
+
+\noindent and the first step is to find a suitable $X$ and $g_i$, as in
+418O and 418P.
+
+\spheader 418Nd There are important questions concerning possible
+relaxations of the hypotheses in 418M, especially in the special case
+already mentioned, in which $X_i=\prod_{t\in i}Z_t$,
+$f_{ij}(x)=x\restr i$ when $i\subseteq j\in[T]^{<\omega}$,
+$X=\prod_{t\in T}Z_t$, and
+$g_i(x)=x\restr i$ for $x\in X$ and $i\in I$, but there is no suggestion
+that the $\mu_i$ are product measures.
+For a case in which we can dispense with auxiliary topologies on the
+$X_i$, see 451Yb.
+
+\spheader 418Ne A typical class of applications of Prokhorov's
+theorem is in the theory of stochastic processes, in which we have large
+families $\family{t}{T}{X_t}$ of random variables;  for definiteness,
+imagine that $T=\coint{0,\infty}$, so that we are looking at a system
+evolving over time.   Not infrequently our intuition leads us to a clear
+description of the joint distributions $\nu_J$ of finite subfamilies
+$\family{t}{J}{X_t}$ without providing any suggestion of a measure space
+on which the whole family $\family{t}{T}{X_t}$ might be defined.   (As I
+tried to explain in the introduction to Chapter 27, probability spaces
+themselves
+are often very shadowy things in true probability theory.)   Each
+$\nu_J$ can be thought of as a Radon measure on $\BbbR^J$, and for
+$I\subseteq J\in[T]^{<\omega}$ we have a natural map
+$f_{IJ}:\BbbR^J\to\BbbR^I$,
+setting $f_{IJ}(y)=y\restr I$ for $y\in\BbbR^J$.   If our distributions
+$\nu_J$ mean anything at all, every $f_{IJ}$ will surely be \imp;  this
+is simply saying that $\nu_I$ is the joint distribution of a subfamily
+of $\family{t}{J}{X_t}$.   If we can find a Hausdorff space $\Omega$ and
+a continuous function $g:\Omega\to\BbbR^T$ such that, for every finite
+$J\subseteq T$ and $\epsilon>0$, there is a compact set
+$K\subseteq\Omega$
+such that $\nu_Jg_J[K]\ge 1-\epsilon$ (where $g_J(x)=g(x)\restr J$),
+then Prokhorov's theorem will give us a measure $\mu$ on $\Omega$ which
+will then provide us with a suitable realization of $\family{t}{T}{X_t}$
+as a family of random variables on a genuine probability space, writing
+$X_t(\omega)=g(\omega)(t)$.   That they become continuous functions on a
+Radon measure space is a valuable shield against irrelevant
+complications.
+
+Clearly, if this can be done at all it can be done with
+$\Omega=\BbbR^T$;  but some of the central results of probability theory
+are specifically concerned with the possibility of using other sets
+$\Omega$ (e.g., $\Omega$ a set of \callal\ functions, as in 455H, or
+continuous functions, as in 477B).
+
+\spheader 418Nf In (e) above, we do always have the option of
+regarding each $\nu_J$ as a measure on the compact space
+$[-\infty,\infty]^J$.   In this case, by 418O or otherwise, we can be
+sure of finding a measure
+on $[-\infty,\infty]^T$ to support functions $X_t$, at the cost of
+either allowing the values $\pm\infty$ or (as I should myself ordinarily
+do) accepting that each $X_t$ would be undefined on a negligible set.
+The advantage of this is just that it gives us confidence in applying
+the Kolmogorov-Lebesgue theory to the whole family $\family{t}{T}{X_t}$
+at once, rather than to finite or countable subfamilies.   For an
+example of what can happen if we try to do similar things with
+non-compact measures, see 419K.   For an example of the problems which
+can arise with uncountable families, see 418Xu.
+}%end of comment
+
+\leader{418O}{}\cmmnt{ I
+mention two cases in which we can be sure that the projective limit
+$(X,\familyiI{g_i})$ required in Prokhorov's theorem will exist.
+
+\medskip
+
+\noindent}{\bf Proposition} Suppose that $(I,\le)$,
+$\familyiI{(X_i,\frak T_i,\mu_i,\Sigma_i)}$
+and $\langle f_{ij}\rangle_{i\le j\in I}$ are such that
+
+\inset{$(I,\le)$ is a non-empty upwards-directed partially ordered set,}
+
+\inset{every $(X_i,\frak T_i,\mu_i,\Sigma_i)$ is a compact Radon measure
+space,}
+
+\inset{$f_{ij}:X_j\to X_i$ is a continuous \imp\ function whenever
+$i\le j$ in $I$,}
+
+\inset{$f_{ij}f_{jk}=f_{ik}$ whenever $i\le j\le k$ in $I$.}
+
+\noindent Then there are a compact Hausdorff space $X$ and a
+family $\familyiI{g_i}$ such that
+$I$, $\familyiI{X_i}$, $\langle f_{ij}\rangle_{i\le j\in I}$,
+$X$ and $\familyiI{g_i}$ satisfy all the hypotheses of 418M.
+
+\proof{ For each $i$, let $F_i$ be the support of $\mu_i$;  because $X_i$
+is compact, so is $F_i$.   If $i\le j$,
+then $F_i=\overline{f_{ij}[F_j]}=f_{ij}[F_j]$, by 411Ne.   Set
+
+\Centerline{$X=\{x:x\in\prod_{i\in I}F_i,\,f_{ij}x(j)=x(i)$ whenever
+$i\le j\in I\}$,}
+
+\Centerline{$g_i(x)=x(i)$ for $x\in X$, $i\in I$.}
+
+\noindent Of course $g_i=f_{ij}g_j$ whenever $i\le j$.   Also
+$g_i[X]\supseteq F_i$
+for every $i\in I$.   \Prf\ (i) If $X$ is empty, then there is some
+$j\in I$ such that $F_j=\emptyset$.   In this case,
+taking any $k$ greater than or equal to both $i$ and $j$,
+
+\Centerline{$\mu_iX_i=\mu_kX_k=\mu_jX_j=0$}
+
+\noindent and $F_i=\emptyset$, so we can stop.   (ii) Otherwise,
+take any $y\in F_i$.   For each finite set $J\subseteq I$,
+
+\Centerline{$H_J=\{x:x\in X,\,x(i)=y,\,f_{jk}x(k)=x(j)$
+whenever $j\le k\in J\}$}
+
+\noindent is a closed set.   $H_J$ is always non-empty, because if $k$
+is an upper bound of $J\cup\{i\}$ there is
+a $z\in F_k$ such that $f_{ik}(z)=y$, in which case $x\in H_J$ whenever
+$x\in X$ and $x(j)=f_{jk}(z)$ for every $j\in J\cup\{i\}$.   Now
+$\{H_J:J\in[I]^{<\omega}\}$ is a downwards-directed family of non-empty
+closed sets in the compact space $\prod_{j\in I}F_j$, so has non-empty
+intersection, and if $x$ is any point of the intersection then $x\in X$
+and $g_i(x)=y$.\ \Qed
+
+Accordingly $\mu_ig_i[X]=\mu_iX_i$ for every $i$;  as $X$ itself is
+compact, the final condition of 418M is satisfied.
+}%end of proof of 418O
+
+\vleader{72pt}{418P}{Proposition}
+Let $(I,\le)$, $\familyiI{(X_i,\frak T_i,\Sigma_i,\mu_i)}$ and
+$\langle f_{ij}\rangle_{i\le j\in I}$ be such that
+
+\inset{$(I,\le)$ is a
+countable non-empty upwards-directed partially ordered set,}
+
+\inset{every $(X_i,\frak
+T_i,\Sigma_i,\mu_i)$ is a Radon probability space,}
+
+\inset{$f_{ij}:X_j\to X_i$ is an \imp\ almost continuous function
+whenever $i\le j$ in $I$,}
+
+\inset{$f_{ij}f_{jk}=f_{ik}\,\,\mu_k$-a.e.\ whenever $i\le j\le k$ in
+$I$.}
+
+\noindent Then there are a Radon probability space $(X,\frak
+T,\Sigma,\mu)$ and continuous \imp\ functions $g_i:X\to X_i$ such that
+$g_i=f_{ij}g_j$ whenever $i\le j$ in $I$.
+
+\proof{{\bf (a)} We can use nearly the same formula as in 418O:
+
+\Centerline{$X=\{x:x\in\prod_{i\in I}X_i,\,f_{ij}x(j)=x(i)$ whenever
+$i\le j\in I\}$,}
+
+\Centerline{$g_i(x)=x(i)$ for $x\in X$, $i\in I$.}
+
+\noindent As before, the consistency relation $g_i=f_{ij}g_j$ is a
+trivial consequence of the definition of $X$.   For the rest, we have to
+check that the final condition of 418M is satisfied.   Fix
+$\epsilon\in\ooint{0,1}$.   Start by
+taking a family $\langle\epsilon_{ij}\rangle_{i\le j\in I}$ of strictly
+positive numbers such that $\sum_{i\le j\in
+I}\epsilon_{ij}\le\bover12\epsilon$.   (This is where we need to know
+that $I$ is countable.)    Set $\epsilon_j=\sum_{i\le j}\epsilon_{ij}$
+for each $j$, so that $\sum_{j\in I}\epsilon_j\le\bover12\epsilon$.
+
+For $i\le j\le k$ in $I$, set
+
+\Centerline{$E_{ijk}=\{x:x\in X_k,\,f_{ik}(x)=f_{ij}f_{jk}(x)\}$,}
+
+\noindent so that $E_{ijk}$ is $\mu_k$-conegligible;  set
+$E_k=\bigcap_{i\le j\le k}E_{ijk}$, so that $E_k$ is
+$\mu_k$-conegligible.   For $i\le j\in I$, choose compact sets
+$K_{ij}\subseteq E_j$ such that
+$\mu_jK_{ij}\ge 1-\epsilon_{ij}$ and $f_{ij}\restr K_{ij}$ is
+continuous.   Now we seem to need a three-stage construction, as
+follows:
+
+\inset{for $j\in I$, set $K_j=\bigcap_{i\le j}K_{ij}$;}
+
+\inset{for $j\in I$, set
+$K^*_j=K_j\cap\bigcap_{i\le j}f_{ij}^{-1}[K_i]$;}
+
+\inset{finally, set $K=X\cap\prod_{j\in I}K_j^*$.}
+
+\noindent Let us trace the properties of these sets stage by stage.
+
+\medskip
+
+{\bf (b)} For each $j\in I$, $K_j\subseteq K_{jj}\subseteq E_j$ is
+compact and
+
+\Centerline{$\mu_j(X_j\setminus K_j)
+\le\sum_{i\le j}\mu_j(X_j\setminus K_{ij})
+\le\sum_{i\le j}\epsilon_{ij}
+=\epsilon_j$,}
+
+\noindent so that $\mu_jK_j\ge 1-\epsilon_j$.   Note that $f_{ik}$
+agrees with $f_{ij}f_{jk}$ on $K_k$ whenever $i\le j\le k$, and that
+$f_{ij}\restr K_j$ is continuous whenever $i\le j$.
+
+\medskip
+
+{\bf (c)} Every $K_j^*$ is compact, and if $i\le j\le k$ then $f_{ik}$
+agrees with $f_{ij}f_{jk}$ on $K^*_k$, while $f_{ij}\restr K_j^*$ is
+always continuous.   Also
+
+$$\eqalign{\mu_j(X_j\setminus K_j^*)
+&\le\mu_j(X_j\setminus K_j)
+  +\sum_{i\le j}\mu_j(X_j\setminus f_{ij}^{-1}[K_i])\cr
+&\le\epsilon_j+\sum_{i\le j}\epsilon_i
+\le\epsilon,\cr}$$
+
+\noindent so $\mu_jK_j^*\ge 1-\epsilon$, for every $j\in I$.
+
+The point of moving from $K_j$ to $K^*_j$ is that
+$f_{jk}[K_k^*]\subseteq K_j^*$ whenever $j\le k$ in $I$.   \Prf\
+$K_k^*\subseteq f_{jk}^{-1}[K_j]$, so $f_{jk}[K_k^*]\subseteq K_j$.   If
+$i\le j$, then
+
+\Centerline{$K_k^*
+=K_k^*\cap f_{ik}^{-1}[K_i]
+=K_k^*\cap f_{jk}^{-1}[f_{ij}^{-1}[K_i]]$}
+
+\noindent because $f_{ij}f_{jk}$ agrees with $f_{ik}$ on $K_k^*$.   So
+$f_{jk}[K_k^*]\subseteq f_{ij}^{-1}[K_i]$.   As $i$ is arbitrary,
+$f_{jk}[K_k^*]\subseteq K_j^*$.\ \Qed
+
+Again because $f_{ik}$ agrees with $f_{ij}f_{jk}$ on $K_k^*$, we have
+$f_{ik}[K_k^*]=f_{ij}[f_{jk}[K_k^*]]\subseteq f_{ij}[K_j^*]$ whenever
+$i\le j\le k$.   And because $f_{ij}\restr K_j^*$ is always continuous,
+all the sets $f_{ij}[K_j^*]$ are compact.
+
+\medskip
+
+{\bf (d)(i)}  $K$ is compact. \Prf\
+
+\Centerline{$K=\{x:x\in\prod_{i\in I}K_i^*,\,f_{ij}x(j)=x(i)$ whenever
+$i\le j\in I\}$}
+
+\noindent is closed in $\prod_{i\in I}K_i^*$ because $f_{ij}\restr
+K_j^*$ is always continuous (and every $X_i$ is Hausdorff).   Since
+$\prod_{i\in I}K_i^*$ is compact, so is $K$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} $\mu_ig_i[K]\ge 1-\epsilon$ for every $i\in I$.   \Prf\
+By (c), $f_{ik}[K_k^*]\subseteq f_{ij}[K_j^*]$ whenever $i\le j\le k$.
+So $\{f_{ij}[K_j^*]:j\ge i\}$ is a downwards-directed family of compact
+sets;  write $L$ for their intersection.   Since
+
+\Centerline{$\mu_if_{ij}[K_j^*]
+=\mu_jf_{ij}^{-1}[f_{ij}[K_j^*]]\ge\mu_jK_j^*\ge 1-\epsilon$}
+
+\noindent for every $j\ge i$, $\mu_iL\ge 1-\epsilon$ (414C).   If
+$z\in L$, then for every $k\ge i$ the set
+
+\Centerline{$F_k
+=\{x:x\in\prod_{j\in I}K_j^*,\,x(k)=z$, $f_{jk}x(k)=x(j)$
+  whenever $j\le k\}$}
+
+\noindent is a closed set in $\prod_{j\in I}K_j^*$, while
+$F_k\subseteq F_j$ when $j\le k$.   Also $F_k$ is non-empty, because there
+is a $t\in K_k^*$ such that $f_{ik}(t)=z$, and now if we take any
+$x\in\prod_{j\in I}K_j^*$ such that $x(j)=f_{jk}(t)$ for every $j\le k$,
+we shall have $x\in F_k$.   So $\{F_k:k\ge i\}$ is a
+downwards-directed family of non-empty closed sets in a compact space,
+and has non-empty intersection.   But if $x\in\bigcap_{k\ge i}F_k$, then
+$x\in K$ and $x(k)=z$, so $z\in g_i[K]$.   Thus $g_i[K]\supseteq L$ and
+$\mu_ig_i[K]\ge 1-\epsilon$.\ \Qed
+
+\medskip
+
+{\bf (e)} As $\epsilon$ is arbitrary, the final condition of 418M is
+satisfied.   But now 418M gives the result.
+}%end of proof of 418P
+
+\leader{418Q}{Corollary} Let
+$\sequencen{(X_n,\frak T_n,\Sigma_n,\mu_n)}$
+be a sequence of Radon probability spaces, and suppose we are given an
+\imp\ almost continuous function $f_n:X_{n+1}\to X_n$ for each $n$.
+Set
+
+\Centerline{$X=\{x:x\in\prod_{n\in\Bbb N}X_n,\,f_n(x(n+1))=x(n)$ for
+every $n\in\Bbb N\}$.}
+
+\noindent Then there is a unique Radon probability measure $\mu$ on $X$
+such that all the coordinate maps $x\mapsto x(n):X\to X_n$ are \imp.
+
+\proof{ For $i\le j\in\Bbb N$, define $f_{ij}:X_j\to X_i$ by
+writing
+
+$$\eqalign{f_{ii}(x)&=x\text{ for every }x\in X_i,\cr
+f_{i,j+1}&=f_{ij}f_j\text{ for every }j\ge i.\cr}$$
+
+\noindent It is easy to check that $f_{ij}f_{jk}=f_{ik}$ whenever $i\le
+j\le k$, and that every $f_{ij}$ is \imp\ and almost continuous (using
+418Dc).   So we are exactly in the situation of 418P, and we know that
+there is a Radon probability measure on $X$ for which every $g_i$ is
+\imp;  moreover, the coordinate functionals $g_i$ separate the points of
+$X$, so $\mu$ is unique.
+}%end of proof of 418Q
+
+\leader{418R}{}\cmmnt{ I turn now to a special kind of measurable
+function, corresponding to a new view of product spaces.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $X$ be a set, $\Sigma$ a $\sigma$-algebra of
+subsets of $X$, and $(Y,\Tau,\nu)$ a $\sigma$-finite measure space.
+Give $L^0(\nu)$ the topology of convergence in
+measure\cmmnt{ (\S245)}.   Write $\eusm L^0(\Sigma\tensorhat\Tau)$ for
+the space of $\Sigma\tensorhat\Tau$-measurable real-valued functions
+on $X\times Y$\cmmnt{, where $\Sigma\tensorhat\Tau$ is  the
+$\sigma$-algebra of subsets of $X\times Y$ generated by
+$\{E\times F:E\in\Sigma,\,F\in\Tau\}$}. Then for a function
+$f:X\to L^0(\nu)$ the following are equiveridical:
+
+(i) $f[X]$ is separable and $f$ is measurable;
+
+(ii) there is an $h\in\eusm L^0(\Sigma\tensorhat\Tau)$ such that
+$f(x)=h_x^{\ssbullet}$ for every $x\in X$, where $h_x(y)=h(x,y)$ for
+$x\in X$, $y\in Y$.
+
+\proof{ Let $\sequencen{Y_n}$ be a
+non-decreasing sequence of subsets of $Y$ of finite measure covering
+$Y$.
+
+\medskip
+
+{\bf (a)(i)$\Rightarrow$(ii)} For each $n\in\Bbb N$, let $\rho_n$ be the
+continuous pseudometric on $L^0(\nu)$ defined by saying that
+$\rho_n(g_1^{\ssbullet},g_2^{\ssbullet})
+=\int_{Y_n}\min(1,|g_1-g_2|)d\nu$
+for $g_1$, $g_2\in\eusm L^0(\Tau)$, writing $\eusm L^0(\Tau)$ for the
+space of $\Tau$-measurable real-valued functions on $Y$ (245A).   Then
+$\{\rho_n:n\in\Bbb N\}$ defines the topology of $L^0(\nu)$ (see the
+proof of 245Eb).
+Because $f[X]$ is separable, there is a sequence $\sequence{k}{v_k}$ in
+$L^0(\nu)$ such that $f[X]\subseteq\overline{\{v_k:k\in\Bbb N\}}$.   For
+each $k$, choose $g_k\in\eusm L^0(\Tau)$ such that
+$g_k^{\ssbullet}=v_k$.   For $n$, $k\in\Bbb N$ set
+
+\Centerline{$E_{nk}=\{x:x\in X,\,\rho_n(f(x),v_k)<2^{-n}\}$,}
+
+\Centerline{$H_{nk}=E_{nk}\setminus\bigcup_{i<k}E_{ni}$.}
+
+\noindent Then every $E_{nk}$ belongs to $\Sigma$ (because $f$ is
+measurable) and $\bigcup_{k\in\Bbb N}E_{nk}=X$ (because
+$\{v_k:k\in\Bbb N\}$ is dense);
+so $\sequence{k}{H_{nk}}$ is a partition of $X$ into measurable sets.
+Set $h^{(n)}(x,y)=g_k(y)$ whenever $k\in\Bbb N$, $x\in H_{nk}$ and
+$y\in Y$;  then $h^{(n)}\in\eusm L^0(\Sigma\tensorhat\Tau)$.
+
+Fix $x\in X$ for the moment.   Then for each $n\in\Bbb N$ there is a
+unique $k_n$ such that $x\in H_{nk_n}$, and
+$\rho_n(f(x),v_{k_n})\le 2^{-n}$.   So if $n\le m$,
+
+$$\eqalign{\int_{Y_n}\min(1,|h^{(m+1)}_x-h^{(m)}_x|)
+&=\int_{Y_n}\min(1,|g_{k_{m+1}}-g_{k_m}|)
+=\rho_n(g_{k_{m+1}}^{\ssbullet},g_{k_m}^{\ssbullet})\cr
+&\le\rho_n(g_{k_{m+1}}^{\ssbullet},f(x))
+ +\rho_n(f(x),g_{k_m}^{\ssbullet})\cr
+&\le\rho_{m+1}(g_{k_{m+1}}^{\ssbullet},f(x))
+ +\rho_m(f(x),g_{k_m}^{\ssbullet})
+\le 3\cdot 2^{-m-1}.\cr}$$
+
+\noindent But this means that
+$\sum_{m=0}^{\infty}\int_{Y_n}\min(1,|h^{(m+1)}_x-h^{(m)}_x|)$ is
+finite, so that $\sequence{m}{h^{(m)}_x}$ must be convergent almost
+everywhere in $Y_n$.   As this is true for every $n$,
+$\sequence{m}{h^{(m)}_x}$ is convergent a.e.\ on $Y$.   Moreover,
+
+\Centerline{$\lim_{m\to\infty}(h^{(m)}_x)^{\ssbullet}
+=\lim_{m\to\infty}g_{k_m}^{\ssbullet}
+=f(x)$}
+
+\noindent in $L^0(\nu)$.
+
+Since this is true for every $x$,
+
+\Centerline{$W=\{(x,y):\sequence{m}{h^{(m)}(x,y)}$ converges in
+$\Bbb R\}$}
+
+\noindent has conegligible vertical sections, while of course
+$W\in\Sigma\tensorhat\Tau$ because every $h^{(m)}$ is
+$\Sigma\tensorhat\Tau$-measurable (418C).   If we set
+$h(x,y)=\lim_{m\to\infty}h^{(m)}(x,y)$ for $(x,y)\in W$, $0$ for other
+$(x,y)\in X\times Y$, then $h\in\eusm L^0(\Sigma\tensorhat\Tau)$, while
+(by 245Ca)
+
+\Centerline{$h_x^{\ssbullet}
+=\lim_{m\to\infty}(h^{(m)}_x)^{\ssbullet}=f(x)$}
+
+\noindent in $L^0(\nu)$ for every $x\in X$.   So we have a suitable $h$.
+
+
+\medskip
+
+{\bf (b)(ii)$\Rightarrow$(i)} Let $\Phi$ be the set of those
+$h\in\eusm L^0(\Sigma\tensorhat\Tau)$ such that (i) is satisfied;  that is,
+$x\mapsto h_x^{\ssbullet}$ is measurable, and
+$\{h_x^{\ssbullet}:x\in X\}$ is separable.
+
+\medskip
+
+\quad\grheada\ $\Phi$ is closed under addition.   \Prf\ If $h$,
+$\tilde h$ belong to $\Phi$, set $A=\{h_x^{\ssbullet}:x\in X\}$,
+$\tilde A=\{\tilde h_x^{\ssbullet}:x\in X\}$.   Then both $A$ and
+$\tilde A$ are
+separable metrizable spaces, so $A\times\tilde A$ is separable and
+metrizable and
+$x\mapsto(h_x^{\ssbullet},\tilde h_x^{\ssbullet}):X\to A\times\tilde A$
+is measurable (418Bb).   But addition on $L^0(\nu)$ is
+continuous (245Da), so
+
+\Centerline{$x\mapsto h_x^{\ssbullet}+\tilde h_x^{\ssbullet}
+=(h+\tilde h)_x^{\ssbullet}$}
+
+\noindent is measurable (418Ac), and
+
+\Centerline{$\{(h+\tilde h)_x^{\ssbullet}:x\in X\}
+\subseteq\{u+\tilde u:u\in A,\,\tilde u\in\tilde A\}$}
+
+\noindent is separable (4A2B(e-iii), 4A2P(a-iv)).
+Thus $h+\tilde h\in\Phi$.\ \Qed
+
+\medskip
+
+\quad\grheadb\ $\Phi$ is closed under scalar multiplication, just
+because $u\mapsto\alpha u:L^0(\nu)\to L^0(\nu)$ is always continuous.
+
+\medskip
+
+\quad\grheadc\ If $\sequencen{h^{(n)}}$ is a sequence in $\Phi$ and
+$h(x,y)=\lim_{n\to\infty}h^{(n)}(x,y)$ for all $x\in X$, $y\in Y$, then
+$h\in\Phi$.   \Prf\ Setting $A_n=\{(h^{(n)}_x)^{\ssbullet}:x\in X\}$ for
+each $n$, then $A=\{h_x^{\ssbullet}:x\in X\}$ is included in
+$\overline{\bigcup_{n\in\Bbb N}A_n}$, which is separable (4A2B(e-i)
+again), so $A$ is separable (4A2P(a-iv) again);  moreover,
+$h_x^{\ssbullet}=\lim_{n\to\infty}(h^{(n)}_x)^{\ssbullet}$ for every
+$x\in X$, so $x\mapsto h_x^{\ssbullet}$ is measurable, by
+418Ba.\ \Qed
+
+\medskip
+
+\quad\grheadd\ What this means is that if we set
+$\Cal W=\{W:W\in\Sigma\tensorhat\Tau,\,\chi W\in\Phi\}$, then
+$W\setminus W'\in\Cal W$ whenever $W$, $W'\in\Cal W$ and
+$W'\subseteq W$, and
+$\bigcup_{n\in\Bbb N}W_n\in\Cal W$ whenever $\sequencen{W_n}$ is a
+non-decreasing sequence in $\Cal W$.   Also, it is easy to see that
+$E\times F\in\Cal W$ whenever $E\in\Sigma$ and $F\in\Tau$.   By the
+Monotone Class Theorem (136B), $\Cal W$ includes the $\sigma$-algebra
+generated by $\{E\times F:E\in\Sigma,\,F\in\Tau\}$, that is, is equal to
+$\Sigma\tensorhat\Tau$.   It follows at once, from ($\alpha$) and
+($\beta$), that $\sum_{i=0}^n\alpha_i\chi W_i\in\Phi$ whenever
+$W_0,\ldots,W_n\in\Sigma\tensorhat\Tau$ and
+$\alpha_0,\ldots,\alpha_n\in\Bbb R$, and hence (using ($\gamma$)) that
+$\eusm L^0(\Sigma\tensorhat\Tau)\subseteq\Phi$, which is what we had to
+prove.
+}%end of proof of 418R
+
+\leader{418S}{Corollary} Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+$\sigma$-finite measure spaces with c.l.d.\ product
+$(X\times Y,\Lambda,\lambda)$.   Give $L^0(\nu)$ the topology of
+convergence in measure.   \cmmnt{Write $\eusm L^0(\lambda)$ for
+the space
+of $\Lambda$-measurable real-valued functions defined $\lambda$-a.e.\ on
+$X\times Y$, as in 241A.}
+
+(a) If $h\in\eusm L^0(\lambda)$, set $h_x(y)=h(x,y)$ whenever this is
+defined.   Then
+
+\Centerline{$\{x:f(x)=h_x^{\ssbullet}$ is defined in $L^0(\nu)\}$}
+
+\noindent is $\mu$-conegligible, and includes a conegligible set $X_0$
+such that $f:X_0\to L^0(\nu)$ is measurable and $f[X_0]$ is separable.
+
+(b) If $f:X\to L^0(\nu)$ is measurable and there is a conegligible set
+$X_0\subseteq X$ such that $f[X_0]$ is separable, then there is an
+$h\in\eusm L^0(\lambda)$ such that $f(x)=h_x^{\ssbullet}$ for almost
+every $x\in X$.
+
+\proof{{\bf (a)} The point is that $\lambda$ is just the completion of
+its restriction to $\Sigma\tensorhat\Tau$ (251K).   So there is a
+conegligible set $W\in\Sigma\tensorhat\Tau$ such that $h\restrp W$ is
+$\Sigma\tensorhat\Tau$-measurable (212Fa).   Setting
+$\tilde h(x,y)=h(x,y)$ for $(x,y)\in W$, $0$ otherwise, and setting
+$\tilde f(x)=\tilde h_x^{\ssbullet}$ for every $x\in X$, we see from
+418R that
+$\tilde f$ is measurable and that $\tilde f[X]$ is separable.   But 252D
+tells us that
+
+\Centerline{$X_0=\{x:((X\times Y)\setminus W)[\{x\}]$ is negligible$\}$}
+
+\noindent is conegligible;  and if $x\in X_0$ then
+$h_x=\tilde h_x\,\,\nu$-a.e., so that $f(x)$ is defined and equal to
+$\tilde f(x)$.   This proves the result.
+
+\medskip
+
+{\bf (b)}  $f\restr X_0$ satisfies 418R(i).   So, setting $f_1(x)=f(x)$
+for $x\in X_0$, $0$ otherwise, there is some $h\in\eusm
+L^0(\Sigma\tensorhat\Tau)$ such that $f_1(x)=h_x^{\ssbullet}$ for every
+$x$, so that $f(x)=h_x^{\ssbullet}$ for almost every $x$, and (ii) is
+true.
+}%end of proof of 418S
+
+\leader{418T}{Corollary}\cmmnt{ ({\smc Mauldin \& Stone 81})} Let
+$(Y,\Tau,\nu)$ be a
+$\sigma$-finite measure space, and $(\frak B,\bar\nu)$ its measure
+algebra,  with its measure-algebra topology\cmmnt{ (\S323)}.
+
+(a) Let $X$ be a set, $\Sigma$ a
+$\sigma$-algebra of subsets of $X$, and $f:X\to\frak B$ a function.
+Then the following are equiveridical:
+
+\quad(i) $f[X]$ is separable and $f$ is measurable;
+
+\quad(ii) there is a $W\in\Sigma\tensorhat\Tau$ such that
+$f(x)=W[\{x\}]^{\ssbullet}$ for every $x\in X$.
+
+(b) Let $(X,\Sigma,\mu)$ be a $\sigma$-finite measure space and
+$\Lambda$ the domain of the c.l.d.\ product measure $\lambda$ on
+$X\times Y$.
+
+\quad(i) Suppose that $\nu$ is complete.   If $W\in\Lambda$, then
+
+\Centerline{$\{x:f(x)=W[\{x\}]^{\ssbullet}$ is defined in $\frak B\}$}
+
+\noindent is $\mu$-conegligible, and includes a conegligible set $X_0$
+such that $f:X_0\to \frak B$ is measurable and $f[X_0]$ is separable.
+
+\quad(ii) If $f:X\to\frak B$ is measurable and there is a conegligible
+set $X_0\subseteq X$ such that $f[X_0]$ is separable, then there is a
+$W\in\Sigma\tensorhat\Tau$ such that $f(x)=W[\{x\}]^{\ssbullet}$ for
+almost every $x\in X$.
+
+\proof{ Everything follows directly from 418R and 418S if we observe
+that $\frak B$ is homeomorphically embedded in $L^0(\nu)$ by the
+function $F^{\ssbullet}\mapsto(\chi F)^{\ssbullet}$ for $F\in\Tau$
+(323Xa, 367R).   We do need to check, for (i)$\Rightarrow$(ii) of part
+(a), that if $h\in\eusm L^0(\Sigma\tensorhat\Tau)$ and $h_x^{\ssbullet}$
+is always of the form $(\chi F)^{\ssbullet}$, then there is some
+$W\in\Sigma\tensorhat\Tau$ such that $h_x^{\ssbullet}=(\chi
+W[\{x\}])^{\ssbullet}$ for every $x$;  but of course this is true if we
+just
+take $W=\{(x,y):h(x,y)=1\}$.   Now (b-ii) follows from (a) just as 418Sb
+followed from 418R.
+}%end of proof of 418T
+
+\leader{*418U}{Independent families of measurable functions}
+\discrversionA{\footnote{New 2007}}{} In \S455 we
+shall have occasion to look at independent families of random variables
+taking values in spaces other than $\Bbb R$.   We can use the same
+principle as in \S272:  a family $\familyiI{X_i}$ of random variables is
+independent if $\familyiI{\Sigma_i}$ is independent, where $\Sigma_i$ is
+the $\sigma$-subalgebra defined by $X_i$ for each $i$\cmmnt{ (272D)}.
+\cmmnt{Of
+course this depends on agreement about the definition of $\Sigma_i$.
+The natural thing to do, in the context of this section, is to follow 272C,
+as follows.   }Let $(X,\Sigma,\mu)$ be a probability space, $Y$ a
+topological space, and $f$ a $Y$-valued
+function defined on a conegligible subset $\dom f$ of $X$, which is
+$\mu$-virtually measurable, that is, such that $f$ is measurable
+with respect to the subspace $\sigma$-algebra on $\dom f$ induced by
+$\hat\Sigma=\dom\hat\mu$, where $\hat\mu$ is the completion of $\mu$.
+\cmmnt{(Note that if $Y$ is not second-countable this may not imply that
+$f\restr D$ is $\Sigma$-measurable for a conegligible subset $D$ of $X$.)}
+The `$\sigma$-algebra defined by $f$' will be
+
+\Centerline{$\{f^{-1}[F]:F\in\Cal B(Y)\}
+\cup\{(\Omega\setminus\dom f)\cup f^{-1}[F]:F\in\Cal B(Y)\}
+\subseteq\hat\Sigma$,}
+
+\noindent where $\Cal B(Y)$ is the Borel $\sigma$-algebra of $Y$\cmmnt{;
+that is, the $\sigma$-algebra of subsets of $X$ generated by
+$\{f^{-1}[G]:G\subseteq Y$ is open$\}$}.
+
+Now, given a family $\familyiI{(f_i,Y_i)}$ where each $Y_i$ is a
+topological space and each $f_i$ is a $\hat\Sigma$-measurable $Y_i$-valued
+function defined on a conegligible subset of $X$, I will say that
+$\familyiI{f_i}$ is {\bf independent} if $\familyiI{\Sigma_i}$ is
+independent (with respect to $\hat\mu$),
+where $\Sigma_i$ is the $\sigma$-algebra defined by $f_i$ for
+each $i$.
+
+\cmmnt{Corresponding to 272D, we can use the Monotone Class Theorem to
+show that }$\familyiI{f_i}$ is independent iff
+
+\Centerline{$\hat\mu(\bigcap_{j\le n}f_{i_j}^{-1}[G_j])
+=\prod_{j\le n}\hat\mu f_{i_j}^{-1}[G_j]$}
+
+\noindent whenever $i_0,\ldots,i_n\in I$ are
+distinct and $G_j\subseteq Y_{i_j}$ is open for every $j\le n$.
+
+\exercises{
+\leader{418X}{Basic exercises $\pmb{>}$(a)}
+%\spheader 418Xa
+Let $(X,\Sigma,\mu)$ be a measure space, $Y$ a set and $h:X\to Y$ a
+function;  give $Y$ the image measure $\mu h^{-1}$.   Show that for any
+function $g$ from $Y$ to a topological space $Z$, $g$ is measurable iff
+$gh:X\to Z$ is measurable.
+%418A
+
+\sqheader 418Xb Let $X$ be a set, $\Sigma$ a $\sigma$-algebra of subsets
+of $X$, $\sequencen{Y_n}$
+a sequence of topological spaces with product $Y$, and $f:X\to Y$ a
+function.   Show that $f$ is measurable iff
+$\psi_nf:X\to\prod_{i\le n}Y_i$ is measurable for every $n\in\Bbb N$,
+where $\psi_n(y)=(y(0),\ldots,y(n))$
+for $y\in Y$, $n\in\Bbb N$.
+%418B
+
+\spheader 418Xc Let $(X,\Sigma,\mu)$ be a semi-finite measure space,
+$(Y,\frak S)$ a metrizable space, and
+$\sequencen{f_n}$ a sequence of measurable functions from $X$ to $Y$
+such that $\sequencen{f_n(x)}$ is convergent for almost every $x\in X$.
+Show that $\mu$ is inner regular with respect to
+$\{E:\sequencen{f_n\restr E}$ is uniformly convergent$\}$.
+(Cf.\ 412Xt.)
+%412-
+
+\sqheader 418Xd  Set $Y=[0,1]^{[0,1]}$, with the product topology.   For
+$n\in\Bbb N$ and $x\in [0,1]$ define $f_n(x)\in Y$ by saying that
+$f_n(x)(t)=\max(0,1-2^n|x-t|)$ for $t\in[0,1]$.   Check that (i) each
+$f_n$ is continuous, therefore measurable;  (ii)
+$f(x)=\lim_{n\to\infty}f_n(x)$
+is defined in $Y$ for every $x\in[0,1]$;  (iii) for each $t\in[0,1]$,
+the coordinate functional $x\mapsto f(x)(t)$ is continuous except at
+$t$, and in particular is almost continuous and measurable;  (iv)
+$f\restr F$ is not
+continuous for any infinite closed set $F\subseteq[0,1]$, and in
+particular $f$ is not almost continuous;  (v) every subset of $[0,1]$ is
+of the form
+$f^{-1}[H]$ for some open set $H\subseteq Y$;  (vi) $f$ is not
+measurable;
+(vii) the image measure $\mu f^{-1}$, where $\mu$ is Lebesgue measure on
+$[0,1]$, is neither a topological measure nor tight.
+%418D
+
+\spheader 418Xe Let $(X,\frak T,\Sigma,\mu)$ be a quasi-Radon measure
+space, $Y$ a topological space, and $f:X\to Y$ a function.   Suppose
+that for every $x\in X$ there is an open set $G$ containing $x$ such
+that $f\restr G$ is almost continuous with respect to the subspace
+measure on $G$.   Show that $f$ is almost continuous.
+%418D
+
+\spheader 418Xf For $i=1$, $2$ let $(X_i,\frak T_i,\Sigma_i,\mu_i)$ and
+$(Y_i,\frak S_i,\Tau_i,\nu_i)$ be quasi-Radon measure spaces, and
+$f_i:X_i\to Y_i$ an almost continuous \imp\ function.   Show that
+$(x_1,x_2)\mapsto (f_1(x_1),f_2(x_2))$ is almost continuous and
+\imp\ for the product topologies and quasi-Radon product measures.
+%418D
+%Is there an easy example to show that `almost continuous' is
+%essential?
+
+\spheader 418Xg Let $\familyiI{(X_i,\frak T_i,\Sigma_i,\mu_i)}$ and
+$\familyiI{(Y_i,\frak T_i,\Sigma_i,\nu_i)}$ be two families of
+topological
+spaces with $\tau$-additive Borel probability measures, and let $\mu$,
+$\nu$ be the $\tau$-additive product measures on $X=\prod_{i\in I}X_i$,
+$Y=\prod_{i\in I}Y_i$.   Suppose that every $\nu_i$ is strictly
+positive.
+Show that if $f_i:X_i\to Y_i$ is almost continuous and \imp\ for each
+$i$, then $x\mapsto\familyiI{f_i(x(i))}:X\to Y$ is \imp, but need not be
+almost continuous.
+%418D
+
+\spheader 418Xh Let $(X,\frak T,\Sigma,\mu)$ and $(Y,\frak S,\Tau,\nu)$
+be quasi-Radon measure spaces, $(Z,\frak U)$ a topological space and
+$f:X\times Y\to Z$ a function which is almost continuous with respect to
+the quasi-Radon product measure on $X\times Y$.   Suppose that $\nu$ is
+$\sigma$-finite.   Show that $y\mapsto f(x,y)$ is almost continuous for
+almost every $x\in X$.
+%418D
+
+\spheader 418Xi Let $(X,\frak T,\Sigma,\mu)$ be an effectively locally
+finite $\tau$-additive topological measure space, $Y$ a topological
+space and $f:X\to Y$ an almost continuous function.   (i) Show that the
+image measure $\mu f^{-1}$ is $\tau$-additive.   (ii) Show that if $\mu$
+is a totally finite quasi-Radon measure and the topology on $Y$ is
+regular, then $\mu f^{-1}$ is quasi-Radon.
+%418D
+
+\spheader 418Xj Let $(X,\frak T,\Sigma,\mu)$ be a topological measure
+space and $U$ a linear topological space.   Show that if $f:X\to U$ and
+$g:X\to U$ are almost continuous, then $f+g:X\to U$ is almost
+continuous.
+%418D
+
+\spheader 418Xk Let $(X,\frak T,\Sigma,\mu)$ and $(Y,\frak S,\Tau,\nu)$
+be topological measure spaces, and $(Z,\frak U)$ a topological space;
+let $f:X\to Y$ be almost continuous and \imp, and $g:Y\to Z$ almost
+continuous.   Show that if {\it either} $\mu$ is a Radon measure
+and $\nu$ is locally finite {\it or} $\mu$ is $\tau$-additive and
+effectively locally finite and $\nu$ is effectively locally finite, then
+$gf:X\to Z$ is almost continuous.   \Hint{show that if $\mu E>0$ there
+is a set $F$ such that $\nu F<\infty$ and $\mu(E\cap f^{-1}[F])>0$.}
+%418D
+
+\spheader 418Xl Let $(X,\Sigma,\mu)$ be a complete strictly localizable
+measure space, $\undphi:\Sigma\to\Sigma$ a lower density such that
+$\undphi X=X$, and $\frak T$ the associated density topology on $X$
+(414P).   Let
+$f:X\to\Bbb R$ be a function.   Show that the following are
+equiveridical:  (i) $f$ is
+measurable;  (ii) $f$ is almost continuous;  (iii) $f$ is continuous at
+almost every point;  (iv) there is a conegligible set $H\subseteq X$
+such that $f\restr H$ is continuous.   (Cf.\ 414Xk.)
+%418E
+
+\spheader 418Xm Let $(X,\Sigma,\mu)$ be a complete strictly localizable
+measure space, $\phi:\Sigma\to\Sigma$ a lifting, and $\frak S$ the
+lifting topology on $X$ (414Q).   Let $f:X\to\Bbb R$ be a function.
+Show that the
+following are equiveridical:  (i) $f$ is measurable;  (ii) $f$ is almost
+continuous;  (iii) there is a conegligible set $H\subseteq X$ such that
+$f\restr H$ is continuous.   (Cf.\ 414Xr.)
+%418E
+
+\spheader 418Xn Let $(X,\frak T,\Sigma,\mu)$ be a quasi-Radon measure
+space, $(Y,\frak S)$ a regular topological space and $f:X\to Y$ an
+almost continuous function.   Show that there is a quasi-Radon measure
+$\nu$ on $Y$ such that $f$ is \imp\ for $\mu$ and $\nu$ iff
+$\bigcup\{f^{-1}[H]:H\subseteq Y$ is open, $\mu f^{-1}[H]<\infty\}$ is
+conegligible in $X$.
+%418H
+
+\spheader 418Xo Let $(X,\frak T,\Sigma,\mu)$ be a Radon measure space,
+$(Y,\frak S)$ and $(Z,\frak U)$ Hausdorff spaces, $f:X\to Y$ an almost
+continuous function such that $\nu=\mu f^{-1}$ is locally finite, and
+$g:Y\to Z$ a function.   Show that $g$ is almost continuous with respect
+to $\nu$ iff $gf$ is almost continuous with respect to $\mu$.
+%418I
+
+\spheader 418Xp Let $(X,\frak T,\Sigma,\mu)$ and $(Y,\frak S,\Tau,\nu)$
+be topological probability spaces, and $f:X\to Y$ a measurable function
+such that $\mu f^{-1}[H]\ge\nu H$ for every $H\in\frak S$.
+Show that (i) $\int gfd\mu=\int g\,d\nu$ for every $g\in C_b(Y)$ (ii)
+$\mu f^{-1}[F]=\nu F$ for every Baire set $F\subseteq Y$ (iii) if $\mu$
+is a Radon measure and $f$ is almost continuous, then
+$\mu f^{-1}[F]=\nu F$ for every Borel set $F\subseteq Y$, so that if in
+addition $\nu$ is complete and inner regular with respect to the Borel
+sets then it is a Radon measure.
+%418I
+
+\spheader 418Xq Let $(X,\frak T,\Sigma,\mu)$ be a $\sigma$-finite
+topological measure space in which the topology $\frak T$ is normal and
+$\mu$ is outer regular with respect to the open sets.   Show that if
+$f:X\to\Bbb R$ is a measurable function and $\epsilon>0$ there is a
+continuous $g:X\to\Bbb R$ such that $\mu\{x:g(x)\ne f(x)\}\le\epsilon$.
+%418J
+
+\spheader 418Xr Let $X$ and $Y$ be Hausdorff spaces, $\nu$ a totally
+finite Radon measure on $Y$, and $f:X\to Y$ an injective continuous
+function.   Show that the following are equiveridical:  (i) there is a
+Radon measure $\mu$ on $X$ such that $f$ is \imp;
+(ii) $f[X]$ is conegligible and $f^{-1}:f[X]\to X$ is almost continuous.
+%418L
+
+\spheader 418Xs Let $(X,\frak T,\Sigma,\mu)$ and $(Y,\frak S,\Tau,\nu)$
+be Radon measure spaces and $f:X\to Y$ an almost continuous \imp\
+function.   Show that (i) $\mu_*A\le\nu_*f[A]$ for every $A\subseteq X$
+(ii) $\nu$ is precisely the image measure $\mu f^{-1}$.
+%418L
+
+\spheader 418Xt In 418M, show that all the $f_{ij}$ must be almost
+continuous.   Show that if $i\le j\le k$ then $f_{ij}f_{jk}=f_{ik}$
+almost everywhere in $X_k$.
+%418M
+
+\sqheader 418Xu Let $\Cal I$ be the family of finite subsets of $[0,1]$,
+and for each $I\in\Cal I$
+let $(X_I,\frak T_I,\Sigma_I,\mu_I)$ be $[0,1]\setminus I$ with its
+subspace topology and measure induced by Lebesgue measure.   For
+$I\subseteq J\in\Cal I$ and $y\in X_J$ set $f_{IJ}(y)=y$.
+Show that these $X_I$,
+$f_{IJ}$ satisfy nearly all the hypotheses of 418O, but that there are
+no $X$, $g_I$ which satisfy the hypotheses of 418M.
+%418N
+
+\spheader 418Xv Let $T$ be any set, and $X$ the set of total
+orders on $T$.   (i) Regarding each member of $X$ as a subset of
+$T\times T$, show that $X$ is a closed subset of $\Cal P(T\times T)$.
+(ii) Show that there is a unique Radon measure $\mu$ on $X$ such that
+$\Pr(t_1\le t_2\le\ldots\le t_n)=\Bover1{n!}$ for all distinct
+$t_1,\ldots,t_n\in T$.   \Hint{for $I\in[T]^{<\omega}$, let $X_I$ be the
+set of total orders on $I$ with the uniform probability measure
+giving the same measure to each singleton;  show that the natural map
+from $X_I$ to $X_J$ is \imp\ whenever $J\subseteq I$.}
+%418N
+
+\spheader 418Xw In 418Sb, suppose that $f_1:X\to L^0(\nu)$ and
+$f_2:X\to L^0(\nu)$ correspond to $h_1$, $h_2\in\eusm L^0(\lambda)$.
+Show that
+$f_1(x)\le f_2(x)\,\,\mu$-a.e.($x$) iff $h_1\le h_2\,\,\lambda$-a.e.
+Hence show that (if we assign appropriate algebraic operations to the
+space of functions from $X$ to $L^0(\nu)$) we have an $f$-algebra
+isomorphism between $L^0(\lambda)$ and the space of equivalence classes
+of measurable functions from $X$ to $L^0(\nu)$ with separable ranges.
+%418S
+
+\spheader 418Xx Let $\mu$ be Lebesgue measure on $\BbbR^r$, where
+$r\ge 1$, $X$ a Hausdorff space and $f:\BbbR^r\to X$ an almost continuous
+function.
+Show that for almost every $x\in\BbbR^r$ there is a measurable set
+$E\subseteq\BbbR^r$ such that $x$ is a density point of $E$ and
+$\lim_{y\in E,y\to x}f(y)=f(x)$.
+%418D
+
+\spheader 418Xy Let $X$ be a compact Hausdorff space.   Show that there is
+an atomless Radon probability measure on $X$ iff $X$ is non-scattered.
+%418L
+
+\leader{418Y}{Further exercises (a)}
+%\spheader 418Ya
+Let $X$ be a set, $\Sigma$ a $\sigma$-algebra of subsets of $X$, $Y$ a
+topological space and $f:X\to Y$ a function.   Set
+$\Tau=\{F:F\subseteq Y,\,f^{-1}[F]\in\Sigma\}$.   Suppose that $Y$ is
+hereditarily Lindel\"of and its topology is generated by some subset of
+$\Tau$.   Show that $f$ is measurable.
+%418B
+
+\spheader 418Yb Let $(X,\Sigma,\mu)$ be a measure space, $Y$ and $Z$
+topological spaces
+and $f:X\to Y$, $g:X\to Z$ measurable functions.   Show that if $Z$ has
+a countable network consisting of Borel sets (e.g., $Z$ is
+second-countable, or $Z$ is regular and has a countable network), then
+$x\mapsto (f(x),g(x)):X\to Y\times Z$ is measurable.
+%418B
+%what if $Z$ analytic?
+
+\spheader 418Yc Let $X$ be a set, $\Sigma$ a $\sigma$-algebra of subsets
+of $X$, and $\familyiI{Y_i}$ a countable family of topological spaces
+with product $Y$.   Suppose that every $Y_i$ has a countable network,
+and that $f:X\to Y$ is a function such that $\pi_if$ is measurable for
+every $i\in I$, writing $\pi_i(y)=y(i)$.   Show that $f$ is measurable.
+%418B %418Ya
+%Y is hered Lind
+
+\spheader 418Yd Find strictly localizable Hausdorff topological measure
+spaces $(X,\frak T,\Sigma,\mu)$, $(Y,\frak S,\Tau,\nu)$ and
+$(Z,\frak U,\Lambda,\lambda)$ and almost continuous \imp\ functions
+$f:X\to Y$, $g:Y\to Z$ such that $gf$ is not almost continuous.
+%418Xk 418D mt41bits
+
+\spheader 418Ye Let $(X,\Sigma,\mu)$ be a $\sigma$-finite measure space
+and $\frak T$ a topology on $X$ such that $\mu$ is effectively locally
+finite and $\tau$-additive.   Let $Y$ be a topological space and
+$f:X\to Y$ an almost continuous function.   Show that there is a
+conegligible subset $X_0$ of $X$ such that $f[X_0]$ is ccc.
+%418F
+
+\spheader 418Yf Show that if $\mu$ is Lebesgue measure on $\Bbb R$,
+$\frak T$ is the usual topology on $\Bbb R$ and
+$\frak S$ is the right-facing Sorgenfrey topology, then the
+identity map from $(\Bbb R,\frak T,\mu)$ to $(\Bbb R,\frak S)$ is
+measurable, but not almost continuous, and the image
+measure is not a Radon measure.
+%418I
+
+\spheader 418Yg Let $(X,\Sigma,\mu)$ be a semi-finite measure space and
+$\frak T$ a topology on $X$ such that $\mu$ is inner regular with
+respect to the closed sets.   Suppose that $Y$ is a topological space
+with a countable network consisting of Borel sets, and that $f:X\to Y$
+is measurable.   Show that $f$ is almost continuous.
+%418J
+
+\spheader 418Yh Find a topological probability space
+$(X,\frak T,\Sigma,\mu)$ in which $\mu$ is inner regular with respect to
+the closed sets, a topological space $Y$ with a countable network and a
+measurable function $f:X\to Y$ which is not almost continuous.
+%418J
+
+\spheader 418Yi Let $(X,\Sigma,\mu)$ be a semi-finite measure space and
+$\frak T$ a topology on $X$ such that $\mu$ is inner regular with
+respect to the closed sets.   Let $A\subseteq L^{\infty}(\mu)$ be a
+norm-compact set.   Show that there is a set $B$ of bounded real-valued
+measurable functions on $X$ such that (i) $A=\{f^{\ssbullet}:f\in B\}$
+(ii) $B$ is norm-compact in $\ell^{\infty}(X)$ (iii) $\mu$ is inner
+regular with respect to
+$\{E:f\restr E$ is continuous for every $f\in B\}$.
+%418J
+
+\spheader 418Yj Let $\mu$ be Lebesgue measure on $[0,1]$.   For
+$t\in[0,1]$ set $u_t=\chi[0,t]^{\ssbullet}\in L^0(\mu)$.   Show that
+$A=\{u_t:t\in[0,1]\}$ is norm-compact in $L^p(\mu)$ for every
+$p\in\coint{1,\infty}$ and also compact for the topology of convergence
+in measure on $L^0(\mu)$.   Show that if $B$ is a set of measurable
+functions such that $A=\{f^{\ssbullet}:f\in B\}$ then $\mu$ is not inner
+regular with respect to
+$\{E:f\restr E$ is continuous for every $f\in B\}$.
+%418Yi 418J
+
+\spheader 418Yk Suppose that $(I,\le)$,
+$\familyiI{(X_i,\frak T_i,\Sigma_i,\mu_i)}$ and
+$\langle f_{ij}\rangle_{i\le j\in I}$ are such that
+($\alpha$) $(I,\le)$ is a non-empty upwards-directed partially ordered
+set ($\beta$) every $(X_i,\frak T_i,\Sigma_i,\mu_i)$ is a completely
+regular Hausdorff quasi-Radon probability space
+($\gamma$) $f_{ij}:X_j\to X_i$ is a
+continuous \imp\ function whenever $i\le j$ in $I$
+($\delta$) $f_{ij}f_{jk}=f_{ik}$ whenever $i\le j\le k$ in $I$.
+Let $X'_i$ be the
+support of $\mu_i$ for each $i$;  show that $f_{ij}[X'_j]$ is a dense
+subset of $X'_i$ whenever $i\le j$.   Let $Z_i$ be the Stone-\v{C}ech
+compactification of $X'_i$ and let $\tilde f_{ij}:Z_j\to Z_i$ be the
+continuous extension of $f_{ij}\restr X'_j$ for $i\le j$;  let
+$\tilde\mu_i$ be the Radon probability measure on $Z_i$ corresponding to
+$\mu_i\restrp\Cal PX'_i$ (416V).   Show that $Z_i$, $\tilde f_{ij}$
+satisfy the conditions of 418O, so that we have a projective limit $Z$,
+$\familyiI{g_i}$, $\mu$ as in 418M.
+%418M
+
+\spheader 418Yl Suppose that $(I,\le)$,
+$\familyiI{(X_i,\Sigma_i,\mu_i)}$, $X$, $\familyiI{f_i}$ and
+$\langle f_{ij}\rangle_{i\le j\in I}$ are such that
+($\alpha$) $(I,\le)$ is a non-empty upwards-directed partially ordered
+set ($\beta$) every $(X_i,\Sigma_i,\mu_i)$ is a probability space
+($\gamma$) $f_{ij}:X_j\to X_i$ is \imp\ whenever $i\le j$ in $I$
+($\delta$) $f_{ij}f_{jk}=f_{ik}$ whenever $i\le j\le k$ ($\epsilon$)
+$f_i:X\to X_i$ is a function for every $i\in I$ ($\zeta$)
+$f_i=f_{ij}f_j$ whenever $i\le j$ ($\eta$) whenever $\sequencen{i_n}$,
+$\sequencen{x_n}$ are such that $\sequencen{i_n}$ is a non-decreasing
+sequence in $I$, $x_n\in X_{i_n}$ for every $n\in\Bbb N$ and
+$f_{i_ni_{n+1}}(x_{n+1})=x_n$ for every $n\in\Bbb N$, then there is an
+$x\in X$ such that $f_{i_n}(x)=x_n$ for every $n$.   Show that there is
+a probability measure on $X$ such that every $f_i$ is \imp.
+%418M
+
+\spheader 418Ym Let $\mu$ be Lebesgue measure on $[0,1]$, and
+$A\subseteq[0,1]$ a set with inner measure 0 and outer measure 1;  let
+$\frak T$ be the usual topology on $[0,1]$.   Let $\Cal I$ be the family
+of sets $I\subseteq A$ such that every point of $A$ has a neighbourhood
+containing at most one point of $I$.   Show that
+$\frak S=\{G\setminus I:G\in\frak T,\,I\in\Cal I\}$ is a topology on
+$[0,1]$ with a countable network.   Show that the identity map from
+$[0,1]$ to itself, regarded as a map from $([0,1],\frak T,\mu)$ to
+$([0,1],\frak S)$, is measurable but not almost continuous.
+%418Yg 418J out of order query
+
+\spheader 418Yn Let $X$ be a set, $\Sigma$ a $\sigma$-algebra of subsets of
+$X$ and $(Y,\Tau,\nu)$ a $\sigma$-finite measure space with countable
+Maharam type.   (i) Let $f:X\to L^1(\nu)$ be a function such that
+$x\mapsto\int_Ff(x)d\nu$ is $\Sigma$-measurable for every $F\in\Tau$.
+Show that $f$ is $\Sigma$-measurable for the norm topology on $L^1(\nu)$.
+(ii) Let $g:X\times Y\to\Bbb R$ be a function such that
+$\int g(x,y)\nu(dy)$ is defined for every $x\in X$, and
+$x\mapsto\int_Fg(x,y)\nu(dy)$ is $\Sigma$-measurable for every $F\in\Tau$.
+Show that there is an $h\in\eusm L^0(\Sigma\otimes\Tau)$ such that, for
+every $x\in X$, $g(x,y)=h(x,y)$ for $\nu$-almost every $y$.
+%418R
+
+\spheader 418Yo Let $(X,\Sigma,\mu)$ be a semi-finite measure
+space and $\frak T$ a topology on $X$ such that $\mu$ is inner regular
+with respect to the closed sets.   Suppose that $Y$ and $Z$ are
+separable metrizable spaces,and
+$f:X\times Y\to Z$ is a function such that $x\mapsto f(x,y)$ is measurable
+for every $y\in Y$, and $y\mapsto f(x,y)$ is continuous for every $x\in X$.
+Show that $\mu$ is inner regular
+with respect to $\{F:F\subseteq X$, $f\restr F\times Y$ is continuous$\}$.
+\Hint{Let $\rho$, $\sigma$ be metrics defining the topologies of
+$Y$ and $Z$.   For $y\in Y$ and $n\in\Bbb N$ set
+$g_{yn}(x)=\sup\{s:\sigma(f(x,y'),f(x,y))\le 2^{-n}$ whenever
+$\rho(y',y)\le s\}$, $f_y(x)=f(x,y)$.
+Show that if $D\subseteq Y$ is dense
+and $F\subseteq X$ is such that $g_{yn}\restr F$ and $f_y\restr F$ are
+continuous whenever $y\in D$ and $n\in\Bbb N$, then $f\restr F\times X$ is
+continuous.}
+%418J see Bouziad 07 out of order query
+
+\spheader 418Yp\dvAnew{2009}
+Use 418M and 418O to prove 328H.
+%418O out of order query
+
+\spheader 418Yq\dvAnew{2009}
+Let $X$ be a set, $\Sigma$ a $\sigma$-algebra of
+subsets of $X$, $(Y,\Tau,\nu)$ a $\sigma$-finite measure space and
+$W\in\Sigma\tensorhat\Tau$.   Then there is a $V\subseteq W$ such that
+$V\in\Sigma\tensorhat\Tau$, $W[\{x\}]\setminus V[\{x\}]$ is negligible
+for every
+$x\in X$, and $\bigcap_{x\in I}V[\{x\}]$ is either empty or non-negligible
+for every finite $I\subseteq X$.
+%418T n09131
+
+\spheader 418Yr\dvAnew{2011}
+Let $X$ be a compact Hausdorff space, $Y$ a Hausdorff space, $\nu$ a
+Radon probability measure on $Y$ and $R\subseteq X\times Y$ a closed set 
+such that $\nu^*R[X]=1$.   Show that there is a Radon 
+probability measure $\mu$ on $X$ such that
+$\mu R^{-1}[F]\ge\nu F$ for every closed set $F\subseteq Y$.
+%418L out of order query
+}%end of exercises
+
+\cmmnt{\Notesheader{418}
+The message of this section is that measurable functions are dangerous,
+but that almost continuous functions behave themselves.   There are
+two fundamental problems with measurable functions:  a function
+$x\mapsto (f(x),g(x))$
+may not be measurable when the components $f$ and $g$ are measurable
+(419Xg), and an image measure under a measurable function can lose
+tightness, even when both domain and
+codomain are Radon measure spaces and the function is \imp\ (419Xh).
+(This is the `image
+measure catastrophe' mentioned in 235H and the notes to \S343.)
+Consequently, as long as we are dealing with measurable functions, we
+often have to impose strong conditions on the range
+spaces -- commonly, we have to restrict ourselves to separable
+metrizable spaces (418B, 418C), or something similar,
+which indeed often means that a measurable function is actually almost
+continuous (418J, 433E).   Indeed, for functions taking values in
+metrizable spaces, `almost continuity' is very close to `measurable with
+essentially separable range' (418G, 418J).   The condition `separable
+and metrizable' is a
+little stronger than is strictly necessary (418Yb, 418Yc, 418Yg), but
+covers the principal applications other than 433E.   If we keep the
+`metrizable' we can
+very substantially relax the `separable' (438E, 438F), and it is in fact
+the case that a measurable function from a Radon measure space to any
+metrizable space is almost continuous (451T).   These extensions apply
+equally to the results in 418R-418T (438Xi-438Xj, 451Xp).   But both
+take us deeper into set theory than seems appropriate at the moment.
+
+For almost continuous functions, the two problems mentioned above do not
+arise (418Dd, 418I, 418Xs).   Indeed we rather expect almost continuous
+functions to behave as if they were continuous.   But we still have to
+be careful.   The limit of a sequence of almost continuous functions
+need not be almost continuous (418Xd), unless the codomain is metrizable
+(418F);  and if we have a function $f$ from a
+topological measure space to an uncountable product of topological
+spaces, it can happen that every coordinate of $f$ is an almost
+continuous function
+while $f$ is not (418Xd again).   But for many purposes, intuitions
+gained from the study of measurable functions between Euclidean spaces
+can be transferred to general almost continuous functions.
+
+Theorems 418L and 418M are of a quite different kind, but seem to
+belong here as well
+as anywhere.   Even in the simplest application of 418L (when $Y=[0,1]$
+with Lebesgue measure, and $X\subseteq[0,1]^2$ is a closed set meeting
+every vertical line) it is not immediately obvious that there will be a
+measure with the right projection onto the horizontal axis, though there
+are at least two proofs which are easier than the general case treated
+in 413N-413O-418L.
+
+As I explain in 418N, the really interesting question concerning 418M is
+when, given the projective system
+\penalty-100$\familyiI{(X_i,\frak T_i,\Sigma_i,\mu_i)}$,
+$\langle f_{ij}\rangle_{i\le j\in I}$, we can expect to find $X$ and
+$\familyiI{g_i}$ satisfying the
+rest of the hypotheses, and once past the elementary results 418O-418Q
+this can be hard to determine.   I describe a method in 418Yk
+which can sometimes be used, but (like the trick in 418Nf) it is too
+easy and too abstract to be often illuminating.   See 454G below for
+something rather deeper.
+
+The results of 418R-418T stand somewhat aside from anything else
+considered in this chapter, but they form part of an important
+technique.   A special case has already been mentioned in 253Yg.   I do
+not discuss vector-valued measurable functions in this book, except
+incidentally, but 418R is one of the fundamental results on their
+representation;  it means, for instance, that if $V$ is any of the
+Banach function spaces of Chapter 36 we can expect to represent Bochner
+integrable $V$-valued functions (253Yf) in terms of functions on product
+spaces, because $V$ will be continuously embedded in an $L^0$ space
+(367O).   The measure-algebra version in 418T will be useful in
+Volume 5 when establishing relationships between properties of measure
+spaces and corresponding properties of measure algebras.
+}%end of notes
+
+\discrpage
+

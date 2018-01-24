@@ -1,0 +1,1099 @@
+\frfilename{mt274.tex}
+\versiondate{13.4.10}
+\copyrightdate{1995}
+
+\def\chaptername{Probability theory}
+\def\sectionname{The central limit theorem}
+
+\newsection{274}
+
+The second of the great theorems to which this chapter is devoted is of
+a new type.   It is a limit theorem, but the limit involved is a limit
+of {\it distributions}, not of functions (as in the strong limit theorem
+above or the martingale theorem below), nor of equivalence classes of
+functions (as in Chapter 24).   I give three forms of the theorem, in
+274I-274K, all drawn as corollaries of Theorem 274G;  the proof is
+spread over 274C-274G.   In 274A-274B and 274M I give the most
+elementary properties of the normal distribution.
+
+\leader{274A}{The normal distribution }\cmmnt{We need some facts from
+basic probability theory.
+
+\medskip
+
+}{\bf (a)}\cmmnt{ Recall that
+
+\Centerline{$\int_{-\infty}^{\infty}e^{-x^2/2}dx=\sqrt{2\pi}$}
+
+\noindent (263G).   Consequently, if we set}\dvro{ If we set}{}
+
+\Centerline{$\mu_G E=\Bover1{\sqrt{2\pi}}\int_Ee^{-x^2/2}dx$}
+
+\noindent for every Lebesgue measurable set $E$, $\mu_G$ is a Radon
+probability measure\cmmnt{ (256E)};  we call it the {\bf standard
+normal distribution}.   The corresponding distribution function is
+
+\Centerline{$\Phi(a)
+\cmmnt{\mskip5mu =\mu_G\ocint{-\infty,a}}
+=\Bover1{\sqrt{2\pi}}\int_{-\infty}^ae^{-x^2/2}dx$}
+
+\noindent for $a\in\Bbb R$;  for the rest of this section I will reserve
+the symbol $\Phi$ for this function.
+
+\cmmnt{Writing $\Sigma$ for the algebra of Lebesgue
+measurable subsets of $\Bbb R$, $(\Bbb R,\Sigma,\mu_G)$ is a probability
+space.   Note that it is complete, and has the same
+negligible sets as Lebesgue measure, because $e^{-x^2/2}>0$ for every
+$x$ (cf.\ 234Lc).}
+
+\header{274Ab}{\bf (b)} A random variable $X$ is {\bf standard normal}
+if its distribution is $\mu_G$\cmmnt{;  that is, if the function
+$x\mapsto\Bover1{\sqrt{2\pi}}e^{-x^2/2}$ is a density function for $X$.
+The point of the remarks in (a) is that there are such random variables;
+for instance, take the probability space $(\Bbb R,\Sigma,\mu_G)$ there,
+and set $X(x)=x$ for every $x\in\Bbb R$}.
+
+\header{274Ac}{\bf (c)} If $X$ is a standard normal random variable,
+then
+
+\Centerline{$\Expn(X)
+=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}xe^{-x^2/2}dx
+=0$,}
+
+\Centerline{$\Var(X)
+=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}x^2e^{-x^2/2}dx
+=1$\dvro{.}{}}
+
+\cmmnt{\noindent by 263H.}
+
+\header{274Ad}{\bf (d)} More generally, a random variable $X$ is {\bf
+normal} if there are $a\in\Bbb R$ and $\sigma>0$ such that
+$Z=(X-a)/\sigma$ is standard normal.   In this
+case\cmmnt{ $X=\sigma Z+a$ so}
+$\Expn(X)\cmmnt{\mskip5mu =\sigma\Expn(Z)+a}=a$,
+$\Var(X)\cmmnt{\mskip5mu =\sigma^2\Var(Z)}=\sigma^2$.
+\cmmnt{
+
+We have, for any $c\in\Bbb R$,
+
+$$\eqalignno{\Bover1{\sigma\sqrt{2\pi}}
+  \int_{\infty}^ce^{-(x-a)^2/2\sigma^2}dx
+&=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{(c-a)/\sigma}
+  e^{-y^2/2}dy\cr
+\noalign{\noindent (substituting $x=a+\sigma y$ for
+$-\infty<y\le(c-a)/\sigma$)}
+&=\Pr(Z\le\Bover{c-a}{\sigma})
+=\Pr(X\le c).\cr}$$
+
+\noindent So}
+$x\mapsto\Bover1{\sigma\sqrt{2\pi}}e^{-(x-a)^2/2\sigma^2}$
+is a density function for $X$\cmmnt{ (271Ib)}.
+Conversely,\cmmnt{ of course,} a random variable
+with such a density function is normal,
+with expectation $a$ and variance $\sigma^2$.
+The {\bf normal distributions} are the distributions with these density
+functions.
+
+\header{274Ae}{\bf (e)} If\cmmnt{ $Z$ is standard normal, so is $-Z$,
+because
+
+\Centerline{$\Pr(-Z\le a)=\Pr(Z\ge -a)
+=\Bover1{\sqrt{2\pi}}\int_{-a}^{\infty}e^{-x^2/2}dx
+=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{a}e^{-x^2/2}dx$.}
+
+\noindent The definition in the first sentence of (d) now makes it
+obvious that if} $X$ is normal, so is $a+bX$ for any $a\in\Bbb R$ and
+$b\in\Bbb R\setminus\{0\}$.
+
+\leader{274B}{Proposition} Let $X_1,\ldots,X_n$ be independent normal
+random variables.   Then $Y=X_1+\ldots+X_n$ is normal, with
+$\Expn(Y)=\Expn(X_1)+\ldots+\Expn(X_n)$ and
+$\Var(Y)=\Var(X_1)+\ldots+\Var(X_n)$.
+
+\proof{ There are innumerable proofs of this fact;  the
+following one gives me a chance to show off the power of Chapter 26, but
+of course (at the price of some disagreeable algebra) 272U also gives
+the result.
+
+\medskip
+
+{\bf (a)} Consider first the case $n=2$.   Setting
+$a_i=\Expn(X_i)$, $\sigma_i=\sqrt{\Var(X_i)}$,
+$Z_i=(X_i-a_i)/\sigma_i$
+we get independent standard normal variables $Z_1$, $Z_2$.   Set
+$\rho=\sqrt{\sigma_1^2+\sigma_2^2}$, and express $\sigma_1$, $\sigma_2$
+as $\rho\cos\theta$, $\rho\sin\theta$.   Consider $U=\cos\theta
+Z_1+\sin\theta Z_2$.   We know that $(Z_1,Z_2)$ has a density function
+
+\Centerline{$(\zeta_1,\zeta_2)\mapsto g(\zeta_1,\zeta_2)=
+\Bover1{2\pi\sigma_1\sigma_2}e^{-(\zeta_1^2+\zeta_2^2)/2}$}
+
+\noindent (272I).   Consequently, for any $c\in\Bbb R$,
+
+\Centerline{$\Pr(U\le c)=\int_Fg(z)dz$,}
+
+\noindent where
+$F=\{(\zeta_1,\zeta_2):\zeta_1\cos\theta+\zeta_2\sin\theta\le c\}$.
+But now let $T$ be the matrix
+
+$$\Matrix{\cos\theta&-\sin\theta\\\sin\theta&\cos\theta}.$$
+
+\noindent Then it is easy to check that
+
+\Centerline{$T^{-1}[F]=\{(\eta_1,\eta_2):\eta_1\le c\}$,}
+
+\Centerline{$\det T=1$,
+\quad$g(Ty)=g(y)$ for every $y\in\BbbR^2$,}
+
+\noindent so by 263A
+
+\Centerline{$\Pr(U\le c)=\int_Fg(z)dz=\int_{T^{-1}[F]}g(Ty)dy
+=\int_{\ocint{-\infty,c}\times\Bbb R}g(y)dy
+=\Pr(Z_1\le c)=\Phi(c)$.}
+
+\noindent As this is true for every $c\in\Bbb R$, $U$ also is standard
+normal (I am appealing to 271Ga again).   But
+
+\Centerline{$X_1+X_2=\sigma_1Z_1+\sigma_2Z_2+a_1+a_2
+=\rho U+a_1+a_2$,}
+
+\noindent so $X_1+X_2$ is normal.
+
+\medskip
+
+{\bf (b)} Now we can induce on $n$.   If $n=1$ the result is trivial.
+For the inductive step to $n+1\ge 2$, we know that $X_1+\ldots+X_n$ is
+normal, by the inductive hypothesis, and that $X_{n+1}$ is independent
+of $X_1+\ldots+X_n$, by 272L.   So $X_1+\ldots+X_n+X_{n+1}$ is normal,
+by (a).
+
+The computation of the expectation and variance of $X_1+\ldots+X_n$ is
+immediate from 271Ab and 272S.
+}%end of proof of 274B
+
+\leader{274C}{Lemma} Let $U_0,\ldots,U_n,V_0,\ldots,V_n$ be independent
+real-valued random variables and $h:\Bbb R\to\Bbb R$ a bounded Borel
+measurable function.   Then
+
+\Centerline{$|\Expn\bigl(h(\sum_{i=0}^nU_i)-h(\sum_{i=0}^nV_i)\bigr)|
+\le\sum_{i=0}^n\sup_{t\in\Bbb R}|\Expn\bigl(h(t+U_i)-h(t+V_i)\bigr)|$.}
+
+\proof{ For $0\le j\le n+1$, set
+$Z_j=\sum_{i=0}^{j-1}U_i+\sum_{i=j}^nV_i$, taking $Z_0=\sum_{i=0}^nV_i$
+and $Z_{n+1}=\sum_{i=0}^nU_i$, and for $j\le n$ set
+$W_j=\sum_{i=0}^{j-1}U_j+\sum_{i=j+1}^nV_j$, so that $Z_j=W_j+V_j$ and
+$Z_{j+1}=W_j+U_j$ and $W_j$, $U_j$ and $V_j$ are independent (I am
+appealing to 272K, as in 272L).   Then
+
+$$\eqalign{|\Expn\bigl(h(\sum_{i=0}^nU_i)-h(\sum_{i=0}^nV_i)\bigr)|
+&=|\Expn\bigl(\sum_{i=0}^nh(Z_{i+1})-h(Z_i)\bigr)|\cr
+&\le\sum_{i=0}^n|\Expn\bigl(h(Z_{i+1})-h(Z_i)\bigr)|\cr
+&=\sum_{i=0}^n|\Expn\bigl(h(W_i+U_i)-h(W_i+V_i)\bigr)|.\cr}$$
+
+To estimate this sum I turn it into a sum of integrals, as follows.
+For each $i$, let $\nu_{W_i}$ be the distribution of $W_i$, and so on.
+Because $(w,u)\mapsto w+u$ is continuous, therefore Borel measurable,
+$(w,u)\mapsto h(w,u)$ also is Borel measurable;  accordingly
+$(w,u,v)\mapsto h(w+u)-h(w+v)$ is measurable for each of the product
+measures $\nu_{W_i}\times\nu_{U_i}\times\nu_{V_i}$ on $\BbbR^3$, and
+271E and 272G give us
+
+$$\eqalignno{\bigl|\Expn\bigl(h(W_i+U_i)-&h(W_i+V_i)\bigr)\bigr|\cr
+&=\bigl|\int h(w+u)-h(w+v)
+(\nu_{W_i}\times\nu_{U_i}\times\nu_{V_i})d(w,u,v)\bigr|\cr
+&=\bigl|\int\bigl(\int h(w+u)-h(w+v)(\nu_{U_i}\times\nu_{V_i})d(u,v)
+\bigr)\nu_{W_i}(dw)\bigr|\cr
+&\le\int\bigl|\int h(w+u)-h(w+v)(\nu_{U_i}\times\nu_{V_i})d(u,v)\bigr|
+\nu_{W_i}(dw)\cr
+&=\int\bigl|\Expn\bigl(h(w+U_i)-h(w+V_i)\bigr)\bigr|\nu_{W_i}(dw)\cr
+&\le\sup_{t\in\Bbb R}
+    \bigl|\Expn\bigl(h(t+U_i)-h(t+V_i)\bigr)\bigr|.\cr}$$
+
+\noindent So we get
+
+$$\eqalign{|\Expn\bigl(h(\sum_{i=0}^nU_i)-h(\sum_{i=0}^nV_i)\bigr)|
+&\le\sum_{i=0}^n|\Expn\bigl(h(W_i+U_i)-h(W_i+V_i)\bigr)|\cr
+&\le\sum_{i=0}^n
+\sup_{t\in\Bbb R}|\Expn\bigl(h(t+U_i)-h(t+V_i)\bigr)|,\cr}$$
+
+\noindent as required.
+}%end of proof of 274C
+
+\leader{274D}{Lemma} Let $h:\Bbb R\to\Bbb R$ be a bounded
+three-times-differentiable function such that
+$M_2=\sup_{x\in\Bbb R}|h''(x)|$, $M_3=\sup_{x\in\Bbb R}|h'''(x)|$ are
+both finite.   Let $\epsilon>0$.
+
+(a) Let $U$ be a real-valued random variable with zero expectation and
+finite variance $\sigma^2$.   Then for any $t\in\Bbb R$ we have
+
+\Centerline{$|\Expn(h(t+U))-h(t)-\Bover{\sigma^2}2h''(t)|
+\le\Bover16\epsilon M_3\sigma^2+M_2\Expn(\psi_{\epsilon}(U))$}
+
+\noindent where $\psi_{\epsilon}(x)=0$ if $|x|\le \epsilon$, $x^2$ if
+$|x|>\epsilon$.
+
+(b) Let $U_0,\ldots,U_n,V_0,\ldots,V_n$ be independent random variables
+with finite variances, and suppose that $\Expn(U_i)=\Expn(V_i)=0$ and
+$\Var(U_i)=\Var(V_i)=\sigma_i^2$ for every $i\le n$.   Then
+
+$$\eqalign{|\Expn\bigl(h(\sum_{i=0}^n&U_i)-h(\sum_{i=0}^nV_i)\bigr)|\cr
+&\le\Bover13\epsilon M_3\sum_{i=0}^n\sigma_i^2
++M_2\sum_{i=0}^n\Expn\bigl(\psi_{\epsilon}(U_i)\bigr)
++M_2\sum_{i=0}^n\Expn\bigl(\psi_{\epsilon}(V_i)\bigr).\cr}$$
+
+\proof{{\bf (a)}   The point is that, by Taylor's theorem with
+remainder,
+
+\Centerline{$|h(t+x)-h(t)-xh'(t)|\le\Bover12M_2x^2$,}
+
+\Centerline{$|h(t+x)-h(t)-xh'(t)-\Bover12x^2h''(t)|
+\le\Bover16M_3|x|^3$}
+
+\noindent for every $x\in\Bbb R$.   So
+
+\Centerline{$|h(t+x)-h(t)-xh'(t)-\Bover12x^2h''(t)|
+\le\min(\Bover16M_3|x|^3,M_2x^2)
+\le \Bover16\epsilon M_3x^2+M_2\psi_{\epsilon}(x)$.}
+
+\noindent Integrating with respect to the distribution of $U$, we get
+
+$$\eqalign{|\Expn\bigl(h(t+U))-h(t)-\Bover12h''(t)\sigma^2\bigr)|
+&=|\Expn(h(t+U))-h(t)-h'(t)\Expn(U)
+-\Bover12h''(t)\Expn(U^2)|\cr
+&=|\Expn\bigl(h(t+U)-h(t)-h'(t)U-\Bover12h''(t)U^2\bigr)|\cr
+&\le\Expn\bigl(|h(t+U)-h(t)-h'(t)U-\Bover12h''(t)U^2|\bigr)\cr
+&\le\Expn\bigl(\Bover16\epsilon M_3U^2+M_2\psi_{\epsilon}(U)\bigr)\cr
+&=\Bover16\epsilon M_3\sigma^2+M_2\Expn(\psi_{\epsilon}(U)),\cr}$$
+
+\noindent as claimed.
+
+\medskip
+
+{\bf (b)} By 274C,
+
+$$\eqalign{|\Expn\bigl(h(\sum_{i=0}^nU_i)-h(\sum_{i=0}^nV_i)\bigr)|
+&\le\sum_{i=0}^n\sup_{t\in\Bbb R}|\Expn\bigl(h(t+U_i)-h(t+V_i)\bigr)|\cr
+&\le\sum_{i=0}^{n}\sup_{t\in\Bbb R}\bigl(
+|\Expn(h(t+U_i))-h(t)-\Bover12h''(t)\sigma_i^2|\cr
+&\qquad\qquad\qquad
++|\Expn(h(t+V_i))-h(t)-\Bover12h''(t)\sigma_i^2|\bigr),\cr}$$
+
+\noindent which by (a) above is at most
+
+\Centerline{$\sum_{i=0}^n\Bover13\epsilon  M_3\sigma_i^2
++M_2\Expn(\psi_{\epsilon}(U_i))+M_2\Expn(\psi_{\epsilon}(V_i))$,}
+
+\noindent as claimed.
+}%end of proof of 274D
+
+\leader{274E}{Lemma} For any $\epsilon>0$, there is a
+three-times-differentiable function $h:\Bbb R\to[0,1]$, with continuous
+third derivative, such that $h(x)=1$ for $x\le -\epsilon$ and $h(x)=0$
+for $x\ge\epsilon$.
+
+\proof{ Let $f:\ooint{-\epsilon,\epsilon}
+\to\ooint{0,\infty}$
+be any twice-differentiable function such that
+
+\Centerline{
+$\lim_{x\downarrow-\epsilon}f^{(n)}(x)
+=\lim_{x\uparrow\epsilon}f^{(n)}(x)=
+0$}
+
+\noindent for $n=0$, $1$ and $2$, writing $f^{(n)}$ for the $n$th
+derivative
+of $f$;  for instance, you could take $f(x)=(\epsilon^2-x^2)^3$, or
+$f(x)=\exp(-\Bover1{\epsilon^2-x^2})$.   Now set
+
+\Centerline{$h(x)=1-\int_{-\epsilon}^xf/\int_{-\epsilon}^{\epsilon}f$}
+
+\noindent for $|x|\le\epsilon$.
+}%end of proof of 274E
+
+\leader{274F}{Lindeberg's theorem} Let $\epsilon>0$.   Then there is a
+$\delta>0$ such that whenever $X_0,\ldots,X_n$ are independent
+real-valued random variables such that
+
+\Centerline{$\Expn(X_i)=0$ for every $i\le n$,}
+
+\Centerline{$\sum_{i=0}^n\Var(X_i)=1$,}
+
+\Centerline{$\sum_{i=0}^n\Expn(\psi_{\delta}(X_i))\le\delta$}
+
+\noindent (writing $\psi_{\delta}(x)=0$ if $|x|\le\delta$, $x^2$ if
+$|x|>\delta$), then
+
+\Centerline{$\bigl|\Pr(\sum_{i=0}^nX_i\le a)
+-\Phi(a)\bigr|
+\le\epsilon$}
+
+\noindent for every $a\in\Bbb R$.
+
+\proof{{\bf (a)} Let $h:\Bbb R\to[0,1]$ be a
+three-times-differentiable function, with continuous third derivative,
+such that
+$\chi\ocint{-\infty,-\epsilon}\le h\le\chi\ocint{-\infty,\epsilon}$, as
+in 274E.   Set
+
+\Centerline{$M_2=\sup_{x\in\Bbb
+R}|h''(x)|=\sup_{|x|\le\epsilon}|h''(x)|$,}
+
+\Centerline{$M_3=\sup_{x\in\Bbb
+R}|h'''(x)|=\sup_{|x|\le\epsilon}|h'''(x)|$;}
+
+\noindent because \hbox{$h'''$} is continuous, both are finite.   Write
+$\epsilon'=\epsilon(1-\Bover2{\sqrt{2\pi}})>0$,   and let $\eta>0$ be
+such that
+
+\Centerline{$(\Bover13M_3+2M_2)\eta
+\le \epsilon'$.}
+
+\noindent Note that $\lim_{m\to\infty}\psi_m(x)=0$ for every $x$, so if
+$X$ is a random variable with finite variance we must have
+$\lim_{m\to\infty}\Expn(\psi_m(X))\discretionary{}{}{}=0$,
+by Lebesgue's Dominated
+Convergence Theorem;  let $m\ge 1$ be such that
+$\Expn(\psi_m(Z))\le\eta$, where $Z$ is some (or any) standard normal
+random variable.   Finally, take $\delta>0$ such that
+$\delta+\delta^2\le(\eta/m)^2$;  note that $\delta\le\eta$.
+
+(I hope that you have seen enough $\epsilon$-$\delta$ arguments not to
+be troubled by any expectation of understanding the reasons for each
+particular formula here before reading the rest of the argument.   But
+the formula
+$\bover13M_3+2M_2$, in association with $\psi_{\delta}$, should recall
+274D.)
+
+\medskip
+
+{\bf (b)} Let $X_0,\ldots,X_n$ be independent random
+variables with zero expectation such that $\sum_{i=0}^n\Var(X_i)=1$ and
+$\sum_{i=0}^n\Expn(\psi_{\delta}(X_i))\le\delta$.   We need an auxiliary
+sequence $Z_0,\ldots,Z_n$ of standard
+normal random variables to match against the $X_i$.   To create this, I
+use the following device.   Suppose that the probability space
+underlying $X_0,\ldots,X_n$ is $(\Omega,\Sigma,\mu)$.
+Set $\Omega'=\Omega\times\BbbR^{n+1}$, and let $\mu'$ be the product
+measure on $\Omega'$, where $\Omega$ is given the measure $\mu$ and each
+factor $\Bbb R$ of $\BbbR^{n+1}$ is given the measure $\mu_G$.   Set
+$X'_i(\omega,z)=X_i(\omega)$ and $Z_i(\omega,z)=\zeta_i$ for
+$\omega\in\dom
+X_i$, $z=(\zeta_0,\ldots,\zeta_n)\in\BbbR^{n+1}$, $i\le n$.   Then
+$X'_0,\ldots,X'_n,Z_0,\ldots,Z_n$ are independent, and each $X'_i$ has
+the same distribution as $X_i$ (272Mb).   Consequently
+$S'=X'_0+\ldots+X'_n$ has the same distribution
+as $S=X_0+\ldots+X_n$ (using 272T, or otherwise);  so that
+$\Expn(g(S'))=\Expn(g(S))$ for any
+bounded Borel measurable function $g$ (using 271E).   Also each $Z_i$
+has distribution $\mu_G$, so is standard normal.
+
+\medskip
+
+{\bf (c)} Write $\sigma_i=\sqrt{\Var(X_i)}$ for each $i$, and set
+$K=\{i:i\le n,\,\sigma_i>0\}$.   Observe that $\eta/\sigma_i\ge m$ for
+each $i\in K$.   \Prf\ We know that
+
+\Centerline{$\sigma_i^2=\Var(X_i)=\Expn(X_i^2)
+\le\Expn(\delta^2+\psi_{\delta}(X_i))=\delta^2+\Expn(\psi_{\delta}(X_i))
+\le\delta^2+\delta$,}
+
+\noindent so
+
+\Centerline{$\Bover{\eta}{\sigma_i}\ge\Bover{\eta}{\sqrt{\delta+\delta^2}}
+\ge m$}
+
+\noindent by the choice of $\delta$.   \Qed
+
+\medskip
+
+{\bf (d)} Consider the independent normal random variables
+$\sigma_iZ_i$.   We have $\Expn(\sigma_iZ_i)=\Expn(X'_i)=0$ and
+$\Var(\sigma_iZ_i)=\Var(X'_i)=\sigma_i^2$ for each $i$, so that
+$Z=\sigma_0Z_0+\ldots+\sigma_nZ_n$ has expectation $0$ and variance
+$\sum_{i=0}^n\sigma_i^2=1$;
+moreover, by 274B, $Z$ is normal, so in fact it is standard normal.
+Now we have
+
+$$\eqalignno{\sum_{i=0}^n\Expn(\psi_{\eta}(\sigma_iZ_i))
+&=\sum_{i\in K}\Expn(\psi_{\eta}(\sigma_iZ_i))
+=\sum_{i\in K}\sigma_i^2\Expn(\psi_{\eta/\sigma_i}(Z_i))\cr
+\noalign{\noindent (because
+$\sigma^2\psi_{\eta/\sigma}(x)=\psi_{\eta}(\sigma x)$ whenever
+$x\in\Bbb R$, $\sigma>0$)}
+&=\sum_{i\in K}\sigma_i^2\Expn(\psi_{\eta/\sigma_i}(Z))
+\le\sum_{i\in K}\sigma_i^2\Expn(\psi_{m}(Z))\cr
+\noalign{\noindent (because, by (c),
+$\eta/\sigma_i\ge m$ for every $i\in K$, so
+$\psi_{\eta/\sigma_i}(t)\le\psi_m(t)$ for every $t$)}
+&=\Expn(\psi_m(Z))
+\le\eta\cr}$$
+
+\noindent (by the choice of $m$).   On the other hand, we surely have
+
+\Centerline{$\sum_{i=0}^n\Expn(\psi_{\eta}(X'_i))
+=\sum_{i=0}^n\Expn(\psi_{\eta}(X_i))
+\le\sum_{i=0}^n\Expn(\psi_{\delta}(X_i))
+\le\delta\le\eta$.}
+
+\medskip
+
+{\bf (e)} For any real number $t$, set
+
+\Centerline{$h_{t}(x)=h(x-t)$}
+
+\noindent for each $x\in\Bbb R$.   Then $h_t$ is
+three-times-differentiable, with $\sup_{x\in\Bbb R}|h_t''(x)|=M_2$ and
+$\sup_{x\in\Bbb R}|h'''(x)|=M_3$.   Consequently
+
+\Centerline{$|\Expn(h_t(S))-\Expn(h_t(Z))|
+\le\epsilon'$.}
+
+\noindent\vthsp\Prf\ By 274Db,
+
+$$\eqalign{|\Expn(h_t(S))-\Expn(h_t(Z))|
+&=|\Expn(h_t(S'))-\Expn(h_t(Z))|\cr
+&=|\Expn(h_t(\sum_{i=0}^nX'_i))-\Expn(h_t(\sum_{i=0}^n\sigma_iZ_i))|\cr
+&\le\Bover13\eta M_3\sum_{i=0}^n\sigma_i^2
++M_2\sum_{i=0}^n\Expn(\psi_{\eta}(X_i))
++M_2\sum_{i=0}^n\Expn(\psi_{\eta}(\sigma_iZ_i))\cr
+&\le\Bover13\eta M_3+M_2\eta+M_2\eta
+\le\epsilon',\cr}$$
+
+\noindent by the choice of $\eta$.  \Qed
+
+
+\medskip
+
+{\bf (f)} Now take any $a\in\Bbb R$.   We have
+
+\Centerline{$\chi\ocint{-\infty,a-2\epsilon}
+\le h_{a-\epsilon}\le\chi\ocint{\infty,a}
+\le h_{a+\epsilon}\le\chi\ocint{-\infty,a+\epsilon}$.}
+
+\noindent Note also that, for any $b$,
+
+\Centerline{$\Phi(b+2\epsilon)
+=\Phi(b)+\Bover1{\sqrt{2\pi}}\int_b^{b+2\epsilon}e^{-x^2/2}dx
+\le\Phi(b)+\Bover{2\epsilon}{\sqrt{2\pi}}
+=\Phi(b)+\epsilon-\epsilon'$.}
+
+
+\noindent Consequently
+
+$$\eqalign{\Phi(a)-\epsilon
+&\le\Phi(a-2\epsilon)-\epsilon'
+=\Pr(Z\le a-2\epsilon)-\epsilon'
+\le\Expn(h_{a-\epsilon}(Z))-\epsilon'
+\le\Expn(h_{a-\epsilon}(S))\cr
+&\le\Pr(S\le a)\cr
+&\le\Expn(h_{a+\epsilon}(S))
+\le\Expn(h_{a+\epsilon}(Z))+\epsilon'
+\le\Pr(Z\le a+2\epsilon)+\epsilon'
+=\Phi(a+2\epsilon)+\epsilon'\cr
+&\le\Phi(a)+\epsilon.\cr}$$
+
+\noindent But this means just that
+
+\Centerline{$\bigl|\Pr(\sum_{i=0}^nX_i\le a)
+-\Phi(a)\bigr|
+\le\epsilon$,}
+
+\noindent as claimed.
+}%end of proof of 274F
+
+\leader{274G}{Central Limit Theorem} Let $\sequencen{X_n}$ be
+an independent sequence of random variables,
+all with zero expectation and finite
+variance;  write $s_n=\sqrt{\sum_{i=0}^n\Var(X_i)}$ for each $n$.
+Suppose that
+
+\Centerline{$\lim_{n\to\infty}\Bover1{s_n^2}\sum_{i=0}^n
+\Expn(\psi_{\delta s_n}(X_i))=0$ for every $\delta>0$,}
+
+\noindent writing $\psi_{\delta}(x)=0$ if $|x|\le\delta$, $x^2$ if
+$|x|>\delta$.   Set
+
+\Centerline{$S_n=\Bover1{s_n}(X_0+\ldots+X_n)$}
+
+\noindent for each $n\in\Bbb N$ such that $s_n>0$.   Then
+
+\Centerline{$\lim_{n\to\infty}\Pr(S_n\le a)
+=\Phi(a)$}
+
+\noindent uniformly for $a\in\Bbb R$.
+
+\proof{  Given $\epsilon>0$, take $\delta>0$ as in
+Lindeberg's theorem (274F).   Then for all $n$ large enough,
+
+\Centerline{$\Bover1{s_n^2}\sum_{i=0}^n
+\Expn(\psi_{\delta s_n}(X_i))\le\delta$.}
+
+\noindent Fix on any such $n$.   Of course we have $s_n>0$.   Set
+
+\Centerline{$X'_i=\Bover1{s_n}X_i$ for $i\le n$;}
+
+\noindent then $X'_0,\ldots,X'_n$ are independent, with zero expectation,
+
+\Centerline{$\sum_{i=0}^n\Var(X'_i)=\sum_{i=0}^n\Bover1{s_n^2}\Var(X_i)
+=1$,}
+
+\Centerline{$\sum_{i=0}^n\Expn(\psi_{\delta}(X'_i))
+=\sum_{i=0}^n\Bover1{s_n^2}\Expn(\psi_{\delta s_n}(X_i))
+\le\delta$.}
+
+\noindent By 274F,
+
+\Centerline{$\bigl|\Pr(S_n\le a)
+-\Phi(a)\bigr|
+=\bigl|\Pr(\sum_{i=0}^nX'_i\le a)
+-\Phi(a)\bigr|
+\le\epsilon$}
+
+\noindent for every $a\in\Bbb R$.   Since this is true for all $n$ large
+enough, we have the result.
+}%end of proof of 274G
+
+\leader{274H}{Remarks (a)} The condition
+
+\Centerline{$\lim_{n\to\infty}\Bover1{s_n^2}\sum_{i=0}^n
+\Expn(\psi_{\epsilon s_n}(X_i))=0$ for every $\epsilon>0$}
+
+\noindent is called {\bf Lindeberg's condition}\cmmnt{, following
+{\smc Lindeberg 1922}}.
+
+\header{274Hb}{\bf (b)} Lindeberg's condition is necessary as well as
+sufficient, in the following sense.   Suppose that $\sequencen{X_n}$ is
+an independent sequence of real-valued random variables with zero expectation and
+finite variance;  write $\sigma_n=\sqrt{\Var(X_n)}$,
+$s_n=\sqrt{\sum_{i=0}^n\Var(X_i)}$ for each $n$.   Suppose that
+$\lim_{n\to\infty}s_n=\infty$,
+$\lim_{n\to\infty}\Bover{\sigma_n}{s_n}=0$ and that
+$\lim_{n\to\infty}\Pr(S_n\le a)=\Phi(a)$ for each $a\in\Bbb R$, where
+$S_n=\Bover1{s_n}(X_0+\ldots+X_n)$.   Then
+
+\Centerline{$\lim_{n\to\infty}\Bover1{s_n^2}\sum_{i=0}^n
+\Expn(\psi_{\epsilon s_n}(X_i))=0$}
+
+\noindent for every $\epsilon>0$.   \cmmnt{({\smc Feller 66}, \S XV.6,
+Theorem 3;  {\smc Lo\`eve 77}, \S21.2.)
+}%end of comment
+
+\cmmnt{\header{274Hc}{\bf (c)}
+The proof of 274F-274G
+here is adapted from {\smc Feller 66}, \S VIII.4.   It has the virtue
+of being `elementary', in that it does not involve characteristic
+functions.   Of course this has to be paid for by a number of
+detailed estimations;  and -- what is much more serious -- it leaves us
+without one of the most powerful techniques for describing
+distributions.   The proof does offer a method of bounding
+
+\Centerline{$|\Pr(S_n\le a)-\Phi(a)|$;}
+
+\noindent but it should be said that the bounds obtained are not useful
+ones, being grossly over-pessimistic, at least in the readily analysable
+cases.   (For instance, a better bound, in many cases, is given by the
+Berry-Ess\'een theorem:  if $\sequencen{X_n}$ is independent and
+identically distributed, with zero expectation, and the common values of
+$\sqrt{\Expn(X_n^2)}$,  $\Expn(|X_n|^3)$ are $\sigma$, $\rho<\infty$,
+then
+
+\Centerline{$|\Pr(S_n\le a)-\Phi(a)|
+\le\Bover{33\rho}{4\sigma^3\sqrt{n+1}}$;}
+
+\noindent see {\smc Feller 66}, \S XVI.5, {\smc Lo\`eve 77},
+\S21.3, or {\smc Hall 82}.)   Furthermore, when $|a|$ is large,
+$\Phi(a)$ is exceedingly
+close to either $0$ or $1$, so that any uniform bound for
+$|\Pr(S\le a)-\Phi(a)|$ gives very little information;  a great deal of
+work has been done on estimating the tails of such distributions more
+precisely, subject to special conditions.   For instance, if
+$X_0,\ldots,X_n$ are independent random variables with zero expectation,
+uniformly bounded with $|X_i|\le K$ almost everywhere for each $i$,
+$Y=X_0+\ldots+X_n$, $s=\sqrt{\Var(Y)}>0$, $S=\bover1sY$, then for any
+$\alpha\in[0,s/K]$
+
+$$\Pr(|S|\ge\alpha)
+\le 2\exp\bigl(\bover{-\alpha^2}{2(1+\bover{\alpha K}{2s})^2}\bigr)
+\bumpeq 2e^{-\alpha^2/2}$$
+
+\noindent if $s\gg\alpha K$ ({\smc R\'enyi 70}, \S VII.4, Theorem 1).
+A less precise result of the same kind is in 272Xl.
+
+I now list some of the standard cases in which Lindeberg's condition
+is satisfied, so that we may apply the theorem.
+}%end of comment
+
+\leader{274I}{Corollary} Let $\sequencen{X_n}$ be an independent
+sequence of real-valued random variables, all with the same
+distribution, and suppose that their common expectation is $0$ and their
+common
+variance is finite and not zero.   Write $\sigma$ for the common value
+of $\sqrt{\Var(X_n)}$, and set
+
+\Centerline{$S_n=\Bover1{\sigma\sqrt{n+1}}(X_0+\ldots+X_n)$}
+
+\noindent for each $n\in\Bbb N$.   Then
+
+\Centerline{$\lim_{n\to\infty}\Pr(S_n\le a)=\Phi(a)$}
+
+\noindent uniformly for $a\in\Bbb R$.
+
+\proof{ In the language of 274G-274H, we have $\sigma_n=\sigma$,
+$s_n=\sigma\sqrt{n+1}$ and $S_n=\Bover1{s_n}\sum_{i=0}^nX_i$.
+Moreover, if $\nu$ is the common distribution of the $X_n$, then
+
+\Centerline{$\Expn(\psi_{\epsilon s_n}(X_n))
+=\int_{\{x:|x|>\epsilon\sigma\sqrt{n}\}}x^2\nu(dx)\to 0$}
+
+\noindent by Lebesgue's Dominated Convergence Theorem;  so that
+
+\Centerline{$\Bover1{s_n^2}\sum_{i=0}^n\Expn(\psi_{\epsilon s_n}(X_n))
+\to 0$}
+
+\noindent by 273Ca.   Thus Lindeberg's condition is satisfied and 274G
+gives the result.
+}%end of proof of 274I
+
+\leader{274J}{Corollary} Let $\sequencen{X_n}$ be an independent
+sequence of real-valued random variables with zero expectation, and
+suppose that $\{X_n^2:n\in\Bbb N\}$ is uniformly
+integrable and that
+
+\Centerline{$\liminf_{n\to\infty}\Bover1{n+1}\sum_{i=0}^n\Var(X_i)>0$.}
+
+\noindent Set
+
+\Centerline{$s_n=\sqrt{\sumop_{i=0}^n\Var(X_i)}$,
+\quad$S_n=\Bover1{s_n}(X_0+\ldots+X_n)$}
+%\sumop needed because inside \sqrt{}
+
+\noindent for large $n\in\Bbb N$.   Then
+
+\Centerline{$\lim_{n\to\infty}\Pr(S_n\le a)=\Phi(a)$}
+
+\noindent uniformly for $a\in\Bbb R$.
+
+\proof{ The condition
+
+\Centerline{$\liminf_{n\to\infty}\Bover1{n+1}\sum_{i=0}^n\Var(X_i)>0$}
+
+\noindent means that there are $c>0$, $n_0\in\Bbb N$ such that
+$s_n\ge c\sqrt{n+1}$ for every $n\ge n_0$.   Let the
+underlying space be $(\Omega,\Sigma,\mu)$, and take $\epsilon$, $\eta>0$.
+Writing
+$\psi_{\delta}(x)=0$ for $|x|\le\delta$, $x^2$ for $|x|>\delta$, as in
+274F-274G, we have
+
+\Centerline{$\Expn(\psi_{\epsilon s_n}(X_i))
+\le\Expn(\psi_{c\epsilon\sqrt{n+1}}(X_i))
+=\int_{F(i,c\epsilon\sqrt{n+1})}X_i^2d\mu$}
+
+\noindent for $n\ge n_0$, $i\le n$, where
+$F(i,\gamma)=\{\omega:\omega\in\dom X_i,\,|X_i(\omega)|>\gamma\}$.
+Because $\{X_i^2:i\in\Bbb N\}$ is uniformly integrable, there is a
+$\gamma\ge 0$ such that $\int_{F(i,\gamma)}X_i^2d\mu\le\eta c^2$ for
+every $i\in\Bbb N$ (246I).   Let $n_1\ge n_0$ be such that
+$c\epsilon\sqrt{n_1+1}\ge\gamma$;  then for any $n\ge n_1$
+
+\Centerline{$\Bover1{s_n^2}\sum_{i=0}^{n}\Expn(\psi_{\epsilon s_n}(X_i))
+\le\Bover1{c^2(n+1)}\sum_{i=0}^n\eta c^2=\eta$.}
+
+\noindent As $\epsilon$ and $\eta$ are arbitrary, the conditions of 274G
+are satisfied and the result follows.
+}%end of proof of 274J
+
+\leader{274K}{Corollary} Let $\sequencen{X_n}$ be an independent
+sequence of real-valued random variables with zero expectation,
+and suppose that
+
+(i) there is some $\delta>0$ such that
+$\sup_{n\in\Bbb N}\Expn(|X_n|^{2+\delta})<\infty$,
+
+(ii) $\liminf_{n\to\infty}\Bover1{n+1}\sum_{i=0}^n\Var(X_i)>0$.
+
+\noindent Set $s_n=\sqrt{\sum_{i=0}^n\Var(X_i)}$ and
+
+\Centerline{$S_n=\Bover1{s_n}(X_0+\ldots+X_n)$}
+
+\noindent for large $n\in\Bbb N$.   Then
+
+\Centerline{$\lim_{n\to\infty}\Pr(S_n\le a)
+=\Phi(a)$}
+
+\noindent uniformly for $a\in\Bbb R$.
+
+\proof{ The point is that $\{X_n^2:n\in\Bbb N\}$ is
+uniformly integrable.   \Prf\ Set
+$K=1+\sup_{n\in\Bbb N}\Expn(|X_n|^{2+\delta})$.   Given $\epsilon>0$,
+set $M=(K/\epsilon)^{1/\delta}$.   Then
+$(X_n^2-M)^+\le M^{-\delta}|X_n|^{2+\delta}$, so
+
+\Centerline{$\Expn(X_n^2-M)^+\le KM^{-\delta}=\epsilon$}
+
+\noindent for every $n\in\Bbb N$.   As $\epsilon$ is arbitrary,
+$\{X_n^2:n\in\Bbb N\}$ is uniformly integrable.   \Qed
+
+Accordingly the conditions of 274J are satisfied and we have the result.
+}
+
+\cmmnt{
+\leader{274L}{Remarks (a)} All the theorems of this section are devoted
+to finding conditions under which a random variable $S$ is `nearly'
+standard normal, in the sense that $\Pr(S\le a)\bumpeq\Pr(Z\le a)$
+uniformly for $a\in\Bbb R$, where $Z$ is some (or any) standard normal
+random variable.   In all cases the random variable $S$ is normalized to
+have expectation $0$ and variance $1$, and is a sum of a large number of
+independent random variables.   (In 274G and
+274I-274K it is explicit that there must be many $X_i$, since they refer
+to
+a limit as $n\to\infty$.   This is not said in so many words in the
+formulation I give of Lindeberg's theorem, but the proof makes it
+evident that $n(\delta+\delta^2)\ge 1$, so surely $n$ will have to
+be large there also.)
+
+\header{274Lb}{\bf (b)} I cannot leave this section without remarking
+that the form of the definition of `nearly standard normal' may lead
+your intuition astray if you try to apply it to other distributions.
+If we take $F$ to be the distribution function of $S$, so that
+$F(a)=\Pr(S\le a)$, I am saying that $S$ is `nearly standard normal'
+if $\sup_{a\in\Bbb R}|F(a)-\Phi(a)|$ is small.   It is
+natural to think of this as approximation in a metric, writing
+
+\Centerline{$\tilde\rho(\nu,\nuprime)
+=\sup_{a\in \Bbb R}|F_{\nu}(a)-F_{\nuprime}(a)|$}
+
+\noindent for distributions $\nu$, $\nuprime$ on $\Bbb R$, where
+$F_{\nu}(a)=\nu\ocint{-\infty,a}$.   In this form, the theorems above
+can be read as finding conditions under which
+$\lim_{n\to\infty}\tilde\rho(\nu_{S_n},\mu_G)=0$.   But the point is
+that $\tilde\rho$ is not really the right metric to use.   It works here
+because $\mu_G$ is atomless.   But suppose, for instance, that $\nu$ is
+the Dirac measure on $\Bbb R$ concentrated at $0$,
+and that $\nu_n$ is the distribution of a normal random variable with
+expectation $0$ and variance ${1\over n}$, for each $n\ge 1$.   Then
+$F_{\nu}(0)=1$ and $F_{\nu_n}(0)={1\over 2}$, so
+$\tilde\rho(\nu_n,\nu)={1\over 2}$ for each $n\ge 1$.   However, for
+most
+purposes one would regard the difference between $\nu_n$ and $\nu$ as
+small, and surely $\nu$ is the only distribution which one could
+reasonably call a limit of the $\nu_n$.
+
+\header{274Lc}{\bf (c)} The difficulties here present themselves in more
+than one form.   A statistician would be unhappy with the idea that the
+$\nu_n$ of (b) above were far from $\nu$ (and from each other),
+on the grounds that any measurement involving random variables with
+these distributions must be subject to error, and small errors of
+measurement will render them indistinguishable.   A pure mathematician,
+looking forward to the possibility of generalizing these results, will
+be unhappy with the emphasis given to the values of
+$\nu\ocint{-\infty,a}$, for which it may be difficult to find suitable
+equivalents in more abstract spaces.
+
+\header{274Ld}{\bf (d)} These considerations join together to lead us to
+a rather different definition for a topology on the space $P$ of
+probability distributions on $\Bbb R$.   For any bounded continuous function $h:\Bbb R\to\Bbb R$ we have a pseudometric
+$\rho_h:P\times P\to\coint{0,\infty}$
+defined by writing
+
+\Centerline{$\rho_h(\nu,\nuprime)=|\int h\,d\nu-\int h\,d\nuprime|$}
+
+\noindent for all $\nu$, $\nuprime\in P$.   The {\bf vague topology} on $P$
+is that generated by the pseudometrics $\rho_h$ (2A3F).   I will
+not go into its properties in detail here (some are sketched in
+274Yc-274Yf %274Yc 274Yd 274Ye 274Yf
+below;  see also 285K-285L, 285S and 437J-437T
+%437J 437K 437L 437M 437N (4{}37Q) 437P (4{}37T) 437R (4{}37O, 4{}37R)
+%437S (4{}37P}) 437T (4{}37S)
+in Volume 4).  But I maintain that the right way to look at the
+results of this chapter is to say that (i) the distributions $\nu_S$ are
+close to $\mu_G$ for the vague topology (ii) the sets
+$\{\nu:\tilde\rho(\nu,\mu_G)<\epsilon\}$ are open for that topology, and
+that is why $\tilde\rho(\nu_S,\mu_G)$ is small.
+}%end of comment
+
+\leader{*274M}{}\cmmnt{ I conclude with a simple pair of inequalities
+which are frequently useful when studying normal random variables.
+
+\medskip
+
+\noindent}{\bf Lemma} (a)
+$\int_x^{\infty}e^{-t^2/2}dt\le\Bover1xe^{-x^2/2}$ for every $x>0$.
+
+(b) $\int_x^{\infty}e^{-t^2/2}dt\ge\Bover1{2x}e^{-x^2/2}$ for every
+$x\ge 1$.
+
+\proof{{\bf (a)}
+
+$$\eqalign{\int_x^{\infty}e^{-t^2/2}dt
+=\int_0^{\infty}e^{-(x+s)^2/2}ds
+\le e^{-x^2/2}\int_0^{\infty}e^{-xs}ds
+=\Bover1xe^{-x^2/2}.\cr}$$
+
+\medskip
+
+{\bf (b)} Set
+
+\Centerline{$f(t)=e^{-t^2/2}-(1-x(t-x))e^{-x^2/2}$.}
+
+\noindent Then $f(x)=f'(x)=0$ and $f''(t)=(t^2-1)e^{-t^2/2}$ is positive
+for $t\ge x$ (because $x\ge 1$).   Accordingly $f(t)\ge 0$ for every
+$t\ge x$, and $\int_x^{x+1/x}f(t)dt\ge 0$.   But this means just that
+
+$$\eqalign{\int_x^{\infty}e^{-t^2/2}dt
+\ge\int_x^{x+\bover1x}e^{-t^2/2}dt
+\ge\int_x^{x+\bover1x}(1-x(t-x))e^{-x^2/2}dt
+=\Bover1{2x}e^{-x^2/2},\cr}$$
+
+\noindent as required.
+}%end of proof of 274M
+
+\exercises{
+\leader{274X}{Basic exercises $\pmb{>}$(a)}
+%\spheader 274Xa
+Use 272U to give an alternative proof of 274B.
+%274B
+
+\spheader 274Xb Suppose that $f:\Bbb R\to\Bbb R$ is absolutely continuous
+on every closed bounded interval, and that
+$\int_{-\infty}^{\infty}|f'(x)|e^{-ax^2}dx\penalty-100<\infty$ for every $a>0$.
+Let $X$ be a
+normal random variable with zero expectation.   Show that $\Expn(Xf(X))$
+and $\Expn(X^2)\Expn(f'(X))$ are defined and equal.
+%274B
+
+\spheader 274Xc Prove 274D when $h''$ is $M_3$-Lipschitz but not
+necessarily differentiable.
+%274D
+
+\spheader 274Xd Let $\sequence{k}{m_k}$ be a strictly increasing
+sequence in $\Bbb N$ such that $m_0=0$ and
+$\lim_{k\to\infty}m_k/m_{k+1}=0$.   Let $\sequencen{X_n}$ be an
+independent sequence of random variables such that
+$\Pr(X_n=\sqrt{m_{k}})=\Pr(X_n=-\sqrt{m_{k}})=1/2m_{k}$,
+$\Pr(X_n=0)=1-1/m_{k}$ whenever $m_{k-1}\le n<m_{k}$.    Show that the
+Central Limit Theorem is not valid for $\sequencen{X_n}$.
+\Hint{setting $W_k=(X_0+\ldots+X_{m_k-1})/\sqrt{m_k}$, show that
+$\Pr(W_k\in[\epsilon,1-\epsilon])\to 0$ for every $\epsilon>0$.}
+%274G mt27bits
+
+\spheader 274Xe Let $\sequencen{X_n}$ be any independent
+sequence of random variables all with the same distribution;  suppose
+that they all have finite variance $\sigma^2>0$, and that their common
+expectation is $c$.   Set $S_n=\Bover1{\sqrt{n+1}}(X_0+\ldots+X_n)$ for each $n$, and let $Y$ be a normal random variable with expectation $c$ and variance $\sigma^2$.   Show that
+$\lim_{n\to\infty}\Pr(S_n\le a)=\Pr(Y\le a)$
+uniformly for $a\in\Bbb R$.
+%274I
+
+%\sqheader 274Xf
+\wheader{274Xf}{10}{4}{4}{48pt}$\pmb{>}${\bf (f)}
+Show that for any $a\in\Bbb R$,
+
+$$\lim_{n\to\infty}\bover{1}{2^n}
+\sum_{r=0}^{\lfloor\bover{n}2+a\bover{\sqrt{n}}2\rfloor}
+\bover{n!}{r!(n-r)!}
+=\lim_{n\to\infty}\bover1{2^n}\#(\{I:I\subseteq
+n,\,\#(I)\le\Bover{n}2+a\Bover{\sqrt{n}}2\})
+=\Phi(a).$$
+%274I
+
+\spheader 274Xg Show that 274I is a special case of 274J.
+%274J
+
+\spheader 274Xh Let $\sequencen{X_n}$ be an independent sequence
+of real-valued random variables with zero expectation.   Set
+$s_n=\sqrt{\sum_{i=0}^n\Var(X_i)}$ and
+
+\Centerline{$S_n=\Bover1{s_n}(X_0+\ldots+X_n)$}
+
+\noindent for each $n\in\Bbb N$.   Suppose that there is some $\delta>0$
+such that
+
+\Centerline{$\lim_{n\to\infty}\Bover1{s_n^{2+\delta}}
+\sum_{i=0}^n\Expn(|X_i|^{2+\delta})=0$.}
+
+\noindent  Show that $\lim_{n\to\infty}\Pr(S_n\le a)=\Phi(a)$ uniformly
+for $a\in\Bbb R$.   (This is a form of {\bf Liapounoff's central limit
+theorem};  see {\smc Liapounoff 1901}.)
+%274K
+
+\spheader 274Xi Let $P$ be the set of Radon probability measures
+on $\Bbb R$.   Let $\nu_0\in P$, $a\in\Bbb R$.   Show that the map
+$\nu\mapsto\nu\ocint{-\infty,a}:P\to[0,1]$ is continuous at $\nu_0$ for
+the vague topology on $P$ iff $\nu_0\{a\}=0$.
+%274L
+
+\spheader 274Xj Let $\sequencen{X_n}$ be an independent identically
+distributed sequence of random variables with non-zero
+finite variance.   Let
+$\sequencen{t_n}$ be a sequence in $\Bbb R$ such that
+$\sum_{n=0}^{\infty}t_n^2=\infty$.   Show that $\sum_{n=0}^{\infty}t_nX_n$
+is undefined or infinite a.e.   \Hint{First deal with the case in which
+$\sequencen{t_n}$ does not converge to $0$.
+Otherwise, use 274G to show that, for any $n\in\Bbb N$,
+$\lim_{m\to\infty}\Pr(|\sum_{i=n}^mt_iX_i|\ge 1)\ge\bover12)$.  See also
+276Xd.}
+%274G
+%query:  do we really need `finite variance'?
+
+\spheader 274Xk Let $\sequencen{X_n}$ be an independent
+sequence of real-valued random variables with zero expectation.
+Suppose that $M\ge 0$ is such that $|X_n|\le M$ a.e.\ for every $n$, and
+that $\sum_{n=0}^{\infty}\Var(X_n)=\infty$.   Set
+$s_n=\sqrt{\sum_{i=0}^n\Var(X_i)}$ for each $n$, and
+$S_n=\Bover1{s_n}\sum_{i=0}^nX_i$ when $s_n>0$.   Show that
+$\lim_{n\to\infty}\Pr(S_n\le a)=\Phi(a)$ for every $a\in\Bbb R$.
+%274G
+%out of order query
+
+\leader{274Y}{Further exercises (a)}
+%\spheader 274Ya
+({\smc Steele 86})
+Suppose that $X_0,\ldots,X_n,Y_0,\ldots,Y_n$ are independent random
+variables such that, for each $i\le n$,
+$X_i$ and $Y_i$ have the same distribution.
+Let $h:\BbbR^{n+1}\to\Bbb R$ be a Borel measurable function, and set
+$Z=h(X_0,\ldots,X_n)$, $Z_i=h(X_0,\ldots,X_{i-1},Y_i,X_{i+1},\ldots,X_n)$
+for each $i$
+(with $Z_0=h(Y_0,X_1,\ldots,X_n)$ and $Z_n=h(X_0,\ldots,X_{n-1},Y_n)$,
+of course).   Suppose that $Z$ has finite expectation.   Show that
+$\Var(Z)\le\bover12\sum_{i=0}^n\Expn(Z_i-Z)^2$.
+%274C mt27bits
+
+\spheader 274Yb\dvAnew{2010} Show that for any $\epsilon>0$ there is a
+smooth function $h:\Bbb R\to[0,1]$ such that
+$\chi\ocint{-\infty,-\epsilon}\le h\le\chi\coint{\epsilon,\infty}$.
+%274E
+
+\spheader 274Yc\dvAformerly{2{}74Ya}
+Write $P$ for the set of Radon
+probability measures on $\Bbb R$.   For $\nu$, $\nuprime\in P$ set
+
+$$\eqalign{\rho(\nu,\nuprime)
+=\inf\{\epsilon:\epsilon\ge 0,\,\nu\ocint{-\infty,a-\epsilon}-\epsilon
+\le\nuprime\ocint{-\infty,a}
+&\le\nu\ocint{-\infty,a+\epsilon}+\epsilon\cr
+&\quad\quad\text{ for every }a\in\Bbb R\}.\cr}$$
+
+\noindent Show that $\rho$ is a metric on $P$ and that it defines the
+vague topology on $P$.   ($\rho$ is called {\bf L\'evy's metric}.)
+%274L
+
+\spheader 274Yd Write $P$ for the set of Radon probability
+measures on $\Bbb R$, and let $\tilde\rho$ be the metric on $P$ defined
+in 274Lb.   Show that if $\nu\in P$ is atomless and $\epsilon>0$, then
+$\{\nuprime:\nuprime\in P,\,\tilde\rho(\nuprime,\nu)<\epsilon\}$ is open
+for the vague topology on $P$.
+%274L
+
+\spheader 274Ye Let $\sequencen{S_n}$ be a sequence of
+real-valued random variables, and $Z$ a standard normal random variable.
+Show that the following are equiveridical:
+
+\quad(i) $\mu_G=\lim_{n\to\infty}\nu_{S_n}$ for the vague topology,
+writing $\nu_{S_n}$ for the distribution of $S_n$;
+
+\quad(ii) $\Expn(h(Z))=\lim_{n\to\infty}\Expn(h(S_n))$ for every bounded
+continuous function $h:\Bbb R\to\Bbb R$;
+
+\quad(iii) $\Expn(h(Z))=\lim_{n\to\infty}\Expn(h(S_n))$ for every
+bounded function $h:\Bbb R\to\Bbb R$ such that ($\alpha$) $h$ has
+continuous derivatives of all orders ($\beta$) $\{x:h(x)\ne 0\}$ is
+bounded;
+
+\quad(iv) $\lim_{n\to\infty}\Pr(S_n\le a)=\Phi(a)$ for every
+$a\in\Bbb R$;
+
+\quad(v) $\lim_{n\to\infty}\Pr(S_n\le a)=\Phi(a)$ uniformly for
+$a\in\Bbb R$;
+
+\quad(vi) $\{a:\lim_{n\to\infty}\Pr(S_n\le a)=\Phi(a)\}$ is dense in
+$\Bbb R$.
+
+\noindent (See also 285L.)
+%274L
+
+\spheader 274Yf Let $(\Omega,\Sigma,\mu)$ be a probability space,
+and $P$ the set of Radon probability measures on
+$\Bbb R$.   Show that $X\mapsto\nu_X:\eusm L^0(\mu)\to P$ is continuous
+for the topology of convergence in measure on $\eusm L^0(\mu)$ and the
+vague topology on $P$.
+%274L
+
+\spheader 274Yg Let $\sequencen{X_n}$ be an independent
+sequence of real-valued random variables.   Suppose that
+there is an $M\ge 0$ such that $|X_n|\le M$ a.e.\ for every $n\in\Bbb N$,
+and that $\sum_{n=0}^{\infty}X_n$ is defined, as a real number, almost
+everywhere.   Show that $\sum_{n=0}^{\infty}\Var(X_n)<\infty$.
+%274Xk 274G 274Yf
+
+}%end of exercises
+
+\endnotes{
+\Notesheader{274} For more than two hundred years the Central Limit
+Theorem has been one of the glories of mathematics, and no branch of
+mathematics or science would be the same without it.   I suppose it is
+the most important single theorem of probability theory;  and I observe
+that the proof hardly uses measure theory.   To be sure, I have clothed
+the arguments above in the language of measure and integration.   But if
+you look at their essence, the vital elements of the proof are
+
+\inset{(i) a linear combination of independent normal random variables
+is normal (274Ae, 274B);}
+
+\inset{(ii) if $U$, $V$, $W$ are independent random variables, and $h$
+is a bounded continuous function, then
+$|\Expn(h(U,V,W))|\le\sup_{t\in\Bbb R}|\Expn(h(U,V,t))|$ (274C);}
+
+\inset{(iii) if $(X_0,\ldots,X_n)$ are independent random variables,
+then we can find independent random variables
+$(X_0',\ldots,X_n',Z_0,\ldots,Z_n)$ such that $Z_j$ is standard normal
+and $X_j'$ has the same distribution as $X_j$, for each $j$ (274F).}
+
+\noindent The rest of the argument consists of elementary calculus,
+careful estimations and a few of the most fundamental properties of
+expectations and independence.   Now (ii) and (iii) are justified above
+by appeals to Fubini's theorem, but surely they belong to the list of
+probabilistic intuitions which take priority over the identification of
+probabilities with countably additive functionals.   If they had given
+any insuperable difficulty it would have been a telling argument against
+the model of probability we were using, but would not have affected the
+Central Limit Theorem.   In fact (i) seems to be the place where we
+really need a mathematical  model of the concept of `distribution', and
+all the relevant calculations can be done in terms of the Riemann
+integral on the plane, with no mention of countable additivity.   So
+while I am happy and proud to have written out a version of these
+beautiful ideas, I have to admit that they are in no essential way
+dependent on the rest of this treatise.
+
+In \S285 I will describe a quite different approach to the theorem,
+using much more sophisticated machinery;  but it will again be the case,
+perhaps more thoroughly hidden, that the relevance of measure theory
+will not be to the theorem itself, but to our imagination of what an
+arbitrary distribution is.   For here I do have a claim to make for my
+subject.   The characterization of distribution functions as arbitrary
+monotonic functions, continuous on the right, and with the correct limits
+at $\pm\infty$ (271Xb), together with the analysis of monotonic
+functions in \S226, gives us a chance of forming a mental picture of
+the proper class of objects to which such results as the Central Limit
+Theorem can be applied.
+
+Theorem 274F is a trifling modification of Theorem 3 of
+{\smc Lindeberg 1922}.   Like the original, it emphasizes what I
+believe to be vital to all the limit theorems of this chapter:  they are
+best founded on a proper understanding of finite sequences of random
+variables.   Lindeberg's condition was the culmination of a long search
+for the most general conditions under which the Central Limit Theorem
+would be valid.  I offer a version of Laplace's theorem (274Xf)
+as the starting place, and Liapounoff's condition (274Xh) as an example
+of one of the intermediate stages.   Naturally the corollaries 274I,
+274J, 274K and 274Xe are those one seeks to apply by choice.   There is
+an intriguing, but as far as I know purely coincidental, parallel between
+273H/274K and 273I/274Xe.   As an example of an independent sequence
+$\sequencen{X_n}$ of random variables, all with expectation zero and
+variance $1$, to which the Central Limit Theorem does {\it not} apply, I
+offer 274Xd.
+}%end of notes
+
+\discrpage
+

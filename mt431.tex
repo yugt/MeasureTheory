@@ -1,0 +1,480 @@
+\frfilename{mt431.tex}
+\versiondate{9.4.05}
+\copyrightdate{2000}
+
+\def\chaptername{Topological measure spaces II}
+\def\sectionname{Souslin's operation}
+
+\newsection{431}
+
+I begin the chapter with a short section on Souslin's
+operation\cmmnt{ (\S421)}.   The basic facts we need to know are that
+(in a complete locally determined measure space) the family of
+measurable sets is closed under Souslin's operation (431A), and that the
+kernel of a Souslin scheme can be approximated from within in measure
+(431D).
+
+\leader{431A}{Theorem} Let $(X,\Sigma,\mu)$ be a complete locally
+determined measure space.   Then $\Sigma$ is closed under Souslin's
+operation.
+
+\proof{ (I follow the notation of 421A-421B.)
+Let $\family{\sigma}{S^*}{E_{\sigma}}$ be a Souslin scheme
+in $\Sigma$ with kernel $A$.   Write
+$S=\bigcup_{k\in\BbbN}\BbbN^k$.
+If $F\in\Sigma$ and $\mu F<\infty$, then $A\cap F\in\Sigma$.
+\Prf\ For each $\sigma\in S$, set
+
+\Centerline{$A_{\sigma}
+=\bigcup_{\phi\in\BbbN^{\Bbb N},\phi\supseteq\sigma}
+  \bigcap_{n\ge 1}E_{\phi\restr n}$,}
+
+\noindent and let $G_{\sigma}$ be a measurable envelope of
+$A_{\sigma}\cap F$.   Because $A_{\sigma}\subseteq E_{\sigma}$ (writing
+$E_{\emptyset}=X$), we may suppose that $G_{\sigma}\subseteq
+E_{\sigma}\cap F$.   Now, for any $\sigma\in S$,
+
+\Centerline{$A_{\sigma}\cap F
+=\bigcup_{i\in\BbbN}A_{\sigma^{\smallfrown}\fraction{i}}\cap F
+\subseteq\bigcup_{i\in\BbbN}G_{\sigma^{\smallfrown}\fraction{i}}$,}
+
+\noindent so
+
+\Centerline{$H_{\sigma}
+=G_{\sigma}\setminus\bigcup_{i\in\Bbb N}
+   G_{\sigma^{\smallfrown}\fraction{i}}$}
+
+\noindent is negligible.
+
+Set $H=\bigcup_{\sigma\in S}H_{\sigma}$, so that $H$ is negligible.
+Take any $x\in G_{\emptyset}\setminus H$.   Choose
+$\sequence{i}{\phi(i)}$
+inductively, as follows.   Given that
+$\sigma=\langle\phi(i)\rangle_{i<k}$
+has been chosen and $x\in G_{\sigma}$, then $x\notin H_{\sigma}$, so
+there must be some $j\in\BbbN$ such that $x\in G_{\sigma^{\smallfrown}\fraction{j}}$;
+set $\phi(k)=j$, and continue.   Now
+
+\Centerline{$x\in\bigcap_{k\ge 1}G_{\phi\restr k}
+\subseteq\bigcap_{k\ge 1}E_{\phi\restr k}
+\subseteq A$.}
+
+Thus we see that $G_{\emptyset}\setminus H\subseteq A$;  as
+$G_{\emptyset}\subseteq F$, $G_{\emptyset}\setminus H\subseteq A\cap F$.
+On the other hand, $A\cap F\subseteq G_{\emptyset}$.   Because $H$ is
+negligible and $\mu$ is complete,
+$A\cap F\in\Sigma$.\ \Qed
+
+Because $\mu$ is locally determined, it follows that
+$A\in\Sigma$.   As $\family{\sigma}{S^*}{E_{\sigma}}$ is arbitrary,
+$\Sigma$ is closed under Souslin's operation.
+}%end of proof of 431A
+
+\leader{431B}{Corollary} If $(X,\frak T,\Sigma,\mu)$ is a complete
+locally determined topological measure space, every Souslin-F set in
+$X$\cmmnt{ (definition:  421K)} is measurable.
+
+\leader{431C}{Corollary} Let $X$ be a set and $\theta$ an outer measure
+on $X$.   Let $\mu$ be the measure defined by \Caratheodory's method,
+and $\Sigma$ its domain.   Then $\Sigma$ is closed under Souslin's
+operation.
+
+\proof{ Let $\family{\sigma}{S^*}{E_{\sigma}}$ be a Souslin scheme in
+$\Sigma$ with kernel $A$.   Take any $C\subseteq X$ such that
+$\theta C<\infty$.   Then $\theta_C=\theta\restrp\Cal PC$ is an outer
+measure on $C$;  let $\mu_C$ be the measure on $C$ defined from
+$\theta_C$ by \Caratheodory's method, and $\Sigma_C$ its domain.   If
+$\sigma\in S^*$ and $D\subseteq C$ then
+
+$$\eqalign{\theta_C(D\cap C\cap E_{\sigma})
+  +\theta_C(D\setminus(C\cap E_{\sigma}))
+&=\theta(D\cap E_{\sigma})+\theta(D\setminus E_{\sigma})\cr
+&=\theta D=\theta_CD;\cr}$$
+
+\noindent as $D$ is arbitrary, $C\cap E_{\sigma}\in\Sigma_C$.   $\mu_C$
+is a complete totally finite measure, so 431A tells us that the kernel
+of the Souslin scheme $\family{\sigma}{S^*}{C\cap E_{\sigma}}$ belongs to
+$\Sigma_C$.   But this is just $C\cap A$ (applying 421Cb to the identity
+map from $C$ to $X$).   So
+
+\Centerline{$\theta(C\cap A)+\theta(C\setminus A)
+=\theta_C(C\cap A)+\theta_C(C\setminus A)
+=\theta_CC=\theta C$.}
+
+\noindent As $C$ is arbitrary, $A\in\Sigma$ (113D).   As
+$\family{\sigma}{S^*}{E_{\sigma}}$ is arbitrary, we have the result.
+}%end of proof of 431C
+
+\leader{431D}{Theorem} Let $(X,\Sigma,\mu)$ be a complete locally
+determined measure space, and $\family{\sigma}{S^*}{E_{\sigma}}$ a Souslin
+scheme in $\Sigma$ with kernel $A$.   Then
+
+$$\eqalign{\mu A
+&=\sup\{\mu(\bigcup_{\phi\in K}\bigcap_{n\ge 1}E_{\phi\restr n}):
+  K\subseteq\BbbN^{\BbbN}\text{ is compact}\}\cr
+&=\sup\{\mu(\bigcup_{\phi\le\psi}\bigcap_{n\ge 1}E_{\phi\restr n}):
+  \psi\in\BbbN^{\BbbN}\},\cr}$$
+
+\noindent writing $\phi\le\psi$ if $\phi(i)\le\psi(i)$ for every
+$i\in\Bbb N$.
+
+\proof{{\bf (a)} By 431A, $A$ is measurable.   For
+$K\subseteq\BbbN^{\Bbb N}$, set
+$H_K=\bigcup_{\phi\in K}\bigcap_{n\ge 1}E_{\phi\restr n}$.   Of course
+$H_K\subseteq A$, and we know from 421M (or otherwise) that
+$H_K\in\Sigma$ if $K$ is compact.   So surely $\mu A\ge\mu H_K$ for
+every compact $K\subseteq \BbbN^{\BbbN}$.
+If $\psi\in\BbbN^{\BbbN}$, then
+$\{\phi:\phi\le\psi\}=\prod_{i\in\Bbb N}(\psi(i)+1)$ is compact.   We
+therefore have
+
+$$\eqalignno{\mu A
+&\ge\sup\{\mu(\bigcup_{\phi\in K}\bigcap_{n\ge 1}E_{\phi\restr
+n}):K\subseteq\BbbN^{\BbbN}\text{ is compact}\}\cr
+&\ge\sup\{\mu(\bigcup_{\phi\le\psi}\bigcap_{n\ge 1}E_{\phi\restr
+n}):\psi\in\BbbN^{\BbbN}\}.\cr}$$
+
+\noindent So what I need to prove is that
+
+\Centerline{$\mu A\le\sup\{\mu(\bigcup_{\phi\le\psi}\bigcap_{n\ge
+1}E_{\phi\restr n}):\psi\in\BbbN^{\BbbN}\}$.}
+
+\medskip
+
+{\bf (b)} Fix on a set $F\in\Sigma$ of finite measure.   For $\sigma\in
+S=\bigcup_{k\in\BbbN}\BbbN^k$ set
+
+\Centerline{$A_{\sigma}=\bigcup_{\phi\in\BbbN^{\Bbb
+N},\phi\supseteq\sigma}\bigcap_{n\ge 1}E_{\phi\restr n}$.}
+
+\noindent We need to know that $A_{\sigma}$ belongs to $\Sigma$;  this
+follows from 431A, because writing $E'_{\tau}=E_{\tau}$ if
+$\tau\subseteq\sigma$ or $\sigma\subseteq\tau$, $\emptyset$ otherwise,
+
+\Centerline{$A_{\sigma}
+=\bigcup_{\phi\in\BbbN^{\BbbN}}\bigcap_{n\ge 1}E'_{\phi\restr n}
+\in\Cal S(\Sigma)=\Sigma$,}
+
+\noindent writing $\Cal S$ for Souslin's operation, as in \S421.
+
+Let $\epsilon>0$, and take a family
+$\family{\sigma}{S}{\epsilon_{\sigma}}$ of strictly positive real
+numbers such that $\sum_{\sigma\in S}\epsilon_{\sigma}\le\epsilon$.
+For each $\sigma\in S$ we have $A_{\sigma}=\bigcup_{i\in\Bbb
+N}A_{\sigma^{\smallfrown}\fraction{i}}$, so there is an $m_{\sigma}\in\BbbN$ such
+that
+
+\Centerline{$\mu(F\cap A_{\sigma}\setminus\bigcup_{i\le
+m_{\sigma}}A_{\sigma^{\smallfrown}\fraction{i}})\le\epsilon_{\sigma}$.}
+
+\noindent Define $\psi\in\BbbN^{\BbbN}$ by saying that
+
+\Centerline{$\psi(k)=\max\{m_{\sigma}:\sigma\in\Bbb
+N^k,\,\sigma(i)\le\psi(i)$ for every $i<k\}$}
+
+\noindent for each $k\in\BbbN$.  Set
+
+\Centerline{$H=\bigcup_{\phi\in\BbbN^{\BbbN},\phi\le\psi}\bigcap_{n\ge
+1}E_{\phi\restr n}$.}
+
+\medskip
+
+{\bf (c)} Set
+
+\Centerline{$G=\bigcup_{\sigma\in S}F\cap
+A_{\sigma}\setminus\bigcup_{i\le m_{\sigma}}A_{\sigma^{\smallfrown}\fraction{i}}$,}
+
+\noindent so that $\mu G\le\epsilon$, by the choice of the
+$\epsilon_{\sigma}$ and the $m_{\sigma}$.   Then
+$F\cap A\setminus G\subseteq H$.
+\Prf\ If $x\in F\cap A\setminus G$, choose
+$\sequence{i}{\phi(i)}$ inductively, as follows.   Given that
+$\phi(i)\le\psi(i)$ for $i<k$ and $x\in A_{\sigma}$, where
+$\sigma=\langle\phi(i)\rangle_{i<k}$, then $x\notin
+A_{\sigma}\setminus\bigcup_{j\le m_{\sigma}}A_{\sigma^{\smallfrown}\fraction{j}}$,
+so there must be some $j\le m_{\sigma}$ such that
+$x\in A_{\sigma^{\smallfrown}\fraction{j}}$;  set $\phi(k)=j$;  because
+$\sigma\in\prod_{i<k}(\psi(i)+1)$, $j\le m_{\sigma}\le\psi(k)$, and the
+induction continues.   At the end of the induction, $\phi\le\psi$ and
+
+\Centerline{$x\in\bigcap_{n\ge 1}A_{\phi\restr n}\subseteq\bigcap_{n\ge
+1}E_{\phi\restr n}\subseteq H$.   \Qed}
+
+\medskip
+
+{\bf (d)} It follows that
+
+\Centerline{$\mu(A\cap F)\le\mu G+\mu H\le\epsilon+\mu H$.}
+
+\noindent As $F$ and $\epsilon$ are arbitrary, and $\mu$ is semi-finite,
+
+\Centerline{$\mu A\le\sup\{\mu(\bigcup_{\phi\le\psi}\bigcap_{n\ge
+1}E_{\phi\restr n}):\psi\in\BbbN^{\BbbN}\}$,}
+
+\noindent and the proof is complete.
+}%end of proof of 431D
+
+\leader{431E}{Corollary} If $(X,\frak T,\Sigma,\mu)$ is a topological
+measure space and $E\subseteq X$ is a Souslin-F set with finite outer
+measure, then $\mu^*E=\sup\{\mu F:F\subseteq E$ is closed$\}$.
+
+\proof{ Let $\tilde\mu$ be the c.l.d.\ version of
+$\mu$\cmmnt{ (213E)}.   Let $\family{\sigma}{S^*}{E_{\sigma}}$ be a
+Souslin scheme of closed sets with kernel $E$.   Then 213Fb and 431D
+tell us that
+
+\Centerline{$\mu^*E=\tilde\mu E
+=\sup_{K\subseteq\NN\text{ is compact}}\mu F_K$,}
+
+\ifdim\pagewidth>467pt\fontdimen3\tenrm=2.5pt\fi
+\ifdim\pagewidth>467pt\fontdimen4\tenrm=1.67pt\fi
+\noindent where
+$F_K=\bigcup_{\phi\in K}\bigcap_{n\ge 1}E_{\phi\restr n}$ for
+$K\subseteq\NN$.   But every $F_K$ is closed, by 421M.   So
+$\mu^*E\penalty-100\le\penalty-100
+\sup_{F\subseteq E\text{ is closed}}\mu F$;  as the reverse
+inequality is trivial, we have the result.
+\fontdimen3\tenrm=1.67pt
+\fontdimen4\tenrm=1.11pt
+}%end of proof of 431E
+
+\leader{*431F}{}\cmmnt{ Two further versions of the ideas in
+431A will be useful.   The first is topological.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $X$ be any topological space, and
+$\widehat{\Cal B}$ its Baire-property algebra.
+
+(a) For any $A\subseteq X$, there is a Baire-property envelope of $A$,
+that is, a set $E\in\widehat{\Cal B}$ such that
+$A\subseteq E$ and $E\setminus F$ is meager whenever
+$A\subseteq F\in\widehat{\Cal B}$.
+
+(b) $\widehat{\Cal B}$ is closed under Souslin's operation.
+
+\proof{{\bf (a)} By 4A3Ra, there is an open set $H\subseteq X$ such that
+$A\setminus H$ is meager and $H\cap G$ is empty whenever $G\subseteq X$
+is open and $A\cap G$ is meager.   Set $E=A\cup H$;  then $E\supseteq A$
+and $E\symmdiff H=A\setminus H$ is meager, so $E\in\widehat{\Cal B}$.
+If $A\subseteq F\in\widehat{\Cal B}$, let $G$ be an open set such that
+$G\symmdiff(X\setminus F)$ is meager.   Then $G\cap A\subseteq G\cap F$
+is meager, so $G\cap H$ is empty and
+$E\setminus F\subseteq(E\symmdiff H)\cup(G\symmdiff(X\setminus F))$ is
+meager.  Thus $E$ is a Baire-property envelope of $A$.
+
+\medskip
+
+{\bf (b)} Let $\family{\sigma}{S^*}{E_{\sigma}}$ be a Souslin scheme
+in $\widehat{\Cal B}$ with kernel $A$.   Write
+
+\Centerline{$S=\bigcup_{k\in\BbbN}\BbbN^k=S^*\cup\{\emptyset\}$.}
+
+\noindent For each $\sigma\in S$, set
+
+\Centerline{$A_{\sigma}
+=\bigcup_{\phi\in\BbbN^{\Bbb N},\phi\supseteq\sigma}
+  \bigcap_{n\ge 1}E_{\phi\restr n}$,}
+
+\noindent and let $G_{\sigma}$ be a Baire-property envelope of
+$A_{\sigma}$ as described in (a).   Because
+$A_{\sigma}\subseteq E_{\sigma}$ (writing
+$E_{\emptyset}=X$), we may suppose that
+$G_{\sigma}\subseteq E_{\sigma}$.   Now, for any $\sigma\in S$,
+
+\Centerline{$A_{\sigma}
+=\bigcup_{i\in\BbbN}A_{\sigma^{\smallfrown}\fraction{i}}
+\subseteq\bigcup_{i\in\BbbN}G_{\sigma^{\smallfrown}\fraction{i}}$,}
+
+\noindent so
+
+\Centerline{$H_{\sigma}
+=G_{\sigma}\setminus\bigcup_{i\in\Bbb N}G_{\sigma^{\smallfrown}\fraction{i}}$}
+
+\noindent is meager.
+
+Set $H=\bigcup_{\sigma\in S}H_{\sigma}$, so that $H$ is meager.
+Take any $x\in G_{\emptyset}\setminus H$.   Choose
+$\sequence{i}{\phi(i)}$
+inductively, as follows.   Given that
+$\sigma=\langle\phi(i)\rangle_{i<k}$
+has been chosen and $x\in G_{\sigma}$, then $x\notin H_{\sigma}$, so
+there must be some $j\in\BbbN$ such that
+$x\in G_{\sigma^{\smallfrown}\fraction{j}}$;   set $\phi(k)=j$, and continue.   Now
+
+\Centerline{$x\in\bigcap_{k\ge 1}G_{\phi\restr k}
+\subseteq\bigcap_{k\ge 1}E_{\phi\restr k}
+\subseteq A$.}
+
+Thus we see that $G_{\emptyset}\setminus H\subseteq A$.
+On the other hand, $A\subseteq G_{\emptyset}$, so
+$G_{\emptyset}\symmdiff A$ is meager and $A\in\widehat{\Cal B}$.   As
+$\family{\sigma}{S^*}{E_{\sigma}}$ is arbitrary,
+$\widehat{\Cal B}$ is closed under Souslin's operation.
+}%end of proof of 431F
+
+\vleader{48pt}{*431G}{}\cmmnt{ The second relies on a countable chain condition
+to give the same envelope property.
+
+\medskip
+
+\noindent}{\bf Theorem}\dvAnew{2008}
+Let $X$ be a set, $\Sigma$ a $\sigma$-algebra of
+subsets of $X$ and $\Cal I\subseteq\Sigma$ a $\sigma$-ideal of subsets
+of $X$.   If $\Sigma/\Cal I$ is ccc then $\Sigma$ is closed under
+Souslin's operation.
+
+\proof{{\bf (a)} As before, the essential fact is that for every
+$A\subseteq X$
+there is an $E\in\Sigma$ such that $A\subseteq E$ and $F\in\Cal I$
+whenever $F\in\Sigma$ and
+$F\subseteq E\setminus A$.   \Prf\ Let $\Cal E$ be a maximal disjoint
+family of members of $\Sigma\setminus\Cal I$ disjoint from $A$.
+Because $\Sigma/\Cal I$ is
+ccc, $\Cal E$ is countable (316C), so $E=X\setminus\bigcup\Cal E$
+belongs to $\Sigma$;  now it is easy to see that this $E$ serves.\ \Qed
+
+In this case I will call $E$ a `measurable envelope' of $A$.
+
+\medskip
+
+{\bf (b)} Now we can argue as in 431A or 431F.   Let
+$\family{\sigma}{S^*}{E_{\sigma}}$ be a Souslin scheme
+in $\Sigma$ with kernel $A$;  for
+$\sigma\in S$, set
+
+\Centerline{$A_{\sigma}
+=\bigcup_{\phi\in\BbbN^{\Bbb N},\sigma\subseteq\phi}
+  \bigcap_{n\ge 1}E_{\phi\restr n}$,}
+
+\noindent and let $G_{\sigma}\subseteq E_{\sigma}$
+be a measurable envelope of $A_{\sigma}$.   Setting
+
+\Centerline{$H=\bigcup_{\sigma\in S}
+  (G_{\sigma}\setminus\bigcup_{i\in\Bbb N}
+    G_{\sigma^{\smallfrown}\fraction{i}})$,}
+
+\noindent $H\in\Cal I$ and $G_{\emptyset}\symmdiff A\subseteq H$, so
+$A\in\Sigma$.
+As $\family{\sigma}{S^*}{E_{\sigma}}$ is arbitrary, $\Sigma$ is closed under
+Souslin's operation.
+}%end of proof of 431G
+
+\exercises{
+\leader{431X}{Basic exercises (a)}
+%\spheader 431Xa
+Let $(X,\frak T,\Sigma,\mu)$ be a complete locally
+determined topological measure space, $Y$ a topological space,
+and $f:X\to Y$ a measurable function.   Let $\Cal B(Y)$ be the Borel
+algebra of $Y$.   Show that $f^{-1}[B]\in\Sigma$ for every
+$B\in\Cal S(\Cal B(Y))$.
+%431A
+
+\spheader 431Xb  Let $X$ be a topological space and $\mu$ a semi-finite
+topological measure on $X$ which is inner regular with respect to the
+Souslin-F sets.   Show that $\mu$ is inner regular with respect to the
+closed sets.
+%431D
+
+\spheader 431Xc Let $(X,\Sigma,\mu)$ be a complete locally determined
+measure space, and $\family{\sigma}{S^*}{E_{\sigma}}$ a regular Souslin
+scheme in $\Sigma$ (definition:  421Xm) with kernel $A$.   Show that
+
+\Centerline{$\mu A
+=\sup_{\phi\in\BbbN^{\BbbN}}\mu(\bigcap_{n\ge 1}E_{\phi\restr n})$.}
+%431D
+
+\sqheader 431Xd Let $(X,\Sigma,\mu)$ be a measure space with locally
+determined negligible sets (definition:  213I), and
+$\family{\sigma}{S^*}{E_{\sigma}}$ a Souslin scheme in $\Sigma$
+with kernel $A$.   Show that
+
+\Centerline{$\mu^*A
+=\sup_{\psi\in\BbbN^{\Bbb N}}
+  \mu(\bigcup_{\phi\le\psi}\bigcap_{n\ge 1}E_{\phi\restr n})$.}
+%431D
+
+\sqheader 431Xe Let $(X,\Sigma,\mu)$ be a semi-finite measure space, and
+$\family{\sigma}{S^*}{E_{\sigma}}$ a Souslin scheme in $\Sigma$
+with kernel $A$.   Show that
+
+\Centerline{$\mu_*A
+=\sup_{\psi\in\BbbN^{\Bbb N}}
+  \mu(\bigcup_{\phi\le\psi}\bigcap_{n\ge 1}E_{\phi\restr n})$.}
+%431D
+
+\leader{431Y}{Further exercises (a)}
+%\spheader 431Ya
+Let $(X,\Sigma,\mu)$ be a complete measure space with
+the measurable envelope property (213Xl).   Show that $\Sigma$ is closed
+under Souslin's operation.
+%431A
+
+\spheader 431Yb Let $X$ be a set, $\Sigma$ a $\sigma$-algebra of subsets
+of $X$, and $\Cal I$ a $\sigma$-ideal of subsets of $X$ such that
+$\Cal I\subseteq\Sigma$.   Suppose that for every $A\subseteq X$ there
+is an $F\in\Sigma$ such that
+$A\subseteq F$ and $F\setminus E\in\Cal I$ whenever
+$A\subseteq E\in\Sigma$.   Show that $\Sigma$ is closed under Souslin's
+operation.
+%431F
+
+\spheader 431Yc Let $X$ be a set, $\Sigma$ a $\sigma$-algebra of subsets
+of $X$, and $\Cal I$ an $\omega_1$-saturated $\sigma$-ideal of $\Sigma$;
+suppose that $A\in\Sigma$ whenever $A\subseteq B\in\Cal I$.    Show that
+$\Sigma$ is closed under Souslin's operation.
+%431Yb 431F
+}%end of exercises
+
+\endnotes{\Notesheader{431}
+From the point of view of measure theory, the most important property of
+Souslin's operation, after its idempotence, is the fact that (for many
+measure spaces) the family of measurable sets is closed under the
+operation (431A).   The proof I give here is based on the concept of
+measurable envelope, which can be used in other cases of great interest
+(431Yb, 431Yc).   But for some applications it is also very important to
+know that if $A$ is the kernel of a Souslin scheme
+$\family{\sigma}{S^*}{E_{\sigma}}$,
+then $A$ can be approximated from inside by sets of the form
+$H=\bigcup_{\phi\le\psi}\bigcap_{n\ge 1}E_{\phi\restr n}$ (431D, 431Xd),
+which belong to the $\sigma$-algebra generated by the $E_{\sigma}$
+(421M).   A typical application of this idea is when every $E_{\sigma}$
+is a Borel subset of $\Bbb R$;  then we find not only that $A$ is
+Lebesgue measurable
+(indeed, measured by every Radon measure on $\Bbb R$) but that (for
+any given Radon measure $\mu$) the Souslin scheme itself provides
+Borel subsets $H$ of $A$ of measure approximating the measure of $A$.
+
+Let me repeat that the essence of descriptive set theory is that we are
+not satisfied merely to know that a set of a certain type exists.   We
+want also to know how to build it, because we expect that an explicit
+construction will be valuable later on.   For instance, the construction
+given in 431D shows that if the Souslin scheme consists of closed
+compact sets, the sets $H$ will be compact (421Xn).
+
+I mention 431B as a typical application of 431A, even though it is both
+obvious and obviously less than what can be said.   The algebras
+$\Sigma$ of this section are algebras closed under Souslin's operation.
+In a complete locally determined topological measure space, the algebra
+$\Sigma$ of measurable sets includes the open sets (by definition),
+therefore the Borel algebra $\Cal B$, therefore $\Cal S(\Cal B)$;  but
+now we can take the algebra $\Cal A_1$ generated by $\Cal S(\Cal B)$,
+and $\Cal A_1$ and $\Cal S(\Cal A_1)$ will also be included in $\Sigma$,
+so that $\Sigma$ will included the algebra $\Cal A_2$ generated by
+$\Cal S(\Cal A_1)$, and so on.   (Note that $\Cal S(\Cal A_1)$ includes
+the $\sigma$-algebra generated by $\Cal A_1$, by 421F, so I do not need
+to mention that separately.)   We have to run through all the countable
+ordinals before we can be sure of getting to the smallest algebra
+$\Cal A_{\omega_1}=\bigcup_{\xi<\omega_1}\Cal A_{\xi}$ which contains
+every open set and is closed under Souslin's operation, and we shall
+then have $\Cal A_{\omega_1}\subseteq\Sigma$.
+
+The result in 431D is one of the special features of measures.   (A
+similar result, based on rather different hypotheses, is in 432K.)   But
+the argument of 431A can be applied in many other cases;  see
+431Yb-431Yc.   A striking one is 431F, which will be useful in Volume 5.
+%5{}14 5{}27
+}%end of notes
+
+\discrpage
+

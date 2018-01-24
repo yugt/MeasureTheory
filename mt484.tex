@@ -1,0 +1,1994 @@
+\frfilename{mt484.tex}
+\versiondate{21.1.10}
+\copyrightdate{2001}
+
+\def\varinnerprod#1#2{#1\dotproduct#2}
+
+\def\chaptername{Gauge integrals}
+\def\sectionname{The Pfeffer integral}
+
+\newsection{484}
+
+I give brief notes on what seems at present to be the most
+interesting of the multi-dimensional versions of the Henstock integral,
+leading to Pfeffer's Divergence Theorem (484N).
+
+\leader{484A}{Notation}\cmmnt{ This section will depend heavily on
+Chapter 47, and will use much of the same notation.}   $r\ge 2$ will be
+a fixed integer, and $\mu$ will be Lebesgue measure on
+$\BbbR^r$\cmmnt{, while
+$\mu_{r-1}$ is Lebesgue measure on $\BbbR^{r-1}$}.   As in
+\S\S473-475, let
+$\nu$ be `normalized' $(r-1)$-dimensional Hausdorff measure on
+$\BbbR^r$\cmmnt{, as
+described in \S265;  that is, $\nu=2^{-r+1}\beta_{r-1}\mu_{H,r-1}$,
+where $\mu_{H,r-1}$ is
+$(r-1)$-dimensional Hausdorff measure on $\BbbR^r$ as described in
+\S264}, and
+
+$$\eqalign{\beta_{r-1}
+&=\Bover{2^{2k}k!\pi^{k-1}}{(2k)!}\text{ if }r=2k\text{ is even},\cr
+&=\Bover{\pi^k}{k!}\text{ if }r=2k+1\text{ is odd}\cr}$$
+
+\noindent\cmmnt{is} the Lebesgue measure of a ball of radius $1$ in
+$\BbbR^{r-1}$\cmmnt{ (264I)}.
+For this section only, let us say that a subset of $\BbbR^r$ is {\bf
+thin} if it is of the form $\bigcup_{n\in\Bbb N}A_n$ where $\nu^*A_n$ is
+finite for every $n$.
+\cmmnt{Note that every thin set is $\mu$-negligible (471L).
+For $A\subseteq\BbbR^r$, write $\partial A$ for
+its ordinary topological boundary.   If $x\in\BbbR^r$ and $\epsilon>0$,
+$B(x,\epsilon)$ will be the closed ball $\{y:\|y-x\|\le\epsilon\}$.
+}%end of comment
+
+I will use the term {\bf dyadic cube} for sets of the
+form $\prod_{i<r}\coint{2^{-m}k_i,2^{-m}(k_i+1)}$ where $m$,
+$k_0,\ldots,k_{r-1}\in\Bbb Z$;  write $\Cal D$ for the set of dyadic
+cubes in $\BbbR^r$.   Note that if\cmmnt{ $D$, $D'\in\Cal D$, either
+$D\subseteq D'$ or $D'\subseteq D$ or $D\cap D'=\emptyset$;
+so if} $\Cal D_0\subseteq\Cal D$, the
+maximal members of $\Cal D_0$ are disjoint.
+
+It will be helpful to have an abbreviation for the following expression:
+set
+
+\Centerline{$\alpha^*
+=\min(\Bover1{r^{r/2}},\Bover{2^{r-2}}{r\beta_r^{(r-1)/r}})$.}
+
+\noindent\cmmnt{(As will become apparent, the
+actual value of this
+constant is of no importance;  but the strict logic of the arguments
+below depends on $\alpha^*$ being small enough.)}
+
+\cmmnt{As in \S475, I write $\intstar A$, $\clstar A$ and
+$\partstar A$ for the
+essential interior, essential closure and essential boundary of a set
+$A\subseteq\BbbR^r$ (475B).   Recall that a set $A\subseteq\BbbR^r$ has
+finite perimeter
+in the sense of 474D iff $\nu(\partstar A)$ is finite, and then
+
+\Centerline{$\nu(\partstar A)=\lambda^{\partial}_A(\BbbR^r)=\per A$}
+
+\noindent is the perimeter of $A$ (475M);  we shall also need to
+remember that $A$ is necessarily Lebesgue measurable.}%end of comment
+
+$\Cal C$ will be the family of subsets of $\BbbR^r$ with locally finite
+perimeter, and
+$\Cal V$ the family of bounded sets in $\Cal C$\cmmnt{, that is, the
+family of bounded sets with finite perimeter}.
+%`Cacciopoli sets' in Pfeffer, Tamanini & Giacomelli
+\cmmnt{Note that $\Cal C$ is an algebra of subsets of $\BbbR^r$
+(475Ma), and that $\Cal V$ is an ideal in $\Cal C$.
+}
+
+\leader{484B}{Theorem}\cmmnt{ ({\smc Tamanini \& Giacomelli 89})}
+%Theorem 2.3
+Let $E\subseteq\BbbR^r$ be a Lebesgue measurable set of
+finite measure and perimeter, and $\epsilon>0$.   Then there is a
+Lebesgue measurable set $G\subseteq E$ such that $\per G\le\per E$,
+$\mu(E\setminus G)\le\epsilon$ and $\clstar G=\overline{G}$.
+
+\proof{({\smc Pfeffer 91b}) {\bf (a)} Set
+$\alpha=\bover1{\epsilon}\per E$.   For measurable sets
+$G\subseteq E$ set $q(G)=\per G-\alpha\mu G$.   Then there is a
+self-supporting measurable set $G\subseteq E$ such that $q(G)\le q(G')$
+whenever $G'\subseteq E$ is measurable.
+
+\Prf\ Write $\Sigma$ for the family of Lebesgue measurable subsets of
+$\BbbR^r$;  give $\Sigma$ the topology of convergence in measure defined
+by the pseudometrics $\rho_H(G,G')=\mu((G\symmdiff G')\cap H)$ for
+measurable sets $H$ of finite measure\cmmnt{ (cf.\ 474T)}.
+Extend $q$ to $\Sigma$ by setting
+$q(G)=\per(E\cap G)-\alpha\mu(E\cap G)$ for every $G\in\Sigma$.
+Because $\per:\Sigma\to[0,\infty]$ is lower semi-continuous for the
+topology of convergence in measure (474Ta), and $G\mapsto E\cap G$,
+$G\mapsto\mu(E\cap G)$ are continuous, $q:\Sigma\to\coint{0,\infty}$ is
+lower semi-continuous (4A2Bd).   Next,
+$\Cal K=\{G:G\in\Sigma,\,\per G\le\per E\}$ is compact (474Tb), while
+$\Cal L=\{G:\mu(G\setminus E)=0\}$ is closed, so there is a
+$G_0\in\Cal L\cap\Cal K$ such that
+$q(G_0)=\inf_{G\in\Cal L\cap\Cal K}q(G)$ (4A2Gl).   Since
+$G_0\in\Cal L$,
+$\per(G_0\cap E)=\per(G_0)$ and $\mu(G_0\cap E)=\mu G_0$, so we may
+suppose that $G_0\subseteq E$.   Moreover, there is a self-supporting
+set $G\subseteq G_0$ such that $G_0\setminus G$ is negligible (414F),
+and we still have $q(G)=q(G_0)$.   Of course $q(G)\le q(E)$, just
+because $E\in\Cal L\cap\Cal K$.
+
+\Quer\ If there is a measurable set $G'\subseteq E$ such that
+$q(G')<q(G)$, then
+
+\Centerline{$\per G'=q(G')+\alpha\mu G'\le q(E)+\alpha\mu E=\per E$,}
+
+\noindent so $G'\in\Cal K$;  but this means that $G'\in\Cal L\cap\Cal K$
+and $q(G)=q(G_0)\le q(G')$.\ \BanG\  So $G$ has the required
+properties.\ \Qed
+
+\medskip
+
+{\bf (b)} Since $q(G)\le q(E)$, we must have
+
+\Centerline{$\per G+\alpha\mu(E\setminus G)
+=q(G)+\alpha\mu E\le q(E)+\alpha\mu E=\per E=\alpha\epsilon$.}
+
+\noindent So $\mu(E\setminus G)\le\epsilon$.
+
+\medskip
+
+{\bf (c)} Next, $\overline{G}\subseteq\clstar G$.   \Prf\ Let
+$x\in\overline{G}$.   For every $t>0$, set
+$U_t=\{y:\|y-x\|<t\}$;  then
+
+$$\eqalignno{\per(G\cap U_t)+\per(G\setminus U_t)
+&=\nu(\partstar(G\cap U_t))+\nu(\partstar(G\setminus U_t))\cr
+&\le\nu(\partstar G\cap U_t)+\nu(\clstar G\cap\partial U_t)\cr
+&\qquad\qquad\qquad
+      +\nu(\partstar G\setminus U_t)+\nu(\clstar G\cap\partial U_t)\cr
+\displaycause{475Cf, because
+$\partial(\BbbR^r\setminus U_t)=\partial U_t)$}
+&=\nu(\partstar G)+2\nu(\clstar G\cap\partial U_t)
+=\per G+2\nu(G\cap\partial U_t)\cr}$$
+
+\noindent for almost every $t>0$, because
+
+\Centerline{$\int_0^{\infty}
+  \nu((G\symmdiff\clstar G)\cap\partial U_t)dt
+=\mu(G\symmdiff\clstar G)=0$}
+
+\noindent (265G).   So, for almost every $t$,
+
+$$\eqalignno{\mu(G\cap U_t)^{(r-1)/r}
+&\le\per(G\cap U_t)\cr
+\displaycause{474La}
+&\le\per G+2\nu(G\cap\partial U_t)-\per(G\setminus U_t)\cr
+&=q(G)+\alpha\mu(G\cap U_t)+2\nu(G\cap\partial U_t)-q(G\setminus U_t)\cr
+&\le\alpha\mu(G\cap U_t)+2\nu(G\cap\partial U_t)\cr}$$
+
+\noindent because $q(G)$ is minimal.
+
+For $t>0$, set
+
+\Centerline{$g(t)=\mu(G\cap U_t)=\int_0^t\nu(G\cap\partial U_s)ds$,}
+
+\noindent so that
+
+\Centerline{$g'(t)=\nu(G\cap\partial U_t)
+\ge\Bover12(g(t)^{(r-1)/r}-\alpha g(t))$}
+
+\noindent for almost every $t$.   Because $G$ is self-supporting and
+$U_t$ is open and $G\cap U_t\ne\emptyset$, $g(t)>0$ for every $t>0$;
+and $\lim_{t\downarrow 0}g(t)=0$.
+
+Set
+
+\Centerline{$h(t)=\Bover{d}{dt}g(t)^{1/r}
+=\Bover{g'(t)}{rg(t)^{(r-1)/r}}
+\ge\Bover1{2r}(1-\alpha g(t)^{1/r})$}
+
+\noindent for almost every $t$.   Then
+
+\Centerline{$\limsup_{t\downarrow 0}\Bover{g(t)^{1/r}}t
+=\limsup_{t\downarrow 0}\Bover1t\int_0^th\ge\Bover1{2r}$,}
+
+\noindent and
+
+\Centerline{$\limsup_{t\downarrow 0}
+\Bover{\mu(G\cap B(x,t)))}{\mu B(x,t))}
+=\limsup_{t\downarrow 0}\Bover{g(t)}{\beta_rt^r}>0$.}
+
+Thus $x\in\clstar G$.   As $x$ is arbitrary,
+$\overline{G}\subseteq\clstar G$.\ \Qed
+
+Since we certainly have
+$\clstar G\subseteq\overline{G}$, this $G$ serves.
+}%end of proof of 484B
+
+\leader{484C}{Lemma} Let $E\in\Cal V$ and $l\in\Bbb N$ be such that
+$\max(\per E,\diam E)\le l$.   Then $E$ is expressible as
+$\bigcup_{i<n}E_i$ where $\ofamily{i}{n}{E_i}$ is disjoint,
+$\per E_i\le 1$ for each $i<n$ and $n$ is at most
+$2^r(l+1)^r(4r(2l^2+1))^{r/(r-1)}+2^{r+1}l^2$.
+
+\proof{ For $D\in\Cal D$, write $\Cal D_D$ for
+$\{D':D'\in\Cal D,\,D'\subseteq D,\,\diam D'=\bover12\diam D\}$, the
+family of the $2^r$ dyadic subcubes of $D$ at the next level down.
+
+\medskip
+
+{\bf (a)} If $l\le 1$ the result is trivial, so let us suppose that
+$l\ge 2$.   Let $m\in\Bbb N$ be minimal subject to
+$4r(2l^2+1)\le 2^{m(r-1)}$, so that
+$2^m\le 2(4r(2l^2+1))^{1/(r-1)}$.   Then we can cover $E$ by a family
+$\Cal L_0$ of dyadic cubes of side $2^{-m}$ with
+
+\Centerline{$\#(\Cal L_0)\le (2^ml+1)^r\le 2^{mr}(l+1)^r
+\le 2^r(l+1)^r(4r(2l^2+1))^{r/(r-1)}$.}
+
+\medskip
+
+{\bf (b)} Let $\Cal L_1$ be the set of those $D\in\Cal D$ such that
+$\lfloor 2\nu(D'\cap\partstar E)\rfloor
+<\lfloor 2\nu(D\cap\partstar E)\rfloor$ for every $D'\in\Cal D_D$.
+Then $\#(\Cal L_1)\le 2l^2$.   \Prf\
+For $k\ge 1$, set
+
+\Centerline{$\Cal L_1^{(k)}=\{F:D\in\Cal L_1$,
+$\lfloor 2\nu(D\cap\partstar E)\rfloor=k\}$.}
+
+\noindent If $D$, $D'\in\Cal L_1^{(k)}$ are distinct, neither can be
+included in the other, so they are disjoint.   Accordingly
+$k\#(\Cal L_1^{(k)})\le 2\nu(\partstar E)\le 2l$ and
+$\#(\Cal L_1^{(k)})\le 2l$.   Since
+$\Cal L_1=\bigcup_{1\le k\le l}\Cal L_1^{(k)}$,
+$\#(\Cal L_1)\le 2l^2$.\ \Qed
+
+\medskip
+
+{\bf (c)} For $D\in\Cal D$, set
+$\tilde D=D\setminus\bigcup\{D':D'\in\Cal L_1$, $D'\subseteq D\}$.
+Then $\nu(\tilde D\cap\partstar E)\le\bover12$.   \Prf\Quer\ Otherwise,
+set $j=\lfloor 2\nu(D\cap\partstar E)\rfloor\ge 1$, and
+choose $\sequence{i}{D_i}$ inductively, as follows.   $D_0=D$.   Given that
+$D_i\in\Cal D$, $D_i\subseteq D$ and
+$\lfloor 2\nu(D_i\cap\partstar E)\rfloor=j$,
+$\nu((D\setminus D_i)\cap\partstar E)<\bover12$ and
+$D_i\cap\tilde D$ is non-empty, so $D_i\notin\Cal L_1$ and there must be a
+$D_{i+1}\in\Cal D_{D_i}$ such that
+$\lfloor 2\nu(D_{i+1}\cap\partstar E)\rfloor=j$.   Continue.   This gives
+us a strictly decreasing sequence $\sequence{i}{D_i}$ in $\Cal D$ such that
+$\nu(D_i\cap\partstar E)\ge\bover{j}2$ for every $i$.   But (because
+$\per E$ is finite) this means that, writing $x$ for the
+unique member of $\bigcap_{i\in\Bbb N}\overline{D}_i$,
+$\nu\{x\}\ge\bover{j}2$, which is absurd.\ \Bang\Qed
+
+\medskip
+
+{\bf (d)} Set
+
+
+\Centerline{$\Cal L'_1
+=\{D:D\in\Cal L_1$ is included in some member of $\Cal L_0\}$,}
+
+\Centerline{$\Cal L_2=\Cal L_0\cup\bigcup\{\Cal D_D:D\in\Cal L'_1\}$,
+\quad$\Cal K=\{\tilde D:D\in\Cal L_2\}$.}
+
+\medskip
+
+\quad{\bf (i)}
+
+$$\eqalign{\#(\Cal K)
+&\le\#(\Cal L_2)
+\le\#(\Cal L_0)+2^r\#(\Cal L_1)\cr
+&\le 2^r(l+1)^r(4r(2l^2+1))^{r/(r-1)}+2^{r+1}l^2.\cr}$$
+
+\medskip
+
+\quad{\bf (ii)} $\bigcup\Cal K\supseteq E$.   \Prf\ If $x\in E$, there
+is a smallest member $D$ of $\Cal L_2$ containing it, because
+certainly $x\in\bigcup\Cal L_0$.   But now $x$ cannot belong to any
+member of $\Cal L_1$ included in $D$, so $x\in\tilde D$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} $\Cal K$ is disjoint.   \Prf\ If $D_1$, $D_2\in\Cal L_2$
+are disjoint, then of course $\tilde D_1\cap\tilde D_2=\emptyset$.   If
+$D_1\subset D_2$, then $D_1\notin\Cal L_0$, so there is a $D\in\Cal L'_1$
+such that $D_1\in\Cal D_D$;  in this case $D\subseteq D_2$ so
+$\tilde D_2\subseteq D_2\setminus D$ is disjoint from $D_1$.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} $\per(D\cap E)\le 1$ for every $D\in\Cal K$.
+\Prf\ Take $D_0\in\Cal L_2$ such that $D=\tilde D_0$;  then
+
+\Centerline{$\nu(\partial D)
+\le\nu(\partial D_0)+\sum_{D'\in\Cal L'_1}\nu(\partial D')
+\le 2r(2l^2+1)2^{-m(r-1)}
+\le\Bover12$}
+
+\noindent by the choice of $m$.   So
+
+\Centerline{$\per(D\cap E)\le\nu(\partial D)+\nu(D\cap\partstar E)
+\le\Bover12+\Bover12=1$}
+
+\noindent by 475Cf.\ \Qed
+
+\medskip
+
+{\bf (e)} So if we take $\ofamily{i}{n}{E_i}$ to be an enumeration of
+$\{E\cap D:D\in\Cal K\}$, we shall have the required result.
+}%end of proof of 484C
+
+\leader{484D}{Definitions}\cmmnt{ The gauge integrals of this section
+will be based on the following residual families.}   Let $\Eta$ be the
+family of strictly positive
+sequences $\eta=\sequence{i}{\eta(i)}$ in $\Bbb R$.   For $\eta\in\Eta$,
+write $\Cal M_{\eta}$ for the set of disjoint sequences
+$\sequence{i}{E_i}$ of measurable subsets of $\BbbR^r$ such that
+$\mu E_i\le\eta(i)$ and $\per E_i\le 1$ for every
+$i\in\Bbb N$, and $E_i$ is empty for all but finitely many $i$.
+For $\eta\in\Eta$ and $V\in\Cal V$ set
+
+\Centerline{$\Cal R_{\eta}
+=\{\bigcup_{i\in\Bbb N}E_i:\sequence{i}{E_i}\in\Cal M_{\eta}\}
+\subseteq\Cal C$,
+\quad$\Cal R^{(V)}_{\eta}
+=\{R:R\subseteq\BbbR^r,\,R\cap V\in\Cal R_{\eta}\}$;}
+
+\noindent
+finally, set $\frak R=\{\Cal R^{(V)}_{\eta}:V\in\Cal V,\,\eta\in\Eta\}$.
+
+\leader{484E}{Lemma} (a)(i) For every $\Cal R\in\frak R$, there is an
+$\eta\in\Eta$ such that $\Cal R_{\eta}\subseteq\Cal R$.
+
+\quad(ii) If $\Cal R\in\frak R$ and $C\in\Cal C$, there is an
+$\Cal R'\in\frak R$ such that $C\cap R\in\Cal R$ whenever $R\in\Cal R'$.
+
+(b)(i) If $\eta\in\Eta$ and $\gamma\ge 0$, there is an $\epsilon>0$ such
+that $R\in\Cal R_{\eta}$ whenever $\mu R\le\epsilon$, $\diam R\le\gamma$
+and $\per R\le\gamma$.
+
+\quad(ii) If $\Cal R\in\frak R$ and $\gamma\ge 0$, there is an
+$\epsilon>0$ such that $R\in\Cal R$ whenever $\mu R\le\epsilon$
+and $\per R\le\gamma$.
+
+(c) If $\Cal R\in\frak R$ there is an $\Cal R'\in\frak R$ such that
+$R\cup R'\in\Cal R$ whenever $R$, $R'\in\Cal R'$ and
+$R\cap R'=\emptyset$.
+
+(d)(i) If $\eta\in\Eta$ and $A\subseteq\BbbR^r$ is a thin set, then
+there is a set $\Cal D_0\subseteq\Cal D$ such that every point of $A$
+belongs to the interior of $\bigcup\Cal D_1$ for some finite
+$\Cal D_1\subseteq\Cal D_0$, and $\bigcup\Cal D_1\in\Cal R_{\eta}$ for
+every finite set $\Cal D_1\subseteq\Cal D_0$.
+
+\quad(ii) If $\Cal R\in\frak R$ and $A\subseteq\BbbR^r$ is a thin
+set, then there is a set $\Cal D_0\subseteq\Cal D$ such that every point
+of $A$ belongs to the interior of $\bigcup\Cal D_1$ for some finite set
+$\Cal D_1\subseteq\Cal D_0$, and $\bigcup\Cal D_1\in\Cal R$ for every
+finite set $\Cal D_1\subseteq\Cal D_0$.
+
+\proof{{\bf (a)(i)} Express $\Cal R$ as $\Cal R^{(V)}_{\eta'}$ where
+$\eta'\in\Eta$ and $V\in\Cal V$.   Let $l\in\Bbb N$ be such that
+$\max(\diam V,1+\per V)\le l$, and take
+$n\ge 2^r(l+1)^r(4r(2l^2+1))^{r/(r-1)}+2^{r+1}l^2$.   Set
+$\eta(i)=\min\{\eta'(j):ni\le j<n(i+1)\}$ for every $i\in\Bbb N$, so
+that $\eta\in\Eta$.   If $R\in\Cal R_{\eta}$, express it as
+$\bigcup_{i\in\Bbb N}E_i$ where $\sequence{i}{E_i}\in\Cal M_{\eta}$.
+For each $i$, $\max(\diam(E_i\cap V),\per(E_i\cap V))\le l$, so
+by 484C we can express $E_i\cap V$ as $\bigcup_{ni\le j<n(i+1)}E'_j$,
+where $\langle E'_j\rangle_{ni\le j<n(i+1)}$ is disjoint and
+$\per E'_j\le 1$ for each $j$.   Now
+
+\Centerline{$\mu E'_j\le\mu E_i\le\eta(i)\le\eta'(j)$}
+
+\noindent for $ni\le j<n(i+1)$.   Also $\{j:E'_j\ne\emptyset\}$ is
+finite because $\{j:E_j=\emptyset\}$ is finite.   So
+$\sequence{j}{E'_j}\in\Cal M_{\eta'}$ and
+$R\cap V=\bigcup_{j\in\Bbb N}E'_j$ belongs to $\Cal R_{\eta'}$, that is,
+$R\in\Cal R$.   As $R$ is arbitrary, $\Cal R_{\eta}\subseteq\Cal R$.
+
+\medskip
+
+\quad{\bf (ii)} Express $\Cal R$ as $\Cal R^{(V)}_{\eta}$, where
+$V\in\Cal V$ and $\eta\in\Eta$.   By (i), there is an $\eta'\in\Eta$
+such that $\Cal R_{\eta'}\subseteq\Cal R^{(C\cap V)}_{\eta}$.   Set
+$\Cal R'=\Cal R^{(V)}_{\eta'}\in\frak R$.   If $R\in\Cal R'$, then
+$R\cap V\in\Cal R_{\eta'}$, so
+$C\cap R\cap V\in\Cal R_{\eta}$ and $C\cap R\in\Cal R$.
+
+\medskip
+
+{\bf (b)(i)} Take $l\ge\gamma$ and
+$n\ge 2^r(l+1)^r(4r(2l^2+1))^{r/(r-1)}+2^{r+1}l^2$, and set
+$\epsilon=\min_{i<n}\eta(i)$.   If $\mu R\le\epsilon$, $\diam R\le l$
+and $\per R\le l$, then $R$ is expressible as
+$\bigcup_{i<n}E_i$ where $\ofamily{i}{n}{E_i}$ is disjoint and
+$\per E_i\le 1$ for each $i<n$.   Since $\mu E_i\le\mu R\le\eta(i)$ for
+each $i$, $R\in\Cal R_{\eta}$.
+
+\quad{\bf (ii)} Express $\Cal R$ as $\Cal R^{(V)}_{\eta}$.   By
+(i), there is an $\epsilon>0$ such that $R\in\Cal R_{\eta}$
+whenever $\diam R\le\diam V$, $\per R\le\gamma+\per V$ and
+$\mu R\le\epsilon$;  and this $\epsilon$ serves.
+
+\medskip
+
+{\bf (c)} Express $\Cal R$ as $\Cal R^{(V)}_{\eta}$.
+Set $\eta'(i)=\min(\eta(2i),\eta(2i+1))$
+for every $i$;  then $\eta'\in\Eta$ and if $\sequence{i}{E_i}$,
+$\sequence{i}{E'_i}$ belong to $\Cal M_{\eta'}$ and have
+disjoint unions, then
+$(E_0,E'_0,E_1,E'_1,\ldots)\in\Cal M_{\eta}$;  this is
+enough to show that $R\cup R'\in\Cal R_{\eta}$ whenever $R$,
+$R'\in\Cal R_{\eta'}$ are disjoint, so that $R\cup R'\in\Cal R$ whenever
+$R$, $R'\in\Cal R^{(V)}_{\eta'}$ are disjoint.
+
+\medskip
+
+{\bf (d)(i)}\grheada\ We can express $A$ as $\bigcup_{i\in\Bbb N}A_i$
+where $\mu^*_{H,r-1}A_i<2^{-r}/2r$ for every $i$.   \Prf\ Because $A$
+is thin, it is the union of a sequence of sets of finite outer measure
+for $\nu$, and therefore for $\mu_{H,r-1}$.   On each of these the
+subspace measure is atomless (471E, 471Dg), so that the set can be
+dissected into
+finitely many sets of measure less than $2^{-r}/2r$ (215D).\ \Qed
+
+\medskip
+
+\qquad\grheadb\ For each $i\in\Bbb N$,
+we can cover $A_i$ by a sequence $\sequence{j}{A_{ij}}$ of sets such
+that $\diam A_{ij}<\eta(i)$ for every $j$ and
+$\sum_{j=0}^{\infty}(\diam A_{ij})^{r-1}<2^{-r}/2r$;  enlarging the
+$A_{ij}$ slightly if need be, we can suppose that they are all open.
+Now we can
+cover each $A_{ij}$ by $2^r$ cubes $D_{ijk}\in\Cal D$ in such a way
+that the side length of each $D_{ijk}$ is at most the diameter of
+$A_{ij}$.
+
+Setting $\Cal D_0=\{D_{ijk}:i$, $j\in\Bbb N$, $k<2^r\}$, we see that
+every point of $A$ belongs to an open set $A_{ij}$ which is covered by a
+finite subset of $\Cal D_0$.   If $\Cal D_1\subseteq\Cal D_0$ is finite,
+let $\Cal D'_1$ be the family of maximal elements of $\Cal D_1$, so that
+$\Cal D'_1$ is disjoint and $\bigcup\Cal D'_1=\bigcup\Cal D_1$.
+Express $\Cal D'_1$ as $\{D_{ijk}:(i,j,k)\in I\}$ where
+$I\subseteq\Bbb N\times\Bbb N\times 2^r$ is finite and
+$\family{(i,j,k)}{I}{D_{ijk}}$ is disjoint.   Set
+$I_i=\{(j,k):(i,j,k)\in I\}$ and $E_i=\bigcup_{(j,k)\in I_i}D_{ijk}$ for
+$i\in\Bbb N$.   Then $\sequence{i}{E_i}$ is disjoint, $E_i=\emptyset$
+for all but finitely many $i$, and for each $i\in\Bbb N$
+
+$$\eqalign{\mu E_i
+&\le\sum_{j=0}^{\infty}\sum_{k=0}^{2^r-1}\mu D_{ijk}
+\le\sum_{j=0}^{\infty}2^r(\diam A_{ij})^r\cr
+&\le 2^r\sum_{j=0}^{\infty}\eta(i)(\diam A_{ij})^{r-1}
+\le\eta(i),\cr
+\nu(\partial E_i)
+&\le\sum_{(j,k)\in I_i}\nu(\partial D_{ijk})
+\le\sum_{j=0}^{\infty}\sum_{k=0}^{2^r-1}\nu(\partial D_{ijk})\cr
+&\le\sum_{j=0}^{\infty}2^r\cdot 2r(\diam A_{ij})^{r-1}
+\le 1.\cr}$$
+
+\noindent So $\bigcup\Cal D_1=\bigcup_{i\in\Bbb N}E_i$ belongs to
+$\Cal R_{\eta}$.
+
+\medskip
+
+\quad{\bf (ii)}  By (a-i), there is an $\eta\in\Eta$ such that
+$\Cal R_{\eta}\subseteq\Cal R$.   By (i) here, there is a
+$\Cal D_0\subseteq\Cal D$ such that every point of $A$ belongs to the
+interior of $\bigcup\Cal D_1$ for some finite
+$\Cal D_1\subseteq\Cal D_0$, and
+$\bigcup\Cal D_1\in\Cal R_{\eta}\subseteq\Cal R$ for
+every finite set $\Cal D_1\subseteq\Cal D_0$.
+}%end of proof of 484E
+
+\leader{484F}{A family of tagged-partition structures} For $\alpha>0$,
+let $\Cal C_{\alpha}$ be the family of those $C\in\Cal V$ such that
+$\mu C\ge\alpha(\diam C)^r$ and $\alpha\per C\le(\diam C)^{r-1}$, and
+let $T_{\alpha}$ be the straightforward set of tagged partitions
+generated by the set
+
+\Centerline{$\{(x,C):C\in\Cal C_{\alpha},\,x\in\clstar C\}$.}
+
+\noindent Let $\Theta$ be the set of functions
+$\theta:\BbbR^r\to\coint{0,\infty}$ such that $\{x:\theta(x)=0\}$ is
+thin\cmmnt{ (definition:  484A)},
+and set $\Delta=\{\delta_{\theta}:\theta\in\Theta\}$, where
+$\delta_{\theta}
+=\{(x,A):x\in\BbbR^r,\,\theta(x)>0,\,\|y-x\|<\theta(x)$ for every
+$y\in A\}$.
+
+Then whenever $0<\alpha<\alpha^*$, $(\BbbR^r,T_{\alpha},\Delta,\frak R)$
+is a tagged-partition structure allowing subdivisions, witnessed by
+$\Cal C$.
+
+\proof{{\bf (a)} We had better look again at all the conditions in 481G.
+
+(i) and (vi) really are trivial.
+(iv) and (v) are true because $\Cal C$ is actually an algebra of sets
+and $\emptyset\in\Cal R$ for every $\Cal R\in\frak R$.
+
+For (ii), we have to observe that the
+union of two thin sets is thin, so that $\theta\wedge\theta'\in\Theta$
+for all $\theta$, $\theta'\in\Theta$;  since
+$\delta_{\theta}\cap\delta_{\theta'}
+=\delta_{\theta\wedge\theta'}$, this is all we need.
+
+(iii)($\alpha$) follows from 484Ea:  given $V$, $V'\in\Cal V$ and
+$\eta$, $\eta'\in\Eta$, take $\tilde\eta$, $\tilde\eta'\in\Eta$ such
+that $\Cal R_{\tilde\eta}\subseteq\Cal R^{(V)}_{\eta}$ and
+$\Cal R_{\tilde\eta'}\subseteq\Cal R^{(V')}_{\eta'}$.
+Then $V\cup V'\in\Cal V$ and
+$\Cal R^{(V)}_{\eta}\cap\Cal R^{(V')}_{\eta'}
+\supseteq\Cal R^{(V\cup V')}_{\tilde\eta\wedge\tilde\eta'}$.
+($\beta$) is just 484Ec.
+
+\medskip
+
+{\bf (b)} Now let us turn to 481G(vii).
+
+\medskip
+
+\quad{\bf (i)} Fix $C\in\Cal C$, $\delta\in\Delta$ and
+$\Cal R\in\frak R$.   Express $\delta$ as $\delta_{\theta}$ where
+$\theta\in\Theta$.   Let $\Cal R'\in\frak R$ be such that
+$A\cup A'\in\Cal R$ whenever $A$, $A'\in\Cal R'$ are disjoint.   Express
+$\Cal R'$ as $\Cal R^{(V)}_{\eta}$ where $V\in\Cal V$ and $\eta\in\Eta$.
+By 484E(b-ii), there is an $\epsilon>0$ such that $R\in\Cal R'$ whenever
+$\per R\le 2\per(C\cap V)$ and $\mu R\le\epsilon$.
+
+By 484B, there is an $E\subseteq C\cap V$ such that
+$\per E\le\per(C\cap V)$,
+$\mu((C\cap V)\setminus E)\le\epsilon$ and $\clstar E=\overline{E}$.
+In this case,
+
+\Centerline{$\per(C\cap V\setminus E)\le\per(C\cap V)+\per E
+\le 2\per(C\cap V)$,}
+
+\noindent so $C\cap V\setminus E\in\Cal R'$, by the choice of
+$\epsilon$.   By
+484E(a-ii), there is an $\Cal R''\in\frak R$ such that
+$E\cap R\in\Cal R'$ whenever $R\in\Cal R''$.
+
+Now consider
+
+\Centerline{$A=\{x:\theta(x)=0\}\cup\partstar E
+   \cup\{x:\limsup_{\zeta\downarrow 0}
+     \sup_{x\in G,0<\diam G\le\zeta}
+     \Bover{\nu^*(G\cap\partstar E)}{(\diam G)^{r-1}}>0\}$.}
+
+Because $\per E<\infty$  and
+
+\Centerline{$\{x:x\in\BbbR^r\setminus\partstar E,\,
+  \limsup_{\zeta\downarrow 0}
+     \sup_{x\in G,0<\diam G\le\zeta}
+     \Bover{\nu^*(G\cap\partstar E)}{(\diam G)^{r-1}}>0\}$}
+
+\noindent is $\nu$-negligible (471Pc), $A$ is thin.   By 484E(d-ii),
+there is a set $\Cal D_0\subseteq\Cal D$ such that
+
+\Centerline{$A\subseteq\bigcup\{\interior(\bigcup\Cal D_1):
+  \Cal D_1\in[\Cal D_0]^{<\omega}\}$,
+\quad $\bigcup\Cal D_1\in\Cal R''$ for every
+  $\Cal D_1\in[\Cal D_0]^{<\omega}$.}
+
+\medskip
+
+\quad{\bf (ii)} Write $T'$ for the set of those $\delta$-fine
+$\pmb{t}\in T_{\alpha}$ such that every
+member of $\pmb{t}$ is of the form $(x,D\cap E)$ for some $D\in\Cal D$.
+If $x\in\intstar E\setminus A$, there is an $h(x)>0$
+such that $h(x)<\theta(x)$ and $\{(x,D\cap E)\}\in T'$ whenever
+$D\in\Cal D$, $x\in\overline{D}$ and $\diam D\le h(x)$.
+\Prf\ Let $\epsilon_1>0$ be such that $r^{r/2}\epsilon_1\le\bover12$ and
+
+\Centerline{$\alpha\le\Bover{1-r^{r/2}\epsilon_1}{r^{r/2}}$,
+\quad$\Bover1{\alpha}\ge(2r+r^{r/2}\epsilon_1)\cdot\Bover1{2^{r-1}}
+  \bigl(\Bover{\beta_r}{1-r^{r/2}\epsilon_1}\bigr)^{(r-1)/r}$;}
+
+\noindent this is where we need to know that $\alpha<\alpha^*$.
+Because $x\notin A$, $\theta(x)>0$;  let $h(x)\in\ooint{0,\theta(x)}$ be
+such that ($\alpha$)
+$\nu^*(D\cap\partstar E)\le\epsilon_1(\diam D)^{r-1}$ whenever
+$x\in\overline{D}$ and $\diam D\le h(x)$ ($\beta$)
+$\mu(B(x,t)\setminus E)\le\epsilon_1t^r$ whenever
+$0\le t\le h(x)$.   Now suppose that $D\in\Cal D$ and
+$x\in\overline{D}$ and $\diam D\le h(x)$.   Then, writing $\gamma$ for
+the side length of $D$,
+
+$$\eqalign{\mu(D\cap E)
+&\ge\mu D-\mu(B(x,\diam D)\setminus E)
+\ge\gamma^r-\epsilon_1(\diam D)^r\cr
+&=\gamma^r(1-r^{r/2}\epsilon_1)
+\ge\alpha\gamma^rr^{r/2}
+=\alpha(\diam D)^r
+\ge\alpha\diam(D\cap E)^r.\cr}$$
+
+\noindent Using 264H, we see also that
+
+\Centerline{$\diam(D\cap E)
+\ge\bigl(\Bover{2^r}{\beta_r}\mu(D\cap E)\bigr)^{1/r}
+\ge 2\gamma\bigl(\Bover{1-r^{r/2}\epsilon_1}{\beta_r}\bigr)^{1/r}$.}
+
+\noindent Next,
+
+$$\eqalignno{\per(D\cap E)
+&\le\nu(\partial D)+\nu(D\cap\partstar E)\cr
+\displaycause{475Cf}
+&\le 2r\gamma^{r-1}+\epsilon_1(\diam D)^{r-1}
+\le\gamma^{r-1}(2r+r^{r/2}\epsilon_1)\cr
+&\le(2r+r^{r/2}\epsilon_1)\cdot\Bover1{2^{r-1}}
+  \bigl(\Bover{\beta_r}{1-\epsilon_1r^{r/2}}\bigr)^{(r-1)/r}
+  \diam(D\cap E)^{r-1}\cr
+&\le\Bover1{\alpha}\diam(D\cap E)^{r-1}.\cr}$$
+
+\noindent So $D\cap E\in\Cal C_{\alpha}$.   Also, for every $s>0$, there
+is a $D'\in\Cal D$ such that
+$D'\subseteq D$ and $x\in\overline{D'}$ and $\diam D'\le s$.
+In this case
+
+\Centerline{$\mu(B(x,\diam D')\setminus E)
+\le\epsilon_1(\diam D')^r=\epsilon_1r^{r/2}\mu D'\le\Bover12\mu D'$,}
+
+\noindent so
+
+$$\eqalign{\mu(D\cap E\cap B(x,\diam D'))
+&\ge\mu D'-\mu(B(x,\diam D')\setminus E)\cr
+&\ge\Bover12\mu D'
+=\Bover1{2\beta_rr^{r/2}}\mu B(x,\diam D').\cr}$$
+
+\noindent As $\diam D'$ is arbitrarily small, $x\in\clstar(D\cap E)$ and
+$\pmb{t}=\{(x,D\cap E)\}\in T_{\alpha}$.   Finally, since
+$\diam D<\theta(x)$, $(x,D\cap E)\in\delta$ and $\pmb{t}\in T'$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} Let $\Cal H$ be the set of those $H\subseteq\BbbR^r$
+such that
+$W_{\pmb{t}}\subseteq E\cap H\subseteq W_{\pmb{t}}\cup\bigcup\Cal D_1$
+for some $\pmb{t}\in T'$ and finite
+$\Cal D_1\subseteq\Cal D_0$.
+Then $H\cup H'\in\Cal H$ whenever $H$, $H'\in\Cal H$ are disjoint.
+If $\sequencen{D_n}$ is any strictly decreasing sequence in $\Cal D$,
+then some $D_n$ belongs to $\Cal H$.   \Prf\
+Let $x$ be the unique point of $\bigcap_{n\in\Bbb N}\overline{D_n}$.
+
+\qquad{\bf case 1} If $x\in A$, then there is a finite subset $\Cal D_1$
+of $\Cal D_0$ whose union is a neighbourhood of $x$, and therefore
+includes $D_n$ for some $n$;  so $\pmb{t}=\emptyset$ and
+$\Cal D_1$ witness that $D_n\in\Cal H$.
+
+\qquad{\bf case 2} If $x\in E\setminus A$, then $x\in\intstar E$, so
+$h(x)>0$ and there is some $n\in\Bbb N$ such that
+$\diam D_n\le h(x)$.   In this case $\pmb{t}=\{(x,D_n\cap E)\}$ belongs
+to $T'$, by the choice of $h(x)$, so that $\pmb{t}$ and $\emptyset$
+witness that $D_n\in\Cal H$.
+
+\qquad{\bf case 3} Finally, if $x\notin E\cup A$, then
+$x\notin\clstar E$ so $x\notin\overline{E}$ and there is some $n$ such
+that $D_n\cap E=\emptyset$, in which case $\pmb{t}=\Cal D_1=\emptyset$
+witness that $D_n\in\Cal H$.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} In fact $\BbbR^r\in\Cal H$.   \Prf\Quer\ Otherwise,
+because $E\subseteq V$ is bounded, it can be covered by a finite
+disjoint family in $\Cal D$, and there must be some
+$D_0\in\Cal D\setminus\Cal H$.   Now we can find
+$\langle D_n\rangle_{n\ge 1}$ in $\Cal D\setminus\Cal H$ such that
+$D_n\subseteq D_{n-1}$ and $\diam D_n=\bover12\diam D_{n-1}$ for every
+$n$.   But this contradicts (iii).\Bang\Qed
+
+\medskip
+
+\quad{\bf (v)} We therefore have a $\pmb{t}\in T'$ and a
+finite set $\Cal D_1\subseteq\Cal D_0$ such that
+$W_{\pmb{t}}\subseteq E\subseteq W_{\pmb{t}}\cup\bigcup\Cal D_1$.
+Now we can find $\pmb{t}'\subseteq\pmb{t}$ and
+$\Cal D'_1\subseteq\Cal D_1$ such that
+$W_{\pmb{t}'}\cap\bigcup\Cal D'_1=\emptyset$ and
+$E\subseteq W_{\pmb{t}'}\cup\bigcup\Cal D'_1$.
+\Prf\ Express $\pmb{t}$ as $\familyiI{(x_i,D_i\cap E)}$ where
+$D_i\in\Cal D$ for each $i$.   Then
+$E\subseteq\bigcup_{i\in I}D_i\cup\bigcup\Cal D_1$.   Set
+$\Cal D_1'=\{D:D\in\Cal D_1$, $D\not\subseteq D_i$ for every $i\in I\}$,
+$J=\{i:i\in I$, $D_i\not\subseteq D$ for every $D\in\Cal D'_1\}$,
+$\pmb{t}'=\{(x_i,D_i\cap E):i\in J\}$.\ \Qed
+
+By the choice of $\Cal D_0$, $\bigcup\Cal D'_1\in\Cal R''$;  by the
+choice of $\Cal R''$,
+$E\setminus W_{\pmb{t}'}=E\cap\bigcup\Cal D'_1$ belongs to $\Cal R'$.
+But we know also that $C\cap V\setminus E\in\Cal R'$, that is,
+$C\setminus E\in\Cal R'$, because $\Cal R'=\Cal R^{(V)}_{\eta}$.   By
+the choice of $\Cal R'$, $C\setminus W_{\pmb{t}'}\in\Cal R$.   And
+$\pmb{t}'\in T'$ is a $\delta$-fine member of $T_{\alpha}$.   As $C$,
+$\delta$ and $\Cal R$ are
+arbitrary, 481G(vii) is satisfied, and the proof is complete.
+}%end of proof of 484F
+
+\leader{484G}{The Pfeffer integral (a)} For
+$\alpha\in\ooint{0,\alpha^*}$, write $I_{\alpha}$ for the linear
+functional defined by setting
+
+\Centerline{$I_{\alpha}(f)
+=\lim_{\pmb{t}\to\Cal F(T_{\alpha},\Delta,\frak R)}
+  S_{\pmb{t}}(f,\mu)$}
+
+\noindent whenever $f:\BbbR^r\to\Bbb R$ is such that the limit is
+defined.   (See 481F for the notation $\Cal F(T_{\alpha},\Delta,\frak R)$.)
+Then if $0<\beta\le\alpha<\alpha^*$ and $I_{\beta}(f)$ is defined, so
+is $I_{\alpha}(f)$, and the
+two are equal.   \prooflet{\Prf\ All we have to observe is that
+$\Cal C_{\alpha}\subseteq\Cal C_{\beta}$ so that
+$T_{\alpha}\subseteq T_{\beta}$, while
+$\Cal F(T_{\alpha},\Delta,\frak R)$ is just
+$\{A\cap T_{\alpha}:A\in\Cal F(T_{\beta},\Delta,\frak R)\}$.\ \Qed}
+
+\spheader 484Gb Let $f:\BbbR^r\to\Bbb R$ be a function.   I will say
+that it
+is {\bf Pfeffer integrable}, with {\bf Pfeffer integral} $\Pfint f$, if
+
+\Centerline{$\biggerPfint f
+=\lim_{\alpha\downarrow 0}I_{\alpha}(f)$}
+
+\noindent is defined;  that is to say, if $I_{\alpha}(f)$ is
+defined whenever $0<\alpha<\alpha^*$.
+
+\leader{484H}{}\cmmnt{ The first step is to work through the results
+of \S482 to see which ideas apply directly to the limit integral
+$\Pfint\,$.
+
+\medskip
+
+\noindent}{\bf Proposition} (a) The domain of $\Pfint\,$ is a linear
+space of functions, and $\Pfint\,$ is a positive linear functional.
+
+(b) If $f$, $g:\BbbR^r\to\Bbb R$ are such that $|f|\le g$ and
+$\Pfint g=0$, then $\Pfint f$ is defined and equal to $0$.
+
+(c) If $f:\BbbR^r\to\Bbb R$ is Pfeffer
+integrable, then there is a unique additive functional
+$F:\Cal C\to\Bbb R$ such that whenever $\epsilon>0$ and
+$0<\alpha<\alpha^*$ there are
+$\delta\in\Delta$ and $\Cal R\in\frak R$ such that
+
+\Centerline{$\sum_{(x,C)\in\pmb{t}}|F(C)-f(x)\mu C|\le\epsilon$ for
+every $\delta$-fine $\pmb{t}\in T_{\alpha}$,}
+
+\Centerline{$|F(E)|\le\epsilon$ whenever $E\in\Cal C\cap\Cal R$.}
+
+\noindent Moreover, $F(\BbbR^r)=\Pfint f$.
+
+(d) Every Pfeffer integrable function is Lebesgue measurable.
+
+(e) Every Lebesgue integrable function is Pfeffer integrable, with the
+same integral.
+
+(f) A non-negative function is Pfeffer integrable iff it is Lebesgue
+integrable.
+
+\proof{{\bf (a)-(b)} Immediate from 481C.
+
+\medskip
+
+{\bf (c)} For each $\alpha\in\ooint{0,\alpha^*}$ let $F_{\alpha}$ be the
+Saks-Henstock indefinite integral corresponding to the the structure
+$(\BbbR^r,T_{\alpha},\Delta,\penalty-100\frak R,\mu)$.
+Then all the $F_{\alpha}$
+coincide.   \Prf\ Suppose that $0<\beta\le\alpha<\alpha^*$.
+Then, for any $\epsilon>0$, there are $\delta\in\Delta$,
+$\Cal R\in\frak R$ such that
+
+\Centerline{$\sum_{(x,C)\in\pmb{t}}|F_{\beta}(C)-f(x)\mu C|
+\le\epsilon$ for every $\delta$-fine $\pmb{t}\in T_{\beta}$,}
+
+\Centerline{$|F_{\beta}(E)|\le\epsilon$
+whenever $E\in\Cal R$.}
+
+\noindent Since $T_{\alpha}\subseteq T_{\beta}$, this
+means that
+
+\Centerline{$\sum_{(x,C)\in\pmb{t}}|F_{\beta}(C)-f(x)\mu C|
+\le\epsilon$
+for every $\delta$-fine $\pmb{t}\in T_{\alpha}$.}
+
+\noindent And this works for any $\epsilon>0$.   By the uniqueness
+assertion in 482B, $F_{\beta}$ must be exactly the same as
+$F_{\alpha}$.\ \Qed
+
+So we have a single functional $F$;  and 482B also tells us that
+
+\Centerline{$F(\BbbR^r)=I_{\alpha}(f)=\biggerPfint f$}
+
+\noindent for every $\alpha$.
+
+\medskip
+
+{\bf (d)} In fact if there is any $\alpha$ such that
+$I_{\alpha}(f)$ is defined, $f$ must be Lebesgue measurable.
+\Prf\ We have only to check that the conditions of 482E are satisfied by
+$\mu$, $\Cal C_{\alpha}$, $\{(x,C):C\in\Cal C_{\alpha}$, $x\in\clstar C\}$,
+$T_{\alpha}$, $\Delta$ and $\frak R$.    (i), (iii) and (v) are built
+into the definitions above, and (iv) and (vii) are covered by 484F.
+482E(ii) is true because $C\setminus\clstar C$ is negligible
+for every $C\in\Cal C$ (475Cg).
+
+As for 482E(vi), this is true because if
+$\mu E<\infty$ and
+$\epsilon>0$, there are $n\in\Bbb N$ and $\eta\in\Eta$ such that
+$\mu(E\setminus B(\tbf{0},n))\le\bover12\epsilon$ and
+$\sum_{i=0}^{\infty}\eta(i)\le\bover12\epsilon$, so that
+
+\Centerline{$\mu(E\cap R)
+\le\mu(E\setminus B(\tbf{0},n))+\mu(R\cap B(\tbf{0},n))
+\le\epsilon$}
+
+\noindent for every $R\in\Cal R^{(B(\tbf{0},n))}_{\eta}$.\ \Qed
+
+\medskip
+
+{\bf (e)} This time, we have to check that the conditions of 482F are
+satisfied by $T_{\alpha}$, $\Delta$ and $\frak R$ whenever
+$0<\alpha<\alpha^*$.   \Prf\ Of course $\mu$
+is inner regular with respect to the closed sets and outer regular with
+respect to the open sets (134F).   Condition 482F(v) just repeats
+482E(v), verified in (d) above.\ \Qed
+
+\medskip
+
+{\bf (f)} If $f\ge 0$ is integrable in the ordinary sense, then it is
+Pfeffer integrable, by (e).   If it is Pfeffer integrable, then it is
+measurable;  but also $\int g\,d\mu=\Pfint g\le\Pfint f$ for every
+simple function $g\le f$, so $f$ is integrable (213B).
+}%end of proof of 484H
+
+\leader{484I}{Definition} If $f:\BbbR^r\to\Bbb R$ is Pfeffer
+integrable, I will call the function $F:\Cal C\to\Bbb R$ defined in
+484Hc the {\bf Saks-Henstock indefinite integral} of $f$.
+
+\leader{484J}{}\cmmnt{ In fact 484Hc characterizes the Pfeffer
+integral, just as the Saks-Henstock lemma can be used to define general
+gauge integrals based on tagged-partition structures allowing
+subdivisions.
+
+\medskip
+
+\noindent}{\bf Proposition} Suppose that $f:\BbbR^r\to\Bbb R$ and
+$F:\Cal C\to\Bbb R$ are such that
+
+\inset{(i) $F$ is additive,
+
+(ii) whenever $0<\alpha<\alpha^*$ and $\epsilon>0$ there is a
+$\delta\in\Delta$ such that
+$\sum_{(x,C)\in\pmb{t}}|F(C)-f(x)\mu C|\le\epsilon$ for every
+$\delta$-fine $\pmb{t}\in T_{\alpha}$,
+
+(iii) for every $\epsilon>0$ there is an $\Cal R\in\frak R$ such that
+$|F(E)|\le\epsilon$ for every $E\in\Cal C\cap\Cal R$.}
+
+\noindent Then $f$ is Pfeffer integrable and $F$ is the Saks-Henstock
+indefinite integral of $f$.
+
+\proof{ By 482D, the gauge integral $I_{\alpha}(f)$ is defined and
+equal to $F(\BbbR^r)$ for every $\alpha\in\ooint{0,\alpha^*}$.   So $f$
+is Pfeffer integrable.   Now 484Hc tells us that $F$ must be its
+Saks-Henstock indefinite integral.
+}%end of proof of 484J
+
+\leader{484K}{Lemma} Suppose that $\alpha>0$ and $0<\alpha'
+<\alpha\min(\bover12,2^{r-1}(\Bover{\alpha}{2\beta_r})^{(r-1)/r})$.
+If $E\in\Cal C$ is such that $E\subseteq\clstar E$, then there is a
+$\delta\in\Delta$ such that $\{(x,C\cap E)\}\in T_{\alpha'}$ whenever
+$(x,C)\in\delta$, $x\in E$ and $\{(x,C)\}\in T_{\alpha}$.
+
+\proof{ Take $\epsilon>0$ such that
+$\beta_r\epsilon\le\bover12\alpha$ and
+
+\Centerline{$\Bover1{\alpha}+2^{r-1}\epsilon
+\le\Bover{2^{r-1}}{\alpha'}
+  \bigl(\Bover{\alpha}{2\beta_r}\bigr)^{(r-1)/r}$.}
+
+\noindent Set
+
+\Centerline{$A=\partstar E
+   \cup\{x:\lim_{\zeta\downarrow 0}
+     \sup_{x\in G,0<\diam G\le\zeta}
+     \Bover{\nu^*(G\cap\partstar E)}{(\diam G)^{r-1}}>0\}$,}
+
+\noindent so that $A$ is a thin set, as in (b-i) of the proof of 484F.
+(Of course $\partstar E$ is thin because
+$\nu(\partstar E\cap B(\tbf{0},n))$ is finite for every $n\in\Bbb N$.)
+
+For $x\in E\setminus A$, we have $x\in\intstar E$ (because
+$E\subseteq\clstar E$), so there is a $\theta(x)>0$ such that
+
+\Centerline{$\mu(B(x,\zeta)\setminus E)\le\epsilon\mu B(x,\zeta)$,
+\quad$\nu(\partstar E\cap B(x,\zeta))\le\epsilon(2\zeta)^{r-1}$}
+
+\noindent whenever $0<\zeta\le 2\theta(x)$.   If we set $\theta(x)=0$
+for $x\in E\cap A$ and $\theta(x)=1$ for $x\in\BbbR^r\setminus E$, then
+$\theta\in\Theta$ and $\delta_{\theta}\in\Delta$.
+
+Now suppose that $x\in E$, $(x,C)\in\delta_{\theta}$ and
+$\{(x,C)\}\in T_{\alpha}$, that is, that $C\in\Cal C_{\alpha}$ and
+$x\in(E\cap\clstar C)\setminus A$ and $\|x-y\|<\theta(x)$ for every
+$y\in C$.   Set $\gamma=\diam C\le 2\theta(x)$.   Then
+
+\Centerline{$\mu(C\setminus E)\le\mu(B(x,\gamma)\setminus E)
+\le\epsilon\mu B(x,\gamma)=\beta_r\epsilon\gamma^r$,}
+
+\noindent so
+
+$$\eqalign{\mu(C\cap E)
+&\ge\mu C-\beta_r\epsilon\gamma^r
+\ge(\alpha-\beta_r\epsilon)\gamma^r\cr
+&\ge\Bover12\alpha\gamma^r
+\ge\alpha'\gamma^r
+\ge\alpha'\diam(C\cap E)^r.\cr}$$
+
+\noindent Next,
+
+$$\eqalign{\per(C\cap E)
+&=\nu(\partstar(C\cap E))
+\le\nu(B(x,\gamma)\cap(\partstar C\cup\partstar E))\cr
+&\le\nu(\partstar C)+\nu(B(x,\gamma)\cap\partstar E)
+\le\Bover1{\alpha}\gamma^{r-1}+\epsilon(2\gamma)^{r-1}
+=(\Bover1{\alpha}+2^{r-1}\epsilon)\gamma^{r-1}.\cr}$$
+
+\noindent Moreover,
+
+\Centerline{$2^{-r}\beta_r\diam(C\cap E)^r
+\ge\mu(C\cap E)
+\ge\Bover12\alpha\gamma^r$}
+
+\noindent (264H), so
+$\diam(C\cap E)\ge 2(\Bover{\alpha}{2\beta_r})^{1/r}\gamma$
+and
+
+$$\eqalign{\per(C\cap E)
+&\le(\Bover1{\alpha}+2^{r-1}\epsilon)\cdot\Bover1{2^{r-1}}
+  \bigl(\Bover{2\beta_r}{\alpha}\bigr)^{(r-1)/r}\diam(C\cap E)^{r-1}
+\le\Bover1{\alpha'}\diam(C\cap E)^{r-1}.\cr}$$
+
+\noindent Putting these together, we see that $C\in\Cal C_{\alpha'}$.
+
+Finally, because $x\in\clstar C\cap\intstar E\subseteq\clstar(C\cap E)$
+(475Ce), $\{(x,C\cap E)\}\in T_{\alpha'}$.
+}%end of proof of 484K
+
+\leader{484L}{Proposition} Suppose that $f:\BbbR^r\to\BbbR$ is Pfeffer
+integrable, and that $F:\Cal C\to\Bbb R$ is its Saks-Henstock indefinite
+integral.   Then
+$\Pfint f\times\chi E$ is defined and equal to $F(E)$ for every
+$E\in\Cal C$.
+
+\proof{{\bf (a)} To begin with (down to the end of (d) below),
+suppose that $E\in\Cal C$ is such that
+$\intstar E\subseteq E\subseteq\clstar E$.   For $C\in\Cal C$ set
+$F_1(C)=F(C\cap E)$.   I seek to show that $F_1$ satisfies the
+conditions of 484J.
+
+Of course $F_1:\Cal C\to\Bbb R$ is additive.   If $\epsilon>0$, there is
+an $\Cal R\in\frak R$ such that $|F(G)|\le\epsilon$ whenever
+$G\in\Cal R$, by 484H;  now there is an $\Cal R'\in\frak R$ such that
+$G\cap E\in\Cal R$ for every $G\in\Cal R'$ (484E(a-ii)), so that
+$|F_1(G)|\le\epsilon$ for every $G\in\Cal C\cap\Cal R'$.   Thus $F_1$
+satisfies (iii) of 484J.
+
+\medskip
+
+{\bf (b)} Take $\alpha\in\ooint{0,\alpha^*}$ and $\epsilon>0$.   Take
+$\alpha'$ such that $0<\alpha'
+<\alpha\min(\bover12,2^{r-1}(\Bover{\alpha}{2\beta_r})^{(r-1)/r})$.
+Applying 484K to $E$ and its complement, and appealing to the definition
+of $F$, we see that there is a $\delta\in\Delta$ such that
+
+\inset{($\alpha$) $\{(x,C\cap E)\}\in T_{\alpha'}$ whenever
+$(x,C)\in\delta$, $x\in E$ and $\{(x,C)\}\in T_{\alpha}$,
+
+($\beta$) $\{(x,C\setminus E)\}\in T_{\alpha'}$ whenever
+$(x,C)\in\delta$,
+$x\in\BbbR^r\setminus E$ and $\{(x,C)\}\in T_{\alpha}$,
+
+($\gamma$) $\sum_{(x,C)\in\pmb{t}}|F(C)-f(x)\mu C|\le\epsilon$ for every
+$\delta$-fine $\pmb{t}\in T_{\alpha'}$.}
+
+\noindent (For ($\alpha$), we need to know that $E\subseteq\clstar E$
+and for ($\beta$) we need $\intstar E\subseteq E$.)   Next, choose for
+each $n\in\Bbb N$ closed sets
+$H_n\subseteq E$, $H'_n\subseteq\BbbR^r\setminus E$ such that
+$\mu(E\setminus H_n)\le 2^{-n}\epsilon$ and
+$\mu((\BbbR^r\setminus E)\setminus H'_n)\le 2^{-n}\epsilon$.   Define
+$\theta:\BbbR^r\to\ooint{0,\infty}$ by setting
+
+$$\eqalign{\theta(x)
+&=\min(1,\Bover12\rho(x,H'_n))\text{ if }x\in E
+  \text{ and }n\le|f(x)|<n+1,\cr
+&=\min(1,\Bover12\rho(x,H_n))\text{ if }x\in\BbbR^r\setminus E
+  \text{ and }n\le|f(x)|<n+1,\cr}$$
+
+\noindent writing $\rho(x,A)=\inf_{y\in A}\|x-y\|$ if
+$A\subseteq\BbbR^r$ is non-empty, $\infty$ if $A=\emptyset$.   Then
+$\delta_{\theta}\in\Delta$.   Let $\Cal R'\in\frak R$ be such that
+$A\cap E\in\Cal R$ whenever $A\in\Cal R'$.
+
+\medskip
+
+{\bf (c)} Write $f_E$ for $f\times\chi E$.   Then
+$\sum_{(x,C)\in\pmb{t}}|F_1(C)-f_E(x)\mu(C)|\le 11\epsilon$ whenever
+$\pmb{t}\in T_{\alpha}$ is $(\delta\cap\delta_{\theta})$-fine.   \Prf\ Set
+
+\Centerline{$\pmb{t}'=\{(x,C\cap E):(x,C)\in\pmb{t},\,x\in E\}$.}
+
+\noindent By clause ($\alpha$) of the choice of $\delta$,
+$\pmb{t}'\in T_{\alpha'}$, and of course it is $\delta$-fine.   So
+
+\Centerline{$\sum_{(x,C)\in\pmb{t},x\in E}|F(C\cap E)-f(x)\mu(C\cap E)|
+\le\epsilon$}
+
+\noindent by clause ($\gamma$) of the choice of $\delta$.   Next,
+
+$$\eqalignno{\sum_{(x,C)\in\pmb{t},x\in E}|f(x)\mu(C\setminus E)|
+&=\sum_{n=0}^{\infty}\sum_{\Atop{(x,C)\in\pmb{t},x\in E}
+  {n\le|f(x)|<n+1}}
+   |f(x)|\mu(C\setminus E)\cr
+&\le\sum_{n=0}^{\infty}(n+1)\mu((\BbbR^r\setminus E)\setminus H'_n)\cr
+\displaycause{because $\diam C\le\theta(x)$, so $C\cap H'_n=\emptyset$
+whenever $(x,C)\in\pmb{t}$, $x\in E$ and $n\le|f(x)|<n+1$}
+&\le\sum_{n=0}^{\infty}2^{-n}(n+1)\epsilon
+=4\epsilon,\cr}$$
+
+\noindent and
+
+\Centerline{$\sum_{(x,C)\in\pmb{t},x\in E}|F(C\cap E)-f(x)\mu C|
+\le 5\epsilon$.}
+
+\noindent Similarly,
+
+\Centerline{$\sum_{(x,C)\in\pmb{t},x\notin E}
+  |F(C\setminus E)-f(x)\mu C)|
+\le 5\epsilon$.}
+
+\noindent But as
+
+\Centerline{$\sum_{(x,C)\in\pmb{t},x\notin E}|F(C)-f(x)\mu C|
+\le\epsilon$}
+
+\noindent (because surely $\pmb{t}$ itself belongs to $T_{\alpha'}$),
+we have
+
+\Centerline{$\sum_{(x,C)\in\pmb{t},x\notin E}|F(C\cap E)|
+\le 6\epsilon$.}
+
+Putting these together,
+
+$$\eqalign{\sum_{(x,C)\in\pmb{t}}|F_1(C)-f_E(x)\mu C|
+&=\sum_{\Atop{(x,C)\in\pmb{t}}{x\in E}}
+      |F(C\cap E)-f(x)\mu C|
+   +\sum_{\Atop{(x,C)\in\pmb{t}}{x\notin E}}
+      |F(C\cap E)|\cr
+&\le 5\epsilon+6\epsilon
+=11\epsilon.  \text{ \Qed}\cr}$$
+
+\medskip
+
+{\bf (d)} As $\alpha$ and $\epsilon$ are arbitrary, condition (ii) of
+484J is satisfied by $F_1$ and $f_E$, so
+$\Pfint f_E=F_1(\BbbR^r)=F(E)$.
+
+\medskip
+
+{\bf (e)} This completes the proof when
+$\intstar E\subseteq E\subseteq\clstar E$.   For a general set
+$E\in\Cal C$, set $E_1=(E\cup\intstar E)\cap\clstar E$.   Then
+$E\symmdiff E_1$ is negligible, so
+
+\Centerline{$\intstar E_1=\intstar E\subseteq E_1
+\subseteq\clstar E=\clstar E_1$.}
+
+\noindent Also $\Pfint f\times\chi(E\setminus E_1)
+=\int f\times\chi(E\setminus E_1)d\mu$,
+$\Pfint f\times\chi(E_1\setminus E)
+=\int f\times\chi(E\setminus E_1)d\mu$ are both zero, and
+
+\Centerline{$\biggerPfint f\times\chi E=\Pfint f\times\chi E_1
+=F(E_1)=F(E)$.}
+
+\noindent (To see that $F(E_1)=F(E)$, note that $E\setminus E_1$ and
+$E_1\setminus E$, being negligible sets, have empty essential boundary
+and zero perimeter, so belong to every member of $\frak R$, by
+484E(b-ii), or otherwise.)
+}%end of proof of 484L
+
+\leader{484M}{Lemma} Let $G$, $H\in\Cal C$ be disjoint and
+$\phi:\BbbR^r\to\BbbR^r$ a continuous function.   If {\it either}
+$G\cup H$ is bounded {\it or} $\phi$ has compact support,
+
+\Centerline{$\int_{\partstar(G\cup H)}\varinnerprod{\phi}
+  {\psi_{G\cup H}}\,d\nu
+=\int_{\partstar G}\varinnerprod{\phi}
+  {\psi_G}\,d\nu
++\int_{\partstar H}\varinnerprod{\phi}
+  {\psi_G}\,d\nu$,}
+
+\noindent where $\psi_G$, $\psi_H$ and $\psi_{G\cup H}$ are the
+canonical outward-normal functions\cmmnt{ (474G)}.
+
+\proof{{\bf (a)} Suppose first that $\phi$ is a Lipschitz function with
+compact support.   Then 475N tells us that
+
+$$\eqalign{\int_{\partstar(G\cup H)}
+  \varinnerprod{\phi}{\psi_{G\cup H}}\,d\nu
+&=\int_{G\cup H}\diverg\phi\,d\mu
+=\int_G\diverg\phi\,d\mu+\int_H\diverg\phi\,d\mu\cr
+&=\int_{\partstar G}\varinnerprod{\phi}
+  {\psi_G}\,d\nu
++\int_{\partstar H}\varinnerprod{\phi}
+  {\psi_G}\,d\nu.\cr}$$
+
+\noindent (Recall from 474R that we can identify canonical outward-normal
+functions with Federer exterior normals, as in the statement of 475N.)
+
+\medskip
+
+{\bf (b)} Now suppose that $\phi$ is a continuous function with compact
+support.   Let $\sequencen{\tilde h_n}$ be the smoothing sequence of
+473E.   Then all the functions $\phi*\tilde h_n$ are Lipschitz and
+$\sequencen{\phi*\tilde h_n}$ converges uniformly to $\phi$ (473Df,
+473Ed).   So
+
+$$\eqalign{\int_{\partstar(G\cup H)}\varinnerprod{\phi}
+  {\psi_{G\cup H}}\,d\nu
+&=\lim_{n\to\infty}\int_{\partstar(G\cup H)}
+  \varinnerprod{(\phi*\tilde h_n)}{\psi_{G\cup H}}\,d\nu\cr
+&=\lim_{n\to\infty}\int_{\partstar G}
+  \varinnerprod{(\phi*\tilde h_n)}{\psi_G}\,d\nu
++\lim_{n\to\infty}\int_{\partstar H}
+  \varinnerprod{(\phi*\tilde h_n)}{\psi_H}\,d\nu\cr
+&=\int_{\partstar G}\varinnerprod{\phi}
+  {\psi_G}\,d\nu
++\int_{\partstar H}\varinnerprod{\phi}
+  {\psi_G}\,d\nu.\cr}$$
+
+\medskip
+
+{\bf (c)} If, on the other hand, $\phi$ is continuous and $G$ and $H$
+are bounded, then we can find a continuous function $\tilde\phi$ with
+compact support agreeing with $\phi$ on $\overline{G\cup H}$ (4A2G(e-i),
+or otherwise);  applying (b) to $\tilde\phi$, we get the required result
+for $\phi$.
+}%end of proof of 484M
+
+\leader{484N}{Pfeffer's Divergence Theorem}  Let
+$E\subseteq\BbbR^r$ be a set with locally finite perimeter, and
+$\phi:\BbbR^r\to\BbbR^r$ a continuous function with compact support such
+that $\{x:x\in\BbbR^r,\,\phi$ is not differentiable at $x\}$ is thin.
+Let $v_x$ be the Federer exterior normal to $E$ at any point $x$ where
+the normal exists.   Then $\Pfint\diverg\phi\times\chi E$ is defined and
+equal to $\int_{\partstar E}\varinnerprod{\phi(x)}{v_x}\nu(dx)$.
+
+\proof{{\bf (a)} Let $n$ be such that $\phi(x)=\tbf{0}$ for
+$\|x\|\ge n$.   For $C\in\Cal C$, set
+$F(C)=\int_{\partstar C}\varinnerprod{\phi}{\psi_C}\nu(dx)$, where
+$\psi_C$ is the canonical outward-normal function;  recall that
+$\psi_E(x)=v_x$ for $\nu$-almost every $x\in\partstar E$ (474R, 475D).
+By 484M, $F$ is additive.
+
+\medskip
+
+{\bf (b)} If $0<\alpha<\alpha^*$ and $\epsilon>0$ and $x\in\BbbR^r$ is
+such that $\phi$ is differentiable at $x$, there is a $\gamma>0$ such
+that $|F(C)-\diverg\phi(x)\mu C|\le\epsilon\mu C$ whenever
+$C\in\Cal C_{\alpha}$, $x\in\overline{C}$ and $\diam C\le\gamma$.
+\Prf\ Let $T$ be the derivative of $\phi$ at $x$.   Let $\gamma>0$ be
+such that $\|\phi(y)-\phi(x)-T(y-x)\|\le\alpha^2\epsilon\|y-x\|$
+whenever $\|y-x\|\le\gamma$.   Let $\tilde\phi:\BbbR^r\to\BbbR^r$ be a
+Lipschitz function with compact support such that
+$\tilde\phi(y)=\phi(x)+(y-x)$ whenever $\|y-x\|\le\gamma$ (473Cf).
+If $C\in\Cal C_{\alpha}$ has diameter at most $\gamma$ and
+$x\in\overline{C}$, then
+
+$$\eqalignno{|F(C)-\diverg\phi(x)\mu C|
+&=|\int_{\partstar C}\varinnerprod{\phi}{\psi_C}\nu(dx)
+  -\int_C\diverg\tilde\phi\,d\mu|\cr
+\displaycause{because $T$ is the derivative of $\tilde\phi$ everywhere
+on $B(x,\gamma)$, so $\diverg\tilde\phi(y)=\diverg\phi(x)$ for every
+$y\in C$}
+&=|\int_{\partstar C}\varinnerprod{(\phi-\tilde\phi)}{\psi_C}\nu(dx)|\cr
+\displaycause{applying the Divergence Theorem 475N to $\tilde\phi$}
+&\le\nu(\partstar C)\sup_{y\in C}\|\phi(y)-\tilde\phi(y)\|\cr
+&\le\alpha^2\epsilon\diam C\per C
+\le\alpha\epsilon(\diam C)^r
+\le\epsilon\mu C\cr}$$
+
+\noindent because $C\in\Cal C_{\alpha}$.\ \Qed
+
+\medskip
+
+{\bf (c)} If $\epsilon>0$ and $\alpha\in\ooint{0,\alpha^*}$, there is a
+$\delta\in\Delta$ such that
+$\sum_{(x,C)\in\pmb{t}}|F(C)-\diverg\phi(x)\mu C|\le\epsilon$ whenever
+$\pmb{t}\in T_{\alpha}$ is $\delta$-fine.
+\Prf\ Let $\zeta>0$ be such that $\zeta\mu B(\tbf{0},n+2)\le\epsilon$.
+Set $A=\{x:x\in\BbbR^r,\,\phi$ is not differentiable at $x\}$, and for
+$x\in\BbbR^r\setminus A$ let $\theta(x)\in\ocint{0,\bover12}$ be such
+that $|F(C)-\diverg\phi(x)\mu C|\le\zeta\mu C$ whenever
+$C\in\Cal C_{\alpha}$, $x\in\overline{C}$ and $\diam C\le\theta(x)$;
+for $x\in A$ set $\theta(x)=0$.
+Now suppose that $\pmb{t}\in T_{\alpha}$ is $\delta_{\theta}$-fine.
+Then
+
+$$\eqalignno{\sum_{(x,C)\in\pmb{t}}|F(C)-\diverg\phi(x)\mu C|
+&=\sum_{\Atop{(x,C)\in\pmb{t}}{x\in B(\tbf{0},n+1)}}
+|F(C)-\diverg\phi(x)\mu C|\cr
+\displaycause{because $\diam C\le 1$ whenever $(x,C)\in\pmb{t}$, so
+if $\|x\|>n+1$ then $F(C)=\diverg\phi(x)=0$}
+&\le\sum_{\Atop{(x,C)\in\pmb{t}}{x\in B(\tbf{0},n+1)}}\zeta\mu C
+\le\zeta\mu B(\tbf{0},n+2)
+\le\epsilon. \text{ \Qed}\cr}$$
+
+\medskip
+
+{\bf (d)} Because $\phi$ is a continuous function with compact support,
+it is uniformly continuous (apply 4A2Jf to each of the coordinates of
+$\phi$).   For $\zeta>0$, let $\gamma(\zeta)>0$ be such that
+$\|\phi(x)-\phi(y)\|\le\zeta$ whenever $\|x-y\|\le\gamma(\zeta)$.
+
+If $C\in\Cal C$ and $\per C\le 1$ and $\mu C\le\zeta\gamma(\zeta)$,
+where $\zeta>0$, then
+$|F(C)|\le r\zeta(2\|\phi\|_{\infty}+\bover12)$, writing
+$\|\phi\|_{\infty}$ for $\sup_{x\in\BbbR^r}\|\phi(x)\|$.
+\Prf\ For $1\le i\le r$, let $\phi_i:\BbbR^r\to\Bbb R$ be the $i$th
+component of $\phi$, and $v_i$ the $i$th unit vector
+$(0,\ldots,1,\ldots,0)$;  write
+
+\Centerline{$\alpha_i
+=\int_{\partstar C}\phi_i(x)\innerprod{v_i}{\psi_E(x)}\nu(dx)$,}
+
+\noindent so that $F(C)=\sum_{i=1}^r\alpha_i$.   I start by examining
+$\alpha_r$.   By 475O, we have sequences $\sequencen{H_n}$,
+$\sequencen{g_n}$ and $\sequencen{g'_n}$ such that
+
+\inset{(i) for each $n\in\Bbb N$, $H_n$ is a Lebesgue measurable subset
+of $\BbbR^{r-1}$, and $g_n$, $g'_n:H_n\to[-\infty,\infty]$ are Lebesgue
+measurable functions such that $g_n(u)<g'_n(u)$ for every $u\in H_n$;
+
+(ii) if $m$, $n\in\Bbb N$ then $g_m(u)\ne g'_n(u)$ for every
+$u\in H_m\cap H_n$;
+
+(iii) $\sum_{n=0}^{\infty}\int_{H_n}g'_n-g_nd\mu_{r-1}=\mu C$;
+
+(iv)
+
+\Centerline{$\alpha_r
+=\sum_{n=0}^{\infty}\int_{H_n}\phi_r(u,g'_n(u))-\phi_r(u,g_n(u))
+  \mu_{r-1}(du)$,}
+
+\noindent where we interpret $\phi_r(u,\infty)$ and $\phi_r(u,-\infty)$
+as $0$ if necessary;
+
+(v) for $\mu_{r-1}$-almost every $u\in\BbbR^{r-1}$,
+
+$$\eqalign{\{t:(u,t)\in\partstar C\}
+&=\{g_n(u):n\in\Bbb N,\,u\in H_n,\,g_n(u)\ne-\infty\}\cr
+&\hskip8em
+  \cup\{g'_n(u):n\in\Bbb N,\,u\in H_n,\,g'_n(u)\ne\infty\}.\cr}$$
+}%end of inset
+
+\noindent From (iii) we see that $g'_n$ and $g_n$ are both finite almost
+everywhere on $H_n$, for every $n$.   Consequently, by (v) and 475H,
+
+\Centerline{$2\sum_{n=0}^{\infty}\mu_{r-1}H_n
+=\int\#(\{t:(u,t)\in\partstar C\})\mu_{r-1}(du)
+\le\nu(\partstar C)\le 1$.}
+
+\noindent For each $n$, set
+
+\Centerline{$H'_n=\{u:u\in H_n,\,g'_n(u)-g_n(u)>\gamma(\zeta)\}$.}
+
+\noindent Then $\gamma(\zeta)\sum_{n=0}^{\infty}\mu H'_n\le\mu C$ so
+$\sum_{n=0}^{\infty}\mu H'_n\le\zeta$ and
+
+$$|\sum_{n=0}^{\infty}\int_{H'_n}
+  \phi_r(u,g'_n(u))-\phi_r(u,g_n(u))\mu_{r-1}(du)|
+\le 2\|\phi\|_{\infty}\sum_{n=0}^{\infty}\mu H'_n
+\le 2\zeta\|\phi\|_{\infty}.$$
+
+\noindent On the other hand, for $n\in\Bbb N$ and
+$u\in H_n\setminus H'_n$,
+$|\phi_r(u,g'_n(u))-\phi_r(u,g_n(u))|\le\zeta$, so
+
+$$|\sum_{n=0}^{\infty}\int_{H_n\setminus H'_n}
+  \phi_r(u,g'_n(u))-\phi_r(u,g_n(u))\mu_{r-1}(du)|
+\le\sum_{n=0}^{\infty}\zeta\mu_{r-1}(H_n\setminus H'_n)
+\le\Bover12\zeta.$$
+
+\noindent Putting these together,
+
+\Centerline{$\alpha_r\le 2\zeta\|\phi\|_{\infty}+\Bover12\zeta$.}
+
+\noindent But of course the same arguments apply to all the $\alpha_i$,
+so
+
+\Centerline{$|F(C)|\le\sum_{i=1}^r|\alpha_i|
+\le r\zeta(2\|\phi\|_{\infty}+\Bover12)$,}
+
+\noindent as claimed.\ \Qed
+
+\medskip
+
+{\bf (e)} If $\epsilon>0$ there is an $\Cal R\in\frak R$ such that
+$|F(E)|\le\epsilon$ for every $E\in\Cal C\cap\Cal R$.   \Prf\ Let
+$\sequence{i}{\epsilon_i}$ be a sequence of strictly positive real
+numbers such that
+$r(2\|\phi\|_{\infty}+\bover12)\sum_{i=0}^{\infty}\epsilon_i
+\le\epsilon$.
+For each $i\in\Bbb N$, set $\eta(i)=\epsilon_i\gamma(\epsilon_i)>0$.
+Set $V=B(\tbf{0},n+1)$, and take any
+$E\in\Cal C\cap\Cal R^{(V)}_{\eta}$.   Then $F(E\setminus V)=0$, so
+$F(E)=F(E\cap V)$, while $E\cap V\in\Cal R_{\eta}$.   Express $E\cap V$
+as $\bigcup_{i\le n}E_i$, where $\langle E_i\rangle_{i\le n}$ is
+disjoint, $\per E_i\le 1$ and $\mu E_i\le\eta(i)$ for each $i$.
+Then $|F(E_i)|\le r\epsilon_i(2\|\phi\|_{\infty}+\bover12)$ for each
+$i$, by (d), so
+
+\Centerline{$|F(E)|=|F(E\cap V)|\le\sum_{i=0}^n|F(E_i)|\le\epsilon$,}
+
+\noindent as required.\ \Qed
+
+\medskip
+
+{\bf (f)} By 484J, $\diverg\phi$ is Pfeffer integrable.   Moreover, by
+the uniqueness assertion in 484Hc, its Saks-Henstock indefinite integral
+is just the function $F$ here.   By 484L,
+$F(E)=\Pfint\diverg\phi\times\chi E$ for every $E\in\Cal C$, as required.
+}%end of proof of 484N
+
+\leader{484O}{Differentiating the indefinite integral:  Theorem} Let
+$f:\BbbR^r\to\Bbb R$ be a Pfeffer integrable function, and $F$ its
+Saks-Henstock indefinite integral.   Then whenever $0<\alpha<\alpha^*$,
+
+$$\eqalign{f(x)
+&=\lim_{\zeta\downarrow 0}\sup\{\Bover{F(C)}{\mu C}:
+  C\in\Cal C_{\alpha},\,x\in\overline{C},\,0<\diam C\le\zeta\}\cr
+&=\lim_{\zeta\downarrow 0}\inf\{\Bover{F(C)}{\mu C}:
+  C\in\Cal C_{\alpha},\,x\in\overline{C},\,0<\diam C\le\zeta\}\cr}$$
+
+\noindent for $\mu$-almost every $x\in\BbbR^r$.
+
+\proof{{\bf (a)} It will be useful to know the following:  if
+$C\in\Cal C_{\alpha}$, $\diam C>0$, $x\in\overline{C}$ and $\epsilon>0$,
+then for any sufficiently small $\zeta>0$,
+$C\cup B(x,\zeta)\in\Cal C_{\alpha/2}$ and
+$|F(C\cup B(x,\zeta))-F(C)|\le\epsilon$.   \Prf\ Let $\Cal R\in\frak R$
+be such that $|F(R)|\le\epsilon$ whenever $R\in\Cal C\cap\Cal R$, let
+$\Cal R'\in\frak R$ be such that $(\BbbR^r\setminus C)\cap R\in\Cal R$
+whenever $R\in\Cal R'$ (484E(a-ii)), and let $\eta\in\Eta$ be such that
+$\Cal R_{\eta}\subseteq\Cal R'$ (484E(a-i)).
+Then for all sufficiently small $\zeta>0$, we shall have
+$\per B(x,\zeta)\le 1$ and $\mu B(x,\zeta)\le\eta(0)$, so that
+$B(x,\zeta)\in\Cal R_{\eta}$, $B(x,\zeta)\setminus C\in\Cal R$ and
+
+\Centerline{$|F(C\cup B(x,\zeta))-F(C)|
+=|F(B(x,\zeta)\setminus C)|\le\epsilon$.}
+
+\noindent Next, for all sufficiently small $\zeta>0$,
+
+$$\eqalignno{\mu(C\cup B(x,\zeta))
+&\ge\mu C
+\ge\alpha(\diam C)^r\cr
+&\ge\Bover{\alpha}2(\zeta+\diam C)^r
+\ge\Bover{\alpha}2\diam(C\cup B(x,\zeta))^r\cr
+\noalign{\noindent (because $x\in\overline{C}$) and}
+\per(C\cup B(x,\zeta))
+&\le\per C+\per B(x,\zeta)
+\le\Bover1{\alpha}(\diam C)^{r-1}+\per B(x,\zeta)\cr
+&\le\Bover2{\alpha}(\diam C)^{r-1}
+\le\Bover2{\alpha}\diam(C\cup B(x,\zeta))^{r-1},\cr}$$
+
+\noindent so that $C\cup B(x,\zeta)\in\Cal C_{\alpha/2}$.\ \Qed
+
+\medskip
+
+{\bf (b)} For $x\in\Bbb R$, set
+
+\Centerline{$g(x)=\lim_{\zeta\downarrow 0}
+  \sup\{\Bover{F(C)}{\mu C}:C\in\Cal C_{\alpha},\,
+     x\in\overline{C},\,\diam C\le\zeta\}$.}
+
+\noindent \Quer\ Suppose, if possible, that there are rational numbers
+$q<q'$ and $n\in\Bbb N$ such that
+$A=\{x:\|x\|\le n,\,f(x)\le q<q'<g(x)\}$ is not $\mu$-negligible.
+Set
+
+\Centerline{$\epsilon=\Bover{(q'-q)\alpha}{4\beta_r}\mu^*A
+>0$.}
+
+\noindent Let $\theta\in\Theta$ be such that
+
+\Centerline{$\sum_{(x,C)\in\pmb{t}}|F(C)-f(x)\mu C|
+\le\epsilon$}
+
+\noindent for every $\delta_{\theta}$-fine $\pmb{t}\in T_{\alpha/2}$.
+Let $\Cal I$ be the family of all balls $B(x,\zeta)$ where $x\in A$,
+$0<\zeta\le\theta(x)$ and there is a $C\in\Cal C_{\alpha}$ such that
+$x\in\overline{C}$,
+$\diam C=\zeta$ and $\Bover{F(C)}{\mu C}>q'$.   Then every member of
+$A_1=A\setminus\theta^{-1}[\{0\}]$ is the centre of arbitrarily small
+members of $\Cal I$, so by 472C there is a countable disjoint family
+$\Cal J_0\subseteq\Cal I$ such that
+
+\Centerline{$\mu(\bigcup\Cal J_0)>\Bover12\mu^*A_1
+=\Bover12\mu^*A$.}
+
+\noindent There is therefore a finite family $\Cal J_1\subseteq\Cal J_0$
+such that $\mu(\bigcup\Cal J_1)>\Bover12\mu^*A$;  enumerate
+$\Cal J_1$ as $\langle B(x_i,\zeta_i)\rangle_{i\le n}$ where, for each
+$i\le n$, $x_i\in A$, $0<\zeta_i\le\theta_i(x)$ and there is a
+$C_i\in\Cal C_{\alpha}$ such that $x_i\in\overline{C_i}$,
+$\diam C_i=\zeta_i$ and $F(C_i)>q'\mu C_i$.   By (a), we can enlarge
+$C_i$ by adding a sufficiently small ball around $x_i$ to form a
+$C'_i\in\Cal C_{\alpha/2}$ such that $x_i\in\interior C'_i$,
+$C'_i\subseteq B(x_i,\zeta_i)$ and $F(C'_i)\ge q'\mu C'_i$.
+
+Consider $\pmb{t}=\{(x_i,C'_i):i\le n\}$.   Then, because the balls
+$B(x_i,\zeta_i)$ are disjoint, and
+$x_i\in\interior C'_i\subseteq\clstar C'_i$ for every $i$, $\pmb{t}$ is
+a $\delta_{\theta}$-fine member of $T_{\alpha/2}$.   So
+$\sum_{i=0}^nF(C'_i)\le\epsilon+\sum_{i=0}^nf(x_i)\mu C'_i$.   But as
+$F(C'_i)\ge q'\mu C'_i$ and $f(x_i)\le q$ for every $i$, this means that
+$(q'-q)\sum_{i=0}^n\mu C'_i\le\epsilon$.
+
+But now remember that $\diam C'_i\ge\diam C_i=\zeta_i$ and that
+$C'_i\in\Cal C_{\alpha/2}$ for each $i$.   This means that
+
+\Centerline{$\mu C'_i
+\ge\Bover{\alpha}2\zeta_i^r
+\ge\Bover{\alpha}{2\beta_r}\mu B(x_i,\zeta_i)$}
+
+\noindent for each $i$, and
+
+$$\eqalign{\epsilon
+&\ge(q'-q)\sum_{i=0}^n\mu C'_i
+\ge\Bover{(q'-q)\alpha}{2\beta_r}\sum_{i=0}^n\mu B(x_i,\zeta_i)\cr
+&>\Bover{(q'-q)\alpha}{4\beta_r}\mu^*A
+=\epsilon\cr}$$
+
+\noindent which is absurd.\ \Bang
+
+\medskip
+
+{\bf (c)} Since $q$, $q'$ and $n$ are arbitrary, this means that
+$g\leae f$.   Similarly (or applying (b) to $-f$ and $-F$)
+
+\Centerline{$f(x)
+\le\lim_{\zeta\downarrow 0}\inf\{\Bover{F(C)}{\mu C}:
+  C\in\Cal C_{\alpha},\,x\in\overline{C},\,0<\diam C\le\zeta\}$}
+
+\noindent for almost all $x$, as required.
+}%end of proof of 484O
+
+\vleader{72pt}{484P}{Lemma} Let $\phi:\BbbR^r\to\BbbR^r$ be an injective
+Lipschitz function, and $H$ the set of points at which it is
+differentiable;  for $x\in H$, write $T(x)$ for the derivative of $\phi$
+at $x$ and $J(x)$ for $|\det T(x)|$.
+Then, for $\mu$-almost every $x\in\BbbR^r$,
+
+$$\eqalign{J(x)
+&=\lim_{\zeta\downarrow 0}\sup\{\Bover{\mu\phi[C]}{\mu C}:
+  C\in\Cal C_{\alpha},\,x\in\overline{C},\,0<\diam C\le\zeta\}\cr
+&=\lim_{\zeta\downarrow 0}\inf\{\Bover{\mu\phi[C]}{\mu C}:
+  C\in\Cal C_{\alpha},\,x\in\overline{C},\,0<\diam C\le\zeta\}\cr}$$
+
+\noindent for every $\alpha>0$.
+
+\proof{ By Rademacher's theorem (262Q), $H$ is conegligible.   Let $H'$
+be the Lebesgue set of $J$, so that $H'$ also is conegligible (261E).
+Take any $x\in H'$ and $\epsilon>0$.   Then there is a $\zeta_0>0$ such
+that $\int_{B(x,\zeta)}|J(y)-J(x)|\mu(dy)\le\epsilon\mu B(x,\zeta)$ for
+every $\zeta\in[0,\zeta_0]$.   Now suppose that $C\in\Cal C_{\alpha}$,
+$x\in\overline{C}$ and $0<\diam C\le\zeta_0$.   Then
+$\mu(C\setminus H)=0$ so $\mu\phi[C\setminus H]=0$ (262D), and
+
+\Centerline{$\mu\phi[C]=\mu\phi[C\cap H]=\int_{C\cap H}J\,d\mu$}
+
+\noindent (263D(iv)).   So
+
+$$\eqalign{|\mu\phi[C]-J(x)\mu C|
+&=|\int_{C\cap H}J\,d\mu-J(x)\mu(C\cap H)|
+\le\int_{C\cap H}|J(y)-J(x)|d\mu\cr
+&\le\int_{B(x,\diam C)}|J(y)-J(x)|d\mu
+\le\epsilon\mu B(x,\diam C)\cr
+&=\beta_r\epsilon(\diam C)^r
+\le\Bover{\beta_r\epsilon}{\alpha}\mu C.\cr}$$
+
+\noindent Thus
+$|\Bover{\mu\phi[C]}{\mu C}-J(x)|\le\Bover{\beta_r}{\alpha}\epsilon$
+whenever $C\in\Cal C_{\alpha}$, $x\in\overline{C}$ and
+$0<\diam C\le\zeta_0$;  as $\epsilon$ is arbitrary,
+
+$$\eqalign{J(x)
+&=\lim_{\zeta\downarrow 0}\sup\{\Bover{\mu\phi[C]}{\mu C}:
+  C\in\Cal C_{\alpha},\,x\in\overline{C},\,0<\diam C\le\zeta\}\cr
+&=\lim_{\zeta\downarrow 0}\inf\{\Bover{\mu\phi[C]}{\mu C}:
+  C\in\Cal C_{\alpha},\,x\in\overline{C},\,0<\diam C\le\zeta\}.\cr}$$
+
+\noindent And this is true for $\mu$-almost every $x$.
+}%end of proof of 484P
+
+\leader{484Q}{Definition} If $(X,\rho)$ and $(Y,\sigma)$ are metric
+spaces, a function $\phi:X\to Y$ is a {\bf lipeomorphism} if it is
+bijective and both $\phi$ and $\phi^{-1}$ are Lipschitz.   \cmmnt{Of
+course a lipeomorphism is a homeomorphism.}
+
+\leader{484R}{Lemma} Let $\phi:\BbbR^r\to\BbbR^r$ be a lipeomorphism.
+
+(a) For any set $A\subseteq\BbbR^r$,
+
+\Centerline{$\clstar(\phi[A])=\phi[\clstar A]$,
+\quad$\intstar(\phi[A])=\phi[\intstar A]$,
+\quad$\partstar(\phi[A])=\phi[\partstar A]$.}
+
+(b) $\phi[C]\in\Cal C$ for every $C\in\Cal C$, and $\phi[V]\in\Cal V$
+for every $V\in\Cal V$.
+
+(c) For any $\alpha>0$ there is an $\alpha'\in\ocint{0,\alpha}$ such
+that $\phi[C]\in\Cal C_{\alpha'}$ for every $C\in\Cal C_{\alpha}$ and
+$\{(\phi(x),\phi[C]):(x,C)\in\pmb{t}\}$ belongs to $T_{\alpha'}$ for
+every $\pmb{t}\in T_{\alpha}$.
+
+(d) For any $\Cal R\in\frak R$ there is an $\Cal R'\in\frak R$ such that
+$\phi[R]\in\Cal R$ for every $R\in\Cal R'$.
+
+(e) $\theta\phi:\BbbR^r\to\coint{0,\infty}$ belongs to $\Theta$ for
+every $\theta\in\Theta$.
+
+\proof{ Let $\gamma$ be so large that it is a Lipschitz constant for
+both $\phi$ and $\phi^{-1}$.   Observe that in this case
+
+\Centerline{$\phi^{-1}[B(\phi(x),\Bover{\zeta}{\gamma})]
+\subseteq B(x,\zeta)$,
+\quad$\phi[B(x,\zeta)]\supseteq B(\phi(x),\Bover{\zeta}{\gamma})$}
+
+\noindent for every $x\in\BbbR^r$ and $\zeta\ge 0$, while
+
+\Centerline{$\mu^*A=\mu^*\phi^{-1}[\phi[A]]\le\gamma^r\mu^*\phi[A]$,
+\quad$\nu^*A\le\gamma^{r-1}\nu^*\phi[A]$}
+
+\noindent for every $A\subseteq\BbbR^r$ (264G/471J).
+
+\medskip
+
+{\bf (a)} If $A\subseteq\BbbR^r$ and $x\in\clstar A$, set
+
+\Centerline{$\epsilon
+=\Bover12\limsup_{\zeta\downarrow 0}
+   \Bover{\mu^*(B(x,\zeta)\cap A)}{\mu B(x,\zeta)}>0$.}
+
+\noindent Take any $\zeta_0>0$.   Then there is a $\zeta$ such that
+$0<\zeta\le\zeta_0$ and
+$\mu^*(B(x,\bover{\zeta}{\gamma})\cap A)
+\ge\epsilon\mu B(x,\bover{\zeta}{\gamma})$, so that
+
+$$\eqalign{\mu^*(B(\phi(x),\zeta)\cap\phi[A])
+&\ge\mu^*\phi[B(x,\Bover{\zeta}{\gamma})\cap A]
+\ge\Bover1{\gamma^r}\mu^*(B(x,\Bover{\zeta}{\gamma})\cap A)\cr
+&\ge\Bover{\epsilon}{\gamma^r}\mu B(x,\Bover{\zeta}{\gamma})
+=\Bover{\epsilon}{\gamma^{2r}}\mu B(x,\zeta).\cr}$$
+
+\noindent As $\zeta_0$ is arbitrary,
+
+\Centerline{$\limsup_{\zeta\downarrow 0}
+   \Bover{\mu^*(B(\phi(x),\zeta)\cap\phi[A]}{\mu B(\phi(x),\zeta)}
+\ge\Bover{\epsilon}{\gamma^{2r}}>0$,}
+
+\noindent and $\phi(x)\in\clstar(\phi[A])$.
+
+This shows that $\phi[\clstar A]\subseteq\clstar(\phi[A])$.   The same
+argument applies to $\phi^{-1}$ and $\phi[A]$, so that $\phi[\clstar A]$
+must be equal to $\clstar(\phi[A])$.   Taking complements,
+$\phi[\intstar A]=\intstar(\phi[A])$, so that
+$\phi[\partstar A]=\partstar(\phi[A])$.
+
+\medskip
+
+{\bf (b)} Take $C\in\Cal C$.   Then, for any $n\in\Bbb N$,
+$\phi^{-1}[B(\tbf{0},n)]$ is bounded, so is included in $B(\tbf{0},m)$
+for some $m$.   Now
+
+$$\eqalign{\nu(\partstar\phi[C]\cap B(\tbf{0},n))
+&=\nu(\phi[\partstar C]\cap B(\tbf{0},n))\cr
+&\le\nu(\phi[\partstar C\cap B(\tbf{0},m)])
+\le\gamma^{r-1}\nu(\partstar C\cap B(\tbf{0},m))\cr}$$
+
+\noindent is finite.   This shows that $\phi[C]$ has
+locally finite perimeter and belongs to $\Cal C$.   Since $\phi[V]$ is
+bounded whenever $V$ is bounded, $\phi[V]\in\Cal V$ whenever
+$V\in\Cal V$.
+
+\medskip
+
+{\bf (c)} Set $\alpha'=\gamma^{-2r}\alpha$.   Note that as $\gamma^2$ is
+a Lipschitz constant for the identity map, $\gamma\ge 1$, and
+$\alpha'\le\min(\alpha,\gamma^{2-2r}\alpha)$.   If
+$C\in\Cal C_{\alpha}$, then
+
+$$\eqalign{\mu\phi[C]
+&\ge\Bover1{\gamma^r}\mu C
+\ge\Bover{\alpha}{\gamma^r}(\diam C)^r
+\ge\alpha\diam\phi[C])^r
+\ge\alpha'(\diam\phi[C])^r,\cr
+\cr
+\per\phi[C]
+&=\nu(\partstar(\phi[C]))
+=\nu(\phi[\partstar C])
+\le\gamma^{r-1}\nu(\partstar C)\cr
+&\le\Bover{\gamma^{r-1}}{\alpha}(\diam C)^{r-1}
+\le\Bover{\gamma^{r-1}}{\alpha}(\gamma\diam\phi[C])^{r-1}
+\le\Bover1{\alpha'}(\diam\phi[C])^{r-1}.\cr}$$
+
+\noindent So $C\in\Cal C_{\alpha'}$.
+
+If now $\pmb{t}\in T_{\alpha}$, then, for any $(x,C)\in\pmb{t}$,
+$\phi[C]\in\Cal C_{\alpha'}$ and $\phi(x)\in\clstar\phi[C]$;  also,
+because $\phi$ is injective, $\langle\phi[C]\rangle_{(x,C)\in\pmb{t}}$
+is disjoint, so $\{(\phi(x),\phi[C]):(x,C)\in\pmb{t}\}\in T_{\alpha'}$.
+
+\medskip
+
+{\bf (d)} Express $\Cal R$ as $\Cal R^{(V)}_{\eta}$ where $V\in\Cal V$
+and $\eta\in\Eta$, so that $R\in\Cal R$ whenever $R\cap V\in\Cal R$.
+By 484Ec and 481He, there is a sequence
+$\sequence{i}{\Cal Q_i}$ in $\frak R$ such that
+$\bigcup_{i\le n}A_i\in\Cal R$ whenever $n\in\Bbb N$,
+$\langle A_i\rangle_{i\le n}$ is disjoint and $A_i\in\Cal Q_i$ for every
+$i$.   By 484E(b-ii), there is an $\eta'\in\Eta$ such that
+$R\in\Cal Q_i$ whenever $i\in\Bbb N$ and $R$ is such that
+$\mu R\le\gamma^r\eta'(i)$ and  $\per R\le\gamma^{r-1}$.   Try
+$\Cal R'=\Cal R^{(\phi^{-1}[V])}_{\eta'}\in\frak R$.   If $R\in\Cal R'$,
+we can express $R\cap\phi^{-1}[V]$ as $\bigcup_{i\le n}E_i$ where
+$\per E_i\le 1$ and $\mu E_i\le\eta'_i$ for each $i\le n$, and
+$\langle E_i\rangle_{i\le n}$ is disjoint.   So
+$\phi[R]\cap V=\bigcup_{i\le n}\phi[E_i]$ and
+$\langle\phi[E_i]\rangle_{i\le n}$ is disjoint.   Now, for each $i$,
+
+\Centerline{$\mu\phi[E_i]\le\gamma^r\mu E_i\le\gamma^r\eta'(i)$,
+\quad$\per\phi[E_i]\le\gamma^{r-1}\per E_i\le\gamma^{r-1}$,}
+
+\noindent so $\phi[E_i]\in\Cal Q_i$.   By the choice of
+$\sequence{i}{\Cal Q_i}$, $\phi[R]\cap V\in\Cal R$ and
+$\phi[R]\in\Cal R$.   So $\Cal R'$ has the property we need.
+
+\medskip
+
+{\bf (e)} We have only to observe that if $A$ is the thin set
+$\theta^{-1}[\{0\}]$, then $(\theta\phi)^{-1}[\{0\}]=\phi^{-1}[A]$ is
+also thin.   \Prf\ If $A=\bigcup_{n\in\Bbb N}A_n$ where $\nu^*A_n$ is
+finite for every $n$, then
+$\phi^{-1}[A]=\bigcup_{n\in\Bbb N}\phi^{-1}[A_n]$, while
+$\nu^*\phi^{-1}[A_n]\le\gamma^{r-1}\nu^*A_n$ is finite for
+every $n\in\Bbb N$.\ \Qed
+}%end of proof of 484R
+
+\leader{484S}{Theorem} Let $\phi:\BbbR^r\to\BbbR^r$ be a lipeomorphism.
+Let $H$ be the set of points at which $\phi$ is differentiable.   For
+$x\in H$, write $T(x)$ for the derivative of $\phi$ at $x$;  set
+$J(x)=|\det T(x)|$ for $x\in H$, $0$ for $x\in\BbbR^r\setminus H$.
+Then, for any function $f:\BbbR^r\to\BbbR^r$,
+
+\Centerline{$\biggerPfint f=\Pfint J\times f\phi$}
+
+\noindent if either is defined in $\Bbb R$.
+
+\proof{{\bf (a)} Let $H'\subseteq H$ be a conegligible set such that
+
+$$\eqalign{J(x)
+&=\lim_{\zeta\downarrow 0}\sup\{\Bover{\mu\phi[C]}{\mu C}:
+  C\in\Cal C_{\alpha},\,x\in\overline{C},\,0<\diam C\le\zeta\}\cr
+&=\lim_{\zeta\downarrow 0}\inf\{\Bover{\mu\phi[C]}{\mu C}:
+  C\in\Cal C_{\alpha},\,x\in\overline{C},\,0<\diam C\le\zeta\}\cr}$$
+
+\noindent for every $\alpha>0$ and every $x\in H'$ (484P).
+To begin with (down to the end of (c)), suppose that $f$ is Pfeffer
+integrable
+and that $f\phi(x)=0$ for every $x\in\BbbR^r\setminus H'$.   Let $F$ be
+the Saks-Henstock indefinite integral of $f$, and define
+$G:\Cal C\to\Bbb R$ by setting $G(C)=F(\phi[C])$ for every $C\in\Cal C$
+(using 484Rb to see that this is well-defined).
+
+\medskip
+
+{\bf (b)} $G$ and $J\times f\phi$ satisfy the conditions of 484J.
+
+\medskip
+
+\Prf{\bf (i)} Of course $G$ is additive, because $F$ is.
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $0<\alpha<\alpha^*$ and $\epsilon>0$.   Let
+$\alpha'\in\ooint{0,\alpha^*}$ be such that
+$\{(\phi(x),\phi[C]):(x,C)\in\pmb{t}\}\in T_{\alpha'}$ whenever
+$\pmb{t}\in T_{\alpha}$ (484Rc).   Let $\theta_1\in\Theta$ be such that
+$\sum_{(x,C)\in\pmb{t}}|F(C)-f(x)\mu C|\le\bover12\epsilon$ for every
+$\delta_{\theta_1}$-fine $\pmb{t}\in T_{\alpha'}$.   Let
+$\theta_2:\BbbR^r\to\ocint{0,1}$ be such that whenever $x\in H'$,
+$n\le\|x\|+|f\phi(x)|<n+1$, $C\in\Cal C_{\alpha'}$, $x\in\overline{C}$
+and $\diam C\le 2\theta_2(x)$ then
+
+\Centerline{$|\mu\phi[C]-J(x)\mu C|
+\le\Bover{\epsilon\mu C}{2^{n+2}\beta_r(n+2)^r(n+1)}$.}
+
+\noindent Set
+$\theta(x)=\min(\Bover1{\gamma}\theta_1\phi(x),\theta_2(x))$ for
+$x\in\BbbR^r$, where $\gamma>0$ is a Lipschitz constant for $\phi$, so
+that $\theta\in\Theta$ (484Re).
+
+If $\pmb{t}\in T_{\alpha}$ is $\delta_{\theta}$-fine, set
+$\pmb{t}'=\{(\phi(x),\phi[C]):(x,C)\in\pmb{t}\}$.   Then
+$\pmb{t}'\in T_{\alpha'}$, by the choice of $\alpha'$.   If
+$(x,C)\in\pmb{t}$, then $\theta(x)>0$ so $\theta_1\phi(x)>0$;  also, for
+any $y\in\phi[C]$,
+
+\Centerline{$\|\phi(x)-y\|\le\gamma\|x-\phi^{-1}(y)\|
+<\gamma\theta(x)\le\theta_1\phi(x)$.}
+
+\noindent This shows that $\pmb{t}'$ is $\delta_{\theta_1}$-fine.   We
+therefore have
+
+$$\eqalignno{\sum_{(x,C)\in\pmb{t}}|G(C)-J(x)f(\phi(x))\mu C|
+&\le\sum_{(x,C)\in\pmb{t}}|F(\phi[C])-f(\phi(x))\mu\phi[C]|\cr
+&\hskip 5em +\sum_{(x,C)\in\pmb{t}}|f(\phi(x))||\mu\phi[C]-J(x)\mu C|\cr
+&\le\sum_{(x,C)\in\pmb{t}'}|F(C)-f(x)\mu C|\cr
+&\hskip 5em
+  +\sum_{\Atop{(x,C)\in\pmb{t}}{x\in H'}}
+      |f(\phi(x))||\mu\phi[C]-J(x)\mu C|\cr
+\displaycause{because if $x\notin H'$ then $f(\phi(x))=0$}
+&\le\Bover12\epsilon+\sum_{n=0}^{\infty}
+ \sum_{\Atop{(x,C)\in\pmb{t},x\in H'}{n\le\|x\|+|f(\phi(x))|<n+1}}
+   \Bover{(n+1)\epsilon\mu C}{2^{n+2}\beta_r(n+2)^r(n+1)}\cr
+&\le\Bover12\epsilon+\sum_{n=0}^{\infty}
+   \Bover{\epsilon\mu B(\tbf{0},n+2)}
+     {2^{n+2}\beta_r(n+2)^r}\cr
+\displaycause{remembering that $\theta_2(x)\le 1$, so
+$C\subseteq B(\tbf{0},n+2)$ whenever $(x,C)\in\pmb{t}$ and $\|x\|<n+1$}
+&=\epsilon.\cr}$$
+
+\noindent As $\pmb{t}$ is arbitrary, this shows that $G$ and
+$J\times f\phi$ satisfy (ii) of 484J.
+
+\medskip
+
+\quad{\bf (iii)} Given $\epsilon>0$, there is an $\Cal R\in\frak R$ such
+that $|F(C)|\le\epsilon$ for every $C\in\Cal C\cap\Cal R$.   Now by
+484Rd there is an $\Cal R'\in\frak R$ such that $\phi[R]\in\Cal R$ for
+every $R\in\Cal R'$, so that $|G(C)|\le\epsilon$ for every
+$C\in\Cal C\cap\Cal R'$.    Thus $G$ satisfies (iii) of 484J.\ \Qed
+
+\medskip
+
+{\bf (c)} This shows that $J\times f\phi$ is Pfeffer integrable, with
+Saks-Henstock indefinite integral $G$;  so, in particular,
+
+\Centerline{$\biggerPfint f\times\phi=G(\BbbR^r)=F(\BbbR^r)=\Pfint f$.}
+
+\medskip
+
+{\bf (d)} Now suppose that $f$ is an arbitrary Pfeffer integrable
+function.   In this case set $f_1=f\times\chi\phi[H']$.   Because
+$\BbbR^r\setminus H'$ is $\mu$-negligible, so is
+$\phi[\BbbR^r\setminus H']$, and $f_1=f\,\,\mu$-a.e.   Also, of course,
+$f\phi=f_1\phi\,\,\mu$-a.e.   Because the Pfeffer integral extends the
+Lebesgue integral (484He),
+
+\Centerline{$\biggerPfint J\times f\phi=\Pfint J\times f_1\phi
+=\Pfint f_1=\Pfint f$.}
+
+\medskip
+
+{\bf (e)} All this has been on the assumption that $f$ is Pfeffer
+integrable.   If $g=J\times f\phi$ is Pfeffer integrable, consider
+$\tilde J\times g\phi^{-1}$, where $\tilde J(x)=|\det\tilde T(x)|$
+whenever the derivative $\tilde T(x)$ of $\phi^{-1}$ at $x$ is defined,
+and otherwise is zero.   Now
+
+\Centerline{$\tilde J(x)g(\phi^{-1}(x))
+=\tilde J(x)\cdot J(\phi^{-1}(x))f(x)$}
+
+\noindent for every $x$.   But, for $\mu$-almost every $x$,
+
+\Centerline{$\tilde J(x)J(\phi^{-1}(x))
+=|\det\tilde T(x)||\det T(\phi^{-1}(x))|
+=|\det\tilde T(x)T(\phi^{-1}(x))|
+=1$}
+
+\noindent because $\tilde T(x)T(\phi^{-1}(x))$ is (whenever it is
+defined) the derivative at $\phi^{-1}(x)$ of the identity function
+$\phi^{-1}\phi$, by 473Bc.   (I see that we need to know that
+$\{x:\phi$ is differentiable at $\phi^{-1}(x)\}=\phi[H]$ is
+conegligible.)   So $\tilde J\times g\phi^{-1}=f\,\mu$-a.e., and
+$f$ is Pfeffer integrable.   This completes the proof.
+}%end of proof of 484S
+
+\exercises{\leader{484X}{Basic exercises $\pmb{>}$(a)}
+%\spheader 484Xa
+Show that for every $\Cal R\in\frak R$ there are
+$\eta\in\Eta$ and $n\in\Bbb N$ such that
+$\Cal R^{(B(\tbf{0},n))}_{\eta}\subseteq\Cal R$.
+%484D
+
+\sqheader 484Xb ({\smc Pfeffer 91a}) For $\alpha>0$ let
+$\Cal C'_{\alpha}$ be the family of bounded Lebesgue measurable sets $C$
+such that
+$\mu C\ge\alpha\diam C\per C$.   Show that
+$\Cal C_{\sqrt{\alpha}}\subseteq\Cal C'_{\alpha}
+\subseteq\Cal C_{\min(\alpha,\alpha^r)}$.
+\Hint{474La.}   %if E bdd (\mu E)^{(r-1)/r}\le\per E
+%484F
+
+\sqheader 484Xc For $\alpha>0$, let $\Cal C''_{\alpha}$ be the family of
+bounded convex sets $C\subseteq\BbbR^r$ such that
+$\mu C\ge\alpha(\diam C)^r$.   Show that if $0<\alpha<1/2r$
+then $\Cal C''_{\alpha}\subseteq\Cal C_{\alpha}$ ({\it hint\/}: 475T)
+and $T_{\alpha}\cap[\BbbR^r\times\Cal C''_{\alpha}]^{<\omega}$
+is compatible with $\Delta$ and $\frak R$.
+\Hint{use the argument of 484F, but in part (b) take $C=\BbbR^r$, $E=V$
+a union of members of $\Cal D$.}
+%484F
+
+\spheader 484Xd Describe a suitable filter $\Cal F$ to express the
+Pfeffer integral directly in the form considered in 481C.
+%484G
+
+\spheader 484Xe Let $f:\BbbR^r\to\Bbb R$ be a Pfeffer integrable
+function.   Show that there is some $n\in\Bbb N$ such that
+$\int_{\Bbb R^r\setminus B(\tbf{0},n)}|f|d\mu$ is finite.
+%484G
+
+\spheader 484Xf\dvAnew{2010} (Here take $r=2$.)
+Let $\sequencen{\delta_n}$ be a strictly
+decreasing summable sequence in $\ocint{0,1}$.   Define
+$f:\BbbR^2\to\Bbb R$ by saying that
+$f(x)=\Bover{(-1)^n}{(n+1)(\delta_n^2-\delta_{n+1}^2)}$ if $n\in\Bbb N$ and
+$\delta_{n+1}\le\|x\|<\delta_n$, $0$ otherwise.   Show that
+$\lim_{\delta\downarrow 0}\int_{\BbbR^2\setminus B(\tbf{0},\delta)}fd\mu$
+is defined, but that $f$ is not Pfeffer integrable.
+\Hint{484J.}
+%484J
+
+\spheader 484Xg\dvAnew{2010} (Again take $r=2$.) Show that there are a
+Lebesgue integrable $f_1:\Bbb R\to\Bbb R$ and a Henstock integrable
+$f_2:\Bbb R\to\Bbb R$, both with bounded support, such that
+$(\xi_1,\xi_2)\mapsto f_1(\xi_1)f_2(\xi_2):\BbbR^2\to\Bbb R$ is not Pfeffer
+integrable.
+%484Xf 484J mt48bits
+
+\spheader 484Xh Let $E\subseteq\BbbR^r$ be a bounded set with finite
+perimeter, and $\phi:\BbbR^r\to\BbbR^r$ a differentiable function.   Let
+$v_x$ be the Federer exterior normal to $E$ at any point $x$ where the
+normal exists.   Show that $\Pfint\diverg\phi\times\chi E$ is defined
+and equal to $\int_{\partstar E}\varinnerprod{\phi(x)}{v_x}\nu(dx)$.
+%484N
+
+\spheader 484Xi\dvAnew{2010} Show that there is a Lipschitz function
+$f:\BbbR^r\to[0,1]$ such that $\BbbR^r\setminus\dom f'$ is not thin.
+\Hint{there is a Lipschitz function $f:\Bbb R\to[0,1]$ not differentiable
+at any point of the Cantor set.}
+%484N
+
+\leader{484Y}{Further exercises (a)}
+%\spheader 484Ya
+Let $E\subseteq\BbbR^r$ be any Lebesgue measurable set, and
+$\epsilon>0$.   Show that there is a Lebesgue measurable set
+$G\subseteq E$ such that $\per G\le\per E$,
+$\mu(E\setminus G)\le\epsilon$ and $\clstar G=\overline{G}$.
+%484B
+
+\spheader 484Yb
+Give an example of a compact set $K\subseteq\BbbR^2$
+with zero one-dimensional Hausdorff measure such that whenever
+$\theta:K\to\ooint{0,\infty}$ is a strictly positive function, and
+$\gamma\in\Bbb R$, there is a disjoint family
+$\langle B(x_i,\zeta_i)\rangle_{i\le n}$ of balls such that $x_i\in K$
+and $\zeta_i\le\theta(x_i)$ for every $i$, while
+$\per(\bigcup_{i\le n}B(x_i,\zeta_i))\ge\gamma$.
+%notes %mt48bits
+}%end of exercises
+
+\endnotes{
+\Notesheader{484}
+Listing the properties of the Pfeffer integral as developed above, we have
+
+\inset{expected relations with Lebesgue measure and integration
+(484Hd-484Hf);
+
+Saks-Henstock indefinite integrals (484H-484J);  %484Hc 484I 484J
+
+integration over suitable subsets (484L);
+
+a divergence theorem (484N);
+
+a density theorem (484O);
+
+a change-of-variable theorem for lipeomorphisms (484S).}
+
+\noindent The results on indefinite integrals and integration over
+subsets are restricted in comparison with
+what we have for the Lebesgue integral, since we can deal only with sets
+with locally finite perimeter;  and 484S is similarly narrower in scope
+than 263D(v).   Pfeffer's Divergence Theorem, on the other hand,
+certainly applies to many functions $\phi$ for which $\diverg\phi$ is not
+Lebesgue integrable, though it does not entirely cover 475N (see 484Xi).
+In comparison with the one-dimensional case, the
+Pfeffer integral does not share the most basic property of the special
+Denjoy integral (483Bd, 484Xf), but 484N is a step
+towards the Perron integral (483J).   484O is a satisfactory rendering of
+the idea in 483I, and even for Lebesgue integrable functions adds something
+to 261C.
+Throughout, I have written on the assumption that $r\ge 2$.
+It would be possible to work through the same arguments
+with $r=1$, but in this case we should find that `thin' sets became
+countable, therefore easily controllable by neighbourhood gauges, making
+the methods here inappropriate.
+
+The whole point of `gauge integrals' is that we have an enormous amount
+of freedom within the framework of \S\S481-482.   There is a
+corresponding difficulty in making definitive choices.   The essential
+ideology of the Pfeffer integral is that we take an intersection
+of a family of gauge integrals, each determined by a family
+$\Cal C_{\alpha}$ of sets which are `Saks regular' in the sense that
+their measures, perimeters and diameters are linked (compare 484Xb).
+Shrinking
+$\Cal C_{\alpha}$ and $T_{\alpha}$, while leaving $\Delta$ and $\frak R$
+unchanged, of course leads to a more `powerful' integral (supposing, at
+least, that we do not go so far that $T_{\alpha}$ is no longer
+compatible with $\Delta$ and $\frak R$), so that Pfeffer's Divergence
+Theorem will remain true.   One possibility is to turn to convex sets
+(484Xc), though we could not then expect invariance under lipeomorphisms.
+
+The family $\Delta=\{\delta_{\theta}:\theta\in\Theta\}$ of gauges is
+designed to permit the exclusion of tags from thin sets;  apart from this
+refinement, we are looking at neighbourhood gauges, just as with the
+Henstock integral.   This feature, or something like it,
+seems to be essential when we come to
+the identification $F(E)=\Pfint f\times\chi E$ in 484L, which is demanded
+by the formula in the target theorem 484N.   In order to make our
+families $T_{\alpha}$ compatible in the sense of 481F, we are
+then forced to allow non-trivial residual families;
+with some effort (484C, 484Ed), we can
+get tagged-partition structures allowing subdivisions (484F).
+Note that this is one of the
+cases in which our residual families $\Cal R^{(V)}_{\eta}$ are defined by
+`shape' as well as by `size'.   In the indefinite-integral characterization
+of the Pfeffer integral (484J), we certainly cannot demand `for every
+$\epsilon>0$ there is an $\Cal R\in\frak R$ such that $|F(E)|\le\epsilon$
+whenever $E\in\Cal C$ is included in a member of $\Cal R$', since all
+small balls belong to $\Cal R$, and we should immediately be driven to the
+Lebesgue integral.   However I use the construction
+$\Cal R^{(V)}_{\eta}=\{R:R\cap V\in\Cal R_{\eta}\}$ (484D) as a quick
+method of eliminating any difficulties at infinity (484Xe).   We do not
+of course need to look at arbitrary sets $V\in\Cal V$ here (484Xa).
+
+Observe that 484B can be thought of as a refinement of 475I.
+As usual, the elaborate formula in the statement of 484C is there only
+to emphasize that we have a bound depending only on $l$ and $r$.
+Note that 484S depends much more on the fact that the Pfeffer integral can
+be characterized in the language of 484J, than on the exact choices made
+in forming $\frak R$ and the $\Cal C_{\alpha}$.   For a
+discussion of integrals {\it defined} by Saks-Henstock lemmas, see
+{\smc Pfeffer 01}.
+
+It would be agreeable to be able to think of the Pfeffer integral as a
+product in some sense, so we naturally look for Fubini-type theorems.
+I give 484Xg to indicate one of the obstacles.
+}%end of notes
+
+\discrversionA{Any
+hope of a form of Fubini theorem?  or other relationship between
+$\Pfint_{r+s}$ ,  $\Pfint_r$  and  $\Pfint_s$ ?\query
+see 484Xg
+}{}
+
+\discrpage
+

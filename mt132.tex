@@ -1,0 +1,437 @@
+\frfilename{mt132.tex}
+\versiondate{6.4.05}
+\copyrightdate{1995}
+
+\def\chaptername{Complements}
+\def\sectionname{Outer measures from measures}
+
+\newsection{132}
+
+The next topic I wish to mention is a simple construction with
+applications everywhere in measure theory.   With any measure there is
+associated, in a straightforward way, a standard outer measure
+(132A-132B).   If we start with Lebesgue measure we just return to
+Lebesgue outer measure (132C).   I take the opportunity to
+introduce the idea of `measurable envelope' (132D-132E).
+
+\leader{132A}{Proposition} Let $(X,\Sigma,\mu)$ be a measure space.
+Define $\mu^*:\Cal PX\to[0,\infty]$ by writing
+
+\Centerline{$\mu^*A=\inf\{\mu E:E\in\Sigma,\,A\subseteq E\}$}
+
+\noindent for every $A\subseteq X$.   Then
+
+(a) for every $A\subseteq X$
+there is an $E\in\Sigma$ such that $A\subseteq E$ and $\mu^*A=\mu E$;
+
+(b) $\mu^*$ is an outer measure on $X$;
+
+(c) $\mu^*E=\mu E$ for every $E\in\Sigma$;
+
+(d) a set $A\subseteq X$ is $\mu$-negligible iff $\mu^*A=0$;
+
+(e) $\mu^*(\bigcup_{n\in\Bbb N}A_n)=\lim_{n\to\infty}\mu^*A_n$ for
+every non-decreasing sequence $\sequencen{A_n}$ of subsets of $X$;
+
+(f) $\mu^*A=\mu^*(A\cap F)+\mu^*(A\setminus F)$ whenever
+$A\subseteq X$ and $F\in\Sigma$.
+
+\proof{{\bf (a)} For each $n\in\Bbb N$ we
+can choose an $E_n\in\Sigma$ such that $A\subseteq E_n$ and
+$\mu E_n\le\mu^*A+2^{-n}$;  now $E=\bigcap_{n\in\Bbb N}E_n\in\Sigma$,
+$A\subseteq E$ and
+
+\Centerline{$\mu^*A\le\mu E\le\inf_{n\in\Bbb N}\mu E_n\le\mu^*A$.}
+
+\medskip
+
+{\bf (b)}(i) $\mu^*\emptyset=\mu\emptyset=0$.   (ii) If
+$A\subseteq B\subseteq X$ then $\{E:A\subseteq
+E\in\Sigma\}\supseteq\{E:B\subseteq E\in\Sigma\}$ so
+$\mu^*A\le\mu^*B$.
+(iii) If $\sequencen{A_n}$ is any sequence in $\Cal PX$, then for
+each $n\in\Bbb N$ there is an $E_n\in\Sigma$ such that
+$A_n\subseteq E_n$ and $\mu E_n=\mu^*A_n$;  now
+$\bigcup_{n\in\Bbb N}A_n\subseteq\bigcup_{n\in\Bbb N}E_n\in\Sigma$ so
+
+\Centerline{$\mu^*(\bigcup_{n\in\Bbb N}A_n)
+\le\mu(\bigcup_{n\in\Bbb N}E_n)
+\le\sum_{n=0}^{\infty}\mu E_n=\sum_{n=0}^{\infty}\mu^*A_n$.}
+
+\medskip
+
+{\bf (c)} This is just because $\mu E\le\mu F$ whenever $E$,
+$F\in\Sigma$ and $E\subseteq F$.
+
+\medskip
+
+{\bf (d)} By (a), $\mu^*A=0$ iff there is an $E\in\Sigma$ such
+that $A\subseteq E$ and $\mu E=0$;  but this is the definition of
+`negligible set'.
+
+\medskip
+
+{\bf (e)} Of
+course $\sequencen{\mu^*A_n}$ is a non-decreasing sequence with limit
+at most $\mu^*A$, writing $A=\bigcup_{n\in\Bbb N}A_n$, just because
+$\mu^*B\le\mu^*C$ whenever $B\subseteq C\subseteq X$.    For each
+$n\in\Bbb N$, let $E_n\in\Sigma$ be such that $A_n\subseteq E_n$ and
+$\mu E_n=\mu^*A_n$.   Set $F_n=\bigcap_{m\ge n}E_m$ for each $n$;
+then $\sequencen{F_n}$ is a non-decreasing sequence in $\Sigma$, and
+$A_n\subseteq F_n\subseteq E_n$, so $\mu^*A_n=\mu F_n$ for each
+$n\in\Bbb N$.   Set $F=\bigcup_{n\in\Bbb N}F_n$;  then $A\subseteq F$
+so
+
+\Centerline{$\mu^*A\le\mu F=\lim_{n\to\infty}\mu
+F_n=\lim_{n\to\infty}\mu^*A_n$.}
+
+\noindent Thus $\mu^*A=\lim_{n\to\infty}\mu^*A_n$, as claimed.
+
+\medskip
+
+{\bf (f)} Of course $\mu^*A\le\mu^*(A\cap F)+\mu^*(A\setminus F)$, by
+(b).   On the other hand, there is an $E\in\Sigma$ such that
+$A\subseteq E$ and $\mu E=\mu^*A$, by (a), and now
+$A\cap F\subseteq E\cap F\in\Sigma$,
+$A\setminus F\subseteq E\setminus F\in\Sigma$ so
+
+\Centerline{$\mu^*(A\cap F)+\mu^*(A\setminus F)
+\le\mu(E\cap F)+\mu(E\setminus F)=\mu E=\mu^*A$.}
+
+}%end of proof of 132A
+
+\leader{132B}{Definition} If $(X,\Sigma,\mu)$ is a measure space, I
+will call $\mu^*$, as defined in 132A, {\bf the outer measure
+defined from $\mu$}.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} If we start with an outer measure $\theta$ on a
+set $X$, construct a measure $\mu$ from $\theta$ by \Caratheodory's
+method, and
+then construct the outer measure $\mu^*$ from $\mu$, it is not
+necessarily the case that $\mu^*=\theta$.   \prooflet{\Prf\ Take any
+set $X$ with at least three members, and set $\theta A=0$ if
+$A=\emptyset$, $1$ if $A=X$, $\bover12$ otherwise.
+Then $\dom\mu=\{\emptyset,X\}$ and
+$\mu^*A=1$ for every non-empty $A\subseteq X$.\ \Qed}
+
+However, this problem does not arise with Lebesgue outer measure.   I
+state the next proposition in terms of Lebesgue measure on $\BbbR^r$,
+but if you skipped \S115 I hope that you will still be able to make
+sense of this, and later results, in terms of Lebesgue measure on
+$\Bbb R$, by setting $r=1$.
+}%end of comment
+
+\leader{132C}{Proposition} If $\theta$ is Lebesgue outer
+measure on $\BbbR^r$
+and $\mu$ is Lebesgue measure, then $\mu^*$, as defined in 132A, is
+equal to $\theta$.
+
+\proof{ Let $A\subseteq\BbbR^r$.
+
+\medskip
+
+{\bf (a)} If $E$ is measurable and
+$A\subseteq E$, then $\theta A\le\theta E=\mu E$;  so
+$\theta A\le\mu^*A$.
+
+\medskip
+
+{\bf (b)} If $\epsilon>0$, there is a sequence
+$\sequencen{I_n}$ of half-open intervals, covering $A$, with
+$\sum_{n=0}^{\infty}\mu I_n\le\theta A+\epsilon$ (using 114G/115G to
+identify $\mu I_n$ with the volume $\lambda I_n$ used in the
+definition of $\theta$), so
+
+\Centerline{$\mu^*A\le\mu(\bigcup_{n\in\Bbb N}I_n)
+\le\sum_{n=0}^{\infty}\mu I_n
+\le\theta A+\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, $\mu^*A\le\theta A$.
+}%end of proof of 132C
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark}  Accordingly it will henceforth be unnecessary
+to distinguish
+$\theta$ from $\mu^*$ when speaking of `Lebesgue outer measure'.
+(In the language of 132Xa below, Lebesgue outer measure is
+`regular'.)   In
+particular (using 132Aa), if $A\subseteq\BbbR^r$ there is a measurable
+set $E\supseteq A$ such that $\mu E=\theta A$ (compare 134Fc).
+}%end of comment
+
+\leader{132D}{Measurable envelopes}
+\cmmnt{The following is a useful concept in
+this context.}   If $(X,\Sigma,\mu)$ is a measure space and
+$A\subseteq X$, a {\bf measurable envelope} (or {\bf measurable
+cover}) of $A$ is a set $E\in\Sigma$ such
+that $A\subseteq E$ and $\mu(F\cap E)=\mu^*(F\cap A)$ for every
+$F\in\Sigma$.   \cmmnt{In general, not every set in a measure space
+has a measurable envelope (I suggest examples in 216Yc in Volume 2).
+But we do have the following.}
+
+\leader{132E}{Lemma} Let $(X,\Sigma,\mu)$ be a measure space.
+
+(a) If $A\subseteq E\in\Sigma$, then $E$ is a measurable envelope of
+$A$ iff $\mu F=0$ whenever $F\in\Sigma$ and $F\subseteq E\setminus A$.
+
+(b) If $A\subseteq E\in\Sigma$ and $\mu E<\infty$ then $E$ is a
+measurable envelope of $A$ iff $\mu E=\mu^*A$.
+
+(c) If $E$ is a measurable envelope of $A$ and $H\in\Sigma$,
+then $E\cap H$ is a measurable envelope of $A\cap H$.
+
+(d) Let $\sequencen{A_n}$ be a sequence of subsets of $X$.   Suppose
+that each $A_n$ has a measurable envelope $E_n$.   Then
+$\bigcup_{n\in\Bbb N}E_n$ is
+a measurable envelope of $\bigcup_{n\in\Bbb N}A_n$.
+
+(e) If $A\subseteq X$ can be covered by a sequence of sets of finite
+measure, then $A$ has a measurable envelope.
+
+(f) In particular, if $\mu$ is Lebesgue measure on $\BbbR^r$, then
+every subset of $\BbbR^r$ has a measurable envelope for $\mu$.
+
+\proof{{\bf (a)} If $E$ is a measurable envelope of $A$, $F\in\Sigma$
+and $F\subseteq E\setminus A$, then
+
+\Centerline{$\mu F=\mu(F\cap E)=\mu^*(F\cap A)=0$.}
+
+\noindent If $E$ is not a measurable envelope of $A$, there is an
+$H\in\Sigma$ such that $\mu^*(A\cap H)<\mu(E\cap H)$.   Let
+$G\in\Sigma$
+be such that $A\cap H\subseteq G$ and $\mu G=\mu^*(A\cap H)$, and set
+$F=E\cap H\setminus G$.   Since $\mu G<\mu(E\cap H)$, $\mu F>0$;   but
+also $F\subseteq E$ and $F\cap A\subseteq H\cap A \setminus G$ is
+empty.
+
+\medskip
+
+{\bf (b)} If $E$ is a measurable envelope of $A$ then we must have
+
+\Centerline{$\mu^*A=\mu^*(A\cap E)=\mu(E\cap E)=\mu E$.}
+
+\noindent If $\mu E=\mu^*A$, and $F\in\Sigma$ is a subset of
+$E\setminus A$, then $A\subseteq E\setminus F$, so
+$\mu(E\setminus F)=\mu E$;  because $\mu E$ is finite, it follows that
+$\mu F=0$, so the condition of (a) is satisfied and $E$ is a
+measurable envelope of $A$.
+
+\medskip
+
+{\bf (c)} If $F\in\Sigma$ and $F\subseteq E\cap H\setminus A$, then
+$F\subseteq E\setminus A$, so $\mu F=0$, by (a);  as $F$ is arbitrary,
+$E\cap H$ is a measurable envelope of $A\cap H$, by (a) again.
+
+\medskip
+
+{\bf (d)} Write $A$ for $\bigcup_{n\in\Bbb N}A_n$ and
+$E$ for $\bigcup_{n\in\Bbb N}E_n$.
+Then $A\subseteq E$.   If $F\in\Sigma$ and $F\subseteq E\setminus A$,
+then, for every $n\in\Bbb N$, $F\cap E_n\subseteq E_n\setminus A_n$, so
+$\mu(F\cap E_n)=0$, by (a).   Consequently
+$F=\bigcup_{n\in\Bbb N}F\cap E_n$ is negligible;  as $F$ is arbitrary,
+$E$ is a measurable envelope of $A$.
+
+\medskip
+
+{\bf (e)} Let $\sequencen{F_n}$ be a sequence of sets
+of finite measure covering $A$.   For each $n\in\Bbb N$, let
+$E_n\in\Sigma$ be such that $A\cap F_n\subseteq E_n$ and
+$\mu E_n=\mu^*(A\cap F_n)$ (using 132Aa above);  by (b), $E_n$ is a
+measurable envelope of $A\cap F_n$.   By (d), $\bigcup_{n\in\Bbb
+N}E_n$ is a measurable envelope of $\bigcup_{n\in\Bbb N}A\cap F_n=A$.
+
+\medskip
+
+{\bf (f)} In the case of Lebesgue measure on $\BbbR^r$, of course, the
+same sequence $\sequencen{B_n}$ will work for every $A$, if we take
+$B_n$ to be the half-open interval $\coint{-\tbf{n},\tbf{n}}$ for each
+$n\in\Bbb N$, writing $\tbf{n}=(n,\ldots,n)$ as in \S115.
+}%end of proof of 132E
+
+\leader{132F}{Full outer measure}\cmmnt{ This is a convenient
+moment at which to introduce the following term.}  If $(X,\Sigma,\mu)$
+is a measure space, a set $A\subseteq X$ is {\bf of full outer
+measure}
+or {\bf thick} if $X$ is a measurable envelope of $A$\cmmnt{;  that
+is, if $\mu^*(F\cap A)=\mu F$ for every $F\in\Sigma$;  equivalently,
+if $\mu F=0$ whenever $F\in\Sigma$ and $F\subseteq X\setminus A$.   If
+$\mu X<\infty$, $A\subseteq X$ has full outer measure iff
+$\mu^*A=\mu X$}.
+
+\exercises{
+\leader{132X}{Basic exercises $\pmb{>}$(a)}
+%\spheader 132Xa
+Let $X$ be a set and $\theta$ an outer measure on $X$;
+let $\mu$ be the measure on $X$ defined by \Caratheodory's method from
+$\theta$, and $\mu^*$ the outer measure defined from $\mu$ by the
+construction of 132A.   (i) Show that $\mu^*A\ge\theta A$ for every
+$A\subseteq X$.   (ii) $\theta$ is said to be a {\bf regular outer
+measure} if $\theta=\mu^*$.
+%Rao `Carathe\'odory regular'
+Show that if there is any measure $\nu$
+on $X$ such that $\theta=\nu^*$ then $\theta$ is regular.   (iii) Show
+that if $\theta$ is regular and $\sequencen{A_n}$ is a non-decreasing
+sequence of subsets of $X$, then
+$\theta(\bigcup_{n\in\Bbb N}A_n)=\lim_{n\to\infty}\theta A_n$.
+%132B
+
+\spheader 132Xb Let $(X,\Sigma,\mu)$ be a measure space and $H$ any
+member of $\Sigma$.   Let $\mu_H$ be the subspace measure on $H$
+(131B) and $\mu^*$, $\mu_H^*$ the outer measures defined from $\mu$,
+$\mu_H$ respectively.   Show that $\mu_H^*=\mu^*\restrp\Cal PH$.
+%132B
+
+\spheader 132Xc Give an example of a measure space $(X,\Sigma,\mu)$
+such that the measure $\check\mu$ defined by \Caratheodory's method from
+the outer measure $\mu^*$ is a proper extension of $\mu$.   \Hint{take
+$\mu X=0$.}
+%132B
+
+\sqheader 132Xd Let $(X,\Sigma,\mu)$ be a measure space and $A$ a
+subset of $X$.   Suppose that $\sequencen{E_n}$ is a sequence in $\Sigma$
+such that $\sequencen{A\cap E_n}$ is disjoint.   Show that
+$\mu^*(A\cap\bigcup_{n\in\Bbb N}E_n)=\sum_{n=0}^{\infty}\mu^*(A\cap E_n)$.
+\Hint{replace $E_n$ by $E_n'=E_n\setminus\bigcup_{i<n}E_i$, and
+use 132Ae-132Af.}
+%132B
+
+\spheader 132Xe Let $(X,\Sigma,\mu)$ be a measure space and
+$\sequencen{A_n}$ any sequence of subsets of $X$.   Show that the
+outer measure of $\bigcup_{n\in\Bbb N}\bigcap_{i\ge n}A_i$ is at most
+$\liminf_{n\to\infty}\mu^*A_n$.
+%132B
+
+\spheader 132Xf Let $(X,\Sigma,\mu)$ be a measure space and suppose that
+$A\subseteq B\subseteq X$ are such that $\mu^*A=\mu^*B<\infty$.   Show
+that $\mu^*(A\cap E)=\mu^*(B\cap E)$ for every $E\in\Sigma$.   \Hint{a
+measurable envelope of $B$ is a measurable envelope of $A$.}
+%132E
+
+\sqheader 132Xg Let $\nu_g$ be a Lebesgue-Stieltjes measure on $\Bbb R$,
+constructed as in 114Xa from a non-decreasing function
+$g:\Bbb R\to\Bbb R$.   Show that
+(i) the outer measure $\nu_g^*$ derived from $\nu_g$ (132A)
+coincides with the outer measure $\theta_g$ of 114Xa;
+(ii) if $A\subseteq\Bbb R$ is any set, then $A$ has a
+measurable envelope for the measure $\nu_g$.
+%132E
+
+\sqheader 132Xh Let $A\subseteq\BbbR^r$ be a set which is not
+measured by Lebesgue measure $\mu$.   Show that there is a bounded
+measurable set $E$ such that $\mu^*(E\cap A)=\mu^*(E\setminus A)=\mu E>0$.
+\Hint{take $E=E'\cap E''\cap B$, where $E'$ is a measurable envelope
+for $A$, $E''$ is a measurable envelope for $\BbbR^r\setminus A$, and
+$B$ is a suitable bounded set.}
+%132E
+
+\spheader 132Xi Let $\mu$ be Lebesgue measure on $\BbbR^r$ and
+$\Sigma$ its domain, and $f$ a real-valued function, defined on a subset
+of $\BbbR^r$, which is not $\Sigma$-measurable.
+Show that there are  $q<q'$ in $\Bbb Q$ and a bounded measurable set
+$E$ such that
+
+\Centerline{$\mu^*\{x:x\in E\cap\dom f,\,f(x)\le q\}
+=\mu^*\{x:x\in E\cap\dom f,\,f(x)\ge q'\}=\mu E>0$.}
+
+\noindent \Hint{take $E_q$, $E'_q$ to be measurable envelopes for
+$\{x:f(x)\le q\}$, $\{x:f(x)>q\}$ for each $q$.   Find $q$ such that
+$\mu(E_q\cap E'_q)>0$ and $q'$ such that $\mu(E_q\cap E'_{q'})>0$.}
+%132E
+
+\spheader 132Xj Check that you can do exercise 113Yc.
+%132+
+
+\spheader 132Xk Let $(X,\Sigma,\mu)$ be a measure space and $\mu^*$ the
+outer measure defined from $\mu$.
+Show that $\mu^*(A\cup B)+\mu^*(A\cap B)\le\mu^*A+\mu^*B$
+for all $A$, $B\subseteq X$.
+%132B
+
+\leader{132Y}{Further exercises (a)}
+%\spheader 132Ya
+Let $(X,\Sigma,\mu)$ be a measure space and $\sequencen{f_n}$
+a sequence of real-valued functions defined almost everywhere in $X$.
+Suppose that $\sequencen{\epsilon_n}$ is a sequence of
+non-negative real numbers such that
+
+\Centerline{$\sum_{n=0}^{\infty}\epsilon_n<\infty$,
+\quad
+$\sum_{n=0}^{\infty}\mu^*\{x:|f_{n+1}(x)-f_n(x)|\ge\epsilon_n\}<\infty$.}
+
+\noindent Show that $\lim_{n\to\infty}f_n$ is defined (as a
+real-valued function) almost everywhere.
+%132B
+
+\spheader 132Yb Let $(X,\Sigma,\mu)$ be a measure space, $Y$ a set and
+$f:X\to Y$ a function.   Let $\nu$ be the image measure $\mu f^{-1}$
+(112Xf).   Show that $\nu^*f[A]\ge\mu^*A$ for every $A\subseteq X$.
+%132B
+
+\spheader 132Yc Let $(X,\Sigma,\mu)$ be a measure space with
+$\mu X<\infty$.   Let $\sequencen{A_n}$ be a sequence of subsets of
+$X$ such that $\bigcup_{n\in\Bbb N}A_n$ has full outer measure in $X$.
+Show that there is a
+partition $\sequencen{E_n}$ of $X$ into measurable sets such that
+$\mu E_n=\mu^*(A_n\cap E_n)$ for every $n\in\Bbb N$.
+%132F
+
+\spheader 132Yd Let $(X,\Sigma,\mu)$ be a measure space and $\Cal A$ a
+family of subsets of $X$ such that
+$\bigcap_{n\in\Bbb N}A_n$ has full outer measure for every sequence
+$\sequencen{A_n}$
+in $\Cal A$.   Show that there is a measure $\nu$ on $X$, extending
+$\mu$, such that every member of $\Cal A$ is $\nu$-conegligible.
+%132F
+
+\spheader 132Ye Check that you can do exercises 113Yg-113Yh.
+%132+
+
+\spheader 132Yf\dvAnew{2010} Let $(X,\Sigma,\mu)$ be a measure space.   
+Show that
+$\mu^*:\Cal PX\to[0,\infty]$ is {\bf alternating of all orders}, that is, 
+
+\Centerline{$\sum_{J\subseteq I,\#(J)\text{ is even}}
+   \mu^*(A\cup\bigcup_{i\in J}A_i)
+\le\sum_{J\subseteq I,\#(J)\text{ is odd}}\mu^*(A\cup\bigcup_{i\in J}A_i)$}
+
+\noindent whenever $I$ is a
+non-empty finite set, $\familyiI{A_i}$ is a family of
+subsets of $X$ and $A$ is another subset of $X$.   
+%mt13bits
+
+}%end of exercises
+
+\endnotes{
+\Notesheader{132} Almost the most fundamental fact in measure theory
+is that in all important measure spaces there are non-measurable sets.
+(For Lebesgue measure see 134B below.)   One can respond to this fact
+in a variety of ways.   An approach which works quite well is just to
+ignore it.   The point is that, for very deep reasons, the sets and
+functions which arise in ordinary applications nearly always are
+measurable, or can be made so by elementary manipulations;  the only
+exceptions I know of in applied mathematics appear in generalized
+control theory.   As a pure mathematician I am uncomfortable with such
+an approach, and as a measure theorist I think it closes the door on
+some of the most subtle ideas of the theory.   In this treatise,
+therefore, non-measurable sets will always be present, if only
+subliminally.   In this section I have described two of the basic
+methods of dealing with them:  the move from a measure to an outer
+measure, which at least assigns some sort of size to an arbitrary set,
+and the idea of `measurable envelope', which (when defined) describes
+the region in which the non-measurable set has to be taken into
+account.   In both cases we seek to describe the non-measurable set from
+the outside, so to speak.   There are no real difficulties, and the only
+points to take note of are that (i) outside the boundary marked by
+132Ee measurable envelopes need not exist (ii) \Caratheodory's construction
+of a measure from an outer measure, and the construction here of an
+outer measure from a measure, are closely related (132C, 132Xg, 113Yc,
+132Xa(i)), but are not quite inverses of each other in general (132B,
+132Xc).
+}%end of notes
+
+\discrpage
+

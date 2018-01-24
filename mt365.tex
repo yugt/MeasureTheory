@@ -1,0 +1,1952 @@
+\frfilename{mt365.tex}
+\versiondate{26.5.03}
+\copyrightdate{1996}
+     
+\def\chaptername{Function spaces}
+\def\sectionname{$L^1$}
+     
+\newsection{365}
+     
+Continuing my programme of developing the ideas of Chapter 24 at a
+deeper level of abstraction, I arrive at last at $L^1$.   As usual, the
+first step is to establish a definition which can be matched both with
+the constructions of the previous sections and with the definition of
+$L^1(\mu)$ in \S242 (365A-365C, 365F).   Next, I give what I regard as
+the most characteristic internal properties of $L^1$ spaces, including
+versions of the Radon-Nikod\'ym theorem (365E),
+before turning to abstract versions of theorems in \S235 (365H, 365T)
+and the duality between $L^1$ and $L^{\infty}$
+(365L-365N).   As in \S\S361 and 363, the construction is associated
+with universal mapping theorems (365I-365K) which define the Banach
+lattice structure of $L^1$.   As in \S\S361, 363 and 364, homomorphisms
+between measure algebras correspond to operators between their $L^1$
+spaces;  but now the duality theory gives us two types of operators
+(365O-365Q), of which one class can be thought of as abstract
+conditional expectations (365R).   For localizable measure algebras, the
+underlying algebra can be recovered from its $L^1$ space (365S), but the
+measure cannot.
+     
+\leader{365A}{Definition} Let $(\frak A,\bar\mu)$ be a measure algebra.
+For $u\in L^0(\frak A)$, write
+     
+\Centerline{$\|u\|_1
+=\int_0^{\infty}\bar\mu\Bvalue{|u|>\alpha}\,d\alpha$,}
+     
+\noindent the integral being with respect to Lebesgue measure on
+$\Bbb R$, and allowing $\infty$ as a value of the integral.
+\cmmnt{(Because
+the integrand is monotonic, it is certainly measurable.)}   Set
+$L^1_{\bar\mu}=L^1(\frak A,\bar\mu)
+=\{u:u\in L^0(\frak A),\,\|u\|_1<\infty\}$.
+     
+\cmmnt{It is convenient to note at once that if
+$u\in L^1_{\bar\mu}$, then $\mu\Bvalue{|u|>\alpha}$ must be
+finite for almost
+every $\alpha>0$, and therefore for every $\alpha>0$, since it is a
+non-increasing function of $\alpha$;  so that $\Bvalue{u>\alpha}$ also
+belongs to the Boolean ring $\frak A^f=\{a:\bar\mu a<\infty\}$ for every
+$\alpha>0$.
+}
+     
+\leader{365B}{Theorem} Let $(X,\Sigma,\mu)$ be a measure space with
+measure algebra $(\frak A,\bar\mu)$.   Then the canonical isomorphism
+between $L^0(\mu)$ and $L^0(\frak A)$\cmmnt{ (364Ic)}
+matches $L^1(\mu)\subseteq L^0(\mu)$\cmmnt{, defined in \S242,} with
+$L^1(\frak A,\bar\mu)\subseteq L^0(\frak A)$, and the standard norm of
+$L^1(\mu)$ with
+$\|\,\|_1:L^1(\frak A,\bar\mu)\to\coint{0,\infty}$\cmmnt{, as
+defined in 365A}.
+     
+\proof{ Take any $\Sigma$-measurable function $f:X\to\Bbb R$ (364B);
+write $f^{\ssbullet}$
+for its equivalence class in $L^0(\mu)$, and $u$ for the corresponding
+element of $L^0(\frak A)$.   Then
+$\Bvalue{|u|>\alpha}=\{x:|f(x)|>\alpha\}^{\ssbullet}$ in $\frak A$ for
+every $\alpha\in\Bbb R$, and
+     
+\Centerline{$\|u\|_1
+=\int_0^{\infty}\mu\{x:|f(x)|>\alpha\}\,d\alpha=\int|f|d\mu$}
+     
+\noindent by 252O.   In particular, $u\in L^1(\frak A,\bar\mu)$ iff
+$f\in\eusm L^1(\mu)$ iff $f^{\ssbullet}\in L^1(\mu)$, and in this case
+$\|u\|_1=\|f^{\ssbullet}\|_1$.
+}%end of proof of 365B
+     
+\leader{365C}{}\cmmnt{ Accordingly we can apply everything we know
+about $L^1(\mu)$ spaces to $L^1_{\bar\mu}$ spaces.   For instance:
+     
+\medskip
+     
+\noindent}{\bf Theorem} For any measure algebra $(\frak A,\bar\mu)$,
+$L^1(\frak A,\bar\mu)$ is a solid linear subspace of
+$L^0(\frak A)$, and
+$\|\,\|_1$ is a norm on $L^1(\frak A,\bar\mu)$ under which $L^1(\frak
+A,\bar\mu)$ is
+an $L$-space.   Consequently $L^1(\frak A,\bar\mu)$ is a perfect Riesz
+space with an order-continuous norm
+which has the Levi property, and if $\sequencen{u_n}$ is a
+non-decreasing norm-bounded sequence in $L^1(\frak A,\bar\mu)$ then it
+converges for $\|\,\|_1$ to $\sup_{n\in\Bbb N}u_n$.
+     
+\proof{ $(\frak A,\bar\mu)$ is isomorphic to the measure algebra of some
+measure space $(X,\Sigma,\mu)$ (321J).   $L^1(\mu)$ is a solid linear
+subspace of $L^0(\mu)$ (242Cb), so $L^1_{\bar\mu}$ is a solid
+linear subspace of $L^0(\frak A)$.   $L^1(\mu)$ is an $L$-space
+(354M), so $L^1_{\bar\mu}$ also is.   The rest of the properties
+claimed are general features of $L$-spaces (354N, 354E, 356P).
+}%end of proof of 365C
+     
+\leader{365D}{Integration} Let $(\frak A,\bar\mu)$ be any measure
+algebra.
+     
+\spheader 365Da If $u\in L^1=L^1(\frak A,\bar\mu)$, then $u^+$ and $u^-$
+belong to $L^1$, and we may set
+     
+\Centerline{$\int u
+=\|u^+\|_1-\|u^-\|_1
+=\int_0^{\infty}\bar\mu\Bvalue{u>\alpha}\,d\alpha
+   -\int_0^{\infty}\bar\mu\Bvalue{-u>\alpha}\,d\alpha$.}
+     
+\noindent Now $\int:L^1\to\Bbb R$ is an order-continuous positive linear
+functional\cmmnt{ (356Pc), and under the translation of 365B matches
+the integral on $L^1(\mu)$ as defined in 242Ab}.   \cmmnt{Note that if
+$a\in\frak A^f$ then
+     
+\Centerline{$\int\chi a
+=\int_0^{\infty}\bar\mu\Bvalue{\chi a>\alpha}d\alpha
+=\int_0^1\bar\mu a\,d\alpha=\bar\mu a$,}
+     
+\noindent so that if $\bar\mu$ is totally finite then the integral here
+agrees with that of 363L on $L^{\infty}(\frak A)$.
+I will sometimes write $\int u\,d\bar\mu$ if it seems helpful to
+indicate the measure.}
+     
+\spheader 365Db\cmmnt{ Of course} $\|u\|_1=\int|u|\ge|\int u|$ for
+every $u\in L^1$.
+     
+\spheader 365Dc If $u\in L^1$, $a\in\frak A$ we may set
+$\int_au=\int u\times\chi a$.   \cmmnt{(Compare 242Ac.)}   If
+$\gamma>0$ and $0\ne a\Bsubseteq\Bvalue{u>\gamma}$ then\cmmnt{ there
+is a $\delta>\gamma$ such that $a'=a\Bcap\Bvalue{u>\delta}\ne 0$, so
+that}
+     
+\Centerline{$\int_au
+\cmmnt{\mskip5mu
+=\intop_0^{\infty}\bar\mu(a\Bcap\Bvalue{u>\alpha})d\alpha
+\ge\intop_0^{\gamma}\bar\mu a\,d\alpha+\intop_{\gamma}^{\delta}\bar\mu a'}
+>\gamma\bar\mu a$.}
+     
+\noindent In particular,\cmmnt{ setting $a=\Bvalue{u>\gamma}$,}
+$\bar\mu\Bvalue{u>\gamma}$ must be finite.
+     
+\spheader 365Dd{\bf (i)} If $u\in L^1$ then $u\ge 0$
+iff $\int_au\ge 0$ for every $a\in\frak A^f$\cmmnt{, writing
+$\frak A^f=\{a:\bar\mu a<\infty\}$, as usual}.   \prooflet{\Prf\ If
+$u\ge 0$
+then $u\times\chi a\ge 0$, $\int_au\ge 0$ for every $a\in\frak A$.   If
+$u\not\ge 0$, then $\Bvalue{u^->0}\ne 0$ and there is an $\alpha>0$ such
+that $a=\Bvalue{u^->\alpha}\ne 0$.   But now
+$\bar\mu a$ is finite ((c) above) and
+     
+\Centerline{$\int u\times\chi a=-\int u^-\times\chi a
+=-\int\bar\mu(a\Bcap\Bvalue{u^-\ge\beta})d\beta
+\le-\alpha\bar\mu a<0$,}
+     
+\noindent so $\int_au<0$.\ \QeD}
+     
+\medskip
+     
+\quad{\bf (ii)} If $u$, $v\in L^1$ and $\int_au=\int_av$ for every
+$a\in\frak A^f$ then $u=v$\cmmnt{ (cf.\ 242Ce)}.
+     
+\medskip
+     
+\quad{\bf (iii)} If $u\ge 0$ in $L^1$ then
+$\int u=\sup\{\int_au:a\in\frak A^f\}$.   \prooflet{\Prf\ Of course
+$u\times\chi a\le u$ so $\int_au\le u$ for every $a\in\frak A$.   On the
+other hand,
+setting $a_n=\Bvalue{u>2^{-n}}$, $\sequencen{u\times\chi a_n}$ is a
+non-decreasing sequence with supremum $u$, so
+$\int u=\lim_{n\to\infty}\int_{a_n}u$, while $\bar\mu a_n$ is finite for
+every $n$.\ \Qed}
+     
+\spheader 365De If $u\in L^1$, $u\ge 0$ and $\int u=0$ then
+$u=0$\prooflet{ (put 365B and 122Rc together)}.   If
+$u\in L^1$, $u\ge 0$ and $\int_au=0$ then $u\times\chi a=0$, that is,
+$a\Bcap\Bvalue{u>0}=0$.
+     
+\spheader 365Df If $C\subseteq L^1$ is non-empty and
+upwards-directed and $\sup_{v\in C}\int v$ is finite, then $\sup C$ is
+defined in $L^1$ and
+$\int\sup C=\sup_{v\in C}\int v$\prooflet{ (356Pc)}.
+     
+\spheader 365Dg\cmmnt{ It will occasionally be convenient to adapt the
+conventions of \S133 to the new context;  so that} I may write
+$\int u=\infty$ if $u\in L^0(\frak A)$, $u^-\in L^1$ and
+$u^+\notin L^1$, while $\int u=-\infty$ if $u^+\in L^1$ and
+$u^-\notin L^1$.
+     
+\spheader 365Dh On this convention,\cmmnt{ we can restate (f) as
+follows:}  if
+$C\subseteq(L^0)^+$ is non-empty and upwards-directed and has a supremum
+$u$ in $L^0$, then $\int u=\sup_{v\in C}\int v$ in $[0,\infty]$.
+\prooflet{\Prf\ For if $\sup_{v\in C}\int v$ is infinite, then surely
+$\int u=\infty$;  while otherwise we can apply (f).\ \Qed}
+ 
+\leader{365E}{The Radon-Nikod\'ym theorem again} (a) Let
+$(\frak A,\bar\mu)$ be a semi-finite measure algebra and
+$\nu:\frak A\to\Bbb R$
+an additive functional.   Then the following are equiveridical:
+     
+\inset{(i) there is a $u\in L^1=L^1(\frak A,\bar\mu)$ such that
+$\nu a=\int_au$ for every $a\in\frak A$;
+     
+(ii) $\nu$ is additive and continuous for the measure-algebra
+topology on $\frak A$;
+     
+(iii) $\nu$ is completely additive.}
+     
+(b) Let $(\frak A,\bar\mu)$ be any measure algebra, and
+$\nu:\frak A^f\to\Bbb R$ a function.   Then the following are
+equiveridical:
+     
+\inset{(i) $\nu$ is additive and bounded and $\inf_{a\in A}|\nu a|=0$
+whenever $A\subseteq\frak A^f$ is downwards-directed and has infimum
+$0$;
+     
+(ii) there is a $u\in L^1$ such that
+$\nu a=\int_au$ for every $a\in\frak A^f$.}
+     
+\proof{{\bf (a)} The equivalence of (ii) and (iii) is 327Bd.
+The equivalence of (i) and (iii) is just a translation of 327D into
+the new context.
+     
+\medskip
+     
+{\bf (b)(i)$\Rightarrow$(ii)}\grheada\ Set
+$M=\sup_{a\in\frak A^f}|\nu a|<\infty$.
+     
+Let $D\subseteq\frak A^f$ be a maximal disjoint set.   For each $d\in
+D$, write $\frak A_d$ for the principal ideal of $\frak A$ generated by
+$d$, and $\bar\mu_d$ for the restriction of $\bar\mu$ to $\frak A_d$, so
+that $(\frak A_d,\bar\mu_d)$ is a totally finite measure algebra.   Set
+$\nu_d=\nu\restrp\frak A_d$;  then $\nu_d:\frak A_d\to\Bbb R$ is
+completely additive.   By (a), there is a
+$u_d\in L^1(\frak A_d,\bar\mu_d)$
+such that $\int_au_d=\nu_da=\nu a$ for every $a\Bsubseteq d$.
+     
+Now $u_d^+\in L^0(\frak A_d)$ corresponds to a member $\tilde u_d^+$ of
+$L^0(\frak A)^+$ defined by saying
+     
+$$\eqalign{\Bvalue{\tilde u_d^+>\alpha}&=\Bvalue{u_d^+>\alpha}
+=\Bvalue{u_d>\alpha}\text{ if }\alpha\ge 0,\cr
+&=1\text{ if }\alpha<0.\cr}$$
+     
+\noindent If $a\in\frak A$, then
+     
+\Centerline{$\int_a\tilde u_d^+d\bar\mu
+=\int_0^{\infty}\bar\mu(a\Bcap\Bvalue{\tilde u_d^+>\alpha})d\alpha
+=\int_0^{\infty}\bar\mu_d(a\Bcap\Bvalue{u_d^+>\alpha})d\alpha
+=\int_{a\Bcap d}u_d^+d\bar\mu_d$;}
+     
+\noindent taking $a=1$, we see that
+$\|\tilde u_d^+\|_1=\|u_d^+\|_1=\nu\Bvalue{u_d>0}$ is
+finite, so that $\tilde u_d^+\in L^1$.
+     
+\medskip
+     
+\qquad\grheadb\ For any finite $I\subseteq D$, set
+$v_I=\sum_{d\in I}\tilde u_d^+$.   Then
+     
+\Centerline{$\int v_I=\nu(\sup_{d\in I}\Bvalue{u_d>0})\le M$;}
+     
+\noindent consequently the upwards-directed set $A=\{v_I:I\subseteq D$
+is finite$\}$ is bounded above in $L^1$, and we can set
+$v=\sup A$ in $L^1$.
+If $a\in\frak A$, then
+$\int_av_I=\sum_{d\in I}\int_{a\Bcap d}u_d^+$ for each finite
+$I\subseteq D$, so $\int_av=\sum_{d\in D}\int_{a\Bcap d}u_d^+$.
+     
+Applying the same arguments to $-\nu$, there is a $w\in L^1$
+such that
+     
+\Centerline{$\int_aw=\sum_{d\in D}\int_{a\Bcap d}u_d^-$}
+     
+\noindent for every $a\in\frak A$.   Try $u=v-w$;  then
+     
+\Centerline{$\int_au
+=\sum_{d\in D}\int_{a\Bcap d}u_d^+-\int_{a\Bcap d}u_d^- %
+=\sum_{d\in D}\int_{a\Bcap d}u_d
+=\sum_{d\in D}\nu(a\Bcap d)$}
+     
+\noindent for every $a\in\frak A$.
+     
+\medskip
+     
+\qquad\grheadc\ Now take any $a\in\frak A^f$.   For
+$J\subseteq D$ set $a_J=\sup_{d\in J}a\Bcap d$.   Let $\epsilon>0$.
+Then there is a finite $I\subseteq D$ such that
+     
+\Centerline{$|\int_au-\nu a_J|
+=|\sum_{d\in D}\nu(a\Bcap d)-\sum_{d\in J}\nu(a\Bcap d)|
+\le\epsilon$}
+     
+\noindent whenever $I\subseteq J\subseteq D$ and $J$ is finite.   But
+now consider
+     
+\Centerline{$A=\{a\Bsetminus a_J:I\subseteq J\subseteq D,\,J$ is
+finite$\}$.}
+     
+\noindent Then $\inf A=0$, so there is a finite $J$ such that
+$I\subseteq J\subseteq D$ and
+     
+\Centerline{$|\nu a-\nu a_J|=|\nu(a\Bsetminus a_J)|\le\epsilon$.}
+     
+\noindent Consequently
+     
+\Centerline{$|\nu a-\int_au|
+\le|\nu a-\nu a_J|+|\int_au-\nu a_J|\le 2\epsilon$.}
+     
+\noindent As $\epsilon$ is arbitrary, $\nu a=\int_au$.   As $a$ is
+arbitrary, (ii) is proved.
+     
+\medskip
+     
+\quad{\bf (ii)$\Rightarrow$(i)} From where we now are, this is nearly
+trivial.   Thinking of $\nu a$ as $\int u\times\chi a$, $\nu$ is surely
+additive and bounded.   Also $|\nu a|\le\int|u|\times\chi a$.   If
+$A\subseteq\frak A^f$ is non-empty, downwards-directed and has infimum
+$0$, the same is true of $\{|u|\times\chi a:a\in A\}$, because $a\mapsto
+|u|\times\chi a$ is order-continuous, so
+     
+\Centerline{$\inf_{a\in A}|\nu a|\le\inf_{a\in A}\int|u|\times\chi
+a=\inf_{a\in A}\||u|\times\chi a\|_1=0$.}
+     
+}%end of proof of 365E
+     
+\leader{365F}{}\cmmnt{ It will be useful later to have spelt out the
+following elementary facts.
+     
+\medskip
+     
+\noindent}{\bf Lemma} Let $(\frak A,\bar\mu)$ be a measure algebra.
+Write $S^f$ for the intersection $S(\frak A)\cap L^1(\frak A,\bar\mu)$.
+Then $S^f$ is a norm-dense and order-dense Riesz subspace of
+$L^1(\frak A,\bar\mu)$, and can be identified with $S(\frak A^f)$.
+The function $\chi:\frak A^f\to S^f\subseteq L^1(\frak A,\bar\mu)$ is an
+injective
+order-continuous additive lattice homomorphism.   If $u\ge 0$ in
+$L^1(\frak A,\bar\mu)$,
+there is a non-decreasing sequence $\sequencen{u_n}$ in $(S^f)^+$ such
+that $u=\sup_{n\in\Bbb N}u_n=\lim_{n\to\infty}u_n$.
+     
+\proof{ As in 364K, we can think of $S(\frak A^f)$ as a Riesz
+subspace of $S=S(\frak A)$, embedded in $L^0(\frak A)$.
+If $u\in S$, it is
+expressible as $\sum_{i=0}^n\alpha_i\chi a_i$ where
+$a_0,\ldots,a_n\in\frak A$ are disjoint and no $\alpha_i$ is zero.
+Now $|u|=\sum_{i=0}^n|\alpha_i|\chi a_i$, so $u\in L^1$ iff $\bar\mu
+a_i<\infty$ for every $i$, that is, iff $u\in S(\frak A^f)$;  thus
+$S^f=S(\frak A^f)$.
+     
+Now suppose that $u\ge 0$ in $L^1$.   By 364Jd, there is a
+non-decreasing sequence $\sequencen{u_n}$ in $S(\frak A)^+$ such that
+$u_0\ge 0$ and $u=\sup_{n\in\Bbb N}u_n$ in $L^0$.   Because $L^1$ is a
+solid linear subspace of $L^0$, every $u_n$ belongs to $L^1$ and
+therefore to $S^f$.   By 365C, $\sequencen{u_n}$ is norm-convergent to
+$u$.   This shows also that $S^f$ is order-dense in $L^1$.
+     
+The map $\chi:\frak A^f\to S^f$ is an injective order-continuous
+additive lattice homomorphism;  because $S^f$ is regularly embedded in
+$L^1$ (352Ne), $\chi$ has the same properties when regarded as a map
+into $L^1$.
+     
+For general $u\in L^1$, there are sequences in $S^f$ converging to $u^+$
+and to $u^-$, so that their difference is a sequence in $S^f$ converging
+to $u$, and $u$ belongs to the closure of $S^f$;  thus $S^f$ is
+norm-dense in $L^1$.
+}%end of proof of 365F
+     
+\cmmnt{\medskip
+     
+\noindent{\bf Remark} Of course $S^f$ here corresponds to the space of
+(equivalence classes of) simple functions, as in 242Mb.
+}
+     
+\leader{365G}{Semi-finite algebras:  Lemma} Let $(\frak A,\bar\mu)$ be a
+measure algebra.
+     
+(a) $(\frak A,\bar\mu)$ is semi-finite iff $L^1=L^1(\frak A,\bar\mu)$ is
+order-dense in $L^0=L^0(\frak A)$.
+     
+(b) In this case, writing
+$S^f=S(\frak A)\cap L^1$\cmmnt{ (as in 365F)},
+$\int u=\sup\{\int v:v\in S^f,\,0\le v\le u\}$ in $[0,\infty]$ for every
+$u\in(L^0)^+$.
+     
+     
+\proof{{\bf (a)} If $(\frak A,\bar\mu)$ is semi-finite then $S^f$ is
+order-dense in $L^0$ (364K), so $L^1$ must also be.   If $L^1$ is
+order-dense in $L^0$, then so is $S^f$, by 365F and 352Nc, so
+($\frak A,\bar\mu)$ is semi-finite, by 364K in the other direction.
+     
+\medskip
+     
+{\bf (b)} Set $C=\{v:v\in S^f,\,0\le v\le u\}$.   Then $C$ is an
+upwards-directed set with supremum $u$, because $S^f$ is order-dense in
+$L^0$.   So $\int u=\sup_{v\in C}\int v$ by 365Dh.
+}%end of proof of 365G
+     
+\leader{365H}{Measurable \dvrocolon{transformations}}\cmmnt{ We have a
+generalization of the ideas of \S235 in this abstract context.
+     
+\medskip
+     
+\noindent}{\bf Theorem} Let $(\frak A,\bar\mu)$ and $(\frak B,\bar\nu)$
+be measure algebras, and $\pi:\frak A\to\frak B$ a sequentially
+order-continuous Boolean homomorphism.   Let
+$T:L^0(\frak A)\to L^0(\frak B)$ be the sequentially order-continuous
+Riesz homomorphism associated with $\pi$\cmmnt{ (364P)}.
+     
+(a) Suppose that $w\ge 0$ in $L^0(\frak B)$ is such that
+$\int_{\pi a}w\,d\bar\nu=\bar\mu a$ whenever $a\in\frak A$ and
+$\bar\mu a<\infty$.
+Then for any $u\in L^1(\frak A,\bar\mu)$ and $a\in\frak A$,
+$\int_{\pi a}Tu\times w\,d\bar\nu$ is defined and equal to
+$\int_au\,d\bar\mu$.
+     
+(b) Suppose that $w'\ge 0$ in $L^0(\frak A)$ is such that
+$\int_aw'd\bar\mu=\bar\nu(\pi a)$ for every $a\in\frak A$.   Then
+$\int Tu\,d\bar\nu=\int u\times w'\,d\bar\mu$ whenever
+$u\in L^0(\frak A)$ and
+either integral is defined in $[-\infty,\infty]$.
+     
+\cmmnt{\medskip
+     
+\noindent{\bf Remark} I am using the convention of 365Dg concerning
+`$\infty$' as the value of an integral.}
+     
+\proof{{\bf (a)} If $u\in S^f=L^1_{\bar\mu}\cap S(\frak A)$ then
+$u$ is expressible as $\sum_{i=0}^n\alpha_i\chi a_i$ where
+$a_0,\ldots,a_n$ have finite measure, so that
+$Tu=\sum_{i=0}^n\alpha_i\chi(\pi a_i)$ and
+     
+\Centerline{$\int Tu\times w\,d\bar\nu
+=\sum_{i=0}^n\alpha_i\int_{\pi a_i}w
+=\sum_{i=0}^n\alpha_i\bar\mu a_i=\int u\,d\bar\mu$.}
+     
+\noindent If $u\ge 0$ in $L^1_{\bar\mu}$ there is a
+non-decreasing sequence $\sequencen{u_n}$ in $S^f$ with supremum $u$, so
+that $Tu=\sup_{n\in\Bbb N}Tu_n$ and
+$w\times Tu=\sup_{n\in\Bbb N}w\times Tu_n$ in $L^0(\frak B)$, and
+     
+\Centerline{$\int Tu\times w=\sup_{n\in\Bbb N}\int Tu_n\times w
+=\sup_{n\in\Bbb N}\int u_n=\int u$.}
+     
+\noindent (365Df tells us that in this context
+$Tu\times w\in L^1_{\bar\nu}$.)   Finally, for general
+$u\in L^1_{\bar\mu}$,
+     
+\Centerline{$\int Tu\times w=\int Tu^+\times w-\int Tu^-\times w
+=\int u^+-\int u^-=\int u$.}
+     
+\medskip
+     
+{\bf (b)} The argument follows the same lines:  start with $u=\chi a$
+for $a\in\frak A$, then with $u\in S(\frak A)$, then with $u\in
+L^0(\frak A)^+$ and conclude with general $u\in L^0(\frak A)$.   The
+point is that $T$ is a Riesz homomorphism, so that at the last step
+     
+$$\eqalign{\int Tu
+&=\int(Tu)^+-\int(Tu)^- %
+=\int T(u^+)-\int T(u^-)\cr
+&=\int u^+\times w'-\int u^-\times w'
+=\int(u\times w')^+-\int(u\times w')^- %
+=\int u\times w'\cr}$$
+     
+\noindent whenever either side is defined in $[-\infty,\infty]$.
+}%end of proof of 365H
+     
+\leader{365I}{Theorem} Let $(\frak A,\bar\mu)$ be a measure algebra and
+$U$ a Banach space.   Let $\nu:\frak A^f\to U$ be a function.   Then the
+following are equiveridical:
+     
+\inset{(i) there is a continuous linear operator $T$ from
+$L^1=L^1(\frak A,\bar\mu)$ to $U$ such that $\nu a=T(\chi a)$ for every
+$a\in\frak A^f$;
+     
+(ii)($\alpha$) $\nu$ is additive
+     
+\quad($\beta$) there is an $M\ge 0$ such
+that $\|\nu a\|\le M\bar\mu a$ for every $a\in\frak A^f$.}
+     
+\noindent Moreover, in this case, $T$ is unique and $\|T\|$ is the
+smallest number $M$ satisfying the condition in (ii-$\beta$).
+     
+\proof{{\bf (a)(i)$\Rightarrow$(ii)} If $T:L^1\to U$ is a continuous
+linear operator, then $\chi a\in L^1$ for every
+$a\in\frak A^f$, so
+$\nu=T\chi$ is a function from $\frak A^f$ to $U$.   If $a$, 
+$b\in\frak A^f$ and $a\Bcap b=0$, then $\chi(a\Bcup b)=\chi a+\chi b$ in
+$L^0=L^0(\frak A)$ and therefore in $L^1$, so
+     
+\Centerline{$\nu(a\Bcup b)=T\chi(a\Bcup b)=T(\chi a+\chi b)=T(\chi
+a)+T(\chi b)=\nu a+\nu b$.}
+     
+\noindent If $a\in\frak A^f$ then $\|\chi a\|_1=\bar\mu a$ (using the
+formula in 365A, or otherwise), so
+     
+\Centerline{$\|\nu a\|=\|T(\chi a)\|\le\|T\|\|\chi a\|_1=\|T\|\bar\mu
+a$.}
+     
+\medskip
+     
+{\bf (b)(ii)$\Rightarrow$(i)} Now suppose that $\nu:\frak A^f\to U$ is
+additive and that $\|\nu a\|\le M\bar\mu a$ for every $a\in\frak A^f$.
+Let $S^f=L^1\cap S(\frak A)$, as in 365F.   Then there is a linear
+operator $T_0:S^f\to U$ such that $T_0(\chi a)=\nu a$ for every
+$a\in\frak A^f$ (361F).
+Next, $\|T_0u\|\le M\|u\|_1$ for every $u\in S^f$.   \Prf\ If
+$u\in S^f\cong S(\frak A^f)$, then $u$ is expressible as
+$\sum_{j=0}^m\beta_j\chi b_j$ where
+$b_0,\ldots,b_m\in\frak A^f$ are disjoint (361Eb).   So
+     
+\Centerline{$\|T_0u\|=\|\sum_{j=0}^m\beta_j\nu b_j\|
+\le M\sum_{j=0}^m|\beta_j|\bar\mu b_j=M\|u\|_1$.   \Qed}
+     
+\noindent There is therefore a continuous linear operator $T:L^1\to U$,
+extending
+$T_0$, and with $\|T\|\le\|T_0\|\le M$ (2A4I).   Of course we
+still have $\nu=T\chi$.
+     
+\medskip
+     
+{\bf (c)} The argument in (b) shows that $T_0=T\restr S^f$ and $T$ are
+uniquely defined from $\nu$.   We have also seen that if $T$, $\nu$
+correspond to each other then
+     
+\Centerline{$\|\nu a\|\le\|T\|\bar\mu a$ for every $a\in\frak A^f$,}
+     
+\Centerline{$\|T\|\le M$ whenever $\|\nu a\|\le M\bar\mu a$ for every
+$a\in\frak A^f$,}
+     
+\noindent so that
+     
+\Centerline{$\|T\|=\min\{M:M\ge 0,\,\|\nu a\|\le M\bar\mu a$ for every
+$a\in\frak A^f\}$.}
+}%end of proof of 365I
+     
+\leader{365J}{Corollary} Let $(X,\Sigma,\mu)$ be a measure space and $U$
+any Banach space.   Set $\Sigma^f=\{E:E\in \Sigma,\,\mu E<\infty\}$.
+Let $\nu:\Sigma^f\to U$ be a function.   Then the following are
+equiveridical:
+     
+\inset{(i) there is a continuous linear operator $T:L^1(\mu)\to U$
+such that $\nu E=T(\chi E)^{\ssbullet}$ for every $E\in\Sigma^f$;
+     
+(ii)($\alpha$) $\nu(E\cup F)=\nu E+\nu F$ whenever $E$, $F\in\Sigma^f$
+and $E\cap F=0$ ($\beta$) there is an $M\ge 0$ auch that
+$\|\nu E\|\le M\mu E$ for every $E\in\Sigma^f$.}
+     
+\noindent Moreover, in this case, $T$ is unique and $\|T\|$ is the
+smallest number
+$M$ satisfying the condition in (ii-$\beta$).
+     
+\proof{ This is a direct translation of 365I.   The only point to note
+is that if $\nu$ satisfies the conditions of (ii), and $E$,
+$F\in\Sigma^f$ are such that $E^{\ssbullet}=F^{\ssbullet}$ in the
+measure algebra $(\frak A,\bar\mu)$ of $(X,\Sigma,\mu)$, then
+$\mu(E\setminus F)=\mu(F\setminus E)=0$, so that
+$\nu(E\setminus F)=\nu(F\setminus E)=0$ (using condition (ii-$\beta$))
+and
+     
+\Centerline{$\nu E=\nu(E\cap F)+\nu(E\setminus F)
+=\nu(E\cap F)+\nu(F\setminus E)=\nu F$.}
+     
+\noindent This means that we have a function $\bar\nu:\frak A^f\to U$,
+where
+     
+\Centerline{$\frak A^f=\{a:a\in\frak A,\,\bar\mu a<\infty\}
+=\{E^{\ssbullet}:E\in\Sigma^f\}$,}
+     
+\noindent defined by setting $\bar\nu E^{\ssbullet}=\nu E$ for every
+$E\in\Sigma^f$.   Of course we now have
+$\bar\nu(a\Bcup b)=\bar\nu a+\bar\nu b$ whenever $a$, $b\in\frak A^f$
+and $a\Bcap b=0$ (since we
+can express them as $a=E^{\ssbullet}$, $b=F^{\ssbullet}$ with
+$E\cap F=\emptyset$), and $\|\bar\nu a\|\le M\bar\mu a$ for every
+$a\in\frak A^f$.   Thus we have a one-to-one correspondence between
+functions $\nu:\Sigma^f\to U$ satisfying the conditions (ii) here, and
+functions $\bar\nu:\frak A^f\to U$ satisfying the conditions (ii) of
+365I.   The
+rest of the argument is covered by the identification between $L^1(\mu)$
+and $L^1$ in 365B.
+}%end of proof of 365J
+     
+\leader{365K}{Theorem} Let $(\frak A,\bar\mu)$ be a measure algebra, $U$
+a Banach lattice, and $T$ a bounded linear operator from
+$L^1=L^1(\frak A,\bar\mu)$ to $U$.   Let $\nu:\frak A^f\to U$ be the
+corresponding additive function, as in 365I.
+     
+(a) $T$ is a positive linear operator iff $\nu a\ge 0$ in $U$ for every
+$a\in\frak A^f$;  in this case, $T$ is order-continuous.
+     
+(b) If $U$ is Dedekind complete and
+$T\in\eurm L^{\sim}(L^1;U)$, then
+$|T|:L^1\to U$ corresponds to $|\nu|:\frak A^f\to U$, where
+     
+\Centerline{$|\nu|(a)=\sup\{\sum_{i=0}^n|\nu
+a_i|:a_0,\ldots,a_n\Bsubseteq a$ are disjoint$\}$}
+     
+\noindent for every $a\in\frak A^f$.
+     
+(c) $T$ is a Riesz homomorphism iff $\nu$ is a lattice homomorphism.
+     
+\proof{ As in 365F, let $S^f$ be $L^1\cap S(\frak A)$, identified with
+$S(\frak A^f)$.
+     
+\medskip
+     
+{\bf (a)(i)} If $T$ is a positive linear operator and $a\in\frak A^f$,
+then $\chi a\ge 0$ in $L^1$, so $\nu a=T(\chi a)\ge 0$ in $U$.
+     
+\medskip
+     
+\quad{\bf (ii)} Now suppose that $\nu a\ge 0$ in $U$ for every
+$a\in\frak A^f$, and let $u\ge 0$ in $L^1$, $\epsilon>0$ in $\Bbb R$.
+Then there is a $v\in S^f$ such that $0\le v\le u$ and
+$\|u-v\|_1\le\epsilon$ (365F).   Express $v$ as
+$\sum_{i=0}^n\alpha_i\chi a_i$ where $a_i\in\frak A^f$, $\alpha_i\ge 0$
+for each $i$.   Now
+     
+\Centerline{$\|Tu-Tv\|\le\|T\|\|u-v\|_1
+\le\epsilon\|T\|$.}
+     
+\noindent On the other hand,
+     
+\Centerline{$Tv=\sum_{i=0}^n\alpha_i\nu a_i\in U^+$.}
+     
+\noindent As $U^+$ is norm-closed in $U$ (354Bc), and $\epsilon$ is
+arbitrary,
+$Tu\in U^+$.   As $u$ is arbitrary, $T$ is a positive linear operator.
+     
+\medskip
+     
+\quad{\bf (iii)} By 355Ka, $T$ is order-continuous.
+     
+\medskip
+     
+{\bf (b)} The point is that $|T\restr S^f|=|T|\restr S^f$.   \Prf\ (i)
+Because the embedding $S^f\embedsinto L^1$ is positive, the map
+$R\mapsto R\restr S^f$ is a positive linear operator from
+$\eurm L^{\sim}(L^1;U)$
+to $\eurm L^{\sim}(S^f;U)$ (see 355Bd).   So
+$|T\restr S^f|\le|T|\restr S^f$.   (ii) There is a positive linear
+operator $T_1:L^1\to U$
+extending $|T\restr S^f|$, by 365J and (a) above, and now
+$T_1\restr S^f$ dominates both $T\restr S^f$ and $-T\restr S^f$;  since
+$(S^f)^+$ is dense in $(L^1)^+$, $T_1\ge T$ and $T_1\ge -T$, so that
+$T_1\ge|T|$ and
+     
+\Centerline{$|T\restr S^f|=T_1\restr S^f\ge|T|\restr S^f$.  \Qed}
+     
+Now 361H tells us that
+     
+\Centerline{$|T|(\chi a)=|T\restr S^f|(\chi a)=|\nu|a$}
+     
+\noindent for every $a\in\frak A^f$.
+     
+\medskip
+     
+{\bf (c)(i)}  If $T$ is a lattice homomorphism, then so is $\nu=T\chi$,
+because $\chi:\frak A^f\to S^f$ is a lattice homomorphism.
+     
+\medskip
+     
+\quad{\bf (ii)} Now suppose that $\chi$ is a lattice homomorphism.   In
+this case $T\restr S^f$ is a Riesz homomorphism (361Gc), that is,
+$|Tv|=T|v|$ for every $v\in S^f$.   Because $S^f$
+is norm-dense in $L^1$ and the map $u\mapsto|u|$ is continuous both in
+$L^1$
+and in $U$ (354Bb), $|Tu|=T|u|$ for every $u\in L^1$, and $T$ is a Riesz
+homomorphism.
+}%end of proof of 365K
+     
+\leader{365L}{The duality between $L^1$ and $L^{\infty}$}  Let
+$(\frak A,\bar\mu)$ be a measure algebra, and set
+$L^1=L^1(\frak A,\bar\mu)$, $L^{\infty}=L^{\infty}(\frak A)$.   If we
+identify $L^{\infty}$ with the solid linear subspace of
+$L^0=L^0(\frak A)$ generated by $e=\chi 1_{\frak A}$ (364J), then we
+have a bilinear operator $(u,v)\mapsto u\times v:
+L^1\times L^{\infty}\to L^1$\prooflet{, because
+$|u\times v|\le\|v\|_{\infty}|u|$ and
+$L^1$ is a solid linear subspace of $L^0$}.
+\cmmnt{Note that} $\|u\times v\|_1\le\|u\|_1\|v\|_{\infty}$,
+so\cmmnt{ that}
+the bilinear operator $(u,v)\mapsto u\times v$ has norm at most
+$1$\cmmnt{ (253Ab, 253E)}.   Consequently we have a bilinear functional
+$(u,v)\mapsto\int u\times v:L^1\times L^{\infty}\to\Bbb R$, which also
+has norm at most $1$, corresponding to
+linear operators $S:L^1\to (L^{\infty})^*$ and $T:L^{\infty}\to(L^1)^*$,
+both of norm at most $1$, defined by the formula
+     
+\Centerline{$(Su)(v)=(Tv)(u)=\int u\times v$ for $u\in L^1$,
+$v\in L^{\infty}$.}
+     
+\noindent\cmmnt{ Because $L^1$ and $L^{\infty}$ are
+both Banach lattices, we have }$(L^1)^*=(L^1)^{\sim}$ and
+$(L^{\infty})^*=(L^{\infty})^{\sim}$\cmmnt{ (356Dc)}.
+\cmmnt{Because the norm of
+$L^1$ is order-continuous,} $(L^1)^*=(L^1)^{\times}$\cmmnt{ (356Dd)}.
+     
+\leader{365M}{Theorem} Let $(\frak A,\bar\mu)$ be a measure algebra, and
+set $L^1=L^1(\frak A,\bar\mu)$, $L^{\infty}=L^{\infty}(\frak A)$.   Let
+$S:L^1\to(L^{\infty})^*=(L^{\infty})^{\sim}$,
+$T:L^{\infty}\to (L^1)^*=(L^1)^{\sim}=(L^1)^{\times}$ be the canonical
+maps defined by
+the duality between $L^1$ and $L^{\infty}$\cmmnt{, as in 365L}.   Then
+     
+(a) $S$ and $T$ are order-continuous Riesz homomorphisms,
+$S[L^1]\subseteq(L^{\infty})^{\times}$, $S$ is
+norm-preserving and $T[L^{\infty}]$ is order-dense in $(L^1)^{\sim}$;
+     
+(b) $(\frak A,\bar\mu)$ is semi-finite iff $T$ is injective, and in this
+case $T$ is norm-preserving, while $S$ is a normed Riesz space
+isomorphism between $L^1$ and $(L^{\infty})^{\times}$;
+     
+(c) $(\frak A,\bar\mu)$ is localizable iff $T$ is bijective, and in this
+case $T$ is a normed Riesz space isomorphism between $L^{\infty}$ and
+$(L^1)^*=(L^1)^{\sim}=(L^1)^{\times}$.
+     
+\proof{{\bf (a)(i)} If $u\ge 0$ in $L^1$ and $v\ge 0$ in $L^{\infty}$
+then $u\times v\ge 0$ and
+     
+\Centerline{$(Tv)(u)=\int u\times v\ge 0$.}
+     
+\noindent As $u$ is arbitrary, $Tv\ge 0$ in $(L^1)^{\times}$;  as $v$ is
+arbitrary, $T$ is a positive linear operator.
+     
+If $v\in L^{\infty}$, set $a=\Bvalue{v>0}\in\frak A$.   (Remember that
+we are identifying $L^0(\mu)$, as defined in \S241, with $L^0(\frak A)$,
+as defined in \S364.)   Then $v^+=v\times\chi a$, so for any $u\ge 0$ in
+$L^1$
+     
+\Centerline{$(Tv^+)(u)=\int u\times v\times\chi a
+=(Tv)(u\times\chi a)\le(Tv)^+(u)$.}
+     
+\noindent As $u$ is arbitrary, $Tv^+\le(Tv)^+$.   On the other hand,
+because $T$ is a positive linear operator, $Tv^+\ge Tv$ and $Tv^+\ge 0$,
+so $Tv^+\ge(Tv)^+$.   Thus $Tv^+=(Tv)^+$.   As $v$ is arbitrary, $T$ is
+a Riesz homomorphism (352G).
+     
+\medskip
+     
+\quad{\bf (ii)} Exactly the same arguments show that $S$ is a Riesz
+homomorphism.
+     
+\medskip
+     
+\quad{\bf (iii)} Given $u\in L^1$, set $a=\Bvalue{u>0}$;  then
+     
+\Centerline{$\|Su\|\ge (Su)(\chi a-\chi(1\Bsetminus a))
+=\int_au-\int_{1\Bsetminus a}u=\int|u|=\|u\|_1\ge\|Su\|$.}
+     
+\noindent So $S$ is norm-preserving.
+     
+\medskip
+     
+\quad{\bf (iv)} By 355Ka, $S$ is order-continuous.
+     
+\medskip
+     
+\quad{\bf (v)} If $A\subseteq L^{\infty}$ is a non-empty
+downwards-directed set with infimum $0$, and $u\in(L^1)^+$, then
+$\inf_{v\in A}u\times v=0$ for every $u\in(L^1)^+$, because $v\mapsto
+u\times v:L^0\to L^0$ is
+order-continuous.   So
+     
+\Centerline{$\inf_{v\in A}(Tv)(u)
+=\inf_{v\in A}\int u\times v=\inf_{v\in A}\|u\times v\|_1=0$}
+     
+\noindent and the only possible non-negative lower bound for $T[A]$ in
+$(L^1)^{\times}$ is $0$.   As $A$ is arbitrary, $T$ is order-continuous.
+     
+\medskip
+     
+\quad{\bf (vi)} The ideas of (v) show also that
+$S[L^1]\subseteq(L^{\infty})^{\times}$.   \Prf\ If $u\in(L^1)^+$ and
+$A\subseteq L^{\infty}$ is non-empty, downwards-directed and has infimum
+$0$, then
+     
+\Centerline{$\inf_{v\in A}(Su)(v)=\inf_{v\in A}\int u\times v=0$.}
+     
+\noindent As $A$ is arbitrary, $Su$ is order-continuous.   For general
+$u\in L^1$, $Su=Su^+-Su^-$ belongs to $(L^{\infty})^{\times}$.\ \Qed
+     
+\medskip
+     
+\quad{\bf (vii)} Now suppose that $h>0$ in $(L^1)^*=(L^1)^{\times}$.
+By 365Ka, applied to $-h$, there must be an $a\in\frak A^f$ such that
+$h(\chi a)>0$.   Set $\nu b=h(\chi(a\Bcap b))$ for
+$b\in\frak A^f$.   Then $\nu$ is additive and non-negative and bounded
+by $\|h\|\bar\mu a$.   If $A\subseteq\frak A^f$ is a non-empty
+downwards-directed set with infimum $0$, then $C=\{\chi b:b\in A\}$ is
+downwards-directed and has infimum $0$ in $L^0(\frak A)$ (364Jc), so
+$\inf_{b\in A}\nu b=\inf_{u\in C}h(u)=0$.   By 365Eb, there is a
+$v\in L^1$ such that
+$\nu b=\int_bu$ for every $b\in\frak A^f$.   As $\int_bv\ge 0$ for every
+$b\in\frak A^f$, $v\ge 0$ (365E(d-i)).   Setting $b=\Bvalue{v>\|h\|}$,
+we have
+     
+\Centerline{$\int_bv\le h(\chi b)\le\|h\|\|\chi b\|_1=\|h\|\bar\mu b$;}
+     
+\noindent so $b=0$ (365Ec).   Accordingly $0\le v\le\|h\|\chi 1$ and
+$v\in L^{\infty}$.   Consider $Tv\in(L^1)^{\times}$.   We have
+$Tv\ge 0$ because $T$ is positive;  also
+     
+\Centerline{$(Tv)(\chi a)=\int_av=\nu a=h(\chi a)>0$,}
+     
+\noindent so $Tv>0$.   Next, for every $b\in\frak A^f$,
+     
+\Centerline{$(Tv)(\chi b)=\int_bv=h(\chi(a\Bcap b))\le h(\chi b)$.}
+     
+\noindent By 365Ka again, $h-Tv\ge 0$, that is, $Tv\le h$.   As $h$ is
+arbitrary, $T[L^{\infty}]$ is quasi-order-dense in $(L^1)^*$, therefore
+order-dense (353A).
+     
+\medskip
+     
+{\bf (b)(i)}  If $(\frak A,\bar\mu)$ is not semi-finite, let
+$a\in\frak A$ be such that $\bar\mu a=\infty$ and $\bar\mu b=\infty$
+whenever $0\ne b\Bsubseteq a$.   If $u\in L^1$, then
+$\Bvalue{|u|>\bover1n}$ has finite
+measure for every $n\ge 1$, so must be disjoint from $a$;  accordingly
+     
+\Centerline{$a\Bcap\Bvalue{|u|>0}=\sup_{n\ge
+1}a\Bcap\Bvalue{|u|>\bover1n}=0$.}
+     
+\noindent This means that $\int u\times\chi a=0$ for every $u\in L^1$.
+Accordingly $T(\chi a)=0$ and $T$ is not injective.
+     
+\medskip
+     
+\quad{\bf (ii)} If $(\frak A,\bar\mu)$ is semi-finite, take any $v\in
+L^{\infty}$.   Then if $0\le\delta<\|v\|_{\infty}$,
+$a=\Bvalue{|v|>\delta}\ne 0$.   Let $b\subseteq a$ be such that
+$0<\bar\mu b<\infty$.   Then $\chi b\in L^1$, and
+     
+\Centerline{$\|Tv\|=\||Tv|\|=\|T|v|\|
+\ge (T|v|)(\chi b)/\|\chi b\|_1\ge\delta$}
+     
+\noindent because $|v|\times\chi b\ge\delta\chi b$, so
+     
+\Centerline{$(T|v|)(\chi b)\ge\delta\bar\mu b=\delta\|\chi b\|_1$.}
+     
+\noindent   As $\delta$ is arbitrary, $\|Tv\|\ge\|v\|_{\infty}$.   But
+we already know that $\|Tv\|\le\|v\|_{\infty}$, so the two are equal.
+As $v$ is arbitrary, $T$ is norm-preserving (and, in particular, is
+injective).
+     
+\medskip
+     
+\quad{\bf (iii)} Still supposing that $(\frak A,\bar\mu)$ is
+semi-finite, $S[L^1]=(L^{\infty})^{\times}$.
+\Prf\ Take any $h\in(L^{\infty})^{\times}$.    For $a\in\frak A$, set
+$\nu a=h(\chi a^{\ssbullet})$.   By 363K, $\nu:\frak A\to\Bbb R$
+is completely additive.   By 365Ea, there is a $u\in L^1$ such that
+     
+\Centerline{$(Su)(\chi a)=\int u\times\chi a=\int_au=\nu a
+=h(\chi a)$}
+     
+\noindent for every $a\in\frak A$.   Because $Su$ and $h$ are both
+linear functionals on $L^{\infty}$, they must agree on $S(\frak A)$;
+because they are continuous and $S(\frak A)$ is dense in $L^{\infty}$
+(363C), $Su=h$.   As $h$ is arbitrary, $S$ is surjective.\ \Qed
+     
+\medskip
+     
+{\bf (c)} Using (b), we know that if either $T$ is bijective or
+$(\frak A,\bar\mu)$ is localizable, then $(\frak A,\bar\mu)$ is
+semi-finite.   Given this, if $T$
+is bijective, then it is a Riesz space isomorphism between $L^{\infty}$
+and $(L^1)^{\sim}$, which is Dedekind complete (356B);  so 363Mb tells
+us that $\frak A$ is Dedekind complete and $(\frak A,\bar\mu)$ is
+localizable.   In the other direction, if $(\frak A,\bar\mu)$ is
+localizable, then $L^{\infty}$ is Dedekind complete.   As $T$ is
+injective, $T[L^{\infty}]$ is, in itself, Dedekind complete;  being an
+order-dense Riesz subspace of $(L^1)^{\sim}$ (by (a) here) it must be
+solid (353K);  as it contains $T(\chi 1)$, which is the standard order
+unit of the $M$-space $(L^1)^{\sim}$, it is the whole of $(L^1)^{\sim}$,
+and $T$ is bijective.
+}%end of proof of 365M
+     
+\leader{365N}{Corollary} If $(\frak A,\bar\mu)$ is a localizable measure
+algebra, $L^{\infty}(\frak A)$ is a perfect Riesz space.
+     
+\proof{ By 365M(b)-(c), we can identify $L^{\infty}$ with
+$(L^1_{\bar\mu})^{\times}\cong(L^{\infty})^{\times\times}$.
+}%end of proof of 365N
+     
+\leader{365O}{Theorem} Let $(\frak A,\bar\mu)$ and $(\frak B,\bar\nu)$
+be measure algebras.   Let $\pi:\frak A^f\to\frak B^f$ be a
+measure-preserving ring homomorphism.
+     
+(a) There is a unique order-continuous norm-preserving Riesz
+homomorphism $T_{\pi}:L^1(\frak A,\bar\mu)\to L^1(\frak B,\bar\nu)$ such
+that
+$T_{\pi}(\chi a)=\chi(\pi a)$ whenever $a\in\frak A^f$.   We have
+$T_{\pi}(u\times\chi a)=T_{\pi}u\times\chi(\pi a)$ whenever
+$a\in\frak A^f$ and $u\in L^1(\frak A,\bar\mu)$.
+     
+(b) $\int T_{\pi}u=\int u$ and $\int_{\pi a}T_{\pi}u=\int_au$ for every
+$u\in L^1(\frak A,\bar\mu)$ and $a\in\frak A^f$.
+     
+(c) $\Bvalue{T_{\pi}u>\alpha}=\pi\Bvalue{u>\alpha}$ for every
+$u\in L^1(\frak A,\bar\mu)$ and $\alpha>0$.
+     
+(d) $T_{\pi}$ is surjective iff $\pi$ is.
+     
+(e) If $(\frak C,\bar\lambda)$ is another measure algebra and
+$\theta:\frak B^f\to\frak C^f$ another measure-preserving ring
+homomorphism, then $T_{\theta\pi}=T_{\theta}T_{\pi}:
+L^1(\frak A,\bar\mu)\to L^1(\frak C,\bar\lambda)$.
+     
+\proof{ Throughout the
+proof I will write $T$ for $T_{\pi}$ and $S^f$ for
+$S(\frak A)\cap L^1_{\bar\mu}\cong S(\frak A^f)$ (see 365F).
+     
+\medskip
+     
+{\bf (a)(i)} We have a map $\psi:\frak A^f\to L^1_{\bar\nu}$ defined by
+writing
+$\psi a=\chi(\pi a)$ for $a\in\frak A^f$.   Because
+     
+\Centerline{$\chi\pi(a\Bcup b)=\chi(\pi a\Bcup\pi b)
+=\chi\pi a+\chi\pi b,\quad\|\chi(\pi a)\|_1=\bar\nu(\pi a)=\bar\mu a$}
+     
+\noindent whenever $a$, $b\in\frak A^f$ and $a\Bcap b=0$, we get a
+(unique) corresponding bounded linear operator
+$T:L^1_{\bar\mu}\to L^1_{\bar\nu}$ such that $T\chi=\chi\pi$ on
+$\frak A^f$ (365I).   Because
+$\pi:\frak A^f\to\frak B^f$ and $\chi:\frak B^f\to L^1_{\bar\nu}$ are
+lattice homomorphisms, so is $\psi$, and $T$ is a Riesz homomorphism
+(365Kc).
+     
+\medskip
+     
+\quad{\bf (ii)}
+If $u\in S^f$, express it as $\sum_{i=0}^n\alpha_i\chi a_i$ where
+$a_0,\ldots,a_n$ are disjoint in $\frak A^f$.   Then
+$Tu=\sum_{i=0}^n\alpha_i\chi(\pi a_i)$ and $\pi a_0,\ldots,\pi a_n$ are
+disjoint in $\frak B^f$, so
+     
+\Centerline{$\|Tu\|_1
+=\sum_{i=0}^n|\alpha_i|\bar\nu(\pi a_i)
+=\sum_{i=0}^n|\alpha_i|\bar\mu a_i
+=\|u\|_1$.}
+     
+\noindent Because $S^f$ is dense in $L^1_{\bar\mu}$ and
+$u\mapsto\|u\|_1$ is continuous (in both $L^1_{\bar\mu}$ and
+$L^1_{\bar\nu}$), $\|Tu\|_1=\|u\|_1$ for every $u\in L^1_{\bar\mu}$,
+that is, $T$ is norm-preserving.   As noted in 365Ka, $T$ is
+order-continuous.
+     
+\medskip
+     
+\quad{\bf (iii)} If $a$, $b\in\frak A^f$ then
+     
+\Centerline{$T(\chi a\times\chi b)=T(\chi(a\Bcap b))=\chi\pi(a\Bcap b)
+=\chi(\pi a\Bcap\pi b)=\chi\pi a\times\chi\pi b
+=\chi\pi a\times T(\chi b)$.}
+     
+\noindent Because $T$ is linear and $\times$ is bilinear,
+$T(\chi a\times u)=\chi\pi a\times Tu$ for every $u\in S^f$.
+Because the maps
+$u\mapsto u\times\chi a:L^1_{\bar\mu}\to L^1_{\bar\mu}$,
+$T:L^1_{\bar\mu}\to L^1_{\bar\nu}$ and
+$v\mapsto v\times\chi\pi a:L^1_{\bar\nu}\to L^1_{\bar\nu}$ are all
+continuous,
+$Tu\times\chi\pi a=T(u\times\chi a)$ for every $u\in L^1_{\bar\mu}$.
+     
+\medskip
+     
+\quad{\bf (iv)} $T$ is unique because the formula $T(\chi a)=\chi\pi a$
+defines $T$ on the norm-dense and order-dense subspace $S^f$.
+     
+\medskip
+     
+{\bf (b)} Because $T$ is positive,
+     
+\Centerline{$\int Tu=\|Tu^+\|_1-\|Tu^-\|_1
+=\|u^+\|_1-\|u^-\|_1=\int u$.}
+     
+\noindent For $a\in\frak A^f$,
+     
+\Centerline{$\int_{\pi a}Tu=\int Tu\times\chi\pi a
+=\int T(u\times\chi a)=\int u\times\chi a=\int_au$.}
+     
+\medskip
+     
+{\bf (c)}  If $u\in S^f$, express it as $\sum_{i=0}^n\alpha_i\chi a_i$
+where $a_0,\ldots,a_n$ are disjoint;  then
+     
+\Centerline{$\pi\Bvalue{u>\alpha}
+=\pi(\sup_{i\in I}a_i)
+=\sup_{i\in I}\pi a_i
+=\Bvalue{Tu>\alpha}$}
+     
+\noindent where $I=\{i:i\le n,\,\alpha_i>\alpha\}$.   For
+$u\in(L^1_{\bar\mu})^+$,
+take a sequence $\sequencen{u_n}$ in $S^f$ with supremum $u$;  then
+$\sup_{n\in\Bbb N}Tu_n=Tu$, so
+     
+$$\eqalignno{\pi\Bvalue{u>\alpha}
+&=\pi(\sup_{n\in\Bbb N}\Bvalue{u_n>\alpha})\cr
+\noalign{\noindent (364L(a-ii);  $\Bvalue{u>\alpha}\in\frak A^f$ by 365A)}
+&=\sup_{n\in\Bbb N}\pi\Bvalue{u_n>\alpha}\cr
+\noalign{\noindent (because $\pi$ is order-continuous, see 361Ad)}
+&=\sup_{n\in\Bbb N}\Bvalue{Tu_n>\alpha}
+=\Bvalue{Tu>\alpha}\cr}$$
+     
+\noindent because $T$ is order-continuous.
+For general $u\in L^1_{\bar\mu}$,
+     
+\Centerline{$\pi\Bvalue{u>\alpha}=\pi\Bvalue{u^+>\alpha}
+=\Bvalue{T(u^+)>\alpha}
+=\Bvalue{(Tu)^+>\alpha}
+=\Bvalue{Tu>\alpha}$}
+     
+\noindent because $T$ is a Riesz homomorphism.
+     
+\medskip
+     
+{\bf (d)(i)} Suppose that $T$ is surjective and that $b\in\frak B^f$.
+Then there is a $u\in L^1_{\bar\mu}$ such that $Tu=\chi b$.   Now
+     
+\Centerline{$b=\Bvalue{Tu>\bover12}
+=\pi\Bvalue{u>\bover12}\in\pi[\frak A^f]$;}
+     
+\noindent as $b$ is arbitrary, $\pi$ is surjective.
+     
+\medskip
+     
+\quad{\bf (ii)} Suppose now that $\pi$ is surjective.   Then
+$T[L^1_{\bar\mu}]$ is a linear subspace of $L^1_{\bar\nu}$ containing
+$\chi b$ for every $b\in\frak B^f$, so includes $S(\frak B^f)$.   If
+$v\in(L^1_{\bar\nu})^+$ there is a sequence $\sequencen{v_n}$ in
+$S(\frak B^f)^+$ with supremum $v$.   For each $n$, choose $u_n$ such
+that
+$Tu_n=v_n$.   Setting $u'_n=\sup_{i\le n}u_i$, we get a
+non-decreasing sequence $\sequencen{u'_n}$ such that $v_n\le Tu'_n\le v$
+for every $n\in\Bbb N$.   So
+     
+\Centerline{$\sup_{n\in\Bbb N}\|u'_n\|_1=\sup_{n\in\Bbb
+N}\|Tu'_n\|_1\le\|v\|_1<\infty$}
+     
+\noindent and $u=\sup_{n\in\Bbb N}u'_n$ is defined in $L^1_{\bar\mu}$,
+with
+     
+\Centerline{$Tu=\sup_{n\in\Bbb N}Tu'_n=v$.}
+     
+\noindent Thus $(L^1_{\bar\nu})^+\subseteq T[L^1_{\bar\mu}]$;
+consequently $L^1_{\bar\nu}\subseteq T[L^1_{\bar\mu}]$ and $T$ is
+surjective.
+     
+\medskip
+     
+{\bf (e)} This is an immediate consequence of the `uniqueness'
+assertion in (i), because for any $a\in\frak A^f$
+     
+\Centerline{$T_{\theta}T_{\pi}(\chi a)
+=T_{\theta}\chi(\pi a)
+=\chi(\theta\pi a)$,}
+     
+\noindent so that $T_{\theta}T_{\pi}:L^1_{\bar\mu}\to L^1_{\bar\lambda}$
+is a bounded linear operator taking the right values at elements
+$\chi a$, and must therefore be equal to $T_{\theta\pi}$.
+}%end of proof of 365O
+     
+\leader{365P}{Theorem} Let $(\frak A,\bar\mu)$ and $(\frak B,\bar\nu)$
+be measure algebras, and $\pi:\frak A^f\to\frak B$ an order-continuous
+ring homomorphism.
+     
+(a) There is a unique positive linear operator
+$P_{\pi}:L^1(\frak B,\bar\nu)\to L^1(\frak A,\bar\mu)$ such that
+$\int_aP_{\pi}v=\int_{\pi a}v$ for every $v\in L^1(\frak B,\bar\nu)$ and
+$a\in\frak A^f$.
+     
+(b) $P_{\pi}$ is order-continuous and norm-continuous, and
+$\|P_{\pi}\|\le 1$.
+     
+(c) If $a\in\frak A^f$ and $v\in L^1(\frak B,\bar\nu)$ then
+$P_{\pi}(v\times\chi\pi a)=P_{\pi}v\times\chi a$.
+     
+(d) If $\pi[\frak A^f]$ is order-dense in $\frak B$ then $P_{\pi}$ is a
+norm-preserving
+Riesz homomorphism;  in particular, $P_{\pi}$ is injective.
+     
+(e) If $(\frak B,\bar\nu)$ is semi-finite and $\pi$ is
+injective, then $P_{\pi}$ is surjective, and there is for every
+$u\in L^1(\frak A,\bar\mu)$ a $v\in L^1(\frak B,\bar\nu)$ such that
+$P_{\pi}v=u$ and $\|v\|_1=\|u\|_1$.
+     
+(f) Suppose again that $(\frak B,\bar\nu)$ is semi-finite.   If
+$(\frak C,\bar\lambda)$
+is another measure algebra and $\theta:\frak B\to\frak C$ an
+order-continuous Boolean homomorphism, then
+$P_{\theta\pi}=P_{\pi}P_{\theta'}:
+L^1(\frak C,\bar\lambda)\to L^1(\frak A,\bar\mu)$, where I write
+$\theta'$ for the restriction of $\theta$ to $\frak B^f$.
+     
+\proof{ I write $P$ for $P_{\pi}$.
+     
+\medskip
+     
+{\bf (a)-(b)} For $v\in L^1_{\bar\nu}$, $a\in\frak A^f$ set
+$\nu_v(a)=\int_{\pi a}v$.   Then $\nu_v:\frak A^f\to\Bbb R$ is additive,
+bounded (by $\|v\|_1$) and if $A\subseteq\frak A^f$ is non-empty,
+downwards-directed and has infimum $0$, then
+     
+\Centerline{$\inf_{a\in A}|\nu_v(a)|
+\le\inf_{a\in A}\int|v|\times\chi\pi a
+=0$}
+     
+\noindent because $a\mapsto\int|v|\times\chi\pi a$ is a composition of
+order-continuous functions, therefore
+order-continuous.   So 365Eb tells us that there is a $Pv\in
+L^1_{\bar\mu}$ such that $\int_aPv=\nu_v(a)=\int_{\pi a}v$ for every
+$a\in\frak A^f$.   By 365D(d-ii), this formula defines $Pv$ uniquely.
+Consequently $P$ must be linear (since $Pv_1+Pv_2$, $\alpha Pv$ will
+always have the properties defining $P(v_1+v_2)$, $P(\alpha v)$).
+     
+If $v\ge 0$ in $L^1_{\bar\nu}$, then $\int_aPv=\int_{\pi a}v\ge 0$ for
+every $a\in\frak A^f$, so $Pv\ge 0$ (365D(d-i));  thus $P$ is positive.
+It must therefore be norm-continuous and order-continuous (355C, 355Ka).
+     
+Again supposing that $v\ge 0$, we have
+     
+\Centerline{$\|Pv\|_1=\int Pv=\sup_{a\in\frak A^f}\int_aPv
+=\sup_{a\in\frak A^f}\int_{\pi a}v\le\|v\|_1$}
+     
+\noindent (using 365D(d-iii)).   For general $v\in L^1_{\bar\nu}$,
+     
+\Centerline{$\|Pv\|_1=\||Pv|\|_1\le\|P|v|\|_1\le\|v\|_1$.}
+     
+\medskip
+     
+{\bf (c)} For any $c\in\frak A^f$,
+     
+\Centerline{$\int_cPv\times\chi a
+=\int_{c\Bcap a}Pv
+=\int_{\pi(c\Bcap a)}v
+=\int_{\pi c}v\times\chi\pi a
+=\int_cP(v\times\chi\pi a)$.}
+     
+\medskip
+     
+{\bf (d)} Now suppose that $\pi[\frak A^f]$ is order-dense.   Take any
+$v$, $v'\in L^1_{\bar\nu}$ such that $v\wedge v'=0$.   \Quer\ Suppose,
+if possible, that $u=Pv\wedge Pv'>0$.   Take $\alpha>0$ such that
+$a=\Bvalue{u>\alpha}$ is non-zero.   Since
+     
+\Centerline{$\int_{\pi a}v=\int_aPv\ge\int_au>0$,}
+     
+\noindent $b=\pi a\Bcap\Bvalue{v>0}\ne 0$.   Let $c\in\frak A^f$ be such
+that $0\ne \pi c\Bsubseteq b$;  then $\pi(a\Bcap c)=\pi c\ne 0$, so
+$a\Bcap c\ne 0$, and
+     
+\Centerline{$0<\int_{a\Bcap c}u\le\int_{a\Bcap c}Pv'
+\le\int_{\pi c}v'$.}
+     
+\noindent But $\pi c\Bsubseteq\Bvalue{v>0}$ and $v\wedge v'=0$ so
+$\int_{\pi c}v'=0$.\ \Bang
+     
+So $Pv\wedge Pv'=0$.   As $v$, $v'$ are arbitrary, $P$ is a Riesz
+homomorphism (352G).
+     
+Next, if $v\ge 0$ in $L^1_{\bar\nu}$,
+     
+\Centerline{$\int Pv=\sup_{a\in\frak A^f}\int_aPv=\sup_{a\in\frak
+A^f}\int_{\pi a}v=\int v$}
+     
+\noindent because $\pi[\frak A^f]$ is upwards-directed and has supremum
+$1$ in $\frak B$.   So, for general $v\in L^1_{\bar\nu}$,
+     
+\Centerline{$\|Pv\|_1=\int|Pv|=\int P|v|=\int|v|=\|v\|_1$,}
+     
+\noindent and $P$ is norm-preserving.
+     
+\medskip
+     
+{\bf (e)} Next suppose that $(\frak B,\bar\nu)$ is semi-finite and that
+$\pi$ is injective.
+     
+\medskip
+     
+\quad{\bf (i)} If $u>0$ in $L^1_{\bar\mu}$, there is a $v>0$ in
+$L^1_{\bar\nu}$ such that $Pv\le u$ and $\int Pv\ge\int v$.   \Prf\ Let
+$\delta>0$ be such that
+$a=\Bvalue{u>\delta}\ne 0$.   Then $\pi a\ne 0$.   Because $(\frak
+B,\bar\nu)$ is semi-finite, there is a non-zero $b\in\frak B^f$ such
+that $b\Bsubseteq \pi a$.   Set $u_1=P(\chi b)$.   Then $u_1\ge 0$,
+$\int_au_1=\bar\nu b>0$ and
+     
+\Centerline{$\int_{1\Bsetminus a}u_1
+=\sup_{c\in\frak A^f}\int_{c\Bsetminus a}u_1
+=\sup_{c\in\frak A^f}\int_{\pi c\Bsetminus\pi a}\chi b
+=0$.}
+     
+\noindent So $u_1\times\chi(1\Bsetminus a)=0$ and
+$0\ne\Bvalue{u_1>0}\Bsubseteq a$.
+Let $\gamma>0$ be such that $\Bvalue{u_1>\gamma}\ne\Bvalue{u_1>0}$, and
+set $a_1=a\Bsetminus\Bvalue{u_1>\gamma}$,
+$v=\Bover{\delta}{\gamma}\chi(b\Bcap\pi a_1)$.   Then
+     
+\Centerline{$Pv
+=\Bover{\delta}{\gamma} P(\chi b\times\chi(\pi a_1))
+=\Bover{\delta}{\gamma} P(\chi b)\times\chi a_1
+=\Bover{\delta}{\gamma}u_1\times\chi a_1
+\le\delta\chi a\le u$,}
+     
+\noindent because
+     
+\Centerline{$\Bvalue{u_1\times\chi a_1
+>\gamma}\Bsubseteq\Bvalue{u_1>\gamma}\Bcap a_1=0$}
+     
+\noindent so
+     
+\Centerline{$u_1\times\chi a_1\le\gamma\chi\Bvalue{u_1>0}
+\le\gamma\chi a$.}
+     
+\noindent Also $a_1\Bcap\Bvalue{u_1>0}\ne 0$, so $Pv$ and $v$ are
+non-zero;  and
+     
+\Centerline{$\int Pv\ge\int_{a_1}Pv=\int_{\pi a_1}v=\int v$.
+\Qed}
+     
+\medskip
+     
+\quad{\bf (ii)} Now take any $u\ge 0$ in $L^1_{\bar\mu}$, and set
+$B=\{v:v\in L^1_{\bar\nu},\,v\ge 0,\,Pv\le u,\,\int v\le\int Pv\}$.
+$B$ is not empty because it contains $0$.
+If $C\subseteq B$ is non-empty and upwards-directed, then
+$\sup_{v\in C}\int v\le\int u$ is finite, so $C$ has a supremum in
+$L^1_{\bar\nu}$ (365Df).   Because $P$ is order-continuous,
+$P(\sup C)=\sup P[C]\le u$;  also
+     
+\Centerline{$\int\sup C=\sup_{v\in C}\int v
+\le\sup_{v\in C}\int Pv\le\int P(\sup C)$.}
+     
+\noindent Thus $\sup C\in B$.   As $C$ is arbitrary, $B$ satisfies the
+conditions of Zorn's Lemma, and has a maximal element $v_0$ say.
+     
+\Quer\ Suppose, if possible, that $Pv_0\ne u$.   By ($\alpha$),
+there is a $v_1>0$ such that $Pv_1\le u-Pv_0$, $\int v_1\le\int Pv_1$.
+In this case,
+$v_0<v_0+v_1\in B$, which is impossible.\ \Bang\ Thus
+$Pv_0=u$;  also
+     
+\Centerline{$\|v_0\|_1=\int v_0\le\int Pv_0=\|Pv_0\|_1$.}
+     
+\medskip
+     
+\quad{\bf (iii)} Finally, take any $u\in L^1_{\bar\mu}$.   By (ii),
+there are non-negative $v_1$, $v_2\in L^1_{\bar\nu}$ such that
+$Pv_1=u^+$,
+$Pv_2=u^-$, $\|v_1\|_1\le\|u^+\|_1$ and $\|v_2\|_1\le\|u^-\|_1$.
+Setting $v=v_1-v_2$, we have $Pv=u$.   Also we must have
+     
+\Centerline{$\|v\|_1\le\|v_1\|_1+\|v_2\|_1\le\|u^+\|_1+\|u^-\|_1
+=\|u\|_1\le\|P\|\|v\|_1=\|v\|_1$,}
+     
+\noindent so $\|v\|_1=\|u\|_1$, as required.
+     
+\medskip
+     
+{\bf (f)} As usual, this is a consequence of the
+uniqueness of $P$.   However (because I do not assume that
+$\pi[\frak A^f]\subseteq\frak B^f$) there is an extra refinement:  we
+need to know
+that $\int_bP_{\theta'}w=\int_{\theta b}w$ for every $b\in\frak B$ and
+$w\in L^1_{\bar\lambda}$.   \Prf\ Because $\theta$ is order-continuous
+and $(\frak B,\bar\nu)$ is semi-finite,
+$\theta b=\sup\{\theta b':b'\in\frak B^f,\,b'\Bsubseteq b\}$, so if
+$w\ge 0$ then
+     
+\Centerline{$\int_{\theta b}w
+=\sup_{b'\in\frak B^f,b'\Bsubseteq b}\int_{\theta b'}w
+=\sup_{b'\in\frak B^f,b'\Bsubseteq b}\int_{b'}P_{\theta'}w
+=\int_bP_{\theta'}w$.}
+     
+\noindent Expressing $w$ as $w^+-w^-$, we see that the same is true for
+every $w\in L^1_{\bar\nu}$.\ \Qed
+     
+Now we can say that $PP_{\theta'}$ is a positive linear operator
+from $L^1_{\bar\lambda}$ to $L^1_{\bar\mu}$ such that
+     
+\Centerline{$\int_aPP_{\theta'}w
+=\int_{\pi a}P_{\theta'}w
+=\int_{\theta\pi a}w
+=\int_aP_{\theta\pi}w$}
+     
+\noindent whenever $a\in\frak A^f$ and $w\in L^1_{\bar\lambda}$, and
+must be equal to $P_{\theta\pi}$.
+}%end of proof of 365P
+     
+\leader{365Q}{Proposition} Let $(\frak A,\bar\mu)$ and
+$(\frak B,\bar\mu)$ be measure algebras and $\pi:\frak A^f\to\frak B^f$
+a measure-preserving ring homomorphism.
+     
+(a) In the language of 365O-365P above,
+$P_{\pi}T_{\pi}$ is the identity operator on $L^1(\frak A,\bar\mu)$.
+     
+(b) If $\pi$ is surjective\cmmnt{ (so that it is an isomorphism
+between $\frak A^f$ and $\frak B^f$)} then
+$P_{\pi}=T_{\pi}^{-1}=T_{\pi^{-1}}$ and
+$T_{\pi}=P_{\pi}^{-1}=P_{\pi^{-1}}$.
+     
+\proof{{\bf (a)} If $u\in L^1_{\bar\mu}$, $a\in\frak A^f$ then
+     
+\Centerline{$\int_aP_{\pi}T_{\pi}u=\int_{\pi a}T_{\pi}u=\int_au$.}
+     
+\noindent So $u=P_{\pi}T_{\pi}u$, by 365D(d-ii).
+     
+\medskip
+     
+{\bf (b)} From 365Od, we know that $T_{\pi}$ is
+surjective, while $P_{\pi}T_{\pi}$ is the identity, so that
+$P_{\pi}=T_{\pi}^{-1}$, $T_{\pi}=P_{\pi}^{-1}$.
+As for $T_{\pi^{-1}}$, 365Oe tells us that
+$T_{\pi^{-1}}=T_{\pi}^{-1}$;  so
+     
+\Centerline{$P_{\pi^{-1}}=T_{\pi^{-1}}^{-1}=T_{\pi}$.}
+     
+}%end of proof of 365Q
+     
+\leader{365R}{Conditional expectations}\cmmnt{ It is a nearly
+universal rule that any investigation of $L^1$ spaces must include a
+look at conditional expectations.   In the present context, they take
+the following form.
+     
+\medskip
+     
+}{\bf (a)} Let $(\frak A,\bar\mu)$ be a probability algebra
+and $\frak B$ a closed subalgebra;  write $\bar\nu$ for the restriction
+$\bar\mu\restrp\frak B$.   The identity map from $\frak B$ to $\frak A$
+induces operators $T:L^1(\frak B,\bar\nu)\to L^1(\frak A,\bar\mu)$ and
+$P:L^1(\frak A,\bar\mu)\to L^1(\frak B,\bar\nu)$.   If we take
+$L^0(\frak A)$ to be
+defined as the set of functions from $\Bbb R$ to $\frak A$ described in
+364Aa, then $L^0(\frak B)$
+becomes a subset of $L^0(\frak A)$ in the literal sense, and $T$ is
+actually the identity operator associated with the subset
+$L^1(\frak B,\bar\nu)\subseteq L^1(\frak A,\bar\mu)$;
+$L^1(\frak B,\bar\nu)$ is a
+norm-closed and order-closed Riesz subspace of $L^1(\frak A,\bar\mu)$.
+$P$ is a positive linear operator, while $PT$ is the identity, so $P$ is
+a projection from $L^1(\frak A,\bar\mu)$ onto $L^1(\frak B,\bar\nu)$.
+$P$ is defined by the familiar formula
+     
+\Centerline{$\int_bPu=\int_bu$ for every
+$u\in L^1(\frak A,\bar\mu)$, $b\in\frak B$,}
+     
+\noindent so is the conditional expectation operator in the sense of
+242J.   
+Observe that the formula in 365A now tells us that
+$L^1(\frak B,\bar\nu)$ is just $L^1(\frak A,\bar\mu)\cap L^0(\frak B)$.
+Translating 233K into this language, we see that
+$P(u\times v)=Pu\times v$ whenever $u\in L^1(\frak A,\bar\mu)$,
+$v\in L^0(\frak B)$ and $u\times v\in L^1(\frak A,\bar\mu)$\dvAnew{2012}.
+
+     
+\spheader 365Rb\cmmnt{ Just as in 233I-233J and 242K, we have a version of
+Jensen's inequality.}  Let $h:\Bbb R\to\Bbb R$ be a convex
+function and $\bar h:L^0(\frak A)\to L^0(\frak A)$ the corresponding map
+(364H).   If
+$u\in L^1(\frak A,\bar\mu)$, then $h(\int u)\le\int\bar h(u)$;  and if
+$\bar h(u)\in L^1(\frak A,\bar\mu)$, then $\bar h(Pu)\le P(\bar h(u))$.
+\prooflet{\Prf\ I repeat the proof of 233I-233J. For each $q\in\Bbb Q$,
+take $\beta_q\in\Bbb R$ such that $h(t)\ge h_q(t)=h(q)+\beta_q(t-q)$ for
+every $t\in\Bbb R$, so that
+$h(t)=\sup_{q\in\Bbb Q}h_q(t)$ for every $t\in\Bbb R$, and
+$\bar h(u)=\sup_{q\in\Bbb Q}\bar h_q(u)$ for every
+$u\in L^0(\frak A)$.   (This is because
+     
+$$\eqalign{\Bvalue{\bar h(u)>\alpha}
+&=\Bvalue{u\in h^{-1}[\,\ooint{\alpha,\infty}\,]}
+=\Bvalue{u\in\bigcup_{q\in\Bbb Q}h_q^{-1}[\,\ooint{\alpha,\infty}\,]}\cr
+&=\sup_{q\in\Bbb Q}\Bvalue{u\in h_q^{-1}[\,\ooint{\alpha,\infty}\,]}
+=\sup_{q\in\Bbb Q}\Bvalue{\bar h_q(u)>\alpha}\cr}$$
+     
+\noindent for every $\alpha\in\Bbb R$.)   But setting $e=\chi 1$, we see
+that $\bar h_q(u)=h(q)e+\beta_q(u-qe)$ for every $u\in L^0(\frak A)$, so
+that
+     
+\Centerline{$\int\bar h_q(u)=h(q)+\beta_q(\int u-q)=h_q(\int u)$,}
+     
+\Centerline{$P(\bar h_q(u))=h(q)e+\beta_q(Pu-qe)=\bar h_q(Pu)$}
+     
+\noindent because $\int e=1$ and $Pe=e$.   Taking the
+supremum over $q$, we get
+     
+\Centerline{$h(\int u)
+=\sup_{q\in\Bbb Q}h_q(\int u)
+=\sup_{q\in\Bbb Q}\int\bar h_q(u)
+\le\int\bar h(u)$,}
+     
+\noindent and if $\bar h(u)\in L^1_{\bar\mu}$ then
+     
+\Centerline{$\bar h(Pu)
+=\sup_{q\in\Bbb Q}\bar h_q(Pu)
+=\sup_{q\in\Bbb Q}P(\bar h_q(u))
+\le P(\bar h(u))$.   \Qed}}%end of prooflet
+     
+\cmmnt{Of course the result in this form can also be deduced from
+233I-233J if we represent $(\frak A,\bar\mu)$ as the measure algebra of
+a probability space $(X,\Sigma,\mu)$ and set
+$\Tau=\{E:E\in\Sigma,\,E^{\ssbullet}\in\frak B\}$.}
+     
+\spheader 365Rc\cmmnt{ I note here a fact which is occasionally 
+useful.}   If
+$u\in L^1(\frak A,\bar\mu)$ is non-negative, then
+$\Bvalue{Pu>0}=\upr(\Bvalue{u>0},\frak B)$, the upper envelope of
+$\Bvalue{u>0}$ in $\frak B$ as defined in 313S.   \prooflet{\Prf\ We
+have only to observe that, for $b\in\frak B$,
+     
+$$\eqalign{b\Bcap\Bvalue{Pu>0}=0
+&\iff\chi b\times Pu=0
+\iff\int_bPu=0\cr
+&\iff\int_bu=0
+\iff b\Bcap\Bvalue{u>0}=0.\cr}$$
+     
+\noindent Taking complements, $b\Bsupseteq\Bvalue{Pu>0}$ iff
+$b\Bsupseteq\Bvalue{u>0}$.\ \Qed}
+     
+\spheader 365Rd\dvAnew{2012} Suppose now that $(\frak C,\bar\lambda)$ is
+another probability algebra and $\pi:\frak A\to\frak C$ is a
+measure-preserving Boolean homomorphism.   Then $\frak D=\pi[\frak B]$
+is a closed subalgebra of $\frak C$\cmmnt{ (314F(a-i))}.   Let 
+$Q:L^1(\frak C,\bar\lambda)\to L^1(\frak D,\bar\lambda\restrp\frak D)
+\subseteq L^1(\frak C,\bar\lambda)$ 
+be the conditional expectation associated with $\frak D$, and
+$T_{\pi}:L^1(\frak A,\bar\mu)\to L^1(\frak C,\bar\lambda)$ 
+the norm-preserving Riesz homomorphism defined by $\pi$.   
+Then $T_{\pi}P=QT_{\pi}$.\prooflet{ \Prf\ Take $u\in L^1(\frak A,\bar\mu)$.
+Then 
+
+\Centerline{$\Bvalue{T_{\pi}Pu>\alpha}
+=\pi\Bvalue{Pu>\alpha}\in\pi[\frak B]=\frak D$}
+
+\noindent for every $\alpha\in\Bbb R$, so $T_{\pi}Pu\in L^0(\frak D)$.
+If $d\in\frak D$, set $b=\pi^{-1}d\in\frak B$;  then
+
+$$\eqalign{\int_dT_{\pi}Pu
+&=\int T_{\pi}Pu\times\chi d
+=\int T_{\pi}Pu\times T_{\pi}\chi b
+=\int T_{\pi}(Pu\times\chi b)\cr
+&=\int Pu\times\chi b
+=\int_bPu
+=\int_bu
+=\int u\times\chi b\cr
+&=\int T_{\pi}(u\times\chi b)
+=\int T_{\pi}u\times T_{\pi}\chi b
+=\int T_{\pi}u\times\chi d
+=\int_d T_{\pi}u.\cr}$$
+
+\noindent As $d$ is arbitrary, $T_{\pi}Pu$ satisfies the defining formula
+for $QT_{\pi}u$ and $T_{\pi}Pu=QT_{\pi}u$;  as $u$ is arbitrary,
+$T_{\pi}P=QT_{\pi}$.\ \Qed}
+     
+\leader{365S}{Recovering the algebra:  Proposition} (a) Let
+$(\frak A,\bar\mu)$ be a localizable measure algebra.   Then $\frak A$
+is isomorphic to the band algebra of $L^1(\frak A,\bar\mu)$.
+     
+(b) Let $\frak A$ be a Dedekind $\sigma$-complete Boolean algebra, and
+$\bar\mu$, $\bar\nu$ two measures on $\frak A$ such that
+$(\frak A,\bar\mu)$ and $(\frak A,\bar\nu)$ are both semi-finite measure
+algebras.   Then $L^1(\frak A,\bar\mu)$ is isomorphic, as Banach
+lattice, to $L^1(\frak A,\bar\nu)$.
+     
+\proof{{\bf (a)} Because $(\frak A,\bar\mu)$ is semi-finite,
+$L^1_{\bar\mu}$ is order-dense in $L^0=L^0(\frak A)$ (365G).
+Consequently, $L^1_{\bar\mu}$ and
+$L^0$ have isomorphic band algebras (353D).   But the band algebra of
+$L^0$ is just its algebra of projection bands (because
+$\frak A$ and therefore $L^0$ are Dedekind complete, see 364M and 353I),
+which is isomorphic to $\frak A$ (364O).
+     
+\medskip
+     
+{\bf (b)} Let $\pi:\frak A\to\frak A$ be the identity map.   Regarding
+$\pi$ as an order-continuous Boolean homomorphism from
+$\frak A^f_{\bar\mu}=\{a:\bar\mu a<\infty\}$ to $(\frak A,\bar\nu)$, we
+have an associated positive linear
+operator $P=P_{\pi}:L^1_{\bar\nu}\to L^1_{\bar\mu}$;
+similarly, we have
+$Q=P_{\pi^{-1}}:L^1_{\bar\mu}\to L^1_{\bar\nu}$, and both
+$P$ and $Q$ have
+norm at most $1$ (365Pb).   Now 365Pf assures us that $QP$ is the
+identity operator on $L^1_{\bar\nu}$ and $PQ$ is the identity
+operator on $L^1_{\bar\mu}$.   So $P$ and $Q$ are the two halves
+of a Banach lattice isomorphism between $L^1_{\bar\mu}$ and
+$L^1_{\bar\nu}$.
+}%end of proof of 365S
+     
+\leader{365T}{}\cmmnt{ Having opened the question of varying measures
+on a single Boolean algebra, this seems an appropriate moment
+for a general description of how they interact.
+     
+\medskip
+     
+\noindent}{\bf Proposition} Let $\frak A$ be a Dedekind complete Boolean
+algebra, and $\bar\mu:\frak A\to[0,\infty]$,
+$\bar\nu:\frak A\to[0,\infty]$ two functions such that
+$(\frak A,\bar\mu)$ and 
+$(\frak A,\bar\nu)$ are both semi-finite\cmmnt{ (therefore localizable)} measure algebras.
+     
+(a) There is a
+unique $u\in L^0=L^0(\frak A)$ such that\cmmnt{ (if we allow $\infty$
+as a value of the integral)} $\int_au\,d\bar\mu=\bar\nu a$
+for every $a\in\frak A$.
+     
+(b)\dvArevised{2012} For $v\in L^0(\frak A)$, 
+$\int v\,d\bar\nu=\int u\times v\,d\bar\mu$ if either is defined in
+$[-\infty,\infty]$.
+     
+(c) $u$ is strictly positive\cmmnt{ (i.e.,
+$\Bvalue{u>0}=1$)} and, writing $\bover{1}{u}$ for the multiplicative
+inverse of $u$, $\int_a\bover{1}{u}d\bar\nu=\bar\mu a$ for every
+$a\in\frak A$.
+     
+\proof{{\bf (a)} Because $(\frak A,\bar\nu)$ is semi-finite, there is a
+partition
+of unity $D\subseteq \frak A$ such that $\bar\nu d<\infty$ for every
+$d\in D$.   For each $d\in D$, the functional
+$a\mapsto\bar\nu(a\Bcap d):\frak A\to\Bbb R$ is completely additive, so
+there is a $u_d\in L^1_{\bar\mu}$ such that
+$\int_au_dd\bar\mu=\bar\nu(a\Bcap d)$ for every $a\in\frak A$.   Because
+$\int_au_dd\bar\mu\ge 0$ for every $a$, $u_d\ge 0$.   Because
+$\int_{1\Bsetminus d}u_d=0$, $\Bvalue{u_d>0}\Bsubseteq d$.   Now
+$u=\sup_{d\in D}u_d$ is defined in $L^0$.   \Prf\ (This is a special
+case of 368K below.)
+For $n\in\Bbb N$, set $c_n=\sup_{d\in D}\Bvalue{u_d>n}$.   If $d$,
+$d'\in D$ are distinct, then $d\Bcap\Bvalue{u_{d'}>n}=0$, so
+$d\Bcap c_n=\Bvalue{u_d>n}$.   Set $c=\inf_{n\in\Bbb N}c_n$.   If
+$d\in D$, then
+     
+\Centerline{$d\Bcap c
+=\inf_{n\in\Bbb N}d\Bcap c_n
+=\inf_{n\in\Bbb N}\Bvalue{u_d>n}
+=0$.}
+     
+\noindent But $c\Bsubseteq c_0\Bsubseteq\sup D$, so $c=0$.   By 364L(a-i),
+$\{u_d:d\in D\}$ is bounded above in $L^0$, so has a supremum, because
+$L^0$ is Dedekind complete, by 364M.\ \Qed
+     
+For finite
+$I\subseteq D$ set $\tilde u_I=\sum_{d\in I}u_d=\sup_{d\in I}u_d$
+(because $u_d\wedge u_c=0$ for distinct $c$, $d\in D$).   Then
+$u=\sup\{\tilde u_I:I\subseteq D,\,I$ is
+finite$\}$.
+So, for any $a\in\frak A$,
+     
+$$\eqalignno{\int_au\,d\bar\mu
+&=\sup_{I\subseteq D\text{ is finite}}\int_a\tilde u_Id\bar\mu\cr
+\noalign{\noindent (365Dh)}
+&=\sup_{I\subseteq D\text{ is finite}}\sum_{d\in
+I}\int_au_dd\bar\mu
+=\sup_{I\subseteq D\text{ is finite}}\sum_{d\in I}\bar\nu(a\Bcap
+d)
+=\bar\nu a.\cr}$$
+     
+Note that if $a\in\frak A$ is non-zero, then $\bar\nu a>0$, so
+$a\Bcap\Bvalue{u>0}\ne 0$;  consequently $\Bvalue{u>0}=1$.
+     
+To see that $u$ is unique, observe that if $u'$ has the same property
+then for any $d\in D$
+     
+\Centerline{$\int_au\times\chi d\,d\bar\mu
+=\bar\nu(a\Bcap d)=\int_au'\times\chi d\,d\bar\mu$}
+     
+\noindent for every $a\in\frak A$, so that
+$u\times\chi d=u'\times\chi d$;  because $\sup D=1$ in $\frak A$, $u$
+must be equal to $u'$.
+     
+\medskip
+     
+{\bf (b)} Use 365Hb, with $\pi$ and $T$ the identity maps.
+     
+\medskip
+     
+{\bf (c)} In the same way, there is a $w\in L^0$ such that
+$\int_aw\,d\bar\nu=\bar\mu a$ for every $a\in\frak A$.   To relate $u$
+and $w$, observe that applying 365Hb we get
+     
+\Centerline{$\int w\times\chi a\times u\,d\bar\mu
+=\int w\times\chi a\,d\bar\nu$}
+     
+\noindent for every $a\in\frak A$, that is, $\int_aw\times
+u\,d\bar\mu=\bar\mu a$ for every $a$.   But from this we see that
+$w\times u\times\chi b=\chi b$ at least when $\bar\mu b<\infty$, so that
+$w\times u=\chi 1$ is the multiplicative identity of $L^0$, and
+$w=\bover1{u}$.
+}%end of proof of 365T
+
+\leader{365U}{Uniform \dvrocolon{integrability}}\dvAnew{2009}\cmmnt{ 
+Continuing the
+programme in 365C, we can transcribe the ideas of  \S\S246, 247, 354 and
+356 into the new context.   
+
+\medskip
+
+\noindent}{\bf Theorem} Let $(\frak A,\bar\mu)$ be a measure algebra.
+Set $L^1=L^1(\frak A,\bar\mu)$.
+
+(a) For a non-empty subset $A$ of $L^1$, the following are equiveridical:
+
+\quad(i) $A$ is uniformly integrable in the sense of 354P;
+
+\quad(ii) for every $\epsilon>0$ there are an $a\in\frak A^f$ and an 
+$M\ge 0$ such that $\int(u-M\chi a)^+\le\epsilon$ for every $u\in\frak A$;
+
+\quad(iii)($\alpha$) 
+$\sup_{u\in A}|\int_au|$ is finite for every atom $a\in\frak A$,
+
+\qquad($\beta$) for every $\epsilon>0$ there are $c\in\frak A^f$ and
+$\delta>0$ such that $|\int_au|\le\epsilon$ whenever $u\in A$,
+$a\in\frak A$ and $\bar\mu(a\Bcap c)\le\delta$;
+
+\quad(iv)($\alpha$) 
+$\sup_{u\in A}|\int_au|$ is finite for every atom $a\in\frak A$,
+
+\qquad($\beta$) $\lim_{n\to\infty}\sup_{u\in A}|\int_{a_n}u|=0$ for
+every disjoint sequence $\sequencen{a_n}$ in $\frak A$;
+
+\quad(v) $A$ is relatively weakly compact in $L^1$.
+
+(b) If $(\frak A,\bar\mu)$ is a probability algebra and $A\subseteq L^1$  
+is uniformly integrable, then there is a solid convex norm-closed uniformly
+integrable set $C\supseteq A$ such that $P[C]\subseteq C$ whenever
+$P:L^1\to L^1$ is the conditional expectation operator associated with a
+closed subalgebra of $\frak A$.
+
+\proof{ 354Q, 354R, 356Q and 246D, with a little help from 246C and 246G.
+}%end of proof of 365U
+     
+\exercises{\leader{365X}{Basic exercises (a)}
+%\spheader 365Xa
+Let $(\frak A,\bar\mu)$ be a measure algebra, and $u\in L^1_{\bar\mu}$.
+Show that
+     
+\Centerline{$\int
+u=\int_0^{\infty}\bar\mu\Bvalue{u>\alpha}\,d\alpha
+  -\int_{-\infty}^0\bar\mu(1\Bsetminus\Bvalue{u>\alpha})\,d\alpha$.}
+%365D
+     
+\sqheader 365Xb Let $(\frak A,\bar\mu)$ be any measure algebra, and
+$u\in L^1_{\bar\mu}$.   (i) Show that
+$\|u\|_1\le 2\sup_{a\in\frak A^f}|\int_au|$.   \Hint{246F.}   (ii) Show
+that for any $\epsilon>0$ there is an $a\in\frak A^f$ such that
+$|\int u-\int_bu|\le\epsilon$ whenever $a\Bsubseteq b\in\frak A$.
+%365D
+     
+\sqheader 365Xc Let $U$ be an $L$-space.   If $\sequencen{u_n}$ is any
+norm-bounded sequence in $U^+$, show that
+
+\Centerline{$\liminf_{n\to\infty}u_n
+=\sup_{n\in\Bbb N}\inf_{m\ge n}u_m$}
+%\Centerline needed for Lulu version
+
+\noindent is defined in $U$, and that
+$\int\liminf_{n\to\infty}u_n\le\liminf_{n\to\infty}\int u_n$.
+%365D
+     
+\spheader 365Xd Let $U$ be an $L$-space.   Let $\Cal F$ be a filter on
+$U$ such that $\{u:u\ge 0,\,\|u\|\le k\}$ belongs to $\Cal F$ for some
+$k\in\Bbb N$.   Show that $u_0=\sup_{F\in\Cal F}\inf F$ is defined in
+$U$, and that $\int u_0\le\sup_{F\in\Cal F}\inf_{u\in F}\int u$.
+%365D
+     
+\spheader 365Xe Let $(\frak A,\bar\mu)$ be a measure algebra and
+$A\subseteq L^1_{\bar\mu}$ a non-empty set.   Show that $A$ is bounded
+above in $L^1_{\bar\mu}$ iff
+     
+\Centerline{$\sup\{\sum_{i=0}^n\int_{a_i}u_i:a_0,\ldots,a_n$ is a
+partition of unity in $\frak A$, $u_0,\ldots,u_n\in A\}$}
+     
+\noindent is finite, and that in this case the supremum is $\int\sup A$.
+\Hint{given $u_0,\ldots,u_n\in A$, set $b_{ij}=\Bvalue{u_i\ge u_j}$,
+$b_i=\sup_{j\ne i}b_{ij}$, $a_i=b_i\Bsetminus\sup_{j<i}b_j$, and show
+that $\int\sup_{i\le n}u_i=\sum_{i=0}^n\int_{a_i}u_i$.}
+%365D
+     
+\spheader 365Xf Let $(\frak A,\bar\mu)$ be any measure algebra and
+$\nu:\frak A^f\to\Bbb R$ a bounded additive functional.   Show that the
+following are equiveridical:  (i) there is a $u\in L^1_{\bar\mu}$ such
+that
+$\nu a=\int_au$ for every $a\in\frak A^f$;  (ii) for every $\epsilon>0$
+there is a $\delta>0$ such that $|\nu a|\le\epsilon$ whenever $\bar\mu
+a\le\delta$;  (iii) for every $\epsilon>0$, $c\in\frak A^f$ there is a
+$\delta>0$ such that $\nu a\le\epsilon$ whenever $a\Bsubseteq c$ and
+$\bar\mu a\le\delta$;  (iv) for every $\epsilon>0$ there are $c\in\frak
+A^f$, $\delta>0$ such that $|\nu a|\le\epsilon$ whenever $a\in\frak A^f$
+and $\bar\mu(a\Bcap c)\le\delta$;  (v) $\lim_{n\to\infty}\nu a_n=0$
+whenever $\sequencen{a_n}$ is a
+non-increasing sequence in $\frak A^f$ with infimum $0$.
+%365E
+     
+\spheader 365Xg Let $(\frak A,\bar\mu)$ and $(\frak B,\bar\nu)$ be
+measure algebras, and $\pi:\frak A\to\frak B$ a sequentially
+order-continuous Boolean homomorphism.   Let
+$T:L^0(\frak A)\to L^0(\frak B)$ be the Riesz homomorphism associated
+with $\pi$ (364P).
+Suppose that $w\ge 0$ in $L^0(\frak B)$ is such that
+$\int_{\pi a}w\,d\bar\nu=\bar\mu a$ whenever $a\in\frak A$.   Show that
+for any $u\in L^0(\frak A,\bar\mu)$,
+$\int Tu\times w\,d\bar\nu=\int u\,d\bar\mu$ whenever either is defined
+in $[-\infty,\infty]$.
+%365H
+     
+\sqheader 365Xh Let $(\frak A,\bar\mu)$ be a measure algebra and
+$a\in\frak A$;  write $\frak A_a$ for the principal ideal it generates.
+Show that if $\pi$ is the identity embedding of $\frak A^f\cap\frak A_a$
+into $\frak A^f$, then $T_{\pi}$, as defined in 365O, identifies
+$L^1(\frak A_a,\bar\mu\restrp\frak A_a)$ with a band in
+$L^1_{\bar\mu}$.
+%365O
+     
+\sqheader 365Xi Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be measure
+spaces, with measure algebras $(\frak A,\bar\mu)$ and
+$(\frak B,\bar\nu)$.   Let $\phi:X\to Y$ be an \imp\ function and
+$\pi:\frak B\to\frak A$ the corresponding
+measure-preserving homomorphism (324M).   Show that
+$T_{\pi}:L^1_{\bar\nu}\to L^1_{\bar\mu}$ (365O) corresponds to the map
+$g^{\ssbullet}\mapsto(g\phi)^{\ssbullet}:L^1(\nu)\to L^1(\mu)$ of
+242Xd.
+%365O
+     
+\spheader 365Xj Let $(\frak A,\bar\mu)$ and $(\frak B,\bar\nu)$
+be measure algebras.   Let $\pi:\frak A^f\to\frak B^f$ be a
+ring homomorphism such that, for some $\gamma>0$, $\bar\nu(\pi
+a)\le\gamma\bar\mu a$ for every $a\in\frak A^f$.  (i) Show that there is
+a unique order-continuous Riesz
+homomorphism $T:L^1_{\bar\mu}\to L^1_{\bar\nu}$ such that
+$T(\chi a)=\chi(\pi a)$ whenever $a\in\frak A^f$, and that
+$\|T\|\le\gamma$.   (ii) Show that
+$\Bvalue{Tu>\alpha}=\pi\Bvalue{u>\alpha}$ for every
+$u\in L^1_{\bar\mu}$, $\alpha>0$.
+(iii) Show that $T$ is surjective iff $\pi$ is, injective iff $\pi$ is.
+(iv) Show that $T$ is norm-preserving iff $\bar\nu(\pi a)=\bar\mu a$ for
+every $a\in\frak A^f$.
+%365O
+     
+\spheader 365Xk Let $(\frak A,\bar\mu)$ and $(\frak B,\bar\nu)$ be
+measure algebras, and $\pi:\frak A\to\frak B$ a measure-preserving
+Boolean homomorphism.   Let $T:L^1_{\bar\mu}\to L^1_{\bar\nu}$ and
+$P:L^1_{\bar\nu}\to L^1_{\bar\mu}$ be the operators corresponding to
+$\pi\restrp\frak A^f$, as described in 365O-365P, and
+$\tilde T:L^{\infty}(\frak A)\to L^{\infty}(\frak B)$ the operator
+corresponding to $\pi$, as described in 363F.   (i) Show that
+$T(u\times v)=Tu\times \tilde Tv$ for every $u\in L^1_{\bar\mu}$,
+$v\in L^{\infty}(\frak A)$.
+(ii) Show that if $\pi$ is order-continuous, then $\int Pv\times u=\int
+v\times\tilde Tu$ for every $u\in L^{\infty}(\frak A)$, $v\in
+L^1_{\bar\nu}$.
+%365O
+     
+\sqheader 365Xl Let $(X,\Sigma,\mu)$ be a probability space, with
+measure algebra $(\frak A,\bar\mu)$, and let $\Tau$ be a
+$\sigma$-subalgebra of $\Sigma$.   Set $\nu=\mu\restrp\Tau$, $\frak
+B=\{F^{\ssbullet}:F\in\Tau\}\subseteq\frak A$,
+$\bar\nu=\bar\mu\restrp\frak B$, so that
+$(\frak B,\bar\nu)$ is a measure algebra.   Let $\pi:\frak B\to\frak A$
+be the identity homomorphism.    Show that
+$T_{\pi}:L^1_{\bar\nu}\to L^1_{\bar\mu}$ (365O) corresponds to the
+canonical
+embedding of $L^1(\nu)$ in $L^1(\mu)$ described in 242Jb, while
+$P_{\pi}:L^1_{\bar\mu}\to L^1_{\bar\nu}$ (365P)
+corresponds to the conditional expectation operator described in
+242Jd.
+%365P
+     
+\spheader 365Xm Let $(\frak A,\bar\mu)$ be a semi-finite measure
+algebra, and $(\widehat{\frak A},\hat\mu)$ its localization (322Q).
+Show that the natural embedding of $\frak A$ in $\widehat{\frak A}$
+induces a Banach lattice isomorphism between $L^1_{\bar\mu}$ and
+$L^1_{\hat\mu}$, so that the band algebra of
+$L^1_{\bar\mu}$ can be identified with the Dedekind completion
+$\widehat{\frak A}$ of $\frak A$.
+%365O, 365S
+     
+\spheader 365Xn Let $\frak A$ be a Dedekind $\sigma$-complete Boolean
+algebra and $\bar\mu$, $\bar\nu$ two functions such that $(\frak
+A,\bar\mu)$, $(\frak A,\bar\nu)$ are measure algebras.   Show that
+$L^1_{\bar\mu}\subseteq L^1_{\bar\nu}$ (as subsets of $L^0(\frak A)$)
+iff there is a $\gamma>0$ such that $\bar\nu a\le\gamma\bar\mu a$ for
+every $a\in\frak A$.   \Hint{show that the identity operator from
+$L^1_{\bar\mu}$ to $L^1_{\bar\nu}$ is bounded.}
+%365S
+     
+\spheader 365Xo Let $(\frak A,\bar\mu)$ be a measure algebra,
+$I_{\infty}$ the ideal of `purely infinite' elements of $\frak A$
+together with $0$,
+$\bar\mu_{sf}$ the measure on $\frak B=\frak A/I_{\infty}$ (322Xa).
+Let $\pi:\frak A\to\frak B$ be the canonical map.   Show that $T_{\pi}$,
+as defined in 365O, is a Banach lattice isomorphism between
+$L^1_{\bar\mu}$ and $L^1(\frak B,\bar\mu_{sf})$.
+%365O, 365Xm, 365S
+     
+\spheader 365Xp Let $(X,\Sigma,\mu)$ be a a semi-finite measure space.
+Show that $L^1(\mu)$ is separable iff $\mu$ is $\sigma$-finite and has
+countable Maharam type.
+%365S
+
+\spheader 365Xq Let $(\frak A,\bar\mu)$ and $(\frak B,\bar\nu)$ be
+probability algebras, $\pi:\frak A\to\frak B$ a measure-preserving Boolean
+homomorphism, and $T:L^0(\frak A)\to L^0(\frak B)$ the corresponding Riesz
+homomorphism.   Let $\frak C$ be a closed subalgebra of $\frak A$ and
+$P:L^1(\frak A,\bar\mu)\to L^1(\frak C,\bar\mu\restrp\frak C)
+\subseteq L^1(\frak A,\bar\mu)$, 
+$Q:L^1(\frak B,\bar\nu)\to L^1(\frak B,\bar\nu)$ the conditional
+expectation operators defined from $\frak C\embedsinto\frak A$
+and $\pi[\frak C]\embedsinto\frak B$.   Show that $TP=QT$.
+%365R
+     
+\leader{365Y}{Further exercises (a)}
+%\spheader 365Ya
+Let $(\frak A,\bar\mu)$ be a semi-finite measure
+algebra, not $\{0\}$.   Show that the topological density of
+$L^1_{\bar\mu}$ (331Yf) is
+$\max(\omega,\tau(\frak A),c(\frak A))$, where
+$\tau(\frak A)$, $c(\frak A)$ are the Maharam type and cellularity of
+$\frak A$.
+%365Xp, 365S
+     
+}%end of exercises
+     
+\cmmnt{
+\Notesheader{365} You should not suppose that $L^1$ spaces appear in the
+second half of this chapter because they are of secondary importance.
+Indeed I regard them as the most important of all function spaces.   I
+have delayed the discussion of them for so long because it is here that
+for the first time we need measure algebras in an essential way.
+     
+The actual definition of $L^1_{\bar\mu}$ which I give is designed
+for speed rather than illumination;  I seek only a formula, visibly
+independent of any particular representation of $(\frak A,\bar\mu)$ as
+the measure algebra of a measure space, from which I can prove 365B.
+365C-365D and 365Ea are now elementary.   In 365Eb I take a
+page to describe a form of the Radon-Nikod\'ym theorem which is
+applicable to arbitrary measure algebras, at the cost of dealing with
+functionals on the ring $\frak A^f$ rather than on the whole algebra
+$\frak A$.    This is less for the sake of applications than to
+emphasize one of the central properties of $L^1$:  it depends only on
+$\frak A^f$ and $\bar\mu\restrp\frak A^f$.   For alternative versions of
+the condition 365Eb(i) see 365Xf.
+     
+The convergence theorems (B.Levi's theorem, Fatou's lemma and Lebesgue's
+dominated convergence theorem) are so central to the theory of
+integrable functions that it is natural to look for versions in the
+language here.   Corresponding to B.Levi's theorem is the Levi property
+of a norm in an $L$-space;  note how the abstract formulation makes it
+natural to speak of general upwards-directed families rather than of
+non-decreasing sequences, though the sequential form is so often used
+that I have spelt it out (365C).   In the same way, the integral becomes
+order-continuous rather than just sequentially order-continuous (365Da).
+Corresponding to Fatou's lemma we have 365Xc-365Xd.   For abstract
+versions of Lebesgue's theorem I will wait until \S367.
+%367I 367Xf
+     
+In 365H I have deliberately followed the hypotheses of 235A and 235R.
+Of course 365H can be deduced from these if we use the Stone
+representations of $(\frak A,\bar\mu)$ and $(\frak B,\bar\nu)$, so that
+$\pi$ can be represented by a function between the Stone spaces
+(312Q).   But 365H is essentially simpler, because the technical
+problems concerning measurability which took up so much of \S235 have
+been swept under the carpet.   In the same way, 365Xg corresponds to
+235E.   Here we have a fair example of the way in which the abstract
+expression in terms of measure algebras can be tidier than the
+expression in terms of measure spaces.   But in my view this is because
+here, at least, some of the mathematics has been left out.
+     
+365I-365K %365I 365J 365K
+correspond closely to 361F-361H %361F 361G 361H
+and 363E.
+365M is a re-run of 243G, but with the additional refinement that I
+examine the action of $L^1$ on $L^{\infty}$ (the operator $S$) as well
+as the action of $L^{\infty}$ on $L^1$ (the operator $T$).   Of course
+365Mc is just the abstract version of 243Hb, and can easily be proved
+from it.   Note that while the proof of 365M does not itself involve any
+representation of $(\frak A,\bar\mu)$ as the measure algebra of a
+measure space, (a-vii) and (b-iii) of the proof of 365M depend on the
+Radon-Nikod\'ym theorem through 327D and 365E.   For a development of
+the theory of $L^1(\frak A,\bar\mu)$ which does not (in a formal sense)
+depend on measure spaces, see {\smc Fremlin 74a}, 63J.
+     
+Theorems 365O-365Q lie at the centre of my picture of $L^1$ spaces, and
+are supposed to show their dual nature.   Starting from a semi-finite
+measure algebra $(\frak A,\bar\mu)$ we have two essentially different
+routes to the $L^1$-space:  we can either build it up from
+indicator functions of elements of finite measure, so that it is
+naturally embedded in $L^0(\frak A)$, or we can think of it as the
+order-continuous dual of $L^{\infty}(\frak A)$.   The first is a
+`covariant' construction (signalled by the formula
+$T_{\theta\pi}=T_{\theta}T_{\pi}$ in 365Oe) and the second is
+`contravariant' (so that $P_{\theta\pi}=P_{\pi}P_{\theta'}$ in
+365Pf).   The first construction is the natural one if we are
+seeking to copy the ideas of \S242, but the second arises inevitably if
+we follow the ordinary paths of functional analysis and study dual
+spaces whenever they appear.   The link between them is the
+Radon-Nikod\'ym theorem.
+     
+I have deliberately written out 365O and 365P with different
+hypotheses on the homomorphism $\pi$ in the hope of showing that the two
+routes to $L^1$ really are different, and can be expected to tell us
+different things about it.
+I use the letter $P$ in 365P in order to echo the language of 242J:
+in the most important context, in which $\frak A$ is actually a
+subalgebra of $\frak B$ and $\pi$ is the identity map, $P$ is a kind of
+conditional expectation operator (365R).   I note that in the proof of
+365Pe I have returned to first principles, using some of the ideas of
+the Radon-Nikod\'ym theorem (232E), but a different approach to the
+exhaustion step (converting `for every $u>0$ there is a $v>0$ such
+that $Pv\le u$' into `$P$ is surjective').   I chose the somewhat
+cruder method in 232E (part (c) of the proof) in order to use the
+weakest possible form of the axiom of choice.   In the present context
+such scruples seem absurd.
+     
+I used the words `covariant' and `contravariant' above;  of course
+this distinction depends on the side of the mirror on which we are
+standing;  if our measure-preserving homomorphism is derived
+(contravariantly) from an inverse-measure-preserving transformation,
+then the $T$'s become contravariant (365Xi).   An important
+component of this work, for me, is the fact that not all
+measure-preserving homomorphisms between measure algebras can be
+represented by inverse-measure-preserving functions (343Jb, 343M).
+     
+I have already remarked (in the notes to \S244) that the properties of
+$L^1(\mu)$ are not much affected by peculiarities in a measure space
+$(X,\Sigma,\mu)$.   In this section I offer an explanation:  unlike
+$L^0$ or $L^{\infty}$, $L^1$ really
+depends only on $\frak A^f$, the ring of elements of finite measure in
+the measure algebra.   (See 365O-365Q, %365O 365P 365Q
+365Xm and 365Xo.) %365Xm 365Xn 365Xo
+Note that while the
+algebra $\frak A$ is uniquely determined (given that $(\frak A,\bar\mu)$
+is localizable, 365Sa), the measure $\bar\mu$ is not;  if $\frak A$ is
+any algebra carrying two non-isomorphic semi-finite measures, the
+corresponding $L^1$ spaces are still isomorphic (365Sb).   For instance,
+the $L^1$-spaces of Lebesgue measure $\mu$ on $\Bbb R$, and the subspace
+measure $\mu_{[0,1]}$ on $[0,1]$, are isomorphic, though their measure
+algebras are not.
+     
+I make no attempt here to add to the results in \S\S246, 247, 354 and
+356 concerning
+uniform integrability and weak compactness.   Once we have left measure
+spaces behind, these ideas belong to the theory of Banach lattices, and
+there is little to relate them to the questions dealt with in this
+section.   But see 373Xj and 373Xn below.
+}%end of notes
+     
+\discrpage
+     

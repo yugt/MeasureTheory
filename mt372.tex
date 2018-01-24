@@ -1,0 +1,2007 @@
+\frfilename{mt372.tex}
+\versiondate{7.12.08/17.7.11}
+\copyrightdate{1995}
+
+\def\chaptername{Linear operators between function spaces}
+\def\sectionname{The ergodic theorem}
+
+\newsection{372}
+
+I come now to one of the most remarkable topics in measure theory.   I
+cannot do it justice in the space I have allowed for it here, but I can
+give the basic theorem (372D, 372F) and a variety of the corollaries
+through which it is regularly used (372E,
+372G-372J), %372G 372H 372J
+together with brief
+notes on one of its most famous and characteristic applications (to
+continued fractions, 372L-372N) %372L 372M 372N
+and on `ergodic' and `mixing'
+transformations (372O-372S). %372O 372Q 372S
+In the first half of the section (down to
+372G) I express the arguments in the abstract language of measure
+algebras and their associated function spaces, as developed in Chapter
+36;  the second half, from 372H onwards,
+contains translations of the
+results into the language of measure spaces and measurable functions,
+the more traditional, and more readily applicable, forms.
+
+\leader{372A}{Lemma} Let $U$ be a reflexive Banach space and $T:U\to U$
+a bounded linear operator of norm at most $1$.   Then
+
+\Centerline{$V=\{u+v-Tu:u,\,v\in U,\,Tv=v\}$}
+
+\noindent is dense in $U$.
+
+\proof{ Of course $V$ is a linear subspace of $U$.   \Quer\ Suppose, if
+possible, that it is not dense.   Then there is a non-zero $h\in U^*$
+such that $h(v)=0$ for every $v\in V$ (3A5Ad).
+Take $u\in U$ such that $h(u)\ne 0$.   Set
+
+\Centerline{$u_n=\Bover1{n+1}\sum_{i=0}^nT^iu$}
+
+\noindent for each $n\in\Bbb N$, taking $T^0$ to be the identity
+operator;  because
+
+\Centerline{$\|T^iu\|\le\|T^i\|\|u\|\le\|T\|^i\|u\|\le\|u\|$}
+
+\noindent for each $i$, $\|u_n\|\le\|u\|$ for every $n$.   Note also
+that $T^{i+1}u-T^iu\in V$ for every $i$, so that
+$h(T^{i+1}u-T^iu)=0$;  accordingly $h(T^iu)=h(u)$ for every $i$, and
+$h(u_n)=h(u)$ for every $n$.
+
+Let $\Cal F$ be any non-principal ultrafilter on $\Bbb N$.   Because $U$
+is reflexive, $v=\lim_{n\to\Cal F}u_n$ is defined in $U$ for the weak
+topology on $U$ (3A5Gc).   Now $Tv=v$.   \Prf\ For each $n\in\Bbb
+N$,
+
+\Centerline{$Tu_n-u_n
+=\Bover1{n+1}\sum_{i=0}^n(T^{i+1}u-T^iu)
+=\Bover1{n+1}(T^{n+1}u-u)$}
+
+\noindent has norm at most $\bover2{n+1}\|u\|$.   So
+$\sequencen{Tu_n-u_n}\to 0$ for the norm topology $U$ and therefore for
+the weak topology, and surely $\lim_{n\to\Cal F}Tu_n-u_n=0$.   On the
+other hand (because $T$ is continuous for the weak topology, 2A5If)
+
+\Centerline{$Tv=\lim_{n\to\Cal F}Tu_n=\lim_{n\to\Cal F}(Tu_n-u_n)
++\lim_{n\to\Cal F}u_n=0+v=v$,}
+
+\noindent where all the limits are taken for the weak topology.\ \Qed
+
+But this means that $v\in V$, while
+
+\Centerline{$h(v)=\lim_{n\to\Cal F}h(u_n)=h(u)\ne 0$,}
+
+\noindent contradicting the assumption that $h\in V^{\smallcirc}$.\
+\Bang
+}%end of proof of 372A
+
+\leader{372B}{Lemma} Let $(\frak A,\bar\mu)$ be a measure algebra, and
+$T:L^1\to L^1$ a positive linear operator of norm at most $1$, where
+$L^1=L^1(\frak A,\bar\mu)$.   Take any $u\in L^1$ and $m\in\Bbb N$, and
+set
+
+\Centerline{$a=\Bvalue{u>0}\Bcup\Bvalue{u+Tu>0}\Bcup\Bvalue{u+Tu+T^2u>0}
+\Bcup\ldots\Bcup\Bvalue{u+Tu+\ldots+T^mu>0}$.}
+
+\noindent Then $\int_au\ge 0$.
+
+\proof{ Set $u_0=u$, $u_1=u+Tu,\ldots,u_m=u+Tu+\ldots+T^mu$,
+$v=\sup_{i\le m}u_i$, so that $a=\Bvalue{v>0}$.   Consider $u+T(v^+)$.
+We have $T(v^+)\ge Tv\ge Tu_i$ for every $i\le m$
+(because $T$ is positive), so that $u+T(v^+)\ge u+Tu_i=u_{i+1}$ for
+$i<m$,
+and $u+T(v^+)\ge\sup_{1\le i\le m}u_i$.   Also $u+T(v^+)\ge u$ because
+$T(v^+)\ge 0$, so $u+T(v^+)\ge v$.   Accordingly
+
+\Centerline{$\int_au\ge\int_av-\int_aT(v^+)=\int v^+-\int_aT(v^+)
+\ge\|v^+\|_1-\|Tv^+\|_1\ge 0$}
+
+\noindent because $\|T\|\le 1$.
+}%end of proof of 372B
+
+\leader{372C}{Maximal Ergodic Theorem}
+Let $(\frak A,\bar\mu)$ be a measure algebra, and $T:L^1\to L^1$ a
+linear operator, where $L^1=L^1(\frak A,\bar\mu)$, such that
+$\|Tu\|_1\le\|u\|_1$ for every $u\in L^1$ and
+$\|Tu\|_{\infty}\le\|u\|_{\infty}$ for every
+$u\in L^1\cap L^{\infty}(\frak A)$.
+Set $A_n=\bover1{n+1}\sum_{i=0}^nT^i$ for each
+$n\in\Bbb N$.   Then for any $u\in L^1$, $u^*=\sup_{n\in\Bbb N}A_nu$ is
+defined in $L^0(\frak A)$, and
+$\alpha\bar\mu\Bvalue{u^*>\alpha}\le\|u\|_1$ for every $\alpha>0$.
+
+\proof{{\bf (a)} To begin with, suppose that $T$ is positive and that
+$u\ge 0$ in $L^1$.   Note that if $v\in L^1\cap L^{\infty}$, then
+$\|T^iv\|_{\infty}\le\|v\|_{\infty}$ for every $i\in\Bbb N$, so
+$\|A_nv\|_{\infty}\le\|v\|_{\infty}$ for every $n$;  in particular,
+$A_n(\chi a)\le\chi 1$ for every $n$ and every $a$ of finite measure.
+
+For $m\in\Bbb N$ and $\alpha>0$, set
+
+\Centerline{$a_{m\alpha}=\Bvalue{\sup_{i\le m}A_iu>\alpha}$.}
+
+\noindent Then $\alpha\bar\mu a_{m\alpha}\le\|u\|_1$.   \Prf\ Set
+$a=a_{m\alpha}$,
+$w=u-\alpha\chi a$.   Of course $\sup_{i\le m}A_iu$ belongs to
+$L^1$, so $\bar\mu a$ is finite and $w\in L^1$.   For any $i\le
+m$,
+
+\Centerline{$A_iw=A_iu-\alpha A_i(\chi a)\ge A_iu-\alpha\chi 1$,}
+
+\noindent so $\Bvalue{A_iw>0}\Bsupseteq\Bvalue{A_iu>\alpha}$.
+Accordingly $a\Bsubseteq b$, where
+
+\Centerline{$b=\sup_{i\le m}\Bvalue{A_iw>0}
+=\sup_{i\le m}\Bvalue{w+Tw+\ldots+T^iw>0}$.}
+
+\noindent By 372B, $\int_bw\ge 0$.   But this means that
+
+\Centerline{$\alpha\bar\mu a=\alpha\int_b\chi a
+=\int_bu-\int_bw\le\int_bu\le\|u\|_1$,}
+
+\noindent as claimed.\   \Qed
+
+It follows that if we set $c_{\alpha}=\sup_{n\in\Bbb N}a_{n\alpha}$,
+$\bar\mu c_{\alpha}\le\alpha^{-1}\|u\|_1$ for every $\alpha>0$ and
+$\inf_{\alpha>0}c_{\alpha}=0$.   But this is exactly the criterion in
+364L(a-ii) for $u^*=\sup_{n\in\Bbb N}A_nu$ to be defined in $L^0$.   And
+$\Bvalue{u^*>\alpha}=c_{\alpha}$, so
+$\alpha\bar\mu\Bvalue{u^*>\alpha}\le\|u\|_1$ for every $\alpha>0$, as
+required.
+
+\medskip
+
+{\bf (b)} Now consider the case of general $T$, $u$.   In this case $T$
+is order-bounded and $\||T|\|\le 1$, where $|T|$ is the modulus of $T$
+in $\eurm L^{\sim}(L^1;L^1)=\eurm B(L^1;L^1)$ (371D).   If
+$w\in L^1\cap L^{\infty}$, then
+
+\Centerline{$||T|w|\le |T||w|
+=\sup_{|w'|\le|w|}|Tw'|\le\|w\|_{\infty}\chi 1$,}
+
+\noindent so $\||T|w\|_{\infty}\le\|w\|_{\infty}$.   Thus $|T|$ also
+satisfies the conditions of the theorem.
+Setting $B_n=\bover1{n+1}\sum_{i=0}^n|T|^i$, $B_n\ge A_n$ in
+$\eurm L^{\sim}(L^1;L^1)$ and $B_n|u|\ge A_nu$ for every $n$.   But by
+(a), $v=\sup_{n\in\Bbb N}B_n|u|$ is defined in $L^0$ and
+$\alpha\bar\mu\Bvalue{v>\alpha}\le\||u|\|_1=\|u\|_1$ for every
+$\alpha>0$.   Consequently $u^*=\sup_{n\in\Bbb N}A_nu$ is defined in
+$L^0$ and $u^*\le v$, so that
+$\alpha\bar\mu\Bvalue{u^*>\alpha}\le\|u\|_1$ for every $\alpha>0$.
+}%end of proof of 372C
+
+
+\leader{372D}{}\cmmnt{ We are now ready for a very general form of the
+Ergodic Theorem.   I express it in terms of the space $M^{1,0}$ from
+366F and the class $\Cal T^{(0)}$ of operators from 371F.   If these
+formulae are unfamiliar, you may like to glance at the statement of 372F
+before looking them up.
+
+\medskip
+
+\noindent}{\bf The Ergodic Theorem:  first form} Let $(\frak A,\bar\mu)$
+be a measure algebra, and set $M^{1,0}=M^{1,0}(\frak A,\bar\mu)$,
+$\Cal T^{(0)}=\Cal T^{(0)}_{\bar\mu,\bar\mu}
+\subseteq\eurm B(M^{1,0};M^{1,0})$\cmmnt{ as in
+371F-371G}.   Take any $T\in\Cal T^{(0)}$, and set
+$A_n=\bover1{n+1}\sum_{i=0}^nT^i:M^{1,0}\to M^{1,0}$ for every $n$.
+Then for any $u\in M^{1,0}$, $\sequencen{A_nu}$ is
+order*-convergent\cmmnt{ (definition:  367A)} and
+$\|\,\|_{1,\infty}$-convergent to a member $Pu$ of $M^{1,0}$.
+The operator $P:M^{1,0}\to M^{1,0}$ is a projection onto the linear
+subspace $\{u:u\in M^{1,0},\,Tu=u\}$, and $P\in\Cal T^{(0)}$.
+
+\proof{{\bf (a)}  It will be convenient to start with some elementary
+remarks.   First, every $A_n$ belongs to $\Cal T^{(0)}$, by 371Ge and
+371Ga.    Next, $\sequencen{A_nu}$ is order-bounded in
+$L^0=L^0(\frak A)$ for any $u\in M^{1,0}$;  this is because if $u=v+w$,
+where $v\in L^1=L^1(\frak A,\bar\mu)$ and
+$w\in L^{\infty}=L^{\infty}(\frak A)$,
+then $\sequencen{A_nv}$ and $\sequencen{A_n(-v)}$ are bounded above, by
+372C, while $\sequencen{A_nw}$ is norm- and order-bounded in
+$L^{\infty}$.   Accordingly I can uninhibitedly speak of
+$P^*(u)=\inf_{n\in\Bbb N}\sup_{i\ge n}A_iu$ and
+$P_*(u)=\sup_{n\in\Bbb N}\inf_{i\ge n}A_iu$
+for any $u\in M^{1,0}$, these both being defined in $L^0$.
+
+\medskip
+
+{\bf (b)} Write $V_1$ for the set of those $u\in M^{1,0}$ such that
+$\sequencen{A_nu}$ is order*-convergent in $L^0$;
+that is, $P^*(u)=P_*(u)$ (367Be).   It is easy to see that $V_1$ is a
+linear subspace of $M^{1,0}$ (use 367Ca and 367Cd).   Also it is closed
+for $\|\,\|_{1,\infty}$.
+
+\Prf\ We know that $|T|$, taken in $\eurm L^{\sim}(M^{1,0};M^{1,0})$,
+belongs to $\Cal T^{(0)}$ (371Gb);  set
+$B_n=\bover1{n+1}\sum_{i=0}^n|T|^i$ for each $i$.
+
+Suppose that $u_0\in\overline{V}_1$.   Then for any $\epsilon>0$ there
+is a $u\in V_1$ such that $\|u_0-u\|_{1,\infty}\le\epsilon^2$.   Write
+$Pu=P^*(u)=P_*(u)$ for the order*-limit of
+$\sequencen{A_nu}$.   Express $u_0-u$ as $v+w$ where $v\in L^1$,
+$w\in L^{\infty}$ and $\|v\|_1+\|w\|_{\infty}\le 2\epsilon^2$.
+
+Set $v^*=\sup_{n\in\Bbb N}B_n|v|$.   Then
+$\bar\mu\Bvalue{v^*>\epsilon}\le2\epsilon$, by 372C.   Next, if
+$w^*=\sup_{n\in\Bbb N}B_n|w|$, we surely have
+$w^*\le 2\epsilon^2\chi 1$.   Now
+
+\Centerline{$|A_nu_0-A_nu|=|A_nv+A_nw|\le B_n|v|+B_n|w|\le v^*+w^*$}
+
+\noindent for every $n\in\Bbb N$, that is,
+
+\Centerline{$A_nu-v^*-w^*\le A_nu_0\le A_nu+v^*+w^*$}
+
+\noindent for every $n$.   Because $\sequencen{A_nu}$
+order*-converges to $Pu$,
+
+\Centerline{$Pu-v^*-w^*\le P_*(u_0)\le P^*(u_0)\le Pu+v^*+w^*$,}
+
+\noindent and $P^*(u_0)-P_*(u_0)\le 2(v^*+w^*)$.   On the other hand,
+
+\Centerline{$\bar\mu\Bvalue{2(v^*+w^*)>2\epsilon+4\epsilon^2}
+\le\bar\mu\Bvalue{v^*>\epsilon}+\bar\mu\Bvalue{w^*>2\epsilon^2}
+=\bar\mu\Bvalue{v^*>\epsilon}\le 2\epsilon$}
+
+\noindent (using 364Ea for the first inequality).   So
+
+\Centerline{$\bar\mu\Bvalue{P^*(u_0)-P_*(u_0)>2\epsilon(1+2\epsilon)}\le
+2\epsilon$.}
+
+\noindent Since $\epsilon$ is arbitrary, $\sequencen{A_nu_0}$
+order*-converges to $P^*(u_0)=P_*(u_0)$, and $u_0\in V_1$.   As $u_0$ is
+arbitrary, $V_1$ is closed.\   \Qed
+
+\medskip
+
+
+{\bf (c)} Similarly, the set $V_2$ of those $u\in M^{1,0}$ for which
+$\sequencen{A_nu}$ is norm-convergent is a linear subspace of $M^{1,0}$,
+and it also is closed.   \Prf\ This is a standard argument.   If
+$u_0\in\overline{V}_2$ and $\epsilon>0$, there is a $u\in V_2$ such that
+$\|u_0-u\|_{1,\infty}\le\epsilon$.   There is an $n\in\Bbb N$ such that
+$\|A_iu-A_ju\|_{1,\infty}\le\epsilon$ for all $i$, $j\ge n$, and now
+$\|A_iu_0-A_ju_0\|_{1,\infty}\le 3\epsilon$ for all $i$, $j\ge n$,
+because every $A_i$ has norm at most $1$ in $\eurm B(M^{1,0};M^{1,0})$
+(371Gc).   As $\epsilon$ is arbitrary,
+$\sequencen{A_iu_0}$ is Cauchy;  because $M^{1,0}$ is complete,
+it is convergent, and $u_0\in V_2$.   As $u_0$ is arbitrary, $V_2$ is
+closed.\   \Qed
+
+\medskip
+
+{\bf (d)} Now let $V$ be
+$\{u+v-Tu:u\in M^{1,0}\cap L^{\infty},\,v\in M^{1,0},\,Tv=v\}$.   Then
+$V\subseteq V_1\cap V_2$.   \Prf\ If $u\in M^{1,0}\cap L^{\infty}$, then
+for any $n\in\Bbb N$
+
+\Centerline{$A_n(u-Tu)=\bover1{n+1}(u-T^{n+1}u)\to 0$}
+
+\noindent for $\|\,\|_{\infty}$, and therefore is both
+order*-convergent and convergent for
+$\|\,\|_{1,\infty}$;  so $u-Tu\in V_1\cap V_2$.   On the other hand, if
+$Tv=v$, then of course $A_nv=v$ for every $n$, so again
+$v\in V_1\cap V_2$.\   \Qed
+
+\medskip
+
+{\bf (e)} Consequently $L^2=L^2(\frak A,\bar\mu)\subseteq V_1\cap V_2$.
+\Prf\ $L^2\cap V_1\cap V_2$ is a linear subspace;  but also it is closed
+for the norm topology of $L^2$, because the identity map from $L^2$ to
+$M^{1,0}$ is continuous (369Oe).   We know also that $T\restr L^2$
+is an operator of norm at
+most $1$ from $L^2$ to itself (371Gd).   Consequently
+$W=\{u+v-Tu:u,\,v\in L^2,\,Tv=v\}$ is dense in $L^2$ (372A).   On the
+other hand, given $u\in L^2$ and $\epsilon>0$, there is a $u'\in L^2\cap
+L^{\infty}$ such that $\|u-u'\|_2\le\epsilon$ (take
+$u'=(u\wedge\gamma\chi 1)\vee(-\gamma\chi 1)$ for any $\gamma$ large
+enough), and now $\|(u-Tu)-(u'-Tu')\|_2\le 2\epsilon$.   Thus
+$W'=\{u'+v-Tu':u'\in L^2\cap L^{\infty},\,v\in L^2,\,Tv=v\}$ is dense in
+$L^2$.   But $W'\subseteq V_1\cap V_2$, by (d) above.   Thus
+$L^2\cap V_1\cap V_2$ is dense in $L^2$, and is therefore the whole of
+$L^2$.\
+\Qed
+
+\medskip
+
+{\bf (f)} $L^2\supseteq S(\frak A^f)$ is dense in $M^{1,0}$, by 369Pc,
+so $V_1=V_2=M^{1,0}$.   This shows that $\sequencen{A_nu}$ is
+norm-convergent and order*-convergent for every $u\in M^{1,0}$.   By
+367Da, the limits are the same.   Write $Pu$
+for the common value of the limits.
+
+\medskip
+
+{\bf (g)} Of course we now have
+
+\Centerline{$\|Pu\|_{\infty}\le\sup_{n\in\Bbb N}\|A_nu\|_{\infty}
+\le\|u\|_{\infty}$}
+
+\noindent for every $u\in L^{\infty}\cap M^{1,0}$, while
+
+\Centerline{$\|Pu\|_1\le\liminf_{n\to\infty}\|A_nu\|_1\le \|u\|_1$}
+
+\noindent for every $u\in L^1$, by Fatou's Lemma.   So $P\in\Cal
+T^{(0)}$.
+If $u\in M^{1,0}$ and $Tu=u$, then surely $Pu=u$, because $A_nu=u$
+for every $u$.   On the other hand, for any $u\in M^{1,0}$, $TPu=Pu$.
+\Prf\   Because $\sequencen{A_nu}$ is norm-convergent to $Pu$,
+
+$$\eqalign{\|TPu-Pu\|_{1,\infty}
+&=\lim_{n\to\infty}\|TA_nu-A_nu\|_{1,\infty}\cr
+&=\lim_{n\to\infty}\Bover1{n+1}\|T^{n+1}u-u\|_{1,\infty}
+=0.  \text{ \Qed}\cr}$$
+
+\noindent Thus, writing $U=\{u:Tu=u\}$, $P[M^{1,0}]=U$ and $Pu=u$ for
+every $u\in U$.
+}%end of proof of 372D
+
+\leader{372E}{Corollary} Let $(\frak A,\bar\mu)$ be a measure algebra,
+and $\pi:\frak A^f\to\frak A^f$ a measure-preserving ring homomorphism,
+where $\frak A^f=\{a:\bar\mu a<\infty\}$.   Let $T:M^{1,0}\to M^{1,0}$
+be the corresponding Riesz homomorphism, where
+$M^{1,0}=M^{1,0}(\frak A,\bar\mu)$\cmmnt{ (366H, in particular part
+(a-v))}.   Set
+$A_n=\bover1{n+1}\sum_{i=0}^nT^i$ for $n\in\Bbb N$.   Then for every
+$u\in M^{1,0}$, $\sequencen{A_nu}$ is order*-convergent and
+$\|\,\|_{1,\infty}$-convergent to some $v$ such that $Tv=v$.
+
+\proof{ By 366H(a-iv), $T\in\Cal T^{(0)}$, as defined in 371F.   So the
+result follows at once from 372D.
+}%end of proof of 372E
+
+\leader{372F}{The Ergodic Theorem:  second form} Let $(\frak A,\bar\mu)$
+be a measure algebra, and let $T:L^1\to L^1$, where
+$L^1=L^1(\frak A,\bar\mu)$, be a linear operator of norm at most $1$
+such that $Tu\in L^{\infty}=L^{\infty}(\frak A)$ and
+$\|Tu\|_{\infty}\le\|u\|_{\infty}$
+whenever $u\in L^1\cap L^{\infty}$.   Set
+$A_n=\bover1{n+1}\sum_{i=0}^nT^i:L^1\to L^1$ for every $n$.   Then for
+any $u\in L^1$, $\sequencen{A_nu}$ is order*-convergent to an element
+$Pu$ of $L^1$.   The operator $P:L^1\to L^1$ is a projection of norm at
+most $1$ onto the linear subspace $\{u:u\in L^1,\,Tu=u\}$.
+
+\proof{ By 371Ga, there is an extension of $T$ to a member $\tilde T$ of
+$\Cal T^{(0)}$.   So 372D tells us that $\sequencen{A_nu}$ is
+order*-convergent to some $Pu\in L^1$ for every $u\in L^1$, and
+$P:L^1\to L^1$ is a projection of norm at most $1$, because $P$ is the
+restriction of a projection $\tilde P\in\Cal T^{(0)}$.   Also we still
+have $TPu=Pu$ for every $u\in L^1$, and $Pu=u$ whenever $Tu=u$, so the
+set of values $P[L^1]$ of $P$ must be exactly $\{u:u\in L^1,\,Tu=u\}$.
+}%end of proof of 372F
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} In 372D and 372F I have used the phrase
+`order*-convergent' from \S367 without always being specific about the
+partially ordered set in which it is to be interpreted.   But, as
+remarked in 367E, the notion is robust enough for the omission to be
+immaterial here.   Since both $M^{1,0}$ and $L^1$ are solid linear
+subspaces of $L^0$, a sequence in $M^{1,0}$ is order*-convergent to a
+member of $M^{1,0}$ (when order*-convergence is interpreted in the
+partially ordered set $M^{1,0}$) iff it is order*-convergent to the same
+point (when convergence is interpreted in the set $L^0$);  and the same
+applies to $L^1$ in place of $M^{1,0}$.
+}%end of comment
+
+\leader{372G}{Corollary} Let $(\frak A,\bar\mu)$ be a probability
+algebra, and $\pi:\frak A\to\frak A$ a measure-preserving Boolean
+homomorphism.   Let $T:L^1\to L^1$ be the corresponding Riesz
+homomorphism, where $L^1=L^1(\frak A,\bar\mu)$.   Set
+$A_n=\bover1{n+1}\sum_{i=0}^nT^i$ for $n\in\Bbb N$.   Then for every
+$u\in L^1$, $\sequencen{A_nu}$ is order*-convergent and
+$\|\,\,\|_1$-convergent.   If we set $Pu=\lim_{n\to\infty}A_nu$ for each
+$u$, $P$ is the conditional expectation operator corresponding to the
+fixed-point subalgebra $\frak C=\{a:\pi a=a\}$ of $\frak A$.
+
+\proof{{\bf (a)} The first part is just a special case of 372E;  the
+point is that because $(\frak A,\bar\mu)$ is totally finite,
+$L^{\infty}(\frak A)\subseteq L^1$, so $M^{1,0}(\frak A,\bar\mu)=L^1$.
+Also (because $\bar\mu 1=1$) $\|u\|_{\infty}\le\|u\|_1$ for every $u\in
+L^{\infty}$, so the norm $\|\,\|_{1,\infty}$ is actually equal to
+$\|\,\|_1$.
+
+\medskip
+
+{\bf (b)} For the last sentence, recall that $\frak C$ is a closed
+subalgebra of $\frak A$ (cf.\ 333R).   By 372D or 372F, $P$ is a
+projection operator onto the subspace $\{u:Tu=u\}$.   Now
+$\Bvalue{Tu>\alpha}=\pi\Bvalue{u>\alpha}$ (365Oc), so $Tu=u$ iff
+$\Bvalue{u>\alpha}\in\frak C$ for every $\alpha\in\Bbb R$, that is, iff
+$u$ belongs to the canonical image of
+$L^1(\frak C,\bar\mu\restrp\frak C)$ in $L^1$ (365R).   To identify $Pu$
+further, observe that if $u\in L^1$ and $a\in\frak C$ then
+
+\Centerline{$\int_aTu=\int_{\pi a}Tu=\int_au$}
+
+\noindent (365Ob).   Consequently $\int_aT^iu=\int_au$ for every
+$i\in\Bbb N$, $\int_aA_nu=\int_au$ for every $n\in\Bbb N$, and
+$\int_aPu=\int_au$ (because $Pu$ is the limit of $\sequencen{A_nu}$ for
+$\|\,\|_1$).   But this is enough to define $Pu$ as the conditional
+expectation of $u$ on $\frak C$ (365R).
+}%end of proof of 372G
+
+\leader{372H}{}\cmmnt{ The Ergodic Theorem is most often expressed in
+terms of transformations of measure spaces.   In the next few
+corollaries I will formulate such expressions.   The translation is
+straightforward.
+
+\medskip
+
+\noindent}{\bf Corollary\dvAformerly{3{}72I}}
+Let $(X,\Sigma,\mu)$ be a measure space and
+$\phi:X\to X$ an \imp\ function.   Let $f$ be a real-valued function
+which is integrable over $X$.   Then
+
+\Centerline{$g(x)
+=\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf(\phi^i(x))$}
+
+\noindent is defined for almost every $x\in X$, and $g\phi(x)=g(x)$ for
+almost every $x$.
+
+\proof{ Let $(\frak A,\bar\mu)$ be the measure algebra of
+$(X,\Sigma,\mu)$, and $\pi:\frak A\to\frak A$,
+$T:L^0(\frak A)\to L^0(\frak A)$ the homomorphisms corresponding to
+$\phi$, as in 364Qd.
+Set $u=f^{\ssbullet}$ in $L^1(\frak A,\bar\mu)$.   Then for any
+$i\in\Bbb N$, $T^iu=(f\phi^i)^{\ssbullet}$ (364Q(c)-(d)), so setting
+$A_n=\bover1{n+1}\sum_{i=0}^nT^i$, $A_nu=g_n^{\ssbullet}$, where
+$g_n(x)=\bover1{n+1}\sum_{i=0}^nf(\phi^i(x))$ whenever this is
+defined.   Now we know from 372F or 372E that $\sequencen{A_nu}$ is
+order*-convergent to some $v$ such that $Tv=v$, so $\sequencen{g_n}$
+must be convergent almost everywhere (367F), and taking
+$g=\lim_{n\to\infty}g_n$ where this is defined, $g^{\ssbullet}=v$.
+Accordingly $(g\phi)^{\ssbullet}=Tv=v=g^{\ssbullet}$ and $g\phi\eae g$,
+as claimed.
+}%end of proof of 372H
+
+\leader{372I}{}\cmmnt{ The following facts will be
+useful in the next version of the theorem, and elsewhere.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $(X,\Sigma,\mu)$ be a measure space with
+measure algebra $(\frak A,\bar\mu)$.   Let $\phi:X\to X$ be an \imp\
+function and $\pi:\frak A\to\frak A$ the associated
+homomorphism\cmmnt{, as in 343A and 364Qd}.
+Set $\frak C=\{c:c\in\frak A,\,\pi c=c\}$,
+$\Tau=\{E:E\in\Sigma,\,\phi^{-1}[E]\symmdiff E$ is negligible$\}$ and
+$\Tau_0=\{E:E\in\Sigma,\,\phi^{-1}[E]=E\}$.   Then $\Tau$ and $\Tau_0$
+are $\sigma$-subalgebras of $\Sigma$;  $\Tau_0\subseteq\Tau$,
+$\Tau=\{E:E\in\Sigma,\,E^{\ssbullet}\in \frak C\}$, and
+$\frak C=\{E^{\ssbullet}:E\in \Tau_0\}$.
+
+\proof{ It is easy to see that $\Tau$ and $\Tau_0$ are
+$\sigma$-subalgebras of $\Sigma$ and that
+$\Tau_0\subseteq\Tau=\{E:E^{\ssbullet}\in\frak C\}$.   So we have only
+to check that if $c\in\frak C$ there is an
+$E\in\Tau_0$ such that $E^{\ssbullet}=c$.   \Prf\ Start with any
+$F\in\Sigma$ such that $F^{\ssbullet}=c$.
+Now $F\symmdiff\phi^{-i}[F]$ is negligible for every $i\in\Bbb N$,
+because $(\phi^{-i}[F])^{\ssbullet}=\pi^ic=c$.   So if we set
+
+$$\eqalign{E
+&=\bigcup_{n\in\Bbb N}\bigcap_{i\ge n}\phi^{-i}[F]\cr
+&=\{x:\text{ there is an }n\in\Bbb N\text{ such that }\phi^i(x)\in F
+  \text{ for every }i\ge n\},\cr}$$
+
+\noindent $E^{\ssbullet}=c$.
+On the other hand, it is easy to check that $E\in\Tau_0$.\   \Qed
+}%end of proof of 372I
+
+\leader{372J}{The Ergodic Theorem:  third form}\dvAformerly{3{}72K}
+Let $(X,\Sigma,\mu)$ be a probability space and
+$\phi:X\to X$ an \imp\ function.
+Let $f$ be a real-valued function which is integrable over $X$.   Then
+
+\Centerline{$g(x)
+=\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf(\phi^i(x))$}
+
+\noindent is defined for almost every $x\in X$;  $g\phi\eae g$, and $g$
+is a conditional expectation of $f$ on the $\sigma$-algebra
+$\Tau=\{E:E\in\Sigma,\,\phi^{-1}[E]\symmdiff E$ is negligible$\}$.
+If {\it either} $f$ is $\Sigma$-measurable and defined everywhere in $X$
+{\it or} $\phi[E]$ is negligible for every negligible set $E$, then $g$
+is a conditional expectation of $f$ on the $\sigma$-algebra
+$\Tau_0=\{E:E\in\Sigma,\,\phi^{-1}[E]=E\}$.
+
+\proof{{\bf (a)} We know by 372H that $g$ is defined almost everywhere
+and that $g\phi\eae g$.   In the language of the proof of 372H,
+$g^{\ssbullet}=v$ is the conditional expectation of $u=f^{\ssbullet}$ on
+the closed subalgebra
+
+\Centerline{$\frak C=\{a:a\in\frak A,\,\pi a=a\}
+=\{F^{\ssbullet}:F\in\Tau\}
+=\{F^{\ssbullet}:F\in\Tau_0\}$,}
+
+\noindent by 372G and 372I.   So $v$ must be expressible as
+$h^{\ssbullet}$ where $h:X\to\Bbb R$ is
+$\Tau_0$-measurable and is a conditional expectation of $f$ on $\Tau_0$
+(and also on $\Tau$).
+Since every set of measure zero belongs to $\Tau$,
+$g=h\,\,\mu\restrp\Tau$-a.e., and $g$ also is a conditional expectation
+of $f$ on $\Tau$.
+
+\medskip
+
+{\bf (b)} Suppose now that $f$ is defined everywhere and
+$\Sigma$-measurable.   Here I come to a technical
+obstruction.   The definition of `conditional expectation' in 233D
+asks for $g$ to be $\mu\restrp\Tau_0$-integrable, and since
+$\mu$-negligible sets do not
+need to be $\mu\restrp\Tau_0$-negligible we have some more checking to
+do, to confirm that $\{x:x\in\dom g,\,g(x)=h(x)\}$ is
+$\mu\restrp\Tau_0$-conegligible as well as $\mu$-conegligible.
+
+\medskip
+
+\quad{\bf (i)} For $n\in\Bbb N$, set
+$\Sigma_n=\{\phi^{-n}[E]:E\in\Sigma\}$;  then
+$\Sigma_n$ is a $\sigma$-subalgebra of $\Sigma$, including $\Tau_0$.
+Set $\Sigma_{\infty}=\bigcap_{n\in\Bbb N}\Sigma_n$, still a
+$\sigma$-algebra including $\Tau_0$.   Now any negligible set
+$E\in\Sigma_{\infty}$ is $\mu\restrp\Tau_0$-negligible.   \Prf\ For each
+$n\in\Bbb N$ choose $F_n\in\Sigma$ such that $E=\phi^{-n}[F_n]$.
+Because $\phi$ is \imp, every $F_n$ is negligible, so that
+
+\Centerline{$E^*=\bigcap_{m\in\Bbb N}\bigcup_{n\in\Bbb N,j\ge m}
+\phi^{-j}[F_n]$}
+
+\noindent is negligible.   Of course
+$E=\bigcap_{m\in\Bbb N}\phi^{-m}[F_m]$ is included in $E^*$.   Now
+
+\Centerline{$\phi^{-1}[E^*]
+=\bigcap_{m\in\Bbb N}\bigcup_{n\in\Bbb N,j\ge m}\phi^{-j-1}[F_n]
+=\bigcap_{m\ge 1}\bigcup_{n\in\Bbb N,j\ge m}\phi^{-j}[F_n]
+=E^*$}
+
+\noindent because
+
+\Centerline{$\bigcup_{n\in\Bbb N,j\ge 1}\phi^{-j}[F_n]
+\subseteq\bigcup_{n\in\Bbb N,j\ge 0}\phi^{-j}[F_n]$.}
+
+\noindent So $E^*\in\Tau_0$ and $E$ is included in a negligible member
+of $\Tau_0$, which is what we needed to know.\   \Qed
+
+\medskip
+
+\quad{\bf (ii)} We are assuming that $f$ is $\Sigma$-measurable and
+defined everywhere, so that
+$g_n=\bover1{n+1}\sum_{i=0}^nf\frsmallcirc\phi^i$ is
+$\Sigma$-measurable and defined everywhere.   If we set
+$g^*=\limsup_{n\to\infty}g_n$, then $g^*:X\to[-\infty,\infty]$ is
+$\Sigma_{\infty}$-measurable.   \Prf\ For any $m\in\Bbb N$,
+$f\frsmallcirc\phi^i$ is $\Sigma_m$-measurable for every $i\ge m$, since
+$\{x:f(\phi^i(x))>\alpha\}=\phi^{-m}[\{x:f(\phi^{i-m}(x))>\alpha\}]$ for
+every $\alpha$.   Accordingly
+
+\Centerline{$g^*
+=\limsup_{n\to\infty}\Bover1{n+1}\sum_{i=m}^nf\frsmallcirc\phi^i$}
+
+\noindent is $\Sigma_m$-measurable.   As $m$ is arbitrary, $g^*$ is
+$\Sigma_{\infty}$-measurable.\   \Qed
+
+Since $h$ is surely $\Sigma_{\infty}$-measurable, and
+$h=g^*\,\,\mu$-a.e., (i) tells us that $h=g^*\,\,\mu\restrp\Tau_0$-a.e.
+But similarly $h=\liminf_{n\to\infty}g_n\,\,\mu\restrp\Tau_0$-a.e., so
+we
+must have $h=g\,\,\mu\restrp\Tau_0$-a.e.; and $g$, like $h$, is a
+conditional expectation of $f$ on $\Tau_0$.
+
+\medskip
+
+{\bf (c)} Finally, suppose that $\phi[E]$ is negligible for every
+negligible set $E$.
+Then every $\mu$-negligible set is $\mu\restrp\Tau_0$-negligible.
+\Prf\
+If $E$ is $\mu$-negligible, then $\phi[E]$,
+$\phi^2[E]=\phi[\phi[E]],\ldots$ are all negligible, so
+$E^*=\bigcup_{n\in\Bbb N}\phi^n[E]$ is negligible, and there is a
+measurable negligible set $F\supseteq E^*$.   Now $F_*=\bigcup_{m\in\Bbb
+N}\bigcap_{n\ge m}\phi^{-n}[F]$ is a negligible set in $\Tau_0$
+including $E$, so $E$ is $\mu\restrp\Tau_0$-negligible.\ \Qed\
+Consequently $g=h\,\,\mu\restrp\Tau_0$-a.e., and in this case also $g$
+is a conditional expectation of $f$ on $\Tau_0$.
+}%end of proof of 372J
+
+\cmmnt{
+\leader{372K}{Remark} Parts (b)-(c) of the proof above are
+dominated by the technical question of the exact definition of
+`conditional expectation of $f$ on $\Tau_0$', and it is natural to be
+impatient with such details.   The kind of example I am concerned about
+is the following.   Let $C\subseteq[0,1]$ be the Cantor set (134G), and
+$\phi:[0,1]\to[0,1]$ a Borel measurable function such that
+$\phi[C]=[0,1]$ and $\phi(x)=x$ for $x\in[0,1]\setminus C$.   (For
+instance, we could take $\phi$ agreeing with the Cantor function on $C$
+(134H).)   Because $C$ is negligible, $\phi$ is \imp\ for Lebesgue
+measure $\mu$, and if $f$ is any Lebesgue integrable function then
+$g(x)=\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf(\phi^i(x))$ is defined
+and equal to $f(x)$ for every $x\in\dom f\setminus C$.   But for
+$x\in C$ we can, by manipulating $\phi$, arrange for $g(x)$ to be almost
+anything;  and if $f$ is undefined on $C$ then $g$ will also be
+undefined on $C$.   On the other hand, $C$ is not
+$\mu\restrp\Tau_0$-negligible, because the only member of $\Tau_0$
+including $C$ is $[0,1]$.   So we cannot be sure of being able to form
+$\int g\,d(\mu\restrp\Tau_0)$.
+
+If instead of Lebesgue measure itself we took its restriction
+$\mu_{\Cal B}$ to the algebra of Borel subsets of $[0,1]$, then $\phi$
+would still
+be \imp\ for $\mu_{\Cal B}$, but we should now have to worry about the
+possibility that $f\restr C$ was non-measurable, so that $g\restr C$
+came out to be non-measurable, even if everywhere defined, and $g$ was
+not $\mu_{\Cal B}\restrp\Tau_0$-virtually measurable.
+
+In the statement of 372J I have offered two ways of being sure that the
+problem does not arise:  check that $\phi[E]$ is negligible whenever $E$
+is negligible (so that all negligible sets are
+$\mu\restrp\Tau_0$-negligible), or check that $f$ is defined everywhere
+and $\Sigma$-measurable.   Even if these conditions are not immediately
+satisfied in a particular application, it may be possible to modify the
+problem so that they are.   For instance, completing the measure will
+leave $\phi$ \imp\ (234Ba\formerly{2{}35Hc}),
+will not change the integrable functions but
+will make them all measurable (212F, 212Bc), and may enlarge $\Tau_0$
+enough to
+make a difference.   If our function $f$ is measurable (because the
+measure is complete, or otherwise) we can extend it to a measurable
+function defined everywhere (121I) and the corresponding extension of
+$g$ will be $\mu\restrp\Tau_0$-integrable.   Alternatively, if the
+difficulty seems to lie in the behaviour of $\phi$ rather than in the
+behaviour of $f$ (as in the example above), it may help to modify $\phi$
+on a negligible set.
+}%end of comment
+
+\leader{372L}{Continued fractions }\cmmnt{A particularly delightful
+application of the results above is to a question which belongs as much
+to number theory as to analysis.   It takes a bit of space to describe,
+but I hope you will agree with me that it is well worth knowing in
+itself, and that it also illuminates some of the ideas above.
+
+\medskip
+
+}{\bf (a)} Set $X=[0,1]\setminus\Bbb Q$.   For $x\in X$, set
+$\phi(x)=\fraction{\bover1x}$, the fractional part of $\bover1x$, and
+$k_1(x)=\bover1x-\phi(x)=\lfloor\bover1x\rfloor$, the integer part of
+$\bover1x$;  then $\phi(x)\in X$ for each $x\in X$, so we may define
+$k_n(x)=k_1(\phi^{n-1}(x))$ for every $n\ge 1$.   The strictly positive
+integers $k_1(x)$, $k_2(x)$,
+$k_3(x),\ldots$ are the {\bf continued fraction coefficients} of $x$.
+\cmmnt{Of course }$k_{n+1}(x)=k_n(\phi(x))$ for every $n\ge 1$.
+Now define
+$\sequencen{p_n(x)}$, $\sequencen{q_n(x)}$ inductively by setting
+
+\Centerline{$p_0(x)=0$,
+\quad $p_1(x)=1$,
+\quad$p_{n}(x)=p_{n-2}(x)+k_n(x)p_{n-1}(x)$ for $n\ge 1$,}
+
+\Centerline{$q_0(x)=1$,
+\quad$q_1(x)=k_1(x)$,
+\quad$q_{n}(x)=q_{n-2}(x)+k_n(x)q_{n-1}(x)$ for $n\ge 1$.}
+
+\noindent The {\bf continued fraction approximations}\cmmnt{ or
+{\bf convergents}} to $x$ are the quotients $p_n(x)/q_n(x)$.
+
+\cmmnt{(I do not discuss rational $x$, because for my purposes here
+these are merely distracting.   But if we set $k_1(0)=\infty$,
+$\phi(0)=0$ then the formulae above produce the conventional values for
+$k_n(x)$ for rational $x\in\coint{0,1}$.   As for the $p_n$ and $q_n$,
+use the formulae above until you get to $x=p_n(x)/q_n(x)$,
+$\phi^n(x)=0$, $k_{n+1}(x)=\infty$, and then  set $p_{m}(x)=p_{n}(x)$,
+$q_{m}(x)=q_{n}(x)$ for $m\ge n$.)
+}
+
+\cmmnt{\spheader 372Lb The point is that the quotients
+$r_n(x)=p_n(x)/q_n(x)$ are, in a strong sense, good rational
+approximations to $x$.   (See 372Xl(v).)   We have
+$r_n(x)<x<r_{n+1}(x)$
+for every even $n$ (372Xl).   If $x=\pi - 3$, then the first few
+coefficients are
+
+\Centerline{$k_1=7$,\quad $k_2=15$, \quad$k_3=1$,}
+%then  292  1  1  1  2  1  3  1  14  2  1  1  2
+%http://functions.wolfram.com/Constant/Pi/10
+
+\Centerline{$r_1=\Bover17$,  \quad$r_2=\Bover{15}{106}$,
+\quad$r_3=\Bover{16}{113}$;}
+
+\noindent the first and third of these corresponding to the classical
+approximations $\pi\bumpeq\Bover{22}7$, $\pi\bumpeq\Bover{355}{113}$.
+Or if we take $x=e-2$, we get
+
+\Centerline{$k_1=1$, \quad$k_2=2$, \quad$k_3=1$, \quad$k_4=1$,
+\quad$k_5=4$, \quad$k_6=1$, \quad$k_7=1$,}
+%then  6  1  1  8  1  1  10  1  1  12  1  1  ...
+
+\Centerline{$r_1=1$,  \quad$r_2=\Bover23$,
+\quad$r_3=\Bover34$, \quad$r_4=\Bover57$, \quad$r_5=\Bover{23}{32}$,
+\quad$r_6=\Bover{28}{39}$, \quad$r_7=\Bover{51}{71}$;}
+
+\noindent note that the obvious approximations $\bover{17}{24}$,
+$\bover{86}{120}$ derived from the series for $e$ are not in fact as
+close as the even terms $\bover57$, $\bover{28}{39}$ above, and involve
+larger numbers\footnote{There is a remarkable expression for the continued
+fraction expansion of $e$, due essentially to Euler;
+$k_{3m-1}=2m$, $k_{3m}=k_{3m+1}=1$ for $m\ge 2$.  See {\smc Cohn 06}.}.
+}
+
+\spheader 372Lc\cmmnt{ Now we need a variety of miscellaneous facts
+about these coefficients, which I list here.
+
+\medskip
+
+\quad}{\bf (i)} For any $x\in X$, $n\ge 1$ we have
+
+\Centerline{$p_{n-1}(x)q_n(x)-p_n(x)q_{n-1}(x)=(-1)^n$,
+\quad$\phi^n(x)
+=\Bover{p_n(x)-xq_n(x)}{xq_{n-1}(x)-p_{n-1}(x)}$\dvro{,}{}}
+
+\cmmnt{\noindent (induce on $n$), so}
+
+\Centerline{$x=\Bover{p_n(x)+p_{n-1}(x)\phi^n(x)}
+{q_n(x)+q_{n-1}(x)\phi^n(x)}$.}
+
+\medskip
+
+\quad{\bf (ii)}\dvro{ For}{ Another easy induction on $n$ shows that
+for} any finite string $\tbf{m}=(m_1,\ldots,m_n)$ of strictly positive
+integers the set $D_{\tbf{m}}=\{x:x\in X,\,k_i(x)=m_i$ for $1\le i\le
+n\}$ is an interval in $X$ on which $\phi^n$ is monotonic, being
+strictly increasing if $n$ is even and strictly decreasing if $n$ is
+odd.   \prooflet{(For the inductive step, note just that
+
+\Centerline{$D_{(m_1,\ldots,m_n)}
+=[\bover1{m_1+1},\bover1{m_1}]
+\cap\phi^{-1}[D_{(m_2,\ldots,m_n)}]$.)}
+}
+
+\medskip
+
+\quad{\bf (iii)} We also need to know that\cmmnt{ the intervals
+$D_{\tbf{m}}$
+of (ii) are small;  specifically, that} if $\tbf{m}=(m_1,\ldots,m_n)$,
+the length of $D_{\tbf{m}}$ is at most $2^{-n+1}$.   \prooflet{\Prf\ All
+the coefficients $p_i$, $q_i$, for $i\le n$, take  constant values
+$p_i^*$, $q_i^*$ on $D_{\tbf{m}}$, since they are determined from the
+coefficients $k_i$ which are constant on $D_{\tbf{m}}$ by definition.
+Now every $x\in D_{\tbf{m}}$ is of the form
+$(p^*_n+tp^*_{n-1})/(q^*_n+tq^*_{n-1})$ for some $t\in X$ (see (i)
+above) and therefore lies between
+$p^*_{n-1}/q^*_{n-1}$ and $p^*_n/q^*_n$.   But the distance between
+these is
+
+\Centerline{$\bigl|\Bover{p^*_nq^*_{n-1}-p^*_{n-1}q^*_n}
+{q^*_nq^*_{n-1}}\bigr|
+=\Bover1{q^*_nq^*_{n-1}}$,}
+
+\noindent by the first formula in (i).   Next, noting that $q^*_{i}\ge
+q^*_{i-1}+q^*_{i-2}$ for each $i\ge 2$, we see that $q^*_iq^*_{i-1}\ge
+2q^*_{i-1}q^*_{i-2}$ for $i\ge 2$, and therefore that $q_n^*q_{n-1}^*\ge
+2^{n-1}$, so that the length of $D_{\tbf{m}}$ is at most
+$2^{-n+1}$.\ \Qed
+}%end of prooflet
+
+\leader{372M}{Theorem} Set $X=[0,1]\setminus\Bbb Q$, and define
+$\phi:X\to X$ as in 372L.   Then for every Lebesgue integrable function
+$f$ on $X$,
+
+\Centerline{$\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf(\phi^i(x))
+=\Bover1{\ln 2}\int_{0}^{1}\Bover{f(t)}{1+t}dt$}
+
+\noindent for almost every $x\in X$.
+
+\proof{{\bf (a)} The integral just written, and the phrase `almost
+every', refer of course to Lebesgue measure;  but the first step is to
+introduce another measure, so I had better give a name $\mu_L$ to
+Lebesgue measure on $X$.   Let $\nu$ be the indefinite-integral measure
+on $X$ defined by saying that $\nu E=\bover1{\ln
+2}\int_E\bover1{1+x}\mu_L(dx)$ whenever this is defined.   The
+coefficient $\bover1{\ln 2}$ is of course chosen to make $\nu X=1$.
+Because $\bover1{1+x}>0$ for every $x\in X$, $\dom\nu=\dom\mu_L$ and
+$\nu$ has just the same negligible sets as $\mu_L$
+(234Lc\formerly{2{}34D});   I can
+therefore safely use the terms `measurable set', `almost
+everywhere' and `negligible' without declaring which measure I have
+in mind each time.
+
+\medskip
+
+{\bf (b)} Now $\phi$ is \imp\ when regarded as a function from $(X,\nu)$
+to itself.   \Prf\ For each $k\ge 1$, set
+$I_k=\coint{\bover1{k+1},\bover1{k}}$.   On $X\cap I_k$,
+$\phi(x)=\bover1x-k$.   Observe that $\phi\restr I_k:X\cap I_k\to X$ is
+bijective and differentiable relative to its domain in the sense of
+262Fb.   Consider, for any measurable $E\subseteq X$,
+
+$$\eqalign{\int_E\Bover1{(y+k)(y+k+1)}\mu_L(dy)
+&=\int_{I_k\cap\phi^{-1}[E]}
+\Bover1{(\phi(x)+k)(\phi(x)+k+1)}|\phi'(x)|\mu_L(dx)\cr
+&=\int_{I_k\cap\phi^{-1}[E]}
+\Bover{x^2}{x+1}\Bover1{x^2}\mu_L(dx)
+=\ln 2\cdot\nu(I_k\cap\phi^{-1}[E]),\cr}$$
+
+\noindent using 263D (or more primitive results, of course).   But
+
+\Centerline{$\sum_{k=1}^{\infty}\Bover1{(y+k)(y+k+1)}
+=\sum_{k=1}^{\infty}\Bover1{y+k}-\Bover1{y+k+1}=\Bover1{y+1}$}
+
+\noindent for every $y\in[0,1]$, so
+
+$$\nu E=\Bover1{\ln
+2}\sum_{k=1}^{\infty}\int_E\Bover1{(y+k)(y+k+1)}\mu_L(dy)
+=\sum_{k=1}^{\infty}\nu(I_k\cap\phi^{-1}[E])=\nu\phi^{-1}[E].$$
+
+\noindent As $E$ is arbitrary, $\phi$ is \imp.\   \Qed
+
+\medskip
+
+{\bf (c)} The next thing we need to know is that if $E\subseteq X$ and
+$\phi^{-1}[E]=E$ then $E$ is either negligible or conegligible.   \Prf\
+I use the sets $D_{\tbf{m}}$ of 372L(c-ii).
+
+\medskip
+
+\quad{\bf (i)} For any string $\tbf{m}=(m_1,\ldots,m_n)$ of strictly
+positive integers, we have
+
+\Centerline{$x=\Bover{p^*_n+p^*_{n-1}\phi^n(x)}
+{q_n^*+q_{n-1}^*\phi^n(x)}$}
+
+\noindent for every $x\in D_{\tbf{m}}$, where $p_n^*$, etc., are defined
+from $\tbf{m}$ as in 372L(c-iii).   Recall also that $\phi^n$ is
+strictly monotonic on $D_{\tbf{m}}$.   So for any interval
+$I\subseteq[0,1]$ (open, closed or half-open) with endpoints
+$\alpha<\beta$, $\phi^{-n}[I]\cap D_{\tbf{m}}$ will be of the form
+$X\cap J$, where $J$ is an interval with endpoints
+$(p^*_n+p^*_{n-1}\alpha)/(q^*_n+q^*_{n-1}\alpha)$,
+$(p^*_n+p^*_{n-1}\beta)/(q^*_n+q^*_{n-1}\beta)$ in some order.   This
+means that we can estimate $\mu_L(\phi^{-n}[I]\cap
+D_{\tbf{m}})/\mu_LD_{\tbf{m}}$, because it is
+
+$$\bover{
+\bigl|\bover{p^*_n+p^*_{n-1}\alpha}{q^*_n+q^*_{n-1}\alpha}
+-\bover{p^*_n+p^*_{n-1}\beta}{q^*_n+q^*_{n-1}\beta}\bigr|}
+{\bigl|\bover{p^*_n}{q^*_n}
+-\bover{p^*_n+p^*_{n-1}}{q_n^*+q^*_{n-1}}\bigr|}
+=\Bover{(\beta-\alpha)q^*_n(q_n^*+q^*_{n-1})}
+{(q_n^*+q_{n-1}^*\alpha)(q_n^*+q_{n-1}^*\beta)}
+\ge\Bover{(\beta-\alpha)q_n^*}{q_n^*+q_{n-1}^*}
+\ge\Bover12(\beta-\alpha).$$
+
+\noindent Now look at
+
+\Centerline{$\Cal A=\{E:E\subseteq [0,1]$ is Lebesgue measurable,
+ $\mu_L(\phi^{-n}[E]\cap D_{\tbf{m}})
+  \ge\Bover12\mu_LE\cdot\mu_LD_{\tbf{m}}\}$.}
+
+\noindent Clearly the union of two disjoint members of $\Cal A$ belongs
+to $\Cal A$.   Because $\Cal A$ contains every subinterval of $[0,1]$
+it includes the algebra $\Cal E$ of subsets of $[0,1]$ consisting of
+finite unions of intervals.   Next, the union of any
+non-decreasing sequence in $\Cal A$ belongs to $\Cal A$, and the
+intersection of a non-increasing sequence likewise.   But this means
+that $\Cal A$ must include the
+$\sigma$-algebra generated by $\Cal E$ (136G), that is, the Borel
+$\sigma$-algebra.   But also, if $E\in\Cal A$ and $H\subseteq[0,1]$ is
+negligible, then
+
+\Centerline{$\mu_L(\phi^{-n}[E\symmdiff H]\cap D_{\tbf{m}})
+=\mu_L(\phi^{-n}[E]\cap D_{\tbf{m}})
+\ge\Bover12\mu_LE\cdot\mu_LD_{\tbf{m}}
+=\Bover12\mu_L(E\symmdiff H)\cdot\mu_LD_{\tbf{m}}$}
+
+\noindent and $E\symmdiff H\in\Cal A$.   And this means that every
+Lebesgue measurable subset of $[0,1]$ belongs to $\Cal A$ (134Fb).
+
+\medskip
+
+\quad{\bf (ii)} \Quer\ Now suppose, if possible, that $E$ is a
+measurable subset of $X$ and that $\phi^{-1}[E]=E$ and $E$ is neither
+negligible nor conegligible in $X$.    Set $\gamma=\bover12\mu_LE>0$.
+By Lebesgue's density theorem (223B) there is some $x\in X\setminus E$
+such that $\lim_{\delta\downarrow 0}\psi(\delta)=0$, where
+$\psi(\delta)=\Bover1{2\delta}\mu_L(E\cap[x-\delta,x+\delta])$ for
+$\delta>0$.
+Take $n$ so large that $\psi(\delta)<\bover12\gamma$ whenever
+$0<\delta\le 2^{-n+1}$, and set $m_i=k_i(x)$ for $i\le n$, so that $x\in
+D_{\tbf{m}}$.   Taking the least $\delta$ such that
+$D_{\tbf{m}}\subseteq[x-\delta,x+\delta]$, we must have
+$\delta\le 2^{-n+1}$, because the length of $D_{\tbf{m}}$ is at most
+$2^{-n+1}$ (372L(c-iii)), while $\mu_LD_{\tbf{m}}\ge\delta$, because
+$D_{\tbf{m}}$ is an interval.   Accordingly
+
+\Centerline{$\mu_L(E\cap D_{\tbf{m}})\le\mu_L(E\cap[x-\delta,x+\delta])
+=2\delta\psi(\delta)<\gamma\delta\le\gamma\mu_LD_{\tbf{m}}$.}
+
+\noindent But we also have
+
+\Centerline{$\mu_L(E\cap D_{\tbf{m}})=\mu_L(\phi^{-n}[E]\cap
+D_{\tbf{m}})\ge\gamma\mu_L D_{\tbf{m}}$,}
+
+\noindent by (i).\   \Bang
+
+This proves the result.\   \Qed
+
+\medskip
+
+{\bf (d)} The final fact we need in preparation is that $\phi[E]$ is
+negligible for every negligible $E\subseteq X$.   This is because $\phi$
+is differentiable relative to its domain (see 263D(ii)).
+
+\medskip
+
+{\bf (e)} Now let $f$ be any $\mu_L$-integrable function.   Because
+$\bover1{1+x}\le 1$ for every $x$, $f$ is also $\nu$-integrable
+(235K\formerly{2{}35M});   consequently, using (b) above and 372J,
+
+\Centerline{$g(x)
+=\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf(\phi^i(x))$}
+
+\noindent is defined for almost every $x\in X$, and is a conditional
+expectation of $f$ (with respect to the measure $\nu$) on the
+$\sigma$-algebra $\Tau_0=\{E:E$ is measurable, $\phi^{-1}[E]=E\}$.
+But we have just seen that $\Tau_0$ consists only of negligible and
+conegligible sets, so $g$ must be essentially constant;  since
+$\int g\,d\nu=\int fd\nu$, we must have
+
+$$\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf(\phi^i(x))
+=\int fd\nu
+=\Bover1{\ln 2}\int_0^1\Bover{f(t)}{1+t}\mu_L(dt)$$
+
+\noindent for almost every $x$ (using 235K to calculate $\int fd\nu$).
+}%end of proof of 372M
+
+\leader{372N}{Corollary} For almost every $x\in [0,1]\setminus\Bbb Q$,
+
+\Centerline{$\lim_{n\to\infty}\Bover1n\#(\{i:1\le i\le n,\,k_i(x)=k\})
+=\Bover1{\ln 2}(2\ln(k+1)-\ln k-\ln(k+2))$}
+
+\noindent for every $k\ge 1$, where $k_1(x),\ldots$ are the continued
+fraction coefficients of $x$.
+
+\proof{ In 372M, set $f=\chi(X\cap[\bover1{k+1},\bover1k])$.   Then (for
+$i\ge 1$) $f(\phi^i(x))=1$ if $k_i(x)=k$ and zero otherwise.   So
+
+$$\eqalign{\lim_{n\to\infty}&\Bover1n\#(\{i:1\le i\le n,\,k_i(x)=k\})\cr
+&=\lim_{n\to\infty}\Bover1{n}\sum_{i=1}^nf(\phi^i(x))
+=\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf(\phi^i(x))\cr
+&=\Bover1{\ln 2}\int_0^1\Bover{f(t)}{1+t}dt
+=\Bover1{\ln 2}\int_{1/k+1}^{1/k}\Bover1{1+t}dt\cr
+&=\Bover1{\ln 2}(\ln(1+\Bover1k)-\ln(1+\Bover1{k+1}))
+=\Bover1{\ln 2}(2\ln(k+1)-\ln k-\ln(k+2)),\cr}$$
+
+\noindent for almost every $x\in X$.
+}%end of proof of 372N
+
+\leader{372O}{Mixing and
+ergodic \dvrocolon{transformations}}\cmmnt{ This seems an
+appropriate moment for some brief notes on three special types of
+measure-preserving homomorphism or \imp\ function.
+
+\medskip
+
+\noindent}{\bf Definitions (a)(i)}\discrversionA{\footnote{Amended
+2010.}}{} Let $\frak A$ be a Boolean algebra.
+Then a Boolean homomorphism $\pi:\frak A\to\frak A$ is {\bf ergodic} if
+whenever $a$, $b\in\frak A\setminus\{0\}$ there are $m$, $n\in\Bbb N$ such
+that $\pi^ma\Bcap\pi^nb\ne 0$.
+
+\medskip
+
+\quad{\bf (ii)} Let $(\frak A,\bar\mu)$ be a probability
+algebra and $\pi:\frak A\to\frak A$ a measure-preserving Boolean
+homomorphism.   Then $\pi$ is {\bf mixing}\cmmnt{ (sometimes called {\bf
+strongly mixing})}
+if $\lim_{n\to\infty}\bar\mu(\pi^na\Bcap b)=\bar\mu a\cdot\bar\mu b$ for
+all $a$, $b\in\frak A$.
+
+\medskip
+
+\quad{\bf (iii)}\dvAnew{2011} Let $(\frak A,\bar\mu)$ be a probability
+algebra and $\pi:\frak A\to\frak A$ a measure-preserving Boolean
+homomorphism.   Then $\pi$ is {\bf weakly mixing}
+if $\lim_{n\to\infty}\Bover1n\sum_{i=0}^{n-1}
+|\bar\mu(\pi^na\Bcap b)-\bar\mu a\cdot\bar\mu b|=0$ for
+all $a$, $b\in\frak A$.
+
+\medskip
+
+\spheader 372Ob Let $(X,\Sigma,\mu)$ be a probability space and
+$\phi:X\to X$ an \imp\ function.
+
+\medskip
+
+\quad{\bf (i)} $\phi$ is {\bf ergodic}\cmmnt{ (also called {\bf
+metrically
+transitive}, {\bf indecomposable})} if every measurable set $E$ such
+that $\phi^{-1}[E]=E$ is either negligible or conegligible.
+
+\medskip
+
+\quad{\bf (ii)} $\phi$ is {\bf mixing} if
+$\lim_{n\to\infty}\mu(F\cap\phi^{-n}[E])=\mu E\cdot\mu F$ for all $E$,
+$F\in\Sigma$.
+
+\medskip
+
+\quad{\bf (iii)}\dvAnew{2011} $\phi$ is {\bf weakly mixing} if
+if $\lim_{n\to\infty}\Bover1n\sum_{i=0}^{n-1}
+|\mu(F\cap\phi^{-n}[E])-\mu E\cdot\mu F|=0$ for
+all $E$, $F\in\Sigma$.
+
+
+\leader{372P}{}\dvAnew{2010}\cmmnt{ For the principal applications of the
+idea in 372O(a-i),
+we have an alternative definition in terms of fixed-point subalgebras.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $\frak A$ be a Boolean algebra and
+$\pi:\frak A\to\frak A$ a Boolean homomorphism, with fixed-point subalgebra
+$\frak C$.
+
+(a) If $\pi$ is ergodic, then $\frak C=\{0,1\}$.
+
+(b) If $\pi$ is an automorphism, then
+$\pi$ is ergodic iff
+$\sup_{n\in\Bbb Z}\pi^na=1$ for every $a\in\frak A\setminus\{0\}$.
+
+(c) If $\pi$ is an automorphism and $\frak A$ is Dedekind
+$\sigma$-complete, then $\pi$ is ergodic iff $\frak C=\{0,1\}$.
+
+\proof{{\bf (a)} If $c\in\frak C$, then $\pi^mc=c$ is disjoint from
+$\pi^n(1\Bsetminus c)=1\Bsetminus c$ for all $m$, $n\in\Bbb N$, so one of
+$c$, $1\Bsetminus c$ must be zero.
+
+\medskip
+
+{\bf (b)(i)} If $\pi$ is ergodic and $a\ne 0$ and $b\Bcap\pi^na=0$ for
+every $n\in\Bbb Z$, then $\pi^mb\Bcap\pi^na=\pi^m(b\Bcap\pi^{n-m}a)=0$ for
+all $m$, $n\in\Bbb N$, so $b=0$.   As $b$ is arbitrary,
+$\sup_{n\in\Bbb Z}\pi^na=1$;  as $a$ is arbitrary, $\pi$ satisfies the
+condition.
+
+\medskip
+
+\quad{\bf (ii)} If $\pi$ satisfies the condition, and $a$,
+$b\in\frak A\setminus\{0\}$, then there is an $m\in\Bbb Z$ such that
+$\pi^ma\Bcap b\ne 0$;  setting $n=\max(-m,0)$,
+$\pi^{m+n}a\Bcap\pi^nb\ne 0$, while $m+n$ and $n$ both belong to $\Bbb N$.
+As $a$ and $b$ are arbitrary, $\pi$ is ergodic.
+
+\medskip
+
+{\bf (c)} If $\pi$ is ergodic then $\frak C=\{0,1\}$, by (a).
+If $\frak C=\{0,1\}$ and $a\in\frak A\setminus\{0\}$, consider
+$c=\sup_{n\in\Bbb Z}\pi^na$, which is defined because $\frak A$ is Dedekind
+$\sigma$-complete.   Being an automorphism, $\pi$ is
+order-continuous (313Ld), so
+$\pi c=\sup_{n\in\Bbb Z}\pi^{n+1}a=c$ and $c\in\frak C$.
+Since $c\Bsupseteq a$ is non-zero, $c=1$.   As $a$ is arbitrary,
+$\pi$ is ergodic, by (b).
+}%end of proof of 372P
+
+\leader{372Q}{}\cmmnt{ The following facts are equally straightforward.
+
+\medskip
+
+\noindent}{\bf Proposition}\dvArevised{ and expanded 2011}
+(a) Let $(\frak A,\bar\mu)$ be a probability
+algebra, $\pi:\frak A\to\frak A$ a measure-preserving Boolean
+homomorphism, and $T:L^0=L^0(\frak A)\to L^0$ the Riesz homomorphism such
+that $T(\chi a)=\chi\pi a$ for every $a\in\frak A$.
+
+\quad(i) If $\pi$ is mixing, it is weakly mixing.
+
+\quad(ii) If $\pi$ is weakly mixing, it is ergodic.
+
+\quad(iii) The following
+are equiveridical:  ($\alpha$) $\pi$ is
+ergodic;  ($\beta$) the only $u\in L^0$ such that $Tu=u$ are the
+multiples of
+$\chi 1$;   ($\gamma$) for every $u\in L^1=L^1(\frak A,\bar\mu)$,
+$\sequencen{\bover1{n+1}\sum_{i=0}^nT^iu}$ order*-converges to
+$(\int u)\chi 1$.
+
+\quad(iv)
+The following are equiveridical:  ($\alpha$) $\pi$ is mixing;
+($\beta$) $\lim_{n\to\infty}\innerprod{T^nu}{v}=\int u\int v$ for all $u$,
+$v\in L^2(\frak A,\bar\mu)$.
+
+\quad(v)
+The following are equiveridical:  ($\alpha$) $\pi$ is weakly mixing;
+($\beta$)
+$\lim_{n\to\infty}\Bover1n\sum_{k=0}^{n-1}
+  |\innerprod{T^ku}{v}-\int u\int v|=0$ for all $u$,
+$v\in L^2(\frak A,\bar\mu)$.
+
+(b) Let $(X,\Sigma,\mu)$ be a probability space, with measure algebra
+$(\frak A,\bar\mu)$.   Let $\phi:X\to X$ be an \imp\ function and
+$\pi:\frak A\to\frak A$ the associated homomorphism such that
+$\pi E^{\ssbullet}=(\phi^{-1}[E])^{\ssbullet}$ for every $E\in\Sigma$.
+
+\quad (i) The following are equiveridical:  ($\alpha$) $\phi$ is
+ergodic;
+($\beta$) $\pi$ is ergodic;  ($\gamma$) for every $\mu$-integrable
+real-valued function $f$,
+$\sequencen{\bover1{n+1}\sum_{i=0}^nf(\phi^i(x))}$ converges to $\int f$
+for almost every $x\in X$.
+
+\quad (ii) $\phi$ is mixing iff $\pi$ is, and in this case $\phi$ is
+weakly mixing.
+
+\quad (iii) $\phi$ is weakly mixing iff $\pi$ is, and in this case $\phi$
+is ergodic.
+
+\proof{{\bf (a)(i)-(ii)} Immediate from the definitions.
+
+\medskip
+
+\quad{\bf (iii)\grheada$\Rightarrow$\grheadb} $Tu=u$ iff
+$\pi\Bvalue{u>\alpha}=\Bvalue{u>\alpha}$ for
+every $\alpha$;  if $\pi$ is ergodic, this means that
+$\Bvalue{u>\alpha}\in\{0,1\}$ for every $\alpha$, by 372Pa,
+and $u$ must be of the
+form $\gamma\chi 1$, where $\gamma=\inf\{\alpha:\Bvalue{u>\alpha}=0\}$.
+
+\medskip
+
+\qquad{\bf \grheadb$\Rightarrow$\grheadc} If ($\beta$) is true and
+$u\in L^1$, then we know from 372G that
+$\sequencen{\bover1{n+1}\sum_{i=0}^nT^iu}$ is order*-convergent and
+$\|\,\|_1$-convergent to some $v$ such that $Tv=v$;  by ($\beta$), $v$
+is of the form $\gamma\chi 1$;  and
+
+\Centerline{$\gamma
+=\int v=\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^n\int T^iu=\int
+u$.}
+
+\qquad\grheadc$\Rightarrow$\grheada\  Assuming ($\gamma$), take any
+$a\in\frak A$ such that $\pi a=a$, and consider $u=\chi a$.   Then
+$T^iu=\chi a$ for every $i$, so
+
+\Centerline{$\chi a=\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nT^iu
+=(\int u)\chi 1=\bar\mu a\cdot\chi 1$,}
+
+\noindent and $a$ must be either $0$ or $1$.   By 372Pc, $\pi$ is ergodic.
+
+\medskip
+
+\quad{\bf (iv)}\grheada$\Rightarrow$\grheadb\ Since $\pi$ is mixing,
+
+$$\eqalign{\lim_{n\to\infty}\innerprod{T^n\chi a}{\chi b}
+&=\lim_{n\to\infty}\innerprod{\chi\pi^n a}{\chi b}
+=\lim_{n\to\infty}\bar\mu(\pi^na\Bcap b)\cr
+&=\bar\mu a\cdot\bar\mu b
+=\int\chi a\int\chi b\cr}$$
+
+\noindent for all $a$, $b\in\frak A$.   Because
+$(u,v)\mapsto\innerprod{T^nu}{v}$ and $(u,v)\mapsto\int u\int v$ are
+both bilinear,
+
+\Centerline{$\lim_{n\to\infty}\innerprod{T^nu}{v}=\int u\int v$}
+
+\noindent for all $u$, $v\in S(\frak A)$.   For general $u$,
+$v\in L^2(\frak A,\bar\mu)$, take any $\epsilon>0$.   Then there are $u'$,
+$v'\in S(\frak A)$ such that
+
+\Centerline{$(\|u-u'\|_2+\|v-v'\|_2)\max(\|u\|_2,\|v\|_2+\|v-v'\|_2)
+\le\epsilon$}
+
+\noindent (366C), so that
+
+$$\eqalignno{|\innerprod{T^nu}{v}-\innerprod{T^nu'}{v'}|
+&\le|\innerprod{T^nu}{v-v'}|+|\innerprod{T^nu-T^nu'}{v'}|\cr
+&\le\|T^nu\|_2\|v-v'\|_2+\|T^nu-T^nu'\|_2\|v'\|_2\cr
+&\le\|u\|_2\|v-v'\|_2+\|u-u'\|_2(\|v\|_2+\|v-v'\|_2)\cr
+\displaycause{366H(a-iv)}
+&\le\epsilon,\cr
+|\int u\int v-\int u'\int v'|
+&\le|\int u||\int v-v'|+|\int u-u'||\int v'|\cr
+&\le\|u\|_2\|v-v'\|_2+\|u-u'\|_2\|v'\|_2
+\le\epsilon\cr}$$
+
+\noindent for every $n$, and
+
+\Centerline{$\limsup_{n\to\infty}|\innerprod{T^nu}{v}-\int u\int v|
+\le 2\epsilon+\lim_{n\to\infty}|\innerprod{T^nu'}{v'}-\int u'\int v'|
+=2\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary,
+$\lim_{n\to\infty}\innerprod{T^nu}{v}=\int u\int v$, as required.
+
+\medskip
+
+\qquad\grheadb$\Rightarrow$\grheada\ This is elementary, as ($\alpha$) is
+just the case $u=\chi a$, $v=\chi b$ of ($\beta$).
+
+\medskip
+
+\quad{\bf (v)} The argument is essentially the same as in (iv);
+($\alpha$) is a special case of ($\beta$);  if ($\alpha$) is true, then by
+linearity ($\beta$) is true when $u$, $v\in S(\frak A)$, and the functional
+$(u,v)\mapsto\limsup_{n\to\infty}\Bover1n\sum_{k=0}^{n-1}
+   |\innerprod{T^ku}{v}-\int u\int v|$ is continuous.
+
+\medskip
+
+{\bf (b)(i)}\grheada$\Rightarrow$\grheadb\  If $\pi a=a$
+there is an $E$ such that $\phi^{-1}[E]=E$ and $E^{\ssbullet}=a$, by
+372I;  now $\bar\mu a=\mu E\in\{0,1\}$, so $a\in\{0,1\}$.   Thus
+the fixed-point subalgebra of $\pi$ is $\{0,1\}$;  by
+372Pc again, $\pi$ is ergodic.
+
+\medskip
+
+\qquad\grheadb$\Rightarrow$\grheadc\ Set $u=f^{\ssbullet}\in L^1$.   In
+the language of (a), $T^iu=(f\phi^i)^{\ssbullet}$ for each $i$, as in the
+proof of 372H, so that
+
+\Centerline{$(\Bover1{n+1}\sum_{i=0}^nf\phi^i)^{\ssbullet}
+=\Bover1{n+1}\sum_{i=0}^nT^iu$}
+
+\noindent is order*-convergent to $(\int u)\chi 1=(\int f)\chi 1$, and
+$\bover1{n+1}\sum_{i=0}^nf\phi^i\to\int f$ a.e.
+
+\medskip
+
+\qquad\grheadc$\Rightarrow$\grheada\ If $\phi^{-1}[E]=E$ then, applying
+($\gamma$) to $f=\chi E$, we see that $\chi E\eae\mu E\cdot\chi X$, so
+that $E$ is either negligible or conegligible.
+
+\medskip
+
+\quad{\bf (ii)-(iii)} Simply translating the definitions, we see that
+$\pi$ is mixing, or weakly mixing, iff $\phi$ is.
+So the results here are reformulations of (a-i) and (a-ii).
+}%end of proof of 372Q
+
+\cmmnt{\leader{372R}{Remarks}\dvAformerly{3{}72Pc}
+{\bf (a)} The reason for introducing
+`ergodic' homomorphisms in this section is of course 372G/372J;  if
+$\pi$ in 372G, or $\phi$ in 372J, is ergodic, then the limit $Pu$ or $g$
+must be (essentially) constant, being a conditional expectation on a
+trivial subalgebra.
+
+\spheader 372Rb In the definition 372O(b-i) I should perhaps emphasize that
+we look only at {\it measurable} sets $E$.   We certainly expect that
+there will generally be many sets $E$ for which $\phi^{-1}[E]=E$, since
+any union of orbits of $\phi$ will have this property.
+
+\spheader 372Rc Part (c) of the proof of 372M was devoted to showing
+that the function $\phi$ there was ergodic;  see also 372Xm.   For
+another ergodic transformation see 372Xr.   For examples of mixing
+transformations see 333P, 372Xp, 372Xq, 372Xt, 372Xw and 372Xx.
+
+\spheader 372Rd It seems to be difficult to display explicitly
+a weakly mixing transformation which is not mixing.   There is an
+example in {\smc Chacon 69}, and I give another in 494F in Volume 4.
+In a certain sense, however, `most' measure-preserving automorphisms of the
+Lebesgue probability algebra are weakly mixing but not mixing;  I will
+return to this in 494E.
+}%end of comment
+
+\leader{372S}{}\cmmnt{ There is a useful sufficient condition for a
+homomorphism or function to be mixing.
+
+\medskip
+
+\noindent}{\bf Proposition} (a) Let $(\frak A,\bar\mu)$ be a probability
+algebra, and $\pi:\frak A\to\frak A$ a measure-preserving Boolean
+homomorphism.   If $\bigcap_{n\in\Bbb N}\pi^n[\frak A]=\{0,1\}$, then
+$\pi$ is mixing.
+
+(b) Let $(X,\Sigma,\mu)$ be a probability space, and $\phi:X\to X$ an
+\imp\ function.   Set
+
+\Centerline{$\Tau=\{E:$ for every $n\in\Bbb N$ there is an $F\in\Sigma$
+such that $E=\phi^{-n}[F]\}$.}
+
+\noindent If every member of $\Tau$ is either negligible or
+conegligible, $\phi$ is mixing.
+
+\proof{{\bf (a)} Let $T:L^0=L^0(\frak A)\to L^0$ be the Riesz
+homomorphism associated with $\pi$.   Take any $a$, $b\in\frak A$ and
+any non-principal ultrafilter $\Cal F$ on $\Bbb N$.   Then
+$\sequencen{T^n(\chi a)}$ is a bounded sequence in the reflexive space
+$L^2_{\bar\mu}=L^2(\frak A,\bar\mu)$, so
+$v=\lim_{n\to\Cal F}T^n(\chi a)$ is defined for the weak topology of
+$L^2_{\bar\mu}$.   Now for each
+$n\in\Bbb N$ set $\frak B_n=\pi^n[\frak A]$.   This is a closed
+subalgebra of $\frak A$ (314F(a-i)), and contains $\pi^ia$ for every
+$i\ge n$.   So if we identify $L^2(\frak B_n,\bar\mu\restrp\frak B_n)$
+with the corresponding subspace of $L^2_{\bar\mu}$ (366I), it
+contains $T^i(\chi a)$ for every $i\ge n$;  but also it is norm-closed,
+therefore weakly closed (3A5Ee), so contains $v$.   This means that
+$\Bvalue{v>\alpha}$ must belong to $\frak B_n$ for every $\alpha$ and
+every $n$.   But in this case
+$\Bvalue{v>\alpha}\in\bigcap_{n\in\Bbb N}\frak B_n=\{0,1\}$ for every
+$\alpha$, and $v$ is of the form $\gamma\chi 1$.   Also
+
+\Centerline{$\gamma=\int v=\lim_{n\to\Cal F}\int T^n(\chi a)
+=\bar\mu a$.}
+
+\noindent So
+
+\Centerline{$\lim_{n\to\Cal F}\bar\mu(\pi^n a\Bcap b)
+=\lim_{n\to\Cal F}\int T^n(\chi a)\times\chi b
+=\int v\times\chi b
+=\gamma\bar\mu b
+=\bar\mu a\cdot\bar\mu b$.}
+
+\noindent But this is true of every non-principal ultrafilter $\Cal F$
+on $\Bbb N$, so we must have
+$\lim_{n\to\infty}\bar\mu(\pi^na\Bcap b)=\bar\mu a\cdot\bar\mu b$
+(3A3Lc).   As $a$ and $b$ are arbitrary, $\pi$ is mixing.
+
+\medskip
+
+{\bf (b)} Let $(\frak A,\bar\mu)$ be the measure algebra of
+$(X,\Sigma,\mu)$, and $\pi:\frak A\to\frak A$ the measure-preserving
+homomorphism corresponding to $\phi$.
+The point is that if $a\in\bigcap_{n\in\Bbb N}\pi^n[\frak A]$,
+there is an $E\in\Tau$ such that $E^{\ssbullet}=a$.   \Prf\ For each
+$n\in\Bbb N$ there is an $a_n\in\frak A$ such that $\pi^na_n=a$;  say
+$a_n=F_n^{\ssbullet}$ where $F_n\in\Sigma$.   Then
+$\phi^{-n}[F_n]^{\ssbullet}=a$.   Set
+
+\Centerline{$E=\bigcup_{m\in\Bbb N}\bigcap_{n\ge m}\phi^{-n}[F_n]$,
+\quad $E_k=\bigcup_{m\ge k}\bigcap_{n\ge m}\phi^{-(n-k)}[F_n]$}
+
+\noindent for each $k$;  then $E^{\ssbullet}=a$ and
+
+\Centerline{$\phi^{-k}[E_k]
+=\bigcup_{m\ge k}\bigcap_{n\ge m}\phi^{-n}[F_n]
+=\bigcup_{m\in\Bbb N}\bigcap_{n\ge m}\phi^{-n}[F_n]=E$}
+
+\noindent for every $k$, so $E\in\Tau$.\  \Qed
+
+So $\bigcap_{n\in\Bbb N}\frak A_n=\{0,1\}$ and $\pi$ and $\phi$ are
+mixing.
+}%end of proof of 372S
+
+\exercises{\leader{372X}{Basic exercises (a)}
+%\spheader 372Xa
+Let $U$ be any reflexive Banach space, and $T:U\to U$ an operator of
+norm at most $1$.   Set $A_n=\bover1{n+1}\sum_{i=0}^nT^i$ for each
+$n\in\Bbb N$.   Show that $Pu=\lim_{n\to\infty}A_nu$ is defined (as a
+limit for the norm topology) for every $u\in U$, and that $P:U\to U$ is
+a projection onto $\{u:Tu=u\}$.  \Hint{show that $\{u:Pu$ is defined$\}$
+is a closed linear subspace of $U$ containing $Tu-u$ for every $u\in
+U$.}
+
+(This is a version of the {\bf mean ergodic theorem}.)
+%372A
+
+\sqheader 372Xb Let $(\frak A,\bar\mu)$ be a measure algebra, and
+$T\in\Cal T^{(0)}_{\bar\mu,\bar\mu}$;  set
+$A_n=\bover1{n+1}\sum_{i=0}^nT^i$ for $n\in\Bbb N$.   Take any
+$p\in\coint{1,\infty}$ and $u\in L^p=L^p(\frak A,\bar\mu)$.   Show that
+$\sequencen{A_nu}$ is order*-convergent and
+$\|\,\|_p$-convergent to some
+$v\in L^p$.   \Hint{put 372Xa together with 372D.}
+%372D
+
+\spheader 372Xc Let $(\frak A,\bar\mu)$ be a probability algebra, and
+$\pi:\frak A\to\frak A$ a measure-preserving Boolean homomorphism.   Let
+$P:L^1\to L^1$ be the operator defined as in 365P/366Hb, where
+$L^1=L^1_{\bar\mu}$, so that $\int_aPu=\int_{\pi a}u$ for
+$u\in L^1$ and $a\in\frak A$.   Set
+$A_n=\bover1{n+1}\sum_{i=0}^nP^i:L^1\to L^1$
+for each $i$.   Show that for any $u\in L^1$, $\sequencen{A_nu}$
+is order*-convergent and $\|\,\,\|_1$-convergent to the conditional
+expectation of $u$ on the subalgebra $\{a:\pi a=a\}$.
+%372G
+
+\spheader 372Xd Show that if $f$ is any Lebesgue integrable function on
+$\Bbb R$, and $y\in\Bbb R\setminus\{0\}$, then
+
+\Centerline{$\lim_{n\to\infty}\bover1{n+1}\sum_{k=0}^nf(x+ky)=0$}
+
+\noindent for almost every $x\in\Bbb R$.
+%372H
+
+\spheader 372Xe Let $(X,\Sigma,\mu)$ be a measure space and
+$\phi:X\to X$ an \imp\ function.   Set
+$\Tau=\{E:E\in\Sigma,\,\mu(\phi^{-1}[E]\symmdiff E)=0\}$,
+$\Tau_0=\{E:E\in\Sigma,\,\phi^{-1}[E]=E\}$.   (i) Show that
+$\Tau=\{E\symmdiff F:E\in\Tau_0,\,F\in\Sigma,\,\mu F=0\}$.   (ii) Show
+that a set $A\subseteq X$ is $\mu\restrp\Tau_0$-negligible iff
+$\phi^n[A]$ is $\mu$-negligible for every $n\in\Bbb N$.
+%372J
+
+\sqheader 372Xf Let $\nu$ be a Radon probability measure on $\Bbb R$
+such that $\int|t|\nu(dt)$ is finite (cf.\ 271F).   On
+$X=\Bbb R^{\Bbb N}$ let $\lambda$ be the product measure obtained when
+each factor is given the measure $\nu$.  Define $\phi:X\to X$ by setting
+$\phi(x)(n)=x(n+1)$ for $x\in X$, $n\in\Bbb N$.   (i) Show that $\phi$
+is \imp.   \Hint{254G.   See also 372Xw below.}    (iii) Set
+$\gamma=\int t\nu(dt)$, the
+expectation of the distribution $\nu$.   By considering
+$\bover1{n+1}\sum_{i=0}^nf\frsmallcirc\phi^i$, where $f(x)=x(0)$ for
+$x\in X$, show that
+$\lim_{n\to\infty}\bover1{n+1}\sum_{i=0}^nx(i)=\gamma$ for
+$\lambda$-almost every $x\in X$.
+%372J
+
+\sqheader 372Xg Use the Ergodic Theorem to prove Kolmogorov's Strong Law
+of Large Numbers (273I), as follows.   Given a complete probability
+space $(\Omega,\Sigma,\mu)$ and an independent identically distributed
+sequence $\sequencen{f_n}$ of measurable functions from $\Omega$ to
+$\Bbb R$, set $X=\BbbR^{\Bbb N}$ and
+$f(\omega)=\sequencen{f_n(\omega)}$ for $\omega\in\Omega$.   Show that
+if we give each copy of $\Bbb R$ the distribution of $f_0$ then $f$ is
+\imp\ for $\mu$ and the product measure $\lambda$ on $X$.   Now use
+372Xf.
+%372Xf, 372J
+
+\sqheader 372Xh Let
+$\sequencen{f_n}$ be a sequence of real-valued random variables with finite
+expectation such that
+$(f_0,f_1,\ldots,f_n)$ has the same joint distribution as
+$(f_1,f_2,\ldots,f_{n+1})$ for every $n\in\Bbb N$.   Show that
+$\sequencen{\Bover1{n+1}\sum_{i=0}^nf_i}$ converges a.e.   \Hint{Let
+$(X,\Sigma,\mu)$ be the underlying probability space.   Reduce to the
+case in which every $f_i$ is measurable and defined everywhere in $X$.
+Define $\theta:X\to\BbbR^{\Bbb N}$ by setting $\theta(x)(n)=f_n(x)$ for
+$x\in X$,
+$n\in\Bbb N$.   Let $\lambda$ be the image measure $\mu\theta^{-1}$.
+Set $\phi(z)(n)=z(n+1)$ for $z\in\BbbR^{\Bbb N}$ and $n\in\Bbb N$.
+Show that $\phi$ is \imp\ for $\lambda$, and apply 372J.}
+%372J 372Xg out of order
+% strong law for stationary processes
+
+\spheader 372Xi Show that the continued fraction coefficients of
+$\Bover1{\sqrt 2}$ are $1$, $2$, $2$, $2,\ldots$.
+%372L
+
+\sqheader 372Xj For $x\in X=[0,1]\setminus\Bbb Q$ let
+$k_1(x),k_2(x),\ldots$ be its continued-fraction coefficients.
+Show that $x\mapsto\sequencen{k_{n+1}(x)-1}$ is a bijection between $X$
+and $\BbbN^{\Bbb N}$ which is a homeomorphism if $X$ is given its usual
+topology (as a subset of $\Bbb R$) and $\BbbN^{\Bbb N}$ is given its
+usual product topology (each copy of $\Bbb N$ being given its discrete
+topology).
+%372L
+
+\spheader 372Xk Set $x=\bover12(\sqrt5-1)$.
+Show that, in the notation of 372L, $k_n(x)=1$ and
+$q_n(x)=p_{n-1}(x)$ for every $n\ge 1$ and that $\sequencen{p_n(x)}$ is the
+Fibonacci sequence.
+%372L
+
+\spheader 372Xl For any irrational $x\in[0,1]$ let
+$k_1(x),k_2(x),\ldots$ be its continued-fraction coefficients and
+$p_n(x)$, $q_n(x)$ the numerators and denominators of its
+continued-fraction approximations, as described in 372L.   Write
+$r_n(x)=p_n(x)/q_n(x)$.   (i) Show that $x$ lies between $r_n(x)$ and
+$r_{n+1}(x)$ for every $n\in\Bbb N$.   (ii) Show that
+$r_{n+1}(x)-r_n(x)=(-1)^n/q_n(x)q_{n+1}(x)$ for every $n\in\Bbb N$.
+(iii) Show that $|x-r_n(x)|\le 1/q_n(x)^2k_{n+1}(x)$ for every $n\ge 1$.
+(iv) Hence show that for almost every $\gamma\in\Bbb R$, the set
+$\{(p,q):p\in\Bbb Z,\,q\ge 1,\,|\gamma-\bover{p}{q}|\le\epsilon/q^2\}$
+is infinite for every $\epsilon>0$.  (v) Show that if $n\ge 1$,
+$p$, $q\in\Bbb N$ and $0<q\le q_n(x)$, then
+$|x-\bover{p}{q}|\ge|x-r_n(x)|$, with equality only when $p=p_n(x)$ and
+$q=q_n(x)$.
+%372L, 372M
+
+\spheader 372Xm In 372M, let $\Tau_1$ be the family $\{E:$ for every
+$n\in\Bbb N$ there is a measurable set $F\subseteq X$ such that
+$\phi^{-n}[F]=E\}$.   Show that every member of $\Tau_1$ is either
+negligible or conegligible.   \Hint{the argument of part (c) of the
+proof of 372M still works.}   Hence show that $\phi$ is mixing for the
+measure $\nu$.
+%372M, 372S
+
+\spheader 372Xn Let $(\frak A,\bar\mu)$ be an atomless probability
+algebra.   Show that the following are equiveridical:  (i) $\frak A$ is
+homogeneous; (ii) there is an ergodic measure-preserving Boolean
+homomorphism $\pi:\frak A\to\frak A$;  (iii) there is a mixing
+measure-preserving automorphism $\pi:\frak A\to\frak A$.   \Hint{333P.}
+%372O
+
+\spheader 372Xo\dvArevised{2011}
+Let $(\frak A,\bar\mu)$ be a probability algebra, and
+$\pi:\frak A\to\frak A$ a measure-preserving Boolean homomorphism.   (i)
+Show that if $n\ge 1$ then $\pi$ is mixing iff $\pi^n$ is mixing.   (ii)
+Show that if $n\ge 1$ then $\pi$ is weakly mixing iff $\pi^n$ is weakly
+mixing.   (iii)
+Show that if $n\ge 1$ and $\pi^n$ is ergodic then $\pi$ is ergodic.
+(iv) Show that if $\pi$ is an automorphism then it is ergodic, or
+mixing, or weakly mixing, iff $\pi^{-1}$ is.
+%372O
+
+\sqheader 372Xp Consider the {\bf tent map}
+$\phi_{\alpha}(x)=\alpha\min(x,1-x)$ for $x\in[0,1]$,
+$\alpha\in[0,2]$.   Show that $\phi_2$ is \imp\ and mixing for Lebesgue
+measure on $[0,1]$.   \Hint{show that
+$\phi_2^{n+1}(x)=\phi_2(\fraction{2^nx})$ for
+$n\ge 1$, and hence that $\mu(I\cap\phi_2^{-n}[J])=\mu I\cdot\mu J$
+whenever $I$ is of the form
+$[2^{-n}k,2^{-n}(k+1)]$ and $J$ is an interval.}
+%372O
+
+\spheader 372Xq Consider the {\bf logistic map}
+$\psi_{\beta}(x)=\beta x(1-x)$ for $x\in [0,1]$, $\beta\in[0,4]$.   Show
+that $\psi_4$ is \imp\ and mixing for the Radon measure on $[0,1]$ with
+density function
+$t\mapsto\Bover1{\pi\sqrt{t(1-t)}}$.   \Hint{show that the transformation
+$t\mapsto\sin^2\bover{\pi t}2$ matches it with the tent map.}   Show that
+for almost every $x$,
+
+\Centerline{$\lim_{n\to\infty}\Bover1{n+1}\#(\{i:i\le
+n,\,\psi_4^i(x)\le\alpha\})=\Bover2{\pi}\arcsin\sqrt{\alpha}$}
+
+\noindent for every $\alpha\in[0,1]$.
+%372O
+
+\spheader 372Xr Let $\mu$ be Lebesgue measure on
+$\coint{0,1}$, and fix an irrational number $\alpha\in\coint{0,1}$.
+(i) Set $\phi(x)=x+_1\alpha$ for every
+$x\in\coint{0,1}$, where $x+_1\alpha$ is whichever of $x+\alpha$,
+$x+\alpha-1$ belongs to $\coint{0,1}$.    Show that $\phi$ is \imp.
+(ii) Show that if $I\subseteq\coint{0,1}$ is an interval then
+$\lim_{n\to\infty}\bover1{n+1}\sum_{i=0}^n\chi I(\phi^i(x))=\mu I$ for
+almost every $x\in\coint{0,1}$.   \Hint{this is Weyl's Equidistribution
+Theorem (281N).}   (iii) Show that $\phi$ is ergodic.   \Hint{take the
+conditional expectation operator $P$ of 372G, and look at
+$P(\chi I^{\ssbullet})$ for intervals $I$.}   (iv) Show that $\phi^n$ is
+ergodic for any $n\in\Bbb Z\setminus\{0\}$.   (v) Show that $\phi$ is
+not weakly mixing.
+%372G, 372Q
+
+\spheader 372Xs Let $p$, $q\in [1,\infty]$ be such that
+$\bover1p+\bover1q=1$.
+(i) Let $(\frak A,\bar\mu)$ be a probability algebra,
+$\pi:\frak A\to\frak A$ a mixing measure-preserving homomorphism, and
+$T:L^0(\frak A)\to L^0(\frak A)$ the corresponding homomorphism.
+Show that $\lim_{n\to\infty}\int T^nu\times v=\int u\int v$ whenever
+$u\in L^p(\frak A,\bar\mu)$ and $v\in L^q(\frak A,\bar\mu)$.
+\Hint{start with $u$, $v\in S(\frak A)$.}
+(ii) Let $(X,\Sigma,\mu)$ be a probability space and
+$\phi:X\to X$ a mixing \imp\ function.   Show that
+$\lim_{n\to\infty}\int f(\phi^n(x))g(x)dx=\int f\int g$ whenever
+$f\in\eusm L^p(\mu)$ and $g\in\eusm L^q(\mu)$.
+%372Q
+
+\spheader 372Xt Give $\coint{0,1}$ Lebesgue measure $\mu$, and let
+$k\ge 2$ be an integer.   Define $\phi:\coint{0,1}\to\coint{0,1}$ by
+setting
+$\phi(x)=\fraction{kx}$, the fractional part of $kx$.   Show that $\phi$
+is \imp.    Show that $\phi$ is mixing.   \Hint{if
+$I=\coint{k^{-n}i,k^{-n}(i+1)}$, $J=\coint{k^{-n}j,k^{-n}(j+1)}$ then
+$\mu(I\cap\phi^{-m}[J])=\mu I\cdot\mu J$ for all $m\ge n$.}
+%372Q
+
+\spheader 372Xu Let $(X,\Sigma,\mu)$ be a probability space and
+$\phi:X\to X$ an ergodic \imp\ function.   Let $f$ be a
+$\mu$-virtually measurable function defined almost everywhere in $X$
+such that $\int fd\mu=\infty$.   Show that
+$\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf\phi^i$ is infinite a.e.
+\Hint{look at the corresponding limits for $f_m=f\wedge m\chi X$.}
+%372Q
+
+\spheader 372Xv For irrational $x\in[0,1]$, write $k_1(x),k_2(x),\ldots$
+for the continued-fraction coefficients of $x$.   Show that the limit
+$\lim_{n\to\infty}\bover1n\sum_{i=1}^nk_i(x)$ is infinite
+for almost every
+$x$.   \Hint{take $\phi$, $\nu$ as in 372M, and show that
+$\int k_1d\nu=\infty$.}
+%372Q, 372Xu
+
+\spheader 372Xw Let $(X,\Sigma,\mu)$ be any probability space, and let
+$\lambda$ be the product measure on $X^{\Bbb N}$.   Define
+$\phi:X^{\Bbb N}\to X^{\Bbb N}$ by setting $\phi(x)(n)=x(n+1)$.  Show
+that $\phi$ is
+\imp.   Show that $\phi$ satisfies the conditions of 372S, so is mixing.
+%372S
+
+\spheader 372Xx Let $(X,\Sigma,\mu)$ be any probability space, and
+$\lambda$ the product measure on $X^{\Bbb Z}$.   Define
+$\phi:X^{\Bbb Z}\to X^{\Bbb Z}$ by setting $\phi(x)(n)=x(n+1)$.  Show
+that $\phi$ is
+\imp.   Show that $\phi$ is mixing.   \Hint{show that if $C$, $C'$ are
+basic cylinder sets then $\mu(C\cap\phi^{-n}[C'])=\mu C\cdot\mu C'$ for
+all $n$ large enough.}   Show that $\phi$ does not
+ordinarily satisfy the conditions of 372S.   (Compare 333P.)
+%372S
+
+\spheader 372Xy\dvAnew{2011}(i) Let $\frak A$ be a Boolean algebra,
+$\pi:\frak A\to\frak A$ a Boolean homomorphism, and
+$\phi:\frak A\to\frak A$ an automorphism.   Show that if
+$\pi$ is ergodic then $\phi\pi\phi^{-1}$ is ergodic.
+(ii) Let $(\frak A,\bar\mu)$ be a probability algebra,
+$\pi:\frak A\to\frak A$ a measure-preserving Boolean homomorphism, and
+$\phi:\frak A\to\frak A$ a measure-preserving
+Boolean automorphism.   Show that if
+$\pi$ is mixing, or weakly mixing, then so is $\phi\pi\phi^{-1}$.
+%372O out of order query
+
+\leader{372Y}{Further exercises (a)}
+%\spheader 372Ya
+In 372D, show that the null space of the limit operator $P$ is precisely
+the closure in $M^{1,0}$ of the subspace $\{Tu-u:u\in M^{1,0}\}$.
+
+\spheader 372Yb Let $(\frak A,\bar\mu)$ be a measure algebra,
+$T\in\Cal T^{(0)}_{\bar\mu,\bar\mu}$, $p\in\ooint{1,\infty}$ and
+$u\in L^p(\frak A,\bar\mu)$.  Set
+$u^*=\sup_{n\in\Bbb N}\bover1{n+1}\sum_{i=0}^n|T^iu|$.   (i) Show that
+for any $\gamma>0$,
+
+\Centerline{$\bar\mu\Bvalue{u^*>\gamma}
+\le\Bover2{\gamma}\int_{\Bvalue{|u|>\gamma/2}}|u|$.}
+
+\noindent\Hint{apply 372C to $(|u|-\bover12\gamma\chi 1)^+$.}   (ii)
+Show that $\|u^*\|_p\le 2(\Bover{p}{p-1})^{1/p}\|u\|_p$.   ({\it
+Hint\/}: show that
+$\int_{\Bvalue{|u|>\alpha}}|u|=\alpha\bar\mu\Bvalue{|u|>\alpha}
++\int_{\alpha}^{\infty}\bar\mu\Bvalue{|u|>\beta}d\beta$;  see 365A.
+Use 366Xa to show that
+
+\Centerline{$\|u^*\|_p^p\le 2p\int_0^{\infty}\gamma^{p-2}
+\int_{\gamma/2}^{\infty}\bar\mu\Bvalue{|u|>\beta}d\beta d\gamma
++2^p\|u\|_p^p$,}
+
+\noindent and reverse the order of integration.   Compare
+275Yd.)   (This is {\bf Wiener's Dominated Ergodic Theorem}.)
+% 372D
+
+\spheader 372Yc Let $(\frak A,\bar\mu)$ be a probability algebra and $T$
+an operator in $\Cal T^{(0)}_{\bar\mu,\bar\mu}$.   Take
+$u\in L^1=L^1(\frak A,\bar\mu)$ such that $h(|u|)\in L^1$, where
+$h(t)=t\ln t$ for
+$t\ge 1$, $0$ for $t\le 1$, and $\bar h$ is the corresponding function
+from $L^0(\frak A)$ to itself.   Set
+$u^*=\sup_{n\in\Bbb N}\bover1{n+1}\sum_{i=0}^n|T^iu|$.   Show that
+$u^*\in L^1$.   \Hint{use
+the method of 372Yb to show that
+$\int_2^{\infty}\bar\mu\Bvalue{u^*>\gamma}d\gamma\le 2\int\bar h(u)$.}
+%372D, 372Yb
+
+\spheader 372Yd Let $U$ be a Banach space, $(\frak A,\bar\mu)$ a
+semi-finite measure algebra and $\sequencen{T_n}$ a sequence of
+continuous linear operators from $U$ to $L^0=L^0(\frak A)$ with its
+topology of convergence in measure.   Suppose that
+$\sup_{n\in\Bbb N}T_nu$ is defined in $L^0$ for every $u\in U$.
+Show that $\{u:u\in U$, $\sequencen{T_nu}$ is order*-convergent in $L^0\}$
+is a norm-closed linear subspace of $U$.
+%372D
+
+\spheader 372Ye In 372G, suppose that $\frak A$ is atomless.   Show that
+there is always an $a\in\frak A$ such that $\bar\mu a\le\bover12$ and
+$\inf_{i\le n}\pi^ia\ne 0$ for every $n$, so that (except in trivial
+cases) $\sequencen{A_n(\chi a)}$ will not be
+$\|\,\|_{\infty}$-convergent.
+%372G
+
+\spheader 372Yf Let $(X,\Sigma,\mu)$ be a measure space with
+measure algebra $(\frak A,\bar\mu)$.   Let $\Phi$ be a family of \imp\
+functions from $X$ to itself, and for $\phi\in\Phi$ let
+$\pi_{\phi}:\frak A\to\frak A$ be the associated
+homomorphism.   Set
+$\frak C=\{c:c\in\frak A,\,\pi_{\phi}c=c$ for every $\phi\in\Phi\}$,
+$\Tau=\{E:E\in\Sigma,\,\phi^{-1}[E]\symmdiff E$ is negligible for every
+$\phi\in\Phi\}$ and
+$\Tau_0=\{E:E\in\Sigma,\,\phi^{-1}[E]=E$ for every $\phi\in\Phi\}$.
+Show that (i) $\Tau$ and $\Tau_0$
+are $\sigma$-subalgebras of $\Sigma$ (ii) $\Tau_0\subseteq\Tau$ (iii)
+$\Tau=\{E:E\in\Sigma,\,E^{\ssbullet}\in\frak C\}$ (iv) if $\Phi$ is
+countable and $\phi\psi=\psi\phi$ for all $\phi$, $\psi\in\Phi$, then
+$\frak C=\{E^{\ssbullet}:E\in\Tau_0\}$.
+%372I
+
+\spheader 372Yg  Show that an irrational $x\in\ooint{0,1}$ has an
+eventually periodic sequence of continued fraction coefficients iff it
+is a solution of a quadratic equation with integral coefficients.
+%372L  mt37bits
+
+\spheader 372Yh In the language of 372L-372N and 372Xl, show the
+following.   (i) For any $x\in X$, $n\ge 2$,
+$q_n(x)q_{n-1}(x)\ge 2^{n-1}$, $p_{n}(x)p_{n+1}(x)\ge 2^{n-1}$, so that
+$q_{n+1}(x)p_{n}(x)\ge 2^{n-1}$ and $|1-x/r_n(x)|\le 2^{-n+1}$,
+$|\ln x-\ln r_n(x)|\le 2^{-n+2}$.   Also $|x-r_n(x)|\ge
+1/q_n(x)q_{n+2}(x)$.   (ii) For any $x\in X$, $n\ge 1$,
+$p_{n+1}(x)=q_n(\phi(x))$ and
+$q_n(x)\prod_{i=0}^{n-1}r_{n-i}(\phi^{i}(x))=1$.   (iii) For any
+$x\in X$, $n\ge 1$, $|\ln q_n(x)+\sum_{i=0}^{n-1}\ln\phi^i(x)|\le 4$.
+(iv) For almost every $x\in X$,
+
+\Centerline{$\lim_{n\to\infty}\Bover1{n}\ln q_n(x)
+=-\Bover1{\ln 2}\int_0^1\Bover{\ln t}{1+t}dt
+=\Bover{\pi^2}{12\ln 2}$.}
+
+\noindent \Hint{225Xi, 282Xo.}  (v) For almost every $x\in X$,
+$\lim_{n\to\infty}\bover1n\ln|x-r_n(x)|=-\Bover{\pi^2}{6\ln 2}$.
+(vi) For almost every $x\in X$, $11^{-n}\le|x-r_n(x)|\le 10^{-n}$ and
+$3^n\le q_n(x)\le 4^n$ for all but finitely many $n$.
+%372N, 372Xl
+
+\spheader 372Yi\dvArevised{2011}(i)
+Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+probability spaces, with c.l.d.\ product $(X\times Y,\Lambda,\lambda)$.
+Suppose that
+$\phi:X\to X$ is a weakly mixing \imp\ function and
+$\psi:Y\to Y$ is an ergodic
+\imp\ function.   Define $\theta:X\times Y\to X\times Y$ by setting
+$\theta(x,y)=(\phi(x),\psi(y))$ for all $x$, $y$.   Show that $\theta$
+is an ergodic \imp\ function.
+(ii) Let $(\frak A,\bar\mu)$ and $(\frak B,\bar\nu)$ be probability
+algebras, with probability algebra free product $(\frak C,\bar\lambda)$.
+Suppose that $\phi:\frak A\to\frak A$ is a
+weakly mixing measure-preserving
+Boolean homomorphism and $\psi:\frak B\to\frak B$ is an ergodic
+measure-preserving Boolean
+homomorphism.   Let $\theta:\frak C\to\frak C$ be the measure-preserving
+Boolean homomorphism such that $\theta(a\otimes b)=\phi a\otimes\psi b$
+for all $a\in\frak A$ and $b\in\frak B$ (325Xe).   Show that $\theta$ is
+ergodic.
+%372O
+
+\spheader 372Yj Let $\langle(X_i,\Sigma_i,\mu_i)\rangle_{i\in I}$ be any
+family of probability spaces, with product $(X,\Lambda,\lambda)$.
+Suppose that for each $i\in I$ we are given an \imp\ function
+$\phi_i:X_i\to X_i$.   (i) Show that there is a corresponding \imp\
+function
+$\phi:X\to X$ given by setting $\phi(x)(i)=\phi_i(x(i))$ for $x\in X$,
+$i\in I$.   (ii) Show that if every $\phi_i$ is mixing so is $\phi$.
+(iii)\dvAnew{2011}
+Show that if every $\phi_i$ is weakly mixing so is $\phi$.
+%372O 372Yi
+
+\spheader 372Yk Give an example of an ergodic measure-preserving
+automorphism $\phi:\coint{0,1}\to\coint{0,1}$ such that $\phi^2$ is not
+ergodic.   \Hint{set $\phi(x)=\bover12(1+\phi_0(2x))$ for $x<\bover12$,
+$x-\bover12$ for $x\ge\bover12$.   See also 388Xe.}
+%von Neumann transf
+%can we have ergodic $\phi$ such that $\phi^n$ not ergodic for any
+% n\ge 2 ?  I suppose so
+%372O, 372Xo
+
+\spheader 372Yl Show that there is an ergodic $\phi:[0,1]\to[0,1]$ such
+that $(\xi_1,\xi_2)\mapsto(\phi(\xi_1),\phi(\xi_2)):[0,1]^2\to[0,1]^2$
+is not ergodic.   \Hint{372Xr.}
+%372Yj, 372Xr, 372O, 372Q
+
+\spheader 372Ym Let $M$ be an $r\times r$ matrix with integer
+coefficients and non-zero determinant, where $r\ge 1$.   Let
+$\phi:\coint{0,1}^r\to\coint{0,1}^r$ be the function such that
+$\phi(x)-Mx\in\Bbb Z^r$ for every $x\in\coint{0,1}^r$.   Show that
+$\phi$ is \imp\ for Lebesgue measure on $\coint{0,1}^r$.
+%372Q  372Xt %mt37bits
+
+\spheader 372Yn(i)\dvArevised{2011}
+Let $(\frak A,\bar\mu)$ be a probability algebra,
+$\pi:\frak A\to\frak A$ a weakly mixing measure-preserving Boolean
+homomorphism, and $T=T_{\pi}:L^1_{\bar\mu}\to L^1_{\bar\mu}$ the
+corresponding linear operator (365O).   Show that if
+$u\in L^1_{\bar\mu}$ is such that $\{T^nu:n\in\Bbb N\}$ is relatively
+compact for the norm topology, then $u=\alpha\chi 1$ for some $\alpha$.
+(ii) Let $\mu$ be Lebesgue measure on $\coint{0,1}$, $(\frak A,\bar\mu)$
+its measure algebra, $\alpha\in\coint{0,1}$ an irrational number,
+$\phi(x)=x+_1\alpha$ for $x\in\coint{0,1}$ (as in 372Xr), and
+$T:L^1(\mu)\to L^1(\mu)$ the linear operator defined by setting
+$Tg^{\ssbullet}=(g\phi)^{\ssbullet}$ for $g\in\eusm L^1(\mu)$.   Show
+that $\{T^n:n\in\Bbb Z\}$ is relatively compact for the strong operator
+topology on $\eurm B(L^1(\mu);L^1(\mu))$.
+%372Xr 372Q
+
+\spheader 372Yo In 372M, show that for any measurable set
+$E\subseteq X$, $\lim_{n\to\infty}\mu_L\phi^{-n}[E]=\nu E$.
+\Hint{recall that
+$\phi$ is mixing for $\nu$ (372Xm).   Hence show that
+$\lim_{n\to\infty}\int_{\phi^{-n}[E]}g\,d\nu=\nu E\cdot\int g\,d\nu$ for
+any integrable $g$.   Apply this to a Radon-Nikod\'ym derivative of
+$\mu_L$ with respect to $\nu$.}   (I understand that this result is due
+to Gauss.)
+%372L, 372S, 372Xm
+
+\spheader 372Yp\dvAnew{2010} (i) Show that there are a Boolean algebra
+$\frak A$ and an automorphism $\pi:\frak A\to\frak A$ which is not
+ergodic, but has fixed-point algebra $\{0,1\}$.
+%finite-cofinite algebra of  \Bbb Z\times\{0,1\}
+(ii) Show that there are a $\sigma$-finite measure algebra
+$(\frak A,\bar\mu)$ and a measure-preserving Boolean homomorphism
+$\pi:\frak A\to\frak A$ which is not ergodic, but has fixed-point algebra
+$\{0,1\}$.
+%372P mt37bits out of order query
+
+\spheader 372Yq\dvAnew{2010}
+For a Boolean algebra $\frak A$ and a Boolean homomorphism
+$\pi:\frak A\to\frak A$, write $T_{\pi}$ for the corresponding operator
+from $L^{\infty}(\frak A)$ to itself, as defined in 363F.
+(i) Suppose that $\frak A$ is a Boolean algebra, $\pi:\frak A\to\frak A$ is
+a Boolean homomorphism, $u\in L^{\infty}(\frak A)$ and $T_{\pi}u=u$.
+Show that if either $\pi$ is ergodic or $\frak A$ is
+Dedekind $\sigma$-complete and the fixed-point subalgebra of $\pi$ is
+$\{0,1\}$, then $u$ must be a multiple of $\chi 1$.
+(ii)\dvAformerly{3{}63Yk}
+Find a Boolean algebra $\frak A$, an automorphism
+$\pi:\frak A\to\frak A$ with fixed-point algebra $\{0,1\}$,
+and a $u\in L^{\infty}(\frak A)$, not a
+multiple of $\chi 1$, such that $T_{\pi}u=u$.
+%372P mt37bits out of order query
+
+\spheader 372Yr\dvAnew{2011} Set $\Cal F_d
+=\{I:I\subseteq\Bbb N$, $\lim_{n\to\infty}\Bover1n\#(I\cap n)=1\}$.
+(i) Show that $\Cal F_d$ is a filter on $\Bbb N$.   (ii) Show that for a
+bounded sequence $\sequencen{\alpha_n}$ in $\Bbb R$, the following are
+equiveridical:  ($\alpha$) $\lim_{n\to\Cal F_d}\alpha_n=0$;   ($\beta$)
+$\lim_{n\to\infty}\Bover1{n+1}\sum_{k=0}^n|\alpha_k|=0$;
+($\gamma$)
+$\lim_{n\to\infty}\Bover1{n+1}\sum_{k=0}^n\alpha^2_k=0$.
+($\Cal F_d$ is called the {\bf (asymptotic) density filter}.)
+%372O out of order query
+
+\spheader 372Ys\dvAnew{2011} Let $(\frak A,\bar\mu)$ be a probability
+algebra, and $\phi:\frak A\to\frak A$ a measure-preserving Boolean
+homomorphism.   (i) Show that there are a probability algebra
+$(\frak C,\bar\lambda)$, a measure-preserving Boolean homomorphism
+$\pi:\frak A\to\frak C$, and a measure-preserving automorphism
+$\tilde\phi:\frak C\to\frak C$ such that $\tilde\phi\pi=\pi\phi$ and
+$\frak C$ is the closure of
+$\bigcup_{n\in\Bbb N}\tilde\phi^{-n}[\pi[\frak A]]$ for the
+measure-algebra topology.   \Hint{328J.}   (ii) Show that
+$\tilde\phi$ is ergodic, or mixing, or weakly mixing iff $\phi$ is.
+%372Q
+
+\leaveitout{\spheader 372Y* Let $\Cal F$ be a filter on $\Bbb N$.   If
+$(\frak A,\bar\mu)$ is a probability algebra and $\pi:\frak A\to\frak A$
+is a measure-preserving Boolean homomorphism, say that $\pi$ is
+{\bf $\Cal F$-mixing} if
+$\lim_{n\to\Cal F}\bar\mu(\pi^na\Bcap b)=\bar\mu a\cdot\bar\mu b$
+for all $a$, $b\in\frak A$;  if
+$(X,\Sigma,\mu)$
+is a probability space and $\phi:X\to X$ is an \imp\ function, say that
+$\phi$ is
+{\bf $\Cal F$-mixing} if $\lim_{n\to\Cal F}\mu(E\cap\phi^{-n}[F])
+=\mu E\cdot\mu F$ for all $a$, $b\in\frak A$.    (i) Show that in this
+case
+no finite set can belong to $\Cal F$.   (ii) Show that $\pi$ is mixing
+iff it is $\Cal F$-mixing for every non-principal ultrafilter $\Cal F$
+on $\Bbb N$.   (iii) Show that if $\pi$ is $\Cal F$-mixing for any
+$\Cal F$, it is ergodic.   (iv) In 372Yj, show that if every $\phi_i$ is
+$\Cal F$-mixing, so is $\phi$.   (v) In 372Xr, show that $\phi$ is not
+$\Cal F$-mixing for any $\Cal F$.   (vi) Show that if
+$\Cal F=\{I:\lim_{n\to\infty}\Bover1n\#(I\cap n)=1\}$, then
+$\pi$ is $\Cal F$-mixing iff it is weakly mixing.
+%?example of $\Cal F$-mixing, not mixing?
+%372Q
+}%end of leaveitout
+}%end of exercises
+
+\cmmnt{\Notesheader{372} I have chosen an entirely conventional route
+to the Ergodic Theorem here, through the Mean Ergodic Theorem (372Xa)
+or, rather, the fundamental lemma underlying it (372A), and the Maximal
+Ergodic Theorem (372B-372C).   What is not to be found in every
+presentation is the generality here.   I speak of arbitrary $T\in\Cal
+T^{(0)}$, the operators which are contractions both for $\|\,\|_1$ and
+for $\|\,\|_{\infty}$, not requiring $T$ to be positive, let alone
+correspond to a measure-preserving homomorphism.   (I do not mention
+$\Cal T^{(0)}$ in the statement of 372C, but of course it is present in
+spirit.)   The work we
+have done up to this point puts this extra generality within easy reach,
+but as the rest of the section shows, it is not needed for the principal
+examples.   Only in 372Xc do I offer an application not associated in the
+usual way with a measure-preserving homomorphism or an \imp\ function.
+
+The Ergodic Theorem is an `almost-everywhere pointwise convergence
+theorem', like the strong law(s) of large numbers and the martingale
+theorem(s) (\S273, \S275).   Indeed Kolmogorov's form of the strong law
+can be derived from the Ergodic Theorem (372Xg).   There are some very
+strong family resemblances.   For instance, the Maximal Ergodic Theorem
+corresponds to the most basic of all the martingale inequalities (275D).
+Consequently we have similar results, obtained by similar methods,
+concerning the domination of sequences starting from members of $L^p$
+(372Yb, 275Yd), though the inequalities are not identical.   (Compare
+also 372Yc with 275Ye.)   There are some tantalising reflections of
+these traits in results surrounding Carleson's theorem on the pointwise
+convergence of square-integrable Fourier series (see \S286 {\it
+notes\/}), but Carleson's theorem seems to be much harder than the
+others.   Other forms of the strong law (273D, 273H) do not appear to
+fit into quite the same pattern, but I note that here, as with the
+Ergodic Theorem, we begin with a study of square-integrable functions
+(see part (e) of the proof of 372D).
+
+After 372D, there is a contraction and concentration in the scope of the
+results, starting with a simple replacement of $M^{1,0}$ with $L^1$
+(372F).   Of course it is almost as easy to prove 372D from 372F as the
+other way about;  I give precedence to 372D only because $M^{1,0}$ is
+the space naturally associated with the class $\Cal T^{(0)}$ of
+operators to which these methods apply.   Following this I turn to the
+special family of operators to which the rest of the section is devoted,
+those associated with measure-preserving homomorphisms (372E), generally
+on probability spaces (372G).   This is the point at which we can begin
+to identify the limit as a conditional expectation as well as an
+invariant element.
+
+Next comes the translation into the language of measure spaces and \imp\
+functions, all perfectly straightforward in view of
+372I.   These turn 372E into 372H and 372G into the main part of
+372J.
+
+In 372J-372K I find myself writing at some length about a technical
+problem.   The root of the difficulty is in the definition of
+`conditional expectation'.   Now it is generally accepted that any pure
+mathematician has `Humpty Dumpty's privilege':  `When {\it I} use
+a word, it means just what I choose it to
+mean -- neither more nor less'.   With any privilege come duties and
+responsibilities;  here, the duty to be self-consistent, and
+the responsibility to try to use terms in ways which will not mystify or
+mislead the unprepared reader.   Having written down a definition of
+`conditional expectation' in Volume 2, I must either stick to it, or go
+back and change it, or very carefully explain exactly what modification
+I wish to make here.   I don't wish to suggest that absolute consistency
+-- in terminology or anything else -- is supreme among mathematical
+virtues.   Surely it is better to give local meanings to words, or
+tolerate ambiguities, than to suppress ideas which cannot be formulated
+effectively otherwise, and among `ideas' I wish to include the
+analogies and resonances which a suitable language can suggest.   But I
+do say that it is always best to be conscious of what one is doing -- I
+go farther:  one of the things which mathematics is for, is to raise our
+consciousness of what our thoughts really are.   So I believe it is
+right to pause occasionally over such questions.
+
+In 372L-372N (see also 372Xl, 372Xv, 372Xm, 372Xk, 372Yh, 372Yo) I make an
+excursion into number theory.   This is a remarkable example of the
+power of advanced measure theory to give striking results in other
+branches of mathematics.   Everything here is derived from {\smc
+Billingsley 65}, who goes farther than I have space for, and gives
+references to more.   Here let me point to 372Xj;  almost accidentally,
+the construction offers a useful formula for a homeomorphism
+between two of the most important spaces of descriptive set theory,
+which will be important to us in Volume 4.
+
+I end the section by introducing three terms, `ergodic', `mixing'
+and `weakly mixing'
+transformations, not because I wish to use them for any new ideas (apart
+from the elementary 372P-372S, %372P 372Q 372R 372S
+these must wait for \S\S385-387 %385S 385T 386D 387C 387D et seq
+below and \S494 in Volume 4), %494D 494E 494F
+but because
+it may help if I immediately classify some of the \imp\ functions we
+have seen (372Xp-372Xr, %372Xp 372Xq 372Xr
+372Xt, 372Xw, 372Xx).
+Of course in any application of any ergodic theorem it
+is of great importance to be able to identify the limits promised by the
+theorem, and the point about an ergodic transformation is just that our
+averages converge to constant limits (372Q).   Actually proving that a
+given \imp\ function is ergodic is rarely quite trivial (see 372M,
+372Xq, 372Xr), though a handful of standard techniques cover a large
+number of cases, and it is usually obvious when a map is {\it not}
+ergodic, so that if an invariant region does not leap to the eye one has
+a good hope of ergodicity.   The extra concept of `weakly mixing'
+transformation is hardly relevant to anything in this volume (though see
+372Yi-372Yj), but
+is associated with a remarkable topological fact about automorphism groups
+of probability algebras, to come in 494E.
+
+I ought to remark on the odd shift between the definitions of `ergodic
+Boolean homomorphism' and `ergodic \imp\ function' in 372O.   The point is
+that the version in 372O(b-i) is the standard formulation in this context,
+but that its natural translation into the version `a Boolean homomorphism
+from a probability algebra to itself is ergodic if its fixed-point
+subalgebra is trivial', although perfectly satisfactory in that context,
+allows unwelcome phenomena if applied to general Boolean algebras
+(372Yp, 372Yq).   The definition in 372O(a-i) is
+rather closer to the essential idea
+of ergodicity of a dynamical system, which asks that the system should
+always evolve along a path which approximates all possible states.
+In practice, however,
+we shall nearly always be dealing with automorphisms of
+Dedekind $\sigma$-complete algebras, for which we can use the
+fixed-point criterion of 372Pc.
+
+I take the opportunity to mention two famous functions from $[0,1]$ to
+itself, the `tent' and `logistic' maps (372Xp, 372Xq).   In the
+formulae $\phi_{\alpha}$, $\psi_{\beta}$ I include redundant parameters;
+this is because the real importance of these functions lies in the way
+their behaviour depends, in bewildering complexity, on these parameters.
+It is only at the extreme values $\alpha=2$, $\beta=4$ that the methods
+of this volume can tell us anything interesting.
+}%end of comment
+
+\discrpage
+

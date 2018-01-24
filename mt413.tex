@@ -1,0 +1,2220 @@
+\frfilename{mt413.tex}
+\versiondate{25.2.05}
+\copyrightdate{2000}
+
+\def\chaptername{Topologies and measures I}
+\def\sectionname{Inner measure constructions}
+
+\newsection{413}
+
+I now turn in a different direction, giving some basic results on
+the construction of inner regular measures.   The first step is to
+describe `inner measures' (413A) and a construction corresponding to the
+\Caratheodory\ construction of measures from outer measures (413C).
+Just as every measure gives rise to an outer measure, it gives rise to
+an inner measure (413D).   Inner measures form an effective tool for
+studying complete locally determined measures (413F).
+
+The most substantial results of the section concern the construction of
+measures as extensions of functionals defined on various classes
+$\Cal K$ of sets.   Typically, $\Cal K$ is closed under finite unions
+and countable
+intersections, though it we can sometimes relax the hypotheses a bit.
+The methods here make it possible to distinguish
+arguments which produce finitely additive functionals (413H, 413N, 413P,
+413Q) from
+the succeeding steps to countably additive measures (413I, 413O, 413S).
+413H-413M investigate conditions on a functional
+$\phi:\Cal K\to\coint{0,\infty}$ sufficient to produce a measure
+extending $\phi$, necessarily
+unique, which is inner regular with respect to $\Cal K$ or
+$\Cal K_{\delta}$, the
+set of intersections of sequences in $\Cal K$.   413N-413O look instead
+at functionals defined on sublattices of the class $\Cal K$ of interest,
+and at sufficient conditions to ensure the existence of a measure, not
+normally unique, defined on the whole of $\Cal K$, inner regular with
+respect to
+$\Cal K$ and extending the given functional.   Finally, 413P-413S are
+concerned with majorizations rather than extensions;  we seek a measure
+$\mu$ such that $\mu K\ge\lambda K$ for $K\in\Cal K$, while $\mu X$ is
+as small as possible.
+
+\leader{413A}{}\cmmnt{ I begin with some material from the exercises
+of earlier volumes.
+
+\medskip
+
+\noindent}{\bf Definition} Let $X$ be a set.   An {\bf inner measure} on
+$X$ is a functional $\phi:\Cal PX\to[0,\infty]$ such that
+
+\inset{$\phi\emptyset=0$;}
+
+\inset{($\alpha$) $\phi(A\cup B)\ge\phi A+\phi B$ for all disjoint $A$,
+$B\subseteq X$;}
+
+\inset{($\beta$) if $\sequencen{A_n}$ is a non-increasing sequence of
+subsets of $X$ and $\phi A_0<\infty$ then
+$\phi(\bigcap_{n\in\Bbb N}A_n)=\inf_{n\in\Bbb N}\phi A_n$;}
+
+\inset{($*$) $\phi A=\sup\{\phi B:B\subseteq A,\,\phi B<\infty\}$ for
+every $A\subseteq X$.}
+
+\leader{413B}{}\cmmnt{ The following fact will be recognised as an
+element of \Caratheodory's method.   There will be an application later
+in which it
+will be useful to know that it is not confined to proving countable
+additivity.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $X$ be a set and $\phi:X\to[0,\infty]$ any
+functional such that $\phi\emptyset=0$.   Then
+
+\Centerline{$\Sigma
+=\{E:E\subseteq X,\,\phi A=\phi(A\cap E)+\phi(A\setminus E)$
+for every $A\subseteq X\}$}
+
+\noindent is an algebra of subsets of $X$, and
+$\phi(E\cup F)=\phi E+\phi F$ for all disjoint $E$, $F\in\Sigma$.
+
+\proof{ The symmetry of the definition of $\Sigma$ ensures that
+$X\setminus E\in\Sigma$ whenever $E\in\Sigma$.   If $E$, $F\in\Sigma$ and
+$A\subseteq X$, then
+
+$$\eqalignno{\phi(A\cap(E\cup &F))+\phi(A\setminus(E\cup F))\cr
+&=\phi(A\cap(E\cup F)\cap E)+\phi(A\cap(E\cup F)\setminus E)
+   +\phi(A\setminus(E\cup F))\cr
+&=\phi(A\cap E)+\phi((A\setminus E)\cap F)
+   +\phi((A\setminus E)\setminus F)\cr
+&=\phi(A\cap E)+\phi(A\setminus E)
+=\phi A.\cr}$$
+
+\noindent As $A$ is arbitrary, $E\cup F\in\Sigma$.   Finally, if
+$A\subseteq X$,
+
+\Centerline{$\phi(A\cap\emptyset)+\phi(A\setminus\emptyset)
+=\phi\emptyset+\phi A=\phi A$}
+
+\noindent because $\phi\emptyset=0$;  so $\emptyset\in\Sigma$.
+
+Thus $\Sigma$ is an algebra of sets.   If $E$, $F\in\Sigma$ and
+$E\cap F=\emptyset$, then
+
+\Centerline{$\phi(E\cup F)
+=\phi((E\cup F)\cap E)+\phi((E\cup F)\setminus E)=\phi E+\phi F$.}
+}%end of proof of 413B
+
+\leader{413C}{Measures from inner \dvrocolon{measures}}\cmmnt{ I come
+now to a construction corresponding to \Caratheodory's method of
+defining measures from outer measures.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $X$ be a set and
+$\phi:X\to[0,\infty]$ an inner measure.   Set
+
+\Centerline{$\Sigma=\{E:E\subseteq X,\,\phi(A\cap E)+\phi(A\setminus
+E)=\phi A$ for every $A\subseteq X\}$.}
+
+\noindent Then $(X,\Sigma,\phi\restr\Sigma)$ is a complete measure
+space.
+
+\proof{ (Compare 113C.)
+
+\medskip
+
+{\bf (a)} The first step is to note that if $A\subseteq B\subseteq X$
+then
+
+\Centerline{$\phi B\ge\phi A+\phi(B\setminus A)\ge\phi A$.}
+
+\noindent Next, a subset $E$ of $X$
+belongs to $\Sigma$ iff $\phi A\le\phi(A\cap E)+\phi(A\setminus E)$
+whenever $A\subseteq X$ and $\mu A<\infty$.
+\Prf\ Of course any element of $\Sigma$ satisfies the condition.   If
+$E$ satisfies the condition and $A\subseteq X$, then
+
+$$\eqalign{\phi A
+&=\sup\{\phi B:B\subseteq A,\,\phi B<\infty\}\cr
+&\le\sup\{\phi(B\cap E)+\phi(B\setminus E):B\subseteq A\}\cr
+&=\phi(A\cap E)+\phi(A\setminus E)
+\le\phi A,\cr}$$
+
+\noindent so $E\in\Sigma$.\ \Qed
+
+\medskip
+
+{\bf (b)} By 413B, $\Sigma$ is an algebra of subsets of $X$.   Now
+suppose
+that $\langle E_n\rangle_{n\in\Bbb N}$ is a non-decreasing
+sequence in $\Sigma$, with union $E$.   If $A\subseteq X$ and
+$\phi A<\infty$, then
+
+\Centerline{$\phi(A\setminus E)=\inf_{n\in\Bbb N}\phi(A\setminus E_n)
+=\lim_{n\to\infty}\phi(A\setminus E_n)$}
+
+\noindent because $\sequencen{A\setminus E_n}$ is non-increasing and
+$\phi(A\setminus E_0)$ is finite;  so
+
+\Centerline{$\phi(A\cap E)+\phi(A\setminus E)
+\ge\lim_{n\to\infty}\phi(A\cap E_n)+\phi(A\setminus E_n)
+=\phi A$.}
+
+\noindent By (a), $E\in\Sigma$.   So $\Sigma$ is a $\sigma$-algebra.
+
+\medskip
+
+{\bf (c)} If $E$, $F\in\Sigma$ and $E\cap F=\emptyset$ then
+$\phi(E\cup F)=\phi E+\phi F$, by 413B.   If $\sequencen{E_n}$
+is a disjoint sequence in $\Sigma$ with union $E$, then
+
+\Centerline{$\mu E\ge\mu(\bigcup_{i\le n}E_i)=\sum_{i=0}^n\mu E_i$}
+
+\noindent for every $n$, so $\mu E\ge\sum_{i=0}^{\infty}\mu E_i$.
+\Quer\ If $\mu E>\sum_{i=0}^{\infty}\mu E_i$, there is an $A\subseteq E$
+such that $\sum_{i=0}^{\infty}\mu E_i<\phi A<\infty$.   But now, setting
+$F_n=\bigcup_{i\le n}E_i$ for each $n$, we have
+$\lim_{n\to\infty}\phi(A\setminus F_n)=0$, so that
+
+\Centerline{$\phi A
+=\lim_{n\to\infty}\phi(A\cap F_n)+\phi(A\setminus F_n)
+=\sum_{i=0}^{\infty}\phi(A\cap E_i)<\phi A$,}
+
+\noindent which is absurd.\ \BanG\    Thus
+$\mu E=\sum_{i=0}^{\infty}\mu E_i$.   As $\sequencen{E_n}$ is arbitrary,
+$\mu$ is a measure.
+
+\medskip
+
+{\bf (d)} Finally, suppose that $B\subseteq E\in\Sigma$ and $\mu E=0$.
+Then for any $A\subseteq X$ we must have
+
+\Centerline{$\phi(A\cap B)+\phi(A\setminus B)\ge\phi(A\setminus E)
+=\phi(A\cap E)+\phi(A\setminus E)=\phi A$,}
+
+\noindent so $B\in\Sigma$.   Thus $\mu$ is complete.
+}%end of proof of 413C
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} For a simple example see 213Yd\formerly{2{}13Yc}.
+}%end of comment
+
+\leader{413D}{The inner measure defined by a measure} Let
+$(X,\Sigma,\mu)$ be any measure space.
+\cmmnt{ Just as} $\mu$\cmmnt{ has an associated outer
+measure $\mu^*$ defined by the formula
+
+\Centerline{$\mu^*A=\inf\{\mu E:A\subseteq E\in\Sigma\}$}
+
+\noindent (132A-132B), it} gives rise to an inner measure $\mu_*$
+defined by the formula
+
+\Centerline{$\mu_*A=\sup\{\mu E:E\in\Sigma^f,\,E\subseteq A\}$,}
+
+\noindent where I write $\Sigma^f$ for $\{E:E\in\Sigma,\,\mu E<\infty\}$.
+\prooflet{\Prf\ $\mu_*\emptyset=\mu\emptyset=0$.   ($\alpha$) If
+$A\cap B=\emptyset$, and $E\subseteq A$, $F\subseteq B$ belong to
+$\Sigma^f$, then
+$E\cup F\subseteq A\cup B$ also has finite measure, so
+
+\Centerline{$\mu_*(A\cup B)\ge\mu(E\cup F)=\mu E+\mu F$;}
+
+\noindent taking the supremum over $E$ and $F$,
+$\mu_*(A\cup B)\ge\mu_*A+\mu_*B$.   ($\beta$) If $\sequencen{A_n}$ is a
+non-increasing sequence of sets with intersection $A$ and
+$\mu_*A_0<\infty$, then for each $n\in\Bbb N$ we can find an
+$E_n\subseteq A_n$ such that $\mu E_n\ge\mu_*A_n-2^{-n}$.   In this case,
+
+\Centerline{$\mu(\bigcup_{m\in\Bbb N}E_m)
+=\sup_{n\in\Bbb N}\mu(\bigcup_{m\le n}E_m)\le\mu_*A_0<\infty$.}
+
+\noindent Set
+
+\Centerline{$E=\bigcap_{n\in\Bbb N}\bigcup_{m\ge n}E_m\subseteq A$.}
+
+\noindent Then $E\in\Sigma^f$, so
+
+\Centerline{$\mu_*A\ge\mu E\ge\limsup_{n\to\infty}\mu E_n
+=\lim_{n\to\infty}\mu_*A_n\ge\mu_*A$.}
+
+\noindent ($*$) If $A\subseteq X$ and $\mu_*A=\infty$ then
+
+\Centerline{$\sup\{\mu_*B:B\subseteq A,\,\mu_*B<\infty\}
+\ge\sup\{\mu E:E\in\Sigma^f,\,E\subseteq A\}=\infty$.  \Qed}
+}%end of prooflet
+
+\cmmnt{\medskip
+
+\noindent{\bf Warning} Many authors use the formula
+
+\Centerline{$\mu_*A=\sup\{\mu E:A\supseteq E\in\Sigma\}$.}
+
+\noindent In `ordinary' cases, when $(X,\Sigma,\mu)$ is semi-finite,
+this agrees with my usage (413Ed);  but for non-semi-finite spaces there
+is a difference.   See 413Yg.
+}%end of comment
+
+\vleader{72pt}{413E}{}\cmmnt{ I note the following simple facts
+concerning inner measures defined from measures.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a measure space.
+Write $\Sigma^f$ for $\{E:E\in\Sigma,\,\mu E<\infty\}$.
+
+(a) For every $A\subseteq X$ there is an $E\in\Sigma$ such that
+$E\subseteq A$ and $\mu E=\mu_*A$.
+
+(b) $\mu_*A\le\mu^*A$ for every $A\subseteq X$.
+
+(c) If $E\in\Sigma$ and $A\subseteq X$, then
+$\mu_*(E\cap A)+\mu^*(E\setminus A)\le\mu E$, with equality if either
+(i) $\mu E<\infty$ or (ii) $\mu$ is semi-finite.
+
+(d) \cmmnt{In particular,} $\mu_*E\le\mu E$ for every $E\in\Sigma$, with
+equality if
+either $\mu E<\infty$ or $\mu$ is semi-finite.
+
+(e) If $\mu$ is inner regular with respect to $\Cal K$, then
+$\mu_*A=\sup\{\mu K:K\in\Cal K\cap\Sigma^f,\,K\subseteq A\}$ for every
+$A\subseteq X$.
+
+(f) If $A\subseteq X$ is such that $\mu_*A=\mu^*A<\infty$, then $A$ is
+measured by the completion of $\mu$.
+
+(g) If $\hat\mu$, $\tilde\mu$ are the completion and c.l.d.\ version of
+$\mu$, then $\hat\mu_*=\tilde\mu_*=\mu_*$.
+
+(h) If $(Y,\Tau,\nu)$ is another measure space, and $f:X\to Y$ is an
+\imp\ function, then
+
+\Centerline{$\mu^*(f^{-1}[B])\le\nu^*B$,
+\quad$\mu_*(f^{-1}[B])\ge\nu_*B$}
+
+\noindent for every $B\subseteq Y$, and
+
+\Centerline{$\nu^*(f[A])\ge\mu^*A$}
+
+\noindent for every $A\subseteq X$.
+
+(i) Suppose that $\mu$ is semi-finite.   If $A\subseteq E\in\Sigma$,
+then $E$ is a measurable envelope of $A$ iff $\mu_*(E\setminus A)=0$.
+
+\proof{{\bf (a)} There is a sequence $\sequencen{E_n}$ in $\Sigma^f$
+such that $E_n\subseteq A$ for each $n$ and
+$\lim_{n\to\infty}\mu E_n=\mu_*A$;
+now set $E=\bigcup_{n\in\Bbb N}E_n$.
+
+\medskip
+
+{\bf (b)} If $E\subseteq A\subseteq F$ we must have $\mu E\le\mu
+F$.
+
+\medskip
+
+{\bf (c)} If $F\subseteq E\cap A$ and $F\in\Sigma^f$, then
+
+\Centerline{$\mu F+\mu^*(E\setminus A)\le\mu F+\mu(E\setminus F)=\mu
+E$;}
+
+\noindent taking the supremum over $F$, $\mu_*(E\cap A)+\mu^*(E\setminus
+A)\le\mu E$.   If $\mu E<\infty$, then
+
+$$\eqalign{\mu_*(E\cap A)
+&=\sup\{\mu F:F\in\Sigma,\,F\subseteq E\cap A\}\cr
+&=\mu E-\inf\{\mu(E\setminus F):F\in\Sigma,\,F\subseteq E\cap A\}\cr
+&=\mu E-\inf\{\mu F:F\in\Sigma,\,E\setminus A\subseteq F\subseteq E\}
+=\mu E-\mu^*(E\setminus A).\cr}$$
+
+\noindent If $\mu$ is semi-finite, then
+
+$$\eqalign{\mu_*(E\cap A)+\mu^*(E\setminus A)
+&\ge\sup\{\mu_*(F\cap A)+\mu^*(F\setminus A):F\in\Sigma^f,\,F\subseteq
+E\}\cr
+&=\sup\{\mu F:F\in\Sigma^f,\,F\subseteq E\}
+=\mu E.\cr}$$
+
+\medskip
+
+{\bf (d)} Take $A=E$ in (c).
+
+\medskip
+
+{\bf (e)}
+
+$$\eqalign{\mu_*A
+&=\sup\{\mu E:E\in\Sigma^f,\,E\subseteq A\}\cr
+&=\sup\{\mu K:K\in\Cal K\cap\Sigma,\,\exists\,E\in\Sigma^f,\,K\subseteq
+E\subseteq A\}\cr
+&=\sup\{\mu K:K\in\Cal K\cap\Sigma^f,\,K\subseteq A\}.\cr}$$
+
+\medskip
+
+{\bf (f)} By (a) above and 132Aa, there are $E$, $F\in\Sigma$ such that
+$E\subseteq A\subseteq F$ and
+
+\Centerline{$\mu E=\mu_*A=\mu^*A=\mu F<\infty$;  }
+
+\noindent now $\mu(F\setminus E)=0$, so $F\setminus A$ and $A$ are
+measured by the completion of $\mu$.
+
+\medskip
+
+{\bf (g)} Write $\check\mu$ for either $\hat\mu$ or $\tilde\mu$, and
+$\check\Sigma$ for its domain, and let $A\subseteq X$.   (i) If
+$\gamma<\mu_*A$, there is an $E\in\Sigma$ such that $E\subseteq A$ and
+$\gamma\le\mu E<\infty$;  now $\check\mu E=\mu E$ (212D, 213Fa), so
+$\check\mu_*A\ge\gamma$.   As $\gamma$ is arbitrary,
+$\mu_*A\le\check\mu_*A$.   (ii) If $\gamma<\check\mu_*A$, there is an
+$E\in\check\Sigma$ such that $E\subseteq A$ and
+$\gamma\le\check\mu E<\infty$.   Now there is an $F\in\Sigma$ such that
+$F\subseteq E$ and $\mu F=\check\mu E$ (212C, 213Fc), so that
+$\mu_*A\ge\gamma$.   As $\gamma$ is arbitrary, $\mu_*A\ge\check\mu_*A$.
+
+\medskip
+
+{\bf (h)} This is elementary;  all we have to note is that if $F$,
+$F'\in\Tau$ and $F\subseteq B\subseteq F'$, then
+$f^{-1}[F]\subseteq f^{-1}[B]\subseteq f^{-1}[F']$, so that
+
+\Centerline{$\nu F=\mu f^{-1}[F]\le\mu_*f^{-1}[B]
+\le\mu^*f^{-1}[B]\le\mu f^{-1}[F']=\nu F'$.}
+
+\noindent Now, for $A\subseteq X$,
+
+\Centerline{$\mu^*A\le\mu^*(f^{-1}[f[A]])\le\nu^*(f[A])$.}
+
+\medskip
+
+{\bf (i)}(i) If $E$ is a measurable envelope of $A$ and $F\in\Sigma$ is
+included in $E\setminus A$, then
+
+\Centerline{$\mu F=\mu(F\cap E)=\mu^*(F\cap A)=0$;}
+
+\noindent as $F$ is arbitrary, $\mu_*(E\setminus A)=0$.   (ii) If $E$ is
+not a measurable envelope of $A$, there is an $F\in\Sigma$ such that
+$\mu^*(F\cap A)<\mu(F\cap E)$.   Let $G\in\Sigma$ be such that
+$F\cap A\subseteq G$ and $\mu G=\mu^*(F\cap A)$.   Then
+$\mu(F\cap E\setminus G)>0$;  because $\mu$ is semi-finite,
+$\mu_*(E\setminus A)\ge\mu_*(F\cap E\setminus G)>0$.
+}%end of proof of 413E
+
+\leader{413F}{}\cmmnt{ The language of 413D makes it easy to express
+some useful facts about complete locally determined measure spaces,
+complementing 412J.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $(X,\Sigma,\mu)$ be a complete locally
+determined measure space and $\Cal K$ a family of subsets of $X$ such
+that $\mu$ is inner regular with respect to $\Cal K$.
+Then for $E\subseteq X$ the following are equiveridical:
+
+\quad(i) $E\in\Sigma$;
+
+\quad(ii) $E\cap K\in\Sigma$ whenever $K\in\Sigma\cap\Cal K$;
+
+\quad(iii) $\mu^*(K\cap E)+\mu^*(K\setminus E)=\mu^*K$ for every
+$K\in\Cal K$;
+
+\quad(iv) $\mu_*(K\cap E)+\mu_*(K\setminus E)=\mu_*K$ for every
+$K\in\Cal K$;
+
+\quad(v) $\mu^*(E\cap K)=\mu_*(E\cap K)$ for every
+$K\in\Cal K\cap\Sigma$;
+
+\quad(vi) $\min(\mu^*(K\cap E),\mu^*(K\setminus E))<\mu K$ whenever
+$K\in\Cal K\cap\Sigma$ and $0<\mu K<\infty$;
+
+\quad(vii) $\max(\mu_*(K\cap E),\mu_*(K\setminus E))>0$ whenever
+$K\in\Cal K\cap\Sigma$ and $\mu K>0$.
+
+\proof{{\bf (a)} Assume (i).   Then of course
+$E\cap K\in\Sigma$ for every $K\in\Sigma\cap\Cal K$, and (ii) is true.
+For any $K\in\Cal K$ there is an $F\in\Sigma$ such that $F\supseteq K$
+and $\mu F=\mu^*K$ (132Aa);  now
+
+\Centerline{$\mu^*K\le\mu^*(K\cap E)+\mu^*(K\setminus E)
+\le\mu(F\cap E)+\mu(F\setminus E)=\mu F=\mu^*K$,}
+
+\noindent so (iii) is true.   Next, for any $K\in\Cal K$,
+
+$$\eqalignno{\mu_*(K\cap E)+\mu_*(K\setminus E)
+&\le\mu_*K
+=\sup\{\mu F:F\in\Sigma^f,\,F\subseteq K\}\cr
+\noalign{\noindent (writing $\Sigma^f$ for
+$\{F:F\in\Sigma,\,\mu F<\infty\}$)}
+&=\sup\{\mu(F\cap E)+\mu(F\setminus E):F\in\Sigma^f,\,F\subseteq K\}\cr
+&\le\mu_*(K\cap E)+\mu_*(K\setminus E).\cr}$$
+
+\noindent So (iv) is true.   If $K\in\Cal K\cap\Sigma$, then
+
+\Centerline{$\mu_*(E\cap K)
+=\sup\{\mu F:F\in\Sigma^f,\,F\subseteq E\cap K\}
+=\mu(E\cap K)=\mu^*(E\cap K)$}
+
+\noindent because $\mu$ is semi-finite.   So (v) is true.   Since
+(iii)$\Rightarrow$(vi) and (iv)$\Rightarrow$(vii), we see that all the
+conditions are satisfied.
+
+\medskip
+
+{\bf (b)} Now suppose that $E\notin\Sigma$;  I have to show that
+(ii)-(vii) are all false.   Because $\mu$ is locally determined, there
+is an $F\in\Sigma^f$ such that $E\cap F\notin\Sigma$.
+Take measurable envelopes $H$, $H'$ of $F\cap E$ and $F\setminus E$
+respectively (132Ee).   Then
+$F\setminus H'\subseteq F\cap E\subseteq F\cap H$, so
+
+\Centerline{$G=(F\cap H)\setminus(F\setminus H')=F\cap H\cap H'$}
+
+\noindent cannot be negligible.
+Take $K\in\Cal K\cap\Sigma$ such that $K\subseteq G$ and $\mu K>0$.   As
+$G\subseteq F$, $\mu K<\infty$.   Now
+
+\Centerline{$\mu^*(K\cap E)=\mu^*(K\cap F\cap E)=\mu(K\cap H)=\mu K$,}
+
+\Centerline{$\mu^*(K\setminus E)=\mu^*(K\cap F\setminus E)
+=\mu(K\cap H')=\mu K$.}
+
+\noindent But this means that
+
+\Centerline{$\mu_*(K\cap E)=\mu K-\mu^*(K\setminus E)=0$,
+\quad$\mu_*(K\setminus E)=\mu K-\mu^*(K\cap E)=0$}
+
+\noindent by 413Ec.   Now we see that this $K$ witnesses that (ii)-(vii)
+are all false.
+}%end of proof of 413F
+
+\leader{413G}{}\cmmnt{ The ideas of 413F can be used to give criteria
+for measurability of real-valued functions.   I spell out one which is
+particularly useful.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $(X,\Sigma,\mu)$ be a complete locally
+determined measure space and suppose that $\mu$ is inner regular with
+respect to $\Cal K\subseteq\Sigma$.   Suppose that $f:X\to\Bbb R$ is a
+function, and for $\alpha\in\Bbb R$ set
+$E_{\alpha}=\{x:f(x)\le\alpha\}$, $F_{\alpha}=\{x:f(x)\ge\beta\}$.
+Then $f$ is $\Sigma$-measurable iff
+
+\Centerline{$\min(\mu^*(E_{\alpha}\cap K),\mu^*(F_{\beta}\cap K))
+<\mu K$}
+
+\noindent whenever $K\in\Cal K$, $0<\mu K<\infty$ and $\alpha<\beta$.
+
+\proof{{\bf (a)} If $f$ is measurable, then
+
+\Centerline{$\mu^*(E_{\alpha}\cap K)+\mu^*(F_{\beta}\cap K)
+=\mu(E_{\alpha}\cap K)+\mu(F_{\beta}\cap K)
+\le\mu K$}
+
+\noindent whenever $K\in\Sigma$ and $\alpha<\beta$, so if
+$0<\mu K<\infty$ then we must have
+$\min(\mu^*(E_{\alpha}\cap K),\mu^*(F_{\beta}\cap K))<\mu K$.
+
+\medskip
+
+{\bf (b)} If $f$ is not measurable, then there is some $\alpha\in\Bbb R$
+such that $E_{\alpha}$ is not measurable.   413F(vi) tells us that
+there is a $K\in\Cal K$ such that $0<\mu K<\infty$ and
+$\mu^*(E_{\alpha}\cap K)=\mu^*(K\setminus E_{\alpha})=\mu K$.   Note
+that $K$ is a measurable envelope of $K\cap E_{\alpha}$ (132Eb).   Now
+$\sequencen{K\cap F_{\alpha+2^{-n}}}$ is a non-decreasing sequence with
+union $K\setminus E_{\alpha}$, so there is some $\beta>\alpha$ such that
+$K\cap F_{\beta}$ is not negligible.   Let $H\subseteq K$ be a
+measurable envelope of $K\cap F_{\beta}$, and $K'\in\Cal K$ such that
+$K'\subseteq H$ and $\mu K'>0$;  then
+
+\Centerline{$\mu^*(K'\cap E_{\alpha})
+=\mu^*(K'\cap K\cap E_{\alpha})=\mu(K'\cap K)=\mu K'$,}
+
+\Centerline{$\mu^*(K'\cap F_{\beta})
+=\mu^*(K'\cap H\cap F_{\beta})=\mu(K'\cap H)=\mu K'$,}
+
+\noindent so $K'$, $\alpha$ and $\beta$ witness that the condition is
+not satisfied.
+}%end of proof of 413G
+%compare 213Ye
+
+\leader{413H}{}\cmmnt{ Inner measure constructions based on 413C are
+important
+because they offer an efficient way of setting up measures which are
+inner regular with respect to given families of sets.   Two of the
+fundamental
+results are 413I and 413J.   I proceed by means of a lemma on finitely
+additive functionals.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $X$ be a set and $\Cal K$ a family of subsets
+of $X$ such that
+
+\inset{$\emptyset\in\Cal K$,}
+
+\inset{($\dagger$) $K\cup
+K'\in\Cal K$ whenever $K$, $K'\in\Cal K$ are disjoint,}
+
+\inset{($\ddagger$) $K\cap K'\in\Cal K$ for all $K$, $K'\in\Cal K$.}
+
+\noindent Let $\phi_0:\Cal K\to\coint{0,\infty}$ be a
+functional such that
+
+\inset{($\alpha$) $\phi_0 K
+=\phi_0 L+\sup\{\phi_0 K':K'\in\Cal K,\,K'\subseteq K\setminus L\}$
+whenever $K$, $L\in\Cal K$ and $L\subseteq K$.}
+
+\noindent Set
+
+\Centerline{$\phi A=\sup\{\phi_0K:K\in\Cal K,\,K\subseteq A\}$ for
+$A\subseteq X$,}
+
+\Centerline{$\Sigma=\{E:E\subseteq X,\,\phi A=\phi(A\cap
+E)+\phi(A\setminus
+E)$ for every $A\subseteq X\}$.}
+
+\noindent Then $\Sigma$ is an algebra of subsets of $X$, including
+$\Cal K$,
+and $\phi\restr\Sigma:\Sigma\to[0,\infty]$ is an additive functional
+extending $\phi_0$.
+
+\proof{{\bf (a)} To see that $\Sigma$ is an algebra of subsets and
+$\phi\restr\Sigma$ is additive, all we need to know is that
+$\phi\emptyset=0$ (413B);  and this is because, applying hypothesis
+($\alpha$) with $K=L=\emptyset$,
+$\phi_0\emptyset=\phi_0\emptyset+\phi_0\emptyset$, so
+$\phi_0\emptyset=0$.
+($\alpha$) also assures us that $\phi_0L\le\phi_0K$ whenever $K$,
+$L\in\Cal
+K$ and $L\subseteq K$, so $\phi K=\phi_0K$ for every $K\in\Cal K$.
+
+\medskip
+
+{\bf (b)} To check that $\Cal K\subseteq\Sigma$, we have a little more
+work
+to do.   First, observe that ($\dagger$) and ($\alpha$) together tell us
+that $\phi_0(K\cup K')=\phi_0K+\phi_0K'$ for all disjoint $K$,
+$K'\in\Cal
+K$.   So if $A$, $B\subseteq X$ and $A\cap B=\emptyset$ then
+
+$$\eqalign{\phi A+\phi B
+&=\sup_{K\in\Cal K,K\subseteq A}
+  \phi_0K+\sup_{L\in\Cal K,L\subseteq A}\phi_0L\cr
+&=\sup_{K,L\in\Cal K,K\subseteq A,L\subseteq B}\phi_0(K\cup L)
+\le\phi(A\cup B).\cr}$$
+
+\medskip
+
+{\bf (c)} $\Cal K\subseteq\Sigma$.   \Prf\ Take $K\in\Cal K$ and
+$A\subseteq X$.   If $L\in\Cal K$ and $L\subseteq A$, then
+
+\Centerline{$\phi_0L
+=\phi_0(K\cap L)
+  +\sup\{\phi_0L':L'\in\Cal K,\,L'\subseteq L\setminus K\}
+\le\phi(A\cap K)+\phi(A\setminus K)$.}
+
+\noindent (Note the use of the hypothesis ($\ddagger$).)   As $L$ is
+arbitrary,
+$\phi A\le\phi(A\cap K)+\phi(A\setminus K)$.   We already know that
+$\phi(A\cap K)+\phi(A\setminus K)\le\phi A$;
+as $A$ is arbitrary, $K\in\Sigma$.\ \Qed
+
+This completes the proof.
+}%end of proof of 413H
+
+\vleader{60pt}{413I}{Theorem}\cmmnt{ ({\smc Tops{\o}e 70a})}
+%Theorem 1 p 198
+Let $X$ be a set and $\Cal K$ a family of subsets of $X$ such that
+
+\inset{$\emptyset\in\Cal K$,}
+
+\inset{($\dagger$) $K\cup
+K'\in\Cal K$ whenever $K$, $K'\in\Cal K$ are disjoint,}
+
+\inset{($\ddagger$) $\bigcap_{n\in\Bbb N}K_n\in\Cal K$ whenever
+$\sequencen{K_n}$ is a sequence in $\Cal K$.}
+
+\noindent Let $\phi_0:\Cal K\to\coint{0,\infty}$ be a
+functional such that
+
+\inset{($\alpha$) $\phi_0 K
+=\phi_0 L+\sup\{\phi_0 K':K'\in\Cal K,\,K'\subseteq K\setminus L\}$
+whenever $K$, $L\in\Cal K$ and $L\subseteq K$,}
+
+\inset{($\beta$) $\inf_{n\in\Bbb N}\phi_0K_n=0$ whenever
+$\sequencen{K_n}$ is
+a non-increasing sequence in $\Cal K$ with empty intersection.}
+
+\noindent Then there is a unique complete locally determined measure
+$\mu$ on $X$ extending $\phi_0$ and inner regular with respect to
+$\Cal K$.
+
+\proof{{\bf (a)} Set
+
+\Centerline{$\phi A=\sup\{\phi_0K:K\in\Cal K,\,K\subseteq A\}$ for
+$A\subseteq X$,}
+
+\Centerline{$\Sigma=\{E:E\subseteq X,\,\phi A=\phi(A\cap
+E)+\phi(A\setminus
+E)$ for every $A\subseteq X\}$.}
+
+\noindent Then 413H tells us that $\Sigma$ is an algebra of subsets of
+$X$,
+including $\Cal K$, and $\mu=\phi\restr\Sigma$ is an additive functional
+extending $\phi_0$.
+
+\medskip
+
+{\bf (b)} Now $\mu(\bigcap_{n\in\Bbb N}K_n)=\inf_{n\in\Bbb
+N}\mu K_n$ whenever
+$\sequencen{K_n}$ is a non-increasing sequence in $\Cal K$.   \Prf\ Set
+$L=\bigcap_{n\in\Bbb N}K_n$.   Of course $\mu L\le\inf_{n\in\Bbb
+N}\mu K_n$.   For the reverse inequality, take $\epsilon>0$.   Then
+($\alpha$) tells us that there is a $K'\in\Cal K$ such that $K'\subseteq
+K_0\setminus L$ and
+$\mu K_0\le\mu L+\mu K'+\epsilon$.   Since $\sequencen{K_n\cap K'}$
+is a non-increasing sequence in $\Cal K$ with empty intersection,
+($\beta$)
+tells us that there is an
+$n\in\Bbb N$ such that $\mu(K_n\cap K')\le\epsilon$.   Now
+
+$$\eqalign{\mu K_0-\mu L
+&=\mu(K_0\setminus L)
+=\mu(K_0\setminus(K'\cup L))+\mu K'\cr
+&\le\epsilon+\mu(K_n\cap K')+\mu(K'\setminus K_n)
+\le 2\epsilon+\mu(K_0\setminus K_n)
+=2\epsilon+\mu K_0-\mu K_n.\cr}$$
+
+\noindent (These calculations depend, of course, on the additivity of
+$\mu$
+and the finiteness of $\mu K_0$.)   So
+$\mu L\ge\mu K_n-2\epsilon$.   As $\epsilon$ is arbitrary, $\mu
+L=\inf_{n\in\Bbb N}\mu K_n$.\ \Qed
+
+\medskip
+
+{\bf (c)} If $\sequencen{A_n}$ is a non-increasing sequence of
+subsets of $X$, with intersection $A$, and $\phi A_0<\infty$, then $\phi
+A=\inf_{n\in\Bbb N}\phi A_n$.   \Prf\ Of course $\phi A\le\phi A_n$ for
+every $n$.   Given $\epsilon>0$, then for each $n\in\Bbb N$ choose
+$K_n\in\Cal K$ such that $K_n\subseteq A_n$ and
+$\phi_0K_n\ge\phi A_n-2^{-n}\epsilon$ (this is where I use the
+hypothesis
+that $\phi A_0$ is finite);  set $L_n=\bigcap_{i\le n}K_i$ for each $n$,
+and $L=\bigcap_{n\in\Bbb N}L_n$.   Then we have
+
+$$\eqalign{\phi A_{n+1}-\mu L_{n+1}
+&=\phi A_{n+1}-\mu(K_{n+1}\cap L_n)\cr
+&=\phi A_{n+1}-\mu K_{n+1}-\mu L_n+\mu(K_{n+1}\cup L_n)\cr
+&\le 2^{-n-1}\epsilon-\mu L_n+\phi A_n\cr}$$
+
+\noindent because $K_{n+1}\subseteq A_{n+1}\subseteq A_n$ and
+$L_n\subseteq
+K_n\subseteq A_n$.   Inducing on $n$, we see that
+$\mu L_n\ge\phi A_n-2\epsilon+2^{-n}\epsilon$ for every $n$.   So
+
+\Centerline{$\phi A\ge\mu L=\inf_{n\in\Bbb N}\mu L_n\ge\inf_{n\in\Bbb
+N}\phi A_n-2\epsilon$,}
+
+\noindent using (b) above for the middle equality.   As $\epsilon$ is
+arbitrary, $\phi A=\inf_{n\in\Bbb N}\phi A_n$.\ \Qed
+
+\medskip
+
+{\bf (d)} It follows that $\phi$ is an inner measure.
+\Prf\ The arguments of parts (a) and (b) of the proof of 413H tell us
+that
+$\phi\emptyset=0$ and $\phi(A\cup B)\le\phi A+\phi B$ whenever $A$,
+$B\subseteq X$ are disjoint.   We have just seen that
+$\phi(\bigcap_{n\in\Bbb N}A_n)=\inf_{n\in\Bbb N}\phi A_n$ whenever
+$\sequencen{A_n}$ is a non-increasing sequence of sets and $\phi
+A_0<\infty$.
+Finally, $\phi K=\phi_0K$ is finite for every $K\in\Cal
+K$, so $\phi A=\sup\{\phi B:B\subseteq A,\,\phi B<\infty\}$ for every
+$A\subseteq X$.   Putting these together, $\phi$ is an inner measure.\
+\Qed
+
+\medskip
+
+{\bf (e)} So 413C tells us that $\mu$ is a complete measure, and of
+course it is inner regular with respect to $\Cal K$, by the definition
+of $\phi$.   It is semi-finite because $\mu K=\phi_0K$ is finite for
+every $K\in\Cal K$.   Now suppose that
+$E\subseteq X$ and that $E\cap F\in \Sigma$ whenever $\mu F<\infty$.
+Take any $A\subseteq X$.   If $L\in\Cal K$ and $L\subseteq A$, we have
+$L\in\Sigma$ and $\mu L<\infty$, so
+
+\Centerline{$\phi_0L=\mu L=\mu(L\cap E)+\mu(L\setminus E)
+=\phi(L\cap E)+\phi(L\setminus E)\le\phi(A\cap E)+\phi(A\setminus E)$;}
+
+\noindent taking the supremum over $L$,
+$\phi A\le\phi(A\cap E)+\phi(A\setminus E)$.   As $A$ is arbitrary,
+$E\in\Sigma$;  as $E$ is arbitrary, $\mu$ is locally determined.
+
+\medskip
+
+{\bf (f)} Finally, $\mu$ is unique by 412L.
+}%end of proof of 413I
+
+\vleader{60pt}{413J}{Theorem} Let $X$ be a set and $\Cal K$ a family of subsets
+of $X$ such that
+
+\inset{$\emptyset\in\Cal K$,}
+
+\inset{($\dagger$) $K\cup
+K'\in\Cal K$ whenever $K$, $K'\in\Cal K$ are disjoint,}
+
+\inset{($\ddagger$) $K\cap K'\in\Cal K$ whenever $K$, $K'\in\Cal K$.}
+
+\noindent Let $\phi_0:\Cal K\to\coint{0,\infty}$ be a
+functional such that
+
+\inset{($\alpha$) $\phi_0 K
+  =\phi_0 L+\sup\{\phi_0 K':K'\in\Cal K,\,K'\subseteq K\setminus L\}$
+whenever $K$, $L\in\Cal K$ and $L\subseteq K$,}
+
+\inset{($\beta$) $\inf_{n\in\Bbb N}\phi_0K_n=0$ whenever
+$\sequencen{K_n}$ is
+a non-increasing sequence in $\Cal K$ with empty intersection.}
+
+\noindent Then there is a unique complete locally determined measure
+$\mu$ on $X$ extending $\phi_0$ and inner regular with respect to $\Cal
+K_{\delta}$, the family of sets expressible as intersections of
+sequences in $\Cal K$.
+
+\proof{{\bf (a)} Set
+
+\Centerline{$\psi A=\sup\{\phi_0K:K\in\Cal K,\,K\subseteq A\}$ for
+$A\subseteq X$,}
+
+\Centerline{$\Tau
+=\{E:E\subseteq X,\,\psi A=\psi (A\cap E)+\psi(A\setminus E)$
+for every $A\subseteq X\}$.}
+
+\noindent Then 413H tells us that $\Tau$ is an algebra of subsets of $X$,
+including $\Cal K$, and $\nu =\psi \restrp\Tau$ is an additive functional
+extending $\phi_0$.
+
+\medskip
+
+{\bf (b)} Write $\Tau^f$ for $\{E:E\in\Tau,\,\nu E<\infty\}$.
+If $\sequencen{E_n}$ is a non-increasing sequence in $\Tau^f$ with empty
+intersection, $\lim_{n\to\infty}\nu E_n=0$.   \Prf\
+Given $\epsilon>0$, we can choose a sequence $\sequencen{K_n}$ in
+$\Cal K$ such that $K_n\subseteq E_n$ and
+
+\Centerline{$\nu K_n=\phi_0K_n\ge\nu E_n-2^{-n}\epsilon$}
+
+\noindent for each $n$.   Set $L_n=\bigcap_{i\le n}K_i$ for each $n$;
+then
+
+\Centerline{$\lim_{n\to\infty}\nu L_n=\lim_{n\to\infty}\phi_0L_n=0$}
+
+\noindent by hypothesis ($\beta$).   But also, for each $n$,
+
+\Centerline{$\nu E_n
+\le\nu L_n+\sum_{i=0}^n\nu(E_i\setminus K_i)
+\le\nu L_n+2\epsilon$,}
+
+\noindent because $\nu$ is additive and non-negative and $E_n\subseteq
+L_n\cup\bigcup_{i\le n}(E_i\setminus K_i)$.
+So $\limsup_{n\to\infty}\nu E_n\le 2\epsilon$;  as $\epsilon$ is
+arbitrary, $\lim_{n\to\infty}\nu E_n=0$.\ \Qed
+
+\medskip
+
+{\bf (c)} Write $\Tau^f_{\delta}$ for the family of sets expressible as
+intersections of sequences in $\Tau^f$, and for $H\in\Tau^f_{\delta}$
+set $\phi_1H=\inf\{\nu E:H\subseteq E\in\Tau\}$.
+Note that because $E\cap F\in\Tau^f$ whenever $E$, $F\in\Tau^f$, every
+member of $\Tau^f_{\delta}$ can be expressed as the intersection of a
+non-increasing sequence in $\Tau^f$.
+
+\medskip
+
+\quad{\bf (i)} If $\sequencen{E_n}$ is a non-increasing sequence in
+$\Tau^f$ with intersection $H\in\Tau^f_{\delta}$, $\phi_1
+H=\lim_{n\to\infty}\nu E_n$.   \Prf\ Of course
+
+\Centerline{$\phi_1 H\le\inf_{n\in\Bbb N}\nu E_n
+=\lim_{n\to\infty}\nu E_n$.}
+
+\noindent On the other hand, if $H\subseteq E\in\Tau$, then
+$\sequencen{E_n\setminus E}$ is a non-increasing sequence in $\Tau^f$
+with empty intersection, and
+
+\Centerline{$\nu E\ge\lim_{n\to\infty}\nu(E_n\cap E)
+=\lim_{n\to\infty}\nu E_n-\lim_{n\to\infty}\nu(E_n\setminus E)
+=\lim_{n\to\infty}\nu E_n$}
+
+\noindent by (b) above.   As $E$ is arbitrary,
+$\phi_1(\bigcap_{n\in\Bbb N}E_n)=\lim_{n\to\infty}\nu E_n$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Because $\Cal K\subseteq\Tau^f$,
+$\Cal K_{\delta}\subseteq\Tau^f_{\delta}$.   Now for any
+$H\in\Tau^f_{\delta}$,
+$\phi_1H=\sup\{\phi_1L:L\in\Cal K_{\delta},\,L\subseteq H\}$.   \Prf\
+Express $H$ as $\bigcap_{n\in\Bbb N}E_n$ where $\sequencen{E_n}$ is a
+non-increasing sequence in $\Tau^f$.   Given $\epsilon>0$, we can choose
+a sequence $\sequencen{K_n}$ in $\Cal K$ such that $K_n\subseteq E_n$ and
+$\nu K_n\ge\nu E_n-2^{-n}\epsilon$ for each $n$.   Setting
+$L_n=\bigcap_{i\le n}K_i$ for each $n$ and $L=\bigcap_{n\in\Bbb N}L_n$,
+we have $L\in\Cal K_{\delta}$, $L\subseteq H$ and
+
+\Centerline{$\phi_1H=\lim_{n\to\infty}\nu E_n
+\le\lim_{n\to\infty}(\nu L_n+\sum_{i=0}^n\nu(E_i\setminus K_i))
+\le\phi_1L+2\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, this gives the result.\ \Qed
+
+\medskip
+
+{\bf (d)} We find that $\Tau^f_{\delta}$ and $\phi_1$ satisfy the
+conditions of
+413I.   \Prf\ Of course $\emptyset\in\Tau^f_{\delta}$.   If $G$,
+$H\in\Tau^f_{\delta}$ and $G\cap H=\emptyset$, express them as
+$\bigcap_{n\in\Bbb N}E_n$, $\bigcap_{n\in\Bbb N}F_n$ where
+$\sequencen{E_n}$, $\sequencen{F_n}$ are non-increasing sequences in
+$\Tau^f$.   Then
+
+\Centerline{$G\cup H=\bigcap_{n\in\Bbb N}E_n\cup F_n$}
+
+\noindent belongs to $\Tau^f_{\delta}$, and
+
+$$\eqalignno{\phi_1(G\cup H)
+&=\lim_{n\to\infty}\nu(E_n\cup F_n)
+=\lim_{n\to\infty}\nu E_n+\nu F_n-\nu(E_n\cap F_n)\cr
+&=\lim_{n\to\infty}\nu E_n+\nu F_n\cr
+\noalign{\noindent (by (b))}
+&=\phi_1G+\phi_1H.\cr}$$
+
+The definition of $\Tau^f_{\delta}$ as the set of intersections of
+sequences
+in $\Tau^f$ ensures that the intersection of any sequence in
+$\Tau^f_{\delta}$ will belong to $\Tau^f_{\delta}$.
+
+Now suppose that $G$, $H\in\Tau^f_{\delta}$ and that $G\subseteq H$.
+Express them as intersections $\bigcap_{n\in\Bbb N}E_n$,
+$\bigcap_{n\in\Bbb N}F_n$ of non-increasing sequences in $\Tau^f$, so that
+$\phi_1G=\lim_{n\to\infty}\nu E_n$ and $\phi_1H=\lim_{n\to\infty}\nu F_n$.
+For each $n$, set $H_n=\bigcap_{m\in\Bbb N}F_m\setminus E_n$, so that
+$H_n\in\Tau^f_{\delta}$, $H_n\subseteq H\setminus G$, and
+
+$$\eqalign{\phi_1H_n
+&=\lim_{m\to\infty}\nu(F_m\setminus E_n)
+=\lim_{m\to\infty}\nu F_m-\nu(F_m\cap E_n)\cr
+&\ge\lim_{m\to\infty}\nu F_m-\nu E_n
+=\phi_1H-\nu E_n.\cr}$$
+
+\noindent Accordingly
+
+\Centerline{$\sup\{\phi_1G':G'\in\Tau^f_{\delta},\,G'\subseteq
+H\setminus
+G\}\ge\sup_{n\in\Bbb N}\phi_1H-\nu E_n=\phi_1H-\phi_1G$.}
+
+\noindent On the other hand, if $G'\in\Tau^f_{\delta}$ and $G'\subseteq
+H\setminus G$, then
+
+\Centerline{$\phi_1G+\phi_1G'=\phi_1(G\cup G')\le\phi_1H$}
+
+\noindent because of course $\phi_1$ is non-decreasing, as well as being
+additive on disjoint sets.   So
+
+\Centerline{$\sup\{\phi_1G':G'\in\Tau^f_{\delta},\,G'\subseteq
+H\setminus G\}=\phi_1H-\phi_1G$}
+
+\noindent as required by condition ($\alpha$) of 413I.
+Finally, suppose that $\sequencen{H_n}$ is a non-increasing sequence in
+$\Tau^f_{\delta}$ with empty intersection.   For each $n\in\Bbb N$, let
+$\sequence{i}{E_{ni}}$ be a non-increasing sequence in $\Tau^f$ with
+intersection $H_n$, and set $F_m=\bigcap_{n\le m}E_{nn}$ for each $m$.
+Then $\sequence{m}{F_m}$ is a non-increasing sequence in $\Tau^f$ with
+empty intersection, while $H_m\subseteq F_m$ for each $m$, so
+
+\Centerline{$\lim_{m\to\infty}\phi_1H_m
+\le\lim_{m\to\infty}\nu F_m=0$.}
+
+\noindent Thus condition 413I($\beta$) is satisfied, and we have the
+full
+list.\ \Qed
+
+\medskip
+
+{\bf (e)} By 413I, we have a complete locally determined measure $\mu$,
+extending $\phi_1$, and inner regular with respect to $\Tau^f_{\delta}$.
+Since $\phi_1K=\nu K=\phi_0K$ for $K\in\Cal K$, $\mu$ extends $\phi_0$.
+If $G$ belongs to the domain of $\mu$, and $\gamma<\mu G$, there is an
+$H\in\Tau^f_{\delta}$ such that $H\subseteq G$ and
+$\gamma<\mu H=\phi_1H$;
+by (c-ii), there is an $L\in\Cal K_{\delta}$ such that $L\subseteq H$
+and $\gamma\le\phi_1L=\mu L$.   Thus $\mu$ is inner regular with respect
+to $\Cal K_{\delta}$.
+To see that $\mu$ is unique, observe that if $\mu'$ is any other measure
+with these properties, and $L\in\Cal K_{\delta}$, then $L$ is
+expressible as
+$\bigcap_{n\in\Bbb N}K_n$ where $\sequencen{K_n}$ is a sequence in
+$\Cal K$.   Now
+
+\Centerline{$\mu L
+=\lim_{n\to\infty}\mu(\bigcap_{i\le n}K_i)
+=\lim_{n\to\infty}\phi_0(\bigcap_{i\le n}K_i)
+=\mu'L$.}
+
+\noindent So $\mu$ and $\mu'$ must agree on $\Cal K_{\delta}$, and by
+412L they are identical.
+}%end of proof of 413J
+
+\leader{413K}{Corollary} (a) Let $X$ be a set, $\Sigma$ a subring of
+$\Cal PX$, and $\nu:\Sigma\to\coint{0,\infty}$
+a non-negative finitely additive functional such
+that $\lim_{n\to\infty}\nu E_n=0$ whenever $\sequencen{E_n}$ is a
+non-increasing sequence in $\Sigma$ with empty intersection.   Then
+$\nu$ has a unique extension to a complete locally determined measure on
+$X$ which is inner regular with respect to the family $\Sigma_{\delta}$
+of intersections of sequences in $\Sigma$.
+
+(b) Let $X$ be a set, $\Sigma$ a subalgebra of $\Cal PX$, and
+$\nu:\Sigma\to\coint{0,\infty}$ a non-negative finitely additive functional such
+that $\lim_{n\to\infty}\nu E_n=0$ whenever $\sequencen{E_n}$ is a
+non-increasing sequence in $\Sigma$ with empty intersection.   Then
+$\nu$ has a unique extension to a measure defined on the
+$\sigma$-algebra of subsets of $X$ generated by $\Sigma$.
+
+\proof{{\bf (a)} Take $\Sigma$, $\nu$ in place of $\Cal K$, $\phi_0$ in
+413J.
+
+\medskip
+
+{\bf (b)} Let $\nu_1$ be the complete extension as in (a), and let
+$\nu_1'$ be the restriction of $\nu_1$ to the $\sigma$-algebra $\Sigma'$
+generated by $\Sigma$;  this is the extension required here.   To see
+that $\nu_1'$ is unique, use the Monotone Class Theorem (136C).
+}%end of proof of 413K
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} These are versions of the {\bf Hahn extension
+theorem}.   You will sometimes see (b) above stated as `an
+additive functional on an algebra of sets extends to a measure iff it is
+countably additive'.   But this formulation depends on a different
+interpretation
+of the phrase `countably additive' from the one used in this book;  see
+the note after the definition in 326I\formerly{3{}26E}.}
+
+\leader{413L}{}\cmmnt{ It will be useful to have a definition extending
+an idea in \S342.
+
+\medskip
+
+\noindent}{\bf Definition} A {\bf countably compact class}\cmmnt{ (or
+{\bf semicompact paving})} is a family
+$\Cal K$ of sets such that $\bigcap_{n\in\Bbb N}K_n\ne\emptyset$
+whenever $\sequencen{K_n}$ is a sequence in $\Cal K$ such that
+$\bigcap_{i\le n}K_i\ne\emptyset$ for every $n\in\Bbb N$.
+
+\leader{413M}{Corollary} Let $X$ be a set and $\Cal K$ a countably
+compact class of subsets of $X$ such that
+
+\inset{$\emptyset\in\Cal K$,}
+
+\inset{($\dagger$) $K\cup
+K'\in\Cal K$ whenever $K$, $K'\in\Cal K$ are disjoint,}
+
+\inset{($\ddagger$) $K\cap K'\in\Cal K$ whenever $K$, $K'\in\Cal K$.}
+
+\noindent Let $\phi_0:\Cal K\to\coint{0,\infty}$ be a
+functional such that
+
+\inset{($\alpha$) $\phi_0 K
+  =\phi_0 L+\sup\{\phi_0 K':K'\in\Cal K,\,K'\subseteq
+K\setminus L\}$ whenever $K$, $L\in\Cal K$ and $L\subseteq K$.}
+
+\noindent Then there is a unique complete locally determined measure
+$\mu$ on $X$ extending $\phi_0$ and inner regular with respect to
+$\Cal K_{\delta}$, the family of sets expressible as intersections of
+sequences in $\Cal K$.
+
+\proof{ The point is that the hypothesis ($\beta$) of 413J is
+necessarily satisfied:  if $\sequencen{K_n}$ is
+a non-increasing sequence in $\Cal K$ with empty intersection, then,
+because $\Cal K$ is countably compact, there must be some $n$ such that
+$K_n=\emptyset$.   Since hypothesis ($\alpha$) here is already enough to
+ensure that $\phi_0\emptyset=0$ and $\phi_0 K\ge 0$ for every $K\in\Cal K$,
+we must have $\inf_{n\in\Bbb N}\phi_0K_n=0$.   So we apply 413J to get
+the result.
+}%end of proof of 413M
+
+\leader{413N}{}\cmmnt{ I now turn to constructions of a different
+kind, being extension theorems in which the extension is not uniquely
+defined.   Again I start with a theorem on finitely additive
+functionals.
+
+\wheader{413N}{4}{2}{2}{60pt}
+
+\noindent}{\bf Theorem} Let $X$ be a set, $\Tau_0$ a subring of
+$\Cal PX$,
+and $\nu_0:\Tau_0\to\coint{0,\infty}$ a finitely additive functional.
+Suppose that $\Cal K\subseteq\Cal PX$ is a family of sets such that
+
+\inset{($\dagger$) $K\cup K'\in\Cal K$ whenever $K$, $K'\in\Cal K$ are disjoint,}
+
+\inset{($\ddagger$) $K\cap K'\in\Cal K$ for all $K$, $K'\in\Cal K$,}
+
+\inset{every member of $\Cal K$ is included in some
+member of $\Tau_0$,}
+
+\noindent and $\nu_0$ is inner regular with respect to $\Cal K$ in the
+sense that
+
+\inset{($\alpha$) $\nu_0E=\sup\{\nu_0K:K\in\Cal K\cap\Tau_0,\,K\subseteq
+E\}$ for every $E\in\Tau_0$.}
+
+\noindent Then $\nu_0$ has an extension to a
+non-negative finitely additive functional $\nu_1$, defined on a subring
+$\Tau_1$ of $\Cal PX$ including $\Tau_0\cup\Cal K$, inner regular with
+respect to $\Cal K$, and such that whenever $E\in\Tau_1$ and $\epsilon>0$
+there is an $E_0\in\Tau_0$ such that $\nu_1(E\symmdiff E_0)\le\epsilon$.
+
+\proof{{\bf (a)} Let $P$ be the set of all non-negative additive
+real-valued
+functionals $\nu$, defined on subrings of $\Cal PX$, inner regular with
+respect to $\Cal K$, and such that
+
+\inset{($*$) whenever $E\in\dom\nu$ and $\epsilon>0$ there is an
+$E_0\in\Tau_0$
+such that $\nu(E\symmdiff E_0)\le\epsilon$.}
+
+\noindent Order $P$ by extension of functions, so that $P$ is a
+partially
+ordered set.
+
+\medskip
+
+{\bf (b)} It will be convenient to borrow some notation from the theory
+of countably additive functionals.   If $\Tau$ is a subring of $\Cal PX$
+and $\nu:\Tau\to\coint{0,\infty}$ is a non-negative additive functional,
+set
+
+\Centerline{$\nu^*A=\inf\{\nu E:A\subseteq E\in\Tau\}$,
+\quad$\nu_*A=\sup\{\nu E:A\supseteq E\in\Tau\}$}
+
+\noindent for every $A\subseteq X$ (interpreting $\inf\emptyset$ as
+$\infty$ if necessary).   Now if $A\subseteq X$ and $E$, $F\in\Tau$ are
+disjoint,
+
+\Centerline{$\nu^*(A\cap(E\cup F))=\nu^*(A\cap E)+\nu^*(A\cap F)$,}
+
+\Centerline{$\nu_*(A\cap(E\cup F))=\nu_*(A\cap E)+\nu_*(A\cap F)$.}
+
+$$\eqalignno{\text{\Prf\ }\nu^*(A\cap(E\cup F))
+&=\inf\{\nu G:G\in\Tau,\,A\cap(E\cup F)\subseteq G\}\cr
+&=\inf\{\nu G:G\in\Tau,\,A\cap(E\cup F)\subseteq G\subseteq E\cup F\}\cr
+&=\inf\{\nu(G\cap E)+\nu(G\cap F):G\in\Tau,\,A\cap(E\cup F)\subseteq
+G\subseteq E\cup F\}\cr
+&=\inf\{\nu G_1+\nu G_2:G_1,\,G_2\in\Tau,\,A\cap E\subseteq G_1\subseteq
+E,\,A\cap F\subseteq G_2\subseteq F\}\cr
+&=\inf\{\nu G_1:G_1\in\Tau,\,A\cap E\subseteq G_1\subseteq E\}\cr
+ &\qquad\qquad\qquad
+  +\inf\{\nu G_2:G_2\in\Tau,\,A\cap F\subseteq G_2\subseteq F\}\cr
+&=\nu^*(E\cap A)+\nu^*(F\cap A),\cr
+\noalign{\vskip 12pt}
+\nu_*(A\cap(E\cup F))
+&=\sup\{\nu G:G\in\Tau,\,A\cap(E\cup F)\supseteq G\}\cr
+&=\sup\{\nu(G\cap E)+\nu(G\cap F):G\in\Tau,\,A\cap(E\cup F)\supseteq
+G\}\cr
+&=\sup\{\nu G_1+\nu G_2:G_1,\,G_2\in\Tau,\,A\cap E\supseteq G_1,\,A\cap
+F\supseteq G_2\}\cr
+&=\sup\{\nu G_1:G_1\in\Tau,\,A\cap E\supseteq G_1\}\cr
+  &\qquad\qquad\qquad+\sup\{\nu G_2:G_2\in\Tau,\,A\cap F\supseteq
+G_2\}\cr
+&=\nu_*(E\cap A)+\nu_*(F\cap A).   \text{ \Qed}\cr}$$
+
+\medskip
+
+{\bf (c)} The key to the proof is the following fact:  if $\nu\in P$ and
+$M\in\Cal K$, there is a $\nuprime\in P$ such that $\nuprime$ extends $\nu$ and
+$M\in\dom\nuprime$.   \Prf\ Set $\Tau=\dom\nu$, $\Tau'=\{(E\cap
+M)\cup(F\setminus M):E,\,F\in\Tau\}$.   For $H\in\Tau'$, set
+\Centerline{$\nuprime H=\nu^*(H\cap M)+\nu_*(H\setminus M)$.}
+
+\noindent Now we have to check the following.
+
+\medskip
+
+\quad{\bf (i)} $\Tau'$ is a subring of $\Cal PX$, because if $E$, $F$,
+$E'$, $F'\in\Tau$ then
+
+\Centerline{$((E\cap M)\cup(F\setminus M))
+  *((E'\cap M)\cup(F'\setminus M))
+=((E*E')\cap M)\cup((F*F')\setminus M)$}
+
+\noindent for both the Boolean operations $*=\symmdiff$ and $*=\cap$.
+$\Tau'\supseteq\Tau$ because $E=(E\cap M)\cup(E\setminus M)$ for every
+$E\in\Tau$.   (Cf.\ 312N.)   $M\in\Tau'$ because there is some
+$E\in\Tau_0$ such that
+$M\subseteq E$, so that $M=(E\cap M)\cup(\emptyset\setminus M)\in\Tau'$.
+
+\medskip
+
+\quad{\bf (ii)} $\nuprime$ is finite-valued because if $H=(E\cap
+M)\cup(F\setminus M)$, where $E$, $F\in\Tau$, then $\nuprime H\le\nu E+\nu
+F$.
+If $H$, $H'\in\Tau$ are disjoint, they can be expressed as $(E\cap
+M)\cup(F\setminus M)$, $(E'\cap M)\cup(F'\setminus M)$ where $E$, $F$,
+$E'$,
+$F'$ belong to $\Tau$;  replacing $E'$, $F'$ by $E'\setminus E$
+and $F'\setminus F$ if necessary, we may suppose that $E\cap E'=F\cap
+F'=\emptyset$.   Now
+
+$$\eqalignno{\nuprime(H\cup H')
+&=\nu^*((E\cup E')\cap M)+\nu_*((F\cup F')\cap(X\setminus M))\cr
+&=\nu^*(E\cap M)+\nu^*(E'\cap M)
+   +\nu_*(F\cap(X\setminus M))+\nu_*(F'\cap(X\setminus M))\cr
+\noalign{\noindent (by (b) above)}
+&=\nuprime H+\nuprime H'.\cr}$$
+
+\noindent Thus $\nuprime$ is additive.
+
+\medskip
+
+\quad{\bf (iii)} If $E\in\Tau$, then
+
+$$\eqalign{\nu_*(E\setminus M)
+&=\sup\{\nu F:F\in\Tau,\,F\subseteq E\setminus M\}\cr
+&=\sup\{\nu E-\nu(E\setminus F):F\in\Tau,\,F\subseteq E\setminus M\}\cr
+&=\sup\{\nu E-\nu F:F\in\Tau,\,E\cap M\subseteq F\subseteq E\}\cr
+&=\nu E-\inf\{\nu F:F\in\Tau,\,E\cap M\subseteq F\subseteq E\}
+=\nu E-\nu^*(E\cap M).\cr}$$
+
+\noindent So
+
+\Centerline{$\nuprime E=\nu^*(E\cap M)+\nu_*(E\setminus M)=\nu E$.}
+
+\noindent Thus $\nuprime$ extends $\nu$.
+
+\medskip
+
+\quad{\bf (iv)} If $H\in\Tau'$ and $\epsilon>0$, express $H$ as $(E\cap
+M)\cup(F\setminus M)$, where $E$, $F\in\Tau$.   Then we can find
+($\alpha$)
+a $K\in\Cal K\cap\Tau$ such that $K\subseteq E$ and $\nu(E\setminus
+K)\le\epsilon$ ($\beta$) an $F'\in\Tau$ such that $F'\subseteq
+F\setminus
+M$
+and $\nu F'\ge\nu_*(F\setminus M)-\epsilon$ ($\gamma$) a $K'\in\Cal
+K\cap\Tau$ such that $K'\subseteq F'$ and $\nu K'\ge\nu F'-\epsilon$.
+Set
+$L=(K\cap M)\cup K'\in\Tau'$;  by the hypotheses ($\dagger$) and
+($\ddagger$), $L\in\Cal K$.   Now $L\subseteq H$ and
+
+$$\eqalign{\nuprime L
+&=\nuprime(K\cap M)+\nuprime K'
+=\nuprime(E\cap M)-\nuprime((E\setminus K)\cap M)+\nu K'\cr
+&=\nu^*(H\cap M)-\nu^*((E\setminus K)\cap M)+\nu K'
+\ge\nu^*(H\cap M)-\nu(E\setminus K)+\nu F'-\epsilon\cr
+&\ge\nu^*(H\cap M)+\nu_*(F\setminus M)-3\epsilon
+=\nuprime H-3\epsilon.\cr}$$
+
+\noindent As $H$ and $\epsilon$ are arbitrary, $\nu$ is inner regular
+with
+respect to $\Cal K$.
+
+\medskip
+\quad{\bf (v)} Finally, given $H\in\Tau'$ and $\epsilon>0$, take $E$,
+$F\in\Tau$ such that $H\cap M\subseteq E$, $F\subseteq H\setminus M$,
+$\nu
+E\le\nu^*(H\cap M)+\epsilon$ and $\nu F\ge\nu_*(H\setminus M)-\epsilon$.
+In this case,
+
+\Centerline{$\nuprime(E\setminus(H\cap M))=\nuprime E-\nuprime(H\cap M)
+=\nu E-\nu^*(H\cap M)\le\epsilon$,}
+
+\Centerline{$\nuprime((H\setminus M)\setminus F)=\nuprime(H\setminus M)-\nuprime F
+=\nu_*(H\setminus M)-\nu F\le\epsilon$.}
+
+\noindent But as
+
+\Centerline{$H\symmdiff(E\cup F)\subseteq(E\setminus(H\cap
+M))\cup((H\setminus M)\setminus F)$,}
+
+\noindent $\nuprime(H\symmdiff(E\cup F))\le 2\epsilon$.   Now $\nu$
+satisfies
+the condition ($*$), so there is an $E_0\in\Tau_0$ such that $\nu((E\cup
+F)\symmdiff E_0)\le\epsilon$, and $\nuprime(H\symmdiff E_0)\le 3\epsilon$.
+As
+$H$ and $\epsilon$ are arbitrary, $\nuprime$ satisfies ($*$).
+
+This completes the proof that $\nuprime$ is a member of $P$ extending
+$\nu$.\ \Qed
+
+\medskip
+
+{\bf (d)} It is easy to check that if $Q\subseteq P$ is a
+non-empty totally ordered subset, the smallest common extension $\nuprime$
+of the functions in $Q$ belongs to $P$.   (To see that $\nuprime$ is inner
+regular with respect to $\Cal K$, observe that if $E\in\dom\nuprime$ and
+$\gamma<\nuprime E$,
+there is some $\nu\in Q$ such that $E\in\dom\nu$;  now there is a
+$K\in\Cal K\cap\dom\nu$ such that $K\subseteq E$ and $\nu K\ge\gamma$,
+so that $K\in\Cal K\cap\dom\nuprime$ and $\nuprime K\ge\gamma$.)
+And of course $P$ is
+not empty, because $\nu_0\in P$.   So by Zorn's Lemma $P$ has a maximal
+element $\nu_1$ say;  write $\Tau_1$ for the domain of $\nu_1$.   If
+$M\in\Cal K$ there is an element of $P$, with a domain containing $M$,
+extending $\nu_1$; as $\nu_1$ is maximal, this must be $\nu_1$ itself,
+so $M\in\Tau_1$.   Thus
+$\Cal K\subseteq\Tau_1$, and $\nu_1$ has all the required properties.
+}%end of proof of 413N
+
+\vleader{72pt}{413O}{Corollary} Let $(X,\Sigma_0,\mu_0)$ be a measure space and
+$\Cal K$ a countably compact class of subsets of $X$ such that
+
+\inset{($\dagger$) $K\cup K'\in\Cal K$ whenever $K$, $K'\in\Cal K$ are
+disjoint,}
+
+\inset{($\ddagger$) $\bigcap_{n\in\Bbb N}K_n\in\Cal K$ for every
+sequence $\sequencen{K_n}$ in $\Cal K$,}
+
+\inset{$\mu_0^*K<\infty$ for every $K\in\Cal K$,}
+
+\inset{$\mu_0$ is inner regular with respect to $\Cal K$.}
+
+\noindent Then $\mu_0$ has an extension to a complete locally determined
+measure $\mu$, defined on every member of $\Cal K$, inner regular with
+respect to $\Cal K$, and such that whenever $E\in\dom\mu$ and $\mu
+E<\infty$
+there is an $E_0\in\Sigma_0$ such that $\mu(E\symmdiff E_0)=0$.
+
+\proof{{\bf (a)} Set $\Tau_0=\{E:E\in\Sigma_0,\,\mu_0E<\infty\}$,
+$\nu_0=\mu_0\restrp\Tau_0$.   Then $\nu_0$, $\Tau_0$ satisfy the
+conditions
+of 413N;   take $\nu_1$, $\Tau_1$ as in 413N.   If $K$, $L\in\Cal K$ and
+$L\subseteq K$, then
+
+\Centerline{$\nu_1L+\sup\{\nu_1K':K'\in\Cal K,\,K'\subseteq K\setminus
+L\}
+=\nu_1L+\nu_1(K\setminus L)=\nu_1K$.}
+
+\noindent So $\nu_1\restr\Cal K$ satisfies the conditions of 413M and
+there is a complete locally determined measure $\mu$, extending
+$\nu_1\restr\Cal
+K$, and inner regular with respect to $\Cal K$.
+
+\medskip
+
+{\bf (b)} Write $\Sigma$ for the domain of $\mu$.   Then
+$\Tau_1\subseteq\Sigma$.   \Prf\ If $E\in\Tau_1$ and $K\in\Cal K$,
+
+$$\eqalign{\mu_*(K\cap E)&+\mu_*(K\setminus E)\cr
+&\ge\sup\{\mu K':K'\in\Cal K,\,K'\subseteq K\cap E\}
+  +\sup\{\mu K':K'\in\Cal K,\,K'\subseteq K\setminus E\}\cr
+&=\sup\{\nu_1 K':K'\in\Cal K,\,K'\subseteq K\cap E\}
+  +\sup\{\nu_1 K':K'\in\Cal K,\,K'\subseteq K\setminus E\}\cr
+&=\nu_1(K\cap E)+\nu_1(K\setminus E)
+=\nu_1 K
+=\mu K.\cr}$$
+
+\noindent By 413F(iv), $E\in\Sigma$.\ \QeD\  It follows at once that
+$\mu$ extends $\nu_1$, since if $E\in\Tau_1$
+
+\Centerline{$\nu_1E
+=\sup\{\nu_1K:K\in\Cal K,\,K\subseteq E\}
+=\sup\{\mu K:K\in\Cal K,\,K\subseteq E\}
+=\mu E$.}
+
+\medskip
+
+{\bf (c)} In particular, $\mu$ agrees with $\mu_0$ on $\Tau_0$.   Now in
+fact $\mu$ extends $\mu_0$.   \Prf\  Take $E\in\Sigma_0$.   If $K\in\Cal
+K$, there is an $E_0\in\Sigma_0$ such that $K\subseteq E_0$ and
+$\mu_0E_0<\infty$.   Since $E\cap E_0\in\Tau_0\subseteq\Sigma$, $E\cap
+K=E\cap E_0\cap K\in\Sigma$.   As $K$ is arbitrary, $E\in\Sigma$, by
+413F(ii).   Next, because every member of $\Cal K$ is included in a
+member of $\Tau_0$,
+
+$$\eqalign{\mu_0 E
+&=\sup\{\mu_0 K:K\in\Cal K\cap\Sigma_0,\,K\subseteq E\}
+=\sup\{\mu_0(E\cap E_0):E_0\in\Tau_0\}\cr
+&=\sup\{\mu(E\cap E_0):E_0\in\Tau_0\}
+=\sup\{\mu K:K\in\Cal K,\,K\subseteq E\}
+=\mu E.  \text{ \Qed}\cr}$$
+
+\medskip
+
+{\bf (d)}
+Finally, suppose that $E\in\Sigma$ and $\mu E<\infty$.   For each
+$n\in\Bbb N$ we
+can find $K_n\in\Cal K$ and $E_n\in\Sigma_0$ such that $K_n\subseteq E$,
+$\mu(E\setminus K_n)\le 2^{-n}$ and $\nu_1(K_n\symmdiff E_n)\le 2^{-n}$.
+In this case $\sum_{n=0}^{\infty}\mu(E_n\symmdiff E)<\infty$, so
+$\mu(E\symmdiff E')=0$, where
+$E'=\bigcup_{n\in\Bbb N}\bigcap_{m\ge n}E_m\in\Sigma_0$.
+
+Thus $\mu$ has all the required properties.
+}%end of proof of 413O
+
+\leader{413P}{}\cmmnt{ I now describe an alternative route to some of
+the applications of 413N.   As before, I do as much as possible in the
+context of finitely additive functionals.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $X$ be a set and $\Cal K$ a sublattice of
+$\Cal PX$ containing $\emptyset$.
+Let $\lambda:\Cal K\to\coint{0,\infty}$ be a bounded functional
+such that
+
+\Centerline{$\lambda\emptyset = 0$,
+\quad$\lambda K\le\lambda K'$ whenever $K$, $K'\in\Cal K$ and
+$K\subseteq K'$,}
+
+\Centerline{$\lambda(K\cup K')+\lambda(K\cap K')\ge\lambda K+\lambda K'$
+for all $K$, $K'\in\Cal K$.}
+
+\noindent   Then there is a finitely additive functional
+$\nu:\Cal PX\to\coint{0,\infty}$ such that
+
+\Centerline{$\nu X=\sup_{K\in\Cal K}\lambda K$,
+\quad$\nu K\ge\lambda K$ for every $K\in\Cal K$.}
+
+\proof{{\bf (a)} Let us consider first the case in which $\Cal K$ is finite.   I
+induce on $n=\#(\Cal K)$.   If $n=1$ then $\Cal K=\{\emptyset\}$ and $\nu$ must be the
+zero functional.   For the inductive step to $n>1$,
+let $K_0$ be a minimal member of $\Cal K\setminus\{\emptyset\}$.   If $K\in\Cal K$
+then $K\cap K_0$ is a member of $\Cal K$ included in $K_0$, so is either empty or
+$K_0$, that is, either $K\cap K_0=\emptyset$ or $K\supseteq K_0$.   Set
+$Y=X\setminus K_0$ and $\Cal L=\{K\setminus K_0:K\in\Cal K\}$.   Then
+$\Cal L$ is a sublattice of $\Cal PY$ containing $\emptyset$, and
+$K\mapsto K\setminus K_0:\Cal K\to\Cal L$ is surjective but not injective, so
+$\#(\Cal L)<n$.
+
+For $L\in\Cal L$, observe that $L\cup K_0\in\Cal K$.
+\Prf\ There is a $K\in\Cal K$ such that $L=K\setminus K_0$.   If $K$ is disjoint from
+$K_0$, then $L\cup K_0=K\cup K_0$ belongs to $\Cal K$;  if $K$ includes $K_0$ then
+$L\cup K_0=K$ belongs to $\Cal K$.\ \Qed
+
+We can therefore define $\lambda':\Cal L\to\coint{0,\infty}$ by setting
+
+\Centerline{$\lambda'L=\lambda(L\cup K_0)-\lambda K_0$}
+
+\noindent for every $L\in\Cal L$.   Of course $\lambda'\emptyset=0$ and
+$\lambda'L\le\lambda'L'$ whenevery $L\subseteq L'$.   If $L$, $L'\in\Cal L$ then
+
+$$\eqalign{\lambda'(L\cup L')+\lambda'(L\cap L')
+&=\lambda(L\cup L'\cup K_0)+\lambda((L\cap L')\cup K_0)-2\lambda K_0\cr
+&=\lambda((L\cup K_0)\cup(L'\cup K_0))+\lambda((L\cup K_0)\cap(L'\cup K_0))
+    -2\lambda K_0\cr
+&\ge\lambda(L\cup K_0)+\lambda(L'\cup K_0)-2\lambda K_0
+=\lambda'L+\lambda'L'.\cr}$$
+
+\noindent So the hypotheses of this lemma are satisfied by $Y$, $\Cal L$ and
+$\lambda'$, and by the inductive hypothesis there is a finitely additive functional
+$\nuprime:\Cal PY\to\coint{0,\infty}$ such that
+
+\Centerline{$\nuprime Y=\sup_{L\in\Cal L}\lambda'L$,
+\quad$\nuprime L\ge\lambda'L$ for every $L\in\Cal L$.}
+
+Fix any $x_0\in K_0$ and define $\nu:\Cal PX\to\coint{0,\infty}$ by setting
+
+$$\eqalign{\nu A
+&=\lambda K_0+\nuprime(A\cap Y)\text{ if }x_0\in A\subseteq X,\cr
+&=\nuprime(A\cap Y)\text{ for other }A\subseteq X.\cr}$$
+
+\noindent Then $\nu$ is additive.   If $K\in\Cal K$ is disjoint from $K_0$ then
+
+\Centerline{$\nu K=\nuprime K\ge\lambda'K=\lambda(K\cup K_0)-\lambda K_0
+\ge\lambda K-\lambda(K\cap K_0)=\lambda K$.}
+
+\noindent If $K\in\Cal K$ includes $K_0$ then
+
+\Centerline{$\nu K=\lambda K_0+\nuprime(K\setminus K_0)
+\ge\lambda K_0+\lambda'(K\setminus K_0)
+=\lambda K_0+\lambda K-\lambda K_0=\lambda K$.}
+
+\noindent Finally,
+
+$$\eqalign{\nu X
+&=\lambda K_0+\nuprime Y
+=\lambda K_0+\sup_{L\in\Cal L}\lambda'L\cr
+&=\lambda K_0+\sup_{K\in\Cal K}(\lambda(K\cup K_0)-\lambda K_0)
+=\sup_{K\in\Cal K}\lambda(K\cup K_0)
+=\sup_{K\in\Cal K}\lambda K.\cr}$$
+
+\noindent So $\nu$ has the required properties and the induction continues.
+
+\medskip
+
+{\bf (b)} For the general case, set $\gamma=\sup_{K\in\Cal K}\lambda K$.
+We need to know that every finite subset of $\Cal K$ is included in a
+finite sublattice of $\Cal K$;  this is because it is included in a
+finite subalgebra $\Cal E$ of $\Cal PX$ and $\Cal K\cap\Cal E$ is a
+sublattice.   Let $\Nu$ be the set of all finitely additive functionals
+$\nu:\Cal PX\to[0,\gamma]$.   Then $\Nu$ is a closed subset of
+$[0,\gamma]^{\Cal PX}$, so is compact.   For each $K\in\Cal K$ set
+$\Nu_K=\{\nu:\nu\in\Nu$, $\nu K\ge\lambda K\}$.   Then $\Nu_K$ is a
+closed subset of $\Nu$.   If $\Cal K_0\subseteq\Cal K$ is finite, there
+is a finite sublattice $\Cal L$ of $\Cal K$ including
+$\Cal K_0\cup\{\emptyset\}$, and now (a) tells us that there is a
+$\nu\in\bigcap_{K\in\Cal L}\Nu_K$.   Thus $\{\Nu_K:K\in\Cal K\}$ has the
+finite intersection property and there is a
+$\nu\in\bigcap_{K\in\Cal K}\Nu_K$.   In this case,
+$\nu:\Cal PX\to[0,\gamma]$ is a finitely additive functional dominating
+$\lambda$;  it follows that $\nu X=\gamma$ and the proof is complete.
+}%end of proof of 413P
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} If $P$ is a lattice, a function
+$f:P\to\ocint{-\infty,\infty}$
+such that $f(p\vee q)+f(p\wedge q)\ge f(p)+f(q)$ for all $p$, $q\in P$
+is called {\bf supermodular}.
+}%end of comment
+
+\vleader{72pt}{413Q}{Theorem} Let $X$ be a set and $\Cal K$ a sublattice of
+$\Cal PX$ containing $\emptyset$.
+Let $\Sigma$ be the algebra of subsets of $X$ generated by $\Cal K$, and
+$\nu_0:\Sigma\to\coint{0,\infty}$ a finitely additive functional.
+Then there is a finitely additive functional
+$\nu:\Sigma\to\coint{0,\infty}$ such that
+
+(i) $\nu X=\sup_{K\in\Cal K}\nu_0K$,
+
+(ii) $\nu K\ge\nu_0K$ for every $K\in\Cal K$,
+
+(iii) $\nu$ is inner regular with respect to $\Cal K$
+in the sense that $\nu E=\sup\{\nu K:K\in\Cal K,\,K\subseteq E\}$ for
+every $E\in\Sigma$.
+
+\proof{{\bf (a)} Set $\gamma=\sup_{K\in\Cal K}\nu_0K$.   Let $P$ be the
+set of all functionals $\lambda:\Cal K\to[0,\gamma]$ such that
+
+\Centerline{$\lambda K+\lambda K'\le\lambda(K\cup K')+\lambda(K\cap
+K')$}
+
+\noindent for every $K$, $K'\in\Cal K$.   Give $P$ the natural partial
+order inherited from $\BbbR^{\Cal K}$.   Note that
+$\nu_0\restr\Cal K$
+belongs to $P$.   If $Q\subseteq P$ is non-empty and upwards-directed,
+then $\sup Q$, taken in $\BbbR^{\Cal K}$, belongs to $P$;  so there is
+a maximal $\lambda\in P$ such that $\nu_0\restr\Cal K\le\lambda$.   By
+413P, there is a non-negative additive functional $\nu$ on $\Cal PX$ such that
+$\nu K\ge\lambda K$ for every $K\in\Cal K$ and $\nu X=\gamma$.   Since
+$\nu\restr\Cal K$ also belongs to $P$, we
+must have $\nu K=\lambda K$ for every $K\in\Cal K$.
+
+\medskip
+
+{\bf (b)} Now for any $K_0\in\Cal K$,
+
+\Centerline{$\nu K_0
+  +\sup\{\nu L:L\in\Cal K,\,L\subseteq X\setminus K_0\}
+=\gamma$.}
+
+\medskip
+
+\Prf\ {\bf (i)} Set
+$\Cal L=\{L:L\in\Cal K,\,L\subseteq X\setminus K_0\}$.
+For $A\subseteq X$, set $\theta_0A=\sup_{L\in\Cal L}\nu(A\cap L)$.
+Because
+$\Cal L$ is upwards-directed, $\theta_0:\Cal PX\to\Bbb R$ is additive,
+and
+of course $0\le\theta_0\le\nu$.   Set $\theta_1=\nu-\theta_0$, so that
+$\theta_1$ is another additive functional, and write
+
+\Centerline{$\lambda'K=\theta_0K+\sup\{\theta_1M:M\in\Cal K,\,M\cap
+K_0\subseteq K\}$}
+
+\noindent for $K\in\Cal K$.
+
+\medskip
+
+\quad{\bf (ii)} If $K$, $K'\in\Cal K$ and $\epsilon>0$, there are $M$,
+$M'\in\Cal K$ such that $M\cap K_0\subseteq K$, $M'\cap K_0\subseteq K'$
+and
+
+\Centerline{$\theta_0K+\theta_1M\ge\lambda'K-\epsilon$,
+\quad$\theta_0K'+\theta_1M'\ge\lambda'K'-\epsilon$.}
+
+\noindent Now
+
+\Centerline{$M\cup M'\in\Cal K$,\quad $M\cap M'\in\Cal K$,}
+
+\Centerline{$(M\cup M')\cap K_0\subseteq K\cup K'$,
+\quad$(M\cap M')\cap K_0\subseteq K\cap K'$,}
+
+\noindent so
+
+$$\eqalign{\lambda'(K\cup K')+\lambda'(K\cap K')
+&\ge\theta_0(K\cup K')+\theta_1(M\cup M')
+  +\theta_0(K\cap K')+\theta_1(M\cap M')\cr
+&=\theta_0K+\theta_1M+\theta_0K'+\theta_1M'
+\ge\lambda'K+\lambda'K'-2\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary, $\lambda'(K\cup K')+\lambda'(K\cap
+K')\ge\lambda K+\lambda K'$.
+
+\medskip
+
+\quad{\bf (iii)} Suppose that $K$, $M\in\Cal K$ are such that $M\cap
+K_0\subseteq K$.   If $L\in\Cal L$, then
+
+$$\eqalign{\nu(K\cap L)+\theta_1M
+&=\nu(K\cap L)+\nu M-\theta_0M\cr
+&=\nu(M\cap K\cap L)+\nu(M\cup(K\cap L))-\theta_0M
+\le\gamma\cr}$$
+
+\noindent because $K\cap L\in\Cal L$;   taking the supremum over $L$ and
+$M$, $\lambda'K\le\gamma$.   As $K$ is arbitrary, $\lambda'\in P$.
+
+\medskip
+
+\quad{\bf (iv)} If $K\in\Cal K$, then of course $K\cap K_0\subseteq K$,
+so
+
+\Centerline{$\lambda'K\ge\theta_0K+\theta_1K=\nu K=\lambda K$.}
+
+\noindent Thus $\lambda'\ge\lambda$.   Because $\lambda$ is maximal,
+$\lambda'=\lambda$.   But this means that
+
+\Centerline{$\lambda K_0=\lambda'K_0
+=\theta_0K_0+\sup\{\theta_1M:M\in\Cal K,\,M\cap K_0\subseteq K_0\}
+=\sup_{M\in\Cal K}\theta_1M$.}
+
+Now given $\epsilon>0$ there is an $M\in\Cal K$ such that
+
+\Centerline{$\gamma-\epsilon\le\nu_0M\le\lambda M=\nu M$,}
+
+\noindent so that
+
+\Centerline{$\nu K_0=\lambda K_0\ge\theta_1M=\nu M-\theta_0M
+\ge\gamma-\epsilon-\theta_0M
+\ge\gamma-\epsilon-\sup_{L\in\Cal L}\nu L$,}
+
+\noindent and $\nu K_0+\sup_{L\in\Cal L}\nu L\ge\gamma-\epsilon$.   As
+$\epsilon$ is arbitrary, $\nu K_0+\sup_{L\in\Cal L}\nu L\ge\gamma$.
+But of course $\nu K_0+\nu L\le\nu X=\gamma$ for every $L\in\Cal L$, so
+$\nu K_0+\sup_{L\in\Cal L}\nu L=\gamma$, as claimed.\ \Qed
+
+\medskip
+
+{\bf (c)} It follows that if $K$, $L\in\Cal K$ and $L\subseteq K$,
+
+\Centerline{$\nu K=\nu L+\sup\{\nu K':K'\in\Cal K,\,K'\subseteq
+K\setminus L\}$.}
+
+\noindent\Prf\ Because $\nu$ is additive and non-negative, we surely
+have
+
+\Centerline{$\nu K\ge\nu L+\sup\{\nu K':K'\in\Cal K,\,K'\subseteq
+K\setminus L\}$.}
+
+\noindent On the other hand, given $\epsilon>0$, there is an $M\in\Cal
+K$ such that $M\subseteq X\setminus L$ and
+$\nu L+\nu M\ge\gamma-\epsilon$, so that $M\cap K\in\Cal K$,
+$M\cap K\subseteq K\setminus L$
+and
+
+\Centerline{$\nu L+\nu(M\cap K)=\nu L+\nu K+\nu M-\nu(M\cup K)
+\ge\nu K+\gamma-\epsilon-\gamma=\nu K-\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary,
+
+\Centerline{$\nu K
+\le\nu L+\sup\{\nu K':K'\in\Cal K,\,K'\subseteq K\setminus L\}$}
+
+\noindent and we have equality.\ \Qed
+
+\medskip
+
+{\bf (d)} By 413H, we have an additive functional
+$\nuprime:\Sigma\to\coint{0,\infty}$ such that
+$\nuprime E=\sup\{\nu K:K\in\Cal K,\,K\subseteq E\}$ for every $E\in\Sigma$.
+It is easy to show that
+$\nuprime$ and $\nu$ must agree on $\Sigma$, but even without doing so we
+can see that
+$\nuprime$ has the properties (i)-(iii) required in the theorem.
+}%end of proof of 413Q
+
+\leader{413R}{}\cmmnt{ The following lemma on countably compact
+classes, corresponding to 342Db, will be useful.
+
+\medskip
+
+\noindent}{\bf Lemma}\cmmnt{ ({\smc Marczewski 53})} Let $\Cal K$ be a
+countably compact class of sets.
+Then there is a countably compact class $\Cal K^*\supseteq\Cal K$ such
+that $K\cup L\in\Cal K^*$ and $\bigcap_{n\in\Bbb N}K_n\in\Cal K^*$ whenever $K$, $L\in\Cal K^*$ and $\sequencen{K_n}$ is a sequence in $\Cal K^*$.
+
+\proof{{\bf (a)} Write $\Cal K_s$ for $\{K_0\cup\ldots\cup
+K_n:K_0,\ldots,K_n\in\Cal K\}$.   Then $\Cal K_s$ is countably compact.
+\Prf\ Let $\sequencen{L_n}$ be a sequence in $\Cal K_s$ such that
+$\bigcap_{i\le n}L_i\ne\emptyset$ for each $n\in\Bbb N$.   Then there is
+an ultrafilter $\Cal F$ on $X=\bigcup\Cal K$ containing every $L_n$.
+For each $n$, $L_n$ is a finite union of members of $\Cal K$, so there
+must be a $K_n\in\Cal K$ such that $K_n\subseteq L_n$ and $K_n\in\Cal
+F$.   Now $\bigcap_{i\le n}K_i\ne\emptyset$ for every $n$, so
+$\bigcap_{n\in\Bbb N}K_n\ne\emptyset$ and $\bigcap_{n\in\Bbb
+N}L_n\ne\emptyset$.   As $\sequencen{L_n}$ is arbitrary, $\Cal K_s$ is
+countably compact.\ \Qed
+
+Note that $L\cup L'\in\Cal K_s$ for all $L$, $L'\in\Cal K_s$.
+
+\medskip
+
+{\bf (b)} Write $\Cal K^*$ for
+
+\Centerline{$\{\bigcap\Cal L_0:\Cal L_0\subseteq\Cal K_s$ is non-empty
+and countable$\}$.}
+
+\noindent Then $\Cal K^*$ is countably compact.   \Prf\ If
+$\sequencen{M_n}$ is any sequence in $\Cal K^*$ such that
+$\bigcap_{i\le n}M_i\ne\emptyset$ for every $n\in\Bbb N$, then for each
+$n\in\Bbb N$
+let $\Cal L_n\subseteq\Cal K_s$ be a countable non-empty set such that
+$M_n=\bigcap\Cal L_n$.   Let $\sequencen{L_n}$ be a sequence running
+over $\bigcup_{n\in\Bbb N}\Cal L_n$;  then
+$\bigcap_{i\le n}L_i\ne\emptyset$ for every $n$, so
+$\bigcap_{n\in\Bbb N}L_n=\bigcap_{n\in\Bbb N}M_n$ is non-empty.   As
+$\sequencen{M_n}$ is arbitrary, $\Cal K^*$ is countably compact.\ \Qed
+
+\medskip
+
+{\bf (c)} Of course $\Cal K\subseteq\Cal K_s\subseteq\Cal K^*$.   It is
+immediate from the definition of $\Cal K^*$ that it is closed under
+countable intersections.   Finally, if $M_1$, $M_2\in\Cal K^*$, let
+$\Cal L_1$, $\Cal L_2\subseteq\Cal K_s$ be countable sets such that
+$M_1=\bigcap\Cal L_1$ and $M_2=\bigcap\Cal L_2$;  then
+$\Cal L=\{L_1\cup L_2:L_1\in\Cal L_1,\,L_2\in\Cal L_2\}$ is a countable
+subset of $\Cal K_s$, so $M_1\cup M_2=\bigcap\Cal L$ belongs to
+$\Cal K^*$.
+}%end of proof of 413R
+
+\leader{413S}{Corollary} Let $X$ be a set and $\Cal K$ a countably
+compact class of subsets of $X$.
+Let $\Tau$ be a subalgebra of $\Cal PX$ and $\nu:\Tau\to\Bbb R$
+a non-negative finitely additive functional.
+
+(a) There is a complete measure $\mu$ on $X$ such that $\mu X\le\nu X$,
+$\Cal K\subseteq\dom\mu$ and
+$\mu K\ge\nu K$ for every $K\in\Cal K\cap\Tau$.
+
+(b) If
+
+\inset{($\dagger$) $K\cup K'\in\Cal K$ whenever $K$, $K'\in\Cal K$,}
+
+\inset{($\ddagger$) $\bigcap_{n\in\Bbb N}K_n\in\Cal K$ for every
+sequence $\sequencen{K_n}$ in $\Cal K$,}
+
+\noindent we may arrange that $\mu$ is inner
+regular with respect to $\Cal K$.
+
+\proof{ By 413R, there is always a countably compact class
+$\Cal K^*\supseteq\Cal K$ satisfying ($\dagger$) and ($\ddagger$);  for
+case (b), take $\Cal K^*=\Cal K$.
+By 391G, there is an extension of $\nu$ to a finitely additive
+functional $\nuprime:\Cal PX\to\Bbb R$.
+Let $\Tau_1$ be the subalgebra of $\Cal PX$ generated by $\Cal K^*$.
+By 413Q, there is a non-negative additive functional
+$\nu_1:\Tau_1\to\Bbb
+R$ such that $\nu_1X\le\nuprime X=\nu X$, $\nu_1K\ge\nuprime K=\nu K$ for every
+$K\in\Cal K^*\cap\Tau$ and $\nu_1E=\sup\{\nu_1K:K\in\Cal
+K^*,\,K\subseteq
+E\}$ for every $E\in\Tau_1$.   In particular, if $K$, $L\in\Cal K^*$,
+
+\Centerline{$\nu_1L
+   +\sup\{\nu_1K':K'\in\Cal K^*,\,K'\subseteq K\setminus L\}
+=\nu_1L+\nu_1(K\setminus L)=\nu_1K$.}
+
+\noindent So $\Cal K^*$ and $\nu_1\restr\Cal K^*$ satisfy the hypotheses
+of 413M.   Accordingly we have a complete measure $\mu$ extending
+$\nu_1\restr\Cal K^*$ and inner regular with respect to
+$\Cal K^*=\Cal K^*_{\delta}$;  in
+which case
+
+\Centerline{$\mu K=\nu_1K\ge\nu K$}
+
+\noindent for every $K\in\Cal K\cap\Tau$, and
+
+\Centerline{$\mu X=\sup_{K\in\Cal K^*}\mu K
+=\sup_{K\in\Cal K^*}\nu_1 K\le\nu_1X\le\nu X$,}
+
+\noindent as required.
+}%end of proof of 413S
+
+\leader{413T}{}\cmmnt{ The following fact is interesting and not quite
+obvious.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a complete totally
+finite measure space, $(Y,\Tau,\nu)$ a measure space, and $\frak S$ a
+Hausdorff topology on $Y$ such that $\nu$ is inner
+regular with respect to the closed sets.   Let $\sequencen{f_n}$ be a
+sequence of
+\imp\ functions from $X$ to $Y$.   If $f(x)=\lim_{n\to\infty}f_n(x)$ is
+defined in $Y$ for every $x\in X$, then $f$ is \imp.
+
+\proof{ Let $\mu_*$ be the inner measure associated with $\mu$
+(413D).   If $F\in\Tau$ is closed then
+$\bigcap_{n\in\Bbb N}\bigcup_{m\ge n}f_m^{-1}[F]\subseteq f^{-1}[F]$, so
+
+\Centerline{$\mu_*f^{-1}[F]
+\ge\mu(\bigcap_{n\in\Bbb N}\bigcup_{m\ge n}f_m^{-1}[F])
+\ge\liminf_{n\to\infty}\mu f_n^{-1}[F]=\nu F$.}
+
+\noindent So if $H$ is any member of $\Tau$,
+
+$$\eqalign{\mu_*f^{-1}[H]
+&\ge\sup\{\mu_*f^{-1}[F]:
+  F\in\Tau,\,F\subseteq H\text{ and }F\text{ is closed}\}\cr
+&\ge\sup\{\nu F:
+  F\in\Tau,\,F\subseteq H\text{ and }F\text{ is closed}\}
+=\nu H.\cr}$$
+
+\noindent Taking complements,
+
+$$\eqalignno{\mu^*f^{-1}[H]
+&=\mu X-\mu_*f^{-1}[Y\setminus H]\cr
+\displaycause{413Ec}
+&\le\nu Y-\nu(Y\setminus H)
+=\nu H\cr}$$
+
+\noindent (of course $\nu Y=\mu f_0^{-1}[Y]=\mu X$).   So
+$\mu^*f^{-1}[H]=\mu_*f^{-1}[H]=\nu H$.   Because $\mu$ is complete,
+$\mu f^{-1}[H]$ is defined and equal to $\nu H$ (413Ef).  As $H$ is
+arbitrary, $f$ is \imp.
+}%end of proof of 413T
+%is this in the right place? query
+
+%doesn't work for $\sigma$-finite case, try $X=Y=\Bbb R\cup\{\infty}$ and
+% $f_n(x)=x+n$
+
+\exercises{
+\leader{413X}{Basic exercises (a)}
+%\spheader 413Xa
+Define $\phi:\Cal P\Bbb N\to\coint{0,\infty}$ by setting
+$\phi A=0$ if $A$ is finite, $\infty$ otherwise.   Check that $\phi$
+satisfies conditions ($\alpha$) and ($\beta$) of 413A, but that if we
+attempt to reproduce the construction of 413C then we obtain
+$\Sigma=\Cal P\Bbb N$ and $\mu=\phi$, so that $\mu$ is not countably
+additive.
+%413C
+
+\spheader 413Xb Let $\phi_1$, $\phi_2$ be two inner measures on a set
+$X$, inducing measures $\mu_1$ and $\mu_2$ by the method of 413C.   (i)
+Show that $\phi=\phi_1+\phi_2$ is an inner measure.   (ii) Show that the
+measure $\mu$
+induced by $\phi$ extends the measure $\mu_1+\mu_2$ defined on
+$\dom\mu_1\cap\dom\mu_2$.
+%413C
+
+\sqheader 413Xc Let $X$ be a set, $\phi$ an inner measure on $X$, and
+$\mu$ the measure constructed from it by the method of 413C.   (i) Let
+$Y$ be a subset of $X$.   Show that $\phi\restrp\Cal PY$ is an inner
+measure on $Y$,
+and that the measure on $Y$ defined from it extends the subspace measure
+$\mu_Y$ induced on $Y$ by $\mu$.   (ii) Now suppose that $\phi X$ is
+finite.   Let $Y$ be a set and $f:X\to Y$
+a function.   Show that $B\mapsto\phi f^{-1}[B]$ is an inner measure on
+$Y$, and that it defines a measure on $Y$ which extends the image
+measure $\mu f^{-1}$.
+%413C
+
+\spheader 413Xd Let $(X,\Sigma,\mu)$ be a measure space.   Set
+$\theta A=\bover12(\mu^*A+\mu_*A)$ for every $A\subseteq X$.   Show that
+$\theta$ is
+an outer measure on $X$, and that if $\mu$ is semi-finite then
+the measure defined from $\theta$ by
+\Caratheodory's method extends $\mu$.
+%413D
+
+\sqheader 413Xe Show that there is a partition $\sequencen{A_n}$ of
+$[0,1]$ such that $\mu_*(\bigcup_{i\le n}A_i)=0$ for every $n$, where
+$\mu_*$ is
+Lebesgue inner measure.   \Hint{set $A_n=(A+q_n)\cap[0,1]$ where
+$\sequencen{q_n}$ is an enumeration of $\Bbb Q$ and $A$ is a suitable
+set;  cf.\ 134B.}
+%413D
+
+\spheader 413Xf Let $(X,\Sigma,\mu)$ be a measure space.   (i) Show that
+$\mu_*\restr\Sigma$ is the semi-finite version $\mu_{\text{sf}}$ of $\mu$ as
+constructed in 213Xc.   (ii) Show that if $A$ is any subset of $X$, and
+$\Sigma_A$ the
+subspace $\sigma$-algebra, then $\mu_*\restr\Sigma_A$ is a semi-finite
+measure on $A$.
+%413E
+
+\sqheader 413Xg Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be two measure
+spaces, and $\lambda$ the c.l.d.\ product measure on $X\times Y$.   Show
+that $\lambda_*(A\times B)=\mu_*A\cdot\nu_*B$ for all $A\subseteq X$ and
+$B\subseteq Y$.   \Hint{use Fubini's theorem to show that
+$\lambda_*(A\times B)\le\mu_*A\cdot\nu_*B$.}
+%413E
+
+\spheader 413Xh(i) Let $(X,\Sigma,\mu)$ be a $\sigma$-finite measure
+space and $f:X\to\Bbb R$ a function such that $\overline{\int}fd\mu$ is
+finite.   Show that for every $\epsilon>0$ there is a measure $\nu$ on
+$X$ extending $\mu$ such that
+$\underline{\int}fd\nu\ge\overline{\int}fd\mu-\epsilon$.   \Hint{133Ja,
+215B(viii), 417Xa.}   (ii) Let $(X,\Sigma,\mu)$ be a totally finite
+measure space and $f:X\to\Bbb R$ a bounded function.   Show that there is
+a finitely additive functional $\nu:\Cal PX\to\coint{0,\infty}$,
+extending $\mu$, such that $\dashint fd\nu$, defined as in 363L, is
+equal to $\overline{\int}fd\mu$.
+%413E
+
+\spheader 413Xi Let $X$ be a set and $\mu$, $\nu$ two complete locally determined measures on $X$ with domains $\Sigma$, $\Tau$ respectively, both inner
+regular with respect to $\Cal K\subseteq\Sigma\cap\Tau$.   Suppose that,
+for $K\in\Cal K$, $\mu K=0$ iff $\nu K=0$.   Show that $\Sigma=\Tau$ and
+that $\mu$ and $\nu$ have the same null ideals.
+%413F
+
+\sqheader 413Xj Let $(X,\Tau,\nu)$ be a measure space.   (i) Show that
+the measure constructed by the method of 413C from the inner measure
+$\nu_*$ is the c.l.d.\ version of $\nu$.   (ii) Set
+$\Cal K=\{E:E\in\Tau,\,\nu E<\infty\}$, $\phi_0=\nu\restr\Cal K$.   Show
+that $\Cal K$ and $\phi_0$ satisfy the conditions of 413I, and that the
+measure constructed by the method there is again the c.l.d.\ version of
+$\nu$.
+%413I
+
+\spheader 413Xk Let $(X,\Sigma,\mu)$ be a complete locally determined
+measure space and $\Cal L$ a family of subsets of $X$ such that $\mu$ is
+inner regular with respect to $\Cal L$.   Set
+$\Cal K=\{K:K\in\Cal L\cap\Sigma,\,\mu K<\infty\}$ and
+$\phi_0=\mu\restr\Cal K$.   Show that
+$\Cal K$ and $\phi_0$ satisfy the conditions of 413J and that the measure
+constructed from them by the method there is just $\mu$.
+%413I
+
+\sqheader 413Xl Let $\Cal K$ be the family of subsets of $\Bbb R$
+expressible as disjoint finite unions of bounded closed intervals.
+(i) Show from first principles that there is a unique functional
+$\phi_0:\Cal K\to\coint{0,\infty}$ such that
+$\phi_0[\alpha,\beta]=\beta-\alpha$
+whenever $\alpha\le\beta$ and $\phi_0$ satisfies the conditions of 413J.
+(ii) Show that the measure on $\Bbb R$ constructed from $\phi_0$ by the
+method of 413J is Lebesgue measure.
+%413J
+
+\spheader 413Xm Let $X$ be a set, $\Sigma$ a subring of $\Cal PX$, and
+$\nu:\Sigma\to\coint{0,\infty}$ a non-negative additive functional such
+that $\lim_{n\to\infty}\nu E_n=0$ whenever $\sequencen{E_n}$ is a
+non-increasing sequence in $\Sigma$ with empty intersection, as in 413K.
+Define $\theta:\Cal PX\to[0,\infty]$ by setting
+
+\Centerline{$\theta A=\inf\{\sum_{n=0}^{\infty}\nu E_n:\sequencen{E_n}$
+is a sequence in $\Sigma$ covering $A\}$}
+
+\noindent for $A\subseteq X$, interpreting $\inf\emptyset$ as $\infty$
+if necessary.   Show that $\theta$ is an outer measure.   Let
+$\mu_{\theta}$ be
+the measure defined from $\theta$ by \Caratheodory's method.   Show
+that the measure defined from $\nu$ by the process of 413K is the
+c.l.d.\ version
+of $\mu_{\theta}$.   \Hint{the c.l.d.\ version of $\mu_{\theta}$ is
+inner regular with respect to $\Sigma_{\delta}$.}
+%413K
+
+\sqheader 413Xn Let $X$ be a set, $\Sigma$ a subring of $\Cal PX$, and
+$\nu:\Sigma\to\coint{0,\infty}$ a non-negative additive functional.
+Show that the following are equiveridical:  (i) $\nu$ has an extension to a measure on $X$;  (ii) $\lim_{n\to\infty}\nu E_n=0$ whenever
+$\sequencen{E_n}$ is a
+non-increasing sequence in $\Sigma$ with empty intersection;  (iii)
+$\nu(\bigcup_{n\in\Bbb N}E_n)=\sum_{n=0}^{\infty}\nu E_n$ whenever
+$\sequencen{E_n}$ is a disjoint sequence in $\Sigma$ such that
+$\bigcup_{n\in\Bbb N}E_n\in\Sigma$.
+%413K
+
+\sqheader 413Xo Let $\sequencen{(X_n,\Sigma_n,\mu_n)}$ be a sequence of
+probability spaces, and $\Cal F$ a non-principal ultrafilter on
+$\Bbb N$.   For $x$, $y\in\prod_{n\in\Bbb N}X_n$, write $x\sim y$ if
+$\{n:x(n)=y(n)\}\in\Cal F$.   (i) Show that $\sim$ is an equivalence
+relation;  write $X$ for the set of equivalence classes, and
+$x^{\ssbullet}\in X$ for the equivalence class of
+$x\in\prod_{n\in\Bbb N}X_n$.  (Compare 351M.)   (ii) Let $\Sigma$ be the
+set of subsets of $X$ expressible in the form
+$Q(\sequencen{E_n})=\{x^{\ssbullet}:x\in\prod_{n\in\Bbb N}E_n\}$, where
+$E_n\in\Sigma_n$ for each $n\in\Bbb N$.   Show that $\Sigma$ is an
+algebra of subsets of $X$, and that there is a well-defined additive
+functional $\nu:\Sigma\to[0,1]$ defined by setting
+$\nu(Q(\sequencen{E_n}))=\lim_{n\to\Cal F}\mu_nE_n$.   (iii) Show that
+for any non-decreasing sequence $\sequence{i}{H_i}$ in $\Sigma$ there is
+an $H\in\Sigma$ such that $H\subseteq\bigcap_{i\in\Bbb N}H_i$ and $\nu
+H=\lim_{n\to\infty}\nu H_n$.   \Hint{express each $H_i$ as
+$Q(\sequencen{E_{in}})$.   Do this in such a way that
+$E_{i+1,n}\subseteq
+E_{in}$ for all $i$, $n$.   Take a decreasing sequence
+$\sequence{i}{J_i}$
+in $\Cal F$, with empty intersection, such that
+$\nu H_i\le\mu E_{in}+2^{-i}$ for $n\in J_i$.   Set $E_n=E_{in}$ for
+$n\in J_i\setminus J_{i+1}$.}   (iv) Show that there is a unique
+extension of
+$\nu$ to a complete probability measure $\mu$ on $X$ which is inner regular with
+respect to $\Sigma$.   (This is a kind of {\bf Loeb measure}.)
+%413K
+
+\spheader 413Xp Let $\frak A$ be a Boolean algebra and
+$K\subseteq\frak A$ a sublattice containing $0$.   Suppose that
+$\lambda:K\to\coint{0,\infty}$
+is a bounded functional such that $\lambda 0=0$,
+$\lambda a\le\lambda a'$ whenever $a$, $a'\in K$ and $a\Bsubseteq a'$,
+and $\lambda(a\Bcup a')+\lambda(a\Bcap a')\ge\lambda a+\lambda a'$ for
+all $a$, $a'\in K$.   Show that there is a non-negative additive
+functional $\nu:\frak A\to\Bbb R$ such that $\nu a\ge\lambda a$ for
+every $a\in K$ and $\nu 1=\sup_{a\in K}\lambda a$.
+%413P
+
+\spheader 413Xq Let $X$ be a set and $\Cal K$ a sublattice of $\Cal PX$
+containing $\emptyset$.   Let $\lambda:\Cal K\to\Bbb R$ be an
+order-preserving function such that $\lambda\emptyset=0$ and
+$\lambda(K\cup K')+\lambda(K\cap K')=\lambda K+\lambda K'$ for all $K$,
+$K'\in\Cal K$.   Show that there is a non-negative additive functional
+$\nu:\Cal PX\to[0,\infty]$ extending $\lambda$.   \Hint{start with the case
+$X\in\Cal K$.}
+(If $P$ is a lattice, a functional $f:P\to\Bbb R$ such that
+$f(p\vee q)+f(p\wedge q)=f(p)+f(q)$ for all $p$, $q\in P$ is called
+{\bf modular}.)
+%413P
+
+\spheader 413Xr Let $X$ be a set and $\Cal K$ a sublattice of
+$\Cal PX$.   Let $\lambda:\Cal K\to[0,1]$ be a functional
+such that
+
+\Centerline{$\lambda K\le\lambda K'$ whenever $K$, $K'\in\Cal K$ and
+$K\subseteq K'$,
+\quad$\inf_{K\in\Cal K}\lambda K=0$,}
+
+\Centerline{$\lambda(K\cup K')+\lambda(K\cap K')\le\lambda K+\lambda K'$
+for all $K$, $K'\in\Cal K$}
+
+\noindent Show that there is a finitely
+additive functional $\nu:\Cal PX\to[0,1]$ such that
+
+\Centerline{$\nu X=\sup_{K\in\Cal K}\lambda K$,
+\quad$\nu K\le\lambda K$ for every $K\in\Cal K$.}
+%413P
+
+\spheader 413Xs Let $X$ be a set and $\Cal K$ a sublattice of $\Cal PX$
+containing $\emptyset$.   Let $\lambda:\Cal K\to\coint{0,\infty}$ be such
+that $\lambda K\le\sum_{n=0}^{\infty}(\lambda K_n-\lambda L_n)$ whenever
+$K\in\Cal K$ and $\sequencen{K_n}$, $\sequencen{L_n}$ are sequences in
+$\Cal K$ such that $L_n\subseteq K_n$ for every $n$ and
+$\sequencen{K_n\setminus L_n}$ is a disjoint cover of
+$K$.   Show that there is a measure on $X$ extending $\lambda$.
+\Hint{Show that we can apply 413Xq.
+Show that if $\Tau$ is the ring of subsets of $X$ generated by $\Cal K$,
+every member of $\Tau$ is a finite union of differences of members of
+$\Cal K$.   Now apply 413Ka.   See {\smc Kelley \& Srinivasan 71}.}
+%413Xq 413K 413P
+%Kelley & Srinivasan?
+
+\leader{413Y}{Further exercises (a)}
+%\spheader 413Ya
+Give an example of two inner measures $\phi_1$, $\phi_2$ on a set $X$
+such that the measure defined by $\phi_1+\phi_2$ strictly extends the
+sum of the measures defined by $\phi_1$ and $\phi_2$.
+%413C, 413Xb mt41bits
+
+\spheader 413Yb Let $\langle(X_i,\Sigma_i,\mu_i)\rangle_{i\in I}$ be any
+family of probability spaces, and $\lambda$ the product measure on
+$X=\prod_{i\in I}X_i$.   Show that
+$\lambda_*(\prod_{i\in I}A_i)\le\prod_{i\in I}(\mu_i)_*A_i$ whenever
+$A_i\subseteq X_i$ for every $i$, with equality if $I$ is countable.
+%413E
+
+\spheader 413Yc Let $(X,\Sigma,\mu)$ be a totally finite measure space,
+and $Z$ the Stone space of the Boolean algebra $\Sigma$.   For
+$E\in\Sigma$ write $\widehat{E}$ for the corresponding open-and-closed
+subset of $Z$.   Show that there is a unique function $f:X\to Z$ such
+that $f^{-1}[\widehat{E}]=E$ for every $E\in\Sigma$.   Show that there
+is a measure $\nu$ on $Z$, inner regular with respect to the
+open-and-closed sets,
+such that $f$ is \imp\ with respect to $\mu$ and $\nu$, and that $f$
+represents an isomorphism between the measure algebras of $\mu$ and
+$\nu$.   Use this construction to prove (vi)$\Rightarrow$(i) in Theorem
+343B without appealing to the Lifting Theorem.
+%413J
+
+\spheader 413Yd Let $X$ be a set, $\Tau$ a subalgebra of $\Cal PX$, and
+$\nu:\Tau\to\coint{0,\infty}$ a finitely additive functional.   Suppose
+that there is a set $\Cal K\subseteq\Tau$, containing $\emptyset$, such
+that (i) $\mu F=\sup\{\mu K:K\in\Cal K,\,K\subseteq F\}$ for every
+$F\in\Tau$ (ii) $\Cal K$ is {\bf monocompact}, that is,
+$\bigcap_{n\in\Bbb N}K_n\ne\emptyset$ for every non-increasing sequence
+in $\Cal K$.   Show that $\nu$ extends to a measure on $X$.
+%413K
+
+\spheader 413Ye(i) Let $X$ be a topological space.   Show that the
+family of closed countably compact subsets of $X$ is a countably compact
+class.   (ii) Let $X$ be a Hausdorff space.   Show that the family of
+sequentially compact subsets of $X$ is a countably compact class.
+%413L
+
+\spheader 413Yf\dvAnew{2008}
+Let $\frak A$ be a Boolean algebra and $\nu$ a totally finite
+submeasure on $\frak A$ which is {\it either} supermodular
+{\it or} exhaustive and submodular.
+Show that $\nu$ is uniformly exhaustive.
+%413P  n04624  1K
+
+\spheader 413Yg\dvAnew{2008}(i)
+Find a measure space $(X,\Sigma,\mu)$, with $\mu X>0$,
+and a sequence
+$\sequencen{X_n}$ of subsets of $X$, covering $X$, such that
+whenever $E\in\Sigma$, $n\in\Bbb N$ and $\mu E>0$, there is an $F\in\Sigma$
+such that $F\subseteq E\setminus X_n$ and $\mu F=\mu E$.
+(ii) For $A\subseteq X$ set
+$\phi A=\sup\{\mu E:E\in\Sigma$, $E\subseteq A\}$.   Set
+$\Tau=\{G:G\subseteq X$, $\phi A=\phi(A\cap G)+\phi(A\setminus G)$ for
+every $A\subseteq X\}$.   Show that $\phi\restr\Tau$ is not a measure.
+%413Xj 413I out of order query mt41bits
+
+\spheader 413Yh\dvAnew{2010} Let $X$ be a set, $\Cal K$ a sublattice of
+$\Cal PX$ containing $\emptyset$, and $f:\Cal K\to\Bbb R$ a modular
+functional such that $f(\emptyset)=0$.   Show that there is an additive
+functional $\nu:\Cal K\to\Bbb R$ extending $f$.
+%413Xq 413P mt41bits
+}%end of exercises
+
+\cmmnt{\Notesheader{413}
+I gave rather few methods of constructing measures in the first three
+volumes of this treatise;  in the present volume I shall have to make up
+for lost time.   In particular I used \Caratheodory's construction
+for Lebesgue measure (Chapter 11), product measures (Chapter 25) and
+Hausdorff measures (Chapter 26).   The first two, at least, can be
+tackled in quite different ways if we choose.   The first alternative
+approach I offer is the `inner measure' method of 413C.   Note the exact
+definition in 413A;  I do not think it is an obvious one.   In
+particular, while ($\alpha$) seems to have something to do with
+subadditivity, and ($\beta$) is a kind of sequential order-continuity,
+there is no straightforward way in which to associate an outer measure
+with an inner measure, unless they both happen to be derived from
+measures (132B, 413D), even when they are finite-valued;  and for an
+inner measure which
+is allowed to take the value $\infty$ we have to add the semi-finiteness
+condition ($*$) of 413A (see 413Xa).
+
+Once we have got these points right, however, we have a method which
+rivals \Caratheodory's in scope, and in particular is especially well
+adapted to the construction of inner regular measures.   As an almost
+trivial example, we have a route to the c.l.d.\ version of a measure
+$\mu$ (413Xj(i)), which can be derived from the inner measure $\mu_*$
+defined from
+$\mu$ (413D).   Henceforth $\mu_*$ will be a companion to the familiar
+outer measure $\mu^*$, and many calculations will be a little easier
+with both available, as in 413E-413F.
+
+The intention behind 413I-413J is to find a minimal set of properties of
+a functional $\phi_0$ which will ensure that it has an extension to a
+measure. Indeed it is easy to see that, in the context of 413I, given a
+family $\Cal K$ with the properties ($\dagger$) and ($\ddagger$) there,
+a functional $\phi_0$ on $\Cal K$ can have an extension to an inner
+regular measure iff it satisfies the conditions ($\alpha$) and
+($\beta$), so in
+this sense 413I is the best possible result.   Note that while
+\Caratheodory's construction is liable to produce wildly infinite
+measures (like Hausdorff measures, or primitive product measures), the
+construction here always gives us locally determined measures, provided
+only that $\phi_0$ is finite-valued.
+
+We have to work rather hard for the step from 413I to 413J.   Of course
+413I is a special case of 413J, and I could have saved a little space by
+giving a direct proof of the latter result.   But I do not think that
+this would have made it easier;  413J really does require an extra step,
+because somehow we have to extend the functional $\phi_0$ from $\Cal K$
+to $\Cal K_{\delta}$.   The method I have chosen uses 413B and 413H to
+cast as much of the argument as possible into the context of algebras of
+sets with additive functionals, where I hope the required manipulations
+will seem natural.   (But perhaps I should insist that you must not take
+them too much
+for granted, as some of the time we have a finitely additive
+functional taking infinite values, and must take care not to
+subtract illegally, as well as not to take limits in the wrong places.)
+Note that the progression $\phi_0\to\phi_1\to\mu$ in the proof of 413J
+involves first an approximation from outside (if $K\in\Cal K_{\delta}$,
+then $\phi_1K$ will be $\inf\{\phi_0K':K\subseteq K'\in\Cal K\}$) and
+then an approximation from inside (if $E\in\Sigma$, then $\mu
+E=\sup\{\phi_1K:K\in\Cal K_{\delta},\,K\subseteq E\}$).   The essential
+difficulty in the proof is just that we have to take successive
+non-exchangeable limits.
+I have slipped 413K in as a corollary of 413J;  but it can be regarded
+as one of the fundamental results of measure theory.   A non-negative
+finitely additive functional $\nu$ on an algebra $\Sigma$ of sets can be
+extended to
+a countably additive measure iff it is `relatively countably additive'
+in the sense
+that $\nu(\bigcup_{n\in\Bbb N}E_n)=\sum_{n=0}^{\infty}\mu E_n$ whenever
+$\sequencen{E_n}$ is a disjoint sequence in $\Sigma$ such that
+$\bigcup_{n\in\Bbb N}E_n\in\Sigma$ (413Xn).   Of course the same result
+can easily be got from an outer measure construction (413Xm).   Note
+that the outer measure construction also has repeated limits, albeit
+simpler ones:  in the formula
+
+\Centerline{$\theta A=\inf\{\sum_{n=0}^{\infty}\nu E_n:\sequencen{E_n}$
+is a sequence in $\Sigma$ covering $A\}$}
+
+\noindent the sum $\sum_{n=0}^{\infty}\nu E_n=\sup_{n\in\Bbb
+N}\sum_{i=0}^n\nu E_i$ can be regarded as a crude approximation from
+inside, while the infimum
+is an approximation from outside.   To get the result as stated in 413K,
+of course, the outer measure construction needs a third limiting
+process, to
+obtain the c.l.d.\ version automatically provided by the inner measure
+method, and the inner regularity with respect to $\Sigma_{\delta}$,
+while easily checked, also demands a few words of argument.
+
+Many applications of the method of 413I-413J pass through 413M;  if the
+family $\Cal K$ is a countably compact class then the sequential
+order-continuity hypothesis ($\beta$) of 413I or 413J becomes a
+consequence
+of the other hypotheses.   The essence of the method is the inner
+regularity hypothesis ($\alpha$).   I have tried to use the labels
+$\dagger$, $\ddagger$, $\alpha$ and $\beta$ consistently enough to
+suggest the currents which I think are flowing in this material.
+
+In 413N we strike out in a new direction.   The object here is to build
+an extension which is not going to be unique, and for which choices will
+have to be made.   As with any such argument, the trick is to specify
+the allowable intermediate stages, that is, the partially ordered set
+$P$ to which we shall apply Zorn's Lemma.   But here the form of the
+theorem makes
+it easy to guess what $P$ should be:  it is the set of functionals
+satisfying the hypotheses of the theorem which have not wandered outside
+the boundary set by the conclusion, that is, which satisfy the condition
+($*$) of part (a) of the proof of 413N.   The finitistic nature of the
+hypotheses makes it easy to check that totally ordered subsets of $P$
+have upper bounds
+(that is to say, if we did this by transfinite induction there would be
+no problem at limit stages), and all we have to prove is that maximal
+elements of $P$ are defined on adequately large domains;  which amounts
+to showing
+that a member of $P$ not defined on every element of $\Cal K$ has a
+proper extension, that is, setting up a construction for the step to a
+successor ordinal in the parallel transfinite induction (part (c) of the
+proof).
+
+Of course the principal applications of 413N in this book will be in the
+context of countably additive functionals, as in 413O.
+
+It is clear that 413N and 413Q overlap to some extent.   I include both
+because they have different virtues.   413N provides actual extensions of
+functionals in a way that 413Q, as given, does not;
+but its chief advantage,
+from the point of view of the work to come, is the approximation of
+members of $\Tau_1$, in measure, by members of $\Tau_0$.   This will
+eventually enable us to retain control of the Maharam types of measures
+constructed by
+the method of 413O.   In 413S we have a different kind of control;  we
+can specify a lower bound for the measure of each member of our basic
+class $\Cal K$, provided only that our specifications are consistent
+with some {\it finitely} additive functional.
+
+}%end of notes
+
+\discrpage
+

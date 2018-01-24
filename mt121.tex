@@ -1,0 +1,1057 @@
+\frfilename{mt121.tex}
+\versiondate{21.12.03}
+\copyrightdate{1994}
+     
+\def\chaptername{Integration}
+\def\sectionname{Measurable functions}
+     
+\newsection{121}
+     
+In this section, I take a step back to develop ideas relating to
+$\sigma$-algebras of sets, following \S111;  there will be no mention
+of `measures' here, except in the exercises.   The aim is to
+establish the concept of `measurable function' (121C) and a variety of 
+associated techniques.
+The best single example of a $\sigma$-algebra to bear in mind when
+reading this chapter is probably the $\sigma$-algebra of Borel subsets of
+$\Bbb R$\cmmnt{ (111G)};  the 
+$\sigma$-algebra of Lebesgue measurable subsets of 
+$\Bbb R$\cmmnt{ (114E)} is a good second.
+     
+Throughout the exposition here (starting with 121A) I seek to deal with
+functions which are not defined on the whole of the space $X$ under
+consideration.   I believe that there are compelling reasons for facing
+up to such functions at an early stage\cmmnt{ (see 121G)};  but undeniably
+they add to the technical difficulties, and it would be fair to read
+through the chapter once with the mental reservation that all functions
+are taken to be defined everywhere, before returning to deal with the
+general case.
+     
+     
+\leader{121A}{Lemma} Let $X$ be a set and $\Sigma$ a $\sigma$-algebra of
+subsets of $X$.   Let $D$ be any subset of $X$ and write
+     
+\Centerline{$\Sigma_D=\{E\cap D:E\in\Sigma\}$.}
+     
+\noindent Then $\Sigma_D$ is a $\sigma$-algebra of subsets of $D$.
+     
+\proof{{\bf (i)} $\emptyset=\emptyset\cap D\in\Sigma_D$ because
+$\emptyset\in\Sigma$.
+     
+\medskip
+     
+{\bf (ii)} If $F\in\Sigma_D$, there is an $E\in\Sigma$ such that
+$F=E\cap D$;  now $D\setminus F=(X\setminus E)\cap D\in\Sigma_D$ because
+$X\setminus E\in\Sigma$.
+     
+\medskip
+     
+{\bf (iii)} If $\langle F_n\rangle_{n\in\Bbb N}$ is any sequence in
+$\Sigma_D$, then for each $n\in\Bbb N$ we may choose an $E_n\in\Sigma$
+such that $F_n=E_n\cap D$;  now
+$\bigcup_{n\in\Bbb N}F_n=(\bigcup_{n\in\Bbb N}E_n)\cap D\in\Sigma_D$ because
+$\bigcup_{n\in\Bbb N}E_n\in\Sigma$.
+}%end of proof of 121A
+     
+\medskip
+     
+\noindent{\bf Notation} I will call $\Sigma_D$ the {\bf subspace
+$\sigma$-algebra} of subsets of $D$, and I will say that its members are
+{\bf relatively measurable} in $D$.   
+$\Sigma_D$ is also sometimes called the {\bf trace} of $\Sigma$ on $D$.
+     
+\leader{121B}{Proposition} Let $X$ be a set, $\Sigma$ a $\sigma$-algebra
+of subsets of $X$, and $D$ a subset of $X$.   Write $\Sigma_D$ for the
+subspace $\sigma$-algebra of subsets of $D$.   Then for any function
+$f:D\to\Bbb R$ the following assertions are equiveridical\cmmnt{, that is, if one of them is true so are all the others}:
+     
+\quad(i) $\{x:f(x)<a\}\in\Sigma_D$ for every $a\in\Bbb R$;
+     
+\quad(ii) $\{x:f(x)\le a\}\in\Sigma_D$ for every $a\in\Bbb R$;
+     
+\quad(iii) $\{x:f(x)>a\}\in\Sigma_D$ for every $a\in\Bbb R$;
+     
+\quad(iv) $\{x:f(x)\ge a\}\in\Sigma_D$ for every $a\in\Bbb R$.
+     
+\proof{{\bf (i)$\Rightarrow$(ii)} Assume (i), and let
+$a\in\Bbb R$.   Then
+     
+\Centerline{$\{x:f(x)\le a\}
+=\bigcap_{n\in\Bbb N}\{x:f(x)<a+2^{-n}\}\in\Sigma_D$}
+     
+\noindent because $\{x:f(x)<a+2^{-n}\}\in\Sigma_D$ for every $n$ and
+$\Sigma_D$ is closed under countable intersections (111Dd).
+Because $a$ is arbitrary, (ii) is true.
+     
+\wheader{121B}{4}{2}{2}{72pt}
+     
+{\bf (ii)$\Rightarrow$(iii)} Assume (ii), and let $a\in\Bbb R$.   Then
+     
+\Centerline{$\{x:f(x)>a\}=D\setminus\{x:f(x)\le a\}\in\Sigma_D$}
+     
+\noindent because $\{x:f(x)\le a\}\in\Sigma_D$ and $\Sigma_D$ is closed
+under complementation.   Because $a$ is arbitrary, (iii) is
+true.
+     
+\medskip
+     
+{\bf (iii)$\Rightarrow$(iv)} Assume (iii), and let $a\in\Bbb R$.   Then
+     
+\Centerline{$\{x:f(x)\ge a\}
+=\bigcap_{n\in\Bbb N}\{x:f(x)>a-2^{-n}\}\in\Sigma_D$}
+     
+\noindent because $\{x:f(x)>a-2^{-n}\}\in\Sigma_D$ for every $n$ and
+$\Sigma_D$ is closed under countable intersections.
+Because $a$ is arbitrary, (iv) is true.
+     
+\medskip
+     
+{\bf (iv)$\Rightarrow$(i)} Assume (iv), and let $a\in\Bbb R$.   Then
+     
+\Centerline{$\{x:f(x)<a\}=D\setminus\{x:f(x)\ge a\}\in\Sigma_D$}
+     
+\noindent because $\{x:f(x)\ge a\}\in\Sigma_D$ and $\Sigma_D$ is closed
+under complementation.   Because $a$ is arbitrary, (i) is
+true.
+}%end of proof of 121B
+     
+\leader{121C}{Definition} Let $X$ be a set, $\Sigma$ a $\sigma$-algebra
+of subsets of $X$, and $D$ a subset of $X$.   A function $f:D\to\Bbb R$
+is called {\bf measurable} (or {\bf $\Sigma$-measurable}) if it
+satisfies any, or equivalently all, of the conditions (i)-(iv) of 121B.
+     
+If $X$ is $\Bbb R$ or $\BbbR^r$, and $\Sigma$ is its Borel
+$\sigma$-algebra\cmmnt{ (111G)}, a $\Sigma$-measurable function is
+called {\bf Borel measurable}.   If $X$ is $\Bbb R$ or $\BbbR^r$, and 
+$\Sigma$ is
+the $\sigma$-algebra of Lebesgue measurable sets\cmmnt{ (114E, 115E)},
+a $\Sigma$-measurable function is called {\bf Lebesgue measurable}.
+     
+\cmmnt{\medskip
+     
+\noindent{\bf Remark} Naturally the principal case here is when $D=X$.
+However, partially-defined functions are so common, and so important, in
+analysis (consider, for instance, the real function $\ln\sin$) that it
+seems worth while, from the beginning, to establish techniques for
+handling them efficiently.
+     
+Many authors develop a theory of `extended real numbers' at this
+point, working with $[-\infty,\infty]=\Bbb R\cup\{-\infty,\infty\}$, and
+defining measurability for functions taking values in this set.   I
+outline such a theory in \S135 below.
+}%end of comment
+     
+\leader{121D}{Proposition} Let $X$ be $\BbbR^r$ for some $r\ge 1$, $D$
+a subset of $X$, and $g:D\to\Bbb R$ a function.
+     
+(a) If $g$ is Borel measurable it is Lebesgue measurable.
+     
+(b) If $g$ is continuous it is Borel measurable.
+     
+(c) If $r=1$ and $g$ is monotonic it is Borel measurable.
+     
+\proof{{\bf (a)} This is immediate from the definitions in 121C,
+if we recall that the Borel $\sigma$-algebra is included in the Lebesgue
+$\sigma$-algebra (114G, 115G).
+     
+\medskip
+     
+{\bf (b)} Take $a\in\Bbb R$.   Set
+     
+\Centerline{$\Cal G=\{G:G\subseteq\BbbR^r\text{ is
+open},\,g(x)<a\Forall x\in G\cap D\}$,}
+     
+\Centerline{$G_0=\bigcup\Cal G
+=\{x:\exists\enskip G\in\Cal G,\,x\in G\}$.}
+     
+\noindent Then $G_0$ is a union of open sets, therefore open (1A2Bd).
+Next,
+     
+\Centerline{$\{x:g(x)<a\}=G_0\cap D$.}
+     
+\noindent\Prf\ {\bf (i)} If $g(x)<a$, then (because $g$ is
+continuous) there is a $\delta>0$ such that $|g(y)-g(x)|<a-g(x)$
+whenever $y\in D$ and $\|y-x\|<\delta$.   But
+$\{y:\|y-x\|<\delta\}$ is open (1A2D),  so belongs to $\Cal G$ and is
+included in
+$G_0$, and $x\in G_0\cap D$.   {\bf (ii)} If $x\in
+G_0\cap D$, then there is a $G\in\Cal G$ such that $x\in G$;  now
+$g(y)<a$ for every $y\in G\cap D$, so, in particular, $g(x)<a$.\ \Qed
+     
+Finally, $G_0$, being open, is a Borel set.   As $a$ is
+arbitrary, $g$ is Borel measurable.
+     
+\medskip
+     
+{\bf (c)} Suppose first that $g$ is non-decreasing.   Let $a\in\Bbb R$
+and write $E=\{x:g(x)<a\}$.  If $E=D$ or $E=\emptyset$ then of course it
+is the intersection of $D$ with a Borel set.   Otherwise, $E$ is
+non-empty and bounded above in $\Bbb R$, so has a supremum $c\in\Bbb R$.
+Now $E$ must be either $D\cap\ooint{-\infty,c}$ or
+$D\cap\ocint{-\infty,c}$, according to whether $c\in E$ or not, and in
+either case is the intersection of $D$ with a Borel set (see 114G).
+     
+Similarly, if $g$ is non-increasing, $\{x:g(x)>a\}$ will again be the
+intersection of $D$ with either $\emptyset$ or $\Bbb R$ or
+$\ocint{-\infty,c}$ or $\ooint{-\infty,c}$ for some $c$.   So in this
+case 121B(iii) will be satisfied.
+     
+\medskip
+     
+\noindent{\bf Remark} I see that in part (b) of the above proof I use
+some basic facts about open sets in $\BbbR^r$.   These are covered in
+detail in \S1A2.   If they are new to you it would probably be sensible
+to rehearse the arguments with $r=1$, so that $D\subseteq\Bbb R$, before
+embracing the general case.
+}%end of proof of 121D
+     
+     
+\vleader{108pt}{121E}{Theorem} 
+Let $X$ be a set and $\Sigma$ a $\sigma$-algebra
+of subsets of $X$.   Let $f$ and $g$ be real-valued functions defined on
+domains $\dom f$, $\dom g\subseteq X$.
+     
+(a) If $f$ is constant it is
+measurable.
+     
+(b) If $f$ and $g$ are measurable, so is $f+g$, where
+$(f+g)(x)=f(x)+g(x)$ for $x\in
+\dom f\cap\dom g$.
+     
+(c) If $f$ is measurable and $c\in\Bbb R$, then $cf$ is measurable,
+where
+$(cf)(x)=c\cdot f(x)$ for $x\in \dom f$.
+     
+(d) If $f$ and $g$ are measurable, so is $f\times g$, where $(f\times
+g)(x)=f(x)\times g(x)$ for $x\in \dom f\cap\dom g$.
+     
+(e) If $f$ and $g$ are measurable, so is $f/g$, where
+$(f/g)(x)=f(x)/g(x)$ when
+$x\in \dom f\cap\dom g$ and $g(x)\ne 0$.
+     
+(f) If $f$ is measurable and $E\subseteq\Bbb R$ is a Borel set, then
+there is an
+$F\in\Sigma$ such that $f^{-1}[E]=\{x:f(x)\in E\}$ is equal to $F\cap
+\dom f$.
+     
+(g) If $f$ is measurable and $h$ is  a Borel measurable function from a
+subset $\dom h$
+of $\Bbb R$ to $\Bbb R$, then $hf$ is measurable, where
+$(hf)(x)=h(f(x))$ for $x\in\dom(hf)=\{y:y\in\dom f,\,f(y)\in\dom h\}$.
+     
+(h) If $f$ is measurable and $A$ is any set, then $f\restr A$ is
+measurable, where $\dom(f\restr A)=A\cap\dom f$ and
+$(f\restr A)(x)=f(x)$ for $x\in A\cap\dom f$.
+     
+\proof{ For any $D\subseteq X$ write $\Sigma_D$ for the subspace
+$\sigma$-algebra of subsets of $D$.
+     
+\medskip
+     
+{\bf (a)} If $f(x)=c$ for every $x\in \dom f$, then
+$\{x:f(x)<a\}=\dom f$ if $c<a$, $\emptyset$ otherwise, and in either
+case
+belongs to $\Sigma_{\dom f}$.
+     
+\medskip
+     
+{\bf (b)} Write $D=\dom(f+g)=\dom f\cap\dom g$.   If $a\in\Bbb R$ then
+set $K=\{(q,q'):q,\,q'\in\Bbb Q,\,q+q'\le
+a\}$.   Then $K$ is a subset of $\Bbb Q\times\Bbb Q$, so is countable
+(111Fb, 1A1E).      For $q\in\Bbb Q$ choose sets $F_q$,
+$G_q\in\Sigma$ such that
+     
+\Centerline{$\{x:f(x)<q\}=F_q\cap\dom f$,
+\quad$\{x:g(x)<q\}=G_q\cap\dom g$.}
+     
+\noindent For each $(q,q')\in K$, the set
+     
+\Centerline{$E_{qq'}
+=\{x:f(x)<q,\,g(x)<q'\}=F_q\cap G_{q'}\cap D$}
+     
+\noindent belongs to $\Sigma_D$.
+Finally, if $(f+g)(x)<a$, then we can find
+$q\in\ooint{f(x),a-g(x)}$, $q'\in\ocint{g(x),a-q}$, so that
+$(q,q')\in K$ and
+$x\in E_{qq'}$;  while if $(q,q')\in K$ and $x\in E_{qq'}$, then
+$(f+g)(x)<q+q'\le a$.   Thus
+     
+\Centerline{$\{x:(f+g)(x)<a\}=\bigcup_{(q,q')\in K}E_{qq'}\in\Sigma_D$}
+     
+\noindent by 111Fa.   As $a$ is arbitrary, $f+g$ is measurable.
+     
+\medskip
+     
+{\bf (c)} Write $D=\dom f$.   Let $a\in\Bbb R$.   If $c>0$, then
+     
+\Centerline{$\{x:cf(x)<a\}=\{x:f(x)<\Bover{a}{c}\}\in\Sigma_D$.}
+     
+\noindent If $c<0$, then
+     
+\Centerline{$\{x:cf(x)<a\}=\{x:f(x)>\Bover{a}{c}\}\in\Sigma_D$.}
+     
+\noindent While if $c=0$, then $\{x:cf(x)<a\}$ is either $D$ or
+$\emptyset$, as in (a) above, so belongs to $\Sigma_D$.   As $a$ is
+arbitrary, $cf$ is measurable.
+     
+\medskip
+     
+{\bf (d)} Write $D=\dom(f\times g)=\dom f\cap\dom g$.   Let
+$a\in\Bbb R$.   Let $K$ be
+     
+\Centerline{$\{(q_1,q_2,q_3,q_4):q_1,\ldots,q_4\in\Bbb Q,\,uv<a
+\text{ whenever }u\in\ooint{q_1,q_2},\,v\in\ooint{q_3,q_4}\}$.}
+     
+\noindent Then $K$ is countable.   For $q\in\Bbb Q$ choose sets $F_q$,
+$F'_q$, $G_q$, $G'_q\in\Sigma$ such that
+     
+\Centerline{$\{x:f(x)<q\}=F_q\cap\dom f$,
+\quad$\{x:f(x)>q\}=F'_q\cap\dom f$,}
+     
+\Centerline{$\{x:g(x)<q\}=G_q\cap\dom g$,
+\quad$\{x:g(x)>q\}=G'_q\cap\dom g$.}
+     
+\noindent  For $(q_1,q_2,q_3,q_4)\in K$ set
+     
+$$\eqalign{E_{q_1q_2q_3q_4}
+&=\{x:f(x)\in\ooint{q_1,q_2},\,g(x)\in\ooint{q_3,q_4}\}\cr
+&=D\cap F'_{q_1}\cap F_{q_2}\cap G'_{q_3}\cap G_{q_4}
+\in\Sigma_D;\cr}$$
+     
+\noindent then $E=\bigcup_{(q_1,q_2,q_3,q_4)\in
+K}E_{q_1q_2q_3q_4}\in\Sigma_D$.
+     
+Now $E=\{x:(f\times g)(x)<a\}$.   \Prf\ {\bf (i)} If $(f\times g)(x)<a$,
+set
+$u=f(x)$, $v=g(x)$.   Set
+     
+\Centerline{$\eta=\min(1,\Bover{a-uv}{1+|u|+|v|})>0$.}
+     
+\noindent   Take
+$q_1,\ldots,q_4\in\Bbb Q$ such that
+     
+\Centerline{$u-\eta\le q_1<u<q_2\le u+\eta$,
+\quad$v-\eta\le q_3<v<q_4\le v+\eta$.}
+     
+\noindent If $u'\in\ooint{q_1,q_2}$,
+$v'\in\ooint{q_3,q_4}$, then $|u'-u|<\eta$ and $|v'-v|<\eta$, so
+     
+$$\eqalign{u'v'-uv
+&=(u'-u)(v'-v)+(u'-u)v+u(v'-v)\cr
+&<\eta^2+\eta|v|+|u|\eta
+\le\eta(1+|u|+|v|)
+\le a-uv,\cr}$$
+     
+\noindent and $u'v'<a$.   Accordingly $(q_1,q_2,q_3,q_4)\in K$.
+Also $x\in E_{q_1q_2q_3q_4}$, so $x\in E$.   Thus $\{x:(f\times
+g)(x)<a\}\subseteq E$.   {\bf (ii)} On the other hand, if $x\in E$,
+there are
+$q_1,\ldots,q_4$ such that $(q_1,q_2,q_3,q_4)\in K$ and $x\in
+E_{q_1q_2q_3q_4}$, so that $f(x)\in\ooint{q_1,q_2}$ and
+$g(x)\in\ooint{q_3,q_4}$ and $f(x)g(x)<a$.   So
+$E\subseteq\{x:(f\times g)(x)<a\}$.\ \Qed
+     
+Thus $\{x:(f\times g)(x)<a\}\in\Sigma_D$.   As $a$ is arbitrary,
+$f\times g$ is measurable.
+     
+\medskip
+     
+{\bf (e)} In view of (d), it will be enough to show that $1/g$ is
+measurable.   Now if $a>0$,
+$\{x:1/g(x)<a\}=\{x:g(x)>1/a\}\cup\{x:g(x)<0\}$;  if $a<0$, then
+$\{x:1/g(x)<a\}=\{x:1/a<g(x)<0\}$;  and if $a=0$, then
+$\{x:1/g(x)<a\}=\{x:g(x)<0\}$.   And all of these belong to
+$\Sigma_{\dom 1/g}$.
+     
+\medskip
+     
+{\bf (f)} Write $D=\dom f$ and consider the set
+     
+\Centerline{$\Tau=\{E:E\subseteq\Bbb R,\,f^{-1}[E]\in\Sigma_D\}$.}
+     
+\noindent Then $\Tau$ is a $\sigma$-algebra of subsets of $\Bbb R$.
+\Prf\ {(i)} $f^{-1}[\emptyset]=\emptyset\in\Sigma_D$, so
+$\emptyset\in\Tau$.   {(ii)} If $E\in\Tau$, then
+$f^{-1}[\Bbb R\setminus E]=D\setminus f^{-1}[E]\in\Sigma_D$ so
+$\Bbb R\setminus E\in\Tau$.
+{(iii)} If $\langle E_n\rangle_{n\in\Bbb N}$ is a sequence in
+$\Tau$, then
+$f^{-1}[\bigcup_{n\in\Bbb N}E_n]
+=\bigcup_{n\in\Bbb N}f^{-1}[E_n]\in\Sigma_D$ because $\Sigma_D$ is a
+$\sigma$-algebra, so $\bigcup_{n\in\Bbb N}E_n\in\Tau$.\ \Qed
+     
+Next, $\Tau$ contains all sets of the form $H_a=\ooint{-\infty,a}$ for
+$a\in\Bbb R$, by the definition of measurability of $f$.   The result
+follows by arguments already used in 114G above.
+First, all open subsets of $\Bbb R$
+belong to $\Tau$.   \Prf\ Let $G\subseteq\Bbb R$ be open.   Let
+$K\subseteq\Bbb Q\times\Bbb Q$ be the set of pairs $(q,q')$ of rational
+numbers such that $\coint{q,q'}\subseteq G$.    $K$
+is countable.   Also, every $\coint{q,q'}$ belongs to $\Tau$, being
+$H_{q'}\setminus H_q$.   So
+$G'=\bigcup_{(q,q')\in K}\coint{q,q'}\in\Tau$.
+     
+By the definition of $K$, $G'\subseteq G$.   On the other hand, if $x\in
+G$, there is a $\delta>0$
+such that $\ooint{x-\delta,x+\delta}\subseteq G$.
+Now there are rational numbers $q\in\ocint{x-\delta,x}$ and
+$q'\in\ocint{x,x+\delta}$, so that $(q,q')\in K$ and $x\in
+\coint{q,q'}\subseteq G'$.
+As $x$ is arbitrary, $G=G'$ and $G\in\Tau$.\ \Qed
+     
+Finally, $\Tau$ is a
+$\sigma$-algebra of subsets of $\Bbb R$ including the family of open
+sets, so must contain every Borel set, by the definition of Borel set
+(111G).
+     
+\medskip
+     
+{\bf (g)} If $a\in\Bbb R$, then $\{y:h(y)<a\}$ is of the form 
+$E\cap\dom h$, where $E$ is a Borel subset of $\Bbb R$.   
+Next, $f^{-1}[E]$ is of
+the form $F\cap\dom f$, where $F\in\Sigma$, by (f) above.   So
+     
+\Centerline{$\{x:(hf)(x)<a\}=F\cap\dom hf\in\Sigma_{\dom hf}$.}
+     
+\noindent   As $a$ is
+arbitrary, $hf$ is measurable.
+     
+\medskip
+     
+{\bf (h)} The point is that $\Sigma_{A\cap\dom f}=\{E\cap
+A:E\in\Sigma_{\dom f}\}$.   So if $a\in\Bbb R$,
+     
+\Centerline{$\{x:(f\restr
+A)(x)<a\}=A\cap\{x:f(x)<a\}\in\Sigma_{\dom(f\restr A)}$.}
+}%end of proof of 121E
+     
+\cmmnt{\medskip
+     
+\noindent{\bf Remarks} Of course part (c) of this theorem is just a
+matter of putting (a) and (d) together, while (e) is a consequence of
+(d), (g) and the fact that continuous functions are Borel measurable
+(121Db).
+     
+I hope you will recognise the technique in the proof of part (d) as a
+version of arguments which may be used to prove that the limit of a
+product is the product of the limits, or that the product of continuous
+functions is continuous.   In fact (b) and (d) here, as well as the
+theorems on sums and products of limits, are consequences of the fact
+that addition and multiplication are continuous functions.   In
+121K I give a general result which may be used to exploit such
+facts.
+     
+Really, part (f) here is the essence of the concept of `measurable'
+real-valued function.   The point of the definition in 121B-121C is that
+the Borel $\sigma$-algebra of $\Bbb R$ can be generated by any of the
+families $\{\ooint{-\infty,a}:a\in\Bbb R\}$,
+$\{\ocint{-\infty,a}:a\in\Bbb R\},\ldots$.   (See 121Yc(ii).)
+There are many routes covering this territory in rather
+fewer words than I have used, at the cost of slightly greater
+abstraction.
+}%end of comment
+     
+     
+\leader{121F}{Theorem} Let $X$ be a set and $\Sigma$ a $\sigma$-algebra
+of
+subsets of $X$.   Let $\langle f_n\rangle_{n\in\Bbb N}$ be a sequence of
+$\Sigma$-measurable real-valued functions with domains included in $X$.
+     
+(a) Define a function $\lim_{n\to\infty}f_n$ by writing
+     
+\Centerline{$(\lim_{n\to\infty}f_n)(x)=\lim_{n\to\infty}f_n(x)$}
+     
+\noindent for all those
+$x\in\bigcup_{n\in\Bbb N}\bigcap_{m\ge n}\dom f_m$ for which the limit exists in $\Bbb R$.   Then $\lim_{n\to\infty}f_n$ is
+$\Sigma$-measurable.
+     
+     
+(b) Define a function $\sup_{n\in\Bbb N}f_n$ by writing
+     
+\Centerline{$(\sup_{n\in\Bbb N}f_n)(x)=\sup_{n\in\Bbb N}f_n(x)$}
+     
+\noindent for all those $x\in\bigcap_{n\in\Bbb N}\dom f_n$ for which the
+supremum exists in $\Bbb R$.   Then $\sup_{n\in\Bbb N}f_n$ is
+$\Sigma$-measurable.
+     
+(c) Define a function $\inf_{n\in\Bbb N}f_n$ by writing
+     
+\Centerline{$(\inf_{n\in\Bbb N}f_n)(x)=\inf_{n\in\Bbb N}f_n(x)$}
+     
+\noindent for all those $x\in\bigcap_{n\in\Bbb N}\dom f_n$ for which the
+infimum exists in $\Bbb R$.   Then $\inf_{n\in\Bbb N}f_n$ is
+$\Sigma$-measurable.
+     
+(d) Define a function $\limsup_{n\to\infty}f_n$ by writing
+     
+\Centerline{$(\limsup_{n\to\infty}f_n)(x)=\limsup_{n\to\infty}f_n(x)$}
+     
+\noindent for all those 
+$x\in\bigcup_{n\in\Bbb N}\bigcap_{m\ge n}\dom f_m$ for which the 
+$\limsup$ exists in $\Bbb R$.   Then $\limsup_{n\to\infty}f_n$ is
+$\Sigma$-measurable.
+     
+(e) Define a function $\liminf_{n\to\infty}f_n$ by writing
+     
+\Centerline{$(\liminf_{n\to\infty}f_n)(x)=\liminf_{n\to\infty}f_n(x)$}
+     
+\noindent for all those $x\in\bigcup_{n\in\Bbb N}\bigcap_{m\ge n}\dom
+f_m$ for which the $\liminf$ exists in $\Bbb R$.   Then
+$\liminf_{n\in\Bbb N}f_n$ is
+$\Sigma$-measurable.
+     
+\proof{ For $n\in\Bbb N$, $a\in\Bbb R$ choose
+$H_n(a)\in\Sigma$ such that $\{x:f_n(x)\le a\}=H_n(a)\cap \dom f_n$.
+The proofs are now a matter of observing the following facts:
+     
+\medskip
+     
+{\bf (a)}
+$\{x:(\lim_{n\to\infty}f_n)(x)\le a\}
+=\dom(\lim_{n\to\infty}f_n)
+  \cap\bigcap_{k\in\Bbb N}\bigcup_{n\in\Bbb N}
+    \bigcap_{m\ge n}H_m(a+2^{-k})$;
+     
+\medskip
+     
+     
+{\bf (b)} $\{x:(\sup_{n\in\Bbb N}f_n)(x)\le a\}=\dom(\sup_{n\in\Bbb
+N}f_n)\cap\bigcap_{n\in\Bbb N}H_n(a)$;
+     
+\medskip
+     
+{\bf (c)} $\inf_{n\in\Bbb N}f_n=-\sup_{n\in\Bbb N}(-f_n)$;
+     
+\medskip
+     
+{\bf (d)} $\limsup_{n\to\infty}f_n
+=\lim_{n\to\infty}\sup_{m\in\Bbb N}f_{m+n}$;
+     
+\medskip
+     
+{\bf (e)} $\liminf_{n\to\infty}f_n=-\limsup_{n\to\infty}(-f_n)$.
+}%end of proof of 121F
+     
+     
+\cmmnt{
+\leader{121G}{Remarks} It is at this point that we first
+encounter clearly the problem of functions which are not defined
+everywhere.  (The quotient $f/g$ of 121Ee also need not be defined
+everywhere on the
+common domain of $f$ and $g$, but it is less important and more
+easily dealt with.)   The whole point of the theory of measure and
+integration, since Lebesgue, is that we can deal with limits of
+sequences of functions;  and the set on which $\lim_{n\to\infty}f_n(x)$
+exists can be decidedly irregular, even for apparently well-behaved
+functions $f_n$.   (If you have encountered the theory of Fourier
+series, then an appropriate example to think of is the sequence of
+partial sums $f_n(x)={1\over 2}a_0+\sum_{k=1}^n(a_k\cos kx+b_k\sin kx)$
+of a Fourier series in which $\sum_{k=1}^{\infty}|a_k|+|b_k|=\infty$, so
+that the series is not uniformly absolutely summable, but may be
+conditionally summable at certain points.)
+     
+I have tried to make it clear what domains I mean
+to attach to the functions $\sup_{n\in\Bbb N}f_n$,
+$\lim_{n\to\infty}f_n$, etc.   The guiding principle is that they should
+be the set of all $x\in X$ for which the defining formulae
+$\sup_{n\in\Bbb N}f_n(x)$, $\lim_{n\to\infty}f_n(x)$ can be interpreted
+as real numbers.   (As I noted in 121C, I am for the time being avoiding
+`$\infty$' as a value of a function, though it gives little
+difficulty, and some formulae are more naturally interpreted by allowing
+it.)   But in the case of $\lim$, $\limsup$, $\liminf$ it should be
+noted that I am using the restrictive definition, that
+$\lim_{n\to\infty}a_n$ can be regarded as existing only when there is
+some $n\in\Bbb N$ such that $a_m$ is defined for every $m\ge n$.   There
+are occasions when it would be more natural to admit the limit when we
+know only that $a_m$ is defined for infinitely many $m$;  but such a
+convention could make 121Fa false, unless care was taken.
+     
+As in 111E-111F, we can use the ideas of parts (b), (c) here to discuss
+functions of the form $\sup_{k\in K}f_k$, $\inf_{k\in K}f_k$ for any
+family $\langle f_k\rangle_{k\in K}$ of measurable functions indexed by
+a non-empty countable set $K$.
+     
+In this theorem and the last, the functions $f$, $g$, $f_n$ have been
+permitted to have arbitrary domains, and consequently there is nothing
+that can be said about the domains of the constructed functions.
+However, it is of course the case that if the original functions have
+measurable domains, so do the functions constructed from them by the
+rules I propose.   I spell out the details in the next proposition.
+}%end of comment
+     
+\leader{121H}{Proposition}  Let $X$ be a set and $\Sigma$ a
+$\sigma$-algebra
+of subsets of $X$;  let $f$, $g$ and $f_n$, for $n\in\Bbb N$, be
+$\Sigma$-measurable real-valued functions whose domains belong to
+$\Sigma$.   Then all the functions
+     
+\Centerline{$f+g$, \quad$f\times g$, \quad$f/g$,}
+     
+\Centerline{$\sup_{n\in\Bbb N}f_n$, \quad$\inf_{n\in\Bbb N}f_n$,
+\quad$\lim_{n\to\infty}f_n$, \quad$\limsup_{n\to\infty}f_n$,
+\quad$\liminf_{n\to\infty}f_n$}
+     
+\noindent have domains belonging to $\Sigma$.   Moreover, if $h$ is a
+Borel measurable real-valued function defined on a Borel subset of
+$\Bbb R$, then $\dom hf\in\Sigma$.
+     
+\proof{ For the first two, we have $\dom(f+g)=\dom(f\times
+g)=\dom f\cap \dom g$.   Next, if $E$ is a Borel subset of $\Bbb R$,
+there is an $H\in\Sigma$ such that
+$f^{-1}[E]=H\cap\dom f$;  so
+$f^{-1}[E]\in\Sigma$.   Thus
+     
+\Centerline{$\dom hf=f^{-1}[\dom h]\in\Sigma$.}
+     
+\noindent Setting $h(a)=1/a$ for $a\in\Bbb R\setminus\{0\}$, we see that
+$\dom(1/f)\in\Sigma$.   ($\dom h=\Bbb R\setminus\{0\}$ is a Borel set
+because it is open.)   Similarly, $\dom(1/g)$ and $\dom(f/g)=\dom
+f\cap\dom(1/g)$ belong to $\Sigma$.
+     
+Now for the infinite combinations.   Set
+$H_n(a)=\{x:x\in\dom f_n,\,f_n(x)<a\}$ for
+$n\in\Bbb N$, $a\in\Bbb R$;  as just explained, every $H_n(a)$
+belongs to $\Sigma$.   Now
+     
+\Centerline{$\dom(\sup_{n\in\Bbb N}f_n)
+=\bigcup_{m\in\Bbb N}\bigcap_{n\in\Bbb N}H_n(m)\in\Sigma$.}
+     
+\noindent Next, $|f_m-f_n|$ is
+measurable, with domain in $\Sigma$, for all $m$, $n\in\Bbb N$ (applying
+the results above to $-f_n=-1\cdot f_n$, $f_m-f_n=f_m+(-f_n)$ and
+$|f_m-f_n|=|\,\,|\circ(f_m-f_n)$), so
+     
+\Centerline{$G_{mnk}
+=\{x:x\in\dom f_m\cap\dom f_n,\,|f_m(x)-f_n(x)|\le 2^{-k}\}\in\Sigma$}
+     
+\noindent for all $m$, $n$, $k\in\Bbb N$.   Accordingly
+     
+\Centerline{$\dom(\lim_{n\to\infty}f_n)
+=\{x:\Exists n,\,\langle f_m(x)\rangle_{m\ge n}$ is Cauchy$\}
+=\bigcap_{k\in\Bbb N}\bigcup_{n\in\Bbb N}\bigcap_{m\ge n}G_{mnk}
+\in\Sigma$.}
+     
+Manipulating the above results as in (c), (d) and (e) of the proof of
+121F, we easily complete the proof.
+}%end of proof of 121H
+     
+\cmmnt{\medskip
+     
+\noindent{\bf Remark} Note the use of the General Principle of
+Convergence in the proof above.   I am not sure whether this will strike
+you as `natural', and there are alternative methods;  but the formula
+     
+\Centerline{$\{x:\lim_{n\to\infty}f_n(x)$ exists in $\Bbb R\}
+=\{x:\sequencen{f_n(x)}$ is Cauchy$\}$}
+     
+\noindent is one worth storing in your long-term memory.
+}%end of comment
+     
+\leader{*121I}{}\cmmnt{ I end this section with two results which can be safely passed by on first reading, but which you will need at some point
+to master if you wish to go farther into measure theory than the present
+chapter, as both are essential parts of the concept of `measurable
+function'.
+     
+\medskip
+     
+\noindent}{\bf Proposition} Let $X$ be a set and $\Sigma$ a
+$\sigma$-algebra of subsets of $X$.   Let $D$ be a subset of $X$ and
+$f:D\to\Bbb R$ a function.   Then $f$ is measurable iff there is a
+measurable function $h:X\to\Bbb R$ extending $f$.
+     
+\proof{{\bf (a)} If $h:X\to\Bbb R$ is measurable and $f=h\restr D$, then
+$f$ is measurable by 121Eh.
+     
+\medskip
+     
+{\bf (b)} Now suppose that $f$ is measurable.
+     
+\medskip
+     
+\quad{\bf (i)} For each
+$q\in\Bbb Q$, the set $D_q=\{x:x\in D,\,f(x)\le q\}$ belongs to the subspace $\sigma$-algebra $\Sigma_D$, that is, there is an $E_q\in\Sigma$ such that $D_q=E_q\cap D$.   Set
+     
+\Centerline{$F=X\setminus\bigcup_{q\in\Bbb Q}E_q$,}
+     
+\Centerline{$G=\bigcap_{n\in\Bbb N}\bigcup_{q\in\Bbb Q,q\le -n}E_q$;}
+     
+\noindent then both $F$ and $G$ belong to $\Sigma$, and are disjoint
+from $D$.   \Prf\ If $x\in D$, there is a $q\in\Bbb Q$ such that
+$f(x)\le q$, so that $x\in E_q$ and $x\notin F$.   Also there is an
+$n\in\Bbb N$ such that $f(x)>-n$, so that $x\notin E_{q'}$ for $q'\le-n$
+and $x\notin G$.\ \Qed
+     
+Set $H=X\setminus(F\cup G)\in\Sigma$.   For $x\in H$,
+     
+\Centerline{$\{q:q\in\Bbb Q,\,x\in E_q\}$}
+     
+\noindent is non-empty and bounded below, so we may set
+     
+\Centerline{$h(x)=\inf\{q:x\in E_q\}$;}
+     
+\noindent for $x\in F\cup G$, set $h(x)=0$.   This defines
+$h:X\to\Bbb R$.
+     
+\medskip
+     
+\quad{\bf (ii)} $h(x)=f(x)$ for $x\in D$.   \Prf\ As remarked above, $x\in H$.   If $q\in\Bbb Q$ and $x\in E_q$, then $f(x)\le q$;  consequently $h(x)\ge f(x)$.   On the other
+hand, given $\epsilon>0$, there is a
+$q\in\Bbb Q\cap[f(x),f(x)+\epsilon]$, and now $x\in E_q$, so
+$h(x)\le q\le f(x)+\epsilon$;  as $\epsilon$ is arbitrary,
+$h(x)\le f(x)$.\ \Qed
+     
+\medskip
+     
+\quad{\bf (iii)} $h$ is measurable.   \Prf\ If $a>0$ then
+     
+\Centerline{$\{x:h(x)<a\}=(H\cap\bigcup_{q<a}E_q)\cup(F\cup
+G)\in\Sigma$,}
+     
+\noindent while if $a\le 0$
+     
+\Centerline{$\{x:h(x)<a\}=H\cap\bigcup_{q<a}E_q\in\Sigma$.   \Qed}
+     
+\noindent This completes the proof.
+}%end of proof of 121I
+     
+\leader{*121J}{}\cmmnt{ The next proposition may illuminate 121E, as well as
+being indispensable for the work of Volume 2.   I start with a useful
+description of the Borel sets of $\BbbR^r$.
+     
+\medskip
+     
+\noindent}{\bf Lemma} Let $r\ge 1$ be an integer, and write $\Cal J$ for
+the family of subsets of $\BbbR^r$ of the form
+$\{x:\xi_i\le\alpha\}$ where $i\le r$, $\alpha\in\Bbb R$, writing
+$x=(\xi_1,\ldots,\xi_r)$, as in \S115.   Then the
+$\sigma$-algebra of subsets of $\BbbR^r$ generated by $\Cal J$ is
+precisely the $\sigma$-algebra $\Cal B$ of Borel subsets of $\BbbR^r$.
+     
+\proof{{\bf (a)}   All the sets in $\Cal J$ are closed, so must
+belong to $\Cal B$;  writing $\Sigma$ for the $\sigma$-algebra
+generated by $\Cal J$, we must have $\Sigma\subseteq\Cal B$.
+     
+\medskip
+     
+     
+{\bf (b)} The next step is to observe that all half-open
+intervals of the form
+     
+\Centerline{$\ocint{a,b}
+=\{x:\alpha_i<\xi_i\le\beta_i\Forall i\le r\}$}
+     
+\noindent belong to $\Sigma$;  this is because
+     
+\Centerline{$\ocint{a,b}=\bigcap_{i\le
+r}(\{x:\xi_i\le\beta_i\}\setminus\{x:\xi_i\le\alpha_i\})$.}
+     
+\noindent     It follows that all open sets belong to $\Sigma$.
+\Prf\ (Compare the proof of 121Ef.)  Let $G\subseteq\BbbR^r$ be an open
+set.   Let $\Cal I$ be the set
+of all intervals of the form
+$\ocint{q,q'}$ which are included in $G$, where $q$, $q'\in\BbbQ^r$.
+Then $\Cal
+I$ is a countable subset of $\Sigma$, so (because $\Sigma$ is a
+$\sigma$-algebra) $\bigcup\Cal I\in\Sigma$.   By the definition of
+$\Cal I$, $\bigcup\Cal I\subseteq G$.   But also, if $x\in G$, there is a $\delta>0$ such that the open ball $U(x,\delta)$ with centre $x$ and radius $\delta$ is included in $G$ (1A2A).
+Now, for each $i\le r$, we can find rational numbers $\alpha_i$,
+$\beta_i$ such that
+     
+\Centerline{$\xi_i-\Bover{\delta}r
+\le\alpha_i<\xi_i\le\beta_i<\xi_i+\Bover{\delta}r$,}
+     
+\noindent so that
+     
+\Centerline{$x\in\ocint{a,b}\subseteq U(x,\delta)\subseteq G$}
+     
+\noindent and $x\in\ocint{a,b}\in\Cal I$.   Thus $x\in\bigcup\Cal I$.
+As $x$ is arbitrary, $G\subseteq\bigcup\Cal I$ and $G=\bigcup\Cal
+I\in\Sigma$.\ \Qed
+     
+\medskip
+     
+{\bf (c)} Thus $\Sigma$ is a $\sigma$-algebra of sets containing
+every open set, and must include $\Cal B$, the smallest such
+$\sigma$-algebra.
+}%end of proof of 121J
+     
+\cmmnt{\medskip
+     
+\noindent{\bf Remark} Compare the proof of 115G.
+}%end of comment
+     
+\leader{*121K}{Proposition} Let $X$ be a set and $\Sigma$ a
+$\sigma$-algebra of subsets of $X$.   Let $r\ge 1$ be an integer, and
+$f_1,\ldots,f_r$ measurable functions defined on subsets of $X$.
+Set $D=\bigcap_{i\le r}\dom f_i$ and for $x\in D$ set
+$f(x)=(f_1(x),\ldots,f_r(x))\in\BbbR^r$.   Then
+     
+(a) for any Borel set $E\subseteq\BbbR^r$, $f^{-1}[E]$ belongs to the subspace $\sigma$-algebra $\Sigma_D$;
+     
+(b) if $h$ is a Borel measurable function from a subset $\dom h$ of
+$\BbbR^r$ to $\Bbb R$, then the composition $hf$ is measurable.
+     
+\proof{{\bf (a)(i)} Consider the set
+     
+\Centerline{$\Tau=\{E:E\subseteq\BbbR^r,\,f^{-1}[E]\in\Sigma_D\}$.}
+     
+\noindent Then $\Tau$ is a $\sigma$-algebra of subsets of $\BbbR^r$.
+\Prf\ (Compare 121Ef.) {\bf ($\pmb{\alpha}$)}
+$f^{-1}[\emptyset]=\emptyset\in\Sigma_D$, so
+$\emptyset\in\Tau$.   {\bf ($\pmb{\beta}$)} If $E\in\Tau$,
+then $f^{-1}[\BbbR^r\setminus
+E]=D\setminus f^{-1}[E]\in\Sigma_D$ so $\Bbb R\setminus E\in\Tau$.
+{\bf ($\pmb{\gamma}$)} If $\langle E_n\rangle_{n\in\Bbb N}$ is a
+sequence in $\Tau$, then
+$f^{-1}[\bigcup_{n\in\Bbb N}E_n]
+=\bigcup_{n\in\Bbb N}f^{-1}[E_n]\in\Sigma_D$ because $\Sigma_D$ is a
+$\sigma$-algebra, so $\bigcup_{n\in\Bbb N}E_n\in\Tau$.\ \Qed
+     
+\medskip
+     
+\quad{\bf (ii)}
+Next, for any $i\le r$ and $\alpha\in\Bbb R$, $J=\{x:\xi_i\le\alpha\}$
+belongs to $\Tau$, because
+     
+\Centerline{$f^{-1}[J]
+=\{x:x\in D,\, f_i(x)\le \alpha\}\in\Sigma_D$.}
+     
+\noindent So $\Tau$ includes the family $\Cal J$ of 121J and therefore
+includes the $\sigma$-algebra $\Cal B$ generated by $\Cal J$, that is,
+contains every Borel subset of $\BbbR^r$.
+     
+\medskip
+     
+{\bf (b)} Now the rest follows by the argument of 121Eg.   If
+$a\in\Bbb R$, then $\{y:y\in\dom h,\,h(y)<a\}$ is of the form $E\cap\dom h$, where
+$E$ is a
+Borel subset of $\BbbR^r$, so $\{x:x\in\dom(hf),\,(hf)(x)<a\}
+=f^{-1}[E]\cap\dom(hf)$ belongs to
+$\Sigma_{\dom hf}$.
+}%end of proof of 121K
+     
+\exercises{
+\leader{121X}{Basic exercises $\pmb{>}$(a)}
+%\spheader 121Xa
+Let $X$ be a set, $\Sigma$ a $\sigma$-algebra of
+subsets of $X$, and $D\subseteq X$.   Let $\sequencen{D_n}$ be a
+partition of $D$ into relatively measurable sets and $\sequencen{f_n}$
+a sequence of measurable real-valued functions such that
+$D_n\subseteq\dom f_n$ for each $n$.   Define $f:D\to\Bbb R$ by setting
+$f(x)=f_n(x)$ whenever $n\in\Bbb N$, $x\in D_n$.   Show that $f$ is
+measurable.
+%121C
+     
+\spheader 121Xb Let $X$ be a set and $\Sigma$ a
+$\sigma$-algebra of subsets of $X$.   If $f$ and $g$ are measurable
+real-valued functions defined on subsets of $X$, show that $f^+$, $f^-$,
+$f\wedge g$ and $f\vee g$ are measurable, where
+     
+\Centerline{$f^+(x)=\max(f(x),0)$ for $x\in\dom f$,}
+     
+\Centerline{$f^-(x)=\max(-f(x),0)$ for $x\in\dom f$,}
+     
+\Centerline{$(f\vee g)(x)=\max(f(x),g(x))$ for $x\in\dom f\cap\dom g$,}
+     
+\Centerline{$(f\wedge g)(x)=\min(f(x),g(x))$ for
+$x\in\dom f\cap\dom g$.}
+%121E
+     
+\sqheader 121Xc Let $(X,\Sigma,\mu)$ be a measure space.   Write
+$\eusm L^0$ for the set of real-valued functions $f$ such that
+($\alpha$) $\dom f$ is a conegligible subset of $X$ ($\beta$) there is a
+conegligible set $E\subseteq X$ such that $f\restr E$ is measurable.
+(i) Show that the set $E$ of clause ($\beta$) in the last sentence may
+be taken to belong to $\Sigma$ and be included in $\dom f$.   (ii) Show
+that if $f$, $g\in\eusm L^0$ and $c\in\Bbb R$, then $f+g$, $cf$,
+$f\times g$, $|f|$, $f^+$, $f^-$, $f\wedge g$, $f\vee g$
+all belong to $\eusm L^0$.   (iii) Show that if $f$, $g\in\eusm L^0$ and
+$g\ne 0$ a.e.\ then $f/g\in\eusm L^0$.   (iv) Show that if
+$\sequencen{f_n}$ is a sequence in $\eusm L^0$ then the functions
+     
+\Centerline{$\lim_{n\to\infty}f_n$,\quad$\sup_{n\in\Bbb N}f_n$,
+\quad$\inf_{n\in\Bbb N}f_n$,\quad $\limsup_{n\to\infty}f_n$,
+\quad$\liminf_{n\to\infty}f_n$}
+     
+\noindent belong to $\eusm L^0$ whenever they are defined almost
+everywhere as real-valued functions.   (v) Show that if $f\in\eusm L^0$
+and $h:\Bbb R\to\Bbb R$ is Borel measurable then $hf\in\eusm L^0$.
+%121F
+     
+\sqheader 121Xd Consider the following four families of subsets
+of $\Bbb R$:
+     
+\Centerline{$\Cal A_1=\{\ooint{-\infty,a}:a\in\Bbb R\}$,
+\quad$\Cal A_2=\{\ocint{-\infty,a}:a\in\Bbb R\}$,}
+     
+\Centerline{$\Cal A_3=\{\ooint{a,\infty}:a\in\Bbb R\}$,
+\quad$\Cal A_4=\{\coint{a,\infty}:a\in\Bbb R\}$.}
+     
+\noindent Show that for each $j$ the $\sigma$-algebra of subsets of
+$\Bbb R$ generated by $\Cal A_j$ is the $\sigma$-algebra of Borel sets.
+%121J
+     
+\spheader 121Xe Let $D$ be any subset of $\BbbR^r$, where $r\ge 1$.
+Write $\frak T_D$ for the set $\{G\cap D:G\subseteq\BbbR^r$ is
+open$\}$.  (i) Show that $\frak T_D$ satisfies the properties of open
+sets listed in 1A2B.   (ii) Let $\Cal B$ be the 
+$\sigma$-algebra of Borel sets
+in $\BbbR^r$, and $\Cal B(D)$ the subspace $\sigma$-algebra on $D$.
+Show that $\Cal B(D)$ is just the $\sigma$-algebra of subsets of $D$
+generated by $\frak T_D$.   \Hint{($\alpha$) observe that
+$\frak T_D\subseteq\Cal B(D)$ ($\beta$) consider 
+$\{E:E\subseteq\BbbR^r,\,E\cap D$ 
+belongs to the $\sigma$-algebra generated by $\frak T_D\}$.}
+%121K
+     
+\spheader 121Xf Let $(X,\Sigma,\mu)$ be a measure space and
+define $\eusm L^0$ as in 121Xc.   Show that if $f_1,\ldots,f_r$ belong
+to $\eusm L^0$ and $h:\BbbR^r\to\Bbb R$ is Borel measurable then
+$h(f_1,\ldots,f_r)$ belongs to $\eusm L^0$.
+%121Xc 121K
+     
+\leader{121Y}{Further exercises (a)}
+%\spheader 121Ya
+Let $X$ and $Y$ be sets, $\Sigma$ a $\sigma$-algebra of subsets of
+$X$, $\phi:X\to Y$ a function and $g$ a real-valued function defined on a
+subset of $Y$.   Set
+$\Tau=\{F:F\subseteq Y,\,\phi^{-1}[F]\in\Sigma\}$;   then $\Tau$ is a
+$\sigma$-algebra of subsets of $Y$ (see 111Xc).   (i) Show that if $g$ is
+$\Tau$-measurable then $g\phi$ is $\Sigma$-measurable.   
+(ii) Give an example in which $g\phi$ is
+$\Sigma$-measurable but $g$ is not $\Tau$-measurable.
+(iii) Show that if
+$g\phi$ is $\Sigma$-measurable and {\it either} $\phi$ is injective 
+{\it or} $\dom(g\phi)\in\Sigma$ {\it or} $\phi[X]\subseteq\dom g$, 
+then $g$ is $\Tau$-measurable.\footnote{I am grateful to P.Wallace Thompson
+for pointing out the error in the original version of this exercise.}   
+%121C
+     
+\spheader 121Yb Let $X$ and $Y$ be sets, $\Tau$ a
+$\sigma$-algebra of subsets of $Y$ and $\phi:X\to Y$ a function.   Set
+$\Sigma=\{\phi^{-1}[F]:F\in\Tau\}$, as in 111Xd.   Show that a
+function $f:X\to\Bbb R$ is $\Sigma$-measurable iff there is a
+$\Tau$-measurable function $g:Y\to\Bbb R$ such that $f=g\phi$.
+%121I
+     
+\spheader 121Yc Let $X$ and $Y$ be sets and $\Sigma$, $\Tau$
+$\sigma$-algebras of subsets of $X$, $Y$ respectively.   I say that a
+function $\phi:X\to Y$ is $(\Sigma,\Tau)${\bf-measurable} if
+$\phi^{-1}[F]\in\Sigma$ for every $F\in\Tau$.   (i) Show that if
+$\Sigma$, $\Tau$, $\Upsilon$ are $\sigma$-algebras of subsets of $X$,
+$Y$, $Z$ respectively, and $\phi:X\to Y$ is $(\Sigma,\Tau)$-measurable,
+$\psi:Y\to Z$ is $(\Tau,\Upsilon)$-measurable, then $\psi\phi:X\to Z$ is
+$(\Sigma,\Upsilon)$-measurable.   
+(ii) Suppose that $\Cal A\subseteq\Tau$ is such that $\Tau$ is the
+$\sigma$-algebra of subsets of $Y$ generated by $\Cal A$ (111Gb).   Show
+that $\phi:X\to Y$ is $(\Sigma,\Tau)$-measurable iff
+$\phi^{-1}[A]\in\Sigma$ for every $A\in\Cal A$.
+(iii) For $r\ge 1$, write
+$\Cal B_r$ for the
+$\sigma$-algebra of Borel subsets of $\BbbR^r$.   Show that if $X$ is
+any set and $\Sigma$ is a $\sigma$-algebra of subsets of $X$, then a
+function $f:X\to\BbbR^r$ is $(\Sigma,\Cal B_r)$-measurable iff
+$\pi_if:X\to\Bbb R$ is $(\Sigma,\Cal B_1)$-measurable for every
+$i\le r$, writing $\pi_i(x)=\xi_i$ for $i\le r$,
+$x=(\xi_1,\ldots,\xi_r)\in\BbbR^r$.    (iv) Rewrite these ideas
+for partially-defined functions.
+%121+
+     
+\spheader 121Yd Let $X$ be a set and $\Sigma$ a $\sigma$-algebra
+of subsets of $X$.   For $r\ge 1$, $D\subseteq X$ say that a function
+$\phi:D\to\BbbR^r$ is {\bf measurable} if $\phi^{-1}[G]$ is relatively
+measurable in $D$ for every open set $G\subseteq\BbbR^r$.   If
+$X=\BbbR^s$ and $\Sigma$ is the 
+$\sigma$-algebra $\Cal B_s$ of Borel subsets of $\BbbR^s$, 
+say that $\phi$ is {\bf Borel measurable}.
+(i) Show that $\phi$ is measurable in this sense iff all its
+coordinate functions $\phi_i:D\to\Bbb R$ are measurable in the sense of
+121C, taking $\phi(x)=(\phi_i(x),\ldots,\phi_r(x))$ for $x\in D$.   (In
+particular, this definition agrees with 121C when $r=1$.)
+(ii) Show that $\phi:D\to\BbbR^r$ is measurable iff it is
+$(\Sigma,\Cal B_r)$-measurable in the sense of 121Yc.
+(iii) Show that if $\phi:D\to\BbbR^r$ is measurable and
+$\psi:E\to\BbbR^s$ is Borel measurable, where $E\subseteq\BbbR^r$,
+then $\psi\phi:\phi^{-1}[E]\to\BbbR^s$ is measurable.
+(iv) Show that any continuous function from a subset of
+$\BbbR^s$ to $\BbbR^r$ is Borel measurable.
+%121Yc
+     
+\spheader 121Ye Let $X$ be a set and $\theta$ an outer measure
+on $X$;  let $\mu$ be the measure defined from $\theta$ by
+\Caratheodory's method, and $\Sigma$ its domain.   Suppose that
+$f:X\to\Bbb R$ is a function such that
+     
+\Centerline{$\theta\{x:x\in A,\,f(x)\le a\}
+  +\theta\{x:x\in A,\,f(x)\ge b\}\le\theta A$}
+     
+\noindent whenever $A\subseteq X$ and $a<b$ in $\Bbb R$.   Show that $f$
+is $\Sigma$-measurable.   ({\it Hint\/}: suppose that $a\in\Bbb R$ and
+$\theta A<\infty$.   Set
+     
+\Centerline{$B_k=\{x:x\in A,\,
+ a+\Bover1{2k+2}\le f(x)\le a+\Bover1{2k+1}\}$,}
+     
+\Centerline{$B'_k=\{x:x\in A,\,
+  a+\Bover1{2k+3}\le f(x)\le a+\Bover1{2k+2}\}$}
+     
+\noindent for $k\in\Bbb N$.   Show that 
+$\sum_{k=0}^{\infty}\theta B_k\le\theta A$, 
+and check a similar result for $B'_k$.   Hence show that
+     
+\Centerline{$\theta\{x:x\in A,\,f(x)>a\}
+=\lim_{k\to\infty}\theta\{x:x\in A,\,f(x)\ge a+\Bover1k\}$.)}
+%121+
+}%end of exercises
+     
+\endnotes{
+\Notesheader{121} I find myself offering no fewer than three definitions
+of `measurable function', in 121C, 121Yc and 121Yd.   It is in fact the
+last which is probably the most important and the best guide to further
+ideas.   Nevertheless, the overwhelming majority of applications refer
+to real-valued functions, and the four equivalent conditions of 121B are
+the most natural and most convenient to use.   The fact that they all
+coincide with the condition of 121Yd corresponds to the fact that they
+are all of the form
+     
+\Centerline{$f^{-1}[E]\in\Sigma_D$ for every $E\in\Cal A$}
+     
+\noindent where $\Cal A$ is a family of subsets of $\Bbb R$ generating
+the Borel $\sigma$-algebra (121Xd, 121Yc(ii)).
+     
+The class of measurable functions may well be the widest you have yet
+seen, not counting the family of all real-valued functions;  all easily
+describable functions between subsets of $\Bbb R$ are measurable.   Not
+only is the space of measurable functions closed under addition and
+multiplication and composition with continuous functions (121E), but any
+natural operation acting on a sequence of measurable functions will
+produce a measurable function (121F, 121Xb, 121Xa).   It is {\it not}
+however the case that the composition of two Lebesgue measurable
+functions from $\Bbb R$ to itself is always Lebesgue measurable;  I
+offer a counter-example in 134Ib.   The point here is that a function is
+called `measurable' if it is $(\Sigma,\Cal B)$-measurable, in the
+language of 121Yc, where $\Cal B$ is the 
+$\sigma$-algebra of Borel sets.   Such a
+function can well fail to be $(\Sigma,\Sigma)$-measurable, if $\Sigma$
+properly includes $\Cal B$, so the natural argument for compositions
+(121Yc(i)) fails.   Nevertheless, for reasons which I will hint at in
+\S134, non-Lebesgue-measurable functions are hard to come by, and only
+in the most rarefied kinds of real analysis do they appear in any
+natural way.   You may therefore approach the question of whether a
+particular function is Lebesgue measurable with reasonable confidence
+that it is, and that the proof is merely a challenge to your technique.
+     
+You will observe that the results of 121E are mostly covered by
+121I-121K, which also include large parts of 114G and 115G;  and that
+121Kb is covered by 121Yd(iii).   You can count yourself as having
+mastered this part of the subject when you find my exposition tediously
+repetitive.   Of course, in order to deduce 121Ed from 121K, for
+instance, you have to know that multiplication, regarded as a function
+from $\BbbR^2$ to $\Bbb R$, is continuous, therefore Borel measurable;
+the proof of this is embedded in the proof I give of 121Ed (look at the
+formula for $\eta$ half way through).
+}%end of notes
+     
+\discrpage
+     
+     

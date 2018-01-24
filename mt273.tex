@@ -1,0 +1,1217 @@
+\frfilename{mt273.tex}
+\versiondate{2.12.09}
+\copyrightdate{2000}
+
+\def\chaptername{Probability theory}
+\def\sectionname{The strong law of large numbers}
+
+\newsection{273}
+
+I come now to the first of the three main theorems of this chapter.
+Perhaps I should call it a `principle', rather than a `theorem',
+as I shall not attempt to enunciate any fully general form, but will
+give three theorems (273D, 273H, 273I), with a variety of
+corollaries, each setting out conditions under which the averages of a
+sequence of independent random variables will almost surely converge.
+At the end of the section (273N) I add a result on norm-convergence of
+averages.
+
+\leader{273A}{}\cmmnt{ It will
+be helpful to start with an explicit statement of a very simple but very
+useful lemma.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $\sequencen{E_n}$ be a sequence of measurable
+sets in a measure space $(\Omega,\Sigma,\mu)$, and suppose that
+$\sum_{n=0}^{\infty}\mu E_n<\infty$.   Then  $\{n:\omega\in E_n\}$ is
+finite for almost every $\omega\in\Omega$.
+
+\proof{ We have
+
+$$\eqalign{\mu\{\omega:\{n:\omega\in E_n\}\text{ is infinite}\}
+&=\mu(\bigcap_{n\in\Bbb N}\bigcup_{m\ge n}E_m)
+=\inf_{n\in\Bbb N}\mu(\bigcup_{m\ge n}E_m)\cr
+&\le\inf_{n\in\Bbb N}\sum_{m=n}^{\infty}\mu E_m
+=0.\cr}$$
+}%end of proof of 273A
+
+\leader{273B}{Lemma} Let $\sequencen{X_n}$ be an independent sequence of
+real-valued random variables, and set $S_n=\sum_{i=0}^nX_i$ for each
+$n\in\Bbb N$.
+
+(a) If $\sequencen{S_n}$ is convergent in measure, then it is convergent
+almost everywhere.
+
+(b) In particular, if $\Expn(X_n)=0$ for every $n$ and
+$\sum_{n=0}^{\infty}\Expn(X_n^2)<\infty$, then
+$\sum_{n=0}^{\infty}X_n$ is defined, and finite, almost everywhere.
+
+\proof{{\bf (a)} Let $(\Omega,\Sigma,\mu)$ be the underlying probability
+space.   If we change each $X_n$ on a negligible set, we do not change
+the independence of $\sequencen{X_n}$ (272H), and the $S_n$ are also
+changed only on a negligible set;  so we may suppose from the beginning
+that every $X_n$ is a measurable function defined on the whole of
+$\Omega$.
+
+Because the functional $X\mapsto\Expn(\min(1,|X|))$ is one of the
+pseudometrics defining the topology of convergence in measure (245A),
+$\lim_{m,n\to\infty}\Expn(\min(1,|S_m-S_n|))=0$, and we can find for
+each $k\in\Bbb N$ an $n_k\in\Bbb N$ such that
+$\Expn(\min(1,|S_m-S_{n_k}|))\le 4^{-k}$ for every $m\ge n_k$.   So
+$\Pr(|S_m-S_{n_k}|\ge 2^{-k})\le 2^{-k}$ for every $m\ge n_k$.   By
+Etemadi's lemma (272V) applied to $\langle X_i\rangle_{i\ge n_k}$,
+
+\Centerline{$\Pr(\sup_{n_k\le m\le n}|S_m-S_{n_k}|\ge 3\cdot 2^{-k})
+\le 3\cdot 2^{-k}$}
+
+\noindent for every $n\ge n_k$.   Setting
+
+\Centerline{$H_{kn}
+=\{\omega:\sup_{n_k\le m\le n}|S_m(\omega)-S_{n_k}(\omega)|
+  \ge 3\cdot 2^{-k}\}$ for $n\ge n_k$,}
+
+\Centerline{$H_k=\bigcup_{n\ge n_k}H_{kn}$,}
+
+\noindent we have
+
+\Centerline{$\mu H_k=\lim_{n\to\infty}\mu H_{kn}\le 3\cdot 2^{-k}$}
+
+\noindent for each $k$, so $\sum_{k=0}^{\infty}\mu H_k$ is finite and
+almost every $\omega\in\Omega$ belongs to only finitely many of the
+$H_k$ (273A).
+
+Now take any such $\omega$.   Then there is some $r\in\Bbb N$ such that
+$\omega\notin H_k$ for any $k\ge r$.   In this case, for every $k\ge r$,
+$\omega\notin\bigcup_{n\ge n_k}H_{kn}$, that is,
+$|S_n(\omega)-S_{n_k}(\omega)|<3\cdot 2^{-k}$ for every $n\ge n_k$.
+But this means that $\sequencen{S_n(\omega)}$ is a Cauchy sequence,
+therefore convergent.   Since this is true for almost every $\omega$,
+$\sequencen{S_n}$ converges almost everywhere, as claimed.
+
+\medskip
+
+{\bf (b)} Now suppose that $\Expn(X_n)=0$ for every $n$ and that
+$\sum_{n=0}^{\infty}\Expn(X_n^2)<\infty$.   In this case, for any
+$m<n$,
+
+$$\eqalignno{\|S_n-S_m\|_1^2
+&\le\|\chi\Omega\|_2^2\|S_n-S_m\|_2^2\cr
+\displaycause{by Cauchy's inequality, 244Eb}
+&=\Expn(S_n-S_m)^2
+=\Var(S_n-S_m)\cr
+\displaycause{because $\Expn(S_n-S_m)=\sum_{i=m+1}^n\Expn(X_i)=0$}
+&=\sum_{i=m+1}^n\Var(X_i)\cr
+\displaycause{by Bienaym\'e's equality, 272S}
+&\to 0\cr}$$
+
+\noindent as $m\to\infty$.   So $\sequencen{S_n^{\ssbullet}}$ is a
+Cauchy sequence in $L^1(\mu)$ and converges in $L^1(\mu)$, by 242F;  by
+245G, it converges in measure in $L^0(\mu)$, that is, $\sequencen{S_n}$
+converges in measure in $\eusm L^0(\mu)$.   By (a), $\sequencen{S_n}$
+converges almost everywhere, that is, $\sum_{i=0}^{\infty}X_i$ is
+defined and finite almost everywhere.
+}%end of proof of 273B
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The proof above assumes familiarity with the ideas
+of Chapter 24.   However part (b), at least, can be established without
+any of these;  see 273Xa.   In 276B there is a generalization of (b)
+based on a different approach.
+}%end of comment
+
+\leader{273C}{}\cmmnt{ We now need a lemma (part (b) below) from the
+theory of
+summability.   I take the opportunity to include an elementary fact
+which will be useful later in this section and elsewhere.
+
+\medskip
+
+\noindent}
+{\bf Lemma} (a) If $\lim_{n\to\infty}x_n=x$, then
+$\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nx_i=x$.
+
+(b) Let $\sequencen{x_n}$ be such that $\sum_{i=0}^{\infty}x_i$ is defined
+in $\Bbb R$\dvAnew{2012}, and
+$\sequencen{b_n}$ a non-decreasing sequence in $\coint{0,\infty}$
+diverging to $\infty$.   Then
+\ifnum\stylenumber=12
+
+\Centerline{$\lim_{n\to\infty}\Bover1{b_n}\sum_{k=0}^nb_kx_k=0$.}
+\else
+$\lim_{n\to\infty}\Bover1{b_n}\sum_{k=0}^nb_kx_k=0$.\fi
+
+\proof{{\bf (a)} Let $\epsilon>0$.   Let $m$ be such that
+$|x_n-x|\le\epsilon$ whenever $n\ge m$.   Let $m'\ge m$ be such that
+$|\sum_{i=0}^{m-1}x-x_i|\le\epsilon m'$.   Then for $n\ge m'$ we have
+
+$$\eqalign{|x-\Bover1{n+1}\sum_{i=0}^nx_i|
+&=\Bover1{n+1}|\sum_{i=0}^nx-x_i|\cr
+&\le\Bover1{n+1}|\sum_{i=0}^{m-1}x-x_i|
++\Bover1{n+1}\sum_{i=m}^n|x-x_i|\cr
+&\le\Bover{\epsilon m'}{n+1}+\Bover{\epsilon (n-m+1)}{n+1}
+\le 2\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary,
+$\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nx_i=x$.
+
+\medskip
+
+{\bf (b)}  Let $\epsilon>0$.   Write $s_n=\sum_{i=0}^nx_i$ for each $n$,
+and
+
+\Centerline{$s=\lim_{n\to\infty}s_n=\sum_{i=0}^{\infty}x_i$;}
+
+\noindent set $s^*=\sup_{n\in\Bbb N}|s_n|<\infty$.   Let $m\in\Bbb N$ be
+such that $|s_n-s|\le\epsilon$ whenever $n\ge m$;  then $|s_n-s_j|\le
+2\epsilon$ whenever $j$, $n\ge m$.   Let $m'\ge m$ be such that
+$b_ms^*\le\epsilon b_{m'}$.
+
+Take any $n\ge m'$.   Then
+
+$$\eqalignno{|\sum_{k=0}^nb_kx_k|
+&=|b_0s_0+b_1(s_1-s_0)+\ldots+b_n(s_n-s_{n-1})|\cr
+&=|(b_0-b_1)s_0+(b_1-b_2)s_1+\ldots+(b_{n-1}-b_n)s_{n-1}+b_ns_n|\cr
+&=|b_0s_n+\sum_{i=0}^{n-1}(b_{i+1}-b_i)(s_n-s_i)|\cr
+&\le b_0|s_n|+\sum_{i=0}^{m-1}(b_{i+1}-b_{i})|s_n-s_i|
++\sum_{i=m}^{n-1}(b_{i+1}-b_{i})|s_n-s_i|\cr
+&\le b_0s^*
++2s^*\sum_{i=0}^{m-1}(b_{i+1}-b_i)
++2\epsilon\sum_{i=m}^{n-1}(b_{i+1}-b_i)\cr
+&=b_0s^*+2s^*(b_m-b_0)+2\epsilon(b_n-b_m)
+\le 2s^*b_m+2\epsilon b_n.\cr}$$
+
+\noindent Consequently, because $b_n\ge b_{m'}$,
+
+\Centerline{$|\Bover1{b_n}\sum_{k=0}^nb_kx_k|\le
+2\Bover{s^*b_m}{b_n}+2\epsilon
+\le 4\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary,
+
+\Centerline{$\lim_{n\to\infty}\Bover1{b_n}\sum_{k=0}^nb_kx_k
+=0$,}
+
+\noindent as required.
+}%end of proof of 273C
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Part (b) above is sometimes called `Kronecker's
+lemma'.
+}%end of comment
+
+\leader{273D}{The strong law of large numbers:  first form} Let
+$\sequencen{X_n}$ be an independent sequence of real-valued random
+variables, and suppose that $\sequencen{b_n}$ is a non-decreasing
+sequence in $\ooint{0,\infty}$, diverging to $\infty$, such that
+$\sum_{n=0}^{\infty}\Bover1{b_n^2}\Var(X_n)<\infty$.   Then
+
+\Centerline{$\lim_{n\to\infty}
+\Bover{1}{b_n}\sum_{i=0}^n(X_i-\Expn(X_i))=0$}
+
+\noindent almost everywhere.
+
+\proof{ As usual, write $(\Omega,\Sigma,\mu)$ for the
+underlying probability space.   Set
+
+\Centerline{$Y_n=\Bover1{b_n}(X_n-\Expn(X_n))$}
+
+\noindent for each $n$;  then $\sequencen{Y_n}$ is independent (272E),
+$\Expn(Y_n)=0$ for each $n$, and
+
+\Centerline{$\sum_{n=0}^{\infty}\Expn(Y_n^2)
+=\sum_{n=0}^{\infty}\Bover1{b_n^2}\Var(X_n)<\infty$.}
+
+\noindent By 273B, $\sequencen{Y_n(\omega)}$ is summable for almost
+every $\omega\in\Omega$.   But by 273Cb,
+
+\Centerline{$\lim_{n\to\infty}\Bover{1}{b_n}
+  \sum_{i=0}^n(X_i(\omega)-\Expn(X_i))
+=\lim_{n\to\infty}\Bover{1}{b_n}
+\sum_{i=0}^nb_iY_i(\omega)=0$}
+
+\noindent for all such $\omega$.   So we have the result.
+}%end of proof of 273D
+
+\leader{273E}{Corollary} Let $\sequencen{X_n}$ be an independent
+sequence of random variables such that $\Expn(X_n)=0$ for every $n$ and
+$\sup_{n\in\Bbb N}\Expn(X_n^2)<\infty$.   Then
+
+\Centerline{$\lim_{n\to\infty}\Bover{1}{b_n}(X_0+\ldots+X_n)
+=0$}
+
+\noindent almost everywhere whenever $\sequencen{b_n}$ is a
+non-decreasing sequence of strictly positive numbers and
+$\sum_{n=0}^{\infty}\Bover{1}{b_n^2}$ is finite.   In particular,
+
+\Centerline{$\lim_{n\to\infty}\Bover{1}{n+1}(X_0+\ldots+X_n)=0$}
+
+\noindent almost everywhere.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} For most of the rest of this section, we shall
+take $b_n=n+1$.   The special virtue of 273D is that it allows other
+$b_n$, e.g., $b_n=\sqrt{n}\ln n$.   A direct strengthening of this
+theorem is in 276C below.
+}%end of comment
+
+\leader{273F}{Corollary} Let $\sequencen{E_n}$ be an independent
+sequence of measurable sets in a probability space
+$(\Omega,\Sigma,\mu)$. and suppose that
+
+\Centerline{$\lim_{n\to\infty}\Bover{1}{n+1}\sum_{i=0}^n\mu
+E_i=c$.}
+
+\noindent Then
+
+\Centerline{$\lim_{n\to\infty}\Bover{1}{n+1}\#(\{i:i\le
+n,\,\omega\in E_i\})=c$}
+
+\noindent for almost every $\omega\in\Omega$.
+
+\proof{ In 273D, set $X_n=\chi E_n$, $b_n=n+1$.   For
+almost every $\omega$, we have
+
+\Centerline{$\lim_{n\to\infty}\Bover1{n+1}
+\sum_{i=0}^n(\chi E_i(\omega)-a_i)=0$,}
+
+\noindent writing $a_i=\mu E_i=\Expn(X_i)$ for each $i$.
+(I see that I am relying on 272F to support the claim that
+$\sequencen{X_n}$ is independent.)   But for any such $\omega$,
+
+$$\eqalign{\lim_{n\to\infty}\bigl(\Bover1{n+1}
+&\#(\{i:i\le n,\,\omega\in E_i\})-\Bover1{n+1}\sum_{i=0}^na_i\bigr)\cr
+&=\lim_{n\to\infty}\Bover1{n+1}
+\sum_{i=0}^n(\chi E_i(\omega)-a_i)
+=0;\cr}$$
+
+\noindent because we are supposing that
+$\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^na_i=c$, we must have
+
+\Centerline{$\lim_{n\to\infty}\Bover{1}{n+1}\#(\{i:i\le
+n,\,\omega\in E_i\})=c,$}
+
+\noindent as required.
+}%end of proof of 273F
+
+\vleader{48pt}{273G}{Corollary} Let $\mu$ be the usual measure on
+$\Cal P\Bbb N$\cmmnt{, as described in 254Jb}.   Then for $\mu$-almost
+every set $a\subseteq\Bbb N$,
+
+\Centerline{$\lim_{n\to\infty}\Bover1{n+1}
+\#(a\cap\{0,\ldots,n\})
+={1\over 2}$.}
+
+\proof{ The sets $E_n=\{a:n\in a\}$ are independent, with
+measure ${1\over 2}$.
+}%end of proof of 273G
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The limit $\lim_{n\to\infty}\Bover1{n+1}
+\#(a\cap\{0,\ldots,n\})$ is called the {\bf asymptotic density} of $a$.
+}%end of comment
+
+\leader{273H}{Strong law of large numbers:  second form} Let
+$\sequencen{X_n}$ be an independent sequence of real-valued random
+variables, and suppose that
+$\sup_{n\in\Bbb N}\Expn(|X_n|^{1+\delta})<\infty$ for
+some $\delta>0$.   Then
+
+\Centerline{$\lim_{n\to\infty}\Bover{1}{n+1}\sum_{i=0}^n(X_i-\Expn(X_i))
+=0$}
+
+\noindent almost everywhere.
+
+\proof{ As usual, call the underlying probability space
+$(\Omega,\Sigma,\mu)$;  as in 273B we can adjust the $X_n$ on negligible
+sets so as to make them measurable and defined everywhere on $\Omega$,
+without changing $\Expn(X_n)$, $\Expn(|X_n|)$ or the convergence of the
+averages except on a negligible set.
+
+\medskip
+
+{\bf (a)} For each $n$, define a random variable $Y_n$ on $\Omega$ by
+setting
+
+$$\eqalign{Y_n(\omega)&=X_n(\omega)\text{ if }|X_n(\omega)|\le n,\cr
+&=0\text{ if }|X_n(\omega)|>n.\cr}$$
+
+\noindent Then $\sequencen{Y_n}$ is independent (272E).   For each
+$n\in\Bbb N$,
+
+\Centerline{$\Var(Y_n)\le
+\Expn(Y_n^2)\le\Expn(n^{1-\delta}|X_n|^{1+\delta})\le n^{1-\delta}K$,}
+
+\noindent where $K=\sup_{n\in\Bbb N}\Expn(|X_n|^{1+\delta})$, so
+
+\Centerline{$\sum_{n=0}^{\infty}\Bover1{(n+1)^2}\Var(Y_n)
+\le\sum_{n=0}^{\infty}\Bover{n^{1-\delta}}{(n+1)^2}K
+<\infty$.}
+
+\noindent By 273D,
+
+\Centerline{$G
+=\{\omega:\lim_{n\to\infty}\Bover{1}{n+1}
+  \sum_{i=0}^n(Y_i(\omega)-\Expn(Y_i))=0\}$}
+
+\noindent is conegligible.
+
+\medskip
+
+{\bf (b)} On the other hand, setting
+
+\Centerline{$E_n=\{\omega:Y_n(\omega)\ne X_n(\omega)\}
+=\{\omega:|X_n(\omega)|>n\}$,}
+
+\noindent we have $K\ge n^{1+\delta}\mu E_n$ for each $n$, so
+
+\Centerline{$\sum_{n=0}^{\infty}\mu E_n
+\le 1+K\sum_{n=1}^{\infty}\Bover1{n^{1+\delta}}<\infty$,}
+
+\noindent and the set $H=\{\omega:\{n:\omega\in E_n\}$ is
+finite$\}$ is conegligible (273A).   But of course
+
+\Centerline{$\lim_{n\to\infty}\Bover1{n+1}
+\sum_{i=0}^n(X_i(\omega)-Y_i(\omega))=0$}
+
+\noindent for every $\omega\in H$.
+
+\medskip
+
+{\bf (c)} Finally,
+
+\Centerline{$|\Expn(Y_n)-\Expn(X_n)|\le\int_{E_n}|X_n|
+\le\int_{E_n}n^{-\delta}|X_n|^{1+\delta}\le n^{-\delta}K$}
+
+\noindent whenever $n\ge 1$, so
+$\lim_{n\to\infty}\Expn(Y_n)-\Expn(X_n)=0$ and
+
+\Centerline{$\lim_{n\to\infty}\Bover1{n+1}
+\sum_{i=0}^n\Expn(Y_i)-\Expn(X_i)=0$}
+
+\noindent (273Ca).   Putting these three together, we get
+
+\Centerline{$\lim_{n\to\infty}\Bover{1}{n+1}
+\sum_{i=0}^nX_i(\omega)-\Expn(X_i)=0$}
+
+\noindent whenever $\omega$ belongs to the conegligible set
+$G\cap H$.   So
+
+\Centerline{$\lim_{n\to\infty}\Bover{1}{n+1}
+\sum_{i=0}^nX_i-\Expn(X_i)=0$}
+
+\noindent almost everywhere, as required.
+}%end of proof of 273H
+
+\leader{273I}{Strong law of large numbers:  third form} Let
+$\sequencen{X_n}$ be an independent sequence of real-valued random
+variables with finite expectation, and suppose that they are
+{\bf identically distributed}, that is, all have the same
+distribution.   Then
+
+\Centerline{$\lim_{n\to\infty}\Bover{1}{n+1}
+\sum_{i=0}^n(X_i-\Expn(X_i))=0$}
+
+\noindent almost everywhere.
+
+\proof{ The proof follows the same line as that of
+273H, but some of the inequalities require more delicate arguments.
+As usual, call the underlying probability space
+$(\Omega,\Sigma,\mu)$ and suppose that the $X_n$ are all measurable and
+defined everywhere on $\Omega$.    (We need to remember that changing a
+random variable on a negligible set does not change its distribution.)
+Let $\nu$ be the common distribution of the $X_n$.
+
+\medskip
+
+{\bf (a)} For each $n$, define a random variable $Y_n$ on $\Omega$ by
+setting
+
+$$\eqalign{Y_n(\omega)&=X_n(\omega)\text{ if }|X_n(\omega)|\le n,\cr
+&=0\text{ if }|X_n(\omega)|>n.\cr}$$
+
+\noindent Then $\sequencen{Y_n}$ is independent (272E).   For each
+$n\in\Bbb N$,
+
+\Centerline{$\Var(Y_n)\le\Expn(Y_n^2)=\int_{[-n,n]}x^2\nu(dx)$}
+
+\noindent (271E).   To estimate
+$\sum_{n=0}^{\infty}\Bover1{(n+1)^2}\Expn(Y_n^2)$, set
+
+\Centerline{$f_n(x)=\Bover{x^2}{(n+1)^2}$ if $|x|\le n$,
+$0$ if $|x|>n$,}
+
+\noindent so that $\Bover1{(n+1)^2}\Var(Y_n)\le\int f_nd\nu$.   If
+$r\ge 1$ and $r<|x|\le r+1$ then
+
+$$\eqalign{\sum_{n=0}^{\infty}f_n(x)
+&\le\sum_{n=r+1}^{\infty}\Bover1{(n+1)^2}(r+1)|x|\cr
+&\le(r+1)|x|\sum_{n=r+1}^{\infty}(\Bover1n-\Bover1{n+1})
+\le |x|,\cr}$$
+
+\noindent while if $|x|\le 1$ then
+
+\Centerline{$\sum_{n=0}^{\infty}f_n(x)
+\le\sum_{n=0}^{\infty}\Bover1{(n+1)^2}=\Bover{\pi^2}6\le 2<\infty$.}
+
+\noindent (You do not need to know that the sum is $\bover{\pi^2}6$,
+only that it is finite;  but see 282Xo.)   Consequently
+
+\Centerline{$f(x)=\sum_{n=0}^{\infty}f_n(x)\le 2+|x|$}
+
+\noindent for every $x$, and $\int fd\nu<\infty$, because
+$\int |x|\nu(dx)$ is the common value of $\Expn(|X_n|)$, and is finite.
+By any of the great convergence theorems,
+
+\Centerline{$\sum_{n=0}^{\infty}\Bover1{(n+1)^2}\Var(Y_n)
+\le\sum_{n=0}^{\infty}\int f_nd\nu
+=\int fd\nu<\infty$.}
+
+\noindent By 273D,
+
+\Centerline{$G
+=\{\omega:\lim_{n\to\infty}\Bover{1}{n+1}
+   \sum_{i=0}^n(Y_i(\omega)-\Expn(Y_i))=0\}$}
+
+\noindent is conegligible.
+
+\medskip
+
+{\bf (b)} Next, setting
+
+\Centerline{$E_n
+=\{\omega:X_n(\omega)\ne Y_n(\omega)\}
+=\{\omega:|X_n(\omega)|>n\}$,}
+
+\noindent we have
+
+\Centerline{$E_n=\bigcup_{i\ge n}F_{ni}$,}
+
+\noindent where
+
+\Centerline{$F_{ni}=\{\omega:i<|X_n(\omega)|\le i+1\}$.}
+
+\noindent Now
+
+\Centerline{$\mu F_{ni}=\nu\{x:i<|x|\le i+1\}$}
+
+\noindent for every $n$ and $i$.   So
+
+$$\eqalign{\sum_{n=0}^{\infty}\mu E_n
+&=\sum_{n=0}^{\infty}\sum_{i=n}^{\infty}\mu F_{ni}
+=\sum_{i=0}^{\infty}\sum_{n=0}^i\mu F_{ni}\cr
+&=\sum_{i=0}^{\infty}(i+1)\nu\{x:i<|x|\le i+1\}
+\le\int(1+|x|)\nu(dx)
+<\infty.\cr}$$
+
+\noindent Consequently the set
+$H=\{\omega:\{n:X_n(\omega)\ne Y_n(\omega)\}$ is finite$\}$ is
+conegligible (273A).   But of course
+
+\Centerline{$\lim_{n\to\infty}\Bover1{n+1}
+  \sum_{i=0}^nX_i(\omega)-Y_i(\omega)
+=0$}
+
+\noindent for every $\omega\in H$.
+
+\medskip
+
+{\bf (c)} Finally,
+
+\Centerline{$|\Expn(Y_n)-\Expn(X_n)|\le\int_{E_n}|X_n|
+=\int_{\Bbb R\setminus[-n,n]}|x|\nu(dx)$}
+
+\noindent whenever $n\in\Bbb N$, so
+$\lim_{n\to\infty}\Expn(Y_n)-\Expn(X_n)=0$ and
+
+\Centerline{$\lim_{n\to\infty}\Bover1{n+1}
+\sum_{i=0}^n\Expn(Y_i)-\Expn(X_i)=0$}
+
+\noindent (273Ca).   Putting these three together, we get
+
+\Centerline{$\lim_{n\to\infty}\Bover{1}{n+1}
+\sum_{i=0}^nX_i(\omega)-\Expn(X_i)=0$}
+
+\noindent whenever $\omega$ belongs to the conegligible set
+$G\cap H$.   So
+
+\Centerline{$\lim_{n\to\infty}\Bover{1}{n+1}
+\sum_{i=0}^nX_i-\Expn(X_i)=0$}
+
+\noindent almost everywhere, as required.
+}%end of proof of 273I
+
+\cmmnt{\medskip
+
+\noindent{\bf Remarks} In my own experience, this is the most important
+form of the strong law from the point of view of `pure' measure
+theory.   I note that 273G above can also be regarded as a consequence
+of this form.
+
+For a very striking alternative proof, see 275Yq.   Yet another
+proof treats this result as a special case of the Ergodic Theorem
+(see 372Xg in Volume 3).
+}%end of comment
+
+\leader{273J}{Corollary}\discrversionA{\footnote{Extended 2008.}}{}
+Let $(\Omega,\Sigma,\mu)$ be a probability space.
+If $f$ is a real-valued function such that $\int fd\mu$ is defined in
+$[-\infty,\infty]$, then
+
+\Centerline{$\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf(\omega_i)
+=\int fd\mu$}
+
+\noindent for $\lambda$-almost
+every $\pmb{\omega}=\sequencen{\omega_n}\in\Omega^{\Bbb N}$,
+where $\lambda$ is the product measure on
+$\Omega^{\Bbb N}$\cmmnt{ (254A-254C)}.
+
+\proof{{\bf (a)} To begin with, suppose that $f$ is integrable.
+Define functions $X_n$ on $\Omega^{\Bbb N}$ by setting
+
+\Centerline{$X_n(\pmb{\omega})=f(\omega_n)$ whenever
+$\omega_n\in\dom f$.}
+
+\noindent Then $\sequencen{X_n}$ is an independent sequence of random
+variables, all with the same distribution as $f$ (272M).   So
+
+\Centerline{$
+\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf(\omega_i)-\int fd\mu
+=\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nX_i(\pmb{\omega})-\Expn(X_i)
+=0$}
+
+\noindent for almost every $\pmb{\omega}$, by 273I, and
+
+\Centerline{$\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf(\omega_i)
+=\int fd\mu$}
+
+\noindent for almost every $\pmb{\omega}$.
+
+\medskip
+
+{\bf (b)} Next, suppose that $f\ge 0$ and $\int f=\infty$.   In this case,
+for every $m\in\Bbb N$,
+
+$$\eqalign{\liminf_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf(\omega_i)
+&\ge\liminf_{n\to\infty}\Bover1{n+1}\sum_{i=0}^n\min(m,f(\omega_i))\cr
+&=\int\min(m,f(\omega))\mu(d\omega)\cr}$$
+
+\noindent for almost every $\pmb{\omega}$, so
+
+\Centerline{$\liminf_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf(\omega_i)
+\ge\sup_{m\in\Bbb N}\int\min(m,f(\omega))\mu(d\omega)
+=\infty$}
+
+\noindent and
+
+\Centerline{$\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf(\omega_i)
+=\infty=\int f$}
+
+\noindent for almost every $\pmb{\omega}$.
+
+\medskip
+
+{\bf (c)} In general, if $\int f=\infty$,
+this is because $\int f^+=\infty$
+and $f^-$ is integrable, so
+
+$$\eqalign{\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf(\omega_i)
+&=\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf^+(\omega_i)
+  -\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf^-(\omega_i)\cr
+&=\infty-\int f^-  %
+=\int f\cr}$$
+
+\noindent for almost every $\pmb{\omega}$.   Similarly,
+
+\Centerline{$\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf(\omega_i)
+=-\infty$}
+
+\noindent for almost every $\pmb{\omega}$ if $\int fd\mu=-\infty$.
+}%end of proof of 273J
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} I find myself slipping here into
+measure-theorists' terminology;  this corollary is one of the basic
+applications of the strong law to measure theory.   Obviously, in view
+of 272J and 272M, this corollary covers 273I.   It could also (in
+theory) be used as a {\it definition} of integration on a probability
+space (see 273Ya);   it is sometimes called the `Monte Carlo'
+method of integration.
+}%end of comment
+
+\leader{273K}{}\cmmnt{ It is tempting to seek extensions of 273I in
+which the $X_n$ are not identically distributed, but are otherwise
+well-behaved.   Any such idea should be tested against the following
+example.   I find that I need another standard result, complementing
+that in 273A.
+
+\medskip
+
+\noindent}{\bf Borel-Cantelli lemma} Let $(\Omega,\Sigma,\mu)$ be a
+probability space and $\sequencen{E_n}$ a sequence of
+measurable subsets of $\Omega$ such that
+$\sum_{n=0}^{\infty}\mu E_n=\infty$ and
+$\mu(E_m\cap E_n)\le\mu E_m\cdot\mu E_n$ whenever $m\ne n$.
+Then almost every point of
+$\Omega$ belongs to infinitely many of the $E_n$.
+
+\proof{ For $n$, $k\in\Bbb N$ set $X_n=\sum_{i=0}^n\chi E_i$,
+$\beta_n=\sum_{i=0}^n\mu E_n=\Expn(X_n)$ and
+$F_{nk}=\{x:x\in\Omega$, $\#(\{i:i\le n$, $x\in E_i\})\le k\}$.   Then
+
+$$\eqalign{\Expn(X_n^2)
+&=\sum_{i=0}^n\sum_{j=0}^n\mu(E_i\cap E_j)
+\le\sum_{i=0}^n\mu E_i+\sum_{i=0}^n\sum_{j\ne i}\mu E_i\cdot\mu E_j\cr
+&=\beta_n+\beta_n^2-\sum_{i=0}^n(\mu E_i)^2,\cr}$$
+
+\noindent so
+
+\Centerline{$\Var(X_n)=\beta_n-\sum_{i=0}^n(\mu E_i)^2\le\beta_n$.}
+
+\noindent Now if $k<\beta_n$,
+
+\Centerline{$(\beta_n-k)^2\mu F_{nk}
+=(\beta_n-k)^2\Pr(X_n\le k)
+\le\Expn(X_n-\beta_n)^2=\Var(X_n)\le\beta_n$}
+
+\noindent and $\mu F_{nk}\le\Bover{\beta_n}{(\beta_n-k)^2}$.
+
+Now recall that we are assuming that $\lim_{n\to\infty}\beta_n=\infty$.
+So for any $k\in\Bbb N$,
+
+\Centerline{$\mu(\bigcap_{n\in\Bbb N}F_{nk})
+=\lim_{n\to\infty}\mu F_{nk}
+\le\lim_{n\to\infty}\Bover{\beta_n}{(\beta_n-k)^2}
+=0$.}
+
+\noindent Accordingly
+
+\Centerline{$\mu\{x:x$ belongs to only finitely many $E_n\}
+=\mu(\bigcup_{k\in\Bbb N}\bigcap_{n\in\Bbb N}F_{nk})
+=0$,}
+
+\noindent and almost every point of $\Omega$ belongs to infinitely many
+$E_n$.
+}%end of proof of 273K
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Of course this result is usually applied to an
+independent sequence $\sequencen{E_n}$.   But very occasionally it is of
+interest to know that it is enough to assume that weaker hypotheses
+suffice.   See also 273Yb.}
+
+\vleader{72pt}{273L}{}\cmmnt{ Now for the promised example.
+
+\medskip
+
+\noindent}{\bf Example} There is an independent sequence
+$\sequencen{X_n}$ of non-negative random variables such that
+$\lim_{n\to\infty}\Expn(X_n)=0$ but
+
+\Centerline{$\limsup_{n\to\infty}\Bover1{n+1}
+  \sum_{i=0}^{\infty}X_i-\Expn(X_i)=\infty$,}
+
+\Centerline{$\liminf_{n\to\infty}\Bover1{n+1}
+  \sum_{i=0}^{\infty}X_i-\Expn(X_i)=0$}
+
+\noindent almost everywhere.
+
+\proof{ Let $(\Omega,\Sigma,\mu)$ be a probability space
+with an independent sequence $\sequencen{E_n}$ of measurable sets such
+that $\mu E_n=\Bover{1}{(n+3)\ln(n+3)}$ for each $n$.
+(I have nowhere explained
+exactly how to build such a sequence.   Two obvious methods are
+available to us, and another a trifle less obvious.   (i) Take
+$\Omega=\{0,1\}^{\Bbb N}$ and $\mu$ to be
+the product of the probabilities $\mu_n$ on $\{0,1\}$, defined by saying
+that $\mu_n\{1\}=\Bover1{(n+3)\ln(n+3)}$ for each $n$;  set
+$E_n=\{\omega:\omega(n)=1\}$, and appeal to 272M to check that the
+$E_n$ are independent.   (ii) Build the $E_n$ inductively as subsets of
+$[0,1]$, arranging that each $E_n$ should be a finite union of
+intervals, so that when you come to choose $E_{n+1}$ the sets
+$E_0,\ldots,E_n$ define a partition $\Cal I_n$ of $[0,1]$ into
+intervals, and you
+can take $E_{n+1}$ to be the union of (say) the left-hand subintervals
+of length a proportion $\Bover1{(n+3)\ln(n+3)}$ of the intervals in
+$\Cal I_n$.   (iii) Use 215D to see that the method of (ii) can be used
+on any atomless probability space, as in 272Xa.)
+
+Set $X_n=(n+3)\ln\ln(n+3)\chi E_n$ for each $n$;  then $\sequencen{X_n}$
+is an independent sequence of real-valued random variables (272F) and
+$\Expn(X_n)=\Bover{\ln\ln(n+3)}{\ln(n+3)}$ for each $n$, so that
+$\Expn(X_n)\to 0$ as $n\to\infty$.   Thus, for instance,
+$\{X_n:n\in\Bbb N\}$ is uniformly integrable and $\sequencen{X_n}\to 0$
+in measure (246Jc);  while surely
+$\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^n\Expn(X_i)=0$.
+
+On the other hand,
+
+$$\eqalign{\sum_{n=0}^{\infty}\mu E_n
+&=\sum_{n=0}^{\infty}\Bover1{(n+3)\ln(n+3)}
+\ge\int_0^{\infty}\Bover1{(x+3)\ln(x+3)}dx\cr
+&=\lim_{a\to\infty}(\ln\ln(a+3)-\ln\ln 3)
+=\infty,\cr}$$
+
+\noindent so almost every $\omega$ belongs to infinitely many of the
+$E_n$, by the Borel-Cantelli lemma (273K).  Now if we write
+$Y_n=\Bover1{n+1}\sum_{i=0}^nX_i$, then if $\omega\in E_n$ we have
+$X_n(\omega)=(n+3)\ln\ln(n+3)$ so
+
+\Centerline{$Y_n(\omega)\ge\Bover{n+3}{n+1}\ln\ln(n+3).$}
+
+\noindent   This means that
+
+$$\eqalign{\{\omega:\limsup_{n\to\infty}\Bover1{n+1}
+    &\sum_{i=0}^n(X_i(\omega)-\Expn(X_i))=\infty\}
+=\{\omega:\limsup_{n\to\infty}
+    \Bover{1}{n+1}\sum_{i=0}^nX_i(\omega)=\infty\}\cr
+&=\{\omega:\sup_{n\in\Bbb N}Y_n(\omega)=\infty\}
+\supseteq\{\omega:\{n:\omega\in E_n\}\text{ is infinite}\}\cr}$$
+
+\noindent is conegligible, and the strong law of large numbers does not
+apply to $\sequencen{X_n}$.
+
+Because
+
+\Centerline{$\lim_{n\to\infty}\|Y_n\|_1
+=\lim_{n\to\infty}\Expn(Y_n)=\lim_{n\to\infty}\Expn(X_n)=0$}
+
+\noindent (273Ca), $\sequencen{Y_n}\to 0$ for the topology of
+convergence in measure, and $\sequencen{Y_n}$ has a
+subsequence converging to $0$ almost everywhere (245K).   So
+
+\Centerline{$\liminf_{n\to\infty}\Bover1{n+1}
+\sum_{i=0}^n(X_i(\omega)-\Expn(X_i))=\liminf_{n\to\infty}Y_n(\omega)=0$}
+
+\noindent for almost every $\omega$.   The fact that both
+$\limsup_{n\to\infty}Y_n$ and $\liminf_{n\to\infty}Y_n$ are constant
+almost everywhere is of course a consequence of the zero-one law
+(272P).
+}%end of example
+
+\leader{*273M}{}\cmmnt{ All the above has been concerned with
+pointwise
+convergence of the averages of independent random variables, and that is
+the important part of the work of this section.   But it is perhaps
+worth complementing it with a brief investigation of norm-convergence.
+To deal efficiently with convergence in $\eusm L^p$, we need the
+following.   (I should perhaps remark that, compared with the general
+case treated here, the case $p=2$ is trivial;  see 273Xl.)
+
+\medskip
+
+\noindent}{\bf Lemma} For any $p\in\ooint{1,\infty}$ and $\epsilon>0$,
+there is a $\delta>0$ such that $\|S+X\|_p\le 1+\epsilon\|X\|_p$
+whenever $S$ and $X$ are independent random variables, $\|S\|_p=1$,
+$\|X\|_p\le\delta$ and $\Expn(X)=0$.
+
+\proof{{\bf (a)} Take $\zeta\in\ocint{0,1}$ such that $p\zeta\le 2$ and
+
+\Centerline{$(1+\xi)^p\le 1+p\xi+\Bover{p^2}2\xi^2$}
+
+\noindent whenever $|\xi|\le\zeta$;  such exists because
+
+\Centerline{$\lim_{\xi\to 0}\Bover{(1+\xi)^p-1-p\xi}{\xi^2}
+=\Bover{p(p-1)}2<\Bover{p^2}2$.}
+
+\noindent Observe that
+
+\Centerline{$(1+\xi)^p
+\le(1+\Bover1{\zeta})^p+\xi^p+2p\xi^{p-1}$}
+
+\noindent for every $\xi\ge 0$.   \Prf\
+If $\xi\le\Bover1{\zeta}$, this is trivial.   If $\xi\ge\Bover1{\zeta}$,
+then
+
+$$\eqalign{(1+\xi)^p
+&=\xi^p(1+\Bover1{\xi})^p
+\le\xi^p(1+\Bover{p}{\xi}+\Bover{p^2}{2\xi^2})\cr
+&\le\xi^p(1+\Bover{p}{\xi}+\Bover{p^2\zeta}{2\xi})
+=\xi^p+p\xi^{p-1}(1+\Bover{p\zeta}{2})
+\le\xi^p+2p\xi^{p-1}.  \text{ \Qed}\cr}$$
+
+Define $\eta>0$ by declaring that $3\eta^{p-1}=\Bover{\epsilon}2$ (this
+is one of the places where we need to know that $p>1$).
+Let $\delta>0$ be such that
+
+\Centerline{$\delta\le\eta\zeta$,
+\quad$\Bover{p^2}{2\eta^2}\delta+(1+\Bover1{\zeta})^p\delta^{p-1}
+\le\Bover{p\epsilon}2$.}
+
+\medskip
+
+{\bf (b)} Now suppose that $S$ and $X$ are independent random variables
+with $\|S\|_p=1$, $\|X\|_p\le\delta$ and $\Expn(X)=0$.   If $\|X\|_p=0$
+then of course $\|S+X\|_p\le 1+\epsilon\|X\|_p$,
+so suppose that $X$ is non-trivial.   Write
+$(\Omega,\Sigma,\mu)$ for the underlying probability space and adjust
+$S$ and $X$ on negligible sets so that they are measurable and defined
+everywhere on $\Omega$.   Set $\alpha=\|X\|_p$, $\gamma=\alpha/\eta$,
+
+\Centerline{$E=\{\omega:S(\omega)\ne 0\}$,
+\quad$F=\{\omega:|X(\omega)|>\gamma|S(\omega)|\}$,
+\quad$\beta=\|S\times\chi F\|_p$.}
+
+\noindent Then
+
+$$\eqalignno{\int|S+X|^p
+&=\int_F|S+X|^p+\int_{E\setminus F}|S+X|^p\cr
+\displaycause{because $S$ and $X$ are both zero on
+$\Omega\setminus(E\cup F)$}
+&=\|(S\times\chi F)+(X\times\chi F)\|_p^p
+  +\int_{E\setminus F}|S|^p|1+\Bover{X}{S}|^p\cr
+&\le(\|S\times\chi F\|_p+\|X\times\chi F)\|_p)^p
+  +\int_{E\setminus F}|S|^p(1+p\Bover{X}{S}+\Bover{p^2}2\gamma^2)\cr
+\displaycause{because
+$|\Bover{X}{S}|\le\gamma\le\Bover{\delta}{\eta}\le\zeta\le 1$ everywhere on
+$E\setminus F$}
+&\le(\beta+\alpha)^p+(1+\Bover{p^2}2\gamma^2)\int_{E\setminus F}|S|^p
+  +p\int_{E\setminus F}|S|^{p-1}\times\sgn S\times X\cr
+\displaycause{writing $\sgn(\xi)=\xi/|\xi|$ if $\xi\ne 0$, $0$ if
+$\xi=0$}
+&=(\beta+\alpha)^p+(1+\Bover{p^2}2\gamma^2)\int_{\Omega\setminus F}|S|^p
+  +p\int_{\Omega\setminus F}|S|^{p-1}\times\sgn S\times X\cr
+\displaycause{because $S=0$ on $\Omega\setminus E$}
+&=\alpha^p(1+\Bover{\beta}{\alpha})^p+(1+\Bover{p^2}2\gamma^2)(1-\beta^p)
+  -p\int_F|S|^{p-1}\times\sgn S\times X\cr
+\displaycause{because $X$ and $|S|^{p-1}\times\sgn S$ are independent,
+by 272L, so
+$\int|S|^{p-1}\times\sgn S\times X=\Expn(|S|^{p-1}\times\sgn S)\Expn(X)=0$}
+&\le\alpha^p\bigl((1+\Bover1{\zeta})^p+2p(\Bover{\beta}{\alpha})^{p-1}
+  +(\Bover{\beta}{\alpha})^p\bigr)+(1+\Bover{p^2}2\gamma^2)(1-\beta^p)\cr
+ &\qquad\qquad\qquad
+  +p\int_F|S|^{p-1}\times|X|\cr
+\displaycause{see (a) above}
+&\le\alpha^p(1+\Bover1{\zeta})^p+\beta^p+2p\beta^{p-1}\alpha
+  +(1+\Bover{p^2}2\gamma^2)(1-\beta^p)\cr
+ &\qquad\qquad\qquad
+  +p\int_F\Bover{1}{\gamma^{p-1}}|X|^p\cr
+&\le\alpha^p(1+\Bover1{\zeta})^p
+  +2p\Bover{\alpha^p}{\gamma^{p-1}}
+  +1+\Bover{p^2}2\gamma^2
+  +p\Bover{\alpha^p}{\gamma^{p-1}}\cr
+\displaycause{because $\beta=\|S\times\chi F\|_p
+\le\Bover1{\gamma}\|X\times\chi F\|_p\le\Bover{\alpha}{\gamma}$}
+&=\alpha^p(1+\Bover1{\zeta})^p
+  +3p\eta^{p-1}\alpha
+  +1+\Bover{p^2\alpha^2}{2\eta^2}
+  \cr
+&=1+\bigl(\alpha^{p-1}(1+\Bover1{\zeta})^p
+  +3p\eta^{p-1}
+  +\Bover{p^2\alpha}{2\eta^2}\bigr)\alpha\cr
+&\le 1+\bigl(\delta^{p-1}(1+\Bover1{\zeta})^p
+  +3p\eta^{p-1}
+  +\Bover{p^2\delta}{2\eta^2}\bigr)\alpha\cr
+&\le 1+p\alpha\epsilon\le(1+\epsilon\|X\|_p)^p.\cr}$$
+
+\noindent So $\|S+X\|_p\le 1+\epsilon\|X\|_p$, as required.
+}%end of proof of 273M
+
+\cmmnt{\medskip
+
+\noindent*{\bf Remark} What is really happening here is that
+$\phi=\|\,\|^p_p:L^p\to\Bbb R$ is differentiable (as a real-valued
+function on the normed space $L^p$) and
+
+\Centerline{$\phi'(S^{\ssbullet})(X^{\ssbullet})
+=p\int|S|^{p-1}\times\sgn S\times X$,}
+
+\noindent so that in the context here
+
+\Centerline{$\phi((S+X)^{\ssbullet})
+=\phi(S^{\ssbullet})+\phi'(S^{\ssbullet})(X^{\ssbullet})
+   +o(\|X\|_p)
+=1+o(\|X\|_p)$}
+
+\noindent and $\|S+X\|_p=1+o(\|X\|_p)$.    The calculations above are
+elaborate partly because they do not appeal to any non-trivial ideas
+about normed spaces, and partly because we need the estimates to be
+uniform in $S$.
+}%end of comment
+
+\leader{273N}{Theorem} Let $\sequencen{X_n}$ be an independent sequence
+of real-valued random variables with zero expectation, and set
+$Y_n=\bover1{n+1}(X_0+\ldots+X_n)$ for each $n\in\Bbb N$.
+
+(a) If $\sequencen{X_n}$ is uniformly integrable, then
+$\lim_{n\to\infty}\|Y_n\|_1=0$.
+
+*(b) If $p\in\ooint{1,\infty}$ and
+$\sup_{n\in\Bbb N}\|X_n\|_p<\infty$,
+then $\lim_{n\to\infty}\|Y_n\|_p=0$.
+
+\proof{{\bf (a)} Let $\epsilon>0$.   Then there is an $M\ge 0$ such that
+$\Expn(|X_n|-M)^+\le\epsilon$ for every $n\in\Bbb N$.   Set
+
+\Centerline{$X_n'=(-M\chi\Omega)\vee(X_n\wedge M\chi\Omega)$,
+\quad$\alpha_n=\Expn(X_n')$,
+\quad $\tilde X_n=X'_n-\alpha_n$,
+\quad $X''_n=X_n-X'_n$}
+
+\noindent for each $n\in\Bbb N$.   Then $\sequencen{X'_n}$ and
+$\sequencen{\tilde X_n}$ are independent and uniformly bounded, and
+$\|X''_n\|_1\le\epsilon$ for every $n$.   So if we write
+
+\Centerline{$\tilde Y_n=\Bover1{n+1}\sum_{i=0}^n\tilde X_i$,
+\quad$Y''_n=\Bover1{n+1}\sum_{i=0}^nX''_i$,}
+
+\noindent $\sequencen{\tilde Y_n}\to 0$ almost everywhere, by 273E (for
+instance), while $\|Y''_n\|_1\le\epsilon$ for every $n$.  Moreover,
+
+\Centerline{$|\alpha_n|=|\Expn(X'_n-X_n)|\le\Expn(|X''_n|)\le\epsilon$}
+
+\noindent for every $n$.    As $|\tilde Y_n|\le 2M$ almost everywhere
+for each $n$, $\lim_{n\to\infty}\|\tilde Y_n\|_1=0$, by Lebesgue's
+Dominated Convergence Theorem.   So
+
+$$\eqalign{\limsup_{n\to\infty}\|Y_n\|_1
+&=\limsup_{n\to\infty}\|\tilde Y_n+Y''_n+\alpha_n\|_1\cr
+&\le\lim_{n\to\infty}\|\tilde Y_n\|_1+\sup_{n\in\Bbb N}\|Y''_n\|_1
+  +\sup_{n\in\Bbb N}|\alpha_n|\cr
+&\le 2\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary, $\lim_{n\to\infty}\|Y_n\|_1=0$, as
+claimed.
+
+\medskip
+
+{\bf *(b)} Set $M=\sup_{n\in\Bbb N}\|X_n\|_p$.   For $n\in\Bbb N$,
+set $S_n=\sum_{i=0}^nX_i$.   Let $\epsilon>0$.   Then there is a
+$\delta>0$ such that $\|S+X\|_p\le 1+\epsilon\|X\|_p$ whenever $S$ and
+$X$ are independent random variables, $\|S\|_p=1$, $\|X\|_p\le\delta$
+and $\Expn(X)=0$ (273M).   It follows that
+$\|S+X\|_p\le\|S\|_p+\epsilon\|X\|_p$ whenever $S$ and $X$ are
+independent random variables, $\|S\|_p$ is finite,
+$\|X\|_p\le\delta\|S\|_p$ and $\Expn(X)=0$.   In particular,
+$\|S_{n+1}\|_p\le\|S_n\|_p+\epsilon M$ whenever
+$\|S_n\|_p\ge M/\delta$.   An easy induction shows that
+
+\Centerline{$\|S_n\|_p\le\Bover{M}{\delta}+M+n\epsilon M$}
+
+\noindent for every $n\in\Bbb N$.   But this means that
+
+\Centerline{$\limsup_{n\to\infty}\|Y_n\|_p
+=\limsup_{n\to\infty}\Bover1{n+1}\|S_n\|_p\le\epsilon M$.}
+
+\noindent As $\epsilon$ is arbitrary, $\lim_{n\to\infty}\|Y_n\|_p=0$.
+}%end of proof of 273N
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} There are strengthenings of (a) in
+276Xe, and of (b) in 276Ya.
+}%end of comment
+
+\exercises{
+\leader{273X}{Basic exercises (a)}
+%\spheader 273Xa
+In part (b) of the proof of 273B, use Bienaym\'e's equality to show that
+$\lim_{m\to\infty}\sup_{n\ge m}\discretionary{}
+{}{}\Pr(|S_n-S_m|\ge\epsilon)=0$ for
+every $\epsilon>0$, so that we can apply the argument of part (a) of the
+proof directly, without appealing to 242F or 245G or even 244E.
+%273B
+
+\spheader 273Xb Show that
+$\sum_{n=0}^{\infty}\Bover{(-1)^{\omega(n)}}{n+1}$ is defined in
+$\Bbb R$ for almost every $\pmb{\omega}=\sequencen{\omega(n)}$ in
+$\{0,1\}^{\Bbb N}$, where $\{0,1\}^{\Bbb N}$ is given its usual measure
+(254J).
+%273B
+
+\spheader 273Xc Let $\sequencen{E_n}$ be an independent sequence of
+measurable sets in a probability space, all with the same non-zero
+measure.   Let $\sequencen{a_n}$ be a sequence of non-negative real
+numbers such that $\sum_{n=0}^{\infty}a_n=\infty$.   Show that
+$\sum_{n=0}^{\infty}a_n\chi E_n=\infty$ a.e.   \Hint{Take a strictly
+increasing sequence $\sequencen{k_n}$ such that
+$d_n=\sum_{i=k_n+1}^{k_{n+1}}a_i\ge 1$ for each $n$.   Set
+$c_i=\Bover{a_i}{(n+1)d_n}$ for $k_n<i\le k_{n+1}$;  show that
+$\sum_{n=0}^{\infty}c_n^2<\infty=\sum_{n=0}^{\infty}c_n$.
+Apply 273D with $X_n=c_n\chi E_n$ and $b_n=\sqrt{\sum_{i=0}^nc_i}$.}
+%273D  added 2002
+
+\sqheader 273Xd Take any $q\in[0,1]$, and
+give $\Cal P\Bbb N$ a measure $\mu$ such that
+
+\Centerline{$\mu\{a:I\subseteq a\}=q^{\#(I)}$}
+
+\noindent for every $I\subseteq\Bbb N$, as in 254Xg.   Show that
+for $\mu$-almost every $a\subseteq\Bbb N$,
+
+\Centerline{$\lim_{n\to\infty}\Bover{1}{n+1}
+\#(a\cap\{0,\ldots,n\})=q$.}
+%273F
+
+\sqheader 273Xe Let $\mu$ be the usual probability measure on
+$\Cal P\Bbb N$ (254Jb), and for $r\ge 1$ let $\mu^r$ be the product
+probability measure on $(\Cal P\Bbb N)^r$.   Show that
+
+\Centerline{$\lim_{n\to\infty}
+  \Bover1{n+1}\#(a_1\cap\ldots\cap a_r\cap\{0,\ldots,n\})=2^{-r}$,}
+
+\Centerline{$\lim_{n\to\infty}
+  \Bover1{n+1}\#((a_1\cup\ldots\cup a_r)\cap\{0,\ldots,n\})=1-2^{-r}$}
+
+\noindent for $\mu^r$-almost every
+$(a_1,\ldots,a_r)\in(\Cal P\Bbb N)^r$.
+%273F
+
+\spheader 273Xf Let $\mu$ be the usual probability measure on
+$\Cal P\Bbb N$, and $b$ any infinite subset of $\Bbb N$.   Show that
+$\lim_{n\to\infty}
+\Bover{\#(a\cap b\cap\{0,\ldots,n\})}{\#(b\cap\{0,\ldots,n\})}
+\penalty-100=\Bover12$ for almost every $a\subseteq\Bbb N$.
+%273F
+
+\sqheader 273Xg For each $x\in[0,1]$, let $\epsilon_k(x)$ be the
+$k$th digit in the decimal expansion of $x$ (choose for yourself what to
+do with $0{\cdot}100\ldots=0{\cdot}099\ldots$).   Show that
+$\lim_{k\to\infty}\bover1k\#(\{j:j\le k,\,\epsilon_j(x)=7\})
+=\bover1{10}$ for almost every $x\in[0,1]$.
+%273F
+
+\spheader 273Xh Let $\sequencen{F_n}$ be a sequence of
+distribution functions for real-valued random variables, in the sense of
+271Ga, and $F$ another
+distribution function;  suppose that $\lim_{n\to\infty}F_n(q)=F(q)$ for
+every $q\in\Bbb Q$ and $\lim_{n\to\infty}F_n(a^-)=F(a^-)$ whenever
+$F(a^-)<F(a)$, where I write $F(a^-)$ for $\lim_{x\uparrow a}F(x)$.
+Show that $F_n\to F$ uniformly.
+%for 273Xi
+
+\sqheader 273Xi\dvAformerly{2{}73Xh}
+Let $(\Omega,\Sigma,\mu)$ be a probability space
+and $\sequencen{X_n}$ an independent identically distributed sequence of
+real-valued random
+variables on $\Omega$ with common distribution function $F$.   For
+$a\in\Bbb R$, $n\in\Bbb N$ and $\omega\in\bigcap_{i\le n}\dom X_i$ set
+
+\Centerline{$F_n(\omega,a)
+=\Bover1{n+1}\#(\{i:i\le n,\,X_i(\omega)\le a\})$.}
+
+\noindent Show that
+
+\Centerline{$\lim_{n\to\infty}\sup_{a\in\Bbb R}|F_n(\omega,a)-F(a)|
+=0$}
+
+\noindent for almost every $\omega\in\Omega$.
+%273Xh, 273F
+
+\spheader 273Xj Let $(\Omega,\Sigma,\mu)$ be a probability space, and
+$\lambda$ the product measure on $\Omega^{\Bbb N}$.
+Let $f:\Omega\to\Bbb R$ be a function, and set $f^*(\pmb{\omega})
+=\limsup_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf(\omega_i)$
+for $\pmb{\omega}=\sequencen{\omega_n}\in\Omega^{\Bbb N}$.
+Show that  $\overline{\int}f^*d\lambda=\overline{\int}fd\mu$ whenever
+the right-hand-side is finite.
+\Hint{133J(a-i).}
+%273J
+
+\spheader 273Xk Find an independent sequence $\sequencen{X_n}$ of random
+variables with zero expectation such that $\|X_n\|_1=1$ and
+$\|\bover1{n+1}\sum_{i=0}^nX_i\|_1\ge\bover12$ for every $n\in\Bbb N$.
+\Hint{take $\Pr(X_n\ne 0)$ very small.}
+%273N
+
+\spheader 273Xl Use 272S to prove 273Nb in the case $p=2$.
+%273N
+
+\spheader 273Xm Find an independent sequence $\sequencen{X_n}$ of random
+variables with zero expectation such that
+$\|X_n\|_{\infty}=\|\bover1{n+1}\sum_{i=0}^nX_i\|_{\infty}=1$ for every
+$n\in\Bbb N$.
+%273N
+
+\spheader 273Xn Repeat the work of this section for
+complex-valued random variables.
+%273+
+
+\spheader 273Xo Let $(X,\Sigma,\mu)$ be a probability space and
+$\sequencen{E_n}$ an independent sequence in $\Sigma$ such that
+$\alpha=\lim_{n\to\infty}\mu E_n$ is defined.   For $x\in X$ set
+$I_x=\{n:x\in E_n\}$.   Show that $I_x$ has asymptotic density $\alpha$ for
+almost every $x$.
+%273G
+
+\leader{273Y}{Further exercises (a)}
+%\spheader 273Ya
+Let $(\Omega,\Sigma,\mu)$ be a
+probability space, and $\lambda$ the product measure on
+$\Omega^{\Bbb N}$.   Suppose that $f$ is a real-valued function, defined
+on a subset of $\Omega$, such that
+
+\Centerline{$h(\pmb{\omega})
+=\lim_{n\to\infty}\Bover1{n+1}\sum_{i=0}^nf(\omega_i)$}
+
+\noindent exists in $\Bbb R$ for $\lambda$-almost every
+$\pmb{\omega}=\sequencen{\omega_n}$ in $\Omega^{\Bbb N}$.   Show (i)
+that $f$ has conegligible domain (ii) $f$ is $\hat\Sigma$-measurable, where
+$\hat\Sigma$ is the domain of the
+completion of $\mu$ (iii) there is an $a\in\Bbb R$ such that $h=a$
+almost everywhere in $\Omega^{\Bbb N}$ (iv) $f$ is integrable, with
+$\int fd\mu=a$.
+%273J mt27bits
+
+\spheader 273Yb\dvAnew{2009}
+Let $\sequencen{X_n}$ be a sequence of random variables
+with finite variance.   Suppose that $\lim_{n\to\infty}\Expn(X_n)=\infty$
+and $\liminf_{n\to\infty}
+\Bover{\Expn(X_n^2)}{(\Expn(X_n))^2}\le 1$.
+Show that $\limsup_{n\to\infty}X_n=\infty$ a.e.	
+%273K
+}%end of exercises
+
+\endnotes{
+\Notesheader{273} I have tried in this section to offer the most useful
+of the standard criteria for pointwise convergence of averages of
+independent random variables.   In my view the strong law of large
+numbers, like Fubini's theorem, is one of the crucial steps in measure
+theory, where the subject changes character.   Theorems depending on the
+strong law have a kind of depth and subtlety to them which is missing in
+other parts of the subject.   I have described only a handful of
+applications here, but I hope that 273G, 273J, 273Xd, 273Xg and 273Xi
+will give
+an idea of what is to be expected.   These do have rather different
+weights.   Of the four, only 273J requires the full resources of this
+chapter;  the others can be deduced from the essentially simpler version
+in 273Xi.
+
+273Xi is the `fundamental theorem of statistics' or `Glivenko-Cantelli
+theorem'.   The $F_n(.,a)$
+are `statistics', computed from the $X_i$;  they are the `empirical
+distributions', and the theorem says that, almost surely, $F_n\to F$
+uniformly.   (I say `uniformly' to make the result look more striking,
+but of course the real content is that $F_n(.,a)\to F(a)$ almost surely
+for each $a$;  the extra step is just 273Xh.)
+
+I have included 273N to show that independence is quite as important in
+questions of norm-convergence as it is in questions of pointwise
+convergence.   It does not really rely on any form of the strong law;  in
+the proof I
+quote 273E as a quick way of disposing of the `uniformly bounded parts'
+$X'_n$, but of course Bienaym\'e's equality (272S) is already enough
+to show that if $\sequencen{X'_n}$ is an independent uniformly bounded
+sequence of random variables with zero expectation, then
+$\|\bover1{n+1}(X_0+\ldots+X_n)\|_p\to 0$ for $p=2$, and therefore
+for every $p<\infty$.
+
+The proofs of 273H, 273I and 273Na all involve
+`truncation';  the expression of a random variable $X$ as the sum of a
+bounded random variable and a tail.   This is one of the most powerful
+techniques in the subject, and will appear again in \S276 and (in a rather
+different way) in \S274.
+In 273Na I used a slightly different formulation of the method, solely
+because it matched the definition of `uniformly integrable' more
+closely.
+}%end of notes
+
+\discrpage
+
+

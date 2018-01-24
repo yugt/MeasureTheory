@@ -1,0 +1,1321 @@
+\frfilename{mt313.tex}
+\versiondate{8.6.11}
+\copyrightdate{1995}
+
+\def\chaptername{Boolean algebras}
+\def\sectionname{Order-continuous homomorphisms}
+
+\newsection{313}
+
+Because a Boolean algebra has a natural partial order\cmmnt{ (311H)},
+we have corresponding notions of upper bounds, lower bounds, suprema and
+infima.   These are particularly important in the Boolean algebras
+arising in
+measure theory, and the infinitary operations `$\sup$' and `$\inf$'
+require rather more care than the basic binary operations `$\Bcup$',
+`$\Bcap$', because intuitions from elementary set theory are sometimes
+misleading.   I therefore take a section to work through the most
+important properties of these operations, together with the
+homomorphisms which preserve them.
+
+\leader{313A}{Relative complementation:  Proposition} Let $\frak A$ be a
+Boolean algebra, $e$ a member of $\frak A$, and $A$ a non-empty subset
+of $\frak A$.
+
+(a) If $\sup A$ is defined in $\frak A$, then $\inf\{e\Bsetminus a:a\in
+A\}$ is defined and equal to $e\setminus\sup A$.
+
+(b) If $\inf A$ is defined in $\frak A$, then $\sup\{e\Bsetminus a:a\in
+A\}$ is defined and equal to $e\setminus\inf A$.
+
+\proof{{\bf (a)} Writing $a_0$ for $\sup A$, we have $e\Bsetminus
+a_0\Bsubseteq e\Bsetminus a$ for every $a\in A$, so $e\Bsetminus a_0$ is
+a lower bound for $C=\{e\Bsetminus a:a\in A\}$.   Now suppose that $c$
+is any lower
+bound for $C$.   Then (because $A$ is not empty) $c\Bsubseteq e$, and
+
+\Centerline{$a=(a\Bsetminus e)\Bcup(e\Bsetminus(e\Bsetminus a))
+\Bsubseteq (a_0\Bsetminus e)\Bcup(e\Bsetminus c)$}
+
+\noindent for every $a\in A$.   Consequently
+$a_0\Bsubseteq(a_0\Bsetminus e)\Bcup(e\Bsetminus c)$ is disjoint from
+$c$
+and
+
+\Centerline{$c=c\Bcap e\Bsubseteq e\Bsetminus a_0$.}
+
+\noindent Accordingly $e\Bsetminus a_0$ is the greatest lower bound of
+$C$,
+as claimed.
+
+\medskip
+
+{\bf (b)} This time set $a_0=\inf A$, $C=\{e\Bsetminus a:a\in A\}$.   As
+before, $e\Bsetminus a_0$ is surely an upper bound for $C$.   If $c$ is
+any upper bound for $C$, then
+
+\Centerline{$e\Bsetminus c\Bsubseteq e\Bsetminus(e\Bsetminus a)
+=e\Bcap a\Bsubseteq a$}
+
+\noindent for every $a\in A$, so $e\Bsetminus c\Bsubseteq a_0$ and
+$e\Bsetminus a_0\Bsubseteq c$.   As $c$ is arbitrary, $e\Bsetminus a_0$
+is indeed the least upper bound of $C$.
+}%end of proof of 313A
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} In the arguments above I repeatedly encourage
+you to treat $\Bcap$, $\Bcup$, $\Bsetminus$, $\Bsubseteq$ as if they
+were the corresponding operations and relation of basic set theory.
+This is perfectly safe so long as we take care that every manipulation
+so justified has only finitely many elements of the Boolean algebra in
+hand at once.
+}
+
+\leader{313B}{General distributive laws:  Proposition} Let $\frak A$ be
+a Boolean algebra.
+
+(a) If $e\in\frak A$ and $A\subseteq\frak A$ is a non-empty set such
+that $\sup A$ is defined in $\frak A$, then $\sup\{e\Bcap a:a\in A\}$ is
+defined and equal to $e\Bcap\sup A$.
+
+(b) If $e\in\frak A$ and $A\subseteq\frak A$ is a non-empty set such
+that $\inf A$ is defined in $\frak A$, then $\inf\{e\Bcup a:a\in A\}$ is
+defined and equal to $e\Bcup\inf A$.
+
+(c) Suppose that $A$, $B\subseteq\frak A$ are non-empty and $\sup A$,
+$\sup B$ are
+defined in $\frak A$.   Then $\sup\{a\Bcap b:a\in A,\,b\in B\}$ is
+defined and is equal to $\sup A\Bcap\sup B$.
+
+(d) Suppose that $A$, $B\subseteq\frak A$ are non-empty and $\inf A$,
+$\inf B$ are
+defined in $\frak A$.   Then $\inf\{a\Bcup b:a\in A,\,b\in B\}$ is
+defined and is equal to $\inf A\Bcup\inf B$.
+
+\proof{{\bf (a)} Set
+
+\Centerline{$B=\{e\Bsetminus a:a\in A\}$,\quad $C=\{e\Bsetminus b:b\in
+B\}=\{e\Bcap a:a\in A\}$.    }
+
+\noindent Using 313A, we have
+
+\Centerline{$\inf B=e\Bsetminus\sup A$,
+\quad$\sup C=e\Bsetminus\inf B=e\Bcap\sup A$,}
+
+\noindent as required.
+
+\medskip
+
+{\bf (b)} Set $a_0=\inf A$, $B=\{e\Bcup a:a\in A\}$.   Then $e\Bcup
+a_0\Bsubseteq e\Bcup a$ for every $a\in A$, so $e\Bcup a_0$ is a lower
+bound for $B$.   If $c$ is any lower bound for $B$, then $c\Bsetminus
+e\Bsubseteq a$ for every $a\in A$, so $c\Bsetminus e\Bsubseteq a_0$ and
+$c\Bsubseteq e\Bcup a_0$;  thus $e\Bcup a_0$ is the greatest lower bound
+for $B$, as claimed.
+
+\wheader{313B}{6}{2}{2}{30pt}
+
+{\bf (c)} By (a), we have
+
+\Centerline{$a\Bcap\sup B=\sup_{b\in B}a\Bcap b$}
+
+\noindent for every $a\in A$, so
+
+\Centerline{$\sup_{a\in A,b\in B}a\Bcap b
+=\sup_{a\in A}(a\Bcap\sup B)=\sup A\Bcap\sup B$,}
+
+\noindent using (a) again.
+
+\medskip
+
+{\bf (d)} Similarly, using (b) twice,
+
+\Centerline{$\inf_{a\in A,b\in B}a\Bcup b
+=\inf_{a\in A}(a\Bcup\inf B)=\inf A\Bcup\inf B$.}
+}%end of proof of 313B
+
+\leader{313C}{}\cmmnt{ As always, it is worth developing a
+representation of the concepts of $\sup$ and $\inf$ in terms of Stone
+spaces.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $\frak A$ be a Boolean algebra, and $Z$
+its Stone space;  for $a\in\frak A$ write $\widehat a$ for the
+corresponding open-and-closed subset of $Z$.
+
+(a) If $A\subseteq\frak A$ and $a_0\in\frak A$ then $a_0=\sup A$ in
+$\frak A$ iff $\widehat a_0=\overline{\bigcup_{a\in A}\widehat a}$.
+
+(b) If $A\subseteq\frak A$ is non-empty and $a_0\in\frak A$ then
+$a_0=\inf A$ in $\frak A$ iff
+$\widehat a_0=\interior\bigcap_{a\in A}\widehat a$.
+
+(c) If $A\subseteq\frak A$ is non-empty then $\inf A=0$ in $\frak A$ iff
+$\bigcap_{a\in A}\widehat a$ is nowhere dense in $Z$.
+
+\proof{{\bf (a)} For any $b\in\frak A$,
+
+$$\eqalignno{b\text{ is an upper bound for }A
+&\iff\widehat a\subseteq\widehat b\text{ for every }a\in A\cr
+&\iff\bigcup_{a\in A}\widehat a\subseteq\widehat b
+\iff\overline{\bigcup_{a\in A}\widehat a}\subseteq\widehat b\cr}$$
+
+\noindent because $\widehat b$ is certainly closed in $Z$.   It follows
+at once that if $\widehat a_0$ is actually equal to
+$\overline{\bigcup_{a\in A}\widehat a}$ then $a_0$ must be the least
+upper bound of $A$ in $\frak A$.   On the other hand, if $a_0=\sup A$,
+then $\overline{\bigcup_{a\in A}\widehat a}\subseteq\widehat a_0$.
+\Quer\ If $\widehat a_0\ne\overline{\bigcup_{a\in A}\widehat a}$,
+then $\widehat a_0\setminus\overline{\bigcup_{a\in A}\widehat a}$ is a
+non-empty open set in $Z$, so includes $\widehat b$ for some non-zero
+$b\in\frak A$;  now
+$\widehat a\subseteq\widehat a_0\setminus\widehat b$, so
+$a\Bsubseteq a_0\Bsetminus b$ for
+every $a\in A$, and $a_0\Bsetminus b$ is an upper bound for $A$ strictly
+less than $a_0$.\ \BanG\  Thus $\widehat a_0$ must be exactly
+$\overline{\bigcup_{a\in A}\widehat a}$.
+
+\medskip
+
+{\bf (b)} Take complements:  setting $a_1=1\Bsetminus a_0$, we have
+
+$$\eqalignno{a_0=\inf A
+&\iff a_1=\sup_{a\in A}1\Bsetminus a\cr
+\noalign{\noindent (by 313A)}
+&\iff\widehat a_1=\overline{\bigcup_{a\in A}Z\setminus\widehat a}\cr
+&\iff\widehat a_0
+  =Z\setminus\overline{\bigcup_{a\in A}Z\setminus\widehat a}
+=\interior\bigcap_{a\in A}\widehat a.\cr}$$
+
+\medskip
+
+{\bf (c)} Since $\bigcap_{a\in A}\widehat a$ is surely a closed set, it
+is nowhere dense iff it has empty interior, that is, iff $0=\inf A$.
+}%end of proof of 313C
+
+\leader{313D}{}\cmmnt{ I started the section with the results above
+because they are easily stated and of great importance.   But I must now
+turn to some new definitions, and I think it may help to clarify the
+ideas involved if I give them in their own natural context, even though
+this is far more general than we have any immediate need for here.
+
+\medskip
+
+\noindent}{\bf Definitions} Let $P$ be a partially ordered set and $C$ a
+subset of $P$.
+
+\spheader 313Da $C$ is {\bf order-closed} if $\sup A\in C$ whenever $A$ is a
+non-empty upwards-directed subset of $C$ such that $\sup A$ is defined
+in $P$, and
+$\inf A\in C$ whenever $A$ is a non-empty downwards-directed subset of
+$C$ such that $\inf A$ is defined in $P$.
+
+\spheader 313Db $C$ is {\bf sequentially order-closed} if
+$\sup_{n\in\Bbb N}p_n\in C$ whenever $\sequencen{p_n}$ is a
+non-decreasing sequence in $C$ such
+that $\sup_{n\in\Bbb N}p_n$ is defined in $P$, and
+$\inf_{n\in\Bbb N}p_n\in C$ whenever $\sequencen{p_n}$ is a
+non-increasing sequence in
+$C$ such that $\inf_{n\in\Bbb N}p_n$ is defined in $P$.
+
+\cmmnt{
+\medskip
+
+\noindent{\bf Remark} I hope it is obvious that an order-closed set is
+sequentially order-closed.
+}
+
+\leader{313E}{Order-closed subalgebras and ideals}\cmmnt{ Of course,
+in the very special cases of a subalgebra or ideal
+of a Boolean algebra, the concepts `order-closed' and
+`sequentially order-closed' have expressions simpler than those in 313D.
+I spell them out.
+
+\medskip
+
+}{\bf (a)} Let $\frak B$ be a subalgebra of a Boolean algebra $\frak A$.
+
+\medskip
+
+\quad{\bf (i)} The following are equiveridical:
+
+\qquad($\alpha$) $\frak B$ is order-closed in $\frak A$;
+
+\qquad ($\beta$) $\sup B\in\frak B$ whenever $B\subseteq\frak B$ and
+$\sup B$ is defined in $\frak A$;
+
+\qquad ($\beta'$) $\inf B\in\frak B$ whenever $B\subseteq\frak B$ and
+$\inf B$ is defined in $\frak A$;
+
+\qquad($\gamma$) $\sup B\in\frak B$ whenever
+$B\subseteq\frak B$ is non-empty and upwards-directed and $\sup B$ is
+defined in $\frak A$;
+
+\qquad($\gamma'$) $\inf B\in\frak B$ whenever $B\subseteq\frak B$ is
+non-empty
+and downwards-directed and $\inf B$ is defined in $\frak A$.
+
+\prooflet{\Prf\ Of course ($\beta)\Rightarrow(\gamma$).   If ($\gamma$)
+is true and $B\subseteq\frak B$ is any set with a supremum in
+$\frak A$, then $B'=\{0\}\cup\{b_0\Bcup\ldots\Bcup b_n:b_0,\ldots,b_n\in
+B\}$ is a non-empty upwards-directed set with the same upper bounds as
+$B$, so $\sup B=\sup B'\in \frak B$.   Thus ($\gamma)\Rightarrow(\beta$)
+and ($\beta$), ($\gamma$) are equiveridical.   Next, if ($\beta$) is
+true
+and $B\subseteq\frak B$ is a set with an infimum in $\frak A$, then
+$B'=\{1\Bsetminus b:b\in\frak B\}\subseteq\frak B$ and $\sup
+B'=1\Bsetminus\inf B$ is defined, so $\sup B'$ and $\inf B$ belong to
+$\frak B$ .   Thus ($\beta)\Rightarrow(\beta'$).   In the same way,
+($\gamma')\iff(\beta')\Rightarrow(\beta$) and ($\beta$), ($\beta'$),
+($\gamma$), $(\gamma'$) are all equiveridical.   But since we also have
+($\alpha)\iff(\gamma)\&(\gamma')$, $(\alpha)$ is equiveridical with the
+others.\ \Qed}
+
+\cmmnt{Replacing the sets $B$ above by sequences, the same arguments
+provide conditions for $\frak B$ to be sequentially order-closed, as
+follows.}
+
+\medskip
+
+\quad{\bf (ii)} The following are equiveridical:
+
+\qquad($\alpha$) $\frak B$ is sequentially order-closed in $\frak A$;
+
+\qquad($\beta$) $\sup_{n\in\Bbb N}b_n\in\frak B$ whenever
+$\sequencen{b_n}$ is a sequence in $\frak B$ and $\sup_{n\in\Bbb N}b_n$
+is defined in $\frak A$;
+
+\qquad($\beta'$) $\inf_{n\in\Bbb N}b_n\in\frak B$ whenever
+$\sequencen{b_n}$
+is a sequence in $\frak B$ and $\inf_{n\in\Bbb N}b_n$ is defined in
+$\frak A$;
+
+\qquad ($\gamma$) $\sup_{n\in\Bbb N}b_n\in\frak B$ whenever
+$\sequencen{b_n}$ is a non-decreasing sequence in $\frak B$ and
+$\sup_{n\in\Bbb N}b_n$ is defined in $\frak A$;
+
+\qquad ($\gamma'$)
+$\inf_{n\in\Bbb N}b_n\in\frak B$ whenever $\sequencen{b_n}$ is a
+non-increasing sequence in $\frak B$ and $\inf_{n\in\Bbb N}b_n$ is
+defined in $\frak A$.
+
+\spheader 313Eb Now suppose that $I$ is an ideal of $\frak A$.
+Then\cmmnt{ if $A\subseteq I$ is non-empty all lower bounds of $A$
+necessarily belong to $I$;  so that}
+
+\inset{$I$ is order-closed iff $\sup A\in I$ whenever $A\subseteq I$ is
+non-empty, upwards-directed and has a supremum in $\frak A$;}
+
+\inset{$I$ is sequentially order-closed iff $\sup_{n\in\Bbb N}a_n\in I$
+whenever $\sequencen{a_n}$ is a non-decreasing sequence in $I$ with a
+supremum in $\frak A$.}
+
+\cmmnt{\noindent Moreover, because $I$ is closed under $\Bcup$,}
+
+\inset{$I$ is order-closed iff $\sup A\in I$ whenever $A\subseteq I$ has
+a supremum in $\frak A$;}
+
+\inset{$I$ is sequentially order-closed iff $\sup_{n\in\Bbb N}a_n\in I$
+whenever $\sequencen{a_n}$ is a sequence in $I$ with a
+supremum in $\frak A$.}
+
+\medskip
+
+{\bf (c)}\cmmnt{ If $\frak A=\Cal PX$ is a power set, then a
+sequentially order-closed subalgebra of $\frak A$ is just a
+$\sigma$-algebra of sets,
+while a sequentially order-closed ideal of $\frak A$ is a what I have
+called a $\sigma$-ideal of sets (112Db).   If $\frak A$ is itself a
+$\sigma$-algebra of sets, then a sequentially order-closed subalgebra of
+$\frak A$ is a `$\sigma$-subalgebra' in the sense of 233A.
+
+Accordingly} I will normally use the phrases {\bf $\sigma$-subalgebra},
+{\bf $\sigma$-ideal} for sequentially order-closed subalgebras and
+ideals of Boolean algebras.
+
+\leader{313F}{Order-closures and generated sets (a)}\cmmnt{ It is an
+immediate consequence of the definitions that
+
+}(i) \dvro{If}{if} $\Cal S$ is any non-empty family of subalgebras of a
+Boolean algebra $\frak A$, then $\bigcap\Cal S$ is a subalgebra of
+$\frak A$;
+
+(ii) if $\Cal F$ is any non-empty family of order-closed subsets of a
+partially ordered set $P$, then $\bigcap\Cal F$ is an order-closed
+subset of $P$;
+
+(iii) if $\Cal F$ is any non-empty family of sequentially order-closed
+subsets of a partially ordered set $P$, then $\bigcap\Cal F$ is a
+sequentially order-closed subset of $P$.
+
+\spheader 313Fb Consequently, given any Boolean algebra $\frak A$ and a
+subset $B$ of $\frak A$, we have a smallest subalgebra $\frak B$ of
+$\frak A$ including $B$, being the intersection of all the subalgebras
+of $\frak A$ which include $B$;
+a smallest $\sigma$-subalgebra $\frak B_{\sigma}$ of $\frak A$ including
+$B$, being the intersection of all the $\sigma$-subalgebras of $\frak A$
+which include $B$;
+and a smallest order-closed subalgebra $\frak B_{\tau}$ of $\frak A$
+including $B$, being the intersection of all the order-closed
+subalgebras of $\frak A$ which include $B$.
+We call $\frak B$, $\frak B_{\sigma}$ and $\frak B_{\tau}$ the
+subalgebra, $\sigma$-subalgebra and order-closed subalgebra {\bf
+generated} by $B$.   \cmmnt{(I will return to this in 331E.)}
+
+\spheader 313Fc If $\frak A$ is a Boolean algebra and $\frak B$ any
+subalgebra
+of $\frak A$, then the smallest order-closed subset $\overline{\frak B}$
+of $\frak A$ which includes $\frak B$ is again a subalgebra of $\frak A$
+(so is the order-closed subalgebra of $\frak A$ generated by $\frak B$).
+\prooflet{\Prf\ (i) $0\in\frak B\subseteq\overline{\frak B}$.
+(ii) The set $\{b:1\Bsetminus b\in\overline{\frak B}\}$
+is order-closed (use 313A) and includes $\frak B$, so includes
+$\overline{\frak B}$;  thus $1\Bsetminus b\in\overline{\frak B}$ for
+every $b\in\overline{\frak B}$.   (iii) If $c\in\frak B$, the set
+$\{b:b\Bcup c\in\overline{\frak B}\}$ is order-closed (use 313Bb) and
+includes $\frak B$, so includes $\overline{\frak B}$;  thus
+$b\Bcup c\in\overline{\frak B}$ whenever $b\in\overline{\frak B}$ and
+$c\in\frak B$.  (iv) If $c\in\overline{\frak B}$, the set
+$\{b:b\Bcup c\in\overline{\frak B}\}$ is order-closed and includes
+$\frak B$ (by (iii)), so includes $\overline{\frak B}$;  thus
+$b\Bcup c\in\overline{\frak B}$ whenever $b$, $c\in\overline{\frak B}$.
+(v) By 312B(ii), $\overline{\frak B}$ is a subalgebra of
+$\frak A$.\ \Qed}%end of prooflet
+
+\leader{313G}{}\cmmnt{ This is a convenient moment at which to spell
+out an abstract version of the Monotone Class Theorem (136B).
+
+\medskip
+
+\noindent}{\bf Lemma} Let $\frak A$ be a Boolean algebra.
+
+(a) Suppose that $1\in I\subseteq A\subseteq\frak A$ and that
+
+\Centerline{$a\Bcap b\in I$ for all $a$, $b\in I$,}
+
+\Centerline{$b\Bsetminus a\in A$ whenever $a$, $b\in A$ and
+$a\Bsubseteq b$.}
+
+\noindent Then $A$ includes the subalgebra of $\frak A$ generated by
+$I$.
+
+(b) If moreover $\sup_{n\in\Bbb N}a_n\in A$ for every non-decreasing
+sequence $\sequencen{a_n}$ in $A$ with a supremum in $\frak A$, then $A$
+includes the $\sigma$-subalgebra of $\frak A$ generated by $I$.
+
+(c) And if $\sup C\in A$ whenever $C\subseteq A$ is an upwards-directed
+set with a supremum in $\frak A$, then $A$ includes the order-closed
+subalgebra of $\frak A$ generated by $I$.
+
+\proof{{\bf (a)(i)} Let $\frak P$ be the family of all sets $J$ such
+that $I\subseteq J\subseteq A$ and $a\Bcap b\in J$ for all $a$, $b\in J$.
+Then $I\in\frak P$ and if $\frak Q\subseteq\frak P$ is upwards-directed
+and not empty, $\bigcup\frak Q\in\frak P$.   By Zorn's Lemma, $\frak P$
+has a maximal element $\frak B$.
+
+\medskip
+
+\quad{\bf (ii)} Now
+
+\Centerline{$\frak B=\{c:c\in\frak A,\,c\Bcap b\in A$ for every
+$b\in\frak B\}$.}
+
+\noindent\Prf\ If $c\in\frak B$, then of course $c\Bcap b\in\frak
+B\subseteq A$ for every $b\in\frak B$, because $\frak B\in\frak P$.   If
+$c\in\frak A\setminus\frak B$, consider
+
+\Centerline{$J=\frak B\cup\{c\Bcap b:b\in\frak B\}$.}
+
+\noindent Then $c=c\Bcap 1\in J$ so $J$ properly includes $\frak B$ and
+cannot belong to $\frak P$.   On the other hand, if $b_1$, $b_2\in\frak
+B$,
+
+\Centerline{$b_1\Bcap b_2\in\frak B\subseteq J$,
+\quad $(c\Bcap b_1)\Bcap b_2=b_1\Bcap(c\Bcap b_2)
+=(c\Bcap b_1)\Bcap(c\Bcap b_2)=c\Bcap(b_1\Bcap b_2)\in J$,}
+
+\noindent so $c_1\Bcap c_2\in J$ for all $c_1$, $c_2\in J$;  and of
+course $I\subseteq\frak B\subseteq J$.   So $J$ cannot be a subset of
+$A$, and there must be a $b\in\frak B$ such that
+$c\Bcap b\notin A$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} Consequently $c\Bsetminus b\in\frak B$ whenever $b$,
+$c\in\frak B$ and $b\Bsubseteq c$.   \Prf\ If $a\in\frak B$, then
+$b\Bcap a$, $c\Bcap a\in\frak B\subseteq A$ and
+$b\Bcap a\Bsubseteq c\Bcap a$, so
+
+\Centerline{$(c\Bsetminus b)\Bcap a
+=(c\Bcap a)\Bsetminus(b\Bcap a)\in A$}
+
+\noindent by the hypothesis on $A$.   By (ii),
+$c\setminus b\in\frak B$.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} It follows that $\frak B$ is a subalgebra of $\frak A$.
+\Prf\ If $b\in\frak B$, then
+
+\Centerline{$b\Bsubseteq 1\in I\subseteq\frak B$,}
+
+\noindent so $1\Bsetminus b\in\frak B$.   If $a$, $b\in\frak B$, then
+
+\Centerline{$a\Bcup b=1\Bsetminus((1\Bsetminus a)\Bcap(1\Bsetminus
+b))\in\frak B$.}
+
+\noindent $0=1\Bsetminus 1\in\frak B$, so that the conditions of
+312B(ii) are satisfied.\ \Qed
+
+Now the subalgebra of $\frak A$ generated by $I$ is included in
+$\frak B$ and therefore in $A$, as required.
+
+\medskip
+
+{\bf (b)} Now suppose that $\sup_{n\in\Bbb N}a_n$ belongs to $A$
+whenever $\sequencen{a_n}$ is a non-decreasing sequence in $A$ with a
+supremum in $\frak A$.   Then $\frak B$, as defined in part (a) of the
+proof, is a $\sigma$-subalgebra of $\frak A$.   \Prf\ Let
+$\sequencen{b_n}$ be a non-decreasing sequence in $\frak B$ with a
+supremum $c$ in $\frak A$.   Then for any $b\in\frak B$,
+$\sequencen{b_n\Bcap b}$ is a non-decreasing sequence in $A$ with a
+supremum $c\Bcap b$ in $\frak A$ (313Ba).   So $c\Bcap b\in A$.   As $b$
+is arbitrary, $c\in\frak B$, by the criterion in (a-ii) above.   As
+$\sequencen{b_n}$ is arbitrary, $\frak B$ is a $\sigma$-subalgebra, by
+313Ea.\ \Qed
+
+Accordingly the $\sigma$-subalgebra of $\frak A$ generated by $I$ is
+included in $\frak B$ and therefore in $\frak A$.
+
+\medskip
+
+{\bf (c)} Finally, if $\sup C\in A$ whenever $C$ is a non-empty
+upwards-directed subset of $A$ with a least upper bound in $\frak A$,
+$\frak B$ is order-closed.
+\Prf\ Let $C\subseteq\frak B$ be a non-empty upwards-directed set with a
+supremum $c$ in $\frak A$.   Then for any $b\in\frak B$,
+$\{c\Bcap b:c\in C\}$ is a non-empty upwards-directed set in $A$ with
+supremum
+$c\Bcap b$ in $\frak A$.   So $c\Bcap b\in A$.   As $b$ is arbitrary,
+$c\in\frak B$.   As $C$ is arbitrary, $\frak B$ is order-closed in
+$\frak A$ (313Ea(i-$\alpha$)).\ \Qed
+
+Accordingly the order-closed subalgebra of $\frak A$ generated by $I$ is
+included in $\frak B$ and therefore in $\frak A$.
+
+}%end of proof of 313G
+
+
+\leader{313H}{Definitions}\cmmnt{ It is worth distinguishing various
+types of
+supremum- and infimum-preserving function.   Once again, I do this in
+almost the widest possible context.}   Let $P$ and $Q$ be two
+partially ordered sets, and $\phi:P\to Q$ an {\bf order-preserving}
+function,
+that is, a function such that $\phi(p)\le\phi(q)$ in $Q$ whenever
+$p\le q$ in $P$.
+
+\spheader 313Ha I say that $\phi$ is {\bf order-continuous} if (i)
+$\phi(\sup A)=\sup_{p\in A}\phi(p)$ whenever $A$ is a
+non-empty upwards-directed subset of $P$ and $\sup A$ is defined in $P$
+(ii) $\phi(\inf A)=\inf_{p\in A}\phi(p)$ whenever $A$ is a
+non-empty downwards-directed subset of $P$ and $\inf A$ is defined in
+$P$.
+
+\spheader 313Hb I say that $\phi$ is {\bf sequentially order-continuous} or
+{\bf $\sigma$-order-continuous} if (i)
+$\phi(p)=\sup_{n\in\Bbb N}\phi(p_n)$ whenever $\sequencen{p_n}$ is a
+non-decreasing sequence in $P$ and $p=\sup_{n\in\Bbb N}p_n$ in $P$ (ii)
+$\phi(p)=\inf_{n\in\Bbb N}\phi(p_n)$ whenever $\sequencen{p_n}$ is a
+non-increasing sequence in $P$ and $p=\inf_{n\in\Bbb N}p_n$ in $P$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} You may feel that one of the equivalent
+formulations in Proposition 313Lb gives a clearer idea of what is really
+being demanded of $\phi$ in the ordinary cases we shall be looking at.
+}
+
+\leader{313I}{Proposition} Let $P$, $Q$ and $R$ be partially ordered
+sets, and $\phi:P\to Q$, $\psi:Q\to R$ order-preserving functions.
+
+(a) $\psi\phi:P\to R$ is order-preserving.
+
+(b) If $\phi$ and $\psi$ are order-continuous, so is $\psi\phi$.
+
+(c) If $\phi$ and $\psi$ are sequentially order-continuous, so is
+$\psi\phi$.
+
+(d) $\phi$ is order-continuous iff $\phi^{-1}[B]$ is order-closed for
+every order-closed $B\subseteq Q$.
+
+\proof{{\bf (a)-(c)} I think the only point that needs remarking is that
+if $A\subseteq P$ is upwards-directed, then $\phi[A]\subseteq Q$ is
+upwards-directed, because $\phi$ is
+order-preserving.   So if $\sup A$
+is defined in $P$ and $\phi$, $\psi$ are order-continuous, we shall have
+
+\Centerline{$\psi(\phi(\sup A))=\psi(\sup\phi[A])=\sup\psi[\phi[A]]$.}
+
+\medskip
+
+{\bf (d)(i)} Suppose that $\phi$ is order-continuous and that
+$B\subseteq Q$ is order-closed.   Let $A\subseteq\phi^{-1}[B]$ be a
+non-empty upwards-directed set with supremum $p\in P$.   Then
+$\phi[A]\subseteq B$ is non-empty and upwards-directed, because $\phi$
+is order-preserving, and $\phi(p)=\sup\phi[A]$ because $\phi$ is
+order-continuous.   Because $B$ is order-closed, $\phi(p)\in B$ and
+$p\in\phi^{-1}[B]$.   Similarly, if $A\subseteq\phi^{-1}[B]$ is
+non-empty and downwards-directed, and $\inf A$ is defined in $P$, then
+$\phi(\inf A)=\inf\phi[A]\in B$ and $\inf A\in\phi^{-1}[B]$.   Thus
+$\phi^{-1}[B]$ is order-closed;  as $B$ is arbitrary, $\phi$ satisfies
+the condition.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $\phi^{-1}[B]$ is order-closed in $P$
+whenever $B\subseteq Q$ is order-closed in $Q$.   Let $A\subseteq P$ be
+a non-empty upwards-directed subset of $P$ with a supremum $p\in P$.
+Then $\phi(p)$ is an upper bound of $\phi[A]$.   Let $q$ be any upper
+bound of $\phi[A]$ in $Q$.   Consider $B=\{r:r\le q\}$;  then
+$B\subseteq Q$ is upwards-directed and
+order-closed, so $\phi^{-1}[B]$ is order-closed.   Also
+$A\subseteq\phi^{-1}[B]$ is non-empty and upwards-directed and has
+supremum $p$, so $p\in\phi^{-1}[B]$ and $\phi(p)\in B$, that is,
+$\phi(p)\le q$.   As $q$ is arbitrary, $\phi(p)=\sup\phi[A]$.
+Similarly, $\phi(\inf A)=\inf\phi[A]$ whenever $A\subseteq P$ is
+non-empty, downwards-directed and has an infimum in $P$;  so $\phi$ is
+order-continuous.
+}%end of proof of 313I
+
+\leader{313J}{}\cmmnt{ It is useful to introduce here the
+following notion.
+
+\medskip
+
+\noindent}{\bf Definition} Let $\frak A$ be a Boolean algebra.   A set
+$D\subseteq\frak A$ is {\bf order-dense} if for every non-zero
+$a\in\frak A$ there is a non-zero $d\in D$ such that $d\Bsubseteq a$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Many authors use the simple word `dense' where
+I have insisted on the phrase `order-dense'.   In the work of this
+treatise it will be important to distinguish clearly between this
+concept of `dense' set and the topological concept (2A3U).
+}
+
+\leader{313K}{Lemma} If $\frak A$ is a Boolean algebra and
+$D\subseteq\frak A$ is order-dense, then for any $a\in\frak A$ there is
+a disjoint $C\subseteq D$ such that $\sup C=a$;  in particular,
+$a=\sup\{d:d\in D,\,d\Bsubseteq a\}$ and there is a
+partition of unity $C\subseteq D$.
+
+\proof{ Set $D_a=\{d:d\in D,\,d\Bsubseteq a\}$.  Applying Zorn's lemma
+to the family $\Cal C$ of disjoint sets
+$C\subseteq D_a$, we have a maximal $C\in\Cal C$.   Now if $b\in\frak A$
+and $b\notBsupseteq a$, there is a $d\in D$ such that $0\ne d\Bsubseteq
+a\Bsetminus b$.
+Because $C$ is maximal, there must be a $c\in C$ such that
+$c\Bcap d\ne 0$, so that $c\notBsubseteq b$.   Turning this round, any
+upper bound of $C$ must include $a$, so that $a=\sup C$.   It follows at
+once that $a=\sup D_a$.
+
+Taking $a=1$ we obtain a partition of unity included in $D$.
+}%end of proof of 313K
+
+\vleader{72pt}{313L}{Proposition} Let $\frak A$ and $\frak B$ be Boolean
+algebras and $\pi:\frak A\to\frak B$ a Boolean homomorphism.
+
+(a) $\pi$ is order-preserving.
+
+(b) The following are equiveridical:
+
+\quad (i) $\pi$ is order-continuous;
+
+\quad (ii) whenever $A\subseteq\frak A$ is non-empty and
+downwards-directed and $\inf A=0$ in $\frak A$, then $\inf\pi[A]=0$ in
+$\frak B$;
+
+\quad (iii) whenever $A\subseteq\frak A$ is non-empty and
+upwards-directed and $\sup A=1$ in $\frak A$, then $\sup\pi[A]=1$ in
+$\frak B$;
+
+\quad (iv) whenever $A\subseteq\frak A$ and $\sup A$ is defined in
+$\frak A$, then $\pi(\sup A)=\sup\pi[A]$ in $\frak B$;
+
+\quad (v) whenever $A\subseteq\frak A$ and $\inf A$ is defined in
+$\frak A$, then $\pi(\inf A)=\inf\pi[A]$ in $\frak B$;
+
+\quad (vi) whenever $C\subseteq\frak A$ is a partition of unity, then
+$\pi[C]$ is a partition of unity in $\frak B$.
+
+(c) The following are equiveridical:
+
+\quad (i) $\pi$ is sequentially order-continuous;
+
+\quad (ii) whenever $\sequencen{a_n}$ is a non-increasing sequence in
+$\frak A$ and $\inf_{n\in\Bbb N}a_n=0$ in $\frak A$, then
+$\inf_{n\in\Bbb N}\pi a_n=0$ in $\frak B$;
+
+\quad (iii) whenever $A\subseteq\frak A$ is countable and $\sup A$ is
+defined in $\frak A$, then $\pi(\sup A)=\sup\pi[A]$ in $\frak B$;
+
+\quad (iv) whenever $A\subseteq\frak A$ is countable and $\inf A$ is
+defined in $\frak A$, then $\pi(\inf A)=\inf\pi[A]$ in $\frak B$;
+
+\quad (v) whenever $C\subseteq\frak A$ is a countable partition of
+unity, then $\pi[C]$ is a partition of unity in $\frak B$.
+
+(d)\dvAnew{2010} If $\pi$ is bijective, it is order-continuous.
+
+\proof{{\bf (a)} This is 312I.
+
+\medskip
+
+{\bf (b)(i)$\Rightarrow$(ii)} is trivial, as $\pi 0=0$.
+
+\medskip
+
+\quad{\bf (ii)$\Rightarrow$(iv)} Assume (ii), and let $A$ be any subset
+of $\frak A$ such that $c=\sup A$ is defined in $\frak A$.   If
+$A=\emptyset$, then $c=0$ and $\sup\pi[A]=0=\pi c$.   Otherwise, set
+
+\Centerline{$A'=\{a_0\Bcup\ldots\Bcup a_n:a_0,\ldots,a_n\in A\}$,
+\quad$C=\{c\setminus a:a\in A'\}$.}
+
+\noindent Then $A'$ is upwards-directed and has the same upper bounds as
+$A$, so $c=\sup A'$ and $0=\inf C$, by 313Aa.   Also $C$ is
+downwards-directed, so $\inf\pi[C]=0$ in $\frak B$.   But now
+
+\Centerline{$\pi[C]=\{\pi c\Bsetminus\pi a:a\in A'\}
+=\{\pi c\Bsetminus b:b\in\pi[A']\}$,}
+
+\Centerline{$\pi[A']
+=\{\pi a_0\Bcup\ldots\Bcup\pi a_n:a_0,\ldots,a_n\in A\}
+=\{b_0\Bcup\ldots\Bcup b_n:b_0,\ldots,b_n\in \pi[A]\}$,}
+
+\noindent because $\pi$ is a Boolean homomorphism.   Again using 313Aa
+and the fact that $b\Bsubseteq\pi c$ for every $b\in\pi[A']$, we get
+
+\Centerline{$\pi c=\sup\pi[A']=\sup\pi[A]$.}
+
+\noindent As $A$ is arbitrary, (iv) is satisfied.
+
+\medskip
+
+\quad{\bf (iv)$\Rightarrow$(v)} If $A\subseteq\frak A$ and $c=\inf A$
+is defined in $\frak A$, then $1\Bsetminus c=\sup_{a\in A}1\Bsetminus
+a$, so
+
+\Centerline{$\pi c=1\Bsetminus\pi(1\Bsetminus c)
+=1\Bsetminus\sup_{a\in A}\pi(1\Bsetminus a)
+=\inf_{a\in A}1\Bsetminus\pi(1\Bsetminus a)
+=\inf_{a\in A}\pi a$.}
+
+\medskip
+
+\quad{\bf (v)$\Rightarrow$(ii)} is trivial, because $\pi 0=0$.
+
+\medskip
+
+\quad{\bf (iv)$\Rightarrow$(iii)} is similarly trivial.
+
+\medskip
+
+\quad{\bf (iii)$\Rightarrow$(vi)} Assume (iii), and let $C$ be a
+partition of unity in $\frak A$.   Then
+$C'=\{c_0\Bcup\ldots\Bcup c_n:c_0,\ldots,c_n\in C\}$ is upwards-directed
+and has supremum $1$, so $\sup\pi[C']=1$.   But (because $\pi$ is a
+Boolean homomorphism) $\pi[C]$ and $\pi[C']$ have the same upper bounds,
+so $\sup\pi[C]=1$, as required.
+
+\medskip
+
+\quad{\bf (vi)$\Rightarrow$(ii)} Assume (vi), and let
+$A\subseteq\frak A$ be a set with infimum $0$.   Set
+
+\Centerline{$D=\{d:d\in\frak A,\,\exists\,a\in A,\,d\Bcap a=0\}$.}
+
+\noindent Then $D$ is order-dense in $\frak A$.   \Prf\ If $e\in\frak
+A\Bsetminus\{0\}$, then there is an $a\in A$ such that $e\notBsubseteq
+a$, so that $e\Bsetminus a$ is a non-zero member of $D$ included in
+$e$.\ \QeD\  Consequently there is a partition of unity $C\subseteq D$,
+by 313K.   But now if $b$ is any lower bound for
+$\pi[A]$ in $\frak B$, we must have $b\Bcap\pi d=0$ for every $d\in D$,
+so $\pi c\Bsubseteq 1\Bsetminus b$ for every $c\in C$, and
+$1\Bsetminus b=1$, $b=0$.   Thus $\inf\pi[A]=0$.   As $A$ is arbitrary,
+(ii) is satisfied.
+
+\medskip
+
+\quad{\bf (v)\&(iv)$\Rightarrow$(i)} is trivial.
+
+\medskip
+
+{\bf (c)} We can use nearly identical arguments, remembering only to
+interpolate the word `countable' from time to time.   I spell out
+the new version of (ii)$\Rightarrow$(iv), even though it requires no
+more than an adaptation of the language.  Assume (ii), and let $A$ be a
+countable subset of $\frak A$ with a supremum $c\in\frak A$.   If
+$A=\emptyset$, then $c=0$ so $\pi c=0=\sup\pi[A]$.   Otherwise, let
+$\sequencen{a_n}$ be a sequence running over $A$;  set
+$a'_n=a_0\Bcup\ldots\Bcup a_n$ and $c_n=c\Bsetminus a'_n$ for each $n$.
+Then $\sequencen{a'_n}$ is non-decreasing, with supremum $c$, and
+$\sequencen{c_n}$ is non-increasing, with infimum $0$;  so
+$\inf_{n\in\Bbb N}\pi c_n=0$ and
+
+\Centerline{$\sup_{n\in\Bbb N}\pi a_n
+=\sup_{n\in\Bbb N}\pi a'_n=\pi c$.}
+
+For (v)$\Rightarrow$(ii), however, a different idea is involved.
+Assume (v), and suppose that $\sequencen{a_n}$ is a non-increasing
+sequence in $\frak A$ with infimum $0$.   Set $c_0=1\Bsetminus a_0$,
+$c_n=a_{n-1}\Bsetminus a_{n}$ for $n\ge 1$;  then $C=\{c_n:n\in\Bbb N\}$
+is a partition of unity in $\frak A$ (because if $c\Bcap c_n=0$ for
+every $n$, then $c\Bsubseteq a_n$ for every $n$), so $\pi[C]$ is a
+partition of unity in $\frak B$.
+Now if $b\Bsubseteq\pi a_n$ for every $n$,
+$b\Bcap\pi c_n$ for every $n$, so $b=0$;  thus $\inf_{n\in\Bbb
+N}\pi a_n=0$.   As $\sequencen{a_n}$ is arbitrary, (ii) is satisfied.
+
+\medskip
+
+{\bf (d)} Suppose that $A\subseteq\frak A$ is non-empty and
+$\inf A=0$ in $\frak A$.   Let $b\in\frak B$ be a
+lower bound for $\pi[A]$.   Because $\pi$ is surjective,
+there is a $c\in\frak A$ such that
+$\pi c=b$.   If $a\in A$, then
+
+\Centerline{$\pi(a\Bcap c)
+=\pi a\Bcap\pi c=\pi a\Bcap b=b=\pi c$;}
+
+\noindent because $\pi$ is injective, $a\Bcap c=c$ and
+$c\Bsubseteq a$.   As $a$ is arbitrary, $c$ is a lower bound of $A$
+and must be $0$;  so $b_0=\pi 0=0$.   As $b$ is arbitrary, $\inf\pi[A]=0$;
+as $A$ is arbitrary, $\pi$ is order-continuous, by (b)(ii)$\Rightarrow$(i).
+}%end of proof of 313L
+
+\leader{313M}{}\cmmnt{ The following result is perfectly elementary,
+but it will save a moment later on to have it spelt out.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $\frak A$ and $\frak B$ be Boolean algebras
+and $\pi:\frak A\to\frak B$ an order-continuous Boolean homomorphism.
+
+(a) If $\frak D$ is an order-closed subalgebra of $\frak B$, then
+$\pi^{-1}[\frak D]$ is an order-closed subalgebra of $\frak A$.
+
+(b) If $\frak C$ is the order-closed subalgebra of $\frak A$ generated
+by $C\subseteq\frak A$, then the order-closed subalgebra $\frak D$ of
+$\frak B$ generated by $\pi[C]$ includes $\pi[\frak C]$.
+
+(c) Now suppose that $\pi$ is surjective and that $C\subseteq\frak A$ is
+such that the order-closed subalgebra of $\frak A$ generated by $C$ is
+$\frak A$ itself.   Then the order-closed subalgebra of $\frak B$
+generated by $\pi[C]$ is $\frak B$.
+
+\proof{{\bf (a)} Setting $\frak C=\pi^{-1}[\frak D]$:  if $a$,
+$a'\in\frak C$ then $\pi(a\Bcap b)=\pi a\Bcap\pi b$,
+$\pi(a\Bsymmdiff a')=\pi a\Bsymmdiff\pi a'\in\frak D$, so $a\Bcap a'$,
+$a\Bsymmdiff a'\in\frak C$;  $\pi 1=1\in\frak D$ so $1\in\frak C$;
+thus $\frak C$ is a subalgebra of
+$\frak A$.  By 313Id, $\frak C$ is order-closed.
+
+\medskip
+
+{\bf (b)} By (a), $\pi^{-1}[\frak D]$ is an order-closed subalgebra of
+$\frak A$.   It includes $C$ so includes $\frak C$, and $\pi[\frak
+C]\subseteq \frak D$.
+
+\medskip
+
+{\bf (c)} In the language of (b), we have $\frak C=\frak A$, so $\frak
+D$
+must be $\frak B$.
+}%end of proof of 313M.
+
+\leader{313N}{Definition} The phrase {\bf regular embedding} is
+sometimes
+used to mean an injective order-continuous Boolean homomorphism;  a
+subalgebra $\frak B$ of a Boolean algebra $\frak A$ is said to be
+{\bf regularly embedded} in $\frak A$ if the identity map from $\frak B$
+to $\frak A$ is order-continuous\cmmnt{, that is, if whenever
+$b\in\frak B$ is the supremum (in
+$\frak B$) of $B\subseteq\frak B$, then $b$ is also the supremum in
+$\frak A$ of $B$;  and similarly for infima}.   \cmmnt{One important
+case is when $\frak B$ is order-dense (313O);  another is in 314Ga
+below}.
+
+It will be useful to be able to say `$\frak B$ can be regularly embedded
+in $\frak A$' to mean that there is an injective order-continuous
+Boolean homomorphism from $\frak B$ to $\frak A$;  that is, that
+$\frak B$ is isomorphic to a regularly embedded subalgebra of $\frak A$.
+In this form it is obvious\cmmnt{ from 313Ib} that if $\frak C$ can be
+regularly embedded in $\frak B$, and $\frak B$ can be regularly embedded
+in $\frak A$, then $\frak C$ can be regularly embedded in $\frak A$.
+
+\leader{313O}{Proposition} Let $\frak A$ be a Boolean algebra and
+$\frak B$ an order-dense subalgebra of $\frak A$.   Then $\frak B$ is
+regularly
+embedded in $\frak A$.   In particular, if $B\subseteq\frak B$ and
+$c\in\frak B$ then $c=\sup B$ in $\frak B$ iff $c=\sup B$ in $\frak A$.
+
+\proof{ I have to show that the identity homomorphism
+$\iota:\frak B\to\frak A$ is order-continuous.   \Quer\ Suppose, if
+possible,
+otherwise.   By 313L(b-ii), there is a non-empty set $B\subseteq\frak B$
+such that $\inf B=0$ in $\frak B$ but $B=\iota[B]$ has a non-zero lower
+bound $a\in\frak A$.   In this case, however (because $\frak B$ is
+order-dense) there is a non-zero $d\in\frak B$ with $d\Bsubseteq a$, in
+which case $d$ is a non-zero lower bound for $B$ in $\frak B$.\ \Bang
+}%end of proof of 313O
+
+\leader{313P}{}\cmmnt{ The most important use of these ideas to us
+concerns quotient algebras (313Q);  I approach by means of a
+superficially more general result.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $\frak A$ and $\frak B$ be Boolean algebras
+and $\pi:\frak A\to\frak B$ a Boolean homomorphism
+with kernel $I$.
+
+(a)(i) If $\pi$ is order-continuous then $I$ is order-closed.
+
+\quad(ii) If $\pi[\frak A]$ is regularly embedded in $\frak B$ and $I$
+is order-closed then $\pi$ is order-continuous.
+
+(b)(i) If $\pi$ is sequentially order-continuous then $I$ is
+a $\sigma$-ideal.
+
+\quad(ii) If $\pi[\frak A]$ is regularly embedded in $\frak B$ and $I$
+is a $\sigma$-ideal then $\pi$ is sequentially order-continuous.
+
+\proof{{\bf (a)(i)} If $A\subseteq I$ is upwards-directed and
+has a supremum $c\in \frak A$, then $\pi c=\sup\pi[A]=0$, so $c\in I$.
+As remarked in 313Eb, this shows that $I$ is order-closed.
+
+\medskip
+
+\quad{\bf (ii)} We are supposing that the identity map from
+$\pi[\frak A]$
+to $\frak B$ is order-continuous, so it will be enough to show that
+$\pi$ is order-continuous when regarded as a map from $\frak A$ to
+$\pi[\frak A]$.   Suppose that $A\subseteq\frak A$ is non-empty and
+downwards-directed and that $\inf A=0$.   \Quer\ Suppose, if possible,
+that $0$ is not the greatest lower bound of $\pi[A]$ in $\pi[\frak A]$.
+Then there is a
+$c\in\frak A$ such that $0\ne\pi c\Bsubseteq\pi a$ for every $a\in A$.
+Now
+
+\Centerline{$\pi(c\Bsetminus a)=\pi c\Bsetminus\pi a=0$}
+
+\noindent for every $a\in A$, so $c\Bsetminus a\in I$ for every
+$a\in A$.   The set $C=\{c\Bsetminus a:a\in A\}$ is upwards-directed and
+has supremum $c$;  because $I$ is order-closed, $c=\sup C\in I$, and
+$\pi c=0$, contradicting the specification of $c$.\ \BanG\  Thus
+$\inf\pi[A]=0$ in either $\pi[\frak A]$ or $\frak B$.   As $A$ is
+arbitrary, $\pi$ is order-continuous, by the criterion (ii) of 313Lb.
+
+\medskip
+
+{\bf (b)} Argue in the same way, replacing each set $A$ by a sequence.
+}%end of proof of 313P
+
+\leader{313Q}{Corollary} Let $\frak A$ be a Boolean algebra and $I$ an
+ideal of $\frak A$;  write $\pi$ for the canonical map from $\frak A$ to
+$\frak A/I$.
+
+(a) $\pi$ is order-continuous iff $I$ is order-closed.
+
+(b) $\pi$ is sequentially order-continuous iff $I$ is a $\sigma$-ideal.
+
+\proof{ $\pi[\frak A]=\frak A/I$ is surely regularly embedded in
+$\frak A/I$.
+}%end of proof of 313Q
+
+\leader{313R}{}\cmmnt{ For order-continuous homomorphisms, at least,
+there is an elegant characterization in terms of Stone spaces.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $\frak A$ and $\frak B$ be Boolean
+algebras, and $\pi:\frak A\to\frak B$ a Boolean homomorphism.   Let $Z$
+and $W$ be their Stone spaces, and $\phi:W\to Z$ the corresponding
+continuous function\cmmnt{ (312Q)}.   Then the following are
+equiveridical:
+
+(i) $\pi$ is order-continuous;
+
+(ii) $\phi^{-1}[M]$ is nowhere dense in $W$ for every nowhere dense set
+$M\subseteq Z$;
+
+(iii) $\interior\phi[H]\ne\emptyset$ for every non-empty open set
+$H\subseteq W$.
+
+\proof{{\bf (a)(i)$\Rightarrow$(iii)} Suppose that $\pi$ is
+order-continuous.   \Quer\ Suppose, if possible, that $H\subseteq W$ is
+a non-empty open set and $\interior\phi[H]=\emptyset$.   Let
+$b\in\frak B\setminus\{0\}$ be such that $\widehat{b}\subseteq H$.
+Then $\phi[\widehat{b}]$ has empty interior;  but also it is a closed
+set, so its complement is dense.   Set
+$A=\{a:a\in\frak A,\,\widehat{a}\cap\phi[\widehat{b}]=\emptyset\}$.
+Then $\bigcup_{a\in A}\widehat{a}=Z\setminus\phi[\widehat{b}]$ is a
+dense open set, so $\sup A=1$ in $\frak A$ (313Ca).   Because $\pi$ is
+order-continuous, $\sup\pi[A]=1$ in $\frak B$ (313L(b-iii)), and there
+is an $a\in A$ such that $\pi a\Bcap b\ne 0$.   But this means that
+$\widehat{b}\cap\phi^{-1}[\widehat{a}]\ne\emptyset$ and
+$\phi[\widehat{b}]\cap\widehat{a}\ne\emptyset$, contrary to the
+definition of $A$.\ \Bang
+
+Thus there is no such set $H$, and (iii) is true.
+
+\medskip
+
+{\bf (b)(iii)$\Rightarrow$(ii)} Now assume (iii).   If $M\subseteq Z$ is
+nowhere dense, set $N=\phi^{-1}[\overline{M}]$, so that $N\subseteq W$
+is a closed set.   If $H=\interior N$, then
+$\interior\phi[H]\subseteq\interior\overline{M}=\emptyset$, so (iii)
+tells us that $H$ is empty;  thus $N$ and $\phi^{-1}[M]$ are nowhere
+dense, as required by (ii).
+
+\medskip
+
+{\bf (c)(ii)$\Rightarrow$(i)} Assume (ii), and let $A\subseteq\frak A$
+be a non-empty set such that $\inf A=0$ in $\frak A$.   Then
+$M=\bigcap_{a\in A}\widehat{a}$ has empty interior in $Z$ (313Cb), so
+(being closed) is nowhere dense, and $\phi^{-1}[M]$ also is nowhere
+dense.   If $b\in\frak B\setminus\{0\}$, then
+
+\Centerline{$\widehat{b}\not\subseteq\phi^{-1}[M]
+=\bigcap_{a\in A}\phi^{-1}[\widehat{a}]
+=\bigcap_{a\in A}\widehat{\pi a}$,}
+
+\noindent so $b$ is not a lower bound for $\pi[A]$.   This shows that
+$\inf\pi[A]=0$ in $\frak B$.   As $A$ is arbitrary, $\pi$ is
+order-continuous (313L(b-ii)).
+}%end of proof of 313R
+
+\leader{313S}{Upper envelopes}\dvAformerly{3{}14V}
+{\bf (a)} Let $\frak A$ be a Boolean algebra,
+and $\frak C$ a subalgebra of $\frak A$.   For $a\in\frak A$, the
+{\bf upper envelope} of $a$ in $\frak C$\cmmnt{,
+or {\bf projection} of $a$ on $\frak C$,} is
+
+\Centerline{$\upr(a,\frak C)=\inf\{c:c\in\frak C,\,a\Bsubseteq c\}$}
+
+\noindent if the infimum is defined in $\frak C$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Note that the infima here are to be taken in
+the subalgebra, so that $\upr(a,\frak C)$ will always belong to $\frak C$.
+In the great majority of elementary applications, $\frak C$ will be
+order-closed in $\frak A$, so that we do not need to distinguish between
+infima in $\frak C$ and infima in $\frak A$.   But see 313Yh.}
+
+\spheader 313Sb If $A\subseteq\frak A$ is such that $\upr(a,\frak C)$ is
+defined for every $a\in A$, $a_0=\sup A$ is defined in $\frak A$ and
+$c_0=\sup_{a\in A}\upr(a,\frak C)$ is defined in $\frak C$, then
+$c_0=\upr(a_0,\frak C)$.   \prooflet{\Prf\ If $c\in\frak C$ then
+
+$$\eqalign{c_0\Bsubseteq c
+&\iff\upr(a,\frak C)\Bsubseteq c\text{ for every }a\in A\cr
+&\iff a\Bsubseteq c\text{ for every }a\in A
+\iff a_0\Bsubseteq c.\text{ \Qed}\cr}$$
+
+\noindent}\cmmnt{In particular, }
+$\upr(a\Bcup a',\frak C)=\upr(a,\frak C)\Bcup\upr(a',\frak C)$ whenever
+the right-hand side is defined.
+
+\spheader 313Sc If $a\in\frak A$ is such that $\upr(a,\frak C)$ is
+defined, then $\upr(a\Bcap c,\frak C)=c\Bcap\upr(a,\frak C)$ for every
+$c\in\frak C$.   \prooflet{\Prf\ For $c'\in\frak C$,
+
+$$\eqalign{a\Bcap c\Bsubseteq c'
+&\iff a\Bsubseteq c'\Bcup(1\Bsetminus c)\cr
+&\iff \upr(a,\frak C)\Bsubseteq c'\Bcup(1\Bsetminus c)
+\iff c\Bcap\upr(a,\frak C)\Bsubseteq c'.\text{ \Qed}\cr}$$
+}%end of prooflet
+
+\exercises{
+\leader{313X}{Basic exercises (a)} Use 313C to give alternative proofs
+of 313A and 313B.
+%313C
+
+\spheader 313Xb Let $P$ be a partially ordered set.   Show
+that there is a topology on $P$ for which the closed sets are just the
+order-closed sets.
+%313D
+
+\spheader 313Xc  Let $P$ be a partially ordered set, $Q\subseteq P$ an
+order-closed set, and $R$ a subset of $Q$ which is order-closed in $Q$
+when $Q$ is given the partial ordering induced by that of $P$.
+Show that $R$ is order-closed in $P$.
+%313D
+
+\sqheader 313Xd  Let $\frak A$ be a Boolean algebra.   Suppose that
+$1\in I\subseteq\frak A$ and that $a\Bcap b\in I$ for all $a$, $b\in I$.
+(i) Let $\frak B$ be the intersection of all those subsets $A$ of
+$\frak A$ such that $I\subseteq A$ and $b\Bsetminus a\in A$ whenever
+$a$, $b\in A$ and $a\Bsubseteq b$.   Show that $\frak B$ is a subalgebra
+of $\frak A$. (ii) Let $\frak B_{\sigma}$ be the intersection of all
+those subsets
+$A$ of $\frak A$ such that $I\subseteq A$, $b\Bsetminus a\in A$ whenever
+$a$, $b\in A$ and $a\Bsubseteq b$ and $\sup_{n\in\Bbb N}b_n\in A$
+whenever $\sequencen{b_n}$ is a non-decreasing sequence in $A$ with a
+supremum in $\frak A$.   Show that $\frak B_{\sigma}$ is a
+$\sigma$-subalgebra of $\frak A$.
+(iii) Let $\frak B_{\tau}$ be the intersection of all those subsets $A$
+of $\frak A$ such that $I\subseteq A$, $b\Bsetminus a\in A$ whenever
+$a$, $b\in A$ and $a\Bsubseteq b$ and $\sup B\in A$ whenever $B$ is a
+non-empty upwards-directed subset of $A$ with a supremum in $\frak A$.
+Show that $\frak B_{\tau}$ is an order-closed subalgebra of $\frak A$.
+(iv) Hence give a proof of 313G not relying on Zorn's Lemma or any other
+use of the axiom of choice.
+%313G
+
+\spheader 313Xe Let $\frak A$ be a Boolean algebra, and
+$\frak B$ a subalgebra of $\frak A$.   Let $\frak B_{\sigma}$ be the
+smallest sequentially order-closed subset of $\frak A$ including
+$\frak B$.   Show that $\frak B_{\sigma}$ is a subalgebra of $\frak A$.
+%313E
+
+\sqheader 313Xf Let $X$ be a set, and $\Cal A$ a subset of $\Cal PX$.
+Show that $\Cal A$ is an order-closed subalgebra of $\Cal PX$ iff it is
+of the form $\{f^{-1}[F]:F\subseteq Y\}$ for some set $Y$ and function
+$f:X\to Y$.
+%313G
+
+\spheader 313Xg Let $P$ and $Q$ be partially ordered sets, and
+$\phi:P\to Q$ an order-preserving function.   Show that $\phi$ is
+sequentially order-continuous iff $\phi^{-1}[C]$ is sequentially
+order-closed in $\frak A$ for every sequentially order-closed
+$C\subseteq\frak B$.
+%313I
+
+\spheader 313Xh For partially ordered sets $P$ and $Q$, let us
+call a function $\phi:P\to Q$ {\bf monotonic} if it is {\it either}
+order-preserving {\it or} order-reversing.   State and prove definitions
+and results corresponding to 313H, 313I and 313Xg for general monotonic
+functions.
+%313I, 313Xg
+
+\sqheader 313Xi Let $\frak A$ be a Boolean algebra.   Show that
+the operations $(a,b)\mapsto a\Bcup b$ and $(a,b)\mapsto a\Bcap b$ are
+order-continuous operations from $\frak A\times\frak A$ to $\frak A$,
+if we give $\frak A\times\frak A$ the product partial order, saying that
+$(a,b)\le (a',b')$ iff $a\Bsubseteq a'$ and $b\Bsubseteq b'$.
+%313H
+
+\spheader 313Xj Let $\frak A$ be a Boolean algebra.   Show that if a
+subalgebra of $\frak A$ is order-dense then it is dense in the topology
+of 313Xb.
+%313J
+
+\sqheader 313Xk Let $\frak A$ be a Boolean algebra and
+$A\subseteq\frak A$ any disjoint set.   Show that there is a partition
+of unity in $\frak A$ including $A$.
+%313K
+
+\sqheader 313Xl Let $\frak A$, $\frak B$ be Boolean algebras and
+$\pi_1$, $\pi_2:\frak A\to\frak B$ two order-continuous Boolean
+homomorphisms.   Show that $\{a:\pi_1a=\pi_2a\}$ is an order-closed
+subalgebra of $\frak A$.
+%313L
+
+\spheader 313Xm Let $\frak A$ and $\frak B$ be Boolean algebras and
+$\pi_1$, $\pi_2:\frak A\to\frak B$ two Boolean homomorphisms.   Suppose
+that $\pi_1$ and $\pi_2$ agree on some order-dense subset of $\frak A$,
+and that one of them is order-continuous.   Show that they are equal.
+\Hint{if $\pi_1$ is order-continuous, $\pi_2a\Bsupseteq\pi_1a$ for every
+$a$.}
+%313L
+
+\spheader 313Xn Let $\frak A$ and $\frak B$ be Boolean algebras,
+$\frak A_0$ an order-dense subalgebra of $\frak A$, and
+$\pi:\frak A\to\frak B$ a Boolean homomorphism.   Show that $\pi$ is
+order-continuous iff $\pi\restrp\frak A_0:\frak A_0\to\frak B$ is
+order-continuous.
+%313L
+
+\spheader 313Xo Let $\frak A$ be a Boolean algebra and
+$\pi:\frak A\to\frak A$ a Boolean homomorphism with fixed-point
+subalgebra $\frak C$ (312K).   (i) Show that if $\pi$ is sequentially
+order-continuous then $\frak C$ is a $\sigma$-subalgebra of $\frak A$.
+(ii) Show that if $\pi$ is order-continuous then $\frak C$ is
+order-closed.
+%313M
+
+\sqheader 313Xp Let $\frak A$ be a Boolean algebra.   For
+$A\subseteq\frak A$ set $A^{\perp}=\{b:a\Bcap b=0\Forall a\in A\}$.
+(i) Show that
+$A^{\perp}$ is an order-closed ideal of $\frak A$.   (ii) Show that a
+set $A\subseteq\frak A$ is
+an order-closed ideal of $\frak A$ iff $A=A^{\perp\perp}$.
+(iii) Show that if $I\subseteq\frak A$ is an order-closed ideal then
+$\{a^{\ssbullet}:a\in I^{\perp}\}$ is an order-dense ideal in the
+quotient algebra $\frak A/I$.
+%313Q
+
+\spheader 313Xq Let $\frak A$ and $\frak B$ be Boolean algebras,
+with Stone spaces $Z$ and $W$;  let $\pi:\frak A\to\frak B$ be a Boolean
+homomorphism, and $\phi:W\to Z$ the corresponding continuous function.
+Show that the following are equiveridical:  (i)
+$\pi$ is order-continuous;
+(ii) $\interior\phi^{-1}[F]=\phi^{-1}[\interior F]$ for every closed
+$F\subseteq Z$ (iii) $\overline{\phi^{-1}[G]}=\phi^{-1}[\overline{G}]$
+for every open $G\subseteq Z$.
+%313R
+
+\spheader 313Xr Let $\frak A$ and $\frak B$ be Boolean algebras,
+$\pi:\frak A\to\frak B$ an injective
+Boolean homomorphism and $\frak C$ a Boolean
+subalgebra of $\frak A$.   Suppose that $a\in\frak A$ is such that
+$c=\upr(a,\frak C)$ is defined.   Show that
+$\upr(\pi a,\pi[\frak C])$ is defined and equal to $\pi c$.
+%313S  \Latereditions
+
+\leader{313Y}{Further exercises (a)} Prove 313A-313C for general Boolean
+rings.
+%313C
+
+\spheader 313Yb Let $P$ be any partially ordered set, and let
+$\frak T$ be the topology of 313Xb.  (i) Show that a sequence
+$\sequencen{p_n}$ in $P$ is $\frak T$-convergent to $p\in P$ iff every
+subsequence of $\sequencen{p_n}$ has a monotonic sub-subsequence with
+supremum or infimum equal to $p$.   (ii) Show that a subset $A$ of $P$
+is sequentially order-closed, in the sense of 313Db, iff the
+$\frak T$-limit of any $\frak T$-convergent sequence in $A$ belongs to
+$A$.   (iii) Suppose that $A$ is an upwards-directed subset of $P$ with
+supremum $p_0\in P$.   For $a\in A$ set $F_a=\{p:a\le p\in A\}$, and let
+$\Cal F$ be the filter on $P$ generated by $\{F_a:a\in A\}$.   Show that
+$\Cal F\to p_0$ for $\frak T$.   (iv) Show that if $Q$ is another
+partially ordered set, endowed with a topology $\frak S$ in the same
+way, then a monotonic function $\phi:P\to Q$ is order-continuous iff it
+is continuous for the topologies $\frak T$ and $\frak S$, and is
+sequentially order-continuous iff it is sequentially continuous for
+these topologies.
+%313Xb, 313D
+
+\spheader 313Yc Let $U$ be a Banach lattice (242G, 354Ab).   Show that
+its norm is order-continuous in the sense of 242Yg and 354Dc iff its
+restriction to
+$\{u:u\ge 0\}$ is order-continuous in the sense of 313Ha.
+%313H
+
+\spheader 313Yd\dvAnew{2010} Let $P$ and $Q$ be lattices, and $f:P\to Q$ a
+bijective lattice homomorphism.   Show that $f$ is order-continuous.
+%313L
+
+\spheader 313Ye Let $\frak A$ and $\frak B$ be Boolean algebras,
+with Stone spaces $Z$ and $W$, and $\pi:\frak A\to\frak B$ a Boolean
+homomorphism, with associated continuous function $\phi:W\to Z$.   Show
+that $\pi$ is sequentially order-continuous iff $\phi^{-1}[M]$ is
+nowhere dense for every nowhere dense zero set $M\subseteq Z$.
+%313R
+
+\spheader 313Yf Let $\frak A$ and $\frak B$ be Boolean algebras with
+Stone spaces $Z$ and $W$ respectively, $\pi:\frak A\to\frak B$ a Boolean
+homomorphism and $\phi:W\to Z$ the corresponding continuous function.
+Show that $\pi[\frak A]$ is order-dense in $\frak B$ iff $\phi$ is {\bf
+irreducible}, that is, $\phi[F]\ne\phi[W]$ for any proper closed subset
+$F$ of $W$.
+%313R
+
+\spheader 313Yg Let $\frak A$ and $\frak B$ be Boolean algebras with
+Stone spaces $Z$ and $W$ respectively, $\pi:\frak A\to\frak B$ a Boolean
+homomorphism and $\phi:W\to Z$ the corresponding continuous function.
+Show that the following are equiveridical: (i) $\pi$ is injective and
+order-continuous;  (ii) for $M\subseteq Z$, $M$ is nowhere dense iff
+$\phi^{-1}[M]$ is nowhere dense.
+%313R
+
+\spheader 313Yh Let $\frak A$ be a Boolean algebra and $\frak C$ a Boolean
+subalgebra of $\frak A$.
+Let $\Cal I$ be the set of those $a\in\frak A$ such that the
+upper envelope $\upr(a,\frak C)$ is zero.
+(i) Show that $\Cal I$ is an ideal in $\frak A$.
+(ii) Show that $\frak C$ is regularly embedded in $\frak A$ iff
+$\Cal I=\{0\}$.
+(iii) Let $\pi:\frak A\to\frak A/\Cal I$ be the canonical map.
+Show that $\pi\restrp\frak C$ is injective and order-continuous.
+%313S \Latereditions
+}%end of exercises
+
+\endnotes{
+\Notesheader{313} I give `elementary' proofs of 313A-313B because I
+believe that they help to exhibit the relevant aspects of the structure
+of Boolean algebras;  but various abbreviations are possible, notably if
+we allow ourselves to use the Stone representation (313Xa).   313A and
+313Ba-b can be expressed by saying that the Boolean operations $\Bcup$,
+$\Bcap$ and $\Bsetminus$ are (separately) order-continuous.   Of course,
+$\Bsetminus$ is order-reversing, rather than order-preserving, in the
+second variable;  but the natural symmetry in the concept of partial
+order means that the ideas behind 313H-313I can be applied equally well
+to order-reversing functions (313Xh).  In fact, $\Bcup$ and $\Bcap$ can
+be regarded as order-continuous functions on the product space (313Bc-d,
+313Xi).   Clearly 313Bc-d can be extended into forms valid for any
+finite sequence $A_0,\ldots,A_n$ of subsets of $\frak A$ in place of
+$A$, $B$.   But if we seek to go to infinitely many subsets of $\frak A$
+we find ourselves saying something new;  see 316G-316J below.
+
+Proposition 313C, and its companions 313R, 313Xq and 313Ye, are worth
+studying not only as a useful technique, but also in order to understand
+the difference between $\sup A$, where $A$ is a set in a Boolean
+algebra, and $\bigcup\Cal A$, where $\Cal A$ is a family of sets.
+Somehow $\sup A$ can be larger, and $\inf A$ smaller, than one's first
+intuition might suggest, corresponding to the fact that not every subset
+of the Stone space corresponds to an element of the Boolean algebra.
+
+I should like to use the words `order-closed' and
+`sequentially order-closed' to mean closed, or sequentially closed, for
+some more or less canonical topology.   The difficulty is that while a
+great many topologies can be defined from a partial order (one is
+described in 313Xb and 313Yb, and another in 367Yb and 393L),
+none of them has such pre-eminence that
+it can be called `the' order-topology.   Accordingly there is a degree
+of arbitrariness in the language I use here.   Nevertheless
+(sequentially)
+order-closed subalgebras and ideals are of such importance that they
+seem to deserve a concise denotation.   The same remarks apply to
+(sequential) order-continuity.   Concerning the term `order-dense' in
+313J, this has little to do with density in any topological
+sense, but the word `dense', at least, is established in this context.
+
+With all these definitions, there is a good deal of scope for possible
+interrelations.   The most important to us is 313Q, which will be used
+repeatedly (typically, with $\frak A$ an algebra of sets), but I think
+it is worth having the expanded version in 313P available.
+
+I take the opportunity to present an abstract form of an important lemma
+on $\sigma$-algebras generated by families closed under $\cap$ (136B,
+313Gb).   This time round I use the Zorn's Lemma argument in the text
+and suggest the alternative, `elementary' method in the exercises
+(313Xd).   The two methods are opposing extremes in the sense that the
+Zorn's Lemma argument looks for maximal subalgebras included in $A$
+(which are not unique, and have to be picked out using the axiom of
+choice) and the other approach seeks minimal subalgebras including $I$
+(which are uniquely defined, and can be described without the axiom of
+choice).
+
+Note that the concept of `order-closed algebra of sets' is not
+particularly useful;  there are too few order-closed subalgebras of
+$\Cal PX$ and they are of too simple a form (313Xf).   It is in abstract
+Boolean algebras that the idea becomes important.   In
+many of the most
+important partially ordered sets of measure theory, the sequentially
+order-closed sets are the same as the order-closed sets (see, for
+instance, 316Fb below), and most of the important order-closed
+subalgebras dealt with in this chapter can be thought of as
+$\sigma$-subalgebras which are order-closed because they happen to lie
+in the right kind of algebra.   
+
+}%end of notes
+
+\discrpage
+

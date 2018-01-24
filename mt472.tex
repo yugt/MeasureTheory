@@ -1,0 +1,769 @@
+\frfilename{mt472.tex}
+\versiondate{22.3.11}
+\copyrightdate{2000}
+
+\def\chaptername{Geometric measure theory}
+\def\sectionname{Besicovitch's Density Theorem}
+
+\newsection{472}
+
+The first step in the program of the next few sections
+is to set out some very remarkable properties of
+Euclidean space.   We find that in $\BbbR^r$, for geometric reasons
+(472A), we have versions of Vitali's theorem (472B-472C) and Lebesgue's
+Density Theorem (472D) for arbitrary Radon measures.   I add a version
+of the Hardy-Littlewood Maximal Theorem (472F).
+
+Throughout the section, $r\ge 1$ will be a fixed integer.   As usual, I
+write $B(x,\delta)$ for the closed ball with centre $x$ and radius
+$\delta$.   $\|\,\|$ will represent the Euclidean norm, and
+$x\dotproduct y$ the scalar product of $x$ and $y$, so that
+$x\dotproduct y=\sum_{i=1}^r\xi_i\eta_i$ if $x=(\xi_1,\ldots,\xi_r)$ and
+$y=(\eta_1,\ldots,\eta_r)$.
+
+\leader{472A}{Besicovitch's Covering Lemma} Suppose that $\epsilon>0$ is
+such that $(5^r+1)(1-\epsilon-\epsilon^2)^r>(5+\epsilon)^r$.   Let
+$x_0,\ldots,x_n\in\BbbR^r$, $\delta_0,\ldots,\delta_n>0$ be such that
+
+\Centerline{$\|x_i-x_j\|>\delta_i$,
+\quad$\delta_j\le(1+\epsilon)\delta_i$}
+
+\noindent whenever $i<j\le n$.   Then
+
+\Centerline{$\#(\{i:i\le n,\,\|x_i-x_n\|\le\delta_i+\delta_n\})
+\le 5^r$.}
+
+\proof{ Set $I=\{i:i\le n,\,\|x_i-x_n\|\le\delta_n+\delta_i\}$.
+
+\medskip
+
+{\bf (a)} It will simplify the formulae of the main argument if we
+suppose for the time being that $\delta_n=1$;  in this case
+$1\le(1+\epsilon)\delta_i$, so that $\delta_i\ge\Bover1{1+\epsilon}$
+for every $i\le n$, while we still have $\delta_i<\|x_i-x_n\|$ for every
+$i<n$, and $\|x_i-x_n\|\le 1+\delta_i$ for every $i\in I$.
+
+For $i\in I$, define $x'_i$ by saying that
+
+\inset{-- if $\|x_i-x_n\|\le 2+\epsilon$, $x_i'=x_i$;}
+
+\inset{-- if $\|x_i-x_n\|>2+\epsilon$, $x'_i$ is to be that point of the
+closed line segment from $x_n$ to $x_i$ which is at distance
+$2+\epsilon$ from $x_n$.}
+
+\medskip
+
+{\bf (b)} The point is that $\|x'_i-x'_j\|>1-\epsilon-\epsilon^2$
+whenever $i$, $j$ are distinct members of $I$.   \Prf\ We may suppose
+that $i<j$.
+
+\medskip
+
+\quad{\bf case 1} Suppose that $\|x_i-x_n\|\le 2+\epsilon$ and
+$\|x_j-x_n\|\le 2+\epsilon$.   In this case
+
+\Centerline{$\|x'_i-x'_j\|
+=\|x_i-x_j\|\ge\delta_i\ge\Bover1{1+\epsilon}\ge 1-\epsilon$.}
+
+\medskip
+
+\quad{\bf case 2} Suppose that $\|x_i-x_n\|\ge 2+\epsilon
+\ge\|x_j-x_n\|$.   In this case
+
+$$\eqalign{\|x'_i-x'_j\|
+&=\|x'_i-x_j\|
+\ge\|x_i-x_j\|-\|x_i-x'_i\|\cr
+&\ge\delta_i-\|x_i-x_n\|+2+\epsilon
+\ge\delta_i-\delta_i-1+2+\epsilon
+=1+\epsilon.\cr}$$
+
+\medskip
+
+\quad{\bf case 3} Suppose that $\|x_i-x_n\|\le 2+\epsilon
+\le\|x_j-x_n\|$.   Then
+
+$$\eqalignno{\|x'_i-x'_j\|
+&=\|x_i-x'_j\|
+\ge\|x_i-x_j\|-\|x_j-x'_j\|
+>\delta_i-\|x_j-x_n\|+2+\epsilon\cr
+&\ge\delta_i-\delta_j-1+2+\epsilon
+\ge\delta_i-\delta_i(1+\epsilon)+1+\epsilon
+\ge 1+\epsilon-\epsilon(2+\epsilon)\cr
+\noalign{\noindent (because $\delta_i<\|x_i-x_n\|\le 2+\epsilon$)}
+&=1-\epsilon-\epsilon^2.\cr}$$
+
+\medskip
+
+\quad{\bf case 4} Suppose that $2+\epsilon\le\|x_j-x_n\|
+\le\|x_i-x_n\|$. Let $y$ be the point on the line segment between $x_i$
+and $x_n$ which is the same distance from $x_n$ as $x_j$.   In this case
+
+\Centerline{$\|y-x_j\|
+\ge\|x_i-x_j\|-\|x_i-y\|
+\ge\delta_i-\|x_i-x_n\|+\|x_j-x_n\|
+\ge\|x_j-x_n\|-1$.}
+
+\noindent Because the triangles $(x_n,y,x_j)$ and $(x_n,x'_i,x'_j)$ are
+similar,
+
+\Centerline{$\|x'_i-x'_j\|=\Bover{2+\epsilon}{\|x_j-x_n\|}\|y-x_j\|
+\ge(2+\epsilon)\Bover{\|x_j-x_n\|-1}{\|x_j-x_n\|}\ge 1+\epsilon$}
+
+\noindent because $\|x_j-x_n\|\ge 2+\epsilon$.
+
+\medskip
+
+\quad{\bf case 5} Suppose that $2+\epsilon\le\|x_i-x_n\|\le\|x_j-x_n\|$.
+This time, let $y$ be the point on the line segment from $x_n$ to $x_j$
+which is the same distance from $x_n$ as $x_i$ is.   We now have
+
+$$\eqalign{\|y-x_i\|
+&\ge\|x_i-x_j\|-\|x_j-y\|
+>\delta_i-\|x_j-x_n\|+\|x_i-x_n\|\cr
+&\ge\delta_j-\epsilon\delta_i-(\delta_j+1)+\|x_i-x_n\|\cr
+&=\|x_i-x_n\|-1-\epsilon\delta_i
+\ge\|x_i-x_n\|(1-\epsilon)-1,\cr}$$
+
+\noindent so that
+
+$$\eqalign{\|x'_i-x'_j\|
+&=\Bover{2+\epsilon}{\|x_i-x_n\|}\|y-x_i\|
+>(2+\epsilon)\Bover{\|x_i-x_n\|(1-\epsilon)-1}{\|x_i-x_n\|}\cr
+&\ge(2+\epsilon)\Bover{(2+\epsilon)(1-\epsilon)-1}{2+\epsilon}
+=1-\epsilon-\epsilon^2.\cr}$$
+
+So we have the required inequality in all cases.\ \Qed
+
+\medskip
+
+{\bf (c)} Now consider the balls
+$B(x'_i,\bover{1-\epsilon-\epsilon^2}2)$ for $i\in I$.   These are
+disjoint, all have Lebesgue measure
+$2^{-r}\beta_r(1-\epsilon-\epsilon^2)^r$ where $\beta_r$ is the measure
+of the unit ball $B(\tbf{0},1)$, and are all included in the ball
+$B(x_n,2+\epsilon+\bover{1-\epsilon}2)$, which has measure
+$2^{-r}\beta_r(5+\epsilon)^r$.   So we must have
+
+\Centerline{$2^{-r}\beta_r(1-\epsilon-\epsilon^2)^r\#(I)
+\le 2^{-r}\beta_r(5+\epsilon)^r$.}
+
+\noindent But $\epsilon$ was declared to be so small that this implies
+that $\#(I)\le 5^r$, as claimed.
+
+\medskip
+
+{\bf (d)} This proves the lemma in the case $\delta_n=1$.   For the
+general case, replace each $x_i$ by $\delta_n^{-1}x_i$ and each
+$\delta_i$ by $\delta_i/\delta_n$;  the change of scale does not affect
+the hypotheses or the set $I$.
+}%end of proof of 472A
+
+\leader{472B}{Theorem} Let $A\subseteq\BbbR^r$ be a bounded set,
+and $\Cal I$ a family of non-trivial closed balls in $\BbbR^r$ such
+that every point of $A$ is the centre of a member of $\Cal I$.   Then
+there is a family $\langle\Cal I_k\rangle_{k<5^r}$ of countable
+subsets of $\Cal I$ such that each $\Cal I_k$ is disjoint and
+$\bigcup_{k<5^r}\Cal I_k$ covers $A$.
+
+\proof{{\bf (a)} For each $x\in A$ let $\delta_x>0$ be such that
+$B(x,\delta_x)\in\Cal I$.   If either $A$ is empty or $\sup_{x\in
+A}\delta_x=\infty$, the result is trivial.   (In the latter case, take
+$x\in A$ such that $\delta_x\ge\diam A$ and set
+$\Cal I_0=\{B(x,\delta_x)\}$, $\Cal I_k=\emptyset$ for $k>0$.)   So let us
+suppose henceforth that $\{\delta_x:x\in A\}$ is bounded in $\Bbb R$.
+In this case, $C=\bigcup_{x\in A}B(x,\delta_x)$ is bounded in $\Bbb R^r$.
+
+Fix $\epsilon>0$ such that
+$(5^r+1)(1-\epsilon-\epsilon^2)^r>(5+\epsilon)^r$.
+
+\medskip
+
+{\bf (b)} Choose inductively a sequence $\sequencen{B_n}$ in
+$\Cal I\cup\{\emptyset\}$ as follows.
+Given $\langle B_i\rangle_{i<n}$, then
+if $A\subseteq\bigcup_{i<n}B_i$ set $B_n=\emptyset$.   Otherwise, set
+$\alpha_n=\sup\{\delta_x:x\in A\setminus\bigcup_{i<n}B_i\}$, choose
+$x_n\in A\setminus\bigcup_{i<n}B_i$ such that
+$(1+\epsilon)\delta_{x_n}\ge\alpha_n$, set $B_n=B(x_n,\delta_{x_n})$ and
+continue.
+
+Now whenever $n\in\Bbb N$, $I_n=\{i:i<n,\,B_i\cap B_n\ne\emptyset\}$ has
+fewer than $5^r$ members.   \Prf\ We may suppose that $B_n\ne\emptyset$,
+in which case $B_i=B(x_i,\delta_{x_i})$ for every $i\le n$, and the
+$x_i$, $\delta_{x_i}$ are such that, whenever $i<j\le n$,
+
+\Centerline{$x_j\notin B_i$, i.e., $\|x_i-x_j\|>\delta_{x_i}$,}
+
+\Centerline{$\delta_{x_j}\le\alpha_i\le(1+\epsilon)\delta_{x_i}$.}
+
+\noindent But now 472A gives the result at once.
+\Qed
+
+\medskip
+
+{\bf (c)} We may therefore define a function
+$f:\Bbb N\to\{0,1,\ldots,5^r-1\}$ by setting
+
+\Centerline{$f(n)=\min\{k:0\le k<5^r,\,f(i)\ne k$ for every $i\in
+I_n\}$}
+
+\noindent for every $n\in\Bbb N$.   Set $\Cal I_k=\{B_i:i\in\Bbb
+N,\,f(i)=k,\,B_i\ne\emptyset\}$  for each $k<5^r$.   By the choice of
+$f$, $i\notin I_j$, so that $B_i\cap B_j=\emptyset$, whenever $i<j$ and
+$f(i)=f(j)$;  thus every $\Cal I_k$ is disjoint.   Since $B_i\subseteq
+C$ for every $i$, $\sum\{\mu B_i:f(i)=k\}\le\mu^*C$ for every $k<5^r$,
+and $\sum_{i=0}^{\infty}\mu B_i\le 5^r\mu^*C$ is finite.
+
+\medskip
+
+{\bf (d)} \Quer\ Suppose, if possible, that
+
+\Centerline{$A\not\subseteq\bigcup_{k<5^r}\bigcup\Cal
+I_k=\bigcup_{n\in\Bbb N}B_n$.}
+
+\noindent Take $x\in A\setminus\bigcup_{n\in\Bbb N}B_n$.   Then, first,
+$A\not\subseteq\bigcup_{i<n}B_i$ for every $n$, so that $\alpha_n$ is
+defined;  next, $\alpha_n\ge\delta_x$, so that
+$(1+\epsilon)\delta_{x_n}\ge\delta_x$ for every $n$.   But this means
+that $\mu B_n\ge\beta_r\bigl(\Bover{\delta_x}{1+\epsilon}\bigr)^r$
+for every $n$, and $\sum_{n=0}^{\infty}\mu B_n=\infty$;  which is
+impossible.\ \Bang
+
+\medskip
+
+{\bf (e)} Thus $A\subseteq\bigcup_{k<5^r}\bigcup\Cal I_k$, as required.
+}%end of proof of 472B
+
+\leader{472C}{Theorem} Let $\lambda$ be a Radon measure on
+$\BbbR^r$, $A$ a subset of $\BbbR^r$ and $\Cal I$ a family of
+non-trivial closed
+balls in $\BbbR^r$ such that every point of $A$ is the centre of
+arbitrarily small members of $\Cal I$.   Then
+
+(a) there is a countable disjoint $\Cal I_0\subseteq\Cal I$ such that
+$\lambda(A\setminus\bigcup\Cal I_0)=0$;
+
+(b) for every $\epsilon>0$ there is a countable
+$\Cal I_1\subseteq\Cal I$ such that $A\subseteq\bigcup\Cal I_1$ and
+$\sum_{B\in\Cal I_1}\lambda B\le\lambda^*A+\epsilon$.
+
+\proof{{\bf (a)(i)} The first step is to show that if $A'\subseteq A$ is
+bounded then there is a finite disjoint set $\Cal J\subseteq\Cal I$ such
+that $\lambda^*(A'\cap\bigcup\Cal J)\ge 6^{-r}\lambda^*A'$.   \Prf\ If
+$\lambda^*A'=0$ take $\Cal J=\emptyset$.   Otherwise, by 472B, there is
+a
+family $\langle\Cal J_k\rangle_{k<5^r}$ of disjoint countable subsets of
+$\Cal I$ such that $\bigcup_{k<5^r}\Cal J_k$ covers $A'$.   Accordingly
+
+\Centerline{$\lambda^*A'
+\le\sum_{k=0}^{5^r-1}\lambda^*(A'\cap\bigcup\Cal J_k)$}
+
+\noindent and there is some $k<5^r$ such that
+$\lambda^*(A'\cap\bigcup\Cal J_k)\ge 5^{-r}\lambda^*A'$.   Let
+$\sequence{i}{B_i}$ be a sequence running
+over $\Cal J_k$;  then
+
+\Centerline{$\lim_{n\to\infty}\lambda^*(A'\cap\bigcup_{i\le n}B_i)
+=\lambda^*(A'\cap\bigcup\Cal J_k)\ge 5^{-r}\lambda^*A'$,}
+
+\noindent so there is some $n\in\Bbb N$ such that
+$\lambda^*(A'\cap\bigcup_{i\le n}B_i)\ge 6^{-r}\lambda^*A'$, and we can
+take
+$\Cal J=\{B_i:i\le n\}$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Now choose $\sequencen{\Cal K_n}$ inductively, as
+follows.   Start by fixing on a sequence $\sequencen{m_n}$ running over
+$\Bbb N$ with cofinal repetitions.
+Take $\Cal K_0=\emptyset$.   Given that $\Cal K_n$ is a finite disjoint
+subset of $\Cal I$, set
+$\Cal I'=\{B:B\in\Cal I,\,B\cap\bigcup\Cal K_n=\emptyset\}$,
+$A_n=A\cap B(\tbf{0},m_n)\setminus\bigcup\Cal K_n$.
+Because every point of $A$ is the centre of arbitrarily small members of
+$\Cal I$, and $\bigcup\Cal K_n$ is closed, every member of $A_n$ is the
+centre of (arbitrarily small) members of $\Cal I'$, and (i) tells us
+that there is a finite disjoint set $\Cal J_n\subseteq\Cal I'$ such that
+$\lambda^*(A_n\cap\bigcup\Cal J_n)\ge 6^{-r}\lambda^*A_n$.   Set
+$\Cal K_{n+1}=\Cal K\cup\Cal J_n$, and continue.   At the end of the
+induction, set $\Cal I_0=\bigcup_{n\in\Bbb N}\Cal K_n$;  because
+$\sequencen{\Cal K_n}$ is non-decreasing and every $\Cal K_n$ is
+disjoint, $\Cal I_0$ is disjoint, and of course
+$\Cal I_0\subseteq\Cal I$.
+
+The effect of this construction is to ensure that
+
+$$\eqalignno{\lambda^*(A\cap B(\tbf{0},m_n)\setminus\bigcup\Cal K_{n+1})
+&=\lambda^*(A_n\setminus\bigcup\Cal J_n)
+=\lambda^*A_n-\lambda^*(A_n\cap\bigcup\Cal J_n)\cr
+\noalign{\noindent (because $\bigcup\Cal J_n$ is a closed set, therefore
+measured by $\lambda$)}
+&\le(1-6^{-r})\lambda^*A_n\cr
+&=(1-6^{-r})
+  \lambda^*(A\cap B(\tbf{0},m_n)\setminus\bigcup\Cal K_n)\cr}$$
+
+\noindent for every $n$.   So, for any $m\in\Bbb N$,
+
+\Centerline{$\lambda^*(A\cap B(\tbf{0},m)\setminus\bigcup\Cal K_n)
+\le\lambda^*(A\cap B(\tbf{0},m))
+  (1-6^{-r})^{\#(\{j:j<n,m_j=m\})}
+\to 0$}
+
+\noindent as $n\to\infty$, and
+$\lambda^*(A\cap B(\tbf{0},m)\setminus\bigcup\Cal I_0)=0$.   As $m$ is
+arbitrary, $\lambda^*(A\setminus\bigcup\Cal I_0)=0$, as required.
+
+\medskip
+
+{\bf (b)(i)} Let $E\supseteq A$ be such that $\lambda E=\lambda^*A$, and
+$H\supseteq E$ an open set such that
+$\lambda H\le\lambda E+\bover12\epsilon$
+(256Bb).   Set $\Cal I'=\{B:B\in\Cal I,\,B\subseteq H\}$.   Then every
+point of $A$ is the centre of arbitrarily small members of $\Cal I'$, so
+by (a) there is a disjoint family $\Cal I_0\subseteq\Cal I'$ such that
+$\lambda(A\setminus\bigcup\Cal I_0)=0$.   Of course
+
+\Centerline{$\sum_{B\in\Cal I_0}\lambda B
+=\lambda(\bigcup\Cal I_0)\le\lambda H\le\lambda^*A+\bover12\epsilon$.}
+
+\medskip
+
+\quad{\bf (ii)} For $m\in\Bbb N$ set
+$A_m=A\cap B(\tbf{0},m)\setminus\bigcup\Cal I_0$.   Then there is a
+$\Cal J_m\subseteq\Cal I$, covering $A_m$, such that
+$\sum_{B\in\Cal J_m}\lambda B\le 2^{-m-2}\epsilon$.   \Prf\  There is an
+open set $G\supseteq A_m$
+such that $\lambda G\le 5^{-r}2^{-m-2}\epsilon$.   Now
+$\Cal I''=\{B:B\in\Cal I,\,B\subseteq G\}$ covers $A_m$, so there is a
+family $\langle\Cal J_{mk}\rangle_{k<5^r}$ of disjoint countable
+subfamilies of
+$\Cal I''$ such that $\Cal J_m=\bigcup_{k<5^r}\Cal J_{mk}$ covers $A_m$.
+For each $k$,
+
+\Centerline{$\sum_{B\in\Cal J_{mk}}\lambda B=\lambda(\bigcup\Cal J_{mk})
+\le\lambda G$,}
+
+\noindent so
+
+\Centerline{$\sum_{B\in\Cal J_m}\lambda B\le 5^r\lambda G
+\le 2^{-m-2}\epsilon$.
+\Qed}
+
+\medskip
+
+\quad{\bf (iii)} Setting
+$\Cal I_1=\Cal I_0\cup\bigcup_{m\in\Bbb N}\Cal J_m$ we have a cover of
+$A$ by members of $\Cal I$, and
+
+$$\eqalign{\sum_{B\in\Cal I_1}\lambda B
+&\le\sum_{B\in\Cal I_0}\lambda B
+  +\sum_{m=0}^{\infty}\sum_{B\in\Cal J_m}\lambda B\cr
+&\le\lambda^*A+\Bover12\epsilon+\sum_{m=0}^{\infty}2^{-m-2}\epsilon
+=\lambda^*A+\epsilon.\cr}$$
+}%end of proof of 472C
+
+\leader{472D}{Besicovitch's Density Theorem} Let $\lambda$ be any Radon
+measure on $\BbbR^r$.   Then, for any locally $\lambda$-integrable
+real-valued function $f$,
+
+(a) $f(y)
+=\lim_{\delta\downarrow 0}\Bover1{\lambda B(y,\delta)}
+  \int_{B(y,\delta)}fd\lambda$,
+
+(b) $\lim_{\delta\downarrow 0}\Bover1{\lambda B(y,\delta)}
+  \int_{B(y,\delta)}|f(x)-f(y)|\lambda(dx)=0$
+
+\noindent for $\lambda$-almost every $y\in\BbbR^r$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The theorem asserts that, for $\lambda$-almost
+every $y$, limits of the form
+$\lim_{\delta\downarrow 0}\Bover1{\lambda B(y,\delta)}\ldots$ are
+defined;  \cmmnt{in my usage,} this includes the assertion that
+$\lambda B(y,\delta)\ne 0$ for all sufficiently small $\delta>0$.
+}
+
+\proof{ (Compare 261C and 261E.)
+
+\medskip
+
+{\bf (a)} Let $Z$ be the support of $\lambda$ (411Nd);  then $Z$ is
+$\lambda$-conegligible and $\lambda B(y,\delta)>0$ whenever $y\in Z$ and
+$\delta>0$.   For $q<q'$ in $\Bbb Q$ and $n\in\Bbb N$ set
+
+\Centerline{$A_{nqq'}=\{y:y\in Z\cap\dom f,\,\|y\|<n,\,f(y)\le q,\,
+  \limsup_{\delta\downarrow 0}\Bover1{\lambda B(y,\delta)}
+  \biggerint_{B(y,\delta)}fd\lambda>q'\}$.}
+
+\noindent Then $\lambda A_{nqq'}=0$.   \Prf\ Let $\epsilon>0$.   Then
+there is an
+$\eta\in\ocint{0,\epsilon}$ such that $\int_F|f|d\lambda\le\epsilon$
+whenever $F\subseteq B(\tbf{0},n)$ and $\lambda F\le\eta$ (225A).   Let
+$E$ be a measurable envelope of $A_{nqq'}$ included in
+$\{y:y\in Z\cap\dom f,\,f(y)\le q,\,\|y\|<n\}$, and take an open set
+$G\supseteq E$ such that $G\subseteq B(\tbf{0},n)$ and
+$\lambda(G\setminus E)\le\eta$ (256Bb again).
+Let $\Cal I$ be the family of
+non-singleton closed balls $B\subseteq G$ such that
+$\int_Bf\ge q'\lambda B$.   Then every point of $A_{nqq'}$ is the centre of arbitrarily small members of
+$\Cal I$, so there is a disjoint family $\Cal I_0\subseteq\Cal I$ such
+that $\lambda(A_{nqq'}\setminus\bigcup\Cal I_0)=0$ (472C).   Now
+$\lambda(E\setminus\bigcup\Cal I_0)=0$ and
+$\lambda((\bigcup\Cal I_0)\setminus E)\le\eta\le\epsilon$, so
+
+$$\eqalign{q'\lambda E
+&\le q'\lambda(\bigcup\Cal I_0)+\epsilon|q'|
+=\sum_{B\in\Cal I_0}q'\lambda B+\epsilon|q'|\cr
+&\le\sum_{B\in\Cal I_0}\int_Bfd\lambda+\epsilon|q'|
+=\int_{\bigcup\Cal I_0}fd\lambda+\epsilon|q'|\cr
+&\le\int_Efd\lambda+\epsilon(1+|q'|)
+\le q\lambda E+\epsilon(1+|q'|),\cr}$$
+
+\noindent and
+
+\Centerline{$(q'-q)\lambda^*A_{nqq'}=(q'-q)\lambda E
+\le(1+|q'|)\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, $\lambda^*A_{nqq'}=0$.\ \Qed
+
+As $n$, $q$ and $q'$ are arbitrary,
+
+\Centerline{$\limsup_{\delta\downarrow 0}\Bover1{\lambda B(y,\delta)}
+ \biggerint_{B(y,\delta)}f\le f(y)$}
+
+\noindent for $\lambda$-almost every $y\in Z$, therefore for
+$\lambda$-almost every $y\in\BbbR^r$.   Similarly, or applying the
+same argument to $-f$,
+
+\Centerline{$\liminf_{\delta\downarrow 0}\Bover1{\lambda B(y,\delta)}
+ \biggerint_{B(y,\delta)}f\ge f(y)$}
+
+\noindent for $\lambda$-almost every $y$, and
+
+\Centerline{$\lim_{\delta\downarrow 0}\Bover1{\lambda B(y,\delta)}
+ \biggerint_{B(y,\delta)}f$ exists $=f(y)$}
+
+\noindent for $\lambda$-almost every $y$.
+
+\medskip
+
+{\bf (b)} Now, for each $q\in\Bbb Q$ set
+$g_q(x)=|f(x)-q|$ for $x\in\dom f$.   By (a), we have a
+$\lambda$-conegligible set $D$ such that
+
+\Centerline{$\lim_{\delta\downarrow 0}\Bover1{\lambda B(y,\delta)}
+  \biggerint_{B(y,\delta)}g_qd\lambda=g_q(y)$}
+
+\noindent for every $y\in D$ and $q\in\Bbb Q$.   Now, if
+$y\in D$ and $\epsilon>0$, there is a $q\in\Bbb Q$ such that
+$|f(y)-q|\le\epsilon$, and a $\delta_0>0$ such that
+
+\Centerline{$|\Bover1{\lambda B(y,\delta)}
+  \biggerint_{B(y,\delta)}g_qd\lambda-g_q(y)|
+\le\epsilon$}
+
+\noindent whenever $0<\delta\le\delta_0$.   But in this case
+
+$$\eqalign{\Bover1{\lambda B(y,\delta)}
+&\int_{B(y,\delta)}|f(x)-f(y)|\lambda(dx)\cr
+&\le\Bover1{\lambda B(y,\delta)}\int_{B(y,\delta)}|f(x)-q|\lambda(dx)
+  +\Bover1{\lambda B(y,\delta)}\int_{B(y,\delta)}|q-f(y)|\lambda(dx)\cr
+&\le 3\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary,
+
+\Centerline{$\lim_{\delta\downarrow 0}\Bover1{\lambda B(y,\delta)}
+  \biggerint_{B(y,\delta)}|f(x)-f(y)|\lambda(dx)
+=0$;}
+
+\noindent as this is true for every $y\in D$, the theorem is proved.
+}%end of proof of 472D
+
+\leader{*472E}{Proposition} Let $\lambda$, $\lambda'$ be Radon
+measures on $\BbbR^r$, and $G\subseteq\BbbR^r$ an open set.   Let $Z$
+be the support of $\lambda$, and for $x\in Z\cap G$ set
+
+\Centerline{$M(x)=\sup\{\Bover{\lambda'B}{\lambda B}:B\subseteq G$ is a
+non-trivial ball with centre $x\}$.}
+
+\noindent Then
+
+\Centerline{$\lambda\{x:x\in Z,\,M(x)\ge t\}\le\Bover{5^r}t\lambda'G$}
+
+\noindent for every $t>0$.
+
+\proof{ The function
+$M:Z\to[0,\infty]$ is lower semi-continuous.   \Prf\ If $M(x)>t\ge 0$,
+there is a $\delta>0$ such that $B(x,\delta)\subseteq G$ and
+$\lambda'B(x,\delta)>t\lambda B(x,\delta)$.   Because $\lambda$ is a
+Radon measure, there is an open set $V\supseteq B(x,\delta)$ such that
+$V\subseteq G$ and
+$\lambda'B(x,\delta)>t\lambda V$;  because $B(x,\delta)$ is compact,
+there is an $\eta>0$ such that $B(x,\delta+2\eta)\subseteq V$.   Now if
+$y\in Z$ and $\|y-x\|\le\eta$,
+
+\Centerline{$B(x,\delta)\subseteq B(y,\delta+\eta)\subseteq V$,}
+
+\noindent so $\lambda'B(y,\delta+\eta)>t\lambda B(y,\delta+\eta)$ and
+$M(y)>t$.\ \Qed
+
+In particular, $H_t=\{x:x\in Z\cap G,\,M(x)>t\}$ is always measured by
+$\lambda$.   Now, given $t>0$, let $\Cal I$ be the set of non-trivial
+closed balls $B\subseteq G$ such that $\lambda'B>t\lambda B$.   By 472B,
+there is a family $\ofamily{k}{5^r}{\Cal I_k}$ of countable disjoint
+subsets of $\Cal I$ such that $\bigcup_{k<5^r}\Cal I_k$ covers $H_t$.
+So
+
+\Centerline{$\lambda H_t
+\le\sum_{k=0}^{5^r-1}\sum_{B\in\Cal I_k}\lambda B
+\le\Bover1t\sum_{k=0}^{5^r-1}\sum_{B\in\Cal I_k}\lambda'B
+\le\Bover{5^r}t\lambda'G$,}
+
+\noindent as claimed.
+}%end of proof of 472E
+
+\leader{*472F}{Theorem} Let $\lambda$ be a Radon measure on
+$\BbbR^r$, and $f\in\eusm L^p(\lambda)$ any function, where
+$1<p<\infty$.   Let $Z$ be the support of $\lambda$, and for $x\in Z$
+set $f^*(x)=\sup_{\delta>0}\Bover1{\lambda B(x,\delta)}
+  \int_{B(x,\delta)}|f|d\lambda$.   Then $f^*$ is lower semi-continuous,
+and $\|f^*\|_p\le 2\bigl(\Bover{5^rp}{p-1}\bigr)^{1/p}\|f\|_p$.
+
+\proof{{\bf (a)} Replacing $f$ by $|f|$ if necessary, we may suppose
+that $f\ge 0$.   $Z$ is $\lambda$-conegligible, so that $f^*$
+is defined $\lambda$-almost everywhere.   Next, $f^*$ is lower
+semi-continuous.   \Prf\ I repeat an idea from the proof of 472E.
+If $f^*(x)>t\ge 0$, there is a $\delta>0$ such that
+$\int_{B(x,\delta)}|f|d\lambda>t\lambda B(x,\delta)$.   Because
+$\lambda$ is a Radon measure, there is an open set
+$V\supseteq B(x,\delta)$ such that
+$\int_{B(x,\delta)}|f|d\lambda>t\lambda V$;  because $B(x,\delta)$ is
+compact, there is an $\eta>0$ such that $B(x,\delta+2\eta)\subseteq V$;
+and now $f^*(y)>t$ for every $y\in Z\cap B(x,\eta)$.\ \Qed
+
+\medskip
+
+{\bf (b)} For $t>0$, set
+$H_t=\{x:x\in Z,\,f^*(x)>t\}$ and $F_t=\{x:x\in\dom f,\,f(x)\ge t\}$.
+Then
+
+\Centerline{$\lambda H_t
+\le\Bover{2\cdot 5^r}{t}\biggerint_{F_{t/2}}fd\lambda$.}
+
+\noindent\Prf\ Set $g=f\times\chi F_{t/2}$.   Because
+$(\bover{t}2)^p\lambda F_{t/2}\le\|f\|_p^p$ is finite, $\lambda F_{t/2}$
+is finite,  $\chi F_{t/2}\in\eusm L^q(\lambda)$ (where
+$\bover1p+\bover1q=1$) and $g\in\eusm L^1(\lambda)$ (244Eb).
+Let $\lambda'$ be the indefinite-integral measure defined by $g$ over
+$\lambda$ (234J);
+then $\lambda'$ is totally finite, and is a Radon measure (416S).   Set
+
+\Centerline{$M(x)=\sup\{\Bover{\lambda'B}{\lambda B}:B\subseteq\BbbR^r$
+is a non-trivial ball with centre $x\}$}
+
+\noindent for $x\in Z$.   Then $f^*(x)\le M(x)+\bover{t}2$ for every
+$x\in Z$, just because
+
+\Centerline{$\biggerint_Bfd\lambda
+\le\Bover{t}2\lambda B+\int_Bg\,d\lambda
+=\Bover{t}2\lambda B+\lambda'B$}
+
+\noindent for every closed ball $B$.   Accordingly
+
+$$\eqalignno{\lambda H_t
+&\le\lambda\{x:M(x)>\Bover{t}2\}
+\le\Bover{2\cdot 5^r}{t}\lambda'\BbbR^r\cr
+\displaycause{by 472E}
+&=\Bover{2\cdot 5^r}t\biggerint_{F_{t/2}}fd\lambda. \text{ \Qed}\cr}$$
+
+\medskip
+
+{\bf (c)} As in part (c) of the proof of 286A, we now have
+
+$$\eqalign{\int(f^*)^pd\lambda
+&=\int_0^{\infty}\lambda\{x:f^*(x)^p>t\}dt
+=p\int_0^{\infty}t^{p-1}\lambda\{x:f^*(x)>t\}dt\cr
+&\le 2\cdot 5^rp\int_0^{\infty}t^{p-2}\int_{F_{t/2}}fd\lambda dt
+=2\cdot 5^rp\int_{\Bbb R^r}f(x)\int_0^{2f(x)}t^{p-2}dt\lambda(dx)\cr
+&=2\cdot 5^rp\int_{\Bbb R^r}\Bover{2^{p-1}}{p-1}f(x)^p\lambda(dx)
+=\Bover{2^p5^rp}{p-1}\int f^pd\lambda.\cr}$$
+
+\noindent Taking $p$th roots, we have the result.
+}%end of proof of 472F
+
+\exercises{\leader{472X}{Basic exercises (a)}
+%\spheader 472Xa
+Show that if $\lambda$, $\lambda'$ are Radon measures on $\Bbb R^r$
+which agree on closed balls, they are equal.   (Cf.\ 466Xj.)
+%472C
+
+\spheader 472Xb Let $\lambda$ be a Radon measure on $\BbbR^r$.   Let
+$A\subseteq\BbbR^r$ be a non-empty set, and
+$\epsilon>0$.   Show that there is a sequence $\sequencen{B_n}$ of
+closed balls in $\BbbR^r$, all of radius at most $\epsilon$ and with
+centres in $A$, such that $A\subseteq\bigcup_{n\in\Bbb N}B_n$ and
+$\sum_{n=0}^{\infty}\lambda B_n\le\lambda^*A+\epsilon$.
+%472C
+
+\spheader 472Xc Let $\lambda$ be a non-zero Radon measure on $\BbbR^r$
+and $Z$ its support.
+Show that we have a lower density $\phi$ (definition: 341C) for the
+subspace measure $\lambda_Z$ defined by
+setting $\phi E=\{x:x\in Z$, $\lim_{\delta\downarrow 0}
+\Bover{\lambda(E\cap B(x,\delta))}{\lambda B(x,\delta)}=1\}$ whenever
+$\lambda_Z$ measures $E$.
+%472D
+
+\spheader 472Xd\dvAnew{2012}
+Let $\lambda$ be a Radon measure on $\BbbR^r$, and
+$f$ a locally $\lambda$-integrable function.   Show that
+$E=\{y:g(y)=\lim_{\delta\downarrow 0}\Bover1{\lambda B(y,\delta)}
+\int_{B(y,\delta)}f\,d\lambda$ is defined in $\Bbb R\}$ is a Borel set, and
+that $g:E\to\Bbb R$ is Borel measurable.
+%472D
+
+\leader{472Y}{Further exercises (a)}%
+%\spheader 472Ya
+(i) Let $\Cal I$ be a finite family of intervals (open,
+closed or half-open) in $\Bbb R$.   Show that there are subfamilies
+$\Cal I_0$, $\Cal I_1\subseteq\Cal I$, both disjoint, such that
+$\Cal I_0\cup\Cal I_1$ covers $\bigcup\Cal I$.   \Hint{induce on
+$\#(\Cal I)$.}    Show that this remains true if any totally ordered set
+is put in place of $\Bbb R$.   (ii) Show that if $\Cal I$ is any family
+of non-empty intervals in $\Bbb R$ such that none contains the centre
+of any other, then $\Cal I$ is expressible as $\Cal I_0\cup\Cal I_1$
+where both $\Cal I_0$ and $\Cal I_1$ are disjoint.
+%472B
+
+\spheader 472Yb Let $m=m(r)$ be the largest number such that there are
+$u_1,\ldots,u_m\in\BbbR^r$ such that $\|u_i\|=1$ for every $i$ and
+$\|u_i-u_j\|\ge 1$ for all $i\ne j$.   Let $A\subseteq\BbbR^r$ be a
+bounded set and $x\mapsto\delta_x:A\to\ooint{0,\infty}$ a bounded
+function;  set
+$B_x=B(x,\delta_x)$ for $x\in A$.   (i) Show that $m<3^r$.
+(ii) Show that there is an $\epsilon\in\ocint{0,\bover1{10}}$ such that
+whenever $\|u_0\|=\ldots=\|u_m\|=1$ there are distinct $i$,
+$j\le m$ such that $u_i\dotproduct u_j>\bover12(1+\epsilon)$.
+(iii) Suppose that $u$, $v\in\BbbR^r$ are such that
+$\bover13\le\|u\|\le 1$, $\|v\|\le 1+\epsilon$ and $\|u-v\|>1$.   Show
+that the angle $u\widehat{\tbf{0}}v$ has cosine at most
+$\bover12(1+\epsilon)$.   \Hint{maximise $\Bover{a^2+b^2-c^2}{2ab}$
+subject to $\bover13\le a\le 1$, $b\le 1+\epsilon$ and $c\ge 1$.}   (iv)
+Suppose that $\sequencen{x_n}$ is a
+sequence in $A$ such that $x_n\notin B_{x_i}$ for $i<n$ and
+$(1+\epsilon)\delta_{x_n}
+\ge\sup\{\delta_x:x\in A\setminus\bigcup_{i<n}B_{x_i}\}$ for every $n$.
+Show that $A\subseteq\bigcup_{n\in\Bbb N}B_{x_n}$.
+(v) Take $y\in\BbbR^r$.   Show that there is at most one $n$ such that
+$\|y-x_n\|\le\bover13\delta_{x_n}$.
+(vi) Show that if $i<j$,
+$\bover13\delta_{x_i}\le\|y-x_i\|\le\delta_{x_i}$ and
+$\|y-x_j\|\le\delta_j$ then the cosine of the angle
+$x_i\widehat{y}x_j$ is at most $\bover12(1+\epsilon)$.
+(vii) Show that $\#(\{i:y\in B_{x_i}\})\le m+1$.
+
+Hence show that if $\Cal I$ is any family of non-trivial closed balls
+such that every point of $A$ is the centre of some member of $\Cal I$,
+then there is a countable $\Cal I_0\subseteq\Cal I$, covering $A$, such
+that no point of $\BbbR^r$ belongs to more than $3^r$ members of
+$\Cal I_0$.
+%472B
+
+\spheader 472Yc Use 472Yb to prove an alternative version of 472B, but
+with the constant $9^r+1$ in place of $5^r$.
+%472Yb 472B
+
+\spheader 472Yd\dvAnew{2010}
+Let $A\subseteq\BbbR^r$ be a bounded set, and $\Cal I$ a
+family of non-trivial closed balls in $\BbbR^r$ such that whenever $x\in A$
+and $\epsilon>0$ there is a ball $B(y,\delta)\in\Cal I$ such that
+$\|x-y\|\le\epsilon\delta$.   Show that there is a family
+$\langle\Cal I_k\rangle_{k<5^r}$ of
+subsets of $\Cal I$ such that each $\Cal I_k$ is disjoint and
+$\bigcup_{k<5^r}\Cal I_k$ covers $A$.
+%472B  query out of order
+
+\spheader 472Ye\dvAnew{2010} Give an example of a strictly positive
+Radon probability measure $\mu$ on a
+compact metric space $(X,\rho)$ for which there is a Borel set
+$E\subseteq X$ such that
+
+\Centerline{$\liminf_{\delta\downarrow 0}
+  \Bover{\mu(E\cap B(x,\delta))}{\mu B(x,\delta)}=0$,
+\quad$\limsup_{\delta\downarrow 0}
+  \Bover{\mu(E\cap B(x,\delta))}{\mu B(x,\delta)}=1$}
+
+\noindent for every $x\in X$.
+%472D mt47bits
+
+\spheader 472Yf Let $\lambda$ be a Radon measure on $\BbbR^r$, and $f$ a
+$\lambda$-integrable real-valued function.   Show that
+$\sup_{\delta>0}\Bover1{\lambda B(x,\delta)}
+  \int_{B(x,\delta)}|f|d\lambda$  is defined and finite for
+$\lambda$-almost every $x\in\BbbR^r$.
+%472F
+
+\spheader 472Yg Let $\lambda$, $\lambda'$ be Radon measures on
+$\Bbb R^r$.   (i) Show that $g(x)=\lim_{\delta\downarrow 0}
+\Bover{\lambda'B(x,\delta)}{\lambda B(x,\delta)}$ is defined in
+$\Bbb R$ for $\lambda$-almost every $x$.   (ii) Setting
+$\lambda_0=\sup_{n\in\Bbb N}\lambda'\wedge n\lambda$ in the cone of Radon
+measures on $\Bbb R^r$ (437Yi),
+show that $g$ is a Radon-Nikod\'ym derivative of $\lambda_0$ with respect
+to $\lambda$.
+\Hint{show that if $\lambda$ and $\lambda'$ are mutually singular then
+$g=0\,\,\lambda$-a.e.}
+%472E
+}%end of exercises
+
+\endnotes{
+\Notesheader{472}
+I gave primacy to the `weak' Vitali's theorem in 261B because I
+think it is easier than the `strong' form in 472C, it uses the same
+ideas as the original one-dimensional theorem in 221A, and it is
+adequate for the needs of Volume 2.   Any proper study of general
+measures on $\BbbR^r$, however, will depend on the ideas in 472A-472C.
+You will see that in 472B, as in other forms of Vitali's theorem, there
+is a key step in which a sequence is chosen greedily.   This time we
+must look much more carefully at the geometry of $\BbbR^r$ because we
+can no longer rely on a measure to tell us what is happening.   (Though
+you will observe that I still use the elementary properties of Euclidean
+volume in the argument of 472A.)   Once we have reached 472C, however,
+we are in a position to repeat all the arguments of
+261C-261E %261C 261D 261E
+in much greater generality (472D), and, as a bonus, can refine
+261F (472Xb).   For more in this direction see {\smc Mattila 95} and
+{\smc Federer 69}, \S2.8.
+
+It is natural to ask whether the constant `$5^r$' in 472B is best
+possible.   The argument of 472A is derived from {\smc Sullivan 94},
+where a more thorough analysis is given.   It seems that even for $r=2$
+the best constant is unknown.   (For $r=1$, the best constant is $2$;
+see 472Ya.)   Note that even for finite families $\Cal I$ we should have
+to find the colouring number of a graph (counting two balls as linked if
+they intersect), so it may well be a truly difficult problem.   The
+method in 472B amounts to using the greedy colouring algorithm after
+ordering the balls by size, and one does not expect such approaches to
+give exact colouring numbers.   Of
+course the questions addressed here depend only on the existence of {\it
+some} function of $r$ to do the job.
+
+An alternative argument runs through a kind of pointwise version of 472A
+(472Yb-472Yc).   It gives a worse constant but is attractive in other
+ways.   For many of the applications of 472C, the result of 472Yb is
+already sufficient.
+
+The constant $2\bigl(\Bover{5^rp}{p-1}\bigr)^{1/p}$ in 472F makes no
+pretence to be `best', or even `good'.   The only reason for giving a
+formula at all is to emphasize the remarkable fact that it does not
+depend on the measure $\lambda$.   The theorems of this section are
+based on the metric geometry of Euclidean space, not on any special
+properties of Lebesgue measure.   The constants {\it do} depend on the
+dimension, so that even in Hilbert space (for instance) we cannot expect
+any corresponding results.
+}%end of notes
+
+\discrpage
+
+

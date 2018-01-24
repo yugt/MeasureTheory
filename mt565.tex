@@ -1,0 +1,1160 @@
+\frfilename{mt565.tex}
+\versiondate{25.4.14}
+\copyrightdate{2006}
+
+\def\chaptername{Choice and determinacy}
+\def\sectionname{Lebesgue measure without choice}
+
+\newsection{565}
+
+I come now to the construction of specific
+non-trivial Borel-coded measures.
+Primary among them is of course Lebesgue measure on $\BbbR^r$;  we also
+have Hausdorff measures (565N-565O).   For Lebesgue
+measure I begin, as in \S115, with
+half-open intervals.   The corresponding `outer measure' may no longer be
+countably subadditive, so I call it `Lebesgue submeasure'.
+Carath\'eodory's method no longer seems quite appropriate, as it smudges
+the distinction between `negligible' and `outer measure zero', so I use
+563H to show that there is a Borel-coded measure agreeing with Lebesgue
+submeasure on open sets (565C-565D);  it is the completion of this
+Borel-coded measure which I will call Lebesgue measure.
+We have a version of Vitali's theorem for well-orderable families
+(in particular, for countable families)  of balls (565F).   From this we
+can prove the Fundamental Theorem of Calculus in essentially its standard
+form (565M).
+
+\leader{565A}{Definitions} Throughout this section, except when otherwise
+stated, $r\ge 1$ will be a
+fixed integer.   \cmmnt{As in \S115, }I will say that a 
+{\bf half-open interval} in $\BbbR^r$ is a set of the form
+
+\Centerline{$\coint{a,b}=\{x:x\in\BbbR^r$, $a(i)\le x(i)<b(i)$ for
+$i<r\}$}
+
+\noindent where $a$, $b\in\BbbR^r$.
+For a half-open interval $I$, set $\lambda I=0$ if $I=\emptyset$
+and otherwise $\lambda I=\prod_{i=0}^{r-1}b(i)-a(i)$ where $I=\coint{a,b}$.
+Now for $A\subseteq\BbbR^r$ set
+
+\Centerline{$\theta A=\inf\{\sum_{j=0}^{\infty}\lambda I_j:
+\sequence{j}{I_j}
+\text{ is a sequence of half-open intervals covering }A\}$.}
+
+\leader{565B}{Proposition} In the notation of 565A,
+
+(a) the function
+$\theta:\Cal P\BbbR^r\to[0,\infty]$ is a submeasure,
+
+(b) $\theta I=\lambda I$ for every half-open interval $I\subseteq\BbbR^r$.
+
+\proof{{\bf (a)} As in parts (a-i) to (a-iii) of the proof of 115D,
+$\theta\emptyset=0$ and $\theta A\le\theta B$ whenever $A\subseteq B$.
+If $A$, $B\subseteq\BbbR^r$ and $\epsilon>0$, we have sequences
+$\sequencen{I_n}$ and $\sequencen{J_n}$ of half-open intervals such that
+
+\Centerline{$A\subseteq\bigcup_{n\in\Bbb N}I_n$,
+\quad$B\subseteq\bigcup_{n\in\Bbb N}J_n$,}
+
+\Centerline{$\sum_{n=0}^{\infty}\lambda I_n\le\theta A+\epsilon$,
+\quad$\sum_{n=0}^{\infty}\lambda J_n\le\theta B+\epsilon$.}
+
+\noindent Set $K_{2n}=I_n$, $K_{2n+1}=J_n$ for $n\in\Bbb N$;  then
+$A\cup B\subseteq\bigcup_{n\in\Bbb N}K_n$ so
+
+\Centerline{$\theta(A\cup B)
+\le\sum_{n=0}^{\infty}\lambda K_n
+=\sum_{n=0}^{\infty}\lambda I_n+\sum_{n=0}^{\infty}\lambda J_n
+\le\theta A+\theta B+2\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary,
+$\theta(A\cup B)\le\theta A+\theta B$.
+
+\medskip
+
+{\bf (b)} The arguments of 114B/115B/115Db nowhere called on 
+any form of the axiom of choice, so can be used unchanged.
+}%end of proof of 565B
+
+\medskip
+
+\noindent{\bf Definition} I will call the submeasure $\theta$ {\bf Lebesgue
+submeasure} on $\BbbR^r$.
+
+\leader{565C}{Lemma} Let $\Cal I$ be the family of half-open intervals in
+$\BbbR^r$;  let $\theta$ be Lebesgue submeasure, and set
+
+\Centerline{$\Sigma
+=\{E:E\subseteq X$, $\theta A=\theta(A\cap E)+\theta(A\setminus E)$
+for every $A\subseteq X\}$,
+\quad$\nu=\theta\restr\Sigma$\dvro{.}{}}
+
+\cmmnt{\noindent (563G).}
+
+(a) Let $\sequencen{I_n}$ be a disjoint sequence in $\Cal I$.   Then
+$E=\bigcup_{n\in\Bbb N}I_n$ belongs to $\Sigma$
+and $\nu E=\sum_{n=0}^{\infty}\nu I_n$.
+
+(b) Every open set in $\BbbR^r$ belongs to $\Sigma$.
+
+(c) If $G$, $H\subseteq\BbbR^r$ are open, then
+$\nu G+\nu H=\nu(G\cap H)+\nu(G\cup H)$.
+
+(d) If $\sequencen{G_n}$ is a non-decreasing
+sequence of open sets then
+$\nu(\bigcup_{n\in\Bbb N}G_n)=\lim_{n\to\infty}G_n$.
+
+\proof{{\bf (a)(i)} If $i<r$ and $\alpha\in\Bbb R$ then
+$\{x:x\in\BbbR^r$, $x(i)<\alpha\}\in\Sigma$, as in 115F.   So every
+half-open interval belongs to $\Sigma$.   By 565Bb,
+$\nu I=\theta I=\lambda I$ for every $I\in\Cal I$.
+
+\medskip
+
+\quad{\bf (ii)}\grheada\ $\theta E=\sum_{n=0}^{\infty}\nu I_n$.
+\Prf\ Because
+$\sequencen{I_n}$ is a sequence in $\Cal I$ covering $E$,
+$\theta E$ is at most
+$\sum_{n=0}^{\infty}\lambda I_n\le\sum_{n=0}^{\infty}\nu I_n$.
+In the other direction,
+
+\Centerline{$\theta E
+\ge\sup_{n\in\Bbb N}\theta(\bigcup_{i\le n}I_i)
+=\sup_{n\in\Bbb N}\nu(\bigcup_{i\le n}I_i)
+=\sup_{n\in\Bbb N}\sum_{i\le n}\nu I_i
+=\sum_{n=0}^{\infty}\nu I_n$.  \Qed}
+
+\medskip
+
+\qquad\grheadb\ $E\in\Sigma$.   \Prf\ Let
+$A\subseteq\BbbR^r$ be such that $\theta A$ is finite, and $\epsilon>0$.
+We have a sequence $\sequence{m}{J_m}$ in $\Cal I$ such
+that $A\subseteq\bigcup_{m\in\Bbb N}J_m$ and
+$\sum_{m=0}^{\infty}\lambda J_m\le\theta A+\epsilon$ is finite.
+Let $m$ be such that $\sum_{j=m+1}^{\infty}\lambda J_j\le\epsilon$,
+and set $K=\bigcup_{j\le m}J_j$;   then
+
+\Centerline{$A\cap E\subseteq(K\cap E)\cup\bigcup_{j>m}J_j$,}
+
+\noindent so
+
+\Centerline{$\theta(A\cap E)
+\le\theta(K\cap E)+\theta(\bigcup_{j>m}J_j)
+\le\theta(K\cap E)+\sum_{j=m+1}^{\infty}\lambda J_j
+\le\theta(K\cap E)+\epsilon$.}
+
+\noindent Similarly,
+$\theta(A\setminus E)\le\theta(K\setminus E)+\epsilon$.   Next, by
+($\alpha$) applied to $\sequence{i}{J_j\cap I_i}$ or
+otherwise, $\sum_{i=0}^{\infty}\nu(J_j\cap I_i)$ is finite for every $j$,
+so there is an $n\in\Bbb N$ such that
+$\sum_{j=0}^m\sum_{i=n+1}^{\infty}\nu(J_j\cap I_i)\le\epsilon$.   Set
+$L=\bigcup_{i\le n}I_i$;  then
+
+\Centerline{$K\cap E
+\subseteq(K\cap L)\cup\bigcup_{j\le m,i>n}J_j\cap I_i$,}
+
+$$\eqalign{\theta(K\cap E)
+&\le\theta(K\cap L)+\theta(\bigcup_{j\le m,i>n}J_j\cap I_i)\cr
+&\le\theta(K\cap L)+\sum_{j=0}^m\sum_{i=n+1}^{\infty}\nu(J_j\cap I_i)
+\le\theta(K\cap L)+\epsilon.\cr}$$
+
+\noindent Assembling these,
+
+$$\eqalignno{\theta A
+&\le\theta(A\cap E)+\theta(A\setminus E)
+\le\theta(K\cap E)+\theta(K\setminus E)+2\epsilon\cr
+&\le\theta(K\cap L)+\theta(K\setminus L)+3\epsilon
+=\theta K+3\epsilon\cr
+\displaycause{because we know that $L\in\Sigma$}
+&\le\theta A+3\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary,
+$\theta A=\theta(A\cap E)+\theta(A\setminus E)$.   This was on the
+assumption that $\theta A$ was finite;  but of course it is also true if
+$\theta A=\infty$.   As $A$ is arbitrary, $E\in\Sigma$.\ \Qed
+
+\medskip
+
+\qquad\grheadc\ Accordingly $\nu E=\theta E=\sum_{n=0}^{\infty}\nu I_n$.
+
+\medskip
+
+{\bf (b)} Let $\Cal I_0$ be the family of dyadic half-open intervals in
+$\BbbR^r$ of the form $\coint{2^{-k}z,2^{-k}(z+\tbf{1})}$ where
+$k\in\Bbb N$, $z\in\BbbZ^r$ and $\tbf{1}=(1,\ldots,1)$.   Note that
+$\Cal I_0$ is countable and that if $I$, $J\in\Cal I_0$ then either
+$I\subseteq J$ or $J\subseteq I$ or $I\cap J=\emptyset$.   Also any
+non-empty subset of $\Cal I_0$ has a maximal element.
+
+If $G\subseteq\BbbR^r$ is open, set
+$\Cal J=\{I:I\in\Cal I_0$, $I\subseteq G\}$ and let $\Cal J'$ be the set of
+maximal elements of $\Cal J$.   Then $\Cal J'$ is disjoint and countable,
+so by (a-ii) $G=\bigcup\Cal J=\bigcup\Cal J'$ belongs to $\Sigma$.
+
+\medskip
+
+{\bf (c)} Because $\nu$ is additive on $\Sigma$,
+
+\Centerline{$\nu(G\cup H)+\nu(G\cap H)
+=\nu G+\nu(H\setminus G)+\nu(H\cap G)
+=\nu G+\nu H$}
+
+\noindent for all open sets $G$, $H\subseteq\BbbR^r$.
+
+\medskip
+
+{\bf (d)} This time, let $\Cal J$ be
+$\bigcup_{n\in\Bbb N}\{I:I\in\Cal I_0$, $I\subseteq G_n\}$;  again, let
+$\Cal J'$ be the set of maximal elements of $\Cal J$.   Then
+$G=\bigcup\Cal J=\bigcup\Cal J'$, so
+
+\Centerline{$\nu G=\sum_{J\in\Cal J'}\nu J
+=\sup_{\Cal K\subseteq\Cal J'\text{ is finite}}\sum_{J\in\Cal K}\nu J
+\le\sup_{n\in\Bbb N}\nu G_n=\lim_{n\to\infty}\nu G_n\le\nu G$}
+
+\noindent because $\sequencen{G_n}$ is non-decreasing.
+}%end of proof of 565C
+
+\leader{565D}{Definition} Let $\theta$ and $\nu$ be as in 565C.
+By 563H, there is a unique Borel-coded measure
+$\mu$ on $\BbbR^r$ such that $\mu G=\nu G=\theta G$ for every open set
+$G\subseteq\BbbR^r$.   I will say that {\bf Lebesgue measure} on $\BbbR^r$
+is the completion $\mu_L$ of $\mu$;
+the sets it measures will be {\bf Lebesgue measurable}.
+
+\leader{565E}{Proposition} Let
+$\Cal I$, $\theta$, $\Sigma$, $\nu$, $\mu$ and $\mu_L$ be as in
+565A-565D.
+
+(a) $\mu$ is the restriction of $\theta$ to the
+algebra $\Cal B_c(\BbbR^r)$ of codable Borel sets.
+
+(b) For every $A\subseteq\BbbR^r$,
+
+\Centerline{$\theta A
+=\inf\{\mu_L E:E\supseteq A$ is Lebesgue measurable$\}
+=\inf\{\mu G:G\supseteq A$ is open$\}$.}
+
+(c) $E\in\Sigma$ and $\mu_L E=\nu E=\theta E$
+whenever $E$ is Lebesgue measurable.
+
+(d) $\mu_L$ is inner regular with respect to the compact sets and outer
+regular with respect to the open sets.
+
+\proof{{\bf (a)} If $E\in\Cal B_c(\BbbR^r)$, then
+
+$$\eqalignno{\mu E
+&=\inf\{\mu G:G\supseteq E\text{ is open}\}\cr
+\displaycause{563Fd}
+&=\inf\{\theta G:G\supseteq E\text{ is open}\}
+\ge\theta E.\cr}$$
+
+\noindent Next, if $I\subseteq\BbbR^r$ is a half-open interval, it is a
+codable Borel set and
+
+$$\eqalign{\lambda I
+&=\inf\{\lambda J:J\in\Cal I,\,I\subseteq\interior J\}
+\ge\inf\{\theta(\interior J):J\in\Cal I,\,I\subseteq\interior J\}\cr
+&\ge\inf\{\theta G:G\supseteq I\text{ is open}\}
+=\mu I
+\ge\theta I
+=\lambda I.\cr}$$
+
+\noindent So $\mu$ and $\lambda$ agree on $\Cal I$.   If now
+$E$ is a codable Borel set and $\epsilon>0$, there is a sequence
+$\sequencen{I_n}$ in $\Cal I$ such that $E\subseteq\bigcup_{n\in\Bbb N}I_n$
+and $\sum_{n=0}^{\infty}\lambda I_n\le\theta E+\epsilon$.   But every $I_n$
+is resolvable (because it belongs to the algebra of sets generated by the
+open sets), so $\sequencen{I_n}$ is a codable sequence (562J) and
+
+\Centerline{$\mu E
+\le\mu(\bigcup_{n\in\Bbb N}I_n)
+\le\sum_{n=0}^{\infty}\mu I_n
+=\sum_{n=0}^{\infty}\lambda I_n
+\le\theta E+\epsilon$.}
+
+\noindent As $E$ and $\epsilon$ are arbitrary,
+$\mu=\theta\restr\Cal B_c(\BbbR^r)$.
+
+\medskip
+
+{\bf (b)} Suppose that $A\subseteq\BbbR^r$.   If $E\supseteq A$ is
+Lebesgue measurable, there are $F$, $H\in\Cal B_c(\BbbR^r)$ such that
+$E\symmdiff F\subseteq H$ and $\mu H=0$, so that
+$E\subseteq F\cup H$ and
+
+\Centerline{$\theta A\le\theta(F\cup H)=\mu(F\cup H)
+=\mu_L E$.}
+
+\noindent So we have
+
+\Centerline{$\theta A
+\le\inf\{\mu_L E:E\supseteq A$ is Lebesgue measurable$\}
+\le\inf\{\mu G:G\supseteq A$ is open$\}$.}
+
+\noindent In the other direction, given $\epsilon>0$ there is a sequence
+$\sequencen{I_n}$ in $\Cal I$, covering $A$, such that
+$\sum_{n=0}^{\infty}\lambda I_n\le\theta A+\epsilon$.   As in (a) just
+above, $E=\bigcup_{n\in\Bbb N}I_n$ is a codable Borel set and
+$\mu E\le\sum_{n=0}^{\infty}\lambda I_n$;  now there is an open
+$G\supseteq E$ such that $\mu G\le\mu E+\epsilon\le\theta A+2\epsilon$.
+As $\epsilon$ is arbitrary,
+
+\Centerline{$\inf\{\mu G:G\supseteq A$ is open$\}\le\theta A$}
+
+\noindent and we have the equalities.
+
+\medskip
+
+{\bf (c)} Suppose that $E$ is Lebesgue measurable, $A\subseteq\BbbR^r$ and
+$\epsilon>0$.   By (b), there is an open set $G\supseteq A$ such that
+$\mu G\le\theta A+\epsilon$.   Now
+
+$$\eqalignno{\theta(A\cap E)+\theta(A\setminus E)
+&\le\theta(G\cap E)+\theta(G\setminus E)
+\le\mu_L(G\cap E)+\mu_L(G\setminus E)\cr
+\displaycause{by (b)}
+&=\mu_L G
+=\mu G
+\le\theta A+\epsilon.\cr}$$
+
+\noindent As usual, this is enough to ensure that $E\in\Sigma$.   Now (b)
+again tells us that $\mu_L E=\theta E=\nu E$.
+
+\medskip
+
+{\bf (d)} Of course $\mu$ is locally finite, while $\BbbR^r$
+is a regular topological space.   So 563F(d-ii) tells us that $\mu$ is
+inner regular with respect to the closed sets and outer regular with
+respect to the open sets;  it follows that $\mu_L$ also is.
+Next, every closed set is K$_{\sigma}$, while compact sets are
+resolvable and all sequences of compact sets are codable, so
+$\mu F=\sup\{\mu K:K\subseteq F$ is compact$\}$ for every closed set
+$F\subseteq\BbbR^r$;  consequently
+ $\mu_L$ is inner regular with respect to the compact sets.
+}%end of proof of 565E
+
+\leader{565F}{Vitali's Theorem} Let $\Cal C$ be a well-orderable
+family of non-singleton closed balls
+in $\BbbR^r$.   For $\Cal I\subseteq\Cal C$ set
+
+\Centerline{$A_{\Cal I}
+=\bigcap_{\delta>0}\bigcup\{C:C\in\Cal I$, $\diam C\le\delta\}$.}
+
+\noindent Let $\frak T$ be the family of open subsets of $\BbbR^r$.
+Then there are functions
+$\Psi:\Cal P\Cal C\to\Cal P\Cal C$ and
+$\Theta:\Cal P\Cal C\times\Bbb N\to\frak T$ such that
+$\Psi(\Cal I)\subseteq\Cal I$, $\Psi(\Cal I)$ is disjoint and countable,
+$\mu_L(\Theta(\Cal I,k))\le 2^{-k}$ and
+$A_{\Cal I}\subseteq\bigcup\Psi(\Cal I)\cup\Theta(\Cal I,k)$ whenever
+$\Cal I\subseteq\Cal C$ and $k\in\Bbb N$.   In particular,
+
+\Centerline{$A_{\Cal I}\setminus\bigcup\Psi(\Cal I)
+\subseteq\bigcap_{k\in\Bbb N}\Theta(\Cal I,k)$}
+
+\noindent is negligible.
+
+\proof{ We use the greedy algorithm of 221A/261B, but watching more
+carefully.   Start by fixing on a well-ordering $\preccurlyeq$ of
+$\Cal C\cup\{\emptyset\}$.
+Next, for each $n\in\Bbb N$, set $U_n=\{x:x\in\BbbR^r$, $n<\|x\|<n+1\}$,
+where $\|\,\|$ is the Euclidean norm on $\BbbR^r$.
+It will be convenient to fix at this point on a family
+$\langle G_{kn}\rangle_{k,n\in\Bbb N}$ of open sets such that
+$\mu_L G_{kn}\le 2^{-k-n-2}$ and $\{x:\|x\|=n\}\subseteq G_{kn}$ for all $k$
+and $n$;  for instance, $G_{kn}$ could be an open shell with rational inner
+and outer radii (except for $G_{k0}$, which should be an open
+ball).\footnote{Of course we can still use the similarity argument
+from part (g) of the proof of 261B to check that thin shells have small
+measure.}
+
+\woddheader{565F}{0}{0}{0}{60pt}
+
+Now define $C_{\Cal Inm}$, for $\Cal I\subseteq\Cal C$ and $m$,
+$n\in\Bbb N$, by saying that
+
+\inset{\noindent given $\ofamily{i}{m}{C_{\Cal Ini}}$, $C_{\Cal Inm}$ is to
+be the $\preccurlyeq$-first member of
+$\{\emptyset\}\cup(\Cal I\cap\Cal PU_n)$ which is disjoint from
+$\bigcup_{i<m}C_{\Cal Ini}$ and has diameter at least
+
+\Centerline{$\Bover12\sup\{\diam C:
+C\in\{\emptyset\}\cup(\Cal I\cap\Cal PU_n)$ is disjoint from
+$\bigcup_{i<m}C_{\Cal Ini}\}$.}}
+
+\noindent (I take the diameter of the empty set to be $0$, as usual.)
+Set
+
+\Centerline{$\Psi(\Cal I)
+=\{C_{\Cal Inm}:n$, $m\in\Bbb N\}\setminus\{\emptyset\}$.}
+
+Because the $U_n$ are disjoint, $\Psi(\Cal I)$ is a disjoint subfamily of
+$\Cal I$, and of course it is countable.
+Just as in 261B, we find that for each $\Cal I\subseteq\Cal C$ and
+$n\in\Bbb N$ we have
+
+\Centerline{$A_{\Cal I}\cap U_n
+\subseteq\bigcup_{i<m}C_{\Cal Ini}\cup\bigcup_{i\ge m}C'_{\Cal Ini}$,}
+
+\noindent where for $C\in\Cal C$ I write $C'$ for the {\it open} ball
+with the same centre and {\it six} times the radius;
+$\emptyset'$ will be $\emptyset$.   Just as in 261B,
+$\sum_{m=0}^{\infty}\mu_L C'_{\Cal Inm}\le 6^r\mu_L B(\tbf{0},n+1)$
+is finite.
+So, for each $k$ and $n$, we can take the first $m_{kn}$ such that
+$\sum_{i=m_{kn}}^{\infty}\mu_L C'_{\Cal Ini}\le 2^{-n-k-2}$.   Now set
+
+\Centerline{$\Theta(\Cal I,k)
+=\bigcup_{n\in\Bbb N}G_{kn}
+  \cup\bigcup_{n\in\Bbb N,i\ge m_{kn}}C'_{\Cal Ini}$;}
+
+\noindent we shall have
+$A\setminus\bigcup\Psi(\Cal I)\subseteq\Theta(\Cal I,k)$ and
+
+\Centerline{$\mu_L\Theta(\Cal I,k)\le\sum_{n=0}^{\infty}\mu_L G_{kn}
+  +\sum_{n=0}^{\infty}\sum_{i=m_{kn}}^{\infty}
+     \mu_L C'_{\Cal Ini}\le 2^{-k}$,}
+
+\noindent as required.
+}%end of proof of 565F
+
+\leader{565G}{Proposition} Let $A\subseteq\BbbR^r$ be any set.   Then its
+Lebesgue submeasure is
+
+\Centerline{$\theta A
+=\inf\{\sum_{n=0}^{\infty}\mu_L B_n:\sequencen{B_n}$ is a sequence of
+closed balls covering $A\}$.}
+
+\proof{ Let $\epsilon>0$.   Then there is a (non-empty) open set
+$G\supseteq A$ with
+$\mu_L G\le\theta A+\epsilon$.   Use Vitali's theorem, with $\Cal C$
+the family of closed balls with rational centres and non-zero
+rational radii, to see that there is a
+disjoint sequence $\sequencen{C_n}$ of balls included in $G$ such that
+$\mu_L(A\setminus\bigcup_{n\in\Bbb N}C_n)=0$ and
+$\sum_{n\in\Bbb N}\mu_L C_n\le\theta A+\epsilon$.   Next, cover
+$A\setminus\bigcup_{n\in\Bbb N}C_n$ by a sequence of half-open intervals
+with measures summing to not more than $\epsilon$, and expand these to
+balls with measures summing to not more than $\epsilon r^{r/2}$.   
+Interleaving this sequence with the $C_n$, we get a
+sequence $\sequencen{B_n}$ of balls, covering $A$, with
+$\sum_{n=0}^{\infty}\mu_L B_n\le\theta A+(1+r^{r/2})\epsilon$.   So
+
+\Centerline{$\theta A
+\ge\inf\{\sum_{n=0}^{\infty}\mu_L B_n:\sequencen{B_n}$ is a sequence of
+closed balls covering $A\}$.}
+
+\noindent The reverse inequality is elementary (563C(a-ii)).
+}%end of proof of 565G
+
+\leader{565H}{Corollary} Lebesgue measure is invariant under isometries.
+
+\proof{ We can see from its definition that Lebesgue submeasure is
+translation-invariant, so Lebesgue measure also is.   Consequently two
+balls with the same radii have the same measure.
+Isometries of $\BbbR^r$ take closed balls to closed balls with the
+same radii, so 565G gives the result.
+}%end of proof of 565H
+
+\leader{565I}{Lemma} (a) Writing $C_k(\BbbR^r)$ for the space of
+continuous real-valued functions on $\BbbR^r$ with compact support,
+$C_k(\BbbR^r)\subseteq\eusm L^1(\mu_L)$.
+
+(b) There is a countable set $D\subseteq C_k(\BbbR^r)$ such that
+$\{g^{\ssbullet}:g\in D\}$ is norm-dense in $L^1(\mu_L)$.
+
+\proof{{\bf (a)} This is elementary;  every continuous function is
+resolvable, therefore a codable Borel function and belongs to $\eusm L^0$;
+if in addition it has compact support it is dominated by an integrable
+function and is integrable, by 564E(c-i).
+
+\medskip
+
+{\bf (b)(i)} Let $\Cal U$ be a countable base for the topology of
+$\BbbR^r$, consisting of bounded sets and closed under finite unions.
+Let $D_0$ be the set of functions of the form
+$x\mapsto\max(0,1-2^k\rho(x,\BbbR^r\setminus U))$ for $U\in\Cal U$ and
+$k\in\Bbb N$, where $\rho$ is the Euclidean metric on $\BbbR^r$,
+and $D$ the set of rational linear combinations of members of
+$D_0$;  then $D$ is a countable subset of $C_k(\BbbR^r)$.
+
+\medskip
+
+\quad{\bf (ii)}
+If $E\subseteq\BbbR^r$ is a codable Borel set of finite
+measure, and $\epsilon>0$, then by 565Ed
+there are a compact set $K\subseteq E$ and
+an open set $G\supseteq E$ such that $\mu_L(G\setminus K)\le\epsilon$.
+Now there are a $U\in\Cal U$ such that $K\subseteq U\subseteq G$ and
+a $g\in D_0$ such that $\chi K\le g\le\chi U$, so that
+$\int|g-\chi E|\le\epsilon$.
+
+\medskip
+
+\quad{\bf (iii)} It follows that whenever $f$ is a simple
+codable Borel function, in the sense of 564Aa, and $\epsilon>0$ there is
+a $g\in D$ such that $\int|f-g|\le\epsilon$.
+
+\medskip
+
+\quad{\bf (iv)} If $f\in\eusm L^1$ and $\epsilon>0$ there are a simple
+codable Borel function $g$ and an $h\in D$ such that 
+$\int|f-g|\le\bover12\epsilon$ such that $\int|g-h|\le\bover12\epsilon$, so that
+$\int|f-h|\le\epsilon$.
+}%end of proof of 565I
+
+\leader{565J}{Lemma} Suppose that $f$ is an integrable function on
+$\BbbR^r$, and that $\int_If\ge 0$ for every
+half-open interval $I\subseteq\BbbR^r$.   Then $f(x)\ge 0$ for almost every
+$x\in\BbbR^r$.
+
+\proof{{\bf (a)} Note first that any finite union $E$
+of half-open intervals is
+expressible as a finite disjoint union of half-open intervals.
+So $\int_Ef\ge 0$.
+
+\medskip
+
+{\bf (b)} Suppose that $g$ is a simple codable Borel function such that
+$\int_Eg\le\epsilon$ whenever $E$ is a finite union of
+half-open intervals.   Then $\int g^+\le\epsilon$.   \Prf\ Set
+$F=\{x:g(x)>0\}$, and take any $\eta>0$.   Then there are a compact
+$K\subseteq F$ and an open $G\supseteq F$ such that
+$\mu_L(G\setminus K)\le\eta$.   There is a set $E$,
+a finite union of half-open intervals, such that $K\subseteq E\subseteq G$.
+In this case,
+
+\Centerline{$\int g^+-\int_Eg\le\int|g\times\chi(E\symmdiff F)|
+\le\|g\|_{\infty}\mu_L(G\setminus K)$,
+\quad$\int g^+\le\epsilon+\eta\|g\|_{\infty}$;}
+
+\noindent as $\eta$ is arbitrary, we have the result.\ \Qed
+
+\medskip
+
+{\bf (c)} We know that there is a codable
+sequence $\sequencen{g_n}$ of simple codable
+Borel functions such that $f\eae\lim_{n\to\infty}g_n$ and
+\ifnum\stylenumber=12 the sum \else\fi
+$\sum_{n=0}^{\infty}\int|g_{n+1}-g_n|$ is finite.   Set
+$\epsilon_n=\sum_{i=n}^{\infty}\int|g_{i+1}-g_i|$ for each $n$;  then
+$\int|f-g_n|\le\epsilon_n$, because $\int|g_m-g_n|\le\epsilon_n$ for every
+$m\ge n$.   So if $E$ is a finite union of half-open intervals,
+
+\Centerline{$\int_Eg_n
+=\int g_n\times\chi E\ge\int f\times\chi E-\int|f-g_n|
+\ge-\epsilon_n$;}
+
+\noindent by (a), applied to $-g_n$,
+$\int g_n^-\le\epsilon_n$.   By 564Be,
+
+\Centerline{$f^-\eae\lim_{n\to\infty}g_n^-\eae
+\liminf_{n\to\infty}g_n^-=0$}
+
+\noindent almost everywhere, as required.
+}%end of proof of 565J
+
+\leader{565K}{Theorem} A monotonic function $f:\Bbb R\to\Bbb R$ is
+differentiable almost everywhere.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Of course `almost everywhere'
+here is with respect to Lebesgue
+measure on $\Bbb R$;  in this result and the next two I am taking $r=1$.}
+
+\proof{ We can use the ideas in 222A if we refine them using 565F.   First,
+$\Cal C$ will be the set of closed non-trivial intervals with rational
+endpoints;  take $\Psi$ and $\Theta$ as in 565F.   It will be enough to
+deal with the case of non-decreasing $f$.   For $a<b$ in $\Bbb R$, set
+$f^*([a,b])=[f(a),f(b)]$.   I shall repeatedly use the fact that if
+$\Cal I\subseteq\Cal C$ is disjoint, then
+
+\Centerline{$\mu_L(\bigcup_{C\in\Cal I}f^*(C))
+=\sum_{C\in\Cal I}\mu_L f^*(C)$,}
+
+\noindent because $\Cal I$ is countable and
+$f^*(C)\cap f^*(C')$ contains at most one point for any distinct
+$C$, $C'\in\Cal I$, and we can use 563C(a-iv).
+
+\wheader{565K}{6}{2}{2}{72pt}
+{\bf (a)} Again set
+
+\Centerline{$\DiniD f(x)=\limsup_{h\to 0}{1\over h}(f(x+h)-f(x))$,
+\quad$\Dinid f(x)=\liminf_{h\to 0}{1\over h}(f(x+h)-f(x))$}
+     
+\noindent for $x\in\Bbb R$.   To see that $\DiniD f<\infty$ a.e., set
+$E_m=\{x:|x|<m$, $\DiniD f(x)>2^m(1+f(m)-f(-m))\}$ and
+
+$$\eqalign{\Cal I_m
+&=\{[\alpha,\beta]:\alpha,\,\beta\in\Bbb Q,\,-m<\alpha<\beta<m,\cr
+&\mskip 200mu f(\beta)-f(\alpha)>2^m(1+f(m)-f(-m))(\beta-\alpha)\}\cr
+&=\{C:C\in\Cal C,\,C\subseteq\ooint{-m,m},
+\mu_L f^*(C)>2^m(1+f(m)-f(-m))\mu_L C\}\cr}$$
+
+\noindent for each $m$.   Then, in the language of 565F,
+$E_m\subseteq A_{\Cal I_m}$.   (If $x\in E_m$ and $\delta>0$, then
+$x$ is an endpoint of a non-trivial
+closed interval $[\alpha,\beta]\subseteq\ooint{-m,m}$, of length less than
+$\delta$, such that
+$f(\beta)-f(\alpha)>2^m(1+f(m)-f(-m))(\beta-\alpha)$.
+Now we can expand $[\alpha,\beta]$
+slightly to get an interval $[\alpha',\beta']\in\Cal I_m$ of length at most
+$\delta$.)   So $E_m\subseteq\bigcup\Psi(\Cal I_m)\cup\Theta(\Cal I_m,k)$
+for each $k$.   $\Psi(\Cal I_m)$ is a countable family of closed
+sets, and
+
+$$\eqalign{2^m(1+f(m)-f(-m))\sum_{C\in\Psi(\Cal I_m)}\mu_L C
+&\le\sum_{C\in\Psi(\Cal I_m)}\mu_L f^*(C)\cr
+&=\mu_L\bigl(\bigcup_{C\in\Psi(\Cal I_m)}f^*(C)\bigr)
+\le f(m)-f(-m).\cr}$$
+
+\noindent So $\sum_{C\in\Psi(\Cal I_m)}\mu_L C\le 2^{-m}$.
+Setting 
+$H_m=\Theta(\Cal I_m,m)\cup\bigcup\{\interior C:C\in\Psi(\Cal I_m)\}$,
+$H_m$ is open, $\mu H_m\le 2^{-m+1}$ and $E_m\setminus\Bbb Q\subseteq H_m$.
+
+Set $E=\{x:\DiniD f(x)=\infty\}$, and take any $n\in\Bbb N$.
+Then
+
+\Centerline{$E\setminus\Bbb Q
+\subseteq\bigcup_{m\ge n}E_m\setminus\Bbb Q
+\subseteq\bigcup_{m\ge n}H_m$.}
+
+\noindent Now 563C(a-ii) tells us that
+
+\Centerline{$\mu_L(\bigcup_{m\ge n}H_m)
+\le\sum_{m=n}^{\infty}\mu H_m\le 2^{-n+1}$}
+
+\noindent for each $n$, so that
+$E\setminus\Bbb Q$ is included in a negligible G$_{\delta}$ set and
+$\mu_L E=\mu_L(E\setminus\Bbb Q)=0$.   Thus $\DiniD f$ is finite a.e.
+
+\medskip
+
+{\bf (b)} To see that $\DiniD f\leae\Dinid f$, we use similar ideas, but with
+an extra layer of complexity, corresponding to the double use of
+Vitali's theorem.   Set $F=\{x:\Dinid f(x)<\DiniD f(x)\}$.   Take any
+$\epsilon>0$;  because $\Bbb Q$ is countable, there is a family
+$\langle\epsilon_{mqq'}\rangle_{m\in\Bbb N,q,q'\in\Bbb Q}$
+of strictly positive numbers such that
+$\sum_{m\in\Bbb N,q,q'\in\Bbb Q}\epsilon_{mqq'}\le\bover12\epsilon$.
+For $q$, $q'\in\Bbb Q$ and $m$, $k\in\Bbb N$ let $\Cal I_{mqk}$,
+$\Cal J_{mqk}$ be
+
+\Centerline{$\{C:C\in\Cal C$, $C\subseteq\ooint{-m,m}$,
+$\mu_L C\le 2^{-k}$, $\mu_L f^*(C)\ge q\mu_L C\}$,}
+
+\Centerline{$\{C:C\in\Cal C$, $C\subseteq\ooint{-m,m}$,
+$\mu_L C\le 2^{-k}$, $\mu_L f^*(C)\le q\mu_L C\}$}
+
+\noindent respectively.  For $m$, $k\in\Bbb N$ and $q$, $q'\in\Bbb Q$ set
+
+\Centerline{$G_{mqq'k}=\bigcup\{\interior C:C\in\Cal I_{mq'k}\}
+   \cap\bigcup\{\interior C:C\in\Cal J_{mqk}$\};}
+
+\noindent then $\sequence{k}{G_{mqq'k}}$ is a
+non-increasing sequence of open sets of finite measure.
+So, setting $F_{mqq'}=\bigcap_{k\in\Bbb N}G_{mqq'k}$, we can find a family
+$\langle k(m,q,q')\rangle_{m\in\Bbb N,q,q'\in\Bbb Q}$ in $\Bbb N$ such that
+
+\Centerline{$\mu_L(G_{m,q,q',k(m,q,q')}\setminus F_{mqq'})
+\le\min(1,\Bover{q'-q}{q})\epsilon_{mqq'}$}
+
+\noindent whenever $m\in\Bbb N$, $q$,
+$q'\in\Bbb Q$ and $0<q<q'$ (563C(b-ii)).   Write $H_{mqq'}$ for
+$G_{m,q,q',k(m,q,q')}$.
+
+If $m\in\Bbb N$ and $0<q<q'$ in $\Bbb Q$, set
+
+\Centerline{$\Cal J'_{mqq'}=\{C:C\in\Cal C$,
+$C\subseteq H_{mqq'}$, $\mu_L f^*(C)\le q\mu_L C\}$.}
+
+\noindent Then $F_{mqq'}\subseteq H_{mqq'}$,
+so every point of $F_{mqq'}$ belongs to the interiors of arbitrarily small
+intervals belonging to $\Cal J'_{mqq'}$;  accordingly
+$F_{mqq'}\setminus\bigcup\Psi(\Cal J'_{mqq'})$ is negligible.
+
+Now let $\Cal I'_{mqq'}$ be the set
+
+\Centerline{$\{C:C\in\Cal C$, $C\subseteq C'$ for some
+$C'\in\Psi(\Cal J'_{mqq'})$, $\mu_L f^*(C)\ge q'\mu_L C\}$.}
+
+\noindent Then every point of
+$F_{mqq'}\cap\bigcup\Psi(\Cal J'_{mqq'})\setminus\Bbb Q$ belongs to
+arbitrarily small members of $\Cal I'_{mqq'}$, so
+$F_{mqq'}\setminus\bigcup\Psi(\Cal I'_{mqq'})$ is negligible.
+
+Now we come to the calculation at the heart of the proof.   If $m\in\Bbb N$
+and $0<q<q'$ in $\Bbb Q$,
+
+$$\eqalignno{q'\mu_L F_{mqq'}
+&\le q'\mu_L(\bigcup\Psi(\Cal I'_{mqq'}))
+=q'\sum_{C\in\Psi(\Cal I'_{mqq'})}\mu_L C\cr
+&\le\sum_{C\in\Psi(\Cal I'_{mqq'})}\mu_L f^*(C)
+=\mu_L\bigl(\bigcup_{C\in\Psi(\Cal I'_{mqq'})}f^*(C)\bigr)
+\le\mu_L\bigl(\bigcup_{C\in\Psi(\Cal J'_{mqq'})}f^*(C)\bigr)\cr
+\displaycause{because every member of $\Cal I'_{mqq'}$ is included in a
+member of $\Psi(\Cal J'_{mqq'})$}
+&=\sum_{C\in\Psi(\Cal J'_{mqq'})}\mu_L f^*(C)
+\le q\sum_{C\in\Psi(\Cal J'_{mqq'})}\mu_L C\cr
+&=q\mu_L(\bigcup\Psi(\Cal J'_{mqq'})
+\le q\mu_L H_{mqq'}
+\le q\mu_L F_{mqq'}+(q'-q)\epsilon_{mqq'},\cr}$$
+
+\noindent and $\mu_L F_{mqq'}\le\epsilon_{mqq'}$,
+$\mu_L H_{mqq'}\le 2\epsilon_{mqq'}$.   But this means that
+
+\Centerline{$F\setminus\Bbb Q
+\subseteq\bigcup_{m\in\Bbb N,q,q'\in\Bbb Q,0<q<q'}F_{mqq'}
+\subseteq\bigcup_{m\in\Bbb N,q,q'\in\Bbb Q,0<q<q'}H_{mqq'}$,}
+
+\noindent which has measure at most
+
+\Centerline{$\sum_{m\in\Bbb N,q,q'\in\Bbb Q,0<q<q'}\mu_L H_{mqq'}
+\le 2\sum_{m\in\Bbb N,q,q'\in\Bbb Q,0<q<q'}\epsilon_{mqq'}
+\le\epsilon$.}
+
+The process described here gives a recipe, starting from $\epsilon>0$, for
+finding an open set of measure at most $\epsilon$ including
+$F\setminus\Bbb Q$.   So we can repeat this for each term of a sequence
+converging to $0$ to define a negligible G$_{\delta}$ set including
+$F\setminus\Bbb Q$, and $F$ must be negligible, as required.
+}%end of proof of 565K
+
+\leader{565L}{Lemma} Suppose that $F:\Bbb R\to\Bbb R$ is a bounded
+non-decreasing function.   Then $\int F'$ is defined and is at most
+$\lim_{x\to\infty}F(x)-\lim_{x\to-\infty}F(x)$.
+
+\wheader{565L}{0}{0}{0}{48pt}
+
+\proof{ I copy the ideas of 222C.
+For each $n\in\Bbb N$, define $g_n:\Bbb R\to\Bbb R$ by setting
+$a_{nk}=2^{-n+1}k(n+1)-n$ for $k\le 2^n$,
+
+$$\eqalign{g_n(x)
+&=\Bover{2^{n-1}}{n+1}(F(a_{n,k+1})-F(a_{nk}))\text{ if }k<2^n
+  \text{ and }a_{nk}\le x<a_{n,k+1},\cr
+&=0\text{ if }x<-n\text{ or }x\ge n+2.\cr}$$
+
+\noindent Then $g_n$ is a simple Borel function
+and $F'(x)=\lim_{n\to\infty}g_n(x)$ whenever
+$F'(x)$ is defined, which is almost everywhere, by 565K.
+Also $\int g_n=F(n+2)-F(-n)$.   Because the $g_n$ are resolvable,
+$\sequencen{g_n}$ is codable;  by Fatou's Lemma (564Fb),
+
+\Centerline{$\int F'
+\le\liminf_{n\to\infty}\int g_n
+=\lim_{x\to\infty}F(x)-\lim_{x\to-\infty}F(x)$.}
+}%end of proof of 565L
+
+\leader{565M}{Theorem} Let $F:\Bbb R\to\Bbb R$ be a function.   Then the
+following are equiveridical:
+
+\inset{(i) there is an integrable function $f$ such that
+$F(x)=\int_{\ooint{-\infty,x}}f$ for every $x\in\Bbb R$,
+
+(ii) $F$ is of bounded variation, absolutely continuous on every bounded
+interval, and
+\ifdim\pagewidth>467pt\break\fi
+$\lim_{x\to-\infty}F(x)=0$,}
+
+\noindent and in this case $F'\eae f$.
+
+\proof{{\bf (a)} If $f$ is integrable and
+$F(x)=\int_{\ooint{-\infty,x}}f$ for every $x\in\Bbb R$, take any
+$\epsilon>0$.   Then there is a $g\in C_k(\Bbb R)$ such that
+$\int|f-g|\le\epsilon$ (565Ib).
+Let $x_0$ be such that $g(x)=0$ for $x\le x_0$;  then
+
+\Centerline{$|F(x)|\le\int|f-g|\le\epsilon$}
+
+\noindent whenever $x\le x_0$.   Set
+$\delta=\Bover{\epsilon}{1+\|g\|_{\infty}}$.   If
+$a_0\le b_0\le\ldots\le a_n\le b_n$ and $\sum_{i=0}^nb_i-a_i\le\delta$,
+then
+
+$$\eqalign{\sum_{i=0}^n|F(b_i)-F(a_i)|
+&=\sum_{i=0}^n|\int_{\coint{a_i,b_i}}f|
+\le\sum_{i=0}^n\int_{\coint{a_i,b_i}}|g|+\int_{\coint{a_i,b_i}}|f-g|\cr
+&\le\sum_{i=0}^n(b_i-a_i)\|g\|_{\infty}+\int|f-g|
+\le\delta\|g\|_{\infty}+\epsilon
+\le 2\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary, $\lim_{x\to-\infty}F(x)=0$ and $F$ is
+absolutely continuous on every bounded interval.   As for the variation of
+$F$, if $a_0\le a_1\le\ldots\le a_n$ then
+
+$$\eqalign{\sum_{i=1}^n|F(a_i)-F(a_{i-1})|
+&=\sum_{i=1}^n|\int_{\coint{a_{i-1},a_i}}f|
+\le\sum_{i=1}^n\int_{\coint{a_{i-1},a_i}}|f|\cr
+&=\int_{\coint{a_0,a_n}}|f|
+\le\int|f|,\cr}$$
+
+\noindent so $\Var(F)\le\int|f|$ is finite.
+
+Thus (i)$\Rightarrow$(ii).
+
+\medskip
+
+{\bf (b)} Moreover, under the conditions of (a),
+$F'\eae f$.   \Prf\ Because $f$ is the difference of two
+non-negative integrable functions, it is enough to consider the case
+$f\ge 0$ a.e., so that $F$ is non-decreasing.
+In this case, applying 565L to the function $x\mapsto\med(F(a),F(x),F(b))$,
+we see that $\int_{\coint{a,b}}F'\le\int_{\coint{a,b}}f$ whenever $a\le b$
+in $\Bbb R$;  also, applying 565L to $F$ itself, $F'$ is integrable.
+Applying 565J to $f-F'$, we see that $F'\leae f$.
+
+Recall that there is a countable subset $D$ of $C_k(\Bbb R)$
+approximating all integrable functions in mean (565Ib).
+So there is a sequence  $\sequencen{g_n}$ in $D$ such that
+$\sum_{n=0}^{\infty}\int|g_n-f|$ is finite.   Set
+$\tilde g_n=\sup_{i\le n}g_i^+$ for $n\in\Bbb N$;  then all the
+$\tilde g_n$ are continuous, therefore resolvable, and
+$\sequencen{\tilde g_n}$ is a codable sequence of integrable functions.
+By 564Fa, $g=\lim_{n\to\infty}\tilde g_n$ is defined a.e.\ and integrable.
+Let $G_n$, $G$ be the indefinite integrals of $\tilde g_n$, $g$
+respectively.   Then the arguments just used show that $G'\leae g$.
+But note that each $G_n$, being the indefinite integral of a continuous
+function, has $G'_n=\tilde g_n$ exactly,
+while $G'_n\le G'$ whenever $G'$ is defined.   So
+
+\Centerline{$g\eae\lim_{n\to\infty}\tilde g_n=\lim_{n\to\infty}G'_n
+\leae G'$,}
+
+\noindent and $g\eae G'$.
+
+At this point observe that $\int\liminf_{n\to\infty}|g_n-f|=0$, by 564Fb,
+so $f\leae g$, while $G-F$ is the indefinite
+integral of the essentially non-negative integrable function $g-f$.
+So $G'-F'\leae g-f\eae G'-f$ and $f\leae F'$.   So actually $f\eae F'$,
+as hoped for.\ \Qed
+
+\medskip
+
+{\bf (c)} Now suppose that $F:\Bbb R\to\Bbb R$
+is of bounded variation and absolutely continuous on every bounded
+interval, and that $\lim_{x\to-\infty}F(x)=0$.   By 224D and 565L,
+$F'$ is integrable;  set $G(x)=\int_{\ooint{-\infty,x}}F'$
+and $H(x)=F(x)-G(x)$ for $x\in\Bbb R$.   By (b), $H'=F'-G'$ is zero a.e.,
+while $H$, like $F$ and $G$, is absolutely continuous on every bounded
+interval.   But this means that $H$ is constant.   \Prf\ Suppose that
+$a<b$ in $\Bbb R$ and $\epsilon>0$.   Let $\delta\in\ooint{0,b-a}$
+be such that $\sum_{i=0}^n|H(b_i)-H(a_i)|\le\epsilon$ whenever
+$a\le a_0\le b_0\le a_1\le b_1\le\ldots\le a_n\le b_n\le b$ and
+$\sum_{i=0}^nb_i-a_i\le\delta$   Set
+$E=\{x:x\in\ooint{a,b}$, $H'(x)=0\}$.   Let $\Cal C$ be the family of
+non-trivial closed subintervals $[c,d]$ of $\ooint{a,b}$ with rational
+endpoints such that $|H(d)-H(c)|\le\epsilon(d-c)$;  then every point of $E$
+belongs to arbitrarily small members of $\Cal C$.   By Vitali's theorem
+(565F) there is a disjoint countable
+family $\Cal I\subseteq\Cal C$ such that
+$E\setminus\bigcup\Cal I$ is negligible, so that
+
+\Centerline{$\sum_{I\in\Cal I}\mu_LI=\mu_L(\bigcup\Cal I)=b-a$.}
+
+\noindent Let $\Cal J\subseteq\Cal I$ be a finite subset such that
+$\sum_{I\in\Cal J}\mu_LI\ge b-a-\delta$;  express $\Cal J$ as
+$\ofamily{i}{n}{[b_i,a_{i+1}]}$ where $\ofamily{i}{n}{b_i}$ is strictly
+increasing.   Setting $a_0=a$ and $b_n=b$, we have
+$a=a_0\le b_0\le\ldots\le a_n\le b_n=b$ and $\sum_{i=0}^nb_i-a_i\le\delta$.
+So
+
+$$\eqalign{|H(b)-H(a)|
+&\le\sum_{i=0}^n|H(b_i)-H(a_i)|+\sum_{i=0}^{n-1}|H(a_{i+1})-H(b_i)|\cr
+&\le\epsilon+\epsilon\sum_{i=0}^{n-1}(a_{i+1}-b_i)
+\le\epsilon(1+b-a).\cr}$$
+
+\noindent As $a$, $b$ and $\epsilon$ are arbitrary, $H$ is constant.\
+\Qed
+
+So $F-G$ is constant.   As both $F$ and $G$ tend to $0$ at $-\infty$,
+they are equal.   Thus $F(x)=\int_{\ooint{-\infty,x}}F'$ for every $x$, and
+$F$ is an indefinite integral.
+}%end of proof of 565M
+
+\leader{565N}{Hausdorff measures} Let $(X,\rho)$ be a metric space and
+$s\in\ooint{0,\infty}$.   As in \S471, we can define {\bf Hausdorff
+$s$-dimensional submeasure} $\theta_s:\Cal PX\to[0,\infty]$ by
+writing
+
+$$\eqalign{\theta_sA
+=\sup_{\delta>0}\inf\{\sum_{n=0}^{\infty}(\diam D_n)^s:
+  \sequencen{D_n}
+&\text{ is a sequence of subsets of }X\text{ covering }A,\cr
+&\qquad\qquad\qquad\quad
+  \diam D_n\le\delta\text{ for every }n\in\Bbb N\},\cr}$$
+
+\noindent counting $\diam\emptyset$ as $0$ and
+$\inf\emptyset$ as $\infty$.
+\cmmnt{As with Lebesgue submeasure,} $\theta_s$ is a submeasure.
+
+\leader{565O}{Theorem} Let $(X,\rho)$ be a second-countable metric
+space, and $s>0$.   Then there is a Borel-coded measure $\mu$ on $X$ such
+that $\mu K=\theta_sK$ whenever $K\subseteq X$ is compact and $\theta_sK$
+is finite.
+
+%If $\theta_sX$ is finite, then there is a Borel-coded
+%measure $\mu$ on $X$ such that $\mu G=\theta_sG$ for every open set
+%$G\subseteq X$.
+
+\proof{{\bf (a)} To begin with, suppose that $X$ is compact and
+$\theta_sX$ is finite.
+
+\medskip
+
+\quad{\bf (i)} Let $\Cal U$ be a countable base for the topology of $X$
+closed under finite unions;  let
+$\preccurlyeq$ be a well-ordering of $\Cal U$.
+Then for any compact $K\subseteq X$,
+$\delta>0$ and $\epsilon>0$, there are $U_0,\ldots,U_n\in\Cal U$ such that
+$K\subseteq\bigcup_{i\le n}U_i$, $\diam U_i\le\delta$ for every $i$ and
+$\sum_{i=0}^n(\diam U_i)^s\le\theta_sK+\epsilon$.   \Prf\ There is a sequence
+$\sequencen{A_n}$ of subsets of $X$ such that
+$K\subseteq\bigcup_{n\in\Bbb N}A_n$, $\diam A_n\le\bover12\delta$ for every
+$n$ and $\sum_{n=0}^{\infty}(\diam A_n)^s\le\theta_sK+\bover12\epsilon$.
+Let $\sequencen{\eta_n}$ be a sequence in $\ooint{0,\bover14\delta}$ such
+that $\sum_{n=0}^{\infty}(2\eta_n+\diam A_n)^s\le\theta_sK+\epsilon$.
+
+For each $n\in\Bbb N$, set $G_n
+=\{x:\rho(x,A_n)<\eta_n\}$.   Then $\overline{A}_n$ is a compact subset 
+of $G_n$ so there is a $\preccurlyeq$-first $U_n\in\Cal U$ such that
+$\overline{A}_n\subseteq U_n\subseteq G_n$.   Now
+$\diam U_n\le\min(\delta,\diam A_n+2^{-n-2}\epsilon)$ for each $n$ so
+$\sum_{n=0}^{\infty}(\diam U_n)^s\le\theta_sK+\epsilon$.   But as $K$ is
+compact there is an $n$ such that $K\subseteq\bigcup_{i\le n}U_i$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} As in the proof of 471Da, $\theta_s$ is a `metric
+submeasure', that is, $\theta_s(A\cup B)=\theta_sA+\theta_sB$ whenever $A$,
+$B\subseteq X$ and $\rho(A,B)>0$.   (It will be convenient here to say
+that $\rho(A,B)=\infty$ if either $A$ or $B$ is empty.)   It follows that
+$\theta_s(\bigcup_{n\in\Bbb N}K_n)=\sum_{n=0}^{\infty}\theta_sK_n$ whenever
+$\sequencen{K_n}$ is a disjoint sequence of compact subsets of $X$.   \Prf\
+Recall that $\rho(K,K')>0$ whenever $K$, $K'$ are
+disjoint compact subsets of $X$;  this is because $K\times K'$ is compact
+and $\rho:X\times X\to\Bbb R$ is continuous.   So
+
+\Centerline{$\theta_s(\bigcup_{n\in\Bbb N}K_n)
+\ge\theta_s(\bigcup_{i\le n}K_i)
+=\sum_{i=0}^n\theta_sK_i$}
+
+\noindent for every $n\in\Bbb N$, and
+$\theta_s(\bigcup_{n\in\Bbb N}K_n)\ge\sum_{n=0}^{\infty}\theta_sK_n$.   In
+the other direction, let $\epsilon>0$.   Let $\preccurlyeq'$ be a
+well-ordering of $\bigcup_{n\in\Bbb N}\Cal U^n$.   Then for each
+$n\in\Bbb N$ there is a $\preccurlyeq'$-first finite sequence
+$U_{n0},\ldots,U_{nm_n}$ in $\Cal U$ such that
+$K_n\subseteq\bigcup_{i\le m_n}U_{ni}$, $\diam U_{ni}\le\epsilon$ for every
+$i$ and $\sum_{i=0}^{m_n}(\diam U_{ni})^s\le\theta_sK_n+2^{-n}\epsilon$.
+Now $\langle U_{ni}\rangle_{n\in\Bbb N,i\le m_n}$ witnesses that
+
+$$\eqalign{\sum_{n=0}^{\infty}\theta_sK_n+2\epsilon
+&\ge\inf\{\sum_{j=0}^{\infty}(\diam D_j)^s:
+  \sequence{j}{D_j}\text{ is a sequence of subsets of }X\cr
+&\mskip150mu\text{ covering }\bigcup_{n\in\Bbb N}K_n,\,
+  \diam D_j\le\epsilon\text{ for every }j\in\Bbb N\}.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary,
+$\theta_s(\bigcup_{n\in\Bbb N}K_n)\le\sum_{n=0}^{\infty}\theta_s(K_n)$.\
+\Qed
+
+\medskip
+
+\quad{\bf (iii)} If $G\subseteq X$ is open and $\epsilon>0$, there is a compact
+set $K\subseteq G$ such that $\theta_s(G\setminus K)\le\epsilon$.   \Prf\
+Set $K_0=\{x:\rho(x,X\setminus G)\ge 1\}$ and for $n\ge 1$ set
+
+\Centerline{$K_n=\{x:2^{-n}\le\rho(x,X\setminus G)\le 2^{n+1}\}$.}
+
+\noindent Then $\sum_{n=0}^{\infty}\theta_sK_{2n}$ and
+$\sum_{n=0}^{\infty}\theta_sK_{2n+1}$ are both bounded by
+$\theta_sX<\infty$, so there is an $n\in\Bbb N$ such that
+$\sum_{i=n}^{\infty}\theta_sK_n\le\epsilon$.   But this means that
+$\theta_s(\bigcup_{i\ge n}K_n)\le\epsilon$ (apply (ii) to the odd and even
+terms separately).   Set $K=\bigcup_{i\le n}K_i$;  this works.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} Writing $\frak T$ for the topology of $X$,
+$\theta_s\restrp\frak T$ satisfies the conditions of 563H.   \Prf\ Of course
+it is zero at $\emptyset$, monotonic and locally finite.   If $G$,
+$H\in\frak T$ and $\epsilon>0$, let $K\subseteq G$, $L\subseteq H$ be
+compact sets such
+that $\theta_s(G\setminus K)+\theta_s(H\setminus L)\le\epsilon$.   Then
+$K\setminus H$, $K\cap L$ and $L\setminus G$ are disjoint compact sets and
+
+\Centerline{$(G\cup H)
+\setminus((K\setminus H)\cup(K\cap L)\cup(L\setminus G))$,
+\quad$(G\cap H)\setminus(K\cap L)$,}
+
+\Centerline{$G\setminus((K\setminus H)\cup(K\cap L))$,
+\quad$H\setminus((L\setminus G)\cup(K\cap L))$}
+
+\noindent are all included in $(G\setminus K)\cup(H\setminus L)$, so all
+have submeasure at most $\epsilon$.   But this means that
+$\theta_s(G\cup H)+\theta_s(G\cap H)$ and $\theta_sG+\theta_sH$ both differ
+from $\theta_s(K\setminus H)+2\theta_s(K\cap L)+\theta_s(L\setminus G)$ by
+at most $2\epsilon$ (upwards)
+and differ from each other by at most $2\epsilon$ also.
+As $\epsilon$ is arbitrary, we have the modularity condition.
+
+As for the sequential order-continuity, this is elementary;  if
+$\sequencen{G_n}$ is a non-decreasing sequence with union $G$, and
+$\epsilon>0$, there is a compact $K\subseteq G$ such that
+$\theta_s(G\setminus K)\le\epsilon$;  now $K\subseteq G_n$ for some $n$,
+and $\theta_sG\le\theta_sG_n+\epsilon$.\ \Qed
+
+\medskip
+
+\quad{\bf (v)} So 563H tells us that there is a Borel-coded
+measure $\mu$ on $X$
+extending $\theta_s\restrp\frak T$.   Now $\mu K=\theta_sK$ for every
+compact $K\subseteq X$.   \Prf\
+
+\Centerline{$\mu K+\mu(X\setminus K)=\mu X
+=\theta_sX\le\theta_sK+\theta_s(X\setminus K)
+=\theta_sK+\mu(X\setminus K)$,}
+
+\noindent so $\mu K\le\theta_sK$.   On the other hand, given $\epsilon>0$,
+there is a compact $L\subseteq X\setminus K$ such that
+$\theta_sL\ge\theta_s(X\setminus K)-\epsilon$, and now
+
+\Centerline{$\theta_sK=\theta_s(K\cup L)-\theta_sL
+\le\theta_sX-\theta_s(X\setminus K)+\epsilon
+=\mu K+\epsilon$;}
+
+\noindent as $\epsilon$ is arbitrary, $\mu K=\theta_sK$.\ \Qed
+
+\medskip
+
+\quad{\bf (vi)} Note that 563H tells us that $\mu$ is the only Borel-coded
+measure extending $\theta_s\restrp\frak T$, and must therefore be the only
+Borel-coded measure agreeing with $\theta_s$ on the compact sets.
+
+\medskip
+
+{\bf (b)} For the general case, let $\Cal K$ be
+$\{K:K\subseteq X$ is compact, $\theta_sK<\infty\}$.
+Then (a) tells us that for every $K\in\Cal K$ there is a unique Borel-coded measure
+$\mu_K$ on $K$ agreeing with $\theta_s$ on the compact subsets of $K$.
+If $K$, $L\in\Cal K$ and $K\subseteq L$, $\mu_L\restr\Cal B_c(K)$ is a
+Borel-coded measure on $K$ (563Fa)
+agreeing with $\theta_s$ on the compact subsets of $K$, so $\mu_L$ extends
+$\mu_K$.   We therefore have a Borel-coded measure $\mu$ on $X$
+defined by setting $\mu E=\sup_{K\in\Cal K}\mu_K(E\cap K)$ for every
+$E\in\Cal B_c(X)$ (cf.\ 563E),
+and $\mu$ agrees with $\theta_s$ on $\Cal K$, as required.
+}%end of proof of 565O
+
+%any hope of Howroyd's theorem?
+
+\exercises{\leader{565X}{Basic exercises (a)}%
+%\spheader 565Xa
+(i) Show that Lebesgue submeasure $\theta$ and Lebesgue measure are
+translation-invariant.   (ii) Show that if $A\subseteq\BbbR^r$ and
+$\alpha\ge 0$ then $\theta(\alpha A)=\alpha^r\theta A$.  (iii)
+Show that if $E\subseteq\BbbR^r$ is measurable and
+$\alpha\in\Bbb R$ then $\alpha E$ is measurable.
+%565C
+
+\spheader 565Xb Suppose that there is a sequence $\sequencen{A_n}$ of
+countable subsets of $[0,1]$ with union $[0,1]$.   (i) Set
+$A=\bigcup_{m\le n}A_m+n$.    Show that $A$ belongs to the algebra $\Sigma$
+of 565C, that the Lebesgue submeasure of $A$ is $\infty$,
+but that $A\cap[0,n]$ is Lebesgue negligible for every $n$.
+(ii) Set $B=\{2^{-n}x:n\in\Bbb N$, $x\in A_n\}$.   Show that $B$ has
+Lebesgue submeasure $0$, but is not Lebesgue negligible.
+%565D
+
+\spheader 565Xc Let $g:\Bbb R\to\Bbb R$ be a non-decreasing function.   For
+half-open intervals $I\subseteq\Bbb R$ define $\lambda_gI$ by setting
+
+\Centerline{$\lambda_g\emptyset=0$,
+\quad$\lambda_g\coint{a,b}
+=\lim_{x\uparrow b}g(x)-\lim_{x\uparrow a}g(x)$}
+
+\noindent if $a<b$.   For any set $A\subseteq\Bbb R$ set
+
+\Centerline{$\theta_gA=\inf\{\sum_{j=0}^{\infty}\lambda_gI_j:
+\sequence{j}{I_j}
+\text{ is a sequence of }\text{half-open intervals covering }A$.}
+
+\noindent Show that $\theta_g$ is a submeasure on $\Cal P\Bbb R$.
+Show that there is a Borel-coded measure
+$\mu_g$ on $\Bbb R$ agreeing with $\theta_g$ on open sets.
+%565D
+
+\spheader 565Xd Apply 564N to relate Lebesgue measure on $\BbbR^2$ to
+Lebesgue measure on $\Bbb R$.
+%565D
+
+\spheader 565Xe Suppose that there is a sequence $\sequencen{A_n}$ of
+countable sets with union $[0,1]$.   Show that there is a set
+$A\subseteq[0,1]^2$, with two-dimensional Lebesgue submeasure zero, such
+that all the vertical sections $A[\{x\}]$, for $x\in[0,1]$, have non-zero
+one-dimensional Lebesgue measure.
+%565L
+
+\spheader 565Xf Confirm that the principal
+results of \S281 can be proved without the axiom of choice.
+
+\leader{565Y}{Further exercises (a)}
+%\spheader 565Ya
+Show that if $X$ is a second-countable space and $\mu$ is a
+codably $\sigma$-finite Borel-coded
+measure on $X$, then there is a non-decreasing function
+$g:\Bbb R\to\Bbb R$ such that the Lebesgue-Stieltjes measure $\mu_g$
+of 565Xc has measure algebra isomorphic to that of $\mu$.
+%565D 565Xc
+}%end of exercises
+
+
+\endnotes{
+\Notesheader{565} In these five sections I have tried to indicate,
+without succumbing to the temptation to re-write the whole treatise, a
+possible version of Lebesgue's theory which can be used in plain ZF.
+With the Fundamental Theorem of Calculus (565M), the
+Radon-Nikod\'ym theorem (564L), Fubini's theorem (564N) and at least some
+infinite product measures (564O), it is clear that most of the ideas of
+Volume 2 should be expressible in forms not relying on the axiom of choice.
+We must expect restrictions of the type already found in the convergence
+theorems (564F);  for versions of the Central Limit Theorem or the strong
+law of large numbers or Koml\'os' theorem, for instance, we should
+certainly start by changing any hypothesis `let $\sequencen{f_n}$ be a
+sequence of random variables' into `let $\sequencen{f_n}$ be a codable
+sequence of codable Borel functions'.   I am not sure how to approach
+martingales, but the best chance of positive results will be with `codable
+martingales' in which we have a full set of Borel codes for countable sets
+generating each of the $\sigma$-algebras involved, along the lines of
+564Md.   If you glance at the formulae of
+Chapter 28, you will see that while there are many appeals to the
+convergence theorems, they are generally applied to sequences of the form
+$\sequencen{f\times g_n}$ where $f$ is integrable and the $g_n$ are
+continuous;  but this means that $\sequencen{g_n}$ is necessarily codable
+(562Qa, 562Sc) 
+so that $\sequencen{f\times g_n}$ will be a codable sequence if $f$
+itself is a codable function.
+
+In Volumes 3 and 4 we encounter much more solid obstacles, and I see no way
+in which Maharam's theorem, or the Lifting Theorem, can be made to work
+without something approaching the full axiom of choice, or a strong
+hypothesis declaring the existence of a well-orderable set at a crucial
+point.   I give an example of such a hypothesis in the statement of
+Vitali's theorem (565F).   But in the applications of Vitali's theorem
+later in this section, we can always work with a countable family of balls,
+for which well-orderability is not an issue.   Separability and
+second-countability hypotheses can be expected to act in similar ways;  so
+that, for instance, we have 565Ya, which is a kind of primitive case of
+Maharam's theorem.
+
+
+}%end of notes
+
+\discrpage
+
+

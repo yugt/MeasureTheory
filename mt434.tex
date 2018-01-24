@@ -1,0 +1,2254 @@
+\frfilename{mt434.tex}
+\versiondate{1.9.04}
+\copyrightdate{2000}
+
+\def\Yprod#1{\prod_{i\in#1}Y_i}
+\hyphenation{Pfef-fer}
+
+\def\chaptername{Topologies and measures II}
+\def\sectionname{Borel measures}
+
+\newsection{434}
+
+What one might call the fundamental question of topological measure
+theory is the following.
+
+\Centerline{\it What kinds of measures can arise on what kinds of
+topological space?}
+
+\noindent Of course this question has inexhaustible ramifications,
+corresponding to all imaginable properties of measures and topologies
+and connexions between them.   The challenge I face here is that of
+identifying particular ideas as being more important than others, and
+the chief difficulty lies in the bewildering variety of topological
+properties which have been studied, any of which may have implications
+for the measure theory of the spaces involved.   In this section and the
+next I give a sample of what is known, necessarily biased and
+incomplete.   I try however to include the results which are most often
+applied and enough others for the proofs to contain, between them, most
+of the non-trivial arguments which have been found effective in this
+area.
+
+In 434A I set out a crude classification of Borel measures on
+topological spaces.   For compact Hausdorff spaces, at least, the first
+question is whether they carry Borel measures which are not, in effect,
+Radon measures;  this leads us to the definition of `Radon' space (434C)
+which is also of interest in the context of general Hausdorff spaces.
+I give a brief account of the properties of Radon spaces (434F, 434Nd).
+I look also at two special topics:
+`quasi-dyadic' spaces (434O-434Q) and a
+construction of Borel product measures by integration of sections
+(434R).
+
+In the study of Radon spaces we find ourselves looking at `universally
+measurable' subsets of topological spaces (434D-434E).   These are
+interesting in themselves, and also interact with constructions
+from earlier parts of this treatise (434S-434T).
+Three further classes of topological space, defined in terms of the
+types of topological measure which they carry, are the
+`Borel-measure-compact', `Borel-measure-complete' and `pre-Radon'
+spaces;  I discuss them briefly in 434G-434J.   They provide useful
+methods for deciding whether Hausdorff spaces are Radon (434K).
+
+\cmmnt{
+\vleader{72pt}{434A}{Types of Borel measures} In \S411 I introduced
+the following properties which a Borel measure may or may not have:
+
+\qquad(i) inner regularity with respect to closed sets;
+
+\qquad(ii) inner regularity with respect to zero sets;
+
+\qquad(iii) tightness\cmmnt{ (that is, inner regularity with respect
+to closed compact sets)};
+
+\qquad(iv) $\tau$-additivity.
+
+\noindent These are of course interrelated.   (ii)$\Rightarrow$(i) just
+because zero sets are closed, and (iii)$\Rightarrow$(iv) by 411E;
+in a Hausdorff space, (iii)$\Rightarrow$(i);  and for an effectively
+locally finite measure on a regular topological space,
+(iv)$\Rightarrow$(i) (414Mb).
+
+On a regular Hausdorff space, therefore, we can divide totally finite
+Borel measures into four classes:
+
+\inset{(A) measures which are not inner regular with respect to the
+closed sets;}
+
+\inset{(B) measures which are inner regular with respect to the closed
+sets, but not $\tau$-additive nor tight;}
+
+\inset{(C) measures which are $\tau$-additive and inner regular with
+respect to the closed sets, but not inner regular with respect to the
+compact sets;}
+
+\inset{(D) tight measures;}
+
+\noindent and each of the classes (B)-(D) can be further subdivided into
+those which are completion regular (B$_1$, C$_1$, D$_1$) and those which
+are not (B$_0$, C$_0$, D$_0$).   Examples may be found in 434Xf (type
+A), 411Q and 439K (type B$_0$), 439J (type B$_1$), 415Xc and 434Xa (type
+C$_1$) and 434Xb (type D$_0$), while Lebesgue measure itself is of type
+D$_1$, and any direct sum of spaces of types D$_0$ and C$_1$ will have
+type C$_0$.   (The space in 439J depends for its construction on
+supposing that there is a cardinal which is not measure-free.   It
+seems that
+no convincing example of a space of class B$_1$, that is, a completion
+regular, non-$\tau$-additive Borel probability measure on a completely
+regular Hausdorff space, is known which does not depend on some special
+axiom beyond ordinary ZFC.   For one of the obstacles to finding such a
+space, see 434Q.)
+
+Note that a totally finite Borel measure $\mu$ on a regular Hausdorff
+space can be extended to a quasi-Radon measure iff $\mu$ is of class C
+or D (415M), and that in this case the quasi-Radon measure must be
+just the completion $\hat\mu$ of $\mu$.   $\hat\mu$ will be of the same
+type, on the classification here, as $\mu$;  in particular, $\hat\mu$
+will be a Radon measure iff $\mu$ is of class D (416F).
+}%end of comment
+
+\cmmnt{
+\leader{434B}{Compact, analytic and K-analytic spaces} For any
+class of topological spaces, we can enquire which of the seven types of
+measure described above can be realized by measures on spaces of that
+class.   The enquiry is limited only by our enterprise and diligence in
+seeking out new classes of topological space.   For the spaces studied
+in \S\S432-433, however, we have something worth repeating here.   On a
+K-analytic Hausdorff space, a semi-finite Borel measure which is inner
+regular with respect to the closed sets is tight (432B, 432D);
+consequently classes B and C of 434A
+cannot appear, and we are left with only the types A, D$_0$ and D$_1$,
+all of which appear on compact Hausdorff spaces (434Xb, 434Xf).   On an
+analytic Hausdorff space
+we have further simplifications:  every semi-finite Borel measure is
+tight (433Ca), and (if $X$ is
+regular) every closed set is a zero set (423Db).   Thus on an analytic
+regular Hausdorff space only type D$_1$, of the seven types in 434A, can
+appear.   (If the topology is not regular, we may also get measures of
+type D$_0$;  see 434Ya.)
+}%end of comment
+
+\leader{434C}{Radon spaces:  Definition}\cmmnt{ For K-analytic
+Hausdorff spaces, therefore, we have a large gap between the `bad'
+measures of class A and the `good' measures of class D;  furthermore, we
+have an important class of spaces in which type A cannot appear.   It is
+natural to enquire further into the spaces in which every (totally
+finite) Borel measure is of class D, and (given that no exact
+description can be found) we are led, as usual, to a definition.}   A
+Hausdorff space $X$ is {\bf Radon} if every totally finite Borel measure
+on $X$ is tight.
+
+\leader{434D}{Universally measurable sets}\cmmnt{ Before going farther
+with the study of Radon spaces it will be useful to spend a couple of
+paragraphs on the following concept.}   Let $X$ be a topological space.
+
+\spheader 434Da I will say that a subset $E$
+of $X$ is {\bf universally measurable} (in $X$) if it is measured by the
+completion of every totally finite Borel measure on $X$\cmmnt{;  that
+is, for every totally finite Borel measure $\mu$ on $X$ there is a Borel
+set $F\subseteq X$ such that $E\symmdiff F$ is $\mu$-negligible}.
+
+\spheader 434Db
+A subset of $X$ is universally measurable iff it is measured by every
+complete locally determined topological measure on $X$.
+\prooflet{\Prf\ (i) Suppose that $A\subseteq X$ is universally
+measurable and that $\mu$ is a complete locally determined topological
+measure on $X$.   Let $F\subseteq X$ be such that $\mu F$ is defined and
+finite.   Then we have a totally finite Borel measure $\nu$ on $X$
+defined by setting $\nu E=\mu(F\cap E)$ for every Borel set $E\subseteq
+X$.   Now there are Borel sets $E$, $B\subseteq X$ such that $A\symmdiff
+E\subseteq B$ and $\nu B=0$.   In this case,
+$(A\cap F)\symmdiff(E\cap F)\subseteq B\cap F$ and $\mu(B\cap F)=0$, so
+that (because $\mu$ is complete) $A\cap F$ is measured by $\mu$.
+Because $F$ is arbitrary and $\mu$ is locally determined, $A$ is
+measured by $\mu$.   (ii) Suppose that $A\subseteq X$ is measured by
+every complete locally determined topological measure on $X$.   Then, in
+particular, it is measured by the completion of any totally finite Borel
+measure, so is universally measurable.\ \Qed}
+
+\spheader 434Dc The family
+$\Sigma_{\text{um}}$ of universally measurable subsets of $X$ is a
+$\sigma$-algebra closed under Souslin's operation and including the
+Borel $\sigma$-algebra.   \prooflet{(For it is the intersection of the
+domains of a family of complete totally finite measures, and all these
+are $\sigma$-algebras including the Borel $\sigma$-algebra and closed
+under Souslin's operation, by 431A.)}   In particular, Souslin-F sets
+are universally measurable, so (if $X$ is Hausdorff) K-analytic and
+analytic sets are\cmmnt{ (422Ha, 423C)}.
+
+\spheader 434Dd Note that a function $f:X\to\Bbb R$ is
+$\Sigma_{\text{um}}$-measurable iff it is $\mu$-virtually measurable for
+every totally finite Borel measure $\mu$ on $X$\cmmnt{ (122Q, 212Fa)}.
+Generally, if $Y$ is another topological space, I will say that 
+$f:X\to Y$ is {\bf universally measurable} if 
+$f^{-1}[H]\in\Sigma_{\text{um}}$
+for every open set $H\subseteq Y$\cmmnt{;  that is, if $f$ is
+$(\Sigma_{\text{um}},\Cal B(Y))$-measurable, where $\Cal B(Y)$ is the
+Borel $\sigma$-algebra of $Y$}.
+
+\spheader 434De In fact, if $f:X\to Y$ is universally measurable, then
+it is $(\Sigma_{\text{um}},\Sigma^{(Y)}_{\text{um}})$-measurable, where
+$\Sigma^{(Y)}_{\text{um}}$ is the algebra of universally measurable
+subsets of $Y$.   \prooflet{\Prf\ Take $F\in\Sigma^{(Y)}_{\text{um}}$
+and a totally finite Borel measure $\mu$ on $X$.   If $\hat\mu$ is the
+completion of $\mu$, then the image measure $\nu=\hat\mu f^{-1}$ is a
+complete totally finite topological measure on $Y$, so measures $F$,
+and $f^{-1}[F]\in\dom\hat\mu$.   As $\mu$ is arbitrary,
+$f^{-1}[F]\in\Sigma_{\text{um}}$;  as $F$ is arbitrary, $f$
+is $(\Sigma_{\text{um}},\Sigma^{(Y)}_{\text{um}})$-measurable.\ \Qed}
+
+\spheader 434Df It follows that if $Z$ is a third topological space
+and $f:X\to Y$, $g:Y\to Z$ are universally measurable, then $gf:X\to Z$
+is universally measurable.
+
+\leader{434E}{Universally Radon-measurable sets}\cmmnt{ A companion
+idea is the following.} Let $X$ be a Hausdorff space.
+
+\spheader 434Ea I will say that a
+subset $E$ of $X$ is {\bf universally Radon-measurable} if it is
+measured by every Radon measure on $X$.
+
+\spheader 434Eb The family
+$\Sigma_{\text{uRm}}$ of universally Radon-measurable subsets of $X$ is
+a $\sigma$-algebra closed under Souslin's operation and including the
+algebra\cmmnt{ $\Sigma_{\text{um}}$}
+of universally measurable subsets of $X$\cmmnt{ (and, {\it a fortiori},
+including the Borel $\sigma$-algebra)}.   \prooflet{(Use 434Db and the
+idea of 434Dc.)}
+
+\spheader 434Ec If $Y$ is another topological space, I will say that a function
+$f:X\to Y$ is {\bf universally
+Radon-measurable} if $f^{-1}[H]\in\Sigma_{\text{uRm}}$ for every open set
+$H\subseteq Y$.   A function $f:X\to\Bbb R$ is
+$\Sigma_{\text{uRm}}$-measurable iff it is $\mu$-virtually measurable
+for every totally finite tight Borel measure $\mu$ on $X$.
+\cmmnt{(Compare 434Dd.)}
+
+\leader{434F}{Elementary properties of Radon spaces:  Proposition}
+Let $X$ be a Hausdorff space.
+
+(a) The following are equiveridical:
+
+\quad(i) $X$ is a Radon space;
+
+\quad(ii) every semi-finite Borel measure on $X$ is tight;
+
+\quad(iii) if $\mu$ is a locally finite Borel measure on $X$, its
+c.l.d.\ version $\tilde\mu$ is a Radon measure;
+
+\quad(iv) whenever $\mu$ is a totally finite Borel measure on $X$, and
+$G\subseteq X$ is an open set with $\mu G>0$, then there is a compact
+set $K\subseteq G$ such that $\mu K>0$;
+
+\quad(v) whenever $\mu$ is a non-zero totally finite Borel measure on
+$X$, there is a Radon subspace $Y$ of $X$ such that $\mu^*Y>0$.
+
+(b) If $Y\subseteq X$ is a subspace which is a Radon space in its
+induced topology, then $Y$ is universally measurable in $X$.
+
+(c) If $X$ is a Radon space and $Y\subseteq X$,
+then $Y$ is Radon iff it is universally measurable in $X$ iff it is
+universally Radon-measurable in $X$.
+In particular, all Borel subsets and all Souslin-F subsets of $X$ are
+Radon spaces.
+
+(d) The family of Radon subspaces of $X$ is closed under Souslin's 
+operation and set difference.
+
+\proof{{\bf (a)(i)$\Rightarrow$(ii)} Let $\mu$ be a semi-finite Borel
+measure on $X$, $E\subseteq X$ a Borel set and $\gamma<\mu E$.   Because
+$\mu$ is semi-finite, there is a Borel set $H$ of finite measure such
+that $\mu(E\cap H)>\gamma$.   Set $\nu F=\mu(F\cap H)$ for every Borel
+set $F\subseteq X$;  then $\nu$ is a totally finite Borel measure on
+$X$, and $\nu E>\gamma$.   Because $X$ is a Radon space, there is a
+compact set $K\subseteq E$ such that $\nu K\ge\gamma$, and now $\mu
+K\ge\gamma$.   As $\mu$, $E$ and $\gamma$ are arbitrary, (ii) is true.
+
+\medskip
+
+\quad{\bf (ii)$\Rightarrow$(i)} and {\bf (i)$\Rightarrow$(v)} are
+trivial.
+
+\medskip
+
+\quad{\bf (v)$\Rightarrow$(iv)} Assume (v), and let $\mu$ be a totally
+finite Radon measure on $X$ and $G$ a non-negligible open set.   Set
+$\nu E=\mu(E\cap G)$ for every Borel set $E\subseteq X$.   Then $\nu$ is
+a non-zero totally finite Borel measure on $X$, so there is a Radon
+subspace $Y$ of $X$ such that $\nu^*Y>0$.   The subspace measure $\nu_Y$
+on $Y$ is a Borel measure on $Y$, so is tight.   Since
+$\nu_Y(Y\setminus G)=\nu(X\setminus G)=0$, $\nu_Y(Y\cap G)>0$ and there
+is a compact set $K\subseteq Y\cap G$ such that $\nu_YK>0$.   Now $\mu
+K>0$.   As $\mu$ and $G$ are arbitrary, (iv) is true.
+
+\medskip
+
+\quad{\bf not-(i)$\Rightarrow$not-(iv)} If $X$ is not Radon, there is a
+totally finite Borel measure $\mu$ on $X$ which is not tight.   By
+416F(iii), there is an open set $G\subseteq X$ such that
+
+\Centerline{$\mu G>\sup_{K\subseteq G\text{ is compact}}\mu K=\gamma$}
+
+\noindent say.   Let $\Cal K$ be the family of compact subsets of $G$.
+By 215B(v), there is a non-decreasing sequence $\sequencen{K_n}$ in
+$\Cal K$ such that $\mu(K\setminus F)=0$ for every $K\in\Cal K$, where
+$F=\bigcup_{n\in\Bbb N}K_n$.   Observe that
+
+\Centerline{$\mu F=\lim_{n\to\infty}\mu K_n\le\gamma<\mu G$.}
+
+\noindent Now set
+$\nu E=\mu(E\cap G\setminus F)$ for every Borel set $E\subseteq X$.
+Then $\nu$ is a
+Borel measure on $X$, and $\nu G>0$.   If $K\subseteq G$ is compact,
+then $\nu K=\mu(K\setminus F)=0$.   So $\nu$ and $G$ witness that (iii)
+is false.
+
+\medskip
+
+\quad{\bf (i)$\Rightarrow$(iii)} The point is that $\tilde\mu$ is tight.
+\Prf\ If
+$\tilde\mu E>\gamma$, then, because $\tilde\mu$ is semi-finite, there is
+a set $E'\subseteq E$ such that $\gamma<\tilde\mu E'<\infty$;  now there
+is a Borel set $H\subseteq E'$ such that $\mu H=\tilde\mu E'$ (213Fc).
+Setting $\nu F=\mu(H\cap F)$ for every Borel set $F$, $\nu$ is a totally
+finite Borel measure on $X$ and $\nu H>\gamma$, so there is a compact
+set $K\subseteq H$ such that $\nu K\ge\gamma$.   Since
+$\mu K<\infty$, $\tilde\mu K=\mu K\ge\gamma$ (213Fa), while
+$K\subseteq E$.   As $E$ and $\gamma$ are arbitrary, $\tilde\mu$ is tight.\ \Qed
+
+On the other hand, every point of $X$ belongs to an open set of finite
+measure for $\mu$, which is still of finite measure for $\tilde\mu$
+(213Fa again).   So $\tilde\mu$ is locally finite;  since it is surely
+complete and locally determined, it is a Radon measure.
+
+\medskip
+
+\quad{\bf (iii)$\Rightarrow$(i)} Assume (iii), and let $\mu$ be a totally
+finite Borel measure on $X$.   Then its c.l.d.\ version $\tilde\mu$ is
+tight.   But $\tilde\mu$
+extends $\mu$ (213Hc), so $\mu$ also is tight.   As $\mu$ is arbitrary,
+$X$ is a Radon space.
+
+\medskip
+
+{\bf (b)} Let $\mu$ be a totally finite Borel measure on $X$, and
+$\hat\mu$ its completion;  let $\epsilon>0$.   Let $\mu_Y$ be the
+subspace measure on $Y$, so that $\mu_Y$ is a totally finite Borel
+measure on $Y$, and is tight.
+There is a compact set $K\subseteq Y$ such that
+$\nu K\ge\mu_YY-\epsilon$.   But this means that
+
+\Centerline{$\mu^*Y=\mu_YY\le\mu_YK+\epsilon
+=\mu^*(K\cap Y)+\epsilon=\mu K+\epsilon\le\mu_*Y+\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, $\mu_*Y=\mu^*Y$, and $Y$ is
+measured by $\hat\mu$ (413Ef);  as $\mu$ is
+arbitrary, $Y$ is universally measurable.
+
+\medskip
+
+{\bf (c)} (i) If $Y$ is Radon, it is universally measurable, by
+(b).   (ii) If $Y$ is universally measurable, it is universally
+Radon-measurable, by 434Eb.  (iii) Suppose that $Y$ is universally
+Radon-measurable, and that $\nu$
+is a totally finite Borel measure on $Y$.   For Borel sets
+$E\subseteq X$, set $\mu E=\nu(E\cap Y)$.   Then $\mu$ is a totally
+finite Borel
+measure on $X$, so its c.l.d.\ version $\tilde\mu$ is a Radon measure on
+$X$, by (a-iii).
+We are supposing that $Y$ is universally Radon-measurable, so, in
+particular, it must be measured by $\tilde\mu$.   We have
+
+$$\eqalignno{\tilde\mu(X\setminus Y)
+&=\sup_{K\subseteq X\setminus Y\text{ is compact}}\tilde\mu K
+=\sup_{K\subseteq X\setminus Y\text{ is compact}}\mu K\cr
+\displaycause{213Ha, because $\mu$ is totally finite}
+&=\sup_{K\subseteq X\setminus Y\text{ is compact}}\nu(K\cap Y)
+=0,\cr}$$
+
+\noindent and $Y$ is $\tilde\mu$-conegligible.
+
+Now suppose that $E\subseteq Y$ is a (relatively) Borel subset of $Y$.
+Then $E$ is of the form $F\cap Y$ where $F$ is a Borel subset of $X$, so
+that
+
+$$\eqalign{\nu E
+&=\mu F
+=\tilde\mu F
+=\tilde\mu(Y\cap F)
+=\tilde\mu E\cr
+&=\sup_{K\subseteq E\text{ is compact}}\mu K
+=\sup_{K\subseteq E\text{ is compact}}\nu K.\cr}$$
+
+\noindent As $E$ is arbitrary, $\nu$ is tight;  as $\nu$ is arbitrary,
+$Y$ is a Radon space.
+
+By 434Dc, it follows that all Borel subsets and all Souslin-F subsets of
+$X$ are Radon spaces.
+
+\medskip
+
+{\bf (d)} The first step is to note that if $\sequencen{E_n}$ is a
+sequence of Radon subspaces of $X$ with union $E$, then $E$ is Radon;
+this is immediate from (a-v) above.
+
+Now let $\family{\sigma}{S}{E_{\sigma}}$ be a Souslin
+scheme, consisting of Radon subsets of $X$, with kernel $A$.   We know
+that $E=\bigcup_{\sigma\in S}E_{\sigma}$ is a Radon space.   Every
+$E_{\sigma}$ is universally measurable in $E$, by (b), so $A$ also is
+(434Dc), and must be Radon, by (c).   Thus the family of Radon subspaces
+of $X$ is closed under Souslin's operation.
+
+If $E$ and $F$ are Radon subsets of $X$, then $E\cup F$ is Radon, and,
+just as above, $F$ is universally measurable in $E\cup F$.
+But this means that $E\setminus F=(E\cup F)\setminus F$ is universally
+measurable in $E\cup F$, so that $E\setminus F$ is Radon.
+}%end of proof of 434F
+
+\leader{434G}{}\cmmnt{ Just as we can address the question `when can
+we be sure that every Borel measure is of class D?' in terms of the
+definition of `Radon' space (434C), we can form other classes of
+topological space by declaring that the Borel measures they support must
+be of certain kinds.   Three definitions which lead to interesting
+patterns of ideas are the following.
+
+\medskip
+
+\noindent}{\bf Definitions (a)} A topological space $X$ is {\bf
+Borel-measure-compact}\cmmnt{ ({\smc Gardner \& Pfeffer 84})}
+if every totally finite Borel measure on
+$X$ which is inner regular with respect to the closed sets is
+$\tau$-additive\cmmnt{, that is, $X$ carries no measure of class B in
+the classification of 434A}.
+
+\spheader 434Gb A topological space $X$ is 
+{\bf Borel-measure-complete}\cmmnt{ ({\smc Gardner \& Pfeffer 84})} if 
+every totally finite Borel measure on
+$X$ is $\tau$-additive.   \cmmnt{(If $X$ is regular and Hausdorff,
+this amounts to saying that $X$ carries no measures of classes A or B in
+the classification of 434A.)}
+
+\spheader 434Gc A Hausdorff space $X$ is {\bf pre-Radon}\cmmnt{ (also
+called
+`{\bf hypo-radonian}', `{\bf semi-radonian}')} if every $\tau$-additive
+totally finite Borel measure on $X$ is tight.   \cmmnt{(If $X$ is
+regular, this amounts to saying that
+$X$ carries no measure of class C in the classification of 434A.)}
+
+\leader{434H}{Proposition} Let $X$ be a topological space and $\Cal B$
+its Borel $\sigma$-algebra.
+
+(a) The following are equiveridical:
+
+\quad(i) $X$ is Borel-measure-compact;
+
+\quad(ii) every semi-finite Borel measure on $X$ which is inner regular
+with respect to the closed sets is $\tau$-additive;
+
+\quad(iii) every effectively locally
+finite Borel measure on $X$ which is inner regular with respect to the
+closed sets has an extension to a quasi-Radon measure;
+
+\quad(iv) every totally finite Borel measure on $X$ which is inner
+regular with respect to the closed sets has a support;
+
+\quad(v) if
+$\mu$ is a non-zero totally finite Borel measure on $X$, inner regular
+with respect to the closed sets, and $\Cal G$ is an open cover of $X$,
+then there is some $G\in\Cal G$ such that $\mu G>0$.
+
+(b) If $X$ is Lindel\"of\cmmnt{ (in particular, if $X$ is a
+K-analytic Hausdorff space)}, it is Borel-measure-compact.
+
+(c) If $X$ is Borel-measure-compact and $A\subseteq X$ is a Souslin-F
+set, then $A$ is Borel-measure-compact in its subspace topology.
+In particular, any Baire subset of $X$ is Borel-measure-compact.
+
+\proof{{\bf (a)(i)$\Rightarrow$(ii)} Assume (i), and let $\mu$ be a
+semi-finite Borel measure on $X$ which is inner regular with respect to
+the closed sets.   Let $\Cal G$ be an
+upwards-directed family of open sets with union $G^*$, and
+$\gamma<\mu G^*$.   Because $\mu$ is semi-finite, there is an
+$H\in\Cal B$ such that $\mu H<\infty$ and $\mu(H\cap G^*)\ge\gamma$.
+Set $\nu E=\mu(E\cap H)$ for every $E\in\Cal B$;  then $\nu$ is a
+totally finite Borel measure on $X$.   For any $E\in\Cal B$,
+
+\Centerline{$\nu E=\mu(E\cap H)
+=\sup\{\mu F:F\subseteq E\cap H$ is closed$\}
+\le\sup\{\nu F:F\subseteq E$ is closed$\}$,}
+
+\noindent so $\nu$ is inner regular with respect to the closed sets, and
+must be $\tau$-additive.   Now
+
+\Centerline{$\gamma
+\le\nu G^*
+=\sup_{G\in\Cal G}\nu G
+\le\sup_{G\in\Cal G}\mu G$.}
+
+\noindent As $\gamma$ and $\Cal G$ is arbitrary, $\mu$ is
+$\tau$-additive.
+
+\medskip
+
+\quad{\bf (ii)$\Rightarrow$(iii)} Assume (ii), and let $\mu$ be an
+effectively locally finite Borel measure on $X$ which is inner regular
+with respect to the closed sets.   Then it is semi-finite (411Gd),
+therefore $\tau$-additive.   By 415L, it has an extension to a
+quasi-Radon measure on $X$.
+
+\medskip
+
+\quad{\bf (iii)$\Rightarrow$(i)} If (iii) is true and $\mu$ is a totally
+finite Borel measure on $X$ which is inner regular with respect to the
+closed sets, then $\mu$ has an extension to a
+quasi-Radon measure, which is $\tau$-additive, so $\mu$ also is
+$\tau$-additive (411C).
+
+\medskip
+
+\quad{\bf (i)$\Rightarrow$(iv)} Use 411Nd.
+
+\medskip
+
+\quad{\bf (iv)$\Rightarrow$(v)} Suppose that (iv) is true, that $\mu$ is
+a non-zero totally finite Borel measure on $X$ which is inner regular
+with respect to the closed sets, and that $\Cal G$ is an open cover of
+$X$.   If $F$ is the support of $\mu$, then $\mu F>0$ so
+$F\ne\emptyset$;  there must be some $G\in\Cal G$ meeting $F$, and now
+$\mu G>0$.
+
+\medskip
+
+\quad{\bf not-(i)$\Rightarrow$not-(v)} Suppose that there is a totally
+finite Borel measure $\mu$ on $X$, inner regular with respect to the
+closed sets, which is not $\tau$-additive.   Let $\Cal G$ be an
+upwards-directed family of open sets such that $\mu G^*>\gamma$, where
+$G^*=\bigcup\Cal G$ and $\gamma=\sup_{G\in\Cal G}\mu G$.   Let
+$\sequencen{G_n}$ be a non-decreasing sequence in $\Cal G$ such that
+$\mu(G\setminus G^*_0)$ for every $G\in\Cal G$, where
+$G^*_0=\bigcup_{n\in\Bbb N}G_n$ (215B(v)).   Then $\mu G^*_0\le\gamma$,
+so there is a closed set $F\subseteq G^*\setminus G^*_0$ such that
+$\mu F>0$.
+
+Let $\nu$ be the Borel measure on $X$ defined by setting
+$\nu E=\mu(E\cap F)$ for every $E\in\Cal B$.   As in the argument for
+(i)$\Rightarrow$(ii), $\nu$ is inner regular with respect to the closed
+sets.   Consider $\Cal H=\Cal G\cup\{X\setminus F\}$;  this is an open
+cover of $X$.   If $G\in\Cal G$ then $\nu G\le\mu(G\setminus G^*_0)=0$,
+so $\nu H=0$ for every $H\in\Cal H$;  thus $\nu$ and $\Cal H$ witness
+that (v) is false.
+
+\medskip
+
+{\bf (b)} Use (a-v) and 422Gg.
+
+\medskip
+
+{\bf (c)} Let $\mu$ be a Borel measure on $A$ which is inner regular
+with respect to the closed sets, that is to say, the relatively closed
+sets in $A$.   Let $\nu$ be the corresponding Borel measure on $X$,
+defined by setting $\nu E=\mu(A\cap E)$ for every $E\in\Cal B$.   Let
+$\hat\nu$ be the completion of $\nu$.   Putting 431D and 421M together,
+we see that $\hat\nu A=\sup\{\hat\nu F:F\subseteq A$ is closed in $X\}$,
+that is, $\nu X=\sup\{\mu F:F\subseteq A$ is closed in $X\}$.   But this
+means that if $E\in\Cal B$ and $\gamma<\nu E$, there is a closed set $F$
+in $X$ such that $F\subseteq A$ and $\mu(E\cap F)>\gamma$;  now
+there is a relatively closed set $F'\subseteq A$ such that
+$F'\subseteq E\cap F$ and $\mu F'\ge\gamma$, and as $F'$ must be
+relatively closed in $F$ it is closed in $X$, while $\nu F'\ge\gamma$.
+Since $E$ and $\gamma$ are arbitrary, $\nu$ is inner regular with
+respect to the closed sets, and will be $\tau$-additive.
+
+Now suppose that $\Cal G$ is an upwards-directed family of relatively
+open subsets of $A$.   Set
+$\Cal H=\{H:H\subseteq X$ is open, $H\cap A\in\Cal G\}$.   Then $\Cal H$
+is upwards-directed, so
+
+\Centerline{$\mu(\bigcup\Cal G)
+=\nu(\bigcup\Cal H)
+=\sup_{H\in\Cal H}\nu H
+=\sup_{G\in\Cal G}\mu G$.}
+
+\noindent As $\mu$ and $\Cal G$ are arbitrary, $A$ is
+Borel-measure-compact.
+
+By 421L, it follows that any Baire subset of $X$ is
+Borel-measure-compact.
+}%end of proof of 434H
+
+\leader{434I}{Proposition} Let $X$ be a topological space.
+
+(a) The following are equiveridical:
+
+\quad(i) $X$ is Borel-measure-complete;
+
+\quad(ii) every semi-finite Borel measure on $X$ is $\tau$-additive;
+
+\quad(iii) every totally finite Borel measure on $X$ has
+a support;
+
+\quad(iv) whenever $\mu$ is a totally finite Borel measure on $X$ there
+is a base $\Cal U$ for the topology of $X$ such that
+$\mu(\bigcup\{U:U\in\Cal U,\,\mu U=0\})=0$.
+
+(b) If $X$ is regular, it is Borel-measure-complete
+iff every effectively locally finite Borel measure on $X$ has an
+extension to a quasi-Radon measure.
+
+(c) If $X$ is Borel-measure-complete, it is Borel-measure-compact.
+
+(d) If $X$ is Borel-measure-complete, so is every subspace of $X$.
+
+(e) If $X$ is hereditarily Lindel\"of\cmmnt{ (for instance, if $X$ is
+separable and metrizable, see 4A2P(a-iii))}, it is
+Borel-measure-complete\cmmnt{, therefore Borel-measure-compact}.
+
+\proof{{\bf (a)(i)$\Rightarrow$(ii)} Use the argument of
+(i)$\Rightarrow$(ii) of 434Ha;  this case is simpler, because we do not
+need to check that the auxiliary measure $\nu$ is inner regular.
+
+\medskip
+
+\quad{\bf (ii)$\Rightarrow$(i)} is trivial.
+
+\medskip
+
+\quad{\bf (i)$\Rightarrow$(iv)} If $X$ is Borel-measure-complete and
+$\mu$ is a totally finite Borel measure on $X$, take $\Cal U$ to be the
+family of all open subsets of $X$.   This is surely a base for the
+topology, and setting $\Cal U_0=\{U:U\in\Cal U,\,\mu U=0\}$, $\Cal U_0$
+is upwards-directed so
+$\mu(\bigcup\Cal U_0)=\sup_{U\in\Cal U_0}\mu U=0$, as required.
+
+\medskip
+
+\quad{\bf (iv)$\Rightarrow$(iii)} Assume (iv), and  let $\mu$ be a
+totally finite Borel measure on $X$.   Take a base $\Cal U$ as in (iv),
+so that $\mu(\bigcup\Cal U_0)=0$, where $\Cal U_0$ is the family of
+negligible members of $\Cal U$.   Set $F=X\setminus\bigcup\Cal U_0$, so
+that $F$ is a conegligible closed set.   If $G\subseteq X$ is an open
+set meeting $F$, there is a member $U$ of $\Cal U$ such that $U\subseteq
+G$ and $U\cap F\ne\emptyset$;  now $U\notin\Cal U$ so
+
+\Centerline{$\mu(G\cap F)=\mu G\ge\mu U>0$.}
+
+\noindent As $G$ is arbitrary, $F$ is self-supporting and is the support
+of $\mu$.
+
+\medskip
+
+\quad{\bf (iii)$\Rightarrow$(i)} Assume (iii), and let $\mu$ be a
+totally finite Borel measure on $X$.   Let $\Cal G$ be an
+upwards-directed family of open sets with union $G^*$.   Set
+$\gamma=\sup_{G\in\Cal G}\mu G$.   Let $\sequencen{G_n}$ be a
+non-decreasing sequence in $\Cal G$ such that
+$\mu(G\setminus G^*_0)$ for every $G\in\Cal G$, where
+$G^*_0=\bigcup_{n\in\Bbb N}G_n$ (215B(v)).   Then $\mu G^*_0\le\gamma$.
+Let $\nu$ be the Borel measure on $X$ defined by setting
+$\mu E=\mu(E\cap G^*\setminus G_0^*)$ for every $E\in\Cal B$.   Then
+$\nu$ has a support $F$ say.   Now $\nu G=0$ for every $G\in\Cal G$, so
+$F\cap G=\emptyset$ for every $G\in\Cal G$, and $F\cap G^*=\emptyset$;
+but this means that
+
+\Centerline{$\mu(G^*\setminus G_0^*)=\nu X=\nu F
+=\mu(F\cap G^*\setminus G_0^*)=0$.}
+
+\noindent Accordingly $\mu G^*=\gamma$.   As $\mu$ and $\Cal G$ are
+arbitrary, $X$ is Borel-measure-complete.
+
+\medskip
+
+{\bf (b)} If $X$ is
+Borel-measure-complete and $\mu$ is an effectively locally finite Borel
+measure on $X$, then $\mu$ is $\tau$-additive, by (a-ii), so extends to
+a quasi-Radon measure on $X$, by 415Cb.   If effectively locally finite
+Borel measures on $X$ extend to quasi-Radon measures, then any totally
+finite Borel measure is $\tau$-additive, by 411C, and $X$ is
+Borel-measure-complete.
+
+\medskip
+
+{\bf (c)} Immediate from the definitions.
+
+\medskip
+
+{\bf (d)} If $Y\subseteq X$ and $\mu$ is a totally finite Borel measure
+on $Y$, let $\nu$ be the Borel measure on $X$ defined by setting
+$\nu E=\mu(E\cap Y)$ for every Borel set
+$E\subseteq X$.   Then $\nu$ is $\tau$-additive.
+So if $\Cal G$ is an upwards-directed family of relatively open subsets
+of $Y$, and we set $\Cal H=\{H:H\subseteq X$ is open, $H\cap Y\in\Cal
+G\}$, we shall get
+
+\Centerline{$\mu(\bigcup\Cal G)=\nu(\bigcup\Cal H)
+=\sup_{H\in\Cal H}\nu H=\sup_{G\in\Cal G}\mu G$.}
+
+\noindent As $\mu$ and $\Cal G$ are arbitrary, $Y$ is
+Borel-measure-complete.
+
+\medskip
+
+{\bf (e)} If $\mu$ is a totally finite Borel measure on $X$ and $\Cal G$
+is a non-empty upwards-directed family of open subsets of $X$ with union
+$G^*$, then there is a sequence $\sequencen{G_n}$ in $\Cal G$ with union
+$G^*$, by 4A2H(c-i).   Because $\Cal G$ is upwards-directed, there is a
+non-decreasing sequence $\sequencen{G'_n}$ in $\Cal G$ such that
+$G'_n\supseteq G_n$ for every $n\in\Bbb N$, so that
+
+\Centerline{$\mu G^*=\lim_{n\to\infty}\mu G'_n
+\le\sup_{G\in\Cal G}\mu G$.}
+
+\noindent As $\mu$ and $\Cal G$ are arbitrary, $X$ is
+Borel-measure-complete.
+}%end of proof of 434I
+
+\vleader{72pt}{434J}{Proposition} Let $X$ be a Hausdorff space.
+
+(a) The following are equiveridical:
+
+\quad(i) $X$ is pre-Radon;
+
+\quad(ii) every effectively locally finite $\tau$-additive Borel measure
+on $X$ is tight;
+
+\quad(iii) whenever $\mu$ is a non-zero totally finite
+$\tau$-additive Borel measure on $X$, there is a compact set
+$K\subseteq X$ such that $\mu K>0$;
+
+\quad(iv) whenever $\mu$ is a totally finite $\tau$-additive Borel
+measure on $X$, $\mu X=
+\ifdim\pagewidth=390pt\break\fi
+\sup_{K\subseteq X\text{ is compact}}\mu K$;
+
+\quad(v) whenever $\mu$ is a locally finite effectively locally finite
+$\tau$-additive Borel measure on $X$, the c.l.d.\ version of $\mu$ is a
+Radon measure on $X$.
+
+(b) If $X$ is pre-Radon, then every locally finite
+quasi-Radon measure on $X$ is a Radon measure.
+
+(c) If $X$ is regular and every totally finite quasi-Radon measure on
+$X$ is a Radon measure, then $X$ is pre-Radon.
+
+(d) If $X$ is pre-Radon, then any universally
+Radon-measurable subspace\cmmnt{ (in particular, any Borel subset or
+Souslin-F subset)} of $X$ is pre-Radon.
+
+(e) If $A\subseteq X$ is pre-Radon in its subspace topology, it is
+universally Radon-measurable in $X$.
+
+(f) If $X$ is K-analytic\cmmnt{ (for instance, if it is compact)}, it
+is pre-Radon.
+
+(g) If $X$ is completely regular and \v{C}ech-complete\cmmnt{ (for
+instance, if it is locally compact (4A2Gk), or metrizable and complete
+under a metric inducing its topology (4A2Md))}, it is pre-Radon.
+
+(h) If $X=\prod_{i\in I}X_i$ where $\familyiI{X_i}$ is a countable
+family of pre-Radon Hausdorff spaces, then $X$ is pre-Radon.
+
+(i) If every point of $X$ belongs to a pre-Radon open subset of $X$,
+then $X$ is pre-Radon.
+
+\proof{{\bf (a)(i)$\Rightarrow$(ii)} Suppose that $X$ is pre-Radon, that
+$\mu$ is an effectively locally finite $\tau$-additive Borel measure on
+$X$, that $E\subseteq X$ is Borel, and that
+$\gamma<\mu E$.   Because $\mu$ is semi-finite, there is a Borel set
+$H\subseteq X$ of finite measure such that $\mu(H\cap E)>\gamma$.   Set
+$\nu F=\mu(F\cap H)$ for every Borel set $F\subseteq X$;  then $\nu$ is
+a totally finite Borel measure on $X$, and is $\tau$-additive by 414Ea.
+Now $\nu E>\gamma$, so there is a compact set $K\subseteq E$ such that
+$\gamma\le\nu K\le\mu K$.   As $E$ is arbitrary, $\mu$ is tight.
+
+\medskip
+
+\quad{\bf (ii)$\Rightarrow$(iii)} is trivial.
+
+\medskip
+
+\quad{\bf (iii)$\Rightarrow$(iv)} Assume (iii), and let $\mu$ be a
+totally finite $\tau$-additive Borel measure on $X$.   Let $\Cal K$ be
+the family of compact subsets of $X$ and set
+$\alpha=\sup_{K\in\Cal K}\mu K$.
+\Quer\ Suppose, if possible, that $\mu X>\alpha$.   Let
+$\sequencen{K_n}$ be a sequence in $\Cal K$ such that
+$\sup_{n\in\Bbb N}\mu K_n=\alpha$, and set $L=\bigcup_{n\in\Bbb N}K_n$;
+then
+
+\Centerline{$\mu L=\lim_{n\to\infty}\mu(\bigcup_{i\le n}K_i)=\alpha$.}
+
+\noindent Set $\nu E=\mu(E\setminus L)$ for every Borel set
+$E\subseteq X$.   Then $\nu$ is a non-zero totally finite Borel measure
+on $X$, and is $\tau$-additive, by 414Ea again.   So there is a
+$K\in\Cal K$ such that $\nu K>0$.   But now there is an $n\in\Bbb N$
+such that
+$\nu K+\mu K_n>\alpha$, and in this case $K\cup K_n\in\Cal K$ and
+
+\Centerline{$\mu(K\cup K_n)=\mu(K\setminus K_n)+\mu K_n
+\ge\nu K+\mu K_n>\alpha$,}
+
+\noindent which is impossible.\ \BanG\
+So $\mu X=\alpha$, as required.
+
+\medskip
+
+\quad{\bf (iv)$\Rightarrow$(i)} Assume (iv), and let $\mu$ be a totally
+finite $\tau$-additive Borel measure on $X$.   Suppose that
+$E\subseteq X$ is Borel and that $\gamma<\mu E$.   By (iii), there is a
+compact set $K\subseteq X$ such that $\mu K>\mu X-\mu E+\gamma$, so that
+$\mu(E\cap K)>\gamma$.   Consider the subspace measure $\mu_K$ on $K$.
+By 414K, this is $\tau$-additive, so inner regular with respect to the
+closed subsets of $K$ (414Mb).   There is therefore a relatively
+closed subset $F$ of $K$ such that $F\subseteq K\cap E$ and
+$\mu_KF\ge\gamma$;  but now $F$ is a compact subset of $E$ and $\mu
+F\ge\gamma$.   As $E$ and $\gamma$ are arbitrary, $\mu$ is tight.   As
+$\mu$ is arbitrary, $X$ is
+pre-Radon.
+
+\medskip
+
+\quad{\bf (ii)$\Rightarrow$(v)} Assume (ii), and let $\mu$ be a locally
+finite effectively locally finite $\tau$-additive Borel measure on $X$.
+Then $\mu$ is tight, so by
+416F(ii) its c.l.d.\ version is a Radon measure.
+
+\medskip
+
+\quad{\bf (v)$\Rightarrow$(iv)} Assume (v), and let $\mu$ be a totally
+finite $\tau$-additive Borel measure on $X$.   Then the c.l.d.\ version
+$\tilde\mu$ of $\mu$ is a Radon measure;  but $\tilde\mu$ extends $\mu$
+(213Hc), so
+
+\Centerline{$\sup_{K\subseteq X\text{ is compact}}\mu K
+=\sup_{K\subseteq X\text{ is compact}}\tilde\mu K
+=\tilde\mu X=\mu X$.}
+
+\medskip
+
+{\bf (b)} Let $\mu$ be a locally finite quasi-Radon measure on $X$.   By
+(a-ii), $\mu$ is tight;  by 416C, $\mu$ is a Radon measure.
+
+\medskip
+
+{\bf (c)} Let $\mu$ be a totally finite $\tau$-additive Borel measure on
+$X$.   Because $X$ is regular, the c.l.d.\ version $\tilde\mu$ or $\mu$ is a
+quasi-Radon measure (415Cb), therefore a Radon measure;  but $\tilde\mu$
+extends $\mu$
+(213Hc again), so $\mu$, like $\tilde\mu$, must be tight.   As $\mu$ is
+arbitrary, $X$ is pre-Radon.
+
+\medskip
+
+{\bf (d)} Let $A$ be a universally Radon-measurable subset of $X$, and $\mu$
+a totally finite $\tau$-additive Borel measure on
+$A$.   Set
+$\nu E=\mu(E\cap A)$ for every Borel set $E\subseteq X$;  then $\nu$ is
+a totally finite $\tau$-additive Borel measure on $X$.   So its c.l.d.\
+version (that is, its completion $\hat\nu$, by 213Ha) is a Radon measure
+on $X$, by (a-v).   Now $\hat\nu$ measures $A$, so
+
+\Centerline{$\mu A
+=\nu^*A
+=\hat\nu A
+=\sup\{\hat\nu K:K\subseteq A$ is compact$\}
+=\sup\{\mu K:K\subseteq A$ is compact$\}$.}
+
+\noindent By (a-iv), $A$ is pre-Radon.
+
+\medskip
+
+{\bf (e)} Let $\mu$ be a totally finite Radon measure on $X$.   Then the
+subspace measure $\mu_A$ is $\tau$-additive (414K), so its restriction
+$\nu$ to the Borel $\sigma$-algebra of $A$ is still $\tau$-additive.
+Because $A$ is pre-Radon,
+
+$$\eqalign{\mu^*A
+=\mu_AA
+&=\nu A
+=\sup\{\nu K:K\subseteq A\text{ is compact}\}\cr
+&=\sup\{\mu K:K\subseteq A\text{ is compact}\}
+=\mu_*A,\cr}$$
+
+\noindent and $\mu$ measures $A$ (413Ef).   As $\mu$ is arbitrary, $A$
+is universally Radon-measurable.
+
+\medskip
+
+{\bf (f)} Put 432B and (a-iv) together.
+
+\medskip
+
+{\bf (g)} If we identify $X$ with a G$_{\delta}$ set in a compact
+Hausdorff space $Z$, then $Z$ is pre-Radon, by (f), so $X$ is pre-Radon,
+by (d).
+
+\medskip
+
+{\bf (h)} Let $\mu$ be a totally finite $\tau$-additive Borel measure on
+$X$, and $\epsilon>0$.   Let $\familyiI{\epsilon_i}$ be a family of
+strictly positive real numbers such that
+$\sum_{i\in I}\epsilon_i\le\epsilon$ (4A1P).   For each $i\in I$ and Borel
+set $F\subseteq X_i$, set $\mu_iF=\mu\pi_i^{-1}[F]$, where
+$\pi_i(x)=x(i)$ for $x\in X$;  because $\pi_i:X\to X_i$ is continuous,
+$\mu_i$ is a totally finite $\tau$-additive Borel measure on $X_i$.
+Because $X_i$ is pre-Radon, we can find a compact set $K_i\subseteq X_i$
+such that $\mu_i(X_i\setminus K_i)\le\epsilon_i$, by (a-iv).   Now
+$K=\prod_{i\in I}K_i$ is compact (3A3J), and
+$X\setminus K\subseteq\bigcup_{i\in I}\pi_i^{-1}[X_i\setminus K_i]$, so
+
+\Centerline{$\mu(X\setminus K)\le\sum_{i\in I}\mu_i(X_i\setminus K_i)
+\le\sum_{i\in I}\epsilon_i\le\epsilon$.}
+
+As $\epsilon$ and $\mu$ are arbitrary, $X$ satisfies the condition of
+(a-iv), and is pre-Radon.
+
+\medskip
+
+{\bf (i)} Let $\Cal G$ be a cover of $X$ by pre-Radon open sets.   Let
+$\mu$ be a non-zero totally finite $\tau$-additive Borel measure on $X$.
+Then $\mu X=\sup\{\mu(\bigcup\Cal G_0):\Cal G_0\subseteq\Cal G$ is
+finite$\}$, so there is some $G\in\Cal G$ such that $\mu G>0$.   Now the
+subspace measure $\mu_G$ is a non-zero totally finite $\tau$-additive
+Borel measure on $G$, so there is a compact set $K\subseteq G$ such that
+$\mu_GK>0$, in which case $\mu K>0$.   As $\mu$ is arbitrary, $X$ is
+pre-Radon, by (a-iii).
+}%end of proof of 434J
+
+\leader{434K}{}\cmmnt{ I return to criteria for deciding whether
+Hausdorff spaces are Radon.
+
+\wheader{434K}{6}{2}{2}{72pt}
+
+\noindent}{\bf Proposition} (a) A Hausdorff space is Radon iff it is
+Borel-measure-complete and pre-Radon.
+
+(b) An analytic Hausdorff space is Radon.
+\cmmnt{In particular, any compact metrizable space is Radon and any
+Polish space is Radon.}
+
+(c) $\omega_1$ and $\omega_1+1$, with their order topologies, are not
+Radon.
+
+(d) For a set $I$, $[0,1]^I$ is Radon iff $\{0,1\}^I$ is Radon iff $I$
+is countable.
+
+(e) A hereditarily Lindel\"of K-analytic Hausdorff space is Radon;  in
+particular, the split interval\cmmnt{ (343J, 419L)} is Radon.
+
+\proof{{\bf (a)} Put the definitions 434C, 434Gb and 434Gc together,
+recalling that a tight measure is necessarily $\tau$-additive (411E).
+
+\medskip
+
+{\bf (b)} 433Cb.
+
+\medskip
+
+{\bf (c)} Dieudonn\'e's measure (411Q) is a Borel measure on $\omega_1$
+which is not tight,
+so $\omega_1$ is certainly not a Radon space;  as it is an open set in
+$\omega_1+1$, and the subspace topology inherited from $\omega_1+1$ is
+the order topology of $\omega_1$ (4A2S(a-iii)), $\omega_1+1$ cannot be
+Radon (434Fc).
+
+\medskip
+
+{\bf (d)} If $I$ is countable, then $\{0,1\}^I$ and $[0,1]^I$ are
+compact metrizable spaces, so are Radon.   If $I$ is uncountable, then
+$\omega_1+1$, with its order topology, is homeomorphic to a closed
+subset of $\{0,1\}^I$.   \Prf\ Set $\kappa=\#(I)$.   For
+$\xi\le\omega_1$, $\eta<\kappa$ set $x_{\xi}(\eta)=1$ if $\eta<\xi$, $0$
+if $\xi\le\eta$.   The map $\xi\mapsto
+x_{\xi}:\omega_1+1\to\{0,1\}^{\kappa}$ is injective
+because $\kappa\ge\omega_1$, and is continuous because all the sets
+$\{\xi:x_{\xi}(\eta)=0\}=(\omega_1+1)\cap(\eta+1)$ are open-and-closed
+in $\omega_1+1$.   Since $\omega_1+1$ is compact in its order topology
+(4A2S(a-i)), it is homeomorphic to its image in
+$\{0,1\}^{\kappa}\cong\{0,1\}^I$.\ \Qed
+
+By 434Fc, $\{0,1\}^I$ cannot
+be a Radon space.   Since $\{0,1\}^I$ is a closed subset of $[0,1]^I$,
+$[0,1]^I$ also is not a Radon space.
+
+\medskip
+
+{\bf (e)} Suppose that $X$ is a hereditarily Lindel\"of K-analytic
+Hausdorff space.   Then it is Borel-measure-complete by 434Ie and
+pre-Radon by 434Jf, so by (a) here it is Radon.
+
+Since the split interval is compact and Hausdorff and hereditarily
+Lindel\"of (419La), it is a Radon space.
+}%end of proof of 434K
+
+\leader{434L}{}\cmmnt{ It is worth noting an elementary special
+property of metric spaces.
+
+\medskip
+
+\noindent}{\bf Proposition} If $(X,\rho)$ is a metric space, then any
+quasi-Radon measure on $X$ is inner regular with respect to the
+totally bounded subsets of $X$.
+
+\proof{ Let $\mu$ be a quasi-Radon measure on $X$ and $\Sigma$
+its domain.   Suppose that $E\in\Sigma$ and $\gamma<\mu E$.   Then there
+is an open set $G$ of finite measure such that $\mu(E\cap G)>\gamma$;
+set $\delta=\mu(E\cap G)-\gamma$.   For $n\in\Bbb N$, $I\subseteq X$ set
+$H(n,I)=\bigcup_{x\in I}\{y:\rho(y,x)<2^{-n}\}$.   Then
+$\{H(n,I):I\in[X]^{<\omega}\}$ is an
+upwards-directed family of open sets covering $X$.   Because $\mu$ is
+$\tau$-additive, there is a finite set $I_n\subseteq X$ such that
+$\mu(G\setminus H(n,I_n))\le 2^{-n-1}\delta$.   Consider
+$F=\bigcap_{n\in\Bbb N}H(n,I_n)$.   This is
+totally bounded and $\mu(G\setminus F)\le\delta$, so $E\cap F$ is
+totally bounded and $\mu(E\cap F)\ge\gamma$.   As $E$ and $\gamma$ are
+arbitrary,
+$\mu$ is inner regular with respect to the totally bounded sets.
+}%end of proof of 434L
+
+\leader{434M}{}\cmmnt{ I turn next to a couple of ideas depending on
+countable compactness.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $X$ be a countably compact topological space
+and $\Cal E$ a non-empty family of closed subsets of $X$ with the finite
+intersection
+property.   Then there is a Borel probability measure $\mu$ on $X$,
+inner regular
+with respect to the closed sets, such that $\mu F=1$ for every
+$F\in\Cal E$.
+
+\proof{{\bf (a)} By Zorn's lemma, $\Cal E$ is included in a maximal
+family $\Cal E^*$ of
+closed subsets of $X$ with the finite intersection property.
+
+\quad(i) If $F\subseteq X$ is closed and $F\cap F_0\cap\ldots\cap
+F_n\ne\emptyset$ for every $F_0,\ldots,F_n\in\Cal E^*$, then $\Cal
+E^*\cup\{F\}$ has the finite intersection property, so $F\in\Cal E^*$.
+
+\quad(ii) If $F$, $F'\in\Cal E^*$, then $F\cap F'\cap F_0\cap\ldots\cap
+F_n\ne\emptyset$ for all $F_0,\ldots,F_n\in\Cal E^*$, so $F\cap
+F'\in\Cal E^*$.
+
+\quad(iii) If $F\subseteq X$ is closed and $F\cap F'\in\Cal E^*$ for every
+$F'\in\Cal E^*$, then $F\cap
+F_0\cap\ldots\cap F_n\in\Cal E^*$ for every $F_0,\ldots,F_n\in\Cal E^*$
+(because $F_0\cap\ldots\cap F_n\in\Cal E^*$, by (ii)), so
+$F\in\Cal E^*$.
+
+\quad(iv) If $\sequencen{F_n}$ is a sequence in $\Cal E^*$, 
+with intersection
+$F$, and $F'\in\Cal E^*$, then $F'\cap\bigcap_{i\le n}F_i\ne\emptyset$
+for every $n\in\Bbb N$.   Because $X$ is countably compact,
+$F'\cap F\ne\emptyset$ (4A2G(f-ii)).   As $F'$ is arbitrary,
+$F\in\Cal E^*$, by (iii).
+Thus $\Cal E^*$ is closed under countable intersections.
+
+\medskip
+
+{\bf (b)} Set
+
+\Centerline{$\Sigma=\{E:E\subseteq X$, there is an $F\in\Cal E^*$ such
+that either $F\subseteq E$ or $F\cap E=\emptyset\}$,}
+
+\noindent and define $\hat\mu:\Sigma\to\{0,1\}$ by saying that
+$\hat\mu E=1$ if there is some $F\in\Cal E^*$ such that $F\subseteq E$,
+$0$ otherwise.   Then $\hat\mu$ is a probability measure on $X$.
+\Prf\
+
+\quad(i) $\emptyset\in\Sigma$ because $\Cal E^*\supseteq\Cal E$ is not empty.
+
+\quad(ii) $X\setminus E\in\Sigma$ whenever $E\in\Sigma$ because the
+definition of $\Sigma$ is symmetric between $E$ and $X\setminus E$.
+
+\quad(iii) If $\sequencen{E_n}$ is any sequence in $\Sigma$ with union $E$,
+then either there are $n\in\Bbb N$ and $F\in\Cal E^*$ such that 
+$F\subseteq E_n\subseteq E$ and $E\in\Sigma$, or for every $n\in\Bbb N$ there is an
+$F_n\in\Cal E^*$ such that $F_n\cap E_n=\emptyset$.   In this case
+$F=\bigcap_{n\in\Bbb N}F_n\in\Cal E^*$, by (a-iv), and $E\cap
+F=\emptyset$, so again $E\in\Sigma$.   Thus $\Sigma$ is a
+$\sigma$-algebra of subsets of $X$.
+
+\quad(iv) $\hat\mu\emptyset=0$ because $\emptyset$ cannot belong to $\Cal
+E^*$.
+
+\quad(v) If $\sequencen{E_n}$ is any disjoint sequence in $\Sigma$ with union
+$E$, then either there is some $n$ such that $\hat\mu E_n=1$, in which
+case $\hat\mu E_i=0$ for every $i\ne n$ (because any two members of
+$\Cal E^*$ must meet) and $\hat\mu E=1=\sum_{i=0}^{\infty}\hat\mu E_i$,
+or $\hat\mu E_i=0$ for every $i$, in which case, just as in (iii),
+$\hat\mu E=0=\sum_{i=0}^{\infty}\hat\mu E_i$.   Thus $\hat\mu$ is a
+measure.
+
+\quad(vi) Because $\Cal E^*\ne\emptyset$, $\hat\mu X=1$.   Thus $\hat\mu$ is
+a probability measure.\ \Qed
+
+\medskip
+
+{\bf (c)} If $F\subseteq X$ is a closed set, then either $F$ itself
+belongs to $\Cal E^*$, so $F\in\Sigma$, or there is some $F'\in\Cal E^*$
+such that $F\cap F'=\emptyset$, in which case again $F\in\Sigma$.   So
+$\Sigma$ contains every closed set, therefore every Borel set, and
+$\hat\mu$ is a topological measure.   By construction, $\hat\mu$ is
+inner regular with respect to $\Cal E^*$ and therefore with respect to
+the closed sets.   Finally, if $F\in\Cal E$ then $F\in\Cal E^*$, so
+$\hat\mu F=1$.   We may therefore take $\mu$ to be the restriction of
+$\hat\mu$ to
+the Borel $\sigma$-algebra of $X$, and $\mu$ will be a Borel measure on
+$X$,
+inner regular with respect to the closed sets, such that $\mu E=1$ for
+every $E\in\Cal E$.
+}%end of proof of 434M
+
+\leader{434N}{Proposition} (a) Let $X$ be a Borel-measure-compact
+topological space.   Then closed countably compact subsets of $X$ are
+compact.
+
+(b) Let $X$ be a Borel-measure-complete topological space.
+Then countably compact subsets of $X$ are compact.
+
+(c) Let $X$ be a Hausdorff Borel-measure-complete topological space.
+Then compact subsets of $X$ are countably tight.
+
+(d) In particular, any Radon compact Hausdorff space is countably tight.
+
+\proof{{\bf (a)} Let $C$ be a closed countably compact subset of $X$.
+Let $\Cal F$ be an ultrafilter on $C$.   Let $\Cal E$ be the
+family of closed subsets of $C$ belonging to $\Cal F$.
+Then $\Cal E$ has the finite intersection property, so by 434M there is
+a Borel probability measure $\mu$ on $C$, inner regular with respect to
+the closed sets, such that $\mu E=1$ for every $E\in\Cal E$.
+Let $\nu$ be the Borel measure on $X$ defined by setting
+$\nu H=\mu(C\cap H)$ for every Borel set $H\subseteq X$.   Then $\nu$ is
+also inner regular with respect to the closed sets (of either $C$ or
+$X$);  because $X$ is Borel-measure-compact, $\nu$ has a support $F$
+(434H(a-iv)).   Since
+$\nu F=\nu X=1$, $F\cap C\ne\emptyset$;  take $x\in F\cap C$.   If $G$
+is any open
+set (in $X$) containing $x$, then $\mu(C\setminus G)=\nu(X\setminus G)<1$, so
+$C\setminus G\notin\Cal F$ and $C\cap G\in\Cal F$.   As $G$ is
+arbitrary, $\Cal F\to x$;  as $\Cal F$ is arbitrary, $C$ is compact.
+
+\medskip
+
+{\bf (b)} Repeat the argument of (a).   Let $C$ be a countably compact
+subset of $X$ and $\Cal F$ an ultrafilter on $C$.   Let $\Cal E$ be
+the family of relatively closed subsets of $C$ belonging to $\Cal F$.
+Then there is
+a Borel probability measure $\mu$ on $C$ such that $\mu E=1$ for every
+$E\in\Cal E$.
+Let $\nu$ be the Borel measure on $X$ defined by setting
+$\nu H=\mu(C\cap H)$ for every Borel set $H\subseteq X$.   Because $X$
+is Borel-measure-complete, $\nu$ has a support $F$ (434I(a-iii)).
+Since $\nu F=\nu X=1$, $F\cap C\ne\emptyset$;  take $x\in F\cap C$.   If
+$G$ is any open
+set containing $x$, then $\nu(X\setminus G)<1$, so
+$C\setminus G\notin\Cal F$ and $C\cap G\in\Cal F$.   As $G$ is
+arbitrary, $\Cal F\to x$;  as $\Cal F$ is arbitrary, $C$ is compact.
+
+\medskip
+
+{\bf (c)} Again let $C$ be a (countably) compact subset of $X$.   Take
+$A\subseteq C$, and set
+$C_0=\bigcup\{\overline{B}:B\in[A]^{\le\omega}\}$.   Then $C_0$ is
+countably compact.   \Prf\ If $\sequencen{y_n}$ is any sequence in
+$C_0$, it has a cluster point $y\in C$.   For
+each $n\in\Bbb N$ there is a countable set $B_n\subseteq A$ such that
+$y_n\in\overline{B_n}$.   Now $B=\bigcup_{n\in\Bbb N}B_n$ is a countable
+subset of $A$, and $y\in\overline{B}\subseteq C_0$, so $y$ is a cluster
+point of $\sequencen{y_n}$ in $C_0$.   As $\sequencen{y_n}$ is
+arbitrary, $C_0$ is countably compact.\ \Qed
+
+By (b), $C_0$ is compact, therefore closed, and must include
+$\overline{A}$.   Thus every point of $\overline{A}$ is in the closure
+of some countable subset of $A$.   As $A$ is arbitrary, $C$ is countably
+tight.
+
+\medskip
+
+{\bf (d)} Finally, a compact Radon Hausdorff space is
+Borel-measure-complete (434Ka) and countably compact, therefore
+countably tight.
+}%end of proof of 434N
+
+\leader{434O}{Quasi-dyadic \dvrocolon{spaces}}\cmmnt{ I wish now to
+present a result in an entirely different direction.   Measures of type
+B$_1$ in the classification of 434A (completion regular, but not
+$\tau$-additive) seem to be hard to come by.   The next theorem shows
+that on a substantial class of spaces they cannot appear.   First, we
+need a definition.
+
+\medskip
+
+\noindent}{\bf Definition} A topological space $X$ is {\bf quasi-dyadic}
+if it is expressible as a continuous image of a product of separable
+metrizable spaces.
+
+\cmmnt{I give some elementary results to indicate what kind of spaces
+we have here.}
+
+\leader{434P}{Proposition} (a) A continuous image of a quasi-dyadic
+space is quasi-dyadic.
+
+(b) Any product of quasi-dyadic spaces is quasi-dyadic.
+
+(c) A space with a countable network is quasi-dyadic.
+
+(d) A Baire subset of a quasi-dyadic space is quasi-dyadic.
+
+(e) If $X$ is any topological space, a countable union of quasi-dyadic
+subspaces of $X$ is quasi-dyadic.
+
+\proof{{\bf (a)} Immediate from the definition.
+
+\medskip
+
+{\bf (b)} Again immediate;  if $X_i$ is a continuous image of
+$\prod_{j\in J_i}Y_{ij}$, where $Y_{ij}$ is a separable metrizable space for
+every $i\in I$ and $j\in J_i$, then $\prod_{i\in I}X_i$ is a continuous
+image of $\prod_{i\in I,j\in J_i}Y_{ij}$.
+
+\medskip
+
+{\bf (c)} Let $\Cal E$ be a countable network for the
+topology of $X$.   On $X$ let $\sim$ be the equivalence relation in
+which $x\sim y$ if they
+belong to just the same members of $\Cal E$;  let $Y$ be the space
+$X/\backstep2\sim$ of equivalence classes, and $\phi:X\to Y$ the
+canonical map.   $Y$ has a separable metrizable topology with base
+$\{\phi[E]:E\in\Cal
+E\}\cup\{\phi[X\setminus E]:E\in\Cal E\}$.   Let $I$ be any set such
+that $\#(\{0,1\}^I)\ge\#(X)$, and for each $y\in Y$ let
+$f_y:\{0,1\}^I\to y$ be a surjection.   Then we have a
+continuous surjection $f:Y\times\{0,1\}^I\to X$ given by saying that
+$f(y,z)=f_y(z)$ for $y\in Y$ and $z\in\{0,1\}^I$.
+
+\medskip
+
+{\bf (d)} Let $\familyiI{Y_i}$ be a
+family of separable metrizable spaces with product $Y$ and $f:Y\to X$ a
+continuous surjection.   If $W\subseteq Y$ is a Baire set, it is
+determined by coordinates in a countable subset of $I$ (4A3Nb),
+so can be regarded as $W'\times\prod_{i\in I\setminus J}Y_i$, where
+$J\subseteq I$ is countable and $W'\subseteq\prod_{i\in J}Y_i$;  as
+$\prod_{i\in J}Y_i$ and $W'$ are separable metrizable spaces
+(4A2Pa), $W$ can be
+thought of as a product of separable metrizable spaces.   Now the set
+$\{E:E\subseteq X,\,f^{-1}[E]$ is a Baire set in $Y\}$ is a
+$\sigma$-algebra containing every zero set in $X$, so contains every
+Baire set.   Thus every Baire subset of $X$ is a continuous image of a
+Baire subset of $Y$, and is therefore quasi-dyadic.
+
+\medskip
+
+{\bf (e)} If $E_n\subseteq X$ is quasi-dyadic for each $n\in\Bbb N$,
+then $Z=\Bbb N\times\prod_{n\in\Bbb N}E_n$ is quasi-dyadic, and
+$f:Z\to\bigcup_{n\in\Bbb N}E_n$ is a continuous surjection, where
+$f(n,\langle x_i\rangle_{{i\in\Bbb N}})=x_n$.   So
+$\bigcup_{n\in\Bbb N}E_n$ is quasi-dyadic.
+}%end of proof of 434P
+
+\leader{434Q}{Theorem}\cmmnt{ ({\smc Fremlin \& Grekas 95})} A
+semi-finite completion regular topological measure on a quasi-dyadic
+space is $\tau$-additive.
+
+\proof{\Quer\ Suppose, if possible, otherwise.
+
+\medskip
+
+{\bf (a)} The first step is the standard reduction to the case in which
+$\mu X=1$ and $X$ is covered by open sets of zero measure.   In detail:
+suppose that $X$ is a quasi-dyadic space and $\mu_0$ is a semi-finite
+completion regular topological measure on $X$ which is not
+$\tau$-additive.   Let $\Cal G$ be an upwards-directed family of open sets in $X$ such that $\mu_0(\bigcup\Cal G)$ is strictly greater than $\sup_{G\in\Cal G}\mu_0G=\gamma$ say.   Let $\sequencen{G_n}$ be a 
+non-decreasing
+sequence in $\Cal G$ such that $\lim_{n\to\infty}\mu_0G_n=\gamma$, and
+set $H_0=\bigcup_{n\in\Bbb N}G_n$, so that $\mu_0H_0=\gamma$;  take a
+closed set $Z\subseteq\bigcup\Cal G$ such that $\gamma<\mu_0Z<\infty$.
+Set $\mu_1E=\mu_0(E\cap Z\setminus H_0)$ for every Borel set
+$E\subseteq X$.   Then $\mu_1$ is a non-zero totally finite Borel
+measure on $X$, and is
+completion regular.   \Prf\ If $E\subseteq X$ is a Borel set and
+$\epsilon>0$, there is
+a zero set $F\subseteq E\cap Z\setminus H_0$ such that
+$\mu_0F\ge\mu_0(E\cap X\setminus H_0)-\epsilon$, and now
+$\mu_1F\ge\mu_1E-\epsilon$.\ \QeD\
+Note that $\mu_1(X\setminus Z)=\mu_1G=0$ for every $G\in\Cal G$.
+
+For Borel sets $E\subseteq X$,
+set $\mu E=\mu_1E/\mu_1X$;  then $\mu$ is a completion regular Borel
+probability measure on $X$, and $\Cal G\cup\{X\setminus Z\}$ is a cover
+of $X$ by open negligible sets.
+
+\medskip
+
+{\bf (b)} Now let $\langle Y_i\rangle_{i\in I}$ be a family
+of separable metrizable spaces such that there is a continuous surjection
+$f:Y\to X$, where $Y=\Yprod{I}$.   For each $i\in I$ let
+$\Cal B_i$ be a countable base for the topology of $Y_i$.   For
+$J\subseteq I$ let $\Cal C(J)$ be the family of all non-empty open cylinders in
+$Y$ expressible in the form
+
+\Centerline{$\{s:s(i)\in B_i\Forall i\in K\}$,}
+
+\noindent where $K$ is a finite subset of $J$ and
+$B_i\in\Cal B_i$ for each $i\in K$;  thus $\Cal C(I)$ is a base for the
+topology of $Y$.   Set $\Cal C_0(J)=\{U:U\in\Cal C(J),\,\mu^*f[U]=0\}$
+for each $J\subseteq I$.   Note that (because every $\Cal B_i$ is
+countable) $\Cal C(J)$ and $\Cal C_0(J)$ are countable for every
+countable subset $J$ of $I$.   It is easy to see that
+$\Cal C(J)\cap\Cal C(K)=\Cal C(J\cap K)$ for all $J$, $K\subseteq I$,
+because if $U\in\Cal C(I)$ it belongs to $\Cal C(J)$ iff
+its projection onto $X_i$ is the whole of $X_i$ for every $i\notin J$.
+
+For each negligible set $E\subseteq X$, let
+$\langle F_n(E)\rangle_{n\in\Bbb N}$ be a family of zero sets, subsets
+of $X\setminus E$, such that $\sup_{n\in\Bbb N}\mu F_n(E)=1$.   Then each
+$f^{-1}[F_n(E)]$ is a zero set in $Y$, so there is a countable set
+$M(E)\subseteq I$ such that all the sets $f^{-1}[F_n(E)]$ are determined
+by coordinates in $M(E)$ (4A3Nc).   Let $\Cal J$ be the family of
+countable subsets $J$ of
+$I$ such that $M(f[U])\subseteq J$ for every $U\in\Cal C_0(J)$;  then
+$\Cal J$ is cofinal with $[I]^{\le\omega}$, that is, every countable
+subset of $I$ is included in some member of $\Cal J$.   \Prf\ If we
+start from any countable subset $J_0$ of $I$ and set
+
+\Centerline{$J_{n+1}=J_n\cup\bigcup\{M(f[U]):U\in\Cal C_0(J_n)\}$}
+
+\noindent for each $n\in\Bbb N$, then every $J_n$ is countable, and
+$\bigcup_{n\in\Bbb N}J_n\in\Cal
+J$, because $\sequencen{J_n}$ is non-decreasing, so $\Cal
+C_0(\bigcup_{n\in\Bbb N}J_n)=\bigcup_{n\in\Bbb N}\Cal C_0(J_n)$.\ \Qed
+
+\medskip
+
+{\bf (c)} For each $J\in\Cal J$, set
+
+\Centerline{$Q_J=\bigcap\{\bigcup_{n\in\Bbb N}F_n(f[U]):U\in\Cal
+C_0(J)\}$.}
+
+\noindent Then $\mu Q_J=1$ and $f^{-1}[Q_J]$ is determined by
+coordinates
+in $J$, while $f^{-1}[Q_J]\cap U=\emptyset$ whenever $U\in\Cal C_0(J)$.
+
+If $G\subseteq X$ is an open set, then $G\cap Q_J=\emptyset$
+whenever $J\in\Cal J$ and there is a negligible Baire set $Q\supseteq G$
+such that $f^{-1}[Q]$ is determined by coordinates in $J$.   \Prf\  Set
+$H=\pi_J^{-1}[\pi_J[f^{-1}[G]]]$, where $\pi_J:Y\to\Yprod{J}$ is the
+canonical map;  then $H$ is a union of members of $\Cal C(J)$, because
+$f^{-1}[G]$ is open in $Y$ and $\pi_J[f^{-1}[G]]$ is open in
+$\Yprod{J}$.   Also, because $f^{-1}[Q]$ is determined by coordinates in
+$J$, $H\subseteq f^{-1}[Q]$, so $f[H]\subseteq Q$ and $\mu^*f[H]=0$;
+thus all the members of $\Cal C(J)$ included in $H$ actually belong to
+$\Cal C_0(J)$, and $H\cap f^{-1}[Q_J]=\emptyset$.
+But this means that $f^{-1}[G]\cap f^{-1}[Q_J]=\emptyset$ and (because
+$f$ is a surjection) $G\cap Q_J=\emptyset$, as
+claimed.\ \QeD\   In particular, if $G$ is a negligible open set in $X$,
+then $G\cap
+Q_J=\emptyset$ whenever $J\in\Cal J$ and $J\supseteq M(G)$.
+
+\medskip
+
+{\bf (d)} If $J\in\Cal J$, there are $s$, $s'\in f^{-1}[Q_J]$ such that
+$s\restr J=s'\restr J$ and $f(s)$, $f(s')$ can be separated by open sets
+in $X$.   \Prf\ Start from any $x\in Q_J$ and take a negligible
+open set $G$ containing $x$ (recall that our hypothesis is that $X$ is
+covered by negligible open sets).   For each $n\in\Bbb N$ let
+$h_n:X\to\Bbb R$ be a continuous function such that
+$F_n(G)=h_n^{-1}[\{0\}]$.   We know that $G\cap Q_J\ne\emptyset$, while
+$G\subseteq X\setminus(\bigcup_{n\in\Bbb N}F_n(G)\cap Q_J)$, which is a
+negligible Baire set;  by (c), $f^{-1}[X\setminus(\bigcup_{n\in\Bbb
+N}F_n(G)\cap Q_J)]$ is not determined by coordinates in $J$, and there
+must be some $n$ such that $f^{-1}[F_n(G)\cap Q_J]$ is not determined by
+coordinates in $J$.   Accordingly
+there must be $s$, $s'\in Y$ such that $s\restr J=s'\restr J$, $s\in
+f^{-1}[F_n(G)\cap Q_J]$ and $s'\notin f^{-1}[F_n(G)\cap Q_J]$.   Now
+$s\in f^{-1}[Q_J]$, which is determined by coordinates in $J$;  since
+$s\restr J=s'\restr J$, $s'\in f^{-1}[Q_J]$ and
+$s'\notin f^{-1}[F_n(G)]$.
+Accordingly $h_n(f(s))=0\ne h_n(f(s'))$ and $f(s)$, $f(s')$ can be
+separated by open sets.\ \Qed
+
+\medskip
+
+{\bf (e)} We are now ready to embark on the central construction of the
+argument.   We may choose inductively, for ordinals $\xi<\omega_1$, sets
+$J_{\xi}\in\Cal J$, negligible open sets $G_{\xi}$, 
+$G'_{\xi}\subseteq X$, points $s_{\xi}$, $s'_{\xi}\in Y$ and sets 
+$U_{\xi}$, $V_{\xi}$, $V'_{\xi}\in\Cal C(I)$ such that
+
+\inset{$J_{\eta}\subseteq J_{\xi}$, $U_{\eta}$, $V_{\eta}$, $V'_{\eta}$
+all belong to $\Cal C(J_{\xi})$ and $G_{\eta}\cap Q_{J_{\xi}}=\emptyset$
+whenever $\eta<\xi<\omega_1$ (using the results of (b) and (c) to choose
+$J_{\xi}$);}
+
+\inset{$s_{\xi}\restr J_{\xi}=s'_{\xi}\restr J_{\xi}$, $s_{\xi}\in
+f^{-1}[Q_{J_{\xi}}]$ and $f(s_{\xi})$ and $f(s'_{\xi})$ can be separated
+by open sets in $X$ (using (d) to choose $s_{\xi}$, $s'_{\xi}$);}
+
+\inset{$G_{\xi}$, $G'_{\xi}$ are disjoint negligible open sets
+containing
+$f(s_{\xi})$, $f(s'_{\xi})$ respectively (choosing $G_{\xi}$,
+$G'_{\xi}$);}
+
+\inset{$U_{\xi}\in\Cal C(J_{\xi})$, $V_{\xi}$, $V'_{\xi}\in\Cal
+C(I\setminus J_{\xi})$, $s_{\xi}\in U_{\xi}\cap V_{\xi}\subseteq
+f^{-1}[G_{\xi}]$, $s'_{\xi}\in U_{\xi}\cap V'_{\xi}
+\subseteq f^{-1}[G'_{\xi}]$ (choosing
+$U_{\xi}$, $V_{\xi}$, $V'_{\xi}$, using the fact that $s_{\xi}\restr
+J_{\xi}=s'_{\xi}\restr J_{\xi}$).}
+
+\noindent On completing this construction, take for each $\xi<\omega_1$
+a finite set $K_{\xi}\subseteq J_{\xi+1}$ such that $U_{\xi}$, $V_{\xi}$
+and $V'_{\xi}$ all belong to $\Cal C(K_{\xi})$.   By the $\Delta$-system
+Lemma (4A1Db), there is an uncountable $A\subseteq\omega_1$ such
+that $\langle K_{\xi}\rangle_{\xi\in A}$ is a $\Delta$-system with root
+$K$ say.    For $\xi\in A$, express $U_{\xi}$ as 
+$\tilde U_{\xi}\cap U'_{\xi}$ where $\tilde U_{\xi}\in\Cal C(K)$ and 
+$U'_{\xi}\in\Cal C(K_{\xi}\setminus K)$.   Then there are only countably many
+possibilities for $\tilde U_{\xi}$, so there is an uncountable
+$B\subseteq A$ such that $\tilde U_{\xi}$ is constant for $\xi\in B$;
+write $\tilde U$ for the constant value.   Let $C\subseteq B$ be an
+uncountable set, not containing $\min A$, such that $K_{\xi}\setminus K$
+does not meet $J_{\eta}$ whenever $\xi$, $\eta\in C$ and $\eta<\xi$
+(4A1Eb).   Let $D\subseteq C$ be such that $D$ and $C\setminus D$
+are both uncountable.
+
+Note that $K\subseteq K_{\eta}\subseteq J_{\xi}$ whenever $\eta$,
+$\xi\in A$ and $\eta<\xi$, so that $K\subseteq J_{\xi}$ for every
+$\xi\in C$.   Consequently $U'_{\xi}$, $V_{\xi}$ and $V'_{\xi}$ all
+belong to $\Cal C(K_{\xi}\setminus K)$ for every $\xi\in C$.
+
+\medskip
+
+{\bf (f)} Consider the open set
+
+\Centerline{$G=\bigcup_{\xi\in D}G_{\xi}\subseteq X$.}
+
+\noindent At this point the argument divides.
+
+\medskip
+
+\quad{\bf case 1} Suppose $\mu^*(G\cap f[\tilde U])>0$.   Then there is
+a Baire set $Q\subseteq G$ such that $\mu^*(Q\cap f[\tilde U])>0$.   Let
+$J\subseteq I$ be a countable set such that $f^{-1}[Q]$ is determined by
+coordinates in $J$.
+Let $\gamma\in C\setminus D$ be so large that $K_{\xi}\setminus K$ does
+not meet $J$ for any $\xi\in A$ with $\xi\ge\gamma$.   Then 
+$Q\cap Q_{J_{\gamma}}\cap f[\tilde U]$ is not empty;  take
+$s\in \tilde U\cap f^{-1}[Q\cap Q_{J_{\gamma}}]$.   Because the
+$K_{\xi}\setminus K$ are disjoint from each other and from 
+$J\cup J_{\gamma}$ for $\xi>\gamma$, we may modify $s$ to form $s'$
+such that
+$s'\restr J\cup J_{\gamma}=s\restr J\cup J_{\gamma}$ and 
+$s'\in U'_{\xi}\cap V'_{\xi}$ for every $\xi>\gamma$;  now
+$s'\in\tilde U$ (because $K\subseteq J_{\gamma}$), so 
+$s'\in\tilde U\cap U'_{\xi}\cap V'_{\xi}\subseteq f^{-1}[G'_{\xi}]$ and 
+$f(s')\notin G_{\xi}$ whenever $\xi>\gamma$.   On the other hand, if $\xi\in D$ and 
+$\xi<\gamma$,
+$G_{\xi}\cap Q_{J_{\gamma}}=\emptyset$, while $s'\in f^{-1}[Q_{J_{\gamma}}]$ (because
+$f^{-1}[Q_{J_{\gamma}}]$  is determined by coordinates in $J_{\gamma}$),
+so again $f(s')\notin G_{\xi}$.
+
+Thus $f(s')\notin G$.   But $s'\restr J=s\restr J$ so 
+$f(s)\in Q\subseteq G$;  which is impossible.
+
+This contradiction disposes of the possibility that 
+$\mu^*(G\cap f[\tilde U])>0$.
+
+\medskip
+
+\quad{\bf case 2} Suppose that $\mu^*(G\cap f[\tilde U])=0$.   In this
+case there is a negligible Baire set $Q\supseteq G\cap f[\tilde U]$.
+Let $J\subseteq I$ be a countable set such that $f^{-1}[Q]$ is
+determined
+by coordinates in $J$.   Let $\gamma<\omega_1$ be such that 
+$J\cap J_{\gamma}=J\cap\bigcup_{\xi<\omega_1}J_{\xi}$ and 
+$J\cap K_{\xi}\setminus K=\emptyset$ for every $\xi\ge\gamma$.   Take $\xi\in D$ 
+such that $\xi\ge\gamma$.   Then
+
+\Centerline{$\tilde U\cap U'_{\xi}\cap V_{\xi}
+\subseteq f^{-1}[G_{\xi}]\cap\tilde U
+\subseteq f^{-1}[G\cap f[\tilde U]]
+\subseteq f^{-1}[Q]$,}
+
+\noindent so $\tilde U\subseteq f^{-1}[Q]$, because $U'_{\xi}\cap V_{\xi}$ is a 
+non-empty member of $\Cal C(I\setminus J)$.   But this
+means that $\mu^*f[\tilde U]=0$ and $\mu^*f[U_{\xi}]=0$.   On the other
+hand, we have $s_{\xi}\in U_{\xi}\cap f^{-1}[Q_{J_{\xi}}]$, so
+$U_{\xi}\notin\Cal C_0(J_{\xi})$ and $\mu^*f[U_{\xi}]>0$.\ \Bang
+
+Thus this route also is blocked and we must abandon the original
+hypothesis that there is a quasi-dyadic space with a semi-finite
+completion regular topological measure which is not $\tau$-additive.
+}%end of proof of 434Q
+
+\leader{434R}{}\cmmnt{ There is a useful construction of Borel product
+measures which can be fitted in here.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $X$ and $Y$ be topological spaces with
+Borel measures $\mu$ and $\nu$;  write $\Cal B(X)$, $\Cal B(Y)$ for the
+Borel $\sigma$-algebras of $X$ and $Y$ respectively.   If {\it either}
+$X$ is first-countable {\it or} $\nu$ is $\tau$-additive and effectively
+locally finite, there is a Borel measure $\lambda_B$ on $X\times Y$
+defined by the formula
+
+\Centerline{$\lambda_BW
+=\sup_{F\in\Cal B(Y),\nu F<\infty}\int\nu(W[\{x\}]\cap F)\mu(dx)$}
+
+\noindent for every Borel set $W\subseteq X\times Y$.   Moreover
+
+\quad(i) if $\mu$ is semi-finite, then $\lambda_B$ agrees with the
+c.l.d.\ product measure $\lambda$ on $\Cal B(X)\tensorhat\Cal B(Y)$, and
+the c.l.d.\ version $\tilde\lambda_B$ of $\lambda_B$ extends $\lambda$;
+
+\quad(ii) if $\nu$ is $\sigma$-finite, then
+$\lambda_BW=\int\nu W[\{x\}]\mu(dx)$ for every Borel set
+$W\subseteq X\times Y$;
+
+\quad(iii) if both $\mu$ and $\nu$ are $\tau$-additive and effectively
+locally finite, then $\lambda_B$ is just the restriction of the
+$\tau$-additive product measure $\tilde\lambda$\cmmnt{ (417D, 417G)}
+to the Borel $\sigma$-algebra of $X\times Y$;  in particular,
+$\lambda_B$ is $\tau$-additive.
+
+%when is $\lambda_B$ inner regular wrt closed sets?
+
+\proof{{\bf (a)} The point is that $x\mapsto\nu(W[\{x\}]\cap F)$ is
+lower semi-continuous whenever $W\subseteq X\times Y$ is open and
+$\nu F<\infty$.   \Prf\ Of course $W[\{x\}]$ is always open, so $\nu$
+always measures $W[\{x\}]\cap F$.   Take any $\alpha\in\Bbb R$ and set
+$G=\{x:x\in X,\,\nu(W[\{x\}]\cap F)>\alpha\}$;  let $x_0\in G$.
+
+\medskip
+
+\quad\grheada\ Suppose that $X$ is first-countable.   Let
+$\sequencen{U_n}$ be a
+non-increasing sequence running over a base of open neighbourhoods of
+$x_0$.   For each $n\in\Bbb N$, set
+
+\Centerline{$V_n=\bigcup\{V:V\subseteq Y$ is open,
+$U_n\times V\subseteq W\}$.}
+
+\noindent Then $\sequencen{V_n}$ is a non-decreasing sequence with union
+$W[\{x\}]$, so there is an $n\in\Bbb N$ such that
+$\nu(V_n\cap F)>\alpha$.
+Now $V_n\subseteq W[\{x\}]$ for every $x\in U_n$, so $U_n\subseteq G$.
+
+\medskip
+
+\quad\grheadb\ Suppose that $\nu$ is $\tau$-additive and effectively
+locally finite.   Set
+
+\Centerline{$\Cal V=\{V:V\subseteq Y$ is open, $U\times V\subseteq W$
+for some open set $U$ containing $x_0\}$.}
+
+\noindent Then $\Cal V$ is an upwards-directed family of open sets with
+union $W[\{x_0\}]$, so there is a $V\in\Cal V$ such that
+$\nu(V\cap F)>\alpha$ (414Ea).   Let $U$ be an open set containing $x_0$
+such that $U\times V\subseteq W$;  then $V\subseteq W[\{x\}]$ for every
+$x\in U$, so $U\subseteq G$.
+
+\medskip
+
+\quad\grheadc\ Thus in either case we have an open set containing $x_0$
+and included in $G$.   As $x_0$ is arbitrary, $G$ is open;  as $\alpha$
+is arbitrary, $x\mapsto\nu(W[\{x\}]\cap F)$ is lower semi-continuous.\
+\Qed
+
+\medskip
+
+{\bf (b)} It follows that $x\mapsto\nu(W[\{x\}]\cap F)$ is Borel
+measurable whenever $W\subseteq X\times Y$ is a Borel set and
+$\nu F<\infty$.
+\Prf\ Let $\Cal W$ be the family of sets $W\subseteq X\times Y$ such
+that $W[\{x\}]$ is
+a Borel set for every $x\in X$ and $x\mapsto\nu(W[\{x\}]\cap F)$ is
+Borel measurable.   Then every open subset of $X\times Y$ belongs to
+$\Cal W$ (by (a) above), $W\setminus W'\in\Cal W$ whenever $W$,
+$W'\in\Cal W$ and
+$W'\subseteq W$, and $\bigcup_{n\in\Bbb N}W_n\in\Cal W$ whenever
+$\sequencen{W_n}$ is a non-decreasing sequence in $\Cal W$.   By the
+Monotone Class Theorem (136B), $\Cal W$ includes the $\sigma$-algebra
+generated by the open sets, that is, the Borel $\sigma$-algebra of
+$X\times Y$.\
+\Qed
+
+\medskip
+
+{\bf (c)} It is now easy to check that
+$W\mapsto\int\nu(W[\{x\}]\cap F)\mu(dx)$ is a Borel measure on
+$X\times Y$ whenever $\nu F<\infty$, and therefore that $\lambda_B$, as
+defined here, is a Borel measure.
+
+\wheader{434R}{4}{2}{2}{108pt}
+
+{\bf (d)} Now suppose that $\mu$ is semi-finite, and that
+$W\in\Cal B(X)\tensorhat\Cal B(Y)$.   Then
+
+$$\eqalignno{\lambda W
+&=\sup_{\mu E<\infty,\nu F<\infty}\lambda(W\cap(E\times F))\cr
+\displaycause{by the definition of `c.l.d.\ product measure', 251F}
+&=\sup_{\mu E<\infty,\nu F<\infty}\int_E\nu(W[\{x\}]\cap F)\mu(dx)\cr
+\displaycause{by Fubini's theorem, 252C, applied to the product of the
+subspace measures $\mu_E$ and $\nu_F$}
+&=\sup_{\nu F<\infty}\int\nu(W[\{x\}]\cap F)\mu(dx)\cr
+\displaycause{by 213B, because $\mu$ is semi-finite}
+&=\lambda_BW.\cr}$$
+
+\medskip
+
+{\bf (e)} If, on the other hand, $\nu$ is $\sigma$-finite, let
+$\sequencen{F_n}$ be a non-decreasing sequence of sets of finite measure
+covering $Y$;  then
+
+$$\eqalign{\lambda_BW
+&=\sup_{\nu F<\infty}\int\nu(W[\{x\}]\cap F)\mu(dx)
+\ge\sup_{n\in\Bbb N}\int\nu(W[\{x\}]\cap F_n)\mu(dx)\cr
+&=\int\sup_{n\in\Bbb N}\nu(W[\{x\}]\cap F_n)\mu(dx)
+=\int\nu W[\{x\}]\mu(dx)
+\ge\lambda_BW\cr}$$
+
+\noindent for any Borel set $W\subseteq X$.
+
+\medskip
+
+{\bf (f)} If both $\mu$ and $\nu$ are $\tau$-additive and effectively
+locally finite, so that we have a $\tau$-additive product measure
+$\tilde\lambda$, then Fubini's theorem for such measures (417H) tells us
+that $\lambda_BW=\tilde\lambda W$ at least when $W\subseteq X\times Y$
+is a Borel set and $\tilde\lambda W$ is finite.   If $W$ is any Borel
+subset of $X\times Y$, then, as in (d),
+
+$$\eqalign{\lambda_BW
+&=\sup_{\mu E<\infty,\nu F<\infty}\int_E\nu(W[\{x\}]\cap F)\mu(dx)\cr
+&=\sup_{\mu E<\infty,\nu F<\infty}\tilde\lambda(W\cap(E\times F))
+=\tilde\lambda W\cr}$$
+
+\noindent by 417C(iii).
+}%end of proof of 434R
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The case in which $X$ is first-countable is due to
+{\smc Johnson 82}.}
+
+\vleader{60pt}{*434S}{}\cmmnt{ The concept of `universally measurable'
+set
+enables us to extend a number of ideas from earlier sections.   First,
+recall a problem from the very beginning of measure theory on the real
+line:  the composition of Lebesgue measurable functions need not be
+Lebesgue measurable (134Ib), while the composition of a Borel measurable
+function with a Lebesgue measurable function is measurable (121Eg).   In
+fact we can replace `Borel measurable' by `universally measurable', as
+follows.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a complete locally
+determined measure space, $Y$ and $Z$ topological spaces, $f:X\to Y$ a
+measurable function and $g:Y\to Z$ a universally measurable function.
+Then $gf:X\to Z$ is measurable.   In particular, $f^{-1}[F]\in\Sigma$
+for every universally measurable set $F\subseteq Y$.
+
+\proof{ Let $H\subseteq Z$ be an open set and $E\in\Sigma$ a set of
+finite measure.   Let $\mu_E$ be the subspace measure on $E$.   Then the
+image measure $\nu=\mu_E(f\restr E)^{-1}$ is a complete totally finite
+topological measure on $Y$, so its domain contains $g^{-1}[H]$, and
+
+\Centerline{$E\cap(gf)^{-1}[H]
+=(f\restr E)^{-1}[g^{-1}[H]]
+\in\dom\mu_E\subseteq\Sigma$.}
+
+\noindent As $E$ is arbitrary and $\mu$ is locally determined,
+$(gf)^{-1}[H]\in\Sigma$;  as $H$ is arbitrary, $gf$ is measurable.
+
+Applying this to $g=\chi F$, we see that $f^{-1}[F]\in\Sigma$ for every
+universally measurable $F\subseteq Y$.
+}%end of proof of 434S
+
+\leader{*434T}{}\cmmnt{ The next remark concerns the concept
+$\Bvalue{u\in E}$ of \S364.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(\frak A,\bar\mu)$ be a localizable
+measure algebra.   Write $\Sigma_{\text{um}}$ for the algebra of
+universally measurable subsets of $\Bbb R$.
+
+(a) For any $u\in L^0=L^0(\frak A)$, we have a sequentially
+order-continuous Boolean homomorphism
+$E\mapsto\Bvalue{u\in E}:\Sigma_{\text{um}}\to\frak A$ defined by saying
+that
+
+$$\eqalign{\Bvalue{u\in E}
+&=\sup\{\Bvalue{u\in F}:F\subseteq E\text{ is Borel}\}
+=\sup\{\Bvalue{u\in K}:K\subseteq E\text{ is compact}\}\cr
+&=\inf\{\Bvalue{u\in F}:F\supseteq E\text{ is Borel}\}
+=\inf\{\Bvalue{u\in G}:G\supseteq E\text{ is open}\}\cr}$$
+
+\noindent for every $E\in\Sigma_{\text{um}}$.
+
+(b) For any $u\in L^0$ and universally measurable function
+$h:\Bbb R\to\Bbb R$ we have a corresponding element $\bar h(u)$ of $L^0$
+defined by the formula
+
+\Centerline{$\Bvalue{\bar h(u)\in E}=\Bvalue{u\in h^{-1}[E]}$
+for every $E\in\Sigma_{\text{um}}$, $u\in L^0$.}
+
+\proof{ We can regard $(\frak A,\bar\mu)$ as the measure algebra of a
+complete strictly localizable measure space $(X,\Sigma,\mu)$ (322O), in
+which case $L^0$ can be identified with $L^0(\mu)$ 
+(364Ic\formerly{3{}64Jc}).   Write
+$\Cal B$ for the Borel $\sigma$-algebra of $\Bbb R$.
+
+\medskip
+
+{\bf (a)} Let $f:X\to\Bbb R$ be a $\Sigma$-measurable
+function representing $u$.   Then $f^{-1}[E]\in\Sigma$ for every
+$E\in\Sigma_{\text{um}}$, by 434S.   Setting
+$\phi E=(f^{-1}[E])^{\ssbullet}$, $\phi:\Sigma_{\text{um}}\to\frak A$ is
+a sequentially order-continuous Boolean homomorphism.
+
+Now
+
+\Centerline{$\phi E=\sup\{\Bvalue{u\in K}:
+  K\subseteq E\text{ is compact}\}$}
+
+\noindent for every $E\in\Sigma_{\text{um}}$.   \Prf\ If $H\in\Sigma$
+and $\mu H<\infty$, then (writing $\mu_H$ for the subspace measure on
+$H$) the image measure $\mu_H(f\restr H)^{-1}$ is a complete topological
+measure, and its restriction $\nu$ to the Borel $\sigma$-algebra 
+$\Cal B$ of
+$\Bbb R$ is a totally finite Borel measure.   Now $E$ is measured by the
+completion $\hat\nu$ of $\nu$, which is a Radon measure (256C), so for any
+$\epsilon>0$ there are a compact $K\subseteq E$ and a Borel $F\supseteq E$
+such that $\nu F=\hat\nu E\le\nu K+\epsilon$.   In this
+case,
+
+\Centerline{$\Bvalue{u\in K}=(f^{-1}[K])^{\ssbullet}
+\Bsubseteq\phi E\Bsubseteq(f^{-1}[F])^{\ssbullet}=\Bvalue{u\in F}$,}
+
+\noindent using the formula of 364Ib, while
+
+$$\eqalign{\bar\mu(H^{\ssbullet}\Bcap\phi E)
+&\le\bar\mu(H^{\ssbullet}\Bcap\Bvalue{u\in F})
+=\mu(H\cap f^{-1}[F])\cr
+&=\nu F
+\le\nu K+\epsilon
+=\bar\mu(H^{\ssbullet}\Bcap\Bvalue{u\in K})+\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary, 
+
+\Centerline{$H^{\ssbullet}\Bcap\phi E
+=\sup\{H^{\ssbullet}\Bcap\Bvalue{u\in K}:
+  K\subseteq E\text{ is compact}\}$;}
+  
+\noindent as $H$ is arbitrary, and $(\frak A,\bar\mu)$ is semi-finite,
+$\phi E=\sup\{\Bvalue{u\in K}:K\subseteq E\text{ is compact}\}$.
+\QeD
+
+Applying this to $\Bbb R\setminus E$, we see that
+$\phi E=\inf\{\Bvalue{u\in G}:G\supseteq E\text{ is open}\}$.
+Of course it follows at once that
+
+\Centerline{$\Bvalue{u\in E}
+=\sup\{\Bvalue{u\in F}:F\subseteq E\text{ is Borel}\}
+=\inf\{\Bvalue{u\in F}:F\supseteq E\text{ is Borel}\}$.}
+
+\noindent We can therefore identify the sequentially
+order-continuous Boolean homomorphism $\phi$ with
+$E\mapsto\Bvalue{u\in E}$, as described.
+
+\medskip
+
+{\bf (b)} Once again identifying $u$ with $f^{\ssbullet}$ where
+$f$ is $\Sigma$-measurable, we see that $hf$ is $\Sigma$-measurable (by
+434S), so we have a corresponding element $(hf)^{\ssbullet}$ of $L^0$.
+If $E\in\Sigma_{\text{um}}$, then
+
+\Centerline{$\Bvalue{(hf)^{\ssbullet}\in E}
+=((hf)^{-1}[E])^{\ssbullet}
+=(f^{-1}[h^{-1}[E]])^{\ssbullet}
+=\Bvalue{u\in h^{-1}[E]}$,}
+
+\noindent using 434De to check that $h^{-1}[E]\in\Sigma_{\text{um}}$, so
+that we can identify $(hf)^{\ssbullet}$ with $\bar h(u)$, as described.
+}%end of proof of 434T
+
+\exercises{
+\leader{434X}{Basic exercises $\pmb{>}$(a)}
+%\sqheader 434Xa
+Let $A\subseteq[0,1]$ be any non-measurable set.   Show
+that the subspace measure on $A$ is completion regular and
+$\tau$-additive but not tight.
+%434A
+
+\sqheader 434Xb Let $X$ be any Hausdorff space with a point $x$ such
+that $\{x\}$ is not a G$_{\delta}$ set;  for instance, $X=\omega_1+1$
+and $x=\omega_1$, or $X=\{0,1\}^I$ for any uncountable set $I$ and $x$
+any point of $X$.   Show that setting $\mu E=\chi E(x)$ we get a tight
+Borel measure on $X$ which is not completion regular.
+%434A
+
+\sqheader 434Xc Let $X$ be a topological space.
+(i) Show that if $A\subseteq X$ is universally measurable in $X$, then
+$A\cap Y$ is universally measurable in $Y$ for any set $Y\subseteq X$.
+(ii) Show that if $Y\subseteq X$ is universally measurable in $X$, and
+$A\subseteq Y$ is universally measurable in $Y$, then $A$ is universally
+measurable in $X$.   (iii) Suppose that $X$ is the product of a
+countable family $\familyiI{X_i}$ of
+topological spaces, and $E_i\subseteq X_i$ is a universally measurable
+set for each $i\in I$.   Show that $\prod_{i\in I}E_i$ is universally
+measurable in $X$.
+%434D
+
+\spheader 434Xd Let $X$ be an analytic 
+Hausdorff space.   (i) Suppose that $Y$ is a
+topological space and $W$ is a Borel subset of $X\times Y$.   Show that
+$W[X]$ is a universally measurable subset of $Y$.   \Hint{423N.}  
+(ii)\dvAnew{2010} Let $A$ be a subset of $X$.   Show that the following are
+equiveridical:  ($\alpha$) $A$ is universally measurable in $X$;  ($\beta$)
+$f^{-1}[A]$ is Lebesgue measurable for every Borel measurable function
+$f:[0,1]\to X$;  ($\gamma$) $f^{-1}[A]$ is measured by the usual measure on
+$\{0,1\}^{\Bbb N}$ for every continuous function $f:\{0,1\}^{\Bbb N}\to X$.
+%434D
+
+\spheader 434Xe Let $X$ be a Hausdorff space.
+(i) Show that, for $A\subseteq X$, the following are equiveridical:
+($\alpha$) $A$ is universally Radon-measurable in $X$;  ($\beta$) $A$ is
+measured by every atomless Radon probability measure on $X$;  ($\gamma$)
+$A\cap K$ is universally Radon-measurable in $K$ for every compact
+$K\subseteq X$.
+(ii) Show that if
+$A\subseteq X$ is universally Radon-measurable in $X$, then $A\cap Y$ is
+universally Radon-measurable in $Y$ for any set $Y\subseteq X$.
+(iii) Show that if $Y\subseteq X$ is universally Radon-measurable in
+$X$, and $A\subseteq Y$ is universally Radon-measurable in $Y$, then $A$
+is universally Radon-measurable in $X$.
+(iv) Show that if $\Cal G$ is an open cover of $X$, and $A\subseteq X$
+is such that $A\cap G$ is universally Radon-measurable (in $G$ or in
+$X$) for every $G\in\Cal G$, then $A$ is universally Radon-measurable in
+$X$.
+(v) Show that if $Y$ is another Hausdorff space, and
+$\Sigma^{(X)}_{\text{uRm}}$, $\Sigma^{(Y)}_{\text{uRm}}$ are the
+algebras of universally
+Radon-measurable subsets of $X$, $Y$ respectively, then every continuous
+function from $X$ to $Y$ is
+$(\Sigma^{(X)}_{\text{uRm}},\Sigma^{(Y)}_{\text{uRm}})$-measurable.
+(vi) Suppose that $X$ is the product of a countable family
+$\familyiI{X_i}$ of
+topological spaces, and $E_i\subseteq X_i$ is a universally
+Radon-measurable set for each $i\in I$.   Show that $\prod_{i\in I}E_i$
+is universally Radon-measurable in $X$.
+%434E
+
+\sqheader 434Xf
+(i) Let $\mu_0$ be Dieudonn\'e's measure on $\omega_1$.
+Give $\omega_1+1=\omega_1\cup\{\omega_1\}$ its compact Hausdorff order
+topology, and define a Borel measure $\mu$ on $\omega_1+1$ by setting
+$\mu E=\mu_0(E\cap\omega_1)$ for every Borel set $E\subseteq\omega_1+1$.
+Show that $\mu$ is a complete probability measure and is neither
+$\tau$-additive nor inner regular with respect to the closed sets.
+(ii) Show that the universally measurable subsets of $\omega_1+1$ are
+just its Borel sets.
+\Hint{4A3J, 411Q.}   (iii) Show that every totally finite
+$\tau$-additive topological measure on $\omega_1+1$ has a countable
+support.   (iv) Show that every subset of $\omega_1+1$ is universally
+Radon-measurable.
+%434E
+
+\spheader 434Xg(i) Show that there is a set $X\subseteq[0,1]$ such that
+$K\cap X$ and $K\setminus X$ are both of cardinal $\frak c$ for every
+uncountable compact set $K\subseteq[0,1]$.   \Hint{4A3Fa, 423K.}
+(ii) Show that if we give $X$ its subspace topology, then every subset
+of $X$ is universally Radon-measurable, but not every subset is
+universally measurable.   \Hint{every compact subset of $X$ is
+countable, so every Radon measure on $X$ is purely atomic, but $X$ has
+full outer Lebesgue measure in $[0,1]$.}
+%434E
+
+\spheader 434Xh Show that a Hausdorff space $X$ is Radon iff ($\alpha$)
+every compact subset of $X$ is Radon ($\beta$) for every non-zero
+totally finite Borel measure $\mu$ on $X$ there is a compact subset $K$
+of $X$ such that $\mu K>0$.   \Hint{434F(a-v).}
+%434F
+
+\sqheader 434Xi(i) Let $X$ and $Y$ be K-analytic Hausdorff spaces and
+$f:X\to Y$ a continuous surjection.   Suppose that $F\subseteq Y$ and
+that $f^{-1}[F]$ is universally Radon-measurable in $X$.   Show that $F$
+is universally Radon-measurable in $Y$.   \Hint{432G.}
+(ii) Let $X$ and $Y$ be analytic Hausdorff spaces and $f:X\to Y$ a Borel
+measurable surjection.
+Suppose that $F\subseteq Y$ and that $f^{-1}[F]$ is universally
+Radon-measurable in $X$.   Show that $F$ is universally Radon-measurable
+in $Y$.   \Hint{433D.}
+%434F
+
+\spheader 434Xj Show that if $X$ is a perfectly normal space then it is
+Borel-measure-compact iff it is Borel-measure-complete.
+%434I
+
+\spheader 434Xk Let $X$ be a Radon Hausdorff space.   (i) Show that $X\times Y$ is
+Borel-measure-compact whenever $Y$ is Borel-measure-compact.   (ii) Show that 
+$X\times Y$ is Borel-measure-complete whenever $Y$ is Borel-measure-complete.   
+%434I
+
+\spheader 434Xl Show that if we give $\omega_1+1$ its order topology, it
+is Borel-measure-compact but not Borel-measure-complete or pre-Radon,
+and its open subset $\omega_1$ is not Borel-measure-compact.
+%434J
+
+\spheader 434Xm Show that $\Bbb R$, with the right-facing Sorgenfrey
+topology, is Borel-measure-complete and Borel-measure-compact, but not
+Radon or pre-Radon.
+%434J
+
+\spheader 434Xn Let $X$ be a topological space.   (i) Show that the
+family of Borel-measure-complete subsets of $X$ is closed under
+Souslin's operation.
+(ii) Show that the union of a sequence of Borel-measure-compact subsets
+of $X$ is Borel-measure-compact.
+(iii) Show that if $X$ is Hausdorff then the family of pre-Radon subsets
+of $X$ is closed under Souslin's operation.   \Hint{in (i) and (iii),
+start by showing that the family under consideration is closed under
+countable unions.}
+%434J
+
+\spheader 434Xo Show that $\ooint{0,1}^{\omega_1}$ is not pre-Radon.
+%434J
+
+\spheader 434Xp Let $X$ be a separable metrizable space.   Show that the following 
+are equiveridical:  (i) $X$ is a Radon space;  (ii) $X$ is a pre-Radon space;   
+(iii) there is a metric on $X$, defining the topology of $X$, such that $X$ is 
+universally Radon-measurable in its completion;  (iv) whenever $Y$ is a separable 
+metrizable space and $X'$ is a subset of $Y$ such that there is a Borel isomorphism 
+between $X$ and $X'$, then $X'$ is universally measurable in $Y$;  (v) $X$ is a Radon 
+space under any separable metrizable topology giving rise to the same Borel sets as 
+the original topology.
+%434J
+
+\sqheader 434Xq Show that a K-analytic Hausdorff space is Radon iff all
+its compact subsets are Radon.   \Hint{432B, 434Xh.}
+%434K
+
+\spheader 434Xr Suppose that $X$ is a K-analytic Hausdorff space such
+that every Radon measure on $X$ is completion regular.   Show that $X$
+is a Radon space.
+%434K 434Xq
+
+\spheader 434Xs Let $X$ and $Y$ be topological spaces, and suppose that
+$Y$ has a countable network.   (i) Show that if $X$ is
+Borel-measure-complete, then $X\times Y$ is Borel-measure-complete.
+(ii) Show that if $X$ and $Y$ are Radon Hausdorff spaces, then
+$X\times Y$ is Radon.
+%434K
+
+\spheader 434Xt Let $\sequencen{X_n}$ be a sequence of topological
+spaces;  write $X=\prod_{n\in\Bbb N}X_n$ and $Z_n=\prod_{i\le n}X_i$ for
+each $n$.   (i) Show that if every $Z_n$ is Borel-measure-complete, so
+is $X$.  (ii) Show that if every $Z_n$ is Hausdorff and pre-Radon, so is
+$X$.   (iii) Show that if every $Z_n$ is Hausdorff and Radon, so is $X$.
+%434K
+
+\spheader 434Xu(i) Let $\sequencen{X_n}$ be a sequence of Radon
+Hausdorff
+spaces such that $\prod_{i\le n}K_i$ is Radon whenever $n\in\Bbb N$ and
+$K_i\subseteq X_i$ is compact for every $i\le n$.   Show that
+$X=\prod_{n\in\Bbb N}X_n$ is Radon.
+(ii) Let $\sequencen{X_n}$ be a sequence of Radon Hausdorff
+spaces with countable networks.   Show that $\prod_{n\in\Bbb N}X_n$ is
+Radon.
+%434K
+
+\spheader 434Xv Show that if, in 434R, $\nu$ is $\sigma$-finite, then
+$\int g\,d\lambda_B=\iint g(x,y)\nu(dy)\mu(dx)$ for every
+$\lambda_B$-integrable function $g:X\times Y\to\Bbb R$.
+%434R
+
+\spheader 434Xw Show that the product measure construction of 434R is
+`associative' and `distributive' in the sense that (under appropriate
+hypotheses) the product measures on $(X\times Y)\times Z$ and
+$X\times(Y\times Z)$ agree, and those on
+$\bigcup_{i,j\in\Bbb N}(X_i\times Y_j)$ and
+$(\bigcup_{i\in\Bbb N}X_i)\times(\bigcup_{j\in\Bbb N}Y_j)$ agree.
+%434R
+
+\sqheader 434Xx Show that the product measure construction of 434R is
+not `commutative';  indeed, taking $\mu=\nu$ to be Dieudonn\'e's measure
+on $\omega_1$, show that the Borel measures $\lambda_1$, $\lambda_2$ on
+$\omega_1^2$ defined by setting
+
+\Centerline{$\lambda_1 W=\biggerint\nu W[\{\xi\}]\mu(d\xi)$,
+\quad$\lambda_2 W=\biggerint\mu W^{-1}[\{\eta\}]\nu(d\eta)$}
+
+\noindent are different.
+%434R
+
+\spheader 434Xy Read through \S271, looking for ways to apply the
+concept `$\Pr(\pmb{X}\in E)$' for random variables $\pmb{X}$ and
+universally measurable sets $E$.
+%434T
+
+\spheader 434Xz Let $\Sigma_{\text{um}}$ 
+be the algebra of universally measurable 
+subsets of $\Bbb R$, and $\mu$ the restriction of Lebesgue measure to
+$\Sigma_{\text{um}}$.   
+Show that $\mu$ is translation-invariant, but has no
+translation-invariant lifting.   \Hint{345F.}
+%434D query out of order
+
+\leader{434Y}{Further exercises (a)}
+%\spheader 434Ya
+Set $X=\Bbb N\setminus\{0,1\}$.   For $m$, $p\in X$ set
+$U_{mp}=m+p\Bbb N$;  show that $\{U_{mp}:m$, $p\in X$ are coprime$\}$ is
+a base for a connected Hausdorff topology on $X$.
+\Hint{$pq\in\overline{U}_{mp}$ for every $q\ge 1$.   See 
+{\smc Steen \& Seebach 78}, ex.\ 60.}   Show that $X$ is a second-countable analytic
+Hausdorff space and carries a Radon measure which is not completion
+regular.
+%434B
+
+\spheader 434Yb Let $(X,\Sigma,\mu)$ be a semi-finite measure space and
+$\frak T$ a topology on $X$ such that $\mu$ is inner regular with
+respect to the closed sets.   Suppose that $Y$ is a topological space
+with a countable network consisting of universally measurable sets, and
+that $f:X\to Y$ is measurable.   Show that $f$ is almost continuous.
+%4{}18J 4{}18Yg 434D
+
+\spheader 434Yc Let $X$ be a Hausdorff space.   Let $\Sigma$ be the
+family of those subsets $E$ of $X$ such that $f^{-1}[E]$ has the Baire
+property in $Z$ whenever $Z$ is a compact Hausdorff space and $f:Z\to X$
+is continuous.   Show that $\Sigma$ is a $\sigma$-algebra of subsets of
+$X$ closed under Souslin's operation.   Show that every member of
+$\Sigma$ is universally Radon-measurable.
+%434E
+
+\spheader 434Yd Let $X$ be a completely regular Hausdorff space.   Show
+that the following are equiveridical:  ($\alpha$) $X$ is Radon;
+($\beta$) $X$ is a universally measurable subset of its
+Stone-\v{C}ech compactification;  ($\gamma$) whenever $Y$ is a Hausdorff
+space and $X'$ is a subspace of $Y$ which is homeomorphic to $X$, then
+$X'$ is universally measurable in $Y$.
+%434F
+
+\spheader 434Ye Let $X$ be a completely regular Hausdorff space.   Show
+that the following are equiveridical:  ($\alpha$) $X$ is pre-Radon;
+($\beta$) $X$ is a universally Radon-measurable subset of its
+Stone-\v{C}ech compactification;  ($\gamma$) whenever $Y$ is a Hausdorff
+space and $X'$ is a subspace of $Y$ which is homeomorphic to $X$, then
+$X'$ is universally Radon-measurable in $Y$.
+%434J
+
+\spheader 434Yf Set $X=\omega_1+1$, with its order topology, and let
+$\Sigma$ be the $\sigma$-algebra of subsets of $X$ generated by the
+countable sets and the set $\Omega$ of limit ordinals in $X$.   Show
+that there is a unique probability measure $\mu$ on $X$ with domain
+$\Sigma$ such that $\mu\xi=\mu\Omega=0$ for every $\xi<\omega_1$.   Show
+that $\mu$ is inner regular with respect to the Borel sets, is defined
+on a base for the topology of the compact Hausdorff space $X$, but has
+no extension to a topological measure on $X$.
+%434Xl 434J
+
+\spheader 434Yg Let $X$ be a metrizable space without isolated points,
+and $\mu$ a $\sigma$-finite Borel measure on $X$.   Show
+that there is a conegligible meager set.   \Hint{there is a dense set
+$D\subseteq X$ such that $\{\{d\}:d\in D\}$ is
+$\sigma$-metrically-discrete.}
+%434L
+
+\spheader 434Yh Give an example of a Hausdorff uniform space $(X,\Cal W)$ 
+with a quasi-Radon probability measure which is not inner regular with
+respect to the totally bounded sets.
+%434L
+
+\spheader 434Yi Show that $\beta\Bbb N$ is not countably tight,
+therefore not Borel-measure-complete.
+%434N
+
+\spheader 434Yj Let $X$ be a quasi-dyadic space.   Suppose that
+$\langle(G_{\xi},H_{\xi})\rangle_{\xi<\omega_1}$ is a family of pairs of
+disjoint non-empty open sets.   Show that there is an uncountable
+$A\subseteq\omega_1$ such that $\bigcap_{\xi\in
+B}G_{\xi}\cap\bigcap_{\xi\in A\setminus B}H_{\xi}$ is non-empty for
+every $B\subseteq A$.   \Hint{start by supposing that $X$ is itself a
+product of separable metrizable spaces, and that every $G_{\xi}$, $H_{\xi}$
+is an open cylinder set;  use the $\Delta$-system Lemma.}
+%434P
+
+\spheader 434Yk(i) Show that the split interval is not quasi-dyadic.
+(ii) Show that $\Bbb R$, with the Sorgenfrey right-facing topology, is
+not quasi-dyadic.   (iii) Show that $\omega_1$ and $\omega_1+1$, with
+their order topologies, are not quasi-dyadic.   \Hint{434Yj.}
+%434P, 434Yj, 4{}23X?
+
+\spheader 434Yl Show that a perfectly normal quasi-dyadic space is
+Borel-measure-compact.
+%434Q
+
+\spheader 434Ym Let $\sequencen{X_n}$ be a sequence of first-countable
+spaces, and $\mu_n$ a Borel probability measure on $X_n$ for each $n$.   
+For $n\in\Bbb N$ set $Z_n=\prod_{i<n}X_i$, and let $\lambda_n$ be the
+product Borel measure on $Z_n$ constructed by repeatedly using the
+method of 434R (cf.\ 434Xw).   Show that there is a unique Borel measure
+$\lambda$ on $Z=\prod_{n\in\Bbb N}X_n$ such that all the canonical maps
+from $Z$ to $Z_n$ are \imp.   Show that, for any $n$, $\lambda$ can be
+identified with the product of $\lambda_n$ and a suitable product
+measure on $\prod_{i\ge n}X_i$.
+%434R
+
+\spheader 434Yn ({\smc Aldaz 97}) A topological space $X$ is {\bf
+countably metacompact} if whenever $\Cal G$ is a countable open cover of
+$X$ then there is a point-finite open cover $\Cal H$ of $X$ refining
+$G$.
+(i) Show that $X$ is countably metacompact iff whenever
+$\sequencen{F_n}$ is a
+non-increasing sequence of closed sets with empty intersection in $X$
+then there is a sequence $\sequencen{G_n}$ of open sets, with empty
+intersection, such that $F_n\subseteq G_n$ for every $n$.
+(ii) Let $X$
+be any topological space and $\nu:\Cal PX\to[0,1]$ a finitely additive
+functional such that $\nu X=1$.   Show that there is a finitely additive
+$\nuprime:\Cal PX\to[0,1]$ such that
+$\nu F\le\nuprime F=\inf\{\nuprime G:G\supseteq F$ is open$\}$ for every
+closed $F\subseteq X$.   \Hint{413Q.}
+(iii) Show that if $X$ is countably metacompact and $\mu$ is any Borel
+probability measure on $X$, there is a Borel probability measure $\mu'$
+on $X$, inner regular with respect to the closed sets, such that
+$\mu F\le\mu' F$ for every closed set $F\subseteq X$;  so that $\mu$ and
+$\mu'$ agree on the Baire $\sigma$-algebra of $X$.
+%+
+
+\spheader 434Yo Let $X$ be a totally ordered set with its order
+topology.   Show that any $\tau$-additive Borel probability measure on
+$X$ has countable Maharam type.
+\Hint{$\{\ocint{-\infty,x}^{\ssbullet}:x\in X\}$ generates the measure
+algebra.}
+%+
+
+\spheader 434Yp ({\smc Oxtoby 70}) Let $\mu$ be an atomless strictly 
+positive 
+Radon probability measure on $\BbbN^{\Bbb N}$.   (i) Show that if 
+$\sequencen{\alpha_n}$ is any sequence in $[0,1]$ such that 
+$\sum_{n=0}^{\infty}\alpha_n=1$, then there is a partition $\sequencen{U_n}$ of 
+$\BbbN^{\Bbb N}$ into open sets such that 
+$\mu U_n=\alpha_n$ for every $n$.   (ii) Show that if $\nu$ is any other 
+atomless strictly positive Radon probability measure on 
+$\BbbN^{\Bbb N}$, there is a homeomorphism 
+$f:\BbbN^{\Bbb N}\to\Bbb N^{\Bbb N}$ such that $\nu=\mu f^{-1}$.
+%434+
+
+\spheader 434Yq If $X$ is a topological space and $\rho$ is a metric on
+$X$, $X$ is {\bf$\sigma$-fragmented} by $\rho$ if for every $\epsilon>0$
+there is a countable cover $\Cal A$ of $X$ such that whenever 
+$\emptyset\ne B\subseteq A\in\Cal A$ there is a non-empty relatively open
+subset of $B$ of $\rho$-diameter at most $\epsilon$.   Now suppose that $X$
+is a Hausdorff space which is $\sigma$-fragmented by a metric $\rho$ such
+that (i) $X$ is complete under $\rho$ (ii) the topology generated by $\rho$
+is finer than the given topology on $X$.   Show that $X$ is a pre-Radon
+space.
+
+\spheader 434Yr Let $X$ be a Hausdorff space and $\mu$ an atomless strictly
+localizable tight Borel measure on $X$.  
+Show that $\mu$ is $\sigma$-finite.
+\Hint{{\smc Fremlin n05}.}
+
+\spheader 434Ys\dvAnew{2010}
+If $X$ is a topological space, a set $A\subseteq X$ is 
+{\bf universally capacitable} if 
+$c(A)=\sup\{c(K):K\subseteq A$ is compact$\}$ for every Choquet capacity 
+$c$ on $X$.   (i) Show that if $X$ is a Hausdorff space and $\pi_1$,
+$\pi_2:X\times X\to X$ are the coordinate maps, then we have a 
+Choquet capacity $c$
+on $X\times X$ defined by saying that $c(A)=0$ if $A\subseteq X\times X$
+and there is a Borel set $E\subseteq X$ including $\pi_1[A]$ and disjoint
+from $\pi_2[A]$, and $c(A)=1$ for other $A\subseteq X\times X$.
+(ii) Show that there is a universally measurable subset of $\Bbb R$ which
+is not universally capacitable.   \Hint{423L.}
+%434D out of order query
+
+\spheader 434Yt\dvAnew{2010}
+Let $X$ be a Hausdorff space such that there is a countable family 
+$\Cal A$ of universally Radon-measurable subsets of $X$ which separates the
+points of $X$ in the sense that whenever $I\in[X]^2$ there is an 
+$A\in\Cal A$ such that $\#(I\cap A)=1$.   Show that two
+Radon probability measures on $X$ which agree on $\Cal A$ are identical.
+%416Yh 434E out of order query
+}%end of exercises
+
+\leader{434Z}{Problems (a)} Must every Radon compact Hausdorff space be
+sequentially compact?
+
+\spheader 434Zb Must a Hausdorff continuous image of a Radon compact
+Hausdorff space be Radon?
+
+\endnotes{\Notesheader{434} I said that the fundamental question of
+topological measure theory is `which measures can appear on which
+topological spaces'?   In this section I have concentrated on Borel
+measures, classified according to the scheme laid out in \S411.   (Of
+course there are other kinds of classification.   One of the most
+interesting is the Maharam classification of Chapter 33:  we can ask
+what measure algebras can appear from topological measures on a given
+topological space.   I will return to this idea in \S531 of Volume 5;
+for the moment I pass it by, with only 434Yo to give a taste.)
+We can ask
+this question from either of two directions.   The obvious approach is
+to ask, for a given class of topological spaces, which types of measure
+can appear.   But having discovered that (for instance) there are
+several types of topological space on which all (totally finite) Borel
+measures are tight, we can use
+this as a definition of a class of topological spaces, and ask the
+ordinary questions about this class.   Thus we have `Radon',
+`Borel-measure-complete', `Borel-measure-compact' and `pre-Radon' spaces
+(434C, 434G).   I have given precedence to the first partly
+to honour the influence of {\smc Schwartz 73} and partly because a
+compact Hausdorff space is always Borel-measure-compact and pre-Radon
+(434Hb, 434Jf) and is Borel-measure-complete iff it is Radon (434Ka).
+In effect, `Borel-measure-complete' means `Borel measures are
+quasi-Radon'
+(434Ib), `pre-Radon' means `quasi-Radon measures are Radon' (434Jb), and
+`Radon' means `Borel measures are Radon' (434F(a-iii)).   These slogans
+have to be interpreted with care;  but it is true that a Hausdorff space
+is Radon iff it is both Borel-measure-complete and pre-Radon (434Ka).
+
+The concept of `Radon' space is in fact one of the important
+contributions of measure
+theory to general topology, offering a variety of challenging
+questions.   One which has attracted some attention is the problem of
+determining when products of Radon spaces are Radon.   Uncountable
+products hardly ever are (434K);  for countable products it is enough
+to understand products of finitely many compact spaces (434Xu);  but the
+product of two compact spaces already seems to lead us into undecidable
+questions (438Xq, {\smc Wage 80}).   Two more very natural questions are
+in 434Z.   One of the obstacles to the investigation is the rather small
+number of Radon compact Hausdorff spaces which are known.   I should
+remark that if the continuum hypothesis (for instance) is true, then
+every compact Hausdorff space in which countably compact sets are closed
+is sequentially compact ({\smc Ismail \& Nyikos 80}, or
+{\smc Fremlin 84}, 24Nc), so that in this case we have a quick answer to
+434Za.
+
+You will recognise the construction of 434M as a universal version of
+Dieudonn\'e's measure (411Q).   `Tightness' is of great
+interest for other reasons ({\smc Engelking 89}), and here is
+very helpful in giving quick proofs that spaces are not Radon (434Yi).
+
+A large proportion of the definitions in general topology can be
+regarded as different abstractions from the concept of metrizability.
+Countable tightness is an obvious example;  so is `first-countability'
+(434R).   In quite a different direction we have `metacompactness'
+(438J, 434Yn).   The construction of the product measure in 434R is an
+obvious idea, as soon as you have seen Fubini's theorem, but it is not
+obvious just when it will work.
+
+`Quasi-dyadic' spaces are a relatively recent invention;  I introduce
+them here only as a vehicle for the argument of 434Q.   Of course a
+dyadic space is
+quasi-dyadic;   for basic facts on dyadic spaces, see 4A2D, 4A5T and
+{\smc Engelking 89}, \S3.12 and 4.5.9-4.5.11.
+}%end of notes
+
+\discrpage
+

@@ -1,0 +1,913 @@
+\frfilename{mt4a5.tex}
+\versiondate{4.8.13}
+\copyrightdate{2000}
+
+\def\chaptername{Appendix}
+\def\sectionname{Topological groups}
+
+\def\Csaszar{{\smc Cs\'asz\'ar 78}}
+\def\Folland{{\smc Folland 95}}
+\def\HR{{\smc Hewitt \& Ross 63}}
+\def\rti{right-{\vthsp}translation-{\vthsp}invariant}
+
+\newsection{4A5}
+
+For Chapter 44 we need a variety of facts about topological groups.
+Most are essentially elementary, and all the non-trivial ideas are covered
+by at least one of \Csaszar\ and \HR.   In
+4A5A-4A5C %4A5A 4A5B 4A5C
+and 4A5I I give some simple definitions concerning groups and group
+actions.   Topological groups, properly speaking, appear in 4A5D.
+Their simplest properties are in 4A5E-4A5G. %\overline{Y}_0 4A5F 4A5G
+I introduce `right' and `bilateral' uniformities in 4A5H;  the latter
+are the more interesting (4A5M-4A5O),  %4A5M 4A5N 4A5O
+but the former are also important\cmmnt{ (see the proof of 4A5P)}.
+4A5J-4A5L %4A5J 4A5K 4A5L
+deal with quotient spaces, including spaces of cosets of
+non-normal subgroups.   I conclude with notes on metrizable groups
+(4A5Q-4A5S).  %4A5Q 4A5R 4A5S
+
+%4A5A notation
+%4A5B, %4A5C actions
+%4A5D top gps
+%4A5E elementary props
+%4A5F homos
+%4A5G products
+%4A5H uniformities
+%4A5I continuous actions
+%4A5J X/Y for subgps Y (uses 4A5C, 4A5I)
+%4A5K X/\overline{\{e\}} (uses 4A5H, 4A5J)
+%4A5L first iso thm (uses 4A5J)
+%4A5M more on uniformities
+%4A5N completion
+%4A5O totally bounded sets
+%4A5P notes on functions in C_k (uses 4A5H, 4A5O)
+%4A5Q, 4A5R metrizable top gps
+%4A5S X/Y metrizable (uses 4A5O, 4A5H, 4A5J, 4A5Q)
+
+\leader{4A5A}{Notation} If $X$ is a group, $x_0\in X$, and $A$,
+$B\subseteq X$ I write
+
+\Centerline{$x_0A=\{x_0x:x\in A\}$,
+\quad$Ax_0=\{xx_0:x\in A\}$,}
+
+\Centerline{$AB=\{xy:x\in A,\,y\in B\}$,
+\quad$A^{-1}=\{x^{-1}:x\in A\}$.}
+
+\noindent $A$ is {\bf symmetric} if $A=A^{-1}$.
+\cmmnt{Observe that $(AB)C=A(BC)$, $(AB)^{-1}=B^{-1}A^{-1}$
+for any $A$, $B$, $C\subseteq X$.}
+
+\leader{4A5B}{Group actions (a)} If $X$ is a group and $Z$ is a set, an
+{\bf action} of $X$ on $Z$ is a function
+$(x,z)\mapsto x\action z:X\times Z\to Z$ such that
+
+\Centerline{$(xy)\action z=x\action(y\action z)$ for all $x$, $y\in X$ and
+$z\in Z$,}
+
+\Centerline{$e\action z=z$ for every $z\in Z$}
+
+\noindent where $e$ is the identity of $X$.
+
+In this context I may say that `$X$ acts on $Z$', taking the operation
+$\action$ for granted.
+
+\spheader 4A5Bb An action $\action$ of a group $X$ on a set $Z$ is
+{\bf transitive} if for every $w$, $z\in Z$ there is an $x\in X$ such
+that $x\action w=z$.
+
+\spheader 4A5Bc If $\action$ is an action of a group $X$ on a set $Z$, I
+write $x\action A=\{x\action z:z\in A\}$ whenever $x\in X$ and
+$A\subseteq Z$.
+
+\spheader 4A5Bd If $\action$ is an action of a group $X$ on a set $Z$,
+then $z\mapsto x\action z:Z\to Z$ is a permutation for every $x\in X$.
+\prooflet{(For it has an inverse $z\mapsto x^{-1}\action z$.)}   So if
+$Z$ is a topological space and $z\mapsto x\action z$ is continuous for
+every $x$, it is a homeomorphism for every $x$.
+
+\spheader 4A5Be An action $\action$ of a group $X$ on a set $Z$ is {\bf
+faithful} if whenever $x$, $y\in X$ are distinct there is a $z\in Z$
+such that $x\action z\ne y\action z$\cmmnt{;  that is, the natural
+homomorphism from $X$ to the group of permutations of $Z$ is
+injective}.
+%Pestov 99:  `effective action'
+\cmmnt{ An action of $X$ on $Z$ is faithful iff for any
+$x\in X$ which is not the identity there is a $z\in Z$ such that
+$x\action z\ne z$.}
+
+\spheader 4A5Bf If $\action$ is an action of a group $X$ on a set $Z$,
+then $Y_z=\{x:x\in X,\,x\action z=z\}$ is a subgroup of $X$ (the {\bf
+stabilizer} of $z$) for every $z\in Z$.   If $\action$ is transitive,
+then $Y_w$ and $Y_z$ are conjugate subgroups for all $w$, $z\in Z$.
+\prooflet{(If $x\action w=z$, then $Y_z=xY_wx^{-1}$.)}
+
+\spheader 4A5Ag\dvAnew{2012}
+If $\action$ is an action of a group $X$ on a set $Z$,
+then sets of the form $\{a\action z:a\in X\}$ are called {\bf orbits} of
+the action;  they are the equivalence classes under the equivalence
+relation $\sim$, where $z\sim z'$ if there is an $a\in X$ such that
+$z'=a\action z$.
+
+\vleader{72pt}{4A5C}{Examples} Let $X$ be any group.
+
+\spheader 4A5Ca Write
+
+\Centerline{$x\action_ly=xy$,
+\quad$x\action_ry=yx^{-1}$,
+\quad$x\action_cy=xyx^{-1}$}
+
+\noindent for $x$, $y\in X$.   These are all actions of $X$ on itself,
+the {\bf left}, {\bf right} and {\bf conjugacy} actions.
+
+\spheader 4A5Cb If $A\subseteq X$, we have an action of $X$ on the set
+$\{yA:y\in X\}$ of left cosets of $A$ 
+defined by setting $x\action(yA)=xyA$ for $x$, $y\in X$.
+
+\spheader 4A5Cc{\bf (i)}\dvAformerly{4{}41Ac} 
+Let $\action$ be an action of a
+group $X$ on a set $Z$.   If $f$ is any function defined on a subset of
+$Z$, and $x\in X$, write $x\action f$ for the function defined by saying
+that $(x\action f)(z)=f(x^{-1}\action z)$ whenever $z\in Z$ and
+$x^{-1}\action z\in\dom f$.   It is easy to check that this defines an
+action of $X$ on the class of all functions with domains included in
+$Z$.   \cmmnt{Observe that}
+
+\Centerline{$x\action(f+g)=(x\action f)+(x\action g)$,
+\quad$x\action(f\times g)=(x\action f)\times(x\action g)$,
+\quad$x\action(f/g)=(x\action f)/(x\action g)$}
+
+\noindent whenever $x\in X$ and
+$f$, $g$ are real-valued functions with domains included
+in $Z$.
+
+\medskip
+
+\quad{\bf (ii)} In (i), if $X=Z$, we have
+corresponding actions $\action_l$, $\action_r$ and $\action_c$ of
+$X$ on the class of functions with domains included in $X$\cmmnt{:
+
+\Centerline{$(x\action_lf)(y)=f(x^{-1}y)$,
+\quad$(x\action_rf)(y)=f(yx)$,
+\quad$(x\action_cf)(y)=f(x^{-1}yx)$}
+
+\noindent whenever these are defined}.   These are the left, right and
+conjugacy {\bf shift actions}.
+
+Note that 
+
+\Centerline{$x\action_l\chi A=\chi(xA)$,
+\quad$x\action_r\chi A=\chi(Ax^{-1})$,
+\quad$x\action_c\chi A=\chi(xAx^{-1})$}
+
+\noindent whenever $A\subseteq X$ and $x\in X$.   
+In this context, the following idea is sometimes useful.   If $f$ is a
+function with domain included in $X$, set $\Reverse{f}(y)=f(y^{-1})$
+when $y\in X$ and $y^{-1}\in\dom f$.   Then
+
+\Centerline{$(\Reverse{f})\ssplrarrow=f$,
+\quad$x\action_l\Reverse{f}=(x\action_rf)\ssplrarrow$,
+\quad$x\action_r\Reverse{f}=(x\action_lf)\ssplrarrow$,
+\quad$x\action_c\Reverse{f}=(x\action_cf)\ssplrarrow$}
+
+\noindent for any such $f$ and any $x\in X$.
+
+\spheader 4A5Cd\dvAformerly{4{}41Ad}
+If $\action$ is an action of a group $X$ on a set $Z$,
+$Y\subseteq X$ is a subgroup of $X$,
+and $W\subseteq Z$ is $Y$-invariant in the sense that
+$y\action w\in W$ whenever $y\in Y$ and $w\in W$, then
+$\action\restr Y\times W$ is an action of $Y$ on $W$.   In the context
+of (c-i) above, this means that if $V$ is any set of functions with
+domains included in $W$ such that $y\action f\in V$ whenever $y\in Y$
+and $f\in V$, then we have an action of $Y$ on $V$.
+
+\leader{4A5D}{Definitions (a)} A {\bf topological group} is a group $X$
+endowed with a topology such that the operations
+$(x,y)\mapsto xy:X\times X\to X$ and $x\mapsto x^{-1}:X\to X$ are
+continuous.
+
+\spheader 4A5Db A {\bf Polish group} is a topological group in which the
+topology is Polish.
+
+\leader{4A5E}{Elementary facts} Let $X$ be any topological group.
+
+\spheader 4A5Ea For any $x\in X$, the functions $y\mapsto xy$,
+$y\mapsto yx$ and $y\mapsto y^{-1}$ are all homeomorphisms from $X$ to
+itself.
+\prooflet{(\HR, 4.2;  \Folland, 2.1.)}
+
+\spheader 4A5Eb The maps $(x,y)\mapsto x^{-1}y$, $(x,y)\mapsto xy^{-1}$
+and $(x,y)\mapsto xyx^{-1}$ from $X\times X$ to $X$ are continuous.
+
+\spheader 4A5Ec $\{G:G$ is open, $e\in G$, $G^{-1}=G\}$ is a base of
+neighbourhoods of the identity $e$ of $X$.
+\prooflet{(\HR, 4.6;  \Folland, 2.1.)}
+
+\spheader 4A5Ed If $G\subseteq X$ is an open set, then $AG$ and $GA$ are
+open for any set $A\subseteq X$.   \prooflet{(\HR, 4.4.)}
+
+\spheader 4A5Ee If $F\subseteq X$ is closed and $x\in X\setminus F$,
+there is a neighbourhood $U$ of $e$ such that
+$UxUU\cap FUU=\emptyset$.   \prooflet{\Prf\ Set
+$U_1=X\setminus x^{-1}F$.   Let $U_2$ be a neighbourhood of $e$ such
+that $U_2U_2U_2U_2^{-1}U_2^{-1}\subseteq U_1$.   Let $U$ be a
+neighbourhood of
+$e$ such that $U\subseteq U_2\cap xU_2x^{-1}$;  this works.\ \Qed}
+
+\spheader 4A5Ef If $K\subseteq X$ is compact and $F\subseteq X$ is
+closed then $KF$ and $FK$ are closed.
+If $K$, $L\subseteq X$ are compact so is $KL$.
+\prooflet{(\HR, 4.4.)}
+
+\spheader 4A5Eg If there is any compact set $K\subseteq X$ such that
+$\interior K$ is non-empty, then $X$ is locally compact.
+
+\spheader 4A5Eh If $K\subseteq X$ is compact and $\Cal F$ is a
+downwards-directed family of closed subsets of $X$ with intersection
+$F_0$, then
+$KF_0=\bigcap_{F\in\Cal F}KF$ and $F_0K=\bigcap_{F\in\Cal F}FK$.
+\prooflet{\Prf\ Of course $KF_0\subseteq\bigcap_{F\in\Cal F}KF$.   If
+$x\in X\setminus KF_0$, then $K^{-1}x\cap F_0$ is empty;  because
+$K^{-1}x$ is compact, there is some $F\in\Cal F$ such that
+$K^{-1}x\cap F=\emptyset$ (3A3Db), so that $x\notin KF$.   Accordingly
+$KF_0=\bigcap_{F\in\Cal F}KF$.   Similarly,
+$F_0K=\bigcap_{F\in\Cal F}FK$.\ \Qed}
+
+\spheader 4A5Ei If $K\subseteq X$ is compact and $G\subseteq X$ is open,
+then $W=\{(x,y):xKy\subseteq G\}$ is open in $X\times X$.
+\prooflet{\Prf\ It is enough to deal with the case $K\ne\emptyset$.
+Take $(x_0,y_0)\in W$.   For each $z\in K$, there is an
+open neighbourhood $U_z$ of $e$ such that
+$U_zzU_zU_z\subseteq x_0^{-1}Gy_0^{-1}$ (apply (e)
+with $F=X\setminus x_0^{-1}Gy_0^{-1}$).   Now $\{zU_z:z\in K\}$ is an open
+cover of $K$ so there are $z_0,\ldots,z_n\in K$ such that
+$K\subseteq\bigcup_{i\le n}z_iU_{z_i}$.   Set $U=\bigcap_{i\le n}U_{z_i}$;
+then $UKU\subseteq x_0^{-1}Gy_0^{-1}$ and $(x,y)\in W$ whenever $x\in x_0U$
+and $y\in Uy_0$.   Accordingly $(x_0,y_0)\in\interior W$;  as $(x_0,y_0)$
+is arbitrary, $W$ is open.\ \Qed}
+
+It follows that $\{x:xK\subseteq G\}$, $\{x:Kx\subseteq G\}$ and
+$\{x:xKx^{-1}\subseteq G\}$ are open in $X$.
+
+\spheader 4A5Ej If $X$ is Hausdorff, $K\subseteq X$ is compact and $U$
+is a neighbourhood of $e$, there is a neighbourhood $V$ of $e$ such that
+$xy\in U$ whenever $x$, $y\in K$ and $yx\in V$;  that is,
+$y^{-1}zy\in U$ whenever $z\in V$ and $y\in K$.
+\prooflet{\Prf\ If $U$ is open, then $\{yx:x,\,y\in K,\,xy\notin U\}$ 
+is a closed set not containing $e$.   Compare 4A5Oc below.\
+\Qed}
+
+\spheader 4A5Ek Any open subgroup of $X$ is also closed.
+\prooflet{(\Csaszar, 11.2.12;  \HR, 5.5;  \Folland, 2.1.)}
+
+\spheader 4A5El If $X$ is locally compact, it has an open subgroup which
+is $\sigma$-compact.   \prooflet{(\HR, 5.14;  \Folland, 2.3.)}
+
+\spheader 4A5Em\dvAnew{2013} 
+If $Y$ is a subgroup of $X$, its closure $\overline{Y}$ is a
+subgroup of $X$.   \prooflet{(\HR, 5.3;  \Folland, 2.1.)}
+
+\leaveitout{
+\spheader 4A5E?
+Let $G$ be a group and $\Cal U$ a family of subsets of
+$G$.   Then the following are equiveridical:
+
+\inset{(i) there is a topology on $G$ under which $G$ is a topological
+group and $\Cal U$ is a base of open neighbourhoods of the identity;
+
+(ii)($\alpha$) $\Cal U$ is a filter base;
+
+\quad($\beta$) for every $U\in\Cal U$ there is a $V\in\Cal U$ such that
+$V^2\subseteq U$;
+
+\quad($\gamma$) for every $U\in\Cal U$ there is a $V\in\Cal U$ such that
+$V^{-1}\subseteq U$;
+
+\leaveitout{
+\quad($\delta$) if $x\in U\in\Cal U$, there is a $V\in\Cal U$ such that
+$xV\subseteq U$;}
+
+\quad($\delta$) if $U\in\Cal U$ and $x\in G$, there is a $V\in\Cal U$
+such that $xVx^{-1}\subseteq U$.}
+
+\noindent In this case, the topology is unique.
+
+\prooflet{({\smc Cs\'asz\'ar 78}, 11.2.4.)}
+%({\smc Hewitt \& Ross 63}, II.4.5.)
+}
+
+
+\leader{4A5F}{Proposition} (a) Let $(X,\frak T)$ and $(Y,\frak S)$ be
+topological groups.   If $\phi:X\to Y$ is a group homomorphism which is
+continuous at the identity of $X$, it is continuous.
+\prooflet{(\Csaszar, 11.2.17;  \HR, 5.40.)}
+
+(b) Let $X$ be a group and $\frak S$, $\frak T$ two topologies on $X$
+both making $X$ a topological group.   If every $\frak S$-neighbourhood
+of the identity is a $\frak T$-neighbourhood of the identity, then
+$\frak S\subseteq\frak T$.  \prooflet{(Apply (a) to the identity map
+from $(X,\frak T)$ to $(X,\frak S)$.)}
+
+\leader{4A5G}{Proposition} If $\familyiI{X_i}$ is any family of
+topological groups, then $\prod_{i\in I}X_i$, with the product topology and
+the product group structure, is again a topological group.
+\prooflet{(\HR, 6.2.)}
+
+\leader{4A5H}{The uniformities of a topological group} Let $(X,\frak T)$
+be a topological group.   Write $\Cal U$ for the set of open
+neighbourhoods of the identity $e$ of $X$.
+
+\spheader 4A5Ha For $U\in\Cal U$, set
+$W_U=\{(x,y):xy^{-1}\in U\}\subseteq X\times X$.   The family
+$\{W_U:U\in\Cal U\}$ is a filter base, and the filter on $X\times X$
+which it generates is a uniformity on $X$, the {\bf right uniformity} of
+$X$.
+%Pestov 99:  `right equicontinuous uniformity'
+\cmmnt{({\bf Warning!!}  %double !! deliberate
+Some authors call this the `left  uniformity'.)}
+This uniformity induces the topology
+$\frak T$\prooflet{ (\Csaszar, 11.2.7)}.
+It follows that $\frak T$ is completely regular, therefore
+regular\prooflet{ (4A2Ja, or \HR, 8.4)}.
+
+\spheader 4A5Hb For $U\in\Cal U$, set
+$\tilde W_U=\{(x,y):xy^{-1}\in U,\,x^{-1}y\in U\}\subseteq X\times X$.
+The family $\{\tilde W_U:U\in\Cal U\}$ is a filter base, and the filter
+on $X\times X$ which it generates is a uniformity on $X$, the
+{\bf bilateral uniformity}
+% or {\bf lower uniformity}
+of $X$.   This uniformity
+induces the topology $\frak T$.   \prooflet{(\Csaszar, 11.3.c.)}
+
+\spheader 4A5Hc\dvAnew{2010} $x\mapsto x^{-1}$ is uniformly continuous for
+the bilateral uniformity.   \prooflet{(The check is elementary.)}
+% for \S4{}94
+
+\spheader 4A5Hd\dvAnew{2010} If $X$ and $Y$ are topological groups and
+$\phi:X\to Y$ is a continuous homomorphism, then $\phi$ is uniformly
+continuous for the bilateral uniformities.   \prooflet{\Prf\ If $V$ is a
+neighbourhood of the identity in $Y$ and
+$W_V=\{(y,z):yz^{-1}$, $y^{-1}z$ both belong to $V\}$ is the corresponding
+member of the bilateral uniformity on $Y$, then $U=\phi^{-1}[V]$ is a
+neighbourhood of the identity in $X$ and
+$(\phi(x),\phi(w))\in W_V$ whenever $(x,w)\in W_U$.\ \Qed}
+%\refquery\Csaszar ??}
+%for 4{}94
+
+\cmmnt{\spheader 4A5He\dvAnew{2010} If $X$ is an abelian topological group,
+then the right and bilateral uniformities on $X$ coincide, and may be
+called `the' topological group uniformity of $X$;  cf.\ 3A4Ad.}
+
+\leader{4A5I}{Definitions} If $X$ is a topological group and $Z$ a
+topological space, an action of $X$ on $Z$ is `continuous' or `Borel
+measurable' if it is continuous, or Borel measurable, when regarded as a
+function from $X\times Z$ to $Z$.
+
+\cmmnt{Of course the left, right and conjugacy actions of a
+topological group on itself are all continuous.}
+
+\leader{4A5J}{Quotients under group actions, and quotient groups:
+Theorem} (a)\dvAnew{2012}
+Let $X$ be a topological space, $Y$ a topological group, and
+$\action$ a continuous action of $Y$ on $X$.   Let $Z$ be the set of
+orbits of the action, and for $x\in X$ write $\pi(x)\in Z$ for the orbit
+containing $x$.
+
+\quad(i)
+We have a topology on $Z$ defined by saying that $V\subseteq Z$ is
+open iff $\pi^{-1}[V]$ is open in $X$.   The canonical map $\pi:X\to Z$
+is continuous and open.
+
+\quad(ii)($\alpha$) If $Y$ is compact and $X$ is Hausdorff, then
+$Z$ is Hausdorff.
+
+\qquad($\beta$) If $X$ is locally compact then $Z$ is locally compact.
+
+(b) Let $X$ be a topological
+group, $Y$ a
+subgroup of $X$, and $Z$ the set of left cosets of $Y$ in $X$.
+Set $\pi(x)=xY$ for $x\in X$.
+
+\quad (i) We have a topology on $Z$ defined by saying that $V\subseteq Z$
+is open iff $\pi^{-1}[V]$ is open in $X$.
+The canonical map $\pi:X\to Z$ is continuous and open.
+
+\quad(ii)($\alpha$) $Z$ is Hausdorff iff $Y$ is closed.
+
+\qquad($\beta$) If $X$ is locally compact, so is $Z$.
+
+\qquad($\gamma$)\dvAnew{2010}
+If $X$ is locally compact and Polish and $Y$ is closed, then
+$Z$ is Polish.
+
+\qquad($\delta$)\dvAnew{2010}
+If $X$ is locally compact and $\sigma$-compact and $Y$ is closed
+and $Z$ is metrizable, then $Z$ is Polish.
+
+\quad(iii) We have a continuous action of $X$ on $Z$ defined by saying that
+$x\action\pi(x')=\pi(xx')$ for any $x$, $x'\in X$.
+
+\quad(iv) If $Y$ is a normal subgroup of $X$, then the group operation on
+$Z$ renders it a topological group.
+
+\proof{{\bf (a)(i)} It is elementary
+to check that $\{V:\pi^{-1}[V]$ is open$\}$
+is a topology such that $\pi:X\to Z$ is continuous.   To see that $\pi$ is
+open, take an open set $U\subseteq X$ and consider
+
+\Centerline{$\pi^{-1}[\pi[U]]
+=\bigcup_{x'\in U}\{x:\pi(x)=\pi(x')\}
+=\bigcup_{x'\in U,y\in Y}\{x:x=y\action x'\}
+=\bigcup_{y\in Y}y\action U$.}
+
+\noindent But as $x\mapsto y\action x$ is a homeomorphism
+for every $y\in Y$ (4A5Ea),
+every $y\action U$ is open, and the union $\pi^{-1}[\pi[U]]$ is open.
+So $\pi[U]$ is open in $Z$;  as $U$ is arbitrary, $\pi$ is an open map.
+
+\medskip
+
+\quad{\bf (ii)}\grheada\
+Set $F=\{((x,x'),y):x\in X$, $y\in Y$, $y\action x=x'\}$.
+Because the function
+$((x,x'),y)\mapsto(y\action x,x'):(X\times X)\times Y\to X\times X$
+is continuous and
+$\{(x,x):x\in X\}$ is closed in $X\times X$ (4A2F(a-iii)), $F$ is closed.
+By 4A2Gm, the projection
+$\{(x,x'):\,\Exists y\in Y$, $y\action x=x'\}=\{(x,x'):\pi(x)=\pi(x')\}$ is
+closed in $X\times X'$ and $\{(x,x'):\pi(x)\ne\pi(x')\}$ is open.
+Since $(x,x')\mapsto(\pi(x),\pi(x')):X\times X\to Z\times Z$ is an open
+mapping
+(4A2B(f-iv)), $\{(z,z'):z\ne z'\}$ is open in $Z\times Z$, and
+$Z$ is Hausdorff by 4A2F(a-iii) in the other direction.
+
+\medskip
+
+\qquad\grheadb\ Use 4A2Gn.
+
+\medskip
+
+{\bf (b)(i)} Apply (a-i)
+to the right action $(y,x)\mapsto xy^{-1}$ of $Y$ on
+$X$, or see \HR, 5.15-5.16.
+
+\medskip
+
+\quad{\bf (ii)}\grheada\ By \HR, 5.21, $Z$ is Hausdorff iff $Y$ is closed.
+
+\medskip
+
+\qquad\grheadb\ Use (a-ii-$\beta$), or see
+\HR, 5.22 or \Folland, 2.2.
+
+\medskip
+
+\qquad\grheadc\ $X$ has a countable network (4A2P(a-ii)), so $Z$ also has
+(4A2Nd);  since we have just seen that $Z$ is locally compact and
+Hausdorff, it must be Polish (4A2Qh).
+
+\medskip
+
+\qquad\grheadd\ Because $X$ is $\sigma$-compact, so is its continuous image
+$Z$;  we know from ($\alpha$)-($\beta$)
+that $Z$ is locally compact and Hausdorff;  we
+are supposing that it is metrizable;  so it is Polish, by the other
+half of 4A2Qh.
+
+\medskip
+
+\quad{\bf (iii)} I have noted in 4A5Cb that the formula given defines an
+action.   If $V\subseteq Z$ is open and $x_0\in X$,
+$z_0\in Z$ are such that $x_0\action z_0\in V$, take $x_0'\in X$ such
+that $\pi(x'_0)=z_0$, and observe that $x_0x'_0\in\pi^{-1}[V]$, which is
+open.   So there are open neighbourhoods $V_0$, $V'_0$ of $x_0$, $x'_0$
+respectively such that $V_0V'_0\subseteq\pi^{-1}[V]$, and
+$x\action z\in V$ whenever
+$x\in V_0$ and $z\in\pi[V'_0]$.   Since $\pi[V'_0]$ is an open
+neighbourhood of $z_0$, this is enough to show that $\action$ is
+continuous at $(x_0,z_0)$.
+
+\medskip
+
+\quad{\bf (iv)} \Csaszar, 11.2.15;  \HR, 5.26;  \Folland, 2.2.
+}%end of proof of 4A5J
+
+\leader{4A5K}{Proposition} Let $X$ be a topological group with identity
+$e$.
+
+(a) $Y=\overline{\{e\}}$ is a closed normal subgroup of $X$.
+
+(b) Writing $\pi:X\to X/Y$ for the canonical map,
+
+\quad(i) a subset of $X$ is open iff it is the inverse image of an open
+subset of $X/Y$,
+
+\quad(ii) a subset of $X$ is closed iff it is the inverse image of a
+closed subset of $X/Y$,
+
+\quad(iii) $\pi[G]$ is a regular open set in $X/Y$ for every
+regular open set $G\subseteq X$,
+
+\quad(iv) $\pi[F]$ is nowhere dense in $X/Y$ for every nowhere dense set
+$F\subseteq X$,
+
+\quad(v) $\pi^{-1}[V]$ is nowhere dense in $X$ for every nowhere dense
+$V\subseteq X/Y$.
+
+\proof{{\bf (a)} \Csaszar, 11.2.13;  \HR, 5.4;  \Folland, 2.3.
+
+\medskip
+
+{\bf (b)(i)-(ii)} Because $\pi$ is continuous, 
+the inverse image of an open or
+closed set is open or closed.   In the other direction, 
+if $G\subseteq X$ is open and $x\in G$, then
+$x\overline{\{e\}}=\overline{\{x\}}\subseteq G$, because $X$ is regular
+(4A5Ha).   So
+$G=GY=\pi^{-1}[\pi[G]]$.   Since $\pi$ is an open map (4A5J(a-i)), 
+$\pi[G]$ is open and $G$ is the inverse image of an open set.   If
+$F\subseteq X$ is closed,
+$\pi[F]=(X/Y)\setminus\pi[X\setminus F]$ is closed and
+
+\Centerline{$F=X\setminus\pi^{-1}[\pi[X\setminus F]]
+=\pi^{-1}[(X/Y)\setminus\pi[X\setminus F]]$}
+
+\noindent is the inverse image of a closed set.
+
+\medskip
+
+{\bf (iii)} If $A\subseteq X$, then $\pi[\overline{A}]$ is a closed set
+included in
+$\overline{\pi[A]}$ (because $\pi$ is continuous), so
+$\overline{\pi[A]}=\pi[\overline{A}]$.   If $G\subseteq X$ is a regular
+open set, then
+$\pi^{-1}[\interior\pi[\overline{G}]]$ is an open subset of
+$\pi^{-1}[\pi[\overline{G}]]=\overline{G}$, so is included in
+$\interior\overline{G}=G$.   But this means that the open set $\pi[G]$
+includes $\interior\pi[\overline{G}]=\interior\overline{\pi[G]}$, and
+$\pi[G]=\interior\overline{\pi[G]}$ is a regular open set.
+
+\medskip
+
+{\bf (iv)} If $F\subseteq X$ is nowhere dense, then its closure is of
+the form $\pi^{-1}[V]$ for some closed set $V\subseteq X/Y$.   Now if
+$H\subseteq X/Y$ is a non-empty open set, $\pi^{-1}[H]$ is a non-empty
+open subset of $X$, so is not included in $F$, and $H$ cannot be
+included in $V$.   Thus $V$ is nowhere dense;  but $V\supseteq\pi[F]$,
+so $\pi[F]$ is nowhere dense.
+
+\medskip
+
+{\bf (v)} If $V\subseteq X/Y$ is nowhere dense, and $G\subseteq X$ is
+open and not empty, then $G=\pi^{-1}[H]$ for some non-empty open
+$H\subseteq X/Y$.   In this case, $H\setminus\overline{V}$ is non-empty,
+so $\pi^{-1}[H\setminus\overline{V}]$ is a non-empty open subset of $G$
+disjoint from $\pi^{-1}[V]$.   As $G$ is arbitrary, $\pi^{-1}[V]$ is
+nowhere dense.
+}%end of proof of 4A5K
+
+\leader{4A5L}{Theorem} Let $X$ be a topological group and $Y$ a normal
+subgroup of $X$.   Let $\pi:X\to X/Y$ be the canonical homomorphism.
+
+(a) If $X'$ is another topological group and $\phi:X\to X'$ a continuous
+homomorphism with kernel including $Y$, then we have a continuous
+homomorphism $\psi:X/Y\to X'$ defined by the formula $\psi\pi=\phi$;
+$\psi$ is injective iff $Y$ is the kernel of $\phi$.
+
+(b) Suppose that $K_1$, $K_2$ are two subgroups of $X/Y$ such that
+$K_2\normalsubgroup K_1$.   Set
+$Y_1=\pi^{-1}[K_1]$ and $Y_2=\pi^{-1}[K_2]$.   Then
+$Y_2\normalsubgroup Y_1$ and
+$Y_1/Y_2$ and $K_1/K_2$ are isomorphic as topological groups.
+
+\proof{{\bf (a)} This is elementary group theory, except for the claim
+that $\psi$ is continuous.   But if $H\subseteq X'$ is open, then
+$\psi^{-1}[H]=\pi[\phi^{-1}[H]]$ is open because $\phi$ is continuous
+and $\pi$ is open (4A5J(a-i));  so $\psi$ is continuous.
+
+\medskip
+
+{\bf (b)} See \HR, 5.35.
+}%end of proof of 4A5L
+
+\leader{4A5M}{Proposition} Let $X$ be a topological group.
+
+(a) Let $Y$ be any subgroup of $X$.   If $X$ is given its bilateral
+uniformity, then the subspace uniformity on $Y$ is the bilateral
+uniformity of $Y$.  \prooflet{(\Csaszar, 11.3.13.)}
+
+(b) If $X$ is locally compact it is complete under its right uniformity.
+\prooflet{(\Csaszar, 11.3.21.)}   If $X$ is complete under its right
+uniformity it is complete under its bilateral uniformity.
+\prooflet{(\Csaszar, 11.3.10.)}
+
+(c) Suppose that $X$ is Hausdorff and that $Y$ is a subgroup of $X$
+which is locally compact in its subspace topology.   Then $Y$ is closed
+in $X$.  \prooflet{\Prf\ Putting (a) and (b) together, we see that $Y$
+is complete in its subspace uniformity, therefore closed (3A4Fd).\ \Qed}
+
+\leader{4A5N}{Theorem} Let $X$ be a Hausdorff topological group.   Then
+its completion $\widehat{X}$ under its bilateral uniformity can be
+endowed (in exactly one way) with a group structure rendering it a
+Hausdorff topological group in which the natural embedding of $X$ in
+$\widehat{X}$ represents $X$ as a dense subgroup of $\widehat{X}$.
+\prooflet{(\Csaszar, 11.3.15.)}
+%`Raikov completion'
+If $X$ has a neighbourhood of the identity which is totally bounded for
+the bilateral uniformity, then $\widehat{X}$ is locally compact.
+\prooflet{(\Csaszar, 11.3.24.)}
+
+\leader{4A5O}{Proposition} Let $X$ be a topological group.
+
+(a) If $A\subseteq X$, then the following are equiveridical:  (i) $A$ is
+totally bounded for the bilateral uniformity of $X$;  (ii) for every
+neighbourhood $U$ of the identity there is a finite set $I\subseteq X$
+such that $A\subseteq IU\cap UI$.
+
+(b) If $A$, $B\subseteq X$ are totally bounded for the bilateral
+uniformity of $X$, so are $A\cup B$, $A^{-1}$ and $AB$.   In particular,
+$\bigcup_{i\le n}x_iB$ is totally bounded for any $x_0,\ldots,x_n\in X$.
+
+(c) If $A\subseteq X$ is totally bounded for the bilateral uniformity,
+and $U$ is any neighbourhood of the identity, then
+$\{y:xyx^{-1}\in U$ for every $x\in A\}$ is a neighbourhood of the
+identity.
+
+(d) If $X$ is the product of a family $\familyiI{X_i}$ of
+topological groups, a subset $A$ of $X$ is totally bounded for the
+bilateral uniformity of $X$ iff it is included in a product
+$\prod_{i\in I}A_i$ where $A_i\subseteq X_i$ is totally bounded for the
+bilateral uniformity of $X_i$ for every $i\in I$.
+
+(e) If $X$ is locally compact, a subset of $X$ is totally bounded for
+the bilateral uniformity iff it is relatively compact.
+
+\proof{{\bf (a)(i)$\Rightarrow$(ii)} Suppose that $A$ is totally
+bounded, and that $U$ is a neighbourhood of the identity $e$ of $X$.
+Set
+
+\Centerline{$W=\{(x,y):xy^{-1}\in U^{-1},\,x^{-1}y\in U\}=\{(x,y):y\in Ux\cap xU\}$;}
+
+\noindent then $W$ belongs to the uniformity, so there is a finite set $I\subseteq X$ such that
+$A\subseteq W[I]$.   But $W[I]\subseteq UI\cap IU$, so
+$A\subseteq UI\cap IU$.
+
+\medskip
+
+\quad{\bf (ii)$\Rightarrow$(i)} Now suppose that $A$ satisfies the
+condition, and that $W$ belongs to the uniformity.   Then there is a
+neighbourhood $U$ of $e$ such that
+$\{(x,y):xy^{-1}\in U,\,x^{-1}y\in U\}\subseteq W$.   Let $V$ be a
+neighbourhood of $e$ such that $VV^{-1}\subseteq U$ and
+$V^{-1}V\subseteq U$.   Let $I\subseteq X$ be a finite set such that
+$A\subseteq VI\cap IV$.   For $w$, $z\in I$ set
+$A_{wz}=A\cap Vw\cap zV$.   If $x$, $y\in A_{wz}$,
+$xy^{-1}\in Vww^{-1}V^{-1}\subseteq U$ and
+$x^{-1}y\in V^{-1}z^{-1}zV\subseteq U$.   But this means that
+$A_{wz}\times A_{wz}\subseteq W$.   So if we take a finite set $J$ which
+meets every non-empty $A_{wz}$, $A\subseteq W[J]$.   As $W$ is
+arbitrary, $A$ is totally bounded.
+
+\medskip
+
+{\bf (b)} Of course $A\cup B$ is totally bounded;  this is immediate
+from the definition of `totally bounded'.   If $U$ is a neighbourhood of
+$e$, so is $U^{-1}$, so there is a finite set $I\subseteq X$ such that
+$A\subseteq IU^{-1}\cap U^{-1}I$ and
+$A^{-1}\subseteq UI^{-1}\cap I^{-1}U$;  as $U$ is arbitrary, $A^{-1}$ is
+totally bounded.
+
+To see that $AB$ also is totally bounded, let $U$ be a neighbourhood of
+$e$, and take a neighbourhood $V$ of $e$ such that $VV\subseteq U$.
+Then there is a finite set $I\subseteq X$ such that
+$A\subseteq VI$ and $B\subseteq IV$.   Let $W$ be a neighbourhood of $e$
+such that
+$zWz^{-1}\cup z^{-1}Wz\subseteq V$ for every $z\in I$, and $J$ a finite
+set such that $B\subseteq WJ$ and $A\subseteq JW$.   Then
+
+\Centerline{$zW\subseteq Vz$,
+\quad$Wz\subseteq zV$}
+
+\noindent for every $z\in I$, so
+
+\Centerline{$IW\subseteq VI$,
+\quad$WI\subseteq IV$}
+
+\noindent and
+
+\Centerline{$AB\subseteq VIWJ\subseteq VVIJ\subseteq UK$,
+\quad$AB\subseteq JWIV\subseteq JIVV\subseteq KU$}
+
+\noindent where $K=IJ\cup JI$ is finite.   As $U$ is arbitrary, $AB$ is
+totally bounded.
+
+\medskip
+
+{\bf (c)} Let $V$ be a neighbourhood of $e$ such that $VVV^{-1}\subseteq
+U$.   Let $I$ be a finite set such that $A\subseteq VI$.   Let $W$ be a
+neighbourhood of $e$ such that $zWz^{-1}\subseteq V$ for every $z\in I$.
+If now $y\in W$ and $x\in A$, there is a $z\in I$ such that $x\in Vz$,
+so that
+
+\Centerline{$xyx^{-1}\in VzWz^{-1}V^{-1}\subseteq VVV^{-1}\subseteq U$.}
+
+\noindent Turning this round, $\{y:xyx^{-1}\in U$ for every $x\in A\}$
+includes $W$ and is a neighbourhood of $e$.
+
+\medskip
+
+{\bf (d)(i)} Suppose that $A$ is totally bounded.   Set
+$A_i=\pi_i[A]$ for each $i\in I$, where $\pi_i(x)=x(i)$ for $x\in X$.
+If $U$ is a neighbourhood of the identity in $X_i$, then
+$V=\pi_i^{-1}[U]$ is a neighbourhood of the identity in $X$, so there is
+a finite set $J\subseteq X$ such that $A\subseteq JV\cap VJ$;  now
+$A_i\subseteq KU\cap UK$, where $K=\pi_i[J]$ is finite.   As $U$ is
+arbitrary, $A_i$ is totally bounded.   This is true for every $i$, while
+$A\subseteq\prod_{i\in I}A_i$.
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $A\subseteq\prod_{i\in I}A_i$ where
+$A_i\subseteq X_i$ is totally bounded for each $i\in I$.   If $A$ is
+empty, of course it is totally bounded;  assume that $A\ne\emptyset$.
+If $I=\emptyset$, then $X=\{\emptyset\}$ is the trivial group, and again
+$A$ is totally bounded;  so assume that $I$ is non-empty.    Let $V$ be
+a neighbourhood of the identity in $X$.   Then there are a non-empty
+finite set $L\subseteq I$ and a family $\family{i}{L}{U_i}$ such that
+$U_i$ is a neighbourhood of the identity in $X_i$ for each $i\in L$, and
+$V\supseteq\bigcap_{i\in L}\pi_i^{-1}U_i$.   For each $i\in L$, let
+$J_i$ be a finite subset of $X_i$ such that $A_i\subseteq J_iU_i\cap
+U_iJ_i$.   Set
+
+\Centerline{$J=\{x:x\in X,\,
+x(i)$ is the identity for $i\in I\setminus L$,
+$x(i)\in J_i$ for $i\in L\}$.}
+
+\noindent Then $J$ is finite and $A\subseteq JV\cap VJ$.  As $V$ is
+arbitrary, $A$ is totally bounded.
+
+\medskip
+
+{\bf (e)} Use (a).
+}%end of proof of 4A5O
+
+\vleader{72pt}{4A5P}{Lemma}
+Let $X$ be a locally compact Hausdorff topological
+group.   Take $f\in C_k(X)$\cmmnt{, the space of continuous
+real-valued functions on $X$ with compact supports}.
+
+(a) Let $K\subseteq X$ be a compact set.   Then for any $\epsilon>0$
+there is a neighbourhood $W$ of the identity $e$ of $X$ such that
+$|f(xay)-f(xby)|\le\epsilon$ whenever $x\in K$, $y\in X$ and
+$ab^{-1}\in W$.
+
+(b) For any $x_0\in X$, there is a non-negative $f^*\in C_k(X)$ such that
+for every $\epsilon>0$ there is an open set $G$ containing $x_0$ such
+that $|f(xy)-f(x_0y)|\le\epsilon f^*(y)$ for every $x\in G$ and $y\in X$.
+
+\proof{{\bf (a)} By 4A2Jf and 4A5Ha, $f$ is uniformly continuous for the
+right uniformity of $X$.   There is therefore a symmetric neighbourhood
+$U$ of $e$
+such that $|f(y_1)-f(y_2)|\le\epsilon$ whenever $y_1$, $y_2\in X$
+and $y_1y_2^{-1}\in U$.   By 4A5Oc, there is a symmetric neighbourhood
+$W$ of $e$ such that $xzx^{-1}\in U$ whenever $x\in K$ and $z\in W$.
+
+Now suppose that $x\in K$,
+$y\in X$ and $ab^{-1}\in W$.   Then
+$(xay)(xby)^{-1}=xab^{-1}x^{-1}\in U$, so
+$|f(xay)-f(xby)|\le\epsilon$, as required.
+
+\medskip
+
+{\bf (b)} We need a trifling refinement of the ideas above.
+
+\medskip
+
+\quad{\bf (i)} Suppose for the moment that $x_0=e$.   Set
+$L=\overline{\{x:f(x)\ne 0\}}$ and let $V$ be a compact symmetric neighbourhood of
+the identity $e$, so that $L$ and $VL$ are compact.
+Let $f^*\in C_k(X)$ be such that $f^*\ge\chi(VL)$ (4A2G(e-i)).   Given
+$\epsilon>0$, take $U$ as in (a), so that $U$ is a symmetric
+neighbourhood of $e$
+and $|f(y_1)-f(y_2)|\le\epsilon$ whenever $y_1y_2^{-1}\in U$;  this time
+arrange further that $U\subseteq V$.   Then if $x\in U$ and $y\in X$,
+
+\inset{{\it either} $y$ and $xy$ belong to $VL$, while
+$(xy)y^{-1}\in U$, so
+$|f(xy)-f(y)|\le\epsilon\le\epsilon f^*(y)$
+
+{\it or} neither $y$ nor $xy$ belongs to $L$, so
+$|f(xy)-f(y)|=0\le\epsilon f^*(y)$.}
+
+\medskip
+
+\quad{\bf (ii)} For the general case, set $f_0(x)=f(x_0x)$ for
+$x\in X$.   Because $x\mapsto x_0x$ is a homeomorphism, $f_0\in C_k(X)$.
+By (i), we have a non-negative $f^*\in C_k(X)$ such that for every
+$\epsilon>0$ there is a neighbourhood $G_{\epsilon}$ of $e$ such that
+$|f_0(xy)-f_0(y)|\le\epsilon f^*(y)$ whenever $x\in G_{\epsilon}$ and $y\in X$.
+Now, given $\epsilon>0$, $G'=x_0G_{\epsilon}$ is a neighbourhood of $x_0$ and
+$|f(xy)-f(x_0y)|\le\epsilon f^*(y)$ whenever $x\in G'$ and $y\in X$.
+So $f^*$ witnesses that the result is true.
+}%end of proof of 4A5P
+
+\vleader{72pt}{4A5Q}{Metrizable groups:  Proposition} Let $(X,\frak T)$ be a
+topological group.  Then the following are equiveridical:
+
+(i) $X$ is metrizable;
+
+(ii) the identity $e$ of $X$ has a countable neighbourhood base;
+
+(iii) there is a metric $\rho$ on $X$, inducing the topology
+$\frak T$, which is {\bf \rti}, that is, $\rho(x_1,x_2)=\rho(x_1y,x_2y)$
+for all $x_1$, $x_2$, $y\in X$;
+
+(iv) there is a \rti\ metric on $X$ which induces the right uniformity
+of $X$;
+
+(v) the bilateral uniformity of $X$ is metrizable.
+
+\proof{ \Csaszar, 11.2.10 and 11.3.2.}
+
+\cmmnt{\medskip
+
+\noindent{\bf Warning!}  A Polish group (4A5Db) is of course metrizable,
+so has a \rti\ metric inducing its topology.
+At the same time, it has a complete metric inducing its topology.
+But there is no suggestion that these two metrics should be the same,
+or even induce the same uniformity (441Xq).
+}%end of comment
+
+%what we do have:  if $X$ is a complete metrizable topological
+%group it is complete in its bilateral uniformity.  \Prf\ The bilateral
+%uniformity is metrizable, being induced by the sum of \rti\ and \lti\
+%metrics on  X .   If  \tilde X
+%is the completion in the bilateral uniformity, then  X  is  dense
+% G_{\delta}  therefore comeager in  \tilde X  and  X = XX^{-1}  is
+%open therefore equal to  \tilde X .   (Christensen?)
+
+\leader{4A5R}{Corollary} If $X$ is a locally compact topological group
+and $\{e\}$ is a G$_{\delta}$ set in $X$, then $X$ is metrizable.
+\prooflet{(Put 4A5Q and 4A2Kf together, or see \HR, 8.5.)}
+
+\leader{4A5S}{Lemma}\dvArevised{2010}
+Let $X$ be a $\sigma$-compact locally compact
+Hausdorff topological group and $\sequencen{U_n}$ any sequence of
+neighbourhoods of the identity in $X$.   Then $X$ has a compact normal
+subgroup $Y\subseteq\bigcap_{n\in\Bbb N}U_n$ such that $Z=X/Y$ is
+Polish.
+
+\proof{ Let $\sequencen{K_n}$ be a sequence of compact sets covering
+$X$.   Choose inductively a sequence $\sequencen{V_n}$ of compact
+neighbourhoods of $e$ such that, for each $n\in\Bbb N$,
+
+\inset{($\alpha$) $V_{n+1}\subseteq V_n^{-1}$,
+\quad$V_{n+1}V_{n+1}\subseteq V_n$,
+\quad$V_n\subseteq U_n$,
+
+($\beta$) $xyx^{-1}\in V_n$ whenever $y\in V_{n+1}$ and
+$x\in\bigcup_{i\le n}K_i$.}
+
+\noindent (When we come to choose $V_{n+1}$, we can achieve ($\alpha$)
+because inversion and multiplication are continuous, and ($\beta$) by
+4A5Oc;  and we can then shrink $V_{n+1}$ to a compact neighbourhood of
+$e$ because $X$ is locally compact.)   Set
+$Y=\bigcap_{n\in\Bbb N}V_n$.   Then ($\alpha$) is enough to ensure that
+$Y$ is a compact subgroup of $X$ included in $\bigcap_{n\in\Bbb N}U_n$,
+while ($\beta$) ensures that $Y$ is normal, because for any $x\in X$
+there is an $n\in\Bbb N$ such that $xV_{m+1}x^{-1}\subseteq V_m$ for
+every $m\ge n$.
+
+Let $\pi:X\to Z$ be the canonical map.   Then
+$C=\bigcap_{n\in\Bbb N}\pi[\interior V_n]$ is a G$_{\delta}$ subset of
+$Z$, because $\pi$ is open (4A5J(a-i) again).   But
+
+$$\eqalign{\pi^{-1}[C]
+&\subseteq\bigcap_{n\in\Bbb N}\pi^{-1}[\pi[V_{n+1}]]
+=\bigcap_{n\in\Bbb N}V_{n+1}Y
+\subseteq\bigcap_{n\in\Bbb N}V_n
+=Y,\cr}$$
+
+\noindent so $C=\{e_Z\}$, writing $e_Z$ for the identity of
+$Z$.   Thus $\{e_Z\}$ is a G$_{\delta}$ set;  as $Z$ is locally
+compact and Hausdorff (4A5J(b-ii)), it is metrizable (4A5R).   
+By 4A5J(b-ii-$\delta$), $Z$ is Polish.
+}%end of proof of 4A5S
+
+\leader{*4A5T}{}\cmmnt{ I shall not rely on the following fact, but it
+will help you to make sense of some of the results of this volume.
+
+\medskip
+
+\noindent}{\bf Theorem} A compact Hausdorff topological group is dyadic.
+
+\proof{{\smc Uspenski\v\i\ 88}.
+}%end of proof of 4A5T
+
+%Solecki's theorem:  if  X  is a complete metrizable group and for every
+%neighbourhood  U  of  e  there is a finite set  F  such that  X = FUF ,
+%then  X  is compact.
+
+\discrpage
+

@@ -1,0 +1,4660 @@
+\frfilename{mt455.tex}
+\versiondate{18.1.09/24.7.13}
+\copyrightdate{2007}
+
+\def\mucdlg{\mu_{\text{cdlg}}}
+\def\rti{right-{\vthsp}translation-{\vthsp}invariant}
+
+\def\chaptername{Perfect measures, disintegrations and processes}
+\def\sectionname{Markov and L\'evy processes}
+
+\newsection{455}
+
+For a `Markov' process, in which the evolution of the system after a
+time $t$ depends only on the state at time $t$, the general theory of
+\S454 leads
+to a straightforward existence theorem (at least for random variables
+taking values in standard Borel spaces) dependent only on a natural
+consistency condition on the transitional probabilities (455A, 455E).
+The formulation leads naturally to descriptions of the `Markov property'
+(for stopping times taking only countably many values) in
+terms of disintegrations and conditional expectations (455C, 455Ec).
+With appropriate continuity conditions, we find that the process can be
+represented either by a Radon measure (455H) or
+by a measure on the set of \cadlag\ paths (455Gc) for which we
+have a formulation of the strong Markov property (for general
+stopping times) in terms of disintegrations
+(455O).   These conditions are satisfied by L\'evy processes
+(455P-455R).  %455P 455Q 455R
+For these, we have an alternative expression of the strong Markov property
+in terms of \imp\ functions (455U).
+By far the most important example of a continuous-time Markov process is
+Brownian motion, but I defer discussion of this to \S477.
+
+\vleader{72pt}{455A}{Theorem} Let $T$ be a totally ordered set with least
+element $t^*$, and for each $t\in T$ let $\Omega_t$ be a
+non-empty set and $\Tau_t$ a
+$\sigma$-algebra of subsets of $\Omega_t$ containing all singleton subsets
+of $\Omega_t$.   Set $\Omega=\prod_{t\in T}\Omega_t$ and for $t\in T$,
+$\omega\in\Omega$ set $X_t(\omega)=\omega(t)$.
+Fix $x^*\in\Omega_{t^*}$.   Suppose that we are given, for each
+pair $s<t$ in $T$, a family $\family{x}{\Omega_s}{\nu^{(s,t)}_x}$ of
+perfect probability measures on $\Omega_t$, all with domain $\Tau_t$,
+and suppose that
+
+\inset{($\dagger$) whenever $s<t<u$ in $T$ and $x\in\Omega_s$,
+then $\family{y}{\Omega_t}{\nu^{(t,u)}_y}$ is a disintegration of
+$\nu^{(s,u)}_x$ over $\nu^{(s,t)}_x$.}
+
+\noindent For $J\subseteq T$ write $\pi_J$ for the canonical map from
+$\Omega$ onto $Z_J=\prod_{t\in J}\Omega_t$.
+Then there is a unique probability measure $\mu$ on $\Omega$,
+with domain $\Tensorhat_{t\in T}\Tau_t$, such that, writing
+$\lambda_J$ for the image measure $\mu\pi_J^{-1}$,
+
+$$\eqalign{\int fd\lambda_J
+&=\int f(\omega(t^*),\omega(t_1),\ldots,\omega(t_n))\mu(d\omega)\cr
+&=\int\ldots\iint f(x^*,x_1,\ldots,x_n)
+   \nu_{x_{n-1}}^{(t_{n-1},t_n)}(dx_n)\cr
+&\qquad\qquad\qquad\qquad
+  \nu_{x_{n-2}}^{(t_{n-2},t_{n-1})}(dx_{n-1})
+  \ldots\nu_{x^*}^{(t^*,t_1)}(dx_1)\cr}$$
+
+\noindent whenever $t^*<t_1<\ldots<t_n$, $J=\{t^*,t_1,\ldots,t_n\}$ and
+$f$ is $\lambda_J$-integrable.   $\mu$ is perfect, and the marginal measure
+$\mu_t=\mu X_t^{-1}$ is equal to $\nu_{x^*}^{(t^*,t)}$, if $t>t^*$,
+while $\mu_{t^*}\{x^*\}=1$.
+
+\proof{{\bf (a)} For $I\subseteq T$, write
+$\Tau_I=\Tensorhat_{t\in I}\Tau_t$.   If $I=\{t_0,t_1,\ldots,t_n\}$ is
+a finite subset of $T$ with $t^*=t_0<t_1<\ldots<t_n$, then we have a
+probability measure $\lambda_I$ on $Z_I$ with domain $\Tau_I$ such that
+
+$$\eqalign{\int fd\lambda_I
+&=\int\ldots\iint f(x^*,x_1,\ldots,x_n)
+   \nu_{x_{n-1}}^{(t_{n-1},t_n)}(dx_n)\cr
+&\qquad\qquad\qquad\qquad
+  \nu_{x_{n-2}}^{(t_{n-2},t_{n-1})}(dx_{n-1})
+  \ldots\nu_{x^*}^{(t^*,t_1)}(dx_1)\cr}$$
+
+\noindent for every $\lambda_I$-integrable function $f$.   \Prf\ Use
+454H on the finite sequence $(\Omega_{t_0},\ldots,\Omega_{t_n})$.
+The measures
+$\nu_z$ required by 454H must be constructed by the rule
+
+\Centerline{$\nu_z=\nu_{z(t_m)}^{(t_m,t_{m+1})}$}
+
+\noindent for $m<n$, $z\in\prod_{i\le m}\Omega_{t_i}$, while of course
+$\nu_{\emptyset}\{x^*\}=1$.   (Having a finite sequence rather than an
+infinite one clearly makes things easier;  we can stop the argument at
+the end of part (b) of the proof of 454H.)\ \Qed
+
+When $I=\{t^*\}$, so that $Z_I$ can be identified with $\Omega_{t^*}$,
+I mean to interpret these formulae in such a way that
+$\lambda_I\{x^*\}=1$.   When $J=\{t^*,t\}$, with $t^*<t$,
+and $E\in\Tau_t$, then we can apply the formula above to the function
+$z\mapsto\chi E(z(t))$ to get
+$\lambda_J\{z:z(t)\in E\}=\nu_{x^*}^{(t^*,t)}(E)$.
+
+\medskip
+
+{\bf (b)} Of course the point of this is that these measures $\lambda_I$
+form a consistent family;  if $t^*\in I\subseteq J\in[T]^{<\omega}$, then
+the canonical projection $\pi_{IJ}:Z_J\to Z_I$ is \imp.   \Prf\ It is
+enough to consider the case in which $J$ has just one more point than
+$I$, since then we can induce on $\#(J\setminus I)$.   In this case,
+express $J$ as $\{t_0,\ldots,t_n\}$ where $t^*=t_0<\ldots<t_n$, and
+suppose that $I=J\setminus\{t_m\}$.   If $W\in\Tau_I$, then
+
+$$\eqalignno{\lambda_J\pi_{IJ}^{-1}[W]
+&=\int\ldots\iint\ldots\int\chi W(x^*,x_1,\ldots,x_{m-1},x_{m+1},\ldots,x_n)
+   \nu_{x_{n-1}}^{(t_{n-1},t_n)}(dx_n)\cr
+&\qquad\qquad\qquad\qquad
+   \ldots\nu_{x_m}^{(t_m,t_{m+1})}(dx_{m+1})
+   \nu_{x_{m-1}}^{(t_{m-1},t_m)}(dx_m)
+   \ldots\nu^{(t^*,t_1)}_{x^*}(dx_1)\cr
+&=\int\ldots\iint g_{(x_1,\ldots,x_{m-1})}(x_{m+1})
+    \nu_{x_m}^{(t_m,t_{m+1})}(dx_{m+1})&(^*)\cr
+&\qquad\qquad\qquad\qquad\qquad\qquad
+  \nu_{x_{m-1}}^{(t_{m-1},t_m)}(dx_m)\ldots\nu_{x^*}^{(t^*,t_1)}(dx_1)\cr}$$
+
+\noindent where
+
+$$\eqalign{g_{(x_1,\ldots,x_{m-1})}(x_{m+1})
+&=\int\ldots\int\chi W(x^*,x_1\ldots,x_{m-1},x_{m+1},\ldots,x_n)\cr
+&\qquad\qquad\qquad\qquad
+   \nu_{x_{n-1}}^{(t_{n-1},t_n)}(dx_n)
+   \ldots\nu_{x_{m+1}}^{(t_{m+1},t_{m+2})}(dx_{m+2}).\cr}$$
+
+\noindent Here, of course, we use the hypothesis ($\dagger$);  since
+$\family{y}{\Omega_{t_m}}{\nu_y^{(t_m,t_{m+1})}}$ is a disintegration of
+$\nu_{x_{m-1}}^{(t_{m-1},t_{m+1})}$ over $\nu_{x_{m-1}}^{(t_{m-1},t_m)}$,
+and $g_{(x_1,\ldots,x_{m-1})}$ is bounded and
+$\nu^{(t_{m-1},t_{m+1})}_{x_{m-1}}$-integrable (by 454H),
+
+$$\eqalign{\int g_{(x_1,\ldots,x_{m-1})}&(x_{m+1})
+  \nu_{x_{m-1}}^{(t_{m-1},t_{m+1})}(dx_{m+1})\cr
+&=\iint g_{(x_1,\ldots,x_{m-1})}(x_{m+1})
+  \nu_{x_m}^{(t_m,t_{m+1})}(dx_{m+1})
+  \nu_{x_{m-1}}^{(t_{m-1},t_m)}(dx_m)\cr}$$
+
+\noindent (452F).   Substituting this into (*) above,
+
+$$\eqalignno{\lambda_J\pi_{IJ}^{-1}[W]
+&=\int\ldots\iint g_{(x_1,\ldots,x_{m-1})}(x_{m+1})\cr
+&\qquad\qquad\qquad\qquad
+  \nu_{x_m}^{(t_m,t_{m+1})}(dx_{m+1})
+  \nu_{x_{m-1}}^{(t_{m-1},t_m)}(dx_m)\ldots\nu_{x^*}^{(t^*,t_1)}(dx_1)\cr
+&=\int\ldots\int g_{(x_1,\ldots,x_{m-1})}(x_{m+1})
+  \nu_{x_{m-1}}^{(t_{m-1},t_{m+1})}(dx_{m+1})\ldots
+  \nu_{x^*}^{(t^*,t_1)}(dx_1)\cr
+&=\int\ldots\int\ldots\int
+      \chi W(x^*,x_1,\ldots,x_{m-1},x_{m+1},\ldots,x_n)\cr
+&\qquad\qquad\qquad\qquad
+  \nu_{x_{n-1}}^{(t_{n-1},t_n)}(dx_n)\ldots
+  \nu_{x_{m-1}}^{(t_{m-1},t_{m+1})}(dx_{m+1})\ldots
+  \nu_{x^*}^{(t^*,t_1)}(dx_1)\cr
+&=\lambda_IW,\cr}$$
+
+\noindent applying the formula in (a) again.\ \Qed
+
+(Some of the formulae here are inappropriate if $m=n>1$.   In this case,
+of course,
+
+$$\eqalignno{\lambda_J\pi_{IJ}^{-1}[W]
+&=\int\ldots\int\chi W(x^*,x_1,\ldots,x_{n-1})
+   \nu_{x_{n-1}}^{(t_{n-1},t_n)}(dx_n)\ldots\nu_{x^*}^{(t^*,t_1)}(dx_1)\cr
+&=\int\ldots\int\chi W(x^*,x_1,\ldots,x_{n-1})
+  \nu_{x_{n-2}}^{(t_{n-2},t_{n-1})}(dx_{n-1})\ldots\nu_{x^*}^{(t^*,t_1)}(dx_1)
+ =\lambda_IW.\cr}$$
+
+\noindent If $m=1<n$, there is a collapse of a different kind;  we must
+look at
+
+$$\eqalign{\lambda_J\pi_{IJ}^{-1}[W]
+&=\int\ldots\iint\chi W(x^*,x_2,\ldots,x_n)
+  \nu_{x_{n-1}}^{(t_{n-1},t_n)}(dx_n)
+     \ldots\nu_{x_1}^{(t_1,t_2)}(dx_2)\nu_{x^*}^{(t^*,t_1)}(dx_1)\cr
+&=\int\ldots\iint\chi W(x^*,x_2,\ldots,x_n)
+  \nu_{x_{n-1}}^{(t_{n-1},t_n)}(dx_n)
+     \ldots\nu_{x^*}^{(t^*,t_2)}(dx_2)
+=\lambda_IW.\cr}$$
+
+\noindent If $m=n=1$ then
+
+\Centerline{$\lambda_J\pi_{IJ}^{-1}[W]
+=\int\chi W(x^*)\nu_{x^*}^{(t^*,t_1)}(dx_1)
+=\chi W(x^*)
+=\lambda_IW$).}
+
+\medskip
+
+{\bf (c)} Part (b) tells us that we have a consistent family of measures
+on the finite products $Z_J$, and therefore have a functional $\lambda$
+on $\bigotimes_{t\in T}\Tau_t$ defined by setting
+$\lambda\pi_J^{-1}[W]=\lambda_JW$ for every finite $J\subseteq T$
+containing $t^*$ and $W\in\bigotimes_{t\in J}\Tau_t$.
+$\lambda$ is finitely
+additive, and its images $\mu_t=\lambda X_t^{-1}$ are all countably
+additive and perfect because $\mu_t=\nu_{x^*}^{(t^*,t)}$ for $t>t^*$,
+while $\mu_{t^*}$ is concentrated at $\{x^*\}$.
+
+By 454D, we have a perfect
+measure $\mu$ extending $\lambda$.   We have to
+check that each $\lambda_J$ is the image
+measure $\mu\pi_J^{-1}$;  but this is true because they agree on
+$\bigotimes_{t\in J}\Tau_t$ (using the Monotone Class Theorem in the
+form 136C, as always).   So the integral formula sought for
+$\lambda_J$ is just that obtained in part (a).
+By the last remark in (a), we have the declared formulae for the marginal
+measures $\mu_t$.
+}%end of proof of 455A
+
+\leader{455B}{Lemma} Suppose that $T$, $t^*$,
+$\family{t}{T}{(\Omega_t,\Tau_t)}$, $\Omega$, $x^*$ and
+$\langle\nu^{(s,t)}_x\rangle_{s<t,x\in\Omega_s}$ are as in
+455A.
+
+(a) Suppose that $\mu$ is constructed from $x^*$
+and $\langle\nu^{(s,t)}_x\rangle_{s<t,x\in\Omega_s}$ as in 455A.
+If $F\in\Tensorhat_{t\in T}\Tau_t$ is determined by
+coordinates in $[t^*,t_0]$ and
+$H^*=\{\omega:\omega(t_i)\in E_i$ for $1\le i\le n\}$ where
+$t_0<t_1\ldots<t_n$ and $E_i\in\Tau_{t_i}$ for $1\le i\le n$, then
+
+$$\eqalignno{\mu(H^*\cap F)
+&=\int_F\int\ldots\int\chi H(y_1,\ldots,y_n)
+   \nu_{y_{n-1}}^{(t_{n-1},t_n)}(dy_n)
+   \ldots\nu_{\omega(t_0)}^{(t_0,t_1)}(dy_1)\mu(d\omega)&(*)}$$
+
+\noindent where $H=\prod_{1\le i\le n}E_i$.
+
+(b) Suppose that $\omega\in\Omega$ and $a\in T\cup\{\infty\}$, where
+$\infty$ is taken to be greater than every element of $T$.   For
+$s<t$ in $T$ and $x\in\Omega_s$ set
+
+$$\eqalign{\nu^{(s,t)}_{\omega ax}
+&=\nu_x^{(s,t)}\text{ if }a<s,\cr
+&=\nu_{\omega(a)}^{(a,t)}\text{ if }s\le a<t,\cr
+&=\delta^{(t)}_{\omega(t)}\text{ if }t\le a,\cr}$$
+
+\noindent here writing $\delta^{(t)}_x$ for the
+probability measure with domain $\Tau_t$ such that
+$\delta^{(t)}_x(\{x\})=1$.
+
+\quad(i) $\nu^{(s,t)}_{\omega ax}$ is always a
+perfect probability measure with domain $\Tau_t$, and
+$\family{y}{\Omega_t}{\nu^{(t,u)}_{\omega ay}}$ is a disintegration of
+$\nu^{(s,u)}_{\omega ax}$ over $\nu^{(s,t)}_{\omega ax}$ whenever $s<t<u$
+in $T$ and $x\in\Omega_s$.
+
+\quad(ii) Taking $\mu_{\omega a}$ to be the measure on $\Omega$ defined from
+$\omega(t^*)$ and $\langle\nu^{(s,t)}_{\omega ax}\rangle_{s<t,x\in\Omega_t}$
+by the method of 455A, then
+$\{\omega':\omega'\in\Omega$, $\omega'\restr D=\omega\restr D\}$ is
+$\mu_{\omega a}$-conegligible for every countable
+$D\subseteq T\cap[t^*,a]$.
+
+\quad(iii) If $\omega$, $\omega'\in\Omega$ and
+$\omega\restr[t^*,a]=\omega'\restr[t^*,a]$ then
+$\mu_{\omega a}=\mu_{\omega'a}$.
+
+\proof{{\bf (a)(i)} Suppose first that $F$ is of the form
+$\{\omega:\omega(s_i)\in F_i$ for $i\le m\}$ where
+$t^*=s_0<\ldots<s_m=t_0$.   For $x\in\Omega_{t_0}$ set
+
+\Centerline{$f(x)=\int\ldots\int\chi H(y_1,\ldots,y_n)
+   \nu_{y_{n-1}}^{(t_{n-1},t_n)}(dy_n)
+   \ldots\nu_x^{(t_0,t_1)}(dy_1)$.}
+
+\noindent Writing $G=\prod_{i\le m}F_i$, we have
+
+$$\eqalignno{\mu(H^*\cap F)
+&=\int\ldots\iint\ldots\int\chi G(x^*,x_1,\ldots,x_m)
+   \chi H(y_1,\ldots,y_n)\nu_{y_{n-1}}^{(t_{n-1},t_n)}(dy_n)\cr
+&\mskip100mu
+   \ldots\nu_{x_m}^{(s_m,t_1)}(dy_1)
+   \nu_{x_{m-1}}^{(s_{m-1},s_m)}(dx_m)
+   \ldots\nu_{x^*}^{(t^*,s_1)}(dx_1)\cr
+&=\int\ldots\int\chi G(x^*,x_1,\ldots,x_m)f(x_m)
+   \nu_{x_{m-1}}^{(s_{m-1},s_m)}(dx_m)
+   \ldots\nu_{x^*}^{(t^*,s_1)}(dx_1)\cr
+&=\int g\,d\lambda_J\cr
+\displaycause{where $J=\{t^*,s_1,\ldots,s_m\}$,
+$g(z)=\chi G(z(t^*),\ldots,z(s_m))f(z(s_m))$ for
+$z\in\prod_{s\in J}\Omega_s$, and $\lambda_J$ is defined as in 455A}
+&=\int g\pi_Jd\mu
+=\int_Ff(\omega(t_0))\mu(d\omega)\cr
+\displaycause{because $g\pi_J(\omega)=f(\omega(s_m))=f(\omega(t_0))$
+if $\omega\in F$, $0$ otherwise}
+&=\int_F\int\ldots\int\chi H(y_1,\ldots,y_n)
+   \nu_{y_{n-1}}^{(t_{n-1},t_n)}(dy_n)
+   \ldots\nu_{\omega(t_0)}^{(t_0,t_1)}(dy_1)\mu(d\omega).\cr}$$
+
+\medskip
+
+\quad{\bf (ii)} Let $\Cal I$ be the family of sets $F$ of the type dealt with in
+(a).   Since the intersection of two members of $\Cal I$ belongs to
+$\Cal I$, the Monotone Class Theorem tells us
+that (*) is true for all sets in the $\sigma$-algebra $\Tau$
+generated by $\Cal I$.   But any member of
+$\Tensorhat_{t\in T}\Tau_t$ determined by coordinates in $[t^*,t_0]$
+belongs to $\Tau$.
+\Prf\ Fix $v\in\prod_{s\in T\setminus[t^*,t_0]}\Omega_s$.   For
+$\omega\in\Omega$ define $f(\omega)\in\Omega$ by setting
+
+$$\eqalign{f(\omega)(s)
+&=\omega(s)\text{ if }s\le t_0,\cr
+&=v(s)\text{ if }s>t_0.\cr}$$
+
+\noindent Then $\Tau'=\{F:F\subseteq\Omega$, $f^{-1}[F]\in\Tau\}$ is a
+$\sigma$-algebra of
+subsets of $\Omega$ containing $\{\omega:\omega(t)\in E\}$ whenever
+$t\in T$ and $E\in\Tau_t$, so includes $\Tensorhat_{t\in T}\Tau_t$.
+If $F\in\Tensorhat_{t\in T}\Tau_t$ and $F$ is determined by coordinates
+in $[t^*,t_0]$, then $F=f^{-1}[F]\in\Tau$.\ \Qed
+
+So (*) is true of every $F\in\Tensorhat_{t\in T}\Tau_t$, as claimed.
+
+\woddheader{455B}{4}{2}{2}{108pt}
+
+{\bf (b)(i)} Of course every $\nu^{(s,t)}_{\omega ax}$ is a perfect
+probability measure with domain $\Tau_t$.
+If $s<t<u$ and $E\in\Tau_u$, then
+
+$$\eqalign{
+\int_{\Omega_t}\nu^{(t,u)}_{\omega ay}(E)\nu^{(s,t)}_{\omega ax}(dy)
+&=\int_{\Omega_t}\nu^{(t,u)}_y(E)\nu^{(s,t)}_x(dy)
+   =\nu_x^{(s,u)}(E)
+   =\nu_{\omega ax}^{(s,u)}(E)\cr
+&\mskip250mu   \text{ if }a<s,\cr
+&=\int_{\Omega_t}\nu^{(t,u)}_y(E)
+   \nu^{(a,t)}_{\omega(a)}(dy)
+   =\nu_{\omega(a)}^{(a,u)}(E)
+   =\nu_{\omega ax}^{(s,u)}(E)\cr
+&\mskip250mu
+   \text{ if }s\le a<t,\cr
+&=\int_{\Omega_t}\nu^{(t,u)}_{\omega(t)}(E)\delta^{(t)}_{\omega(t)}(dy)
+   =\nu^{(t,u)}_{\omega(t)}(E)
+   =\nu_{\omega ax}^{(s,u)}(E)\cr
+&\mskip250mu
+   \text{ if }a=t,\cr
+&=\int_{\Omega_t}\nu^{(a,u)}_{\omega(a)}(E)
+   \delta^{(t)}_{\omega(t)}(dy)
+   =\nu^{(a,u)}_{\omega(a)}(E)
+   =\nu_{\omega ax}^{(s,u)}(E)\cr
+&\mskip250mu
+   \text{ if }t<a<u,\cr
+&=\int_{\Omega_t}\delta^{(u)}_{\omega(u)}(E)
+   \delta^{(t)}_{\omega(t)}(dy)
+   =\delta^{(u)}_{\omega(u)}(E)
+   =\nu_{\omega ax}^{(s,u)}(E)\cr
+&\mskip250mu
+   \text{ if }u\le a.\cr}$$
+
+\medskip
+
+\quad{\bf (ii)}
+Consider first the case $D=\{t\}$, where $t^*<t\le a$.   Then
+
+\Centerline{$\mu_{\omega a}\{\omega':\omega'(t)=\omega(t)\}
+=\nu^{(t^*,t)}_{\omega,a,\omega(t^*)}\{\omega(t)\}
+=\delta^{(t)}_{\omega(t)}\{\omega(t)\}
+=1$.}
+
+\noindent As for $D=\{t^*\}$, $\mu_{\omega a}$ starts at $\omega(t^*)$, so
+(as noted in the last clause of the statement of 455A)
+$\mu_{\omega a}\{\omega':\omega'(t^*)=\omega(t^*)\}=1$.
+
+For general $D$, we have an intersection of countably many sets
+of these types, which will be $\mu_{\omega a}$-conegligible.
+
+\medskip
+
+\quad{\bf (iii)} Looking at the definition, we see that
+$\nu^{(s,t)}_{\omega' ax}=\nu^{(s,t)}_{\omega ax}$
+for all $s$, $t$ and $x$, and of course $\omega'(t^*)=\omega(t^*)$, so
+$\mu_{\omega'a}=\mu_{\omega a}$.
+}%end of proof of 455B
+
+\leader{455C}{Theorem} Suppose that $T$, $t^*$,
+$\family{t}{T}{(\Omega_t,\Tau_t)}$, $\Omega$, $x^*$,
+$\langle\nu^{(s,t)}_x\rangle_{s<t,x\in\Omega_s}$ and $\mu$ are as in
+455A.   Adjoin a point $\infty$ to $T$ above any point of $T$,
+and let $\tau:\Omega\to T\cup\{\infty\}$ be a
+function taking countably many
+values and such that $\{\omega:\tau(\omega)\le s\}$
+belongs to $\Tensorhat_{t\in T}\Tau_t$ and is determined by
+coordinates in $[t^*,s]$ for every $s\in T$.
+
+(a) For $\omega\in\Omega$ define $\nu^{(s,t)}_{\omega,\tau(\omega),x}$, for
+$s<t$ and $x\in\Omega_s$, as in 455Bb, and let $\mu_{\omega,\tau(\omega)}$
+be the corresponding measure on $\Omega$.   Then
+$\family{\omega}{\Omega}{\mu_{\omega,\tau(\omega)}}$ is a disintegration of
+$\mu$ over itself.
+
+(b) Let $\Sigma_{\tau}$ be the set of those
+$E\in\Tensorhat_{t\in T}\Tau_t$ such that
+$E\cap\{\omega:\tau(\omega)\le t\}$ is determined by
+coordinates in $[t^*,t]$ for every $t\in T$.
+Then $\Sigma_{\tau}$ is a $\sigma$-subalgebra of
+$\Tensorhat_{t\in T}\Tau_t$.   If
+$f$ is any $\mu$-integrable real-valued function, and we set
+$g_f(\omega)=\int fd\mu_{\omega,\tau(\omega)}$ when this is defined
+in $\Bbb R$, then $g_f$ is a
+conditional expectation of $f$ on $\Sigma_{\tau}$.
+
+\proof{{\bf (a)(i)}
+Set $F_t=\{\omega:\omega\in\Omega$, $\tau(\omega)=t\}$ for
+$t\in T\cup\{\infty\}$;  note that $F_t\in\Tensorhat_{t\in T}\Tau_t$ for
+every $t\in T\cup\{\infty\}$, and that $F_t$ is determined by coordinates
+in $[t^*,t]$ for $t\in T$.
+
+\medskip
+
+\quad{\bf (ii)} Consider first the case in which $\tau$ takes only
+finitely many values.   Suppose that
+$J\subseteq T$ is a finite set including
+$\{t^*\}\cup(T\cap\tau[\Omega])$.
+Enumerate $J$ as $\langle t_i\rangle_{i\le n}$.
+Suppose that $E_i\in\Tau_{t_i}$ for $i\le n$ and set
+$H^*=\{\omega:\omega(t_i)\in E_i$ for every $i\le n\}$.
+We need to calculate
+$\int_{\Omega}\mu_{\omega,\tau(\omega)}(H^*)\mu(d\omega)$.
+
+Set $H=\prod_{i\le n}E_i$,
+
+\Centerline{$H_j=\prod_{j<i\le n}E_j$,
+\quad$H^*_j=\{\omega:\omega\in\Omega$,
+$\omega(t_i)\in E_i$ for $j<i\le n\}$,}
+
+\Centerline{$G^*_j=\{\omega:\omega(t_i)\in E_i$ for $i\le j\}$}
+
+\noindent for $j\le n$.
+If $i<n$, $j\le n$, $\omega\in F_{t_j}$ and $x\in\Omega_{t_i}$, then
+
+$$\eqalign{\nu_{\omega,\tau(\omega),x}^{(t_i,t_{i+1})}
+&=\nu_x^{(t_i,t_{i+1})}\text{ if }i>j,\cr
+&=\nu^{(t_j,t_{j+1})}_{\omega(t_j)}\text{ if }i=j,\cr
+&=\delta^{(t_{i+1})}_{\omega(t_{j+1})}\text{ if }i<j.\cr}$$
+
+So if $j\le n$ and $\omega\in F_{t_j}$,
+
+$$\eqalign{\mu_{\omega,\tau(\omega)}(H^*)
+&=\int\ldots\int\chi H(\omega(t^*),x_1,\ldots,x_n)
+   \nu_{\omega,\tau(\omega),x_{n-1}}^{(t_{n-1},t_n)}(dx_n)
+   \ldots\nu_{\omega,\tau(\omega),\omega(t^*)}^{(t^*,t_1)}(dx_1)\cr
+&=\iint\ldots\int\chi H(x_0,\ldots,x_n)
+   \nu_{\omega,\tau(\omega),x_{n-1}}^{(t_{n-1},t_n)}(dx_n)
+   \ldots\nu_{\omega,\tau(\omega),x_0}^{(t^*,t_1)}(dx_1)
+   \delta^{(t^*)}_{\omega(t^*)}(dx_0)\cr
+&=\iint\ldots\iiint\ldots\int\chi H(x_0,\ldots,x_n)
+   \nu_{\omega,\tau(\omega),x_{n-1}}^{(t_{n-1},t_n)}(dx_n)\cr
+&\mskip100mu
+   \ldots\nu_{\omega,\tau(\omega),x_{j+1}}^{(t_{j+1},t_{j+2})}(dx_{j+2})
+   \nu_{\omega,\tau(\omega),x_j}^{(t_j,t_{j+1})}(dx_{j+1})
+   \nu_{\omega,\tau(\omega),x_{j-1}}^{(t_{j-1},t_j)}(dx_j)\cr
+&\mskip100mu  \ldots\delta^{(t_1)}_{\omega(t_1)}(dx_1)
+    \delta^{(t^*)}_{\omega(t^*)}(dx_0)\cr
+&=\int\ldots\iiint\ldots\int\chi H(x_0,\ldots,x_n)
+   \nu_{x_{n-1}}^{(t_{n-1},t_n)}(dx_n)\cr
+&\mskip100mu   \ldots\nu_{x_j}^{(t_j,t_{j+1})}(dx_{j+1})
+   \nu_{\omega(t_j)}^{(t_j,t_{j+1})}(dx_{j+1})
+   \delta^{(t_j)}_{\omega(t_j)}(dx_j)
+   \ldots
+   \delta^{(t^*)}_{\omega(t^*)}(dx_0)\cr
+&=\int\ldots\int\chi H(\omega(t^*),\ldots,\omega(t_j),x_{j+1},\ldots,x_n)
+   \nu_{x_{n-1}}^{(t_{n-1},t_n)}(dx_n)\cr
+&\mskip100mu
+   \ldots\nu_{\omega(t_j)}^{(t_j,t_{j+1})}(dx_{j+1})\cr
+&=\int\ldots\int\chi H_j(x_{j+1},\ldots,x_n)
+   \nu_{x_{n-1}}^{(t_{n-1},t_n)}(dx_n)
+   \ldots\nu_{\omega(t_j)}^{(t_j,t_{j+1})}(dx_{j+1})\cr
+&\mskip200mu\text{ if }\omega\in G^*_j,\cr
+&=0\text{ otherwise}.\cr}$$
+
+\noindent As noted in 455B(b-ii),
+$\mu_{\omega,\tau(\omega)}(H^*)=\chi H^*(\omega)$ if $\tau(\omega)=\infty$.
+
+Now
+
+$$\eqalignno{\int_{\Omega}\mu_{\omega,\tau(\omega)}(H^*)\mu(d\omega)
+&=\sum_{j=0}^n\int_{F_{t_j}}\mu_{\omega,\tau(\omega)}(H^*)\mu(d\omega)
+  +\int_{F_{\infty}}\mu_{\omega,\tau(\omega)}(H^*)\mu(d\omega)\cr
+&=\sum_{j=0}^n\int_{F_{t_j}\cap G^*_j}\int\ldots\int
+\chi H_j(x_{j+1},\ldots,x_n)
+   \nu_{x_{n-1}}^{(t_{n-1},t_n)}(dx_n)\cr
+&\mskip100mu
+   \ldots\nu_{\omega(t_j)}^{(t_j,t_{j+1})}(dx_{j+1})\mu(d\omega)
+   +\mu(F_{\infty}\cap H^*)\cr
+&=\sum_{j=0}^n\mu(F_{t_j}\cap G^*_j\cap H^*_j)
+   +\mu(H^*\cap F_{\infty})\cr
+\displaycause{by 455Ba}
+&=\sum_{j=0}^n\mu(F_{t_j}\cap H^*)
+   +\mu(F_{\infty}\cap H^*)
+=\mu H^*.\cr}$$
+
+Thus we have the formula we need when $E$ is of the special form
+$\{\omega:\omega(t)\in E_t$ for every $t\in J\}$, $J\subseteq T$
+being a finite set and $E_t$ being a member of $\Tau_t$ for every
+$t\in J$.   By the Monotone Class Theorem (136B), we shall have
+$\int\mu_{\omega,\tau(\omega)}(E)\mu(d\omega)=\mu E$ for every
+$E\in\Tensorhat_{t\in T}\Tau_t$, so that
+$\family{\omega}{\Omega}{\mu_{\omega,\tau(\omega)}}$ is a disintegration of $\mu$ over
+itself.
+
+\medskip
+
+\quad{\bf (iii)} If $\tau$ takes infinitely many values, enumerate them as
+$\sequencen{t_n}$, and for $n\in\Bbb N$ define
+$\tau_n:T\to T\cup\{\infty\}$ by setting
+
+$$\eqalign{\tau_n(\omega)
+&=t_i\text{ if }i\le n\text{ and }\tau(\omega)=t_i,\cr
+&=\infty\text{ if }\tau(\omega)\notin\{t_i:i\le n\}.\cr}$$
+
+\noindent Then $\tau_n$ takes only finitely many values, and
+$\{\omega:\tau_n(\omega)\le t\}\in\Tensorhat_{t\in T}\Tau_t$
+is determined by coordinates in $[0,t]$ for every $t\in T$.
+So we shall have
+
+\Centerline{$\int\mu_{\omega,\tau_n(\omega)}(E)\mu(d\omega)=\mu E$}
+
+\noindent for every $E\in\Tensorhat_{t\in T}\Tau_t$.   Now observe that
+$\mu_{\omega,\tau_n(\omega)}=\mu_{\omega,\tau(\omega)}$ whenever
+$\tau(\omega)=\tau_n(\omega)$.
+So, for each $\omega$,
+$\mu_{\omega,\tau_n(\omega)}=\mu_{\omega,\tau(\omega)}$ for all but
+finitely many $n$.   This means that, for every
+$E\in\Tensorhat_{t\in T}\Tau_t$,
+
+\Centerline{$\mu_{\omega,\tau(\omega)}(E)
+=\lim_{n\to\infty}\mu_{\omega,\tau_n(\omega)}(E)$}
+
+\noindent for every $\omega\in\Omega$, and
+
+\Centerline{$\int\mu_{\omega,\tau(\omega)}(E)\mu(d\omega)
+=\lim_{n\to\infty}\int\mu_{\omega,\tau_n(\omega)}(E)\mu(d\omega)=\mu E$,}
+
+\noindent as required.
+
+\medskip
+
+{\bf (b)(i)} Since $\{\omega:\tau(\omega)\le t\}$ is determined by
+coordinates in $[t^*,t]$ for every $t\in T$, $\Omega\in\Sigma_{\tau}$, and it
+is now elementary to confirm that $\Sigma_{\tau}$ is a $\sigma$-algebra.
+
+\medskip
+
+\quad{\bf (ii)} I had better note that $g_f$ is defined almost everywhere;
+this is because, by (a) above and 452F,
+
+\Centerline{$\int g_fd\mu=\iint fd\mu_{\omega,\tau(\omega)}\mu(d\omega)
+=\int fd\mu$.}
+
+\medskip
+
+\quad{\bf (iii)} If $\omega$, $\omega'\in\Omega$ and
+$\omega'\restr[t^*,\tau(\omega)]=\omega\restr[t^*,\tau(\omega)]$, then
+$g_f(\omega)=g_f(\omega')$ if either is defined.   \Prf\ Since
+$F_{\tau(\omega)}$ is determined by coordinates in $[t^*,\tau(\omega)]$,
+$\tau(\omega')=\tau(\omega)$.   By 455B(b-ii),
+$\mu_{\omega',\tau(\omega')}=\mu_{\omega,\tau(\omega)}$, so
+$g_f(\omega)=g_f(\omega')$ if either is defined.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} If $F\in\Sigma_{\tau}$ and $\omega\in\Omega$, then
+$\mu_{\omega,\tau(\omega)}F=1$ if $\omega\in F$, $0$ otherwise.   \Prf\
+Setting $b=\tau(\omega)$, $F\cap F_b$ and $F_b\setminus F$
+are determined by coordinates
+in a countable subset of $T\cap[t^*,b]$, so by 455B(b-ii) we have
+$\mu_{\omega b}F=1$ if $\omega\in F_b\cap F$ and
+$\mu_{\omega b}(F_b\setminus F)=1$ if $\omega\in F_b\setminus F$.\ \Qed
+
+It follows that if $f$ is $\mu$-integrable and $F\in\Sigma_{\tau}$, then
+$g_{f\times\chi F}=g_f\times\chi F$.   \Prf\ If $\omega\in F$, then
+$\mu_{\omega,\tau(\omega)}F=1$ and
+
+\Centerline{$g_{f\times\chi F}(\omega)
+=\int_Ffd\mu_{\omega,\tau(\omega)}=\int fd\mu_{\omega,\tau(\omega)}$;}
+
+\noindent if $\omega\notin F$ then $\mu_{\omega,\tau(\omega)}F=0$ and
+
+\Centerline{$g_{f\times\chi F}(\omega)
+=\int_Ffd\mu_{\omega,\tau(\omega)}=0$.   \Qed}
+
+\medskip
+
+\quad{\bf (v)} Now let $f$ be any $\mu$-integrable real-valued function.
+Then there
+is a $\Sigma_{\tau}$-measurable function
+$g'_f:\Omega\to\ocint{-\infty,\infty}$
+such that $g'_f\eae g_f$, $g'_f(\omega)\le g_f(\omega)$ for every
+$\omega\in\dom g_f$, and $g'_f(\omega)=-\infty$ for every
+$\omega\in\Omega\setminus\dom g_f$.   \Prf\ For $q\in\Bbb Q$, set
+$W_q=\{\omega:\omega\in\dom g_f$, $g_f(\omega)\ge q\}$.
+For $q\in\Bbb Q$ and $b\in\tau[\Omega]$, consider $W_{bq}=W_q\cap F_b$.
+$W_{bq}$ is measured by the completion $\hat\mu$ of $\mu$,
+and is determined by coordinates in $T\cap[t^*,b]$, by (iii).
+By 451K(b-ii) there is a
+$W'_{bq}\in\Tensorhat_{t\in T}\Tau_t$ such that
+$W'_{bq}\subseteq W_{bq}$, $W_{bq}\setminus W'_{bq}$ is negligible and
+$W'_{bq}$ is determined by coordinates in $T\cap [t^*,b]$.
+
+Having defined the family
+$\langle W'_{bq}\rangle_{b\in\tau[\Omega],q\in\Bbb Q}$, set
+$W'_q=\bigcup_{b\in\tau[\Omega]}W'_{bq}$ for $q\in\Bbb Q$.   Then
+$W'_q\in\Tensorhat_{t\in T}\Tau_t$ and
+$W'_q\cap F_b=W'_{bq}$ is determined by
+coordinates in $T\cap[t^*,b]$ for every $b\in\tau[\Omega]$, so
+$W'_q\in\Sigma_{\tau}$.   Also
+$W'_q\subseteq W_q$ and $W_q\setminus W'_q$ is negligible.
+
+Set
+
+\Centerline{$g'_f(\omega)
+=\sup\{q:q\in\Bbb Q$, $\omega\in W'_q\}$}
+
+\noindent for $\omega\in\Omega$, counting $\sup\emptyset$ as
+$-\infty$.   Then $g'_f$ is $\Sigma_{\tau}$-measurable,
+$g'_f(\omega)=-\infty$ for $\omega\notin\dom g_f$,
+$g'_f(\omega)\le g_f(\omega)$ for $\omega\in\dom g_f$, and
+$g'_f=g_f$ on $\dom g_f\setminus\bigcup_{q\in\Bbb Q}W_q\setminus W'_q$, so
+$g'_f\eae g_f$.\ \Qed
+
+\medskip
+
+\quad{\bf (vi)} Continuing from (v), we find that $g'_f$ is a conditional
+expectation of $f$ on $\Sigma_{\tau}$.\footnote{The definition of
+`conditional expectation' in 233D was directed towards real-valued
+functions, and $g'_f$ is permitted to take the values $\pm\infty$.
+So what I really mean here
+is that the restriction of $g'_f$ to the set on which
+it is finite is a conditional expectation of $f$.}
+\Prf\ I have already shown that
+$g'_f$ is $\Sigma_{\tau}$-measurable.   If $F\in\Sigma_{\tau}$ then
+
+$$\eqalignno{\int_Fg'_fd\mu
+&=\int g'_f\times\chi F\,d\mu
+=\int g_f\times\chi F\,d\mu\cr
+\displaycause{because $g_f\eae g'_f$}
+&=\int g_{f\times\chi F}d\mu\cr
+\displaycause{by (iv)}
+&=\iint f\times\chi F\,d\mu_{\omega,\tau(\omega)}\mu(d\omega)
+=\int f\times\chi F\,d\mu\cr
+\displaycause{452F once again}
+&=\int_Ffd\mu.  \text{ \Qed}\cr}$$
+
+\medskip
+
+\quad{\bf (vii)} Similarly, or applying the arguments of (v)-(vi) to $-f$,
+we see that for any $\mu$-integrable function $f$ there is a conditional
+expectation $g''_f$ of $f$ on $\Sigma_{\tau}$ such that
+$g''_f(\omega)\ge g_f(\omega)$ when $\omega\in\dom g_f$ and
+$g''_f(\omega)=\infty$ when $g_f(\omega)$ is undefined.   Now
+$g'_f\eae g''_f$ and both are $\Sigma_{\tau}$-measurable.   It follows that
+$g_f$ is defined, and equal to both $g'_f$ and $g''_f$,
+$(\mu\restr\Sigma_{\tau})$-a.e.;  so that $g_f$ itself is also a
+conditional expectation of $f$ on $\Sigma_{\tau}$.
+}%end of proof of 455C
+
+\cmmnt{
+\leader{455D}{Remarks (a)}
+The idea of the construction in 455A
+is that $\family{t}{T}{X_t}$ is a family of random
+variables, and that we start from the assurance that `history is
+irrelevant';  if, at time $b$, we wish to make guesses about the
+behaviour of $X_t$, the state of the system at a future time $t$, then
+we expect that it will be useful to look at the current state $X_b$, but
+once we know the value
+of $X_b$ then any further information about $X_s$ for $s<b$ will
+tell us nothing more about $X_t$.   We are given the {\bf transitional
+probabilities}
+$\nu_x^{(s,t)}$, which can be thought of as the conditional
+distributions
+of $X_t$ given that $X_s=x$.   The condition ($\dagger$) of 455A
+is plainly
+necessary if the system is going to make sense at all;  the content of
+the theorem is that it is also sufficient, at least when all the
+conditional expectations are perfect measures, to ensure
+that the system as a whole can indeed be represented as a family of
+random variables, in Kolmogorov's sense, on a suitable probability
+space.
+
+\spheader 455Db The statement
+`$\family{\omega}{\Omega}{\mu_{\omega,\tau(\omega)}}$
+is a disintegration of $\mu$ over itself' in 455Ca
+is not obviously a target worth
+working very hard for.   But the point of this particular family is that
+not only does $\mu_{\omega,\tau(\omega)}$ follow $\omega$ up to
+and including time $\tau(\omega)$ (455B(b-ii)), but also
+$\mu_{\omega,\tau(\omega)}=\mu_{\omega',\tau(\omega')}$ whenever
+$\omega'\restr[t^*,\tau(\omega)]=\omega\restr[t^*,\tau(\omega)]$, as noted
+in (b-iii) of the proof of 455B.
+
+If we take $\tau$ in 455C to be constant, with value $b\in T$, then we get
+a precise description of what it means for `history to be irrelevant'.
+In this case, we can take the measures $\mu_{\omega b}$, and
+project them
+onto $\prod_{t\ge b}\Omega_t$;  let
+$\lambda^{(\omega)}_{\coint{b,\infty}}$
+be the image measure.   Then it is easy to check that
+$\lambda^{(\omega)}_{\coint{b,\infty}}$ is the measure defined from the
+point $\omega(b)$ and the family
+$\langle\nu^{(s,t)}_x\rangle_{b\le s<t,x\in\Omega_s}$ by the method of
+455A;  so that
+$\lambda^{(\omega)}_{\coint{b,\infty}}
+=\lambda^{(\omega')}_{\coint{b,\infty}}$ whenever $\omega(b)=\omega'(b)$.
+
+\spheader 455Dc I have called 455C a `theorem', and there are certainly
+enough ideas in it to warrant the title.   But the restriction to stopping
+times taking only countably many values means that we are a large step away
+from a result which is really useful in continuous time.
+The calculations with sets
+$\{\omega:\tau(\omega)=b\}$ in the proofs of 455C and 455E
+are a clear sign that we are not yet
+ready for continuous stopping times, in which
+$\{\omega:\tau(\omega)=b\}$ will usually be negligible for every $b$,
+except perhaps $b=\infty$.   Of course we can
+use 455C with $T=\Bbb N$;  but it must be obvious that there are better
+and cleaner expressions of the result in this case.   In the work below,
+455C is going to function as a lemma, the first stage in much stronger
+results (starting with 455O)
+which depend on special properties of the measures $\nu^{(s,t)}_x$.
+
+\spheader 455Dd In the context of 455A, it seemed to involve
+fewer explanations to take a fixed $\sigma$-algebra $\Tau_t$ for each $t$
+and to define $\mu$ on
+$\Tensorhat_{t\in T}\Tau_t$.   As you know, I ordinarily have a strong
+prejudice in favour of completing measures.   In the situations most
+important to us,
+this is perfectly straightforward, if a touch laborious;  I present a
+version in the next theorem.
+}%end of comment
+
+\vleader{72pt}{455E}{Theorem} Let $T$ be a totally ordered set with least
+element $t^*$.   Let $\family{t}{T}{\Omega_t}$ be a family of Hausdorff
+spaces;  suppose that we are given an $x^*\in\Omega_{t^*}$
+and, for each
+pair $s<t$ in $T$, a family $\family{x}{\Omega_s}{\nu^{(s,t)}_x}$ of
+Radon probability measures on $\Omega_t$ such that
+
+\inset{$\family{y}{\Omega_s}{\nu_y^{(t,u)}}$ is a disintegration of
+$\nu_x^{(s,u)}$ over $\nu_x^{(s,t)}$
+whenever $s<t<u$ in $T$ and $x\in\Omega_s$.}
+
+\noindent Write $\Omega=\prod_{t\in T}\Omega_t$;
+for $t\in T$ let
+$\Cal B(\Omega_t)$ be the Borel $\sigma$-algebra of $\Omega_t$, and
+$X_t:\Omega\to\Omega_t$ the canonical map;
+for $J\subseteq T$ write $\pi_J$ for the canonical map from
+$\Omega$ onto $\prod_{t\in J}\Omega_t$.   For $t\in T$ and $x\in\Omega_t$
+let $\delta^{(t)}_x$ be the Dirac measure on $\Omega_t$ concentrated at
+$x$.
+
+(a) There is a unique complete probability measure
+$\hat\mu$ on $\Omega$, inner regular with respect to
+$\Tensorhat_{t\in T}\Cal B(\Omega_t)$,
+such that, writing $\hat\lambda_J$ for the image measure
+$\hat\mu\pi_J^{-1}$,
+
+$$\eqalign{\int fd\hat\lambda_J
+&=\int f(\omega(t^*),\omega(t_1),\ldots,\omega(t_n))\hat\mu(d\omega)\cr
+&=\int\ldots\iint f(x^*,x_1,\ldots,x_n)
+   \nu_{x_{n-1}}^{(t_{n-1},t_n)}(dx_n)\cr
+&\qquad\qquad\qquad\qquad
+  \nu_{x_{n-2}}^{(t_{n-2},t_{n-1})}(dx_{n-1})
+  \ldots\nu_{x^*}^{(t^*,t_1)}(dx_1)\cr}$$
+
+\noindent
+whenever $t^*<t_1<\ldots< t_n$ in $T$, $J=\{t^*,t_1,\ldots,t_n\}$ and
+$f$ is $\hat\lambda_J$-integrable.
+In particular, the image measure $\hat\mu X_t^{-1}$ is equal
+to $\nu_{x^*}^{(t^*,t)}$ if $t>t^*$, and to $\delta^{(t^*)}_{x^*}$ if
+$t=t^*$.
+
+(b)(i) For $\omega\in\Omega$ and $a\in T\cup\{\infty\}$ define
+$\langle\nu^{(s,t)}_{\omega ax}\rangle_{s<t,x\in\Omega_s}$
+by setting
+
+$$\eqalign{\nu^{(s,t)}_{\omega ax}
+&=\nu_x^{(s,t)}\text{ if }a<s,\cr
+&=\nu_{\omega(a)}^{(a,t)}\text{ if }s\le a<t,\cr
+&=\delta^{(t)}_{\omega(t)}\text{ if }t\le a.\cr}$$
+
+\noindent The family
+$\langle\nu^{(s,t)}_{\omega ax}\rangle_{s<t,x\in\Omega_s}$,
+together with the point $\omega(t^*)\in\Omega_{t^*}$,
+satisfy the conditions of (a), so can
+be used to define a complete measure $\hat\mu_{\omega a}$ on $\Omega$.
+
+\quad(ii) If $\omega\in\Omega$ and $D\subseteq T\cap[t^*,a]$
+is countable, then
+$\hat\mu_{\omega a}\{\omega':\omega'\restr D=\omega\restr D\}=1$.
+
+\quad(iii) If $\omega$, $\omega'\in\Omega$ and
+$\omega'\restr[t^*,a]=\omega\restr[t^*,a]$, then
+$\hat\mu_{\omega' a}=\hat\mu_{\omega a}$.
+
+(c) Let $\Sigma$ be the domain of $\hat\mu$.
+Suppose that $\tau:\Omega\to T\cup\{\infty\}$ is a
+function taking countably many
+values and such that $\{\omega:\tau(\omega)\le t\}$ belongs to
+$\Sigma$ and is determined by
+coordinates in $[t^*,t]$ for every $t\in T$.
+
+\quad(i) $\family{\omega}{\Omega}{\hat\mu_{\omega,\tau(\omega)}}$
+is a disintegration of $\hat\mu$ over itself.
+
+\quad(ii) Let $\Sigma_{\tau}$ be the set
+
+\Centerline{$\{E:E\in\Sigma$,
+$E\cap\{\omega:\tau(\omega)\le t\}$ is determined by
+coordinates in $[t^*,t]$ for every $t\in T\}$.}
+
+\noindent Then $\Sigma_{\tau}$ is a $\sigma$-subalgebra of
+$\Sigma$.   If
+$f$ is any $\hat\mu$-integrable real-valued function, and we set
+$g_f(\omega)=\int fd\hat\mu_{\omega,\tau(\omega)}$ when this is defined
+in $\Bbb R$, then $g_f$ is a
+conditional expectation of $f$ on $\Sigma_{\tau}$.
+
+\proof{ My aim is to apply 455A-455C %455A 455B 455C
+to the Borel measures
+$\grave\nu_x^{(s,t)}=\nu_x^{(s,t)}\restr\Cal B(\Omega_t)$, and
+take $\hat\mu$ to be the completion of the Baire measure
+$\mu$ produced by the
+method of 455A.   The essential discipline is to check carefully that
+almost every measure $\zeta$ is
+the completion of an appropriate measure $\grave\zeta$.
+
+\medskip
+
+{\bf (a)} At the start, every Radon probability measure is the completion
+of the corresponding Borel measure, so that the
+$\nu^{(s,t)}_x$ are indeed the completions of the
+$\grave\nu^{(s,t)}_x$ defined from them.    Since completing a measure does not
+affect the associated integration (212Fb), the condition
+
+\inset{whenever $s<t<u$ in $T$, $x\in\Omega_s$ and
+$E\subseteq\Omega_u$ is a Borel
+set, then $\grave\nu_s^{(s,u)}(E)=\int\grave\nu_y^{(t,u)}(E)\grave\nu_x^{(s,t)}(dy)$}
+
+\noindent follows at once from
+
+\inset{whenever $s<t<u$ in $T$ and $x\in\Omega_s$,
+then $\family{y}{\Omega_s}{\nu_y^{(t,u)}}$ is a disintegration of
+$\nu_x^{(s,u)}$ over $\nu_x^{(s,t)}$.}
+
+\noindent Also the $\grave\nu_x^{(s,t)}$, being tight Borel measures,
+are all perfect (342L/451C).
+So we can indeed form a measure $\mu$ on
+$\Omega$ with domain $\Tensorhat_{t\in T}\Cal B(\Omega_t)$
+by the process in 455A, and complete it.
+
+The next step has a little more content in it:  I need to show that for any
+$J\subseteq T$, the image measure $\hat\mu\pi_J^{-1}$ on
+$\prod_{t\in J}\Omega_t$ is the completion of the image measure
+$\mu\pi_J^{-1}$.   But here we just have to recall that $\mu$ is perfect
+(454D), so that we can use 451Kb.   For finite $J\subseteq T$
+we can therefore write
+$\hat\lambda_J$ indifferently for the completion of
+$\lambda_J=\mu\pi_J^{-1}$ and for $\hat\mu\pi_J^{-1}$,
+and the formula for $\int fd\hat\lambda_J$ can be read off
+from 455A, since it deals only with integrals, which are unaffected by
+completions.
+
+\medskip
+
+{\bf (b)} This follows 455Bb.   This time we must start by noting that
+every $\nu^{(s,t)}_{\omega ax}$ is a Radon probability measure.
+
+\medskip
+
+\quad{\bf (i)} The formulae of part (i) of the proof of 455Bb can still be
+applied to show that
+
+\Centerline{$\int_{\Omega_t}\nu^{(t,u)}_{\omega ay}(E)
+   \nu^{(s,t)}_{\omega ax}(dy)
+=\nu_{\omega ax}^{(s,u)}(E)$}
+
+\noindent whenever $s<t<u$, $x\in\Omega_s$ and $E\in\Cal B(\Omega_u)$.
+Since any set measured by $\nu_{\omega ax}^{(s,u)}$ can be
+approximated internally and externally by Borel sets, we see that
+$\family{y}{\Omega_t}{\nu^{(t,u)}_{\omega ay}}$ is a
+disintegration of $\nu^{(s,u)}_{\omega ax}$ over
+$\nu^{(s,t)}_{\omega ax}$.   (Cf.\ 452Xg.)
+
+\medskip
+
+\quad{\bf (ii)} Similarly, the argument of part (ii) of the proof of 455Bb
+can still be used to show that whenever $\omega\in\Omega$ and
+$D\subseteq T\cap[t^*,a]$ is countable, then
+$\omega'\restr D=\omega\restr D$ for
+$\hat\mu_{\omega a}$-almost every $\omega'\in\Omega$.
+
+\medskip
+
+\quad{\bf (iii)} Once again, we can use the argument
+from 455B;  if $\omega'\restr[t^*,a]=\omega\restr[t^*,a]$, then
+$\nu^{(s,t)}_{\omega' ax}=\nu^{(s,t)}_{\omega ax}$ for all
+$x$, $s$ and $t$, and $\hat\mu_{\omega'a}=\hat\mu_{\omega a}$.
+
+\medskip
+
+{\bf (c)(i)}\grheada\
+The key step here is to observe that there is a function
+$\grave\tau:\Omega\to T\cup\{\infty\}$ which satisfies the properties
+required in 455C and is equal $\hat\mu$-almost everywhere to $\tau$.
+\Prf\
+For each $a\in T\cap\tau[\Omega]$, $F_a=\tau^{-1}[\{a\}]$ belongs to
+$\Sigma$ and is determined by coordinates in $[t^*,a]$.
+By 451K(b-ii) again, there is an
+$F'_a\in\Tensorhat_{t\in T}\Cal B(\Omega_t)$ such that
+$F'_a\subseteq F_a$, $F'_a$ is determined by coordinates in $[t^*,a]$ and
+$\hat\mu(F_a\setminus F'_a)=0$.   Define $\grave\tau$ by setting
+
+$$\eqalign{\grave\tau(\omega)
+&=a\text{ if }a\in T\cap\tau[\Omega]\text{ and }\omega\in F'_a,\cr
+&=\infty
+  \text{ if }\omega\in\Omega\setminus\bigcup_{a\in T\cap\tau[\Omega]}F'_a.
+\cr}$$
+
+\noindent It is easy to check that this $\grave\tau$ will serve.\ \Qed
+
+\medskip
+
+\qquad\grheadb\ For $\omega\in\Omega$ and $a\in T$, define
+$\langle\grave\nu^{(s,t)}_{\omega ax}
+\rangle_{s<t,x\in\Omega_t}$ and
+$\family{\omega}{\Omega}{\mu_{\omega a}}$
+from $\langle\grave\nu^{(s,t)}_x\rangle_{s<t,x\in\Omega_t}$ and
+$\grave\tau$ as in 455Bb.   If $\tau(\omega)=\grave\tau(\omega)$ then
+$\grave\nu^{(s,t)}_{\omega,\grave\tau(\omega),x}
+=\nu^{(s,t)}_{\omega,\tau(\omega),x}\restr\Cal B(\Omega_t)$
+for all $s$, $t$ and $x$, so that
+$\hat\mu_{\omega,\tau(\omega)}$ is the completion of
+$\mu_{\omega,\grave\tau(\omega)}$.
+This is true for almost all $\omega$.   Now we know from 455Ca that
+$\family{\omega}{\Omega}{\mu_{\omega,\grave\tau(\omega)}}$
+is a disintegration of $\mu$ over itself,
+and therefore also over $\hat\mu$.   It follows that
+$\family{\omega}{\Omega}{\hat\mu_{\omega,\grave\tau(\omega)}}$ is a
+disintegration of $\hat\mu$ over $\hat\mu$, by 452B(ii).   But
+$\hat\mu_{\omega,\grave\tau(\omega)}=\hat\mu_{\omega,\tau(\omega)}$ for
+$\hat\mu$-almost every
+$\omega$, so $\family{\omega}{\Omega}{\hat\mu_{\omega,\tau(\omega)}}$
+also is a disintegration of $\hat\mu$ over itself.
+
+\medskip
+
+\quad{\bf (ii)}\grheada\ Just as in part (b-i) of the proof of 455C,
+$\Sigma_{\tau}$ is a $\sigma$-algebra because it contains $\Omega$.
+
+\medskip
+
+\qquad\grheadb\ Recall the $F_a$, $F'_a$ in (i-$\alpha$) above.
+Set $F_{\infty}=\tau^{-1}[\{\infty\}]$, and take
+$F'_{\infty}\in\Tensorhat_{t\in T}\Cal B(\Omega_t)$ such that
+$F'_{\infty}\subseteq F_{\infty}$ and $F_{\infty}\setminus F'_{\infty}$ is
+negligible.   Then $F^*=\bigcup_{a\in\tau[\Omega]}F'_a$ is conegligible in
+$\Omega$.   Write $\grave\Sigma_{\grave\tau}$ for the
+set of those $F\in\Tensorhat_{t\in T}\Cal B(\Omega_t)$ such that
+$F\cap F'_a$ is determined by coordinates in $[t^*,a]$ for every
+$a\in T\cap\grave\tau[\Omega]$.   Then
+$F^*\in\grave\Sigma_{\grave\tau}\cap\Sigma_{\tau}$ because
+$F^*\cap F'_a=F^*\cap F_a=F'_a$ for every $a\in\tau[\Omega]$.
+In fact we have more.   First, $\tau\restr F^*=\grave\tau\restr F^*$.
+Next, if $F\subseteq F^*$ and $F\in\grave\Sigma_{\grave\tau}$, then
+$F\in\Sigma_{\tau}$.   \Prf\ For any $a\in T\cap\tau[\Omega]$,
+$F\cap F_a=F\cap F'_a$ belongs to
+$\Tensorhat_{t\in T}\Cal B(\Omega_t)\subseteq\Sigma$
+and is determined by coordinates in $[t^*,a]$.\ \QeD\  And thirdly, if
+$F\in\Sigma_{\tau}$, there is a
+$G\in\grave\Sigma_{\grave\tau}$ such that $G\subseteq F$ and
+$F\setminus G$ is negligible.   \Prf\ As in (iv-$\alpha$), we can find for
+each $a\in\tau[\Omega]$ a set $G_a\in\Tensorhat_{t\in T}\Cal B(\Omega_t)$,
+determined by coordinates in $T\cap[t^*,a]$, such that
+$G_a\subseteq F\cap F_a$ and
+$(F\cap F_a)\setminus G_a$ is negligible.   Set
+$G=\bigcup_{a\in\tau[\Omega]}G_a$.\ \Qed
+
+\medskip
+
+\qquad\grheadc\ Now take a $\hat\mu$-integrable function $f$.   Then it is
+$\mu$-integrable.   By 455Cb,
+$\grave g_f$ is a conditional expectation of $f$ on
+$\grave\Sigma_{\grave\tau}$, where
+
+\Centerline{$\grave g_f(\omega)
+=\int fd\mu_{\omega,\grave\tau(\omega)}
+=\int fd\hat\mu_{\omega,\grave\tau(\omega)}$}
+
+\noindent whenever the integral is defined in $\Bbb R$.
+We know that there is a $\grave\Sigma_{\grave\tau}$-measurable
+function $g':\Omega\to\Bbb R$ equal to
+$\grave g_f$ except perhaps on a negligible set $H$ belonging to
+$\grave\Sigma_{\grave\tau}$.    Replacing $g'$ by $g'\times\chi F^*$
+and $H$ by $H\cup(\Omega\setminus F^*)$ if
+necessary, we can suppose that $g'$ is zero outside $F^*$
+and that $\Omega\setminus H\subseteq F^*$.   In this case,
+$g'$ is $\Sigma_{\tau}$-measurable.   \Prf\ For any $\alpha\in\Bbb R$,
+
+$$\eqalign{\{\omega:g'(\omega)\ge\alpha\}
+&=\{\omega:\omega\in F^*,\,g'(\omega)\ge\alpha\}\cup(\Omega\setminus F^*)
+   \text{ if }\alpha\le 0,\cr
+&=\{\omega:\omega\in F^*,\,g'(\omega)\ge\alpha\}
+   \text{ if }\alpha>0,\cr}$$
+
+\noindent and in either case belongs to $\Sigma_{\tau}$, by
+($\beta$).\ \QeD\  At the same time, we note that $H\in\Sigma_{\tau}$.
+
+If $\omega\in\Omega\setminus H$, then $\omega\in F^*$,
+$\tau(\omega)=\grave\tau(\omega)$,
+$\hat\mu_{\omega,\tau(\omega)}=\hat\mu_{\omega,\grave\tau(\omega)}$ and
+
+\Centerline{$g_f(\omega)=\int fd\hat\mu_{\omega,\tau(\omega)}
+=\int fd\hat\mu_{\omega,\grave\tau(\omega)}
+=\int fd\mu_{\omega,\grave\tau(\omega)}
+=\grave g_f(\omega)=g'(\omega)$.}
+
+\noindent So $g_f$ is defined and equal to $g'$ and $\grave g_f$
+except perhaps on the
+negligible set $H$ belonging to $\Sigma_{\tau}$;  consequently $g_f$ is
+defined $(\hat\mu\restr\Sigma_{\tau})$-a.e.\ and is
+$(\hat\mu\restr\Sigma_{\tau})$-virtually measurable.
+
+If $F\in\Sigma_{\tau}$,
+there is a $G\in\grave\Sigma_{\grave\tau}$ such
+that $G\subseteq F$ and $F\setminus G$ is negligible,
+by the last remark in ($\beta$).   So
+
+$$\eqalignno{\int_Ffd\hat\mu
+&=\int_Gfd\mu
+=\int_G\grave g_fd\mu\cr
+\displaycause{because $\grave g_f$ is a conditional expectation of $f$ on
+$\grave\Sigma_{\grave\tau}$}
+&=\int_F\grave g_fd\hat\mu
+=\int_Fg_fd\hat\mu
+=\int_Fg_fd(\hat\mu\restr\Sigma_{\tau}).\cr}$$
+
+\noindent As $F$ is arbitrary, $g_f$ is a conditional expectation of
+$f$ on $\Sigma_{\tau}$, and the proof is complete.
+}%end of proof of 455E
+
+\leader{455F}{}\cmmnt{ Of course the leading example for the work above
+is the case in which $T=\coint{0,\infty}$ and $\Omega_t=\Bbb R$ for every
+$t\ge 0$.   Moving towards this, a natural intermediate stage is when
+$T=\coint{0,\infty}$ and all the $\Omega_t$ are the same, so that we can
+regard an element of $\prod_{t\in T}\Omega_t$ as the path of a moving
+point.   In this case we can begin to think about paths which are more or
+less continuous.   The next theorem gives a widely applicable condition for
+existence of many paths which are one-sidedly continuous.
+It depends on a fairly strong continuity property for the transitional
+probabilities.
+
+\medskip
+
+\noindent}{\bf Definitions (a)} Let $U$ be a Hausdorff space and
+$\langle\nu^{(s,t)}_x\rangle_{0\le s<t,x\in U}$ a family of Radon
+probability measures on $U$.   I will say that
+$\langle\nu^{(s,t)}_x\rangle_{0\le s<t,x\in U}$ is
+{\bf narrowly continuous} if
+it is continuous, as a function from $\{(s,t):0\le s<t\}\times U$
+to the set of
+Radon probability measures on $U$, when the latter is given its narrow
+topology\cmmnt{ (437Jd)}.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} I speak of the `narrow' topology here partly
+because, in the present treatise, this has become the standard topology on
+spaces of Radon measures, and partly because the phrase `vaguely
+continuous' seems inappropriate.   But, as will appear, all the results
+below will rely on the fact that the vague topology (437Jc)
+is coarser than the narrow topology.   In the present context, in which we
+have Radon measures on a completely regular Hausdorff space, the two
+topologies actually coincide (437L).   So
+$\langle\nu^{(s,t)}_x\rangle_{0\le s<t,x\in U}$ is narrowly continuous iff
+$(s,t,x)\mapsto\int fd\nu^{(s,t)}_x$ is continuous for every bounded
+continuous $f:\Omega\to\Bbb R$.}
+
+\medskip
+
+{\bf (b)} Let $(U,\rho)$ be a metric
+space, and $\langle\nu^{(s,t)}_x\rangle_{0\le s<t,x\in U}$ a family of
+Radon probability measures on $U$.   I will say that
+$\langle\nu^{(s,t)}_x\rangle_{0\le s<t,x\in U}$ is
+{\bf uniformly time-continuous on the right} if for every $\epsilon>0$
+there is a
+$\delta>0$ such that $\nu^{(s,t)}_xB(x,\epsilon)\ge 1-\epsilon$ whenever
+$x\in U$ and $0\le s<t\le s+\delta$.
+
+%slightly stronger than "Feller process", which means I think "uniformly
+%time-cts on the right on cpct sets",
+%but used only for locally compact spaces
+
+\leader{455G}{Theorem} Let $(U,\rho)$ be a complete metric
+space and $\langle\nu^{(s,t)}_x\rangle_{0\le s<t,x\in U}$ a family of
+Radon probability measures on $U$, uniformly time-continuous on the right,
+such that $\family{y}{U}{\nu_y^{(t,u)}}$ is a disintegration of
+$\nu_x^{(s,u)}$ over $\nu_x^{(s,t)}$ whenever $0\le s<t<u$ and $x\in U$.
+Take a point $\tilde\omega$ in $\Omega=U^{\coint{0,\infty}}$, and
+$a\in[0,\infty]$.   Let $\hat\mu_{\tilde\omega a}$ be the completed
+probability measure on $\Omega$ defined from
+$\langle\nu^{(s,t)}_x\rangle_{0\le s<t,x\in U}$, $\tilde\omega$ and $a$
+as in 455Eb.
+
+(a) For $\hat\mu_{\tilde\omega a}$-almost every $\omega\in\Omega$,
+$\lim_{q\in\Bbb Q,q\downarrow t}\omega(q)$ and
+$\lim_{q\in\Bbb Q,q\uparrow t}\omega(q)$ are defined in $U$ for every
+$t>a$.
+
+(b)(i) If $a\le t<\infty$, then
+$\omega(t)=\lim_{q\in\Bbb Q,q\downarrow t}\omega(q)$
+for $\hat\mu_{\tilde\omega a}$-almost every $\omega\in\Omega$.
+
+\quad(ii) If $a<t<\infty$, then
+$\omega(t)=\lim_{q\in\Bbb Q,q\uparrow t}\omega(q)$
+for $\hat\mu_{\tilde\omega a}$-almost every $\omega\in\Omega$.
+
+(c)(i) Let $\Clll$ be the set of \callal\ functions from
+$\coint{0,\infty}$ to $U$\cmmnt{ (438S)}.
+If $\tilde\omega\in\Clll$,
+$\Clll$ has full outer measure for $\hat\mu_{\tilde\omega a}$.
+
+\quad(ii) Let $\Cdlg$ be the set of \cadlag\ functions from
+$\coint{0,\infty}$ to $U$.   If $\tilde\omega\in\Cdlg$,
+$\Cdlg$ has full outer measure for $\hat\mu_{\tilde\omega a}$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} In this result and the ones
+to follow, I have not spelt
+out separately what it means if $a=0$;  but of course this is the case in
+which we are starting the process at time $t^*=0$ and value 
+$x^*=\tilde\omega(0)$,
+just as in the original construction 455A.
+}
+
+\proof{{\bf (a)} Of course we can assume in this part of the proof that $a$
+is finite.
+
+\medskip
+
+\quad{\bf (i)} Suppose that $\eta\in\ooint{0,1}$ and $\epsilon$, $\delta>0$ are
+such that $\nu^{(s,t)}_xB(x,\epsilon)\ge 1-\eta$ whenever
+$x\in U$ and $0\le s<t\le s+\delta$.   Then
+
+\Centerline{$\hat\mu_{\tilde\omega a}\{\omega:\omega\in\Omega,\,
+\diam\omega[D]\le 4\epsilon\}\ge\Bover{1-2\eta}{1-\eta}$}
+
+\noindent whenever $D\subseteq\coint{a,\infty}$ is a
+countable set of diameter at most $\delta$.
+
+\medskip
+
+\Prf\ \grheada\ For finite $D$, I seek to induce on $\#(D)$.
+If $\#(D)\le 1$ then of course
+$\diam\omega[D]\le 4\epsilon$ for every $\omega$ and we can stop.   So
+suppose that $D=\{t_0,\ldots,t_n\}$ where $n\ge 1$ and
+$a\le t_0<\ldots<t_n$.    To begin with, I go through the formulae when
+$t_0>0$.
+
+For $k\le n$ set
+
+\Centerline{$E_k=\{\omega:\rho(\omega(t_k),\omega(t_0))>2\epsilon$,
+$\rho(\omega(t_i),\omega(t_0))\le 2\epsilon$ for $i<k\}$,}
+
+\Centerline{$F_k=\{\omega:\omega\in E_k$,
+$\rho(\omega(t_n),\omega(t_k))\le\epsilon\}$,}
+
+\Centerline{$G_k=\{(x_0,\ldots,x_k):\rho(x_k,x_0)>2\epsilon$,
+$\rho(x_i,x_0)\le 2\epsilon$ for $i<k\}\subseteq U^{k+1}$.}
+
+\noindent If $1\le k<n$ then
+
+$$\eqalignno{\hat\mu_{\tilde\omega a}F_k
+&=\lambda_{\{0,t_0,\ldots,t_k,t_n\}}\{(x,x_0,\ldots,x_k,x_n):
+\rho(x_i,x_0)\le 2\epsilon\text{ for }i<k,\cr
+&\mskip300mu
+  \rho(x_0,x_k)>2\epsilon,\,\rho(x_k,x_n)\le\epsilon\}\cr
+\displaycause{defining $\lambda_J$ as the image measure of
+$\hat\mu_{\tilde\omega a}$ on $U^J$, as in
+455E}
+&=\int\ldots\int\chi G_k(x_0,\ldots,x_k)\chi B(x_k,\epsilon)(x_n)
+\nu^{(t_k,t_n)}_{\tilde\omega ax_k}(dx_n)
+\ldots\nu^{(0,t_0)}_{\tilde\omega(0)}(dx_0)\cr
+\displaycause{were $\nu^{(s,t)}_{\tilde\omega ax}$ is defined as in 455Eb}
+&=\int\ldots\int\chi G_k(x_0,\ldots,x_k)\chi B(x_k,\epsilon)(x_n)
+\nu^{(t_k,t_n)}_{x_k}(dx_n)
+\ldots\nu^{(0,t_0)}_{\tilde\omega(0)}(dx_0)\cr
+\displaycause{because $a\le t_0<\ldots<t_n$}
+&=\int\ldots\int\chi G_k(x_0,\ldots,x_k)
+\nu^{(t_k,t_n)}_{x_k}(B(x_k,\epsilon))\nu^{(t_{k-1},t_k)}_{x_{k-1}}(dx_k)
+\ldots\nu^{(0,t_0)}_{\tilde\omega(0)}(dx_0)\cr
+&\ge\int\ldots\int(1-\eta)\chi G_k(x_0,\ldots,x_k)
+\nu^{(t_{k-1},t_k)}_{x_{k-1}}(dx_k)
+\ldots\nu^{(0,t_0)}_{\tilde\omega(0)}(dx_0)\cr
+\displaycause{because $t_k<t_n\le t_k+\delta$,
+so $\nu^{(t_k,t_n)}_xB(x,\epsilon)\ge 1-\eta$ for every $x$}
+&=(1-\eta)\lambda_{\{0,t_0,\ldots,t_k\}}
+\{(x,x_0,\ldots,x_k,x_n):
+\rho(x_i,x_0)\le 2\epsilon\text{ for }i<k,\cr
+&\mskip420mu \rho(x_0,x_k)>2\epsilon\}\cr
+&=(1-\eta)\hat\mu_{\tilde\omega a} E_k.\cr}$$
+
+\noindent If $k=n$, then of course $F_k=E_k$, so again
+$\hat\mu_{\tilde\omega a} F_k\ge(1-\eta)\hat\mu_{\tilde\omega a} E_k$.
+Accordingly
+
+$$\eqalign{(1-\eta)\sum_{k=1}^n\hat\mu_{\tilde\omega a} E_k
+&\le\sum_{k=1}^n\hat\mu_{\tilde\omega a} F_k
+\le\hat\mu_{\tilde\omega a}\{\omega:\rho(\omega(t_n),\omega(t_0))>\epsilon\}\cr
+&=\lambda_{\{0,t_0,t_n\}}\{(x,x_0,x_n):\rho(x_0,x_n)>\epsilon\}\cr
+&=\int\nu^{(t_0,t_n)}_{x_0}(U\setminus B(x_0,\epsilon))
+   \nu^{(0,t_0)}_{\tilde\omega(0)}(dx_0)
+\le\eta\cr}$$
+
+\noindent because $t_n-t_0\le\delta$ so
+$\nu^{(t_0,t_n)}_x(U\setminus B(x,\epsilon))\le\eta$ for every $x$.
+
+But now we have
+
+$$\eqalign{\hat\mu_{\tilde\omega a}\{\omega:\omega\in\Omega,\,\diam\omega[D]\le 4\epsilon\}
+&\ge\hat\mu_{\tilde\omega a}\{\omega:\rho(\omega(t_k),\omega(t_0))\le 2\epsilon
+ \text{ for }1\le k\le n\}\cr
+&=\hat\mu_{\tilde\omega a}(\Omega\setminus\bigcup_{1\le k\le n}E_k)
+\ge 1-\Bover{\eta}{1-\eta}
+=\Bover{1-2\eta}{1-\eta}\cr}$$
+
+\noindent as required.
+
+\medskip
+
+\qquad\grheadb\ If $t_0=a=0$ the formulae simplify slightly, but the ideas
+are the same.   We have $\omega(0)=\tilde\omega(0)$ for
+$\hat\mu_{\tilde\omega 0}$-almost every $\omega$, so
+
+$$\eqalign{\hat\mu_{\tilde\omega 0}F_k
+&=\lambda_{0,t_1,\ldots,t_k,t_n}
+   \{(\tilde\omega(0),x_1,\ldots,x_k,x_n):
+      \rho(x_i,\tilde\omega(0))\le 2\epsilon\text{ for }i<k,\cr
+&\mskip300mu
+      \rho(\tilde\omega(0),x_k)>2\epsilon,\,\rho(x_k,x_n)\le\epsilon\}\cr
+&=\int\ldots\int\chi G_k(\tilde\omega(0),x_1,\ldots,x_k)
+   \chi B(x_k,\epsilon)(x_n)\nu^{(t_k,t_n)}_{\tilde\omega ax_k}(dx_n)
+   \ldots\nu^{(0,t_1)}_{\tilde\omega(0)}(dx_1)\cr
+&\ge(1-\eta)\int\ldots\int\chi G_k(\tilde\omega(0),x_1,\ldots,x_k)
+   \nu^{(t_{k-1},t_k)}_{\tilde\omega ax_{k-1}}(dx_k)
+   \ldots\nu^{(0,t_1)}_{\tilde\omega(0)}(dx_1)\cr
+&=(1-\eta)\hat\mu_{\tilde\omega 0}E_k\cr}$$
+
+\noindent for $1\le k<n$,
+
+$$\eqalign{(1-\eta)\sum_{k=1}^n\hat\mu_{\tilde\omega 0}E_k
+&\le\lambda_{\{0,t_n\}}\{(\tilde\omega(0),x_n):
+   \rho(\tilde\omega(0),x_n)>\epsilon\}\cr
+&=\int\nu^{(t_0,t_n)}_{\tilde\omega(0)}
+   (U\setminus B(\tilde\omega(0),\epsilon))
+\le\eta,\cr}$$
+
+\noindent and the final calculation is unchanged.
+
+\medskip
+
+\qquad\grheadc\ For countably infinite $D$, let $\sequencen{I_n}$ be a
+non-decreasing sequence of finite sets with union $D$;  then
+$\sequencen{\{\omega:\omega\in\Omega,\,\diam\omega[I_n]\le 4\epsilon\}}$
+is a non-increasing sequence with intersection
+$\{\omega:\omega\in\Omega,\,\diam\omega[D]\le 4\epsilon\}$, so the measure
+of the limit is the limit of the measures, and is at most
+$\Bover{1-2\eta}{1-\eta}$.\ \Qed
+
+\wheader{455G}{4}{2}{2}{36pt}
+
+\quad{\bf (ii)}
+For $m\in\Bbb N$, $\epsilon>0$ and $A\subseteq\coint{0,\infty}$
+let $G(A,\epsilon,m)$ be
+
+$$\eqalign{\{\omega:\omega\in\Omega,
+  \text{ there are }&s_0<s'_0\le s_1<s'_1\le\ldots\le s_m\le s'_m
+\text{ in }A\cr
+&\text{ such that }\rho(\omega(s'_i),\omega(s_i))>4\epsilon
+\text{ for every }i\le m\}.\cr}$$
+
+\noindent Let $\delta>0$ be such that
+$\nu_x^{(s,t)}B(x,\epsilon)\ge\bover45$
+whenever $x\in U$ and $s<t\le s+\delta$.
+Then $\hat\mu_{\tilde\omega a} G(D,\epsilon,m)\le 2^{-m}$
+whenever $m\in\Bbb N$ and
+$D\subseteq\coint{a,\infty}$ is a countable
+set of diameter at most $\delta$.
+
+\medskip
+
+\Prf\ \grheada\ As in (i), first consider finite $D$.
+For these, we can induce on $m$.   If $m=0$ then
+$G(D,\epsilon,0)=\{\omega:\diam\omega[D]>4\epsilon\}$ so
+(i), with $\eta=\bover15$, tells us that
+$\hat\mu_{\tilde\omega a}G(D,\epsilon,0)\le\Bover{2\eta}{1-\eta}
+=\Bover12$.   For the
+inductive step to $m+1$, define $\tau:\Omega\to[0,\infty]$ by setting
+
+$$\eqalign{\tau(\omega)
+&=\min\{t:t\in D,\,\omega\in G(D\cap[a,t],\epsilon,m)\}
+\text{ if }\omega\in G(D,\epsilon,m),\cr
+&=\infty\text{ otherwise}.\cr}$$
+
+\noindent Then $\tau$ takes only finitely many values, all strictly
+greater than $a$, and $\{\omega:\tau(\omega)=t\}$ belongs to
+$\Tensorhat_{\coint{0,\infty}}\Cal B(U)
+=\Tensorhat_{t\in\coint{0,\infty}}\Cal B(U)$
+and is determined by coordinates in $[0,t]$ for every $t\ge 0$.
+We can therefore apply 455E(b)-(c).
+
+For each $\omega\in\Omega$, define
+$\langle\nu^{(s,t)}_{\omega,\tau(\omega),x}\rangle_{s<t,x\in U}$
+from $\langle\nu^{(s,t)}_x\rangle_{s<t,x\in U}$ as in 455Eb;  let
+$\langle\tilde\nu^{(s,t)}_{\omega,\tau(\omega),x}\rangle_{s<t,x\in U}$
+be the family defined in the same way from
+$\langle\nu^{(s,t)}_{\tilde\omega ax}\rangle_{s<t,x\in U}$.
+Let $\hat\mu_{\omega,\tau(\omega)}$ be defined from
+$\omega(0)$ and
+$\langle\nu^{(s,t)}_{\omega,\tau(\omega),x}\rangle_{s<t,x\in U}$,
+and $\hat\mu'_{\omega,\tau(\omega)}$ from
+$\omega(0)$ and
+$\langle\tilde\nu^{(s,t)}_{\omega,\tau(\omega),x}\rangle_{s<t,x\in U}$,
+again as in 455Eb.   Then 455E(c-i) tells us that
+$\family{\omega}{\Omega}{\hat\mu'_{\omega,\tau(\omega)}}$ is a
+disintegration of $\hat\mu_{\tilde\omega a}$ over itself.   But now
+observe that, for any $\omega\in\Omega$ and $x\in U$,
+
+$$\eqalignno{\nu^{(s,t)}_{\omega,\tau(\omega),x}
+&=\nu^{(s,t)}_x=\nu^{(s,t)}_{\tilde\omega ax}
+   =\tilde\nu^{(s,t)}_{\omega,\tau(\omega),x}
+   \text{ if }\tau(\omega)<s<t,\cr
+\displaycause{because $a<\tau(\omega)$}
+&=\nu^{(\tau(\omega),t)}_{\omega(\tau(\omega))}
+  =\nu^{(\tau(\omega),t)}_{\tilde\omega,a,\omega(\tau(\omega))}
+  =\tilde\nu^{(s,t)}_{\omega,\tau(\omega),x}
+  \text{ if }s\le\tau(\omega)<t,\cr
+&=\delta^{(t)}_{\omega(t)}
+   =\tilde\nu^{(s,t)}_{\omega,\tau(\omega),x}
+  \text{ if }s<t\le\tau(\omega),\cr}$$
+
+\noindent so
+$\hat\mu_{\omega,\tau(\omega)}=\hat\mu'_{\omega,\tau(\omega)}$.
+Accordingly
+$\family{\omega}{\Omega}{\hat\mu_{\omega,\tau(\omega)}}$ is a
+disintegration of $\hat\mu_{\tilde\omega a}$ over itself.
+
+Now, for $\omega\in\Omega$, consider
+
+\Centerline{$H_{\omega}=\{\omega':\omega'\in G(D,\epsilon,m+1)$,
+  $\omega'\restr D\cap[0,\tau(\omega)]
+  =\omega\restr D\cap[0,\tau(\omega)]\}$.}
+
+\noindent If $\omega\notin G(D,\epsilon,m)$ then $\tau(\omega)=\infty$
+and $H_{\omega}=\emptyset$, because
+$G(D,\epsilon,m+1)\subseteq G(D,\epsilon,m)$ are determined by coordinates
+in $D$.   If
+$\omega\in G(D,\epsilon,m)$ and $\tau(\omega)=b$, then
+
+\Centerline{$H_{\omega}
+=\{\omega':\omega'\restr D\cap[0,b]=\omega\restr D\cap[0,b]
+  \text{ and }\diam(\omega'[D\cap\coint{b,\infty}\,])>4\epsilon\}$,}
+
+\noindent so that $\hat\mu_{\omega,\tau(\omega)}H_{\omega}\le\bover12$ by
+(i), again with $\eta=\bover15$.
+
+So
+
+$$\eqalignno{\hat\mu_{\tilde\omega a} G(D,\epsilon,m+1)
+&=\int\hat\mu_{\omega,\tau(\omega)}G(D,\epsilon,m+1)
+   \hat\mu_{\tilde\omega a}(d\omega)
+=\int\hat\mu_{\omega,\tau(\omega)}H_{\omega}
+   \hat\mu_{\tilde\omega a}(d\omega)\cr
+\displaycause{using 455E(b-ii)}
+&=\int_{G(D,\epsilon,m)}\hat\mu_{\omega,\tau(\omega)}H_{\omega}
+   \hat\mu_{\tilde\omega a}(d\omega)
+\le\Bover12\hat\mu_{\tilde\omega a}G(D,\epsilon,m)
+\le 2^{-m-1}\cr}$$
+
+\noindent by the inductive hypothesis.   Thus the induction proceeds.
+
+\medskip
+
+\qquad\grheadb\ Now, for countably infinite $D$, again express $D$ as the
+union of a non-decreasing sequence $\sequencen{I_n}$ of finite sets, and
+observe that $\sequencen{G(I_n,\epsilon,m)}$ is a non-decreasing sequence
+with union $G(D,\epsilon,m)$;  so
+
+\Centerline{$\hat\mu_{\tilde\omega a} G(D,\epsilon,m)
+=\lim_{n\to\infty}\hat\mu_{\tilde\omega a} G(I_n,\epsilon,m)\le 2^{-m}$}
+
+\noindent for every $m\in\Bbb N$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} For $n\in\Bbb N$, let $\delta_n>0$ be such that
+$\nu_x^{(s,t)}B(x,2^{-n})\ge\bover45$ whenever $x\in U$ and
+$s<t\le s+\delta_n$.   Consider the set
+
+\Centerline{$E=\bigcup_{n,k\in\Bbb N}\bigcap_{m\in\Bbb N}
+G(\Bbb Q\cap[a+k\delta_n,a+(k+1)\delta_n],2^{-n+2},m)$.}
+
+\noindent Then $\hat\mu_{\tilde\omega a}E=0$.   Suppose that
+$\omega\in\Omega\setminus E$ and $t>a$.
+\Quer\ If $\lim_{q\in\Bbb Q,q\uparrow t}\omega(q)$ is undefined,
+then (because $U$ is
+complete under $\rho$) there must be an $n\in\Bbb N$ and a strictly
+increasing sequence $\sequence{i}{q_i}$ in $\Bbb Q$, with supremum
+$t$, such that $\rho(\omega(q_{i+1}),\omega(q_i))\ge 2^{-n+2}$ for every
+$i\in\Bbb N$.   Let $k\in\Bbb N$ be such
+that $t\in\ocint{a+k\delta_n,a+(k+1)\delta_n}$;  let $l\in\Bbb N$ be such
+that $q_l\ge a+k\delta_n$.   Then, for every $m\in\Bbb N$,
+$(q_l,q_{l+1},q_{l+1},q_{l+2},\ldots,q_{m-1},q_m)$ witnesses that
+$\omega\in G(\Bbb Q\cap[a+k\delta_n,a+(k+1)\delta_n],2^{-n+2},m)$;
+which is
+impossible.\ \BanG\   So $\lim_{q\in\Bbb Q,q\uparrow t}\omega(q)$ is
+defined;  similarly, $\lim_{q\in\Bbb Q,q\downarrow t}\omega(q)$ is defined.
+
+As $E$ is $\hat\mu_{\tilde\omega a}$-negligible, this proves (a).
+
+\medskip
+
+{\bf (b)(i)} This is actually easier.
+Consider part (a-i) of the proof above.   Given $n\in\Bbb N$, we
+see that there is a $\delta_n>0$ such that
+$\hat\mu_{\tilde\omega a}\{\omega:\diam\omega[D]\le 2^{-n}\}
+\ge 1-2^{-n}$ whenever $D\subseteq\coint{a,\infty}$ is a countable set of
+diameter at most $\delta_n$.   Set
+
+\Centerline{$D_n=\{t\}\cup(\Bbb Q\cap[t,t+\delta_n])$,
+\quad$E_n=\{\omega:\diam\omega[D_n]\le 2^{-n}\}$}
+
+\noindent for each $n\in\Bbb N$, and
+$E=\bigcup_{n\in\Bbb N}\bigcap_{m\ge n}E_m$.   Then
+$\hat\mu_{\tilde\omega a}E=1$, and for $\omega\in E$ we have an
+$n\in\Bbb N$ such that
+$\rho(\omega(t),\omega(q))\le 2^{-m}$ whenever $m\ge n$ and
+$q\in\Bbb Q\cap[t,t+\delta_m]$, so that
+$\omega(t)=\lim_{q\in\Bbb Q,q\downarrow t}\omega(q)$.
+
+\medskip
+
+\quad{\bf (ii)} If $t>a$, the same argument applies on the other side of
+$t$, taking $D_n=\{t\}\cup(\Bbb Q\cap[\max(a,t-\delta_n),t])$, to see that
+$\omega(t)=\lim_{q\in\Bbb Q,q\uparrow t}\omega(q)$ for
+$\hat\mu_{\tilde\omega a}$-almost every $\omega$.
+
+\medskip
+
+{\bf (c)}\grheada\ Suppose that $E\subseteq\Omega$ and
+$\hat\mu_{\tilde\omega a}E>0$.   Then there is an $\omega^*\in E$ such that
+
+\Centerline{$\omega^*(t)=\tilde\omega(t)$ for every $t\le a$,}
+
+\Centerline{$\omega^*(t)=\lim_{s\downarrow t}\omega^*(s)$ for every
+$t\ge a$,}
+
+\Centerline{$\lim_{s\uparrow t}\omega^*(t)$ is defined for every $t>a$.}
+
+\noindent\Prf\ Let $E'\in\Tensorhat_{\coint{0,\infty}}\Cal B(U)$ be such
+that $E'\subseteq E$ and $\hat\mu_{\tilde\omega a}E'>0$.   Let
+$D\subseteq\coint{0,\infty}$ be a countable set such that $E'$ is
+determined by coordinates in $D$;  we can suppose that $a\in D$ if $a$ is
+finite.   Let $F$ be the set of those $\omega\in\Omega$ such that
+
+\Centerline{$\lim_{q\in\Bbb Q,q\downarrow t}\omega(q)$ and
+$\lim_{q\in\Bbb Q,q\uparrow t}\omega(q)$ are defined in $U$ for every
+$t>a$,}
+
+\Centerline{$\omega(t)=\lim_{q\in\Bbb Q,q\downarrow t}\omega(t)$
+for every $t\in D\cap\coint{a,\infty}$,}
+
+\Centerline{$\omega(t)=\tilde\omega(t)$ for every
+$t\in D\cap[0,a]$.}
+
+\noindent Then (a) and (b), with 455E(b-ii), tell us that $F$ is
+$\hat\mu_{\tilde\omega a}$-conegligible.   So there is an
+$\omega\in E\cap F$.    Define $\omega^*\in\Omega$ by setting
+
+$$\eqalign{\omega^*(t)&=\tilde\omega(t)\text{ if }t\le a,\cr
+&=\lim_{q\in\Bbb Q,q\downarrow t}\omega(t)\text{ if }t\ge a;\cr}$$
+
+\noindent note that the definitions of $\omega^*(a)$ are consistent if $a$
+is finite, and that $\omega^*\restr D=\omega\restr D$, so that
+$\omega^*\in E'\subseteq E$.
+
+If $t\le a$, then of course $\omega^*(t)=\tilde\omega(t)$.   If $t\ge a$
+and $\epsilon>0$, there is a $\delta>0$ such that
+$\rho(\omega(q),\omega^*(t))\le\epsilon$ whenever
+$q\in\Bbb Q\cap\ocint{t,t+\delta}$;  in which case
+$\rho(\omega^*(s),\omega^*(t))\le\epsilon$ whenever
+$s\in\coint{t,t+\delta}$;  as $\epsilon$ is arbitrary,
+$\omega^*(t)=\lim_{s\downarrow t}\omega^*(s)$.
+If $t>a$ and $\epsilon>0$, there is a $\delta>0$ such that
+$\rho(\omega(q),\omega(q'))\le\epsilon$ whenever
+$q\in\Bbb Q\cap\coint{t-\delta,t}$;  in which case
+$\rho(\omega^*(s),\omega^*(s'))\le\epsilon$ whenever
+$s\in\coint{t-\delta,t}$;  as $\epsilon$ is arbitrary and $U$ is complete,
+$\lim_{s\uparrow t}\omega^*(s)$ is defined in $U$.   So we have an
+appropriate $\omega^*$.\ \Qed
+
+\medskip
+
+\quad\grheadb\ Suppose, in ($\alpha$), that $\tilde\omega\in\Clll$.
+Then $\omega^*\in\Clll$.   \Prf\
+
+\Centerline{$\lim_{s\uparrow t}\omega^*(s)
+=\lim_{s\uparrow t}\tilde\omega(s)$ is defined whenever $0<t\le a$,}
+
+\Centerline{$\lim_{s\downarrow t}\omega^*(s)
+=\lim_{s\downarrow t}\tilde\omega(s)$ is defined whenever $0\le t<a$,}
+
+\Centerline{if $a>0$,
+$\lim_{s\downarrow 0}\omega^*(s)
+=\lim_{s\downarrow 0}\tilde\omega(s)=\tilde\omega(0)=\omega^*(0)$,}
+
+\inset{\noindent
+if $0<t<a$, then $\omega^*(t)=\tilde\omega(t)$ is equal to at least one of
+$\lim_{s\uparrow t}\omega^*(s)=\lim_{s\uparrow t}\tilde\omega(s)$,
+$\lim_{s\downarrow t}\omega^*(s)=\lim_{s\downarrow t}\tilde\omega(s)$.}
+
+\noindent Since we already know that
+
+\Centerline{$\omega^*(t)=\lim_{s\downarrow t}\omega^*(s)$ for every
+$t\ge a$,}
+
+\Centerline{$\lim_{s\uparrow t}\omega^*(t)$ is defined for every $t>a$,}
+
+\noindent $\omega^*$ is \callal.\ \Qed
+
+As $E$ is arbitrary,
+it follows that if $\tilde\omega\in\Clll$ then $\Clll$ meets every
+non-negligible
+$\hat\mu_{\tilde\omega a}$-measurable set, so that
+$\hat\mu_{\tilde\omega a}^*\Clll=1$, as required by (i).
+
+\medskip
+
+\quad\grheadc\ Similarly, if $\tilde\omega\in\Cdlg$, then any $\omega^*$
+with the properties described in ($\alpha$) also belongs to $\Cdlg$.
+\Prf\ This time, we have
+
+\Centerline{if $0\le t<a$, then $\omega^*(t)=\tilde\omega(t)
+=\lim_{s\downarrow t}\omega^*(s)=\lim_{s\downarrow t}\tilde\omega(s)$,}
+
+\noindent which with the other properties listed is enough to ensure that
+$\omega^*\in\Cdlg$.\ \QeD\  Since $E$ is arbitrary,
+$\hat\mu_{\tilde\omega a}^*\Cdlg=1$.
+
+This completes the proof of part (c).
+}%end of proof of 455G
+
+\leader{455H}{Corollary} Let $(U,\rho)$ be a complete metric
+space and $\langle\nu^{(s,t)}_x\rangle_{0\le s<t,x\in U}$ a family of
+Radon probability measures on $U$, uniformly time-continuous on the right,
+such that $\family{y}{U}{\nu_y^{(t,u)}}$ is a disintegration of
+$\nu_x^{(s,u)}$ over $\nu_x^{(s,t)}$
+whenever $0\le s<t<u$ and $x\in U$.   Let $\Clll(U)$ be the set of
+\callal\ functions from
+$\coint{0,\infty}$ to $U$.   Suppose that $\tilde\omega\in\Clll(U)$, and
+$a\in[0,\infty]$;  let $\hat\mu_{\tilde\omega a}$ be the completed
+probability measure on
+$\Omega=U^{\coint{0,\infty}}$ defined from
+$\tilde\omega$, $a$ and $\langle\nu^{(s,t)}_x\rangle_{0\le s<t,x\in U}$ as in
+455Eb.   Then $\hat\mu_{\tilde\omega a}$ has a unique
+extension to a Radon measure $\tilde\mu_{\tilde\omega a}$ on $\Omega$, and
+$\tilde\mu_{\tilde\omega a}\Clll(U)=1$.
+
+\proof{{\bf (a)} In the language of 455E(b-i),
+$\nu^{(0,t)}_{\tilde\omega ax}$ is a Radon measure
+whenever $t>0$ and $x\in U$, so
+the image measure defined from $\hat\mu_{\tilde\omega a}$ and the map
+$\omega\mapsto\omega(t)$ is always a Radon measure on $U$, and there
+there is a $\sigma$-compact set $H_t\subseteq U$
+such that $\omega(t)\in H_t$ for
+$\hat\mu_{\tilde\omega a}$-almost every $\omega$.
+Set $U_0=\overline{\bigcup_{q\in\Bbb Q\cap\coint{0,\infty}}H_q}$;
+then $U_0$ is separable and $\hat\mu_{\tilde\omega a}E=1$, where
+$E=\{\omega:\omega(q)\in U_0$ for every $q\in\Bbb Q\cap\coint{0,\infty}\}$.
+By 455G(c-i), $E\cap\Clll(U)$ has full outer measure;
+and if $\omega\in E\cap\Clll(U)$, then
+$\omega(t)\in U_0$ for every $t\ge 0$.
+
+\medskip
+
+{\bf (b)}
+Thus $E\cap\Clll(U)$ is included in $\Clll(U_0)$, the set of \callal\
+functions from $\coint{0,\infty}$ to the Polish space $U_0$.
+So $\hat\mu_{\tilde\omega a}^*\Clll(U_0)=1$.
+Let $\hat\mu_C$ be the subspace probability measure on $\Clll(U_0)$.
+
+Since $\hat\mu_{\tilde\omega a}$ is inner regular with respect to
+$\Tensorhat_{\coint{0,\infty}}\Cal B(U)$,
+$\hat\mu_C$ is inner regular with respect to the $\sigma$-algebra
+$\Sigma=\{E\cap\Clll(U_0):E\in\Tensorhat_{\coint{0,\infty}}\Cal B(U)\}$
+(412Ob).   But $\Sigma$ is just the $\sigma$-algebra generated by the maps
+$\omega\mapsto\omega(t):\Clll(U_0)\to U_0$ for $t\ge 0$, which is the Baire
+$\sigma$-algebra of $\Clll(U_0)$ (4A3Nd).  Accordingly
+$\hat\mu_C\restr\Sigma$ is a Baire measure and is inner regular with
+respect to the closed sets (412D);  it follows that its completion
+$\hat\mu_C$ is inner regular with respect to the closed sets
+(412Ab).
+
+At this point, recall that $\Clll(U_0)$ is K-analytic (438Sc).
+So $\hat\mu_C$ has an extension to a Radon measure $\tilde\mu_C$
+on $\Clll(U_0)$ (432D).   Now $\tilde\mu_C$ has an extension to a Radon
+probability measure $\tilde\mu_{\tilde\omega a}$ on $\Omega$ such that
+$\tilde\mu_{\tilde\omega a}\Clll(U)=\tilde\mu_{\tilde\omega a}\Clll(U_0)=1$.
+And if $\hat\mu_{\tilde\omega a}$ measures $E$, then
+
+\Centerline{$\tilde\mu_{\tilde\omega a} E
+=\tilde\mu_C(E\cap\Clll(U_0))
+=\hat\mu_C(E\cap\Clll(U_0))
+=\hat\mu_{\tilde\omega a}^*(E\cap\Clll(U_0))
+=\hat\mu_{\tilde\omega a}E$,}
+
+\noindent so $\tilde\mu_{\tilde\omega a}$ extends
+$\hat\mu_{\tilde\omega a}$.
+
+\medskip
+
+{\bf (c)} As for uniqueness, observe that
+$\dom\hat\mu_{\tilde\omega a}$ includes a base for the topology
+of $\Omega$, so by 415H there can be at most one Radon measure extending
+$\hat\mu_{\tilde\omega a}$.
+}%end of proof of 455H
+
+\leader{455I}{}\cmmnt{ In fact we can go farther;  the Radon measure
+$\tilde\mu$ is much more closely related to the completed Baire measure
+it extends than one might expect.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $(U,\rho)$ be a complete
+separable metric space
+and $\langle\nu^{(s,t)}_x\rangle_{0\le s<t,x\in U}$ a family of
+Radon probability measures on $U$, uniformly time-continuous on the right,
+such that $\family{y}{U}{\nu_y^{(t,u)}}$ is a disintegration of
+$\nu_x^{(s,u)}$ over $\nu_x^{(s,t)}$ whenever $0\le s<t<u$ and $x\in U$.
+Suppose that $\tilde\omega\in\Omega$, and
+$a\in[0,\infty]$;   let $\hat\mu_{\tilde\omega a}$ be the completed
+probability measure on $\Omega=U^{\coint{0,\infty}}$ defined from
+$\langle\nu^{(s,t)}_x\rangle_{0\le s<t,x\in U}$, $\tilde\omega$ and $a$
+as in 455Eb.
+
+(a) Suppose that $0\le q_0<q_1$ and $\epsilon>0$.
+For $\omega\in\Omega$, I will say that
+$\ooint{q_0,q_1}$ is an {\bf$\epsilon$-shift interval}
+of $\omega$ with {\bf$(q_0,q_1,\epsilon)$-shift point} $t$ if
+$\rho(\omega(q_0),\omega(q_1))>2\epsilon$ and
+
+$$\eqalign{t
+&=\sup\{q:q\in\Bbb Q\cap\ooint{q_0,q_1},\,
+\rho(\omega(q),\omega(q_0))\le\epsilon\}\cr
+&=\inf\{q:q\in\Bbb Q\cap\ooint{q_0,q_1},\,
+\rho(\omega(q),\omega(q_1))\le\epsilon\}.\cr}$$
+
+\noindent Let $E$ be the set of such $\omega$.
+
+\quad(i) $E\in\CalBa(\Omega)=\Tensorhat_{\coint{0,\infty}}\Cal B(U)$.
+
+\quad(ii) The function
+$f:E\to\ooint{q_0,q_1}$ which takes each $\omega\in E$ to its
+$(q_0,q_1,\epsilon)$-shift point is $\CalBa(\Omega)$-measurable.
+
+\quad(iii) If $q_0\ge a$,
+the set $\{\omega:\omega\in E$, $f(\omega)=t\}$ is
+$\hat\mu_{\tilde\omega a}$-negligible for every $t\in\ooint{q_0,q_1}$.
+
+\quad(iv) If $q_0$, $q_1\in\Bbb Q$, $\omega\in E$, $\omega'\in\Omega$ and
+$\omega'\restr\Bbb Q=\omega\restr\Bbb Q$, then $\omega'\in E$ and
+$f(\omega')=f(\omega)$.
+
+(b) Suppose that $\langle q_i\rangle_{i\le n}$,
+$\langle q'_i\rangle_{i\le n}$, $\langle\le_i\rangle_{i\le n}$,
+$\epsilon>0$, $E\in\CalBa(\Omega)$
+and $\langle f_i\rangle_{i\le n}$ are such that, for every $i\le n$,
+
+\Centerline{$q_i$, $q'_i\in\Bbb Q$,
+\quad$q_i<q'_i$,
+\quad$\le_i$ is either $\le$ or $\ge$,}
+
+\Centerline{$\ooint{q_i,q'_i}$ is an $\epsilon$-shift interval of $\omega$
+with
+$(q_i,q'_i,\epsilon)$-shift point $f_i(\omega)$, for every $\omega\in E$,}
+
+\noindent and also
+
+\Centerline{$a\le q_0$,
+\quad$q'_i\le q_{i+1}$ for every $i<n$,}
+
+\Centerline{whenever $\omega$, $\omega'\in E$ there is an $i\le n$ such
+that $f_i(\omega')\le_if_i(\omega)$.}
+
+\noindent Then $E$ is $\hat\mu_{\tilde\omega a}$-negligible.
+
+(c) Suppose that $\langle q_i\rangle_{i\le n}$,
+$\langle q'_i\rangle_{i\le n}$, $\langle\le_i\rangle_{i\le n}$,
+$\epsilon>0$, $E\in\CalBa(\Omega)$
+and $\langle f_i\rangle_{i\le n}$ are such that, for every $i\le n$,
+
+\Centerline{$q_i$, $q'_i\in\Bbb Q$,
+\quad$q_i<q'_i$,
+\quad$\le_i$ is either $\le$ or $\ge$,}
+
+\Centerline{$\ooint{q_i,q'_i}$
+is an $\epsilon$-shift interval of $\omega$ with
+$(q_i,q'_i,\epsilon)$-shift point $f_i(\omega)$, for every $\omega\in E$,}
+
+\noindent and also
+
+\Centerline{$a\le q_0$,
+\quad$q'_i\le q_{i+1}$ for every $i<n$.}
+
+\noindent Then for $\hat\mu_{\tilde\omega a}$-almost every $\omega\in E$
+there is an $\omega'\in E$ such that $f_i(\omega')<_if_i(\omega)$ for every
+$i\le n$.
+
+\proof{{\bf (a)(i)} Note that by 4A3Na we can identify
+$\Tensorhat_{\coint{0,\infty}}\Cal B(U)$ with the Baire $\sigma$-algebra
+$\CalBa(\Omega)$ of $\Omega$.   If $s$, $t\ge 0$, then
+$\omega\mapsto(\omega(s),\omega(t)):\Omega\to U^2$ is
+$\CalBa(\Omega)$-measurable, by 418Bb;  so
+$\omega\mapsto\rho(\omega(s),\omega(t))$ is $\CalBa(\Omega)$-measurable.
+For $\omega\in\Omega$, $\omega\in E$ iff
+($\alpha$) $\rho(\omega(q_0),\omega(q_1))>2\epsilon$
+($\beta$) whenever $q$, $q'\in\Bbb Q\cap\ooint{q_0,q_1}$,
+$\rho(\omega(q),\omega(q_0))\le\epsilon$ and
+$\rho(\omega(q'),\omega(q_1))\le\epsilon$ then $q\le q'$ ($\gamma$) for
+every $n\in\Bbb N$ there are $q$, $q'\in\Bbb Q\cap\ooint{q_0,q_1}$
+such that $\rho(\omega(q),\omega(q_0))\le\epsilon$,
+$\rho(\omega(q'),\omega(q'_0))\le\epsilon$ and $q'\le q+2^{-n}$.
+So $E\in\CalBa(\Omega)$.
+
+\medskip
+
+\quad{\bf (ii)} Now, for any $t$,
+
+\Centerline{$\{\omega:\omega\in E$, $f(\omega)>t\}
+=\bigcup_{q\in\Bbb Q\cap\ooint{t,q_1}}\{\omega:\omega\in E$,
+   $\rho(\omega(q),\omega(q_0))\le\epsilon\}$}
+
+\noindent belongs to $\CalBa(\Omega)$, so $f$ is
+$\CalBa(\Omega)$-measurable.
+
+\medskip
+
+\quad{\bf (iii)} Consider the set $E'$ of those $\omega\in\Omega$ such that
+
+\Centerline{$\lim_{q\in\Bbb Q,q\uparrow t}\omega(q)
+  =\omega(t)=\lim_{q\in\Bbb Q,q\downarrow t}\omega(q)$.}
+
+\noindent If $\omega\in E\cap E'$,
+at least one of $\rho(\omega(t),\omega(q_0))$,
+$\rho(\omega(t),\omega(q_1))$ must be greater than $\epsilon$;  in the
+first case, $t$ cannot be
+$\sup\{q:q\in\Bbb Q\cap\ooint{q_0,q_1}$,
+$\rho(\omega(q),\omega(q_0))\le\epsilon\}$;
+in the second case, $t$ cannot be
+$\inf\{q:q\in\Bbb Q\cap\ooint{q_0,q_1}$,
+$\rho(\omega(q),\omega(q_1))\le\epsilon\}$;  so in either case $f(\omega)$
+cannot be equal to $t$.   Now $\hat\mu_{\tilde\omega a}E'=1$, by 455Gb, so
+$\{\omega:\omega\in E$, $f(\omega)=t\}\subseteq\Omega\setminus E'$ is
+$\hat\mu_{\tilde\omega a}$-negligible.
+
+\medskip
+
+\quad{\bf (iv)} Immediate from the definitions.
+
+\medskip
+
+{\bf (b)} Induce on $n$.   Of course we need consider only the case
+$E\ne\emptyset$.
+
+\medskip
+
+\quad{\bf (i)} If $n=0$, $f_0$ must be constant on $E$, so
+$E$ must be negligible, by (a-iii).
+
+\medskip
+
+\quad{\bf (ii)} For the inductive step to $n\ge 1$, set
+$E_t=\{\omega:\omega\in E$, $f_0(\omega)=t\}$ for
+$t\in\ooint{q_0,q'_0}$;  by (a-ii),
+$E_t\in\CalBa(\Omega)$.
+
+\medskip
+
+\qquad\grheada\ There is a countable
+set $J\subseteq\ooint{q_0,q'_0}$ such that whenever
+$t\in[q_0,q'_0]\setminus J$ and $\omega$, $\omega'\in E_t$ then
+there is an $i$ such that $1\le i\le n$ and $f_i(\omega)\le_if_i(\omega')$.
+\Prf\ Let $\Cal W$ be a countable base for the topology of
+$\prod_{1\le i\le n}\ooint{q_i,q'_i}$.   For $\omega\in E$ set
+$g(\omega)=\langle f_i(\omega)\rangle_{1\le i\le n}$;  note that
+$g:E\to\prod_{1\le i\le n}\ooint{q_i,q'_i}$ is
+$\CalBa(\Omega)$-measurable.   For $W\in\Cal W$, set
+
+\Centerline{$A_W=\{t:t\in\ooint{q_0,q'_0}$
+and there is an $\omega\in E_t$ such that $g(\omega)\in W\}$.}
+
+\noindent Set
+
+\Centerline{$J
+=\{t:t\in\ooint{q_0,q'_0}$, $t$ is either $\inf A_W$ or $\sup A_W$
+for some $W\in\Cal W\}$.}
+
+\noindent Then $J$ is a countable subset of $\ooint{q_0,q'_0}$.
+\Quer\ Suppose that $t\in\ooint{q_0,q'_0}\setminus J$ and
+$\omega$, $\omega'\in E_t$ are such that $f_i(\omega')<_if_i(\omega)$ for
+$1\le i\le n$.   Let $W\in\Cal W$ be such that
+$g(\omega')\in W$ and $z(i)<_if_i(\omega)$
+whenever $1\le i\le n$ and $z\in W$.   Then $\omega'$ witnesses that
+$t\in A_W$;  since $t$ is neither the greatest nor the least element of
+$A_W$, there is a $t'\in A_W$ such that $t'<_0t$;
+take $\omega''\in E_{t'}$ such that $g(\omega'')\in W$.   Then
+
+\Centerline{$f_0(\omega'')=t'<_0t=f_0(\omega)$,}
+
+\Centerline{$f_i(\omega'')=g(\omega'')(i)<_if_i(\omega)$
+for $1\le i\le n$,}
+
+\noindent which is impossible.\ \BanG\  Thus
+$J$ has the required property.\ \Qed
+
+\medskip
+
+\qquad\grheadb\  Now consider the family
+$\family{\omega}{\Omega}{\hat\mu_{\omega q_1}}$.   Because $q_1>a$,
+this is a disintegration of $\hat\mu_{\tilde\omega a}$ over itself.
+\Prf\ As in part (a-ii-$\alpha$) of the proof of 455G,
+we can think of each $\hat\mu_{\omega q_1}$ as defined either from
+$\langle\nu^{(s,t)}_x\rangle_{0\le s<t,x\in U}$ or from
+$\langle\nu^{(s,t)}_{\tilde\omega ax}\rangle_{a\le s<t,x\in U}$;
+and in the latter form we can apply 455E(c-i).\ \Qed
+
+Consider $\mu_{\omega q_1}(E)$ for $\omega\in\Omega$.   This time, note
+that
+$\{\omega':\omega'\restr[0,q_1]\cap\Bbb Q=\omega\restr[0,q_1]\cap\Bbb Q\}$
+is $\mu_{\omega q_1}$-conegligible.
+In particular, $\mu_{\omega q_1}(E)=0$ unless $\ooint{q_0,q'_0}$ is an
+$\epsilon$-shift interval of $\omega$.   Next,
+
+\Centerline{$\{\omega:\ooint{q_0,q'_0}$
+is an $\epsilon$-shift interval of $\omega$ with
+$(q_0,q'_0,\epsilon)$-shift point in $J\}$}
+
+\noindent is $\hat\mu_{\tilde\omega a}$-negligible, by (a-iii) again.
+Finally, suppose that
+$\omega\in\Omega$ is such that $\ooint{q_0,q'_0}$ is an $\epsilon$-shift
+interval of $\omega$ with $(q_0,q'_0,\epsilon)$-shift
+point $t\in\ooint{q_0,q'_0}\setminus J$.   Then
+
+$$\eqalign{\mu_{\omega q_1}E
+&=\mu_{\omega q_1}\{\omega':\omega'\in E,\,
+   \omega'\restr\Bbb Q\cap[0,q_1]=\omega\restr\Bbb Q\cap[0,q_1]\}\cr
+&=\mu_{\omega q_1}\{\omega':\omega'\in E_t\}.
+\cr}$$
+
+\noindent But the choice of $J$ in ($\alpha$) ensured that
+$E_t$ would be a set of the same type as $E$, one level down, determined by
+intervals starting from $q_1$,
+so that $\hat\mu_{\omega q_1}E_t=0$, by the inductive hypothesis applied
+to $\omega$ and $q_1$ in place of $\tilde\omega$ and $a$.
+
+\medskip
+
+\qquad\grheadc\ So we see that $\hat\mu_{\omega q_1}E=0$ for
+$\hat\mu_{\tilde\omega a}$-almost every
+$\omega$, and $\hat\mu_{\tilde\omega a}E=0$.   Thus the induction proceeds.
+
+\medskip
+
+{\bf (c)} Let $F$ be the set of those $\omega\in E$ for which there
+is no $\omega'\in E$ such that $f_i(\omega')<_if_i(\omega)$
+for every $i\le n$.   Then $F\in\CalBa(\Omega)$.
+\Prf\ For each $\omega\in E$ set
+$f(\omega)=\langle f_i(\omega)\rangle_{i\le n}$ and
+
+\Centerline{$W_{\omega}
+=\{z:z\in\prod_{i\le n}\ooint{q_i,q'_i}$, $f_i(\omega)<_iz(i)$
+for every $i\le n\}$,}
+
+\noindent so that $W_{\omega}$ is open in
+$\prod_{i\le n}\ooint{q_i,q'_i}$.   Set
+$W=\bigcup_{\omega\in E}W_{\omega}$.   Then $W$ is open and
+$F=\{\omega:\omega\in E$, $f(\omega)\notin W\}$ belongs to
+$\CalBa(\Omega)$.\ \Qed
+
+If $\omega$, $\omega'\in F$ then there is surely some $i\le n$ such that
+$f_i(\omega')\le_if_i(\omega)$.   By (b), $\hat\mu_{\tilde\omega a}F=0$.
+}%end of proof of 455I
+
+\leader{455J}{Theorem} Let $(U,\rho)$ be a complete separable metric space
+and $\langle\nu^{(s,t)}_x\rangle_{0\le s<t,x\in U}$ a family of
+Radon probability measures on $U$, uniformly time-continuous on the right,
+such that $\family{y}{U}{\nu_y^{(t,u)}}$ is a disintegration of
+$\nu_x^{(s,u)}$ over $\nu_x^{(s,t)}$ whenever $0\le s<t<u$ and $x\in U$.
+Write $\Clll$ for the set of \callal\ functions from
+$\coint{0,\infty}$ to $U$.
+Suppose that $\tilde\omega\in\Clll$, and
+$a\in[0,\infty]$;   let $\hat\mu_{\tilde\omega a}$ be the completed
+probability measure on $\Omega=U^{\coint{0,\infty}}$ defined from
+$\langle\nu^{(s,t)}_x\rangle_{0\le s<t,x\in U}$, $\tilde\omega$ and $a$
+as in 455Eb, and $\tilde\mu_{\tilde\omega a}$ its extension to a Radon
+measure on $\Omega$, as in 455H.   Then $\tilde\mu_{\tilde\omega a}$ is
+inner regular with
+respect to sets of the form $F\cap\Clll$ where $F\subseteq\Omega$ is a zero
+set.
+
+\proof{{\bf (a)} As in 455I, $\Tensorhat_{\coint{0,\infty}}\Cal B(U)$
+is the Baire $\sigma$-algebra of $\Omega$.
+Let $D$ be
+$((\{a\}\cup\Bbb Q)\cap\coint{0,\infty})
+\cup\{t:t\ge 0$, $\tilde\omega$ is not continuous at $t\}$;
+then $D$ is countable (438S(a-i)).   Let $E^*$ be
+$\{\omega:\omega\in\Omega$,
+$\omega\restr D\cap[0,a]=\tilde\omega\restr D\cap[0,a]\}$;  then
+$E^*$ is $\hat\mu_{\tilde\omega a}$-conegligible, by 455E(b-ii) once again.
+
+\medskip
+
+{\bf (b)} Let $\Cal G$ be a countable base for the topology of
+$U$.   Let $\Cal W$ be the family of open subsets of $\Omega$ of the form
+$\{\omega:\omega(q)\in G_q$ for every $q\in J\}$ where $J\subseteq D$
+is finite and $G_q\in\Cal G$ for every $q\in J$.
+Let $\Theta$ be the set of all strings
+
+\Centerline{$\theta=(q_0,q'_0,\ldots,q_n,q'_n,
+\le_0,\ldots,\le_n,k,W)$}
+
+\noindent such that
+
+\Centerline{$q_0,\ldots,q'_n\in\Bbb Q$,
+\quad$a\le q_0<q'_0\le q_1<q'_1\le\ldots\le q_n<q'_n$,}
+
+\Centerline{for each $i\le n$, $\le_i$ is either $\le$ or $\ge$,}
+
+\Centerline{$k\in\Bbb N$,
+\quad$W\in\Cal W$;}
+
+\noindent then $\Theta$ is countable.
+
+\medskip
+
+{\bf (c)} Let $K\subseteq E^*\cap\Clll$ be compact.
+Set $L=\pi_D^{-1}[\pi_D[K]]$,
+where $\pi_D(\omega)=\omega\restr D$ for $\omega\in\Omega$;
+then $L$ is a Baire subset of $\Omega$, because $\pi_D[K]$ is a
+compact subset of the metrizable space $U^D$.
+
+\medskip
+
+\quad{\bf (i)} For
+
+\Centerline{$\theta=(q_0,q'_0,\ldots,q_n,q'_n,
+\le_0,\ldots,\le_n,k,W)\in\Theta$}
+
+\noindent let $E_{\theta}$ be the set of those
+$\omega\in L\cap W$ such that, for each $i\le n$,
+$\ooint{q_i,q'_i}$ is a $2^{-k}$-shift interval of $\omega$
+(definition:  455Ia).   For $\omega\in E_{\theta}$ and
+$i\le n$ let $f_i(\theta,\omega)$ be the $(q_i,q'_i,2^{-k})$-shift
+point of $\omega$.   By
+455Ia, $E_{\theta}$ is a Baire subset of $\Omega$ and
+$\omega\mapsto f_i(\theta,\omega)$ is Baire measurable.   Let
+$F_{\theta}$ be the set of those $\omega\in E_{\theta}$ such that
+there is no $\omega'\in E_{\theta}$ with
+$f_i(\theta,\omega')<_if_i(\theta,\omega)$ for every $i\le n$;  by
+455Ic, $F_{\theta}$ is $\hat\mu_{\tilde\omega a}$-negligible.
+So $F^*=\bigcup_{\theta\in\Theta}F_{\theta}$ is
+$\hat\mu_{\tilde\omega a}$-negligible.
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $\omega\in K\setminus F^*$.
+Let $A$ be the set of points in $\ooint{a,\infty}$
+at which $\omega$ is discontinuous.   If $J\subseteq A$ is finite and
+$\epsilon_t\in\{-1,1\}$ for each $t\in J$,
+there is an $\omega'\in K$ such that
+$\omega'\restr D=\omega\restr D$ and
+$\omega'$ is continuous on the right
+at every point $t$ of $J$ such that $\epsilon_t=1$, while
+$\omega'$ is continuous on the left
+at every point $t$ of $J$ such that $\epsilon_t=-1$.
+\Prf\ This is trivial if
+$J$ is empty.   Otherwise, enumerate $J$ in ascending order as
+$t_0<t_1<\ldots<t_n$.   Set $x_i=\lim_{t\uparrow t_i}\omega(t)$,
+$y_i=\lim_{t\downarrow t_i}\omega(t)$;  because $\omega\in\Clll$ these are
+defined, and because $\omega$ is not continuous at $t$ they are different.
+
+Let $k\in\Bbb N$ be such that $\rho(x_i,y_i)>2^{-k+1}$ for each
+$i\le n$.   For $i\le n$, let
+let $q_i$, $q'_i\in\Bbb Q$ be such that
+$q_i<t_i<q'_i$, $\rho(\omega(t),x_i)\le 2^{-k-1}$ for
+$t\in\coint{q_i,t_i}$,
+and $\rho(\omega(t),y_i)\le 2^{-k-1}$ for $t\in\ocint{t_i,q'_i}$.
+Of course we
+can suppose that $a\le q_0$ and that $q'_i\le q_{i+1}$ for $i<n$.   Observe
+that this will ensure that every $\ooint{q_i,q'_i}$ is a
+$2^{-k}$-shift interval of $\omega$ with
+$(q_i,q'_i,2^{-k})$-shift point $t_i$.
+
+Let $\le_i$ be $\le$ if $\epsilon_{t_i}=1$, $\ge$ if $\epsilon_{t_i}=-1$.
+For each $W\in\Cal W$ containing $\omega$,
+let $\theta_W\in\Theta$ be
+$(q_0,\ldots,q'_n,\le_0,\ldots,\le_n,k,W)$.   Then
+$\omega\in E_{\theta_W}$, and $f_i(\theta_W,\omega)=t_i$ for each
+$i\le n$.   Because $\omega\notin F_{\theta_W}$, there is
+an $\omega_W\in E_{\theta_W}$ such that
+$f_i(\theta_W,\omega_W)<_if_i(\theta_W,\omega)=t_i$ for every $i\le n$.
+Let $\omega'_W\in K$ be such that $\omega'_W\restr D=\omega_W\restr D$;
+then $\omega'_W\in E_{\theta_W}$ and
+
+\Centerline{$f_i(\theta_W,\omega'_W)=f_i(\theta_W,\omega_W)
+<_it_i$}
+
+\noindent for every $i\le n$ (455I(a-iv)).
+
+If $i\le n$ and $\epsilon_{t_i}=1$,
+
+\Centerline{$\rho(\omega'_W(q),\omega'_W(q'_i))\le 2^{-k}$}
+
+\noindent for every rational $q\in\ocint{f_i(\theta_W,\omega'_W),q'_i}$;
+because $\omega'_W\in\Clll$ and
+$t_i\in\ocint{f_i(\theta_W,\omega'_W),q'_i}$
+$\rho(\omega'_W(t_i),\omega'_W(q'_i))\le 2^{-k}$.   Similarly, if
+$\epsilon_{t_i}=-1$, $\rho(\omega'_W(t_i),\omega'_W(q_i))\le 2^{-k}$.
+
+Let $\Cal F$ be an ultrafilter on $\Cal W$ containing all sets of the form
+$\{W:\omega\in W\subseteq W_0\}$ where $\omega\in W_0\in\Cal W$,
+and set $\omega'=\lim_{W\to\Cal F}\omega'_W\in K$.
+Then $\omega'\restr D=\omega\restr D$, because $\omega_W$ and $\omega'_W$
+belong to $W$ whenever $\omega\in W\in\Cal W$.
+If $i\le n$ and $\epsilon_{t_i}=1$, then
+
+\Centerline{$\rho(\omega'(t_i),\omega'(q'_i))
+=\lim_{W\to\Cal F}\rho(\omega'_W(t_i),\omega'_W(q'_i))\le 2^{-k}$,}
+
+\Centerline{$\rho(\omega'(q_i),\omega'(q'_i))
+=\rho(\omega(q_i),\omega(q'_i))>2^{-k+1}$,}
+
+\noindent so $\rho(\omega'(q_i),\omega'(t_i))>2^{-k}$.
+On the other hand,
+
+\Centerline{$\rho(\omega'(q_i),\omega'(q))=\rho(\omega(q_i),\omega(q))
+\le 2^{-k}$}
+
+\noindent for every rational $q\in\coint{q_i,t_i}$.   So $\omega'$ cannot
+be continuous on the left at $t_i$;  because $\omega'\in\Clll$, it
+must be continuous on the right at $t_i$.   Similarly, if $i\le n$ and
+$\epsilon_{t_i}=-1$, $\omega'$ cannot be continuous on the right at $t_i$
+and must be continuous on the left at $t_i$.
+But this is what we need to know.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} Suppose that $\omega\in K\setminus F^*$,
+$\omega'\in\Clll$ and $\omega\restr D=\omega'\restr D$.
+Then $\omega'\in K$.   \Prf\ Let $A$ be the set of points in
+$\ooint{a,\infty}$ where $\omega$ is
+not continuous, and for $t\in A$ let $\epsilon_t$ be $1$ if $\omega'$ is
+continuous on the right at $t$, $-1$ if $\omega'$ is continuous on the left
+at $t$.   For each finite $J\subseteq A$, (ii) tells us that there is an
+$\omega_J\in K$ such that
+$\omega_J\restr D=\omega\restr D=\omega'\restr D$ and,
+for $t\in J$, $\omega_J$ is continuous on the right at $t$ if
+$\epsilon_t=1$, and continuous on the left at $t$ if $\epsilon_t=-1$.
+As both $\omega_J$ and $\omega'$ are \callal,
+this means that $\omega_J(t)=\omega'(t)$ for $t\in J$.   Taking a
+cluster point $\omega^*\in K$ of $\omega_J$ as $J$ increases through the
+finite subsets of $A$, we see that
+$\omega^*\restr(A\cup D)=\omega'\restr(A\cup D)$.
+
+Now recall that $\omega\in E^*$, so that
+
+\Centerline{$\omega'\restr D\cap[0,a]
+=\omega\restr D\cap[0,a]=\tilde\omega\restr D\cap[0,a]$.}
+
+\noindent Since both $\omega'$ and $\tilde\omega$ are \callal,
+$\tilde\omega$ is discontinuous at any point
+of $\coint{0,a}$ at which $\omega'$ is discontinuous.   Since I arranged
+that $a$ (if finite) would be in $D$, $D\cup A$ contains every point at
+which $\omega'$ is discontinuous.   But this means that $\omega^*=\omega'$
+(438S(a-ii)).   So $\omega'\in K$.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} Suppose that $\tilde\mu_{\tilde\omega a}K>\gamma\ge 0$.
+Then there is a
+zero set $F\subseteq\Omega$ such that $F\cap\Clll\subseteq K$ and
+$\tilde\mu_{\tilde\omega a}(F\cap\Clll)\ge\gamma$.   \Prf\ Because
+$\tilde\mu_{\tilde\omega a}F^*=\hat\mu_{\tilde\omega a}F^*=0$,
+there is a compact
+$K'\subseteq K\setminus F^*$ such that
+$\tilde\mu_{\tilde\omega a}K'\ge\gamma$.
+Set $F=\pi_D^{-1}[\pi_D[K']]$;  $F$ is a zero set in $\Omega$ because
+$\pi_D[K']$ is a zero set in $U^D$.   By (iii),
+$F\cap\Clll\subseteq K$;  and
+
+\Centerline{$\tilde\mu_{\tilde\omega a}(F\cap\Clll)
+\ge\tilde\mu_{\tilde\omega a} K'\ge\gamma$.\ \Qed}
+
+\medskip
+
+{\bf (c)} Since $E^*$ and $\Clll$ are
+$\tilde\mu_{\tilde\omega a}$-conegligible, the Radon measure
+$\tilde\mu_{\tilde\omega a}$ is certainly inner regular with respect to the
+compact subsets of $E^*\cap\Clll$;   by (b-iv), $\tilde\mu_{\tilde\omega a}$
+is inner regular with respect to the
+intersections of $\Clll$ with zero sets.
+}%end of proof of 455J
+
+\leader{455K}{Corollary} Suppose, in 455J, that $\tilde\omega\in\Cdlg$,
+the space of \cadlag\ functions from $\coint{0,\infty}$ to $U$.
+Then the subspace measure $\ddot\mu_{\tilde\omega a}$
+on $\Cdlg$ induced by $\hat\mu_{\tilde\omega a}$ is a completion regular
+quasi-Radon measure.
+
+\proof{ The point is that the outer measures
+$\tilde\mu_{\tilde\omega a}^*$ and $\hat\mu^*_{\tilde\omega a}$
+agree on subsets of $\Cdlg$.   \Prf\ Since $\tilde\mu_{\tilde\omega a}$
+extends $\hat\mu_{\tilde\omega a}$,
+$\tilde\mu_{\tilde\omega a}^*A\le\hat\mu_{\tilde\omega a}^*A$
+for every $A\subseteq\Omega$.   On the other hand, if $A\subseteq\Cdlg$ and
+$\tilde\mu_{\tilde\omega a}^*A<\gamma$, there is an $E\supseteq A$ such that
+$\tilde\mu_{\tilde\omega a} E<\gamma$.   By 455J, there is a zero set
+$F\subseteq\Omega$ such that $E\cap F\cap\Clll=\emptyset$ and
+$\tilde\mu_{\tilde\omega a}(F\cap\Clll)\ge 1-\gamma$.   Now
+
+$$\eqalignno{\hat\mu_{\tilde\omega a}^*A
+&\le\hat\mu_{\tilde\omega a}^*(\Cdlg\setminus F)
+=\hat\mu_{\tilde\omega a}(\Omega\setminus F)\cr
+\displaycause{because $\hat\mu_{\tilde\omega a}^*\Cdlg=1$, by 455G(c-ii)}
+&=\tilde\mu_{\tilde\omega a}(\Omega\setminus F)
+=\tilde\mu_{\tilde\omega a}(\Clll\setminus F)
+\le\gamma.\cr}$$
+
+\noindent As $\gamma$ is arbitrary,
+$\hat\mu_{\tilde\omega a}^*A\le\tilde\mu_{\tilde\omega a}^*A$.\ \Qed
+
+Write $\ddot{\tilde\mu}_{\tilde\omega a}$
+for the subspace measure on $\Cdlg$ induced by
+$\tilde\mu_{\tilde\omega a}$.   By 214Cd, the outer measures
+$\ddot{\tilde\mu}\vthsp_{\tilde\omega a}^*
+=\tilde\mu_{\tilde\omega a}^*\restr\Cal P\Cdlg$ and
+$\ddot\mu_{\tilde\omega a}^*$ are the same.   Because
+$\ddot{\tilde\mu}_{\tilde\omega a}$ and
+$\ddot\mu_{\tilde\omega a}$ are both complete
+probability measures, they must be identical (213C).
+Because $\tilde\mu_{\tilde\omega a}$ is a Radon measure,
+$\ddot{\tilde\mu}_{\tilde\omega a}=\ddot\mu_{\tilde\omega a}$
+is quasi-Radon (415B).   Because
+$\hat\mu_{\tilde\omega a}$ is the completion of a Baire measure, therefore
+inner regular with respect to the zero sets in $\Omega$ (412D, 412Ha),
+$\ddot\mu_{\tilde\omega a}$ is inner regular
+with respect to the zero sets in $\Cdlg$, by 412Pd,
+and is completion regular.
+}%end of proof of 455K
+
+\leader{455L}{Stopping times}\cmmnt{ We need the continuous-time
+version of the concept of `stopping time' introduced in \S275.}
+Let $\Omega$ be a set, $\Sigma$ a
+$\sigma$-algebra of subsets of $\Omega$ and
+$\langle\Sigma_t\rangle_{t\ge 0}$ a non-decreasing family of
+$\sigma$-subalgebras of $\Sigma$.   (Such a family is called a
+{\bf filtration}.)  For $t\ge 0$, set
+$\Sigma^+_t=\bigcap_{s>t}\Sigma_s$, so that
+$\langle\Sigma^+_t\rangle_{t\ge 0}$ also is a non-decreasing family of
+$\sigma$-algebras.   Of course $\Sigma^+_t=\bigcap_{s>t}\Sigma^+_s$ for
+every $t\ge 0$.
+
+\spheader 455La A function
+$\tau:\Omega\to[0,\infty]$ is a {\bf stopping time adapted to
+$\langle\Sigma_t\rangle_{t\ge 0}$} if
+$\{\omega:\omega\in\Omega$, $\tau(\omega)\le t\}$ belongs to $\Sigma_t$
+for every $t\ge 0$.
+
+\cmmnt{Note that in this case }$\tau$ will be $\Sigma$-measurable.
+
+\spheader 455Lb A function $\tau:\Omega\to[0,\infty]$ is a stopping time
+adapted to $\langle\Sigma^+_t\rangle_{t\ge 0}$ iff
+$\{\omega:\tau(\omega)<t\}\in\Sigma_t$ for every $t\ge 0$.
+\prooflet{\Prf\ (i) If $\tau$ is adapted to
+$\langle\Sigma^+_t\rangle_{t\ge 0}$ and $t\ge 0$, then
+$\{\omega:\tau(\omega)\le q\}\in\Sigma^+_q\subseteq\Sigma_t$ whenever
+$0\le q<t$, so
+
+\Centerline{$\{\omega:\tau(\omega)<t\}
+=\bigcup_{q\in\Bbb Q\cap\coint{0,t}}\{\omega:\tau(\omega)\le q\}
+\in\Sigma_t$.}
+
+\noindent Thus $\tau$ satisfies the condition.   (ii) If $\tau$ satisfies
+the condition and $t\ge 0$, set $t_n=t+2^{-n}$ for each $n$.
+Then
+
+\Centerline{$\{\omega:\tau(\omega)<t_n\}
+\in\Sigma_{t_n}\subseteq\Sigma_{t_m}$}
+
+\noindent whenever $m\le n$, so
+
+\Centerline{$\{\omega:\tau(\omega)\le t\}
+=\bigcap_{n\ge m}\{\omega:\tau(\omega)<t_n\}\in\Sigma_{t_m}$}
+
+\noindent for every $m$, and
+
+\Centerline{$\{\omega:\tau(\omega)\le t\}
+\in\bigcap_{m\in\Bbb N}\Sigma_{t_m}
+=\Sigma^+_t$.}
+
+\noindent As $t$ is arbitrary, $\tau$ is adapted to
+$\langle\Sigma^+_t\rangle_{t\ge 0}$.\ \Qed}
+
+\spheader 455Lc{\bf (i)}
+Constant functions on $\Omega$ are\cmmnt{ of course} stopping
+times.
+
+\medskip
+
+\quad{\bf (ii)} If $\tau$ and $\tau'$ are stopping times adapted to
+$\langle\Sigma_t\rangle_{t\ge 0}$, so is
+$\tau+\tau'$.   \prooflet{\Prf\
+
+\Centerline{$\{\omega:\tau(\omega)+\tau'(\omega)\le t\}
+=\bigcap_{q\in\Bbb Q\cap[0,t]}
+  \{\omega:\tau(\omega)\le q\}\cup\{\omega:\tau'(\omega)\le t-q\}
+\in\Sigma_t$}
+
+\noindent for every $t\ge 0$.\ \Qed}
+
+\medskip
+
+\quad{\bf (iii)}\cmmnt{ (Compare 455Cb and 455E(c-ii)).} If $\tau$ is a
+stopping time adapted to $\langle\Sigma_t\rangle_{t\ge 0}$, then
+
+\Centerline{$\Sigma_{\tau}
+=\{E:E\in\Sigma$, $E\cap\{\omega:\tau(\omega)\le t\}\in\Sigma_t$ for every
+$t\ge 0\}$}
+
+\noindent is a $\sigma$-subalgebra of $\Sigma$.   \prooflet{(The check is
+elementary.)}
+
+\medskip
+
+\quad{\bf (iv)} If $\familyiI{\tau_i}$ is a countable
+family of stopping times adapted to $\langle\Sigma_t\rangle_{t\ge 0}$,
+then $\tau=\sup_{i\in I}\tau_i$ is adapted to
+$\langle\Sigma_t\rangle_{t\ge 0}$.   \prooflet{\Prf\ For any $t\ge 0$,
+
+\Centerline{$\{\omega:\tau(\omega)\le t\}
+=\bigcap_{i\in I}\{\omega:\tau_i(\omega)\le t\}
+\in\Sigma_t$.  \Qed}}
+
+\medskip
+
+\quad{\bf (v)} If $\familyiI{\tau_i}$ is a countable family of stopping
+times adapted to $\langle\Sigma^+_t\rangle_{t\ge 0}$,
+then $\tau=\inf_{i\in I}\tau_i$ is adapted to
+$\langle\Sigma^+_t\rangle_{t\ge 0}$\prooflet{, because
+
+\Centerline{$\{\omega:\tau(\omega)<t\}
+=\bigcup_{i\in I}\{\omega:\tau_i(\omega)<t\}\in\Sigma_t$}
+
+\noindent for every $\tau\ge 0$}.
+
+\spheader 455Ld Now suppose that $Y$ is a topological space and
+we have a family
+$\langle X_t\rangle_{t\ge 0}$ of functions from $\Omega$ to $Y$, and that
+$\tau:\Omega\to[0,\infty]$ is any $\Sigma$-measurable function.
+Set $X_{\tau}(\omega)=X_{\tau(\omega)}(\omega)$ when $\tau(\omega)<\infty$.
+If $(t,\omega)\mapsto X_t(\omega):\coint{0,\infty}\times\Omega\to Y$
+is $\Cal B(\coint{0,\infty})\tensorhat\Sigma$-measurable, where
+$\Cal B(\coint{0,\infty})$ is the Borel $\sigma$-algebra of
+$\coint{0,\infty}$, then $X_{\tau}:\{\omega:\tau(\omega)<\infty\}\to Y$
+is $\Sigma$-measurable.   \prooflet{\Prf\ Setting
+$\Omega_0=\{\omega:\tau(\omega)<\infty\}$, the map
+$\omega\mapsto(\tau(\omega),\omega):
+\Omega_0\to\coint{0,\infty}\times\Omega$
+is $(\Sigma,\Cal B(\coint{0,\infty})\tensorhat\Sigma)$-measurable (4A3Bc),
+so $X_{\tau}$ is the composition of a
+$(\Sigma,\Cal B(\coint{0,\infty})\tensorhat\Sigma)$-measurable function
+with a $\Cal B(\coint{0,\infty})\tensorhat\Sigma$-measurable function and
+is $\Sigma$-measurable, by 4A3Bb.\ \Qed}
+
+%\def\spheader#1#2#3#4#5{\header{#1#2#3#4#5}{\bf (#5)}}
+\header{455Le}{\bf *(e)} Again take a topological space $Y$, a family
+$\langle X_t\rangle_{t\ge 0}$ of functions from $\Omega$ to $Y$, and a
+stopping time $\tau:\Omega\to[0,\infty]$ adapted to
+$\langle\Sigma_t\rangle_{t\ge 0}$.   This time, suppose that
+$\langle X_t\rangle_{t\ge 0}$ is {\bf progressively measurable}, that is,
+that $(s,\omega)\mapsto X_s(\omega):[0,t]\times\Omega\to Y$ is
+$\Cal B([0,t])\tensorhat\Sigma_t$-measurable for every $t\ge 0$, and
+moreover that $\Sigma_t$ is closed under Souslin's operation\cmmnt{ (421B)}
+for every $t$.   Then $X_{\tau}$, as defined in (d), will be
+$\Sigma_{\tau}$-measurable.
+\prooflet{\Prf\ Suppose that $H\subseteq Y$ is open, and set
+$E=\{\omega:\omega\in\dom X_{\tau}$, $X_{\tau}(\omega)\in H\}$.
+Of course $\langle X_t\rangle_{t\ge 0}$ satisfies the condition of (d), so
+$E\in\Sigma$.   Take any $t\ge 0$.   Then
+
+$$\eqalign{\{(s,\omega):0\le s\le t,\,\tau(\omega)=s\}
+&=\bigcap_{n\in\Bbb N}
+  \bigcup_{i\in\Bbb N}\{s:2^{-n}(i-1)<s\le\min(t,2^{-n}i)\}\cr
+&\mskip80mu  \times\{\omega:2^{-n}(i-1)<\tau(\omega)
+   \le\min(t,2^{-n}i)\}\cr
+&\in\Cal B([0,t])\tensorhat\Sigma_t,\cr}$$
+
+\Centerline{$\{(s,\omega):s\le t$, $X_s(\omega)\in H\}
+\in\Cal B([0,t])\tensorhat\Sigma_t$,}
+
+\noindent so
+
+\Centerline{$W=\{(s,\omega):s\le t$, $\tau(\omega)=s$,
+$X_s(\omega)\in H\}$}
+
+\noindent also belongs to $\Cal B([0,t])\tensorhat\Sigma_t$.
+Consequently the projection of $W$ onto $\Omega$ belongs to
+$\Cal S(\Sigma_t)=\Sigma_t$ (423M).   But this is just
+
+\Centerline{$\{\omega:\tau(\omega)\le t$, $X_{\tau(\omega)}\in H\}
+=E\cap\{\omega:\tau(\omega)\le t\}$.}
+
+\noindent As $t$ is arbitrary, $E\in\Sigma_{\tau}$;  as $H$ is arbitrary,
+$X_{\tau}$ is $\Sigma_{\tau}$-measurable.\ \Qed}
+
+\header{455Le}{\bf *(f)}\dvAnew{2013}\cmmnt{ There are some technical
+points
+concerning stopping times which are perhaps worth noting here.
+
+\medskip
+
+\quad}{\bf (i)} Suppose
+that $\mu$ is a probability measure with domain $\Sigma$ and null ideal
+$\Cal N(\mu)$.   Then we can
+form the completion $\hat\mu$ with domain $\hat\Sigma$.   If we now
+set $\hat\Sigma_t=\{E\symmdiff A:E\in\Sigma_t$, $A\in\Cal N(\mu)\}$,
+$\langle\hat\Sigma_t\rangle_{t\ge 0}$ and
+$\langle\hat\Sigma_t^+\rangle_{t\ge 0}$ are filtrations, where
+$\hat\Sigma_t^+=\bigcap_{s>t}\hat\Sigma_s$ for $t\ge 0$.
+
+\medskip
+
+\quad{\bf (ii)} We find that
+$\hat\Sigma_t^+=\{E\symmdiff A:E\in\Sigma_t^+$, $A\in\Cal N(\mu)\}$ for
+every $t\ge 0$.   \prooflet{\Prf\ Of course
+
+\Centerline{$\{E\symmdiff A:E\in\Sigma_t^+$, $A\in\Cal N(\mu)\}
+\subseteq\bigcap_{s>t}
+   \{E\symmdiff A:E\in\Sigma_s$, $A\in\Cal N(\mu)\}
+=\hat\Sigma_t^+$.}
+
+\noindent If $F\in\hat\Sigma_t^+$, then for every $q\in\Bbb Q$ such that
+$q>t$ there is an $E_q\in\Sigma_q$ such that $F\symmdiff E_q$ is
+negligible.   Set
+
+\Centerline{$E
+=\bigcup_{q\in\Bbb Q,q>t}\bigcap_{q'\in\Bbb Q,t<q'\le q}E_{q'}$,
+\quad$A=F\symmdiff E$;}
+
+\noindent then $E\in\Sigma_t^+$, $A\in\Cal N(\mu)$ and $F=E\symmdiff A$.\
+\Qed}
+
+\medskip
+
+\quad{\bf (iii)} Of course every stopping time adapted to
+$\langle\Sigma_t^+\rangle_{t\ge 0}$ is adapted to
+$\langle\hat\Sigma_t^+\rangle_{t\ge 0}$.   Conversely, if
+$\tau:\Omega\to[0,\infty]$ is a stopping time adapted to
+$\langle\hat\Sigma_t^+\rangle_{t\ge 0}$, there is a stopping time
+$\tau'$, adapted to $\langle\Sigma_t^+\rangle_{t\ge 0}$, such that
+$\tau\eae\tau'$.   \prooflet{\Prf\
+For each $q\in\Bbb Q\cap\coint{0,\infty}$, set
+$F_q=\{\omega:\tau(\omega)<q\}$;  by (b), $F_q\in\hat\Sigma_q$ and
+there is an $E_q\in\Sigma_q$ such that $F_q\symmdiff E_q$ is negligible.
+For $\omega\in\Omega$,
+set $\tau'(\omega)=\inf\{q:q\in\Bbb Q\cap\coint{0,\infty}$,
+$\omega\in E_q\}$, counting $\inf\emptyset$ as $\infty$.   Then
+$\{\omega:\tau'(\omega)<t\}
+=\bigcup_{q\in\Bbb Q\cap\coint{0,t}}E_q$ belongs to $\Sigma_t$ for
+every $t$, so $\tau'$ is adapted to $\langle\Sigma_t^+\rangle_{t\ge 0}$.
+And $\{\omega:\tau'(\omega)\ne\tau(\omega)\}
+\subseteq\bigcup_{q\in\Bbb Q\cap\coint{0,\infty}}E_q\symmdiff F_q$ is
+negligible.\ \Qed}
+
+\medskip
+
+\quad{\bf (iv)} Continuing from (iii) just above, we find that, defining
+$\hat\Sigma_{\tau}^+$ from $\langle\hat\Sigma_t^+\rangle_{t\ge 0}$ and
+$\tau$ and $\Sigma_{\tau'}^+$ from
+$\langle\Sigma_t^+\rangle_{t\ge 0}$ and
+$\tau'$ by the formula in (c-iii), then
+$\hat\Sigma_{\tau}^+=\{F\symmdiff A:F\in\Sigma_{\tau'}^+$,
+$A\in\Cal N(\mu)\}$.   \prooflet{\Prf\ Let $A_0$ be the negligible set
+$\{\omega:\tau(\omega)\ne\tau'(\omega)$.   ($\alpha$) If
+$E\in\Sigma_{\tau'}^+$, then for every $t\ge 0$ we have
+
+\Centerline{$E\cap\{\omega:\tau'(\omega)\le t\}
+\in\Sigma^+_t$,}
+
+\Centerline{$(E\cap\{\omega:\tau(\omega)\le t\})\symmdiff
+   (E\cap\{\omega:\tau'(\omega)\le t\})\subseteq A_0\in\Cal N(\mu)$,}
+
+\noindent so (using (ii))
+$E\cap\{\omega:\tau(\omega)\le t\}\in\hat\Sigma^+_t$;  as $t$ is arbitrary,
+$E\in\hat\Sigma_{\tau}^+$.   ($\beta$) If $F\in\hat\Sigma_{\tau}^+$, then
+for every $q\in\Bbb Q\cap\coint{0,\infty}$ the sets
+$F\cap\{\omega:\tau(\omega)\le q\}$ and
+$F\cap\{\omega:\tau'(\omega)\le q\}$ belong to $\hat\Sigma^+_q$, so there
+is an $E_q\in\Sigma^+_q$ such that
+$E_q\symmdiff(F\cap\{\omega:\tau'(\omega)\le q\})$ is negligible.
+Set $E'_q=\bigcup_{r\in\Bbb Q\cap[0,q]}E_r$ for
+$q\in\Bbb Q\cap\coint{0,\infty}$;  then $E'_q\in\Sigma^+_q$ and
+$E'_q\symmdiff(F\cap\{\omega:\tau'(\omega)\le q\})$ is negligible for
+each $q$, while $E'_q\subseteq E'_r$ if $q\le r$ in
+$\Bbb Q\cap\coint{0,\infty}$.   It follows that
+
+\Centerline{$\bigcap_{q\in\Bbb Q\cap\coint{t,\infty}}E'_q
+=\bigcap_{q\in\Bbb Q\cap[t,s]}E'_q\in\Sigma^+_s$}
+
+\noindent whenever $t<s$ in $\coint{0,\infty}$, so that
+$\bigcap_{q\in\Bbb Q\cap\coint{t,\infty}}E'_q\in\Sigma^+_t$ for every $t$.
+Set
+
+\Centerline{$E=\bigcap_{q\in\Bbb Q\cap\coint{0,\infty}}
+   E'_q\cup\{\omega:\tau'(\omega)>q\}$.}
+
+\noindent Then
+
+$$\eqalign{&E\cap\{\omega:\tau'(\omega)\le t\}\cr
+&\mskip50mu
+=\{\omega:\tau'(\omega)\le t\}\cap\bigcap_{q\in\Bbb Q\cap\coint{0,\infty}}
+   (E'_q\cup\{\omega:\tau'(\omega)>q\})\cr
+&\mskip50mu
+=\{\omega:\tau'(\omega)\le t\}\cap\bigcap_{q\in\Bbb Q\cap\coint{0,t}}
+   (E'_q\cup\{\omega:\tau'(\omega)>q\})
+   \cap\bigcap_{q\in\Bbb Q\cap\coint{t,\infty}}E'_q\cr
+&\mskip50mu\in\Sigma^+_t\cr}$$
+
+\noindent for any $t\ge 0$, so $E\in\Sigma^+_{\tau'}$.
+If we look at $(E\symmdiff F)\cap\{\omega:\tau'(\omega)<\infty\}$,
+we see that this is included in the negligible set
+
+\Centerline{$\bigcup_{q\in\Bbb Q\cap\coint{0,\infty}}
+   E'_q\symmdiff(F\cap\{\omega:\tau'(\omega)\le q\})$}
+
+\noindent because $\{\omega:\tau'(\omega)<\infty\}\cap F$ is just
+
+\Centerline{$\{\omega:\tau'(\omega)<\infty\}
+  \cap\bigcap_{q\in\Bbb Q\cap\coint{0,\infty}}
+      (F\cap\{\omega:\tau'(\omega)\le q\})\cup\{\omega:\tau'(\omega)>q\}$.}
+
+\noindent As for the set $H=\{\omega:\tau'(\omega)=\infty\}$, this belongs
+to $\Sigma$, and every subset of $H$ belonging to $\Sigma$ also belongs to
+$\Sigma^+_{\tau'}$.   Let $H'\in\Sigma$ be such that $H'\subseteq H$ and
+$H'\symmdiff(F\cap H)$ is negligible;  then $E'=H'\cup(E\setminus H)$
+belongs to $\Sigma^+_{\tau'}$ and differs from $F$ by a negligible set.\
+\Qed}
+
+\leader{455M}{Hitting \dvrocolon{times}}\cmmnt{ I mention a class of
+stopping times which is particularly important in applications, and also
+very helpful in giving an idea of the concept.
+
+\medskip
+
+\noindent}{\bf Proposition}  Let $U$ be a Polish
+space and $\Cdlg$ the set of \cadlag\ functions from $\coint{0,\infty}$ to
+$U$.   Let $A\subseteq U$ be an analytic set, and define
+$\tau:\Cdlg\to[0,\infty]$ by setting
+
+\Centerline{$\tau(\omega)=\inf\{t:\omega(t)\in A\}$}
+
+\noindent for $\omega\in\Cdlg$, counting $\inf\emptyset$ as $\infty$.
+
+(a) Let $\Sigma$ be a $\sigma$-algebra of subsets of $\Cdlg$ closed
+under Souslin's operation and including the algebra generated by the
+functionals $\omega\mapsto\omega(t)$ for $t\ge 0$.   Then $\tau$ is
+$\Sigma$-measurable.
+
+(b) For $t\ge 0$ let $\Sigma_t$ be
+
+\Centerline{$\{F:F\in\Sigma,\,\omega'\in F$ whenever $\omega$,
+$\omega'\in\Cdlg$, $\omega\in F$ and
+$\omega\restr[0,t]=\omega'\restr[0,t]\}$,}
+
+\noindent and $\Sigma_t^+=\bigcap_{s>t}\Sigma_t$.   Then $\tau$ is a
+stopping time adapted to $\langle\Sigma^+_t\rangle_{t\ge 0}$.
+
+(c) If $A$ is closed, then $\tau$ is adapted to
+$\langle\Sigma_t\rangle_{t\ge 0}$.
+%this bit seems to need hitting time to be  \inf_{t\ge 0}  rather than
+% \inf_{t>0}
+
+\proof{{\bf (a)(i)} It will help to recall from 4A3W that there is a Polish
+topology $\frak S$ on $\Cdlg$ such that the Borel
+$\sigma$-algebra $\Cal B(\Cdlg)$
+is just the $\sigma$-algebra generated by the coordinate functions
+$\omega\mapsto\omega(t)$.   In this case, every $\frak S$-analytic set,
+being $\frak S$-Souslin-F (423Eb), belongs to $\Sigma$.
+
+\medskip
+
+\quad{\bf (ii)} The set
+
+\Centerline{$W
+=\{(\omega,t,x):\omega\in\Cdlg$, $t\ge 0$, $x\in U$, $\omega(t)=x\}$}
+
+\noindent is a Borel subset of $\Cdlg\times\coint{0,\infty}\times U$.
+\Prf\ If $\rho$ is a metric on $U$ inducing its topology and $D$ is a
+countable dense subset of $U$,
+
+$$\eqalign{W
+&=\bigcap_{n\in\Bbb N}\bigcup_{q\in\Bbb Q,q\ge 0}\bigcup_{y\in D}
+    \{(\omega,t,x):t\in[q-2^{-n},q],\cr
+&\mskip200mu  \rho(\omega(q),y)\le 2^{-n},\,
+    \rho(x,y)\le 2^{-n}\}.  \text{ \Qed}\cr}$$
+
+\medskip
+
+\quad{\bf (iii)} Since $\Cdlg$, $\coint{0,\infty}$ and $U$ are all
+Polish, $W$ is an analytic set.   Now, for any $t\ge 0$,
+
+\Centerline{$W'
+=\{(\omega,s,x):s\in\coint{0,t}$, $x\in A$, $(\omega,s,x)\in W\}$}
+
+\noindent is analytic and its projection
+
+\Centerline{$\{\omega:\tau(\omega)<t\}
+=\{\omega:$ there are $s$, $x$ such that $(\omega,s,x)\in W'\}$}
+
+\noindent is analytic and belongs to $\Sigma$.   As $t$ is arbitrary,
+$\tau$ is $\Sigma$-measurable.
+
+\medskip
+
+{\bf (b)} Now, given $t\ge 0$, $F=\{\omega:\tau(\omega)<t\}$ belongs to
+$\Sigma$, and if $\omega\in F$, $\omega'\in\Cdlg$ are such that
+$\omega'\restr[0,t]=\omega\restr[0,t]$, there is an $s<t$ such that
+$\omega'(s)=\omega(s)\in A$, so $\tau(\omega')<t$ and $\omega'\in F$.
+Thus $F\in\Sigma_t$.   As $t$ is arbitrary, $\tau$ is a stopping time
+adapted to $\langle\Sigma_t^+\rangle_{t\ge 0}$, by 455Lb.
+
+\medskip
+
+{\bf (c)} As $A$ is closed and every member of $\Cdlg$ is continuous on the
+right, $\omega(\tau(\omega))\in A$ whenever $\tau(\omega)<\infty$.   So
+if $\omega$, $\omega'\in\Cdlg$, $\tau(\omega)\le t$ and
+$\omega'\restr[0,t]=\omega\restr[0,t]$, then
+$\omega'(\tau(\omega))\in A$ and
+$\tau(\omega')\le t$.   Thus $\{\omega:\tau(\omega)\le t\}\in\Sigma_t$ for
+every $t$, and $\tau$ is adapted to $\langle\Sigma_t\rangle_{t\ge 0}$.
+}%end of proof of 455M
+
+\leader{455N}{}\cmmnt{ We need an elementary fact about narrow (more
+properly, vague) convergence.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $(U,\rho)$ be a metric space, $n\in\Bbb N$
+and $f:U^{n+1}\to\Bbb R$ a bounded uniformly continuous function.   Let
+$\langle\nu^{(k)}_x\rangle_{k<n,x\in U}$ be a family of topological
+probability measures on $U$ such that $x\mapsto\nu^{(k)}_x$ is continuous
+for the narrow topology for every $k<n$.   Then
+
+\Centerline{$y
+\mapsto\iint\ldots\int f(y,x_1,\ldots,x_n)\nu^{(n-1)}_{x_{n-1}}(dx_n)
+    \ldots\nu_{x_1}^{(1)}(dx_2)\nu_y^{(0)}(dx_1)$}
+
+\noindent is defined everywhere on $U$ and continuous.
+
+\proof{ Induce on $n$.   If $n=0$ the formula is just
+$y\mapsto f(y)$, so the result is trivial.
+For the inductive step to $n\ge 1$, set
+
+\Centerline{$g(y,x_1)
+=\int\ldots\int f(y,x_1,\ldots,x_n)
+  \nu^{(n-1)}_{x_{n-1}}(dx_n)\ldots\nu_{x_1}^{(1)}(dx_2)$}
+
+\noindent for $y$, $x_1\in U$;  by the inductive hypothesis this is
+well-defined and $x_1\mapsto g(y,x_1)$ is continuous.   Note that
+$g$ is bounded because $f$ is.   It follows that
+$h(y)=\int g(y,x_1)\nu_y^{(0)}(dx_1)$ is defined for every
+$y$.   I need to show that $h$ is continuous.   Take any
+$y\in U$ and $\epsilon>0$.   Then there is a $\delta_0>0$ such that
+$|f(y',x_1,\ldots,x_n)-f(y,x_1,\ldots,x_n)|\le\epsilon$ whenever
+$\rho(y',y)\le\delta_0$ and $x_1,\ldots,x_n\in U$;  so that
+$|g(y',x_1)-g(y,x_1)|\le\epsilon$ whenever $\rho(y',y)\le\delta_0$ and
+$x_1\in U$.   Next, because $x\mapsto\nu_x^{(0)}$ is narrowly continuous,
+$x\mapsto\int g(y,x_1)\nu_x^{(0)}(dx_1)$ is continuous (437Jf/437Kb),
+and there is a $\delta\in\ocint{0,\delta_0}$ such that
+$|\int g(y,x_1)\nu_{y'}^{(0)}(dx_1)
+-\int g(y,x_1)\nu_y^{(0)}(dx_1)|\le\epsilon$ whenever
+$\rho(y',y)\le\delta$.   So if $\rho(y',y)\le\delta$,
+
+$$\eqalign{|h(y')-h(y)|
+&\le|\int g(y',x_1)\nu_{y'}^{(0)}(dx_1)-\int g(y,x_1)\nu_{y'}^{(0)}(dx_1)|
+  \cr
+&\mskip100mu
+ +|\int g(y,x_1)\nu_{y'}^{(0)}(dx_1)-\int g(y,x_1)\nu_{y}^{(0)}(dx_1)|\cr
+&\le\int|g(y',x_1)-g(y,x_1)|\nu_{y'}^{(0)}(dx_1)
+  +\epsilon
+\le 2\epsilon.\cr}$$
+
+\noindent As $y$ and $\epsilon$ are arbitrary, $h$ is continuous and the
+induction proceeds.
+}%end of proof of 455N
+
+\leader{455O}{}\cmmnt{ If both the continuity conditions in 455F are
+satisfied, we have a version of 455C/455Eb which is much more to the point.
+
+\medskip
+
+\noindent}{\bf Theorem} Suppose that $(U,\rho)$ is a complete metric space,
+$x^*$ is a point of $U$,
+$\langle\nu^{(s,t)}_x\rangle_{0\le s<t,x\in U}$ is a family of Radon
+probability measures on $U$ which is both narrowly continuous and uniformly
+time-continuous on the right, and
+that $\family{y}{U}{\nu^{(t,u)}_y}$ is a disintegration of $\nu^{(s,u)}_x$
+over $\nu^{(s,t)}_x$ whenever $x\in U$ and $s<t<u$.
+Let $\hat\mu$ be the
+corresponding completed measure on $\Omega=U^{\coint{0,\infty}}$,
+as in 455E.
+Let $\Cdlg$ be the set of \cadlag\ functions from $\coint{0,\infty}$ to
+$U$, $\ddot\mu$ the subspace measure on
+$\Cdlg$, and $\ddot\Sigma$ its domain.   For $t\ge 0$, let $\ddot\Sigma_t$
+be
+
+\Centerline{$\{F:F\in\ddot\Sigma$,
+$\omega'\in F$ whenever $\omega\in F$, $\omega'\in\Cdlg$ and
+$\omega'\restr[0,t]=\omega\restr[0,t]\}$,}
+
+\noindent and $\ddot\Sigma^+_t=\bigcap_{s>t}\ddot\Sigma_t$.
+
+For $\omega\in\Omega$ and $a\ge 0$ let $\hat\mu_{\omega a}$ be the
+completed measure on $\Omega$ built from $\omega(0)$ and
+$\langle\nu^{(s,t)}_{\omega ax}\rangle_{0\le s<t,x\in U}$
+as in 455Eb;  let $\ddot\mu_{\omega a}$ be the subspace measure on $\Cdlg$.
+Let $\tau:\Cdlg\to[0,\infty]$ be a stopping time adapted to
+$\langle\ddot\Sigma^+_t\rangle_{t\ge 0}$.
+
+(a) $\family{\omega}{\Cdlg}{\ddot\mu_{\omega,\tau(\omega)}}$
+is a disintegration of $\ddot\mu$ over itself.
+
+(b) Set
+
+\Centerline{$\ddot\Sigma^+_{\tau}
+=\{F:F\in\ddot\Sigma,\,F\cap\{\omega:\tau(\omega)\le t\}
+   \in\ddot\Sigma^+_t\text{ for every }t\ge 0\}$.}
+
+\noindent Then $\ddot\Sigma^+_{\tau}$ is a $\sigma$-algebra of subsets of
+$\Cdlg$.   For a $\ddot\mu$-integrable function
+$f$ on $\Cdlg$, write
+$\ddot g_f(\omega)=\int_{\Cdlg}fd\ddot\mu_{\omega,\tau(\omega)}$
+when this is defined in $\Bbb R$.
+Then $\ddot g_f$ is a conditional expectation of $f$ on
+$\ddot\Sigma^+_{\tau}$.
+
+(c) If $\tau$ is adapted to $\langle\ddot\Sigma_t\rangle_{t\ge 0}$, set
+
+\Centerline{$\ddot\Sigma_{\tau}
+=\{F:F\in\ddot\Sigma,\,F\cap\{\omega:\tau(\omega)\le t\}
+   \in\ddot\Sigma_t\text{ for every }t\ge 0\}$.}
+
+\noindent Then $\ddot\Sigma_{\tau}$ is a $\sigma$-algebra of subsets of
+$\Cdlg$, and $\ddot g_f$ is a conditional expectation of $f$ on
+$\ddot\Sigma_{\tau}$, for every $f\in\eusm L^1(\ddot\mu)$.
+
+\proof{{\bf (a)(i)} I had better begin by checking that the ground is
+clear.   By 455G, $\hat\mu^*\Cdlg=\hat\mu^*_{\omega a}\Cdlg=1$
+for every $\omega\in\Cdlg$ and $a\ge 0$, so that $\ddot\mu$
+and $\ddot\mu_{\omega a}$ (for $\omega\in\Cdlg$) are all
+probability measures.
+\leaveitout{Because $\hat\mu$ is the completion of its restriction to
+$\Tensorhat_{\coint{0,\infty}}\Cal B(U)$, $\ddot\mu$ is the completion of
+its restriction to the subspace $\sigma$-algebra $\Tau$ induced by
+$\Tensorhat_{\coint{0,\infty}}\Cal B(U)$ on $\Cdlg$
+(214Ib\formerly{2{}14Xb});
+now this is the $\sigma$-algebra generated by the functionals
+$\omega\mapsto\omega(t)$ for $t\ge 0$, so that $(\Cdlg,\Tau)$ is a standard
+Borel space (4A3N, 4A3W).}
+
+Of course $\langle\ddot\Sigma_t\rangle_{t\ge 0}$ is a non-decreasing family of
+$\sigma$-subalgebras of $\ddot\Sigma$, so that
+$\langle\ddot\Sigma^+_t\rangle_{t\ge 0}$ is another such family, and
+we are in the territory explored in 455L.
+
+\medskip
+
+\quad{\bf (ii)} Write $\Sigma$ for the domain of $\hat\mu$, and for
+$t\ge 0$ set
+
+\Centerline{$\Sigma_t
+=\{E:E\in\Sigma$, $E$ is determined by coordinates in
+$[0,t]\}$.}
+
+\noindent Then $\ddot\Sigma_t=\{E\cap\Cdlg:E\in\Sigma_t\}$.
+\Prf\ If $E\in\Sigma_t$, then $E\cap\Cdlg\in\ddot\Sigma$ and clearly
+$E\cap\Cdlg\in\ddot\Sigma_t$.  If $F\in\ddot\Sigma_t$,
+let $E\in\Sigma$ be such that $E\cap\Cdlg=F$.
+Applying 455Ec to the stopping time with constant value $t$, we have
+
+\Centerline{$\hat\mu E
+=\int_{\Omega}\hat\mu_{\omega t}(E)\hat\mu(d\omega)$.}
+
+\noindent Set
+
+\Centerline{$E^*=\{\omega:\omega\in\Omega$, $\hat\mu_{\omega t}(E)$ is
+defined$\}$,}
+
+\Centerline{$E_0=\{\omega:\omega\in E^*$, $\hat\mu_{\omega t}(E)=0\}$,
+\quad$E_1=\{\omega:\omega\in E^*$, $\hat\mu_{\omega t}(E)=1\}$.}
+
+\noindent Then $E^*$, $E_0$ and $E_1$ are measured by $\hat\mu$ and are
+determined by coordinates in $[0,t]$ (by 455E(b-iii)),
+and $\hat\mu E^*=1$.
+
+If $\omega\in E^*\cap\Cdlg$, then $\hat\mu_{\omega t}^*\Cdlg=1$, so
+
+\Centerline{$\ddot\mu_{\omega t}(F)
+=\hat\mu^*_{\omega t}(E\cap\Cdlg)
+=\hat\mu_{\omega t}(E)$.}
+
+\noindent If $\omega\in\Cdlg$, let $D$ be a countable dense subset of
+$[0,t]$ containing $t$;  then
+
+$$\eqalign{1
+&=\hat\mu_{\omega t}\{\omega':\omega'\in\Omega,\,
+   \omega'\restr D=\omega\restr D\}
+=\ddot\mu_{\omega t}\{\omega':\omega'\in\Cdlg,\,
+   \omega'\restr D=\omega\restr D\}\cr
+&=\ddot\mu_{\omega t}\{\omega':\omega'\in\Cdlg,\,
+   \omega'\restr[0,t]=\omega\restr[0,t]\}.\cr}$$
+
+\noindent So if $\omega\in E^*\cap\Cdlg$,
+
+\Centerline{$\hat\mu_{\omega t}(E)
+=\ddot\mu_{\omega t}(F)
+=\ddot\mu_{\omega t}\{\omega':\omega'\in F,\,
+  \omega'\restr[0,t]=\omega\restr[0,t]\}
+=\chi F(\omega)\in\{0,1\}$}
+
+\noindent because $F$ is determined (relative to $\Cdlg$)
+by coordinates in $[0,t]$.   This means
+that $E_1\cap\Cdlg\subseteq F$ and $E_0\cap F=\emptyset$, while
+$E_0\cup E_1$ is $\hat\mu$-conegligible.   So if we take
+
+\Centerline{$E'
+=E_1\cup\{\omega:\omega\Omega\setminus E_1$
+and there is an $\omega'\in F$ such that
+$\omega'\restr[0,t]=\omega\restr[0,t]\}$,}
+
+\noindent $E'\cap\Cdlg=F$, $E'$ is determined by coordinates in $[0,t]$,
+$E_1\subseteq E'\subseteq\Omega\setminus E_0$, $\hat\mu$ measures $E'$ and
+$E'\in\Sigma_t$.   Thus $\ddot\Sigma_t=\{E\cap\Cdlg:E\in\Sigma_t\}$,
+as claimed.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} Take $n\in\Bbb N$, and set $D_n=\{2^{-n}i:i\in\Bbb N\}$.
+Suppose that $\tau:\Cdlg\to D_n\cup\{\infty\}$ is a
+stopping time adapted to $\langle\ddot\Sigma_t\rangle_{t\ge 0}$.   Then
+$\family{\omega}{\Cdlg}{\hat\mu_{\omega,\tau(\omega)}}$
+is a disintegration of $\hat\mu$ over $\ddot\mu$.   \Prf\ For each
+$i\in\Bbb N$, $F_i=\tau^{-1}[\{2^{-n}i\}]$ belongs to
+$\ddot\Sigma_{2^{-n}i}$, so there is an $E_i\in\Sigma$,
+determined by coordinates in
+$[0,2^{-n}i]$, such that $F_i=E_i\cap\Cdlg$.   For $\omega\in\Omega$, set
+
+\Centerline{$\grave\tau(\omega)
+=\inf\{2^{-n}i:i\in\Bbb N,\,\omega\in E_i\}$,}
+
+\noindent counting $\inf\emptyset$ as $\infty$.   Then
+$\grave\tau\restr\Cdlg=\tau$.  Also
+$\grave\tau[\Omega]\subseteq D_n\cup\{\infty\}$ is
+countable, and $\grave\tau^{-1}[\{b\}]\in\Sigma$ is determined by
+coordinates in $[0,b]$ for every $b\in D_n$.   By 455Ec,
+$\family{\omega}{\Omega}{\hat\mu_{\omega,\grave\tau(\omega)}}$ is a
+disintegration of $\hat\mu$ over itself.
+
+Now take any $E\in\Sigma$.   Then
+
+$$\eqalignno{\hat\mu E
+&=\int_{\Omega}\hat\mu_{\omega,\grave\tau(\omega)}(E)\hat\mu(d\omega)
+=\int_{\Cdlg}\hat\mu_{\omega,\grave\tau(\omega)}(E)\ddot\mu(d\omega)\cr
+\displaycause{214F}
+&=\int_{\Cdlg}\hat\mu_{\omega,\tau(\omega)}(E)\ddot\mu(d\omega).
+\text{ \Qed}\cr}$$
+
+It follows that
+$\family{\omega}{\Cdlg}{\ddot\mu_{\omega,\tau(\omega)}}$
+is a disintegration of $\ddot\mu$ over itself.   \Prf\ If
+$F\in\ddot\Sigma$, there is an $E\in\Sigma$ such that $F=E\cap\Cdlg$.
+Now
+
+$$\eqalign{\ddot\mu F
+&=\hat\mu E
+=\int_{\Cdlg}\hat\mu_{\omega,\tau(\omega)}(E)\ddot\mu(d\omega)\cr
+&=\int_{\Cdlg}\ddot\mu_{\omega,\tau(\omega)}(E\cap\Cdlg)\ddot\mu(d\omega)
+=\int_{\Cdlg}\ddot\mu_{\omega,\tau(\omega)}(F)\ddot\mu(d\omega).
+\text{ \Qed}\cr}$$
+
+\medskip
+
+\quad{\bf (iv)} Now let $\tau:\Cdlg\to[0,\infty]$ be any stopping time adapted to
+$\langle\ddot\Sigma^+_t\rangle_{t\ge 0}$.   For each $n\in\Bbb N$, define
+$\tau_n:\Cdlg\to D_n\cup\{\infty\}$ by setting
+
+$$\eqalign{\tau_n(\omega)
+&=2^{-n}(i+1)\text{ if }i\in\Bbb N\text{ and }
+   2^{-n}i\le\tau(\omega)<2^{-n}(i+1),\cr
+&=\infty\text{ if }\tau(\omega)=\infty.\cr}$$
+
+\noindent By 455Lb, $\{\omega:\tau_n(\omega)=t\}\in\ddot\Sigma_t$ for every
+$t\in D_n$.   So (iii) tells us that
+$\langle\ddot\mu_{\omega,\tau_n(\omega)}\rangle_{\omega\in\Cdlg}$ is a
+disintegration of $\ddot\mu$ over itself.
+
+\medskip
+
+\quad{\bf (v)} Suppose that $k\in\Bbb N$, $0=t_0<t_1<\ldots<t_k$,
+$h:U^{k+1}\to\Bbb R$ is bounded and uniformly continuous,
+and $\omega\in\Cdlg$.   Then
+
+\Centerline{$\int_{\Omega}h(\omega'(t_0),\ldots,\omega'(t_k))
+   \hat\mu_{\omega,\tau(\omega)}(d\omega')
+=\lim_{n\to\infty}\int_{\Omega}h(\omega'(t_0),\ldots,\omega'(t_k))
+   \hat\mu_{\omega,\tau_n(\omega)}(d\omega')$.}
+
+\noindent\Prf\ Recall from 455E that
+
+$$\eqalign{\int_{\Omega}h(\omega'(t_0),\ldots\,&,\omega'(t_k))
+   \hat\mu_{\omega,\tau(\omega)}(d\omega')\cr
+&=\int_U\ldots\int_Uh(\omega(0),x_1,\ldots,x_k)
+   \nu_{\omega,\tau(\omega),x_{k-1}}^{(t_{k-1},t_k)}(dx_k)
+   \ldots\nu^{(0,t_1)}_{\omega(0)}(dx_1),\cr}$$
+
+\noindent and similarly for each $\tau_n$.
+If $\tau(\omega)\ge t_k$, then
+
+\Centerline{$\nu^{(t_{i-1},t_i)}_{\omega,\tau_n(\omega),x}
+=\delta_{\omega(t_i)}=\nu^{(t_{i-1},t_i)}_{\omega,\tau(\omega),x}$}
+
+\noindent for $1\le i\le k$, $n\in\Bbb N$ and $x\in U$, so the result is
+trivial.   If $j\le k$ is such that $t_{j-1}\le\tau(\omega)<t_j$, then
+
+$$\eqalign{\nu^{(t_{i-1},t_i)}_{\omega,\tau(\omega),x}
+&=\delta_{\omega(t_i)}\text{ if }i<j,\cr
+&=\nu^{(\tau(\omega),t_j)}_{\omega(\tau(\omega))}
+   \text{ if }i=j,\cr
+&=\nu_x^{(t_{i-1},t_i)}\text{ if }j<i<k.\cr}$$
+
+\noindent So
+
+$$\eqalign{\int_{\Omega}h(\omega'(t_0),\ldots\,&,\omega'(t_k))
+   \hat\mu_{\omega,\tau(\omega)}(d\omega')\cr
+&=\int_U\int_U\ldots\int_Uh(\omega(0),\ldots,\omega(j-1),x_j,\ldots,x_k)\cr
+&\mskip150mu
+   \nu_{x_{k-1}}^{(t_{k-1},t_k)}(dx_k)
+   \ldots
+   \nu_{x_j}^{(t_j,t_{j+1})}(dx_{j+1})
+   \nu_{\omega(\tau(\omega))}^{(\tau(\omega),t_j)}(dx_j).\cr}$$
+
+\noindent Moreover, there is some $n_0$ such that $\tau_n(\omega)<t_j$ for
+every $n\ge n_0$, so that we can use this formula for all such $n$.
+Setting
+
+\Centerline{$g(x)
+=\int_U\ldots\int_Uh(\omega(0),\ldots,\omega(j-1),x,x_{j+1},\ldots,x_k)
+   \nu_{x_{k-1}}^{(t_{k-1},t_k)}(dx_k)
+   \ldots
+   \nu_x^{(t_j,t_{j+1})}(dx_{j+1})$}
+
+\noindent for $x\in U$, we see from 455N that $g$ is continuous, while of
+course it is also bounded, because $h$ is bounded.   At this point, recall
+that $\omega$ is supposed to be continuous on the right, while
+the system of transitional probabilities is jointly continuous, so that
+
+\Centerline{$\nu_{\omega(\tau(\omega))}^{(\tau(\omega),t_j)}
+=\lim_{n\to\infty}\nu_{\omega(\tau_n(\omega))}^{(\tau_n(\omega),t_j)}$}
+
+\noindent for the narrow topology, and
+
+$$\eqalign{\lim_{n\to\infty}
+   \int_{\Omega}h(\omega'(t_0),\ldots\,&,\omega'(t_k))
+   \hat\mu_{\omega,\tau_n(\omega)}(d\omega')\cr
+&=\lim_{n\to\infty}
+  \int_U\int_U\ldots\int_Uh(\omega(0),\ldots,\omega(j-1),x_j,\ldots,x_k)\cr
+&\mskip100mu
+   \nu_{x_{k-1}}^{(t_{k-1},t_k)}(dx_k)
+   \ldots
+   \nu_{x_j}^{(t_j,t_{j+1})}(dx_{j+1})
+   \nu_{\omega(\tau_n(\omega))}^{(\tau_n(\omega),t_j)}(dx_j)\cr
+&=\lim_{n\to\infty}\int_Ug(x_j)
+   \nu_{\omega(\tau_n(\omega))}^{(\tau_n(\omega),t_j)}(dx_j)\cr
+&=\int_Ug(x_j)
+   \nu_{\omega(\tau(\omega))}^{(\tau(\omega),t_j)}(dx_j)\cr
+&=\int_{\Omega}h(\omega'(t_0),\ldots,\omega'(t_k))
+   \hat\mu_{\omega,\tau(\omega)}(d\omega'),\cr}$$
+
+\noindent as claimed.\ \Qed
+
+\medskip
+
+\quad{\bf (vi)} Again suppose that $0=t_0<t_1<\ldots<t_k$.   If
+$h:U^{k+1}\to\Bbb R$ is bounded and uniformly continuous, then
+
+\Centerline{$\int_{\Cdlg}\int_{\Omega}h(\omega'(t_0),\ldots,\omega'(t_k))
+   \hat\mu_{\omega,\tau(\omega)}(d\omega')\ddot\mu(d\omega)
+=\int_{\Omega}h(\omega(t_0),\ldots,\omega(t_k))\hat\mu(d\omega)$.}
+
+\noindent\Prf\ The point here is that
+
+$$\eqalign{\int_{\Cdlg}\int_{\Omega}h(\omega'(t_0),\ldots,\omega'(t_k))
+   \hat\mu_{\omega,\tau_n(\omega)}(d\omega')\ddot\mu(d\omega)
+&=\int_{\Omega}h(\omega(t_0),\ldots,\omega(t_k))
+   \hat\mu(d\omega)\cr}$$
+
+\noindent is defined for every $n\in\Bbb N$, by (iii) and 452F, as usual.
+Now the integrands
+
+\Centerline{$\omega
+\mapsto\int_{\Omega}h(\omega'(t_0),\ldots,\omega'(t_k))
+   \hat\mu_{\omega,\tau_n(\omega)}(d\omega')$}
+
+\noindent converge at every point of $\Cdlg$, by (v), and are uniformly
+bounded, because $h$ is, so that
+
+$$\eqalign{\int_{\Cdlg}\int_{\Omega}h(\omega'(t_0),\ldots\,&,\omega'(t_k))
+   \hat\mu_{\omega,\tau(\omega)}(d\omega')\ddot\mu(d\omega)\cr
+&=\lim_{n\to\infty}\int_{\Cdlg}\int_{\Omega}
+    h(\omega'(t_0),\ldots,\omega'(t_k))
+   \hat\mu_{\omega,\tau_n(\omega)}(d\omega')\ddot\mu(d\omega)\cr
+&=\int_{\Omega}h(\omega(t_0),\ldots,\omega(t_k))(d\omega).
+\text{  \Qed}\cr}$$
+
+If $G\subseteq U^{k+1}$ is open, there is a non-decreasing sequence
+$\sequence{m}{h_m}$ of uniformly continuous functions from $U^{k+1}$ to
+$[0,1]$ such that $\chi G=\sup_{m\in\Bbb N}h_m$, in which case
+
+$$\eqalign{\int_{\Cdlg}
+  \hat\mu_{\omega,\tau(\omega)}
+  \{\omega':(\omega'(t_0)&,\ldots,\omega'(t_k))\in G\}
+ \ddot\mu(d\omega)\cr
+&=\lim_{m\to\infty}
+  \int_{\Cdlg}\int_{\Omega}h_m(\omega'(t_0),\ldots,\omega'(t_k))
+  \hat\mu_{\omega,\tau(\omega)}(d\omega')\ddot\mu(d\omega)\cr
+&=\lim_{m\to\infty}
+  \int_{\Omega}h_m(\omega(t_0),\ldots,\omega(t_k))\hat\mu(d\omega)\cr
+&=\hat\mu\{\omega:(\omega(t_0),\ldots,\omega(t_k))\in G\}.\cr}$$
+
+\noindent By the Monotone Class Theorem, we get
+
+$$\eqalign{\int_{\Cdlg}
+  \hat\mu_{\omega,\tau(\omega)}
+  \{\omega':(\omega'(t_0)&,\ldots,\omega'(t_k))\in E\}
+ \ddot\mu(d\omega)\cr
+&=\hat\mu\{\omega:(\omega(t_0),\ldots,\omega(t_k))\in E\}\cr}$$
+
+\noindent for every Borel set $E\subseteq U^{k+1}$.   Now recall that
+$t_0,\ldots,t_k$ were any strictly increasing sequence starting at $0$, so
+we can use the Monotone Class Theorem yet again to see that
+
+\Centerline{$\int_{\Cdlg}
+  \hat\mu_{\omega,\tau(\omega)}(E)\ddot\mu(d\omega)
+=\hat\mu(E)$}
+
+\noindent for every $E\in\Tensorhat_{\coint{0,\infty}}\Cal B(U)$
+and therefore for every $E\in\Sigma$.
+
+\medskip
+
+\quad{\bf (vii)} Finally, if $F\in\ddot\Sigma$,
+there is an $E\in\Sigma$ such that $F=E\cap\Cdlg$, so that
+
+\Centerline{$\ddot\mu(F)=\hat\mu(E)
+=\int_{\Cdlg}\hat\mu_{\omega,\tau(\omega)}(E)\ddot\mu(d\omega)
+=\int_{\Cdlg}\ddot\mu_{\omega,\tau(\omega)}(F)\ddot\mu(d\omega)$;}
+
+\noindent which is what we set out to prove.
+
+\medskip
+
+{\bf (b)(i)} By 455L(c-iii), $\ddot\Sigma^+_{\tau}$ is a $\sigma$-algebra.
+If $f$ is a $\ddot\mu$-integrable real-valued function, then
+$\int_{\Cdlg}\ddot g_f\ddot\mu=\int_{\Cdlg}f\ddot\mu$, by (a) and 452F.
+For $\alpha\in\Bbb R$ set
+
+\Centerline{$E(f,\alpha)
+=\{\omega:\omega\in\Cdlg$, $\ddot g_f(\omega)$ is defined in $\Bbb R$ and
+$\ddot g_f(\omega)\le\alpha\}$,}
+
+\noindent so that $E(f,\alpha)\in\ddot\Sigma$.   For $t\ge 0$, set
+
+\Centerline{$H_t=\{\omega:\omega\in\Cdlg$, $\tau(\omega)\le t\}$,
+\quad$H'_t=\{\omega:\omega\in\Cdlg$, $\tau(\omega)<t\}$,}
+
+\noindent so that $H_t\in\ddot\Sigma_t^+$ and $H'_t\in\ddot\Sigma_t$
+(455Lb).
+
+\medskip
+
+\quad{\bf (ii)} If $\omega$, $\omega'\in\Cdlg$ and $s>\tau(\omega)$
+are such that
+$\omega'\restr[0,s]=\omega\restr[0,s]$, then
+$\tau(\omega')=\tau(\omega)$.   \Prf\ $H_{\tau(\omega)}$,
+$H'_{\tau(\omega)}$ and their difference belong to $\ddot\Sigma_s$,
+so are determined (relative to $\Cdlg$) by coordinates in $[0,s]$;
+since $H_{\tau(\omega)}\setminus H'_{\tau(\omega)}$ contains $\omega$, it
+also contains $\omega'$, and $\tau(\omega')=\tau(\omega)$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} If $f$ is $\ddot\mu$-integrable, $\alpha\in\Bbb R$ and
+$s>0$, then $E(f,\alpha)\cap H'_s\in\ddot\Sigma_s$.
+\Prf\ Certainly $E(f,\alpha)\cap H'_s\in\ddot\Sigma$.   If $\omega$,
+$\omega'\in\Cdlg$ and $\omega\restr[0,s]=\omega'\restr[0,s]$,
+then
+
+$$\eqalignno{\omega\in E(f,\alpha)\cap H'_s
+&\Longrightarrow\tau(\omega)<s\text{ and }
+  \int_{\Cdlg}fd\ddot\mu_{\omega,\tau(\omega)}\le\alpha\cr
+&\Longrightarrow\tau(\omega')=\tau(\omega)<s\text{ and }
+  \int_{\Cdlg}fd\ddot\mu_{\omega,\tau(\omega')}\le\alpha\cr
+\displaycause{by (ii)}
+&\Longrightarrow\omega'\in E(f,\alpha)\cap H'_s.\cr}$$
+
+\noindent So $E(f,\alpha)\cap H'_s$ is determined (relative to $\Cdlg$) by
+coordinates in $[0,s]$ and belongs to $\ddot\Sigma_s$.\ \Qed
+
+Consequently $E(f,\alpha)\cap H_t\in\ddot\Sigma^+_t$ for every $t\ge 0$.
+\Prf\ $H_t=\bigcap_{n\in\Bbb N}H'_{t_n}$ where $t_n=t+2^{-n}$ for each $n$,
+so
+
+\Centerline{$E(f,\alpha)\cap H_t
+=\bigcap_{n\ge m}E(f,\alpha)\cap H'_{t_n}$}
+
+\noindent belongs to $\ddot\Sigma_{t_m}$ for every $m\in\Bbb N$, and
+$E(f,\alpha)\cap H_t\in\ddot\Sigma^+_t$.\ \Qed
+
+Thus $E(f,\alpha)\in\ddot\Sigma^+_{\tau}$ for every $\alpha$.   As $\alpha$ is
+arbitrary, $\dom\ddot g_f\in\ddot\Sigma^+_{\tau}$ and $\ddot g_f$ is
+$\ddot\Sigma^+_{\tau}$-measurable.
+
+\medskip
+
+\quad{\bf (iv)} Define $\sequencen{\tau_n}$ as in (a-iv) above, so that
+each $\tau_n$ is a stopping time adapted to
+$\langle\ddot\Sigma_t\rangle_{t\ge 0}$ and $\sequencen{\tau_n(\omega)}$ is a
+non-increasing sequence with limit $\tau(\omega)$ for every $\omega$.
+For a $\ddot\mu$-integrable real-valued function $f$ on $\Cdlg$,
+$\omega\in\Cdlg$ and $n\in\Bbb N$, set
+
+\Centerline{$\ddot g^{(n)}_f(\omega)
+=\int_{\Cdlg}fd\ddot\mu_{\omega,\tau_n(\omega)}$}
+
+\noindent whenever the right-hand side is defined in $\Bbb R$.
+By (a), $\int_{\Cdlg}\ddot g^{(n)}_fd\ddot\mu=\int_{\Cdlg}fd\ddot\mu$.
+We have seen also, in
+(a-iii), that each $\tau_n$ has an extension $\grave\tau_n$ which is a
+stopping time on $\Omega$ of the type considered in 455Ec.   So if we take
+a $\hat\mu$-integrable function $\tilde f$ extending $f$, and set
+
+\Centerline{$g^{(n)}_{\tilde f}(\omega)
+=\int_{\Omega}\tilde fd\hat\mu_{\omega,\grave\tau_n(\omega)}$}
+
+\noindent whenever $\omega\in\Omega$ is such that the integral is defined
+in $\Bbb R$, $g^{(n)}_{\tilde f}$ will be a conditional expectation
+of $\tilde f$ on $\Sigma_{\grave\tau_n}$, the algebra of sets
+$E\in\Sigma$ such that
+$E\cap\{\omega:\grave\tau_n(\omega)\le t\}$ is determined by coordinates in
+$[0,t]$ for every $t\ge 0$.
+
+If $\omega\in\Cdlg$, then $\Cdlg$ has full outer measure for
+$\hat\mu_{\omega,\tau_n(\omega)}=\hat\mu_{\omega,\grave\tau_n(\omega)}$, so
+
+\Centerline{$g^{(n)}_{\tilde f}(\omega)
+=\int_{\Omega}\tilde fd\hat\mu_{\omega,\grave\tau_n(\omega)}
+=\int_{\Cdlg} fd\ddot\mu_{\omega,\tau_n(\omega)}
+=\ddot g^{(n)}_f(\omega)$}
+
+\noindent whenever either is defined.
+
+\medskip
+
+\quad{\bf (v)} Set
+
+\Centerline{$\ddot\Sigma_{\tau_n}
+=\{F:F\in\ddot\Sigma$, $F\cap\{\omega:\tau_n(\omega)\le t\}\in\ddot\Sigma_t$
+for every $t\ge 0\}$.}
+
+\noindent Then every $F\in\ddot\Sigma_{\tau_n}$ is of the form
+$\tilde F\cap\Cdlg$ where $\tilde F\in\Sigma_{\grave\tau_n}$.
+\Prf\ Recall that $\tau_n$ and $\grave\tau_n$ take values in
+$D_n\cup\{\infty\}$, where $D_n=\{2^{-n}i:i\in\Bbb N\}$.   For each
+$i\in\Bbb N$, set $F_i=\{\omega:\omega\in F$, $\tau_n(\omega)=2^{-n}i\}$;
+then $F_i\in\ddot\Sigma_{2^{-n}i}$, so there is an
+$E_i\in\Sigma_{2^{-n}i}$ such that $F_i=E_i\cap\Cdlg$ (a-ii).
+Let $E_{\infty}\in\Sigma$ be such that
+$E_{\infty}\cap\Cdlg=\{\omega:\tau_n(\omega)=\infty\}$, and try
+
+\Centerline{$\tilde F
+=\bigcup_{i\in\Bbb N}(E_i\cap\grave\tau_n^{-1}[\{2^{-n}i\}])
+   \cup(E_{\infty}\cap\grave\tau_n^{-1}[\{\infty\}])$.}
+
+\noindent Then $\tilde F\cap\Cdlg=F$ (because $\grave\tau_n$ extends
+$\tau_n$) and $\tilde F\in\Sigma_{\grave\tau_n}$ (because
+
+\Centerline{$\tilde F\cap\grave\tau_n^{-1}[\{2^{-n}i\}]
+=E_i\cap\grave\tau_n^{-1}[\{2^{-n}i\}]\in\Sigma_{2^{-n}i}$}
+
+\noindent for every $i$).\ \Qed
+
+\medskip
+
+\quad{\bf (vi)} If $f$ is $\ddot\mu$-integrable, then $\ddot g^{(n)}_f$ is a
+conditional expectation of $f$ on $\ddot\Sigma_{\tau_n}$ for every $n$.
+\Prf\ Take $F\in\ddot\Sigma_{\tau_n}$.   Then there are an
+$\tilde F\in\Sigma_{\grave\tau_n}$ such that
+$F=\tilde F\cap\Cdlg$, and a $\hat\mu$-integrable $\tilde f$ such that
+$f=\tilde f\restr\Cdlg$.   So
+
+$$\eqalignno{\int_Ffd\ddot\mu
+&=\int_{\tilde F}\tilde fd\hat\mu
+=\int_{\tilde F}g^{(n)}_{\tilde f}d\hat\mu\cr
+\displaycause{455E(c-ii)}
+&=\int_{\tilde F}\int_{\Omega}
+  \tilde fd\hat\mu_{\omega,\grave\tau_n(\omega)}
+  \hat\mu(d\omega)
+=\int_F\int_{\Omega}
+  \tilde fd\hat\mu_{\omega,\tau_n(\omega)}\ddot\mu(d\omega)\cr
+\displaycause{because $\hat\mu^*\Cdlg=1$, $F=\tilde F\cap\Cdlg$ and
+$\tau_n=\grave\tau_n\restr\Cdlg$}
+&=\int_F\int_{\Cdlg}fd\ddot\mu_{\omega,\tau_n(\omega)}\ddot\mu(d\omega)
+=\int_F\ddot g^{(n)}_fd\ddot\mu.  \text{ \Qed}\cr}$$
+
+\medskip
+
+\quad{\bf (vii)} Let $\Phi$ be the set of those $\ddot\mu$-integrable
+real-valued functions $f$ such that
+\penalty-100$\lim_{n\to\infty}
+\int_{\Cdlg}|\ddot g_f-\ddot g^{(n)}_f|d\ddot\mu=0$.
+For $J\subseteq\coint{0,\infty}$ let $\pi_J:\Omega\to U^J$ be the
+restriction map.
+By (a-v), $f=h\pi_J\restr\Cdlg$ belongs to $\Phi$ whenever
+$J\subseteq\coint{0,\infty}$ is finite and
+$h:U^J\to\Bbb R$ is bounded and uniformly continuous, since in this case
+
+$$\eqalign{\ddot g_f(\omega)
+&=\int_{\Cdlg}h\pi_Jd\ddot\mu_{\omega,\tau(\omega)}
+=\int_{\Omega}h\pi_Jd\hat\mu_{\omega,\tau(\omega)}
+=\lim_{n\to\infty}\int_{\Omega}h\pi_Jd\hat\mu_{\omega,\tau_n(\omega)}\cr
+&=\lim_{n\to\infty}\int_{\Cdlg}h\pi_Jd\ddot\mu_{\omega,\tau_n(\omega)}
+=\lim_{n\to\infty}\ddot g^{(n)}_f(\omega)\cr}$$
+
+\noindent for every
+$\omega\in\Cdlg$.   Next, $\ddot g_{\alpha f}\eae\alpha\ddot g_f$,
+$\ddot g_{f+f'}\eae\ddot g_f+\ddot g_{f'}$ and
+
+\Centerline{$\int_{\Cdlg}|\ddot g_f-\ddot g_{f'}|d\ddot\mu
+=\int_{\Cdlg}|\ddot g_{f-f'}|d\ddot\mu
+\le\int_{\Cdlg}\ddot g_{|f-f'|}d\ddot\mu
+=\int_{\Cdlg}|f-f'|d\ddot\mu$}
+
+\noindent for all $f$, $f'\in\eusm L^1(\ddot\mu)$ and $\alpha\in\Bbb R$;
+and we have similar expressions for every $\ddot g^{(n)}_f$.   So $f+f'\in\Phi$
+and $\alpha f\in\Phi$ whenever $f$, $f'\in\Phi$, and moreover
+$f\in\Phi$ whenever $f\in\eusm L^1(\ddot\mu)$ and there is a sequence
+$\sequence{f}{f_k}$ in $\Phi$ such that
+$\lim_{k\to\infty}\int_{\Cdlg}|f-f_k|d\ddot\mu=0$.
+
+If $J\subseteq\coint{0,\infty}$ is finite and $G\subseteq U^J$,
+then $(\chi G)\pi_J\restr\Cdlg\in\Phi$.   \Prf\ There is a
+non-decreasing sequence $\sequence{k}{h_k}$ of bounded uniformly continuous
+functions on $U^J$ with limit $\chi G$;  now $h_k\pi_J\restr\Cdlg\in\Phi$ and
+$(\chi G)\pi_J\restr\Cdlg=\lim_{k\to\infty}h_k\pi_J\restr\Cdlg$.\ \QeD\  By the Monotone Class
+Theorem, $(\chi E)\pi_J\restr\Cdlg\in\Phi$
+whenever $J\subseteq\coint{0,\infty}$ is
+finite and $E\in\Cal B(U^J)$.   By the Monotone Class Theorem again,
+$\chi(E\cap\Cdlg)\in\Phi$ whenever
+$E\in\Tensorhat_{\coint{0,\infty}}\Cal B(U)$.   Since we surely have
+$f'\in\Phi$ whenever $f\in\Phi$ and $f'=f\,\,\ddot\mu$-a.e.,
+$\chi(E\cap\Cdlg)\in\Phi$ whenever $E\in\Sigma$, that is,
+$\chi E\in\Phi$ for every $E\in\ddot\Sigma$.   It follows at once that
+$\Phi=\eusm L^1(\ddot\mu)$.
+
+\medskip
+
+\quad{\bf (viii)} We are nearly home.   Suppose that
+$f\in\eusm L^1(\ddot\mu)$ and $F\in\ddot\Sigma^+_{\tau}$.   If $n\in\Bbb N$,
+then $F\in\ddot\Sigma_{\tau_n}$.   \Prf\ For any $t>0$,
+
+\Centerline{$F\cap\{\omega:\tau(\omega)<t\}
+=\bigcup_{q\in\Bbb Q,q<t}F\cap\{\omega:\tau(\omega)\le q\}
+\in\ddot\Sigma_t$.}
+
+\noindent So, for any $i\in\Bbb N$,
+
+\Centerline{$F\cap\{\omega:\tau_n(\omega)\le 2^{-n}i\}
+=F\cap\{\omega:\tau(\omega)<2^{-n}i\}
+\in\ddot\Sigma_{2^{-n}i}$.  \text{\Qed}}
+
+\noindent So $\int_F\ddot g^{(n)}_fd\ddot\mu=\int_Ffd\ddot\mu$.
+But $f\in\Phi$, so
+
+\Centerline{$\int_F\ddot g_fd\ddot\mu=\lim_{n\to\infty}\int_F\ddot g^{(n)}_fd\ddot\mu
+=\int_Ffd\ddot\mu$.}
+
+\noindent Since we already know, from (iii) above,
+that $\dom\ddot g_f\in\ddot\Sigma^+_{\tau}$ and
+$\ddot g_f$ is $\ddot\Sigma^+_{\tau}$-measurable, 
+$\ddot g_f$ is a conditional expectation
+of $f$ on $\ddot\Sigma^+_{\tau}$, as claimed.
+
+\medskip
+
+{\bf (c)(i)} By 455L(c-iii) again,
+$\ddot\Sigma_{\tau}$ is a $\sigma$-algebra.
+
+\medskip
+
+\quad{\bf (ii)} If $\omega$, $\omega'\in\Cdlg$ and
+$\omega'\restr[0,\tau(\omega)]=\omega\restr[0,\tau(\omega)]$ then
+$\ddot\mu_{\omega',\tau(\omega')}=\ddot\mu_{\omega,\tau(\omega)}$.   \Prf\
+Set $t=\tau(\omega)$.   This time, $H_t$ and $H'_t$, defined as in
+(b-i), belong to $\ddot\Sigma_t$, so their difference belongs to
+$\ddot\Sigma_t$ and
+is determined (relative to $\Cdlg$) by coordinates in $[0,t]$;  so
+$\omega'\in H_t\setminus H'_t$ and $\tau(\omega')=t$.  Now, reading off the
+definition in 455Eb, $\nu^{(s,u)}_{\omega'tx}=\nu^{(s,u)}_{\omega tx}$ for
+all $s$, $u$ and $x$, so $\ddot\mu_{\omega't}=\ddot\mu_{\omega t}$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} It follows that if $f\in\eusm L^1(\ddot\mu)$
+and $\alpha\in\Bbb R$ then
+$F=\{\omega:\omega\in\Cdlg$, $\ddot g_f(\omega)$ is defined and at most
+$\alpha\}$ belongs to $\ddot\Sigma_{\tau}$.
+\Prf\ We know from (b-iii) that $F\in\ddot\Sigma$.   If $t\ge 0$,
+$\omega\in F$, $\omega'\in\Cdlg$,
+$\tau(\omega)\le t$ and $\omega'\restr[0,t]=\omega\restr[0,t]$ then
+$\ddot\mu_{\omega',\tau(\omega')}=\ddot\mu_{\omega,\tau(\omega)}$, so
+$\ddot g_f(\omega')=\ddot g_f(\omega)$ and $\omega'\in F$.   Thus
+$F\cap\{\omega:\tau(\omega)\le t\}$ is determined (relative to $\Cdlg$)
+by coordinates in $[0,t]$
+and belongs to $\ddot\Sigma_t$.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} Thus $\dom\ddot g_f\in\ddot\Sigma_{\tau}$ and $\ddot g_f$ is
+$\ddot\Sigma_{\tau}$-measurable.   As we already know that it is a
+conditional
+expectation of $f$ on $\ddot\Sigma_{\tau}^+\supseteq\ddot\Sigma_{\tau}$, it is a
+conditional expectation of $f$ on $\ddot\Sigma_{\tau}$.
+}%end of proof of 455O
+
+\leader{455P}{}\cmmnt{ The eventual objective of this section is to
+provide a foundation for study of the original,
+and still by far the most important, example of a
+continuous-time Markov process, Brownian motion.   In the language
+developed above, we shall
+have $U=\Bbb R$ (or, when we come to the applications
+in \S\S477-479, $U=\BbbR^r$), and all the transitional probabilities
+$\nu_x^{(s,t)}$ will be Gaussian.   But the techniques so far developed
+can tell us a great deal about much more general processes with
+some of the same features.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $U$ be a metrizable
+topological group which is complete
+under a \rti\ metric $\rho$ inducing its topology.
+Let $\langle\lambda_t\rangle_{t>0}$
+be a family of Radon probability measures
+on $U$ such that $\lambda_s*\lambda_t=\lambda_{s+t}$ for all $s$, $t>0$.
+Suppose that $\lim_{t\downarrow 0}\lambda_tG=1$ for every open
+neighbourhood $G$ of the identity in $U$.
+For $x\in U$ and $0\le s<t$, let $\nu^{(s,t)}_x$ be the Radon probability
+measure on $U$ defined by saying that
+$\nu^{(s,t)}_x(E)=\lambda_{t-s}(Ex^{-1})$ whenever $\lambda_{t-s}$ measures
+$Ex^{-1}$.
+
+(a) $\family{y}{U}{\nu^{(t,u)}_y}$ is a disintegration of $\nu^{(s,u)}_x$
+over $\nu^{(s,t)}_x$ whenever $x\in U$ and $0\le s<t<u$.
+
+(b) $\langle\nu^{(s,t)}_x\rangle_{0\le s<t,x\in U}$ is narrowly continuous
+and uniformly time-continuous on the right.
+
+(c)(i) For any $x^*\in U$, we can define a complete measure
+$\hat\mu$ on $U^{\coint{0,\infty}}$ by the method of 455E applied to
+$x^*$ and $\langle\nu^{(s,t)}_x\rangle_{0\le s<t,x\in U}$.
+
+\quad(ii) If $\Cdlg$ is the space of \cadlag\ functions from
+$\coint{0,\infty}$ to $U$, then $\hat\mu^*\Cdlg=1$, and the subspace
+measure $\ddot\mu$ on $\Cdlg$ will have the properties described in 455O.
+
+\quad(iii) $\hat\mu$ has a unique extension to a Radon measure $\tilde\mu$
+on $U^{\coint{0,\infty}}$.
+
+\proof{{\bf (a)} Note first that $y\mapsto yx$ is \imp\ for $\lambda_{t-s}$
+and $\nu^{(s,t)}_x$, so that
+$\int f(y)\nu_x^{(s,t)}(dy)=\int f(yx)\lambda_{t-s}(dy)$
+for any real-valued function on $U$ for which either is defined
+(235Gb).   If $E\subseteq U$ is measured by $\nu^{(s,u)}_x$, then
+
+$$\eqalignno{\nu^{(s,u)}_x(E)
+&=\lambda_{u-s}(Ex^{-1})
+=(\lambda_{u-t}*\lambda_{t-s})(Ex^{-1})
+=\int\lambda_{u-t}(Ex^{-1}y^{-1})\lambda_{t-s}(dy)\cr
+\displaycause{444A}
+&=\int\nu_{yx}^{(t,u)}(E)\lambda_{t-s}(dy)
+=\int\nu_y^{(t,u)}(E)\nu_x^{(s,t)}(dy);\cr}$$
+
+\noindent as $E$ is arbitrary,
+$\family{y}{U}{\nu^{(t,u)}_y}$ is a disintegration of $\nu^{(s,u)}_x$
+over $\nu^{(s,t)}_x$.
+
+\medskip
+
+{\bf (b)(i)}\grheada\
+Suppose that $x\in U$ and $0\le s<t$;  set $u=t-s$.
+Let $f:U\to\Bbb R$ be
+a bounded continuous function and set $M=\|f\|_{\infty}$.   Take
+$\epsilon\in\ooint{0,1}$.   Let $K\subseteq U$ be a compact set such that
+$\lambda_uK\ge 1-\epsilon$.   Then there is a
+symmetric open neighbourhood $V$
+of the identity $e$ of $U$ such that
+$|f(wyx^{-1})-f(wx^{-1})|\le 2\epsilon$
+whenever $w\in K$ and $y\in V^2$.   \Prf\ For each $w\in K$ there is a
+neighbourhood $W_w$ of $e$ such that $|f(wyx^{-1})-f(wx^{-1})|\le\epsilon$
+whenever $y\in W_w^2$.   Because $K$ is compact, there are
+$w_0,\ldots,w_n\in K$ such that $K\subseteq\bigcup_{i\le n}w_iW_{w_i}$;
+set $W=\bigcap_{i\le n}W_{w_i}$.   If $w\in K$ and $y\in W$, there is an
+$i\le n$ such that $w\in w_iW_{w_i}$, in which case
+
+$$\eqalign{|f(wyx^{-1})-f(wx^{-1})|
+&\le|f(w_i(w_i^{-1}wy)x^{-1})-f(w_ix^{-1})|\cr
+&\mskip200mu
+     +|f(w_ix^{-1})-f(w_i(w_i^{-1}w)x^{-1})|\cr
+&\le 2\epsilon\cr}$$
+
+\noindent because both $w_i^{-1}wy$ and $w_i^{-1}w$ belong to $W_{w_i}^2$.
+So if we take a symmetric open neighbourhood $V$ of $e$ such that
+$V^2\subseteq W$, this will serve.\ \Qed
+
+\medskip
+
+\qquad\grheadb\
+Let $\delta>0$ be such that $\lambda_vV\ge 1-\epsilon$ whenever
+$0<v\le 2\delta$.   It will be worth noting that
+$\lambda_v(KV)\ge 1-2\epsilon$ whenever $0<v<u$ and $u-v\le 2\delta$.
+\Prf\ In this case, $\lambda_u=\lambda_v*\lambda_{u-v}$.   Now
+$U\setminus K\supseteq(U\setminus KV)V^{-1}$.   So
+
+\Centerline{$\epsilon
+\ge\lambda_u(U\setminus K)
+\ge\lambda_v(U\setminus KV)\lambda_{u-v}(V^{-1})
+\ge(1-\epsilon)\lambda_v(U\setminus KV)$}
+
+\noindent and
+
+\Centerline{$\lambda_v(KV)\ge 1-\Bover{\epsilon}{1-\epsilon}
+\ge 1-2\epsilon$.  \Qed}
+
+\medskip
+
+\qquad\grheadc\
+Suppose that $0\le s'<t'$ and $y\in U$ are such that
+$y^{-1}x\in W$, $|s'-s|\le\delta$ and $|t'-t|\le\delta$.   Then
+$|\int fd\nu_y^{(s',t')}-\int fd\nu_x^{(s,t)}|\le(6M+4)\epsilon$.
+\Prf\ Set $u'=t'-s'$, so that $|u-u'|\le 2\delta$.   We have
+
+\Centerline{$|\int fd\nu_y^{(s',t')}-\int fd\nu_x^{(s,t)}|
+=|\int f(wy^{-1})\lambda_{u'}(dw)-\int f(wx^{-1})\lambda_u(dw)|$.}
+
+\medskip
+
+{\bf case 1} Suppose that $u'<u$.   Then
+$\lambda_u=\lambda_{u'}*\lambda_{u-u'}$, so
+
+$$\eqalignno{|\int fd\nu_y^{(s',t')}-\int fd\nu_x^{(s,t)}|
+&=|\int f(wy^{-1})\lambda_{u'}(dw)
+   -\int f(wx^{-1})(\lambda_{u'}*\lambda_{u-u'})(dw)|\cr
+&=|\int f(wy^{-1})\lambda_{u'}(dw)
+   -\iint f(wzx^{-1})\lambda_{u-u'}(dz)\lambda_{u'}(dw)|\cr
+\displaycause{444C}
+&\le\int|f(wy^{-1})-\int f(wzx^{-1})\lambda_{u-u'}(dz)|\lambda_{u'}(dw)\cr
+&\le 4M\epsilon
+   +\sup_{w\in KV}|f(wy^{-1})-\int f(wzx^{-1})\lambda_{u-u'}(dz)|\cr
+\displaycause{because $\lambda_{u'}(U\setminus KV)\le 2\epsilon$, by
+($\beta$), and
+$|f(wy^{-1})-\int f(wzx^{-1})\lambda_{u-u'}(dz)|\le 2M$ for every $w$}
+&\le 4M\epsilon
+   +\sup_{w\in KV}\int|f(wy^{-1})-\int f(wzx^{-1})|\lambda_{u-u'}(dz)\cr
+&\le 6M\epsilon
+   +\sup_{w\in KV,z\in V}|f(wy^{-1})-\int f(wzx^{-1})|\cr
+\displaycause{because $\lambda_{u-u'}V\ge 1-\epsilon$}
+&\le 6M\epsilon
+   +\sup_{w\in K,v\in V,z\in V}|f(wvy^{-1}xx^{-1})-f(wvzx^{-1})|\cr
+&\le 6M\epsilon
+   +\sup_{w\in K,v\in V,z\in V}\bigl(|f(wvy^{-1}xx^{-1})-f(wx^{-1})|\cr
+&\mskip220mu
+         +|f(wvzx^{-1})-f(wx^{-1})|\bigr)\cr
+&\le 6M\epsilon+4\epsilon\cr}$$
+
+\noindent by the choice of $V$, because $y^{-1}x\in V$.
+
+\medskip
+
+{\bf case 2} Suppose that $u'=u$.   Then
+
+$$\eqalign{|\int fd\nu_y^{(s',t')}-\int fd\nu_x^{(s,t)}|
+&\le\int|f(wy^{-1})-f(wx^{-1})|\lambda_u(dw)\cr
+&\le 2M\epsilon+\sup_{w\in K}|f(wy^{-1}xx^{-1})-f(wx^{-1})|\cr
+&\le 2M\epsilon+\epsilon.\cr}$$
+
+\medskip
+
+{\bf case 3} Suppose that $u'>u$.   Then
+$\lambda_{u'}=\lambda_u*\lambda_{u'-u}$, so
+
+$$\eqalignno{|\int fd\nu_y^{(s',t')}-\int fd\nu_x^{(s,t)}|
+&=|\iint f(wzy^{-1})\lambda_{u'-u}(dz)\lambda_u(dw)
+   -\int f(wx^{-1})\lambda_u(dw)|\cr
+&\le\int|\int f(wzy^{-1})\lambda_{u'-u}(dz)-f(wx^{-1})|\lambda_u(dw)\cr
+&\le 2M\epsilon+\sup_{w\in K}
+   |\int f(wzy^{-1})\lambda_{u'-u}(dz)-f(wx^{-1})|\cr
+&\le 2M\epsilon+2M\epsilon
+   +\sup_{w\in K,z\in V}|f(wzy^{-1})-f(wx^{-1})|\cr
+&\le 4M\epsilon+2\epsilon.\cr}$$
+
+\noindent So we have the result in all cases.\ \Qed
+
+\medskip
+
+\qquad\grheadd\ As $s$, $t$, $x$, $\epsilon$ and $f$ are arbitrary,
+$\langle\nu^{(s,t)}_x\rangle_{0\le s<t,x\in U}$ is narrowly (= vaguely)
+continuous.
+
+\medskip
+
+\quad{\bf (ii)} Given $\epsilon>0$, there is a $\delta>0$ such that
+$\lambda_t\{x:\rho(x,e)<\epsilon\}\ge 1-\epsilon$ whenever $0<t\le\delta$.
+Now suppose that $x\in U$ and $0\le s<t\le s+\delta$.   Then
+
+$$\eqalignno{\nu^{(s,t)}_xB(x,\epsilon)
+&=\lambda_{t-s}(B(x,\epsilon)x^{-1})
+=\lambda_{t-s}B(e,\epsilon)\cr
+\displaycause{because $\rho$ is \rti}
+&\ge 1-\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary,
+$\langle\nu^{(s,t)}_x\rangle_{0\le s<t,x\in U}$ is uniformly
+time-continuous on the right.
+
+\medskip
+
+{\bf (c)} This is now just a matter of putting 455O and 455H
+together.
+}%end of proof of 455P
+
+\leader{455Q}{L\'evy processes}
+\cmmnt{If we approach as
+probabilists, without prejudices in favour of any particular realization,
+the processes in 455P manifest themselves as follows.}
+Let $U$ be a separable metrizable
+topological group with identity $e$, and consider the following list of
+properties of a family
+$\langle X_t\rangle_{t\ge 0}$ of $U$-valued random variables:
+
+\inset{$X_0=e$ almost everywhere,}
+
+\inset{$\Pr(X_tX_s^{-1}\in F)=\Pr(X_{t-s}\in F)$ whenever $0\le s<t$ and
+$F\subseteq U$ is Borel}
+
+\noindent (the process is {\bf stationary}),
+
+\inset{whenever $0\le t_0<t_1<\ldots<t_n$, then
+$X_{t_1}X_{t_0}^{-1},X_{t_2}X_{t_1}^{-1},\ldots,X_{t_n}X_{t_{n-1}}^{-1}$
+are independent}
+
+\noindent\cmmnt{ in the sense of 418U }(the process has
+{\bf independent increments}),
+
+\inset{$X_t\to e$ in measure as $t\downarrow 0$}
+
+\noindent (that is, $\lim_{t\downarrow 0}\Pr(X_t\in G)=1$ for every
+neighbourhood $G$ of the identity).
+\cmmnt{I say here that $U$ should be
+separable and metrizable
+in order to ensure that all the functions $X_tX_s^{-1}$
+should be measurable (of course it will be enough if $U$ is metrizable and
+of measure-free weight, as in 438E).}   Such a family I will call a
+{\bf L\'evy process}.
+
+\leader{455R}{Theorem} Let $U$ be a Polish group
+with identity $e$
+which is complete under a \rti\ metric inducing its topology.
+A family $\langle X_t\rangle_{t\ge 0}$
+of $U$-valued random variables is a L\'evy process
+iff there is a family $\langle\lambda_t\rangle_{t>0}$ of Radon probability
+measures on
+$U$, satisfying the conditions of 455P, such that if we start from $x^*=e$
+and build the measure $\hat\mu$ on $U^{\coint{0,\infty}}$ as in 455P, then
+
+\Centerline{$\Pr(X_{t_i}\in F_i$ for every $i\le n)
+=\hat\mu\{\omega:\omega(t_i)\in F_i$ for every $i\le n\}$}
+
+\noindent whenever $t_0,\ldots,t_n\in\coint{0,\infty}$ and $F_i\subseteq U$
+is a Borel set for every $i\le n$.
+
+\proof{{\bf (a)} Suppose we have a family
+$\langle\lambda_t\rangle_{t>0}$ of Radon probability measures on $U$
+such that $\lambda_s*\lambda_t=\lambda_{s+t}$ for all $s$, $t>0$ and
+$\lim_{t\downarrow 0}\lambda_tG=1$ for every open
+neighbourhood $G$ of $e$ in $U$.   Define
+$\langle\nu_x^{(s,t)}\rangle_{0\le s<t,x\in U}$ as in 455P,
+and let $\hat\mu$ be the corresponding completed measure on
+$\Omega=U^{\coint{0,\infty}}$ as in 455Pc, starting from
+$x^*=e$.   Set $X_t(\omega)=\omega(t)$ for $t\ge 0$ and $\omega\in\Omega$.
+Then $X_0=e$ a.e.\ (455Ea) and
+
+\Centerline{$\Pr(X_t\in F)=\hat\mu X_t^{-1}[F]=\nu^{(0,t)}_0F=\lambda_tF$}
+
+\noindent for $t>0$ and $F\in\Cal B(U)$ (455Ea again).   In particular,
+
+\Centerline{$\lim_{t\downarrow 0}\Pr(X_t\in G)
+=\lim_{t\downarrow 0}\lambda_tG=1$}
+
+\noindent for every neighbourhood $G$ of the identity.
+If $0<s<t$ and $F\in\Cal B(U)$, set
+$H=\{(e,x,y):yx^{-1}\in F\}\subseteq U^3$.   Then
+
+$$\eqalignno{\Pr(X_tX_s^{-1}\in F)
+&=\hat\mu\{\omega:(\omega(0),\omega(s),\omega(t))\in H\}\cr
+&=\iint\chi H(e,x,y)\nu_x^{(s,t)}(dy)\nu_e^{(0,s)}(dx)\cr
+\displaycause{455E}
+&=\iint\chi H(e,x,yx)\lambda_{t-s}(dy)\lambda_s(dx)\cr
+&=\iint\chi F(y)\lambda_{t-s}(dy)\lambda_s(dx)
+=\lambda_{t-s}(F)
+=\Pr(X_{t-s}\in F).\cr}$$
+
+\noindent If $0=s<t$ then $X_tX_s^{-1}\eae X_t=X_{t-s}$, of course.
+If $0=t_0<t_1<\ldots<t_n$ and
+$F_0,\ldots,F_{n-1}\in\Cal B(U)$, set
+
+\Centerline{$E_k
+=\{\omega:\omega\in\Omega$, $\omega(t_{i+1})\omega(t_i)^{-1}\in F_i$
+  for every $i<k\}$,}
+
+\Centerline{$H_k=\{(x_0,\ldots,x_k):x_{i+1}x_i^{-1}\in F_i$ for every
+$i<k\}\subseteq U^{k+1}$}
+
+\noindent for $k\le n$.   Then
+
+\Centerline{$\hat\mu E_1
+=\hat\mu\{\omega:\omega(t_1)\omega(0)^{-1}\in F_0\}
+=\hat\mu\{\omega:\omega(t_1)\in F_0\}
+=\nu_e^{(0,t_1)}F_0
+=\lambda_{t_1}F_0$,}
+
+\noindent and for $k\ge 2$
+
+$$\eqalignno{\Pr(X_{t_{i+1}}X_{t_i}^{-1}&\in F_i\text{ for every }i<k)\cr
+&=\hat\mu E_k
+=\int\ldots\int\chi H_k(e,x_1,\ldots,x_k)
+    \nu_{x_{k-1}}^{(t_{k-1},t_k)}(dx_k)
+    \ldots\nu_e^{(0,t_1)}(dx_1)\cr
+\displaycause{455E}
+&=\int\ldots\iint\chi H_k(e,x_1,\ldots,x_{k-1},x_kx_{k-1})
+    \lambda_{t_k-t_{k-1}}(dx_k)\cr
+&\mskip100mu
+    \nu_{x_{k-2}}^{(t_{k-2},t_{k-1})}(dx_{k-1})
+    \ldots\nu_e^{(0,t_1)}(dx_1)\cr
+&=\int\ldots\iint\chi H_{k-1}(e,x_1,\ldots,x_{k-1})
+    \chi F_{k-1}(x_k)
+    \lambda_{t_k-t_{k-1}}(dx_k)\cr
+&\mskip100mu
+    \nu_{x_{k-2}}^{(t_{k-2},t_{k-1})}(dx_{k-1})
+    \ldots\nu_e^{(0,t_1)}(dx_1)\cr
+&=\lambda_{t_k-t_{k-1}}(F_{k-1})
+    \int\ldots\int\chi H_{k-1}(e,x_1,\ldots,x_{k-1})\cr
+&\mskip100mu
+    \nu_{x_{k-2}}^{(t_{k-2},t_{k-1})}(dx_{k-1})
+    \ldots\nu_e^{(0,t_1)}(dx_1)\cr
+&=\lambda_{t_k-t_{k-1}}(F_{k-1})\cdot\hat\mu E_{k-1}.\cr}$$
+
+\noindent So
+
+$$\eqalign{\Pr(X_{t_{i+1}}X_{t_i}^{-1}&\in F_i\text{ for every }i<n)
+=\hat\mu E_n
+=\prod_{i=0}^{n-1}\lambda_{t_i-t_{i-1}}F_i\cr
+&=\prod_{i=0}^{n-1}\Pr(X_{t_i-t_{i-1}}\in F_i)
+=\prod_{i=0}^{n-1}\Pr(X_{t_i}X_{t_{i-1}}^{-1}\in F_i).\cr}$$
+
+\noindent As $F_0,\ldots,F_{n-1}$ are arbitrary,
+$X_{t_1}X_{t_0}^{-1},X_{t_2}X_{t_1}^{-1},\ldots,X_{t_n}X_{t_{n-1}}^{-1}$
+are independent.   Thus all the conditions of 455Q are satisfied.
+
+\medskip
+
+{\bf (b)(i)} In the other direction, given a family
+$\langle X_t\rangle_{t\ge 0}$ with the properties listed in 455Q, then for
+each $t>0$ there is a Radon measure
+$\lambda_t$ on $U$ such that $\lambda_tF=\Pr(X_t\in F)$
+for every $F\in\Cal B(U)$, for each $t>0$.   \Prf\ $U$ is Polish, therefore
+analytic, and we can apply 433Cb to the Borel measure
+$F\mapsto\Pr(X_t\in F)$.\ \QeD\   If $s$, $t>0$, then
+the distribution of $X_{s+t}X_s^{-1}$ is the same as the distribution of
+$X_t$, so is $\lambda_t$.
+
+If $s$, $t>0$ then $\lambda_{s+t}=\lambda_s*\lambda_t$.   \Prf\ If
+$F_1$, $F_2\in\Cal B(U)$ then
+
+$$\eqalignno{\Pr((X_t,X_{s+t}X_t^{-1})\in F_1\times F_2)
+&=\Pr(X_t\in F_1,X_{s+t}X_t^{-1}\in F_2)\cr
+&=\Pr(X_t\in F_1)\Pr(X_{s+t}X_t^{-1}\in F_2)\cr
+\displaycause{because $X_t$ and $X_{s+t}X_t^{-1}$ are independent}
+&=\lambda_tF_1\cdot\lambda_sF_2
+=(\lambda_t\times\lambda_s)(F_1\times F_2).\cr}$$
+
+\noindent By the Monotone Class Theorem, or otherwise,
+
+\Centerline{$\Pr((X_t,X_{s+t}X_t^{-1})\in H)
+=(\lambda_t\times\lambda_s)H$}
+
+\noindent for every $H\in\Cal B(U)\tensorhat\Cal B(U)=\Cal B(U^2)$.   So if
+$F\in\Cal B(U)$ we shall have
+
+$$\eqalign{(\lambda_s*\lambda_t)(F)
+&=(\lambda_s\times\lambda_t)\{(x,y):xy\in F\}
+=(\lambda_t\times\lambda_s)\{(y,x):xy\in F\}\cr
+&=\Pr(X_{s+t}X_t^{-1}X_t\in F)
+=\lambda_{s+t}F,\cr}$$
+
+\noindent and $\lambda_s*\lambda_t=\lambda_{s+t}$.  (Cf.\
+272T\formerly{2{}72S}.)\ \Qed
+
+Next, for any neighbourhood $G$ of $e$,
+
+\Centerline{$\lim_{t\downarrow 0}\lambda_tG
+=\lim_{t\downarrow 0}\Pr(X_t\in G)
+=1$.}
+
+\noindent So $\langle\lambda_t\rangle_{t>0}$ satisfies the conditions of
+455P.   Let $\hat\mu$ be the corresponding completed measure on
+$U^{\coint{0,\infty}}$ as in 455Pc.
+
+\medskip
+
+\quad{\bf (ii)} $\Pr(X_{t_i}\in F_i$ for every $i\le k)
+=\hat\mu\{\omega:\omega(t_i)\in F_i$ for every $i\le k\}$
+whenever $t_0,\ldots,t_n\in\coint{0,\infty}$ and $F_i\in\Cal B(U)$
+for every $i\le k$.   \Prf\ It is enough to consider the case
+$0=t_0<t_1<\ldots<t_n$.   In this case, whenever
+$E_0,\ldots,E_n\in\Cal B(U)$,
+
+$$\eqalignno{
+\Pr((X_{t_0},&X_{t_1}X_{t_0}^{-1},\ldots,X_{t_n}X_{t_{n-1}}^{-1})\in
+  E_0\times\ldots\times E_n)\cr
+&=\Pr(X_{t_0}\in E_0)\Pr(X_{t_1}X_{t_0}^{-1}\in E_1)\ldots
+  \Pr(X_{t_n}X_{t_{n-1}}^{-1})\in E_n)\cr
+&=\delta_e(E_0)\lambda_{t_1-t_0}(E_1)\ldots\lambda_{t_n-t_{n-1}}(E_n)\cr
+\displaycause{where $\delta_e$ is the Dirac measure concentrated at $e$}
+&=\hat\mu\{\omega:\omega(t_0)\in E_0\}
+  \hat\mu\{\omega:\omega(t_1)\omega(t_0)^{-1}\in E_1\}\ldots\cr
+&\mskip200mu
+  \hat\mu\{\omega:\omega(t_n)\omega(t_{n-1})^{-1}\in E_n\}\cr
+&=\hat\mu\{\omega:\omega(t_0)\in E_0,\,
+  \omega(t_1)\omega(t_0)^{-1}\in E_1,\,
+  \ldots\omega(t_n)\omega(t_{n-1})^{-1}\in E_n\}\cr
+\displaycause{by (a) above}
+&=\hat\mu\{\omega:(\omega(t_0),\omega(t_1)\omega(t_0)^{-1},\ldots,
+  \omega(t_n)\omega(t_{n-1})^{-1})\in E_0\times\ldots\times E_n\}.\cr}$$
+
+\noindent So in fact
+
+$$\eqalign{\Pr((X_{t_0},X_{t_1}X_{t_0}^{-1},
+  &\ldots,X_{t_n}X_{t_{n-1}}^{-1})\in H)\cr
+&=\hat\mu\{\omega:(\omega(t_0),\omega(t_1)\omega(t_0)^{-1},\ldots,
+  \omega(t_n)\omega(t_{n-1})^{-1})\in H\}\cr}$$
+
+\noindent for every Borel set $H\subseteq U^{n+1}$.
+
+Set
+
+\Centerline{$\phi(x_0,\ldots,x_n)
+=(x_0,x_1x_0,x_2x_1x_0,\ldots,x_nx_{n-1}\ldots x_1x_0)$}
+
+\noindent for $x_0,\ldots,x_n\in U$, so that $\phi:U^{n+1}\to U^{n+1}$ is
+continuous.   If $H\in\Cal B(U^{n+1})$, then
+
+$$\eqalign{\Pr(X_{t_0},\ldots,X_{t_n}\in H)
+&=\Pr(\phi(X_{t_0},X_{t_1}X_{t_0}^{-1},\ldots,X_{t_n}X_{t_{n-1}}^{-1})
+  \in H)\cr
+&=\Pr((X_{t_0},X_{t_1}X_{t_0}^{-1},\ldots,X_{t_n}X_{t_{n-1}}^{-1})
+  \in\phi^{-1}[H])\cr
+&=\hat\mu\{\omega:((\omega(t_0),\omega(t_1)\omega(t_0)^{-1},\ldots,
+  \omega(t_n)\omega(t_{n-1})^{-1})\in\phi^{-1}[H]\}\cr
+&=\hat\mu\{\omega:(\omega(t_0),\ldots,\omega(t_n))\in H\}.\cr}$$
+
+\noindent Taking $H=F_0\times\ldots\times F_n$ we have the result.\ \Qed
+}%end of proof of 455R
+
+\leader{455S}{Lemma}\dvAnew{2013} Let $U$ be a metrizable
+topological group which is complete
+under a \rti\ metric inducing its topology.
+Let $\langle\lambda_t\rangle_{t>0}$
+be a family of Radon probability measures
+on $U$ such that $\lambda_s*\lambda_t=\lambda_{s+t}$ for all $s$, $t>0$
+and $\lim_{t\downarrow 0}\lambda_tG=1$ for every open
+neighbourhood $G$ of the identity $e$ in $U$.   For $x\in U$ and
+$0\le s<t$, let $\nu_x^{(s,t)}$ be the Radon probability measure on $U$
+defined by saying that $\nu_x^{(s,t)}(E)=\lambda_{t-s}(Ex^{-1})$ whenever
+$\lambda_{t-s}$ measures $Ex^{-1}$.
+
+(a) If $0\le t_0<t_1<\ldots<t_n$, $z\in U$ and $f:\BbbR^J\to\Bbb R$ is a
+bounded Borel measurable function, where $J=\{t_0,\ldots,t_n\}$, then
+
+$$\eqalign{
+&\iint\ldots\int f(z,x_1,\ldots,x_n)\nu_{x_{n-1}}^{(t_{n-1},t_n)}(dx_n)
+\ldots\nu_{x_1}^{(t_1,t_2)}(dx_2)\nu_z^{(t_0,t_1)}(dx_1)\cr
+&\mskip50mu
+=\iint\ldots\int f(z,x_1z,\ldots,x_nz)\nu_{x_{n-1}}^{(t_{n-1},t_n)}(dx_n)\cr
+&\mskip200mu
+\ldots\nu_{x_1}^{(t_1,t_2)}(dx_2)\nu_e^{(t_0,t_1)}(dx_1).\cr}$$
+
+(b) Take $\omega\in U^{\coint{0,\infty}}$ and $a\ge 0$.
+Let $\hat\mu$ and $\hat\mu_{\omega a}$
+be the measures on $U^{\coint{0,\infty}}$ defined
+from $\langle\nu^{(s,t)}_x\rangle_{s<t,x\in U}$ by the method of 455E,
+starting from $x^*=e$.   Define
+$\phi_{\omega a}:U^{\coint{0,\infty}}\to U^{\coint{0,\infty}}$ by setting
+
+$$\eqalign{\phi_{\omega a}(\omega')(t)
+&=\omega(t)\text{ if }t<a,\cr
+&=\omega'(t-a)\omega(a)\text{ if }t\ge a.\cr}$$
+
+\noindent Then $\hat\mu_{\omega a}$ is the image measure
+$\hat\mu\phi_{\omega a}^{-1}$.
+
+(c) In (b), suppose that $\omega$ belongs to the set $\Cdlg$ of \cadlag\
+functions from $\coint{0,\infty}$ to $U$.
+Then $\phi_{\omega a}(\omega')\in\Cdlg$ for every
+$\omega'\in\Cdlg$, and $\phi_{\omega a}:\Cdlg\to\Cdlg$ is \imp\ for
+the subspace measures $\ddot\mu$ and $\ddot\mu_{\omega a}$ on $\Cdlg$.
+
+\proof{{\bf (a)(i)} If $x\in U$ and $0\le s<t$, then
+$\nu_x^{(s,t)}(E)=\nu_e^{(s,t)}(Ex^{-1})$ for any $E\subseteq U$ such that
+either is defined;  so
+$\int f(y)\nu_x^{(s,t)}(dy)=\int f(yx)\nu_e^{(s,t)}(dy)$ for any function
+$f:U\to\Bbb R$ for which either is defined.   More generally,
+
+\Centerline{$\int f(y)\nu_{xz}^{(s,t)}(dy)=\int f(yxz)\nu_e^{(s,t)}(dy)
+=\int f(yz)\nu_x^{(s,t)}(dy)$}
+
+\noindent whenever $f$ is such that any of the three integrals is defined.
+
+\medskip
+
+\quad{\bf (ii)} Now induce on $n$.   For the case $n=0$, the natural
+interpretation of both sides of the formula presented
+is $f(z)$.   For the inductive step to $n+1$,
+we have
+
+$$\eqalignno{
+&\int\ldots\int f(z,x_1,x_2,\ldots,x_{n+1})
+   \nu_{x_n}^{(t_n,t_{n+1})}(dx_{n+1})\ldots\nu_z^{(t_0,t_1)}(dx_1)\cr
+&\mskip50mu
+=\int\ldots\int f(z,x_1z,\ldots,x_nz,x_{n+1})
+   \nu_{x_nz}^{(t_n,t_{n+1})}(dx_{n+1})
+%\cr&\mskip200mu
+\ldots\nu_e^{(t_0,t_1)}(dx_1)\cr
+\displaycause{by the inductive hypothesis applied to
+$(x_0,x_1,\ldots,x_n)
+\mapsto\int f(x_0,\ldots,x_n,x_{n+1})\nu_{x_n}^{(t_n,t_{n+1})}(dx_{n+1})$}
+&\mskip50mu
+=\int\ldots\int f(z,x_1z,\ldots,x_nz,x_{n+1}z)
+   \nu_{x_n}^{(t_n,t_{n+1})}(dx_{n+1})
+%\cr&\mskip200mu
+\ldots\nu_e^{(t_0,t_1)}(dx_1)\cr}$$
+
+\noindent by (i) applied to the functions
+$y\mapsto f(z,x_1z,\ldots,x_nz,y)$ for each $x_1,\ldots,x_n$.
+
+\medskip
+
+{\bf (b)(i)} Suppose that $J\subseteq\coint{0,\infty}$ is a finite set
+containing both $0$ and $a$, enumerated in increasing order as
+$(t_0,\ldots,t_n)$ with $a=t_j$.   Set $z=\omega(a)$.
+Let $f:\BbbR^J\to\Bbb R$ be a function.
+Then $f\pi_J\phi_{\omega a}=g\pi_K$ where $K=\{0,t_{j+1}-a,\ldots,t_n-a\}$
+and $g(x_j,\ldots,x_n)
+=f(\omega(0),\omega(t_1),\ldots,\omega(t_{j-1}),x_jz,\ldots,x_nz)$ for
+$x_j,\ldots,x_n\in U$.
+\Prf\ For $\omega'\in U^{\coint{0,\infty}}$,
+
+$$\eqalign{f\pi_J\phi_{\omega a}(\omega')
+&=(f(\phi_{\omega a}(\omega')(t_0)),\ldots,f(\phi_{\omega a}(\omega')(t_n))
+   \cr
+&=(f(\omega(0)),\ldots,f(\omega(t_{j-1})),f(\omega'(0)z),
+   \ldots f(\omega'(t_n-a)z))\cr
+&=g(\omega'(0),\ldots,\omega'(t_n-a))
+=g\pi_K(\omega').  \text{\Qed}\cr}$$
+
+\medskip
+
+{\bf (ii)} Again suppose that $J\subseteq\coint{0,\infty}$ is a finite set
+containing both $0$ and $a$, enumerated in increasing order as
+$(t_0,\ldots,t_n)$ with $a=t_j$, and set $z=\omega(a)$.
+This time, let $f:\BbbR^J\to\Bbb R$ be a bounded Borel measurable function.
+Then
+
+$$\eqalignno{\int f\pi_Jd\hat\mu_{\omega a}
+&=\int\ldots\int
+    f(e,x_1,\ldots,x_n)\nu_{\omega ax_{n-1}}^{(t_{n-1},t_n)}(dx_n)
+  \ldots\nu_{\omega a0}^{(0,t_1)}(dx_1)\cr
+&=\int\ldots\iint\ldots\int
+    f(e,x_1,\ldots,x_{j-1},x_j,x_{j+1},\ldots,x_n)\cr
+&\mskip100mu
+    \nu_{x_{n-1}}^{(t_{n-1},t_n)}(dx_n)
+      \ldots\nu_z^{(a,t_{j+1})}(dx_{j+1})
+      \delta_z(dx_j)\ldots\delta_{\omega(t_1)}(dx_1)\cr
+\displaycause{reading from the formulae in 455E;  here each $\delta_x$ is a
+Dirac measure on $U$}
+&=\int\ldots\int
+    f(e,\omega(t_1),\ldots,z,x_{j+1},\ldots,x_n)\cr
+&\mskip200mu
+    \nu_{x_{n-1}}^{(t_{n-1},t_n)}(dx_n)
+  \ldots\nu_z^{(a,t_{j+1})}(dx_{j+1})\cr
+&=\int\ldots\int
+    f(e,\omega(t_1),\ldots,z,x_{j+1}z,\ldots,x_nz)\cr
+&\mskip200mu
+    \nu_{x_{n-1}}^{(t_{n-1},t_n)}(dx_n)
+  \ldots\nu_e^{(a,t_{j+1})}(dx_{j+1})\cr
+\displaycause{applying (a) to the function $(y_0,\ldots,y_{n-j})
+\mapsto f(e,\ldots,\omega(t_{j-1}),y_0,\ldots,y_{n-j})$}
+&=\int\ldots\int
+    g(e,x_{j+1},\ldots,x_n)
+    \nu_{x_{n-1}}^{(t_{n-1},t_n)}(dx_n)
+  \ldots\nu_e^{(a,t_{j+1})}(dx_{j+1})\cr
+\displaycause{where $g(x_j,\ldots,x_n)
+=f(\omega(0),\omega(t_1),\ldots,\omega(t_{j-1}),x_jz,\ldots,x_nz)$ for
+$x_j,\ldots,x_n\in U$}
+&=\int\ldots\int g(e,x_{j+1},\ldots,x_n)
+    \nu_{x_{n-1}}^{(t_{n-1}-a,t_n-a)}(dx_n)
+  \ldots\nu_e^{(0,t_{j+1}-a)}(dx_{j+1})\cr
+\displaycause{because $\nu_x^{(s-a,t-a)}E=\lambda_{t-s}(Ex^{-1})
+=\nu_x^{(s,t)}E$ whenever $E\subseteq\BbbR^K$ is Borel, $x\in U$ and
+$a\le s<t$}
+&=\int g\pi_Kd\hat\mu\cr
+\displaycause{where $K=\{0,t_{j+1}-a,\ldots,t_n-a\}$}
+&=\int f\pi_J\phi_{\omega a}d\hat\mu
+=\int f\pi_Jd(\hat\mu\phi_{\omega a}^{-1}).\cr}$$
+
+\noindent As $f$ and $J$ are arbitrary, $\hat\mu_{\omega a}$ and
+$\hat\mu\phi_{\omega a}^{-1}$ agree on the algebra
+$\bigotimes_{\coint{0,\infty}}\Cal B(U)$ generated by sets of the form
+$\{\omega:\omega(t)\in E\}$ for $t\ge 0$ and Borel sets $E\subseteq U$.
+By the Monotone Class Theorem, the measures agree on the $\sigma$-algebra
+$\Tensorhat_{\coint{0,\infty}}\Cal B(U)$
+generated by $\bigotimes_{\coint{0,\infty}}\Cal B(U)$;  because they are
+both defined as complete measures inner regular with respect to this
+$\sigma$-algebra, they are identical.
+
+\medskip
+
+{\bf (c)} The defining formula for $\phi_{\omega a}$ makes it plain that
+$\phi_{\omega a}(\omega')$ is \cadlag\ whenever $\omega$, $\omega'$ are
+\cadlag;  and in fact that, if $\omega$ is \cadlag, then
+$\phi_{\omega a}(\omega')$ is \cadlag\ iff $\omega'$ is \cadlag.
+If $W$ is measured by $\ddot\mu_{\omega a}$, there is a
+$W'\in\dom\hat\mu_{\omega a}$ such that $W=W'\cap\Cdlg$.   In this case,
+$\phi_{\omega a}^{-1}[W]=\phi_{\omega a}^{-1}[W']\cap\Cdlg$
+while $\phi_{\omega a}^{-1}[W']\in\dom\hat\mu$;  so
+$\ddot\mu\phi_{\omega a}^{-1}[W]$ is defined and equal to
+
+\Centerline{$\hat\mu\phi_{\omega a}^{-1}[W']
+=\hat\mu_{\omega a}W'=\ddot\mu_{\omega a}W$.}
+}%end of proof of 455S
+
+\leader{455T}{Corollary}\dvAnew{2013} Let $U$ be a metrizable
+topological group which is complete
+under a \rti\ metric inducing its topology.
+Let $\langle\lambda_t\rangle_{t>0}$
+be a family of Radon probability measures
+on $U$ such that $\lambda_s*\lambda_t=\lambda_{s+t}$ for all $s$, $t>0$
+and $\lim_{t\downarrow 0}\lambda_tG=1$ for every open
+neighbourhood $G$ of the identity $e$ in $U$;
+let $\hat\mu$ be the measure on $U^{\coint{0,\infty}}$ defined
+from $\langle\lambda_t\rangle_{t>0}$ by the method of 455P, starting from
+$x^*=e$.   Let $\Cdlg$ be the set of \cadlag\ functions from
+$\coint{0,\infty}$ to $U$, $\ddot\mu$ the subspace measure on $\Cdlg$
+and $\ddot\Sigma$ its domain.   For $t\ge 0$, let $\ddot\Sigma_t$ be
+
+\Centerline{$\{F:F\in\ddot\Sigma$, $\omega'\in F$ whenever $\omega\in F$,
+   $\omega'\in\Cdlg$ and $\omega'\restr[0,t]=\omega\restr[0,t]\}$}
+
+\noindent and
+$\hat{\ddot\Sigma}_t=\{F\symmdiff A:F\in\ddot\Sigma_t$, $\ddot\mu A=0\}$.
+Then $\hat{\ddot\Sigma}_t=\bigcap_{s>t}\hat{\ddot\Sigma}_s$ includes
+$\ddot\Sigma^+_t=\bigcap_{s>t}\ddot\Sigma_s$.
+
+\proof{{\bf (a)} I show first that
+$\ddot\Sigma^+_t\subseteq\hat{\ddot\Sigma}_t$.   
+\Prf\ Take $E\in\ddot\Sigma^+_t$.
+Let $\tau:\Cdlg\to[0,\infty]$
+be the constant stopping time with value $t$,
+and $f$ the characteristic function $\chi E$.   Set
+$g(\omega)=\int_{\Cdlg}fd\ddot\mu_{\omega t}$ when this is defined in
+$\Bbb R$, where $\ddot\mu_{\omega t}$ is defined as in 455O;  then
+$g$ is a conditional expectation of $f$ on $\ddot\Sigma_{\tau}$
+(455Ob).   Since
+
+$$\eqalign{\ddot\Sigma_{\tau}^+
+&=\{H:H\in\ddot\Sigma,\,H\cap\{\omega:\tau(\omega)\le s\}\in\ddot\Sigma_s^+
+\text{ for every }s\ge 0\}\cr
+&=\{H:H\in\ddot\Sigma,\,H\in\ddot\Sigma_s^+
+\text{ for every }s\ge t\}
+=\ddot\Sigma_t^+\cr}$$
+
+\noindent contains $E$, $g\eae\chi E$.
+Setting $F=\{\omega:\omega\in\dom g$, $g(\omega)=1\}$, $F\in\ddot\Sigma$
+(remember that $\ddot\mu$ is complete), and $E\symmdiff F$ is negligible.
+
+Now 455Sc, with 235Gb, tells us that
+
+\Centerline{$g(\omega)=\int_{\Cdlg}fd\ddot\mu_{\omega t}
+=\int_{\Cdlg}f\phi_{\omega t}d\ddot\mu$}
+
+\noindent whenever either integral is defined in $\Bbb R$, where
+
+$$\eqalign{\phi_{\omega t}(\omega')(s)
+&=\omega(s)\text{ if }s<t,\cr
+&=\omega'(s-t)\omega(t)\text{ if }s\ge t.\cr}$$
+
+\noindent If $\omega_0$, $\omega_1\in\Cdlg$ and
+$\omega_0\restr[0,t]=\omega_1\restr[0,t]$, then
+$\phi_{\omega_0t}=\phi_{\omega_1t}$ so $g(\omega_0)=g(\omega_1)$ if either
+is defined.   It follows that $\omega_0\in F$ iff $\omega_1\in F$.
+As $\omega_0$ and $\omega_1$ are arbitrary, $F\in\ddot\Sigma_t$ and
+$E\in\hat{\ddot\Sigma}_t$.
+
+\medskip
+
+{\bf (b)} Of course $\hat{\ddot\Sigma}_t\subseteq\hat{\ddot\Sigma}_s$ 
+whenever $s>t$.   Putting (a) and 455L(f-ii) together,
+
+\Centerline{$\bigcap_{s>t}\hat{\ddot\Sigma}_s
+=\{E\symmdiff A:E\in\ddot\Sigma_t^+$, $\ddot\mu A=0\}
+\subseteq\{E\symmdiff A:E\in\hat{\ddot\Sigma}_t$, $\ddot\mu A=0\}
+=\hat{\ddot\Sigma}_t$}
+
+\noindent and we have equality.
+}%end of proof of 455T
+
+\leader{455U}{Theorem} Let $U$ be a metrizable
+topological group which is complete
+under a \rti\ metric inducing its topology.
+Let $\langle\lambda_t\rangle_{t>0}$
+be a family of Radon probability measures
+on $U$ such that $\lambda_s*\lambda_t=\lambda_{s+t}$ for all $s$, $t>0$
+and $\lim_{t\downarrow 0}\lambda_tG=1$ for every open
+neighbourhood $G$ of the identity $e$ in $U$;
+let $\hat\mu$ be the measure on $U^{\coint{0,\infty}}$ defined
+from $\langle\lambda_t\rangle_{t>0}$ by the method of 455P, starting from
+$x^*=e$.   Let $\Cdlg$ be the set of \cadlag\ functions from
+$\coint{0,\infty}$ to $U$, $\ddot\mu$ the subspace measure on $\Cdlg$
+and $\ddot\Sigma$ its domain.   For $t\ge 0$, let $\ddot\Sigma_t$ be
+
+\Centerline{$\{F:F\in\ddot\Sigma$, $\omega'\in F$ whenever $\omega\in F$,
+   $\omega'\in\Cdlg$ and $\omega'\restr[0,t]=\omega\restr[0,t]\}$,}
+
+\noindent and $\ddot\Sigma^+_t=\bigcap_{s>t}\ddot\Sigma_s$;  let
+$\tau:\Cdlg\to[0,\infty]$ be a stopping time adapted to
+$\langle\ddot\Sigma^+_t\rangle_{t\ge 0}$.   Define
+$\phi_{\tau}:\Cdlg\times\Cdlg\to\Cdlg$ by setting
+
+$$\eqalign{\phi_{\tau}(\omega,\omega')(t)
+&=\omega'(t-\tau(\omega))\omega(\tau(\omega))
+   \text{ if }t\ge\tau(\omega),\cr
+&=\omega(t)\text{ otherwise}.\cr}$$
+
+\noindent Then $\phi_{\tau}$ is \imp\ for the product measure
+$\ddot\mu\times\ddot\mu$ on $\Cdlg\times\Cdlg$ and $\ddot\mu$ on $\Cdlg$.
+
+\proof{{\bf (a)} First, I ought to remark that we know from 455P
+that the conditions of 455O are satisfied.   I aim to apply 455Oa, using
+455S to give a description of the measures
+$\ddot\mu_{\omega,\tau(\omega)}$.
+Now if $f$ is $\ddot\mu$-integrable, we have, in the notation of 455O and
+455S,
+
+$$\eqalignno{\int_{\Cdlg}fd\ddot\mu
+&=\int_{\Cdlg}\int_{\Cdlg}fd\ddot\mu_{\omega,\tau(\omega)}\ddot\mu(d\omega)\cr
+\displaycause{455Oa}
+&=\int_{\Cdlg}\int_{\Cdlg}f\phi_{\omega,\tau(\omega)}(\omega')
+  \ddot\mu(d\omega')\ddot\mu(d\omega)\cr
+\displaycause{455Sc}
+&=\int_{\Cdlg}\int_{\Cdlg}f\phi_{\tau}(\omega,\omega')
+  \ddot\mu(d\omega')\ddot\mu(d\omega)\cr.}$$
+
+\medskip
+
+{\bf (b)} To convert the repeated integral into the product measure,
+we have still to check for measurability.    The point is that, writing
+$\Lambda$ for the domain of the product measure $\ddot\mu\times\ddot\mu$,
+$\phi_{\tau}$ is
+$(\Lambda,\Tensorhat_{\coint{0,\infty}}\Cal B(U))$-measurable.
+
+\medskip
+
+\Prf{\bf (i)} Consider first the case in which $U$ is separable.
+Take $t\ge 0$.   Then
+$E_t=\{\omega:\omega\in\Cdlg$, $\tau(\omega)\le t\}$ belongs to
+$\ddot\Sigma$.   The function
+
+\Centerline{$\omega\mapsto t-\tau(\omega):E_t\to\coint{0,\infty}$}
+
+\noindent is $(\ddot\Sigma,\Cal B(\coint{0,\infty}))$-measurable;
+the function
+
+\Centerline{$(\omega',s)\mapsto\omega'(s):\Cdlg\times\coint{0,\infty}
+\to U$}
+
+\noindent is
+$(\ddot\Sigma\tensorhat\Cal B(\coint{0,\infty}),\Cal B(U))$-measurable, by
+4A3Wc, because $U$ is Polish;   so the function
+
+\Centerline{$(\omega,\omega')\mapsto\omega'(t-\tau(\omega)):
+   E_t\times\Cdlg\to U$}
+
+\noindent is $(\ddot\Sigma\tensorhat\ddot\Sigma,\Cal B(U))$-measurable.   Next,
+similarly,
+
+\Centerline{$\omega\mapsto\omega(\tau(\omega)):E_t\to U$}
+
+\noindent is $(\ddot\Sigma,\Cal B(U))$-measurable, while
+
+\Centerline{$(y,z)\mapsto yz:U\times U\to U$}
+
+\noindent is $(\Cal B(U)\tensorhat\Cal B(U),\Cal B(U))$-measurable,
+because $U$ is a second-countable topological group.   But this means
+that
+
+\Centerline{$(\omega,\omega')
+  \mapsto\omega'(t-\tau(\omega))\omega(\tau(\omega)):
+  E_t\times\Cdlg\to U$}
+
+\noindent is $(\ddot\Sigma\tensorhat\ddot\Sigma,\Cal B(U))$-measurable.
+On the other hand, of course,
+
+\Centerline{$(\omega,\omega')\mapsto\omega(t):
+   (\Cdlg\setminus E_t)\times\Cdlg\to U$}
+
+\noindent is $(\ddot\Sigma\tensorhat\ddot\Sigma,\Cal B(U))$-measurable.
+Putting these together,
+
+\Centerline{$(\omega,\omega')\mapsto\phi_{\tau}(\omega,\omega')(t):
+   \Cdlg\times\Cdlg\to U$}
+
+\noindent is $(\ddot\Sigma\tensorhat\ddot\Sigma,\Cal B(U))$-measurable.
+This is true for every $t\ge 0$, so $\phi_{\tau}\restr\Cdlg\times\Cdlg$ is
+$(\ddot\Sigma\tensorhat\ddot\Sigma,
+  \Tensorhat_{\coint{0,\infty}}\Cal B(U))$-measurable.
+
+\medskip
+
+\quad{\bf (ii)} For the general case, we can use the trick in 455H.
+There is a separable subset $U'$ of $U$ such that
+$\nu_e^{(0,q)}U'=1$ for every rational $q\ge 0$.
+We can suppose that $U'$ is
+a closed subgroup of $U$.  Because $U'$ is closed,
+
+$$\eqalign{\Cdlg'
+&=\{\omega:\omega\in\Cdlg,\,\omega(t)\in U'\text{ for every }t\ge 0\}\cr
+&=\{\omega:\omega\in\Cdlg,\,\omega(q)\in U'
+   \text{ for every }q\in\Bbb Q\cap\coint{0,\infty}\}\cr}$$
+
+\noindent is $\ddot\mu$-conegligible in $\Cdlg$, and
+because $U'$ is a subgroup,
+$\phi_{\tau}(\omega,\omega')\in\Cdlg'$ for all $\omega$,
+$\omega'\in\Cdlg'$.   Now the argument of (i) shows that
+$\phi_{\tau}\restr\Cdlg'\times\Cdlg'$ is
+$(\ddot\Sigma\tensorhat\ddot\Sigma,
+   \Tensorhat_{\coint{0,\infty}}\Cal B(U'))$-measurable, therefore
+$(\ddot\Sigma\tensorhat\ddot\Sigma,
+   \Tensorhat_{\coint{0,\infty}}\Cal B(U))$-measurable.
+Since $\Cdlg'\times\Cdlg'$ is
+$(\ddot\mu\times\ddot\mu)$-conegligible,
+$\phi_{\tau}$ is
+$(\Lambda,\Tensorhat_{\coint{0,\infty}}\Cal B(U))$-measurable.\ \Qed
+
+\medskip
+
+{\bf (c)} It follows that if $E\in\Tensorhat_{\coint{0,\infty}}\Cal B(U)$
+then, setting $f=\chi(E\cap\Cdlg)$ in (a),
+
+\Centerline{$(\ddot\mu\times\ddot\mu)\phi_{\tau}^{-1}[E\cap\Cdlg]
+=\int f(\phi_{\tau}(\omega,\omega'))\ddot\mu(d\omega')\ddot\mu(d\omega)
+=\int fd\ddot\mu
+=\ddot\mu(E\cap\Cdlg)$}
+
+\noindent by Fubini's theorem.
+But $\ddot\mu$ is the subspace measure generated by the
+completion of a
+measure with domain $\Tensorhat_{\coint{0,\infty}}\Cal B(U)$,
+so is inner regular with respect to sets of the form $E\cap\Cdlg$ with
+$E\in\Tensorhat_{\coint{0,\infty}}\Cal B(U)$;  by 412K,
+$\phi_{\tau}$ is \imp.
+}%end of proof of 455U
+
+\exercises{\leader{455X}{Basic exercises (a)}
+%\spheader 455Xa
+Let $\langle A_n\rangle_{n\ge 1}$ be a non-increasing sequence of subsets
+of $[0,1]$, all with Lebesgue outer measure $1$, and with empty
+intersection.   Set $T=\{0\}\cup\{\bover1n:n\ge 1\}$, $\Omega_0=\{0\}$,
+$\Omega_{1/n}=A_n$ for $n\ge 1$;  for $t\in T$ let $\Tau_t$ be the Borel
+$\sigma$-algebra of $\Omega_t$.   For $s<t$ in $T$ and $x\in\Omega_s$
+define a Borel measure $\nu^{(s,t)}_x$ on $\Omega_t$ by saying that
+
+\inset{if $n\ge 1$,
+then $\nu^{(0,1/n)}_0(E\cap A_n)$ is the Lebesgue measure
+of $E$ for every Borel set $E\subseteq[0,1]$,
+
+if $0<s<t$, then $\nu^{(s,t)}_x\{x\}=1$.}
+
+\noindent Show that $\family{y}{\Omega_t}{\nu^{(t,u)}_y}$ is a
+disintegration of $\nu^{(s,u)}_x$ over $\nu^{(s,t)}_x$ whenever
+$s<t<u$ in $T$ and $x\in\Omega_s$.   Taking $x^*=0$,
+show that there is no measure $\mu$ on
+$\prod_{t\in T}\Omega_t$ with the properties listed in 455A.
+%455A
+
+\spheader 455Xb Let $T$, $t^*$,
+$\family{t}{T}{(\Omega_t,\Tau_t)}$, $x^*$,
+$\langle\nu^{(s,t)}_x\rangle_{s<t,x\in\Omega_s}$ and $\mu$ be as in 455A.
+Suppose that we are given a family
+$\family{t}{T}{(\Omega'_t,\Tau'_t,\pi_t)}$ such
+that ($\alpha$) $\Omega'_t$ is a set, $\Tau'_t$ is a $\sigma$-algebra of
+subsets of $\Omega'_t$ and $\pi_t:\Omega_t\to\Omega'_t$ is a surjective
+$(\Tau_t,\Tau'_t)$-measurable function for every $t\in T$
+($\beta$) whenever $s<t$ in $T$ and $x$, $x'\in\Omega_s$ are such that
+$\pi_s(x)=\pi_s(x')$, then $\nu^{(s,t)}_x$ and $\nu^{(s,t)}_{x'}$ agree on
+$\{\pi_t^{-1}[F]:F\in\Tau'_t\}$.   (i) Show that
+if we set $\acute\nu^{(s,t)}_w(F)=\nu^{(s,t)}_x\pi_t^{-1}[F]$
+whenever $s<t$ in $T$, $x\in\Omega_s$, $w=\pi_s(x)$ and $F\in\Tau'_t$,
+then every $\acute\nu^{(s,t)}_w$ is a
+perfect probability measure, and
+$\family{z}{\Omega'_t}{\acute\nu^{(t,u)}_z}$ is a disintegration of
+$\acute\nu^{(s,u)}_w$ over $\acute\nu^{(s,t)}_w$ whenever $s<t<u$ in $T$
+and $w\in\Omega'_s$.   (ii) Let $\mu'$ be the measure on
+$\Omega'=\prod_{t\in T}\Omega'_t$ defined by the method of 455A from
+$\pi_{t^*}(x^*)$ and
+$\langle\acute\nu^{(s,t)}_w\rangle_{s<t,w\in\Omega'_s}$.   Show that
+$\pi:\Omega\to\Omega$ is \imp\ for $\mu$ and $\mu'$, where
+$\pi(\omega)(t)=\pi_t(\omega(t))$ for $\omega\in\Omega$ and $t\in T$.
+%455A
+
+\spheader 455Xc
+In 455E, set $T=\{-1\}\cup\coint{0,\infty}$, let each
+$\Omega_t$ be $\Bbb R$, and for $x\in\Bbb R$,
+$0\le s<t$ let $\nu_x^{(s,t)}$ be the Dirac measure on $\Bbb R$
+concentrated at $\psi(x,t-s)$ on $\Bbb R$, where
+
+$$\eqalign{\psi(x,t)
+&=\Bover{x}{1-xt}\text{ if }xt\ne 1\text{ and }x\ne 0,\cr
+&=0\text{ if }xt=1,\cr
+&=-\Bover1t\text{ if }x=0.\cr}$$
+
+\noindent Let $\nu$ be any atomless Radon probability measure on
+$\Bbb R$, and complete the definition by setting
+$\nu_x^{(-1,t)}(E)=\nu\{y:\psi(y,t)\in E\}$ whenever $t\ge 0$ and this is
+defined;  set $x^*=0$.
+Show that the conditions of 455E are satisfied, that the
+measure $\hat\mu$ constructed in 455E is a distribution on $\BbbR^T$, and
+that $\hat\mu$ is not $\tau$-additive.   \Hint{setting $\phi(y)(-1)=0$,
+$\phi(y)(t)=\psi(y,t)$ for $t\ge 0$ and $y\in\Bbb R$,
+show that $\phi:\Bbb R\to\BbbR^T$ is \imp\ for
+$\nu_0$ and $\hat\mu$, and that every point of
+$\BbbR^T$ has a neighbourhood of zero measure.}
+%455E
+
+\spheader 455Xd Let $T$, $t^*$, $\family{t}{T}{\Omega_t}$, $x^*$,
+$\langle\nu^{(s,t)}_x\rangle_{s<t,x\in\Omega_s}$ and
+$\hat\mu$ be as in 455E.   Suppose that we are given a family
+$\family{t}{T}{(\Omega'_t,\pi_t)}$ such
+that ($\alpha$) $\Omega'_t$ is a Hausdorff space and
+$\pi_t:\Omega_t\to\Omega'_t$ is a continuous surjective
+function for every $t\in T$
+($\beta$) whenever $s<t$ in $T$ and $x$, $x'\in\Omega_s$ are such that
+$\pi_s(x)=\pi_s(x')$, then the image measures $\nu^{(s,t)}_x\pi_t^{-1}$
+and $\nu^{(s,t)}_{x'}\pi_t^{-1}$ on $\Omega'_t$ are the same.
+(i) Show that if we set $\acute\nu^{(s,t)}_w=\nu^{(s,t)}_x\pi_t^{-1}$
+whenever $s<t$ in $T$, $x\in\Omega_s$ and $w=\pi_s(x)$,
+then every $\acute\nu^{(s,t)}_w$ is a Radon probability measure, and
+$\family{z}{\Omega'_t}{\acute\nu^{(t,u)}_z}$ is a disintegration of
+$\acute\nu^{(s,u)}_w$ over $\acute\nu^{(s,t)}_w$ whenever $s<t<u$ in $T$
+and $w\in\Omega'_s$.   (ii) Let $\hat\mu'$ be the measure on
+$\Omega'=\prod_{t\in T}\Omega'_t$ defined by the method of 455E from
+$\pi_{t^*}(x^*)$ and
+$\langle\acute\nu^{(s,t)}_w\rangle_{s<t,w\in\Omega'_s}$.   Show that
+$\pi:\Omega\to\Omega$ is \imp\ for $\hat\mu$ and $\hat\mu'$, where
+$\pi(\omega)(t)=\pi_t(\omega(t))$ for $\omega\in\Omega$ and $t\in T$.
+%455E
+
+\spheader 455Xe Let $U$ be a locally compact metrizable group and $\nu$
+any
+Radon probability measure on $U$.   For $t>0$ let $\lambda_t$ be the Radon
+probability measure
+
+\Centerline{$e^{-t}(\delta_e+t\nu+\Bover{t^2}{2!}\nu*\nu
++\Bover{t^3}{3!}\nu*\nu*\nu+\ldots)$,}
+
+\noindent where $\delta_e$ is the Dirac measure on $U$ concentrated at the
+identity $e$ of $U$, and the sum is defined as in 234G\formerly{1{}12Ya}.
+Show that $\langle\lambda_t\rangle_{t>0}$ satisfies the
+conditions of 455P (with respect to an appropriate metric on $U$).
+\Hint{4A5Mb, 4A5Q(iv).}
+%455P
+
+\spheader 455Xf Let $U$, $\langle\lambda_t\rangle_{t>0}$ and $\hat\mu$ be
+as in 455P.   Let $V$ be a Hausdorff space, $z^*$ a point of $V$ and
+$\action$ a continuous action of $U$ on $V$;  set
+$\pi(x)=x\action z^*$ for $x\in U$.   Define
+$\langle\nu^{(s,t)}_x\rangle_{0\le s<t,x\in U}$ from
+$\langle\lambda_t\rangle_{t>0}$ as in 455P.   (i) Show that if $x$,
+$x'\in U$ and $\pi(x)=\pi(x')$, then the image measures
+$\nu^{(s,t)}_x\pi^{-1}$, $\nu^{(s,t)}_{x'}\pi^{-1}$ on $V$ are equal
+whenever $s<t$.   (ii) Let $\hat\mu'$ be the measure on
+$V^{\coint{0,\infty}}$ defined as in 455Xd.   Show that if we define
+$\tilde\pi:U^{\coint{0,\infty}}\to V^{\coint{0,\infty}}$ by setting
+$\tilde\pi(\omega)(t)=\omega(t)\action z^*$ for every
+$\omega\in U^{\coint{0,\infty}}$ and $t\ge 0$, $\tilde\pi$ is \imp\ for
+$\hat\mu$ and $\hat\mu'$ and also for the Radon measures extending them;
+moreover, that the restriction of $\tilde\pi$ to $\Cdlg(U)$, the space
+of \cadlag\ functions from $\coint{0,\infty}$ to $U$, is \imp\ for the
+subspace measures on $\Cdlg(U)$ and $\Cdlg(V)$.
+%455P 455Xd
+
+\sqheader 455Xg For $t>0$, let $\lambda_t$ be the normal distribution on
+$\Bbb R$ with expectation $0$ and variance $t$.
+Show that $\langle\lambda_t\rangle_{t>0}$ satisfies the conditions of
+455Q.
+%455Q
+
+\sqheader 455Xh For $t>0$, let $\lambda_t$ be the Poisson
+distribution with expectation $t$, that is,
+$\lambda_t(E)=e^{-t}\sum_{m\in E\cap\Bbb N}t^m/m!$ for $E\subseteq\Bbb R$
+(cf.\ 285Q, 285Xo).
+(i) Show that $\langle\lambda_t\rangle_{t>0}$ satisfies the conditions of
+455Q.
+(ii) Show that if $\tilde\mu$ is the Radon measure defined from
+$\langle\lambda_t\rangle_{t>0}$ as in 455Pc,
+then $\omega$ is non-decreasing
+and $\omega[\,\coint{0,\infty}\,]=\Bbb N$ for $\tilde\mu$-almost every
+$\omega\in\BbbR^{\coint{0,\infty}}$.
+%455Q
+
+\sqheader 455Xi For $t>0$, let $\lambda_t$ be the Cauchy
+distribution with centre $0$ and scale parameter $t$, that is, the
+distribution with probability density function
+$x\mapsto\Bover{t}{\pi(x^2+t^2)}$ (285Xm).
+(i) Show that $\langle\lambda_t\rangle_{t>0}$ satisfies the conditions of
+455Q.   (ii) Show that if $\hat\mu$ is the corresponding distribution on
+$\BbbR^{\coint{0,\infty}}$, then $C(\coint{0,\infty})$ is
+$\hat\mu$-negligible.
+\Hint{estimate $\Pr(|X_{(i+1)/n}-X_{i/n}|\le\epsilon$ for every $i<n)$.}
+(iii) Suppose that $\alpha>0$.   Define
+$T_{\alpha}:\BbbR^{\coint{0,\infty}}\to\BbbR^{\coint{0,\infty}}$ by setting
+$(T_{\alpha}\omega)(t)=\Bover1{\alpha}\omega(\alpha t)$ for $t\ge 0$ and
+$\omega\in\BbbR^{\coint{0,\infty}}$.   Show that $T_{\alpha}$ is \imp\ for
+$\hat\mu$.   (iv) For $\omega\in\BbbR^{\coint{0,\infty}}$ set
+$(R\omega)(t)=t^2\omega(\bover1t)$ if $t>0$, $\omega(0)$ if $t=0$.
+Show that $R:\BbbR^{\coint{0,\infty}}\to\BbbR^{\coint{0,\infty}}$ is \imp\
+for $\hat\mu$.   (Compare 477E below.)
+%455Q
+
+\sqheader 455Xj(i) The {\bf standard gamma distribution} with
+parameter $t$ is the probability distribution $\lambda_t$ on
+$\Bbb R$ with probability density function
+$x\mapsto\Bover1{\Gamma(t)}x^{t-1}e^{-x}$ for $x>0$.   Show
+that its expectation is $t$.  \Hint{225Xj(iv).}   Show that its
+variance is $t$.
+(ii) Show that $\langle\lambda_t\rangle_{t>0}$ satisfies the conditions of
+455Q.    \Hint{272U\formerly{2{}72T}, 252Yf.}   (iii) Show that
+$\lim_{t\downarrow 0}t\Gamma(t)=1$, so that
+$\lim_{t\downarrow 0}\bover1t\lambda_t\coint{1,\infty}
+=\int_1^{\infty}\bover1xte^{-x}dx>0$.
+(iv) Show that if $\tilde\mu$ is the Radon measure on
+$\BbbR^{\coint{0,\infty}}$ defined from $\langle\lambda_t\rangle_{t>0}$ as
+in 455Pc, then $\{\omega:\omega$ is strictly increasing and not
+continuous$\}$ is $\tilde\mu$-conegligible.
+%455Q
+
+\spheader 455Xk Let $U$ be an abelian Hausdorff topological group.   Let
+$\langle\lambda'_t\rangle_{t>0}$, $\langle\lambda''_t\rangle_{t>0}$ be two
+families of Radon probability measures on $U$ and set
+$\lambda_t=\lambda'_t*\lambda''_t$ for $t>0$.   (i) Show that if
+$\lambda'_{s+t}=\lambda'_s*\lambda'_t$ and
+$\lambda''_{s+t}=\lambda''_s*\lambda''_t$ for all $s$, $t>0$, then
+$\lambda_{s+t}=\lambda_s*\lambda_t$ for all $s$, $t>0$.   (ii) Show that if
+$\lim_{t\downarrow 0}\lambda'_tG=\lim_{t\downarrow 0}\lambda''_tG=1$ for
+every open set containing the identity $e$ of $U$, then
+$\lim_{t\downarrow 0}\lambda_tG=1$ for every open set $G$ containing $e$.
+(iii) Now suppose that $U$ is metrizable and complete under a \rti\ metric
+inducing its topology.   Let $\hat\mu'$, $\hat\mu''$ and $\hat\mu$ be the
+measures on $U^{\coint{0,\infty}}$ defined from
+$\langle\lambda'_t\rangle_{t>0}$, $\langle\lambda''_t\rangle_{t>0}$ and
+$\langle\lambda_t\rangle_{t>0}$ as in 455P.   Set
+$\theta(\omega,\omega')(t)=\omega(t)\omega'(t)$ for $\omega$,
+$\omega'\in U^{\coint{0,\infty}}$ and $t\ge 0$.   Show that $\theta:
+U^{\coint{0,\infty}}\times U^{\coint{0,\infty}}\to U^{\coint{0,\infty}}$ 
+is \imp\ for $\hat\mu'\times\hat\mu''$ and $\hat\mu$.
+(iv) Repeat (iii) for the subspace measures on the space of
+\cadlag\ functions from $\coint{0,\infty}$ to $U$.
+%455U
+
+\leader{455Y}{Further exercises (a)}
+%\spheader 455Ya
+Let $\family{n}{\Bbb Z}{X_n}$ be a double-ended sequence
+of real-valued random variables such that (i) for each $n\in\Bbb Z$,
+$Y_n=X_{n+1}-X_n$ is independent of $\{X_i:i\le n\}$ (ii)
+$\family{n}{\Bbb Z}{Y_n}$ is identically distributed.   Show that the
+$Y_n$ are essentially constant.   \Hint{285Yc.}
+%455B
+
+\spheader 455Yb For $0\le s<t$ and $x\in\Bbb R$ define a Radon
+probability measure
+$\nu^{(s,t)}_x$ on $\Bbb R$ by saying that
+
+$$\eqalign{\nu^{(s,t)}_x
+&=\Bover{1-t}{1-s}\delta_0+\Bover{t-s}{1-s}\lambda_{[s,t]}
+\text{ if }x=0\text{ and }t\le 1,\cr
+&=\Bover{t-1}{1-s}\delta_0+\Bover{2-t-s}{1-s}\lambda_{[s,2-t]}
+\text{ if }x=0\text{ and }1\le t<2-s,\cr
+%&=\delta_0\text{ if }x=0\text{ and }2-s\le t\cr
+&=\delta_0\text{ if }0<x<1\text{ and }2-x\le t,\cr
+&=\delta_x\text{ otherwise},\cr}$$
+
+\noindent writing $\delta_x$ for the Dirac measure on $\Bbb R$ concentrated
+at $x$, and $\lambda_{[s,t]}$ for the uniform distribution based on the
+interval $[s,t]$.   (i) Show that
+$\langle\nu^{(s,t)}_x\rangle_{s<t,x\in\Bbb R}$ satisfies the conditions of
+455E.   (ii) Starting from $x^*=0$,
+let $\hat\mu$ be the corresponding measure on
+$\BbbR^{\coint{0,\infty}}$.   Show that $\hat\mu^*\Cdlg=1$, where $\Cdlg$
+is the space of \cadlag\ functions from $\coint{0,\infty}$ to $\Bbb R$.
+(iii) Show that $\hat\mu$ has a unique extension to a Radon measure
+$\tilde\mu$ on $\BbbR^{\coint{0,\infty}}$.   (iv) Show that
+$\tilde\mu\Cdlg=0$.   (v) Show that the subspace measure on $\Cdlg$ induced
+by $\hat\mu$ is not $\tau$-additive.
+%455K
+%the intention is to put the measure on $\omega_{\alpha}$, for
+%$0\le\alpha\le 1$, where $\omega_{\alpha}(t)=\alpha$ for
+%$\alpha\le t<2-\alpha$, $0$ elsewhere.
+
+\spheader 455Yc A probability distribution $\lambda$ on $\Bbb R$ is {\bf
+infinitely divisible} if for every $n\ge 1$ it is expressible as a
+convolution $\nu*\ldots*\nu$ of $n$ copies of a probability distribution.
+Let $\phi$ be the characteristic function (\S285) of an infinitely
+divisible distribution $\lambda$.   (i) Show that for each $n\ge 1$
+there is a
+characteristic function $\phi_n$ such that $\phi_n^n=\phi$.   (ii) Show
+that if $\delta>0$ is such that $\phi(y)\ne 0$ for $|y|\le\delta$, then
+$\lim_{n\to\infty}\phi_n(y)=1$ for $|y|\le\delta$.   (iii) Show that
+$\lim_{n\to\infty}\phi_n(y)=1$ for every $y\in\Bbb R$.   \Hint{for any
+characteristic function $\psi$, $4\Real\psi(y)\le 3+\Real\psi(2y)$ for
+every $y$.}   (iv) Show that $\phi$ is never zero, and that there is a
+unique family $\langle\lambda_t\rangle_{t>0}$ of distributions satisfying
+the conditions in 455P and such that $\lambda_1=\lambda$.   (v) Show that
+if $\lambda$ has finite expectation, then $\Expn(\lambda_t)$ is defined and
+equal to $t\Expn(\lambda)$ for every $t>0$.   
+%272Xi 285Ga
+(vi) Show that if
+$\lambda$ has finite variance, then $\Var(\lambda_t)$ is defined and equal
+to $t\Var(\lambda)$ for every $t>0$.
+%455P
+
+\spheader 455Yd Let $U$ be  a Hausdorff topological group and
+$\langle\lambda_t\rangle_{t>0}$ a family of Radon probability measures on
+$U$ such that $\lambda_{s+t}=\lambda_s*\lambda_t$ whenever $s$, $t>0$.
+(i) Show that we can define a family
+$\langle\nu_x^{(s,t)}\rangle_{0\le s<t,x\in U}$ as in 455P, and that
+$\family{y}{U}{\nu_y^{(t,u)}}$ is a disintegration of $\nu_x^{(s,u)}$ over
+$\nu_x^{(s,t)}$ whenever $x\in U$ and $s<t<u$, so that, starting from
+$x^*=e$ the identity of $U$, we can apply 455E to obtain a measure
+$\hat\mu$ on $U^{\coint{0,\infty}}$.   (ii) Now suppose that $U=\BbbR^r$
+where $r\ge 1$.
+For $t>0$, $E\subseteq U$ set $\Reverse{\lambda}_tE=\lambda_t(-E)$
+whenever  $\lambda_t$ measures $-E$;  now set
+$\lambda^{\#}_t=\lambda_t*\Reverse{\lambda}_t$.   Show that
+$\lambda^{\#}_{s+t}=\lambda^{\#}_s*\lambda^{\#}_t$ for all $s$, $t>0$, and
+that $\lim_{t\downarrow 0}\lambda^{\#}_tG=1$ for every
+open neighbourhood $G$ of $0$.   Show that $\hat\mu$ has an extension to a
+Radon measure on $(\BbbR^r)^{\coint{0,\infty}}$.
+%455P
+
+\spheader 455Ye Let $Y$ be a metrizable
+space and $\Cdlg$ the set of \cadlag\ functions from $\coint{0,\infty}$ to
+$Y$.   For $\omega\in\Cdlg$ and $t\ge 0$ set $X_t(\omega)=\omega(t)$.
+Let $\Sigma$ be a $\sigma$-algebra of subsets of $\Cdlg$ such that
+$X_t:\Cdlg\to Y$ is measurable for every $t\ge 0$.
+For $t\ge 0$ let $\Sigma_t$ be
+
+\Centerline{$\{F:F\in\Sigma,\,\omega'\in F$ whenever $\omega$,
+$\omega'\in\Cdlg$, $\omega\in F$ and
+$\omega\restr[0,t]=\omega'\restr[0,t]\}$.}
+
+\noindent Show that
+$\langle X_t\rangle_{t\ge 0}$ is progressively measurable with respect
+to $\langle\Sigma_t\rangle_{t\ge 0}$.
+%455M out of order query
+}%end of exercises
+
+\endnotes{
+\Notesheader{455}
+This section has grown into the longest in this treatise.
+There are some big theorems here.
+I am trying to do two rather different things:  sketch the
+fundamental properties of Markov processes, and work through
+the details of particular realizations of them.   I remarked in the
+introduction to Chapter 27 that probability theory is not really about
+measure spaces and measurable functions.   It is much more about
+distributions, and by `distribution' here I do not really mean a Radon
+probability measure on $\BbbR^r$, let alone a completed Baire measure on
+$\BbbR^I$, as in 454K.   I mean rather the family of probabilities of
+the type $\Pr(X_i\le\alpha_i\Forall i\le n)$;  everything else is formal
+structure, offering proofs and (I hope) some kinds of deeper understanding,
+but essentially secondary.   The appalling formulae above
+($\nu^{(t_j,t_{j+1})}_{\omega,\tau(\omega),x_j}(dx_{j+1})$,
+$\ddot\Sigma\tensorhat\ddot\Sigma$ and so on)
+arise from my attempts to distinguish
+clearly among the host of probability spaces which present themselves to us
+as relevant.
+
+However one of the messages of this section is that for many stochastic
+processes it is possible to identify semi-canonical realizations.   We
+already have a crude one in 454J;  starting from any family
+$\familyiI{X_i}$ of real-valued
+random variables on any probability space, we can move to a measure
+on $\BbbR^I$ which is in some sense unique and carries the probabilistic
+content of the original family.   I noted in \S454 that when
+this measure is $\tau$-additive we have a canonical extension to a
+quasi-Radon measure, just as good regarded as a realization of the abstract
+process, and possibly with useful further properties.   In 455H we find
+that many of the most important processes can be represented by Radon
+measures;  I do not think these Radon measures have been much studied,
+except, of course, in the case of Brownian motion.
+But 455O and 455U show that for some purposes we are better off
+with quasi-Radon measures on the set of \cadlag\ functions.
+The most important stopping times are the hitting times of 455M, which are
+adapted to families of the form $\langle\Sigma_t^+\rangle_{t\ge 0}$;  and
+for such a stopping time to be approximated by discrete stopping times, as
+in parts (a-vi) and (b-vii) of the proof of 455O, we need to know that
+our paths are continuous on the right.
+
+It is of course true
+that when the complete metric space $U$, in 455O or later,
+is separable, then we have a standard Borel structure on the space $\Cdlg$
+of \cadlag\ functions (4A3Wb), so that the measures $\ddot\mu$ are Radon
+measures for appropriate Polish topologies on $\Cdlg$.
+\leaveitout{{\smc Billingsley 99};
+ http://eom.springer.de/S/s110200.htm;
+ http://eom.springer.de/s/s130370.htm.
+ No apparent hope of good topological behaviour of the functions
+ $\phi_{\tau}$ -- examples 455Xi, 455Xj where we have atomless marginals
+ $\nu^{(0,t)}_{x^*}$ but discontinuous processes;  in this case we can have
+ continuous stopping times but $\omega\mapsto\phi_{\tau}(\omega,\omega')$
+ seriously discontinuous.}
+
+Returning to the detailed exposition, 455A is an attempt at a
+continuous-time version of 454H.   I
+use the letters $t$, $T$ to suggest the probabilistic intuitions behind
+these results;  we think of the spaces $\Omega_t$ in 455A as being the sets
+of possible states of a system at `time' $t$, so that the measures
+$\nu_x^{(s,t)}$ are descriptions of how we believe the system is likely
+to evolve between times $s$ and $t$, having observed that
+it is in state $x$ at
+time $s$.   In the case of `discrete time', when we observe the system
+only at clearly separated moments, it is easy to handle non-Markov
+processes, in which evolution between times $n-1$ and $n$ can depend on
+the whole history up to time $n-1$;  thus in 454H the measures
+$\nu_z=\nu_z^{(n-1,n)}$ are defined for every $z\in\prod_{i<n}X_i$, but
+we make no attempt to describe measures $\nu_z^{(n-1,m)}$ for any $m>n$.
+In `continuous time' we do need to say something about arbitrary time
+steps, and it is hard to formulate a consistency condition to fill the
+place of ($\dagger$) in 455A without limiting the kind of process being
+examined.   At the cost of an appalling increase in complexity, of
+course, the formulae of 455A can
+sometimes be adapted to general processes, if we
+replace the `current' state space $\Omega_t$ by the `historical' state
+space $\prod_{t^*\le s\le t}\Omega_s$.
+(For we can hope that
+$(\prod_{t^*\le s\le t}\Omega_s,\Tensorhat_{t^*\le s\le t}\Tau_s)$
+will have the
+`perfect measure property' of 454Xd.)   We should finish up with a
+measure on $\prod_{t\in T}(\prod_{t^*\le s\le t}\Omega_s)$.
+But the important
+applications, even when not Markov, are open to more economical and more
+enlightening approaches.
+We really do need a least element $t^*$ of $T$;  see 455Ya.
+
+I have not yet come to the reason why this section is such hard work.
+This is in its attempt to analyze the `Markov property' of the
+distributions being examined here.   The point about the families
+$\langle\nu^{(s,t)}_x\rangle_{s<t,x\in\Omega_s}$ of transitional
+probabilities is that they not only give us stochastic processes, as in
+455A, but also recipes for conditional expectations, derived from the
+truncated families $\langle\nu^{(s,t)}_x\rangle_{a\le s<t,x\in\Omega_s}$.
+These lead to measures $\mu'_{ax}$ on $\prod_{t\ge a}\Omega_t$
+which can be thought of as distributions of future paths given
+that we have reached the point $x$ at time $a$.   It is no surprise that
+these should
+provide straightforward descriptions of conditional expectations on
+algebras of the form
+
+\Centerline{$\{F:F$ is determined by coordinates in $[t^*,t]\}$.}
+
+\noindent Without much more trouble,
+we can extend this to suitable algebras
+defined from simple `stopping times', as in 455C.
+The arguments there have
+some technical features which you may find annoying (and I invite you to
+find your own way past the complications),
+but are essentially elementary, as they have to be in such a
+general context.   It is interesting that we can move to stopping times
+taking countably many values without further difficulty.
+
+However, we are still only seven pages into the section, and not everything
+to come is as straightforward as the completion processes described in
+455E.   An essential aspect of continuous-time Markov processes is the
+possibility of stopping times which take a continuum of values, as is
+typically the case in the examples provided by 455M.   These are
+much harder to deal with, and we have to restrict sharply the
+class of processes we examine.
+The particular restriction I have chosen is
+described by the definitions in 455F.   I should of course say that these,
+particularly 455Fb (`uniformly time-continuous on the right') are more
+limiting than is strictly necessary;  in `Feller processes'
+({\smc Rogers \& Williams 94}, III.6) we have a slightly different approach
+to the same intuitive target.   The aim is to find sufficient conditions
+for the `strong Markov property', in which we can find disintegrations and
+conditional expectations associated with general stopping times, as in
+455O.   To do this, we have to abandon the set
+$\Omega=U^{\coint{0,\infty}}$ and move to the correct
+set of full outer measure, the set $\Cdlg$ of `\cadlag' functions, which
+dominates the central part of this section.   The first thing the
+definition 455Fb must do is to ensure that $\Cdlg$ has full outer
+measure not only for the distribution on $\Omega$ but also for the
+conditional distributions we shall be using (455G).
+If $U$ is a Polish space, $\Cdlg$ has a standard Borel structure (4A3Wb),
+which is comforting.
+
+I hope that you are becoming resigned to the view that the
+notational complexities of this section are not
+solely due to an inconsiderate disregard for the
+reader's eyesight.   The original probability measures $\nu^{(s,t)}_x$
+of 455A really do form a three-parameter family, the conversion of these
+into finite-dimensional distributions $\lambda_J$ really is a multiple
+repeated integral, the derived probabilities $\nu^{(s,t)}_{\omega ax}$
+in 455B are
+a five-parameter system.   Without wishing to insist on my use of
+grave accents in the proof of 455E, it is surely safer to have a way of
+distinguishing between completed and uncompleted measures, and while the
+result may be `obvious', I think there are some twists on the way which not
+everyone would foresee.   Again, if you wish to dispense with
+the double-dotted symbols from 455O on, you will have to find some other
+way of reminding yourself that we are looking at a new representation of
+the process on a new probability space.
+
+This treatise as a whole is theory-heavy and example-light.   I assure you
+that all the theory here is in fact example-driven.   You should start with
+the four examples of L\'evy processes in
+455Xg-455Xj.   %455Xg 455Xh 455Xi 455Xj
+Of these, 455Xg is {\bf Brownian motion}, the starting point
+of the whole theory;  I will return to this in \S477.   A problem with the
+formalization in 455A is that we have to start with an exact description of
+the transitional probabilities $\nu^{(s,t)}_x$.   It does not help at all
+in establishing the existence of such families matching
+some probabilistic intuition.   Only in rather special cases do we have
+elegant formulae for these systems.   In 455Xb, 455Xd and 455Xf I try to
+show how the general theory gives us methods of using one
+system to build others.
+
+I suppose that 455O is the summit;  from here on the going is easier.
+In 455P I introduce `L\'evy processes', a particularly interesting class
+intermediate in generality between the continuous processes of 455O and
+Brownian motion.   These have of course mostly been considered in the case
+$U=\Bbb R$, but the extension to
+Banach spaces $U$ is an obvious one, and we
+can even manage non-abelian groups if we are careful.   (For an elementary
+example of a process which can really exploit a non-abelian group,
+see 455Xe.)   The `Poisson process' in 455Xh is by some way the most
+important example after Brownian motion itself.
+L\'evy processes on $\Bbb R$ are well understood;  the family
+$\langle\lambda_t\rangle_{t>0}$ is determined by $\lambda_1$, any
+`infinitely divisible' distribution can be taken for $\lambda_1$
+(455Yc), and
+a complete description of infinitely divisible distributions is provided by
+the L\'evy-Khintchine representation theorem ({\smc Fristedt \& Gray 97},
+16.3).
+%Khintchine the spelling used in his Roman-alphabet papers? yes it seems
+As a final result in the general theory, I give an alternative version of
+the strong Markov property in 455U.   For L\'evy processes, we can
+re-start, following any of the usual stopping times,
+with an exact copy of the process,
+and this corresponds to a true \imp\ function from $\Cdlg^2$ to $\Cdlg$.
+
+A comment on 455T.   The idea behind the $\sigma$-algebras $\Sigma_t$,
+$\ddot\Sigma_t$  of 455M, 455O and later is that they consist of events
+`observable at time $t$', that is, determined by the path taken up to and
+including time $t$.   We quickly find ourselves forced to consider
+augmented algebras $\Sigma_t^+=\bigcap_{s>t}\Sigma_s$, where somehow we are
+allowed infinitesimal intuitions into the immediate future.   (A typical
+situation is that of 455Mb when the set $A$ is open, so that if
+$\omega(t)\in\overline{A}$ we can expect that there will be paths which
+continue immediately into $A$, and others which do not, and it may not be
+obvious which, if either, should be regarded as typical.)   The question
+is, whether $\Sigma_t$ is really different from $\Sigma_t^+$.
+The claim of 455T is that
+$\ddot\Sigma_t^+$ is included in a kind of completion $\hat{\ddot\Sigma_t}$
+of $\ddot\Sigma_t$.
+Of course the completion is in terms of the measure $\ddot\mu$ on the
+whole space $\Cdlg$ of \cadlag\ paths;  we need advance knowledge of which
+subsets of $\Cdlg$ are negligible.   But if we are interested in the
+measure algebra $\frak A$ of $\ddot\mu$ and its closed subalgebras
+$\frak A_t=\{E^{\ssbullet}:E\in\ddot\Sigma_t\}$, 455T tells us that (in the
+context of L\'evy processes) we can expect to have
+$\frak A_t=\bigcap_{s>t}\frak A_s$.   Turning to the definition of
+$\ddot\mu$ in 455O as a subspace measure, we see that $\frak A$ can be
+regarded as the measure algebra of the measure $\hat\mu$ on
+$U^{\coint{0,\infty}}$ defined by the formulae of 455E;  and even that
+$\frak A_t$ can be identified with
+
+\Centerline{$\{E^{\ssbullet}:E\in\dom\hat\mu$, $E$ is determined by
+coordinates in $[0,t]\}$}
+
+\noindent (see part (a-ii) of the proof of 455O).   But I think that this
+last step will not usually be helpful, because (as noted above) $\ddot\mu$
+will commonly be a Radon measure for an appropriate topology, while
+$\hat\mu$ is likely at best to be the completion of a Baire measure.
+
+I have cast the second half of the section in terms of measures on
+$\Cdlg$, because it is reasonably well adapted to L\'evy processes in
+general.   When we come to look at particular processes, we often find
+that there is a smaller class of functions
+(e.g., continuous functions in the case of
+Brownian motion, or non-decreasing $\Bbb N$-valued functions in the case of
+the Poisson process) which is fully adequate and easier to focus on.
+For the detailed study of such processes, as in \S477 below, I think it
+will usually be helpful to make the shift.   But there may be rival
+conegligible subsets of $\Cdlg$ with different virtues, as in 477Ef.
+}%end of notes
+
+\discrpage
+

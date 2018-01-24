@@ -1,0 +1,1260 @@
+\frfilename{mt481.tex}
+\versiondate{4.9.09/30.11.12}
+\copyrightdate{2000}
+
+\def\Epsilon{\text{E}}
+\def\Eta{\text{H}}
+
+\def\chaptername{Gauge integrals}
+\def\sectionname{Tagged partitions}
+
+\newsection{481}
+
+I devote this section to establishing some terminology (481A-481B,
+481E-481G) %481E 481F 481G
+and describing a variety of examples
+(481I-481Q), %481I 481J 481K 481L 481M 481N 481O 481P 481Q
+some of which will be elaborated later.   The clearest, simplest and
+most important example is surely Henstock's integral on a closed bounded
+interval (481J), so I recommend turning immediately to that paragraph
+and keeping it in mind while studying the notation here.   It may also
+help you to make sense of the definitions here if you glance at the
+statements of some of the results in \S482;   in this section I give
+only the formula defining gauge integrals (481C)\cmmnt{, with some
+elementary examples of its use
+(481Xb-481Xh)}.  %481Xb 481Xc 481Xd 481Xe 481Xf 481Xg 481Xh
+
+\leader{481A}{Tagged partitions and Riemann sums} The common idea
+underlying\cmmnt{ all the constructions of} this chapter is the following.   We
+have a set $X$ and a functional $\nu$ defined on some family $\Cal C$ of
+subsets of $X$.   We seek to define an integral
+$\int fd\nu$, for functions $f$ with domain $X$, as a limit of
+{\it finite} {\bf Riemann sums} $\sum_{i=0}^nf(x_i)\nu C_i$, where
+$x_i\in X$ and $C_i\in\Cal C$ for $i\le n$.
+\dvro{ A}{ There is no strict reason, at this stage, to forbid
+repetitions in the string $(x_0,C_0),\ldots,(x_n,C_n)$, but also little
+to be gained from allowing them, and it will simplify some of the
+formulae below if I say from the outset
+that a} {\bf tagged partition} on $X$ will be a finite subset $\pmb{t}$
+of $X\times\Cal PX$.
+
+\cmmnt{So one necessary element of the definition will be a
+declaration of which tagged partitions
+$\{(x_0,C_0),\ldots,\discretionary{}{}{}(x_n,C_n)\}$ will be
+employed, in terms, for instance, of which sets $C_i$ are
+permitted, whether they are allowed to overlap at
+their boundaries, whether they are required to cover the space, and
+whether each {\bf tag} $x_i$ is required to belong to the corresponding
+$C_i$.}   The next element of the definition will be a description of a
+filter $\Cal F$ on the set $T$ of tagged partitions, so that the
+integral will be the limit (when it exists) of the sums along the
+filter\cmmnt{, as in 481C below}.
+
+\cmmnt{In the formulations studied in this chapter, the $C_i$ will
+generally be disjoint, but this is not absolutely essential, and it is
+occasionally
+convenient to allow them to overlap in `small' sets, as in 481Ya.   In
+some cases, we can restrict attention to families for which the $C_i$
+are non-empty and have union $X$, so that $\{C_0,\ldots,C_n\}$ is a
+partition of $X$ in the strict sense.}%end of comment
+
+\woddheader{481B}{0}{0}{0}{90pt}
+
+\leader{481B}{Notation}\cmmnt{ Let me immediately introduce notations
+which will be in general use throughout the chapter.
+
+\medskip
+
+} {\bf (a)}\cmmnt{ First, a shorthand to describe a particular class of
+sets of tagged partitions.}   If $X$ is a set, a {\bf straightforward
+set of tagged partitions} on $X$ is a set of the form
+
+\Centerline{$T=\{\pmb{t}:\pmb{t}\in[Q]^{<\omega},\,C\cap C'=\emptyset$
+whenever $(x,C)$, $(x',C')$ are distinct members of $\pmb{t}\}$}
+
+\noindent where $Q\subseteq X\times\Cal PX$;  I will say that $T$ is
+{\bf generated} by $Q$.   \cmmnt{In this case, of
+course, $Q$ can be recovered from $T$, since $Q=\bigcup T$.   Note that
+no control is imposed on the tags at this point.   It remains
+theoretically possible that a pair $(x,\emptyset)$ should belong to $Q$,
+though in many applications this will be excluded in one way
+or another.}
+
+\spheader 481Bb If $X$ is a set and $\pmb{t}\subseteq X\times\Cal PX$ is
+a tagged partition, \cmmnt{I write}
+
+\Centerline{$W_{\pmb{t}}=\bigcup\{C:(x,C)\in\pmb{t}\}$.}
+
+\spheader 481Bc If $X$ is a set, $\Cal C$ is a family of subsets of $X$,
+$f$ and $\nu$ are real-valued functions, 
+and $\pmb{t}\in[X\times\Cal C]^{<\omega}$ is a tagged
+partition, then
+
+\Centerline{$S_{\pmb{t}}(f,\nu)=\sum_{(x,C)\in\pmb{t}}f(x)\nu C$}
+
+\noindent whenever $\pmb{t}\subseteq\dom f\times\dom\nu$.
+
+\leader{481C}{Proposition} Let $X$ be a set, $\Cal C$ a family of
+subsets of $X$, $T\subseteq[X\times\Cal C]^{<\omega}$ a
+non-empty set of tagged partitions and
+$\Cal F$ a filter on $T$.   For real-valued functions $f$ and
+$\nu$, set
+
+\Centerline{$I_{\nu}(f)=\lim_{\pmb{t}\to\Cal F}S_{\pmb{t}}(f,\nu)$}
+
+\noindent if this is defined in $\Bbb R$.
+
+(a) $I_{\nu}$ is a linear functional defined on a linear subspace of
+$\Bbb R^X$.
+
+(b) Now suppose that $\nu C\ge 0$ for every $C\in\Cal C$.   Then
+
+\quad(i) $I_{\nu}$ is a positive
+linear functional\cmmnt{ (definition:  351F)};
+
+\quad(ii) if $f$, $g:X\to\Bbb R$ are such that $|f|\le g$ and
+$I_{\nu}(g)$ is defined and equal to $0$, then $I_{\nu}(f)$ is defined
+and equal to $0$.
+
+\proof{{\bf (a)} We have only to observe that if $f$, $g$ are real-valued
+functions and
+$\alpha\in\Bbb R$, then
+
+\Centerline{$S_{\pmb{t}}(f+g,\nu)
+=S_{\pmb{t}}(f,\nu)+S_{\pmb{t}}(g,\nu)$,
+\quad$S_{\pmb{t}}(\alpha f,\nu)=\alpha S_{\pmb{t}}(f,\nu)$}
+
+\noindent whenever the right-hand sides are defined,
+and apply 2A3Sf.
+
+\medskip
+
+{\bf (b)} If $g\ge 0$ in $\Bbb R^X$, that is, $g(x)\ge 0$ for every
+$x\in X$, then $S_{\pmb{t}}(g,\nu)\ge 0$ for every $\pmb{t}\in T$, so
+the limit $I_{\nu}(g)$, if defined, will also be non-negative.   Next,
+if $|f|\le g$, then $|S_{\pmb{t}}(f,\nu)|\le S_{\pmb{t}}(g,\nu)$ for
+every $\pmb{t}$, so if $I_{\nu}(g)=0$ then $I_{\nu}(f)$ also is zero.
+}%end of proof of 481C
+
+\leader{481D}{Remarks (a)} Functionals
+$I_{\nu}=\lim_{\pmb{t}\to\Cal F}S_{\pmb{t}}(.,\nu)$, as described above,
+are called {\bf gauge integrals}.
+
+\cmmnt{\spheader 481Db In fact even greater generality is
+possible at this point.   There is no reason why $f$ and $\nu$ should
+take real values.   All we actually need is an interpretation of sums of
+products $f(x)\times\nu C$ in a space in which we can define limits.
+So for any linear spaces $U$, $V$ and $W$ with a bilinear functional
+$\phi:U\times V\to W$ (253A) and a Hausdorff linear space topology on
+$W$, we can set out to construct an integral of a function $f:X\to U$
+with respect to a functional $\nu:\Cal C\to V$ as a limit of sums
+$S_{\pmb{t}}(f,\nu)=\sum_{(x,C)\in\pmb{t}}\phi(f(x),\nu C)$ in $W$.   I
+will not
+go farther along this path here.   But it is worth noting that the
+constructions of this chapter lead the way to interesting vector
+integrals of many types.
+}%end of comment
+
+\spheader 481Dc An extension which is\cmmnt{, however,} sometimes useful 
+is to allow $\nu$ to be undefined\cmmnt{ (or take values outside
+$\Bbb R$, such as $\pm\infty$)} on part of $\Cal C$.   In this case, set
+$\Cal C_0=\nu^{-1}[\Bbb R]$.   Provided that
+$T\cap[X\times\Cal C_0]^{<\omega}$ belongs to $\Cal F$, we can still 
+define $I_{\nu}$, and 481C will still be true.
+
+\leader{481E}{Gauges}\cmmnt{ The most useful method (so far) of
+defining filters on sets of
+tagged partitions is the following.
+
+\medskip
+
+}{\bf (a)} If $X$ is a set, a {\bf gauge} on
+$X$ is a subset $\delta$ of $X\times\Cal PX$.   For a gauge $\delta$, a
+tagged partition $\pmb{t}$ is
+{\bf $\delta$-fine} if $\pmb{t}\subseteq\delta$.   Now,
+for a set $\Delta$ of gauges and a non-empty
+set $T$ of tagged partitions, we can
+seek to define a filter $\Cal F$ on $T$ as the filter generated by sets
+of the form
+$T_{\delta}=\{\pmb{t}:\pmb{t}\in T$ is $\delta$-fine$\}$ as $\delta$
+runs over $\Delta$.   \cmmnt{Of course we shall need to establish that
+$T$ and $\Delta$ are compatible in the sense that
+$\{T_{\delta}:\delta\in\Delta\}$ has the finite intersection
+property;  this will ensure that there is indeed a filter containing
+every $T_{\delta}$ (4A1Ia).}
+
+\cmmnt{In nearly all cases, $\Delta$ will be non-empty and
+downwards-directed (that is, for any $\delta_1$, $\delta_2\in\Delta$
+there will be a $\delta\in\Delta$ such that
+$\delta\subseteq\delta_1\cap\delta_2$);  in this case, we shall
+need only to establish that
+$T_{\delta}$ is non-empty for every $\delta\in\Delta$.   Note
+that the filter on $T$ generated by $\{T_{\delta}:\delta\in\Delta\}$
+depends only on $T$ and the filter on $X\times\Cal PX$ generated by
+$\Delta$.}
+
+\spheader 481Eb\cmmnt{ The most important gauges (so far) are
+`neighbourhood gauges'.}
+If $(X,\frak T)$ is a topological space, a {\bf neighbourhood gauge} on
+$X$ is a set expressible in the form
+$\delta=\{(x,C):x\in X,\,C\subseteq G_x\}$
+where $\family{x}{X}{G_x}$ is a family of open sets such that $x\in G_x$
+for every $x\in X$.   It is useful to note (i) that the family
+$\family{x}{X}{G_x}$ can be recovered from $\delta$\cmmnt{, since
+$G_x=\bigcup\{A:(x,A)\in\delta\}$} (ii) that $\delta_1\cap\delta_2$ is a
+neighbourhood gauge whenever $\delta_1$ and $\delta_2$ are.
+When $(X,\rho)$ is a metric space, \dvro{we have}{we can define a
+neighbourhood gauge $\delta_h$ from any function
+$h:X\to\ooint{0,\infty}$, setting
+
+\Centerline{$\delta_h
+=\{(x,C):x\in X,\,C\subseteq X,\,\rho(y,x)<h(x)$ for every $y\in C\}$.}
+
+\noindent The set of gauges expressible in this form is coinitial with
+the set of all neighbourhood gauges and therefore defines the same
+filter on any compatible set $T$ of tagged partitions.   Specializing
+yet further, we can restrict attention to constant functions $h$,
+obtaining} the {\bf uniform metric gauges}
+
+\Centerline{$\delta_{\eta}
+=\{(x,C):x\in X,\,C\subseteq X,\,\rho(x,y)<\eta$ for every $y\in C\}$}
+
+\noindent for $\eta>0$, used in the Riemann integral\cmmnt{ (481I)}.
+\cmmnt{(The use of the letter `$\delta$' to represent a gauge has
+descended from its
+traditional appearance in the definition of the Riemann integral.)}
+
+\spheader 481Ec\dvAformerly{4{}82Jb} If $X$ is a set and
+$\Delta\subseteq\Cal P(X\times\Cal PX)$ is a family of gauges on $X$, I
+will say that $\Delta$ is {\bf countably full} if whenever
+$\sequencen{\delta_n}$ is a sequence in $\Delta$, and $\phi:X\to\Bbb N$
+is a function, then there is a $\delta\in\Delta$ such that
+$(x,C)\in\delta_{\phi(x)}$ whenever $(x,C)\in\delta$.   I will say that
+$\Delta$ is {\bf full} if whenever $\family{x}{X}{\delta_x}$ is a family
+in $\Delta$, then there is a $\delta\in\Delta$ such that
+$(x,C)\in\delta_x$ whenever $(x,C)\in\delta$.
+
+Of course a full set of gauges is countably full.   Observe that if
+$(X,\frak T)$ is any topological space, the set of all
+neighbourhood gauges on $X$ is full.
+
+\leader{481F}{Residual sets}\dvro{ Let $\frak R$ be a collection }{ The
+versatility and power of the methods being introduced here derives from
+the insistence on taking {\it finite} sums
+$\sum_{(x,C)\in\pmb{t}}f(x)\nu C$, so
+that all questions about convergence are concentrated in the final limit
+$\lim_{{\pmb{t}}\to\Cal F}S_{\pmb{t}}(f,\nu)$.   Since in a given
+Riemann sum we can look at only finitely many sets $C$ of finite
+measure, we cannot insist, even when $\nu$ is Lebesgue measure on
+$\Bbb R$, that $W_{\pmb{t}}$ should always be $X$.   There are many
+other cases in which it is impossible or inappropriate to insist that
+$W_{\pmb{t}}=X$ for every tagged partition in $T$.   We shall therefore
+need to add something to the definition of the filter $\Cal F$ on $T$
+beyond what is possible in the language of 481E.   In the examples
+below, the extra condition will always be of the following form.   There
+will be a collection $\frak R$ }%end of dvro
+of {\bf residual families}
+$\Cal R\subseteq\Cal PX$.   It will help to have a phrase corresponding
+to the phrase `$\delta$-fine':  if $\Cal R\subseteq\Cal PX$, and
+$\pmb{t}$ is a tagged partition on $X$, \cmmnt{I will say that}
+$\pmb{t}$ is {\bf $\Cal R$-filling} if
+$X\setminus W_{\pmb{t}}\in\Cal R$.   Now, given a family $\frak R$ of
+residual sets, and a family $\Delta$ of gauges on $X$, we can seek to
+define a filter $\Cal F(T,\Delta,\frak R)$ on $T$ as that generated by
+sets of the form $T_{\delta}$, for $\delta\in\Delta$, and $T'_{\Cal R}$,
+for $\Cal R\in\frak R$, where 
+
+\Centerline{$T'_{\Cal R}
+=\{\pmb{t}:\pmb{t}\in T$ is $\Cal R$-filling$\}.$}
+
+\noindent When there is such a filter\cmmnt{, that is, the family
+$\{T_{\delta}:\delta\in\Delta\}\cup\{T'_{\Cal R}:\Cal R\in\frak R\}$ has 
+the finite
+intersection property}, I will say that $T$ is {\bf compatible} with
+$\Delta$ and $\frak R$.
+
+\cmmnt{It is important here to note that we shall {\it not} suppose
+that, for a typical residual family
+$\Cal R\in\frak R$, subsets of members of $\Cal R$ again belong to
+$\Cal R$;  there will frequently be a restriction on the `shape' of
+members of $\Cal R$ as well as on their size.   On the other hand, it
+will usually be helpful to arrange that $\frak R$ is a filter base, so
+that (if $\Delta$ is also
+downwards-directed, and neither $\Delta$ nor $\frak R$ is empty) 
+we need only show that $T_{\delta}\cap T'_{\Cal R}$ is always
+non-empty, and
+$\{T_{\delta\Cal R}:\delta\in\Delta,\,\Cal R\in\frak R\}$ will be a base
+for $\Cal F(T,\Delta,\frak R)$.}
+
+\cmmnt{If the filter $\Cal F$ is defined as in 481Ea, with no mention
+of a family $\frak R$, we can still bring the construction into the
+framework considered here by setting $\frak R=\emptyset$.   If it is
+convenient to define $T$ in terms which do not impose any requirement on
+the sets $W_{\pmb{t}}$, but nevertheless we wish to restrict attention
+to sums $S_{\pmb{t}}(f,\nu)$ for which the tagged partition covers the
+whole space $X$, we can do so by setting $\frak R=\{\{\emptyset\}\}$.}
+
+\leader{481G}{Subdivisions}\cmmnt{ When we come to analyse the
+properties of integrals constructed by the method of 481C, there is an
+important approach which depends on the following combination of features.}   I will say that
+$(X,T,\Delta,\frak R)$ is a {\bf tagged-partition structure allowing
+subdivisions}, {\bf witnessed by} $\Cal C$, if
+
+\inset{(i) $X$ is a set.
+
+(ii) $\Delta$ is a non-empty downwards-directed family of gauges on $X$.
+
+(iii)($\alpha$) $\frak R$ is a non-empty downwards-directed collection
+of families of subsets of $X$, all containing $\emptyset$;
+
+\quad($\beta$) for every $\Cal R\in\frak R$ there is an
+$\Cal R'\in\frak R$ such that $A\cup B\in\Cal R$ whenever $A$,
+$B\in\Cal R'$ are disjoint.
+
+(iv) $\Cal C$ is a family of subsets of $X$ such that
+whenever $C$, $C'\in\Cal C$ then
+$C\cap C'\in\Cal C$ and $C\setminus C'$ is expressible as the union of a
+disjoint finite subset of $\Cal C$.
+
+(v) Whenever $\Cal C_0\subseteq\Cal C$ is finite and $\Cal R\in\frak R$,
+there is a finite set $\Cal C_1\subseteq\Cal C$, including $\Cal C_0$,
+such that $X\setminus\bigcup\Cal C_1\in\Cal R$.
+
+(vi) $T\subseteq[X\times\Cal C]^{<\omega}$ is\cmmnt{ (in the language
+of 481Ba)} a non-empty straightforward set of tagged partitions on $X$.
+
+(vii) Whenever $C\in\Cal C$, $\delta\in\Delta$ and
+$\Cal R\in\frak R$ there is a $\delta$-fine tagged partition
+$\pmb{t}\in T$ such that $W_{\pmb{t}}\subseteq C$ and
+$C\setminus W_{\pmb{t}}\in\Cal R$.}
+
+\leader{481H}{Remarks}\cmmnt{ {\bf (a)} Conditions (ii) and
+(iii-$\alpha$) of 481G are included primarily for convenience, since
+starting from any $\Delta$ and $\frak R$ we can find 
+non-empty directed sets
+leading to the same filter $\Cal F(T,\Delta,\frak R)$.   (iii-$\beta$),
+on the other hand, is saying something new.
+
+\medskip
+
+}\cmmnt{{\bf (b)} It is important to note, in
+(vii) of 481G, that the tags of $\pmb{t}$ there are {\it not} required
+to belong to the set $C$.
+
+\medskip
+
+}\cmmnt{{\bf (c)} All the applications below will fall into one
+of two classes.   In one type, the residual families $\Cal R\in\frak R$
+will be families of `small' sets, in some recognisably measure-theoretic
+sense, and, in particular, we shall have subsets of members of any
+$\Cal R$ belonging to
+$\Cal R$.   In the other type, (vii) of 481G will be true because we can
+always find $\pmb{t}\in T$ such that $W_{\pmb{t}}=C$.
+
+\medskip
+
+} {\bf (d)}\cmmnt{ The following elementary fact got left out of
+\S136 and Chapter 31.}   Let $\frak A$ be a Boolean algebra and
+$C\subseteq\frak A$.   Set
+
+\Centerline{$E
+=\{\sup C_0:C_0\subseteq C$ is finite and disjoint$\}$.}
+
+\noindent If $c\Bcap c'$ and $c\Bsetminus c'$ belong to $E$ for all $c$,
+$c'\in C$, then $E$ is a subring of $\frak A$.
+\prooflet{\Prf\ Write $\Cal D$ for the family of finite disjoint subsets
+of $C$.   (i) If $C_0$, $C_1\in\Cal D$, then for $c\in C_0$,
+$c'\in C_1$ there is a $D_{cc'}\in\Cal D$ with supremum
+$c\Bcap c'$.   Now $D=\bigcup_{c\in C_0,c'\in C_1}D_{cc'}$ belongs to
+$\Cal D$ and has supremum $(\sup C_0)\Bcap(\sup C_1)$.   Thus
+$e\Bcap e'\in E$ for all $e$, $e'\in E$.   (ii) Of course
+$e\Bcup e'\in E$ whenever $e$, $e'\in E$ and $e\Bcap e'=0$.
+(iii) Again suppose that $C_0$, $C_1\in\Cal D$.   Then
+$c\Bsetminus c'\in E$ for all
+$c\in C_0$, $c'\in C_1$.   By (i), $c\Bsetminus\sup C_1\in E$ for every
+$c\in C_0$;  by (ii), $(\sup C_0)\Bsetminus(\sup C_1)\in E$.   Thus
+$e\Bsetminus e'\in E$ for all $e$, $e'\in E$.   (iv) Putting (ii) and
+(iii) together, $e\Bsymmdiff e'\in E$ for all $e$, $e'\in E$.   (v) As
+$0=\sup\emptyset$ belongs to $E$, $E$ is a subring of $\frak A$.\ \Qed}
+
+In particular, if $\Cal C\subseteq\Cal PX$ has the properties in (iv) of
+481G, then
+
+\Centerline{$\Cal E
+=\{\bigcup\Cal C_0:\Cal C_0\subseteq\Cal C$ is finite and disjoint$\}$}
+
+\noindent is a ring of subsets of $X$.
+
+\spheader 481He Suppose that $X$ is a set and that
+$\frak R\subseteq\Cal P\Cal PX$ satisfies (iii) of 481G.   Then for
+every $\Cal R\in\frak R$ there is a non-increasing sequence
+$\sequencen{\Cal R_n}$ in
+$\frak R$ such that $\bigcup_{i\le n}A_i\in\Cal R$ whenever
+$A_i\in\Cal R_i$ for $i\le n$ and $\langle A_i\rangle_{i\le n}$ is
+disjoint.   \prooflet{\Prf\ Take
+$\Cal R_0\in\frak R$ such that $\Cal R_0\subseteq\Cal R$ and
+$A\cup B\in\Cal R$ for all disjoint $A$, $B\in\Cal R_0$;  similarly, for
+$n\in\Bbb N$, choose
+$\Cal R_{n+1}\in\frak R$ such that $\Cal R_{n+1}\subseteq\Cal R_n$ and
+$A\cup B\in\Cal R_n$ for all disjoint $A$, $B\in\Cal R_{n+1}$.   Now,
+given that $A_i\in\Cal R_i$ for $i\le n$ and
+$\langle A_i\rangle_{i\le n}$ is disjoint, we see by downwards induction
+on $m$ that $\bigcup_{m<i\le n}A_i\in\Cal R_m$ for each $m\le n$, so
+that $\bigcup_{i\le n}A_i\in\Cal R$.\ \Qed}
+
+\spheader 481Hf If $(X,T,\Delta,\frak R)$ is a tagged-partition
+structure allowing subdivisions, then $T$ is compatible with $\Delta$
+and $\frak R$\cmmnt{ in the sense of 481F}.
+\prooflet{\Prf\ $\emptyset\in T$ so $T$ is not empty.   Take
+$\delta\in\Delta$ and $\Cal R\in\frak R$.   Let $\sequence{i}{\Cal R_i}$
+be a sequence in $\frak R$ such that $\bigcup_{i\le n}A_i\in\Cal R$
+whenever $A_i\in\Cal R_i$ for $i\le n$ and $\langle A_i\rangle_{i\le n}$
+is disjoint ((e) above).   There is a finite
+set $\Cal C_1\subseteq\Cal C$ such that
+$X\setminus\bigcup\Cal C_1\in\Cal R_0$, by 481G(iv).   By (d), there is
+a disjoint family $\Cal C_0\subseteq\Cal C$ such that
+$\bigcup\Cal C_0=\bigcup\Cal C_1$;  enumerate $\Cal C_0$ as
+$\ofamily{i}{n}{C_i}$.   For each $i<n$, there is a $\delta$-fine
+$\pmb{t}_i\in T$ such that $W_{\pmb{t}_i}\subseteq C_i$ and
+$C_i\setminus W_{\pmb{t}_i}\in\Cal R_{i+1}$, by 481G(vii).   Set
+$\pmb{t}=\bigcup_{i<n}\pmb{t}_i$;  then $\pmb{t}\in T$ is $\delta$-fine,
+and
+
+\Centerline{$X\setminus W_{\pmb{t}}
+=(X\setminus\bigcup\Cal C_1)
+  \cup\bigcup_{i<n}(C_i\setminus W_{\pmb{t}_i})
+\in\Cal R$}
+
+\noindent by the choice of $\sequence{i}{\Cal R_i}$.   Thus we have a
+$\delta$-fine $\Cal R$-filling member of $T$;  as $\delta$ and $\Cal R$
+are arbitrary, $T$ is compatible with $\Delta$ and $\frak R$.\ \Qed
+}%end of prooflet
+
+\cmmnt{\spheader 481Hg For basic results which depend on `subdivisions'
+as described in 481G(vii), see 482A-482B below.   A hypothesis
+asserting the existence of a different
+sort of subdivision appears in 482G(iv).}
+
+\leader{481I}{}\cmmnt{ I now run through some simple examples of these
+constructions, limiting myself for the moment to the definitions, the
+proofs that $T$ is compatible with $\Delta$ and $\frak R$, and (when
+appropriate) the proofs that the structures allow subdivisions.
+
+\medskip
+
+\noindent}{\bf The proper Riemann integral} Fix a
+non-empty closed interval $X=[a,b]\subseteq\Bbb R$.   Write
+$\Cal C$ for the set of all intervals (open, closed or
+half-open, and allowing the empty set to count as an interval) 
+included in $[a,b]$, and set
+$Q=\{(x,C):C\in C,\,x\in\overline{C}\}$;  let $T$ be the straightforward
+set of tagged partitions generated by $Q$.   Let $\Delta$ be the set of
+uniform metric gauges on $X$, and $\frak R=\{\{\emptyset\}\}$.   Then
+$(X,T,\Delta,\frak R)$ is a
+tagged-partition structure allowing subdivisions, witnessed by $\Cal C$.
+If $a<b$, then $\Delta$ is not countably full.
+
+\proof{ (i), (iii) and (vi) of 481G are trivial and (ii), (iv) and (v)
+are elementary.   As for (vii), given $\eta>0$ and $C\in\Cal C$, take a
+disjoint family $\familyiI{C_i}$ of non-empty intervals of length less than
+$2\eta$ covering $C$, and $x_i$ to be the midpoint of $C_i$ for
+$i\in I$; then $\pmb{t}=\{(x_i,C_i):i\in I\}$ belongs to
+$T$ and is $\delta_{\eta}$-fine, in the language of 481E, and
+$W_{\pmb{t}}=C$.
+
+Of course (apart from the trivial case $a=b$)
+$\Delta$ is not countably full, since if we take $\delta_n$ to be
+the gauge $\{(x,C):|x-y|<2^{-n}$ for every $y\in C\}$ and any unbounded
+function $\phi:[a,b]\to\Bbb N$, there is no $\delta\in\Delta$ such that
+$(x,C)\in\delta_{\phi(x)}$ whenever $(x,C)\in\Delta$.
+}%end of proof of 481I
+
+\leader{481J}{\bf The Henstock integral on a bounded
+interval}\cmmnt{ ({\smc Henstock 63})} Take $X$, $\Cal C$, $T$
+and $\frak R$ as in 481I.   This time, let $\Delta$ be the set of
+{\it all} neighbourhood gauges on $[a,b]$.   Then
+$(X,T,\Delta,\frak R)$ is a tagged-partition structure allowing
+subdivisions, witnessed by $\Cal C$, and $\Delta$ is countably full.
+
+\proof{ Again, only 481G(vii) needs more than a moment's consideration.
+Take any
+$C\in\Cal C$.   If $C=\emptyset$, then $\pmb{t}=\emptyset$ will suffice.
+Otherwise, set $a_0=\inf C$, $b_0=\sup C$ and let $T_0$ be the
+family of $\delta$-fine partitions $\pmb{t}\in T$ such that
+$W_{\pmb{t}}$ is a relatively closed initial subinterval of $C$, that
+is, is of the
+form $C\cap[a_0,y_{\pmb{t}}]$ for some $y_{\pmb{t}}\in[a_0,b_0]$.   Set
+$A=\{y_{\pmb{t}}:\pmb{t}\in T_0\}$.   I have to show that there is a
+$\pmb{t}\in T_0$ such that $W_{\pmb{t}}=C$, that is, that $b_0\in A$.
+
+Observe that there is an $\eta_0>0$ such that
+$(a_0,A)\in\delta$ whenever
+$A\subseteq[a,b]\cap[a_0-\eta_0,a_0+\eta_0]$, and now
+$\{(a_0,[a_0,a_0+\eta_0]\cap C)\}$ belongs to $T_0$, so
+$\min(a_0+\eta_0,b_0)\in A$ and $A$ is a non-empty subset of
+$[a_0,b_0]$.
+It follows that $c=\sup A$ is defined in $[a_0,b_0]$.   Let $\eta>0$ be
+such that $(c,A)\in\delta$ whenever
+$A\subseteq[a,b]\cap[c-\eta,c+\eta]$.   There is some
+$\pmb{t}\in T_0$ such that $y_{\pmb{t}}\ge c-\eta$.   If
+$y_{\pmb{t}}=b_0$, we can stop.   Otherwise, set
+$C'=C\cap\ocint{y_{\pmb{t}},c+\eta}$.   Then $(c,C')\in\delta$ and
+$c\in\overline{C'}$ and $C'\cap W_{\pmb{t}}$ is empty, so
+$\pmb{t}'=\pmb{t}\cup\{(c,C')\}$ belongs to $T_0$ and
+$y_{\pmb{t}'}=\min(c+\eta,b_0)$.   Since $y_{\pmb{t}'}\le c$, this shows
+that $y_{\pmb{t}'}=c=b_0$ and again $b_0\in A$, as required.
+
+$\Delta$ is full just because it is the family of neighbourhood gauges.
+}%end of proof of 481J
+% maybe {\smc Cousin 1895} relevant if I can be bothered to check
+
+\leader{481K}{The Henstock integral on $\Bbb R$} This time, set
+$X=\Bbb R$ and let $\Cal C$ be the family of all bounded
+intervals in $\Bbb R$.   Let $T$ be the straightforward set of
+tagged partitions generated by
+$\{(x,C):C\in\Cal C$, $x\in\overline{C}\}$.   Following 481J, let $\Delta$ be the set of all neighbourhood
+gauges on $\Bbb R$.   This time, set
+$\frak R=\{\Cal R_{ab}:a\le b\in\Bbb R\}$, where
+$\Cal R_{ab}=\{\Bbb R\setminus[c,d]:c\le a,\,d\ge b\}\cup\{\emptyset\}$.
+Then $(X,T,\Delta,\frak R)$ is a tagged-partition structure allowing
+subdivisions, witnessed by $\Cal C$.
+
+\proof{ This time we should perhaps take a moment to look at
+(iii) of 481G.   But all we need to note is that
+$\Cal R_{ab}\cap\Cal R_{a'b'}=\Cal R_{\min(a,a'),\max(b,b')}$, and that
+any two members of $\Cal R_{ab}$ have non-empty intersection.
+Conditions (i), (ii), (iv), (v) and (vi) of 481G
+are again elementary, so once more we are left with (vii).   But this
+can be dealt with by exactly the same argument as in 481J.
+}%end of proof of 481K
+
+\leader{481L}{The symmetric Riemann-complete integral}\cmmnt{ (cf.\
+{\smc Carrington 72}, chap.\ 3)} Again take $X=\Bbb R$, and $\Cal C$ the
+set of all
+bounded intervals in $\Bbb R$.   This time, take $T$ to be the
+straightforward set of tagged partitions generated by the set
+of pairs $(x,C)$ where $C\in\Cal C\setminus\{\emptyset\}$ and $x$ is the 
+{\it midpoint} of
+$C$.   As in 481K, take $\Delta$ to be the set of all neighbourhood
+gauges on
+$\Bbb R$;  but this time take $\frak R=\{\Cal R'_a:a\ge 0\}$, where
+$\Cal R'_a=\{\Bbb R\setminus[-c,c]:c\ge a\}\cup\{\emptyset\}$.   Then
+$T$ is compatible with $\Delta$ and $\frak R$.
+
+\proof{ Take $\delta\in\Delta$ and $\Cal R\in\frak R$.   For $x\ge 0$,
+let $\theta(x)>0$ be such that
+$(x,D)\in\delta$ whenever $D\subseteq[x-\theta(x),x+\theta(x)]$
+and $(-x,D)\in\delta$ whenever
+$D\subseteq[-x-\theta(x),-x+\theta(x)]$.   Write $A$ for the set of
+those $a>0$ such that there is a finite sequence $(a_0,\ldots,a_n)$
+such that $0<a_0<a_1<\ldots<a_n=a$, $a_0\le\theta(0)$ and
+$a_{i+1}-a_i\le 2\theta(\bover12(a_i+a_{i+1}))$ for $i<n$.
+
+\Quer\ Suppose, if possible, that $A$ is bounded above.   Then
+$c=\inf(\coint{0,\infty}\setminus\overline{A})$ is defined in
+$\coint{0,\infty}$.   Observe that if $0<a\le\theta(0)$, then the
+one-term sequence $\fraction{a}$ witnesses that $a\in A$.   
+So $c\ge\theta(0)>0$.   Now there
+must be $u$, $v$ such that $c<u<v<\min(c+\theta(c),2c)$ and
+$\ooint{u,v}\cap A=\emptyset$;  on the other hand, the interval
+$\ooint{2c-v,2c-u}$ must contain a point $x$ of $A$.   Set $y=2c-x$.
+Then we can find $a_0<\ldots<a_n=x$ such that $0<a_0\le\theta(0)$ and
+$a_{i+1}-a_i\le 2\theta(\bover12(a_i+a_{i+1}))$ for $i<n$;  setting
+$a_{n+1}=y$, we see that $\langle a_i\rangle_{i\le n+1}$ witnesses that
+$y\in A$, though $y\in\ooint{u,v}$.\ \Bang\
+
+This contradiction shows that $A$ is unbounded above.   So now suppose
+that $\Cal R=\Cal R_a$ where $a\ge 0$.   Take $a_0,\ldots,a_n$ such that
+$0<a_0<\ldots<a_n$, $0<a_0\le\theta(0)$ and
+$a_{i+1}-a_i\le 2\theta(\bover12(a_i+a_{i+1}))$ for $i<n$, and
+$a_n\ge a$.
+For $i<n$, set $x_i=\bover12(a_i+a_{i+1})$, $C_i=\ocint{a_i,a_{i+1}}$,
+$x'_i=-x_i$, $C'_i=\coint{-a_{i+1},a_i}$.   Then $x_i$, $x'_i$ are the
+midpoints of $C_i$, $C'_i$ and (by the choice of the function $\theta$)
+$(x_i,C_i)\in\delta$, $(x'_i,C'_i)\in\delta$ for $i<n$.   So
+if we set
+
+\Centerline{$\pmb{t}
+=\{(x_i,C_i):i<n\}\cup\{(x'_i,C'_i):i<n\}\cup\{(0,[-a_0,a_0])\}$}
+
+\noindent we shall obtain a $\delta$-fine $\Cal R$-filling member of
+$T$.
+
+As $\Delta$ and $\frak R$ are both downwards-directed, this is enough to
+show that $T$ is compatible with $\Delta$ and $\frak R$.
+}%end of proof of 481L
+
+\leader{481M}{The McShane integral on an 
+interval}\cmmnt{ ({\smc McShane 73})} As in 481J, take
+$X=[a,b]$ and let $\Cal C$ be the family of subintervals of
+$[a,b]$.   This time, take $T$ to be the straightforward set of tagged
+partitions generated by $Q=X\times\Cal C$\cmmnt{, so that {\it no}
+condition is imposed relating the tags to their associated intervals}.
+As in 481J, let $\Delta$ be the set of all neighbourhood gauges on $X$,
+and $\frak R=\{\{\emptyset\}\}$.   \cmmnt{Proceed as before.   Since
+the only change is that $Q$ and $T$ have been enlarged,}
+$(X,T,\Delta,\frak R)$ is\cmmnt{ still} a tagged-partition structure
+allowing subdivisions, witnessed by $\Cal C$.
+
+\leader{481N}{The McShane integral on a topological
+space}\cmmnt{ ({\smc Fremlin 95})} Now let
+\ifdim\pagewidth=390pt\penalty-1000\fi
+$(X,\frak T,\Sigma,\mu)$ be any effectively locally finite
+$\tau$-additive topological measure space, and take
+$\Cal C=\{E:E\in\Sigma,\,\mu E<\infty\}$,
+$Q=X\times\Cal C$;  let $T$ be the straightforward set of tagged
+partitions generated by $Q$.   Again let
+$\Delta$ be the set of all neighbourhood gauges on $X$.   \cmmnt{This
+time, define $\frak R$ as follows.}   For any set $E\in\Sigma$ of finite
+measure and $\eta>0$, let $\Cal R_{E\eta}$ be the set
+$\{F:F\in\Sigma,\,\mu(F\cap E)\le\eta\}$, and set
+$\frak R=\{\Cal R_{E\eta}:\mu E<\infty,\,\eta>0\}$.   Then
+$(X,T,\Delta,\frak R)$ is a tagged-partition structure allowing
+subdivisions, witnessed by $\Cal C$.
+
+\proof{ As usual, everything is elementary except perhaps 481G(vii).
+But if $C\in\Cal C$, $\delta\in\Delta$, $E\in\Sigma$, $\mu E<\infty$ and
+$\eta>0$, take for each $x\in X$ an open set $G_x$ containing $x$ such
+that $(x,A)\in\delta$ whenever $A\subseteq G_x$.
+$\{G_x:x\in X\}$ is an open cover of $X$, so by 414Ea there is a
+finite family $\ofamily{i}{n}{x_i}$ in $X$ such that
+$\mu(E\cap C\setminus\bigcup_{i<n}G_{x_i})\le\eta$;  setting
+$C_i=C\cap G_{x_i}\setminus\bigcup_{j<i}G_{x_j}$ for
+$i<n$, we get a $\delta$-fine tagged partition
+$\pmb{t}=\{(x_i,C_i):i<n\}$ such that
+$C\setminus W_{\pmb{t}}\in\Cal R_{E\eta}$.
+}%end of proof of 481N
+
+\leader{481O}{Convex partitions in $\BbbR^r$} Fix $r\ge 1$.   Let us say
+that a {\bf convex polytope} in $\BbbR^r$ is a non-empty bounded set
+expressible as the intersection of finitely many open or closed
+half-spaces;  let
+$\Cal C$ be the family of convex polytopes in $X=\BbbR^r$, and $T$ the
+straightforward set of tagged partitions generated by
+$\{(x,C):x\in\overline{C}\}$.   Let $\Delta$ be the set of
+neighbourhood gauges on $\BbbR^r$.   For $a\ge 0$, let $\Cal C_a$ be the
+set of closed convex polytopes $C\subseteq\BbbR^r$ such that, for some
+$b\ge a$, $B(0,b)\subseteq C\subseteq B(0,2b)$, where $B(0,b)$ is the
+ordinary Euclidean ball with centre $0$ and radius $b$;  set
+$\Cal R_a=\{\BbbR^r\setminus C:C\in\Cal C_a\}\cup\{\emptyset\}$, and
+$\frak R=\{\Cal R_a:a\ge 0\}$.   Then $(X,T,\Delta,\frak R)$ is a
+tagged-partition structure allowing subdivisions, witnessed by $\Cal C$.
+
+%what about Saks-regular partitions?  see \S475
+%note that $\frak R$ looks just peculiar at the moment
+
+\proof{ As usual, only 481G(vii) requires thought.
+
+\medskip
+
+{\bf (a)} We need a geometrical fact:  if $C\in\Cal C$,
+$x\in\overline{C}$ and $y\in C$, then $\alpha y+(1-\alpha)x\in C$ for
+every $\alpha\in\ocint{0,1}$.   \Prf\ The family of sets
+$C\subseteq\BbbR^r$ with this property is closed under finite
+intersections and contains all half-spaces.\ \QeD\   It follows that if
+$C_1$, $C_2\in\Cal C$ are not disjoint, then
+$\overline{C_1\cap C_2}=\overline{C}_1\cap\overline{C}_2$.
+
+\medskip
+
+{\bf (b)} Write $\Cal D\subseteq\Cal C$ for the family of products of
+non-empty bounded intervals in $\Bbb R$.   The next step is to show that
+if $D\in\Cal D$ and $\delta\in\Delta$, then there is a
+$\delta$-fine tagged partition $\pmb{t}\in T$ such that $W_{\pmb{t}}=D$
+and $\pmb{t}\subseteq\BbbR^r\times\Cal D$.
+\Prf\ Induce on $r$.   For $r=1$ this is just 481J again.   For the
+inductive step to $r+1$, suppose that
+$D\subseteq\BbbR^{r+1}$ is a product of bounded intervals and that
+$\delta$ is a neighbourhood gauge on $\BbbR^{r+1}$.   Identifying
+$\BbbR^{r+1}$ with $\BbbR^r\times\Bbb R$, express $D$ as $D'\times L$,
+where $D'\subseteq\BbbR^r$ is a product of bounded intervals and
+$L\subseteq\Bbb R$ is a bounded interval.   For $y\in\BbbR^r$,
+$\alpha\in\Bbb R$ let $G(y,\alpha)$, $H(y,\alpha)$ be open sets
+containing $y$, $\alpha$ respectively such that
+$((y,\alpha),A)\in\delta$ whenever
+$A\subseteq G(y,\alpha)\times H(y,\alpha)$.
+For $y\in\BbbR^r$, set $\delta_y=\{(\alpha,A):\alpha\in\Bbb
+R,\,A\subseteq H(y,\alpha)\}$;  then $\delta_y$ is a neighbourhood gauge
+on $\Bbb R$.
+
+By the one-dimensional case there is a $\delta_y$-fine tagged partition
+$\pmb{s}_y\in T_1$ such that $W_{\pmb{s}_y}=L$, where I write $T_1$ for
+the set of tagged partitions used in 481K.
+Set
+
+\Centerline{$\delta'
+=\{(y,A):y\in\BbbR^r,\,A\subseteq G(y,\alpha)$ for every
+$(\alpha,F)\in\pmb{s}_y\}$.   }
+
+$\delta'$ is a neighbourhood gauge on $\BbbR^r$.   By the inductive
+hypothesis, there is a $\delta'$-fine tagged partition $\pmb{u}\in T_r$
+such that $W_{\pmb{u}}=D'$, where here $T_r$ is the set of tagged
+partitions on $\BbbR^r$ corresponding to the $r$-dimensional version of
+this result.   Consider the family
+
+\Centerline{$\pmb{t}
+=\{((y,\alpha),E\times F):(y,E)\in\pmb{u},\,(\alpha,F)\in\pmb{s}_y\}$.}
+
+\noindent For $(y,E)\in\pmb{u}$, $(\alpha,F)\in\pmb{s}_y$, we have
+
+\Centerline{$y\in\overline{E}$,
+\quad$E\subseteq G(y,\alpha)$,
+\quad$\alpha\in\overline{F}$,
+\quad$F\subseteq H(y,\alpha)$,}
+
+\noindent so
+
+\Centerline{$(y,\alpha)\in\overline{E\times F}$,
+\quad$E\times F\subseteq G(y,\alpha)\times H(y,\alpha)$,}
+
+\noindent and $((y,\alpha),E\times F)\in\delta$.
+If $((y,\alpha),E\times F)$, $((y',\alpha'),E'\times F')$ are distinct
+members of $\pmb{t}$, then either $(y,E)\ne(y',E')$ so
+$E\cap E'=\emptyset$ and $(E\times F)\cap(E'\times F')$ is empty, or
+$y=y'$ and $(\alpha,F)$, $(\alpha',F')$ are distinct members of
+$\pmb{s}_y$, so that $F\cap F'=\emptyset$ and again $E\times F$,
+$E'\times F'$ are disjoint.    Thus $\pmb{t}$ is a $\delta$-fine member
+of $T_{r+1}$.   Finally,
+
+\Centerline{$W_{\pmb{t}}
+=\bigcup_{(y,E)\in\pmb{u}}\bigcup_{(\alpha,F)\in\pmb{s}_y}
+   E\times F
+=\bigcup_{(y,E)\in\pmb{u}}E\times L=D'\times L=D$.}
+
+\noindent So the induction proceeds.\ \Qed
+
+\medskip
+
+{\bf (c)} Now suppose that $C_0$ is an arbitrary member of $\Cal C$ and
+that $\delta$ is a neighbourhood gauge on $\BbbR^r$.   Set
+
+\Centerline{$\delta'=\delta\cap\{(x,A):$ either $x\in\overline{C}_0$ or
+$A\cap\overline{C}_0=\emptyset\}$.}
+
+\noindent Then $\delta'$ is a neighbourhood gauge on $\BbbR^r$, being
+the intersection of $\delta$ with the neighbourhood gauge associated
+with the family $\family{x}{\BbbR^r}{U_x}$, where $U_x=\BbbR^r$ if
+$x\in\overline{C}_0$, $\BbbR^r\setminus\overline{C}_0$ otherwise.   Let
+$D\in\Cal D$ be such that $C_0\subseteq D$.   By (b), there is a
+$\delta'$-fine tagged partition $\pmb{t}\in T$ such that
+$W_{\pmb{t}}=D$.   Set
+$\pmb{s}=\{(x,C\cap C_0):(x,C)\in\pmb{t},\,C\cap C_0\ne\emptyset\}$.
+Since $\pmb{t}\subseteq\delta'$, $x\in\overline{C}_0$ whenever
+$(x,C)\in\pmb{t}$ and
+$C\cap C_0\ne\emptyset$.   By (a), $x\in\overline{C\cap C_0}$ for all
+such pairs $(x,C)$;  and of course $(x,C\cap C_0)\in\delta$ for every
+$(x,C)\in\pmb{t}$.   So $\pmb{s}$ belongs to $T$, and
+$W_{\pmb{s}}=W_{\pmb{t}}\cap C_0=C_0$.   As $C_0$ and $\delta$ are
+arbitrary, 481G(vii) is satisfied.
+}%end of proof of 481O
+
+\leader{481P}{Box products}\cmmnt{ (cf. {\smc Muldowney 87}, Prop.\
+1)} Let $\familyiI{(X_i,\frak T_i)}$ be a non-empty family of non-empty
+compact metrizable spaces with product $(X,\frak T)$.   Set
+$\pi_i(x)=x(i)$ for $x\in X$ and $i\in I$.   For each $i\in I$, let
+$\Cal C_i\subseteq\Cal PX_i$ be such that ($\alpha$) whenever $E$,
+$E'\in\Cal C_i$ then
+$E\cap E'\in\Cal C_i$ and $E\setminus E'$ is expressible as the union of
+a disjoint finite subset of $\Cal C_i$ ($\beta$) $\Cal C_i$ includes a
+base for $\frak T_i$.
+
+Let $\Cal C$ be the set of subsets of $X$ of the form
+
+\Centerline{$C=\{X\cap\bigcap_{i\in J}\pi_i^{-1}[E_i]:
+J\in[I]^{<\omega},\,E_i\in\Cal C_i$ for every $i\in J\}$,}
+
+\noindent and let $T$ be the straightforward set of tagged partitions
+generated by $\{(x,C):C\in\Cal C,\,x\in\overline{C}\}$.   Let
+$\Delta$ be the set of those neighbourhood gauges $\delta$ on $X$
+defined by families $\family{x}{X}{G_x}$ of open sets such that, for
+some countable $J\subseteq I$, every $G_x$ is determined by coordinates
+in $J$\cmmnt{ (definition:  254M)}.   Then
+$(X,T,\Delta,\{\{\emptyset\}\})$ is a tagged-partition structure
+allowing subdivisions, witnessed by $\Cal C$.    $\Delta$ is countably
+full;  $\Delta$ is full iff $I'=\{i:\#(X_i)>1\}$ is countable.
+
+\proof{ Conditions (i), (iii) and (vi) of 481G are trivial, and (ii),
+(iv) and (v) are elementary;  so we are left with (vii), as usual.
+\Quer\ Suppose, if possible, that $C\in\Cal C$ and $\delta\in\Delta$ are
+such that there is no $\delta$-fine $\pmb{t}\in T$ with $W_{\pmb{t}}=C$.
+Let $\family{x}{X}{G_x}$ be the family of open sets determining
+$\delta$, and $J\subseteq I$ a non-empty countable set such that $G_x$
+is determined by coordinates in $J$ for every $x\in X$.   For $i\in J$,
+let $\Cal C'_i\subseteq\Cal C_i$ be a countable base for $\frak T_i$
+(4A2P(a-iii)), and take a sequence $\sequencen{(i_n,E_n)}$ running over
+$\{(i,E):i\in J,\,E\in\Cal C'_i\}$.
+
+Write $\Cal D=\{W_{\pmb{t}}:\pmb{t}\in T$ is $\delta$-fine$\}$.
+Note that if $D_1$, $D_2\in\Cal D$ are disjoint then
+$D_1\cup D_2\in\Cal D$.   So if
+$D\in\Cal C\setminus\Cal D$ and $C\in\Cal C$, there must be some
+$D'\in\Cal C\setminus\Cal D$ such that either $D'\subseteq D\cap C$ or
+$D'\subseteq D\setminus C$, just because $\Cal C$ satisfies 481G(iv).
+Now choose $\sequencen{C_n}$ inductively so that $C_0=C$ and
+
+\Centerline{$C_n\in\Cal C\setminus\Cal D$,}
+
+\Centerline{either $C_{n+1}\subseteq C_n\cap\pi_{i_n}^{-1}[E_n]$ or
+$C_{n+1}\subseteq C_n\setminus\pi_{i_n}^{-1}[E_n]$}
+
+\noindent for every $n\in\Bbb N$.   Because $X$, being a product of
+compact spaces, is compact, there is an
+$x\in\bigcap_{n\in\Bbb N}\overline{C_n}$.   We know that $G_x$ is
+determined by coordinates in $J$, so
+$G_x=\tilde\pi^{-1}[\tilde\pi[G_x]]$, where $\tilde\pi$ is the canonical
+map from $X$ onto $Y=\prod_{i\in J}X_i$.   $V=\tilde\pi[G_x]$ is open,
+so there must be a finite set $K\subseteq J$ and a family
+$\family{i}{K}{V_i}$ such that $x(i)\in V_i\in\frak T_i$ for every
+$i\in K$ and $\{y:y\in Y,\,y(i)\in V_i$ for every $i\in K\}$ is included
+in $V$.   This means that
+$\{z:z\in X,\,z(i)\subseteq V_i$ for every $i\in K\}$ is included in
+$G_x$.   Now, for each $i\in K$, there is some $m\in\Bbb N$ such that
+$i=i_m$ and
+$x(i)\in E_m\subseteq V_i$.   Because $x\in\overline{C}_{m+1}$,
+$\pi_{i_m}^{-1}[E_m]$ cannot be disjoint from $C_{m+1}$, and
+$C_{m+1}\subseteq\pi_{i_m}^{-1}[E_m]\subseteq\pi_i^{-1}[V_i]$.
+
+But this means that, for any $n$ large enough, $C_n\subseteq G_x$ and
+$\pmb{t}=\{(x,C_n)\}$ is a $\delta$-fine member of $T$ with
+$W_{\pmb{t}}=C_n$;  contradicting the requirement that
+$C_n\notin\Cal D$.\ \Bang
+
+This contradiction shows that 481G(vii) also is satisfied.
+
+To see that $\Delta$ is countably full, note that if $\sequencen{\delta_n}$
+is a sequence in $\Delta$, we have for each $n\in\Bbb N$ a countable set
+$J_n\subseteq I$ and a family $\family{x}{X}{G_{nx}}$ of open sets, all
+determined by coordinates in $J_n$, such
+that $x\in G_{nx}$ and $(x,C)\in\delta_n$ whenever $x\in X$ and
+$C\subseteq G_{nx}$.   Now, given $\phi:X\to\Bbb N$, set
+$\delta=\{(x,C):x\in X$, $C\subseteq G_{\phi(x),x}\}$, and observe that
+$\delta\in\Delta$ and that $(x,C)\in\delta_{\phi(x)}$ whenever
+$(x,C)\in\Delta$.
+
+If $I'$ is countable, then $\Delta$ is the set of all neighbourhood gauges
+on $X$, so is full.   If $I'$ is uncountable, then for $j\in I'$ and
+$x\in X$ choose a proper open subset $H_{jx}$ of $X_j$ containing
+$x(j)$ and set $G_{jx}=\{y:y\in X$, $y(j)\in H_{jx}\}$.   For $j\in I'$ set
+$\delta_j=\{(x,C):C\subseteq G_{jx}\}\in\Delta$.   Let $\phi:X\to I'$ be
+any function such that $\phi[X]$ is uncountable;
+then there is no $\delta\in\Delta$ such that
+$(x,C)\in\delta_{\phi(x)}$ whenever $(x,C)\in\delta$, so
+$\family{x}{X}{\delta_{\phi(x)}}$ witnesses that $\Delta$ is not full.
+}%end of proof of 481P
+
+\leader{481Q}{The approximately continuous Henstock
+integral}\cmmnt{ ({\smc Gordon 94}, chap.\ 16)} Let $\mu$ be
+Leb\discretionary{-}{}{}esgue
+measure on $\Bbb R$.   As in 481K, let $\Cal C$ be the family of
+non-empty bounded intervals in $\Bbb R$, $T$
+the straightforward set of tagged partitions generated by
+$\{(x,C):C\in\Cal C$, $x\in\overline{C}\}$, and
+$\frak R=\{\Cal R_{ab}:a,\,b\in\Bbb R\}$, where
+$\Cal R_{ab}=\{\Bbb R\setminus[c,d]:c\le a,\,d\ge b\}\cup\{\emptyset\}$
+for $a$, $b\in\Bbb R$.
+
+\cmmnt{This time, define gauges as follows.}   Let $\Epsilon$ be the
+set of families $\pmb{e}=\family{x}{\Bbb R}{E_x}$ where every $E_x$ is a
+measurable set containing $x$ such that $x$ is a density point of
+$E_x$\cmmnt{ (definition:  223B)}.   For
+$\pmb{e}=\family{x}{\Bbb R}{E_x}\in\Epsilon$, set
+
+\Centerline{$\delta_{\pmb{e}}=\{(x,C):C\in\Cal C,
+  \,x\in\overline{C},\,\inf C\in E_x$ and $\sup C\in E_x\}$.}
+
+\noindent Set $\Delta=\{\delta_{\pmb{e}}:\pmb{e}\in\Epsilon\}$.   Then
+$(X,T,\Delta,\frak R)$ is a tagged-partition structure allowing
+subdivisions, witnessed by $\Cal C$, and $\Delta$ is full.
+
+\proof{{\bf (a)} Turning to 481G, we find, as usual, that most of the
+conditions are satisfied for elementary reasons.   Since we have here a
+new kind of gauge, we had better check 481G(ii);  but if
+$\pmb{e}=\family{x}{\Bbb R}{E_x}$ and
+$\pmb{e}'=\family{x}{\Bbb R}{E'_x}$ both belong to $\Epsilon$, so does
+$\pmb{e}\wedge\pmb{e}'=\family{x}{\Bbb R}{E_x\cap E'_x}$, because
+
+$$\eqalign{\liminf_{\eta\downarrow 0}\Bover1{2\eta}
+&\mu([x-\eta,x+\eta]\cap E_x\cap E'_x)\cr
+&\ge\lim_{\eta\downarrow 0}\Bover1{2\eta}
+  \bigl(\mu([x-\eta,x+\eta]\cap E_x)
+  +\mu([x-\eta,x+\eta]\cap E'_x)-2\eta\bigr)
+=1\cr}$$
+
+\noindent for every $x$;  and now
+$\delta_{\pmb{e}}\cap\delta_{\pmb{e}'}=\delta_{\pmb{e}\wedge\pmb{e}'}$
+belongs to $\Delta$.   Everything else we have done before, except, of
+course, (vii).
+
+\medskip
+
+{\bf (b)} So take any $\delta\in\Delta$;  express $\delta$ as
+$\delta_{\pmb{e}}$, where
+$\pmb{e}=\family{x}{\Bbb R}{E_x}\in\Epsilon$.   For $x$, $y\in\Bbb R$,
+write $x\frown y$ if $x\le y$ and
+$E_x\cap E_y\cap[x,y]\ne\emptyset$;  note that we always have
+$x\frown x$.   For $x\in\Bbb R$, let $\eta_x>0$ be such that
+$\mu(E_x\cap[x-\eta,x+\eta])\ge\bover53\eta$ whenever
+$0\le\eta\le\eta_x$.
+
+Fix $a<b$ in $\Bbb R$ for the moment.   Say that a finite string
+$(x_0,\ldots,x_n)$ is `acceptable' if
+$a\le x_0\frown\ldots\frown x_n\le b$ and
+$\mu([x_0,x_n]\cap\bigcup_{i<n}E_{x_i}^+)\ge\bover12(x_n-x_0)$, where
+$E_x^+=E_x\cap\coint{x,\infty}$ for $x\in\Bbb R$.   Observe that if
+$(x_0,\ldots,x_m)$ and $(x_m,x_{m+1},\ldots,x_n)$ are both acceptable,
+so is $(x_0,\ldots,x_n)$.   For $x\in[a,b]$, set
+
+\Centerline{$h(x)=\sup\{x_n:(x,x_1,\ldots,x_n)$ is acceptable$\}$;}
+
+\noindent this is defined in $[x,b]$ because the string $(x)$ is
+acceptable.   If $a\le x<b$, then $(x,y)$ is acceptable whenever
+$y\in E_x$ and $0\le y\le\min(b,x+\eta_x)$, so $h(x)>x$.
+Now choose sequences $\sequence{i}{x_i}$, $\sequence{k}{n_k}$
+inductively, as follows.   $n_0=0$ and $x_0=a$.   Given that
+$x_i\frown x_{i+1}$ for $i<n_k$ and that $(x_{n_j},\ldots,x_{n_k})$ is
+acceptable for every $j\le k$, let $n_{k+1}>n_k$,
+$(x_{n_k+1},\ldots,x_{n_{k+1}})$ be such that
+$(x_{n_k},\ldots,x_{n_{k+1}})$ is acceptable and
+$x_{n_{k+1}}\ge\bover12(x_{n_k}+h(x_{n_k}))$;  then
+$(x_{n_j},\ldots,x_{n_{k+1}})$ is acceptable for any $j\le k+1$;
+continue.
+
+At the end of the induction, set
+
+\Centerline{$c=\sup_{i\in\Bbb N}x_i=\sup_{k\in\Bbb N}x_{n_k}$.}
+
+\noindent Then there are infinitely many $i$ such that $x_i\frown c$.
+\Prf\ For any $k\in\Bbb N$,
+
+$$\eqalignno{\mu([x_{n_k},c]\cap\bigcup_{i\ge n_k}E_{x_i}^+)
+&=\lim_{l\to\infty}
+\mu\bigl([x_{n_k},x_{n_l}]\cap\bigcup_{n_k\le i<n_l}E_{x_i}^+\bigr)\cr
+&\ge\lim_{l\to\infty}\Bover12(x_{n_l}-x_{n_k})\cr
+\displaycause{because $(x_{n_k},\ldots,x_{n_l})$ is always an acceptable
+string}
+&=\Bover12(c-x_{n_k}).\cr}$$
+
+\noindent But this means that if we take $k$ so large that
+$x_{n_k}\ge c-\eta_c$, so that
+$\mu(E_c\cap[x_{n_k},c])\ge\bover23(c-x_{n_k})$, there must be some
+$z\in E_c\cap\bigcup_{i\ge n_k}E_i^+\cap[x_{n_k},c]$;  and if $i\ge n_k$
+is such that
+$z\in E_i^+$, then $z$ witnesses that $x_i\frown c$.   As $k$ is
+arbitrarily large, we have the result.\ \Qed
+
+\Quer\ If $c<b$, take any $y\in E_c$ such that $c<y\le\min(c+\eta_c,b)$.
+Take $k\in\Bbb N$ such that
+$x_{n_k}\ge c-\bover13(y-c)$, and $j\ge n_k$ such that $x_j\frown c$.
+In this case, $(x_{n_k},x_{n_k+1},\ldots,x_j,c,y)$ is an acceptable
+string, because
+
+\Centerline{$\mu E_c^+\cap[x_{n_k},y]\ge\mu E_c\cap[c,y]
+\ge\bover23(y-c)\ge\bover12(y-x_{n_k})$.}
+
+\noindent But this means that $h(x_{n_k})\ge y$, so that
+
+\Centerline{$x_{n_{k+1}}\le c<\Bover12(x_{n_k}+h(x_{n_k}))$,}
+
+\noindent contrary to the choice of
+$x_{n_k+1},\ldots,x_{n_{k+1}}$.\ \Bang
+
+Thus $c=b$.   We therefore have a $j\in\Bbb N$ such that $x_j\frown b$,
+and $a=x_0\frown\ldots\frown x_j\frown b$.
+
+\medskip
+
+{\bf (c)} Now suppose that $C\in\Cal C$.   Set $a=\inf C$ and
+$b=\sup C$.   If $a=b$, then $\pmb{t}=\{(a,C)\}\in T$ and
+$W_{\pmb{t}}=C$.   Otherwise, (b) tells us that we have $x_0,\ldots,x_n$
+such that $a=x_0\frown\ldots\frown x_n=b$.   Choose
+$a_i\in[x_{i-1},x_i]\cap E_{x_{i-1}}\cap E_{x_i}$ for $1\le i\le n$.
+Set $C_i=\coint{a_i,a_{i+1}}$ for $1\le i<n$, $C_0=\coint{a,a_1}$,
+$C_n=[a_n,b]$;  set $I=\{i:i\le n,\,C\cap C_i\ne\emptyset\}$;  and
+check that $(x_i,C\cap C_i)\in\delta$ for $i\in I$, so that
+$\pmb{t}=\{(x_i,C\cap C_i):i\in I\}$ is a $\delta$-fine member of $T$
+with $W_{\pmb{t}}=C$.   As $C$ and $\delta$ are arbitrary, 481G(vii) is
+satisfied.
+
+\medskip
+
+{\bf (d)} $\Delta$ is full.   \Prf\ Let $\family{x}{\Bbb R}{\delta'_x}$
+be a
+family in $\Delta$.   For each $x\in X$, there is a measurable set $E_x$
+such that $x$ is a density point of $E_x$ and $(x,C)\in\delta'_x$ whenever
+$C\in\Cal C$, $x\in\overline{C}$ and both $\inf C$, $\sup C$ belong to
+$E_x$.   Set $\pmb{e}=\family{x}{\Bbb R}{E_x}\in\Epsilon$;
+then $(x,C)\in\delta'_x$ whenever $(x,C)\in\delta_{\pmb{e}}$.\ \Qed
+}%end of proof of 481Q
+
+\exercises{\leader{481X}{Basic exercises (a)}
+%\spheader 481Xa
+Let $X$, $\Cal C$, $T$ and $\Cal F$ be as in 481C.   Show that if
+$f:X\to\Bbb R$, $\mu:\Cal C\to\Bbb R$ and $\nu:\Cal C\to\Bbb R$ are
+functions, then $I_{\mu+\nu}(f)=I_{\mu}(f)+I_{\nu}(f)$ whenever the
+right-hand side is defined.
+%481C
+
+\sqheader 481Xb Let $I$ be any set.   Set
+$T=\{\{(i,\{i\}):i\in J\}:J\in[I]^{<\omega}\}$,
+$\delta=\{(i,\{i\}):i\in I\}$, $\Delta=\{\delta\}$.   For
+$J\in[I]^{<\omega}$ set $\Cal R_J
+=\{I\setminus K:J\subseteq K\in[I]^{<\omega}\}
+  \cup\{\emptyset\}$;  set
+$\frak R=\{\Cal R_J:J\in[I]^{<\omega}\}$.   Show that
+$(I,T,\Delta,\frak R)$ is a tagged-partition structure
+allowing subdivisions, witnessed by $[I]^{<\omega}$, and that $\Delta$ is
+full.   Let
+$\nu:[I]^{<\omega}\to\Bbb R$ be any additive functional.   Show that,
+for a function $f:I\to\Bbb R$,
+$\lim_{\pmb{t}\to\Cal F(T,\Delta,\frak R)}S_{\pmb{t}}(f,\nu)
+=\sum_{i\in I}f(i)\nu(\{i\})$ if either exists in $\Bbb R$.
+%481G
+
+\sqheader 481Xc
+Set $T=\{\{(n,\{n\}):n\in I\}:I\in[\Bbb Z]^{<\omega}\}$,
+$\delta=\{(n,\{n\}):n\in\Bbb Z\}$, $\Delta=\{\delta\}$.   For
+$I\in[\Bbb Z]^{<\omega}$ and $m$, $n\in\Bbb N$ set
+$R_{mn}=\Bbb Z\setminus\{i:-m\le i\le n\}$,
+$\Cal R'_n=\{R_{kl}:k,\,l\ge n\}\cup\{\emptyset\}$,
+$\Cal R''_n=\{R_{kk}:k\ge n\}\cup\{\emptyset\}$,
+$\frak R'=\{\Cal R'_n:n\in\Bbb N\}$,
+$\frak R''=\{\Cal R''_n:n\in\Bbb N\}$.   Show that
+$(\Bbb Z,T,\Delta,\frak R')$ and
+$(\Bbb Z,T,\Delta,\frak R'')$ are tagged-partition structures
+allowing subdivisions, witnessed by $[\Bbb Z]^{<\omega}$, and that $\Delta$
+is full.   Let $\mu$ be
+counting measure on $\Bbb Z$.   Show that, for a function
+$f:\Bbb Z\to\Bbb R$,
+(i) $\lim_{\pmb{t}\to\Cal F(T,\Delta,\frak R')}S_{\pmb{t}}(f,\nu)
+=\lim_{m,n\to\infty}\sum_{i=-m}^nf(i)$ if either is defined in $\Bbb R$
+(ii) $\lim_{\pmb{t}\to\Cal F(T,\Delta,\frak R'')}S_{\pmb{t}}(f,\mu)
+=\lim_{n\to\infty}\sum_{i=-n}^nf(i)$ if either is defined in $\Bbb R$.
+%481G
+
+\spheader 481Xd Set $X=\Bbb N\cup\{\infty\}$, and let $T$ be the
+straightforward set of tagged partitions generated by
+$\{(n,\{n\}):n\in\Bbb N\}\cup\{(\infty,X\setminus n):n\in\Bbb N\}$
+(interpreting a member of $\Bbb N$ as the set of its predecessors).
+For $n\in\Bbb N$ set $\delta_n
+=\{(i,\{i\}):i\in\Bbb N\}\cup\{(\infty,A):A\subseteq X\setminus n\}$;
+set $\Delta=\{\delta_n:n\in\Bbb N\}$.   Show that
+$(X,T,\Delta,\{\{\emptyset\}\})$ is a tagged-partition structure
+allowing subdivisions, witnessed by
+$\Cal C=[\Bbb N]^{<\omega}\cup\{X\setminus I:I\in[\Bbb N]^{<\omega}\}$, and
+that $\Delta$ is full.
+Let $h:\Bbb N\to\Bbb R$ be any function, and define
+$\nu:\Cal C\to\Bbb R$ by setting $\nu I=\sum_{i\in I}h(i)$,
+$\nu(X\setminus I)=-\nu I$ for $I\in[\Bbb N]^{<\omega}$.   Let
+$f:X\to\Bbb R$ be any function such that $f(\infty)=0$.   Show that
+$\lim_{\pmb{t}\to\Cal F(T,\Delta,\{\{\emptyset\}\})}S_{\pmb{t}}(f,\mu)
+=\lim_{n\to\infty}\sum_{i=0}^nf(i)h(i)$ if either is defined in
+$\Bbb R$.
+%481G
+
+\sqheader 481Xe Take $X$, $T$, $\Delta$ and $\frak R$ as in 481I.   Show
+that if $\mu$ is Lebesgue measure on $[a,b]$ then the gauge integral
+$I_{\mu}=\lim_{\pmb{t}\to\Cal F(T,\Delta,\frak R)}S_{\pmb{t}}(.,\mu)$ is
+the ordinary Riemann integral $\Rint_a^b$ as described in
+134K.   \Hint{show first that they agree on step-functions.}
+%481I
+
+\sqheader 481Xf Let $(X,\Sigma,\mu)$ be a semi-finite measure space, and
+$\Sigma^f$ the family of measurable sets of finite measure.   Let
+$T$ be the straightforward set of tagged partitions generated by
+$\{(x,E):x\in E\in\Sigma^f\}$.   For $E\in\Sigma^f$ and $\epsilon>0$ set
+$\Cal R_{E\epsilon}=\{F:F\in\Sigma,\,\mu(E\setminus F)\le\epsilon\}$;
+set $\frak R=\{\Cal R_{E\epsilon}:E\in\Sigma^f,\,\epsilon>0\}$.   Let
+$\frak E$ be the family of countable partitions of $X$ into measurable
+sets, and set
+$\delta_{\Cal E}=\bigcup_{E\in\Cal E}\{(x,A):x\in E,\,A\subseteq E\}$
+for $\Cal E\in\frak E$,
+$\Delta=\{\delta_{\Cal E}:\Cal E\in\frak E\}$.   Show that
+$(X,T,\Delta,\frak R)$ is a
+tagged-partition structure allowing subdivisions, witnessed by
+$\Sigma^f$.      In what circumstances is
+$\Delta$ full or countably full?
+Show that, for a function $f:X\to\Bbb R$,
+$\int fd\mu=\lim_{\pmb{t}\to\Cal F(T,\Delta,\frak R)}S_{\pmb{t}}(f,\mu)$
+if either is defined in $\Bbb R$.   \Hint{when showing that if
+$I_{\mu}(f)$ is defined then $f$ is $\mu$-virtually measurable, you will
+need 413G or something similar;  compare 482E.}
+%481N
+
+\spheader 481Xg Let $(X,\Sigma,\mu)$ be a totally finite measure space,
+and $T$ the straightforward set of tagged partitions generated by
+$\{(x,E):x\in E\in\Sigma\}$.   Let $\frak E$ be the family of finite
+partitions of $X$ into measurable sets, and set
+$\delta_{\Cal E}=\bigcup_{E\in\Cal E}\{(x,A):x\in E,\,A\subseteq E\}$
+for $\Cal E\in\frak E$, $\Delta=\{\delta_{\Cal E}:\Cal E\in\frak E\}$.
+Show that $(X,T,\Delta,\{\{\emptyset\}\})$ is a
+tagged-partition structure allowing subdivisions, witnessed by $\Sigma$.
+In what circumstances is
+$\Delta$ full or countably full?
+Show that, for a
+function $f:X\to\Bbb R$,
+$I_{\mu}(f)=\lim_{\pmb{t}\to\Cal F(T,\Delta,\frak R)}S_{\pmb{t}}(f,\mu)$
+is defined iff $f\in\eusm L^{\infty}(\mu)$ (definition:  243A), and
+that then $I_{\mu}(f)=\int fd\mu$.
+%481Xf, 481N
+
+\spheader 481Xh Let $X$ be a zero-dimensional compact Hausdorff space
+and $\Cal E$ the algebra of open-and-closed subsets of $X$.   Let $T$ be
+the straightforward set of tagged partitions generated by
+$\{(x,E):x\in E\in\Cal E\}$.   Let
+$\Delta$ be the set of all neighbourhood gauges on $X$.   Show that
+$(X,T,\Delta,\{\{\emptyset\}\})$ is a tagged-partition structure
+allowing subdivisions, witnessed by $\Cal E$.   Now let
+$\nu:\Cal E\to\Bbb R$ be an additive functional, and set $I_{\nu}(f)
+=\lim_{\pmb{t}\to\Cal F(T,\Delta,\{\{\emptyset\}\})}
+S_{\pmb{t}}(f,\nu)$ when $f:X\to\Bbb R$ is such that the limit is defined.   (i) Show that $I_{\nu}(\chi E)=\nu E$ for every $E\in\Cal E$.
+(ii) Show that if $\nu$ is bounded then $I_{\nu}(f)$ is defined for every
+$f\in C(X)$, and is equal to $\dashint fd\nu$ as defined in 363L, if we
+identify $X$ with the Stone space of $\frak A$ and $C(X)$ with
+$L^{\infty}(\frak A)$.
+%+
+
+\spheader 481Xi Let $X$ be a set, $\Delta$ a set of gauges on $X$,
+$\frak R$ a collection of families of subsets of $X$, and $T$ a set of
+tagged partitions on $X$ which is compatible with $\Delta$ and
+$\frak R$.   Let $H\subseteq X$ be such that there is a
+$\tilde\delta\in\Delta$ such that $H\cap A=\emptyset$ whenever
+$x\in X\setminus H$ and $(x,A)\in\tilde\delta$, and set
+$\delta_H=\{(x,A\cap H):x\in H,\,(x,A)\in\delta\}$ for
+$\delta\in\Delta$, $\Delta_H=\{\delta_H:\delta\in\Delta\}$,
+$\frak R_H=\{\{R\cap H:R\in\Cal R\}:\Cal R\in\frak R\}$,
+$T_H=\{\{(x,C\cap H):(x,C)\in\pmb{t},\,x\in H\}:\pmb{t}\in T\}$.    Show
+that $T_H$ is compatible with $\Delta_H$ and $\frak R_H$.
+%+ subspaces
+
+\spheader 418Xj\dvAnew{2012} Let $X$ be a set, $\Sigma$ an algebra of
+subsets of $X$, and $\nu:\Sigma\to\coint{0,\infty}$ an additive functional.
+Set $Q=\{(x,C):x\in C\in\Sigma\}$ and let $T$ be the straightforward set of
+tagged partitions generated by $Q$.   Let $\Bbb E$ be the set of disjoint
+families $\Cal E\subseteq\Sigma$ such that 
+$\sum_{E\in\Cal E}\nu E=\nu X$, and 
+$\Delta=\{\delta_{\Cal E}:\Cal E\in\Bbb E\}$, where
+
+\Centerline{$\delta_{\Cal E}
+=\{(x,C):(x,C)\in Q$ and there is an $E\in\Cal E$ such that
+$C\subseteq E\}$}
+
+\noindent for $\Cal E\in\Bbb E$.
+Set $\frak R=\{\Cal R_{\epsilon}:\epsilon>0\}$ where
+$\Cal R_{\epsilon}=\{E:E\in\Sigma$, $\nu E\le\epsilon\}$ for $\epsilon>0$.
+Show that $(X,T,\Delta,\frak R)$ is a tagged-partition structure allowing
+subdivisions, witnessed by $\Sigma$.
+
+\leader{481Y}{Further exercises (a)}
+%\spheader 481Ya
+Suppose that $[a,b]$, $\Cal C$, $T$ and $\Delta$ are as in 481J.   Let
+$T'\subseteq[[a,b]\times\Cal C]^{<\omega}$ be the set of tagged
+partitions $\pmb{t}=\{(x_i,[a_i,a_{i+1}]):i<n\}$ where
+$a=a_0\le x_0\le a_1\le x_2\le a_2\le\ldots\le x_{n-1}\le a_n=b$.
+Show that $T'$, as well as $T$, is compatible with $\Delta$ in the sense
+of 481Ea;  let $\Cal F'$, $\Cal F$ be the corresponding filters on $T'$
+and $T$.   Show that if $\nu:\Cal C\to\Bbb R$ is a functional which is
+additive in the sense that $\nu(C\cup C')=\nu C+\nu C'$ whenever $C$,
+$C'$ are disjoint members of $\Cal C$ with union in $\Cal C$, and if
+$\nu\{x\}=0$ for every $x\in[a,b]$ and $f:[a,b]\to\Bbb R$ is any
+function, then $I'_{\nu}(f)=I_{\nu}(f)$ if either is defined, where
+
+\Centerline{$I_{\nu}(f)=\lim_{\pmb{t}\to\Cal F}S_{\pmb{t}}(f,\nu)$,
+\quad$I'_{\nu}(f)=\lim_{\pmb{t}\to\Cal F'}S_{\pmb{t}}(f,\nu)$}
+
+\noindent are the gauge integrals associated with $(T,\Cal F)$ and
+$(T',\Cal F')$.
+%481J
+
+\spheader 481Yb Let us say that a family $\frak R$ of residual families
+is `the simple residual structure complementary to
+$\Cal H\subseteq\Cal PX$' if
+$\frak R=\{\Cal R_H:H\in\Cal H\}$, where
+$\Cal R_H=\{X\setminus H':H\subseteq H'\in\Cal H\}\cup\{\emptyset\}$ for
+each $H\in\Cal H$.   Suppose that, for each member $i$ of a non-empty
+finite set $I$, $(X_i,T_i,\Delta_i,\frak R_i)$ is a tagged-partition
+structure allowing subdivisions, witnessed by an upwards-directed family
+$\Cal C_i\subseteq\Cal PX_i$, where $X_i$ is a topological space,
+$\Delta_i$ is the set of all neighbourhood gauges on $X_i$, and
+$\frak R_i$ is the simple residual structure complementary to
+$\Cal C_i$.
+Set $X=\prod_{i\in I}X_i$ and let $\Delta$ be the set of neighbourhood
+gauges on $X$;   let $\Cal C$ be
+$\{\prod_{i\in I}C_i:C_i\in\Cal C_i$ for each $i\in I\}$, and $\frak R$
+the simple residual structure based on $\Cal C$;  and let $T$ be the
+straightforward set of tagged partitions generated by
+$\{(\familyiI{x_i},\prod_{i\in I}C_i):\{(x_i,C_i)\}\in T_i$ for every
+$i\in I\}$.
+Show that $(X,T,\Delta,\frak R)$ is a tagged-partition structure
+allowing subdivisions, witnessed by $\Cal C$.
+%481O 481P
+
+\spheader 481Yc Give an example to show that, in 481Xi,
+$(X,T,\Delta,\frak R)$ can be a tagged-partition structure allowing
+subdivisions, while $(H,T_H,\Delta_H,\frak R_H)$ is not.
+%481Xi mt48bits
+}%end of exercises
+
+\endnotes{
+\Notesheader{481} In the examples above I have tried to give an idea of
+the potential versatility of the ideas here.   Further examples may be
+found in {\smc Henstock 91}.   The goal of 481A-481F is the formula
+$I_{\nu}(f)
+=\lim_{\pmb{t}\to\Cal F(T,\Delta,\frak R)}S_{\pmb{t}}(f,\nu)$ (481C, 481E);
+the elaborate notation reflects the variety of the applications.   One
+of these is a one-step definition of the ordinary integral (481Xf).   In
+\S483 I will show that the Henstock integral (481J-481K) properly
+extends the Lebesgue integral on $\Bbb R$.   In 481Xc I show how
+adjusting $\frak R$ can change the class of integrable functions;  in
+481Xd I show how a similar effect can sometimes be achieved by adding a
+point at infinity and adjusting $T$ and $\Delta$.   As will become
+apparent in later sections, one of the great strengths of gauge
+integrals is their ability to incorporate special limiting processes.
+Another is the fact that we don't need to assume that the functionals
+$\nu$ are countably additive;  see 481Xd.   In the formulae of this
+section, I don't even ask for finite additivity;  but of course the
+functional $I_{\nu}$ is likely to have a rather small domain if $\nu$
+behaves too erratically.
+
+`Gauges', as I describe them here, have moved rather briskly forward
+from the metric gauges $\delta_h$ (481Eb), which have sufficed for most
+of the gauge integrals so far described.   But the generalization
+affects only the notation, and makes it clear why so much of the theory
+of the ordinary Henstock integral applies equally well to the
+`approximately continuous Henstock integral' (481Q), for instance.
+You will observe that the sets $Q$ of 481Ba are `gauges' in the
+wide sense used here.   But (as the examples of this section show
+clearly) we generally use them in a different way.
+
+In ordinary measure theory, we have a fairly straightforward theory of
+subspaces (\S214) and a rather deeper theory of product spaces
+(chap.\ 25).   For gauge integrals, there are significant difficulties
+in the theory of subspaces, some of which will appear in the next
+section (see 482G-482H).   For closed subspaces, something can be done,
+as in 481Xi;  but the procedure suggested there may lose some
+essential element of the original tagged-partition structure (481Yc).
+For products of gauge integrals, we do have a reasonably satisfying
+version of Fubini's theorem (482M);  I offer 481O and 481P as
+alternative approaches.   However, the example of the Pfeffer integral
+(\S484) shows that other constructions may be more effective tools
+for geometric measure theory.
+
+You will note the concentration on `neighbourhood gauges' (481Eb)
+in the work above.   This is partly because they are `full' in the sense of
+481Ec.   As
+will appear repeatedly in the next section, this flexibility in
+constructing gauges is just what one needs when proving that functions
+are gauge-integrable.
+
+While I have used such phrases as `Henstock integral', `symmetric
+Riemann-complete integral' above, I have not in fact discussed
+integrals here, except in the exercises;  in most of the examples in
+481I-481Q there is no mention of any functional $\nu$ from which a gauge
+integral $I_{\nu}$ can be defined.   The essence of the method is that
+we can set up a tagged-partition structure quite independently of any
+set function, and it turns out that the properties of a gauge integral
+depend more on this structure than on the measure involved.
+}%end of notes
+
+\discrpage
+
+

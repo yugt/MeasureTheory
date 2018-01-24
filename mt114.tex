@@ -1,0 +1,612 @@
+\frfilename{mt114.tex}
+\versiondate{14.6.05}
+\copyrightdate{1994}
+
+\def\chaptername{Measure spaces}
+\def\sectionname{Lebesgue measure on $\Bbb R$}
+
+\newsection{114}
+\def\headlinesectionname{Lebesgue measure on ${\eightBbb R}$}
+
+Following the very abstract ideas of \S\S111-113, we have an urgent
+need for a non-trivial example of a measure space.   By far the most
+important example is the real line with Lebesgue measure, and I now
+proceed to a description of this measure (114A-114E), with a few of its
+basic properties.
+
+The principal ideas of this section are repeated in \S115, and if
+you have encountered Lebesgue measure before, or feel confident in your
+ability to deal with two- and three-dimensional spaces at the same time
+as doing some difficult analysis, you could go directly to that
+section, turning back to this one only when a specific reference is
+given.
+
+\leader{114A}{Definitions (a)} For the purposes of this section, a {\bf
+half-open interval} in $\Bbb R$ is a set of the form
+$\coint{a,b}=\{x:a\le x<b\}$, where $a$, $b\in\Bbb R$.
+
+\cmmnt{Observe that I allow $b\le a$ in this formula;  in this case
+$\coint{a,b}=\emptyset$ (see 1A1A).}
+
+\header{114Ab}{\bf (b)}\cmmnt{ If $I\subseteq \Bbb R$ is a half-open
+interval, then either
+$I=\emptyset$ or $I=\coint{\inf I,\sup I}$, so that its endpoints are
+well defined.}   We\cmmnt{ may therefore} define the {\bf length}
+$\lambda I$ of a half-open interval $I$ by setting
+
+\Centerline{$\lambda\emptyset = 0$,
+\quad $\lambda\coint{a,b}=b-a$ if $a<b$.}
+
+\leader{114B}{Lemma} If $I\subseteq\Bbb R$ is a half-open interval and
+$\langle I_j\rangle_{j\in\Bbb N}$ is a sequence of half-open intervals
+covering $I$, then $\lambda I\le\sum_{j=0}^{\infty}\lambda I_j$.
+
+\proof{{\bf (a)}
+If $I=\emptyset$ then of course $\lambda I=0\le\sum_{j=0}^{\infty}\lambda
+I_j$.   Otherwise, take
+$I=\coint{a,b}$, where $a<b$.    For each $x\in \Bbb R$ let $H_x$ be the
+half-line $\ooint{-\infty,x}$, and consider the set
+
+\Centerline{$A=\{x:a\le x\le b,\,
+x-a\le\sum_{j=0}\sp{\infty}\lambda(I_j\cap
+H_x)\}$.}
+
+\noindent (Note that if $I_j=\coint{c_j,d_j}$ then $I_j\cap
+H_x=\coint{c_j,\min(d_j,x)}$, so $\lambda(I_j\cap H_x)$ is always
+defined.)   We have $a\in A$ (because
+$a-a=0\le\sum_{j=0}\sp{\infty}\lambda(I_j\cap
+H_a)$) and of course $A\subseteq[a,b]$, so $c=\sup A$ is defined, and
+belongs to $[a,b]$.
+
+\medskip
+
+{\bf (b)} We find now that $c\in A$.
+
+\prooflet{
+
+$$\eqalign{\Prf\ c-a&=\sup_{x\in A}x-a\cr
+&\le\sup_{x\in A}\sum_{j=0}^{\infty}\lambda(I_j\cap H_x)
+\le\sum_{j=0}^{\infty}\lambda(I_j\cap H_c). \text{ \Qed}\cr}$$
+}
+
+\medskip
+
+{\bf (c)} \Quer\ Suppose, if possible, that $c<b$.   Then $c\in
+\coint{a,b}$, so there is some $k\in\Bbb N$ such that $c\in I_k$.
+Express $I_k$ as $\coint{c_k,d_k}$;  then $x=\min(d_k,b)>c$.    For each
+$j$, $\lambda(I_j\cap H_x)\ge\lambda(I_j\cap H_c)$, while
+
+\Centerline{$\lambda(I_k\cap H_x)=\lambda(I_k\cap H_c)+x-c$.}
+
+\noindent So
+
+$$\eqalign{\sum_{j=0}^{\infty}\lambda(I_j\cap H_x)
+&\ge\sum_{j=0}^{\infty}\lambda(I_j\cap H_c)+x-c\cr
+&\ge c-a+x-c
+=x-a,\cr}$$
+
+\noindent so $x\in A$;  but $x>c$ and $c=\sup A$.  \Bang
+
+\medskip
+
+{\bf (d)} We conclude that $c=b$, so that $b\in A$ and
+
+\Centerline{$b-a\le\sum_{j=0}^{\infty}\lambda(I_j\cap
+H_b)\le\sum_{j=0}^{\infty}\lambda I_j$,}
+
+\noindent as claimed.
+}%end of proof of 114B
+
+
+\vleader{36pt}{114C}{Definition} Now\cmmnt{, and for the rest of this
+section,} define $\theta:\Cal P\Bbb R\to[0,\infty]$ by
+writing
+
+$$\eqalign{\theta A=\inf\{\sum_{j=0}\sp{\infty}\lambda I_j:\langle
+I_j\rangle_{j\in\Bbb N}
+\text{ is a sequence of }&\text{half-open intervals}\cr
+&\text{such that }
+A\subseteq\bigcup_{j\in\Bbb N}I_j\}.\cr}$$
+
+\noindent\cmmnt{Observe that every $A$ can be covered by some sequence
+of half-open intervals -- e.g.,
+$A\subseteq\bigcup_{n\in\Bbb N}\coint{-n,n}$;  so that if we interpret
+the sums in $[0,\infty]$, as in 112Bc above, we always have a non-empty
+set to take the infimum of, and $\theta A$ is always defined in
+$[0,\infty]$.
+This function} $\theta$ is called {\bf Lebesgue outer measure} on
+$\Bbb R$\cmmnt{;  the phrase is justified by (a) of the next proposition}.
+
+
+
+\leader{114D}{Proposition} (a) $\theta$ is an outer measure on $\Bbb R$.
+
+(b) $\theta I=\lambda I$ for every half-open interval
+$I\subseteq\Bbb R$.
+
+\proof{{\bf (a)(i)} $\theta$ takes values in $[0,\infty]$
+because every $\theta A$ is the infimum of a non-empty subset of
+$[0,\infty]$.
+
+\medskip
+
+\quad{\bf (ii)} $\theta\emptyset=0$ because (for instance) if we set
+$I_j=\emptyset$ for every $j$, then every $I_j$ is a half-open interval
+(on the convention I am using) and
+$\emptyset\subseteq\bigcup_{j\in\Bbb N}I_j$, $\sum_{j=0}\sp{\infty}\lambda I_j=0$.
+
+\medskip
+
+\quad{\bf (iii)} If $A\subseteq B$ then whenever
+$B\subseteq\bigcup_{j\in\Bbb N}I_j$ we have
+$A\subseteq\bigcup_{j\in\Bbb N}I_j$, so $\theta A$ is the infimum of a set at least as large as that
+involved in the definition of $\theta B$, and $\theta A\le\theta B$.
+
+\medskip
+
+\quad{\bf (iv)} Now suppose that $\langle A_n\rangle_{n\in\Bbb N}$ is a
+sequence of subsets of $\Bbb R$, with union $A$.   For any $\epsilon>0$,
+we can choose, for each $n\in\Bbb N$, a sequence $\langle
+I_{nj}\rangle_{j\in\Bbb N}$ of half-open intervals such that
+$A_n\subseteq\bigcup_{j\in\Bbb N}I_{nj}$ and
+$\sum_{j=0}\sp{\infty}\lambda I_{nj}\le\theta A_n+2^{-n}\epsilon$.
+(You should perhaps check that this formulation is valid whether $\theta
+A_n$ is finite or infinite.)   Now by 111F(b-ii)
+there is a bijection from $\Bbb N$ to $\Bbb N\times\Bbb N$;  express
+this in the form $m\mapsto(k_m,l_m)$.   Then $\sequence{m}{I_{k_m,l_m}}$
+is a sequence of half-open intervals, and
+
+\Centerline{$A\subseteq\bigcup_{m\in\Bbb N}I_{k_m,l_m}$.}
+
+\noindent \Prf\  If $x\in A=\bigcup_{n\in\Bbb N}A_n$ there must be an
+$n\in\Bbb N$ such that $x\in A_n\subseteq\bigcup_{j\in\Bbb N}I_{nj}$, so
+there is a $j\in\Bbb N$ such that $x\in I_{nj}$.   Now
+$m\mapsto(k_m,l_m)$ is surjective, so there is an $m\in\Bbb N$ such that
+$k_m=n$ and $l_m=j$, in which case $x\in I_{k_m,l_m}$.\ \Qed
+
+Next,
+
+\Centerline{$\sum_{m=0}\sp{\infty}\lambda I_{k_m,l_m}
+\le\sum_{n=0}\sp{\infty}\sum_{j=0}\sp{\infty}\lambda I_{nj}$.}
+
+\noindent \Prf\ If $M\in\Bbb N$, then
+$N=\max(k_0,k_1,\ldots,k_M,l_0,l_1,\ldots,l_M)$ is finite;   because
+every $\lambda I_{nj}$ is
+greater than or equal to $0$, and any pair $(n,j)$ can appear at most
+once as a $(k_m,l_m)$,
+
+\Centerline{$\sum_{m=0}^M\lambda I_{k_m,l_m}
+\le\sum_{n=0}^N\sum_{j=0}^N\lambda I_{nj}
+\le\sum_{n=0}^N\sum_{j=0}^{\infty}\lambda I_{nj}
+\le\sum_{n=0}^{\infty}\sum_{j=0}^{\infty}\lambda I_{nj}$.}
+
+\noindent So
+
+\Centerline{$\sum_{m=0}^{\infty}\lambda I_{k_m,l_m}
+=\lim_{M\to\infty}\sum_{m=0}^M\lambda I_{k_m,l_m}
+\le\sum_{n=0}^{\infty}\sum_{j=0}^{\infty}\lambda I_{nj}$.  \Qed}
+
+Accordingly
+
+$$\eqalign{\theta A
+&\le\sum_{m=0}\sp{\infty}\lambda I_{k_m,l_m}\cr
+&\le\sum_{n=0}\sp{\infty}\sum_{j=0}\sp{\infty}\lambda I_{nj}\cr
+&\le\sum_{n=0}\sp{\infty}(\theta A_n+2^{-n}\epsilon)\cr
+&=\sum_{n=0}\sp{\infty}\theta A_n+\sum_{n=0}\sp{\infty}2^{-n}\epsilon\cr
+&=\sum_{n=0}\sp{\infty}\theta A_n+2\epsilon.\cr}$$
+
+\noindent Because $\epsilon$ is arbitrary, $\theta
+A\le\sum_{n=0}\sp{\infty}\theta A_n$ (again, you should check that this
+is valid whether or not $\sum_{n=0}\sp{\infty}\theta A_n$ is finite).
+As $\langle A_n\rangle_{n\in\Bbb N}$ is arbitrary, $\theta$ is an outer
+measure.
+
+\medskip
+
+{\bf (b)} Because we can always take $I_0=I$, $I_j=\emptyset$ for
+$j\ge 1$, to obtain a sequence of half-open intervals covering $I$ with
+$\sum_{j=0}\sp{\infty}\lambda I_j=\lambda I$, we surely have $\theta
+I\le\lambda I$.   For the reverse inequality, use 114B:  if
+$I\subseteq\bigcup_{j\in\Bbb N}I_j$, then $\lambda
+I\le\sum_{j=0}^{\infty}\lambda I_j$;   as
+$\langle I_j\rangle_{j\in\Bbb N}$ is arbitrary, $\theta I\ge\lambda I$ and $\theta I=\lambda I$, as
+required.
+}%end of proof of 114D
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} There is an ungainly shift in the argument of
+(a-iv) above, in the stage
+
+\Centerline{`$\theta A\le\sum_{m=0}^{\infty}\lambda
+I_{k_m,l_m}\le\sum_{n=0}^{\infty}\sum_{j=0}^{\infty}\lambda I_{nj}$'.}
+
+\noindent I dare say you would have believed me if I had suppressed the
+$k_m$, $l_m$ altogether and simply written `because
+$A\subseteq\bigcup_{n,j\in\Bbb N}I_{nj}$, $\theta
+A\le\sum_{n=0}^{\infty}\sum_{j=0}^{\infty}\lambda I_{nj}$'.   I hope that
+you will not find it too demoralizing if I suggest that such a jump is
+not quite safe.   My reasons for interpolating a name for a bijection
+between $\Bbb N$ and $\Bbb N\times\Bbb N$, and taking a couple of lines
+to say explicitly that $\sum_{m=0}^{\infty}\lambda
+I_{k_m,l_m}\le\sum_{n=0}^{\infty}\sum_{j=0}^{\infty}\lambda I_{nj}$, are
+the following.   To start with, there is the formal point that the
+definition 114C demands a simple sequence, not a double sequence.   Is it
+really obvious that it doesn't matter here?   If so, why?   There can be
+no way to justify the shift which does not rely on the facts that
+$\Bbb N\times\Bbb N$ is countable and every $\lambda I_{nj}$ is
+non-negative.
+If either of those were untrue, the method would be in grave danger of
+failing.
+
+At some point we shall certainly need to discuss sums over infinite index
+sets other than $\Bbb N$, including uncountable index sets.   I have
+already touched on these in 112Bd, and I will return to them in 226A in
+Volume 2.
+For the moment, I feel that we have quite enough new ideas to cope with,
+and that what we need here is a reasonably honest expedient to deal with
+the question immediately before us.
+
+You may have noticed, or guessed, that some of the inequalities `$\le$'
+here must actually be equalities;  if so, check your guess in 114Ya.
+}%end of comment
+
+\leader{114E}{Definition} Because Lebesgue outer
+measure\cmmnt{ (114C)} is\cmmnt{ indeed} an
+outer measure\cmmnt{ (114Da)},  we may use it to construct a measure
+$\mu$, using \Caratheodory's method\cmmnt{ (113C)}.
+This measure is {\bf Lebesgue measure on $\Bbb R$}.
+The sets $E$ measured by $\mu$\cmmnt{ (that is, for
+which $\theta(A\cap E)+\theta(A\setminus E)=\theta A$ for every
+$A\subseteq\Bbb R$)} are called {\bf Lebesgue measurable}.
+
+Sets which are negligible for $\mu$ are called {\bf Lebesgue
+negligible}\cmmnt{;  note that these are just the sets $A$ for which
+$\theta A=0$, and are all Lebesgue measurable (113Xa)}.
+
+
+
+\leader{114F}{Lemma} Let $x\in\Bbb R$.   Then
+$H_x=\ooint{-\infty,x}$ is
+Lebesgue measurable for every $x\in\Bbb R$.
+
+\proof{{\bf (a)} The point is that $\lambda I=\lambda(I\cap
+H_x)+\lambda(I\setminus H_x)$ for every half-open interval
+$I\subseteq\Bbb R$.   \Prf\ If either $I\subseteq H_x$ or $I\cap
+H_x=\emptyset$, this is trivial.   Otherwise, $I$ must be of the form
+$\coint{a,b}$, where $a<x<b$.   Now $I\cap H_x=\coint{a,x}$ and
+$I\setminus H_x=\coint{x,b}$  are both half-open intervals, and
+
+\Centerline{$\lambda(I\cap H_x)+\lambda(I\setminus H_x)=(x-a)+(b-x)
+=b-a=\lambda I$. \Qed}
+
+\medskip
+
+{\bf (b)} Now suppose that $A$ is any subset of $\Bbb R$, and
+$\epsilon>0$.   Then we can find a sequence $\langle
+I_j\rangle_{j\in\Bbb N}$
+of half-open intervals such that $A\subseteq\bigcup_{j\in\Bbb N}I_j$ and
+$\sum_{j=0}^{\infty}\lambda I_j\le\theta A+\epsilon$.   Now
+$\langle I_j\cap H_x\rangle_{j\in\Bbb N}$ and
+$\langle I_j\setminus  H_x\rangle_{j\in\Bbb N}$ are sequences of
+half-open intervals and
+$A\cap H_x\subseteq\bigcup_{j\in\Bbb N}(I_j\cap H_x)$,
+$A\setminus H_x\subseteq\bigcup_{j\in\Bbb N}(I_j\setminus H_x)$.   So
+
+$$\eqalign{\theta(A\cap H_x)+\theta(A\setminus H_x)
+&\le\sum_{j=0}^{\infty}\lambda(I_j\cap
+H_x)+\sum_{j=0}^{\infty}\lambda(I_j\setminus H_x) \cr
+&=\sum_{j=0}^{\infty}\lambda I_j
+\le\theta A+\epsilon.\cr}$$
+
+\noindent Because $\epsilon$ is arbitrary,
+$\theta(A\cap H_x)+\theta(A\setminus H_x)\le\theta A$;
+because $A$ is arbitrary,
+$H_x$ is measurable, as remarked in 113D.
+}%end of proof of 114F
+
+\leader{114G}{Proposition} All Borel subsets of $\Bbb R$ are Lebesgue
+measurable;  in particular, all open sets, and all sets of the following
+classes, together with countable unions of them:
+
+(i) open intervals $\left]a,b\right[$, $\left]-\infty,b\right[$,
+$\left]a,\infty\right[$, $\left]-\infty,\infty\right[$, where
+$a<b\in\Bbb R$;
+
+(ii) closed intervals $[a,b]$, where $a\le b\in\Bbb R$;
+
+(iii) half-open intervals $\left[a,b\right[$, $\left]a,b\right]$,
+$\left]-\infty,b\right]$, $\left[a,\infty\right[$, where $a<b$ in
+$\Bbb R$.
+
+\noindent We have\cmmnt{ moreover} the following formula for the measures of such sets, writing $\mu$ for Lebesgue measure:
+
+\Centerline{$\mu\left]a,b\right[=\mu[a,b]
+=\mu\left[a,b\right[=\mu\left]a,b\right]=b-a$}
+
+\noindent whenever $a\le b$ in $\Bbb R$, while all the unbounded
+intervals have infinite measure.   It follows that every countable
+subset of $\Bbb R$ is measurable and of zero measure.
+
+
+\proof{{\bf (a)} I show first that all open subsets of $\Bbb R$
+are measurable.   \Prf\ Let $G\subseteq\Bbb R$ be open.   Let
+$K\subseteq\Bbb Q\times\Bbb Q$ be the set of pairs $(q,q')$ of rational
+numbers such that $\coint{q,q'}\subseteq G$.   Now by the remarks in
+111E-111F
+-- specifically, 111Eb, showing that $\Bbb Q$ is countable, 111F(b-iii),
+showing that products of countable sets are countable, and 111F(b-i),
+showing that subsets of countable sets are countable -- we see that $K$
+is countable.   Also, every $\coint{q,q'}$ is measurable, being
+$H_{q'}\setminus H_q$ in the language of 114F.   So, by 111Fa,
+$G'=\bigcup_{(q,q')\in K}\coint{q,q'}$ is measurable.
+
+By the definition of $K$, $G'\subseteq G$.   On the other hand, if
+$x\in G$, there is an $\epsilon>0$
+such that $\ooint{x-\epsilon,x+\epsilon}\subseteq G$.
+Now there are rational numbers $q\in\ocint{x-\epsilon,x}$ and
+$q'\in\ocint{x,x+\epsilon}$, so that $(q,q')\in K$ and
+$x\in\coint{q,q'}\subseteq G'$.
+As $x$ is arbitrary, $G=G'$ and $G$ is measurable.\ \Qed
+
+\medskip
+
+{\bf (b)} Now the family $\Sigma$ of Lebesgue measurable sets is a
+$\sigma$-algebra of subsets of $\Bbb R$ including the family of open
+sets, so must contain every Borel set, by the definition of Borel set
+(111G).
+\medskip
+
+{\bf (c)} Of the types of interval considered, all the open intervals
+are actually open sets, so are surely Borel.   The complement of a
+closed interval is expressible as the union of at most two open
+intervals, so is Borel, and the closed interval, being the complement of
+a Borel set, is Borel.   A bounded half-open interval is expressible as
+the intersection of an open interval with a closed interval, so is
+Borel;  and finally an unbounded interval of the form
+$\left]-\infty,b\right]$ or $\left[a,\infty\right[$ is the complement of
+an open interval, so is also Borel.
+
+\medskip
+
+{\bf (d)} To compute the measures, we already know from 114Db that
+
+\Centerline{$\mu\coint{a,b}=\theta\coint{a,b}=b-a$}
+
+\noindent if $a\le b$.   For the other types of bounded
+interval, it is enough to note that $\mu\{a\}=0$ for every $a\in\Bbb R$,
+as the different intervals differ only by one or two points;  and this
+is so because $\{a\}\subseteq\coint{a,a+\epsilon}$, so
+$\mu\{a\}\le\epsilon$, for every $\epsilon>0$.
+
+As for the unbounded intervals, they include arbitrarily long half-open
+intervals, so must have infinite measure.
+
+\medskip
+
+{\bf (e)} As just remarked, $\mu\{a\}=0$ for every $a$.   If
+$A\subseteq\Bbb R$ is countable, it is either empty or expressible as
+$\{a_n:n\in\Bbb N\}$.   In the former case $\mu A=\mu\emptyset=0$;  in
+the latter, $A=\bigcup_{n\in\Bbb N}\{a_n\}$ is Borel and $\mu
+A\le\sum_{n=0}^{\infty}\mu\{a_n\}=0$.
+}%end of proof of 114G
+
+\exercises{
+\leader{114X}{Basic exercises $\pmb{>}$(a)} Let $g:\Bbb R\to\Bbb R$ be
+any non-decreasing function.   For
+half-open intervals $I\subseteq\Bbb R$ define $\lambda_gI$ by setting
+
+\Centerline{$\lambda_g\emptyset=0$,\quad
+$\lambda_g\coint{a,b}
+=\lim_{x\uparrow b}g(x)-\lim_{x\uparrow a}g(x)$}
+
+\noindent if $a<b$.   For any set $A\subseteq\Bbb R$ set
+
+$$\eqalign{\theta_gA=\inf\{\sum_{j=0}\sp{\infty}\lambda_gI_j:\langle
+I_j\rangle_{j\in\Bbb N}
+\text{ is a sequence of }&\text{half-open intervals}\cr
+&\text{such that }
+A\subseteq\bigcup_{j\in\Bbb N}I_j\}.\cr}$$
+
+\noindent Show that $\theta_g$ is an outer measure on $\Bbb R$.   Let
+$\mu_g$ be the measure defined from $\theta_g$ by \Caratheodory's
+method;  show that $\mu_gI$ is defined and equal to $\lambda_gI$ for every half-open interval
+$I\subseteq\Bbb R$, and that every Borel subset of $\Bbb R$ is
+in the domain of $\mu_g$.
+
+($\mu_g$ is the {\bf Lebesgue-Stieltjes} measure associated with $g$.)
+
+\spheader 114Xb At which point would the argument of 114Xa break down if
+we wrote $\lambda_g\coint{a,b}=g(b)-g(a)$ instead of using the formula
+given?
+
+\sqheader 114Xc Write $\theta$ for Lebesgue outer measure and $\mu$
+for Lebesgue
+measure on $\Bbb R$.   Show that $\theta A=\inf\{\mu E:E$ is Lebesgue
+measurable, $A\subseteq E\}$ for every $A\subseteq\Bbb R$.
+\Hint{Consider sets $E$ of the form $\bigcup_{j\in\Bbb N}I_j$, where
+$\sequence{j}{I_j}$ is a sequence of half-open intervals.}
+
+\spheader 114Xd Let $X$ be a set, $\Cal I$ a family of subsets
+of $X$ such
+that $\emptyset\in\Cal I$, and $\lambda:\Cal I\to\coint{0,\infty}$ a
+function such that $\lambda\emptyset=0$.   Define
+$\theta:\Cal PX\to[0,\infty]$ by writing
+
+\Centerline{$\theta A=\inf\{\sum_{j=0}\sp{\infty}\lambda I_j:\langle
+I_j\rangle_{j\in\Bbb N}
+\text{ is a sequence in }\Cal I\text{ such that }
+A\subseteq\bigcup_{j\in\Bbb N}I_j\}$,}
+
+\noindent interpreting $\inf\emptyset$ as $\infty$, so that
+$\theta A=\infty$
+if $A$ is not covered by any sequence in $\Cal I$.   Show that $\theta$
+is an outer measure on $X$.
+
+\spheader 114Xe Let $E\subseteq\Bbb R$ be a set of finite
+measure for Lebesgue
+measure $\mu$.   Show that for every $\epsilon>0$ there is a disjoint
+family $I_0,\ldots,I_n$ of half-open intervals such that
+$\mu(E\symmdiff\bigcup_{j\le n}I_j)\le\epsilon$.   \Hint{let
+$\langle J_j\rangle_{j\in\Bbb N}$ be a sequence of half-open intervals
+such that $E\subseteq\bigcup_{j\in\Bbb N}J_j$ and
+$\sum_{j=0}^{\infty}\mu J_j\le\mu E+\bover{1}{2}\epsilon$.   Now take a
+suitably large $m$ and express $\bigcup_{j\le m}J_j$ as a disjoint union
+of half-open intervals.}
+
+\sqheader 114Xf Write $\theta$ for Lebesgue outer measure and $\mu$
+for Lebesgue
+measure on $\Bbb R$.   Suppose that $c\in\Bbb R$.   Show that
+$\theta(A+c)=\theta A$ for every $A\subseteq\Bbb R$, where
+$A+c=\{x+c:x\in A\}$.   Show that if $E\subseteq \Bbb R$ is measurable
+so is $E+c$, and that in this case $\mu(E+c)=\mu E$.
+
+\spheader 114Xg Write $\theta$ for Lebesgue outer measure and $\mu$
+for Lebesgue
+measure on $\Bbb R$.   Suppose that $c>0$.   Show that
+$\theta(cA)=c\theta(A)$ for every $A\subseteq\Bbb R$, where
+$cA=\{cx:x\in A\}$.
+Show that if $E\subseteq \Bbb R$ is measurable so is $cE$,
+and that in this case $\mu(cE)=c\mu E$.
+
+\leader{114Y}{Further exercises (a)}
+%\spheader 114Ya
+In (a-iv) of the proof of 114D, show that $\sum_{m=0}^{\infty}\lambda
+I_{k_m,l_m}$ is actually equal to
+$\sum_{n=0}^{\infty}\sum_{j=0}^{\infty}\lambda I_{nj}$.
+
+\spheader 114Yb Let $g$, $h:\Bbb R\to\Bbb R$ be two non-decreasing
+functions, with sum $g+h$;  let $\mu_g$, $\mu_h$, $\mu_{g+h}$ be the
+corresponding Lebesgue-Stieltjes measures (114Xa).   Show that
+
+\Centerline{$\dom\mu_{g+h}=\dom\mu_g\cap\dom\mu_h$,
+\quad$\mu_{g+h}E=\mu_gE+\mu_hE$ for every $E\in\dom\mu_{g+h}$.}
+\spheader 114Yc Let $\sequencen{g_n}$ be a sequence of non-decreasing
+functions from $\Bbb R$ to $\Bbb R$, and suppose that
+$g(x)=\sum_{n=0}^{\infty}g_n(x)$ is defined and finite for every
+$x\in\Bbb R$.   Let $\mu_{g_n}$, $\mu_g$ be the corresponding
+Lebesgue-Stieltjes measures.   Show that
+
+\Centerline{$\dom\mu_g=\bigcap_{n\in\Bbb N}\dom\mu_{g_n}$,
+\quad$\mu_gE=\sum_{n=0}^{\infty}\mu_{g_n}E$ for every $E\in\dom\mu_g$.}
+
+\spheader 114Yd(i) Show that if $A\subseteq\Bbb R$
+and $\epsilon>0$, there is
+an open set $G\supseteq A$ such that $\theta G\le\theta A+\epsilon$,
+where $\theta$ is Lebesgue outer measure.  (ii) Show that if
+$E\subseteq\Bbb R$ is Lebesgue measurable and $\epsilon>0$, there is an
+open set $G\supseteq E$ such that $\mu(G\setminus E)\le\epsilon$, where
+$\mu$ is Lebesgue measure.   \Hint{consider first the case of
+bounded $E$.}   (iii) Show that if $E\subseteq\Bbb R$ is Lebesgue
+measurable, there are Borel sets $H_1$, $H_2$ such that $H_1\subseteq
+E\subseteq H_2$ and $\mu(H_2\setminus E)=\mu(E\setminus H_1)=0$.
+\Hint{use (ii) to find $H_2$, and then consider the complement of
+$E$.}
+
+\spheader 114Ye Write $\theta$ for Lebesgue outer measure on
+$\Bbb R$.   Show
+that a set $E\subseteq\Bbb R$ is Lebesgue measurable iff
+$\theta([-n,n]\cap E)+\theta([-n,n]\setminus E)=2n$ for every
+$n\in\Bbb N$.   \Hint{Use 114Yd to show that for each $n$ there are
+measurable sets $F_n$, $H_n$ such that $F_n\subseteq[-n,n]\cap
+E\subseteq H_n$ and $H_n\setminus F_n$ is negligible.}
+
+\spheader 114Yf Repeat 114Xc and 114Yd-114Ye for the
+Lebesgue-Stieltjes measures of 114Xa.
+
+\spheader 114Yg Write $\Cal B$ for the $\sigma$-algebra of Borel
+subsets of
+$\Bbb R$, and let $\nu:\Cal B\to[0,\infty]$ be a measure.   Let
+$g$, $\lambda_g$, $\theta_g$ and $\mu_g$ be as in 114Xa.   Show that if
+$\nu I=\lambda_gI$ for every half-open interval $I$, then $\nu E=\mu_gE$
+for every $E\in\Cal B$.   \Hint{first consider open sets $E$, and
+then use 114Yd(i) as extended in 114Yf.}
+
+\spheader 114Yh Write $\Cal B$ for the $\sigma$-algebra of Borel
+subsets of
+$\Bbb R$, and let $\nu:\Cal B\to[0,\infty]$ be a measure such that
+$\nu[-n,n]<\infty$ for every $n\in\Bbb N$.   Show that there is a
+function $g:\Bbb R\to\Bbb R$ which is non-decreasing, continuous on the
+left and
+such that $\nu E=\mu_gE$ for every $E\in\Cal B$, where $\mu_g$ is
+defined as in 114Xa.   Is $g$ unique?
+
+\spheader 114Yi Write $\Cal B$ for the $\sigma$-algebra of Borel
+subsets of
+$\Bbb R$, and let $\nu_1$, $\nu_2$ be measures with domain $\Cal B$ such
+that $\nu_1 I=\nu_2I<\infty$ for every half-open interval
+$I\subseteq\Bbb R$.     Show that $\nu_1E=\nu_2E$ for every $E\in\Cal
+B$.
+
+\spheader 114Yj Let $\Cal E$ be any family of half-open
+intervals in $\Bbb R$.   Show that (i) there is a countable
+$\Cal C\subseteq\Cal E$ such that $\bigcup\Cal E=\bigcup\Cal C$
+(definition:
+1A1F) (ii) that $\bigcup\Cal E$ is a Borel set, so is Lebesgue
+measurable (iii) that there is a disjoint sequence $\sequencen{I_n}$ of
+half-open intervals in $\Bbb R$ such that $\bigcup\Cal
+E=\bigcup_{n\in\Bbb N}I_n$.
+
+\spheader 114Yk Show that for almost every $x\in\Bbb R$ (as measured by
+Lebesgue measure) the set
+
+\Centerline{$\{(m,n):m\in\Bbb Z,\,n\in\Bbb N\setminus\{0\},
+\,|x-\Bover{m}{n}|\le\Bover{1}{n^3}\}$}
+
+\noindent is finite.   \Hint{estimate the outer measure of
+$\bigcup_{n\ge n_0}\bigcup_{|m|\le kn}
+[\bover{m}{n}-\bover1{n^3},\bover{m}{n}+\bover1{n^3}]$ for $n_0$,
+$k\ge 1$.}   Repeat with $2+\epsilon$ in the place of $3$.
+
+\spheader 114Yl Write $\mu$ for Lebesgue measure on $\Bbb R$.   Show that
+there is a countable family $\Cal F$ of Lebesgue measurable subsets of
+$\Bbb R$ such that whenever $\mu E$ is defined and finite, and
+$\epsilon>0$, there is an $F\in\Cal F$ such that
+$\mu(E\symmdiff F)\le\epsilon$.   \Hint{in 114Xe, show that we can take the
+$I_j$ to have rational endpoints.}
+%114Xe
+}%end of exercises
+
+\endnotes{
+\Notesheader{114} My own interests are in \lq abstract'
+measure theory, and from the point of view of the structure of this
+treatise, the chief object of this section is the description of a
+non-trivial measure space to provide a focus for the general theorems
+which follow.   Let me enumerate the methods of constructing measure
+spaces already available to us.   (a) We have the point-supported measures of
+112Bd;  in some ways, these are trivial;  but they do
+occur in applications, and, just because they are generally easy to deal
+with, it is often right to test any new ideas on them.   (b) We have
+Lebesgue measure on $\Bbb R$;  a straightforward generalization of the
+construction yields the Lebesgue-Stieltjes measures (114Xa).   (c) Next,
+we have ways of building new measures from old, starting with subspace
+measures (113Yb), image measures (112Xf) and sums of
+measures (112Yf).   Perhaps the most important of these is
+`Lebesgue measure on $[0,1]$', I call it $\mu_1$ for the moment, where
+the domain of $\mu_1$ is $\{E:E\subseteq[0,1]$ is Lebesgue
+measurable$\}=\{E\cap[0,1]:E\subseteq\Bbb R$ is Lebesgue measurable$\}$,
+and $\mu_1E$ is just the Lebesgue measure of $E$ for each
+$E\in\dom\mu_1$.   In fact the image measures of Lebesgue measure on
+$[0,1]$ include a very large proportion of the probability measures
+(that is, measures giving measure $1$ to the whole space) of importance
+in ordinary applications.
+
+Of course Lebesgue measure is not only the dominant guiding example for
+general measure theory, but is itself the individual measure of greatest
+importance for applications.   For this reason it would be
+possible -- though in my view narrow-minded -- to read
+chapters 12-13 of this
+volume, and a substantial proportion of Volume 2, as if they applied only
+to Lebesgue measure on $\Bbb R$.   This is, indeed, the context in which
+most of these results were first developed.   I believe, however, that it
+is often the case in mathematics, that one's understanding of a
+particular construction is deepened and strengthened by an acquaintance
+with related objects, and that one of the ways to an appreciation of the
+nature of Lebesgue measure is through a study of its properties in the
+more abstract context of general measure theory.
+
+For any proper investigation of the applications of Lebesgue measure
+theory we must wait for Volume 2.   But I include 114Yk as a hint of one
+of the ways in which this theory can be used.
+}%end of notes
+\discrpage

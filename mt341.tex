@@ -1,0 +1,1342 @@
+\frfilename{mt341.tex}
+\versiondate{9.4.10}
+\copyrightdate{2000}
+
+\def\chaptername{Liftings}
+\def\sectionname{The lifting theorem}
+
+\newsection{341}
+
+I embark directly on the principal theorem of this chapter (341K, `every
+non-trivial complete strictly localizable measure space has a lifting'),
+using the minimum of advance preparation.   341A-341B give the
+definition
+of `lifting';  the main argument is in 341F-341K, using the concept of
+`lower density' (341C-341E) and a theorem on martingales from \S275.
+In 341P I describe an alternative way of thinking about liftings in
+terms of the Stone space of the measure algebra.
+
+\leader{341A}{Definition} Let $(X,\Sigma,\mu)$ be a measure space,
+and $\frak A$ its measure algebra.   By a {\bf lifting} for $\frak A$ (or
+for $(X,\Sigma,\mu)$, or for $\mu$) I shall mean
+
+{\it either} a Boolean homomorphism $\theta:\frak A\to\Sigma$ such that
+$(\theta a)^{\ssbullet}=a$ for every $a\in\frak A$
+
+{\it or} a Boolean homomorphism $\phi:\Sigma\to\Sigma$ such that (i)
+$\phi E=\emptyset$ whenever $\mu E=0$ (ii) $\mu(E\symmdiff\phi E)=0$ for
+every $E\in\Sigma$.
+
+\cmmnt{
+\leader{341B}{Remarks (a)} I trust that the ambiguities permitted by
+this terminology will not cause any confusion.   The point is that there
+is a natural one-to-one correspondence between liftings
+$\theta:\frak A\to\Sigma$ and liftings $\phi:\Sigma\to\Sigma$ given by the formula
+
+\Centerline{$\theta E^{\ssbullet}=\phi E$ for every $E\in\Sigma$.}
+
+\noindent\prooflet{\Prf\ (i) Given a lifting $\theta:\frak A\to\Sigma$,
+the formula defines a Boolean homomorphism $\phi:\Sigma\to\Sigma$ such
+that
+
+\Centerline{$\phi\emptyset=\theta 0=\emptyset$,
+\quad$(E\Bsymmdiff\phi E)^{\ssbullet}
+=E^{\ssbullet}\Bsymmdiff(\theta E^{\ssbullet})^{\ssbullet}
+=0\,\Forall\,E\in\Sigma$,}
+
+\noindent so that $\phi$ is a lifting.   (ii) Given a lifting
+$\phi:\Sigma\to\Sigma$, the kernel of $\phi$ includes
+$\{E:\mu E=0\}$, so there is a Boolean homomorphism
+$\theta:\frak A\to\Sigma$
+such that $\theta E^{\ssbullet}=\phi E$ for every $E$ (3A2G), and now
+
+\Centerline{$(\theta E^{\ssbullet})^{\ssbullet}
+=(\phi E)^{\ssbullet}=E^{\ssbullet}$}
+
+\noindent for every $E\in\Sigma$, so $\theta$ is a lifting.\ \Qed}
+
+I suppose that the word `lifting' applies most naturally to functions
+from $\frak A$ to $\Sigma$;  but for applications in measure theory the
+other type of lifting is used at least equally often.
+
+
+\header{341Bb}{\bf (b)} Note that if $\phi:\Sigma\to\Sigma$ is a lifting
+then $\phi^2=\phi$.   \prooflet{\Prf\ For any $E\in\Sigma$,
+
+\Centerline{$\phi^2E\Bsymmdiff\phi E=\phi(E\Bsymmdiff\phi E)=\emptyset$.
+\Qed}
+}
+
+\noindent If $\phi$ is associated with $\theta:\frak A\to\Sigma$, then
+$\phi\theta a=\theta a$ for every $a\in\frak A$.   \prooflet{\Prf\
+$\phi\theta a=\theta((\theta a)^{\ssbullet})=\theta a$.\ \Qed}
+
+\spheader 341Bc In the theorems to follow, there will occasionally intrude
+a hypothesis `$\mu X>0$'.   The point is that if we have a measure space
+$(X,\Sigma,\mu)$ which is trivial in the sense that $\mu X=0$, then the
+only candidate for a `lifting' $\phi:\Sigma\to\Sigma$ is the constant
+function with value $\emptyset$;  and if $X\ne\emptyset$ this is not a
+Boolean homomorphism in the sense of this book.   The simplest way of
+dealing with these cases is to rule them out of the discussion.
+}%end of comment
+
+\leader{341C}{Definition} Let $(X,\Sigma,\mu)$ be a measure space,
+and $\frak A$ its measure algebra.   By a {\bf lower density} for
+$\frak A$ (or for $(X,\Sigma,\mu)$, or for $\mu$) I shall mean
+
+{\it either} a function $\undtheta:\frak A\to\Sigma$ such that
+(i) $(\undtheta a)^{\ssbullet}=a$ for every $a\in\frak A$
+(ii) $\undtheta0=\emptyset$
+(iii) $\undtheta(a\Bcap b)=\undtheta a\cap\undtheta b$ for all $a$,
+$b\in\frak A$
+
+{\it or} a function $\undphi:\Sigma\to\Sigma$ such that (i)
+$\undphi E=\undphi F$ whenever $E$, $F\in\Sigma$ and
+$\mu(E\symmdiff F)=0$ (ii) $\mu(E\symmdiff\undphi E)=0$
+for every $E\in\Sigma$ (iii) $\undphi\emptyset=\emptyset$ (iv)
+$\undphi(E\cap F)=\undphi E\Bcap\undphi F$ for all $E$, $F\in\Sigma$.
+
+\leader{341D}{Remarks (a)} As in 341B, there is a natural one-to-one
+correspondence between lower densities
+$\undtheta:\frak A\to\Sigma$ and lower densities
+$\undphi:\Sigma\to\Sigma$ given by the formula
+
+\Centerline{$\undtheta E^{\ssbullet}=\undphi E$ for
+every $E\in\Sigma$.}
+
+\cmmnt{\noindent (For the requirement $\undphi E=\undphi F$
+whenever $E^{\ssbullet}=F^{\ssbullet}$ in $\frak A$ means that every
+$\undphi$ corresponds to a function $\undtheta$, and
+the other clauses match each other directly.)}
+
+\cmmnt{\header{341Db}{\bf (b)} As before, if $\undphi:\Sigma\to\Sigma$
+is a lower density then $\undphi^2=\undphi$.   If
+$\undphi$ is associated with $\undtheta:\frak
+A\to\Sigma$, then $\undphi\undtheta
+=\undtheta$.
+}
+
+\spheader 341Dc\cmmnt{ It will be convenient, in the course of the
+proofs of 341F-341H below, to have the following concept available.}
+If $(X,\Sigma,\mu)$ is a measure space with measure algebra $\frak A$,
+a {\bf partial lower density} of $\frak A$ is a function
+$\undtheta:\frak B\to\Sigma$ such that (i) the domain $\frak B$
+of $\undtheta$ is a subalgebra of $\frak A$ (ii)
+$(\undtheta b)^{\ssbullet}=b$ for every $b\in\frak B$ (iii)
+$\undtheta0=\emptyset$ (iv)
+$\undtheta(a\Bcap b)=\undtheta a\cap\undtheta b$ for all $a$,
+$b\in\frak B$.
+
+Similarly, if $\Tau$ is a subalgebra of $\Sigma$, a function
+$\undphi:\Tau\to\Sigma$ is a {\bf partial lower density} if (i) $\undphi
+E=\undphi F$ whenever $E$, $F\in\Tau$ and $\mu(E\symmdiff F)=0$ (ii)
+$\mu(E\symmdiff\undphi E)=0$ for every $E\in\Tau$ (iii)
+$\undphi\emptyset=\emptyset$
+(iv) $\undphi(E\cap F)=\undphi E\cap\undphi F$ for all $E$, $F\in\Tau$.
+
+\cmmnt{\spheader 341Dd Note that lower densities and partial lower
+densities
+are order-preserving;  if $a\Bsubseteq b$ in $\frak A$, and $\undtheta$
+is a lower density for $\frak A$, then
+
+\Centerline{$\undtheta a=\undtheta(a\Bcap b)=\undtheta a\Bcap\undtheta
+b\Bsubseteq\undtheta b$.}
+}
+
+\cmmnt{\spheader 341De Of course a Boolean homomorphism from $\frak A$ to
+$\Sigma$, or from $\Sigma$ to itself, is a lifting iff it is a lower
+density.
+}%end of comment
+
+\leader{341E}{Example} Let $\mu$ be Lebesgue measure on $\BbbR^r$,
+where $r\ge 1$, and $\Sigma$ its domain.   For $E\in\Sigma$ set
+
+\Centerline{$\intstar E
+=\{x:x\in\BbbR^r,\,\lim_{\delta\downarrow 0}
+\Bover{\mu(E\cap B(x,\delta))}{\mu B(x,\delta)}=1\}$.}
+
+\noindent (Here $B(x,\delta)$ is the closed ball with centre $x$ and
+radius $\delta$.)   Then $\intstar$ is a lower density for $\mu$;  we may
+call it {\bf lower Lebesgue density}.   \prooflet{\Prf\ (You may prefer
+at first to suppose that $r=1$, so that
+$B(x,\delta)=[x-\delta,x+\delta]$
+and $\mu B(x,\delta)=2\delta$.)   By 261Db (or 223B, for the
+one-dimensional case) $E\symmdiff\intstar E$ is negligible for
+every $E$;  in particular, $\intstar E\in\Sigma$ for every
+$E\in\Sigma$.   If $E\symmdiff F$ is negligible, then
+$\mu(E\cap B(x,\delta))=\mu(F\cap B(x,\delta))$ for every $x$ and
+$\delta$, so $\intstar E=\intstar F$.   If $E\subseteq F$, then
+$\mu(E\cap B(x,\delta))\le \mu(F\cap B(x,\delta))$ for every
+$x$, $\delta$, so $\intstar E\subseteq\intstar F$;
+consequently $\intstar(E\cap F)\subseteq\intstar E\cap\intstar F$ for all
+$E$, $F\in\Sigma$. If $E$, $F\in\Sigma$ and
+$x\in\intstar E\cap\intstar F$, then
+
+$$\eqalign{\mu(E\cap F\cap B(x,\delta))
+&=\mu(E\cap B(x,\delta))+\mu(F\cap B(x,\delta))
+-\mu((E\cup F)\cap B(x,\delta))\cr
+&\ge\mu(E\cap B(x,\delta))+\mu(F\cap B(x,\delta))
+-\mu(B(x,\delta))\cr}$$
+
+\noindent for every $\delta$, so
+
+\Centerline{$\Bover{\mu(E\cap F\cap B(x,\delta))}{\mu B(x,\delta)}
+\ge\Bover{\mu(E\cap B(x,\delta))}{\mu B(x,\delta)}
+  +\Bover{\mu(F\cap B(x,\delta))}{\mu B(x,\delta)}-1
+\to 1$}
+
+\noindent as $\delta\downarrow 0$, and $x\in\intstar(E\cap F)$.
+Thus $\intstar(E\cap F)=\intstar E\cap\intstar F$
+for all $E$, $F\in\Sigma$, and $\intstar$ is a lower density.\ \Qed}
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} In Chapter 47 of Volume 4 I will return to the
+operator $\intstar$ in a context in which an alternative name, `essential
+interior', is more natural.
+}
+
+\leader{341F}{}\cmmnt{ The hard work of this section is in the proof
+of 341H below.   To make it a little more digestible, I extract two
+parts of the proof as separate lemmas.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $(X,\Sigma,\mu)$ be a probability space and
+$\frak A$ its measure algebra.   Let $\frak B$ be a closed subalgebra of
+$\frak A$ and $\undtheta:\frak B\to\Sigma$ a partial lower
+density.   Then for any $e\in\frak A$ there is a partial lower density
+$\undtheta_1$, extending $\undtheta$, defined on the
+subalgebra $\frak B_1$ of $\frak A$ generated by $\frak B\cup\{e\}$.
+
+\proof{{\bf (a)} Because $\frak B$ is order-closed, therefore Dedekind
+complete in itself (314Ea),
+
+\Centerline{$v=\upr(e,\frak B)=\inf\{a:a\in\frak B,\,a\Bsupseteq e\}$,
+\quad$w=\upr(1\Bsetminus e,\frak B)$}
+
+\noindent are defined in $\frak B$.   Let $E\in\Sigma$ be such
+that $E^{\ssbullet}=e$.
+
+\medskip
+
+{\bf (b)} We have a function $\undtheta_1:\frak B_1\to\Sigma$ defined by
+writing
+
+\Centerline{$\undtheta_1((a\Bcap e)\Bcup(b\Bsetminus e))
+=\bigl(\undtheta((a\Bcap v)\Bcup(b\Bsetminus v))\cap E\bigr)
+   \cup\bigl(\undtheta((a\Bsetminus w)\Bcup(b\Bcap w))
+     \setminus E\bigr)$}
+
+\noindent for $a$, $b\in\frak B$.   \Prf\ By 312N, every element of
+$\frak B_1$ is expressible as $(a\Bcap e)\Bcup(b\Bsetminus e)$ for some
+$a$, $b\in\frak B$.   If $a$, $a'$, $b$, $b'\in\frak B$ are such that
+$(a\Bcap e)\Bcup(b\Bsetminus e)=(a'\Bcap e)\Bcup(b'\Bsetminus e)$, then
+$a\Bcap e=a'\Bcap e$ and $b\Bsetminus e=b'\Bsetminus e$, that is,
+
+\Centerline{$a\Bsymmdiff a'\Bsubseteq 1\Bsetminus e\Bsubseteq w$,
+\quad$b\Bsymmdiff b'\Bsubseteq e\Bsubseteq v$.}
+
+\noindent This means that
+$e\Bsubseteq 1\Bsetminus(a\Bsymmdiff a')\in\frak B$ and
+$1\Bsetminus e\Bsubseteq 1\Bsetminus(b\Bsymmdiff b')\in\frak B$.   So we
+also have $v\Bsubseteq 1\Bsetminus(a\Bsymmdiff a')$ and
+$w\Bsubseteq 1\Bsetminus(b\Bsymmdiff b')$.   Accordingly
+
+\Centerline{$a\Bcap v=a'\Bcap v$,
+\quad$b\Bcap w=b'\Bcap w$.
+\quad$a\Bsetminus w=a'\Bsetminus w$,
+\quad$b\Bsetminus v=b'\Bsetminus v$.}
+
+\noindent But this means that
+
+$$\eqalign{\bigl(\undtheta((a\Bcap v)&\Bcup(b\Bsetminus v))\cap E\bigr)
+   \cup\bigl(\undtheta((a\Bsetminus w)\Bcup(b\Bcap w))
+      \setminus E\bigr)\cr
+&=\bigl(\undtheta((a'\Bcap v)\Bcup(b'\Bsetminus v))\cap E\bigr)
+   \cup\bigl(\undtheta((a'\Bsetminus w)\Bcup(b'\Bcap w))
+      \setminus E\bigr).\cr}$$
+
+\noindent Thus the formula given defines $\undtheta_1$ uniquely.\ \Qed
+
+\medskip
+
+{\bf (c)} Now $\undtheta_1$ is a partial lower density.
+
+\medskip
+
+\Prf{\bf (i)} If $a$, $b\in\frak B$,
+
+$$\eqalign{(\undtheta_1((a\Bcap e)\Bcup(b\Bsetminus e)))^{\ssbullet}
+&=\bigl(\bigl(\undtheta((a\Bcap v)\Bcup(b\Bsetminus v))\cap E\bigr)
+   \cup\bigl(\undtheta((a\Bsetminus w)\Bcup(b\Bcap w))\setminus E\bigr)
+   \bigr)^{\ssbullet}\cr
+&=\bigl(((a\Bcap v)\Bcup(b\Bsetminus v))\Bcap e\bigr)
+   \cup\bigl(((a\Bsetminus w)\Bcup(b\Bcap w))\Bsetminus e\bigr)\cr
+&=(a\Bcap e)
+   \cup(b\Bsetminus e).\cr}$$
+
+\noindent So $(\undtheta_1c)^{\ssbullet}=c$ for every $c\in\frak B_1$.
+
+\medskip
+
+\quad{\bf (ii)}
+
+\Centerline{$\undtheta_1(0)
+=\bigl(\undtheta((0\Bcap v)\Bcup(0\Bsetminus v))\cap E\bigr)
+   \cup\bigl(\undtheta((0\Bsetminus w)\Bcup(0\Bcap w))\setminus E\bigr)
+=\emptyset$.}
+
+\medskip
+
+\quad{\bf (iii)} If $a$, $a'$, $b$, $b'\in\frak B$, then
+
+$$\eqalign{\undtheta_1(((a\Bcap e)&\Bcup(b\Bsetminus e))
+  \Bcap((a'\Bcap e)\Bcup(b'\Bsetminus e)))\cr
+&=\undtheta_1((a\Bcap a'\Bcap e)\Bcup(b\cap b'\Bsetminus e))\cr
+&=\bigl(\undtheta((a\Bcap a'\Bcap v)\Bcup(b\Bcap b'\Bsetminus v))
+   \cap E\bigr)
+   \cup\bigl(\undtheta((a\Bcap a'\Bsetminus w)\Bcup(b\Bcap b'\Bcap w))
+   \setminus E\bigr)\cr
+&=\bigl(\undtheta(((a\Bcap v)\Bcup(b\Bsetminus v))
+   \Bcap((a'\Bcap v)\Bcup(b'\Bsetminus v)))
+   \cap E\bigr)\cr
+&\qquad\qquad \cup\bigl(\undtheta(((a\Bsetminus w)\Bcup(b\Bcap w))
+   \Bcap((a'\Bsetminus w)\Bcup(b'\Bcap w)))
+   \setminus E\bigr)\cr
+&=\bigl(\undtheta((a\Bcap v)\Bcup(b\Bsetminus v))
+   \cap\undtheta((a'\Bcap v)\Bcup(b'\Bsetminus v))
+   \cap E\bigr)\cr
+&\qquad\qquad \cup\bigl(\undtheta((a\Bsetminus w)\Bcup(b\Bcap w))
+   \cap\undtheta((a'\Bsetminus w)\Bcup(b'\Bcap w))
+   \setminus E\bigr)\cr
+&=\bigl(\bigl(\undtheta((a\Bcap v)\Bcup(b\Bsetminus v))
+   \cap E\bigr)
+  \cup\bigl(\undtheta((a\Bsetminus w)\Bcup(b\Bcap w))
+   \setminus E\bigr)\bigr)\cr
+&\qquad\qquad
+  \cap\bigl(\bigl(\undtheta((a'\Bcap v)\Bcup(b'\Bsetminus v))
+   \cap E\bigr)
+  \cup\bigl(\undtheta((a'\Bsetminus w)\Bcup(b'\Bcap w))
+   \setminus E\bigr)\bigr)\cr
+&=\undtheta_1((a\Bcap e)\Bcup(b\Bsetminus e))
+  \cap\undtheta_1((a'\Bcap e)\Bcup(b'\Bsetminus e)).\cr}$$
+
+\noindent So $\undtheta_1(c\Bcap c')=\undtheta_1(c)\Bcap\undtheta_1(c')$
+for all $c$, $c'\in\frak B_1$.\ \Qed
+
+\wheader{341F}{6}{2}{2}{72pt}
+
+{\bf (d)} If $a\in\frak B$, then
+
+$$\eqalign{\undtheta_1(a)
+&=\undtheta_1((a\Bcap e)\Bcup(a\Bsetminus e))\cr
+&=\bigl(\undtheta((a\Bcap v)\Bcup(a\Bsetminus v))\cap E\bigr)
+   \cup\bigl(\undtheta((a\Bsetminus w)\Bcup(a\Bcap w))
+     \setminus E\bigr)\cr
+&=\bigl(\undtheta(a)\cap E\bigr)
+   \cup\bigl(\undtheta(a)\setminus E\bigr)
+=\undtheta a.\cr}$$
+
+\noindent Thus $\undtheta_1$ extends $\undtheta$, as required.
+}%end of proof of 341F
+
+\leader{341G}{Lemma} Let $(X,\Sigma,\mu)$ be a probability space and
+$(\frak A,\bar\mu)$ its measure algebra.   Suppose we have a sequence
+$\sequencen{\undtheta_n}$ of partial lower densities such that, for each
+$n$, (i) the domain $\frak B_n$ of $\undtheta_n$ is a closed subalgebra
+of $\frak A$ (ii) $\frak B_n\subseteq\frak B_{n+1}$ and
+$\undtheta_{n+1}$ extends $\undtheta_n$.   Let $\frak B$ be the closed
+subalgebra of $\frak A$ generated by $\bigcup_{n\in\Bbb N}\frak B_n$.
+Then there is a partial lower density $\undtheta$, with domain $\frak
+B$, extending every $\undtheta_n$.
+
+\proof{{\bf (a)} For each $n$, set
+
+\Centerline{$\Sigma_n=\{E:E\in\Sigma,\,E^{\ssbullet}\in\frak B_n\}$,}
+
+\noindent and set
+
+\Centerline{$\Sigma_{\infty}=\{E:E\in\Sigma,\,E^{\ssbullet}\in\frak
+B\}$.}
+
+\noindent Then (because all the $\frak B_n$, $\frak B$ are
+$\sigma$-subalgebras of $\frak A$, and $E\mapsto E^{\ssbullet}$ is
+sequentially order-continuous) all the $\Sigma_n$, $\Sigma_{\infty}$ are
+$\sigma$-subalgebras of $\Sigma$.
+We need to know that $\Sigma_{\infty}$ is just the
+$\sigma$-algebra $\Sigma_{\infty}^*$ of subsets of $X$ generated by
+$\bigcup_{n\in\Bbb N}\Sigma_n$.   \Prf\ Because $\Sigma_{\infty}$ is a
+$\sigma$-algebra including $\bigcup_{n\in\Bbb N}\Sigma_n$,
+$\Sigma_{\infty}^*\subseteq\Sigma_{\infty}$.   On the other hand,
+$\frak B^*=\{E^{\ssbullet}:E\in\Sigma^*_{\infty}\}$ is a
+$\sigma$-subalgebra of $\frak A$ including $\frak B_n$ for every
+$n\in\Bbb N$.   Because $\frak A$ is ccc, $\frak B^*$ is
+(order-\nobreak)closed (316Fb), so includes $\frak B$.
+This means that if $E\in\Sigma_{\infty}$ there must be an
+$F\in\Sigma_{\infty}^*$ such that $E^{\ssbullet}=F^{\ssbullet}$.   But
+now $(E\symmdiff F)^{\ssbullet}=0\in\frak B_0$, so
+$E\symmdiff F\in\Sigma_0\subseteq \Sigma_{\infty}^*$, and $E$ also
+belongs to $\Sigma^*_{\infty}$.   This shows that
+$\Sigma_{\infty}\subseteq\Sigma_{\infty}^*$ and the two algebras are
+equal.\ \Qed
+
+\medskip
+
+{\bf (b)} For each $n\in\Bbb N$, we have the partial lower density
+$\undtheta_n:\frak B_n\to\Sigma$.   Since
+$(\undtheta_na)^{\ssbullet}=a\in\frak B_n$ for every
+$a\in\frak B_n$, $\undtheta_n$ takes all its values in $\Sigma_n$.
+For $n\in\Bbb N$, let $\undphi_n:\Sigma_n\to\Sigma_n$ be the
+lower density corresponding to $\undtheta_n$ (341Ba), that is,
+$\undphi_nE=\undtheta_nE^{\ssbullet}$ for every
+$E\in\Sigma_n$.
+
+\medskip
+
+{\bf (c)} For $a\in\frak A$, $n\in\Bbb N$ choose $G_a\in\Sigma$,
+$g_{an}$ such that $G_a^{\ssbullet}=a$ and $g_{an}$ is a conditional
+expectation of $\chi G_a$ on $\Sigma_n$;  that is,
+
+\Centerline{$\int_Eg_{an}=\int_E\chi G_a=\mu(E\cap
+G_a)=\bar\mu(E^{\ssbullet}\Bcap a)$}
+
+\noindent for every $E\in\Sigma_n$.   As remarked in 233Db, such a
+function $g_{an}$ can always be found, and moreover we may take it to be
+$\Sigma_n$-measurable and defined everywhere on $X$.
+Now if $a\in\frak B$, $\lim_{n\to\infty}g_{an}(x)$ exists and is equal
+to $\chi G_a(x)$ for almost every $x$.   \Prf\ By L\'evy's martingale
+theorem (275I), $\lim_{n\to\infty}g_{an}$ is defined almost everywhere
+and is a conditional expectation of $\chi G_a$ on the $\sigma$-algebra
+generated by $\bigcup_{n\in\Bbb N}\Sigma_n$.   As observed in (a), this
+is just $\Sigma_{\infty}$;  and as $\chi G_a$ is itself
+$\Sigma_{\infty}$-measurable, it is also a conditional expectation of
+itself on $\Sigma_{\infty}$, and must be equal almost everywhere to
+$\lim_{n\to\infty}g_{an}$.\ \Qed
+
+\medskip
+
+{\bf (d)} For $a\in\frak B$, $k\ge 1$, $n\in\Bbb N$ set
+
+\Centerline{$H_{kn}(a)
+=\{x:x\in X,\,g_{an}(x)\ge 1-2^{-k}\}\in\Sigma_n$,
+\quad $\tilde H_{kn}(a)=\undphi_n(H_{kn}(a))$,}
+
+\Centerline{$\undtheta a
+=\bigcap_{k\ge 1}\bigcup_{n\in\Bbb N}\bigcap_{m\ge n}\tilde H_{km}(a)$.}
+
+\noindent The rest of the proof is devoted to showing that
+$\undtheta:\frak B\to\Sigma$ has the required properties.
+
+\medskip
+
+{\bf (e)} $G_0$ is negligible, so every $g_{0n}$ is zero almost
+everywhere, every $H_{kn}(0)$ is negligible and every $\tilde H_{kn}(0)$
+is empty;  so $\undtheta 0=\emptyset$.
+
+\medskip
+
+{\bf (f)} If $a\Bsubseteq b$ in $\frak B$, then $\undtheta a\subseteq
+\undtheta b$.  \Prf\  $G_a\setminus G_b$ is negligible, $g_{an}\le
+g_{bn}$ almost everywhere for every $n$, every $H_{kn}(a)\setminus
+H_{kn}(b)$ is negligible, $\tilde H_{kn}(a)\subseteq\tilde H_{kn}(b)$
+for every $n$ and $k$, and $\undtheta a\subseteq \undtheta b$.\ \Qed
+
+\medskip
+
+{\bf (g)}  If $a$, $b\in\frak B$ then $\undtheta(a\Bcap b)=\undtheta
+a\cap\undtheta b$.
+\Prf\ $\chi G_{a\Bcap b}\geae\chi G_a+\chi G_b-1$ so
+$g_{a\Bcap b,n}\geae g_{an}+g_{bn}-1$ for every $n$.   Accordingly
+
+\Centerline{$H_{k+1,n}(a)\cap H_{k+1,n}(b)\setminus H_{kn}(a\Bcap b)$}
+
+\noindent is negligible, and (because $\undphi_n$ is a lower density)
+
+\Centerline{$\tilde H_{kn}(a\Bcap b)\supseteq
+\undphi_n(H_{k+1,n}(a)\cap H_{k+1,n}(b))
+=\tilde H_{k+1,n}(a)\cap\tilde H_{k+1,n}(b)$}
+
+\noindent for all $k\ge 1$, $n\in\Bbb N$.   Now, if $x\in\undtheta
+a\cap\undtheta b$, then, for any $k\ge 1$, there are $n_1$, $n_2\in\Bbb
+N$ such that
+
+\Centerline{$x\in\bigcap_{m\ge n_1}\tilde H_{k+1,m}(a)$,
+\quad$x\in\bigcap_{m\ge n_2}\tilde H_{k+1,m}(b)$.}
+
+\noindent But this means that
+
+\Centerline{$x\in\bigcap_{m\ge\max(n_1,n_2)}\tilde H_{km}(a\Bcap b)$.}
+
+\noindent As $k$ is arbitrary, $x\in\undtheta (a\Bcap b)$;  as $x$ is
+arbitrary, $\undtheta a\cap\undtheta b\subseteq\undtheta(a\Bcap b)$.
+We know already from (f) that $\undtheta(a\Bcap b)\subseteq\undtheta
+a\cap\undtheta b$, so
+$\undtheta(a\Bcap b)=\undtheta a\cap\undtheta b$.\ \Qed
+
+\medskip
+
+{\bf (h)}
+If $a\in\frak B$, then $\undtheta a^{\ssbullet}=a$.   \Prf\
+$\sequencen{g_{an}}\to\chi G_a$ a.e., so setting
+
+\Centerline{$V_a
+=\bigcap_{k\ge 1}\bigcup_{n\in\Bbb N}\bigcap_{m\ge n}H_{km}(a)
+=\{x:\liminf_{n\to\infty}g_{an}(x)\ge 1\}$,}
+
+\noindent $V_a\symmdiff G_a$ is negligible, and
+$V_a^{\ssbullet}=a$;  but
+
+\Centerline{$\undtheta a\symmdiff V_a
+\subseteq\bigcup_{k\ge 1,n\in\Bbb N}H_{kn}(a)\symmdiff\tilde H_{kn}(a)$}
+
+\noindent is negligible, so $\undtheta a^{\ssbullet}$ is also equal
+to $a$.\ \QeD\   Thus $\undtheta$ is a partial lower density with domain
+$\frak B$.
+
+\medskip
+
+{\bf (i)} Finally, $\undtheta$ extends $\undtheta_n$ for every
+$n\in\Bbb N$.   \Prf\ If $a\in\frak B_n$, then $G_a\in\Sigma_m$ for every $m\ge n$, so $g_{am}\eae\chi G_a$ for every $m\ge n$;  $H_{km}(a)\symmdiff G_a$ is negligible for $k\ge 1$, $m\ge n$;
+
+\Centerline{$\tilde H_{km}=\undphi_mG_a=\undtheta_m a=\undtheta_na$}
+
+\noindent for $k\ge 1$, $m\ge n$ (this is where I use the hypothesis
+that $\undtheta_{m+1}$ extends $\undtheta_m$ for every $m$); and
+
+$$\eqalign{\undtheta a
+&=\bigcap_{k\ge 1}\bigcup_{r\in\Bbb N}
+  \bigcap_{m\ge r}\tilde H_{km}(a)\cr
+&=\bigcap_{k\ge 1}\bigcup_{r\ge n}\bigcap_{m\ge r}\tilde H_{km}(a)
+=\bigcap_{k\ge 1}\bigcup_{r\ge n}\undtheta_na
+=\undtheta_n a.\text{ \Qed}\cr}$$
+
+The proof is complete.
+}%end of proof of 341G
+
+
+\leader{341H}{}\cmmnt{ Now for the first main theorem.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $(X,\Sigma,\mu)$ be any strictly
+localizable measure space.   Then it has a lower density
+$\undphi:\Sigma\to\Sigma$.   If $\mu X>0$ we can take $\undphi X=X$.
+
+\proof{{\bf: Part A} I deal first with the case of probability spaces.
+Let $(X,\Sigma,\mu)$ be a probability space, and $(\frak A,\bar\mu)$ its
+measure algebra.
+
+\medskip
+
+{\bf (a)} Set $\kappa=\#(\frak A)$ and enumerate $\frak A$ as $\langle
+a_{\xi}\rangle_{\xi<\kappa}$.   For $\xi\le\kappa$ let $\frak A_{\xi}$
+be the closed subalgebra of $\frak A$ generated by
+$\{a_{\eta}:\eta<\xi\}$.
+I seek to define a lower density $\undtheta:\frak A\to\Sigma$ as the
+last of a family $\langle\undtheta_{\xi}\rangle_{\xi\le\kappa}$, where
+$\undtheta_{\xi}:\frak A_{\xi}\to\Sigma$ is a partial lower
+density for each $\xi$.
+The inductive hypothesis will be that $\undtheta_{\xi}$ extends
+$\undtheta_{\eta}$ whenever $\eta\le\xi\le\kappa$.
+
+To start the induction, we have $\frak A_0=\{0,1\}$,
+$\undtheta_00=\emptyset$, $\undtheta_01=X$.
+\medskip
+
+{\bf (b)} {\it Inductive step to a successor ordinal $\xi$}   Given a
+successor ordinal $\xi\le\kappa$, express it as $\zeta+1$;  we are
+supposing that $\undtheta_{\zeta}:\frak A_{\zeta}\to\Sigma$ has
+been defined.   Now $\frak A_{\xi}$ is the subalgebra of $\frak A$
+generated by $\frak A_{\zeta}\cup\{a_{\zeta}\}$ (because this is a
+closed subalgebra, by 323K).   So 341F tells us that $\undtheta_{\zeta}$
+can be extended to a partial lower density $\undtheta_{\xi}$ with domain
+$\frak A_{\xi}$.
+
+\medskip
+
+{\bf (c)} {\it Inductive step to a non-zero limit ordinal $\xi$ of
+countable cofinality} In this case, there is a strictly increasing
+sequence $\sequencen{\zeta(n)}$ with supremum $\xi$.   Applying 341G
+with $\frak B_n=\frak A_{\zeta(n)}$, we see that there is a partial
+lower density $\undtheta_{\xi}$, with domain the closed subalgebra
+$\frak B$ generated by $\bigcup_{n\in\Bbb N}\frak A_{\zeta(n)}$,
+extending every $\undtheta_{\zeta(n)}$.   Now
+$\frak A_{\zeta(n)}\subseteq\frak A_{\xi}$ for every $n$, so
+$\frak B\subseteq\frak A_{\xi}$;  but also, if $\eta<\xi$, there is an
+$n\in\Bbb N$ such that $\eta<\zeta(n)$, so that
+$a_{\eta}\in\frak A_{\zeta(n)}\subseteq\frak B$;  as $\eta$ is arbitrary,
+$\frak A_{\xi}\subseteq\frak B$ and $\frak A_{\xi}=\frak B$.   Again, if
+$\eta<\xi$, there is an $n$ such that $\eta\le\zeta(n)$, so that
+$\undtheta_{\zeta(n)}$ extends $\undtheta_{\eta}$ and $\undtheta_{\xi}$
+extends $\undtheta_{\eta}$.   Thus the induction continues.
+
+\medskip
+
+
+{\bf (d)} {\it Inductive step to a limit ordinal $\xi$ of uncountable
+cofinality} In this case,
+$\frak A_{\xi}=\bigcup_{\eta<\xi}\frak A_{\eta}$.
+\Prf\ Because $\frak A$ is ccc, every member $a$ of
+$\frak A_{\xi}$ must be in the closed subalgebra of $\frak A$ generated
+by some countable subset $A$ of $\{a_{\eta}:\eta<\xi\}$ (331Gd-331Ge).
+Now $A$ can be expressed as $\{a_{\eta}:\eta\in I\}$ for some countable
+$I\subseteq\xi$.   As $I$ cannot be cofinal with $\xi$, there is a
+$\zeta<\xi$ such that $\eta<\zeta$ for every $\eta\in I$, so that
+$A\subseteq\frak A_{\zeta}$ and $a\in\frak A_{\zeta}$.\ \Qed
+
+But now, because $\undtheta_{\zeta}$ extends
+$\undtheta_{\eta}$ whenever $\eta\le\zeta<\xi$, we have a
+function $\undtheta_{\xi}:\frak A_{\xi}\to\Sigma$ defined by
+writing $\undtheta_{\xi}a=\undtheta_{\eta}a$ whenever
+$\eta<\xi$ and $a\in\frak A_{\eta}$.   Because the family $\{\frak
+A_{\eta}:\eta<\xi\}$ is totally ordered and every
+$\undtheta_{\eta}$ is a partial lower density,
+$\undtheta_{\xi}$ is a partial lower density.
+
+Thus the induction proceeds when $\xi$ is a limit ordinal of uncountable
+cofinality.
+
+\medskip
+
+{\bf (e)} The induction stops when we reach
+$\undtheta_{\kappa}:\frak A\to\Sigma$, which is a lower
+density such that $\undtheta_{\kappa}1=X$.   Setting
+$\undphi E=\undtheta_{\kappa}E^{\ssbullet}$,
+$\undphi$ is a lower density such that $\undphi X=X$.
+
+\medskip
+
+{\bf Part B} The general case of a strictly localizable
+measure space
+follows easily.   First, if $\mu X=0$, then $\frak A=\{0\}$ and we
+can set $\undphi 0=\emptyset$.   Second, if $\mu$ is totally finite
+but not zero, we can replace it by $\nu$, where $\nu E=\mu
+E/\mu X$ for every $E\in\Sigma$;  a lower density for $\nu$ is
+also a lower density for $\mu$.   Third, if $\mu$ is not totally finite,
+let $\langle X_i\rangle_{i\in I}$ be a decomposition of $X$ (211E).
+There is surely some $j$ such that $\mu X_j>0$;  replacing $X_j$ by
+$X_j\cup\bigcup\{X_i:i\in I,\,\mu X_i=0\}$, we may assume that $\mu
+X_i>0$ for every $i\in I$.   For each
+$i\in I$, let $\undphi_i:\Sigma_i\to\Sigma_i$ be a
+lower density for $\mu_i$, where $\Sigma_i=\Sigma\cap\Cal PX_i$ and
+$\mu_i=\mu\restr\Sigma_i$, such that $\undphi_iX_i=X_i$.   Then it is
+easy to check that we
+have a lower density $\undphi:\Sigma\to\Sigma$ given by setting
+
+\Centerline{$\undphi E=\bigcup_{i\in I}\undphi_i(E\cap X_i)$}
+
+\noindent for every $E\in\Sigma$, and that $\undphi X=X$.
+}%end of proof of 341H
+
+\leader{341I}{}\cmmnt{ The next step is to give a method of moving
+from lower densities to liftings.   I start with an elementary remark on
+lower densities on complete measure spaces.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $(X,\Sigma,\mu)$ be a complete measure space
+with
+measure algebra $\frak A$.
+
+(a) Suppose that $\undtheta:\frak A\to\Sigma$ is a lower density and
+$\undtheta_1:\frak A\to\Cal PX$ is a function such that
+$\undtheta_10=\emptyset$,
+$\undtheta_1(a\Bcap b)=\undtheta_1a\cap\undtheta_1b$ for all
+$a$, $b\in\frak A$ and $\undtheta_1a\supseteq\undtheta a$ for all
+$a\in\frak A$.   Then $\undtheta_1$ is a lower density.   If
+$\undtheta_1$
+is a Boolean homomorphism, it is a lifting.
+
+(b) Suppose that $\undphi:\Sigma\to\Sigma$ is a lower density and
+$\undphi_1:\Sigma\to\Cal PX$ is a function such that
+$\undphi_1E=\undphi_1F$ whenever $E\symmdiff F$ is negligible,
+$\undphi_1\emptyset=\emptyset$,
+$\undphi_1(E\Bcap F)=\undphi_1E\cap\undphi_1F$ for all
+$E$, $F\in\Sigma$ and $\undphi_1E\supseteq\undphi E$ for all
+$E\in\Sigma$.
+Then $\undphi_1$ is a lower density.   If $\undphi_1$ is a Boolean
+homomorphism, it is a lifting.
+
+\proof{{\bf (a)} All I have to check is that $\undtheta_1a\in\Sigma$ and
+$(\undtheta_1a)^{\ssbullet}=a$ for every $a\in\frak A$.   But
+
+\Centerline{$\undtheta a\subseteq\undtheta_1a$,
+\quad$\undtheta(1\Bsetminus a)\subseteq\undtheta_1(1\Bsetminus a)$,
+\quad$\undtheta_1a\cap\undtheta_1(1\Bsetminus a)
+=\undtheta_10=\emptyset$.}
+
+\noindent So
+
+\Centerline{$\undtheta a\subseteq\undtheta_1a\subseteq
+X\setminus\undtheta(1\Bsetminus a)$.}
+
+\noindent Since
+
+\Centerline{$(\undtheta a)^{\ssbullet}=a
+=(X\setminus\undtheta(1\Bsetminus a))^{\ssbullet}$,}
+
+\noindent and $\mu$ is complete, $\undtheta_1$ is a lower density.   If
+it is a Boolean homomorphism, then it is also a lifting (341De).
+
+\medskip
+
+{\bf (b)} This follows by the same argument, or by looking at the
+functions from $\frak A$ to $\Sigma$ defined by $\undphi$ and
+$\undphi_1$ and using (a).
+}%end of proof of 341I
+
+\leader{341J}{Proposition} Let $(X,\Sigma,\mu)$ be a complete
+measure space such that $\mu X>0$, and $\frak A$ its measure algebra.
+
+(a) If $\undtheta:\frak A\to\Sigma$ is any lower density, there is a
+lifting $\theta:\frak A\to\Sigma$ such that $\theta a\supseteq\undtheta
+a$
+for every $a\in\frak A$.
+
+(b) If $\undphi:\Sigma\to\Sigma$ is any lower density, there is a
+lifting $\phi:\Sigma\to\Sigma$ such that $\phi E\supseteq\undphi E$ for
+every $E\in\Sigma$.
+
+\proof{{\bf (a)}  For each $x\in\undtheta 1$, set
+
+\Centerline{$I_x=\{a:a\in\frak A,\,x\in\undtheta(1\Bsetminus a)\}$.}
+
+\noindent Then $I_x$ is a proper ideal of $\frak A$.   \Prf\ We have
+
+\inset{$0\in I_x$, because $x\in\undtheta 1$,}
+
+\inset{if $b\Bsubseteq a\in I_x$ then $b\in I_x$, because
+$x\in\undtheta(1\Bsetminus a)\subseteq\undtheta(1\Bsetminus b)$,}
+
+\inset{if $a$, $b\in I_x$ then $a\Bcup b\in I_x$, because
+$x\in\undtheta(1\Bsetminus a)\cap\undtheta(1\Bsetminus
+b)=\undtheta(1\Bsetminus(a\Bcup b))$,}
+
+\inset{$1\notin I_x$ because $x\notin\emptyset=\undtheta 0$.\ \Qed}
+
+\noindent For $x\in X\setminus\undtheta 1$, set $I_x=\{0\}$;  this is
+also a proper ideal of $\frak A$, because $\frak A\ne\{0\}$.   By 311D,
+there is a surjective Boolean homomorphism $\pi_x:\frak A\to\{0,1\}$
+such that $\pi_xd=0$ for every $d\in I_x$.
+
+Define $\theta:\frak A\to\Cal PX$ by setting
+
+\Centerline{$\theta a=\{x:x\in X,\,\pi_x(a)=1\}$}
+
+\noindent for every $a\in\frak A$.   It is easy to check that, because
+every $\pi_x$ is a surjective Boolean homomorphism, $\theta$ is a
+Boolean homomorphism.   Now for any $a\in\frak A$, $x\in X$,
+
+\Centerline{$x\in\undtheta a\Longrightarrow 1\Bsetminus a\in I_x
+\Longrightarrow \pi_x(1\Bsetminus a)=0\Longrightarrow \pi_xa=1
+\Longrightarrow x\in\theta a$.}
+
+\noindent Thus $\theta a\supseteq\undtheta a$ for every $a\in\frak A$.
+By 341I, $\theta$ is a lifting, as required.
+
+\medskip
+
+{\bf (b)} Repeat the argument above, or apply it, defining $\undtheta$
+by setting $\undtheta(E^{\ssbullet})=\undphi E$ for every $E\in\Sigma$,
+and $\phi$ by setting $\phi E=\theta(E^{\ssbullet})$ for every $E$.
+}%end of proof of 341J
+
+\leader{341K}{The Lifting Theorem} Every complete strictly localizable
+measure space of non-zero measure has a lifting.
+
+\proof{ By 341H, it has a lower density, so by 341J it has a lifting.}
+
+\cmmnt{
+\leader{341L}{Remarks} If we count 341F-341K as a single argument, it
+may be the longest proof, after Carleson's theorem (\S286), which I have
+yet presented in this treatise, and
+perhaps it will be helpful if I suggest ways of looking at its
+components.
+
+\header{341La}{\bf (a)} The first point is that the theorem should be
+thought of as one about probability spaces.   The shift to general
+strictly localizable spaces (Part B of the proof of 341H) is purely a
+matter of technique.   I would not have presented it if I did not think
+that it's worth doing, for a variety of reasons, but there is no
+significant idea needed, and if -- for instance -- the result were valid
+only for $\sigma$-finite spaces, it would still be one of the great
+theorems of mathematics.   So the rest of these remarks will be directed
+to the ideas needed in probability spaces.
+
+\header{341Lb}{\bf (b)} All the proofs I know of the theorem depend in
+one way or another on an inductive construction.   We do not, of course,
+need a transfinite induction written out in the way I have presented it
+in 341H above.   Essentially the same proof can be presented as an
+application of Zorn's Lemma;  if we take $P$ to be the set of partial
+lower densities, then the arguments of 341G and part (A-d) of the proof
+of 341H can be adapted to prove that any totally ordered subset of $P$
+has an upper bound in $P$, while the argument of 341F shows that any
+maximal element of $P$ must have domain $\frak A$.   I think it is
+purely a matter of taste which form one prefers.   I suppose I have used
+the ordinal-indexed form largely because that seemed appropriate for
+Maharam's theorem in the last chapter.
+
+\header{341Lc}{\bf (c)} There are then three types of inductive step to
+examine, corresponding to 341F, 341G and (A-d) in 341H.   The first and
+last are easier than the second.   Seeking the one-step extension of
+$\undtheta:\frak B\to\Sigma$ to $\undtheta_1:\frak B_{1}\to\Sigma$,
+the natural model to use is the one-step extension of a
+Boolean homomorphism presented in 312O.    The situation here is
+rather more complicated, as $\undtheta_1$ is not fully specified by the
+value of $\undtheta_1e$, and we do in fact have more freedom at this
+point than is entirely welcome.   The formula used in the proof of 341F
+is derived from {\smc Graf \& Weizs\"acker 76}.
+
+\header{341Ld}{\bf (d)} At this point I must call attention to the way
+in which the whole proof is dominated by the choice of {\it closed}
+subalgebras as the domains of our partial liftings.   This is what makes
+the inductive step to a limit ordinal $\xi$ of countable cofinality
+difficult, because $\frak A_{\xi}$ will ordinarily be larger than
+$\bigcup_{\eta<\xi}\frak A_{\eta}$.   But it is absolutely essential in
+the one-step extensions as treated here.   (I will return to this point in
+\S535 of Volume 5.   See also 341Ye.)
+
+Because we are dealing with a ccc algebra $\frak A$, the requirement
+that the $\frak A_{\xi}$ should be closed is not a problem when
+$\cf\xi$ is uncountable, since in this case
+$\bigcup_{\eta<\xi}\frak A_{\eta}$ is already a closed subalgebra;
+this is the only idea needed in (A-d) of 341H.
+
+\header{341Le}{\bf (e)} So we are left with the inductive step to $\xi$
+when $\cf\xi=\omega$, which is 341G.   Here we actually need some
+measure theory, and a particularly striking bit.   (You will see that
+the {\it measure} $\mu$, as opposed to the algebras $\Sigma$ and
+$\frak A$ and the homomorphism $E\mapsto E^{\ssbullet}$ and the ideal of
+negligible sets, is simply not mentioned anywhere else in the whole
+argument.)
+
+\medskip
+
+\quad{\bf (i)}
+The central idea is to use the fact that bounded martingales converge to
+define $\undtheta a$ in terms of a sequence of conditional
+expectations.   Because I have chosen a fairly direct assault on the
+problem, some of the surrounding facts are not perhaps so clearly
+visible as they might have been if I had used a more leisurely route.
+For each $a\in\frak A$, I start by choosing a representative
+$G_a\in\Sigma$;  let me emphasize that this is a crude application of
+the axiom of choice, and that the different sets $G_a$ are in no way
+coordinated.   (The theorem we are proving is that
+they {\it can} be coordinated, but we have not reached that point yet.)
+Next, I choose, arbitrarily, a conditional expectation $g_{an}$ of
+$\chi G_a$ on each
+$\Sigma_n$.   Once again, the choices are not coordinated;
+but the martingale theorem assures us that $g_a=\lim_{n\to\infty}g_{an}$
+is defined almost everywhere, and is equal almost everywhere to
+$\chi G_a$ if $a\in\frak B$.   Of course I could have gone to the $g_{an}$
+directly, without mentioning the $G_a$;  $g_{an}$ is a Radon-Nikod\'ym
+derivative of the countably additive functional
+$E\mapsto\bar\mu(E^{\ssbullet}\Bcap a):\Sigma_n\to\Bbb R$.   Now the
+$g_{an}$, like the $G_a$, are not uniquely defined.   But they are
+defined `up to a negligible set', so that any alternative functions
+$g'_{an}$ would have $g'_{an}\eae g_{an}$.   This means that the sets
+$H_{kn}(a)=\{x:g_{an}(x)\ge 1-2^{-k}\}$ are also defined `up to a
+negligible set', and consequently the sets
+$\tilde H_{kn}(a)=\undphi_{n}(H_{kn}(a))$ are uniquely defined.   I point
+this out to show that it is not a complete miracle that we have formulae
+
+\Centerline{$\tilde H_{kn}(a)\subseteq\tilde H_{kn}(b)$ if
+$a\Bsubseteq b$,}
+
+\Centerline{$\tilde H_{kn}(a\Bcap b)
+\supseteq\tilde H_{k+1,n}(a)\cap\tilde H_{k+1,n}(b)$
+for all $a$, $b\in\frak A$}
+
+\noindent which do not ask us to turn a blind eye to any negligible
+sets.   I note in passing that I could have defined the
+$\tilde H_{kn}(a)$ without mentioning the $g_{an}$;  in fact
+
+\Centerline{$\tilde H_{kn}(a)
+=\undtheta_{n}(\sup\{c:c\in\frak B_{n},\,
+\bar\mu(a\Bcap d)\ge 1-2^{-k}\bar\mu d$ whenever $d\in\frak B_{n}$
+and $d\Bsubseteq c\})$.}
+
+\medskip
+
+\quad{\bf (ii)} Now, with the sets $\tilde H_{kn}(a)$ in hand, we can
+look at
+
+\Centerline{$\tilde V_a=\bigcap_{k\ge 1}\bigcup_{n\in\Bbb
+N}\bigcap_{m\ge n}\tilde H_{kn}(a)$;}
+
+\noindent because $g_{an}\to \chi G_a$ a.e., $\tilde V_a\symmdiff G_a$
+is negligible and $\tilde V_a^{\ssbullet}=a$ for every
+$a\in\frak A_{\xi}$.   The rest of the argument amounts to checking that
+$a\mapsto\tilde V_a$ will serve for $\undtheta$.
+
+\spheader 341Lf The arguments above apply to all probability spaces, and
+show that every probability space has a lower density.   The next step
+is to convert a lower density into a lifting.   It is here that we need
+to assume completeness.   The point is that we can find a Boolean
+homomorphism $\theta:\frak A\to\Cal PX$ such that $\undtheta
+a\subseteq\theta a$ for every $a$;   this corresponds just to extending
+the ideals $I_x=\{a:x\in\undtheta(1\Bsetminus a)\}$ to maximal ideals
+(and giving a moment's thought to $x\in X\setminus\undtheta 1$).   In
+order to ensure that $\theta a\in\Sigma$ and $(\theta a)^{\ssbullet}=a$,
+we have to observe that $\theta a$ is sandwiched between $\undtheta a$
+and $X\setminus\undtheta(1\Bsetminus a)$, which differ by a negligible
+set;  so that if $\mu$ is complete all will be well.
+
+\spheader 341Lg The fact that completeness is needed at only one point
+in the argument makes it natural to wonder whether the theorem might be
+true for probability spaces in general.   (I will come later, in
+341M, to non-strictly-localizable spaces.)   There is as yet no
+satisfactory answer to this.   For Borel measure on $\Bbb R$, the
+question is known to be undecidable from the ordinary axioms of set
+theory (including the axiom of choice, but not the continuum hypothesis,
+as usual);  I will give the easy part of the argument in \S535;
+see {\smc Burke 93} for the rest.
+But I conjecture that there is a counter-example under the ordinary
+axioms (see 341Z below).
+
+\spheader 341Lh Quite apart from whether completeness is needed in the
+argument, it is not absolutely clear why measure theory is required.
+The general question of whether a lifting exists can be formulated for
+any triple $(X,\Sigma,\Cal I)$ where $X$ is a set, $\Sigma$ is a
+$\sigma$-algebra of subsets of $X$, and $\Cal I$ is a $\sigma$-ideal of
+$\Sigma$.   (See 341Ya below.)   S.Shelah has given an example of such a
+triple without a lifting in which two of the basic
+properties of the
+measure-theoretic case are satisfied:  $(X,\Sigma,\Cal I)$ is
+`complete' in the sense that every subset of any member of $\Cal I$
+belongs to $\Sigma$ (and therefore to $\Cal I$), and $\Cal I$ is
+$\omega_1$-saturated in $\Sigma$ in the sense of 316C (see {\smc Shelah
+Sh636}).   But many other cases are known (e.g., 341Yb) in which liftings
+do exist.
+
+\spheader 341Li It is of course possible to prove 341K without
+mentioning `lower densities', and there are even some advantages in
+doing so.   The idea is to follow the lines of 341H, but with `liftings'
+instead of `lower densities' throughout.   The inductive step to a
+successor ordinal is actually easier, because we have a Boolean
+homomorphism $\theta$ in 341F to extend, and we can use 312O as it
+stands if we can choose the pair $E$, $F=X\setminus E$ correctly.   The
+inductive step to an ordinal of uncountable cofinality remains
+straightforward.   But in the inductive step to an ordinal of countable
+cofinality, we find that in 341G we get no help from assuming that the
+$\undtheta_n$ are actually liftings;  we are still led to to a lower
+density $\undtheta$.   So at this point we have to interpolate the
+argument of 341J to convert this lower density into a lifting.
+
+I have chosen the more leisurely exposition, with the extra concept,
+partly in order to get as far as possible without assuming completeness
+of the measure and partly because lower densities are an important tool
+for further work (see \S\S345-346).
+
+\spheader 341Lj For more light on the argument of 341G see also 363Xe
+and 363Yf below.
+}%end of comment 341L
+
+\leader{341M}{}\cmmnt{ I remarked above that the shift from
+probability spaces to general strictly localizable spaces was simply a
+matter of technique.   The question of which spaces have liftings is
+also primarily a matter concerning probability spaces, as the next
+result shows.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a complete locally
+determined space with $\mu X>0$.   Then it has a lifting iff it has a
+lower density iff it is strictly localizable.
+
+\proof{ If $(X,\Sigma,\mu)$ is strictly localizable then it has a
+lifting, by 341K.   A lifting is already a lower density, and if
+$(X,\Sigma,\mu)$ has a lower density it has a lifting, by 341J.   So we
+have only to prove that if it has a lifting then it is strictly
+localizable.
+
+Let $\theta:\frak A\to\Sigma$ be a lifting, where $\frak A$ is the
+measure algebra of $(X,\Sigma,\mu)$.   Let $C$ be a partition of unity
+in $\frak A$ consisting of elements of finite measure (322Ea).   Set
+$\Cal A=\{\theta c:c\in C\}$.   Because $C$ is disjoint, so is
+$\Cal A$.   Because $\sup C=1$ in $\frak A$, every set of positive
+measure meets some member of $\Cal A$ in a set of positive measure.   So
+the conditions of 213O are satisfied, and $(X,\Sigma,\mu)$ is strictly
+localizable.
+}%end of proof of 341M
+
+\leader{341N}{Extension of partial \dvrocolon{liftings}}\cmmnt{ The
+following facts are obvious from the proof of 341H, but it will be
+useful to have them out in the open.
+
+\wheader{341N}{6}{2}{2}{48pt}
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a probability space
+and $\Tau$ a $\sigma$-subalgebra of $\Sigma$.
+
+(a) Any partial lower density $\undphi_0:\Tau\to\Sigma$ has an extension
+to a lower density $\undphi:\Sigma\to\Sigma$.
+
+(b) Suppose now that $\mu$ is complete.   If $\undphi_0$ is a Boolean
+homomorphism, it has an extension to a lifting $\phi$ for $\mu$.
+
+%query:  example of partial lower density on a subalgebra which has
+%no extension?
+
+\proof{{\bf (a)} In Part A of the proof of 341H, let $\frak A_{\xi}$ be
+the closed subalgebra of $\frak A$ generated by
+$\{E^{\ssbullet}:E\in\Tau\}\cup\{a_{\eta}:\eta<\xi\}$, and set
+$\undtheta_0E^{\ssbullet}=\undphi_0E$ for every $E\in\Tau$.   Proceed
+with the induction as before.   The only difference is that we no longer
+have a guarantee that $\undphi X=X$.
+
+\medskip
+
+{\bf (b)} Suppose now that $\undphi_0$ is a Boolean homomorphism and $\mu$
+is complete.   341J
+tells us that there is a lifting $\phi:\Sigma\to\Sigma$ such that $\phi
+E\supseteq\undphi E$ for every $E\in\Sigma$.   But if $E\in\Tau$ we must
+have $\phi E\supseteq\undphi_0E$,
+
+\Centerline{$\phi E\setminus\undphi_0E
+=\phi E\cap\undphi_0(X\setminus E)
+\subseteq\phi E\cap\phi(X\setminus E)=\emptyset$,}
+
+\noindent so that $\phi E=\undphi_0E$, and $\phi$ extends $\undphi_0$.
+}%end of proof of 341N
+
+
+\leader{341O}{Liftings and Stone spaces}\cmmnt{ The arguments of this
+section so far involve repeated use of the axiom of choice, and offer no
+suggestion that any liftings (or lower densities) are in any sense
+`canonical'.   There is however one context in which we have a
+distinguished
+lifting.}   Suppose that we have the Stone space $(Z,\Tau,\nu)$ of a
+measure algebra $(\frak A,\bar\mu)$;  \cmmnt{as in 311E,} I think of
+$Z$ as being the set of surjective Boolean homomorphisms from $\frak A$
+to $\Bbb Z_2$, so that each $a\in\frak A$ corresponds to the
+open-and-closed set $\widehat{a}=\{z:z(a)=1\}$.   Then we have a lifting
+$\theta:\frak A\to\Tau$ defined by setting $\theta a=\widehat{a}$ for
+each $a\in\frak A$.   \cmmnt{(I am identifying
+$\frak A$ with the measure algebra of $\nu$, as in 321J.)}   The
+corresponding
+lifting $\phi:\Tau\to\Tau$ is defined by taking $\phi E$ to be that
+unique open-and-closed set such that $E\symmdiff\phi E$ is
+negligible\cmmnt{ (or, if you prefer, meager)}.
+
+\cmmnt{Generally, liftings can be described in terms of Stone spaces,
+as follows.}
+
+\leader{341P}{Proposition} Let
+$(X,\Sigma,\mu)$ be a measure space, $(\frak A,\bar\mu)$ its measure
+algebra, and $(Z,\Tau,\nu)$ the Stone space of $(\frak A,\bar\mu)$ with
+its canonical measure.
+
+(a) There is a one-to-one correspondence between liftings
+$\theta:\frak A\to\Sigma$ and functions $f:X\to Z$ such that
+$f^{-1}[\widehat{a}]\in\Sigma$
+and $(f^{-1}[\widehat{a}])^{\ssbullet}=a$ for every $a\in\frak A$,
+defined by the formula
+
+\Centerline{$\theta a=f^{-1}[\widehat{a}]$ for every $a\in\frak A$.}
+
+(b) If $(X,\Sigma,\mu)$ is complete and locally determined, then a
+function $f:X\to Z$ satisfies the conditions of (a) iff ($\alpha$) it is
+inverse-measure-preserving ($\beta$) the homomorphism it induces between
+the measure algebras of $\mu$ and $\nu$ is the canonical
+isomorphism defined by the construction of $Z$.
+
+\proof{ Recall that $\Tau$ is just the set
+$\{\widehat{a}\symmdiff M:a\in\frak A$, $M\subseteq Z$ is meager$\}$,
+and that $\nu(\widehat{a}\symmdiff M)=\bar\mu a$ for all such $a$, $M$;
+while the canonical isomorphism $\pi$ between $\frak A$ and the measure
+algebra of $\nu$ is defined by the formula
+
+\Centerline{$\pi F^{\ssbullet}=a$ whenever $F\in\Tau$, $a\in\frak A$ and
+$F\symmdiff\widehat{a}$ is meager}
+
+\noindent (341K).
+
+\medskip
+
+{\bf (a)} If $\theta:\frak A\to\Sigma$ is any Boolean homomorphism, then
+for every $x\in X$ we have a surjective Boolean homomorphism
+$f_{\theta}(x):\frak A\to\Bbb Z_2$ defined by saying that
+$f_{\theta}(x)(a)=1$ if $x\in\theta a$, $0$ otherwise.   $f_{\theta}$ is
+a function from $X$ to $Z$.   We can recover
+$\theta$ from $f_{\theta}$ by the formula
+
+\Centerline{$\theta
+a=\{x:f_{\theta}(x)(a)=1\}=\{x:f_{\theta}(x)\in\widehat{a}\}
+=f_{\theta}^{-1}[\widehat{a}]$.}
+
+\noindent So $f_{\theta}^{-1}[\widehat{a}]\in\Sigma$ and, if $\theta$ is
+a lifting,
+
+
+\Centerline{$(f_{\theta}^{-1}[\widehat{a}])^{\ssbullet}=(\theta
+a)^{\ssbullet}=a$.}
+
+\noindent for every $a\in\frak A$.
+
+Similarly, given a function $f:X\to Z$ with this property, then we can
+set $\theta a=f^{-1}[\widehat{a}]$ for every $a\in\frak A$ to obtain a
+lifting $\theta:\frak A\to\Sigma$;  and of course we now have
+
+\Centerline{$f(x)(a) = 1\iff f(x)\in\widehat{a}\iff x\in\theta a$,}
+
+\noindent so $f_{\theta}=f$.
+
+\medskip
+
+{\bf (b)} Assume now that $(X,\Sigma,\mu)$ is complete and locally
+determined.
+
+\medskip
+
+\quad{\bf (i)} Let $f:X\to Z$ be the function associated with a lifting
+$\theta$, as in (a).   I show first that $f$ is \imp.
+\Prf\ If $F\in\Tau$, express it as $\widehat{a}\symmdiff M$, where
+$a\in\frak A$ and $M\subseteq Z$ is meager.   By 322F, $\frak A$ is
+\wsid, so $M$ is nowhere dense (316I).
+Consider $f^{-1}[M]$.  If $E\subseteq X$ is measurable and of finite
+measure, then $E\cap f^{-1}[M]$ has a measurable envelope $H$ (132Ee).
+\Quer\ If $\mu H>0$, then $b=H^{\ssbullet}\ne 0$ and $\widehat{b}$ is a
+non-empty open set in $Z$.   Because $M$ is nowhere dense, there is a
+non-zero $a\in\frak A$ such that
+$\widehat{a}\subseteq\widehat{b}\setminus
+M$.   Now $\mu(f^{-1}[\widehat{b}]\symmdiff H)=0$, so
+$f^{-1}[\widehat{a}]\setminus
+H$ is negligible, and $f^{-1}[\widehat{a}]\cap H$ is a non-negligible
+measurable set disjoint from $E\cap f^{-1}[M]$ and included in $H$;
+which is
+impossible.\ \BanG\   Thus $H$ and $E\cap f^{-1}[M]$ are negligible.
+This is true for every measurable set $E$ of finite measure.  Because
+$\mu$ is complete and locally determined, $f^{-1}[M]\in\Sigma$ and
+$\mu f^{-1}[M]=0$.
+So $f^{-1}[F]=f^{-1}[\widehat{a}]\symmdiff f^{-1}[M]$ is measurable, and
+
+\Centerline{$\mu f^{-1}[F]=\mu f^{-1}[\widehat{a}]=\mu\theta a=\bar\mu
+a=\nu\widehat{a}=\nu F$.}
+
+\noindent As $F$ is arbitrary, $f$ is \imp.\ \Qed
+
+It follows at once that for any $F\in\Tau$,
+
+\Centerline{$f^{-1}[F]^{\ssbullet}=a=\pi F^{\ssbullet}$}
+\noindent where $a$ is that element of $\frak A$ such that $M=F\symmdiff
+a$ is meager, because in this case $f^{-1}[\widehat{a}]^{\ssbullet}=a$,
+by (a), while $f^{-1}[M]$ is negligible.   So $\pi$ is the
+homomorphism induced by $f$.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $f:X\to Z$ is an
+inverse-measure-preserving function such that $f^{-1}[F]^{\ssbullet}=\pi
+F^{\ssbullet}$ for every $F\in\Tau$.   Then, in particular,
+
+\Centerline{$f^{-1}[\widehat{a}]^{\ssbullet}=\pi
+\widehat{a}^{\ssbullet}=a$}
+
+\noindent for every $a\in\frak A$, so that $f$ satisfies the conditions
+of (a).
+}%end of proof of 341P
+
+\leader{341Q}{Corollary} Let $(X,\Sigma,\mu)$ be a strictly
+localizable measure space, $(\frak A,\bar\mu)$ its measure algebra, and
+$Z$ the Stone space of $\frak A$;  suppose that $\mu X>0$.   For
+$E\in\Sigma$ write $E^*$ for the
+open-and-closed subset of $Z$ corresponding to
+$E^{\ssbullet}\in\frak A$.   Then there is a function $f:X\to Z$ such
+that $E\symmdiff f^{-1}[E^*]$ is negligible for every $E\in\Sigma$.
+If $\mu$ is complete, then $f$ is \imp.
+
+\proof{ Let $\hat\mu$ be the completion of $\mu$, and $\hat\Sigma$ its
+domain.   Then we can identify $(\frak A,\bar\mu)$ with the measure
+algebra of $\hat\mu$ (322Da).   Let $\theta:\frak A\to\hat\Sigma$ be a
+lifting, and $f:X\to Z$ the
+corresponding function.   If $E\in\Sigma$ then $E^*=\widehat{a}$ where
+$a=E^{\ssbullet}$, so
+$E\symmdiff f^{-1}[E^*]=E\symmdiff\theta E^{\ssbullet}$ is negligible.
+If $\mu$ is itself complete, so that $\hat\Sigma=\Sigma$, then $f$ is
+\imp, by 341Pb.
+}%end of proof of 341Q
+
+\exercises{
+\leader{341X}{Basic exercises (a)} Let $(X,\Sigma,\mu)$ be a measure
+space and $\phi:\Sigma\to\Sigma$ a function.   Show that $\phi$ is a
+lifting iff it is a lower density and $\phi E\cup\phi(X\setminus E)=X$
+for every $E\in\Sigma$.
+%341A
+
+\sqheader 341Xb Let $\nu_{\Bbb N}$ be the usual measure on
+$X=\{0,1\}^{\Bbb N}$, and $\Tau_{\Bbb N}$ its domain.
+For $x\in X$ and $n\in\Bbb N$ set
+$U_n(x)=\{y:y\in X,\,y\restr n=x\restr n\}$.   For $E\in\Tau_{\Bbb N}$ set
+$\undphi E=\{x:\lim_{n\to\infty}2^n\mu(E\cap U_n(x))=1\}$.   Show
+that $\undphi$ is a lower density for $\nu_{\Bbb N}$.
+%341E
+
+\sqheader 341Xc Let $\frak A$ be a Boolean algebra, $I$ an ideal of
+$\frak A$, and $\frak B$ a countable subalgebra of the quotient algebra
+$\frak A/I$.
+Show that there is a Boolean homomorphism $\theta:\frak B\to\frak A$
+such that
+$(\theta b)^{\ssbullet}=b$ for every $b\in\frak B$.
+\Hint{let $\sequencen{b_n}$ run over $\frak B$;  let $\frak B_n$ be the
+subalgebra of $\frak B$ generated
+by $\{b_i:i<n\}$;  given $\theta\restr\frak B_n$, show that there is an
+$a_n\in\frak A$ such that $a_n^{\ssbullet}=b_n$ and
+$\theta b'\Bsubseteq a_n\Bsubseteq \theta b''$
+whenever $b'$, $b''\in\frak B_n$ and $b'\Bsubseteq b_n\Bsubseteq b''$.}
+%new 2003;  341F
+
+\sqheader 341Xd Let $P$ be the set of all lower densities of a complete
+measure space $(X,\Sigma,\mu)$, with measure algebra $\frak A$, ordered
+by saying that $\undtheta\le\undtheta'$ if
+$\undtheta a\subseteq\undtheta'a$
+for every $a\in\frak A$.   Show that any non-empty totally ordered
+subset of $P$ has an upper bound
+in $P$.   Show that if $\undtheta\in P$, $a\in\frak A\setminus\{0\}$ and
+$x\in X\setminus(\undtheta a\cup\undtheta(1\Bsetminus a))$, then
+$\undtheta':\frak A\to\Sigma$ is a lower density, where
+$\undtheta'b=\undtheta b\cup\{x\}$ if either $a\Bsubseteq b$ or there is
+a $c\in\frak A$ such that
+$x\in\undtheta c$ and $a\Bcap c\Bsubseteq b$, and
+$\undtheta'b=\undtheta b$ otherwise.   Hence prove 341J.
+%341J
+
+\spheader 341Xe Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+measure spaces and suppose that there is an inverse-measure-preserving
+function $f:X\to Y$ such that the associated homomorphism from the
+measure algebra of $\nu$ to that of $\mu$ (324M) is an isomorphism.
+Show that for every lifting $\phi$ for $(Y,\Tau,\nu)$ we have a
+corresponding lifting $\psi$ of $(X,\Sigma,\mu)$ defined uniquely by the
+formula
+
+\Centerline{$\psi(f^{-1}[F])=f^{-1}[\phi F]$ for every $F\in\Tau$.}
+%341P
+
+\spheader 341Xf Let $(X,\Sigma,\mu)$ be a measure space, and write
+$\eusm L^{\infty}(\Sigma)$ for the linear space of all bounded
+$\Sigma$-measurable functions from $X$ to $\Bbb R$.   Show that for any
+lifting $\phi:\Sigma\to\Sigma$ of $\mu$ there is a unique linear
+operator $T:L^{\infty}(\mu)\to\eusm L^{\infty}(\Sigma)$ such that
+$T(\chi E)^{\ssbullet}=\chi(\phi E)$ for every $E\in\Sigma$ and
+$Tu\ge 0$ in $\eusm L^{\infty}(\Sigma)$ whenever $u\ge 0$ in
+$L^{\infty}(\mu)$.   Show that (i) $(Tu)^{\ssbullet}=u$ and
+$\sup_{x\in X}|(Tu)(x)|=\|u\|_{\infty}$ for every $u\in L^{\infty}(\mu)$
+(ii) $T(u\times v)=Tu\times Tv$ for all $u$, $v\in L^{\infty}(\mu)$.
+
+\spheader 341Xg Let $\mu$ be Lebesgue measure on $[0,1]$.
+Write $\eusm L^1_{\Sigma_L}$ for the
+linear space of integrable functions $f:[0,1]\to\Bbb R$.   Show that there
+is no operator $T:L^1(\mu)\to\eusm L^1_{\Sigma_L}$ such that (i)
+$(Tu)^{\ssbullet}=u$ for every $u\in L^1(\mu)$ (ii) $Tu\ge Tv$ whenever
+$u\ge v$ in $L^1(\mu)$.
+\Hint{Let $F\subseteq\eusm L^1_{\Sigma_L}$ be the countable set
+$\{n\chi[2^{-n}k,2^{-n}(k+1)]:n\in\Bbb N$, $k<2^n\}$.
+Show that if $T$
+satisfies (i) then there is an $x\in\{0,1\}^{\Bbb N}$ such that
+$T(f^{\ssbullet})(x)=f(x)$ for every $f\in F$;  find a sequence
+$\sequencen{f_n}$ in $F$ such that $\{f_n^{\ssbullet}:n\in\Bbb N\}$ is
+bounded above in $L^1(\mu)$ but $\sup_{n\in\Bbb N}f_n(x)=\infty$.}
+%341Xf
+
+\leader{341Y}{Further exercises (a)} Let $X$ be a set, $\Sigma$ an
+algebra of subsets of $X$ and $\Cal I$ an ideal of $\Sigma$;  let
+$\frak A$ be the quotient Boolean algebra $\Sigma/\Cal I$.   We say that
+a function $\theta:\frak A\to\Sigma$ is a {\bf lifting} if it is a
+Boolean homomorphism and $(\theta a)^{\ssbullet}=a$ for every
+$a\in\frak A$, and that $\undtheta:\frak A\to\Sigma$ is a {\bf lower density} if $\undtheta 0=\emptyset$,
+$\undtheta(a\Bcap b)=\undtheta a\cap\undtheta b$ for all $a$,
+$b\in\frak A$, and $(\undtheta a)^{\ssbullet}=a$ for
+every $a\in\frak A$.
+
+Show that if $(X,\Sigma,\Cal I)$ is `complete' in the sense that
+$F\in\Sigma$ whenever $F\subseteq E\in\Cal I$, and if $X\notin\Cal I$,
+and $\undtheta:\frak A\to\Sigma$ is a lower density, then there is a
+lifting $\theta:\frak A\to\Sigma$ such that
+$\undtheta a\subseteq\theta a$ for every $a\in\frak A$.
+%341J
+
+\spheader 341Yb Let $X$ be a Baire space, $\widehat{\Cal B}$
+Baire-property algebra of $X$ (314Yd)
+and $\Cal M$ the ideal of meager subsets of $X$.   Show that there is a
+lifting $\theta$ from $\widehat{\Cal B}/\Cal M$ to $\widehat{\Cal B}$
+such that $\theta G^{\ssbullet}\supseteq G$ for every open
+$G\subseteq X$.   \Hint{in
+341Ya, set $\undtheta(G^{\ssbullet})=G$ for every regular open set
+$G$.}
+%341Ya 341J
+
+\spheader 341Yc Let $(X,\Sigma,\mu)$ be a \Mth\
+probability space with Maharam type $\kappa\ge\omega$.    Let
+$\CalBa_{\kappa}$
+be the Baire $\sigma$-algebra of $Y=\{0,1\}^{\kappa}$, that is, the
+$\sigma$-algebra of subsets of $Y$ generated by the family
+$\{\{x:x(\xi)=1\}:\xi<\kappa\}$, and let $\nu$ be the restriction to
+$\CalBa_{\kappa}$ of the usual
+measure on $\{0,1\}^{\kappa}$.  Show that there is an
+inverse-measure-preserving function $f:X\to Y$ which induces an
+isomorphism between the measure algebras of $\mu$ and $\nu$.
+
+\spheader 341Yd Let $(X,\Sigma,\mu)$ be a complete \Mth\ probability
+space with Maharam type $\kappa\ge\omega$, and give
+$Y=\{0,1\}^{\kappa}$ its usual measure $\nu_{\kappa}$.  Show that
+there is an
+inverse-measure-preserving function $f:X\to Y$ which induces an
+isomorphism between the measure algebras of $\mu$ and $\nu_{\kappa}$.
+%341Yc
+
+\header{341Ye}{\bf *(e)} Give an example of a
+complete probability space $(X,\Sigma,\mu)$,
+a subalgebra $\Tau$ of $\Sigma$, and a partial lower density
+$\undphi:\Tau\to\Sigma$ which has no extension to a lower density for
+$\mu$.   \Hint{There is a subset of $\{0,1\}^{\frakc}$, of cardinal
+$\frak c$, which is non-negligible for the usual measure on
+$\{0,1\}^{\frakc}$.}
+%341N mt34bits
+}%end of exercises
+
+
+\leader{341Z}{Problems (a)} Can we construct, using the ordinary axioms
+of mathematics\cmmnt{ (including the axiom of choice, but not the
+continuum
+hypothesis)}, a probability space $(X,\Sigma,\mu)$ with no lifting?
+
+\header{341Zb}{\bf (b)} Set $\kappa=\omega_3$.  \cmmnt{(There is a
+reason for taking $\omega_3$ here;  see 535E in Volume 5.)}
+Let $\CalBa_{\kappa}$ be the Baire $\sigma$-algebra of
+$\{0,1\}^{\kappa}$\cmmnt{ (as in 341Yc)}, and $\mu$ the
+restriction to $\CalBa_{\kappa}$ of the usual measure on
+$\{0,1\}^{\kappa}$.   Can we show that $\mu$ has no lifting?
+
+\cmmnt{
+\Notesheader{341} Innumerable variations of the proof of 341K have been
+devised, as each author has struggled with the technical complications.
+I have discussed the reasons for my own choices in 341L.
+
+The theorem has a curious history.   It was originally announced by von
+Neumann, but he seems never to have written his proof down, and the
+first published proof is that of {\smc Maharam 58}.   That argument is
+based on Maharam's theorem, 341Xe and 341Yd, which show that it is
+enough to find liftings for every $\{0,1\}^{\kappa}$;  this requires
+most of the ideas presented above, but feels more concrete, and some of
+the details are slightly simpler.   The argument as I have written it
+owes a great deal to {\smc Ionescu Tulcea \& Ionescu Tulcea 69}.
+
+The lifting theorem and Maharam's theorem are the twin pillars of modern
+abstract measure theory.   But there remains a degree of mystery about
+the lifting theorem which is absent from the other.   The first point is
+that there is nothing canonical about the liftings we can construct,
+except in the quite exceptional case of Stone spaces (341O).   Even
+when there is a more or less canonical lower density present (341E,
+341Xb), the conversion of this into a lifting requires arbitrary
+choices, as in 341J.   While we can distinguish some liftings as being
+somewhat more regular than others, I know of no criterion which marks
+out any particular lifting for Lebesgue measure, for instance, among the
+rest.   Perhaps associated with this arbitrariness is the extreme
+difficulty of deciding whether liftings of any given type exist.
+Neither positive nor negative results are easily come by (I will present
+a few in the later sections of this chapter), and the nature of the
+obstacles remains quite unclear.
+}
+
+\discrpage

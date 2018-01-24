@@ -1,0 +1,1136 @@
+\frfilename{mt421.tex}
+\versiondate{14.12.07}
+\copyrightdate{2001}
+
+\def\NN{\BbbN^{\Bbb N}}
+
+\def\chaptername{Descriptive set theory}
+\def\sectionname{Souslin's operation}
+
+\newsection{421}
+
+I introduce Souslin's operation $\Cal S$ (421B) and show that it is
+idempotent (421D).   I describe alternative characterizations of members
+of $\Cal S(\Cal E)$, where $\Cal E\subseteq\Cal PX$, as projections of
+sets in $\NN\times X$ (421G-421J).   I briefly mention Souslin-F sets
+(421J-421L) and a special property of `inner Souslin kernels' (421M).
+At the end of the section I set up an abstract theory of `constituents'
+for kernels of Souslin schemes and their complements (421N-421Q).
+
+\leader{421A}{Notation}\cmmnt{ Throughout this chapter, and frequently
+in the next, I shall regard
+a member of $\Bbb N$ as the set of its predecessors, so that a
+finite power $X^k$
+can be identified with the set of functions from $k$ to $X$, and if
+$\phi\in X^{\Bbb N}$ and $k\in\Bbb N$, we can speak of the restriction
+$\phi\restr k\in X^k$.   In the same spirit, identifying functions
+with their graphs, I can write `$\sigma\subseteq\phi$' when
+$\sigma\in X^k$,
+$\phi\in X^{\Bbb N}$ and $\phi$ extends $\sigma$.   On occasion I may
+write $\#(\sigma)$ for the `length' of a finite function $\sigma$ --
+again identifying $\sigma$ with its graph -- so that $\#(\sigma)=k$ if
+$\sigma\in X^k$.   And if $k=0$, identified with $\emptyset$, then the
+only function from $k$ to $X$ is the empty function, so $X^0$ becomes
+$\{\emptyset\}$.
+
+I shall sometimes refer to the `usual topology of $\NN$';
+this is the product topology if each copy of $\Bbb N$ is given its
+discrete topology.}   $S$ will always be the set
+$\bigcup_{k\in\Bbb N}\BbbN^k$, and $S^*=S\setminus\{\emptyset\}$ the set
+$\bigcup_{k\ge 1}\BbbN^k$;  for $\sigma\in S$,
+$I_{\sigma}$ will be
+$\{\phi:\phi\in\BbbN^{\Bbb N},\,\phi\supseteq\sigma\}$.\cmmnt{  Then
+$I_{\emptyset}=\NN$ and
+$\{I_{\sigma}:\sigma\in S^*\}$ is a base for the topology of
+$\BbbN^{\BbbN}$ consisting of open-and-closed sets.}
+If $\sigma\in\BbbN^k$ and $i\in\Bbb N$ I write
+$\sigma^{\smallfrown}\fraction{i}$ for
+the member $\tau$ of $\BbbN^{k+1}$ such that $\tau(k)=i$ and
+$\tau(j)=\sigma(j)$ for $j<k$.
+
+\leader{421B}{Definition}
+If $\Cal E$ is a family of sets, I write $\Cal S(\Cal E)$ for the family
+of sets expressible in the form
+
+$$\bigcup_{\phi\in\NN}\bigcap_{k\ge 1}E_{\phi\restr k}$$
+
+\noindent for some family $\family{\sigma}{S^*}{E_{\sigma}}$ in $\Cal E$.
+
+A family $\family{\sigma}{S^*}{E_{\sigma}}$ is called a {\bf Souslin
+scheme};  the corresponding set
+$\bigcup_{\phi\in\NN}\bigcap_{k\ge 1}E_{\phi\restr k}$ is its
+{\bf kernel};  the operation
+
+$$\family{\sigma}{S^*}{E_{\sigma}}
+\mapsto\bigcup_{\phi\in\BbbN^{\Bbb N}}\bigcap_{k\ge 1}E_{\phi\restr k}$$
+
+\noindent is {\bf Souslin's operation} or {\bf operation $\Cal A$}.
+Thus $\Cal S(\Cal E)$ is the
+family of sets obtainable from sets in $\Cal E$ by Souslin's operation.
+If $\Cal E=\Cal S(\Cal E)$, we say that $\Cal E$ is {\bf closed under
+Souslin's operation}.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} I should perhaps warn you that some authors use
+$\bigcup_{k\in\Bbb N}\BbbN^k$ here in place of $S^*$;  so that their
+Souslin kernels are of the form
+$\bigcup_{\phi\in\NN}\bigcap_{k\ge 0}E_{\phi\restr k}
+\subseteq E_{\emptyset}$.   Consequently, for such
+authors, any member of $\Cal S(\Cal E)$ is included in some member of
+$\Cal E$.   If $\Cal E$ has a greatest member (or, fractionally more
+generally, if any sequence in $\Cal E$ is bounded above in $\Cal E$)
+this makes no difference;  but if, for instance, $\Cal E$ is the family
+of compact subsets of a topological space, the two definitions of
+$\Cal S$ may not quite coincide.
+I believe that on this point, for once, I am following the majority.}
+
+\leader{421C}{Elementary facts (a)} It is worth noting straight away
+that if $\Cal E$ is any family of sets, then $\bigcup_{n\in\BbbN}E_n$
+and $\bigcap_{n\in\BbbN}E_n$ belong to $\Cal S(\Cal E)$ for any sequence
+$\sequencen{E_n}$ in $\Cal E$.   \prooflet{\Prf\ Set
+
+\Centerline{$F_{\sigma}=E_{\sigma(0)}$ for every $\sigma\in S^*$,}
+
+\Centerline{$G_{\sigma}=E_k$ whenever $k\in\Bbb N$, 
+$\sigma\in\Bbb N^{k+1}$;}
+
+\noindent then
+
+\Centerline{$\bigcup_{n\in\BbbN}E_n=
+\bigcup_{\phi\in\NN}\bigcap_{k\ge 1}F_{\phi\restr k}
+\in\Cal S(\Cal E)$,}
+
+\Centerline{$\bigcap_{n\in\BbbN}E_n=
+\bigcup_{\phi\in\NN}\bigcap_{k\ge 1}G_{\phi\restr k}\in\Cal
+S(\Cal E)$.  \Qed}
+}%end of prooflet
+
+In particular, $\Cal E\subseteq\Cal S(\Cal E)$.   \cmmnt{But note that
+there is no reason why $E\setminus F$ should belong to $\Cal S(\Cal E)$
+for $E$, $F\in\Cal E$.}
+
+\spheader 421Cb Let $X$ and $Y$ be sets, and $f:X\to Y$ a function.
+Let $\family{\sigma}{S^*}{F_{\sigma}}$ be a Souslin scheme in $\Cal PY$,
+with kernel $B$.   Then $f^{-1}[B]$ is the kernel of the Souslin scheme
+$\family{\sigma}{S^*}{f^{-1}[F_{\sigma}]}$.   \prooflet{\Prf\
+
+\Centerline{$f^{-1}[B]
+=f^{-1}[\bigcup_{\phi\in\NN}\bigcap_{n\ge 1}F_{\phi\restr n}]
+=\bigcup_{\phi\in\NN}\bigcap_{n\ge 1}f^{-1}[F_{\phi\restr n}]$.\ \Qed}
+}%end of prooflet
+
+\spheader 421Cc Let $X$ and $Y$ be sets, and $f:X\to Y$ a function.
+Let $\Cal F$ be a family of subsets of $Y$.   Then
+
+\Centerline{$\{f^{-1}[B]:B\in\Cal S(\Cal F)\}
+=\Cal S(\{f^{-1}[F]:F\in\Cal F\})$.}
+
+\prooflet{\noindent\Prf\ For a set $A\subseteq X$, $A\in
+\Cal S(\{f^{-1}[F]:F\in\Cal F\})$ iff there is some Souslin scheme
+$\family{\sigma}{S^*}{E_{\sigma}}$ in $\{f^{-1}[F]:F\in\Cal F\}$ such that
+$A$ is the kernel of $\family{\sigma}{S^*}{E_{\sigma}}$, that is, iff
+there is some Souslin scheme $\family{\sigma}{S^*}{F_{\sigma}}$ in $\Cal
+F$ such that $A$ is the kernel of
+$\family{\sigma}{S^*}{f^{-1}[F_{\sigma}]}$, that
+is, iff $A=f^{-1}[B]$ where $B$ is the kernel of some Souslin scheme in
+$\Cal F$.\ \Qed
+}%end of prooflet
+
+\spheader 421Cd Let $X$ and $Y$ be sets, and $f:X\to Y$ a surjective
+function.   Let $\Cal F$ be a family of subsets of $Y$.   Then
+
+\Centerline{$\Cal S(\Cal F)
+=\{B:B\subseteq Y,\,f^{-1}[B]\in\Cal S(\{f^{-1}[F]:F\in\Cal F\})\}$.}
+
+\prooflet{\noindent\Prf\ If $B\in\Cal S(\Cal F)$, then 
+$f^{-1}[B]\in\Cal S(\{f^{-1}[F]:F\in\Cal F\})$, by (c) above.   If $B\subseteq Y$ and
+$f^{-1}[B]\in\Cal S(\{f^{-1}[F]:F\in\Cal F\})$, then there is a Souslin
+scheme  $\family{\sigma}{S^*}{F_{\sigma}}$ in $\Cal F$ such that
+$f^{-1}[B]$ is the kernel of
+$\family{\sigma}{S^*}{f^{-1}[F_{\sigma}]}$, that is, $f^{-1}[B]=f^{-1}[C]$
+where $C$ is the kernel of $\family{\sigma}{S^*}{F_{\sigma}}$.   Because
+$f$ is surjective, $B=C\in\Cal S(\Cal F)$.\ \Qed
+}%end of prooflet
+
+\spheader 421Ce\cmmnt{ Souslin's operation can be thought of as a
+projection operator, as follows.}   Let $\family{\sigma}{S^*}{E_{\sigma}}$
+be a Souslin scheme with kernel $A$.   Set
+
+\Centerline{$R=\bigcap_{n\ge
+1}\bigcup_{\sigma\in\BbbN^n}I_{\sigma}\times E_{\sigma}$.}
+
+\noindent Then $R[\NN]=A$.   \prooflet{\Prf\ For any $x$, and any
+$\phi\in\NN$,
+
+$$\eqalign{(\phi,x)\in R
+&\iff\text{ for every }n\ge 1\text{ there is a }\sigma\in \BbbN^n
+  \text{ such that }x\in E_{\sigma},\,\phi\in I_{\sigma}\cr
+&\iff x\in E_{\phi\restr n}\text{ for every }n\ge 1.\cr}$$
+
+\noindent But this means that
+
+$$\eqalign{x\in R[\NN]
+&\iff\text{ there is a }\phi\in\NN
+  \text{ such that }(\phi,x)\in R\cr
+&\iff\text{ there is a }\phi\in\NN
+  \text{ such that }x\in\bigcap_{n\ge 1}E_{\phi\restr n}
+\iff x\in A.\text{ \Qed}}$$
+}%end of prooflet
+
+\leader{421D}{}\cmmnt{ The first fundamental theorem is that the
+operation $\Cal S$ is idempotent.
+
+\medskip
+
+\noindent}{\bf Theorem}\cmmnt{ ({\smc Souslin 1917})} For any family
+$\Cal E$ of sets, $\Cal S(\Cal E)$ is closed under Souslin's operation.
+
+\proof{{\bf (a)} Let $\family{\sigma}{S^*}{A_{\sigma}}$ be a family in
+$\Cal S(\Cal E)$, and set
+$A=\bigcup_{\phi\in\NN}\bigcap_{k\ge 1}A_{\phi\restr k}$;  I have to
+show that $A\in\Cal S(\Cal E)$.   For each
+$\sigma\in S$, let $\family{\tau}{S^*}{E_{\sigma\tau}}$ be a family in
+$\Cal E$ such that $A_{\sigma}
+=\bigcup_{\psi\in\NN}\bigcap_{m\ge 1}E_{\sigma,\psi\restr m}$.   Then
+
+$$A
+=\bigcup_{\phi\in\NN}\bigcap_{k\ge 1}\bigcup_{\psi\in\NN}
+   \bigcap_{m\ge 1}E_{\phi\restr k,\psi\restr m}
+=\bigcup_{\Atop{\phi\in\NN}{\pmb{\psi}\in(\NN)^{\BbbN\setminus\{0\}}}}
+   \bigcap_{k,m\ge 1}E_{\phi\restr k,\psi_k\restr m},$$
+
+\noindent writing $\pmb{\psi}=\langle\psi_k\rangle_{k\ge 1}$ for
+$\pmb{\psi}\in(\NN)^{\BbbN\setminus\{0\}}$.
+The idea of the proof is simply that
+$\NN\times(\BbbN^{\Bbb N})^{\BbbN\setminus\{0\}}$ is essentially
+identical to $\NN$,
+so that all we have to do is to organize new names for the
+$E_{\sigma\tau}$.   But as it is by no means a trivial matter to devise
+a coding scheme which really works, I give the details at length.
+
+\medskip
+
+{\bf (b)} The first step is to note that $S^*$ and $(S^*)^2$ are countable, so
+there is a sequence $\sequencen{H_n}$ running over
+$\{E_{\sigma\tau}:\sigma$, $\tau\in S^*\}$.   Next, choose any injective
+function $q:\BbbN\times\BbbN\to\BbbN\setminus\{0\}$ such that $q(0,0)=1$
+and $q(0,1)=2$.   For $k$, $m\ge 1$ set
+$J_{km}=\{(i,0):i<k\}\cup\{(i,k):i<m\}$, so that
+$J_{11}=\{(0,0),(0,1)\}$,
+and choose a family $\langle(k_n,m_n)\rangle_{n\ge 3}$ running over
+$(\Bbb N\setminus\{0\})^2$ such that $q[J_{k_n,m_n}]\subseteq n$ for
+every $n\ge 3$.   (The pairs $(k_n,m_n)$ need not all be distinct, so
+this is easy to achieve.)
+
+Now, for $\upsilon\in\BbbN^n$, where $n\ge 3$, set
+$F_{\upsilon}=E_{\sigma\tau}$ where
+
+\Centerline{$\sigma\in\BbbN^{k_n}$, $\sigma(i)=\upsilon(q(i,0))$ for
+$i<k_n$,}
+
+\Centerline{$\tau\in\BbbN^{m_n}$, $\tau(i)=\upsilon(q(i,k_n))$ for
+$i<m_n$;}
+
+\noindent these are well-defined because $q[J_{k_n,m_n}]\subseteq n$.
+For
+$\upsilon\in\BbbN^1\cup\BbbN^2$, set $F_{\upsilon}=H_{\upsilon(0)}$.
+
+\medskip
+
+{\bf (c)} This defines a Souslin scheme
+$\family{\upsilon}{S^*}{F_{\upsilon}}$ in $\Cal E$.   Let $A'$ be its
+kernel,
+so that $A'\in\Cal S(\Cal E)$.   The point is that $A'=A$.
+
+\medskip
+
+\Prf\ {\bf (i)} If $x\in A$, there must be $\phi\in\NN$,
+$\pmb{\psi}\in(\NN)^{\BbbN\setminus\{0\}}$ such that
+$x\in\bigcap_{k,m\ge 1}E_{\phi\restr k,\psi_k\restr m}$.
+Choose $\theta\in\NN$ such that
+
+$$\eqalign{H_{\theta(0)}&=E_{\phi\restr 1,\psi_1\restr 1},\cr
+\theta(q(i,0))&=\phi(i)\text{ for every }i\in\BbbN,\cr
+\theta(q(i,k))&=\psi_k(i)\text{ for every }k\ge 1,\,i\in\BbbN.\cr}$$
+
+\noindent (This is possible because $q:\BbbN^2\to\BbbN\setminus\{0\}$ is
+injective.)   Now
+
+\Centerline{$F_{\theta\restr 1}
+=F_{\theta\restr 2}
+=H_{\theta(0)}
+=E_{\phi\restr 1,\psi_1\restr 1}$}
+
+\noindent certainly contains $x$.   And for $n\ge 3$,
+$F_{\theta\restr n}=E_{\sigma\tau}$ where $\sigma(i)=\theta(q(i,0))$ for
+$i<k_n$, $\tau(i)=\theta(q(i,k_n))$ for $i<m_n$, that is,
+$\sigma=\phi\restr k_n$ and $\tau=\psi_{k_n}\restr m_n$, so again
+$x\in F_{\theta\restr n}$.   Thus
+
+\Centerline{$x\in\bigcap_{n\ge 1}F_{\theta\restr n}\subseteq A'$.}
+
+\noindent As $x$ is arbitrary, $A\subseteq A'$.
+
+\medskip
+
+\quad{\bf (ii)} Now take any $x\in A'$.   Let $\theta\in\NN$
+be
+such that $x\in\bigcap_{n\ge 1}F_{\theta\restr n}$.   Define
+$\phi\in\Bbb
+N^{\BbbN}$, $\pmb{\psi}\in(\NN)^{\BbbN\setminus\{0\}}$ by setting
+
+$$\eqalign{\phi(i)&=\theta(q(i,0))\text{ for }i\in\BbbN,\cr
+\psi_k(i)&=\theta(q(i,k))\text{ for }k\ge 1,\,i\in\BbbN.\cr}$$
+
+\noindent If $k$, $m\ge 1$, let $n\ge 3$ be such that $k=k_n$, $m=m_n$.
+Then $x\in F_{\theta\restr n}=E_{\sigma\tau}$, where
+
+\Centerline{$\sigma(i)=\theta(q(i,0))$ for $i<k_n$,
+\quad$\tau(i)=\theta(q(i,k_n))$ for $i<m_n$,}
+
+\noindent that is, $\sigma=\phi\restr k_n=\phi\restr k$ and
+$\tau=\psi_{k_n}\restr m_n=\psi_k\restr m$.   As $m$ and $n$ are
+arbitrary,
+
+\Centerline{$x\in\bigcap_{m,n\ge 1}E_{\phi\restr k,\psi_k\restr m}
+\subseteq A$.}
+
+\noindent As $x$ is arbitrary, $A'\subseteq A$.\ \Qed
+
+Accordingly we must have $A\in\Cal S(\Cal E)$, and the proof is
+complete.
+}%end of proof of 421D
+
+
+\leader{421E}{Corollary} For any family $\Cal E$ of sets,
+$\Cal S(\Cal E)$ is closed under countable unions and intersections.
+
+\proof{ For 421Ca tells us that the union and intersection of any
+sequence in $\Cal S(\Cal E)$ will belong to
+$\Cal S\Cal S(\Cal E)=\Cal S(\Cal E)$.
+}%end of proof of 421E
+
+\leader{421F}{Corollary} Let $X$ be a set and $\Cal E$ a family of
+subsets of $X$.   Suppose that $X$ and $\emptyset$ belong to
+$\Cal S(\Cal E)$ and that $X\setminus E\in\Cal S(\Cal E)$ for every
+$E\in\Cal E$.   Then $\Cal S(\Cal E)$ includes the $\sigma$-algebra of subsets of $X$ generated by $\Cal E$.
+
+\proof{ The set
+
+\Centerline{$\Sigma
+=\{F:F\in\Cal S(\Cal E),\,X\setminus F\in\Cal S(\Cal E)\}$}
+
+\noindent is closed under complements (necessarily), contains
+$\emptyset$
+(because $\emptyset$ and $X$ belong to $\Cal S(\Cal E)$), and is also
+closed under countable unions, by 421E.   So it is a $\sigma$-algebra;
+but the hypotheses also ensure that $\Cal E\subseteq\Sigma$, so that the
+$\sigma$-algebra generated by $\Cal E$ is included in $\Sigma$ and in
+$\Cal S(\Cal E)$.
+}%end of proof of 421F
+
+\leader{421G}{Proposition} Let $\Cal E$ be a family of sets such that
+$\emptyset\in\Cal E$.   Then
+
+$$\eqalign{\Cal S(\Cal E)
+&=\{R[\NN]:R\in\Cal S(\{I_{\sigma}\times E:\sigma\in S^*,
+  \,E\in\Cal E\})\}\cr
+&=\{R[\NN]:R\in\Cal S(\{I_{\sigma}\times E:\sigma\in S^*,
+  \,E\in\Cal E\}),\,R^{-1}[\{x\}]\text{ is closed for every }x\}.\cr}$$
+
+\proof{ Set $\Cal F=\{I_{\sigma}\times E:\sigma\in S^*,\,E\in\Cal E\}$.
+
+\medskip
+
+{\bf (a)} Suppose first that $A\in\Cal S(\Cal E)$.   Let
+$\family{\sigma}{S^*}{E_{\sigma}}$ be a Souslin scheme in $\Cal E$ with
+kernel $A$.   Set
+
+\Centerline{$R=\bigcap_{k\ge 1}\bigcup_{\sigma\in\BbbN^k}
+  I_{\sigma}\times E_{\sigma}$.}
+
+\noindent Then $R\in\Cal S(\Cal F)$, by 421E, and $R[\NN]=A$,
+by 421Ce.   Also
+
+\Centerline{$R^{-1}[\{x\}]
+=\bigcap_{k\ge 1}\bigcup\{I_{\sigma}:
+  \sigma\in\BbbN^k$, $x\in E_{\sigma}\}$}
+
+\noindent is closed, for every $x$.
+
+\medskip
+
+{\bf (b)} Now suppose that $A=R[\NN]$ for some
+$R\in\Cal S(\Cal F)$.   Let
+$\family{\sigma}{S^*}{I_{\tau(\sigma)}\times E_{\sigma}}$ be a
+Souslin scheme in $\Cal F$ with kernel $R$.   For $k\ge 1$,
+$\sigma\in\Bbb N^k$ set
+
+$$\eqalign{F_{\sigma}
+&=E_{\sigma}
+  \text{ if }\bigcap_{1\le n\le k}I_{\tau(\sigma\restr n)}
+    \ne\emptyset,\cr
+&=\emptyset\text{ otherwise}.\cr}$$
+
+\noindent Then $\family{\sigma}{S^*}{F_{\sigma}}$ is a Souslin scheme in
+$\Cal E$, so its kernel $A'$ belongs to $\Cal S(\Cal E)$.
+
+The point is that $A'=A$.   \Prf\ (i) If $x\in A$, there are a
+$\phi\in\Bbb N^{\BbbN}$ such that $(\phi,x)\in R$ and a $\psi\in\NN$
+such that $(\phi,x)\in
+\bigcap_{n\ge 1}I_{\tau(\psi\restr n)}\times E_{\psi\restr n}$.   Now,
+for any $k\ge 1$, we have
+
+\Centerline{$\phi
+\in\bigcap_{1\le n\le k}I_{\tau(\psi\restr n)}
+=\bigcap_{1\le n\le k}I_{\tau((\psi\restr k)\restr n)}$,}
+
+\noindent so that
+$F_{\psi\restr k}=E_{\psi\restr k}$ contains $x$;  thus
+$x\in\bigcap_{k\ge 1}F_{\psi\restr k}\subseteq A'$.   As $x$ is
+arbitrary, $A\subseteq A'$.
+(ii) If $x\in A'$, take $\psi\in\NN$ such that
+$x\in\bigcap_{n\ge 1}F_{\psi\restr n}$.   In this case we must have
+$F_{\psi\restr k}\ne\emptyset$, so
+$\bigcap_{1\le n\le k}I_{\tau(\psi\restr n)}\ne\emptyset$, for every
+$k\ge 1$.   But what this means is that, setting
+$\tau_n=\tau(\psi\restr n)$ for each $n\ge 1$, $\tau_n(i)=\tau_m(i)$
+whenever $i\in\Bbb N$ is such that both are defined.   So
+$\{\tau_n:n\ge 1\}$ must have a common extension $\phi\in\NN$, and
+$\phi\in\bigcap_{n\ge 1}I_{\tau(\psi\restr n)}$.   Now
+
+\Centerline{$(\phi,x)\in\bigcap_{n\ge 1}I_{\tau(\psi\restr n)}\times
+E_{\psi\restr n}\subseteq R$,}
+
+\noindent so $x\in A$.   Thus $A'\subseteq A$ and the two are equal.\
+\Qed
+
+This shows that
+
+\Centerline{$\{R[\NN]:R\in\Cal S(\Cal F)\}\subseteq\Cal S(\Cal E)$,}
+
+\noindent and the proof is complete.
+}%end of proof of 421G
+
+\leader{421H}{}\cmmnt{ When the class $\Cal E$ is a $\sigma$-algebra,
+the last proposition can be extended.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $X$ be a set, and $\Sigma$ a
+$\sigma$-algebra of subsets of $X$.   Let $\Cal B$ be the algebra of
+Borel subsets of $\NN$.   Then
+
+$$\eqalign{\Cal S(\Sigma)
+&=\{R[\NN]:R\in\Cal B\tensorhat\Sigma\}\cr
+&=\{R[\NN]:R\in\Cal S(\{I_{\sigma}\times E:
+  \sigma\in S^*,\,E\in\Sigma\})\}\cr
+&=\{R[\NN]:R\in\Cal S(\Cal B\tensorhat\Sigma)\}.\cr}$$
+
+\cmmnt{\medskip
+
+\noindent{\bf Notation} Recall that $\Cal B\tensorhat\Sigma$ is the
+$\sigma$-algebra of subsets of $\NN\times X$ generated by
+$\{H\times E:H\in\Cal B,\,E\in\Sigma\}$.
+}%end of comment
+
+\proof{{\bf (a)} Suppose first that $A\in\Cal S(\Sigma)$.   As in 421G,
+let
+$\family{\sigma}{S^*}{E_{\sigma}}$ be a Souslin scheme in $\Sigma$ with
+kernel $A$, and set
+
+\Centerline{$R=\bigcap_{k\ge
+1}\bigcup_{\sigma\in\BbbN^k}I_{\sigma}\times
+E_{\sigma}$,}
+
+\noindent so that $A=R[\NN]$ (421Ce again).
+Because every $I_{\sigma}$ is
+an open-and-closed set in $\NN$, $R\in\Cal B\tensorhat\Sigma$.   Thus
+
+\Centerline{$\Cal S(\Sigma)
+\subseteq\{R[\NN]:R\in\Cal B\tensorhat\Sigma\}$.}
+
+\medskip
+
+{\bf (b)} Set $\Cal F=\{I_{\sigma}\times E:\sigma\in S^*,\,E\in\Sigma\}$.
+Then $\Cal S(\Cal B\tensorhat\Sigma)=\Cal S(\Cal F)$.   \Prf\ If
+$E\in\Sigma$ and $\sigma\in\BbbN^k$ then
+
+\Centerline{$(\NN\times X)\setminus(I_{\sigma}\times E)
+=(I_{\sigma}\times(X\setminus E))\cup\bigcup_{\tau\in\Bbb
+N^k,\tau\ne\sigma}I_{\tau}\times X\in\Cal S(\Cal F)$.}
+
+\noindent Also
+
+\Centerline{$\NN\times X=\bigcup_{\sigma\in\Bbb
+N^1}I_{\sigma}\times X$,
+\quad $\emptyset=I_{\tau}\times\emptyset$}
+
+\noindent (where $\tau$ is any member of $S^*$) belong to $\Cal S(\Cal F)$.
+By 421F, $\Cal S(\Cal F)$ includes the $\sigma$-algebra $\Lambda$ of
+sets
+generated by $\Cal F$.   Now if $E\in\Sigma$ and $H\subseteq\BbbN^{\Bbb
+N}$ is open, $H=\bigcup_{\sigma\in T}I_{\sigma}$ for some 
+$T\subseteq S^*$;  as $T$ is necessarily countable,
+
+\Centerline{$H\times E
+=\bigcup_{\sigma\in T}I_{\sigma}\times E\in\Lambda$.}
+
+\noindent Since $\{F:F\subseteq\NN,\,F\times E\in\Lambda\}$ is
+a $\sigma$-algebra of subsets of $\NN$, and we have just seen
+that it contains all the open sets, it must include $\Cal B$;  thus
+$F\times E\in\Lambda$ for every $F\in\Cal B$, $E\in\Sigma$.   So 
+$\Cal B\tensorhat\Sigma\subseteq\Lambda\subseteq\Cal S(\Cal F)$, and
+
+\Centerline{$\Cal S(\Cal F)
+\subseteq\Cal S(\Cal B\tensorhat\Sigma)
+\subseteq\Cal S\Cal S(\Cal F)=\Cal S(\Cal F)$}
+
+\noindent (421D).\ \Qed
+
+\medskip
+
+{\bf (c)} Now we have
+
+$$\eqalignno{\Cal S(\Sigma)
+&\subseteq\{R[\NN]:R\in\Cal B\tensorhat\Sigma\}\cr
+\noalign{\noindent (by (a))}
+&\subseteq\{R[\NN]:R\in\Cal S(\Cal B\tensorhat\Sigma)\}
+=\{R[\NN]:R\in\Cal S(\Cal F)\}\cr
+\noalign{\noindent (by (b))}
+&=\Cal S(\Sigma)\cr}$$
+
+\noindent by 421G.
+}%end of proof of 421H
+
+\leader{421I}{}\cmmnt{ There is a particularly simple description of
+sets obtainable by Souslin's operation from closed sets in a topological
+space.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $X$ be a topological space and
+$R\subseteq\NN\times X$ a closed set.   Then
+
+\Centerline{$R[A]=\bigcup_{\phi\in A}\bigcap_{n\ge
+1}\overline{R[I_{\phi\restr n}]}$.}
+
+\noindent for any $A\subseteq\NN$.
+In particular, $R[\NN]$ is the kernel of the Souslin scheme
+$\family{\sigma}{S^*}{\overline{R[I_{\sigma}]}}$.
+
+\wheader{421I}{0}{0}{0}{36pt}
+
+\proof{ Set
+
+\Centerline{$B=\bigcup_{\phi\in A}
+  \bigcap_{n\ge 1}\overline{R[I_{\phi\restr n}]}$.}
+
+\noindent(i) If $x\in R[A]$, there is a $\phi\in A$ such that
+$(\phi,x)\in R$.   In this case, $\phi\in I_{\phi\restr n}$ so
+
+\Centerline{$x\in R[I_{\phi\restr n}]
+\subseteq\overline{R[I_{\phi\restr n}]}$}
+
+\noindent for every $n$, and $x\in B$.   Thus $R[A]\subseteq B$.  (ii)
+If $x\in B$, let $\phi\in A$ be such that $x\in\overline{R[I_{\phi\restr
+n}]}$ for every $n\in\Bbb N$.   \Quer\ If $(\phi,x)\notin R$, then
+(because $R$ is closed) there are a $\sigma\in S^*$ and an open
+$G\subseteq X$ such that $\phi\in I_{\sigma}$, $x\in G$ and
+$(I_{\sigma}\times G)\cap R=\emptyset$.   But this means that $G\cap
+R[I_{\sigma}]=\emptyset$ so $G\cap \overline{R[I_{\sigma}]}=\emptyset$
+and $x\notin\overline{R[I_{\sigma}]}$;  which is absurd, because
+$\sigma=\phi\restr n$ for some $n\ge 1$.\ \BanG\  Thus $(\phi,x)\in R$
+and $x\in R[A]$.   As $x$ is arbitrary, $B\subseteq R[A]$ and $B=R[A]$,
+as required.
+}%end of proof of 421I
+
+\leader{421J}{Proposition} Let $X$ be a topological space,
+and $\Cal F$ the family of closed subsets of $X$.   Then a set
+$A\subseteq X$ belongs to $\Cal S(\Cal F)$ iff there is a closed set
+$R\subseteq\NN\times X$ such that $A$ is the projection of $R$
+on $X$.
+
+\proof{{\bf (a)} Suppose that $A\in\Cal S(\Cal F)$.   Let
+$\family{\sigma}{S^*}{F_{\sigma}}$ be a Souslin scheme in $\Cal F$ with
+kernel $A$.   Set
+
+\Centerline{$R=\bigcap_{n\ge 1}\bigcup_{\sigma\in\BbbN^n}
+I_{\sigma}\times F_{\sigma}$.}
+
+\noindent For each $n\ge 1$,
+
+\Centerline{$\bigcup_{\sigma\in\BbbN^n}I_{\sigma}\times F_{\sigma}
+=(\NN\times X)\setminus\bigcup_{\sigma\in\Bbb
+N^n}I_{\sigma}\times(X\setminus F_{\sigma})$}
+
+\noindent is closed in $\NN\times X$, so $R$ is closed;  and
+the projection $R[\NN]$ is $A$, by 421Ce.
+
+\medskip
+
+{\bf (b)} Suppose that $R\subseteq\NN$ is a closed set with
+projection $A$.   Then $A$ is the kernel of the Souslin scheme
+$\family{\sigma}{S^*}{\overline{R[I_{\sigma}]}}$, by 421I, so belongs to
+$\Cal S(\Cal F)$.
+}%end of proof of 421J
+
+\leader{421K}{Definition} Let $X$ be a topological space.   A subset of
+$X$ is a {\bf Souslin-F} set in $X$ if it is obtainable from closed
+subsets of $X$ by Souslin's operation\cmmnt{;  that is, is the
+projection of a closed subset of $\NN\times X$}.
+
+\cmmnt{For a subset of $\BbbR^r$, or, more generally, of any Polish
+space, it is common to say \lq Souslin set' for \lq Souslin-F
+set';  see 421Xl.
+}%end of comment
+
+\leader{421L}{Proposition} Let $X$ be any topological space.   Then
+every Baire subset of $X$ is Souslin-F.
+
+\proof{ Let $\Cal Z$ be the family of zero sets in $X$.   If
+$F\in\Cal Z$ then $X\setminus F$ is a countable union of zero sets
+(4A2C(b-vi)), so belongs to $\Cal S(\Cal Z)$.   By 421F, the
+$\sigma$-algebra generated by
+$\Cal Z$ is included in $\Cal S(\Cal Z)\subseteq\Cal S(\Cal F)$, where
+$\Cal F$ is the family of closed subsets of $X$;  that is, every Baire
+set is Souslin-F.
+}%end of proof of 421L
+
+\leader{421M}{Proposition} Let $\Cal E$ be any family of sets such that
+$\emptyset\in\Cal E$ and $E\cup E'$, $\bigcap_{n\in\BbbN}E_n$
+belong to $\Cal E$ for every $E$, $E'\in\Cal E$ and all sequences
+$\sequencen{E_n}$ in $\Cal E$.   \cmmnt{(For instance, $\Cal E$ could
+be the family of closed subsets of a topological space, or a
+$\sigma$-algebra of sets.)}   Let $\family{\sigma}{S^*}{E_{\sigma}}$ be
+a Souslin scheme in $\Cal E$, and $K\subseteq\NN$ a set which
+is compact for the usual topology on $\NN$.   Then
+$\bigcup_{\phi\in K}\bigcap_{n\ge 1}E_{\phi\restr n}\in\Cal E$.
+
+\proof{ Set $A=\bigcup_{\phi\in K}\bigcap_{n\ge 1}E_{\phi\restr n}$.
+For $k\in\Bbb N$, set $K_k=\{\phi\restr k:\phi\in K\}$;  note that
+$K_k\subseteq\BbbN^k$ is compact, because $\phi\mapsto\phi\restr k$ is
+continuous, therefore finite, because the topology of $\BbbN^k$ is
+discrete.   Set
+
+\Centerline{$H=\bigcap_{k\ge 1}\bigcup_{\phi\in K_k}
+  \bigcap_{1\le n\le k}E_{\phi\restr n}$.}
+
+\noindent Because $\Cal E$ is closed under finite unions and countable
+intersections, $H\in\Cal E$.   Now $A=H$.   \Prf\ (i) If $x\in A$, take
+$\phi\in K$ such that $x\in E_{\phi\restr n}$ for every $n\ge 1$;  then
+$\phi\restr k\in K_k$ and $x\in\bigcap_{1\le n\le k}E_{(\phi\restr
+k)\restr n}$ for every $k\ge 1$, so $x\in H$.   Thus $A\subseteq H$.
+(ii) If $x\in
+H$, then for each $k\in\Bbb N$ we have a $\sigma_k\in K_k$ such that
+$x\in\bigcap_{1\le n\le k}E_{\sigma_k\restr n}$.   Choose $\phi_k\in K$
+such that $\phi_k\restr k=\sigma_k$ for each $k$.   Now $K$ is supposed
+to be compact, so the sequence $\sequence{k}{\phi_k}$ has a cluster
+point $\phi$ in $K$.
+
+If $n\ge 1$, then $I_{\phi\restr n}$ is a neighbourhood of $\phi$ in
+$\NN$, so must
+contain $\phi_k$ for infinitely many $k$;  let $k\ge n$ be such that
+$\phi_k\restr n=\phi\restr n$.   In this case
+
+\Centerline{$x\in E_{\sigma_k\restr n}=E_{\phi_k\restr n}
+=E_{\phi\restr n}$.}
+
+\noindent As $n$ is arbitrary,
+
+\Centerline{$x\in\bigcap_{n\ge 1}E_{\phi\restr n}\subseteq A$.}
+
+\noindent As $x$ is arbitrary, $H\subseteq A$ and $H=A$, as claimed.\
+\Qed
+
+So $A\in\Cal E$.
+}%end of proof of 421M
+
+\leader{*421N}{}\cmmnt{ I now embark on preparations for the theory of
+`constituents' of analytic and coanalytic sets.   It turns out that much
+of the work can be done in the abstract context of this section.
+
+\medskip
+
+\noindent}{\bf Trees and derived trees (a)} Let $\Cal T$ be the family
+of subsets $T$ of $S^*\cmmnt{\mskip5mu=\bigcup_{n\ge 1}\BbbN^n}$ such
+that $\sigma\restr k\in T$ whenever
+$\sigma\in T$ and $1\le k\le\#(\sigma)$.   Note that the intersection
+and union of any non-empty family of members of $\Cal T$ again belong
+to $\Cal T$.   \cmmnt{Members of $\Cal T$ are often called {\bf
+trees}.}
+
+\spheader 421Nb For $T\in\Cal T$, set
+
+\Centerline{$\partial T
+=\{\sigma:\sigma\in S^*,\,\Exists i\in\Bbb N$,
+$\sigma^{\smallfrown}\fraction{i}\in T\}$,}
+
+\noindent so that $\partial T\in\Cal T$ and $\partial T\subseteq T$.
+\cmmnt{Of course} $\partial T_0\subseteq\partial T_1$ whenever $T_0$,
+$T_1\in\Cal T$ and $T_0\subseteq T_1$.
+
+\spheader 421Nc For $T\in\Cal T$, define
+$\langle\partial^{\xi}T\rangle_{\xi<\omega_1}$ inductively by setting
+$\partial^0T=T$ and, for $\xi>0$,
+$\partial^{\xi}T=\bigcap_{\eta<\xi}\partial(\partial^{\eta}T)$.
+\cmmnt{An easy induction shows that} $\partial^{\xi}T\in\Cal T$,
+$\partial^{\xi}T\subseteq\partial^{\eta}T$ and
+$\partial^{\xi+1}T=\partial(\partial^{\xi}T)$ whenever
+$\eta\le\xi<\omega_1$.
+
+\spheader 421Nd For any $T\in\Cal T$, there is a $\xi<\omega_1$ such
+that $\partial^{\xi}T=\partial^{\eta}T$ whenever $\xi\le\eta<\omega_1$.
+\prooflet{\Prf\ Set $T_1=\bigcap_{\xi<\omega_1}\partial^{\xi}T$.   For
+each $\sigma\in S^*\setminus T_1$, there is a $\xi_{\sigma}<\omega_1$
+such that $\sigma\notin\partial^{\xi_{\sigma}}T$.   Set
+$\xi=\sup\{\xi_{\sigma}:\sigma\in S^*\setminus T_1\}$;  because $S^*$ is
+countable, $\xi<\omega_1$, and we must now have $\partial^{\xi}T=T_1$,
+so that $\partial^{\xi}T=\partial^{\eta}T$ whenever
+$\xi\le\eta<\omega_1$.\ \Qed}
+
+\spheader 421Ne For $T\in\Cal T$, its {\bf rank} is the first ordinal
+$r(T)<\omega_1$ such that $\partial^{r(T)}T=\partial^{r(T)+1}T$;
+\cmmnt{of course} $\partial^{r(T)}T=\partial^{\eta}T$ whenever
+$r(T)\le\eta<\omega_1$, and
+$\partial(\partial^{r(T)}T)=\partial^{r(T)}T$.
+
+\spheader 421Nf For $T\in\Cal T$, the following are equiveridical:
+($\alpha$) $\partial^{r(T)}T\ne\emptyset$;  ($\beta$) there is a
+$\phi\in\NN$ such that $\phi\restr n\in T$ for every $n\ge 1$.
+\prooflet{\Prf\ (i) If $\sigma\in\partial^{r(T)}T$ then
+$\sigma\in\partial(\partial^{r(T)}T)$ so there is an $i\in\Bbb N$ such
+that $\sigma^{\smallfrown}\fraction{i}\in\partial^{r(T)}T$.
+We can therefore choose
+$\sequencen{\sigma_n}$ inductively so that
+$\sigma_n\in\partial^{r(T)}T$ and $\sigma_{n+1}$ properly extends
+$\sigma_n$ for every $n$.   At the end of the induction,
+$\phi=\bigcup_{n\in\Bbb N}\sigma_n$ belongs to $\NN$ and
+
+\Centerline{$\phi\restr n=\sigma_n\restr n\in\partial^{r(T)}T\subseteq T$}
+
+\noindent for every $n\ge 1$.   (ii) If $\phi\in\NN$ is such that
+$\phi\restr n\in T$ for every $n\ge 1$, then an easy induction shows
+that
+$\phi\restr n\in\partial^{\xi}T$ for every $\xi<\omega_1$ and every
+$n\ge 1$, so that $\partial^{r(T)}T$ is non-empty.\ \Qed}
+
+\spheader 421Ng Now suppose that $\family{\sigma}{S^*}{A_{\sigma}}$ is a
+Souslin scheme.   For any $x$ we have a tree $T_x\in\Cal T$ defined by
+saying that
+
+\Centerline{$T_x=\{\sigma:\sigma\in S^*,
+  \,x\in\bigcap_{1\le i\le\#(\sigma)}A_{\sigma\restr i}\}$.}
+
+\noindent Now the kernel of $\family{\sigma}{S^*}{A_{\sigma}}$ is just
+
+$$\eqalign{A&=\{x:\,\Exists\phi\in\NN,\,
+  x\in\bigcap_{n\ge 1}A_{\phi\restr n}\}\cr
+&=\{x:\,\Exists\phi\in\NN,\,\phi\restr n\in T_x\Forall n\ge 1\}
+=\{x:\partial^{r(T)}T\ne\emptyset\}\dvro{.}{}\cr}$$
+
+\cmmnt{\noindent by (f).}
+
+The sets
+
+\Centerline{$\{x:x\in X\setminus A,\,r(T_x)=\xi\}
+=\{x:x\in X,\,r(T_x)=\xi,\,\partial^{\xi}T_x=\emptyset\}$,}
+
+\noindent for $\xi<\omega_1$, are called {\bf constituents} of
+$X\setminus A$.   \cmmnt{(Of course they should properly be called
+`the constituents of the Souslin scheme
+$\family{\sigma}{S^*}{A_{\sigma}}$'.)}
+
+\vleader{72pt}{*421O}{Theorem} Let $X$ be a set and $\Sigma$ a
+$\sigma$-algebra
+of subsets of $X$.   Let $\family{\sigma}{S^*}{A_{\sigma}}$ be a Souslin
+scheme in $\Sigma$ with kernel $A$, and for $x\in X$ set
+
+\Centerline{$T_x=\{\sigma:\sigma\in S^*,\,
+  x\in\bigcap_{1\le i\le\#(\sigma)}
+  A_{\sigma\restr i}\}\dvro{.}{\mskip5mu \in\Cal T}$}
+
+\cmmnt{\noindent as in 421Ng.}
+
+(a) For every $\xi<\omega_1$ and $\sigma\in S^*$,
+$\{x:x\in X,\,\sigma\in\partial^{\xi}T_x\}\in\Sigma$.
+
+(b) For every $\xi<\omega_1$, $\{x:x\in A,\,r(T_x)\le\xi\}$ and
+$\{x:x\in X\setminus A,\,r(T_x)\le\xi\}$ belong to $\Sigma$.
+In particular, all the constituents of $X\setminus A$ belong to
+$\Sigma$.
+
+\proof{{\bf (a)} Induce on $\xi$.   For $\xi=0$, we have
+
+\Centerline{$\{x:x\in X,\,\sigma\in\partial^0T_x\}
+=\{x:x\in X,\,\sigma\in T_x\}
+=\bigcap_{1\le i\le\#(\sigma)}A_{\sigma\restr i}\in\Sigma$.}
+
+\noindent For the inductive step to $\xi>0$, we have
+
+$$\eqalign{\{x:\sigma\in\partial^{\xi}T_x\}
+&=\{x:\sigma\in\bigcap_{\eta<\xi}\partial(\partial^{\eta}T_x)\}\cr
+&=\bigcap_{\eta<\xi}\bigcup_{i\in\Bbb N}
+  \{x:\sigma^{\smallfrown}\fraction{i}\in\partial^{\eta}T_x\}
+\in\Sigma\cr}$$
+
+\noindent because $\xi$ is countable and all the sets
+$\{x:\sigma^{\smallfrown}\fraction{i}\in\partial^{\eta}T_x\}$ belong to
+$\Sigma$ by the inductive hypothesis.
+
+\medskip
+
+{\bf (b)} Now, given $\xi<\omega_1$, we see that $r(T_x)\le\xi$ iff
+$\partial^{\xi+1}T_x\supseteq\partial^{\xi}T_x$, so that if we set
+$E_{\xi}=\{x:x\in X,\,r(T_x)\le\xi\}$ then
+
+\Centerline{$E_{\xi}
+=\bigcap_{\sigma\in S^*}\{x:x\in X,\,\sigma\in\partial^{\xi+1}T_x
+  \text{ or }\sigma\notin\partial^{\xi}T_x\}$}
+
+\noindent belongs to $\Sigma$.   If $x\in E_{\xi}$, so that
+$\partial^{r(T_x)}T_x=\partial^{\xi}T_x$, 421Ng tells us that $x\in A$
+iff $\partial^{\xi}T_x\ne\emptyset$;  so that
+
+\Centerline{$E_{\xi}\cap A
+=E_{\xi}\cap\bigcup_{\sigma\in S^*}\{x:\sigma\in\partial^{\xi}T_x\}$}
+
+\noindent and $E_{\xi}\setminus A$ both belong to $\Sigma$.
+
+Now the constituents of $X\setminus A$ are the sets
+$(E_{\xi}\setminus A)\setminus\bigcup_{\eta<\xi}E_{\eta}$ for
+$\xi<\omega_1$, which all belong to $\Sigma$.
+}%end of proof of 421O
+
+\leader{*421P}{Corollary} Let $X$ be a set and $\Sigma$ a
+$\sigma$-algebra of subsets of $X$.   If $A\in\Cal S(\Sigma)$ then both
+$A$ and $X\setminus A$ can be expressed as the union of at most
+$\omega_1$ members of $\Sigma$.
+
+\proof{ In the language of 421O, we have
+
+\Centerline{$A=\bigcup_{\xi<\omega_1}E_{\xi}\cap A$,
+\quad$X\setminus A=\bigcup_{\xi<\omega_1}E_{\xi}\setminus A$.}
+}%end of proof of 421P
+
+\leader{*421Q}{Lemma} Let $X$ be a set and
+$\family{\sigma}{S^*}{A_{\sigma}}$ and $\family{\sigma}{S^*}{B_{\sigma}}$
+two Souslin schemes of subsets of $X$.   Suppose that whenever $\phi$,
+$\psi\in\NN$ there is an $n\ge 1$ such that
+$\bigcap_{1\le i\le n}A_{\phi\restr i}\cap B_{\psi\restr i}=\emptyset$.
+For $x\in X$ set
+
+\Centerline{$T_x=\bigcup_{n\ge 1}\{\sigma:
+  \sigma\in\BbbN^n,\,x\in\bigcap_{1\le i\le n}A_{\sigma\restr i}\}$}
+
+\noindent\cmmnt{as in 421Ng, }and let $B$ be the kernel of
+$\family{\sigma}{S^*}{B_{\sigma}}$.   Then $\sup_{x\in B}r(T_x)<\omega_1$.
+
+\proof{ For $\sigma\in S^*$ set
+$A'_{\sigma}=\bigcap_{1\le i\le\#(\sigma)}A_{\sigma\restr i}$,
+$B'_{\sigma}=\bigcap_{1\le i\le\#(\sigma)}B_{\sigma\restr i}$.   Then
+$T_x=\{\sigma:\sigma\in S^*,\,x\in A'_{\sigma}\}$ for each $x\in X$, $B$
+is the kernel of $\family{\sigma}{S^*}{B'_{\sigma}}$, and for every
+$\phi$, $\psi\in\NN$ there is an $n\in\Bbb N$ such that
+$A'_{\phi\restr n}\cap B'_{\psi\restr n}=\emptyset$.
+
+Define $\ofamily{\xi}{\omega_1}{Q_{\xi}}$ inductively by setting
+
+\Centerline{$Q_0=\{(\sigma,\tau):\sigma,\,\tau\in S^*,
+  \,A'_{\sigma}\cap B'_{\tau}\ne\emptyset\}$,}
+
+\noindent and, for $0<\xi<\omega_1$,
+
+\Centerline{$Q_{\xi}
+=\bigcap_{\eta<\xi}\{(\sigma,\tau):
+  \sigma,\,\tau\in S^*,\,\Exists i,\,j\in\Bbb N,
+  \,(\sigma^{\smallfrown}\fraction{i},\tau^{\smallfrown}\fraction{j})
+  \in Q_{\eta}\}$.}
+
+\noindent Then the same arguments as in 421Na-421Nd show that there is a
+$\zeta<\omega_1$ such that $Q_{\zeta+1}=Q_{\zeta}$.   \Quer\ If
+$Q_{\zeta}\ne\emptyset$, then, just as in 421Nf, there must be $\phi$,
+$\psi\in\NN$ such that
+$(\phi\restr m,\psi\restr n)\in Q_{\zeta}\subseteq Q_0$ for every $m$,
+$n\ge 1$;  but this means that
+$A'_{\phi\restr n}\cap B'_{\psi\restr n}\ne\emptyset$ for every
+$n\ge 1$, which is supposed to be impossible.\ \Bang
+
+Now suppose that $x\in B$.   Then there is a $\psi\in\NN$ such that
+$x\in B'_{\psi\restr n}$ for every $n\ge 1$.   But this means that
+$(\sigma,\psi\restr n)\in Q_0$ for every $\sigma\in T_x$ and every
+$n\ge 1$.  An easy induction shows that
+$(\sigma,\psi\restr n)\in Q_{\xi}$ whenever $\xi<\omega_1$,
+$\sigma\in\partial^{\xi}T_x$ and $n\ge 1$.   But as
+$Q_{\zeta}=\emptyset$ we must have $\partial^{\zeta}T_x=\emptyset$ and
+$r(T_x)\le\zeta$.   Thus $\sup_{x\in B}r(T_x)\le\zeta<\omega_1$, and the
+proof is complete.
+}%end of proof of 421Q
+
+\exercises{\leader{421X}{Basic exercises (a)}
+%\spheader 421Xa
+Let $X$ be a set and $\Cal E$ a family of subsets of $X$.
+(i) Show that $\emptyset\in\Cal S(\Cal E)$ iff there is a sequence in
+$\Cal E$ with empty intersection.   (ii) Show that $X\in\Cal S(\Cal E)$
+iff there is a sequence in $\Cal E$ with union $X$.
+%421C
+
+\spheader 421Xb Let $\Cal E$ be a family of sets and $F$ any set.   Show
+that
+
+\Centerline{$\Cal S(\{E\cap F:E\in\Cal E\})
+=\{A\cap F:A\in\Cal S(\Cal E)\}$,}
+
+\Centerline{$\Cal S(\{E\cup F:E\in\Cal E\})
+=\{A\cup F:A\in\Cal S(\Cal E)\}$.}
+%421C
+
+
+\spheader 421Xc Suppose that $\Cal E$ is a family of sets with $\#(\Cal
+E)\le\frak c$.   Show that $\#(\Cal S(\Cal E))\le\frak c$.
+\Hint{$\#(\Cal E^{S^*})\le\#((\Cal P\BbbN)^{S^*})
+=\#(\Cal P(\BbbN\times S^*))$.}
+%421C
+
+\spheader 421Xd Let $\Cal E$ be the family of half-open intervals
+$\coint{2^{-n}k,2^{-n}(k+1)}$, where $n\in\Bbb N$, $k\in\Bbb Z$;  let
+$\Cal G$ be the set of open subsets of $\Bbb R$;  let $\Cal F$ be the
+set of closed subsets of $\Bbb R$;  let $\Cal K$ be the set of compact
+subsets of $\Bbb R$;  let $\Cal B$ be the Borel $\sigma$-algebra of
+$\Bbb R$.
+Show that $\Cal S(\Cal E)=\Cal S(\Cal F)=\Cal S(\Cal G)=\Cal S(\Cal
+K)=\Cal S(\Cal B)$.
+\Hint{421F.}
+%421F
+
+\spheader 421Xe Let $\Cal I$ be the family
+$\{I_{\sigma}:\sigma\in\bigcup_{k\in\BbbN}\BbbN^k\}$ (421A);   let $\Cal
+G$ be the set of open subsets of $\NN$;  let $\Cal F$ be the
+set of closed subsets of $\NN$;  let $\Cal K$ be the set of
+compact subsets of $\NN$;  let $\Cal B$ be the Borel $\sigma$-algebra
+of $\NN$.   Show that $\Cal S(\Cal I)=\Cal S(\Cal F)=\Cal
+S(\Cal G)=\Cal S(\Cal B)$, but that $\Cal S(\Cal K)$ is strictly smaller
+than these.   \Hint{if $\sequencen{K_n}$ is any sequence in $\Cal K$,
+set $\phi(i)=1+\sup_{\psi\in K_i}\psi(i)$ for each $i\in\Bbb N$, so that
+$\phi\notin\bigcup_{n\in\BbbN}K_n$;  hence show that $\BbbN^{\Bbb
+N}\notin\Cal S(\Cal K)$.}
+%421F, 421Xd
+
+\spheader 421Xf Let $X$ be a separable metrizable space with at least
+two points;  let $\Cal U$ be any base for its topology, and $\Cal B$ its
+Borel $\sigma$-algebra.   Show that $\Cal S(\Cal U)=\Cal S(\Cal B)$.
+What can happen if $\#(X)\le 1$?   What about hereditarily Lindel\"of
+spaces?
+%421F, 421Xd
+
+\spheader 421Xg Let $X$ be a topological space;  let $\Cal Z$ be the set
+of zero sets in $X$, $\Cal G$ the set of cozero sets, and $\CalBa$ the
+Baire $\sigma$-algebra.   Show that
+$\Cal S(\Cal Z)=\Cal S(\Cal G)=\Cal S(\CalBa)$.
+%421F, 421Xd
+
+\spheader 421Xh Let $X$ be a set, $\Cal E$ a family of subsets of $X$,
+and $\Sigma$ the $\sigma$-algebra of subsets of $X$ generated by
+$\Cal E$.   Show that if $\#(\Cal E)\le\frak c$ then
+$\#(\Sigma)\le\frak c$.
+\Hint{$\#(\frak c^{S^*})=\#(\Cal P(\Bbb N\times\Bbb N))=\frak c$ and
+$\Sigma\subseteq\Cal S(\Cal E\cup\{X\setminus E:E\in\Cal E\})$.}
+%421F, 421Xc
+
+\spheader 421Xi Let $X$ be a topological space such that every open set
+is Souslin-F.   Show that every Borel set is Souslin-F.
+%421F
+
+\spheader 421Xj Let $X$ be a topological space and $\Cal B(X)$ its Borel
+$\sigma$-algebra.   Show that $\Cal S(\Cal B(X))$ is just the set of
+projections on $X$ of Borel subsets of $\NN\times X$.   \Hint{4A3G.}
+%421H
+
+\spheader 421Xk Let $X$ and $Y$ be topological spaces, $f:X\to Y$ a
+continuous function and $F\subseteq Y$ a Souslin-F set.   Show that
+$f^{-1}[F]$ is a Souslin-F set in $X$.
+%421K
+
+\spheader 421Xl Let $X$ be any perfectly normal topological space (e.g.,
+any metrizable space);  let $\Cal G$ be the
+set of open subsets of $X$, $\Cal F$ the set of closed subsets, and
+$\Cal B$ the Borel $\sigma$-algebra.   Show that
+$\Cal S(\Cal G)=\Cal S(\Cal F)=\Cal S(\Cal B)$.
+%421L, 421Xd
+
+\spheader 421Xm Let us say that a Souslin scheme
+$\family{\sigma}{S^*}{E_{\sigma}}$ is {\bf regular} if
+$E_{\sigma}\subseteq E_{\tau}$ whenever $\sigma$, $\tau\in S^*$,
+$\#(\tau)\le\#(\sigma)$ and
+$\sigma(i)\le\tau(i)$ for every $i<\#(\sigma)$.   Let $\Cal E$ be a
+family of sets such that $E\cup F$ and $E\cap F$ belong to
+$\Cal E$ for all $E$,
+$F\in\Cal E$.   Show that every member of $\Cal S(\Cal E)$ can be
+expressed as the kernel of a regular Souslin scheme in $\Cal E$.
+\Hint{if $\family{\sigma}{S^*}{E_{\sigma}}$ is any Souslin scheme in 
+$\Cal E$ with kernel $A$, set
+$F_{\sigma}=\bigcap_{\tau\subseteq\sigma}E_{\tau}$,
+$G_{\sigma}=\bigcup_{\tau\le\sigma}F_{\tau}$, where $\tau\le\sigma$ if
+$\tau(i)\le\sigma(i)$ for $i<\#(\tau)=\#(\sigma)$;  show that $A$ is the
+kernel of $\family{\sigma}{S^*}{F_{\sigma}}$ and of
+$\family{\sigma}{S^*}{G_{\sigma}}$, using an idea from 421M for the
+latter.}
+%421M
+
+\sqheader 421Xn Let $X$ be a Hausdorff topological space and
+$\family{\sigma}{S^*}{K_{\sigma}}$ a Souslin scheme in which every
+$K_{\sigma}$ is a compact subset in $X$.   Show that
+$\bigcup_{\phi\in K}\bigcap_{n\ge 1}K_{\phi\restr n}$ is compact for any
+compact $K\subseteq\NN$.
+%421M
+
+\leader{421Y}{Further exercises (a)}
+%\spheader 421Ya
+Let $X$ be a topological space, $Y$ a Hausdorff space and
+$f:X\to Y$ a continuous function.   Let $\Cal K$ be the family of closed
+countably compact subsets of $X$.   Show that for any
+$\Cal E\subseteq\Cal K$ such that $E\cap F\in\Cal E$ for all $E$,
+$F\in\Cal E$,
+
+\Centerline{$\{f[A]:A\in\Cal S(\Cal E)\}=\Cal S(\{f[E]:E\in\Cal E\})$.}
+%421C
+
+\spheader 421Yb Let $\Cal E$ be a family of sets and $F$ any set.   Show
+that
+
+$$\eqalign{\Cal S(\Cal E\cup\{F\})
+&=\{F\}\cup\{A\cap F:A\in\Cal S(\Cal E)\}
+  \cup\{B\cup F:B\in\Cal S(\Cal E)\}\cr
+&\qquad\qquad\qquad\cup\{(A\cap F)\cup B:A,\,B\in\Cal S(\Cal E)\}.\cr}$$
+%421C  mt42bits
+
+\spheader 421Yc Let $X$ be a topological space, and $\CalBa$ its Baire
+$\sigma$-algebra.   Show that $\Cal S(\CalBa)$ is just the
+family of sets expressible as $f^{-1}[B]$ where $f$ is a continuous
+function from $X$ to some metrizable space $Y$ and
+$B\subseteq Y$ is Souslin-F.
+%421F, 421Xg
+
+\spheader 421Yd Let $X$ be a set, $\Cal E$ a family of subsets of $X$,
+and $\Sigma$ the smallest $\sigma$-algebra of subsets of $X$ including
+$\Cal E$ and closed under Souslin's operation.   Show that if
+$\#(\Cal E)\le\frak c$ then $\#(\Sigma)\le\frak c$.   \Hint{define
+$\ofamily{\xi}{\omega_1}{\Cal E_{\xi}}$ by setting
+$\Cal E_{\xi}
+=\Cal S(\{X\setminus E:E\in\Cal E\cup\bigcup_{\eta<\xi}\Cal E_{\xi}\})$
+for each $\xi$.   Show that $\#(\Cal E_{\xi})\le\frak c$ for every $\xi$
+and that $\Sigma=\bigcup_{\xi<\omega_1}\Cal E_{\xi}$.}
+
+\spheader 421Ye Let $X$ be a compact space and $A$ a Souslin-F set in
+$X$.   Show that there is a family $\ofamily{\xi}{\omega_1}{F_{\xi}}$ of
+Borel sets such that $X\setminus A=\bigcup_{\xi<\omega}F_{\xi}$ and
+whenever $B\subseteq X\setminus A$ is a Souslin-F set there is a
+$\xi<\omega_1$ such that $B\subseteq F_{\xi}$.   \Hint{take
+$F_{\xi}=\{x:r(T_x)\le\xi\}\setminus A$ as in 421Ob, and apply 421Q.}
+}%end of exercises
+
+\endnotes{
+\Notesheader{421} In 111G, I defined the Borel sets of $\Bbb R$ to be
+the members of the
+smallest $\sigma$-algebra containing every open set.   In 114E, I
+defined a set to be Lebesgue measurable if it behaves in the right way
+with respect to Lebesgue outer measure.   The latter formulation, at
+least, provides some sort of testing principle to determine whether a
+set is Lebesgue measurable.   But the definition of `Borel set' does
+not.   The only tool so far available for proving that a set
+$E\subseteq\Bbb R$ is {\it not}
+Borel is to find a $\sigma$-algebra containing all open sets and not
+containing $E$;  conversely, the only method we have for proving
+properties of Borel sets is to show that a property is possessed by
+every member of some $\sigma$-algebra containing every open set.   The
+revolutionary insight of {\smc Souslin 1917} was a construction which
+could build every Borel set from rational intervals.   (See 421Xd.)
+For fundamental reasons, no construction of this kind can provide all
+Borel sets without also producing other sets, and to actually
+characterize the Borel $\sigma$-algebra a
+further idea is needed (423Fa);  but the class of analytic sets, being
+those constructible by Souslin's operation from rational intervals (or
+open sets, or closed sets, or Borel sets -- the operation is robust
+under such variations), turns out to have remarkable properties which
+make it as important in modern real analysis as the Borel algebra
+itself.
+
+The guiding principle of `descriptive set theory' is that
+the properties of a
+set may be analysed in the light of a construction for that set.   Thus
+we can think of a closed set $F\subseteq\Bbb R$ as
+
+\Centerline{$\Bbb R\setminus\bigcup_{(q,q')\in I}\ooint{q,q'}$}
+
+\noindent where $I\subseteq\Bbb Q\times\Bbb Q$.   The principle can be
+effective because we often have such descriptions in terms of objects
+fundamentally simpler than the set being described.   In the formula
+above, for instance, $\Bbb Q\times\Bbb Q$ is simpler than the set $F$,
+being a countable set with a straightforward description from $\Bbb N$.
+The set $\Cal P(\Bbb Q\times\Bbb Q)$ is relatively complex;  but a
+single subset $I$ of $\Bbb Q\times\Bbb Q$ can easily be coded as a
+single subset of $\Bbb N$ (taking some more or less natural enumeration
+of $\Bbb Q^2$ as a
+sequence $\sequencen{(q_n,q'_n)}$, and matching $I$ with
+$\{n:(q_n,q'_n)\in I\}$).   So, subject to an appropriate coding, we
+have a description of
+closed subsets of $\Bbb R$ in terms of subsets of $\Bbb N$.   At the
+most elementary level, this shows that there are at most $\frak c$
+closed subsets of $\Bbb R$.   But we can also set out to analyse such
+operations as intersection, union, closure in terms of these
+descriptions.   The
+details are complex, and I shall go no farther along this path until
+Chapter 56 in Volume 5;
+but investigations of this kind are at the heart of some of the most
+exciting developments of twentieth-century real analysis.
+
+The particular descriptive method which concerns us in the present
+section is Souslin's operation.   Starting from a relatively simple
+class $\Cal E$, we proceed to the larger class $\Cal S(\Cal E)$.   The
+most fundamental property of $\Cal S$ is 421D:
+$\Cal S\Cal S(\Cal E)=\Cal S(\Cal E)$.
+This means, for instance, that if $\Cal E\subseteq\Cal S(\Cal F)$ and
+$\Cal F\subseteq\Cal S(\Cal E)$, then $\Cal S(\Cal E)$ will be equal to
+$\Cal S(\Cal F)$;  consequently, different classes of sets will often
+have the same Souslin closures, as in 421Xd-421Xg.   After a little
+practice you will find that it is often easy to see when two classes
+$\Cal E$ and $\Cal F$ are at the same level in this sense;  but watch
+out for traps like the
+class of compact subsets of $\NN$ (421Xe) and odd technical
+questions (421Xf).
+
+Souslin's operation, and variations on it, will be the basis of much of
+the next chapter;  it has dramatic applications in general topology and
+functional analysis as well as in real analysis and measure theory.   An
+important way of looking at the kernel of a Souslin scheme
+$\family{\sigma}{S^*}{E_{\sigma}}$ is to regard it as the projection on
+the second coordinate of the corresponding set
+$R=\bigcap_{k\ge 1}\bigcup_{\sigma\in\BbbN^k}I_{\sigma}\times E_{\sigma}$
+(421Ce).   We find that many other sets $R\subseteq\NN\times X$ will
+also have projections in $\Cal S(\Cal E)$ (421G, 421H).   Let me remark
+that it is essential here that the first coordinate should be of the
+right type.   In one sense, indeed, $\NN$ is the only thing that
+will do;  but its virtue transfers to analytic spaces, as we shall see in
+423M-423O below.  %423M 423N 423O
+We shall often
+want to deal with members of $\Cal S(\Cal E)$ which are most naturally
+defined in terms of some such auxiliary space.
+
+I have moved into slightly higher gear for 421N-421Q
+%421N 421O 421P 421Q
+because these are not essential for most of the work of the next
+chapter.   From the point of view of this section 421P is very striking
+but the significance of 421Q is unlikely to be apparent.   It becomes
+important in contexts in which the condition
+
+\Centerline{$\Forall\phi$, $\psi\in\NN\Exists n\ge 1,\,
+\bigcap_{1\le i\le n}A_{\phi\restr i}\cap B_{\psi\restr i}=\emptyset$}
+
+\noindent is satisfied for natural reasons.   I will expand on these in
+the next two sections.   In the meantime, I offer 421Ye as an example
+of what 421O and 421Q together can tell us.
+}%end of notes
+
+\discrpage
+

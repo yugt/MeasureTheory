@@ -1,0 +1,1340 @@
+\frfilename{mt563.tex}
+\versiondate{3.12.13}
+\copyrightdate{2008}
+
+\def\chaptername{Choice and determinacy}
+\def\sectionname{Borel measures without choice}
+
+\newsection{563}
+
+Having decided that a `Borel set' is to be one obtainable by
+a series of operations described by a Borel code, it is a natural step to
+say that a `Borel measure' should be one which respects these operations
+(563A).   In regular spaces, such measures have strong inner and outer
+regularity properties also based on the Borel coding (563D-563F), and we
+have effective methods of constructing such measures (563H).   Analytic
+sets are universally measurable (563I).   We can use similar ideas to give
+a theory of Baire measures on general topological spaces (563J-563K).
+In the basic case, of a second-countable space with a codably
+$\sigma$-finite measure, we have a measure algebra with many of the same
+properties as in the standard theory (563M-563N).
+
+The theory would not be very significant if there were no interesting
+Borel-coded measures, so you may wish to glance ahead to \S565 to confirm
+that Lebesgue measure can be brought into the framework developed here.
+
+\leader{563A}{Definitions (a)}\cmmnt{ ({\smc Foreman \& Wehrung 91})}
+Let $X$ be a second-countable space and
+$\Cal B_c(X)$ the algebra of codable Borel subsets of $X$.
+I will say that a {\bf Borel-coded measure} on $X$ is a functional
+$\mu:\Cal B_c(X)\to[0,\infty]$ such that
+$\mu\emptyset=0$ and
+$\mu(\bigcup_{n\in\Bbb N}E_n)=\sum_{n=0}^{\infty}\mu E_n$ whenever
+$\sequencen{E_n}$ is a disjoint codable family in $\Cal B_c(X)$.
+
+\cmmnt{I will try to remember to say `Borel-coded measure' everywhere
+in this section, because these are dangerously different from the `Borel
+measures' of \S434.   Their domains are not necessarily $\sigma$-algebras
+and while they are finitely additive they need not be countably additive
+even in the sense of 326I.}
+
+\spheader 563Ab
+\cmmnt{As usual, }I
+will say that a subset of $X$ is {\bf negligible} if it is
+included in a set of measure $0$\cmmnt{, which here must be a codable
+Borel set;
+the terms `conegligible', `almost everywhere', `null ideal'
+will take their meanings from
+this}.   We can now define the {\bf completion} of $\mu$ to be the
+natural extension of $\mu$ to the algebra
+$\{E\symmdiff A:E\in\Cal B_c(X)$, $A$ is $\mu$-negligible$\}$.
+
+\spheader 563Ac\cmmnt{ Some of the other definitions from the ordinary
+theory can be transferred without difficulty (e.g., `totally finite',
+`probability'), but we may need to make some
+finer distinctions.   For instance,} I will say that a Borel-coded measure
+$\mu$ is {\bf semi-finite} if
+$\sup\{\mu F:F\subseteq E$, $\mu F<\infty\}=\infty$ whenever
+$\mu E=\infty$\cmmnt{;  we no longer have the ordinary
+principle of exhaustion (215A), and the definition in 211F, taken
+literally, may be too weak.   For `locally finite', however, 411Fa can be
+taken just as it is, since all open sets are measurable}.
+
+\spheader 563Ad \dvro{A}{For `$\sigma$-finite' we again have to make a
+choice.
+The definition in 211C calls only for `a sequence of measurable sets of
+finite measure'.   Here the following will be more useful:  a} Borel-coded
+measure on $X$ is {\bf codably $\sigma$-finite} if there is a codable
+sequence
+$\sequencen{E_n}$ in $\Cal B_c(X)$ such that $X=\bigcup_{n\in\Bbb N}E_n$
+and $\mu E_n$ is finite for every $n$.
+
+\leader{563B}{Proposition} Let $(X,\frak T)$
+be a second-countable space and $\mu$ a Borel-coded measure on $X$.
+
+(a) Let $\sequencen{E_n}$ be a codable sequence in $\Cal B_c(X)$.
+
+\quad(i) $\mu(\bigcup_{n\in\Bbb N}E_n)\le\sum_{n=0}^{\infty}\mu E_n$.
+
+\quad(ii) If $\sequencen{E_n}$ is non-decreasing,
+$\mu(\bigcup_{n\in\Bbb N}E_n)=\lim_{n\to\infty}\mu E_n$.
+
+\quad(iii) If $\sequencen{E_n}$ is non-increasing and $\mu E_0$ is finite,
+then $\mu(\bigcap_{n\in\Bbb N}E_n)=\lim_{n\to\infty}\mu E_n$.
+
+(b) $\mu$ is $\tau$-additive.
+
+(c)\dvArevised{2013} Suppose that $\frak T$ is T$_1$.
+If $\Cal E$ is the algebra of resolvable subsets of $X$\cmmnt{ (562H)}, 
+then $\mu\restr\Cal E$ is countably additive in the sense that
+$\mu E=\sum_{n=0}^{\infty}\mu E_n$ for any disjoint
+family $\sequencen{E_n}$ in $\Cal E$ such that 
+$E=\sup_{n\in\Bbb N}E_n$ is defined in $\Cal E$.
+
+\proof{{\bf (a)(i)} Set $F_n=E_n\setminus\bigcup_{i<n}E_i$ for
+$n\in\Bbb N$;  then $\sequencen{F_n}$ is codable (562Kc), so
+
+\Centerline{$\mu(\bigcup_{n\in\Bbb N}E_n)
+=\mu(\bigcup_{n\in\Bbb N}F_n)
+=\sum_{n=0}^{\infty}\mu F_n
+\le\sum_{n=0}^{\infty}\mu E_n$.}
+
+\medskip
+
+\quad{\bf (ii)} If $\sequencen{E_n}$ is non-decreasing then, in the
+language of (i), $E_n=\bigcup_{i\le n}F_i$ for each $n$, so
+
+\Centerline{$\lim_{n\to\infty}\mu E_n
+=\lim_{n\to\infty}\sum_{i=0}^n\mu F_i
+=\mu(\bigcup_{n\in\Bbb N}E_n)$.}
+
+\medskip
+
+\quad{\bf (iii)} Apply (ii) to $\sequencen{E_0\setminus E_n}$.
+(As remarked in 562J, this will be a codable sequence.)
+
+\medskip
+
+{\bf (b)} Suppose that $\Cal G$ is an upwards-directed family of
+open sets with union $H$.   Set $\gamma=\sup_{G\in\Cal G}\mu G$.   Let
+$\sequencen{U_n}$ be a sequence running over a base for the topology of
+$X$, and for $n\in\Bbb N$ set
+
+\Centerline{$V_n
+=\bigcup\{U_i:i\le n$, $U_i\subseteq G$ for some $G\in\Cal G\}$.}
+
+\noindent Then $\sequencen{V_n}$ is a non-decreasing sequence of open sets
+with union $H$.   As every $V_n$ is resolvable, $\sequencen{V_n}$ is
+codable and
+
+\Centerline{$\mu H=\lim_{n\to\infty}\mu V_n
+\le\sup_{G\in\Cal G}\mu G\le\mu H$}
+
+\noindent by (a-ii).
+
+\medskip
+
+{\bf (c)} If $\sequencen{E_n}$ is a disjoint sequence in $\Cal E$ with a
+supremum $E$ in $\Cal E$, then $E\supseteq\bigcup_{n\in\Bbb N}E_n$.
+If $x\in E$ then $\{x\}$ is closed,
+because $\frak T$ is T$_1$, so $\{x\}$ is resolvable (562H) and
+$E\setminus\{x\}\in\Cal E$;  as $E\setminus\{x\}$ is not an upper bound of
+$\{E_n:n\in\Bbb N\}$, $x\in\bigcup_{n\in\Bbb N}E_n$.   So 
+$E=\bigcup_{n\in\Bbb N}E_n$.
+Now $\sequencen{E_n}$ is codable, as noted in
+562J, so $\mu E=\mu(\bigcup_{n\in\Bbb N}E_n)=\sum_{n=0}^{\infty}\mu E_n$.
+}%end of proof of 563B
+
+\leader{563C}{Corollary} Let $X$ be a second-countable space, $\mu$ a
+Borel-coded measure on $X$ and
+$\sequencen{E_n}$ a sequence of resolvable sets in $X$.
+
+(a)(i) $\bigcup_{n\in\Bbb N}E_n$ is measurable;
+
+\quad(ii) $\mu(\bigcup_{n\in\Bbb N}E_n)\le\sum_{n=0}^{\infty}\mu E_n$;
+
+\quad(iii) if $\sequencen{E_n}$ is disjoint,
+$\mu(\bigcup_{n\in\Bbb N}E_n)=\sum_{n=0}^{\infty}\mu E_n$;
+
+\quad(iv) if $\sequencen{E_n}$ is non-decreasing,
+$\mu(\bigcup_{n\in\Bbb N}E_n)=\lim_{n\to\infty}\mu E_n$.
+
+(b)(i) $\bigcap_{n\in\Bbb N}E_n$ is measurable;
+
+\quad(ii) if $\sequencen{E_n}$ is non-increasing and
+$\inf_{n\in\Bbb N}\mu E_n$ is finite, then
+$\mu(\bigcap_{n\in\Bbb N}E_n)=\lim_{n\to\infty}\mu E_n$.
+
+\proof{{\bf (a)} 
+Use 562I to find a sequence of codes for $\sequencen{E_n}$,
+and apply 563B.
+
+\medskip
+
+{\bf (b)} follows, because $X\setminus E_n$ is resolvable for each $n$.
+}%end of proof of 563C
+
+\leader{563D}{}\cmmnt{ The next lemma is primarily intended as a basis for
+Theorem 563H, but it will be useful in 563F.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $(X,\frak T)$
+be a regular second-countable space and
+$\mu:\frak T\to[0,\infty]$ a functional such that
+
+\inset{$\mu\emptyset=0$,
+
+$\mu G\le\mu H$ if $G\subseteq H$,
+
+$\mu G+\mu H=\mu(G\cup H)+\mu(G\cap H)$ for all $G$, $H\in\frak T$,
+
+$\mu(\bigcup_{n\in\Bbb N}G_n)=\lim_{n\to\infty}\mu G_n$ for every
+non-decreasing sequence $\sequencen{G_n}$ in $\frak T$,
+
+$\bigcup\{G:G\in\frak T$, $\mu G<\infty\}=X$.}
+
+(a) $\mu(\bigcup_{i\in I}G_i)\le\sum_{i\in I}\mu G_i$ for every countable
+family $\familyiI{G_i}$ in $\frak T$.
+
+(b) There is a function $\pi^*:\frak T\times\Bbb N\to\frak T$ such that
+
+\Centerline{$X\setminus G\subseteq\pi^*(G,k)$,
+\quad$\mu(G\cap\pi^*(G,k))\le 2^{-k}$}
+
+\noindent whenever $G\in\frak T$ and $k\in\Bbb N$.
+
+(c) Let $\phi:\Cal T\to\Cal B_c(X)$ be an interpretation of Borel codes
+defined from a sequence running over $\frak T$\cmmnt{, where
+$\Cal T$ is the set of subtrees of $\bigcup_{n\in\Bbb N}\BbbN^n$ without
+infinite branches (562A, 562B)}.   Then there are functions $\pi$,
+$\pi':\Cal T\times\Bbb N\to\frak T$ such that
+
+\Centerline{$\phi(T)\subseteq\pi(T,n)$,
+\quad$X\setminus\phi(T)\subseteq\pi'(T,n)$,
+\quad$\mu(\pi(T,n)\cap\pi'(T,n))\le 2^{-n}$}
+
+\noindent for every $T\in\Cal T$ and $n\in\Bbb N$.
+
+\proof{{\bf (a)} This is elementary.   First, $\mu(G\cup H)\le\mu G+\mu H$
+for all open sets $G$ and $H$, because $\mu(G\cap H)\ge 0$.   Next,
+if $\sequencen{G_n}$ is a sequence of open sets
+with union $G$, then
+
+\Centerline{$\mu G=\lim_{n\to\infty}\mu(\bigcup_{i\le n}G_i)
+\le\lim_{n\to\infty}\sum_{i=0}^n\mu G_i
+=\sum_{n=0}^{\infty}\mu G_n$.}
+
+\noindent Now the step to general countable $I$ is immediate.
+
+\medskip
+
+{\bf (b)} Set $I=\{n:n\in\Bbb N$, $\mu U_n<\infty\}$;  because
+$\mu$ is locally finite, $\{U_n:n\in I\}$ is a base for $\frak T$.
+Given $G\in\frak T$ and $k\in\Bbb N$,
+then for $n\in I$ and $m\in\Bbb N$ set
+
+\Centerline{$W_{nm}=\bigcup\{U_i:i\le m$,
+$\overline{U}_i\subseteq U_n\cap G\}$.}
+
+\noindent Because $\frak T$ is regular,
+$\bigcup_{m\in\Bbb N}W_{nm}=U_n\cap G$ and
+$\mu(U_n\cap G)=\lim_{m\to\infty}\mu W_{nm}$.
+Let $m_n$ be the least integer such that
+$\mu W_{nm_n}\ge\mu(U_n\cap G)-2^{-k-n-1}$.   Set
+
+\Centerline{$\pi^*(G,k)
+=\bigcup_{n\in I}U_n\setminus\overline{W}_{nm_n}\in\frak T$.}
+
+\noindent Because $\overline{W}_{nm}\subseteq U_n\cap G$ for all $m$ and
+$n$, while $\bigcup_{n\in I}U_n=X$,
+$\pi^*(G,k)\supseteq X\setminus G$.   Now
+
+\Centerline{$\mu(G\cap\pi^*(G,k))
+\le\sum_{n\in I}\mu(G\cap U_n\setminus\overline{W}_{nm_n})
+\le\sum_{n=0}^{\infty}2^{-k-n-1}
+=2^{-k}$,}
+
+\noindent as required.
+
+\medskip
+
+{\bf (c)} Define $\pi(T)$ and $\pi'(T)$ inductively on the rank $r(T)$
+of $T$.
+
+\medskip
+
+\quad{\bf (i)} If $r(T)=0$,
+set $\pi(T,n)=\emptyset$ and $\pi'(T,n)=X$ for every $n$.
+If $r(T)=1$ then $G=\phi(T)$ is open;  set $\pi(T,n)=G$ and
+$\pi'(T,n)=\pi^*(G,n)$ for each $n$.
+
+\medskip
+
+\quad{\bf (ii)} For the inductive step to $r(T)>1$,
+set $A_T=\{i:\fraction{i}\in T\}$
+and 
+$T_{\fraction i}=\{\sigma:\fraction{i}^{\smallfrown}\sigma\in T\}$ for
+$i\in\Bbb N$, as in 562A.   Set
+
+\Centerline{$\pi(T,n)=\bigcup_{i\in A_T}\pi'(T_{\fraction{i}},n+i+2)$,}
+
+\Centerline{$\pi'(T,n)
+=\bigcup_{i\in A_T}
+(\pi(T_{\fraction{i}},n+i+2)\cap\pi'(T_{\fraction{i}},n+i+2))
+  \cup\pi^*(\pi(T,n),n+1)$.}
+
+\noindent Then
+
+\Centerline{$\phi(T)
+=\bigcup_{i\in A_T}X\setminus T_{\fraction{i}}
+\subseteq\bigcup_{i\in A_T}\pi'(T_{\fraction{i}},n+i+2)
+=\pi(T,n)$,}
+
+$$\eqalign{X\setminus\phi(T)
+&=\bigcap_{i\in A_T}\phi(T_{\fraction{i}})
+\subseteq(\pi(T,n)\cap\bigcap_{i\in A_T}\phi(T_{\fraction{i}}))
+   \cup\pi^*(\pi(T,n),n+1)\cr
+&\subseteq\bigl(\bigcup_{i\in A_T}\pi'(T_{\fraction{i}},n+i+2)
+     \cap\bigcap_{i\in A_T}\pi(T_{\fraction{i}},n+i+2)\bigr)
+   \cup\pi^*(\pi(T,n),n+1)\cr
+&\subseteq\bigcup_{i\in A_T}\bigl(\pi'(T_{\fraction{i}},n+i+2)
+                                 \cap\pi(T_{\fraction{i}},n+i+2)\bigr)
+   \cup\pi^*(\pi(T,n),n+1)\cr
+&=\pi'(T,n),\cr}$$
+
+$$\eqalignno{\mu(\pi(T,n)\cap\pi'(T,n))
+&\le\sum_{i\in A_T}
+  \mu(\pi(T_{\fraction{i}},n+i+2)\cap\pi'(T_{\fraction{i}},n+i+2))\cr
+&\mskip200mu +\mu(\pi(T,n)\cap\pi^*(\pi(T,n),n+1))\cr
+&\le\sum_{i\in A_T}2^{-n-i-2}+2^{-n-1}
+\le 2^{-n}\cr}$$
+
+\noindent for every $n$, so the induction continues.
+}%end of proof of 563D
+
+\leader{563E}{Lemma} Let $X$ be a second-countable space and $\Mu$ a
+non-empty
+upwards-directed set of Borel-coded measures on $X$.   For each codable
+Borel set $E\subseteq X$, set $\nu E=\sup_{\mu\in\Mu}\mu E$.   Then
+$\nu$ is a Borel-coded measure on $X$.
+
+\proof{ Immediate from the definition in 563Aa.
+}%end of proof of 563E
+
+\leader{563F}{Proposition} Let $(X,\frak T)$ be a second-countable
+space and $\mu$ a Borel-coded measure on $X$.
+
+(a) For any $F\in\Cal B_c(X)$, we have a Borel-coded measure $\mu_F$ on $X$
+defined by saying that $\mu_FE=\mu(E\cap F)$ for every $E\in\Cal B_c(X)$.
+
+(b) We have a semi-finite Borel-coded measure $\mu_{\text{sf}}$ defined by saying
+that
+
+\Centerline{$\mu_{\text{sf}}(E)
+=\sup\{\mu F:F\in\Cal B_c(X)$, $F\subseteq E$, $\mu F<\infty\}$}
+
+\noindent for every $E\in\Cal B_c(X)$.
+
+(c)(i) If $\mu$ is locally finite it is codably $\sigma$-finite.
+
+\quad(ii) If $\mu$ is codably $\sigma$-finite, it is semi-finite and
+there is a totally finite
+Borel-coded measure $\nu$ on $X$ with the same null ideal as $\mu$.
+
+\quad(iii) If $\mu$ is codably $\sigma$-finite, there is a non-decreasing
+codable sequence of codable Borel sets of finite measure which covers $X$.
+
+(d) If $X$ is regular then the following are equiveridical:
+
+\quad(i) $\mu$ is locally finite;
+
+\quad(ii) $\mu$ is semi-finite,
+outer regular with respect to the open sets and inner regular with
+respect to the closed sets;
+
+\quad(iii) $\mu$ is semi-finite
+and outer regular with respect to the open sets.
+
+(e) If $X$ is regular and $\mu$ is semi-finite, then $\mu$
+is inner regular with
+respect to the closed sets of finite measure.
+
+(f) If $X$ is Polish and $\mu$ is semi-finite, then $\mu$ is
+inner regular with respect to the compact sets.
+
+(g) If $\mu$ is locally finite, and $\nu$ is another Borel-coded measure on
+$X$ agreeing with $\mu$ on the open sets, then $\nu=\mu$.
+
+\proof{ Fix a sequence $\sequencen{U_n}$ running over a base for the
+topology of $X$.
+
+\medskip
+
+{\bf (a)} The point is just that $\sequencen{E_n\cap F}$ is a
+codable family whenever $\sequencen{E_n}$ is a codable family in
+$\Cal B_c(X)$ and $F$ is codable.   (562J again.)
+
+\medskip
+
+{\bf (b)} Writing $\mu_F$ for the Borel-coded measure corresponding to a
+set $F$ of finite measure, as in (a), we have an upwards-directed family of
+measures;  by 563E, its supremum $\mu_{\text{sf}}$ is a Borel-coded measure.
+If $E\subseteq X$ is a codable Borel set and $\gamma<\mu_{\text{sf}}E$, then
+there is a set $F$ of finite measure such that $\mu(E\cap F)\ge\gamma$;
+now
+
+\Centerline{$\gamma\le\mu_{\text{sf}}(E\cap F)=\mu(E\cap F)<\infty$.}
+
+\medskip
+
+{\bf (c)(i)} Set $I=\{i:i\in\Bbb N$, $\mu U_i<\infty\}$;  then
+$\familyiI{U_i}$ is a codable family of sets of finite measure covering
+$X$.
+
+\medskip
+
+\quad{\bf (ii)} Let $\sequencen{H_n}$ be a codable sequence of sets of
+finite measure covering $X$.
+
+\medskip
+
+\qquad\grheada\ If $E\in\Cal B_c(X)$, then
+$\sequencen{E\cap\bigcup_{i\le n}H_i}$ is a non-decreasing codable sequence
+with union $E$, so
+
+\Centerline{$\mu E
+=\sup_{n\in\Bbb N}\mu(E\cap\bigcup_{i\le n}H_i)
+\le\sup\{\mu F:F\subseteq E$, $\mu F<\infty\}\le\mu E$.}
+
+\noindent As $E$ is arbitrary, $\mu$ is semi-finite.
+
+\medskip
+
+\qquad\grheadb\ Let $\sequencen{\epsilon_n}$ be a sequence
+of strictly positive real numbers such that
+$\sum_{n=0}^{\infty}\epsilon_n\mu H_n$ is finite.   Set
+$\nu E=\sum_{n=0}^{\infty}\epsilon_n\mu(E\cap H_n)$ for $E\in\Cal B_c(X)$.
+Of course $\nu\emptyset=0$ and $\nu X<\infty$.
+If $\sequence{k}{E_k}$ is a disjoint codable sequence in $\Cal B_c(X)$,
+then $\sequence{k}{E_k\cap H_n}$ is codable for every $n$, so
+
+$$\eqalign{\nu(\bigcup_{k\in\Bbb N}E_k)
+&=\sum_{n=0}^{\infty}\epsilon_n\mu(\bigcup_{k\in\Bbb N}E_k\cap H_n)
+=\sum_{n=0}^{\infty}\sum_{k=0}^{\infty}\epsilon_n\mu(E_k\cap H_n)\cr
+&=\sum_{k=0}^{\infty}\sum_{n=0}^{\infty}\epsilon_n\mu(E_k\cap H_n)
+=\sum_{k=0}^{\infty}\nu E_k.\cr}$$
+
+\noindent So $\nu$ is a Borel-coded measure.
+
+If $E\in\Cal B_c(X)$ and $\mu E=0$, then of course
+$\nu E=\sum_{n=0}^{\infty}\epsilon_n\mu(E\cap H_n)=0$.   Conversely, if
+$\nu E=0$, then $\mu(E\cap H_n)=0$ for every $n$;  but
+$\sequencen{E\cap H_n}$, like $\sequencen{H_n}$, is codable, so
+$\mu E=\mu(\bigcup_{n\in\Bbb N}E\cap H_n)=0$.   Thus $\mu$ and $\nu$ have
+the same sets of zero measure;  it follows at once that they have the
+same null ideals.
+
+\medskip
+
+\quad{\bf (iii)} All we have to note is that if $\sequencen{E_n}$ is
+a codable sequence of sets of finite measure covering $X$, then
+$\sequencen{\bigcup_{i\le n}E_i}$ is codable (562Kb), so gives the
+required non-decreasing witness.
+
+\medskip
+
+{\bf (d)}{\bf (i)$\Rightarrow$(ii)}\grheada\  Observe first that
+$\mu\restr\frak T$ satisfies the conditions of 563D.
+\Prf\ The first three are consequences of the fact that
+$\mu:\Cal B_c(X)\to[0,\infty]$ is additive.   If $\sequencen{G_n}$ is a
+non-decreasing sequence in $\frak T$, it is a codable sequence of codable
+Borel sets, by 562I as usual;  so
+$\mu(\bigcup_{n\in\Bbb N}G_n)=\lim_{n\to\infty}\mu G_n$ by 563B(a-ii).
+Finally, we are assuming that $\mu$ is locally finite, so the last
+condition is satisfied.\ \Qed
+
+Take an interpretation $\phi$ of Borel codes and
+functions $\pi$, $\pi':\Cal T\times\Bbb N\to\frak T$ as in 563Dc.
+
+\medskip
+
+\quad\grheadb\ If $E\in\Cal B_c(X)$ and
+$\mu E<\gamma$, take $n$ such that
+$2^{-n}\le\gamma-\mu E$.   There is a $T\in\Cal T$ such that
+$\phi(T)=E$, and now $G=\pi(T,n)$ is
+open, $E\subseteq G$ and
+
+\Centerline{$\mu(G\setminus E)\le\mu(G\cap\pi'(T,n))\le 2^{-n}$,}
+
+\noindent so $\mu G\le\gamma$.
+
+\medskip
+
+\quad\grheadc\ If $E\in\Cal B_c(X)$ and $\gamma<\mu E$, take $T\in\Cal T$
+such that $\phi(T)=E$ and $n\in\Bbb N$ such that $2^{-n}<\mu E-\gamma$;
+now $F=X\setminus\pi'(T,n)$ is closed, $F\subseteq E$ and
+$\mu(E\setminus F)\le 2^{-n}$, so $\mu F>\gamma$.   Next, if we set
+
+\Centerline{$F_m
+=F\cap\bigcup\{\overline{U_i}:i\le m$, $\mu\overline{U}_i<\infty\}$,}
+
+\noindent $\sequence{m}{F_m}$ will be a non-decreasing sequence of closed
+sets of finite measure with union $F$.   The sets $F_m$ are all resolvable,
+so $\mu F=\lim_{m\to\infty}\mu F_m$ and there is an $m$ such that
+$\mu F_m\ge\gamma$, while $F_m\subseteq E$ is a set of finite
+measure.   As $E$ and $\gamma$ are arbitrary, $\mu$ is inner regular with
+respect to the closed sets and also semi-finite.
+
+\medskip
+
+\quad{\bf(ii)$\Rightarrow$(iii)} is trivial.
+
+\medskip
+
+\quad{\bf(iii)$\Rightarrow$(i)}\grheada\ If $x\in X$ then $x$ belongs to
+some set of finite measure.   \Prf\ Set
+
+\Centerline{$F
+=\bigcap\{U_n:n\in\Bbb N$, $x\in U_n\}\setminus\bigcup\{U_n:n\in\Bbb N$,
+$x\notin U_n\}$.}
+
+\noindent Then $F$ is a codable Borel set, being the difference of
+G$_{\delta}$ sets (562Da), 
+and the subspace topology on $F$ is indiscrete.   If $\mu F=0$
+we can stop.   Otherwise, there must be an $F'\subseteq F$ such that
+$0<\mu F'<\infty$;  but $F'\in\Cal B_c(F)=\{\emptyset,F\}$ (562E),
+so $F'=F$ and
+again $F$ has finite measure.\ \Qed
+
+\medskip
+
+\qquad\grheadb\ Now as $\mu$ is outer regular with respect to the open
+sets, every set of finite measure is included in an open set of finite
+measure.   So $\mu$ must be locally finite.
+
+\medskip
+
+{\bf (e)} Suppose that $E\in\Cal B_c(X)$ and
+$\gamma<\mu E$.   Then there is an $H\in\Cal B_c(X)$ such that
+$H\subseteq E$ and $\gamma<\mu H<\infty$.   Consider the Borel-coded
+measure
+$\mu_H$ defined from $\mu$ and $H$ as in (a).   This is totally finite,
+so (d) tells us that it is outer regular with respect to the open sets and
+therefore inner regular with respect to the closed sets,
+and there is a closed set $F\subseteq H$ such that $\mu F=\mu_HF\ge\gamma$.
+As $E$ and $\gamma$ are arbitrary, $\mu$ is inner regular with respect to
+the closed sets of finite measure.
+
+\medskip
+
+{\bf (f)} Let $\rho$ be a complete
+metric on $X$ inducing its topology.
+If $E\in\Cal B_c(X)$ and $\gamma<\mu E$, let $F\subseteq E$ be a
+closed set such that $F\subseteq E$ and $\gamma<\mu F<\infty$.
+For each $n\in\Bbb N$ set $J_n=\{i:\diam U_i\le 2^{-n}\}$.
+Define $\sequencen{k_n}$, $\sequencen{F_n}$ inductively by saying that
+$F_0=F$ and
+
+\Centerline{$k_n=\min\{k:\mu(F_n\cap\bigcup_{i\in J_n\cap k}U_i)>\gamma\}$,
+\quad$F_{n+1}=F_n\cap\bigcup_{i\in J_n\cap k_n}\overline{U}_i$}
+
+\noindent for each $n$;  set $K=\bigcap_{n\in\Bbb N}F_n\subseteq E$.   Then
+$\mu K=\lim_{n\to\infty}\mu F_n\ge\gamma$.   The point is that $K$ is
+compact.   \Prf\ Set $L=\prod_{n\in\Bbb N}J_n\cap k_n\subseteq\NN$.
+Then $L$ is compact (561D).   Set 
+$L'=\{\alpha:\alpha\in L$, 
+$F\cap\bigcap_{i\le n}\overline{U}_{\alpha(i)}\ne\emptyset$ 
+for every $n\}$;
+then $L'$ is a closed subset of $L$ so is compact.   For $\alpha\in L'$,
+$\{F\cap\overline{U}_{\alpha(i)}:i\in\Bbb N\}$ generates a filter 
+$\Cal F_{\alpha}$ on $X$ which
+is a Cauchy filter because $\diam\overline{U}_{\alpha(i)}
+=\diam U_{\alpha(i)}\le 2^{-i}$ for every $i$;  because $X$ is
+$\rho$-complete, $f(\alpha)=\lim\Cal F_{\alpha}$ is defined, and belongs to
+$F\cap\bigcap_{i\in\Bbb N}\overline{U}_{\alpha(i)}\subseteq K$.   If
+$\alpha$, $\beta\in L'$ and $\alpha(i)=\beta(i)$, then
+$f(\alpha)$, $f(\beta)$ both belong to $\overline{U}_{\alpha(i)}$ so
+$\rho(f(\alpha),f(\beta))\le 2^{-i}$;  thus $f$ is continuous and
+$f[L']$ is a compact subset of $K$.
+On the other hand, given $x\in K$, we can set
+$\alpha(n)=\min\{i:i\in J_n\cap k_n$, $x\in\overline{U}_i\}$ for each
+$n$, and now $\alpha\in L'$ and $f(\alpha)=x$.   So $K=f[L']$ is compact.
+(See 561Yj.)\ \Qed
+
+As $E$ and $\gamma$ are arbitrary, $\mu$ is inner regular with respect to
+the compact sets.
+
+\medskip
+
+{\bf (g)(i)} Consider first the case in which $X$ is regular.   In this
+case both $\mu$ and $\nu$ must be outer regular with respect to the open
+sets, by (d);  as they agree on the open sets they must be equal.
+
+\medskip
+
+\quad{\bf (ii)} Next, suppose that $\mu X=\nu X$ is finite.
+Let $\Cal E$ be the algebra of subsets of $X$
+generated by $\{U_n:n\in\Bbb N\}$, and $\frak S$ the topology generated by
+$\Cal E$.   As noted in the argument of 562Pb, $\frak S$ is codably Borel
+equivalent to the original topology of $X$, so $\mu$ and $\nu$ are still
+Borel-coded measures with respect to $\frak S$, and are still locally
+finite, because $\frak S$ is finer than $\frak T$;  while $\frak S$ is
+regular.   Now any member of $\Cal E$ is expressible in the form
+$E=\bigcup_{i\le n}G_i\setminus H_i$ where the $G_i$, $H_i$ are open and
+$\langle G_i\setminus H_i\rangle_{i\le n}$ is disjoint.   So
+
+\Centerline{$\mu E=\sum_{i=0}^n\mu G_i-\mu(G_i\cap H_i)=\nu E$.}
+
+\noindent More generally, if $H\in\frak S$, there is a non-decreasing
+sequence $\sequencen{E_n}$
+in $\Cal E$ with union $H$;  as all the sets in $\Cal E$ are resolvable,
+$\sequencen{E_n}$ is codable and
+
+\Centerline{$\mu H=\sup_{n\in\Bbb N}\mu E_n=\nu H$.}
+
+\noindent Thus $\mu$ and $\nu$ agree on $\frak S$;  by (i), they are
+equal.
+
+\medskip
+
+\quad{\bf (iii)} Finally, for the general case, set
+$V_n=\bigcup\{U_i:i\le n$, $\mu U_i<\infty\}$ for each $n$.   Because $\mu$
+is locally finite, $\bigcup_{n\in\Bbb N}V_n=X$.   For each $n\in\Bbb N$ let
+$\mu_{V_n}$, $\nu_{V_n}$ be the Borel-coded measures defined from $V_n$ as
+in (a).   Then $\mu_{V_n}$ and $\nu_{V_n}$ are totally finite and agree on
+the open sets, so are equal.   Now $\sequencen{V_n}$, being a sequence of
+open sets, is codable;  so if $E\in\Cal B_c(X)$ the sequence
+$\sequencen{E\cap V_n}$ is codable, and
+
+\Centerline{$\mu E=\lim_{n\to\infty}\mu(E\cap V_n)
+=\lim_{n\to\infty}\mu_{V_n}E=\nu E$.}
+
+\noindent So in this case also we have $\mu=\nu$.
+}%end of proof of 563F
+
+\vleader{72pt}{563G}{Proposition} Let $X$ be a set and
+$\theta:\Cal PX\to[0,\infty]$ a submeasure.
+
+(a)
+
+\Centerline{$\Sigma
+=\{E:E\subseteq X$, $\theta A=\theta(A\cap E)+\theta(A\setminus E)$
+for every $A\subseteq X\}$}
+
+\noindent is an algebra of subsets of $X$, and $\theta\restr\Sigma$ is
+additive in the sense that $\theta(E\cup F)=\theta E+\theta F$ in
+$[0,\infty]$ whenever $E$, $F\in\Sigma$ are disjoint.
+
+(b) If $E\subseteq X$ and for
+every $\epsilon>0$ there is an $F\in\Sigma$ such that $E\subseteq F$ and
+$\theta(F\setminus E)\le\epsilon$, then $E\in\Sigma$.
+
+\proof{{\bf (a)} Parts (a)-(c) of the proof of 113C apply unchanged.
+
+\wheader{563G}{6}{2}{2}{36pt}
+{\bf (b)} Take any $A\subseteq X$ and $\epsilon>0$.   Let $F\in\Sigma$ be
+such that $E\subseteq F$ and $\theta(F\setminus E)\le\epsilon$.   Then
+
+\Centerline{$\theta A\le\theta(A\cap E)+\theta(A\setminus E)
+\le\theta(A\cap F)+\theta(A\setminus F)+\theta(F\setminus E)
+\le\theta A+\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary,
+$\theta A=\theta(A\cap E)+\theta(A\setminus E)$;  as $A$ is arbitrary,
+$E\in\Sigma$.
+}%end of proof of 563G
+
+\leader{563H}{Theorem} Let $(X,\frak T)$
+be a regular second-countable space and
+$\mu:\frak T\to[0,\infty]$ a functional such that
+
+\inset{$\mu\emptyset=0$,
+
+$\mu G\le\mu H$ if $G\subseteq H$,
+
+$\mu G+\mu H=\mu(G\cup H)+\mu(G\cap H)$ for all $G$, $H\in\frak T$,
+
+$\mu(\bigcup_{n\in\Bbb N}G_n)=\lim_{n\to\infty}\mu G_n$ for every
+non-decreasing sequence $\sequencen{G_n}$ in $\frak T$,
+
+$\bigcup\{G:G\in\frak T$, $\mu G<\infty\}=X$.}
+
+\noindent Then $\mu$ has a unique extension to a Borel-coded measure on
+$X$.
+
+\proof{{\bf (a)} For $A\subseteq X$ set
+$\theta A=\inf\{\mu G:A\subseteq G\in\frak T\}$.   Then $\theta$ is a
+submeasure on $\Cal PX$ (because $\mu(G\cup H)\le\mu G+\mu H$ for all $G$,
+$H\in\frak T$), extending $\mu$ (because $\mu G\le\mu H$ if
+$G\subseteq H$).   Set
+
+\Centerline{$\Sigma
+=\{E:E\subseteq X$, $\theta A=\theta(A\cap E)+\theta(A\setminus E)$
+for every $A\subseteq X\}$}
+
+\noindent and $\nu=\theta\restr\Sigma$, as in 563G.
+Let $\phi:\Cal T\to\Cal B_c(X)$ be an interpretation of Borel codes and
+$\pi$, $\pi':\Cal T\times\Bbb N\to\frak T$ corresponding
+functions as in 563Dc.
+Now $\Cal B_c(X)\subseteq\Sigma$.   \Prf\
+Given $T\in\Cal T$, $A\subseteq X$ and $n\in\Bbb N$,
+let $G\in\frak T$ be such that $A\subseteq G$ and
+$\mu G\le\theta A+2^{-n}$.   Then
+
+$$\eqalign{\theta A
+&\le\theta(A\cap\phi(T))+\theta(A\setminus\phi(T))
+\le\theta(A\cap\pi(T,n))+\theta(A\cap\pi'(T,n))\cr
+&\le\mu(G\cap\pi(T,n))+\mu(G\cap\pi'(T,n))\cr
+&=\mu(G\cap(\pi(T,n)\cup\pi'(T,n))+\mu(G\cap\pi(T,n)\cap\pi'(T,n))\cr
+&\le\mu G+\mu(\pi(T,n)\cap\pi'(T,n))
+\le\theta A+2^{-n+1}.\cr}$$
+
+\noindent As $A$ and $n$ are arbitrary, $\phi(T)\in\Sigma$.\ \Qed
+
+\medskip
+
+{\bf (b)} Let $\sequencen{T_n}$ be a sequence in $\Cal T$ such that
+$\sequencen{E_n}$ is disjoint, where $E_n=\phi(T_n)$ for each $n$;  set
+$E=\bigcup_{n\in\Bbb N}E_n$.
+Then, for any $k\in\Bbb N$,
+$E\subseteq\bigcup_{n\in\Bbb N}\pi(T_n,k+n)$, so
+
+$$\eqalignno{\sum_{n=0}^{\infty}\nu E_n
+&=\lim_{n\to\infty}\nu(\bigcup_{i\le n}E_i)
+\le\nu E
+\le\nu(\bigcup_{n\in\Bbb N}\pi(T_n,k+n))\cr
+\displaycause{563Da}
+&=\sum_{n=0}^{\infty}\nu E_n+\nu(\pi(T_n,k+n)\setminus E_n)\cr
+\displaycause{563Ga}
+&\le\sum_{n=0}^{\infty}\nu E_n+\mu(\pi(T_n,k+n)\cap\pi'(T_n,k+n))\cr
+&\le\sum_{n=0}^{\infty}\nu E_n+2^{-k-n}
+=2^{-k+1}+\sum_{n=0}^{\infty}\nu E_n;\cr}$$
+
+\noindent as $k$ is arbitrary, $\sum_{n=0}^{\infty}\nu E_n=\nu E$;  as
+$\sequencen{T_n}$ is arbitrary, $\nu\restr\Cal B_c(X)$ is a Borel-coded
+measure extending $\mu$.
+
+\medskip
+
+{\bf (c)} At the same time we see that if $\lambda$ is any other
+Borel-coded
+measure extending $\mu$, we must have $\lambda E\le\theta E=\nu E$ for
+every $E\in\Cal B_c(X)$.   In the other direction,
+
+$$\eqalign{\lambda(\phi(T))
+&\ge\lambda(\pi(T,n))-\lambda(\pi(T,n)\cap\pi'(T,n))\cr
+&=\mu(\pi(T,n))-\mu(\pi(T,n)\cap\pi'(T,n))
+\ge\nu(\phi(T))-2^{-n}\cr}$$
+
+\noindent for every $T\in\Cal T$ and $n\in\Bbb N$, so $\lambda E\ge\nu E$
+for every $E\in\Cal B_c(X)$.   Thus $\nu\restr\Cal B_c(X)$ is the only
+Borel-coded measure extending $\mu$.
+}%end of proof of 563H
+
+\leader{563I}{Theorem} Let $X$ be a Hausdorff second-countable space,
+$\mu$ a codably $\sigma$-finite Borel-coded measure on $X$, and
+$A\subseteq X$ an analytic set.   Then there are a codable Borel set
+$E\supseteq A$ and a sequence $\sequencen{K_n}$ of compact subsets
+of $A$ such that $E\setminus\bigcup_{n\in\Bbb N}K_n$ is negligible.
+Consequently $A$ is measured by the completion of $\mu$.
+
+\proof{{\bf (a)} By 563F(c-ii),
+there is a totally finite Borel-coded measure on
+$X$ with the same negligible sets as $\mu$;  so it will be enough to
+consider the case in which $\mu$ itself is totally finite.
+
+If $A$ is empty, the result is trivial.   So we may suppose that
+there is a continuous surjection $f:\NN\to A$.   For
+$\sigma\in S=\bigcup_{n\in\Bbb N}\BbbN^n$ set
+$I_{\sigma}=\{\alpha:\sigma\subseteq\alpha\in\NN\}$.
+Fix on a sequence running over a base for the topology of $X$ and the
+corresponding interpretation
+$\phi:\Cal T\to\Cal B_c(X)$ of Borel codes.
+
+\medskip
+
+{\bf (b)} For $\sigma\in S$ and $\xi<\omega_1$ define $E_{\sigma\xi}$ by
+saying that
+
+\Centerline{$E_{\sigma 0}=\overline{f[I_{\sigma}]}$,}
+
+\Centerline{$E_{\sigma,\xi+1}
+=\bigcup_{i\in\Bbb N}E_{\sigma^{\smallfrown}\fraction{i},\xi}$,}
+
+\Centerline{$E_{\sigma\xi}=\bigcap_{\eta<\xi}E_{\sigma\eta}$ if $\xi>0$ is
+a countable limit ordinal.}
+
+\noindent Then $\ofamily{\xi}{\omega_1}{E_{\sigma\xi}}$
+is a non-increasing family of sets including $f[I_{\sigma}]$.
+
+\medskip
+
+{\bf (c)} For every $\xi<\omega_1$,
+$\langle E_{\sigma\eta}\rangle_{\sigma\in S,\eta\le\xi}$ is a codable
+family of codable Borel sets.   \Prf\ It is enough to consider the case
+$\xi\ge\omega$.   Because $\xi$ is countable, we have a function
+$\tilde\Theta_1:\bigcup_{J\subseteq\xi}\Cal T^J\to\Cal T$
+such that $\phi(\tilde\Theta_1(\family{\eta}{J}{T_{\eta}}))
+=\bigcup_{\eta\in J}\phi(T_{\eta})$ for every $J\subseteq\xi$ (562Cb).
+Also, of course, we have a function $\Theta_0:\Cal T\to\Cal T$
+such that $\phi(\Theta_0(T))=X\setminus\phi(T)$ for every $T\in\Cal T$.
+Next, all the sets $E_{\sigma 0}$ are closed, therefore
+resolvable.   So we have a family $\family{\sigma}{S}{T_{\sigma 0}}$ in
+$\Cal T$ such that $\phi(T_{\sigma 0})=E_{\sigma 0}$ for every $\sigma$.
+Now we can set
+
+\Centerline{$T_{\sigma,\eta+1}
+=\tilde\Theta_1(\sequence{i}{T_{\sigma^{\smallfrown}\fraction{i},\eta}})$}
+
+\noindent if $\eta<\xi$,
+
+\Centerline{$T_{\sigma\eta}
+=\Theta_0(\tilde\Theta_1(\ofamily{\zeta}{\eta}
+   {\Theta_0(T_{\sigma\zeta})}))$}
+
+\noindent if $\eta\le\xi$ is a non-zero limit ordinal, and
+$\phi(T_{\sigma\eta})$ will be equal to $E_{\sigma\eta}$ as required.\ \Qed
+
+\medskip
+
+{\bf (d)} Let
+$\langle\epsilon_{\sigma}\rangle_{\sigma\in S}$ be a
+summable family of strictly positive real numbers, and for $\xi<\omega_1$
+set
+
+\Centerline{$\gamma(\xi)
+=\sum_{\sigma\in S}
+  \epsilon_{\sigma}\mu(E_{\sigma\xi})$.}
+
+\noindent Then $\gamma:\omega_1\to\Bbb R$ is non-increasing.   There is
+therefore a $\xi<\omega_1$ such that $\gamma(\xi+1)=\gamma(\xi)$ (561A),
+that is,
+$\mu(E_{\sigma,\xi+1})=\mu(E_{\sigma\xi})$ for every $\sigma\in S$.
+
+\medskip
+
+{\bf (e)(i)} Set $E=E_{\emptyset\xi}$.
+Of course $A=f[I_{\emptyset}]\subseteq E$.
+Now define $\alpha_n\in\NN$, for $n\in\Bbb N$, as follows.   Given
+$\ofamily{i}{m}{\alpha_n(i)}$, set
+
+\Centerline{$G_{nm}
+=\bigcup\{E_{\sigma\xi}:\sigma\in\BbbN^m$, $\sigma(i)\le\alpha_n(i)$
+for every $i<m\}$,}
+
+\Centerline{$G_{nmk}
+=\bigcup\{E_{\sigma^{\smallfrown}\fraction{j},\xi}:
+\sigma\in\BbbN^m$, $j\le k$, $\sigma(i)\le\alpha_n(i)$
+for every $i<m\}$,}
+
+\noindent Then $\langle G_{nm}\rangle_{n,m\in\Bbb N}$ is codable,
+and $\lim_{k\to\infty}\mu G_{nmk}=\mu G_{nm}$ for all $m$,
+$n\in\Bbb N$.   \Prf\ By (c), there is a family
+$\langle T_{\sigma\eta}\rangle_{\sigma\in S,\eta\le\xi+1}$
+in $\Cal T$ such
+that $\phi(T_{\sigma\eta})=E_{\sigma\eta}$ whenever $\sigma\in S$ and
+$\eta\le\xi+1$.
+This time, we need a function
+$\tilde\Theta_1:\bigcup_{J\subseteq S}\Cal T^J\to\Cal T$
+such that $\phi(\tilde\Theta_1(\family{\sigma}{J}{T_{\sigma}}))
+=\bigcup_{\sigma\in J}\phi(T_{\sigma})$ whenever
+$J\subseteq S$ and $\family{\sigma}{J}{T_{\sigma}}$ is a family
+in $\Cal T$, and a function $\Theta_3:\Cal T\times\Cal T\to\Cal T$ such
+that $\phi(\Theta_3(T,T'))=\phi(T)\setminus\phi(T')$ for all $T$,
+$T'\in\Cal T$.   Setting
+
+\Centerline{$T'_{nm}
+=\tilde\Theta_3(\langle T_{\sigma\xi}
+  \rangle_{\sigma\in\BbbN^m,\,\sigma(i)\le\alpha_n(i)\Forall i<m})$,}
+
+\Centerline{$T'_{nmk}
+=\tilde\Theta_3(\langle T_{\sigma^{\smallfrown}\fraction{j},\xi}
+  \rangle_{\sigma\in\BbbN^m,\,j\le k,\,\sigma(i)\le\alpha_n(i)
+  \Forall i<m})$,}
+
+\noindent we have $\phi(T'_{nm})=G_{nm}$ and $\phi(T'_{nmk})=G_{nmk}$ for
+all $m$, $n$, $k\in\Bbb N$.   In particular, all the $G_{nm}$ and $G_{nmk}$
+are codable Borel sets, and $\langle G_{nm}\rangle_{n,m\in\Bbb N}$ is
+codable.   Moreover, for any particular pair $m$ and $n$,
+$\sequence{k}{G_{nmk}}$ is a codable sequence;
+we therefore have $\lim_{k\to\infty}\mu G_{nmk}=\mu G$, where
+$G=\bigcup_{k\in\Bbb N}G_{nmk}$.   Next,
+
+\Centerline{$G=\bigcup\{E_{\sigma,\xi+1}:\sigma\in\BbbN^m$,
+$\sigma(i)\le\alpha_n(i)$ for every $i<m\}$,}
+
+\noindent so
+
+\Centerline{$G\symmdiff G_{nm}
+\subseteq\bigcup\{E_{\sigma\xi}\setminus E_{\sigma,\xi+1}:
+\sigma\in S\}$.}
+
+\noindent Since
+$\langle E_{\sigma\xi}\setminus E_{\sigma,\xi+1}
+\rangle_{\sigma\in S}$ is a countable family of negligible sets coded by
+$\langle\Theta_3(T_{\sigma\xi},T_{\sigma,\xi+1})\rangle_{\sigma\in S}$,
+$G\symmdiff G_{nm}$ also is negligible and
+
+\Centerline{$\mu G_{nm}=\mu G=\lim_{k\to\infty}\mu G_{nmk}$.\ \Qed}
+
+\noindent Take the least $\alpha_n(m)\in\Bbb N$ such that
+$\mu G_{n,m,\alpha_n(m)}\ge\mu G_{nm}-2^{-n-m}$, and continue.
+
+\medskip
+
+\quad{\bf (ii)} Set
+
+\Centerline{$L_n
+=\{\alpha:\alpha\in\NN$, $\alpha(i)\le\alpha_n(i)$ for every
+$i\in\Bbb N\}$.}
+
+\noindent Then $L_n$ is compact (561D), and $f[L_n]\subseteq A$.
+Also $f[L_n]\supseteq\bigcap_{m\in\Bbb N}G_{nm}$.   \Prf\ If
+$x\in\bigcap_{m\in\Bbb N}G_{nm}$, then for each $m\in\Bbb N$ let $\sigma_m$
+be the lexicographically first member of
+$\{\sigma:\sigma\in\Bbb N^m$, $\sigma(i)\le\alpha_n(i)$ for every $i<m\}$
+such that $x\in E_{\sigma_m,\xi}$, and let $\beta_m\in\NN$ be such
+that $\sigma_m\subseteq\beta_m$ and $\beta_m(i)=0$ for $i\ge m$.   Then
+$\beta_m\in L_n$ for every $m$, so $\sequence{m}{\beta_m}$ has a cluster
+point $\alpha\in L_n$.   \Quer\ If $f(\alpha)\ne x$, we have an open
+neighbourhood $U$ of $f(\alpha)$ such that $x\notin\overline{U}$.
+Let $m\in\Bbb N$ be such that $I_{\alpha\restr m}\subseteq f^{-1}[U]$;
+then there is a $k\ge m$ such that
+$\alpha\restr m=\beta_k\restr m=\sigma_k\restr m$.   Now
+
+\Centerline{$x\in E_{\sigma_k,\xi}
+\subseteq E_{\sigma_k,0}
+\subseteq\overline{f[I_{\sigma_k}]}
+\subseteq\overline{f[I_{\alpha\restr m}]}\subseteq\overline{U}$.
+\Bang}
+
+\noindent So $x=f(\alpha)\in f[L_n]$.\ \Qed
+
+But $\sequence{m}{G_{nm}}$ is codable, and $G_{n0}=E$,
+so we must have
+
+$$\eqalign{\mu(E\setminus f[L_n])
+&\le\mu(E\setminus G_{n0})
+  +\sum_{m=0}^{\infty}\mu(G_{nm}\setminus G_{n,m+1})\cr
+&=\sum_{m=0}^{\infty}\mu(G_{nm}\setminus G_{n,m,\alpha_n(m)})
+\le\sum_{m=0}^{\infty}2^{-n-m}
+=2^{-n+1}.\cr}$$
+
+\noindent(Of course $f[L_n]$ is compact, therefore closed, therefore
+measurable.)
+
+\medskip
+
+{\bf (f)} Set $K_n=f[L_n]$ for each $n$.   Then $\sequencen{K_n}$ is a
+sequence of compact subsets of $A$;  because the $K_n$ are resolvable,
+$F=\bigcup_{n\in\Bbb N}K_n$ is a codable Borel set.   For each $n$,
+
+\Centerline{$\mu(E\setminus F)\le\mu(E\setminus K_n)
+\le 2^{-n+1}$;}
+
+\noindent so $E\setminus F$ is negligible.
+Thus $E$ and $\sequencen{K_n}$ have the required properties.
+
+Of course it now follows that $E\setminus A\subseteq E\setminus F$ is
+negligible, so that the completion of $\mu$ measures $A$.
+}%end of proof of 563I
+
+\leader{563J}{Baire-coded measures} \cmmnt{Working from 562T,
+we can develop a
+theory of Baire measures on general topological spaces, as follows.}
+If $X$ is a topological space, and $\CalBa_c(X)$ its algebra of
+codable Baire sets,
+a {\bf Baire-coded measure} on $X$ will be a
+function $\mu:\CalBa_c(X)\to[0,\infty]$ such that $\mu\emptyset=0$ and
+$\mu(\bigcup_{n\in\Bbb N}E_n)=\sum_{n=0}^{\infty}\mu E_n$ for every
+disjoint codable sequence $\sequencen{E_n}$ in $\CalBa_c(X)$.
+
+\vleader{72pt}{563K}{Proposition} (a)
+If $X$ and $Y$ are topological spaces, $f:X\to Y$ is a
+continuous function and $\mu$ is a Baire-coded measure on $X$, then
+$F\mapsto\mu f^{-1}[F]:\CalBa_c(Y)\to[0,\infty]$ is a Baire-coded measure
+on $Y$.
+
+(b) Suppose that $\mu$ is a Baire-coded measure on a
+topological space $X$, and $\sequencen{E_n}$ is a codable family in
+$\CalBa_c(X)$.   Then
+
+\quad(i) $\mu(\bigcup_{n\in\Bbb N}E_n)\le\sum_{n=0}^{\infty}\mu E_n$;
+
+\quad(ii) If $\sequencen{E_n}$ is non-decreasing,
+$\mu(\bigcup_{n\in\Bbb N}E_n)=\lim_{n\to\infty}\mu E_n$;
+
+\quad(iii) If $\sequencen{E_n}$ is non-increasing and $\mu E_0$ is finite,
+then $\mu(\bigcap_{n\in\Bbb N}E_n)=\lim_{n\to\infty}\mu E_n$.
+
+(c) Let $X$ be a topological space and $\Mu$ a non-empty
+upwards-directed family of Baire-coded measures on $X$.   Set
+$\nu E=\sup_{\mu\in\Mu}\mu E$ for every codable Baire set $E\subseteq X$.
+Then $\nu$ is a Baire-coded measure on $X$.
+
+\proof{{\bf (a)} Use 562T(b-iv).
+
+\medskip
+
+{\bf (b)} Recall that, by 562T(b-i),
+there must be a continuous function $f:X\to\BbbR^{\Bbb N}$ and a
+codable sequence $\sequencen{F_n}$ in $\Cal B_c(\BbbR^{\Bbb N})$ such that
+$E_n=f^{-1}[F_n]$ for every $n$.
+By (a), $F\mapsto\mu f^{-1}[F]:\Cal B_c(\BbbR^{\Bbb N})\to[0,\infty]$ is a
+Borel-coded measure on $\BbbR^{\Bbb N}$.   Applying 563Ba to
+$\sequencen{F_n}$, we get the result here.
+
+\medskip
+
+{\bf (c)} As 563E.
+}%end of proof of 563K
+
+\leader{563L}{Proposition}
+Suppose that $X$ is a topological space;  write $\Cal G$
+for the lattice of cozero subsets of $X$.   Let
+$\mu:\Cal G\to[0,\infty]$ be such that
+
+\inset{$\mu\emptyset=0$,
+
+$\mu G\le\mu H$ if $G\subseteq H$,
+
+$\mu G+\mu H=\mu(G\cup H)+\mu(G\cap H)$ for all $G$, $H\in\Cal G$,
+
+$\mu(\bigcup_{n\in\Bbb N}G_n)=\lim_{n\to\infty}\mu G_n$ whenever
+$\sequencen{G_n}$ is a
+non-decreasing sequence in $\Cal G$ and there is a sequence
+$\sequencen{f_n}$ of continuous functions from $X$ to $\Bbb R$ such that
+$G_n=\{x:f_n(x)\ne 0\}$ for every
+$n$,\cmmnt{\footnote{\smallerfonts Observe that
+$\bigcup_{n\in\Bbb N}G_n$ is a cozero set, defined by
+$f:X\to\eightBbb{R}$ where
+$f(x)=\sup_{n\in\Bbb N}\min(2^{-n},|f_n(x)|)$ for each $x$.}}
+
+$\mu G=\sup\{\mu H:H\in\Cal G$, $H\subseteq G$, $\mu H<\infty\}$ for every
+$G\in\Cal G$.
+}
+
+\noindent Then there is a Baire-coded measure on $X$ extending
+$\mu$;  if $\mu X$ is finite, then the extension is unique.
+
+\proof{{\bf (a)} Suppose to begin with that $\mu X$ is finite.
+
+\medskip
+
+\quad{\bf (i)} For
+each continuous $f:X\to\BbbR^{\Bbb N}$, consider the
+functional $G\mapsto\mu f^{-1}[G]$ for open $G\subseteq\BbbR^{\Bbb N}$.
+This satisfies the conditions of 563H.   \Prf\ Only the fourth requires
+attention.    Fix a metric $\rho$ defining the topology of
+$\BbbR^{\Bbb N}$.   If $\sequencen{H_n}$ is a non-decreasing sequence
+of open sets in $\BbbR^{\Bbb N}$ with union $H$, set
+
+\Centerline{$h_n(z)=\min(1,\rho(z,\BbbR^{\Bbb N}\setminus H_n))$}
+
+\noindent for $n\in\Bbb N$ and $z\in\BbbR^{\Bbb N}$, counting
+$\rho(z,\emptyset)$ as $\infty$ if necessary.   In this case,
+setting $G_n=f^{-1}[H_n]$, $G_n=\{x:h_nf(x)>0\}$ for each $n$;  so
+
+\Centerline{$\mu f^{-1}[H]=\mu(\bigcup_{n\in\Bbb N}G_n)
+=\lim_{n\to\infty}\mu G_n=\lim_{n\to\infty}\mu f^{-1}[H_n]$.  \Qed}
+
+\noindent There is therefore a unique
+Borel-coded measure $\nu_f$ on $\BbbR^{\Bbb N}$ such that
+$\nu_fH=\mu f^{-1}[H]$ for every open set $G\subseteq\BbbR^{\Bbb N}$.
+
+\medskip
+
+\quad{\bf (ii)} If $f:X\to\BbbR^{\Bbb N}$ is continuous and
+$F\in\Cal B_c(\BbbR^{\Bbb N})$, then
+$\nu_fF=\inf\{\mu G:f^{-1}[F]\subseteq G\in\Cal G\}$.   \Prf\
+By 563Fd, $\nu_f$ is outer regular with respect to the open sets, so
+
+$$\eqalign{\nu_fF
+&=\inf\{\nu_fH:H\subseteq\BbbR^{\Bbb N}\text{ is open}, F\subseteq H\}\cr
+&=\inf\{\mu f^{-1}[H]:H\subseteq\BbbR^{\Bbb N}\text{ is open},
+   F\subseteq H\}
+\ge\inf\{\mu G:f^{-1}[F]\subseteq G\in\Cal G\}.\cr}$$
+
+\noindent In the other direction, if $G\in\Cal G$ and
+$f^{-1}[F]\subseteq G$, take any $\epsilon>0$.
+There is an open set $H\subseteq\BbbR^{\Bbb N}$ such that
+$\BbbR^{\Bbb N}\setminus H\subseteq F$ and
+$\nu_f(F\cap H)\le\epsilon$.
+But this means $G\cup f^{-1}[H]=X$ and
+
+\Centerline{$\mu G\ge\mu X-\mu f^{-1}[H]
+=\nu_f\BbbR^{\Bbb N}-\nu_fH\ge\nu_fF-\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, $\nu_fF\le G$;  as $G$ is arbitrary,
+$\nu_fF\le\inf\{\mu G:f^{-1}[F]\subseteq G\in\Cal G\}$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)}
+This means that if we set $\nu E=\inf\{\mu G:E\subseteq G\in\Cal G\}$ for
+$E\in\CalBa_c(X)$, we shall have $\nu f^{-1}[F]=\nu_fF$ whenever
+$f:X\to\BbbR^{\Bbb N}$ is continuous and $F\in\Cal B_c(X)$.
+It follows that $\nu$ is a Baire-coded measure on $X$.   \Prf\ Of course
+$\nu\emptyset=0$.
+If $\sequencen{E_n}$ is a disjoint
+codable sequence in $\CalBa_c(X)$, there are a continuous
+$f:X\to\BbbR^{\Bbb N}$ and a codable sequence $\sequencen{F_n}$ of coded
+Borel sets in $\BbbR^{\Bbb N}$ such that $E_n=f^{-1}[F_n]$ for every $n$,
+by 562T(b-i).   Set $F'_n=F_n\setminus\bigcup_{i<n}F_i$ for $n\in\Bbb N$;
+then $\sequencen{F'_n}$ is a codable sequence (562Kc), so
+
+\Centerline{$\nu(\bigcup_{n\in\Bbb N}E_n)
+=\nu_f(\bigcup_{n\in\Bbb N}F'_n)
+=\sum_{n=0}^{\infty}\nu_fF'_n
+=\sum_{n=0}^{\infty}\nu E_n$.  \Qed}
+
+\noindent Of course $\nu$ extends $\mu$.
+
+\medskip
+
+\quad{\bf (iv)}
+As for uniqueness, if $\nu'$ is any other Baire-coded measure on $X$
+extending $\mu$, and $f:X\to\BbbR^{\Bbb N}$ is a continuous function, then
+$F\mapsto\nu'f^{-1}[F]$ is a Borel-coded measure on
+$\BbbR^{\Bbb N}$ which agrees
+with $\nu_f$ on open sets and is therefore equal to $\nu_f$ (563Fg);  
+it follows at once that $\nu'=\nu$.
+
+\medskip
+
+{\bf (b)} For the general case, let $\Cal G^f$ be
+$\{H:H\in\Cal G$, $\mu H<\infty\}$, and for $H\in\Cal G^f$ define
+$\mu_H:\Cal G\to\coint{0,\infty}$ by setting $\mu_HG=\mu(G\cap H)$ for
+every $G\in\Cal G$.   Then $\mu_H$ satisfies all the conditions of the
+proposition.   \Prf\ Everything is elementary;  for the hypothesis on
+non-decreasing sequences in $\Cal G$, note that there is a continuous
+function $f:X\to\Bbb R$ such that $H=\{x:f(x)\ne 0\}$, so that
+if $\sequencen{f_n}$ is a
+sequence of real-valued continuous function defining a sequence
+$\sequencen{G_n}$ in $\Cal G$, then $\sequencen{f_n\times f}$ defines
+$\sequencen{G_n\cap H}$.\ \Qed
+
+There is therefore a unique Baire-coded measure $\nu_H$ on $X$ extending
+$\mu_H$.   Now if $H$, $H'\in\Cal G^f$ and $H\subseteq H'$,
+$\nu_HE=\nu_{H'}(E\cap H)$ for every $E\in\CalBa_c(X)$.   \Prf\ The
+functional $E\mapsto\nu_{H'}(E\cap H)$ is a Baire-coded measure on $X$
+extending $\mu_H$, so must be equal to $\nu_H$.\ \QeD\   In particular,
+$\nu_HE\le\nu_{H'}E$ for every codable Baire set $E\subseteq X$.
+
+Now set $\nu E=\sup\{\nu_HE:H\in\Cal G^f\}$ for $E\in\CalBa_c(X)$.
+By 563Kc, $\nu$ is a Baire-coded measure on $X$;  and by the final
+hypothesis of this proposition, $\nu$ extends $\mu$.
+}%end of proof of 563L
+
+\leader{563M}{Measure algebras} If $\mu$ is either a Borel-coded measure or
+a Baire-coded measure, we can form the quotient Boolean algebra
+$\frak A=\dom\mu/\{E:\mu E=0\}$ and the functional
+$\bar\mu:\frak A\to[0,\infty]$ defined by setting
+$\bar\mu E^{\ssbullet}=\mu E$ for every $E\in\dom\mu$;\cmmnt{ as in 321H,}
+$\bar\mu$ is a strictly positive additive functional from $\frak A$ to
+$[0,\infty]$.   As in \S323, we have a topology and
+uniformity on $\frak A$ defined by the pseudometrics
+$(a,b)\mapsto\bar\mu(c\Bcap(a\Bsymmdiff b))$ for $c\in\frak A$ of
+finite measure;  if $\mu$ is semi-finite, the topology is Hausdorff.
+
+\leader{563N}{Theorem} Let $X$ be a second-countable space, and $\mu$ a
+codably $\sigma$-finite Borel-coded measure on $X$.   Let $\frak A$ and
+$\bar\mu$ be as in 563M.   Then $\frak A$ is complete for its
+measure-algebra uniformity, therefore Dedekind complete.
+
+\proof{{\bf (a)} There is a codable sequence of sets of finite measure
+covering $X$.   By 562Pb, we can find a codably Borel equivalent
+second-countable topology $\frak S$
+on $X$, generated by a countable algebra $\Cal E$ of subsets of $X$,
+for which all these sets are open, so that $\mu$ becomes locally finite,
+while $\Cal S$ is regular and second-countable.
+Let $\sequencen{H_n}$ be a sequence running over $\Cal E$;  note that
+$\sequencen{H_n}$ is codable.
+
+\medskip
+
+{\bf (b)} $\{H^{\ssbullet}:H\in\Cal E\}$ is dense in $\frak A$ for the
+measure-algebra topology.   \Prf\ Suppose that $a$, $c\in\frak A$,
+$\epsilon>0$ and $\bar\mu c<\infty$.   Express $a$ as $E^{\ssbullet}$
+and $c$ as $F^{\ssbullet}$
+where $E$, $F\in\Cal B_c(X)$.   By 563Fd, there is a $G\in\frak S$ such
+that $E\cap F\subseteq G$ and $\mu(G\setminus(E\cap F))\le\epsilon$.   
+Setting
+$G_n=\bigcup\{H_i:i\le n$, $H_i\subseteq G\}$,  $\sequence{n}{G_n\cap F}$
+is a non-decreasing codable sequence with union $G\cap F$, so there is an
+$n\in\Bbb N$ such that $\mu((G\setminus G_n)\cap F)\le\epsilon$.   In this
+case
+
+\Centerline{$\bar\mu(c\Bcap(a\Bsymmdiff G_n^{\ssbullet}))
+=\mu(F\cap(E\symmdiff G_n))
+\le\mu(F\cap(G\setminus G_n))+\mu(G\setminus(E\cap F))
+\le 2\epsilon$,}
+
+\noindent while $G_n\in\Cal E$.   As $a$, $c$ and $\epsilon$ are arbitrary,
+we have the result.\ \Qed
+
+\medskip
+
+{\bf (c)} $\frak A$ is complete for the measure-algebra uniformity.   \Prf\
+Set $\tilde H_n=\bigcup\{H_i:i\le n$, $\mu H_i<\infty\}$,
+$c_n=\tilde H_n^{\ssbullet}$ for each $n$.
+Let $\Cal F$ be a Cauchy filter on $\frak A$ for the measure-algebra
+uniformity.   For each $n\in\Bbb N$, there is an $A\in\Cal F$ such that
+$\bar\mu(c_n\Bcap(a\Bsymmdiff b))\le 2^{-n}$ for all
+$a$, $b\in A$;  there is a $b_0\in A$;  and there is an $m\in\Bbb N$ such
+that $\bar\mu(c_n\Bcap(b_0\Bsymmdiff H_m^{\ssbullet}))\le 2^{-n}$, so
+that
+
+\Centerline{\hfill
+$\{a:\bar\mu(c_n\Bcap(a\Bsymmdiff H_m^{\ssbullet}))\le 2^{-n+1}\}
+\in\Cal F$.\hfill(*)}
+
+\noindent Let $m_n$ be the first $m$ for which (*) is true, and set $d_n=H_{m_n}^{\ssbullet}$.   Note that
+
+\Centerline{$\bar\mu(c_i\Bcap(d_{i+1}\Bsymmdiff d_i))\le 3\cdot 2^{-i}$}
+
+\noindent for each $i$, because there must be an $a\in\frak A$ such that
+$\bar\mu(c_i\Bcap(a\Bsymmdiff d_i))\le 2^{-i+1}$
+and $\bar\mu(c_{i+1}\Bcap(a\Bsymmdiff d_{i+1}))\le 2^{-i}$.
+
+Set $E=\bigcap_{n\in\Bbb N}\bigcup_{i\ge n}H_{m_i}$;  because
+$\sequencen{\bigcup_{i\ge n}H_{m_i}}$ is codable, $E\in\Cal B_c(X)$.   Set
+$d=E^{\ssbullet}$.   If $n\in\Bbb N$, then
+
+\Centerline{$E\symmdiff H_{m_n}
+\subseteq\bigcup_{i\ge n}H_{m_{i+1}}\symmdiff H_{m_i}$}
+
+\noindent and $\sequence{i}{\tilde H_n\cap(H_{m_{i+1}}\symmdiff H_{m_i})}$
+is codable, so
+
+$$\eqalign{\bar\mu(c_n\Bcap(d\Bsymmdiff d_n))
+&=\mu(\tilde H_n\cap(E\symmdiff H_{m_n}))
+\le\sum_{i=n}^{\infty}\mu(\tilde H_n\cap(H_{m_{i+1}}\symmdiff H_{m_i}))\cr
+&\le\sum_{i=n}^{\infty}3\cdot 2^{-i}
+=6\cdot 2^{-n}.\cr}$$
+
+Take any $c\in\frak A$ such that $\bar\mu c$ is finite, and $\epsilon>0$.
+Express $c$ as $F^{\ssbullet}$, where $\mu F<\infty$.   Then
+$\sequencen{F\cap\tilde H_n}$ is a non-decreasing codable sequence with
+union $F$, so there is an $n\in\Bbb N$ such that
+$\mu(F\setminus\tilde H_n)\le\epsilon$ and $2^{-n}\le\epsilon$.   Now
+
+$$\eqalign{
+\{a:\bar\mu(c\Bcap(a\Bsymmdiff d))\le 9\epsilon\}
+&\supseteq\{a:\bar\mu(c_n\Bcap(a\Bsymmdiff d))\le 8\epsilon\}\cr
+&\supseteq\{a:\bar\mu(c_n\Bcap(a\Bsymmdiff d_n))\le 2\epsilon\}
+\in\Cal F.\cr}$$
+
+\noindent As $c$ and $\epsilon$ are arbitrary, $\Cal F\to d$
+for the measure-algebra topology;  as $\Cal F$ is arbitrary, $\frak A$ is
+complete.\ \Qed
+
+\medskip
+
+{\bf (d)} Now suppose that $A\subseteq\frak A$ is a non-empty set,
+and $B$ the family of its upper bounds, so that $B$ is downwards-directed.
+As in 323D, the filter $\Cal F(B\closedownarrow)$ generated by
+$\{B\cap[0,b]:b\in B\}$ is Cauchy for the measure-algebra uniformity,
+so has a limit, which is
+$\inf B=\sup A$.   As $A$ is arbitrary, $\frak A$ is Dedekind complete.
+}%end of proof of 563N
+
+\exercises{\leader{563X}{Basic exercises (a)}
+%\spheader 563Xa
+Let $X$, $Y$ be second-countable spaces, $\mu$ a
+Borel-coded measure on $X$, and $f:X\to Y$ a codable Borel function.
+Show that $F\mapsto\mu f^{-1}[F]:\Cal B_c(Y)\to[0,\infty]$ is a Borel-coded
+measure on $Y$.
+%563A
+
+\spheader 563Xb Let $X$ be a regular second-countable space and $\mu$ a
+locally finite Borel-coded measure on $X$.   Show that for every
+$E\in\Cal B_c(X)$ there are an F$_{\sigma}$ set $F\subseteq E$ and a
+G$_{\delta}$ set $H\supseteq E$ such that $\mu(H\setminus F)=0$.
+%563F
+
+\spheader 563Xc Let $X$ be a regular second-countable space.   Show that a
+function $\mu$ is a codable Borel measure on $X$ iff it is a codable Baire
+measure on $X$.   \Hint{562Xk, 562Xl.}
+%563J
+
+\spheader 563Xd Let $X$ be a topological space.   Show that any semi-finite
+Baire-coded measure on $X$ is inner regular with respect to the zero
+sets.
+%563K
+
+\spheader 563Xe\dvAnew{2014} 
+Let $X$ be a zero-dimensional compact Hausdorff space, $\Cal E$ the 
+algebra of open-and-closed subsets of $X$ and 
+$\mu_0:\Cal E\to\coint{0,\infty}$ an additive functional.   
+Show that there is a unique Baire-coded measure on $X$ extending $\mu_0$.
+%563L
+
+%\leader{563Y}{Further exercises (a)}
+}%end of exercises
+
+\leader{563Z}{Problem} Suppose we define `probability space' in the
+conventional way, following literally the formulations in 111A, 112A and
+211B.   Is it relatively consistent with ZF to suppose that every
+probability space is purely atomic in the sense of 211K?
+
+\endnotes{
+\Notesheader{563} The arguments above are generally
+drawn from those used earlier in this treatise;  the new discipline
+required
+is just to systematically respect the self-denying ordinance renouncing the
+axiom of choice, as in part (f) of the proof of 563F.   
+This does involve us in deeper analyses at a number of
+points.   In 563Dc, for instance, we need functions $\pi$,
+$\pi'$ defined on $\Cal T\times\Bbb N$, not $\Cal B_c(X)\times\Bbb N$,
+because the rank function of $\Cal T$ gives us a foundation for induction.
+(In 563Db we can use a function $\pi^*$ defined on $\frak T\times\Bbb N$,
+but this is because we have canonical codes for open sets.)
+In 563I we can no longer assume the existence of measurable envelopes, let
+alone a whole family of them as used in the standard proof in 431A, and
+have to find another construction, watching carefully to make sure that we
+get not only a countable ordinal $\xi$ but a codable family of sets
+$E_{\sigma\eta}$ leading to the measurable envelopes $E_{\sigma\xi}$;
+back in 561A, there was a moment when we needed to resist the temptation to
+suppose that a sequence in $\omega_1$ must have a supremum in $\omega_1$.
+
+Note that we have to distinguish between `negligible' and `outer measure
+zero'.   The natural meaning of the latter is
+`for every $\epsilon>0$ there is a measurable set
+$E\supseteq A$ with $\mu E\le\epsilon$'.   Even for outer regular
+measures, when a set of outer measure zero must be included in open sets of
+small measure, we cannot be sure that there is a sequence of such sets from
+which we can define a set of measure zero including $A$ (565Xb).
+
+In 563K I have kept the proofs short by quoting results from earlier in the
+section.   But you may find it illuminating to look for a list of
+properties of codable families of codable Baire sets which would support
+formally independent proofs.
+
+In 563M-563N I am taking care to avoid the phrase `measure algebra' in
+the formal exposition.   The reason is that the definition in \S321
+demands a Dedekind $\sigma$-complete algebra, and in the generality of
+563M there is no reason to suppose that this will be satisfied.   In the
+special context of 563N, of course, there is no difficulty.
+
+There is something I ought to point out here.   The problem is not that the
+principal arguments of \S\S111-113 and \S\S121-123 depend on the axiom of
+choice.   If you wish, you can continue to define `$\sigma$-algebra',
+`measure', `outer measure', `measurable function' and `integral' with the
+same forms of words as used in Volume 1, and the basic theorems, up to and
+including the convergence theorems, will still be true.   The problem is
+that on these definitions the formulae of \S\S114-115 may not give an outer
+measure, and we may have nothing corresponding to Lebesgue measure.   It
+does not quite follow that every probability space is purely atomic
+(there is a question here:  see
+563Z), but clearly we are not going to get a theory which can respond to
+any of the basic challenges dealt with in Volume 2
+(Fundamental Theorem of Calculus, geometric measure
+theory, probability distributions, Fourier series), and I think it more
+useful to develop a new structure which can carry an effective
+version of the Lebesgue theory (see \S565).
+}%end of notes
+
+\discrpage
+

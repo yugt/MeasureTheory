@@ -1,0 +1,893 @@
+\frfilename{mt222.tex}
+\versiondate{20.11.03/18.10.04}
+\copyrightdate{2004}
+
+
+%$(\DiniD^+f)(x)=(\DiniD^-f)(x)
+%=(\Dinid^+f)(x)=(\Dinid^-f)(x)$
+
+\def\chaptername{The Fundamental Theorem of Calculus}
+\def\sectionname{Differentiating an indefinite integral}
+     
+\newsection{222}
+     
+I come now to the first of the two questions mentioned in the
+introduction to this chapter:  if $f$ is an integrable function on
+$[a,b]$, what is $\bover{d}{dx}\int_a^xf$?   It turns out that this
+derivative exists and is equal to $f$ almost everywhere (222E).   The
+argument is based on a striking property of monotonic functions:  they
+are differentiable almost everywhere (222A), and we can bound the
+integrals of their derivatives (222C).
+     
+\leader{222A}{Theorem} Let $I\subseteq\Bbb R$ be an interval and
+$f:I\to\Bbb R$ a monotonic function.   Then $f$ is differentiable almost 
+everywhere in $I$.
+     
+\cmmnt{\medskip
+     
+\noindent{\bf Remark} If I seem to be speaking of a measure on
+$\Bbb R$ without naming it, as here, I mean Lebesgue measure.
+}%end of comment
+     
+\proof{ As usual, write $\mu^*$ for Lebesgue outer measure
+on $\Bbb R$, $\mu$ for Lebesgue measure.
+     
+\medskip
+     
+{\bf (a)} To begin with (down to the end of (c) below), let us suppose that $f$ is non-decreasing and $I$ is a bounded open interval
+on which $f$ is bounded;  say $|f(x)|\le M$ for $x\in I$.
+For any closed subinterval $J=[a,b]$ of $I$, write
+$f^*(J)$ for the open interval $\ooint{f(a),f(b)}$.   For $x\in I$, write
+     
+\Centerline{$\DiniD f(x)=\limsup_{h\to 0}{1\over h}(f(x+h)-f(x))$,
+\quad$\Dinid f(x)=\liminf_{h\to 0}{1\over h}(f(x+h)-f(x))$,}
+     
+\noindent allowing the value $\infty$ in both cases.   Then $f$ is
+differentiable at $x$ iff $\DiniD f(x)=\Dinid f(x)\in\Bbb R$.
+Because surely $\DiniD f(x)\ge \Dinid f(x)\ge 0$,  $f$ will be
+differentiable at $x$ iff $\DiniD f(x)$ is finite and $\DiniD f(x)\le \Dinid f(x)$.
+     
+I therefore have to show that the sets
+     
+\Centerline{$\{x:x\in I,\,\DiniD f(x)=\infty\}$,
+\quad$\{x:x\in I,\,\DiniD f(x)>\Dinid f(x)\}$}
+     
+\noindent are negligible.
+     
+\medskip
+     
+{\bf (b)} Let us take $A=\{x:x\in I,\,\DiniD f(x)=\infty\}$ first.   Fix an
+integer $m\ge 1$ for the moment, and set
+     
+\Centerline{$A_m=\{x:x\in I,\,\DiniD f(x)>m\}\supseteq A$.}
+     
+\noindent Let $\Cal I$ be the family of non-trivial closed intervals
+$[a,b]\subseteq I$ such that $f(b)-f(a)\ge m(b-a)$;   then
+$\mu f^*(J)\ge m\mu J$ for every $J\in\Cal I$.   If $x\in A_m$,
+then for any $\delta>0$ we have an $h$ with $0<|h|\le\delta$ and
+${1\over h}(f(x+h)-f(x))>m$, so that
+     
+\Centerline{$[x,x+h]\in\Cal I$ if $h>0$,
+\quad$[x+h,x]\in\Cal I$ if $h<0$;}
+     
+\noindent
+thus every member of $A_m$ belongs to arbitrarily small intervals in $\Cal I$.   By Vitali's theorem (221A), there is a countable disjoint set $\Cal I_0\subseteq\Cal I$ such that
+$\mu(A\setminus\bigcup\Cal I_0)=0$.
+Now, because $f$ is non-decreasing,
+$\langle f^*(J)\rangle_{J\in\Cal I_0}$ is disjoint, and all the $f^*(J)$ are included in $[-M,M]$, so $\sum_{J\in\Cal I_0}\mu f^*(J)\le 2M$
+and $\sum_{J\in\Cal I_0}\mu J\le 2M/m$.   Because
+$A_m\setminus\bigcup\Cal I_0$ is negligible,
+     
+     
+\Centerline{$\mu^*A\le\mu^*A_m\le\Bover{2M}{m}$.}
+     
+\noindent As $m$ is arbitrary, $\mu^*A=0$ and $A$ is negligible.
+     
+\medskip
+     
+{\bf (c)} Now consider $B=\{x:x\in I,\,\DiniD f(x)>\Dinid f(x)\}$.   For $q$, $q'\in\Bbb Q$ with $0\le q<q'$, set
+     
+     
+\Centerline{$B_{qq'}=\{x:x\in I,\,\Dinid f(x)< q,\,\DiniD f(x)>q'\}$.}
+     
+\noindent  Fix such $q$, $q'$ for the moment, and write
+$\gamma=\mu^*B_{qq'}$.  Take any $\epsilon>0$, and let $G$ be an open
+set including $B_{qq'}$ such that $\mu G\le\gamma+\epsilon$ (134Fa).
+Let $\Cal J$ be the set of non-trivial closed intervals
+$[a,b]\subseteq I\cap G$ such that $f(b)-f(a)\le q(b-a)$;  this time  $\mu f^*(J)\le q\mu J$ for $J\in\Cal J$.   Then every member of $B_{qq'}$ is included
+in arbitrarily small members of $\Cal J$, so there is a countable
+disjoint $\Cal J_0\subseteq\Cal J$ such that $B_{qq'}\setminus\bigcup\Cal
+J_0$ is
+negligible.   Let $L$ be the set of endpoints of members of $\Cal J_0$;
+then $L$ is a countable union of doubleton sets, so is countable, therefore
+negligible.  Set
+     
+\Centerline{$C=B_{qq'}\cap\bigcup\Cal J_0\setminus L$;}
+     
+\noindent  then
+$\mu^*C=\gamma$.   Let $\Cal I$ be the set of non-trivial closed
+intervals $J=[a,b]$ such that (i) $J$ is
+included in one of the members of $\Cal J_0$ (ii)
+$f(b)-f(a)\ge q'(b-a)$;  now $\mu f^*(J)\ge q'\mu J$ for every $J\in\Cal
+I$.   Once again, because every member of $C$ is an interior point of
+some member of $\Cal J_0$, every point of $C$ belongs to arbitrarily
+small members of $\Cal I$;  so there is a countable disjoint $\Cal
+I_0\subseteq\Cal I$ such that $\mu(C\setminus\bigcup\Cal I_0)=0$.
+     
+As in (b) above,
+     
+\Centerline{$\gamma q'\le q'\mu(\bigcup\Cal I_0)
+=\sum_{I\in\Cal I_0}q'\mu I
+\le\sum_{I\in\Cal I_0}\mu f^*(I)
+=\mu(\bigcup_{I\in\Cal I_0}f^*(I))$.}
+     
+\noindent   On the other hand,
+     
+$$\eqalign{\mu(\bigcup_{J\in\Cal J_0}f^*(J))
+&=\sum_{J\in\Cal J_0}\mu f^*(J)
+\le q\sum_{J\in\Cal J_0}\mu J
+=q\mu(\bigcup\Cal J_0)\cr
+&\le q\mu(\bigcup\Cal J)
+\le q\mu G
+\le q(\gamma+\epsilon).\cr}$$
+     
+     
+\noindent But $\bigcup_{I\in\Cal I_0}f^*(I)\subseteq\bigcup_{J\in\Cal
+J_0}f^*(J)$, because every member of $\Cal I_0$ is included in a member
+of $\Cal J_0$, so $\gamma q'\le q(\gamma+\epsilon)$ and
+$\gamma\le \epsilon q/(q'-q)$.
+As $\epsilon$ is arbitrary, $\gamma=0$.
+     
+Thus every $B_{qq'}$ is negligible.   Consequently $B=\bigcup_{q,q'
+\in\Bbb Q,0\le q<q'}B_{qq'}$ is negligible.
+     
+\medskip
+     
+{\bf (d)} This deals with the case of a bounded open interval on which
+$f$ is bounded and non-decreasing.
+Still for non-decreasing $f$, but for an arbitrary interval $I$, observe
+that $K=\{(q,q'):q,\,q'\in I\cap\Bbb Q,\,q<q'\}$ is countable and that
+$I\setminus\bigcup_{(q,q')\in K}\ooint{q,q'}$ has at most two points
+(the endpoints of $I$, if any), so is negligible.   If
+we write $S$ for the set of points of $I$ at which $f$ is not
+differentiable, then from (a)-(c) we see that $S\cap\ooint{q,q'}$ is
+negligible for every
+$(q,q')\in K$, so that $S\cap\bigcup_{(q,q')\in K}\ooint{q,q'}$ is
+negligible and $S$ is negligible.
+     
+\medskip
+     
+{\bf (e)} Thus we are done if $f$ is non-decreasing.   For
+non-increasing
+$f$, apply the above to $-f$, which is differentiable at exactly the
+same points as $f$.
+}%end of proof of 222A
+     
+\leader{222B}{Remarks}\dvro{ If}{ {\bf (a)} I note that in the above argument I am 
+using such formulae as $\sum_{J\in\Cal I_0}\mu f^*(J)$.
+This is because Vitali's theorem leaves it open whether the families $\Cal I_0$ will 
+be finite or infinite.   The sum must be
+interpreted along the lines laid down in
+112Bd in Volume 1;  generally, $\sum_{k\in K}a_k$, where $K$ is an
+arbitrary set and every $a_k\ge 0$, is to be
+$\sup_{L\subseteq K\text{ is finite}}\sum_{k\in L}a_k$, with the convention that $\sum_{k\in\emptyset}a_k=0$.
+Now, in this context, if} $(X,\Sigma,\mu)$ is a measure space, $K$ is a
+countable set, and $\family{k}{K}{E_k}$ is a family in $\Sigma$,
+     
+\Centerline{$\mu(\bigcup_{k\in K}E_k)\le\sum_{k\in K}\mu E_k$,}
+     
+\noindent with equality if $\family{k}{K}{E_k}$ is disjoint.
+\prooflet{\Prf\ If $K=\emptyset$,
+this is trivial.   Otherwise, let $n\mapsto k_n:\Bbb N\to K$ be a
+surjection, and set
+     
+\Centerline{$K_n=\{k_i:i\le n\}$, \quad$G_n=\bigcup_{i\le n}E_{k_i}
+=\bigcup_{k\in K_n}E_k$}
+     
+\noindent for each $n\in\Bbb N$.   Then $\sequencen{G_n}$
+is a non-decreasing sequence with union $E=\bigcup_{k\in K}E_k$, so
+     
+\Centerline{$\mu E=\lim_{n\to\infty}\mu G_n=\sup_{n\in\Bbb N}\mu G_n$;}
+     
+\noindent and
+     
+\Centerline{$\mu G_n\le\sum_{k\in K_n}\mu E_k\le\sum_{k\in K}\mu E_k$}
+     
+\noindent for
+every $n$, so $\mu E\le\sum_{k\in K}\mu E_k$.   If the $E_k$ are
+disjoint, then $\mu G_n$ is precisely $\sum_{k\in K_n}\mu E_k$ for
+each $n$;  but as $\sequencen{K_n}$ is a non-decreasing sequence of
+sets with union $K$, every finite subset of $K$ is included in some
+$K_n$, and
+     
+\Centerline{$\sum_{k\in K}\mu E_k=\sup_{n\in\Bbb N}\sum_{k\in K_n}
+\mu E_k=\sup_{n\in\Bbb N}\mu G_n=\mu E$,}
+     
+\noindent as required.\ \Qed}
+     
+\cmmnt{
+\spheader 222Bb Some readers will prefer to re-index sets
+regularly, so that
+all the sums they need to look at will be of the form $\sum_{i=0}^n$ or
+$\sum_{i=0}^{\infty}$.   In effect, that is what I did in Volume 1, in
+the proof of 114Da/115Da, when showing that Lebesgue outer measure is
+indeed an outer measure.
+The disadvantage of this procedure in the context of 222A is that we
+must continually check that it doesn't matter whether we have a finite or 
+infinite sum
+at any particular moment.   I believe that it is worth taking the
+trouble to learn the technique sketched here, because it very frequently
+happens that we wish to consider unions of sets indexed by sets other 
+than $\Bbb N$ and $\{0,\ldots,n\}$.
+     
+\spheader 222Bc Of course the argument above can be shortened if
+you know a tiny bit
+more about countable sets than I have explicitly stated so far.
+But note that the value assigned to
+$\sum_{k\in K}a_k$ must not depend on which enumeration
+$\sequencen{k_n}$ we pick on.
+}%end of comment
+     
+     
+\leader{222C}{Lemma} Suppose that $a\le b$ in $\Bbb R$, and that
+$F:[a,b]\to\Bbb R$ is a non-decreasing function.   Then $\int_a^bF'$
+exists and is at most $F(b)-F(a)$.
+     
+\medskip
+     
+\def\tmpins{}
+     
+\noindent{\bf Remark}\cmmnt{ I discussed
+integration over subsets at length in \S131 and \S214.   For measurable
+subsets, which are sufficient for our needs in this
+chapter, we have a simple description:  if $(X,\Sigma,\mu)$ is a measure
+space, $E\in\Sigma$ and $f$ is a real-valued function, then
+$\int_Ef=\int\tilde f$ if the latter integral exists, where
+$\dom\tilde f=(E\cap\dom f)\cup(X\setminus E)$ and $\tilde f(x)=f(x)$ if 
+$x\in E\cap\dom f$, $0$ if $x\in X\setminus E$ (apply 131Fa to
+$\tilde f$).   It follows at once that if now $F\in\Sigma$ and $F\subseteq E$, $\int_Ff=\int_Ef\times\chi F$.
+     
+} I write $\int_a^xf$ to mean
+$\int_{\coint{a,x}}f$\cmmnt{, which (because $\coint{a,x}$ is measurable) can be dealt with as described above}.
+\cmmnt{Note that, as long as we are dealing with Lebesgue measure, so that $[a,x]\setminus\ooint{a,x}=\{a,x\}$ is negligible, there is no need to distinguish between $\int_{[a,x]}$, $\int_{\ooint{a,x}}$,
+$\int_{\coint{a,x}}$, $\int_{\ocint{a,x}}$;  for other measures on
+$\Bbb R$ we may
+need to take more care.   I use half-open intervals to make it obvious
+that $\int_a^xf+\int_x^yf=\int_a^yf$ if $a\le x\le y$, because
+     
+\Centerline{$f\times\chi\coint{a,y}
+=f\times\chi\coint{a,x}\,+\,f\times\chi\coint{x,y}$.}
+}%end of comment
+     
+\proof{{\bf (a)} The result is trivial if $a=b$;  let us suppose that
+$a<b$.   By 222A, $F'$ is defined almost everywhere in $[a,b]$.
+     
+\medskip
+     
+{\bf (b)} For each $n\in\Bbb N$, define a simple function
+$g_n:\coint{a,b}\to\Bbb R$ as follows.   For $0\le k<2^n$, set
+$a_{nk}=a+2^{-n}k(b-a)$, $b_{nk}=a+2^{-n}(k+1)(b-a)$,
+$I_{nk}=\coint{a_{nk},b_{nk}}$.   For each $x\in\coint{a,b}$, take that
+$k<2^n$ such that $x\in I_{nk}$, and set
+     
+\Centerline{$g_n(x)=\Bover{2^n}{b-a}(F(b_{nk})-F(a_{nk}))$}
+     
+\noindent for $x\in I_{nk}$, so that $g_n$ gives the slope of the chord
+of the graph of $F$ defined by the endpoints of $I_{nk}$.   Then
+     
+\Centerline{$\int_a^b g_n=\sum_{k=0}^{2^n-1}F(b_{nk})-F(a_{nk})
+=F(b)-F(a)$.}
+     
+\medskip
+     
+{\bf (c)} On the other hand, if we set
+     
+\Centerline{$C=\{x:x\in\ooint{a,b},\,F'(x)$ exists$\}$,}
+     
+\noindent then $[a,b]\setminus C$ is negligible, by 222A, and
+$F'(x)=\lim_{n\to\infty}g_n(x)$ for every $x\in C$.   \Prf\ Let
+$\epsilon>0$.   Then there is a $\delta>0$ such that $x+h\in [a,b]$ and
+$|F(x+h)-F(x))-hF'(x)|\le\epsilon|h|$ whenever $|h|\le\delta$.   Let
+$n\in\Bbb N$ be such that $2^{-n}(b-a)\le\delta$.   Let
+$k<2^n$ be such that $x\in I_{nk}$.   Then
+     
+\Centerline{$x-\delta\le a_{nk}\le x<b_{nk}\le x+\delta$,
+\quad$g_n(x)=\Bover{2^n}{b-a}(F(b_{nk})-F(a_{nk}))$.}
+     
+\noindent Now we have
+     
+$$\eqalign{|g_n(x)-F'(x)|
+&=|\Bover{2^n}{b-a}(F(b_{nk})-F(a_{nk}))-F'(x)|\cr
+&=\Bover{2^n}{b-a}|F(b_{nk})-F(a_{nk})-(b_{nk}-a_{nk})F'(x)|\cr
+&\le\Bover{2^n}{b-a}\bigl(|F(b_{nk})-F(x)-(b_{nk}-x)F'(x)|\cr
+&\qquad\qquad\qquad\qquad   +|F(x)-F(a_{nk})-(x-a_{nk})F'(x)|\bigr)\cr
+&\le \Bover{2^n}{b-a}(\epsilon|b_{nk}-x|+\epsilon|x-a_{nk}|)
+=\epsilon.\cr}$$
+     
+\noindent And this is true whenever $2^{-n}\le\delta$,
+that is, for all $n$ large enough.   As $\epsilon$ is arbitrary,
+$F'(x)=\lim_{n\to\infty}g_n(x)$.\ \Qed
+     
+\medskip
+     
+{\bf (d)} Thus $g_n\to F'$ almost everywhere in $[a,b]$.   By Fatou's
+Lemma,
+     
+\Centerline{$\int_a^bF'
+=\int_a^b\liminf_{n\to\infty}g_n
+\le\liminf_{n\to\infty}\int_a^bg_n
+=\lim_{n\to\infty}\int_a^b g_n
+=F(b)-F(a)$,}
+     
+\noindent as required.
+}%end of proof of 222C
+     
+\cmmnt{
+\medskip
+     
+\noindent{\bf Remark} There is a generalization of this result in 224I.
+}
+     
+\leader{222D}{Lemma} Suppose that $a<b$ in $\Bbb R$, and that $f$, $g$
+are real-valued functions, both integrable over $[a,b]$, such that
+$\int_a^xf=\int_a^xg$ for
+every $x\in[a,b]$.   Then $f=g$ almost everywhere in
+$[a,b]$.
+     
+\proof{ The point is that
+     
+\Centerline{$\int_Ef=\int_a^bf\times\chi E
+=\int_a^bg\times\chi E=\int_Eg$}
+     
+\noindent for any
+measurable set $E\subseteq\coint{a,b}$.
+     
+\Prf\ {\bf (i)} If $E=\coint{c,d}$ where $a\le c\le d\le b$,
+then
+     
+\Centerline{$\int_Ef=\int_a^df-\int_a^cf
+=\int_a^dg-\int_a^cg=\int_Eg$.}
+     
+\medskip
+     
+\quad{\bf (ii)} If $E=\coint{a,b}\cap G$ for some open set
+$G\subseteq\Bbb R$, then for each $n\in\Bbb N$ set
+     
+\Centerline{$K_n
+=\{k:k\in\Bbb Z,\,|k|\le 4^n,\,\coint{2^{-n}k,2^{-n}(k+1)}\subseteq
+G\}$,}
+     
+\Centerline{$H_n
+=\bigcup_{k\in K_n}\coint{2^{-n}k,2^{-n}(k+1)}\cap\coint{a,b}$;}
+     
+\noindent then
+$\sequencen{H_n}$ is a non-decreasing sequence of measurable sets with
+union $E$, so $f\times\chi E=\lim_{n\to\infty}f\times\chi H_n$, and (by
+Lebesgue's Dominated Convergence Theorem, because $|f\times\chi
+H_n|\le|f|$ almost everywhere for every $n$, and $|f|$ is integrable)
+     
+\Centerline{$\int_Ef=\lim_{n\to\infty}\int_{H_n}f$.}
+     
+\noindent At the same time, each $H_n$ is a finite disjoint union of
+half-open intervals in $\coint{a,b}$, so
+     
+\Centerline{$\int_{H_n}f
+=\sum_{k\in K_n}\int_{\coint{2^{-n}k,2^{-n}(k+1)}\cap\coint{a,b}}f
+=\sum_{k\in K_n}\int_{\coint{2^{-n}k,2^{-n}(k+1)}\cap\coint{a,b}}g
+=\int_{H_n}g$,}
+     
+\noindent and
+     
+\Centerline{$\int_Eg=\lim_{n\to\infty}\int_{H_n}g
+=\lim_{n\to\infty}\int_{H_n}f=\int_Ef$.}
+     
+\medskip
+     
+\quad{\bf (iii)} For general measurable $E\subseteq\coint{a,b}$, we can
+choose for each $n\in\Bbb N$ an open set $G_n\supseteq E$ such that
+$\mu G_n\le\mu E+2^{-n}$ (134Fa).   Set $G_n'=\bigcap_{m\le n}G_m$, $E_n=\coint{a,b}\cap G'_n$ for each $n$,
+     
+\Centerline{$F=\coint{a,b}\cap\bigcap_{n\in\Bbb N}G_n
+=\bigcap_{n\in\Bbb N}\coint{a,b}\cap G_n'=\bigcap_{n\in\Bbb N}E_n$.}
+     
+\noindent Then $E\subseteq F$ and
+     
+\Centerline{$\mu F\le\inf_{n\in\Bbb N}\mu G_n=\mu E$,}
+     
+\noindent so $F\setminus E$ is negligible and
+$f\times\chi(F\setminus E)$ is zero almost everywhere;  consequently $\int_{F\setminus E}f=0$
+and $\int_Ff=\int_Ef$.  On the other hand,
+     
+\Centerline{$f\times\chi F=\lim_{n\to\infty}f\times\chi E_n$,}
+     
+\noindent so by Lebesgue's Dominated Convergence Theorem again
+     
+\Centerline{$\int_Ef=\int_Ff=\lim_{n\to\infty}\int_{E_n}f$.}
+     
+\noindent Similarly
+     
+\Centerline{$\int_Eg=\lim_{n\to\infty}\int_{E_n}g$.}
+     
+\noindent But by part (ii) we have $\int_{E_n}g=\int_{E_n}f$ for every
+$n$, so $\int_Eg=\int_Ef$, as required.\ \Qed
+     
+By 131Hb, $f=g$ almost everywhere in $\coint{a,b}$, and therefore almost everywhere in $[a,b]$.
+}%end of proof of 222D
+     
+\leader{222E}{Theorem} Suppose that $a\le b$ in $\Bbb R$ and that $f$ is
+a real-valued function which is integrable over $[a,b]$.
+Then $F(x)=\int_a^xf$ exists in $\Bbb R$ for every $x\in [a,b]$, and the derivative
+$F'(x)$ exists and is equal to $f(x)$ for almost every $x\in[a,b]$.
+     
+\proof{{\bf (a)} For most of this proof (down to the end of
+(c) below) I suppose that $f$ is non-negative.   In this case,
+     
+     
+\Centerline{$F(y)=F(x)+\int_x^yf\ge F(x)$}
+     
+\noindent whenever $a\le x\le y\le b$;
+thus $F$ is non-decreasing and therefore differentiable almost
+everywhere in
+$[a,b]$, by 222A.
+     
+By 222C we know also that $\int_a^xF'$ exists and is less than or equal
+to $F(x)-F(a)=F(x)$ for every $x\in[a,b]$.
+     
+\medskip
+     
+{\bf (b)} Now suppose, in addition, that $f$ is bounded;  say $0\le
+f(t)\le
+M$ for every $t\in\dom f$.   Then $M-f$ is integrable over $[a,b]$;  let
+$G$ be its indefinite integral, so that $G(x)=M(x-a)-F(x)$ for every
+$x\in[a,b]$.   Applying (a) to $M-f$ and $G$, we have $\int_a^xG'\le
+G(x)$ for every $x\in[a,b]$;  but of course $G'=M-F'$, so
+$M(x-a)-\int_a^xF'\le M(x-a)-F(x)$, that is, $\int_a^xF'\ge F(x)$ for
+every $x\in[a,b]$.   Thus $\int_a^xF'=\int_a^xf$ for every
+$x\in[a,b]$.    Now 222D tells us that $F'=f$ almost
+everywhere in $[a,b]$.
+     
+\medskip
+     
+{\bf (c)} Thus for bounded, non-negative $f$ we are done.   For
+unbounded $f$, let $\sequencen{f_n}$ be a non-decreasing sequence of
+non-negative simple functions converging to $f$ almost everywhere in
+$[a,b]$, and let $\sequencen{F_n}$ be the corresponding indefinite
+integrals.   Then for any $n$ and any $x$, $y$ with $a\le x\le y\le b$,
+we have
+     
+\Centerline{$F(y)-F(x)=\int_x^yf\ge\int_x^yf_n=F_n(y)-F_n(x)$,}
+     
+\noindent so that
+$F'(x)\ge F_n'(x)$ for any $x\in\ooint{a,b}$ where both are defined, and
+$F'(x)\ge f_n(x)$ for almost every $x\in[a,b]$.   This is true for every
+$n$, so $F'\ge f$ almost everywhere, and $F'-f\ge 0$ almost everywhere.
+On the other hand, as noted in (a),
+     
+\Centerline{$\int_a^bF'\le F(b)-F(a)=\int_a^bf$,}
+     
+\noindent so $\int_a^bF'-f\le 0$.   It follows
+that $F'\eae f$ (that is, that $F'=f$ almost everywhere in $[a,b]$)(122Rd).
+     
+\medskip
+     
+{\bf (d)} This completes the proof for non-negative $f$.   For general
+$f$, we can express $f$ as $f_1-f_2$ where $f_1$, $f_2$ are
+non-negative integrable functions;  now $F=F_1-F_2$ where $F_1$, $F_2$
+are the corresponding indefinite integrals, so
+$F'\eae F_1'-F_2'\eae f_1-f_2$, and $F'\eae f$.
+}%end of proof of 222E
+     
+\leader{222F}{Corollary} Suppose that $f$ is any real-valued function which is integrable over $\Bbb R$, and set $F(x)=\int_{-\infty}^xf$ for every $x\in\Bbb R$.   Then $F'(x)$ exists and is equal to $f(x)$ for almost every $x\in\Bbb R$.
+     
+\proof{ For each $n\in\Bbb N$, set
+     
+\Centerline{$F_n(x)=\int_{-n}^xf$}
+     
+\noindent for $x\in[-n,n]$.   Then $F_n'(x)=f(x)$ for almost every
+$x\in[-n,n]$.   But $F(x)=F(-n)+F_n(x)$ for every $x\in[-n,n]$, so
+$F'(x)$ exists and is equal to $F'_n(x)$ for every $x\in\ooint{-n,n}$
+for which $F'_n(x)$ is defined;  and $F'(x)=f(x)$ for almost every
+$x\in[-n,n]$.   As $n$ is arbitrary, $F'\eae f$.
+}%end of proof of 222F
+     
+\leader{222G}{Corollary} Suppose that $E\subseteq\Bbb R$ is a measurable
+set and that $f$ is a real-valued function which is integrable over $E$.
+Set $F(x)=\int_{E\cap\ooint{-\infty,x}}f$ for $x\in\Bbb R$.   Then
+$F'(x)=f(x)$ for almost every $x\in E$, and $F'(x)=0$ for almost every
+$x\in\Bbb R\setminus E$.
+     
+\proof{ Apply 222F to $\tilde f$, where $\tilde f(x)=f(x)$ for $x\in
+E\cap\dom f$ and $\tilde f(x)=0$ for $x\in\Bbb R\setminus E$, so that
+$F(x)=\int_{-\infty}^x\tilde f$ for every $x\in\Bbb R$.
+}%end of proof of 222G
+     
+\leader{222H}{}\cmmnt{ The result that $\bover{d}{dx}\int_a^xf=f(x)$
+for almost every $x$ is satisfying, but is no substitute for the more
+elementary result that this equality is valid at any point at which $f$
+is continuous.
+     
+\medskip
+     
+\noindent}{\bf Proposition} Suppose that $a\le b$ in $\Bbb R$ and that
+$f$ is a real-valued function which is integrable over $[a,b]$.   Set
+$F(x)=\int_a^xf$ for $x\in[a,b]$.   Then $F'(x)$ exists and is equal to
+$f(x)$ at any point $x\in\dom(f)\cap\ooint{a,b}$ at which $f$ is
+continuous.
+     
+\proof{ Set $c=f(x)$.  Let $\epsilon>0$.   Let $\delta>0$ be such that
+$\delta\le\min(b-x,x-a)$ and $|f(t)-c|\le\epsilon$ whenever $t\in\dom f$
+and $|t-x|\le\delta$.   If $x<y\le x+\delta$, then
+     
+\Centerline{$|\Bover{F(y)-F(x)}{y-x}-c|
+=\Bover1{y-x}|\int_x^yf-c|
+\le\Bover1{y-x}\int_x^y|f-c|
+\le\epsilon$.}
+     
+\noindent Similarly, if $x-\delta\le y<x$,
+     
+\Centerline{$|\Bover{F(y)-F(x)}{y-x}-f(x)|
+=\Bover1{x-y}|\int_y^xf-c|
+\le\Bover1{x-y}\int_y^x|f-c|
+\le\epsilon$.}
+     
+\noindent As $\epsilon$ is arbitrary,
+     
+\Centerline{$F'(x)=\lim_{y\to x}\Bover{F(y)-F(x)}{y-x}=c$,}
+     
+\noindent as required.
+}%end of proof of 222H
+     
+     
+\leader{222I}{Complex-valued functions} \cmmnt{So far in this section, I
+have taken every $f$ to be real-valued.   The extension to
+complex-valued $f$ is just a matter of applying the above results to the
+real and imaginary parts of $f$.   Specifically, we have the following.
+
+\medskip
+
+}{\bf (a)} If $a\le b$ in $\Bbb R$ and $f$ is a
+complex-valued function which is integrable over $[a,b]$, then
+$F(x)=\int_a^xf$ is defined in $\Bbb C$ for every $x\in[a,b]$, and its
+derivative $F'(x)$ exists and is equal to $f(x)$ for almost every
+$x\in[a,b]$;  moreover, $F'(x)=f(x)$ whenever
+$x\in\dom(f)\cap\ooint{a,b}$ and $f$ is continuous at $x$.
+     
+\spheader 222Ib If $f$ is a complex-valued function which is
+integrable over $\Bbb R$, and $F(x)=\int_{-\infty}^xf$ for each 
+$x\in\Bbb R$, then
+$F'$ exists and is equal to $f$ almost everywhere in $\Bbb R$.
+     
+\spheader 222Ic If $E\subseteq\Bbb R$ is a measurable set and
+$f$ is a complex-valued function which is integrable over $E$, and
+$F(x)=\int_{E\cap\ooint{-\infty,x}}f$ for each $x\in\Bbb R$, then
+$F'(x)=f(x)$ for almost every $x\in E$ and $F'(x)=0$ for almost every
+$x\in\Bbb R\setminus E$.
+     
+\leader{*222J}{The Denjoy-Young-Saks \dvrocolon{theorem}}\cmmnt{ The 
+next result 
+will not be used, on present plans, anywhere in this treatise.   It
+is however central to parts of real analysis for which this volume is
+supposed to be a foundation, and while the argument
+requires a certain sophistication it is not really a large step from
+Lebesgue's theorem 222A.   I must begin with some notation.
+     
+\medskip
+
+\noindent}{\bf Definition} Let $f$ be any real function, and
+$A\subseteq\Bbb R$ its domain.   Write  
+
+\Centerline{$\tilde A^+
+=\{x:x\in A$, $\ocint{x,x+\delta}\cap A\ne\emptyset$ 
+for every $\delta>0\}$,}
+
+\Centerline{$\tilde A^-
+=\{x:x\in A$, $\coint{x-\delta,x}\cap A\ne\emptyset$ 
+for every $\delta>0\}$.}
+     
+\noindent Set
+
+\Centerline{$\DiniD^+(x)
+=\limsup_{y\in A,y\downarrow x}\Bover{f(y)-f(x)}{y-x}
+=\inf_{\delta>0}\sup_{y\in A,x<y\le x+\delta}\Bover{f(y)-f(x)}{y-x}$,}
+
+\Centerline{$\Dinid^+(x)
+=\liminf_{y\in A,y\downarrow x}\Bover{f(y)-f(x)}{y-x}
+=\sup_{\delta>0}\inf_{y\in A,x<y\le x+\delta}\Bover{f(y)-f(x)}{y-x}$}
+
+\noindent for $x\in\tilde A^+$, and
+
+\Centerline{$\DiniD^-(x)
+=\limsup_{y\in A,y\uparrow x}\Bover{f(y)-f(x)}{y-x}
+=\inf_{\delta>0}\sup_{y\in A,x-\delta\le y<x}\Bover{f(y)-f(x)}{y-x}$,}
+
+\Centerline{$\Dinid^-(x)
+=\liminf_{y\in A,y\uparrow x}\Bover{f(y)-f(x)}{y-x}
+=\sup_{\delta>0}\inf_{y\in A,x-\delta\le y<x}\Bover{f(y)-f(x)}{y-x}$}
+
+\noindent for $x\in\tilde A^-$, all defined in $[-\infty,\infty]$.   
+(These are the four {\bf Dini derivates} of $f$.\cmmnt{ You will also
+see $D^+$, $d^+$, $D^-$, $d^-$ used in place of my $\DiniD^+$, 
+$\Dinid^+$, $\DiniD^-$ and $\Dinid^-$.})
+
+Note that we surely have $(\Dinid^+f)(x)\le(\DiniD^+f)(x)$
+for every $x\in\tilde A^+$, while 
+$(\Dinid^-f)(x)\le(\DiniD^-f)(x)$
+for every $x\in\tilde A^-$.   The ordinary derivative
+$f'(x)$ is defined and equal to $c\in\Bbb R$ iff 
+($\alpha$) $x$ belongs to some open interval included in $A$ ($\beta$)
+$(\DiniD^+f)(x)=(\Dinid^+f)(x)=(\DiniD^-f)(x)
+=(\Dinid^+f)(x)=c$.
+
+\leader{*222K}{Lemma} Let $A$ be any subset of $\Bbb R$, and define 
+$\tilde A^+$ and $\tilde A^-$ as in 222J.   Then $A\setminus\tilde A^+$ and
+$A\setminus\tilde A^-$ are countable, therefore negligible.
+
+\proof{ We have
+
+\Centerline{$A\setminus\tilde A^+
+=\bigcup_{q\in\Bbb Q}\{x:x\in A$, $x<q$, $A\cap\ocint{x,q}=\emptyset\}$.}
+
+\noindent But for any $q\in\Bbb Q$ there can be at most one $x\in A$ such
+that $x<q$ and $\ocint{x,q}$ does not meet $A$, 
+so $A\setminus\tilde A^+$ is a
+countable union of finite sets and is countable.   Similarly,
+
+\Centerline{$A\setminus\tilde A^-
+=\bigcup_{q\in\Bbb Q}\{x:x\in A$, $q<x$, $A\cap\coint{q,x}=\emptyset\}$}
+
+\noindent is countable.
+}%end of proof of 222K
+
+\leader{*222L}{Theorem} Let $f$ be any real function, and $A$ its domain.  
+Then for almost every $x\in A$
+
+\qquad{\it either} all four Dini derivates of $f$ at $x$ are defined, 
+finite and equal
+
+\qquad{\it or} $(\DiniD^+f)(x)=(\Dinid^-f)(x)$ is finite,
+$(\Dinid^+f)(x)=-\infty$ and $(\DiniD^+f)(x)=\infty$
+
+\qquad{\it or} $(\Dinid^+f)(x)=(\DiniD^-f)(x)$ is finite,
+$(\DiniD^+f)(x)=\infty$ and $(\Dinid^-f)(x)=-\infty$
+
+\qquad{\it or} $(\DiniD^+f)(x)=(\DiniD^-f)(x)=\infty$ and
+$(\Dinid^+f)(x)=(\Dinid^-f)(x)=-\infty$.
+
+\proof{{\bf (a)} Set $\tilde A=\tilde A^+\cap\tilde A^-$, 
+defining $\tilde A^+$ and
+$\tilde A^-$ as in 222J, so that $\tilde A$ is a cocountable subset of $A$
+and all four Dini derivates are defined on $\tilde A$.   For $n\in\Bbb N$,
+$q\in\Bbb Q$ set 
+
+\Centerline{$E_{qn}=\{x:x\in\tilde A$, $x<q$, $f(y)\ge f(x)-n(y-x)\}$
+for every $y\in A\cap[x,q]\}$.}
+
+\noindent Observe that 
+
+\Centerline{$\bigcup_{n\in\Bbb N,q\in\Bbb Q}E_{qn}=\{x:x\in\tilde A$,
+$(\Dinid^+f)(x)>-\infty\}$.}
+
+\noindent For those $q\in\Bbb Q$, $n\in\Bbb N$ such that $E_{qn}$ is not
+empty, set $\beta_{qn}=\sup E_{qn}\in\ocint{-\infty,q}$, 
+$\alpha_{qn}=\inf E_{qn}\in[-\infty,\beta_{qn}]$,
+and for $x\in\ooint{\alpha_{qn},\beta_{qn}}$ set
+$g_{qn}(x)=\inf\{f(y)+ny:y\in A\cap[x,q]\}$.   Note that if 
+$x\in E_{qn}\setminus\{\alpha_{qn},\beta_{qn}\}$ then $g_{qn}(x)=f(x)+nx$
+is finite;  also $g$ is monotonic, therefore finite everywhere in
+$\ooint{\alpha_{qn},\beta_{qn}}$, and of course $g_{qn}(x)\le f(x)+nx$ for
+every $x\in A\cap\ooint{\alpha_{qn},\beta_{qn}}$.   
+
+By 222A, almost every point of
+$\ooint{\alpha_{qn},\beta_{qn}}$ belongs to $F_{qn}=\dom g'_{qn}$;  in
+particular, $E_{qn}\setminus F_{qn}$ is negligible.   Set
+$h_{qn}(x)=g_{qn}(x)-nx$ for $x\in\ooint{\alpha_{qn},\beta_{qn}}$;  then
+$h$ is differentiable at every point
+of $F_{qn}$.   Now if $x\in E_{qn}\cap F_{qn}$,
+we have $h_{qn}(x)=f(x)$, while $h_{qn}(x)\le f(x)$ for 
+$x\in A\cap\ooint{\alpha_{qn},\beta_{qn}}$;  it follows that
+
+$$\eqalign{(\Dinid^+f)(x)
+&=\sup_{\delta>0}\inf_{y\in A\cap\ocint{x,x+\delta}}
+  \Bover{f(y)-f(x)}{y-x}\cr
+&\ge\sup_{\delta>0}\inf_{y\in A\cap\ocint{x,x+\delta}}
+  \Bover{h_{qn}(y)-h_{qn}(x)}{y-x}\cr
+&\ge\sup_{0<\delta<\beta_{qn}-x}\inf_{y\in\ocint{x,x+\delta}}
+  \Bover{h_{qn}(y)-h_{qn}(x)}{y-x}
+=h_{qn}'(x),\cr}$$
+  
+\noindent and similarly
+$(\DiniD^-f)(x)\le h'_{qn}(x)$.   On the other hand,
+if $x\in\tilde E_{qn}^+$, then
+
+$$\eqalign{(\Dinid^+f)(x)
+&=\sup_{\delta>0}\inf_{y\in A\cap\ocint{x,x+\delta}}
+    \Bover{f(y)-f(x)}{y-x}\cr
+&\le\sup_{\delta>0}\inf_{y\in E_{qn}\cap\ocint{x,x+\delta}}
+    \Bover{f(y)-f(x)}{y-x}\cr
+&=\sup_{\delta>0}\inf_{y\in E_{qn}\cap\ocint{x,x+\delta}}
+    \Bover{h_{qn}(y)-h_{qn}(x)}{y-x}\cr
+&\le\inf_{\delta>0}\sup_{y\in E_{qn}\cap\ocint{x,x+\delta}}
+    \Bover{h_{qn}(y)-h_{qn}(x)}{y-x}\cr
+&\le\inf_{0<\delta<\beta_{qn}-x}\sup_{y\in\ocint{x,x+\delta}}
+    \Bover{h_{qn}(y)-h_{qn}(x)}{y-x}    
+=h'_{qn}(x).\cr}$$
+
+\noindent Putting these together, we see that if 
+$x\in F_{qn}\cap\tilde E_{qn}^+$ then
+$(\Dinid^+f)(x)=h'_{qn}(x)\ge(\DiniD^-f)(x)$.
+
+Conventionally setting $F_{qn}=\emptyset$ if $E_{qn}$ is empty, the last
+sentence is true for all $q\in\Bbb Q$ and $n\in\Bbb N$, while
+$A\setminus\tilde A$ and
+$\bigcup_{q\in\Bbb Q,n\in\Bbb N}E_{qn}\setminus(F_{qn}\cap\tilde E_{qn}^+)$
+are negligible, and $(\Dinid^+f)(x)=-\infty$ for every
+$x\in\tilde A\setminus\bigcup_{q\in\Bbb Q,n\in\Bbb N}E_{qn}$.   So we see
+that, for almost every $x\in A$, either $(\Dinid^+f)(x)=-\infty$ or
+$\infty>(\Dinid^+f)(x)\ge(\DiniD^-f)(x)$.
+
+\medskip
+
+{\bf (b)} Reflecting the above argument left-to-right or up-to-down, we see
+that, for almost every $x\in A$,
+
+\Centerline{either $(\Dinid^-f)(x)=-\infty$ or
+$\infty>(\Dinid^-f)(x)\ge(\DiniD^+f)(x)$,}
+
+\Centerline{either $(\DiniD^+f)(x)=\infty$ or
+$-\infty<(\DiniD^+f)(x)\le(\Dinid^-f)(x)$,}
+
+\Centerline{either $(\DiniD^-f)(x)=\infty$ or
+$-\infty<(\DiniD^-f)(x)\le(\Dinid^+f)(x)$,}
+
+\noindent and also
+
+\Centerline{$(\Dinid^+f)(x)\le(\DiniD^+f)(x)$,
+\quad$(\Dinid^-f)(x)\le(\DiniD^-f)(x)$.}
+
+\noindent For such $x$, therefore,
+
+\Centerline{$(\Dinid^+f)(x)>-\infty
+\Longrightarrow (\DiniD^-f)(x)\le(\Dinid^+f)(x)<\infty
+\Longrightarrow (\Dinid^+f)(x)=(\DiniD^-f)(x)\in\Bbb R$,}
+
+\noindent and similarly
+
+\Centerline{$(\Dinid^-f)(x)>-\infty
+\Longrightarrow(\Dinid^-f)(x)=(\DiniD^+f)(x)\in\Bbb R$,}
+
+\Centerline{$(\DiniD^+f)(x)<\infty
+\Longrightarrow(\DiniD^+f)(x)=(\Dinid^-f)(x)\in\Bbb R$,}
+
+\Centerline{$(\DiniD^-f)(x)<\infty
+\Longrightarrow(\DiniD^-f)(x)=(\Dinid^+f)(x)\in\Bbb R$.}
+
+\noindent So we have
+
+\Centerline{either $(\Dinid^+f)(x)=(\DiniD^-f)(x)$ is finite
+or $(\Dinid^+f)(x)=-\infty$ and
+$(\DiniD^-f)(x)=\infty$,}
+
+\Centerline{either $(\Dinid^-f)(x)=(\DiniD^+f)(x)$ is finite
+or $(\Dinid^-f)(x)=-\infty$ and
+$(\DiniD^+f)(x)=\infty$.}
+
+\noindent These two dichotomies lead to four possibilities;  and since 
+
+\Centerline{$(\Dinid^+f)(x)=(\DiniD^-f)(x)$ is finite,
+\quad$(\Dinid^-f)(x)=(\DiniD^+f)(x)$ is finite}
+
+\noindent can be true together only when all four derivates are equal and
+finite, we have the four cases listed in the statement of the theorem.
+}%end of proof of 222L
+
+
+\exercises{
+\leader{222X}{Basic exercises $\pmb{>}$(a)}
+%\sqheader 222Xa
+Let $F:[0,1]\to[0,1]$ be the Cantor function (134H).
+Show that $\int_0^1F'=0<F(1)-F(0)$.
+%222C
+     
+\sqheader 222Xb Suppose that $a<b$ in $\Bbb R$ and that $h$ is a
+real-valued function such that $\int_x^yh$ exists and is non-negative
+whenever $a\le x\le y\le b$.   Show that $h\ge 0$ almost everywhere in $[a,b]$.
+%222D
+     
+\sqheader 222Xc Suppose that $a<b$ in $\Bbb R$ and that $f$, $g$ are
+integrable complex-valued functions on $[a,b]$ such that
+$\int_a^xf=\int_a^xg$ for every $x\in [a,b]$.   Show that $f=g$ almost everywhere in $[a,b]$.
+%222I
+     
+\sqheader 222Xd Suppose that $a<b$ in
+$\Bbb R$ and that $f$ is a
+real-valued function which is integrable over $[a,b]$.   Show that the
+indefinite integral $x\mapsto\int_a^xf$ is continuous.
+%222+
+     
+\leader{222Y}{Further exercises (a)} 
+%\spheader 222Ya
+Let $\sequencen{F_n}$ be a sequence
+of non-negative, non-decreasing functions on $[0,1]$ such that
+$F(x)=\sum_{n=0}^{\infty}F_n(x)$ is finite for every $x\in[0,1]$.   Show
+that $\sum_{n=0}^{\infty}F'_n(x)=F'(x)$ for almost every $x\in[0,1]$.
+({\it Hint\/}:  take $\sequence{k}{n_k}$ such that
+$\sum_{k=0}^{\infty}F(1)-G_k(1)<\infty$, where
+$G_k=\sum_{j=0}^{n_k}F_j$, and set
+$H(x)=\sum_{k=0}^{\infty}F(x)-G_k(x)$.   Observe that
+$\sum_{k=0}^{\infty}F'(x)-G'_k(x)\le H'(x)$ whenever all the derivatives
+are defined, so that $F'=\lim_{k\to\infty}G'_k$ almost everywhere.)
+%222A
+     
+\spheader 222Yb Let $F:[0,1]\to\Bbb R$ be a continuous non-decreasing
+function.   (i)   Show that if $c\in\Bbb R$ then
+$C=\{(x,y):x,\,y\in[0,1],\,F(y)-F(x)=c\}$ is connected.   ({\it Hint\/}:
+A set $A\subseteq\BbbR^r$ is {\bf connected} if there is no continuous
+surjection $h:A\to\{0,1\}$.   Show that if $h:C\to\{0,1\}$ is continuous
+then it is of the form $(x,y)\mapsto h_1(x)$ for some continuous
+function $h_1$.)  (ii) Now suppose that $F(0)=0$, $F(1)=1$ and that
+$G:[0,1]\to[0,1]$ is a second continuous non-decreasing function with
+$G(0)=0$, $G(1)=1$.   Show that for any $n\ge 1$ there are $x$,
+$y\in[0,1]$ such that $F(y)-F(x)=G(y)-G(x)=\bover1n$.
+%222+
+     
+\spheader 222Yc Let $f$, $g$ be non-negative integrable functions on
+$\Bbb R$, and $n\ge 1$.   Show that there are $u<v$ in
+$[-\infty,\infty]$ such that $\int_u^vf=\bover1n\int f$ and
+$\int_u^vg=\bover1n\int g$.
+%222Yb 222+
+     
+\spheader 222Yd Let $f:\Bbb R\to\Bbb R$ be measurable.   Show that 
+$H=\dom f'$ is a measurable set and that $f'$ is a measurable function.
+%222+
+
+\spheader 222Ye Construct a Borel measurable
+function $f:[0,1]\to\{-1,0,1\}$ such that
+each of the four possibilities described in Theorem 222L occurs on a set 
+of measure $\bover14$.
+%222L
+}%end of exercises
+     
+\endnotes{
+\Notesheader{222} I have relegated to an exercise (222Xd) the
+fundamental fact that an indefinite integral $x\mapsto\int_a^xf$ is
+always continuous;  this is not strictly speaking needed in this
+section, and a much stronger result is given in 225E.   There is also
+much more to be said about monotonic functions, to which I will return
+in \S224.   What we need here is the fact that they are differentiable
+almost everywhere (222A), which I prove by applying Vitali's theorem
+three times, once in part (b) of the proof and twice in part (c).
+Following this, the arguments of 222C-222E form a fine series of
+exercises in the central ideas of Volume 1, using the concept of
+integration over a (measurable) subset, Fatou's Lemma (part (d) of the
+proof of 222C), Lebesgue's Dominated Convergence Theorem (parts (ii)
+and (iii) of the proof of 222D) and the approximation of Lebesgue
+measurable sets by open sets (part (iii) of the proof of 222D).   Of
+course knowing that $\bover{d}{dx}\int_a^xf=f(x)$ almost everywhere is not at all
+the same thing as knowing that this holds for any particular $x$, and
+when we come to differentiate any particular indefinite integral we
+generally turn to 222H first;  the point of 222E is that it applies to
+wildly discontinuous functions, for which more primitive methods give no
+information at all.
+
+The Denjoy-Young-Saks theorem (222L) is one of the starting points of a
+flourishing theory of `typical' phenomena in real analysis.   
+It is easy to build a 
+function $f$ with any prescribed set of values for $(\DiniD^+f)(0)$,
+$(\Dinid^+f)(0)$, $(\DiniD^-f)(0)$ and $(\Dinid^-f)(0)$ (subject, of
+course, to the requirements $(\Dinid^+f)(0)\le(\DiniD^+f)(0)$ and
+$(\Dinid^-f)(0)\le(\DiniD^-f)(0)$).   But 222L tells us that such
+combinations as $(\Dinid^-f)(x)=(\Dinid^+f)(x)=\infty$ (what we might call
+`$f'(x)=\infty$') can occur only on negligible sets.   The four easily
+realized possibilities in 222L (see 222Ye) 
+are the only ones which can appear
+at points which are `typical' for the given function, from the point of
+view of Lebesgue measure.   For a monotonic
+function, 222A tells us more:  at `typical' points for a monotonic
+function, the function is actually differentiable.   In the next section we
+shall see some more 
+ways of generating negligible and conegligible sets from
+a given set or function, leading to further refinements of the idea.
+}%end of comment
+     
+\discrpage
+     

@@ -1,0 +1,881 @@
+\frfilename{mt265.tex}
+\versiondate{3.9.13}
+\copyrightdate{2000}
+
+\def\chaptername{Change of variable in the integral}
+\def\sectionname{Surface measures}
+
+\newsection{265}
+
+In this section I offer a new version of the arguments of \S263, this
+time not with the intention of justifying integration-by-substitution,
+but instead to give a practically effective method of computing the
+Hausdorff $r$-dimensional measure of a smooth $r$-dimensional surface
+in an $s$-dimensional space.   The basic case to bear in mind is $r=2$,
+$s=3$, though any other combination which you can easily visualize
+will also be a valuable aid to intuition.   I give a fundamental theorem
+(265E) providing a formula from which we can hope to calculate the
+$r$-dimensional measure of a surface in $s$-dimensional space which is
+parametrized by a differentiable function, and work through some of
+the calculations in the case of the $r$-sphere
+(265F-265H). %265F 265G 265H
+
+\leader{265A}{Normalized Hausdorff measure}\dvro{ In}{ As I remarked
+at the end of
+the last section, Hausdorff measure, as defined in 264A-264C, is not
+quite the most appropriate measure for our work here;  so in}
+this section I will use {\bf normalized Hausdorff measure}, meaning
+$\nu_r=2^{-r}\beta_r\mu_{Hr}$, where $\mu_{Hr}$ is $r$-dimensional
+Hausdorff measure\cmmnt{ (interpreted in whichever space is under
+consideration)} and
+$\beta_r=\mu_rB(\tbf{0},1)$ is the Lebesgue measure of any ball
+of radius $1$ in $\BbbR^r$.   \cmmnt{It will be convenient to take
+$\beta_0=1$.}   \dvro{This}{As shown in 264H-264I, this} normalization
+makes $\nu_r$ on $\BbbR^r$ agree with Lebesgue measure $\mu_r$.
+\cmmnt{Observe that of course}
+$\nu_r^*=2^{-r}\beta_r\mu_{Hr}^*$\cmmnt{ (264Fb)}.
+
+\leader{265B}{Linear \dvrocolon{subspaces}}\cmmnt{ Just as in \S263,
+the first step is to deal with linear operators.
+
+\medskip
+
+\noindent}{\bf Theorem} Suppose that $r$, $s$ are integers with
+$1\le r\le s$, and that $T$ is a real $s\times r$ matrix;  regard $T$
+as
+a linear operator from $\BbbR^r$ to $\BbbR^s$.   Set
+$J=\sqrt{\det T\trs T}$,
+where $T\trs $ is the transpose of $T$.   Write $\nu_r$ for normalized
+$r$-dimensional Hausdorff measure on $\BbbR^s$, $\Tau_r$ for its
+domain,
+and $\mu_r$ for Lebesgue measure on $\BbbR^r$.   Then
+
+\Centerline{$\nu_r T[E]=J\mu_rE$}
+
+\noindent for every measurable set $E\subseteq\BbbR^r$.   If $T$ is
+injective (that is, if $J\ne 0$), then
+
+\Centerline{$\nu_rF=J\mu_rT^{-1}[F]$}
+
+\noindent whenever $F\in\Tau_r$ and $F\subseteq T[\BbbR^r]$.
+
+\proof{ The formula for $J$ assumes that $\det T\trs T$ is
+non-negative, which is a fact not in evidence;  but the argument below
+will establish it adequately soon.
+\medskip
+{\bf (a)} Let $V$ be the linear subspace of $\BbbR^s$ consisting of
+vectors $y=(\eta_1,\ldots,\eta_s)$ such that $\eta_i=0$ whenever
+$r<i\le
+s$.   Let $R$ be the $r\times s$ matrix $\langle
+\rho_{ij}\rangle_{i\le
+r,j\le s}$, where $\rho_{ij}=1$ if $i=j\le r$, $0$ otherwise;  then
+the
+$s\times r$ matrix $R\trs $
+may be regarded as a bijection from $\BbbR^r$ to $V$.   Let $W$ be an
+$r$-dimensional linear subspace of $\BbbR^s$ including $T[\BbbR^r]$,
+and let $P$ be an orthogonal $s\times s$ matrix such that $P[W]=V$.
+Then $S=RPT$ is an $r\times r$ matrix.   We have $R\trs Ry=y$ for $y\in
+V$,
+so $R\trs RPT=PT$ and
+
+\Centerline{$S\trs S=T\trs P\trs R\trs RPT=T\trs P\trs PT=T\trs T$;}
+
+\noindent accordingly
+
+\Centerline{$\det T\trs T=\det S\trs S=(\det S)^2\ge 0$}
+
+\noindent and $J=|\det S|$.   At the same time,
+
+\Centerline{$P\trs R\trs S=P\trs R\trs RPT=P\trs PT=T$.}
+
+\noindent Observe that $J=0$ iff $S$ is not injective, that is, $T$ is
+not injective.
+
+\medskip
+
+{\bf (b)} If we consider the $s\times r$ matrix $P\trs R\trs $ as a map from
+$\BbbR^r$ to $\BbbR^s$, we see that $\phi=P\trs R\trs $ is an isometry between
+$\BbbR^r$ and $W$, with inverse $\phi^{-1}=RP\restrp W$.   It follows
+that $\phi$ is an isomorphism between the measure spaces
+$(\Bbb R^r,\mu_{Hr}^{(r)})$ and $(W,\mu_{HrW}^{(s)})$, where
+$\mu_{Hr}^{(r)}$ is
+$r$-dimensional Hausdorff measure on $\BbbR^r$ and $\mu_{HrW}^{(s)}$
+is
+the subspace measure on $W$ induced by $r$-dimensional
+Hausdorff measure $\mu_{Hr}^{(s)}$ on $\BbbR^s$.
+
+\medskip
+
+\Prf\ {\bf (i)} If $A\subseteq\BbbR^r$ and $A'\subseteq W$,
+
+\Centerline{$\mu_{Hr}^{(s)*}(\phi[A])\le\mu_{Hr}^{(r)*}(A)$,
+\quad $\mu_{Hr}^{(r)*}(\phi^{-1}[A'])\le\mu_{Hr}^{(s)*}(A')$,}
+
+\noindent using 264G twice.   Thus
+$\mu_{Hr}^{(s)*}(\phi[A])=\mu_{Hr}^{(r)*}(A)$ for
+every $A\subseteq \BbbR^r$.
+
+\medskip
+
+\quad{\bf (ii)} Now because $W$ is closed, therefore in the domain of
+$\mu_{Hr}^{(s)}$ (264E), the subspace measure $\mu_{HrW}^{(s)}$ is
+just
+the measure induced by $\mu_{Hr}^{(s)*}\restrp W$ by \Caratheodory's
+method (214H(b-ii)).   Because $\phi$ is an isomorphism between
+$(\Bbb R^r,\mu_{Hr}^{(r)*})$ and $(W,\mu_{Hr}^{(s)*}\restrp W)$, it
+is an
+isomorphism between $(\BbbR^r,\mu_{Hr}^{(r)})$ and
+$(W,\mu_{HrW}^{(s)})$.
+\Qed
+
+\medskip
+
+{\bf (c)}  It follows that $\phi$ is also an isomorphism between the
+normalized versions $(\BbbR^r,\mu_r)$ and $(W,\nu_{rW})$, writing
+$\nu_{rW}$ for the subspace measure on $W$ induced by $\nu_r$.
+
+Now if $E\subseteq\BbbR^r$ is  Lebesgue measurable, we have
+$\mu_rS[E]=J\mu_rE$, by 263A;  so that
+
+\Centerline{$\nu_rT[E]=\nu_r(P\trs R\trs [S[E]])=\nu_r(\phi[S[E]])
+=\mu_rS[E]=J\mu_rE$.}
+
+\noindent If $T$ is injective, then $S=\phi^{-1}T$ must also be
+injective, so that $J\ne 0$ and
+
+\Centerline{$\nu_rF=\mu_r(\phi^{-1}[F])
+=J\mu_r(S^{-1}[\phi^{-1}[F]])=J\mu_rT^{-1}[F]$}
+
+\noindent whenever $F\in\Tau_r$ and $F\subseteq W=T[\BbbR^r]$.
+}%end of proof of 265B
+
+\leader{265C}{Corollary} Under the conditions of 265B,
+
+\Centerline{$\nu_r^*T[A]=J\mu_r^*A$}
+
+\noindent for every $A\subseteq\BbbR^r$.
+
+\proof{{\bf (a)} If $E$ is  Lebesgue measurable and $A\subseteq E$,
+then
+$T[A]\subseteq T[E]$, so
+
+\Centerline{$\nu_r^*T[A]\le \nu_rT[E]=J\mu_rE$;}
+
+\noindent as $E$ is arbitrary, $\nu_r^*T[A]\le J\mu_r^*A$.
+
+\medskip
+
+{\bf (b)} If $J=0$ we can stop.   If $J\ne 0$ then $T$ is injective,
+so
+if $F\in\Tau_r$ and $T[A]\subseteq F$ we shall have
+
+\Centerline{$J\mu_r^*A\le J\mu_rT^{-1}[F\cap T[\BbbR^r]]
+=\nu_r(F\cap T[\BbbR^r])\le\nu_rF$;}
+
+\noindent as $F$ is arbitrary, $J\mu_r^*A\le\nu_r^*T[A]$.
+}%end of proof of 265C
+
+\leader{265D}{}\cmmnt{ I now proceed to the lemma corresponding to
+263C.
+
+\medskip
+
+\noindent}{\bf Lemma} Suppose that $1\le r\le s$ and that $T$ is an
+$s\times r$ matrix;  set $J=\sqrt{\det T\trs T}$, and suppose that 
+$J\ne 0$.
+Then for any $\epsilon>0$ there is a $\zeta=\zeta(T,\epsilon)>0$ such
+that
+
+(i) $|\sqrt{\det S\trs S}-J|\le\epsilon$ whenever $S$ is an $s\times r$
+matrix and $\|S-T\|\le\zeta$\cmmnt{, defining the norm of a matrix as in
+262H};
+
+(ii) whenever $D\subseteq\BbbR^r$ is a bounded set and $\phi:D\to\Bbb
+R^s$ is a function such that
+$\|\phi(x)-\phi(y)-T(x-y)\|\le\zeta\|x-y\|$
+for all $x$, $y\in D$, then
+$|\nu_r^*\phi[D]-J\mu_r^*D|\le\epsilon\mu_r^*D$.
+
+\proof{{\bf (a)} Because $\det S\trs S$ is a continuous function of the
+coefficients of $S$, 262Hb tells us that there must be a $\zeta_0>0$
+such that $|J-\sqrt{\det S\trs S}|\le\epsilon$ whenever
+$\|S-T\|\le\zeta_0$.
+
+\medskip
+
+{\bf (b)} Because $J\ne 0$, $T$ is injective, and there is an
+$r\times s$ matrix $T^*$ such
+that $T^*T$ is the identity $r\times r$ matrix.   Take $\zeta>0$ such
+that $\zeta\le\zeta_0$,
+$\zeta\|T^*\|<1$, $J(1+\zeta\|T^*\|)^r\le J+\epsilon$ and
+$1-J^{-1}\epsilon\le(1-\zeta\|T^*\|)^r$.
+
+Let $\phi:D\to\BbbR^s$ be such that
+$\|\phi(x)-\phi(y)-T(x-y)\|\le\zeta\|x-y\|$ whenever $x$, $y\in D$.
+Set $\psi=\phi T^*$, so that $\phi=\psi T$.   Then
+
+\Centerline{$\|\psi(u)-\psi(v)\|\le(1+\zeta\|T^*\|)\|u-v\|$,
+\quad$\|u-v\|\le(1-\zeta\|T^*\|)^{-1}\|\psi(u)-\psi(v)\|$}
+
+\noindent whenever $u$, $v\in T[D]$.
+\Prf\ Take $x$, $y\in D$ such that $u=Tx$, $v=Ty$;  of course
+$x=T^*u$, $y=T^*v$.   Then
+
+$$\eqalign{\|\psi(u)-\psi(v)\|
+&=\|\phi(T^*u)-\phi(T^*v)\|
+=\|\phi(x)-\phi(y)\|\cr
+&\le\|T(x-y)\|+\zeta\|x-y\|\cr
+&=\|u-v\|+\zeta\|T^*u-T^*v\|
+\le\|u-v\|(1+\zeta\|T^*\|).\cr}$$
+
+\noindent Next,
+
+$$\eqalign{\|u-v\|
+&=\|Tx-Ty\|
+\le\|\phi(x)-\phi(y)\|+\zeta\|x-y\|\cr
+&=\|\psi(u)-\psi(v)\|+\zeta\|T^*u-T^*v\|\cr
+&\le\|\psi(u)-\psi(v)\|+\zeta\|T^*\|\|u-v\|,\cr}$$
+
+\noindent so that $(1-\zeta\|T^*\|)\|u-v\|\le\|\psi(u)-\psi(v)\|$ and
+$\|u-v\|\le(1-\zeta\|T^*\|)^{-1}\|\psi(u)-\psi(v)\|$.   \Qed
+
+\medskip
+
+{\bf (c)} Now from 264G and 265C we see that
+
+\Centerline{$\nu^*_r\phi[D]
+=\nu_r^*\psi[T[D]]
+\le(1+\zeta\|T^*\|)^r\nu_r^*T[D]
+=(1+\zeta\|T^*\|)^rJ\mu_r^*D
+\le(J+\epsilon)\mu_r^*D$,}
+
+\noindent and (provided $\epsilon\le J$)
+
+$$\eqalignno{(J-\epsilon)\mu_r^*D
+&=(1-J^{-1}\epsilon)\nu_r^*T[D]
+\le(1-J^{-1}\epsilon)(1-\zeta\|T^*\|)^{-r}\nu_r^*\psi[T[D]]\cr
+\displaycause{applying 264G to $\psi^{-1}:\psi[T[D]]\to T[D]$}
+&\le\nu_r^*\psi[T[D]]
+=\nu_r^*\phi[D].\cr}$$
+
+\noindent (Of course, if $\epsilon\ge J$, then surely
+$(J-\epsilon)\mu_r^*D\le\nu_r^*\phi[D]$.)   Thus
+\Centerline{$(J-\epsilon)\mu_r^*D\le\nu_r^*\phi[D]
+\le(J+\epsilon)\mu_r^*D$}
+
+\noindent as required, and we have an appropriate $\zeta$.
+}%end of proof of 265D
+
+\leader{265E}{Theorem} Suppose that $1\le r\le s$;  write $\mu_r$ for
+Lebesgue measure on $\BbbR^r$, $\nu_r$ for normalized Hausdorff
+measure on $\BbbR^s$, and $\Tau_r$ for the domain of $\nu_r$.   Let
+$D\subseteq\BbbR^r$ be any set, and
+$\phi:D\to\BbbR^s$ a function differentiable relative to its domain at
+each point of $D$.   For each $x\in D$ let $T(x)$ be a derivative of
+$\phi$ at $x$ relative to $D$, and set $J(x)=\sqrt{\det T(x)\trs T(x)}$.
+Set $D'=\{x:x\in D,\,J(x)>0\}$.   Then
+
+\quad (i) $J:D\to\coint{0,\infty}$ is a measurable function;
+
+\quad (ii) $\nu_r^*\phi[D]\le\int_DJ(x)\mu_r(dx)$,
+
+\noindent allowing $\infty$ as the value of the integral;
+
+\quad (iii) $\nu_r^*\phi[D\setminus D']=0$.
+
+\noindent If $D$ is Lebesgue measurable, then
+
+\quad (iv) $\phi[D]\in\Tau_r$.
+
+\noindent If $D$ is measurable and $\phi$ is injective, then
+
+\quad (v) $\nu_r\phi[D]=\int_DJ\,d\mu_r$;
+
+\quad (vi) for any set $E\subseteq\phi[D]$, $E\in\Tau_r$
+iff $\phi^{-1}[E]\cap D'$ is  Lebesgue measurable, and in this case
+
+\Centerline{$\nu_rE
+=\int_{\phi^{-1}[E]}J(x)\mu_r(dx)
+=\int_DJ\times\chi(\phi^{-1}[E])d\mu_r$;}
+
+\quad (vii) for every real-valued function $g$ defined on a subset of
+$\phi[D]$,
+
+\Centerline{$\int_{\phi[D]}g\,d\nu_r=\int_DJ\times g\phi\,d\mu_r$}
+
+\noindent if either integral is defined in $[-\infty,\infty]$,
+provided
+we interpret $J(x)g(\phi(x))$ as zero when $J(x)=0$ and $g(\phi(x))$
+is undefined.
+
+\proof{ I seek to follow the line laid out in the proof of 263D.
+
+\medskip
+
+{\bf (a)} Just as in 263D, we know that $J:D\to\Bbb R$ is measurable,
+since $J(x)$ is a continuous function of the coefficients of $T(x)$,
+all of which are measurable, by 262P.   If $D$ is Lebesgue measurable,
+then there is a sequence $\sequencen{F_n}$ of compact subsets of $D$ such
+that $D\setminus\bigcup_{n\in\Bbb N}F_n$ is $\mu_r$-negligible.   Now
+$\phi[F_n]$ is compact, therefore belongs to $\Tau_r$, for each
+$n\in\Bbb N$.   As for $\phi[D\setminus\bigcup_{n\in\Bbb N}F_n]$, this
+must be $\nu_r$-negligible by 264G, because $\phi$ is a countable union of
+Lipschitz functions (262N).   So
+
+\Centerline{$\phi[D]=\bigcup_{n\in\Bbb N}
+  \phi[F_n]\cup\phi[D\setminus\bigcup_{n\in\Bbb N}F_n]\in\Tau_r$.}
+
+\noindent This deals with (i) and (iv).
+
+\medskip
+
+{\bf (b)} For the moment, assume that $D$ is bounded and that $J(x)>0$
+for every $x\in D$, and fix $\epsilon>0$.   Let $M^*_{sr}$ be the set
+of $s\times r$ matrices $T$ such that $\det T\trs T\ne 0$, that is, the
+corresponding map $T:\BbbR^r\to\BbbR^s$ is injective.   For  
+$T\in M_{sr}^*$ take $\zeta(T,\epsilon)>0$ as in 265D.
+
+Take $\sequencen{D_n}$, $\sequencen{T_n}$ as in 262M, with $A=M^*_{sr}$,
+so that $\sequencen{D_n}$ is a partition of $D$ into sets which are
+relatively measurable in $D$, and each $T_n$ is an $s\times r$ matrix
+such that
+
+\Centerline{$\|T(x)-T_n\|\le\zeta(T_n,\epsilon)$ whenever $x\in D_n$,}
+
+\Centerline{$\|\phi(x)-\phi(y)-T_n(x-y)\|\le\zeta(T_n,\epsilon)\|x-y\|$
+for all $x$, $y\in D_n$.}
+
+\noindent Then, setting $J_n=\sqrt{\det T_n\trs T_n}$, we have
+
+\Centerline{$|J(x)-J_n|\le\epsilon$ for every $x\in D_n$,}
+
+\Centerline{$|\nu_r^*\phi[D_n]-J_n\mu_r^*D_n|\le\epsilon\mu_r^*D_n$,}
+
+\noindent by the choice of $\zeta(T_n,\epsilon)$.   So
+
+$$\eqalignno{\nu_r^*\phi[D]
+&\le\sum_{n=0}^{\infty}\nu_r^*\phi[D_n]\cr
+\displaycause{because $\phi[D]=\bigcup_{n\in\Bbb N}\phi[D_n]$}
+&\le\sum_{n=0}^{\infty}J_n\mu_r^*D_n+\epsilon\mu_r^*D_n
+\le\epsilon\mu_r^*D+\sum_{n=0}^{\infty}J_n\mu_r^*D_n\cr
+\displaycause{because the $D_n$ are disjoint and relatively measurable
+in $D$}
+&=\epsilon\mu_r^*D+\int_D\sum_{n=0}^{\infty}J_n\chi D_nd\mu\cr
+&\le\epsilon\mu_r^*D+\int_DJ(x)+\epsilon\mu_r(dx)
+=2\epsilon\mu_r^*D+\int_DJ\,d\mu_r.\cr}$$
+
+If $D$ is measurable and $\phi$ is injective, then all the $D_n$ are
+Lebesgue measurable subsets of $\BbbR^r$, so all the $\phi[D_n]$ are
+measured by $\nu_r$, and they are also disjoint.   Accordingly
+
+$$\eqalign{\int_{D}J\,d\mu
+&\le\sum_{n=0}^{\infty}J_n\mu_r D_n+\epsilon\mu_r D\cr
+&\le\sum_{n=0}^{\infty}(\nu_r\phi[D_n]
+   +\epsilon\mu_r D_n)+\epsilon\mu_rD
+=\nu_r\phi[D]+2\epsilon\mu_rD.\cr}$$
+
+\noindent Since $\epsilon$ is arbitrary, we get
+
+\Centerline{$\nu_r^*\phi[D]\le\int_DJ\,d\mu_r$,}
+
+\noindent and if $D$ is measurable and $\phi$ is injective,
+
+\Centerline{$\int_DJ\,d\mu_r\le\nu_r\phi[D]$;}
+
+\noindent thus we have (ii) and (v), on the assumption that $D$ is
+bounded and $J>0$ everywhere on $D$.
+
+\medskip
+
+{\bf (c)} Just as in the proof of
+263D, we can now relax the assumption that $D$ is
+bounded by considering $B_k=B(\tbf{0},k)\subseteq\BbbR^r$;  provided
+$J>0$ everywhere on $D$, we get
+
+\Centerline{$\nu_r^*\phi[D]
+=\lim_{k\to\infty}\nu_r^*\phi[D\cap B_k]
+\le\lim_{k\to\infty}\int_{D\cap B_k}J\,d\mu_r
+=\int_DJ\,d\mu_r$,}
+
+\noindent with equality if $D$ is measurable and $\phi$ is injective.
+
+\medskip
+
+{\bf (d)} Now we find that $\nu_r^*\phi[D\setminus D']=0$.
+
+\medskip
+
+\Prf\grheada\ Let $\eta\in\ocint{0,1}$.   Define
+$\psi_{\eta}:D\to\BbbR^{s+r}$ by setting $\psi_{\eta}(x)=(\phi(x),\eta x)$,
+identifying $\BbbR^{s+r}$ with $\BbbR^s\times\BbbR^r$.   $\psi_{\eta}$
+is differentiable relative to its domain at each point of $D$, with
+derivative $\tilde T_{\eta}(x)$, being the $(s+r)\times r$ matrix in
+which the top $s$ rows consist of the $s\times r$ matrix $T(x)$, and
+the bottom $r$ rows are $\eta I_r$, writing $I_r$ for the $r\times r$
+identity matrix.   (Use 262Ib.)   Now of course $\tilde T_{\eta}(x)$,
+regarded as a map from $\BbbR^r$ to $\BbbR^{s+r}$, is injective, so
+
+\Centerline{$\tilde J_{\eta}(x)
+=\sqrt{\det\tilde T_{\eta}(x)\trs \tilde T_{\eta}(x)}
+=\sqrt{\det(T(x)\trs T(x)+\eta^2I)}>0$.}
+
+\noindent   We have $\lim_{\eta\downarrow 0}\tilde J_{\eta}(x)=J(x)=0$
+for $x\in D\setminus D'$.
+
+\medskip
+
+\quad\grheadb\ Express $T(x)$ as
+$\langle\tau_{ij}(x)\rangle_{i\le s,j\le r}$ for each $x\in D$.   Set
+
+\Centerline{$C_m=\{x:x\in D,\,\|x\|\le m,\,|\tau_{ij}(x)|\le m$ for
+all $i\le s,\,j\le r\}$}
+
+\noindent for each $m\ge 1$.   For $x\in C_m$, all the coefficients of
+$\tilde T_{\eta}(x)$ have moduli at most $m$;  consequently (giving
+the crudest and most immediately available inequalities) all the
+coefficients of $\tilde T_{\eta}(x)\trs \tilde T_{\eta}(x)$ have moduli at
+most $(r+s)m^2$ and $\tilde J_{\eta}(x)\le\sqrt{r!(s+r)^r}m^r$.
+Consequently we can use Lebesgue's Dominated Convergence Theorem to
+see that
+
+\Centerline{$\lim_{\eta\downarrow 0}\int_{C_m\setminus D'}\tilde
+J_{\eta}d\mu_r=0$.}
+
+\medskip
+
+\quad\grheadc\ Let $\tilde\nu_r$ be normalized Hausdorff
+$r$-dimensional measure on $\BbbR^{s+r}$.   Applying (b) of this proof
+to $\psi_{\eta}\restr C_m\setminus D'$, we see that
+
+\Centerline{$\tilde\nu_r^*\psi_{\eta}[C_m\setminus D']
+\le\int_{C_m\setminus D'}\tilde J_{\eta}d\mu_r$.}
+
+\noindent Now we have a natural map $P:\BbbR^{s+r}\to\BbbR^s$ given by
+setting $P(\xi_1,\ldots,\xi_{s+r})=(\xi_1,\ldots,\xi_s)$, and $P$ is
+$1$-Lipschitz, so by 264G once more we have (allowing for
+the normalizing constants $2^{-r}\beta_r$)
+
+\Centerline{$\nu_r^*P[A]\le\tilde\nu_r^*A$}
+
+\noindent for every $A\subseteq\BbbR^{s+r}$.   In particular,
+
+\Centerline{$\nu_r^*\phi[C_m\setminus D']
+=\nu_r^*P[\psi_{\eta}[C_m\setminus D']]
+\le\tilde\nu_r^*\psi_{\eta}[C_m\setminus D']
+\le\int_{C_m\setminus D'}\tilde J_{\eta}d\mu_r
+\to 0$}
+
+\noindent as $\eta\downarrow 0$.   But this means that
+$\nu_r^*\phi[C_m\setminus D']=0$.   As $D=\bigcup_{m\ge 1}C_m$,
+$\nu_r^*\phi[D\setminus D']=0$, as claimed.   \Qed
+
+\medskip
+
+{\bf (e)} This proves (iii) of the theorem.   But of course this is
+enough to give (ii) and (v), because (applying (b)-(c) to $\phi\restr D'$)
+we must have
+
+\Centerline{$\nu_r^*\phi[D]
+=\nu_r^*\phi[D']
+\le\int_{D'}J\,d\mu_r
+=\int_DJ\,d\mu_r$,}
+
+\noindent with equality if $D$ (and therefore also $D'$)
+is measurable and $\phi$ is injective.
+
+\medskip
+
+{\bf (f)} So let us turn to part (vi).   Assume that $D$ is measurable
+and that $\phi$ is injective.
+
+\medskip
+
+\quad\grheada\ Suppose that $E\subseteq\phi[D]$ belongs to $\Tau_r$.
+Let
+
+\Centerline{$H_k=\{x:x\in D,\,\|x\|\le k,\,J(x)\le k\}$}
+
+\noindent for each $k$;  then each $H_k$ is Lebesgue measurable, so
+(applying (iii) to $\phi\restr H_k$) $\phi[H_k]\in\Tau_r$, and
+
+\Centerline{$\nu_r\phi[H_k]\le k\mu_rH_k<\infty$.}
+
+\noindent Thus $\phi[D]$ can be covered by a sequence of
+sets of finite measure for $\nu_r$, which of course are of finite
+measure for $r$-dimensional Hausdorff measure on $\BbbR^s$.   By 264Fc,
+there are Borel sets $E_1$, $E_2\subseteq\BbbR^s$ such that
+$E_1\subseteq E\subseteq E_2$ and $\nu_r(E_2\setminus E_1)=0$.
+Now $F_1=\phi^{-1}[E_1]$, $F_2=\phi^{-1}[E_2]$ are Lebesgue measurable
+subsets of $D$, and
+
+\Centerline{$\int_{F_2\setminus F_1}J\,d\mu_r=\nu_r\phi[F_2\setminus
+F_1]=\nu_r(\phi[D]\cap E_2\setminus E_1)=0$.}
+
+\noindent Accordingly $\mu_r(D'\cap(F_2\setminus F_1))=0$.   But as
+
+\Centerline{$D'\cap F_1\subseteq D'\cap\phi^{-1}[E]
+\subseteq D'\cap F_2$,}
+
+\noindent it follows that $D'\cap\phi^{-1}[E]$ is measurable, and that
+
+$$\eqalign{\int_{\phi^{-1}[E]}J\,d\mu_r
+&=\int_{D'\cap\phi^{-1}[E]}J\,d\mu_r
+=\int_{D'\cap F_1}J\,d\mu_r\cr
+&=\int_{D\cap F_1}J\,d\mu_r
+=\nu_r\phi[D\cap F_1]
+=\nu_rE_1
+=\nu_rE.\cr}$$
+
+\noindent Moreover, $J\times\chi(\phi^{-1}[E])
+=J\times\chi(D'\cap\phi^{-1}[E])$ is measurable, so we can write 
+$\int J\times\chi(\phi^{-1}[E])$ in place of $\int_{\phi^{-1}[E]}J$.
+
+\medskip
+
+\quad\grheadb\ If $E\subseteq\phi[D]$ and $D'\cap\phi^{-1}[E]$ is
+measurable, then of course
+
+\Centerline{$E=\phi[D'\cap\phi^{-1}[E]]
+  \cup\phi[(D\setminus D')\cap\phi^{-1}[E]]\in\Tau_r$,}
+
+\noindent because $\phi[G]\in\Tau_r$ for every measurable $G\subseteq D$
+and $\phi[D\setminus D']$ is $\nu_r$-negligible.
+
+\medskip
+
+{\bf (g)} Finally, (vii) follows at once from (vi), applying 235J to
+$\mu_r$ and the subspace measure induced by $\nu_r$ on $\phi[D]$.
+}%end of proof of 265E
+
+\leader{265F}{The surface of a sphere}\cmmnt{ To show how these ideas
+can be applied to one of the basic cases, I give the details of a method
+of describing spherical surface measure in $s$-dimensional space.
+Take $r\ge 1$ and $s=r+1$.}   Write $S_r$ for
+$\{z:z\in\Bbb R^{r+1},\,\|z\|=1\}$, the $r$-sphere.
+\dvro{Then the normalized $r$-dimensional Hausdorff measure of $S_r$ is
+$2\pi\beta_{r-1}$, where $\beta_{r-1}$ is the volume of the unit ball of
+$\BbbR^{r-1}$ (interpreting $\beta_0$ as $1$.)}
+{Then we have a parametrization
+$\phi_r$ of $S_r$ given by setting
+
+$$\phi_r\Matrix{\xi_1\\ \xi_2\\ \ldots \\ \ldots \\ \ldots\\ \xi_r}
+=\Matrix{\sin\xi_1\sin\xi_2\sin\xi_3\ldots\sin\xi_r\\
+\cos\xi_1\sin\xi_2\sin\xi_3\ldots\sin\xi_r\\
+\cos\xi_2\sin\xi_3\ldots\sin\xi_r\\
+\ldots\\
+\cos\xi_{r-2}\sin\xi_{r-1}\sin\xi_r\\
+\cos\xi_{r-1}\sin\xi_r\\
+\cos\xi_r}.$$
+
+\noindent I choose this formulation because I wish to use an inductive
+argument based on the fact that
+
+\Centerline{$\phi_{r+1}\Matrix{x\\ \xi}
+=\Matrix{\sin\xi\,\phi_r(x)\\ \cos\xi}$}
+\noindent for $x\in\BbbR^r$, $\xi\in\Bbb R$.   Every $\phi_r$ is
+differentiable, by 262Id.   If we set
+
+$$\eqalign{D_r
+=\{x:\xi_1&\in\ocint{-\pi,\pi},\,\xi_2,\ldots,\xi_r\in[0,\pi],\cr
+&\text{ if }\xi_j\in\{0,\pi\}\text{ then }
+  \xi_i=0\text{ for }i<j\},\cr}$$
+
+\noindent then it is easy to check that $D_r$ is a Borel subset of
+$\Bbb R^r$ and that $\phi_r\restr D_r$ is a bijection between $D_r$
+and
+$S_r$. Now let $T_r(x)$ be the $(r+1)\times r$ matrix $\phi_r'(x)$.
+Then
+
+$$T_{r+1}\Matrix{x\\ \xi}=\Matrix{\sin\xi\,T_r(x)&\cos\xi\,\phi_r(x)\\
+                                  \tbf{0}&-\sin\xi}.$$
+
+\noindent So
+
+$$(T_{r+1}\Matrix{x\\ \xi})\trs T_{r+1}\Matrix{x\\ \xi}
+=\Matrix{\sin^2\xi\,T_r(x)\trs T_r(x)&\sin\xi\cos\xi\,T_r(x)\trs \phi_r(x)\\
+\cos\xi\sin\xi\,\phi_r(x)\trs T_r(x)&\cos^2\xi\phi_r(x)\trs \phi_r(x)+\sin^2\xi}
+.$$
+
+\noindent But of course $\phi_r(x)\trs \phi_r(x)=\|\phi_r(x)\|^2=1$ for every
+$x$, and (differentiating with respect to each coordinate of $x$, if you
+wish) $T_r(x)\trs \phi_r(x)=\tbf{0}$, $\phi_r(x)\trs T_r(x)=\tbf{0}$.   So we get
+
+$$(T_{r+1}\Matrix{x\\ \xi})\trs T_{r+1}\Matrix{x\\ \xi}
+=\Matrix{\sin^2\xi\,T_r(x)\trs T_r(x)&\tbf{0}\\
+\tbf{0}&1},$$
+
+\noindent and writing $J_r(x)=\sqrt{\det T_r(x)\trs T_r(x)}$,
+
+$$J_{r+1}\Matrix{x\\ \xi}=|\sin^r\xi|J_r(x).$$
+
+At this point we induce on $r$ to see that
+
+\Centerline{$J_r(x)
+=|\sin^{r-1}\xi_r\sin^{r-2}\xi_{r-1}\ldots\sin\xi_2|$}
+
+\noindent (since of course the induction starts with the case $r=1$,
+\discrcenter{468pt}{$\phi_1(x)=\Matrix{\sin x\\ \cos x}$,
+\ifdim\pagewidth>467pt\quad\fi
+$T_1(x)=\Matrix{\cos x\\ -\sin x}$,
+\ifdim\pagewidth>467pt\quad\fi
+$T_1(x)\trs T_1(x)=1$,
+\ifdim\pagewidth>467pt\quad\fi
+$J_1(x)=1$).}
+
+To find the surface measure of $S_r$, we need to calculate
+
+$$\eqalignno{\int_{D_r}J_rd\mu_r
+&=\int_0^{\pi}\ldots\int_0^{\pi}\int_{-\pi}^{\pi}
+\sin^{r-1}\xi_r\ldots\sin\xi_2
+d\xi_1d\xi_2\ldots d\xi_r\cr
+&=2\pi\prod_{k=2}^r\int_0^{\pi}\sin^{k-1}t\,dt
+=2\pi\prod_{k=1}^{r-1}\int_{-\pi/2}^{\pi/2}\cos^kt\,dt\cr}$$
+
+\noindent (substituting $\bover{\pi}{2}-t$ for $t$).   But in the
+language of 252Q, this is just
+
+\Centerline{$2\pi\prod_{k=1}^{r-1}I_k=2\pi\beta_{r-1}$,}
+
+\noindent where $\beta_{r-1}$ is the volume of the unit ball of
+$\BbbR^{r-1}$\cmmnt{ (interpreting $\beta_0$ as $1$, if you like)}.
+}%end of dvro
+
+\leader{265G}{}\cmmnt{ The surface area of a sphere can also be
+calculated through the following result.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $\mu_{r+1}$ be Lebesgue measure on
+$\BbbR^{r+1}$, and $\nu_r$ normalized $r$-dimensional Hausdorff
+measure
+on $\BbbR^{r+1}$.   If $f$ is a locally $\mu_{r+1}$-integrable
+real-valued function, $y\in\BbbR^{r+1}$ and $\delta>0$,
+
+\Centerline{$\int_{B(y,\delta)}fd\mu_{r+1}
+=\int_0^{\delta}\int_{\partial B(y,t)}fd\nu_rdt$,}
+
+\noindent where I write $\partial B(y,t)$ for the sphere
+$\{x:\|x-y\|=t\}$\cmmnt{ and the integral $\int\ldots dt$ is to be
+taken with respect to Lebesgue measure on $\Bbb R$}.
+
+\proof{ Take any differentiable function
+$\phi:\BbbR^r\to S_r$ with a
+Borel set $F\subseteq\BbbR^r$ such that $\phi\restr F$ is a
+bijection between $F$ and $S_r$;  such a pair $(\phi,F)$ is
+described in 265F.   Define
+$\psi:\BbbR^r\times\Bbb R\to\BbbR^{r+1}$ by setting
+$\psi(z,t)=y+t\phi(z)$;  then $\psi$ is differentiable and
+$\psi\restr F\times\ocint{0,\delta}$ is a bijection between
+$F\times\ocint{0,\delta}$ and $B(y,\delta)\setminus\{y\}$.   For
+$t\in\ocint{0,\delta}$, $z\in\BbbR^r$ set $\psi_t(z)=\psi(z,t)$;
+then $\psi_t\restr F$ is a bijection between $F$ and the sphere
+$\{x:\|x-y\|=t\}=\partial B(y,t)$.
+
+The derivative of $\phi$ at $z$ is an $(r+1)\times r$ matrix $T_1(z)$
+say, and the derivative $T_t(z)$ of $\psi_t$ at $z$ is just $tT_1(z)$;
+also the derivative of $\psi$ at $(z,t)$ is the the $(r+1)\times(r+1)$
+matrix $T(z,t)=\Matrix{tT_1(z)&\phi(z)}$, where $\phi(z)$ is
+interpreted
+as a column vector.   If we set
+
+\Centerline{$J_t(z)=\sqrt{\det T_t(z)\trs T_t(z)}$,
+\quad$J(z,t)=|\det T(z,t)|$,}
+
+\noindent then
+
+$$\eqalign{J(z,t)^2
+=\det T(z,t)\trs T(z,t)
+&=\det\Matrix{tT_1(z)\trs \\ \phi(z)\trs }\Matrix{tT_1(z)&\phi(z)}\cr
+&=\det\Matrix{t^2T_1(z)\trs T_1(z)&\tbf{0}\\ \tbf{0}&1}
+=J_t(z)^2,\cr}$$
+
+\noindent because when we come to calculate the $(i,r+1)$-coefficient
+of
+$T(z,t)\trs T(z,t)$, for $1\le i\le r$, it is
+
+\Centerline{$\sum_{j=1}^{r+1}t\Pd{\phi_j}{\zeta_i}(z)\phi_j(z)
+=\Bover{t}2\Pd{}{\zeta_i}(\sum_{j=1}^{r+1}\phi_j(z)^2)
+=0$,}
+
+\noindent where $\phi_j$ is the $j$th coordinate of $\phi$;  while the
+$(r+1,r+1)$-coefficient of $T(z,t)\trs T(z,t)$ is just
+$\sum_{j=1}^{r+1}\phi_j(z)^2=1$.
+So in fact $J(z,t)=J_t(z)$ for all $z\in\BbbR^r$, $t>0$.
+
+Now, given $f\in\eusm L^1(\mu_{r+1})$, we can calculate
+
+$$\eqalignno{\int_{B(y,\delta)}fd\mu_{r+1}
+&=\int_{B(y,\delta)\setminus\{y\}}fd\mu_{r+1}\cr
+&=\int_{F\times\ocint{0,\delta}}f(\psi(z,t))J(z,t)\mu_{r+1}(d(z,t))\cr
+\displaycause{by 263D}
+&=\int_0^{\delta}\int_Ff(\psi_t(z))J_t(z)\mu_r(dz)dt\cr
+\displaycause{where $\mu_r$ is Lebesgue measure on $\BbbR^r$,
+by Fubini's theorem, 252B}
+&=\int_0^{\delta}\int_{\partial B(y,t)}fd\nu_rdt\cr}$$
+
+\noindent by 265E(vii).
+}%end of proof of 265G
+
+\leader{265H}{Corollary} If $\nu_r$ is normalized $r$-dimensional
+Hausdorff measure on $\BbbR^{r+1}$, then $\nu_rS_r=(r+1)\beta_{r+1}$.
+
+\proof{ In 265G, take $y=\tbf{0}$, $\delta=1$, and
+$f=\chi B(\tbf{0},1)$;  then
+
+\Centerline{$\beta_{r+1}=\int fd\mu_{r+1}
+=\int_0^1\nu_r(\partial B(\tbf{0},t))dt=\int_0^1t^r\nu_rS_rdt
+=\Bover1{r+1}\nu_rS_r$,}
+
+\noindent this time
+applying 264G to the maps $x\mapsto tx$, $x\mapsto\bover1tx$
+from $\BbbR^{r+1}$ to itself to see that
+$\nu_r(\partial B(\tbf{0},t))=t^r\nu_rS_r$ for $t>0$.
+}%end of proof of 265H
+
+\exercises{
+\leader{265X}{Basic exercises (a)} Let $r\ge 1$, and let
+$S_r(\alpha)=\{z:z\in\BbbR^{r+1},\,\|z\|=\alpha\}$ be the
+$r$-sphere of radius $\alpha$.   Show that
+$\nu_rS_r(\alpha)=2\pi\beta_{r-1}\alpha^r=(r+1)\beta_{r+1}\alpha^r$
+for
+every $\alpha\ge 0$.
+
+\sqheader 265Xb Let $r\ge 1$, and for $a\in[-1,1]$ set
+$C_a=\{z:z\in\BbbR^{r+1},\,\|z\|=1,\,\zeta_{r+1}\ge a\}$, writing
+$z=(\zeta_1,\ldots,\zeta_{r+1})$ as usual.   (i) Show that
+
+\Centerline{$\nu_rC_a=r\beta_r\int_0^{\arccos a}\sin^{r-1}t\,dt$.}
+
+\noindent (ii)\dvAnew{2013} 
+Compute the integral in the cases $r=2$, $r=4$.
+
+\sqheader 265Xc Again write
+$C_a=\{z:z\in S_r,\,\zeta_{r+1}\ge a\}$, where $S_r\subseteq\BbbR^{r+1}$
+is the unit sphere.   Show that, for any $a\in\ocint{0,1}$,
+$\nu_rC_a\le\Bover{\nu_rS_r}{2(r+1)a^2}$.   \Hint{calculate
+$\sum_{i=1}^{r+1}\int_{S_r}\|\xi_i\|^2\nu_r(dx)$.}
+%265F
+
+\sqheader 265Xd Let $\phi:\ooint{0,1}\to\BbbR^r$ be an injective
+differentiable function.   Show that the `length' or
+one-dimensional Hausdorff measure of $\phi[\,\ooint{0,1}\,]$ is just
+$\int_0^1\|\phi'(t)\|dt$.
+
+\spheader 265Xe(i) Show that if $I$ is the identity $r\times r$ matrix
+and $z\in\BbbR^r$, then $\det(I+zz\trs )=1+\|z\|^2$.   \Hint{induce on
+$r$.}
+(ii) Write $U_{r-1}$ for the open unit ball in $\BbbR^{r-1}$, where
+$r\ge 2$.   Define $\phi:U_{r-1}\times\Bbb R\to S_r$ by setting
+
+$$\phi\Matrix{x\\ \xi}=\Matrix{x\\ \theta(x)\cos\xi \\
+\theta(x)\sin\xi},$$
+
+\noindent where $\theta(x)=\sqrt{1-\|x\|^2}$.   Show that
+
+$$\phi'\Matrix{x\\ \xi}\trs \phi'\Matrix{x\\ \xi}
+=\Matrix{I+\Bover1{\theta(x)^2}xx\trs  & \tbf{0}\\
+        \tbf{0} & \theta(x)^2},$$
+
+\noindent so that $J\Matrix{x\\ \xi}=1$ for all $x\in U_{r-1}$,
+$\xi\in\Bbb R$.   (iii) Hence show that the normalized $r$-dimensional
+Hausdorff measure of $\{y:y\in S_r,\,\sum_{i=1}^{r-1}\eta_i^2<1\}$ is
+just $2\pi\beta_{r-1}$, where $\beta_{r-1}$ is the Lebesgue measure of
+$U_{r-1}$.   (iv) By considering $\psi z=\Matrix{z\\ 0\\ 0}$ for
+$z\in S_{r-2}$, or otherwise, show that the normalized $r$-dimensional
+Hausdorff measure of $S_r$ is $2\pi\beta_{r-1}$.   (v) This time setting
+$C_a=\{z:z\in\BbbR^{r+1},\,\|z\|=1,\,\zeta_1\ge a\}$, show that
+$\nu_rC_a=2\pi\mu_{r-1}\{x:x\in\BbbR^{r-1},\,\|x\|\le 1,\,\xi_1\ge a\}$
+for every $a\in[-1,1]$.
+%265F
+
+\spheader 265Xf\dvAnew{2013} Suppose that $r\ge 2$.   Identifying
+$\BbbR^r$ with $\BbbR^{r-1}\times\Bbb R$, let $C_r$ be the cylinder
+$B_{r-1}\times[-1,1]\supseteq B_r$, and 
+$\partial C_r=(B_{r-1}\times\{-1,1\})\cup(S_{r-2}\times[-1,1])$ 
+its boundary.   Show that 
+
+\Centerline{$\Bover{\mu_rB_r}{\mu_rC_r}
+=\Bover{\nu_{r-1}S_{r-1}}{\nu_{r-1}(\partial C_r)}$.}
+
+\noindent(The case $r=3$ is due to Archimedes.)
+%265F
+
+\leader{265Y}{Further exercises (a)} 
+%\spheader 265Ya
+Take $a<b$ in $\Bbb R$.   (i)
+Show that $\phi:[a,b]\to\BbbR^r$ is absolutely continuous in the
+sense of 264Yp iff all its coordinates
+$\phi_i:[a,b]\to\Bbb R$, for $i\le r$, are absolutely continuous in
+the sense of \S225.   (ii) Let $\phi:[a,b]\to\BbbR^r$
+be a continuous function, and set $F=\{x:x\in\ooint{a,b},\,\phi$ is
+differentiable at $x\}$.    Show that $\phi$ is absolutely continuous
+iff $\int_F\|\phi'(x)\|dx$ is finite and
+$\nu_1(\phi[[a,b]\setminus F])=0$, where $\nu_1$ is (normalized)
+Hausdorff one-dimensional measure on $\BbbR^r$.   ({\it Hint\/}:
+225K.)   (iii) Show that if $\phi:[a,b]\to\BbbR^r$ is
+absolutely continuous then $\nu_1^*(\phi[D])\le\int_D\|\phi'(x)\|dx$
+for
+every $D\subseteq[a,b]$, with equality if $D$ is measurable and
+$\phi\restr D$ is injective.
+
+\spheader 265Yb Suppose that $a\le b$ in $\Bbb R$, and that
+$f:[a,b]\to\Bbb R$ is a continuous function of bounded variation with
+graph $\Gamma_f$.   Show that the one-dimensional Hausdorff measure
+of $\Gamma_f$ is $\Var_{[a,b]}(f)+\int_a^b(\sqrt{1+(f')^2}-|f'|)$.
+%mt26bits
+}%end of exercises
+
+\endnotes{
+\Notesheader{265} The proof of 265B seems to call on most of the
+second
+half of the alphabet.   The idea is supposed to be straightforward
+enough.   Because $T[\BbbR^r]$ has dimension at most $r$, it can be
+rotated by an
+orthogonal transformation $P$ into a subspace of the canonical
+$r$-dimensional subspace $V$, which is a natural copy of $\BbbR^r$;
+the matrix $R$ represents the copying process from $V$ to $\BbbR^r$, and
+$\phi$ or $P\trs R\trs $ is a copy of $\BbbR^r$ onto a subspace including
+$T[\Bbb R^r]$.   All this copying back and forth is designed to turn
+$T$ into a linear operator $S:\BbbR^r\to\BbbR^r$ to which we can apply
+263A, and part (b)
+of the proof is the check that we are copying the measures as well as
+the linear structures.
+
+In 265D-265E I have tried to follow 263C-263D as closely as possible.
+In fact only one new idea is needed.   When $s=r$, we have a special
+argument
+available to show that $\mu_r^*\phi[D]\le J\mu_r^*D+\epsilon\mu_r^*D$
+(in the language of 263C) which applies whether or not $J=0$.   When
+$s>r$, this approach fails, because we can no longer approximate
+$\nu_rT[B]$ by
+$\nu_rG$ where $G\supseteq T[B]$ is open.   (See part (b-i) of the proof
+of 263C.)   I therefore turn to a different argument, valid only when
+$J>0$, and accordingly have to find a separate method to show that
+$\{\phi(x):x\in D,\,J(x)=0\}$ is
+$\nu_r$-negligible.   Since we are working without restrictions on the
+dimensions $r$, $s$ except that $r\le s$, we can use the trick of
+approximating $\phi:D\to\BbbR^s$ by $\psi_{\eta}:D\to\BbbR^{s+r}$, as
+in part (d) of the proof of 265E.
+
+I give three methods by which the area of the $r$-sphere can be
+calculated;  a bare-hands approach (265F), the surrounding-cylinder
+method (265Xe) and an important repeated-integral theorem (265G).
+The
+first two provide formulae for the area of a cap (265Xb, 265Xe(v)).
+The surrounding-cylinder method is attractive because the Jacobian
+comes
+out to be $1$, that is, we have an \imp\ function.   I note that
+despite
+having developed a technique which
+allows irregular domains, I am still forced by the singularity in the
+function $\theta$ of 265Xe to take the sphere in two bites.   Theorem
+265G is a special case of the Coarea Theorem
+({\smc Evans \& Gariepy 92}, \S3.4;  {\smc Federer 69}, 3.2.12).
+
+For the next steps in the geometric theory of measures on Euclidean
+space, see Chapter 47 in Volume 4.
+
+}%end of notes
+
+\frnewpage
+

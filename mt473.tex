@@ -1,0 +1,1083 @@
+\frfilename{mt473.tex}
+\versiondate{25.7.11}
+\copyrightdate{2000}
+
+\def\chaptername{Geometric measure theory}
+\def\sectionname{Poincar\'e's inequality}
+
+\newsection{473}
+
+In this section I embark on the main work of the first half of the
+chapter, leading up to
+the Divergence Theorem in \S475.   I follow the method in 
+{\smc Evans \& Gariepy 92}.   The first step is to add some minor results on
+differentiable and Lipschitz functions to those already set out in \S262
+(473B-473C).   Then we need to know something about convolution products
+(473D), extending ideas in \S\S256 and 444;  in particular, it will be
+convenient to have a fixed sequence $\sequencen{\tilde h_n}$ of
+smoothing functions with some useful special properties (473E).
+
+The new ideas of the section begin with the Gagliardo-Nirenberg-Sobolev
+inequality, relating $\|f\|_{r/(r-1)}$ to $\int\|\grad f\|$.   In its
+simplest form (473H) it applies only to functions with compact support;
+we need to work much harder to get results which we can use to estimate
+$\int_B|f|^{r/(r-1)}$ in terms of $\int_B\|\grad f\|$ and $\int_B|f|$ for
+balls $B$ (473I, 473K).
+
+\vleader{48pt}{473A}{Notation} For the next three sections, 
+$r\ge 2$ will be a fixed integer.   For $x\in\BbbR^r$ and $\delta\ge 0$,
+$B(x,\delta)=\{y:\|y-x\|\le\delta\}$ will be the closed ball with centre
+$x$ and radius $\delta$.
+I will write $\partial B(x,\delta)$ for the boundary of $B(x,\delta)$,
+the sphere  $\{y:\|y-x\|=\delta\}$.
+$S_{r-1}=\partial B(\tbf{0},1)$ will be the unit sphere.
+As in Chapter 26, I will use Greek letters to represent coordinates of
+vectors, so that $x=(\xi_1,\ldots,\xi_r)$, etc.
+
+$\mu$ will always be Lebesgue measure on $\BbbR^r$.
+$\beta_r=\mu B(\tbf{0},1)$ will be the $r$-dimensional volume of the
+unit ball, that is,
+
+$$\eqalign{\beta_r
+&=\Bover{\pi^k}{k!}\text{ if }r=2k\text{ is even},\cr
+&=\Bover{2^{2k+1}k!\pi^k}{(2k+1)!}\text{ if }r=2k+1\text{ is odd}\cr}$$
+
+\noindent (252Q).
+$\nu$ will be normalized Hausdorff $(r-1)$-dimensional measure on
+$\BbbR^r$, that is,
+$\nu=2^{-r+1}\beta_{r-1}\mu_{H,r-1}$, where $\mu_{H,r-1}$ is
+$(r-1)$-dimensional Hausdorff measure on $\BbbR^r$ as described in \S264.
+Recall from 265F and 265H that
+$\nu S_{r-1}=2\pi\beta_{r-2}=r\beta_r$ (counting $\beta_0$ as $1$).
+
+\leader{473B}{Differentiable functions (a)} Recall from \S262 that a
+function $\phi$ from a subset of $\BbbR^r$ to $\BbbR^s$ (where
+$s\ge 1$) is differentiable at $x\in\BbbR^r$, with
+derivative an $s\times r$ matrix $T$, if for every $\epsilon>0$ there
+is a $\delta>0$ such that $\|\phi(y)-\phi(x)-T(y-x)\|\le\epsilon\|y-x\|$
+whenever $\|y-x\|\le\delta$;  this includes the assertion that
+$B(x,\delta)\subseteq\dom\phi$.   In this case, the coefficients of $T$
+are the partial derivatives $\Pd{\phi_j}{\xi_i}(x)$ at $x$, where
+$\phi_1,\ldots,\phi_s$ are the coordinate functions of $\phi$, and
+$\Pd{}{\xi_i}$ represents partial differentiation with respect to the
+$i$th coordinate\cmmnt{ (262Ic)}.
+
+\spheader 473Bb When $s=1$\cmmnt{, so that we have a real-valued
+function $f$
+defined on a subset of $\BbbR^r$}, I will write $(\grad f)(x)$ for the
+derivative of $f$ at $x$, the {\bf gradient} of $f$.   \cmmnt{If we
+strictly adhere to the language of (a), $\grad f$ is a $1\times r$
+matrix $\Matrix{\Pd{f}{\xi_1}&\ldots&\Pd{f}{\xi_r}}$;  but it is
+convenient to
+treat it as a vector, so that $\grad f(x)$ (when defined) belongs to
+$\BbbR^r$, and we can speak of $y\dotproduct\grad f(x)$ rather
+than $(\grad f(x))(y)$, etc.}
+
+\spheader 473Bc {\bf Chain rule for functions of many
+variables}\cmmnt{ I find that I have not written out the
+following basic fact.}   Let $\phi:A\to\BbbR^s$ and
+$\psi:B\to\BbbR^p$ be functions, where $A\subseteq\BbbR^r$ and
+$B\subseteq\BbbR^s$.   If $x\in A$ is such that $\phi$ is
+differentiable at $x$, with derivative $S$, and $\psi$ is differentiable
+at $\phi(x)$, with derivative $T$, then the composition $\psi\phi$ is
+differentiable at $x$, with derivative $TS$.
+
+\prooflet{\Prf\ Recall that if we regard $S$ and $T$ as linear
+operators, they have finite norms (262H).   Given $\epsilon>0$, let
+$\eta>0$ be such that  $\eta\|T\|+\eta(\|S\|+\eta)\le\epsilon$.   Let
+$\delta_1$, $\delta_2>0$ be such that
+$\phi(y)$ is defined and $\|\phi(y)-\phi(x)-S(y-x)\|\le\eta\|y-x\|$
+whenever $\|y-x\|\le\delta_1$, and $\psi(z)$ is defined and
+$\|\psi(z)-\psi\phi(x)-T(z-\phi(x))\|\le\eta\|z-\phi(x)\|$ whenever
+$\|z-\phi(x)\|\le\delta_2$.   Set
+$\delta=\min(\delta_1,\Bover{\delta_2}{\eta+\|S\|})>0$.   If
+$\|y-x\|\le\delta$, then $\phi(y)$ is defined and
+
+\Centerline{$\|\phi(y)-\phi(x)\|\le\|S(y-x)\|+\|\phi(y)-\phi(x)-S(y-x)\|
+\le(\|S\|+\eta)\|y-x\|\le\delta_2$,}
+
+\noindent so $\psi\phi(y)$ is defined and
+
+$$\eqalign{\|\psi\phi(y)&-\psi\phi(x)-TS(y-x)\|\cr
+&\le\|\psi\phi(y)-\psi\phi(x)-T(\phi(y)-\phi(x))\|
+     +\|T\|\|\phi(y)-\phi(x)-S(y-x)\|\cr
+&\le\eta\|\phi(y)-\phi(x)\|+\|T\|\eta\|y-x\|\cr
+&\le\eta(\|S\|+\eta)\|y-x\|+\|T\|\eta\|y-x\|
+\le\epsilon\|y-x\|;\cr}$$
+
+\noindent as $\epsilon$ is arbitrary, $\psi\phi$ is differentiable at
+$x$ with derivative $TS$.\ \Qed}%end of prooflet
+
+\spheader 473Bd It follows that if $f$ and $g$ are real-valued functions
+defined on a
+subset of $\BbbR^r$, and $x\in\dom f\cap\dom g$ is such that
+$(\grad f)(x)$ and $(\grad g)(x)$ are both defined, then
+$\grad(f\times g)(x)$ is defined and equal to
+$f(x)\grad g(x)+g(x)\grad f(x)$.   \prooflet{\Prf\ Set
+$\phi(y)=\Matrix{f(y)\\g(y)}$ for $y\in\dom f\cap\dom g$;  then $\phi$
+is differentiable at $x$ with derivative the $2\times r$ matrix
+$\Matrix{\grad f(x)\\ \grad g(x)}$ (262Ib).   Set
+$\psi(z)=\zeta_1\zeta_2$ for $z=(\zeta_1,\zeta_2)\in\BbbR^2$;  then
+$\psi$ is differentiable everywhere, with derivative the $1\times 2$
+matrix $\Matrix{\zeta_2&\zeta_1}$.   So $f\times g=\psi\phi$ is
+differentiable at $x$ with derivative
+
+\Centerline{$\Matrix{g(x)&f(x)}\Matrix{\grad f(x)\\ \grad g(x)}
+=g(x)\grad f(x)+f(x)\grad g(x)$.  \Qed}
+}%end of prooflet
+
+\spheader 473Be Let $D$ be a subset of $\BbbR^r$ and $\phi:D\to\BbbR^s$
+any function.   Set $D_0=\{x:x\in D,\,\phi$ is differentiable at $x\}$.
+Then the derivative of $\phi$, regarded as a function from $D_0$ to
+$\BbbR^{rs}$, is (Lebesgue) measurable.
+\prooflet{\Prf\ Use 262P;  the point is that, writing $T(x)$ for the
+derivative of $\phi$ at $x$, $T(x)$ is surely a derivative of
+$\phi\restr D_0$, relative to $D_0$, at every point of $D_0$.\ \QeD\
+}%end of prooflet
+\cmmnt{(See also 473Ya.)}
+
+\spheader 473Bf A function $\phi:\BbbR^r\to\BbbR^s$ is {\bf smooth} if
+it is differentiable arbitrarily often;  that is, if all its repeated
+partial derivatives
+
+\Centerline{$\Bover{\partial^m\phi_j}{\partial
+\xi_{i_1}\ldots\partial\xi_{i_m}}$}
+
+\noindent are defined and continuous everywhere on $\BbbR^r$.
+I will write $\eusm D$ for the family of real-valued functions
+on $\BbbR^r$ which are smooth and have compact support.
+
+\leader{473C}{Lipschitz functions (a)} If $f$ and
+$g$ are bounded real-valued Lipschitz functions, defined on any subsets
+of $\BbbR^r$, then $f\times g$, defined on $\dom f\cap\dom g$, is
+Lipschitz.   \prooflet{\Prf\ Let $\gamma_f$, $M_f$, $\gamma_g$ and $M_g$
+be such that $|f(x)|\le M_f$ and $|f(x)-f(y)|\le\gamma_f\|x-y\|$ for all
+$x$, $y\in\dom f$, while $|g(x)|\le M_g$ and
+$|g(x)-g(y)|\le\gamma_g\|x-y\|$ for all $x$, $y\in\dom g$.   Then for
+any $x$, $y\in\dom f\cap\dom g$,
+
+$$\eqalign{|f(x)g(x)-f(y)g(y)|
+&\le|f(x)||g(x)-g(y)|+|g(y)||f(x)-f(y)|\cr
+&\le (M_f\gamma_g+M_g\gamma_f)\|x-y\|.\cr}$$
+
+\noindent So $M_f\gamma_g+M_g\gamma_f$ is a Lipschitz constant for
+$f\times g$.\ \Qed}
+
+\leaveitout{It follows that if $f$ and $g$ are bounded real-valued Lipschitz functions defined on $\BbbR^r$, and $g$ has compact support, then $f\times g$ is Lipschitz.}
+
+\spheader 473Cb Suppose that $F_1$, $F_2\subseteq\BbbR^r$ are closed
+sets with convex union $C$.   Let $f:C\to\Bbb R$ be a function such that
+$f\restr F_1$ and $f\restr F_2$ are both Lipschitz.   Then $f$ is
+Lipschitz.   \prooflet{\Prf\ For each $j$, let $\gamma_j$ be a Lipschitz
+constant for $f\restr F_j$, and set $\gamma=\max(\gamma_1,\gamma_2)$, so
+that $\gamma$ is a Lipschitz constant for both $f\restr F_1$ and
+$f\restr F_2$.   Take any $x$, $y\in C$.   If both belong to the same
+$F_j$, then
+$|f(x)-f(y)|\le\gamma\|x-y\|$.   If $x\in F_j$ and $y\notin F_j$, then
+$y$ must belong to $F_{3-j}$, and $(1-t)x+ty\in F_1\cup F_2$ for every
+$t\in[0,1]$, because $C$ is convex.   Set
+$t_0=\sup\{t:t\in[0,1],\,(1-t)x+ty\in F_j\}$,
+$z=(1-t_0)x+t_0y$;  then $z\in F_1\cap F_2$, because both are closed, so
+
+\Centerline{$|f(x)-f(y)|\le|f(x)-f(z)|+|f(z)-f(y)|
+\le\gamma\|x-z\|+\gamma\|z-y\|=\gamma\|x-y\|$.}
+
+\noindent As $x$ and $y$ are arbitrary, $\gamma$ is a Lipschitz constant
+for $f$.\ \Qed}
+
+\spheader 473Cc Suppose that $f:\BbbR^r\to\Bbb R$ is Lipschitz.
+\cmmnt{Recall that by Rademacher's theorem (262Q),} $\grad f$ is
+defined almost everywhere.   \cmmnt{All the partial
+derivatives of $f$ are (Lebesgue) measurable, by 473Be, so} $\grad f$ is
+(Lebesgue) measurable on its domain.   If $\gamma$ is a Lipschitz
+constant for $f$, $\|\grad f(x)\|\le\gamma$ whenever $\grad f(x)$ is
+defined.   \prooflet{\Prf\ If $z\in\BbbR^r$, then
+
+\Centerline{$\lim_{t\downarrow 0}
+  \Bover1t|f(x+tz)-f(x)-tz\dotproduct\grad f(x)|=0$,}
+
+\noindent so
+
+\Centerline{$|z\dotproduct\grad f(x)|
+=\lim_{t\downarrow 0}\Bover1t|f(x+tz)-f(x)|
+\le\gamma\|z\|$;}
+
+\noindent as $z$ is arbitrary, $\|\grad f(x)\|\le\gamma$.\ \Qed}
+
+\spheader 473Cd Conversely, if $f:\BbbR^r\to\Bbb R$ is differentiable
+and $\|\grad f(x)\|\le\gamma$ for every $x$, then $\gamma$ is a
+Lipschitz constant for $f$.   \prooflet{\Prf\ Take $x$, $y\in\BbbR^r$.   Set $g(t)=f((1-t)x+ty)$ for $t\in\Bbb R$.   The function
+$t\mapsto (1-t)x+ty:\Bbb R\to\BbbR^r$ is everywhere differentiable, with
+constant derivative $y-x$, so by 473Bc $g$ is differentiable, with
+derivative $g'(t)=(y-x)\dotproduct\grad f((1-t)x+ty)$ for every $t$;
+in particular, $|g'(t)|\le\gamma\|y-x\|$ for every $t$.   Now, by the Mean Value Theorem, there is a $t\in[0,1]$ such that
+$g(1)-g(0)=g'(t)$, so that $|f(y)-f(x)|=|g'(t)|\le\gamma\|y-x\|$.   As $x$ and $y$ are
+arbitrary, $f$ is $\gamma$-Lipschitz.\ \Qed}
+
+\spheader 473Ce Note that if
+$f\in\eusm D$ then\cmmnt{ all its partial derivatives are continuous
+functions with compact support, so are bounded (436Ia), and} $f$ is
+Lipschitz as well as bounded\cmmnt{, by (d) here}.
+
+\spheader 473Cf{\bf (i)} If $D\subseteq\BbbR^r$ is bounded and 
+$f:D\to\Bbb R$ is Lipschitz, then there is a Lipschitz function 
+$g:\BbbR^r\to\Bbb R$, with compact support,
+extending $f$.   \prooflet{\Prf\ By 262Bb there is a Lipschitz function
+$f_1:\BbbR^r\to\Bbb R$ which extends $f$.   Let $\gamma>0$ be such that
+$D\subseteq B(\tbf{0},\gamma)$ and $\gamma$ is a Lipschitz constant for
+$f_1$;  set $M=|f_1(0)|+\gamma^2$;  then $|f_1(x)|\le M$ for every
+$x\in D$, so if we set
+$f_2(x)=\med(-M,f_1(x),M)$ for $x\in\BbbR^r$, $f_2$ is a bounded
+Lipschitz function extending $f$.   Set
+$f_3(x)=\med(0,1+\gamma-\|x\|,1)$ for $x\in\BbbR^r$;  then
+$f_3$ is a bounded Lipschitz function with compact support.   By (a),
+$g=f_3\times f_2$ is Lipschitz, and $g:\BbbR^r\to\Bbb R$ is a function
+with compact support extending $f$.\ \Qed}
+
+\medskip
+
+\quad{\bf (ii)}
+It follows that if $D\subseteq\BbbR^r$ is bounded and $f:D\to\Bbb R^s$ is 
+Lipschitz, then there is a Lipschitz function $g:\BbbR^r\to\BbbR^s$, with 
+compact support,
+extending $f$.   \prooflet{\Prf\ By 262Ba, we need only apply (i) to each 
+coordinate of $f$.\ \Qed}
+
+\leader{473D}{Smoothing by \dvrocolon{convolution}}\cmmnt{ We shall
+need a miscellany of facts, many of them special cases of results in
+\S\S255 and 444, concerning convolutions on $\BbbR^r$.   Recall that I
+write $(f*g)(x)=\int f(y)g(x-y)\mu(dy)$ whenever $f$ and $g$ are
+real-valued functions defined almost everywhere in $\BbbR^r$ and the
+integral is defined, and that $f*g=g*f$ (255Fb, 444Og).   Now we
+have the following.
+
+\medskip
+
+\noindent}{\bf Lemma} Suppose that $f$ and $g$ are Lebesgue measurable
+real-valued functions defined $\mu$-almost everywhere in $\BbbR^r$.
+
+(a) If $f$ is integrable and $g$ is essentially bounded, then their
+convolution $f*g$ is defined everywhere in $\BbbR^r$ and uniformly
+continuous, and $\|f*g\|_{\infty}\le\|f\|_1\esssup|g|$.
+
+(b) If $f$ is locally integrable and $g$ is bounded and has compact
+support, then $f*g$ is defined everywhere in $\BbbR^r$ and is
+continuous.
+
+(c) If $f$ and $g$ are defined everywhere in $\BbbR^r$ and
+$x\in\BbbR^r\setminus(\{y:f(y)\ne 0\}+\{z:g(z)\ne 0\})$, then $(f*g)(x)$
+is defined and equal to $0$.
+
+(d) If $f$ is integrable and $g$ is bounded, Lipschitz and defined
+everywhere, then $f*\grad g$ and $\grad(f*g)$ are defined everywhere and
+equal, where $f*\grad g=(f*\Pd{g}{\xi_1},\ldots,f*\Pd{g}{\xi_r})$.
+Moreover, $f*g$ is Lipschitz.
+
+(e) If $f$ is locally integrable, and $g\in\eusm D$,
+then $f*g$ is defined everywhere and is smooth.
+
+(f) If $f$ is essentially bounded and $g\in\eusm D$, then all the
+derivatives of $f*g$ are bounded, and $f*g$ is Lipschitz.
+
+(g) If $f$ is integrable and $\phi:\BbbR^r\to\BbbR^r$ is a bounded
+measurable function with components $\phi_1,\ldots,\phi_r$, and we write
+$(f*\phi)(x)=((f*\phi_1)(x),\ldots,(f*\phi_r)(x))$, then
+$\|(f*\phi)(x)\|\le\|f\|_1\sup_{y\in\BbbR^r}\|\phi(y)\|$ for every
+$x\in\BbbR^r$.
+
+\proof{{\bf (a)} See 255K.
+
+\medskip
+
+{\bf (b)} Suppose that $g(y)=0$ when $\|y\|\ge n$.   Given
+$x\in\BbbR^r$, set $\tilde f=f\times\chi B(x,n+1)$.   Then $\tilde f*g$
+is defined everywhere and continuous, by (a), while
+$(f*g)(z)=(\tilde f*g)(z)$ whenever $z\in B(x,1)$;  so $f*g$ is defined
+everywhere in $B(x,1)$ and is continuous at $x$.
+
+\medskip
+
+{\bf (c)} We have only to note that $f(y)g(x-y)=0$ for every $y$.
+
+\medskip
+
+{\bf (d)} Let $\gamma$ be a Lipschitz constant for $g$.   We know that
+$\grad g$ is defined almost everywhere, is measurable, and that
+$\|\grad g(x)\|\le\gamma$ whenever it is defined (473Cc);  so
+$(f*\grad g)(x)$ is defined for every $x$, by (a) here.   Fix
+$x\in\BbbR^r$.   If $y$, $z\in\BbbR^r$ set
+
+\Centerline{$\theta(y,z)
+=\Bover1{\|z\|}\bigl(g(x-y+z)-g(x-y)
+  -z\dotproduct\grad g(x-y)\bigr)$}
+
+\noindent whenever this is defined.   Then $|\theta(y,z)|\le 2\gamma$
+whenever it is defined.   Now suppose that $\sequencen{z_n}$ is a
+sequence in $\BbbR^r\setminus\{\tbf{0}\}$ converging to $\tbf{0}$.
+Then $\lim_{n\to\infty}\theta(y,z_n)=0$ whenever $\grad g(x-y)$ is
+defined, which almost everywhere.   So
+$\lim_{n\to\infty}\int f(y)\theta(y,z_n)\mu(dy)=0$, by Lebesgue's
+Dominated Convergence Theorem.   But this means that
+
+\Centerline{$\Bover1{\|z_n\|}
+  \bigl((f*g)(x+z_n)-(f*g)(x)-((f*\grad g)(x))\dotproduct z_n\bigr)
+\to 0$}
+
+\noindent as $n\to\infty$.   As $\sequencen{z_n}$ is arbitrary,
+$\grad(f*g)(x)$ is defined and is equal to $(f*\grad g)(x)$.
+
+Now $\grad g$ is bounded, because $g$ is Lipschitz, so
+$\grad(f*g)=f*\grad g$ also is bounded, by (a), and $f*g$ must be
+Lipschitz (473Cd).
+
+\medskip
+
+{\bf (e)} By (b), $f*g$ is defined everywhere and is continuous.   Now,
+for any $i\le r$, $\Pd{}{\xi_i}(f*g)=f*\Pd{g}{\xi_i}$ everywhere.
+\Prf\ Let $n\in\Bbb N$ be such that $g(y)=0$ if $\|y\|\ge n$.   Given
+$x\in\BbbR^r$, set $\tilde f=f\times\chi B(x,n+1)$.   Then
+$(f*g)(z)=(\tilde f*g)(z)$ for every $z\in B(x,1)$, so that
+
+$$\eqalignno{\Pd{(f*g)}{\xi_i}(x)
+&=\Pd{(\tilde f*g)}{\xi_i}(x)
+=(\tilde f*\Pd{g}{\xi_i})(x)\cr
+\displaycause{by (d)}
+&=(f*\Pd{g}{\xi_i})(x)\cr}$$
+
+\noindent (because of course $\Pd{g}{\xi_i}$ is also zero outside
+$B(\tbf{0},n)$).\ \QeD\   Inducing on $k$,
+
+$$\bover{\partial^k}{\partial\xi_{i_1}\ldots\partial\xi_{i_k}}(f*g)(x)
+=(f*\bover{\partial^kg}{\partial\xi_{i_1}\ldots\partial\xi_{i_k}})(x)$$
+
+\noindent for every $x\in\BbbR^r$ and every $i_1,\ldots,i_k$;  so we
+have the result.
+
+\medskip
+
+{\bf (f)} The point is just that all the partial derivatives of $g$,
+being smooth functions with compact support, are integrable, and that
+
+\Centerline{$|\Pd{}{\xi_i}(f*g)(x)|
+=|(f*\Pd{g}{\xi_i})(x)|
+\le\|f\|_{\infty}\|\Pd{g}{\xi_i}\|_1$}
+
+\noindent for every $x$ and every $i\le r$.   Inducing on the order of $D$,
+we see that $D(f*g)=f*Dg$ and
+$\|D(f*g)\|_{\infty}\le\|f\|_{\infty}\|Dg\|_1$, so that $D(f*g)$ is
+bounded, for any partial differential operator $D$.   In particular,
+$\grad(f*g)$ is bounded, so that $f*g$ is Lipschitz, by 473Cd.
+
+\medskip
+
+{\bf (g)} If $x$, $z\in\BbbR^r$, then
+
+$$\eqalign{z\dotproduct(f*\phi)(x)
+&=\sum_{i=1}^r\zeta_i(f*\phi_i)(x)
+=\int f(y)\sum_{i=1}^r\zeta_i\phi_i(x-y)\mu(dy)\cr
+&\le\int|f(y)||\sum_{i=1}^r\zeta_i\phi_i(x-y)|\mu(dy)\cr
+&\le\int|f(y)|\|z\|\|\phi(x-y)\|\mu(dy)
+\le\|z\|\|f\|_1\sup_{y\in\BbbR^r}\|\phi(y)\|.\cr}$$
+
+\noindent As $z$ is arbitrary,
+$\|(f*\phi)(x)\|\le\|f\|_1\sup_{y\in\BbbR^r}\|\phi(y)\|$.
+}%end of proof of 473D
+
+\leader{473E}{Lemma} (a) Define $h:\Bbb R\to[0,1]$ by
+setting $h(t)=\exp(\Bover{1}{t^2-1})$ for $|t|<1$, $0$ for
+$|t|\ge 1$.   Then $h$ is smooth, and $h'(t)\le 0$ for $t\ge 0$.
+
+(b) For $n\ge 1$, define $\tilde h_n:\BbbR^r\to\Bbb R$ by setting
+
+\Centerline{$\alpha_n=\int h((n+1)^2\|x\|^2)\mu(dx)$,
+\quad$\tilde h_n(x)=\Bover1{\alpha_n}h((n+1)^2\|x\|^2)$}
+
+\noindent for every $x\in\BbbR^r$.   Then
+$\tilde h_n\in\eusm D$, $\tilde h_n(x)\ge 0$ for every $x$,
+$\tilde h_n(x)=0$ if
+$\|x\|\ge\Bover1{n+1}$, and $\int\tilde h_nd\mu=1$.
+
+(c) If $f\in\eusm L^0(\mu)$, then
+$\lim_{n\to\infty}(f*\tilde h_n)(x)=f(x)$ for every $x\in\dom f$ at
+which $f$ is continuous.
+
+(d) If $f:\BbbR^r\to\Bbb R$ is uniformly continuous (in particular, if
+it is either Lipschitz or a continuous function with compact support),
+then $\lim_{n\to\infty}\|f-f*\tilde h_n\|_{\infty}=0$.
+
+(e) If $f\in\eusm L^0(\mu)$ is locally integrable, then
+$f(x)=\lim_{n\to\infty}(f*\tilde h_n)(x)$ for $\mu$-almost every
+$x\in\BbbR^r$.
+
+(f) If $f\in\eusm L^p(\mu)$, where $1\le p<\infty$, then
+$\lim_{n\to\infty}\|f-f*\tilde h_n\|_p=0$.
+
+\proof{{\bf (a)} Set $h_0(t)=\exp(-\bover1t)$ for $t>0$, $0$ for
+$t\le 0$.
+A simple induction on $n$ shows that the $n$th derivative $h_0^{(n)}$ of
+$h_0$ is of the form
+
+$$\eqalign{h_0^{(n)}(t)&=q_n(\Bover1t)\exp(-\Bover1t)\text{ for }t>0\cr
+&=0\text{ for }t\le 0,\cr}$$
+
+\allowmorestretch{468}{\noindent where each $q_n$ is a polynomial of degree $2n$;  the
+inductive hypothesis depends on the fact that
+$\lim_{s\to\infty}q(s)e^{-s}=0$ for every polynomial $q$.   So $h_0$ is
+smooth.   Now $h(t)=h_0(1-t^2)$ so $h$ also is smooth.   If $0\le t<1$
+then}
+
+\Centerline{$h'(t)=-\exp(\Bover1{t^2-1})\cdot\Bover{2t}{(t^2-1)^2}<0$;}
+
+\noindent if $t>1$ then $h'(t)=0$;  since $h'$ is continuous,
+$h'(t)\le 0$ for every $t\ge 0$.
+
+\medskip
+
+{\bf (b)} We need only observe that
+
+\Centerline{$x\mapsto(n+1)^2\|x\|^2=(n+1)^2\sum_{i=1}^r\xi_i^2$}
+
+\noindent is smooth
+and that the composition of smooth functions is smooth (using 473Bc).
+
+\medskip
+
+{\bf (c)} If $f$ is continuous at $x$ and $\epsilon>0$, let
+$n_0\in\Bbb N$ be such that $|f(y)-f(x)|\le\epsilon$ whenever
+$y\in\dom f$ and  $\|y-x\|\le\Bover1{n_0+1}$.   Then for any $n\ge n_0$,
+
+$$\eqalignno{|(f*\tilde h_n)(x)-f(x)|
+&=|\int f(x-y)\tilde h_n(y)\mu(dy)-\int f(x)\tilde h_n(y)\mu(dy)|\cr
+&\le\int|f(x-y)-f(x)|\tilde h_n(y)\mu(dy)
+\le\int\epsilon\tilde h_n(y)\mu(dy)
+=\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary, we have the result.
+
+\medskip
+
+{\bf (d)} Repeat the argument of (c), but `uniformly in $x$';  that is,
+given $\epsilon>0$, take $n_0$ such that $|f(y)-f(x)|\le\epsilon$
+whenever $x$, $y\in\BbbR^r$ and $\|y-x\|\le\Bover1{n_0+1}$, and see that
+$|(f*\tilde h_n)(x)-f(x)|\le\epsilon$ for every $n\ge n_0$ and every
+$x$.
+
+\medskip
+
+{\bf (e)} We know from 472Db or 261E that, for almost every $x\in\BbbR^r$,
+
+\Centerline{$\lim_{\delta\downarrow 0}\Bover1{\mu B(x,\delta)}
+  \int_{B(x,\delta)}|f(y)-f(x)|\mu(dy)=0$.}
+
+\noindent Take any such $x$.   Set $\gamma=f(x)$,
+Set $g(y)=|f(y)-\gamma|$ for every $y\in\dom f$.   Let $\epsilon>0$.   Then there is some $\delta>0$ such that
+$\Bover{q(t)}{\beta_rt^r}\le\epsilon$ whenever $0<t\le\delta$, where
+
+\Centerline{$q(t)=\int_{B(x,t)}g\,d\mu
+=\int_0^t\int_{\partial B(x,s)}g(y)\nu(dy)dt$}
+
+\noindent by 265G, so $q'(t)=\int_{\partial B(y,t)}g\,d\nu$ for almost
+every $t\in[0,\delta]$, by 222E.   If $n+1\ge\Bover1{\delta}$, then
+
+$$\eqalignno{(g*\tilde h_n)(x)
+&=\int g(y)\tilde h_n(x-y)\mu(dy)
+=\int_{B(x,\delta)}g(y)\tilde h_n(x-y)\mu(dy)\cr
+&=\Bover1{\alpha_n}\int_0^{\delta}\int_{\partial B(x,t)}
+  g(y)h((n+1)^2t^2)\nu(dy)dt\cr
+\displaycause{265G again}
+&=\Bover1{\alpha_n}\int_0^{\delta}h((n+1)^2t^2)q'(t)dt\cr
+&=-\Bover1{\alpha_n}\int_0^{\delta}2(n+1)^2th'((n+1)^2t^2)q(t)dt\cr
+\displaycause{integrating by parts (225F), because
+$q(0)=h((n+1)^2\delta^2)=0$ and both $q$ and $h$ are absolutely
+continuous}
+&\le-\Bover{\epsilon}{\alpha_n}\int_0^{\delta}
+  2(n+1)^2th'((n+1)^2t^2)\beta_rt^rdt\cr
+\displaycause{because $0\le q(t)\le\epsilon\beta_rt^r$ and
+$h'((n+1)^2t^2)\le 0$ for $0\le t\le\delta$}
+&=\epsilon\cr}$$
+
+\noindent (applying the same calculations with $\chi\BbbR^r$ in place of
+$g$).   But now, since $(\gamma\chi\BbbR^r*\tilde h_n)(x)=\gamma$ for
+every $n$,
+
+\Centerline{$|(f*\tilde h_n)(x)-\gamma|
+=|\int(f(y)-\gamma)\tilde h_n(x-y)\mu(dy)|
+\le\int|f(y)-\gamma|\tilde h_n(x-y)\mu(dy)
+\le\epsilon$}
+
+\noindent whenever $n+1\ge\Bover1{\delta}$.  As $\epsilon$ is arbitrary,
+$f(x)=\gamma=\lim_{n\to\infty}(f*\tilde h_n)(x)$;  and this is true for
+$\mu$-almost every $x$.
+
+\medskip
+
+{\bf (f)} Apply 444T to the indefinite-integral measure
+$\tilde h_n\mu$ over $\mu$ defined by $\tilde h_n$;
+use 444Pa for the identification of
+$(\tilde h_n\mu)*f$ with $\tilde h_n*f=f*\tilde h_n$.
+}%end of proof of 473E
+
+\leader{473F}{Lemma} For any measure space $(X,\Sigma,\lambda)$ and any
+non-negative $f_1,\ldots,f_k\in\eusm L^0(\lambda)$,
+
+\Centerline{$\int\prod_{i=1}^kf_i^{1/k}d\lambda
+\le\prod_{i=1}^k\bigl(\int f_id\lambda\bigr)^{1/k}$.}
+
+\proof{ Induce on $k$.   Note that we can suppose that every
+$f_i$ is integrable;  for if any
+$\int f_i$ is zero, then $f_i=0$ a.e.\ and the result is trivial;  and
+if all the $\int f_i$ are greater than zero and any of them is infinite,
+the result is again trivial.
+
+The induction starts with the trivial case $k=1$.   For the inductive
+step to $k\ge 2$, we have
+
+$$\eqalignno{\int\prod_{i=1}^kf_i^{1/k}d\lambda
+&\le\|\prod_{i=1}^{k-1}f_i^{1/k}\|_{k/(k-1)}\|f_k^{1/k}\|_k\cr
+\displaycause{by H\"older's inequality, 244E}
+&=\bigl(\int\prod_{i=1}^{k-1}f_i^{1/(k-1)}d\lambda\bigr)^{(k-1)/k}
+   \bigl(\int f_kd\lambda\bigr)^{1/k}\cr
+&\le\bigl(\prod_{i=1}^{k-1}(\int f_id\lambda)^{1/(k-1)}\bigr)^{(k-1)/k}
+   \bigl(\int f_kd\lambda\bigr)^{1/k}\cr
+\displaycause{by the inductive hypothesis}
+&=\prod_{i=1}^k(\int f_id\lambda)^{1/k},\cr}$$
+
+\noindent as required.
+}%end of proof of 473F
+
+\leader{473G}{Lemma} Let $(X,\Sigma,\lambda)$ be a $\sigma$-finite
+measure space and
+$k\ge 2$ an integer.   Write $\lambda_k$ for the product measure on
+$X^k$.   For
+$x=(\xi_1,\ldots,\xi_k)\in X^k$, $t\in X$ and $1\le i\le k$ set
+$S_i(x,t)=(\xi'_1,\ldots,\xi'_k)$ where $\xi'_i=t$ and $\xi'_j=\xi_j$
+for $j\ne i$.   Then if $h\in\eusm L^1(\lambda_k)$ is non-negative, and
+we set $h_i(x)=\int h(S_i(x,t))\lambda(dt)$ whenever this is defined in
+$\Bbb R$, we have
+
+\Centerline{$\int(\prod_{i=1}^kh_i)^{1/(k-1)}d\lambda_k
+\le(\int h\,d\lambda_k)^{k/(k-1)}$.}
+
+\proof{ Induce on $k$.
+
+\medskip
+
+{\bf (a)} If $k=2$, we have
+
+$$\eqalign{\int h_1\times h_2d\lambda_k
+&=\iint\bigl(\int h(\tau_1,\xi_2)d\tau_1\bigr)
+  \bigl(\int h(\xi_1,\tau_2)d\tau_2\bigr)d\xi_1d\xi_2\cr
+&=\iiiint h(\tau_1,\xi_2)h(\xi_1,\tau_2)d\tau_1d\tau_2d\xi_1d\xi_2\cr
+&=\iint h(\tau_1,\xi_2)d\tau_1d\xi_2
+  \cdot\iint h(\xi_1,\tau_2)d\tau_2d\xi_1
+=\bigl(\int h\,d\lambda_2\bigr)^2\cr}$$
+
+\noindent by Fubini's theorem (252B) used repeatedly, because (by 253D)
+\discrcenter{390pt}{$(\tau_1,\tau_2,\xi_1,\xi_2)\mapsto
+h(\xi_1,\tau_2)h(\tau_1,\xi_2)$ }is $\lambda_4$-integrable.
+(See 251W for a sketch of the manipulations
+needed to apply 252B, as stated, to the integrals above.)
+
+\medskip
+
+{\bf (b)} For the inductive step to $k\ge 3$, argue as follows.
+For $y\in X^{k-1}$, set $g(y)=\int h(y,t)dt$
+whenever this is defined in $\Bbb R$, identifying $X^k$ with
+$X^{k-1}\times X$, so that $g(y)=h_k(y,t)$ whenever either is defined.
+If $1\le i<k$, we can consider $S_i(y,t)$ for $y\in X^{k-1}$ and
+$t\in X$, and we have
+
+\Centerline{$\int g(S_i(y,t))dt
+=\iint h(S_i(y,t),u)dudt
+=\int h_i(y,t)dt$}
+
+\noindent for almost every $y\in X^{k-1}$.   So
+
+$$\eqalignno{\int(\prod_{i=1}^kh_i)^{1/(k-1)}d\lambda_k
+&=\iint(\prod_{i=1}^{k-1}h_i(y,t))^{1/(k-1)}g(y)^{1/(k-1)}
+  dt\,\lambda_{k-1}(dy)\cr
+&=\int g(y)^{1/(k-1)}\int(\prod_{i=1}^{k-1}h_i(y,t))^{1/(k-1)}
+  dt\,\lambda_{k-1}(dy)\cr
+&\le\int g(y)^{1/(k-1)}
+  \prod_{i=1}^{k-1}\bigl(\int h_i(y,t)dt\bigr)^{1/(k-1)}
+  \lambda_{k-1}(dy)\cr
+\displaycause{473F}
+&=\int g(y)^{1/(k-1)}
+  \prod_{i=1}^{k-1}g_i(y)^{1/(k-1)}\lambda_{k-1}(dy)\cr
+\displaycause{where $g_i$ is defined from $g$ in the same way as $h_i$
+is defined from $h$}
+&\le\bigl(\int g(y)\lambda_{k-1}(dy)\bigr)^{1/(k-1)}
+  \bigl(\int\prod_{i=1}^{k-1}g_i(y)^{1/(k-2)}
+      \lambda_{k-1}(dy)\bigr)^{(k-2)/(k-1)}\cr
+\displaycause{by H\"older's inequality again, this time with
+$\Bover1{k-1}+\Bover{k-2}{k-1}=1$}
+&\le\bigl(\int g(y)\lambda_{k-1}(dy)\bigr)^{1/(k-1)}
+  \cdot\int g(y)\lambda_{k-1}(dy)\cr
+\displaycause{by the inductive hypothesis}
+&=\bigl(\int g(y)\lambda_{k-1}(dy)\bigr)^{k/(k-1)}
+=\bigl(\int h(x)\lambda_k(dx)\bigr)^{k/(k-1)},\cr}$$
+
+\noindent and the induction proceeds.
+}%end of proof of 473G
+
+\leader{473H}{Gagliardo-Nirenberg-Sobolev inequality} Suppose that
+$f:\BbbR^r\to\Bbb R$ is a Lipschitz function with compact support.
+Then $\|f\|_{r/(r-1)}\le\int\|\grad f\|d\mu$.
+
+\proof{ By 473Cc, $\grad f$ is measurable and bounded, so $\|\grad f\|$
+also is;  since it must have compact support, it is integrable.
+
+For $1\le i\le r$,
+$x=(\xi_1,\ldots,\xi_r)\in\BbbR^r$ and $t\in\Bbb R$ write
+$S_i(x,t)=(\xi'_1,\ldots,\xi'_r)$ where $\xi'_i=t$ and $\xi'_j=\xi_j$
+for $j\ne i$.   Set
+$h_i(x)=\int_{-\infty}^{\infty}\|\grad f(S_i(x,t))\|dt$ when this is
+defined,
+which will be the case for almost every $x$.   Now, whenever $h_i(x)$ is
+defined,
+
+\Centerline{$|f(x)|=|f(S_i(x,\xi_i))|
+=|\int_{-\infty}^{\xi_i}\pd{}{t}f(S_i(x,t))dt|
+\le h_i(x)$.}
+
+\noindent (Use 225E and the fact that a Lipschitz function on any
+bounded interval in $\Bbb R$ is absolutely continuous.)
+So $|f|\leae h_i$ for every $i\le r$.   Accordingly
+
+\Centerline{$\int|f(x)|^{r/(r-1)}\mu(dx)
+\le\int\prod_{i=1}^rh_i(x)^{1/(r-1)}\mu(dx)
+\le\bigl(\int\|\grad f(x)\|\mu(dx)\bigr)^{r/(r-1)}$}
+
+\noindent by 473G.   Raising both sides to the power $(r-1)/r$ we
+have the result.
+}%end of proof of 473H
+
+\leader{473I}{Lemma} For any Lipschitz function
+$f:B(\tbf{0},1)\to\Bbb R$,
+
+\Centerline{$\int_{B(\tbf{0},1)}|f|^{r/(r-1)}d\mu
+\le \bigl(2^{r+4}\sqrt r
+  \int_{B(\tbf{0},1)}\|\grad f\|+|f|d\mu\bigr)^{r/(r-1)}$.}
+
+\proof{{\bf (a)} Set $g(x)=\max(0,2\|x\|^2-1)$ for $x\in B(\tbf{0},1)$.
+Then $\grad g$ is defined at
+every point $x$ such that $\|x\|<1$ and $\|x\|\ne\Bover1{\sqrt{2}}$, and at all such points $\pd{g}{\xi_i}$ is either $0$ or $4\xi_i$ for each $i$, so that $\|\grad g(x)\|\le 4\|x\|\le 4$.   Hence
+(or otherwise) $g$ is
+Lipschitz.   So $f_1=f\times g$ is Lipschitz (473Ca).
+
+By Rademacher's theorem again, $\grad f_1$ is defined almost everywhere
+in $B(\tbf{0},1)$.   Now
+
+$$\eqalignno{\int_{B(\tbf{0},1)}\|\grad f_1\|d\mu
+&=\int_{B(\tbf{0},1)}\|f(x)\grad g(x)+g(x)\grad f(x)\|\mu(dx)\cr
+\displaycause{473Bd}
+&\le\int_{B(\tbf{0},1)}4|f|+\|\grad f\|d\mu.\cr}$$
+
+\medskip
+
+{\bf (b)} It will be convenient to have an elementary fact out in the
+open.   Set $\phi(x)=\Bover{x}{\|x\|^2}$ for
+$x\in\BbbR^r\setminus\{\tbf{0}\}$;  note that $\phi^2(x)=x$.   Then
+$\phi\restr\{x:\|x\|\ge\delta\}$ is Lipschitz, for any $\delta>0$.
+\Prf\ If $\|x\|=\alpha\ge\delta$, $\|y\|=\beta\ge\delta$, then  we have
+
+$$\eqalign{\|\phi(x)-\phi(y)\|^2
+&=\Bover1{\alpha^4}\|x\|^2-\Bover2{\alpha^2\beta^2}x\dotproduct y
+  +\Bover1{\beta^4}\|y\|^2\cr
+&=\Bover1{\alpha^2\beta^2}
+  \bigl(\|y\|^2-2x\dotproduct y+\|x\|^2\bigr)
+\le\Bover1{\delta^4}\|x-y\|^2,\cr}$$
+
+\noindent so $\Bover1{\delta^2}$ is a Lipschitz constant for
+$\phi\restrp\BbbR^r\setminus B(\tbf{0},\delta)$.\ \Qed
+
+\medskip
+
+{\bf (c)} Set $f_2(x)=f(x)$ if $\|x\|\le 1$, $f_1\phi(x)$ if
+$\|x\|\ge 1$.   Then $f_2$ is
+well-defined (because $f_1(x)=f(x)$ if $\|x\|=1$), is zero outside
+$B(\tbf{0},\sqrt{2})$ (because $g(x)=0$ if $\|x\|\le\Bover1{\sqrt 2}$),
+and is Lipschitz.   \Prf\ By 473Cb, it will be enough to show that
+$f_2\restr F$ is Lipschitz, where $F=\{x:\|x\|\ge 1\}$.   But (b) shows
+that $\phi\restr F$ is $1$-Lipschitz, so any Lipschitz constant
+for $f_1$ is also a Lipschitz constant for
+$f_2\restr F$.\ \Qed
+
+If $\|x\|>1$, then, for any $i\le r$,
+
+$$\eqalign{\Pd{f_2}{\xi_i}(x)
+&=\sum_{j=1}^r\Pd{f_1}{\xi_j}(\phi(x))
+  \cdot\Pd{}{\xi_i}(\Bover{\xi_j}{\|x\|^2})
+=\Pd{f_1}{\xi_i}(\phi(x))\cdot\Bover1{\|x\|^2}
+   -2\sum_{j=1}^r\Pd{f_1}{\xi_j}(\phi(x))
+      \cdot\Bover{\xi_i\xi_j}{\|x\|^4}\cr
+&=\Pd{f_1}{\xi_i}(\phi(x))\cdot\Bover1{\|x\|^2}
+   -\Bover{2\xi_i}{\|x\|^4}x\dotproduct\grad f(\phi(x))\cr}$$
+
+\noindent wherever the right-hand side is defined, that is, wherever all
+the partial derivatives $\Pd{f_1}{\xi_j}(\phi(x))$ are defined.   But
+$H=B(\tbf{0},1)\setminus\dom(\grad f_1)$ is negligible, and does not
+meet $\{x:\|x\|<\Bover1{\sqrt 2}\}$, so $\phi\restr H$ is Lipschitz and
+$\phi[H]=\phi^{-1}[H]$ is
+negligible (262D);  while $\grad f_1(\phi(x))$ is defined whenever
+$\|x\|>1$
+and $x\notin\phi^{-1}[H]$.   So the formula here is valid for almost
+every $x\in F$, and
+
+$$\eqalign{|\Pd{f_2}{\xi_i}(x)|
+&\le\|\grad f_1(\phi(x))\|\cdot\Bover1{\|x\|^2}
+   +\Bover{2|\xi_i|}{\|x\|^4}\|\grad f_1(\phi(x))\|\|x\|\cr
+&=\|\grad f_1(\phi(x))\|\Bover{\|x\|+2|\xi_i|}{\|x\|^3}
+\le 3\|\grad f_1(\phi(x))\|\cr}$$
+
+\noindent for almost every $x\in F$.   But (since we know that
+$\grad f_2$ is
+defined almost everywhere, by Rademacher's theorem, as usual) we have
+
+\Centerline{$\|\grad f_2(x)\|
+\le 3\sqrt r\|\grad f_1(\phi(x))\|$}
+
+\noindent for almost every $x\in F$.
+
+\medskip
+
+{\bf (d)} We are now in a position to estimate
+
+$$\eqalignno{\int_F\|\grad f_2\|d\mu
+&=\int_{B(\tbf{0},\sqrt 2)}\|\grad f_2\|d\mu
+  -\int_{B(\tbf{0},1)}\|\grad f_2\|d\mu\cr
+\displaycause{because $f_2(x)=0$ if $\|x\|\ge\sqrt 2$}
+&=\int_1^{\sqrt 2}\int_{\partial B(\tbf{0},t)}
+  \|\grad f_2(x)\|\nu(dx)dt\cr
+\displaycause{265G, as usual}
+&\le 3\sqrt r\int_1^{\sqrt 2}\int_{\partial B(\tbf{0},t)}
+   \|\grad f_1(\Bover1{t^2}x)\|\nu(dx)dt\cr
+\displaycause{by (b) above}
+&\le 3\sqrt r\int_1^{\sqrt 2}\int_{\partial B(\tbf{0},1/t)}
+   t^{2r-2}\|\grad f_1(y)\|\nu(dy)dt\cr}$$
+
+\noindent substituting $x=t^2y$ in the inner integral;  the point
+being that as the function $y\mapsto t^2y$ changes all distances by a
+scalar multiple $t^2$, it must transform Hausdorff $(r-1)$-dimensional
+measure by a multiple $t^{2r-2}$.   But now, substituting $s=\bover1t$
+in the outer integral, we have
+
+$$\eqalign{\int_F\|\grad f_2\|d\mu
+&\le 3\sqrt r\int_{1/\sqrt 2}^1\Bover1{s^{2r}}
+  \int_{\partial B(\tbf{0},s)}\|\grad f_1(y)\|\nu(dy)ds\cr
+&\le 2^r\cdot 3\sqrt r\int_{1/\sqrt 2}^1
+    \int_{\partial B(\tbf{0},s)}\|\grad f_1(y)\|\nu(dy)ds\cr
+&=2^r\cdot 3\sqrt r\int_{B(\tbf{0},1)}\|\grad f_1\|d\mu\cr
+&\le 2^{r+2}\sqrt r\int_{B(\tbf{0},1)}4|f|+\|\grad f\|d\mu\cr}$$
+
+\noindent by (a) above.
+
+\medskip
+
+{\bf (e)} Accordingly
+
+$$\eqalign{\int_{\Bbb R^r}\|\grad f_2\|d\mu
+&=\int_{B(\tbf{0},1)}\|\grad f\|d\mu+\int_F\|\grad f_2\|d\mu\cr
+&\le 2^{r+4}\sqrt r\int_{B(\tbf{0},1)}|f|+\|\grad f\|d\mu.\cr}$$
+
+\noindent But now we can apply 473H to see that
+
+$$\eqalign{\int_{B(\tbf{0},1)}|f|^{r/(r-1)}d\mu
+&\le\int|f_2|^{r/r-1}d\mu
+\le(\int\|\grad f_2\|d\mu)^{r/(r-1)}\cr
+&\le\bigl(2^{r+4}\sqrt r
+  \int_{B(\tbf{0},1)}|f|+\|\grad f\|d\mu\bigr)^{r/(r-1)},\cr}$$
+
+\noindent as claimed.
+}%end of proof of 473I
+
+\leader{473J}{Lemma} Let $f:\BbbR^r\to\Bbb R$ be a Lipschitz function.
+Then
+
+\Centerline{$\int_{B(y,\delta)}|f(x)-f(z)|\mu(dx)
+\le \Bover{2^r}r\delta^r\int_{B(y,\delta)}
+  \|\grad f(x)\|\|x-z\|^{1-r}\mu(dx)$}
+
+\noindent whenever $y\in\BbbR^r$, $\delta>0$ and $z\in B(y,\delta)$.
+%OK for other convex sets of finite diameter?
+
+\proof{{\bf (a)} To begin with, suppose that $f$ is smooth.   In this
+case, for any $x$, $z\in B(y,\delta)$,
+
+$$\eqalign{|f(x)-f(z)|
+&=\bigl|\int_0^1\Bover{d}{dt}f(z+t(x-z))dt\bigr|\cr
+&=\bigl|\int_0^1(x-z)\dotproduct\grad f(z+t(x-z))dt\bigr|\cr
+&\le\|x-z\|\int_0^1\|\grad f(z+t(x-z))\|dt.\cr}$$
+
+\noindent So, for $\eta>0$,
+
+$$\eqalignno{\int_{B(y,\delta)\cap\partial B(z,\eta)}
+  &|f(x)-f(z)|\nu(dx)\cr
+&\le\eta\int_0^1\int_{B(y,\delta)\cap\partial B(z,\eta)}
+  \|\grad f(z+t(x-z))\|\nu(dx)dt\cr
+\displaycause{$\grad f$ is continuous and bounded, and the subspace
+measure induced by $\nu$ on $\partial B(z,\eta)$ is a
+(quasi-\nobreak)Radon measure (471E, 471Dh), so
+its product with Lebesgue measure also is (417T), and there is no
+difficulty with the change in order of integration}
+&\le\eta\int_0^1\Bover1{t^{r-1}}
+  \int_{B(y,\delta)\cap\partial B(z,t\eta)}
+  \|\grad f(w)\|\nu(dw)dt\cr
+\displaycause{because if $\phi(x)=z+t(x-z)$, then
+$\nu\phi^{-1}[E]=\Bover1{t^{r-1}}\nu E$ whenever $\nu$ measures $E$ and
+$t>0$, while $\phi(x)\in B(y,\delta)$ whenever $x\in B(y,\delta)$}
+&=\eta^r\int_0^1\int_{B(y,\delta)\cap\partial B(z,t\eta)}
+  \|\grad f(w)\|\|w-z\|^{1-r}\nu(dw)dt\cr
+&=\eta^{r-1}\int_0^{\eta}\int_{B(y,\delta)\cap\partial B(z,s)}
+  \|\grad f(w)\|\|w-z\|^{1-r}\nu(dw)ds\cr
+\displaycause{substituting $s=t\eta$}
+&=\eta^{r-1}\int_{B(y,\delta)\cap B(z,\eta)}
+  \|\grad f(w)\|\|w-z\|^{1-r}\mu(dw).\cr}$$
+
+\noindent So
+
+$$\eqalign{\int_{B(y,\delta)}|f(x)-f(z)|\mu(dx)
+&=\int_0^{2\delta}\int_{B(y,\delta)\cap\partial B(z,\eta)}
+  |f(x)-f(z)|\nu(dx)d\eta\cr
+&\le\int_0^{2\delta}\eta^{r-1}\int_{B(y,\delta)\cap B(z,\eta)}
+  \|\grad f(w)\|\|w-z\|^{1-r}\mu(dw)d\eta\cr
+&\le\int_0^{2\delta}\eta^{r-1}\int_{B(y,\delta)}
+  \|\grad f(w)\|\|w-z\|^{1-r}\mu(dw)d\eta\cr
+&=\bover{2^r}r\delta^r\int_{B(y,\delta)}
+  \|\grad f(w)\|\|w-z\|^{1-r}\mu(dw).\cr}$$
+
+\medskip
+
+{\bf (b)} Now turn to the general case in which $f$ is not necessarily
+differentiable everywhere, but is known to be Lipschitz and bounded.   We need to know that
+$\int_{B(y,\delta)}\|x-z\|^{1-r}\mu(dx)$ is finite;  this is because
+
+$$\eqalignno{\int_{B(y,\delta)}\|x-z\|^{1-r}\mu(dx)
+&\le\int_{B(z,2\delta)}\|x-z\|^{1-r}\mu(dx)
+=\int_0^{2\delta}t^{1-r}\nu(\partial B(z,t))dt\cr
+&=\int_0^{2\delta}t^{1-r}r\beta_rt^{r-1}dt
+=2\delta r\beta_r.\cr}$$
+
+\noindent Take the sequence $\sequencen{\tilde h_n}$ from 473E.
+Then $\sequencen{f*\tilde h_n}$ converges uniformly to $f$ (473Ed),
+while $\sequencen{\grad(f*\tilde h_n)}=\sequencen{\tilde h_n*\grad f}$
+(473Dd) is uniformly bounded (473Cc, 473Dg) and
+converges almost everywhere to $\grad f$ (473Ee).   But this means
+that, setting $f_n=f*\tilde h_n$,
+
+$$\eqalignno{\int_{B(y,\delta)}|f(x)-f(z)|\mu(dx)
+&=\lim_{n\to\infty}\int_{B(y,\delta)}|f_n(x)-f_n(z)|\mu(dx)\cr
+&\le\lim_{n\to\infty}\Bover{2^r}r\delta^r\int_{B(y,\delta)}
+  \|\grad f_n(x)\|\|x-z\|^{1-r}\mu(dx)\cr
+\displaycause{because every $f_n$ is smooth, by 473De}
+&=\Bover{2^r}r\delta^r\int_{B(y,\delta)}
+  \|\grad f(x)\|\|x-z\|^{1-r}\mu(dx)\cr}$$
+
+\noindent by Lebesgue's Dominated Convergence Theorem.
+
+\medskip
+
+{\bf (c)} Finally, if $f$ is not bounded on the whole of $\BbbR^r$,
+it is surely bounded on $B(y,\delta)$, so we can apply (b) to the function
+$x\mapsto\med(-M,f(x),M)$ for a suitable $M\ge 0$ to get the result as
+stated.
+}%end of proof of 473J
+
+\vleader{48pt}{473K}{Poincar\'e's inequality for balls} Let $B\subseteq\BbbR^r$
+be a non-trivial closed ball, and $f:B\to\Bbb R$ a Lipschitz function.
+Set $\gamma=\Bover1{\mu B}\int_Bfd\mu$.   Then
+
+\Centerline{$\bigl(\int_B|f-\gamma|^{r/(r-1)}d\mu\bigr)^{(r-1)/r}
+\le c\int_B\|\grad f\|d\mu$,}
+
+\noindent where $c=2^{r+4}\sqrt r(1+2^{r+1})$.
+
+\proof{{\bf (a)} To begin with (down to the end of (b)) suppose that
+$B$ is the unit ball $B(\tbf{0},1)$.
+Then, for any $x\in B$,
+
+$$\eqalign{|f(x)-\gamma|
+&=\Bover1{\mu B}
+  \bigl|\int_Bf(x)-f(z)\mu(dz)\bigr|\cr
+&\le\Bover1{\mu B}\int_B|f(x)-f(z)|\mu(dz)\cr
+&\le\Bover{2^r}r\cdot\Bover1{\mu B}
+  \int_B\|\grad f(z)\|\|x-z\|^{1-r}\mu(dz),\cr}$$
+
+\noindent by 473J.   Also, for any $z\in B$,
+
+$$\eqalignno{\int_{B(z,2)}\|x-z\|^{1-r}\mu(dx)
+&=\int_0^2\int_{\partial B(z,t)}\|x-z\|^{1-r}\nu(dx)dt\cr
+&=\int_0^2t^{1-r}\nu(\partial B(z,t))dt
+=\int_0^2t^{1-r}t^{r-1}\nu S_{r-1}dt
+=2r\beta_r.\cr}$$
+
+\noindent So
+
+$$\eqalign{\int_B|f(x)-\gamma|\mu(dx)
+&\le\Bover{2^r}r\cdot\Bover1{\mu B}
+  \int_B\int_B\|\grad f(z)\|\|x-z\|^{1-r}\mu(dz)\mu(dx)\cr
+&=\Bover{2^r}{r\beta_r}\int_B\int_B
+  \|\grad f(z)\|\|x-z\|^{1-r}\mu(dx)\mu(dz)\cr
+&\le\Bover{2^r}{r\beta_r}
+  \int_B\|\grad f(z)\|\int_{B(z,2)}
+  \|x-z\|^{1-r}\mu(dx)\mu(dz)\cr
+&\le 2^{r+1}\int_B\|\grad f(z)\|\mu(dz).\cr}$$
+
+\medskip
+
+{\bf (b)} Now apply 473I to $g=f(x)-\gamma$.   We have
+
+$$\eqalignno{\int_B|f-\gamma|^{r/(r-1)}d\mu
+&\le\bigl(2^{r+4}\sqrt r
+  \int_B\|\grad f\|+|g|d\mu\bigr)^{r/(r-1)}\cr
+&\le\bigl(2^{r+4}\sqrt r(1+2^{r+1})
+  \int_B\|\grad f\|d\mu\bigr)^{r/(r-1)}\cr
+\displaycause{by (a)}
+&=\bigl(c\int_B\|\grad f\|d\mu\bigr)^{r/(r-1)}.\cr}$$
+
+\medskip
+
+{\bf (c)} For the general case, express $B$ as $B(y,\delta)$, and set
+$h(x)=f(y+\delta x)$ for
+$x\in B(\tbf{0},1)$.   Then $\grad h(x)=\delta\grad f(y+\delta x)$ for
+almost every $x\in B(\tbf{0},1)$.
+Now
+
+\Centerline{$\int_{B(\tbf{0},1)}h\,d\mu
+=\Bover1{\delta^r}\int_{B(y,\delta)}fd\mu$,}
+
+\noindent so
+
+\Centerline{$\Bover1{\mu B(\tbf{0},1)}\int_{B(\tbf{0},1)}h\,d\mu
+=\Bover1{\mu B(y,\delta)}\int_{B(y,\delta)}fd\mu
+=\gamma$.}
+
+\noindent We therefore have
+
+$$\eqalignno{\int_{B(y,\delta)}|f-\gamma|^{r/(r-1)}d\mu
+&=\delta^r\int_{B(\tbf{0},1)}|h-\gamma|^{r/(r-1)}d\mu\cr
+&\le\delta^r
+  \bigl(c\int_{B(\tbf{0},1)}\|\grad h\|d\mu\bigr)^{r/(r-1)}\cr
+\displaycause{by (a)-(b) above}
+&=\delta^r\bigl(\Bover{\delta c}{\delta^r}
+      \int_{B(y,\delta)}\|\grad f\|d\mu\bigr)^{r/(r-1)}\cr
+&=\bigl(c\int_{B(y,\delta)}\|\grad f\|d\mu\bigr)^{r/(r-1)}.\cr}$$
+
+\noindent Raising both sides to the power $(r-1)/r$ we have the result
+as stated.
+}%end of proof of 473K
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} As will be plain from the way in which the proof
+here is constructed, there is no suggestion that the formula offered for
+$c$ gives anything near the best possible value.
+}%end of comment
+
+\leader{473L}{Corollary} Let $B\subseteq\BbbR^r$ be a non-trivial
+closed ball, and $f:B\to[0,1]$ a Lipschitz function.   Set
+
+\Centerline{$F_0=\{x:x\in B,\,f(x)\le\bover14\}$,
+\quad$F_1=\{x:x\in B,\,f(x)\ge\bover34\}$.}
+
+\noindent Then
+
+\Centerline{$\bigl(\min(\mu F_0,\mu F_1)\bigr)^{(r-1)/r}
+\le 4c\int_B\|\grad f\|d\mu$,}
+
+\noindent where
+$c=2^{r+4}\sqrt r(1+2^{r+1})$.
+
+\proof{ Setting $\gamma=\Bover1{\mu B}\int_Bfd\mu$,
+
+$$\eqalign{\int_B|f-\gamma|^{r/(r-1)}d\mu
+&\ge\Bover1{4^{r/(r-1)}}\mu F_0\text{ if }\gamma\ge\Bover12,\cr
+&\ge\Bover1{4^{r/(r-1)}}\mu F_1\text{ if }\gamma\le\Bover12.\cr}$$
+
+\noindent So 473K tells us that
+
+\Centerline{$\Bover14\bigl(\min(\mu F_0,\mu F_1)\bigr)^{(r-1)/r}
+\le c\int_B\|\grad f\|d\mu$,}
+
+\noindent as required.
+}%end of proof of 473L
+
+\leader{473M}{The case $r=1$}\cmmnt{ The general rubric for this
+section declares that $r$ is taken to be at least $2$, which is clearly
+necessary for the formula in 473K to be appropriate.   For the sake of
+an application in the next section, however, I mention the elementary
+corresponding result when $r=1$.}   In this case, $B$ is just a closed
+interval, and \cmmnt{$\grad f$ is the ordinary derivative of $f$;
+interpreting $(\int_B|f-\gamma|^{r/(r-1)})^{(r-1)/r}$ as
+$\|f\times\chi B-\gamma\chi B\|_{r/(r-1)}$, it is natural to look at}
+
+\Centerline{$\|f\times\chi B-\gamma\chi B\|_{\infty}
+=\sup_{x\in B}|f(x)-\gamma|
+\le\sup_{x,y\in B}|f(x)-f(y)|
+\le\int_B|f'|d\mu$,}
+
+\noindent giving a version of 473K for $r=1$.   \cmmnt{We see that
+the formula for $c$ remains valid in the case $r=1$, with a good deal to
+spare.}   As for 473L, if $\int_B|f'|<\bover12$ then at least one
+of $F_0$, $F_1$ must be empty.
+
+\exercises{\leader{473X}{Basic exercises (a)}
+%\spheader 473Xa
+Set $f(x)=\max(0,-\ln\|x\|)$, $f_k(x)=\min(k,f(x))$ for
+$x\in\BbbR^2\setminus\{0\}$, $k\in\Bbb N$.   Show that
+$\lim_{k\to\infty}\|f-f_k\|_2
+=\lim_{k\to\infty}\|\grad f-\grad f_k\|_1=0$, so that all the
+inequalities 473H-473L %473H 473I 473J 473K 473L
+are valid for $f$.
+%473L
+
+\spheader 473Xb Let $k\in[1,r]$ be an integer, and set
+$m=\Bover{(r-1)!}{(k-1)!(r-k)!}$.   Let $e_1,\ldots,e_r$ be the standard orthonormal basis of $\BbbR^r$ and $\Cal J$ the family of subsets of $\{1,\ldots,r\}$ with $k$ members.   For $J\in\Cal J$ let
+$V_J$ be the linear span of $\{e_i:i\in J\}$, $\pi_J:\BbbR^r\to V_J$ the orthogonal projection and $\nu_J$ the normalized $k$-dimensional Hausdorff measure on $V_J$.   Show that if
+$A\subseteq\BbbR^r$ then
+$(\mu^*A)^m\le\prod_{J\in\Cal J}\nu_J^*\pi_J[A]$.
+\Hint{start with $A\subseteq[0,1]^r$ and note that $([0,1]^r)^m$ can be identified with $\prod_{J\in\Cal J}[0,1]^J$.}
+%not much to do with anything
+
+\leader{473Y}{Further exercises (a)}
+%\spheader 473Ya
+Let $D\subseteq\BbbR^r$ be any set and
+$\phi:D\to\BbbR^s$ any function.   Show that $D_0=\{x:x\in D,\,\phi$ is
+differentiable at $x\}$ is a Borel subset of $\BbbR^r$, and that the
+derivative of $\phi$ is a Borel measurable function.
+(Compare 225J.)
+
+}%end of exercises
+
+\endnotes{
+\Notesheader{473} The point of all the inequalities
+473H-473L %473H 473I 473J 473K 473L
+is that they bound some measure of variance of a function $f$ by the
+integral of $\|\grad f\|$.   If $r=2$, indeed, we are looking at
+$\|f\|_2$ (473H) or $\int_B|f|^2$ (473I) or something essentially equal
+to the variance of probability theory (473K).   In higher dimensions we
+need to look at $\|\,\|_{r/(r-1)}$ in place of $\|\,\|_2$, and when
+$r=1$ we can interpret the inequalities in terms of the supremum norm
+$\|\,\|_{\infty}$ (473M).   In all cases we want to develop inequalities
+which will enable us to discuss a function in terms of its first
+derivative.   In one dimension, this is the familiar Fundamental Theorem
+of Calculus (Chapter 22).   We find there a
+straightforward criterion (`absolute continuity') to determine whether a
+given function of one variable
+is an indefinite integral, and that if so it is the indefinite
+integral of its own derivative.   Even in two dimensions, this
+simplicity disappears.   The essential problem is that a function can be
+the indefinite integral of an integrable gradient function without being
+bounded (473Xa).   The principal results of this section are stated for
+Lipschitz functions, but in fact they apply much more widely.   The
+argument suggested in 473Xa involves approximating the unbounded
+function $f$ by Lipschitz functions $f_k$ in a sharp enough sense to
+make it possible to read off all the inequalities for $f$ from the
+corresponding inequalities for the $f_k$.   This idea leads naturally to
+the concept of `Sobolev space', which I leave on one side for the
+moment;  see {\smc Evans \& Gariepy 92}, chap.\ 4, for details.
+}%end of notes
+
+\discrpage
+
+

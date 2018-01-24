@@ -1,0 +1,1288 @@
+\frfilename{mt213.tex}
+\versiondate{13.9.13}
+
+\copyrightdate{2000}
+\def\chaptername{Taxonomy of measure spaces}
+\def\sectionname{Semi-finite, locally determined and localizable spaces}
+
+\newsection{213}
+
+In this section I collect a variety of useful facts concerning these
+types of measure space.   I start with the characteristic properties of
+semi-finite spaces (213A-213B), and continue with complete locally
+determined spaces (213C) and the concept of
+`c.l.d.\ version' (213D-213H),
+%213D 213E 213F 213G 213H
+the most powerful of the universally
+available methods of modifying a measure space into a better-behaved
+one.   I briefly discuss `locally determined negligible sets'
+(213I-213L),
+%213I 213J 213K 213L
+and measurable envelopes (213L-213M),
+and end with results on localizable spaces (213N) and strictly
+localizable spaces (213O).
+
+\leader{213A}{Lemma} Let $(X,\Sigma,\mu)$ be a semi-finite measure
+space.   Then
+
+\Centerline{$\mu E
+=\sup\{\mu F:F\in\Sigma,\,F\subseteq E,\,\mu F<\infty\}$}
+
+\noindent for every $E\in\Sigma$.
+
+\proof{ Set
+$c=\sup\{\mu F:F\in\Sigma,\,F\subseteq E,\,\mu F<\infty\}$.   Then
+surely $c\le\mu E$, so if
+$c=\infty$ we can stop.   If $c<\infty$, let $\sequencen{F_n}$
+be a sequence of measurable subsets of $E$, of finite measure, such that
+$\lim_{n\to\infty}\mu F_n=c$;  set $F=\bigcup_{n\in\Bbb N}F_n$.
+For each $n\in\Bbb N$, $\bigcup_{k\le n}F_k$ is a measurable set of
+finite measure included in $E$, so $\mu(\bigcup_{k\le n}F_k)\le c$,
+and
+
+\Centerline{$\mu F=\lim_{n\to\infty}\mu(\bigcup_{k\le n}F_k)\le c$.}
+
+\noindent Also
+
+
+\Centerline{$\mu F\ge\sup_{n\in\Bbb N}\mu F_n\ge c$,}
+
+\noindent so $\mu F=c$.
+
+If $F'$ is a measurable subset of $E\setminus F$ and $\mu F'<\infty$,
+then $F\cup F'$ has finite measure and is included in $E$, so has
+measure at most $c=\mu F$;  it follows that $\mu F'=0$.   But this
+means that $\mu(E\setminus F)$ cannot be infinite, since then, because
+$(X,\Sigma,\mu)$ is semi-finite, it would have to include a measurable
+set of non-zero finite measure.   So $E\setminus F$ has finite measure,
+and is therefore in fact negligible;  and $\mu E=c$, as claimed.
+}%end of proof of 213A
+
+\vleader{72pt}{213B}{Proposition} Let $(X,\Sigma,\mu)$ be a semi-finite measure
+space.   Let $f$ be a $\mu$-virtually measurable $[0,\infty]$-valued
+function defined almost everywhere in $X$.   Then
+
+$$\eqalign{\int f
+&=\sup\{\int g:g\text{ is a simple function},\,g\leae f\}\cr
+&=\sup_{F\in\Sigma,\mu F<\infty}\int_Ff}$$
+
+\noindent in $[0,\infty]$.
+
+\proof{{\bf (a)} For any measure space $(X,\Sigma,\mu)$, a
+$[0,\infty]$-valued function defined on a subset of $X$ is
+integrable iff there is a conegligible set $E$ such that
+
+\inset{($\alpha$) $E\subseteq\dom f$ and $f\restr E$ is measurable,}
+
+\inset{($\beta$)
+$\sup\{\int g:g$ is a simple function, $g\leae f\}$ is finite,}
+
+\inset{($\gamma$) for every $\epsilon>0$,
+$\{x:x\in E,\,f(x)\ge\epsilon\}$ has finite measure,}
+
+\inset{($\delta$) $f$ is finite almost everywhere}
+
+\noindent (see 122Ja, 133B).   But if $\mu$ is semi-finite, ($\gamma$)
+and ($\delta$) are consequences of the rest.   \Prf\ Let $\epsilon>0$.
+Set
+
+\Centerline{$E_{\epsilon}=\{x:x\in E,\,f(x)\ge\epsilon\}$,}
+
+\Centerline{$c
+=\sup\{\int g:g$ is a simple function, $g\leae f\}$;}
+
+\noindent we are supposing that $c$ is finite.   If
+$F\subseteq E_{\epsilon}$ is measurable and $\mu F<\infty$, then
+$\epsilon\chi F$ is a
+simple function and $\epsilon\chi F\leae f$, so
+
+\Centerline{$\epsilon\mu F=\int\epsilon\chi F\le c$,
+\quad$\mu F\le\Bover{c}{\epsilon}$.}
+
+\noindent As $F$ is arbitrary, 213A tells us that
+$\mu E_{\epsilon}\le\bover{c}{\epsilon}$ is finite.   As $\epsilon$ is
+arbitrary, ($\gamma$) is satisfied.
+
+As for ($\delta$), if $F=\{x:x\in E,\,f(x)=\infty\}$ then $\mu F$ is
+finite (by ($\gamma$)) and $n\chi F\leae f$, so $n\mu F\le c$, for
+every $n\in\Bbb N$, so $\mu F=0$.\ \Qed
+
+\medskip
+
+{\bf (b)} Now suppose that $f:D\to[0,\infty]$ is a $\mu$-virtually
+measurable function, where $D\subseteq X$ is conegligible, so that
+$\int f$ is defined in $[0,\infty]$ (135F).   Then (a) tells us that
+
+\leaveitout{$$\eqalignno{\int f
+&=\sup_{g\text{ is simple},g\le f\text{ a.e.}}\int g\cr
+\displaycause{if either is finite, and therefore also if either is
+infinite}
+&=\sup_{g\text{ is simple},g\le f\text{ a.e.},\mu F<\infty}\int_Fg
+\le\sup_{\mu F<\infty}\int_Ff
+\le\int f,\cr}$$}
+
+$$\eqalignno{\int f
+&=\sup_{\Atop{g\text{ is simple}}{g\le f\text{ a.e.}}}\int g\cr
+\displaycause{if either is finite, and therefore also if either is
+infinite}
+&=\sup_{\Atop{g\text{ is simple}}{\Atop{g\le f\text{ a.e.}}
+{\mu F<\infty}}}\int_Fg
+\le\sup_{\mu F<\infty}\int_Ff
+\le\int f,\cr}$$
+
+\noindent so we have the equalities we seek.
+}%end of proof of 213B
+
+\leader{*213C}{Proposition} Let $(X,\Sigma,\mu)$ be a complete
+locally determined measure space, and $\mu^*$ the outer measure derived
+from $\mu$\cmmnt{ (132A-132B)}.   Then the measure defined from
+$\mu^*$ by \Caratheodory's method is $\mu$ itself.
+
+\proof{ Write $\check\mu$ for the measure defined by \Caratheodory's
+method from $\mu^*$, and $\check\Sigma$ for its domain.
+
+\medskip
+
+{\bf (a)} If $E\in\Sigma$ and $A\subseteq X$ then
+$\mu^*(A\cap E)+\mu^*(A\setminus E)=\mu^*A$ (132Af), so
+$E\in\check\Sigma$.   Now
+$\check\mu E=\mu^*E=\mu E$ (132Ac).   Thus $\Sigma\subseteq\check\Sigma$
+and $\mu=\check\mu\restr\Sigma$.
+
+\medskip
+
+{\bf (b)} Now suppose that $H\in\check\Sigma$.   Let $E\in\Sigma$ be
+such that $\mu E<\infty$.   Then $H\cap E\in\Sigma$.   \Prf\ Let $E_1$,
+$E_2\in\Sigma$ be measurable envelopes of $E\cap H$, $E\setminus H$
+respectively, both included in $E$ (132Ee).   Because $H\in\check\Sigma$,
+
+\Centerline{$\mu E_1+\mu E_2=\mu^*(E\cap H)+\mu^*(E\setminus H)
+=\mu^*E=\mu E$.}
+
+\noindent As $E_1\cup E_2=E$,
+
+\Centerline{$\mu(E_1\cap E_2)=\mu E_1+\mu E_2-\mu E=0$.}
+
+\noindent Now $E_1\setminus(E\cap H)\subseteq E_1\cap E_2$;  because
+$\mu$ is complete, $E_1\setminus(E\cap H)$ and $E\cap H$ belong to
+$\Sigma$.\ \Qed
+
+As $E$ is arbitrary, and $\mu$ is locally determined, $H\in\Sigma$.   As
+$H$ is arbitrary, $\check\Sigma=\Sigma$ and $\check\mu=\mu$.
+}%end of proof of 213C
+
+\leader{213D}{C.l.d.\ versions:  Proposition} Let $(X,\Sigma,\mu)$ be a
+measure space.    Write $(X,\hat\Sigma,\hat\mu)$ for its
+completion\cmmnt{ (212C)} and $\Sigma^f$ for
+$\{E:E\in\Sigma,\,\mu E<\infty\}$.   Set
+
+\Centerline{$\tilde\Sigma=\{H:H\subseteq X,\,H\cap E\in\hat\Sigma$ for
+every $E\in\Sigma^f\}$,}
+
+\noindent and for $H\in\tilde\Sigma$ set
+
+\Centerline{$\tilde\mu H=\sup\{\hat\mu(H\cap E):E\in\Sigma^f\}$.}
+
+\noindent Then
+$(X,\tilde\Sigma,\tilde\mu)$ is a complete locally determined
+measure space.
+
+\proof{{\bf (a)} I check first that $\tilde\Sigma$ is a
+$\sigma$-algebra.   \Prf\ {(i)} $\emptyset\cap E=\emptyset\in\hat\Sigma$
+for every $E\in\Sigma^f$, so $\emptyset\in\tilde\Sigma$.   {(ii)} If
+$H\in\tilde\Sigma$ then
+
+\Centerline{$(X\setminus H)\cap E
+=E\setminus(E\cap H)\in\hat\Sigma$}
+
+\noindent for every $E\in\Sigma^f$, so $X\setminus H\in\tilde\Sigma$.
+{(iii)} If $\sequencen{H_n}$ is a sequence in $\tilde\Sigma$ with union
+$H$, then
+
+\Centerline{$H\cap E=\bigcup_{n\in\Bbb N}H_n\cap E\in\hat\Sigma$}
+
+\noindent for every
+$E\in\Sigma^f$, so $H\in\tilde\Sigma$.\ \Qed
+
+\medskip
+
+{\bf (b)} It is obvious that $\tilde\mu \emptyset=0$.   If
+$\sequencen{H_n}$ is a disjoint sequence in $\tilde\Sigma$ with union
+$H$, then
+
+$$\eqalign{\tilde\mu H
+&=\sup\{\hat\mu(H\cap E):E\in\Sigma^f\}\cr
+&=\sup\{\sum_{n=0}^{\infty}\hat\mu(H_n\cap E):E\in\Sigma^f\}
+\le\sum_{n=0}^{\infty}\tilde\mu H_n.\cr}$$
+
+\noindent On the other hand, given $a<\sum_{n=0}^{\infty}\tilde\mu H_n$,
+there is an $m\in\Bbb N$ such that $a<\sum_{n=0}^m\tilde\mu H_n$;  now
+we can find $E_0,\ldots,E_m\in\Sigma^f$ such that
+$a\le\sum_{n=0}^m\hat\mu(H_n\cap E_n)$.   Set $E=\bigcup_{n\le
+m}E_n\in\Sigma^f$;  then
+
+\Centerline{$\tilde\mu H\ge\hat\mu(H\cap E)
+=\sum_{n=0}^{\infty}\hat\mu(H_n\cap E)
+\ge\sum_{n=0}^m\hat\mu(H_n\cap E_n)
+\ge a$.}
+
+\noindent As $a$ is arbitrary, $\tilde\mu
+H\ge\sum_{n=0}^{\infty}\tilde\mu H_n$ and $\tilde\mu
+H=\sum_{n=0}^{\infty}\tilde\mu H_n$.
+
+\medskip
+
+{\bf (c)} Thus $(X,\tilde\Sigma,\tilde\mu)$ is a measure space.   To
+see that it is semi-finite, note first that
+$\hat\Sigma\subseteq\tilde\Sigma$ (because if $H\in\hat\Sigma$ then
+surely $H\cap E\in\hat\Sigma$ for every $E\in\Sigma^f$), and that
+$\tilde\mu H=\hat\mu H$ whenever $\hat\mu H<\infty$ (because then, by
+the definition in 212Ca, there is an $E\in\Sigma^f$ such that
+$H\subseteq E$, so that
+$\tilde\mu H=\hat\mu(H\cap E)=\hat\mu H$).   Now suppose that
+$H\in\tilde\Sigma$ and that $\tilde\mu H=\infty$.   There is surely an
+$E\in\Sigma^f$ such that $\hat\mu(H\cap E)>0$;  but now $0<\hat\mu(H\cap
+E)<\infty$, so $0<\tilde\mu(H\cap E)<\infty$.
+
+\medskip
+
+{\bf (d)} Thus $(X,\tilde\Sigma,\tilde\mu)$ is a semi-finite measure space.
+To see that it is locally determined, let $H\subseteq X$ be such that
+$H\cap G\in\tilde\Sigma$ whenever $G\in\tilde\Sigma$ and
+$\tilde\mu G<\infty$.   Then, in particular, we must have
+$H\cap E\in\tilde\Sigma$
+for every $E\in\Sigma^f$.   But this means in fact that
+$H\cap E\in\hat\Sigma$ for every $E\in\Sigma^f$, so that
+$H\in\tilde\Sigma$.
+As $H$ is arbitrary, $(X,\Sigma,\mu)$ is locally determined.
+
+\medskip
+
+{\bf (e)} To see that $(X,\tilde\Sigma,\tilde\mu)$ is complete,
+suppose that $A\subseteq H\in\tilde\Sigma$ and that $\tilde\mu H=0$.
+Then for every $E\in\Sigma^f$ we must have $\hat\mu(H\cap E)=0$.
+Because $(X,\hat\Sigma,\hat\mu)$ is complete, and
+$A\cap E\subseteq H\cap E$, $A\cap E\in\hat\Sigma$.   As $E$ is
+arbitrary, $A\in\tilde\Sigma$.
+}%end of proof of 213D
+
+\leader{213E}{Definition} For any measure space $(X,\Sigma,\mu)$, I will
+call $(X,\tilde\Sigma,\tilde\mu)$, as constructed in 213D, the
+{\bf c.l.d.\ version} (`complete locally determined version') of $(X,\Sigma,\mu)$;  and $\tilde\mu$ will be the
+{\bf c.l.d.\ version} of $\mu$.
+
+\leader{213F}{}\cmmnt{ Following the same pattern as in
+212E-212G, %212E 212F 212G
+I start with some elementary remarks to facilitate manipulation of this
+construction.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be any measure space
+and $(X,\tilde\Sigma,\tilde\mu)$ its c.l.d.\ version.
+
+(a) $\Sigma\subseteq\tilde\Sigma$ and $\tilde\mu E=\mu E$ whenever
+$E\in\Sigma$ and $\mu E<\infty$ -- in fact, if $(X,\hat\Sigma,\hat\mu)$
+is the completion of $(X,\Sigma,\mu)$, $\hat\Sigma\subseteq\tilde\Sigma$
+and $\tilde\mu E=\hat\mu E$ whenever $\hat\mu E<\infty$.
+
+(b) Writing $\tilde\mu^*$ and $\mu^*$ for the outer measures defined
+from $\tilde\mu$ and $\mu$ respectively, $\tilde\mu^*A\le\mu^*A$ for
+every $A\subseteq X$, with equality if
+$\mu^*A$ is finite.   In particular, $\mu$-negligible sets are
+$\tilde\mu$-negligible;   consequently, $\mu$-conegligible sets are
+$\tilde\mu$-conegligible.
+
+(c) If $H\in\tilde\Sigma$,
+
+\quad (i) $\tilde\mu H=\sup\{\mu F:E\in\Sigma$, $\mu F<\infty$,
+$F\subseteq H\}$;
+
+\quad (ii) there is an $E\in\Sigma$ such that
+$E\subseteq H$ and $\mu E=\tilde\mu H$, so that
+if $\tilde\mu H<\infty$ then $\tilde\mu(H\setminus E)=0$.
+
+\proof{{\bf (a)} This is already covered by remarks in the proof of
+213D.
+
+\medskip
+
+{\bf (b)} If $\mu^*A=\infty$ then surely $\tilde\mu^*A\le\mu^*A$.   If
+$\mu^*A<\infty$, take $E\in\Sigma$ such that $A\subseteq E$ and
+$\mu E=\mu^*A$ (132Aa).   Then
+
+\Centerline{$\tilde\mu^*A\le\tilde\mu E=\mu E=\mu^*A$.}
+
+\noindent On the other hand, if $A\subseteq H\in\tilde\Sigma$, then
+
+\Centerline{$\tilde\mu H\ge\hat\mu(H\cap E)\ge\hat\mu^*A=\mu^*A$,}
+
+\noindent using 212Ea.   So $\mu^*A\le\tilde\mu^*A$ and
+$\mu^*A=\tilde\mu^*A$.
+
+\medskip
+
+{\bf (c)} Write $\Sigma^f$ for $\{E:E\in\Sigma,\,\mu E<\infty\}$;  then,
+by the definition in 213D,
+$\tilde\mu H=\sup\{\hat\mu(H\cap E):E\in\Sigma^f\}$.   Let
+$\sequencen{E_n}$ be a sequence in $\Sigma^f$
+such that $\tilde\mu H=\sup_{n\in\Bbb N}\hat\mu(H\cap E_n)$.   For each
+$n\in\Bbb N$ there is an $F_n\in\Sigma$ such that
+$F_n\subseteq H\cap E_n$ and
+$\mu F_n=\hat\mu(H\cap E_n)$ (212C).   Set $E=\bigcup_{n\in\Bbb N}F_n$.
+Then $E\in\Sigma$, $E\subseteq H$ and
+
+\Centerline{$\tilde\mu H
+=\sup_{n\in\Bbb N}\mu F_n
+\le\lim_{n\to\infty}\mu(\bigcup_{i\le n}F_i)
+=\mu E
+=\lim_{n\to\infty}\tilde\mu(\bigcup_{i\le n}F_i)
+\le\tilde\mu H,$}
+
+\noindent so $\mu E=\tilde\mu H$, and if $\tilde\mu H<\infty$ then
+$\tilde\mu(H\setminus E)=0$.    At the same time,
+
+$$\eqalignno{\tilde\mu H
+&=\sup_{n\in\Bbb N}\mu F_n
+\le\sup_{F\in\Sigma^f,F\subseteq H}\mu F
+=\sup_{F\in\Sigma^f,F\subseteq H}\tilde\mu F\cr
+\displaycause{by (a) again}
+&\le\tilde\mu H,\cr}$$
+
+\noindent so we have equality here too.
+}%end of proof of 213F
+
+\leader{213G}{}\cmmnt{ The next step is to look at functions which are
+measurable or integrable with respect to $\tilde\mu$.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a measure space, and
+$(X,\tilde\Sigma,\tilde\mu)$ its c.l.d.\ version.
+
+(a) If a real-valued function $f$ defined on a subset of $X$ is
+$\mu$-virtually measurable, it is $\tilde\Sigma$-measurable.
+%should we have $[-\infty,\infty]$-valued here?
+
+(b) If a real-valued function is $\mu$-integrable, it is
+$\tilde\mu$-integrable with the same integral.
+
+(c) If $f$ is a $\tilde\mu$-integrable real-valued function, there is a
+$\mu$-integrable real-valued function which is equal to
+$f\,\,\tilde\mu$-almost everywhere.
+
+\proof{ Write $\Sigma^f$ for $\{E:E\in\Sigma,\,\mu E<\infty\}$.   By
+213Fa, $\tilde\mu$ and $\mu$ agree on $\Sigma^f$.
+
+\medskip
+
+{\bf (a)} By 212Fa, $f$ is $\hat\Sigma$-measurable, where
+$\hat\Sigma$ is the domain of the completion of $\mu$;  but since
+$\hat\Sigma\subseteq\tilde\Sigma$, $f$ is $\tilde\Sigma$-measurable.
+
+\medskip
+
+{\bf (b)(i)} If $f$ is a $\mu$-simple function it is
+$\tilde\mu$-simple,
+and $\int fd\mu=\int fd\tilde\mu$, because $\tilde\mu E=\mu E$ for every
+$E\in\Sigma^f$.
+
+\medskip
+
+\quad{\bf (ii)} If $f$ is a non-negative $\mu$-integrable function,
+there is a non-decreasing sequence $\sequencen{f_n}$ of $\mu$-simple
+functions converging to $f\,\,\mu$-almost everywhere;  now (by 213Fb)
+$\mu$-negligible sets are $\tilde\mu$-negligible, so $\sequencen{f_n}$
+converges to $f\,\,\tilde\mu$-a.e.\ and (by B.Levi's theorem, 123A) $f$
+is $\tilde\mu$-integrable, with
+
+\Centerline{$\int fd\tilde\mu=\lim_{n\to\infty}\int f_nd\tilde\mu
+=\lim_{n\to\infty}\int f_nd\mu=\int fd\mu$.}
+
+\medskip
+
+\quad{\bf (iii)} In general, if $\int fd\mu$ is defined in
+$\Bbb R$, we have
+
+\Centerline{$\int fd\tilde\mu
+=\int f^+d\tilde\mu-\int f^-d\tilde\mu
+=\int f^+d\mu-\int f^-d\mu=\int fd\mu$,}
+
+\noindent writing $f^+$ for $f\vee 0$ and $f^-$ for $(-f)\vee 0$.
+
+\medskip
+
+{\bf (c)(i)} Let $f$ be a $\tilde\mu$-simple function.   Express it as
+$\sum_{i=0}^na_i\chi H_i$ where $\tilde\mu H_i<\infty$ for each $i$.
+Choose $E_0,\ldots,E_n\in\Sigma$ such that $E_i\subseteq H_i$ and
+$\tilde\mu(H_i\setminus E_i)=0$ for each $i$ (using 213Fc above).   Then
+$g=\sum_{i=0}^na_i\chi E_i$ is $\mu$-simple,
+$g=f\,\,\tilde\mu$-a.e., and $\int g\,d\mu=\int fd\tilde\mu$.
+
+\medskip
+
+\quad{\bf (ii)} Let $f$ be a non-negative $\tilde\mu$-integrable
+function.   Let $\sequencen{f_n}$ be a non-decreasing sequence of
+$\tilde\mu$-simple functions converging $\tilde\mu$-almost everywhere to
+$f$.   For each $n$, choose a $\mu$-simple function $g_n$ equal
+$\tilde\mu$-almost everywhere to $f_n$.   Then $\{x:g_{n+1}(x)<g_n(x)\}$
+belongs to $\Sigma^f$ and is $\tilde\mu$-negligible, therefore
+$\mu$-negligible.   So $\sequencen{g_n}$ is non-decreasing $\mu$-almost
+everywhere.   Because
+
+\Centerline{$\lim_{n\to\infty}\int g_nd\mu
+=\lim_{n\to\infty}\int f_nd\tilde\mu=\int fd\tilde\mu$,}
+
+\noindent B.Levi's theorem tells us that $\sequencen{g_n}$ converges
+$\mu$-almost everywhere to a $\mu$-integrable function $g$;  because
+$\mu$-negligible sets are $\tilde\mu$-negligible,
+
+$$\eqalign{(X\setminus\dom f)
+&\cup(X\setminus\dom g)\cr
+&\cup\bigcup_{n\in\Bbb N}\{x:f_n(x)\ne g_n(x)\}\cr
+&\cup\{x:x\in\dom
+f,\,f(x)\ne\sup_{n\in\Bbb N}f_n(x)\}\cr
+&\cup\{x:x\in\dom
+g,\,g(x)\ne\sup_{n\in\Bbb N}g_n(x)\}\cr}$$
+
+\noindent is $\tilde\mu$-negligible, and $f=g\,\,\tilde\mu$-a.e.
+
+\medskip
+
+\quad{\bf (iii)} If $f$ is $\tilde\mu$-integrable, express it as
+$f_1-f_2$ where $f_1$ and $f_2$ are $\tilde\mu$-integrable and
+non-negative;  then there
+are $\mu$-integrable functions $g_1$, $g_2$ such that $f_1=g_1$,
+$f_2=g_2\,\,\tilde\mu$-a.e., so that $g=g_1-g_2$ is $\mu$-integrable and
+equal to $f\,\,\tilde\mu$-a.e.
+}%end of proof of 213G
+
+\leader{213H}{}\cmmnt{ Thirdly, I turn to the effect of the
+construction here on the other properties being considered in this
+chapter.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a measure space,
+$(X,\hat\Sigma,\hat\mu)$ its completion and $(X,\tilde\Sigma,\tilde\mu)$
+its c.l.d.\ version.
+
+(a) If $(X,\Sigma,\mu)$ is a probability space, or totally finite, or
+$\sigma$-finite, or strictly localizable, so is
+$(X,\tilde\Sigma,\tilde\mu)$, and in all these cases
+$\tilde\mu=\hat\mu$;
+
+(b) if $(X,\Sigma,\mu)$ is localizable, so is
+$(X,\tilde\Sigma,\tilde\mu)$, and for every $H\in\tilde\Sigma$ there is
+an $E\in\Sigma$ such that $\tilde\mu(E\symmdiff H)=0$;
+
+(c) $(X,\Sigma,\mu)$ is semi-finite iff $\tilde\mu F=\mu F$ for every
+$F\in\Sigma$, and in this case $\int fd\tilde\mu=\int fd\mu$ whenever
+the latter is defined in $[-\infty,\infty]$;
+
+(d) a set $H\in\tilde\Sigma$ is an atom for $\tilde\mu$ iff there is an
+atom $E$ for $\mu$ such that $\mu E<\infty$ and
+$\tilde\mu(H\symmdiff E)=0$;
+
+(e) if $(X,\Sigma,\mu)$ is atomless or purely atomic, so is
+$(X,\tilde\Sigma,\tilde\mu)$;
+
+(f) $(X,\Sigma,\mu)$ is complete and locally determined iff
+$\tilde\mu=\mu$.
+
+
+\proof{{\bf (a)(i)} I start by showing that if $(X,\Sigma,\mu)$ is
+strictly localizable, then
+$\tilde\mu=\hat\mu$.   \Prf\ Let $\langle X_i\rangle_{i\in I}$ be a
+decomposition of $X$ for $\mu$;  then it is also a decomposition for
+$\hat\mu$ (212Gb).   If $H\in\tilde\Sigma$, we shall have
+$H\cap X_i\in\hat\Sigma$ for every $i$, and therefore $H\in\hat\Sigma$;
+moreover,
+
+$$\eqalign{\hat\mu H
+&=\sum_{i\in I}\hat\mu(H\cap X_i)
+=\sup\{\sum_{i\in J}\hat\mu(H\cap X_i):J\subseteq I
+\text{ is finite}\}\cr
+&\le\sup\{\hat\mu(H\cap E):E\in\Sigma,\,\mu E<\infty\}
+=\tilde\mu H
+\le\hat\mu H.\cr}$$
+
+\noindent So $\hat\mu H=\tilde\mu H$ for every $H\in\tilde\Sigma$ and
+$\hat\mu=\tilde\mu$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Consequently, if $(X,\Sigma,\mu)$ is a probability
+space, or totally
+finite, or $\sigma$-finite, or strictly localizable, so is
+$(X,\tilde\Sigma,\tilde\mu)$, using 212Ga-212Gb to see that
+$(X,\hat\Sigma,\hat\mu)$ has the property involved.
+
+\medskip
+
+{\bf (b)} If $(X,\Sigma,\mu)$ is localizable, let $\Cal H$ be any subset
+of $\tilde\Sigma$.   Set
+
+\Centerline{$\Cal E=\{E:E\in\Sigma^f,\,\exists\enskip
+H\in\Cal H,\,E\subseteq H\}$}
+
+\noindent where $\Sigma^f=\{E:\mu E<\infty\}$ as usual.
+Working in $(X,\Sigma,\mu)$, let $F\in\Sigma$ be an essential
+supremum for $\Cal E$.
+
+\medskip
+
+\quad{\bf (i)} \Quer\ Suppose, if possible, that there is an
+$H\in\Cal H$ such that $\tilde\mu(H\setminus F)>0$.   By 213F(c-i),
+there is an
+$E\in\Sigma^f$ such that $E\subseteq H\setminus F$ and $\mu E>0$.
+This $E$ belongs to $\Cal E$
+and $\mu(E\setminus F)=\mu E>0$;  which is impossible if $F$ is an
+essential supremum of $\Cal E$.\ \Bang
+
+\medskip
+
+\quad{\bf (ii)} Thus $\tilde\mu(H\setminus F)=0$ for every $H\in\Cal H$.
+Now take any $G\in\tilde\Sigma$ such that $\tilde\mu(H\setminus G)=0$
+for every $H\in\Cal H$.   \Quer\ If $\tilde\mu(F\setminus G)>0$, there
+is an $E_0\in\Sigma^f$ such that $E_0\subseteq F\setminus G$ and
+$\mu E_0>0$.   If $E\in\Cal E$, there is an
+$H\in\Cal H$ such that $E\subseteq H$, so that
+$E\setminus(F\setminus E_0)\subseteq H\setminus(F\cap G)$, while
+$\mu(E\setminus(F\setminus E_0))<\infty$;  so
+
+\Centerline{$\mu(E\setminus(F\setminus E_0))
+\le\tilde\mu(H\setminus(F\cap G))
+\le\tilde\mu(H\setminus F)+\tilde\mu(H\setminus G)
+=0$.}
+
+\noindent Because $F$ is an essential supremum for $\Cal E$ in $\Sigma$,
+
+\Centerline{$0
+=\mu(F\setminus(F\setminus E_0))
+=\mu E_0$.  \Bang}
+
+\noindent This shows that $F$ is an essential supremum for $\Cal H$ in
+$\tilde\Sigma$.   As $\Cal H$ is arbitrary, $(X,\tilde\Sigma,\tilde\mu)$
+is localizable.
+
+\medskip
+
+\quad{\bf (iii)} The argument of (i)-(ii) shows in fact that if $\Cal
+H\subseteq\tilde\Sigma$ then $\Cal H$ has an essential supremum $F$ in
+$\tilde\Sigma$ such that $F$ actually belongs to $\Sigma$.   Taking
+$\Cal H=\{H\}$, we see that if $H\in\tilde\Sigma$ there is an
+$F\in\Sigma$ such that $\mu(H\symmdiff F)=0$.
+
+\medskip
+
+{\bf (c)} We already know that $\tilde\mu E\le\mu E$ for every
+$E\in\Sigma$, with equality if $\mu E<\infty$, by 213Fa.
+
+\medskip
+
+\quad{\bf (i)} If $(X,\Sigma,\mu)$ is semi-finite, then 213A
+and 213F(c-i) tell us that for any $F\in\Sigma$ we have
+
+\Centerline{$\mu F
+=\sup\{\mu E:E\in\Sigma,\,E\subseteq F,\,\mu E<\infty\}
+=\tilde\mu F$.}
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $\tilde\mu F=\mu F$ for every $F\in\Sigma$.
+If $\mu F=\infty$, then $\tilde\mu F=\infty$ so (by 213F(c-i) again)
+there must be an $E\in\Sigma^f$ such that $E\subseteq F$ and
+$\mu E>0$;  as $F$ is arbitrary, $(X,\Sigma,\mu)$ is
+semi-finite.
+
+\medskip
+
+\quad{\bf (iii)} If $f$ is non-negative and $\int fd\mu=\infty$, then
+$f$ is $\mu$-virtually measurable, therefore $\tilde\Sigma$-measurable
+(213Ga), and defined $\mu$-almost everywhere, therefore
+$\tilde\mu$-almost everywhere.   Now
+
+$$\eqalign{\int fd\tilde\mu
+&=\sup\{\int g\,d\tilde\mu:g\text{ is }\tilde\mu\text{-simple},\,
+   0\le g\le f\,\,\tilde\mu\text{-a.e.}\}\cr
+&\ge\sup\{\int g\,d\mu:g\text{ is }\mu\text{-simple},\,
+   0\le g\le f\,\,\mu\text{-a.e.}\}=\infty\cr}$$
+
+\noindent by 213B.   With 213Gb, this shows that
+$\int fd\tilde\mu=\int fd\mu$ whenever $f$ is non-negative and
+$\int fd\mu$ is defined in $[0,\infty]$.   Applying this to the positive
+and negative parts of $f$, we see that $\int fd\tilde\mu=\int fd\mu$
+whenever the latter is defined in $[-\infty,\infty]$.
+
+\medskip
+
+{\bf (d)(i)} If $H\in\tilde\Sigma$ is an atom for $\tilde\mu$, then
+there is an $E\in\Sigma^f$ such that $E\subseteq H$ and $0<\mu E<\infty$.
+In this case, $\tilde\mu E>0$ so $\tilde\mu(H\setminus E)$ must be zero.
+If $F\in\Sigma$ and $F\subseteq E$, then either
+$\mu F=\tilde\mu F=0$ or $\mu(E\setminus F)=\tilde\mu(H\setminus F)=0$.
+Thus $E\in\Sigma$ is an atom for $\mu$ with
+$\tilde\mu(H\symmdiff E)=0$ and $\mu E<\infty$.
+
+\medskip
+
+\quad{\bf (ii)} If $H\in\tilde\Sigma$ and there is an atom $E$ for $\mu$
+such that $\mu E<\infty$ and $\tilde\mu(H\symmdiff E)=0$, let
+$G\in\tilde\Sigma$ be a subset of $H$ with $\tilde\mu G>0$.
+We have $\tilde\mu(E\cap G)=\tilde\mu(H\cap G)>0$, so there is an
+$F\in\Sigma$ such that $F\subseteq E\cap G$ and $\mu F>0$.   Now
+$\mu(E\setminus F)$ must be zero, so
+
+\Centerline{$\tilde\mu(H\setminus G)\le\tilde\mu(H\setminus F)
+=\tilde\mu(E\setminus F)=\mu(E\setminus F)=0$.}
+
+\noindent As $G$ is arbitrary, $H$ is an atom for $\tilde\mu$.
+
+\medskip
+
+{\bf (e)} If $(X,\Sigma,\mu)$ is atomless, then
+$(X,\tilde\Sigma,\tilde\mu)$ must be atomless, by (d).
+
+If $(X,\Sigma,\mu)$ is purely atomic, $H\in\tilde\Sigma$ and
+$\tilde\mu H>0$, then there is an $E\in\Sigma^f$ such that
+$E\subseteq H$ and $\mu E>0$.
+There is an atom $F$ for $\mu$ such that $F\subseteq E$;   now
+$\mu F<\infty$ so $F$ is an atom for $\tilde\mu$, by (d).   Also
+$F\subseteq H$.   As $H$ is arbitrary, $(X,\tilde\Sigma,\tilde\mu)$ is
+purely atomic.
+
+\medskip
+
+{\bf (f)} If $\mu=\tilde\mu$, then of course $(X,\Sigma,\mu)$ must be
+complete and locally determined, because $(X,\tilde\Sigma,\tilde\mu)$
+is.   If $(X,\Sigma,\mu)$ is complete and locally determined, then
+$\hat\mu=\mu$ so (using the definition in 213D)
+$\tilde\Sigma\subseteq\Sigma$ and $\tilde\mu=\mu$, by (c) above.
+}%end of proof of 213H
+
+\leader{213I}{Locally determined negligible \dvrocolon{sets}}\cmmnt{
+The following simple idea is occasionally useful.
+
+\medskip
+
+\noindent}{\bf Definition} A measure space $(X,\Sigma,\mu)$ has
+{\bf locally determined negligible sets} if for every non-negligible
+$A\subseteq X$ there is an $E\in\Sigma$ such that $\mu E<\infty$ and
+$A\cap E$ is not negligible.
+
+\leader{213J}{Proposition} If a measure space $(X,\Sigma,\mu)$ is
+{\it either} strictly localizable {\it or} complete and locally
+determined, it has locally determined negligible sets.
+
+\proof{ Let $A\subseteq X$ be a set such that $A\cap E$ is negligible
+whenever $\mu E<\infty$;  I need to show that $A$ is negligible.
+
+\medskip
+
+{\bf (i)} If $\mu$ is strictly localizable, let $\familyiI{X_i}$ be a
+decomposition of $X$.   For each $i\in I$, $A\cap X_i$ is negligible, so
+there we can choose
+a negligible $E_i\in\Sigma$ such that $A\cap X_i\subseteq E_i$.
+Set $E=\bigcup_{i\in I}E_i\cap X_i$.   Then
+$\mu E=\sum_{i\in I}\mu(E_i\cap X_i)=0$ and $A\subseteq E$, so $A$ is
+negligible.
+
+\medskip
+
+{\bf (ii)} If $\mu$ is complete and locally determined, take any
+measurable set $E$ of finite measure.   Then $A\cap E$ is negligible,
+therefore measurable;  as $E$ is arbitrary, $A$ is measurable;  as $\mu$
+is semi-finite, $A$ is negligible.
+}%end of proof of 213J
+
+\leader{*213K}{Lemma} If a measure space $(X,\Sigma,\mu)$ has locally
+determined negligible sets, and $\Cal E\subseteq\Sigma$ has an essential
+supremum $H\in\Sigma$\cmmnt{ in the sense of 211G}, then
+$H\setminus\bigcup\Cal E$ is negligible.
+
+\proof{ Set $A=H\setminus\bigcup\Cal E$.   Take any $F\in\Sigma$ such
+that $\mu F<\infty$.   Then
+$F\cap A$ has a measurable envelope $V$ say (132Ee again).
+If $E\in\Cal E$, then
+
+\Centerline{$\mu(E\setminus(X\setminus V))
+=\mu(E\cap V)=\mu^*(E\cap F\cap A)=0$,}
+
+\noindent so $H\cap V=H\setminus(X\setminus V)$ is negligible and
+$F\cap A$ is negligible.   As $F$ is arbitrary and $\mu$ has locally
+determined negligible sets, $A$ is negligible, as claimed.
+}%end of proof of 213K
+
+\leader{213L}{Proposition} Let $(X,\Sigma,\mu)$ be a localizable measure
+space with locally determined negligible sets.
+Then every subset $A$ of $X$ has a measurable envelope.
+
+\proof{ Set
+
+\Centerline{$\Cal E=\{E:E\in\Sigma,\,\mu^*(A\cap E)=\mu E<\infty\}$.}
+
+\noindent Let $G$ be an essential supremum for $\Cal E$ in $\Sigma$.
+
+\medskip
+
+\quad{\bf (i)} $A\setminus G$ is negligible.   \Prf\ Let $F$ be any set
+of finite measure for $\mu$.   Let $E$ be a measurable envelope of
+$A\cap F$.   Then $E\in\Cal E$ so $E\setminus G$ is negligible.   But
+$F\cap A\setminus G\subseteq E\setminus G$, so $F\cap A\setminus G$ is
+negligible.   Because $\mu$ has locally determined negligible sets,
+this is enough to show that $A\setminus G$ is negligible.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Let $E_0$ be a negligible measurable set including
+$A\setminus G$, and set $\tilde G=E_0\cup G$, so that
+$\tilde G\in\Sigma$,
+$A\subseteq\tilde G$ and $\mu(\tilde G\setminus G)=0$.   \Quer\
+Suppose, if
+possible, that there is an $F\in\Sigma$ such that
+$\mu^*(A\cap F)<\mu(\tilde G\cap F)$.   Let $F_1\subseteq F$ be a
+measurable envelope of $A\cap F$.   Set $H=X\setminus(F\setminus F_1)$;
+then $A\subseteq H$.   If $E\in\Cal E$ then
+
+\Centerline{$\mu E=\mu^*(A\cap E)\le\mu(H\cap E)$,}
+
+\noindent so $E\setminus H$ is negligible;  as $E$ is arbitrary,
+$G\setminus H$ is negligible and $\tilde G\setminus H$ is negligible.
+But $\tilde G\cap F\setminus F_1\subseteq\tilde G\setminus H$ and
+
+\Centerline{$\mu(\tilde G\cap F\setminus F_1)
+=\mu(\tilde G\cap F)-\mu^*(A\cap F)>0$. \Bang}
+
+This shows that $\tilde G$ is a measurable envelope of $A$, as required.
+}%end of proof of 213L
+
+\leader{213M}{Corollary} (a) If $(X,\Sigma,\mu)$ is $\sigma$-finite, then
+every subset of $X$ has a measurable envelope for $\mu$.
+
+(b) If $(X,\Sigma,\mu)$ is localizable, then every subset of $X$ has a
+measurable envelope for the c.l.d.\ version of $\mu$.
+
+\proof{{\bf (a)} Use 132Ee, or 213L, 211Lc and 213J.
+
+\medskip
+
+{\bf (b)} Use 213L and the fact that the c.l.d.\ version of $\mu$ is
+localizable as well as being complete and locally determined (213Hb).
+}%end of proof of 213M
+
+\leader{213N}{}\cmmnt{ When we come to use the concept of
+`localizability', it will frequently be through the following
+property, which in fact characterizes localizable spaces (213Xm).
+
+\medskip
+
+\noindent}{\bf Theorem} Let $(X,\Sigma,\mu)$ be a localizable measure
+space.   Suppose that $\Phi$ is a family of measurable real-valued
+functions, all defined on measurable subsets of $X$, such that whenever
+$f$, $g\in\Phi$ then $f=g$ almost everywhere in $\dom f\cap\dom g$.
+Then there is a measurable function $h:X\to\Bbb R$ such that every
+$f\in\Phi$ agrees with $h$ almost everywhere in $\dom f$.
+
+\proof{ For $q\in\Bbb Q$, $f\in\Phi$ set
+
+\Centerline{$E_{fq}=\{x:x\in\dom f,\,f(x)\ge q\}\in\Sigma$.}
+
+\noindent For each $q\in\Bbb Q$, let $E_q$ be an essential supremum of
+$\{E_{fq}:f\in\Phi\}$ in $\Sigma$.   Set
+
+\Centerline{$h^*(x)=\sup\{q:q\in\Bbb Q,\,x\in E_q\}\in[-\infty,\infty]$}
+
+\noindent for $x\in X$, taking $\sup\emptyset=-\infty$ if necessary.
+
+If $f$, $g\in\Phi$ and $q\in\Bbb Q$, then
+
+$$\eqalign{E_{fq}\setminus(X\setminus(\dom g\setminus E_{gq}))
+&=E_{fq}\cap\dom g\setminus E_{gq}\cr
+&\subseteq\{x:x\in\dom f\cap\dom g,\,f(x)\ne g(x)\}\cr}$$
+
+\noindent is negligible;  as $f$ is arbitrary,
+
+\Centerline{$E_q\cap\dom g\setminus E_{gq}=E_q\setminus(X\setminus(\dom
+g\setminus E_{gq}))$}
+
+\noindent is negligible.   Also $E_{gq}\setminus E_q$ is negligible, so
+$E_{gq}\symmdiff(E_q\cap\dom g)$ is negligible.   Set
+$H_g=\bigcup_{q\in\Bbb Q}E_{gq}\symmdiff(E_q\cap\dom g)$;  then $H_g$
+is negligible.   But if $x\in\dom g\setminus H_g$, then, for every
+$q\in\Bbb Q$, $x\in E_q\iff x\in E_{gq}$;  it follows that for such $x$,
+$h^*(x)=g(x)$.   Thus $h^*=g$ almost everywhere in $\dom g$;  and this
+is true for every $g\in\Phi$.
+
+The function $h^*$ is not necessarily real-valued.   But it is
+measurable, because
+\Centerline{$\{x:h^*(x)>a\}=\bigcup\{E_q:q\in\Bbb Q,\,q>a\}\in\Sigma$}
+
+\noindent for every real $a$.   So if we modify it by setting
+
+$$\eqalign{h(x)&=h^*(x)\text{ if }h(x)\in\Bbb R,\cr
+&=0\text{ if }h^*(x)\in\{-\infty,\infty\},\cr}$$
+
+\noindent we shall get a measurable real-valued function $h:X\to\Bbb R$;
+and for any $g\in\Phi$, $h(x)$ will be equal to $g(x)$ at least whenever
+$h^*(x)=g(x)$, which is true for almost every $x\in\dom g$.   Thus $h$
+is a suitable function.
+}%end of proof of 213N
+
+\leader{213O}{}\cmmnt{ There is an interesting and useful criterion
+for a space to be strictly localizable which I introduce at this point,
+though it will be used rarely in this volume.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a complete locally
+determined space.
+
+(a) Suppose that there is a disjoint family $\Cal E\subseteq\Sigma$
+such that ($\alpha$) $\mu E<\infty$ for every $E\in\Cal E$
+($\beta$) whenever $F\in\Sigma$ and $\mu F>0$ then there is an
+$E\in\Cal E$
+such that $\mu(E\cap F)>0$.   Then $(X,\Sigma,\mu)$ is strictly
+localizable, $\bigcup\Cal E$ is conegligible, and
+$\Cal E\cup\{X\setminus\bigcup\Cal E\}$ is a
+decomposition of $X$.
+
+(b) Suppose that $\langle X_i\rangle_{i\in I}$ is a partition of $X$
+into
+measurable sets of finite measure such that whenever $E\in\Sigma$ and
+$\mu E>0$ there is an $i\in I$ such that $\mu(E\cap X_i)>0$.   Then
+$(X,\Sigma,\mu)$ is strictly localizable, and
+$\langle X_i\rangle_{i\in I}$ is a decomposition of $X$.
+
+\proof{{\bf (a)(i)}
+The first thing to note is that if $F\in\Sigma$ and
+$\mu F<\infty$, there is a countable
+$\Cal E'\subseteq\Cal E$ such that
+$\mu(F\setminus\bigcup\Cal E')=0$.   \Prf\ Set
+
+\Centerline{$\Cal E'_n=\{E:E\in\Cal E,\,\mu(F\cap E)\ge 2^{-n}\}$ for
+each $n\in\Bbb N$,}
+
+\Centerline{$\Cal E'=\bigcup_{n\in\Bbb N}\Cal E'_n=\{E:E\in\Cal
+E,\,\mu(F\cap E)>0\}$.}
+
+\noindent Because $\Cal E$ is disjoint, we must have
+
+\Centerline{$\#(\Cal E'_n)\le 2^n\mu F$}
+
+\noindent for every $n\in\Bbb N$, so that every $\Cal E'_n$ is finite
+and $\Cal E'$, being the union of a sequence of countable sets, is
+countable.   Set $E'=\bigcup\Cal E'$ and $F'=F\setminus E'$, so that
+both $E'$ and $F'$ belong to $\Sigma$.   If $E\in\Cal E'$, then
+$E\subseteq E'$ so $\mu(E\cap F')=\mu\emptyset=0$;  if $E\in\Cal
+E\setminus\Cal E'$, then $\mu(E\cap F')=\mu(E\cap F)=0$.   Thus
+$\mu(E\cap F')=0$ for every $E\in\Cal E$.   By the hypothesis ($\beta$)
+on
+$\Cal E$, $\mu F'=0$, so $\mu(F\setminus\bigcup\Cal E')=0$, as
+required.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $H\subseteq X$ is such that $H\cap
+E\in\Sigma$ for every $E\in\Cal E$.   In this case $H\in\Sigma$.   \Prf\
+Let $F\in\Sigma$ be such that $\mu F<\infty$.   Let $\Cal
+E'\subseteq\Cal E$ be a countable set such that $\mu(F\setminus E')=0$,
+where $E'=\bigcup\Cal E'$.  Then $H\cap(F\setminus E')\in\Sigma$
+because $(X,\Sigma,\mu)$ is complete.   But also $H\cap
+E'=\bigcup_{E\in\Cal E'}H\cap E\in\Sigma$.   So
+
+\Centerline{$H\cap F=(H\cap(F\setminus E'))\cup(F\cap(H\cap
+E'))\in\Sigma$.}
+
+\noindent As $F$ is arbitrary and $(X,\Sigma,\mu)$ is locally
+determined, $H\in\Sigma$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} We find also that $\mu H=\sum_{E\in\Cal E}\mu(H\cap E)$
+for every $H\in\Sigma$.   \Prf\ {($\alpha$)} Because $\Cal E$ is
+disjoint, we
+must have $\sum_{E\in\Cal E'}\mu(H\cap E)\le\mu H$ for every finite
+$\Cal E'\subseteq\Cal E$, so
+
+\Centerline{$\sum_{E\in\Cal E}\mu(H\cap E)
+=\sup\{\sum_{E\in\Cal E'}
+  \mu(H\cap E):\Cal E'\subseteq\Cal E$ is finite$\}\le\mu H$.}
+
+\noindent ($\beta$) For the reverse inequality, consider first the case
+$\mu H<\infty$.   By (i), there is a countable $\Cal E'\subseteq\Cal E$
+such that $\mu(H\setminus\bigcup\Cal E')=0$, so that
+
+\Centerline{$\mu H=\mu(H\cap\bigcup\Cal E')
+=\sum_{E\in\Cal E'}\mu(H\cap E)\le\sum_{E\in\Cal E}\mu(H\cap E)$.}
+
+\noindent{($\gamma$)} In general, because $(X,\Sigma,\mu)$ is
+semi-finite,
+
+$$\eqalign{\mu H
+&=\sup\{\mu F:F\subseteq H,\,\mu F<\infty\}\cr
+&\le\sup\{\sum_{E\in\Cal E}\mu(F\cap E):F\subseteq H,\,\mu F<\infty\}
+\le\sum_{E\in\Cal E}\mu(H\cap E).\cr}$$
+
+\noindent So in all cases we have
+$\mu H\le\sum_{E\in\Cal E}\mu(H\cap E)$, and the two are equal.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} In particular, setting $E_0=X\setminus\bigcup\Cal E$,
+$E_0\in\Sigma$ and $\mu E_0=0$;  that is, $\bigcup\Cal E$ is
+conegligible.
+Consider $\Cal E^*=\Cal E\cup\{E_0\}$.
+This is a partition of $X$ into sets of finite measure (now using the
+hypothesis ($\alpha$) on $\Cal E$).   If $H\subseteq X$ is such that
+$H\cap E\in\Sigma$ for every $E\in\Cal E^*$, then $H\in\Sigma$ and
+
+\Centerline{$\mu H=\sum_{E\in\Cal E}\mu(H\cap E)
+=\sum_{E\in\Cal E^*}\mu(H\cap E)$.}
+
+\noindent Thus $\Cal E^*$ (or, if you prefer, the indexed family
+$\langle E\rangle_{E\in\Cal E^*}$) is a decomposition witnessing that
+$(X,\Sigma,\mu)$ is strictly localizable.
+
+\medskip
+
+{\bf (b)} Apply (a) with $\Cal E=\{X_i:i\in I\}$, noting that $E_0$ in
+(iv) is empty, so can be dropped.
+}%end of proof of 213O
+
+\exercises{
+\leader{213X}{Basic exercises (a)}
+%\spheader 213Xa
+Let $(X,\Sigma,\mu)$ be any measure space, $\mu^*$ the outer measure
+defined from $\mu$, and $\check\mu$ the measure defined by
+\Caratheodory's method from $\mu^*$;  write $\check\Sigma$ for the
+domain of $\check\mu$.   Show that
+(i) $\check\mu$ extends the completion $\hat\mu$ of $\mu$;
+(ii) if $H\subseteq X$ is such that
+$H\cap F\in\check\Sigma$ whenever $F\in\Sigma$ and $\mu F<\infty$, then
+$H\in\check\Sigma$;
+(iii) $(\check\mu)^*=\mu^*$, so that the integrable functions
+for $\check\mu$ and $\mu$ are the same (212Xb);  (iv) if $\mu$ is
+strictly localizable then $\check\mu=\hat\mu$;  (v) if $\mu$ is defined
+by \Caratheodory's method from another outer measure, then $\mu=\check\mu$
+(cf.\ 132Xa).
+%213C
+
+\sqheader 213Xb
+Let $\mu$ be counting measure restricted to the
+countable-cocountable $\sigma$-algebra of a set $X$ (211R, 211Ye).
+(i) Show that the c.l.d.\ version $\tilde\mu$ of $\mu$ is just counting
+measure on $X$.   (ii) Show that $\check\mu$, as defined in 213Xa, is
+equal to $\tilde\mu$, and in particular strictly extends the completion
+of $\mu$ if $X$ is uncountable.
+%213E
+
+\spheader 213Xc Let $(X,\Sigma,\mu)$ be any measure space.   For
+$E\in\Sigma$ set
+
+\Centerline{$\mu_{\text{sf}}E
+=\sup\{\mu(E\cap F):F\in\Sigma,\,\mu F<\infty\}$.}
+
+\quad{(i)} Show that $(X,\Sigma,\mu_{\text{sf}})$ is a semi-finite measure
+space, and is equal to $(X,\Sigma,\mu)$ iff $(X,\Sigma,\mu)$ is
+semi-finite.
+
+\quad{(ii)} Show that a $\mu$-integrable real-valued function $f$ is
+$\mu_{\text{sf}}$-integrable, with the same integral.
+
+\quad(iii) Show that if $E\in\Sigma$ then $E$
+can be expressed as $E_1\cup E_2$ where $E_1$, $E_2\in\Sigma$,
+$\mu E_1=\mu_{\text{sf}}E_1$ and $\mu_{\text{sf}}E_2=0$.
+
+\quad{(iv)} Show that if $f$ is a $\mu_{\text{sf}}$-integrable real-valued
+function on $X$, it is equal $\mu_{\text{sf}}$-almost everywhere to a
+$\mu$-integrable function.
+
+\quad{(v)} Show that if $(X,\Sigma,\mu_{\text{sf}})$ is complete, so is
+$(X,\Sigma,\mu)$.
+
+\quad{(vi)} Show that $\mu$ and $\mu_{\text{sf}}$ have identical c.l.d.\
+versions.
+%213F
+
+\spheader 213Xd Let $(X,\Sigma,\mu)$ be any measure space.   Define
+$\check\mu$ as in 213Xa.   Show that $(\check\mu)_{\text{sf}}$, as constructed
+in 213Xc, is precisely the c.l.d.\ version $\tilde\mu$ of $\mu$, so that
+$\check\mu=\tilde\mu$ iff $\check\mu$ is semi-finite.
+%213F, 213Xa, 213Xc
+
+\spheader 213Xe Let $(X,\Sigma,\mu)$ be a measure space.   For
+$A\subseteq X$ set
+$\mu_* A=\sup\{\mu E:E\in\Sigma,\,\mu E<\infty,\,E\subseteq A\}$, as in
+113Yh.   (i) Show that the measure constructed from $\mu_*$
+by the method of 113Yg/212Ya is just the c.l.d.\ version $\tilde\mu$ of
+$\mu$.
+(ii) Show that $\tilde\mu_*=\mu_*$.   (iii) Show that if $\nu$ is
+another measure
+on $X$, with domain $\Tau$, then $\tilde\mu=\tilde\nu$ iff
+$\mu_*=\nu_*$.
+%213F
+
+\spheader 213Xf Let $X$ be a set and $\theta$ an outer measure on $X$.
+Show that $\theta_{\text{sf}}$, defined by writing
+
+\Centerline{$\theta_{\text{sf}}A=\sup\{\theta B:B\subseteq A,\,\theta
+B<\infty\}$}
+
+\noindent is also an outer measure on $X$.   Show that the measures
+defined by \Caratheodory's method from $\theta$, $\theta_{\text{sf}}$ have the
+same domains.
+%213F
+
+\spheader 213Xg Let $(X,\Sigma,\mu)$ be any measure space.   Set
+
+\Centerline{$\mu^*_{\text{sf}}A
+=\sup\{\mu^*(A\cap E):E\in\Sigma,\,\mu E<\infty\}$}
+
+\noindent for every $A\subseteq X$.
+
+\quad{(i)} Show that
+
+\Centerline{$\mu^*_{\text{sf}}A=\sup\{\mu^*B:B\subseteq A,\,\mu^*B<\infty\}$}
+
+\noindent for every $A$.
+
+\quad{(ii)} Show that $\mu^*_{\text{sf}}$ is an outer measure.
+
+\quad(iii) Show that if $A\subseteq X$ and $\mu^*_{\text{sf}}A<\infty$, there
+is an $E\in\Sigma$ such that $\mu^*_{\text{sf}}A=\mu^*(A\cap E)=\mu E$,
+$\mu^*_{\text{sf}}(A\setminus E)=0$.   \Hint{take a non-decreasing sequence
+$\sequencen{E_n}$ of measurable sets of finite measure such that
+$\mu^*_{\text{sf}}A=\lim_{n\to\infty}\mu^*(A\cap E_n)$, and let
+$E\subseteq\bigcup_{n\in\Bbb N}E_n$ be a measurable envelope of
+$A\cap\bigcup_{n\in\Bbb N}E_n$.}
+
+\quad{(iv)} Show that the measure defined from $\mu^*_{\text{sf}}$ by
+\Caratheodory's method is precisely the c.l.d.\ version $\tilde\mu$ of
+$\mu$.
+
+\quad{(v)} Show that $\mu^*_{\text{sf}}=\tilde\mu^*$, so that if $\mu$ is
+complete and locally determined then $\mu^*_{\text{sf}}=\mu^*$.
+%213F, 213Xc, 213Xf
+
+\sqheader 213Xh Let $(X,\Sigma,\mu)$ be a measure space
+with locally determined measurable sets.   Show that it is semi-finite.
+%213I
+
+\sqheader 213Xi Let $(X,\Sigma,\mu)$ be a measure space, $\hat\mu$ the
+completion of $\mu$,
+$\tilde\mu$ the c.l.d.\ version of $\mu$
+and $\check\mu$ the measure defined by \Caratheodory's method
+from $\mu^*$.   Show that the following are equiveridical:
+(i) $\mu$ has
+locally determined negligible sets;
+(ii) $\mu$ and $\tilde\mu$ have the
+same negligible sets;
+(iii) $\check\mu=\tilde\mu$;
+(iv) $\hat\mu$ and $\tilde\mu$ have the same sets of finite measure;
+(v) $\mu$ and $\tilde\mu$ have the same integrable functions;
+(vi) $\tilde\mu^*=\mu^*$;
+(vii) the outer measure $\mu^*_{\text{sf}}$ of 213Xg is equal to $\mu^*$.
+%213J 213Xi
+
+\sqheader 213Xj Let $(X,\Sigma,\mu)$ be a strictly localizable measure
+space with a decomposition $\langle X_i\rangle_{i\in I}$.   Show that
+$\mu^*A=\sum_{i\in I}\mu^*(A\cap X_i)$ for every $A\subseteq X$.
+%213L
+
+\sqheader 213Xk Let $(X,\Sigma,\mu)$ be a complete locally determined
+measure space, and let $A\subseteq X$ be such that
+$\min(\mu^*(E\cap A),\mu^*(E\setminus A))<\mu E$ whenever $E\in\Sigma$
+and $0<\mu E<\infty$.
+Show that $A\in\Sigma$.   \Hint{given $\mu F<\infty$, consider
+the intersection $E$ of measurable envelopes of $F\cap A$, $F\setminus
+A$ to see that $\mu^*(F\cap A)+\mu^*(F\setminus A)=\mu F$.}
+%213M
+
+\spheader 213Xl Let us say that a measure space $(X,\Sigma,\mu)$ has the
+{\bf measurable envelope property} if every subset of $X$ has a
+measurable envelope.   (i) Show that a semi-finite space with the
+measurable envelope property has locally determined negligible sets.
+(ii) Show that a complete semi-finite space with
+the measurable envelope property is locally determined.
+%213M
+
+\spheader 213Xm Let $(X,\Sigma,\mu)$ be a semi-finite measure space, and
+suppose that it satisfies the conclusion of Theorem 213N.   Show that it
+is localizable.   \Hint{given $\Cal E\subseteq\Sigma$, set
+$\Cal F=\{F:F\in\Sigma,\,E\cap F$ is negligible for every
+$E\in\Cal E\}$.
+Let $\Phi$ be the set of functions $f$ from subsets of $X$ to $\{0,1\}$
+such that $f^{-1}[\{1\}]\in \Cal E$ and $f^{-1}[\{0\}]\in\Cal F$.}
+%213N
+
+\spheader 213Xn Let $(X,\Sigma,\mu)$ be a measure space.   Show that its
+c.l.d.\ version is strictly localizable iff there is a disjoint family
+$\Cal E\subseteq\Sigma$ such that $\mu E<\infty$ for every $E\in\Cal E$
+and whenever $F\in\Sigma$ and $0<\mu F<\infty$ there is an $E\in\Cal E$
+such that $\mu(E\cap F)>0$.
+%213O
+
+\spheader 213Xo Show that the c.l.d.\ version of any point-supported
+measure is point-supported.
+
+\vleader{48pt}{213Y}{Further exercises (a)}
+%\spheader 213Ya
+Let $(X,\Sigma,\mu)$ be a measure space.   Show that $\mu$
+is semi-finite iff there is a family $\Cal E\subseteq\Sigma$ such that
+$\mu E<\infty$ for every $E\in\Cal E$ and
+$\mu F=\sum_{E\in\Cal E}\mu(F\cap E)$ for every $F\in\Sigma$.
+\Hint{take $\Cal E$ maximal subject to the intersection of any two elements
+being negligible.}
+%213A  would be useful in 552M, (i) => (iii)
+
+\spheader 213Yb
+Set $X=\Bbb N$, and for $A\subseteq X$ set
+
+\Centerline{$\theta A=\sqrt{\#(A)}$ if $A$ is finite, $\infty$ if $A$ is
+infinite.}
+
+\noindent Show that $\theta$ is an outer measure on $X$, that
+$\theta A=\sup\{\theta B:B\subseteq A,\,\theta B<\infty\}$ for every
+$A\subseteq X$, but that the measure $\mu$ defined from $\theta$ by
+\Caratheodory's
+method is not semi-finite.   Show that if $\check\mu$ is the measure
+defined by \Caratheodory's method from $\mu^*$ (213Xa), then
+$\check\mu\ne\mu$.
+%213C
+
+\spheader 213Yc Set $X=[0,1]\times\{0,1\}$, and let
+$\Sigma$ be the family of those subsets $E$ of $X$ such that
+
+\Centerline{$\{x:x\in[0,1],\,E[\{x\}]\ne\emptyset,\,E[\{x\}]\ne\{0,1\}\}
+$}
+
+\noindent is countable, writing $E[\{x\}]=\{y:(x,y)\in E\}$ for each
+$x\in[0,1]$.   Show that $\Sigma$ is a $\sigma$-algebra of subsets of
+$X$.   For $E\in\Sigma$, set $\mu E=\#(\{x:(x,1)\in E\})$ if this is
+finite, $\infty$ otherwise.   Show that $\mu$ is a complete semi-finite
+measure.   Show that the measure $\check\mu$ defined from $\mu^*$ by
+\Caratheodory's method (213Xa) is not semi-finite.   Show that the
+domain of the c.l.d.\ version of $\mu$ is the whole of $\Cal PX$.
+%213Xa, 213F
+
+\spheader 213Yd Set $X=\Bbb N$, and for $A\subseteq X$ set
+
+\Centerline{$\phi A=\#(A)^2$ if $A$ is finite, $\infty$ if $A$ is
+infinite.}
+
+\noindent Show that $\phi$ satisfies the conditions of 212Ya,
+but that the measure defined from $\phi$ by the method there is not
+semi-finite.
+%213Xe, 213F
+
+\spheader 213Ye Let $(X,\Sigma,\mu)$ be a complete locally
+determined measure space.   Suppose that $D\subseteq X$ and that
+$f:D\to\Bbb R$ is a function.   Show that the following are equiveridical:
+(i) $f$ is measurable;  (ii)
+
+\Centerline{$\mu^*\{x:x\in D\cap E,\,f(x)\le
+a\}+\mu^*\{x:x\in D\cap E,\,f(x)\ge b\}\le\mu E$}
+
+\noindent whenever $a<b$ in $\Bbb R$, $E\in\Sigma$ and $\mu E<\infty$ (iii)
+
+\Centerline{$\min(\mu^*\{x:x\in D\cap E,\,f(x)\le
+a\},\mu^*\{x:x\in D\cap E,\,f(x)\ge b\})<\mu E$}
+
+\noindent  whenever $a<b$ in $\Bbb R$ and $0<\mu E<\infty$.  ({\it
+Hint\/}:
+for (iii)$\Rightarrow$(i), show that if $E\subseteq X$ then
+
+\Centerline{$\mu^*\{x:x\in D\cap E,\,f(x)>a\}
+=\sup_{b>a}\mu^*\{x:x\in D\cap E,\,f(x)\ge b\}$,}
+
+\noindent and use 213Xk above.)
+%213Xk, 213M
+
+\spheader 213Yf Let $(X,\Sigma,\mu)$ be a complete locally determined
+measure space and suppose that $\Cal E\subseteq\Sigma$ is such that
+$\mu E<\infty$ for every $E\in\Cal E$ and whenever $F\in\Sigma$ and
+$\mu F<\infty$ there is a countable $\Cal E_0\subseteq\Cal E$ such that
+$F\setminus\bigcup\Cal E_0$, $F\cap\bigcup(\Cal E\setminus\Cal E_0)$ are
+negligible.   Show that $(X,\Sigma,\mu)$ is strictly localizable.
+%213O
+}%end of exercises
+
+\endnotes{
+\Notesheader{213} I think it is fair to say that if the definition of
+`measure space' were re-written to exclude all spaces which are not
+semi-finite, nothing significant would be lost from the theory.   There
+are solid reasons for not taking such a drastic step, starting with the
+fact that it would confuse everyone (if you say to an unprepared
+audience `let $(X,\Sigma,\mu)$ be a measure space', there is a danger
+that some will imagine that you mean `$\sigma$-finite measure space',
+but very few will suppose that you mean `semi-finite measure space').
+But the whole point of measure theory is that we distinguish between
+sets by their measures, and if every subset of $E$ is either
+non-measurable, or negligible, or of infinite measure, the
+classification is
+too crude to support most of the usual ideas, starting, of course, with
+ordinary integration.
+
+Let us say that a measurable set $E$ is {\bf purely infinite} if $E$
+itself and all its non-negligible measurable subsets have infinite
+measure.   On the definition of the integral which I chose in Volume 1,
+every simple function, and therefore every integrable function, must be
+zero almost everywhere in $E$.   This means that the whole theory of
+integration will ignore $E$ entirely.   Looking at the definition of
+ `c.l.d.\ version' (213D-213E), you will see that the c.l.d.\ version
+of the measure will render $E$ negligible, as does the `semi-finite
+version' described in 213Xc.   These amendments do not, however, affect
+sets of finite measure, and consequently leave integrable functions
+integrable, with the same integrals.
+
+The strongest reason we have yet seen for admitting non-semi-finite
+spaces into consideration is that \Caratheodory's method does not
+always produce semi-finite spaces.   (I give examples in 213Yb-213Yc;
+more important ones are the Hausdorff measures of
+\S\S264-265 below.)   In practice the right thing to do
+is often to take the c.l.d.\ version of the measure produced by
+\Caratheodory's construction.
+
+It is a reasonable general philosophy, in measure theory, to say that we
+wish to measure as many sets, and integrate as many functions, as we can
+manage in a canonical way -- I mean, without making blatantly arbitrary
+choices about the values we assign to our measure or integral.   The
+revision of a measure $\mu$ to its c.l.d.\ version $\tilde\mu$ is about
+as far as we can go with an arbitrary measure space in which
+we have no other structure to guide our choices.
+
+You will observe that $\tilde\mu$ is not as close to $\mu$ as the
+completion $\hat\mu$ of $\mu$
+is;  naturally so, because if $E\in\Sigma$ is purely infinite for
+$\mu$ then we have to choose between
+setting $\tilde\mu E=0\ne\mu E$ and finding some way of fitting many
+sets of finite measure into $E$;  which if $E$ is a singleton will be
+actually impossible, and in any case would be an arbitrary process.
+However the integrable functions for $\tilde\mu$, while not always the
+same as those for $\mu$ (since $\tilde\mu$ turns purely infinite sets
+into negligible ones, so that their indicator functions become
+integrable), are `nearly' the same, in the sense that any
+$\tilde\mu$-integrable function can be changed into a $\mu$-integrable
+function by adjusting it on a $\tilde\mu$-negligible set.   This
+corresponds, of course, to the fact that any set of finite measure for
+$\tilde\mu$ is the symmetric difference of a set of finite measure for
+$\mu$ and a $\tilde\mu$-negligible set.   For sets of infinite measure
+this can fail, unless $\mu$ is localizable (213Hb, 213Xb).
+
+If $(X,\Sigma,\mu)$ is semi-finite, or localizable, or strictly
+localizable, then of course it is correspondingly closer to
+$(X,\tilde\Sigma,\tilde\mu)$, as detailed in 213Ha-c.
+
+It is worth noting that while the measure $\check\mu$ obtained by
+\Caratheodory's method directly from the outer measure $\mu^*$ defined
+from $\mu$ may fail to be semi-finite, even when $\mu$ is (213Yc), a
+simple modification of $\mu^*$ (213Xg) yields the c.l.d.\ version
+$\tilde\mu$ of $\mu$, which can also be obtained from an appropriate
+inner measure (213Xe).   The measure $\check\mu$ is of course related
+in other ways to $\tilde\mu$;  see 213Xd.
+}%end of notes
+
+\discrpage
+
+

@@ -1,0 +1,738 @@
+\frfilename{mt327.tex}
+\versiondate{13.7.11}
+\copyrightdate{1995}
+
+\def\chaptername{Measure algebras}
+\def\sectionname{Additive functionals on measure algebras}
+
+\newsection{327}
+
+When we turn to measure algebras, we have a simplification, relative to
+the general context of \S326, because the algebras are always
+Dedekind $\sigma$-complete;  but there are also elaborations, because we
+can ask how the additive functionals we examine are related to the
+measure.   In 327A-327C I work through the relationships between the
+concepts of `absolute continuity', `(true) continuity' and
+`countable additivity', following 232A-232B, and adding
+`complete additivity' from \S326.   These ideas provide a new
+interpretation of the Radon-Nikod\'ym theorem (327D).
+I then use this theorem to develop some machinery (the `standard
+extension' of an additive functional from a closed subalgebra to the
+whole algebra, 327F-327G) which will be used in \S333.
+
+\leader{327A}{}\cmmnt{ I start with the following definition and
+theorem corresponding to 232A-232B.
+
+\medskip
+
+\noindent}{\bf Definition} Let $(\frak A,\bar\mu)$ be a measure algebra
+and $\nu:\frak A\to\Bbb R$ a finitely additive functional.   Then $\nu$
+is {\bf absolutely continuous} with respect to $\bar\mu$ if for every
+$\epsilon>0$ there is a $\delta>0$ such that $|\nu a|\le\epsilon$
+whenever $\bar\mu a\le\delta$.
+
+\vleader{108pt}{327B}{Theorem} Let $(\frak A,\bar\mu)$ be a measure algebra, and
+$\nu:\frak A\to\Bbb R$ a finitely additive functional.   Give $\frak A$
+its measure-algebra topology and uniformity\cmmnt{ (\S323)}.
+
+(a) If $\nu$ is continuous at $0$, it is completely additive.
+
+(b) If $\nu$ is countably additive, it is absolutely continuous with
+respect to $\bar\mu$.
+
+(c) The following are equiveridical:
+
+\quad(i) $\nu$ is continuous at $0$;
+
+\quad(ii) $\nu$ is countably additive and whenever $a\in\frak A$ and
+$\nu a\ne 0$ there is a $b\in\frak A$ such that $\bar\mu b<\infty$ and
+$\nu(a\Bcap b)\ne 0$;
+
+\quad(iii) $\nu$ is continuous everywhere on $\frak A$;
+
+\quad(iv) $\nu$ is uniformly continuous.
+
+(d) If $(\frak A,\bar\mu)$ is semi-finite, then $\nu$ is continuous iff
+it is completely additive.
+
+(e) If $(\frak A,\bar\mu)$ is $\sigma$-finite, then $\nu$ is continuous
+iff it is countably additive iff it is completely additive.
+
+(f) If $(\frak A,\bar\mu)$ is totally finite, then $\nu$ is continuous
+iff it is absolutely continuous with
+respect to $\bar\mu$ iff it is countably additive iff it is
+completely additive.
+
+\proof{{\bf (a)} If $\nu$ is continuous, and $A\subseteq\frak A$ is
+non-empty, downwards-directed and has infimum $0$, then
+$0\in\overline{A}$ (323D(b-ii)), so $\inf_{a\in A}|\nu a|=0$.
+
+\medskip
+
+{\bf (b)}  \Quer\ Suppose, if possible, that $\nu$ is countably additive
+but not absolutely continuous.   Then there is an
+$\epsilon>0$ such that for every $\delta>0$ there is an $a\in\frak A$
+such that $\bar\mu a\le\delta$ but
+$|\nu a|\ge\epsilon$.   For each $n\in\Bbb N$ we may choose a
+$b_n\in\frak A$ such that $\bar\mu b_n\le 2^{-n}$ and
+$|\nu b_n|\ge\epsilon$.   Consider $b^*_n=\sup_{k\ge n}b_k$,
+$b=\inf_{n\in\Bbb N}b^*_n$.   Then we have
+
+\Centerline{$\bar\mu b\le\inf_{n\in\Bbb N}\bar\mu(\sup_{k\ge n}b_k)
+\le\inf_{n\in\Bbb N}\sum_{k=n}^{\infty}2^{-k}=0$,}
+
+\noindent so $\bar\mu b=0$ and $b=0$.   On the other hand, $\nu$ is
+expressible as a difference $\nu^+-\nu^-$ of non-negative countably
+additive functionals (326L), each of which is sequentially
+order-continuous (326Kc), and
+
+\Centerline{$0=\lim_{n\to\infty}(\nu^++\nu^-)b^*_n
+\ge\inf_{n\in\Bbb N}(\nu^++\nu^-)b_n
+\ge\inf_{n\in\Bbb N}|\nu b_n|
+\ge\epsilon$,}
+
+\noindent which is absurd.\ \Bang
+
+\medskip
+
+{\bf (c)(i)$\Rightarrow$(ii)} Suppose that $\nu$ is continuous
+at $0$.   Then it is
+completely additive, by (a), therefore countably additive.   If
+$\nu a\ne 0$, there
+must be a $b$ of finite measure such that $|\nu d|<|\nu a|$ whenever
+$d\Bcap b=0$, so that $|\nu(a\Bsetminus b)|<|\nu a|$ and
+$\nu(a\Bcap
+b)\ne 0$.   Thus the conditions are satisfied.
+
+\medskip
+
+\quad{\bf (ii)$\Rightarrow$(iv)} Now suppose that $\nu$ satisfies the
+two conditions in (ii).   Because $\frak A$ is Dedekind
+$\sigma$-complete, $\nu$ must be bounded (326M),
+therefore expressible as the
+difference $\nu^+-\nu^-$ of countably additive functionals.   Set
+$\nu_1=\nu^++\nu^-$.   Set
+
+\Centerline{$\gamma=\sup\{\nu_1b:b\in\frak A,\,\bar\mu b<\infty\}$,}
+
+\noindent and
+choose a sequence $\sequencen{b_n}$ of elements of $\frak A$ of finite
+measure such that
+$\lim_{n\to\infty}\nu_1b_n=\gamma$;  set $b^*=\sup_{n\in\Bbb N}b_n$.
+If $d\in\frak A$ and $d\Bcap b^*=0$ then $\nu d=0$.   \Prf\  If
+$b\in\frak A$ and $\bar\mu b<\infty$, then
+
+\Centerline{$|\nu(d\Bcap b)|\le\nu_1(d\Bcap b)\le\nu_1(b\Bsetminus b_n)
+=\nu_1(b\Bcup b_n)-\nu_1b_n\le\gamma-\nu_1b_n$}
+
+\noindent for every $n\in\Bbb N$, so $\nu(d\Bcap b)=0$.   As $b$ is
+arbitrary, the second condition in (ii) tells us that $\nu d=0$.\ \Qed
+
+Setting $b_n^*=\sup_{k\le n}b_k$ for each $n$, we have
+$\lim_{n\to\infty}\nu_1(b^*\Bsetminus b^*_n)=0$.
+Take any $\epsilon>0$, and (using (b) above) let $\delta>0$
+be such that $|\nu a|\le\epsilon$ whenever $\bar\mu a\le\delta$.   Let
+$n$ be such that
+$\nu_1(b^*\Bsetminus b_n^*)\le\epsilon$.   Then
+
+$$\eqalign{|\nu a|
+&\le|\nu(a\Bcap b^*_n)|+|\nu(a\Bcap(b^*\Bsetminus b^*_n))|
+  +|\nu(a\Bsetminus b^*)|\cr
+&\le|\nu(a\Bcap b^*_n)|+\nu_1(b^*\Bsetminus b^*_n)
+\le|\nu(a\Bcap b^*_n)|+\epsilon\cr}$$
+
+\noindent for any $a\in\frak A$.
+
+   Now if $b$, $c\in\frak A$
+and $\bar\mu((b\Bsymmdiff c)\Bcap b^*_n)\le\delta$ then
+
+
+$$\eqalign{|\nu b-\nu c|
+&\le|\nu(b\Bsetminus c)|+|\nu(c\Bsetminus b)|\cr
+&\le|\nu((b\Bsetminus c)\Bcap b^*)|
+  +|\nu((c\Bsetminus b)\Bcap b^*)|+2\epsilon
+\le\epsilon+\epsilon+2\epsilon
+=4\epsilon\cr}$$
+
+\noindent because $\bar\mu((b\Bsetminus c)\Bcap b^*_n)$,
+$\bar\mu((c\Bsetminus b)\Bcap b^*_n)$ are both less than or equal to
+$\delta$.   As $\epsilon$ is arbitrary, $\nu$ is uniformly continuous.
+
+\medskip
+
+\quad{\bf (iv)$\Rightarrow$(iii)$\Rightarrow$(i)} are trivial.
+
+\medskip
+
+{\bf (d)} One implication is covered by (a).   For the other, suppose
+that $\nu$ is completely additive.   Then it is countably additive.   On
+the other hand, if $\nu a\ne 0$, consider
+$B=\{b:b\Bsubseteq a,\,\bar\mu b<\infty\}$.   Then $B$ is
+upwards-directed and $\sup B=a$, because
+$\bar\mu$ is semi-finite (322Eb), so $\{a\Bsetminus b:b\in B\}$ is
+downwards-directed and has infimum $0$.   Accordingly
+$\inf_{b\in B}|\nu(a\Bsetminus b)|=0$, and there must be a $b\in B$ such
+that $\nu b\ne 0$.   But this means that condition (ii) of (c) is
+satisfied, so that $\nu$ is continuous.
+
+\medskip
+
+{\bf (e)} Now suppose that $(\frak A,\bar\mu)$ is $\sigma$-finite.   In
+this case $\frak A$ is ccc (322G) so  complete additivity and countable
+additivity are the same (326P) and we have a special case of (d).
+
+\medskip
+
+{\bf (f)} Finally, suppose that $\bar\mu 1<\infty$ and that $\nu$ is
+absolutely continuous with respect to $\bar\mu$.   If
+$A\subseteq\frak A$ is non-empty and downwards-directed and has infimum
+$0$, then
+$\inf_{a\in A}\bar\mu a=0$ (321F), so $\inf_{a\in A}|\nu a|$ must be
+$0$;  thus $\nu$ is completely additive.   With (b) and (e) this shows
+that all four conditions are equiveridical.
+}%end of proof of 327B
+
+\leader{327C}{Proposition} Let $(X,\Sigma,\mu)$ be a measure space
+and $(\frak A,\bar\mu)$ its measure algebra.
+
+(a) There is a one-to-one correspondence between finitely additive
+functionals $\bar\nu$ on $\frak A$ and finitely additive functionals
+$\nu$ on $\Sigma$ such that $\nu E=0$ whenever $\mu E=0$,
+given by the formula $\bar\nu E^{\ssbullet}=\nu E$ for every
+$E\in\Sigma$.
+
+(b) In (a), $\bar\nu$ is absolutely continuous with respect to $\bar\mu$
+iff $\nu$ is absolutely continuous with respect to $\mu$.
+
+(c) In (a), $\bar\nu$ is countably additive iff $\nu$ is countably
+additive;  so that we have a one-to-one correspondence between the
+countably additive functionals on $\frak A$ and the absolutely
+continuous countably additive functionals on $\Sigma$.
+
+(d) In (a), $\bar\nu$ is continuous for the measure-algebra topology on
+$\frak A$ iff $\nu$ is truly continuous in the sense of 232Ab.
+
+(e) Suppose that $\mu$ is semi-finite.   Then, in (a), $\bar\nu$ is
+completely additive iff $\nu$ is truly continuous.
+
+\proof{{\bf (a)} This should be nearly obvious.   If
+$\bar\nu:\frak A\to\Bbb R$ is additive, then the formula defines a
+functional $\nu:\Sigma\to\Bbb R$ which is additive by 326Be.
+Also, of course,
+
+\Centerline{$\mu E=0\,\Longrightarrow\,E^{\ssbullet}=0
+  \,\Longrightarrow\,\nu E=0$.}
+
+\noindent On the other hand, if $\nu$ is an additive functional on
+$\Sigma$ which is zero on negligible sets, then, for $E$, $F\in\Sigma$,
+
+$$\eqalign{E^{\ssbullet}=F^{\ssbullet}
+&\Longrightarrow\,\mu(E\setminus F)=\mu(F\setminus E)=0\cr
+&\Longrightarrow\,\nu(E\setminus F)=\nu(F\setminus E)=0\cr
+&\Longrightarrow\,\nu F=\nu E-\nu(E\setminus F)+\nu(F\setminus E)=\nu
+E,\cr}$$
+
+\noindent so we have a function $\bar\nu:\frak A\to\Bbb R$ defined by
+the
+given formula.   If $E$, $F\in\Sigma$ and $E^{\ssbullet}\Bcap
+F^{\ssbullet}=0$, then
+
+$$\eqalign{\bar\nu(E^{\ssbullet}\Bcup F^{\ssbullet})
+&=\bar\nu(E\cup F)^{\ssbullet}
+=\nu(E\cup F)\cr
+&=\nu(E\setminus F)+\nu F
+=\bar\nu E^{\ssbullet}+\bar\nu F^{\ssbullet}\cr}$$
+
+\noindent because
+$(E\setminus F)^{\ssbullet}=E^{\ssbullet}\Bsetminus F^{\ssbullet}
+=E^{\ssbullet}$.   Thus $\bar\nu$ is additive, and the
+correspondence is complete.
+
+\medskip
+
+{\bf (b)} This is immediate from the definitions.
+
+\medskip
+
+{\bf (c)(i)} If $\nu$ is countably additive, and $\sequencen{a_n}$
+is a disjoint sequence in $\frak A$, we can express it as
+$\sequencen{E_n}$ where $\sequencen{E_n}$ is a sequence in $\Sigma$.
+Setting $F_n=E_n\setminus\bigcup_{i<n}E_i$, $\sequencen{F_n}$ is a
+disjoint sequence in $\Sigma$ and
+
+\Centerline{$F_n^{\ssbullet}=a_n\Bsetminus\sup_{i<n}a_i=a_n$}
+
+\noindent for each $n$.   So
+
+\Centerline{$\bar\nu(\sup_{n\in\Bbb N}a_n)
+=\nu(\bigcup_{n\in\Bbb N}F_n)
+=\sum_{n=0}^{\infty}\nu F_n
+=\sum_{n=0}^{\infty}\bar\nu a_n$.}
+
+\noindent As $\sequencen{a_n}$ is arbitrary, $\bar\nu$ is countably
+additive.
+
+\medskip
+
+\quad{\bf (ii)} If $\bar\nu$ is countably additive, then $\nu$ is
+countably additive by 326Jf.
+
+\medskip
+
+\quad{\bf (iii)} For the last remark, note that by 232Ba a countably
+additive functional on $\Sigma$ is absolutely continuous with respect to
+$\mu$ iff it is zero on the $\mu$-negligible sets.
+
+\medskip
+
+{\bf (d)} The definition of `truly continuous' functional translates
+directly to continuity at $0$ in the measure algebra.   But by 327Bc
+this is the same thing as continuity.
+
+\medskip
+
+{\bf (e)} Put (d) and 327Bd together.
+}%end of proof of 327C
+
+\leader{327D}{The Radon-Nikod\'ym theorem}\cmmnt{ We are now ready for
+another look at this theorem.
+
+\medskip
+
+\noindent{\bf Theorem}} Let $(X,\Sigma,\mu)$ be a semi-finite measure
+space, with measure algebra $(\frak A,\bar\mu)$.   Let $L^1$ be the
+space of equivalence classes of real-valued integrable functions on
+$X$\cmmnt{ (\S242)}, and write $M_{\tau}$ for the set of
+completely additive
+real-valued functionals on $\frak A$.   Then there is an ordered linear
+space bijection between $M_{\tau}$ and $L^1$ defined by saying that
+$\bar\nu\in M_{\tau}$ corresponds to $u\in L^1$ if
+
+\Centerline{$\bar\nu a=\int_Ef$ whenever $a=E^{\ssbullet}$ in $\frak A$
+and $f^{\ssbullet}=u$ in $L^1$.}
+
+\proof{{\bf (a)} Given $\bar\nu\in M_{\tau}$, we have a truly continuous
+$\nu:\Sigma\to\Bbb R$ given by setting $\nu E=\bar\nu E^{\ssbullet}$
+for every $E\in\Sigma$ (327Ce).   Now there is an integrable function
+$f$ such that $\nu E=\int_Ef$ for every $E\in\Sigma$ (232E).   There
+is likely to be more than one such function, but any two must be equal
+almost everywhere (232Hd), so the corresponding equivalence class
+$u_{\bar\nu}=f^{\ssbullet}$ is uniquely defined.
+
+\medskip
+
+{\bf (b)} Conversely, given $u\in L^1$, we have a well-defined
+functional $\nu_u$ on $\Sigma$ given by setting
+
+\Centerline{$\nu_u E=\int_Eu=\int_Ef$ whenever $f^{\ssbullet}=u$}
+
+\noindent for every $E\in\Sigma$ (242Ac).   By 232E, $\nu_u$ is
+additive and truly continuous, and of course it is zero when $\mu$
+is zero, so corresponds to a completely additive functional $\bar\nu_u$
+on $\frak A$ (327Ce).
+
+\medskip
+
+{\bf (c)} Clearly the maps $u\mapsto\bar\nu_u$ and
+$\bar\nu\mapsto u_{\bar\nu}$ are
+now the two halves of a one-to-one correspondence.   To see that it is
+linear, we need note only that
+
+\Centerline{$(\bar\nu_u+\bar\nu_v)E^{\ssbullet}
+=\bar\nu_uE^{\ssbullet}+\bar\nu_vE^{\ssbullet}
+=\int_Eu+\int_Ev
+=\int_Eu+v
+=\bar\nu_{u+v}E^{\ssbullet}$}
+
+\noindent for every $E\in\Sigma$, so $\bar\nu_u+\bar\nu_v=\bar\nu_{u+v}$
+for all
+$u$, $v\in L^1$;  and similarly $\bar\nu_{\alpha u}=\alpha\bar\nu_u$
+for $u\in L^1$ and $\alpha\in\Bbb R$.    As for the ordering, given $u$ and
+$v\in L^1$, take integrable $f$, $g$ such that $u=f^{\ssbullet}$ and
+$v=g^{\ssbullet}$;  then
+
+$$\eqalign{\bar\nu_u\le\bar\nu_v
+&\iff\bar\nu_uE^{\ssbullet}\le\bar\nu_vE^{\ssbullet}
+   \text{ for every }E\in\Sigma\cr
+&\iff\int_Eu\le\int_Ev
+   \text{ for every }E\in\Sigma\cr
+&\iff\int_Ef\le\int_Eg
+   \text{ for every }E\in\Sigma\cr
+&\iff f\leae g
+\iff u\le v,\cr}$$
+
+\noindent using 131Ha.
+}%end of proof of 327D
+
+\leader{327E}{}\cmmnt{ I slip in an elementary fact.
+
+\medskip
+
+\noindent}{\bf Proposition} If $(\frak A,\bar\mu)$ is a measure algebra,
+then the functional $a\mapsto\mu_ca=\bar\mu(a\Bcap c)$ is
+completely additive whenever $c\in\frak A$ and $\bar\mu c<\infty$.
+
+\proof{ $\mu_c$ is additive because $\bar\mu$ is additive, and by 321F
+again
+$\inf_{a\in A}\mu_ca=0$ whenever $A$ is non-empty, downwards-directed
+and has infimum $0$.
+}%end of proof of 327E
+
+\leader{327F}{Standard \dvrocolon{extensions}}\cmmnt{ The machinery of
+327D provides the
+basis of a canonical method for extending countably additive functionals
+from closed subalgebras, which we shall need in \S333.
+
+\wheader{327F}{4}{2}{2}{96pt}
+
+\noindent}{\bf Lemma} Let $(\frak A,\bar\mu)$ be a totally finite
+measure algebra and $\frak C\subseteq\frak A$ a closed subalgebra.
+Write $M_{\sigma}(\frak A)$, $M_{\sigma}(\frak C)$ for the spaces of
+countably additive real-valued functionals on $\frak A$, $\frak C$
+respectively.
+
+(a) There is an operator $R:M_{\sigma}(\frak C)\to M_{\sigma}(\frak A)$
+defined by saying that, for every $\nu\in M_{\sigma}(\frak C)$, $R\nu$
+is the unique member of $M_{\sigma}(\frak A)$ such that
+$\Bvalue{R\nu>\alpha\bar\mu}=\Bvalue{\nu>\alpha\bar\mu\restrp\frak C}$
+for every $\alpha\in\Bbb R$.
+
+(b)(i) $R\nu$ extends $\nu$ for every $\nu\in M_{\sigma}(\frak C)$.
+
+\quad(ii) $R$ is linear and order-preserving.
+
+\quad(iii) $R(\bar\mu\restrp\frak C)=\bar\mu$.
+
+\quad(iv) If $\sequencen{\nu_n}$ is a sequence of non-negative
+functionals in $M_{\sigma}(\frak C)$ such that
+$\sum_{n=0}^{\infty}\nu_nc=\bar\mu c$ for every $c\in\frak C$, then
+$\sum_{n=0}^{\infty}(R\nu_n)(a)=\bar\mu a$ for every $a\in\frak A$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remarks} When saying that $\frak C$ is `closed', I mean,
+indifferently, `topologically closed' or `order-closed';  see 323H-323I.
+
+For the notation `$\Bvalue{\nu>\alpha\bar\mu}$' see 326S-326T.
+}%end of comment
+
+\proof{{\bf (a)(i)} By 321J-321K, we may represent $(\frak A,\bar\mu)$
+as the measure algebra of a measure space $(X,\Sigma,\mu)$;  write $\pi$
+for the canonical map from $\Sigma$ to $\frak A$.   Write $\Tau$ for
+$\{E:E\in\Sigma,\,\pi E\in\frak C\}$.   Because $\frak C$ is a
+$\sigma$-subalgebra of $\frak C$ and $\pi$ is a sequentially
+order-continuous Boolean homomorphism, $\Tau$ is a $\sigma$-subalgebra
+of $\Sigma$.
+
+\medskip
+
+\quad{\bf (ii)} For each $\nu\in M_{\sigma}(\frak C)$,
+$\nu\pi:\Tau\to\Bbb R$ is countably additive and zero on
+$\{F:F\in\Tau,\,\mu F=0\}$, so we can choose a $\Tau$-measurable
+function $f_{\nu}:X\to\Bbb R$ such that
+$\int_Ff_{\nu}d(\mu\restrp\Tau)=\nu\pi F$ for every $F\in\Tau$.   Of
+course we can now think of $f_{\nu}$ as a
+$\mu$-integrable function (233B), so we get a corresponding countably
+additive functional $R\nu:\frak A\to\Bbb R$ defined by setting
+$(R\nu)(\pi E)=\int_Ef_{\nu}$ for every $E\in\Sigma$ (327D).   (In this
+context, of course, countably additive functionals are completely
+additive, by 327Bf.)    Note that if $c\in\frak C$ there is an $F\in\Tau$
+such that $F^{\ssbullet}=c$, so that
+
+\Centerline{$(R\nu)(c)=\int_Ff_{\nu}=\nu c$.}
+
+For $\alpha\in\Bbb R$, set $H_{\alpha}=\{x:f_{\nu}(x)>\alpha\}\in\Tau$.
+Then for any $E\in\Sigma$,
+
+\Centerline{$E\subseteq H_{\alpha},\,\mu E>0
+\Longrightarrow\int_Ef_{\nu}>\alpha\mu E$,}
+
+\Centerline{$E\cap H_{\alpha}=\emptyset
+\Longrightarrow\int_Ef_{\nu}\le\alpha\mu E$.}
+
+\noindent Translating into terms of elements of $\frak A$, and setting
+$c_{\alpha}=\pi H_{\alpha}\in\frak C$, we have
+
+\Centerline{$0\ne a\Bsubseteq c_{\alpha}
+\Longrightarrow(R\nu)(a)>\alpha\bar\mu a$,}
+
+\Centerline{$a\Bcap c_{\alpha}=0
+\Longrightarrow(R\nu)(a)\le\alpha\bar\mu a$.}
+
+\noindent So $\Bvalue{R\nu>\alpha\bar\mu}=c_{\alpha}\in\frak C$.   Of
+course we now have
+
+\Centerline{$\nu c=(R\nu)(c)>\alpha\bar\mu c$ when $c\in\frak C$,
+$0\ne c\Bsubseteq c_{\alpha}$,}
+
+\Centerline{$\nu c\le\alpha\bar\mu c$ when $c\in\frak C$,
+$c\Bcap c_{\alpha}=0$,}
+
+\noindent so that $c_{\alpha}$ is also equal to
+$\Bvalue{\nu>\alpha\bar\mu\restrp\frak C}$.
+
+Thus the functional $R\nu$ satisfies the declared formula.
+
+\medskip
+
+\quad{\bf (iii)} To see that $R\nu$ is uniquely defined, observe that if
+$\lambda\in M_{\sigma}(\frak A)$ and
+$\Bvalue{\lambda>\alpha\bar\mu}=\Bvalue{R\nu>\alpha\bar\mu}$ for every
+$\alpha$, then there is a $\Sigma$-measurable function $g:X\to\Bbb R$
+such that $\int_Eg\,d\mu=\lambda\pi E$ for every $E\in\Sigma$;  but in
+this case (just as in (ii)) $\Bvalue{\lambda>\alpha\bar\mu}=\pi
+G_{\alpha}$, where $G_{\alpha}=\{x:g(x)>\alpha\}$, for each $\alpha$.
+So we must have $\pi G_{\alpha}=\pi H_{\alpha}$, that is,
+$\mu(G_{\alpha}\symmdiff H_{\alpha})=0$, for every $\alpha$.
+Accordingly
+
+\Centerline{$\{x:f_{\nu}(x)\ne g(x)\}=\bigcup_{q\in\Bbb Q}G_q\symmdiff
+H_q$}
+
+\noindent is negligible;  $f_{\nu}\eae g$,
+$\int_Ef_{\nu}d\mu=\int_Eg\,d\mu$ for every $E\in\Sigma$ and
+$\lambda=R\nu$.
+
+\medskip
+
+{\bf (b)(i)} I have already noted that $(R\nu)c=\nu c$ for every
+$\nu\in M_{\sigma}(\frak C)$ and $c\in\frak C$.
+
+\medskip
+
+\quad{\bf (ii)} If $\nu=\nu_1+\nu_2$, we must have, in the language of (a)
+above,
+
+\Centerline{$\int_Ff_{\nu}=\nu\pi F=\nu_1\pi F+\nu_2\pi F
+=\int_Ff_{\nu_1}+\int_Ff_{\nu_2}=\int_Ff_{\nu_1}+f_{\nu_2}$}
+
+\noindent for every $F\in\Tau$, so $f_{\nu}\eae f_{\nu_1}+f_{\nu_2}$,
+and we can repeat the formulae
+
+\Centerline{$(R\nu)(\pi E)=\int_Ef_{\nu}=\int_Ef_{\nu_1}+f_{\nu_2}
+=\int_Ef_{\nu_1}+\int_Ef_{\nu_2}=(R\nu_1)(\pi E)+(R\nu_2)(\pi E)$,}
+
+\noindent in a different order, for every $E\in\Sigma$, to see that
+$R\nu=R\nu_1+R\nu_2$.   Similarly, if $\nu\in M_{\sigma}(\frak C)$ and
+$\gamma\in\Bbb R$, $f_{\gamma\nu}\eae\gamma f_{\nu}$ and
+$R(\gamma\nu)=\gamma R\nu$.   If $\nu_1\le\nu_2$ in
+$M_{\sigma}(\frak C)$, then
+
+\Centerline{$\int_Ff_{\nu_1}=\nu_1\pi F\le\nu_2\pi F=\int_Ff_{\nu_2}$}
+
+\noindent for every $F\in\Tau$, so $f_{\nu_1}\leae f_{\nu_2}$
+(131Ha again), and $R\nu_1\le R\nu_2$.
+
+Thus $R$ is linear and order-preserving.
+
+\medskip
+
+\quad{\bf (iii)} If $\nu=\bar\mu\restrp\frak C$ then
+
+\Centerline{$\int_Ff_{\nu}=\nu\pi F=\mu F=\int_F\chi X$}
+
+\noindent for every $F\in\Tau$, so $f_{\nu}\eae\chi X$ and
+$R\nu=\bar\mu$.
+
+\medskip
+
+\quad{\bf (iv)} Now suppose that $\sequencen{\nu_n}$ is a sequence in
+$M_{\sigma}(\frak C)$ such that, for every $c\in\frak C$, $\nu_nc\ge 0$
+for every $n$ and $\sum_{n=0}^{\infty}\nu_nc=\bar\mu c$.  Set
+$g_n=\sum_{i=0}^nf_{\nu_i}$ for each $n$;  then
+$0\leae g_n\leae g_{n+1}\leae\chi X$ for every $n$, and
+
+\Centerline{$\lim_{n\to\infty}\int g_n
+=\lim_{n\to\infty}$$\sum_{i=0}^n\nu_i1=\bar\mu 1$.}
+
+\noindent But this means that, setting $g=\lim_{n\to\infty}g_n$,
+$g\leae\chi X$ and $\int g=\int\chi X$, so that $g\eae\chi X$ and
+
+\Centerline{$\sum_{n=0}^{\infty}(R\nu_i)(\pi E)
+=\lim_{n\to\infty}$$\int_Eg_n=\mu E$}
+
+\noindent for every $E\in\Sigma$.   Thus
+$\sum_{n=0}^{\infty}(R\nu_i)(a)=\bar\mu a$ for every $a\in\frak A$.
+}%end of proof of 327F
+
+\leader{327G}{Definition} In the context of 327F, I will call $R\nu$
+the {\bf standard extension} of $\nu$ to $\frak A$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The point of my insistence on the
+uniqueness of $R$, and on the formula in 327Fa, is that $R\nu$ really is
+defined by the abstract structure $(\frak A,\bar\mu,\frak C,\nu)$, even
+though I have used a proof which runs through the representation of
+$(\frak A,\bar\mu)$ as the measure algebra of a measure space
+$(X,\Sigma,\mu)$.
+}%end of comment
+
+\exercises{\leader{327X}{Basic exercises (a)}
+%\spheader 327Xa  
+Let $(X,\Sigma,\mu)$ be a probability space,
+and $\Tau$ a $\sigma$-subalgebra of $\Sigma$.   Let $(\frak A,\bar\mu)$
+be the measure algebra of $(X,\Sigma,\mu)$.   Show that $\frak
+C=\{F^{\ssbullet}:F\in\Tau\}$ is a closed subalgebra of $\frak A$.
+Identify the spaces $M_{\sigma}(\frak A)$, $M_{\sigma}(\frak C)$ of
+countably additive functionals with $L^1(\mu)$,
+$L^1(\mu\restrp\Tau)$, as in 327D.   Show that the
+conditional expectation operator
+$P:L^1(\mu)\to L^1(\mu\restrp\Tau)$ (242Jd) corresponds to the map
+$\nu\mapsto\nu\restrp\frak C:
+M_{\sigma}(\frak A)\to M_{\sigma}(\frak C)$.
+%327D
+
+\spheader 327Xb Let $(\frak A,\bar\mu)$ be a totally finite measure
+algebra and $\nu:\frak A\to\Bbb R$ a countably additive functional.
+Show that, for any $a\in\frak A$,
+
+\Centerline{$\nu a
+=\int_0^{\infty}\bar\mu(a\Bcap\Bvalue{\nu>\alpha\bar\mu})d\alpha
+-\int_{-\infty}^0
+\bar\mu(a\Bsetminus\Bvalue{\nu>\alpha\bar\mu})d\alpha$,}
+
+\noindent the integrals being taken with respect to Lebesgue measure.
+\Hint{take $(\frak A,\bar\mu)$ to be the measure algebra of
+$(X,\Sigma,\mu)$;  represent $\nu$ by a $\mu$-integrable function $f$;
+apply Fubini's theorem to the sets $\{(x,t):x\in E,\,0\le t<f(x)\}$,
+$\{(x,t):x\in E,\,f(x)\le t\le 0\}$ in $X\times\Bbb R$, where
+$a=E^{\ssbullet}$.}
+%327F
+
+\spheader 327Xc
+Let $(\frak A,\bar\mu)$ and $(\frak B,\bar\mu')$ be
+totally finite measure algebras, and $\pi:\frak A\to\frak B$ a
+measure-preserving Boolean homomorphism.   Let $\frak C$ be a closed
+subalgebra of $\frak A$, and $\nu$ a countably additive functional on
+the closed subalgebra $\pi[\frak C]$ of $\frak B$ (324L).   (i) Show that
+$\nu\pi$ is a countably additive functional on $\frak C$.   (ii) Show
+that if $\tilde\nu$ is the standard extension of $\nu$ to $\frak B$,
+then $\tilde\nu\pi$ is the standard extension of $\nu\pi$ to $\frak A$.
+\Hint{take $\alpha\in\Bbb R$ and set
+$e_0=\Bvalue{\tilde\nu>\alpha\bar\mu'}
+=\Bvalue{\nu>\alpha\bar\mu'\restr\pi[\frak C]}$;  there is a
+$c_0\in\frak C$ such that $\pi c_0=e_0$;  check that
+$c_0=\Bvalue{\tilde\nu\pi>\alpha\bar\mu}
+=\Bvalue{\nu\pi>\alpha\bar\mu\restrp\frak C}$.}
+%327G
+
+\spheader 327Xd Let $(\frak A,\bar\mu)$ be a totally finite measure
+algebra, $\frak C$ a closed subalgebra of $\frak A$ and $\nu:\frak
+C\to\Bbb R$ a countably additive functional with standard extension
+$\tilde\nu:\frak A\to\Bbb R$.   Show that, for any $a\in\frak A$,
+
+\Centerline{$\tilde\nu a
+=\int_0^{\infty}
+   \bar\mu(a\Bcap\Bvalue{\nu>\alpha\bar\mu\restrp\frak C})d\alpha
+ -\int_{-\infty}^0
+   \bar\mu(a\Bsetminus\Bvalue{\nu>\alpha\bar\mu\restrp\frak
+C})d\alpha$.}
+%327G
+
+\spheader 327Xe Let $(\frak A,\bar\mu)$ be a probability algebra, and
+$\frak B$, $\frak C$ stochastically independent closed subalgebras of
+$\frak A$ (definition: 325L).   Let $\nu$ be a countably additive
+functional on $\frak C$, and $\tilde\nu$ its standard extension to
+$\frak A$.   Show that $\tilde\nu(b\Bcap c)=\bar\mu b\cdot\nu c$ for
+every $b\in\frak B$, $c\in\frak C$.
+%327G
+
+\spheader 327Xf Let $(X,\Sigma,\mu)$ be a probability space, and $\Tau$
+a $\sigma$-subalgebra of $\Sigma$.   Let $\nu$ be a probability measure
+with domain $\Tau$ such that $\nu E=0$ whenever $E\in\Tau$ and
+$\mu E=0$.   Show that there is a probability measure $\lambda$ with
+domain $\Sigma$ which extends $\nu$.
+
+\leader{327Y}{Further exercises (a)}
+%\spheader 327Ya
+Let $(\frak A_1,\bar\mu_1)$ and $(\frak A_2,\bar\mu_2)$ be localizable
+measure algebras with localizable measure algebra free product
+$(\frak C,\bar\lambda)$.   Show that if $\nu_1$, $\nu_2$ are completely
+additive
+functionals on $\frak A_1$, $\frak A_2$ respectively, there is a unique
+completely additive functional $\nu:\frak C\to\Bbb R$ such that
+$\nu(a_1\otimes a_2)=\nu_1a_1\cdot\nu_2a_2$ for every $a_1\in\frak A_1$,
+$a_2\in\frak A_2$.   \Hint{253D.}
+%327D
+
+\spheader 327Yb Let $(\frak A,\bar\mu)$ be a totally finite measure
+algebra and $\frak C$ a closed subalgebra;  let
+$R:M_{\sigma}(\frak C)\to M_{\sigma}(\frak A)$ be the standard extension
+operator (327G).
+Show (i) that $R$ is order-continuous (ii) that $R(\nu^+)=(R\nu)^+$,
+$\|R\nu\|=\|\nu\|$ for every $\nu\in M_{\sigma}(\frak C)$, defining
+$\nu^+$ and $\|\nu\|$ as in 326Yd.
+%327G
+
+\spheader 327Yc Let $(\frak A,\bar\mu)$ be a totally finite measure
+algebra and $\frak C$ a closed subalgebra of $\frak A$.   For a
+countably additive functional $\nu$ on $\frak C$ write $\tilde\nu$ for
+its standard extension to $\frak A$.   Show that if $\nu$,
+$\sequencen{\nu_n}$ are countably additive functionals on $\frak C$ and
+$\lim_{n\to\infty}\nu_nc=\nu c$ for every $c\in\frak C$, then
+$\lim_{n\to\infty}\tilde\nu_na=\tilde\nu a$ for every $a\in\frak A$.
+({\it Hint\/}:  use ideas from \S\S246-247, as well as from 327F and
+326Yo.)
+%327G
+}%end of exercises
+
+\cmmnt{
+\Notesheader{327}
+When we come to measure algebras, it is the completely additive
+functionals which fit most naturally into the topological theory
+(327Bd);   they correspond to the `truly
+continuous' functionals which I discussed in \S232 (327Cd), and
+therefore to the Radon-Nikod\'ym theorem (327D).   I will return to some
+of these questions in Chapter 36.    I myself regard the form
+here as the best expression of the essence of the Radon-Nikod\'ym
+theorem, if not the one most commonly applied.
+
+The concept of `standard extension' of a countably additive functional
+(or, as we could equally well say, of a completely additive functional,
+since in the context of 327F the two coincide) is in a sense dual to the
+concept of `conditional expectation'.   If
+$(X,\Sigma,\mu)$ is a probability space and $\Tau$ is a
+$\sigma$-subalgebra of $\Sigma$, then we have a corresponding closed
+subalgebra $\frak C$ of the measure algebra $(\frak A,\bar\mu)$ of
+$\mu$, and identifications between the spaces $M_{\sigma}(\frak A)$,
+$M_{\sigma}(\frak C)$ of countably additive functionals and the spaces
+$L^1(\mu)$, $L^1(\mu\restrp\Tau)$.   Now we have a natural
+embedding $S$ of
+$L^1(\mu\restrp\Tau)$ as a subspace of $L^1(\mu)$ (242Jb), and a
+natural restriction map from $M_{\sigma}(\frak A)$ to
+$M_{\sigma}(\frak C)$.   These give rise to corresponding operators
+between the opposite
+members of each pair;  the standard extension operator $R$ of 327F-327G,
+and the conditional expectation operator $P$ of 242Jd.    (See 327Xa.)
+The fundamental fact
+
+\Centerline{$PSv=v$ for every $v\in L^1(\mu\restrp\Tau)$}
+
+\noindent (242Jg) is matched by the fact that
+
+\Centerline{$R\nu\restrp\frak C=\nu$ for every
+$\nu\in M_{\sigma}(\frak C)$.}
+
+\noindent The further identification of $R\nu$ in terms of integrals
+$\int\bar\mu(a\Bcap\Bvalue{\nu>\alpha\bar\mu})d\alpha$ (327Xd) is
+relatively inessential, but is
+striking, and perhaps makes it easier to believe that $R$ is truly
+`standard' in the abstract contexts which will arise in \S333 below.
+It is also useful in such calculations as 327Xe.
+
+The isomorphisms between $M_{\tau}$ spaces and $L^1$ spaces described
+here mean that any of the concepts involving $L^1$ spaces discussed in
+Chapter 24 can be applied to $M_{\tau}$ spaces, at least in the case of
+measure algebras.   In fact, as I will show in Chapter 36, there is much
+more to be said here;  the space of bounded additive functionals on a
+Boolean algebra is already an $L^1$ space in an abstract sense, and
+ideas such as `uniform integrability' are relevant and significant
+there, as well as in the spaces of countably additive and
+completely additive functionals.   I
+hope that 326Yd, 326Ym-326Yn, 326Yp-326Yq and 327Yb will provide some
+hints to be going on with for the moment.
+}%end of comment
+
+\frnewpage
+

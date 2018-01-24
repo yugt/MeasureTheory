@@ -1,0 +1,675 @@
+\frfilename{mt115.tex}
+\versiondate{21.7.05}
+\copyrightdate{1994}
+
+\def\chaptername{Measure spaces}
+\def\sectionname{Lebesgue measure on $\BbbR^r$}
+
+
+\newsection{115}
+\def\headlinesectionname{Lebesgue measure on $\eightBbb R^r$}
+
+Following the very abstract ideas of \S\S111-113, there is an urgent
+need for non-trivial examples of measure spaces.   By far the most
+important examples are the Euclidean spaces $\BbbR^r$ with Lebesgue
+measure, and I now
+proceed to a definition of these measures (115A-115E), with a few of
+their basic properties.   Except at one point (in the proof of the
+fundamental lemma 115B) this section does not rely essentially on \S114;
+but nevertheless most students encountering Lebesgue measure for the
+first time will find it easier to work through the one-dimensional case
+carefully before embarking on the multi-dimensional case.
+
+\leader{115A}{Definitions (a)} For practically the whole of this section
+(the exception is the proof of Lemma 115B) $r$ will denote a fixed
+integer greater than or equal to $1$.    I will use Roman letters $a$,
+$b$, $c$, $d$, $x$, $y$ to denote members of $\BbbR^r$, and Greek letters for their coordinates, so that $a=(\alpha_1,\ldots,\alpha_r)$,
+$b=(\beta_1,\ldots,\beta_r)$, $x=(\xi_1,\ldots,\xi_r)$.
+
+\header{115Ab}{\bf (b)} For the purposes of this section, a {\bf
+half-open interval} in $\BbbR^r$ is a set of the form
+$\coint{a,b}=\{x:\alpha_i\le \xi_i<\beta_i\Forall i\le
+r\}$, where $a$, $b\in\BbbR^r$.
+Observe that I allow $\beta_i\le \alpha_i$ in this formula;  if this
+happens for any $i$, then $\coint{a,b}=\emptyset$.
+
+
+
+\header{115Ac}{\bf (c)} If $I=\coint{a,b}\subseteq \BbbR^r$ is a
+half-open interval, then either
+$I=\emptyset$ or
+
+\Centerline{$\alpha_i=\inf\{\xi_i:x\in I\}$,
+\quad$\beta_i=\sup\{\xi_i:x\in I\}$}
+
+\noindent for every $i\le r$;  in the latter case, the expression of $I$
+as a half-open interval is unique.
+We may therefore define the {\bf $r$-dimensional volume} $\lambda I$ of
+a half-open interval $I$ by setting
+
+\Centerline{$\lambda\emptyset = 0$,
+\quad $\lambda\coint{a,b}=\prod_{i=1}^r\beta_i-\alpha_i$ if
+$\alpha_i<\beta_i$ for every $i$.}
+
+
+
+\leader{115B}{Lemma} If $I\subseteq\BbbR^r$ is a half-open interval and
+$\langle I_j\rangle_{j\in\Bbb N}$ is a sequence of half-open intervals
+covering $I$, then $\lambda I\le\sum_{j=0}^{\infty}\lambda I_j$.
+
+\proof{ The proof is by induction on $r$.   For this proof only,
+therefore, I write $\lambda_r$ for the function defined on the half-open
+intervals of $\BbbR^r$ by the formula of 115Ac.
+
+\medskip
+
+{\bf (a)} The argument for $r=1$, starting the induction, is similar to
+the inductive step;  but rather than establish a suitable convention to
+set up a trivial case $r=0$, or ask you to work out the details yourself,
+I refer you to 114B, which is exactly the case $r=1$.
+
+\medskip
+
+{\bf (b)} For the inductive step to $r+1$, where $r\ge 1$, take a
+half-open interval $I\subseteq\BbbR^{r+1}$ and $\sequence{j}{I_j}$ a
+sequence of half-open intervals covering $I$.   If
+$I=\emptyset$ then of course $\lambda_{r+1}
+I=0\le\sum_{j=0}^{\infty}\lambda_{r+1}
+I_j$.   Otherwise, express
+$I$ as $\coint{a,b}$, where $\alpha_i<\beta_i$ for $i\le r+1$, and each
+$I_j$ as $\coint{a^{(j)},b^{(j)}}$.   Write
+$\zeta=\prod_{i=1}^r\beta_i-\alpha_i$, so that
+$\lambda_{r+1}I=\zeta(\beta_{r+1}-\alpha_{r+1})$.   Fix $\epsilon>0$.
+For each $\xi\in \Bbb R$ let $H_{\xi}$ be the
+half-space $\{x:\xi_{r+1}<\xi\}$, and consider the set
+
+\Centerline{$A=\{\xi:\alpha_{r+1}\le \xi\le \beta_{r+1},\,
+\zeta(\xi-\alpha_{r+1})
+\le(1+\epsilon)\sum_{j=0}^{\infty}\lambda_{r+1}(I_j\cap H_{\xi})\}$.}
+
+\noindent (Note that
+$I_j\cap H_{\xi}
+=\hbox{$\bigl[$}a^{(j)},\tilde b^{(j)}\hbox{$\bigr[$}$,
+where $\tilde\beta^{(j)}_i=\beta^{(j)}_i$ for $i\le r$ and
+$\tilde\beta^{(j)}_{r+1}=\min(\beta^{(j)}_{r+1},\xi)$, so
+$\lambda_{r+1}(I_j\cap H_{\xi})$ is always defined.)
+We have $\alpha_{r+1}\in A$, because
+
+\Centerline{$\zeta(\alpha_{r+1}-\alpha_{r+1})=0
+\le(1+\epsilon)\sum_{j=0}^{\infty}\lambda_{r+1}(I_j\cap H_{\alpha_{r+1}})$,}
+
+\noindent and of course $A\subseteq[\alpha_{r+1},\beta_{r+1}]$, so
+$\gamma=\sup A$ is defined, and
+belongs to $[\alpha_{r+1},\beta_{r+1}]$.
+
+\medskip
+
+{\bf (c)} We find now that $\gamma\in A$.
+
+$$\eqalign{\Prf\ \zeta(\gamma-\alpha_{r+1})
+&=\sup_{\xi\in A}\zeta(\xi-\alpha_{r+1})\cr
+&\le(1+\epsilon)\sup_{\xi\in A}
+  \sum_{j=0}^{\infty}\lambda_{r+1}(I_j\cap H_{\xi})
+\le(1+\epsilon)\sum_{j=0}^{\infty}\lambda_{r+1}(I_j\cap H_{\gamma}).
+\text{ \Qed}\cr}$$
+
+\wheader{115B}{6}{2}{2}{12pt}
+
+{\bf (d)} \Quer\ Suppose, if possible, that $\gamma<\beta_{r+1}$.   Then
+$\gamma\in\coint{\alpha_{r+1},\beta_{r+1}}$.   Set
+
+\Centerline{$J=\{x:x\in\BbbR^r,\,(x,\gamma)\in I\}
+=\coint{a',b'}$,}
+
+\noindent where $a'=(\alpha_1,\ldots,\alpha_r)$,
+$b'=(\beta_1,\ldots,\beta_r)$, and for each $j\in\Bbb N$ set
+
+\Centerline{$J_j=\{x:x\in\BbbR^r,\,(x,\gamma)\in I_j\}$.}
+
+\noindent Because $I\subseteq\bigcup_{j\in\Bbb N}I_j$, we must have
+$J\subseteq\bigcup_{j\in\Bbb N}J_j$.   Of course both $J$ and the $J_j$
+are half-open intervals in $\BbbR^r$.    (This is one of the places
+where it is helpful to count the empty set as a half-open interval.)
+By the inductive hypothesis,
+$\zeta=\lambda_rJ\le\sum_{j=0}^{\infty}\lambda_rJ_j$.   As $\zeta>0$,
+there is an $m\in\Bbb N$ such that
+$\zeta\le(1+\epsilon)\sum_{j=0}^m\lambda_rJ_j$.
+Now for each $j\le m$, either $J_j=\emptyset$ or
+$\alpha^{(j)}_{r+1}\le\gamma<\beta^{(j)}_{r+1}$;  set
+
+\Centerline{$\xi=\min(\{\beta_{r+1}\}\cup\{\beta^{(j)}_{r+1}:j\le
+m,\,J_j\ne\emptyset\})>\gamma$.}
+
+\noindent Then
+
+\Centerline{$\lambda_{r+1}(I_j\cap H_{\xi})
+\ge\lambda_{r+1}(I_j\cap H_{\gamma})+(\xi-\gamma)\lambda_rJ_j$}
+
+\noindent for every $j\le m$ such that $J_j$ is non-empty, and therefore
+for every $j$.   Consequently
+
+$$\eqalign{\zeta(\xi-\alpha_{r+1})
+&=\zeta(\gamma-\alpha_{r+1})+\zeta(\xi-\gamma)\cr
+&\le(1+\epsilon)\sum_{j=0}^{\infty}\lambda_{r+1}(I_j\cap H_{\gamma})
++(1+\epsilon)(\xi-\gamma)\sum_{j=0}^m\lambda_rJ_j\cr
+&\le(1+\epsilon)\sum_{j=m+1}^{\infty}\lambda_{r+1}(I_j\cap H_{\gamma})
++(1+\epsilon)\sum_{j=0}^m\lambda_{r+1}(I_j\cap H_{\xi})\cr
+&\le(1+\epsilon)\sum_{j=0}^{\infty}\lambda_{r+1}(I_j\cap H_{\xi}),\cr}$$
+
+\noindent and $\xi\in A$, which is impossible.\ \Bang
+
+\medskip
+
+{\bf (e)} We conclude that $\gamma=\beta_{r+1}$, so that
+$\beta_{r+1}\in A$ and
+
+\Centerline{$\lambda_{r+1}I=\zeta(\beta_{r+1}-\alpha_{r+1})
+\le(1+\epsilon)\sum_{j=0}^n\lambda_{r+1}(I_j\cap H_{\beta_{r+1}})
+\le(1+\epsilon)\sum_{j=0}^{\infty}\lambda_{r+1}I_j$.}
+
+\noindent As $\epsilon$ is arbitrary,
+
+\Centerline{$\lambda_{r+1}I\le\sum_{j=0}^{\infty}\lambda_{r+1}I_j$,}
+
+\noindent as claimed.
+}%end of proof of 115B
+
+\cmmnt{\medskip
+\noindent{\bf Remark} This proof is hard work, and not everybody makes
+such a
+\ifUSEnglish{large}\else\fi
+mouthful of it.   What is perhaps a more conventional approach is
+sketched in 115Ya, using the Heine-Borel
+theorem to reduce the problem to one of
+finite covers, and then (very often) saying that it is trivial.   I do
+not use this method, partly because we do not need the Heine-Borel
+theorem elsewhere in this volume (though we shall certainly need it in
+Volume 2, and I write out a proof in 2A2F), and partly because I do not
+agree that the lemma is trivial when we have a finite sequence
+$I_0,\ldots,I_m$ covering $I$.   I invite you to consider this for
+yourself.   It seems to me that any rigorous argument must involve an
+induction on the dimension, which is what I provide here.   Of course
+dealing throughout with an infinite sequence makes it a little harder to
+keep track of what we are doing, and I note that in fact there is a
+crucial step which necessitates truncation of the sequence;  I mean the
+formula
+
+\Centerline{$\xi=\min(\{\beta_{r+1}\}\cup\{\beta^{(j)}_{r+1}:
+                                          j\le m,\,J_j\ne\emptyset\})$}
+
+\noindent in part (d) of the proof.   We certainly cannot take
+$\xi=\inf\{\beta^{(j)}_{r+1}:j\in\Bbb N,\,J_j\ne\emptyset\}$, since this
+is very likely to be equal to $\gamma$.   Accordingly I need some excuse
+for truncating, which is in the sentence
+
+\Centerline{As $\zeta>0$, there is an $m\in\Bbb N$ such that
+$\zeta\le(1+\epsilon)\sum_{j=0}^m\lambda_rJ_j$.}
+
+\noindent And that step is the reason for introducing the slack
+$\epsilon$ into the definition of the set $A$ at the beginning of the
+proof.   Apart from this modification, the structure of the argument is
+supposed to reflect that of 114B;  so I hope you can use the simpler
+formulae of 114B as a guide here.
+}%end of comment
+
+\leader{115C}{Definition} Now, and for the rest of this section, define
+$\theta:\Cal P(\BbbR^r)\to[0,\infty]$ by
+writing
+
+$$\eqalign{\theta A=\inf\{\sum_{j=0}^{\infty}\lambda I_j:\langle
+I_j\rangle_{j\in\Bbb N}
+\text{ is a sequence of }&\text{half-open intervals}\cr
+&\text{such that }
+A\subseteq\bigcup_{j\in\Bbb N}I_j\}.\cr}$$
+
+
+\cmmnt{\noindent Observe that every $A$ can be covered by some sequence
+of half-open intervals -- e.g.,
+$A\subseteq\bigcup_{n\in\Bbb N}\coint{-\tbf{n},\tbf{n}}$, writing
+$\tbf{n}=(n,n,\ldots,n)\in\BbbR^r$;  so that if we interpret
+the sums in $[0,\infty]$, as in 112Bc above, we always have a non-empty
+set to take the infimum of, and $\theta A$ is always defined in
+$[0,\infty]$.
+}%end of comment
+
+This function $\theta$ is called {\bf Lebesgue outer measure} on
+$\BbbR^{r}$;  the phrase is justified by (a) of the next proposition.
+
+
+\leader{115D}{Proposition} (a) $\theta$ is an outer measure on
+$\BbbR^r$.
+
+(b) $\theta I=\lambda I$ for every half-open interval
+$I\subseteq\BbbR^r$.
+
+\proof{{\bf (a)(i)} $\theta$ takes values in $[0,\infty]$
+because every $\theta A$ is the infimum of a non-empty subset of
+$[0,\infty]$.
+
+\medskip
+
+\quad{\bf (ii)} $\theta\emptyset=0$ because (for instance) if we set
+$I_j=\emptyset$ for every $j$, then every $I_j$ is a half-open interval
+(on the convention I am using),
+$\emptyset\subseteq\bigcup_{j\in\Bbb N}I_j$
+and $\sum_{j=0}^{\infty}\lambda I_j=0$.
+
+\medskip
+
+\quad{\bf (iii)} If $A\subseteq B$ then whenever
+$B\subseteq\bigcup_{j\in\Bbb N}I_j$ we have
+$A\subseteq\bigcup_{j\in\Bbb N}I_j$, so $\theta A$ is the infimum of a set at least as large as that
+involved in the definition of $\theta B$, and $\theta A\le\theta B$.
+
+\medskip
+
+\quad{\bf (iv)} Now suppose that $\langle A_n\rangle_{n\in\Bbb N}$ is a
+sequence of subsets of $\BbbR^r$, with union $A$.   For any
+$\epsilon>0$,
+we can choose, for each $n\in\Bbb N$, a sequence $\langle
+I_{nj}\rangle_{j\in\Bbb N}$ of half-open intervals such that
+$A_n\subseteq\bigcup_{j\in\Bbb N}I_{nj}$ and
+$\sum_{j=0}^{\infty}\lambda I_{nj}\le\theta A_n+2^{-n}\epsilon$.
+(You should perhaps check that this formulation is valid whether
+$\theta A_n$
+is finite or infinite.)   Now by 111F(b-ii) there is a
+bijection from $\Bbb N$ to $\Bbb N\times\Bbb N$;  express
+this in the form $m\mapsto(k_m,l_m)$.   Then we find that
+
+\Centerline{$\sum_{m=0}^{\infty}\lambda I_{k_m,l_m}
+=\sum_{n=0}^{\infty}\sum_{j=0}^{\infty}\lambda I_{nj}$.}
+
+\noindent (To see this, note that because every $\lambda I_{nj}$ is
+greater than or equal to $0$, and $m\mapsto(k_m,l_m)$ is a bijection,
+both sums are equal to
+
+\Centerline{$\sup_{K\subseteq\Bbb N\times\Bbb N\text{ is finite}}
+\sum_{(n,j)\in K}\lambda I_{nj}$.}
+
+\noindent Or look at the argument written out in 114D.)   But now
+$\langle I_{k_m,l_m}\rangle_{m\in\Bbb N}$ is a
+sequence of half-open intervals and
+
+\Centerline{$A=\bigcup_{n\in\Bbb N}A_n
+\subseteq\bigcup_{n\in\Bbb N}\bigcup_{j\in\Bbb N}I_{nj}
+=\bigcup_{m\in\Bbb N}I_{k_m,l_m}$,}
+
+\noindent so
+
+$$\eqalign{\theta A
+&\le\sum_{m=0}^{\infty}\lambda I_{k_m,l_m}
+=\sum_{n=0}^{\infty}\sum_{j=0}^{\infty}\lambda I_{nj}\cr
+&\le\sum_{n=0}^{\infty}(\theta A_n+2^{-n}\epsilon)
+=\sum_{n=0}^{\infty}\theta A_n+\sum_{n=0}^{\infty}2^{-n}\epsilon
+=\sum_{n=0}^{\infty}\theta A_n+2\epsilon.\cr}$$
+
+\noindent Because $\epsilon$ is arbitrary, $\theta
+A\le\sum_{n=0}^{\infty}\theta A_n$ (again, you should check that this
+is valid whether or not $\sum_{n=0}^{\infty}\theta A_n$ is finite).
+As $\langle A_n\rangle_{n\in\Bbb N}$ is arbitrary, $\theta$ is an outer
+measure.
+
+\medskip
+
+{\bf (b)} Because we can always take $I_0=I$, $I_j=\emptyset$ for
+$j\ge 1$, to obtain a sequence of half-open intervals covering $I$ with
+$\sum_{j=0}^{\infty}\lambda I_j=\lambda I$, we surely have $\theta
+I\le\lambda I$.   For the reverse inequality, use 115B;  if
+$I\subseteq\bigcup_{j\in\Bbb N}I_j$, then $\lambda
+I\le\sum_{j=0}^{\infty}\lambda I_j$;   as
+$\langle I_j\rangle_{j\in\Bbb N}$ is arbitrary, $\theta I\ge\lambda I$ and $\theta I=\lambda I$, as
+required.
+}%end of proof of 115D
+
+
+\leader{115E}{Definition} Because Lebesgue outer
+measure\cmmnt{ (115C)} is\cmmnt{ indeed}
+an outer measure\cmmnt{ (115Da)},
+we may use it to construct a measure $\mu$, using \Caratheodory's
+method\cmmnt{ (113C)}.
+This measure is {\bf Lebesgue measure on $\BbbR^r$}.
+The sets $E$ for which $\mu E$ is defined\cmmnt{ (that is, for
+which $\theta(A\cap E)+\theta(A\setminus E)=\theta A$ for every
+$A\subseteq\BbbR^r$)} are called {\bf Lebesgue measurable}.
+
+Sets which are negligible for $\mu$ are called {\bf Lebesgue
+negligible}\cmmnt{;  note that these are just the sets $A$ for which
+$\theta A=0$, and are all Lebesgue measurable (113Xa)}.
+
+
+\leader{115F}{Lemma} If $i\le r$ and $\xi\in\Bbb R$, then
+$H_{i\xi}=\{y:\eta_i<\xi\}$ is Lebesgue measurable.
+
+\proof{ Write $H$ for $H_{i\xi}$.
+
+\medskip
+
+{\bf (a)} The point is that $\lambda I=\lambda(I\cap
+H)+\lambda(I\setminus H)$ for every half-open interval
+$I\subseteq\BbbR^r$.   \Prf\ If either $I\subseteq H$ or $I\cap
+H=\emptyset$, this is trivial.   Otherwise, $I$ must be of the form
+$\coint{a,b}$, where $\alpha_i<\xi<\beta_i$.   Now $I\cap H=\coint{a,x}$
+and
+$I\setminus H=\coint{y,b}$, where $\xi_j=\beta_j$ for $j\ne i$,
+$\xi_i=\xi$, $\eta_j=\alpha_j$ for $j\ne i$, $\eta_i=\xi$, so both are
+half-open intervals, and
+
+$$\eqalign{\lambda(I\cap H)+\lambda(I\setminus H)
+&=(\xi-\alpha_i)\prod_{j\ne i}(\beta_j-\alpha_j)
++(\beta_i-\xi)\prod_{j\ne i}(\beta_j-\alpha_j)\cr
+&=(\beta_i-\alpha_i)\prod_{j\ne i}(\beta_j-\alpha_j)
+=\lambda I.\text{ \Qed}\cr}$$
+
+\medskip
+
+{\bf (b)} Now suppose that $A$ is any subset of $\BbbR^r$, and
+$\epsilon>0$.   Then we can find a sequence $\langle
+I_j\rangle_{j\in\Bbb N}$
+of half-open intervals such that $A\subseteq\bigcup_{j\in\Bbb N}I_j$ and
+$\sum_{j=0}^{\infty}\lambda I_j\le\theta A+\epsilon$.   In this case,
+$\langle I_j\cap H\rangle_{j\in\Bbb N}$ amd
+$\langle I_j\setminus H\rangle_{j\in\Bbb N}$ are sequences of half-open
+intervals, $A\cap H\subseteq\bigcup_{j\in\Bbb N}(I_j\cap H)$ and
+$A\setminus H\subseteq\bigcup_{j\in\Bbb N}(I_j\setminus H)$.   So
+
+$$\eqalign{\theta(A\cap H)+\theta(A\setminus H)
+&\le\sum_{j=0}^{\infty}\lambda(I_j\cap
+H)+\sum_{j=0}^{\infty}\lambda(I_j\setminus H) \cr
+&=\sum_{j=0}^{\infty}\lambda I_j
+\le\theta A+\epsilon.\cr}$$
+
+\noindent Because $\epsilon$ is arbitrary,
+$\theta(A\cap H)+\theta(A\setminus H)\le\theta A$;
+because $A$ is arbitrary, $H$ is measurable, as remarked in 113D.
+}%end of proof of 115F
+
+\leader{115G}{Proposition} All Borel subsets of $\BbbR^r$ are Lebesgue
+measurable;  in particular, all open sets, and all sets of the following
+classes, together with countable unions of them:
+
+\inset{open intervals
+$\ooint{a,b}=\{x:x\in\BbbR^r,\,
+\alpha_i<\xi_i<\beta_i\Forall i\le r\}$,
+where $-\infty\le\alpha_i<\beta_i\le\infty$ for each $i\le r$;
+
+closed intervals $[a,b]
+=\{x:x\in\BbbR^r,\,\alpha_i\le\xi_i\le\beta_i
+  \Forall i\le r\}$, where
+$-\infty<\alpha_i<\beta_i<\infty$ for each $i\le r$.}
+
+\noindent We have\cmmnt{ moreover} the following formula for the
+measures of such sets, writing $\mu$ for Lebesgue measure:
+
+\Centerline{$\mu\ooint{a,b}=\mu[a,b]=\prod_{i=1}^r\beta_i-\alpha_i$}
+
+\noindent whenever $a\le b$ in $\BbbR^r$.   Consequently every
+countable subset of $\BbbR^r$ is measurable and of zero measure.
+
+\proof{{\bf (a)} I show first that all open subsets of $\BbbR^r$
+are measurable.   \Prf\ Let $G\subseteq\BbbR^r$ be open.   Let
+$K\subseteq\BbbQ^r\times\BbbQ^r$ be the set of pairs $(c,d)$ of
+$r$-tuples of rational
+numbers such that $\coint{c,d}\subseteq G$.   Now by the remarks in
+111E-111F
+-- specifically, 111Eb, showing that $\Bbb Q$ is countable, 111F(b-iii),
+showing that the product of two countable sets is countable, and
+111F(b-i), showing that subsets of countable sets are countable -- we
+see, inducing
+on $r$, that $\BbbQ^r$ is countable, and that $K$
+is countable.   Also, every $\coint{c,d}$ is measurable, being
+
+\Centerline{$\bigcap_{i\le r}H_{i\delta_i}\setminus H_{i\gamma_i}$,}
+
+\noindent in the language of 115F, if $c=(\gamma_1,\ldots,\gamma_r)$ and
+$d=(\delta_1,\ldots,\delta_r)$.   So, by 111Fa,
+$G'=\bigcup_{(r,s)\in K}\coint{r,s}$ is measurable.
+
+By the definition of $K$, $G'\subseteq G$.   On the other hand, if
+$x\in G$, there is an $\epsilon>0$ such that $y\in G$ whenever
+$\|y-x\|<\epsilon$.
+Now for each $i$ there are rational numbers $\gamma_i$, $\delta_i$ such
+that $\gamma_i\le\xi_i<\delta_i$ and
+$\delta_i-\gamma_i\le\Bover{\epsilon}{\sqrt r}$.   If $y\in\coint{c,d}$
+then $|\eta_i-\xi_i|<\Bover{\epsilon}{\sqrt r}$ for every $i$ so
+$\|y-x\|<\epsilon$ and $y\in G$.   Accordingly $(c,d)\in K$ and
+$x\in\coint{c,d}\subseteq G'$.
+As $x$ is arbitrary, $G=G'$ and $G$ is measurable.\ \Qed
+
+\medskip
+
+{\bf (b)} Now the family $\Sigma$ of Lebesgue measurable sets is a
+$\sigma$-algebra of subsets of $\BbbR^r$ including the family of open
+sets, so must contain every Borel set, by the definition of Borel set
+(111G).
+
+\medskip
+
+{\bf (c)} Of the types of interval considered, all the open intervals
+are actually open sets, so are surely Borel.   A closed interval $[a,b]$ is expressible as the intersection
+$\bigcap_{n\in\Bbb N}\ooint{a-2^{-n}\tbf{1},b+2^{-n}\tbf{1}}$ of a sequence of open intervals, so is Borel.
+
+\medskip
+
+{\bf (d)} To compute the measures, we already know from 115Db that
+$\mu\coint{a,b}=\prod_{i=1}^r\beta_i-\alpha_i$ if $a\le b$.   For the
+other types of bounded
+interval, it is enough to note that if $-\infty<\alpha_i<\beta_i<\infty$
+for every $i$, then
+
+
+\Centerline{$\coint{a+\epsilon\tbf{1},b}
+\subseteq\ooint{a,b}\subseteq[a,b]\subseteq
+\coint{a,b+\epsilon\tbf{1}}$}
+
+\noindent whenever $\epsilon>0$ in $\Bbb R$.   So
+
+\Centerline{$\mu\ooint{a,b}\le\mu[a,b]
+\le\inf_{\epsilon>0}\mu\coint{a,b+\epsilon\tbf{1}}
+=\inf_{\epsilon>0}\prod_{i=1}^r(\beta_i-\alpha_1+\epsilon)
+=\prod_{i=1}^r\beta_i-\alpha_i$.}
+
+\noindent If $\beta_i=\alpha_i$ for any $i$, then we must have
+
+\Centerline{$\mu\ooint{a,b}=\mu[a,b]=
+0=\prod_{i=1}^r\beta_i-\alpha_i$.}
+
+\noindent If $\beta_i>\alpha_i$ for every $i$, then set
+$\epsilon_0=\min_{i\le r}\beta_i-\alpha_i>0$;  then
+
+$$\eqalign{\mu[a,b]\ge\mu\ooint{a,b}
+&\ge\sup_{0<\epsilon\le\epsilon_0}\mu\coint{a+\epsilon\tbf{1},b}\cr
+&=\sup_{0<\epsilon\le\epsilon_0}
+  \prod_{i=1}^r(\beta_i-\alpha_i-\epsilon)
+=\prod_{i=1}^r\beta_i-\alpha_i.\cr}$$
+
+\noindent So in this case
+
+\Centerline{$\prod_{i=1}^r\beta_i-\alpha_i\le\mu\ooint{a,b}
+\le\mu[a,b]\le\prod_{i=1}^r\beta_i-\alpha_i$}
+
+\noindent and
+
+\Centerline{$\mu\ooint{a,b}
+=\mu[a,b]=\prod_{i=1}^r\beta_i-\alpha_i$.}
+
+\medskip
+
+{\bf (e)} By (d), $\mu\{a\}=\mu[a,a]=0$ for every $a$.   If
+$A\subseteq\BbbR^r$ is countable, it is either empty or expressible as
+$\{a_n:n\in\Bbb N\}$.   In the former case $\mu A=\mu\emptyset=0$;  in
+the latter, $A=\bigcup_{n\in\Bbb N}\{a_n\}$ is Borel and $\mu
+A\le\sum_{n=0}^{\infty}\mu\{a_n\}=0$.
+}%end of proof of 115G
+
+\exercises{
+\leader{115X}{Basic exercises}  If you skipped \S114, you should now
+return to 114X and assure yourself that you can do the exercises there as
+well as those below.
+
+\header{115Xa}{\bf (a)} Show that if $I$, $J$ are half-open intervals in
+$\BbbR^r$, then $I\setminus J$ is expressible as the union of at most
+$2r$
+disjoint half-open intervals.   Hence show that (i) any finite union of
+half-open intervals is expressible as a finite union of disjoint
+half-open intervals (ii) any countable union of half-open intervals is
+expressible as the union of a disjoint sequence of half-open intervals.
+
+\sqheader 115Xb Write $\theta$ for Lebesgue outer measure, $\mu$
+for Lebesgue
+measure on $\BbbR^r$.   Show that $\theta A=\inf\{\mu E:E$ is Lebesgue
+measurable, $A\subseteq E\}$ for every $A\subseteq\BbbR^r$.
+\Hint{consider sets $E$ of the form $\bigcup_{j\in\Bbb N}I_j$, where
+$\sequence{j}{I_j}$ is a sequence of half-open intervals.}
+
+\header{115Xc}{\bf (c)} Let $E\subseteq\BbbR^r$ be a set of finite
+measure for Lebesgue
+measure $\mu$.   Show that for every $\epsilon>0$ there is a disjoint
+family $I_0,\ldots,I_n$ of half-open intervals such that
+$\mu(E\symmdiff\bigcup_{j\le n}I_j)\le\epsilon$.   \Hint{let
+$\langle J_j\rangle_{j\in\Bbb N}$ be a sequence of half-open intervals
+such that $E\subseteq\bigcup_{j\in\Bbb N}J_j$ and
+$\sum_{j=0}^{\infty}\mu J_j\le\mu E+\bover{1}{2}\epsilon$.   Now take a
+suitably large $m$ and express $\bigcup_{j\le m}J_j$ as a disjoint union
+of half-open intervals.}
+
+\sqheader 115Xd Suppose that $c\in\BbbR^r$.   (i) Show that
+$\theta(A+c)=\theta A$ for every $A\subseteq\BbbR^r$, where
+$A+c=\{x+c:x\in A\}$.   (ii)
+Show that if $E\subseteq \BbbR^r$ is measurable
+so is $E+c$, and that in this case $\mu(E+c)=\mu E$.
+
+\header{115Xe}{\bf (e)} Suppose that $\gamma>0$.   (i) Show that
+$\theta(\gamma A)=\gamma^r\theta A$ for every $A\subseteq\BbbR^r$, where
+$\gamma A=\{\gamma x:x\in A\}$.   (ii) Show that if $E\subseteq \BbbR^r$ is
+measurable so is $\gamma E$, and that in this case
+$\mu(\gamma E)=\gamma^r\mu E$
+
+\vleader{48pt}{115Y}{Further exercises (a)}
+%\spheader 115Ya
+(i) Suppose that $M$ is a strictly positive integer and $k_i$, $l_i$ are
+integers for $1\le i\le r$.   Set $\alpha_i=k_i/M$ and
+$\beta_i=l_i/M$ for each $i$, and $I=\coint{a,b}$.   Show that
+$\lambda I=\#(J)/M^r$, where $J$ is $\{z:z\in\BbbZ^r$, $\bover1Mz\in I\}$.
+(ii) Show that if a
+half-open interval $I\subseteq\BbbR^r$ is covered by a {\it finite}
+sequence $I_0,\ldots,I_m$ of half-open intervals, and all the coordinates
+involved in specifying the intervals $I$, $I_0,\ldots,I_m$ are rational,
+then $\lambda I\le\sum_{j=0}^m\lambda I_j$.   (iii) Assuming the
+Heine-Borel theorem in the form
+
+\inset{\noindent
+whenever $[a,b]$ is a closed interval in $\BbbR^r$ which is
+covered by a sequence $\sequence{j}{\ooint{a^{(j)},b^{(j)}}}$ of open
+intervals, there is an $m\in\Bbb N$ such that
+$[a,b]\subseteq\bigcup_{j\le m}\ooint{a^{(j)},b^{(j)}}$,}
+
+\noindent prove 115B.   \Hint{if
+$\coint{a,b}\subseteq\bigcup_{j\in\Bbb N}\coint{a^{(j)},b^{(j)}}$,
+replace $\coint{a,b}$ by a smaller closed
+interval and each $\coint{a^{(j)},b^{(j)}}$ by a larger open interval,
+changing the volumes by adequately small amounts.}
+%{\smc Facenda \& Freniche 02}
+
+\spheader 115Yb(i)
+Show that if $A\subseteq\BbbR^r$ and $\epsilon>0$, there is
+an open set $G\supseteq A$ such that $\theta G\le\theta A+\epsilon$,
+where $\theta$ is Lebesgue outer measure.   (ii) Show that if
+$E\subseteq\BbbR^r$ is Lebesgue measurable and $\epsilon>0$, there is an
+open set $G\supseteq E$ such that $\mu(G\setminus E)\le\epsilon$, where
+$\mu$ is Lebesgue measure.   \Hint{consider first the case of
+bounded $E$.}   (iii) Show that if $E\subseteq\BbbR^r$ is Lebesgue
+measurable, there are Borel sets $H_1$, $H_2$ such that $H_1\subseteq
+E\subseteq H_2$ and $\mu(H_2\setminus E)=\mu(E\setminus H_1)=0$.
+\Hint{use (ii) to find $H_2$, and then consider the complement of
+$E$.}
+
+\spheader 115Yc Write $\theta$ for Lebesgue outer measure on
+$\BbbR^r$.   Show
+that a set $E\subseteq\BbbR^r$ is Lebesgue measurable iff
+$\theta([-\tbf{n},\tbf{n}]\cap E)+\theta([-\tbf{n},\tbf{n}]\setminus
+E)=(2n)^r$ for every $n\in\Bbb N$, writing $\tbf{n}=(n,\ldots,n)$.   \Hint{use 115Yb to show that
+for each $n$ there are
+measurable sets $F_n$, $H_n$ such that
+$F_n\subseteq[-\tbf{n},\tbf{n}]\cap
+E\subseteq H_n$ and $H_n\setminus F_n$ is negligible.}
+
+\header{115Yd}{\bf (d)} Assuming that there is a set $A\subseteq\Bbb R$
+which is not a Borel set, show that there is a family $\Cal E$ of
+half-open intervals in $\BbbR^2$ such that $\bigcup\Cal E$ is not a
+Borel set.   \Hint{consider $\Cal
+E=\{\coint{\xi,1+\xi}\times\coint{-\xi,1-\xi}:\xi\in A\}$.}
+
+\header{115Ye}{\bf (e)} Let $X$ be a set and $\Cal A$ a {\bf semiring} of
+subsets of $X$, that is, a family of subsets of $X$ such that
+
+\inset{$\emptyset\in\Cal A$,}
+
+\inset{$E\cap F\in\Cal A$ for all $E$, $F\in\Cal A$,}
+
+\inset{whenever $E$, $F\in\Cal A$ there are disjoint
+$E_0,\ldots,E_n\in\Cal A$ such that $E\setminus F=E_0\cup\ldots\cup
+E_n$.}
+
+\noindent Let $\lambda:\Cal A\to[0,\infty]$ be a functional such that
+
+\inset{$\lambda\emptyset=0$,}
+
+\inset{$\lambda E=\sum_{i=0}^{\infty}\lambda E_i$ whenever $E\in\Cal A$
+and $\sequence{i}{E_i}$ is a disjoint sequence in $\Cal A$ with union
+$E$.}
+
+\noindent Show that there is a measure $\mu$ on $X$ extending $\lambda$.
+\Hint{use the method of 113Yi.}
+}%end of exercises
+
+\endnotes{
+\Notesheader{115} In the notes to \S114 I ran over the methods so far
+available to us for the construction of measure spaces.   To the list
+there we can now add Lebesgue measure on $\BbbR^r$.
+
+If you look back at \S114, you will see that I have deliberately copied
+the exposition there.   I hope that this duplication will help you to see
+the essential elements of the method, which are three:  a primitive
+concept of volume (114A/115A);  countable subadditivity (114B/115B);  and
+measurability of building blocks (114F/115F).
+
+Concerning the `primitive concept of volume' there is not much to be
+said.   The ideas of length of an interval, area of a rectangle and
+volume of a cuboid go back to the beginning of mathematics.   I use
+`half-open intervals', as defined in 114Aa/115Ab, for purely technical
+reasons, because they fit together neatly (see 115Xa and 115Ye);
+if we started with `open' or
+`closed' intervals the method would still work.   One thing is perhaps
+worth mentioning:  the blocks I use are all upright, with edges parallel
+to the coordinate axes.   It is in fact a non-trivial exercise to prove
+that a block in any other orientation has the right Lebesgue measure, and
+I delay this until Chapter 26.   For the moment we are looking for the
+shortest safe path to a precise definition, and the fact that rotating a
+set doesn't change its Lebesgue measure will have to wait.
+
+The big step is `countable subadditivity':  the fact that if one block is
+covered by a sequence of other blocks, its volume is less than or equal
+to the sum of theirs.   This is surely necessary if blocks are to be
+measurable with the right measures, by 112Cd.   (What is remarkable is
+that it is so nearly sufficient.)   Here we have some work to do, and in
+the $r$-dimensional case there is a substantial hill to climb.   You can
+do the climb in two stages if you look up the Heine-Borel theorem
+(115Ya);  but as I try to explain in the remarks following 115B, I do not
+think that this route avoids any of the real difficulties.
+
+The third thing we must check is that blocks are measurable in the
+technical sense described by \Caratheodory's theorem.   This is because
+they are obtainable by the operations of intersection and union and
+complementation from half-spaces, and half-spaces are measurable for very
+straightforward reasons (114F/115F).   Now we are well away, and I do
+very little more, only checking that open sets, and therefore Borel sets,
+are measurable, and that closed and open intervals have the right
+measures (114G/115G).   Some more properties of Lebesgue measure can be
+found in \S134.   But every volume, if not quite every chapter, of this
+treatise will introduce further features of this extraordinary
+construction.
+}%end of notes
+
+\frnewpage
+
+

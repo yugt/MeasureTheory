@@ -1,0 +1,1130 @@
+\frfilename{mt225.tex}
+\versiondate{16.8.15}
+\copyrightdate{1996}
+
+\def\chaptername{The Fundamental Theorem of Calculus}
+\def\sectionname{Absolutely continuous functions}
+
+\newsection{225}
+
+We are now ready for a full characterization of the functions that can
+appear as indefinite integrals (225E, 225Xf).   The essential idea
+is that of `absolute continuity' (225B).   In the second half of the
+section (225G-225N) I describe some of the relationships between
+this concept and those we have already seen.
+
+\leader{225A}{Absolute continuity of the
+indefinite \dvrocolon{integral}}\cmmnt{ I
+begin with an easy fundamental result from general measure theory.
+
+\medskip
+
+\noindent}{\bf Theorem} Let
+$(X,\Sigma,\mu)$ be any measure space and $f$ an integrable real-valued
+function defined on a conegligible subset of $X$.
+Then for any $\epsilon>0$ there are a measurable set
+$E$ of finite measure and a real number
+$\delta>0$ such that $\int_F|f|\le\epsilon$ whenever $F\in\Sigma$ and
+$\mu(F\cap E)\le\delta$.
+
+\proof{ There is a non-decreasing sequence $\sequencen{g_n}$ of
+non-negative simple functions such that $|f|\eae\lim_{n\to\infty}g_n$
+and $\int|f|=\lim_{n\to\infty}\int g_n$.   Take $n\in\Bbb N$ such that
+$\int g_n\ge\int|f|-\bover12\epsilon$.
+Let $M>0$, $E\in\Sigma$ be such that $\mu E<\infty$ and
+$g_n\le M\chi E$;  set $\delta=\epsilon/2M$.
+If $F\in\Sigma$ and $\mu(F\cap E)\le\delta$, then
+
+\Centerline{$\int_Fg_n=\int g_n\times\chi F
+\le M\mu(F\cap E)\le\Bover12\epsilon$;}
+
+\noindent  consequently
+
+\Centerline{$\int_F|f|
+=\int_Fg_n+\int_F|f|-g_n\le\Bover12\epsilon+\int|f|-g_n\le\epsilon$.}
+}%end of proof of 225A
+
+\leader{225B}{Absolutely continuous functions on $\Bbb R$:  Definition}
+If $[a,b]$ is a non-empty
+closed interval in $\Bbb R$ and $f:[a,b]\to\Bbb R$ is a function, we say
+that $f$ is {\bf absolutely continuous} if for every $\epsilon>0$ there
+is a $\delta>0$ such that $\sum_{i=1}^n|f(b_i)-f(a_i)|\le\epsilon$
+whenever $a\le a_1\le b_1\le a_2\le b_2\le\ldots\le a_n\le b_n\le b$ and
+$\sum_{i=1}^nb_i-a_i\le\delta$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The phrase `absolutely continuous' is used in
+various senses in measure theory, closely related (if you look at them
+in the right way) but not identical;  you will need to keep the context
+of each definition in clear focus.
+}%end of comment
+
+\leader{225C}{Proposition} Let $[a,b]$ be a non-empty closed interval in
+$\Bbb R$.
+
+(a) If $f:[a,b]\to\Bbb R$ is absolutely continuous, it is uniformly
+continuous.
+
+(b) If $f:[a,b]\to\Bbb R$ is absolutely continuous it is of bounded
+variation on $[a,b]$, so is differentiable almost everywhere in $[a,b]$,
+and its derivative is integrable over $[a,b]$.
+
+(c) If $f$, $g:[a,b]\to\Bbb R$ are absolutely continuous, so are
+$f+g$ and $cf$, for every $c\in\Bbb R$.
+
+(d) If $f$, $g:[a,b]\to\Bbb R$ are absolutely continuous so is $f\times
+g$.
+
+(e) If $g:[a,b]\to [c,d]$ and $f:[c,d]\to\Bbb R$ are absolutely
+continuous, and $g$ is non-decreasing, then the composition
+$fg:[a,b]\to\Bbb R$ is absolutely continuous.
+
+\proof{{\bf (a)} Let $\epsilon>0$.   Then there is a $\delta>0$ such
+that $\sum_{i=1}^n|f(b_i)-f(a_i)|\le\epsilon$
+whenever $a\le a_1\le b_1\le a_2\le b_2\le\ldots\le a_n\le b_n\le b$ and
+$\sum_{i=1}^nb_i-a_i\le\delta$;  but of course now
+$|f(y)-f(x)|\le\epsilon$ whenever $x$, $y\in[a,b]$ and
+$|x-y|\le\delta$.   As $\epsilon$ is arbitrary, $f$ is uniformly
+continuous.
+
+
+
+\medskip
+
+{\bf (b)} Let $\delta>0$ be such that
+$\sum_{i=1}^n|f(b_i)-f(a_i)|\le 1$
+whenever $a\le a_1\le b_1\le a_2\le b_2\le\ldots\le a_n\le b_n\le b$ and
+$\sum_{i=1}^nb_i-a_i\le\delta$.   If
+$a\le c=c_0\le c_1\le\ldots\le c_n\le d\le\min(b,c+\delta)$, then
+$\sum_{i=1}^n|f(c_i)-f(c_{i-1})|\le 1$, so $\Var_{[c,d]}(f)\le 1$;
+accordingly (inducing on $k$, using
+224Cc for the inductive step) $\Var_{[a,\min(a+k\delta,b)]}(f)\le k$
+for every $k$, and
+
+\Centerline{$\Var_{[a,b]}(f)\le\lceil(b-a)/\delta\rceil<\infty$.}
+
+It follows that $f'$ is integrable, by 224I.
+
+\medskip
+
+{\bf (c)(i)} Let $\epsilon>0$.   Then there are $\delta_1$,
+$\delta_2>0$ such that
+
+\Centerline{$\sum_{i=1}^n|f(b_i)-f(a_i)|\le\Bover12\epsilon$}
+
+\noindent whenever
+$a\le a_1\le b_1\le a_2\le b_2\le\ldots\le a_n\le b_n\le b$ and
+$\sum_{i=1}^nb_i-a_i\le\delta_1$,
+
+\Centerline{$\sum_{i=1}^n|g(b_i)-g(a_i)|\le\Bover12\epsilon$}
+
+\noindent whenever $a\le a_1\le b_1\le a_2\le b_2\le\ldots\le a_n\le
+b_n\le b$ and
+$\sum_{i=1}^nb_i-a_i\le\delta_2$.   Set
+$\delta=\min(\delta_1,\delta_2)>0$,
+and suppose that $a\le a_1\le b_1\le a_2\le b_2\le\ldots\le a_n\le
+b_n\le b$ and
+$\sum_{i=1}^nb_i-a_i\le\delta$.   Then
+
+
+\Centerline{$\sum_{i=1}^n|(f+g)(b_i)-(f+g)(a_i)|\le
+\sum_{i=1}^n|f(b_i)-f(a_i)|+\sum_{i=1}^n|g(b_i)-g(a_i)|\le\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, $f+g$ is absolutely
+continuous.
+
+\medskip
+
+\quad{\bf (ii)} Let $\epsilon>0$.   Then there is a
+$\delta>0$ such that
+
+\Centerline{$\sum_{i=1}^n|f(b_i)-f(a_i)|\le\Bover{\epsilon}{1+|c|}$}
+
+\noindent whenever
+$a\le a_1\le b_1\le a_2\le b_2\le\ldots\le a_n\le b_n\le b$ and
+$\sum_{i=1}^nb_i-a_i\le\delta$.   Now
+
+\Centerline{$\sum_{i=1}^n|(cf)(b_i)-(cf)(a_i)|\le\epsilon$}
+
+\noindent whenever
+$a\le a_1\le b_1\le a_2\le b_2\le\ldots\le a_n\le b_n\le b$ and
+$\sum_{i=1}^nb_i-a_i\le\delta$.   As $\epsilon$ is arbitrary, $cf$ is
+absolutely continuous.
+
+\medskip
+
+{\bf (d)} By either (a) or (b), $f$ and $g$ are bounded;  set
+$M=\sup_{x\in[a,b]}|f(x)|$, $M'=\sup_{x\in[a,b]}|g(x)|$.   Let
+$\epsilon>0$.   Then there are $\delta_1$, $\delta_2>0$ such that
+
+\inset{$\sum_{i=1}^n|f(b_i)-f(a_i)|\le\epsilon$
+whenever $a\le a_1\le b_1\le a_2\le b_2\le\ldots\le a_n\le b_n\le b$ and
+$\sum_{i=1}^nb_i-a_i\le\delta_1$,}
+
+\inset{$\sum_{i=1}^n|g(b_i)-g(a_i)|\le\epsilon$
+whenever $a\le a_1\le b_1\le a_2\le b_2\le\ldots\le a_n\le b_n\le b$ and
+$\sum_{i=1}^nb_i-a_i\le\delta_2$.}
+
+\noindent Set $\delta=\min(\delta_1,\delta_2)>0$ and suppose that $a\le
+a_1\le b_1\le\ldots\le b_n\le b$ and $\sum_{i=1}^nb_i-a_i\le\delta$.
+Then
+
+$$\eqalign{\sum_{i=1}^n|f(b_i)g(b_i)-f(a_i)g(a_i)|
+&=\sum_{i=1}^n|(f(b_i)-f(a_i))g(b_i)+f(a_i)(g(b_i)-g(a_i))|\cr
+&\le\sum_{i=1}^n|f(b_i)-f(a_i)||g(b_i)|+|f(a_i)||g(b_i)-g(a_i)|\cr
+&\le\sum_{i=1}^n|f(b_i)-f(a_i)|M'+M|g(b_i)-g(a_i)|\cr
+&\le\epsilon M'+M\epsilon
+=\epsilon(M+M').\cr}$$
+
+\noindent As $\epsilon$ is arbitrary, $f\times g$ is absolutely
+continuous.
+
+\medskip
+
+{\bf (e)} Let $\epsilon>0$.   Then there is a $\delta>0$ such that
+$\sum_{i=1}^n|f(d_i)-f(c_i)|\le\epsilon$ whenever $c\le c_1\le
+d_1\le\ldots\le c_n\le d_n\le d$ and $\sum_{i=1}^nd_i-c_i\le\delta$;
+and there is an $\eta>0$ such that
+$\sum_{i=1}^n|g(b_i)-g(a_i)|\le\delta$ whenever $a\le a_1\le
+b_1\le\ldots\le a_n\le b_n\le b$ and $\sum_{i=1}^nb_i-a_i\le\eta$.   Now
+suppose that $a\le a_1\le b_1\le\ldots\le a_n\le b_n\le b$ and
+$\sum_{i=1}^nb_i-a_i\le\eta$.   Because $g$ is non-decreasing, we have
+$c\le g(a_1)\le\ldots\le g(b_n)\le d$ and
+$\sum_{i=1}^ng(b_i)-g(a_i)\le\delta$, so $\sum_{i=1}^n|f(g(b_i))
+-f(g(a_i))|\le\epsilon$;  as $\epsilon$ is arbitrary, $fg$ is absolutely
+continuous.
+}%end of proof of 225C
+
+\leader{225D}{Lemma} Let $[a,b]$ be a non-empty closed interval in
+$\Bbb R$ and $f:[a,b]\to\Bbb R$ an absolutely continuous function which
+has zero derivative almost everywhere in $[a,b]$.
+Then $f$ is constant on $[a,b]$.
+
+\proof{ Let $x\in[a,b]$, $\epsilon>0$.   Let $\delta>0$ be
+such that $\sum_{i=1}^n|f(b_i)-f(a_i)|\le\epsilon$
+whenever $a\le a_1\le b_1\le a_2\le b_2\le\ldots\le a_n\le b_n\le b$ and
+$\sum_{i=1}^nb_i-a_i\le\delta$.   Set $A=\{t:a<t<x,\,f'(t)$ exists
+$=0\}$;  then $\mu A=x-a$, writing $\mu$ for Lebesgue measure.
+Let $\Cal I$ be the set of non-empty non-singleton closed intervals
+$[c,d]\subseteq[a,x]$ such that $|f(d)-f(c)|\le\epsilon (d-c)$;  then
+every member of $A$ belongs to arbitrarily short members of $\Cal I$.
+By Vitali's theorem (221A), there is a countable disjoint family
+$\Cal I_0\subseteq\Cal I$ such that $\mu(A\setminus\bigcup\Cal I_0)=0$,
+that is,
+
+\Centerline{$x-a=\mu(\bigcup\Cal I_0)=\sum_{I\in\Cal I_0}\mu I$.}
+
+\noindent Now there is a finite $\Cal I_1\subseteq\Cal I_0$ such that
+
+\Centerline{$\mu(\bigcup\Cal I_1)
+=\sum_{I\in\Cal I_1}\mu I\ge x-a-\delta$.}
+
+\noindent If $\Cal I_1=\emptyset$, then $x\le a+\delta$ and
+$|f(x)-f(a)|\le\epsilon$.   Otherwise, express $\Cal I_1$ as
+$\{[c_0,d_0],\ldots,[c_n,d_n]\}$, where
+$a\le c_0<d_0<c_1<d_1<\ldots<c_n<d_n\le x$.   Then
+
+\Centerline{$(c_0-a)+\sum_{i=1}^n(c_i-d_{i-1})
++(x-d_n)=\mu([a,x]\setminus\bigcup\Cal I_1)\le\delta$,}
+
+\noindent so
+
+\Centerline{$|f(c_0)-f(a)|+\sum_{i=1}^n|f(c_i)-f(d_{i-1})|+|f(x)-f(d_n)|
+\le\epsilon$.}
+
+\noindent On the other hand, $|f(d_i)-f(c_i)|\le\epsilon(d_i-c_i)$ for
+each $i$, so
+
+\Centerline{$\sum_{i=0}^n|f(d_i)-f(c_i)|\le\epsilon\sum_{i=0}^nd_i-c_i
+\le\epsilon(x-a)$.}
+
+\noindent Putting these together,
+
+$$\eqalign{|f(x)-f(a)|
+&\le|f(c_0)-f(a)|+|f(d_0)-f(c_0)|+|f(c_1)-f(d_0)|+\ldots\cr
+&\hskip10em+|f(d_n)-f(c_n)|+|f(x)-f(d_n)|\cr
+&=|f(c_0)-f(a)|+\sum_{i=1}^n|f(c_i)-f(d_{i-1})|\cr
+&\hskip10em+|f(x)-f(d_n)|+\sum_{i=0}^n|f(d_i)-f(c_i)|\cr
+&\le\epsilon+\epsilon(x-a)
+=\epsilon(1+x-a).\cr}$$
+
+\noindent As $\epsilon$ is arbitrary, $f(x)=f(a)$.   As $x$ is
+arbitrary, $f$ is constant.
+}%end of proof of 225D
+
+\leader{225E}{Theorem}   Let $[a,b]$ be a non-empty closed interval in
+$\Bbb R$ and $F:[a,b]\to\Bbb R$ a function.   Then the following are
+equiveridical:
+
+(i) there is an integrable real-valued function $f$ such that
+$F(x)=F(a)+\int_a^xf$ for every $x\in[a,b]$;
+
+(ii) $\int_a^xF'$ exists and is
+equal to $F(x)-F(a)$ for every $x\in[a,b]$;
+
+(iii) $F$ is absolutely continuous.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Here, and for the rest of the section (except in
+225Oa), integrals will
+be taken with respect to Lebesgue measure on $\Bbb R$.
+}
+
+\proof{{\bf (i)$\Rightarrow$(iii)}  Assume (i).
+Let $\epsilon>0$.   By 225A, there is a
+$\delta>0$ such that $\int_H|f|\le\epsilon$ whenever $H\subseteq[a,b]$
+and $\mu H\le\delta$, writing $\mu$ for Lebesgue measure as usual.   Now
+suppose that $a\le a_1\le b_1\le a_2\le b_2\le\ldots\le a_n\le b_n\le b$
+and $\sum_{i=1}^nb_i-a_i\le\delta$.   Consider $H=\bigcup_{1\le i\le
+n}\coint{a_i,b_i}$.   Then $\mu H\le\delta$ and
+
+\Centerline{$\sum_{i=1}^n|F(b_i)-F(a_i)|
+=\sum_{i=1}^n|\int_{\coint{a_i,b_i}}f|
+\le\sum_{i=1}^n\int_{\coint{a_i,b_i}}|f|
+=\int_F|f|\le\epsilon$.}
+
+\noindent   As
+$\epsilon$ is arbitrary, $F$ is absolutely continuous.
+
+\medskip
+
+{\bf (iii)$\Rightarrow$(ii)} If $F$ is absolutely continuous, then it is
+of bounded variation (225Cb),  so $\int_a^bF'$ exists (224I).   Set
+$G(x)=\int_a^xF'$ for $x\in [a,b]$;
+then $G'\eae F'$ (222E) and $G$ is absolutely continuous (by
+(i)$\Rightarrow$(iii) just proved).   Accordingly $G-F$ is absolutely
+continuous (225Cc) and is differentiable, with zero derivative, almost
+everywhere.   It follows that $G-F$ must be constant (225D).   But as
+$G(a)=0$, $G=F-F(a)$;  just as required by (ii).
+
+\medskip
+
+{\bf (ii)$\Rightarrow$(i)} is trivial.
+}%end of proof of 225E
+
+\leader{225F}{Integration by \dvrocolon{parts}}\cmmnt{ As an
+application of this
+result, I give a justification of a familiar formula.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $f$ be a real-valued function which is
+integrable over
+an interval $[a,b]\subseteq\Bbb R$, and $g:[a,b]\to\Bbb R$ an absolutely
+continuous function.   Suppose that $F$ is an indefinite integral of
+$f$, so that $F(x)-F(a)=\int_a^xf$ for $x\in[a,b]$.   Then
+
+\Centerline{$\int_a^bf\times g
+=F(b)g(b) - F(a)g(a) -\int_a^bF\times g'$.}
+
+\proof{ Set $h=F\times g$.   Because $F$ is absolutely continuous
+(225E), so is $h$ (225Cd).   Consequently
+$h(b)-h(a)=\int_a^bh'$, by (iii)$\Rightarrow$(ii) of 225E.   But
+$h'=F'\times g+F\times g'$ wherever $F'$ and $g'$ are defined, which is
+almost everywhere, and $F'\eae f$, by 222E again;  so
+$h'\eae f\times g+F\times g'$.   Finally, $g$ and $F$ are continuous, therefore measurable,
+and bounded, while $f$ and $g'$ are integrable (using 225E yet again),
+so $f\times g$ and $F\times g'$ are integrable, and
+
+\Centerline{$F(b)g(b)-F(a)g(a)
+=h(b)-h(a)
+=\int_a^bh'
+=\int_a^bf\times g+\int_a^bF\times g'$,}
+
+\noindent as required.
+}%end of proof of 225F
+
+\leader{225G}{}\cmmnt{ I come now to a group of results at a rather
+deeper level than most of the work of this chapter, being closer to the
+ideas of Chapter 26.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $[a,b]$ be a non-empty closed interval
+in $\Bbb R$ and $f:[a,b]\to\Bbb R$ an absolutely continuous function.
+
+(a) $f[A]$ is negligible for every negligible set $A\subseteq\Bbb R$.
+
+(b)\dvAnew{2013}
+$f[E]$ is measurable for every measurable set $E\subseteq\Bbb R$.
+
+\proof{{\bf (a)} Let $\epsilon>0$.   Then there is a $\delta>0$ such that
+$\sum_{i=1}^n|f(b_i)-f(a_i)|\le\epsilon$ whenever
+$a\le a_1\le b_1\ldots\le a_n\le b_n\le b$ and
+$\sum_{i=1}^nb_i-a_i\le\delta$.   Now
+there is a sequence $\sequence{k}{I_k}$ of closed intervals, covering
+$A$, with $\sum_{k=0}^{\infty}\mu I_k\le\delta$.   For each
+$m\in\Bbb N$, let $F_m$ be $[a,b]\cap\bigcup_{k\le m}I_k$.   Then
+$\mu f[F_m]\le\epsilon$.   \Prf\  $F_m$ must be expressible as
+$\bigcup_{i\le n}[c_i,d_i]$ where $n\le m$ and
+$a\le c_0\le d_0\le\ldots\le c_n\le d_n\le b$.
+For each $i\le n$ choose $x_i$, $y_i$ such that
+$c_i\le x_i$, $y_i\le d_i$ and
+
+\Centerline{$f(x_i)=\min_{x\in[c_i,d_i]}f(x)$,\quad
+$f(y_i)=\max_{x\in[c_i,d_i]}f(x)$;}
+
+\noindent such exist because $f$ is continuous (225Ca), so is bounded and
+attains its bounds on $[c_i,d_i]$.   Set $a_i=\min(x_i,y_i)$,
+$b_i=\max(x_i,y_i)$, so that $c_i\le a_i\le b_i\le d_i$.   Then
+
+\Centerline{$\sum_{i=0}^nb_i-a_i\le\sum_{i=0}^nd_i-c_i=\mu F_m
+\le\mu(\bigcup_{k\in\Bbb N}I_k)\le\delta$,}
+
+\noindent so
+
+$$\eqalign{\mu f[F_m]
+&=\mu(\bigcup_{i\le m}f[\,[c_i,d_i]\,])
+\le\sum_{i=0}^n\mu(f[\,[c_i,d_i]\,])\cr
+&=\sum_{i=0}^n\mu[f(x_i),f(y_i)]
+=\sum_{i=0}^n|f(b_i)-f(a_i)|
+\le\epsilon.  \text{ \Qed}\cr}$$
+
+\noindent But $\sequence{m}{f[F_m]}$ is a non-decreasing sequence
+covering $f[A]$, so
+
+\Centerline{$\mu^*f[A]\le\mu(\bigcup_{m\in\Bbb N}f[F_m])
+=\sup_{m\in\Bbb N}\mu f[F_m]\le\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, $f[A]$ is negligible, as claimed.
+
+\medskip
+
+{\bf (b)} By 134Fb, there is a sequence $\sequencen{F_n}$ of closed subsets
+of $E\cap[a,b]$ such that $\lim_{n\to\infty}\mu F_n=\mu(E\cap[a,b])$.
+For each $n$, $F_n$ is closed and bounded, therefore compact (2A2F);  as
+$f$ is continuous, $f[F_n]$ is compact (2A2Eb), therefore closed
+(2A2F, in the other direction) and measurable (114G).   Next,
+setting $A=E\cap[a,b]\setminus\bigcup_{n\in\Bbb N}F_n$,
+$A$ is negligible, so $f[A]$ is negligible, by (a) here,
+therefore measurable.   Consequently
+
+\Centerline{$f[E]=f[E\cap[a,b]]=f[\bigcup_{n\in\Bbb N}F_n\cup A]
+=\bigcup_{n\in\Bbb N}f[F_n]\cup f[A]$}
+
+\noindent is measurable, as claimed.
+}%end of proof of 225G
+
+\leader{225H}{Semi-continuous functions}\cmmnt{ In preparation for the
+last main result of this section, I give a general result concerning
+measurable real-valued functions on subsets of $\Bbb R$.   It will be
+convenient here, for once, to consider functions taking values in
+$[-\infty,\infty]$.}   If $D\subseteq\BbbR^r$, a function
+$g:D\to[-\infty,\infty]$ is {\bf lower
+semi-continuous} if $\{x:g(x)>u\}$ is an open subset of
+$D$\cmmnt{ (for the subspace topology, see 2A3C)} for
+every $u\in[-\infty,\infty]$.   Any lower semi-continuous function is
+Borel measurable, therefore Lebesgue
+measurable\cmmnt{ (121B-121D)}. %121B 121C 121D
+\cmmnt{Now we have the following result.}
+
+\leader{225I}{Proposition}  Suppose that $r\ge 1$ and that $f$ is a
+real-valued function, defined on
+a subset $D$ of $\BbbR^r$, which is integrable over $D$.      Then for
+any $\epsilon>0$ there is a lower semi-continuous function
+$g:\BbbR^r\to[-\infty,\infty]$ such that $g(x)\ge f(x)$ for every
+$x\in D$ and $\int_Dg$ is defined and not greater than
+$\epsilon+\int_Df$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remarks} This is a result of great general importance, so
+I give it in a fairly general form;  but for the present chapter all we
+need is the case $r=1$, $D=[a,b]$ where $a\le b$.
+}%end of comment
+
+\proof{{\bf (a)} We can enumerate $\Bbb Q$ as $\sequencen{q_n}$.    By
+225A, there is a $\delta>0$ such that $\int_F|f|\le\bover12{\epsilon}$
+whenever $\mu_DF\le\delta$, where $\mu_D$ is the subspace measure on
+$D$, so that $\mu_DF=\mu^*F$, the outer Lebesgue measure of $F$, for
+every $F\in\Sigma_D$, the domain of $\mu_D$ (214A-214B).     For each
+$n\in\Bbb N$, set
+
+\Centerline{$\delta_n=2^{-n-1}\min(\Bover{\epsilon}{1+2|q_n|},\delta)$,}
+
+\noindent so that
+$\sum_{n=0}^{\infty}\delta_n|q_n|\le\bover12{\epsilon}$ and
+$\sum_{n=0}^{\infty}\delta_n\le\delta$.   For each $n\in\Bbb N$, let
+$E_n\subseteq\BbbR^r$ be a Lebesgue measurable set such that
+$\{x:f(x)\ge q_n\}=D\cap E_n$, and choose an open set
+$G_n\supseteq E_n\cap B(\tbf{0},n)$ such that
+$\mu G_n\le\mu(E_n\cap B(\tbf{0},n))+\delta_n$ (134Fa), writing
+$B(\tbf{0},n)$ for the ball
+$\{x:\|x\|\le n\}$.   For $x\in\BbbR^r$, set
+
+\Centerline{$g(x)=\sup\{q_n:x\in G_n\}$,}
+
+\noindent allowing $-\infty$ as $\sup\emptyset$ and $\infty$ as the
+supremum of a set with no upper bound in $\Bbb R$.
+
+\medskip
+
+{\bf (b)} Now check the properties of $g$.
+
+\medskip
+
+\quad{\bf (i)} $g$ is lower semi-continuous.   \Prf\ If
+$u\in[-\infty,\infty]$, then
+
+\Centerline{$\{x:g(x)>u\}=\bigcup\{G_n:q_n>u\}$}
+
+\noindent is a union of open sets, therefore open.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} $g(x)\ge f(x)$ for every $x\in D$.   \Prf\ If
+$x\in D$ and $\eta>0$, there is an $n\in\Bbb N$ such that
+$\|x\|\le n$ and $f(x)-\eta\le q_n\le f(x)$;   now
+$x\in E_n\subseteq G_n$
+so $g(x)\ge q_n\ge f(x)-\eta$.   As $\eta$ is arbitrary,
+$g(x)\ge f(x)$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)}  Consider the functions
+$h_1$, $h_2:D\to\ocint{-\infty,\infty}$ defined by setting
+
+$$\eqalign{h_1(x)
+&=|f(x)|\text{ if }x\in D\cap\bigcup_{n\in\Bbb N}(G_n\setminus E_n),\cr
+&=0\text{ for other }x\in D,\cr
+h_2(x)&=\sum_{n=0}^{\infty}|q_n|\chi(G_n\setminus E_n)(x)
+\text{ for every }x\in D.\cr}$$
+
+\noindent Setting $F=\bigcup_{n\in\Bbb N}G_n\setminus E_n$,
+
+\Centerline{$\mu F\le\sum_{n=0}^{\infty}\mu(G_n\setminus E_n)
+\le\delta$,}
+
+\noindent so
+
+\Centerline{$\int_Dh_1
+=\int_{D\cap F}|f|\le\Bover12\epsilon$}
+
+\noindent by the choice of $\delta$.   As for $h_2$, we have
+(by B.Levi's theorem)
+
+\Centerline{$\int_Dh_2
+=\sum_{n=0}^{\infty}|q_n|\mu_D(D\cap G_n\setminus F_n)
+\le\sum_{n=0}^{\infty}|q_n|\mu(G_n\setminus F_n)
+\le\Bover12\epsilon$}
+
+\noindent -- because this is finite, $h_2(x)<\infty$ for almost every
+$x\in D$.   Thus $\int_Dh_1+h_2\le\epsilon$.
+
+\medskip
+
+\quad{\bf (iv)} The point is that $g\le f+h_1+h_2$ everywhere in
+$D$.   \Prf\ Take any $x\in D$.   If $n\in\Bbb N$
+and $x\in G_n$, then either $x\in E_n$, in which case
+
+\Centerline{$f(x)+h_1(x)+h_2(x)\ge f(x)\ge q_n$,}
+
+\noindent or $x\in G_n\setminus E_n$, in which case
+
+\Centerline{$f(x)+h_1(x)+h_2(x)\ge f(x)+|f(x)|+|q_n|\ge q_n$.}
+
+\noindent Thus
+
+\Centerline{$f(x)+h_1(x)+h_2(x)\ge\sup\{q_n:x\in G_n\}\ge g(x)$.   \Qed}
+
+\noindent So $g\le f+h_1+h_2$ everywhere in $D$.
+
+\medskip
+
+\quad{\bf (v)} Putting (iii) and (iv) together,
+
+\Centerline{$\int_Dg\le\int_Df+h_1+h_2\le\epsilon+\int_Df$,}
+
+\noindent as required.
+}%end of proof of 225I
+
+
+\leader{225J}{}\cmmnt{ We need some results on Borel measurable sets
+and functions which are of independent interest.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $D$ be a subset of $\Bbb R$ and
+$f:D\to\Bbb R$ any function.   Then
+
+\Centerline{$E=\{x:x\in D,\,f$ is continuous at $x\}$}
+
+\noindent is relatively Borel measurable in $D$, and
+
+\Centerline{$F=\{x:x\in D,\,f$ is differentiable at $x\}$}
+
+\noindent is Borel measurable in $\Bbb R$;  moreover, $f':F\to\Bbb R$ is
+Borel measurable.
+
+\wheader{225J}{0}{0}{0}{36pt}
+
+\proof{{\bf (a)} For $k\in\Bbb N$ set
+
+\Centerline{$\Cal G_k=\{\ooint{a,b}:a,\,b\in\Bbb R,\,
+|f(x)-f(y)|\le 2^{-k}$ for all $x$, $y\in D\cap\ooint{a,b}\}$.}
+
+\noindent Then $G_k=\bigcup\Cal G_k$ is an open set, so
+$E_0=\bigcap_{k\in\Bbb N}G_k$ is a Borel set.   But $E=D\cap E_0$, so
+$E$ is a relatively Borel subset of $D$.
+
+\medskip
+
+{\bf (b)(i)} I should perhaps say at once that when interpreting the
+formula $f'(x)=\lim_{h\to 0}(f(x+h)-f(x))/h$, I insist on the
+restrictive definition
+
+\Centerline{$a=\lim_{h\to 0}\bover{f(x+h)-f(x)}{h}$}
+
+\noindent if
+
+\qquad\quad for every $\epsilon>0$ there is a $\delta>0$ such that
+$\Bover{f(x+h)-f(x)}{h}$ is defined and
+
+\hfill$|\Bover{f(x+h)-f(x)}{h}-a|\le\epsilon$ whenever
+$0<|h|\le\delta$.\qquad\qquad\quad
+
+\noindent So $f'(x)$ can be defined only if there is some $\delta>0$
+such that the whole interval $[x-\delta,x+\delta]$ lies within the
+domain $D$ of $f$.
+
+\medskip
+
+\quad{\bf (ii)} For $p$, $q$, $q'\in\Bbb Q$ and $k\in\Bbb N$ set
+
+$$\eqalign{H(k,p,q,q')
+&=\{x:x\in E\cap\ooint{q,q'},\,|f(y)-f(x)-p(y-x)|\le 2^{-k}|y-x|
+\text{ for every }y\in\ooint{q,q'}\}\cr&
+\mskip300mu\text{ if }\ooint{q,q'}\subseteq D\cr
+&=\emptyset\text{ otherwise}.\cr}$$
+%display works in smallprint version
+
+\noindent Then
+$H(k,p,q,q')=E\cap\ooint{q,q'}\cap\overline{H(k,p,q,q')}$.   \Prf\ If
+$x\in E\cap\ooint{q,q'}\cap\overline{H(k,p,q,q')}$ there is a sequence
+$\sequencen{x_n}$ in $H(k,p,q,q')$ converging to $x$.
+Because $f$ is continuous at $x$,
+
+$$\eqalign{|f(y)-f(x)-p(y-x)|
+&=\lim_{n\to\infty}|f(y)-f(x_n)-p(y-x_n)|\cr&
+\le 2^{-k}\lim_{n\to\infty}2^{-k}|y-x_n|
+=2^{-k}|y-x|\cr}$$
+
+\noindent for every $y\in\ooint{q,q'}$, so that
+$x\in H(k,p,q,q')$.\ \QeD\   Consequently $H(k,p,q,q')$ is a Borel set.
+\Prf\ There is a Borel set $E_0$ such that $E=E_0\cap D$, by (a), so that
+if $\ooint{q,q'}\subseteq D$ then
+
+\Centerline{$H(k,p,q,q')=E\cap\ooint{q,q'}\cap\overline{H(k,p,q,q')}
+=E_0\cap\ooint{q,q'}\cap\overline{H(k,p,q,q')}$}
+
+\noindent is Borel.   Otherwise, of course, $H(k,p,q,q')$ is Borel because
+it is empty.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} Now
+
+\Centerline{$F
+=\bigcap_{k\in\Bbb N}\bigcup_{p,q,q'\in\Bbb Q}H(k,p,q,q')$.}
+
+\noindent \Prf\ ($\alpha$) Suppose $x\in F$, that is, $f'(x)$ is
+defined;  say $f'(x)=a$.   Take any $k\in\Bbb N$.   Then there are
+$p\in\Bbb Q$, $\delta>0$ such that
+$|p-a|\le 2^{-k-1}$ and $[x-\delta,x+\delta]\subseteq D$ and
+$|\bover{f(x+h)-f(x)}{h}-a|\le 2^{-k-1}$ whenever $0<|h|\le\delta$;
+now take
+$q\in\Bbb Q\cap\coint{x-\delta,x}$, $q'\in\Bbb Q\cap\ocint{x,x+\delta}$
+and see that $x\in H(k,p,q,q')$.   As $x$ is arbitrary,
+$F\subseteq\bigcap_{k\in\Bbb N}\bigcup_{p,q,q'\in\Bbb Q}H(k,p,q,q')$.
+($\beta$) If
+$x\in\bigcap_{k\in\Bbb N}\bigcup_{p,q,q'\in\Bbb Q}H(k,p,q,q')$, then for
+each $k\in\Bbb N$ choose $p_k$, $q_k$,
+$q'_k\in\Bbb Q$ such that $x\in H(k,p_k,q_k,q'_k)$.   If $h\ne 0$,
+$x+h\in\ooint{q_k,q'_k}$ then $|\bover{f(x+h)-f(x)}{h}-p_k|\le 2^{-k}$.
+But this means, first, that $|p_k-p_l|\le 2^{-k}+2^{-l}$ for every $k$,
+$l$ (since surely there is some $h\ne 0$ such that
+$x+h\in\ooint{q_k,q'_k}\cap\ooint{q_l,q'_l}$), so that
+$\sequence{k}{p_k}$ is a Cauchy sequence, with limit $a$ say;  and,
+second, that $|\bover{f(x+h)-f(x)}{h}-a|\le 2^{-k}+|a-p_k|$ whenever
+$h\ne 0$ and $x+h\in\ooint{q_k,q'_k}$, so that $f'(x)$ is defined and
+equal to $a$.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} Because $\Bbb Q$ is countable, all the unions
+$\bigcup_{p,q,q'\in\Bbb Q}H(k,p,q,q')$ are Borel sets, so $F$ also is.
+
+\medskip
+
+\quad{\bf (v)} Now enumerate $\BbbQ^3$ as
+$\sequence{i}{(p_i,q_i,q'_i)}$, and set
+$H'_{ki}=H(k,p_i,q_i,q'_i)\setminus\bigcup_{j<i}H(k,p_j,q_j,q'_j)$ for
+each $k$, $i\in\Bbb N$.   Every $H'_{ki}$ is Borel measurable,
+$\sequence{i}{H'_{ki}}$ is disjoint, and
+
+\Centerline{$\bigcup_{i\in\Bbb N}H'_{ki}
+=\bigcup_{i\in\Bbb N}H(k,p_i,q_i,q'_i)\supseteq F$}
+
+\noindent for each $k$.   Note that
+$|f'(x)-p|\le 2^{-k}$ whenever $x\in F\cap H(k,p,q,q')$, so if we set
+$f_k(x)=p_i$ for every $x\in H'_{ki}$ we shall have a Borel
+measurable function
+$f_k$ such that $|f(x)-f_k(x)|\le 2^{-k}$ for every $x\in F$.
+Accordingly $f'=\lim_{k\to\infty}f_k\restr F$ is Borel measurable.
+}%end of proof of 225J
+
+\leader{225K}{Proposition} Let $[a,b]$ be a non-empty closed interval in
+$\Bbb R$, and $f:[a,b]\to\Bbb R$ a function.   Set
+$F=\{x:x\in\ooint{a,b},\,f'(x)$ is defined$\}$.   Then $f$ is absolutely
+continuous iff (i) $f$ is continuous (ii) $f'$ is integrable over $F$
+(iii) $f[\,[a,b]\setminus F]$ is negligible.
+
+\proof{{\bf (a)} Suppose first that $f$ is absolutely continuous.   Then
+$f$ is surely continuous (225Ca) and $f'$ is integrable over $[a,b]$,
+therefore over $F$ (225E);  also $[a,b]\setminus F$ is negligible, so
+$f[\,[a,b]\setminus F]$ is negligible, by 225G.
+
+\medskip
+
+{\bf (b)} So now suppose that $f$ satisfies the conditions.   Set
+$f^*(x)=|f'(x)|$ for $x\in F$, $0$ for
+$x\in[a,b]\setminus F$.   Then $f(b)\le f(a)+\int_a^bf^*$.
+
+\medskip
+
+\Prf\ {\bf (i)} Because $F$ is a Borel set and $f'$ is a Borel
+measurable function (225J), $f^*$ is measurable.   Let $\epsilon>0$.
+Let $G$ be an open subset of
+$\Bbb R$ such that $f[\,[a,b]\setminus F]\subseteq G$ and
+$\mu G\le\epsilon$ (134Fa again).   Let $g:\Bbb R\to[0,\infty]$ be a lower
+semi-continuous function such that $f^*(x)\le g(x)$ for every
+$x\in[a,b]$ and $\int_a^bg\le\int_a^bf^*+\epsilon$ (225I).   Consider
+
+\Centerline{$A=\{x:a\le x\le b,\,\mu([f(a),f(x)]\setminus G)
+  \le 2\epsilon(x-a)+\int_a^xg\}$,}
+
+\noindent interpreting $[f(a),f(x)]$ as $\emptyset$ if $f(x)<f(a)$.
+Then $a\in A\subseteq[a,b]$, so $c=\sup A$ is defined and belongs to
+$[a,b]$.
+
+Because $f$ is continuous, the function
+$x\mapsto\mu([f(a),f(x)]\setminus G)$ is continuous;  also
+$x\mapsto 2\epsilon(x-a)+\int_a^xg$ is certainly continuous, so
+$c\in A$.
+
+\medskip
+
+\quad{\bf (ii)} \Quer\ If $c\in F$, so that $f^*(c)=|f'(c)|$, then there
+is a $\delta>0$ such that
+
+\Centerline{$a\le c-\delta\le c+\delta\le b$,}
+
+\Centerline{$g(x)\ge g(c)-\epsilon\ge|f'(c)|-\epsilon$ whenever
+$|x-c|\le\delta$,}
+
+\Centerline{$|\Bover{f(x)-f(c)}{x-c}-f'(c)|\le\epsilon$ whenever
+$|x-c|\le\delta$.}
+
+\noindent Consider $x=c+\delta$.   Then $c<x\le b$ and
+
+$$\eqalignno{\mu([f(a),f(x)]\setminus G)
+&\le\mu([f(a),f(c)]\setminus G)+|f(x)-f(c)|\cr
+&\le2\epsilon(c-a)+\int_a^cg+\epsilon(x-c)+|f'(c)|(x-c)\cr
+&\le2\epsilon(c-a)+\int_a^cg
+         +\epsilon(x-c)+\int_c^x(g+\epsilon)\cr
+\noalign{\noindent (because $g(t)\ge |f'(c)|-\epsilon$ whenever
+$c\le t\le x$)}
+&=2\epsilon(x-a)+\int_a^xg,\cr}$$
+
+\noindent so $x\in A$;  but $c$ is supposed to be an upper bound of
+$A$.\ \Bang
+
+Thus $c\in[a,b]\setminus F$.
+
+\medskip
+
+\quad{\bf (iii)} \Quer\ Now suppose, if possible, that
+$c<b$.   We know that $f(c)\in G$, so there is an $\eta>0$ such that
+$[f(c)-\eta,f(c)+\eta]\subseteq G$;  now there is a $\delta>0$
+such that $|f(x)-f(c)|\le\eta$ whenever $x\in[a,b]$ and
+$|x-c|\le\delta$.   Set $x=\min(c+\delta,b)$;  then $c<x\le b$ and
+$[f(c),f(x)]\subseteq G$, so
+
+\Centerline{$\mu([f(a),f(x)]\setminus G)
+=\mu([f(a),f(c)]\setminus G)
+\le 2\epsilon(c-a)+\int_a^cg
+\le 2\epsilon(x-a)+\int_a^xg$}
+
+\noindent and once again $x\in A$, even though $x>\sup A$.\ \Bang
+
+\medskip
+
+\quad{\bf (iv)} We conclude that $c=b$, so that $b\in A$.   But this
+means that
+
+$$\eqalign{f(b)-f(a)
+&\le\mu([f(a),f(b)])
+\le\mu([f(a),f(b)]\setminus G)+\mu G\cr
+&\le 2\epsilon(b-a)+\int_a^bg+\epsilon
+\le 2\epsilon(b-a)+\int_a^bf^*+\epsilon+\epsilon\cr
+&=2\epsilon(1+b-a)+\int_a^bf^*.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary, $f(b)-f(a)\le\int_a^bf^*$, as
+claimed.\ \Qed
+
+\medskip
+
+{\bf (c)} Similarly, or applying (b) to $-f$,
+$f(a)-f(b)\le\int_a^bf^*$, so that $|f(b)-f(a)|\le\int_a^bf^*$.
+
+Of course the argument applies equally to any subinterval of $[a,b]$, so
+$|f(d)-f(c)|\le\int_c^df^*$ whenever
+$a\le c\le d\le b$.   Now let $\epsilon>0$.   By 225A once more, there
+is a $\delta>0$ such that $\int_Ef^*\le\epsilon$ whenever
+$E\subseteq[a,b]$ and $\mu E\le\delta$.   Suppose that
+$a\le a_1\le b_1\le\ldots\le a_n\le b_n\le b$ and
+$\sum_{i=1}^nb_i-a_i\le\delta$.   Then
+
+\Centerline{$\sum_{i=1}^n|f(b_i)-f(a_i)|
+\le\sum_{i=1}^n\int_{a_i}^{b_i}f^*
+=\int_{\bigcupop_{i\le n}[a_i,b_i]}f^*
+\le\epsilon$.}
+
+\noindent So $f$ is absolutely continuous, as claimed.
+}%end of proof of 225K
+
+\leader{225L}{Corollary} Let $[a,b]$ be a non-empty closed interval in
+$\Bbb R$.   Let $f:[a,b]\to\Bbb R$ be a continuous function which is
+differentiable on the open interval $\ooint{a,b}$.   If its derivative
+$f'$ is integrable over $[a,b]$, then $f$ is absolutely continuous, and
+$f(b)-f(a)=\int_a^bf'$.
+
+\proof{ $f[\,[a,b]\setminus F]=\{f(a),f(b)\}$ is surely negligible, so
+$f$ is absolutely continuous, by 225K;  consequently
+$f(b)-f(a)=\int_a^bf'$, by 225E.
+}%end of proof of 225L
+
+\leader{225M}{Corollary} Let $[a,b]$ be a non-empty closed interval in
+$\Bbb R$, and $f:[a,b]\to\Bbb R$ a continuous function.   Then $f$ is
+absolutely continuous iff it is continuous and of bounded variation and
+$f[A]$ is negligible for every negligible $A\subseteq[a,b]$.
+
+\proof{{\bf (a)} Suppose that $f$ is absolutely continuous.   By
+225C(a-b) it is continuous and of bounded variation, and by 225G we have
+$f[A]$ negligible for every negligible $A\subseteq [a,b]$.
+
+\medskip
+
+{\bf (b)} So now suppose that $f$ satisfies the conditions.   Set
+$F=\{x:x\in\ooint{a,b},\,f'(x)$ is defined$\}$.   By 224I once more,
+$[a,b]\setminus F$ is negligible, so $f[\,[a,b]\setminus F]$ is
+negligible.   Moreover, also by 224I, $f'$ is integrable over $[a,b]$
+or $F$.   So the conditions of 225K are satisfied and $f$ is absolutely
+continuous.
+}%end of proof of 225M
+
+\leader{225N}{The Cantor function}\cmmnt{ I should mention the
+standard example of a continuous function of bounded variation which is
+not absolutely continuous.}   Let $C\subseteq[0,1]$ be the Cantor
+set\cmmnt{ (134G)}.
+Recall that the `Cantor function' is a non-decreasing continuous
+function $f:[0,1]\to[0,1]$ such that $f'(x)$ is defined and equal to
+zero for every $x\in[0,1]\setminus C$,
+but $f(0)=0<1=f(1)$\cmmnt{ (134H)}.   \cmmnt{Of
+course} $f$ is of bounded variation and not absolutely continuous.   $C$
+is negligible and $f[C]=[0,1]$ is not.   If $x\in C$, then for every
+$n\in\Bbb N$ there is an interval of length $3^{-n}$, containing $x$, on
+which $f$ increases by $2^{-n}$;  so $f$ cannot be differentiable at
+$x$, and the set $F=\dom f'$ of 225K is precisely $[0,1]\setminus C$, so
+that $f[\,[0,1]\setminus F]=[0,1]$.
+
+\vleader{48pt}{225O}{Complex-valued functions}\cmmnt{ As usual, I
+spell out
+the results above in the forms applicable to complex-valued functions.
+
+\medskip
+
+} {\bf (a)} Let
+$(X,\Sigma,\mu)$ be any measure space and $f$ an integrable
+complex-valued
+function defined on a conegligible subset of $X$.
+Then for any $\epsilon>0$ there are a measurable set
+$E$ of finite measure and a real number
+$\delta>0$ such that $\int_F|f|\le\epsilon$ whenever $F\in\Sigma$ and
+$\mu(F\cap E)\le\delta$.  \prooflet{(Apply 225A to $|f|$.)}
+
+\spheader 225Ob If $[a,b]$ is a non-empty
+closed interval in $\Bbb R$ and $f:[a,b]\to\Bbb C$ is a function, we say
+that $f$ is {\bf absolutely continuous} if for every $\epsilon>0$ there
+is a $\delta>0$ such that $\sum_{i=1}^n|f(b_i)-f(a_i)|\le\epsilon$
+whenever $a\le a_1\le b_1\le a_2\le b_2\le\ldots\le a_n\le b_n\le b$ and
+$\sum_{i=1}^nb_i-a_i\le\delta$.   Observe that $f$ is absolutely
+continuous iff its real and imaginary parts are both absolutely
+continuous.
+
+\spheader 225Oc Let $[a,b]$ be a non-empty closed interval in
+$\Bbb R$.
+
+\quad(i) If $f:[a,b]\to\Bbb C$ is absolutely continuous it is of bounded
+variation on $[a,b]$, so is differentiable almost everywhere in $[a,b]$,
+and its derivative is integrable over $[a,b]$.
+
+\quad(ii) If $f$, $g:[a,b]\to\Bbb C$ are absolutely continuous, so are
+$f+g$ and $\zeta f$, for any $\zeta\in\Bbb C$, and $f\times g$.
+
+\quad(iii) If $g:[a,b]\to[c,d]$ is monotonic and absolutely continuous,
+and
+$f:[c,d]\to\Bbb C$ is absolutely continuous, then $fg:[a,b]\to\Bbb C$ is
+absolutely continuous.
+
+\spheader 225Od Let $[a,b]$ be a non-empty closed interval in
+$\Bbb R$ and $F:[a,b]\to\Bbb C$ a function.   Then the following are
+equiveridical:
+
+\quad(i) there is an integrable complex-valued function $f$ such that
+$F(x)=F(a)+\int_a^xf$ for every $x\in[a,b]$;
+
+\quad(ii) $\int_a^xF'$ exists and is
+equal to $F(x)-F(a)$ for every $x\in[a,b]$;
+
+\quad(iii) $F$ is absolutely continuous.
+
+\cmmnt{\noindent (Apply 225E to the real and imaginary parts of $F$.)}
+
+\spheader 225Oe Let $f$ be an integrable complex-valued function
+on an interval $[a,b]\subseteq\Bbb R$, and $g:[a,b]\to\Bbb C$ an
+absolutely continuous function.   Set $F(x)=\int_a^xf$ for $x\in[a,b]$.
+Then
+
+\Centerline{$\int_a^bf\times g
+=F(b)g(b) - F(a)g(a) -\int_a^bF\times g'$.}
+
+\cmmnt{\noindent (Apply 225F to the real and imaginary parts of $f$
+and $g$.)}
+
+\spheader 225Of Let $f$ be a continuous complex-valued function
+on a closed interval $[a,b]\subseteq\Bbb R$, and suppose that $f$ is
+differentiable at every point of the open interval $\ooint{a,b}$, with
+$f'$ integrable over $[a,b]$.   Then $f$ is absolutely continuous.
+\cmmnt{(Apply 225L to the real and imaginary parts of $f$.)}
+
+\cmmnt{\spheader 225Og For a result corresponding to 225M, see 264Yp.}
+
+\exercises{
+\leader{225X}{Basic exercises (a)} 
+%\spheader 225Xa
+Show directly from the definition in
+225B (without appealing to
+225E) that any absolutely continuous real-valued function on a closed
+interval $[a,b]$ is expressible as the difference of non-decreasing
+absolutely continuous functions.
+%225B
+
+\spheader 225Xb Show directly from the definition in 225B and
+the Mean Value Theorem (without appealing to 225K) that if a function
+$f$ is continuous on a closed interval $[a,b]$, differentiable on the
+open interval $\ooint{a,b}$, and has bounded derivative in
+$\ooint{a,b}$, then $f$ is absolutely continuous, so that
+$f(x)=f(a)+\int_a^xf'$ for every $x\in[a,b]$.
+%225E
+
+\spheader 225Xc Show that if $f:[a,b]\to\Bbb R$ is absolutely
+continuous, then $\Var f=\int_a^b|f'|$.   \Hint{put 224I and
+225E together.}
+%225E
+
+\spheader 225Xd Let $g:\Bbb R\to\Bbb R$ be a
+non-decreasing function which is absolutely continuous on every bounded
+interval; let $\mu_g$ be the associated Lebesgue-Stieltjes measure
+(114Xa), and $\Sigma_g$ its domain.   Show that $\int_Eg'=\mu_gE$  for
+any $E\in\Sigma_g$, if we allow $\infty$ as a value of the
+integral.   \Hint{start with intervals $E$.}
+%225E
+
+\spheader 225Xe Let $g:[a,b]\to\Bbb R$ be a non-decreasing
+absolutely continuous function, and $f:[g(a),g(b)]\to\Bbb R$ a
+continuous function.   Show that $\int_{g(a)}^{g(b)}f(t)dt=
+\int_a^bf(g(t))g'(t)dt$.   \Hint{set $F(x)=\int_{g(a)}^xf$,
+$G=Fg$ and consider $\int_a^bG'(t)dt$.   See also 263J.}
+%225E
+
+\spheader 225Xf Suppose that $I\subseteq\Bbb R$ is any
+non-trivial interval (bounded or unbounded, open, closed or half-open,
+but not empty or a singleton), and $f:I\to\Bbb R$ a function.   Show
+that
+$f$ is absolutely continuous on every closed bounded subinterval of $I$
+iff there is a function $g$ such that $\int_a^bg=f(b)-f(a)$ whenever
+$a\le b$ in $I$, and in this case $g$ is integrable iff $f$ is of
+bounded variation on $I$.
+%225E
+
+\spheader 225Xg Show that
+$\biggerint_0^1\Bover{\ln x}{x-1}dx=\sum_{n=1}^{\infty}\Bover1{n^2}$.
+\Hint{use 225F to find $\int_0^1x^n\ln x\,dx$, and recall that
+$\bover1{1-x}=\sum_{n=0}^{\infty}x^n$ for $0\le x<1$.}
+%225F
+
+\spheader 225Xh(i) Show that $\int_0^1t^adt$ is finite for
+every $a>-1$.   (ii) Show that $\int_1^{\infty}t^ae^{-t}dt$ is finite
+for every $a\in\Bbb R$.   \Hint{show that there is an $M$ such
+that $t^a\le Me^{t/2}$ for $t\ge 1$.}   (iii) Show that
+$\Gamma(a)=\int_0^{\infty}t^{a-1}e^{-t}dt$ is defined for every $a>0$.
+(iv) Show that $\Gamma(a+1)=a\Gamma(a)$ for every $a>0$.   (v) Show that
+$\Gamma(n+1)=n!$ for every $n\in\Bbb N$.
+
+($\Gamma$ is of course the {\bf gamma function}.)
+%225F
+
+\spheader 225Xi Show that if $b>0$ then
+$\int_0^{\infty}u^{b-1}e^{-u^2/2}du=2^{(b-2)/2}\Gamma(\bover{b}2)$.
+\Hint{consider $f(t)=t^{(b-2)/2}e^{-t}$, $g(u)=u^2/2$ in 225Xe.}
+%225Xe, 225Xh, 225F
+
+\spheader 225Xj Suppose that $f$, $g$ are
+lower semi-continuous functions, defined on subsets of $\BbbR^r$,
+and taking values in $\ocint{-\infty,\infty}$.   (i) Show that $f+g$,
+$f\wedge g$ and $f\vee g$ are lower semi-continuous, and that
+$\alpha f$ is lower
+semi-continuous for every $\alpha\ge 0$.   (ii) Show that if $f$ and $g$
+are non-negative, then $f\times g$ is lower semi-continuous.
+(iii) Show that if $f$ is non-negative and $g$ is continuous, then
+$f\times g$ is lower semi-continuous.   (iv) Show that if $f$ is
+non-decreasing then the composition $fg$ is lower semi-continuous.
+%225H
+
+\spheader 225Xk Let $A$ be a non-empty family of lower
+semi-continuous functions defined on subsets of $\BbbR^r$ and taking
+values in $[-\infty,\infty]$.   Set $g(x)=\sup\{f(x):f\in A,\,x\in\dom
+f\}$ for $x\in
+D=\bigcup_{f\in A}\dom f$.   Show that $g$ is lower
+semi-continuous.
+%225H
+
+\spheader 225Xl Let $f:[a,b]\to\Bbb R$ be an absolutely continuous
+function, where $a\le b$.   (i) Show that $|f|:[a,b]\to\Bbb R$ is
+absolutely continuous.   (ii)  Show that $gf$ is absolutely continuous
+whenever $g:f[\,[a,b]\,]\to\Bbb R$ is absolutely continuous and
+$g'$ is bounded.   (iii) Show that if $g:[a,b]\to\Bbb R$ is absolutely
+continuous and $\inf_{x\in[a,b]}|g(x)|>0$ then
+$f/g$ is absolutely continuous.
+%225K
+
+\spheader 225Xm Suppose that $f:[a,b]\to\Bbb R$ is continuous, and
+differentiable at all but countably many
+points of $[a,b]$.   Show that $f$ is absolutely continuous iff it is of
+bounded variation.
+%225K
+
+\spheader 225Xn Let $f:\coint{0,\infty}\to\Bbb C$ be a function
+which is absolutely continuous on $[0,a]$ for every
+$a\in\coint{0,\infty}$ and has Laplace transform
+$F(s)=\int_0^{\infty}e^{-sx}f(x)dx$ defined on $\{s:\Real s>S\}$.
+Suppose also that $\lim_{x\to\infty}e^{-Sx}f(x)=0$.   Show
+that $f'$ has Laplace transform $sF(s)-f(0)$ defined whenever $\Real
+s>S$.   ({\it Hint\/}:  show that
+
+\Centerline{$f(x)e^{-sx}-f(0)
+=\int_0^x\Bover{d}{dt}(f(t)e^{-st})dt$}
+
+\noindent for every $x\ge 0$.)
+%225O 225F
+
+\leader{225Y}{Further exercises (a)}
+%\spheader 225Ya
+Show that the composition of two absolutely
+continuous functions need not be absolutely continuous.   \Hint{224Xb.}
+%225B
+
+\spheader 225Yb Let $f:[a,b]\to\Bbb R$ be a continuous function, where
+$a<b$.   Set $G=\{x:x\in\ooint{a,b},\,\exists\,y\in\ocint{x,b}$ such
+that $f(x)<f(y)\}$.   Show that $G$ is open and is expressible as a
+disjoint union of intervals $\ooint{c,d}$ where $f(c)\le f(d)$.   Use
+this to prove 225D without calling on Vitali's theorem.
+%225D 2A2I
+
+\spheader 225Yc Let $f:[a,b]\to\Bbb R$ be a function of bounded
+variation and $\gamma>0$.   Show that there is an absolutely continuous
+function $g:[a,b]\to\Bbb R$ such that $|g'(x)|\le\gamma$ wherever the
+derivative is defined and $\{x:x\in[a,b],\,f(x)\ne g(x)\}$ has measure
+at most $\bover1{\gamma}\Var f$.   \Hint{reduce to the case of
+non-decreasing $f$.   Apply 225Yb to the function
+$x\mapsto f(x)-\gamma x$ and show that $\gamma\mu G\le\Var f$.
+Set $g(x)=f(x)$ for $x\in\ooint{a,b}\setminus G$.}
+%225Yb 225D
+
+\spheader 225Yd\dvAnew{2013}
+Let $f:\Bbb R\to\Bbb R$ be a function which is absolutely
+continuous on every bounded interval.   Show that
+$\Var f\le\bover12\Var f'+\int|f|$.
+%225E mt22bits
+
+\spheader 225Ye Let $f$ be a non-negative measurable real-valued
+function defined on a subset $D$ of $\BbbR^r$, where $r\ge 1$.   Show
+that for any $\epsilon>0$ there is a lower semi-continuous
+function $g:\BbbR^r\to[-\infty,\infty]$ such that $g(x)\ge f(x)$ for
+every $x\in D$ and $\int_Dg-f\le\epsilon$.
+%225I
+
+\spheader 225Yf Let $f$ be a measurable real-valued function
+defined on a subset $D$ of $\BbbR^r$, where $r\ge 1$.   Show that for
+any $\epsilon>0$ there is a lower semi-continuous function
+$g:\BbbR^r\to[-\infty,\infty]$ such that $g(x)\ge f(x)$ for every
+$x\in D$ and
+$\mu^*\{x:x\in D,\,g(x)>f(x)\}\le\epsilon$.   \Hint{134Yd, 134Fb.}
+%225I
+
+\spheader 225Yg(i) Show that if $f$ is a Lebesgue measurable real function
+then all its Dini derivates are Lebesgue measurable.
+(ii) Show that if $f$ is a Borel measurable real function
+then all its Dini derivates are Borel measurable.
+%225J mt22bits
+}%end of exercises
+
+\endnotes{
+\Notesheader{225} There is a good deal more to say about absolutely
+continuous functions;  I will return to the topic in the next section
+and in Chapter 26.   I shall rarely make direct use of the results
+from 225H on in their full strengths,
+but it seems to me that this kind of investigation is
+necessary for any clear picture of the relationships between such
+concepts as absolute continuity and bounded variation.    Of course, in
+order to apply these results, we do need a store of simple kinds
+of absolutely continuous function, differentiable functions with
+bounded derivative forming the most important class (225Xb).   A larger
+family of the same kind is the class of `Lipschitz' functions
+(262Bc).
+
+The definition of `absolutely continuous function' is ordinarily set
+out for closed bounded intervals, as in 225B.   The point is that for
+other intervals the simplest generalizations of this formulation do not
+seem quite appropriate.   In 225Xf I try to suggest the kind of demands
+one might make on functions defined on other types of interval.
+
+I should remark that the real prize is still not quite within our grasp.
+I have been able to give a reasonably satisfactory formulation of simple
+integration by parts (225F), at least for bounded intervals -- a further
+limiting process is necessary to deal with unbounded intervals.   But a
+companion method from advanced calculus, integration by substitution,
+remains elusive.   The best I think we can do at this point is 225Xe,
+which insists on a continuous integrand $f$.   It is the case that the
+result is valid for general integrable $f$, but there are some further
+subtleties to be mastered on the way;  the necessary ideas are given in
+the much more general results 235A and 263D below, and applied to the
+one-dimensional case in 263J.
+
+On the way to the characterization of absolutely continuous functions in
+225K, I find myself calling on one of the fundamental relationships
+between Lebesgue measure and the topology of $\BbbR^r$ (225I).   The
+technique here can be adapted to give many variations of the result;
+see 225Ye-225Yf.   If you have not seen semi-continuous functions
+before, 225Xj-225Xk give a partial idea of their properties.    In 225J
+I give a fragment of `descriptive set theory', the study of the kinds of
+set which can arise from the formulae of analysis.   These ideas too
+will re-surface elsewhere (compare 225Yg and also the proof of 262M
+below) and will be of great importance in Volumes 4 and 5.
+}%end of notes
+
+\discrpage
+

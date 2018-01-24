@@ -1,0 +1,1275 @@
+\frfilename{mt255.tex}
+\versiondate{3.7.08}
+\copyrightdate{2000}
+
+\def\chaptername{Product measures}
+\def\sectionname{Convolutions of functions}
+
+\newsection{255}
+
+I devote a section to a construction which is of great importance -- and
+will in particular be very useful in Chapters 27 and 28 -- and may also
+be regarded as a series of exercises on the work so far.
+
+I find it difficult to know how much repetition to indulge in in this
+section, because the natural unified expression of the ideas is in the
+theory of topological
+groups, and I do not think we are yet ready for the general theory (I
+will come to it in Chapter 44 in Volume 4).   The groups we need for this volume are
+
+\qquad $\Bbb R$;
+
+\qquad $\BbbR^r$, for $r\ge 2$;
+
+\qquad $S^1=\{z:z\in\Bbb C,\,|z|=1\}$, the `circle group';
+
+\qquad $\Bbb Z$, the group of integers.
+
+\noindent All the ideas already appear in the theory of convolutions on
+$\Bbb R$, and I will therefore present this material in relatively
+detailed form, before sketching the forms appropriate to the groups
+$\BbbR^r$ and $S^1$ (or $\ocint{-\pi,\pi}$);  $\Bbb Z$ can I think be
+safely left to the exercises.
+
+\leader{255A}{}\cmmnt{ This being a book on measure theory, it is
+perhaps appropriate for me to emphasize, as the basis of the theory of
+convolutions, certain measure space isomorphisms.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $\mu$ be Lebesgue measure on $\Bbb R$ and
+$\mu_2$ Lebesgue measure on $\BbbR^2$;  write $\Sigma$, $\Sigma_2$ for
+their domains.
+
+(a) For any $a\in\Bbb R$, the map $x\mapsto a+x:\Bbb R\to\Bbb R$ is a
+measure space automorphism of $(\Bbb R,\Sigma,\mu)$.
+
+(b) The map $x\mapsto -x:\Bbb R\to\Bbb R$ is a measure space
+automorphism of $(\Bbb R,\Sigma,\mu)$.
+
+(c) For any $a\in\Bbb R$, the map $x\mapsto a-x:\Bbb R\to\Bbb R$ is a
+measure space automorphism of $(\Bbb R,\Sigma,\mu)$.
+
+(d) The map $(x,y)\mapsto(x+y,y):\BbbR^2\to\BbbR^2$ is a measure space
+automorphism of $(\BbbR^2,\Sigma_2,\mu_2)$.
+
+(e) The map $(x,y)\mapsto(x-y,y):\BbbR^2\to\BbbR^2$ is a measure space
+automorphism of $(\BbbR^2,\Sigma_2,\mu_2)$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} I ought to remark that (b), (d) and (e) may be
+regarded as simple
+special cases of Theorem 263A in the next chapter.   I nevertheless feel
+that it is worth writing out separate proofs here, partly because the
+general case of linear operators dealt with in 263A requires some extra
+machinery not needed here, but more because the result here has nothing
+to do with the {\it linear} structure of $\Bbb R$ and $\BbbR^2$;  it is
+exclusively dependent on the {\it group} structure of $\Bbb R$, together
+with the links between its topology and measure, and the arguments I
+give now are adaptable to the proper generalizations to abelian
+topological groups.
+
+}%end of comment
+
+\proof{{\bf (a)} This is just the translation-invariance of Lebesgue
+measure, dealt with in \S134.   There I showed that if $E\in\Sigma$
+then $E+a\in\Sigma$ and $\mu(E+a)=\mu E$ (134Ab);  that is, writing
+$\phi(x)=x+a$, $\mu(\phi[E])$ exists and is equal to $\mu E$ for every
+$E\in\Sigma$.   But of course we also have
+
+\Centerline{$\mu(\phi^{-1}[E])=\mu(E+(-a))=\mu E$}
+
+\noindent for every $E\in\Sigma$, so $\phi$ is an automorphism.
+
+\medskip
+
+{\bf (b)} The point is that $\mu^*(A)=\mu^*(-A)$ for every
+$A\subseteq\Bbb R$.   \Prf\ (I follow the definitions of Volume 1.)   If
+$\epsilon>0$, there is a sequence $\sequencen{I_n}$ of half-open
+intervals covering $A$ with $\sum_{n=0}^{\infty}\mu
+I_n\le\mu^*A+\epsilon$.   Now $-A\subseteq\bigcup_{n\in\Bbb N}(-I_n)$.
+But if $I_n=\coint{a_n,b_n}$ then $-I_n=\ocint{-b_n,a_n}$, so
+
+\Centerline{$\mu^*(-A)\le\sum_{n=0}^{\infty}\mu(-I_n)
+=\sum_{n=0}^{\infty}\max(0,-a_n-(-b_n))=\sum_{n=0}^{\infty}\mu I_n
+\le\mu^*A+\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, $\mu^*(-A)\le\mu^*A$.   Also of
+course $\mu^*A\le\mu^*(-(-A))=\mu^*A$, so $\mu^*(-A)=\mu^*A$.   \Qed
+
+This means that, setting $\phi(x)=-x$ this time, $\phi$ is an
+automorphism of the structure $(\Bbb R,\mu^*)$.   But since $\mu$ is
+defined from $\mu^*$ by the abstract procedure of \Caratheodory's
+method, $\phi$ must also be an automorphism of the structure $(\Bbb
+R,\Sigma,\mu)$.
+
+\medskip
+
+{\bf (c)} Put (a) and (b) together;  $x\mapsto a-x$ is the composition
+of the automorphisms $x\mapsto -x$ and $x\mapsto a+x$, and the
+composition of automorphisms is surely an automorphism.
+
+\medskip
+
+{\bf (d)(i)} Write $\Tau$ for the set
+$\{E:E\in\Sigma_2,\,\phi[E]\in\Sigma_2\}$, where this time
+$\phi(x,y)=(x+y,y)$ for $x$, $y\in\Bbb R$, so that 
+$\phi:\BbbR^2\to\Bbb R^2$ is a permutation.   
+Then $\Tau$ is a $\sigma$-algebra, being the
+intersection of the $\sigma$-algebras $\Sigma_2$ and
+$\{E:\phi[E]\in\Sigma_2\}=\{\phi^{-1}[F]:F\in\Sigma_2\}$.   Moreover,
+$\mu_2E=\mu_2(\phi[E])$ for every $E\in\Tau$.   \Prf\  By 252D,
+we have
+
+\Centerline{$\mu_2E=\int\mu\{x:(x,y)\in E\}\mu(dy)$.}
+
+\noindent But applying the same result to $\phi[E]$ we have
+
+$$\eqalignno{\mu_2\phi[E]
+&=\int\mu\{x:(x,y)\in\phi[E]\}\mu(dy)
+=\int\mu\{x:(x-y,y)\in E\}\mu(dy)\cr
+&=\int\mu(E^{-1}[\{y\}]+y)\mu(dy)
+=\int\mu E^{-1}[\{y\}]\mu(dy)\cr
+\noalign{\noindent (because Lebesgue measure is translation-invariant)}
+&=\mu_2E. \text{  \Qed}\cr}$$
+
+\medskip
+
+\quad{\bf (ii)} Now $\phi$ and $\phi^{-1}$ are clearly continuous, so
+that $\phi[G]$ is open, and therefore measurable, for every open $G$;
+consequently all open sets must belong to $\Tau$.   Because $\Tau$ is a
+$\sigma$-algebra, it contains all Borel sets.   Now let $E$ be any
+measurable set.   Then there are Borel sets $H_1$, $H_2$ such that
+$H_1\subseteq E\subseteq H_2$ and $\mu_2(H_2\setminus H_1)=0$ (134Fb).
+We have $\phi[H_1]\subseteq\phi[E]\subseteq\phi[H_2]$ and
+
+\Centerline{$\mu(\phi[H_2]\setminus\phi[H_1])
+=\mu\phi[H_2\setminus H_1]=\mu(H_2\setminus H_1)=0$.}
+
+\noindent Thus $\phi[E]\setminus\phi[H_1]$ must be negligible, therefore
+measurable, and $\phi[E]=\phi[H_1]\cup(\phi[E]\setminus\phi[H_1])$ is
+measurable.   This shows that $\phi[E]$ is measurable whenever $E$ is.
+
+\medskip
+
+\quad{\bf (iii)} Repeating the same arguments with $-y$ in the place of
+$y$, we see that $\phi^{-1}[E]$ is measurable, and
+$\mu_2\phi^{-1}[E]=\mu_2E$, for every $E\in\Sigma_2$.
+So $\phi$ is an automorphism of the structure $(\BbbR^2,\Sigma_2,\mu_2)$.
+
+\medskip
+
+{\bf (e)} Of course this is an immediate corollary either of the proof
+of (d) or of (d) itself as stated, since $(x,y)\mapsto(x-y,y)$ is just
+the inverse of $(x,y)\mapsto(x+y,y)$.
+}%end of proof of 255A
+
+\leader{255B}{Corollary} (a) If $a\in\Bbb R$, then for any
+complex-valued function $f$ defined on a subset of $\Bbb R$
+
+\Centerline{$\int f(x)dx
+=\int f(a+x)dx=\int f(-x)dx=\int f(a-x)dx$}
+
+\noindent in the sense that if one of the integrals exists so do the
+others, and they are then all equal.
+
+(b) If $f$ is a complex-valued function defined on a subset of
+$\BbbR^2$, then
+
+\Centerline{$\int f(x+y,y)d(x,y)=\int f(x-y,y)d(x,y)
+=\int f(x,y)d(x,y)$}
+
+\noindent in the sense that if one of the integrals exists and is finite
+so does the other, and they are then equal.
+
+\cmmnt{
+\leader{255C}{Remarks (a)}  I am not sure whether it ought to be
+`obvious' that if $(X,\Sigma,\mu)$, $(Y,\Tau,\nu)$ are measure spaces
+and $\phi:X\to Y$ is an isomorphism, then for any function
+$f$ defined on a subset of $Y$
+
+\Centerline{$\int f(\phi(x))\mu(dx)=\int f(y)\nu(dy)$}
+
+\noindent in the sense that if one is defined so is the other, and they
+are then equal.   If it is obvious then the obviousness must be
+contingent on the nature of the definition of integration:
+integrability with respect to the measure $\mu$ is something which
+depends on the structure $(X,\Sigma,\mu)$ and on no other properties of
+$X$.   If it is not obvious then it is an easy deduction from Theorem
+235A above, applied in turn to $\phi$ and $\phi^{-1}$ and to the real
+and imaginary parts of $f$.   In any case the isomorphisms of 255A are
+just those needed to prove 255B.
+
+\header{255Cb}{\bf (b)} Note that in 255Bb I write $\int f(x,y)d(x,y)$
+to emphasize that I am considering the integral of $f$ with respect to
+two-dimensional Lebesgue measure.   The fact that
+
+\Centerline{$\int\bigl(\int f(x,y)dx\bigr)dy
+=\int\bigl(\int f(x+y,y)dx\bigr)dy=\int\bigl(\int f(x-y,y)dx\bigr)dy$}
+
+\noindent is actually easier, being an immediate consequence of the
+equality $\int f(a+x)dx=\int f(x)dx$.   But applications of this result
+often depend essentially on the fact that the functions
+$(x,y)\mapsto f(x+y,y)$, $(x,y)\mapsto f(x-y,y)$ are measurable as
+functions of two variables.
+
+\header{255Cc}{\bf (c)} I have moved directly to complex-valued
+functions because these are necessary for the applications in Chapter
+28.   If however
+they give you any discomfort, either technically or aesthetically, all
+the measure-theoretic ideas of this section are already to be found in
+the real case, and you may wish at first to read it as if only real
+numbers were involved.
+}%end of comment
+
+\leader{255D}{}\cmmnt{ A further corollary of 255A will be useful.
+
+\medskip
+
+\noindent}{\bf Corollary} Let $f$ be a complex-valued function defined
+on a subset of $\Bbb R$.
+
+(a) If $f$ is measurable, then the functions $(x,y)\mapsto f(x+y)$,
+$(x,y)\mapsto f(x-y)$ are measurable.
+
+(b) If $f$ is defined almost everywhere in $\Bbb R$, then the functions
+$(x,y)\mapsto f(x+y)$, $(x,y)\mapsto f(x-y)$ are defined almost
+everywhere in $\BbbR^2$.
+
+\proof{ Writing $g_1(x,y)=f(x+y)$, $g_2(x,y)=f(x-y)$ whenever these are
+defined, we have
+
+\Centerline{$g_1(x,y)=(f\otimes\chi\Bbb R)(\phi(x,y))$,
+\quad $g_2(x,y)=(f\otimes\chi\Bbb R)(\phi^{-1}(x,y))$,}
+
+\noindent writing $\phi(x,y)=(x+y,y)$ as in 255B(d-e), and
+$(f\otimes\chi\Bbb R)(x,y)=f(x)$, following the notation of 253B.   By
+253C, $f\otimes\chi\Bbb R$ is measurable if $f$ is, and defined
+almost everywhere if $f$ is.   Because $\phi$ is a measure space
+automorphism, $(f\otimes\chi\Bbb R)\phi=g_1$ and
+$(f\otimes\chi\Bbb R)\phi^{-1}=g_2$ are measurable, or defined almost
+everywhere, if $f$ is.
+}%end of proof of 255D
+
+\vleader{48pt}{255E}{The basic formula} Let $f$ and $g$ be measurable
+complex-valued
+functions defined almost everywhere in $\Bbb R$.   Write $f*g$ for the
+function defined by the formula
+
+\Centerline{$(f*g)(x)=\int f(x-y)g(y)dy$}
+
+\noindent whenever the integral exists\cmmnt{ (with respect to
+Lebesgue measure, naturally)} as a complex number.   Then $f*g$ is the
+{\bf convolution} of the functions $f$ and $g$.
+\cmmnt{
+
+Observe that} $\dom(|f|*|g|)=\dom(f*g)$, and\cmmnt{ that}
+$|f*g|\le |f|*|g|$ everywhere on their common domain, for all $f$ and
+$g$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Note that I am here prepared to contemplate the
+convolution of $f$ and $g$ for arbitrary members of
+$\eusm L^0_{\Bbb C}$, the space of
+almost-everywhere-defined measurable complex-valued functions, even
+though the domain of $f*g$ may be empty.   }%end of comment
+
+\leader{255F}{Elementary properties (a)} Because integration is linear,
+we surely have
+
+
+\Centerline{$((f_1+f_2)*g)(x)=(f_1*g)(x)+(f_2*g)(x)$,}
+
+\Centerline{$(f*(g_1+g_2))(x)=(f*g_1)(x)+(f*g_2)(x)$,}
+
+\Centerline{$(cf*g)(x)=(f*cg)(x)=c(f*g)(x)$}
+
+\noindent whenever the right-hand sides of the formulae are defined.
+
+\spheader 255Fb If $f$ and $g$ are measurable complex-valued
+functions defined almost everywhere in $\Bbb R$, then
+$f*g=g*f$\cmmnt{, in the
+strict sense that they have the same domain and the same value at each
+point of that common domain}.
+
+\prooflet{\Prf\ Take $x\in\Bbb R$ and apply 255Ba to see that
+
+$$\eqalign{(f*g)(x)
+&=\int f(x-y)g(y)dy
+=\int f(x-(x-y))g(x-y)dy\cr
+&=\int f(y)g(x-y)dy
+=(g*f)(x)\cr}$$
+
+\noindent if either is defined.   \Qed}
+
+\header{255Fc}{\bf (c)} If $f_1$, $f_2$, $g_1$, $g_2$ are measurable
+complex-valued functions defined almost everywhere in $\Bbb R$,
+$f_1\eae f_2$ and $g_1\eae g_2$, then $f_1*g_1=f_2*g_2$.
+\prooflet{\Prf\ For every $x\in\Bbb R$ we
+shall have $f_1(x-y)=f_2(x-y)$ for almost every $y\in\Bbb R$, by 255Ac.
+Consequently $f_1(x-y)g_1(y)=f_2(x-y)g_2(y)$ for almost every $y$,
+and $(f_1*g_1)(x)=(f_2*g_2)(x)$ in the sense that if one of these is
+defined so is the other, and they are then equal.\ \Qed}
+
+It follows that if $u$, $v\in L^0_{\Bbb C}$, then we have a function
+$\theta(u,v)$
+which is equal to $f*g$ whenever $f$, $g\in\eusm L^0_{\Bbb C}$
+are such that $f^{\ssbullet}=u$ and $g^{\ssbullet}=u$.
+\cmmnt{Observe that $\theta(u,v)=\theta(v,u)$, and
+that $\theta(u_1+u_2,v)$ extends $\theta(u_1,v)+\theta(u_2,v)$,
+$\theta(cu,v)$ extends $c\theta(u,v)$ for all $u$, $u_1$, $u_2$,
+$v\in L^0_{\Bbb C}$ and $c\in\Bbb C$.}
+
+\leader{255G}{}\cmmnt{ I have grouped 255Fa-255Fc together because
+they depend
+only on ideas up to and including 255Ac and 255Ba.   Using the second
+halves of 255A and 255B we get much deeper.   I begin with what seems to
+be the fundamental result.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $f$, $g$ and $h$ be measurable
+complex-valued functions defined almost everywhere in $\Bbb R$.
+
+(a) Suppose that $\int h(x+y)f(x)g(y)d(x,y)$ exists in $\Bbb C$.
+Then
+
+$$\eqalign{\int h(x)(f*g)(x)dx
+&=\int h(x+y)f(x)g(y)d(x,y)\cr
+&=\iint h(x+y)f(x)g(y)dxdy
+=\iint h(x+y)f(x)g(y)dydx\cr}$$
+
+\noindent provided
+that in the expression $h(x)(f*g)(x)$ we interpret the product as $0$ if
+$h(x)=0$ and $(f*g)(x)$ is undefined.
+
+(b) If, on a similar interpretation of $|h(x)|(|f|*|g|)(x)$, the integral
+$\int |h(x)|(|f|*|g|)(x)dx$ is finite, then
+$\int h(x+y)f(x)g(y)d(x,y)$ exists in $\Bbb C$.
+
+\proof{ Consider the functions
+
+\Centerline{$k_1(x,y)=h(x)f(x-y)g(y)$,\quad $k_2(x,y)=h(x+y)f(x)g(y)$}
+
+\noindent wherever these are defined.   255D tells us that $k_1$ and
+$k_2$ are measurable and defined almost everywhere.   Now setting
+$\phi(x,y)=(x+y,y)$, we have $k_2=k_1\phi$, so that
+
+\Centerline{$\int k_1(x,y)d(x,y)=\int k_2(x,y)d(x,y)$}
+
+\noindent if either exists, by 255Bb.
+
+If
+
+\Centerline{$\int h(x+y)f(x)g(y)d(x,y)=\int k_2$}
+
+\noindent exists, then by Fubini's theorem we have
+
+\Centerline{$\int k_2=\int k_1(x,y)d(x,y)
+=\int(\int h(x)f(x-y)g(y)dy)dx$}
+
+\noindent so $\int h(x)f(x-y)g(y)dy$ exists almost everywhere, that is,
+$(f*g)(x)$ exists for almost every $x$ such that $h(x)\ne 0$;  on the
+interpretation I am using here, $h(x)(f*g)(x)$ exists almost everywhere,
+and
+
+$$\eqalign{\int h(x)(f*g)(x)dx
+&=\int\bigl(\int h(x)f(x-y)g(y)dy\bigr)dx
+=\int k_1\cr
+&=\int k_2
+=\int h(x+y)f(x)g(y)d(x,y)\cr
+&=\iint h(x+y)f(x)g(y)dxdy
+=\iint h(x+y)f(x)g(y)dydx\cr}$$
+
+\noindent by Fubini's theorem again.
+
+If (on the same interpretation) $|h|\times(|f|*|g|)$ is integrable,
+
+\Centerline{$|k_1(x,y)|=|h(x)||f(x-y)||g(y)|$}
+
+\noindent is measurable, and
+
+\Centerline{$\iint|h(x)||f(x-y)||g(y)|dydx
+=\int|h(x)|(|f|*|g|)(x)dx$}
+
+\noindent is finite, so by Tonelli's theorem (252G, 252H) $k_1$ and
+$k_2$ are integrable.
+}%end of proof of 255G
+
+\leader{255H}{}\cmmnt{ Certain standard results are now easy.
+
+\wheader{255H}{4}{2}{2}{24pt}
+
+\noindent}{\bf Corollary} If $f$, $g$ are complex-valued
+functions which are integrable over $\Bbb R$, then $f*g$ is integrable,
+with
+
+\Centerline{$\int f*g =\int f\int g$,
+\quad$\int|f*g|\le\int|f|\int|g|$.}
+
+\proof{ In 255G, set $h(x)=1$ for every $x\in\Bbb R$;  then
+
+\Centerline{$\int h(x+y)f(x)g(y)d(x,y)
+=\int f(x)g(y)d(x,y)=\int f\int g$}
+
+\noindent by 253D, so
+
+\Centerline{$\int f*g
+=\int h(x)(f*g)(x)dx=\int h(x+y)f(x)g(y)d(x,y)=\int f\int g$,}
+
+\noindent as claimed.   Now
+
+\Centerline{$\int|f*g|\le\int|f|*|g|=\int|f|\int|g|$.}
+}%\end of proof of 255H
+
+\leader{255I}{Corollary} For any measurable complex-valued functions
+$f$, $g$ defined almost everywhere in $\Bbb R$, $f*g$ is measurable and
+has measurable domain.
+
+\proof{ Set $f_n(x)=f(x)$ if $x\in\dom f$, $|x|\le n$ and $|f(x)|\le n$,
+and $0$ elsewhere in $\Bbb R$;  define $g_n$ similarly from $g$.   Then
+$f_n$ and $g_n$ are integrable, $|f_n|\le|f|$ and $|g_n|\le|g|$ almost
+everywhere, $f\eae\lim_{n\to\infty}f_n$ and $g\eae\lim_{n\to\infty}g_n$.
+Consequently, by Lebesgue's Dominated Convergence Theorem,
+
+$$\eqalign{(f*g)(x)
+&=\int f(x-y)g(y)dy
+=\int \lim_{n\to\infty}f_n(x-y)g_n(y)dy\cr
+&=\lim_{n\to\infty}\int f_n(x-y)g_n(y)dy
+=\lim_{n\to\infty}(f_n*g_n)(x)\cr}$$
+
+\noindent for every $x\in\dom f*g$.   But $f_n*g_n$ is integrable,
+therefore measurable, for every $n$, so that $f*g$ must be measurable.
+
+As for the domain of $f*g$,
+
+$$\eqalign{x\in\dom(f*g)
+&\iff\int f(x-y)g(y)dy\text{ is defined in }\Bbb C\cr
+&\iff\int|f(x-y)||g(y)|dy\text{ is defined in }\Bbb R\cr
+&\iff\int|f_n(x-y)||g_n(y)|dy\text{ is defined in }\Bbb R
+\text{ for every }n\cr
+&\qquad\qquad\text{and }
+\sup_{n\in\Bbb N}\int|f_n(x-y)||g_n(y)|dy<\infty.\cr
+}$$
+
+\noindent Because every $|f_n|*|g_n|$ is integrable, therefore
+measurable and with measurable domain,
+
+\Centerline{$\dom(f*g)=\{x:x\in\bigcap_{n\in\Bbb N}\dom(|f_n|*|g_n|),\,
+\sup_{n\in\Bbb N}(|f_n|*|g_n|)(x)<\infty\}$}
+
+\noindent is measurable.
+}%end of proof of 255I
+
+\leader{255J}{Theorem} Let $f$, $g$ and $h$ be complex-valued measurable
+functions, defined almost everywhere in $\Bbb R$, such that $f*g$ and $g*h$
+are defined a.e.   Suppose that
+$x\in\Bbb R$ is such that one of $(|f|*(|g|*|h|))(x)$,
+$((|f|*|g|)*|h|)(x)$ is defined in $\Bbb R$.   Then $f*(g*h)$ and
+$(f*g)*h$ are defined and equal at $x$.
+
+\proof{ Set $k(y)=f(x-y)$ when this is defined, so that $k$ is
+measurable and defined almost everywhere (255D).
+
+\medskip
+
+{\bf (a)} If $(|f|*(|g|*|h|))(x)$ is defined, this is
+$\int|k(y)|(|g|*|h|)(y)dy$, so by 255G we have
+
+\Centerline{$\int k(y)(g*h)(y)dy=\int k(y+z)g(y)h(z)d(y,z)$,}
+
+\noindent that is,
+
+$$\eqalign{(f*(g*h))(x)
+&=\int f(x-y)(g*h)(y)dy
+=\int k(y)(g*h)(y)dy\cr
+&=\int k(y+z)g(y)h(z)d(y,z)
+=\iint k(y+z)g(y)h(z)dydz\cr
+&=\iint f(x-y-z)g(y)h(z)dydz
+=\int (f*g)(x-z)h(z)dz\cr
+&=((f*g)*h)(x).\cr}$$
+
+\medskip
+
+{\bf (b)} If $((|f|*|g|)*|h|)(x)$ is defined, this is
+
+$$\eqalign{\int(|f|*|g|)(x-z)|h(z)|dz
+&=\iint|f(x-z-y)||g(y)||h(z)|dydz\cr
+&=\iint|k(y+z)||g(y)||h(z)|dydz.\cr}$$
+
+\noindent By 255D again, $(y,z)\mapsto k(y+z)$ is measurable, so we can
+apply Tonelli's theorem to see that $\int k(y+z)g(y)h(z)d(y,z)$ is defined,
+and is equal to $\int k(y)(g*h)(y)dy=(f*(g*h))(x)$ by 255Ga.   On the other
+side, by the last two lines of the proof of (a),
+$\int k(y+z)g(y)h(z)d(y,z)$ is also equal to $((f*g)*h)(x)$.
+}%end of proof of  255J
+
+\leader{255K}{}\cmmnt{ I do not think we shall need an exhaustive
+discussion of
+the question of just when $(f*g)(x)$ is defined;  this seems to be
+complicated.   However there is a fundamental case in which we can be
+sure that $(f*g)(x)$ is defined everywhere.
+
+\medskip
+
+\noindent}{\bf Proposition} Suppose that $f$, $g$ are measurable
+complex-valued
+functions defined almost everywhere in $\Bbb R$, and that
+$f\in\eusm L^p_{\Bbb C}$,
+$g\in\eusm L^q_{\Bbb C}$ where $p$, $q\in[1,\infty]$ and
+$\bover1p+\bover1q=1$\cmmnt{ (writing $\bover{1}{\infty}=0$ as
+usual)}.   Then $f*g$ is defined everywhere in $\Bbb R$, is uniformly
+continuous, and
+
+$$\eqalign{\sup_{x\in\Bbb R}|(f*g)(x)|
+&\le\|f\|_p\|g\|_q\text{ if }1<p<\infty,\,1<q<\infty,\cr
+&\le\|f\|_1\esssup|g|\text{ if }p=1,\,q=\infty,\cr
+&\le\esssup|f|\cdot\|g\|_1\text{ if }p=\infty,\,q=1.\cr}$$
+
+\proof{{\bf (a)} (For an introduction to $\eusm L^p$ spaces, see \S244.)
+For any $x\in\Bbb R$, the function $f_x$, defined by setting
+$f_x(y)=f(x-y)$ whenever $x-y\in\dom f$, must also belong to
+$\eusm L^p$, because $f_x=f\phi$ for an automorphism $\phi$ of the
+measure
+space.   Consequently $(f*g)(x)=\int f_x\times g$ is defined, and of
+modulus at most $\|f\|_p\|g\|_q$ or $\|f\|_1\esssup|g|$ or
+$\esssup|f|\cdot\|g\|_1$, by 244Eb/244Pb and 243Fa/243K.
+
+\medskip
+
+{\bf (b)} To see that $f*g$ is uniformly continuous, argue as follows.
+Suppose first that $p<\infty$.   Let $\epsilon>0$.   Let $\eta>0$ be
+such that $(2+2^{1/p})\|g\|_q\eta\le\epsilon$.
+Then there is a bounded continuous function $h:\Bbb R\to\Bbb C$ such
+that $\{x:h(x)\ne 0\}$ is bounded and $\|f-h\|_p\le\eta$ (244Hb/244Pb);
+let $M\ge 1$ be such that $h(x)=0$ whenever $|x|\ge M-1$.   Next,
+$h$ is uniformly continuous, so there is a $\delta\in\ocint{0,1}$ such
+that $|h(x)-h(x')|\le M^{-1/p}\eta$ whenever $|x-x'|\le\delta$.
+
+Suppose that $|x-x'|\le\delta$.   Defining $h_x(y)=h(x-y)$, as before,
+we have
+
+$$\eqalignno{\int|h_x-h_{x'}|^p
+&=\int|h(x-y)-h(x'-y)|^pdy
+=\int|h(t)-h(x'-x+t)|^pdt\cr
+\displaycause{substituting $t=x-y$}
+&=\int_{-M}^M|h(t)-h(x'-x+t)|^pdt\cr
+\displaycause{because $h(t)=h(x'-x+t)=0$ if $|t|\ge M$}
+&\le 2M(M^{-1/p}\eta)^p\cr
+\displaycause{because $|h(t)-h(x'-x+t)|\le M^{-1/p}\eta$ for every $t$}
+&=2\eta^p.\cr}$$
+
+\noindent So $\|h_x-h_{x'}\|_p\le 2^{1/p}\eta$.   On the other hand,
+
+\Centerline{$\int|h_{x}-f_{x}|^p
+=\int|h(x-y)-f(x-y)|^pdy
+=\int|h(y)-f(y)|^pdy$,}
+
+\noindent so $\|h_x-f_x\|_p=\|h-f\|_p\le\eta$, and similarly
+$\|h_{x'}-f_{x'}\|_p\le\eta$.   So
+
+\Centerline{$\|f_x-f_{x'}\|_p
+\le\|f_x-h_x\|_p+|h_x-h_{x'}\|_p+\|h_{x'}-f_{x'}\|_p
+\le(2+2^{1/p})\eta$.}
+
+\noindent This means that
+
+$$\eqalign{|(f*g)(x)-(f*g)(x')|
+&=|\int f_x\times g-\int f_{x'}\times g|
+=|\int(f_x-f_{x'})\times g|\cr
+&\le\|f_x-f_{x'}|_p\|g\|_q
+\le(2+2^{1/p})\|g\|_q\eta
+\le\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary, $f*g$ is uniformly continuous.
+
+The argument here supposes that $p$ is finite.   But if $p=\infty$ then
+$q=1$ is finite, so we can apply the method with $g$ in place of $f$ to
+show that $g*f$ is uniformly continuous, and $f*g=g*f$  by 255Fb.
+}%end of proof of 255K
+
+\leader{255L}{The $r$-dimensional case} I have written 255A-255K out as
+theorems about Lebesgue measure on $\Bbb R$.   However they all
+apply\cmmnt{ equally well} to Lebesgue measure on $\BbbR^r$ for any
+$r\ge 1$\cmmnt{, and the
+modifications required are so small that I think I need do no more than
+ask you to read through the arguments again, turning every $\Bbb R$ into
+an $\BbbR^r$, and every $\BbbR^2$ into an $(\BbbR^r)^2$.   In 255A
+and elsewhere, the measure $\mu_2$ should be read either as Lebesgue
+measure on $\BbbR^{2r}$ or as the product measure on $(\BbbR^r)^2$;
+by 251N the two may be identified.   There is a trivial modification
+required in part (b) of the proof;  if $I_n=\coint{a_n,b_n}$ then
+
+\Centerline{$\mu I_n=\mu(-I_n)
+=\prod_{i=1}^r\max(0,\beta_{ni}-\alpha_{ni})$,}
+
+\noindent writing $a_n=(\alpha_{n1},\ldots,\alpha_{nr})$.   In the proof
+of 255I, the functions $f_n$ should be defined by saying that
+$f_n(x)=f(x)$ if $|f(x)|\le n$ and $\|x\|\le n$, $0$ otherwise.
+
+In quoting these results, therefore, I shall be uninhibited in referring
+to the paragraphs 255A-255K as if they were actually written out for
+general $r\ge 1$}.
+
+\leader{255M}{The case of $\ocint{-\pi,\pi}$}\dvro{ {\bf (a)}}{ The same
+ideas also apply
+to the circle group $S^1$ and to the interval $\ocint{-\pi,\pi}$, but
+here perhaps rather more explanation is in order.
+
+\spheader 255Ma The first thing to establish is the appropriate
+group operation.}   If we think of $S^1$ as the set 
+$\{z:z\in\Bbb C,\,|z|=1\}$, then the group operation is complex 
+multiplication, and in
+the formulae above $x+y$ must be rendered as $xy$, while $x-y$ must be
+rendered as $xy^{-1}$.   On the interval $\ocint{-\pi,\pi}$, the group
+operation is $+_{2\pi}$, where for $x$, $y\in\ocint{-\pi,\pi}$ I write
+$x+_{2\pi}y$ for whichever of $x+y$, $x+y+2\pi$, $x+y-2\pi$ belongs to
+$\ocint{-\pi,\pi}$.   \cmmnt{To see that this is indeed a group
+operation, one
+method is to note that it corresponds to multiplication on $S^1$ if we
+use the canonical bijection
+$x\mapsto e^{ix}:\ocint{-\pi,\pi}\to S^1$;  another, to note that it
+corresponds to the operation on the quotient group $\Bbb R/2\pi\Bbb Z$.
+Thus in this interpretation of the ideas of 255A-255K, we shall wish to
+replace $x+y$ by $x+_{2\pi}y$, $-x$ by $-_{2\pi}x$, and $x-y$ by
+$x-_{2\pi}y$, where
+
+\Centerline{$-_{2\pi}x=-x$ if $x\in\ooint{-\pi,\pi}$,
+\quad$-_{2\pi}\pi=\pi$,}
+
+\noindent and $x-_{2\pi}y$ is whichever of $x-y$, $x-y+2\pi$, $x-y-2\pi$
+belongs to $\ocint{-\pi,\pi}$.
+}%end of comment
+
+\header{255Mb}{\bf (b)} As for the measure, the measure to use on
+$\ocint{-\pi,\pi}$ is just Lebesgue measure.   \cmmnt{Note that
+because
+$\ocint{-\pi,\pi}$ is Lebesgue measurable, there will be no confusion
+concerning the meaning of `measurable subset', as the relatively
+measurable subsets of $\ocint{-\pi,\pi}$ are actually measured by
+Lebesgue measure on $\Bbb R$.   Also we can identify the product measure
+on $\ocint{-\pi,\pi}\times\ocint{-\pi,\pi}$ with the subspace measure
+induced by Lebesgue measure on $\BbbR^2$ (251R).}
+
+On $S^1$, we need the corresponding measure induced by the canonical
+bijection between $S^1$ and $\ocint{-\pi,\pi}$\cmmnt{, which indeed is
+often called `Lebesgue measure on $S^1$'}.   \cmmnt{(We shall see in
+265E that it is
+also equal to Hausdorff one-dimensional measure on $S^1$.)   We are very
+close to the level at which it
+would become reasonable to move to $S^1$ and this measure (or its
+normalized version, in which it is reduced by a factor of $2\pi$, so as
+to make $S^1$ a probability space).   However, the elementary theory of
+Fourier series, which will be the principal application of this work in
+the present volume, is generally done on intervals in $\Bbb R$, so that
+formulae based on $\ocint{-\pi,\pi}$ are closer to the standard
+expressions.   Henceforth, therefore, I will express the work in
+terms of $\ocint{-\pi,\pi}$.}
+
+
+\cmmnt{
+\header{255Mc}{\bf (c)} The result corresponding to 255A now takes a
+slightly different form, so I spell it out.
+}
+
+\leader{255N}{Theorem} Let $\mu$ be Lebesgue measure on
+$\ocint{-\pi,\pi}$ and
+$\mu_2$ Lebesgue measure on $\ocint{-\pi,\pi}\times\ocint{-\pi,\pi}$;
+write $\Sigma$, $\Sigma_2$ for their domains.
+
+(a) For any $a\in\ocint{-\pi,\pi}$, the map $x\mapsto
+a+_{2\pi}x:\ocint{-\pi,\pi}\to\ocint{-\pi,\pi}$ is a
+measure space automorphism of $(\ocint{-\pi,\pi},\Sigma,\mu)$.
+
+(b) The map $x\mapsto -_{2\pi}x:\ocint{-\pi,\pi}\to\ocint{-\pi,\pi}$ is
+a measure space automorphism of $(\ocint{-\pi,\pi},\Sigma,\mu)$.
+
+(c) For any $a\in\ocint{-\pi,\pi}$, the map
+$x\mapsto a-_{2\pi}x:\ocint{-\pi,\pi}\to\ocint{-\pi,\pi}$ is a
+measure space automorphism of $(\ocint{-\pi,\pi},\Sigma,\mu)$.
+
+(d) The map $(x,y)\mapsto(x+_{2\pi}y,y):\ocint{-\pi,\pi}^2\to
+\ocint{-\pi,\pi}^2$ is a measure space automorphism of
+$(\ocint{-\pi,\pi}^2,
+\ifdim\pagewidth>467pt\penalty-50\fi
+\Sigma_2,
+\ifdim\pagewidth>467pt\penalty-10\fi
+\mu_2)$.
+
+(e) The map $(x,y)\mapsto(x-_{2\pi}y,y):\ocint{-\pi,\pi}^2\to
+\ocint{-\pi,\pi}^2$ is a measure space automorphism of
+$(\ocint{-\pi,\pi}^2,
+\ifdim\pagewidth>467pt\penalty-50\fi
+\Sigma_2,
+\ifdim\pagewidth>467pt\penalty-10\fi
+\mu_2)$.
+
+\proof{{\bf (a)} Set $\phi(x)=a+_{2\pi}x$.   Then for any
+$E\subseteq\ocint{-\pi,\pi}$,
+
+\Centerline{$\phi[E]
+=((E+a)\cap\ocint{-\pi,\pi})
+\cup(((E+a)\cap\ocint{\pi,3\pi})-2\pi)
+\cup(((E+a)\cap\ocint{-3\pi,-\pi})+2\pi)$,}
+
+\noindent and these three sets are disjoint, so that
+
+$$\eqalignno{\mu\phi[E]
+&=\mu((E+a)\cap\ocint{-\pi,\pi})
++\mu(((E+a)\cap\ocint{\pi,3\pi})-2\pi)\cr
+&\qquad\qquad\qquad\qquad\qquad\qquad
+  +\mu(((E+a)\cap\ocint{-3\pi,-\pi})+2\pi)\cr
+&=\mu_L((E+a)\cap\ocint{-\pi,\pi})
++\mu_L(((E+a)\cap\ocint{\pi,3\pi})-2\pi)\cr
+&\qquad\qquad\qquad\qquad\qquad\qquad
+  +\mu_L(((E+a)\cap\ocint{-3\pi,-\pi})+2\pi)\cr
+\noalign{\noindent (writing $\mu_L$ for Lebesgue measure on $\Bbb R$)}
+&=\mu_L((E+a)\cap\ocint{-\pi,\pi})
++\mu_L((E+a)\cap\ocint{\pi,3\pi})
++\mu_L((E+a)\cap\ocint{-3\pi,-\pi})\cr
+&=\mu_L(E+a)
+=\mu_LE
+=\mu E.\cr}$$
+
+\noindent Similarly, $\mu\phi^{-1}[E]$ is defined and equal to $\mu E$
+for every $E\in\Sigma$, so that $\phi$ is an automorphism of
+$(\ocint{-\pi,\pi},
+\ifdim\pagewidth>467pt\penalty-50\fi
+\Sigma,
+\ifdim\pagewidth>467pt\penalty-10\fi
+\mu)$.
+
+\medskip
+
+{\bf (b)} Of course this is quicker.   Setting $\phi(x)=-_{2\pi}x$ for
+$x\in\ocint{-\pi,\pi}$,  we have
+
+$$\eqalign{\mu(\phi[E])
+&=\mu(\phi[E]\cap\ooint{-\pi,\pi})
+=\mu(-(E\cap\ooint{-\pi,\pi})\cr
+&=\mu_L(-(E\cap\ooint{-\pi,\pi}))
+=\mu_L(E\cap\ooint{-\pi,\pi})\cr
+&=\mu(E\cap\ooint{-\pi,\pi})
+=\mu E\cr}$$
+
+\noindent for every $E\in\Sigma$.
+
+\medskip
+
+{\bf (c)} This is just a matter of putting (a) and (b) together, as in
+255A.
+
+\medskip
+
+{\bf (d)} We can argue as in (a), but with a little more elaboration.
+If $E\in\Sigma_2$, and $\phi(x,y)=(x+_{2\pi}y,y)$ for $x$,
+$y\in\ocint{-\pi,\pi}$, set $\psi(x,y)=(x+y,y)$ for $x$, $y\in\Bbb R$,
+and write $c=(2\pi,0)\in\BbbR^2$, $H=\ocint{-\pi,\pi}^2$, $H'=H+c$,
+$H''=H-c$.   Then for any $E\in\Sigma_2$,
+
+\Centerline{$\phi[E]=(\psi[E]\cap H)\cup((\psi[E]\cap H')-c)
+\cup((\psi[E]\cap H'')+c)$,}
+
+\noindent so
+
+$$\eqalignno{\mu_2\phi[E]
+&=\mu_2(\psi[E]\cap H)
++\mu_2((\psi[E]\cap H')-c)
++\mu_2((\psi[E]\cap H'')+c)\cr
+&=\mu_L(\psi[E]\cap H)
++\mu_L((\psi[E]\cap H')-c)
++\mu_L((\psi[E]\cap H'')+c)\cr
+\noalign{\noindent (this time writing $\mu_L$ for Lebesgue measure on
+$\BbbR^2$)}
+&=\mu_L(\psi[E]\cap H)
++\mu_L(\psi[E]\cap H')
++\mu_L(\psi[E]\cap H'')\cr
+&=\mu_L\psi[E]
+=\mu_LE
+=\mu_2 E.\cr}$$
+
+\noindent In the same way, $\mu_2(\phi^{-1}[E])=\mu_2E$ for every
+$E\in\Sigma_2$, so $\phi$ is an automorphism of
+$(\ocint{-\pi,\pi}^2,\Sigma_2,\mu_2)$, as required.
+
+\medskip
+
+{\bf (e)} Finally, (e) is just a restatement of (d), as before.
+}%end of proof of 255N
+
+\leader{255O}{Convolutions on $\ocint{-\pi,\pi}$}\cmmnt{ With the
+fundamental
+result established, the same arguments as in 255B-255K now yield the
+following.}   Write $\mu$ for Lebesgue measure on $\ocint{-\pi,\pi}$.
+
+
+\header{255Oa}{\bf (a)} Let $f$ and $g$ be measurable
+complex-valued
+functions defined almost everywhere in $\ocint{-\pi,\pi}$.   Write $f*g$
+for the function defined by the formula
+
+\Centerline{$(f*g)(x)=\int_{-\pi}^{\pi}f(x-_{2\pi}y)g(y)dy$}
+
+\noindent whenever $x\in\ocint{-\pi,\pi}$ and the integral exists as a
+complex number.   Then $f*g$ is the {\bf
+convolution} of the functions $f$ and $g$.
+
+\header{255Ob}{\bf (b)} If $f$ and $g$ are measurable complex-valued
+functions defined almost everywhere in $\ocint{-\pi,\pi}$, then
+$f*g=g*f$.
+
+\vspheader{60pt}255Oc Let $f$, $g$ and $h$ be measurable complex-valued
+functions defined almost everywhere in $\ocint{-\pi,\pi}$.   Then
+
+\quad{(i)}
+
+\Centerline{$\int_{-\pi}^{\pi}h(x)(f*g)(x)dx
+=\int_{\ocint{-\pi,\pi}^2}h(x+_{2\pi}y)f(x)g(y)d(x,y)$}
+
+\noindent whenever the right-hand side exists and is finite, provided
+that in the expression $h(x)(f*g)(x)$ we interpret the product as $0$ if
+$h(x)=0$ and $(f*g)(x)$ is undefined.
+
+\quad{(ii)} If, on the same interpretation of $|h(x)|(|f|*|g|)(x)$,
+the integral  $\int_{-\pi}^{\pi}|h(x)|(|f|*|g|)(x)dx$ is
+finite, then $\int_{\ocint{-\pi,\pi}^2}h(x+_{2\pi}y)f(x)g(y)d(x,y)$ exists in
+$\Bbb C$, so again we shall have
+
+\Centerline{$\int_{-\pi}^{\pi}h(x)(f*g)(x)dx
+=\int_{\ocint{-\pi,\pi}^2}h(x+_{2\pi}y)f(x)g(y)d(x,y)$.}
+
+\spheader 255Od If $f$, $g$ are complex-valued
+functions which are integrable over $\ocint{-\pi,\pi}$, then $f*g$ is
+integrable, with
+
+\Centerline{$\int_{-\pi}^{\pi}f*g
+=\int_{-\pi}^{\pi}f\int_{-\pi}^{\pi}g$,
+\quad$\int_{-\pi}^{\pi}|f*g|
+\le\int_{-\pi}^{\pi}|f|\int_{-\pi}^{\pi}|g|$.}
+
+\spheader 255Oe Let $f$, $g$, $h$ be complex-valued measurable
+functions defined almost everywhere in $\ocint{-\pi,\pi}$, such that $f*g$
+and $g*h$ are also defined almost everywhere.   Suppose
+that $x\in\ocint{-\pi,\pi}$ is such that one of $(|f|*(|g|*|h|))(x)$,
+$((|f|*|g|)*|h|)(x)$ is defined in $\Bbb R$.   Then $f*(g*h)$ and
+$(f*g)*h$ are defined and equal at $x$.
+
+\spheader 255Of Suppose that $f\in\eusm L^p_{\Bbb C}(\mu)$,
+$g\in\eusm L^{q}_{\Bbb C}(\mu)$ where $p$, $q\in[1,\infty]$ and
+$\bover1p+\bover1{q}=1$.   Then $f*g$ is defined
+everywhere in $\ocint{-\pi,\pi}$, and
+$\sup_{x\in\ocint{-\pi,\pi}}|(f*g)(x)|\le\|f\|_p\|g\|_q$, interpreting
+$\|\,\,\|_{\infty}$ as $\esssup |\,\,|$\cmmnt{, as in 255K}.
+
+\exercises{
+\leader{255X}{Basic exercises $\pmb{>}$(a)}
+%\sqheader 255Xa
+Let $f$, $g$ be complex-valued
+functions defined almost everywhere in $\Bbb R$.   Show that for any
+$x\in\Bbb R$, $(f*g)(x)=\int f(x+y)g(-y)dy$ if either is defined.
+%255E
+
+\sqheader 255Xb Let $f$ and $g$ be complex-valued functions defined
+almost everywhere in $\Bbb R$.   (i) Show that if $f$ and $g$ are even
+functions, so is $f*g$.   (ii) Show that if $f$ is even and $g$ is odd
+then $f*g$ is odd.   (iii) Show that if $f$ and $g$ are odd then $f*g$
+is even.
+%255E
+
+\spheader 255Xc Suppose that $f$, $g$ are real-valued measurable
+functions defined almost everywhere in $\BbbR^r$ and such that $f>0$
+a.e., $g\ge 0$ a.e.\ and $\{x:g(x)>0\}$ is not negligible.   Show that
+$f*g>0$ everywhere in $\dom(f*g)$.
+%255F
+
+\sqheader 255Xd Suppose that $f:\Bbb R\to\Bbb C$ is a bounded
+differentiable function and that $f'$ is bounded.   Show that for any
+integrable
+complex-valued function $g$ on $\Bbb R$, $f*g$ is differentiable and
+$(f*g)'=f'*g$ everywhere.   \Hint{123D.}
+%255F
+
+\spheader 255Xe A complex-valued function $g$ defined almost everywhere
+in $\Bbb R$ is {\bf locally integrable} if $\int_a^bg$ is defined in
+$\Bbb C$ whenever $a<b$ in $\Bbb R$.   Suppose that $g$ is such a
+function and that $f:\Bbb R\to\Bbb C$ is a differentiable function, with
+continuous derivative, such that $\{x:f(x)\ne 0\}$ is bounded.   Show
+that $(f*g)'=f'*g$ everywhere.
+%255F 255Xd
+
+\sqheader 255Xf Set $\phi_{\delta}(x)=\exp(-\bover1{\delta^2-x^2})$ if
+$|x|<\delta$, $0$ if $|x|\ge\delta$, as in 242Xi.   Set
+$\alpha_{\delta}=\int\phi_{\delta}$,
+$\psi_{\delta}=\alpha_{\delta}^{-1}\phi_{\delta}$.   Let $f$ be a
+locally integrable
+complex-valued function on $\Bbb R$.   (i) Show that $f*\psi_{\delta}$
+is a smooth function defined everywhere on $\Bbb R$ for every
+$\delta>0$.   (ii) Show that
+$\lim_{\delta\downarrow 0}(f*\psi_{\delta})(x)=f(x)$ for almost every
+$x\in\Bbb R$.   \Hint{223Yg.}   (iii) Show that if $f$ is integrable
+then $\lim_{\delta\downarrow 0}\int|f-f*\psi_{\delta}|=0$.   \Hint{use
+(ii) and 245H(a-ii) {\it or} look first at the case $f=\chi[a,b]$ and
+use 242O, noting that $\int|f*\psi_{\delta}|\le\int|f|$.}   (iv) Show
+that if $f$ is uniformly continuous and defined everywhere in $\Bbb R$
+then
+$\lim_{\delta\downarrow 0}\sup_{x\in\Bbb R}|f(x)-(f*\psi_{\delta})(x)|=0$.
+%255F 255Xe
+
+\sqheader 255Xg For $\alpha>0$, set
+$g_{\alpha}(t)=\Bover1{\Gamma(\alpha)}t^{\alpha-1}$ for $t>0$, $0$ for
+$t\le 0$.   Show that $g_{\alpha}*g_{\beta}=g_{\alpha+\beta}$ for all
+$\alpha$, $\beta>0$.   \Hint{252Yf.}
+%255F
+
+\sqheader 255Xh Let $\mu$ be Lebesgue measure on $\Bbb R$.
+For $u$, $v$,
+$w\in L^0_{\Bbb C}=L^0_{\Bbb C}(\mu)$, say that
+$u*v=w$ if $f*g$ is defined almost everywhere and $(f*g)^{\ssbullet}=w$
+whenever $f$, $g\in\eusm L^0_{\Bbb C}(\mu)$, $f^{\ssbullet}=u$ and
+$g^{\ssbullet}=w$.   (i) Show that $(u_1+u_2)*v=u_1*v+u_2*v$ whenever
+$u_1$, $u_2$, $v\in L^0_{\Bbb C}$ and $u_1*v$ and $u_2*v$ are defined in
+this sense.   (ii) Show that $u*v=v*u$ whenever $u$, $v\in L^0(\Bbb C)$ and
+either $u*v$ or $v*u$ is defined.   (iii) Show that if $u$, $v$,
+$w\in L^0_{\Bbb C}$, $u*v$ and $v*w$ are defined,
+and either $|u|*(|v|*|w|)$ or $(|u|*|v|)*|w|$ is
+defined, then then $u*(v*w)=(u*v)*w$ are defined and equal.
+%255I
+
+\sqheader 255Xi Let $\mu$ be Lebesgue measure on $\Bbb R$.
+(i) Show that $u*v$, as defined in 255Xh, belongs to $L^1_{\Bbb C}(\mu)$
+whenever $u$, $v\in L^1_{\Bbb C}(\mu)$.
+(ii) Show that $L^1_{\Bbb C}$ is a
+commutative Banach algebra under $*$ (definition: 2A4J).
+%255Xh 255I
+
+\spheader 255Xj(i) Show that if $h$ is an integrable
+function on $\BbbR^2$, then   $(Th)(x)=\int h(x-y,y)dy$ exists for
+almost every $x\in\Bbb R$, and that $\int (Th)(x)dx=\int h(x,y)d(x,y)$.
+(ii) Write $\mu_2$ for Lebesgue measure on $\BbbR^2$, $\mu$ for
+Lebesgue measure on $\Bbb R$.   Show that there is a linear operator
+$\tilde T:L^1(\mu_2)\to L^1(\mu)$ defined by setting
+$\tilde T(h^{\ssbullet})=(Th)^{\ssbullet}$ for every integrable function
+$h$ on $\BbbR^2$.   (iii) Show that in the language of 253E and 255Xh,
+$\tilde T(u\otimes v)=u*v$ for all $u$, $v\in L^1(\mu)$.
+%255Xh 255I 255Xi
+
+\sqheader 255Xk  For $\pmb{a}$, $\pmb{b}\in\Bbb C^{\Bbb Z}$ set
+$(\pmb{a}*\pmb{b})(n)=\sum_{i\in\Bbb Z}\pmb{a}(n-i)\pmb{b}(i)$ whenever
+$\sum_{i\in\Bbb Z}|\pmb{a}(n-i)\pmb{b}(i)|<\infty$.   Show that
+
+\quad (i) $\pmb{a}*\pmb{b}=\pmb{b}*\pmb{a}$;
+
+\quad (ii) $\sum_{i\in\Bbb Z}\pmb{c}(i)(\pmb{a}*\pmb{b})(i)
+=\sum_{i,j\in\Bbb Z}\pmb{c}(i+j)\pmb{a}(i)\pmb{b}(j)$ if
+$\sum_{i,j\in\Bbb Z}|\pmb{c}(i+j)\pmb{a}(i)\pmb{b}(j)|<\infty$;
+
+\quad (iii) if $\pmb{a}$, $\pmb{b}\in\ell^1(\Bbb Z)$ then
+$\pmb{a}*\pmb{b}\in\ell^1(\Bbb Z)$ and
+$\|\pmb{a}*\pmb{b}\|_1\le\|\pmb{a}\|_1\|\pmb{b}\|_1$;
+
+\quad (iv) If $\pmb{a}$, $\pmb{b}\in\ell^2(\Bbb Z)$ then
+$\pmb{a}*\pmb{b}\in\ell^{\infty}(\Bbb Z)$ and
+$\|\pmb{a}*\pmb{b}\|_{\infty}\le\|\pmb{a}\|_2\|\pmb{b}\|_2$;
+
+\quad (v) if $\pmb{a}$, $\pmb{b}$, $\pmb{c}\in\Bbb C^{\Bbb Z}$ and
+$(|\pmb{a}|*(|\pmb{b}|*|\pmb{c}|))(n)$ is well-defined, then
+$(\pmb{a}*(\pmb{b}*\pmb{c}))(n)=((\pmb{a}*\pmb{b})*\pmb{c})(n)$.
+%255K
+
+\leader{255Y}{Further exercises (a)}
+%\spheader 255Ya
+Let $f$ be a complex-valued function which is integrable
+over $\Bbb R$.   (i) Let $x$ be any point of the Lebesgue set of $f$.
+Show that for any $\epsilon>0$ there is a $\delta>0$ such that
+$|f(x)-(f*g)(x)|\le\epsilon$ whenever $g:\Bbb R\to\coint{0,\infty}$ is a
+function which is non-decreasing on $\ocint{-\infty,0}$, non-decreasing
+on $\coint{0,\infty}$, and has $\int g=1$ and
+$\int_{-\delta}^{\delta}g\ge 1-\delta$.   (ii) Show that for any
+$\epsilon>0$ there is a $\delta>0$ such that $\|f-f*g\|_1\le\epsilon$
+whenever $g:\Bbb R\to\coint{0,\infty}$ is a function which is
+non-decreasing on $\ocint{-\infty,0}$, non-decreasing on
+$\coint{0,\infty}$, and has $\int g=1$ and
+$\int_{-\delta}^{\delta}g\ge 1-\delta$.
+%255Xf 255F
+
+\spheader 255Yb Let $f$ be a complex-valued function which is integrable
+over $\Bbb R$.   Show that, for almost every $x\in\Bbb R$,
+
+\Centerline{$\lim_{a\to\infty}
+  \Bover{a}{\pi}\int_{-\infty}^{\infty}
+  \Bover{f(y)}{1+a^2(x-y)^2}dy$,
+\quad$\lim_{a\to\infty}\Bover1a\int_x^{\infty}f(y)e^{-a(y-x)}dy$,}
+
+\Centerline{$\lim_{\sigma\downarrow 0}\Bover1{\sigma\sqrt{2\pi}}
+  \int_{-\infty}^{\infty}f(y)e^{-(y-x)^2/2\sigma^2}dy$}
+
+\noindent all exist and are equal to $f(x)$.   \Hint{263G.}
+%255Ya, 255Xf 255F
+
+\spheader 255Yc
+Set $f(x)=1$ for all $x\in\Bbb R$, $g(x)=\Bover{x}{|x|}$
+for $0<|x|\le 1$ and $0$ otherwise, $h(x)=\tanh x$ for all $x\in\Bbb R$.
+Show that $f*(g*h)$ and $(f*g)*h$ are both defined (and constant)
+everywhere, and are different.
+%255J
+
+\spheader 255Yd Discuss what can happen if, in the context of 255J, we
+know that $(|f|*(|g|*|h|))(x)$ is defined, but have no information on
+the domain of $f*g$.
+%255J
+
+\spheader 255Ye Suppose that $p\in\coint{1,\infty}$
+and that $f\in\eusm L^p_{\Bbb C}(\mu)$, where $\mu$ is Lebesgue measure
+on $\BbbR^r$.   For $a\in\BbbR^r$ set $(S_af)(x)=f(a+x)$ whenever
+$a+x\in\dom f$.   Show that $S_af\in\eusm L^p_{\Bbb C}(\mu)$, and that
+for every $\epsilon>0$ there is a $\delta>0$ such that
+$\|S_af-f\|_p\le\epsilon$ whenever $|a|\le\delta$.
+%255K
+
+\spheader 255Yf Suppose that $p$, $q\in\ooint{1,\infty}$ and
+$\bover1p+\bover1q=1$.   Take $f\in\eusm L^p_{\Bbb C}(\mu)$ and
+$g\in\eusm L^q_{\Bbb C}(\mu)$, where $\mu$ is Lebesgue measure on
+$\BbbR^r$.   Show that $\lim_{\|x\|\to\infty}(f*g)(x)=0$.
+\Hint{use 244Hb.}
+%255K
+
+\spheader 255Yg Repeat 255Ye and 255K, this time taking $\mu$ to
+be Lebesgue measure on $\ocint{-\pi,\pi}$, and setting
+$(S_af)(x)=f(a+_{2\pi}x)$ for $a\in\ocint{-\pi,\pi}$;  show that in the
+new version of 255K,
+$(f*g)(\pi)=\lim_{x\downarrow -\pi}(f*g)(x)$.
+%255K, 255Ye
+
+\spheader 255Yh Let $\mu$ be Lebesgue measure on $\Bbb R$.   For
+$a\in\Bbb R$, $f\in\eusm L^0=\eusm L^0(\mu)$ set $(S_af)(x)=f(a+x)$
+whenever $a+x\in\dom f$.
+
+\quad (i) Show that $S_af\in\eusm L^0$ for every $f\in\eusm L^0$.
+
+\quad  (ii) Show that we have a map $\tilde S_a:L^0\to L^0$ defined by
+setting $\tilde S_a(f^{\ssbullet})=(S_af)^{\ssbullet}$ for every
+$f\in\eusm L^0$.
+
+\quad  (iii) Show that $\tilde S_a$ is a Riesz space isomorphism and is
+a homeomorphism for the topology of convergence in measure;  moreover,
+that $\tilde S_a(u\times v)=\tilde S_au\times\tilde S_av$ for all $u$,
+$v\in L^0$.
+
+\quad  (iv) Show that $\tilde S_{a+b}=\tilde S_a\tilde S_b$ for all $a$,
+$b\in\Bbb R$.
+
+\quad  (v) Show that $\lim_{a\to 0}\tilde S_au=u$ for the topology of
+convergence in measure, for every $u\in L^0$.
+
+\quad  (vi) Show that if $1\le p\le\infty$ then $\tilde S_a\restr L^p$
+is an isometric isomorphism of the Banach lattice $L^p$.
+
+\quad  (vii) Show that if $p\in\coint{1,\infty}$ then
+$\lim_{a\to 0}\|\tilde S_au-u\|_p=0$ for every $u\in L^p$.
+
+\quad  (viii) Show that if $A\subseteq L^1$ is uniformly integrable and
+$M\ge 0$, then $\{\tilde S_au:u\in A,\,|a|\le M\}$ is uniformly
+integrable.
+
+\quad (ix) Suppose that $u$, $v\in L^0$ are such that $u*v$ is defined
+in $L^0$ in the sense of 255Xh.   Show that
+$\tilde S_a(u*v)=(\tilde S_au)*v=u*(\tilde S_av)$ for
+every $a\in\Bbb R$.
+%255Ye, 255K
+
+\spheader 255Yi Prove 255Nd from 255Na by the method used to
+prove 255Ad from 255Aa, rather than by quoting 255Ad.
+%255N
+
+\spheader 255Yj Let $\mu$ be Lebesgue measure on $\Bbb R$, and
+$\phi:\Bbb R\to\Bbb R$ a convex function;  let
+$\bar\phi:L^0\to L^0=L^0(\mu)$ be the associated operator (see 241I).
+Show that if $u\in L^1=L^1(\mu)$, $v\in L^0$ are such that $u\ge 0$,
+$\int u=1$ and $u*v$, $u*\bar\phi(v)$ are both defined in the sense of
+255Xh, then $\bar\phi(u*v)\le u*\bar\phi(v)$.
+\Hint{233I.}
+%255Xh 255I
+
+\spheader 255Yk Let $\mu$ be Lebesgue measure on $\Bbb R$, and
+$p\in[1,\infty]$.   Let $f\in\eusm L^1_{\Bbb C}(\mu)$,
+$g\in\eusm L^p_{\Bbb C}(\mu)$.   Show that
+$f*g\in\eusm L^p_{\Bbb C}(\mu)$ and that
+$\|f*g\|_p\le\|f\|_1\|g\|_p$.   \Hint{argue from 255Yj, as in 244M.}
+%255Yj 255K 255I
+
+\spheader 255Yl Suppose that $p$, $q$, $r\in\ooint{1,\infty}$ and that
+$\bover1p+\bover1q=1+\bover1r$.   Let $\mu$ be Lebesgue measure on
+$\Bbb R$.   (i) Show that
+
+\Centerline{$\int f\times g
+\le\|f\|_p^{1-p/r}\|g\|_q^{1-q/r}(\int f^p\times g^q)^{1/r}$}
+
+\noindent whenever $f$, $g\ge 0$ and $f\in\eusm L^p(\mu)$,
+$g\in\eusm L^q(\mu)$.   \Hint{set $p'=p/(p-1)$, etc.;  $f_1=f^{p/q'}$,
+$g_1=g^{q/p'}$, $h=(f^p\times g^q)^{1/r}$.   Use 244Xc to see that
+$\|f_1\times g_1\|_{r'}\le\|f_1\|_{q'}\|g_1\|_{p'}$, so that
+$\int f_1\times g_1\times h\le\|f_1\|_{q'}\|g_1\|_{p'}\|h\|_r$.}   (ii)
+Show that $f*g$ is defined a.e.\ and that
+$\|f*g\|_r\le\|f\|_p\|g\|_q$ for all $f\in\eusm L^p(\mu)$,
+$g\in\eusm L^q(\mu)$.   \Hint{take $f$, $g\ge 0$.   Use (i) to see that
+$(f*g)(x)^r\le\|f\|_p^{r-p}\|g\|_q^{r-q}\int f(y)^pg(x-y)^qdy$, so that
+$\|f*g\|_r^r\le\|f\|_p^{r-p}\|g\|_q^{r-q}\int f(y)^p\|g\|_q^qdy$.}
+(This is {\bf Young's inequality}.)
+%244Xc 255K
+
+\spheader 255Ym Repeat the results of this section for the group
+$(S^1)^r$, where $r\ge 2$, given its product measure.
+%+
+
+\spheader 255Yn Let $G$ be a group and $\mu$ a
+$\sigma$-finite measure on $G$ such that ($\alpha$) for every $a\in G$,
+the map $x\mapsto ax$ is an automorphism of $(G,\mu)$ ($\beta$) the map
+$(x,y)\mapsto (x,xy)$ is an automorphism of $(G^2,\mu_2)$, where $\mu_2$
+is the c.l.d.\ product measure on $G\times G$.   For $f$,
+$g\in\eusm L^0_{\Bbb C}(\mu)$ write $(f*g)(x)=\int f(y)g(y^{-1}x)dy$
+whenever this is defined.   Show that
+%+
+
+\quad (i) if $f$, $g$, $h\in\eusm L^0_{\Bbb C}(\mu)$ and $\int
+h(xy)f(x)g(y)d(x,y)$ is defined in $\Bbb C$, then $\int h(x)(f*g)(x)dx$
+exists and is equal to $\int h(xy)f(x)g(y)d(x,y)$, provided
+that in the expression $h(x)(f*g)(x)$ we interpret the product as $0$ if
+$h(x)=0$ and $(f*g)(x)$ is undefined;
+
+\quad (ii) if $f$, $g\in\eusm L^1_{\Bbb C}(\mu)$ then $f*g\in\eusm
+L^1_{\Bbb C}(\mu)$ and $\int f*g=\int f\int g$,
+$\|f*g\|_1\le\|f\|_1\|g\|_1$;
+
+\quad (iii) if $f$, $g$, $h\in\eusm L^1_{\Bbb C}(\mu)$ then
+$f*(g*h)=(f*g)*h$.
+
+\noindent (See {\smc Halmos 50}, \S59.)
+
+\spheader 255Yo Repeat 255Yn for counting measure on any group $G$.
+%+ 255Yn
+}%end of exercises
+
+\endnotes{
+\Notesheader{255} I have tried to set this section out in such a way
+that it will be clear that the basis of all the work here is 255A, and
+the crucial application is 255G.   I hope that if and when you come to
+look at general topological groups (for instance, in Chapter 44), you
+will find it easy to trace
+through the ideas in any abelian topological group for which
+you can prove a version of 255A.   For non-abelian groups, of
+course, rather more care is necessary, especially as in some important
+examples we no longer have $\mu\{x^{-1}:x\in E\}=\mu E$ for every $E$;
+see 255Yn-255Yo for a little of what can be done without using
+topological ideas.
+
+The critical point in 255A is the move from the one-dimensional results
+in 255Aa-255Ac, which are just the translation- and
+reflection-invariance of
+Lebesgue measure, to the two-dimensional results in 255Ac-255Ad.   And
+the living centre of the argument, as I present it, is the fact that the
+shear transformation $\phi$ is an automorphism of the structure
+$(\BbbR^2,\Sigma_2)$.   The actual calculation of $\mu_2\phi[E]$,
+assuming that it is measurable, is an easy application of Fubini's and
+Tonelli's theorems and the translation-invariance of $\mu$.   It is for
+this step
+that we absolutely need the topological properties of Lebesgue measure.
+I should perhaps remind you that the fact that $\phi$ is a homeomorphism
+is not sufficient;  in 134I I described a homeomorphism of the unit
+interval which does not preserve measurability, and it is easy to adapt
+this to produce a homeomorphism $\psi:\BbbR^2\to\BbbR^2$ such that
+$\psi[E]$ is not always measurable for measurable $E$.   The argument of
+255A is dependent on the special relationships between all three of the
+measure, topology and group structure of $\Bbb R$.
+
+I have already indulged in a few remarks on what ought, or ought not, to
+be `obvious' (255C).   But perhaps I can add that such results as
+255B and the later claim, in the proof of 255K, that a reflected version
+of a function in $\eusm L^p$ is also in $\eusm L^p$, can only be trivial
+consequences of results like 255A if every step in the construction of
+the integral is done in the abstract context of general measure spaces.
+Even though we are here working exclusively with the Lebesgue integral,
+the argument will become untrustworthy if we have at any stage in the
+definition of the integral even mentioned that we are thinking of
+Lebesgue measure.   I advance this as a solid reason for defining
+`integration' on abstract measure spaces from the beginning, as I did in
+Volume 1.   Indeed, I suggest that generally in pure mathematics there
+are good reasons for casting arguments into the forms appropriate to the
+arguments themselves.
+
+I am writing this book for readers who are interested in proofs, and as
+elsewhere I have written the proofs of this section out in detail.   But
+most of us find it useful to go through some
+material in `advanced calculus' mode, by which I mean starting with a
+formula such as
+
+\Centerline{$(f*g)(x)=\int f(x-y)g(y)dy$,}
+
+\noindent and then working out consequences by formal manipulations, for
+instance
+
+\Centerline{$\int h(x)(f*g)(x)dx=\iint h(x)f(x-y)g(y)dydx
+=\iint h(x+y)f(x)g(y)dydx$,}
+
+\noindent without troubling about the precise applicability of the
+formulae to begin with.   In some ways this formula-driven approach can
+be more truthful to the structure of the subject than the careful
+analysis I habitually present.   The exact hypotheses necessary to make
+the theorems strictly true are surely secondary, in such contexts as
+this section, to the pattern formed by the ensemble of the theorems,
+which can be adequately and elegantly expressed in straightforward
+formulae.   Of course I do still insist that we cannot properly
+appreciate the structure, nor safely use it, without mastering the ideas
+of the proofs -- and as I have said elsewhere, I believe that mastery of
+ideas necessarily includes mastery of the formal details, at least in
+the sense of being able to reconstruct them fairly fluently
+on demand.
+
+Throughout the main exposition of this section, I have worked with
+functions rather than equivalence classes of functions.    But all the
+results here have interpretations of great importance for the theory of
+the `function spaces' of Chapter 24.   In 255Xh and the succeeding
+exercises, I have pointed to a definition of convolution as an operator
+from a subset of $L^0\times L^0$ to $L^0$.
+It is an interesting point
+that if $u$, $v\in L^0$ then $u*v$ can be interpreted as a
+{\it function}, not as a member of $L^0$ (255Fc).
+Thus 255H can be regarded as saying that $u*v\in\eusm L^1$
+for $u$, $v\in L^1$.   We cannot quite say that convolution is a
+bilinear operator from $L^1\times L^1$ to $\eusm L^1$, because $\eusm L^1$,
+as I define it,
+is not strictly speaking a linear space.   If we want a bilinear
+operator, then we have to regard convolution as a function from
+$L^1\times L^1$ to $L^1$.   But when we look at convolution as a
+function on $L^2\times L^2$, for instance, then our functions $u*v$ are
+defined everywhere (255K), and indeed are continuous functions vanishing
+at $\infty$ (255Ye-255Yf).   So in this case it seems more appropriate
+to regard convolution as a bilinear operator from $L^2\times L^2$ to
+some space of continuous functions, and not as an operator from
+$L^2\times L^2$ to $L^{\infty}$.   For an example of an interesting
+convolution which is not naturally representable in terms of an operator
+on $L^p$ spaces, see 255Xg.
+
+Because convolution acts as a continuous bilinear operator from
+$L^1(\mu)\times L^1(\mu)$ to $L^1(\mu)$, where $\mu$ is Lebesgue measure
+on $\Bbb R$, Theorem 253F tells us that it must correspond to a linear
+operator from $L^1(\mu_2)$ to $L^1(\mu)$, where $\mu_2$ is Lebesgue
+measure on $\BbbR^2$.  This is the operator $\tilde T$ of 255Xj.
+
+So far in these notes I have written as though we were concerned only
+with Lebesgue measure on $\Bbb R$.   However many applications of the
+ideas involve $\BbbR^r$ or $\ocint{-\pi,\pi}$ or $S^1$.   The move to
+$\BbbR^r$ should be elementary.   The move to $S^1$ does require a
+re-formulation of the basic result 255A/255N.   It should also be clear
+that there will be no new difficulties in moving to $\ocint{-\pi,\pi}^r$
+or $(S^1)^r$.   Moreover, we can also go through the whole theory for
+the groups $\Bbb Z$ and $\Bbb Z^r$, where the appropriate measure is now
+counting measure, so that $L^0_{\Bbb C}$ becomes identified with
+$\Bbb C^{\Bbb Z}$ or $\Bbb C^{\Bbb Z^r}$ (255Xk, 255Yo).
+
+
+}%end of notes
+
+\discrpage
+

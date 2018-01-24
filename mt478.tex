@@ -1,0 +1,2731 @@
+\frfilename{mt478.tex}
+\versiondate{4.6.09}
+
+\def\energy{\mathop{\text{energy}}\nolimits}
+\def\hp{\mathop{\text{hp}}\nolimits}
+\def\varinnerprod#1#2{#1\dotproduct#2}
+\def\zz{}
+
+\newdimen\pagegoalminus
+\newdimen\bigbaselineskip
+\bigbaselineskip=36pt
+
+\def\checkbreak{\noalign{\global\advance\pagetotalplus by \bigbaselineskip
+%\immediate\write0{pagetotalplus \the\pagetotalplus,
+%pagegoalminus \the\pagegoalminus,
+%bigbaselineskip \the\bigbaselineskip}
+\ifdim\pagetotalplus>\pagegoalminus\break
+  \global\pagetotalplus=0pt\global\pagegoalminus=\pagegoal\fi}}
+
+
+\def\chaptername{Geometric measure theory}
+\def\sectionname{Harmonic functions}
+
+\newsection{478}
+
+In this section and the next I will attempt an introduction to potential
+theory.   This is an enormous subject and my choice of results is
+necessarily somewhat arbitrary.   My principal aim is to give the most
+elementary properties of Newtonian capacity, which will appear in \S479.
+It seems that this necessarily involves a basic understanding of harmonic
+and superharmonic functions.   I approach these by the `probabilistic'
+route, using Brownian motion as described in \S477.
+
+The first few paragraphs, down to 478J, do not
+in fact involve Brownian motion;
+they rely on multidimensional advanced calculus and on the Divergence
+Theorem.   \cmmnt{(The latter is applied only to continuously
+differentiable functions and domains of very simple types, so
+we need far less than the quoted result in 475N.)}   Defining `harmonic
+function' in terms of average values over concentric
+spherical shells (478B), the
+first step is to identify this with the definition in terms of the
+Laplacian differential operator (478E).   An essential result is a formula
+for a harmonic function inside a sphere in terms of its values on the
+boundary and the `Poisson kernel' (478Ib),
+and we also need to understand the effects of smoothing
+by convolution with appropriate functions (478J\cmmnt{, following
+473D-473E}).
+I turn to Brownian motion with Dynkin's formula (478K), relating the
+expected value of $f(X_{\tau})$ for
+a stopped Brownian process $X_{\tau}$
+to an integral in terms of $\nabla^2f$.   This is already enough to deal
+with the asymptotic behaviour
+of Brownian paths, which depends in a striking way on the dimension of the
+space (478M).
+
+We can now approach Dirichlet's problem.   If we have a bounded open set
+$G\subseteq\BbbR^r$, there is a family $\family{x}{G}{\mu_x}$ of
+probability measures such that whenever
+$f:\overline{G}\to\Bbb R$ is continuous and $f\restr G$ is harmonic, then
+$f(x)=\int fd\mu_x$ for every $x\in G$ (478Pc).   So this
+family of `harmonic measures' gives a formula continuously extending a
+function on $\partial G$ to a harmonic function on $G$, whenever
+such an extension exists (478S).   The method used expresses $\mu_x$ in
+terms of
+the distribution of points at which Brownian paths starting at $x$ strike
+$\partial G$, and relies on Dynkin's formula through Theorem 478O.   The
+strong Markov property of Brownian motion now enables us to relate harmonic
+measures associated with different sets (478R).
+
+\leader{478A}{Notation} $r\ge 1$ will be an integer;
+if you find it easier to focus on one dimensionality at a time, you should
+start with $r=3$, because $r=1$ is too easy and $r=2$ is exceptional.
+$\mu$ will be Lebesgue measure on $\BbbR^r$, and
+$\|\,\|$ the Euclidean norm on $\BbbR^r$;  $\nu$ will be normalized
+$(r-1)$-dimensional Hausdorff measure on $\BbbR^r$.
+In the elementary case $r=1$, $\nu$ will be counting measure on $\Bbb R$.
+
+\cmmnt{$\beta_r$ will be the volume of the unit ball in $\BbbR^r$,
+that is,}
+
+$$\eqalign{\beta_r
+&=\Bover{1}{k!}\pi^k\text{ if }r=2k\text{ is even},\cr
+&=\Bover{2^{2k+1}k!}{(2k+1)!}\pi^k\text{ if }r=2k+1\text{ is odd}.\cr}$$
+
+\cmmnt{\noindent Recall that}
+
+$$\eqalign{\nu(\partial B(\tbf{0},1))=r\beta_r
+&=\Bover{2}{(k-1)!}\pi^k\text{ if }r=2k\text{ is even},\cr
+&=\Bover{2^{2k+1}k!}{(2k)!}\pi^k\text{ if }r=2k+1\text{ is odd}
+  \dvro{.}{}\cr}$$
+
+\cmmnt{\noindent (265F/265H).}
+
+In the formulae below, there are repeated expressions of the form
+$\Bover1{\|x-y\|^{r-1}}$, $\Bover1{\|x-y\|^{r-2}}$;  in these, it will
+often be
+convenient to interpret $\bover10$ as $\infty$\cmmnt{, so that we have
+$[0,\infty]$-valued functions defined everywhere}.
+
+It will be convenient to do some
+calculations in the one-point compactification $\BbbR^r\cup\{\infty\}$ of
+$\BbbR^r$\cmmnt{ (3A3O)}.
+For a set $A\subseteq\BbbR^r$\cmmnt{, write $\overline{A}^{\infty}$
+and $\partial^{\infty}A$ for its closure and boundary taken in
+$\BbbR^r\cup\{\infty\}$;  that is,}
+
+\Centerline{$\overline{A}^{\infty}=\overline{A}$,
+\quad$\partial^{\infty}A=\partial A$}
+
+\noindent if $A$ is bounded, and
+
+\Centerline{$\overline{A}^{\infty}=\overline{A}\cup\{\infty\}$,
+\quad$\partial^{\infty}A=\partial A\cup\{\infty\}$}
+
+\noindent if $A$ is unbounded.
+\cmmnt{Note that }$\overline{A}^{\infty}$ and
+$\partial^{\infty}A$ are always compact.
+In this context I will take $x+\infty=\infty$ for every $x\in\BbbR^r$.
+
+$\mu_W$ will be $r$-dimensional Wiener measure on
+$\Omega=C(\coint{0,\infty};\BbbR^r)_0$, the space of continuous functions
+$\omega$ from
+$\coint{0,\infty}$ to $\BbbR^r$ such that $\omega(0)=0$\cmmnt{ (477D)},
+endowed with the topology of uniform convergence on compact sets;  $\Sigma$
+will be the domain of $\mu_W$.
+\cmmnt{The probabilistic notations $\Expn$ and $\Pr$ will always be
+with respect to $\mu_W$ or some directly associated probability.}
+$\mu_W^2$ will be the product measure on $\Omega\times\Omega$.
+I will write $X_t(\omega)=\omega(t)$ for $t\in\coint{0,\infty}$ and
+$\omega\in\Omega$, and if $\tau:\Omega\to[0,\infty]$ is a function,
+I will write
+$X_{\tau}(\omega)=\omega(\tau(\omega))$ whenever $\omega\in\Omega$ and
+$\tau(\omega)$ is finite.
+
+\cmmnt{As in 477Hc,} I will write $\Sigma_t$ for
+the $\sigma$-algebra of sets $F\in\Sigma$
+such that $\omega'\in F$ whenever $\omega\in F$, $\omega'\in\Omega$ and
+$\omega'\restr[0,t]=\omega\restr[0,t]$, and
+$\Sigma^+_t=\bigcap_{s>t}\Sigma_s$.   $\Tau_{[0,t]}$ will be the
+$\sigma$-algebra of subsets of $\Omega$ generated by $\{X_s:s\le t\}$.
+
+\leader{478B}{Harmonic and superharmonic functions} Let $G\subseteq\BbbR^r$
+be an open set and $f:G\to[-\infty,\infty]$ a function.
+
+\spheader 478Ba $f$ is {\bf superharmonic} if
+$\Bover1{\nu(\partial B(x,\delta))}\int_{\partial B(x,\delta)}fd\nu$ is
+defined in $[-\infty,\infty]$ and
+less than or equal to $f(x)$ whenever $x\in G$, $\delta>0$ and
+$B(x,\delta)\subseteq G$.
+
+\spheader 478Bb $f$ is {\bf subharmonic} if $-f$ is superharmonic, that is,
+$\Bover1{\nu(\partial B(x,\delta))}\int_{\partial B(x,\delta)}fd\nu$ is
+defined in $[-\infty,\infty]$ and
+greater than or equal to $f(x)$ whenever $x\in G$, $\delta>0$ and
+$B(x,\delta)\subseteq G$.
+
+\spheader 478Bc $f$ is {\bf harmonic} if it is both superharmonic and
+subharmonic, that is,
+$\Bover1{\nu(\partial B(x,\delta))}\int_{\partial B(x,\delta)}fd\nu$
+is defined and equal to $f(x)$ whenever $x\in G$, $\delta>0$ and
+$B(x,\delta)\subseteq G$.
+
+\leader{478C}{Elementary facts} Let $G\subseteq\BbbR^r$ be an open set.
+
+\spheader 478Ca If $f:G\to[-\infty,\infty]$ is a function,
+then $f$ is superharmonic iff $-f$ is subharmonic.
+
+\spheader 478Cb If $f$, $g:G\to\coint{-\infty,\infty}$
+are superharmonic functions,
+then $f+g$ is superharmonic.   \prooflet{\Prf\ If $x\in G$, $\delta>0$ and
+$B(x,\delta)\subseteq G$, then $\int_{\partial B(x,\delta)}fd\nu$ and
+$\int_{\partial B(x,\delta)}g\,d\nu$ are defined in
+$\coint{-\infty,\infty}$, so $\int_{\partial B(x,\delta)}f+g\,d\nu$ is
+defined and is
+
+\Centerline{$\int_{\partial B(x,\delta)}fd\nu+
+\int_{\partial B(x,\delta)}g\,d\nu
+\le\nu(\partial B(x,\delta))\,(f(x)+g(x))$.  \Qed}}
+
+\spheader 478Cc If $f$, $g:G\to[-\infty,\infty]$ are superharmonic
+functions, then $f\wedge g$ is superharmonic.
+\prooflet{\Prf\ If $x\in G$, $\delta>0$ and
+$B(x,\delta)\subseteq G$, then $\int_{\partial B(x,\delta)}fd\nu$ and
+$\int_{\partial B(x,\delta)}g\,d\nu$ are defined in
+$[-\infty,\infty]$, so $\int_{\partial B(x,\delta)}f\wedge g\,d\nu$ is
+defined and is at most
+
+\Centerline{$\min\bigl(\int_{\partial B(x,\delta)}fd\nu,
+\int_{\partial B(x,\delta)}g\,d\nu\bigr)
+\le\nu(\partial B(x,\delta))\,\min(f(x),g(x))$.  \Qed}}
+
+\woddheader{478Cd}{0}{0}{0}{48pt}
+
+\spheader 478Cd Let $f:G\to\Bbb R$ be a harmonic function which is
+locally integrable with respect to Lebesgue measure on $G$\cmmnt{ (that
+is, every point of $G$ has a neighbourhood $V$ such that $\int_Vfd\mu$ is
+defined and finite)}.   Then
+
+\Centerline{$f(x)=\Bover1{\mu B(x,\delta)}\int_{B(x,\delta)}fd\mu$}
+
+\noindent whenever $x\in G$, $\delta>0$ and $B(x,\delta)\subseteq G$.
+\prooflet{\Prf\ By 265G,
+
+\Centerline{$\int_{B(x,\delta)}fd\mu
+=\int_0^t\int_{\partial B(x,t)}fd\nu\,dt
+=\int_0^t\nu(\partial B(x,\delta))f(x)dt
+=\beta_r\delta^rf(x)$.   \Qed}
+
+\noindent}So $f$ is continuous.   \prooflet{\Prf\ If $x\in G$, take
+$\delta>0$ such that $B(x,2\delta)\subseteq G$, and set $f_1(y)=f(y)$ for
+$y\in B(x,2\delta)$, $0$ for $y\in\BbbR^r\setminus B(x,2\delta)$.   Set
+$g=\Bover1{\mu B(\tbf{0},\delta)}\chi B(\tbf{0},\delta)$.
+Then $f_1$ is integrable, so the convolution $f_1*g$ is continuous (444Rc).
+Also, for any $y\in B(x,\delta)$,
+
+$$\eqalign{(f_1*g)(y)
+&=\int f_1(z)g(y-z)\mu(dz)
+=\int_{B(y,\delta)}\Bover{f_1(z)}{\mu B(y,\delta)}\mu(dz)\cr
+&=\Bover1{\mu B(y,\delta)}\int_{B(y,\delta)}f(z)\mu(dz)
+=f(y),}$$
+
+\noindent so $f$ is continuous at $x$.\ \Qed}
+
+%do we really need to assume "locally integrable"?  could it be a
+%consequence of "measurable harmonic real-valued"? query
+
+\leader{478D}{Maximal \dvrocolon{principle}}\cmmnt{ One of the
+fundamental properties of harmonic functions will hardly be used in the
+exposition here, but I had better give it a suitably prominent place.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $G\subseteq\BbbR^r$ be a
+non-empty open set.  Suppose that
+$g:\overline{G}^{\infty}\to\ocint{-\infty,\infty}$ is
+lower semi-continuous,
+$g(y)\ge 0$ for every $y\in\partial^{\infty}G$, and $g\restr G$ is
+superharmonic.   Then $g(x)\ge 0$ for every $x\in G$.
+
+\proof{ \Quer\ Otherwise, set
+$\gamma=\inf_{x\in G}g(x)=\inf\{g(y):y\in\overline{G}^{\infty}\}$.
+Because $\overline{G}^{\infty}$ is compact and
+$g$ is lower semi-continuous, $K=\{x:x\in G$, $g(x)=\gamma\}$ is
+non-empty and compact (4A2B(d-viii)).
+Let $x\in K$ be such that $\|x\|$ is maximal, and $\delta>0$
+such that $B(x,\delta)\subseteq G$.   Then
+$\Bover1{\nu(\partial B(x,\delta))}\int_{\partial B(x,\delta)}g\,d\nu
+\le g(x)$.   But $g(y)\ge g(x)$ for
+every $y\in\partial B(x,\delta)$ and
+
+\Centerline{$\{y:y\in\partial B(x,\delta)$, $g(y)>g(x)\}
+\supseteq\{y:y\in\partial B(x,\delta)$, $(y-x)\dotproduct x\ge 0\}$}
+
+\noindent is not $\nu$-negligible, so this is impossible.\ \Bang
+}%end of proof of 478D
+
+\leader{478E}{Theorem} Let $G\subseteq\BbbR^r$ be an open set and
+$f:G\to\Bbb R$ a function with continuous second derivative.
+Write $\nabla^2f$ for its Laplacian
+$\diverg\grad f=\sum_{i=1}^r\Pdd{f}{\xi_i}$.
+
+(a) $f$ is superharmonic iff $\nabla^2f\le 0$ everywhere in $G$.
+
+(b) $f$ is subharmonic iff $\nabla^2f\ge 0$ everywhere in $G$.
+
+(c) $f$ is harmonic iff $\nabla^2f=0$ everywhere in $G$.
+
+\proof{{\bf (a)(i)} For $x\in G$ set
+
+\Centerline{$R_x=\rho(x,\BbbR^r\setminus G)
+=\inf_{y\in\BbbR^r\setminus G}\|x-y\|$,}
+
+\noindent counting $\inf\emptyset$ as $\infty$;  for $0<\gamma<R_x$ set
+
+\Centerline{$g_x(\gamma)
+=\Bover1{\gamma^{r-1}}\int_{\partial B(x,\gamma)}f(y)\nu(dy)
+=\int_{\partial B(\tbf{0},1)}f(x+\gamma z)\nu(dz)$.}
+
+\noindent Because $f$ is
+continuously differentiable, $g'_x(\gamma)$ is defined and equal to
+$\int_{\partial B(\tbf{0},1)}\Pd{}{\gamma}f(x+\gamma z)\nu(dz)$ for
+$\gamma\in\ooint{0,R_x}$.
+
+Set $\phi=\grad f$, so that $\nabla^2f=\diverg\phi$.
+Each ball $B(x,\gamma)$ has
+finite perimeter;  its essential boundary is its ordinary boundary;
+the Federer exterior normal
+$v_y$ at $y$ is $\Bover1{\gamma}(y-x)$;  and if $y=x+\gamma z$, where
+$\|z\|=1$, then
+$\phi(y)\dotproduct v_y$ is $\Pd{}{\gamma}f(x+\gamma z)$.
+So the Divergence Theorem (475N) tells us that
+
+$$\eqalignno{\int_{B(x,\gamma)}\nabla^2fd\mu
+&=\int_{\partial B(x,\gamma)}\phi(y)\dotproduct v_y\nu(dy)\cr
+&=\gamma^{r-1}\int_{\partial B(\tbf{0},1)}
+  \Pd{}{\gamma}f(x+\gamma z)\nu(dz)
+=\gamma^{r-1}g'_x(\gamma).\cr}$$
+
+\medskip
+
+\quad{\bf (ii)} If $\nabla^2f\le 0$ everywhere in $G$, and
+$B(x,\gamma)\subseteq G$, then $g'_x(t)\le 0$ for $0<t\le \gamma$, so
+
+\Centerline{$g_x(\gamma)\le\lim_{t\downarrow 0}g_x(t)=r\beta_rf(x)$;}
+
+\noindent as $x$ and $\gamma$ are arbitrary, $f$ is superharmonic.
+
+\medskip
+
+\quad{\bf (iii)} If $f$ is superharmonic, and $x\in G$, then
+
+\Centerline{$g_x(\gamma)\le r\beta_rf(x)=\lim_{t\downarrow 0}g_x(t)$}
+
+\noindent for every $\gamma\in\ooint{0,R_x}$.   So there must be arbitrarily
+small $\gamma >0$ such that $g'_x(\gamma)\le 0$ and
+$\int_{B(x,\gamma)}\nabla^2fd\mu\le 0$;  as $\nabla^2f$ is continuous,
+$(\nabla^2f)(x)\le 0$.
+
+\medskip
+
+{\bf (b)-(c)} are now immediate.
+}%end of proof of 478E
+
+\leader{478F}{Basic examples} (a) For any $y$, $z\in\BbbR^r$,
+
+\Centerline{$x\mapsto\Bover1{\|x-z\|^{r-2}}$,
+\quad$x\mapsto\Bover{(x-z)\dotproduct y}{\|x-z\|^r}$,}
+
+\Centerline{$x\mapsto\Bover{\|y-z\|^2-\|x-y\|^2}{\|x-z\|^r}
+=2\Bover{(x-z)\dotproduct(y-z)}{\|x-z\|^r}-\Bover1{\|x-z\|^{r-2}}$}
+
+\noindent are harmonic on $\BbbR^r\setminus\{z\}$.
+
+(b) For any $z\in\BbbR^2$,
+
+\Centerline{$x\mapsto\ln\|x-z\|$}
+
+\noindent is harmonic on $\Bbb R^2\setminus\{z\}$.
+
+
+\proof{ The Laplacians are easiest to calculate when $z=0$, of course,
+but in any case you only have to get the algebra right to apply 478Ec.
+}%end of proof of 478F
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The function
+$x\mapsto\Bover{\|y-z\|^2-\|x-y\|^2}{\|x-z\|^r}$ is the {\bf Poisson
+kernel};  see 478I below.}
+
+\leader{478G}{}\cmmnt{ We shall
+need a pair of exact integrals involving the functions here, with an easy
+corollary.
+
+\medskip
+
+\noindent}{\bf Lemma}
+(a) $\Bover1{\nu(\partial B(\tbf{0},\delta))}\biggerint_{\partial B(\tbf{0},\delta)}
+\Bover1{\|x-z\|^{r-2}}\nu(dz)
+=\Bover1{\max(\delta,\|x\|)^{r-2}}$ whenever $x\in\BbbR^r$
+and $\delta>0$.
+
+(b) $\Bover1{\nu(\partial B(\tbf{0},\delta))}\biggerint_{\partial B(\tbf{0},\delta)}
+  \Bover{|\delta^2-\|x\|^2|}{\|x-z\|^r}\nu(dz)
+=\Bover1{\max(\delta,\|x\|)^{r-2}}$ whenever $x\in\BbbR^r$,
+$\delta>0$ and $\|x\|\ne\delta$.
+
+(c) $\biggerint_{B(\tbf{0},\delta)}\Bover1{\|x-z\|^{r-2}}\mu(dz)
+\le\Bover12r\beta_r\delta^2$
+whenever $x\in\BbbR^r$ and $\delta>0$.
+
+\proof{{\bf (a)(i)} The first thing to note is that there is a function
+$g:\coint{0,\infty}\setminus\{\delta\}\to\coint{0,\infty}$ such that
+$g(\|x\|)=\Bover1{\nu(\partial B(\tbf{0},\delta))}
+\biggerint_{\partial B(\tbf{0},\delta)}\Bover1{\|x-z\|^{r-2}}\nu(dz)$
+whenever $\|x\|\ne\delta$.   \Prf\ If $\|x\|=\|y\|$, then
+there is an orthogonal transformation $T:\BbbR^r\to\BbbR^r$ such that
+$Tx=y$, so that
+
+$$\eqalignno{\int_{\partial B(\tbf{0},\delta)}\Bover1{\|y-z\|^{r-2}}\nu(dz)
+&=\int_{\partial B(\tbf{0},\delta)}\Bover1{\|y-Tz\|^{r-2}}\nu(dz)\cr
+\displaycause{because $T$ is an automorphism of
+$(\BbbR^r,B(\tbf{0},\delta),\nu)$}
+&=\int_{\partial B(\tbf{0},\delta)}\Bover1{\|Tx-Tz\|^{r-2}}\nu(dz)
+=\int_{\partial B(\tbf{0},\delta)}\Bover1{\|x-z\|^{r-2}}\nu(dz).
+\text{ \Qed}\cr}$$
+
+\woddheader{478G}{4}{2}{2}{60pt}
+
+\quad{\bf (ii)} Now suppose that $0<\gamma<\delta$.   Then
+
+$$\eqalignno{g(\gamma)
+&=\Bover1{\nu(\partial B(\tbf{0},\gamma))}\int_{\partial B(\tbf{0},\gamma)}
+  g(\gamma)\nu(dx)\cr
+&=\Bover1{\nu(\partial B(\tbf{0},\gamma))}\int_{\partial B(\tbf{0},\gamma)}
+   \Bover1{\nu(\partial B(\tbf{0},\delta))}\int_{\partial B(\tbf{0},\delta)}
+   \Bover1{\|x-z\|^{r-2}}\nu(dz)\nu(dx)\cr
+&=\Bover1{\nu(\partial B(\tbf{0},\delta))}\int_{\partial B(\tbf{0},\delta)}
+   \Bover1{\nu(\partial B(\tbf{0},\gamma))}
+   \int_{\partial B(\tbf{0},\gamma)}\Bover1{\|x-z\|^{r-2}}\nu(dx)\nu(dz)\cr
+&=\Bover1{\nu(\partial B(\tbf{0},\delta))}\int_{\partial B(\tbf{0},\delta)}
+   \Bover1{\|z\|^{r-2}}\nu(dz)\cr
+\displaycause{because the function $x\mapsto\Bover1{\|x-z\|^2}$ is harmonic
+in $\BbbR^r\setminus\{z\}$, by 478Fa}
+&=\Bover1{\delta^{r-2}}.\cr}$$
+
+\medskip
+
+\quad{\bf (iii)} Next, if $\gamma>\delta$,
+
+$$\eqalignno{g(\gamma)
+&=\Bover1{\nu(\partial B(\tbf{0},\delta))}\int_{\partial B(\tbf{0},\delta)}
+   \Bover1{\nu(\partial B(\tbf{0},\gamma))}
+   \int_{\partial B(\tbf{0},\gamma)}\Bover1{\|x-z\|^{r-2}}\nu(dx)\nu(dz)\cr
+\displaycause{as in (ii)}
+&=\Bover1{\nu(\partial B(\tbf{0},\delta))}\int_{\partial B(\tbf{0},\delta)}
+   \Bover1{\gamma^{r-2}}\nu(dz)\cr
+\displaycause{by (ii), with $\gamma$ and $\delta$ interchanged}
+&=\Bover1{\gamma^{r-2}}.\cr}$$
+
+\medskip
+
+\quad{\bf (iv)} So we have the result if $\|x\|\ne\delta$.   If
+$\|x\|=\delta$ and $r\ge 2$,
+set $x_n=(1+2^{-n})x$ for each $n\in\Bbb N$.   If
+$z\in\partial B(\tbf{0},\delta)$,
+$\sequencen{\|x_n-z\|}$ is a decreasing sequence with limit $\|x-z\|$, so
+$\sequencen{\Bover1{\|x_n-z\|^{r-2}}}$ is a non-decreasing sequence with
+limit $\Bover1{\|x-z\|^{r-2}}$.   By B.Levi's theorem,
+
+$$\eqalign{\Bover1{\nu(\partial B(\tbf{0},\delta))}\int_{\partial B(\tbf{0},\delta)}
+  \Bover1{\|x-z\|^{r-2}}\nu(dz)
+&=\lim_{n\to\infty}\Bover1{\nu(\partial B(\tbf{0},\delta))}
+  \int_{\partial B(\tbf{0},\delta)}\Bover1{\|x_n-z\|^{r-2}}\nu(dz)\cr
+&=\lim_{n\to\infty}\Bover1{\|x_n\|^{r-2}}
+=\Bover1{\|x\|^{r-2}}
+=\Bover1{\delta^{r-2}}.\cr}$$
+
+\noindent Finally, if $r=1$ and $\|x\|=|x|=\delta$, we are just trying to
+take the average of $|x-\delta|$ and  $|x-(-\delta)|$, which will be
+$\delta=\Bover1{\delta^{r-2}}$.
+
+\medskip
+
+{\bf (b)} We can follow the same general line.
+
+\medskip
+
+\quad{\bf (i)}
+Define $f:\BbbR^r\setminus\partial B(\tbf{0},\delta)\to\Bbb R$ by setting
+$f(x)=\Bover1{\nu(\partial B(\tbf{0},\delta))}\int_{\partial B(\tbf{0},\delta)}
+\Bover{\|x\|^2-\delta^2}{\|x-z\|^r}\nu(dz)$ when
+$\|x\|\ne\delta$.   Then $f$ is harmonic.   \Prf\ If $x$ and $\gamma>0$ are
+such that $B(x,\gamma)\subseteq\BbbR^r\setminus\partial B(\tbf{0},\delta)$, then
+
+$$\eqalignno{\Bover1{\nu(\partial B(x,\gamma))}
+   &\int_{\partial B(x,\gamma)}f(y)\nu(dy)\cr
+&=\Bover1{\nu(\partial B(x,\gamma))}\int_{\partial B(x,\gamma)}
+   \Bover1{\nu(\partial B(\tbf{0},\delta))}\int_{\partial B(\tbf{0},\delta)}
+   \Bover{\|y\|^2-\delta^2}{\|y-z\|^r}
+   \nu(dz)\nu(dy)\cr
+&=\Bover1{\nu(\partial B(\tbf{0},\delta))}\int_{\partial B(\tbf{0},\delta)}
+   \Bover1{\nu(\partial B(x,\gamma))}\int_{\partial B(x,\gamma)}
+   \Bover{\|y\|^2-\delta^2}{\|y-z\|^r}
+   \nu(dy)\nu(dz)\cr
+&=\Bover1{\nu(\partial B(\tbf{0},\delta))}\int_{\partial B(\tbf{0},\delta)}
+   \Bover{\|x\|^2-\delta^2}{\|x-z\|^r}\nu(dz)\cr
+\displaycause{because the functions
+$y\mapsto\Bover{\|y\|^2-\delta^2}{\|y-z\|^r}$ are harmonic when
+$\|z\|=\delta$, by 478Fa}
+&=f(x).  \text{\Qed}\cr}$$
+
+\noindent
+Since $f$ is smooth, $\nabla^2f=0$ everywhere off $\partial B(\tbf{0},\delta)$,
+by 478Ec.
+
+\medskip
+
+\quad{\bf (ii)} As before, we have a function
+$h:\coint{0,\infty}\setminus\{\delta\}\to\coint{0,\infty}$ such that
+$f(x)=h(\|x\|)$ whenever $\|x\|\ne\delta$.   If $0<\gamma<\delta$ then
+
+$$\eqalign{h(\gamma)
+&=\Bover1{\nu(\partial B(\tbf{0},\gamma))}
+  \int_{\partial B(\tbf{0},\gamma)}h(\gamma)\nu(dy)
+=\Bover1{\nu(\partial B(\tbf{0},\gamma))}
+  \int_{\partial B(\tbf{0},\gamma)}f(y)\nu(dy)\cr
+&=f(0)
+=\Bover1{\nu(\partial B(\tbf{0},\delta))}\int_{\partial B(\tbf{0},\delta)}
+  \Bover{-\delta^2}{\|z\|^r}\nu(dz)
+=-\Bover1{\delta^{r-2}},\cr}$$
+
+\noindent and
+
+\Centerline{$\Bover1{\nu(\partial B(\tbf{0},\delta))}\int_{\partial B(\tbf{0},\delta)}
+  \Bover{|\delta^2-\|x\|^2|}{\|x-z\|^r}\nu(dz)
+=-h(\gamma)=\Bover1{\delta^{r-2}}$}
+
+\noindent if $\|x\|=\gamma<\delta$.
+
+\medskip
+
+\quad{\bf (iii)} For $\gamma>\delta$ I start with an elementary estimate.
+If $\|x\|=\gamma>\delta$ then
+$\Bover{\|x\|^2-\delta^2}{\|x-z\|^r}$ lies between
+$\Bover{\gamma^2-\delta^2}{(\gamma+\delta)^r}$ and
+$\Bover{\gamma^2-\delta^2}{(\gamma-\delta)^r}$ for every
+$z\in\partial B(x,\delta)$, so that $\gamma^{r-2}f(x)$ lies
+between
+$\Bover{1-(\delta/\gamma)^2}{(1+(\delta/\gamma))^r}$
+and $\Bover{1-(\delta/\gamma)^2}{(1-(\delta/\gamma))^r}$,
+and is approximately $1$ if $\gamma$ is large.
+
+\medskip
+
+\quad{\bf (iv)} Now we can use the Divergence Theorem
+again, as follows.   If $\delta<\gamma<\beta$ consider the region
+$E=B(\tbf{0},\beta)\setminus B(\tbf{0},\gamma)$ and the function $\phi=\grad f$.
+As $f$ is smooth, $\phi$ is defined everywhere off
+$\partial B(\tbf{0},\delta)$, and $\phi(x)=\Bover{h'(\|x\|)}{\|x\|}x$
+at every $x\in\BbbR^r\setminus\partial B(\tbf{0},\delta)$.
+The essential boundary of $E$ is
+$\partial E=\partial B(\tbf{0},\gamma)\cup\partial B(\tbf{0},\beta)$;  the Federer
+exterior normal at $x\in\partial B(\tbf{0},\gamma)$ is $v_x=-\Bover1{\gamma}x$
+and at $x\in\partial B(\tbf{0},\beta)$ it is $v_x=\Bover1{\beta}x$;
+and $\diverg\phi=\nabla^2f$ is zero everywhere on $E$.
+So 475N tells us that
+
+$$\eqalign{0
+&=\int_{\partial B(\tbf{0},\beta)}\phi(x)\dotproduct v_x\nu(dx)
+   +\int_{\partial B(\tbf{0},\gamma)}\phi(x)\dotproduct v_x\nu(dx)\cr
+&=\int_{\partial B(\tbf{0},\beta)}h'(\beta)\nu(dx)
+   -\int_{\partial B(\tbf{0},\gamma)}h'(\gamma)\nu(dx)\cr
+&=r\beta_r\beta^{r-1}h'(\beta)
+   -r\beta_r\gamma^{r-1}h'(\gamma).\cr}$$
+
+\noindent
+This shows that $h'(\gamma)$ is inversely proportional to $\gamma^{r-1}$.
+
+\medskip
+
+\quad{\bf (v)} If $r\ge 3$,
+there are $\alpha$, $\beta\in\Bbb R$ such that
+$h(\gamma)=\alpha+\Bover{\beta}{\gamma^{r-2}}$ for every $\gamma>\delta$.
+But since (iii) shows us that
+$\lim_{\gamma\to\infty}\gamma^{r-2}h(\gamma)=1$,
+we must have $h(\gamma)=\Bover1{\gamma^{r-2}}$
+for $\gamma>\delta$, as declared.   If $r=2$, then we can express $h$ in
+the form $h(\gamma)=\alpha+\beta\ln\gamma$;  this time,
+$\lim_{\gamma\to\infty}h(\gamma)=1$, so once more
+$h(\gamma)=1=\Bover1{\gamma^{r-2}}$ for every $\gamma$.
+
+\medskip
+
+\quad{\bf (vi)} Finally, if $r=1$ and $|x|>\delta$, then, as in
+(a-iv) above,
+$\Bover1{\nu(\partial B(\tbf{0},\delta))}\biggerint_{\partial B(\tbf{0},\delta)}
+  \Bover{|\delta^2-\|x\|^2|}{\|x-z\|^r}\nu(dz)$ is the average of
+$\Bover{x^2-\delta^2}{|x-\delta|}=|x+\delta|$ and
+$\Bover{x^2-\delta^2}{|x+\delta|}=|x-\delta|$, so is
+$|x|=\Bover1{|x|^{r-2}}$.
+
+\medskip
+
+{\bf (c)} This follows easily from (a);
+
+$$\eqalign{\int_{B(\tbf{0},\delta)}\Bover1{\|x-z\|^{r-2}}\mu(dz)
+&=\int_0^{\delta}\int_{\partial B(\tbf{0},t)}\Bover1{\|x-z\|^{r-2}}\nu(dz)dt
+   \cr
+&=\int_0^{\delta}\Bover{r\beta_rt^{r-1}}
+   {\max(t,\|x\|)^{r-2}}dt
+\le\int_0^{\delta}r\beta_rt\,dt
+=\Bover12r\beta_r\delta^2.\cr}$$
+}%end of proof of 478G
+
+\leader{478H}{Corollary} If $r\ge 2$, then
+$x\mapsto\Bover1{\|x-z\|^{r-2}}:\BbbR^r\to[0,\infty]$ is superharmonic
+for any $z\in\BbbR^r$.
+
+\woddheader{478H}{0}{0}{0}{40pt}
+
+\proof{ If $\delta>0$ and $x\in\BbbR^r$,
+
+$$\eqalign{\Bover1{\nu\partial B(x,\delta)}
+  \int_{\partial B(x,\delta)}\Bover1{\|y-z\|^{r-2}}\nu(dy)
+&=\Bover1{\nu\partial B(\tbf{0},\delta)}
+  \int_{\partial B(\tbf{0},\delta)}\Bover1{\|y+x-z\|^{r-2}}\nu(dy)\cr
+&=\Bover1{\max(\delta,\|x-z\|)^{r-2}}
+\le\Bover1{\|x-z\|^{r-2}}.\cr}$$
+}%end of proof of 478H
+
+\leader{478I}{}\cmmnt{ The Poisson kernel gives a basic method of
+building and describing harmonic functions.
+
+\medskip
+
+\noindent}{\bf Theorem} Suppose that $y\in\BbbR^r$ and $\delta>0$;
+let $S=\partial B(y,\delta)$\cmmnt{ be the sphere with centre $y$ and
+radius $\delta$}.
+
+(a) Let $\zeta$ be a totally finite Radon measure on $S$, and define $f$ on
+$\BbbR^r\setminus S$ by setting
+
+\Centerline{$f(x)
+=\Bover1{r\beta_r\delta}\int_S
+  \Bover{|\delta^2-\|x-y\|^2|}{\|x-z\|^r}\zeta(dz)$}
+
+\noindent for $x\in\BbbR^r\setminus S$.
+Then $f$ is continuous and harmonic.
+
+(b) Let $g:S\to\Bbb R$ be a $\nu_S$-integrable function, where $\nu_S$ is
+the subspace measure on $S$ induced by $\nu$, and define
+$f:\BbbR^r\to\Bbb R$ by setting
+
+$$\eqalign{f(x)
+&=\Bover1{r\beta_r\delta}\int_S
+  g(z)\Bover{|\delta^2-\|x-y\|^2|}{\|x-z\|^r}\nu(dz)
+  \text{ if }x\in\BbbR^r\setminus S,\cr
+&=g(x)\text{ if }x\in S.\cr}$$
+
+\quad(i) $f$ is continuous and harmonic in $\BbbR^r\setminus S$.
+
+\quad(ii) If $r\ge 2$, then
+
+\Centerline{$\liminf_{z\in S,z\to z_0}g(x)=\liminf_{x\to z_0}f(x)$,
+\quad$\limsup_{x\to z_0}f(x)=\limsup_{z\in S,z\to z_0}g(x)$}
+
+\noindent for every $z_0\in S$.
+
+\quad(iii) $f$
+is continuous at any point of $S$ where $g$ is continuous, and if $g$ is
+lower semi-continuous then $f$ also is.
+
+\quad(iv) $\sup_{x\in\BbbR^r}f(x)=\sup_{z\in S}g(z)$ and
+$\inf_{x\in\BbbR^r}f(x)=\inf_{z\in S}g(z)$.
+
+\proof{{\bf (a)} $f$ is continuous just because
+$x\mapsto\Bover{\delta^2-\|x-y\|^2}{\|x-z\|^r}$ is continuous for each
+$z\in S$ and uniformly bounded for $z\in S$ and
+$x$ running over any compact set not meeting $S$.
+
+Suppose that $\|x-y\|<\delta$
+and $\eta>0$ is such
+that $B(x,\eta)\cap S=\emptyset$.   Then
+
+$$\eqalignno{
+\Bover1{\nu(\partial B(x,\eta))}\int_{\partial B(x,\eta)}fd\nu
+&=\Bover1{\nu(\partial B(x,\eta))}\int_{\partial B(x,\eta)}
+  \Bover1{r\beta_r\delta}
+    \int_S\Bover{\delta^2-\|w-y\|^2}{\|w-z\|^r}\zeta(dz)\nu(dw)\cr
+&=\Bover1{r\beta_r\delta}\int_S\Bover1{\nu(\partial B(x,\eta))}
+    \int_{\partial B(x,\eta)}
+    \Bover{\delta^2-\|w-y\|^2}{\|w-z\|^r}\nu(dw)\zeta(dz)\cr
+&=\Bover1{r\beta_r\delta}\int_S
+    \Bover{\delta^2-\|x-y\|^2}{\|x-z\|^r}\zeta(dz)\cr
+\displaycause{because $w\mapsto\Bover{\delta^2-\|w-y\|^2}{\|w-z\|^r}$
+is harmonic on $\BbbR^r\setminus\{z\}$ whenever $z\in S$, by 478Fa}
+&=f(x).\cr}$$
+
+\noindent As $x$ and $\eta$ are arbitrary, $f$ is harmonic on
+$\interior B(y,\delta)$.   Similarly, it is harmonic on
+$\BbbR^r\setminus B(y,\delta)$.
+\medskip
+
+{\bf (b)(i)} Applying (a) to the indefinite-integral measures over
+the subspace measure $\nu_S$
+defined by the positive and negative parts of $g$, we see that $f$ is
+continuous and harmonic in $\BbbR^r\setminus S$.
+
+\medskip
+
+\quad{\bf (ii)}\grheada\ If $x\notin S$,
+
+$$\eqalign{\int_S\Bover{|\delta^2-\|x-y\|^2|}{\|x-z\|^r}\nu(dz)
+&=\int_{\partial B(\tbf{0},\delta)}
+   \Bover{|\delta^2-\|x-y\|^2|}{\|x-y-z\|^r}\nu(dz)\cr
+&=\Bover{\nu(\partial B(\tbf{0},\delta))}{\max(\delta,\|x-y\|)^{r-2}}\cr}$$
+
+\noindent by 478Gb.   In particular, if
+$x$ is close to, but not on, the sphere $S$,
+$\int_S\Bover{|\delta^2-\|x-y\|^2|}{\|x-z\|^r}\nu(dz)$ is
+approximately
+$\Bover{\nu(\partial B(\tbf{0},\delta)}{\delta^{r-2}}=r\beta_r\delta$.
+
+\medskip
+
+\qquad\grheadb\ Set $M=\int_S|g|d\nu$, and take $z_0\in S$;   set
+$\gamma=\limsup_{x\in S,x\to z_0}g(x)$.   If $\gamma=\infty$ then certainly
+$\limsup_{x\to z_0}f(x)\le\gamma$.   Otherwise, take $\eta>0$.
+Let $\alpha_0\in\ooint{0,\delta}$ be such that
+
+\Centerline{$|\Bover1{r\beta_r\delta}\int_S
+  \Bover{|\delta^2-\|x-y\|^2|}{\|x-z\|^r}\nu(dz)-1|\le\eta$}
+
+\noindent whenever $0<|\delta-\|x-y\||\le\alpha_0$, and
+$g(z)\le\gamma+\eta$
+whenever $z\in S$ and $0<\|z-z_0\|\le 2\alpha_0$.
+Let $\alpha\in\ocint{0,\alpha_0}$ be such that
+$(2\delta+\alpha_0)(M+|\gamma|)\alpha\nu S
+\le 2^rr\beta_r\delta\alpha_0^r\eta$.
+
+If $\|x-z_0\|\le\alpha$ and $\|x-y\|\ne \delta$,
+then $|\delta -\|x-y\||\le\|x-z_0\|\le\alpha_0$ and
+$|\delta^2-\|x-y\|^2|\le\|x-z_0\|(2\delta +\alpha_0)$, so
+
+$$\eqalignno{f(x)-\gamma
+&\le\eta|\gamma|+\Bover1{r\beta_r\delta}\int_S
+  (g(z)-\gamma)\Bover{|\delta^2-\|x-y\|^2|}{\|x-z\|^r}\nu(dz)\cr
+&\le\eta|\gamma|
+  +\Bover1{r\beta_r\delta}\int_{S\cap B(z_0,2\alpha_0)}
+    (g(z)-\gamma)\Bover{|\delta^2-\|x-y\|^2|}{\|x-z\|^r}\nu(dz)\cr
+&\mskip100mu
+  +\Bover1{r\beta_r\delta}\int_{S\setminus B(z_0,2\alpha_0)}
+    (|g(z)|+|\gamma|)\Bover{|\delta^2-\|x-y\|^2|}{\|x-z\|^r}\nu(dz)\cr
+&\le\eta|\gamma|
+  +\Bover{\eta}{r\beta_r\delta}\int_S
+    \Bover{|\delta^2-\|x-y\|^2|}{\|x-z\|^r}\nu(dz)\cr
+&\mskip100mu
+  +\Bover1{r\beta_r\delta}\int_{S\setminus B(z_0,2\alpha_0)}
+    (|g(z)|+|\gamma|)\Bover{\|x-z_0\|(2\delta +\alpha_0)}{2^r\alpha_0^r}
+    \nu(dz)\cr
+\displaycause{because $r\ge 2$, so $\nu\{z_0\}=0$}
+&\le\eta|\gamma|
+  +\eta(1+\eta)+(M+|\gamma|)
+      \Bover{\alpha(2\delta +\alpha_0)}{2^rr\beta_r\delta\alpha_0^r}\nu S
+  \cr
+&\le (|\gamma|+1+\eta+1)\eta.\cr}$$
+
+\noindent Also, of course, $f(x)-\gamma=g(x)-\gamma\le\eta$ if
+$0<\|x-z_0\|\le\alpha$ and $\|x-y\|=\delta$.   As $\eta$
+is arbitrary, $\limsup_{x\to z_0}f(x)\le\gamma$.
+In the other direction, $\limsup_{x\to z_0}f(x)\ge\gamma$ just because $f$
+extends $g$.
+
+\medskip
+
+\qquad\grheadc\
+Similarly, or applying ($\beta$) to $-g$,
+$\liminf_{x\to z_0}f(x)=\liminf_{x\in S,x\to z_0}g(x)$.
+
+\medskip
+
+\quad{\bf (iii)}\grheada\ If $r\ge 2$, it follows at once from (ii)
+that if $g$ is continuous at $z_0\in S$, so is $f$, and
+that if $g$ is lower semi-continuous (so that
+$g(z_0)\le\liminf_{x\in S,x\to z_0}g(x)$ for every $z_0\in S$) then $f$
+also is lower semi-continuous.
+
+\medskip
+
+\qquad\grheadb\ If $r=1$, then $S=\{y-\delta,y+\delta\}$ and
+$\nu\{y-\delta\}=\nu\{y+\delta\}=1$, so
+
+$$\eqalign{f(x)
+&=\Bover1{2\delta}\bigl(
+   \Bover{|\delta^2-(x-y)^2|}{|x-(y-\delta)|}g(y-\delta)
+     +\Bover{|\delta^2-(x-y)^2|}{|x-(y+\delta)|}g(y+\delta)\bigr)\cr
+&=\Bover1{2\delta}\bigl(|x-(y+\delta)|g(y-\delta)
+           +|x-(y-\delta)|g(y+\delta)\bigr)\cr}$$
+
+\noindent for $x\in\Bbb R\setminus S$, and
+$\lim_{x\mapsto y\pm\delta}f(x)=g(y\pm\delta)$, so $f$ is continuous.
+
+\medskip
+
+\quad{\bf (iv)} If $g(z)\le\alpha<\infty$ for every $z\in S$, then
+
+$$\eqalign{f(x)
+&=\Bover1{r\beta_r\delta}\int_S
+   g(z)\Bover{|\delta^2-\|x-y\|^2|}{\|x-z\|^r}\nu(dz)
+\le\Bover{\alpha}{r\beta_r\delta}\int_{\partial B(\tbf{0},\delta)}
+   \Bover{|\delta^2-\|x-y\|^2|}{\|x-y-z\|^r}\nu(dz)\cr
+&=\Bover{\alpha}{r\beta_r\delta}
+   \cdot\Bover{\nu(\partial B(\tbf{0},\delta))}{\max(\delta,\|x-y\|)^{r-2}}
+=\Bover{\alpha\delta^{r-2}}{\max(\delta,\|x-y\|)^{r-2}}
+\le\alpha\cr}$$
+
+\noindent for every $x\in\BbbR^r\setminus S$.   So
+$\sup_{x\in\BbbR^r}f(x)=\sup_{z\in S}g(z)$;  similarly,
+$\inf_{x\in\BbbR^r}f(x)=\inf_{z\in S}g(z)$.
+}%end of proof of 478I
+
+\leader{478J}{Convolutions and smoothing:  Proposition} (a) Suppose that
+$f:\BbbR^r\to[0,\infty]$ is Lebesgue measurable, and $G\subseteq\BbbR^r$
+an open set such that $f\restr G$ is superharmonic.   Let
+$h:\BbbR^r\to[0,\infty]$ be a Lebesgue integrable function, and $f*h$ the
+convolution of $f$ and $h$.   If
+$H\subseteq G$ is an open set such that $H-\{z:h(z)\ne 0\}\subseteq G$,
+then $(f*h)\restr H$ is superharmonic.
+
+(b) Suppose, in (a), that
+$h(y)=h(z)$ whenever $\|y\|=\|z\|$ and that
+$\int_{\BbbR^r}h\,d\mu\le 1$.   If $x\in G$ and $\gamma>0$ are such that
+$B(x,\gamma)\subseteq G$ and $h(y)=0$ whenever $\|y\|\ge\gamma$,
+then $(f*h)(x)\le f(x)$.
+
+(c) Let $f:\BbbR^r\to[0,\infty]$ be a lower semi-continuous
+function, and $\sequencen{\tilde h_n}$ the sequence of 473E.
+If $G\subseteq\BbbR^r$ is an open set such that $f\restr G$ is
+superharmonic, then $f(x)=\lim_{n\to\infty}(f*\tilde h_n)(x)$ for every
+$x\in G$.
+
+\proof{{\bf (a)} If $x\in H$ and $\delta>0$ are such that
+$B(x,\delta)\subseteq H$, then
+
+$$\eqalignno{\int_{\partial B(x,\delta)}(f*h)(y)\nu(dy)
+&=\int_{\partial B(x,\delta)}\int_{\BbbR^r}f(y-z)h(z)\mu(dz)\nu(dy)\cr
+&=\int_{\BbbR^r}h(z)\int_{\partial B(x,\delta)}f(y-z)\nu(dy)\mu(dz)\cr
+&=\int_{\BbbR^r}h(z)\int_{\partial B(x-z,\delta)}f(y)\nu(dy)\mu(dz)\cr
+&\le r\beta_r\delta^{r-1}\int_{\BbbR^r}h(z)f(x-z)\mu(dz)\cr
+\displaycause{because if $h(z)\ne 0$ then $B(x-z,\delta)=B(x,\delta)-z$ is
+included in $G$}
+&=\nu(\partial B(x,\delta))\cdot(f*h)(x).\cr}$$
+
+\medskip
+
+{\bf (b)} Let $g:\coint{0,\infty}\to[0,\infty]$ be such that
+$h(y)=g(\|y\|)$ for every $y$.   Then
+
+$$\eqalign{(f*h)(x)
+&=\int_{\BbbR^r}f(y)h(x-y)\mu(dy)
+=\int_0^{\gamma}\int_{\partial B(x,t)}f(y)g(t)\nu(dy)dt\cr
+&\le\int_0^{\gamma}r\beta_rt^{r-1}f(x)g(t)dt
+=f(x)\int_{\BbbR^r}h\,d\mu
+\le f(x).\cr}$$
+
+\medskip
+
+{\bf (c)} By (b), $(f*\tilde h_n)(x)\le f(x)$ for every sufficiently
+large $n$, so $\limsup_{n\to\infty}(f*\tilde h_n)(x)\le f(x)$.
+In the other
+direction, if $x\in G$ and $\alpha<f(x)$, there is a $\delta>0$ such
+that $B(x,\delta)\subseteq G$ and
+$f(y)\ge\alpha$ for every $y\in B(x,\delta)$.   Now there is an
+$m\in\Bbb N$ such that $\tilde h_n(y)=0$ whenever $n\ge m$ and
+$\|y\|\ge\delta$;  so that
+
+$$\eqalign{(f*\tilde h_n)(x)
+&=\int f(y)\tilde h_n(x-y)\mu(dy)
+=\int_{B(x,\delta)}f(y)\tilde h_n(x-y)\mu(dy)\cr
+&\ge\alpha\int_{B(x,\delta)}\tilde h_n(x-y)\mu(dy)
+=\alpha\cr}$$
+
+\noindent whenever $n\ge m$.   As $\alpha$ is arbitrary,
+$f(x)=\lim_{n\to\infty}(f*\tilde h_n)(x)$.
+}%end of proof of 478J
+
+\leader{478K}{Dynkin's formula:  Lemma}
+Let $\mu_W$ be $r$-dimensional Wiener measure on
+$\Omega=C(\coint{0,\infty};\BbbR^r)_0$;  set
+$X_t(\omega)=\omega(t)$ for $\omega\in\Omega$ and $t\ge 0$.
+Let $f:\BbbR^r\to\Bbb R$ be a three-times-differentiable
+function such that $f$ and its
+first three derivatives are continuous and bounded.
+
+(a) $\Expn(f(X_t))=f(0)+\Bover12\Expn(\int_0^t(\nabla^2f)(X_s)ds)$ for
+every $t\ge 0$.
+
+(b) If $\tau:\Omega\to\coint{0,\infty}$ is a stopping time adapted to
+$\langle\Sigma^+_t\rangle_{t\ge 0}$ and $\Expn(\tau)$ is finite, then
+
+\Centerline{
+$\Expn(f(X_{\tau}))=f(0)+\Bover12\Expn(\int_0^{\tau}(\nabla^2f)(X_s)ds)$.}
+
+\proof{{\bf (a)(i)} We need a special case of the multidimensional
+Taylor's theorem.   If $f:\BbbR^r\to\Bbb R$ is three times differentiable
+and $x=(\xi_1,\ldots,\xi_r)$, $y=(\eta_1,\ldots,\eta_r)\in\BbbR^r$,
+then there is a $z$ in the line segment $[x,y]$ such that
+
+$$\eqalign{f(y)&=f(x)+\sum_{i=1}^r(\eta_i-\xi_i)\Pd{f}{\xi_i}(x)
+             +\Bover12\sum_{i=1}^r\sum_{j=1}^r(\eta_i-\xi_i)(\eta_j-\xi_j)
+	        \Pde{f}{\xi_i}{\xi_j}(x)\cr
+&\mskip100mu
++\Bover16\sum_{i=1}^r\sum_{j=1}^r\sum_{k=1}^r
+	        (\eta_i-\xi_i)(\eta_j-\xi_j)(\eta_k-\xi_k)
+      \Bover{\partial^3f}{\partial\xi_i\partial\xi_j\partial\xi_k}(z).\cr}$$
+
+\noindent\Prf\ Set
+$g(\beta)=f(\beta y+(1-\beta)x)$ for $\beta\in\Bbb R$.   Then $g$ is three
+times differentiable, with
+
+$$\eqalign{g'(\beta)
+&=\sum_{k=1}^r(\eta_k-\xi_k)\Pd{f}{\xi_k}(\beta y+(1-\beta)x),\cr
+g''(\beta)
+&=\sum_{j=1}^r\sum_{k=1}^r(\eta_j-\xi_j)(\eta_k-\xi_k)
+         \Pde{f}{\xi_j}{\xi_k}(\beta y+(1-\beta)x),\cr
+g'''(\beta)	
+&=\sum_{i=1}^r\sum_{j=1}^r\sum_{k=1}^r
+	        (\eta_i-\xi_i)(\eta_j-\xi_j)(\eta_k-\xi_k)
+      \Bover{\partial^3f}{\partial\xi_i\partial\xi_j\partial\xi_k}
+        (\beta y+(1-\beta)x).\cr}$$
+
+\noindent Now by Taylor's theorem with remainder, in one dimension, there
+is a $\beta\in\ooint{0,1}$ such that
+
+\Centerline{$g(1)=g(0)+g'(0)+\Bover12g''(0)+\Bover16g'''(\beta)$}
+
+\noindent and all we have to do is to
+set $z=\beta y+(1-\beta)x$ and substitute in the values for
+$g(1),\ldots,g'''(\beta)$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Let $M\ge 0$ be such that
+$\|\Bover{\partial^3f}{\partial\xi_i\partial\xi_j\partial\xi_k}\|_{\infty}
+\le M$ whenever $1\le i$, $j$, $k\le r$.   Let $K$ be
+$\Expn((\sum_{i=1}^r|Z_i|)^3)$ when $Z_1,\ldots,Z_r$ are independent
+real-valued
+random variables with standard normal distribution.   (To see that this is
+finite, observe that
+
+$$\eqalignno{\Expn((\sum_{i=1}^r|Z_i|)^3)
+&\le\Expn(r^3\max_{i\le r}|Z_i|^3)
+\le r^3\,\Expn(\sum_{i=1}^r|Z_i|^3)
+=r^4\,\Expn(|Z|^3)\cr
+\displaycause{where $Z$ is a random variable with standard normal
+distribution}
+&=\Bover{2r^4}{\sqrt{2\pi}}\int_0^{\infty}t^3e^{-t^2/2}dt
+<\infty.)\cr}$$
+
+\noindent For any $x$, $y\in\BbbR^r$ we have
+
+$$\eqalign{\bigl|f(y)-f(x)-\sum_{i=1}^r(\eta_i-\xi_i)\Pd{f}{\xi_i}(x)
+             &+\Bover12\sum_{i=1}^r\sum_{j=1}^r(\eta_i-\xi_i)(\eta_j-\xi_j)
+	        \Pde{f}{\xi_i}{\xi_j}(x)\bigr|\cr
+&\le\Bover{M}6(\sum_{i=1}^r|\eta_i-\xi_i|)^3.\cr}$$
+		
+\noindent If
+$0\le s\le t$ and $\omega\in\Omega$, then
+
+$$\eqalign{\bigl|f(\omega(t))-f(\omega(s))
+  &-\sum_{i=1}^r\Pd{f}{\xi_i}(\omega(s))(\omega_i(t)-\omega_i(s))\cr
+&\mskip100mu
+   -\Bover12\sum_{i=1}^r\sum_{j=1}^r\Pde{f}{\xi_i}{\xi_j}(\omega(s))
+      (\omega_i(t)-\omega_i(s))(\omega_j(t)-\omega_j(s))\bigr|\cr
+&\le\Bover{M}6(\sum_{i=1}^r|\omega_i(t)-\omega_i(s)|)^3,\cr}$$
+
+\noindent writing $\omega_1,\ldots,\omega_r\in C(\coint{0,\infty})_0$
+for the coordinates of
+$\omega\in\Omega$.   Integrating with respect to $\omega$, we have
+
+$$\eqalignno{|\Expn(f(X_t)-&f(X_s)-\Bover12(t-s)(\nabla^2f)(X_s))|\cr
+&=\bigl|\Expn(f(X_t)-f(X_s))
+  -\sum_{i=1}^r\Expn(\Pd{f}{\xi_i}(X_s))\Expn(X^{(i)}_t-X^{(i)}_s)\cr
+&\mskip100mu
+  -\Bover12\sum_{i=1}^r\Expn(\Pdd{f}{\xi_i}(X_s))
+      \Expn(X^{(i)}_t-X^{(i)}_s)^2\cr
+&\mskip100mu
+  -\Bover12\sum_{i=1}^r\sum_{j\ne i}\Expn(\Pde{f}{\xi_i}{\xi_j})(X_s)
+      \Expn(X^{(i)}_t-X^{(i)}_s)\Expn(X^{(j)}_t-X^{(j)}_s)\bigr|\cr
+\displaycause{writing $X^{(i)}_t(\omega)=\omega_i(t)$ for
+$1\le i\le r$, and recalling that $\Expn(X^{(i)}_t-X^{(i)}_s)=0$ for
+every $i$, while $\Expn(X^{(i)}_t-X^{(i)}_s)^2=t-s$}
+&=\bigl|\Expn(f(X_t)-f(X_s))
+  -\sum_{i=1}^r\Expn((X^{(i)}_t-X^{(i)}_s)\Pd{f}{\xi_i}(X_s))\cr
+&\mskip100mu
+  -\Bover12\sum_{i=1}^r\Expn((X^{(i)}_t-X^{(i)}_s)^2\Pdd{f}{\xi_i}(X_s))\cr
+&\mskip100mu
+  -\Bover12\sum_{i=1}^r\sum_{j\ne i}
+     \Expn((X^{(i)}_t-X^{(i)}_s)(X^{(j)}_t-X^{(j)}_s)
+        \Pde{f}{\xi_i}{\xi_j}(X_s))\bigr|\cr
+\displaycause{because for any $i\le r$ the random variables
+$\Pd{f}{\xi_i}(X_s)$ and $X^{(i)}_t-X^{(i)}_s$ are independent, while
+for any distinct $i$, $j\le r$ the random variables
+$\Pde{f}{\xi_i}{\xi_j}(X_s)$, $X^{(i)}_t-X^{(i)}_s$ and
+$X^{(j)}_t-X^{(j)}_s$ are independent}
+&=\bigl|\Expn\bigl(f(X_t)-f(X_s)
+  -\sum_{i=1}^r(X^{(i)}_t-X^{(i)}_s)\Pd{f}{\xi_i}(X_s)\cr
+&\mskip100mu  -\Bover12\sum_{i=1}^r\sum_{j=1}^r
+     (X^{(i)}_t-X^{(i)}_s)(X^{(j)}_t-X^{(j)}_s)
+        \Pde{f}{\xi_i}{\xi_j}(X_s)\bigr)\bigr|\cr
+&\le\Bover{M}6\Expn((\sum_{i=1}^r|X^{(i)}_t-X^{(i)}_s|)^3)
+\le\Bover{MK}6(t-s)^{3/2}\cr}$$
+
+\noindent because the $X^{(i)}_t-X^{(i)}_s$ are independent random
+variables all with the same distribution as $\sqrt{t-s}\,Z$ where $Z$ is
+standard normal.
+
+\woddheader{478K}{4}{2}{2}{36pt}
+
+{\bf (iii)} Now fix $t\ge 0$ and $n\ge 1$;  set $s_k=\Bover{k}{n}t$ for
+$k\le n$.   Set
+
+\Centerline{$g_n(\omega)
+=\sum_{k=0}^{n-1}(s_{k+1}-s_k)(\nabla^2f)(\omega(s_k))$}
+
+\noindent for $\omega\in\Omega$.   Then
+
+$$\eqalign{
+\bigl|\int\bigl(f(\omega(t))-&f(0)
+  -\Bover12g_n(\omega)\bigr)\mu_W(d\omega)\bigr|\cr
+&=\bigl|\sum_{k=0}^{n-1}\Expn(f(X_{s_{k+1}})-f(X_{s_k})
+  -\Bover12(s_{k+1}-s_k)(\nabla^2f)(X_{s_k}))\bigr|\cr
+&\le\sum_{k=0}^{n-1}\Bover{MK}6(\Bover{t}n)^{3/2}
+=\Bover{MKt\sqrt t}{6\sqrt n}.\cr}$$
+
+\noindent On the other hand,
+
+\Centerline{$\lim_{n\to\infty}g_n(\omega)
+=\int_0^t(\nabla^2f)(\omega(s))ds$}
+
+\noindent for every $\omega$ (the Riemann integral
+$\int_0^t(\nabla^2f)(\omega(s))ds$ is defined because
+$s\mapsto(\nabla^2f)(\omega(s))$ is continuous), and
+$|g_n(\omega)|\le t\|\nabla^2f\|_{\infty}<\infty$ for every $\omega$, so by
+Lebesgue's Dominated Convergence Theorem
+
+$$\eqalign{\Expn(f(X_t)-f(0))
+&=\Bover12\lim_{n\to\infty}\int g_n(\omega)\mu_W(d\omega)
+=\Bover12\int\lim_{n\to\infty}g_n(\omega)\mu_W(d\omega)\cr
+&=\Bover12\int\int_0^t(\nabla^2f)(\omega(s))ds\,\mu_W(d\omega)
+=\Bover12\Expn\bigl(\int_0^t(\nabla^2f)(X_s)ds\bigr)\cr}$$
+
+\noindent as claimed.
+
+\medskip
+
+{\bf (b)(i)}
+Consider first the case in which $\tau$ takes values in a
+finite set $I\subseteq\coint{0,\infty}$.
+In this case we can induce on $\#(I)$.   If $I=\{t_0\}$ then
+
+\Centerline{
+$\Expn(f(X_{\tau}))
+=\Expn(f(X_{t_0}))
+=f(0)+\Bover12\Expn(\int_0^{t_0}(\nabla^2f)(X_s)ds)
+=f(0)+\Bover12\Expn(\int_0^{\tau}(\nabla^2f)(X_s)ds)$}
+
+\noindent by (a).   For the inductive step to $\#(I)>1$, set $t_0=\min I$,
+$E=\{\omega:\tau(\omega)=t_0\}$ and
+
+$$\eqalign{\phi(\omega,\omega')(t)
+&=\omega(t)\text{ if }t\le t_0,\cr
+&=\omega(t_0)+\omega'(t-t_0)\text{ if }t\ge t_0,\cr}$$
+
+\noindent for $\omega$, $\omega'\in\Omega$, so that $\phi$ is \imp\ (477G).
+Set
+
+\Centerline{$\sigma_{\omega}(\omega')
+=\tau(\phi(\omega,\omega'))-t_0$}
+
+\noindent for $\omega$, $\omega'\in\Omega$.   If
+$\omega\in\Omega\setminus E$,
+$\sigma_{\omega}$ is a stopping time adapted to
+$\langle\Sigma_t^+\rangle_{t\ge 0}$, taking fewer than $\#(I)$ values.
+\Prf\ Suppose that $t>0$ and $F=\{\omega':\sigma_{\omega}(\omega')<t\}$.
+If $\omega'\in F$, $\tilde\omega'\in\Omega$ and
+$\tilde\omega'\restr[0,t]=\omega'\restr[0,t]$,
+then $\tau(\phi(\omega,\omega'))<t+t_0$, while
+$\phi(\omega,\tilde\omega')(s)=\phi(\omega,\omega')(s)$ whenever
+$s\le t+t_0$;  so that
+
+\Centerline{$\sigma_{\omega}(\tilde\omega')+t_0
+=\tau(\phi(\omega,\tilde\omega'))<t+t_0$}
+
+\noindent and $\tilde\omega'\in F$.   Thus $F\in\Sigma_t$;  as $t$ is
+arbitrary, $\sigma_{\omega}$ is adapted to
+$\langle\Sigma_t^+\rangle_{t\ge 0}$ (455Lb).
+Also every value of $\sigma_{\omega}$ belongs to
+$\{t-t_0:t\in I$, $t>t_0\}$ which is smaller than $I$.\ \Qed
+
+Writing $\int\ldots d\omega$ and
+$\int\ldots d\omega'$ for integration with respect to $\mu_W$,
+
+\global\pagegoalminus=\the\pagegoal
+\global\pagetotalplus=\the\pagetotal
+\global\advance\pagegoalminus by -\pageshrink
+\global\advance\pagetotalplus by \bigbaselineskip
+
+$$\eqalignno{\Expn\bigl(\int_0^{\tau}&(\nabla^2f)(X_s)ds\bigr)\cr
+\global\advance\pagetotalplus by \bigbaselineskip
+&=\int_{\Omega}\int_0^{\tau(\omega)}(\nabla^2f)(\omega(s))
+  ds\,d\omega\cr
+\global\advance\pagetotalplus by \bigbaselineskip
+&=\int_{\Omega}\int_{\Omega}\int_0^{\tau(\phi(\omega,\omega'))}
+  (\nabla^2f)(\phi(\omega,\omega')(s))
+  ds\,d\omega'd\omega\cr
+\checkbreak
+&=\int_E\int_{\Omega}\int_0^{t_0}
+    (\nabla^2f)(\omega(s))ds\,d\omega'd\omega\cr
+\global\advance\pagetotalplus by \bigbaselineskip
+&\mskip100mu  +\int_{\Omega\setminus E}\int_{\Omega}
+    \int_0^{t_0+\sigma_{\omega}(\omega')}
+    (\nabla^2f)(\phi(\omega,\omega')(s))
+    ds\,d\omega'd\omega\cr
+\checkbreak
+&=\int_E\int_0^{t_0}(\nabla^2f)(\omega(s))ds\,d\omega
+  +\int_{\Omega\setminus E}\int_{\Omega}\int_0^{t_0}
+    (\nabla^2f)(\phi(\omega,\omega')(s))
+    ds\,d\omega'd\omega\cr
+\global\advance\pagetotalplus by \bigbaselineskip
+&\mskip100mu  +\int_{\Omega\setminus E}\int_{\Omega}
+    \int_{t_0}^{t_0+\sigma_{\omega}(\omega')}
+    (\nabla^2f)(\phi(\omega,\omega')(s))
+    ds\,d\omega'd\omega\cr
+&=\int_{\Omega}\int_0^{t_0}(\nabla^2f)(\omega(s))ds\,d\omega\cr
+\global\advance\pagetotalplus by \bigbaselineskip
+&\mskip100mu
+  +\int_{\Omega\setminus E}\int_{\Omega}
+    \int_{t_0}^{t_0+\sigma_{\omega}(\omega')}
+    (\nabla^2f)(\omega(t_0)+\omega'(s-t_0))
+    ds\,d\omega'd\omega\cr
+\checkbreak
+&=\int_{\Omega}\int_0^{t_0}(\nabla^2f)(\omega(s))ds\,d\omega
+  +\int_{\Omega\setminus E}\int_{\Omega}\int_0^{\sigma_{\omega}(\omega')}
+    (\nabla^2f)(\omega(t_0)+\omega'(s))
+    ds\,d\omega'd\omega\cr
+\checkbreak
+&=2\int_{\Omega}f(\omega(t_0))-f(0)d\omega\cr
+\global\advance\pagetotalplus by \bigbaselineskip
+&\mskip100mu
+  +2\int_{\Omega\setminus E}\int_{\Omega}
+    f(\omega(t_0)+\omega'(\sigma_{\omega}(\omega')))-f(\omega(t_0))
+    d\omega'd\omega\cr
+\displaycause{\global\advance\pagetotalplus by \baselineskip
+applying the inductive hypothesis to the function
+$x\mapsto f(\omega(t_0)+x)$ and the stopping time $\sigma_{\omega}$}
+\checkbreak
+&=2\int_E f(\omega(t_0))-f(0)d\omega
+  +2\int_{\Omega\setminus E}\int_{\Omega}
+    f(\omega(t_0)+\omega'(\sigma_{\omega}(\omega')))-f(0)
+    d\omega'd\omega\cr
+\checkbreak
+&=2\int_E\int_{\Omega}
+   f\bigl(\phi(\omega,\omega')(\tau(\phi(\omega,\omega')))\bigr)
+     -f(0)d\omega'd\omega\cr
+\global\advance\pagetotalplus by \bigbaselineskip
+&\mskip100mu  +2\int_{\Omega\setminus E}\int_{\Omega}
+    f\bigl(\phi(\omega,\omega')(\tau(\phi(\omega,\omega')))\bigr)
+      -f(0)d\omega'd\omega\cr
+\checkbreak
+&=2\int_{\Omega}\int_{\Omega}
+    f\bigl(\phi(\omega,\omega')(\tau(\phi(\omega,\omega')))\bigr)
+      -f(0)d\omega'd\omega\cr
+\checkbreak
+&=2\int_{\Omega}f(\omega(\tau(\omega)))-f(0)d\omega
+=2\bigl(\Expn(f(X_{\tau}))-f(0)\bigr).\cr}$$
+
+\noindent Turning this around, we have the formula we want, so the
+induction proceeds.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that every value of
+$\tau$ belongs to an infinite set of
+the form $\{t_n:n\in\Bbb N\}\cup\{\infty\}$ where $\sequencen{t_n}$ is
+a strictly increasing sequence in $\coint{0,\infty}$.
+In this case, for $n\in\Bbb N$, define
+
+\Centerline{$\tau_n(\omega)=\min(\tau(\omega),t_n)$}
+
+\noindent for $\omega\in\Omega$, so that $\tau_n$ takes
+values in the finite set $\{t_0,\ldots,t_n\}$, and
+
+$$\eqalign{\{\omega:\tau_n(\omega)<t\}
+&=\{\omega:\tau(\omega)<t\}\in\Sigma_t\text{ if }t\le t_n,\cr
+&=\Omega\in\Sigma_t\text{ if }t>t_n.\cr}$$
+Now $\tau$ is finite a.e., so
+$\tau\eae\lim_{n\to\infty}\tau_n$;  it follows that
+
+\Centerline{$f(X_{\tau}(\omega))
+=f(\omega(\tau(\omega)))
+=\lim_{n\to\infty}f(\omega(\tau_n(\omega)))
+=\lim_{n\to\infty}f(X_{\tau_n}(\omega))$}
+
+\noindent for almost
+every $\omega$;  because $f$ is bounded,
+
+\Centerline{$\Expn(f(X_{\tau}))=\lim_{n\to\infty}\Expn(f(X_{\tau_n}))$.}
+
+\noindent On the other side,
+
+\Centerline{$\int_0^{\tau(\omega)}(\nabla^2f)(\omega(s))ds
+=\lim_{n\to\infty}\int_0^{\tau_n(\omega)}(\nabla^2f)(\omega(s))ds$}
+
+\noindent for almost
+every $\omega$.   At this point, recall that we are supposing
+that $\tau$ has finite expectation and that $\nabla^2f$ is bounded.
+So
+
+\Centerline{$|\int_0^{\tau_n(\omega)}(\nabla^2f)(\omega(s))ds|
+\le\int_0^{\tau(\omega)}|(\nabla^2f)(\omega(s))ds|
+\le\|\nabla^2f\|_{\infty}\tau(\omega)$}
+
+\noindent for every $\omega$, and the dominated convergence theorem assures
+us that
+
+$$\eqalign{\Expn\bigl(\int_0^{\tau}(\nabla^2f)(X_s)ds\bigr)
+&=\int_{\Omega}\int_0^{\tau(\omega)}(\nabla^2f)(\omega(s))ds\,d\omega\cr
+&=\lim_{n\to\infty}
+  \int_{\Omega}\int_0^{\tau_n(\omega)}(\nabla^2f)(\omega(s))ds\,d\omega\cr
+&=\lim_{n\to\infty}\Expn\bigl(\int_0^{\tau_n}(\nabla^2f)(X_s)ds\bigr).
+\cr}$$
+
+\noindent Accordingly
+
+$$\eqalignno{\Expn(f(X_{\tau}))
+&=\lim_{n\to\infty}\Expn(f(X_{\tau_n}))
+=\lim_{n\to\infty}f(0)
+  +\Bover12\Expn\bigl(\int_0^{\tau_n}(\nabla^2f)(X_s)ds\bigr)\cr
+\displaycause{by (i)}
+&=f(0)+\Bover12\Expn\bigl(\int_0^{\tau}(\nabla^2f)(X_s)ds\bigr),\cr}$$
+
+\noindent as required.
+
+\medskip
+
+\quad{\bf (iii)} Suppose just that $\tau$ has finite
+expectation.   This time, for $n\in\Bbb N$, define a stopping time $\tau_n$
+by saying that
+
+$$\eqalign{\tau_n(\omega)&=2^{-n}k\text{ if }k\ge 1
+  \text{ and }2^{-n}(k-1)\le\tau(\omega)<2^{-n}k,\cr
+&=\infty\text{ if }\tau(\omega)=\infty.\cr}$$
+
+\noindent If $t>0$, set $t'=2^{-n}k$ where $2^{-n}k<t\le 2^{-n}(k+1)$;
+then
+
+\Centerline{$\{\omega:\tau_n(\omega)<t\}
+=\{\omega:\tau(\omega)<t'\}\in\Sigma_{t'}\subseteq\Sigma_t$.}
+
+\noindent So $\tau_n$ is a stopping time adapted to
+$\langle\Sigma_t^+\rangle_{t\ge 0}$;  as $\tau_n\le 2^{-n}+\tau$,
+$\Expn(\tau_n)<\infty$.   Again we have
+$\tau(\omega)=\lim_{n\to\infty}\tau_n(\omega)$ for every
+$\omega$.   The arguments of (ii) now tell us that, as before,
+
+\Centerline{$f(X_{\tau}(\omega))=\lim_{n\to\infty}f(X_{\tau_n}(\omega))$}
+
+\noindent(because $f$ is continuous),
+
+\Centerline{$\int_0^{\tau(\omega)}(\nabla^2f)(\omega(s))ds
+=\lim_{n\to\infty}\int_0^{\tau_n(\omega)}(\nabla^2f)(\omega(s))ds$}
+
+\noindent for almost every $\omega$, so that
+
+\Centerline{$\Expn(f(X_{\tau}))=\lim_{n\to\infty}\Expn(f(X_{\tau_n}))$,}
+
+\Centerline{$\Expn(\int_0^{\tau}(\nabla^2f)(X_s)ds)
+=\lim_{n\to\infty}\Expn(\int_0^{\tau_n}(\nabla^2f)(X_s)ds)$.}
+
+\noindent (This time, of course, we need to check that
+
+\Centerline{$|\int_0^{\tau_n(\omega)}(\nabla^2f)(\omega(s))ds|
+\le\|\nabla^2f\|_{\infty}\tau_0(\omega)$}
+
+\noindent for almost every $\omega$, to confirm that we have dominated
+convergence.)   So once again the desired formula can be got by taking the
+limit of a sequence of equalities we already know.
+}%end of proof of 478K
+
+\leader{478L}{Theorem} Let $\mu_W$ be $r$-dimensional Wiener measure on
+$\Omega=C(\coint{0,\infty};\BbbR^r)_0$,
+$f:\BbbR^r\to[0,\infty]$ a lower semi-continuous superharmonic
+function, and $\tau:\Omega\to[0,\infty]$ a stopping time adapted to
+$\langle\Sigma_t^+\rangle_{t\ge 0}$.   Set
+$H=\{\omega:\omega\in\Omega$, $\tau(\omega)<\infty\}$.   Then
+
+\Centerline{$f(x)
+  \ge\int_Hf(x+\omega(\tau(\omega)))\mu_W(d\omega)$}
+
+\noindent for every $x\in\BbbR^r$.
+
+\proof{{\bf (a)} To begin with, suppose that $f$ is
+real-valued and bounded.
+Let $\sequence{m}{\tilde h_m}$ be the sequence of 473E/478J, and
+for $m\in\Bbb N$ set $f_m=f*\tilde h_m$.   Then each $f_m$ is non-negative,
+smooth with
+bounded derivatives of all orders (473De) and superharmonic (478Ja), so
+$\nabla^2f_m\le 0$ (478Ea).   Set $\tau_n(\omega)=\min(n,\tau(\omega))$ for
+$n\in\Bbb N$ and $\omega\in\Omega$;  then each $\tau_n$ is a stopping time,
+adapted to $\langle\Sigma^+_t\rangle_{t\ge 0}$, with finite expectation.
+In the language of 478K,
+
+\Centerline{$\Expn(f_m(x+X_{\tau_n}))
+=f_m(x)+\Bover12\Expn\bigl(\int_0^{\tau_n}(\nabla^2f_m)(x+X_s)ds\bigr)
+\le f_m(x)$}
+
+\noindent whenever $m$, $n\in\Bbb N$.   Letting $n\to\infty$,
+
+$$\eqalignno{\int_Hf_m(x+\omega(\tau(\omega)))\mu_W(d\omega)
+&=\lim_{n\to\infty}\int_Hf_m(x+\omega(\tau_n(\omega)))\mu_W(\omega)\cr
+\displaycause{because $f_m$, and every $\omega\in\Omega$, are continuous,
+and $\tau(\omega)=\lim_{n\to\infty}\tau_n(\omega)$ for every $\omega$}
+&\le\liminf_{n\to\infty}
+   \int_{\BbbR^r}f_m(x+\omega(\tau_n(\omega)))\mu_W(d\omega)\cr
+\displaycause{because $f_m$ is non-negative}
+&\le f_m(x)\cr}$$
+
+\noindent by Fatou's Lemma.   Now $f=\lim_{m\to\infty}f_m$ (478Jc), so
+
+$$\eqalign{\int_Hf(x+\omega(\tau(\omega)))\mu_W(\omega)
+&\le\liminf_{m\to\infty}
+    \int_Hf_m(x+\omega(\tau(\omega)))\mu_W(\omega)\cr
+&\le\liminf_{m\to\infty}f_m(x)
+=f(x),\cr}$$
+
+\noindent which is what we need to know.
+
+\medskip
+
+{\bf (b)} For the general case, set $g_k=f\wedge k\chi\BbbR^r$ for each
+$k\in\Bbb N$.   Then $g_k$ is non-negative,
+lower semi-continuous, superharmonic (478Cc) and bounded.   So
+
+$$\eqalign{\int_Hf(x+\omega(\tau(\omega)))\mu_W(d\omega)
+&=\lim_{k\to\infty}\int_Hg_k(x+\omega(\tau(\omega)))\mu_W(d\omega)\cr
+&\le\lim_{k\to\infty}g_k(x)
+=f(x).\cr}$$
+}%end of proof of 478L
+
+\leader{478M}{Proposition} (a) If $r=1$, then $\{\omega(t):t\ge 0\}=\Bbb R$
+for almost every $\omega\in\Omega$.
+
+(b) If $r\le 2$, then
+$\{\omega(t):t\ge 0\}$ is dense in $\BbbR^2$ for almost every
+$\omega\in\Omega$.
+
+(c) If $r\ge 2$, then
+for every $z\in\BbbR^2$, $z\notin\{\omega(t):t>0\}$ for almost
+every $\omega\in\Omega$.
+
+(d) If $r\ge 3$, then
+$\lim_{t\to\infty}\|\omega(t)\|=\infty$ for
+almost every $\omega\in\Omega$.
+
+\proof{{\bf (a)} Suppose that
+$\alpha$, $\beta>0$ and that $\tau$ is the Brownian exit time from
+$\ooint{-\alpha,\beta}$;  then $\tau$ is a stopping time adapted to
+$\langle\Sigma_t\rangle_{t\ge 0}$ (477Ic).   Now
+$\tau$ is almost everywhere finite and
+$\Pr(X_{\tau}=\beta)=\Bover{\alpha}{\alpha+\beta}$.   \Prf\
+Since
+$\Pr(|X_t|\le\max(\alpha,\beta))\to 0$ as $t\to\infty$, $\tau$ is finite
+a.e., and $\Pr(X_{\tau}=\beta)+\Pr(X_{\tau}=-\alpha)=1$.   Set
+$\tau_n(\omega)=\min(n,\tau(\omega))$ for each $n$, and $f(x)=x$ for
+$x\in\Bbb R$.   Then 478K tells us that
+
+\Centerline{$\Expn(X_{\tau_n})=\Expn(f(X_{\tau_n}))
+=f(0)+\Bover12\Expn(\int_0^{\tau_n}(\nabla^2f)(X_s)ds)=f(0)=0$.}
+
+\noindent Since $\sequencen{X_{\tau_n}}$ is a uniformly bounded sequence
+converging almost everywhere to $X_{\tau}$,
+
+\Centerline{$\beta\Pr(X_{\tau}=\beta)-\alpha\Pr(X_{\tau}=-\alpha)
+=\Expn(X_{\tau})=\lim_{n\to\infty}\Expn(X_{\tau_n})=0$,}
+
+\noindent and $\Pr(X_{\tau}=\beta)=\Bover{\alpha}{\alpha+\beta}$.\ \Qed
+
+Letting $\alpha\to\infty$, we see that
+$\Pr(\Exists t\ge 0,\,X_t=\beta)=1$.   Similarly, $-\alpha$ lies on
+almost every sample path.
+
+Thus almost every sample path must pass through every point of $\Bbb Z$;
+since sample paths are continuous, they almost all cover $\Bbb R$.
+
+\medskip
+
+{\bf (b)} For $r=1$ this is covered by (a);  take $r=2$.
+Suppose that $z\in\Bbb R^2$ and that
+$\delta>0$.   Then almost every sample path meets $B(z,\delta)$.
+\Prf\ If $\delta\ge\|z\|$ this is trivial.
+Otherwise, take $R>\|z\|$ and let $\tau$ be
+the Brownian exit time from $G=\interior B(z,R)\setminus B(z,\delta)$.
+We have $\Pr(\|X_t\|\le R+\|z\|)\to 0$ as $t\to\infty$
+(because $\Pr(\|X_t\|\le\alpha)\le\Pr(|Z|\le\Bover{\alpha}{\sqrt{t}})$
+where
+$Z$ is a standard normal random variable), so $\tau$ is finite a.e.
+Once again, set $\tau_n(\omega)=\min(n,\tau(\omega))$ for $n\in\Bbb N$ and
+$\omega\in\Omega$;  this time,
+take $f(x)=\ln\|x-z\|$ for $x\in\BbbR^2\setminus\{z\}$.   Then
+
+\Centerline{$\Expn(f(X_{\tau_n}))=f(0)=\ln\|z\|$}
+
+\noindent(use 478Fb), so
+
+$$\eqalign{\ln R\cdot\Pr(X_{\tau}\in\partial B(z,R))
+  &+\ln\delta\cdot\Pr(X_{\tau}\in\partial B(z,\delta)\cr
+&=\Expn(f(X_{\tau}))
+=\lim_{n\to\infty}\Expn(f(X_{\tau_n}))
+=\ln\|z\|\cr}$$
+
+\noindent and
+
+\Centerline{$\Pr(X_{\tau}\in\partial B(z,\delta))
+=\Bover{\ln R-\ln\|z\|}{\ln R-\ln\delta}$.}
+
+\noindent Letting $R\to\infty$, we see that
+$\Pr(\Exists t\ge 0,\,\omega(t)\in B(z,\delta))=1$;  that is, almost every
+sample path meets $B(z,\delta)$.\ \Qed
+
+Letting $B(z,\delta)$ run over a
+sequence of balls constituting a network for the topology of $\BbbR^2$,
+we see that almost every path meets every non-empty open set and is dense
+in $\BbbR^2$.
+
+\medskip
+
+{\bf (c)(i)} Consider first the case $r=2$.
+
+\medskip
+
+\qquad\grheada\ Suppose that $z\ne 0$.   In this case,
+take $\delta$, $R$ such that
+$0<\delta<\|z\|<R$ and let $\tau$ be
+the Brownian exit time from $G=\interior B(z,R)\setminus B(z,\delta)$,
+as in the proof of (b).   As before, we have
+
+\Centerline{$\Pr(X_{\tau}\in\partial B(z,\delta))
+=\Bover{\ln R-\ln\|z\|}{\ln R-\ln\delta}$.}
+
+\noindent This time, looking at the limit as $\delta\downarrow 0$, we see
+that
+
+\Centerline{$\{\omega:$ there is a $t\ge 0$ such that $\omega(t)=z$ but
+$\|\omega(s)-z\|<R$ for every $s\le t\}$}
+
+\noindent is negligible.   Taking the union of these sets over large
+integer $R$, we see that
+
+\Centerline{$\{\omega:$ there is a $t\ge 0$ such that $\omega(t)=z\}$}
+
+\noindent is negligible, as required.
+
+\medskip
+
+\qquad\grheadb\ As for $z=0$, take any $\epsilon>0$.   Then
+
+$$\eqalignno{
+\mu_W\{\omega:&\text{ there is some }t\ge\epsilon
+  \text{ such that }\omega(t)=0\}\cr
+&=\mu_W^2\{(\omega,\omega'):
+  \text{ there is some }t\ge 0
+  \text{ such that }\omega'(t)=-\omega(\epsilon)\}\cr
+&=\mu_W^2\{(\omega,\omega'):\omega(\epsilon)\ne 0
+  \text{ and there is some }t\ge 0
+  \text{ such that }\omega'(t)=-\omega(\epsilon)\}\cr
+\displaycause{because the distribution of $X_{\epsilon}$ is atomless, so
+$\{\omega:\omega(\epsilon)=0\}$ is negligible}
+&=0\cr}$$
+
+\noindent by ($\alpha$).   Taking the union over rational $\epsilon>0$,
+$\{\omega:\text{ there is some }t>0\text{ such that }\omega(t)=0\}$ is
+negligible.
+
+\medskip
+
+\quad{\bf (ii)} If $r>2$, set $Tx=(\xi_1,\xi_2)$ for
+$x=(\xi_1,\ldots,\xi_r)\in\BbbR^r$.   Then
+$\omega\mapsto T\omega:
+C(\coint{0,\infty};\BbbR^r)_0\to C(\coint{0,\infty};\BbbR^2)_0$ is
+\imp\ for $r$-dimensional Wiener measure $\mu_{Wr}$ on
+$C(\coint{0,\infty};\BbbR^r)_0$ and
+two-dimensional Wiener measure $\mu_{W2}$ on
+$C(\coint{0,\infty};\BbbR^2)_0$, by 477D(c-i) or otherwise.
+So
+
+\Centerline{$\{\omega:z\in\omega[\,\ooint{0,\infty}\,]\}
+\subseteq\{\omega:Tz\in(T\omega)[\,\ooint{0,\infty}\,]\}$}
+
+\noindent is negligible.
+
+\medskip
+
+{\bf (d)(i)} Fix $\gamma\in\coint{0,\infty}$ and $\epsilon>0$ for the
+moment.
+Set $g(x)=\int\Bover1{\|y\|^{r-2}}\tilde h_0(x-y)\mu(dy)$ for
+$x\in\BbbR^r$, where $\tilde h_0$ is the function of 473E;
+then $g$ is smooth (473De), strictly positive and superharmonic (478Ja).
+In addition, we have the following.
+
+\medskip
+
+\qquad\grheada\ All the derivatives of $g$ are bounded.   \Prf\
+As shown in the proof of 473De, $\Pd{g}{\xi_i}(x)
+=\int\Bover1{\|y\|^{r-2}}\Pd{}{\xi_i}\tilde h_0(x-y)\mu(dy)$ for
+$1\le i\le r$ and $x\in\BbbR^r$.
+Inducing on the order of $D$, and using 478Gc at the last step,
+we see that
+
+$$\eqalign{(Dg)(x)
+&=\int\Bover1{\|y\|^{r-2}}(D\tilde h_0)(x-y)\mu(dy)
+=\int\Bover1{\|x-y\|^{r-2}}(D\tilde h_0)(y)\mu(dy)\cr
+&=\int_{B(\tbf{0},1)}\Bover1{\|x-y\|^{r-2}}(D\tilde h_0)(y)\mu(dy)\cr
+&\le\|D\tilde h_0\|_{\infty}\int_{B(\tbf{0},1)}\Bover1{\|x-y\|^{r-2}}\mu(dy)
+\le\Bover12r\beta_r\|D\tilde h_0\|_{\infty}\cr}$$
+
+\noindent for
+any partial differential operator $D$ and any $x\in\BbbR^r$.\ \Qed
+
+\medskip
+
+\qquad\grheadb\ $\lim_{\|x\|\to\infty}g(x)=0$, because
+
+\Centerline{$g(x)
+\le\|\tilde h_0\|_{\infty}\int_{B(\tbf{0},1)}\Bover1{\|x-y\|^{r-2}}\mu(dy)
+\le\|\tilde h_0\|_{\infty}\Bover{\beta_r}{(\|x\|-1)^{r-2}}$}
+
+\noindent whenever $\|x\|>1$.
+
+\medskip
+
+\qquad\grheadc\ $g(x)=g(y)$ whenever $\|x\|=\|y\|$.   \Prf\ Let
+$T:\BbbR^r\to\BbbR^r$ be an orthogonal transformation such that $Tx=y$.
+Then
+
+$$\eqalignno{g(x)
+&=\int\Bover1{\|x-z\|^{r-2}}\tilde h_0(z)\mu(dz)
+=\int\Bover1{\|T(x-z)\|^{r-2}}\tilde h_0(Tz)\mu(dz)\cr
+\displaycause{because $\tilde h_0T=\tilde h_0$}
+&=\int\Bover1{\|y-Tz\|^{r-2}}\tilde h_0(Tz)\mu(dz)
+=\int\Bover1{\|y-z\|^{r-2}}\tilde h_0(z)\mu(dz)\cr
+\displaycause{because $T$ is an automorphism of $(\BbbR^r,\mu)$}
+&=g(y).  \text{  \Qed}\cr}$$
+
+\medskip
+
+\quad{\bf (ii)} Let $\beta>0$ be the common value of $g(y)$ for
+$\|y\|=\gamma$.  Take $x\in\BbbR^r$ such that $\|x\|>\gamma$,
+and $n\in\Bbb N$.   Define
+
+\Centerline{$\tau(\omega)=\min(\{n\}\cup\{t:\|x+\omega(t)\|\le\gamma\})$}
+
+\noindent for $\omega\in\Omega$.   Then $\tau$ is a bounded stopping time
+adapted to $\langle\Sigma_t\rangle_{t\ge 0}$, so
+
+$$\eqalign{\beta\Pr(\tau<n)
+&\le\Expn(g(x+X_{\tau}))\cr
+&=g(x)+\Bover12\Expn(\int_0^{\tau}(\nabla^2g)(x+X_s)ds)
+\le g(x).\cr}$$
+
+\noindent Letting $n\to\infty$, we see that
+
+\Centerline{$\mu_W\{\omega:\|x+\omega(t)\|\le\gamma$ for some $t\ge 0\}
+\le\Bover1{\beta}g(x)$.}
+
+\medskip
+
+\quad{\bf (iii)} Now let $n>\gamma$ be an integer such that
+$\Bover1{\beta}g(x)\le\epsilon$
+whenever $\|x\|\ge n$.   As in (a) and (b-i) above,
+$\lim_{t\to\infty}\Pr(\|X_t\|\le n)=0$;  take $m\in\Bbb N$ such that
+$\Pr(\|X_m\|\le n)\le\epsilon$.   Let $\sigma$ be the stopping time with
+constant value $m$, with $\phi_{\sigma}:\Omega\times\Omega\to\Omega$ the
+corresponding \imp\ function (477G).   Set
+$F=\{\omega:\|\omega(m)\|>n\}$.   Now
+
+$$\eqalignno{\Pr(\|X_t\|\le\gamma&\text{ for some }t\ge m)\cr
+&=\mu_W^2\{(\omega,\omega'):\|\phi_{\sigma}(\omega,\omega')(t)\|\le\gamma
+  \text{ for some }t\ge m\}\cr
+\displaycause{where $\mu_W^2$ is the product measure on
+$\Omega\times\Omega$}
+&=\mu_W^2\{(\omega,\omega'):\|\omega(m)+\omega'(t-m)\|\le\gamma
+  \text{ for some }t\ge m\}\cr
+&\le\mu_W^2\{(\omega,\omega'):\|\omega(m)\|\le n\text{ or }
+  \|\omega(m)\|\ge n\cr
+&\mskip200mu
+  \text{and }\|\omega(m)+\omega'(t)\|\le\gamma\text{ for some }t\ge 0\}\cr
+&\le\mu\{\omega:\|\omega(m)\|\le n\}\cr
+&\mskip50mu
+  +\int_F\mu_W\{\omega':\|\omega(m)+\omega'(t)\|\le\gamma\text{ for some }
+     t\ge 0\}\mu_W(d\omega)\cr
+&\le\epsilon
+  +\int_F\Bover1{\beta}g(\omega(m))\mu_W(d\omega)
+\le\epsilon+\epsilon\mu_WF
+\le 2\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary,
+$\Pr(\liminf_{t\to\infty}\|X_t\|<\gamma)=0$;  as $\gamma$ is arbitrary,
+$\Pr(\lim_{t\to\infty}\|X_t\|=\infty)=1$.
+}%end of proof of 478M
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} In 479R I will show that there is a
+surprising difference between the cases $r=3$ and $r\ge 4$.
+}
+
+\vleader{48pt}{478N}{Wandering paths} 
+Let $G\subseteq\BbbR^r$ be an open set, and for $x\in G$ set
+
+\Centerline{$F_x(G)=\{\omega:$ either $\tau_x(\omega)<\infty$ or
+$\lim_{t\to\infty}\|\omega(t)\|=\infty\}$}
+
+\noindent where $\tau_x$ is the
+Brownian exit time from $G-x$.   I will say that
+$G$ has {\bf few wandering paths} if $F_x(G)$ is conegligible for every
+$x\in G$.   In this case we can
+be sure that, if $x\in G$, then for almost every $\omega$ {\it either}
+$\lim_{t\to\infty}\|\omega(t)\|=\infty$ {\it or} $\omega(t)\notin G-x$ for
+some $t$.   So
+we can speak of $X_{\tau_x}(\omega)=\omega(\tau_x(\omega))$, taking this to
+be $\infty$ if $\omega\in F_x(G)$ and
+$\tau_x(\omega)=\infty$;  and $\omega$ will be
+continuous on $[0,\tau_x(\omega)]$ for every $\omega\in F_x(G)$.
+\cmmnt{We find that }$X_{\tau_x}:\Omega\to\partial^{\infty}(G-x)$
+is Borel
+measurable.   \prooflet{\Prf\ $\tau_x$ is the Brownian hitting time to the
+closed set $\BbbR^r\setminus(G-x)$, so is a stopping time adapted to
+$\langle\Tau_{[0,t]}\rangle_{t\ge 0}$ (477Ic).   Let
+$\Cal B(\Omega)$ be the
+Borel $\sigma$-algebra of $\Omega$ for the topology of uniform convergence
+on compact sets;  then $\Tau_{[0,t]}\subseteq\Cal B(\Omega)$ for every
+$t\ge 0$.   The function
+
+\Centerline{$(t,\omega)\mapsto X_t(\omega):
+\coint{0,\infty}\times\Omega\to\BbbR^r$}
+
+\noindent is continuous, therefore
+$\Cal B(\coint{0,\infty})\tensorhat\Cal B(\Omega)$-measurable
+(4A3D(c-i));  so $X_{\tau_x}$ is $\Cal B(\Omega)$-measurable (455Ld).\
+\Qed}
+
+From 478M, we see that if $r\ge 3$
+then any open set in $\BbbR^r$ will have
+few wandering paths, while if $r\le 2$ then $G$ will have few wandering
+paths whenever it is not dense in $\BbbR^r$.
+Note that if $G\subseteq\BbbR^r$ is open, $H$ is a component of $G$, and
+$x\in H$, then the exit times from $H-x$ and $G-x$ are the same\cmmnt{,
+just because sample paths are continuous}, and $F_x(G)=F_x(H)$.
+It follows\cmmnt{ at once}
+that if $G$ has more than one component then it has few wandering
+paths.
+
+\leader{478O}{Theorem} Let $G\subseteq\BbbR^r$ be an open set with few
+wandering paths and
+$f:\overline{G}^{\infty}\to\Bbb R$ a bounded lower semi-continuous function
+such that $f\restr G$ is superharmonic.   Take $x\in G$ and let
+$\tau:\Omega\to[0,\infty]$ be the
+Brownian exit time from $G-x$\cmmnt{ (477Ia)}.
+Then $f(x)\ge\Expn(f(x+X_{\tau}))$.
+
+\proof{ It will be enough to deal with the case $f\ge 0$.
+
+\medskip
+
+{\bf (a)} Extend $f$ to a function
+$\tilde f:\BbbR^r\cup\{\infty\}\to\Bbb R$ by setting $\tilde f(x)=0$
+for $x\notin\overline{G}^{\infty}$.   Since $f$ is bounded, so is
+$\tilde f$.
+Let $\sequencen{\tilde h_n}$ be the sequence of 473E/478Jc, and for
+$n\in\Bbb N$ set $f_n=(\tilde f\restr\BbbR^r)*\tilde h_n$.
+Also, for $n\in\Bbb N$, set
+
+\Centerline{$G_n
+=\{y:y\in G$, $\|y\|<n$, $\rho(y,\BbbR^r\setminus G)>\Bover1{n+1}\}$}
+
+\noindent (interpreting $\rho(y,\emptyset)$ as $\infty$ if $G=\BbbR^r$),
+and let $\tau_n$ be the Brownian exit time from $G_n-x$.
+
+\medskip
+
+{\bf (b)} For $y\in G$, $f_n(y)\le f(y)$ for all sufficiently large
+$n$ and $f(y)=\lim_{n\to\infty}f_n(y)$ (478Jb).   Also $f_n\restr G_n$ is
+superharmonic (478Ja).   Each $f_n$ is smooth with bounded
+derivatives of all orders (473De), and $(\nabla^2f_n)(y)\le 0$ for
+$y\in G_n$ (478Ea).
+
+If $m\ge n$,
+
+\Centerline{$\Expn(f_m(x+X_{\tau_n}))
+=f_m(x)+\Bover12\Expn(\int_0^{\tau_n}(\nabla^2f_m)(x+X_s)ds)
+\le f_m(x)$}
+
+\noindent (478K).   Consequently
+
+$$\eqalign{\Expn(f(x+X_{\tau_n}))
+&\le\liminf_{m\to\infty}\Expn(f_m(x+X_{\tau_n}))\cr
+&\le\liminf_{m\to\infty}f_m(x)
+=f(x).\cr}$$
+
+{\bf (c)} For every $\omega\in\Omega$,
+$\sequencen{\tau_n(\omega)}$ is a non-decreasing sequence with limit
+$\tau(\omega)$.   \Prf\ Since
+$\tau_n(\omega)\le\tau_{n+1}(\omega)\le\tau(\omega)$ for every $n$,
+$t=\lim_{n\in\Bbb N}\tau_n(\omega)$ is defined in $[0,\infty]$.   If
+$t=\infty$ then surely $t=\tau(\omega)$.   Otherwise,
+$\omega(t)=\lim_{n\to\infty}\omega(\tau_n(\omega))\notin G-x$, so again
+$t=\tau(\omega)$.\ \Qed
+
+Consequently
+
+\Centerline{$f(x+\omega(\tau(\omega)))
+\le\liminf_{n\to\infty}f(x+\omega(\tau_n(\omega)))$}
+
+\noindent for almost every $\omega$.   \Prf\ In the language of
+478N, we can suppose that $\omega\in F_x(G)$, so that
+$\omega(\tau(\omega))=\lim_{n\to\infty}\omega(\tau_n(\omega))$
+in $\BbbR^r\cup\{\infty\}$, and
+we can use the fact that $f$ is lower semi-continuous.\ \QeD\
+So
+
+\Centerline{$\Expn(f(x+X_{\tau}))
+\le\liminf_{n\to\infty}\Expn(f(x+X_{\tau_n}))\le f(x)$}
+
+\noindent as required.
+}%end of proof of 478O
+
+\leader{478P}{Harmonic measures (a)}
+Let $A\subseteq\BbbR^r$ be an analytic
+set and $x\in\BbbR^r$.   Let $\tau:\Omega\to[0,\infty]$ be the Brownian
+hitting time to $A-x$\cmmnt{ (477I)}.   Then $\tau$ is
+$\Sigma$-measurable, where $\Sigma$ is the domain of
+$\mu_W$\cmmnt{ (455Ma)}.   Setting $H=\{\omega:\tau(\omega)<\infty\}$,
+$X_{\tau}:H\to\BbbR^r$ is $\Sigma$-measurable.
+\prooflet{\Prf\ By 4A3Wc,
+$(\omega,t)\mapsto\omega(t)$ is
+$\Sigma\tensorhat\Cal B(\coint{0,\infty})$-measurable, while
+$\omega\mapsto(\omega,\tau(\omega))$ is
+$(\Sigma,\Sigma\tensorhat\Cal B(\coint{0,\infty}))$-measurable.   So
+$\omega\mapsto\omega(\tau(\omega))$ is $\Sigma$-measurable on $H$.\ \Qed}
+
+Consider the function
+$\omega\mapsto x+\omega(\tau(\omega)):H\to\BbbR^r$.
+This induces a Radon image measure $\mu_x$ on $\BbbR^r$ defined by saying
+that
+
+\Centerline{$\mu_xF
+=\mu_W\{\omega:\omega\in H$, $x+\omega(\tau(\omega))\in F\}
+=\Pr(x+X_{\tau}\in F)$}
+
+\noindent whenever this is defined.   \cmmnt{ Because
+every $\omega\in\Omega$ is
+continuous,} $X_{\tau}(\omega)\in\partial(A-x)$ for every $\omega\in H$,
+and $\partial A$ is conegligible for $\mu_x$.   I will call $\mu_x$ the
+{\bf harmonic measure for arrivals in $A$ from $x$}.   Of course
+$\mu_x\BbbR^r$ is the Brownian hitting probability of $A$.
+
+Note that if $F\subseteq\BbbR^r$ is closed and $x\in\BbbR^r\setminus F$,
+then the Brownian hitting time to $F-x$ is the same as the Brownian hitting
+time to $\partial F-x$,\cmmnt{ because all paths are continuous,}
+so that the harmonic measure for arrivals in $F$
+from $x$ coincides with the harmonic measure for arrivals in $\partial F$
+from $x$.
+
+\spheader 478Pb\cmmnt{ We now have an easy corollary of 478L.}   Let
+$A\subseteq\BbbR^r$ be an analytic set, $x\in\BbbR^r$, and $\mu_x$
+the harmonic measure for arrivals in $A$ from $x$.   If
+$f:\BbbR^r\to[0,\infty]$ is a lower semi-continuous superharmonic function,
+$f(x)\ge\int fd\mu_x$.   \prooflet{\Prf\ Let $\tau$ be the Brownian hitting
+time to $A-x$, and $H=\{\omega:\tau(\omega)<\infty\}$.   Then
+
+$$\eqalignno{\int fd\mu_x
+&=\int_Hf(x+\omega(\tau(\omega)))d\mu_W\cr
+\displaycause{because $\mu_x$ is the image measure of
+the subspace measure $(\mu_W)_H$ under
+$\omega\mapsto x+\omega(\tau(\omega))$}
+&\le f(x)\cr}$$
+
+\noindent by 478L.\ \Qed}
+
+\spheader 478Pc We can re-interpret 478O in this language.   Let
+$G\subseteq\BbbR^r$ be an open set with few wandering paths, and $x\in G$.
+Let $\mu_x$ be the harmonic measure for arrivals in $\BbbR^r\setminus G$
+from $x$.   In this case, taking $\tau$ to be the Brownian exit time from
+$G-x$ and $H=\{\omega:\tau(\omega)<\infty\}$,\cmmnt{ we know that}
+$\lim_{t\to\infty}\|\omega(t)\|=\infty$ for almost every
+$\omega\in\Omega\setminus H$.   If
+$f:\partial^{\infty}G\to[-\infty,\infty]$ is a function, then
+
+$$\eqalignno{\Expn(f(x+X_{\tau}))
+&=\int_Hf(x+X_{\tau}(\omega))\mu_W(d\omega)
+   +f(\infty)\mu_W(\Omega\setminus H)\cr
+\displaycause{counting $f(\infty)$ as zero if $G$ is bounded}
+&=\int fd\mu_x+f(\infty)(1-\mu_x\BbbR^r)\cr}$$
+
+\noindent if either integral is defined in
+$[-\infty,\infty]$\cmmnt{ (235J\formerly{2{}35L})}.
+In particular, if $f:\overline{G}^{\infty}\to\Bbb R$ is a bounded lower
+semi-continuous function and $f\restr G$ is superharmonic, then
+$f(x)\ge\int fd\mu_x+f(\infty)(1-\mu_x\BbbR^r)$\cmmnt{, by 478O}.
+Similarly, if
+$f:\overline{G}^{\infty}\to\Bbb R$ is continuous and $f\restr G$ is
+harmonic, then $f(x)=\int fd\mu_x+f(\infty)(1-\mu_x\BbbR^r)$ for every
+$x\in G$.
+
+\spheader 478Pd Suppose that $\sequencen{A_n}$ is a non-decreasing sequence
+of analytic subsets of $\BbbR^r$, with union $A$.   For $x\in\BbbR^r$, let
+$\mu^{(n)}_x$, $\mu_x$ be the harmonic measures for arrivals in $A_n$, $A$
+respectively from $x$.   Then $\mu_x$ is the limit
+$\lim_{n\to\infty}\mu^{(n)}_x$ for the narrow topology on the space of
+totally finite Radon measures on $\BbbR^r$\cmmnt{ (437Jd)}.
+\prooflet{\Prf\ Let $\tau_n$, $\tau$ be the Brownian hitting times for
+$A_n-x$, $A-x$ respectively.   Then $\sequencen{\tau_n}$ is a
+non-increasing sequence with limit $\tau$.   Since every $\omega\in\Omega$
+is continuous, $X_{\tau}(\omega)=\lim_{n\to\infty}X_{\tau_n}(\omega)$
+whenever $\tau(\omega)<\infty$.   Set
+
+\Centerline{$H_n=\{\omega:\tau_n(\omega)<\infty\}$ for each $n$,
+$H=\{\omega:\tau(\omega)<\infty\}=\bigcup_{n\in\Bbb N}H_n$.}
+
+\noindent If $f\in C_b(\BbbR^r)$, then
+$f(x+X_{\tau}(\omega))=\lim_{n\to\infty}f(x+X_{\tau_n}(\omega))$ for every
+$\omega\in H$, so
+
+\Centerline{$\int fd\mu_x
+=\int_Hf(x+X_{\tau})d\mu_W
+=\lim_{n\to\infty}\int_{H_n}f(x+X_{\tau_n})d\mu_W
+=\lim_{n\to\infty}\int fd\mu^{(n)}_x$.}
+
+\noindent As $f$ is arbitrary, $\mu_x=\lim_{n\to\infty}\mu^{(n)}_x$
+(437Kc).\ \Qed}
+
+\leader{478Q}{}\cmmnt{ It is generally difficult to find formulae
+describing
+harmonic measures.   Theorem 478I, however, gives us a technique for
+an important special case.
+
+\wheader{478Q}{4}{2}{2}{60pt}
+
+\noindent}{\bf Proposition} Let $S$ be the sphere $\partial B(y,\delta)$,
+where $y\in\BbbR^r$ and $\delta>0$.   For $x\in\BbbR^r\setminus S$, let
+$\zeta_x$ be the indefinite-integral measure over $\nu$ defined by the
+function
+
+$$\eqalign{z
+&\mapsto\Bover{|\delta^2-\|x-y\|^2|}{r\beta_r\delta\|x-z\|^r}
+  \text{ if }z\in S,\cr
+&\mapsto 0\text{ if }z\in\BbbR^r\setminus S.\cr}$$
+
+(a) If $x\in\interior B(y,\delta)$,
+then the harmonic measure $\mu_x$ for arrivals in $S$ from $x$
+is $\zeta_x$.
+
+(b) In particular, the harmonic measure $\mu_y$ for arrivals in $S$ from
+$y$ is $\Bover1{\nu S}\nu\LLcorner S$.
+
+(c) Suppose that $r\ge 2$.   If $x\in\BbbR^r\setminus B(y,\delta)$,
+then the harmonic measure $\mu_x$ for arrivals in $S$ from
+$x$ is $\zeta_x$.\cmmnt{  In particular,}
+$\mu_x\BbbR^r=\Bover{\delta^{r-2}}{\|x-y\|^{r-2}}$.
+
+\proof{{\bf (a)} If $g\in C_b(\BbbR^r)$,
+then 478Ib tells us that we have a continuous function $f_g$ which extends
+$g$, is harmonic on $\BbbR^r\setminus S$ and is such that
+$f_g(x)=\int g\,d\zeta_x$.   Now $G=\interior B(y,\delta)$ is bounded,
+so it has
+few wandering paths (478N) and the harmonic measure $\mu_x$ is defined,
+with $f_g(x)=\int f_gd\mu_x$, by 478Pc.   But this means that
+
+\Centerline{$\int g\,d\mu_x=\int f_gd\mu_x=f_g(x)=\int g\,d\zeta_x$.}
+
+\noindent As $g$ is arbitrary, $\mu_x=\zeta_x$ (415I), as claimed.
+
+\medskip
+
+{\bf (b)} If $x=y$ then
+
+\Centerline{$\Bover{\delta^2-\|x-y\|^2}{r\beta_r\delta\|x-z\|^r}
+=\Bover{\delta^2}{r\beta_r\delta^{r+1}}
+=\Bover1{\nu S}$}
+
+\noindent if $z\in S$.   Since $\nu\LLcorner S$ is the indefinite-integral
+measure over $\nu$ defined by $\chi S$ (234M\formerly{2{}34E}),
+we have the result.
+
+\medskip
+
+{\bf (c)(i)} To see that $\zeta_x$ is the harmonic measure,
+we can use the same argument as in (a), with decorations.
+If $g\in C_b(\BbbR^r)$, then 478Ib gives us a bounded
+continuous function $f_g$, harmonic on $H=\BbbR^r\setminus B(y,\delta)$,
+such that $f_g$ agrees with $g$ on $S$, and $f_g(x)=\int g\,d\zeta_x$.
+$S$ is conegligible for both $\mu_x$ and $\zeta_x$.
+
+\medskip
+
+\qquad\grheada\ If $r\ge 3$, then
+
+\Centerline{$\limsup_{\|x\|\to\infty}|f_g(x)|
+\le\Bover{\nu S}{r\beta_r\delta}
+  \limsup_{\|x\|\to\infty}
+    \Bover{\|x-y\|^2-\delta^2}{(\|x\|-\delta-\|y\|)^r}
+=0$.}
+
+\noindent So setting $f_g(\infty)=0$, $f_g:\overline{H}^{\infty}\to\Bbb R$
+is continuous and bounded, and harmonic on $H$;  so that
+
+\Centerline{$\int g\,d\zeta_x
+=f_g(x)
+=\int f_gd\mu_x+f_g(\infty)(1-\mu_x\BbbR^r)
+=\int gd\mu_x$.}
+
+\noindent As in (a), we conclude that $\zeta_x=\mu_x$.
+
+\medskip
+
+\qquad\grheadb\ If $r=2$, then by 478Mb we see that almost every
+$\omega\in\Omega$ takes values in $B(y,\delta)-x$;  so $\mu_x\BbbR^r=1$.
+Set $\underline{f}\vthsp_g(x)=f_g(x)$ for $x\in\BbbR^2$,
+$\underline{f}\vthsp_g(\infty)=\liminf_{\|x\|\to\infty}f_g(x)$.   Then
+$\underline{f}\vthsp_g$ is lower semi-continuous on
+$\overline{H}^{\infty}$ and harmonic on $H$, so
+
+\Centerline{$\int g\,d\zeta_x
+=f_g(x)
+=\underline{f}\vthsp_g(x)
+\ge\int\underline{f}\vthsp_gd\mu_x
+   +\underline{f}\vthsp_g(\infty)(1-\mu_x\BbbR^r)
+=\int g\,d\mu_x$.}
+
+\noindent Applying the same argument to $-g$, we see that
+$\int g\,d\zeta_x\le\int g\,d\mu_x$, so in fact the integrals are equal,
+and we have the result in this case also.
+
+\medskip
+
+\quad{\bf (ii)} Now
+
+$$\eqalignno{\mu_x\BbbR^r
+&=\zeta_xS
+=\int_S\Bover{\|x-y\|^2-\delta^2}{r\beta_r\delta\|x-z\|^r}\nu(dz)\cr
+&=\int_{\partial B(\tbf{0},\delta)}
+  \Bover{\|x-y\|^2-\delta^2}{r\beta_r\delta\|x-y-z\|^r}\nu(dz)
+=\Bover{\nu(\partial B(\tbf{0},\delta))}{r\beta_r\delta\|x-y\|^{r-2}}\cr
+\displaycause{478Gb}
+&=\Bover{\delta^{r-2}}{\|x-y\|^{r-2}}.\cr}$$
+}%end of proof of 478Q
+
+\leader{478R}{Theorem} Let $A$, $B\subseteq\BbbR^r$ be analytic sets
+with $A\subseteq B$.
+For $x\in\BbbR^r$, let $\mu^{(A)}_x$, $\mu^{(B)}_x$ be the harmonic
+measures for arrivals in $A$, $B$ respectively from $x$.   Then, for any
+$x\in\BbbR^r$,
+$\family{y}{\BbbR^r}{\mu^{(A)}_y}$ is a disintegration of $\mu^{(A)}_x$
+over $\mu^{(B)}_x$.
+
+\proof{{\bf (a)} Let $\tau$ be the
+Brownian hitting time to $B-x$, and $\tau'$ the hitting time
+to $A-x$; then $\tau(\omega)\le\tau'(\omega)$ for every $\omega$.
+If $\tau(\omega)<\infty$, set $f(\omega)=x+\omega(\tau(\omega))$, so that
+$\mu_x^{(A)}$ is the image measure $(\mu_W)_Hf^{-1}$, where
+$H=\{\omega:\tau(\omega)<\infty\}$.
+Define $\phi_{\tau}:\Omega\times\Omega\to\Omega$ as in
+477G, so that
+
+$$\eqalign{\phi_{\tau}(\omega,\omega')(t)
+&=\omega(t)\text{ if }t\le\tau(\omega),\cr
+&=\omega(\tau(\omega))+\omega'(t-\tau(\omega))
+   \text{ if }t\ge\tau(\omega).\cr}$$
+
+\noindent Then we have $x+\phi_{\tau}(\omega,\omega')(t)\in A$ iff
+$t\ge\tau(\omega)$ and
+$f(\omega)+\omega'(t-\tau(\omega))\in A$;   so if we write
+$\sigma_{\omega}$ for the Brownian hitting time to $A-f(\omega)$ when
+$\omega\in H$,
+$\tau'(\phi_{\tau}(\omega,\omega'))=\tau(\omega)+\sigma_{\omega}(\omega')$.
+
+\medskip
+
+{\bf (b)} Now suppose that $E\subseteq\BbbR^r$ is a Borel set.   Then
+
+$$\eqalignno{\mu_x^{(A)}(E)
+&=\mu_W\{\omega:\tau'(\omega)<\infty,
+  \,x+\omega(\tau'(\omega))\in E\}\cr
+&=\mu_W^2\{(\omega,\omega'):
+  \tau'(\phi_{\tau}(\omega,\omega'))<\infty,\,
+  x+\phi_{\tau}(\omega,\omega')(\tau'(\phi_{\tau}(\omega,\omega')))\in E\}
+  \cr
+&=\mu_W^2\{(\omega,\omega'):\tau(\omega)<\infty,\,
+  \sigma_{\omega}(\omega')<\infty,\,
+  f(\omega)+\omega'(\sigma_{\omega}(\omega'))\in E\}\cr
+&=\int_H\mu_W\{\omega':\sigma_{\omega}(\omega')<\infty,\,
+  f(\omega)+\omega'(\sigma_{\omega}(\omega'))\in E\}\mu_W(d\omega)\cr
+&=\int_H\mu^{(A)}_{f(\omega)}(E)\mu_W(d\omega)
+=\int\mu^{(A)}_y(E)\mu_x^{(B)}(dy).
+}$$
+
+\noindent The definition in 452E demands that this formula should be valid
+whenever $E$ is measured by $\mu_x^{(A)}$;  but in general there will be
+Borel sets $E'$, $E''$ such that $E'\subseteq E\subseteq E''$ and
+$\mu^{(A)}_x(E')=\mu^{(A)}_x(E)=\mu^{(A)}_x(E'')$,
+in which case we must have
+$\mu^{(A)}_y(E')=\mu^{(A)}_y(E)=\mu^{(A)}_y(E'')$ for $\mu^{(B)}_x$-almost
+every $y$, and again
+$\mu_x^{(A)}(E)=\int\mu^{(A)}_y(E)\mu^{(B)}_x(dy)$.
+}%end of proof of 478R
+
+\leader{478S}{Corollary} Let $A\subseteq\BbbR^r$ be an analytic set,
+and $f:\partial A\to\Bbb R$ a bounded universally measurable function.
+For $x\in\BbbR^r\setminus\overline{A}$ set $g(x)=\int fd\mu_x$, where
+$\mu_x$ is the harmonic measure for arrivals in $A$ from
+$x$.   Then $g$ is harmonic.
+
+\proof{ Suppose that $\delta>0$ is such that
+$B(x,\delta)\cap\overline{A}=\emptyset$, and set
+$S=\partial B(x,\delta)=\partial(\BbbR^r\setminus\interior B(x,\delta))$.
+Then the harmonic measure for arrivals in
+$\BbbR^r\setminus\interior B(x,\delta)$ from $x$ is
+$\Bover1{\nu S}\nu\LLcorner S$ (478Qb).   So
+
+$$\eqalignno{g(x)
+&=\int fd\mu_x
+=\int_S\Bover1{\nu S}\int fd\mu_y\nu(dy)\cr
+\displaycause{478R, 452F}
+&=\Bover1{\nu S}\int_Sg(y)\nu(dy).\cr}$$
+
+\noindent As $x$ and $\delta$ are arbitrary, $g$ is harmonic.
+}%end of proof of 478S
+
+\leader{478T}{Corollary} Let $A\subseteq\BbbR^r$ be an analytic set,
+and for $x\in\BbbR^r$ let $\mu_x$ be the harmonic measure for arrivals in
+$A$ from $x$.   Then $x\mapsto\mu_x$ is continuous on
+$\BbbR^r\setminus\overline{A}$ for the
+total variation metric on the set of totally finite
+Radon measures on $\BbbR^r$\cmmnt{ (definition:  437Qa)}.
+
+\proof{ Take any $y\in\BbbR^r\setminus\overline{A}$.   Let $\delta>0$ be
+such that $B(y,\delta)\cap A=\emptyset$, and set
+$S=\partial B(y,\delta)$.   For $x\in\interior B(y,\delta)$,
+let $\zeta_x$ be the harmonic measure for arrivals in
+$\BbbR^r\setminus B(y,\delta)$ from $x$, so that $\zeta_x$ is the
+indefinite-integral measure over $\nu$ defined by the function
+
+$$\eqalign{z
+&\mapsto\Bover{\delta^2-\|x-y\|^2}{r\beta_r\delta\|x-z\|^r}
+  \text{ if }z\in S,\cr
+&\mapsto 0\text{ if }z\in\BbbR^r\setminus S\cr}$$
+
+\noindent (478Qa).   Then, for any $x\in\interior B(y,\delta)$,
+$\family{z}{\BbbR^r}{\mu_z}$ is a disintegration of $\mu_x$
+over $\zeta_x$.   So if $E\subseteq\BbbR^r$ is a Borel set,
+
+\Centerline{$\mu_xE
+=\int\mu_z(E)\,\zeta_x(dz)
+=\Bover1{r\beta_r\delta}\int_S\mu_z(E)\,
+   \Bover{\delta^2-\|x-y\|^2}{\|x-z\|^r}\nu(dz)$.}
+
+\noindent But this means that
+
+\Centerline{$|\mu_x(E)-\mu_y(E)|
+\le\Bover{\nu S}{r\beta_r\delta}
+  \sup_{z\in S}\bigl|\Bover{\delta^2-\|x-y\|^2}{\|x-z\|^r}
+      -\Bover{\delta^2}{\|y-z\|^r}\bigr|$;}
+
+\noindent as $E$ is arbitrary, the distance from $\mu_x$ to
+$\mu_y$ is at most
+
+\Centerline{$\delta^{r-2}
+  \sup_{z\in S}\bigl|\Bover{\delta^2-\|x-y\|^2}{\|x-z\|^r}
+      -\Bover{\delta^2}{\|y-z\|^r}\bigr|$,}
+
+\noindent which is small if $x$ is close to $y$.
+}%end of proof of 478T
+
+\leader{478U}{}\cmmnt{ A variation on the technique of 478R enables us to
+say something about Brownian paths starting from a point in the essential
+closure of a set.
+
+\medskip
+
+\noindent}{\bf Proposition} Suppose that $A\subseteq\BbbR^r$ and that
+$0$ belongs to the essential closure\cmmnt{ $\clstar A$} of $A$\cmmnt{ as
+defined in 475B}.   Then the outer Brownian hitting probability
+$\hp^*(A)$ of $A$\cmmnt{ (477Ia)} is $1$.
+
+\proof{{\bf (a)} Take that $\alpha\in\ooint{0,1}$ such that
+$\Bover{1-\alpha^2}{(1+\alpha)^r}=\Bover12$.
+Suppose that $E\subseteq\BbbR^r$ is analytic, and that
+$0<\delta_0<\ldots<\delta_n$ are such that
+$\delta_i\le\alpha\delta_{i+1}$ for $i<n$.   For $i\le n$, let $\tau_i$
+be the Brownian hitting time to $S_i=\partial B(\tbf{0},\delta_i)$.   Then
+
+\Centerline{$\mu_W\{\omega:
+   \omega(\tau_i(\omega))\notin E$ for every $i\le n\}
+\le\prod_{i=0}^n(1-\Bover{\nu(E\cap S_i)}{2\nu S_i})$.}
+
+\noindent\Prf\ Induce on $n$.   If $n=0$, then
+
+$$\eqalignno{\mu_W\{\omega:\omega(\tau_0(\omega))\notin E\}
+&=1-\mu_0^{(S_i)}(E)\cr
+\displaycause{where $\mu_0^{(S_i)}$ is the harmonic measure for arrivals in
+$S_i$ from $0$}
+&=1-\Bover{\nu(E\cap S_i)}{\nu S_i}
+\le 1-\Bover{\nu(E\cap S_i)}{2\nu S_i}\cr}$$
+
+\noindent(478Qb).   For the inductive step to $n+1\ge 1$, let
+$\phi:\Omega\times\Omega\to\Omega$ be the \imp\ function
+corresponding to the stopping time $\tau_n$ as in 477G;  when
+$\tau_n(\omega)$ is finite, set
+$y(\omega)=\omega(\tau_n(\omega))\in S_n$.   Since
+$\tau_i(\omega)<\tau_{i+1}(\omega)$ whenever $i\le n$ and
+$\tau_i(\omega)$ is finite,
+
+\Centerline{$\tau_i(\phi(\omega,\omega'))=\tau_i(\omega)$}
+
+\noindent for $i\le n$ and $\omega$, $\omega'\in\Omega$.   As for
+$\tau_{n+1}(\phi(\omega,\omega'))$, this is infinite if
+$\tau_n(\omega)=\infty$, and otherwise is
+$\sigma_{y(\omega)}(\omega')$, where $\sigma_y$
+is the Brownian hitting time of $S_{n+1}-y$.   Now if $y\in S_n$, then
+
+$$\eqalignno{\mu_y^{(S_{n+1})}(E)
+&=\int_{E\cap S_{n+1}}
+  \Bover{\delta_{n+1}^2-\delta_n^2}{r\beta_r\delta_{n+1}\|x-y\|^r}
+  \nu(dx)\cr
+\displaycause{478Qa}
+&\ge\Bover{\delta_{n+1}^2-\delta_n^2}
+   {r\beta_r\delta_{n+1}(\delta_{n+1}+\delta_n)^r}
+   \nu(E\cap S_{n+1})\cr
+&\ge\Bover{1-\alpha^2}
+   {r\beta_r\delta_{n+1}^{r-1}(1+\alpha)^r}
+   \nu(E\cap S_{n+1})
+=\Bover{\nu(E\cap S_{n+1})}{2\nu S_{n+1}}.\cr}$$
+
+\noindent Consequently
+
+$$\eqalignno{
+&\mu_W\{\omega:\omega(\tau_i(\omega))\notin E\text{ for every }i\le n+1\}
+  \cr
+&\mskip50mu=(\mu_W\times\mu_W)\{(\omega,\omega'):
+  \phi(\omega,\omega')(\tau_i(\phi(\omega,\omega')))\notin E
+  \text{ for every }i\le n+1\}\cr
+&\mskip50mu=(\mu_W\times\mu_W)\{(\omega,\omega'):
+  \omega(\tau_i(\omega))\notin E
+  \text{ for every }i\le n,
+  \,\omega'(\sigma_{y(\omega)}(\omega'))\notin E\}\cr
+&\mskip50mu
+=\int_V\mu_W\{\omega':\omega'(\sigma_{y(\omega)}(\omega'))\notin E\}
+   \mu_W(d\omega)\cr
+\displaycause{setting $V=\{\omega:\omega(\tau_i(\omega))\notin E$ for every
+$i\le n\}$}
+&\mskip50mu\le\mu_WV\cdot\sup_{y\in S_n}(1-\mu_y^{(S_{n+1})}E)\cr
+&\mskip50mu\le\mu_WV\cdot(1-\Bover{\nu(E\cap S_{n+1})}{2\nu S_{n+1}})
+\le\prod_{i=0}^{n+1}(1-\Bover{\nu(E\cap S_i)}{2\nu S_i})\cr}$$
+
+\noindent by the inductive hypothesis.   So the induction continues.\ \Qed
+
+\medskip
+
+{\bf (b)} In particular, under the conditions of (a),
+$\hp(E)\ge 1-\prod_{i=0}^n(1-\Bover{\nu(E\cap S_i)}{2\nu S_i})$.
+Now suppose that $A\subseteq\BbbR^r$ and that $0\in\clstar A$.
+Let $E\supseteq A$ be an analytic set such that $\hp(E)=\hp^*(A)$
+(477Id).   Then $0\in\clstar E$;  set
+$\gamma=\Bover13\limsup_{\delta\downarrow 0}
+   \Bover{\mu(E\cap B(\tbf{0},\delta))}{\mu B(\tbf{0},\delta)}>0$.
+For any $\delta>0$, there is a $\delta'\in\ocint{0,\delta}$ such that
+$\Bover{\nu(E\cap\partial B(\tbf{0},\delta'))}{\nu\partial B(\tbf{0},\delta')}
+\ge 2\gamma$.   \Prf\ Let $\beta\in\ocint{0,\delta}$ be such that
+$\mu(E\cap B(\tbf{0},\beta))\ge 2\gamma\mu B(\tbf{0},\beta)$.   Then
+
+\Centerline{$\int_0^{\beta}\nu(E\cap\partial B(\tbf{0},t))dt
+\ge 2\gamma\int_0^{\beta}\nu\partial B(\tbf{0},t)dt$,}
+
+\noindent so there must be a $\delta'\in\ocint{0,\beta}$ such that
+$\nu(E\cap\partial B(\tbf{0},\delta'))\ge 2\gamma\nu\partial B(\tbf{0},\delta')$.\ \Qed
+
+We can therefore find, for any $n\in\Bbb N$, $0<\delta_0<\ldots<\delta_n$
+such that $\delta_i\le\alpha\delta_{i+1}$ for every $i<n$ (where $\alpha$
+is chosen as in (a) above) and
+$\nu(E\cap\partial B(\tbf{0},\delta_i))\ge 2\gamma\nu\partial B(\tbf{0},\delta_i)$ for
+every $i$.   As noted at the beginning of this part of the proof, it
+follows that $\hp(E)\ge 1-(1-\gamma)^{n+1}$.   As this is true for every
+$n\in\Bbb N$, $\hp(E)=1$, so $\hp^*(A)=1$, as claimed.
+}%end of proof of 478U
+
+\leader{*478V}{Theorem} (a)
+Let $G\subseteq\BbbR^r$ be an open set with few wandering paths and
+$f:\overline{G}^{\infty}\to\Bbb R$ a continuous function such that
+$f\restr G$ is harmonic.   For $x\in\BbbR^r$ let
+ $\tau_x:\Omega\to[0,\infty]$ be the Brownian exit time from
+$G-x$.   Set
+
+$$\eqalign{g_{\tau_x}(\omega)
+&=f(x+\omega(\tau_x(\omega)))\text{ if }\tau_x(\omega)<\infty,\cr
+&=f(\infty)\text{ if }\lim_{t\to\infty}\|\omega(t)\|=\infty
+\text{ and }\tau_x(\omega)=\infty.\cr}$$
+
+\noindent Then $f(x)=\Expn(g_{\tau_x})$.
+
+(b) Now suppose that $\sigma$ is a stopping time
+adapted to $\langle\Sigma_t\rangle_{t\ge 0}$ such that
+$\sigma(\omega)\le\tau_x(\omega)$ for every $\omega$.   Set
+
+$$\eqalign{g_{\sigma}(\omega)
+&=g_{\tau_x}(\omega)\text{ if }\sigma(\omega)=\tau_x(\omega)=\infty,\cr
+&=f(x+\omega(\sigma(\omega)))\text{ otherwise}.\cr}$$
+
+\noindent As in 455Lc, set
+$\Sigma_{\sigma}=\{E:E\in\dom\mu_W$,
+$E\cap\{\omega:\sigma(\omega)\le t\}\in\Sigma_t$ for every $t\ge 0\}$.
+Then $g_{\sigma}$ is a conditional expectation of
+$g_{\tau_x}$ on $\Sigma_{\sigma}$.
+
+\proof{{\bf (a)(i)} Of course if $x\notin G$ then $\tau_x(\omega)=0$
+and $g_{\tau_x}(\omega)=f(x)$ for
+every $\omega$ and the result is trivial.   So we can suppose that
+$x\in G$.   Note next that if there is any $\omega$ such that
+$\lim_{t\to\infty}\|\omega(t)\|=\infty$ and $\tau_x(\omega)=\infty$, then
+$G$ must be unbounded, so $f(\infty)$ will be defined.   Because
+$G$ has few wandering paths, $g_{\tau_x}$ is defined almost everywhere.
+
+\medskip
+
+\quad{\bf (ii)} Let $m\in\Bbb N$ be such that
+$\rho(x,\BbbR^r\setminus G)>\bover1{m+1}$ and $\|x\|<m$;
+for $n\ge m$, set
+$G_n=\{y:\|y\|<n$, $\rho(y,\BbbR^r\setminus G)>\bover1{n+1}\}$,
+let $\tau_{xn}'$ be the
+Brownian exit time from $G_n-x$ and set
+$\tau_{xn}(\omega)=\min(n,\tau_{xn}'(\omega))$ for every $\omega$.
+Note that by 477I(c-i), $x+\omega(\tau_{xn}(\omega))\in\overline{G}_n$
+for every $\omega$.
+
+By 477I(c-iii) and 455L(c-v), $\tau_{xn}$ is a stopping time adapted to
+$\langle\Sigma_t\rangle_{t\ge 0}$.   Let $\sequencen{\tilde h_n}$ be the
+sequence of 473E, and for $n\ge m$ set $f_n=\tilde f*\tilde h_n$, where
+$\tilde f$ is the extension of $f\restr\overline{G}$ to
+$\BbbR^r$ which takes the value $0$
+on $\BbbR^r\setminus\overline{G}$.   Then $f_n$ is smooth and bounded.
+By 478Jb
+(applied in turn to the functions $\tilde f+M\chi\BbbR^r$
+and $-\tilde f+M\chi\BbbR^r$ where $M=\sup_{y\in G}|f(y)|$,
+which of course are both superharmonic on $G$),
+$f_n$ agrees with $f$ on $G_n$, so that $f_n\restr G_n$ is harmonic and
+$\nabla^2f_n$ is zero on $G_n$ (478Ec).
+Also, because both $f_n$ and $f$ are continuous, they agree on
+$\overline{G}_n$ and
+$f(x+\omega(\tau_{xn}(\omega)))
+=f_n(x+\omega(\tau_{xn}(\omega)))$
+for every $\omega$.
+
+If $n\ge m$, $\omega\in\Omega$ and $0\le s<\tau_{xn}(\omega)$, then
+$x+\omega(s)\in G_n$ so $(\nabla^2f_n)(x+\omega(s))=0$.   Dynkin's formula
+(478K), applied to the function $y\mapsto f_n(x+y)$,
+therefore tells us that
+$f(x)=f_n(x)
+=\int f_n(x+\omega(\tau_{xn}(\omega)))\mu_W(d\omega)$.
+
+\medskip
+
+\quad{\bf (iii)} If $\omega\in\Omega$ and $t<\tau_x(\omega)$,
+then the compact set
+$x+\omega[\,[0,t]\,]$ is included in the open set $G$ and there is an
+$n\ge\max(m,t)$ such that it is included in $G_n$.   So
+$\lim_{n\to\infty}\tau_{xn}(\omega)=\tau_x(\omega)$ and, because $f$ is
+continuous on $\overline{G}^{\infty}$,
+
+\Centerline{$g_{\tau_x}(\omega)
+=\lim_{n\to\infty}f(x+\omega(\tau_{xn}(\omega)))
+=\lim_{n\to\infty}f_n(x+\omega(\tau_{xn}(\omega)))$}
+
+\noindent
+for almost every $\omega$.   Since
+$\|f_n\|_{\infty}\le\|f\|_{\infty}<\infty$ for every $n$,
+Lebesgue's Dominated Convergence Theorem tells us that
+
+\Centerline{$\Expn(g_{\tau_x})
+=\lim_{n\to\infty}\int f_n(x+\omega(\tau_{xn}(\omega)))
+  \mu_W(d\omega)
+=f(x)$,}
+
+\noindent as required.
+
+\medskip
+
+{\bf (b)(i)} If $\omega_0$, $\omega_1\in\Omega$, $\sigma(\omega_0)=t$ and
+$\omega_1\restr[0,t]=\omega_0\restr[0,t]$, then
+$\sigma(\omega_1)=t$.
+\Prf\ The set $\{\omega:\sigma(\omega)\le t\}$ belongs
+to $\Sigma_t$;  as it contains $\omega_0$, it contains $\omega_1$, and
+$\sigma(\omega_1)\le t$.   But now $\omega_0$ agrees with $\omega_1$ on
+$[0,\sigma(\omega_1)]$, so $\sigma(\omega_1)\ge\sigma(\omega)=t$.\ \Qed
+
+If $H\in\Sigma_{\sigma}$ then $\omega_0\in H$ iff $\omega_1\in H$.
+\Prf\ For every $t\ge 0$,
+$H\cap\{\omega:\sigma(\omega)\le t\}$ belongs to
+$\Sigma_t$, so contains $\omega_0$ iff it contains $\omega_1$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Of course
+$E_{\infty}=\{\omega:\sigma(\omega)=\infty\}$ belongs to $\Sigma_{\sigma}$,
+because it has empty intersection with every set
+$\{\omega:\sigma(\omega)\le t\}$.
+
+\leaveitout{Also
+$E_1=\{\omega:\tau(\omega)=\sigma(\omega)<\infty\}$ belongs to
+$\Sigma_{\sigma}$.   \Prf\ For any $t\ge 0$,
+
+$$\eqalign{E_1\cap\{\omega:\sigma(\omega)\le t\}
+&=\{\omega:\sigma(\omega)\le t\}\cap\{\omega:\tau(\omega)\le t\}\cr
+&\mskip50mu
+  \setminus\bigcup_{q\in[0,t]\cap\Bbb Q}
+      (\{\omega:\sigma(\omega)\le q<\tau(\omega)\}
+         \cup\{\omega:\tau(\omega)\le q<\sigma(\omega)\})\cr
+&\in\Sigma_t.  \text{ \Qed}\cr}$$
+
+\noindent So
+
+\Centerline{$E_0=\{\omega:\sigma(\omega)=0<\tau(\omega)\}
+=\{\omega:\sigma(\omega)\le 0\}\setminus E_1$}
+
+\noindent belongs to $\Sigma_{\sigma}$.
+}
+
+\medskip
+
+\quad{\bf (iii)} $g_{\sigma}$ is $\Sigma_{\sigma}$-measurable.   \Prf\
+For $n\in\Bbb N$, $\omega\in\Omega$ and $t\ge 0$, set
+
+$$\eqalign{h_n(t,\omega)
+&=f(\omega(2^{-n}\lfloor 2^nt\rfloor))
+  \text{ if }\omega(2^{-n}\lfloor 2^nt\rfloor)\in G,\cr
+&=0\text{ otherwise}.\cr}$$
+
+\noindent Then $h_n$ is
+$(\Cal B(\coint{0,\infty})\times\Sigma)$-measurable,
+so if we set $h(t,\omega)=\lim_{n\to\infty}h_n(t,\omega)$ when this is
+defined, $h$ also will be
+$(\Cal B(\coint{0,\infty})\times\Sigma)$-measurable, and
+$\omega\mapsto h(\sigma(\omega),\omega)$ is $\Sigma$-measurable.
+Now, because
+$\sigma\le\tau$, $g_{\sigma}(\omega)=h(\sigma(\omega),\omega)$ for almost
+every $\omega\in\Omega\setminus E_{\infty}$;
+because $\mu_W$ is complete,
+$g_{\sigma}$ is $\Sigma$-measurable.   But now observe that if $t\ge 0$ and
+$\alpha\in\Bbb R$,
+$\{\omega:\sigma(\omega)\le t$, $g_{\sigma}(\omega)\ge\alpha\}$ belongs to
+$\Sigma$ and is determined by coordinates less than or equal to $t$, so
+belongs to $\Sigma_t$.   As $t$ is arbitrary,
+$\{\omega:g_{\sigma}(\omega)\ge\alpha\}\in\Sigma_{\sigma}$;  as
+$\alpha$ is arbitrary, $g_{\sigma}$ is $\Sigma_{\sigma}$-measurable.\ \Qed
+
+\medskip
+	
+\quad{\bf (iv)} As in 477G, define
+$\phi_{\sigma}:\Omega\times\Omega\to\Omega$ by saying that
+
+$$\eqalign{\phi_{\sigma}(\omega,\omega')(t)
+&=\omega(t)\text{ if }t\le\sigma(\omega),\cr
+&=\omega(\sigma(\omega))+\omega'(t-\sigma(\omega))
+   \text{ if }t\ge\sigma(\omega).\cr}$$
+
+\noindent Then 477G tells us that $\phi_{\sigma}$ is \imp.
+
+\medskip
+
+\quad{\bf (v)} $\tau_x(\phi_{\sigma}(\omega,\omega'))
+=\sigma(\omega)+\tau_{x+\omega(\sigma(\omega))}(\omega')$
+for all $\omega$, $\omega'\in\Omega$.   \Prf\ If
+$\sigma(\omega)=\infty$ then $\phi_{\sigma}(\omega,\omega')=\omega$
+and
+
+\Centerline{$\tau_x(\phi_{\sigma}(\omega,\omega'))
+=\tau_x(\omega)=\sigma(\omega)$.}
+
+\noindent If $\sigma(\omega)=\tau_x(\omega)$ is finite then
+$\omega(\sigma(\omega))\notin G-x$ and
+$\phi_{\sigma}(\omega,\omega')\restr[0,\tau_x(\omega)]
+=\omega\restr[0,\tau_x(\omega)]$, so
+
+\Centerline{$\tau_x(\phi_{\sigma}(\omega,\omega'))
+=\tau_x(\omega)=\sigma(\omega)
+=\sigma(\omega)+\tau_{x+\omega(\sigma(\omega))}(\omega')$.}
+
+\noindent If $\sigma(\omega)<\tau_x(\omega)$ then
+$\omega(t)=\phi_{\sigma}(\omega,\omega')(t)$ belongs to $G-x$ for every
+$t\le\sigma(\omega))$ and
+
+$$\eqalign{\tau_x(\phi_{\sigma}(\omega,\omega'))
+&=\inf\{t:t\ge\sigma(\omega),\,
+   \omega(\sigma(\omega))+\omega'(t-\sigma(\omega))\notin G-x\}\cr
+&=\sigma(\omega)+\inf\{t:\omega'(t)\notin G-x-\omega(\sigma(\omega))\}
+=\sigma(\omega)+\tau_{x+\omega(\sigma(\omega))}(\omega').
+\text{ \Qed}\cr}$$
+
+\noindent Consequently, if $\omega\in\Omega$, $\sigma(\omega)<\infty$ and
+$y=\omega(\sigma(\omega))$,
+
+\Centerline{$\phi_{\sigma}(\omega,\omega')
+  (\tau_x(\phi_{\sigma}(\omega,\omega')))
+=\phi_{\sigma}(\omega,\omega')
+  (\sigma(\omega)+\tau_{x+y}(\omega'))
+=y+\omega'(\tau_{x+y}(\omega'))$}
+
+\noindent whenever either $\tau_x(\phi_{\sigma}(\omega,\omega'))$ or
+$\tau_{x+y}(\omega')$ is finite,
+
+\Centerline{$g_{\tau_x}(\phi_{\sigma}(\omega,\omega'))
+=f(x+\phi_{\sigma}(\omega,\omega')
+  (\tau_x(\phi_{\sigma}(\omega,\omega'))))
+=f(x+y+\omega'(\tau_{x+y}(\omega')))$}
+
+\noindent for almost every $\omega'$.
+
+\medskip
+
+\quad{\bf (vi)} If $H\in\Sigma_{\sigma}$ then
+$\phi_{\sigma}^{-1}[H]=H\times\Omega$.   \Prf\ If $\omega$,
+$\omega'\in\Omega$ then
+$\phi_{\sigma}(\omega,\omega')\restr[0,\sigma(\omega)]
+=\omega\restr[0,\sigma(\omega)]$, so by (i) above
+$\phi_{\sigma}(\omega,\omega')\in H$ iff $\omega\in H$.\ \Qed
+
+If $H\cap E_{\infty}=\emptyset$, we now have
+
+$$\eqalignno{\int_Hg_{\tau_x}
+&=\int_{\phi_{\sigma}^{-1}[H]}g_{\tau_x}(\phi_{\sigma}(\omega,\omega'))
+  d(\omega,\omega')\cr
+&=\int_H\int f(x+\omega(\sigma(\omega))
+   +\omega'(\tau_{x+\omega(\sigma(\omega))}(\omega)))
+  d\omega'd\omega\cr
+&=\int_Hf(x+\omega(\sigma(\omega)))d\omega\cr
+\displaycause{by (a) above}
+&=\int_Hg_{\sigma}.\cr}$$
+
+\noindent Of course we also have $\int_Hg_{\tau_x}=\int_Hg_{\sigma}$ if
+$H\subseteq E_{\infty}$.   So $\int_Hg_{\sigma}=\int_Hg_{\tau_x}$ for every
+$H\in\Sigma_{\sigma}$, and
+$g_{\sigma}$ is a conditional expectation of
+$g_{\tau_x}$ on $\Sigma_{\sigma}$.
+}%end of proof of 478V
+
+\leaveitout{\medskip
+
+\noindent{\bf Remarks} Will this now cover 478R?
+
+Anyway we can do quite a bit better;  e.g., assuming only that
+$f:G\to\Bbb R$ is harmonic, but that there is a bound on
+$f(\omega(t))$ for $\omega\in\Omega$, $t<\tau(\omega)$.
+}
+
+\exercises{\leader{478X}{Basic exercises (a)}
+%\spheader 478Xa
+Let $G\subseteq\BbbR^r$ be an open set, and
+$\sequencen{f_n}$ a sequence of superharmonic functions from $G$ to
+$[0,\infty]$.   Show that
+$\liminf_{n\to\infty}f_n$ is superharmonic.
+%478B
+
+\spheader 478Xb Let $G\subseteq\BbbR^r$ be an open set, and $f:G\to\Bbb R$
+a continuous harmonic function.   Show that $f$ is smooth.   \Hint{put 478I
+and 478D together.}
+%478I
+%won't "Lebesgue measurable" do in place of "continuous"?
+
+\spheader 478Xc Let $G\subseteq\BbbR^r$ be an open set, and
+$f:G\to[0,\infty]$ a lower semi-continuous superharmonic function.
+Show that there is are sequences $\sequencen{G_n}$, $\sequencen{f_n}$ such
+that (i) $\sequencen{G_n}$ is a non-decreasing sequence of open sets with
+union $G$ (ii) for each $n\in\Bbb N$,
+$f_n:G_n\to\coint{0,\infty}$ is a bounded smooth superharmonic
+function and $f_n\le f\restr G_n$ (iii) $f(x)=\lim_{n\to\infty}f_n(x)$ for
+every $x\in G$.
+%478J
+
+\sqheader 478Xd Let $\langle X_t\rangle_{t\ge 0}$ be Brownian motion in
+$\BbbR^r$, and $\delta>0$.   Let $\tau$ be the Brownian hitting time to
+$\{x:\|x\|\ge\delta\}$.   Show that $\Expn(\tau)=\Bover{\delta^2}{r}$.
+\Hint{in 478K, take $f(x)=\|x\|^2$.}
+%478K
+
+\spheader 478Xe Show that
+$\hp^*:\Cal P\BbbR^r\to[0,1]$ is an outer regular Choquet
+capacity (definition:  432J) iff $r\ge 3$.
+\Hint{if $r\ge 3$, $\mu_W$ is inner regular with respect to
+$\{K:K\subseteq\Omega$,
+$\lim_{t\to\infty}\inf_{\omega\in K}\|\omega(t)\|=\infty\}$.}
+%477I %478M
+
+\spheader 478Xf Show that an open subset of $\Bbb R$ has few wandering
+paths iff it is not $\Bbb R$ itself.
+%478N
+
+\spheader 478Xg Suppose $r=2$.  (i)
+Show that if $x\in\BbbR^2\setminus\{0\}$, then
+the Brownian exit time from $\BbbR^2\setminus\{x\}$ is infinite a.e.
+\Hint{use the
+method of part (b-ii) of the proof of 478M to show that if $R>\|x\|$ and
+$\delta>0$ is small enough then most sample paths meet $\partial B(x,R)$
+before they meet $B(x,\delta)$.}
+(ii) Show that if $G\subseteq\BbbR^2$ is an open set
+with countable complement then $G$ does not have few wandering paths.
+%478N
+
+\spheader 478Xh Suppose that $r\ge 3$.   Let $\sequencen{A_n}$ be a
+non-increasing sequence of analytic sets in $\BbbR^r$ such that $A_0$ is
+bounded and $\bigcap_{n\in\Bbb N}\bar A_n=\bigcap_{n\in\Bbb N}A_n$,
+and $x\in\BbbR^r$.   Let $\mu_x^{(n)}$, $\mu_x$ be the
+harmonic measures for arrivals in $A_n$, $\bigcap_{m\in\Bbb N}A_m$
+from $x$.   Show that
+$\mu_x=\lim_{n\to\infty}\mu^{(n)}_x$ for the narrow topology on the set of
+totally finite Radon measures on $\BbbR^r$.   \Hint{478Xe, 478Pd.}
+%478Xe 478M 478P
+
+\spheader 478Xi Let $A\subseteq\Bbb R$ be an analytic set, $x\in\Bbb R$ and
+$\mu_x$ the harmonic measure for arrivals in $A$ from $x$.   For
+$y\in\Bbb R$ let $\delta_y$ be the Dirac measure on $\Bbb R$ concentrated
+at $y$.   Show that (i) if $A$ is empty, then $\mu_x$ is the zero measure;
+(ii) if $A\ne\emptyset$ but $A\cap\coint{x,\infty}=\emptyset$ then
+$\mu_x=\delta_{\sup A}$;
+(iii) if $A\ne\emptyset$ but $A\cap\ocint{-\infty,x}=\emptyset$ then
+$\mu_x=\delta_{\inf A}$;  (iv) if $A$ meets both $\ocint{-\infty,x}$ and
+$\coint{x,\infty}$, and $y=\sup(A\cap\ocint{-\infty,x})$,
+$z=\inf(A\cap\coint{x,\infty})$, then $\mu_x=\delta_x$ if $y=z=x$, and
+otherwise $\mu_x=\Bover{z-x}{z-y}\delta_y+\Bover{x-y}{z-y}\delta_z$.
+%478P
+
+\spheader 478Xj Prove 478Qb by a symmetry argument not involving the
+calculations of 478I.
+%478Q
+
+\sqheader 478Xk Let $G\subseteq\BbbR^r$ be an open set, and for $x\in G$
+let $\mu_x$ be the
+harmonic measure for arrivals in $\BbbR^r\setminus G$ from $x$.
+Show that for any bounded universally measurable function
+$f:\partial G\to\Bbb R$, the function
+$x\mapsto\int fd\mu_x:G\to\Bbb R$ is continuous and harmonic.
+%478R
+
+\spheader 478Xl (i)
+Suppose that $r=2$, and that $x$, $y$, $z\in\BbbR^r$ are
+such that $\|x\|<1=\|z\|$ and $y=0$.   Identify $\BbbR^2$ with $\Bbb C$,
+and express $x$, $z$ as $\gamma e^{i\theta}$ and $e^{it}$ respectively.
+Show that, in the language of 272Yg,
+$\Bover{\|y-z\|^2-\|x-y\|^2}{\|x-z\|^r}=A_{\gamma}(\theta-t)$.
+(ii) Compare 478I(b-iii) with 272Yg(iii).
+%478I out of order query
+
+\leader{478Y}{Further exercises (a)}%
+%\spheader 478Ya
+(i) Show that there is a function $f:\Bbb R\to\Bbb Q$ which
+is `harmonic' in the sense of 478B, but is not continuous.   \Hint{take $f$
+to be a linear operator when $\Bbb R$ is regarded as a linear space over
+$\Bbb Q$.}   (ii) Show that if the continuum hypothesis is true, there is a
+surjective
+function $f:\BbbR^2\to\{0,1\}$ which is `harmonic' in the sense of 478B.
+%478B
+
+\spheader 478Yb Let $G\subseteq\BbbR^r$ be a connected open set, and
+$f:G\to[0,\infty]$ a superharmonic Lebesgue measurable function which is
+not everywhere infinite.   Show that $f$ is locally integrable.
+%478C mt47bits
+
+\spheader 478Yc Let $G\subseteq\BbbR^2$ be an open set, and $f:G\to\Bbb C$ a
+function which is analytic when regarded as a function of a complex
+variable.   Show that $\Real f$ is harmonic.   \Hint{The
+non-trivial part is the theorem that $f$ has continuous second partial
+derivatives.}
+%478F
+
+\spheader 478Yd Define $\psi:\BbbR^r\setminus\{0\}\to\BbbR^r$ by setting
+$\psi(x)=\Bover{x}{\|x\|^2}$.
+For a $[-\infty,\infty]$-valued function $f$ defined on a subset of
+$\BbbR^r$, set $f^*(x)=\Bover1{\|x\|^{r-2}}f(\psi(x))$ for
+$x\in\psi^{-1}[\dom f]\setminus\{0\}$.
+(This is the {\bf Kelvin transform} of $f$ relative
+to the sphere $\partial B(\tbf{0},1)$.)   (i) Show that if $f$ is real-valued
+and twice continuously differentiable, then
+$(\nabla^2f^*)(x)=\Bover1{\|x\|^{r+2}}(\nabla^2f)(\psi(x))$
+for $x\in\dom f^*$.
+%Armitage 1.6.3;  Axler \& Ramey 95
+(ii) Show that if $\dom f$ is open and $f$ is non-negative,
+lower semi-continuous and superharmonic, then $f^*$ is
+superharmonic.  %478Xc
+%478J
+
+\spheader 478Ye Let $G\subseteq\BbbR^2$ be an open set.   Show that $G$ has
+few wandering paths iff there is an $x\in\BbbR^2$ such that
+$\hp((\BbbR^2\setminus(G\cup\{x\}))-x)>0$.
+%478N mt47bits
+
+\spheader 478Yf Show that 478K remains true if we replace
+`three-times-differentiable function such that $f$ and its first three
+derivatives are continuous and bounded' with
+`twice-differentiable function such that $f$ and its first two
+derivatives are continuous and bounded'.
+%478K
+
+\spheader 478Yg Let $f:\BbbR^r\to\Bbb R$ be a twice-differentiable
+function such that $f$ and its first two
+derivatives are continuous and bounded.   Show that
+
+\Centerline{$\lim_{\delta\downarrow 0}\Bover1{\delta^2}
+  \bigl(f(x)-\Bover1{\mu B(x,\delta)}\int_{B(x,\delta)}fd\mu\bigr)
+=-\Bover{(\nabla^2f)(x)}{2(r+2)}$}
+
+\noindent for every $x\in\BbbR^r$.
+%478Yf 478K mt47bits
+
+\spheader 478Yh Let $G\subseteq\BbbR^r$ be an open set and $f:G\to\Bbb R$ a
+continuous function such that
+
+\Centerline{$\lim_{\delta\downarrow 0}\Bover1{\delta^2}
+  \bigl(f(x)-\Bover1{\mu B(x,\delta)}\int_{B(x,\delta)}fd\mu\bigr)
+=0$}
+
+\noindent for every $x\in G$.   Show that $f$ is harmonic.
+%478Yg 478K apply 478Yg to smoothed versions of $f$
+
+\spheader 478Yi Let $f:\BbbR^r\to[0,\infty]$ be a lower semi-continuous
+superharmonic function.   Show
+that $f\omega$ is continuous for $\mu_W$-almost every $\omega\in\Omega$.
+%478L mt47bits
+
+\spheader 478Yj Suppose that $A\subseteq\BbbR^r$.
+Show that $x\mapsto\hp^*(A-x)$ is lower
+semi-continuous at every point of $\BbbR^r\setminus A$, and continuous at
+every point of $\BbbR^r\setminus\overline{A}$.
+%if x_n\to x  there is an analytic  A'\supseteq A  such that
+%\hp(A'-x_n)=\hp^*(A-x_n)$ for every  n , so enough to consider analytic
+%A;  now use 477Ie
+%478T
+
+\spheader 478Yk Suppose that $A\subseteq\BbbR^r$ is such that
+$\inf_{\delta>0}\hp^*(A\cap B(\tbf{0},\delta))>0$.   Show that $\hp^*(A)=1$.
+%478U
+
+\spheader 478Yl Let $\mu_W$ be three-dimensional Wiener measure on
+$\Omega=C(\coint{0,\infty};\BbbR^3)_0$, and $e$ a unit vector in
+$\BbbR^3$.   Set $Y_t(\omega)=\Bover1{\|\omega(t)-e\|}$ for
+$\omega\in\Omega$ and $t\in\coint{0,\infty}$ such that $\omega(t)\ne e$.
+(i) Show that if $R>1$ then
+
+$$\eqalign{\Expn(Y_t)
+&=\Bover1{(\sqrt{2\pi t})^3}
+  \int\Bover{\exp(-\|x\|^2/2t)}{\|x-e\|}\mu(dx)\cr
+&\le\Bover1{(\sqrt{2\pi t})^3}
+  \int_{B(\tbf{0},1)}\Bover1{\|x\|}\mu(dx)
++\Bover1{(\sqrt{2\pi t})^3}
+  \int_{B(e,R)\setminus B(e,1)}e^{-\|x\|^2/2t}\mu(dx)
++\Bover1R
+\to\Bover1R\cr}$$
+
+\noindent as $t\to\infty$, so that $\lim_{t\to\infty}\Expn(Y_t)=0$ and
+$\langle Y_t\rangle_{t\ge 0}$ is not a martingale.    (ii) Show that if
+$n\ge 1$ and $\tau_n$ is the Brownian hitting time to $B(e,2^{-n})$,
+then $\langle Y_{t\wedge\tau_n}\rangle_{t\ge 0}$ is a martingale, where
+$t\wedge\tau_n$ is the stopping time $\omega\mapsto\min(t,\tau_n(\omega))$.
+(iii) Show that $\sequencen{\tau_n(\omega)}$ is a strictly increasing
+sequence with limit $\infty$ for almost every $\omega$.
+($\langle Y_t\rangle_{t\ge 0}$ is a `local martingale'.)
+%478Pc Bain 5.2 out of order query
+}%end of exercises
+
+\endnotes{
+\Notesheader{478} I find that books are still being published on the
+subject of potential theory which ignore Brownian motion.   To my eye,
+Newtonian potential, at least (and this is generally acknowledged to be the
+core of the subject), is an essentially geometric concept, and
+random walks are an indispensable tool for understanding it.
+So I am giving these priority, at the
+cost of myself ignoring Green's functions.
+
+The definitions in 478B are already unconventional;  most authors take it
+for granted that harmonic functions should be finite-valued and continuous
+(see 478Cd).   All the work of this section refers to measurable functions.
+But there are things which can be said about non-measurable functions
+satisfying the definitions here (478Ya).   Let me draw your attention to
+478Fa and 478H.   If we want to say that $x\mapsto\Bover1{\|x\|^{r-2}}$ is
+harmonic, we have to be careful not to define it at $0$.   If (for
+$r\ge 3$) we allow $\Bover1{0^{r-2}}=\infty$, we get a superharmonic
+function.
+If (for $r=1$) we allow $\Bover1{0^{-1}}=0$, we get a subharmonic function.
+The slightly paradoxical phenomenon of 478Yl is another manifestation of
+this.
+
+I hope that using the operations $\overline{\phantom{x}}^{\infty}$ and
+$\partial^{\infty}$ does not make things more difficult.   The point is
+that by compactifying $\BbbR^r$ we get an efficient way of talking about
+$\lim_{\|x\|\to\infty}f(x)$ when we need to.   This is particularly
+effective for Brownian paths, since in three and more dimensions almost all
+paths go off to infinity (478Md).   In two dimensions the situation is more
+complex (478Mb-478Mc),
+and we have to consider the possibility that a path $\omega$ in an
+open set may be `wandering', in the sense that it neither strikes the
+boundary nor goes to infinity, and $\lim_{t\to\infty}f(\omega(t))$ may fail
+to exist even for the best-behaved functions $f$.   Of course this already
+happens in one dimension, but only when $G=\Bbb R$, and classical potential
+theory (though not, I think, Brownian potential theory) is nearly trivial
+in the one-dimensional case.
+
+Many readers will also find that setting $r=3$ and $r\beta_r=4\pi$ will
+make the formulae easier to digest.   I allow for variations in $r$ partly
+in order to cover the case $r=2$ (in this section, though not in the
+next, many of the ideas translate directly into the one- and
+two-dimensional cases), and partly because it is not always easy to guess
+at a formula for $r\ge 4$ from the formula for $r=3$.   There is
+little extra work to be done, given that \S\S472-475 cover the general
+case.
+
+I call 478K a `lemma' because I have made no attempt to look for weakest
+adequate hypotheses;  of course we don't really need third derivatives
+(478Yf).
+The `theorems' are 478L and 478O, where the hypotheses seem to mark
+natural boundaries of the arguments given.   In 478O %maybe elsewhere
+I use a language which is both unusual and slightly contorted, in
+order to do as much as possible without splitting the cases $r\le 2$ from
+the rest.   Of course any result involving the notion of `few wandering
+paths' really has two forms;  one when $r\ge 3$, so that there is no
+restriction on the open set and we are genuinely making use of the
+one-point
+compactification of $\BbbR^r$, and one when $r\le 2$, in which essentially
+all our paths are bounded.
+
+Theorem 478O leads directly to a solution of Dirichlet's problem, in the
+sense that, for an open set $G$ with few wandering paths, we have a
+family of measures enabling us to
+calculate the values within $G$ of a continuous function on
+$\overline{G}^{\infty}$ which satisfies Laplace's equation inside $G$
+(478Pc).   We do not get a satisfactory existence theorem;  we can
+use harmonic measures to generate
+many harmonic functions on $G$ (478S), but
+we do not get good information on their behaviour near $\partial G$, and
+are left guessing at which continuous functions on $\partial^{\infty}G$
+will be extended continuously.   The method does, however, make it clear
+that what matters is the geometry of the boundary;  we need to know
+whether, starting from a point near the boundary, a random walk will hit
+the boundary soon.   So at least we can see from 478M that (if $r\ge 2$) an
+isolated point of $\partial G$ will be at worst an irrelevant distraction.
+For $r\ge 3$ the next section will give some useful information
+(479P {\it
+et seq.}), though I shall not have space for a proper analysis.
+
+The idea of 478Vb is that we have a particularly dramatic kind of
+martingale.   Writing $S$ for the set of stopping times $\sigma\le\tau$,
+it is easy to see that the family
+$\family{\sigma}{S}{g_{\sigma}}$ is a martingale in the sense that
+$\Sigma_{\sigma}\subseteq\Sigma_{\sigma'}$
+and $g_{\sigma}$ is a conditional expectation of $g_{\sigma'}$ on
+$\Sigma_{\sigma}$  whenever $\sigma\le\sigma'$ in $S$.
+}
+
+\discrpage
+
+
+%variation of $\mu_x^{(G)}$ as $G$ varies;  narrow convergence for
+%increasing unions?

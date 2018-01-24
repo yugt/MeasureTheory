@@ -1,0 +1,1400 @@
+\frfilename{mt461.tex}
+\versiondate{9.7.08}
+\copyrightdate{2000}
+
+\def\chaptername{Pointwise compact sets of measurable functions}
+\def\sectionname{Barycenters and Choquet's theorem}
+
+\newsection{461}
+
+One of the themes of this chapter will be the theory of measures on
+linear spaces, and the first fundamental concept is that of `barycenter'
+of a measure, its centre of mass (461Aa).   The elementary theory
+(461B-461E) uses non-trivial results from the theory of locally convex
+spaces\cmmnt{ (\S4A4)}, but is otherwise natural and straightforward.
+It is not always easy to be sure whether a measure has a barycenter in a
+given space, and I give a representative pair of results in this
+direction (461F, 461H).   Deeper questions concern the existence and
+nature of measures on a given compact set with a given barycenter.   The
+Riesz representation theorem is enough to tell us just which points can
+be barycenters of measures on compact sets (461I).   A new idea (461K-461L)
+shows that the measures can be moved out towards the boundary of the
+compact set.   We need a precise definition of `boundary';  the set of
+extreme points seems to be the appropriate concept (461M).
+In some important cases, such representing measures on boundaries are
+unique (461P).   I append a result
+identifying the extreme points of a particular class of compact convex sets
+of measures (461Q-461R).
+
+
+\leader{461A}{Definitions (a)} Let $X$ be a Hausdorff locally convex
+linear topological space, and $\mu$ a probability measure on a subset
+$A$ of $X$.   Then $x^*\in X$ is a {\bf barycenter}\cmmnt{ or
+{\bf resultant}} of $\mu$ if
+$\int_Ag\,d\mu$ is defined and equal to $g(x^*)$ for every $g\in X^*$.
+\cmmnt{Because $X^*$ separates the points of $X$ (4A4Ec),} $\mu$ can
+have at most one barycenter\cmmnt{, so we may speak of `the' barycenter
+of $\mu$}.
+
+\spheader 461Ab Let $X$ be any linear space over $\Bbb R$,
+and $C\subseteq X$ a
+convex set\cmmnt{ (definition:  2A5E)}.   Then a function
+$f:C\to\Bbb R$ is {\bf convex} if
+$f(tx+(1-t)y)\le tf(x)+(1-t)f(y)$ for all $x$,
+$y\in C$ and $t\in[0,1]$.   \cmmnt{ (Compare 233G, 233Xd.)}
+
+\spheader 461Ac\cmmnt{ The following elementary remark is useful.}
+Let $X$ be a linear space over $\Bbb R$, $C\subseteq X$ a convex set,
+and $f:C\to\Bbb R$ a function.   Then $f$ is convex iff the set
+$\{(x,\alpha):x\in C$, $\alpha\ge f(x)\}$ is convex in
+$X\times\Bbb R$\cmmnt{ (cf.\ 233Xd)}.
+
+\vleader{72pt}{461B}{Proposition} Let $X$ and $Y$ be Hausdorff locally convex
+linear topological spaces, and $T:X\to Y$ a continuous linear operator.
+Suppose that $A\subseteq X$, $B\subseteq Y$ are such that
+$T[A]\subseteq B$, and let $\mu$ be a probability measure on $A$ which
+has a barycenter
+$x^*$ in $X$.   Then $Tx^*$ is the barycenter of the image measure
+$\mu T^{-1}$ on $B$.
+
+\proof{ All we have to observe is that if $g\in Y^*$ then $gT\in X^*$
+(4A4Bd), so that
+
+\Centerline{$g(Tx^*)=\int_Ag(Tx)\mu(dx)=\int_Bg(y)\nu(dy)$}
+
+\noindent by 235G\formerly{2{}35I}.
+}%end of proof of 461B
+
+\leader{461C}{Lemma} Let $X$ be a Hausdorff locally convex linear
+topological space, $C$ a convex subset of $X$, and $f:C\to\Bbb R$ a lower
+semi-continuous convex function.   If $x\in C$ and $\gamma<f(x)$, there
+is a $g\in X^*$ such that
+$g(y)+\gamma-g(x)\le f(y)$ for every $y\in C$.
+
+\proof{ Let $D$ be the convex set
+$\{(x,\alpha):x\in C$, $\alpha\ge f(x)\}$ in $X\times\Bbb R$ (461Ac).
+Then the closure $\overline{D}$ of $D$ in $X\times\Bbb R$
+is also convex (2A5Eb).   Now
+$D$ is closed in $C\times\Bbb R$ (4A2B(d-i)), and $(x,\gamma)\notin D$,
+so $(x,\gamma)\notin\overline{D}$.
+
+Consequently there is a continuous linear functional
+$h:X\times\Bbb R\to\Bbb R$ such that
+$h(x,\gamma)<\inf_{w\in\overline{D}}h(w)$
+(4A4Eb).   Now there are $g_0\in X^*$, $\beta\in\Bbb R$ such that
+$h(y,\alpha)=g_0(y)+\beta\alpha$ for every $y\in X$ and $\alpha\in\Bbb R$
+(4A4Be).   So we have
+
+\Centerline{$g_0(x)+\beta\gamma=h(x,\gamma)
+<h(y,f(y))=g_0(y)+\beta f(y)$}
+
+\noindent for every $y\in C$.   In particular,
+$g_0(x)+\beta\gamma<g_0(x)+\beta f(x)$, so $\beta>0$.   Setting
+$g=-\bover1{\beta}g_0$,
+
+\Centerline{$f(y)\ge\bover1{\beta}g_0(x)+\gamma-\bover1{\beta}g(y)
+=g(y)+\gamma-g(x)$}
+
+\noindent for every $y\in C$, as required.
+}%end or proof of 461C
+
+\leader{461D}{Theorem} Let $X$ be a Hausdorff locally convex linear
+topological space,
+$C\subseteq X$ a convex set and $\mu$ a probability measure
+on a subset $A$ of $C$.   Suppose that $\mu$ has a barycenter $x^*$ in
+$X$ which belongs to $C$.
+Then $f(x^*)\le\underline{\int}_Af\,d\mu$ for every
+lower semi-continuous convex function $f:C\to\Bbb R$.
+
+\proof{ Take any $\gamma<f(x^*)$.   By 461C there
+is a $g\in X^*$ such that
+$g(y)+\gamma-g(x^*)\le f(y)$ for every $y\in C$.
+Integrating with respect to $\mu$,
+
+\Centerline{$\underline{\intop}_Afd\mu
+\ge\gamma-g(x^*)+\int_Ag\,d\mu=\gamma$.}
+
+\noindent As $\gamma$ is arbitrary, $f(x^*)\le\underline{\int}_Af\,d\mu$.
+}%end of proof of 461D
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Of course $\underline{\int}_Af\,d\mu$ might be infinite.
+}%end of comment
+
+\leader{461E}{Theorem} Let $X$ be a Hausdorff locally convex linear
+topological space, and $\mu$ a probability measure on $X$ such that (i)
+the domain of $\mu$ includes the cylindrical $\sigma$-algebra of $X$
+(ii) there is a compact convex set $K\subseteq X$ such that $\mu^*K=1$.
+Then $\mu$ has a barycenter in $X$, which belongs to $K$.
+
+\proof{ If $g\in X^*$, then $\gamma_g=\sup_{x\in K}|g(x)|$ is finite,
+and $\{x:|g(x)|\le\gamma_g\}$ is a measurable set including $K$, so must
+be conegligible, and $\phi(g)=\int g\,d\mu$ is defined and finite.   Now
+$\phi:X^*\to\Bbb R$ is a linear functional and
+$\phi(g)\le\sup_{x\in K}g(x)$ for every $g\in X^*$;  because $K$ is
+compact and convex, there is an $x_0\in K$ such that $\phi(g)=g(x_0)$
+for every $g\in X^*$ (4A4Ef), so that $x_0$ is the barycenter of $\mu$ in
+$X$.
+}%end of proof of 461E
+
+\leader{461F}{Theorem} Let $X$ be a complete locally convex
+linear topological space, and $A\subseteq X$ a bounded set.   Let $\mu$
+be a $\tau$-additive topological probability measure on $A$.   Then
+$\mu$ has a barycenter in $X$.
+
+\proof{{\bf (a)} If $g\in X^*$, then $g\restr A$ is continuous and
+bounded (3A5N(b-v)), therefore $\mu$-integrable.   For each
+neighbourhood $G$ of $0$ in $X$, set
+
+\Centerline{$F_G
+=\{y:y\in X,\,|g(y)-\int_Ag\,d\mu|\le 2\tau_G(g)$ for every
+$g\in X^*\}$}
+
+\noindent where $\tau_G(g)=\sup_{x\in G}g(x)$ for $g\in X^*$.   Then
+$F_G$ is non-empty.   \Prf\ Set
+$H=\interior(G\cap(-G))$, so that $H$ is an open neighbourhood of $0$.
+Because $A$ is bounded, there is an $m\ge 1$ such that
+$A\subseteq mH$.   The set $\{x+H:x\in A\}$ is an open cover of $A$, and
+$\mu$ is a $\tau$-additive topological measure, so there are
+$x_0,\ldots,x_n\in A$ such that
+$\mu(A\setminus\bigcup_{i\le n}(x_i+H))\le\Bover1m$.   Set
+
+\Centerline{$E_i=A\cap(x_i+H)\setminus\bigcup_{j<i}(x_j+H)$}
+
+\noindent for $i\le n$, and $y=\sum_{i=0}^n(\mu E_i)x_i$;  set
+$E=A\setminus\bigcup_{i\le n}(x_i+H)$.   Then, for any
+$g\in X^*$,
+
+$$\eqalignno{|g(y)-\int_Ag\,d\mu|
+&\le\sum_{i=0}^n|\mu E_ig(x_i)-\int_{E_i}g\,d\mu|+\int_E|g|d\mu\cr
+&\le\sum_{i=0}^n\int_{E_i}|g(x)-g(x_i)|\mu(dx)+m\tau_G(g)\mu E\cr
+\displaycause{because $E\subseteq mH$, so $g(x)\le m\tau_G(g)$ and
+$g(-x)\le m\tau_G(g)$ for every $x\in E$}
+&\le\sum_{i=0}^n\tau_G(g)\mu E_i+m\tau_G(g)\mu E\cr
+\displaycause{because if $i\le n$ and $x\in E_i$, then $x-x_i$ and
+$x_i-x$ belong to $G$, so $|g(x)-g(x_i)|=|g(x-x_i)|\le\tau_G(g)$}
+&\le 2\tau_G(g).\cr}$$
+
+\noindent As $g$ is arbitrary, $y\in F_G$ and $F_G\ne\emptyset$.\ \Qed
+
+\medskip
+
+{\bf (c)} Since $F_{G\cap H}\subseteq F_G\cap F_H$ for all
+neighbourhoods $G$ and $H$ of $0$, $\{F_G:G$ is a neighbourhood of $0\}$
+is a filter base and generates a filter $\Cal F$ on $X$.   Now $\Cal F$
+is Cauchy.   \Prf\ If $G$ is any neighbourhood of $0$, let
+$G_1\subseteq G$ be a closed convex neighbourhood of $0$, and set
+$H=\bover14G_1$.   \Quer\ If $y$, $y'\in F_H$ and $y-y'\notin G$, then
+there is a $g\in X^*$ such that $g(y-y')>\tau_{G_1}(g)$ (4A4Eb again).   
+But now
+
+$$\eqalign{\tau_H(g)
+&=\Bover14\tau_{G_1}(g)
+<\Bover14(|g(y)-\int_Ag\,d\mu|+|g(y')-\int_Ag\,d\mu|)\cr
+&\le\Bover14(2\tau_H(g)+2\tau_H(g)). \text{ \Bang}\cr}$$
+
+\noindent This means that $F_H-F_H\subseteq G$;  as $G$ is arbitrary,
+$\Cal F$ is Cauchy.\ \Qed
+
+\medskip
+
+{\bf (d)} Because $X$ is complete, $\Cal F$ has a limit $x^*$ say.
+Take any $g\in X^*$.   \Quer\ If $g(x^*)\ne\int_Ag\,d\mu$, set
+$G=\{x:|g(x)|\le\bover13|g(x^*)-\int_Ag\,d\mu|\}$.   Then $G$ is a
+neighbourhood of $0$ in $X$, and
+
+$$\eqalign{0
+&<|g(x^*)-\int_Ag\,d\mu|
+=\lim_{x\to\Cal F}|g(x)-\int_Ag\,d\mu|\cr
+&\le\sup_{x\in F_G}|g(x)-\int_Ag\,d\mu|
+\le 2\tau_G(g)
+\le\Bover23|g(x^*)-\int_Ag\,d\mu|.  \text{ \Bang}\cr}$$
+
+\noindent So $g(x^*)=\int_Ag\,d\mu$;  as $g$ is arbitrary, $x^*$ is the
+barycenter of $\mu$.
+}%end of proof of 461F
+
+\leader{461G}{Lemma} Let $X$ be a normed space, and $\mu$ a probability
+measure on $X$ such that every member of the dual $X^*$ of $X$ is
+integrable.   Then $g\mapsto\int g\,d\mu:X^*\to\Bbb R$ is a bounded linear
+functional on $X^*$.
+
+\proof{ Replacing $\mu$ by its completion if necessary, we may suppose
+that $\mu$ is complete, so that every member of $X^*$ is
+$\Sigma$-measurable, where $\Sigma$ is the domain of $\mu$.   (The point
+is that $\mu$ and its completion give rise to the same integrals, by
+212Fb.)    Set $\phi(g)=\int g\,d\mu$ for $g\in X^*$.
+For each $n\in\Bbb N$ let $E_n$ be a measurable envelope of
+$B_n=\{x:\|x\|\le n\}$;  replacing $E_n$ by $\bigcap_{i\ge n}E_i$ if
+necessary, we may suppose that $\sequencen{E_n}$ is non-decreasing.   If
+$n\in\Bbb N$ and $g\in X^*$ then $\{x:x\in E_n,\,|g(x)|>n\|g\|\}$ is a
+measurable subset of $E_n$ disjoint from $B_n$, so must be negligible,
+and $|\int_{E_n}g|\le n\|g\|$.   We therefore have an element $\phi_n$
+of $X^{**}$ defined by setting $\phi_n(g)=\int_{E_n}g$ for every $g\in
+X^*$.   But also $\phi(g)=\lim_{n\to\infty}\phi_n(g)$ for every $g$,
+because $\sequencen{E_n}$ is a non-decreasing sequence of measurable
+sets with union $X$.   By the Uniform Boundedness Theorem (3A5Ha),
+$\{\phi_n:n\in\Bbb N\}$ is bounded in $X^{**}$, and $\phi\in X^{**}$.
+}%end of proof of 461G
+
+\leader{461H}{Proposition} Let $X$ be a reflexive Banach space, and
+$\mu$ a probability measure on $X$ such that every member of $X^*$ is
+$\mu$-integrable.   Then $\mu$ has a barycenter in $X$.
+
+\proof{ By 461G, $g\mapsto\int g\,d\mu$ is a bounded linear functional on
+$X^*$;  but this means that it is represented by a member of $X$, which
+is the barycenter of $\mu$.
+}%end of proof of 461H
+
+\leader{461I}{Theorem} Let $X$ be a Hausdorff locally convex linear
+topological space, and $K\subseteq X$ a compact set.   Then the closed
+convex hull of $K$ in $X$ is just the set of barycenters of Radon
+probability measures on $K$.
+
+\proof{{\bf (a)} If $\mu$ is a Radon probability measure on $K$ with
+barycenter $x^*$, then
+
+\Centerline{$g(x^*)=\int_Kg(x)\mu(dx)
+\le\sup_{x\in K}g(x)\le\sup_{x\in\overline{\Gamma(K)}}g(x)$}
+
+\noindent for every $g\in X^*$;
+because $\overline{\Gamma(K)}$ is closed and convex, it must
+contain $x^*$ (4A4Eb once more).
+
+\medskip
+
+{\bf (b)} Now suppose that $x^*\in\overline{\Gamma(K)}$.   Let
+$W\subseteq C(X)$ be the set of functionals of the form
+$g+\alpha\chi X$, where $g\in X^*$ and $\alpha\in\Bbb R$.   Set
+$U=\{g\restr K:g\in W\}$, so that $U$ is a linear subspace of $C(K)$
+containing $\chi K$.
+
+If $g_1$, $g_2\in W$ and $g_1\restr K=g_2\restr K$, then
+$\{x:g_1(x)=g_2(x)\}$ is a closed convex set including $K$, so contains
+$x^*$, and $g_1(x^*)=g_2(x^*)$;  accordingly we have a functional
+$\phi:U\to\Bbb R$ defined by setting $\phi(g\restr K)=g(x^*)$ for every
+$g\in W$.   Of course $\phi$ is linear;  moreover,
+$\phi(f)\le\sup_{x\in K}f(x)$ for every $f\in U$, by 4A4Eb
+yet again.   Applying this to $\pm f$, we see
+that $|\phi(f)|\le\|f\|_{\infty}$ for every $f\in U$.   We therefore
+have an extension of $\phi$ to a continuous linear functional $\psi$ on
+$C(K)$ such that $\|\psi\|\le 1$, by the Hahn-Banach theorem (3A5Ab).   Now
+
+\Centerline{$\psi(\chi K)=\phi(\chi K)=\chi X(x^*)=1$;}
+
+\noindent so if $0\le f\le\chi K$ then
+
+\Centerline{$|1-\psi(f)|
+=|\psi(\chi K-f)|\le \|\chi K-f\|_{\infty}\le 1$,}
+
+\noindent and $\psi(f)\ge 0$.   It follows that $\psi(f)\ge 0$ for every
+$f\in C(K)^+$.   But this means that there is a Radon probability
+measure $\mu$ on
+$K$ such that $\psi(f)=\int f\,d\mu$ for every $f\in C(K)$ (436J/436K).
+As $\mu K=\psi(\chi K)=1$, $\mu$ is a probability measure;  and for any
+$g\in X^*$
+
+\Centerline{$\int_Kg\,d\mu=\psi(g\restr K)=\phi(g\restr K)=g(x^*)$,}
+
+\noindent so $x^*$ is the barycenter of $\mu$, as required.
+}%end of proof of 461I
+
+\leader{461J}{Corollary:  \Krein's theorem} Let $X$ be a complete
+Hausdorff locally convex linear topological space, and $K\subseteq X$ a
+weakly compact set.   Then the closed convex hull $\overline{\Gamma(K)}$
+of $K$ is weakly compact.
+
+\proof{ Give $K$ the weak topology induced by $\frak T_s(X,X^*)$.   Let
+$P$ be the set of Radon probability measures on $K$,
+so that $P$ is compact in its narrow topology (437R(f-ii)).
+By 461F, every $\mu\in P$ has a barycenter $b(\mu)$ in
+$K$.   If $g\in X^*$, $g(b(\mu))=\int_Kg\,d\mu$, while $g\restr K$ is
+continuous, so $\mu\mapsto\int_Kg\,d\mu$ is continuous, by 437Kc.
+Accordingly $b:P\to X$ is continuous for the narrow topology on $P$
+and the weak topology on $X$, and $b[P]$ is weakly compact.
+But $b[P]$ is the weakly closed convex hull of $K$, by 461I applied to
+the weak topology on $X$.   By 4A4Ed, $\Gamma(K)$ has the same closure
+for the original topology of $X$ as it has for the weak topology, and
+$\overline{\Gamma(K)}=b[P]$ is weakly compact.
+}%end of proof of 461J
+
+\leader{461K}{Lemma} Let $X$ be a Hausdorff locally convex linear
+topological space, $K$ a compact convex subset of $X$, and $P$ the set of
+Radon probability measures on $K$.   Define a relation $\preccurlyeq$ on
+$P$ by saying that $\mu\preccurlyeq\nu$ if
+$\int fd\mu\le\int fd\nu$ for every continuous convex function
+$f:K\to\Bbb R$.
+
+(a) $\preccurlyeq$ is a partial order on $P$.
+
+(b) If $\mu\preccurlyeq\nu$ then
+$\int fd\mu\le\int fd\nu$ for every lower semi-continuous convex function
+$f:K\to\Bbb R$.
+
+(c) If $\mu\preccurlyeq\nu$ then $\mu$ and $\nu$ have the same barycenter.
+
+(d) If we give $P$ its narrow topology, then $\preccurlyeq$ is closed in
+$P\times P$.
+
+(e) For every $\mu\in P$ there is a $\preccurlyeq$-maximal $\nu\in P$
+such that $\mu\preccurlyeq\nu$.
+
+\proof{{\bf (a)} Write $\Psi$ for the set of continuous convex functions
+from $K$ to $\Bbb R$.   Note that if $f$, $g\in\Psi$ and $\alpha\ge 0$ then
+$\alpha f$, $f+g$ and $f\vee g$ all belong to $\Psi$.   Consequently
+$\Psi-\Psi$ is a Riesz subspace of $C(K)$.   \Prf\ $\Psi-\Psi$ is a linear
+subspace because $\Psi$ is closed under addition and multiplication by
+positive scalars.   If $f$, $g\in\Psi$ then
+
+\Centerline{$|f-g|=(f-g)\vee(g-f)=2(f\vee g)-(f+g)\in\Psi$;}
+
+\noindent by 352Ic, $\Psi-\Psi$ is a Riesz subspace.\ \Qed
+
+It follows that $\Psi-\Psi$ is $\|\,\|_{\infty}$-dense in $C(K)$.   \Prf\
+Constant functions belong to $\Psi$, and if $x$, $y\in K$ are distinct
+there is an $f\in X^*$ such that $f(x)\ne f(y)$, in which case
+$f\restr K$ belongs to $\Psi$ and separates $y$ from $x$.   By the
+Stone-Weierstrass theorem (281A), $\Psi-\Psi$ is dense.\ \Qed
+
+The definition of $\preccurlyeq$ makes it plain that
+it is reflexive and transitive.   But it is also antisymmetric.
+\Prf\ If $\mu\preccurlyeq\nu$ and $\nu\preccurlyeq\mu$, then
+$\int fd\mu=\int fd\nu$ for every $f\in\Psi$, therefore for every
+$f\in\Psi-\Psi$, therefore for every $f\in C(K)$, and $\mu=\nu$
+by 416E(b-v).\ \Qed
+
+So $\preccurlyeq$ is a partial order.
+
+\medskip
+
+{\bf (b)(i)}
+Now suppose that $f:K\to\Bbb R$ is a lower semi-continuous convex
+function, and $x\in K$.
+Then $f(x)=\sup\{g(x):g\in\Psi$, $g\le f\}$.   \Prf\ If $\gamma<f(x)$ there
+is a $g\in X^*$ such that
+$g(y)+\gamma-g(x)\le f(y)$ for every $y\in K$, by 461C.   Now $g\restr K$
+belongs to $\Psi$, $g\restr K\le f$ and $(g\restr K)(x)=\gamma$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} It follows that if $f:K\to\Bbb R$ is
+lower semi-continuous and
+convex, $\int fd\mu=\sup\{\int g\,d\mu:g\in\Psi$, $g\le f\}$ for every
+$\mu\in P$.   \Prf\ Because $\Psi$ is closed under $\vee$,
+$A=\{g:g\in\Psi$, $g\le f\}$ is upwards-directed.   Because $\mu$ is
+$\tau$-additive and $f=\sup A$, $\int fd\mu=\sup_{g\in A}\int g\,d\mu$ by
+414Ab.\ \Qed
+
+So if $\mu$, $\nu\in P$ and $\mu\preccurlyeq\nu$, then
+
+\Centerline{$\int fd\mu
+=\sup_{g\in\Psi,g\le f}\int g\,d\mu
+\le\sup_{g\in\Psi,g\le f}\int g\,d\nu
+=\int fd\nu$;}
+
+\noindent as $f$ is arbitrary, (b) is true.
+
+\medskip
+
+{\bf (c)} By 461E, applied to the Radon probability measure on $X$
+extending $\mu$, $\mu$ has a barycenter $x\in K$.   If $g\in X^*$ then
+$g\restr K$ belongs to $\Psi$, so $\int_Kg\,d\mu\le\int_Kg\,d\nu$;  but the
+same applies to $-g$, so
+
+\Centerline{$g(x)=\int_Kg\,d\mu=\int_Kg\,d\nu$.}
+
+\noindent As $g$ is arbitrary, $x$ is also the barycenter of $\nu$.
+
+\medskip
+
+{\bf (d)} As noted in 437Kc, the narrow topology on $P$ corresponds to the
+weak* topology on $C(K)^*$.   So all the functionals
+$\mu\mapsto\int fd\mu$, for $f\in\Psi$, are continuous;  it follows at once
+that $\preccurlyeq$ is a closed subset of $P\times P$.
+
+\medskip
+
+{\bf (e)} Any non-empty
+upwards-directed $Q\subseteq P$ has an upper bound in $P$.   \Prf\ For
+$\nu\in Q$ set $V_{\nu}=\{\lambda:\nu\preccurlyeq\lambda\}$.   Then every
+$V_{\nu}$ is closed, and because $Q$ is upwards-directed the family
+$\{V_{\nu}:\nu\in Q\}$ has the finite intersection property.   Because $P$
+is compact (437R(f-ii) again), $\bigcap_{\nu\in Q}V_{\nu}$ is non-empty;
+now any member of the
+intersection is an upper bound of $Q$.\ \Qed
+
+By Zorn's lemma, every member of $P$ is dominated by a maximal element of
+$P$.
+}%end of proof of 461K
+
+\leader{461L}{Lemma} Let $X$ be a Hausdorff locally convex linear
+topological space, $K$ a compact convex subset of $X$, and $P$ the set of
+Radon probability measures on $K$.   Suppose that
+$\mu\in P$ is maximal for the partial order $\preccurlyeq$ of 461K.
+
+(a) $\mu(\bover12(M_1+M_2))=0$ whenever $M_1$, $M_2$ are disjoint closed
+convex subsets of $K$.
+
+(b) $\mu F=0$ whenever $F\subseteq K$ is a Baire set (for the
+subspace topology of $K$) not containing any extreme point of $K$.
+
+\proof{{\bf (a)} Set $M=\{\bover12(x+y):x\in M_1$, $y\in M_2\}$.
+Set $q(x,y)=\bover12(x+y)$ for $x\in M_1$, $y\in M_2$, so that
+$q:M_1\times M_2\to M$ is continuous.   Let $\mu_M$ be the
+subspace measure on
+$M$ induced by $\mu$, so that $\mu_M$ is a Radon measure on
+$M$ (416Rb).   Let $\lambda$ be a Radon measure on $M_1\times M_2$ such
+that $\mu_M=\lambda q^{-1}$ (418L), and define
+$\psi:C(K)\to\Bbb R$ by writing
+
+\Centerline{$\psi(f)
+=\int_{K\setminus M}f\,d\mu
+  +\int_{M_1\times M_2}\bover12(f(x)+f(y))\lambda(d(x,y))$.}
+
+\noindent Then $\psi$ is linear, $\psi(f)\ge 0$ whenever $f\in C(K)^+$,
+and
+
+\Centerline{$\psi(\chi K)
+=\mu(K\setminus M)+\lambda(M_1\times M_2)
+=\mu(K\setminus M)+\mu_M(M)=1$.}
+
+Let $\nu\in P$ be such that $\int fd\nu=\psi(f)$ for every $f\in C(K)$
+(436J/436K again).   If $f:K\to\Bbb R$ is continuous and convex, then
+
+$$\eqalignno{\int fd\nu
+=\psi(f)
+&=\int_{K\setminus M}f\,d\mu
+  +\int_{M_1\times M_2}\Bover12(f(x)+f(y))\lambda(d(x,y))\cr
+&\ge\int_{K\setminus M}f\,d\mu
+  +\int_{M_1\times M_2}f(\Bover12(x+y))\lambda(d(x,y))\cr
+&=\int_{K\setminus M}f\,d\mu
+  +\int_{M_1\times M_2}fq\,d\lambda
+=\int_{K\setminus M}f\,d\mu
+  +\int_Mf\,d\mu_M\cr
+\noalign{\noindent (235G)}
+&=\int_Kf\times\chi(K\setminus M)d\mu
+  +\int_Kf\times\chi M\,d\mu\cr
+\noalign{\noindent (131Fa)}
+&=\int_Kf\,d\mu.\cr}$$
+
+\noindent So $\mu\preccurlyeq\nu$;  as we are assuming that $\mu$ is
+maximal, $\mu=\nu$.
+
+Because $M_1$ and $M_2$ are disjoint compact convex sets in
+the Hausdorff locally convex space $X$, there are a $g\in X^*$ and an
+$\alpha\in\Bbb R$ such that $g(x)<\alpha<g(y)$ whenever $x\in M_1$ and
+$y\in M_2$ (4A4Ee).   Set
+$f(x)=|g(x)-\alpha|$ for $x\in K$;  then $f$ is a continuous convex
+function.   If $x\in M_1$ and $y\in M_2$, then
+
+$$\eqalign{f(\Bover12(x+y))
+&=|g(\Bover12(x+y))-\alpha|
+=\Bover12|(g(x)-\alpha)+(g(y)-\alpha)|\cr
+&<\Bover12(|g(x)-\alpha|+|g(y)-\alpha|)
+=\Bover12(f(x)+f(y)).\cr}$$
+
+\noindent Looking at the formulae above for $\psi(f)$, we see that we
+have
+
+\Centerline{$\int f\,d\nu
+=\int_{K\setminus M}f\,d\mu
+  +\int_{M_1\times M_2}\Bover12(f(x)+f(y))\lambda(d(x,y))$,}
+
+\Centerline{$\int f\,d\mu
+=\int_{K\setminus M}f\,d\mu
+  +\int_{M_1\times M_2}f(\Bover12(x+y))\lambda(d(x,y))$.}
+
+\noindent Since these are equal, and $f(\bover12(x+y))<\bover12(f(x)+f(y))$
+for all $x\in M_1$ and $y\in M_2$, we must have
+$\mu M=\lambda(M_1\times M_2)=0$, as required.
+
+\medskip
+
+{\bf (b)(i)} Consider first the case in which $F$ is a zero set for the
+subspace topology.   Since $F\subseteq K$ is a closed
+G$_{\delta}$ set in $K$, $K\setminus F$ is expressible as a union
+$\bigcup_{n\in\Bbb N}F_n$ of compact sets.   For any $n\in\Bbb N$,
+$z\in F$ and $y\in F_n$, there is a $g\in X^*$ such that $g(z)\ne g(y)$;
+since $F$ and $F_n$ are compact, there is a finite set
+$\Phi_n\subseteq X^*$ such that whenever $z\in F$ and $y\in F_n$
+there is a $g\in\Phi_n$ such that $g(z)\ne g(y)$.   Set
+$\Phi=\bigcup_{n\in\Bbb N}\Phi_n\cup\{0\}$;  then
+$\Phi$ is countable;  let $\sequencen{g_n}$ be a sequence running over
+$\Phi$, and define $T:X\to\BbbR^{\Bbb N}$ by setting $(Tx)(n)=g_n(x)$
+for $n\in\Bbb N$, $x\in X$.   Then $T[F]\cap T[F_n]=\emptyset$ for every
+$n$, so $F=K\cap T^{-1}[T[F]]$.
+
+Now $T[F]$ is a compact subset of the metrizable
+compact convex set $T[K]$,
+and does not contain any extreme point of $T[K]$, by 4A4Gc.
+
+Let $\Cal U$ be the set of convex open subsets of
+$\BbbR^{\Bbb N}$.   Because the topology of $\BbbR^{\Bbb N}$ is
+locally convex, $\Cal U$ is a base
+for the topology of $\BbbR^{\Bbb N}$;  because it is separable and
+metrizable, $\Cal U$ includes a countable base $\Cal U_0$ (4A2P(a-iii)),
+and $\Cal V=\{T[K]\cap U:U\in\Cal U_0\}$ is a countable base
+for the topology of $T[K]$ (4A2B(a-vi)).   Set
+$\Cal M=\{K\cap T^{-1}[\overline{V}]:V\in\Cal V\}$, so that
+$\Cal M$ is a countable family of closed convex subsets of $K$.
+
+If $z\in F$, then there are distinct $u$, $v\in T[K]$ such that
+$Tz=\bover12(u+v)$.   Now there must be $V$, $V'\in\Cal V$, with disjoint
+closures, such that $u\in V$ and $v\in V'$, so that
+$z\in\bover12(M+M')$, where $M=K\cap T^{-1}[\overline{V}]$ and
+$M'=K\cap T^{-1}[\overline{V'}]$ are disjoint members of $\Cal M$.   Thus
+
+\Centerline{$F\subseteq\bigcup\{\bover12(M+M'):
+M$, $M'\in\Cal M$, $M\cap M'=\emptyset\}$.}
+
+\noindent But (a) tells us that $\bover12(M+M')$ is
+$\mu$-negligible whenever $M$, $M'\in\Cal M$ are disjoint.
+As $\Cal M$ is countable, $\mu F=0$, as required.
+
+\medskip
+
+\quad{\bf (ii)} Now consider the Baire measure $\mu\restr\CalBa(K)$, where
+$\CalBa(K)$ is the Baire $\sigma$-algebra of $K$.   This is inner regular
+with respect to the zero sets (412D).   If $F\in\CalBa(K)$ contains no
+extremal point of $K$, then (i) tells us that $\mu Z=0$ for every zero set
+$Z\subseteq F$, so $\mu F$ must also be $0$.
+}%end of proof of 461L
+
+\leader{461M}{Theorem} Let $X$ be a Hausdorff locally convex linear
+topological space, $K$ a compact convex subset of $X$ and $E$ the set of
+extreme points of $K$.   Let $x\in X$.   Then there is a probability
+measure $\mu$ on $E$ with barycenter $x$.
+If $K$ is metrizable we can take $\mu$ to be a Radon measure.
+
+\proof{ Let $P$ be the set of Radon probability measures on $K$
+and $\preccurlyeq$ the partial order on $P$ described in 461K.
+By 461Ke, there is a maximal element $\nu$ of $P$ such that
+$\delta_x\preccurlyeq\nu_0$, where $\delta_x\in P$ is the Dirac measure on
+$X$ concentrated at $x$.   By 461Kc, $x$ is the barycenter of $\nu$.
+
+Let $\lambda=\nu\restr\CalBa(K)$ be the Baire measure
+associated with $\nu$.   By 461Lb, $\lambda^*E=1$.   So the subspace
+measure $\lambda_E$ on $E$ is a probability measure on $E$.   Let $\mu$ be
+the completion of $\lambda_E$.
+
+If $g\in X^*$ then
+$g\restr K$ is continuous, therefore $\CalBa(K)$-measurable, so
+
+$$\eqalignno{g(x)
+&=\int_Kg\,d\nu
+=\int_Kg\,d\lambda
+=\int_Eg\,d\lambda_E\cr
+\displaycause{214F}
+&=\int_Eg\,d\mu\cr}$$
+
+\noindent (212Fb).   So $x$ is the barycenter of $\mu$.
+
+Now suppose that $K$ is metrizable.   In this case $E$ is a
+G$_{\delta}$ set in $K$.   \Prf\ Let $\rho$ be a metric on $K$ inducing its
+topology.   Then
+
+\Centerline{$K\setminus E=\bigcup_{n\ge 1}\{tx+(1-t)y:x$, $y\in K$,
+$t\in[2^{-n},1-2^{-n}]$, $\rho(x,y)\ge 2^{-n}\}$}
+
+\noindent is K$_{\sigma}$, so its complement in $K$ is a G$_{\delta}$ set
+in $K$.\ \QeD\   So $E$ is analytic (423Eb)
+and $\mu$ is a Radon measure (433Cb).
+}%end of proof of 461M
+
+\leader{461N}{Lemma} Let $X$ be a Hausdorff locally convex linear
+topological space, $K$ a compact convex subset of $X$, and $P$ the set of
+Radon probability measures on $K$.   Let $E$ be
+the set of extreme points of $K$ and suppose that $\mu\in P$ and
+$\mu^*E=1$.   Then $\mu$ is maximal in $P$ for
+the partial order $\preccurlyeq$ of 461K.
+
+\proof{{\bf (a)} For $\mu\in P$ write $b(\mu)$ for the barycentre of $\mu$.
+Then $b:P\to K$ is continuous for the narrow topology of $P$ and the weak
+topology of $X$, as in 461J.    For $f\in C(K)$ define $\bar f:K\to\Bbb R$
+by setting $\bar f(x)=\sup\{\int fd\mu:\mu\in P$, $b(\mu)=x\}$ for
+$x\in K$.
+
+\medskip
+
+\quad{\bf (i)} Taking $\delta_x$ to be the Dirac measure on $X$
+concentrated at $x$, we see that
+
+\Centerline{$f(x)=\int fd\delta_x\le\bar f(x)$}
+
+\noindent for any $x\in K$.
+
+\medskip
+
+\quad{\bf (ii)} For any $x\in K$ there is a $\mu\in P$ such that $b(\mu)=x$
+and $\int fd\mu=\bar f(x)$.   \Prf\ The set $\{\mu:\mu\in P$, $b(\mu)=x\}$
+is compact, so its continuous image $\{\int fd\mu:b(\mu)=x\}$ is compact
+and contains its supremum.\ \Qed
+
+$\bar f$ is upper semi-continuous.   \Prf\ For any
+$\alpha\in\Bbb R$, the set
+
+\Centerline{$\{(\mu,x):\mu\in P$, $x\in K$, $b(\mu)=x$,
+$\int fd\mu\ge\alpha\}$}
+
+\noindent is
+compact, so its projection onto the second coordinate is closed;  but this
+projection is just $\{x:\bar f(x)\ge\alpha\}$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} $\bar f:K\to\Bbb R$ is concave.   \Prf\ Suppose that
+$x$, $y\in K$ and $t\in[0,1]$.   Take $\mu$, $\nu\in P$ such that
+$b(\mu)=x$, $\bar f(x)=\int fd\mu$, $b(\nu)=y$ and
+$\bar f(y)=\int fd\nu$.   Set
+$\lambda=t\mu+(1-t)\nu$.   Then
+
+\Centerline{$\int_Kg\,d\lambda=t\int_Kg\,d\mu+(1-t)\int_Kg\,d\nu
+=tg(x)+(1-t)g(y)=g(tx+(1-t)y)$}
+
+\noindent for any $g\in X^*$, so $b(\lambda)=tx+(1-t)y$ and
+
+\Centerline{$\bar f(tx+(1-t)y)
+\ge\int fd\lambda
+=t\int fd\mu+(1-t)\int fd\nu
+=t\bar f(x)+(1-t)\bar f(y)$.}
+
+\noindent As $x$, $y$ and $t$ are arbitrary, $\bar f$ is concave.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} If $x\in K$ and $\bar f(x)>f(x)$ then $x\notin E$.
+\Prf\ There
+is a $\mu\in P$ such that $b(\mu)=x$ and $\int fd\mu>f(x)$.   We cannot have
+$\mu\{x\}=1$ because $\int fd\mu\ne f(x)$, so there is a point $y$ of the
+support of $\mu$ such that $y\ne x$.   Let $g\in X^*$ be such that
+$g(y)>g(x)$ and set $G=\{z:z\in K$, $g(z)>g(x)\}$, $t=\mu G$.
+Then $t>0$;  also
+$\int_Gg\,d\mu>tg(x)=t\int g\,d\mu$, so $t\ne 1$.
+Define $\nu_1$, $\nu_2\in P$
+by setting $\nu_1H=\bover1t\mu(G\cap H)$ whenever $H\subseteq K$ and
+$\mu$ measures $G\cap H$, $\nu_2H=\bover1{1-t}\mu(H\setminus G)$
+whenever $H\subseteq K$ and $\mu$ measures $H\setminus G$.   Let $x_1$,
+$x_2$ be the barycenters of $\nu_1$, $\nu_2$ respectively.   For any
+$h\in X^*$,
+
+$$\eqalign{h(tx_1+(1-t)x_2)
+&=th(x_1)+(1-t)h(x_2)
+=t\int_Kh\,d\nu_1+(1-t)\int_Kh\,d\nu_2\cr
+&=\int_Gh\,d\mu+\int_{K\setminus G}h\,d\mu
+=h(x).\cr}$$
+
+\noindent So $x=tx_1+(1-t)x_2$.    But both $x_1$ and $x_2$ belong to $K$
+and $g(x_1)>g(x)$, so $x_1\ne x$, while $0<t<1$, so $x$ is not an extreme
+point of $K$.\ \Qed
+
+
+\medskip
+
+{\bf (b)} Now take $\mu\in P$ such that $\mu^*E=1$, and $\nu\in P$ such that
+$\mu\preccurlyeq\nu$.   For any convex
+$f\in C(K)$, $f-\bar f$ is the sum of lower semi-continuous convex functions
+so is lower semi-continuous, and
+$\{x:f(x)=\bar f(x)\}=\{x:f(x)-\bar f(x)\ge 0\}$ is a G$_{\delta}$ set.
+By (a-iv), it includes $E$, so $\int fd\mu=\int\bar fd\mu$.
+In addition, $\int fd\mu\le\int fd\nu$ and
+$\int\bar fd\nu\le\int\bar fd\mu$, by 461Kb applied to $-\bar f$.
+But since $f\le\bar f$, we have
+
+\Centerline{$\int fd\nu\le\int\bar fd\nu\le\int\bar fd\mu=\int fd\mu$;}
+
+\noindent as $f$ is arbitrary, $\nu\preccurlyeq\mu$;
+as $\nu$ is arbitrary, $\mu$ is maximal.
+}%end of proof of 461N
+
+\leader{461O}{Lemma} Suppose that $X$ is a Riesz space with a Hausdorff
+locally convex linear space topology, and $K\subseteq X$ a
+compact convex set such that every non-zero member of the positive cone
+$X^+$ is uniquely expressible as $\alpha x$ for some $x\in K$ and
+$\alpha\ge 0$.
+Let $P$ be the set of Radon probability measures on $K$ and $\preccurlyeq$
+the partial order described in 461K.   If $\mu$, $\nu\in P$ have the same
+barycenter then they have a common upper bound in $P$.
+
+\proof{{\bf (a)} If $X=\{0\}$ then $K$ is either $\{0\}$ or empty
+and the result is immediate, so
+henceforth suppose that $X$ is non-trivial.   Because each non-zero member
+of $X^+$ is uniquely expressible as a multiple of a member of $K$, no
+distinct members of $K\setminus\{0\}$ can be multiples of each other;  as
+$K$ is convex, $0\notin K$.
+If $z_0,\ldots,z_r\in K$,
+$\gamma_0,\ldots,\gamma_r\ge 0$ and $z=\sum_{k=0}^r\gamma_kz_k$ belongs to
+$K$, then
+$\sum_{k=0}^r\gamma_k=1$.   \Prf\ Setting $\gamma=\sum_{k=0}^r\gamma_k$,
+$\gamma\ne 0$ and
+$\Bover1{\gamma}z=\sum_{k=0}^r\Bover{\gamma_r}{\gamma}z_k$ belongs to $K$;
+accordingly $\Bover1{\gamma}z=z$ and $\gamma=1$.\ \Qed
+
+\medskip
+
+{\bf (b)} Take any $x\in K$, and let $P_x$ be the set of elements of $P$
+with barycenter $x$.
+Write $Q_x$ for the set of members of $P_x$ with finite support.
+Then $Q_x$ is dense in $P_x$.   \Prf\ Suppose that
+$\mu\in P_x$, $f_0,\ldots,f_n\in C(K)$ and $\epsilon>0$.   Then there is a
+finite cover of $K$ by relatively open convex sets on each of which every
+$f_i$ has
+oscillation at most $\epsilon$;  so we have a partition $\Cal H$ of $K$ into
+finitely many non-empty Borel sets $H$ such that every $f_i$ has
+oscillation at most $\epsilon$ on the convex hull $\Gamma(H)$.
+If $H\in\Cal H$ and $\mu H>0$, let $x_H$ be the barycentre of the measure
+$\mu_H\in P$ where $\mu_HF=\Bover1{\mu H}\mu(F\cap H)$ whenever
+$F\subseteq K$
+and $\mu$ measures $F\cap H$.   For other $H\in\Cal H$, take any point $x_H$
+of $H$.   In all cases, $x_H\in\overline{\Gamma(H)}$ so
+$|f_i(y)-f_i(x_H)|\le\epsilon$ whenever $i\le n$ and $y\in H$.
+
+Consider $\nu=\sum_{H\in\Cal H}\mu H\cdot\delta_{x_H}$, where
+$\delta_{x_H}\in P$ is the Dirac measure on $K$ concentrated at $x_H$.
+If $g\in X^*$ then
+
+\Centerline{$\int_Kg\,d\nu
+=\sum_{H\in\Cal H}\mu H\cdot g(x_H)
+=\sum_{H\in\Cal H}\int_Hg\,d\mu
+=\int_Kg\,d\mu
+=g(x)$;}
+
+\noindent as $g$ is arbitrary, $\nu\in P_x$ and $\nu\in Q_x$.   Next, for
+$i\le n$,
+
+$$\eqalign{|\int f_id\nu-\int f_id\mu|
+&\le\sum_{H\in\Cal H}|f_i(x_H)\mu H-\int_Hf_id\mu|\cr
+&\le\sum_{H\in\Cal H}\int_H|f_i(x_H)-f_i(y)|\mu(dy)
+\le\sum_{H\in\Cal H}\epsilon\mu H
+=\epsilon.\cr}$$
+
+\noindent As $f_0,\ldots,f_n$ and $\epsilon$ are arbitrary, $Q_x$ is dense
+in $P_x$.\ \Qed
+
+\medskip
+
+{\bf (c)} Suppose that $x\in K$ and $\mu$, $\nu\in Q_x$.
+Then they have a common upper bound in $P$.   \Prf\
+Express $\mu$, $\nu$ as $\sum_{i=0}^m\alpha_i\delta_{x_i}$,
+$\sum_{j=0}^n\beta_j\delta_{y_j}$ respectively,
+where all the $\alpha_i$ and
+$\beta_j$ are strictly positive, all the $x_i$ and $y_j$ belong to $K$, and
+$\sum_{i=0}^m\alpha_i=\sum_{j=0}^n\beta_j=1$.   If $g\in X^*$ then
+
+\Centerline{$g(x)
+=\int_Kg\,d\mu=\sum_{i=0}^m\alpha_ig(x_i)=\sum_{j=0}^n\beta_jg(y_j)$,}
+
+\noindent so $x=\sum_{i=0}^m\alpha_ix_i=\sum_{j=0}^n\beta_jy_j$.   By the
+decomposition theorem 352Fd there is a family
+$\langle w_{ij}\rangle_{i\le m,j\le n}$ in $X^+$ such that
+$\alpha_ix_i=\sum_{j=0}^nw_{ij}$ for every $i\le m$ and
+$\beta_jy_j=\sum_{i=0}^nw_{ij}$ for every $j\le n$.   Each $w_{ij}$ is
+expressible as $\gamma_{ij}z_{ij}$ where $z_{ij}\in K$ and
+$\gamma_{ij}\ge 0$.   Now
+
+\Centerline{$\sum_{j=0}^n\Bover{\gamma_{ij}}{\alpha_i}z_{ij}=x_i\in K$;}
+
+\noindent by (a), $\sum_{j=0}^n\gamma_{ij}=\alpha_i$, for every $i\le m$.
+Similarly, $\sum_{i=0}^m\gamma_{ij}=\beta_j$ for $j\le n$.   Of course this
+means that $\sum_{i=0}^m\sum_{j=0}^n\gamma_{ij}=1$.
+
+Set $\lambda=\sum_{i=0}^m\sum_{j=0}^n\gamma_{ij}\delta_{z_{ij}}\in P$.
+If $f:K\to\Bbb R$ is continuous and convex,
+
+$$\eqalign{\int fd\mu
+&=\sum_{i=0}^m\alpha_if(x_i)
+=\sum_{i=0}^m\alpha_if(\sum_{j=0}^n\bover{\gamma_{ij}}{\alpha_i}z_{ij})\cr
+&\le\sum_{i=0}^m\alpha_i\sum_{j=0}^n\Bover{\gamma_{ij}}{\alpha_i}f(z_{ij})
+=\sum_{i=0}^m\sum_{j=0}^n\gamma_{ij}f(z_{ij})
+=\int fd\lambda.\cr}$$
+
+\noindent So $\mu\preccurlyeq\lambda$.   Similarly,
+$\nu\preccurlyeq\lambda$
+and we have the required upper bound for $\{\mu,\nu\}$.\ \Qed
+
+\medskip
+
+{\bf (d)} Now consider
+
+\Centerline{$\{(\mu,\nu,\lambda):\mu$, $\nu$, $\lambda\in P$,
+$\mu\preccurlyeq\lambda$, $\nu\preccurlyeq\lambda\}$.}
+
+\noindent This is a closed set in the compact set $P\times P\times P$
+(461Kd), so its projection
+
+\Centerline{$R=\{(\mu,\nu):\mu$, $\nu$ have a common upper bound in $P\}$}
+
+\noindent is a closed set in $P\times P$.
+
+If $x\in K$ then (c) tells us that $R$
+includes $Q_x\times Q_x$, so (b) tells us that $R$ includes
+$P_x\times P_x$.
+Thus any two members of $P_x$ have a common upper bound in $P$, as
+required.
+}%end of proof of 461O
+
+\leader{461P}{Theorem} Suppose that $X$ is a Riesz space with a Hausdorff
+locally convex linear space topology, and $K\subseteq X$ a
+metrizable compact convex set such that every non-zero member of the
+positive cone
+$X^+$ is uniquely expressible as $\alpha x$ for some $x\in K$ and
+$\alpha\ge 0$.   Let $E$ be the set of extreme points of $K$, and $x$ any
+point of $K$.   Then there is a unique Radon
+probability measure $\mu$ on $E$ such that $x$ is the barycenter of $\mu$.
+
+\proof{ By 461M, there is a Radon probability measure
+$\mu$ on $E$ such that $x$ is the barycenter of $\mu$.
+Suppose that $\mu_1$ is another measure with the same properties.   Let
+$\nu$, $\nu_1$ be the Radon probability measures on $K$ extending $\mu$,
+$\mu_1$ respectively.   Then $\nu$ and $\nu_1$ both have barycenter
+$x$ and make $E$ conegligible.
+By 461N, they are both maximal in $P$.   By 461O, they must have a
+common upper bound in $P$, so they are equal.   But this means that
+$\mu=\mu_1$.
+}%end of proof of 461P
+
+\leader{461Q}{}\cmmnt{ It is a nearly universal rule that when we
+encounter a compact convex set we should try to identify its extreme
+points.   I look now at some sets which arose naturally in \S437.
+
+\medskip
+
+\noindent}{\bf Proposition (a)}\dvAnew{2011}
+Let $\frak A$ be a Dedekind
+$\sigma$-complete Boolean algebra and $\pi:\frak A\to\frak A$ a
+sequentially order-continuous Boolean
+homomorphism.   Let $M_{\sigma}$ be the $L$-space of countably additive
+real-valued functionals on $\frak A$, and $Q$ the set
+
+\Centerline{$\{\nu:\nu\in M_{\sigma}$, $\nu\ge 0$, $\nu 1=1$,
+$\nu\pi=\nu\}$.}
+
+\noindent If $\nu\in Q$, then the following are equiveridical:
+(i) $\nu$ is an extreme point of $Q$;  (ii) $\nu a\in\{0,1\}$
+whenever $\pi a=a$;  (iii)
+$\nu a\in\{0,1\}$ whenever $a\in\frak A$ is such that
+$\nu(a\Bsymmdiff\pi a)=0$.
+
+(b) Let $X$ be a set, $\Sigma$ a
+$\sigma$-algebra of subsets of $X$, and $\phi:X\to X$ a
+$(\Sigma,\Sigma)$-measurable function.   Let $M_{\sigma}$ be the
+$L$-space of countably additive real-valued functionals on $\Sigma$, and
+$Q\subseteq M_{\sigma}$ the set of probability measures with domain
+$\Sigma$ for which $\phi$ is \imp.   If $\mu\in Q$, then $\mu$ is an
+extreme point of $Q$ iff $\phi$ is ergodic with respect to
+$\mu$\cmmnt{ (definition:  372Ob\formerly{3{}72Pb})}.
+
+\proof{{\bf (a)} I ought to remark at once that because $\frak A$ is
+Dedekind $\sigma$-complete, every countably additive functional on
+$\frak A$ is bounded (326M\formerly{3{}26I}),
+so that $M_{\sigma}$ is the $L$-space of
+bounded countably additive functionals on $\frak A$, as studied in
+362A-362B.
+
+\medskip
+
+\quad{\bf (i)$\Rightarrow$(ii)} Suppose that $\nu$ is an extreme point of
+$Q$ and that $a\in\frak A$ is such that $\pi a=a$.   Set $\alpha=\nu a$.
+\Quer\ If $0<\alpha<1$, define $\nu_1:\frak A\to\Bbb R$ by setting
+
+\Centerline{$\nu_1b=\Bover1{\alpha}\nu(b\Bcap a)$}
+
+\noindent for $b\in\frak A$.
+Then $\nu_1$ is a non-negative countably additive
+functional, and $\nu_11=1$.   Moreover, for any $b\in\frak A$,
+
+\Centerline{$\nu_1\pi b=\Bover1{\alpha}\nu(\pi b\Bcap a)
+=\Bover1{\alpha}\nu(\pi b\Bcap\pi a)
+=\Bover1{\alpha}\nu\pi(b\Bcap a)
+=\Bover1{\alpha}\nu(b\Bcap a)
+=\nu_1b$,}
+
+\noindent so $\nu_1\pi=\nu_1$ and $\nu_1\in Q$.   Since $\nu_1a=1$,
+$\nu_1\ne\nu$.   Similarly,
+$\nu_2\in Q$, where $\nu_2b=\Bover1{1-\alpha}\nu(b\Bsetminus a)$ for
+$b\in\frak A$.   Now $\nu=\alpha\nu_1+(1-\alpha)\nu_2$ is a proper convex
+combination of members of $Q$ and is not extreme.\ \BanG\   So
+$\nu a\in\{0,1\}$;  as $a$ is arbitrary, (ii) is true.
+
+\medskip
+
+\quad{\bf (ii)$\Rightarrow$(iii)} Suppose that (ii) is true, and that
+$a\in\frak A$ is such that $\nu(a\Bsymmdiff\pi a)=0$.   Then
+
+\Centerline{$\nu(\pi^na\Bsymmdiff\pi^{n+1}a)
+=\nu\pi^n(a\Bsymmdiff\pi a)=\nu(a\Bsymmdiff\pi a)=0$}
+
+\noindent for every $n\in\Bbb N$, so $\nu(a\Bsymmdiff\pi^na)=0$ for every
+$n\in\Bbb N$.   Set
+
+\Centerline{$b_n=\sup_{m\ge n}\pi^ma$ for $n\in\Bbb N$,
+\quad$b=\inf_{n\in\Bbb N}b_n$.}
+
+\noindent Because $\pi$ is sequentially order-continuous and $\nu$ is
+countably additive,
+
+\Centerline{$\nu(a\Bsymmdiff b_n)=0$ for every $n\in\Bbb N$,
+\quad$\nu(a\Bsymmdiff b)=0$.}
+
+\noindent Now
+
+\Centerline{$\pi b_n=\sup_{m\ge n}\pi^{m+1}a=b_{n+1}\Bsubseteq b_n$}
+
+\noindent for every $n\in\Bbb N$, so
+
+\Centerline{$\pi b=\inf_{n\in\Bbb N}\pi b_n=\inf_{n\in\Bbb N}b_{n+1}=b$.}
+
+\noindent Consequently
+$\nu a=\nu b\in\{0,1\}$.   As $a$ is arbitrary, (iii) is true.
+
+\medskip
+
+\quad{\bf(iii)$\Rightarrow$(i)} Suppose that (iii) is true, and that
+$\nu=\bover12(\nu_1+\nu_2)$ where $\nu_1$, $\nu_2\in Q$.   For
+$\alpha\ge 0$, set $\theta_{\alpha}=\nu_1-\alpha\nu\in M_{\sigma}$.
+Then we have a corresponding
+element $a_{\alpha}=\Bvalue{\theta_{\alpha}>0}$ in $\frak A$ such that
+
+\Centerline{$\theta_{\alpha}c>0$ whenever $0\ne c\Bsubseteq a_{\alpha}$,
+\quad$\theta_{\alpha}c\le 0$ whenever
+$c\Bcap a_{\alpha}=0$}
+
+\noindent(326S\formerly{3{}26O}).   Observe that if $b\in\frak A$, then
+
+\Centerline{$\theta_{\alpha}b
+=\theta_{\alpha}a_{\alpha}-\theta_{\alpha}(a_{\alpha}\Bsetminus b)
+   +\theta_{\alpha}(b\Bsetminus a_{\alpha})
+\le\theta_{\alpha}a_{\alpha}$,}
+
+\Centerline{$\theta_{\alpha}\pi b
+=\nu_1\pi b-\alpha\nu\pi b=\nu_1b-\alpha\nu b=\theta_{\alpha}b$.}
+
+Now $\nu(a_{\alpha}\Bsetminus\pi a_{\alpha})=0$.
+\Prf\Quer\ Otherwise, setting $c=a_{\alpha}\Bsetminus\pi a_{\alpha}$, we
+must have $\theta_{\alpha}c>0$, so
+
+\Centerline{$\theta_{\alpha}(c\Bcup\pi a_{\alpha})
+>\theta_{\alpha}\pi a_{\alpha}
+=\theta_{\alpha}a_{\alpha}$.  \Bang\Qed}
+
+\noindent Consequently
+
+\Centerline{$\nu(a_{\alpha}\Bsymmdiff\pi a_{\alpha})
+=\nu\pi a_{\alpha}-\nu a_{\alpha}+2\nu(a_{\alpha}\Bsetminus\pi a_{\alpha})
+=0$}
+
+\noindent and $\nu a_{\alpha}\in\{0,1\}$.
+
+If $\alpha\le\beta$ then $\theta_{\beta}\le\theta_{\alpha}$ and
+$a_{\beta}\Bsubseteq a_{\alpha}$.   As $\theta_0=\nu_1$,
+$\nu_1(1\Bsetminus a_0)=0$,
+$\nu_1a_0=1$ and $\nu a_0\ge\bover12$;  accordingly $\nu a_0=1$.
+As $\theta_2\le 0$, $a_2=0$ and $\nu a_2=0$.   So
+
+\Centerline{$\beta=\sup\{\alpha:\nu a_{\alpha}=1\}
+=\sup\{\alpha:\nu a_{\alpha}>0\}$}
+
+\noindent is defined in $[0,2]$.
+
+Now $\nu_1=\beta\nu$.   \Prf\ Let $c\in\frak A$.
+\Quer\ If $\nu_1c>\beta\nu c$, take $\alpha>\beta$ such
+that $\nu_1c>\alpha\nu c$.   Then $\nu a_{\alpha}=0$, but
+
+\Centerline{$0<\theta_{\alpha}c\le\theta_{\alpha}a_{\alpha}
+\le\nu_1a_{\alpha}\le 2\nu a_{\alpha}$.  \Bang}
+
+\noindent \Quer\ If
+$\nu_1c<\beta\nu c$, take $\alpha\in\coint{0,\beta}$ such that
+$\nu_1c<\alpha\nu c$.   Then $\nu a_{\alpha}=1$ so
+$\nu(1\Bsetminus a_{\alpha})=0$, but
+
+\Centerline{$0>\theta_{\alpha}c\ge\theta_{\alpha}(c\Bsetminus a_{\alpha})
+\ge -\alpha\nu(c\Bsetminus a_{\alpha})
+\ge -\alpha\nu(1\Bsetminus a_{\alpha})$.  \Bang}
+
+\noindent Thus $\nu_1c=\beta\nu c$;  as
+$c$ is arbitrary, $\nu_1=\beta\nu$.\ \Qed
+
+Accordingly $\nu_1$ is a multiple of $\nu$ and must be equal to $\nu$.
+Similarly, $\nu_2=\nu$.   As $\nu_1$ and $\nu_2$ were arbitrary,
+$\nu$ is an extreme point of $Q$.
+
+\medskip
+
+{\bf (b)} In (a), set $\frak A=\Sigma$ and $\pi E=\phi^{-1}[E]$ for
+$E\in\Sigma$;  then `$\phi$ is ergodic with respect to $\mu$' corresponds
+to condition (ii) of (a), so we have the result.
+}%end of proof of 461Q
+
+\leader{461R}{Corollary} Let $X$ be a compact Hausdorff space and
+$\phi:X\to X$ a continuous function.   Let $Q$ be the non-empty
+compact convex set of
+Radon probability measures $\mu$ on $X$ such that $\phi$ is \imp\ for
+$\mu$, with its narrow topology and the convex
+structure defined by 234G and 234Xf.   Then the extreme points of
+$Q$ are those for which $\phi$ is ergodic.
+
+\proof{{\bf (a)} If $\mu_0\in Q$ is not extreme, let
+$\Cal B=\Cal B(X)$ be the
+Borel $\sigma$-algebra of $X$, so that $\phi$ is
+$(\Cal B,\Cal B)$-measurable, and write $Q'$ for the set of
+$\phi$-invariant Borel probability measures on $X$.   Then 461Q tells us
+that the extreme points of $Q'$ are just the measures for which
+$\phi$ is ergodic.   If $\mu\in Q$, then
+$\mu\restr\Cal B\in Q'$, and of
+course the function $\mu\mapsto\mu\restr\Cal B$ is injective (416Eb)
+and preserves convex combinations.   So $\mu_0\restr\Cal B$ is not
+extreme in $Q'$.   By 461Q, $\phi$ is not
+$\mu_0\restr\Cal B$-ergodic, and therefore not $\mu_0$-ergodic.
+
+\medskip
+
+{\bf (b)} If $\mu_0\in Q$ and $\phi$ is not $\mu_0$-ergodic, let
+$E\in\dom\mu_0$ be such that $0<\mu_0E<1$ and $\phi^{-1}[E]=E$.   Set
+$\alpha=\mu_0E$ and $\beta=1-\alpha$, and let $\mu_1$, $\mu_2$ be the
+indefinite-integral measures over $\mu_0$ defined by
+$\Bover1{\alpha}\chi E$ and $\Bover1{\beta}\chi(X\setminus E)$.   Then
+$\mu_1$ is a Radon probability measure on $X$ (416S), so the image
+measure $\mu_1\phi^{-1}$ also is a Radon measure (418I).   The argument
+of part (b) of the proof of 461Q tells us that $\mu_1\phi^{-1}$ agrees
+with $\mu_1$ on Borel sets, so $\mu_1=\mu_1\phi^{-1}$ (416Eb) and
+$\mu_1\in Q$.   Similarly, $\mu_2\in Q$, and
+$\mu_0=\alpha\mu_1+\beta\mu_2$, so $\mu_0$ is not extreme in $Q$.
+}%end of proof of 461R
+
+\exercises{\leader{461X}{Basic exercises $\pmb{>}$(a)}
+%\spheader 461Xa
+Let $X$ be a Hausdorff locally convex linear topological space,
+$C\subseteq X$ a convex set, and $g:C\to\Bbb R$ a function.   Show that
+the following are equiveridical:  (i) $g$ is convex and lower
+semi-continuous;  (ii) there are a non-empty set $D\subseteq X^*$ and a
+family $\family{f}{D}{\beta_f}$ in $\Bbb R$ such that
+$g(x)=\sup_{f\in D}f(x)+\beta_f$ for every $x\in C$.   (Compare 233Hb.)
+%461C
+
+\sqheader 461Xb Let $X$ be a Hausdorff locally convex linear topological
+space, $K\subseteq X$ a compact convex set, and $x$ an extreme point of
+$K$.   Let $\mu$ be a probability measure on $X$ such that $\mu^*K=1$
+and $x$ is the barycenter of $\mu$.   (i) Show that $\{y:y\in K$, $f(y)\ne f(x)\}$ is
+$\mu$-negligible for every $f\in X^*$.   \Hint{461E.}   (ii) Show that
+if $\mu$ is a Radon measure then $\mu\{x\}=1$.
+
+\spheader 461Xc For each $n\in\Bbb N$, define $e_n\in\pmb{c}_0$ by
+saying that $e_n(n)=1$, $e_n(i)=0$ if $i\ne n$.   Let $\mu$ be the
+point-supported Radon
+probability measure on $\pmb{c}_0$ defined by saying that
+$\mu E=\sum_{n=0}^{\infty}2^{-n-1}\chi E(2^ne_n)$ for every
+$E\subseteq\pmb{c}_0$.   (i) Show that every member of $\pmb{c}_0^*$ is
+$\mu$-integrable.   \Hint{$\pmb{c}_0^*$ can be identified with
+$\ell^1$.}   (ii) Show that $\mu$ has no barycenter in $\pmb{c}_0$.
+%461F
+
+\spheader 461Xd Let $I$ be an uncountable set, and
+$X=\{x:x\in\ell^{\infty}(I),\,\{i:x(i)\ne 0\}$ is countable$\}$.
+(i) Show that $X$ is a closed linear subspace of $\ell^{\infty}(I)$.
+(ii) Show
+that there is a probability measure $\mu$ on $X$ such that ($\alpha$)
+$\mu\{x:\|x\|\le 1\}$ is defined and equal to $1$ ($\beta$)
+$\mu\{x:x(i)=1\}=1$ for every $i\in I$.
+(iii) Show that $\int fd\mu$ is defined for every $f\in X^*$.   \Hint{for
+any $f\in X^{\sim}$, there is a countable set $J\subseteq X$ such that
+$f(x)=0$ whenever $x\restr J=0$, so that $f\eae f(\chi J)$.}   (iv)
+Show that $\mu$ has no barycenter in $X$.
+%461F
+
+\sqheader 461Xe Let $X$ be a complete Hausdorff locally convex linear
+topological
+space, and $K\subseteq X$ a compact set.   Show that every extreme point
+of $\overline{\Gamma(K)}$ belongs to $K$.   \Hint{show that it cannot be
+the barycenter of any measure on $K$ which is not supported by a single
+point.}
+%461I
+
+\sqheader 461Xf Let $X$ be a Hausdorff locally convex linear topological
+space, and $K\subseteq X$ a metrizable compact set.   Show that
+$\overline{\Gamma(K)}$ is metrizable.   \Hint{we may suppose that $X$ is
+complete, so that $\overline{\Gamma(K)}$ is compact.   Show that
+$\overline{\Gamma(K)}$ is a continuous image of the space of Radon
+probability measures on $K$, and use 437Rf.}
+%461J
+
+\spheader 461Xg Let $X$ be a Hausdorff locally convex linear topological
+space and $K\subseteq X$ a compact set.   Show that the Baire
+$\sigma$-algebra of $K$ is just the subspace $\sigma$-algebra induced by
+the cylindrical $\sigma$-algebra of $X$.
+%461L
+
+\sqheader 461Xh Let $X$ be a Hausdorff locally convex linear topological
+space, and $K\subseteq X$ a compact convex set;  let $E$ be the set of
+extreme points of $K$.   Let $\sequencen{f_n}$ be a sequence in $X^*$
+such that $\sup_{x\in E,n\in\Bbb N}|f_n(x)|$ is finite and
+$\lim_{n\to\infty}f_n(x)=0$ for every $x\in E$.   Show that
+$\lim_{n\to\infty}f_n(x)=0$ for every $x\in K$.
+%461M
+
+\sqheader 461Xi Let $X$ be a Hausdorff locally convex linear topological
+space, and $K\subseteq X$ a metrizable compact convex set.
+Show that the algebra of Borel subsets of $K$ is just the
+subspace algebra of the cylindrical $\sigma$-algebra of $X$.
+%461M
+
+\spheader 461Xj Let $X$ be a Hausdorff locally convex linear topological
+space, and $K\subseteq X$ a compact set.   Let us say that a point $x$
+of $K$ is {\bf extreme} if the only Radon probability measure on $K$
+with barycenter $x$ is the Dirac measure on $K$ concentrated at $x$.
+(Cf.\ 461Xb.)
+(i) Show that if $X$ is complete, then $x\in X$ is an extreme point of
+$K$ iff it is an extreme point of $\overline{\Gamma(K)}$.   (ii)
+Writing $E$ for the set of extreme points of $K$, show that any point of
+$K$ is the barycenter of some probability measure on $E$.   (iii) Show
+that if $K$ is metrizable then $E$ is a G$_{\delta}$ subset of $K$ and
+any point of $K$ is the barycenter of some Radon probability measure on
+$E$.
+%461M
+
+\spheader 461Xk Let $G$ be an abelian group with identity $e$,
+and $K$ the set of positive definite functions
+$h:G\to\Bbb C$ such that $h(e)=1$.   (i) Show that $K$ is a compact convex
+subset of $\Bbb C^G$.   (ii) Show that the extreme points of $K$ are just
+the group homomorphisms from $G$ to $S^1$.
+(iii) Show that $K$ generates the
+positive cone of a Riesz space.   \Hint{445N.}
+%461M
+
+\spheader 461Xl Let $X$ be a compact metrizable space and $G$ a subgroup
+of the group of autohomeomorphisms of $X$.   Let $M_{\sigma}$ be the space
+of signed Borel measures on $X$ with its vague topology, and
+$Q\subseteq M_{\sigma}$ the set of $G$-invariant Borel probability measures
+on $X$.   Show that every member of $Q$ is uniquely expressible as the
+barycenter of a Radon probability
+measure on the set of extreme points of $Q$.
+%461P
+
+\spheader 461Xm Let $X$ be a set, $\Sigma$ a $\sigma$-algebra of subsets
+of $X$, and $P$ the set of probability measures with domain $\Sigma$,
+regarded as a
+convex subset of the linear space of countably additive functionals on
+$\Sigma$.   Show that $\mu\in P$ is an extreme point in $P$ iff it takes
+only the values $0$ and $1$.
+%461Q
+
+\spheader 461Xn Let $\frak A$ be a Boolean
+algebra and $M$ the $L$-space of bounded finitely additive functionals on
+$\frak A$, and $\pi:\frak A\to\frak A$ a Boolean homomorphism.
+(i) Show that $U=\{\nu:\nu\in M$, $\nu\pi=\nu\}$ is a closed Riesz subspace
+of $M$.   (ii) Set $Q=\{\nu:\nu\in U$, $\nu\ge 0$, $\nu 1=1\}$.
+Show that if $\mu$, $\nu$ are distinct extreme points of $Q$ then
+$\mu\wedge\nu=0$.   (iii) Set $Q_{\sigma}=\{\nu:\nu\in Q$, $\nu$ is
+countably additive$\}$.   Show that any extreme point of $Q_{\sigma}$ is an
+extreme point of $Q$.
+(iv) Set $Q_{\tau}=\{\nu:\nu\in Q$, $\nu$ is
+countably additive$\}$.   Show that any extreme point of $Q_{\tau}$ is an
+extreme point of $Q$.
+%461Q
+
+\sqheader 461Xo Set $S^1=\{z:z\in\Bbb C$, $|z|=1\}$, and let $w\in S^1$
+be such that $w^n\ne 1$ for any integer $1$.   Define $\phi:S^1\to S^1$
+by setting $\phi(z)=wz$ for every $z\in S^1$.   Show that the only Radon
+probability measure on $S^1$ for which $\phi$ is \imp\ is the Haar
+probability measure $\mu$ of $S^1$.   \Hint{use 281N to show that
+$\lim_{n\to\infty}\bover1{n+1}\sum_{k=0}^nf(w^kz)=\int fd\mu$ for every
+$f\in C(S^1)$;  now put 461R and 372H\formerly{3{}72I} together.}
+%461R
+
+\spheader 461Xp Set $\phi(x)=2\min(x,1-x)$ for $x\in[0,1]$ (cf.\
+372Xp\formerly{3{}72Xm}).
+Show that there are many point-supported Radon measures on $[0,1]$ for
+which $\phi$ is \imp.
+%461R   are there unexpected atomless measures?
+
+\spheader 461Xq
+Let $X$ and $Y$ be Hausdorff locally convex linear
+topological spaces, $A\subseteq X$ a convex set and
+$\phi:A\to Y$ a continuous
+function such that $\phi[A]$ is bounded and
+$\phi(tx+(1-t)y)=t\phi(x)+(1-t)\phi(y)$ for all $x$, $y\in A$ and
+$t\in[0,1]$.   Let $\mu$ be a topological
+probability measure on $A$ with a barycenter $x^*\in A$.
+Show that $\phi(x^*)$ is the barycenter of the image measure
+$\mu\phi^{-1}$ on $Y$.   \Hint{show first that if
+$\familyiI{E_i}$ is a finite partition of $A$ into
+non-empty convex sets measured by $\mu$,
+$\alpha_i=\mu E_i$ for each $i\in I$ and
+$C=\{\sum_{i\in I}\alpha_ix_i:x_i\in E_i$ for every $i\in I\}$, then
+$x^*\in\overline{C}$.}
+%461B
+
+\leader{461Y}{Further exercises (a)}
+%\spheader 461Ya
+Let $X$ be a Hausdorff locally convex linear topological space.   (i)
+Show that if $M_0,\ldots,M_n$ are non-empty compact convex subsets of
+$X$ with empty
+intersection, then there is a continuous convex function $g:X\to\Bbb R$
+such that $g(\sum_{i=0}^n\alpha_ix_i)<\sum_{i=0}^n\alpha_ig(x_i)$
+whenever $x_i\in M_i$ and
+$\alpha_i>0$ for every $i\le n$.   (ii) Show that if $K\subseteq X$ is
+compact and $x^*\in\overline{\Gamma(K)}$ then there is a Radon
+probability measure $\mu$ on $K$,
+with barycenter $x^*$, such that $\mu(\alpha_0M_0+\ldots+\alpha_nM_n)=0$
+whenever $M_0,\ldots,M_n$ are compact convex subsets of $K$ with empty
+intersection, $\alpha_i\ge 0$ for every
+$i\le n$, and $\sum_{i=0}^n\alpha_i=1$.
+%461L
+
+\spheader 461Yb
+In $\BbbR^{\coint{0,2}}$ let $K$ be the set of those functions $u$ such
+that ($\alpha$) $0\le u(s)\le u(t)\le 1$ whenever $0\le s\le t\le 1$
+($\beta$) $|u(t+1)|\le u(s')-u(s)$ whenever $0\le s<t<s'\le 1$.   (i)
+Show that $K$ is a compact convex set.   (ii) Show that the set $E$ of
+extreme points of $K$ is just the set of functions of the types
+$\tbf{0}$, $\chi[0,1]$, $\chi[s,1]\pm\chi\{1+s\}$ and
+$\chi\ocint{s,1}\pm\chi\{1+s\}$ for $0<s<1$.   (iii) Set $w(s)=s$ for
+$s\in[0,1]$, $0$ for $s\in\ooint{1,2}$.   Show that if $\mu$ is any
+Radon probability measure on $K$ with barycenter $w$ then $\mu E=0$.
+%461M
+%what about Borel measures?  when there is an \am cardinal I suppose
+
+\spheader 461Yc Write $\nu_{\omega_1}$ for the usual measure on
+$Z=\{0,1\}^{\omega_1}$.   Fix any $z_0\in Z$, and let $U$ be the linear
+space $\{u:u\in C(Z)$, $u(z_0)=\int u\,d\nu_{\omega_1}\}$.   Let $X$ be the
+Riesz space of signed tight Borel measures $\mu$ on $Z$ such that
+$\mu\{z_0\}=0$,
+with the topology generated by the functionals $\mu\mapsto\int u\,d\mu$ as
+$u$ runs over $U$.    Let $K\subseteq X$ be the set of tight Borel
+probability measures $\mu$ on $Z$ such that $\mu\{z_0\}=0$.
+(i) Show that $K$
+is compact and convex and that every member of $X^+\setminus\{0\}$ is
+uniquely expressible as a positive multiple of a member of $K$.   (ii) Show
+that the set $E$ of extreme points of $K$ can be identified, as topological
+space, with $Z\setminus\{z_0\}$, so is a Borel subset of $K$ but not a
+Baire subset.   (iii) Show that the restriction of $\nu_{\omega_1}$ to the
+Borel $\sigma$-algebra of $Z$ is the barycenter of more than
+one Baire measure on $E$.
+%461P
+
+\spheader 461Yd Let $X$ be a set, $\Sigma$ a
+$\sigma$-algebra of subsets of $X$, and $\Phi$ a set of
+$(\Sigma,\Sigma)$-measurable functions from $X$ to itself.   Let
+$M_{\sigma}$ be the
+$L$-space of countably additive real-valued functionals on $\Sigma$, and
+$Q\subseteq M_{\sigma}$ the set of probability measures with domain
+$\Sigma$ for which every member of $\Phi$ is \imp.   (i) Show that if
+$\mu\in Q$, then $\mu$ is an extreme point of $Q$ iff $\mu E\in\{0,1\}$
+whenever $E\in\Sigma$ and $\mu(E\symmdiff\phi^{-1}[E])=0$ for every
+$\phi\in\Phi$.
+(ii) Show that if $\mu\in Q$ and $\Phi$ is countable and commutative,
+then $\mu$ is an extreme point of $Q$ iff $\mu E\in\{0,1\}$ whenever
+$E\in\Sigma$ and $E=\phi^{-1}[E]$ for every $\phi\in\Phi$.
+%461Q
+
+\spheader 461Ye Let $X$ be a non-empty Hausdorff space, and define
+$\phi:X^{\Bbb N}\to X^{\Bbb N}$ by setting $\phi(x)(n)=x(n+1)$ for
+$x\in X^{\Bbb N}$ and $n\in\Bbb N$.
+Let $Q$ be the set of Radon probability measures
+on $X^{\Bbb N}$ for which $\phi$ is \imp.   Show that a Radon
+probability measure $\lambda$ on $X^{\Bbb N}$ is an extreme point of
+$Q$ iff it is a Radon product measure $\mu^{\Bbb N}$ for some Radon
+probability measure $\mu$ on $X$.
+%461R mt46bits
+
+\spheader 461Yf Let $G$ be a topological group.   Show that the following
+are equiveridical:  (i) $G$ is amenable;  (ii) whenever $X$ is a Hausdorff
+locally convex linear topological space, and
+$\action$ is a continuous action of $G$ on $X$ such that
+$x\mapsto a\action x$ is a linear operator for every $a\in G$, and
+$K\subseteq X$ is a
+non-empty compact convex set such that $a\action x\in K$ whenever
+$a\in G$ and $x\in K$, then there is an $x\in K$ such that
+$a\action x=x$ for every $a\in G$;
+(iii) whenever $X$ is a Hausdorff
+locally convex linear topological space, $K\subseteq X$ is a non-empty
+compact convex set, and
+$\action$ is a continuous action of $G$ on $K$ such that
+$a\action(tx+(1-t)y)=t\,a\action x+(1-t)a\action y$ whenever $a\in G$, $x$,
+$y\in K$ and $t\in[0,1]$, then there is an $x\in K$ such that
+$a\action x=x$ for every $a\in G$.
+Use this to simplify parts of the proof of 449C.   \Hint{493B.}
+%461Xq
+
+\spheader 461Yg Let $G$ be an amenable topological group, and $\action$ an
+action of $G$ on a reflexive Banach space $U$, continuous for the
+given topology on $G$ and the weak topology of $U$, such that
+$u\mapsto a\action u$ is a linear operator of
+norm at most $1$ for every $a\in G$.   Set
+$V=\{v:v\in U$, $a\action v=v$ for every $a\in G\}$.   Show that
+$\{u+v-a\action u:u\in U$, $v\in V$, $a\in G\}$ is dense in $U$.
+}%end of exercises
+
+\endnotes{
+\Notesheader{461} The results above are a little unusual in that we have
+studied locally convex spaces for several pages without encountering two
+topologies on the same space more than once (461J).
+In fact some of the most interesting
+properties of measures on locally convex spaces concern their
+relationships with strong and weak topologies, but I defer these ideas
+to later parts of the chapter.   For the moment, we just have the basic
+results affirming (i) that barycenters exist (461E, 461F, 461H) (ii)
+that points can be represented as barycenters (461I, 461M).   The
+last two can be thought of as refinements of the
+\Krein-Milman theorem.   Any compact convex set $K$ (in a locally
+compact
+Hausdorff space) is the closed convex hull of the set $E$ of its extreme
+points.   By 461M, given $x\in K$, we can actually find a measure on $E$
+with barycenter $x$;  and if $K$ is metrizable we can do this with a
+Radon measure.   Of course the second part of 461M is a straightforward
+consequence of the first.   But I do not know of
+any proof of 461M which does not pass through 461K-461L.
+
+\Krein's theorem (461J) is a fundamental result in the theory of linear
+topological spaces.   The proof here, using the Riesz representation
+theorem and vague topologies, is a version of the standard one (e.g.,
+{\smc Bourbaki 87}, II.4.1), written out to be a little heavier in the
+measure theory and a little lighter in the topological linear space
+theory than is usual.   There are of course proofs which do not use
+measure theory.
+
+In \S437 I have already looked at an archetypal special case of 461I and
+461M.   If $X$ is a compact Hausdorff space and
+$P$ the compact convex set of Radon probability measures on $X$ with the
+narrow (or vague) topology, then the set of extreme points of $P$ can be
+identified with the set $\Delta$ of Dirac measures on $X$ (437S, 437Xt).
+If we think of $P$ as a subset of $C(X)^*$ with the weak* topology, so
+that the dual of the linear topological space $C(X)^*$ can be identified
+with $C(X)$, then any $\mu\in P$ is the barycenter of a Baire
+probability measure $\nu$ on
+$\Delta$.   In fact (because $\Delta$ here is compact) $\mu$ is the
+barycentre of a Radon measure
+on $\Delta$, and this is just the image measure $\mu\delta^{-1}$.
+
+I have put the phrase `Choquet's theorem' into the title of this section.
+Actually it should perhaps be `first steps in Choquet theory', because
+while the theory as a whole was dominated for many years by the work of
+G.Choquet the exact attribution of the results
+presented here is more complicated.
+See {\smc Phelps 66} for a much fuller account.   But certainly both the
+existence and uniqueness theorems 461M and 461P draw heavily on Choquet's
+ideas.
+
+Theorem 461P, demanding an excursion through 461N-461O, seems fairly hard
+work for a relatively specialized result.   But it provides a unified
+explanation for a good many apparently disparate phenomena.   Of course the
+simplest example is when $X=C(Z)^*$ for some compact metrizable space $Z$
+and $K$ is the set of positive linear functionals of norm $1$, so that $E$
+can be identified with $Z$ and we find ourselves back with the Riesz
+representation theorem.   A less familiar case already examined is in
+461Xk.   At the next level we have such examples as 461Xl.
+
+Another class of examples arising in \S437
+is explored in 461Q-461R, 461Xm-461Xn and 461Yd-461Ye.
+It is when we have an explicit listing of the extreme points,
+as in 461Yb and 461Ye,
+that we can begin to feel that we understand a compact convex set.
+}%end of notes
+
+\leaveitout{\Krein's theorem:\prooflet{(\Bourbaki, II.4.1:  \Schaefer,
+II.4.3;  \Kothe, \S20.6.)}
+%\NB, 5.7.5.
+}%end of leaveitout
+
+\discrpage
+

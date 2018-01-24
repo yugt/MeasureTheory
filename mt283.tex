@@ -1,0 +1,1440 @@
+\frfilename{mt283.tex}
+\versiondate{31.3.13}
+
+\def\chaptername{Fourier analysis}
+\def\sectionname{Fourier transforms I}
+\copyrightdate{1994}
+
+\newsection{283}
+
+I turn now to the theory of Fourier transforms on $\Bbb R$.   In the
+first of two sections on the subject, I present those parts of the
+elementary theory which can be dealt with using the methods of the
+previous section on Fourier series.   I find no way of making sense of
+the theory, however, without introducing a fragment of L.Schwartz'
+theory of distributions, which I present in \S284.
+As in \S282, of course, this treatment also is nothing but a start in
+the topic.
+
+The whole theory can also be done in $\BbbR^r$.   I leave this
+extension to the exercises, however, since there are few new ideas, the
+formulae are significantly more complicated, and I shall not, in this
+volume at least, have any use for the multidimensional versions of these
+particular theorems, though some of the same ideas will appear, in
+multidimensional form, in \S285.
+
+\leader{283A}{Definitions} Let $f$ be a complex-valued function which is
+integrable over $\Bbb R$.
+
+
+\spheader 283Aa The {\bf Fourier transform} of $f$ is the
+function $\varhatf:\Bbb R\to\Bbb C$ defined by setting
+
+\Centerline{$\varhatf(y)=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+e^{-iyx}f(x)dx$}
+
+\noindent for every $y\in\Bbb R$.   \cmmnt{(Of course the integral is
+always defined because $x\mapsto e^{-iyx}$ is bounded and continuous,
+therefore measurable.)}
+
+\spheader 283Ab The {\bf inverse Fourier transform} of $f$ is
+the function $\varcheckf:\Bbb R\to\Bbb C$ defined by setting
+
+\Centerline{$\varcheckf(y)=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+e^{iyx}f(x)dx$}
+
+\noindent for every $y\in\Bbb R$.
+
+\cmmnt{
+\leader{283B}{Remarks (a)} It is a mildly vexing feature of the theory
+of Fourier transforms -- vexing, that is,
+for outsiders like myself -- that there is in fact
+no standard definition of `Fourier transform'.
+The commonest definitions are, I think,
+
+\Centerline{$\varhatf(y)=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+e^{\mp iyx}f(x)dx$,}
+
+\Centerline{$\varhatf(y)=\int_{-\infty}^{\infty}
+e^{\mp iyx}f(x)dx$,}
+
+\Centerline{$\varhatf(y)=\int_{-\infty}^{\infty}
+e^{\mp 2\pi iyx}f(x)dx$,}
+
+\noindent corresponding to inverse transforms
+
+\Centerline{$\varcheckf(y)=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+e^{\pm iyx}f(x)dx$,}
+
+\Centerline{$\varcheckf(y)=\Bover1{{2\pi}}\int_{-\infty}^{\infty}
+e^{\pm iyx}f(x)dx$,}
+
+\Centerline{$\varcheckf(y)=\int_{-\infty}^{\infty}
+e^{\pm 2\pi iyx}f(x)dx$.}
+
+\noindent I leave it to you to check that the whole theory can be
+carried through with any of these six pairs, and to investigate other
+possibilities (see 283Xa-283Xb below).
+
+\spheader 283Bb The phrases `Fourier transform', `inverse
+Fourier transform' make it plain that $(\varhatf)\varspcheck$ is
+supposed to be $f$, at least some of the time.   This is indeed the
+case, but the class of $f$ for which this is true in the literal sense
+is somewhat constrained, and we shall have to wait a little while before
+investigating it.
+
+\spheader 283Bc No amount of juggling with constants, in the
+manner of (a) above, can make $\varhatf$ and $\varcheckf$ quite the
+same.   However, on the definitions I have chosen, we do have
+$\varcheckf(y)=\varhatf(-y)$ for every $y$, so that $\varcheckf$ and
+$\varhatf$ will share essentially all the properties of interest to us
+here;  in particular, everything in the next proposition will be valid
+with $\varspcheck$ in place of $\varsphat$, if you change signs at the
+right points in parts (c), (h) and (i).
+}%end of comment
+
+\leader{283C}{Proposition} Let $f$ and $g$ be complex-valued functions
+which are integrable over $\Bbb R$.
+
+(a) $(f+g)\varsphat=\varhatf+\varhat{g}$.
+
+(b) $(cf)\varsphat=c\varhatf$ for every $c\in\Bbb C$.
+
+(c) If $c\in\Bbb R$ and $h(x)=f(x+c)$ whenever this is
+defined, then $\varhat{h}(y)=e^{icy}\varhatf(y)$ for every $y\in\Bbb R$.
+
+(d) If $c\in\Bbb R$ and $h(x)=e^{icx}f(x)$ for every
+$x\in\dom f$, then $\varhat{h}(y)=\varhatf(y-c)$ for every
+$y\in\Bbb R$.
+
+(e) If $c>0$ and $h(x)=f(cx)$ whenever this is defined,
+then $\varhat{h}(y)=\Bover1c\varhatf(\Bover{y}{c})$
+for every $y\in\Bbb R$.
+
+(f) $\varhatf:\Bbb R\to\Bbb C$ is continuous.
+
+(g) $\lim_{y\to\infty}\varhatf(y)=\lim_{y\to-\infty}\varhatf(y)=0$.
+
+(h) If $\int_{-\infty}^{\infty}|xf(x)|dx<\infty$, then $\varhatf$ is
+differentiable, and its derivative is
+
+\Centerline{$\varhatf\vthsp'(y)=-\Bover{i}{\sqrt{2\pi}}
+\int_{-\infty}^{\infty}e^{-iyx}xf(x)dx$}
+
+\noindent for every $y\in\Bbb R$.
+
+(i) If $f$ is absolutely continuous on every bounded interval and $f'$
+is integrable, then $(f')\varsphat(y)=iy\varhatf(y)$ for every $y\in\Bbb
+R$.
+
+\proof{{\bf (a)} and {\bf (b)} are trivial, and {\bf (c)}, {\bf (d)} and
+{\bf (e)} are elementary substitutions.
+
+\medskip
+
+{\bf (f)} If $\sequencen{y_n}$ is any convergent sequence in $\Bbb R$
+with limit $y$, then
+
+$$\eqalign{\varhatf(y)
+&=\Bover1{\sqrt{2\pi}}
+\int_{-\infty}^{\infty}\lim_{n\to\infty}e^{-iy_nx}f(x)dx\cr
+&=\lim_{n\to\infty}\Bover1{\sqrt{2\pi}}
+\int_{-\infty}^{\infty}e^{-iy_nx}f(x)dx
+=\lim_{n\to\infty}\varhatf(y_n)\cr}$$
+
+\noindent by Lebesgue's Dominated Convergence Theorem, because
+$|e^{-iy_nx}f(x)|\le|f(x)|$ for every $n\in\Bbb N$ and $x\in\dom f$.   As
+$\sequencen{y_n}$ is arbitrary, $\varhatf$ is continuous.
+
+\medskip
+
+{\bf (g)} This is just the Riemann-Lebesgue lemma (282E).
+
+\medskip
+
+{\bf (h)} The point is that $|\pd{}{y}e^{-iyx}f(x)|=|xf(x)|$ whenever
+$x\in\dom f$ and $y\in\Bbb R$.   So by 123D
+
+$$\eqalign{\varhatf\vthsp'(y)
+&=\Bover1{\sqrt{2\pi}}\Bover{d}{dy}
+     \int_{-\infty}^{\infty}e^{-iyx}f(x)dx
+=\Bover1{\sqrt{2\pi}}\Bover{d}{dy}\int_{\dom f}
+     e^{-iyx}f(x)dx\cr
+&=\Bover1{\sqrt{2\pi}}\int_{\dom f}
+     \Bover{\partial}{\partial y}e^{-iyx}f(x)dx
+=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+     -ixe^{-iyx}f(x)dx\cr
+&=-\Bover{i}{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+     xe^{-iyx}f(x)dx.\cr}$$
+
+\medskip
+
+{\bf (i)} Because $f$ is absolutely continuous on every bounded
+interval,
+
+\Centerline{$f(x)=f(0)+\int_0^xf'$ for $x\ge 0$,\quad
+$f(x)=f(0)-\int_x^0f'$ for $x\le 0$.}
+
+\noindent Because $f'$ is integrable,
+
+\Centerline{$\lim_{x\to\infty}f(x)=f(0)+\int_0^{\infty}f'$,\quad
+$\lim_{x\to-\infty}f(x)=f(0)-\int_{-\infty}^0f'$}
+
+\noindent both exist.   Because $f$ also is integrable, both limits must
+be zero.   Now we can integrate by parts (225F) to see that
+
+$$\eqalign{(f')\varsphat(y)
+&=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-iyx}f'(x)dx
+=\Bover1{\sqrt{2\pi}}\lim_{a\to\infty}\int_{-a}^{a}e^{-iyx}f'(x)dx\cr
+&=\Bover1{\sqrt{2\pi}}\bigl(\lim_{a\to\infty}e^{-iya}f(a)
+-\lim_{a\to-\infty}e^{-iya}f(a)\bigr)
++\Bover{iy}{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-iyx}f(x)dx\cr
+&=iy\varhatf(y).\cr}$$
+}%end of proof of 283C
+
+\leader{283D}{Lemma} (a) $\lim_{a\to\infty}\int_{0}^a\bover{\sin
+x}{x}dx=\bover{\pi}2$, $\lim_{a\to\infty}\int_{-a}^a\bover{\sin
+x}{x}dx=\pi$.
+
+(b) There is a $K<\infty$ such that $|\int_a^b\bover{\sin cx}{x}dx|\le
+K$ whenever $a\le b$ and $c\in\Bbb R$.
+
+\proof{{\bf (a)(i)} Set
+
+\Centerline{$F(a)=\int_0^a\Bover{\sin x}{x}dx$ if $a\ge 0$,\quad
+$F(a)=-\int_{-a}^0\Bover{\sin x}{x}dx$ if $a\le 0$,}
+
+\noindent so that $F(a)=-F(-a)$ and
+$\int_a^b\bover{\sin x}{x}dx=F(b)-F(a)$ for all $a\le b$.
+
+If $0<a\le b$, then by 224J
+
+\Centerline{$|\int_a^b\Bover{\sin x}{x}dx|
+\le(\Bover1b+\Bover1a-\Bover1b)\sup_{c\in[a,b]}
+  |\int_a^c\sin x\,dx|
+\le\Bover1a\sup_{c\in[a,b]}|\cos a-\cos c|
+\le\Bover2a$.}
+
+\noindent In particular, $|F(n)-F(m)|\le\bover2{m}$ if $0<m\le n$ in
+$\Bbb N$, and $\sequencen{F(n)}$ is a Cauchy sequence with limit
+$\gamma$ say;  now
+
+\Centerline{$|\gamma - F(a)|
+=\lim_{n\to\infty}|F(n)-F(a)|\le\Bover2a$}
+
+\noindent for every $a>0$, so $\lim_{a\to\infty}F(a)=\gamma$.
+Of course we also have
+
+\Centerline{$\lim_{a\to\infty}\int_{-a}^a\Bover{\sin x}{x}dx
+=\lim_{a\to\infty}(F(a)-F(-a))
+=\lim_{a\to\infty}2F(a)=2\gamma$.}
+
+\medskip
+
+\quad{\bf (ii)} So now I have to calculate $\gamma$.    For this,
+observe first that
+
+\Centerline{$2\gamma
+=\lim_{a\to\infty}\int_{-\pi a}^{\pi a}\Bover{\sin x}{x}dx
+=\lim_{a\to\infty}\int_{-\pi}^{\pi}\Bover{\sin at}{t}dt$}
+
+\noindent (substituting $x=t/a$).   Next,
+
+\Centerline{$\lim_{t\to 0}\Bover1t-\Bover1{2\sin{1\over 2}t}=\lim_{u\to
+0}\Bover{\sin u-u}{2u\sin u}=0$,}
+
+\noindent so
+
+\Centerline{$\int_{-\pi}^{\pi}
+  \bigl|\Bover1t-\Bover1{2\sin{1\over 2}t}\bigr|dt<\infty$,}
+
+\noindent and by the Riemann-Lebesgue lemma (282Fb)
+
+\Centerline{$\lim_{a\to\infty}\int_{-\pi}^{\pi}
+   \bigl(\Bover1t-\Bover1{2\sin{1\over 2}t}\bigr)\sin at\,dt=0$.}
+
+\noindent But we know that
+
+\Centerline{$\int_{-\pi}^{\pi}
+\Bover{\sin(n+{1\over 2})t\pushbottom{3.5pt}}{2\sin{1\over 2}t}dt
+=\pi$}
+
+\noindent for every $n$ (using 282Dc), so we must have
+
+$$\eqalign{\lim_{a\to\infty}\int_{-a}^a\Bover{\sin t}{t}dt
+&=\lim_{a\to\infty}\int_{-\pi}^{\pi}\Bover{\sin at}{t}dt
+=\lim_{a\to\infty}\int_{-\pi}^{\pi}
+      \Bover{\sin at}{2\sin{1\over 2}t}dt\cr
+&=\lim_{n\to\infty}\int_{-\pi}^{\pi}
+    \Bover{\sin(n+{1\over 2})t\pushbottom{3.5pt}}{2\sin{1\over 2}t}dt
+=\pi,\cr}$$
+
+\noindent and $\gamma=\pi/2$, as claimed.
+
+\medskip
+
+{\bf (b)} Because $F$ is continuous and
+
+\Centerline{$\lim_{a\to\infty}F(a)=\gamma=\Bover{\pi}2$, \quad
+$\lim_{a\to-\infty}F(a)=-\gamma=-\Bover{\pi}2$,}
+
+\noindent $F$ is bounded;  say $|F(a)|\le K_1$ for all $a\in\Bbb R$.
+Try $K=2K_1$.   Now suppose that $a<b$ and $c\in\Bbb R$.   If $c>0$,
+then
+
+\Centerline{$|\int_a^b\Bover{\sin cx}{x}dx|
+=|\int_{ac}^{bc}\Bover{\sin t}{t}dt|
+=|F(bc)-F(ac)|\le 2K_1=K$,}
+
+\noindent substituting $x=t/c$.   If $c<0$, then
+
+\Centerline{$|\int_a^b\Bover{\sin cx}{x}dx|
+=|-\int_a^b\Bover{\sin(-c)x}{x}dx|
+\le K$;}
+
+\noindent while if $c=0$ then
+
+\Centerline{$|\int_a^b\Bover{\sin cx}{x}dx|
+=0\le K$.}
+}%end of proof of 283D
+
+\leader{283E}{}\cmmnt{ The hardest work of this section will lie in
+the `pointwise inversion theorems' 283I and 283K below.   I begin
+however with a relatively easy, and at least equally important, result,
+showing (among other things) that an integrable function $f$ can
+(essentially) be recovered from its Fourier transform.
+
+\medskip
+
+\noindent}{\bf Lemma} Whenever $c<d$ in $\Bbb R$,
+
+$$\eqalign{\lim_{a\to\infty}\int_{-a}^{a}
+     e^{-iyx}\,\Bover{e^{idy}-e^{icy}}{y}dy
+&=2\pi i\text{ if }c<x<d,\cr
+&=\pi i\text{ if }x=c\text{ or }x=d,\cr
+&=0\text{ if }x<c\text{ or } x>d.\cr}$$
+
+\proof{ We know that for any $b>0$
+
+\Centerline{$\lim_{a\to\infty}\int_{-a}^{a}\Bover{\sin bx}{x}dx
+=\lim_{a\to\infty}\int_{-ab}^{ab}\Bover{\sin t}{t}dt
+=\pi$}
+
+\noindent (subsituting $x=t/b$), and therefore that for any $b<0$
+
+\Centerline{$\lim_{a\to\infty}\int_{-a}^{a}\Bover{\sin bx}{x}dx
+=-\lim_{a\to\infty}\int_{-a}^{a}\Bover{\sin(-b)x}{x}dx
+=-\pi$.}
+
+\noindent Now consider, for $x\in\Bbb R$,
+
+\Centerline{$\lim_{a\to\infty}\int_{-a}^{a}e^{-iyx}
+\,\Bover{e^{idy}-e^{icy}}{y}dy$.}
+
+\noindent First note that all the integrals $\int_{-a}^a$ exist, because
+
+\Centerline{$\lim_{y\to 0}\Bover{e^{idy}-e^{icy}}{y}=i(d-c)$}
+
+\noindent is finite, and the integrand is certainly continuous except at
+$0$.   Now we have
+
+$$\eqalignno{\int_{-a}^ae^{-iyx}&\Bover{e^{idy}-e^{icy}}{y}dy\cr
+&=\int_{-a}^a\Bover{e^{i(d-x)y}-e^{i(c-x)y}}{y}dy\cr
+&=\int_{-a}^a\Bover{\cos(d-x)y-\cos(c-x)y}{y}dy
+ +i\int_{-a}^a\Bover{\sin(d-x)y-\sin(c-x)y}{y}dy\cr
+&=i\int_{-a}^a\Bover{\sin(d-x)y-\sin(c-x)y}{y}dy\cr}$$
+
+\noindent because $\cos$ is an even function, so
+
+\Centerline{$\int_{-a}^{a}\Bover{\cos(d-x)y-\cos(c-x)y}{y}dy=0$}
+
+\noindent for every $a\ge 0$.   (Once again, this integral exists
+because
+
+\Centerline{$\lim_{y\to 0}\Bover{\cos(d-x)y-\cos(c-x)y}{y}=0$.)}
+
+\noindent   Accordingly
+
+$$\eqalign{\lim_{a\to\infty}\int_{-a}^a
+e^{-iyx}\Bover{e^{idy}-e^{icy}}{y}dy
+&=i\lim_{a\to\infty}\int_{-a}^a\Bover{\sin(d-x)y}{y}dy
+   -i\lim_{a\to\infty}\int_{-a}^a\Bover{\sin(c-x)y}{y}dy\cr
+&=i\pi-i\pi=0\text{ if }x<c,\cr
+&=i\pi-0=\pi i\text{ if }x=c,\cr
+&=i\pi+i\pi=2\pi i\text{ if }c<x<d,\cr
+&=0+i\pi=\pi i\text{ if }x=d,\cr
+&=-i\pi+i\pi=0\text{ if }x>d.\cr}$$
+}%end of proof of 283E
+
+\leader{283F}{Theorem} Let $f$ be a complex-valued function which is
+integrable over $\Bbb R$, and $\varhatf$ its Fourier transform.   Then
+whenever $c\le d$ in $\Bbb R$,
+
+$$\int_c^df=\Bover{i}{\sqrt{2\pi}}\lim_{a\to\infty}
+\int_{-a}^{a}\Bover{e^{icy}-e^{idy}}{y}\varhatf(y)dy.$$
+
+\proof{ If $c=d$ this is trivial;  let us suppose that $c<d$.
+
+\medskip
+
+{\bf (a)} Writing
+
+$$\theta_a(x)=\biggerint_{-a}^{a}e^{-iyx}
+\,\Bover{e^{idy}-e^{icy}}{y}dy$$
+
+\noindent for $x\in\Bbb R$ and $a\ge 0$, 283E tells us that
+
+\Centerline{$\lim_{a\to\infty}\theta_a(x)=2\pi i\theta(x)$}
+
+\noindent where $\theta=\bover12(\chi[c,d]+\chi\ooint{c,d})$ takes the
+value $1$ inside the interval $[c,d]$, $0$ outside and the value
+$\bover12$ at the endpoints.   At the same time,
+
+$$\eqalignno{|\theta_a(x)|
+&=|\int_{-a}^a\Bover{\sin(d-x)y-\sin(c-x)y}{y}dy|\cr
+\displaycause{see the proof of 283E}
+&\le|\int_{-a}^a\Bover{\sin(d-x)y}{y}dy|
+  +|\int_{-a}^a\Bover{\sin(c-x)y}{y}dy|
+\le 2K\cr}$$
+
+\noindent for all $a\ge 0$ and $x\in\Bbb R$, where $K$ is the constant of
+283Db.   Consequently $|f\times\theta_a|\le 2K|f|$ everywhere on
+$\dom f$, for every $a\ge 0$, and
+(applying Lebesgue's Dominated Convergence
+Theorem to sequences $\sequencen{f\times\theta_{a_n}}$, where
+$a_n\to\infty$)
+
+\Centerline{$\lim_{a\to\infty}
+\int f\times\theta_a=2\pi i\int f\times\theta=2\pi i\int_c^df$.}
+
+\medskip
+
+{\bf (b)} Now consider the limit in the statement of the theorem.   We
+have
+
+$$\eqalignno{\int_{-a}^a
+\bover{e^{icy}-e^{idy}}{y}\varhatf(y)dy
+&=\bover1{\sqrt{2\pi}}\int_{-a}^a
+\int_{-\infty}^{\infty}
+\bover{e^{icy}-e^{idy}}{y}e^{-iyx}f(x)dxdy\cr
+&=\bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}\int_{-a}^a
+\bover{e^{icy}-e^{idy}}{y}e^{-iyx}f(x)dydx\cr
+&=-\bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}f\times\theta_a\cr}$$
+
+\noindent by Fubini's and Tonelli's theorems (252H), using the fact that
+$(e^{icy}-e^{idy})/y$ is bounded to see that
+
+\Centerline{$\int_{-\infty}^{\infty}\int_{-a}^{a}
+  \bigl|\bover{e^{icy}-e^{idy}}{y}e^{-iyx}f(x)\bigr|dydx$}
+
+\noindent is finite.   Accordingly
+
+$$\eqalign{\bover{i}{\sqrt{2\pi}}\lim_{a\to\infty}\int_{-a}^a
+\bover{e^{icy}-e^{idy}}{y}\varhatf(y)dy
+&=-\bover{i}{2\pi}\lim_{a\to\infty}
+\int_{-\infty}^{\infty}f\times\theta_a\cr
+&=-\bover{i}{2\pi}2\pi i\int_c^df
+=\int_c^df,\cr}$$
+
+\noindent as required.
+}%end of proof of 283F
+
+\leader{283G}{Corollary} If $f$ and $g$ are
+complex-valued functions which are integrable over $\Bbb R$, then
+$\varhatf=\varhat{g}$ iff $f\eae g$.
+
+\proof{ If $f\eae g$ then of course
+
+\Centerline{$\varhatf(y)
+=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-iyx}f(x)dx
+=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-iyx}g(x)dx
+=\varhat{g}(y)$}
+
+\noindent for every $y\in\Bbb R$.   Conversely, if
+$\varhatf=\varhat{g}$, then by the last theorem
+
+\Centerline{$\int_c^df=\int_c^dg$}
+
+\noindent for all $c\le d$, so $f=g$ almost everywhere, by 222D.
+}%end of proof of 283G
+
+\leader{283H}{Lemma} Let $f$ be a complex-valued function which is
+integrable over $\Bbb R$, and $\varhatf$ its Fourier transform.   Then
+
+\Centerline{$\Bover1{\sqrt{2\pi}}\int_{-a}^{a}e^{ixy}\varhatf(y)dy
+=\Bover1{\pi}\int_{-\infty}^{\infty}\Bover{\sin a(x-t)}{x-t}f(t)dt
+=\Bover1{\pi}\int_{-\infty}^{\infty}\Bover{\sin at}{t}f(x-t)dt$}
+
+\noindent whenever $a>0$ and $x\in\Bbb R$.
+
+\proof{ We have
+
+\Centerline{$\int_{-a}^a\int_{-\infty}^{\infty}|e^{ixy}e^{-iyt}f(t)|dtdy
+\le 2a\int_{-\infty}^{\infty}|f(t)|dt<\infty$,}
+
+\noindent so (because the function $(t,y)\mapsto e^{ixy}e^{-iyt}f(t)$ is
+surely jointly measurable) we may reverse the order of integration, and
+get
+
+$$\eqalign{\Bover1{\sqrt{2\pi}}\int_{-a}^ae^{ixy}\varhatf(y)dy
+&=\Bover1{2\pi}\int_{-a}^a\int_{-\infty}^{\infty}
+   e^{ixy}e^{-iyt}f(t)dt\,dy\cr
+&=\Bover1{2\pi}\int_{-\infty}^{\infty}f(t)\int_{-a}^a
+   e^{i(x-t)y}dy\,dt\cr
+&=\Bover1{2\pi}\int_{-\infty}^{\infty}
+   \Bover{2\sin(x-t)a}{x-t}f(t)dt
+=\Bover1{\pi}\int_{-\infty}^{\infty}
+   \Bover{\sin au}{u}f(x-u)du,\cr}$$
+
+\noindent substituting $t=x-u$.
+}%end of proof of 283H
+
+
+\leader{283I}{Theorem} Let $f$ be a complex-valued function which is
+integrable over $\Bbb R$, and suppose that $f$ is differentiable at
+$x\in\Bbb R$.   Then
+
+\Centerline{$f(x)
+=\Bover{1}{\sqrt{2\pi}}
+\lim_{a\to\infty}\int_{-a}^ae^{ixy}\varhatf(y)dy
+=\Bover{1}{\sqrt{2\pi}}
+\lim_{a\to\infty}\int_{-a}^ae^{-ixy}\varcheckf(y)dy$.}
+
+\proof{ Set $g(u)=f(x)$ if $|u|\le 1$, $0$ otherwise, and observe that
+$\lim_{u\to 0}\bover1u(f(x-u)-g(u))=-f'(x)$ is finite, so that there is
+a $\delta\in\ocint{0,1}$ such that
+
+\Centerline{$K
+=\sup_{0<|u|\le\delta}\bigl|\Bover{f(x-u)-g(u)}{u}\bigr|<\infty$.}
+
+\noindent Consequently
+
+$$\eqalign{\int_{-\infty}^{\infty}\bigl|\Bover{f(x-u)-g(u)}{u}\bigr|du
+&\le\Bover1{\delta}\int_{-\infty}^{-\delta}|f(x-u)|du
+   +\Bover1{\delta}\int_{-1}^1|g|\cr
+&{\hskip 8em plus 0pt minus 0pt}
+   +\int_{-\delta}^{\delta}K
+   +\Bover1{\delta}\int_{\delta}^{\infty}|f(x-u)|du\cr
+&\le\Bover{1}{\delta}\int_{-\infty}^{\infty}|f|
+   + \Bover2{\delta}|f(x)|+ 2\delta K
+<\infty.\cr}$$
+
+\noindent By the Riemann-Lebesgue lemma (282Fb again),
+
+\Centerline{$\lim_{a\to\infty}\int_{-\infty}^{\infty}
+\Bover{\sin au}{u}(f(x-u)-g(u))du=0$.}
+
+\noindent If we now examine $\int\bover{\sin au}{u}g(u)du$, we get
+
+$$\eqalign{\int_{-\infty}^{\infty}\Bover{\sin au}{u}g(u)du
+&=\int_{-1}^1\Bover{\sin au}{u}f(x)du
+=f(x)\int_{-a}^a\Bover{\sin v}{v}dv,\cr}$$
+
+\noindent substituting $u=v/a$.   So we get
+
+$$\eqalign{\lim_{a\to\infty}\int_{-\infty}^{\infty}\Bover{\sin
+au}{u}f(x-u)du
+&=\lim_{a\to\infty}\int_{-\infty}^{\infty}\Bover{\sin au}{u}g(u)du\cr
+&=\lim_{a\to\infty}f(x)\int_{-a}^a\Bover{\sin v}{v}dv
+=\pi f(x),\cr}$$
+
+\noindent by 283Da.   Accordingly
+
+$$\Bover{1}{\sqrt{2\pi}}
+\lim_{a\to\infty}\int_{-a}^ae^{ixy}\varhatf(y)dy
+=\Bover{1}{\pi}\lim_{a\to\infty}\int_{-\infty}^{\infty}\Bover{\sin
+au}{u}f(x-u)du
+= f(x),$$
+
+\noindent using 283H.    As for the second equality,
+
+$$\eqalignno{\Bover1{\sqrt{2\pi}}\lim_{a\to\infty}\int_{-a}^a
+e^{-ixy}\varcheckf(y)dy
+&=\Bover1{\sqrt{2\pi}}\lim_{a\to\infty}\int_{-a}^a
+e^{-ixy}\varhatf(-y)dy\cr
+&=\Bover1{\sqrt{2\pi}}\lim_{a\to\infty}\int_{-a}^a
+e^{ixu}\varhatf(u)du
+=f(x)\cr}$$
+
+\noindent (substituting $y=-u$).
+}%end of proof of 283I
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Compare 282L.}%end of comment
+
+\leader{283J}{Corollary} Let $f:\Bbb R\to\Bbb C$ be an integrable
+function such that $f$ is differentiable and $\varhatf$ is integrable.
+Then $f=(\varhatf)\varspcheck=(\varcheckf)\varsphat$.
+
+\proof{ Because $\varhatf$ is integrable,
+
+\Centerline{$\varhatf\varcheck{\phantom{f}}(x)=\lim_{a\to\infty}
+\Bover1{\sqrt{2\pi}}\int_{-a}^ae^{ixy}\varhatf(y)dy = f(x)$}
+
+\noindent for every $x\in\Bbb R$.   Similarly,
+
+\Centerline{$\varcheckf\varhat{\phantom{f}}(x)=\lim_{a\to\infty}
+\Bover1{\sqrt{2\pi}}\int_{-a}^ae^{-ixy}\varcheckf(y)dy = f(x).$}
+}%end of proof of 283J
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} See also 283Wk below.
+}
+
+\leader{283K}{}\cmmnt{ The next proposition gives a class of functions
+to which the last corollary can be applied.
+
+\medskip
+
+\noindent}{\bf Proposition} Suppose that $f$ is a twice-differentiable
+function from $\Bbb R$ to $\Bbb C$ such that $f$, $f'$ and $f''$ are all
+integrable.   Then $\varhatf$ is integrable.
+
+\proof{ Because $f'$ and $f''$ are integrable, $f$ and $f'$
+are absolutely continuous on any bounded interval (225L).   So by 283Ci
+we have
+
+\Centerline{$(f'')\varsphat(y)=iy(f')\varsphat(y)=-y^2\varhatf(y)$}
+
+\noindent for every $y\in\Bbb R$.   At the same time, by 283Cf-283Cg,
+$(f'')\varsphat$ and $\varhatf$ must be bounded;  say
+$|\varhatf(y)|+|(f'')\varsphat(y)|\le K$ for every $y\in\Bbb R$.   Now
+
+\Centerline{$|\varhatf(y)|\le\Bover{K}{1+y^2}$}
+
+\noindent for every $y$, so that
+
+\Centerline{$\int_{-\infty}^{\infty}|\varhatf|
+\le K\int_{-\infty}^{-1}\Bover{1}{y^2}dy
+  +2K+K\int_{1}^{\infty}\Bover{1}{y^2}dy
+=4K<\infty$.}
+}%end of proof of 283K
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Compare 282Rb.}
+
+\leader{283L}{}\cmmnt{ I turn now to the result corresponding to 282O,
+using a slightly different approach.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $f$ be a complex-valued function which is
+integrable over $\Bbb R$, with Fourier transform $\varhatf$ and inverse
+Fourier transform $\varcheckf$, and suppose that $f$ is of bounded
+variation on some neighbourhood of $x\in\Bbb R$.   Set
+$a=\lim_{t\in\dom f,t\uparrow x}f(t)$,
+$b=\lim_{t\in\dom f,t\downarrow x}f(t)$.   Then
+
+\Centerline{$\Bover1{\sqrt{2\pi}}\lim_{\gamma\to\infty}
+     \int_{-\gamma}^{\gamma}e^{ixy}\varhatf(y)dy
+=\Bover1{\sqrt{2\pi}}\lim_{\gamma\to\infty}
+     \int_{-\gamma}^{\gamma}e^{-ixy}\varcheckf(y)dy
+=\Bover12(a+b)$.}
+
+\proof{{\bf (a)} The limits $\lim_{t\in\dom f,t\uparrow x}f(t)$ and
+$\lim_{t\in\dom f,t\downarrow x}f(t)$ exist because $f$ is of bounded
+variation near $x$ (224F).   Recall from 283Db that there is a constant
+$K<\infty$ such that
+
+\Centerline{$|\int_{\gamma}^{\delta}\Bover{\sin cx}{x}dx|\le K$}
+
+\noindent whenever $\gamma\le \delta$ and $c\in\Bbb R$.
+
+\medskip
+
+{\bf (b)} Let $\epsilon>0$.   The hypothesis is that there is some
+$\delta>0$ such that $\Var_{[x-\delta,x+\delta]}(f)<\infty$.
+Consequently
+
+\Centerline{$\lim_{\eta\downarrow 0}\Var_{\ocint{x,x+\eta}}(f)
+=\lim_{\eta\downarrow 0}\Var_{\coint{x-\eta,x}}(f)=0$}
+
+\noindent (224E).   There is therefore an $\eta>0$ such that
+
+\Centerline{$\max(\Var_{\coint{x-\eta,x}}(f),
+               \Var_{\ocint{x,x+\eta}}(f))\le\epsilon$.}
+
+\noindent Of course
+
+\Centerline{$|f(t)-f(u)|\le\Var_{\coint{x-\eta,x}}(f)\le\epsilon$}
+
+\noindent whenever $t$, $u\in\dom f$ and $x-\eta\le t\le u<x$, so we
+shall have
+
+\Centerline{$|f(t)-a|\le\epsilon$ for every
+$t\in\dom f\cap\coint{x-\eta,x}$,}
+
+\noindent and similarly
+
+\Centerline{$|f(t)-b|\le\epsilon$ whenever $t\in\dom f
+\cap\ocint{x,x+\eta}$.}
+
+\medskip
+
+{\bf (c)} Now set
+
+\Centerline{$g_1(t)=f(t)$ when $t\in\dom f$ and $|x-t|>\eta$, $0$
+otherwise,}
+
+\Centerline{$g_2(t)=a$ when $x-\eta\le t<x$, $b$ when $x<t\le x+\eta$,
+$0$ otherwise,}
+
+\Centerline{$g_3=f-g_1-g_2$.}
+
+\noindent Then $f=g_1+g_2+g_3$;  each $g_j$ is integrable;  $g_1$ is
+zero on a neighbourhood of $x$;
+
+\Centerline{$\sup_{t\in\dom g_3,t\ne x}|g_3(t)|\le\epsilon$,}
+
+\Centerline{$\Var_{\coint{x-\eta,x}}(g_3)\le\epsilon$,
+\quad $\Var_{\ocint{x,x+\eta}}(g_3)\le\epsilon$.}
+
+\medskip
+
+{\bf (d)} Consider the three parts $g_1$, $g_2$, $g_3$ separately.
+
+\medskip
+
+\quad{\bf (i)} For the first, we have
+
+\Centerline{$\lim_{\gamma\to\infty}\Bover1{\sqrt{2\pi}}
+   \int_{-\gamma}^{\gamma}e^{ixy}\varhat{g}_1(y)dy=0$}
+
+\noindent by 283I.
+
+\medskip
+
+\quad{\bf (ii)} Next,
+
+$$\eqalignno{\Bover{1}{\sqrt{2\pi}}
+        \int_{-\gamma}^{\gamma}e^{ixy}\varhat{g}_2(y)dy
+&=\Bover1{\pi}\int_{-\infty}^{\infty}
+        \Bover{\sin(x-t)\gamma}{x-t}g_2(t)dt\cr
+\noalign{\noindent (by 283H)}
+&=\Bover{a}{\pi}\int_{x-\eta}^{x}\Bover{\sin(x-t)\gamma}{x-t}dt
+   +\Bover{b}{\pi}\int_{x}^{x+\eta}\Bover{\sin(x-t)\gamma}{x-t}dt\cr
+&=\Bover{a}{\pi}\int_0^{\gamma\eta}\Bover{\sin u}{u}du
+   +\Bover{b}{\pi}\int_{0}^{\gamma\eta}\Bover{\sin u}{u}du\cr
+\noalign{\noindent (substituting $t=x-\bover{1}{\gamma}u$ in the first
+integral, $t=-x+\bover1{\gamma}u$ in the second)}
+&\to \Bover{a+b}{2}\text{ as }\gamma\to\infty\cr}$$
+
+\noindent by 283Da.
+
+\medskip
+
+\quad{\bf (iii)} As for the third, we have, for any $\gamma>0$,
+
+$$\eqalignno{\bigl|\Bover1{\sqrt{2\pi}}\int_{-\gamma}^{\gamma}e^{ixy}
+     \varhat{g}_3(y)dy\bigr|
+&=\Bover1{\pi}\bigl|\int_{-\infty}^{\infty}
+     \Bover{\sin(x-t)\gamma}{x-t}g_3(t)dt\bigr|
+=\Bover1{\pi}\bigl|\int_{-\infty}^{\infty}
+     \Bover{\sin t\gamma}{t}g_3(x-t)dt\bigr|\cr
+&\le\Bover1{\pi}\bigl|\int_{-\eta}^0
+     \Bover{\sin t\gamma}{t}g_3(x-t)dt\bigr|
+   +\Bover1{\pi}\bigl|\int_0^{\eta}
+     \Bover{\sin t\gamma}{t}g_3(x-t)dt\bigr|\cr
+&\le \Bover{K}{\pi}\Bigl(\sup_{t\in\dom g_3\cap\ooint{x-\eta,x}}|g_3(t)|
+   +\Var_{\ooint{x-\eta,x}}(g_3)\cr
+  &{\hskip 8em plus 0pt minus 0pt}
+   +\sup_{t\in\dom g_3\cap\ooint{x,x+\eta}}|g_3(t)|
+   +\Var_{\ooint{x,x+\eta}}(g_3)\Bigr)\cr
+&\le 4\epsilon\Bover{K}{\pi},\cr}$$
+
+\noindent using 224J again
+to bound the integrals in terms of the variation
+and supremum of $g_3$ and integrals of $\bover{\sin\gamma t}{t}$ over
+subintervals.
+
+\medskip
+
+{\bf (e)} We therefore have
+
+$$\eqalign{\limsup_{\gamma\to\infty}\bigl|\Bover1{\sqrt{2\pi}}
+        \int_{-\gamma}^{\gamma}
+   &e^{ixy}\varhatf(y)dy-\Bover{a+b}{2}\bigr|\cr
+&\le\limsup_{\gamma\to\infty}\Bover1{\sqrt{2\pi}}
+     \bigl|\int_{-\gamma}^{\gamma}e^{ixy}\varhat{g}_1(y)dy\bigr|\cr
+&{\hskip 6em plus 0pt minus 0pt}
+     +\limsup_{\gamma\to\infty}\bigl|\Bover1{\sqrt{2\pi}}
+     \int_{-\gamma}^{\gamma}e^{ixy}\varhat{g}_2(y)dy
+     -\Bover{a+b}{2}\bigr|\cr
+&{\hskip 6em plus 0pt minus 0pt}
+     +\limsup_{\gamma\to\infty}\Bover1{\sqrt{2\pi}}
+     \bigl|\int_{-\gamma}^{\gamma}e^{ixy}\varhat{g}_3ydy\bigr|\cr
+&\le 0+0+\Bover{4K}{\pi}\epsilon\cr}$$
+
+\noindent by the calculations in (d).   As $\epsilon$ is arbitrary,
+
+\Centerline{$\lim_{\gamma\to\infty}\Bover1{\sqrt{2\pi}}
+     \int_{-\gamma}^{\gamma}e^{ixy}\varhatf(y)dy-\Bover{a+b}{2}=0$.}
+
+\medskip
+
+{\bf (f)} This is the first half of the theorem.   But of course the
+second half follows at once, because
+
+$$\eqalign{\Bover1{\sqrt{2\pi}}\lim_{\gamma\to\infty}
+    \int_{-\gamma}^{\gamma}e^{-ixy}\varcheckf(y)dy
+&=\Bover1{\sqrt{2\pi}}\lim_{\gamma\to\infty}
+    \int_{-\gamma}^{\gamma}e^{-ixy}\varhatf(-y)dy\cr
+&=\Bover1{\sqrt{2\pi}}\lim_{\gamma\to\infty}
+    \int_{-\gamma}^{\gamma}e^{ixy}\varhatf(y)dy
+=\Bover{a+b}2.\cr}$$
+}%end of proof of 283L
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} You will see that this argument uses some of the
+same ideas as those in 282O-282P.   It is more direct because (i) I am
+not using any concept corresponding to Fej\'er sums (though a very
+suitable one is available;  see 283Xf)
+(ii) I do not trouble to give the result concerning uniform convergence
+of the Fej\'er integrals when $f$ is continuous and of bounded variation
+(283Xj)
+(iii) I do not give any pointer to the significance of the fact that if
+$f$ is of bounded variation then $\sup_{y\in\Bbb
+R}|y\varhatf(y)|<\infty$ (283Xk).
+}%end of comment
+
+\leader{283M}{}\cmmnt{ Corresponding to 282Q, we have the following.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $f$ and $g$ be complex-valued functions
+which are integrable over $\Bbb R$, and $f*g$ their convolution product,
+defined by setting
+
+\Centerline{$(f*g)(x)=\int_{-\infty}^{\infty}f(t)g(x-t)dt$}
+
+\noindent whenever this is defined\cmmnt{ (255E)}.   Then
+
+\Centerline{$(f*g)\varsphat(y)
+=\sqrt{2\pi}\varhatf(y)\varhat{g}(y)$,\quad
+$(f*g)\varspcheck(y)
+=\sqrt{2\pi}\varcheckf(y)\varcheck{g}(y)$}
+
+\noindent for every $y\in\Bbb R$.
+
+\proof{ For any $y$,
+
+$$\eqalignno{(f*g)\varsphat(y)
+&=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-iyx}(f*g)(x)dx\cr
+&=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+e^{-iy(t+u)}f(t)g(u)dtdu\cr
+\noalign{\noindent (using 255G)}
+&=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-iyt}f(t)dt
+\int_{-\infty}^{\infty}e^{-iyu}g(u)du
+=\sqrt{2\pi}\varhatf(y)\varhat{g}(y).\cr}$$
+
+\noindent Now, of course,
+
+\Centerline{$(f*g)\varspcheck(y)
+=(f*g)\varsphat(-y)
+=\sqrt{2\pi}\varhatf(-y)\varhat{g}(-y)
+=\sqrt{2\pi}\varcheckf(y)\varcheck{g}(y)$.}
+}%end of proof of 283M
+
+\leader{283N}{}\cmmnt{ I show how to compute a special Fourier
+transform, which
+will be used repeatedly in the next section.
+
+\medskip
+
+\noindent}{\bf Lemma} For $\sigma>0$, set
+$\psi_{\sigma}(x)=\bover1{\sigma\sqrt{2\pi}}e^{-x^2/2\sigma^2}$ for
+$x\in\Bbb R$.   Then its Fourier transform and inverse Fourier transform
+are
+
+\Centerline{$\varhat{\psi}_{\sigma}=\varcheck{\psi}_{\sigma}
+=\Bover1{\sigma}\psi_{1/\sigma}$.}
+
+\noindent In particular, $\varhat{\psi}_1=\psi_1$.
+
+\proof{{\bf (a)} I begin with the special case $\sigma=1$, using the
+Maclaurin series
+
+\Centerline{$e^{-iyx}=\sum_{k=0}^{\infty}\Bover{(-iyx)^k}{k!}$}
+
+\noindent and the expressions for
+$\int_{-\infty}^{\infty}x^ke^{-x^2/2}dx$ from \S263.
+
+Fix $y\in\Bbb R$.    Writing
+
+\Centerline{$g_k(x)=\Bover{(-iyx)^k}{k!}e^{-x^2/2}$,\quad
+$h_n(x)=\sum_{k=0}^ng_k(x)$, \quad$h(x)=e^{|yx|-x^2/2}$,}
+
+\noindent we see that
+
+\Centerline{$|g_k(x)|\le \Bover{|yx|^k}{k!}e^{-x^2/2}$,}
+
+\noindent so that
+
+\Centerline{$|h_n(x)|\le\sum_{k=0}^{\infty}|g_k(x)|
+\le e^{|yx|}e^{-x^2/2}=h(x)$}
+
+\noindent for every $n$;  moreover, $h$ is integrable, because
+$|h(x)|\le e^{-|x|}$ whenever $|x|\ge 2(1+|y|)$.   Consequently, using
+Lebesgue's Dominated Convergence Theorem,
+
+$$\eqalignno{\varhat{\psi}_1(y)
+&=\Bover1{{2\pi}}\int_{-\infty}^{\infty}
+  \lim_{n\to\infty}h_n\
+=\Bover1{{2\pi}}\lim_{n\to\infty}\int_{-\infty}^{\infty}
+  h_n\cr
+&=\Bover1{{2\pi}}\sum_{k=0}^{\infty}
+  \int_{-\infty}^{\infty}g_k
+=\Bover1{{2\pi}}\sum_{k=0}^{\infty}\Bover{(-iy)^k}{k!}
+  \int_{-\infty}^{\infty}x^ke^{-x^2/2}dx\cr
+&=\Bover1{{2\pi}}\sum_{j=0}^{\infty}\Bover{(-iy)^{2j}}{(2j)!}
+  \Bover{(2j)!}{2^jj!}\sqrt{2\pi}\cr
+\noalign{\noindent (by 263H)}
+&=\Bover1{\sqrt{2\pi}}\sum_{j=0}^{\infty}\Bover{(-y^2)^j}{2^jj!}
+=\Bover1{\sqrt{2\pi}}e^{-y^2/2}
+=\psi_1(y),\cr}$$
+
+\noindent as claimed.
+
+\medskip
+
+{\bf (b)} For the general case,
+$\psi_{\sigma}(x)=\Bover1{\sigma}\psi_1(\Bover{x}{\sigma})$, so that
+
+\Centerline{$\varhat{\psi}_{\sigma}(y)
+=\Bover1{\sigma}\cdot\sigma\varhat{\psi}_1(\sigma y)
+=\Bover1\sigma\psi_{1/\sigma}(y)$}
+
+\noindent by 283Ce.   Of course we now have
+
+\Centerline{$\varcheck{\psi}_{\sigma}(y)=\varhat{\psi}_{\sigma}(-y)
+=\Bover1{\sigma}\psi_{1/\sigma}(y)$}
+
+\noindent because $\psi_{1/\sigma}$ is an even function.
+}%end of proof of 283N
+
+
+\leader{283O}{}\cmmnt{ To lead into the ideas of the next section, I
+give the following very simple fact.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $f$ and $g$ be two
+complex-valued functions which are integrable over $\Bbb R$.   Then
+$\int_{-\infty}^{\infty}f\times\varhat{g}
+=\int_{-\infty}^{\infty}\varhatf\times g$ and
+$\int_{-\infty}^{\infty}f\times\varcheck{g}
+  =\int_{-\infty}^{\infty}\varcheckf\times g$.
+
+\proof{  Of course
+
+\Centerline{$\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+|e^{-ixy}f(x)g(y)|dxdy
+=\int_{-\infty}^{\infty}|f|\int_{-\infty}^{\infty}|g|<\infty$,}
+
+\noindent so
+
+$$\eqalign{\int_{\infty}^{\infty}f\times\varhat{g}
+&=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+f(y)e^{-iyx}g(x)dxdy\cr
+&=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+f(y)e^{-ixy}g(x)dydx
+=\int_{-\infty}^{\infty}\varhatf\times g.\cr}$$
+
+\noindent For the other half of the proposition, replace every
+$e^{-ixy}$ in the argument by $e^{ixy}$.
+}%end of proof of 283O
+
+\exercises{\leader{283W}{Higher dimensions} I offer a series of
+exercises designed to provide hints on how the work of this section may
+be done in the
+$r$-dimensional case, where $r\ge 1$.
+
+\spheader 283Wa Let $f$ be an integrable complex-valued function
+defined almost everywhere in $\BbbR^r$.   Its {\bf Fourier transform}
+is the function $\varhatf:\BbbR^r\to\Bbb C$ defined by the formula
+
+\Centerline{$\varhatf(y)
+=\Bover1{(\sqrt{2\pi})^r}\int e^{-iy\dotproduct x}f(x)dx$,}
+
+\noindent writing $y\dotproduct x=\eta_1\xi_1+\ldots+\eta_r\xi_r$ for
+$x=(\xi_1,\ldots,\xi_r)$ and $y=(\eta_1,\ldots,\eta_r)\in\BbbR^r$, and
+$\int\ldots dx$ for integration with respect to Lebesgue measure on
+$\BbbR^r$.   Similarly, the {\bf inverse Fourier transform} of $f$ is
+the function $\varcheckf$ given by
+
+\Centerline{$\varcheckf(y)
+=\Bover1{(\sqrt{2\pi})^r}\int e^{iy\dotproduct x}f(x)dx=\varhatf(-y)$.}
+
+\noindent Show that, for any integrable complex-valued function $f$ on
+$\BbbR^r$,
+
+\quad (i) $\varhatf:\BbbR^r\to\Bbb C$ is continuous;
+
+\quad (ii) $\lim_{\|y\|\to\infty}\varhatf(y)=0$, writing
+$\|y\|=\sqrt{y\dotproduct y}$ as usual;
+
+\quad (iii) if $\int\|x\||f(x)|dx<\infty$, then $\varhatf$ is
+differentiable, and
+
+\Centerline{$\Pd{}{\eta_j}\varhatf(y)
+=-\Bover{i}{(\sqrt{2\pi})^r}\int e^{-iy\dotproduct x}\xi_jf(x)dx$}
+
+\noindent for $j\le r$, $y\in\BbbR^r$, always taking $\xi_j$ to be the
+$j$th coordinate of $x\in\BbbR^r$;
+
+\quad (iv) if $j\le r$ and $\pd{f}{\xi_j}$ is defined everywhere and is
+integrable, then
+$(\pd{f}{\xi_j})\varsphat(y)=i\eta_j\varhatf(y)$
+for every $y\in\Bbb R^r$.   \prooflet{(Use 225L to show that if
+$e\in\BbbR^r$ is a unit vector, then
+$\gamma\mapsto f(x+\gamma e)$ is absolutely continuous on every bounded
+interval for almost every $x$.)}
+%283C
+
+\spheader 283Wb Show that if $f_1,\ldots,f_r$ are integrable
+complex-valued functions on $\Bbb R$ with Fourier transforms
+$g_1,\ldots,g_r$, and we write $f(x)=f_1(\xi_1)\ldots f_r(\xi_r)$ for
+$x=(\xi_1,\ldots,\xi_r)\in\BbbR^r$, then the Fourier transform of $f$
+is $y\mapsto g_1(\eta_1)\ldots g_r(\eta_r)$.
+
+\spheader 283Wc Let $f$ be an integrable complex-valued function
+on $\BbbR^r$, and $\varhatf$ its Fourier transform.   If $c\le d$ in
+$\BbbR^r$, show that
+
+$$\int_{[c,d]}f
+=(\bover{i}{\sqrt{2\pi}})^r
+\lim_{\alpha_1,\ldots,\alpha_r\to\infty}
+\int_{[-a,a]}\prod_{j=1}^r
+\bover{e^{i\gamma_j\eta_j}-e^{i\delta_j\eta_j}}{\eta_j}\varhatf(y)dy,$$
+
+\noindent setting $a=(\alpha_1,\ldots)$, $c=(\gamma_1,\ldots)$,
+$d=(\delta_1,\ldots)$.
+%283F
+
+\spheader 283Wd
+Let $f$ be an integrable complex-valued function on $\BbbR^r$, and
+$\varhatf$ its Fourier transform.   Show that if we write
+
+\Centerline{$B_{\infty}(\tbf{0},a)=\{y:|\eta_j|\le a
+  \text{ for every }j\le r\}$,}
+
+\noindent then
+
+\Centerline{$\Bover1{(\sqrt{2\pi})^r}\int_{B_{\infty}(\tbf{0},a)}
+e^{ix\dotproduct y}\varhatf(y)dy
+=\int \phi_a(t)f(x-t)dt$}
+
+\noindent for every $a\ge 0$, where
+
+\Centerline{$\phi_a(t)
+=\Bover1{\pi^r}\prod_{j=1}^r\Bover{\sin a\tau_j}{\tau_j}$}
+
+\noindent for $t=(\tau_1,\ldots,\tau_r)\in\BbbR^r$.
+%283H
+
+\spheader 283We Show that
+$\biggerint_{\BbbR^r}\Bover{1}{1+\|x\|^{r+1}}dx<\infty$.
+
+\spheader 283Wf Let $f:\BbbR^r\to\Bbb C$ be an integrable function.
+Show that if all the partial derivatives
+$\Bover{\partial^kf}{\partial\xi_j^k}$, for $k\le r+1$ and
+$j\le r$, are defined almost everywhere and integrable,
+then $\varhat{f}$ is integrable.
+%283Wa(iii) 283We 283K
+
+\spheader 283Wg\dvAformerly{2{}83Wj}
+Show that if $f$ and $g$ are integrable
+complex-valued functions on $\BbbR^r$, then (defining convolution as in
+255L) $(f*g)\varsphat=(\sqrt{2\pi})^r\varhatf\times\varhat{g}$.
+%283M
+
+\spheader 283Wh Let $f$ and $g$ be integrable complex-valued
+functions on $\BbbR^r$.   Show that
+$f*\varcheck{g}=(\sqrt{2\pi})^r(\varhatf\times g)\varspcheck$.
+%283M 283Wg
+
+\spheader 283Wi\dvAformerly{2{}83We} For $\sigma>0$, define
+$\psi_{\sigma}:\Bbb R^r\to\Bbb C$ by setting
+
+\Centerline{$\psi_{\sigma}(x)=\Bover1{(\sigma\sqrt{2\pi})^r}
+e^{-x\dotproduct x/2\sigma^2}$,
+\quad$(\varhat{\psi}_{\sigma})\varspcheck=\psi_{\sigma}$.}
+
+\noindent for every $x\in\BbbR^r$.   Show that
+
+\Centerline{$\varhat{\psi}_{\sigma}
+=\varcheck{\psi}_{\sigma}=\Bover1{\sigma^r}\psi_{1/\sigma}$.}
+%283N
+
+\spheader 283Wj Defining $\psi_{\sigma}$ as in (e), show that
+$\lim_{\sigma\to 0}(f*\psi_{\sigma})(x)=f(x)$ whenever $x\in\BbbR^r$ and
+$f:\BbbR^r\to\Bbb C$ is continuous and either integrable or bounded.
+(Cf.\ 261Ye, 262Yi.)
+%283Wi
+
+\spheader 283Wk Show that if $f:\BbbR^r\to\Bbb C$ is continuous
+and integrable, and $\varhatf$ also is integrable, then
+$f=\varhatf\varcheck{\phantom{f}}$.
+({\it Hint\/}:  Show that both are equal at every point to
+$\lim_{\sigma\to 0}(\sqrt{2\pi})^r
+  (\varhatf\times\varhat{\psi}_{\sigma})\varspcheck$.)
+%283Wj 283Wh 283J
+
+\spheader 283Wl Show that if $f$ and $g$ are integrable
+complex-valued functions on $\BbbR^r$, then $\int
+f\times\varhat{g}=\int\varhatf\times g$.
+
+\spheader 283Wm(i) Show that
+$\int_{2k\pi}^{2(k+1)\pi}\bover{\sin t}{t\sqrt{t}}dt>0$ for every
+$k\in\Bbb N$, and hence that
+$\int_0^{\infty}\bover{\sin t}{t\sqrt{t}}dt>0$.
+
+\quad{(ii)} Set $f_1(\xi)=1/\sqrt{|\xi|}$ for $0<|\xi|\le 1$, $0$ for
+other $\xi$.   Show that
+$\lim_{a\to\infty}\bover1{\sqrt{a}}\int_{-a}^a\varhatf_1(\eta)d\eta$
+exists in $\Bbb R$ and is greater than $0$.
+
+\quad{(iii)} Construct an integrable function $f_2$, zero on some
+neighbourhood of $0$, such that there are infinitely many $m\in\Bbb N$
+for which $|\int_{-m}^m\varhatf_2(\eta)d\eta|\ge\bover1{\sqrt{m}}$.
+\Hint{take $f_2(\xi)=2^{-k}\sin m_k\xi$ for $k+1\le\xi<k+2$, for a
+sufficiently rapidly increasing sequence $\sequence{k}{m_k}$.}
+
+\quad{(iv)} Set $f(x)=f_1(\xi_1)f_2(\xi_2)$ for $x\in\BbbR^2$.   Show
+that $f$ is integrable, that $f$ is zero in a neighbourhood of
+$\tbf{0}$, but that
+
+\Centerline{$\limsup_{a\to\infty}\Bover1{2\pi}|\int_{B_{\infty}(\tbf{0},
+a)}\varhatf(y)dy|>0$,}
+
+\noindent defining $B_{\infty}$ as in 283Wd.
+}%end of 283W
+
+\exercises{
+\leader{283X}{Basic exercises (a)}
+%\spheader 283Xa
+Confirm that the six alternative
+definitions of the transforms $\varhatf$, $\varcheckf$ offered in 283B
+all lead to the same theory;  find the constants involved in the new
+versions of 283Ch, 283Ci, 283L, 283M and 283N.
+%283B
+
+\spheader 283Xb If we redefined $\varhatf(y)$ to be
+$\alpha\int_{-\infty}^{\infty}e^{i\beta xy}f(x)dx$, what would
+$\varcheckf(y)$ be?
+%283B
+
+\spheader 283Xc Show that nearly every $2\pi$ would disappear
+from the theorems of this section if we defined a measure $\nu$ on
+$\Bbb R$ by saying that $\nu E=\bover1{\sqrt{2\pi}}\mu E$ for every Lebesgue measurable set $E$, where $\mu$ is Lebesgue measure, and wrote
+
+\Centerline{$\varhatf(y)=\int_{-\infty}^{\infty}e^{-iyx}f(x)\nu(dx)$,
+\quad$\varcheckf(y)=\int_{-\infty}^{\infty}e^{iyx}f(x)\nu(dx)$,}
+
+\Centerline{$(f*g)(x)=\int_{-\infty}^{\infty}f(t)g(x-t)\nu(dt)$.}
+
+\noindent What is
+$\lim_{a\to\infty}\int_{-a}^a\bover{\sin t}{t}\nu(dt)$?
+%283B+
+
+\sqheader 283Xd Let $f$ be an integrable complex-valued function
+on $\Bbb R$, with Fourier transform $\varhatf$.   Show that
+(i) if $g(x)=f(-x)$ whenever this
+is defined, then $\varhat{g}(y)=\varhatf(-y)$ for
+every $y\in\Bbb R$;
+(ii) if $g(x)=\overline{f(x)}$ whenever this is defined, then
+$\varhat{g}(y)=\overline{\varhatf(-y)}$ for every $y$.
+%283C
+
+\spheader 283Xe Let $f$ be an integrable complex-valued function
+on $\Bbb R$, with Fourier transform $\varhatf$.   Show that
+
+\Centerline{$\int_c^d\varhatf(y)dy=\Bover{i}{\sqrt{2\pi}}
+\int_{-\infty}^{\infty}\Bover{e^{-idx}-e^{-icx}}{x}f(x)dx$}
+
+\noindent whenever $c\le d$ in $\Bbb R$.
+%283F
+
+\sqheader 283Xf For an integrable complex-valued function $f$ on
+$\Bbb R$, let its {\bf Fej\'er integrals} be
+
+\Centerline{$\sigma_c(x)
+=\Bover1{c\sqrt{2\pi}}\int_0^c
+  \bigl(\int_{-a}^{a}e^{ixy}\varhatf(y)dy\bigr)da$}
+
+\noindent for $c>0$.   Show that
+
+\Centerline{$\sigma_c(x)=
+\Bover1{\pi}\int_{-\infty}^{\infty}
+  \Bover{1-\cos ct}{ct^2}f(x-t)dt$.}
+%283F
+
+\spheader 283Xg Show that
+$\biggerint_{-\infty}^{\infty}\Bover{1-\cos at}{at^2}dt=\pi$ for every $a>0$.   \Hint{integrate by parts and use 283Da.}   Show that
+
+\Centerline{$\lim_{a\to\infty}\int_{\delta}^{\infty}
+         \Bover{1-\cos at}{at^2}dt
+=\lim_{a\to\infty}\sup_{t\ge\delta}\Bover{1-\cos at}{at^2}
+=0$}
+
+\noindent for every $\delta>0$.
+%283Xf, 283D, 283F
+
+\wheader{283Xh}{0}{0}{0}{72pt}
+
+\spheader 283Xh Let $f$ be an integrable complex-valued function
+on $\Bbb R$, and define its Fej\'er integrals $\sigma_a$ as in 283Xf
+above.   Show that if $x\in\Bbb R$, $c\in\Bbb C$ are such that
+
+\Centerline{$\lim_{\delta\downarrow 0}\Bover1{\delta}\int_0^{\delta}
+    |f(x+t)+f(x-t)-2c|dt=0$,}
+
+\noindent then $\lim_{a\to\infty}\sigma_a(x)=c$.   \Hint{adapt
+the argument of 282H.}
+%283Xf, 283Xg
+
+\sqheader 283Xi Let $f$ be an integrable complex-valued function
+on $\Bbb R$, and define its Fej\'er integrals $\sigma_a$ as in 283Xf
+above.   Show that $f(x)=\lim_{a\to\infty}\sigma_a(x)$ for almost every
+$x\in\Bbb R$.
+%283Xf, 283Xh
+
+\spheader 283Xj Let $f:\Bbb R\to\Bbb C$ be a continuous integrable
+complex-valued function of bounded variation, and define its Fej\'er
+integrals $\sigma_a$ as in 283Xf above.   Show that
+$f(x)=\lim_{a\to\infty}\sigma_a(x)$ uniformly for $x\in\Bbb R$.
+%283Xf, 283Xi
+
+\sqheader 283Xk Let $f$ be an integrable complex-valued function
+of bounded variation on $\Bbb R$, and $\varhatf$ its Fourier transform.
+Show that $\sup_{y\in\Bbb R}|y\varhatf(y)|<\infty$.
+%283F
+
+\spheader 283Xl Let $f$ and $g$ be integrable complex-valued
+functions on $\Bbb R$.   Show that
+$f*\varcheck{g}=\sqrt{2\pi}(\varhatf\times g)\varspcheck$.
+%283M
+
+\spheader 283Xm Let $f$ be an integrable complex-valued function
+on $\Bbb R$, and fix $x\in\Bbb R$.    Set
+
+\Centerline{$\hat f_x(y)=\int_{-\infty}^{\infty}f(t)\cos y(x-t)dt$}
+
+\noindent for $y\in\Bbb R$.   Show that
+
+\quad (i) if $f$ is differentiable at $x$,
+
+\Centerline{$f(x)
+=\Bover1{\pi}\lim_{a\to\infty}\int_{0}^a\hat f_x(y)dy$;}
+
+\quad (ii) if there is a neighbourhood of $x$ in which $f$ has bounded
+variation, then
+
+\Centerline{$\Bover1{\pi}\lim_{a\to\infty}\int_{0}^a\hat f_x(y)dy
+=\Bover12(\lim_{t\in\dom f,t\uparrow 0}f(t)
+ +\lim_{t\in\dom f,t\downarrow 0}f(t))$;}
+
+\quad (iii) if $f$ is twice differentiable and $f'$, $f''$ are
+integrable then $\hat f_x$ is integrable and
+$f(x)=\bover1{\pi}\int_0^{\infty}\hat f_x$.
+(The formula
+
+\Centerline{$f(x)=\Bover1{\pi}\int_{0}^{\infty}\bigl(
+\int_{-\infty}^{\infty}f(t)\cos y(x-t)dt\bigr)dy$,}
+
+\noindent valid for such functions $f$, is called {\bf Fourier's
+integral formula}.)
+
+\spheader 283Xn Show that if $f$ is a complex-valued function of
+bounded variation, defined almost everywhere in $\Bbb R$, and converging
+to $0$ (along its domain) at $\pm\infty$, then
+
+\Centerline{$g(y)
+=\Bover1{\sqrt{2\pi}}\lim_{a\to\infty}\int_{-a}^ae^{-iyx}f(x)dx$}
+
+\noindent is defined in $\Bbb C$ for every $y\ne 0$, and that the limit
+is uniform in any region bounded away from $0$.
+
+\spheader 283Xo Let $f$ be an integrable complex-valued function
+on $\Bbb R$.   Set
+
+\Centerline{$\varhatf_c(y)=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+\cos yx\,f(x)dx$,\quad
+$\varhatf_s(y)=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+\sin yx\,f(x)dx$}
+
+\noindent for $y\in\Bbb R$.   Show that
+
+\Centerline{$\Bover1{\sqrt{2\pi}}\int_{-a}^ae^{ixy}\varhatf(y)dy
+=\sqrt{\Bover2{\pi}}\int_0^a\cos xy\,\varhatf_c(y)dy
++\sqrt{\Bover2{\pi}}\int_0^a\sin xy\,\varhatf_s(y)dy$}
+
+\noindent for every $x\in\Bbb R$ and $a\ge 0$.
+
+\spheader 283Xp Use the fact that
+$\int_{0}^a\int_{0}^{\infty}e^{-xy}\sin
+y\,dxdy=\int_{0}^{\infty}\int_{0}^ae^{-xy}\sin y\,dydx$ whenever
+$a\ge 0$ to show that 
+$\int_0^{\infty}\bover1{1+x^2}dx=\lim_{a\to\infty}\int_0^a\bover{\sin y}{y}dy$.
+
+\sqheader 283Xq Show that if $f(x)=e^{-\sigma|x|}$, where
+$\sigma>0$, then
+$\varhatf(y)=\bover{2\sigma}{\sqrt{2\pi}(\sigma^2+y^2)}$.
+Hence, or otherwise, find the Fourier transform of
+$y\mapsto\Bover{1}{1+y^2}$.
+
+\spheader 283Xr Find the inverse Fourier transform of the
+characteristic function of a bounded interval in $\Bbb R$.   Show that
+in a formal sense 283F can be regarded as a special case of 283O.
+
+\spheader 283Xs Let $f$ be a non-negative integrable function on
+$\Bbb R$, with Fourier transform $\varhatf$.   Show that
+\discrcenter{468pt}{$\sum_{j=0}^n\sum_{k=0}^n
+  a_j\bar a_k\varhatf(y_j-y_k)\ge 0$ }whenever $y_0,\ldots,y_n$ in
+$\Bbb R$ and $a_0,\ldots,a_n\in\Bbb C$.
+
+\spheader 283Xt Let $f$ be an integrable complex-valued function on
+$\Bbb R$.   Show that $\tilde f(x)=\sum_{n=-\infty}^{\infty}f(x+2\pi n)$
+is defined in $\Bbb C$ for almost every $x$.
+\Hint{$\sum_{n=-\infty}^{\infty}\int_{-\pi}^{\pi}|f(x+2\pi n)|dx
+<\infty$.}   Show that $\tilde f$ is periodic.   Show that the
+Fourier coefficients of $\tilde f\restr\ocint{-\pi,\pi}$ are
+$\langle\bover{1}{\sqrt{2\pi}}\varhatf(k)\rangle_{k\in\Bbb Z}$.
+
+\leader{283Y}{Further exercises (a)}
+%\spheader 283Ya
+Show that if $f:\Bbb R\to\Bbb C$ is
+absolutely continuous in every bounded interval, $f'$ is of bounded
+variation on $\Bbb R$, and
+$\lim_{x\to\infty}f(x)=\lim_{x\to-\infty}f(x)=0$, then
+
+\Centerline{$g(y)=\Bover1{\sqrt{2\pi}}\lim_{a\to\infty}
+\int_{-a}^ae^{-iyx}f(x)dx
+=-\Bover{i}{y\sqrt{2\pi}}\lim_{a\to\infty}
+\int_{-a}^ae^{-iyx}f'(x)dx$}
+
+\noindent is defined, with
+
+\Centerline{$y^2|g(y)|\le\Bover4{\sqrt{2\pi}}\Var_{\Bbb R}(f')$,}
+
+\noindent for every $y\ne 0$.
+%283C
+
+\spheader 283Yb Let $f:\Bbb R\to\Bbb C$ be an integrable
+function which is absolutely continuous on every bounded interval, and
+suppose that its derivative $f'$ is of bounded variation on $\Bbb R$.
+Show that $\varhatf$ is integrable and that
+$f=\varhatf\varcheck{\phantom{f}}$.   \Hint{225Yd, 283Ci, 283Xk.}
+%283Xk 283K
+
+\spheader 283Yc Let $f:\Bbb R\to\coint{0,\infty}$ be an even
+function such that $f$ is convex on $\coint{0,\infty}$
+and $\lim_{x\to\infty}f(x)=0$.
+
+\quad{(i)} Show that, for any $y>0$ and $k\in\Bbb N$,
+$\int_{-2k\pi/y}^{2k\pi/y}e^{-iyx}f(x)dx\ge 0$.
+
+\quad{(ii)} Show that
+$g(y)=\bover1{\sqrt{2\pi}}\lim_{a\to\infty}\int_{-a}^ae^{-iyx}f(x)dx$
+exists in $\coint{0,\infty}$ for every $y\ne 0$.
+
+\quad{(iii)} For $n\in\Bbb N$, set $f_n(x)
+=e^{-|x|/(n+1)}f(x)$ for every $x$.   Show that $f_n$ is integrable and
+convex on $\coint{0,\infty}$.
+
+\quad{(iv)} Show that $g(y)=\lim_{n\to\infty}\varhatf_{n}(y)$ for
+every $y\ne 0$.
+
+\quad{(vi)} Show that if $f$ is integrable then
+
+\Centerline{$\int_{-a}^a\varhatf
+=\Bover4{\sqrt{2\pi}}\int_{0}^{\infty}\Bover{\sin at}{t}f(t)dt
+\le\Bover{4a}{\sqrt{2\pi}}\int_0^{\pi/a}f
+\le 2\sqrt{2\pi}f(0)
+$}
+
+\noindent for every $a\ge 0$.   Hence show that whether $f$ is
+integrable or not, $g$ is integrable and $f_n=(\varhatf_n)\varspcheck$
+for every $n$.
+
+\quad{(vii)} Show that
+$\lim_{a\downarrow 0}\sup_{n\in\Bbb N}\int_{-a}^a\varhatf_n=0$.
+
+\quad(viii) Show that if $f'$ is bounded (on its domain) then
+$\{\varhatf_n:n\in\Bbb N\}$ is uniformly integrable ({\it hint\/}: use
+(vii) and 283Ya), so that $\lim_{n\to\infty}\|\varhat f_n-g\|_1=0$ and
+$f=\varcheck{g}$.
+
+\quad(ix) Show that if $f'$ is unbounded then for every $\epsilon>0$ we
+can find $h_1$, $h_2:\Bbb R\to\coint{0,\infty}$, both even, convex and
+converging to $0$ at $\infty$, such that $f=h_1+h_2$, $h'_1$ is bounded,
+$\int h_2\le\epsilon$ and $h_2(0)\le\epsilon$.   Hence show that in this
+case also $f=\varcheck{g}$.
+
+\spheader 283Yd Suppose that $f:\Bbb R\to\Bbb R$ is even,
+twice differentiable and convergent to $0$ at $\infty$, that $f''$ is
+continuous and that $\{x:f''(x)=0\}$
+is bounded in $\Bbb R$.   Show that $f$ is the Fourier transform of an
+integrable function.   \Hint{use 283Yc and 283Yb.}
+%283 notes
+
+\spheader 283Ye Let $g:\Bbb R\to\Bbb R$ be an odd function of
+bounded variation such that $\int_1^{\infty}\bover1xg(x)dx=\infty$.
+Show that $g$ cannot be the Fourier transform of any integrable function
+$f$.   ({\it Hint\/}:  show that if $g=\varhatf$ then
+%283Yd
+
+\Centerline{$-i\int_0^1f
+=\Bover{2}{\sqrt{2\pi}}\lim_{a\to\infty}
+  \int_0^a\Bover{1-\cos x}{x}g(x)dx=\infty$.)}
+}%end of exercises
+
+\endnotes{
+\Notesheader{283}
+I have tried in this section to give the elementary theory of Fourier
+transforms of integrable functions on $\Bbb R$, with an eye to the
+extension of the concept which will be attempted in the next section.
+Following \S282, I have given prominence to two theorems (283I and
+283L) describing conditions for the inversion of the Fourier transform
+to return to the original function;   we find ourselves looking at
+improper integrals
+$\lim_{a\to\infty}\int_{-a}^a$, just as earlier we needed to look at
+symmetric sums $\lim_{n\to\infty}\sum_{k=-n}^n$.   I do not go quite so
+far as in \S282, and in particular I leave the study of
+square-integrable functions for the moment, since their Fourier
+transforms may not be describable by the simple formulae used here.
+
+One of the most fundamental obstacles in the subject is the lack of any
+effective criteria for determining which functions are the Fourier
+transforms of integrable functions.   (Happily, things are better for
+square-integrable functions;  see 284O-284P.)   In 283Yc-283Yd I sketch
+an argument showing that `ordinary' non-oscillating {\it even} functions
+which converge to $0$ at $\pm\infty$ are Fourier transforms of
+integrable functions.   Strikingly, this is not true of {\it odd}
+functions;  thus $y\mapsto\Bover{1}{\ln(e+y^2)}$ is the Fourier
+transform of an integrable function, but
+$y\mapsto\Bover{\arctan y}{\ln(e+y^2)}$ is not (283Ye).
+
+In 283W I sketch the corresponding theory of Fourier transforms in
+$\Bbb R^r$.   There are few surprises.   One point to note is that where
+in the one-dimensional case we ask for a well-behaved second derivative,
+in the $r$-dimensional case we may need to differentiate $r+1$ times
+(283Wf).   Another is that we lose the `localization principle'.   In
+the one-dimensional case, if $f$ is integrable and zero on an interval
+$\ooint{c,d}$, then
+$\lim_{a\to\infty}\int_{-a}^ae^{ixy}\varhatf(y)dy=0$ for every
+$x\in\ooint{c,d}$;  this is immediate from either 283I or 283L.   But in
+higher dimensions the most natural formulation of a corresponding result
+is false (283Wm).
+
+
+
+
+}%end of notes
+
+\discrpage
+

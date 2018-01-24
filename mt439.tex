@@ -1,0 +1,1926 @@
+\frfilename{mt439.tex}
+\versiondate{24.9.04}
+\copyrightdate{2002}
+
+\def\chaptername{Topologies and measures II}
+\def\sectionname{Examples}
+\def\NN{\BbbN^{\Bbb N}}
+
+\newsection{439}
+
+As in Chapter 41, I end this chapter with a number of examples,
+exhibiting some of the boundaries around the results in the rest of the
+chapter, and filling in a gap with basic facts about Lebesgue measure
+(439E).   The first three examples (439A) are measures defined on
+$\sigma$-subalgebras of the Borel $\sigma$-algebra of $[0,1]$ which have
+no extensions to the whole Borel algebra.   The next part of the section
+(439B-439G) deals with `universally negligible' sets;  I use properties
+of these to show that Hausdorff measures are generally not semi-finite
+(439H), closing some unfinished business from \S\S264, and that
+smooth linear functionals may fail to be representable by integrals in
+the absence of Stone's condition (439I).   In 439J-439R I set out some
+examples relevant to \S\S434-435, filling out the classification schemes
+of 434A and 435A, with spaces which just miss being Radon (439K) or
+measure-compact (439N, 439P, 439Q).   In 439S I present the canonical
+example of a non-Prokhorov topological space, answering an obvious
+question from \S437.
+
+\leader{439A}{Example} Let $\Cal B$ be the Borel $\sigma$-algebra of
+$[0,1]$.
+There is a probability measure $\nu$ defined on a $\sigma$-subalgebra
+$\Tau$ of $\Cal B$ which has no extension to a measure on $\Cal B$.
+
+\prooflet{
+\medskip
+
+\noindent{\bf first construction}
+Let $A\subseteq[0,1]$ be an analytic set which is not Borel (423L).
+Let $\Cal I$ be the family of sets of the form $E\cup F$ where $E$, $F$
+are Borel sets, $E\subseteq A$ and $F\subseteq[0,1]\setminus A$.   Then
+$\Cal I$ is a $\sigma$-ideal of $\Cal B$ not containing $[0,1]$.   Set
+$\Tau=\Cal I\cup\{[0,1]\setminus H:H\in\Cal I\}$, and define
+$\nu:\Tau\to\{0,1\}$ by setting $\nu H=0$, $\nu([0,1]\setminus H)=1$ for
+every $H\in\Cal I$;  then $\nu$ is a probability measure (cf.\
+countable-cocountable measures (211R) or Dieudonn\'e's measure (411Q)).
+
+\Quer\ If $\mu:\Cal B\to[0,1]$ is a measure extending $\nu$, then its
+completion $\hat\mu$ measures $A$ (432A).   Also $\hat\mu$ is a Radon
+measure (433Cb).   Now every compact subset of $A$ belongs to $\Cal I$, so
+
+\Centerline{$\hat\mu A
+=\sup\{\hat\mu K:K\subseteq A$ is compact$\}
+=\sup\{\nu K:K\subseteq A$ is compact$\}
+=0$.}
+
+\noindent Similarly $\hat\mu([0,1]\setminus A)=0$, which is absurd.\
+\Bang
+
+\medskip
+
+\noindent{\bf second construction} This time, let $\Cal I$ be the family
+of meager Borel sets in $[0,1]$.   As before, let $\Tau$ be $\Cal
+I\cup\{[0,1]\setminus E:E\in\Cal I\}$, and set $\nu E=0$,
+$\nu([0,1]\setminus E)=1$ for $E\in\Cal I$.   \Quer\ If $\mu$ is a Borel
+measure extending $\nu$, then $\mu([0,1]\setminus\Bbb Q)=1$, and $\mu$
+is tight (that is, inner regular with respect to the compact sets), so there is a closed subset $F$
+of $[0,1]\setminus\Bbb Q$ such that $\mu F>0$.   But $F$ is nowhere
+dense, so $\nu F=0$.\ \Bang
+
+\medskip
+
+\noindent{\bf third construction}\cmmnt{\footnote{I am grateful to
+M.Laczkovich and D.Preiss for showing this to me.}{}}
+There is a function
+$f:[0,1]\to\{0,1\}^{\frak c}$ which is $(\Cal B,\CalBa)$-measurable,
+where $\CalBa$ is the Baire $\sigma$-algebra of $\{0,1\}^{\frak c}$, and
+such that $f[\,[0,1]\,]$ meets every non-empty member of
+$\CalBa$.
+\Prf\ Set $X=C([0,1])^{\Bbb N}$ with the product of the norm
+topologies,
+so that $X$ is an uncountable Polish space (4A2Pe, 4A2Qc), and
+$([0,1],\Cal B)$ is isomorphic to $(X,\Cal B(X))$, where $\Cal B(X)$ is
+the Borel $\sigma$-algebra of $X$ (424Da).   Define
+$g:X\to\{0,1\}^{[0,1]}$ by saying that $g(\sequence{i}{u_i})(t)=1$ iff
+$\lim_{i\to\infty}u_i(t)=1$.   For each $t\in[0,1]$,
+
+$$\{\sequence{i}{u_i}:\lim_{i\to\infty}u_i(t)=1\}
+=\bigcap_{m\in\Bbb N}\bigcup_{n\in\Bbb N}\{\sequence{i}{u_i}:
+|u_i(t)-1|\le 2^{-m}\text{ for every }i\ge n\}$$
+
+\noindent is a Borel subset of $X$, so $g$ is
+$(\Cal B(X),\CalBa(\{0,1\}^{[0,1]}))$-measurable, where
+$\CalBa(\{0,1\}^{[0,1]})$ is the Baire $\sigma$-algebra of
+$\{0,1\}^{[0,1]}$ (4A3Ne).   If $E\in\CalBa(\{0,1\}^{[0,1]})$ is
+non-empty, there is a countable set $I\subseteq[0,1]$ such that $E$ is
+determined by coordinates in $I$ (4A3Nb), so that
+$E\supseteq\{w:w\restr I=z\}$ for some $z\in\{0,1\}^I$.   Now we can
+find a sequence $\sequence{i}{u_i}$ in $C([0,1])$ such that
+$\lim_{i\to\infty}u_i(t)=z(t)$ for every $t\in I$ (if
+$I\subseteq\{t_j:j\in\Bbb N\}$, take $u_i$ such that
+$|u_i(t_j)-z(t_j)|\le 2^{-i}$ whenever $j\le i$), and in this case
+$g(\sequence{i}{u_i})\in E$.
+
+Because $(X,\Cal B(X))\cong([0,1],\Cal B)$ and
+$(\{0,1\}^{[0,1]},\CalBa(\{0,1\}^{[0,1]}))
+\cong(\{0,1\}^{\frak c},\CalBa)$, we can copy $g$ to a function $f$ with
+the required properties.\ \QeD\
+
+In particular, $f[\,[0,1]\,]$ has full outer measure for the usual measure
+$\nu_{\frakc}$ on $\{0,1\}^{\frak c}$,
+because $\nu_{\frakc}$ is completion regular (415E).   Setting
+$\Tau=\{f^{-1}[H]:H\in\CalBa\}$, we have a measure $\nu$ with domain $\Tau$
+such that $f$ is \imp\ for $\nu$ and $\nu_{\frak c}$
+(234F\formerly{1{}32G}).   The map
+$H^{\ssbullet}\mapsto f^{-1}[H]^{\ssbullet}$ from the measure algebra of
+$\nu_{\frakc}$ to the measure algebra of $\nu$ is measure-preserving;
+since
+it is surely surjective, the measure algebras are isomorphic, and $\nu$
+has Maharam type $\frak c$.
+
+However, any probability measure on the whole algebra $\Cal B$ has
+countable Maharam type (433A), so cannot extend $\nu$.
+}%end of prooflet
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Compare 433J-433K.
+}%end of comment
+
+\leader{439B}{Definition} Let $X$ be a Hausdorff space.   I will call
+$X$ {\bf universally negligible} if there is no Borel probability
+measure $\mu$ defined on $X$ such that $\mu\{x\}=0$ for every $x\in X$.
+A subset of $X$ will be `universally negligible' if it is universally
+negligible in its subspace topology.
+
+\vleader{48pt}{439C}{Proposition} Let $X$ be a Hausdorff space.
+
+(a) If $A$ is a subset of $X$, the following are equiveridical:
+
+\inset{(i) $A$ is universally negligible;
+
+(ii) $\mu^*A=0$ whenever $\mu$ is a Borel probability measure on
+$X$ such that $\mu\{x\}=0$ for every $x\in X$;
+
+(iii) $\mu^*A=0$ whenever $\mu$ is a $\sigma$-finite topological
+measure on $X$ such that $\mu\{x\}=0$ for every $x\in A$;
+
+(iv) for every $\sigma$-finite topological measure $\mu$ on $X$ there is
+a countable set $B\subseteq A$ such that $\mu^*A=\mu B$;
+
+(v) $A$ is a Radon space and every compact subset of $A$ is scattered.}
+
+\noindent In particular, countable subsets of $X$ are universally
+negligible.
+
+(b) The family of universally
+negligible subsets of $X$ is a $\sigma$-ideal.
+
+(c) Suppose that $Y$ is a universally
+negligible Hausdorff space and $f:X\to Y$ a Borel measurable function
+such that $f^{-1}[\{y\}]$ is universally negligible for every $y\in Y$.
+Then $X$ is universally negligible.
+
+(d) If the topology on $X$ is discrete, $X$ is universally negligible
+iff $\#(X)$ is measure-free.
+
+\proof{{\bf (a)(i)$\Rightarrow$(iii)} If $A$ is universally
+negligible and $\mu$ is a $\sigma$-finite topological measure on $X$
+such that $\mu\{x\}=0$ for every $x\in A$, let $\mu_A$ be the subspace
+measure on $A$.
+\Quer\ If $\mu^*A=\alpha>0$, then (because $\mu$ is $\sigma$-finite)
+there is a measurable set $E\subseteq X$ such that
+$\gamma=\mu^*(E\cap A)$ is finite and non-zero.   The subspace measure
+$\mu_{E\cap A}$ is a topological measure on $E\cap A$;  set
+$\nu F=\gamma^{-1}\mu_{E\cap A}(E\cap F)$ for relatively Borel sets
+$F\subseteq A$;  then $\nu$ is a
+Borel probability measure on $A$ which is zero on singletons.\ \BanG\
+So $\mu^*A=0$.
+
+\medskip
+
+\quad{\bf (iii)$\Rightarrow$(iv)} If (iii) is true and $\mu$ is a
+$\sigma$-finite topological measure on $X$, set
+$B=\{x:x\in X,\,\mu\{x\}>0\}$.   Because $\mu$ is $\sigma$-finite, $B$
+must be countable, therefore measurable, and if we set
+$\nu E=\mu(E\setminus B)$ for every Borel set $E\subseteq X$, $\nu$ is a
+$\sigma$-finite Borel measure on $X$ and $\nu\{x\}=0$ for every
+$x\in X$.   By (iii), $\nu^*A=0$, that is, there is a Borel set
+$E\supseteq A$ such that $\mu(E\setminus B)=0$;  in which case
+
+\Centerline{$\mu^*A
+\le\mu(E\setminus(B\setminus A))=\mu(E\setminus B)+\mu(A\cap B)
+=\mu(A\cap B)\le\mu^*A$,}
+
+\noindent so $\mu^*A=\mu(A\cap B)$.   As $\mu$ is
+arbitrary, (iv) is true.
+
+\medskip
+
+\quad{\bf (iv)$\Rightarrow$(ii)} is trivial.
+
+\medskip
+
+\quad{\bf not-(i)$\Rightarrow$not-(ii)} If $A$
+is not universally negligible, let $\mu$ be a Borel probability measure
+on $A$ which is zero on singletons.   Set $\nu E=\mu(E\cap A)$ for any
+Borel set $E\subseteq X$;  then $\nu$ is a Borel probability measure on
+$X$ which is zero on singletons, and $\nu^*A=1$.
+
+\medskip
+
+\quad{\bf (i)$\Rightarrow$(v)} Suppose that $A$ is universally
+negligible.   Let $\mu$ be a totally finite Borel measure on $A$.
+Applying (i)$\Rightarrow$(iv) with $X=A$, we see that there is a
+countable set $B\subseteq A$ such that $\mu B=\mu A$;  but this means
+that $\mu$ is inner regular with respect to the finite subsets of $B$,
+which of course are compact.   As $\mu$ is arbitrary, $A$ is a Radon
+space.
+
+\Quer\ Suppose, if possible, that $A$ has a compact set $K$ which is not
+scattered.   In this case there is a continuous surjection $f:K\to[0,1]$
+(4A2G(j-iv)).   Now there is a Radon probability measure $\nu$ on $K$
+such that $f$ is \imp\ for $\nu$ and Lebesgue measure on $[0,1]$ and
+induces an isomorphism of the measure algebras, so that $\nu$ is
+atomless (418L).   Accordingly we have a Borel probability measure $\mu$
+on $A$
+defined by setting $\mu E=\nu(K\cap E)$ for every relatively Borel set
+$E\subseteq A$, and $\mu\{x\}=0$ for every $x\in A$, so $A$ is not
+universally negligible.\ \BanG\  Thus all compact subsets of $A$ are
+scattered, and (v) is true.
+
+\medskip
+
+\quad{\bf (v)$\Rightarrow$(i)} Now suppose that (v) is true and that
+that $\mu$ is a Borel probability measure on $A$.   Then $\mu$ has an
+extension to a Radon measure $\tilde\mu$ (434F(a-iii)).   Let
+$K\subseteq A$ be a non-empty compact set which is self-supporting for
+$\tilde\mu$ (416Dc).   $K$ is scattered, so has an isolated point
+$\{x\}$;  because $K$ is self-supporting, $\mu\{x\}=\tilde\mu\{x\}>0$.
+As $\mu$ is arbitrary, $A$ is universally negligible.
+
+\medskip
+
+{\bf (b)} This is immediate from (a-ii).
+
+\medskip
+
+{\bf (c)} Let $\mu$ be a Borel probability measure on $X$.   Then
+$F\mapsto\nu f^{-1}[F]$ is a Borel probability measure on $Y$.   Because
+$Y$ is universally negligible, there must be a $y\in Y$ such that
+$\mu f^{-1}[\{y\}]>0$.   Set $E=f^{-1}[\{y\}]$ and let $\mu_E$ be the
+subspace measure on $E$.   Then $\mu_E$ is a non-zero totally finite
+Borel measure on $E$.   Since $E$ is supposed to be universally
+negligible, there must be some $x\in E$ such that
+$0<\mu_E\{x\}=\mu\{x\}$.
+
+\medskip
+
+{\bf (d)} This is just a re-phrasing of the definition in 438A.
+}%end of proof of 439C
+
+
+\leader{439D}{Remark\dvro{}{s (a)}}\cmmnt{ The following will be useful when
+interpreting the definition in 439B.}   Let $X$ be a hereditarily
+Lindel\"of Hausdorff space and $\mu$ a topological probability measure
+on $X$ such that $\mu\{x\}=0$ for every $x\in X$.   Then $\mu$ is
+atomless.
+
+\prooflet{\Prf\ Suppose that $\mu H>0$.   Write
+
+\Centerline{$\Cal G=\{G:G\subseteq X$ is open, $\mu(G\cap H)=0\}$.}
+
+\noindent Then there is a countable $\Cal G_0\subseteq\Cal G$ such that
+$\bigcup\Cal G_0=\bigcup\Cal G$ (4A2H(c-i)), so
+
+\Centerline{$\mu(H\cap\bigcup\Cal G)=\mu(H\cap\bigcup\Cal G_0)=0$,}
+
+\noindent and $\mu(H\setminus\bigcup\Cal G)>0$.   Because $\mu$ is zero
+on singletons, $H\setminus\bigcup\Cal G$ has at least two points $x$,
+$y$ say.   Now there are disjoint open sets $G_0$, $G_1$ containing $x$,
+$y$ respectively, and neither belongs to $\Cal G$, so $H\cap G_0$,
+$H\cap G_1$ are disjoint subsets of $H$ of positive measure.   Thus $H$
+is not an atom.   As $H$ is arbitrary, $\mu$ is atomless.\ \Qed
+}%end of prooflet
+
+\cmmnt{\spheader 439Db The obvious applications of (a) are when $X$
+is separable and metrizable;  but, more generally, we can use it on any
+Hausdorff space with a countable network, e.g., on any analytic space.
+}%end of comment
+
+\leader{439E}{Lemma} (a) Let $E$, $B\subseteq\Bbb R$ be such that $E$ is
+measurable and $\mu_LE$, $\mu_L^*B$ are both greater than $0$, where
+$\mu_L$ is Lebesgue measure.   Then $E-B=\{x-y:x\in E,\,y\in B\}$
+includes a non-trivial interval.
+
+(b) If $A\subseteq\Bbb R$ and $\mu_L^*A>0$, then $A+\Bbb Q$ is
+of full outer measure in $\Bbb R$.
+
+\proof{{\bf (a)} By 223B or 261Da, there are $a\in E$, $b\in B$ such that
+
+$$\eqalign{\lim_{\delta\downarrow 0}\Bover1{2\delta}
+  \mu(E\cap[a-\delta,a+\delta])
+=\lim_{\delta\downarrow 0}\Bover1{2\delta}
+  \mu^*(B\cap[b-\delta,b+\delta])
+=1.\cr}$$
+
+\noindent Let $\gamma>0$ be such that
+
+\Centerline{$\mu_L(E\cap[a-\delta,a+\delta])>\Bover32\delta$,
+\quad$\mu_L^*(B\cap[b-\delta,b+\delta])>\Bover32\delta$}
+
+\noindent whenever $0<\delta\le\gamma$.   Now suppose that
+$0<\delta\le\gamma$.   Then
+
+$$\eqalign{\mu_L((E+b)\cap[a+b,a+b+\delta])
+&=\mu_L(E\cap[a,a+\delta])\cr
+&\ge\mu_L(E\cap[a-\delta,a+\delta])-\delta
+>\Bover12\delta,\cr}$$
+
+\noindent and similarly
+
+$$\eqalign{\mu_L^*((B+a+\delta)\cap[a+b,a+b+\delta])
+&=\mu_L^*(B\cap[b-\delta,b])\cr
+&\ge\mu_L^*(B\cap[b-\delta,b+\delta])-\delta
+>\Bover12\delta.\cr}$$
+
+\noindent But this means that
+$(E+b)\cap(B+a+\delta)$ cannot be empty.   If
+$u\in(E+b)\cap(B+a+\delta)$, then $u-b\in E$, $u-a-\delta\in B$ so
+
+\Centerline{$a-b+\delta=(u-b)-(u-a-\delta)\in E-B$.}
+
+As $\delta$ is arbitrary, $E-B$ includes the interval
+$\ocint{a-b,a-b+\gamma}$.
+
+\medskip
+
+{\bf (b)} \Quer\ Suppose, if possible, otherwise;  that there is a
+measurable set $E\subseteq\Bbb R$ such that $\mu_LE>0$ and
+$E\cap(A+\Bbb Q)=\emptyset$.   Then $E-A$ does not meet $\Bbb Q$ and
+cannot include any non-trivial interval.\ \Bang
+}%end of proof of 439E
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} There will be a dramatic generalization of (a) in
+443Db.
+}%end of comment
+
+\leader{439F}{Proposition} Let $\kappa$ be the least cardinal of any set of
+non-zero Lebesgue outer measure in $\Bbb R$.
+
+(a) There is a set $X\subseteq[0,1]$ of cardinal $\kappa$ and full outer
+Lebesgue measure.
+
+(b) If $(Z,\Tau,\nu)$ is any atomless complete locally determined
+measure space and $A\subseteq Z$ has cardinal less than $\kappa$, then
+$\nu^*A=0$.
+
+(c)\cmmnt{ ({\smc Grzegorek 81})} There is a universally negligible
+set $Y\subseteq[0,1]$ of cardinal $\kappa$.
+
+\proof{{\bf (a)} Take any set $A\subseteq\Bbb R$ such that
+$\#(A)=\kappa$ and $\mu_L^*A>0$, where $\mu_L$ is Lebesgue measure.
+Set $B=A+\Bbb Q$.   Then $(\mu_L)_*(\Bbb R\setminus B)=0$, by 439Eb.
+Set $X=[0,1]\cap B$;  then $\mu_L^*X=1$ while $\#(X)\le\#(B)=\kappa$.
+By the definition of $\kappa$, $\#(X)$ must be exactly $\kappa$.
+
+\medskip
+
+{\bf (b)} \Quer\ Otherwise, by 412Jc, there is a set $F\subseteq Z$ such
+that $\nu F<\infty$ and $\nu^*(F\cap A)>0$.   By 343Cc, there is
+a function $f:F\to[0,\nu F]$ which is \imp\ for
+the subspace measure $\nu_F$ and Lebesgue measure on
+$[0,\nu F]$.   But $f[A\cap F]$ has cardinal less than $\kappa$, so
+$\mu_Lf[A\cap F]=0$ and
+
+\Centerline{$0<\nu^*(A\cap F)\le\nu f^{-1}[f[A\cap F]]=0$,}
+
+\noindent which is absurd.\ \Bang
+
+\medskip
+
+{\bf (c)(i)} Enumerate $X$ as $\langle x_{\xi}\rangle_{\xi<\kappa}$.
+For each $\xi<\kappa$, $A_{\xi}=\{x_{\eta}:\eta\le\xi\}$ has cardinal
+less than $\kappa$, so is Lebesgue negligible;  let
+$\sequencen{I_{\xi n}}$ be a sequence of intervals covering $A_{\xi}$ with $\sum_{n=0}^{\infty}\mu_LI_{\xi n}<\bover12$.   Enlarging the intervals
+slightly if necessary, we may suppose that every $I_{\xi n}$ has
+rational endpoints;  let $\sequence{m}{J_m}$ enumerate the family of
+intervals in $\Bbb R$ with rational endpoints.
+
+Set
+
+\Centerline{$C_{mn}=\{\xi:\xi<\kappa,\,I_{\xi n}=J_m\}$}
+
+\noindent for each $m$, $n\in\Bbb N$.
+
+\medskip
+
+\quad{\bf (ii)} If $\nu$ is an atomless totally finite measure on
+$\kappa$ which measures every $C_{mn}$, then $\nu\kappa=0$.   \Prf\ Note
+first that (by (b), applied to the completion of $\nu$) $\nu^*\xi=0$ for
+every $\xi<\kappa$.   Let $\lambda$
+be the (c.l.d.) product of $\mu_X$, the subspace measure on $X$,
+with $\nu$.   Set
+
+\Centerline{$B=\bigcup_{m,n\in\Bbb N}((X\cap J_m)\times C_{mn})
+\subseteq X\times\kappa$.}
+
+\noindent Then $B$ is measured by $\lambda$, so, by Fubini's theorem,
+
+\Centerline{$\int\nu B[\{x\}]\mu_X(dx)
+=\int\mu_X B^{-1}[\{\xi\}]\nu(d\xi)$}
+
+\noindent (252D).
+
+Now look at the sectional measures $\nu B[\{x\}]$,
+$\mu_XB^{-1}[\{\xi\}]$.   (Because $B$ is actually a countable union of
+measurable rectangles, these are always defined.)   For any $x\in X$,
+there is an $\eta<\kappa$ such that $x=x_{\eta}$, and now
+
+$$\eqalign{B[\{x\}]
+&=\{\xi:\text{ there are }m,\,n\in\Bbb N
+  \text{ such that }x\in J_m\text{ and }\xi\in C_{mn}\}\cr
+&=\{\xi:\text{ there are }m,\,n\in\Bbb N
+  \text{ such that }x\in J_m\text{ and }I_{\xi n}=J_m\}\cr
+&=\{\xi:\text{ there is an }n\in\Bbb N
+  \text{ such that }x\in I_{\xi n}\}
+\supseteq\kappa\setminus\eta\cr}$$
+
+\noindent by the choice of the $I_{\xi n}$.   But as $\nu^*\eta=0$, this
+means that $\nu B[\{x\}]=\nu\kappa$.
+
+On the other hand, if $\xi<\kappa$, then
+
+$$\eqalign{B^{-1}[\{\xi\}]
+&=\{x:\text{ there are }m,\,n\in\Bbb N\text{ such that }x\in J_m
+  \text{ and }\xi\in C_{mn}\}\cr
+&=\{x:\text{ there are }m,\,n\in\Bbb N\text{ such that }x\in J_m
+  \text{ and }I_{\xi n}=J_m\}\cr
+&=\{x:\text{ there is an }n\in\Bbb N
+  \text{ such that }x\in I_{\xi n}\}
+=X\cap\bigcup_{n\in\Bbb N}I_{\xi n},\cr}$$
+
+\noindent so that
+
+\Centerline{$\mu_XB^{-1}[\{\xi\}]
+\le\sum_{n=0}^{\infty}\mu_LI_{\xi n}\le\Bover12$.}
+
+Returning to the integrals, we have
+
+\Centerline{$\nu\kappa
+=\int\nu B[\{x\}]\mu_X(dx)
+=\int\mu_X B^{-1}[\{\xi\}]\nu(d\xi)
+\le\Bover12\nu\kappa$,}
+
+\noindent so that $\nu\kappa$ must be $0$, as claimed.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} Now there is an injective function $g:\kappa\to[0,1]$
+such that $g[C_{mn}]$ is relatively Borel in $g[\kappa]$ for every $m$,
+$n\in\Bbb N$.   \Prf\ Define
+$h:\kappa\to\{0,1\}^{\Bbb N\times\Bbb N\times\Bbb N}$ by setting
+
+$$\eqalign{h(\xi)(m,n,k)&=1\text{ if }\xi\in C_{mn}
+  \text{ and }x_{\xi}\in J_k,\cr
+&=0\text{ otherwise}.\cr}$$
+
+\noindent Then $h$ is injective (because if $\xi\ne\eta$ then
+$x_{\xi}\ne x_{\eta}$, so there is some $k$ such that $x_{\xi}\in J_k$
+and $x_{\eta}\notin J_k$), and
+
+\Centerline{$h[C_{mn}]=h[\kappa]\cap\{w:\text{ there is some }k
+  \text{ such that }w(m,n,k)=1\}$}
+
+\noindent is relatively Borel in $h[\kappa]$ for every $m$,
+$n\in\Bbb N$.   But now recall that
+$\{0,1\}^{\Bbb N\times\Bbb N\times\Bbb N}\cong\{0,1\}^{\Bbb N}$ is
+homeomorphic to the Cantor set $C\subseteq[0,1]$ (4A2Uc).   If
+$\phi:\{0,1\}^{\Bbb N\times\Bbb N\times\Bbb N}\to C$ is any
+homeomorphism,
+then $\phi h$ has the required properties.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} Set $Y=g[\kappa]$.   Because $g$ is injective,
+$\#(Y)=\kappa$.   Also $Y$ is universally negligible.   \Prf\ Suppose
+that $\tilde\nu$ is a Borel measure on $Y$ which is zero on singletons.
+Then it is atomless, because $Y$ is separable and metrizable (439D).
+So its copy $\nu=\tilde\nu(g^{-1})^{-1}$ on $\kappa$ is atomless.
+Because $g[C_{mn}]$ is a Borel subset of $Y$, $\nu$ measures $C_{mn}$
+for all $m$, $n\in\Bbb N$, so $\tilde\nu Y=\nu\kappa=0$, by (ii)
+above.\ \Qed
+}%end of proof of 439F
+
+\leader{439G}{Corollary} A metrizable continuous image of a universally
+negligible metrizable space need not be universally negligible.
+
+\proof{ Take $X$ and $Y$ from 439Fa and 439Fc above, and let $f:X\to Y$
+be any bijection.   Let $\Gamma$ be the graph of $f$.   The projection
+map $(x,y)\mapsto y:\Gamma\to Y$ is continuous and injective, so
+$\Gamma$ is universally negligible, by 439Cc.   On the other hand, the
+projection map $(x,y)\mapsto x:\Gamma\to X$ is continuous and
+surjective, and $X$ is
+surely not universally negligible, since it is not Lebesgue negligible.
+}%end of proof of 439G
+
+\leader{439H}{Corollary} One-dimensional Hausdorff measure on $\BbbR^2$
+is not semi-finite.
+
+\proof{ Let $\mu_{H1}$ be one-dimensional Hausdorff measure on
+$\BbbR^2$.    Let $X$, $\Gamma$ be the sets described in 439F and the
+proof of 439G.
+
+\medskip
+
+{\bf (a)} $\mu_{H1}^*\Gamma>0$.   \Prf\ The first-coordinate map
+$\pi_1:\BbbR^2\to\Bbb R$ is 1-Lipschitz, so, writing $\mu_L$ for
+Lebesgue measure on $\Bbb R$,
+
+\Centerline{$1=\mu_L^*X=\mu_L^*\pi_1[\Gamma]\le\mu_{H1}^*\Gamma$}
+
+\noindent by 264G/471J and 264I.\ \Qed
+
+\medskip
+
+{\bf (b)} If $E\subseteq\BbbR^2$ and $\mu_{H1}E<\infty$, then
+$\mu_{H1}(E\cap\Gamma)=0$, because $E\cap\Gamma$ is universally
+negligible (439Cb) and $\mu_{H1}$ is a topological measure (264E/471Da)
+which is zero on singletons.
+
+\medskip
+
+{\bf (c)} \Quer\ Suppose, if possible, that $\Gamma$ is not measured by
+$\mu_{H1}$.   Then there is a set $A\subseteq\BbbR^2$ such that
+$\mu^*_{H1}A<\mu^*_{H1}(A\cap\Gamma)+\mu^*_{H1}(A\setminus\Gamma)$
+(264C/471A, 264Fb/471Dc).   Let $E$ be a Borel set including $A$ such that
+$\mu_{H1}E=\mu_{H1}^*A$ (264Fa/471Db);  then $\mu_{H1}(E\cap\Gamma)=0$, so
+
+\Centerline{$\mu^*_{H1}(A\cap\Gamma)+\mu^*_{H1}(A\setminus\Gamma)
+\le\mu_{H1}(E\cap\Gamma)+\mu_{H1}^*A=\mu^*_{H1}A$.  \Bang}
+
+\medskip
+
+{\bf (d)} Since $\Gamma$ is measurable, not negligible, and meets every
+measurable set of finite measure in a negligible set, it is purely
+infinite, and $\mu_{H1}$ is not semi-finite.
+}%end of proof of 439H
+
+\leader{439I}{Example} There are a set $X$, a Riesz subspace $U$ of
+$\Bbb R^X$ and a smooth positive linear functional $h:U\to\Bbb R$ which
+is not expressible as an integral.
+
+\proof{ Take $X$ and $Y$ from 439F.   Replacing $Y$ by $Y\setminus\{0\}$
+if need be, we may suppose that $0\notin Y$.   Let $f:X\to Y$ be any
+bijection.
+
+Let $U$ be the Riesz subspace
+$\{u\times f:u\in C_b\}\subseteq\Bbb R^X$, where $C_b$ is the space of
+bounded continuous functions from $X$ to $\Bbb R$.   Because $f$ is
+strictly positive, $u\mapsto u\times f:C_b\to U$ is a bijection,
+therefore a Riesz space isomorphism;
+moreover, for a non-empty set $A\subseteq C_b$, $\inf_{u\in A}u(x)=0$
+for every $x\in X$ iff $\inf_{u\in A}u(x)f(x)=0$ for every $x\in X$.
+We therefore have a smooth linear functional $h:U\to\Bbb R$ defined by
+setting $h(u\times f)=\int u\,d\mu_X$ for every $u\in C_b$, where
+$\mu_X$ is the subspace measure on $X$ induced by Lebesgue measure.
+(By 415B, $\mu_X$ is quasi-Radon, so the integral it defines on $C_b$ is
+smooth, as noted in 436H.)
+
+\Quer\ But suppose, if possible, that $h$ is the integral with respect
+to some measure $\nu$ on $X$.   Since $f\in U$, it must be
+$\Tau$-measurable, where $\Tau$ is the domain of the completion
+$\hat\nu$ of $\nu$.   Note that $\hat\nu\{x\}=0$ for every $x\in X$.
+\Prf\ Set $u_n(y)=\max(0,1-2^n|y-x|)$ for $y\in X$.   Then
+
+$$\eqalign{f(x)\hat\nu\{x\}
+&=\lim_{n\to\infty}\int u_n\times f\,d\nu
+=\lim_{n\to\infty}h(u_n\times f)\cr
+&=\lim_{n\to\infty}\int u_n\,d\mu_X
+=\mu_X\{x\}
+=0,\cr}$$
+
+\noindent so $\hat\nu\{x\}=0$.\ \Qed
+
+For Borel sets $E\subseteq[0,1]$ set
+$\lambda E=\hat\nu f^{-1}[E]$.   Then the completion $\hat\lambda$ of
+$\lambda$ is a Radon measure on $[0,1]$ (433Cb or 256C).   If $t\in[0,1]$
+then $f^{-1}[\{t\}]$ contains at most one point, so
+$\hat\lambda\{t\}=\lambda\{t\}=0$.   But $Y$ is supposed to be
+universally negligible, so $\lambda^*Y=\hat\lambda^*Y=0$ (439Ca), that
+is, there is a Borel set $E\supseteq Y$ with $\lambda E=0$;  in which
+case $\nu X=\hat\nu f^{-1}[E]=0$, which is impossible.\ \Bang
+
+Thus $h$ is not an integral, despite being a smooth linear functional on
+a Riesz subspace of $\Bbb R^X$.
+}%end of proof of 439I
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} This example is adapted from
+{\smc Fremlin \& Talagrand 78}.
+}%end of comment
+
+\leader{439J}{Example} Assume that there is some cardinal $\kappa$ which
+is not measure-free.   Give $\kappa$ its discrete topology, and let
+$\mu$ be a probability measure with domain $\Cal P\kappa$ such that
+$\mu\{\xi\}=0$ for every $\xi<\kappa$.   Now every subset of $\kappa$ is
+open-and-closed, so $\mu$ is simultaneously a Baire probability measure
+and a completion regular Borel probability measure.    Of course it is
+not $\tau$-additive.   \cmmnt{In the classification schemes of 434A
+and 435A, we have a measure which is of type B$_1$ as a Borel measure
+and type E$_3$ as a Baire measure.}
+%4{}35A (type E_3) %434A (type B_1)
+
+\leader{439K}{Example} There is a first-countable compact Hausdorff
+space which is not Radon.
+
+\proof{ The construction starts from a compact metrizable space
+$(Z,\frak S)$ with an atomless Radon probability measure $\mu$.   The
+obvious candidate is $[0,1]$ with Lebesgue measure;  but for technical
+convenience in a later application I will instead use
+$Z=\{0,1\}^{\Bbb N}$ with its usual product topology and measure (254J).
+
+\medskip
+
+{\bf (a)} There is a topology $\frak T_{\frak c}$ on $Z$ such that
+
+\quad($\alpha$) $\frak S\subseteq\frak T_{\frak c}$;
+
+\quad($\beta$) every point of $Z$ belongs to a countable set which is
+compact and open for $\frak T_{\frak c}$;
+
+\quad($\gamma$) if $\sequencen{F_n}$ is a sequence of
+$\frak T_{\frak c}$-closed sets with empty intersection, then
+$\bigcap_{n\in\Bbb N}\overline{F}_n^{\frak S}$ is countable, where I
+write $\overline{F}^{\frak S}$ for the $\frak S$-closure of $F$.
+
+\medskip
+
+\Prf{\bf (i)} $\frak T_{\frak c}$ will be the last in a family
+$\langle\frak T_{\xi}\rangle_{\xi\le\frak c}$ of topologies.   We must
+begin by enumerating $Z$ as
+$\langle z_{\xi}\rangle_{\xi<\frak c}$
+and taking a family $\langle\sequencen{I_{\xi n}}\rangle_{\xi<\frak c}$
+running over $([Z]^{\le\omega})^{\Bbb N}$ with cofinal repetitions,
+where $[Z]^{\le\omega}$ is the family of countable subsets of
+$Z$.   (This can be done because
+$\#([Z]^{\le\omega})=\frak c$, by 2A1Hb.)
+Together with $\langle\frak T_{\xi}\rangle_{\xi\le\frak c}$ we choose
+simultaneously families $\langle x_{\xi}\rangle_{\xi<\frak c}$,
+$\langle y_{\xi}\rangle_{\xi<\frak c}$ of points in $Z$, and the
+inductive hypothesis will be
+
+\inset{$\frak T_{\xi}$ is a topology on
+$X_{\xi}=\{x_{\eta}:\eta<\xi\}\cup\{y_{\eta}:\eta<\xi\}$ finer than the
+topology on $X_{\xi}$ induced by $\frak S$;}
+
+\inset{if $\eta<\xi\le\frak c$, then $X_{\eta}\in\frak T_{\xi}$ and
+$\frak T_{\eta}$ is the subspace topology on $X_{\eta}$ induced by
+$\frak T_{\xi}$;}
+
+\inset{every point of $X_{\xi}$ belongs to a countable set which is
+compact and open for $\frak T_{\xi}$.}
+
+\noindent The induction starts with $X_0=\emptyset$,
+$\frak T_0=\{\emptyset\}$.
+
+\medskip
+
+\quad{\bf (ii)} {\it Inductive step to a successor ordinal} Suppose that
+we have found $X_{\xi}$ and $\frak T_{\xi}$ where $\xi<\frak c$.
+
+\medskip
+
+\qquad\grheada\ Start by picking $y_{\xi}\in Z\setminus X_{\xi}$ such
+that $y_{\xi}=z_{\xi}$ if $z_{\xi}\notin X_{\xi}$.
+Examine the sequence $\sequencen{I_{\xi n}}$.   If {\it either}
+$\bigcup_{n\in\Bbb N}I_{\xi n}\not\subseteq X_{\xi}$ {\it or}
+$\bigcap_{n\in\Bbb N}\overline{I}_{\xi n}^{\frak S}$ is countable, take
+$x_{\xi}$ to be any point of $Z\setminus(X_{\xi}\cup\{y_{\xi}\})$
+and set $K_m=\emptyset$ for every $m$ before proceeding to ($\gamma$)
+below.
+
+\medskip
+
+\qquad\grheadb\ If $I_{\xi n}\subseteq X_{\xi}$ for every $n$ and
+$\bigcap_{n\in\Bbb N}\overline{I}_{\xi n}^{\frak S}$ is uncountable, it
+must have cardinal $\frak c$, by 423K, so cannot be included in
+$X_{\xi}\cup\{y_{\xi}\}$.    Take any
+$x_{\xi}\in\bigcap_{n\in\Bbb N}\overline{I}_{\xi n}^{\frak S}
+\setminus(X_{\xi}\cup\{y_{\xi}\})$.   Let $\sequence{m}{t_m}$ be a
+sequence in $Z$ such that $t_m\restr m=x_{\xi}\restr m$ for every
+$m\in\Bbb N$ and $t_m\in I_{\xi n}$ whenever $r\in\Bbb N$, $n\le 2r$ and
+$m=r^2+n$.   (Thus, for each $n$, $t_m\in I_{\xi n}$ for infinitely many
+$m$, while $\sequence{m}{t_m}\to x_{\xi}$ in the ordinary sense.)   By
+the inductive hypothesis, we can find countable sets
+$K_m\subseteq X_{\xi}$,
+compact and open for $\frak T_{\xi}$, such that $t_m\in K_m$ for each
+$m$.   Because $\{t:t\in X_{\xi},\,t\restr m=x_{\xi}\restr m\}$ is
+open-and-closed for $\frak T_{\xi}$ and contains $t_m$, we may suppose
+that $t\restr m=x_{\xi}\restr m$ for every $t\in K_m$.
+
+\medskip
+
+\qquad\grheadc\ Let $\frak T_{\xi+1}$ be the topology on
+$X_{\xi+1}=X_{\xi}\cup\{x_{\xi},y_{\xi}\}$ generated by
+
+\Centerline{$\frak T_{\xi}\cup\{\{y_{\xi}\}\}\cup\{L_n:n\in\Bbb N\}$,}
+
+\noindent where $L_n=\{x_{\xi}\}\cup\bigcup_{m\ge n}K_m$ for each $n$.
+
+\medskip
+
+\qquad\grheadd\ Because $\frak T_{\xi}\subseteq\frak T_{\xi+1}$,
+$X_{\xi}$ will be open in $X_{\xi+1}$.   Because the $K_m$ are always
+$\frak T_{\xi}$-open, and $x_{\xi}$, $y_{\xi}$ are distinct points of
+$Z\setminus X_{\xi}$, the topology on $X_{\xi}$ induced by
+$\frak T_{\xi+1}$ is just $\frak T_{\xi}$.   Consequently (by the
+inductive
+hypothesis) the topology on $X_{\eta}$ induced by $\frak T_{\xi+1}$ is
+$\frak T_{\eta}$ for every $\eta\le\xi$.   We have
+$t\restr n=x_{\xi}\restr n$ for every $t\in L_n$, so $\frak T_{\xi+1}$
+is finer than the usual topology on $X_{\xi+1}$.
+
+If $x\in X_{\xi}$, then there is a countable $\frak T_{\xi}$-open
+$\frak T_{\xi}$-compact set containing $x$, which is still
+$\frak T_{\xi+1}$-open and $\frak T_{\xi+1}$-compact.   Of course
+$\{y_{\xi}\}$
+is a countable $\frak T_{\xi+1}$-open $\frak T_{\xi+1}$-compact set
+containing $y_{\xi}$.   As for $x_{\xi}$, $L_0$ is surely countable and
+$\frak T_{\xi+1}$-open.   To see that it is $\frak T_{\xi+1}$-compact,
+observe that any ultrafilter containing $L_0$ either contains every
+$L_n$, and converges to $x_{\xi}$, or contains some $K_m$ and converges
+to a point of $K_m$.
+
+Thus the induction proceeds at successor stages.
+
+\medskip
+
+\quad{\bf (iii)} {\it Inductive step to a limit ordinal} If
+$\xi\le\frak c$ is a non-zero limit ordinal, then we have
+$X_{\xi}=\bigcup_{\eta<\xi}X_{\eta}$, and can take $\frak T_{\xi}$ to be
+the topology generated by $\bigcup_{\eta<\xi}\frak T_{\eta}$.   It is
+easy to check that this works (because the topologies $\frak T_{\eta}$
+are consistent with each other).
+
+\medskip
+
+\quad{\bf (iv)} At the end of the induction, we have $X_{\frak c}=Z$
+because $z_{\xi}\in X_{\xi+1}\subseteq X_{\frak c}$ for every $\xi$.
+The final topology $\frak T_{\frak c}$ on $Z$ will have the properties
+($\alpha$) and ($\beta$) required.   \Quer\ Now suppose, if possible,
+that $\sequencen{F_n}$ is a sequence of $\frak T_{\frak c}$-closed sets
+with empty intersection, and that
+$\bigcap_{n\in\Bbb N}\overline{F}^{\frak S}_n$ is uncountable.   For
+each $n\in\Bbb N$, let
+$J_n\subseteq F_n$ be a countable $\frak S$-dense set.   Then there is
+some $\zeta<\frak c$ such that
+$\bigcup_{n\in\Bbb N}J_n\subseteq X_{\zeta}$ (because
+$\cf\frak c>\omega$, see 4A1A(c-iii)).
+Let $\xi\ge\zeta$ be such that $J_n=I_{\xi n}$ for every $n\in\Bbb N$.
+Then in the construction of $\frak T_{\xi+1}$ we must be in case
+($\beta$) of (ii) above.   Taking
+$\sequence{m}{t_m}$ as described there, we have
+$\sequence{m}{t_m}\to x_{\xi}$ for $\frak T_{\xi+1}$, and therefore for
+$\frak T_{\frak c}$.
+But for any $n\in\Bbb N$, $t_m\in J_n\subseteq F_n$ for infinitely many
+$m$, so $x_{\xi}\in F_n$.   Thus $x_{\xi}\in\bigcap_{n\in\Bbb N}F_n$;
+but this is impossible.\ \Bang
+
+So we have a topology of the type required.\ \Qed
+
+\medskip
+
+{\bf (b)} There is a probability measure $\nu$ on $Z$, extending the
+usual measure $\mu$, such that with respect to
+$\frak T_{\frak c}\,\,\nu$ is a topological measure inner regular with
+respect to the closed sets, but is not $\tau$-additive.
+
+\medskip
+
+\Prf\ Let $\Cal K$ be the family of $\frak T_{\frak c}$-closed
+subsets of $Z$.   For $F\in\Cal K$, set
+%$\phi F=\mu^*F$.
+$\phi F=\mu\overline{F}^{\frak S}$.
+
+\medskip
+
+\quad{\bf (i)} If $E$, $F$ are disjoint $\frak T_{\frak c}$-closed
+sets, then $\overline{E}^{\frak S}\cap\overline{F}^{\frak S}$ must be
+countable (take $F_{2n}=E$, $F_{2n+1}=F$ in (a-$\gamma$)).   So
+
+$$\eqalign{\phi(E\cup F)
+%=\mu^*(E\cup F)
+%&=\mu^*((E\cup F)\cap\overline{E}^{\frak S})
+%  +\mu^*((E\cup F)\setminus\overline{E}^{\frak S})\cr
+%&=\mu^*E+\mu^*F
+&=\mu\overline{E\cup F}^{\frak S}
+=\mu\overline{E}^{\frak S}+\mu\overline{F}^{\frak S}
+   -\mu(\overline{E}^{\frak S}\cap\overline{F}^{\frak S})\cr
+&=\mu\overline{E}^{\frak S}+\mu\overline{F}^{\frak S}
+=\phi E+\phi F.\cr}$$
+
+\medskip
+
+\quad{\bf (ii)} If $E$, $F\in\Cal K$, $E\subseteq F$ and $\epsilon>0$,
+there is an $\frak S$-open set
+%$G\supseteq E$
+$G\supseteq\overline{E}^{\frak S}$
+such that
+%$\mu G\le\mu^*E+\epsilon$.
+$\mu G\le\mu\overline{E}^{\frak S}+\epsilon$.
+Now $F\setminus G\in\Cal K$ and
+
+\Centerline{$\phi F
+%=\mu^*(F\cap G)+\mu^*(F\setminus G)
+=\mu(\overline{F}^{\frak S}\cap G)+\mu(\overline{F}^{\frak S}\setminus G)
+\le\mu G+\phi(F\setminus G)
+\le\phi E+\phi(F\setminus G)+\epsilon$.}
+
+\noindent Putting this together with (i), we see that
+
+\Centerline{$\phi F
+=\phi E+\sup\{\phi E':E'\in\Cal K,\,E'\subseteq F\setminus E\}$.}
+
+\medskip
+
+\quad{\bf (iii)} If $\sequencen{F_n}$ is a non-increasing sequence in
+$\Cal K$ with empty intersection, then
+
+\Centerline{$\lim_{n\to\infty}\phi F_n
+%\le\lim_{n\to\infty}\mu\overline{F}_n^{\frak S}
+=\lim_{n\to\infty}\mu\overline{F}_n^{\frak S}
+=\mu(\bigcap_{n\in\Bbb N}\overline{F}_n^{\frak S})
+=0$.}
+
+\medskip
+
+\quad{\bf (iv)} Thus $\Cal K$ and $\phi$ satisfy all the conditions of
+413I, and there is a measure $\nu$, extending $\phi$, which is defined
+on every member of $\Cal K$ and inner regular with respect to $\Cal K$,
+and therefore is (for $\frak T_{\frak c}$) a topological measure inner
+regular with respect to the closed sets.
+
+If we write $\Cal V$ for the family of $\frak T_{\frak c}$-compact
+$\frak T_{\frak c}$-open countable subsets of $Z$, then for any
+$K\in\Cal V$
+
+\Centerline{$\nu K=\phi K=\mu K=0$,}
+
+\noindent while $\Cal V$ is upwards-directed and has union $Z$;  so that
+$\nu$ is not $\tau$-additive.\ \Qed
+
+\medskip
+
+{\bf (c)} So far we seem to have very little more than is provided by
+$\omega_1$ with the order topology and Dieudonn\'e's measure.   The
+point of doing all this work is the next step.   Set
+$X=Z\times\{0,1\}$ and give $X$ the topology $\frak T$ generated by
+
+\Centerline{$\{G\times\{0,1\}:G\in\frak S\}
+\cup\{H\times\{1\}:H\in\frak T_{\frak c}\}
+\cup\{X\setminus(K\times\{1\}):K$ is $\frak T_{\frak c}$-compact$\}$.}
+
+\medskip
+
+\quad{\bf (i)} $\frak T$ is Hausdorff.   \Prf\ If $w$, $z$ are distinct
+points of $X$, then either their first coordinates differ and they are
+separated by sets of the form $G_0\times\{0,1\}$, $G_1\times\{0,1\}$
+where $G_0$, $G_1$ belong to $\frak S$, or they are of the form $(x,1)$,
+$(x,0)$ and are separated by open sets of the form $K\times\{1\}$,
+$X\setminus(K\times\{1\})$ for some set $K$ which is compact and open
+for $\frak T_{\frak c}$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} $\frak T$ is compact.   \Prf\ Let $\Cal F$ be an
+ultrafilter on $X$.   Writing $\pi_1(x,0)=\pi_1(x,1)=x$ for $x\in Z$,
+$\pi_1[[\Cal F]]$ is $\frak S$-convergent, to $x_0$ say.   If
+$K\times\{1\}\in\Cal F$ for some $\frak T_{\frak c}$-compact set $K$,
+then $\Cal F$ is $\frak T$-convergent to $(x,1)$;  otherwise, it is
+$\frak T$-convergent to $(x,0)$ (using 4A2B(a-iv)).\ \Qed
+%characterizing convergent filters given a base
+
+\medskip
+
+\quad{\bf (iii)} $\frak T$ is first-countable.   \Prf\ If $x\in Z$,
+then $\{(x,0),(x,1)\}=\pi_1^{-1}[\{x\}]$ is a G$_{\delta}$ set in $X$
+because $\{x\}$ is a G$_{\delta}$ set in $Z$ and $\pi_1$ is
+continuous (4A2C(a-iii)).   Now $\{(x,0)\}$ and $\{(x,1)\}$ are
+relatively open in $\{(x,0),(x,1)\}$, so are G$_{\delta}$ sets in $X$
+(4A2C(a-iv)).   Thus singletons are G$_\delta$ sets.   Because $\frak T$
+is compact and Hausdorff, it is first-countable (4A2Kf).\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} $(X,\frak T)$ is not a Radon space.   \Prf\
+$Z\times\{1\}$ is an open subset of $X$, homeomorphic to $Z$
+with the topology $\frak T_{\frak c}$.   But the measure $\nu$ of (b)
+above (or, if you prefer, its restriction to the
+$\frak T_{\frak c}$-Borel
+algebra) witnesses that $\frak T_{\frak c}$ is not a Radon topology, so
+$\frak T$ also cannot be a Radon topology, by 434Fc.\ \Qed
+}%end of proof of 439K
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Aficionados will recognise $\frak T_{\frak c}$ as
+a kind of `JKR-space', derived from the construction in
+{\smc Juh\'asz Kunen \& Rudin 76}.
+}%end of comment
+
+\leader{439L}{Example} Suppose that $\kappa$ is a cardinal which is not
+measure-free;  let $\mu$ be a probability measure with domain
+$\Cal P\kappa$ which is zero on singletons.   Give $\kappa$ its discrete
+topology\cmmnt{, so that $\mu$ is a Borel measure and $\kappa$ is
+first-countable}.   Let $\nu$ be the restriction of the usual measure on
+$Y=\{0,1\}^{\kappa}$ to the algebra $\Cal B$ of Borel subsets of $Y$, so
+that $\nu$ is a $\tau$-additive probability measure,
+and $\lambda$ the product measure on $\kappa\times Y$ constructed by the
+method of 434R.   Then
+
+\Centerline{$W=\{(\xi,y):\xi<\kappa$, $y(\xi)=1\}
+=\bigcup_{\xi<\kappa}\{\xi\}\times\{y:y(\xi)=1\}$}
+
+\noindent is open in $\kappa\times Y$.
+
+If $W'\in\Cal P\kappa\tensorhat\Cal B$ then
+$\lambda(W\symmdiff W')=\bover12$.   \prooflet{\Prf\  There is
+a countable set $\Cal E\subseteq\Cal B$ such that $W'$ belongs to the
+$\sigma$-algebra
+generated by $\{A\times E:A\subseteq\kappa$, $E\in\Cal E\}$ (331Gd).
+For $J\subseteq\kappa$, write $\pi_J(y)=y\restr J$ for $y\in Y$, let
+$\nu_J$ be the usual measure on $\{0,1\}^J$ and $\Tau_J$ its domain,
+and let $\Tau'_J$ be the family of sets
+$E\subseteq Y$ such that there are $H$, $H'\in\Tau_J$ such that
+$\pi_J^{-1}[H]\subseteq E\subseteq\pi_J^{-1}[H']$ and
+$\nu_J(H'\setminus H)=0$.   Then $\Tau'_J\subseteq\Tau'_K$
+whenever
+$J\subseteq K\subseteq\kappa$, and every set measured by $\nu$ belongs
+to $\Tau'_J$ for some countable $J$ (254Ob).   There is therefore a
+countable set $J\subseteq\kappa$ such that $\Cal E\subseteq\Tau'_J$.
+Also, of course, $\Tau'_J$ is a $\sigma$-algebra of subsets of $Y$.
+
+The set
+
+\Centerline{$\{V:V\subseteq\kappa\times Y,\,V[\{\xi\}]\in\Tau'_J$ for
+every $\xi<\kappa\}$}
+
+\noindent is a $\sigma$-algebra of subsets of $\kappa\times Y$
+containing $A\times E$ whenever $A\subseteq\kappa$ and $E\in\Cal E$, so
+contains $W'$.   But this means that if $\xi\in\kappa\setminus J$,
+$W[\{\xi\}]$ and $W'[\{\xi\}]$ are stochastically independent, and
+$\nu(W[\{\xi\}]\symmdiff W'[\{\xi\}])=\bover12$.   Since
+$\mu(\kappa\setminus J)=1$,
+
+\Centerline{$\lambda(W\symmdiff W')
+=\int\nu(W[\{\xi\}]\symmdiff W'[\{\xi\}])\mu(d\xi)
+=\Bover12$,}
+
+\noindent as claimed.\ \Qed
+}%end of prooflet
+
+In particular, $W^{\ssbullet}$ in the the measure algebra of $\lambda$
+cannot be represented by a member of $\Cal P\kappa\tensorhat\Cal B$.
+
+\leader{439M}{Example} There is a first-countable locally compact
+Hausdorff space $X$ with a
+Baire probability measure $\mu$ which is not $\tau$-additive and
+has no extension to a Borel
+measure.   \cmmnt{In the classification of 435A, $\mu$ is of type
+E$_0$.}
+
+\proof{ Let $\Omega$ be the set of non-zero countable limit ordinals,
+and for each $\xi\in\Omega$ let $\sequence{i}{\theta_{\xi}(i)}$ be a
+strictly increasing sequence of ordinals with supremum $\xi$.   Set
+$X=\omega_1\times(\omega+1)$, and define a topology $\frak T$ on $X$ by
+saying that $G\subseteq X$ is open iff
+
+\inset{$\{\xi:(\xi,n)\in G\}$ is open in the order topology of
+$\omega_1$ for every $n\in\Bbb N$,}
+
+\inset{whenever $\xi\in\Omega$ and $(\xi,\omega)\in G$ then there is
+some $n<\omega$ such that $(\eta,i)\in G$ whenever $n\le i<\omega$ and
+$\theta_{\xi}(i)<\eta\le\xi$.}
+
+\noindent This is finer than the product of the order topologies, so is
+Hausdorff.   For every $\xi<\omega_1$ and $n\in\Bbb N$,
+$(\xi+1)\times\{n\}$ is a countable compact open set containing
+$(\xi,n)$;  for
+every $\xi\in\omega_1\setminus\Omega$, $\{(\xi,\omega)\}$ is a countable
+compact open set containg $(\xi,\omega)$;  and for every $\xi\in\Omega$,
+
+\Centerline{$\{(\xi,\omega)\}
+\cup\{(\eta,i):i<\omega,\,\theta_{\xi}(i)<\eta\le\xi\}$}
+
+\noindent is a countable compact open subset of $X$ containing
+$(\xi,\omega)$.   Thus $\frak T$ is locally compact, and every singleton
+subset of $X$ is G$_{\delta}$, so $\frak T$ is first-countable (4A2Kf).
+
+If $f:X\to\Bbb R$ is continuous, then for every $n\in\Bbb N$ there is a
+$\zeta_n<\omega_1$ such that $f$ is constant on
+$\{(\xi,n):\zeta_n\le\xi<\omega_1\}$ (4A2S(b-iii)).   Setting
+$\zeta=\sup_{n\in\Bbb N}\zeta_n$, $f$ must be constant on
+$\{(\xi,\omega):\xi\in\Omega,\,\xi>\zeta\}$.   \Prf\ If $\xi$,
+$\eta\in\Omega\setminus(\zeta+1)$, then
+$f(\xi,\omega)=\lim_{i\to\infty}f(\theta_{\xi}(i)+1,i)$ and
+$f(\eta,\omega)=\lim_{i\to\infty}f(\theta_{\eta}(i)+1,i)$.   But there
+is some $n$ such that both $\theta_{\xi}(i)$ and $\theta_{\eta}(i)$ are
+greater than $\zeta$ for every $i\ge n$, so that
+$f(\theta_{\xi}(i)+1,i)=f(\theta_{\eta}(i)+1,i)$ for every $i\ge n$ and
+$f(\xi,\omega)=f(\eta,\omega)$.\ \Qed
+
+Writing $\Sigma$ for the family of subsets $E$ of $X$ such that
+$\{\xi:\xi\in\Omega,\,(\xi,\omega)\in E\}$ is either countable or
+cocountable in $\Omega$, $\Sigma$ is a $\sigma$-algebra of subsets of
+$X$ such that every continuous function is $\Sigma$-measurable, so every
+Baire set belongs to $\Sigma$.   We therefore have a Baire measure
+$\mu_0$ on $X$ defined by saying that $\mu_0E=0$ if
+$E\cap(\Omega\times\{\omega\})$ is countable, $1$ otherwise.
+$\{(\xi+1)\times(\omega+1):\xi<\omega_1\}$ is a cover of $X$ by
+negligible open-and-closed sets, so $\mu_0$ is not $\tau$-additive.
+
+\Quer\ Suppose, if possible, that $\mu$ were a Borel measure on $X$
+extending $\mu_0$.   Then we must have
+$\mu(\omega_1\times\{n\})=\mu_0(\omega_1\times\{n\})=0$ for every
+$n\in\Bbb N$, so $\mu(\omega_1\times\{\omega\})=1$.   Let $\lambda$ be
+the subspace measure on $\omega_1\times\{\omega\}$ induced by $\mu$.
+If $A\subseteq\omega_1$, $(A\times\{\omega\})\cup(\omega_1\times\omega)$
+is an open set, so $\lambda$ is defined on every subset of
+$\omega_1\times\{\omega\}$;  and if $\xi<\omega_1$, then
+$\mu_0((\xi+1)\times(\omega+1))=0$, so $\lambda$ is zero on singletons.
+And this contradicts Ulam's theorem (419G, 438Cd).\ \Bang
+}%end of proof of 439M
+%4{}35A (type E_0)
+
+\leader{439N}{Example} Give $\omega_1$ its order topology.
+
+(i) $\omega_1$ is a normal Hausdorff space which is not measure-compact.
+
+(ii) There is a Baire probability measure $\mu_0$ on $\omega_1$ which is
+not $\tau$-additive and has a unique extension to a Borel measure, which
+is not completion regular\cmmnt{;  that is, $\mu_0$ is of type E$_2$
+in the classification of 435A}.
+
+\proof{{\bf (a)} As noted in 4A2Rc, order topologies are always normal
+and Hausdorff.
+
+\medskip
+
+{\bf (b)} Let $\mu$ be Dieudonn\'e's measure on $\omega_1$, and
+$\mu_0$ its restriction to the Baire $\sigma$-algebra.   Then $\mu$ is
+the only Borel measure extending $\mu_0$.   \Prf\ Let $\nu$ be any Borel
+measure extending $\mu_0$.   Every set $[0,\xi]=\coint{0,\xi+1}$, where
+$\xi<\omega_1$, is open-and-closed, so
+
+\Centerline{$\nu[0,\xi]=\mu_0[0,\xi]=\mu[0,\xi]=0$;}
+
+\noindent also, of course, $\nu\omega_1=1$.   Let $F\subseteq\omega_1$
+be any closed
+set.   If $F$ is countable, then it is included in some initial segment
+$[0,\xi]$, so $\nu F=\mu F=0$.   Now suppose that $F$ is uncountable.
+Set $G=\omega_1\setminus F$.   For each $\xi\in F$, set
+$\zeta_{\xi}=\min\{\eta:\xi<\eta\in F\}$ and
+$G_{\xi}=\ooint{\xi,\zeta_{\xi}}$.   Then
+$\langle G_{\xi}\rangle_{\xi\in F}$ is a disjoint family of open sets.
+By 438Bb and 419G/438Cd,
+
+\Centerline{$\nu(\bigcup_{\xi\in F}G_{\xi})
+=\sum_{\xi\in F}\nu G_{\xi}=0$.}
+
+\noindent But now
+
+\Centerline{$1=\nu\omega_1
+=\nu F+\nu\coint{0,\min F}+\nu(\bigcup_{\xi\in F}G_{\xi})
+=\nu F=\mu F$.}
+
+Thus $\mu$ and $\nu$ agree on the family $\Cal E$ of closed sets.   By
+the Monotone Class Theorem (136C), they agree on the $\sigma$-algebra
+generated by $\Cal E$, which is their common domain;  so they are
+equal.\ \Qed
+
+\medskip
+
+{\bf (c)} I have already remarked in 411Q-411R that $\mu$ and $\mu_0$
+are not $\tau$-additive and $\mu$ is not completion regular.   So of
+course $\omega_1$ is not measure-compact.
+}%end of proof of 439N
+%4{}35A (type E_2)
+
+\leader{439O}{}\cmmnt{ In 439M I described a Baire measure with no
+extension to a Borel measure.   In view of \Marik's theorem
+(435C), it is natural to ask whether this can be done with a normal
+space.   This leads us into relatively deep water, and the only examples
+known need special assumptions.
+
+\medskip
+
+\noindent}{\bf Example} Assume Ostaszewski's $\clubsuit$.
+Then there is a normal
+Hausdorff space with a Baire probability measure $\mu$ which is not
+$\tau$-additive and not extendable to
+a Borel measure.   \cmmnt{(In the classification of 435A, $\mu$ is of
+type E$_0$.)}
+
+\proof{{\bf (a)} $\clubsuit$ implies that there is a family
+$\langle C_{\xi}\rangle_{\xi<\omega_1}$ of sets such that (i)
+$C_{\xi}\subseteq\xi$ for every $\xi<\omega_1$ (ii) $C_{\xi}\cap\eta$ is
+finite whenever $\eta<\xi<\omega_1$ (iii) for any uncountable sets $A$,
+$B\subseteq\omega_1$ there is a $\xi<\omega_1$ such that $A\cap C_{\xi}$
+and $B\cap C_{\xi}$ are both infinite (4A1N).   For
+$A\subseteq\omega_1$, set $A'=\{\xi:\xi<\omega_1$, $A\cap C_{\xi}$ is
+infinite$\}$;  then $A'\cap B'$ is non-empty whenever $A$,
+$B\subseteq\omega_1$ are uncountable.   But this means that $A'\cap B'$
+is actually uncountable for uncountable $A$, $B$, since $A'\cap
+B'\setminus\gamma\supseteq(A\setminus\gamma)'\cap(B\setminus\gamma)'$ is
+non-empty for every $\gamma<\omega_1$.
+
+Set $X=\omega_1\times\Bbb N$.   For
+$x=(\xi,n)\in X$, say that
+
+$$\eqalign{I_x&=C_{\xi}\times\{n-1\}\text{ if }n\ge 1,\cr
+&=\emptyset\text{ otherwise }.\cr}$$
+
+\medskip
+
+{\bf (b)} Define a topology $\frak
+T$ on $X$ by saying  that a set $G\subseteq X$ is open iff $I_x\setminus
+G$ is finite for every $x\in G$.
+
+The form of the construction ensures that $\frak T$ is T$_1$.   In fact,
+$I_x\cap I_y$ is finite whenever $x\ne y$ in $X$.   \Prf\
+Express $x$ as $(\xi,m)$ and $y$ as
+$(\eta,n)$ where $\eta\le\xi$.   If either $m=0$ or $n=0$ or $m\ne n$,
+$I_x\cap I_y=\emptyset$.   If
+$n\ge 1$ and $\eta<\xi$, then
+
+\Centerline{$I_x\cap I_y
+\subseteq(C_{\xi}\cap\eta)\times\{n-1\}$}
+
+\noindent is finite.   Similarly, $I_x\cap I_y$ is finite if $m\ge 1$
+and $\xi<\eta$.\ \QeD\   Consequently $\{x\}\cup J$
+is closed for every $x\in X$, $J\subseteq I_x$.
+
+Observe that $(\xi+1)\times\Bbb N$ is open and closed for every
+$\xi<\omega_1$, again because $C_{\eta}\cap(\xi+1)$ is finite
+whenever $\eta\in\Omega$ and $\eta>\xi$, while $C_{\xi}\subseteq\xi$ for
+every $\xi$.
+
+\medskip
+
+{\bf (c)} The next step is to understand the uncountable closed
+subsets of $X$.   First, if $F\subseteq X$ is closed and $n\in\Bbb N$,
+then
+$F^{-1}[\{n\}]'$, as defined in (a), is a subset of $F^{-1}[\{n+1\}]$,
+since if
+$\xi\in F^{-1}[\{n\}]'$ then $I_{(\xi,n+1)}\cap F$ is infinite.   If $F$
+is uncountable, there is some $n\in\Bbb N$ such that $F^{-1}[\{n\}]$ is
+uncountable, so that (inducing on $m$) $F^{-1}[\{m\}]$ is uncountable
+for every $m\ge n$.   Finally, this means that if $E$, $F\subseteq X$
+are uncountable closed sets, there is an $m\in\Bbb N$ such that
+$E^{-1}[\{m\}]$ and $F^{-1}[\{m\}]$ are both uncountable, so that
+$E^{-1}[\{m\}]'\cap F^{-1}[\{m\}]'$ is non-empty and $E\cap F$ is
+non-empty.
+
+\medskip
+
+{\bf (d)} It follows that $X$ is normal.   \Prf\ Let $E$ and $F$ be
+disjoint closed sets in $X$.   By (c), at least one of them is
+countable;  let us take it that $E\subseteq\zeta\times\Bbb N$ where
+$\zeta<\omega_1$.   Enumerate the open-and-closed set
+$W=(\zeta+1)\times\Bbb N$ as $\sequencen{x_n}$.   Choose
+$\sequencen{U_n}$, $\sequencen{V_n}$ inductively, as follows.   $U_0=E$,
+$V_0=F\cap W$.   If $x_n\in U_n$, then $U_{n+1}=U_n\cup
+(I_{x_n}\setminus V_n)$ and $V_{n+1}=V_n$;  if $x_n\notin U_n$, then
+$U_{n+1}=U_n$ and $V_{n+1}=V_n\cup\{x_n\}\cup(I_{x_n}\setminus U_n)$.
+An easy induction shows that, for every $n$, ($\alpha$) $U_n\cap
+V_n=\emptyset$ ($\beta$) $U_n\cup V_n\subseteq W$ ($\gamma$)
+$I_x\cap(U_n\cup V_n)$ is finite for every $x\in X\setminus(U_n\cup
+V_n)$ ($\delta$) $I_x\cap V_n$ is finite for every $x\in U_n$
+($\epsilon$) $I_x\cap U_n$ is finite for every $x\in V_n$.
+
+At the end of the induction, set $G=\bigcup_{n\in\Bbb N}U_n$,
+$H=\bigcup_{n\in\Bbb N}V_n\cup(X\setminus W)$.   Then $E\subseteq G$,
+$F\subseteq H$ and $G\cap H=\emptyset$.   If $x\in G$, it is of the form
+$x_n$ for some $n$, in which case $x_n\in U_n$ (because $x_n\notin
+V_{n+1}$) and $I_x\setminus U_{n+1}=I_x\cap V_n$ is finite;  thus $G$ is
+open.   If $x\in H\cap W$, again it is of the form $x_n$ where this time
+$x_n\notin U_n$, so that $I_x\setminus V_{n+1}=I_x\cap U_n$ is finite;
+so $H$ is open.
+
+Thus $E$ and $F$ are separated by open sets;  since $E$ and $F$ are
+arbitrary, $X$ is normal.\ \Qed
+
+Being T$_1$ (see (b)), $X$ is also Hausdorff.
+
+\medskip
+
+{\bf (e)} Because disjoint closed sets in $X$ cannot both be uncountable
+((c) above), any bounded continuous function on $X$ must be constant
+on a cocountable set.   (Compare 4A2S(b-iii).)
+%same for usual topology on $\omega_1$.
+The countable-cocountable measure $\mu_0$ is therefore a Baire measure
+on $X$ (cf.\ 411R).   But it has no extension to a Borel measure.
+\Prf\ The point is that if $A$ is any subset of $\omega_1$, and
+$n\in\Bbb N$, then
+
+\Centerline{$(A\times\{n\})\cup(\omega_1\times n)$,
+\quad$\omega_1\times n$}
+
+\noindent are both open, so $A\times\{n\}$ is Borel;  accordingly every
+subset of $X$ is a Borel set.   But $\omega_1$ is measure-free
+(419G, 438Cd), so there can be no Borel probability measure on $X$ which
+is zero on singletons.\ \Qed
+
+Of course $\mu_0$ is not $\tau$-additive, because $\{(\xi+1)\times\Bbb
+N:\xi<\omega_1\}$ is a cover of $X$ by open-and-closed negligible sets.
+}%end of proof of 439O
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Thus in Ma\v r\'\i k's theorem we really do
+need `countably paracompact' as well as `normal', at least if we want a
+theorem valid in ZFC.
+
+Observe that any example of this phenomenon must involve a {\bf Dowker
+space}, that is, a normal Hausdorff space which is not countably
+paracompact.   The one here
+is based on {\smc de Caux 76}.   Such spaces are hard to come by in ZFC
+if we do not allow
+ourselves to use special principles like $\clubsuit$.   `Real' Dowker
+spaces have been
+described by {\smc Rudin 71} and {\smc Balogh 96};  for a survey, see
+{\smc Rudin 84}.   I do not know if either of these can be adapted to
+provide a ZFC example to replace the one above.
+}%end of comment
+\leaveitout{In {\smc Simon 71} it is noted that Rudin's Dowker space
+gives a Baire probability measure $\mu$ which has no extension to a
+Borel measure which is inner regular with respect to the closed sets.
+}
+
+\allowmorestretch{468}{
+\leader{439P}{Example}\cmmnt{ (cf.\ {\smc Moran 68})}
+$\BbbN^{\frak c}$ is
+not Borel-measure-compact, therefore not Borel-measure-complete,
+measure-compact or Radon.
+}
+
+\proof{ Consider the topology $\frak T_{\frak c}$ on
+$Z=\{0,1\}^{\Bbb N}$, as constructed in 439K.   Then
+$(Z,\frak T_{\frak c})$ is homeomorphic to a closed subset of
+$\BbbN^Z\times\{0,1\}^{\Bbb N}$, where in this product the second factor
+$\{0,1\}^{\Bbb N}$ is given
+its usual topology $\frak S$.   \Prf\ For each
+$x\in Z$, let  $L_x$ be a
+$\frak T_{\frak c}$-open $\frak T_{\frak c}$-compact subset of $Z$.
+The first thing to observe is that if $x\in Z$, and we write
+$V_{xm}=\{y:y\in Z,\,y\restr m=x\restr m\}$ for each $m\in\Bbb N$, then
+$\Cal U_x=\{L_x\cap V_{xm}:m\in\Bbb N\}$ is a downwards-directed family
+of compact open neighbourhoods of $x$ with intersection $\{x\}$, so is a
+base of neighbourhoods of $x$ (4A2Gd);  thus
+$\Cal U=\{L_x:x\in Z\}\cup\frak S$ generates $\frak T_{\frak c}$.   Now,
+for $x\in Z$, define $\phi_x:Z\to\Bbb N$ by setting
+
+$$\eqalign{\phi_{x}(y)&=0\text{ if }y\in L_x,\cr
+&=m+1\text{ if }y\in V_{xm}\setminus(L_x\cup V_{x,m+1}).\cr}$$
+
+\noindent Then every $\phi_x$ is $\frak T_{\frak c}$-continuous, so we
+have a $\frak T_{\frak c}$-continuous function
+$\phi:Z\to\BbbN^Z\times\{0,1\}^{\Bbb N}$ defined by setting
+$\phi(y)=(\family{z}{Z}{\phi_z(y)},y)$ for $y\in Z$.   Because every
+element of $\Cal U$ is of the form $\phi^{-1}[H]$ for some open set
+$H\subseteq\BbbN^Z\times\{0,1\}^{\Bbb N}$, $Z$ is homeomorphic to its
+image $\phi[Z]$.
+
+Now suppose that $(w,z)\in\overline{\phi[Z]}$.   In this case, there is
+a filter $\Cal G$ containing $\phi[Z]$ which converges to $(w,z)$ (4A2Bc).
+Let $\Cal F$ be an ultrafilter on $Z$ including
+$\{\phi^{-1}[A]:A\in\Cal G\}$;  then $\phi[[\Cal F]]$ includes $\Cal G$ so
+converges to $(w,z)$, and $\Cal F\to z$ for $\frak S$.
+\Quer\ If $z$ is not the
+$\frak T_{\frak c}$-limit of $\Cal F$, then $\Cal F$ can have no
+$\frak T_{\frak c}$-limit, and can contain no
+$\frak T_{\frak c}$-compact set (2A3R).   In particular,
+$L_z\notin\Cal F$;  but in this case $V_{zm}\setminus L_z\in\Cal F$ for
+every $m$, so that $\{(v,y):v(x)>m\}\in\phi[[\Cal F]]$ for every $m$,
+and $w(x)>m$ for every $m$, which is impossible.\ \BanG\   Thus
+$\Cal F\to z$, and (as $\phi$ is continuous) $(w,z)=\phi(z)$.
+
+This shows that $\phi[Z]$ is closed, so we have the required
+homeomorphism between $Z$ and a closed subset of
+$\BbbN^Z\times\{0,1\}^{\Bbb N}$.\ \Qed
+
+Of course $\BbbN^Z\times\{0,1\}^{\Bbb N}$ is a closed subset of
+$\BbbN^Z\times\BbbN^{\Bbb N}\cong\BbbN^{\frak c}$.   So $Z$ is
+homeomorphic to a closed subset of $\BbbN^{\frak c}$.  But $Z$, with
+$\frak T_c$, carries a Borel probability measure $\nu$ which is inner
+regular with respect to the closed sets and is not $\tau$-additive
+(439Kb).   So $(Z,\frak T_{\frak c})$ is not Borel-measure-compact.
+By 434Hc, $\BbbN^{\frak c}$ is not Borel-measure-compact.   By 434Ic,
+$\BbbN^{\frak c}$ is not
+Borel-measure-complete;  by 434Ka, it is not Radon;  by 435Fd, it is not
+measure-compact.
+}%end of proof of 439P
+
+\leader{439Q}{Example} Let $X$ be the real line with the {\bf
+right-facing Sorgenfrey topology}, generated by sets of the form
+$\coint{a,b}$ where $a<b$ in $\Bbb R$.
+Then $X$ is measure-compact but $X^2$ is not.
+
+\proof{{\bf (a)} Note that every set $\coint{a,b}$ is open-and-closed in
+$X$, so that the topology is zero-dimensional, therefore completely
+regular;  and it is finer than the usual topology of $\Bbb R$, so is
+Hausdorff.
+
+$X$ is Lindel\"of.   \Prf\ Let $\Cal G$ be an open cover of $X$.
+For each $q\in\Bbb Q$, set
+
+\Centerline{$A_q=\{a:a\in\ooint{-\infty,q}$ and there is some
+$G\in\Cal G$ such that $\coint{a,q}\subseteq G\}$.}
+
+\noindent Then $\bigcup_{q\in\Bbb Q}A_q=\Bbb R$.   For each
+$q\in\Bbb Q$, there is a countable set $A'_q\subseteq A_q$ such that
+$\inf A'_q=\inf A_q$ in $[-\infty,\infty]$ and $A'_q$ contains
+$\min A_q$ if $A_q$ has a least element.   Now, for each pair $(a,q)$
+where $q\in\Bbb Q$ and $a\in A'_q$, choose $G_{aq}\in\Cal G$ such that
+$\coint{a,q}\subseteq G_{aq}$.   It is easy to see that
+$\bigcup\{G_{aq}:a\in A'_q\}\supseteq A_q$, so that the countable family
+$\{G_{aq}:q\in\Bbb Q,\,a\in A'_q\}$ covers $X$.   As $\Cal G$ is
+arbitrary, $X$ is Lindel\"of.\ \Qed
+
+It follows that $X$ is measure-compact (435Fb).
+
+\medskip
+
+{\bf (b)} Let $\frak S$ be the usual topology on $\BbbR^2$, and $\frak
+T$ the product topology on $X^2$.
+
+\medskip
+
+\quad{\bf (i)} Whenever $G$, $H$ are disjoint $\frak T$-open sets, there
+is an $\frak S$-Borel set $E$ such that $G\subseteq E\subseteq
+X^2\setminus H$.   \Prf\ For $n\in\Bbb N$, set
+
+\Centerline{$A_n
+=\{(a,b):\coint{a,a+2^{-n}}\times\coint{b,b+2^{-n}}\subseteq G\}$.}
+
+\noindent\Quer\ Suppose, if possible, that there is a point
+$(x,y)\in\overline{A}_n^{\frak S}\cap H$, where I write
+$\overline{\phantom{A}}^{\frak S}$ to denote closure for the topology
+$\frak
+S$.   Let $\delta>0$ be such that
+$\coint{x,x+2\delta}\times\coint{y,y+2\delta}\subseteq H$ and
+$2\delta<2^{-n}$.   Then there must be $(a,b)\in A_n$ such that
+$|a-x|\le\delta$ and
+$|b-y|\le\delta$.   In this case, $a\le x+\delta<a+2^{-n}$ and $b\le
+y+\delta<b+2^{-n}$, so $(x+\delta,y+\delta)\in G$;  while $\delta$ was
+chosen so that $(x+\delta,y+\delta)$ would belong to $H$.\ \Bang
+
+Accordingly $E=\bigcup_{n\in\Bbb N}\overline{A}_n^{\frak S}$ is an
+$\frak S$-Borel set disjoint from $H$.   But $G=\bigcup_{n\in\Bbb
+N}A_n$, so $G\subseteq E$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Consequently every $\frak T$-continuous real-valued
+function is $\frak S$-Borel measurable.   \Prf\ If $f:X^2\to\Bbb R$ is
+$\frak T$-continuous and $\alpha\in\Bbb R$, then there is an
+$\frak S$-Borel set $E_{\alpha}$ such that
+
+\Centerline{$\{(x,y):f(x,y)<\alpha\}
+\subseteq E_{\alpha}\subseteq\{(x,y):f(x,y)\le\alpha\}$.}
+
+\noindent But this means that
+$\{(x,y):f(x,y)<\alpha\}=\bigcup_{n\in\BbbN}E_{\alpha-2^{-n}}$ is
+$\frak S$-Borel.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} It follows that every $\frak T$-Baire set is
+$\frak S$-Borel.   We therefore have a $\frak T$-Baire probability
+measure $\nu$ on $X^2$ defined by setting
+
+\Centerline{$\nu E=\mu_L\{t:t\in[0,1],\,(t,1-t)\in E\}$}
+
+\noindent for every $\frak T$-Baire subset of $X^2$, where $\mu_L$ is
+Lebesgue measure on $\Bbb R$.   In this case
+every point $(x,y)$ of $X^2$ belongs to a $\frak T$-open set of zero
+measure for $\nu$.   \Prf\ Set $K=\{(t,1-t):t\in[0,1]\}$.   Then $K$ is
+$\frak S$-closed, therefore $\frak T$-closed, and $\nu(X^2\setminus
+K)=0$, so if $(x,y)\notin K$ then we can stop.   If $(x,y)\in K$, then
+$\coint{x,x+1}\times\coint{y,y+1}$ is a $\frak T$-open $\frak T$-closed
+set meeting $K$
+in the single point $(x,y)$, so is a negligible $\frak T$-neighbourhood
+of $(x,y)$.\ \Qed
+
+Thus $\nu$ is not $\tau$-additive and $X^2$ is not measure-compact.
+}%end of proof of 439Q
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Contrast this with 438Xr.
+}%end of comment
+
+\leader{439R}{Example} There are first-countable completely regular
+Hausdorff spaces $X$, $Y$ with Baire probability measures $\mu$, $\nu$
+such that the Baire measures $\lambda$, $\lambda'$ on $X\times Y$
+defined by the formulae
+
+\Centerline{$\int fd\lambda=\biggeriint f(x,y)\nu(dy)\mu(dx)$,
+\quad$\int fd\lambda'=\biggeriint f(x,y)\mu(dx)\nu(dy)$}
+
+\noindent\cmmnt{(436F) }are different.
+
+\proof{ Let $X$, $Y$ be disjoint stationary subsets of $\omega_1$
+(4A1Cd).   Give each the topology induced by the order topology of
+$\omega_1$.   Let $\tilde\mu$ be Dieudonn\'e's measure on $\omega_1$,
+and $\tilde\mu_X$, $\tilde\mu_Y$ the subspace measures
+induced on $X$ and $Y$ by $\tilde\mu$;  let $\mu$ and $\nu$ be the
+restrictions of $\tilde\mu_X$, $\tilde\nu_Y$ to the Baire
+$\sigma$-algebras of $X$, $Y$ respectively.   Then
+
+\Centerline{$\mu X=\tilde\mu_XX=\tilde\mu^*X=1$}
+
+\noindent because $X$ meets every cofinal closed set in $\omega_1$;
+similarly,
+$\nu Y=1$.
+
+Set
+
+\Centerline{$W=\{(x,y):x\in X,\,y\in Y,\,x<y\}
+=\{(x,y):x\in X,\,y\in Y,\,x\le y\}$.}
+
+\noindent Then $W$ is open-and-closed in $X\times Y$ (use 4A2Rl),
+so that $f=\chi W$ is continuous.   But
+
+\Centerline{$\biggeriint f(x,y)\nu(dy)\mu(dx)
+=\int\nu\{y:y\in Y,\,x<y\}\mu(dx)
+=1$,}
+
+\Centerline{$\biggeriint f(x,y)\mu(dx)\nu(dy)
+=\int\mu\{x:x\in X,\,x<y\}\nu(dy)
+=0$.}
+}%end of proof of 439R
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Contrast this with 434Xx and 439Yi.
+}%end of comment
+
+\leader{439S}{}\cmmnt{ The results of 437V leave open the question of
+which familiar spaces, beyond \v{C}ech-complete spaces, can be
+Prokhorov.   In fact rather
+few are.   The basis of any further investigation must be the following
+result.
+
+\medskip
+
+\noindent}{\bf Theorem}\cmmnt{ ({\smc Preiss 73})} $\Bbb Q$ is not a
+Prokhorov space.
+
+\proof{{\bf (a)} There is a non-decreasing sequence $\sequence{k}{X_k}$
+of non-empty compact subsets of $X=\Bbb Q\cap[0,1]$, with union $X$, such
+that whenever $k\in\Bbb N$, $x\in X_k$
+and $\delta>0$, then $X_{k+1}\cap[x-\delta,x+\delta]$ is infinite.
+\Prf\ Start by enumerating $X$ as $\sequence{k}{q_k}$.   Set
+$X_0=\{q_0\}$.   Given
+that $X_k\subseteq X$ is compact, then for each $m\in\Bbb N$ let
+$\Cal E_m$ be a finite cover of $X_k$ by open intervals of length at most
+$2^{-m}$ all meeting
+$X_k$, and
+let $I_{km}$ be a finite subset of $X\setminus X_k$ meeting every member
+of $\Cal E_m$;  set
+$X_{k+1}=X_k\cup\{q_{k+1}\}\cup\bigcup_{m\in\Bbb N}I_{km}$.
+If $\Cal H$ is any cover of $X_{k+1}$ by open sets in $\Bbb R$, then
+there is a finite $\Cal H_0\subseteq\Cal H$ covering $X_k$.   There must
+be an $m\in\Bbb N$ such that
+$[x-2^{-m},x+2^{-m}]\subseteq\bigcup\Cal H_0$ for every $x\in X_k$
+(2A2Ed), so that $I_{kl}\subseteq\bigcup\Cal H_0$ for every
+$l\ge m$, and $X_{k+1}\setminus\bigcup\Cal H_0$ is finite;  accordingly
+there is a finite $\Cal H_1\subseteq\Cal H$ covering $X_{k+1}$.   As
+$\Cal H$ is arbitrary,
+$X_{k+1}$ is compact, and the induction can proceed.   If $x\in X_k$ and
+$\delta>0$, then for every $m\in\Bbb N$ there is an $x'\in
+X_{k+1}\setminus X_k$ such that
+$|x'-x|\le 2^{-m}$, so that $[x-\delta,x+\delta]\cap X_{k+1}$ must be
+infinite.\ \Qed
+
+\medskip
+
+{\bf (b)} If $\sequence{k}{\epsilon_k}$ is any sequence in
+$\ooint{0,\infty}$, and $F\subseteq[0,1]$ is a countable closed set,
+then there is an $x^*\in X\setminus F$ such that
+$\rho(x^*,X_k)<\epsilon_k$ for every $k\in\Bbb N$.   \Prf\ We can
+suppose that $\lim_{k\to\infty}\epsilon_k=0$.
+Define $\sequence{k}{H_k}$ inductively, as follows.   $H_0=\Bbb R$.
+Given $H_k$, set
+$H_{k+1}=H_k\cap\{x:\rho(x,X_k\cap H_k)<\epsilon_k\}$, where
+$\rho(x,A)=\inf_{y\in A}|x-y|$ for $x\in\Bbb R$, $A\subseteq\Bbb R$.
+Observe that every $H_k$ is an
+open subset of $\Bbb R$ and that $X_k\cap H_k\subseteq H_{k+1}\subseteq
+H_k$ for every $k$;  consequently, setting $E=\bigcap_{k\in\Bbb N}H_k$,
+$E$ is a
+G$_{\delta}$ subset of $\Bbb R$ and $X_k\cap H_k\subseteq E$ for every
+$k$.   In particular, $E\cap X$ contains $q_0$ and is not empty.   Next,
+for each $k$,
+$\rho(x,E\cap X_k)<\epsilon_k$ for every
+$x\in H_{k+1}$ and therefore for every $x\in E$;  accordingly $E\cap X$
+is dense in $E$.   Moreover, if $x\in E\cap X$, there is
+a $k\in\Bbb N$ such that $x\in X_k$;  we must have $x\in H_k$, and in
+this case $H_{k+1}$ is a neighbourhood of $x$.   So every neighbourhood
+of $x$ contains
+infinitely many points of $H_{k+1}\cap X_{k+1}\subseteq E\cap X$.   Thus
+$E\cap X$ has no isolated points;  it follows that $E$ has no isolated
+points.   By 4A2Mc and 4A2Me, $E$ is uncountable.
+
+There is therefore a point $z\in E\setminus F$.   Let $m\in\Bbb N$ be
+such that $\rho(z,F)\ge\epsilon_m$.   As $z\in H_{m+1}$, there is an
+$x^*\in H_m\cap X_m$ such that
+$|z-x^*|<\epsilon_m$ and $x^*\notin F$.   Let $k\in\Bbb N$.   If
+$k\ge m$ then certainly $\rho(x^*,X_k)=0<\epsilon_k$.
+If $k<m$ then $x^*\in H_{k+1}$ so
+$\rho(x^*,X_k)\le\rho(x^*,H_k\cap X_k)<\epsilon_k$.   So we have a
+suitable $x^*$.\ \Qed
+
+\medskip
+
+{\bf (c)} For $n$, $k\in\Bbb N$ set
+
+\Centerline{$G_{kn}=\{x:x\in\Bbb R\setminus X_k$,
+$\rho(x,X_n)>2^{-k}\}$.}
+
+\noindent Then $G_{kn}$ is an open subset of $\Bbb R$.   Let $A$ be the
+set of Radon probability
+measures $\mu$ on $X$ such that $\mu(G_{kn}\cap X)\le 2^{-n}$ for all
+$n$,
+$k\in\Bbb N$.
+
+\medskip
+
+{\bf (d)} Write $\tilde A$ for the set of Radon probability measures
+$\mu$ on $[0,1]$ such that $\mu(G_{kn}\cap[0,1])\le 2^{-n}$ for all
+$k$, $n\in\Bbb N$.   Then $\tilde A$ is a narrowly closed subset of the
+set of Radon probability measures on $[0,1]$, which is itself narrowly
+compact (437R(f-ii)).
+Also $\mu([0,1]\setminus X)=0$ for every $\mu\in\tilde A$.   \Prf\ Let
+$K\subseteq [0,1]\setminus X$ be compact, and $n\in\Bbb N$.   Then
+$K$ and
+$X_n$ are disjoint compact sets, so there is some $k\in\Bbb N$ such that
+$|x-y|>2^{-k}$ for every $x\in X_n$ and $y\in K$.   In this case
+$K\subseteq G_{kn}$ so
+$\mu K\le 2^{-n}$.   As $n$ is arbitrary, $\mu K=0$;  as $K$ is
+arbitrary, $\mu([0,1]\setminus X)=0$.\ \Qed
+
+$A$ is compact in the narrow topology.   \Prf\
+The identity map $\phi:X\to[0,1]$ induces a map
+$\tilde\phi:M^+_{\text{R}}(X)\to M^+_{\text{R}}([0,1])$ which is a 
+homeomorphism between $M^+_{\text{R}}(X)$ and
+$\{\mu:\mu\in M^+_{\text{R}}([0,1])$, $\mu([0,1]\setminus X)=0\}$ (437Nb).
+The definition of $A$ makes it plain that it is
+$\tilde\phi^{-1}[\tilde A]$;  since
+$\tilde A\subseteq\{\mu:\mu\in M^+_{\text{R}}([0,1])$,
+$\mu([0,1]\setminus X)=0\}$, $\tilde\phi\restr A$ is a homeomorphism
+between $A$ and $\tilde A$, and $A$ is compact.\ \Qed
+
+\medskip
+
+{\bf (e)} $A$, regarded as a subset of $M^+_{\text{R}}(X)$, is not
+uniformly tight.
+\Prf\ Let $K\subseteq X$ be compact.   Consider the set
+$C$ of those $w\in[0,1]^X$ such that $w(x)=0$ for every $x\in K$,
+$\sum_{x\in X}w(x)\le 1$ and $\sum_{x\in G_{kn}\cap X}w(x)\le 2^{-n}$
+for all $k$, $n\in\Bbb N$.
+Then $C$ is a compact subset of $[0,1]^X$.   If $D\subseteq C$ is any
+non-empty upwards-directed set, then $\sup D$, taken in $[0,1]^X$,
+belongs to $C$.   By Zorn's
+Lemma, $C$ has a maximal member $w$ say.   \Quer\ Suppose, if possible,
+that $\sum_{x\in X}w(x)=\gamma<1$.
+For each $n\in\Bbb N$, let $L_n\subseteq X$ be a finite set such that
+$\sum_{x\in L_n}w(x)\ge\gamma-2^{-n-1}$, and $m_n\in\Bbb N$ such that
+$L_n\subseteq X_{m_n}$.
+By (b), there is an $x^*\in X\setminus K$
+such that $\rho(x^*,X_n)<2^{-m_n}$ for every $n\in\Bbb N$.   Let
+$r\in\Bbb N$ be such that $x^*\in X_r$ and $\gamma+2^{-r}\le 1$, and set
+$w'(x^*)=w(x^*)+2^{-r}$,
+$w'(x)=w(x)$ for every $x\in X\setminus\{x^*\}$.   Then certainly
+$w'\in[0,1]^X$ and $\sum_{x\in X}w'(x)\le 1$.   If $k$, $n\in\Bbb N$ and
+$x^*\notin G_{kn}$, then $\sum_{x\in G_{kn}\cap X}w'(x)=\sum_{x\in
+G_{kn}\cap X}w(x)\le 2^{-n}$.   If $x^*\in G_{kn}$, then $n<r$ and
+$2^{-k}<\rho(x^*,X_n)<2^{-m_n}$, so $m_n<k$ and $L_n\subseteq X_k$ and
+
+\Centerline{$\sum_{x\in G_{kn}\cap X}w(x)\le\sum_{x\in X\setminus
+X_k}w(x)\le\sum_{x\in X\setminus L_n}w(x)\le 2^{-n-1}$,}
+
+\Centerline{$\sum_{x\in G_{kn}\cap X}w'(x)\le 2^{-n-1}+2^{-r}
+\le 2^{-n}$.}
+
+\noindent Thus $w'\in C$ and $w$ was not maximal.\ \Bang
+
+Accordingly $\sum_{x\in X}w(x)=1$ and the point-supported measure $\mu$
+defined by $w$ is a probability measure on $X$.   By the definition of
+$C$, $\mu\in A$ and
+$\mu(X\setminus K)=1$.   As $K$ is arbitrary, $A$ cannot be uniformly
+tight.\ \Qed
+
+\medskip
+
+{\bf (f)} Thus $A$ witnesses that $X=\Bbb Q\cap[0,1]$ is not a Prokhorov
+space.   Since $X$ is a closed subset of $\Bbb Q$, 437Vb tells us that
+$\Bbb Q$ is not a Prokhorov space.
+}%end of proof of 439S
+
+\exercises{
+\leader{439X}{Basic exercises (a)}
+%\spheader 439Xa
+(i) Show that there is a set $A\subseteq[0,1]$ such that $\mu_L^*A=1$,
+where $\mu_L$ is Lebesgue measure, and every member of $[0,1]$ is
+uniquely expressible as $a+q$ where $a\in A$, $q\in\Bbb Q$.   \Hint{134B.}
+(ii) Define $f:[0,1]\to A$ by setting $f(x)=a$
+when $x\in a+\Bbb Q$.   Show that the image measure
+$\mu_Lf^{-1}$ takes only the values $0$ and $1$.   ({\smc Aldaz 95}.
+Compare 342Xg.)
+%439A
+
+\spheader 439Xb
+Let $X$ be a Radon Hausdorff space and $A$ a subset of
+$X$.   Show that $A$ is universally negligible iff $\mu A=0$ for every
+atomless Radon measure on $X$.
+%439C
+
+\sqheader 439Xc Let $X$ be a Hausdorff space.   Show that a set
+$A\subseteq X$ is universally negligible iff $\mu A=0$ whenever $\mu$ is
+a complete locally determined topological measure on $X$ such that
+$\mu\{x\}=0$ for every $x\in X$.
+%439C
+
+\spheader 439Xd Let $X$ be a Hausdorff space.   Show that any
+universally negligible subset of $X$ is universally measurable in the
+sense of 434D.
+%439C
+
+\spheader 439Xe(i) Show that there is an analytic set
+$A\subseteq\Bbb R$ such that for any Borel subset $E$ of
+$\Bbb R\setminus A$ there is an uncountable Borel subset of
+$\Bbb R\setminus(A\cup E)$.   \Hint{423Qb, part (c) of the proof of
+423L.}   (ii) Show that $A$ is universally measurable, but there is no
+Borel set $E$ such that $A\symmdiff E$ is universally negligible.
+%439C
+
+\spheader 439Xf Show that a first-countable compact Hausdorff space is
+universally negligible iff it is scattered iff it is countable.
+%439C
+
+\spheader 439Xg Show that the product of two universally negligible
+Hausdorff spaces is universally negligible.
+%439C
+
+\spheader 439Xh Let us say that a Hausdorff space $X$ is {\bf
+universally $\tau$-negligible} if there is no $\tau$-additive Borel
+probability measure on $X$ which is zero on singletons.   (i) Show that
+if $X$ is a Hausdorff space and $A\subseteq X$, then $A$ is universally
+$\tau$-negligible iff $\mu^*A=0$ for every $\tau$-additive Borel
+probability measure on $X$ such that $\mu\{x\}=0$ for every $x\in X$.
+(ii) Show that if $X$ is a regular Hausdorff space, then a subset $A$ of
+$X$ is universally $\tau$-negligible iff $\mu A=0$ for every atomless
+quasi-Radon measure on $X$.   (iii) Show that if $X$ is a completely
+regular Hausdorff space, it is universally $\tau$-negligible iff
+whenever $\mu$ is an atomless Radon measure on a space $Z$, and
+$X'\subseteq Z$ is homeomorphic to $X$, then $\mu X'=0$.   (iv) Show
+that a Hausdorff space $X$ is universally negligible iff it is
+Borel-measure-complete and universally $\tau$-negligible.   (v) Show
+that if $X$ is a Hausdorff space, $Y$ is a universally $\tau$-negligible
+Hausdorff space, and $f:X\to Y$ is a continuous function such that
+$f^{-1}[\{y\}]$ is universally $\tau$-negligible for every $y\in Y$,
+then $X$ is universally $\tau$-negligible.   (vi) Show that the product
+of two universally $\tau$-negligible Hausdorff spaces is universally
+$\tau$-negligible.   (vi) Show that a scattered Hausdorff space (in
+particular, any discrete space) is universally $\tau$-negligible.
+(vii) Show that a compact
+Hausdorff space is universally $\tau$-negligible iff it is scattered.
+%439C
+
+\sqheader 439Xi Let $\kappa$ be the smallest cardinal of any subset of
+$\Bbb R$ which is not Lebesgue negligible.   Show that if $(Z,\Tau,\nu)$
+is any complete locally determined atomless measure space and
+$A\subseteq Z$ has cardinal less than $\kappa$, then $\nu A=0$.
+%439E
+
+\spheader 439Xj Let $(X,\le)$ be any well-ordered set and $\mu$ a
+non-zero $\sigma$-finite measure on $X$ such that every
+singleton is negligible.   Show that $\{(x,y):x\le y\}$ is not
+measured by the (c.l.d.) product measure on $X\times X$.
+\Hint{Reduce to the case in which $\mu$ is complete and
+totally finite, $X=\zeta$ is an ordinal and $\mu\xi=0$ for every
+$\xi<\zeta$.   You will probably need 251Q.}
+%439F
+
+\sqheader 439Xk Show that 439Fc, or any of the examples of 439A, can be
+regarded as an example of a probability space $(X,\mu)$ and
+a function $f:X\to[0,1]$ such that there is no extension of $\mu$ to a
+measure $\nu$ such that $f$ is $\dom\nu$-measurable;  and accordingly can
+provide an example of a probability space $(X,\mu)$ with a countable
+totally ordered family $\Cal A$ of subsets of $X$ such that there is no
+extension of $\mu$ to a measure measuring every member of $\Cal A$.
+Contrast with 214P, 214Xm-214Xn and 214Yb.
+%439F 439A
+
+\spheader 439Xl Show that $1$-dimensional Hausdorff measure on $\BbbR^2$
+is not inner regular with respect to the closed sets.   \Hint{439H.}
+%439H
+
+\spheader 439Xm Show that $\BbbN^I$ is not pre-Radon for any uncountable
+set $I$.   \Hint{417Xq.}
+%439P
+
+\spheader 439Xn(i) Suppose that $X$ is a completely regular Hausdorff
+space and there is a continuous function $f$ from $X$ to a separable
+metrizable space $Z$ such that $f^{-1}[\{z\}]$ is Lindel\"of for every
+$z\in Z$.   Show that $X$ is realcompact (definition:  436Xg).   (ii)
+Show that the spaces $X$ of 439K and $X^2$ of 439Q are realcompact.
+(iii) Show that $\frak c$ with its discrete topology, and
+$\BbbN^{\frak c}$ with the product topology, are realcompact.
+%439Q
+
+\spheader 439Xo Show that the one-point compactification of the space
+$(Z,\frak T_{\frak c})$ described in 439K is a scattered compact Hausdorff
+space with an atomless Borel probability measure.
+%439K out of order query
+
+\spheader 439Xp Let $X$ be a Polish space, $A\subseteq X$
+an analytic set which is not
+Borel (423Qb, 423Ye), and $\ofamily{\xi}{\omega_1}{E_{\xi}}$ a
+family of Borel
+constituents of $X\setminus A$ (423P).   Suppose that
+$x_{\xi}\in E_{\xi}\setminus\bigcup_{\eta<\xi}E_{\eta}$ for every
+$\xi<\omega_1$.   Show that $\{x_{\xi}:\xi<\omega_1\}$ is universally
+negligible.   Hence show that any probability measure with domain
+$\Cal P\omega_1$ is point-supported.
+%439C out of order query
+
+\leader{439Y}{Further exercises (a)}
+%\spheader 439Ya
+Show that a subset $A$ of $\Bbb R$ is universally
+negligible iff $f[A]$ is Lebesgue negligible for every continuous
+injective function $f:\Bbb R\to\Bbb R$.   \Hint{if $\nu$ is an atomless
+Borel probability measure on $\Bbb R$, set
+$f(x)=x+\nu[0,x]$ for $x\ge 0$, and show that $\mu_Lf[E]=\mu E+\nu E$ for
+every Borel set $E\subseteq\coint{0,\infty}$.}
+%439C
+
+\spheader 439Yb For this exercise only, let us say that a `universally
+negligible measurable space' is a pair $(X,\Sigma)$ where $X$ is a set
+and $\Sigma$ a $\sigma$-algebra of subsets of $X$ containing every
+countable subset of $X$ such that there is no probability measure $\mu$
+with domain $\Sigma$ such that $\mu\{x\}=0$ for every $x\in X$.
+(i) Let $X$ be a set, $\Sigma$ a $\sigma$-algebra of subsets of $X$
+containing all countable subsets of $X$, $A\subseteq X$ and $\Sigma_A$
+the subspace $\sigma$-algebra.   Show that $(A,\Sigma_A)$ is universally
+negligible iff $\mu^*A=0$ whenever $\mu$ is a probability measure with
+domain $\Sigma$ which is zero on singletons.   Show that if $(X,\Sigma)$
+is universally negligible so is $(A,\Sigma_A)$.   (ii) Let $X$ and $Y$
+be sets, $\Sigma$ and $\Tau\,\,\sigma$-algebras of subsets of $X$ and
+$Y$ containing all appropriate countable sets, and $f:X\to Y$ a
+$(\Sigma,\Tau)$-measurable function.   Suppose that $(Y,\Tau)$ and
+$(f^{-1}[\{y\}],\Sigma_{f^{-1}[\{y\}]})$ are universally negligible for
+every $y\in Y$.   Show that $(X,\Sigma)$ is universally negligible.
+(iii) Let $X$ be a set and $\Sigma$ a $\sigma$-algebra of subsets of $X$
+containing all countable subsets of $X$.   Show that the set of those
+$A\subseteq X$ such that $(A,\Sigma_A)$ is universally negligible is a
+$\sigma$-ideal of subsets of $X$.
+%439C
+
+\spheader 439Yc Let $X$ be an analytic Hausdorff
+space and $A$ an analytic subset
+of $X$.   Show that $X\setminus A$ is universally negligible iff all the
+constituents of $X\setminus A$ (for any Souslin scheme defining $A$) are
+countable.
+%439C
+
+\spheader 439Yd(i) Let $X$ be a metrizable space such that $f[X]$ is
+Lebesgue negligible for every continuous function $f:X\to\Bbb R$.   Show
+that $X$ is universally negligible.   (ii) Let $X$ be a completely
+regular Hausdorff space such that $f[X]$ is Lebesgue negligible for
+every continuous function $f:X\to\Bbb R$.   Show that $X$ is universally
+$\tau$-negligible.
+%439G
+
+\spheader 439Ye Let $\frak T_{\frak c}$ be the topology on
+$\{0,1\}^{\Bbb N}$
+constructed in the proof of 439K.   (i) Show that it is normal and
+countably paracompact.   (ii)
+Show that any $\frak T_{\frak c}$-zero set is an $\frak S$-Borel set.
+%439K
+
+\spheader 439Yf Show that there is no atomless Borel probability measure
+on $\omega_1$ endowed with its order topology.   \Hint{411R, 439N.}
+%439N
+
+\spheader 439Yg Show that the space of 439O is locally compact and locally
+countable, therefore first-countable.
+%439O
+
+\spheader 439Yh Show that the Sorgenfrey right-facing topology on
+$\Bbb R$ is hereditarily Lindel\"of, but that its square is not
+Lindel\"of.
+%439Q
+
+\spheader 439Yi Show that if $\omega_1$ is given its order topology, and
+$f:\omega_1^2\to\Bbb R$ is continuous, then there is a $\zeta<\omega_1$
+such that $f$ is constant on $(\omega_1\setminus\zeta)^2$.
+\Hint{4A2S(b-iii).}   Show that if $\mu$ and $\nu$ are Baire probability
+measures on $\omega_1$, then the Baire probability measures
+$\mu\times\nu$, $\nu\times\mu$ on $\omega_1^2$ defined by the formulae
+of 436F coincide.
+%439R
+
+\spheader 439Yj Let $X\subseteq[0,1]$ be a dense set with no
+uncountable compact subset.   Show that $X$ is not a Prokhorov space.
+%439S
+
+\spheader 439Yk(i) A pair
+$(\ofamily{\xi}{\omega_1}{a_{\xi}},\ofamily{\xi}{\omega_1}{b_{\xi}})$ of
+families of subsets
+of $\Bbb N$ is a {\bf Hausdorff gap} if $a_{\xi}\setminus a_{\eta}$,
+$a_{\xi}\setminus b_{\xi}$ and $b_{\eta}\setminus b_{\xi}$ are finite whenever
+$\xi\le\eta<\omega_1$, $a_{\eta}\setminus a_{\xi}$ and
+$b_{\xi}\setminus b_{\eta}$ are infinite whenever
+$\xi<\eta<\omega_1$, and moreover
+$\{\xi:\xi<\eta$, $a_{\xi}\subseteq b_{\eta}\cup n\}$ is finite for every
+$\eta<\omega_1$.   (For a construction of a Hausdorff gap, see
+{\smc Fremlin 84}, 21L.)   Show that in this case there is no $c\subseteq\Bbb N$
+such that $a_{\xi}\setminus c$ and $c\setminus b_{\xi}$ are finite for every
+$\xi<\omega_1$, and that
+$\{a_{\xi}:\xi<\omega_1\}\cup\{b_{\xi}:\xi<\omega_1\}$ is universally
+negligible in $\Cal P\Bbb N$.   (ii) Let
+$\phi:(\Cal P\Bbb N)^{\Bbb N}\to\Cal P\Bbb N$ be a homeomorphism.
+For $0<\xi<\omega_1$ let
+$\sequencen{\theta(\xi,n)}$ be a sequence running over $\xi$.   Set
+$a_0=\emptyset$ and for $0<\xi<\omega_1$ set
+$a_{\xi}=\phi(\sequencen{a_{\theta(\xi,n)}})$.   Show that
+$\{a_{\xi}:\xi<\omega_1\}$ is universally negligible.
+%439F
+}%end of exercises
+
+\cmmnt{\Notesheader{439} I give three separate constructions in 439A
+because the phenomenon here is particularly important.   For two
+chapters I have, piecemeal, been offering theorems on the extension of
+measures.   The principal ones so far seem to be 413O, 415L, 416N,
+417C, 417E and 435C, and I have used methods reflecting my belief
+that the essential feature on which each such theorem depends is inner
+regularity of an appropriate kind.   I think we should simultaneously
+seek to develop an intuition for measures which do {\it not} extend, and
+those in 439A are especially significant because they refer to the Borel
+algebra of the unit interval, which in so many other contexts is
+comfortably clear of the obstacles which beset more exotic structures.
+
+Note that because the Borel $\sigma$-algebra of $\Bbb R$ is countably
+generated, the examples here are examples of measures which cannot be
+extended to measure every member of a countable family of sets.
+Recall that in 214P I showed that measures can be extended to
+measure the sets in arbitrary {\it well-ordered} families.
+
+Outside the context of Polish spaces, the terms `universally measurable'
+and `universally negligible' are not properly settled.   I have tried to
+select definitions which lead to a reasonable pattern.   At least
+a universally negligible subset of a Hausdorff space is
+universally measurable (439Xd), and both concepts can be expressed in
+terms of sets with $\sigma$-algebras, as in 439Yb.   It is important to
+notice, in 439B,
+that I write `$\mu\{x\}=0$ for every $x\in X$', not `$\mu$ is atomless'.
+For instance, Dieudonn\'e's measure shows that $\omega_1$, with
+its order topology, is not universally negligible on the definition
+here;  but it is easy to show that there is no atomless Borel
+probability measure on $\omega_1$ (439Yf).   In many cases, of course,
+we do not need to make this distinction (439D).
+
+The cardinal $\kappa$ of 439F (the `uniformity' of the Lebesgue null
+ideal) is one of a large family of cardinals which will be
+examined in Chapter 52 in the next volume.
+
+% 439J rvmc  439O cofinal closed
+In some of the arguments above (439J, 439L, 439O) I appeal to
+(different) principles (`there is a cardinal which is not measure-free',
+$\clubsuit$) which are not
+theorems according to the rules I follow in this book.   Such examples
+would in some ways fit better into Volume 5, where I mean to investigate
+such principles properly.   I include the examples here because they do
+at least exhibit bounds on what can be proved in ZFC.   I should not
+want anyone to waste her time trying to show, for instance, that all
+completion regular Borel measures are $\tau$-additive.   Nevertheless,
+the absence of a `real' counter-example (obviously we want a probability
+measure on a completely regular Hausdorff space) remains in my view a
+significant gap.   It remains conceivable that there is a mathematical
+world in which no such space exists.   Clearly the discovery of such a
+world is likely to require familiarity with the many worlds already
+known, and I am not going to embark on any such exploration in this
+volume.   On the other hand, it is also very possible that all we need
+is a bit of extra ingenuity to construct a counter-example in ZFC.   In
+this section we have two examples of successes of this kind.   In
+439F-439H, for instance, we have results which were long known as
+consequences of the continuum hypothesis;  the particular insight of
+{\smc Grzegorek 81} was the observation that they depended on
+determinate properties of the cardinal $\kappa$ of 439F, and that its
+indeterminate position between $\omega_1$ and $\frak c$ was unimportant.
+In 439K I show how a
+re-working of ideas in {\smc Juh\'asz Kunen \& Rudin 76}, where a
+similar example was constructed (for an entirely different purpose)
+assuming the continuum hypothesis, provides us with an interesting space
+(a first-countable non-Radon compact Hausdorff space) in ZFC.   Let me
+emphasize that these ideas were originally set out in a framework
+supported by an extra axiom, where some technical details were easier
+and the prize aimed at (a non-Lindel\"of hereditarily separable space)
+more important.
+
+The examples in 439K-439R are mostly based on constructions more or less
+familiar from general topology.   I have already mentioned the origins
+of 439K.   439M is related to the Tychonoff and Dieudonn\'e planks
+({\smc Steen \& Seebach 78}, \S\S86-89).   439N and 439Q revisit yet
+again $\omega_1$ and the Sorgenfrey line.   439O is adapted from one of
+the standard constructions of Dowker spaces.   Products of disjoint
+stationary sets (439R) have also been used elsewhere.
+}%end of notes
+
+\frnewpage
+

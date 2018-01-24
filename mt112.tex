@@ -1,0 +1,550 @@
+\frfilename{mt112.tex}
+\versiondate{20.2.05/20.8.08}
+
+\def\chaptername{Measure spaces}
+\def\sectionname{Measure spaces}
+\copyrightdate{1994}
+
+\newsection{112}
+
+We are now, I hope, ready for the second major definition, the
+definition on which all the work of this treatise is based.
+
+\leader{112A}{Definition} A {\bf measure space} is a triple
+$(X,\Sigma,\mu)$ where
+
+\quad(i) $X$ is a set;
+
+\quad(ii) $\Sigma$ is a $\sigma$-algebra of subsets of $X$;
+
+\quad(iii) $\mu:\Sigma\to[0,\infty]$ is a function such that
+
+\qquad($\alpha$) $\mu\emptyset=0$;
+
+\qquad($\beta$) if $\langle E_n\rangle_{n\in\Bbb N}$ is a disjoint
+sequence in $\Sigma$, then
+$\mu(\bigcup_{n\in\Bbb N}E_n)=\sum_{n=0}^{\infty}\mu E_n$.
+
+\noindent In this context, members of $\Sigma$ are called {\bf
+measurable} sets, and $\mu$ is called a {\bf measure on $X$}.
+
+\leader{112B}{Remarks}\cmmnt{ {\bf (a) The use of $\infty$} In (iii) of
+the definition
+above, I declare that $\mu$ is to be a function taking values in
+`$[0,\infty]$', that is, the set comprising the non-negative real
+numbers with `$\infty$' adjoined.   I expect that you have already
+encountered various uses of the symbol $\infty$ in analysis;   I hope
+you have realised that it means rather different things in different
+contexts, and that it is necessary to establish clear conventions for
+its use each time.   The `$\infty$ of measure' corresponds to the
+notion of infinite length or area or volume.   The basic operation we
+need to perform on it is addition:  $\infty+a=a+\infty=\infty$ for every
+$a\in[0,\infty\roibr$ (that is, every real number $a\ge 0$), and
+$\infty+\infty=\infty$.   This renders $[0,\infty]$ a semigroup under
+addition.   It will be reasonably safe to declare
+$\infty-a=\infty$ for every $a\in\Bbb R$;  but we must
+absolutely decline to interpret the formula $\infty-\infty$.   As for
+multiplication, it turns out that it is usually right to interpret
+$\infty\cdot\infty$, $a\cdot\infty$ and $\infty\cdot a$ as $\infty$ for
+$a>0$, while $0\cdot\infty=\infty\cdot 0$ can generally be taken as $0$.
+
+We also have a natural total ordering of $[0,\infty]$, writing
+$a<\infty$ for every $a\in\coint{0,\infty}$.   This gives an idea of
+supremum and infimum of an arbitrary (non-empty) subset of $[0,\infty]$;
+and it will often be right to interpret $\inf\emptyset$ as $\infty$, but
+I will try to signal this particular convention each time it is
+relevant.
+We also have a notion of limit;  if
+$\langle u_n\rangle_{n\in\Bbb N}$ is a sequence in $[0,\infty]$, then it converges to $u\in[0,\infty]$
+if
+
+\qquad {for every $v<u$ there is an $n_0\in\Bbb N$ such that $v\le
+u_n$ for every $n\ge n_0$,}
+
+\qquad {for every $v>u$ there is an $n_0\in\Bbb N$ such that $v\ge
+u_n$ for every $n\ge n_0$.}
+
+\noindent Of course if $u=0$ or $u=\infty$ then one of these clauses
+will be vacuously satisfied.
+
+(See also \S135.)
+
+\header{112Bb}{\bf (b)} I should say plainly what I mean by a `disjoint'
+sequence:
+a sequence $\langle E_n\rangle_{n\in\Bbb N}$ is {\bf disjoint} if no
+point belongs to more than one $E_n$, that is, if $E_m\cap
+E_n=\emptyset$ for all distinct $m$, $n\in\Bbb N$.   Note that there is
+no bar here on one, or many, of the $E_n$ being the empty set.
+
+Similarly, if $\langle E_i\rangle_{i\in I}$ is a family of sets indexed
+by an arbitrary set $I$, it is {\bf disjoint} if $E_i\cap E_j=\emptyset$
+for all distinct $i$, $j\in I$.
+
+\medskip
+
+} {\bf (c)} In interpreting clause (iii-$\beta$) of the
+definition above,
+we need to assign values to sums $\sum_{n=0}^{\infty}u_n$ for arbitrary
+sequences $\langle u_n\rangle_{n\in\Bbb N}$ in $[0,\infty]$.
+\cmmnt{The
+natural way to do this is to say that
+$\sum_{n=0}^{\infty}u_n=\lim_{n\to\infty}\sum_{m=0}^nu_m$,
+using the definitions sketched in (a).} %end of comment
+If one of the $u_m$ is itself infinite, \cmmnt{say $u_k=\infty$,
+then $\sum_{m=0}^nu_m=\infty$ for every
+$n\ge k$, so of course} $\sum_{n=0}^{\infty}u_n=\infty$.
+If all the $u_m$ are finite, then\cmmnt{, because they are all
+non-negative,} the sequence $\langle\sum_{m=0}^nu_m\rangle_{n\in\Bbb N}$
+of partial
+sums is monotonic non-decreasing, and either has a finite limit
+$\sum_{n=0}^{\infty}u_n\in\Bbb R$, or diverges to $\infty$;  in which
+case we again interpret $\sum_{n=0}^{\infty}u_n$ as $\infty$.
+
+\header{112Bd}{\bf (d)}\cmmnt{ Once again, the important examples of
+measure spaces will have
+to wait until \S\S114 and 115 below.   However, I can describe
+immediately one particular class of measure space, which should always
+be borne in
+mind, though it does not give a good picture of the most important and
+interesting parts of the subject.}   Let $X$ be any set, and let
+$h:X\to[0,\infty]$ be any function.   For every $E\subseteq X$ write
+$\mu E=\sum_{x\in E}h(x)$.   To interpret this sum, note that there is
+no difficulty for
+finite sets $E$ (taking $\sum_{x\in\emptyset}h(x)=0$), while for
+infinite sets $E$ we can take
+$\sum_{x\in E}h(x)=\sup\{\sum_{x\in I}h(x):I\subseteq E$ is finite$\}$,
+because
+every $h(x)$ is non-negative.   \cmmnt{(You may well prefer to think
+about this at first with $X=\Bbb N$, so that
+$\sum_{n\in E}h(n)=\lim_{n\to\infty}\sum_{m\in E,m\le n}h(m)$;
+but I hope that a little thought will show you that the
+general case, in which $X$ may even be uncountable, is not really more
+difficult.)}   Now $(X,\Cal PX,\mu)$ is a measure space.
+
+\cmmnt{We are very far from being ready for the specialized vocabulary
+needed to
+describe different kinds of measure space, but when the time comes} I will call
+measures of this kind {\bf point-supported}.
+
+Two particular cases recur often enough to be worth giving names to.
+If $h(x)=1$ for every $x$, then $\mu E$
+is just the number of points of $E$ if $E$ is finite, and is $\infty$ if
+$E$ is infinite.   I will call this {\bf counting measure} on $X$.
+If $x_0\in X$, we can set $h(x_0)=1$ and $h(x)=0$ for
+$x\in X\setminus\{x_0\}$;  then $\mu E$ is $1$ if $x_0\in E$, and $0$ for
+other $E$.   I will call this the
+{\bf Dirac measure on $X$ concentrated at $x_0$}.
+Another simple example is with $X=\Bbb N$, $h(n)=2^{-n-1}$ for
+every $n$;  then $\mu X={1\over 2}+{1\over 4}+\ldots=1$.
+
+\spheader 112Be If $(X,\Sigma,\mu)$ is a measure space\cmmnt{, then
+$\Sigma$ is the domain of the function $\mu$, and $X$ is the largest
+member of $\Sigma$.   We can therefore recover the whole triplet
+$(X,\Sigma,\mu)$ from its final component $\mu$.   This is not a game
+which is worth playing at this stage.   However, it is convenient on
+occasion to introduce a measure without immediately giving a name to its
+domain, and when I do this} I may say that `$\mu$ {\bf measures} $E$' or
+`$E$ is {\bf measured by} $\mu$' to mean that $\mu E$ is
+defined\cmmnt{, that is, that $E$ belongs to the $\sigma$-algebra
+$\dom\mu$}.   \cmmnt{{\bf Warning!} Many authors use the phrase
+`$\mu$-measurable set' to mean something a little different from what I am
+discussing here.}
+
+\leader{112C}{Elementary properties of measure spaces} Let
+$(X,\Sigma,\mu)$ be a measure space.
+
+(a) If $E$, $F\in\Sigma$ and $E\cap F=\emptyset$ then $\mu(E\cup F)=\mu
+E+\mu F$.
+
+(b) If $E$, $F\in\Sigma$ and $E\subseteq F$ then $\mu E\le \mu F$.
+
+(c) $\mu(E\cup F)\le\mu E+\mu F$ for any $E$, $F\in\Sigma$.
+
+(d) If $\langle E_n\rangle_{n\in\Bbb N}$ is any sequence in $\Sigma$,
+then $\mu(\bigcup_{n\in\Bbb N}E_n)\le\sum_{n=0}^{\infty}\mu E_n$.
+
+(e) If $\langle E_n\rangle_{n\in\Bbb N}$ is a non-decreasing sequence in
+$\Sigma$ (that is, $E_n\subseteq E_{n+1}$ for every $n\in\Bbb N$) then
+
+\Centerline{$\mu(\bigcup_{n\in\Bbb N}E_n)=\lim_{n\to\infty}\mu
+E_n=\sup_{n\in\Bbb N}\mu E_n$.}
+
+(f) If $\langle E_n\rangle_{n\in\Bbb N}$ is a non-increasing sequence in
+$\Sigma$ (that is, $E_{n+1}\subseteq E_{n}$ for every $n\in\Bbb N$), and
+if some $\mu E_n$ is finite, then
+
+\Centerline{$\mu(\bigcap_{n\in\Bbb N}E_n)
+=\lim_{n\to\infty}\mu E_n=\inf_{n\in\Bbb N}\mu E_n$.}
+
+\proof{{\bf (a)} Set $E_0=E$, $E_1=F$, $E_n=\emptyset$ for $n\ge
+2$;  then $\langle E_n\rangle_{n\in\Bbb N}$ is a disjoint sequence in
+$\Sigma$ and $\bigcup_{n\in\Bbb N}E_n=E\cup F$, so
+
+\Centerline{$\mu(E\cup
+F)=\sum_{n=0}^{\infty}\mu E_n=\mu E+\mu F$}
+
+\noindent (because $\mu\emptyset=0$).
+
+\medskip
+
+{\bf (b)} $F\setminus E\in\Sigma$ (111Dc) and
+$\mu(F\setminus E)\ge 0$ (because all values of $\mu$ are in $[0,\infty]$);
+so (using (a))
+
+\Centerline{$\mu F=\mu E+\mu(F\setminus E)\ge\mu E$.}
+
+\medskip
+
+{\bf (c)} $\mu(E\cup F)=\mu E+\mu(F\setminus E)$, by (a), and
+$\mu(F\setminus E)\le \mu F$, by (b).
+
+\medskip
+
+{\bf (d)} Set $F_0=E_0$, $F_n=E_n\setminus\bigcup_{i<n}E_i$ for $n\ge
+1$;  then $\langle F_n\rangle_{n\in\Bbb N}$ is a disjoint sequence in
+$\Sigma$, $\bigcup_{n\in\Bbb N}F_n=\bigcup_{n\in\Bbb N}E_n$ and
+$F_n\subseteq E_n$ for every $n$.   By (b) just above, $\mu F_n\le\mu
+E_n$ for each $n$;  so
+
+\Centerline{$\mu(\bigcup_{n\in\Bbb N}E_n)
+=\mu(\bigcup_{n\in\Bbb N}F_n)=\sum_{n=0}^{\infty}\mu
+F_n\le\sum_{n=0}^{\infty}\mu E_n$.}
+
+\medskip
+
+{\bf (e)} Set $F_0=E_0$, $F_n=E_n\setminus E_{n-1}$ for $n\ge 1$;  then
+$\langle F_n\rangle_{n\in\Bbb N}$ is a disjoint sequence in $\Sigma$ and
+$\bigcup_{n\in\Bbb N}F_n=\bigcup_{n\in\Bbb N}E_n$.   Consequently
+$\mu(\bigcup_{n\in\Bbb N}E_n)=\sum_{n=0}^{\infty}\mu F_n$.   But an easy
+induction on $n$, using (a) for the inductive step, shows that $\mu
+E_n=\sum_{m=0}^n\mu F_m$ for every $n$.   So
+
+\Centerline{$\sum_{n=0}^{\infty}\mu
+F_n=\lim_{n\to\infty}\sum_{m=0}^n\mu F_m=\lim_{n\to\infty}\mu E_n$.}
+
+\noindent Finally, $\lim_{n\to\infty}\mu E_n=\sup_{n\in\Bbb N}\mu E_n$
+because (by
+(b)) $\langle\mu E_n\rangle_{n\in\Bbb N}$ is non-decreasing.
+
+\medskip
+
+{\bf (f)} Suppose that $\mu E_k<\infty$.   Set $F_n=E_k\setminus
+E_{k+n}$ for $n\in\Bbb N$, $F=\bigcup_{n\in\Bbb N}F_n$;  then $\langle
+F_n\rangle_{n\in\Bbb N}$ is a non-decreasing sequence in $\Sigma$, so
+$\mu
+F=\lim_{n\to\infty}\mu F_n$, by (e) just above.   Also, $\mu F_n+\mu
+E_{k+n}=\mu E_k$;  because $\mu E_k<\infty$, we may safely write $\mu
+F_n=\mu E_k-\mu E_{k+n}$, so that
+
+\Centerline{$\mu F=\lim_{n\to\infty}(\mu E_k-\mu
+E_{k+n})=\mu E_k-\lim_{n\to\infty}\mu E_n$.}
+
+\noindent   Next, $F\subseteq E_k$, so
+$\mu F+\mu(E_k\setminus F)=\mu E_k$, and (again because $\mu E_k$ is
+finite) $\mu F=\mu E_k-\mu(E_k\setminus F)$.   Thus we must have
+$\mu(E_k\setminus F)=\lim_{n\to\infty}\mu E_n$.   But $E_k\setminus F$
+is just $\bigcap_{n\in\Bbb N}E_n$.
+
+Finally, $\lim_{n\to\infty}\mu E_n=\inf_{n\in\Bbb N}\mu E_n$ because
+$\langle\mu E_n\rangle_{n\in\Bbb N}$ is non-increasing.
+}%end of proof of 112C
+
+\medskip
+
+\cmmnt{\noindent{\bf Remark} Observe that in (f) above it is essential
+to have
+$\inf_{n\in\Bbb N}\mu E_n<\infty$.   The construction in 112Bd is
+already enough to show this.   Take $X=\Bbb N$ and let $\mu$ be counting
+measure on $X$.   Set $E_n=\{i:i\in\Bbb N,\,i\ge n\}$ for each $n$.
+Then $E_{n+1}\subseteq E_n$ for each $n$, but
+
+\Centerline{$\mu(\bigcap_{n\in\Bbb N}E_n)
+=\mu\emptyset=0<\infty=\lim_{n\to\infty}\mu E_n$.}
+}%end of comment
+
+
+\leader{112D}{Negligible sets} Let $(X,\Sigma,\mu)$ be any measure
+space.
+
+\header{112Da}{\bf (a)} A set $A\subseteq X$ is {\bf negligible} (or
+{\bf null}) if
+there is a set $E\subseteq\Sigma$ such that $A\subseteq E$ and
+$\mu E=0$.   (If there seems to be a possibility of doubt about which measure is involved, I will write {\bf $\mu$-negligible}.)
+
+\header{112Db}{\bf (b)} Let $\Cal N$ be the family of negligible subsets
+of $X$.
+Then (i) $\emptyset\in\Cal N$ (ii) if $A\subseteq B\in\Cal N$ then
+$A\in\Cal N$ (iii) if $\langle A_n\rangle_{n\in\Bbb N}$ is any sequence
+in $\Cal N$, $\bigcup_{n\in\Bbb N}A_n\in\Cal N$.   \prooflet{\Prf\ (i)
+$\mu(\emptyset)=0$.   (ii) There is an $E\in\Sigma$ such that $\mu E=0$
+and $B\subseteq E$;  now $A\subseteq E$.   (iii) For each $n\in\Bbb N$
+choose an $E_n\in\Sigma$ such that $A_n\subseteq E_n$ and $\mu E_n=0$.
+Now $E=\bigcup_{n\in\Bbb N}E_n\in\Sigma$ and
+$\bigcup_{n\in\Bbb N}A_n\subseteq\bigcup_{n\in\Bbb N}E_n$, and
+$\mu(\bigcup_{n\in\Bbb N}E_n)\le\sum_{n=0}^{\infty}\mu E_n$, by 112Cd,
+so $\mu(\bigcup_{n\in\Bbb N}E_n)=0$.  \Qed}
+
+I will call $\Cal N$ the {\bf null ideal} of the measure $\mu$.
+(A family of sets satisfying the conditions (i)-(iii) here is called a
+{\bf $\sigma$-ideal} of sets.)
+
+\header{112Dc}{\bf (c)} A set $A\subseteq X$ is {\bf conegligible} if
+$X\setminus A$
+is negligible\cmmnt{;  that is, there is a measurable set
+$E\subseteq A$
+such that $\mu(X\setminus E)=0$}.   Note that (i) $X$ is conegligible
+(ii) if $A\subseteq B\subseteq X$ and $A$ is conegligible then $B$ is
+conegligible (iii) if $\langle A_n\rangle_{n\in\Bbb N}$ is a sequence of
+conegligible sets, then $\bigcap_{n\in\Bbb N}A_n$ is conegligible.
+
+\header{112Dd}{\bf (d)}\cmmnt{ It is convenient, and customary, to use
+some relatively informal language concerning negligible sets.}   If
+$P(x)$ is
+some assertion applicable to members $x$ of the set $X$, we say that
+
+\Centerline{`$P(x)$ for almost every $x\in X$'}
+
+\noindent or
+
+\Centerline{`$P(x)$ a.e.\ $(x)$'}
+
+\noindent or
+
+\Centerline{`$P$ almost everywhere',\quad `$P$ a.e.'}
+
+\noindent or\cmmnt{, if it seems necessary to specify the measure
+involved,}
+
+\Centerline{`$P(x)$ for $\mu$-almost every $x$',
+\quad`$P(x)\,\mu$-a.e.$(x)$',
+\quad`$P\,\mu$-a.e.',}
+
+\noindent to mean that
+
+\Centerline{$\{x:x\in X,\,P(x)\}$}
+
+\noindent is conegligible in $X$\cmmnt{, that is, that
+
+\Centerline{$\{x:x\in X,\,P(x)$ is false$\}$}
+
+\noindent is negligible}.   Thus\cmmnt{, for instance,} if
+$f:X\to\Bbb R$ is a function, `$f>0$ a.e.' means that $\{x:f(x)\le 0\}$ is negligible.
+
+\cmmnt{\spheader 112De The phrases `{\bf almost surely}' ({\bf
+a.s.}), `{\bf presque partout}' ({\bf p.p.}) are also used for `almost
+everywhere'.
+}%end of comment
+
+\cmmnt{\header{112Df}{\bf (f)} I should call your attention to the
+fact that, on my
+definitions, a negligible set need not itself be measurable, though it
+must be included in some negligible measurable set.   (Measure spaces in
+which all negligible sets are measurable are called
+{\bf complete}.   I will return to this question in \S211.)
+}%end of comment
+
+\spheader 112Dg When $f$ and $g$ are real-valued functions defined on
+conegligible subsets of a measure space, I will write $f\eae g$,
+$f\leae g$ or $f\geae g$ to mean, respectively,
+
+\Centerline{$f=g$ a.e., that is,
+$\{x:x\in\dom(f)\cap\dom(g)$, $f(x)=g(x)\}$ is conegligible,}
+
+\Centerline{$f\le g$ a.e., that is,
+$\{x:x\in\dom(f)\cap\dom(g)$, $f(x)\le g(x)\}$ is conegligible,}
+
+\Centerline{$f\ge g$ a.e., that is,
+$\{x:x\in\dom(f)\cap\dom(g)$, $f(x)\ge g(x)\}$ is conegligible.}
+
+\exercises{
+\leader{112X}{Basic exercises $\pmb{>}$(a)}
+%\sqheader 112Xa
+Let $(X,\Sigma,\mu)$ be a
+measure space.   Show that (i)
+$\mu(E\cup F)+\mu(E\cap F)=\mu E+\mu F$ (ii)
+$\mu(E\cup F\cup G)+\mu(E\cap F)+\mu(E\cap G)+\mu(F\cap G)=\mu E+\mu
+F+\mu G+\mu(E\cap F\cap G)$ for all $E$, $F$, $G\in\Sigma$.   Generalize
+these results to longer sequences of sets.   (You may prefer to begin
+with the case in which $\mu E$, $\mu F$ and $\mu G$ are all finite.
+But I hope you will be able to find arguments which deal with the
+general case.)
+%112C
+
+\sqheader 112Xb Let $(X,\Sigma,\mu)$ be a measure space and
+$\langle E_n\rangle_{n\in\Bbb N}$ a sequence in $\Sigma$.   Show that
+
+\Centerline{$\mu(\bigcup_{n\in\Bbb N}\bigcap_{m\ge n}E_m)
+\le\liminf_{n\to\infty}\mu E_n$.}
+%112C
+
+\spheader 112Xc Let $(X,\Sigma,\mu)$ be a measure space, and
+$E$, $F\in\Sigma$;  suppose that $\mu E<\infty$.   Show that
+$\mu(F\symmdiff E)=\mu F-\mu E+2\mu(E\setminus F)$.
+%112C
+
+\spheader 112Xd Let $(X,\Sigma,\mu)$ be a measure space and
+$\sequencen{E_n}$ a sequence of measurable sets such that
+$\mu(\bigcup_{n\in\Bbb N}E_n)<\infty$.   (i) Show that
+$\limsup_{n\to\infty}\mu E_n
+\le\mu(\bigcap_{n\in\Bbb N}\bigcup_{m\ge n}E_m)$.   (ii) Show that
+if $\bigcap_{n\in\Bbb N}\bigcup_{m\ge n}E_m=E
+=\bigcup_{n\in\Bbb N}\bigcap_{m\ge n}E_m$ then
+$\lim_{n\to\infty}\mu E_n$ exists and is equal to $\mu E$.
+%112Xb 112C
+
+\sqheader 112Xe Let $(X,\Sigma,\mu)$ be a measure space, and $\eusm F$
+the set of
+real-valued functions whose domains are conegligible subsets of $X$.
+(i) Show that $\{(f,g):f,\,g\in\eusm F,\,f\leae g\}$ and
+$\{(f,g):f,\,g\in\eusm F,\,f\geae g\}$ are reflexive transitive relations
+on $\eusm F$, each the inverse of the other.   (ii) Show that
+$\{(f,g):f,\,g\in\eusm F,\,f\eae g\}$ is their intersection, and is an
+equivalence relation on $\eusm F$.
+%112D
+
+\spheader 112Xf Let $(X,\Sigma,\mu)$ be a measure space, $Y$ a set, and
+$\phi:X\to Y$ a function.   Set
+$\Tau=\{F:F\subseteq Y$, $\phi^{-1}[F]\in\Sigma\}$ and
+$\nu F=\mu\phi^{-1}[F]$ for $F\in\Tau$.   Show that $\nu$ is a measure on
+$Y$.   ($\nu$ is called the {\bf image measure} on $Y$, and I will
+generally denote it $\mu\phi^{-1}$.)
+%111Xc
+
+\leader{112Y}{Further exercises (a)}
+%\spheader 112Ya
+Let $X$ be a set and $\Sigma$ a
+$\sigma$-algebra of subsets of $X$.   Let $\mu_1$ and $\mu_2$ be two
+measures on $X$, both with domain $\Sigma$.   Set
+
+\Centerline{$\mu E
+=\inf\{\mu_1(E\cap F)+\mu_2(E\setminus F):F\in\Sigma\}$}
+
+\noindent for each $E\in\Sigma$.   Show that $\mu$ is a measure on $X$,
+and that it is the greatest measure, with domain $\Sigma$, such that
+$\mu E\le\min(\mu_1E,\mu_2E)$ for every $E\in\Sigma$.
+%problem with double use of symbol  \mu , here and in next exercise,
+%see correspondence with Wallace Thompson
+
+\spheader 112Yb Let $X$ be a set and $\Sigma$ a
+$\sigma$-algebra of subsets of $X$.   Let $\mu_1$ and $\mu_2$ be two
+measures on $X$, both with domain $\Sigma$.   Set
+
+\Centerline{$\mu E
+=\sup\{\mu_1(E\cap F)+\mu_2(E\setminus F):F\in\Sigma\}$}
+
+\noindent for each $E\in\Sigma$.   Show that $\mu$ is a measure on $X$,
+and that it is the least measure, with domain $\Sigma$, such that $\mu
+E\ge\max(\mu_1E,\mu_2E)$ for every $E\in\Sigma$.
+
+\spheader 112Yc Let $X$ be a set and $\Sigma$ a
+$\sigma$-algebra of subsets of $X$.
+
+\quad(i) Suppose that $\nu_0,\ldots,\nu_n$ are measures on $X$, all with domain
+$\Sigma$.   Set
+
+\Centerline{$\mu E=\inf\{\sum_{i=0}^n\nu_iF_i:F_0,\ldots,F_n\in\Sigma$,
+$E\subseteq\bigcup_{i\le n}F_i\}$}
+
+\noindent for $E\in\Sigma$.   Show that $\mu$ is a measure on $X$.
+
+\quad(ii) Let $\Nu$ be a non-empty family of
+measures on $X$, all with domain $\Sigma$.   Set
+
+$$\eqalign{\mu E=\inf\{\sum_{n=0}^{\infty}\nu_nF_n:
+&\sequencen{\nu_n}\text{ is a sequence in }\Nu,\cr
+&\sequencen{F_n}\text{ is a sequence in }\Sigma,
+\,E\subseteq\bigcup_{n\in\Bbb N}F_n\}\cr}$$
+
+\noindent for $E\in\Sigma$.   Show that $\mu$ is a measure on $X$.
+
+\quad(iii) Let $\Nu$ be a non-empty family of
+measures on $X$, all with domain $\Sigma$, and suppose that there is some
+$\nuprime\in\Nu$ such that $\nuprime X<\infty$.   Set
+
+\Centerline{$\mu E=\inf\{\sum_{i=0}^n\nu_iF_i:n\in\Bbb N,
+  \,\nu_0,\ldots,\nu_n\in\Nu,\,F_0,\ldots,F_n\in\Sigma,
+  E\subseteq\bigcup_{i\le n}F_i\}$}
+
+\noindent for $E\in\Sigma$.   Show that $\mu$ is a measure on $X$.
+
+\quad(iv) Suppose, in (iii), that $\Nu$ is downwards-directed, that is,
+for any $\nu_1$, $\nu_2\in\Nu$ there is a $\nu\in\Nu$ such that
+$\nu E\le\min(\nu_1E,\nu_2E)$ for every $E\in\Sigma$.   Show that
+$\mu E=\inf_{\nu\in\Nu}\nu E$ for every $E\in\Sigma$.
+
+\quad(v) Show that in all the cases (i)-(iii) the measure constructed
+is the greatest measure $\mu$ with domain $\Sigma$ such that
+$\mu E\le\inf_{\nu\in\Nu}\nu E$ for every $E\in\Sigma$.
+
+\spheader 112Yd Let $X$ be a set and $\Sigma$ a
+$\sigma$-algebra of subsets of $X$.   Let $\Nu$ be a non-empty family of
+measures on $X$, all with domain $\Sigma$.   Set
+
+$$\eqalign{\mu E=\sup\{\sum_{i=0}^n\nu_iF_i:n\in\Bbb N,
+  &\,\nu_0,\ldots,\nu_n\in\Nu,\cr
+  &F_0,\ldots,F_n\text{ are disjoint subsets of }E
+    \text{ belonging to }\Sigma\}\cr}$$
+
+\noindent for $E\in\Sigma$.   (i) Show that
+
+$$\eqalign{\mu E=\sup\{\sum_{n=0}^{\infty}\nu_nF_n:
+&\sequencen{\nu_n}\text{ is a sequence in }\Nu,\cr
+&\sequencen{F_n}\text{ is a disjoint sequence in }\Sigma,
+\,\bigcup_{n\in\Bbb N}F_n\subseteq E\}\cr}$$
+
+\noindent for every $E\in\Sigma$.
+(ii) Show that $\mu$ is a measure on $X$, and that it is the
+least measure, with domain $\Sigma$, such that
+$\mu E\ge\sup_{\nu\in\Nu}\nu E$ for every $E\in\Sigma$.   (iii) Now
+suppose that $\Nu$ is upwards-directed, that is, for any $\nu_1$,
+$\nu_2\in\Nu$ there is a $\nu\in\Nu$ such that
+$\nu E\ge\max(\nu_1E,\nu_2E)$ for every $E\in\Sigma$.   Show that
+$\mu E=\sup_{\nu\in\Nu}\nu E$ for every $E\in\Sigma$.
+
+\spheader 112Ye Let $(X,\Sigma,\mu)$ be a measure space and
+$\sequencen{E_n}$ a sequence of measurable sets.   For each $k\in\Bbb N$
+set $H_k=\{x:x\in X,\,\#(\{n:x\in E_n\})\ge k\}$, the set of points
+belonging to $E_n$ for $k$ or more values of $n$.   (i) Show that each
+$H_k$ is measurable.   (ii) Show that $\sum_{k=1}^{\infty}\mu
+H_k=\sum_{n=0}^{\infty}\mu E_n$.   \Hint{start with the case in which
+$E_n=\emptyset$ for $n\ge n_0$.}   (iii) Show that if
+$\sum_{n=0}^{\infty}\mu E_n$ is finite, then almost every point of $X$
+belongs to only finitely many $E_n$, and $\sum_{n=0}^{\infty}\mu
+E_n=\sum_{k=0}^{\infty}k\mu G_k$, where
+
+\Centerline{$G_k=H_k\setminus H_{k+1}=\{x:\#(\{n:x\in E_n\})=k\}$.}
+
+\spheader 112Yf Let $X$ be a set and $\mu$, $\nu$ two measures on $X$, with
+domains $\Sigma$, $\Tau$ respectively.   Set $\Lambda=\Sigma\cap\Tau$ and
+define $\lambda:\Lambda\to[0,\infty]$ by setting $\lambda E=\mu E+\nu E$
+for every $E\in\Lambda$.   Show that $(X,\Lambda,\lambda)$ is a measure
+space.
+%+
+}%end of exercises
+
+\endnotes{
+\Notesheader{112} The calculations in such results as 112Ca-112Cc,
+112Xa and 112Xc, involving only finitely many sets, are common to any
+additive concept of measure;  you may have encountered them in
+elementary probability theory, but of course I am now asking you to
+consider also the possibility that one or more of the sets has measure
+$\infty$.   I hope you will find that these results are entirely natural
+and unsurprisin11g.    I recommend Venn diagrams in this context;   a
+result of this kind involving only finitely many measurable sets and
+only {\it addition}, with no {\it subtraction}, will be valid in general
+if and only if it is valid for the area of simple geometric shapes in
+the plane.   The requirement `$\mu E<\infty$' in 112Xc is necessary
+only because we are subtracting $\mu E$;   the corresponding additive
+result $\mu(F\symmdiff E)+\mu E=\mu F+2\mu(E\setminus F)$ is true for
+all measurable $E$ and $F$.
+Of course when sequences of sets enter the picture, we need to take a
+bit more care;  the results 112Cd-112Cf are the basic ones to learn.   I
+think however that the only trap is in the condition `some $\mu E_n$
+is finite' in 112Cf.  As noted in the remark at the end of 112C, this is
+essential, and for a decreasing sequence of measurable sets it is
+possible for the measure of the limit to be strictly less than the limit
+of the measures, though only when the latter is infinite.
+}%end of notes
+
+\discrpage
+

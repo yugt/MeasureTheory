@@ -1,0 +1,904 @@
+\frfilename{mt511.tex}
+\versiondate{10.10.13}
+\copyrightdate{2003}
+
+\def\nw{\mathop{\text{nw}}}
+\def\triplepc#1#2#3{(#1,#2,\hbox{$<$}#3)}
+\def\bu{\mathop{\text{bu}}}
+
+\def\chaptername{Cardinal functions}
+\def\sectionname{Definitions}
+
+\newsection{511}
+
+A large proportion of the ideas of this volume will be expressed in
+terms of cardinal numbers associated with the structures of measure
+theory.   For any measure space $(X,\Sigma,\mu)$ we have, at least, the
+structures $(X,\Sigma)$, $(X,\Sigma,\Cal N(\mu))$ (where $\Cal N(\mu)$
+is the null ideal of $\mu$) and the measure algebra
+$\frak A=\Sigma/\Sigma\cap\Cal N(\mu)$;  each of these types of
+structure has
+a family of cardinal functions associated with it, starting from the
+obvious ones $\#(X)$, $\#(\Sigma)$ and $\#(\frak A)$.   For the measure
+algebra $\frak A$, we quickly find that we have cardinals naturally
+associated with its Boolean structure and others naturally associated
+with the topological structure of its Stone space;  of course the most
+important ones are those which can be described in both languages.   The
+actual measure $\mu:\Sigma\to[0,\infty]$, and its daughter
+$\bar\mu:\frak A\to[0,\infty]$, will be less conspicuous here;   for most
+of the questions addressed in this volume, replacing a measure by
+another with the same measurable sets and the same negligible sets will
+make no difference.
+
+In this section I list the definitions on which the rest of the chapter
+depends, with a handful of elementary results to give you practice with
+the definitions.
+
+\leader{511A}{Pre-ordered sets}\cmmnt{ When we come to the theory of
+forcing in Chapter 55, there will be technical advantages in using a
+generalization of the concept of `partial order'.}   A {\bf pre-ordered
+set} is a set $P$ together with a relation $\le$ on $P$ such that
+
+\inset{if $p\le q$ and $q\le r$ then $p\le r$,
+
+$p\le p$ for every $p\in P$\dvro{.}{;}}
+
+\noindent\cmmnt{that is, $\le$ is transitive and reflexive but need not
+be antisymmetric.  }As with partial orders,
+I will write $p\ge q$ to mean $q\le p$;
+$[p,q]=\{r:p\le r$ and $r\le q\}$;  $\coint{p,\infty}=\{q:p\le q\}$,
+$\ocint{-\infty,p}=\{q:q\le p\}$.   An {\bf upper} (resp.\ {\bf lower})
+{\bf bound} for a set $A\subseteq P$ will be a $p\in P$ such that $q\le p$
+(resp.\ $p\le q$) for every $q\in A$.   If $(Q,\le)$ is another pre-ordered
+set, I will say that $f:P\to Q$ is {\bf order-preserving} if
+$f(p)\le f(p')$ whenever $p\le p'$ in $P$.   If $\familyiI{(P_i,\le_i)}$ is
+a family of pre-ordered sets, their {\bf product} is the pre-ordered set
+$(P,\le)$ where $P=\prod_{i\in I}P_i$ and, for $p$, $q\in P$,
+$p\le q$ iff $p(i)\le_iq(i)$ for every $i\in I$\cmmnt{ (cf.\ 315C)}.
+
+If $(P,\le)$ is a pre-ordered set, we have an equivalence relation $\sim$
+on $P$ defined by saying that $p\sim q$ if $p\le q$ and $q\le p$.   Now we
+have a canonical partial order on the set $\tilde P$ of equivalence
+classes defined by saying that $p^{\ssbullet}\le q^{\ssbullet}$ iff
+$p\le q$.   \cmmnt{For all ordinary purposes, $(P,\le)$ and
+$(\tilde P,\le)$ carry the same structural information, and the move to the
+true partial order is natural and convenient.   It occasionally happens
+(see 512Ee below, for instance, and also the theory of iterated forcing
+in {\smc Kunen 80}, chap.\ VIII) that it is
+helpful to have a language which enables us to
+dispense with this step, thereby simplifying some basic definitions.
+However the extra generality leads to no new ideas, and I expect that
+most readers will prefer to do nearly all their thinking in
+the context of partially ordered sets.}
+
+\leader{511B}{Definitions} Let $(P,\le)$ be any pre-ordered set.
+
+\spheader 511Ba A subset $Q$ of $P$ is {\bf cofinal} with $P$ if for
+every $p\in P$ there is a $q\in Q$ such that $p\le q$.   The
+{\bf cofinality} of $P$, $\cf P$, is the least cardinal of any cofinal
+subset of $P$.
+
+\spheader 511Bb The {\bf additivity} of $P$, $\add P$, is the least
+cardinal of any subset of $P$ with no upper bound in $P$.   If there is
+no such set, write $\add P=\infty$.
+
+\spheader 511Bc A subset $Q$ of $P$ is {\bf coinitial} with $P$ if for
+every $p\in P$ there is a $q\in Q$ such that $q\le p$.   The
+{\bf coinitiality} of $P$, $\ci P$, is the least cardinal of any
+coinitial subset of $P$.
+
+\spheader 511Bd Two elements $p$, $p'$ of $P$ are
+{\bf compatible upwards} if
+$\coint{p,\infty}\cap\coint{p',\infty}\ne\emptyset$\cmmnt{, that is, if
+$\{p,p'\}$ has an upper bound in $P$};  otherwise they are
+{\bf incompatible upwards}.   A subset $A$ of $P$ is an
+{\bf up-antichain} if no two
+distinct elements of $A$ are compatible upwards.   The {\bf
+upwards cellularity} of $P$ is
+$c^{\uparrow}(P)=\sup\{\#(A):A\subseteq P$ is an up-antichain in $P\}$;
+the {\bf upwards saturation} of $P$, $\sat^{\uparrow}(P)$, is the least
+cardinal $\kappa$ such that there is no up-antichain in $P$ of size
+$\kappa$.   $P$ is called {\bf upwards-ccc} if it has no uncountable
+up-antichain\cmmnt{, that is, $c^{\uparrow}(P)\le\omega$, that is,
+$\sat^{\uparrow}(P)\le\omega_1$}.
+
+%Note:  Juhasz (2001) uses  $\hat c$  for $\sat$
+
+\spheader 511Be Two elements $p$, $p'$ of $P$ are
+{\bf compatible downwards} if
+$\ocint{-\infty,p}\cap\ocint{-\infty,p'}\ne\emptyset$\cmmnt{, that is, if
+$\{p,p'\}$ has a lower bound in $P$};  otherwise they are
+{\bf incompatible downwards}.   A subset $A$ of $P$ is a
+{\bf down-antichain} if no two
+distinct elements of $A$ are compatible downwards.
+The {\bf downwards cellularity} of $P$ is
+$\cdownarrow(P)=\sup\{\#(A):A\subseteq P$ is a down-antichain in
+$P\}$;  the {\bf downwards saturation} of $P$, $\sat^{\downarrow}(P)$,
+is the least $\kappa$ such that there is no down-antichain in
+$P$ with cardinal $\kappa$.   $P$ is called {\bf downwards-ccc} if it has
+no uncountable down-antichain\cmmnt{, that is,
+$\cdownarrow(P)\le\omega$, that is,
+$\sat^{\downarrow}(P)\le\omega_1$}.
+
+\spheader 511Bf If $\kappa$ is a cardinal, a subset $A$ of $P$ is
+{\bf upwards-$\hbox{$<$}\kappa$-linked} in $P$ if every subset of $A$ of
+cardinal less than $\kappa$ is bounded above in $P$.   The {\bf
+upwards $\hbox{$<$}\kappa$-linking number} of $P$,
+$\link_{<\kappa}^{\uparrow}(P)$, is the smallest
+cardinal of any cover of $P$ by upwards-$\hbox{$<$}\kappa$-linked sets.
+
+A subset $A$ of $P$ is {\bf upwards-$\kappa$-linked} in $P$ if it is
+upwards-$\hbox{$<$}\kappa^+$-linked\cmmnt{, that is, every member of
+$[A]^{\le\kappa}$ is bounded above in $P$}.   The {\bf
+upwards $\kappa$-linking number} of $P$,
+$\link_{\kappa}^{\uparrow}(P)=\link_{<\kappa^+}^{\uparrow}(P)$, is the
+smallest cardinal of any cover of $P$ by upwards-$\kappa$-linked sets.
+
+Similarly, a subset $A$ of $P$ is
+{\bf downwards-$\hbox{$<$}\kappa$-linked} if every member of
+$[A]^{<\kappa}$ has a lower bound in $P$, and
+{\bf downwards-$\kappa$-linked} if it is
+downwards-$\hbox{$<$}\kappa^+$-linked;  the
+{\bf downwards $\hbox{$<$}\kappa$-linking number} of $P$,
+$\link_{<\kappa}^{\downarrow}(P)$, is the smallest
+cardinal of any cover of $P$ by
+downwards-$\hbox{$<$}\kappa$-linked sets,
+and $\link_{\kappa}^{\downarrow}(P)=\link_{<\kappa^+}^{\downarrow}(P)$.
+
+\spheader 511Bg The most important cases of (f) above are $\kappa=2$ and
+$\kappa=\omega$.   A subset $A$ of $P$ is {\bf upwards-linked} if any
+two members of $A$ are compatible upwards in $P$, and
+{\bf upwards-centered} if it is upwards-$\hbox{$<$}\omega$-linked\cmmnt{,
+that is, any finite subset of $A$ has
+an upper bound in $P$}.   The {\bf upwards linking number} of $P$,
+$\link^{\uparrow}(P)=\link_2^{\uparrow}(P)$, is the least cardinal of any
+cover of $P$ by upwards-linked sets, and the {\bf upwards centering
+number} of $P$, $\duparrow(P)=\link_{<\omega}^{\uparrow}(P)$,
+is the least cardinal of any cover of $P$ by upwards-centered sets.
+
+\allowmorestretch{500}{\cmmnt{Similarly, }$A\subseteq P$ is
+{\bf downwards-linked} if any two members
+of $A$ are compatible downwards in $P$, and {\bf down\-wards-centered} if
+any finite subset of $A$ has a lower bound in $P$;  the
+{\bf downwards linking number} of $P$ is
+$\link^{\downarrow}(P)=\link_2^{\downarrow}(P)$, and the
+{\bf downwards centering number} of
+$P$ is $\ddownarrow(P)=\link_{<\omega}^{\downarrow}(P)$.
+}
+
+If $\link^{\uparrow}(P)\le\omega$ (resp.\
+$\link^{\downarrow}(P)\le\omega$) we say that $P$ is
+{\bf $\sigma$-linked upwards} (resp.\ {\bf downwards}).
+If $\duparrow(P)\le\omega$ (resp.\
+$\ddownarrow(P)\le\omega$) we say that $P$ is
+{\bf $\sigma$-centered upwards} (resp.\ {\bf downwards}).
+
+\spheader 511Bh The {\bf upwards Martin number} $\frak m^{\uparrow}(P)$
+of $P$ is the smallest cardinal of any family $\Cal Q$ of cofinal
+subsets of $P$ such that there is some $p\in P$ such that no
+upwards-linked subset of $P$ containing $p$ meets
+every member of $\Cal Q$;  if there is no such family $\Cal Q$, write
+$\frak m^{\uparrow}(P)=\infty$.
+
+Similarly, the {\bf downwards Martin number} $\frak m^{\downarrow}(P)$
+of $P$ is the smallest cardinal of any family $\Cal Q$ of coinitial
+subsets of $P$ such that there is some $p\in P$ such that no
+downwards-linked subset of $P$ containing $p$ meets every member
+of $\Cal Q$, or $\infty$ if there is no such $\Cal Q$.
+
+\spheader 511Bi A {\bf Freese-Nation function} on $P$ is a function
+$f:P\to\Cal PP$ such that whenever $p\le q$ in $P$ then
+$[p,q]\cap f(p)\cap f(q)$ is non-empty.   The {\bf Freese-Nation number}
+of $P$, $\FN(P)$, is the least $\kappa$ such that there is a
+Freese-Nation function $f:P\to[P]^{<\kappa}$.
+The {\bf regular Freese-Nation number}
+of $P$, $\FN^*(P)$, is the least regular infinite $\kappa$
+such that there is a
+Freese-Nation function $f:P\to[P]^{<\kappa}$.
+%$P$ has the
+%{\bf Freese-Nation property} if $\FN(P)\le\omega$, and the
+%{\bf weak Freese-Nation property} if $\FN(P)\le\omega_1$.
+If $Q$ is a subset of $P$, the {\bf Freese-Nation index} of $Q$ in $P$
+is the least cardinal $\kappa$ such that
+$\cf(Q\cap\ocint{-\infty,p})<\kappa$
+and $\ci(Q\cap\coint{p,\infty})<\kappa$ for every $p\in P$.
+
+\spheader 511Bj The {\bf (principal) bursting number} $\bu P$ of $P$ is
+the least cardinal $\kappa$ such that there is a cofinal subset $Q$ of
+$P$ such that
+
+\Centerline{$\#(\{q:q\in Q$, $q\le p$, $p\not\le q\})<\kappa$}
+
+\noindent for every $p\in P$.
+%we want  bu \le cf  when  P  has top element
+
+\spheader 511Bk\cmmnt{ It will be convenient to have a phrase for the
+following phenomenon.}   I will say that $P$ is {\bf separative upwards} if
+whenever $p$, $q\in P$ and $p\not\le q$ there is a $q'\ge q$ which is
+incompatible upwards with $p$.   \cmmnt{Similarly, of course,} $P$ is
+{\bf separative downwards} if whenever $p$,
+$q\in P$ and $p\not\ge q$ there is a $q'\le q$ which is incompatible
+downwards with $p$.
+
+\cmmnt{
+\leader{511C}{On the symbol $\infty$} I note that in the
+definitions above I have introduced expressions of the form
+`$\add P=\infty$'.   The `$\infty$' here must be rigorously
+distinguished from the `$\infty$' of ordinary measure theory, which can
+be regarded as a top point added to the set of real numbers.   The
+`$\infty$' of 511B is rather a top point added to the class of ordinals.
+But it is convenient, and fairly safe, to use formulae like
+`$\add P\le\add Q$' on the understanding that
+$\add P\le\infty$ for every pre-ordered set $P$, while
+$\infty\le\add Q$ only when $\add Q=\infty$.   Of course we have to be
+careful to distinguish between `$\add P<\infty$' (meaning that
+there is a subset of $P$ with no upper bound in $P$) and `$\add P$ is
+finite' (meaning that $\add P<\omega$).
+}%end of comment
+
+\leader{511D}{Definitions} Let $\frak A$ be a Boolean algebra.   I write
+$\frak A^+$ for the set $\frak A\setminus\{0\}$ of non-zero elements of
+$\frak A$ and
+$\frak A^-$ for $\frak A\setminus\{1\}$, so that the partially ordered
+sets $(\frak A^-,\Bsubseteqshort)$ and $(\frak A^+,\Bsupseteqshort)$ are
+isomorphic.
+
+\spheader 511Da The {\bf Maharam type} $\tau(\frak A)$ of $\frak A$ is
+the smallest cardinal of any subset\cmmnt{ $B$} of $\frak A$ which
+$\tau$-generates $\frak A$\cmmnt{ in the sense that the order-closed
+subalgebra of $\frak A$ including $B$ is $\frak A$ itself}.
+\cmmnt{(See Chapter 33.)}
+
+\spheader 511Db The {\bf cellularity} of $\frak A$ is
+
+\Centerline{$c(\frak A)
+=c^{\uparrow}(\frak A^-)
+=\cdownarrow(\frak A^+)
+=\sup\{\#(C):C\subseteq\frak A^+$ is disjoint$\}$.}
+
+\noindent The {\bf saturation} of $\frak A$ is
+
+\Centerline{$\sat(\frak A)
+=\sat^{\uparrow}(\frak A^-)
+=\sat^{\downarrow}(\frak A^+)
+=\sup\{\#(C)^+:C\subseteq\frak A^+$ is disjoint$\}$\dvro{.}{,}}
+
+\cmmnt{\noindent that is, the smallest cardinal $\kappa$ such that
+there is no disjoint family of size $\kappa$ in $\frak A^+$.}
+
+%following Koppelberg
+
+\spheader 511Dc The {\bf $\pi$-weight} or {\bf density}
+%Koppelberg 2.4.8
+$\pi(\frak A)$ of $\frak A$ is
+$\cf\frak A^-=\ci\frak A^+$\cmmnt{, that is, the smallest cardinal of
+any order-dense subset of $\frak A$}.
+
+\spheader 511Dd Let $\kappa$ be a cardinal.   A subset $A$ of
+$\frak A^+$ is {\bf $\hbox{$<$}\kappa$-linked} if it is
+downwards-$\hbox{$<$}\kappa$-linked in $\frak A^+$\cmmnt{, that is, no
+$B\in[A]^{<\kappa}$ has infimum $0$}, and {\bf $\kappa$-linked} if it is
+$\hbox{$<$}\kappa^+$-linked\cmmnt{, that is, every
+$B\in[A]^{\le\kappa}$ has a non-zero lower bound}.
+The {\bf $\hbox{$<$}\kappa$-linking number}
+$\link_{<\kappa}(\frak A)$ of $\frak A$ is
+$\link_{<\kappa}^{\downarrow}(\frak A^+)$,
+the least cardinal of any family of
+$\hbox{$<$}\kappa$-linked sets covering $\frak A^+$;  and the
+{\bf $\kappa$-linking number} $\link_{\kappa}(\frak A)$ of $\frak A$ is
+$\link_{<\kappa^+}(\frak A)$\cmmnt{, that is, the least cardinal of
+any cover of $\frak A^+$ by $\kappa$-linked sets}.
+
+\spheader 511De\cmmnt{ As in 511Bg, I say that} $A\subseteq\frak A^+$ is
+{\bf linked} if no two members of $A$ are disjoint;  the
+{\bf linking number} of $\frak A$ is $\link(\frak A)=\link_2(\frak A)$,
+the least cardinal of any cover of $\frak A^+$ by linked sets.
+\cmmnt{Similarly, }$A\subseteq\frak A^+$ is {\bf centered} if
+$\inf I\ne 0$ for any finite $I\subseteq A$\cmmnt{;  that
+is, if $A$ is downwards-centered in $\frak A^+$}.   The {\bf centering
+number}
+%my invention
+$d(\frak A)$ of $\frak A$ is
+$\duparrow(\frak A^-)=\ddownarrow(\frak A^+)$\cmmnt{, that is, the
+smallest cardinal of any cover of $\frak A^+$ by centered sets}.
+$\frak A$ is {\bf $\sigma$-$m$-linked} if
+$\link_m(\frak A)\le\omega$;  \cmmnt{in particular,} it is
+{\bf $\sigma$-linked} iff $\link(\frak A)\le\omega$.
+$\frak A$ is {\bf $\sigma$-centered} if $d(\frak A)\le\omega$.
+
+\spheader 511Df If $\kappa$ is any cardinal, $\frak A$ is {\bf weakly
+$(\kappa,\infty)$-distributive} if whenever
+$\ofamily{\xi}{\kappa}{A_{\xi}}$ is a family of partitions of unity in
+$\frak A$, there is a partition $B$ of unity such that
+$\{a:a\in A_{\xi}$, $a\Bcap b\ne 0\}$ is finite for every $b\in B$ and
+$\xi<\kappa$.    Now the {\bf weak distributivity} $\wdistr(\frak A)$ of
+$\frak A$ is the least cardinal $\kappa$ such that $\frak A$ is not
+weakly $(\kappa,\infty)$-distributive.   (If there is no such cardinal,
+write $\wdistr(\frak A)=\infty$.)
+
+\spheader 511Dg The {\bf Martin number} %my invention
+  %maybe `Baire number' or `Nov\'ak number'
+$\frak m(\frak A)$ of $\frak A$ is the downwards Martin number of
+$\frak A^+$\cmmnt{, that is, the smallest cardinal of any
+family $\Cal B$ of coinitial subsets of $\frak A^+$ for
+which there is some $a\in\frak A^+$ such that no
+linked subset of $\frak A$ containing $a$ meets every member of
+$\Cal B$;   or $\infty$ if there is no such $\Cal B$}.
+
+\spheader 511Dh The {\bf Freese-Nation number} of $\frak A$,
+$\FN(\frak A)$, is the Freese-Nation number of the partially ordered set
+$(\frak A,\Bsubseteqshort)$.
+%\cmmnt{;  we say that $\frak A$
+%has the
+%(weak) Freese-Nation property if it has the property for this partial
+%ordering}.
+The {\bf regular Freese-Nation number} $\FN^*(\frak A)$
+of $\frak A$ is the regular Freese-Nation number of
+$(\frak A,\Bsubseteqshort)$\cmmnt{, that is, the smallest regular infinite
+cardinal greater than or equal to $\FN(\frak A)$}.
+
+\spheader 511Di\dvArevised{2014} If
+$\kappa$ is a cardinal, a {\bf tight $\kappa$-filtration} of $\frak A$
+is a family $\ofamily{\xi}{\zeta}{a_{\xi}}$ in $\frak A$, where $\zeta$
+is an ordinal, such that, writing
+$\frak A_{\alpha}$ for the subalgebra of $\frak A$ generated by
+$\{a_{\xi}:\xi<\alpha\}$,
+($\alpha$) $\frak A_{\zeta}=\frak A$ ($\beta$) for every $\alpha<\zeta$,
+the Freese-Nation index of $\frak A_{\alpha}$ in $\frak A$ is
+at most $\kappa$.
+If $\frak A$ has a tight $\kappa$-filtration, I will say that it is {\bf
+tightly $\kappa$-filtered}.
+
+\leader{511E}{Precalibers (a)} Let $(P,\le)$ be a pre-ordered set.
+
+\medskip
+
+\quad{\bf (i)} I will say that $\triplepc{\kappa}{\lambda}{\theta}$ is
+an {\bf upwards precaliber triple} of $P$ if $\kappa$, $\lambda$ and
+$\theta$
+are cardinals, and whenever $\ofamily{\xi}{\kappa}{p_{\xi}}$ is a family
+in $P$ then there is a set
+$\Gamma\in[\kappa]^{\lambda}$ such that $\{p_{\xi}:\xi\in I\}$ has an
+upper bound in $P$ for every $I\in[\Gamma]^{<\theta}$.
+
+\cmmnt{Similarly, }$\triplepc{\kappa}{\lambda}{\theta}$ is a
+{\bf downwards precaliber
+triple} of $P$ if $\kappa$, $\lambda$ and $\theta$ are cardinals and
+whenever $\ofamily{\xi}{\kappa}{p_{\xi}}$ is a family in $P$ then there
+is a set
+$\Gamma\in[\kappa]^{\lambda}$ such that $\{p_{\xi}:\xi\in I\}$ has a
+lower bound in $P$ for every $I\in[\Gamma]^{<\theta}$.
+
+\medskip
+
+\quad{\bf (ii)} An {\bf upwards precaliber pair} of $P$ is a pair
+$(\kappa,\lambda)$ of cardinals such that
+$\triplepc{\kappa}{\lambda}{\omega}$ is
+an upwards precaliber triple of $P$\cmmnt{, that is, whenever
+$\ofamily{\xi}{\kappa}{p_{\xi}}$ is a family in $P$ there is a
+$\Gamma\in[\kappa]^{\lambda}$ such that $\{p_{\xi}:\xi\in\Gamma\}$ is
+upwards-centered in $P$}.
+
+A {\bf downwards precaliber pair} of $P$ is a pair $(\kappa,\lambda)$ of
+cardinals such that $\triplepc{\kappa}{\lambda}{\omega}$ is a downwards
+precaliber triple of $P$.
+
+\medskip
+
+\quad{\bf (iii)} An {\bf up-} (resp.\ {\bf down-}) {\bf precaliber} of
+$P$ is a cardinal $\kappa$ such that $(\kappa,\kappa)$ is an upwards
+(resp.\ downwards) precaliber pair of $P$.
+
+\spheader 511Eb Let $(X,\frak T)$ be a topological space.   Then
+$\triplepc{\kappa}{\lambda}{\theta}$ is a
+{\bf precaliber triple} of $X$ if it is
+a downwards precaliber triple of $\frak T\setminus\{\emptyset\}$;
+$(\kappa,\lambda)$ is a {\bf precaliber pair} of $X$ if it is a
+downwards precaliber pair of
+$\frak T\setminus\{\emptyset\}$;  and $\kappa$ is a {\bf precaliber} of
+$X$ if it is a down-precaliber of $\frak T\setminus\{\emptyset\}$.
+
+\spheader 511Ec Let $\frak A$ be a Boolean algebra.   Then
+$\triplepc{\kappa}{\lambda}{\theta}$ is a
+{\bf precaliber triple} of $\frak A$ if
+it is a downwards precaliber triple of $\frak A^+$;
+$(\kappa,\lambda)$ is a {\bf precaliber pair} of $\frak A$ if it is a
+downwards precaliber pair of $\frak A^+$;  and $\kappa$ is a
+{\bf precaliber} of $\frak A$ if it is a down-precaliber of
+$\frak A^+$.
+
+\spheader 511Ed If $(\frak A,\bar\mu)$ is a measure algebra, then
+$\triplepc{\kappa}{\lambda}{\theta}$ is a {\bf measure-precaliber
+triple} of $(\frak A,\bar\mu)$ if whenever
+$\ofamily{\xi}{\kappa}{a_{\xi}}$ is a family in
+$\frak A$ such that $\inf_{\xi<\kappa}\bar\mu a_{\xi}>0$, then there is
+a $\Gamma\in[\kappa]^{\lambda}$ such that $\{a_{\xi}:\xi\in I\}$ has a
+non-zero lower bound for every $I\in[\Gamma]^{<\theta}$.
+Now $(\kappa,\lambda)$ is a {\bf measure-precaliber pair} of
+$(\frak A,\bar\mu)$ if $\triplepc{\kappa}{\lambda}{\omega}$ is a
+measure-precaliber triple, and $\kappa$ is a {\bf measure-precaliber} of
+$(\frak A,\bar\mu)$ if $(\kappa,\kappa)$ is a measure-precaliber pair.
+
+\spheader 511Ee In this context, I will say that
+$(\kappa,\lambda,\theta)$ is a precaliber triple (in any sense) if
+$\triplepc{\kappa}{\lambda}{\theta^+}$ is a precaliber triple as defined
+above;  and similarly for measure-precaliber triples.
+
+\spheader 511Ef I will say that one of the structures here satisfies
+{\bf Knaster's condition} if it has $(\omega_1,\omega_1,2)$ as a
+precaliber triple\cmmnt{, that is, if every uncountable set has an
+uncountable linked subset}.  (For pre-ordered sets I will speak of
+`Knaster's condition upwards' or `Knaster's condition downwards'.)
+
+\leader{511F}{Definitions} Let $X$ be a set and $\Cal I$ an ideal of
+subsets of $X$.
+
+\spheader 511Fa Taking $\Cal I$ to be partially ordered by
+$\subseteq$, we can speak of $\add\Cal I$ and $\cf\Cal I$\cmmnt{ in
+the sense of 511B}.   $\Cal I$ is called {\bf $\kappa$-additive} or
+{\bf $\kappa$-complete} if $\kappa\le\add\Cal I$\cmmnt{, that is, if
+$\bigcup\Cal E\in\Cal I$ for every $\Cal E\in[\Cal I]^{<\kappa}$}.
+
+\cmmnt{In addition we have three other cardinals which will be
+important to us.}
+
+\spheader 511Fb The {\bf uniformity} of $\Cal I$ is
+
+\Centerline{$\non\Cal I=\min\{\#(A):A\subseteq X$, $A\notin\Cal I\}$,}
+
+\noindent or $\infty$ if there is no such set $A$.   \cmmnt{(Note the
+hidden variable $X$ in this notation;  if any confusion seems possible,
+I will write $\non(X,\Cal I)$.   Many authors prefer
+unif $\Cal I$.)}
+
+\spheader 511Fc The {\bf shrinking number} of
+$\Cal I$, $\shr\Cal I$, is the smallest cardinal $\kappa$ such that
+whenever $A\in\Cal PX\setminus\Cal I$ there is a
+$B\in[A]^{\le\kappa}\setminus\Cal I$.
+\cmmnt{(Again, we need to know $X$ as well as $\Cal I$ to determine
+$\shr\Cal I$, and if necessary I will write $\shr(X,\Cal I)$.)}
+The {\bf augmented shrinking number} $\shr^+(\Cal I)$ is the smallest
+$\kappa$ such that
+whenever $A\in\Cal PX\setminus\Cal I$ there is a
+$B\in[A]^{<\kappa}\setminus\Cal I$.
+
+\spheader 511Fd The {\bf covering number} of $\Cal I$ is
+
+\Centerline{$\cov\Cal I=\min\{\#(\Cal E):\Cal E\subseteq\Cal I$,
+$\bigcup\Cal E=X\}$,}
+
+\noindent or $\infty$ if there is no such set $\Cal E$.
+\cmmnt{(Once more, $X$ is a hidden variable here, and I may write
+$\cov(X,\Cal I)$.)}
+
+\leader{511G}{Definition} Let $(X,\Sigma,\mu)$ be a measure space.
+
+\spheader 511Ga If $\kappa$ is a cardinal,
+$\mu$ is {\bf $\kappa$-additive} if
+$\bigcup\Cal E\in\Sigma$ and $\mu(\bigcup\Cal E)=\sum_{E\in\Cal E}\mu E$
+for every disjoint family $\Cal E\in[\Sigma]^{<\kappa}$.   The {\bf
+additivity} $\add\mu$ of $\mu$ is the largest cardinal $\kappa$ such
+that $\mu$ is
+$\kappa$-additive, or $\infty$ if $\mu$ is $\kappa$-additive for every
+$\kappa$.
+
+\spheader 511Gb\dvAnew{2013} The {\bf $\pi$-weight} $\pi(\mu)$ of $\mu$
+is the coinitiality of $\Sigma\setminus\Cal N(\mu)$, where
+$\Cal N(\mu)$ is the null ideal of $\mu$.
+
+\cmmnt{
+\spheader 511Gc Recall that the Maharam type $\tau(\mu)$ of $\mu$ is the
+Maharam type of the measure algebra of $\mu$ (331Fc).
+}
+
+\leader{511H}{Elementary facts:  pre-ordered sets} Let $P$ be a
+pre-ordered set.
+
+\spheader 511Ha If $\tilde P$ is the partially ordered set of equivalence
+classes in $P$, as described in 511A, all the cardinal functions defined in
+511B have the same values for $P$ and
+$\tilde P$.    \cmmnt{(The point is that $p$ is an upper bound for
+$A\subseteq P$ iff $p^{\ssbullet}$ is an upper bound for
+$\{q^{\ssbullet}:q\in A\}\subseteq\tilde P$.)}
+\cmmnt{Similarly, }$P$ and $\tilde P$ will have the same triple
+precalibers, precaliber pairs and precalibers.
+
+\spheader 511Hb \cmmnt{Obviously,
+}$c^{\uparrow}(P)\le\sat^{\uparrow}(P)$.   \cmmnt{(In fact
+$c^{\uparrow}(P)$ is determined by $\sat^{\uparrow}(P)$;  see 513Bc
+below.)}   If $\kappa\le\lambda$ are cardinals then
+
+\Centerline{$\link_{<\kappa}^{\uparrow}(P)
+\le\link_{<\lambda}^{\uparrow}(P)\le\cf P$\dvro{.}{,}}
+
+\noindent\cmmnt{because every upwards-$\hbox{$<$}\lambda$-linked set is
+upwards-$\hbox{$<$}\kappa$-linked and every set $\ocint{-\infty,p}$ is
+upwards-$\hbox{$<$}\lambda$-linked.
+}$c^{\uparrow}(P)\le\link^{\uparrow}(P)$\prooflet{, because if
+$A\subseteq P$ is an up-antichain then no upwards-linked set can contain
+more than one point of $A$}.   \cmmnt{It follows that}
+
+\Centerline{$\link^{\uparrow}(P)
+=\link_{<3}^{\uparrow}(P)\le\link_{<\omega}^{\uparrow}(P)
+=\duparrow(P)\le\cf P$.}
+
+\noindent\cmmnt{Of course }$\cf P\le\#(P)$.   \cmmnt{Similarly,}
+
+\Centerline{$\link^{\downarrow}_{<\kappa}(P)
+\le\link^{\downarrow}_{<\lambda}(P)\le\ci P$}
+
+\noindent whenever $\kappa\le\lambda$, and
+
+\Centerline{$\cdownarrow(P)\le\link^{\downarrow}(P)
+\le\ddownarrow(P)\le\ci P\le\#(P)$,
+\quad$\cdownarrow(P)\le\sat^{\downarrow}P$.}
+
+\spheader 511Hc $P$ is empty iff $\cf P=0$ iff
+$\ci P=0$ iff $\add P=0$ iff $\duparrow(P)=0$ iff
+$\ddownarrow(P)=0$ iff $\link^{\uparrow}(P)=0$ iff
+$\link^{\downarrow}(P)=0$ iff $c^{\uparrow}(P)=0$ iff
+$\cdownarrow(P)=0$ iff
+$\sat^{\uparrow}(P)=1$ iff $\sat^{\downarrow}(P)=1$ iff $\FN(P)=0$.
+
+\spheader 511Hd $P$ is upwards-directed iff
+$c^{\uparrow}(P)\le 1$ iff $\sat^{\uparrow}(P)\le 2$ iff
+$\link^{\uparrow}(P)\le 1$ iff $\duparrow(P)\le 1$.   \cmmnt{Similarly,}
+$P$ is downwards-directed iff $\cdownarrow(P)\le 1$ iff
+$\sat^{\downarrow}(P)\le 2$ iff $\link^{\downarrow}(P)\le 1$ iff
+$\ddownarrow(P)\le 1$.
+
+If $P$ is not empty, it is upwards-directed iff $\add P>2$ iff
+$\add P\ge\omega$.
+
+\spheader 511He If $P$ is partially ordered, it has a greatest element
+iff $\cf P=1$ iff
+$\add P=\infty$.   Otherwise, $\add P\le\cf P$\prooflet{, since no
+cofinal subset of $P$ can have an upper bound in $P$}.
+
+\spheader 511Hf If $P$ is totally ordered, then $\cf P\le\add P$.
+\prooflet{\Prf\ If $A\subseteq P$ has no upper bound in $P$ it must be
+cofinal with $P$.\ \Qed}
+
+\spheader 511Hg If $\familyiI{P_i}$ is a non-empty family of non-empty
+pre-ordered sets with product $P$,
+then $\add P=\min_{i\in I}\add P_i$.
+\prooflet{\Prf\ A set $A\subseteq P$ lacks an upper bound in $P$ iff there
+is an $i\in I$ such that $\{p(i):p\in A\}$ is unbounded above in $P_i$.\
+\Qed}
+
+\leader{511I}{Elementary facts:  Boolean algebras}\dvAformerly{5{}11J} Let
+$\frak A$ be a Boolean algebra.
+
+\spheader 511Ia
+
+\Centerline{$\link_{<\kappa}(\frak A)\le\link_{<\lambda}(\frak A)
+\le\pi(\frak A)$}
+
+\noindent whenever $\kappa\le\lambda$,
+
+\Centerline{$c(\frak A)\le\link(\frak A)\le d(\frak A)
+\le\pi(\frak A)\le\#(\frak A)$,
+\quad$c(\frak A)\le\sat(\frak A)$.}
+
+\noindent\cmmnt{In addition, }$\tau(\frak A)
+\le\pi(\frak A)$\prooflet{ because any order-dense
+subset of $\frak A\,\,\tau$-generates $\frak A$}.
+
+\spheader 511Ib $\frak A=\{0\}$ iff $\pi(\frak A)=0$ iff
+$\link(\frak A)=0$ iff $d(\frak A)=0$ iff $c(\frak A)=0$ iff
+$\sat(\frak A)=1$.
+
+\spheader 511Ic If $\frak A$ is finite, then
+$c(\frak A)=\link(\frak A)=d(\frak A)=\pi(\frak A)$ is the number of
+atoms of $\frak A$, $\sat(\frak A)=c(\frak A)+1$ and
+$\#(\frak A)=2^{c(\frak A)}$, while
+$\tau(\frak A)=\lceil\log_2c(\frak A)\rceil$, unless $\frak A=\{0\}$, in
+which case $\tau(\frak A)=0$.   If
+$\frak A$ is infinite then $c(\frak A)$, $\link(\frak A)$, $d(\frak A)$,
+$\pi(\frak A)$, $\sat(\frak A)$
+and $\tau(\frak A)$ are all infinite.
+
+\spheader 511Id\cmmnt{ Note that} $\frak A$ is `ccc' just when
+$c(\frak A)\le\omega$, that is, $\sat(\frak A)\le\omega_1$.   $\frak A$
+is \wsid\cmmnt{, in the sense of
+316G,} iff $\wdistr(\frak A)\ge\omega_1$.
+
+\spheader 511Ie{\bf (i)} If $\frak A$ is purely atomic,
+$\wdistr(\frak A)=\infty$.    \prooflet{\Prf\ Suppose that
+$\ofamily{\xi}{\kappa}{A_{\xi}}$ is any family of partitions of unity in
+$\frak A$.   Then the set $B$ of atoms of $\frak A$ is a partition of
+unity, and $\{a:a\in A_{\xi}$, $a\Bcap b\ne 0\}$ has just one member for
+every $b\in B$ and $\xi<\kappa$.   As
+$\ofamily{\xi}{\kappa}{A_{\xi}}$ is arbitrary,
+$\wdistr(\frak A)=\infty$.\ \Qed}
+
+\medskip
+
+\quad{\bf (ii)} If $\frak A$ is not purely atomic,
+$\wdistr(\frak A)\le\pi(\frak A)$.
+\prooflet{\Prf\ Let $c\in\frak A^+$ be disjoint
+from every atom of $\frak A$, and $D\subseteq\frak A$ an order-dense set of
+size $\pi(\frak A)$;  let $D'$ be $\{d:d\in D$, $d\Bsubseteq c\}$.
+For $d\in D'$, there is a disjoint sequence of non-zero elements included
+in $d$;  let $A_d$ be a partition of unity in $\frak A$ including
+such a sequence.   If $B$ is any partition of unity in $\frak A$, there are
+a $b\in B$ such that $b\Bcap c\ne 0$, and a $d\in D'$ such that
+$d\Bsubseteq b\Bcap c$;  now $\{a:a\in A_d$, $b\Bcap a\ne 0\}$ is infinite.
+So $\family{d}{D'}{A_d}$ witnesses that
+$\wdistr(\frak A)\le\#(D')\le\pi(\frak A)$.\ \Qed}
+
+\spheader 511If $\frak m(\frak A)=\infty$ iff $\frak A$ is purely
+atomic.   \prooflet{\Prf\ Write $\Cal B$ for the family of all coinitial
+subsets of $\frak A^+$.   (i) If $\frak A$ is purely atomic and
+$a\in\frak A^+$, then there is an atom $d\Bsubseteq a$;  now $d\in B$
+for every $B\in\Cal B$, so $\{d,a\}$ is a linked subset of $\frak A$
+meeting every member of $\Cal B$.   Accordingly
+$\frak m(\frak A)=\infty$.   (ii) If $\frak A$ is not purely atomic, let
+$a\in\frak A^+$ be such that no atom of $\frak A$ is included in $a$.
+\Quer\ If $A$ is a linked subset of $\frak A$ containing $a$ and meeting
+every member of $\Cal B$, set
+$B=\frak A^+\setminus A$.   If $b\in\frak A^+$, then either $b\Bcap a=0$
+and $b\in B$, or there are non-zero disjoint $b'$,
+$b''\Bsubseteq b\Bcap a$ and one of $b'$, $b''$ must belong to $B$.   So
+$B\in\Cal B$, which is impossible.\ \BanG\
+So $\frak m(\frak A)\le\#(\Cal B)<\infty$.\ \Qed}
+
+\leader{511J}{Elementary facts:  ideals of sets}\dvAformerly{5{}11K}  Let
+$X$ be a set and $\Cal I$ an ideal of subsets of $X$.
+
+\spheader 511Ja $\add\Cal I\ge\omega$\prooflet{, by the definition of
+`ideal of sets'}.
+
+\spheader 511Jb
+$\shr\Cal I=\sup\{\non(A,\Cal I\cap\Cal PA):A\in\Cal PX\setminus\Cal I\}$,
+counting $\sup\emptyset$ as $0$;
+$\shr\Cal I\le\#(X)$;   $\shr\Cal I\le\shr^+\Cal I\le(\shr\Cal I)^+$;
+if $\shr\Cal I$ is a successor cardinal, $\shr^+\Cal I=(\shr\Cal I)^+$.
+
+\spheader 511Jc Suppose that $\Cal I$ covers $X$ but does not contain
+$X$.   Then $\add\Cal I\le\cov\Cal I\le\cf\Cal I$ and
+$\add\Cal I\le\non\Cal I\le\shr\Cal I\le\cf\Cal I$.   \prooflet{\Prf\
+Let $\Cal J$ be a subset of $\Cal I$ with cardinal $\cov\Cal I$
+covering $X$;  let $\Cal K$ be a cofinal
+subset of $\Cal I$ with cardinal $\cf\Cal I$;  let
+$A\in\Cal PX\setminus\Cal I$ be such that $\#(A)=\non\Cal I$.
+(i) $\Cal J$ cannot have an upper bound in $\Cal I$, so
+$\add\Cal I\le\#(\Cal J)=\cov\Cal I$.   (ii)
+$\bigcup\Cal K=\bigcup\Cal I=X$, so $\cov\Cal I\le\#(\Cal K)=\cf\Cal I$.
+(iii) For each $x\in A$ we can
+find an $I_x\in\Cal I$ containing $x$;  now $\{I_x:x\in A\}$ cannot have
+an upper bound in $\Cal I$, so $\add\Cal I\le\#(A)=\non\Cal I$.   (iv)
+By (b), $\shr\Cal I\ge\non\Cal I$.   (v) Take any $B\subseteq X$ such that
+$B\notin\Cal I$.   Then for each $K\in\Cal K$ we can find an
+$x_K\in B\setminus K$;  now $B'=\{x_K:K\in\Cal K\}$ is not included in
+any member of $\Cal K$, so cannot belong to $\Cal I$, while
+$B'\subseteq B$ and $\#(B')\le\#(\Cal K)=\cf\Cal I$.   As $B$ is
+arbitrary, $\shr\Cal I\le\cf\Cal I$.\ \Qed}
+
+\spheader 511Jd Suppose that $X\in\Cal I$.   Then
+$\add\Cal I=\non\Cal I=\infty$,
+$\cov\Cal I\le 1$ (with $\cov\Cal I=0$ iff $X=\emptyset$) and
+$\shr\Cal I=0$.
+
+\spheader 511Je Suppose that $\Cal I$ has a greatest member which is not
+$X$.   Then $\add\Cal I=\cov\Cal I=\infty$ and
+$\non\Cal I=\shr\Cal I=\cf\Cal I=1$.
+
+\spheader 511Jf Suppose that $\Cal I$ has no greatest member and does
+not cover $X$.   Then $\add\Cal I\le\cf\Cal I$\prooflet{ (511He)},
+$\non\Cal I=\shr\Cal I=1$ and
+$\cov\Cal I=\infty$.
+
+\spheader 511Jg Suppose that $Y\subseteq X$, and set
+$\Cal I_Y=\Cal I\cap\Cal PY$, regarded as an ideal of subsets of $Y$.
+Then $\add\Cal I_Y\ge\add\Cal I$, $\non\Cal I_Y\ge\non\Cal I$,
+$\shr\Cal I_Y\le\shr\Cal I$, $\shr^+\Cal I_Y\le\shr^+\Cal I$,
+$\cov\Cal I_Y\le\cov\Cal I$ and $\cf\Cal I_Y\le\cf\Cal I$.
+
+
+\exercises{\leader{511X}{Basic exercises (a)}
+%\spheader 511Xa
+Let $P$ be a partially ordered set and $\kappa\ge 3$ a  cardinal.   Show
+that $\add P\ge\kappa$ iff $(\lambda,\lambda,\lambda)$ is an
+upwards precaliber triple of $P$ for every $\lambda<\kappa$.
+%511E
+
+\sqheader 511Xb Let $X$ be a compact Hausdorff space.   Show that a pair
+$(\kappa,\lambda)$ of cardinals is a precaliber pair of $X$ iff whenever
+$\ofamily{\xi}{\kappa}{G_{\xi}}$ is a family of non-empty open subsets
+of $X$ there is an $x\in X$ such that $\{\xi:x\in G_{\xi}\}$ has
+cardinal at least $\lambda$.
+%511E out of order query
+
+\spheader 511Xc Let $(X,\Sigma,\mu)$ be a measure space.   For
+$A\subseteq X$ write $\mu_A$ for the subspace measure on $A$, and
+$\Cal N(\mu)$, $\Cal N(\mu_A)$ for the corresponding null ideals.   Show
+that $\shr(X,\Cal N(\mu))
+=\sup\{\non(A,\Cal N(\mu_A)):A\in\Cal PX\setminus\Cal N(\mu)\}$.
+%511F
+
+%\query gap
+
+\spheader 511Xd Let $(X,\Sigma,\mu)$ be a measure space, and let
+$\hat\mu$, $\tilde\mu$ be the completion and c.l.d.\ version of $\mu$.
+(i) Let $\Cal N(\mu)=\Cal N(\hat\mu)$ and
+$\Cal N(\tilde\mu)$ be the corresponding null ideals.   Show that
+$\add\Cal N(\mu)\le\add\Cal N(\tilde\mu)$,
+$\cov\Cal N(\mu)\ge\cov\Cal N(\tilde\mu)$,
+$\non\Cal N(\mu)\le\non\Cal N(\tilde\mu)$,
+$\shr\Cal N(\mu)\ge\shr\Cal N(\tilde\mu)$
+and $\shr^+\Cal N(\mu)\ge\shr^+\Cal N(\tilde\mu)$.
+(ii) Show that $\add\mu\le\add\hat\mu\le\add\tilde\mu$,
+$\pi(\mu)=\pi(\hat\mu)\le\pi(\tilde\mu)$\dvAnew{2013} and
+$\tau(\mu)=\tau(\hat\mu)\ge\tau(\tilde\mu)$\dvAnew{2014}.
+%511G
+
+%\query gap
+
+\spheader 511Xe Show that if $P$ is a partially ordered set and
+$c^{\uparrow}(P)<\omega$ then
+$c^{\uparrow}(P)=\link^{\uparrow}(P)=\duparrow(P)$ and
+$\frak m^{\uparrow}(P)=\infty$.
+%511H
+
+\spheader 511Xf Let $P$ be a partially ordered set.   Show that $\omega$
+is an up-precaliber of $P$ iff $c^{\uparrow}(P)<\omega$.
+%511H
+
+\sqheader 511Xg(i) Show that if $P$ is a partially ordered set and
+$\kappa$ is an up-precaliber of $P$, then $\cf\kappa$ is
+also an up-precaliber of $P$.   (ii) Show that if $\kappa$ is a cardinal
+and $\cf\kappa>\cf P$ then $\kappa$ is an up-precaliber of $P$.
+%511H
+
+\sqheader 511Xh Give $\Bbb R$, $\Bbb N$ and $\Bbb Q$ their usual total
+orders.   Show that $\FN(\Bbb N)=\FN(\Bbb Q)=\omega$ and that
+$\FN(\Bbb R)=\omega_1$.
+%511H
+
+\spheader 511Xi Show that if $P$ is a partially ordered set and
+$\#(P)\ge 3$ then $\FN(P)\le\#(P)$.   \Hint{consider separately the
+cases $P$ infinite, $P$ finite with no greatest member, and $P$ finite
+with greatest and least members.}
+%511H
+
+\spheader 511Xj Let $P$ be a partially ordered set and $\Cal Q$ a
+family of subsets of $P$ with $\#(\Cal Q)<\add P$.   Show that if
+$\bigcup\Cal Q$ is cofinal with $P$ then one of the members of $\Cal Q$
+is cofinal with $P$.
+%511H
+
+\spheader 511Xk Let $U$ be a Riesz space and $\kappa$ a cardinal.   Then
+$U$ is {\bf weakly $(\kappa,\infty)$-distributive} if
+whenever $\ofamily{\xi}{\kappa}{A_{\xi}}$ is a family of non-empty
+downwards-directed subsets of $U^+$, each with infimum $0$, and
+$\bigcup_{\xi<\kappa}A_{\xi}$ has an upper bound in $U$, then
+
+\Centerline{$\{u:u\in U$, for every $\xi<\kappa$ there is a
+$v\in A_{\xi}$ such that $v\le u\}$}
+
+\noindent has infimum $0$ in $U$.   Show that an Archimedean Riesz space
+is weakly $(\kappa,\infty)$-distributive iff its band algebra is.
+\Hint{368R.}
+%511I
+
+\spheader 511Xl\dvAnew{2014} Let $X$ be a set and $\Cal I$ an ideal of
+subsets of $X$.   Show that the coinitiality $\ci(\Cal PX\setminus\Cal I)$
+is at most $\#(X)^{\shr\Cal I}$.
+%511J
+
+\leader{511Y}{Further exercises (a)}(i)
+%\spheader 511Ya (i)
+Show that $\duparrow(P)\le 2^{\link^{\uparrow}(P)}$ for every
+partially ordered set $P$.
+% if \ofamily}\xi}{\kappa}{A_{\xi}} maximal up-linked subsets covering  P
+% for  p\in P  say  C_p=\{\x:p\in A_{\xi}\}
+% if  C_p=C_q  and  p\le p'  then  p'\in A_{\xi} , \xi\in C_p=C_q  and
+% q , p'  are linked;  hence  \{p:C_p=C\}  up-centered
+(ii) Show that there is a partially ordered set $P$ such that
+$\duparrow(P)=\omega$ but $P$ cannot be covered by countably many
+upwards-directed sets.
+%511H mt51bits n06328
+
+\spheader 511Yb Let $\kappa$ be an infinite cardinal, with its usual
+well-ordering.  Show that $\FN(\kappa)=\kappa$.
+%511H
+
+\spheader 511Yc(i) Find a semi-finite measure space $(X,\Sigma,\mu)$
+such that $\cf\Cal N(\mu)<\cf\Cal N(\tilde\mu)$, where $\Cal N(\mu)$ and
+$\Cal N(\tilde\mu)$
+are the null ideals of $\mu$ and its c.l.d.\ version.
+(ii) Find a semi-finite measure space $(X,\Sigma,\mu)$ such that
+$\add\Cal N(\tilde\mu)>\add\Cal N(\mu)$ and
+$\cf\Cal N(\tilde\mu)<\cf\Cal N(\mu)$.
+%511J mt51bits
+}%end of exercises
+
+\endnotes{
+\Notesheader{511} Because $(P,\ge)$ is a pre-ordered set whenever
+$(P,\le)$ is, any cardinal function on pre-ordered sets is bound
+to appear in two mirror-image forms.   It does not quite follow that we
+have to set up a language with a complete set of mirror pairs of
+definitions, and indeed I have omitted the reflections of `additivity'
+and `bursting number';   but the naturally arising pre-ordered
+sets to which we shall want to apply these ideas may appear in either
+orientation.   The most natural conversions to topological spaces and
+Boolean algebras use the families of non-empty open sets and non-zero
+elements, which are `active downwards', so that we have such formulae as
+$\pi(\frak A)=\ci\frak A^+$ and
+$c(X)=\cdownarrow(\frak T\setminus\{\emptyset\})$;  but we could
+equally well
+say that $\pi(\frak A)=\cf\frak A^-$ or that $c(X)$ is the
+upwards-cellularity of the partially ordered set of proper closed
+subsets of $X$.
+
+Most readers, especially those acquainted with Volumes 3 and 4 of this
+treatise, will be more familiar with topological spaces and Boolean
+algebras than with general pre-ordered sets, and will prefer to
+approach the concepts here through the formulations in 5A4A and 511D.
+But even in the present chapter we shall be looking at questions which
+demand substantial fragments of the theory of general partially ordered
+sets, and I think it is useful to grapple with these immediately.
+The list of definitions above
+is a long one, and the functions here vary widely in importance;  but I
+hope you will come to agree that all are associated with interesting
+questions.
+
+I apologise for introducing two cardinal functions to represent the
+`breadth' of a pre-ordered set (or topological space or Boolean
+algebra), its `cellularity'
+and `saturation'.   It turns out that the saturation of a space
+determines its cellularity (513Bc), which seems to render the concept of
+`cellularity' unnecessary;  but it is well-established and makes some
+formulae simpler.
+%332E 332F 332R
+This is an example of
+a standard problem:  whenever we give a name to
+a supremum, we find ourselves
+asking whether the supremum is attained.   The question of whether
+cellularity is attained turns out to be rather interesting (513B again).
+In the case of shrinking numbers, the ordinary shrinking number
+$\shr\Cal I$ is the one which has been most studied, but I shall have some
+results which are more elegantly expressed in terms of the augmented
+shrinking number $\shr^+\Cal I$.
+
+I give very little space here to the functions $\frak m()$ and
+$\wdistr()$ and to precalibers;   these are bound to be a bit
+mysterious.   Later in the chapter I will explore their relations
+with each other and with other cardinal functions.   You may recognise
+them as belonging to the general area associated with Martin's axiom
+({\smc Fremlin 84a}, or \S517 below).   `Precaliber pairs' have a
+slightly more direct description in the context of compact Hausdorff
+spaces (511Xb).   `Freese-Nation numbers' relate to quite different
+aspects of the structure of ordered sets.   As will be made
+clear in the next two sections, all the other cardinal functions defined
+in 511B refer to the cofinal (or coinitial) structure of a partially
+ordered set;  the Freese-Nation number, by contrast, tells us something
+about the nature of intervals inside it.   We see a difference already
+in the formula for the
+Freese-Nation number of a Boolean algebra, which refers to the whole
+algebra $\frak A$ rather than to $\frak A^+$.   Another
+signal is the fact that it is not a trivial matter to calculate the
+Freese-Nation number of a finite partially ordered set.
+
+The only cardinal functions I have explicitly defined for measure spaces
+are the additivity and $\pi$-weight of a measure (511G), and even these
+are, in the most
+important cases, reducible to the additivity of the null ideal (521A) and
+the $\pi$-weight of the measure algebra (521Da).
+I give a pair of warming-up exercises (511Xc-511Xd),
+but we shall hardly see `measure' again until Chapter 52.
+For the questions studied in this volume, the important
+cardinals associated with a measure $\mu$ are those defined from its
+measure algebra together with the four cardinals $\add\Cal N(\mu)$,
+$\cov\Cal N(\mu)$, $\non\Cal N(\mu)$ and $\cf\Cal N(\mu)$.   In
+particular, the
+additivity of Lebesgue measure will have a special position.   In the
+case of a topological measure space, of course, we can investigate
+relationships between the cardinal functions of the topology and the
+cardinal functions of the measure.   I will come to such questions in
+Chapter 53.
+}%end of notes
+
+\discrpage
+

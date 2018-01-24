@@ -1,0 +1,2331 @@
+\frfilename{mt562.tex}
+\versiondate{20.10.13}
+\copyrightdate{2006}
+
+\def\chaptername{Choice and determinacy}
+\def\sectionname{Borel codes}
+
+\newsection{562}
+
+The concept of `Borel set', either in
+the real line or in general topological spaces, has been fundamental in
+measure theory since before the modern subject existed.   It is at this
+point that the character of the subject changes if we do not allow
+ourselves even the countable axiom of choice.   I have already mentioned
+the Feferman-L\'evy model in which
+$\Bbb R$ is a countable union of countable sets;
+immediately, every subset of $\Bbb R$ is a countable union of countable
+sets and is `Borel' on the definition of 111G.   In these circumstances
+that definition becomes unhelpful.
+
+An alternative which leads to a non-trivial theory, coinciding
+with the usual theory in the presence of AC, is the
+algebra of `codable Borel sets' (562B).   This is not necessarily a
+$\sigma$-algebra, but is closed under unions and intersections of `codable
+sequences' (562K).   When we come to look for measurable functions, the
+corresponding concept is that of `codable Borel function' (562L);  again,
+we do not expect the limit of an arbitrary sequence of codable Borel
+functions to be measurable in any useful sense, but the limit of a codable
+sequence of codable Borel functions is again a codable Borel function
+(562Ne).
+The same ideas can be used to give a theory of `codable Baire sets' in
+any topological space (562T).
+
+\vleader{60pt}{562A}{Trees} \cmmnt{I review some ideas from \S421.
+
+\medskip
+
+}{\bf (a)} Set $S^*=\bigcup_{n\ge 1}\BbbN^n$.
+For $\sigma$, $\tau\in S^*$ let $\sigma^{\smallfrown}\tau$ be their
+concatenation, that is,
+
+$$\eqalign{(\sigma^{\smallfrown}\tau)(n)
+&=\sigma(n)\text{ if }n<\#(\sigma),\cr
+&=\tau(n-\#(\sigma))\text{ if }\#(\sigma)\le n<\#(\sigma)+\#(\tau).\cr}$$
+
+\noindent For $i\in\Bbb N$ I will write $\fraction{i}\in\BbbN^1$ for the
+one-term sequence with value $i$.
+For $\sigma\in S^*$ and $T\subseteq S^*$, write $T_{\sigma}$
+for $\{\tau:\tau\in S^*$, $\sigma^{\smallfrown}\tau\in T\}$.
+
+%maybe switch \Cal T and \Cal T_0 ?  see \S421
+% but  \Cal T  is much commoner here!
+
+\spheader 562Ab Let $\Cal T_0$ be the family of sets
+$T\subseteq S^*$ such that
+$\sigma\restr n\in T$ whenever $\sigma\in T$ and $n\ge 1$.
+Recall from 421N\footnote{Early editions of Volume 4 
+used a slightly different
+definition of iterated derivations, so that the `rank' of a tree was not
+quite the same.} that we have a derivation $\partial:\Cal T_0\to\Cal T_0$
+defined by setting
+
+\Centerline{$\partial T
+=\{\sigma:\sigma\in S^*$, $T_{\sigma}\ne\emptyset\}$,}
+
+\noindent with iterates $\partial^{\xi}$, for $\xi<\omega_1$, defined by
+setting
+
+\Centerline{$\partial^0T=T$,
+\quad$\partial^{\xi}T=\bigcap_{\eta<\xi}\partial(\partial^{\eta}T)$ for
+$\xi\ge 1$.}
+
+\noindent Now for any $T\in\Cal T_0$ there is a $\xi<\omega_1$ such that
+$\partial^{\xi}T=\partial^{\eta}T$ whenever $\xi\le\eta<\omega_1$.
+\prooflet{\Prf\
+The argument in 421Nd assumed that $\omega_1$ has uncountable cofinality,
+but we can avoid this assumption, as follows.   Let
+$\family{\sigma}{S^*}{\epsilon_{\sigma}}$ be a summable family of strictly
+positive real numbers, and set
+$\gamma_T(\xi)=\sum_{\sigma\in\partial^{\xi}T}\epsilon_{\sigma}$;  then
+$\gamma_T:\omega_1\to\coint{0,\infty}$ is non-increasing, so 561A tells us
+that there is a $\xi<\omega_1$ such that $\gamma_T(\xi+1)=\gamma_T(\xi)$,
+that is, $\partial^{\xi+1}T=\partial^{\xi}T$.   Of course we now have
+$\partial^{\eta}T=\partial^{\xi}T$ for every $\eta\ge\xi$.\ \Qed}
+
+\spheader 562Ac We therefore still have a rank function
+$r:\Cal T_0\to\omega_1$ defined by saying that $r(T)$ is the least ordinal
+such that $\partial^{r(T)}T=\partial^{r(T)+1}T$.   Now $\partial^{r(T)}T$
+is empty iff there is no $\alpha\in\NN$ such that $\alpha\restr n\in T$ for
+every $n\ge 1$.   \prooflet{\Prf\ The argument in 421Nf used the word
+`choose';  but we can avoid this by being more specific.   If
+$\sigma\in\partial^{r(T)}T$, then we can define a sequence
+$\sequencen{\sigma_n}$ by saying that $\sigma_0=\sigma$ and, given
+$\sigma_n\in\partial^{r(T)}T$,
+$\sigma_{n+1}={\sigma_n}^{\smallfrown}\fraction{i}$ for the least $i$ such
+that ${\sigma_n}^{\smallfrown}\fraction{i}\in\partial^{r(T)}T$;
+$\alpha=\bigcup_{n\in\Bbb N}\sigma_n$ will now have $\alpha\restr n\in T$
+for every $n\ge 1$.   The argument in the other direction is unchanged.\
+\Qed}
+
+Let $\Cal T$ be the set of those $T\in\Cal T_0$
+with no infinite branch, that is, such that $\partial^{r(T)}T=\emptyset$.
+\cmmnt{Note that if $T\in\Cal T$ then $r(T)=0$ iff $T=\emptyset$, while
+$r(T)=1$ iff there is a non-empty set $A\subseteq\Bbb N$ such that
+$T=\{\fraction{i}:i\in A\}$.}
+
+\spheader 562Ad For $T\in\Cal T$, set $A_T=\{i:\fraction{i}\in T\}$.
+We need a fact not covered in \S421:  for any $T\in\Cal T$,
+$r(T)=\sup\{r(T_{\fraction{i}})+1:i\in A_T\}$.   \prooflet{\Prf\ An easy
+induction on $\xi$ shows that
+$\partial^{\xi}(T_{\sigma})=(\partial^{\xi}T)_{\sigma}$ for any
+$\xi<\omega_1$, $T\in\Cal T_0$ and $\sigma\in S^*$.   So, for $T\in\Cal T$
+and $\xi<\omega_1$,
+
+$$\eqalign{r(T)>\xi
+&\Longrightarrow\partial^{\xi}T\ne\emptyset\cr
+&\Longrightarrow\,\Exists i,\,\fraction{i}\in\partial^{\xi}T
+  =\bigcap_{\eta<\xi}\partial^{\eta+1}T\cr
+&\Longrightarrow\,\Exists i\in A_T,\,
+  \partial^{\eta}(T_{\fraction{i}})
+  =(\partial^{\eta}T)_{\fraction{i}}\ne\emptyset\Forall\eta<\xi\cr
+&\Longrightarrow\,\Exists i\in A_T,\,
+  r(T_{\fraction{i}})>\eta\Forall\eta<\xi\cr
+&\Longrightarrow\,\Exists i\in A_T,\,
+  r(T_{\fraction{i}})\ge\xi;\cr}$$
+
+\noindent thus $r(T)\le\sup\{r(T_{\fraction{i}})+1:i\in A_T\}$.   In the
+other direction, if $i\in A_T$ and $\eta<\xi=r(T_{\fraction{i}})$, then
+
+\Centerline{$(\partial^{\eta}T)_{\fraction{i}}
+=\partial^{\eta}(T_{\fraction{i}})\ne\emptyset$,}
+
+\noindent so $\fraction{i}\in\partial^{\eta+1}T$;  as $\eta$ is arbitrary,
+$\fraction{i}\in\partial^{\xi}T$ and $\xi<r(T)$;  as $i$ is arbitrary,
+$r(T)\ge\sup\{r(T_{\fraction{i}})+1:i\in A_T\}$.\ \Qed}
+
+\leader{562B}{Coding sets with trees (a)}
+Let $X$ be a set and $\sequencen{E_n}$ a sequence of
+subsets of $X$.   Define $\phi:\Cal T\to\Cal PX$ inductively by saying that
+
+$$\eqalign{\phi(T)&=\bigcup_{i\in A_T}E_i\text{ if }r(T)\le 1,\cr
+&=\bigcup_{i\in A_T}X\setminus\phi(T_{\fraction{i}})
+   \text{ if }r(T)>1.\cr}$$
+
+\cmmnt{\noindent By 562Ad, this definition is sound.}
+I will call $\phi$ the {\bf interpretation of Borel codes} defined by
+$X$ and $\sequencen{E_n}$.
+
+\spheader 562Bb Of course $\phi(\emptyset)=\emptyset$.
+If we set
+
+\Centerline{$T^*
+=\{\fraction{0},\fraction{0}^{\smallfrown}\fraction{0},
+\fraction{0}^{\smallfrown}\fraction{0}^{\smallfrown}\fraction{0},
+\fraction{1},\fraction{1}^{\smallfrown}\fraction{0}\}$}
+
+\noindent and
+
+\Centerline{$T
+=\{\fraction{0}\}\cup\{\fraction{0}^{\smallfrown}\sigma:\sigma\in T^*\}$,}
+
+\noindent then
+
+\ifwithproofs
+$$\eqalign{\phi(T^*)
+&=(X\setminus\phi(T^*_{\fraction{0}}))
+  \cup(X\setminus\phi(T^*_{\fraction{1}}))\cr
+&=(X\setminus\phi(\{\fraction{0},\fraction{0}^{\smallfrown}\fraction{0}\}))
+  \cup(X\setminus\phi(\{\fraction{0}\}))\cr
+&=(X\setminus(X\setminus\phi(\{\fraction{0}\})))
+  \cup(X\setminus\phi(\{\fraction{0}\}))
+=X,\cr
+\phi(T)
+&=X\setminus\phi(T^*)
+=\emptyset,\cr}$$
+\else
+\Centerline{$\phi(T^*)=X$,\quad$\phi(T)=\emptyset$,}
+\fi
+
+\noindent while $T\ne\emptyset$\cmmnt{, which it will be useful to know}.
+
+\spheader 562Bc Now suppose that $X$ is a second-countable topological
+space and that $\sequencen{U_n}$, $\sequencen{V_n}$ are two sequences
+running over bases for the topology of $X$.   Let $\phi:\Cal T\to\Cal PX$
+and $\phi':\Cal T\to\Cal PX$ be the interpretations of Borel codes defined
+by $\sequencen{U_n}$, $\sequencen{V_n}$ respectively.   Then
+there is a function $\Theta:\Cal T\to\Cal T\setminus\{\emptyset\}$
+such that $\phi'\Theta=\phi$.
+\prooflet{\Prf\ Define $\Theta$ inductively, as
+follows.   If $r(T)\le 1$, then
+$\phi(T)=\bigcup_{i\in A_T}U_i$ is open.   If $\phi(T)\ne\emptyset$,
+set $\Theta(T)=\{\fraction{j}:j\in\Bbb N$, $V_j\subseteq\phi(T)\}$;  then
+
+\Centerline{$\phi'(\Theta(T))
+=\bigcup\{V_j:j\in\Bbb N$, $V_j\subseteq\phi(T)\}=\phi(T)$.}
+
+\noindent If $\phi(T)=\emptyset$, take
+$\Theta(T)$ to be any non-empty member of $\Cal T$ such that
+$\phi'(\Theta(T))=\emptyset$;  e.g., that presented in (b) just above.
+
+For the inductive step to $r(T)>1$, set
+
+\Centerline{$\Theta(T)=\{\fraction{i}:i\in A_T\}
+  \cup\{\fraction{i}^{\smallfrown}\sigma:
+i\in A_T$, $\sigma\in\Theta(T_{\fraction{i}})\}$;}
+
+\noindent then $r(\Theta(T))>1$ and
+
+$$\eqalign{\phi'(\Theta(T))
+&=\bigcup_{i\in A_{\Theta(T)}}X\setminus\phi'(\Theta(T)_{\fraction{i}})
+=\bigcup_{i\in A_T}X\setminus\phi'(\Theta(T_{\fraction{i}}))\cr
+&=\bigcup_{i\in A_T}X\setminus\phi(T_{\fraction{i}})
+=\phi(T),\cr}$$
+
+\noindent so the induction continues.\ \Qed}
+
+\cmmnt{(There will be a substantial strengthening of this idea in
+562Ma.)}
+
+\spheader 562Bd Now say that a {\bf codable Borel set}
+in $X$ is one expressible as
+$\phi(T)$ for some $T\in\Cal T$, starting from some sequencen running over
+a base for the topology of $X$\cmmnt{;  in view of (c),
+we can restrict our calculations to a
+fixed enumeration of a fixed base if we wish}.   I will write $\Cal B_c(X)$
+for the family of codable Borel sets of $X$.
+
+The definition of `interpretation of Borel codes'
+makes it plain that any $\sigma$-algebra of
+subsets of $X$ containing every open set will also contain every codable
+Borel set;\cmmnt{ so} every codable Borel set is\cmmnt{ indeed} a 
+`Borel set' on the
+definition of 111G or 4A3A.
+
+\cmmnt{As in the argument for (c) just above,
+it will sometimes be useful to know that every element of $\Cal B_c(X)$ can
+be coded by a non-empty member of $\Cal T$;  we
+have only to check the case
+of the empty set, which is dealt with in the formula in (b).}
+
+\leader{562C}{}\cmmnt{
+The point of these codings is that we can define explicit
+functions on $\Cal T$ which will have appropriate reflections in the
+coded sets.
+
+\medskip
+
+}{\bf (a)} For instance, there are functions
+$\Theta_0:\Cal T\to\Cal T$, $\Theta_1:\Cal T\times\Cal T\to\Cal T$,
+$\Theta_2:\Cal T\times\Cal T\to\Cal T$,
+$\Theta_3:\Cal T\times\Cal T\to\Cal T$ such that, for any interpretation
+$\phi$ of Borel codes,
+
+\Centerline{$\phi(\Theta_0(T))=X\setminus\phi(T)$,
+\quad$\phi(\Theta_1(T,T'))=\phi(T)\cup\phi(T')$,}
+
+\Centerline{$\phi(\Theta_2(T,T'))=\phi(T)\cap\phi(T')$,
+\quad$\phi(\Theta_3(T,T'))=\phi(T)\setminus\phi(T')$}
+
+\noindent for all $T$, $T'\in\Cal T$.
+\prooflet{\Prf\ Let $T^*$ be the tree described in 562Bb, so that
+$\phi(T^*)=X$.   Set
+
+$$\eqalign{\Theta_0(T)
+&=T^*\text{ if }T=\emptyset,\cr
+&=\{\fraction{0}\}\cup\{\fraction{0}^{\smallfrown}\sigma:\sigma\in T\}
+\text{ otherwise};\cr}$$
+
+\noindent then
+
+$$\eqalign{\phi(\Theta_0(T))
+&=\phi(T^*)=X=X\setminus\phi(T)\text{ if }T=\emptyset,\cr
+&=X\setminus\phi(\Theta_0(T)_{\fraction{0}})
+=X\setminus\phi(T)\text{ otherwise}.\cr}$$
+
+\noindent Now set
+
+\Centerline{$\Theta_1(T,T')
+=\{\fraction{0},\fraction{1}\}
+   \cup\{\fraction{0}^{\smallfrown}\sigma:\sigma\in\Theta_0(T)\}
+   \cup\{\fraction{1}^{\smallfrown}\sigma:\sigma\in\Theta_0(T')\}$,}
+
+\noindent so that
+
+$$\eqalign{\phi(\Theta_1(T,T'))
+&=(X\setminus\phi(\Theta_1(T,T'))_{\fraction{0}})
+  \cup(X\setminus\phi(\Theta_1(T,T'))_{\fraction{1}})\cr
+&=(X\setminus\phi(\Theta_0(T)))
+  \cup(X\setminus\phi(\Theta_0(T')))\cr
+&=(X\setminus(X\setminus\phi(T)))
+  \cup(X\setminus(X\setminus\phi(T')))
+=\phi(T)\cup\phi(T').\cr}$$
+
+\noindent So we can take
+
+\Centerline{$\Theta_2(T,T')
+=\Theta_0(\Theta_1(\Theta_0(T),\Theta_0(T')))$,
+\quad$\Theta_3(T,T')
+=\Theta_2(T,\Theta_0(T'))$}
+
+\noindent and get
+
+\Centerline{$\phi(\Theta_2(T,T'))
+=X\setminus((X\setminus\phi(T))\cup(X\setminus\phi(T')))
+=\phi(T)\cap\phi(T')$,}
+
+\Centerline{$\phi(\Theta_3(T,T'))
+=\phi(T)\cap(X\setminus\phi(T'))
+=\phi(T)\setminus\phi(T')$.  \Qed}}
+
+\spheader 562Cb\cmmnt{ We can find codes for unions and intersections of
+sequences, provided the sequences are presented in the right way;  I give
+a general formulation of the process.}   For any countable set $K$ we have
+functions $\tilde\Theta_1$,
+$\tilde\Theta_2:\bigcup_{J\subseteq K}\Cal T^J\to\Cal T$ such that whenever
+$X$ is a set, $\sequencen{E_n}$ is a sequence of subsets
+of $X$ and $\phi$ is the corresponding interpretation of Borel codes, then
+$\phi(\tilde\Theta_1(\tau))=\bigcup_{j\in J}\phi(\tau(j))$ and
+$\phi(\tilde\Theta_2(\tau))=X\cap\bigcap_{j\in J}\phi(\tau(j))$ whenever
+$J\subseteq K$ and $\tau\in\Cal T^J$.
+\prooflet{\Prf\ Let $\sequencen{k_n}$ be a
+sequence running over $K\cup\{\emptyset\}$.
+For $J\subseteq K$ and $\tau\in\Cal T^J$, set
+$A=\{n:k_n\in J$, $\tau(k_n)\ne\emptyset\}$ and
+
+\Centerline{$\tilde\Theta_1(\tau)
+=\{\fraction{n}:n\in A\}
+\cup\{\fraction{n}^{\smallfrown}\sigma:
+  n\in A,\,\sigma\in\Theta_0(\tau(k_n))\}$,}
+
+\Centerline{$\tilde\Theta_2(\tau)
+=\Theta_0(\tilde\Theta_1(\family{j}{J}{\Theta_0(\tau(j))}))$.}
+
+\noindent Then
+
+$$\eqalign{\phi(\tilde\Theta_1(\tau))
+&=\emptyset=\bigcup_{j\in J}\phi(\tau(j))\text{ if }A=\emptyset,\cr
+&=\bigcup_{n\in A}X\setminus\phi(\Theta_0(\tau(k_n)))
+=\bigcup_{n\in A}\phi(\tau(k_n))
+=\bigcup_{j\in J}\phi(\tau_j)\text{ otherwise},\cr
+\phi(\tilde\Theta_2(\tau))
+&=X\setminus\bigcup_{j\in J}(X\setminus\phi(\tau_j))
+=X\cap\bigcap_{j\in J}\phi(\tau_j).  \text{\Qed}\cr}$$
+}
+
+\spheader 562Cc\cmmnt{ A
+more sophisticated version of two of the codings in (a)
+will be useful in \S564.}
+%Fubini's theorem
+Let $X$ be a regular second-countable space, $\sequencen{U_n}$ a sequence
+running over a base for the topology of $X$ containing $\emptyset$, and
+$\phi:\Cal T\to\Cal PX$ the associated interpretation of Borel codes.
+Then there are functions
+$\Theta'_1$, $\Theta'_2:\Cal T\times\Cal T\to\Cal T$ such that
+
+\Centerline{$\phi(\Theta'_1(T,T'))=\phi(T)\cup\phi(T')$,
+\quad$\phi(\Theta'_2(T,T'))=\phi(T)\cap\phi(T')$,}
+
+\Centerline{$r(\Theta'_1(T,T'))=r(\Theta'_2(T,T'))=\max(r(T),r(T'))$}
+
+\noindent for all $T$, $T'\in\Cal T$.   \prooflet{\Prf\ The point is
+just that open sets in a regular second-countable space
+are F$_{\sigma}$.   Because of the slightly awkward
+form taken by the definition of $\phi$, we need to start with an
+auxiliary function.   Define $T\mapsto\tilde T:\Cal T\to\Cal T$ by saying
+that
+
+$$\eqalign{\tilde T
+&=\{\fraction{n}:\overline{U}_n\subseteq\phi(T)\}
+\cup\{\fraction{n}^{\smallfrown}\fraction{i}:
+  \overline{U}_n\subseteq\phi(T),\,U_i\cap U_n=\emptyset\}\cr
+&\mskip300mu \text{ if }r(T)\le 1,\cr
+&=T\text{ otherwise }.\cr}$$
+
+\noindent Then $\phi(\tilde T)=\phi(T)$ and $r(\tilde T)=\max(2,r(T))$
+for every $T$ (because if $r(T)\le 1$ there is some $n$ such that
+$U_n=\emptyset$ and
+$\fraction{n}^{\smallfrown}\fraction{n}\in\tilde T$).
+Note that $\Tilde{\Tilde T}=\tilde T$.
+We also need to fix a bijection $n\mapsto(i_n,j_n)$ between $\Bbb N$ and
+$\Bbb N\times\Bbb N$.
+
+Now define $\Theta'_1$ by saying that
+
+\inset{----- if $\max(r(T),r(T'))\le 1$,
+$\Theta'_1(T,T')=\Theta'_1(T)\cup\Theta'_1(T')$;
+
+----- if $\max(r(T),r(T'))>1$, then
+
+$$\eqalign{\Theta'_1(T,T')
+&=\{\fraction{2n}:n\in A_{\tilde T}\}
+\cup\{\fraction{2n}^{\smallfrown}\sigma:\sigma\in\tilde T_{\fraction{n}}\}
+\cr
+&\mskip100mu\cup\{\fraction{2n+1}:n\in A_{\tilde T'}\}
+\cup\{\fraction{2n+1}^{\smallfrown}\sigma:
+  \sigma\in\tilde T'_{\fraction{n}}\}.\cr}$$
+}
+
+\noindent For $\Theta'_2$ induce on $\max(r(T),r(T'))$:
+
+\inset{----- if $T=T'=\emptyset$, $\Theta'_2(T,T')=\emptyset$;
+
+----- if $\max(r(T),r(T'))=1$,
+
+\Centerline{$\Theta'_2(T,T')
+=\{\fraction{n}:U_n\subseteq\phi(T)\cap\phi(T')\}$;}
+
+----- if $\max(r(T),r(T'))>1$, set $A=\{n:i_n\in A_{\tilde T}$,
+$j_n\in A_{\tilde T'}\}$ and
+
+\Centerline{$\Theta'_2(T,T')
+=\{\fraction{n}:n\in A\}
+\cup\{\fraction{n}^{\smallfrown}\sigma:n\in A$, $\sigma
+  \in\Theta'_1(\tilde T_{\fraction{i_n}},\tilde T'_{\fraction{j_n}})\}$}
+
+\noindent(interpreting $\tilde T'_{\fraction{j_n}}$ as
+$((T')\sptilde)_{\fraction{j_n}}$).
+}
+
+\noindent These formulae work.   I run through the calculations for
+$\Theta'_2(T,T')$ when $\max(r(T),r(T'))>1$.    We have
+$r(\tilde T)\ge 2$ and $r(\tilde T')\ge 2$, so $A_{\tilde T}$,
+$A_{\tilde T'}$ and $A$ are non-empty,
+
+$$\eqalign{r(\Theta'_2(T,T'))
+&=\sup_{n\in A}
+   r(\Theta'_1(\tilde T_{\fraction{i_n}},\tilde T'_{\fraction{j_n}}))+1
+=\sup_{i\in A_{\tilde T},j\in A_{\tilde T'}}
+   r(\Theta'_1(\tilde T_{\fraction{i}},\tilde T'_{\fraction{j}}))+1\cr
+&=\sup_{i\in A_{\tilde T},j\in A_{\tilde T'}}
+   \max(r(\tilde T_{\fraction{i}}),r(\tilde T'_{\fraction{j}}))+1\cr
+&=\max(\sup_{i\in A_{\tilde T}}r(\tilde T_{\fraction{i}})+1,
+   \sup_{j\in A_{\tilde T'}}r(\tilde T'_{\fraction{j}})+1)\cr
+&=\max(r(\tilde T),r(\tilde T'))
+=\max(2,r(T),r(T'))
+=\max(r(T),r(T'))\cr}$$
+
+\noindent and
+
+$$\eqalign{\phi(\Theta'_2(T,T'))
+&=\bigcup_{n\in A}X\setminus
+  \phi(\Theta'_1(\tilde T_{\fraction{i_n}},\tilde T'_{\fraction{j_n}}))\cr
+&=\bigcup_{n\in A}X\setminus
+  \phi(\Theta'_1(\Tilde{\Tilde T}_{\fraction{i_n}},
+    \Tilde{\Tilde T}'_{\fraction{j_n}}))
+=\bigcup_{n\in A}X\setminus
+  (\phi(\tilde T_{\fraction{i_n}})\cup\phi(\tilde T'_{\fraction{j_n}}))\cr
+&=\bigcup_{n\in A}(X\setminus\phi(\tilde T_{\fraction{i_n}}))
+  \cap(X\setminus\phi(\tilde T'_{\fraction{j_n}}))\cr
+&=\bigcup_{i\in A_{\tilde T},j\in A_{\tilde T'}}
+   (X\setminus\phi(\tilde T_{\fraction{i_n}}))
+     \cap(X\setminus\phi(\tilde T'_{\fraction{j_n}}))\cr
+&=(\bigcup_{i\in A_{\tilde T}}X\setminus\phi(\tilde T_{\fraction{i_n}}))
+   \cap(\bigcup_{j\in A_{\tilde T'}}
+          X\setminus\phi(\tilde T'_{\fraction{j_n}}))\cr
+&=\phi(\tilde T)\cap\phi(\tilde T')
+=\phi(T)\cap\phi(T'). \text{ \Qed}\cr}$$
+}
+
+\leader{562D}{Proposition} (a) If $X$ is a second-countable space, then the
+family of codable Borel subsets of $X$ is an algebra of subsets
+of $X$ containing every G$_{\delta}$ set and every F$_{\sigma}$ set.
+
+(b) [AC$(\omega)$] Every Borel set is a codable Borel set.
+
+\proof{{\bf (a)} Let $\sequencen{U_n}$ be a sequence running over a base
+for the topology of $X$, and
+$\phi:\Cal T\to\Cal B_c(X)$ the corresponding surjection.
+From 562Ca we see that $X\setminus E$ and $E\cup E'$ belong to
+$\Cal B_c(X)$ for all $E$, $E'\in\Cal B_c(X)$;
+since $\emptyset=\phi(\emptyset)$ belongs
+to $\Cal B_c(X)$, $\Cal B_c(X)$ is an algebra of subsets of $X$.
+
+If $E\subseteq X$ is an F$_{\sigma}$ set, there is a sequence
+$\sequencen{F_n}$ of closed sets with union $E$.   Set
+
+\Centerline{$T=\{\fraction{n}:n\in\Bbb N\}
+  \cup\{\fraction{n}^{\smallfrown}\fraction{i}:
+    n$, $i\in\Bbb N$, $U_i\subseteq X\setminus F_n\}$.}
+
+\noindent Then $r(T)=2$, $\phi(T_{\fraction{n}})=X\setminus F_n$ for every
+$n$ and $\phi(T)=E$.
+
+Thus every F$_{\sigma}$ set belongs to $\Cal B_c(X)$;  it follows at once
+that every G$_{\delta}$ set is also a codable Borel set.
+
+\medskip
+
+{\bf (b)} We can repeat the argument in (a), but this time in a more
+general form.   If $\sequencen{E_n}$ is any sequence in $\Cal B_c(X)$, then
+for each $n\in\Bbb N$ {\bf choose}
+$T^{(n)}\in\Cal T\setminus\{\emptyset\}$ such that $\phi(T^{(n)})=E_n$;  set
+
+\Centerline{$T=\{\fraction{n}:n\in\Bbb N\}
+\cup\{\fraction{n}^{\smallfrown}\sigma:n\in\Bbb N$,
+$\sigma\in T^{(n)}\}$;}
+
+\noindent then $\bigcup_{n\in\Bbb N}X\setminus E_n=\phi(T)$ is a
+codable Borel set.   Because $\Cal B_c(X)$ is an algebra, this is enough to
+show that it is a $\sigma$-algebra and therefore equal to the
+$\sigma$-algebra $\Cal B(X)$.
+}%end of proof of 562D
+
+\leader{562E}{Proposition} Let $X$ be a second-countable space and
+$Y\subseteq X$ a subspace of $X$.   Then
+$\Cal B_c(Y)=\{Y\cap E:E\in\Cal B_c(X)\}$.
+
+\proof{ Let $\sequencen{U_n}$ be a sequence running over a base for the
+topology of $X$, and set $V_n=Y\cap U_n$ for each
+$n$;  let $\phi_X:\Cal T\to\Cal B_c(X)$ and $\phi_Y:\Cal T\to\Cal B_c(Y)$
+be the interpretations of Borel codes corresponding to $\sequencen{U_n}$,
+$\sequencen{V_n}$ respectively.   Then an easy induction on the rank of $T$
+shows that $\phi_Y(T)=Y\cap\phi_X(T)$ for every $T\in\Cal T$.   So
+
+\Centerline{$\Cal B_c(Y)=\phi_Y[\Cal T]=\{Y\cap\phi_X(T):T\in\Cal T\}
+=\{Y\cap E:E\in\Cal B_c(X)\}$.}
+}%end of proof of 562E
+
+\leader{*562F}{}\cmmnt{ I do not expect to rely on the next
+result, but it is
+interesting that two of the basic facts of descriptive set theory have
+versions in the new context.
+
+\medskip
+
+\noindent}{\bf Theorem}
+(a) If $X$ is a Hausdorff second-countable space and $A$, $B$ are disjoint
+analytic subsets of $X$, there is a codable Borel set $E\subseteq X$ such
+that $A\subseteq E$ and $B\cap E=\emptyset$.
+
+(b) Let $X$ be a Polish space.   Then a subset $E$ of $X$ is a codable
+Borel set iff $E$ and $X\setminus E$ are analytic.
+
+\proof{{\bf (a)(i)} If either $A$ or $B$ is empty, this is trivial, just
+because $\emptyset$ and $X$ are codable Borel sets;  so suppose otherwise.
+Let $f:\NN\to X$ and $g:\NN\to X$ be continuous functions such that
+$f[\NN]=A$ and $g[\NN]=B$.   Fix an enumeration $\sequencen{(j_n,k_n)}$ of
+$\Bbb N\times\Bbb N$, and a sequence $\sequencen{U_n}$ running over a base
+for the topology of $X$;  let $\phi$ be the interpretation of Borel codes
+defined by $\sequencen{U_n}$.   For
+$\sigma\in S=\bigcup_{n\in\Bbb N}\BbbN^n$ set
+
+\Centerline{$A_{\sigma}
+  =\{f(\alpha):\alpha\in\NN$, $\alpha_i=j_{\sigma(i)}$
+     for $i<\#(\sigma)\}$,}
+
+\Centerline{$B_{\sigma}
+  =\{g(\alpha):\alpha\in\NN$, $\alpha_i=k_{\sigma(i)}$
+     for $i<\#(\sigma)\}$.}
+
+\noindent Then $A_{\emptyset}=A$ and
+$A_{\sigma}=\bigcup_{i\in\Bbb N}A_{\sigma^{\smallfrown}\fraction{i}}$ for
+every $\sigma$, and similarly for $B$.
+
+\medskip
+
+\quad{\bf (ii)} Still in the setting-up stage, we need general union and
+intersection operators on $\Cal T$.   As in 562Cb, let
+$\tilde\Theta_1$,
+$\tilde\Theta_2:\bigcup_{J\subseteq\Bbb N}\Cal T^J\to\Cal T$ be such that
+$\phi(\tilde\Theta_1(\tau))=\bigcup_{j\in J}\phi(\tau(j))$ and
+$\phi(\tilde\Theta_2(\tau))=X\cap\bigcap_{j\in J}\phi(\tau(j))$
+whenever $J\subseteq\Bbb N$ and $\tau\in\Cal T^J$.
+
+\medskip
+
+\quad{\bf (iii)} Set
+
+$$\eqalign{T
+&=\{\sigma:\sigma\in S^*,\text{ there are no }i,\,n\in\Bbb N
+\text{ such that }n<\#(\sigma)\cr
+&\mskip200mu \text{and }A_{\sigma\restr n}\subseteq U_i
+\subseteq X\setminus B_{\sigma\restr n}\}.\cr}$$
+
+\noindent If $\sigma\in S$ and $n\in\Bbb N$ then
+$A_{\sigma\restr n}\supseteq A_{\sigma}$ and
+$B_{\sigma\restr n}\supseteq B_{\sigma}$, so $\sigma\restr m\in T$ whenever
+$\sigma\in T$ and $m\ge 1$;
+thus $T$ belongs to $\Cal T_0$ as defined in 562Ab.   In fact
+$T\in\Cal T$.   \Prf\Quer\ Otherwise, by 562Ac, there is a $\gamma\in\NN$
+such that $\gamma\restr n\in T$ for every $n\ge 1$.   Set
+$\alpha=\sequencen{\gamma_{j_n}}$, $\beta=\sequencen{\gamma_{k_n}}$;
+then $f(\alpha)\in A$ and $g(\beta)\in B$, so $f(\alpha)\ne g(\beta)$.
+Because $X$ is Hausdorff, there are $i$, $j\in\Bbb N$ such that
+$f(\alpha)\in U_i$, $g(\beta)\in U_j$ and $U_i\cap U_j=\emptyset$.
+Because $f$ and $g$ are continuous, there is an $n\ge 1$ such that
+$f(\alpha')\in U_i$ and $g(\beta')\in U_j$ whenever
+$\alpha'$, $\beta'\in\NN$, $\alpha'\restr n=\alpha\restr n$ and
+$\beta'\restr n=\beta\restr n$;  that is, such that
+$A_{\gamma\restr n}\subseteq U_i$
+and $B_{\gamma\restr n}\subseteq U_j$.   But this means that
+$\gamma\restr n+1\notin T$.\ \Bang\Qed
+
+\medskip
+
+\quad{\bf (iv)} We know that $\langle\partial^{\xi}T\rangle_{\xi\le r(T)}$
+is a non-increasing family in $\Cal T$ with last member $\emptyset$, and
+moreover that $\partial^{\xi}T=\bigcap_{\eta<\xi}\partial^{\eta}T$ for
+non-zero limit ordinals $\xi\le r(T)$.   So for $\sigma\in T$ there is
+a unique $h(\sigma)<r(T)$ such that
+$\sigma\in\partial^{h(\sigma)}T\setminus\partial(\partial^{h(\sigma)}T)$.
+I seek to define $T^{(\sigma)}\in\Cal T$, for $\sigma\in T$, such that
+$A_{\sigma}\subseteq\phi(T^{(\sigma)})\subseteq X\setminus B_{\sigma}$
+for every $\sigma$.   I do this inductively.
+
+\medskip
+
+\quad{\bf (v)} If $h(\sigma)=0$, that is, $\sigma\in T\setminus\partial T$,
+then $\sigma^{\smallfrown}0\notin T$.
+So there is a first $i\in\Bbb N$ such that
+$A_{\sigma}\subseteq U_i\subseteq X\setminus B_{\sigma}$.
+Set $T^{(\sigma)}=\{\fraction{i}\}$,
+so that $\phi(T^{(\sigma)})=U_i$ includes $A_{\sigma}$ and is
+disjoint from $B_{\sigma}$.
+
+\medskip
+
+\quad{\bf (vi)} Now suppose that we have $\xi\le r(t)$ such that
+$\xi\ge 1$ and
+$T^{(\sigma)}$ has been defined for every $\sigma\in T$ with
+$h(\sigma)<\xi$.
+Take $\sigma\in T$ such that $h(\sigma)=\xi$;   then
+$\sigma^{\smallfrown}\fraction{n}\in T$ for some, therefore every,
+$n\in\Bbb N$, while
+$h(\sigma^{\smallfrown}\fraction{n})<\xi$ and $T^{(\sigma^{\smallfrown}\fraction{n})}$ is defined
+for every $n\in\Bbb N$.   Now, for each $n$, we have
+$A_{\sigma^{\smallfrown}\fraction{n}}
+\subseteq\phi(T^{(\sigma^{\smallfrown}\fraction{n})})$.   But of course
+$A_{\sigma^{\smallfrown}\fraction{n}}=A_{\sigma^{\smallfrown}\fraction{m}}$
+whenever $j_m=j_n$.   So we have
+$A_{\sigma^{\smallfrown}\fraction{n}}
+\subseteq\bigcap_{j_m=j_n}\phi(T^{(\sigma^{\smallfrown}\fraction{m})})$
+for each $n$, and
+
+\Centerline{$A_{\sigma}
+\subseteq\bigcup_{n\in\Bbb N}\bigcap_{j_m=j_n}
+   \phi(T^{(\sigma^{\smallfrown}\fraction{m})})
+=\bigcup_{j\in\Bbb N}\bigcap_{j_m=j}
+   \phi(T^{(\sigma^{\smallfrown}\fraction{m})})$.}
+
+\noindent Similarly,
+$B_{\sigma^{\smallfrown}\fraction{n}}=B_{\sigma^{\smallfrown}\fraction{m}}$
+is disjoint from
+$\phi(T^{(\sigma^{\smallfrown}\fraction{m})})$ whenever
+$k_m=k_n$, so
+
+\Centerline{$B_{\sigma}
+=\bigcup_{k\in\Bbb N}\bigcap_{k_m=k}B_{\sigma^{\smallfrown}\fraction{m}}$}
+
+\noindent is disjoint from
+$\bigcap_{k\in\Bbb N}\bigcup_{k_m=k}
+  \phi(T^{(\sigma^{\smallfrown}\fraction{m})})$.
+
+On the other hand, for any $j$, $k\in\Bbb N$, there is a $p\in\Bbb N$ such
+that $j_p=j$ and $k_p=k$, so that
+
+\Centerline{$\bigcap_{j_m=j}
+   \phi(T^{(\sigma^{\smallfrown}\fraction{m})})
+\subseteq\phi(T^{(\sigma^{\smallfrown}\fraction{p})})
+\subseteq\bigcup_{k_m=k}
+  \phi(T^{(\sigma^{\smallfrown}\fraction{m})})$.}
+
+\noindent But this means that
+$\bigcup_{j\in\Bbb N}\bigcap_{j_m=j}
+   \phi(T^{(\sigma^{\smallfrown}\fraction{m})})
+\subseteq\bigcap_{k\in\Bbb N}\bigcup_{k_m=k}
+  \phi(T^{(\sigma^{\smallfrown}\fraction{m})})$
+is disjoint from $B_{\sigma}$.
+
+If therefore we set
+
+\Centerline{$T^{(\sigma)}
+=\tilde\Theta_1(\sequence{j}{\tilde\Theta_2(
+   \langle T^{(\sigma^{\smallfrown}\fraction{m})}\rangle_{j_m=j})})$}
+
+\noindent we shall have
+$A_{\sigma}\subseteq\phi(T^{(\sigma)})\subseteq X\setminus B_{\sigma}$, and
+we have a formula defining a suitable tree
+$T^{(\sigma)}$ whenever $\sigma\in T$ and
+$h(\sigma)=\xi$, so we can continue the induction.
+
+\medskip
+
+\quad{\bf (vii)} This gives us a family
+$\family{\sigma}{T}{T^{(\sigma)}}$ in $\Cal T$.
+Of course what we are really
+looking for is a tree $T^{(\emptyset)}$.   But if $T$ is empty, this is
+because there is an $i\in\Bbb N$ such that
+$A\subseteq U_i\subseteq X\setminus B$;  in which case $U_i$ is a
+codable Borel set separating $A$ from $B$.   While if $T$ is not empty,
+$\fraction{n}\in T$ for every $n\in\Bbb N$, and just as in (vi) we can set
+
+\Centerline{$T^{(\emptyset)}
+=\tilde\Theta_1(\sequence{j}
+  {\tilde\Theta_2(\langle T^{(\fraction{m})}\rangle_{j_m=j})})$}
+
+\noindent to obtain a codable Borel set $E=\phi(T^{\emptyset})$ such that
+$A\subseteq E$ and $B\cap E=\emptyset$.
+
+\medskip
+
+{\bf (b)} If $X$ is empty, this is trivial;  suppose henceforth that
+$X$ is not empty.
+
+\medskip
+
+\quad{\bf (i)} If $E$ and $X\setminus E$ are analytic, then (a) tells us
+that there is a codable Borel set $F$ including $E$ and disjoint from
+$X\setminus E$, so that $E=F$ is a codable Borel set.   So the rest of this
+part of the proof will be devoted to the converse.
+
+Let $\rho$ be a complete metric on $X$ inducing its
+topology, $\sequencen{x_n}$ a sequence running over a dense subset of
+$X$, and $\sequencen{U_n}$ a sequence running over a
+base for the topology of $X$;  let $\phi$ be the interpretation of Borel
+codes defined from $\sequencen{U_n}$.
+
+\medskip
+
+\quad{\bf (ii)} We need to fix on a continuous surjection from a
+closed subset of $\NN$ onto $X$;  a convenient one is the following.   Set
+
+\Centerline{$F
+=\{\alpha:\alpha\in\NN$, $\rho(x_{\alpha(n+1)},x_{\alpha(n)})\le 2^{-n}$
+for every $n\in\Bbb N$\};}
+
+\noindent then $F\subseteq\NN$ is closed.   Define $f:F\to X$ by saying
+that $f(\alpha)=\lim_{n\to\infty}x_{\alpha(n)}$ for every $\alpha\in\NN$.
+If $\alpha$, $\beta\in\NN$ and $\alpha\restr n=\beta\restr n$ where
+$n\ge 1$, then $\rho(f(\alpha),f(\beta))\le 2^{-n+2}$, so $f$ is
+continuous.   If $x\in X$, we can define $\alpha\in\NN$ by saying that
+$\alpha(n)$ is to be the least $i$ such that $\rho(x,x_i)\le 2^{-n-1}$;
+then $\rho(x_{\alpha(n)},x_{\alpha(n+1)})\le 2^{-n-1}+2^{-n-2}\le 2^{-n}$
+for every $n$, so $\alpha\in F$, and of course $f(\alpha)=x$.   So $f$ is
+surjective.
+
+The next thing we need is a choice function for the set $\Cal F$ of
+non-empty closed subsets of $\NN$;  I described one in 561D.   Let
+$g:\Cal F\to\NN$ be such that $g(F)\in F$ for every $F\in\Cal F$.
+
+\medskip
+
+\quad{\bf (iii)}
+There is a family $\family{T}{\Cal T}{(F_T,f_T,F'_T,f'_T)}$
+such that
+
+\Centerline{$F_T$, $F'_T$ are closed subsets of $\NN$,}
+
+\Centerline{$f_T:F_T\to\phi(T)$, $f'_T:F'_T\to X\setminus\phi(T)$ are
+continuous surjections}
+
+\noindent for each $T\in\Cal T$.   \Prf\ Start by fixing a homeomorphism
+$\alpha\mapsto\sequence{i}{h_i(\alpha)}:\NN\to(\NN)^{\Bbb N}$.
+Define the quadruples
+$(F_T,f_T,F'_T,f'_T)$ inductively on the rank of $T$.
+
+If $r(T)\le 1$ then $\phi(T)$ is open.   Set
+
+\Centerline{$F_T
+=\{\alpha:\alpha\in F$, $x_{\alpha(0)}\in\phi(T)$,
+$\rho(x_{\alpha(n)},x_{\alpha(0)})
+\le\Bover12\rho(x_{\alpha(0)},X\setminus\phi(T))$ for every $n\ge 1\}$}
+
+\noindent (interpreting $\rho(x,\emptyset)$ as $\infty$ if necessary), and
+$f_T=f\restr F_T$.   Then $F_T$ is a closed subset of $\NN$ and
+$\rho(f(\alpha),x_{\alpha(0)})
+\le\Bover12\rho(x_{\alpha(0)},X\setminus\phi(T))$, so
+$f(\alpha)\in\phi(T)$, for every $\alpha\in F_T$.   If $x\in\phi(T)$ then
+we can define $\alpha\in\NN$ by taking
+
+\Centerline{$\alpha(n)
+=\min\{i:\rho(x_i,x)\le\min(2^{-n-1},\Bover15\rho(x,X\setminus\phi(T)))\}$}
+
+\noindent for every $n$, and now we find that $\alpha\in F_T$ and
+$f_T(\alpha)=x$.
+As for $F'_T$ and $f'_T$, just set
+$F'_T=f^{-1}[X\setminus\phi(T)]$ and $f'_T=f\restr F'_T$.
+
+For the inductive step to $r(T)>1$, set
+$A_T=\{i:\fraction{i}\in T\}$, as in 562Ad.
+We have $\phi(T)=\bigcup_{i\in A_T}X\setminus\phi(T_{\fraction{i}})$ and
+$X\setminus\phi(T)=\bigcap_{i\in A_T}\phi(T_{\fraction{i}})$, while
+$r(T_{\fraction{i}})<r(T)$ for every $i\in A_T$.   Set
+
+\Centerline{$F_T=\bigcup_{i\in A_T}
+\{\fraction{i}^{\smallfrown}\alpha:\alpha\in F'_{T_{\fraction{i}}}\}$,}
+
+$$\eqalign{F'_T
+&=\{\alpha:h_i(\alpha)\in F_{T_{\fraction{i}}}
+  \text{ for every }i\in A_T,\cr
+&\mskip100mu
+f_{T_{\fraction{i}}}(h_i(\alpha))=f_{T_{\fraction{j}}}(h_j(\alpha))
+  \text{ for all }i,\,j\in A_T\},\cr}$$
+
+\Centerline{$f_T(\fraction{i}^{\smallfrown}\alpha)
+=f'_{T_{\fraction{i}}}(\alpha)$ whenever
+$i\in A_T$ and $\alpha\in F'_{T_{\fraction{i}}}$,}
+
+\Centerline{$f'_T(\alpha)=f_{T_{\fraction{i}}}(h_i(\alpha))$ whenever
+$i\in A_T$ and $\alpha\in F'_T$.}
+
+\noindent It is straightforward to confirm that $F_T$ and $F'_T$ are
+closed, $f_T:F_T\to\phi(T)$ and $f'_T:F'_T\to X\setminus\phi(T)$
+are continuous and $f_T[F_T]=\phi(T)$.  To see that
+$f'_T[F'_T]=X\setminus\phi(T)$, take any
+$x\in X\setminus\phi(T)=\bigcap_{i\in A_T}\phi(T_{\fraction{i}})$.
+Then $f_{T_{\fraction{i}}}^{-1}[\{x\}]$ is a non-empty closed subset
+of $F_{T_{\fraction{i}}}$ for each $i\in A_T$.
+Set $\alpha_i=g(f_{T_{\fraction{i}}}^{-1}[\{x\}])$, so that
+$f_{T_{\fraction{i}}}(\alpha_i)=x$ for each $i\in A_T$.   For
+$i\in\Bbb N\setminus A_T$, take $\alpha_i=\tbf{0}$.   Now
+$\alpha=h^{-1}(\sequence{i}{\alpha_i})$ belongs to $F'_T$ and
+$f'_T(\alpha)=x$.   Thus $f'_T[F'_T]=X\setminus\phi(T)$ and the induction
+continues.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)}
+In particular, $\phi(T)=f_T[F_T]$ is a continuous image of a
+closed subset of $\NN$ for every $T\in\Cal T$.
+
+\medskip
+
+\quad{\bf (v)} The definition of `analytic set' in 423A refers to
+continuous images of $\NN$, so there is a final step to make.
+If $E\subseteq X$ is a non-empty codable Borel set, it is a continuous
+image of a closed subset $F_T$ of $\NN$;  but 561C tells us that $F_T$ is a
+continuous image of $\NN$, so $E$ also is, and $E$ is analytic.
+}%end of proof of 562F
+
+\leader{562G}{Resolvable \dvrocolon{sets}}\cmmnt{ The essence of the
+concept of `codable Borel set' is that it is not enough to know, in the
+abstract, that a set is `Borel';  we need to know its pedigree.   For a
+significant number of elementary sets, however,
+starting with open sets and closed sets, we can determine codes from the
+sets themselves.
+
+\medskip
+
+\noindent}{\bf Definition}\cmmnt{ (see {\smc Kuratowski 66}, \S12)}
+I will say that a subset $E$ of a
+topological space $X$ is {\bf resolvable} if there is no non-empty
+set $A\subseteq X$ such that
+$A\subseteq\overline{A\cap E}\cap\overline{A\setminus E}$.
+
+\leader{562H}{Proposition} Let $X$ be a topological space, and $\Cal E$ the
+set of resolvable subsets of $X$.   Then $\Cal E$ is an algebra of sets
+containing every open subset of $X$.
+
+\proof{{\bf (a)} If $G\subseteq X$ is open and $A\subseteq X$ is
+non-empty, then either $A$ meets $G$ and
+$A\not\subseteq\overline{A\setminus G}$, or $A\cap G=\emptyset$ then
+$A\not\subseteq\overline{A\cap G}$.   So every open set is resolvable.
+
+\medskip
+
+{\bf (b)}
+If $E$ is resolvable and $A\subseteq X$ is not empty, there is an open set
+$G$ such that $A\cap G$ is not empty but one of $A\cap G\cap E$,
+$A\cap G\setminus E$ is empty.   \Prf\ If
+$A\not\subseteq\overline{A\cap E}$ take
+$G=X\setminus\overline{A\cap E}$;  otherwise
+take $G=X\setminus\overline{A\setminus E}$.\ \Qed
+
+\medskip
+
+{\bf (c)} If $E$, $E'\subseteq X$ are resolvable, so is $E\cup E'$.
+\Prf\ Suppose that $A\subseteq X$ is non-empty.   Then there is an open set
+$G$ such that $A\cap G$ is non-empty and disjoint from one of $E$,
+$X\setminus E$.   Now there is an open set $H$ such that $A\cap G\cap H$ is
+non-empty and disjoint from one of $E'$, $X\setminus E'$.   Consequently
+one of $A\cap G\cap H\cap(E\cup E')$, $A\cap G\cap H\setminus(E\cup E')$ is
+empty, and the open set $G\cap H$ is disjoint from
+$\overline{A\cap(E\cup E')}\cap\overline{A\setminus(E\cup E')}$;  in which
+case $A$ cannot be included in
+$\overline{A\cap(E\cup E')}\cap\overline{A\setminus(E\cup E')}$.   As
+$A$ is arbitrary, $E\cup E'$ is resolvable.\ \Qed
+
+\medskip
+
+{\bf (d)} Immediately from the definition in 562G we see that
+the complement of a resolvable set is resolvable, so $\Cal E$ is
+an algebra of subsets of $X$.
+}
+
+\leader{562I}{Theorem} Let $X$ be a second-countable space,
+$\sequencen{U_n}$ a sequence running over a base for the topology of $X$,
+and $\phi:\Cal T\to\Cal B_c(X)$ the associated
+interpretation of Borel codes.
+Let $\Cal E$ be the algebra of resolvable subsets of $X$.
+Then there is a function $\psi:\Cal E\to\Cal T$ such that
+$\phi(\psi(E))=E$ for every $E\in\Cal E$.
+
+\proof{ We need to start by settling on functions
+
+\Centerline{$\Theta'_1:\Cal T\times\Bbb N\to\Cal T$,
+\quad$\Theta'_2:\Cal T\times\Cal T\times\Bbb N\to\Cal T$,
+\quad$\tilde\Theta'_1:\Cal T^{\Bbb N}\to\Cal T$,
+\quad$\tilde\Theta'_2:\Cal T^{\Bbb N}\to\Cal T$}
+
+\noindent such that
+
+\Centerline{$\phi(\Theta'_1(T,n))=\phi(T)\setminus U_n$,
+\quad$\phi(\Theta'_2(T,T',n))=\phi(T)\cup(\phi(T')\cap U_n)$,}
+
+\Centerline{$\phi(\tilde\Theta'_1(\tau))=\bigcup_{i\in\Bbb N}\phi(\tau(i))$,
+\quad$\phi(\tilde\Theta'_2(\tau))=\bigcap_{i\in\Bbb N}\phi(\tau(i))$}
+
+\noindent for $T\in\Cal T$, $n\in\Bbb N$ and $\tau\in\Cal T^{\Bbb N}$.
+(We can take $\tilde\Theta_1$ and $\tilde\Theta_2$ directly from
+562Cb, and
+
+\Centerline{$\Theta'_1(T,n)=\Theta_3(T,\{\fraction{n}\}),
+\Theta'_2(T,T',n)=\Theta_1(T,\Theta_2(T,\{\fraction{n}\}))$}
+
+\noindent where $\Theta_1$, $\Theta_2$ and $\Theta_3$ are the functions of
+562Ca.)
+
+Now, given $E\in\Cal E$, define
+$\ofamily{\xi}{\omega_1}
+{(F_{\xi},\tilde T^{(\xi)},T^{(\xi)},n_{\xi})}$ inductively,
+as follows.   The inductive
+hypothesis will be that
+$F_{\xi}\subseteq X$ is closed, $F_{\xi}\subseteq F_{\eta}$ for every
+$\eta\le\xi$,
+$\tilde T^{(\xi)}$, $T^{(\xi)}\in\Cal T$,
+$\phi(\tilde T^{(\xi)})=F_{\xi}$ and
+$\phi(T^{(\xi)})=E\setminus F_{\xi}$.
+Start with $F_0=X$, $T^{(0)}=\emptyset$,
+$\tilde T^{(0)}=\{\fraction{n}:n\in\Bbb N\}$.   For the
+inductive step to $\xi+1$,
+
+\inset{----- if $F_{\xi}=\emptyset$, set $n_{\xi}=0$ and
+$(F_{\xi+1},\tilde T^{(\xi+1)},T^{(\xi+1)})
+=(F_{\xi},\tilde T^{(\xi)},T^{(\xi)})$;
+
+----- if there is an $n$ such that
+$\emptyset\ne F_{\xi}\cap U_n\subseteq E$, let $n_{\xi}$ be the least
+such, and set
+
+\Centerline{$F_{\xi+1}=F_{\xi}\setminus U_{n_{\xi}}$,
+\quad$\tilde T^{(\xi+1)}
+=\Theta'_1(\tilde T^{(\xi)},n_{\xi})$,
+\quad$T^{(\xi+1)}=\Theta'_2(T^{(\xi)},\tilde T^{(\xi)},n_{\xi})$;}
+
+----- otherwise, $n_{\xi}$ is to be the least $n$ such that
+$\emptyset\ne F_{\xi}\cap U_n\subseteq X\setminus E$, and
+
+\Centerline{$F_{\xi+1}=F_{\xi}\setminus U_{n_{\xi}}$,
+\quad$\tilde T^{(\xi+1)}
+=\Theta'_1(\tilde T^{(\xi)},n_{\xi})$
+\quad$T^{(\xi+1)}=T^{(\xi)}$.}
+}%end of inset
+
+\noindent (Because $E$ is resolvable, these three cases exhaust the
+possibilities.)   It is easy to check that the inductive hypothesis
+remains valid at level $\xi+1$.
+
+For the inductive step to a non-zero
+limit ordinal $\xi$, then if there is an $\eta<\xi$ such that
+$F_{\eta}=\emptyset$, take the first such $\eta$ and set $n_{\xi}=0$ and
+$(F_{\xi},T^{(\xi)},\tilde T^{(\xi)})
+=(F_{\eta},T^{(\eta)},\tilde T^{(\eta)})$.   Otherwise,
+we must have
+$F_{\zeta}\subseteq F_{\eta}\setminus U_{n_{\eta}}\subset F_{\eta}$
+whenever $\eta<\zeta<\xi$, so that $\eta\mapsto n_{\eta}:\xi\to\Bbb N$ is
+injective.   Set
+
+$$\eqalign{\tilde\tau(i)&=\tilde T^{(\eta)}
+  \text{ if }\eta<\xi\text{ and }i=n_{\eta},\cr
+&=\tilde T^{(0)}\text{ if there is no such }\eta,\cr
+\tau(i)&=T^{(\eta)}\text{ if }\eta<\xi\text{ and }i=n_{\eta},\cr
+&=\emptyset\text{ if there is no such }\eta;\cr}$$
+
+\noindent now set
+
+\Centerline{$F_{\xi}=\bigcap_{\eta<\xi}F_{\eta}$,
+\quad$\tilde T^{(\xi)}=\tilde\Theta'_2(\tilde\tau)$,
+\quad$T^{(\xi)}=\tilde\Theta'_1(\tau)$.}
+
+\noindent Again, it is easy to check that the induction proceeds.
+
+Now, with the family
+$\ofamily{\xi}{\omega_1}
+{(F_{\xi},\tilde T^{(\xi)},T^{(\xi)},n_{\xi})}$ complete, observe that
+$\ofamily{\xi}{\omega_1}{n_{\xi}}$ cannot be injective.   There is
+therefore a first $\xi=\xi_E$ for which $F_{\xi_E}$ is empty.   Set
+$\psi(E)=T^{(\xi_E)}$;  then $\phi(\psi(E))=E\setminus F_{\xi_E}=E$, as
+required.
+}%end of proof of 562I
+
+\leader{562J}{Codable families of sets}
+Let $X$ be a second-countable space
+and $\Cal B_c(X)$ the algebra of codable Borel subsets of $X$.   Let
+$\sequencen{U_n}$, $\sequencen{V_n}$ be sequences running over bases for
+the topology of $X$, and
+$\phi:\Cal T\to\Cal B_c(X)$,
+$\phi':\Cal T\to\Cal B_c(X)$ the corresponding interpretations of Borel
+codes.   Let us say that
+a family $\familyiI{E_i}$ is {\bf$\phi$-codable} if there is a family
+$\familyiI{T^{(i)}}$ in $\Cal T$ such that $\phi(T^{(i)})=E_i$ for every
+$i\in I$.   Then\cmmnt{ 562Bc tells us that} $\familyiI{E_i}$ is
+$\phi$-codable iff it is $\phi'$-codable.
+
+We may therefore say that a family $\familyiI{E_i}$ in $\Cal B_c(X)$ is
+{\bf codable} if it is $\phi$-codable for some\cmmnt{, therefore any,}
+interpretation of Borel codes defined by the procedure of 562B from a
+sequence running over a base for the topology of $X$.
+
+Note that any finite family in $\Cal B_c(X)$ is codable, and that any
+family of resolvable sets is codable\cmmnt{, because
+we can use 562I to provide codes};  also any subfamily of a codable family
+is codable.   Slightly more generally, if
+$\familyiI{E_i}$ is a codable family in $\Cal B_c(X)$, $J$ is a set, and
+$f:J\to I$ is a function, then $\family{j}{J}{E_{f(j)}}$ is codable.
+If $\familyiI{E_i}$ and
+$\familyiI{F_i}$ are codable families in $\Cal B_c(X)$, then so are
+$\familyiI{X\setminus E_i}$,
+$\familyiI{E_i\cup F_i}$, $\familyiI{E_i\cap F_i}$ and
+$\familyiI{E_i\setminus F_i}$\prooflet{,
+since we have formulae to transform codes for $E$, $F$ into codes for
+$X\setminus E$, $E\cup F$, $E\cap F$ and $E\setminus F$}.
+
+\leader{562K}{Proposition} Let $X$ be a second-countable space and
+$\sequencen{E_n}$ a codable sequence in $\Cal B_c(X)$.   Then
+
+(a) $\bigcup_{n\in\Bbb N}E_n$, $\bigcap_{n\in\Bbb N}E_n$ belong to
+$\Cal B_c(X)$;
+
+(b) $\sequencen{\bigcup_{i<n}E_i}$ is a codable family in $\Cal B_c(X)$;
+
+(c) $\sequencen{E_n\setminus\bigcup_{i<n}E_i}$ is a codable family in
+$\Cal B_c(X)$.
+%for 563B
+
+\proof{ Let $\phi:\Cal T\to\Cal B_c(X)$ be an interpretation
+of Borel codes defined from a sequence running over a base for the topology
+of $X$;  then we have a sequence $\sequencen{T^{(n)}}$ in $\Cal T$
+such that $\phi(T^{(n)})=E_n$ for every $n$, and using 562Bb we
+can arrange that $T^{(n)}\ne\emptyset$ for every $n$.
+
+\medskip
+
+{\bf (a)} Setting
+
+\Centerline{$T=\{\fraction{n}:n\in\Bbb N\}
+\cup\{\fraction{n}^{\smallfrown}\fraction{0}:n\in\Bbb N\}
+\cup\{\fraction{n}^{\smallfrown}\fraction{0}^{\smallfrown}\sigma:
+n\in\Bbb N$, $\sigma\in T^{(n)}\}$,}
+
+\Centerline{$T'=\{\fraction{0}\}
+\cup\{\fraction{0}^{\smallfrown}\fraction{n}:n\in\Bbb N\}
+\cup\{\fraction{0}^{\smallfrown}\fraction{n}^{\smallfrown}\sigma:
+n\in\Bbb N$, $\sigma\in T^{(n)}\}$,}
+
+\noindent we have $\phi(T)=\bigcup_{n\in\Bbb N}E_n$ and
+$\phi(T')=\bigcap_{n\in\Bbb N}E_n$.
+
+\medskip
+
+{\bf (b)} Setting
+
+\Centerline{$\hat T^{(n)}=\{\fraction{i}:i<n\}
+\cup\{\fraction{i}^{\smallfrown}\fraction{0}:i<n\}
+\cup\{\fraction{i}^{\smallfrown}\fraction{0}^{\smallfrown}\sigma:
+i<n$, $\sigma\in T^{(i)}\}$,}
+
+\noindent $\phi(\hat T^{(n)})=\bigcup_{i<n}E_i$ for every $n$.
+
+\medskip
+
+{\bf (c)} Setting
+
+$$\eqalign{T''
+&=\{\fraction{n}:n\in\Bbb N\}
+  \cup\{\fraction{n}^{\smallfrown}\fraction{0}:n\in\Bbb N\}
+\cup\{\fraction{n}^{\smallfrown}\fraction{0}^{\smallfrown}\sigma:
+   \sigma\in T^{(n)}\}\cr
+&\mskip100mu
+  \cup\{\fraction{n}^{\smallfrown}\fraction{1}:n\in\Bbb N\}
+  \cup\{\fraction{n}^{\smallfrown}\fraction{1}^{\smallfrown}\fraction{0}:
+    n\in\Bbb N\}\cr
+&\mskip100mu
+\cup\{\fraction{n}^{\smallfrown}\fraction{1}^{\smallfrown}
+  \fraction{0}^{\smallfrown}\sigma:
+  \sigma\in \hat T^{(n)}\},\cr}$$
+
+\noindent $\phi(T'')=\bigcup_{n\in\Bbb N}(E_n\setminus\bigcup_{i<n}E_i)$.
+}%end of proof of 562K
+
+\leader{562L}{Codable Borel functions} Let $X$ and
+$Y$ be second-countable
+spaces.   A function $f:X\to Y$ is a {\bf codable Borel function} if
+$\langle f^{-1}[H]\rangle_{H\subseteq Y\text {is open}}$
+is a codable family in $\Cal B_c(X)$.
+
+\leader{562M}{Theorem} Let $X$ be a second-countable space,
+$\sequencen{U_n}$ a sequence running over a base for the topology of $X$,
+and $\phi:\Cal T\to\Cal B_c(X)$ the corresponding interpretation of Borel
+codes.
+
+(a) If $Y$ is another second-countable space, $\sequencen{V_n}$ a
+sequence running over a base for the topology of $Y$ containing
+$\emptyset$, $\phi_Y:\Cal T\to\Cal B_c(Y)$ the corresponding interpretation
+of Borel codes, and
+$f:X\to Y$ is a function, then the following are equiveridical:
+
+\quad(i) $f$ is a codable Borel function;
+
+\quad(ii) $\sequencen{f^{-1}[V_n]}$ is a codable sequence in $\Cal B_c(X)$;
+
+\quad(iii) there is a function $\Theta:\Cal T\to\Cal T$ such that
+$\phi(\Theta(T))=f^{-1}[\phi_Y(T)]$ for every $T\in\Cal T$.
+
+(b) If $Y$ and $Z$ are second-countable spaces and $f:X\to Y$, $g:Y\to Z$
+are codable Borel functions then $gf:X\to Z$ is a codable Borel function.
+
+(c) If $Y$ and $Z$ are second-countable spaces and $f:X\to Y$, $g:X\to Z$
+are codable Borel functions then $x\mapsto(f(x),g(x))$ is a codable Borel
+function from $X$ to $Y\times Z$.
+
+(d) If $Y$ is a second-countable space then any continuous function
+from $X$ to $Y$ is a codable Borel function.
+
+\proof{{\bf (a)(i)$\Rightarrow$(ii)} is trivial.
+
+\medskip
+
+\quad{\bf (ii)$\Rightarrow$(iii)} This is really a full-strength version
+of 562Bc.    Because $\sequencen{f^{-1}[V_n]}$ is codable, we have a
+sequence $\sequencen{T^{(n)}}$ in $\Cal T$ such that
+$\phi(T^{(n)})=f^{-1}[V_n]$ for every $n$.
+As in 562C, let $\Theta_0:\Cal T\to\Cal T$
+and $\tilde\theta_1:\bigcup_{I\subseteq\Bbb N}\Cal T^I\to\Cal T$
+be such that
+$\phi(\Theta_0(T))=X\setminus\phi(T)$ for every $T\in\Cal T$ and
+$\phi(\tilde\Theta_1(\tau))=\bigcup_{i\in I}\phi(\tau(i))$ whenever
+$I\subseteq\Bbb N$ and $\tau\in\Cal T^I$.
+Define $\Theta:\Cal T\to\Cal T$
+inductively, as follows.   Given $T\in\Cal T$,
+set $A_T=\{n:\fraction{n}\in T\}$.
+If $r(T)=0$ set $\Theta(T)=T=\emptyset$.   If $r(T)=1$ set
+$\Theta(T)=\tilde\Theta_1(\family{n}{A_T}{T^{(n)}})$, so that
+
+\Centerline{$\phi(\Theta(T))=\bigcup_{n\in A_T}\phi(T^{(n)})
+=\bigcup_{n\in A_T}f^{-1}[V_n]=f^{-1}[\phi_Y(T)]$.}
+
+\noindent If $r(T)>1$ set
+
+\Centerline{$\Theta(T)=\tilde\Theta_1(\family{n}{A_T}
+   {\Theta_0(\Theta(T_{\fraction{n}}))})$}
+
+\noindent so that
+
+$$\eqalign{\phi(\Theta(T))
+&=\bigcup_{n\in A_T}X\setminus\phi(\Theta(T_{\fraction{n}}))
+=\bigcup_{n\in A_T}X\setminus f^{-1}[\phi_Y(T_{\fraction{n}})]\cr
+&=f^{-1}[\bigcup_{n\in A_T}Y\setminus\phi_Y(T_{\fraction{n}})]
+=f^{-1}[\phi_Y(T)]\cr}$$
+
+\noindent and the induction continues.
+
+\medskip
+
+\quad{\bf (iii)$\Rightarrow$(i)} For open $H\subseteq Y$ set
+$\psi_Y(H)=\{\fraction{n}:V_n\subseteq H\}$.   Taking $\Theta$ as above,
+
+\Centerline{$\phi(\Theta(\psi_Y(H))=f^{-1}[\phi_Y(\psi_Y(H))]=f^{-1}[H]$}
+
+\noindent for every $H$, so
+$\langle\phi(\Theta(\psi_Y(H)))\rangle_{H\subseteq Y\text{ is open}}$ is a
+family of codes for
+$\langle f^{-1}[H]\rangle_{H\subseteq Y\text {is open}}$.
+
+\medskip
+
+{\bf (b)} Take $\sequencen{V_n}$, $\phi_Y$ and $\Theta:\Cal T\to\Cal T$
+as in (a).   Write $\frak U$ for the
+topology of $Z$;  then we have a function $\theta:\frak U\to\Cal T$ such
+that $\phi_Y(\theta(H))=g^{-1}[H]$ for every $H\in\frak U$.
+Now $\family{H}{\frak U}{\Theta(\theta(H))}$ is a coding for
+$\family{H}{\frak U}{(gf)^{-1}[H]}$, so $gf$ is codable.
+
+\medskip
+
+{\bf (c)} Let $\sequencen{V_n}$, $\sequencen{W_n}$ be sequences running
+over bases for the topologies of $Y$ and $Z$, and
+$\sequencen{(i_n,j_n)}$ an enumeration of $\Bbb N\times\Bbb N$.
+Set $H_n=V_{i_n}\times W_{j_n}$;  then $\sequencen{H_n}$ is a base for the
+topology of $Y\times Z$.
+Let $\Theta_2:\Cal T\times\Cal T\to\Cal T$ be such that
+$\phi(\Theta_2(T,T'))=\phi(T)\cap\phi(T')$ for all $T$, $T'\in\Cal T$
+(562Ca).   Let $\sequencen{T^{(n)}}$, $\sequencen{\hat T^{(n)}}$ be codings for
+$\sequencen{f^{-1}[V_n]}$, $\sequencen{g^{-1}[W_n]}$.   Then
+$\sequencen{\Theta_2(T^{(i_n)},\hat T^{(j_n)})}$ is a coding for
+$\sequencen{h^{-1}[H_n]}$, where $h(x)=(f(x),g(x))$ for $x\in X$.
+So $h$ is a codable Borel function.
+
+\medskip
+
+{\bf (d)} If $f:X\to Y$ is continuous, then
+$\langle f^{-1}[H]\rangle_{H\subseteq Y\text{ is open}}$ is a family of
+resolvable sets, therefore codable, as noted in 562J.
+}%end of proof of 562M
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Note in part
+(a)(ii)$\Rightarrow$(iii) of the proof the function $\Theta$ is
+constructed by a definite process from $\sequencen{T^{(n)}}$;  so we shall be
+able to uniformize the process to define families $\familyiI{\Theta_i}$
+from families $\familyiI{f_i}$, at least if we can reach a family
+$\langle T^{(i,n)}\rangle_{i\in I,n\in\Bbb N}$ such that
+$T^{(n,i)}$ codes $f_i^{-1}[V_n]$ for all $i\in I$ and $n\in\Bbb N$.
+}
+
+\leader{562N}{Proposition} Let $X$ be a second-countable space,
+and $\phi:\Cal T\to\Cal B_c(X)$ the interpretation of Borel codes
+associated with some sequence running over a base for the topology of $X$.
+
+(a) If $f:X\to\Bbb R$ is a function, the following are equiveridical:
+
+\quad(i) $f$ is a codable Borel function;
+
+\quad(ii) the family
+$\family{\alpha}{\Bbb R}{\{x:f(x)>\alpha\}}$ is codable;
+
+\quad(iii)
+$\family{q}{\Bbb Q}{\{x:f(x)>q\}}$ is codable.
+
+(b) Write $\tilde{\Cal T}$ for the set of
+functions $\tau:\Bbb R\to\Cal T$ such that
+
+\Centerline{$\phi(\tau(\alpha))
+=\bigcup_{\beta>\alpha}\phi(\tau(\beta))$ for every $\alpha\in\Bbb R$,}
+
+\Centerline{$\bigcap_{n\in\Bbb N}\phi(\tau(n))=\emptyset$,
+\quad$\bigcup_{n\in\Bbb N}\phi(\tau(-n))=X$.}
+
+\noindent Then
+
+\quad(i) for every $\tau\in\tilde{\Cal T}$ there is a unique codable Borel
+function $\tilde\phi(\tau):X\to\Bbb R$ such that
+$\phi(\tau(\alpha))=\{x:\tilde\phi(\tau)(x)>\alpha\}$ for every
+$\alpha\in\Bbb R$;
+
+\quad(ii) every codable Borel function from $X$ to $\Bbb R$ is expressible
+as $\tilde\phi(\tau)$ for some $\tau\in\tilde{\Cal T}$.
+
+(c) If $\sequencen{\tau_n}$ is a sequence in $\tilde{\Cal T}$ such
+that $f(x)=\sup_{n\in\Bbb N}\tilde\phi(\tau_n)(x)$ is finite for every
+$x\in X$, then $f$ is a codable Borel function.
+
+(d) If $f$, $g:X\to\Bbb R$ are codable Borel functions and
+$\gamma\in\Bbb R$, then
+$f+g$, $\gamma f$, $|f|$ and $f\times g$ are codable Borel functions.
+
+(e) If $\sequencen{\tau_n}$ is a sequence in $\tilde{\Cal T}$, then there
+is a codable Borel function $f$ such
+that $\liminf_{n\to\infty}\tilde\phi(\tau_n)(x)=f(x)$ whenever the lim inf
+is finite.
+
+(f) A subset $E$ of $X$ belongs to $\Cal B_c(X)$ iff $\chi E:X\to\Bbb R$ is
+a codable Borel function.
+
+\proof{{\bf (a)(i)$\Rightarrow$(ii)}
+If $f:X\to\Bbb R$ is codable then of course
+$\family{\alpha}{\Bbb R}{\{x:f(x)>\alpha\}}$ is codable, because it is
+a subfamily of
+$\langle f^{-1}[H]\rangle_{H\subseteq\Bbb R\text{ is open}}$.
+
+\medskip
+
+\quad{\bf (ii)$\Rightarrow$(iii)} Similarly, if
+$\family{\alpha}{\Bbb R}{\{x:f(x)>\alpha\}}$ is codable, its subfamily
+$\family{q}{\Bbb Q}{\{x:f(x)>q\}}$ is codable.
+
+\medskip
+
+\quad{\bf (iii)$\Rightarrow$(i)} If $\family{q}{\Bbb Q}{\{x:f(x)>q\}}$
+is codable, we have a family
+$\family{q}{\Bbb Q}{T^{(q)}}$ in $\Cal T$ coding it.
+Let $\sequencen{(q_n,q'_n)}$ be an
+enumeration of $\{(q,q'):q$, $q'\in\Bbb Q$, $q<q'\}$.
+As in 562C, we have functions
+
+\Centerline{$\Theta_3:\Cal T\times\Cal T\to\Cal T$,
+\quad$\tilde\Theta_1:\bigcup_{I\subseteq\Bbb Q}\Cal T^I\to\Cal T$,
+\quad$\tilde\Theta_2:\bigcup_{J\subseteq\Bbb N}\Cal T^J\to\Cal T$}
+
+\noindent such that
+
+\Centerline{$\phi(\Theta_3(T,T'))=\phi(T)\setminus\phi(T')$,
+\quad$\phi(\tilde\Theta_1(\tau))=\bigcup_{q\in I}\phi(\tau(q)))$,}
+
+\Centerline{$\phi(\tilde\Theta_2(\tau))
+=X\cap\bigcap_{q\in I}\phi(\tau(j))$}
+
+\noindent for $T$, $T'\in\Cal T$, $I\subseteq\Bbb Q$ and
+$\tau\in\Cal T^I$.   Now for $n\in\Bbb N$ consider
+
+\Centerline{$\hat T^{(n)}
+=\tilde\Theta_1(\langle\Theta_3(T^{(q_n)},T^{(r)})\rangle_{r\in\Bbb Q,
+  r<q'_n})$,}
+
+\noindent so that
+$\phi(\hat T^{(n)})
+%=\bigcup_{q\in\Bbb Q,r<q'_n}\phi(T^{(q_n)},T^{(r)})
+%=\bigcup_{q\in\Bbb Q,r<q'_n}\phi(T^{(q_n)})\setminus\phi(T^{(r)})
+%=\bigcup_{q\in\Bbb Q,r<q'_n}\{x:q_n<f(x)\le r\}
+%=\{x:q_n<f(x)<q'_n\}
+=f^{-1}[\,\ooint{q_n,q'_n}\,]$ for every $n$, and
+$\sequencen{f^{-1}[\,\ooint{q_n,q'_n}\,]}$ is codable;  by
+562Ma, $f$ is a codable Borel function.
+
+\medskip
+
+{\bf (b)} This is elementary;  given $\tau\in\tilde{\Cal T}$ we can, and
+must, set $\tilde\phi(\tau)(x)=\sup\{\alpha:x\in\phi(\tau(\alpha))\}$
+for every $x\in X$;  and given $f$ we have a coding $\tau$ for
+$\family{\alpha}{\Bbb R}{\{x:f(x)>\alpha\}}$ which must belong to
+$\tilde{\Cal T}$ and be such that $\tilde\phi(\tau)=f$.
+
+\medskip
+
+{\bf (c)} Given $\sequencen{\tau_n}$ as described, and taking
+$\tilde\Theta_1$ as in (a)(iii)$\Rightarrow$(i) above,
+
+\Centerline{$\alpha\mapsto\tilde\Theta_1(\sequencen{\tau_n(\alpha)})$}
+
+\noindent will be a Borel code for $f$.
+
+\medskip
+
+{\bf (d)} Use 562M(b)-(d).
+
+\medskip
+
+{\bf (e)} Let
+
+\Centerline{$\Theta_0:\Cal T\to\Cal T$,
+\quad$\Theta_1:\Cal T\times\Cal T\to\Cal T$}
+
+\noindent be such that
+
+\Centerline{$\phi(\Theta_0(T))=X\setminus\phi(T)$,
+\quad$\phi(\Theta_1(T,T'))=\phi(T)\cup\phi(T')$}
+
+\noindent for every $T$, $T'\in\Cal T$.
+Now, given $\sequencen{\tau_n}$ as described, set
+
+\Centerline{$\tau(\alpha)
+=\tilde\Theta_1(\sequencen{\tilde\Theta_1(\langle\tilde\Theta_2(\langle
+  \tau_m(q)\rangle_{m\ge n})\rangle_{q\in\Bbb Q,q>\alpha})})$}
+
+\noindent for $\alpha\in\Bbb R$.   Then
+
+\Centerline{$\phi(\tau(\alpha))
+=\bigcup_{q>\alpha,n\in\Bbb N}\bigcap_{m\ge n}\{x:f_m(x)>q\}
+=\{x:\liminf_{n\to\infty}f_n(x)>\alpha\}$}
+
+\noindent for each $\alpha$.   We don't yet have a code for a
+real-value function defined everywhere in $X$.   But if we set
+
+\Centerline{$T=\tilde\Theta_1(\sequencen{\Theta_3(\tau(-n),\tau(n))})$,}
+
+\noindent then
+
+\Centerline{$\phi(T)
+=\bigcup_{n\in\Bbb N}\phi(\tau(-n))\setminus\phi(\tau(n))
+=\{x:\liminf_{n\to\infty}f_n(x)\text{ is finite}\}$.}
+
+\noindent So take
+
+$$\eqalign{\tau'(\alpha)
+&=\Theta_3(\tau(\alpha),\Theta_0(T))\text{ if }\alpha\ge 0,\cr
+&=\Theta_1(\tau(\alpha),\Theta_0(T))\text{ if }\alpha<0;\cr}$$
+
+\noindent this will get $\tau'\in\tilde{\Cal T}$ such that
+
+$$\eqalign{\tilde\phi(\tau')(x)
+&=\liminf_{n\to\infty}f_n(x)\text{ if this is finite},\cr
+&=0\text{ otherwise}.\cr}$$
+
+\medskip
+
+{\bf (f)} Elementary.
+}%end of proof of 562N
+
+\leader{562O}{Remarks (a)} For some purposes there are advantages
+in coding real-valued functions by functions from $\Bbb Q$ to $\Cal T$
+rather than by functions
+from $\Bbb R$ to $\Cal T$\cmmnt{;  see 364Af and 556A}.
+
+\spheader 562Ob As in 562C,
+\cmmnt{it will be useful to observe that} the constructions here
+are largely determinate.    For instance, the function $\Theta$ of
+562M(a-iii) can be built by a definite rule from the sequence
+$\sequencen{T^{(n)}}$ provided by the hypothesis (a-ii) there.
+What this means is that if we have a family
+$\familyiI{(Y_i,\sequencen{V_{in}},f_i)}$ such that $Y_i$ is a
+second-countable space, $\sequencen{V_{in}}$ is a sequence running over a
+base for the topology of $Y_i$, and $f_i:X\to Y_i$ is a continuous function
+for each $i\in I$, then there will be a function
+$\tilde\Theta:\Cal T\times I\to\Cal T$ such that
+$\phi(\tilde\Theta(T,i))=f_i^{-1}[\phi_i(T)]$ for every $i\in I$ and
+$T\in\Cal T$, where $\phi_i:\Cal T\to\Cal B_c(Y_i)$ is the interpretation
+of Borel codes
+corresponding to the sequence $\sequencen{V_{in}}$.   \cmmnt{(Start from
+
+\Centerline{$T^{(i,n)}
+=\{\fraction{j}:U_j\subseteq f_i^{-1}[V_{in}]\}$}
+
+\noindent for $i\in I$ and $n\in\Bbb N$, and build $\tilde\Theta(T,i)$ as
+562M.)}
+
+\spheader 562Oc Similarly\cmmnt{, when we look at 562N(d)-(e),
+we have something
+better than just existence proofs for codes for $f+g$ and
+$\liminf_{n\to\infty}f_n$.   For instance}, we have a function
+$\tilde\Theta_1:\tilde{\Cal T}\times\tilde{\Cal T}\to\tilde{\Cal T}$
+such that
+$\tilde\phi(\tilde\Theta_1(\tau,\tau'))$ will always be
+$\tilde\phi(\tau)-\tilde\phi(\tau')$
+for $\tau$, $\tau'\in\tilde{\Cal T}$.
+\prooflet{\Prf\ We need to have
+
+\Centerline{$\phi(\tilde\Theta(\tau,\tau')(\alpha))
+=\bigcup_{q\in\Bbb Q}\phi(\tau(q))\setminus\phi(\tau'(q-\alpha))$}
+
+\noindent for every $\alpha$, and this is easy to build from a
+set-difference operator, as in 562Ca,
+and a general countable-union operator as built in 562Cb.\ \QeD}
+Equally, we have a function
+$\tilde\Theta_1^*:\tilde{\Cal T}^{\Bbb N}\to\tilde{\Cal T}^{\Bbb N}$ such
+that
+
+\Centerline{$\tilde\phi(\tilde\Theta_1^*(\sequencen{\tau_n})(m))
+=\inf_{n\ge m}\tilde\phi(\tau_n)$}
+
+\noindent for every $m$
+whenever $\sequence{n}{\tau_n}$ is a sequence in $\tilde{\Cal T}$
+such that $\inf_{n\in\Bbb N}\tilde\phi(\tau_n)$ is defined as a real-valued
+function on $X$.   \prooflet{\Prf\ This time we need
+
+\Centerline{$\phi(\tilde\Theta_1(\sequencen{\tau_n})(m)(\alpha))
+=\bigcup_{q\in\Bbb Q,q>\alpha}
+  \bigl(X\setminus\bigcup_{n\ge m}(X\setminus\phi(\tau_n(q)))\bigr)$}
+
+\noindent for all $m$ and $\alpha$,
+and once again a complementation operator and a general
+countable-union operator will do the trick.
+\Qed}
+
+\leader{562P}{Codable Borel equivalence (a)} If $X$ is a set, we can say
+that two second-countable topologies $\frak S$, $\frak T$ on $X$ are
+{\bf codably Borel equivalent} if the identity functions
+$(X,\frak S)\to(X,\frak T)$ and $(X,\frak T)\to(X,\frak S)$ are
+codable Borel functions.   In this case, $\frak S$ and $\frak T$ give the
+same families of codable Borel
+functions and the same algebra $\Cal B_c(X)$\cmmnt{ (562Mb, 562Nf)}.
+
+\spheader 562Pb If $(X,\frak T)$ is a second-countable space and
+$\sequencen{E_n}$ is any codable sequence in $\Cal B_c(X)$, there is a
+topology $\frak S$ on $X$, generated by a countable algebra of subsets of
+$X$, such that
+$\frak S$ and $\frak T$ are codably Borel equivalent and every $E_n$
+belongs to $\frak S$.   \prooflet{\Prf\ Since there is certainly a codable
+sequence running over a base for the topology of $X$, we can suppose that
+such a sequence has been amalgamated with $\sequencen{E_n}$, so that
+$\{E_n:n\in\Bbb N\}$ includes a base for $\frak T$.
+Let $\Cal E$ be the algebra of subsets of $X$
+generated by $\{E_n:n\in\Bbb N\}$ and
+$\frak S$ the topology generated by $\Cal E$.
+As $\Cal E$ is an algebra, $\frak S$ is zero-dimensional;  as
+$\Cal E$ is countable, $\frak S$ is second-countable.
+
+The identity map $(X,\frak S)\to(X,\frak T)$ is continuous, therefore a
+codable Borel function (562Md).
+In the reverse direction, we have a sequence
+$\sequencen{T^{(n)}}$ of codes for $\sequencen{E_n}$.   From these we can
+build, using our standard operations, codes $T_I$, for
+$I\in[\Bbb N]^{<\omega}$, $T'_{IJ}$, for $I$, $J\in[\Bbb N]^{<\omega}$,
+and $T''_{\Cal K}$, for
+$\Cal K\in[[\Bbb N]^{<\omega}\times[\Bbb N]^{<\omega}]^{<\omega}$, such that
+
+\inset{$T_I$ codes $\bigcup_{i\in I}E_i$,
+
+$T'_{IJ}$ codes $\bigcup_{i\in I}E_i\setminus\bigcup_{i\in J}E_i$,
+
+$T''_{\Cal K}$ codes
+$\bigcup_{(I,J)\in\Cal K}
+  (\bigcup_{i\in I}E_i\setminus\bigcup_{i\in J}E_i)$.}
+
+\noindent But of course
+$[[\Bbb N]^{<\omega}\times[\Bbb N]^{<\omega}]^{<\omega}$ is countable and
+the $T''_{\Cal K}$ can be enumerated as a sequence $\sequencen{T^*_n}$
+coding a sequence $\sequencen{V_n}$ running over $\Cal E$.
+By 562Ma,
+the identity map $(X,\frak T)\to(X,\frak S)$ is a codable Borel function.\
+\Qed}
+
+\cmmnt{Note that $\frak S$ here is necessarily regular;
+this will be useful at
+more than one point in the next couple of sections.}
+
+\leader{562Q}{Resolvable functions} Let $X$ be a topological space.
+I will say that a function $f:X\to[-\infty,\infty]$ is
+{\bf resolvable} if whenever
+$\alpha<\beta$ in $\Bbb R$ and $A\subseteq X$ is a non-empty set,
+then\cmmnt{ at least} one of $\{x:x\in A$, $f(x)\le\alpha\}$,
+$\{x:x\in A$, $f(x)\ge\beta\}$ is not dense in $A$.
+
+\medskip
+
+\noindent{\bf Examples (a)} Any semi-continuous
+function from $X$ to $[-\infty,\infty]$ is resolvable.
+\prooflet{\Prf\ If $f:X\to[-\infty,\infty]$ is
+lower semi-continuous, $A\subseteq X$ is non-empty, and $\alpha<\beta$ in
+$\Bbb R$, then $U=\{x:f(x)>\alpha\}$ is open;  if $A\cap U\ne\emptyset$
+then $\{x:x\in A$, $f(x)\le\alpha\}$ is not dense in $A$;  otherwise
+$\{x:x\in A$, $f(x)\ge\beta\}$ is not dense in $A$.\ \Qed}
+
+\spheader 562Qb
+If $f:X\to\Bbb R$ is such that $\{x:f(x)>\alpha\}$ is resolvable for
+every $\alpha$, then $f$ is resolvable.   \prooflet{\Prf\ Suppose that
+$A\subseteq X$ is non-empty and $\alpha<\beta$ in $\Bbb R$.   Set
+$E=\{x:f(x)>\alpha\}$.   If $A\not\subseteq\overline{A\cap E}$, then
+$\{x:x\in A$, $f(x)\ge\beta\}$ is not dense in $A$.
+Otherwise $\{x:x\in A$, $f(x)\le\alpha\}=A\setminus E$ is not dense
+in $A$.\ \Qed
+
+}In particular, the indicator
+function of a resolvable set is resolvable.
+
+\spheader 562Qc
+A function $f:\Bbb R\to\Bbb R$ which has bounded variation on every
+bounded set is resolvable.  \prooflet{\Prf\ If $A\subseteq\Bbb R$ is
+non-empty and $\alpha<\beta$ in $\Bbb R$, take $y\in A$.   If $y$ is
+isolated in $A$, then we have an open set $U$ such that $U\cap A=\{y\}$,
+so that one of $\{x:x\in A$, $f(x)\le\alpha\}$,
+$\{x:x\in A$, $f(x)\ge\beta\}$ does not contain $y$ and is
+not dense in $A$.   Otherwise, $y$ is in the
+closure of one of $A\cap\ooint{y,\infty}$, $A\cap\ooint{-\infty,y}$;
+suppose the former.   For each $n\in\Bbb N$ set
+$I_n=[y+2^{-n-1},y+2^{-n}]$,
+$\delta_n=\Var_{I_n}(f)$.   We have
+
+\Centerline{$\infty>\Var_{\ocint{y,y+1}}(f)
+=\sum_{n=0}^{\infty}\delta_n$,}
+
+\noindent so there is an $n\in\Bbb N$ such that
+$\delta_m\le\bover14(\beta-\alpha)$ for $m\ge n$.   Take $m>n$ such that
+$I_m\cap A\ne\emptyset$, and consider
+$U=\interior(I_{m-1}\cup I_m\cup I_{m+1})$.   Then
+$\Var_U(f)\le\bover34(\beta-\alpha)$ so $U$ cannot meet both
+$\{x:x\in A$, $f(x)\ge\beta\}$ and $\{x:x\in A$, $f(x)\ge\alpha\}$, and one
+of these is not dense in $A$.\ \Qed}
+
+\leader{562R}{Theorem} Let $X$ be a second-countable space,
+$\sequencen{U_n}$ a sequence running over a base for the topology of $X$,
+and $\phi:\Cal T\to\Cal B_c(X)$ the associated
+interpretation of Borel codes.   Let $\Cal R$
+be the family of resolvable real-valued functions on $X$.   Then
+there is a function $\tilde\psi:\Cal R\to\Cal T^{\Bbb R}$ such that
+
+\Centerline{$\phi(\tilde\psi(f)(\alpha))=\{x:f(x)>\alpha\}$}
+
+\noindent for every $f\in\Cal R$ and $\alpha\in\Bbb R$.
+
+\proof{{\bf (a)} Start by fixing a bijection
+
+\Centerline{$k\mapsto(n_k,q_k,q'_k):
+\Bbb N\to\Bbb N\times\{(q,q'):q$, $q'\in\Bbb Q$, $q<q'\}$.}
+
+\noindent Next, fix a function $\Theta^*_1:\Cal T^3\times\Bbb N\to\Cal T$
+such that
+
+\Centerline{$\phi(\Theta^*_1(T,T',T'',n))
+=\phi(T)\cup(U_n\setminus(\phi(T')\cup\phi(T'')))$}
+
+\noindent for $T$, $T'$, $T''\in\Cal T$ and $n\in\Bbb N$, and a function
+$\tilde\Theta^*_1:\bigcup_{J\subseteq\Bbb N}\Cal T^J\to\Cal T$ such that
+$\phi(\tilde\Theta^*_1(\tau))=\bigcup_{i\in J}\phi(\tau(i))$ whenever
+$J\subseteq\Bbb N$ and $\tau\in\Cal T^J$.   (See 562Ca.)
+
+\medskip
+
+{\bf (b)} Given $f\in\Cal R$, define $\zeta<\omega_1$ and a family
+$\langle(\tau_{\xi},\tau'_{\xi},k_{\xi})\rangle_{\xi\le\zeta}$ in
+$\Cal T^{\Bbb R}\times\Cal T^{\Bbb R}\times\Bbb N$
+inductively, as follows.   The inductive hypothesis will be that
+$k_{\eta}\ne k_{\xi}$ whenever $\eta<\xi<\zeta$.   Start with
+$\tau_0(\alpha)=\tau_0'(\alpha)=\emptyset$ for every $\alpha\in\Bbb R$.
+
+\medskip
+
+{\it Inductive step to a successor ordinal $\xi+1$} Given $\tau_{\xi}$ and
+$\tau'_{\xi}$ in $\Cal T^{\Bbb R}$, then for $q<q'$ in $\Bbb Q$
+set
+$F_{\xi}(q,q')=X\setminus(\phi(\tau_{\xi}(q))\cup\phi(\tau'_{\xi}(q')))$.
+Now
+
+\inset{----- if there is a $k\in\Bbb N\setminus\{k_{\eta}:\eta<\xi\}$
+such that
+$U_{n_k}\cap F_{\xi}(q_k,q'_k)\ne\emptyset$ and $f(x)\ge q_k$ for every
+$x\in U_{n_k}\cap F_{\xi}(q_k,q'_k)$, take the first such $k$, and set
+
+$$\eqalign{\tau_{\xi+1}(\alpha)&=\tau_{\xi}(\alpha)
+   \text{ for every }\alpha\in\Bbb R,\cr
+\tau'_{\xi+1}(\alpha)
+&=\Theta^*_1(\tau'_{\xi}(\alpha),\tau_{\xi}(q_k),\tau'_{\xi}(q'_k),n_k)
+  \text{ if }\alpha\le q_k,\cr
+&=\tau'_{\xi}(\alpha)\text{ if }\alpha>q_k,\cr
+k_{\xi}&=k;\cr}$$
+
+----- if this is not so, but there is a
+$k\in\Bbb N\setminus\{k_{\eta}:\eta<\xi\}$ such that
+$U_{n_k}\cap F_{\xi}(q_k,q'_k)\ne\emptyset$ and $f(x)\le q'_k$ for every
+$x\in U_{n_k}\cap F_{\xi}(q_k,q'_k)$, take the first such $k$, and set
+
+$$\eqalign{\tau_{\xi+1}(\alpha)
+&=\Theta^*_1(\tau_{\xi}(\alpha),\tau_{\xi}(q_k),\tau'_{\xi}(q'_k),n_k)
+  \text{ if }\alpha\ge q'_k,\cr
+&=\tau_{\xi}(\alpha)\text{ if }\alpha<q'_k,\cr
+\tau'_{\xi+1}(\alpha)
+&=\tau'_{\xi}(\alpha)\text{ for every }\alpha\in\Bbb R,\cr
+k_{\xi}&=k;\cr}$$
+
+----- and if that doesn't happen either, set $\zeta=\xi$
+and stop.}
+
+\medskip
+
+{\it Inductive step to a countable limit ordinal $\xi$} Given
+$\ofamily{\eta}{\xi}{(\tau_{\eta},\tau'_{\eta},k_{\eta})}$, set
+$I=\{k_{\eta}:\eta<\xi\}$ and define $g:I\to\xi$ by setting
+$g(i)=\eta$ whenever $\eta<\xi$ and $k_{\eta}=i$.
+Now set
+
+\Centerline{$\tau_{\xi}(\alpha)
+=\tilde\Theta^*_1(\familyiI{\tau_{g(i)}(\alpha)})$,
+\quad$\tau'_{\xi}(\alpha)
+=\tilde\Theta^*_1(\familyiI{\tau'_{g(i)}(\alpha)})$}
+
+\noindent for every $\alpha\in\Bbb R$.
+
+\medskip
+
+{\bf (c)} Now an induction on $\xi$ shows that
+
+\Centerline{$\phi(\tau_{\eta}(\alpha))\subseteq\phi(\tau_{\xi}(\alpha))$,
+\quad$\phi(\tau'_{\eta}(\alpha))\subseteq\phi(\tau'_{\xi}(\alpha))$,}
+
+\Centerline{$\phi(\tau_{\xi}(\alpha))\subseteq\{x:f(x)\le\alpha\}$,
+\quad$\phi(\tau'_{\xi}(\alpha))\subseteq\{x:f(x)\ge\alpha\}$}
+
+\noindent whenever $\eta\le\xi$, $\alpha\in\Bbb R$ and the codes here are
+defined.   Next, if $k_{\eta}=k$ is defined, we must have
+$U_{n_k}\cap F_{\eta}(q_k,q'_k)\ne\emptyset$ and
+
+\inset{----- either $f(x)\ge q_k$ for every
+$x\in U_{n_k}\cap F_{\eta}(q_k,q'_k)$ and
+$\phi(\tau'_{\eta+1}(q_k))
+=\phi(\tau'_{\eta}(q_k))\cup(U_{n_k}\cap F_{\eta}(q_k,q_k'))$
+
+----- or $f(x)\le q'_k$ for every
+$x\in U_{n_k}\cap F_{\eta}(q_k,q'_k)$ and
+$\phi(\tau_{\eta+1}(q_k))
+=\phi(\tau_{\eta}(q_k))\cup(U_{n_k}\cap F_{\eta}(q_k,q_k'))$.}
+
+\noindent In either case,
+$U_{n_k}\cap F_{\eta}(q_k,q_k')$ must be disjoint from $F_{\xi}(q_k,q'_k)$
+for every $\xi>\eta$ for which $F_{\xi}$ is defined;
+consequently we cannot have $k_{\xi}=k$ for any
+$\xi>\eta$.   The induction must therefore stop.
+
+$F_{\zeta}(q,q')=\emptyset$ whenever $q$, $q'\in\Bbb Q$ and $q<q'$.
+\Prf\Quer\ Otherwise, because $f$ is resolvable, there is an
+$n\in\Bbb N$ such that $V=U_n\cap F_{\zeta}(q,q')$ is non-empty and
+either $f(x)\ge q$ for every $x\in V$ or $f(x)\le q'$ for every $x\in V$.
+Let $k\in\Bbb N$ be such that $n_k=n$, $q_k=q$ and $q'_k=q'$;  then
+$U_{n_k}$ meets $F_{\zeta}(q_k,q'_k)$ so $k\ne k_{\eta}$ for any
+$\eta<\zeta$.   But this means that we ought to have proceeded according to
+one of the first two alternatives in the single-step inductive stage,
+and ought not to have stopped at $\zeta$.\ \Bang\Qed
+
+\medskip
+
+{\bf (d)} Now set
+
+\Centerline{$\tau(\alpha)
+=\tilde\Theta^*_1(\langle\tau'_{\zeta}(q_n)\rangle_{n\in\Bbb N,q_n>\alpha})$}
+
+\noindent for $\alpha\in\Bbb R$.   Then
+
+$$\eqalign{\phi(\tau(\alpha))
+&=\bigcup_{n\in\Bbb N,q_n>\alpha}\phi(\tau'_{\zeta}(q_n))\cr
+&\subseteq\bigcup_{n\in\Bbb N,q_n>\alpha}\{x:f(x)\ge q_n\}
+\subseteq\{x:f(x)>\alpha\}\cr}$$
+
+\noindent for every $\alpha$.   \Quer\ If $\alpha$ is such that
+$\phi(\tau(\alpha))\subset\{x:f(x)>\alpha\}$, let $x\in X$ and
+$n\in\Bbb N$ be such that $f(x)>q'_n>q_n>\alpha$ and
+$x\notin\phi(\tau(\alpha))$.   Then $x\notin\phi(\tau'_{\zeta}(q_n))$;
+but also $f(y)\le q'_n$ for every $y\in\phi(\tau_{\zeta}(q'_n))$, so
+$x\notin\phi(\tau_{\zeta}(q'_n))$ and $x\in F_{\zeta}(q_n,q'_n)$, which is
+supposed to be impossible.\ \Bang
+
+So we can set $\tilde\psi(f)=\tau$.
+}%end of proof of 562R
+
+\leader{562S}{Codable families of codable functions (a)} If $X$ and $Y$
+are second-countable spaces, a family $\familyiI{f_i}$ of functions from
+$X$ to $Y$ is a {\bf codable family of codable Borel functions} if
+$\langle f_i^{-1}[H]\rangle_{i\in I,H\subseteq Y\text{ is open}}$ is a
+codable family in $\Cal B_c(X)$.
+
+\spheader 562Sb Uniformizing the arguments of 562N, it is easy to check
+that a family $\familyiI{f_i}$ of real-valued functions on $X$ is a codable
+family of codable Borel functions iff there is a family
+$\familyiI{\tau_i}$ in $\tilde{\Cal T}$ such that\cmmnt{, in 
+the language there,} $f_i=\tilde\phi(\tau_i)$ for every $i$.
+
+\spheader 562Sc \cmmnt{In this language,} 562Ne can be rephrased as
+
+\inset{if $\sequencen{f_n}$ is a codable sequence of real-valued
+codable Borel functions on $X$, there
+is a codable Borel function $f$ such
+that $f(x)=\liminf_{n\to\infty}f_n(x)$ whenever the lim inf is finite,}
+
+\noindent and 562R implies that
+
+\inset{the family of resolvable real-valued functions on $X$ is a codable
+family of codable Borel functions.}
+
+\spheader 562Sd If $X$, $Y$ and $Z$ are second-countable spaces,
+$\familyiI{f_i}$ is a codable family of codable Borel functions from
+$X$ to $Y$, and $\familyiI{g_i}$ is a codable family of codable
+Borel functions from $Y$ to $Z$, then $\familyiI{g_if_i}$ is a codable
+family of codable functions from $X$ to $Z$\prooflet{;  this
+is because the proof of 562Mb
+gives a recipe for calculating a code for the composition of codable
+functions, which can be performed simultaneously on the compositions
+$g_if_i$ if we are given codes for the functions $g_i$ and $f_i$}.
+
+\cmmnt{\spheader 562Se Extending the remarks in 562O(b)-(c), we see that 
+(for instance) we
+can define a sequence $\sequencen{\Phi_n}$ such that
+$\Phi_n$ is a function from $\tilde{\Cal T}^{n+1}$ to $\tilde{\Cal T}$ 
+for every $n$, and
+$\tilde\phi(\Phi_n(\langle\tau_i\rangle_{i\le n}))
+=\sum_{i=0}^n\tilde\phi(\tau_i)$ whenever 
+$\tau_0,\ldots,\tau_n\in\tilde{\Cal T}$;  so that if
+$\sequencen{f_n}$ is a codable sequence of codable Borel functions, then
+$\sequencen{\sum_{i=0}^nf_i}$ is codable.}
+
+\leader{562T}{Codable Baire sets}\cmmnt{ The
+ideas here can be adapted to give a
+theory of Baire algebras in general topological spaces.}
+Start by settling on a sequence running over a base for the topology
+of $\BbbR^{\Bbb N}$, with the associated interpretation
+$\phi:\Cal T\to\Cal B_c(\BbbR^{\Bbb N})$  of Borel codes.
+Let $X$ be a topological space.
+
+\spheader 562Ta A subset $E$ of $X$ is a {\bf codable Baire set} if it
+is of the form $f^{-1}[F]$ for some continuous $f:X\to\BbbR^{\Bbb N}$ and
+$F\in\Cal B_c(\BbbR^{\Bbb N})$;  write $\CalBa_c(X)$ for the family of such
+sets.   If $E\in\CalBa_c(X)$, then a {\bf code} for $E$ will be a pair
+$(f,T)$ where $f:X\to\BbbR^{\Bbb N}$ is continuous, $T\in\Cal T$ and
+$E=f^{-1}[\phi(T)]$.   A family $\familyiI{E_i}$ in $\CalBa_c(X)$ 
+is\cmmnt{ now} a {\bf codable} family if there is a family
+$\familyiI{(f_i,T^{(i)})}$ such that $(f_i,T^{(i)})$ codes $E_i$ for every $i$.
+
+\spheader 562Tb{\bf (i)} Suppose that $\familyiI{f_i}$ is a countable
+family of
+continuous functions from $X$ to $\BbbR^{\Bbb N}$, and
+$\familyiI{T^{(i)}}$ a
+family in $\Cal T$.   Then there are a continuous function
+$f:X\to\BbbR^{\Bbb N}$ and a sequence $\sequence{i}{\hat T^{(i)}}$ in $\Cal T$ such
+that $(f,\hat T^{(i)})$ codes the same Baire set as $(f_i,T^{(i)})$ for every
+$i\in I$.   \prooflet{\Prf\ If $I$ is empty, this is trivial.   Otherwise,
+$I\times\Bbb N$ is countably infinite, so
+$(\BbbR^{\Bbb N})^I\cong\BbbR^{I\times\Bbb N}$ is homeomorphic to
+$\BbbR^{\Bbb N}$;  let
+$h:\BbbR^{\Bbb N}\to(\BbbR^{\Bbb N})^I$ be a homeomorphism, and
+set $f(x)=h^{-1}(\familyiI{f_i(x)})$ for each $x\in\Bbb N$.
+Then $f_i=\pi_ihf$ for each $i$, where $\pi_i(z)=z(i)$ for
+$z\in(\BbbR^{\Bbb N})^I$.   Now
+$\langle(\pi_ih)^{-1}[V_n]\rangle_{i\in I,n\in\Bbb N}$
+is a family of open sets
+in $\BbbR^{\Bbb N}$, so is codable (562I, or otherwise);  let
+$\langle T^{(i,n)}\rangle_{i\in I,n\in\Bbb N}$ be a family in $\Cal T$
+such that $\phi(T^{(i,n)})=(\pi_ih)^{-1}[V_n]$ whenever $n\in\Bbb N$
+and $i\in I$.
+The construction of part (a)(ii)$\Rightarrow$(iii) in the proof of 562M
+gives us a family $\familyiI{\Theta_i}$ of functions from $\Cal T$ to
+$\Cal T$ such that $(\pi_ih)^{-1}[\phi(T)]=\phi(\Theta_i(T))$ whenever
+$i\in I$ and $T\in\Cal T$.   So we can take $\hat T^{(i)}=\Theta_i(T^{(i)})$,
+and we shall have
+
+\Centerline{$f_i^{-1}[\phi(T^{(i)})]
+=f^{-1}[(\pi_ih)^{-1}[\phi(T^{(i)})]]
+=f^{-1}[\phi(\Theta_i(T^{(i)}))]
+=f^{-1}[\phi(\hat T^{(i)})]$}
+
+\noindent for every $i$, as required.\ \Qed}
+
+\medskip
+
+\quad{\bf (ii)} It follows that if $\sequence{i}{E_i}$ is a codable
+sequence in $\CalBa_c(X)$ then $\bigcup_{i\in\Bbb N}E_i$ and
+$\bigcap_{i\in\Bbb N}E_i$ belong to $\CalBa_c(X)$.   \prooflet{\Prf\
+By (i), we have a continuous $f:X\to\BbbR^{\Bbb N}$ and a sequence
+$\sequence{i}{\hat T^{(i)}}$ in $\Cal T$ such that $E_i=f^{-1}[\phi(\hat T^{(i)})]$ for
+every $i\in\Bbb N$.   Now 562K tells us that
+$F=\bigcup_{i\in\Bbb N}\phi(\hat T^{(i)})$ and
+$F'=\bigcap_{i\in\Bbb N}\phi(\hat T^{(i)})$ are codable, so
+$f^{-1}[F]=\bigcup_{i\in\Bbb N}E_i$ and
+$f^{-1}[F']=\bigcap_{i\in\Bbb N}E_i$ belong to $\CalBa_c(X)$.\ \Qed}
+
+\medskip
+
+\quad{\bf (iii)}\cmmnt{ In particular,} $\CalBa_c(X)$ is\cmmnt{ closed
+under finite
+intersections; as it is certainly closed under complementation,
+it is} an algebra of subsets of $X$.   Every zero set belongs to
+$\CalBa_c(X)$.   \prooflet{\Prf\ If $g:X\to\Bbb R$ is continuous, set
+$f(x)(i)=g(x)$ for $x\in X$, $i\in\Bbb N$;  then
+$H=\{z:z\in\BbbR^{\Bbb N}$, $z(0)=0\}$ is closed, therefore a codable Borel
+set, and $g^{-1}[\{0\}]=f^{-1}[H]$ is a codable Baire set.\ \Qed}
+
+\medskip
+
+\quad{\bf (iv)} If $Y$ is another topological space and
+$g:X\to Y$ is continuous,
+then $\familyiI{g^{-1}[F_i]}$ is a codable family
+in $\CalBa_c(X)$ for every codable family $\familyiI{F_i}$ in
+$\CalBa_c(Y)$.   \prooflet{\Prf\ If $\familyiI{(f_i,T^{(i)})}$ codes
+$\familyiI{F_i}$, then $\familyiI{(f_ig,T^{(i)})}$ codes
+$\familyiI{g^{-1}[F_i]}$.\ \Qed}
+
+\spheader 562Tc{\bf (i)} 
+A function $f:X\to\Bbb R$ is a {\bf codable Baire
+function} if there are a continuous $g:X\to\BbbR^{\Bbb N}$ and a codable
+Borel function $h:\BbbR^{\Bbb N}\to\Bbb R$ such that $f=hg$.
+A family $\familyiI{f_i}$ of
+codable Baire functions is a {\bf codable} family if there is a family
+$\familyiI{(g_i,h_i)}$ such that $g_i:X\to\BbbR^{\Bbb N}$ is a continuous
+function for every $i\in I$ and $\familyiI{h_i}$ is a codable family of
+codable Borel functions from $\BbbR^{\Bbb N}$ to $\Bbb R$.
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $\sequencen{f_n}$ is a codable sequence of
+codable Baire functions from $X$ to $\Bbb R$.   Then there are a continuous
+function $g:X\to\BbbR^{\Bbb N}$ and a codable sequence $\sequencen{h_n}$ of
+codable Borel functions from $\BbbR^{\Bbb N}$ to $\Bbb R$ such that
+$f_n=h_ng$ for every $n\in\Bbb N$.   \prooflet{\Prf\ Let
+$\sequencen{(g_n,h'_n)}$ be such that $g_n:X\to\BbbR^{\Bbb N}$ is continuous
+for every $n$, $\sequencen{h'_n}$ is a codable sequence of codable Borel
+functions from $\BbbR^{\Bbb N}\to\Bbb R$, and $f_n=h'_ng_n$ for each $n$.
+Now $\langle\{x:h'_n(x)>q\}\rangle_{n\in\Bbb N,q\in\Bbb Q}$ is a codable
+family in $\Cal B_c(\BbbR^{\Bbb N})$;  let
+$\langle T'_{nq}\rangle_{n\in\Bbb N,q\in\Bbb Q}$ be a family in $\Cal T$
+coding it.   By (b-i) above, there are a continuous function
+$g:X\to\BbbR^{\Bbb N}$ and a family
+$\langle T^{(n,q)}\rangle_{n\in\Bbb N,q\in\Bbb N}$ in $\Cal T$ such that
+
+\Centerline{$g^{-1}[\phi(T^{(n,q)})]=g_n^{-1}[\phi(T'_{nq})]
+=\{x:f_n(x)>q\}$}
+
+\noindent for every $n\in\Bbb N$ and $q\in\Bbb Q$.
+
+To convert $\langle T^{(n,q)}\rangle_{n\in\Bbb N,q\in\Bbb Q}$ into a code for
+a sequence of real-valued functions on $\BbbR^{\Bbb N}$, I copy ideas from
+the proof of 562N.   Let
+
+\Centerline{$\Theta_0:\Cal T\to\Cal T$,
+\quad$\Theta_1:\Cal T\times\Cal T\to\Cal T$,}
+
+\Centerline{$\Theta_3:\Cal T\times\Cal T\to\Cal T$,
+\quad$\tilde\Theta_1:\bigcup_{I\subseteq\Bbb Q}\Cal T^I\to\Cal T$}
+
+\noindent be such that
+
+\Centerline{$\phi(\Theta_0(T))=X\setminus\phi(T)$,
+\quad$\phi(\Theta_1(T,T'))=\phi(T)\cup\phi(T'),$}
+
+\Centerline{$\phi(\Theta_3(T,T'))=\phi(T)\setminus\phi(T')$,
+\quad$\phi(\tilde\Theta_1(\tau))=\bigcup_{q\in I}\phi(\tau(q)))$}
+
+\noindent for $T$, $T'\in\Cal T$, $I\subseteq\Bbb Q$ and $\tau\in\Cal T^I$.
+Now, for $\alpha\in\Bbb R$ and $n\in\Bbb N$, set
+
+\Centerline{$\tau'_n(\alpha)
+=\tilde\Theta_1(\langle T^{(n,q)}\rangle_{q\in\Bbb Q,q\ge\alpha})$,}
+
+\Centerline{$T^{(n)}
+=\tilde\Theta_1(\sequence{k}{\Theta_3(\tau'_n(-k),\tau'_n(k))})$,}
+
+$$\eqalign{\tau_n(\alpha)
+&=\Theta_3(\tau'_n(\alpha),\Theta_0(T^{(n)}))\text{ if }\alpha\ge 0,\cr
+&=\Theta_1(\tau'_n(\alpha),\Theta_0(T^{(n)}))\text{ if }\alpha<0.\cr}$$
+
+\noindent We now have a sequence $\sequencen{\tau_n}$ in $\tilde{\Cal T}$
+(as defined in 562N) coding a sequence $\sequencen{h_n}$ of Borel functions
+from $\BbbR^{\Bbb N}$ to $\Bbb R$
+such that $f_n=h_ng$ for every $n$ (see 562Sb).\ \Qed}
+
+\medskip
+
+\quad{\bf (iii)}
+If $\sequencen{f_n}$ is a codable sequence of codable Baire
+functions, there is a codable Baire function $f$ such that
+$f(x)=\liminf_{n\to\infty}f_n(x)$ whenever the lim inf is finite.
+\prooflet{\Prf\ Take $g$ and $\sequencen{h_n}$ as in (i);  by
+562Ne, there is a codable Borel function $h$ such that
+$h(z)=\liminf_{n\to\infty}h_n(z)$ whenever $z\in\BbbR^{\Bbb N}$ is such
+that the $\liminf$ is finite, and $f=hg:X\to\Bbb R$ will serve.\ \Qed}
+
+\medskip
+
+\quad{\bf (iv)}
+The family of codable Baire functions is a Riesz subspace of
+$\BbbR^X$ containing all continuous functions and closed under
+multiplication.   \prooflet{(This time, use (i) and 562Nd.)}
+
+\medskip
+
+\quad{\bf (v)} The family of continuous real-valued
+functions on $X$ is a codable family of codable Baire functions.
+\prooflet{(For $f\in C(X)$, define $g_f\in C(X;\BbbR^{\Bbb N})$ by setting
+$g_f(x)(n)=f(x)$ for every $x\in X$ and $n\in\Bbb N$;  setting
+$\pi_0(z)=z(0)$ for $z\in\BbbR^{\Bbb N}$, $\family{f}{C(X)}{(g_f,\pi_0)}$
+is a family of codes for $C(X)$.)}
+
+\medskip
+
+\quad{\bf (vi)}\dvAnew{2014} If $E\subseteq X$, then $E\in\CalBa_c(X)$ iff 
+$\chi E:X\to\Bbb R$ is a codable Baire function.   \prooflet{\Prf\
+
+$$\eqalignno{E\in\CalBa_c(X)
+&\iff\text{ there are a continuous }g:X\to\BbbR^{\Bbb N}
+\cr&\mskip100mu\text{ and an }
+F\in\Cal B_c(\BbbR^{\Bbb N})\text{ such that }E=g^{-1}[F]
+\cr&\iff\text{ there are a continuous }g:X\to\BbbR^{\Bbb N}
+\cr&\mskip100mu\text{ and an }
+F\in\Cal B_c(\BbbR^{\Bbb N})\text{ such that }\chi E=(\chi F)g
+\cr&\iff\text{ there are a continuous }g:X\to\BbbR^{\Bbb N}
+\cr&\mskip100mu\text{ and a codable
+Borel function }h:\BbbR^{\Bbb N}\text{ such that }\chi E=hg\cr
+\displaycause{562Nf, because if $\chi E=hg$ then $\chi E=(\chi F)g$ where
+$F=\{y:h(y)>0\}$}
+&\iff\chi E\text{ is a codable Baire function}.  \text{ \Qed}\cr}$$
+}
+
+\spheader 562Td\dvAnew{2014}
+If $\sequencen{f_n}$ is a codable sequence of codable Baire
+functions from $X$ to $\Bbb R$, then 
+$\langle f_n^{-1}[H]\rangle_{n\in\Bbb N,H\subseteq\Bbb R\text{ is open}}$
+is codable.   \prooflet{\Prf\ By (c-i), we have a continuous
+$g:X\to\BbbR^{\Bbb N}$ and a codable sequence $\sequencen{h_n}$ of
+codable Borel functions from $\BbbR^{\Bbb N}$ to $\Bbb R$ such that
+$f_n=h_ng$ for every $n$.   Let $\psi:\Cal T\to\Cal B_c(\Bbb R)$ 
+be an interpretation of Borel codes corresponding to some enumeration of a
+base for the topology of $\Bbb R$.
+By 562Md, $g$ is codable;  by 562M(a-iii), 
+there is a function $\Theta:\Cal T\to\Cal T$ such that 
+$g^{-1}[\psi(T)]=\phi(\Theta(T))$ for every $T\in\Cal T$.   Now
+$\langle h_n^{-1}[H]\rangle_{n\in\Bbb N,H\subseteq\Bbb R\text{ is open}}$
+is codable, by the definition in 562S;  that is, there is a family
+$\langle T_{nH}\rangle_{n\in\Bbb N,H\subseteq\Bbb R\text{ is open}}$ in
+$\Cal T$ such that $\phi(T_{nH})=h_n^{-1}[H]$ for all $n$ and $H$.   Now
+
+\Centerline{$f_n^{-1}[H]=g^{-1}[h_n^{-1}[H]]
+=g^{-1}[\phi(T_{nH})]=\psi(\Theta(T_{nH}))$}
+
+\noindent for all $n$ and $H$, so we have a coding of 
+$\langle f_n^{-1}[H]\rangle_{n\in\Bbb N,H\subseteq\Bbb R\text{ is open}}$.\
+\Qed}
+
+\leader{562U}{Proposition}
+Let $(X,\frak T)$ be a second-countable space.   Then there is a
+second-countable topology $\frak S$ on $X$, codably Borel equivalent to
+$\frak T$, such that
+$\Cal B_c(X)=\CalBa_c(X,\frak S)$ and the codable families in
+$\Cal B_c(X)$ are exactly the codable families in $\CalBa_c(X,\frak S)$.
+
+\proof{{\bf (a)} By 562Pb there is a topology $\frak S$ on $X$,
+finer than $\frak T$, generated by a countable algebra $\Cal E$ of subsets
+of $X$, which is codably Borel equivalent to $\frak T$.
+Let $\sequencen{U_n}$ be a sequence running over $\Cal E$.
+Define $g_0:X\to\BbbR^{\Bbb N}$ by setting
+$g_0(x)=\sequencen{\chi U_n(x)}$ for each $x\in X$.
+Then $g_0$ is continuous.
+Set $W_n=\{z:z\in\BbbR^{\Bbb N}$, $z(n)>0\}$ for each $n$, so that
+$W_n\subseteq\BbbR^{\Bbb N}$ is open and $U_n=g_0^{-1}[W_n]$;  let
+$\sequencen{V_n}$ be a sequence running over a base for the topology of
+$\BbbR^{\Bbb N}$ and such that $V_{2n}=W_n$ for
+every $n$.   Let $\phi:\Cal T\to\Cal B_c(X)$,
+$\phi':\Cal T\to\Cal B_c(\BbbR^{\Bbb N})$ be the interpretations of Borel
+codes corresponding to $\sequencen{U_n}$, $\sequencen{V_n}$ respectively.
+
+\medskip
+
+{\bf (b)} We have a function $\Theta:\Cal T\to\Cal T\setminus\{\emptyset\}$
+such that $\phi(T)=g^{-1}[\phi'(\Theta(T))]$ for every $T\in\Cal T$.
+\Prf\ Induce on
+$r(T)$.   As usual, set $A_T=\{n:\fraction{n}\in T\}$.
+If $r(T)=0$, take $\Theta(T)\in\Cal T\setminus\{\emptyset\}$ such
+that $\phi'(\Theta(T))=\emptyset$.   If $r(T)=1$,
+set $\Theta(T)=\{\fraction{2n}:n\in A_T\}$;   then
+
+\Centerline{$\phi'(\Theta(T))=\bigcup\{V_{2n}:n\in A_T\}$,
+\quad$g_0^{-1}[\phi'(\Theta(T))]
+=\bigcup\{U_n:n\in A_T\}=\phi(T)$.}
+
+\noindent If $r(T)>1$, set
+
+\Centerline{$\Theta(T)=\{\fraction{i}:i\in A_T\}
+\cup\{\fraction{i}^{\smallfrown}\sigma:i\in A_T$,
+  $\sigma\in\Theta(T_{\fraction{i}})\}$.  \Qed}
+
+This means that if we have any codable family in $\Cal B_c(X)$, coded by a
+family $\familyiI{T^{(i)}}$ in $\Cal T$, $\familyiI{(g_0,\Theta(T^{(i)}))}$ will
+code the same family in $\CalBa_c(X,\frak S)$.
+
+\medskip
+
+{\bf (c)} Next, there is a function
+$\Phi:C((X,\frak S);\BbbR^{\Bbb N})\times\Cal T
+\to\Cal T\setminus\{\emptyset\}$ such that
+$g^{-1}[\phi'(T))]=\phi(\Phi(g,T))$ for every $\frak S$-continuous
+$g:X\to\BbbR^{\Bbb N}$ and $T\in\Cal T$.   \Prf\ If $r(T)\le 1$
+and $g^{-1}[\phi'(T)]$ is
+empty take $\Phi(g,T)\in\Cal T\setminus\{\emptyset\}$ such that
+$\phi(\Phi(g,T))=\emptyset$.   If $r(T)=1$ and $g^{-1}[\phi'(T)]$ is
+not empty set
+
+\Centerline{$\Phi(g,T)
+=\{\fraction{n}:U_n\subseteq g^{-1}[\phi'(T)]\}$.}
+
+\noindent If $r(T)>1$ set
+
+\Centerline{$\Phi(g,T)
+=\{\fraction{i}:i\in A_T\}\cup\{\fraction{i}^{\smallfrown}\sigma:
+  i\in A_T$, $\sigma\in\Phi(g,T_{\fraction{i}})\}$.   \Qed}
+
+\noindent So given any codable family in $\CalBa_c(X,\frak S)$, coded by a
+family $\familyiI{(g_i,T^{(i)})}$ in
+$C((X,\frak S);\BbbR^{\Bbb N})\times\Cal T$, $\familyiI{\Phi(g_i,T^{(i)})}$
+will code it in $\Cal B_c(X)$.
+}%end of proof of 562U
+
+\leader{562V}{}\cmmnt{ A
+different use of Borel codes will appear when we come to re-examine
+a result in Volume 3.   I will defer the application to 566O, but
+the first part of the argument fits naturally into the ideas of this
+section.
+
+\medskip
+
+\noindent}{\bf Theorem} (a) Let $\frak A$ be a Dedekind $\sigma$-complete
+Boolean algebra, and $\sequencen{a_n}$ a sequence in $\frak A$.   Then we
+have an interpretation $\phi:\Cal T\to\frak A$ of Borel codes such that
+
+$$\eqalign{\phi(T)&=\sup_{i\in A_T}a_i\text{ if }r(T)\le 1,\cr
+&=\sup_{i\in A_T}1\Bsetminus\phi(T_{\fraction{i}})\text{ if }r(T)>1,\cr}$$
+
+\noindent where $A_T=\{i:\fraction{i}\in T\}$ as usual.
+
+(b) For $n\in\Bbb N$, set $E_n=\{x:x\in\{0,1\}^{\Bbb N}$, $x(n)=1\}$.
+Let $\frak A$ be a Dedekind $\sigma$-complete Boolean
+algebra, and $\sequencen{a_n}$ a sequence in $\frak A$.   Let
+$\phi:\Cal T\to\frak A$ and $\psi:\Cal T\to\Cal P(\{0,1\}^{\Bbb N})$
+be the interpretations of Borel codes
+corresponding to $\sequencen{a_n}$ and $\sequencen{E_n}$.
+If $T$, $T'\in\Cal T$ are such that $\phi(T)\notBsubseteq\phi(T')$, then
+$\psi(T)\not\subseteq\psi(T')$.
+
+\proof{{\bf (a)} Define $\phi(T)$ inductively on the rank of $T$, as in
+562Ba.
+
+\medskip
+
+{\bf (b)} Let $\sequencen{T^{(n)}}$ be a sequence running over
+$\{T,T'\}\cup\{T_{\sigma}:\sigma\in S^*\}
+\cup\{T'_{\sigma}:\sigma\in S^*\}$.
+Define $\sequencen{c_n}$ inductively, as follows.
+$c_0=\phi(T)\Bsetminus\phi(T')$.   Given that
+$c_n\in\frak A\setminus\{0\}$, then
+
+\inset{----- if $r(T^{(n)})\le 1$ and there
+is an $i\in A_{T^{(n)}}$ such that $c_n\Bcap a_i\ne 0$, take the first such
+$i$ and set $c_{n+1}=c_n\Bcap a_i$;
+
+----- if $r(T^{(n)})>1$ and there is an $i\in A_{T^{(n)}}$ such that
+$c_n\Bsetminus\phi(T^{(n)}_{\fraction{i}})\ne 0$, take the first such $i$
+and set $c_{n+1}=c_n\Bsetminus\phi(T^{(n)}_{\fraction{i}})$;
+
+----- otherwise, set $c_{n+1}=c_n$.}
+
+\noindent Continue.
+
+At the end of the induction, define $x\in\{0,1\}^{\Bbb N}$ by saying that
+$x(i)=1$ iff there is an $n\in\Bbb N$ such that $c_n\Bsubseteq a_i$.
+Now we find that, for every $m\in\Bbb N$,
+
+\inset{----- if $x\in\psi(T^{(m)})$
+there is an $n\in\Bbb N$ such that $c_n\Bsubseteq\phi(T^{(m)})$,
+
+----- if $x\notin\psi(T^{(m)})$ there is an $n\in\Bbb N$ such that
+$c_n\Bcap\phi(T^{(m)})=0$.}
+
+\Prf\ Induce on $r(T^{(m)})$.   If $r(T^{(m)})\le 1$ then
+
+$$\eqalign{x\in\psi(T^{(m)})
+&\Longrightarrow\text{ there is an }i\in A_{T^{(m)}}\text{ such that }
+  x\in E_i\cr
+&\Longrightarrow\text{ there are }i\in A_{T^{(m)}},\,n\in\Bbb N
+  \text{ such that }c_n\Bsubseteq a_i\cr
+&\Longrightarrow\text{ there is an }n\in\Bbb N\text{ such that }
+  c_n\Bsubseteq\phi(T^{(m)}),\cr}$$
+
+$$\eqalign{x\notin\psi(T^{(m)})
+&\Longrightarrow x\notin E_i\text{ for every }i\in A_{T^{(m)}}\cr
+&\Longrightarrow c_{m+1}\notBsubseteq a_i
+  \text{ for every }i\in A_{T^{(m)}}\cr
+&\Longrightarrow c_m\Bcap a_i=0
+  \text{ for every }i\in A_{T^{(m)}}
+\Longrightarrow c_m\Bcap\phi(T^{(m)})=0.\cr}$$
+
+\noindent If $r(T^{(m)})>1$ then
+
+$$\eqalignno{x\in\psi(T^{(m)})
+&\Longrightarrow\text{ there is an }i\in A_{T^{(m)}}\text{ such that }
+  x\notin\psi(T^{(m)}_{\fraction{i}})\cr
+&\Longrightarrow\text{ there are }i\in A_{T^{(m)}},\,n\in\Bbb N
+  \text{ such that }c_n\Bcap\phi(T^{(m)}_{\fraction{i}})=0\cr
+\displaycause{by the inductive hypothesis, because $T^{(m)}_{\fraction{i}}$
+is always equal to $T^{(k)}$ for some $k$, and
+$r(T^{(m)}_{\fraction{i}})<r(T^{(m)})$}
+&\Longrightarrow\text{ there is an }n\in\Bbb N
+  \text{ such that }c_n\Bsubseteq\phi(T^{(m)}),\cr}$$
+
+$$\eqalign{x\notin\psi(T^{(m)})
+&\Longrightarrow x\in\psi(T^{(m)}_{\fraction{i}})
+  \text{ for every }i\in A_{T^{(m)}}\cr
+&\Longrightarrow\text{ for every }i\in A_{T^{(m)}}
+  \text{ there is an }n\in\Bbb N\text{ such that }
+  c_n\Bsubseteq\phi(T^{(m)}_{\fraction{i}})\cr
+&\Longrightarrow
+  c_{m+1}\notBsubseteq 1\Bsetminus\phi(T^{(m)}_{\fraction{i}})
+  \text{ for every }i\in A_{T^{(m)}}\cr
+&\Longrightarrow c_m\Bsetminus\phi(T^{(m)}_{\fraction{i}})=0
+  \text{ for every }i\in A_{T^{(m)}}\cr
+&\Longrightarrow c_m\Bcap\phi(T^{(m)})=0.  \text{ \Qed}\cr}$$
+
+In particular, since both $T$ and $T'$ appear in the list
+$\sequence{m}{T^{(m)}}$, $c_n\Bcap\phi(T)\ne 0$ and $c_n\Bcap\phi(T')=0$
+for every $n$, $x\in\psi(T)\setminus\psi(T')$ and
+$\psi(T)\not\subseteq\psi(T')$.
+}%end of proof of 562V
+
+\exercises{\leader{562X}{Basic exercises (a)}
+%\spheader 562Xa
+Let $X$ be a regular second-countable space.   Show that a
+resolvable subset of $X$ is F$_{\sigma}$.   \Hint{in the proof of 562I,
+show that $\phi(T^{(\xi)})$ is always F$_{\sigma}$.}
+%562I
+
+\spheader 562Xb Let $X$ be a second-countable space and
+$\langle E_{ni}\rangle_{n,i\in\Bbb N}$ a family of resolvable subsets of
+$X$.   Show that $\bigcap_{n\in\Bbb N}\bigcup_{i\in\Bbb N}E_{ni}$ is
+a codable Borel set.
+%562K
+
+\spheader 562Xc Let $X$ be a second-countable space and
+$\familyiI{E_i}$ a codable family in $\Cal B_c(X)$.   (i) Show that
+$\family{i}{J}{E_i}$ is codable for every $J\subseteq I$.
+(ii) Show that if $I$ is countable and not empty then
+$\bigcup_{i\in I}E_i$ and $\bigcap_{i\in I}E_i$ are codable Borel sets.
+(iii) Show that if $h:J\times\Bbb N\to I$ is a function, where $J$ is any
+other set, then $\family{j}{J}{\bigcup_{n\in\Bbb N}E_{h(j,n)}}$ is a
+codable family.   (iv) Show that if $\familyiI{F_i}$ is another codable
+family in $\Cal B_c(X)$ then $\familyiI{E_i\cap F_i}$ and
+$\familyiI{E_i\symmdiff F_i}$ are codable families.
+%562K
+
+\spheader 562Xd Let $X$ and $Y$ be
+second-countable spaces and $f:X\to Y$ a function.   Suppose that
+$\{F:F\subseteq Y$, $f^{-1}[F]$ is resolvable$\}$ includes a countable
+network for the topology of $Y$.   Show that $f$ is a codable Borel
+function.
+%562K
+
+\spheader 562Xe Let $X$ be a second-countable space and $\familyiI{E_i}$
+a family in $\Cal B_c(X)$.   (i) Show that $\{J:J\subseteq I$,
+$\family{i}{J}{E_i}$ is codable$\}$ is an ideal of subsets of $I$.
+(ii) Show that if every $E_i$ is resolvable then $\familyiI{E_i}$ is
+codable.
+%562K
+
+\spheader 562Xf Let $X$ be a second-countable space and $f:X\to\Bbb R$ a
+function.   Show that $f$ is a codable Borel function iff
+$\{(x,\alpha):x\in X$, $\alpha<f(x)\}$ is a codable Borel subset of
+$X\times\Bbb R$.
+%562N
+
+\spheader 562Xg Let $X$ be a topological space and $f$, $g:X\to\Bbb R$
+resolvable functions.   (i) Show that $f\vee g$ and
+$\alpha f$ are resolvable
+for any $\alpha\in\Bbb R$.   (ii) Show that if $f$ is bounded
+then $f+g$ is resolvable.   (iii) Show that if $f$ and $g$ are bounded,
+$f\times g$ is resolvable.   (iv) Show that if $f$ and $g$
+are non-negative, then $f+g$ is resolvable.   (v) Show that if
+$h:\Bbb R\to\Bbb R$ is continuous and $h^{-1}[\{\alpha\}]$ is finite for
+every $\alpha\in\Bbb R$, then $hf$ is resolvable.
+%562Q
+
+\spheader 562Xh Let $f:\Bbb R\to\Bbb R$ be such that
+$\lim_{t\downarrow x}f(t)$ is defined in $[-\infty,\infty]$
+for every $x\in\Bbb R$.   Show that $f$ is resolvable.
+%562Q
+
+\spheader 562Xi Let $X$ be a second-countable space and
+$\sequencen{f_n}$ a sequence of resolvable real-valued functions on $X$.
+Show that there is a codable Borel function $g$ such that
+$g(x)=\lim_{n\to\infty}f_n(x)$ for any $x$ such that the limit is defined
+in $\Bbb R$.
+%562R
+
+\spheader 562Xj Let $X$ be a second-countable space and $Y$ a subspace of
+$X$.   Show that a family $\familyiI{g_i}$ in $\BbbR^Y$ is a codable family
+of codable Borel functions iff there is a codable family $\familyiI{f_i}$
+of codable real-valued Borel functions on $X$ such that $g_i=f_i\restr Y$
+for every $i\in I$.
+%562S 562E
+
+\sqheader 562Xk Let $X$ be a second-countable space.   Show that every
+codable family of codable Baire subsets of $X$ is a codable family of
+codable Borel subsets of $X$.
+%562T
+
+\sqheader 562Xl Let $X$ be a regular second-countable space.
+Show that every
+codable family of codable Borel subsets of $X$ is a codable family of
+codable Baire subsets of $X$.   \Hint{561Xk.}
+%562T
+
+\leader{562Y}{Further exercises (a)}
+%\spheader 562Ya
+Let $X$ be a second-countable space, $Y$ a T$_0$
+second-countable space and $f:X\to Y$ a function with graph
+$\Gamma\subseteq X\times Y$.   (i) Show that if $f$ is a codable Borel
+function, then $\Gamma$ is a codable Borel subset of $X\times Y$.
+(ii) Show that if $X$ and $Y$ are Polish and $\Gamma$ is a codable Borel
+subset of $X\times Y$, then $f$ is a codable Borel function.
+%562F  562L
+
+\spheader 562Yb
+Show that there is an analytic subset of $\NN$ which is not
+a codable Borel set.   \Hint{423L.}
+%*562F out of order query
+
+\spheader 562Yc Show
+that if $X$ is a Polish space then a subset of $X$ is resolvable iff it is
+both F$_{\sigma}$ and G$_{\delta}$.
+%562I
+
+\spheader 562Yd Let $X$ be a Polish space.   Show that a function
+$f:X\to\Bbb R$ is resolvable iff $\{x:\alpha<f(x)<\beta\}$ is
+F$_{\sigma}$ for all $\alpha$, $\beta\in\Bbb R$.
+%562Q
+
+\spheader 562Ye Let $X$ be a topological space.   Let $\Phi$ be the set of
+functions $f:X\to\Cal P\Bbb N$ such that $\{x:n\in f(x)\}$ is open for
+every $n\in\Bbb N$.   Write $\Cal B'_c(X)$ for
+$\{f^{-1}[F]:f\in\Phi$,  $F\in\Cal B_c(\Cal P\Bbb N)\}$;  say a family
+$\familyiI{E_i}$ in $\Cal B'_c(X)$ is codable if there is a family
+$\familyiI{(f_i,F_i)}$ in $\Phi\times\Cal B_c(\Cal P\Bbb N)$ such that
+$\familyiI{F_i}$ is codable and $E_i=f_i^{-1}[F_i]$ for every $i$.   (i)
+Show that if $X$ is second-countable then $\Cal B'_c(X)=\Cal B_c(X)$ and
+the codable families on the definition here coincide with the codable
+families of 562J.   (ii) Develop a theory of codable Borel sets and
+functions corresponding to that in 562T.
+%562T
+}%end of exercises
+
+
+\endnotes{
+\Notesheader{562} The idea of `Borel code' is of great importance in
+mathematical logic, for reasons quite separate from the questions
+addressed here;
+see {\smc Jech 78}, {\smc Jech 03} or {\smc Kunen 80}.   (Of course it is
+not a coincidence that an approach which is effective in the absence of the
+axiom of choice should also be relevant to absoluteness in the presence of
+choice.)   Every author has his favoured formula corresponding to that in
+562Ba.   The particular one
+I have chosen is intended to be economical and direct, but is
+slightly awkward at the initial stages, and some proofs demand an extra
+moment's attention to the special case of trees of rank $1$.   The real
+motivation for the calculations here will have to wait for \S565;  Lebesgue
+measure can be defined in such a way that it is countably additive with
+respect to {\it codable} sequences of Borel sets, and there are enough of
+these to make the theory non-trivial.
+
+Borel codes are wildly non-unique, which is why the concept of codable
+family is worth defining.   But it is also important that certain sets,
+starting with the open sets, are self-coding in the sense that from the set
+we can pick out an appropriate code.   `Resolvable' sets and functions
+(562G, 562Q) are
+common enough to be very useful, and for these we can work with the objects
+themselves, just as we always have, and leave the coding until we need it.
+
+The Borel codes described here can be used only in second-countable
+spaces.   It is easy enough to find variations of the concept
+which can be applied
+in more general contexts (562Ye), though it is not obvious that there are
+useful
+theorems to be got in such a way.   More relevant to the work of the next
+few sections is the idea of `codable Baire set' (562T).   Because any
+codable sequence of codable Baire sets can be factored through a single
+continuous function to $\BbbR^{\Bbb N}$ (562T(b-i)),
+we have easy paths to the elementary results given here.
+
+}%end of notes
+
+\discrpage
+

@@ -1,0 +1,1579 @@
+\frfilename{mt518.tex}
+\versiondate{24.12.14}
+\copyrightdate{2003}
+
+\def\doubleheadrightarrow{{\hbox{$\rightarrow$}}\hskip0.2em\llap
+  {\hbox{$\rightarrow$}}}
+\def\sk{\mathop{\text{sk}}}
+
+\def\chaptername{Cardinal functions}
+\def\sectionname{Freese-Nation numbers}
+
+\newsection{518}
+
+\allowmorestretch{468}{
+I run through those elements of the theory of Freese-Nation numbers, as
+developed by S.Fuchino, S.Geschke, S.Koppelberg, S.Shelah and L.Soukup,
+which seem relevant to questions concerning measure spaces and measure
+algebras.   The first part of the section
+(518A-518K)  %518A 518B 518C 518D 518F 518G 518H 518I 518J 518K
+examines the calculation of Freese-Nation numbers of familiar partially
+ordered sets and Boolean algebras.   In
+518L-518S % 518L 518M 518N 518P 518Q 518R 518S
+I look at `tight filtrations', which are of interest to us because of
+their use in lifting theorems (518L, \S535).
+}%end of allowmorestretch
+
+\cmmnt{For the definitions of `Freese-Nation number' and
+`Freese-Nation index' see 511Bi and 511Dh.}
+
+\leader{518A}{Proposition}\cmmnt{
+({\smc Fuchino Koppelberg \& Shelah 96})} Let $P$
+be a partially ordered set.
+
+(a) $\FN(P)\le\max(3,\#(P))$.
+
+(b) $\FN(P,\ge)=\FN(P,\le)$.
+
+(c) If $P$ has no maximal element, then $\add P\le\FN(P)$.
+
+\proof{{\bf (a)(i)} Suppose first that $P$ is finite and totally
+ordered.
+If $\#(P)\le 2$, set $f(p)=P$ for every $p\in P$.   Otherwise, take
+$p_0\in P$ such that $\ooint{-\infty,p_0}$ and $\ooint{p_0,\infty}$ are
+both non-empty, and set $f(p)=\coint{p_0,\infty}$ if $p\ge p_0$,
+$\ocint{-\infty,p_0}$ if $p<p_0$;  then $f$ is a Freese-Nation
+function witnessing that $\FN(P)\le\#(P)$.
+
+\medskip
+
+\quad{\bf (ii)} Next suppose that $P$ is finite and not totally ordered.
+For $p\in P$ set $A_p=\ocint{-\infty,p}\cup\coint{p,\infty}$, and take
+$B=\{p:A_p=P\}$;  then $B\ne P$.
+Set $f(p)=A_p$ for $p\in P\setminus B$, $B$ for $p\in B$;  then $f$ is a
+Freese-Nation function so again $\FN(P)\le\#(P)$.
+
+\medskip
+
+\quad{\bf (iii)} If $P$ is infinite, enumerate it as
+$\ofamily{\xi}{\#(P)}{p_{\xi}}$ and set
+$f(p_{\xi})=\{p_{\eta}:\eta\le\xi\}$ for each $\xi$;  once more we have
+a Freese-Nation function witnessing that $\FN(P)\le\#(P)$.
+
+\medskip
+
+{\bf (b)} A function $f:P\to\Cal PP$ is a Freese-Nation function for $\le$
+iff it is a Freese-Nation function for the reverse ordering $\ge$.
+
+\medskip
+
+{\bf (c)} Set $\kappa=\FN(P)$.   Then we have a Freese-Nation
+function $f:P\to[P]^{<\kappa}$.
+
+\medskip
+
+\quad{\bf (i)} I had better sort out the trivial cases.   If $P$ is empty,
+then $\kappa=\add P=0$.   Otherwise, $p\in f(p)$ for every $p\in P$, so
+$\kappa\ge 2$;  if $\add P\le 2$ we can stop.   So we may suppose that
+$\add P>2$, that is, that $P$ is upwards-directed.
+
+\medskip
+
+\quad{\bf (ii)} \Quer\ If $\kappa<\add P$, choose
+$\langle p_{\xi}\rangle_{\xi\le\kappa}$ inductively, as follows.   Given
+$\ofamily{\eta}{\xi}{p_{\eta}}$, where $\xi\le\kappa$, then
+$\bigcup_{\eta<\xi}f(p_{\eta})$
+has an upper bound $p'_{\xi}$ in $P$.   \Prf\ If $\kappa$ is infinite, this
+is because $\#(\bigcup_{\eta<\xi}f(p_{\eta}))\le\kappa<\add P$.
+If $\kappa$ is finite, it is because
+$\#(\bigcup_{\eta<\xi}f(p_{\eta}))<\omega\le\add P$.\ \Qed
+
+As $P$ has no maximal element, we
+can find $p_{\xi}>p'_{\xi}$, and continue.   At the end of the induction,
+we have $p_{\xi}<p_{\kappa}$, so there is a
+$q_{\xi}\in f(p_{\xi})\cap f(p_{\kappa})\cap[p_{\xi},p_{\kappa}]$, for each
+$\xi<\kappa$.   If $\eta<\xi<\kappa$, then
+
+\Centerline{$q_{\eta}\le p'_{\xi}<p_{\xi}\le q_{\xi}$}
+
+\noindent and $q_{\eta}\ne q_{\xi}$.   But this means that
+$f(p_{\kappa})\supseteq\{q_{\xi}:\xi<\kappa\}$ has at least $\kappa$
+elements.\ \Bang
+}%end of proof of 518A
+
+\leader{518B}{Proposition} Let $P$ be a partially ordered set and $Q$ a
+subset of $P$.
+
+(a) If $Q$ is order-convex\cmmnt{ (that is, $[q,q']\subseteq Q$
+whenever $q$, $q'\in Q$)}, then $\FN(Q)\le\FN(P)$.
+
+(b) If $Q$ is a retract of $P$\cmmnt{ (that is, there is an
+order-preserving $h:P\to Q$ such that $h(q)=q$ for every $q\in Q$)},
+then $\FN(Q)\le\FN(P)$.
+
+(c) If $Q$ is\cmmnt{, in itself,} Dedekind complete\cmmnt{ (that is,
+every non-empty subset of $Q$ with an upper bound in $Q$ has a supremum
+in $Q$ for the induced ordering)}, then $\FN(Q)\le\FN(P)$.
+
+\proof{{\bf (a)} If $f:P\to\Cal PP$ is a Freese-Nation function on $P$,
+then $q\mapsto Q\cap f(q):Q\to\Cal PQ$ is a Freese-Nation function on
+$Q$.
+
+\medskip
+
+{\bf (b)} If $f$ is a Freese-Nation function on $P$, then
+$q\mapsto h[f(q)]$ is a Freese-Nation function on $Q$.
+
+\medskip
+
+{\bf (c)} Set $Q_1=\bigcup_{q,q'\in Q}[q,q']$, so that $Q_1$ is an
+order-convex subset of $P$ and $\FN(Q_1)\le\FN(P)$.   For $p\in Q_1$,
+set $h(p)=\sup(Q\cap\ocint{-\infty,p})$, the supremum being taken in
+$Q$;  then $h:Q_1\to Q$ is a retraction, so $\FN(Q)\le\FN(Q_1)$.
+}%end of proof of 518B
+
+\leader{518C}{Corollary} (a) If $\frak A$ is an infinite Dedekind
+$\sigma$-complete Boolean algebra then
+$\FN(\frak A)\ge\FN(\Cal P\Bbb N)$.
+
+(b) Let $\frak A$ be an infinite Dedekind complete Boolean algebra.   Then
+
+\Centerline{$\FN(\RO(\{0,1\}^{\#(\frak A)}))
+\le\FN(\frak A)\le\FN(\Cal P(\link(\frak A)))
+\le\max(3,2^{\link(\frak A)})$.}
+
+(c) Let $\frak A$ be a Dedekind complete Boolean algebra.   If $\frak B$
+is either an order-closed subalgebra or a principal ideal of $\frak A$,
+then $\FN(\frak B)\le\FN(\frak A)$.
+
+\proof{{\bf (a)} Take any disjoint sequence $\sequencen{a_n}$ in
+$\frak A$;  then $I\mapsto\sup_{n\in I}a_n$ is an embedding of the
+partially ordered set $\Cal P\Bbb N$ into $\frak A$.   As $\Cal P\Bbb N$
+is Dedekind complete, 518Bc tells us that
+$\FN(\Cal P\Bbb N)\le\FN(\frak A)$.
+
+\medskip
+
+{\bf (b)(i)} By 515I, $\frak A$ has a subalgebra $\frak B$
+isomorphic to the regular open algebra $\RO(\{0,1\}^{\#(\frak A)})$;
+by 518Bc, $\FN(\frak B)\le\FN(\frak A)$.
+
+\medskip
+
+\quad{\bf (ii)} By 514Cb, we have a subset $Q$ of
+$\Cal P(\link(\frak A))$ which is order-isomorphic to $\frak A$,
+and 518Bc tells us that $\FN(Q)\le\FN(\Cal P(\link(\frak A)))$.
+
+\medskip
+
+\quad{\bf (iii)} By 518Aa,
+$\FN(\Cal P(\link(\frak A)))\le 2^{\link(\frak A)}$
+except in the trivial case $\frak A=\{0,1\}$.
+
+\medskip
+
+{\bf (c)} Immediate from 518Bc.
+}%end of proof of 518C
+
+\vleader{60pt}{518D}{Corollary} The following sets all have the same
+Freese-Nation number:
+
+(i) $\Cal P\Bbb N$;
+
+(ii) $\BbbN^{\Bbb N}$, with its usual ordering $\le$;
+
+(iii) any infinite $\sigma$-linked Dedekind complete Boolean algebra;
+
+(iv) the family of open subsets of any infinite Hausdorff
+second-countable topological space.
+
+\proof{{\bf (a)} The map $I\mapsto\chi I:\Cal P\Bbb N\to\BbbN^{\Bbb N}$
+is an order-preserving embedding;  because $\Cal P\Bbb N$ is Dedekind
+complete, $\FN(\Cal P\Bbb N)\le\FN(\BbbN^{\Bbb N})$ (518Bc).
+
+\medskip
+
+{\bf (b)} The map
+$f\mapsto\{(i,j):j\le f(i)\}:
+\BbbN^{\Bbb N}\to\Cal P(\Bbb N\times\Bbb N)$ is an order-preserving
+embedding;  because $\BbbN^{\Bbb N}$ is Dedekind complete,
+
+\Centerline{$\FN(\BbbN^{\Bbb N})\le\FN(\Cal P(\Bbb N\times\Bbb N))
+=\FN(\Cal P\Bbb N)$.}
+
+\medskip
+
+{\bf (c)} Now let $\frak A$ be an infinite $\sigma$-linked Dedekind
+complete Boolean algebra.   By 518Ca,
+$\FN(\Cal P\Bbb N)\le\FN(\frak A)$; by 518Cb,
+$\FN(\frak A)\le\FN(\Cal P\Bbb N)$.
+
+\medskip
+
+{\bf (d)} Let $(X,\frak T)$ be an infinite Hausdorff second-countable
+space.   ($\alpha$) Because $X$ is Hausdorff and infinite, it has a
+disjoint sequence $\sequencen{G_n}$ of non-empty open sets;  now
+$I\mapsto\bigcup_{n\in I}G_n$ is an embedding of $\Cal P\Bbb N$ in
+$\frak T$, so $\FN(\Cal P\Bbb N)\le\FN(\frak T)$.   ($\beta$) Let
+$\Cal U$ be a countable base for $\frak T$.   Then
+$G\mapsto\{U:U\in\Cal U$, $U\subseteq G\}$ is an embedding of $\frak T$
+in $\Cal P\Cal U$;  as
+$\frak T$, regarded as a partially ordered set, is Dedekind complete,
+$\FN(\frak T)\le\FN(\Cal P\Cal U)=\FN(\Cal P\Bbb N)$.
+}%end of proof of 518D
+
+\leader{518E}{}\cmmnt{ There is a simple
+result in general topology which will be used a couple of times in the next
+chapter.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $(X,\frak T)$ be a T$_1$ topological
+space without isolated points, and $\CalNwd(X)$ the ideal of nowhere dense
+sets.   Then there is a set $A\subseteq X$, with cardinal $\cov\CalNwd(X)$,
+such that $\#(A\cap F)<\FN^*(\frak T)$ for every $F\in\CalNwd(X)$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Perhaps I should say here that $\FN^*(\frak T)$ is
+the regular Freese-Nation number of the partially ordered set
+$(\frak T,\subseteq)$.
+}%end of comment
+
+\proof{ As $X$ has no isolated points, $\cov\CalNwd(X)\le\#(X)$.
+Set $\kappa=\cov\CalNwd(X)$ and $\lambda=\FN^*(\frak T)$.
+If $\kappa<\lambda$ the result
+is trivial and we can stop.   Otherwise, let
+$f:\frak T\to[\frak T]^{<\lambda}$ be a Freese-Nation function.
+Then we can choose $\ofamily{\xi}{\kappa}{x_{\xi}}$
+inductively so that
+whenever $\eta<\xi$ and $G\in f(X\setminus\{x_{\eta}\})$ is dense, then
+$x_{\xi}\in G$.   \Prf\ When we come to choose $x_{\xi}$,
+set $\theta
+=\#(\bigcup_{\eta<\xi}\{G:G\in f(X\setminus\{x_{\eta}\})$ is dense$\})$.
+If $\lambda<\kappa$ then $\theta\le\max(\#(\xi),\omega,\lambda)<\kappa$.
+If $\lambda=\kappa$ then $\kappa$ is regular and infinite
+and $\#(f(X\setminus\{x_{\eta}\})<\kappa$ for every $\eta<\xi$ so again
+$\theta<\kappa$.
+So we have fewer than $\cov\CalNwd(X)$ dense open sets and can find a
+point $x_{\xi}$ in all of them.\ \Qed
+
+Note that as $X\setminus\{x_{\eta}\}$ is itself dense for every $\eta<\xi$,
+and $H\in f(H)$ for every $H\in\frak T$, all the $x_{\xi}$ must be
+distinct, and $A=\{x_{\xi}:\xi<\kappa\}$ has cardinal $\kappa$.
+Now suppose that $F\in\CalNwd(X)$ and set
+$B=\{\xi:\xi<\kappa$, $x_{\xi}\in F\}$.   For each $\xi\in B$,
+$X\setminus\overline{F}\subseteq X\setminus\{x_{\xi}\}$, so there is a
+$G_{\xi}\in f(X\setminus\overline{F})\cap f(X\setminus\{x_{\xi}\})$ such
+that $X\setminus\overline{F}\subseteq G_{\xi}$ and $x_{\xi}\notin G_{\xi}$.
+If $\eta$, $\xi\in B$ and $\eta<\xi$, then
+$G_{\eta}\in f(X\setminus\{x_{\eta}\})$ is dense, so contains $x_{\xi}$,
+and cannot be equal to $G_{\xi}$.   Thus $\xi\mapsto G_{\xi}$ is an
+injective function from $B$ to $f(X\setminus\overline{F})$, and
+$\#(B)<\lambda$.   Thus we have an appropriate set $A$.
+}%end of proof of 518E
+
+\leader{518F}{Lemma} Let $\frak A$ be a Boolean algebra, $\frak B$ a
+subalgebra of $\frak A$ and $\kappa$ an infinite cardinal.
+
+(a) If $\cf(\frak B\cap[0,a])<\kappa$ for every $a\in\frak A$, then the
+Freese-Nation index of $\frak B$ in $\frak A$ is at most $\kappa$.
+
+(b) Suppose that $I\in[\frak A]^{<\cf\kappa}$ and $\frak B_I$ is the
+subalgebra of $\frak A$ generated by $\frak B\cup I$.   If the
+Freese-Nation index of $\frak B$ in $\frak A$ is less than or equal to
+$\kappa$, so is the Freese-Nation index of $\frak B_I$.
+
+(c) If $\frak B$ is expressible as the
+union of fewer than $\kappa$ order-closed subalgebras of $\frak A$,
+each of them Dedekind complete in itself, then
+the Freese-Nation index of $\frak B$ in $\frak A$ is at most $\kappa$.
+
+\proof{{\bf (a)} For any $a\in\frak A$,
+
+\Centerline{$\ci(\frak B\cap[a,1])
+=\cf(\frak B\cap[0,1\Bsetminus a])<\kappa$.}
+
+\medskip
+
+{\bf (b)(i)} Suppose first that $I$ is a singleton $\{d\}$.   In this
+case
+
+\Centerline{$\frak B_I
+=\{(b\Bcap d)\Bcup(c\Bsetminus d):b$, $c\in\frak B\}$.}
+
+\noindent Take $a\in\frak A$.   Then there are sets $B$,
+$C\subseteq\frak B$, with cardinal less than
+$\kappa$, which are cofinal in
+
+\Centerline{$\frak B\cap[0,a\Bcup(1\Bsetminus d)]$,
+\quad$\frak B\cap[0,a\Bcup d]$}
+
+\noindent respectively.   Set
+$D=\{b\cap d:b\in B\}\cup\{c\setminus d:c\in C\}$, so that
+$D\subseteq\frak B_I\cap[0,a]$ and $\#(D)<\kappa$.   If $b$,
+$c\in\frak B$ and $(b\Bcap d)\Bcup(c\Bsetminus d)\Bsubseteq a$, then
+$b\Bsubseteq a\Bcup(1\Bsetminus d)$ and $c\Bsubseteq a\Bcup d$, so there
+are $b'\in B$, $c'\in C$ such that $b\Bsubseteq b'$ and
+$c\Bsubseteq c'$;  now
+
+\Centerline{$(b\cap d)\Bcup(c\Bsetminus d)
+\Bsubseteq(b'\cap d)\Bcup(c'\Bsetminus d)\in D$.}
+
+\noindent Thus $D$ witnesses that
+$\cf(\frak C\cap[0,a])<\kappa$.   By (a), this is enough to show that
+the Freese-Nation index of $\frak B_I$ in $\frak A$ is at most $\kappa$.
+
+\medskip
+
+\quad{\bf (ii)} An elementary induction now shows that the Freese-Nation
+index of $\frak B_I$ in $\frak A$ is at most $\kappa$ for every finite
+subset $I$ of $\frak A$.   If $\omega\le\#(I)<\cf\kappa$ and
+$a\in\frak A$, then
+$\frak B_I=\bigcup\{\frak B_J:J\in[I]^{<\omega}\}$.   For each
+$J\in[I]^{<\omega}$, let $B_J$ be a cofinal subset of
+$\frak B_J\cap[0,a]$ of size less than $\kappa$.   Then
+$B=\bigcup\{B_J:J\in[I]^{<\omega}\}$ is cofinal in $\frak B_I\cap[0,a]$;
+and as $\#([I]^{<\omega})<\cf\kappa$, $\#(B)<\kappa$.   So again we have
+$\cf(\frak B_I\cap[0,a])<\kappa$ for every $a\in\frak A$, and the
+Freese-Nation index of $\frak B_I$ in $\frak A$ is at most $\kappa$.
+
+\medskip
+
+{\bf (c)} Suppose that $\ofamily{\xi}{\lambda}{\frak B_{\xi}}$ is a family
+of order-closed subalgebras with union $\frak B$, where $\lambda<\kappa$.
+If $a\in\frak A$, then $b_{\xi}=\sup(\frak B_{\xi}\cap[0,a])$ is defined in
+$\frak B_{\xi}$, and belongs to $[0,a]$,
+for each $\xi<\lambda$, and $\{b_{\xi}:\xi<\lambda\}$ is cofinal with
+$\frak B\cap[0,a]$;  so we can apply (a).
+}%end of proof of 518F
+
+\leader{518G}{Lemma}\cmmnt{ ({\smc Fuchino Koppelberg \& Shelah 96})} Let 
+$P$ be a partially ordered set, $\zeta$ an ordinal, and
+$\ofamily{\xi}{\zeta}{A_{\xi}}$ a family
+with union $P$;  set $P_{\alpha}=\bigcup_{\xi<\alpha}A_{\xi}$ for each
+$\alpha\le\zeta$.   Let $\kappa$ be a regular infinite cardinal such
+that, for each $\alpha<\zeta$, $\FN(P_{\alpha+1})\le\kappa$ and the
+Freese-Nation index of $P_{\alpha}$ in $P_{\alpha+1}$ is at most
+$\kappa$.   Then $\FN(P)\le\kappa$.
+
+\proof{ For each $\alpha<\zeta$ set
+$A'_{\alpha}=A_{\alpha}\setminus P_{\alpha}$ and choose a Freese-Nation
+function $f_{\alpha}:P_{\alpha+1}\to[P_{\alpha+1}]^{<\kappa}$.   For
+$p\in P$, let $\gamma(p)$ be that $\alpha<\zeta$ such that
+$p\in A'_{\alpha}$, and let
+$D_p\subseteq P_{\gamma(p)}$ be a set of size less than $\kappa$ such
+that $D_p\cap\ocint{-\infty,p}$ is cofinal with
+$P_{\gamma(p)}\cap\ocint{-\infty,p}$ and $D_p\cap\coint{p,\infty}$ is
+cofinal with $P_{\gamma(p)}\cap\coint{p,\infty}$.
+Define $g$ inductively, on each $A'_{\alpha}$ in turn, by setting
+$g(p)=f_{\gamma(p)}(p)\cup\bigcup_{q\in D_p}g(q)$ for every $p\in P$.
+Because $\kappa$ is regular, $g$ is a function from $P$ to
+$[P]^{<\kappa}$.
+
+Now $g$ is a Freese-Nation function on $P$.   \Prf\ I induce on $\alpha$
+to show that if $p$, $q\in P$ and $\max(\gamma(p),\gamma(q))=\alpha$
+then $g(p)\cap g(q)\cap[p,q]\ne\emptyset$.   For the inductive step to
+$\alpha<\zeta$, if $\gamma(p)=\gamma(q)=\alpha$ then
+
+\Centerline{$g(p)\cap g(q)\cap[p,q]
+\supseteq f_{\alpha}(p)\cap f_{\alpha}(q)\cap[p,q]\ne\emptyset$.}
+
+\noindent If $\gamma(p)<\gamma(q)=\alpha$, then there is an $r\in D_q$
+such that $p\le r\le q$;  now $\max(\gamma(p),\gamma(r))<\alpha$, so
+
+\Centerline{$g(p)\cap g(q)\cap[p,q]
+\supseteq g(p)\cap g(r)\cap[p,r]
+\ne\emptyset$}
+
+\noindent by the inductive hypothesis.   The same argument works if
+$\gamma(q)<\gamma(p)$.\ \Qed
+}%end of proof of 518G
+
+\leader{518H}{Lemma} Suppose that $\kappa$ is an uncountable cardinal
+of countable cofinality such that $\square_{\kappa}$ is true and
+$\cff[\lambda]^{\le\omega}\le\lambda^+$ for every $\lambda\le\kappa$.
+Then there are families
+$\langle M_{\alpha n}\rangle_{\alpha<\kappa^+,n\in\Bbb N}$,
+$\ofamily{\alpha}{\kappa^+}{M_{\alpha}}$ of sets and a function $\sk$
+such that
+
+(i) $\#(M_{\alpha n})<\kappa$ whenever $\alpha<\kappa^+$ and
+$n\in\Bbb N$;
+
+(ii) $\sequencen{M_{\alpha n}}$ is non-decreasing for each
+$\alpha<\kappa^+$;
+
+(iii) $\ofamily{\alpha}{\kappa^+}{M_{\alpha}}$ is a non-decreasing
+family, $M_{\alpha}=\bigcup_{\beta<\alpha}M_{\beta}$ for every
+non-zero limit ordinal $\alpha<\kappa^+$, and
+$\kappa^+\subseteq\bigcup_{\alpha<\kappa^+}M_{\alpha}$;
+
+(iv) if $\alpha<\kappa^+$ has uncountable cofinality,
+$M_{\alpha}=\bigcup_{n\in\Bbb N}M_{\alpha n}$;
+
+(v) $X\subseteq\sk(X)$ for every set $X$;
+
+(vi) $\sk(X)$ is countable whenever $X$ is countable;
+
+(vii) $A\subseteq\sk(X)$ whenever $A\in\sk(X)$ is countable;
+
+(viii) $\sk(X)\subseteq\sk(Y)$ whenever $X\subseteq\sk(Y)$;
+
+(ix) for every $\alpha<\kappa^+$ of uncountable cofinality there is an
+$m\in\Bbb N$ such that whenever $n\ge m$ and $A\subseteq M_{\alpha n}$
+is countable there is a countable set $D\in M_{\alpha n}$ such that
+$A\subseteq\sk(D)$;
+
+(x) $\bigcup_{\alpha<\kappa^+}M_{\alpha}\cap[\kappa]^{\le\omega}$ is
+cofinal with $[\kappa]^{\le\omega}$.
+
+\proof{{\bf (a)} There is a strictly increasing sequence
+$\sequencen{\kappa_n}$ of cardinals with supremum $\kappa$;  since
+
+\Centerline{$\cff[\kappa_n^+]^{\le\omega}
+=\max(\kappa_n^+,\cff[\kappa_n]^{\le\omega})=\kappa_n^+$}
+
+\noindent for each $n$ (5A1E(e-iv)), we can suppose that in fact
+$\cff[\kappa_n]^{\le\omega}=\kappa_n$ for
+every $n$.   Take $\ofamily{\alpha}{\kappa^+}{C_{\alpha}}$
+witnessing $\square_{\kappa}$, so that
+
+\inset{for every $\alpha<\kappa^+$, $C_{\alpha}\subseteq\alpha$ is a
+closed cofinal set in $\alpha$ of order type at most $\kappa$,
+
+whenever $\delta<\alpha<\kappa^+$ and
+$\delta=\sup(\delta\cap C_{\alpha})$, then
+$C_{\delta}=\delta\cap C_{\alpha}$}
+
+\noindent (5A6D(a-ii)).   For $\alpha<\kappa^+$ set
+
+\Centerline{$C'_{\alpha}
+=\{\delta:\delta<\alpha$, $\delta=\sup(\delta\cap C_{\alpha})\}
+\subseteq C_{\alpha}$}
+
+\noindent and
+
+\Centerline{$C'_{\alpha n}
+=\{\delta:\delta\in C'_{\alpha},
+\,\otp(\delta\cap C_{\alpha})<\kappa_n\}$}
+
+\noindent for each $n$.   Because $\otp(C_{\alpha})\le\kappa$,
+$C'_{\alpha}=\bigcup_{n\in\Bbb N}C'_{\alpha n}$, while
+$\#(C'_{\alpha n})\le\kappa_n$ for each $n$.    Note that if $\alpha$ has
+uncountable cofinality, $C'_{\alpha}$ will be cofinal with $\alpha$.
+
+\medskip
+
+{\bf (b)} Let $g:\kappa^+\to[\kappa]^{\le\omega}$ be such that
+$g[\kappa^+]$ is cofinal with $[\kappa]^{\le\omega}$.
+For each non-zero $\alpha<\kappa^+$, fix on a surjective
+function $f_{\alpha}:\kappa\to\alpha$.   For each $n\in\Bbb N$, let
+$g_n:\kappa_n\to[\kappa_n]^{\le\omega}$ be such that $g_n[\kappa_n]$ is
+cofinal with $[\kappa_n]^{\le\omega}$.   For each $\alpha<\kappa^+$, let
+$h_{\alpha}:\#(C_{\alpha})\to C_{\alpha}$ be a bijection.
+Now, for any set $X$, write
+$\sk(X)$ for the smallest set including $X$ and such that
+
+\inset{$g(\alpha)\in\sk(X)$ whenever $\alpha\in\sk(X)\cap\kappa^+$,
+
+$f_{\alpha}(\xi)\in\sk(X)$ whenever $0<\alpha<\kappa^+$,
+$\xi<\kappa$ and $\alpha$, $\xi\in\sk(X)$,
+
+$g_n(\xi)\in\sk(X)$ whenever $n\in\Bbb N$ and
+$\xi\in\kappa_n\cap\sk(X)$,
+
+$h_{\alpha}[A]\in\sk(X)$ whenever $\alpha\in\sk(X)\cap\kappa^+$ and
+$A\in\sk(X)$,
+
+$A\cup B\in\sk(X)$ whenever $A$, $B\in\sk(X)$,
+
+$A\subseteq\sk(X)$ whenever $A\in\sk(X)$ is countable.
+}%end of inset
+
+\noindent  Of course we always have
+
+\Centerline{$\sk(\sk(X))=\sk(X)=\bigcup\{\sk(I):I\in[X]^{<\omega}\}$}
+
+\noindent and $\#(\sk(X))\le\max(\omega,\#(X))$, so (v)-(viii) are all
+true.
+
+\medskip
+
+{\bf (c)} For each $\alpha<\kappa^+$ and $n\in\Bbb N$, set
+$M_{\alpha n}=\sk(\kappa_n\cup C'_{\alpha n})$ and
+$M_{\alpha}=\sk(\kappa\cup\alpha)$.   Then
+
+\Centerline{$\#(M_{\alpha n})\le\max(\omega,\kappa_n,\#(C'_{\alpha n}))
+<\kappa$.}
+
+\noindent Also $\ofamily{\alpha}{\kappa^+}{M_{\alpha}}$ is
+non-decreasing and $M_{\alpha}=\bigcup_{\beta<\alpha}M_{\beta}$ whenever
+$\alpha<\kappa$ is a non-zero limit ordinal, while
+$\kappa^+\subseteq\bigcup_{\alpha<\kappa^+}M_{\alpha}$.  This deals with
+(i)-(iii).
+
+\medskip
+
+{\bf (d)} Now for (iv):
+$M_{\alpha}=\bigcup_{n\in\Bbb N}M_{\alpha n}$ whenever
+$\alpha<\kappa^+$ has uncountable cofinality.   \Prf\ Of course
+$M_{\alpha n}\subseteq M_{\alpha}$ for every $n$ just because
+$\sk(X)\subseteq\sk(Y)$ whenever $X\subseteq Y$.   On the other hand,
+if $\beta<\alpha$, take $\delta\in C'_{\alpha}$ such that
+$\beta<\delta$, and $\xi<\kappa$ such that $f_{\delta}(\xi)=\beta$;
+then if $n\in\Bbb N$ is such that $\xi<\kappa_n$ and
+$\otp(\delta\cap C_{\alpha})<\kappa_n$,
+$\beta$ will be in $M_{\alpha n}$.   So
+$\bigcup_{n\in\Bbb N}M_{\alpha_n}\supseteq\alpha$.   Moreover,
+
+\Centerline{$\kappa=\bigcup_{n\in\Bbb N}\kappa_n
+\subseteq\bigcup_{n\in\Bbb N}M_{\alpha n}$.}
+
+\noindent So
+$\alpha\cup\kappa\subseteq\bigcup_{n\in\Bbb N}M_{\alpha n}$ and
+$M_{\alpha}$ must be exactly $\bigcup_{n\in\Bbb N}M_{\alpha n}$.\ \Qed
+
+\medskip
+
+{\bf (e)} Again suppose that $\alpha<\kappa^+$ has uncountable cofinality.
+Then there must be an $m\in\Bbb N$ such that $C'_{\alpha m}$ is cofinal
+with $\alpha$.   Suppose that $n\ge m$ and
+$A\subseteq M_{\alpha n}$ is countable.
+Then there must be a countable set $C\subseteq\kappa_n\cup C'_{\alpha n}$
+such that $A\subseteq\sk(C)$.   Let $\delta\in C'_{\alpha m}$ be such that
+$C\cap\alpha\subseteq\delta$.   Then
+$C_{\delta}=\delta\cap C_{\alpha}$ has cardinal less than
+$\kappa_m\le\kappa_n$, so $(C\cap\kappa_n)\cup h_{\delta}^{-1}[C]$
+is a countable subset of $\kappa_n$ and is included in $g_n(\xi)$ for
+some $\xi<\kappa_n$.
+Now $\xi$ and $\delta$ belong to $M_{\alpha n}$, so $g_n(\xi)$
+and $h_{\delta}[g_n(\xi)]$ and $D=g_n(\xi)\cup h_{\delta}[g_n(\xi)]$ all
+belong to $M_{\alpha n}$, and are countable.   But $C\subseteq D$, so
+$A\subseteq\sk(D)$, as required by (ix).
+
+\medskip
+
+{\bf (f)} Finally, if $A\subseteq\kappa$ is countable, there is a
+$\beta<\kappa^+$ such that $g(\beta)\supseteq A$, and now
+$g(\beta)\in M_{\beta+1}$.   So (x) is true.
+}%end of proof of 518H
+
+\leader{518I}{Theorem}\cmmnt{ ({\smc Fuchino \& Soukup 97})} Let
+$\frak A$ be a ccc Dedekind complete Boolean algebra.   Suppose that
+
+\inset{($\alpha$) $\cff[\lambda]^{\le\omega}\le\lambda^+$ for every
+cardinal $\lambda\le\tau(\frak A)$,
+
+($\beta$) $\square_{\lambda}$ is true for every uncountable cardinal
+$\lambda\le\tau(\frak A)$ of countable cofinality.}
+
+\noindent Let $\frak A$ be a ccc Dedekind complete Boolean algebra, and
+$\kappa$ a regular uncountable cardinal such that
+$\FN(\frak B)\le\kappa$
+for every countably generated order-closed subalgebra $\frak B$ of
+$\frak A$.    Then $\FN(\frak A)\le\kappa$.
+
+\proof{ Induce on the Maharam type $\tau(\frak A)$ of
+$\frak A$.
+
+\medskip
+
+{\bf (a)} If $\tau(\frak A)\le\omega$ the result is trivial.
+
+\medskip
+
+{\bf (b)} For the inductive step to $\tau(\frak A)=\lambda$, where
+$\lambda$ is an infinite cardinal of uncountable cofinality, let
+$\ofamily{\xi}{\lambda}{a_{\xi}}$ enumerate a $\tau$-generating subset
+of $\frak A$.   For each $\beta<\lambda$, let $\frak B_{\beta}$ be the
+order-closed subalgebra of $\frak A$ generated by
+$\{a_{\xi}:\xi<\beta\}$, and for $\alpha\le\lambda$ set
+$\frak A_{\alpha}=\bigcup_{\beta<\alpha}\frak B_{\beta}$.   By the
+inductive hypothesis, $\FN(\frak B_{\beta})\le\kappa$ for every
+$\beta<\lambda$.   Also, for $\alpha<\kappa$, either $\alpha$ has
+uncountable cofinality, in which case (because $\frak A$ is ccc)
+$\frak A_{\alpha}=\frak B_{\alpha}$ is order-closed, or $\alpha$ has
+countable cofinality, in which case $\frak A_{\alpha}$ is a countable
+union of order-closed subalgebras.   In either case, the Freese-Nation
+index of $\frak A_{\alpha}$ in $\frak A_{\alpha+1}$ is countable (518Fc).
+Because $\cf\lambda>\omega$, $\frak A=\frak A_{\lambda}$.   By
+518G, $\FN(\frak A)\le\kappa$.
+
+\medskip
+
+{\bf (c)(i)} For the inductive step to $\tau(\frak A)=\lambda$, where
+$\lambda$ is an uncountable cardinal of countable cofinality,
+we may use the method of Lemma 518H to construct
+$\langle M_{\alpha n}\rangle_{\alpha<\lambda^+,n\in\Bbb N}$,
+$\ofamily{\alpha}{\lambda^+}{M_{\alpha}}$ and $\sk$ as described there.
+Enumerate a $\tau$-generating set in $\frak A$ as
+$\ofamily{\xi}{\lambda}{a_{\xi}}$, and for any set $X$ write $\frak B_X$
+for the order-closed subalgebra of $\frak A$ generated by
+$\{a_{\xi}:\xi\in X\cap\lambda\}$.   For each $\alpha<\lambda^+$ set
+$\frak E_{\alpha}=\bigcup\{\frak B_{\sk(D)}:D\in M_{\alpha}$ is countable$\}$.
+
+\medskip
+
+\quad{\bf (ii)} If $\alpha<\lambda^+$ has uncountable cofinality, then
+$\frak E_{\alpha}$ is the union of a non-decreasing sequence of order-closed
+subalgebras of $\frak A$ with Maharam type less than $\lambda$.   \Prf\ By
+(ix) of 518H,
+there is an $m\in\Bbb N$ such that whenever $n\ge m$ and
+$\Cal D\subseteq M_{\alpha n}$ is countable there is a countable set
+$F\in M_{\alpha n}$ such that $\Cal D\subseteq\sk(F)$.   For each $n\ge m$,
+set
+$\frak C_n=\bigcup\{\frak B_{\sk(D)}:D\in M_{\alpha n}$ is countable$\}$.
+Then for any countable set $C\subseteq\frak C_n$, there is a countable
+set $\Cal D$ of countable sets belonging to $M_{\alpha n}$ such that
+$C\subseteq\bigcup_{D\in\Cal D}\frak B_{\sk(D)}$.   So there is a
+countable set $F\in M_{\alpha n}$ such that $\Cal D\subseteq\sk(F)$;  by
+518H(vii), $D\subseteq\sk(F)$ and
+$\frak B_{\sk(D)}\subseteq\frak B_{\sk(F)}$ (518H(viii))
+for every $D\in\Cal D$.
+But this means that $C\subseteq\frak B_{\sk}(F)\subseteq\frak C_n$,
+while $\frak B_{\sk}(F)$ is an order-closed subalgebra of $\frak A$.
+Because $\frak A$ is ccc, this is enough to show that $\frak C_n$ is an
+order-closed subalgebra of $\frak A$;  by 518H(ii) and 518H(iv),
+$\langle\frak C_n\rangle_{n\ge m}$ is non-decreasing and has union
+$\frak E_{\alpha}$.   Each $\frak C_n$ is $\tau$-generated by
+
+\Centerline{$\{a_{\eta}:$ there is a countable
+$D\in M_{\alpha n}$ such that $\eta\in\sk(D)\cap\lambda^+\}$,}
+
+\noindent so (using 518H(vi))
+
+\Centerline{$\tau(\frak C_n)\le\max(\omega,\#(M_{\alpha n}))<\lambda$.
+\Qed}
+
+It follows from 518Fc again that the Freese-Nation index of $\frak E_{\alpha}$ in
+$\frak A$ is countable, and from the inductive hypothesis we see also
+that $\FN(\frak C_n)\le\kappa$ for every $n\ge m$,
+so that (using 518G, as usual) $\FN(\frak E_{\alpha})\le\kappa$.
+
+\medskip
+
+\quad{\bf (iii)} If $\alpha<\lambda^+$ is the union of a sequence
+$\sequencen{\alpha_n}$ of ordinals of uncountable cofinality, then
+$M_{\alpha}=\bigcup_{n\in\Bbb N}M_{\alpha_n}$ (518H(iii)), so
+$\frak E_{\alpha}=\bigcup_{n\in\Bbb N}\frak E_{\alpha_n}$ is again a countable union
+of order-closed subalgebras of $\frak A$, and the Freese-Nation index of
+$\frak E_{\alpha}$ in $\frak A$ is at most $\omega$.   Moreover, because
+$\FN(\frak E_{\alpha_n})\le\kappa$ for each $n$, $\FN(\frak E_{\alpha})\le\kappa$.
+
+\medskip
+
+\quad{\bf (iv)} If $a\in\frak A$, there is a countable set
+$D\subseteq\lambda$ such that $a\in\frak B_D$.   But now there is an
+$\alpha<\lambda^+$, of uncountable cofinality, such that $D\subseteq D'$
+for some countable $D'\in M_{\alpha}$ (518H(x)), and
+
+\Centerline{$a\in\frak B_D\subseteq\frak B_{D'}
+\subseteq\frak B_{\sk(D')}\subseteq \frak E_{\alpha}$,}
+
+\noindent by 518H(v).
+
+\medskip
+
+\quad{\bf (v)} Let $F\subseteq\lambda^+$ be the set of ordinals which
+are either of uncountable cofinality, or the union of a sequence of such
+ordinals;  so that $F$ is a closed cofinal
+set in $\lambda^+$, and $\frak E_{\alpha}$
+has countable Freese-Nation index in $\frak A$ for every $\alpha\in F$.
+By (iv), $\bigcup_{\alpha\in F}\frak E_{\alpha}=\frak A$.   So if we enumerate
+$F$ in ascending order as $\ofamily{\xi}{\lambda^+}{\alpha_{\xi}}$ and
+set $P_{\xi}=\frak E_{\alpha_{\xi}}$ for each $\xi$, $P_{\lambda^+}=\frak A$
+then $\langle P_{\xi}\rangle_{\xi\le\lambda^+}$ satisfies the conditions
+of 518G, so $\FN(\frak A)\le\kappa$, and the induction proceeds.
+}%end of proof of 518I
+
+\leader{518J}{Lemma} Let $\lambda$ be an infinite cardinal and $\frak G$
+the regular open algebra of $\{0,1\}^{\lambda}$.   Suppose
+that $\kappa$ is the least cardinal of uncountable cofinality greater
+than or equal to $\FN(\frak G)$.   Then $\kappa\le\frak c^+$ and we have
+a family $\Cal V\subseteq[\lambda]^{\le\frak c}$, cofinal with
+$[\lambda]^{\le\frak c}$, such that $\#(\{A\cap V:V\in\Cal V\})<\kappa$
+for every countable set $A\subseteq\lambda$.
+
+\proof{ Actually it is more convenient to work with
+$\frak G=\RO(\{0,1\}^{\lambda\times\Bbb N})$;  of course this makes no
+difference.
+
+\medskip
+
+{\bf (a)} I will use the phrase `cylinder set' to mean a subset
+of $X=\{0,1\}^{\lambda\times\Bbb N}$ of the form
+$\{x:x\restr J=z\}$, where $J\subseteq\lambda\times\Bbb N$ is finite.
+For $I\subseteq\lambda$, let $\frak G_I$ be the
+order-closed subalgebra of $\frak G$ consisting of those regular open
+sets determined by coordinates in $I\times\Bbb N$.   For $G\in\frak G$,
+there is a smallest subset $J(G)$ of $\lambda$ such that
+$G\in\frak G_{J(G)}$
+(use 4A2B(g-ii)).  Recall that $J(G)$ is always countable (use
+4A2E(b-i)), so that $\#(\frak G_I)\le\frak c$ whenever
+$\#(I)\le\frak c$.
+
+\medskip
+
+{\bf (b)} The function $G\mapsto\frak G_{J(G)}$ is a Freese-Nation
+function.  \Prf\ Suppose that $G_1\subseteq G_2$ in $\frak G$.   Set
+$K=J(G_1)$ and $L=J(G_2)$, and let
+$\phi:X\to\{0,1\}^{L\times\Bbb N}$ be the
+canonical map, so that $\phi^{-1}[\phi[G_2]]=G_2$.   Set
+$H=\phi^{-1}[\interior\overline{\phi[G_1]}]$;  because $\phi$ is
+continuous and open (4A2B(f-i)),
+$H=\interior\overline{\phi^{-1}[\phi[G_1]]}$ (4A2B(f-ii)).   In
+particular, $H$ is a regular open set;  at the same time,
+$H\supseteq G_1$ and
+$H\subseteq\interior\overline{\phi^{-1}[\phi[G_2]]}=G_2$ and $H$ is
+determined by coordinates in $L\times\Bbb N$, so $H\in\frak G_L$.
+Next, $\phi[G_1]\subseteq\{0,1\}^{L\times\Bbb N}$ is determined by
+coordinates in $(K\cap L)\times\Bbb N$, so
+$\interior\overline{\phi[G_1]}$ also is (4A2B(g-i)) and $H$ is
+determined by coordinates in $K\times\Bbb N$.   Thus
+$H\in\frak G_{J(G_1)}\cap\frak G_{J(G_2)}$, which is what we need.\ \Qed
+
+Since $\#(\frak G_{J(G)})\le\frak c$ for every $G$,
+$\FN(\frak G)\le\frak c^+$;  as $\cf\frak c^+$ is surely uncountable,
+$\kappa\le\frak c^+$.
+
+\medskip
+
+{\bf (c)} Now let $f:\frak G\to[\frak G]^{<\kappa}$
+be a Freese-Nation function.  Let $\Cal V$ be the family of those sets
+$V\in[\lambda]^{\le\frak c}$ such that $f(G)\subseteq\frak G_V$ for
+every $G\in\frak G_V$;  because $\#(f(G))\le\frak c$ for every $G$, and
+$\#(\frak G_V)\le\frak c$ whenever $V\in[\lambda]^{\le\frak c}$,
+$\Cal V$ is cofinal with $[\lambda]^{\le\frak c}$.
+
+\medskip
+
+{\bf (d)} Fix a countable set $A\subseteq\lambda$ and
+$\zeta\in A$ for the moment.   Let
+$\family{\xi}{A}{C_{\xi}}$ be a disjoint family of
+non-empty cylinder sets determined by coordinates in
+$\{\zeta\}\times\Bbb N$;  for each $\xi\in A$, set
+$C'_{\xi}=\{x:x\in X$, $x(\xi,0)=1\}$.   Set
+
+\Centerline{$G^*=\sup_{\xi\in A}C_{\xi}\cap C'_{\xi}\in\frak G_A$.}
+
+\noindent Next, for $V\in\Cal V$, set
+
+\Centerline{$G_V=\sup_{\xi\in A\cap V}C_{\xi}\cap C'_{\xi}$,
+\quad$G'_V=\sup\{H:H\in\frak G_V$, $H\subseteq G^*\}$}
+
+\noindent so that $G_V\subseteq G^*$ and $G'_V\in\frak G_V$.
+Now if $\zeta\in V\in\Cal V$, $G_V=G'_V$.   \Prf\
+Since $C_{\xi}\cap C'_{\xi}\in\frak G_V$ for every $\xi\in V\cap A$,
+$G_V\in\frak G_V$ and $G_V\subseteq G'_V$.   \Quer\ Suppose, if
+possible, that $G_V\ne G'_V$.   Then $G'_V\setminus\overline{G}_V$ is a
+non-empty set belonging to $\frak G_V$, so includes a non-empty cylinder
+set $D$ determined by coordinates in $V\times\Bbb N$.   Express $D$ as
+$D'\cap D''$, where $D'$ is determined by coordinates in
+$(V\cap A)\times\Bbb N$ and $D''$ by coordinates in
+$(V\setminus A)\times\Bbb N$.   As
+$D'\cap D''\subseteq G^*\in\frak G_A$, $D'\subseteq G^*$, so
+$D'\cap C_{\xi}\subseteq C'_{\xi}$ for $\xi\in A$.
+
+If $\xi\in A\setminus V$, $D\cap C'_{\xi}$ is determined by coordinates in
+a set not containing $\{(\xi,0)\}$, but is included in $C'_{\xi}$, so must
+be empty.   Thus
+
+\Centerline{$D\subseteq D'
+=\sup_{\xi\in A\cap V}D'\cap C_{\xi}\cap C'_{\xi}
+\subseteq G_V$,}
+
+\noindent which is impossible.\ \BanG\  Accordingly
+$G_V=G'_V$, as claimed.\ \Qed
+
+Note next that if $V$, $V'\in\Cal V$ and $V\cap A\ne V'\cap A$, then
+$G_V\ne G_{V'}$, because if $\xi\in A\cap(V\symmdiff V')$ then
+$C_{\xi}\cap C'_{\xi}\subseteq G_V\symmdiff G_{V'}$.
+
+At this point, consider $f(G^*)$.   For each $V\in\Cal V$ such that
+$\zeta\in V$, there must be some $H_V\in f(G^*)\cap f(G_V)$ such that
+$G_V\subseteq H_V\subseteq G^*$.   By the definition of $\Cal V$,
+$H_V\in\frak G_V$ so $H_V\subseteq G'_V=G_V$ and $H_V=G_V$.   But this
+shows that
+
+\Centerline{$\#(\{V\cap A:\zeta\in V\in\Cal V\})
+\le\#(\{G_V:\zeta\in V\in\Cal V\})
+\le\#(f(G^*))
+<\kappa$.}
+
+\medskip
+
+{\bf (e)} Now take any countable $A\subseteq\lambda$.   By (d), we see that
+$\#(\{A\cap V:\zeta\in V\in\Cal V\})<\kappa$ for every $\zeta\in A$.
+But now
+
+\Centerline{$\{A\cap V:V\in\Cal V\}
+\subseteq\{\emptyset\}
+  \cup\bigcup_{\zeta\in A}\{A\cap V:\zeta\in V\in\Cal V\}$}
+
+\noindent has size less than $\kappa$, because $\cf\kappa>\omega$.
+This completes the proof.
+}%end of proof of 518J
+
+\vleader{36pt}{518K}{Theorem}\cmmnt{
+({\smc Fuchino Geschke Shelah \& Soukup 01})}
+Suppose that $\lambda>\frak c$ is a cardinal of countable cofinality
+such that CTP$(\lambda^+,\lambda)$ is true\cmmnt{ (definition: 5A6F)}.
+Let $\frak A$ be a Dedekind
+complete Boolean algebra of size at least $\lambda$.   Then
+$\FN(\frak A)\ge\omega_2$.
+
+\proof{{\bf (a)} By 518Cb and 518Cc, it is enough to show that
+$\FN(\frak G)\ge\omega_2$, where $\frak G$ is the regular open algebra
+of $\{0,1\}^{\lambda}$.
+
+\medskip
+
+{\bf (b)} \Quer\ Suppose, if possible, that $\FN(\frak G)\le\omega_1$.
+Let $\Cal V\subseteq[\lambda]^{\le\frak c}$ be as in 518J, with
+$\kappa=\omega_1$.   Note first that if $\Cal V'\subseteq\Cal V$ and
+$\#(\Cal V')\le\lambda$ then there is an
+$A\in[\lambda]^{\le\omega}$ such that $A\not\subseteq V$ for
+every $V\in\Cal V'$.   \Prf\ Let $\sequencen{\lambda_n}$ be a sequence
+of cardinals less than $\lambda$ with supremum $\lambda$.   Express
+$\Cal V'$ as
+$\bigcup_{n\in\Bbb N}\Cal V_n$ where $\#(\Cal V_n)\le\lambda_n$ for each
+$n$.   For each $n\in\Bbb N$,
+$\#(\bigcup\Cal V_n)<\lambda$, so we can find
+an $\alpha_n\in\lambda\setminus\bigcup\Cal V_n$;  now
+$A=\{\alpha_n:n\in\Bbb N\}$ is not included in any member of $\Cal V'$.\
+\Qed
+
+Choose $\ofamily{\xi}{\lambda^+}{A_{\xi}}$ and
+$\ofamily{\xi}{\lambda^+}{V_{\xi}}$ inductively, as follows.   Given
+$V_{\eta}\in\Cal V$ for $\eta<\xi$, choose
+$A_{\xi}\in[\lambda]^{\le\omega}$ such that
+$A_{\xi}\not\subseteq V_{\eta}$ for every $\eta<\xi$;  now take
+$V_{\xi}\in\Cal V$ such that $A_{\xi}\subseteq V_{\xi}$, and continue.
+
+Because CTP$(\lambda^+,\lambda)$ is true, there is an uncountable set
+$B\subseteq\lambda^+$ such that $C=\bigcup_{\xi\in B}A_{\xi}$ is
+countable (5A6F(b-ii)).   If $\eta$, $\xi\in B$ and $\eta<\xi$, then
+$A_{\xi}=A_{\xi}\cap C\cap V_{\xi}\not\subseteq V_{\eta}$, so
+$C\cap V_{\xi}\ne C\cap V_{\eta}$.   But this means that
+$\{C\cap V:V\in\Cal V\}$ is uncountable, contrary to the choice of
+$\Cal V$.\ \Bang
+
+Thus $\FN(\frak G)\ge\omega_2$, and the proof is complete.
+}%end of proof of 518K
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Compare {\smc Fuchino \& Soukup 97}, Theorem 12,
+where it is shown that if the generalized continuum hypothesis and
+CTP$(\omega_{\omega+1},\omega_{\omega})$ are both true the
+Freese-Nation number of $[\omega_{\omega}]^{\le\omega}$ is greater than
+$\omega_1$, and also {\smc Fuchino Geschke Shelah \& Soukup 01}, Theorem
+4.2, where a different special axiom is used to find a ccc Dedekind
+complete Boolean algebra of size $\omega_{\omega+1}$ with Freese-Nation
+number greater than $\omega_1$.
+}%end of comment
+
+\leader{518L}{}\cmmnt{ I turn now to the associated idea of `tight
+filtration' (511Di).   Before discussing conditions ensuring the existence
+of such filtrations, I give the application of the idea which is most
+important for this book.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $\frak A$ be a Dedekind $\sigma$-complete
+Boolean algebra, $\frak B$ a tightly $\omega_1$-filtered Boolean algebra,
+and $\pi:\frak A\to\frak B$ a surjective sequentially order-continuous
+Boolean homomorphism;  suppose that $\frak B\ne\{0\}$.   Then there is a
+Boolean homomorphism $\theta:\frak B\to\frak A$ such that $\pi\theta b=b$
+for every $b\in\frak B$.
+
+\proof{ Let $\ofamily{\xi}{\zeta}{b_{\xi}}$ be a tight
+$\omega_1$-filtration in $\frak B$;  for $\alpha\le\zeta$,
+write $\frak C_{\alpha}$ for the
+subalgebra of $\frak B$ generated by $\{b_{\xi}:\xi<\alpha\}$.   Define
+Boolean homomorphisms $\theta_{\alpha}:\frak C_{\alpha}\to\frak A$
+inductively, as follows.   Start with $\frak C_0=\{0,1\}$,
+$\theta_00=\emptyset$, $\theta_01=1$.   Given $\theta_{\alpha}$, let
+$B$, $B'\subseteq\frak C_{\alpha}$ be countable sets such that $B$ is
+a cofinal subset of
+$\{b:b\in\frak C_{\alpha}$, $b\Bsubseteq b_{\alpha}\}$ and
+$B'$ is a cofinal subset of
+$\{b:b\in\frak C_{\alpha}$, $b\Bsubseteq 1\Bsetminus b_{\alpha}\}$.
+Choose any $a\in\frak A$ such that $\pi a=b_{\alpha}$ and set
+
+\Centerline{$a_{\alpha}
+=(a\Bcup\sup_{b\in B}\theta_{\alpha}b)
+  \Bsetminus\sup_{b\in B'}\theta_{\alpha}b$.}
+
+\noindent Because $B$ and $B'$ are both countable and $\frak A$ is Dedekind
+$\sigma$-complete, $a_{\alpha}$ is defined in $\frak A$.
+Because $B$ and $B'$ are cofinal with
+$\{b:b\in\frak C_{\alpha}$, $b\Bsubseteq b_{\alpha}\}$ and
+$\{b:b\in\frak C_{\alpha}$, $b\Bsubseteq 1\Bsetminus b_{\alpha}\}$
+respectively,
+$\theta b\subseteq a_{\alpha}$ whenever
+$b\in\frak C_{\alpha}$ and $b\Bsubseteq b_{\alpha}$,
+while $\theta b\Bcap a_{\alpha}=\emptyset$ whenever
+$b\in\frak C_{\alpha}$ and $b\Bsubseteq 1\Bsetminus b_{\alpha}$.
+This means that we can define a Boolean homomorphism
+$\theta_{\alpha+1}:\frak C_{\alpha+1}\to\frak A$ by setting
+
+\Centerline{$\theta_{\alpha+1}((b\Bcap b_{\alpha})
+  \Bcup(c\Bsetminus b_{\alpha}))
+=(\theta_{\alpha}b\Bcap a_{\alpha})
+  \Bcup(\theta_{\alpha}c\Bsetminus a_{\alpha})$}
+
+\noindent for all $b$, $c\in\frak C_{\alpha}$ (312O).
+
+This is the inductive step to a successor ordinal.   For the inductive
+step to a non-zero limit ordinal $\alpha\le\zeta$,
+$\frak C_{\alpha}=\bigcup_{\xi<\alpha}\frak C_{\xi}$ and we can define
+$\theta_{\alpha}$ by setting $\theta_{\alpha}a=\theta_{\xi}a$ whenever
+$\xi<\alpha$ and $a\in\frak C_{\xi}$.
+
+An easy induction (using the hypothesis that $\pi$ is sequentially
+order-continuous) now shows that $c=\pi\theta_{\alpha}c$
+whenever $\alpha\le\zeta$ and $c\in\frak C_{\alpha}$, so that
+$\pi\theta_{\zeta}$ is the identity homomorphism on
+$\frak C_{\zeta}=\frak B$.
+}%end of proof of 518L
+
+\leader{518M}{Theorem} Let $\frak A$ be a Boolean algebra and $\kappa$
+a regular infinite cardinal such that $\FN(\frak A)\le\kappa$ and
+$\#(\frak A)\le\kappa^+$.   Then $\frak A$ is tightly
+$\kappa$-filtered.
+
+\proof{{\bf (a)} Let $\ofamily{\xi}{\kappa^+}{a_{\xi}}$ run over
+$\frak A$, and let $f:\frak A\to[\frak A]^{<\kappa}$ be a Freese-Nation
+function.   For each $\alpha<\kappa^+$, let $\frak A_{\alpha}$ be the
+smallest subalgebra of $\frak A$ containing $a_{\xi}$ for every
+$\xi<\alpha$ and such that $f(a)\subseteq\frak A_{\alpha}$ for every
+$a\in\frak A_{\alpha}$.   Then
+$\ofamily{\alpha}{\kappa^+}{\frak A_{\alpha}}$ is a non-decreasing
+family with union $\frak A$, and
+$\#(\frak A_{\alpha})\le\kappa$ for every $\alpha<\kappa^+$.
+
+\medskip
+
+{\bf (b)(i)} If $\alpha<\kappa^+$, the Freese-Nation index of
+$\frak A_{\alpha}$ in $\frak A$ is at most $\kappa$.   \Prf\ If
+$a\in\frak A$, then whenever $b\in\frak A_{\alpha}$ and $b\Bsubseteq a$,
+there is a $c\in f(a)\cap f(b)\cap[b,a]$.   Now
+$c\in f(a)\cap\frak A_{\alpha}$.   This shows that
+$f(a)\cap\frak A_{\alpha}\cap[0,a]$ is cofinal with
+$\frak A_{\alpha}\cap[0,a]$, so that
+$\cf(\frak A_{\alpha}\cap[0,a])<\kappa$.   By 518Fa, this is what we
+need to know.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} If $\alpha<\kappa^+$, $I\in[\frak A]^{<\kappa}$ and
+$\frak B$ is the subalgebra of $\frak A$ generated by
+$\frak A_{\alpha}\cup I$, then the Freese-Nation index of $\frak B$ in
+$\frak A$ is at most $\kappa$, by 518Fb.
+
+\medskip
+
+{\bf (c)} For each $\alpha<\kappa^+$ enumerate
+$\frak A_{\alpha+1}\setminus\frak A_{\alpha}$ as
+$\ofamily{\xi}{\kappa_{\alpha}}{a_{\alpha\xi}}$, where
+$\kappa_{\alpha}\le\kappa$.   Well-order $\frak A$ by setting
+$a\preccurlyeq a'$ if {\it either} there is some $\alpha<\kappa^+$ such
+that $a\in\frak A_{\alpha}$ and $a'\notin\frak A_{\alpha}$ {\it or}
+there are $\alpha<\kappa^+$ and $\xi\le\eta<\kappa_{\alpha}$ such that
+$a=a_{\alpha\xi}$ and $a'=a_{\alpha\eta}$.
+Let $\zeta\in\On$ be the order type of this well-ordering and
+$\ofamily{\xi}{\zeta}{b_{\xi}}$ the corresponding enumeration of
+$\frak A$.   For each $\beta\le\zeta$, let
+$\frak B_{\beta}$ be the subalgebra of $\frak A$ generated by
+$\{b_{\xi}:\xi<\beta\}$.   Then the Freese-Nation index of
+$\frak B_{\beta}$ in $\frak A$ is at most $\kappa$.    \Prf\ If
+$\beta<\zeta$, there is a largest $\alpha<\kappa^+$ such that
+$\frak A_{\alpha}\subseteq B_{\beta}$, and in this case
+$\frak A_{\alpha}=\frak B_{\gamma}$ for some $\gamma\le\beta$, while
+$\frak A_{\alpha+1}=\frak B_{\gamma'}$ for some $\gamma'>\beta$;
+moreover, $\#(\beta\setminus\gamma)<\kappa_{\alpha}\le\kappa$, because
+$\otp(\gamma'\setminus\gamma)=\kappa_{\alpha}$.   But this means that
+$\frak B$, which is the subalgebra of $\frak A$ generated by
+$\frak A_{\alpha}\cup\{b_{\xi}:\gamma\le\xi<\beta\}$, has Freese-Nation
+index at most $\kappa$, by (b-ii) above.\ \Qed
+
+Thus $\ofamily{\xi}{\zeta}{b_{\xi}}$ is a tight $\kappa$-filtration of
+$\frak A$.
+}%end of proof of 518M
+
+\vleader{72pt}{518N}{Definition} Let $\frak A$ be a Boolean algebra and
+$\kappa$ a cardinal.   Then a {\bf $\kappa$-Geschke system} for
+$\frak A$ is a family $\Bbb G$ of subalgebras of $\frak A$ such that
+
+\inset{($\alpha$) every element of $\frak A$ belongs to an element of
+$\Bbb G$ of size less than $\kappa$;
+
+($\beta$) for any $\Bbb G_0\subseteq\Bbb G$, the subalgebra of $\frak A$
+generated by $\bigcup\Bbb G_0$ belongs to $\Bbb G$;
+
+($\gamma$) whenever $\frak B_1$, $\frak B_2\in\Bbb G$, $a\in\frak B_1$,
+$b\in\frak B_2$ and $a\Bsubseteq b$, then there is a
+$c\in\frak B_1\cap\frak B_2$ such that $a\Bsubseteq c\Bsubseteq b$.}
+
+\cmmnt{\noindent (Of course ($\gamma$) can be rephrased as
+`$\frak B_1\cap\frak B_2\cap[0,b]$ is cofinal with $\frak B_1\cap[0,b]$
+whenever $\frak B_1$, $\frak B_2\in\Bbb G$ and $b\in\frak B_2$'.)}
+
+\leader{518O}{Lemma}\dvArevised{2014}
+Let $\frak A$ be a Boolean algebra,
+$\kappa$ a cardinal and $\Bbb G$ a $\kappa$-Geschke system for
+$\frak A$.   Suppose that $\lambda\ge\kappa$ is a regular uncountable
+cardinal and that
+$f:[\frak A]^{<\omega}\to[\frak A]^{<\lambda}$ is a function.
+Then there is a $\frak B\in\Bbb G$ such that
+$\#(\frak B)<\lambda$ and $f(I)\subseteq\frak B$ whenever
+$I\in[\frak B]^{<\omega}$.
+
+\proof{ Enlarging $f$ if necessary, we may suppose that $f(I)$ always
+includes the subalgebra of $\frak A$ generated by $I$, and that
+$f(\{a\})$ includes a member of $\Bbb G$, of size less than $\kappa$ and
+containing $a$, for every $a\in\frak A$.   If now we take
+$A_0=\emptyset$ and $A_{n+1}=\bigcup\{f(I):I\in[A_n]^{<\omega}\}$ for each
+$n\in\Bbb N$,
+$\frak B=\bigcup_{n\in\Bbb N}A_n$ will be a subalgebra of $\frak A$, of
+size less than $\lambda$, and a union of members of $\Bbb G$, so belongs
+to $\Bbb G$;  while $f(I)\subseteq\frak B$ for every
+$I\in[\frak B]^{<\omega}$.
+}%end of proof of 518O
+
+\leader{518P}{Lemma}\cmmnt{ ({\smc Geschke 02})} Let $\kappa$ be a
+regular uncountable cardinal and $\frak A$ a Boolean algebra.   Then
+$\frak A$ is tightly
+$\kappa$-filtered iff there is a $\kappa$-Geschke system for $\frak A$.
+
+\proof{{\bf (a)} Suppose that $\frak A$ is tightly $\kappa$-filtered.
+
+\medskip
+
+\quad{\bf (i)} Let $\ofamily{\xi}{\zeta}{a_{\xi}}$ be a tight
+$\kappa$-filtration of $\frak A$.   For
+$I\subseteq\zeta$ let $\frak A_I$ be the subalgebra of $\frak A$
+generated by $\{a_{\xi}:\xi\in I\}$.   For $\alpha<\zeta$, there must be
+subsets $U_{\alpha}$, $V_{\alpha}$ of $\frak A_{\alpha}$, of size less
+than $\kappa$, such that $U_{\alpha}$ is cofinal with
+$\frak A_{\alpha}\cap[0,a_{\alpha}]$ and $V_{\alpha}$ is cofinal with
+$\frak A_{\alpha}\cap[0,1\Bsetminus a_{\alpha}]$.   Let
+$K_{\alpha}\in[\alpha]^{<\kappa}$ be such that
+$U_{\alpha}\cup V_{\alpha}\subseteq\frak A_{K_{\alpha}}$.
+
+Write $\Cal M$ for the family of those subsets $M$ of $\zeta$ such that
+$K_{\alpha}\subseteq M$ for every $\alpha\in M$.
+
+\medskip
+
+\quad{\bf (ii)} If $M$, $N\in\Cal M$, $\gamma\le\zeta$,
+$a\in\frak A_{M\cap\gamma}$, $b\in\frak A_{N\cap\gamma}$ and
+$a\Bsubseteq b$, then there is a $c\in\frak A_{M\cap N\cap\gamma}$ such
+that $a\Bsubseteq c\Bsubseteq b$.   \Prf\ Induce on $\gamma$.
+
+\medskip
+
+\qquad\grheada\ If $\gamma=0$ then
+
+\Centerline{$\frak A_{M\cap\gamma}=\frak A_{N\cap\gamma}
+=\frak A_{M\cap N\cap\gamma}=\{0,1\}$}
+
+\noindent and the result is trivial.
+
+\medskip
+
+\qquad\grheadb\ For the inductive step to $\gamma=\alpha+1$, consider
+the following cases.
+
+\quad\qquad{\bf case 1} If $\alpha\notin M\cup N$ then
+$a\in\frak A_{M\cap\alpha}$ and
+$b\in\frak A_{N\cap\alpha}$, so the inductive hypothesis gives us a
+$c\in\frak A_{M\cap N\cap\alpha}$ such that $a\Bsubseteq c\Bsubseteq b$.
+
+\quad\qquad{\bf case 2} If $\alpha\in N\setminus M$, then
+$a\in\frak A_{M\cap\alpha}$ and
+$b$ is of the form $(b'\Bcap a_{\alpha})\Bcup(b''\Bsetminus a_{\alpha})$
+where $b'$, $b''\in\frak A_{N\cap\alpha}$.   Now
+$a\Bsetminus b'\in\frak A_{\alpha}$ and
+$a\Bsetminus b'\Bsubseteq 1\Bsetminus a_{\alpha}$, so there is a
+$v\in V_{\alpha}$ such that $a\Bsetminus b'\Bsubseteq v$.   Since
+$K_{\alpha}\subseteq N\cap\alpha$, $v\in\frak A_{N\cap\alpha}$.
+Similarly, there
+is a $u\in U_{\alpha}\subseteq\frak A_{N\cap\alpha}$ such that
+$a\Bsetminus b''\Bsubseteq u$.   We have
+
+\Centerline{$a\Bsubseteq(u\Bcap b')\Bcup(v\Bcap b'')\Bcup(b'\Bcap b'')
+\in\frak A_{N\cap\alpha}$,}
+
+\noindent so the inductive hypothesis tells us that there is a
+$c\in\frak A_{M\cap N\cap\alpha}$ such that
+
+\Centerline{$a\Bsubseteq c
+\Bsubseteq(u\Bcap b')\Bcup(v\Bcap b'')\Bcup(b'\Bcap b'')
+\Bsubseteq b$.}
+
+\quad\qquad{\bf case 3} Similarly, if $\alpha\in M\setminus N$,
+then we express $a$ as
+$(a'\Bcap a_{\alpha})\Bcup(a''\Bsetminus a_{\alpha})$ where $a'$,
+$a''\in\frak A_{M\cap\alpha}$, and find
+$v\in V_{\alpha}\subseteq\frak A_{M\cap\alpha}$,
+$u\in U_{\alpha}\subseteq\frak A_{M\cap\alpha}$,
+$c\in\frak A_{M\cap N\cap\alpha}$ such that
+
+\Centerline{$a'\Bsetminus b\Bsubseteq v$,
+\quad$a''\Bsetminus b\Bsubseteq u$,}
+
+\Centerline{$a\Bsubseteq c
+\Bsubseteq(b\Bcup u)\Bcap(b\Bcup v)\Bsubseteq b$.}
+
+\quad\qquad{\bf case 4} Finally, if $\alpha\in M\cap N$, express $a$ as
+$(a'\Bcap a_{\alpha})\Bcup(a''\Bsetminus a_{\alpha})$ and
+$b$ as $(b'\Bcap a_{\alpha})\Bcup\penalty-100(b''\Bsetminus a_{\alpha})$
+where $a'$,
+$a''$ belong to $\frak A_{M\cap\alpha}$ and $b'$, $b''$ belong to
+$\frak A_{N\cap\alpha}$.   As $a'\Bsetminus b'$ belongs to
+$\frak A_{\alpha}$ and is included in $1\Bsetminus a_{\alpha}$, there is
+a $v\in V_{\alpha}$ such that $a'\Bsetminus b'\Bsubseteq v$;  as
+$K_{\alpha}\subseteq M\cap N\cap\alpha$, $v\in\frak A_{M\cap N\cap\alpha}$.
+Now $a'\Bsetminus v\in\frak A_{M\cap\alpha}$,
+$b'\Bsetminus v\in\frak A_{N\cap\alpha}$ and
+$a'\Bsetminus v\Bsubseteq b'\Bsetminus v$, so the inductive hypothesis
+tells us that there is a $c'\in\frak A_{M\cap N\cap\alpha}$ such that
+$a'\Bsetminus v\Bsubseteq c'\Bsubseteq b'\Bsetminus v$;  in which case
+$c'\Bcap a_{\alpha}\in\frak A_{M\cap N\cap\gamma}$ and
+
+\Centerline{$a'\Bcap a_{\alpha}
+=a'\Bcap a_{\alpha}\Bsetminus v\Bsubseteq c'\Bcap a_{\alpha}
+\Bsubseteq b'\Bcap a_{\alpha}\Bsetminus v
+=b'\Bcap a_{\alpha}$.}
+
+\noindent Similarly, there are $u\in\frak A_{M\cap N\cap\alpha}$,
+$c''\in\frak A_{M\cap N\cap\gamma}$ such that
+
+\Centerline{$a''\Bsetminus b''\Bsubseteq v$,
+\quad$a''\Bsetminus u\Bsubseteq c''\Bsubseteq b''\Bsetminus u$,
+\quad$a''\Bsetminus a_{\alpha}\Bsubseteq c''\Bsetminus a_{\alpha}
+\Bsubseteq b''\Bsetminus a_{\alpha}$.}
+
+\noindent Putting these together,
+$c=(c'\Bcap a_{\alpha})\Bcup(c''\Bsetminus a_{\alpha})$ belongs to
+$\frak A_{M\cap N\cap\gamma}$ and $a\Bsubseteq c\Bsubseteq b$.
+
+Thus the induction proceeds to a successor ordinal $\gamma$.
+
+\medskip
+
+\qquad\grheadc\ If $\gamma>0$ is a limit ordinal,
+$a\in\frak A_{M\cap\gamma}$ and $b\in\frak A_{N\cap\gamma}$ and
+$a\Bsubseteq b$, then there is some $\alpha<\gamma$ such that $a\in\frak
+A_{M\cap\alpha}$ and $b\in\frak A_{N\Bcap\alpha}$, so the inductive
+hypothesis gives us a
+$c\in\frak A_{M\cap N\cap\alpha}\subseteq\frak A_{M\cap N\cap\gamma}$
+with $a\Bsubseteq c\Bsubseteq b$, and again the induction proceeds.\
+\Qed
+
+\medskip
+
+\quad{\bf (ii)} Now set $\Bbb G=\{\frak A_M:M\in\Cal M\}$, and consider
+the conditions ($\alpha$)-($\gamma$) of 518N.
+
+\medskip
+
+\qquad\grheada\ For any $a\in\frak A$, there is a finite set
+$I\subseteq\zeta$ such that $a\in\frak A_I$.   Let $M$ be the smallest
+element of $\Cal M$ including $I$;  then (because $\kappa$ is regular
+and uncountable) $\#(M)<\kappa$, so $\#(\frak A_M)<\kappa$, while
+$a\in\frak A_M\in\Bbb G$.
+
+\medskip
+
+\qquad\grheadb\ If $\Bbb G_0\subseteq\Bbb G$, consider
+$\Cal M^*=\{M:M\in\Cal M$, $\frak A_M\in\Bbb G_0\}$.   Then
+$M^*=\bigcup\Cal M^*$ belongs to $\Cal M$, and $\frak A_{M^*}\in\Bbb G$
+must be the subalgebra of $\frak A$ generated by $\bigcup\Bbb G_0$.
+
+\medskip
+
+\qquad\grheadc\ Finally, condition ($\gamma$) is just (ii) above with
+$\gamma=\zeta$.
+
+So $\Bbb G$ is a $\kappa$-Geschke system for $\frak A$.
+
+\medskip
+
+{\bf (b)} Suppose that $\frak A$ has a $\kappa$-Geschke system
+$\Bbb G$.   I seek to use the ideas of the proof of 518M.
+
+\medskip
+
+\quad{\bf (i)} Enumerate $\frak A$ as $\ofamily{\xi}{\lambda}{a_{\xi}}$,
+and for each $\xi<\lambda$ let $\frak C_{\xi}\in\Bbb G$ be such that
+$a_{\xi}\in\frak C_{\xi}$ and $\#(\frak C_{\xi})<\kappa$.   For
+$\alpha\le\lambda$ let $\frak A_{\alpha}$ be the subalgebra of $\frak A$
+generated by $\bigcup_{\xi<\alpha}\frak C_{\xi}$, so that
+$\frak A_{\alpha}\in\Bbb G$.   Set
+$C_{\alpha}=\frak C_{\alpha}\setminus\frak A_{\alpha}$ for each
+$\alpha<\lambda$.   An easy induction shows that, for any
+$\alpha\le\lambda$, $\frak A_{\alpha}$ is the subalgebra of $\frak A$
+generated by $\bigcup_{\xi<\alpha}C_{\xi}$.
+
+\medskip
+
+\quad{\bf (ii)} If $\alpha\le\lambda$, the Freese-Nation index of
+$\frak A_{\alpha}$ in $\frak A$ is at most $\kappa$.   \Prf\ For any
+$\xi<\lambda$ and $b\in\frak A_{\alpha}\cap[0,a_{\xi}]$ there must be a
+$c\in\frak A_{\alpha}\cap\frak C_{\xi}$ such that
+$b\Bsubseteq c\Bsubseteq a_{\xi}$, because both $\frak A_{\alpha}$ and
+$\frak C_{\xi}$ belong to $\Bbb G$;  so
+$\frak C_{\xi}\cap\frak A_{\alpha}\cap[0,a_{\xi}]$ is cofinal with
+$\frak A_{\alpha}\cap[0,a_{\xi}]$ and
+$\cf(\frak A_{\alpha}\cap[0,a_{\xi}])\le\#(\frak C_{\xi})<\kappa$.
+Similarly, $\frak C_{\xi}\cap\frak A_{\alpha}\cap[a_{\xi},1]$ is
+coinitial with $\frak A_{\alpha}\cap[a_{\xi},1]$ and
+$\ci(\frak A_{\alpha}\cap[a_{\xi},1])<\kappa$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} List $\bigcup_{\alpha<\lambda}C_{\alpha}$ as
+$\ofamily{\xi}{\zeta}{b_{\xi}}$, where $\zeta$ is an ordinal, in such a
+way that whenever $\xi\le\eta<\zeta$, $b_{\xi}\in C_{\alpha}$ and
+$b_{\eta}\in C_{\beta}$, then $\alpha\le\beta$.   Then
+$\{b_{\xi}:\xi<\zeta\}$ generates $\frak A$.   If $\beta<\zeta$ and
+$\frak B_{\beta}$ is the subalgebra of $\frak A$ generated by
+$\{b_{\xi}:\xi<\beta\}$, let $\alpha$ be such that
+$b_{\xi}\in C_{\alpha}$;  then $\frak A_{\alpha}=\frak B_{\gamma}$ for
+some $\gamma\le\beta$, $\#(\beta\setminus\gamma)<\#(C_{\alpha})<\kappa$
+and $\frak B_{\beta}$ is the subalgebra of $\frak A$ generated by
+$\frak A_{\alpha}\cup\{b_{\xi}:\gamma\le\xi<\beta\}$, so has
+Freese-Nation index at most $\kappa$ in $\frak A$, by 518Fb.   This
+shows that $\ofamily{\xi}{\zeta}{b_{\xi}}$ is a tight
+$\kappa$-filtration of $\frak A$, and $\frak A$ is tightly
+$\kappa$-filtered.
+}%end of proof of 518P
+
+\leader{518Q}{Corollary} Let $\kappa$ be a regular uncountable cardinal
+and $\frak A$ a tightly $\kappa$-filtered Boolean algebra.
+
+(a) If $\frak C$ is a retract of $\frak A$\cmmnt{ (that is, $\frak C$ is a
+subalgebra of $\frak A$ and there is a
+Boolean homomorphism $\pi:\frak A\to\frak C$ such that $\pi c=c$ for
+every $c\in\frak C$)}, then $\frak C$ is tightly $\kappa$-filtered.
+
+(b) If $\frak C$ is a subalgebra of $\frak A$ which is\cmmnt{ (in
+itself)} Dedekind complete, then $\frak C$ is tightly $\kappa$-filtered.
+
+\proof{{\bf (a)} By 518P there is a $\kappa$-Geschke system $\Bbb G$ for
+$\frak A$.   Let $\Bbb G_1$ be the set of those $\frak B\in\Bbb G$ such
+that $\pi[\frak B]\subseteq\frak B$.   Then $\Bbb G_1$ is a
+$\kappa$-Geschke system.   \Prf\ Of course $\Bbb G_1$ satisfies
+($\gamma$) of 518N, just because $\Bbb G_1\subseteq\Bbb G$.   As for
+($\beta$), if $\Bbb G_0\subseteq\Bbb G_1$ and $\frak B^*$ is the
+subalgebra generated by $\bigcup\Bbb G_0$, then $\frak B^*\in\Bbb G$ and
+$\pi[\frak B^*]$ must be the subalgebra generated by
+$\bigcup_{\frak B\in\Bbb G_0}\pi[\frak B]\subseteq\frak B^*$, so
+$\pi[\frak B^*]\subseteq\frak B^*$ and $\frak B^*\in\Bbb G_1$.
+Finally, if $a\in\frak A$, 518O (taking $\lambda=\kappa$ and
+$f(I)=\{a\}\cup\pi[I]$) tells us that there
+is a $\frak B\in\Bbb G_1$ containing $a$ and of size less than
+$\kappa$.\ \Qed
+
+Observe next that because $\pi c=c$ for every $c\in\frak C$,
+$\pi[\frak B]=\frak B\cap\frak C$ for every $\frak B\in\Bbb G_1$.   Set
+$\Bbb H=\{\frak B\cap\frak C:\frak B\in\Bbb G_1\}$.   Then $\Bbb H$ is a
+$\kappa$-Geschke system for $\frak C$.   \Prf\ ($\alpha$) If
+$c\in\frak C$ there is a $\frak B\in\Bbb G_1$ such that $c\in\frak B$
+and $\#(\frak B)<\kappa$;  now $c\in\frak B\cap\frak C\in\Bbb H$ and
+$\#(\frak B\cap\frak C)<\kappa$.
+($\beta$) If
+$\Bbb H'\subseteq\Bbb H$, set
+$\Bbb G_1'=\{\frak B:\frak B\in\Bbb G_1$, $\frak B\cap\frak C\in\Bbb H'\}$.
+Then the subalgebra $\frak B^*$ generated by $\bigcup\Bbb G_1'$ belongs to
+$\Bbb G_1$, and $\pi[\frak B^*]\in\Bbb H$ is the subalgebra generated by
+$\bigcup\{\pi[\frak B]:\frak B\in\Bbb G'_1\}=\bigcup\Bbb H$.
+($\gamma$) If
+$b_1\in\frak D_1\in\Bbb H$, $b_2\in\frak D_2\in\Bbb H$ and
+$b_1\Bsubseteq b_2$, express $\frak D_1$, $\frak D_2$ as
+$\frak B_1\cap\frak C$, $\frak B_2\cap\frak C$ where $\frak B_1$ and
+$\frak B_2$ belong to $\Bbb G_1$.   Then there is a
+$b\in\frak B_1\cap\frak B_2$ such that $b_1\Bsubseteq b\Bsubseteq b_2$;
+in which case $\pi b\in\frak D_1\cap\frak D_2$ and
+
+\Centerline{$b_1=\pi b_1\Bsubseteq\pi b\Bsubseteq\pi b_2=b_2$.}
+
+\noindent Thus
+$\Bbb H$ satisfies ($\gamma$) of 518N and is a $\kappa$-Geschke system
+for $\frak C$.   By 518P in the other direction, $\frak C$ is tightly
+$\kappa$-filtered.\ \Qed
+
+\medskip
+
+{\bf (b)} In this case, the identity map from $\frak C$ to itself
+extends to a Boolean homomorphism from $\frak A$ to $\frak C$ (314K), so
+we can use (a).
+}%end of proof of 518Q
+
+\leader{518R}{Lemma} (a) Let $I$ be a set and $\frak G$ the regular open
+algebra of $\{0,1\}^I$.   For $J\subseteq I$ let $\frak G_J$ be the
+order-closed subalgebra of $\frak G$ consisting of regular open sets
+determined by coordinates in $J$.   Suppose that $J$ and $K$ are
+disjoint subsets of $I$, and $\family{q}{\Bbb Q}{a_q}$,
+$\family{q}{\Bbb Q}{b_q}$ disjoint families in
+$\frak G_J\setminus\{\emptyset\}$ and
+$\frak G_K\setminus\{\emptyset\}$ respectively.   For $t\in\Bbb R$ set
+$w_t=\sup_{p,q\in\Bbb Q,p\le t\le q}a_q\cap b_p$, the supremum being
+taken in $\frak G$;  set $w=\sup_{p,q\in\Bbb Q,p\le q}a_q\cap b_p$.
+If $w'\subseteq w$ belongs to the subalgebra of $\frak G$ generated by
+$\frak G_{I\setminus K}\cup\frak G_{I\setminus J}$, then
+$\{t:w_t\subseteq w'\}$ is finite.
+
+(b) If $I=\omega_3$ then $\frak G$ is not tightly
+$\omega_1$-filtered.
+
+\proof{{\bf (a)(i)} I had better explain why each $\frak G_J$ is an
+order-closed subalgebra;  the point is just that if
+$A\subseteq\{0,1\}^I$ is determined by coordinates in $J\subseteq I$
+then so are its closure and interior (4A2B(g-i) again),
+so that the operations
+$\Cal H\mapsto\interior(\bigcap\Cal H)$,
+$\Cal H\mapsto\interior\overline{\bigcup\Cal H}$ take subsets of
+$\frak G_J$ to members of $\frak G_J$.
+
+\medskip
+
+\quad{\bf (ii)} $w'$ must be expressible in the form
+$\sup_{i<n}u_i\cap v_i$ where $u_i\in\frak G_{I\setminus K}$ and
+$v_i\in\frak G_{I\setminus J}$ for each $i$.   \Quer\ Suppose, if
+possible, that there are $t_0<t_1<\ldots<t_n$ in $\Bbb R$ such that
+$w_{t_j}\subseteq\sup_{i<n}u_i\cap v_i$ for every $j$.   Take rational
+numbers $q_j$ and $q'_j$, for $j\le n$, such that
+$q_0\le t_0\le q'_0<q_1\le t_1\le q'_1<\ldots<q_n\le t_n\le q'_n$.   Set
+$e_{-1}=\{0,1\}^I$.    Choose $i_j$, $e_j$, $c_j$, $c'_j$ and $c''_j$
+inductively, for $j\le n$, as follows.   Given that
+$e_{j-1}\in\frak G_{I\setminus(J\cup K)}$ is non-empty, where $j\le n$,
+then $a_{q'_j}$, $b_{q_j}$ and $e_{j-1}$ are non-empty sets determined
+by coordinates in $J$, $K$ and $I\setminus(J\cup K)$ respectively, so
+have non-empty intersection;  also
+$a_{q'_j}\cap b_{q_j}\subseteq w_{t_j}\subseteq\sup_{i<n}u_i\cap v_i$.
+There is therefore an $i_j<n$ such that
+$a_{q'_j}\cap b_{q_j}\cap e_{j-1}\cap u_{i_j}\cap v_{i_j}$ is non-empty,
+and includes a basic cylinder set $c_j$ say.   Now we can express $c_j$
+as $c'_j\cap c''_j\cap e_j$ where $c'_j$ is determined by coordinates in
+$J$, $c''_j$ by coordinates in $K$ and $e_j$ by coordinates in
+$I\setminus(J\cup K)$;  note that $e_j\subseteq e_{j-1}$, and continue.
+
+At the end of this process, there must be $j<k\le n$ such that
+$i_j=i_k=i$ say.   Now $q'_j<q_k$, so
+
+\Centerline{$a_{q'_j}\cap b_{q_k}\cap u_i\cap v_i
+\subseteq a_{q'_j}\cap b_{q_k}\cap w=\emptyset$.}
+
+\noindent (Recall that $\family{q}{\Bbb Q}{a_q}$ and
+$\family{q}{\Bbb Q}{b_q}$ are disjoint.)
+On the other hand, $c'_j\cap c''_j\cap e_j\subseteq u_i$,
+which is determined by coordinates in $I\setminus K$, so
+$c'_j\cap e_j\subseteq u_i$;  similarly, $c''_k\cap e_k\subseteq v_i$;
+so
+
+\Centerline{$cap c'_j\cap e_j\cap c''_k\cap e_k
+\Bsubseteq a_{q'_j}\cap b_{q_k}\cap u_i\cap v_i
+=\emptyset$.}
+
+\noindent But $c'_j$, $c''_k$ and
+$e_j\cap e_k$ are all non-empty and determined by coordinates in
+$J$, $K$ and $I\setminus(J\cup K)$ respectively, so this is impossible.\
+\Bang
+
+Thus $\{t:w_t\subseteq w'\}$ has at most $n$ members, and is finite.
+
+\medskip
+
+{\bf (b)} As in 518J, I will work with $I=\omega_3\times\Bbb N$.
+
+\medskip
+
+\quad{\bf (i)} Note that every member of $\frak G$
+belongs to $\frak G_J$ for some countable $J$ (4A2E(b-i) again), so we can
+choose for each $c\in\frak G$ a countable $J(c)\subseteq\omega_3$ such
+that $c\in\frak G_{J(c)\times\Bbb N}$ for some countable $I$.   For each
+$\xi<\omega_3$, let $\family{q}{\Bbb Q}{a_{\xi q}}$ be a disjoint family
+of non-zero elements of $\frak G_{\{\xi\}\times\Bbb N}$.   For
+$t\in\Bbb R$, $\xi<\omega_3$ set
+$c'_{\xi t}=\sup_{q\in\Bbb Q,q\le t}a_{\xi q}$,
+$c''_{\xi t}=\sup_{q\in\Bbb Q,q\ge t}a_{\xi q}$.
+Let $T\subseteq\Bbb R$ be a set of size $\omega_1$.   For
+$D\subseteq\frak G$ set $\tilde J(D)=\bigcup_{c\in D}J(c)$.
+
+\medskip
+
+\quad{\bf (ii)} \Quer\ Suppose, if possible, that $\frak G$ is tightly
+$\omega_1$-filtered.   Then it has an $\omega_1$-Geschke system $\Bbb B$
+say (518P).   By 518O, with $\lambda=\omega_3$ and
+
+\Centerline{$f(\emptyset)=\{c''_{\xi t}:\xi<\omega_2$, $t\in T\}=C$}
+
+\noindent say, there is a $\frak B_1\in\Bbb B$ such that
+$C\subseteq\frak B_1$ and $\#(\frak B_1)\le\omega_2$;
+take $\xi\in\omega_3\setminus\tilde J(\frak B_1)$, and let
+$\frak B_2\in\Bbb B$ be such that $\frak B_2$ is countable and
+$a_{\xi p}\in\frak B_2$ for every $p\in\Bbb Q$.
+Then $\tilde J(\frak B_2)$ is countable,
+so there is an $\eta\in\omega_2\setminus\tilde J(\frak B_2)$.
+
+Set $w=\sup_{p,q\in\Bbb Q,p\le q}a_{\xi p}\Bcap a_{\eta q}$, and for
+$t\in T$ set
+$w_t=c'_{\xi t}\Bcap c''_{\eta t}$.   Then $w$
+belongs to a countable $\frak B_0\in\Bbb B$, while the subalgebra
+$\frak B^*$ of $\frak G$ generated by $\frak B_1\cup\frak B_2$ belongs
+to $\Bbb B$.   But if we set $J=\{\xi\}\times\Bbb N$,
+$K=\{\eta\}\times\Bbb N$ then we see that
+$\frak B_1\subseteq\frak G_{(\omega_3\times\Bbb N)\setminus J}$ and
+$\frak B_2\subseteq\frak G_{(\omega_3\times\Bbb N)\setminus K}$.   So
+(a) tells us that any member of $\frak B^*$ included in $w$ can include
+only finitely many $w_t$, while $w_t\in\frak B^*\cap[0,w]$.   Thus
+$\cf(\frak B^*\cap[0,w])\ge\omega_1$.   On the other hand,
+by ($\gamma$) of 518N, the countable set
+$\frak B_0\cap\frak B^*\cap[0,w]$ is cofinal with $\frak B^*\cap[0,w]$.\
+\Bang
+
+This contradiction proves the result.
+}%end of proof of 518R
+
+\leader{518S}{Theorem}\cmmnt{ ({\smc Geschke 02})} If $\frak A$ is a
+tightly $\omega_1$-filtered
+Dedekind complete Boolean algebra then $\#(\frak A)\le\omega_2$.
+
+\proof{ \Quer\ Otherwise, by 515I, $\frak A$ has a subalgebra $\frak C$
+isomorphic to
+the regular open algebra of $\{0,1\}^{\omega_3}$.   By
+518Rb, $\frak C$ is not tightly $\omega_1$-filtered;  by 518Qb, nor is
+$\frak A$.\ \Bang
+}%end of proof of 518S
+
+\exercises{\leader{518X}{Basic exercises (a)}
+%\spheader 518Xa
+Let $\frak A$ be a Boolean algebra and $\frak B$ a
+principal ideal of $\frak A$.   Show that $\FN(\frak B)\le\FN(\frak A)$.
+%518B
+
+\spheader 518Xb Show that $\FN(\alpha)=\#(\alpha)$ for every infinite
+ordinal $\alpha$.
+%518A out of order query
+
+\spheader 518Xc\dvAnew{2014} Show that if $P$ and $Q$
+are partially ordered sets, then $\FN(P\times Q)$ is at most the
+cardinal product $\FN(P)\cdot\FN(Q)$.
+%518A
+
+\sqheader 518Xd Show that $\FN(\Cal P\Bbb N)\ge\omega_1$.
+%518C 522U
+
+\spheader 518Xe Show that $\FN(\Bbb Q)=\omega$ and
+$\FN(\Bbb R)=\omega_1$.
+%518A 518Xd
+
+\spheader 518Xf Show that
+$\FN^*(\Cal P\Bbb N/[\Bbb N]^{<\omega})=\FN^*(\Cal P\Bbb N)$.
+%518D
+
+\spheader 518Xg Let $P$ be a partially ordered set and $Q$ a subset of
+$P$ with Freese-Nation index $\kappa$ in $P$.   Show that if
+$\lambda\ge\max(\kappa,\FN(P))$ is a regular infinite cardinal then
+$\FN(Q)\le\kappa$.
+%518F
+
+\spheader 518Xh\dvAnew{2014}
+Let $P$ be a partially ordered set and $\ofamily{\xi}{\zeta}{P_{\xi}}$ a
+non-decreasing family of subsets of $P$ such that
+$P_{\xi}=\bigcup_{\eta<\xi}P_{\eta}$ for every non-zero limit ordinal
+$\xi\le\zeta$.   Suppose that $\kappa$ is a regular infinite cardinal such
+that the Freese-Nation index of $P_{\xi}$ in $P_{\xi+1}$ is at most
+$\kappa$ for every $\xi<\zeta$.   Show that the Freese-Nation index of
+$P_0$ in $P_{\zeta}$ is at most $\kappa$.
+%518G out of order query
+
+\spheader 518Xi\dvArevised{2014}
+Let $\frak A$ be a Boolean algebra, $\kappa$ a
+regular infinite cardinal and $\ofamily{\xi}{\zeta}{a_{\xi}}$ a
+family in
+$\frak A$.   For each $\alpha\le\zeta$ let $\frak A_{\alpha}$ be the
+subalgebra of $\frak A$ generated by $\{a_{\xi}:\xi<\alpha\}$.   Suppose
+that $\frak A_{\zeta}=\frak A$ and that the Freese-Nation index of
+$\frak A_{\alpha}$ in $\frak A_{\alpha+1}$ is at most $\kappa$ for every
+$\alpha<\zeta$.   Show that $\ofamily{\xi}{\zeta}{a_{\xi}}$ is a tight
+$\kappa$-filtration of $\frak A$.
+%518Xh 518G
+
+\spheader 518Xj Suppose that $\frak c=\omega_1$.   Show
+that any Dedekind complete ccc Boolean algebra with cardinal at most
+$\frak c^+=\omega_2$ is tightly $\omega_1$-filtered.
+%518M
+
+\spheader 518Xk\dvAnew{2014}
+Let $\frak A$ be a Boolean algebra, $\kappa\le\lambda$ cardinals and
+$\Bbb G$ a $\kappa$-Geschke system for $\frak A$.   Show that
+$\Bbb G$ is a $\lambda$-Geschke system for $\frak A$.
+%518N out of order query
+
+\spheader 518Xl Let $\kappa\le\frak c$ be a regular uncountable
+cardinal.   Show that if $\frak A$ is a tightly $\kappa$-filtered
+Dedekind complete Boolean algebra then $\#(\frak A)\le\kappa^+$.
+%518S
+
+\leader{518Y}{Further exercises (a)}
+%\spheader 518Ya
+Show that if $P$ is a finite partially ordered set then
+$\FN(P)\le 2+\bover12\#(P)$.
+%518A Fremlin & Penman 2D
+
+\spheader 518Yb Show that $\FN(\Cal PI)>\#(I)$ for every infinite
+set $I$.
+\Hint{{\smc Fuchino Koppelberg \& Shelah 96}.}
+% finite sets $I$ not completely checked.   In Fremlin & Penman we have
+% $\FN(\Cal P3)=5$ and  $(2/sqrt3)^n<\FN(\Cal Pn)$.
+
+\spheader 518Yc(i) Let $\frak A$ be an infinite Boolean algebra.   Show
+that $\FN(S(\frak A))=\FN(\frak A)$.
+(ii)\dvArevised{2014} Let $\frak A$ be a
+Dedekind complete Boolean algebra.   Show that
+$\FN(\frak A)\le\FN(L^0(\frak A))\le\FN(\frak A^{\Bbb N})$.
+}%end of exercises
+
+\endnotes{
+\Notesheader{518} `Freese-Nation numbers' are a relatively recent topic,
+beginning with the investigation of partially ordered sets with
+Freese-Nation numbers at most $\omega$ (the `Freese-Nation property') in
+{\smc Freese \& Nation 78} and those with Freese-Nation numbers at most
+$\omega_1$ (the `weak Freese-Nation property') in {\smc Fuchino
+Koppelberg \& Shelah 96}.   There are interesting puzzles concerning
+the Freese-Nation numbers of finite and countable partially ordered sets
+which I pass over here.   Unlike most of the cardinals discussed in this
+chapter, Freese-Nation numbers refer to the internal, rather than
+cofinal, structure of a partially ordered set.
+
+The Freese-Nation number $\FN(\Cal P\Bbb N)$ appears in many contexts
+besides the identifications of 518D.    I will mention it again in
+522U.   I do not know whether it is consistent to suppose that its
+cofinality is countable.
+
+Of the special axioms used in 518I,
+%($\alpha$) $\cff[\lambda]^{\le\omega}\le\lambda^+$ for every
+%cardinal $\lambda\le\tau(\frak A)$,
+%($\beta$) $\square_{\lambda}$ is true for every uncountable cardinal
+%$\lambda\le\tau(\frak A)$ of countable cofinality.}
+($\alpha$) has a more familiar
+aspect;  for instance, it is a consequence of GCH, regardless of the
+value of $\tau(\frak A)$ (5A6Ab).   ($\beta$) is believed not to be
+a consequence of GCH
+(see 555Yf), but is true in `ordinary' models of set theory (5A6Db, 5A6Bc).
+In 518K I call on a form of Chang's transfer principle;
+this is {\it false} in ordinary models of set
+theory (5A6Fc), but is believed to be relatively consistent with ZFC + GCH
+(5A6Fa).   Freese-Nation numbers are therefore a little exceptional among
+those appearing in measure theory, in that they are not fixed by the
+generalized continuum hypothesis.
+}%end of notes
+
+\discrpage
+

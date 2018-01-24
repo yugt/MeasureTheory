@@ -1,0 +1,2081 @@
+\frfilename{mt376.tex}
+\versiondate{8.4.10}
+\copyrightdate{1996}
+\def\esssup{\mathop{\text{ess sup}}}
+
+\def\chaptername{Linear operators between function spaces}
+\def\sectionname{Kernel operators}
+
+\newsection{376}
+
+The theory of linear integral equations is in large part the theory of
+operators $T$ defined from formulae of the type
+
+\Centerline{$(Tf)(y)=\int k(x,y)f(x)dx$}
+
+\noindent for some function $k$ of two variables.   I make no attempt to
+study the general theory here.   However, the concepts developed in this
+book make it easy to discuss certain aspects of such operators defined
+between the `function spaces' of measure theory, meaning spaces of
+equivalence classes of functions, and indeed allow us to do some of the
+work in the abstract theory of Riesz spaces, omitting all formal mention
+of measures (376D, 376H, 376P).   I give a very brief account of two
+theorems characterizing kernel operators in the abstract (376E, 376H),
+with corollaries to show the form these theorems can take in the
+ordinary language of integral kernels (376J, 376N).   To give an idea of
+the kind of results we can hope for in this area, I go a bit farther
+with operators with domain $L^1$ (376Mb, 376P, 376S).
+
+I take the opportunity to spell out versions of results from \S253 in
+the language of this volume (376B-376C).
+
+\cmmnt{
+\leader{376A}{Kernel operators} To give an idea of where this
+section is going, I will try to describe the central idea in a
+relatively concrete special case.   Let $(X,\Sigma,\mu)$ and
+$(Y,\Tau,\nu)$ be $\sigma$-finite measure spaces;  you can take them
+both to be $[0,1]$ with Lebesgue measure if you like.   Let $\lambda$ be
+the product measure on $X\times Y$.   If $k\in\eusm L^1(\lambda)$, then
+$\int k(x,y)dx$ is defined for almost every $y$, by Fubini's theorem;
+so if $f\in\eusm L^{\infty}(\mu)$ then $g(y)=\int k(x,y)f(x)dx$
+is defined for almost every $y$.   Also
+
+\Centerline{$\int g(y)dy=\int k(x,y)f(x)dxdy$}
+
+\noindent is defined, because $(x,y)\mapsto k(x,y)f(x)$ is
+$\lambda$-virtually measurable, defined $\lambda$-a.e.\ and is
+dominated by a multiple of the integrable function $k$.
+Thus $k$ defines a function from $\eusm L^{\infty}(\mu)$ to $\eusm
+L^1(\nu)$.   Changing $f$ on a set of measure $0$ will not change $g$,
+so we can think of this as an operator from $L^{\infty}(\mu)$ to $\eusm
+L^1(\nu)$;  and of course we can move immediately to the equivalence
+class of $g$ in $L^1(\nu)$, so getting an operator $T_k$ from
+$L^{\infty}(\mu)$ to $L^1(\nu)$.   This operator is plainly linear;
+also it is easy to check that $\pm T_k\le T_{|k|}$, so that $T_k\in\eurm
+L^{\sim}(L^{\infty}(\mu);L^1(\nu))$, and that $\|T_k\|\le\int|k|$.
+Moreover, changing $k$ on a $\lambda$-negligible set does not change
+$T_k$, so that in fact we can speak of $T_w$ for any $w\in
+L^1(\lambda)$.
+
+I think it is obvious, even before investigating them, that operators
+representable in this way will be important.   We can immediately ask
+what their properties will be and whether there is any straightforward
+way of recognising them.   We can look at the properties of the map
+$w\mapsto T_w:L^1(\lambda)\to\eurm L^{\sim}(L^{\infty}(\mu);L^1(\nu))$.
+And we can ask what happens when $L^{\infty}(\mu)$ and $L^1(\nu)$ are
+replaced by other function spaces, defined by extended Fatou norms or
+otherwise.   Theorems 376E and 376H are answers to questions of this kind.
+
+It turns out that the formula $g(y)=\int k(x,y)f(x)dx$ gives rise to a
+variety of technical problems, and it is much easier to characterize
+$Tu$ in terms of its action on the dual.   In the language of the
+special case above, if $h\in\eusm L^{\infty}(\nu)$, then we shall have
+
+\Centerline{$\int k(x,y)f(x)h(y)d(x,y)=\int g(y)h(y)dy$;}
+
+\noindent since $g^{\ssbullet}\in L^1(\nu)$ is entirely determined by
+the integrals $\int g(y)h(y)dy$ as $h$ runs over $\eusm
+L^{\infty}(\nu)$, we can define the operator $T$ in terms of the
+functional $(f,h)\mapsto\int k(x,y)f(x)h(y)d(x,y)$.   This enables us to
+extend the results from the case of $\sigma$-finite spaces to general
+strictly localizable spaces;  perhaps more to the point in the present
+context, it gives them natural expressions in terms of function spaces
+defined from measure algebras rather than measure spaces, as in 376E.
+
+Before going farther along this road, however, I give a couple of
+results relating the theorems of \S253 to the methods of this volume.
+}%end of comment
+
+\leader{376B}{The canonical map $L^0\times L^0\to L^0$:  Proposition}
+Let $(\frak A,\bar\mu)$ and $(\frak B,\bar\nu)$ be semi-finite measure
+algebras, and $(\frak C,\bar\lambda)$ their localizable measure algebra
+free product\cmmnt{ (325E)}.   Then we have a bilinear operator
+$(u,v)\mapsto u\otimes v:
+L^0(\frak A)\times L^0(\frak B)\to L^0(\frak C)$ with the following
+properties.
+
+(a) For any $u\in L^0(\frak A)$, $v\in L^0(\frak B)$ and $\alpha\in\Bbb R$,
+
+\Centerline{$\Bvalue{u\otimes\chi 1_{\frak B}>\alpha}
+=\Bvalue{u>\alpha}\otimes 1_{\frak B}$,
+\quad $\Bvalue{\chi 1_{\frak A}\otimes v>\alpha}
+=1_{\frak A}\otimes\Bvalue{v>\alpha}$}
+
+\noindent where for $a\in\frak A$, $b\in\frak B$ I write $a\otimes b$
+for the corresponding member of
+$\frak A\otimes\frak B$\cmmnt{ (315N)}, identified with a subalgebra
+of $\frak C$\cmmnt{ (325Dc)}.
+
+(b)(i) For any $u\in L^0(\frak A)^+$, the map
+$v\mapsto u\otimes v:L^0(\frak B)\to L^0(\frak C)$ is an
+order-continuous multiplicative Riesz homomorphism.
+
+\quad (ii) For any $v\in L^0(\frak B)^+$, the map
+$u\mapsto u\otimes v:L^0(\frak A)\to L^0(\frak C)$ is an
+order-continuous multiplicative Riesz homomorphism.
+
+(c) In particular, $|u\otimes v|=|u|\otimes|v|$ for all
+$u\in L^0(\frak A)$ and $v\in L^0(\frak B)$.
+
+(d) For any $u\in L^0(\frak A)^+$ and $v\in L^0(\frak B)^+$,
+$\Bvalue{u\otimes v>0}=\Bvalue{u>0}\otimes\Bvalue{v>0}$.
+
+\proof{ The canonical maps $a\mapsto a\otimes 1_{\frak B}$,
+$b\mapsto 1_{\frak A}\otimes b$ from $\frak A$, $\frak B$ to $\frak C$
+are order-continuous Boolean homomorphisms (325Da), so induce
+order-continuous multiplicative Riesz homomorphisms from $L^0(\frak A)$
+and $L^0(\frak B)$ to $L^0(\frak C)$ (364P);  write $\tilde u$,
+$\tilde v$ for the images of
+$u\in L^0(\frak A)$, $v\in L^0(\frak B)$.   Observe that
+$|\tilde u|=|u|^{\sim}$, $|\tilde v|=|v|^{\sim}$ and
+$(\chi 1_{\frak A})^{\sim}=(\chi 1_{\frak B})^{\sim}=\chi 1_{\frak C}$.
+Now set $u\otimes v=\tilde u\times\tilde v$.   The properties
+listed in (a)-(c) are just a matter of putting the definition in
+364Pa together with the fact that $L^0(\frak C)$ is an $f$-algebra
+(364D).   As for
+$\Bvalue{u\otimes v>0}=\Bvalue{\tilde u\times\tilde v>0}$, this is (for
+non-negative $u$, $v$) just
+
+\Centerline{$\Bvalue{\tilde u>0}\Bcap\Bvalue{\tilde v>0}
+=(\Bvalue{u>0}\otimes 1_{\frak B})
+  \Bcap(1_{\frak A}\otimes\Bvalue{v>0})
+=\Bvalue{u>0}\otimes\Bvalue{v>0}$.}
+}%end of proof of 376B
+
+\leader{376C}{}\cmmnt{ For $L^1$ spaces we have a similar result, with
+additions corresponding to the Banach lattice structures of the three
+spaces.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $(\frak A,\bar\mu)$ and $(\frak B,\bar\nu)$
+be semi-finite measure algebras with localizable measure algebra free
+product $(\frak C,\bar\lambda)$.
+
+(a) If $u\in L^1_{\bar\mu}=L^1(\frak A,\bar\mu)$ and
+$v\in L^1_{\bar\nu}=L^1(\frak B,\bar\nu)$ then
+$u\otimes v\in L^1_{\bar\lambda}=L^1(\frak C,\bar\lambda)$ and
+
+\Centerline{$\int u\otimes v=\int u\int v$,
+\quad $\|u\otimes v\|_1=\|u\|_1\|v\|_1$.}
+
+(b) Let $W$ be a Banach space and
+$\phi:L^1_{\bar\mu}\times L^1_{\bar\nu}\to W$ a bounded bilinear operator.
+Then there is a unique
+bounded linear operator $T:L^1_{\bar\lambda}\to W$ such that
+$T(u\otimes v)=\phi(u,v)$ for all $u\in L^1_{\bar\mu}$ and
+$v\in L^1_{\bar\nu}$, and $\|T\|=\|\phi\|$.
+
+(c) Suppose, in (b), that $W$ is a Banach lattice.   Then
+
+\quad(i) $T$ is positive iff $\phi(u,v)\ge 0$ for all $u$, $v\ge 0$;
+
+\quad(ii) $T$ is a Riesz homomorphism iff
+$u\mapsto\phi(u,v_0):L^1_{\bar\mu}\to W$ and
+$v\mapsto\phi(u_0,v):L^1_{\bar\nu}\to W$ are Riesz homomorphisms for all
+$v_0\ge 0$ in $L^1_{\bar\nu}$ and $u_0\ge 0$ in $L^1_{\bar\mu}$.
+
+\proof{{\bf (a)} I refer to the proof of 325D.   Let $(X,\Sigma,\mu)$
+and $(Y,\Tau,\nu)$ be the Stone spaces of $(\frak A,\bar\mu)$ and
+$(\frak B,\bar\nu)$ (321K), so that $(\frak C,\bar\lambda)$ can be
+identified with the measure algebra of the c.l.d.\ product measure
+$\lambda$ on $X\times Y$ (part (a) of the proof of 325D), and
+$L^1_{\bar\mu}$, $L^1_{\bar\nu}$, $L^1_{\bar\lambda}$ can be identified
+with $L^1(\mu)$, $L^1(\nu)$ and $L^1(\lambda)$ (365B).    Now if
+$f\in\eusm L^0(\mu)$ and $g\in\eusm L^0(\nu)$ then
+$f\otimes g\in\eusm L^0(\lambda)$ (253Cb), and it is easy to check that
+$(f\otimes g)^{\ssbullet}\in L^0(\bar\lambda)$ corresponds to
+$f^{\ssbullet}\otimes g^{\ssbullet}$ as defined in 376B.   (Look first
+at the cases in which
+one of $f$, $g$ is a constant function with value $1$.)     By 253E, we
+have a canonical map
+$(f^{\ssbullet},g^{\ssbullet})\mapsto(f\otimes g)^{\ssbullet}$ from
+$L^1(\mu)\times L^1(\nu)$ to $L^1(\lambda)$, with
+$\int f\otimes g=\int f\int g$ (253D);   so that if
+$u\in L^1_{\bar\mu}$ and $v\in L^1_{\bar\nu}$ we must have
+$u\otimes v\in L^1_{\bar\lambda}$, with $\int u\otimes v=\int u\int v$.
+As in 253E, it follows that $\|u\otimes v\|_1=\|u\|_1\|v\|_1$.
+
+\medskip
+
+{\bf (b)} In view of the situation described in (a) above, this is now
+just a translation of the same result about $L^1(\mu)$, $L^1(\nu)$ and
+$L^1(\lambda)$, which is Theorem 253F.
+
+\medskip
+
+{\bf (c)} Identifying the algebraic free product $\frak A\otimes\frak B$
+with its canonical image in $\frak C$ (325Dc), I write
+$(\frak A\otimes\frak B)^f$ for
+$\{c:c\in\frak A\otimes\frak B,\,\bar\lambda c<\infty\}$,
+so that $(\frak A\otimes\frak B)^f$ is a subring of $\frak C$.
+Recall that any member of $\frak A\otimes\frak B$ is expressible
+as $\sup_{i\le n}a_i\otimes b_i$ where $a_0,\ldots,a_n$ are disjoint
+(315Oa);  evidently this will belong to $(\frak A\otimes\frak B)^f$ iff
+$\bar\mu a_i\cdot\bar\nu b_i$ is finite for every $i$.
+
+The next fact to lift from previous theorems is in part (e) of the proof
+of 253F:  the linear span $M$ of
+$\{\chi(a\otimes b):a\in\frak A^f,\,b\in\frak B^f\}$ is norm-dense in
+$L^1_{\bar\lambda}$.    Of
+course $M$ can also be regarded as the linear span of
+$\{\chi c:c\in(\frak A\otimes\frak B)^f\}$, or
+$S(\frak A\otimes\frak B)^f$.
+(Strictly speaking, this last remark relies on 361J;  the identity map
+from $(\frak A\otimes\frak B)^f$ to $\frak C$ induces an injective Riesz
+homomorphism from $S(\frak A\otimes\frak B)^f$ into
+$S(\frak C)\subseteq L^0(\frak C)$.   To see that $\chi c\in M$ for
+every $c\in(\frak A\otimes\frak B)^f$, we need to know that $c$ can be
+expressed as a
+disjoint union of members of $\frak A\otimes\frak B$, as noted above.)
+
+\medskip
+
+\quad{\bf (i)} If $T$ is positive then of course
+$\phi(u,v)=T(u\otimes v)\ge 0$ whenever $u$, $v\ge 0$, since
+$u\otimes v\ge 0$.   On the other
+hand, if $\phi$ is non-negative on $U^+\times V^+$, then, in particular,
+$T\chi(a\otimes b)=\phi(\chi a,\chi b)\ge 0$ whenever
+$\bar\mu a\cdot\bar\nu b<\infty$.   Consequently $T(\chi c)\ge 0$ for
+every $c\in(\frak A\otimes\frak B)^f$ and $Tw\ge 0$ whenever $w\ge 0$ in
+$M\cong S(\frak A\otimes\frak B)^f$, as in 361Ga.
+
+Now this means that $T|w|\ge 0$ whenever $w\in M$.   But as $M$ is
+norm-dense in $L^1_{\bar\lambda}$, $w\mapsto T|w|$ is continuous and
+$W^+$ is closed, it follows that $T|w|\ge 0$ for every
+$w\in L^1_{\bar\lambda}$, that is, that $T$ is positive.
+
+\medskip
+
+\quad{\bf (ii)} If $T$ is a Riesz homomorphism then of course
+$u\mapsto\phi(u,v_0)=T(u\otimes v_0)$ and
+$v\mapsto\phi(u_0,v)=T(u_0\otimes
+v)$ are Riesz homomorphisms for $v_0$, $u_0\ge 0$.   On the other hand,
+if all these maps are Riesz homomorphisms, then, in particular,
+
+$$\eqalign{T\chi(a\otimes b)\wedge T\chi(a'\otimes b')
+&=\phi(\chi a,\chi b)\wedge\phi(\chi a',\chi b')\cr
+&\le \phi(\chi a,\chi b+\chi b')\wedge\phi(\chi a',\chi b+\chi b')\cr
+&=\phi(\chi a\wedge\chi a',\chi b+\chi b')
+=0\cr}$$
+
+\noindent whenever $a$, $a'\in\frak A^f$, $b$, $b'\in\frak B^f$ and
+$a\Bcap a'=0$.   Similarly, $T\chi(a\otimes b)\wedge T\chi(a'\otimes
+b')=0$ if $b\Bcap b'=0$.   But this means that $T\chi c\wedge T\chi
+c'=0$ whenever $c$, $c'\in(\frak A\otimes\frak B)^f$ and $c\Bcap c'=0$.
+\Prf\ Express $c$, $c'$ as $\sup_{i\le m}a_i\otimes b_i$, $\sup_{j\le
+n}a'_j\otimes b'_j$ where $a_i$, $a'_j$, $b_i$, $b'_j$ all have finite
+measure.   Now if $i\le m$, $j\le n$, $(a_i\Bcap a'_j)\otimes(b_i\Bcap
+b'_j)=(a_i\otimes b_i)\Bcap(a'_j\otimes b'_j)=0$, so one of $a_i\Bcap
+a'_j$, $b_i\Bcap b'_j$ must be zero, and in either case
+$T\chi(a_i\otimes b_i)\wedge T\chi(a'_j\otimes b'_j)=0$.   Accordingly
+
+$$\eqalign{T\chi c\wedge T\chi c'
+&\le(\sum_{i=0}^mT\chi(a_i\otimes b_i))
+   \wedge(\sum_{j=0}^nT\chi(a'_j\times b'_j))\cr
+&\le\sum_{i=0}^m\sum_{j=0}^nT\chi(a_i\otimes b_i)
+   \wedge T\chi(a'_j\otimes b'_j)
+=0,\cr}$$
+
+\noindent using 352Fa for the second inequality.\ \Qed
+
+This implies that $T\restr M$ must be a Riesz homomorphism (361Gc), that
+is, $T|w|=|Tw|$ for all $w\in M$.   Again because $M$ is dense in
+$L^1_{\bar\lambda}$, $T|w|=|Tw|$ for every $w\in L^1_{\bar\lambda}$, and
+$T$ is a Riesz homomorphism.
+}%end of proof of 376C
+
+\leader{376D}{Abstract integral operators:  Definition}\cmmnt{ The
+following concept will be used repeatedly in the theorems below;  it is
+perhaps worth giving it a name.}   Let $U$ be a Riesz space and $V$ a
+Dedekind complete Riesz space\cmmnt{, so that $\eurm L^{\times}(U;V)$
+is a Dedekind complete Riesz space (355H)}.   If $f\in U^{\times}$ and
+$v\in V$ write $P_{fv}u=f(u)v$ for each $u\in U$;  then
+$P_{fv}\in\eurm L^{\times}(U;V)$.   \prooflet{\Prf\ If $f\ge 0$ in
+$U^{\times}$ and $v\ge 0$ in $V^{\times}$ then $P_{fv}$ is a positive
+linear operator from $U$ to $V$ which is
+order-continuous because if $A\subseteq U$ is non-empty,
+downwards-directed and has infimum $0$, then (as $V$ is Archimedean)
+
+\Centerline{$\inf_{u\in A}P_{fv}(u)=\inf_{u\in A}f(u)v=0$.}
+
+\noindent Of course $(f,g)\mapsto P_{fg}$ is bilinear, so
+$P_{fv}\in \eurm L^{\times}(U;V)$ for every $f\in U^{\times}$,
+$v\in V$.\ \QeD\ }%end of prooflet
+\cmmnt{Now} I call a linear operator from $U$ to $V$ an {\bf abstract integral
+operator} if it is in the band in $\eurm L^{\times}(U;V)$ generated by
+$\{P_{fv}:f\in U^{\times},\,v\in V\}$.
+
+\cmmnt{The first result describes these operators when $U$, $V$ are
+expressed as subspaces of $L^0(\frak A)$, $L^0(\frak B)$ for measure
+algebras $\frak A$, $\frak B$ and $V$ is perfect.}
+
+\leader{376E}{Theorem} Let $(\frak
+A,\bar\mu)$ and $(\frak B,\bar\nu)$ be semi-finite measure algebras,
+with localizable measure algebra free product $(\frak C,\bar\lambda)$,
+and $U\subseteq L^0(\frak A)$, $V\subseteq L^0(\frak B)$ order-dense
+Riesz subspaces.   Write $W$ for the set of those $w\in L^0(\frak C)$
+such that $w\times(u\otimes v)$ is integrable for every $u\in U$ and
+$v\in V$.   Then we have an operator $w\mapsto T_w:W\to \eurm
+L^{\times}(U;V^{\times})$ defined by setting
+
+\Centerline{$T_w(u)(v)=\int w\times(u\otimes v)$}
+
+\noindent for every $w\in W$, $u\in U$ and $v\in V$.   The map
+$w\mapsto T_w$ is a Riesz space isomorphism between $W$ and the band of
+abstract integral operators in $\eurm L^{\times}(U;V^{\times})$.
+
+\proof{{\bf (a)} The first thing to check is that the formula offered
+does define a member $T_w(u)$ of $V^{\times}$ for any $w\in W$ and
+$u\in U$.   \Prf\    Of course $T_w(u)$ is a linear operator because
+$\int$ is linear and $\otimes$ and $\times$ are bilinear.   It belongs to
+$V^{\sim}$ because, writing $g(v)=\int |w|\times(|u|\otimes v)$, $g$ is
+a positive linear operator and $|T_w(u)(v)|\le g(|v|)$ for every $v$.
+(I am here using 376Bc to see that $|w\times(u\otimes
+Fv)|=|w|\times(|u|\otimes|v|)$.)   Also $g\in V^{\times}$ because
+$v\mapsto|u|\otimes v$, $w'\mapsto |w|\times w'$ and $\int$ are all
+order-continuous;  so $T_w(u)$ also belongs to $V^{\times}$.\ \Qed
+
+\medskip
+
+{\bf (b)} Next, for any given $w\in W$, the map $T_w:U\to V^{\times}$ is
+linear (again because $\otimes$ and $\times$ are bilinear).   It is
+helpful to note that $W$ is a solid linear subspace of $L^0(\frak C)$.
+Now if $w\ge 0$ in $W$, then $T_w\in\eurm L^{\times}(U;V^{\times})$.
+\Prf\ If $u$, $v\ge 0$ then $u\otimes v\ge 0$,
+$w\times(u\otimes v)\ge 0$ and $T_w(u)(v)\ge 0$;   as $v$ is arbitrary,
+$T_w(u)\ge 0$ whenever $u\ge 0$;  as
+$u$ is arbitrary, $T_w$ is positive.   If $A\subseteq U$ is non-empty,
+downwards-directed and has infimum $0$, then $T_w[A]$ is
+downwards-directed, and for any $v\in V^+$
+
+\Centerline{$(\inf T_w[A])(v)=\inf_{u\in A}T_w(u)(v)
+=\inf_{u\in A}\int w\times(u\otimes v)=0$}
+
+\noindent because $u\mapsto u\otimes v$ is order-continuous.   So $\inf
+T_w[A]=0$;  as $A$ is arbitrary, $T_w$ is order-continuous.\ \Qed\
+
+For general $w\in W$, we now have $T_w=T_{w^+}-T_{w^-}\in
+L^{\times}(U;V^{\times})$.
+
+\medskip
+
+{\bf (c)} Ths shows that $w\mapsto T_w$ is a map from $W$ to
+$L^{\times}(U;V^{\times})$.   Running through the formulae once again,
+it is linear, positive and order-continuous;  this last because, given a
+non-empty downwards-directed $C\subseteq W$ with infimum $0$, then for
+any $u\in U^+$, $v\in V^+$
+
+\Centerline{$(\inf_{w\in C}T_w)(u)(v)
+\le\inf_{w\in C}\int w\times(u\otimes v)=0$}
+
+\noindent (because $\int$ and $\times$ are order-continuous);  as $v$ is
+arbitrary, $(\inf_{w\in C}T_w)(u)=0$;  as $u$ is arbitrary, $\inf_{w\in
+C}T_w=0$.
+
+\medskip
+
+{\bf (d)} All this is easy, being nothing but a string of applications
+of the elementary properties of $\otimes$, $\times$ and $\int$.   But I
+think a new idea is needed for the next fact:  the map $w\mapsto
+T_w:W\to\eurm L^{\times}(U;V^{\times})$ is a Riesz homomorphism.   \Prf\
+Write $\frak D$ for the set of those $d\in\frak C$ such that $T_w\wedge
+T_{w'}=0$ whenever $w$, $w'\in W^+$, $\Bvalue{w>0}\Bsubseteq d$ and
+$\Bvalue{w'>0}\Bsubseteq 1_{\frak C}\Bsetminus d$.
+(i) If $d_1$, $d_2\in \frak D$, $w$, $w'\in W^+$,
+$\Bvalue{w>0}\Bsubseteq d_1\Bcup d_2$ and $\Bvalue{w'>0}\Bcap(d_1\Bcup
+d_2)=0$, then set $w_1=w\times\chi d_1$, $w_2=w-w_1$.   In this case
+
+\Centerline{$\Bvalue{w_1>0}\Bsubseteq d_1$,
+\quad$\Bvalue{w_2>0}\Bsubseteq d_2$,}
+
+\noindent so
+
+\Centerline{$T_{w_1}\wedge T_{w'}=T_{w_2}\wedge T_{w'}=0$,
+\quad$T_w\wedge T_{w'}
+\le(T_{w_1}\wedge T_{w'})+(T_{w_2}\wedge T_{w'})=0$.}
+
+\noindent As $w$, $w'$ are arbitrary, $d_1\Bcup d_2\in \frak D$.   Thus
+$\frak D$ is closed under $\Bcup$.   (ii) The symmetry of the definition
+of $\frak D$ means that $1_{\frak C}\Bsetminus d\in \frak D$ whenever
+$d\in \frak D$.   (iii) Of course $0\in \frak D$, just because $T_w=0$
+if $w\in W^+$ and $\Bvalue{w>0}=0$;  so $\frak D$ is a subalgebra of
+$\frak C$.   (iv) If $D\subseteq \frak D$ is non-empty and
+upwards-directed, with supremum $c$ in $\frak C$, and if $w$, $w'\in
+W^+$ are such that $\Bvalue{w>0}\Bsubseteq c$, $\Bvalue{w'>0}\Bcap c=0$,
+then consider $\{w\times\chi d:d\in D\}$.   This is upwards-directed,
+with supremum $w$;  so $T_w=\sup_{d\in D}T_{w\times\chi d}$, because the
+map $q\mapsto T_q$ is order-continuous.   Also $T_{w\times\chi d}\wedge
+T_{w'}=0$ for every $d\in D$, so $T_w\wedge T_{w'}=0$.   As $w$, $w'$
+are arbitrary, $c\in\frak D$;  as $D$ is arbitrary, $\frak D$ is an
+order-closed subalgebra of $\frak C$.   (v) If $a\in\frak A$ and $w$,
+$w'\in W^+$ are such that $\Bvalue{w>0}\Bsubseteq a\otimes 1_{\frak B}$ and
+$\Bvalue{w'>0}\Bcap(a\otimes 1_{\frak B})=0$, then any $u\in U^+$ is
+expressible as $u_1+u_2$ where $u_1=u\times\chi a$,
+$u_2=u\times\chi(1_{\frak A}\Bsetminus a)$.   Now
+
+\Centerline{$T_w(u_2)(v)=\int w\times(u_2\otimes v)
+=\int w\times\chi(a\otimes 1_{\frak B})\times(u\otimes v)
+  \times\chi((1_{\frak A}\Bsetminus a)\otimes 1_{\frak B})
+=0$}
+
+\noindent for every $v\in V$, so $T_w(u_2)=0$.   Similarly,
+$T_{w'}(u_1)=0$.   But this means that
+
+\Centerline{$(T_w\wedge T_{w'})(u)\le T_w(u_2)+T_{w'}(u_1)=0$.}
+
+\noindent As $u$ is arbitrary, $T_w\wedge T_{w'}=0$;  as $w$ and $w'$
+are arbitrary, $a\otimes 1_{\frak B}\in \frak D$.   (vi)  Now suppose
+that $b\in\frak B$ and that $w$, $w'\in W^+$ are such that
+$\Bvalue{w>0}\Bsubseteq 1_{\frak A}\otimes b$ and
+$\Bvalue{w'>0}\Bcap(1_{\frak A}\otimes b)=0$.   If $u\in U^+$ and
+$v\in V^+$ then
+
+\Centerline{$(T_w\wedge T_{w'})(u)(v)
+\le\int w\times(u\otimes(v\times\chi(1_{\frak B}\Bsetminus b)))
+  +\int w'\times(u\otimes(v\times\chi b))
+=0$.}
+
+\noindent As $u$, $v$ are arbitrary, $T_w\wedge T_{w'}=0$;  as $w$ and
+$w'$ are arbitrary, $1_{\frak A}\otimes b\in\frak D$.   (vii) This means
+that $\frak D$ is an order-closed subalgebra of $\frak C$ including
+$\frak A\otimes\frak B$, and is therefore the whole of $\frak C$
+(325D(c-ii)).   (viii) Now take any $w$, $w'\in W$ such that
+$w\wedge w'=0$,
+and consider $c=\Bvalue{w>0}$.   Then $\Bvalue{w'>0}\Bsubseteq 1_{\frak
+C}\Bsetminus c$ and $c\in\frak D$, so $T_w\wedge T_{w'}=0$.   This is
+what we need to be sure that $w\mapsto T_w$ is a Riesz homomorphism
+(352G).\ \Qed
+
+\medskip
+
+{\bf (e)} The map $w\mapsto T_w$ is injective.   \Prf\ (i) If $w>0$ in
+$W$, then consider
+
+\Centerline{$A=\{a:a\in\frak A,\,\exists\,u\in U,\,\chi a\le u\}$,
+\quad$B=\{b:b\in\frak B,\,\exists\,v\in V,\,\chi b\le v\}$.}
+
+\noindent Because $U$ and $V$ are order-dense in $L^0(\frak A)$ and
+$L^0(\frak B)$ respectively, $A$ and $B$ are order-dense in $\frak A$
+and $\frak B$.   Also both are upwards-directed.   So
+$\sup_{a\in A,b\in B}a\otimes b=1_{\frak C}$ and
+$0<\int w=\sup_{a\in A,b\in B}\int_{a\otimes b}w$.   Take $a\in A$,
+$b\in B$ such that
+$\int_{a\otimes b}w>0$;  then there are $u\in U$, $v\in V$ such that
+$\chi a\le u$ and $\chi b\le v$, so that
+
+\Centerline{$T_w(u)(v)\ge\int_{a\otimes b}w>0$}
+
+\noindent and $T_w>0$.   (ii) For general non-zero $w\in W$, we now have
+$|T_w|=T_{|w|}>0$ so $T_w\ne 0$.\ \Qed
+
+Thus $w\mapsto T_w$ is an order-continuous injective Riesz homomorphism.
+
+\medskip
+
+{\bf (f)} Write $\tilde W$ for $\{T_w:w\in W\}$, so that $\tilde W$ is a
+Riesz subspace of $\eurm L^{\times}(U;V^{\times})$ isomorphic to $W$,
+and $\widehat{W}$ for the band it generates in
+$\eurm L^{\times}(U;V^{\times})$.   Then $\tilde W$ is order-dense in
+$\widehat{W}$.   \Prf\ Suppose that $S>0$ in
+$\widehat{W}=\tilde W^{\perp\perp}$ (353Ba).   Then
+$S\notin\tilde W^{\perp}$, so
+there is a $w\in W$ such that $S\wedge T_w>0$.
+Set $w_1=w\wedge\chi 1_{\frak C}$.   Then
+$w=\sup_{n\in\Bbb N}w\wedge nw_1$, so
+$T_w=\sup_{n\in\Bbb N}T_w\wedge nT_{w_1}$ and $R=S\wedge T_{w_1}>0$.
+
+Set $U_1=U\cap L^1(\frak A,\bar\mu)$.   Because $U$ is an order-dense
+Riesz subspace of $L^0(\frak A)$, $U_1$ is an order-dense Riesz subspace
+of $L^1_{\bar\mu}=L^1(\frak A,\bar\mu)$, therefore also norm-dense.
+Similarly $V_1=V\cap L^1(\frak B,\bar\nu)$ is a norm-dense Riesz
+subspace of $L^1_{\bar\nu}=L^1(\frak B,\bar\nu)$.   Define
+$\phi_0:U_1\times V_1\to\Bbb R$ by setting $\phi_0(u,v)=R(u)(v)$ for
+$u\in U_1$ and $v\in V_1$.   Then $\phi_0$ is bilinear, and
+
+$$\eqalign{|\phi_0(u,v)|
+&=|R(u)(v)|\le|R(u)|(|v|)
+\le R(|u|)(|v|)
+\le T_{w_1}(|u|)(|v|)\cr
+&=\biggerint w_1\times(|u|\otimes|v|)
+\le\biggerint|u|\otimes|v|
+=\|u\|_1\|v\|_1\cr}$$
+
+\noindent for all $u\in U_1$, $v\in V_1$, because $0\le R\le T_{w_1}$ in
+$\eurm L^{\times}(U;V^{\times})$.   Because $U_1$, $V_1$ are
+norm-dense in $L^1_{\bar\mu}$, $L^1_{\bar\nu}$ respectively, $\phi_0$
+has a unique extension to a continuous bilinear operator
+$\phi:L^1_{\bar\mu}\times L^1_{\bar\nu}\to\Bbb R$.    (To reduce this to
+standard results on linear operators, think of $R$ as a function from
+$U_1$ to $V_1^*$;  since every member of $V_1^*$ has a unique extension
+to a member of $(L^1_{\bar\nu})^*$, we get a corresponding function
+$R_1:U_1\to(L^1_{\bar\nu})^*$ which is continuous and linear, so has a
+unique extension to a continuous linear operator
+$R_2:L^1_{\bar\mu}\to(L^1_{\bar\nu})^*$, and we set
+$\phi(u,v)=R_2(u)(v)$.)
+
+By 376C, there is a unique
+$h\in(L^1_{\bar\lambda})^*=L^1(\frak C,\bar\lambda)^*$
+such that $h(u\otimes v)=\phi(u,v)$ for every $u\in L^1_{\bar\mu}$ and
+$v\in L^1_{\bar\nu}$.   Because $(\frak C,\bar\lambda)$
+is localizable, this $h$ corresponds to a $w'\in L^{\infty}(\frak C)$
+(365Mc), and
+
+\Centerline{$\int w'\times(u\otimes v)=h(u\otimes v)=\phi_0(u,v)
+=R(u)(v)$}
+
+\noindent for every $u\in U_1$, $v\in V_1$.
+
+Because $U_1$ is norm-dense in $L^1_{\bar\mu}$, $U_1^+$ is dense in
+$(L^1_{\bar\mu})^+$, and similarly $V_1^+$ is dense in
+$(L^1_{\bar\nu})^+$, so $U_1^+\times V_1^+$ is dense in
+$(L^1_{\bar\mu})^+\times(L^1_{\bar\nu})^+$;  now $\phi_0$ is
+non-negative on $U_1^+\times V_1^+$, so $\phi$ (being continuous) is
+non-negative on $(L^1_{\bar\mu})^+\times(L^1_{\bar\nu})^+$.   By 376Cc,
+$h\ge 0$ in $(L^1_{\bar\lambda})^*$ and $w'\ge 0$ in
+$L^{\infty}(\frak C)$.   In the same way, because
+$\phi_0(u,v)\le T_w(u)(v)$ for
+$u\in U_1^+$ and $v\in V_1^+$, $w'\le w_1\le w$ in $L^0(\frak C)$, so
+$w'\in W$.   We have
+
+\Centerline{$T_{w'}(u)(v)=\int w'\times(u\otimes v)=R(u)(v)$}
+
+\noindent for all $u\in U_1$, $v\in V_1$.   If $u\in U_1^+$, then
+$T_{w'}(u)$ and $R(u)$ are both order-continuous, so must be identical,
+since $V_1$ is order-dense in $V$.   This means that $T_{w'}$ and $R$
+agree on $U_1$.   But as both are themselves
+order-continuous linear operators, and $U_1$ is order-dense in $U$, they
+must be equal.
+
+Thus $0<T_{w'}\le S$ in $\eurm L^{\times}(U;V^{\times})$.   As $S$ is
+arbitrary, $\tilde W$ is quasi-order-dense in $\widehat{W}$, therefore
+order-dense (353A).\ \Qed
+
+\medskip
+
+{\bf (g)} Because $w\mapsto T_w:W\mapsto\tilde W$ is an injective Riesz
+homomorphism, we have an inverse map $Q:\tilde W\to L^0(\frak C)$,
+setting $Q(T_w)=w$;  this is a Riesz homomorphism, and it is
+order-continuous because $W$ is solid in $L^0(\frak C)$, so that the
+embedding $W\embedsinto L^0(\frak C)$ is order-continuous.   By 368B, $Q$
+has an extension to an order-continuous Riesz homomorphism
+$\tilde Q:\widehat{W}\to L^0(\frak C)$.
+Because $Q(S)>0$ whenever $S>0$ in
+$\tilde W$, $\tilde Q(S)>0$ whenever $S>0$ in $\widehat{W}$, so
+$\tilde Q$ is injective.
+Now $\tilde Q(S)\in W$ for every $S\in\widehat{W}$.
+\Prf\ It is enough to look at non-negative $S$.   In this case,
+$\tilde Q(S)$ must be $\sup\{\tilde Q(T_w):w\in W,\,T_w\le S\}=\sup C$,
+where $C=\{w:T_w\le S\}\subseteq W$.   Take $u\in U^+$ and $v\in V^+$.
+Then $\{w\times(u\otimes v):w\in C\}$ is upwards-directed, because $C$ is,
+and
+
+\Centerline{$\sup_{w\in C}\int w\times(u\otimes v)
+=\sup_{w\in C}T_w(u)(v)
+\le S(u)(v)<\infty$.}
+
+\noindent So
+$\tilde Q(S)\times(u\otimes v)=\sup_{w\in C}w\times(u\otimes v)$ belongs
+to $L^1_{\bar\lambda}$ (365Df).   As $u$ and $v$
+are arbitrary, $\tilde Q(S)\in W$.\ \Qed
+
+\medskip
+
+{\bf (h)} Of course this means that $\tilde W=\widehat{W}$ and
+$\tilde Q=Q$,
+that is, that $w\mapsto T_w:W\mapsto\widehat{W}$ is a Riesz space
+isomorphism.
+
+\medskip
+
+{\bf (i)} I have still to check on the identification of $\widehat{W}$
+as the band $Z$ of abstract integral operators in
+$\eurm L^{\times}(U;V^{\times})$.   Write $P_{fg}(u)=f(u)g$ for
+$f\in U^{\times}$, $g\in V^{\times}$ and $u\in U$.
+
+Set
+
+\Centerline{$U^{\#}=\{u:u\in L^0(\frak A),\,u\times u'\in L^1_{\bar\mu}$
+for every $u'\in U\}$,}
+
+\Centerline{$V^{\#}=\{v:v\in L^0(\frak B),\,v\times v'\in L^1_{\bar\nu}$
+for every $v'\in V\}$.}
+
+\noindent From 369C we know that if we set $f_u(u')=\int u\times u'$ for
+$u\in U^{\#}$ and $u'\in U$, then $f_u\in U^{\times}$ for every
+$u\in U^{\#}$, and $u\mapsto f_u$ is an isomorphism between $U^{\#}$ and
+an order-dense Riesz subspace of $U^{\times}$.   Similarly, setting
+$g_v(v')=\int v\times v'$ for $v\in V^{\#}$ and $v'\in V$,
+$v\mapsto g_v$
+is an isomorphism between $V^{\#}$ and an order-dense Riesz subspace of
+$V^{\times}$.
+
+If $u\in U^{\#}$ and $v\in V^{\#}$ then
+
+\Centerline{$\int(u\otimes v)\times(u'\otimes v')
+=\int(u\times u')\otimes(v\times v')
+=(\int u\times u')(\int v\times v')
+=f_u(u')g_v(v')$}
+
+\noindent for every $u'\in U$, $v'\in V$, so $u\otimes v\in W$ and
+$T_{u\otimes v}=P_{f_ug_v}$.
+
+Now take $f\in(U^{\times})^+$ and $g\in (V^{\times})^+$.
+Set $A=\{u:u\in U^{\#},\,u\ge 0,\,f_u\le f\}$ and
+$B=\{v:v\in V^{\#},\,v\ge 0,\,g_v\le g\}$.   These are upwards-directed,
+so $C=\{u\otimes v:u\in A,\,v\in B\}$ is upwards-directed in
+$L^0(\frak C)$.   Because $\{f_u:u\in U^{\#}\}$ is order-dense in
+$U^{\times}$, $f=\sup_{u\in A}f_u$;  by 355Ed,
+$f(u')=\sup_{u\in A}f_u(u')$ for every $u'\in U^+$.  Similarly,
+$g(v')=\sup_{v\in B}f_v(v')$ for every $v'\in V^+$.
+
+\Quer\ Suppose, if possible, that $C$ is not bounded above in $L^0(\frak
+C)$.   Because $\frak C$ and $L^0(\frak C)$ are Dedekind complete,
+
+\Centerline{$c
+=\inf_{n\in\Bbb N}\sup_{u\in A,v\in B}\Bvalue{u\otimes v\ge n}$}
+
+\noindent must be non-zero (364L(a-i)).   Because $U$ and $V$ are
+order-dense
+in $L^0(\frak A)$, $L^0(\frak B)$ respectively,
+
+\Centerline{$1_{\frak A}=\sup\{\Bvalue{u'>0}:u'\in U\}$,
+\quad$1_{\frak B}=\sup\{\Bvalue{v'>0}:v'\in V\}$,}
+
+\noindent and there are $u'\in U^+$, $v'\in V^+$ such that
+$c\Bcap\Bvalue{u'>0}\otimes\Bvalue{v'>0}\ne 0$, so that
+$\int_cu'\otimes v'>0$.   But now, for any $n\in\Bbb N$,
+
+$$\eqalignno{f(u')g(v')
+&\ge\sup_{u\in A,v\in B}f_u(u')g_v(v')\cr
+&=\sup_{u\in A,v\in B}\int(u\otimes v)\times(u'\otimes v')\cr
+&\ge\sup_{u\in A,v\in B}\int((u\otimes v)\wedge n\chi c)\times(u'\otimes
+v')\cr
+&=\int\sup_{u\in A,v\in B}((u\otimes v)\wedge n\chi c)\times(u'\otimes
+v')\cr
+\noalign{\noindent (because $w\mapsto\int w\times(u'\otimes v')$ is
+order-continuous)}
+&=\int(n\chi c)\times(u'\otimes v')
+=n\int_cu'\otimes v',\cr}$$
+
+\noindent which is impossible.\ \Bang
+
+Thus $C$ is bounded above in $L^0(\frak C)$, and has a supremum $w\in
+L^0(\frak C)$.   If $u'\in U^+$, $v'\in V^+$ then
+
+$$\eqalign{\int w\times(u'\otimes v')
+&=\sup_{u\in A,v\in B}\int(u\otimes v)\times(u'\otimes v')\cr
+&=\sup_{u\in A,v\in B}f_u(u')g_v(v')
+=f(u')g(v')
+=P_{fg}(u')(v').\cr}$$
+
+\noindent Thus $w\in W$ and
+
+\Centerline{$P_{fg}=T_w\in\tilde W\subseteq\widehat{W}$.}
+
+\noindent And this is true for any non-negative $f\in U^{\times}$ and
+$g\in V^{\times}$.   Of course it follows that $P_{fg}\in\widehat{W}$ for
+every $f\in U^{\times}$, $g\in V^{\times}$;  as $\widehat{W}$ is a band,
+it must include $Z$.
+
+\medskip
+
+{\bf (j)} Finally, $\widehat{W}\subseteq Z$.   \Prf\ Since
+$Z=Z^{\perp\perp}$, it is enough to show that $\widehat{W}\cap
+Z^{\perp}=\{0\}$.   Take any $T>0$ in $\widehat{W}$.   There are
+$u'_0\in U^+$, $v'_0\in V^+$ such that $T(u'_0)(v'_0)>0$.   So there is
+a $v\in V^{\#}$ such that $0\le g_v\le T(u'_0)$ and $g_v(v'_0)>0$, that
+is, $\int v\times v'_0>0$.   Because $V$ is order-dense in
+$L^0(\frak B)$, there is a $v'_1\in V$ such that
+$0<v'_1\le v'_0\times\chi\Bvalue{v>0}$, so that
+
+\Centerline{$0<\int v\times v'_1=g_v(v'_1)\le T(u'_0)(v'_1)$}
+
+\noindent and $\Bvalue{v'_1>0}\Bsubseteq\Bvalue{v>0}$.
+
+Now consider the functional $u'\mapsto h(u')=T(u')(v'_1):U\to\Bbb R$.
+This belongs to $(U^{\times})^+$ and $h(u'_0)>0$, so there is a
+$u\in U^{\#}$ such that $0\le f_u\le h$ and $f_u(u'_0)>0$.   This time,
+$\int u\times u'_0>0$ so (because $U$ is order-dense in $L^0(\frak A)$)
+there is a $u'_1\in U$ such that $h(u'_1)>0$ and
+$\Bvalue{u'_1>0}\Bsubseteq\Bvalue{u>0}$.
+
+We can express $T$ as $T_w$ where $w\in W^+$.   In this case, we have
+
+\Centerline{$\int w\times(u'_1\otimes v'_1)=T(u'_1)(v'_1)=h(u'_1)>0$,}
+
+\noindent so
+
+$$\eqalign{0
+&\ne\Bvalue{w>0}\cap\Bvalue{u'_1\otimes v'_1>0}
+=\Bvalue{w>0}\cap(\Bvalue{u'_1>0}\otimes\Bvalue{v'_1>0})\cr
+&\Bsubseteq\Bvalue{w>0}\cap(\Bvalue{u>0}\otimes\Bvalue{v>0})
+=\Bvalue{w>0}\cap\Bvalue{u\otimes v>0},\cr}$$
+
+\noindent and $w\wedge(u\otimes v)>0$, so
+
+\Centerline{$T_w\wedge P_{f_ug_v}
+=T_w\wedge T_{u\otimes v}
+=T_{w\wedge(u\otimes v)}>0$.}
+
+\noindent Thus $T\notin Z^{\perp}$.   Accordingly
+$\widehat{W}\cap Z^{\perp}=\{0\}$ and
+$\widehat{W}\subseteq Z^{\perp\perp}=Z$.\ \Qed
+
+Since we already know that $Z\subseteq\widehat{W}$, this completes the
+proof.
+}%end of proof of 376E
+
+\vleader{72pt}{376F}{Corollary} Let $(\frak A,\bar\mu)$ and
+$(\frak B,\bar\nu)$
+be localizable measure algebras, with localizable measure algebra free
+product $(\frak C,\bar\lambda)$.   Let $U\subseteq L^0(\frak A)$,
+$V\subseteq L^0(\frak B)$ be perfect order-dense solid linear subspaces,
+and $T:U\to V$ a linear operator.   Then the following are
+equiveridical:
+
+(i) $T$ is an abstract integral operator;
+
+(ii) there is a $w\in L^0(\frak C)$ such that $\int w\times(u\otimes
+v')$ is defined and equal to $\int Tu\times v'$ whenever $u\in U$ and
+$v'\in L^0(\frak B)$ is such that $v'\times v$ is integrable for every
+$v\in V$.
+
+\proof{ Setting $V^{\#}=\{v':v'\in L^0(\frak B),\,v\times v'\in L^1$ for
+every $v\in V\}$, we know that we can identify $V^{\#}$ with
+$V^{\times}$ and $V$ with $(V^{\#})^{\times}$ (369C).   So the
+equivalence of (i) and (ii) is just 376E applied to $V^{\#}$ in place of
+$V$.
+}%end of proof of 376F
+
+\leader{376G}{Lemma} Let $U$ be a Riesz space, $V$ an Archimedean Riesz
+space, $T:U\to V$ a linear operator, $f\in (U^{\sim})^+$ and $e\in V^+$.
+Suppose that $0\le Tu\le f(u)e$ for every $u\in U^+$.   Then if
+$\sequencen{u_n}$ is a sequence in $U$ such that
+$\lim_{n\to\infty}g(u_n)=0$ whenever $g\in U^{\sim}$ and $|g|\le f$,
+$\sequencen{Tu_n}$ order*-converges to $0$ in
+$V$\cmmnt{ (definition:  367A)}.
+
+\proof{ Let $V_e$ be the solid linear subspace of $V$ generated by $e$;
+then $Tu\in V_e$ for every $u\in U$.   We can identify $V_e$ with an
+order-dense and norm-dense Riesz subspace of $C(X)$, where $X$ is a
+compact Hausdorff space, with $e$ corresponding to $\chi X$ (353M).
+For $x\in X$, set $g_x(u)=(Tu)(x)$ for every $u\in U$;  then
+$0\le g_x(u)\le f(u)$ for $u\ge 0$, so $|g_x|\le f$ and
+$\lim_{n\to\infty}(Tu_n)(x)=0$.   As $x$ is arbitrary,
+$\sequencen{Tu_n}$ order*-converges to $0$ in $C(X)$, by 367K, and
+therefore in $V_e$, because $V_e$ is
+order-dense in $C(X)$ (367E).   But $V_e$, regarded as a subspace of
+$V$, is solid, so 367E tells us also that $\sequencen{Tu_n}$
+order*-converges to $0$ in $V$.
+}%end of proof of 376G
+
+\leader{376H}{Theorem} Let $U$ be a Riesz space and $V$ a
+\wsid\ Dedekind complete Riesz space\cmmnt{ (definition: 368N)}.
+Suppose that $T\in\eurm L^{\times}(U;V)$.
+Then the following are equiveridical:
+
+(i) $T$ is an abstract integral operator;
+
+(ii) whenever $\sequencen{u_n}$ is an order-bounded sequence in $U^+$
+and $\lim_{n\to\infty}f(u_n)=0$ for every $f\in U^{\times}$, then
+$\sequencen{Tu_n}$ order*-converges to $0$ in $V$;
+
+(iii) whenever $\sequencen{u_n}$ is an order-bounded sequence in $U$
+and $\lim_{n\to\infty}f(u_n)=0$ for every $f\in U^{\times}$, then
+$\sequencen{Tu_n}$ order*-converges to $0$ in $V$.
+
+\proof{ For $f\in U^{\times}$, $v\in V$ and $u\in U$ set
+$P_{fv}(u)=f(u)v$.   Write $Z\subseteq\eurm L^{\times}(U;V)$ for the
+band of abstract integral operators.
+
+\medskip
+
+{\bf (a)(i)$\Rightarrow$(iii)} Suppose that $T\in Z^+$, and that
+$\sequencen{u_n}$ is an order-bounded sequence in $U$ such that
+$\lim_{n\to\infty}f(u_n)=0$ for every $f\in U^{\times}$.   Note that
+$\{P_{fv}:f\in U^{\times+},\,v\in V^+\}$ is upwards-directed, so that
+$T=\sup\{T\wedge P_{fv}:f\in U^{\times+},\,v\in V^+\}$ (352Va).
+
+Take $u^*\in U^+$ such that $|u_n|\le u^*$ for every $n$, and set
+$w=\inf_{n\in\Bbb N}\sup_{m\ge n}Tu_m$, which is defined because
+$|Tu_n|\le Tu^*$ for every $n$.   Now $w\le(T-P_{fv})^+(u^*)$ for
+every $f\in U^{\times+}$ and $v\in V^+$.   \Prf\ Setting
+$T_1=T\wedge P_{fv}$, $w_0=(T-P_{fv})^+(u^*)$ we have
+
+\Centerline{$Tu_n-T_1u_n
+\le|T-T_1|(u^*)
+=(T-P_{fv})^+(u^*)=w_0$}
+
+\noindent for every $n\in\Bbb N$, so $Tu_n\le w_0+T_1u_n$.   On the
+other hand, $0\le T_1u\le f(u)v$ for every $u\in U^+$, so by 376G we
+must have $\inf_{n\in\Bbb N}\sup_{m\ge n}T_1u_m=0$.   Accordingly
+
+\Centerline{$w\le w_0+\inf_{n\in\Bbb N}\sup_{m\ge n}T_1u_m=w_0$.   \Qed}
+
+\noindent But as $\inf\{(T-P_{fv})^+:f\in U^{\times+},\,v\in V^+\}=0$,
+$w\le 0$.    Similarly (or applying the same argument to
+$\sequencen{-u_n}$), $\sup_{n\in\Bbb N}\inf_{n\in\Bbb N}Tu_n\ge 0$ and
+$\sequencen{Tu_n}$ order*-converges to zero.
+
+For general $T\in Z$, this shows that $\sequencen{T^+u_n}$ and
+$\sequencen{T^-u_n}$ both order*-converge to $0$, so
+$\sequencen{Tu_n}$ order*-converges to $0$, by 367Cd.
+As $\sequencen{u_n}$ is arbitrary, (iii) is satisfied.
+
+\medskip
+
+{\bf (b)(iii)$\Rightarrow$(ii)} is trivial.
+
+\medskip
+
+{\bf (c)(ii)$\Rightarrow$(i)} \Quer\ Now suppose, if possible, that (ii)
+is satisfied, but that $T\notin Z$.   Because $\eurm L^{\times}(U;V)$ is
+Dedekind complete (355H), $Z$ is a projection band (353I), so $T$ is
+expressible as
+$T_1+T_2$ where $T_1\in Z$, $T_2\in Z^{\perp}$ and $T_2\ne 0$.   At
+least one of $T_2^+$, $T_2^-$ is non-zero;  replacing $T$ by $-T$ if
+need be, we may suppose that $T_2^+>0$.
+
+Because $T_2^+$, like $T$, belongs to $\eurm L^{\times}(U;V)$, its
+kernel $U_0$ is a band in $U$, which cannot be the whole of $U$, and
+there is a $u_0>0$ in $U_0^{\perp}$.   In this case $T_2^+u_0>0$;
+because $T_2^+\wedge(T_2^-+|T_1|)=0$, there is a $u_1\in[0,u_0]$ such
+that $T_2^+(u_0-u_1)+(T_2^-+|T_1|)(u_1)\not\ge T_2^+u_0$, so that
+
+\Centerline{$Tu_1\ge T_2u_1-|T_1|(u_1)\not\le 0$}
+
+\noindent and $Tu_1\ne 0$.   Now this means that the sequence
+$(Tu_1,Tu_1,\ldots)$ is not order*-convergent to zero, so there must
+be some $f\in U^{\times}$ such that $(f(u_1),f(u_1),\ldots)$ does not
+converge to $0$, that is, $f(u_1)\ne 0$;  replacing $f$ by $|f|$ if
+necessary, we may suppose that $f\ge 0$ and that $f(u_1)>0$.
+
+By 356H, there is a $u_2$ such that $0<u_2\le u_1$ and $g(u_2)=0$
+whenever $g\in U^{\times}$ and $g\wedge f=0$.
+Because $0<u_2\le u_0$, $u_2\in U_0^{\perp}$ and $v_0=T_2^+u_2>0$.
+Consider $P_{fv_0}\in Z$.   Because $T_2\in Z^{\perp}$, $T_2^+\wedge
+P_{fv_0}=0$;  set $S=P_{fv_0}+T_2^-$, so that $T_2^+\wedge S=0$.   Then
+
+\Centerline{$\inf_{u\in[0,u_2]}T_2^+(u_2-u)+Su=0$,
+\quad$\sup_{u\in[0,u_2]}T_2^+u-Su=v_0$}
+
+\noindent (use 355Ec for the first equality, and then subtract both
+sides from $v_0$).   Now $Su\ge f(u)v_0$ for every $u\ge 0$, so that for
+any $\epsilon>0$
+
+\Centerline{$\sup_{u\in[0,u_2],f(u)\ge\epsilon}T_2^+u-Su
+\le(1-\epsilon)v_0$}
+
+\noindent and accordingly
+
+\Centerline{$\sup_{u\in[0,u_2],f(u)\le\epsilon}T_2^+u=v_0$,}
+
+\noindent since the join of these two suprema is surely at least $v_0$,
+while the second is at most $v_0$.
+Note also that
+
+\Centerline{$v_0=\sup_{u\in[0,u_2],f(u)\le\epsilon}T_2^+u
+=\sup_{0\le u'\le u\le u_2,f(u)\le\epsilon}T_2u'
+=\sup_{0\le u'\le u_2,f(u')\le\epsilon}T_2u'$.}
+
+For $k\in\Bbb N$ set $A_k=\{u:0\le u\le u_2,\,f(u)\le 2^{-k}\}$.   We
+know that
+
+\Centerline{$B_k=\{\sup_{u\in I}T_2u:I\subseteq A_k$ is finite$\}$}
+
+\noindent is an upwards-directed set with supremum $v_0$ for each $k$.
+Because $V$ is \wsid, we can find a sequence $\sequence{k}{v'_k}$ such
+that $v'_k\in B_k$ for every $k$ and $v_1=\inf_{k\in\Bbb N}v'_k>0$.
+For each $k$ let $I_k\subseteq A_k$ be a finite set such that
+$v'_k=\sup_{u\in I_k}T_2u$.
+
+Because each $I_k$ is finite, we can build a sequence $\sequencen{u'_n}$
+in $[0,u_2]$ enumerating each in turn, so that
+$\lim_{n\to\infty}f(u'_n)=0$ (since $f(u)\le 2^{-k}$ if $u\in I_k$)
+while $\sup_{m\ge n}T_2u'_m\ge v_1$ for every $n$ (since $\{u'_m:m\ge
+n\}$ always includes some $I_k$).   Now $\sequencen{T_2u'_n}$ does not
+order*-converge to $0$.
+
+However, $\lim_{n\to\infty}g(u'_n)=0$ for every $g\in U^{\times}$.
+\Prf\ Express $|g|$ as $g_1+g_2$ where $g_1$ belongs to the band of
+$U^{\times}$ generated by $f$ and $g_2\wedge f=0$ (353Hc).   Then
+$g_2(u'_n)=g_2(u_2)=0$ for every $n$, by the choice of $u_2$.   Also
+$g_1=\sup_{n\in\Bbb N}g_1\wedge nf$ (352Vb);  so, given
+$\epsilon>0$, there is an $m\in\Bbb N$ such that
+$(g_1-mf)^+(u_2)\le\epsilon$ and $(g_1-mf)^+(u'_n)\le\epsilon$ for every
+$n\in\Bbb N$.   But this means that
+
+\Centerline{$|g(u'_n)|\le|g|(u'_n)\le\epsilon+mf(u'_n)$}
+
+\noindent for every $n$, and $\limsup_{n\to\infty}|g(u'_n)|\le\epsilon$;
+as $\epsilon$ is arbitrary, $\lim_{n\to\infty}g(u'_n)=0$.\ \Qed
+
+Now, however, part (a) of this proof tells us that $\sequencen{T_1u'_n}$
+is order*-convergent to $0$, because $T_1\in Z$, while
+$\sequencen{Tu'_n}$ is order*-convergent to $0$, by hypothesis;  so
+$\sequencen{T_2u'_n}=\sequencen{Tu'_n-T_1u'_n}$ order*-converges to
+$0$.\ \Bang
+
+This contradiction shows that every operator satisfying the condition
+(ii) must be in $Z$.
+}%end of proof of 376H
+
+\leader{376I}{}\cmmnt{ The following elementary remark will be useful
+for the next corollary and also for Theorem 376S.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $(X,\Sigma,\mu)$ be a $\sigma$-finite measure
+space and $U$ an order-dense solid linear subspace of $L^0(\mu)$.   Then
+there is a non-decreasing sequence $\sequencen{X_n}$ of measurable
+subsets of $X$, with union $X$, such that $\chi X_n^{\ssbullet}\in U$
+for every $n\in\Bbb N$.
+
+\proof{ Write $\frak A$ for the measure
+algebra of $\mu$, so that $L^0(\mu)$ can be identified with
+$L^0(\frak A)$ (364Ic).   $A=\{a:a\in\frak A\setminus\{0\},\,\chi a\in U\}$
+is order-dense in $\frak A$, so includes a partition of unity
+$\langle a_i\rangle_{i\in I}$.
+Because $\mu$ is $\sigma$-finite, $\frak A$ is
+ccc (322G) and $I$ is countable, so we can take $I$ to be a subset of
+$\Bbb N$.   Choose $E_i\in\Sigma$ such that $E_i^{\ssbullet}=a_i$ for
+$i\in I$;  set $E=X\setminus\bigcup_{i\in I}E_i$,
+$X_n=E\cup\bigcup_{i\in I,i\le n}E_i$ for $n\in\Bbb N$.
+}%end of proof of 376I
+
+\leader{376J}{Corollary} Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+$\sigma$-finite measure spaces, with product measure $\lambda$ on
+$X\times Y$.   Let $U\subseteq L^0(\mu)$,
+$V\subseteq L^0(\nu)$ be perfect order-dense solid linear subspaces, and
+$T:U\to V$ a linear operator.   Write
+$\eusm U=\{f:f\in\eusm L^0(\mu),\,f^{\ssbullet}\in U\}$,
+$\eusm V^{\#}=\{h:h\in\eusm L^0(\nu),\,h^{\ssbullet}\times v\in L^1$ for
+every $v\in V\}$.   Then the following are equiveridical:
+
+(i) $T$ is an abstract integral operator;
+
+(ii) there is a $k\in\eusm L^0(\lambda)$ such that
+
+\quad ($\alpha$) $\int|k(x,y)f(x)h(y)|d(x,y)<\infty$ for every
+$f\in\eusm U$, $h\in\eusm V^{\#}$,
+
+\quad ($\beta$) if $f\in\eusm U$ and we set $g(y)=\int k(x,y)f(x)dx$
+wherever this is defined, then $g\in\eusm L^0(\nu)$ and
+$Tf^{\ssbullet}=g^{\ssbullet}$;
+
+(iii) $T\in\eurm L^{\sim}(U;V)$ and whenever $\sequencen{u_n}$ is an
+order-bounded sequence in $U^+$ and $\lim_{n\to\infty}h(u_n)=0$ for
+every $h\in U^{\times}$, then $\sequencen{Tu_n}$ order*-converges to
+$0$ in $V$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} I write `$d(x,y)$' above to indicate integration
+with respect to the product measure $\lambda$.   Recall that in the
+terminology of \S251, $\lambda$ can be taken to be either the
+`primitive' or `c.l.d.' product measure (251K).}
+
+\proof{ The idea is of course to identify $L^0(\mu)$ and $L^0(\nu)$ with
+$L^0(\frak A)$ and $L^0(\frak B)$, where $(\frak A,\bar\mu)$ and $(\frak
+B,\bar\nu)$ are the measure algebras of $\mu$ and $\nu$, so that their
+localizable measure algebra free product can be identified with the
+measure algebra of $\lambda$ (325E), while
+$V^{\#}=\{h^{\ssbullet}:h\in\eusm V^{\#}\}$ can be identified with
+$V^{\times}$, because $(T,\Tau,\nu)$ is localizable (see the last sentence
+in 369C).
+
+\medskip
+
+{\bf (a)(i)$\Rightarrow$(ii)}
+By 376F, there is a $w\in L^0(\lambda)$ such
+that $\int w\times(u\otimes v')$ is defined and equal to
+$\int Tu\times v'$ whenever $u\in U$ and $v'\in V^{\#}$.   Express $w$ as
+$k^{\ssbullet}$ where $k\in\eusm L^0(\lambda)$.   If $f\in\eusm U$ and
+$h\in\eusm V^{\#}$ then $\int|k(x,y)f(x)h(y)|d(x,y)
+=\int|w\times(f^{\ssbullet}\otimes h^{\ssbullet}|$ is finite, so
+(ii-$\alpha$) is satisfied.
+
+Now take any $f\in\eusm U$, and set $g(y)=\int k(x,y)f(x)dx$ whenever
+this is defined in $\Bbb R$.
+Write $\Cal F$ for the set of those $F\in\Tau$ such that
+$\chi F\in \eusm V^{\#}$.   Then for any $F\in\Cal F$, $g$ is defined
+almost everywhere in $F$ and $g\restr F$ is $\nu$-virtually measurable.
+\Prf\ $\int k(x,y)f(x)\chi F(y)d(x,y)$ is defined in $\Bbb R$, so by
+Fubini's theorem (252B, 252C) $g_F(y)=\int k(x,y)f(x)\chi F(y)dx$ is
+defined for almost every $y$, and is
+$\nu$-virtually measurable;  now $g\restr F=g_F\restr F$.\ \Qed\
+Next, there is a sequence $\sequencen{F_n}$ in $\Cal F$ with union $Y$,
+by 376I, because $V$ is perfect and order-dense, so $V^{\#}$ must also
+be order-dense in $L^0(\nu)$.
+
+For each $n\in\Bbb N$, there is a measurable set $F'_n\subseteq
+F_n\cap\dom g$ such that $g\restr F_n$ is measurable and $F_n\setminus
+F'_n$ is negligible.   Setting $G=\bigcup_{n\in\Bbb N}F'_n$, $G$ is
+conegligible and $g\restr G$ is measurable, so $g\in\eusm L^0(\nu)$.
+
+If $\tilde g\in L^0(\nu)$ represents $Tu\in L^0(\nu)$, then for any
+$F\in\Cal F$
+
+\Centerline{$\int_F\tilde g=\int Tu\times(\chi F)^{\ssbullet}
+=\int_Fg$.}
+
+\noindent In particular, this is true whenever $F\in\Tau$ and
+$F\subseteq F_n$.   So $g$ and $\tilde g$ agree almost everywhere in
+$F_n$, for each $n$, and $g\eae\tilde g$.   Thus $g$ also represents
+$Tu$, as required in (ii-$\beta$).
+
+\medskip
+
+{\bf (b)(ii)$\Rightarrow$(i)} Set $w=k^{\ssbullet}$ in $L^0(\lambda)$.
+If $f\in\eusm U$ and $h\in\eusm V^{\#}$ the hypothesis ($\alpha$)
+tells us that $(x,y)\mapsto k(x,y)f(x)h(y)$ is integrable (because it
+surely belongs to $\eusm L^0(\lambda)$).   By Fubini's theorem,
+
+\Centerline{$\int k(x,y)f(x)h(y)d(x,y)
+=\int g(y)h(y)dy$}
+
+\noindent where $g(y)=\int k(x,y)f(x)dx$ for almost every $y$, so that
+$Tf^{\ssbullet}=g^{\ssbullet}$, by ($\beta$).   But this means that,
+setting $u=f^{\ssbullet}$ and $v'=h^{\ssbullet}$,
+
+\Centerline{$\int w\times(u\otimes v')=\int Tu\times v'$;}
+
+\noindent and this is true for every $u\in U$, $v'\in V^{\#}$.
+
+Thus $T$ satisfies the condition 376F(ii), and is an abstract integral
+operator.
+
+\medskip
+
+{\bf (b)(i)$\Rightarrow$(iii)} Because $V$ is \wsid\ (368S), this is
+covered by 376H(i)$\Rightarrow$(iii).
+
+\medskip
+
+{\bf (c)(iii)$\Rightarrow$(i)} Suppose that $T$ satisfies (iii).   The
+point is that $T^+$ is order-continuous.   \Prf\Quer\
+Otherwise, let $A\subseteq U$ be a
+non-empty downwards-directed set, with infimum $0$, such that
+$v_0=\inf_{u\in A}T^+(u)>0$.   Let $\sequencen{X_n}$ be a non-decreasing
+sequence of sets of finite measure covering $X$, and set
+$a_n=X_n^{\ssbullet}$ for each $n$.   For each $n$,
+$\inf_{u\in A}\Bvalue{u>2^{-n}}=0$, so we can find $\tilde u_n\in A$
+such that $\bar\mu(a_n\Bcap\Bvalue{\tilde u_n>2^{-n}})\le 2^{-n}$.   Set
+$u_n=\inf_{i\le n}\tilde u_i$ for each $n$;  then $\sequencen{u_n}$ is
+non-increasing and has infimum $0$;  also, $[0,u_n]$ meets $A$ for each
+$n$, so that $v_0\le\sup\{Tu:0\le u\le u_n\}$ for each $n$.   Because
+$V$ is \wsid, we can find a sequence $\sequencen{I_n}$
+of finite sets such that $I_n\subseteq[0,u_n]$ for each $n$ and
+$v_1=\inf_{n\in\Bbb N}\sup_{u\in I_n}(Tu)^+>0$.   Enumerating
+$\bigcup_{n\in\Bbb N}I_n$ as $\sequencen{u'_n}$, as in part (c) of the
+proof of 376H, we see that $\sequencen{u'_n}$ is order-bounded and
+$\lim_{n\to\infty}f(u'_n)=0$ for every $f\in U^{\times}$ (indeed,
+$\sequencen{u'_n}$ order*-converges to $0$ in $U$), while
+$\sequencen{Tu'_n}\not\to^* 0$ in $V$.\ \Bang\Qed
+
+Similarly, $T^-$ is order-continuous, so $T\in\eurm L^{\times}(U;V)$.
+Accordingly $T$ is an abstract integral operator by condition (ii) of
+376H.
+}%end of proof of 376J
+
+\leader{376K}{}\cmmnt{ As an application of the ideas above, I give
+a result due to N.Dunford (376N) which was one of the inspirations
+underlying the theory.   Following the method of {\smc Zaanen 83},  I
+begin with a couple of elementary lemmas.
+
+\wheader{376K}{4}{2}{2}{60pt}
+
+\noindent}{\bf Lemma} Let $U$ and $V$ be Riesz spaces.   Then there is a
+Riesz space isomorphism $T\mapsto T':\eurm
+L^{\times}(U;V^{\times})\to\eurm L^{\times}(V;U^{\times})$ defined by
+the formula
+
+\Centerline{$(T'v)(u)=(Tu)(v)$ for every $u\in U$, $v\in V$.}
+
+\noindent If we write
+$P_{fg}(u)=f(u)g$ for $f\in U^{\times}$, $g\in V^{\times}$ and $u\in U$,
+then $P_{fg}\in\eurm L^{\times}(U;V^{\times})$ and $P'_{fg}=P_{gf}$ in
+$\eurm L^{\times}(V;U^{\times})$.
+Consequently $T$ is an abstract integral operator iff $T'$ is.
+
+\proof{ All the ideas involved have already appeared.   For positive
+$T\in \eurm L^{\times}(U;V^{\times})$ the functional $(u,v)\mapsto
+(Tu)(v)$ is bilinear and order-continuous in each variable separately;
+so (just as in the first part of the proof of 376E) corresponds to a
+$T'\in\eurm L^{\times}(V;U^{\times})$.   The map $T\mapsto T':
+\eurm L^{\times}(U;V^{\times})^+\to\eurm L^{\times}(V;U^{\times})^+$ is
+evidently an additive, order-preserving bijection, so extends to an
+isomorphism between $\eurm L^{\times}(U;V^{\times})$ and $\eurm
+L^{\times}(V;U^{\times})$ given by the same formula.   I remarked in
+part (i) of the proof of 376E that every $P_{fg}$ belongs to $\eurm
+L^{\times}(U;V^{\times})$, and the identification $P'_{fg}=P_{gf}$ is
+just a matter of checking the formulae.   Of course it follows at once
+that the bands of abstract integral operators must also be matched by
+the map $T\mapsto T'$.
+}%end of proof of 376K
+
+\leader{376L}{Lemma} Let $U$ be a Banach lattice with an order-continuous
+norm.   If $w\in U^+$ there is a $g\in(U^{\times})^+$ such that for every
+$\epsilon>0$ there is a $\delta>0$ such that $\|u\|\le\epsilon$ whenever
+$0\le u\le w$ and $g(u)\le\delta$.
+
+\woddheader{376L}{0}{0}{0}{24pt} %p243
+
+\proof{{\bf (a)}  As remarked in 356D, $U^*=U^{\sim}=U^{\times}$.
+Set
+
+\Centerline{$A=\{v:v\in U$ and there is an $f\in(U^{\times})^+$ such
+that $f(u)>0$ whenever $0<u\le|v|\}$.}
+
+\noindent Then $v'\in A$ whenever $|v'|\le|v|\in A$ and $v+v'\in A$ for
+all $v$, $v'\in A$ (if $f(u)>0$ whenever $0<u\le|v|$ and $f'(u)>0$
+whenever $0<u\le|v'|$, then $(f+f')(u)>0$ whenever $0<u\le|v+v'|$);
+moreover, if $v_0>0$ in $U$, there is a $v\in A$ such that $0<v\le v_0$.
+\Prf\ Because $U^{\times}=U^*$ separates the points of $U$, there is a
+$g>0$ in $U^{\times}$ such that $g(v_0)>0$;  now by 356H there is a
+$v\in\ocint{0,v_0}$ such that $g$ is strictly positive on $\ocint{0,v}$,
+so that $v\in A$.\ \QeD\   But this means that $A$ is an order-dense
+solid linear subspace of $U$.
+
+\medskip
+
+{\bf (b)} In fact $w\in A$.   \Prf\ $w=\sup B$, where $B=A\cap[0,w]$.
+Because $B$ is upwards-directed, $w\in\overline{B}$ (354Ea), and there
+is a sequence $\sequencen{u'_n}$
+in $B$ converging to $w$ for the norm.   For each $n$, choose
+$f_n\in(U^{\times})^+$
+such that $f_n(u)>0$ whenever $0<u\le u'_n$.   Set
+
+\Centerline{$f=\sum_{n=0}^{\infty}\Bover1{2^{n}(1+\|f_n\|)}f_n$}
+
+\noindent in $U^*=U^{\times}$.   Then
+whenever $0<u\le w$ there is some $n\in\Bbb N$ such that $u\wedge
+u'_n>0$, so that $f_n(u)>0$ and $f(u)>0$.   So $f$ witnesses that $w\in
+A$.\ \Qed
+
+\medskip
+
+{\bf (c)} Take $g\in(U^{\times})^+$ such that $g(u)>0$ whenever
+$0<u\le w$.   This $g$ serves.   \Prf\Quer\  Otherwise, there is some
+$\epsilon>0$ such that for every $n\in\Bbb N$ we can find a
+$u_n\in[0,w]$ with $g(u_n)\le 2^{-n}$ and $\|u_n\|\ge\epsilon$.   Set
+$v_n=\sup_{i\ge n}u_i$;  then $0\le v_n\le w$, $g(v_n)\le 2^{-n+1}$ and
+$\|v_n\|\ge\epsilon$ for every $n\in\Bbb N$.   But $\sequencen{v_n}$ is
+non-decreasing, so $v=\inf_{n\in\Bbb N}v_n$ must be non-zero, while
+$0\le v\le w$ and $g(v)=0$;  which is impossible.\ \Bang\Qed
+
+Thus we have found an appropriate $g$.
+}%end of proof of 376L
+
+\leader{376M}{Theorem} (a) Let $U$ be a Banach lattice with an
+order-continuous norm and $V$ a Dedekind complete $M$-space.
+Then every bounded linear operator from $U$ to $V$ is an abstract
+integral operator.
+
+(b) Let $U$ be an $L$-space and $V$ a Banach lattice with
+order-continuous
+norm.   Then every bounded linear operator from $U$ to $V^{\times}$ is
+an abstract integral operator.
+
+\proof{{\bf (a)} By 355Kb and 355C,
+$\eurm L^{\times}(U;V)=\eurm L^{\sim}(U;V)\subseteq\eurm B(U;V)$;  but
+since norm-bounded sets in $V$ are also order-bounded,
+$\{Tu:|u|\le u_0\}$ is bounded above in $V$ for every
+$T\in\eurm B(U;V)$ and $u_0\in U^+$, and
+$\eurm B(U;V)=\eurm L^{\times}(U;V)$.
+
+I repeat ideas from the proof of 376H.   (I cannot quote 376H directly
+as I am not assuming that $V$ is \wsid.)   \Quer\ Suppose, if possible,
+that $\eurm B(U;V)$ is not the band $Z$ of abstract integral operators.
+In this case there is a $T>0$ in
+$Z^{\perp}$.   Take $u_1\ge 0$ such that $v_0=Tu_1$ is non-zero.
+Let $f\ge 0$ in
+$U^{\times}$ be such that for every $\epsilon>0$ there is a $\delta>0$
+such that $\|u\|\le\epsilon$ whenever $0\le u\le u_1$ and
+$f(u)\le\delta$ (376L).   Then, just as in part (c) of
+the proof of 376H,
+
+\Centerline{$\sup_{u\in[0,u_1],f(u)\le\delta}Tu=v_0$}
+
+\noindent for every $\delta>0$.   But there is a $\delta>0$ such that
+$\|T\|\|u\|\le\bover12\|v_0\|$ whenever $0\le u\le u_1$ and
+$f(u)\le\delta$;  in which case
+$\|\sup_{u\in[0,u_1],f(u)\le\delta}Tu\|\le\bover12\|v_0\|$, which is
+impossible.\ \Bang
+
+Thus $Z=\eurm B(U;V)$, as required.
+
+\medskip
+
+{\bf (b)} Because $V$ has an order-continuous norm,
+$V^*=V^{\times}=V^{\sim}$;  and the norm of $V^*$ is a Fatou norm with
+the Levi property (356Da).   So
+$\eurm B(U;V^*)=\eurm L^{\times}(U;V^{\times})$, by 371C.
+By 376K, this is canonically
+isomorphic to $\eurm L^{\times}(V;U^{\times})$.   Now $U^{\times}=U^*$
+is an $M$-space (356Pb).   By (a), every member of
+$\eurm L^{\times}(V;U^{\times})$ is an abstract integral operator;
+but the isomorphism between $\eurm L^{\times}(V;U^{\times})$ and
+$\eurm L^{\times}(U;V^{\times})$ matches the abstract integral operators in
+each space (376K), so
+every member of $\eurm B(U;V^*)$ is also an abstract integral operator,
+as claimed.
+}%end of proof of 376M
+
+\leader{376N}{Corollary:  Dunford's theorem} Let $(X,\Sigma,\mu)$ and
+$(Y,\Tau,\nu)$ be $\sigma$-finite measure spaces and
+$T:L^1(\mu)\to L^p(\nu)$ a bounded linear operator, where $1<p\le\infty$.
+Then there is a measurable function $k:X\times Y\to\Bbb R$ such that
+$Tf^{\ssbullet}=g_f^{\ssbullet}$, where
+$g_f(y)=\int k(x,y)f(x)dx$ almost everywhere, for every
+$f\in\eusm L^1(\mu)$.
+
+\proof{ Set $q=\bover{p}{p-1}$ if $p$ is finite, $1$ if $p=\infty$.   We
+can identify $L^p(\nu)$ with $V^{\times}$, where
+$V=L^q(\nu)\cong L^p(\nu)^{\times}$ (366Dc, 365Mc) has an
+order-continuous norm because $1\le q<\infty$.   By 376Mb, $T$ is an
+abstract integral operator.   By 376F/376J, $T$ is
+represented by a kernel, as claimed.
+}%end of proof of 376N
+
+\leader{376O}{}\cmmnt{ Under the right conditions, weakly compact
+operators are abstract integral operators.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $U$ be a Riesz space, and $W$ a solid linear
+subspace of $U^{\sim}$.   If $C\subseteq U$ is relatively compact for
+the weak topology $\frak T_s(U,W)$\cmmnt{ (3A5E)}, then for
+every $g\in W^+$ and $\epsilon>0$ there is a $u^*\in U^+$ such that
+$g(|u|-u^*)^+\le\epsilon$ for every $u\in C$.
+
+\proof{ Let $W_g$ be the solid linear subspace of $W$ generated by $g$.
+Then $W_g$ is an Archimedean Riesz space with order unit, so
+$W_g^{\times}$ is a band in the $L$-space $W_g^*=W_g^{\sim}$ (356Na),
+and is therefore an $L$-space in its own right (354O).   For $u\in U$,
+$h\in W^{\times}_g$ set $(Tu)(h)=h(u)$;  then $T$ is an order-continuous
+Riesz homomomorphism from $U$ to $W^{\times}_g$ (356F).
+
+Now $W_g$ is perfect.
+\Prf\ I use 356K.   $W_g$ is Dedekind complete because it is a solid
+linear subspace of the Dedekind complete space $U^{\sim}$.
+$W_g^{\times}$ separates the points of $W$ because $T[U]$ does.
+If $A\subseteq W_g$ is
+upwards-directed and $\sup_{h\in A}\phi(h)$ is finite for every
+$\phi\in W_g^{\times}$, then $A$ acts on $W_g^{\times}$ as a set of
+bounded linear functionals which, by the Uniform Boundedness Theorem
+(3A5Ha), is uniformly bounded;  that is, there is some $M\ge 0$ such
+that
+$\sup_{h\in A}|\phi(h)|\le M\|\phi\|$ for every $\phi\in W_g^{\times}$.
+Because $g$ is the standard order unit of $W_g$, we have
+$\|\phi\|=|\phi|(g)$ and $|\phi(h)|\le M|\phi|(g)$ for every
+$\phi\in W_g^{\times}$ and $h\in A$.   In particular,
+
+\Centerline{$h(u)\le|h(u)|=|(Tu)(h)|\le M|Tu|(g)=M(Tu)(g)=Mg(u)$}
+
+\noindent for every $h\in A$ and $u\in U^+$.   But this means that
+$h\le Mg$ for every $h\in A$ and $A$ is bounded above in $W_g$.   Thus
+all the conditions of 356K are satisfied and $W_g$ is perfect.\ \Qed
+
+Accordingly $T$ is continuous for the topologies $\frak T_s(U,W)$ and
+$\frak T_s(W_g^{\times},W_g^{\times\times})$, because every element
+$\phi$ of $W_g^{\times\times}$ corresponds to a member of
+$W_g\subseteq W$, so 3A5Ec applies.
+
+Now we are supposing that $C$ is relatively compact for
+$\frak T_s(U,W)$, that is, is included in some compact set $C'$;
+accordingly $T[C']$ is compact and $T[C]$ is relatively compact for
+$\frak T_s(W_g^{\times},W_g^{\times\times})$.   Since $W_g^{\times}$ is
+an $L$-space, $T[C]$ is uniformly integrable (356Q);  consequently
+(ignoring the trivial case $C=\emptyset$) there are
+$\phi_0,\ldots,\phi_n\in T[C]$ such that
+$\|(|\phi|-\sup_{i\le n}|\phi_i|)^+\|\le\epsilon$ for every
+$\phi\in T[C]$ (354Rb), so that
+$(|\phi|-\sup_{i\le n}|\phi_i|)^+(g)\le\epsilon$ for every
+$\phi\in T[C]$.
+
+Translating this back into terms of $C$ itself, and recalling that $T$
+is a Riesz homomorphism, we see that there are $u_0,\ldots,u_n\in C$
+such that $g(|u|-\sup_{i\le n}|u_i|)^+\le\epsilon$ for every $u\in C$.
+Setting $u^*=\sup_{i\le n}|u_i|$ we have the result.
+}%end of proof of 376O
+
+\leader{376P}{Theorem} Let $U$ be an $L$-space and $V$ a perfect Riesz
+space.   If $T:U\to V$ is a linear operator such that
+$\{Tu:u\in U,\,\|u\|\le 1\}$ is relatively compact for the weak topology
+$\frak T_s(V,V^{\times})$, then $T$ is an abstract integral operator.
+
+\proof{{\bf (a)} For any $g\ge 0$ in $V^{\times}$,
+$M_g=\sup_{\|u\|\le 1}g(|Tu|)$ is finite.   \Prf\ By 376O, there is a
+$v^*\in V^+$ such that
+$g(|Tu|-v^*)^+\le 1$ whenever $\|u\|\le 1$;  now $M_g\le g(v^*)+1$.\
+\Qed\   Considering $\|u\|^{-1}u$, we see that $g(|Tu|)\le M_g\|u\|$ for
+every $u\in U$.
+
+Next, we find that $T\in\eurm L^{\sim}(U;V)$.   \Prf\ Take $u\in U^+$.
+Set
+
+\Centerline{$B=\{\sum_{i=0}^n|Tu_i|:u_0,\ldots,u_n\in U^+,\,
+\sum_{i=0}^nu_i=u\}\subseteq V^+$.}
+
+\noindent Then $B$ is upwards-directed.   (Cf.\ 371A.)   If $g\ge 0$ in
+$V^{\times}$,
+
+$$\eqalign{\sup_{v\in B}g(v)
+&=\sup\{\sum_{i=0}^ng(|Tu_i|):\sum_{i=0}^nu_i=u\}\cr
+&\le\sup\{\sum_{i=0}^nM_g\|u_i\|:\sum_{i=0}^nu_i=u\}
+=M_g\|u\|\cr}$$
+
+\noindent is finite.   By 356K, $B$ is bounded above in $V$;  and of
+course any upper bound for $B$ is also an upper bound for
+$\{Tu':0\le u'\le u\}$.   As $u$ is arbitrary, $T$ is order-bounded.\
+\Qed
+
+Because $U$ is a Banach lattice with an order-continuous norm,
+$T\in\eurm L^{\times}(U;V)$ (355Kb).
+
+\medskip
+
+{\bf (b)} Since we can identify $\eurm L^{\times}(U;V)$ with
+$\eurm L^{\times}(U;V^{\times\times})$, we have an adjoint operator
+$T'\in\eurm L^{\times}(V^{\times};U^{\times})$, as in 376K.   Now if
+$g\ge 0$ in
+$V^{\times}$ and $\sequencen{g_n}$ is a sequence in $[0,g]$ such that
+$\lim_{n\to\infty}g_n(v)=0$ for every $v\in V$, $\sequencen{T'g_n}$
+order*-converges to $0$ in $U^{\times}$.   \Prf\ For any
+$\epsilon>0$, there is a
+$v^*\in V^+$ such that $g(|Tu|-v^*)^+\le\epsilon$ whenever $\|u\|\le 1$;
+consequently
+
+$$\eqalign{\|T'g_n\|
+&=\sup_{\|u\|\le 1}(T'g_n)(u)
+=\sup_{\|u\|\le 1}g_n(Tu)\cr
+&\le g_n(v^*)+\sup_{\|u\|\le 1}g_n(|Tu|-v^*)^+\cr
+&\le g_n(v^*)+\sup_{\|u\|\le 1}g(|Tu|-v^*)^+
+\le g_n(v^*)+\epsilon\cr}$$
+
+\noindent for every $n\in\Bbb N$.   As $\lim_{n\to\infty}g_n(v^*)=0$,
+$\limsup_{n\to\infty}\|T'g_n\|\le\epsilon$;  as $\epsilon$ is arbitrary,
+$\sequencen{\|T'g_n\|}\to 0$.   But as $U^{\times}$ is an $M$-space
+(356Pb), it follows that $\sequencen{T'g_n}$ order*-converges to
+$0$.\ \Qed
+
+By 368Pc, $U^{\times}$ is \wsid.   By 376H, $T'$ is an abstract integral
+operator, so $T$ also is, by 376K.
+}%end of proof of 376P
+
+\leader{376Q}{Corollary} Let $(X,\Sigma,\mu)$ and
+$(Y,\Tau,\nu)$ be $\sigma$-finite measure spaces and
+$T:L^1(\mu)\to L^1(\nu)$ a weakly compact linear operator.
+Then there is a function $k:X\times Y\to\Bbb R$ such that
+$Tf^{\ssbullet}=g_f^{\ssbullet}$, where
+$g_f(y)=\int k(x,y)f(x)dx$ almost everywhere, for every
+$f\in\eusm L^1(\mu)$.
+
+\proof{ This follows from 376P and 376J, just as in 376N.
+}%end of proof of 376Q
+
+\leader{376R}{}\cmmnt{ So far I have mentioned actual kernel functions
+$k(x,y)$ only as a way of giving slightly more concrete form to the
+abstract kernels of 376E.   But of course they can provide new
+structures and insights.   I give one result as an example.   The
+following lemma is useful.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $(X,\Sigma,\mu)$ be a measure space,
+$(Y,\Tau,\nu)$ a $\sigma$-finite measure space, and $\lambda$ the
+c.l.d.\ product measure on $X\times Y$.   Suppose that $k$ is a
+$\lambda$-integrable real-valued function.   Then for any $\epsilon>0$
+there is a finite partition $E_0,\ldots,E_n$ of $X$ into measurable sets
+such that
+$\|k-k_1\|_1\le\epsilon$, where
+
+$$\eqalign{k_1(x,y)&=\Bover1{\mu E_i}\int_{E_i}k(t,y)dt
+\text{ whenever }x\in E_i,\,0<\mu E_i<\infty\cr
+&\hskip12em\text{ and the integral is defined in }\Bbb R,\cr
+&=0\text{ in all other cases}.\cr}$$
+
+\proof{ Once again I refer to the proof of 253F:  there are sets
+$H_0,\ldots,H_r$ of finite measure in $X$, sets $F_0,\ldots,F_r$ of
+finite measure in $Y$, and $\alpha_0,\ldots,\alpha_r$ such that
+$\|k-k_2\|_1\le\bover12\epsilon$, where
+$k_2=\sum_{j=0}^r\alpha_i\chi(H_j\times F_j)$.   Let $E_0,\ldots,E_n$ be
+the partition of $X$ generated by $\{H_i:i\le r\}$.    Then for any
+$i\le n$, $\int_{E_i\times Y}|k-k_1|$ is defined and is at most
+$2\int_{E_i\times Y}|k-k_2|$.   \Prf\ If $\mu E_i=0$, this is trivial,
+as both are zero.   If $\mu E_i=\infty$, then again the result is
+elementary, since both $k_1$ and $k_2$ are zero on $E_i\times Y$.   So
+let us suppose that $0<\mu E_i<\infty$.   In this case
+$\int_{E_i}k(t,y)dt$ must be defined for almost every $y$, by Fubini's
+theorem.   So $k_1$ is defined
+almost everywhere in $E_i\times Y$, and
+
+\Centerline{$\int_{E_i\times Y}|k-k_1|
+=\int_Y\int_{E_i}|k(x,y)-k_1(x,y)|dxdy$.}
+
+\noindent Now take some fixed $y\in Y$ such that
+
+\Centerline{$\beta=\Bover1{\mu E_i}\int_{E_i}k(t,y)dt$}
+
+\noindent is defined.   Then $\beta=k_1(x,y)$ for every $x\in E_i$.
+For every $x\in E_i$, we must have
+$k_2(x,y)=\alpha$ where $\alpha=\sum\{\alpha_j:E_i\subseteq H_j,\,y\in
+F_j\}$.   But in this case, because
+$\int_{E_i}k(x,y)-\beta\,dx=0$, we have
+
+\Centerline{$\int_{E_i}\max(0,k(x,y)-\beta)dx
+=\int_{E_i}\max(0,\beta-k(x,y))dx
+=\Bover12\int_{E_i}|k(x,y)-k_1(x,y)|dx$.}
+
+\noindent If $\beta\ge\alpha$,
+
+\Centerline{$\int_{E_i}\max(0,k(x,y)-\beta)dx
+\le\int_{E_i}\max(0,k(x,y)-\alpha)dx\le\int_{E_i}|k(x,y)-k_2(x,y)|dx$;}
+
+\noindent if $\beta\le\alpha$,
+
+\Centerline{$\int_{E_i}\max(0,\beta-k(x,y))dx
+\le\int_{E_i}\max(0,\alpha-k(x,y))dx\le\int_{E_i}|k(x,y)-k_2(x,y)|dx$;}
+
+\noindent in either case,
+
+\Centerline{$\Bover12\int_{E_i}|k(x,y)-k_1(x,y)|dx
+\le\int_{E_i}|k(x,y)-k_2(x,y)|dx$.}
+
+\noindent This is true for almost every $y$, so integrating with respect
+to $y$ we get the result.\ \Qed
+
+Now, summing over $i$, we get
+
+\Centerline{$\int|k-k_1|\le 2\int|k-k_2|\le\epsilon$,}
+
+\noindent as required.
+}%end of proof of 376R
+
+\leader{376S}{Theorem} Let $(X,\Sigma,\mu)$ be a complete locally
+determined measure space, $(Y,\Tau,\nu)$ a $\sigma$-finite measure
+space, and $\lambda$ the c.l.d.\ product measure on $X\times Y$.   Let
+$\tau$ be an extended Fatou norm on $L^0(\nu)$ and write
+$\eusm L^{\tau'}$ for
+$\{g:g\in\eusm L^0(\nu),\,\tau'(g^{\ssbullet})<\infty\}$,
+where $\tau'$ is the associate extended Fatou norm of
+$\tau$\cmmnt{ (369H-369I)}.   Suppose that $k\in\eusm L^0(\lambda)$ is
+such that $k\times(f\otimes g)$ is integrable whenever
+$f\in\eusm L^1(\mu)$ and $g\in\eusm L^{\tau'}$.
+Then we have a corresponding linear operator $T:L^1(\mu)\to L^{\tau}$
+defined by saying that
+$\int(Tf^{\ssbullet})\times g^{\ssbullet}=\int k\times(f\otimes g)$
+whenever $f\in\eusm L^1(\mu)$ and $g\in\eusm L^{\tau'}$.
+
+For $x\in X$ set $k_x(y)=k(x,y)$ whenever this is defined.    Then
+$k_x\in\eusm L^0(\nu)$ for almost every $x$;  set
+$v_x=k_x^{\ssbullet}\in L^0(\nu)$ for such $x$.   In this case
+$x\mapsto\tau(v_x)$ is measurable and defined and finite almost
+everywhere, and $\|T\|=\esssup_x\tau(v_x)$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remarks} The discussion of extended Fatou norms in \S369
+regarded them as functionals on spaces of the form $L^0(\frak A)$.   I
+trust that no-one will be offended if I now speak of an extended Fatou
+norm on $L^0(\nu)$, with the associated function spaces $L^{\tau}$,
+$L^{\tau'}\subseteq L^0$, taking for granted the identification in
+364Ic.
+
+Recall that $(f\otimes g)(x,y)=f(x)g(y)$ for $x\in\dom f$ and $y\in\dom g$
+(253B).
+
+\wheader{376S}{0}{0}{0}{24pt}
+
+By `$\esssup_x\tau(v_x)$' I mean
+
+\Centerline{$\inf\{M:M\ge 0,\,\{x:v_x$ is defined and $\tau(v_x)\le M\}$
+is conegligible$\}$}
+
+\noindent (see 243D).
+}%end of comment
+
+\proof{{\bf (a)} To see that the formula
+$(f,g)\mapsto\int k\times(f\otimes g)$ gives rise to an operator in
+$\eurm L^{\times}(U;(L^{\tau'})^{\times})$, it is perhaps quickest to
+repeat the
+argument of parts (a) and (b) of the proof of 376E.   (We are not quite
+in a position to quote 376E, as stated, because the localizable measure
+algebra free product there might be strictly larger than the measure
+algebra of $\lambda$;  see 325B.)   The first step, of course, is to
+note that changing $f$ or $g$ on a negligible set does not affect the
+integral $\int k\times(f\otimes g)$, so that we have a bilinear
+functional on $L^1\times L^{\tau'}$;  and the other essential element is
+the fact that the maps
+$f^{\ssbullet}\mapsto(f\otimes\chi Y)^{\ssbullet}$,
+$g^{\ssbullet}\mapsto (\chi X\otimes g)^{\ssbullet}$
+are order-continuous (put 325A and 364Pc together).
+
+By 369K, we can identify $(L^{\tau'})^{\times}$ with $L^{\tau}$, so that
+$T$ becomes an operator in $\eurm L^{\times}(U;L^{\tau})$.   Note that
+it must be norm-bounded (355C).
+
+\medskip
+
+{\bf (b)} By 376I, there is a non-decreasing sequence $\sequencen{Y_n}$
+of measurable sets in $Y$, covering $Y$, such that
+$\chi Y_n\in\eusm L^{\tau'}$ for every $n$.
+Set $X_0=\{x:x\in X,\,k_x\in\eusm L^0(\nu)\}$.   Then $X_0$ is
+conegligible in $X$.   \Prf\ Let $E\in\Sigma$ be any set of finite
+measure.   Then for any $n\in\Bbb N$, $k\times(\chi E\otimes\chi Y_n)$
+is integrable, that is, $\int_{E\times Y_n}k$ is defined and finite;  so
+by Fubini's theorem $\int_{Y_n}k_x$ is defined and finite for almost
+every $x\in E$.   Consequently, for almost every $x\in E$,
+$k_x\times\chi Y_n\in\eusm L^0(\nu)$ for every $n\in\Bbb N$, that is,
+$k_x\in\eusm L^0(\nu)$, that is, $x\in X_0$.
+
+Thus $E\setminus X_0$ is negligible for every set $E$ of finite measure.
+Because $\mu$ is complete and locally determined, $X_0$ is
+conegligible.\ \Qed
+
+This means that $v_x$ and $\tau(v_x)$ are defined for almost every $x$.
+
+\medskip
+
+{\bf (c)} $\tau(v_x)\le\|T\|$ for almost every $x$.   \Prf\ Take any
+$E\in\Sigma$ of finite measure, and $n\in\Bbb N$.   Then
+$k\times\chi(E\times Y_n)$ is integrable.   For each $r\in\Bbb N$, there
+is a finite partition $E_{r0},\ldots,E_{r,m(r)}$ of $E$ into measurable
+sets such that $\int_{E\times Y_n}|k-k^{(r)}|\le 2^{-r}$, where
+
+$$\eqalign{k^{(r)}(x,y)&=\Bover1{\mu E_{ri}}\int_{E_{ri}}k(t,y)dt
+\text{ whenever }y\in Y_n,\,x\in E_{ri},\,\mu E_{ri}>0\cr
+&\hskip12em\text{ and the integral is defined in }\Bbb R\cr
+&=0\text{ otherwise}\cr}$$
+
+\noindent (376R).   Now $k^{(r)}$ also is integrable over $E\times Y_n$,
+so $k^{(r)}_x\in\eusm L^0(\nu)$ for almost every $x\in E$, writing
+$k^{(r)}_x(y)=k^{(r)}(x,y)$, and we can speak of
+$v^{(r)}_x=(k^{(r)}_x)^{\ssbullet}$ for almost every $x$.   Note that
+$k^{(r)}_x=k^{(r)}_{x'}$ whenever $x$, $x'$ belong to the same $E_{ri}$.
+
+If $\mu E_{ri}>0$, then $v^{(r)}_x$ must be defined for every $x\in
+E_{ri}$.   If $v'\in L^{\tau'}$ is represented by $g\in\eusm L^{\tau'}$
+then
+
+$$\eqalign{\int k\times(\chi E_{ri}\otimes(g\times\chi Y_n))
+&=\int_{E_{ri}\times Y_n}k(t,y)g(y)d(t,y)\cr
+&=\mu E_{ri}\int k^{(r)}(x,y)g(y)dy
+=\mu E_{ri}\int v^{(r)}_x\times v'\cr}$$
+
+\noindent for any $x\in E_{ri}$.   But this means that
+
+\Centerline{$\mu E_{ri}\int v^{(r)}_x\times v'=\int T(\chi
+E_{ri}^{\ssbullet})\times v'\times\chi Y_n^{\ssbullet}$}
+
+\noindent for every $v'\in L^{\tau'}$, so
+
+\Centerline{$v^{(r)}_x=\Bover1{\mu E_{ri}}T(\chi
+E_{ri}^{\ssbullet})\times\chi Y_n^{\ssbullet}$,
+\quad$\tau(v^{(r)}_x)\le\Bover1{\mu E_{ri}}\|T\|\|\chi
+E_{ri}^{\ssbullet}\|_1=\|T\|$}
+
+\noindent for every $x\in E_{ri}$.   This is true whenever
+$\mu E_{ri}>0$, so in fact $\tau(v^{(r)}_x)\le\|T\|$ for almost every
+$x\in E$.
+
+Because $\sum_{r\in\Bbb N}\int_{E\times Y_n}|k-k^{(r)}|<\infty$, we must
+have $k(x,y)=\lim_{r\to\infty}k^{(r)}(x,y)$ for almost every
+$(x,y)\in E\times Y_n$.   Consequently, for almost every $x\in E$,
+$k(x,y)=\lim_{r\to\infty}k^{(r)}(x,y)$ for almost every $y\in Y_n$, that
+is, $\sequence{r}{v^{(r)}_x}$ order*-converges to
+$v_x\times\chi Y_n^{\ssbullet}$
+(in $L^0(\nu)$) for almost every $x\in E$.   But this means that, for
+almost every $x\in E$,
+
+\Centerline{$\tau(v_x\times\chi Y_n^{\ssbullet})
+\le\liminf_{r\to\infty}\tau(v^{(r)}_x)\le\|T\|$}
+
+\noindent (369Mc).   Now
+
+\Centerline{$\tau(v_x)=\lim_{n\to\infty}\tau(v_x\times\chi
+Y_n^{\ssbullet})\le\|T\|$}
+
+\noindent for almost every $x\in E$.
+
+As in (b), this implies (since $E$ is arbitrary) that
+$\tau(v_x)\le\|T\|$ for almost every $x\in X$.\ \Qed
+
+\medskip
+
+{\bf (d)} I now show that $x\mapsto\tau(v_x)$ is measurable.   \Prf\
+Take $\gamma\in\coint{0,\infty}$ and set
+$A=\{x:x\in X_0,\,\tau(v_x)\le\gamma\}$.   Suppose that $\mu E<\infty$.
+Let $G$ be a measurable envelope of $A\cap E$ (132Ee).   Set
+$\tilde k(x,y)=k(x,y)$ when $x\in G$ and $(x,y)\in\dom k$, $0$
+otherwise.   If $f\in\eusm L^1(\mu)$ and $g\in\eusm L^{\tau'}$, then
+
+\Centerline{$\int\tilde k(x,y)f(x)g(y)d(x,y)
+=\int_{G\times Y}k(x,y)f(x)g(y)d(x,y)=\int_Gf(x)\int_Yk(x,y)g(y)dydx$}
+
+\noindent is defined.
+
+Take any $g\in\eusm L^{\tau'}$.
+For $x\in X_0$, set $h(x)=\int|\tilde k(x,y)g(y)|dy$.   Then $h$ is
+finite almost everywhere and measurable.   For $x\in A\cap E$,
+
+\Centerline{$\int|\tilde k(x,y)g(y)|dy
+=\int|v_x\times g^{\ssbullet}|\le\gamma\tau'(g^{\ssbullet})$.}
+
+\noindent So the measurable set
+$G'=\{x:h(x)\le\gamma\tau'(g^{\ssbullet})\}$ includes $A\cap E$, and
+$\mu(G\setminus G')=0$.   Consequently
+
+\Centerline{$|\int\tilde k(x,y)f(x)g(y)d(x,y)|\le\int_G|f(x)|h(x)dx
+\le\gamma\|f\|_1\tau'(g^{\ssbullet})$,}
+
+\noindent and this is true whenever $f\in\eusm L^1(\mu)$.
+
+Now we have an operator $\tilde T:L^1(\mu)\to L^{\tau}$ defined by the
+formula
+
+\Centerline{$\int(\tilde Tf^{\ssbullet})\times g^{\ssbullet}
+=\int\tilde k\times(f\otimes g)$ when $f\in\eusm L^1(\nu)$ and
+$g\in\eusm L^{\tau'}$,}
+
+\noindent and the formula just above tells us that
+$|\int\tilde Tu\times v'|\le\gamma\|u\|_1\tau'(v')$ for every
+$u\in L^1(\nu)$ and $v'\in L^{\tau'}$;  that is,
+$\tau(\tilde Tu)\le\gamma\|u\|_1$ for every $u\in L^1(\mu)$;  that is,
+$\|\tilde T\|\le\gamma$.   But now (c) tells us
+that $\tau(\tilde v_x)\le\gamma$ for almost every $x\in X$, where
+$\tilde v_x$ is the equivalence class of $y\mapsto \tilde k(x,y)$, that
+is, $\tilde v_x=v_x$ for $x\in G\cap X_0$, $0$ for $x\in X\setminus G$.
+So $\tau(v_x)\le\gamma$ for almost every $x\in G$, and $G\setminus A$ is
+negligible.   But this means that $A\cap E$ is measurable.   As $E$ is
+arbitrary, $A$ is measurable;  as $\gamma$ is arbitrary,
+$x\mapsto\tau(v_x)$ is measurable.\ \Qed
+
+\medskip
+
+{\bf (e)} Finally, the ideas in (d) show that
+$\|T\|\le\esssup_x\tau(v_x)$.   \Prf\ Set $M=\esssup_x\tau(v_x)$.   If
+$f\in\eusm L^1(\mu)$ and $g\in\eusm L^{\tau'}$, then
+
+\Centerline{$\int|k(x,y)f(x)g(y)|d(x,y)
+\le\int|f(x)|\tau(v_x)\tau'(g^{\ssbullet})dx
+\le M\|f\|_1\tau'(g^{\ssbullet})$;}
+
+\noindent as $g$ is arbitrary, $\tau(Tf^{\ssbullet})\le M\|f\|_1$;  as
+$f$ is arbitrary, $\|T\|\le M$.\ \Qed
+}%end of proof of 376S
+
+\exercises{\leader{376X}{Basic exercises $\pmb{>}$(a)}
+%\spheader 376Xa
+Let $\mu$ be Lebesgue measure on $\Bbb R$.   Let $h$ be a
+$\mu$-integrable
+real-valued function with $\|h\|_1\le 1$, and set $k(x,y)=h(y-x)$
+whenever this is defined.   Show that if $f$ is in either
+$\eusm L^1(\mu)$ or $\eusm L^{\infty}(\mu)$ then
+$g(y)=\int k(x,y)f(x)dx$ is
+defined for almost every $y\in\Bbb R$, and that this formula gives rise
+to an operator $T\in\Cal T^{\times}_{\bar\mu,\bar\mu}$ as defined in
+373Ab.   \Hint{255H.}
+%376A
+
+\spheader 376Xb Let $(\frak A,\bar\mu)$ and $(\frak B,\bar\nu)$ be
+semi-finite measure algebras with localizable measure algebra free
+product $(\frak C,\bar\lambda)$, and take $p\in[1,\infty]$.   Show that
+if $u\in L^p(\frak A,\bar\mu)$ and $v\in L^p(\frak B,\bar\nu)$ then
+$u\otimes v\in L^p(\frak C,\bar\lambda)$ and
+$\|u\otimes v\|_p=\|u\|_p\|v\|_p$.
+%376C
+
+\sqheader 376Xc Let $U$, $V$, $W$ be Riesz spaces, of which $V$ and $W$
+are Dedekind complete, and suppose that $T\in\eurm L^{\times}(U;V)$ and
+$S\in\eurm L^{\times}(V;W)$.   Show that if either $S$ or $T$ is an
+abstract integral operator, so is $ST$.
+%376D
+
+\spheader 376Xd Let $h$ be a Lebesgue integrable function on $\Bbb R$,
+and $f$ a square-integrable function.   Suppose that $\sequencen{f_n}$
+is a sequence of measurable functions such that ($\alpha$) $|f_n|\le f$
+for every $n$ ($\beta$) $\lim_{n\to\infty}\int_Ef_n=0$ for every
+measurable set $E$ of finite measure.   Show that
+$\lim_{n\to\infty}(h*f_n)(y)=0$ for almost every $y\in\Bbb R$, where
+$h*f_n$ is the convolution of $h$ and $f_n$.   \Hint{376Xa, 376H.}
+%376H, 376Xa
+
+\spheader 376Xe Let $U$ and $V$ be Riesz spaces, of which $V$ is
+Dedekind complete.   Suppose that $W\subseteq U^{\sim}$ is a solid
+linear subspace, and that $T$ belongs to the band in $\eurm L^{\sim}(U;V)$
+generated by operators of the form $u\mapsto f(u)v$,
+where $f\in W$ and $v\in V$.   Show that whenever $\sequencen{u_n}$ is
+an order-bounded sequence in $U$ such that $\lim_{n\to\infty}f(u_n)=0$
+for every $f\in W$, then $\sequencen{Tu_n}$ order*-converges to $0$
+in $V$.
+%376H
+
+\spheader 376Xf Let $(\frak A,\bar\mu)$ be a semi-finite measure algebra
+and $U\subseteq L^0=L^0(\frak A)$ an order-dense Riesz subspace such
+that $U^{\times}$ separates the points of $U$.   Let $\sequencen{u_n}$
+be an order-bounded sequence in $U$.   Show that the following are
+equiveridical:  (i) $\lim_{n\to\infty}f(|u_n|)=0$ for every $f\in
+U^{\times}$;  (ii) $\sequencen{u_n}\to 0$ for the topology of
+convergence in measure on $L^0$.   \Hint{by 367T, condition (ii) is
+intrinsic to $U$, so we can replace $(\frak A,\bar\mu)$ by a localizable
+algebra and use the representation in 369D.}
+%376H
+
+\spheader 376Xg Let $U$ be a Banach lattice with an order-continuous
+norm, and $V$ a \wsid\ Riesz space.  Show that for $T\in\eurm
+L^{\sim}(U;V)$ the following are equiveridical:  (i) $T$ belongs to the
+band in $\eurm L^{\sim}(U;V)$ generated by operators of the form
+$u\mapsto f(u)v$ where $f\in U^{\sim}$, $v\in V$;  (ii)
+$\sequencen{Tu_n}$ order*-converges to $0$ in $V$ whenever
+$\sequencen{u_n}$ is
+an order-bounded sequence in $U^+$ which is norm-convergent to $0$;
+(iii) $\sequencen{Tu_n}$ order*-converges to $0$ in $V$ whenever
+$\sequencen{u_n}$ is an order-bounded sequence in $U$ which is weakly
+convergent to $0$.
+%376H
+
+\spheader 376Xh Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+$\sigma$-finite measure spaces, with product measure $\lambda$ on
+$X\times Y$, and measure algebras $(\frak A,\bar\mu)$,
+$(\frak B,\bar\nu)$.   Suppose that $k\in\eusm L^0(\lambda)$.   Show
+that the
+following are equiveridical:  (i)($\alpha$) if $f\in\eusm L^1(\mu)$ then
+$g_f(y)=\int k(x,y)f(x)dx$ is defined for almost every $y$ and
+$g_f\in\eusm L^1(\nu)$ ($\beta$) there is an operator
+$T\in\Cal T^{\times}_{\bar\mu,\bar\nu}$ defined by setting
+$Tf^{\ssbullet}=g_f^{\ssbullet}$
+for every $f\in \eusm L^1(\mu)$;  (ii) $\int|k(x,y)|dy\le 1$ for almost
+every $x\in X$, $\int|k(x,y)|dx\le 1$ for almost every $y\in Y$.
+%376J
+
+\sqheader 376Xi(i) Show that there is a compact linear operator from
+$\ell^2$ to itself which is not in $\eurm L^{\sim}(\ell^2;\ell^2)$.
+\Hint{start from the operator $S$ of 371Ye.}   (ii) Show that the
+identity operator on $\ell^2$ is an abstract integral operator.
+%376J
+
+\sqheader 376Xj Let $\mu$ be Lebesgue measure on $[0,1]$.   (i) Give an
+example of a measurable function $k:[0,1]^2\to\Bbb R$ such that, for any
+$f\in\eusm L^2(\mu)$, $g_f(y)=\int k(x,y)f(x)dx$ is defined
+for every $y$ and $\|g_f\|_2=\|f\|_2$, but $k$ is not integrable, so the
+linear isometry on $L^2=L^2(\mu)$ defined by $k$ does not belong to
+$\eurm L^{\sim}(L^2;L^2)$.   (ii) Show that the identity operator on $L^2$
+is not an abstract integral operator.
+%376Xi %376J
+
+\spheader 376Xk Let $(X,\Sigma,\mu)$ be a $\sigma$-finite measure space
+and $(Y,\Tau,\nu)$ a complete locally determined measure space.   Let
+$U\subseteq L^0(\mu)$, $V\subseteq L^0(\nu)$ be solid linear subspaces,
+of which $V$ is order-dense;  write
+$V^{\#}=\{v:v\in L^0(\nu),\,v\times v'$ is integrable for every
+$v'\in V\}$,
+$\eusm U=\{f:f\in\eusm L^0(\nu),\,f^{\ssbullet}\in U\}$,
+$\eusm V=\{g:g\in\eusm L^0(\nu),\,g^{\ssbullet}\in V\}$,
+$\eusm V^{\#}=\{h:h\in\eusm L^0(\nu),\,h^{\ssbullet}\in V^{\#}\}$.
+Let $\lambda$ be the c.l.d.\ product measure on $X\times Y$, and
+$k\in\eusm L^0(\lambda)$ a function such that $k\times(f\otimes g)$ is
+integrable for whenever $f\in\eusm U$ and $g\in\eusm V$.
+(i) Show that for
+any $f\in\eusm U$, $h_f(y)=\int k(x,y)f(x)dx$ is defined for almost
+every $y\in Y$, and that $h_f\in\eusm V^{\#}$.   (ii) Show that we have
+a map $T\in\eurm L^{\times}(U;V^{\#})$ defined {\it either} by writing
+$Tf^{\ssbullet}=h_f^{\ssbullet}$ for every $f\in\eusm U$ {\it or} by
+writing
+$\int(Tf^{\ssbullet})\times g^{\ssbullet}=\int k\times(f\otimes g)$ for
+every $f\in\eusm U$ and $g\in\eusm V$.
+%376J
+
+\spheader 376Xl Let $(X,\Sigma,\mu)$, $(Y,\Tau,\nu)$ and
+$(Z,\Lambda,\lambda)$ be $\sigma$-finite measure spaces, and $U$, $V$,
+$W$ perfect order-dense solid linear subspaces of $L^0(\mu)$, $L^0(\nu)$
+and $L^0(\lambda)$ respectively.   Suppose that $T:U\to V$ and $S:V\to
+W$ are abstract integral operators corresponding to kernels
+$k_1\in\eusm L^0(\mu\times\nu)$, $k_2\in\eusm L^0(\nu\times\lambda)$,
+writing
+$\mu\times\nu$ for the (c.l.d.\ or primitive) product measure on
+$X\times Y$.   Show that $ST:U\to W$ is represented by the kernel
+$k\in\eusm L^0(\mu\times\lambda)$ defined by setting
+$k(x,z)=\int k_1(x,y)k_2(y,z)dy$ whenever this integral is defined.
+%376J
+
+\spheader 376Xm Let $U$ be a perfect Riesz space.   Show that a set
+$C\subseteq U$ is relatively compact for $\frak T_s(U,U^{\times})$ iff
+for every $g\in(U^{\times})^+$, $\epsilon>0$ there is a $u^*\in U$ such
+that $g(|u|-u^*)^+\le\epsilon$ for every $u\in C$.   \Hint{376O and the
+proof of 356Q.}
+
+\sqheader 376Xn Let $\mu$ be Lebesgue measure on $[0,1]$, and $\nu$
+counting measure on $[0,1]$.   Set $k(x,y)=1$ if $x=y$, $0$ otherwise.
+Show that 376S fails in this context (with, e.g.,
+$\tau=\|\,\|_{\infty}$).
+%376S
+
+\spheader 376Xo Suppose, in 376Xk, that $U=L^{\tau}$ for some extended
+Fatou norm on $L^0(\mu)$ and that $V=L^1(\nu)$, so that
+$V^{\#}=L^{\infty}(\nu)$.   Set $k_y(x)=k(x,y)$ whenever this is
+defined, $w_y=k_y^{\ssbullet}$ whenever $k_y\in\eusm L^0(\mu)$.   Show
+that $w_y\in L^{\tau'}$ for almost every $y\in Y$, and that the norm of
+$T$ in $\eurm B(L^{\tau};L^{\infty})$ is $\esssup_y\tau'(w_y)$.
+\Hint{do the case of totally finite $Y$ first.}
+%376S, 376Xk
+
+\leader{376Y}{Further exercises (a)}
+%\spheader 376Ya
+Let $U$, $V$ and $W$ be linear spaces (over any field $F$) and
+$\phi:U\times V\to W$ a bilinear operator.   Let $W_0$ be the linear subspace
+of $W$ generated by $\phi[U\times V]$.   Show that the following are
+equiveridical:  (i) for every linear space $Z$ over $F$ and every
+bilinear
+$\psi:U\times V\to Z$, there is a (unique) linear operator $T:W_0\to Z$
+such
+that $T\phi=\psi$ (ii) whenever $u_0,\ldots,u_n\in U$ are linearly
+independent and $v_0,\ldots,v_n\in V$ are non-zero,
+$\sum_{i=0}^n\phi(u_i,v_i)\ne 0$
+(iii) whenever $u_0,\ldots,u_n\in U$ are non-zero and
+$v_0,\ldots,v_n\in V$ are linearly independent,
+$\sum_{i=0}^n\phi(u_i,v_i)\ne 0$ (iv) for
+any Hamel bases $\langle u_i\rangle_{i\in I}$,
+$\langle v_j\rangle_{j\in J}$ of $U$ and $V$,
+$\langle\phi(u_i,v_j)\rangle_{i\in I,j\in J}$ is a
+Hamel basis of $W_0$
+(v) for some pair $\langle u_i\rangle_{i\in I}$,
+$\langle v_j\rangle_{j\in J}$ of Hamel bases of $U$ and $V$,
+$\langle\phi(u_i,v_j)\rangle_{i\in I,j\in J}$ is a Hamel basis of $W_0$.
+%`Hamel basis' not defined until v4
+
+\spheader 376Yb
+Let $(\frak A,\bar\mu)$, $(\frak B,\bar\nu)$ be semi-finite measure
+algebras, and $(\frak C,\bar\lambda)$ their localizable measure algebra
+free product.   Show that $\otimes:L^0(\frak A)\times L^0(\frak B)\to
+L^0(\frak C)$ satisfies the equivalent conditions of 376Ya.
+%376B, 376Ya
+
+\spheader 376Yc Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be semi-finite
+measure spaces and $\lambda$ the c.l.d.\ product measure on $X\times Y$.
+Show that the map $(f,g)\mapsto f\otimes g:
+\eusm L^0(\mu)\times\eusm L^0(\nu)\to\eusm L^0(\lambda)$ induces a map
+$(u,v)\mapsto u\otimes v:L^0(\mu)\times L^0(\nu)\to L^0(\lambda)$
+possessing all the properties described in 376B and 376Ya, subject to
+a suitable interpretation of the formula
+$\otimes:\frak A\times\frak B\to\frak C$.
+%376B, 376Ya
+
+\spheader 376Yd Let $(\frak B_{\omega_1},\bar\nu_{\omega_1})$
+be the measure algebra of
+$\{0,1\}^{\omega_1}$ with its usual measure, and
+$\langle a_{\xi}\rangle_{\xi<\omega_1}$ a stochastically independent
+(definition:  325Xf) family
+of elements of measure $\bover12$ in $\frak B_{\omega_1}$.   Set
+$U=L^2(\frak B_{\omega_1},\bar\nu_{\omega_1})$ and
+$V=\{v:v\in\BbbR^{\omega_1},\,\{\xi:v(\xi)\ne 0\}$ is
+countable$\}$.   Define $T:U\to\BbbR^{\omega_1}$ by setting
+$Tu(\xi)=2\int_{a_{\xi}}u-\int u$ for $\xi<\omega_1$, $u\in U$.     Show
+that (i) $Tu\in V$ for every $u\in U$ (ii)
+$\sequencen{Tu_n}$ order*-converges to $0$ in $V$ whenever
+$\sequencen{u_n}$ is a sequence in $U$ such that
+$\lim_{n\to\infty}f(u_n)=0$ for every $f\in U^{\times}$ (iii)
+$T\notin\eurm L^{\sim}(U;V)$.
+%376H
+
+\spheader 376Ye Let $U$ be a Riesz space with the countable sup property
+(definition:  241Ye)
+such that $U^{\times}$ separates the points of $U$, and
+$\sequencen{u_n}$ a sequence in $U$.   Show that the
+following are equiveridical:  (i) $\lim_{n\to\infty}f(v\wedge|u_n|)=0$
+for every $f\in U^{\times}$, $v\in U^+$;  (ii) every subsequence of
+$\sequencen{u_n}$ has a
+sub-subsequence which is order*-convergent to $0$.
+%376H
+
+\spheader 376Yf Let $U$ be an Archimedean Riesz space and $\frak A$ a
+\wsid\ Dedekind complete Boolean algebra.   Suppose that $T:U\to
+L^0=L^0(\frak A)$ is a linear operator such that
+$\sequencen{|Tu_n|}$ order*-converges to $0$ in $L^0$ whenever
+$\sequencen{u_n}$ is order-bounded and order*-convergent to $0$ in
+$U$.   Show that $T\in\eurm L^{\sim}_c(U;L^0)$ (definition:  355G),
+so that if $U$ has the
+countable sup property then $T\in\eurm L^{\times}(U;L^0)$.
+%376H
+
+\spheader 376Yg Suppose that $(Y,\Tau,\nu)$ is a probability space in
+which $\Tau=\Cal PY$ and $\nu\{y\}=0$ for every $y\in Y$.    (See
+363S.)   Take $X=Y$ and let $\mu$ be counting measure on $X$;  let
+$\lambda$ be the c.l.d.\ product measure on $X\times Y$, and set
+$k(x,y)=1$ if $x=y$, $0$ otherwise.   Show that we have an operator
+$T:L^{\infty}(\mu)\to L^{\infty}(\nu)$ defined by setting
+$Tf=g^{\ssbullet}$ whenever $f\in L^{\infty}(\mu)\cong\ell^{\infty}(X)$
+and $g(y)=\int k(x,y)f(x)dx=f(y)$ for every $y\in Y$.   Show that $T$
+satisfies the conditions (ii) and (iii) of 376J but does not belong to
+$\eurm L^{\times}(L^{\infty}(\mu);L^{\infty}(\nu))$.
+%376J
+
+\spheader 376Yh Give an example of an abstract integral operator
+$T:\ell^2\to L^1(\mu)$, where $\mu$ is Lebesgue measure on $[0,1]$, such
+that $\sequencen{Te_n}$ is not order*-convergent in $L^1(\mu)$, where
+$\sequencen{e_n}$ is the standard orthonormal sequence in $\ell^2$.
+%376J
+
+\spheader 376Yi Set $k(m,n)=1/\pi(n-m+\bover12)$ for $m$, $n\in\Bbb Z$.
+(i) Show that
+$\sum_{n=-\infty}^{\infty}k(m,n)^2=1$ and
+$\sum_{n=-\infty}^{\infty}k(m,n)k(m',n)=0$ for all distinct $m$,
+$m'\in\Bbb Z$.   \Hint{find the Fourier series of
+$x\mapsto e^{i(m+\bover12)x}$ and use 282K.}
+(ii) Show that there is a norm-preserving linear operator $T$ from
+$\ell^2=\ell^2(\Bbb Z)$ to itself given by the formula
+$(Tu)(n)=\sum_{m=-\infty}^{\infty}k(m,n)u(m)$.   (iii) Show
+that $T^2$ is the identity operator on $\ell^2$.   (iv) Show that
+$T\notin\eurm L^{\sim}(\ell^2;\ell^2)$.   \Hint{consider
+$\sum_{m,n=-\infty}^{\infty}|k(m,n)|x(m)x(n)$ where
+$x(n)=1/\sqrt{|n|}\ln|n|$ for $|n|\ge 2$.}   ($T$ is a form of the
+{\bf Hilbert transform.})
+%376J
+
+\spheader 376Yj Let $U$ be an $L$-space and $V$ a Banach lattice with an
+order-continuous norm.   Let $T\in\eurm L^{\sim}(U;V)$.   Show that the
+following are equiveridical:  (i) $T$ is an abstract integral operator;
+(ii) $T[C]$ is norm-compact in $V$ whenever $C$ is weakly compact in
+$U$.   \Hint{start with the case in which $C$ is order-bounded, and
+remember that it is weakly sequentially compact.}
+%376M
+
+\spheader 376Yk Let $(X,\Sigma,\mu)$ be a complete locally determined
+measure space and $(Y,\Tau,\nu)$, $(Z,\Lambda,\lambda)$ two
+$\sigma$-finite measure spaces.   Suppose that $\tau$, $\theta$ are
+extended Fatou norms on $L^0(\nu)$, $L^0(\lambda)$ respectively, and
+that $T:L^1(\mu)\to L^{\tau}$ is an abstract integral operator, with
+corresponding kernel $k\in\eusm L^0(\mu\times\nu)$, while $S\in\eurm
+L^{\times}(L^{\tau};L^{\theta})$, so that $ST:L^1(\mu)\to L^{\theta}$ is
+an abstract integral operator (376Xc);  let
+$\tilde k\in\eusm L^0(\mu\times\lambda)$ be the corresponding kernel.
+For $x\in X$ set
+$v_x=k_x^{\ssbullet}$ when this is defined in $L^{\tau}$, as in 376S,
+and similarly take $w_x=\tilde k_x^{\ssbullet}\in L^{\theta}$.   Show
+that $Sv_x=w_x$ for almost every $x\in X$.
+%376S
+}%end of exercises
+
+\endnotes{
+\Notesheader{376}
+I leave 376Yb to the exercises because I do not rely on it for any of
+the work here, but of course it is an essential aspect of the map
+$\otimes:L^0(\frak A)\times L^0(\frak B)\to L^0(\frak C)$ I discuss in
+this section.   The conditions in 376Ya are characterizations of the
+`tensor product' of two linear spaces, a construction of great
+importance
+in abstract linear algebra (and, indeed, in modern applied linear
+algebra;  it is by no means trivial even in the finite-dimensional
+case).   In particular, note that conditions (ii), (iii) of 376Ya apply
+to arbitrary subspaces of $U$ and $V$ if they apply to $U$ and $V$
+themselves.
+
+The principal ideas used in 376B-376C have already been set out in
+\S\S253 and 325.   Here I do little more than list the references.   I
+remark however that it is quite striking that $L^1(\frak C,\bar\lambda)$
+should have no fewer than three universal mapping theorems attached to
+it (376Cb, 376C(c-i) and 376C(c-ii)).
+
+The real work of this section begins in 376E.
+As usual, much of the proof is taken up with relatively straightforward
+verifications, as in parts (a) and (b), while part (i) is just a
+manoeuvre to show that it doesn't matter if $\frak A$ and $\frak B$
+aren't Dedekind complete, because $\frak C$ is.   But I think that parts
+(d), (f) and (j) have ideas in them.   In particular, part (f) is a kind
+of application of the Radon-Nikod\'ym theorem (through the
+identification of $L^1(\frak C,\bar\lambda)^*$ with
+$L^{\infty}(\frak C)$).
+
+I have split 376E from 376H because the former demands the language of
+measure algebras, while the latter can be put into the language of pure
+Riesz space theory.   Asking for a \wsid\ space $V$ in 376H is a way of
+applying the ideas to $V=L^0$ as well as to Banach function spaces.
+(When $V=L^0$, indeed, variations on the hypotheses are possible, using
+376Yf.)   But it is a reminder of one of the directions in which it is
+often possible to find generalizations of ideas beginning in measure
+theory.
+
+The condition `$\lim_{n\to\infty}f(u_n)=0$ for every
+$f\in U^{\times}$' (376H(ii)) seems natural in this context, and
+gives marginally greater generality than some alternatives (because it
+does the right thing when $U^{\times}$ does not separate the points of
+$U$), but it is not the only way of expressing the idea;  see 376Xf and
+376Ye.   Note that the conditions (ii) and (iii) of 376H are
+significantly
+different.   In 376H(iii) we could easily have $|u_n|=u^*$ for every
+$n$;  for instance, if $u_n=2\chi a_n-\chi 1$ for some stochastically
+independent sequence $\sequencen{a_n}$ of elements of measure $\bover12$
+in a probability algebra (272Ye).
+
+If you have studied compact linear operators between Banach spaces
+(definition:  3A5La), you will have encountered the condition
+`$Tu_n\to 0$ strongly whenever $u_n\to 0$ weakly'.   The conditions in
+376H and
+376J are of this type.   If a sequence $\sequencen{u_n}$ in a Riesz
+space $U$ is order-bounded and order*-convergent to $0$, then
+$\lim_{n\to\infty}f(u_n)=0$ for every $f\in U^{\times}$ (367Xf).
+Visibly this latter condition is associated
+with weak convergence, and order*-convergence is (in Banach lattices)
+closely related to norm convergence (367D).   In the context of
+376H, an abstract integral operator is one which transforms convergent
+sequences of a weak type into convergent sequences of a stronger type.
+The relationship between the classes of (weakly) compact operators and
+abstract integral operators is interesting, but outside the scope of
+this book;  I leave you with 376P-376Q and 376Y, and a pair of
+elementary examples to guard against extravagant conjecture (376Xi).
+
+376O belongs to an extensive general theory of weak compactness in
+perfect Riesz spaces, based on adaptations of the concept of `uniform
+integrability'.  I give the next step in 376Xm.   For more information
+see {\smc Fremlin 74a}, chap.\ 8.
+
+Note that 376Mb and 376P overlap when $V^{\times}$ in 376Mb is reflexive
+-- for instance, when $V$ is an $L^p$ space for some
+$p\in\ooint{1,\infty}$ -- since then every bounded linear operator from
+$L^1$ to $V^{\times}$ must be weakly compact.   For more information on the
+representation of operators see {\smc Dunford \& Schwartz 57},
+particularly Table VI in the notes to Chapter VI.
+
+As soon as we leave formulations in terms of the spaces $L^0(\frak A)$
+and their subspaces, and return to the original conception of a
+kernel operator in terms of integrating functions against sections of
+a kernel, we are necessarily involved in the pathology of Fubini's
+theorem for general measure spaces.   In general, the repeated integrals
+$\iint k(x,y)dxdy$, $\iint k(x,y)dydx$ need not be equal, and something
+has to give (376Xn).   Of course this particular worry disappears if the
+spaces are $\sigma$-finite, as in 376J.  In 376S I take the trouble to
+offer a more general condition,
+mostly as a reminder that the techniques developed in Volume 2
+do enable us sometimes to go beyond the $\sigma$-finite case.   Note
+that this is one of the many contexts in which anything we can prove
+about probability spaces will be true of all $\sigma$-finite spaces;
+but that we cannot make the next step, to all strictly localizable
+spaces.
+
+376S verges on the theory of integration of vector-valued functions,
+which I don't wish to enter here;  but it also seems to have a natural
+place in the context of this chapter.   It is of course a special
+property of $L^1$ spaces.   The formula
+$\|T_k\|=\esssup_x\tau(k_x^{\ssbullet})$ shows that
+$\|T_{|k|}\|=\|T_k\|$;
+now we know fron 376E that $T_{|k|}=|T_k|$, so we get a special case of
+the Chacon-Krengel theorem (371D).   Reversing the roles of $X$ and
+$Y$, we find ourselves with an operator from $L^{\tau}$ to $L^{\infty}$
+(376Xo), which is the other standard context in which $\|T\|=\||T|\|$
+(371Xd).   I include two exercises on $L^2$ spaces (376Xj, 376Yi)
+designed to emphasize the fact that $\eurm B(U;V)$ is included in
+$\eurm L^{\sim}(U;V)$ only in very special cases.
+
+The history of the theory here is even more confusing than that of
+mathematics in general, because so many of the ideas were developed in
+national schools in very imperfect contact with each other.   My own
+account gives no hint of how this material arose;  I ought in
+particular to note that 376N is one of the oldest results, coming
+(essentially) from {\smc Dunford 36}.   For further references,
+see {\smc Zaanen 83}, chap.\ 13.
+}%end of comment
+
+\discrpage
+

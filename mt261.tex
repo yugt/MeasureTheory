@@ -1,0 +1,837 @@
+\frfilename{mt261.tex} 
+\versiondate{11.12.12} 
+\copyrightdate{2000} 
+      
+\def\dist{\mathop{\text{dist}}} 
+      
+\def\chaptername{Change of variable in the integral} 
+\def\sectionname{Vitali's theorem in $\BbbR^r$} 
+      
+\newsection{261} 
+      
+\def\headlinesectionname{Vitali's theorem in $\eightBbb R^r$} 
+      
+The main aim of this section is to give $r$-dimensional versions of 
+Vitali's theorem and Lebesgue's Density Theorem, following 
+ideas already presented in \S\S221 and 223.   I end with a proof that
+Lebesgue outer measure can be defined in terms of coverings by balls
+instead of by intervals (261F).
+      
+\cmmnt{ 
+\leader{261A}{Notation} For most of this chapter, we shall be dealing 
+with the geometry and 
+measure of Euclidean space;  it will save space to fix some notation. 
+      
+Throughout this section and the two following, $r\ge 1$ will be an 
+integer.  I will use Roman letters for members of $\BbbR^r$ and 
+Greek letters for their coordinates, so that 
+$a=(\alpha_1,\ldots,\alpha_r)$, etc.;  if you see any Greek letter with 
+a subscript you should look first for a nearby vector of which it might 
+be a coordinate.   The measure under consideration will nearly always be 
+Lebesgue measure on $\Bbb R^r$;  so unless otherwise indicated  $\mu$ 
+should be interpreted as 
+Lebesgue measure, and $\mu^*$ as Lebesgue outer measure.   Similarly, 
+$\int\ldots dx$ will always be integration with respect to Lebesgue 
+measure (in a dimension determined by the context). 
+      
+For $x=(\xi_1,\ldots,\xi_r)\in\BbbR^r$, write 
+$\|x\|=\sqrt{\xi_1^2+\ldots+\xi_r^2}$.   Recall that 
+$\|x+y\|\le\|x\|+\|y\|$ (1A2C) and that $\|\alpha x\|=|\alpha|\|x\|$ 
+for any vectors $x$, $y$ and scalar $\alpha$. 
+      
+I will use the same notation as in \S115 for `intervals', so 
+that, in particular, 
+      
+\Centerline{$\coint{a,b} 
+=\{x:\alpha_i\le\xi_i<\beta_i\Forall i\le r\}$,} 
+      
+\Centerline{$\ooint{a,b} 
+=\{x:\alpha_i<\xi_i<\beta_i\Forall i\le r\}$,} 
+      
+\Centerline{$[a,b] 
+=\{x:\alpha_i\le \xi_i\le \beta_i\Forall i\le r\}$} 
+      
+\noindent whenever $a$, $b\in\BbbR^r$. 
+      
+$\tbf{0}=(0,\ldots,0)$ will be the zero vector in $\BbbR^r$, and 
+$\tbf{1}$ will be $(1,\ldots,1)$.   If 
+$x\in\BbbR^r$ and $\delta>0$, $B(x,\delta)$ will be the closed ball 
+with centre $x$ and radius $\delta$, that is, 
+$\{y:y\in\BbbR^r,\,\|y-x\|\le\delta\}$. 
+Note that $B(x,\delta)=x+B(\tbf{0},\delta)$;  so that by the 
+translation-invariance of Lebesgue measure we have 
+      
+\Centerline{$\mu B(x,\delta)=\mu B(\tbf{0},\delta) 
+=\beta_r\delta^r$,} 
+      
+\noindent where 
+      
+$$\eqalign{\beta_r 
+&=\Bover{1}{k!}\pi^k\text{ if }r=2k\text{ is even},\cr 
+&=\Bover{2^{2k+1}k!}{(2k+1)!}\pi^k\text{ if }r=2k+1\text{ is odd}\cr}$$ 
+      
+\noindent (252Q). 
+}%end of comment 
+      
+\leader{261B}{Vitali's theorem in $\BbbR^r$} Let $A\subseteq\BbbR^r$ 
+be any set, and $\Cal I$ a family of closed non-trivial\cmmnt{ (that 
+is, non-singleton, or, equivalently, non-negligible)} 
+balls in $\BbbR^r$ such that every point of $A$ is contained in 
+arbitrarily small members of $\Cal I$.   Then there is a countable 
+disjoint set $\Cal I_0\subseteq \Cal I$ such that 
+$\mu(A\setminus\bigcup\Cal I_0)=0$. 
+      
+\proof{{\bf (a)} To begin with (down to the end of (f) below), suppose 
+that $\|x\|<M$ for every $x\in A$, and 
+set 
+      
+\Centerline{$\Cal 
+I'=\{I:I\in\Cal I,\,I\subseteq B(\tbf{0},M)\}$.} 
+      
+\noindent   If there is a finite disjoint 
+set $\Cal I_0\subseteq\Cal I'$ 
+such that $A\subseteq\bigcup\Cal I_0$ (including the 
+possibility that $A=\Cal I_0=\emptyset$), we can stop.   So let us 
+suppose henceforth that there is no such $\Cal I_0$. 
+      
+\medskip 
+      
+{\bf (b)} In this case, if $\Cal I_0$ is any finite disjoint subset of 
+$\Cal I'$, there is a $J\in\Cal I'$ which is disjoint from any member of 
+$\Cal I_0$.   \Prf\ Take $x\in A\setminus\bigcup\Cal I_0$.   Because 
+every member of $\Cal I_0$ is closed, there is a $\delta>0$ such that 
+$B(x,\delta)$ does not meet any member of $\Cal I_0$, and as 
+$\|x\|<M$ we can suppose that $B(x,\delta)\subseteq B(\tbf{0},M)$.   Let 
+$J$ be a member of $\Cal I$, containing $x$, and of diameter at most 
+$\delta$;  then $J\in\Cal I'$ and $J\cap\bigcup\Cal I_0=\emptyset$.\ 
+\Qed 
+      
+\medskip 
+      
+{\bf (c)} We can therefore choose a sequence $\sequencen{\gamma_n}$ of 
+real numbers and a disjoint sequence $\sequencen{I_n}$ in $\Cal I'$ 
+inductively, as follows.   Given $\langle I_j\rangle_{j<n}$ (if $n=0$, 
+this is the empty sequence, with no members), with $I_j\in\Cal I'$ for 
+each $j<n$, and $I_j\cap I_k=\emptyset$ for $j<k<n$, set $\Cal 
+J_n=\{I:I\in\Cal I',\,I\cap I_j=\emptyset$ for every $j<n\}$.   We know 
+from (b) that $\Cal J_n\ne\emptyset$.   Set 
+      
+\Centerline{$\gamma_n=\sup\{\diam I:I\in\Cal J_n\}$;} 
+      
+\noindent then $\gamma_n\le 2M$, because every member of $\Cal J_n$ is 
+included in $B(\tbf{0},M)$.   We can therefore find a set 
+$I_n\in\Cal J_n$ such that $\diam I_n\ge{1\over 2}\gamma_n$, and this 
+continues the induction. 
+      
+\medskip 
+      
+{\bf (e)} Because the $I_n$ are disjoint measurable subsets of 
+the bounded set $B(\tbf{0},M)$, we have 
+      
+\Centerline{$\sum_{n=0}^{\infty}\mu I_n 
+\le\mu B(\tbf{0},M)<\infty$,} 
+      
+\noindent and $\lim_{n\to\infty}\mu I_n=0$.   Also 
+$\mu I_n\ge\beta_r(\bover14\gamma_n)^r$ for each $n$, so 
+$\lim_{n\to\infty}\gamma_n=0$. 
+      
+Now define $I'_n$ to be the closed ball with the same centre as $I_n$ 
+but five times the diameter, so 
+that it contains every point within a distance $\gamma_n$ of $I_n$.   I 
+claim that, for any $n$, 
+$A\subseteq\bigcup_{j<n}{I}_j\cup\bigcup_{j\ge n}I_j'$. 
+\Prf\Quer\ Suppose, if possible, otherwise.   Take any 
+$x\in A\setminus(\bigcup_{j<n}{I}_j\cup\bigcup_{j\ge n}I'_j)$.   Let 
+$\delta>0$ be such that 
+      
+      
+\Centerline{$B(x,\delta) 
+  \subseteq B(\tbf{0},M)\setminus\bigcup_{j<n}I_j$,} 
+      
+\noindent and let 
+$J\in\Cal I$ be such that $x\in J\subseteq B(x,\delta)$.   Then 
+      
+\Centerline{$\lim_{m\to\infty}\gamma_m=0<\diam J$} 
+      
+\noindent (this is where we use the hypothesis that all the balls in 
+$\Cal I$ are non-trivial);  let $m$ be the least integer 
+greater than or equal to $n$ such that $\gamma_m<\diam J$.   In this 
+case $J$ cannot belong to $\Cal J_m$, so there must be some $k<m$ such 
+that $J\cap I_k\ne\emptyset$, because certainly $J\in\Cal I'$.   By the 
+choice of $\delta$, $k$ cannot be less than $n$, so $n\le k<m$, and 
+$\gamma_k\ge\diam J$.   So the distance from $x$ to the 
+nearest point of $I_k$ is at most $\diam J\le \gamma_k$.   But this 
+means 
+that $x\in 
+I'_k$;  which contradicts the choice of $x$.\ \Bang\Qed 
+      
+\medskip 
+      
+{\bf (f)} It follows that 
+      
+\Centerline{$\mu\sp*(A\setminus\bigcup_{j<n}I_j)\le\mu(\bigcup_{j\ge 
+n}I'_j)\le\sum_{j=n}^{\infty}\mu I'_j\le 5^r\sum_{j=n}^{\infty}\mu 
+I_j$.} 
+      
+\noindent As 
+      
+\Centerline{$\sum_{j=0}^{\infty}\mu I_j\le \mu B(\tbf{0},M)<\infty$,} 
+      
+\noindent $\lim_{n\to\infty}\mu\sp*(A\setminus\bigcup_{j<n}I_j)=0$ and 
+      
+\Centerline{$\mu(A\setminus\bigcup_{j\in\Bbb N}I_j)= 
+\mu\sp*(A\setminus\bigcup_{j\in\Bbb N}I_j)=0$.} 
+      
+      
+Thus in this case we may set $\Cal I_0=\{I_n:n\in\Bbb N\}$ to obtain 
+a countable disjoint family in $\Cal I$ with $\mu(A\setminus\bigcup 
+\Cal I_0)=0$. 
+      
+      
+\medskip 
+      
+{\bf (g)}  This completes the proof if $A$ is bounded.   In general, set 
+      
+\Centerline{$U_n=\{x:x\in \BbbR^r,\,n<\|x\|<n+1\}$, 
+\quad $A_n=A\cap U_n$, 
+\quad$\Cal J_n=\{I:I\in\Cal I,\,I\subseteq U_n\}$,} 
+      
+\noindent for each $n\in\Bbb N$.   Then for each $n$ we see that every 
+point of $A_n$ belongs to arbitrarily small members of $\Cal J_n$, so 
+there is a countable disjoint $\Cal J'_n\subseteq\Cal J_n$ such that 
+$A_n\setminus\bigcup\Cal J'_n$ is negligible.   Now (because the $U_n$ 
+are disjoint) $\Cal I_0=\bigcup_{n\in\Bbb N}\Cal J'_n$ is disjoint, and 
+of course $\Cal I_0$ is a countable subset of $\Cal I$;  moreover, 
+      
+\Centerline{$A\setminus\bigcup\Cal I_0 
+\subseteq(\BbbR^r\setminus\bigcup_{n\in\Bbb N}U_n) 
+\cup\bigcup_{n\in\Bbb N}(A_n\setminus\bigcup\Cal J'_n)$} 
+      
+\noindent is negligible.   (To see that $\Bbb 
+R^r\setminus\bigcup_{n\in\Bbb N}U_n=\{x:\|x\|\in\Bbb N\}$ is negligible, 
+note that for any $n\in\Bbb N$ the set 
+      
+\Centerline{$\{x:\|x\|=n\}\subseteq B(\tbf{0},n)\setminus 
+B(\tbf{0},\delta n)$} 
+      
+\noindent has measure at most $\beta_rn^r-\beta_r(\delta n)^r$ for every 
+$\delta\in\coint{0,1}$, so must be negligible.) 
+}%end of proof of 261B 
+      
+      
+\leader{261C}{}\cmmnt{ Just as in \S223, we can use the 
+$r$-dimensional Vitali theorem to prove theorems on the approximation of 
+functions by their local mean values. 
+      
+\medskip 
+      
+\noindent}{\bf Density Theorem in $\BbbR^r$:  integral form} Let $D$ be 
+a subset of $\BbbR^r$, and $f$ a real-valued function which is 
+integrable over $D$.   Then 
+      
+\Centerline{$f(x)=\lim_{\delta\downarrow 0}\Bover{1}{\mu B(x,\delta)} 
+  \int_{D\cap B(x,\delta)}fd\mu$} 
+      
+\noindent for almost every $x\in D$. 
+      
+\proof{{\bf (a)} To begin with (down to the end of (b)), let us 
+suppose that $D=\dom f=\BbbR^r$. 
+      
+Take $n\in\Bbb N$ and $q$, $q'\in\Bbb Q$ with $q<q'$, and set 
+      
+\Centerline{$A=A_{nqq'} 
+=\{x:\|x\|\le n,\,f(x)\le q,\, 
+  \limsup_{\delta\downarrow 0}\Bover{1}{\mu B(x,\delta)} 
+  \int_{B(x,\delta)}fd\mu>q'\}$.} 
+      
+\noindent\Quer\ Suppose, if possible, that $\mu^*A>0$.      Let 
+$\epsilon>0$ be such that $\epsilon(1+|q|)<(q'-q)\mu^* A$, and let 
+$\eta\in\ocint{0,\epsilon}$ be such that $\int_{E}|f|\le\epsilon$ 
+whenever $\mu E\le\eta$ (225A).   Let $G\supseteq A$ be an open set of 
+measure at most 
+$\mu^*A+\eta$ (134Fa).   Let $\Cal I$ be the set of 
+non-trivial closed 
+balls $B\subseteq G$ such that $\bover{1}{\mu B}\int_Bfd\mu\ge q'$. 
+Then every point of $A$ is contained in (indeed, is the centre 
+of) arbitrarily small members of $\Cal I$.   So there is a countable 
+disjoint set $\Cal I_0\subseteq\Cal I$ such that 
+$\mu(A\setminus\bigcup\Cal I_0)=0$, by 261B;  set $H=\bigcup\Cal I_0$. 
+      
+Because $\int_{I}fd\mu\ge q'\mu I$ for each $I\in\Cal I_0$, we 
+have 
+      
+\Centerline{$\int_{H}fd\mu=\sum_{I\in\Cal I_0}\int_Ifd\mu 
+\ge q'\sum_{I\in\Cal I_0}\mu I=q'\mu H\ge q'\mu^* A$.} 
+      
+\noindent Set 
+      
+\Centerline{$E=\{x:x\in G,\,f(x)\le q\}$.} 
+      
+\noindent Then $E$ is measurable, and $A\subseteq E\subseteq G$; 
+so 
+      
+\Centerline{$\mu^* A\le\mu E\le\mu G\le\mu^* A+\eta 
+\le\mu^* A+\epsilon$.} 
+      
+\noindent  Also 
+      
+\Centerline{$\mu(H\setminus E)\le\mu G-\mu E\le\eta$,} 
+      
+\noindent so by 
+the choice of $\eta$, $\int_{H\setminus E}f\le\epsilon$ and 
+      
+$$\eqalignno{\int_{H}f 
+&\le\epsilon+\int_{H\cap E}f 
+\le\epsilon+q\mu(H\cap E)\cr 
+&\le\epsilon+q\mu^*A+|q|(\mu(H\cap E)-\mu^* A) 
+\le q\mu^* A+\epsilon(1+|q|)\cr 
+\displaycause{because $\mu^*A=\mu^*(A\cap H)\le\mu(H\cap E)\le\mu E$} 
+&<q'\mu^* A 
+\le\int_{H}f,\cr}$$ 
+      
+\noindent which is impossible.\ \Bang 
+      
+Thus $A_{nqq'}$ is negligible.   This is true for all $q<q'$ and all 
+$n$, so 
+      
+\Centerline{$A^*=\bigcup_{q,q'\in\Bbb Q,q<q'} 
+  \bigcup_{n\in\Bbb N}A_{nqq'}$} 
+      
+\noindent is negligible.   But 
+      
+\Centerline{$f(x) 
+\ge\limsup_{\delta\downarrow 0}\Bover{1}{\mu B(x,\delta)} 
+  \int_{B(x,\delta)}f$} 
+      
+\noindent for every $x\in\BbbR^r\setminus A^*$, that is, for almost 
+all $x\in \BbbR^r$. 
+      
+\medskip 
+      
+{\bf (b)} Similarly, or applying this result to $-f$. 
+      
+\Centerline{$f(x) 
+\le\liminf_{\delta\downarrow 0}\Bover{1}{\mu B(x,\delta)} 
+  \int_{B(x,\delta)}f$} 
+      
+\noindent for almost every $x$, so 
+      
+\Centerline{$f(x) 
+=\lim_{\delta\downarrow 0}\Bover{1}{\mu B(x,\delta)} 
+  \int_{B(x,\delta)}f$} 
+      
+\noindent for almost every $x$. 
+      
+\medskip 
+      
+{\bf (c)} For the (superficially) more general case enunciated in the 
+theorem, let $\tilde f$ be a $\mu$-integrable function extending 
+$f\restr D$, defined everywhere on $\BbbR^r$, and such that 
+$\int_F\tilde f=\int_{D\cap F}f$ for every measurable 
+$F\subseteq\BbbR^r$ (applying 214Eb to $f\restr D$).   Then 
+      
+\Centerline{$f(x)=\tilde f(x) 
+=\lim_{\delta\downarrow 0}\Bover{1}{\mu B(x,\delta)} 
+  \int_{B(x,\delta)}\tilde f 
+=\lim_{\delta\downarrow 0}\Bover{1}{\mu B(x,\delta)} 
+  \int_{D\cap B(x,\delta)}f$} 
+      
+\noindent for almost every $x\in D$. 
+}%end of proof of 261C 
+      
+\leader{261D}{Corollary} (a) If $D\subseteq\BbbR^r$ is any set, then 
+      
+\Centerline{$\lim_{\delta\downarrow 0}\Bover{\mu^*(D\cap B(x,\delta))} 
+{\mu B(x,\delta)}=1$} 
+      
+\noindent for almost every $x\in D$. 
+      
+(b) If $E\subseteq\BbbR^r$ is a measurable set, then 
+      
+\Centerline{$\lim_{\delta\downarrow 0}\Bover{\mu(E\cap B(x,\delta))} 
+{\mu B(x,\delta)}=\chi E(x)$} 
+      
+\noindent for almost every $x\in \BbbR^r$. 
+      
+      
+(c) If $D\subseteq\BbbR^r$ and $f:D\to\Bbb R$ is any function, then for 
+almost every $x\in D$, 
+      
+\Centerline{$\lim_{\delta\downarrow 0} 
+\Bover{\mu^*(\{y:y\in D,\,|f(y)-f(x)|\le\epsilon\}\cap 
+B(x,\delta))} 
+{\mu B(x,\delta)}=1$} 
+      
+\noindent for every $\epsilon>0$. 
+      
+(d) If $D\subseteq\BbbR^r$ and $f:D\to\Bbb R$ is measurable, then for 
+almost every $x\in D$, 
+      
+\Centerline{$\lim_{\delta\downarrow 0} 
+\Bover{\mu^*(\{y:y\in D,\,|f(y)-f(x)|\ge\epsilon\}\cap 
+B(x,\delta))} 
+{\mu B(x,\delta)}=0$} 
+      
+\noindent for every $\epsilon>0$. 
+      
+\proof{{\bf (a)} Apply 261C with $f=\chi B(\tbf{0},n)$ to see that, for 
+any $n\in\Bbb N$, 
+      
+\Centerline{$\lim_{\delta\downarrow 0}\Bover{\mu^*(D\cap B(x,\delta))} 
+{\mu B(x,\delta)}=1$} 
+      
+\noindent for almost every $x\in D$ with $\|x\|<n$. 
+      
+\medskip 
+      
+{\bf (b)} Apply (a) to $E$ to see that 
+      
+\Centerline{$\liminf_{\delta\downarrow 0}\Bover{\mu(E\cap 
+B(x,\delta))}{\mu B(x,\delta)}\ge\chi E(x)$} 
+      
+\noindent for almost every $x\in\BbbR^r$, and to $E'=\BbbR^r\setminus 
+E$ to see that 
+      
+\Centerline{$\limsup_{\delta\downarrow 0}\Bover{\mu(E\cap 
+B(x,\delta))}{\mu B(x,\delta)} 
+=1-\liminf_{\delta\downarrow 0} 
+  \Bover{\mu(E'\cap B(x,\delta))}{\mu B(x,\delta)} 
+\le 1-\chi E'(x)=\chi E(x)$} 
+      
+\noindent for almost every $x$. 
+      
+\medskip 
+      
+{\bf (c)} For $q$, $q'\in\Bbb Q$, set 
+      
+\Centerline{$D_{qq'}=\{x:x\in D,\,q\le f(x)\le q'\}$,} 
+      
+\Centerline{$C_{qq'}=\{x:x\in D_{qq'},\,\lim_{\delta\downarrow 0} 
+\Bover{\mu^*(D_{qq'}\cap B(x,\delta))}{\mu B(x,\delta)}=1\}$;} 
+      
+\noindent now set 
+      
+\Centerline{$C 
+=D\setminus\bigcup_{q,q'\in\Bbb Q}(D_{qq'}\setminus C_{qq'})$,} 
+      
+\noindent so that $D\setminus C$ is negligible.   If $x\in C$ and 
+$\epsilon>0$, then there are $q$, $q'\in\Bbb Q$ such that 
+$f(x)-\epsilon\le q\le f(x)\le q'\le f(x)+\epsilon$, and now 
+$x\in C_{qq'}$;  accordingly
+      
+\Centerline{$\liminf_{\delta\downarrow 0} 
+\Bover{\mu^*\{y:y\in D\cap B(x,\delta),\,|f(y)-f(x)|\le\epsilon\}} 
+  {\mu B(x,\delta)} 
+\ge\liminf_{\delta\downarrow 0} 
+  \Bover{\mu^*(D_{qq'}\cap B(x,\delta))}{\mu B(x,\delta)}=1$,} 
+      
+\noindent so 
+      
+\Centerline{$\lim_{\delta\downarrow 0} 
+\Bover{\mu^*\{y:y\in D\cap B(x,\delta),\,|f(y)-f(x)|\le\epsilon\}} 
+{\mu B(x,\delta)} 
+=1$.} 
+      
+\medskip 
+      
+{\bf (d)} Define $C$ as in (c).   We know from (a) that $\mu(D\setminus 
+C')=0$, where 
+      
+\Centerline{$C'=\{x:x\in D,\lim_{\delta\downarrow 0}\Bover{\mu^*(D\cap 
+B(x,\delta))} 
+{\mu B(x,\delta)}=1\}$. 
+} 
+      
+\noindent If $x\in C\cap C'$ and $\epsilon>0$, we know from (c) that 
+      
+ \Centerline{$\lim_{\delta\downarrow 0} 
+\Bover{\mu^*\{y:y\in D\cap B(x,\delta),\,|f(y)-f(x)|\le\epsilon/2\}} 
+{\mu B(x,\delta)} 
+=1$.} 
+      
+\noindent But because $f$ is measurable, we have 
+      
+$$\eqalign{\mu^*\{y:y\in &D\cap B(x,\delta),\, 
+|f(y)-f(x)|\ge\epsilon\}\cr 
+&+\mu^*\{y:y\in D\cap B(x,\delta),\,|f(y)-f(x)|\le\Bover12\epsilon\} 
+\le\mu^*(D\cap B(x,\delta))\cr}$$ 
+      
+\noindent for every $\delta>0$.   Accordingly 
+      
+$$\eqalign{\limsup_{\delta\downarrow 0} 
+&\Bover{\mu^*\{y:y\in D\cap B(x,\delta),\,|f(y)-f(x)|\ge\epsilon\}} 
+{\mu B(x,\delta)}\cr 
+&\le\lim_{\delta\downarrow 0} 
+  \Bover{\mu^*(D\cap B(x,\delta))}{\mu B(x,\delta)} 
+-\lim_{\delta\downarrow 0} 
+  \Bover{\mu^*\{y:y\in D\cap B(x,\delta),\,|f(y)-f(x)|\le\epsilon/2\}} 
+  {\mu B(x,\delta)} 
+=0,\cr}$$ 
+      
+\noindent and 
+      
+\Centerline{$\lim_{\delta\downarrow 0} 
+\Bover{\mu^*\{y:y\in D\cap B(x,\delta),\,|f(y)-f(x)|\ge\epsilon\}} 
+{\mu B(x,\delta)}=0$} 
+      
+\noindent for every $x\in C\cap C'$, that is, for almost every $x\in D$. 
+}%end of proof of 261D 
+      
+\leader{261E}{Theorem} Let $f$ be a locally integrable function defined on 
+a conegligible subset of $\BbbR^r$.   Then 
+      
+\Centerline{$\lim_{\delta\downarrow 0}\Bover1{\mu B(x,\delta)} 
+\int_{B(x,\delta)}|f(y)-f(x)|dy=0$} 
+      
+\noindent for almost every $x\in\BbbR^r$. 
+      
+\proof{ (Compare 223D.) 
+      
+\medskip 
+      
+{\bf (a)} Fix $n\in\Bbb N$ for the moment, and set $G=\{x:\|x\|<n\}$. 
+For each $q\in\Bbb Q$, set $g_q(x)=|f(x)-q|$ 
+for $x\in G\cap\dom f$;  then $g_q$ is integrable over $G$, and 
+      
+\Centerline{$\lim_{\delta\downarrow 0}\Bover1{\mu B(x,\delta)} 
+\int_{G\cap B(x,\delta)}g_q=g_q(x)$} 
+      
+\noindent for almost every $x\in G$, by 261C.   Setting 
+      
+\Centerline{$E_q=\{x:x\in G\cap\dom f,\,\lim_{\delta\downarrow 0} 
+\Bover1{\mu B(x,\delta)}\int_{G\cap B(x,\delta)}g_q=g_q(x)\}$,} 
+      
+\noindent we have $G\setminus E_q$ negligible for every $q$, so 
+$G\setminus E$ is 
+negligible, where $E=\bigcap_{q\in\Bbb Q}E_q$.   Now 
+      
+\Centerline{$\lim_{\delta\downarrow 0}\Bover1{\mu B(x,\delta)} 
+\int_{G\cap B(x,\delta)}|f(y)-f(x)|dy=0$} 
+      
+\noindent for every $x\in E$.   \Prf\ Take $x\in E$ and $\epsilon>0$. 
+Then there is a $q\in\Bbb Q$ such that $|f(x)-q|\le\epsilon$, so that 
+      
+\Centerline{$|f(y)-f(x)|\le|f(y)-q|+\epsilon=g_q(y)+\epsilon$} 
+      
+\noindent for every $y\in G\cap\dom f$, and 
+      
+$$\eqalign{\limsup_{\delta\downarrow 0}\Bover1{\mu B(x,\delta)} 
+\int_{G\cap B(x,\delta)}|f(y)-f(x)|dy 
+&\le\limsup_{\delta\downarrow 0}\Bover1{\mu B(x,\delta)} 
+\int_{G\cap B(x,\delta)}g_q(y)+\epsilon\,dy\cr 
+&=\epsilon+g_q(x) 
+\le 2\epsilon.\cr}$$ 
+      
+\noindent As $\epsilon$ is arbitrary, 
+      
+\Centerline{$\lim_{\delta\downarrow 0}\Bover1{\mu B(x,\delta)} 
+\int_{G\cap B(x,\delta)}|f(y)-f(x)|dy=0$,} 
+      
+\noindent as required.\ \Qed 
+      
+\medskip 
+      
+{\bf (b)} Because $G$ is open, 
+ 
+\Centerline{$\lim_{\delta\downarrow 0}\Bover1{\mu B(x,\delta)} 
+\int_{B(x,\delta)}|f(y)-f(x)|dy 
+=\lim_{\delta\downarrow 0}\Bover1{\mu B(x,\delta)} 
+\int_{G\cap B(x,\delta)}|f(y)-f(x)|dy 
+=0$} 
+      
+\noindent for almost every $x\in G$.   As $n$ is arbitrary, 
+ 
+\Centerline{$\lim_{\delta\downarrow 0}\Bover1{\mu B(x,\delta)} 
+\int_{B(x,\delta)}|f(y)-f(x)|dy=0$} 
+      
+\noindent for almost every $x\in\BbbR^r$. 
+}%end of proof of 261E 
+      
+\medskip 
+\noindent{\bf Remark} The set 
+      
+\Centerline{$\{x:x\in\dom f,\, 
+  \lim_{\delta\downarrow 0}\Bover1{\mu B(x,\delta)} 
+\int_{B(x,\delta)}|f(y)-f(x)|dy=0\}$} 
+      
+\noindent is sometimes called the {\bf Lebesgue set} of $f$. 
+      
+\leader{261F}{}\cmmnt{ Another very useful consequence of 261B is the 
+following. 
+      
+\medskip 
+      
+\noindent}{\bf Proposition} Let $A\subseteq\BbbR^r$ be any set, and 
+$\epsilon>0$.   Then there is a sequence $\sequencen{B_n}$ of closed 
+balls in $\BbbR^r$, all of radius at most $\epsilon$, such that 
+$A\subseteq\bigcup_{n\in\Bbb N}B_n$ and 
+$\sum_{n=0}^{\infty}\mu B_n\le\mu^*A+\epsilon$.   Moreover, we may 
+suppose that the balls in the 
+sequence whose centres do not lie in $A$ have measures summing to at 
+most $\epsilon$. 
+      
+\proof{{\bf (a)} The first step is the 
+obvious remark that if $x\in\BbbR^r$, $\delta>0$ then the half-open 
+cube $I=\coint{x,x+\delta\tbf{1}}$ is a subset of the ball 
+$B(x,\delta\sqrt{r})$, 
+which has measure $\gamma_r\delta^r=\gamma_r\mu I$, where 
+$\gamma_r=\beta_rr^{r/2}$.   It follows that if $G\subseteq\BbbR^r$ is 
+any open set, then $G$ can be covered by a sequence of balls of total 
+measure at most $\gamma_r\mu G$.   \Prf\ If $G$ is empty, we can take 
+all the balls to be singletons.   Otherwise, for each $k\in\Bbb N$, set 
+      
+\Centerline{$Q_k 
+=\{z:z\in \Bbb Z^r,\,\coint{2^{-k}z,2^{-k}(z+\tbf{1})}\subseteq G\}$,} 
+      
+\Centerline{$E_k 
+=\bigcup_{z\in Q_k}\coint{2^{-k}z,2^{-k}(z+\tbf{1}})$.} 
+      
+\noindent Then $\sequence{k}{E_k}$ is a non-decreasing sequence of sets 
+with union $G$, and $E_0$ and each of the differences $E_{k+1}\setminus 
+E_k$ is expressible as a disjoint union of half-open cubes.   Thus $G$ 
+also is expressible as a disjoint union of a sequence $\sequencen{I_n}$ 
+of half-open cubes.   Each $I_n$ is covered by a ball $B_n$ of measure 
+$\gamma_r\mu I_n$;  so that $G\subseteq\bigcup_{n\in\Bbb N}B_n$ and 
+      
+\Centerline{$\sum_{n=0}^{\infty}\mu B_n 
+\le\gamma_r\sum_{n=0}^{\infty}\mu I_n=\gamma_r\mu G$.   \Qed} 
+      
+\medskip 
+      
+{\bf (b)} It follows at once that if $\mu A=0$ then for any $\epsilon>0$ 
+there is a sequence $\sequencen{B_n}$ of balls covering $A$ of measures 
+summing to at most $\epsilon$, because there is certainly an open set 
+including $A$ with measure at most $\epsilon/\gamma_r$. 
+      
+\medskip 
+      
+{\bf (c)} Now take any set $A$, and $\epsilon>0$.   Let $G\supseteq A$ 
+be an open set with $\mu G\le\mu^*A+\bover12\epsilon$.   Let $\Cal I$ be 
+the family of non-trivial closed balls included in $G$, of radius at 
+most $\epsilon$ and with centres in $A$.   Then every point of $A$ 
+belongs to arbitrarily small members of $\Cal I$, so there is a 
+countable disjoint $\Cal I_0\subseteq\Cal I$ such that 
+$\mu(A\setminus\bigcup\Cal I_0)=0$.   Let $\sequencen{B'_n}$ be a 
+sequence of balls covering $A\setminus\bigcup\Cal I_0$ with 
+$\sum_{n=0}^{\infty}\mu 
+B'_n\le\min(\bover12\epsilon,\beta_r\epsilon^r)$;  these surely all have 
+radius at most $\epsilon$.   Let $\sequencen{B_n}$ be a sequence 
+amalgamating $\Cal I_0$ with $\sequencen{B'_n}$;  then 
+$A\subseteq\bigcup_{n\in\Bbb N}B_n$, every $B_n$ has radius at most 
+$\epsilon$ and 
+      
+\Centerline{$\sum_{n=0}^{\infty}\mu B_n 
+=\sum_{B\in\Cal I_0}\mu B+\sum_{n=0}^{\infty}\mu B'_n 
+\le\mu G+\Bover12\epsilon 
+\le\mu A+\epsilon$,} 
+      
+\noindent while the $B_n$ whose centres do not lie in $A$ must come from 
+the sequence $\sequencen{B'_n}$, so their measures sum to at most 
+$\bover12\epsilon\le\epsilon$. 
+}%end of proof of 261F 
+      
+\cmmnt{\medskip 
+      
+\noindent{\bf Remark} In fact we can (if $A$ is not empty) arrange that 
+the centre of {\it every} $B_n$ belongs to $A$.   This is an easy 
+consequence of Besicovitch's Covering Lemma (see \S472 in Volume 4). 
+}%end of comment 
+      
+\exercises{ 
+\leader{261X}{Basic exercises (a)} Show that 261C is valid for 
+any locally integrable real-valued function $f$;  in particular, for any 
+$f\in\eusm L^p(\mu_D)$ for any $p\ge 1$, writing $\mu_D$ for the 
+subspace measure on $D$. 
+%261C 
+      
+\spheader 261Xb Show that 261C, 261Dc, 261Dd and 261E are valid for 
+complex-valued functions $f$. 
+%261E 
+      
+\sqheader 261Xc Take three disks in the plane, each touching the other 
+two, so that they enclose an open region $R$ with three cusps.   In $R$ 
+let $D$ be a disk tangent to each of the three original disks, and 
+$R_0$, $R_1$, $R_2$ the three components of $R\setminus D$.   In each 
+$R_j$ let $D_j$ be a disk tangent to each of the disks bounding $R_j$, 
+and $R_{j0}$, $R_{j1}$, $R_{j2}$ the three components of $R_j\setminus 
+D_j$.   Continue, obtaining 27 regions at the next step, 81 regions at 
+the next, and so on. 
+      
+Show that the total area of the residual regions converges to zero as 
+the process continues indefinitely.   \Hint{compare with the process in 
+the proof of 261B.} 
+%261B 
+      
+\leader{261Y}{Further exercises (a)} 
+%\spheader 261Ya 
+Formulate an abstract definition of 
+`Vitali cover', meaning a family of sets satisfying the conclusion of 
+261B in some sense, and corresponding generalizations of 261C-261E, 
+covering (at least) (b)-(d) below. 
+      
+\header{261Yb}{\bf (b)} For $x\in\BbbR^r$, $k\in\Bbb N$ let $C(x,k)$ be 
+the half-open 
+cube of the form $\coint{2^{-k}z,2^{-k}(z+\tbf{1})}$, with $z\in \Bbb 
+Z^r$, containing $x$.   Show that if $f$ is an integrable function on 
+$\BbbR^r$ then 
+      
+\Centerline{$\lim_{k\to\infty}2^{kr}\int_{C(x,k)}f=f(x)$} 
+      
+\noindent for almost every $x\in\BbbR^r$. 
+      
+\spheader 261Yc Let $f$ be a real-valued function which is integrable 
+over $\BbbR^r$.   Show that 
+      
+\Centerline{$\lim_{\delta\downarrow 
+0}\Bover{1}{\delta^r}\int_{\coint{x,x+\delta\tbf{1}}}f=f(x)$} 
+      
+\noindent for almost every $x\in\BbbR^r$. 
+      
+\spheader 261Yd Give $X=\{0,1\}^{\Bbb N}$ its usual measure $\nu$ 
+(254J).   For $x\in X$, $k\in\Bbb N$ set 
+$C(x,k)=\{y:y\in X,\,y(i)=x(i)$ for $i<k\}$.   Show that if $f$ is any 
+real-valued function which is integrable over $X$ then 
+$\lim_{k\to\infty}2^k\int_{C(x,k)}fd\nu=f(x)$, 
+$\lim_{k\to\infty}2^k\int_{C(x,k)}|f(y)-f(x)|\nu(dy)=0$ for almost every 
+$x\in X$. 
+      
+\spheader 261Ye Let $f$ be a real-valued function which is integrable 
+over $\BbbR^r$, and $x$ a point in the Lebesgue set of $f$.   Show that 
+for every $\epsilon>0$ there is a $\delta>0$ such that 
+\discrcenter{390pt}{$|f(x)-\int f(x-y)g(\|y\|)dy|\le\epsilon$ }whenever 
+$g:\coint{0,\infty}\to\coint{0,\infty}$ is a non-increasing function 
+such that $\int_{\Bbb R^r}g(\|y\|)dy=1$ and 
+$\int_{B(\tbf{0},\delta)}g(\|y\|)dy\ge 1-\delta$.   \Hint{223Yg.} 
+      
+\spheader 261Yf Let $\frak T$ be the family of those measurable sets 
+$G\subseteq\BbbR^r$ such that 
+\discrcenter{390pt}{$\lim_{\delta\downarrow 0} 
+\Bover{\mu(G\cap B(x,\delta))}{\mu B(x,\delta)}=1$ }for every $x\in G$. 
+Show that $\frak T$ is a topology on $\BbbR^r$, the {\bf density 
+topology} of $\BbbR^r$.   Show that a function $f:\BbbR^r\to\Bbb R$ is 
+measurable iff it is $\frak T$-continuous at almost every point of 
+$\Bbb R^r$. 
+      
+\spheader 261Yg A set $A\subseteq\BbbR^r$ is said to be {\bf porous} at 
+$x\in\BbbR^r$ if $\limsup_{y\to x}\Bover{\rho(y,A)}{\|y-x\|}>0$,  
+writing $\rho(y,A)=\inf_{z\in A}\|y-z\|$ (or $\infty$ if $A$ is empty). 
+(i) Show that if $A$ is porous at all its points then it is negligible. 
+(ii) Show that in the construction of 261B the residual set 
+$A\setminus\bigcup\Cal I_0$ will be porous at all its points. 
+ 
+\spheader 261Yh Let $A\subseteq\BbbR^r$ be a bounded set and $\Cal I$ a 
+non-empty family of non-trivial closed balls covering $A$.   Show that 
+for any $\epsilon>0$ there are disjoint $B_0,\ldots,B_n\in\Cal I$ such 
+that $\mu^*A\le(3+\epsilon)^r\sum_{k=0}^n\mu B_k$. 
+      
+\spheader 261Yi Let $(X,\rho)$ be a metric space and $A\subseteq X$ any 
+set, $x\mapsto\delta_x:A\to\coint{0,\infty}$ any bounded function. 
+Show that if $\gamma>3$ then there is an $A'\subseteq A$ such that (i) 
+$\rho(x,y)>\delta_x+\delta_y$ for all distinct $x$, $y\in A'$ (ii) 
+$\bigcup_{x\in A}B(x,\delta_x) 
+\subseteq\bigcup_{x\in A'}B(x,\gamma\delta_x)$, writing $B(x,\alpha)$ 
+for the closed ball $\{y:\rho(y,x)\le\alpha\}$. 
+      
+\spheader 261Yj(i) Let $\Cal C$ be the family of those measurable sets 
+$C\subseteq\BbbR^r$ such that 
+\discrcenter{390pt}{$\limsup_{\delta\downarrow 0} 
+\Bover{\mu(C\cap B(x,\delta))}{\mu B(x,\delta)}>0$ }for every $x\in C$. 
+Show that $\bigcup\Cal C_0\in\Cal C$ for every $\Cal C_0\subseteq\Cal C$.
+\Hint{215B(iv).}   
+(ii) Show that any union of non-trivial closed balls in 
+$\BbbR^r$ is Lebesgue measurable.   (Compare 
+415Ye in Volume 4.) 
+      
+\spheader 261Yk Suppose that $A\subseteq\BbbR^r$ and that $\Cal I$ is a 
+family of closed subsets of $\BbbR^r$ such that 
+      
+\inset{\noindent for every $x\in A$ there is an $\eta>0$ such that for 
+every $\epsilon>0$ there is an $I\in\Cal I$ such that $x\in I$ and 
+$0<\eta(\diam I)^r\le\mu I\le\epsilon$.} 
+      
+\noindent Show that there is a countable disjoint set 
+$\Cal I_0\subseteq\Cal I$ such that 
+$A\setminus\bigcup\Cal I_0$ is negligible. 
+%261B 
+ 
+\spheader 261Yl Let $\frak T'$ be the family of measurable sets 
+$G\subseteq\BbbR^r$ such that whenever $x\in G$ and $\epsilon>0$ 
+there is a $\delta>0$ such that $\mu(G\cap I)\ge(1-\epsilon)\mu I$ whenever 
+$I$ is an interval containing $x$ and included in $B(x,\delta)$.    
+Show that  
+$\frak T'$ is a topology on $\BbbR^r$ intermediate between the density 
+topology (261Yf) and the Euclidean topology. 
+}%end of exercises 
+      
+\endnotes{ 
+\Notesheader{261} 
+In the proofs of 261B-261E above, I have done my best to 
+follow the lines of the one-dimensional case;  this section amounts to a 
+series of generalizations of the work of \S\S221 and 223. 
+      
+It will be clear that 
+the idea of 261A/261B can be used on other shapes than balls.   To make 
+it work in the form above, we need a family $\Cal I$ such that there is 
+a constant $K$ for which 
+      
+\Centerline{$\mu I'\le K\mu I$} 
+      
+\noindent for every $I\in \Cal I$, where we write 
+      
+\Centerline{$I'=\{x:\inf_{y\in I}\|x-y\|\le\diam(I)\}$.} 
+      
+\noindent Evidently this will be true for many classes $\Cal I$ 
+determined by the shapes of the sets involved;  for instance, if 
+$E\subseteq\BbbR^r$ is any bounded set of strictly positive measure, 
+the family $\Cal I=\{x+\delta E:x\in\BbbR^r,\,\delta>0\}$ will satisfy 
+the condition. 
+      
+In 261Ya I challenge you to find an appropriate generalization of the 
+arguments depending on the conclusion of 261B. 
+      
+Another way of using 261B is to say that because sets 
+can be essentially covered by {\it disjoint} sequences of balls, it 
+ought to be possible to use balls, rather than half-open intervals, in 
+the definition of Lebesgue measure on $\BbbR^r$.   This is indeed so 
+(261F).  The difficulty in using balls in the basic 
+definition comes right at the start, in proving that if a ball is 
+covered by finitely many balls then the sum of the volumes of the 
+covering balls is at least the volume of the covered ball.    (There is 
+a trick, using the compactness of closed balls and the openness of open 
+balls, to extend such a proof to infinite covers.)   Of course you could 
+regard this fact as `elementary', on the ground that Archimedes 
+would have noticed if it weren't true, but nevertheless it would be 
+something of a challenge to prove it, unless you were willing to wait 
+for a version of Fubini's theorem, as some authors do. 
+      
+I have given the results in 261C-261D for arbitrary subsets $D$ of  
+$\Bbb R^r$ not because I have any applications in mind in which 
+non-measurable subsets are significant, but because I wish to make it 
+possible to notice when measurability matters.   Of course it is 
+necessary to interpret the integrals $\int_Dfd\mu$ in the way laid down 
+in \S214.   The game is given away in part (c) of the proof of 261C, 
+where I rely on the fact that if $f$ is integrable over $D$ then there 
+is an integrable $\tilde f:\BbbR^r\to\Bbb R$ such that 
+$\int_F\tilde f=\int_{D\cap F}f$ for every measurable 
+$F\subseteq\BbbR^r$.   In 
+effect, for all the questions dealt with here, we can replace $f$, $D$ 
+by $\tilde f$, $\BbbR^r$. 
+      
+The idea of 261C is that, for almost every $x$, $f(x)$ is approximated 
+by its mean value on small balls $B(x,\delta)$, ignoring the missing 
+values on $B(x,\delta)\setminus(D\cap\dom f)$;  261E is a sharper 
+version of the same idea. 
+The formulae of 261C-261E mostly involve the expression 
+$\mu B(x,\delta)$.   Of course this is just $\beta_r\delta^r$.   But I 
+think that leaving it unexpanded is actually more illuminating, as well 
+as avoiding sub- and superscripts, since it makes it clearer what these 
+density theorems are really about.   In \S472 of Volume 4 I will revisit  
+this material, showing that a surprisingly large proportion of the ideas  
+can be applied to arbitrary Radon measures on $\BbbR^r$, even though 
+Vitali's theorem (in the form stated here) is no longer valid. 
+      
+}%end of notes 
+      
+      
+\discrpage 
+      

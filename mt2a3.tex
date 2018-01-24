@@ -1,0 +1,1041 @@
+\frfilename{mt2a3.tex}
+\versiondate{25.7.07}
+\copyrightdate{1995}
+
+\def\varBbb#1{\mathchoice{\hbox{$\Bbb#1$\hskip0.02em}}
+  {\hbox{$\Bbb#1$\hskip0.02em}}
+  {\hbox{$\scriptstyle\Bbb#1$\hskip0.04em}}
+  {\hbox{$\scriptscriptstyle\Bbb#1$\hskip0.04em}}}
+
+\def\chaptername{Appendix}
+\def\sectionname{General topology}
+
+\newsection{2A3}
+
+At various points -- principally \S\S245-247, %\S245 \S246 \S247
+but also for certain
+ideas in Chapter 27 -- we need to know something about non-metrizable
+topologies.   I must say that you should probably
+take the time to look at some book on elementary functional analysis
+which has the phrases `weak compactness' or `weakly compact' in the
+index.   But I can
+list here the concepts actually used in this volume, in a good deal less
+space than any orthodox, complete treatment would employ.
+
+\leader{2A3A}{Topologies} \cmmnt{First we need to know what a {\lq
+topology'}
+is.}   If $X$ is
+any set, a {\bf topology} on $X$ is a family $\frak T$ of subsets of $X$
+such that (i) $\emptyset$, $X\in\frak T$ (ii) if $G$, $H\in\frak T$ then
+$G\cap H\in\frak T$ (iii) if $\Cal G\subseteq\frak T$ then
+$\bigcup\Cal G\in\frak T$\cmmnt{ (cf.\ 1A2B)}.   \cmmnt{The pair} $(X,\frak T)$ is now a
+{\bf topological space}.   In this context, members of $\frak T$ are
+called {\bf open} and their complements\cmmnt{ (in $X$)} are called
+{\bf closed}\cmmnt{ (cf.\ 1A2E-1A2F)}.
+
+\leader{2A3B}{Continuous functions (a)} If $(X,\frak T)$ and $(Y,\frak
+S)$ are topological spaces, a
+function $\phi:X\to Y$ is {\bf continuous} if $\phi^{-1}[G]\in\frak T$
+for every $G\in\frak S$.   \cmmnt{(By 2A2Ca above, this is consistent
+with the
+$\epsilon$-$\delta$ definition of continuity for functions from one
+Euclidean space to another.   See also 2A3H below.)}
+
+\header{2A3Bb}{\bf (b)} If $(X,\frak T)$, $(Y,\frak S)$ and
+$(Z,\frak U)$ are topological spaces
+and $\phi:X\to Y$ and $\psi:Y\to Z$ are continuous, then
+$\psi\phi:X\to Z$
+is continuous.   \prooflet{\Prf\ If $G\in\frak U$ then
+$\psi^{-1}[G]\in\frak S$ so
+$(\psi\phi)^{-1}[G]=\phi^{-1}[\psi^{-1}[G]]\in\frak T$.\ \Qed}
+
+\header{2A3Bc}{\bf (c)} If $(X,\frak T)$ is a topological space, a
+function $f:X\to\Bbb R$ is continuous iff $\{x:a<f(x)<b\}$ is open
+whenever $a<b$ in $\Bbb R$.  \prooflet{\Prf\ {\bf (i)} Every interval
+$\ooint{a,b}$ is open in $\Bbb R$, so if $f$ is continuous its inverse
+image $\{x:a<f(x)<b\}$ must be open.   {\bf (ii)} Suppose that
+$f^{-1}[\,\ooint{a,b}\,]$ is open whenever $a<b$, and let
+$H\subseteq\Bbb R$ be any open set.   By the definition of `open' set
+in $\Bbb R$\cmmnt{ (1A2A)},
+
+$$\eqalign{H&
+=\bigcup\{\ooint{y-\delta,y+\delta}:y\in\Bbb R,\,\delta>0,\,
+\ooint{y-\delta,y+\delta}\subseteq H\},\cr}$$
+
+\noindent so
+
+\Centerline{$f^{-1}[H]=
+\bigcup\{f^{-1}[\,\ooint{y-\delta,y+\delta}\,]:y\in\Bbb R,\,\delta>0,\,
+\ooint{y-\delta,y+\delta}\subseteq H\}$}
+
+\noindent is a union of open sets in $X$, therefore open.\ \Qed}
+
+\header{2A3Bd}{\bf (d)} If $r\ge 1$, $(X,\frak T)$ is a topological
+space, and $\phi:X\to\BbbR^r$ is a function, then $\phi$ is continuous
+iff $\phi_i:X\to\Bbb R$ is continuous for each $i\le r$, where
+$\phi(x)=(\phi_1(x),\ldots,\phi_r(x))$ for each $x\in X$.
+\prooflet{\Prf\ {\bf (i)} Suppose that $\phi$ is continuous.   For $i\le
+r$, $y=(\eta_1,\ldots,\eta_r)\in\BbbR^r$, set $\pi_i(y)=\eta_i$.   Then
+$|\pi_i(y)-\pi_i(z)|\le\|y-z\|$ for all $y$, $z\in\BbbR^r$ so
+$\pi_i:\BbbR^r\to\Bbb R$
+is continuous.   Consequently $\phi_i=\pi_i\phi$ is continuous, by
+(b) above.   {\bf (ii)} Suppose that every $\phi_i$ is continuous, and that
+$H\subseteq\BbbR^r$ is open.   Set
+
+\Centerline{$\Cal G
+=\{G:G\subseteq X$ is open, $G\subseteq\phi^{-1}[H]\}$.}
+
+\noindent Then $G_0=\bigcup\Cal G$ is open, and
+$G_0\subseteq \phi^{-1}[H]$.   But suppose that $x_0$ is any point of
+$\phi^{-1}[H]$.   Then there is a $\delta>0$ such that
+$U(\phi(x_0),\delta)\subseteq H$, because $H$ is open and contains
+$\phi(x_0)$.   For $1\le i\le r$ set
+$V_i=\{x:\phi_i(x_0)-\bover{\delta}{\sqrt{r}}
+<\phi_i(x)<\phi_i(x_0)+\bover{\delta}{\sqrt{r}}\}$;
+then $V_i$ is the inverse image of an open set under the continuous map
+$\phi_i$, so is open.   Set $G=\bigcap_{i\le r}V_i$.    Then $G$ is open
+(using (ii) of the definition 2A3A), $x_0\in G$, and
+$\|\phi(x)-\phi(x_0\|<\delta$ for every $x\in G$, so
+$G\subseteq\phi^{-1}[H]$, $G\in\Cal G$ and $x_0\in G_0$.   This shows
+that $\phi^{-1}[H]=G_0$ is open.   As $H$ is arbitrary, $\phi$ is
+continuous.\ \Qed}
+
+\spheader 2A3Be If $(X,\frak T)$ is a topological space,
+$f_1,\ldots,f_r$ are continuous functions from $X$ to $\Bbb R$, and
+$h:\BbbR^r\to\Bbb R$ is continuous, then $h(f_1,\ldots,f_r):X\to\Bbb R$
+is continuous.   \prooflet{\Prf\ Set
+$\phi(x)=(f_1(x),\ldots,f_r(x))\in\BbbR^r$ for $x\in X$.   By (d),
+$\phi$ is continuous, so by 2A3Bb $h(f_1,\ldots,f_r)=h\phi$ is
+continuous.\ \QeD}   In particular, $f+g$, $f\times g$ and $f-g$ are
+continuous for all continuous functions $f$, $g:X\to\Bbb R$.
+
+\spheader 2A3Bf If $(X,\frak T)$ and $(Y,\frak S)$ are topological
+spaces and $\phi:X\to Y$ is a continuous function, then $\phi^{-1}[F]$
+is closed in $X$ for every closed set $F\subseteq Y$.   \prooflet{(For
+$X\setminus\phi^{-1}[F]=\phi^{-1}[Y\setminus F]$ is open.)}
+
+\leader{2A3C}{Subspace topologies}
+If $(X,\frak T)$ is a topological space and $D\subseteq X$,
+then $\frak T_D=\{G\cap D:G\in\frak T\}$ is a topology on $D$.
+\prooflet{\Prf\
+(i) $\emptyset=\emptyset\cap D$ and $D=X\cap D$ belong to $\frak T_D$.
+(ii) If $G$, $H\in\frak T_D$ there are $G'$, $H'\in\frak T$ such that
+$G=G'\cap D$, $H=H'\cap D$;  now $G\cap H=G'\cap H'\cap D\in\frak T_D$.
+(iii) If $\Cal G\subseteq\frak T_D$ set $\Cal H=\{H:H\in\frak T,\,H\cap
+D\in\Cal G\}$;  then
+$\bigcup\Cal G=(\bigcup\Cal H)\cap D\in\frak T_D$.\ \Qed}
+
+$\frak T_D$ is called the {\bf subspace topology} on $D$, or the
+topology on $D$ {\bf induced} by $\frak T$.   If $(Y,\frak S)$ is
+another topological space, and $\phi:X\to Y$ is
+$(\frak T,\frak S)$-continuous, then $\phi\restr D:D\to Y$ is
+$(\frak T_D,\frak S)$-continuous.   \prooflet{(For if $H\in\frak S$ then
+
+\Centerline{$(\phi\restr D)^{-1}[H]=D\cap\phi^{-1}[H]\in\frak T_D$.)}}
+
+\leader{2A3D}{Closures and interiors (a)} \cmmnt{In the proof of 2A3Bd
+I have already used the following idea.}   Let $(X,\frak T)$ be any
+topological space and $A$ any subset of $X$.   Write
+
+\Centerline{$\interior A=\bigcup\{G:G\in\frak T,\,G\subseteq A\}$.}
+
+\noindent Then $\interior A$ is\cmmnt{ an open set, being a union of
+open sets,
+and is of course included in $A$;  it must be} the largest open set
+included in $A$, and is called the {\bf interior} of $A$.
+
+
+\header{2A3Db}{\bf (b)} Because a set is closed iff its complement is
+open, we have a complementary notion:
+
+\dvro{$$\eqalign{\overline{A}
+&=\bigcap\{F:F\text{ is closed},\,A\subseteq F\}
+=X\setminus\interior(X\setminus A).\cr}$$}
+{$$\eqalign{\overline{A}
+&=\bigcap\{F:F\text{ is closed},\,A\subseteq F\}\cr
+&=X\setminus\bigcup\{X\setminus F:F\text{ is closed},\,A\subseteq F\}\cr
+&=X\setminus\bigcup\{G:G\text{ is open},\,A\cap G=\emptyset\}\cr
+&=X\setminus\bigcup\{G:G\text{ is open},\,G\subseteq X\setminus A\}
+=X\setminus\interior(X\setminus A).\cr}$$}
+
+\noindent$\overline{A}$ is\cmmnt{ closed (being the complement of an
+open set) and is} the smallest closed set including $A$;  it is called
+the {\bf closure} of $A$.   \cmmnt{(Compare 2A2A.)}   \cmmnt{Because
+the union of two closed sets is closed (cf.\ 1A2Fc),}
+$\overline{A\cup B}=\overline{A}\cup\overline{B}$ for all $A$,
+$B\subseteq X$.
+%4{}A2G
+
+\header{2A3Dc}{\bf (c)}\cmmnt{ There are innumerable ways of looking
+at these concepts;  a useful description of the closure of a set is}
+
+\dvro{$$\eqalign{x\in\overline A
+&\iff\,\text{every open set containing }x\text{ meets }A.\cr}$$}
+{$$\eqalign{x\in\overline A
+&\iff\,x\notin\interior(X\setminus A)\cr
+&\iff\,\text{there is no open set containing }x
+\text{ and included in }X\setminus A\cr
+&\iff\,\text{every open set containing }x\text{ meets }A.\cr}$$}
+
+\leader{2A3E}{Hausdorff topologies (a)}\dvro{ A}{ The concept
+of `topological space' is so widely drawn, and
+so widely applicable, that a vast number of different types of
+topological space have been studied.   For this volume we shall not need
+much of the (very extensive) vocabulary which has been developed to
+describe this variety.   But one useful word (and one of the most
+important concepts) is that of `Hausdorff space';  a} topological
+space $X$ is {\bf Hausdorff} if for all distinct $x$, $y\in X$ there are
+disjoint open sets $G$, $H\subseteq X$ such that $x\in G$ and $y\in H$.
+
+\spheader 2A3Eb In a Hausdorff space $X$, finite sets are closed.
+\prooflet{\Prf\ If $z\in X$, then for any $x\in X\setminus\{z\}$ there
+is an open set containing $x$ but not $z$, so $X\setminus\{z\}$ is open
+and
+$\{z\}$ is closed.   So a finite set is a finite union of closed sets
+and is therefore closed.\ \Qed}
+
+\leader{2A3F}{Pseudometrics}\cmmnt{ Many important topologies (not
+all!) can be
+defined by families of pseudometrics;  it will be useful to have a
+certain amount of technical skill with these.
+
+\medskip
+
+}{\bf (a)} Let $X$ be a set.   A {\bf pseudometric} on $X$
+is a function $\rho:X\times X\to\coint{0,\infty}$ such that
+
+\inset{$\rho(x,z)\le\rho(x,y)+\rho(y,z)$ for all $x$, $y$, $z\in X$}
+
+\cmmnt{\noindent (the `triangle inequality';)}
+
+\inset{$\rho(x,y)=\rho(y,x)$ for all $x$, $y\in X$;
+
+$\rho(x,x)=0$ for all $x\in X$.}
+
+\noindent A {\bf metric} is a pseudometric $\rho$ satisfying the further
+condition
+
+\inset{if $\rho(x,y)=0$ then $x=y$.}
+
+\header{2A3Fb}{\bf (b) Examples (i)} For $x$, $y\in\Bbb R$, set
+$\rho(x,y)=|x-y|$\cmmnt{;  then $\rho$ is a metric on $\Bbb R$} (the
+`usual metric' on $\Bbb R$).
+
+\medskip
+
+\quad{\bf (ii)} For $x$, $y\in\BbbR^r$, where $r\ge 1$, set
+$\rho(x,y)=\|x-y\|$, defining $\|z\|=\sqrt{\sum_{i=1}^r\zeta_i^2}$,
+as usual.   Then $\rho$ is\cmmnt{ a metric,} the {\bf Euclidean
+metric} on $\Bbb
+R^r$.   \cmmnt{(The triangle inequality for $\rho$ comes from Cauchy's
+inequality in 1A2C:  if $x$, $y$, $z\in\BbbR^r$, then
+
+\Centerline{$\rho(x,z)=\|x-z\|=\|(x-y)+(y-z)\|
+\le\|x-y\|+\|y-z\|=\rho(x,y)+\rho(y,z)$.}
+
+\noindent The other required properties of $\rho$ are elementary.
+Compare 2A4Bb below.)}
+
+\cmmnt{\medskip
+
+\quad{\bf (iii)} For an example of a pseudometric which is not a metric,
+take $r\ge 2$ and define $\rho:\BbbR^r\times\Bbb
+R^r\to\coint{0,\infty}$ by setting $\rho(x,y)=|\xi_1-\eta_1|$ whenever
+$x=(\xi_1,\ldots,\xi_r)$, $y=(\eta_1,\ldots,\eta_r)\in\BbbR^r$.
+}%end of comment
+
+\header{2A3Fc}{\bf (c)} Now let $X$ be a set and $\Rho$ a non-empty
+family of
+pseudometrics on $X$.   Let $\frak T$ be the family of those subsets $G$
+of $X$ such that for every $x\in G$ there are
+$\rho_0,\ldots,\rho_n\in\Rho$ and $\delta>0$ such that
+
+\Centerline{$U(x;\rho_0,\ldots,\rho_n;\delta)
+=\{y:y\in X,\,\max_{i\le n}\rho_i(y,x)<\delta\}\subseteq G$.}
+
+\noindent Then $\frak T$ is a topology on $X$.
+
+\prooflet{\Prf\ (Compare 1A2B.)  (i)
+$\emptyset\in\frak T$ because the condition is vacuously satisfied.
+$X\in\frak T$ because $U(x;\rho;1)\subseteq X$ for any $x\in X$,
+$\rho\in\Rho$.   (ii) If $G$, $H\in\frak T$ and $x\in G\cap H$, take
+$\rho_0,\ldots,\rho_m,\rho'_0,\ldots,\rho'_n\in\Rho$, $\delta$,
+$\delta'>0$ such that $U(x;\rho_0,\ldots,\rho_m;\delta)\subseteq G$,
+$U(x;\rho'_0,\ldots,\rho'_n;\delta')
+\ifdim\pagewidth=390pt\penalty-1000\fi
+\subseteq G$;   then
+
+
+\Centerline{
+$U(x;\rho_0,\ldots,\rho_m,\rho'_0,\ldots,\rho'_n;\min(\delta,\delta'))
+\subseteq G\cap H$.}
+
+\noindent   As $x$ is arbitrary, $G\cap H\in\frak T$.   (iii)
+If $\Cal G\subseteq\frak T$ and $x\in\bigcup\Cal G$, there is a
+$G\in\Cal G$ such that $x\in G$;  now there are
+$\rho_0,\ldots,\rho_n\in\Rho$ and $\delta>0$ such that
+
+
+\Centerline{$U(x;\rho_0,\ldots,\rho_n;\delta)\subseteq
+G\subseteq\bigcup\Cal G$.}
+
+\noindent As $x$ is arbitrary, $\bigcup\Cal G\in\frak T$.
+\Qed}
+
+$\frak T$ is the {\bf topology defined by}
+$\Rho$.
+
+\header{2A3Fd}{\bf (d)} You may wish to have a convention to deal with
+the case in which $\Rho$
+is the empty set;   in this case the topology on $X$ defined by $\Rho$
+is $\{\emptyset,X\}$.
+
+\cmmnt{\spheader 2A3Fe In many important cases,
+$\Rho$ is upwards-directed in the sense that for any $\rho_1$,
+$\rho_2\in\Rho$ there is a
+$\rho\in\Rho$ such that $\rho_i(x,y)\le\rho(x,y)$ for all $x$, $y\in X$
+and both $i$.   In this case, of course, any set
+$U(x;\rho_0,\ldots,\rho_n;\delta)$, where $\rho_0,\ldots,\rho_n\in\Rho$,
+includes some set of the form $U(x;\rho;\delta)$, where $\rho\in\Rho$.
+Consequently, for instance, a set $G\subseteq X$ is open iff for every
+$x\in G$ there are $\rho\in\Rho$, $\delta>0$ such that
+$U(x;\rho;\delta)\subseteq G$.
+}
+
+\spheader 2A3Ff A topology $\frak T$ is {\bf metrizable} if it
+is the topology
+defined
+by a family $\Rho$ consisting of a single metric.   Thus the {\bf
+Euclidean topology} on $\BbbR^r$ is the metrizable topology defined by
+$\{\rho\}$, where $\rho$ is the metric of (b-ii) above.
+
+\leader{2A3G}{Proposition} Let $X$ be a set with a topology defined by  a non-empty set $\Rho$
+of pseudometrics on $X$.   Then $U(x;\rho_0,\ldots,\rho_n;\epsilon)$ is
+open for all $x\in X$, $\rho_0,\ldots,\rho_n\in\Rho$ and $\epsilon>0$.
+
+\proof{ (Compare 1A2D.)  Take $y\in U(x;\rho_0,\ldots,\rho_n;\epsilon)$.   Set
+
+\Centerline{$\eta=\max_{i\le n}\rho_i(y,x)$,
+\quad $\delta=\epsilon-\eta>0$.}
+
+\noindent    If $z\in U(y;\rho_0,\ldots,\rho_n;\delta)$ then
+
+\Centerline{$\rho_i(z,x)\le\rho_i(z,y)+\rho_i(y,x)<\delta+\eta
+=\epsilon$}
+
+\noindent for each $i\le n$, so $U(y;\rho_0,\ldots,\rho_n;\delta)
+\subseteq U(x;\rho_0,\ldots,\rho_n;\epsilon)$.   As $y$ is arbitrary,
+$U(x;\rho_0,\ldots,\rho_n;\epsilon)$ is open.
+}%end of proof of 2A3G
+
+\leader{2A3H}{}\cmmnt{ Now we have a result corresponding to 2A2Ca,
+describing continuous functions between topological spaces defined by
+families of pseudometrics.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $X$ and $Y$ be sets;  let $\Rho$ be a
+non-empty family of
+pseudometrics on $X$, and $\Theta$ a non-empty family of pseudometrics
+on $Y$;  let $\frak T$ and $\frak S$ be the corresponding topologies.
+Then a function $\phi:X\to Y$ is continuous iff whenever $x\in X$,
+$\theta\in\Theta$ and $\epsilon>0$, there are
+$\rho_0,\ldots,\rho_n\in\Rho$ and $\delta>0$ such that
+$\theta(\phi(y),\phi(x))\le\epsilon$ whenever $y\in X$ and $\max_{i\le
+n}\rho_i(y,x)\le\delta$.
+
+\proof{{\bf (a)} Suppose that $\phi$ is continuous;  take $x\in X$,
+$\theta\in\Theta$ and $\epsilon>0$.   By 2A3G,
+$U(\phi(x);\theta;\epsilon)\in\frak S$.
+So $G=\phi^{-1}[U(\phi(x);\theta;\epsilon)]\in\frak T$.   Now $x\in G$,
+so there are $\rho_0,\ldots,\rho_n\in\Rho$ and $\delta>0$ such that
+$U(x;\rho_0,\ldots,\rho_n;\delta)\subseteq G$.   In this case
+$\theta(\phi(y),\phi(x))\le\epsilon$ whenever $y\in X$ and $\max_{i\le
+n}\rho_i(y,x)\le\bover12\delta$.   As $x$, $\theta$ and $\epsilon$ are
+arbitrary, $\phi$ satisfies the condition.
+
+\medskip
+
+{\bf (b)} Suppose $\phi$ satisfies the condition.   Take
+$H\in\frak S$ and consider $G=\phi^{-1}[H]$.   If $x\in G$, then
+$\phi(x)\in H$, so there are $\theta_0,\ldots,\theta_n\in\Theta$ and
+$\epsilon>0$ such that
+$U(\phi(x);\theta_0,\ldots,\theta_n;\epsilon)\subseteq H$.   For each
+$i\le n$ there are $\rho_{i0},\ldots,\rho_{i,m_i}\in\Rho$ and
+$\delta_i>0$ such that $\theta(\phi(y),\phi(x))\le\bover12\epsilon$
+whenever $y\in X$ and $\max_{j\le m_i}\rho_{ij}(y,x)\le\delta_i$.   Set
+$\delta=\min_{i\le n}\delta_i>0$;  then
+
+\Centerline{$U(x;\rho_{00},\ldots,\rho_{0,m_0},\ldots,\rho_{n0},\ldots,
+\rho_{n,m_n};\delta)\subseteq G$.}
+
+\noindent As $x$ is arbitrary, $G\in\frak T$.   As $H$ is arbitrary,
+$\phi$ is continuous.
+}%end of proof of 2A3H
+
+\cmmnt{
+\leader{2A3I}{Remarks (a)} If $\Rho$ is upwards-directed, the condition
+simplifies to:  for every $x\in X$,
+$\theta\in\Theta$ and $\epsilon>0$, there are
+$\rho\in\Rho$ and $\delta>0$ such that
+$\theta(\phi(y),\phi(x))\le\epsilon$ whenever $y\in X$ and
+$\rho(y,x)\le\delta$.
+
+
+
+
+\spheader 2A3Ib Suppose we have a set $X$ and two non-empty
+families $\Rho$,
+$\Theta$ of pseudometrics on $X$, generating topologies $\frak T$ and
+$\frak S$ on $X$.   Then $\frak S\subseteq\frak T$ iff the identity map
+$\phi$ from $X$ to itself is a continuous function when regarded as a
+map from $(X,\frak T)$ to $(X,\frak S)$, because this will mean that
+$G=\phi^{-1}[G]$ belongs to $\frak T$ whenever $G\in\frak S$.   Applying
+the proposition above to $\phi$, we see that this happens iff for every
+$\theta\in\Theta$,
+$x\in X$ and $\epsilon>0$ there are $\rho_0,\ldots,\rho_n\in\Rho$ and
+$\delta>0$ such that $\theta(y,x)\le\epsilon$ whenever $y\in X$ and
+$\max_{i\le n}\rho_i(y,x)\le\delta$.   Similarly, reversing the roles
+of $\Rho$ and $\Theta$, we get a criterion for when $\frak
+T\subseteq\frak S$, and putting the two together we obtain a criterion
+to determine when $\frak T=\frak S$.
+}%end of comment
+
+\leader{2A3J}{Subspaces:  Proposition} If $X$ is a set, $\Rho$ a
+non-empty family of pseudometrics on
+$X$ defining a topology $\frak T$ on $X$, and $D\subseteq X$, then
+
+(a) for every $\rho\in\Rho$, the restriction $\rho^{(D)}$ of $\rho$
+to $D\times D$ is a pseudometric on $D$;
+
+(b) the topology defined by $\Rho_D=\{\rho^{(D)}:\rho\in\Rho\}$ on
+$D$ is precisely the subspace topology $\frak T_D$ described in 2A3C.
+
+\proof{(a) is just a matter of reading through the
+definition in 2A3Fa.   For (b), we have to think for a moment.
+
+\medskip
+
+{\bf (i)} Suppose that $G$ belongs to the topology defined by $\Rho_D$.
+Set
+
+\Centerline{$\Cal H=\{H:H\in\frak T,\,H\cap D\subseteq G\}$,}
+
+\Centerline{$H^*=\bigcup\Cal
+H\in\frak T$,\quad $G^*=H^*\cap D\in\frak T_D$;}
+
+\noindent  then $G^*\subseteq G$.   On
+the other hand, if $x\in G$, then there are
+$\rho_0,\ldots,\rho_n\in\Rho$ and $\delta>0$ such that
+
+\Centerline{$U(x;\rho_0^{(D)},\ldots,\rho_n^{(D)};\delta)
+=\{y:y\in D,\,\max_{i\le n}\rho_i^{(D)}(y,x)<\delta\}\subseteq G$.}
+
+\noindent Consider
+
+\Centerline{$H=U(x;\rho_0,\ldots,\rho_n;\delta)
+=\{y:y\in X,\,\max_{i\le n}\rho_i(y,x)<\delta\}\subseteq X$.}
+
+\noindent Evidently
+
+\Centerline{$H\cap D
+=U(x;\rho_0^{(D)},\ldots,\rho_n^{(D)};\delta)\subseteq G$.}
+
+\noindent   Also $H\in\frak T$.   So $H\in\Cal H$ and
+
+\Centerline{$x\in H\cap D\subseteq H^*\cap D=G^*$.}
+
+\noindent Thus $G=G^*\in\frak T_D$.
+
+\medskip
+
+{\bf (ii)} Now suppose that $G\in\frak T_D$.   Then there is an
+$H\in\frak T$ such that $G=H\cap D$.
+Consider the identity map
+$\phi:D\to
+X$, defined by saying that $\phi(x)=x$ for every $x\in D$.   $\phi$
+obviously satisfies the criterion of 2A3H, if we endow $D$ with $\Rho_D$
+and $X$ with $\Rho$, because $\rho(\phi(x),\phi(y))=\rho^{(D)}(x,y)$
+whenever $x$, $y\in D$ and $\rho\in\Rho$;  so $\phi$ must be continuous
+for the associated topologies, and $\phi^{-1}[H]$ must belong to the
+topology defined by $\Rho_D$.   But $\phi^{-1}[H]=G$.   Thus every set
+in $\frak T_D$ belongs to the topology defined by $\Rho_D$, and the two
+topologies are the same, as claimed.
+}%end of proof of 2A3J
+
+\leader{2A3K}{Closures and interiors} Let $X$ be a set, $\Rho$ a
+non-empty family of pseudometrics on $X$ and $\frak T$ the topology
+defined by $\Rho$.
+
+\header{2A3Ka}{\bf (a)} For any $A\subseteq X$ and $x\in X$,
+
+\dvro{$$\eqalign{x\in\interior A
+&\iff\,\text{there are }\rho_0,\ldots,\rho_n\in\Rho,\,\delta>0
+\text{ such that }U(x;\rho_0,\ldots,\rho_n;\delta)\subseteq A.\cr}$$}
+{$$\eqalign{x\in\interior A
+&\iff\,\text{there is an open set included in }A
+\text{ containing }x\cr
+&\iff\,\text{there are }\rho_0,\ldots,\rho_n\in\Rho,\,\delta>0
+\text{ such that }U(x;\rho_0,\ldots,\rho_n;\delta)\subseteq A.\cr}$$}
+
+\header{2A3Kb}{\bf (b)} For any $A\subseteq X$ and $x\in X$,
+$x\in\overline A$ iff
+$U(x;\rho_0,\ldots,\rho_n;\delta)\cap A\ne\emptyset$ for every
+$\rho_0,\ldots,\rho_n\in\Rho$ and $\delta>0$.
+\cmmnt{(Compare 2A2B(ii), 2A3Dc.)}
+
+\leader{2A3L}{Hausdorff topologies}\cmmnt{ Recall that a topology
+$\frak T$ is Hausdorff if any two
+points can be separated by open sets (2A3E).}   Now a topology defined
+on a set $X$ by a non-empty family $\Rho$ of pseudometrics is Hausdorff
+iff for any
+two different points $x$, $y$ of $X$ there is a $\rho\in\Rho$ such that
+$\rho(x,y)>0$.   \prooflet{\Prf\ {\bf (i)} Suppose that the topology is
+Hausdorff and that $x$, $y$ are distinct points in $X$.   Then there is
+an open set $G$ containing $x$ but not containing $y$.   Now there are
+$\rho_0,\ldots,\rho_n\in\Rho$ and $\delta>0$ such that
+$U(x;\rho_0),\ldots,\rho_n;\delta)\subseteq G$, in which case
+$\rho_i(y,x)\ge\delta>0$ for some $i\le n$.   {\bf (ii)} If $\Rho$
+satisfies the condition, and $x$, $y$ are distinct points of $X$, take
+$\rho\in\Rho$ such that $\rho(x,y)>0$, and set
+$\delta=\bover12\rho(x,y)$.   Then $U(x;\rho;\delta)$ and
+$U(y;\rho;\delta)$ are disjoint (because if $z\in X$, then
+
+\Centerline{$\rho(z,x)+\rho(z,y)\ge\rho(x,y)=2\delta$,}
+
+\noindent so at least one of $\rho(z,x)$, $\rho(z,y)$ is greater than or
+equal to $\delta$), and they are open sets containing $x$, $y$
+respectively.   As $x$ and $y$ are arbitrary, the topology is Hausdorff.
+\Qed}
+
+In particular, metrizable topologies are Hausdorff.
+
+\leader{2A3M}{Convergence of sequences (a)} If $(X,\frak T)$ is any
+topological space, and $\sequencen{x_n}$ is a sequence in $X$, we say
+that $\sequencen{x_n}$ {\bf converges} to $x\in X$, or that $x$ is a
+{\bf limit} of $\sequencen{x_n}$, or $\sequencen{x_n}\to x$, if for
+every open set $G$ containing $x$ there is an $n_0\in\Bbb N$ such that
+$x_n\in G$ for every $n\ge n_0$.
+
+\header{2A3Mb}{\bf (b) Warning} In general topological spaces, it is
+possible for a sequence to have more than one limit\cmmnt{, and we cannot
+safely write $x=\lim_{n\to\infty}x_n$}.   But in Hausdorff spaces, this
+does not occur.   \prooflet{\Prf\ If $\frak T$ is Hausdorff, and $x$,
+$y$ are distinct points of $X$, there are disjoint open sets $G$, $H$
+such that $x\in G$ and $y\in H$.   If now $\sequencen{x_n}$ converges to
+$x$, there is an $n_0$ such that $x_n\in G$ for every $n\ge n_0$, so
+$x_n\notin H$ for every $n\ge n_0$, and $\sequencen{x_n}$ cannot
+converge to $y$.\ \Qed}   In particular, a sequence in a metrizable space
+can have at most one limit.
+
+\header{2A3Mc}{\bf (c)} Let $X$ be a set, and $\Rho$ a non-empty family
+of pseudometrics on $X$, generating a topology $\frak T$;  let
+$\sequencen{x_n}$ be a sequence in $X$ and $x\in X$.   Then
+$\sequencen{x_n}$ converges to $x$ iff $\lim_{n\to\infty}\rho(x_n,x)=0$
+for every $\rho\in\Rho$.   \prooflet{\Prf\ {\bf (i)} Suppose that
+$\sequencen{x_n}\to x$ and that $\rho\in\Rho$.   Then for any
+$\epsilon>0$ the set $G=U(x;\rho;\epsilon)$ is an open set containing
+$x$, so there is an $n_0$ such that $x_n\in G$ for every $n\ge n_0$,
+that is, $\rho(x_n,x)<\epsilon$ for every $n\ge n_0$.   As $\epsilon$ is
+arbitrary, $\lim_{n\to\infty}\rho(x_n,x)=0$.    {\bf (ii)} If the
+condition is satisfied, take any open set $G$ containing $X$.   Then
+there are $\rho_0,\ldots,\rho_k\in\Rho$ and $\delta>0$ such that
+$U(x;\rho_0,\ldots,\rho_k;\delta)\subseteq G$.   For each $i\le k$ there
+is an $n_i\in\Bbb N$ such that $\rho_i(x_n,x)<\delta$ for every $n\ge
+n_i$.   Set $n^*=\max(n_0,\ldots,n_k)$;  then $x_n\in
+U(x;\rho_0,\ldots,\rho_k;\delta)\subseteq G$ for every $n\ge n^*$.   As
+$G$ is arbitrary, $\sequencen{x_n}\to x$.\ \Qed}
+
+\spheader 2A3Md Let $(X,\rho)$ be a metric space, $A$ a subset of $X$
+and $x\in X$.   Then $x\in\overline{A}$ iff there is a sequence in $A$
+converging to $x$.   \prooflet{\Prf {\bf (i)} If $x\in\overline{A}$,
+then for every $n\in\Bbb N$ we can choose a point
+$x_n\in A\cap U(x;\rho;2^{-n})$
+(2A3Kb);  now $\sequencen{x_n}\to x$.   {\bf (ii)} If $\sequencen{x_n}$
+is a sequence in $A$ converging to $x$, then for every open set $G$
+containing $x$ there is an $n$ such that $x_n\in G$, so that $A\cap
+G\ne\emptyset$;  by 2A3Dc, $x\in\overline{A}$.\ \Qed}
+
+\leader{2A3N}{Compactness} \cmmnt{ The next concept we need is the
+idea of `compactness' in general topological spaces.
+
+\header{2A3Na}}{\bf (a)} If $(X,\frak T)$ is any
+topological space, a subset $K$ of $X$ is {\bf compact} if whenever
+$\Cal G$ is a family in $\frak T$ covering $K$, then there is a finite
+$\Cal G_0\subseteq\Cal G$ covering $K$.   \cmmnt{(Cf.\ 2A2D.  A {\bf
+warning}:  many authors reserve the term `compact' for Hausdorff
+spaces.)}   A set $A\subseteq X$ is {\bf relatively compact} in $X$ if
+there is a compact subset of $X$ including $A$.   \cmmnt{({\bf Warning!}
+in non-Hausdorff spaces, this is not the same thing as saying that
+$\overline{A}$ is compact.)}
+
+\header{2A3Nb}{\bf (b)}\cmmnt{ Just as in 2A2E-2A2G %2A2E 2A2F 2A2G
+(and the proofs
+are the same in the general case), we have the following results.
+
+\medskip
+
+\quad}{\bf (i)} If $K$ is compact and $E$ is closed, then $K\cap E$ is
+compact.
+
+\medskip
+
+\quad {\bf (ii)} If $K\subseteq X$ is compact and $\phi:K\to Y$ is
+continuous,
+where $(Y,\frak S)$ is another topological space, then $\phi[K]$ is a
+compact subset of $Y$.
+
+\medskip
+
+\quad{\bf (iii)} If $K\subseteq X$ is compact and $\phi:K\to\Bbb R$ is
+continuous, then $\phi$ is bounded and attains its bounds.
+
+\leader{2A3O}{Cluster points (a)}  If
+$(X,\frak T)$ is a topological space, and $\sequencen{x_n}$ is a
+sequence
+in $X$, then a {\bf cluster point} of $\sequencen{x_n}$ is an $x\in X$
+such that whenever $G$ is an open set containing $x$ and $n\in\Bbb N$
+then there is a $k\ge n$ such that $x_k\in G$.
+
+\header{2A3Ob}{\bf (b)} Now if $(X,\frak T)$ is
+a topological space and $A\subseteq X$ is relatively compact, every
+sequence $\sequencen{x_n}$ in $A$ has a cluster point in $X$.
+\prooflet{\Prf\
+Let $K$ be a compact subset of $X$ including $A$.    Set
+
+\Centerline{$\Cal G=\{G:G\in\frak T,\,\{n:x_n\in G\}\text{ is
+finite}\}$.}
+
+\noindent\Quer\ If $\Cal G$ covers $K$, then there is a finite
+$\Cal G_0\subseteq\Cal G$ covering $K$.   Now
+
+\Centerline{$\Bbb N=\{n:x_n\in A\}=\{n:x_n\in\bigcup\Cal G_0\}
+=\bigcup_{G\in\Cal G_0}\{n:x_n\in G\}$}
+
+\noindent is a finite union of finite sets, which is absurd.   \Bang\
+Thus $\Cal G$ does not cover $K$.
+Take any $x\in K\setminus\bigcup\Cal G$.   If $G\in\frak T$ and $x\in G$
+and $n\in\Bbb N$, then $G\notin\Cal G$ so $\{k:x_k\in G\}$ is infinite
+and there is a $k\ge n$ such that $x_k\in G$.   Thus $x$ is a cluster
+point of $\sequencen{x_n}$, as required.\ \Qed}
+
+\cmmnt{
+\leader{2A3P}{Filters} In $\BbbR^r$, and more generally in all
+metrizable spaces, topological ideas can be effectively
+discussed in terms of convergent sequences.   (To be sure, this
+occasionally necessitates the use of a weak form of the axiom of choice,
+in order to
+choose a sequence;  but as measure theory without such choices is
+changed utterly -- see Chapter 56 in Volume 5 -- there
+is no point in fussing about them here.)   For
+topological spaces in general, however, sequences are quite inadequate,
+for very interesting reasons which I shall not enlarge upon.   Instead
+we need to use `nets' or `filters'.   The latter take a moment's
+more effort at the beginning, but are then (in my view) much easier to
+work with, so I describe this method now.
+}%end of comment
+
+\leader{2A3Q}{Convergent filters (a)} Let $(X,\frak T)$ be a topological
+space, $\Cal F$ a filter on $X$\cmmnt{ (see 2A1I)} and $x$ a point of
+$X$.   We say that $\Cal F$ is
+{\bf convergent} to $x$, or that $x$ is a {\bf limit} of $\Cal F$, and
+write $\Cal F\to x$, if
+every open set containing $x$ belongs to $\Cal F$.
+
+\header{2A3Qb}{\bf (b)} Let $(X,\frak T)$ and $(Y,\frak S)$ be
+topological spaces,
+$\phi:X\to Y$ a continuous function, $x\in X$ and $\Cal F$ a filter on
+$X$ converging to $x$.   Then $\phi[[\Cal F]]$\cmmnt{ (as defined in
+2A1Ib)} converges to $\phi(x)$\prooflet{ (because $\phi^{-1}[G]$ is an
+open set containing $x$ whenever $G$ is an
+open set containing $\phi(x)$)}.
+
+\leader{2A3R}{}\cmmnt{ Now we have the following characterization of
+compactness.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $X$ be a topological space, and $K$ a subset
+of $X$.   Then $K$ is compact iff every ultrafilter on $X$  containing
+$K$ has a limit in $K$.
+
+\proof{{\bf (a)} Suppose that $K$ is compact and that $\Cal F$
+is an ultrafilter on $X$ containing $K$.   Set
+
+\Centerline{$\Cal G=\{G:G\subseteq X$ is open,
+$X\setminus G\in\Cal F\}$.}
+
+\noindent Then the union of any two members of $\Cal G$ belongs to $\Cal
+G$, so the union of any finite number of members of $\Cal G$ belongs to
+$\Cal G$;  also no member of $\Cal G$ can include $K$, because
+$X\setminus K\notin\Cal F$.   Because $K$ is compact, it follows that
+$\Cal G$ cannot cover $K$.   Let $x$ be any point of
+$K\setminus\bigcup\Cal G$.   If $G$ is any open set containing $x$, then
+$G\notin\Cal G$ so $X\setminus G\notin\Cal F$;  but this means that $G$
+must belong to $\Cal F$, because $\Cal F$ is an ultrafilter.   As $G$ is
+arbitrary, $\Cal F\to x$.
+Thus every ultrafilter on $X$ containing $K$ has a limit in $K$.
+
+\medskip
+
+{\bf (b)} Now suppose that every ultrafilter on $X$ containing $K$ has a
+limit in $K$.   Let $\Cal G$ be a cover of $K$ by open sets in $X$.
+\Quer\ Suppose, if possible, that $\Cal G$ has no finite subcover.   Set
+
+\Centerline{$\Cal F=\{F:$ there is a finite $\Cal G_0\subseteq
+\Cal G,\,F\cup\bigcup\Cal G_0\supseteq K\}$.}
+
+\noindent Then $\Cal F$ is a filter on $X$.   \Prf\ (i)
+$X\cup\bigcup\emptyset\supseteq K$ so $X\in\Cal F$.
+
+
+\Centerline{$\emptyset\cup\bigcup\Cal G_0=\bigcup\Cal G_0\not\supseteq
+K$}
+
+\noindent for any
+finite $\Cal G_0\subseteq\Cal G$, by hypothesis, so
+$\emptyset\notin\Cal F$.
+(ii) If $E$, $F\in\Cal F$ there are finite sets $\Cal G_1$,
+$\Cal G_2\subseteq\Cal G$ such that $E\cup\bigcup\Cal G_1$ and
+$F\cup\bigcup\Cal G_2$ both include $K$;  now
+$(E\cap F)\cup\bigcup(\Cal G_1\cup\Cal G_2)\supseteq K$ so
+$E\cap F\in\Cal F$.   (iii) If
+$X\supseteq E\supseteq F\in\Cal F$ then there is a finite
+$\Cal G_0\subseteq\Cal G$ such that $F\cup\Cal G_0\supseteq K$;  now
+$E\cup\bigcup\Cal G_0\supseteq K$ and $E\in\Cal F$.\ \Qed
+
+By the Ultrafilter Theorem (2A1O), there is an ultrafilter $\Cal F^*$ on
+$X$ including $\Cal F$.   Of course $K$ itself belongs to $\Cal F$, so
+$K\in\Cal F^*$.   By hypothesis, $\Cal F^*$ has a limit $x\in K$.   But
+now there is a set $G\in\Cal G$ containing $x$, and
+$(X\setminus G)\cup G\supseteq K$, so
+$X\setminus G\in\Cal F\subseteq\Cal F^*$;  which means
+that $G$ cannot belong to $\Cal F^*$, and $x$ cannot be a limit of
+$\Cal F^*$.   \Bang
+
+So $\Cal G$ has a finite subcover.   As $\Cal G$ is arbitrary, $K$ must
+be compact.
+}%end of proof of 2A3R
+
+\cmmnt{
+\medskip
+
+\noindent{\bf Remark} Note that part (b) of the proof of
+this theorem depends vitally on the
+Ultrafilter Theorem and therefore on the axiom of choice.
+}
+
+\leader{2A3S}{Further calculations with filters (a)}
+I\cmmnt{n general, i}t is
+possible for a filter to have more than one limit;  but in Hausdorff
+spaces this does not occur.  \prooflet{\Prf\ (Compare 2A3Mb.)  If
+$(X,\frak T)$ is Hausdorff, and $x$,
+$y$ are distinct points of $X$, there are disjoint open sets $G$, $H$
+such that $x\in G$ and $y\in H$.   If now a filter $\Cal F$ on $X$
+converges to
+$x$, $G\in\Cal F$ so $H\notin\Cal F$ and $\Cal F$ does not converge to
+$y$.\ \Qed}
+
+Accordingly we can safely write $x=\lim\Cal F$ when $\Cal F\to x$ in a
+Hausdorff space.
+
+\spheader 2A3Sb Now suppose that $X$ is a set, $\Cal F$ is a filter on
+$X$, $(Y,\frak S)$ is a Hausdorff space, $D\in\Cal F$ and $\phi:D\to Y$
+is a function.   Then we write $\lim_{x\to\Cal F}\phi(x)$ for
+$\lim\phi[[\Cal F]]$ if this is defined in $Y$;  that is,
+$\lim_{x\to\Cal F}\phi(x)=y$ iff $\phi^{-1}[H]\in\Cal F$ for every open
+set $H$ containing $y$.
+
+\dvAnew{2014}If $Z$ is another set, $\Cal G$ is a filter on $Z$, and
+$\psi:Z\to X$ is such that $\Cal F=\psi[[\Cal G]]$, then 
+the composition $\phi\psi$ is defined on $\psi^{-1}[D]\in\Cal G$, and
+if one of the limits $\lim_{x\to\Cal F}\phi(x)$, 
+$\lim_{z\to\Cal G}\phi\psi(z)$ is defined in $Y$ so is the other, and they
+are then equal.   \prooflet{\Prf\ Suppose that $y\in Y$ and let 
+$\Cal U$ be the family of open subsets of $Y$ containing $y$.   Then
+
+$$\eqalign{\lim_{x\to\Cal F}\phi(x)=y
+&\iff\phi^{-1}[G]\in\Cal F\text{ for every }G\in\Cal U
+\cr&\iff\psi^{-1}[\phi^{-1}[G]]\in\Cal G\text{ for every }G\in\Cal U
+\cr&\iff(\phi\psi)^{-1}[G]\in\Cal G\text{ for every }G\in\Cal U
+\iff\lim_{z\to\Cal G}\phi\psi(z)=y. \text{ \Qed}\cr}$$}
+
+In the special case $Y=\Bbb R$, $\lim_{x\to\Cal F}\phi(x)=a$ iff
+$\{x:|\phi(x)-a|\le\epsilon\}\in\Cal F$ for every
+$\epsilon>0$\prooflet{ (because every open set containing $a$ includes a
+set of the form $[a-\epsilon,a+\epsilon]$, which in turn includes the
+open set $\ooint{a-\epsilon,a+\epsilon}$)}.
+
+\spheader 2A3Sc Suppose that $X$ and $Y$ are sets, $\Cal F$ is a filter
+on $X$, $\Theta$ is a non-empty family
+of pseudometrics on $Y$ defining a topology $\frak S$ on
+$Y$, and
+$\phi:X\to Y$ is a function.   Then the image filter $\phi[[\Cal F]]$
+converges to $y\in Y$ iff $\lim_{x\to\Cal F}\theta(\phi(x),y)=0$ in
+$\Bbb R$
+for every $\theta\in\Theta$.   \prooflet{\Prf\ {\bf (i)} Suppose that
+$\phi[[\Cal F]]\to
+y$.   For every $\theta\in\Theta$ and $\epsilon>0$,
+$U(y;\theta;\epsilon)=\{z:\theta(z,y)<\epsilon\}$ is an open set
+containing $y$ (2A3G), so belongs to $\phi[[\Cal F]]$, and its inverse
+image $\{x:0\le\theta(\phi(x),y)<\epsilon\}$ belongs to $\Cal F$.
+As $\epsilon$ is arbitrary, $\lim_{x\to\Cal F}\theta(\phi(x),y)=0$.
+As $\theta$ is arbitrary, $\phi$ satisfies the condition.   {\bf (ii)}
+Now
+suppose that $\lim_{x\to\Cal F}\theta(\phi(x),y)=0$ for every
+$\theta\in\Theta$.   Let $G$ be any open set in $Y$ containing $y$.
+Then there are $\theta_0,\ldots,\theta_n\in\Theta$ and $\epsilon>0$ such
+that
+
+\Centerline{$U(y;\theta_0,\ldots,\theta_n;\epsilon)
+=\bigcap_{i\le n}U(y;\theta_i;\epsilon)\subseteq G$.}
+
+\noindent For each $i\le n$,
+
+\Centerline{$\phi^{-1}[U(y;\theta_i;\epsilon)]
+=\{x:\theta(\phi(x),y)<\epsilon\}$}
+
+\noindent belongs to $\Cal F$;  because $\Cal F$ is closed under finite
+intersections, so do
+$\phi^{-1}[U(y;\theta_0,\ldots,\theta_n;\epsilon)]$ and its superset
+$\phi^{-1}[G]$.   Thus $G\in\phi[[\Cal F]]$.   As $G$ is arbitrary,
+$\phi[[\Cal F]]\to y$.\ \Qed}
+
+%2A3S
+
+\spheader 2A3Sd In particular,\cmmnt{ taking $X=Y$ and $\phi$ the
+identity map,} if
+$X$ has a topology $\frak T$ defined by a non-empty family $\Rho$ of
+pseudometrics, then a filter $\Cal F$ on $X$ converges to $x\in X$ iff
+$\lim_{y\to\Cal F}\rho(y,x)=0$ for every $\rho\in\Rho$.
+
+\spheader 2A3Se{\bf (i)} If $X$ is any set, $\Cal F$ is an ultrafilter
+on $X$, $(Y,\frak S)$ is a Hausdorff space, and
+$h:X\to Y$ is a function such that $h[F]$ is relatively compact in $Y$
+for some $F\in\Cal F$, then $\lim_{x\to\Cal F}h(x)$ is defined in $Y$.
+\prooflet{\Prf\ Let $K\subseteq Y$ be a compact set including $h[F]$.
+Then $K\in h[[\Cal F]]$, which is an ultrafilter (2A1N), so
+$h[[\Cal F]]$ has a limit in $Y$ (2A3R), which is
+$\lim_{x\to\Cal F}h(x)$.\ \Qed}
+
+\medskip
+
+\quad{\bf (ii)} If $X$ is any set, $\Cal F$ is an ultrafilter on $X$,
+and $h:X\to\Bbb R$ is a function such that $h[F]$ is bounded in $\Bbb R$
+for some set $F\in\Cal F$, then $\lim_{x\to\Cal F}h(x)$ exists in
+$\Bbb R$.
+\prooflet{\Prf\ $\overline{h[F]}$ is closed and bounded, therefore
+compact (2A2F), so $h[F]$ is relatively compact and we can use
+(i).\ \Qed}
+
+\spheader 2A3Sf \cmmnt{ The concepts of $\limsup$, $\liminf$ can be
+applied to filters.}  Suppose that $\Cal F$ is a filter on a set $X$,
+and that $f:X\to[-\infty,\infty]$ is any function.   Then
+
+\dvro{$$\eqalign{\limsup_{x\to\Cal F}f(x)
+&=\inf_{F\in\Cal F}\sup_{x\in F}f(x)
+\in[-\infty,\infty],\cr}$$}
+{$$\eqalign{\limsup_{x\to\Cal F}f(x)
+&=\inf\{u:u\in[-\infty,\infty],\,\{x:f(x)\le u\}\in\Cal F\}\cr
+&=\inf_{F\in\Cal F}\sup_{x\in F}f(x)
+\in[-\infty,\infty],\cr}$$}
+
+\dvro{$$\eqalign{\liminf_{x\to\Cal F}f(x)
+&=\sup_{F\in\Cal F}\inf_{x\in F}f(x).\cr}$$}
+{$$\eqalign{\liminf_{x\to\Cal F}f(x)
+&=\sup\{u:u\in[-\infty,\infty],\,\{x:f(x)\ge u\}\in\Cal F\}\cr
+&=\sup_{F\in\Cal F}\inf_{x\in F}f(x).\cr}$$}
+
+\noindent\dvro{For}{It is easy to see that, for} any two functions $f$,
+$g:X\to\Bbb R$,
+
+\Centerline{$\lim_{x\to\Cal F}f(x)=a$\quad iff\quad
+$a=\limsup_{x\to\Cal F}f(x)=\liminf_{x\to\Cal F}f(x)$,}
+
+\noindent and
+
+\Centerline{$\limsup_{x\to\Cal F}f(x)+g(x)
+\le\limsup_{x\to\Cal F}f(x)+\limsup_{x\to\Cal F}g(x)$,}
+
+\Centerline{$\liminf_{x\to\Cal F}f(x)+g(x)
+\ge\liminf_{x\to\Cal F}f(x)+\liminf_{x\to\Cal F}g(x)$,}
+
+\Centerline{$\liminf_{x\to\Cal F}(-f(x))=-\limsup_{x\to\Cal F}f(x)$,
+\quad$\limsup_{x\to\Cal F}(-f(x))=-\liminf_{x\to\Cal F}f(x)$,}
+
+\Centerline{$\liminf_{x\to\Cal F}cf(x)=c\liminf_{x\to\Cal F}f(x)$,
+\quad$\limsup_{x\to\Cal F}cf(x)=c\limsup_{x\to\Cal F}f(x)$}
+
+\noindent whenever the right-hand-sides are defined in
+$[-\infty,\infty]$ and $c\ge 0$.   So if $a=\lim_{x\to\Cal F}f(x)$ and
+$b=\lim_{x\to\Cal F}(x)$ exist in $\Bbb R$, $\lim_{x\to\Cal F}f(x)+g(x)$
+exists and is equal to $a+b$ and $\lim_{x\to\Cal F}cf(x)$ exists and is
+equal to $c\lim_{x\to\Cal F}f(x)$ for every $c\in\Bbb R$.
+
+\dvro{If}{We also see that if} $f:X\to\Bbb R$ is such that
+
+\Centerline{for every $\epsilon>0$ there is an $F\in\Cal F$ such that
+$\sup_{x\in F}f(x)\le\epsilon+\inf_{x\in F}f(x)$,}
+
+\noindent then
+\cmmnt{$\limsup_{x\to\Cal F}f(x)\le\epsilon+\liminf_{x\to\Cal F}f(x)$
+for every $\epsilon>0$, so that} $\lim_{x\to\Cal F}f(x)$ is defined in
+$[-\infty,\infty]$.
+
+\spheader 2A3Sg \cmmnt{Note that the standard limits of real analysis
+can be represented in the form described here.   For instance,}
+$\lim_{n\to\infty}$, $\limsup_{n\to\infty}$, $\liminf_{n\to\infty}$
+correspond to $\lim_{n\to\CalFr}$, $\limsup_{n\to\CalFr}$,
+$\liminf_{n\to\CalFr}$ where $\CalFr$ is the {\bf Fr\'echet filter}
+on $\Bbb N$, the filter $\{\Bbb N\setminus A:A\subseteq\Bbb N$ is
+finite$\}$ of cofinite subsets of $\Bbb N$.   Similarly,
+$\lim_{\delta\downarrow a}$, $\limsup_{\delta\downarrow a}$,
+$\liminf_{\delta\downarrow a}$ correspond to $\lim_{\delta\to\Cal F}$,
+$\limsup_{\delta\to\Cal F}$, $\liminf_{\delta\to\Cal F}$ where
+
+\Centerline{$\Cal F=\{A:A\subseteq\Bbb R,\,\exists\,h>0$ such that
+$\ocint{a,a+h}\subseteq A\}$.}
+%2A3S
+
+\leader{2A3T}{Product topologies}\cmmnt{ We need some brief remarks
+concerning topologies on product spaces.
+
+\medskip
+
+} {\bf (a)} Let $(X,\frak T)$ and $(Y,\frak S)$ be
+topological spaces.
+Let $\frak U$ be the set of subsets $U$ of $X\times Y$ such that for
+every $(x,y)\in U$ there are $G\in\frak T$, $H\in\frak S$ such that
+$(x,y)\in G\times H\subseteq U$.   Then $\frak U$ is a topology on
+$X\times Y$.   \prooflet{\Prf\ (i) $\emptyset\in\frak U$ because the
+condition for
+membership of $\frak U$ is vacuously satisfied.   $X\times Y\in\frak U$
+because $X\in\frak T$, $Y\in\frak S$ and $(x,y)\in X\times Y\subseteq
+X\times Y$ for every $(x,y)\in X\times Y$.   (ii) If $U$, $V\in\frak U$
+and $(x,y)\in U\cap V$, then there are $G$, $G'\in\frak T$, $H$,
+$H'\in\frak S$ such that
+
+\Centerline{$(x,y)\in G\times H\subseteq U$,
+\quad $(x,y)\in G'\times H'\subseteq V$;}
+
+\noindent now $G\cap G'\in \frak T$, $H\cap H'\in\frak S$ and
+
+\Centerline{$(x,y)\in(G\cap G')\times(H\cap H')\subseteq U\cap V$.}
+
+\noindent As $(x,y)$ is arbitrary, $U\cap V\in\frak U$.   (iii) If
+$\Cal U\subseteq\frak U$ and $(x,y)\in\bigcup\Cal U$, then there is a
+$U\in\Cal U$ such that $(x,y)\in U$;  now there are $G\in\frak T$,
+$H\in\frak S$ such that $(x,y)\in G\times H\subseteq
+U\subseteq\bigcup\Cal U$.   As $(x,y)$ is arbitrary, $\bigcup\Cal
+U\in\frak U$.\ \Qed}
+
+$\frak U$ is called the {\bf product topology} on $X\times Y$.
+
+
+\spheader 2A3Tb Suppose, in (a), that $\frak T$ and $\frak S$ are
+defined by
+non-empty families $\Rho$, $\Theta$ of pseudometrics\cmmnt{ in the manner of 2A3F}.   Then $\frak U$ is defined by the family
+$\Upsilon=\{\tilde\rho:\rho\in\Rho\}\cup\{\bar\theta:\theta\in\Theta\}$
+of pseudometrics on $X\times Y$, where
+
+\Centerline{$\tilde\rho((x,y),(x',y'))=\rho(x,x')$,
+\quad$\bar\theta((x,y),(x',y'))=\theta(y,y')$}
+
+\noindent whenever $x$, $x'\in X$, $y$, $y'\in Y$, $\rho\in\Rho$ and
+$\theta\in\Theta$.
+
+\prooflet{\Prf\ {\bf (i)} Of course you should check that every
+$\tilde\rho$, $\bar\theta$ is a pseudometric on $X\times Y$.
+
+\quad{\bf (ii)} If $U\in\frak U$ and $(x,y)\in U$, then there are
+$G\in\frak T$, $H\in\frak S$ such that $(x,y)\in G\times H\subseteq U$.
+There are $\rho_0,\ldots,\rho_m\in\Rho$,
+$\theta_0,\ldots,\theta_n\in\Theta$, $\delta$, $\delta'>0$ such that (in
+the language of 2A3Fc) $U(x;\rho_0,\ldots,\rho_m;\delta)\subseteq G$,
+$U(x;\theta_0,\ldots,\theta_n;\delta)\subseteq H$.   Now
+
+\Centerline{$U((x,y);\tilde\rho_0,\ldots,\tilde\rho_m,
+\bar\theta_0,\ldots,\bar\theta_n;\min(\delta,\delta'))\subseteq U$.}
+
+\noindent As $(x,y)$ is arbitrary, $U$ is open for the topology
+generated by $\Upsilon$.
+
+\quad{\bf (iii)} If $U\subseteq X\times Y$ is open for the topology
+defined by $\Upsilon$, take any $(x,y)\in U$.   Then there are
+$\upsilon_0,\ldots,\upsilon_k\in\Upsilon$ and $\delta>0$ such that
+$U((x,y);\upsilon_0,\ldots,\upsilon_k;\delta)\subseteq U$.   Take
+$\rho_0,\ldots,\rho_m\in\Rho$ and $\theta_0,\ldots,\theta_n\in\Theta$
+such that $\{\upsilon_0,\ldots,\upsilon_k\}
+\subseteq\{\tilde\rho_0,\ldots,\tilde\rho_m,
+\bar\theta_0,\ldots,\bar\theta_n\}$;    then
+$G=U(x;\rho_0,\ldots,\rho_m;\delta)\in\frak T$ (2A3G),
+$H=U(y;\theta_0,\ldots,\theta_n;\delta)\in\frak S$, and
+
+\Centerline{$(x,y)\in G\times H
+=U((x,y);\tilde\rho_0,\ldots,\rho_m,
+\bar\theta_0,\ldots,\bar\theta_n;\delta)
+\subseteq U((x,y);\upsilon_0,\ldots,\upsilon_k;\delta)\subseteq U$.}
+
+\noindent As $(x,y)$ is arbitrary, $U\in\frak U$.   This completes the
+proof that $\frak U$ is the topology defined by $\Upsilon$.\ \Qed}
+
+\spheader 2A3Tc In particular, the product topology on
+$\BbbR^r\times\BbbR^s$ is the Euclidean topology if we identify
+$\BbbR^r\times\BbbR^s$ with $\BbbR^{r+s}$.  \prooflet{\Prf\ The product
+topology is defined by the two pseudometrics $\upsilon_1$, $\upsilon_2$,
+where for $x$, $x'\in \BbbR^r$ and $y$, $y'\in\BbbR^s$ I write
+
+\Centerline{$\upsilon_1((x,y),(x',y'))=\|x-x'\|$,
+\quad$\upsilon_2((x,y),(x',y'))=\|y-y'\|$}
+
+\noindent (2A3F(b-ii)).   Similarly, the Euclidean topology on
+$\BbbR^r\times\BbbR^s\cong\BbbR^{r+s}$ is defined by the metric $\rho$,
+where
+
+\Centerline{$\rho((x,y),(x',y'))=\|(x-y)-(x',y')\|
+=\sqrt{\|x-x'\|^2+\|y-y'\|^2}$.}
+
+\noindent Now if $(x,y)\in\BbbR^r\times\BbbR^s$ and $\epsilon>0$, then
+
+\Centerline{$U((x,y);\rho;\epsilon)
+\subseteq U((x,y);\upsilon_j;\epsilon)$}
+
+\noindent for both $j$, while
+
+\Centerline{$U((x,y);\upsilon_1,\upsilon_2;\Bover{\epsilon}{\sqrt2})
+\subseteq U((x,y);\rho;\epsilon)$.}
+
+\noindent Thus, as remarked in 2A3Ib, each topology is included in the
+other, and they are the same.\ \Qed}
+
+\leader{2A3U}{Dense sets (a)} If $X$ is a topological space, a set
+$D\subseteq X$ is {\bf dense} in $X$ if $\overline{D}=X$\cmmnt{, that
+is, if every non-empty open set meets $D$}.   More
+generally, if $D\subseteq A\subseteq X$, then $D$ is dense in $A$ if it
+is dense for the subspace topology of $A$\cmmnt{ (2A3C), that is, if
+$A\subseteq\overline{D}$}.   %for 253
+
+\spheader 2A3Ub If $\frak T$ is defined by a non-empty family $\Rho$ of
+pseudometrics on $X$, then $D\subseteq X$ is dense iff
+\discrcenter{468pt}
+{$U(x;\rho_0,\ldots,\rho_n;\delta)\cap D\ne\emptyset$ }whenever
+$x\in X$, $\rho_0,\ldots,\rho_n\in\Rho$ and $\delta>0$.
+
+\spheader 2A3Uc If $(X,\frak T)$, $(Y,\frak S)$ are topological spaces,
+of which $Y$ is Hausdorff (in particular, if $(X,\rho)$
+and $(Y,\theta)$ are metric spaces),
+and $f$, $g:X\to Y$ are continuous functions
+which agree on some dense subset $D$ of $X$, then $f=g$.
+\prooflet{\Prf\Quer\ Suppose, if possible, that there is an $x\in X$
+such that $f(x)\ne g(x)$.   Then there are open sets $G$, $H\subseteq Y$
+such that $f(x)\in G$, $g(x)\in H$ and $G\cap H=\emptyset$.   Now
+$f^{-1}[G]\cap g^{-1}[H]$ is an open set, containing $x$ and therefore
+not empty, but it cannot meet $D$, so $x\notin\overline{D}$ and $D$ is
+not dense.\ \Bang\QeD}
+
+\spheader 2A3Ud A topological space is called {\bf separable} if it has
+a countable dense subset.   \cmmnt{For instance, $\BbbR^r$ is
+separable for every $r\ge 1$, since $\varBbb{Q}^r$ is dense.}
+
+\discrpage
+

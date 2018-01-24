@@ -1,0 +1,289 @@
+\frfilename{mt3a4.tex}
+\versiondate{30.1.08}
+\copyrightdate{1996}
+
+\def\chaptername{Appendix}
+\def\sectionname{Uniformities}
+
+%\def\ref{\medskip\noindent < \medskip}
+\def\Bourbaki{{\smc Bourbaki 66}}
+\def\Dugundji{{\smc Dugundji 66}}
+\def\Engelking{{\smc Engelking 89}}
+\def\Gaal{{\smc Gaal 64}}
+\def\James{{\smc James 87}}
+%\def\Kelley{{\smc Kelley 55}}
+\def\Schaefer{{\smc Schaefer 66}}
+\def\Schubert{{\smc Schubert 68}}
+
+\newsection{3A4}
+
+I continue the work of \S3A3 with some notes on uniformities, so as to
+be able to discuss completeness and the extension of uniformly
+continuous functions in non-metrizable contexts (3A4F-3A4H).
+\cmmnt{As in \S3A3, most of the individual steps are elementary;  I
+mark exceptions with a $*$.}%end of comment
+
+\leader{3A4A}{Uniformities (a)} Let $X$ be a set.   A {\bf uniformity}
+on $X$ is a filter $\Cal W$ on $X\times X$ such that
+
+\quad(i) $(x,x)\in W$ for every $x\in X$, $W\in\Cal W$;
+
+\quad(ii) for every $W\in\Cal W$,
+$W^{-1}=\{(y,x):(x,y)\in W\}\in\Cal W$;
+
+\quad(iii) for every $W\in\Cal W$, there is a $V\in\Cal W$ such that
+
+\Centerline{$V\frsmallcirc V
+=\{(x,z):\,\Exists y,\,(x,y)\in V\,\&\,(y,z)\in V\}\subseteq W$.}
+
+\noindent It is convenient to allow the special case $X=\emptyset$,
+$\Cal W=\{\emptyset\}$\cmmnt{, even though this is not properly
+speaking a filter}.
+
+The pair $(X,\Cal W)$ is now a {\bf uniform space}.
+
+\spheader 3A4Ab If $\Cal W$ is a uniformity on a set $X$, the associated
+topology $\frak T$ is the set of sets $G\subseteq X$ such that
+for every $x\in G$ there is a $W\in\Cal W$ such that
+$W[\{x\}]\cmmnt{\mskip5mu=\{y:(x,y)\in W\}}$ is included in $G$.
+\prooflet{(\Engelking, 8.1.1;  \Bourbaki, II.1.2;  \Gaal, p.\
+48;  \Schubert, p.\ 115;  \James, p.\ 101.)}
+
+\spheader 3A4Ac We say that a uniformity is {\bf Hausdorff} if the
+associated topology is Hausdorff.
+
+\spheader 3A4Ad If $U$ is a linear topological space, then it has an
+associated uniformity
+
+$$\eqalign{\Cal W=\{W:W\subseteq U\times U,\text{ there is an}
+&\text{ open set } G\text{ containing }0\cr
+&\text{ such that }(u,v)\in W\text{ whenever }u-v\in G\},\cr}$$
+
+\noindent and $\Cal W$ defines the topology of $U$ in the sense of (b) 
+above\prooflet{ (\Schaefer, I.1.4)}.
+
+\leader{3A4B}{Uniformities and pseudometrics (a)} If $\Rho$ is a family
+of pseudometrics on a set $X$, then the associated uniformity is the
+smallest uniformity on $X$ containing all the sets
+$W(\rho;\epsilon)=\{(x,y):\rho(x,y)<\epsilon\}$
+as $\rho$ runs over $\Rho$, $\epsilon$ over $\ooint{0,\infty}$.
+\prooflet{(\Engelking, 8.1.18;  \Bourbaki, IX.1.2.)}
+
+\spheader 3A4Bb If $\Cal W$ is the uniformity defined by a family $\Rho$
+of pseudometrics, then the topology associated with $\Cal W$ is the
+topology defined from $\Rho$\cmmnt{ (2A3F)}.
+\prooflet{(\Dugundji, p.\ 203.)}
+
+\spheader 3A4Bc A uniformity $\Cal W$ is {\bf metrizable} if it can be
+defined by a single metric.
+
+\spheader 3A4Bd If $U$ is a linear space with a topology defined from a
+family of functionals $\tau:U\to\coint{0,\infty}$ such that
+$\tau(u+v)\le\tau(u)+\tau(v)$, $\tau(\alpha u)\le\tau(u)$ when
+$|\alpha|\le 1$, and
+$\lim_{\alpha\to 0}\tau(\alpha u)=0$\cmmnt{ (2A5B)}, the
+uniformity defined from the topology\cmmnt{ (3A4Ad)} coincides with
+the uniformity defined from the pseudometrics
+$\rho_{\tau}(u,v)=\tau(u-v)$.   \prooflet{(Immediate from the
+definitions.)}
+
+\leader{3A4C}{Uniform continuity (a)} If $(X,\Cal W)$ and $(Y,\Cal V)$
+are uniform spaces, a function $\phi:X\to Y$ is {\bf uniformly
+continuous} if $\{(x,y):(\phi(x),\phi(y))\in V\}$ belongs to
+$\Cal W$ for every $V\in\Cal V$.
+
+\header{3A4Cb}{\bf (b)} The composition of uniformly continuous
+functions is uniformly continuous.
+\prooflet{(\Bourbaki, II.2.1;  \Schubert, p.\ 118.)}
+
+\spheader 3A4Cc If uniformities $\Cal W$, $\Cal V$ on sets $X$, $Y$ are
+defined by
+non-empty families $\Rho$, $\Theta$ of pseudometrics, then a function
+$\phi:X\to Y$ is uniformly continuous iff for every $\theta\in\Theta$,
+$\epsilon>0$ there are $\rho_0,\ldots,\rho_n\in\Rho$ and $\delta>0$ such
+that $\theta(\phi(x),\phi(y))\le\epsilon$ whenever $x$, $y\in X$ and
+$\max_{i\le n}\rho_i(x,y)\le\delta$.
+%3{}25D
+\prooflet{(Elementary verification.)}
+
+\leaveitout{If $\Rho$ is upwards-directed then we can say:
+$\phi:X\to Y$ is uniformly continuous iff for every $\theta\in\Theta$,
+$\epsilon>0$ there are $\rho\in\Rho$ and $\delta>0$ such
+that $\theta(\phi(x),\phi(y))\le\epsilon$ whenever $x$, $y\in X$ and
+$\rho(x,y)\le\delta$.
+\ref
+}%end of leaveitout
+
+\spheader 3A4Cd A uniformly continuous function is continuous for the
+associated topologies.
+\prooflet{(\Bourbaki, II.2.1;  \Schubert, p.\ 118;  \James, p.\ 102.)}
+
+\spheader 3A4Ce Two metrics $\rho$, $\sigma$ on a set $X$ are {\bf
+uniformly equivalent} if they give rise to the same uniformity\cmmnt{;  
+that is, if for every $\epsilon>0$ there is a $\delta>0$ such that
+
+\Centerline{$\rho(x,y)\le\delta\Rightarrow\sigma(x,y)\le\epsilon$,
+\quad$\sigma(x,y)\le\delta\Rightarrow\rho(x,y)\le\epsilon$.}}
+
+\leaveitout{If $\Rho$ and $\Theta$ are two non-empty families of
+pseudometrics on
+$X$, then they define the same uniformity iff
+
+\inset{for every $\rho\in\Rho$, $\epsilon>0$ there are $\delta>0$,
+$\theta_0,\ldots,\theta_n\in\Theta$ such that $\rho(x,y)\le\epsilon$
+whenever $\max_{i\le n}\theta_i(x,y)\le\delta$}
+
+\noindent and
+
+\inset{for every $\theta\in\Theta$, $\epsilon>0$ there are $\delta>0$,
+$\rho_0,\ldots,\rho_n\in\Rho$ such that $\theta(x,y)\le\epsilon$
+whenever $\max_{i\le n}\rho_i(x,y)\le\delta$.}
+\ref
+
+If $\Rho$ and $\Theta$ are upwards-directed (2A3Fe), this simplifies to
+
+\inset{for every $\rho\in\Rho$, $\epsilon>0$ there are $\delta>0$,
+$\theta\in\Theta$ such that $\rho(x,y)\le\epsilon$ whenever
+$\theta(x,y)\le\delta$}
+
+\noindent and
+
+\inset{for every $\theta\in\Theta$, $\epsilon>0$ there are $\delta>0$,
+$\rho\in\Rho$ such that $\theta(x,y)\le\epsilon$ whenever
+$\rho(x,y)\le\delta$.}
+}%end of leaveitout
+
+\leader{3A4D}{Subspaces (a)} If $(X,\Cal W)$ is a uniform space and $Y$
+is any subset of $X$, then $\Cal W_Y=\{W\cap(Y\times Y):W\in\Cal W\}$ is
+a uniformity on $Y$;  it is the {\bf subspace uniformity}.
+\prooflet{(\Bourbaki, II.2.4;  \Schubert, p.\ 122.)}
+
+\header{3A4Db}{\bf (b)} If $\Cal W$ defines a topology $\frak T$ on $X$,
+then the topology defined by $\Cal W_Y$ is the subspace topology on
+$Y$\cmmnt{, as defined in 2A3C}.
+\prooflet{(\Schubert, p.\ 122;  \James, p.\ 103.)}
+
+\header{3A4Dc}{\bf (c)} If $\Cal W$ is defined by a family $\Rho$ of
+pseudometrics on $X$, then $\Cal W_Y$ is defined by
+$\{\rho\,\restr\,Y\times Y:\rho\in\Rho\}$.
+\prooflet{(Elementary verification.)}
+
+\leader{3A4E}{Product uniformities (a)} If $(X,\Cal U)$ and $(Y,\Cal V)$
+are uniform spaces, the {\bf product uniformity} is the
+smallest uniformity $\Cal W$ on $X\times Y$ containing all sets of the
+form
+
+\Centerline{$\{((x,y),(x',y')):(x,x')\in U,\,(y,y')\in V\}$}
+
+\noindent as $U$ runs over $\Cal U$ and $V$ over $\Cal V$.
+\prooflet{(\Engelking, \S8.2;  \Bourbaki, II.2.6;  \Schubert, p.\ 124;
+\James, p.\ 93.)}
+
+\header{3A4Eb}{\bf (b)} If $\Cal U$, $\Cal V$ are defined from families
+$\Rho$, $\Theta$ of pseudometrics, then $\Cal W$ will be defined by the
+family $\{\tilde\rho:\rho\in\Rho\}\cup\{\bar\theta:\theta\in\Theta\}$,
+writing
+
+\Centerline{$\tilde\rho((x,y),(x',y'))=\rho(x,x'),
+\quad\bar\theta((x,y),(x',y'))=\theta(y,y')$}
+
+\noindent as in 2A3Tb.
+\prooflet{(Elementary verification.)}
+
+\header{3A4Ec}{\bf (c)} If $(X,\Cal U)$, $(Y,\Cal V)$ and $(Z,\Cal W)$
+are uniform spaces, a map $\phi:Z\to X\times Y$ is uniformly continuous
+iff the coordinate maps $\phi_1:Z\to X$ and $\phi_2:Z\to Y$ are
+uniformly continuous.
+\prooflet{(\Engelking, 8.2.1;  \Bourbaki, II.2.6;  \Schubert, p.\ 125;
+\James, p.\ 93.)}
+
+\leader{3A4F}{Completeness (a)} If $\Cal W$ is a uniformity on a set
+$X$, a filter $\Cal F$ on $X$ is {\bf Cauchy} if for every $W\in\Cal W$
+there is an $F\in\Cal F$ such that $F\times F\subseteq W$.
+
+Any convergent filter in a uniform space is Cauchy.
+\prooflet{(\Bourbaki, II.3.1;  \Gaal, p.\ 276;  \Schubert, p.\ 134;
+\James, p.\ 109.)}
+
+\header{3A4Fb}{\bf (b)} A uniform space is {\bf complete} if every
+Cauchy filter is convergent.
+
+\header{3A4Fc}{\bf (c)} If $\Cal W$ is defined from a family $\Rho$ of
+pseudometrics, then a
+filter $\Cal F$ on $X$ is Cauchy iff for every $\rho\in\Rho$ and
+$\epsilon>0$ there is an $F\in\Cal F$ such that $\rho(x,y)\le\epsilon$
+for all $x$, $y\in F$;  equivalently, for every $\rho\in\Rho$,
+$\epsilon>0$ there is an $x\in X$ such that
+$U(x;\rho;\epsilon)\in\Cal F$.   \prooflet{(Elementary verification.)}
+
+\spheader 3A4Fd A complete subspace of a Hausdorff uniform space is
+closed.
+\prooflet{(\Engelking, 8.3.6;  \Bourbaki, II.3.4;  \Schubert, p.\ 135;
+\James, p.\ 148.)}
+
+\spheader 3A4Fe A metric space is complete iff every Cauchy sequence
+converges\cmmnt{ (cf.\ 2A4Db)}.
+\prooflet{(\Schubert, p.\ 141;  \Gaal, p.\ 276;  \James, p.\ 150.)}
+
+\spheader 3A4Ff If $(X,\rho)$ is a complete metric space, $D\subseteq X$
+a dense subset, $(Y,\sigma)$ a metric space and $f:X\to Y$ is an
+{\bf isometry} (that is, $\sigma(f(x),f(x'))=\rho(x,x')$ for all $x$,
+$x'\in X$), then $f[X]$ is precisely the closure of $f[D]$ in $Y$.
+\prooflet{(For $f[X]$ must be complete, and we can use (d).)}
+
+\spheader 3A4Fg If $U$ is a linear space with a linear space topology
+and the associated uniformity\cmmnt{ (3A4Ad)}, then a filter $\Cal F$
+on $U$ is Cauchy iff for every open set $G$ containing $0$ there is an
+$F\in\Cal F$ such that $F-F\subseteq G$\cmmnt{ (cf.\ 2A5F)}.
+\prooflet{(Immediate from the definitions.)}
+
+\leader{3A4G}{Extension of uniformly continuous functions:  Theorem} If
+$(X,\Cal W)$ is a uniform space, $(Y,\Cal V)$ is a complete uniform
+space, $D\subseteq X$ is a dense subset of $X$, and $\phi:D\to Y$ is
+uniformly continuous\cmmnt{ (for the subspace uniformity of $D$)},
+then there is a uniformly continuous $\hat\phi:X\to Y$ extending $\phi$.
+If $Y$ is Hausdorff, the extension is unique.
+\cmmnt{$*$} \prooflet{(\Engelking, 8.3.10;  \Bourbaki, II.3.6;  \Gaal,
+p.\ 300;  \Schubert, p.\ 137;  \James, p.\ 152.)}
+
+In particular, if $(X,\rho)$ is a metric space, $(Y,\sigma)$ is a
+complete metric space, $D\subseteq X$ is a dense subset, and
+$\phi:D\to Y$ is an isometry, then there is a unique isometry
+$\hat\phi:X\to Y$ extending $\phi$.
+
+\leader{3A4H}{Completions (a) Theorem} If $(X,\Cal W)$ is any Hausdorff
+uniform space, then we can find a complete Hausdorff uniform space
+$(\hat X,\hat{\Cal W})$ in which $X$ is embedded as a dense
+subspace;   moreover, any two such spaces are essentially unique.
+\cmmnt{$*$} \prooflet{(\Engelking, 8.3.12;  \Bourbaki, II.3.7;  \Gaal,
+p.\ 297 \& p.\ 300;  \Schubert, p.\ 139;  \James, p.\ 156.)}
+
+\spheader 3A4Hb Such a space $(\hat X,\hat{\Cal W})$ is called a
+{\bf completion} of $(X,\Cal W)$.   Because it is unique up to
+isomorphism as a uniform space, we may call it `the' completion.
+
+\spheader 3A4Hc If $\Cal W$ is the
+uniformity defined by a metric $\rho$ on a set $X$, then there is a
+unique extension of $\rho$ to a metric $\hat\rho$ on $\hat X$ defining
+the uniformity $\hat{\Cal W}$.
+\prooflet{(\Bourbaki, IX.1.3.)}
+
+\leader{3A4I}{A note on metric spaces}\cmmnt{ I mention some
+elementary facts.}   Let $(X,\rho)$ be a metric
+space.   If $x\in X$ and $A\subseteq X$ is non-empty, set
+
+\Centerline{$\rho(x,A)=\inf_{y\in A}\rho(x,y)$.}
+
+\noindent Then $\rho(x,A)=0$ iff $x\in\overline{A}$\cmmnt{ (2A3Kb)}.
+If $B\subseteq X$ is another non-empty set, then
+
+\Centerline{$\rho(x,B)\le\rho(x,A)+\sup_{y\in A}\rho(y,B)$.}
+
+\noindent In particular, $\rho(x,\overline{A})=\rho(x,A)$.   If
+$\sequencen{A_n}$ is a non-decreasing sequence of non-empty sets with
+union $A$, then
+
+\Centerline{$\rho(x,A)=\lim_{n\to\infty}\rho(x,A_n)$.}
+
+\discrpage
+

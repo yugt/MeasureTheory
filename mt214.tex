@@ -1,0 +1,1250 @@
+\frfilename{mt214.tex}
+\versiondate{22.5.09}
+\copyrightdate{2009}
+
+\def\chaptername{Taxonomy of measure spaces}
+\def\sectionname{Subspaces}
+
+\newsection{214}
+
+In \S131 I described a construction for subspace measures on measurable
+subsets.   It is now time to give the generalization to subspace
+measures
+on arbitrary subsets of a measure space.   The relationship between this
+construction and the properties listed in \S211 is not quite as
+straightforward as one might imagine, and in this section I try to give
+a full account of what can be expected of subspaces in general.   I
+think that for the present volume only (i) general subspaces of
+$\sigma$-finite spaces and
+(ii) measurable subspaces of general measure spaces will be
+needed in any essential way, and these do not give any difficulty;  but
+in later volumes we shall need the full theory.
+
+I begin with a general construction for `subspace measures'
+(214A-214C), %214A 214B 214C
+with an account of integration with respect to a subspace
+measure (214E-214G); %214E 214F 214G
+these (with 131E-131H) %131E 131F 131G 131H
+give a solid foundation for
+the concept of `integration over a subset' (214D).   I present
+this work in its full natural generality, which will eventually be
+essential, but even for Lebesgue measure alone it is important to be
+aware of the ideas here.    I continue with answers to some obvious
+questions concerning subspace measures and the properties of measure
+spaces so far considered, both for general subspaces (214I) and for
+measurable subspaces (214K), and I mention a basic construction for
+assembling measure spaces side-by-side, the `direct sums' of 214L-214M.
+At the end of the section I discuss a measure extension problem
+(214O-214P).
+
+\leader{214A}{Proposition} Let $(X,\Sigma,\mu)$ be a measure space, and
+$Y$ any subset of $X$.   Let $\mu^*$ be the outer measure defined from
+$\mu$\cmmnt{ (132A-132B)}, and set $\Sigma_Y=\{E\cap Y:E\in\Sigma\}$;  let
+$\mu_Y$ be the restriction of $\mu^*$ to $\Sigma_Y$.   Then
+$(Y,\Sigma_Y,\mu_Y)$ is a measure space.
+
+\proof{{\bf (a)} I have noted in 121A that $\Sigma_Y$ is a
+$\sigma$-algebra of subsets of $Y$.
+
+\medskip
+
+{\bf (b)} Of course $\mu_YF\in[0,\infty]$ for
+every $F\in\Sigma_Y$.
+
+\medskip
+
+{\bf (c)}  $\mu_Y\emptyset=\mu^*\emptyset=0$.
+
+
+\medskip
+
+{\bf (d)} If $\sequencen{F_n}$ is a disjoint sequence in $\Sigma_Y$ with
+union $F$,  then choose $E_n$, $E'_n$, $E\in\Sigma$ such that
+$F_n=Y\cap E_n$, $F_n\subseteq E'_n$ and $\mu_YF_n=\mu E'_n$ for each
+$n$, $F\subseteq E$ and $\mu_YF=\mu E$ (using 132Aa repeatedly).   Set
+$G_n=E_n\cap E'_n\cap E\setminus\bigcup_{m<n}E_m$ for each $n\in\Bbb N$;
+then $\sequencen{G_n}$ is disjoint and $F_n\subseteq G_n\subseteq E'_n$
+for each $n$, so $\mu_YF_n=\mu G_n$.   Also
+$F\subseteq\bigcup_{n\in\Bbb N}G_n\subseteq E$, so
+
+\Centerline{$\mu_YF=\mu(\bigcup_{n\in\Bbb N}G_n)
+=\sum_{n=0}^{\infty}\mu G_n=\sum_{n=0}^{\infty}\mu_YF_n$.}
+
+\noindent As $\sequencen{F_n}$ is
+arbitrary, $\mu_Y$ is a measure.
+}%end of proof of 214A
+
+\leader{214B}{Definition} If $(X,\Sigma,\mu)$ is any measure space and
+$Y$ is any subset of $X$, then $\mu_Y$, defined as in 214A, is the {\bf
+subspace measure} on $Y$.
+
+\cmmnt{It is worth noting the following.}
+
+\leader{214C}{Lemma} Let $(X,\Sigma,\mu)$ be a measure space, $Y$ a
+subset of $X$, $\mu_Y$ the subspace measure on $Y$ and $\Sigma_Y$ its
+domain.  Then
+
+(a) for any $F\in\Sigma_Y$, there is an $E\in\Sigma$ such that
+$F=E\cap Y$ and $\mu E=\mu_YF$;
+
+(b) for any $A\subseteq Y$, $A$ is $\mu_Y$-negligible iff it is
+$\mu$-negligible;
+
+(c)(i) if $A\subseteq X$ is $\mu$-conegligible, then $A\cap Y$
+is $\mu_Y$-conegligible;
+
+\quad (ii) if $A\subseteq Y$ is
+$\mu_Y$-conegligible, then $A\cup(X\setminus Y)$ is $\mu$-conegligible;
+
+(d) $(\mu_Y)^*$\cmmnt{, the outer measure on $Y$ defined from
+$\mu_Y$,} agrees with $\mu^*$ on $\Cal PY$;
+
+(e) if $Z\subseteq Y\subseteq X$, then
+$\Sigma_Z=(\Sigma_Y)_Z$, the subspace $\sigma$-algebra of
+subsets of $Z$ regarded as a subspace of $(Y,\Sigma_Y)$, and
+$\mu_Z=(\mu_Y)_Z$ is the subspace measure on $Z$
+regarded as a subspace of $(Y,\mu_Y)$;
+
+(f) if $Y\in\Sigma$, then $\mu_Y$, as defined here, is exactly the
+subspace measure on $Y$ defined in 131A-131B\cmmnt{;  that is,
+$\Sigma_Y=\Sigma\cap\Cal PY$ and $\mu_Y=\mu\restr\Sigma_Y$}.
+
+\proof{{\bf (a)} By the definition of $\Sigma_Y$, there is an
+$E_0\in\Sigma$ such that $F=E_0\cap Y$.   By 132Aa, there is an
+$E_1\in\Sigma$ such that $F\subseteq E_1$ and $\mu^*F=\mu E_1$.   Set
+$E=E_0\cap E_1$;  this serves.
+
+\medskip
+
+{\bf (b)}(i) If $A$ is $\mu_Y$-negligible, there
+is a set $F\in\Sigma_Y$ such that $A\subseteq F$ and $\mu_YF=0$;   now
+$\mu^*A\le\mu^*F=0$ so $A$ is $\mu$-negligible, by 132Ad.   (ii)
+If $A$ is
+$\mu$-negligible, there is an $E\in\Sigma$ such that $A\subseteq E$ and
+$\mu E=0$;  now $A\subseteq E\cap Y\in\Sigma_Y$ and $\mu_Y(E\cap Y)=0$,
+so $A$ is $\mu_Y$-negligible.
+
+\medskip
+
+{\bf (c)} If $A\subseteq X$ is $\mu$-conegligible, then $A\cap Y$
+is $\mu_Y$-conegligible, because $Y\setminus A=Y\cap(X\setminus A)$ is
+$\mu$-negligible, therefore $\mu_Y$-negligible.   If $A\subseteq Y$ is
+$\mu_Y$-conegligible, then $A\cup(X\setminus Y)$ is $\mu$-conegligible
+because $X\setminus(A\cup(X\setminus Y))=Y\setminus A$ is
+$\mu_Y$-negligible, therefore $\mu$-negligible.
+
+\medskip
+
+{\bf (d)} Let $A\subseteq Y$.   (i) If
+$A\subseteq E\in\Sigma$, then $A\subseteq E\cap Y\in\Sigma_Y$, so
+$\mu_Y^*A\le\mu_Y(E\cap Y)\le\mu E$;  as $E$ is arbitrary,
+$\mu_Y^*A\le\mu^*A$.    (ii) If $A\subseteq F\in\Sigma_Y$, there is
+an $E\in\Sigma$ such that $F\subseteq E$ and $\mu_YF=\mu^*F=\mu E$;
+now $A\subseteq E$ so $\mu^*A\le\mu E=\mu_YF$.   As $F$ is arbitrary,
+$\mu^*A\le\mu_Y^*A$.
+
+\medskip
+
+{\bf (e)} That $\Sigma_Z=(\Sigma_Y)_Z$ is immediate from the definition
+of $\Sigma_Y$, etc.;   now
+
+\Centerline{$(\mu_Y)_Z=
+\mu_Y^*\restr\Sigma_Z=\mu^*\restr\Sigma_Z=\mu_Z$}
+
+\noindent by (d).
+
+\medskip
+
+{\bf (f)}  This is elementary, because $E\cap Y\in\Sigma$ and
+$\mu^*(E\cap Y)=\mu(E\cap Y)$ for every $E\in\Sigma$.
+}%end of proof of 214C
+
+\leader{214D}{Integration over subsets:  Definition} Let
+$(X,\Sigma,\mu)$ be a measure
+space, $Y$ a subset of $X$ and $f$ a $[-\infty,\infty]$-valued function
+defined on a
+subset of $X$.   By $\int_Y f$\cmmnt{ (or $\int_Y f(x)\mu(dx)$, etc.)}
+I mean $\int(f\restrp Y)d\mu_Y$, if this exists in
+$[-\infty,\infty]$\cmmnt{, following the definitions of
+214A-214B, 133A and 135F, and taking $\dom(f\restrp Y)=Y\cap\dom f$,
+$(f\restrp Y)(x)=f(x)$ for $x\in Y\cap\dom f$}.   \cmmnt{(Compare
+131D.)}
+
+\leader{214E}{Proposition} Let $(X,\Sigma,\mu)$ be a measure space,
+$Y\subseteq X$, and $f$ a
+$[-\infty,\infty]$-valued function defined on a subset $\dom f$ of $X$.
+
+(a) If $f$ is $\mu$-integrable then $f\restrp Y$ is $\mu_Y$-integrable, and
+$\int_Y f\le\int f$ if $f$ is non-negative.
+
+(b) If $\dom f\subseteq Y$ and $f$ is $\mu_Y$-integrable, then there is
+a $\mu$-integrable function $\tilde f$ on $X$, extending $f$, such that
+$\int_F\tilde f=\int_{F\cap Y}f$ for every $F\in\Sigma$.
+
+\proof{{\bf (a)(i)} If $f$ is $\mu$-simple, it is expressible as
+$\sum_{i=0}^na_i\chi E_i$, where $E_0,\ldots,E_n\in\Sigma$,
+$a_0,\ldots,a_n\in\Bbb R$ and $\mu E_i<\infty$ for each $i$.   Now
+$f\restrp Y=\sum_{i=0}^na_i\chi_Y(E_i\cap Y)$, where $\chi_Y(E_i\cap
+Y)=(\chi E_i)\restrp Y$ is the indicator function of $E_i\cap Y$
+regarded as a subset of $Y$;  and each $E_i\cap Y$ belongs to
+$\Sigma_Y$, with $\mu_Y(E_i\cap Y)\le\mu E_i<\infty$, so $f\restr
+Y:Y\to\Bbb R$ is $\mu_Y$-simple.
+
+If $f:X\to \Bbb R$ is a non-negative simple function, it is expressible
+as $\sum_{i=0}^na_i\chi E_i$ where $E_0,\ldots,E_n$ are disjoint sets of
+finite measure (122Cb).   Now
+$f\restrp Y=\sum_{i=0}^na_i\chi_Y(E_i\cap Y)$ and
+
+\Centerline{$\int (f\restrp Y)d\mu_Y
+=\sum_{i=0}^na_i\mu_Y(E_i\cap Y)\le\sum_{i=0}^na_i\mu E_i=\int fd\mu$}
+
+\noindent because $a_i\ge 0$ whenever $E_i\ne\emptyset$, so that
+$a_i\mu_Y(E_i\cap Y)\le a_i\mu E_i$ for every $i$.
+
+\medskip
+
+\quad{\bf (ii)} If $f$ is a non-negative $\mu$-integrable function,
+there is a non-decreasing sequence $\sequencen{f_n}$ of non-negative
+$\mu$-simple functions converging to $f\,\,\mu$-almost everywhere;  now
+$\sequencen{f_n\restrp Y}$ is a non-decreasing sequence of $\mu_Y$-simple
+functions increasing to $f\restrp Y\,\,\mu_Y$-a.e.\ (by 214Cb), and
+
+\Centerline{$\sup_{n\in\Bbb N}\int(f_n\restrp Y)d\mu_Y
+\le\sup_{n\in\Bbb N}\int f_nd\mu
+=\int fd\mu<\infty$,}
+
+\noindent so $\int(f\restrp Y)d\mu_Y$ exists and is at most $\int fd\mu$.
+
+\medskip
+
+\quad{\bf (iii)} Finally, if $f$ is any $\mu$-integrable real-valued
+function, it is expressible as $f_1-f_2$ where $f_1$ and $f_2$ are
+non-negative $\mu$-integrable functions, so that
+$f\restrp Y=(f_1\restrp Y)-(f_2\restrp Y)$ is $\mu_Y$-integrable.
+
+\medskip
+
+{\bf (b)} Let us say that if $f$ is a $\mu_Y$-integrable function, then
+an  `enveloping extension' of $f$ is a $\mu$-integrable function
+$\tilde f$, extending $f$, real-valued on $X\setminus Y$, such that
+$\int_F\tilde f=\int_{F\cap Y}f$ for every $F\in\Sigma$.
+
+\medskip
+
+\quad{\bf (i)} If $f$ is of the form $\chi H$, where $H\in\Sigma_Y$ and
+$\mu_YH<\infty$, let $E_0\in\Sigma$ be such that $H=Y\cap E_0$ and
+$E_1\in\Sigma$ a measurable envelope for $H$ (132Ee);   then
+$E=E_0\cap E_1$ is a measurable envelope for $H$ and $H=E\cap Y$.   Set
+$\tilde f=\chi E$, regarded as a function from $X$ to $\{0,1\}$.   Then
+$\tilde f\restrp Y=f$, and for any $F\in\Sigma$ we have
+
+\Centerline{$\int_F\tilde f=\mu_F(E\cap F)=\mu(E\cap F)
+=\mu^*(H\cap F)=\mu_{Y\cap F}(H\cap F)=\int_{Y\cap F}f$.}
+
+\noindent So $\tilde f$ is an enveloping extension of $f$.
+
+\medskip
+
+\quad{\bf (ii)} If $f$, $g$ are $\mu_Y$-integrable functions with
+enveloping extensions $\tilde f$, $\tilde g$, and $a$, $b\in\Bbb R$,
+then $a\tilde f+b\tilde g$ extends $af+bg$ and
+
+$$\eqalign{\int_Fa\tilde f+b\tilde g
+&=a\int_F\tilde f+b\int_F\tilde g\cr
+&=a\int_{F\cap Y}f+b\int_{F\cap Y}g
+=\int_{F\cap Y}af+bg\cr}$$
+
+\noindent for every $F\in\Sigma$, so $a\tilde f+b\tilde g$ is an
+enveloping extension of $af+bg$.
+
+\medskip
+
+\quad{\bf (iii)} Putting (i) and (ii) together, we see that every
+$\mu_Y$-simple function $f$ has an enveloping extension.
+
+\medskip
+
+\quad{\bf (iv)} Now suppose that $\sequencen{f_n}$ is a non-decreasing
+sequence of non-negative $\mu_Y$-simple functions converging
+$\mu_Y$-almost everywhere to a $\mu_Y$-integrable function $f$.   For
+each $n\in\Bbb N$ let $\tilde f_n$ be an enveloping extension of $f_n$.
+Then $\tilde f_n\leae\tilde f_{n+1}$.   \Prf\ If $F\in\Sigma$ then
+
+\Centerline{$\int_F\tilde f_n=\int_{F\cap Y}f_n
+\le\int_{F\cap Y}f_{n+1}=\int_F\tilde f_{n+1}$.}
+
+\noindent So $\tilde f_n\leae\tilde f_{n+1}$, by 131Ha.\ \QeD\   Also
+
+\Centerline{$\lim_{n\to\infty}\int_F\tilde f_n
+=\lim_{n\to\infty}\int_{F\cap Y}f_n
+=\int_{F\cap Y}f$}
+
+\noindent for every $F\in\Sigma$.   Taking $F=X$ to begin with, B.Levi's
+theorem tells us that $h=\lim_{n\to\infty}\tilde f_n$ is defined (as a
+real-valued function) $\mu$-almost everywhere;  now letting $F$ vary, we
+have $\int_Fh=\int_{F\cap Y}f$ for every $F\in\Sigma$, because
+$h\restr F=\lim_{n\to\infty}\tilde f_n\restr F\,\,\mu_F$-a.e.   (I seem
+to be using 214Cb here.)   Now $h\restrp Y=f\,\,\mu_Y$-a.e., by 214Cb
+again.   If we define $\tilde f$ by setting
+
+\Centerline{$\tilde f(x)=f(x)$ for $x\in\dom f$, $h(x)$ for
+$x\in\dom h\setminus\dom f$, $0$ for other $x\in X$,}
+
+\noindent then $\tilde f$ is defined everywhere in $X$ and is equal to
+$h\,\,\mu$-almost everywhere;  so that if $F\in\Sigma$,
+$\tilde f\restr F$ will be equal to $h\restr F\,\,\mu_F$-almost
+everywhere, and
+
+\Centerline{$\int_F\tilde f=\int_Fh=\int_{F\cap Y}f$.}
+
+\noindent As $F$ is arbitrary, $\tilde f$ is an enveloping
+extension of $f$.
+
+\medskip
+
+\quad{\bf (v)} Thus every non-negative $\mu_Y$-integrable function has
+an enveloping extension.   Using (ii) again, every $\mu_Y$-integrable
+function has an enveloping extension, as claimed.
+}%end of proof of 214E
+
+\leader{214F}{Proposition} Let $(X,\Sigma,\mu)$ be a measure space, $Y$
+a subset of $X$, and $f$ a $[-\infty,\infty]$-valued function such that
+$\int_Xf$ is defined in $[-\infty,\infty]$.   If {\it either} $Y$ has
+full outer measure in $X$ {\it or} $f$ is zero almost everywhere in
+$X\setminus Y$, then $\int_Yf$ is defined and equal to $\int_Xf$.
+
+\proof{{\bf (a)} Suppose first that $f$ is non-negative,
+$\Sigma$-measurable and defined everywhere in $X$.   In this case
+$f\restrp Y$ is $\Sigma_Y$-measurable.   Set
+$F_{nk}=\{x:x\in X,\,f(x)\ge 2^{-n}k\}$ for $k$, $n\in\Bbb N$,
+$f_n=\sum_{k=1}^{4^n}2^{-n}\chi F_{nk}$ for $n\in\Bbb N$, so that
+$\sequencen{f_n}$ is a non-decreasing sequence of real-valued measurable
+functions converging everywhere to $f$, and
+$\int_Xf=\lim_{n\to\infty}\int_Xf_n$.   For each $n\in\Bbb N$ and $k\ge 1$,
+
+\Centerline{$\mu_Y(F_{nk}\cap Y)=\mu^*(F_{nk}\cap Y)=\mu F_{nk}$}
+
+\noindent either because $F_{nk}\setminus Y$ is negligible or because
+$X$ is a measurable envelope of $Y$.   So
+
+$$\eqalignno{\int_Yf
+&=\lim_{n\to\infty}\int_Yf_n
+=\lim_{n\to\infty}\sum_{k=1}^{4^n}2^{-n}\mu_Y(F_{nk}\cap Y)\cr
+&=\lim_{n\to\infty}\sum_{k=1}^{4^n}2^{-n}\mu F_{nk}
+=\lim_{n\to\infty}\int_Xf_n
+=\int_Xf.\cr}$$
+
+\medskip
+
+{\bf (b)} Now suppose that $f$ is non-negative, defined almost
+everywhere in $X$ and $\mu$-virtually
+measurable.   In this case there is a conegligible measurable set
+$E\subseteq\dom f$ such that $f\restr E$ is measurable.   Set
+$\tilde f(x)=f(x)$ for $x\in E$, $0$ for $x\in X\setminus E$;  then
+$\tilde f$
+satisfies the conditions of (a) and $f=\tilde f\,\,\mu$-a.e.
+Accordingly $f\restrp Y=\tilde f\restrp Y\,\,\mu_Y$-a.e.\ (214Cc), and
+
+\Centerline{$\int_Yf=\int_Y\tilde f=\int_X\tilde f=\int_Xf$.}
+
+\medskip
+
+{\bf (c)} Finally, for the general case, we can apply (b) to the
+positive and negative parts $f^+$, $f^-$ of $f$ to get
+
+\Centerline{$\int_Yf=\int_Yf^+-\int_Yf^-=\int_Xf^+-\int_Xf^-=\int_Xf$.}
+}%end of proof of 214F
+
+\leader{214G}{Corollary} Let $(X,\Sigma,\mu)$ be a measure space, $Y$ a
+subset of $X$, and $E\in\Sigma$ a measurable envelope of $Y$.   If $f$
+is a $[-\infty,\infty]$-valued function such that $\int_Ef$ is defined
+in $[-\infty,\infty]$, then $\int_Yf$ is defined and equal to $\int_Ef$.
+
+\proof{ By 214Ce, we can identify the subspace measure $\mu_Y$ with the
+subspace measure $(\mu_E)_Y$ induced by the subspace measure on $E$.
+Now, regarded as a subspace of $E$, $Y$ has full outer measure, so
+214F gives the result.
+}%end of proof of 214G
+
+\leader{214H}{Subspaces and \Caratheodory's
+\dvrocolon{method}}\cmmnt{ The following easy technical results will
+occasionally be useful.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $X$ be a set, $Y\subseteq X$ a subset, and
+$\theta$ an outer measure on $X$.
+
+(a) $\theta_Y=\theta\restrp\Cal PY$ is an outer measure on $Y$.
+
+(b) Let $\mu$, $\nu$ be the measures on $X$, $Y$ defined by
+\Caratheodory's method from the outer measures $\theta$, $\theta_Y$, and
+$\Sigma$, $\Tau$ their domains;  let $\mu_Y$ be the subspace measure on
+$Y$ induced by $\mu$, and $\Sigma_Y$ its domain.   Then
+
+\quad (i) $\Sigma_Y\subseteq\Tau$ and $\nu F\le\mu_YF$ for every
+$F\in\Sigma_Y$;
+
+\quad(ii) if $Y\in\Sigma$ then $\nu=\mu_Y$;
+
+\quad(iii) if $\theta=\mu^*$\cmmnt{ (that is, $\theta$ is
+`regular')} then $\nu$ extends $\mu_Y$;
+
+\quad(iv) if $\theta=\mu^*$ and $\theta Y<\infty$ then $\nu=\mu_Y$.
+
+\proof{{\bf (a)} You have only to read the definition of `outer
+measure' (113A).
+
+\medskip
+
+{\bf (b)(i)} Suppose that $F\in\Sigma_Y$.   Then it is of the form
+$E\cap Y$ where $E\in\Sigma$.   If $A\subseteq Y$, then
+
+\Centerline{$\theta_Y(A\cap F)+\theta_Y(A\setminus F)
+=\theta(A\cap F)+\theta(A\setminus F)
+=\theta(A\cap E)+\theta(A\setminus E)
+=\theta A=\theta_YA$,}
+
+\noindent so $F\in\Tau$.   Now
+
+\Centerline{$\nu F=\theta_YF=\theta F\le\mu^*F=\mu_YF$.}
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $F\in\Tau$.   If $A\subseteq X$, then
+
+$$\eqalign{\theta A
+&=\theta(A\cap Y)+\theta(A\setminus Y)
+=\theta_Y(A\cap Y)+\theta(A\setminus Y)\cr
+&=\theta_Y(A\cap Y\cap F)+\theta_Y(A\cap Y\setminus F)
+  +\theta(A\setminus Y)\cr
+&=\theta(A\cap F)+\theta(A\cap Y\setminus F)+\theta(A\setminus Y)\cr
+&=\theta(A\cap F)+\theta((A\setminus F)\cap Y)
+  +\theta((A\setminus F)\setminus Y)
+=\theta(A\cap F)+\theta(A\setminus F);\cr}$$
+
+\noindent as $A$ is arbitrary, $F\in\Sigma$ and therefore
+$F\in\Sigma_Y$.
+Also
+
+\Centerline{$\mu_YF=\mu F=\theta F=\theta_YF=\nu F$.}
+\noindent Putting this together with (i), we see that $\mu_Y$ and $\nu$
+are identical.
+
+\medskip
+
+\quad{\bf (iii)} Let $F\in\Sigma_Y$.   Then $F\in\Tau$, by (i).
+Now $\nu F=\theta F=\mu^*F=\mu_YF$.   As $F$ is arbitrary,
+$\nu$ extends $\mu_Y$.
+
+\medskip
+
+\quad{\bf (iv)} Now suppose that $F\in\Tau$.   Because
+$\mu^*Y=\theta Y<\infty$, we have measurable envelopes $E_1$, $E_2$ of
+$F$ and $Y\setminus F$ for $\mu$ (132Ee).   Then
+
+$$\eqalign{\theta Y
+&=\theta_YY
+=\theta_YF+\theta_Y(Y\setminus F)
+=\theta F+\theta(Y\setminus F)\cr
+&=\mu^*F+\mu^*(Y\setminus F)
+=\mu E_1+\mu E_2\ge\mu(E_1\cup E_2)
+=\theta(E_1\cup E_2)\ge\theta Y,\cr}$$
+
+\noindent so $\mu E_1+\mu E_2=\mu(E_1\cup E_2)$ and
+
+\Centerline{$\mu(E_1\cap E_2)=\mu E_1+\mu E_2-\mu(E_1\cup E_2)=0$.}
+
+\noindent   As $\mu$ is complete (212A) and
+$E_1\cap Y\setminus F\subseteq E_1\cap E_2$ is $\mu$-negligible,
+therefore belongs to
+$\Sigma$, $F=Y\cap(E_1\setminus(E_1\cap Y\setminus F))$ belongs to
+$\Sigma_Y$.   Thus $\Tau\subseteq\Sigma_Y$;  putting this together
+with (iii), we see that $\nu=\mu_Y$.
+}%end of proof of 214H
+
+\leader{214I}{}\cmmnt{ I now turn to the relationships between
+subspace measures and the classification of measure spaces developed in
+this chapter.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $(X,\Sigma,\mu)$ be a measure
+space and $Y$ a subset of $X$.   Let $\mu_Y$ be the subspace measure on
+$Y$ and $\Sigma_Y$ its domain.
+
+(a) If $(X,\Sigma,\mu)$ is complete, or totally finite, or
+$\sigma$-finite, or strictly localizable, so is $(Y,\Sigma_Y,\mu_Y)$.
+If $\langle X_i\rangle_{i\in I}$ is a decomposition of $X$ for $\mu$,
+then $\langle X_i\cap Y\rangle_{i\in I}$ is a decomposition of $Y$ for
+$\mu_Y$.
+
+(b)
+Writing $\hat\mu$ for the completion of $\mu$, the subspace measure
+$\hat\mu_Y=(\hat\mu)_Y$ is the completion of $\mu_Y$.
+
+(c) If $(X,\Sigma,\mu)$ has locally determined negligible sets,
+then $\mu_Y$ is semi-finite.
+
+(d) If $(X,\Sigma,\mu)$ is complete and locally determined, then
+$(Y,\Sigma_Y,\mu_Y)$ is complete and semi-finite.
+
+(e) If $(X,\Sigma,\mu)$ is complete, locally determined and localizable
+then so is $(Y,\Sigma_Y,\mu_Y)$.
+
+\proof{{\bf (a)(i)} Suppose that $(X,\Sigma,\mu)$ is complete.
+If $A\subseteq U\in\Sigma_Y$ and $\mu_YU=0$, there is an $E\in\Sigma$
+such that $U=E\cap Y$ and $\mu E=\mu_YU=0$;  now $A\subseteq E$ so
+$A\in\Sigma$ and $A=A\cap Y\in\Sigma_Y$.
+
+\medskip
+
+\quad{\bf (ii)}
+$\mu_YY=\mu^*Y\le\mu X$, so $\mu_Y$ is totally finite if $\mu$ is.
+
+\medskip
+
+\quad{\bf (iii)} If $\sequencen{X_n}$ is a sequence of sets of finite
+measure for $\mu$ which covers $X$, then $\sequencen{X_n\cap Y}$ is a
+sequence of sets of finite measure for $\mu_Y$ which covers $Y$.   So
+$(Y,\Sigma_Y,\mu_Y)$ is $\sigma$-finite if $(X,\Sigma,\mu)$ is.
+
+\medskip
+
+\quad{\bf (iv)} Suppose that $\langle X_i\rangle_{i\in I}$ is a
+decomposition of $X$ for $\mu$.   Then $\langle X_i\cap
+Y\rangle_{i\in I}$ is a decomposition of $Y$ for $\mu_Y$.   \Prf\
+Because $\mu_Y(X_i\cap Y)\le\mu X_i<\infty$ for each $i$,
+$\langle X_i\cap Y\rangle_{i\in I}$ is a partition of $Y$ into sets of finite measure.   Suppose that $U\subseteq Y$ is such that
+$U_i=U\cap X_i\cap Y\in\Sigma_Y$ for every $i$.   For each $i\in I$, choose $E_i\in\Sigma$
+such that $U_i=E_i\cap Y$ and $\mu E_i=\mu_YU_i$;  we may of course
+suppose that $E_i\subseteq X_i$.   Set $E=\bigcup_{i\in I}E_i$.   Then
+$E\cap X_i=E_i\in\Sigma$ for every $i$, so $E\in\Sigma$ and
+$\mu E=\sum_{i\in I}\mu E_i$.   Now $U=E\cap Y$ so $U\in\Sigma_Y$ and
+
+\Centerline{$\mu_YU\le\mu E=\sum_{i\in I}\mu E_i
+=\sum_{i\in I}\mu_YU_i$.}
+
+\noindent On the other hand, $\mu_YU$ is surely greater than or equal to
+$\sum_{i\in I}\mu_YU_i
+=\sup_{J\subseteq I\text{ is finite}}\sum_{i\in J}\mu_YU_i$, so they are
+equal.   As $U$ is arbitrary,
+$\langle X_i\cap Y\rangle_{i\in I}$ is a decomposition of $Y$ for
+$\mu_Y$.\ \Qed
+
+Consequently $(Y,\Sigma_Y,\mu_Y)$ is strictly localizable if
+$(X,\Sigma,\mu)$ is.
+
+\medskip
+
+{\bf (b)} The domain of the completion $(\mu_Y)\sphat\mskip5mu$ is
+
+$$\eqalignno{\hat\Sigma_Y
+&=\{F\symmdiff A:F\in\Sigma_Y,\,A\subseteq Y
+   \text{ is }\mu_Y\text{-negligible}\}\cr
+&=\{(E\cap Y)\symmdiff(A\cap Y):E\in\Sigma,\,
+   A\subseteq X\text{ is }\mu\text{-negligible}\}\cr
+\displaycause{214Cb}
+&=\{(E\symmdiff A)\cap Y:E\in\Sigma,\,
+   A\text{ is }\mu\text{-negligible}\}
+=\dom\hat\mu_Y.\cr}$$
+
+\noindent If $H\in\hat\Sigma_Y$ then
+
+\Centerline{$(\mu_Y)\sphat\mskip3mu(H)
+=\mu_Y^*H=\mu^*H=(\hat\mu)^*H=\hat\mu_YH$,}
+
+\noindent using 214Cd for the second step, and 212Ea for the third.
+
+\medskip
+
+{\bf (c)} Take $U\in\Sigma_Y$ such
+that $\mu_YU>0$.   Then there is an $E\in\Sigma$ such that
+$\mu E<\infty$
+and $\mu^*(E\cap U)>0$.   \Prf\Quer\ Otherwise, $E\cap U$ is
+$\mu$-negligible whenever $\mu E<\infty$;  because $\mu$ has locally determined negligible sets, $U$ is $\mu$-negligible and $\mu_YU=\mu^*U=0$.\ \Bang\QeD   Now
+$E\cap U\in\Sigma_Y$ and
+
+\Centerline{$0<\mu^*(E\cap U)=\mu_Y(E\cap U)\le\mu E<\infty$.}
+
+\medskip
+
+{\bf (d)} By (a), $\mu_Y$ is complete;  by 213J and (c) here, it is
+semi-finite.
+
+\medskip
+
+{\bf (e)} By (d), $\mu_Y$ is complete and semi-finite.
+To see that it is locally
+determined, take any $U\subseteq Y$ such that $U\cap V\in\Sigma_Y$
+whenever $V\in\Sigma_Y$ and $\mu_YV<\infty$.   By 213J and 213L,
+there is a
+measurable envelope $E$ of $U$ for $\mu$;  of course
+$E\cap Y\in\Sigma_Y$.
+
+I claim that $\mu(E\cap Y\setminus U)=0$.   \Prf\ Take any $F\in\Sigma$
+with $\mu F<\infty$.   Then $F\cap U\in\Sigma_Y$, so
+\Centerline{$\mu_Y(F\cap E\cap Y)\le\mu(F\cap E)=\mu^*(F\cap
+U)=\mu_Y(F\cap U)\le\mu_Y(F\cap E\cap Y)$;}
+
+\noindent thus $\mu_Y(F\cap E\cap Y)=\mu_Y(F\cap U)$ and
+
+\Centerline{$\mu^*(F\cap E\cap Y\setminus U)
+=\mu_Y(F\cap E\cap Y\setminus U)=0$.}
+
+\noindent Because $\mu$ is complete, $\mu(F\cap E\cap Y\setminus U)=0$;
+because $\mu$ is locally determined and $F$ is arbitrary,
+$\mu(E\cap Y\setminus U)=0$.\ \QeD\  But this means that
+$E\cap Y\setminus U\in\Sigma_Y$ and $U\in\Sigma_Y$.   As $U$ is
+arbitrary, $\mu_Y$ is locally determined.
+
+To see that $\mu_Y$ is localizable,
+let $\Cal U$ be any family in $\Sigma_Y$.   Set
+
+\Centerline{$\Cal E=\{E:E\in\Sigma,\,\mu E<\infty,\,
+  \mu E=\mu^*(E\cap U)$ for some $U\in\Cal U\}$,}
+
+\noindent and let $G\in\Sigma$ be an essential supremum for $\Cal E$ in
+$\Sigma$.   I claim that $G\cap Y$ is an essential supremum for $\Cal U$
+in $\Sigma_Y$.   \Prf\ (i) \Quer\ If $U\in\Cal U$ and
+$U\setminus(G\cap Y)$ is not negligible, then (because $\mu_Y$ is
+semi-finite) there is a
+$V\in\Sigma_Y$ such that $V\subseteq U\setminus G$ and
+$0<\mu_YV<\infty$.   Now there is an $E\in\Sigma$ such that
+$V\subseteq E$ and $\mu E=\mu^*V$.
+We have $\mu^*(E\cap U)\ge\mu^*V=\mu E$, so $E\in\Cal E$ and
+$E\setminus G$
+must be negligible;  but $V\subseteq E\setminus G$ is not negligible.\
+\BanG\   Thus $U\setminus(G\cap Y)$ is negligible for every
+$U\in\Cal U$.
+(ii)  If $W\in\Sigma_Y$ is such that $U\setminus W$ is negligible for
+every $U\in\Cal U$, express $W$ as $H\cap Y$ where $H\in\Sigma$.   If
+$E\in\Cal E$, there is a $U\in\Cal U$ such that $\mu E=\mu^*(E\cap U)$;
+now $\mu^*(E\cap U\setminus W)=0$, so
+$\mu E=\mu^*(E\cap U\cap W)\le\mu(E\cap H)$ and $E\setminus H$ is
+negligible.   As $E$ is
+arbitrary, $H$ is an essential upper bound for $\Cal E$ and
+$G\setminus H$ is negligible;  but this means that $G\cap Y\setminus W$
+is negligible.   As $W$ is arbitrary, $G\cap Y$ is an essential supremum
+for $\Cal U$.\ \Qed
+
+As $\Cal U$ is arbitrary, $\mu_Y$ is localizable.
+}%end of proof of 214I
+
+\leader{214J}{Upper and
+lower \dvrocolon{integrals}}\cmmnt{ The
+following elementary facts are sometimes useful.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a measure space,
+$A$ a subset of $X$ and $f$ a real-valued function defined almost
+everywhere in $X$.   Then
+
+(a)  if {\it either} $f$ is non-negative {\it or}
+$A$ has full outer measure in $X$,
+$\overline{\intop}(f\restr A)d\mu_A\le\overline{\intop}fd\mu$;
+
+(b) if $A$ has full outer measure in $X$,
+$\underline{\int}fd\mu\le\underline{\int}(f\restr A)d\mu_A$.
+
+\proof{{\bf (a)(i)} Suppose that $f$ is non-negative.
+If $\overline{\intop}fd\mu=\infty$, the result is trivial.
+Otherwise, there is a $\mu$-integrable function $g$ such that
+$f\le g\,\,\mu$-a.e.\ and $\overline{\intop}fd\mu=\int g\,d\mu$, by
+133J(a-i).   Now $f\restr A\le g\restr A\,\,\mu_A$-a.e., by 214Cb, and
+$\int(g\restr A)\,d\mu_A$
+is defined and less than or equal to $\int g\,d\mu$, by 214Ea;  so
+
+\Centerline{$\overlineint(f\restr A)d\mu_A\le\int(g\restr A)d\mu_A
+\le\int g\,d\mu=\overlineint fd\mu$.}
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $A$ has full outer measure in $X$.
+If $g$ is such that $f\le g\,\,\mu$-a.e.\ and $\int g\,d\mu$ is defined in
+$[-\infty,\infty]$, then $f\restr A\le g\restr A\,\,\mu_A$-a.e.\ and
+$\int(g\restr A)d\mu_A=\int g\,d\mu$, by 214F.   So
+$\overline{\int}(f\restr A)d\mu_A\le\int g\,d\mu$.   As $g$ is arbitrary,
+$\overline{\int}(f\restr A)d\mu_A\le\overline{\int}f\,d\mu$.
+
+\medskip
+
+{\bf (b)} Apply (a) to $-f$, and use 133J(b-iv).
+}%end of proof of 214J
+
+\leader{214K}{Measurable subspaces:  Proposition}
+Let $(X,\Sigma,\mu)$ be a measure space.
+
+(a) Let $E\in\Sigma$ and let $\mu_E$ be the subspace measure, with
+$\Sigma_E$ its domain.   If $(X,\Sigma,\mu)$ is complete, or totally
+finite, or $\sigma$-finite, or strictly localizable, or semi-finite, or
+localizable, or locally determined, or atomless, or purely atomic, so is
+$(E,\Sigma_E,\mu_E)$.
+
+(b) Suppose that $\langle X_i\rangle_{i\in I}$ is a partition of
+$X$ into measurable sets\cmmnt{ (not necessarily of finite measure)} such that
+
+\Centerline{$\Sigma=\{E:E\subseteq X,\,
+E\cap  X_i\in\Sigma$ for every $i\in I\}$,}
+
+\Centerline{$\mu E=\sum_{i\in I}\mu(E\cap X_i)$ for every $E\in\Sigma$.}
+\noindent Then $(X,\Sigma,\mu)$ is complete, or strictly localizable, or
+semi-finite, or localizable, or locally determined, or atomless, or
+purely atomic, iff $(X_i,\Sigma_{X_i},\mu_{X_i})$ has that property for
+every
+$i\in I$.
+
+\proof{ I really think that if you have read attentively up
+to this point, you ought to find this easy.   If you are in any doubt,
+this makes a very suitable set of sixteen exercises to do.
+}%end of proof of 214K
+
+\leader{214L}{Direct sums} Let
+$\langle(X_i,\Sigma_i,\mu_i)\rangle_{i\in I}$ be any indexed family of
+measure spaces.   Set
+$X=\bigcup_{i\in I}(X_i\times\{i\})$;  for $E\subseteq X$, $i\in I$ set
+$E_i=\{x:(x,i)\in E\}$.   Write
+
+\Centerline{$\Sigma
+=\{E:E\subseteq X,\,E_i\in\Sigma_i$ for every $i \in I\}$,}
+
+\Centerline{$\mu E=\sum_{i\in I}\mu_iE_i$ for every $E\in\Sigma$.}
+
+\noindent Then it is easy to check that $(X,\Sigma,\mu)$ is a measure
+space;  I will call it the {\bf direct sum} of the family
+$\familyiI{(X_i,\Sigma_i,\mu_i)}$.   Note that if $(X,\Sigma,\mu)$ is
+any strictly localizable measure space, with decomposition
+$\familyiI{X_i}$,
+then we have a natural isomorphism between $(X,\Sigma,\mu)$ and the
+direct sum
+$(X',\Sigma',\mu')=\bigoplus_{i\in I}(X_i,\Sigma_{X_i},\mu_{X_i})$ of
+the subspace measures, if we match $(x,i)\in X'$ with $x\in X$ for every
+$i\in I$ and $x\in X_i$.
+
+\cmmnt{For some of the elementary properties (to put
+it plainly, I know of no properties which are not elementary) of direct
+sums, see 214M and 214Xh-214Xk.}
+% 214Xh, 214Xi, 214Xj, 214Xk
+
+\leader{214M}{Proposition}
+Let $\familyiI{(X_i,\Sigma_i,\mu_i)}$ be a
+family of measure spaces, with direct sum $(X,\Sigma,\mu)$.   Let $f$ be
+a real-valued function defined on a subset of $X$.   For each $i\in I$,
+set $f_i(x)=f(x,i)$ whenever $(x,i)\in\dom f$.
+
+(a) $f$ is measurable iff $f_i$ is measurable for every $i\in I$.
+
+(b) If $f$ is non-negative, then
+$\int fd\mu=\sum_{i\in I}\int f_id\mu_i$ if either is defined in
+$[0,\infty]$.
+
+\proof{{\bf (a)} For $a\in\Bbb R$, set
+$F_a=\{(x,i):(x,i)\in\dom f,\,f(x,i)\ge a\}$.   (i) If $f$ is
+measurable, $i\in I$ and $a\in\Bbb R$, then there is an $E\in\Sigma$
+such that $F_a=E\cap\dom f$;  now
+
+\Centerline{$\{x:f_i(x)\ge a\}
+=\dom f_i\cap\{x:(x,i)\in E\}$}
+
+\noindent belongs to the subspace $\sigma$-algebra on $\dom f_i$ induced
+by $\Sigma_i$.   As $a$ is arbitrary, $f_i$ is measurable.   (ii) If
+every $f_i$ is measurable and $a\in\Bbb R$, then for each $i\in I$ there
+is an $E_i\in\Sigma_i$ such that $\{x:(x,i)\in F_a\}=E_i\cap\dom f$;
+setting $E=\{(x,i):i\in I,\,x\in E_i\}$, $F_a=\dom f\cap E$ belongs to
+the subspace $\sigma$-algebra on $\dom f$.   As $a$ is arbitrary, $f$ is
+measurable.
+
+\medskip
+
+{\bf (b)(i)} Suppose first that $f$ is measurable and defined
+everywhere.   Set $F_{nk}=\{(x,i):(x,i)\in X,\,f(x,i)\ge 2^{-n}k\}$ for
+$k$, $n\in\Bbb N$, $g_n=\sum_{k=1}^{4^n}2^{-n}\chi F_{nk}$ for
+$n\in\Bbb N$, $F_{nki}=\{x:(x,i)\in F_{nk}\}$ for $k$, $n\in\Bbb N$ and
+$i\in I$, $g_{ni}(x)=g_n(x,i)$ for $i\in I$, $x\in X_i$.   Then
+
+$$\eqalign{\int fd\mu
+&=\lim_{n\to\infty}\int g_nd\mu
+=\sup_{n\in\Bbb N}\sum_{k=1}^{4^n}2^{-n}\mu F_{nk}\cr
+&=\sup_{n\in\Bbb N}\sum_{k=1}^{4^n}\sum_{i\in I}2^{-n}\mu F_{nki}
+=\sum_{i\in I}\sup_{n\in\Bbb N}\sum_{k=1}^{4^n}2^{-n}\mu F_{nki}\cr
+&=\sum_{i\in I}\sup_{n\in\Bbb N}\int g_{ni}d\mu_i
+=\sum_{i\in I}\int f_id\mu_i.\cr}$$
+
+\medskip
+
+\quad{\bf (ii)} Generally, if $\int fd\mu$ is defined, there are a
+measurable $g:X\to\coint{0,\infty}$ and a conegligible measurable set
+$E\subseteq\dom f$ such that $g=f$ on $E$.   Now
+$E_i=\{x:(x,i)\in X_i\}$ belongs to $\Sigma_i$ for each $i$, and
+$\sum_{i\in I}\mu_i(X_i\setminus E_i)=\mu(X\setminus E)=0$, so $E_i$ is
+$\mu_i$-conegligible for every $i$.   Setting $g_i(x)=g(x,i)$ for
+$x\in X_i$, (i) tells us that
+
+\Centerline{$\sum_{i\in I}\int f_id\mu_i
+=\sum_{i\in I}\int g_id\mu_i=\int g\,d\mu=\int fd\mu$.}
+
+\medskip
+
+\quad{\bf (iii)} On the other hand, if $\int f_id\mu_i$ is defined for
+every $i\in I$, then for each $i\in I$ we can find a measurable function
+$g_i:X_i\to\coint{0,\infty}$ and a $\mu_i$-conegligible measurable set
+$E_i\subseteq\dom f_i$ such that $g_i=f_i$ on $E_i$.   Setting
+$g(x,i)=g_i(x)$ for $i\in I$, $x\in X_i$, (a) tells us that $g$ is
+measurable, while $g=f$ on $\{(x,i):i\in I,\,x\in E_i\}$, which is
+conegligible (by the calculation in (ii) just above);  so
+
+\Centerline{$\int fd\mu=\int g\,d\mu
+=\sum_{i\in I}\int g_id\mu_i=\sum_{i\in I}\int f_id\mu_i$,}
+
+\noindent again using (i) for the middle step.
+}%end of proof of 214M
+
+\leader{214N}{Corollary}
+Let $(X,\Sigma,\mu)$ be a measure space with a
+decomposition $\familyiI{X_i}$.   If $f$ is a real-valued function
+defined on a subset of $X$, then
+
+(a) $f$ is measurable iff $f\restr X_i$ is measurable for every
+$i\in I$,
+
+(b) if $f\ge 0$, then $\int f=\sum_{i\in I}\int_{X_i}f$ if either is
+defined in $[0,\infty]$.
+
+\proof{ Apply 214M to the direct sum of
+$\familyiI{(X_i,\Sigma_{X_i},\mu_{X_i})}$, identified with
+$(X,\Sigma,\mu)$ as in 214L.
+}%end of proof of 214N
+
+\leader{*214O}{}\cmmnt{ I make space here for a general theorem
+which puts rather heavy demands on the reader.   So I ought to say that I
+advise skipping it on first reading.   It
+will not be quoted in this volume, in
+the full form here I do not expect to use it anywhere in this treatise,
+only the special case of 214Xm is at all often applied, and the proof
+depends on a concept (`ideal of sets') and a technique
+(`transfinite induction', part (d) of the proof of 214P) which are
+used nowhere else in this volume.   However,
+`extension of measures' is one of the central themes of Volume 4, and this
+result may help to make sense of some of the patterns which will
+appear there.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $(X,\Sigma,\mu)$ be a measure space, and $\Cal I$
+an ideal of subsets of $X$, that is, a family of subsets of $X$ such that
+$\emptyset\in\Cal I$, $I\cup J\in\Cal I$ for all $I$, $J\in\Cal I$, and
+$I\in\Cal I$ whenever $I\subseteq J\in\Cal I$.   Then there is a measure
+$\lambda$ on $X$ such that $\Sigma\cup\Cal I\subseteq\dom\lambda$,
+$\mu E=\lambda E+\sup_{I\in\Cal I}\mu^*(E\cap I)$ for every $E\in\Sigma$,
+and $\lambda I=0$ for every $I\in\Cal I$.
+
+\proof{{\bf (a)} Let $\Lambda$ be the set of those $F\subseteq X$ such that
+there are $E\in\Sigma$ and a countable $\Cal J\subseteq\Cal I$ such that
+$E\symmdiff F\subseteq\bigcup\Cal J$.   Then $\Lambda$ is a $\sigma$-algebra
+of subsets of $X$ including $\Sigma\cup\Cal I$.   \Prf\
+$\Sigma\subseteq\Lambda$ because
+$E\symmdiff E\subseteq\bigcup\emptyset$ for every $E\in\Sigma$.   $\Cal
+I\subseteq\Lambda$ because $\emptyset\symmdiff I\subseteq\bigcup\{I\}$ for
+every $I\in\Cal I$.   In particular, $\emptyset\in\Lambda$.   If $F\in\Lambda$,
+let $E\in\Sigma$ and $\Cal J\subseteq\Cal I$ be such that $\Cal J$ is
+countable and $F\symmdiff E\subseteq\bigcup\Cal J$;  then
+$(X\setminus F)\symmdiff(X\setminus E)\subseteq\bigcup\Cal J$ so
+$X\setminus F\in\Lambda$.   If $\sequencen{F_n}$ is a sequence in $\Lambda$ with
+union $F$, then for each $n\in\Bbb N$ choose $E_n\in\Sigma$,
+$\Cal J_n\subseteq\Cal I$ such that $\Cal J_n$ is countable and
+$E_n\symmdiff F_n\subseteq\bigcup\Cal J_n$;  then
+$E=\bigcup_{n\in\Bbb N}E_n$ belongs to $\Sigma$,
+$\Cal J=\bigcup_{n\in\Bbb N}\Cal J_n$ is a countable subset of $\Cal I$ and
+$E\symmdiff F\subseteq\bigcup\Cal J$, so $F\in\Sigma$.   Thus $\Lambda$ is a
+$\sigma$-algebra.\ \Qed
+
+\medskip
+
+{\bf (b)} For $F\in\Lambda$ set
+
+\Centerline{$\lambda F=\sup\{\mu E:E\in\Sigma$,
+$E\subseteq F$, $\mu^*(E\cap I)=0$ for every $I\in\Cal I\}$.}
+
+\noindent Then $\lambda$ is a measure.   \Prf\ The only subset of
+$\emptyset$ is $\emptyset$, so $\lambda\emptyset=0$.   Let
+$\sequencen{F_n}$ be a disjoint sequence in $\Lambda$ with union $F$;
+set $u=\sum_{n=0}^{\infty}\lambda F_n$.
+(i) If $E\in\Sigma$, $E\subseteq F$ and $\mu^*(E\cap I)=0$ for every
+$I\in\Cal I$, then for each $n$ set $E_n=E\cap F_n$.   As
+$\mu^*(E_n\cap I)=0$ for every $I\in\Cal I$, $\mu E_n\le\lambda F_n$
+for each $n$.   Now
+$\sequencen{E_n}$ is disjoint and has union $E$, so
+
+\Centerline{$\mu E
+=\sum_{n=0}^{\infty}\mu E_n\le\sum_{n=0}^{\infty}\lambda F_n=u$.}
+
+\noindent As $E$ is arbitrary,
+$\lambda F\le u$.   (ii) Take any $\gamma<u$.   For $n\in\Bbb N$, set
+$\gamma_n=\lambda F_n-2^{-n-1}\min(1,u-\gamma)$ if $\lambda F_n$ is finite,
+$\gamma$ otherwise.   For each $n$, we
+can find an $E_n\in\Sigma$ such that $E_n\subseteq F_n$,
+$\mu^*(E_n\cap I)=0$
+for every $I\in\Cal I$, and $\mu E_n\ge\gamma_n$.   Set
+$E=\bigcup_{n\in\Bbb N}E_n$;  then $E\subseteq F$ and
+$E\cap I=\bigcup_{n\in\Bbb N}E_n\cap I$ is $\mu$-negligible for every
+$I\in\Cal I$, so $\lambda F\ge\mu E=\sum_{n=0}^{\infty}\mu E_n\ge\gamma$.
+As $\gamma$ is arbitrary, $\lambda F\ge u$.   (iii) As
+$\sequencen{F_n}$ is arbitrary, $\lambda$ is a measure.\ \Qed
+
+\medskip
+
+{\bf (c)} Now take any $E\in\Sigma$ and set
+$u=\sup_{I\in\Cal I}\mu^*(E\cap I)$.   If $u=\infty$ then
+we certainly have
+$\mu E=\infty=\lambda E+u$.
+Otherwise, let $\sequencen{I_n}$ be a sequence in $\Cal I$ such that
+$\lim_{n\to\infty}\mu^*(E\cap I_n)=u$;  replacing $I_n$ by
+$\bigcup_{m\le n}I_m$ for each $n$ if necessary, we may suppose that
+$\sequencen{I_n}$ is non-decreasing.   Set
+$A=E\cap\bigcup_{n\in\Bbb N}I_n$;   because $E\cap I_n$ has finite outer
+measure for each $n$, $A$ can be covered by a sequence of sets of finite
+measure, and has a measurable envelope $H$ for $\mu$ included in
+$E$ (132Ee).   Observe that
+
+\Centerline{$\mu H=\mu^*A=\sup_{n\in\Bbb N}\mu^*(E\cap I_n)=u$}
+
+\noindent by 132Ae.
+
+Set $G=E\setminus H$.   Then $\mu^*(G\cap I)=0$ for every $I\in\Cal I$.
+\Prf\ For any $n\in\Bbb N$ there is an $F\in\Sigma$
+such that $F\supseteq E\cap(I_n\cup I)$ and $\mu F\le u$;  in which case
+
+\Centerline{$\mu^*(G\cap I)+\mu^*(E\cap I_n)
+\le\mu(F\setminus H)+\mu(F\cap H)\le u$.}
+
+\noindent As $n$ is arbitrary, $\mu^*(G\cap I)=0$.\ \QeD\   Accordingly
+
+\Centerline{$u+\lambda E\ge\mu H+\mu G=\mu E$.}
+
+\noindent On the other hand, if $F\in\Sigma$ is such that $F\subseteq E$
+and $\mu^*(F\cap I)=0$ for every $I\in\Cal I$, then
+
+\Centerline{$\mu^*(E\cap I_n)
+\le\mu(E\setminus F)+\mu^*(F\cap I_n)=\mu(E\setminus F)$}
+
+\noindent for every $n$, so
+
+\Centerline{$u+\mu F\le\mu(E\setminus F)+\mu F=\mu E$;}
+
+\noindent as $F$ is arbitrary, $u+\lambda E\le\mu E$.
+
+\medskip
+
+{\bf (d)} If $J\in\Cal I$, $F\in\Sigma$, $F\subseteq J$ and
+$\mu^*(F\cap I)=0$ for every $I\in\Cal I$, then $F\cap J=F$ is
+$\mu$-negligible;  as $F$ is arbitrary, $\lambda J=0$.
+Thus $\lambda$ has all the required properties.
+}%end of proof of 214O
+
+\leader{*214P}{Theorem}
+Let $(X,\Sigma,\mu)$ be a measure space, and
+$\Cal A$ a family of subsets of $X$ which is well-ordered by the relation
+$\subseteq$.   Then there is an extension of $\mu$ to a measure $\lambda$
+on $X$ such that $\lambda(E\cap A)$ is defined and equal to
+$\mu^*(E\cap A)$ whenever $E\in\Sigma$ and $A\in\Cal A$.
+
+\proof{{\bf (a)} Adding $\emptyset$ and $X$ to $\Cal A$ if necessary, we
+may suppose that
+$\Cal A$ has $\emptyset$ as its least member and $X$ as its greatest
+member.   By 2A1Dg, $\Cal A$ is isomorphic, as
+ordered set, to some ordinal;  since $\Cal A$ has a greatest member, this
+ordinal is a successor, expressible as $\zeta+1$;  let
+$\xi\mapsto A_{\xi}:\zeta+1\to\Cal A$ be the order-isomorphism, so that
+$\langle A_{\xi}\rangle_{\xi\le\zeta}$ is a non-decreasing family of
+subsets of $X$, $A_0=\emptyset$ and $A_{\zeta}=X$.
+
+\medskip
+
+{\bf (b)} For each ordinal $\xi\le\zeta$, write $\mu_{\xi}$ for
+the subspace measure on $A_{\xi}$, $\Sigma_{\xi}$ for its domain
+and $\Cal I_{\xi}$ for $\bigcup_{\eta<\xi}\Cal PA_{\eta}$.
+Because $A_{\eta}\cup A_{\eta'}=A_{\max(\eta,\eta')}$ for $\eta$,
+$\eta'<\xi$, $\Cal I_{\xi}$ is an ideal of subsets of $A_{\xi}$.
+By 214O, we have a measure $\lambda_{\xi}$ on $A_{\xi}$, with domain
+$\Lambda_{\xi}\supseteq\Sigma_{\xi}\cup\Cal I_{\xi}$, such that
+$\mu_{\xi}E=\lambda_{\xi}E+\sup_{I\in\Cal I_{\xi}}\mu_{\xi}^*(E\cap I)$
+for every $E\in\Sigma_{\xi}$ and $\lambda_{\xi}I=0$ for every
+$I\in\Cal I_{\xi}$.   Because every member of $\Cal I_{\xi}$ is
+included in $A_{\eta}$ for some $\eta<\xi$, we have
+
+\Centerline{$\mu^*(E\cap A_{\xi})
+=\lambda_{\xi}(E\cap A_{\xi})+\sup_{\eta<\xi}\mu_{\xi}^*(E\cap A_{\eta})
+=\lambda_{\xi}(E\cap A_{\xi})+\sup_{\eta<\xi}\mu^*(E\cap A_{\eta})$}
+
+\noindent (214Cd) for every $E\in\Sigma$.   Also, of course,
+$\lambda_{\xi}A_{\eta}=0$ for every $\eta<\xi$.
+
+\medskip
+
+{\bf (c)} Now set
+
+\Centerline{$\Lambda=\{F:F\subseteq X$, $F\cap A_{\xi}\in\Lambda_{\xi}$ for
+every $\xi\le\zeta\}$,}
+
+\Centerline{$\lambda F=\sum_{\xi\le\zeta}\lambda_{\xi}(F\cap A_{\xi})$}
+
+\noindent for every $F\in\Lambda$.   Because $\Lambda_{\xi}$ is a
+$\sigma$-algebra of subsets of $A_{\xi}$ for each $\xi$, $\Lambda$ is a
+$\sigma$-algebra of subsets of $X$;  because every $\lambda_{\xi}$ is a
+measure, so is $\lambda$.   If $E\in\Sigma$, then
+
+\Centerline{$E\cap A_{\xi}\in\Sigma_{\xi}\subseteq\Lambda_{\xi}$}
+
+\noindent for each $\xi$, so $E\in\Lambda$.   If $\eta\le\zeta$, then for
+each $\xi\le\zeta$ either $\eta<\xi$ and
+
+\Centerline{$A_{\eta}\cap A_{\xi}=A_{\eta}
+\in\Cal I_{\xi}\subseteq\Lambda_{\xi}$}
+
+\noindent or $\eta\ge\xi$ and $A_{\eta}\cap A_{\xi}=A_{\xi}$ belongs to
+$\Lambda_{\xi}$.   So $A_{\eta}\in\Lambda$ for every $\eta\le\zeta$.
+
+\medskip
+
+{\bf (d)} Finally, $\lambda(E\cap A_{\xi})=\mu^*(E\cap A_{\xi})$ whenever
+$E\in\Sigma$ and $\xi\le\zeta$.   \Prf\Quer\ Otherwise, because the ordinal
+$\zeta+1$ is well-ordered, there is a least
+$\xi$ such that $\lambda(E\cap A_{\xi})\ne\mu^*(E\cap A_{\xi})$.
+As $A_0=\emptyset$ we surely have $\lambda(E\cap A_0)=\mu^*(E\cap A_0)$
+and $\xi>0$.
+Note that if $\eta>\xi$, then $\lambda_{\eta}(E\cap A_{\xi})=0$;  so
+
+\Centerline{$\lambda(E\cap A_{\xi})
+=\sum_{\eta\le\xi}\lambda_{\eta}(E\cap A_{\xi}\cap A_{\eta})
+=\sum_{\eta\le\xi}\lambda_{\eta}(E\cap A_{\eta})$.}
+
+Now
+
+$$\eqalignno{\mu^*(E\cap A_{\xi})
+&=\lambda_{\xi}(E\cap A_{\xi})+\sup_{\xi'<\xi}\mu^*(E\cap A_{\xi'})\cr
+\displaycause{(b) above}
+&=\lambda_{\xi}(E\cap A_{\xi})
+  +\sup_{\xi'<\xi}\sum_{\eta\le\xi'}\lambda_{\eta}(E\cap A_{\eta})\cr
+\displaycause{because $\xi$ was the first problematic ordinal}
+&=\lambda_{\xi}(E\cap A_{\xi})
+  +\sup_{\xi'<\xi}\sup_{K\subseteq\xi'+1\text{ is finite}}
+  \sum_{\eta\in K}\lambda_{\eta}(E\cap A_{\eta})\cr
+\displaycause{see the definition of `sum' in 112Bd, or 226A below}
+&=\lambda_{\xi}(E\cap A_{\xi})
+  +\sup_{K\subseteq\xi\text{ is finite}}
+  \sum_{\eta\in K}\lambda_{\eta}(E\cap A_{\eta})\cr
+&=\sup_{K\subseteq\xi+1\text{ is finite}}
+  \sum_{\eta\in K}\lambda_{\eta}(E\cap A_{\eta})
+=\sum_{\eta\le\xi}\lambda_{\eta}(E\cap A_{\eta})
+\ne\mu^*(E\cap A_{\xi})\cr}$$
+
+\noindent by the choice of $\xi$;  but this is absurd.\ \Bang\Qed
+
+In particular,
+
+\Centerline{$\lambda E=\lambda(E\cap A_{\zeta})=\mu^*(E\cap A_{\zeta})
+=\mu E$}
+
+\noindent for every $E\in\Sigma$.
+This completes the proof of the theorem.
+}%end of proof of 214P
+
+\leader{*214Q}{Proposition}\dvAformerly{2{}14Xd}
+Suppose that $(X,\Sigma,\mu)$ is an atomless
+measure space and $Y$ a subset of $X$ such that
+the subspace measure $\mu_Y$ is semi-finite.   Then $\mu_Y$ is atomless.
+%for 548B 548C
+%\query what about general $Y$?
+
+\proof{ Let $F\subseteq Y$ be such that $\mu_YF$ is defined and not $0$.
+Because $\mu_Y$ is semi-finite, there is an $F'\subseteq F$ such that
+$\mu_YF'$ is defined, finite and not zero.   In this case,
+$\mu^*F'=\mu_YF'$
+is finite, so $F'$ has a measurable envelope $E$ say with respect to $\mu$.
+Because $\mu$ is atomless, there is an $E_1\in\Sigma$ such that
+$E_1\subseteq E$ and neither $E_1$ nor
+$E\setminus E_1$ is
+$\mu$-negligible.   Now $F\cap E_1$ is measured by $\mu_Y$ and
+
+\Centerline{$\mu_Y(F\cap E_1)\ge\mu^*(F'\cap E_1)=\mu(E\cap E_1)>0$,}
+
+\Centerline{$\mu_Y(F\setminus E_1)\ge\mu^*(F'\setminus E_1)
+=\mu(E\setminus E_1)>0$.}
+
+\noindent As $F$ is arbitrary, $\mu_Y$ is atomless.
+}%end of proof of 214Q
+
+\exercises{
+\leader{214X}{Basic exercises (a)}
+%\spheader 214Xa
+Let $(X,\Sigma,\mu)$ be a localizable measure space.   Show
+that there is an $E\in\Sigma$ such that the subspace measure $\mu_E$
+is purely atomic and $\mu_{X\setminus E}$ is atomless.
+%214/
+
+\spheader 214Xb Let $X$ be a set, $\theta$ a regular outer measure on
+$X$, and $Y$ a subset of $X$.   Let $\mu$ be the measure on $X$ defined
+by \Caratheodory's method from $\theta$, $\mu_Y$ the subspace measure on
+$Y$, and $\nu$ the measure on $Y$ defined by \Caratheodory's method from
+$\theta\restrp\Cal PY$.   Show that if $\mu_Y$ is locally determined
+(in particular, if $\mu$ is locally
+determined and localizable) then $\nu=\mu_Y$.
+%214I
+
+\spheader 214Xc Let $(X,\Sigma,\mu)$ be a localizable measure space, and
+$Y$ a subset of $X$ such that the subspace measure $\mu_Y$ is
+semi-finite.   Show that $\mu_Y$ is localizable.
+%214I
+
+\sqheader 214Xd Let $(X,\Sigma,\mu)$ be a measure space, and $Y$ a
+subset of $X$ such that the subspace measure $\mu_Y$ is semi-finite.
+(i) Show that a set $F\subseteq Y$ is an atom for $\mu_Y$ iff it is of the
+form $E\cap Y$ where $E$ an atom for $\mu$.
+(ii) Show that if $\mu$ is purely atomic, so is $\mu_Y$.
+%214I  used in 5x47A
+
+\spheader 214Xe Let $(X,\Sigma,\mu)$ be a localizable measure
+space, and $Y$ any subset of $X$.   Show that the c.l.d.\ version of the
+subspace measure on $Y$ is localizable.
+%214I
+
+\spheader 214Xf Let $(X,\Sigma,\mu)$ be a measure space with locally
+determined negligible sets, and $Y$ a
+subset of $X$, with its subspace measure $\mu_Y$.
+Show that $\mu_Y$ has locally determined negligible sets.
+%214I
+
+\sqheader 214Xg Let $(X,\Sigma,\mu)$ be a measure space.   Show that
+$(X,\Sigma,\mu)$ has locally determined
+negligible sets iff the subspace measure $\mu_Y$ is semi-finite for
+every $Y\subseteq X$.
+%214I, 214Xf
+
+\sqheader 214Xh Let $\langle (X_i,\Sigma_i,\mu_i)\rangle_{i\in I}$ be a
+family
+of measure spaces, with direct sum $(X,\Sigma,\mu)$ (214L).   Set
+$X'_i=X_i\times\{i\}\subseteq X$ for each $i\in I$.   Show that $X'_i$,
+with the subspace measure, is isomorphic to $(X_i,\Sigma_i,\mu_i)$.
+Under what circumstances is $\langle X'_i\rangle_{i\in I}$ a
+decomposition of $X$?   Show that $\mu$ is complete, or strictly
+localizable, or localizable, or locally determined, or semi-finite, or
+atomless, %used in 548C
+or purely atomic iff every $\mu_i$ is.
+Show that a measure space is strictly localizable iff it is isomorphic
+to a direct sum of totally finite spaces.
+%214L
+
+\sqheader 214Xi Let $\langle(X_i,\Sigma_i,\mu_i)\rangle_{i\in I}$ be a
+family of measure spaces, and $(X,\Sigma,\mu)$ their direct sum.   Show
+that the completion of $(X,\Sigma,\mu)$ can be identified with the
+direct sum of the completions of the $(X_i,\Sigma_i,\mu_i)$, and that
+the c.l.d.\ version of $(X,\Sigma,\mu)$ can be identified with the
+direct sum of the c.l.d.\ versions of the $(X_i,\Sigma_i,\mu_i)$.
+%214L
+
+\spheader 214Xj Let
+$\langle(X_i,\Sigma_i,\mu_i)\rangle_{i\in I}$ be a family of measure
+spaces.   Show that their direct sum has
+locally determined negligible sets iff every $\mu_i$ has.
+%214L, 214Xf
+
+\spheader 214Xk
+Let $\langle(X_i,\Sigma_i,\mu_i)\rangle_{i\in I}$ be a family of measure
+spaces, and $(X,\Sigma,\mu)$ their direct sum.   Show that
+$(X,\Sigma,\mu)$ has the measurable envelope property (213Xl) iff every
+$(X_i,\Sigma_i,\mu_i)$ has.
+%214L
+
+\spheader 214Xl
+Let $(X,\Sigma,\mu)$ be a measure space, $Y$ a subset of
+$X$, and $f:X\to[0,\infty]$
+a function such that $\int_Yf$ is defined in $[0,\infty]$.
+Show that $\int_Yf=\overline{\int}f\times\chi Y\,d\mu$.
+%214E
+
+\sqheader 214Xm\dvAnew{2009}
+Write out a direct proof of 214P in the special case in which
+$\Cal A=\{A\}$.   ({\it Hint\/}:  for $E$, $F\in\Sigma$,
+
+\Centerline{$\lambda((E\cap A)\cup(F\setminus A))
+=\mu^*(E\cap A)+\sup\{\mu G:G\in\Sigma$, $G\subseteq F\setminus A\}$.)}
+%214P
+
+\sqheader 214Xn\dvAnew{2009}
+Let $(X,\Sigma,\mu)$ be a measure space and $\Cal A$ a finite family of
+subsets of $X$.   Show that there is a measure on $X$,
+extending $\mu$, which measures every member of $\Cal A$.
+%214Xm 214P
+
+\leader{214Y}{Further exercises (a)}\dvAnew{2009}
+%\spheader 214Ya
+Let $(X,\Sigma,\mu)$ be a measure space and $A$ a subset of $X$
+such that the subspace measure on $A$ is semi-finite.   Set
+$\alpha=\sup\{\mu E:E\in\Sigma$, $E\subseteq A\}$.
+Show that if $\alpha\le\gamma\le\mu^*A$ then there is a measure
+$\lambda$ on $X$, extending $\mu$, such that $\lambda A=\gamma$.
+%214P 214Xm
+
+\spheader 214Yb\dvAnew{2009}
+Let $(X,\Sigma,\mu)$ be a measure space and
+$\family{n}{\Bbb Z}{A_n}$ a double-ended sequence of subsets of $X$ such
+that $A_m\subseteq A_n$ whenever $m\le n$ in $\Bbb Z$.   Show that there
+is a measure on $X$, extending $\mu$, which measures every $A_n$.
+\Hint{use 214P twice.}
+%214P
+
+\spheader 214Yc\dvAnew{2009}
+Let $X$ be a set and $\Cal A$ a family of subsets of $X$.
+Show that the following are equiveridical:  (i) for every measure $\mu$ on
+$X$ there is a measure on $X$ extending $\mu$ and measuring every member of
+$\Cal A$;  (ii) for every totally finite measure $\mu$ on
+$X$ there is a measure on $X$ extending $\mu$ and measuring every member of
+$\Cal A$.   \Hint{213Xa.}
+
+\spheader 214Yd\dvAnew{2015}
+For this exercise only, I will say that a measure $\mu$ on a set $X$ is
+{\bf nowhere all-measuring} if whenever $A\subseteq X$ is not
+$\mu$-negligible there is a subset of $A$ which is not measured by the
+subspace measure on $A$.   Show that if $X$ is a set and
+$\mu_0,\ldots,\mu_n$ are nowhere all-measuring complete totally finite
+measures on $X$, then there are disjoint
+$A_0,\ldots,A_n\subseteq X$ such that $\mu_i^*A_i=\mu_iX$ for every
+$i\le n$.   \Hint{start with the case $n=1$, $\mu_0=\mu_1$.}
+%mt21bits
+}%end of exercises
+
+\endnotes{
+\Notesheader{214} I take the first part of the section, down to 214H,
+slowly and carefully, because while none of the arguments are deep
+(214Eb is the longest) the patterns formed by the results are not always
+easy to predict.   There is a counter-example to a tempting extension of
+214H/214Xb in 216Xb.
+
+The message of the second part of the section (214I-214L, 214Q) is that
+subspaces inherit
+many, but not all, of the properties of a measure space;  and in
+particular there can be a difficulty with semi-finiteness, unless we have
+locally determined negligible sets (214Xg).   (I give an example in
+216Xa.)   Of course
+213Hb shows that if we start with a localizable space, we can convert
+it into a complete locally determined localizable space without doing
+great violence to the structure of the space, so the difficulty is
+ordinarily superable.
+
+By far the most important case of 214P is when $\Cal A=\{A\}$ is a
+singleton, so that the argument simplifies dramatically (214Xm).   In
+\S439 of Volume 4 I will return to the problem of extending a measure to
+a given larger $\sigma$-algebra in the absence of any helpful
+auxiliary structure.   That section will mostly offer counter-examples,
+in particular showing that there is no general theorem extending
+214Xn from finite families to countable families, and that the special
+conditions in 214P and 214Yb
+are there for good reasons.   But in Chapter 54 and \S552 of Volume 5 I
+will discuss mathematical systems in which much stronger extension
+theorems are true, at least if we start from Lebesgue measure.
+}%end of notes
+
+\discrpage
+
+

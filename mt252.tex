@@ -1,0 +1,1896 @@
+\frfilename{mt252.tex}
+\versiondate{6.12.07}
+\copyrightdate{2000}
+
+\def\displaycause#1{\noalign{\noindent (#1)}}
+
+\def\chaptername{Product measures}
+\def\sectionname{Fubini's theorem}
+
+\newsection{252}
+
+Perhaps the most important feature of the concept of `product
+measure' is the fact that we can use it to discuss repeated integrals.
+In this section I give versions of Fubini's theorem and Tonelli's
+theorem (252B, 252G) with a variety of corollaries, the most useful ones
+being versions for $\sigma$-finite spaces (252C, 252H).   As
+applications I describe the relationship between integration and
+measuring ordinate sets (252N) and calculate
+the $r$-dimensional volume of a ball in $\BbbR^r$
+(252Q\cmmnt{, 252Xi}).
+I mention counter-examples showing the difficulties which can arise with
+non-$\sigma$-finite measures and non-integrable functions
+(252K-252L\cmmnt{, 252Xf-252Xg}).
+
+\leader{252A}{Repeated integrals}  Let $(X,\Sigma,\mu)$ and
+$(Y,\Tau,\nu)$ be
+measure spaces, and $f$ a real-valued function defined on a set
+$\dom f\subseteq X\times Y$.   We can seek to form the {\bf repeated
+integral}
+
+\Centerline{$\iint f(x,y)\nu(dy)\mu(dx)
+=\int\bigl(\int f(x,y)\nu(dy)\bigr)\mu(dx)$,}
+
+\noindent which should be interpreted as follows:  set
+
+\Centerline{$D=\{x:x\in X,\,\int f(x,y)\nu(dy)$ is defined in
+$[-\infty,\infty]\}$,}
+
+\Centerline{$g(x)=\int f(x,y)\nu(dy)$ for $x\in D$,}
+
+\noindent and then write $\iint f(x,y)\nu(dy)\mu(dx)=\int g(x)\mu(dx)$
+if this is defined.   \cmmnt{Of course the subset of $Y$ on which
+$y\mapsto f(x,y)$ is defined may vary with $x$, but it must always be
+conegligible, as must $D$.
+
+Similarly, exchanging the roles of $X$ and $Y$, we can seek
+a repeated integral
+
+\Centerline{$\iint f(x,y)\mu(dx)\nu(dy)
+=\int\bigl(\int f(x,y)\mu(dx)\bigr)\nu(dy)$.}
+
+\noindent The point is that, under appropriate conditions on $\mu$ and
+$\nu$, we can relate these repeated integrals to each other
+by connecting them both with the integral of $f$ itself with respect to
+the product measure on $X\times Y$.
+
+As will become apparent shortly, it is essential here to allow oneself
+to discuss the integral of a function which is not everywhere defined.   It
+is of less importance whether one allows integrands and integrals to
+take infinite values, but for definiteness let me say that I shall be
+following the rules of 135F;  that is, $\int f=\int f^+-\int f^-$
+provided that $f$ is defined almost everywhere, takes values in
+$[-\infty,\infty]$ and is virtually measurable, and at most one of
+$\int f^+$, $\int f^-$ is infinite.
+}%end of comment
+
+\leader{252B}{Theorem} Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+measure spaces, with c.l.d.\ product
+$(X\times Y,\Lambda,\lambda)$\cmmnt{ (251F)}.   Suppose that $\nu$ is
+$\sigma$-finite and that $\mu$ is {\it either} strictly localizable
+{\it or} complete and locally determined.   Let $f$ be a
+$[-\infty,\infty]$-valued function such that $\int fd\lambda$ is defined
+in $[-\infty,\infty]$.   Then $\iint f(x,y)\nu(dy)\mu(dx)$ is defined
+and is equal to $\int fd\lambda$.
+
+\proof{ The proof of this result involves substantial technical
+difficulties.   If you have not seen these ideas before, you should
+almost certainly not go straight to the full generality of the version
+announced above.   I will therefore start by writing out a proof in the
+case in which both $\mu$ and $\nu$ are totally finite;  this is already
+lengthy enough.   I will present it in such a way that only the central
+section (part (b) below) needs to be amended in the general case, and
+then, after completing the proof of the special case, I will give the
+alternative version of (b) which is required for the full result.
+
+\medskip
+
+{\bf (a)} Write $\eusm L$ for the family of $[0,\infty]$-valued
+functions $f$ such that $\int fd\lambda$ and
+\discrversionA{\break}{}$\iint f(x,y)\nu(dy)\mu(dx)$ are defined and
+equal.   My
+aim is to show first that $f\in\eusm L$ whenever $f$ is non-negative and
+$\int fd\lambda$ is defined, and then to look at differences of
+functions in $\eusm L$.   To prove that enough functions belong to
+$\eusm L$, my strategy will be to start with `elementary' functions and
+work outwards through progressively larger classes.   It is most
+efficient to begin by describing ways of building new members of $\eusm
+L$ from old, as follows.
+
+\medskip
+
+\quad{\bf (i)} $f_1+f_2\in\eusm L$ for all $f_1$, $f_2\in\eusm L$, and
+$cf\in\eusm L$ for all $f\in\eusm L$, $c\in\coint{0,\infty}$;  this is
+because
+
+\Centerline{$\int(f_1+f_2)(x,y)\nu(dy)
+=\int f_1(x,y)\nu(dy)+\int f_2(x,y)\nu(dy)$,}
+
+\Centerline{$\int (cf)(x,y)\nu(dy)=c\int f(x,y)\nu(dy)$}
+
+\noindent whenever the right-hand sides are defined, which we are
+supposing to be the case for almost every $x$, so that
+
+$$\eqalign{\iint(f_1+f_2)(x,y)\nu(dy)\mu(dx)
+&=\iint f_1(x,y)\nu(dy)\mu(dx)+\iint f_2(x,y)\nu(dy)\mu(dx)\cr
+&=\int f_1d\lambda+\int f_2d\lambda
+=\int(f_1+f_2)d\lambda,\cr}$$
+
+$$\iint(cf)(x,y)\nu(dy)\mu(dx)
+=c\int f(x,y)\nu(dy)\mu(dx)
+=c\int fd\lambda
+=\int(cf)d\lambda.$$
+
+\medskip
+
+\quad{\bf (ii)} If $\sequencen{f_n}$ is a sequence in $\eusm L$ such
+that $f_n(x,y)\le f_{n+1}(x,y)$ whenever $n\in\Bbb N$ and
+$(x,y)\in\dom f_n\cap\dom f_{n+1}$, then $\sup_{n\in\Bbb N}f_n\in\eusm
+L$.   \Prf\
+Set $f=\sup_{n\in\Bbb N}f_n$;  for $x\in X$, $n\in\Bbb N$ set
+$g_n(x)=\int f_n(x,y)\nu(dy)$ when the integral is defined in
+$[0,\infty]$.   Since here I am allowing $\infty$ as a value of a
+function, it is natural to regard $f$ as defined on $\bigcap_{n\in\Bbb
+N}\dom f_n$.   By
+B.Levi's theorem, $\int fd\lambda=\sup_{n\in\Bbb N}\int f_nd\lambda$;
+write $u$ for this common value in $[0,\infty]$.   Next,
+because $f_n\le f_{n+1}$ wherever both are defined, $g_n\le g_{n+1}$
+wherever both are defined, for each $n$;   we are supposing that
+$f_n\in\eusm L$, so $g_n$ is defined $\mu$-almost everywhere for each
+$n$, and
+
+\Centerline{$\sup_{n\in\Bbb N}\int g_nd\mu
+=\sup_{n\in\Bbb N}\int f_nd\lambda=u$.}
+
+\noindent By B.Levi's theorem again, $\int g\,d\mu=u$, where
+$g=\sup_{n\in\Bbb N}g_n$.   Now take any $x\in\bigcap_{n\in\Bbb N}\dom
+g_n$, and consider the functions $f_{xn}$ on $Y$, setting
+$f_{xn}(y)=f_n(x,y)$ whenever this is defined.   Each $f_{xn}$ has an
+integral in $[0,\infty]$, and $f_{xn}(y)\le f_{x,n+1}(y)$ whenever both
+are defined, and
+
+\Centerline{$\sup_{n\in\Bbb N}\int f_{xn}d\nu=g(x)$;}
+
+\noindent so, using B.Levi's theorem for a third time,
+$\int(\sup_{n\in\Bbb
+N}f_{xn})d\nu$ is defined and equal to $g(x)$, that is,
+
+\Centerline{$\int f(x,y)\nu(dy)=g(x)$.}
+
+\noindent This is true for almost every $x$, so
+
+\Centerline{$\iint f(x,y)\nu(dy)\mu(dx)
+=\int g\,d\mu=u=\int fd\lambda$.}
+
+\noindent Thus $f\in\eusm L$, as claimed.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} The expression of the ideas in the next section of the
+proof will go more smoothly if I introduce another term.   Write
+$\Cal W$ for $\{W:W\subseteq X\times Y,\,\chi W\in\eusm L\}$.   Then
+
+\inset{($\alpha$) if $W$, $W'\in\Cal W$ and $W\cap W'=\emptyset$,
+$W\cup W'\in\Cal W$}
+
+\noindent by (i), because $\chi(W\cup W')=\chi W+\chi W'$,
+
+\inset{($\beta$) $\bigcup_{n\in\Bbb N}W_n\in\Cal W$ whenever
+$\sequencen{W_n}$ is a non-decreasing sequence in $\Cal W$}
+
+\noindent because $\sequencen{\chi W_n}\uparrow\chi W$, and we can use
+(ii).
+
+It is also helpful to note that, for any $W\subseteq X\times Y$ and any
+$x\in X$, $\int\chi W(x,y)\nu(dy)=\nu W[\{x\}]$, at least whenever
+$W[\{x\}]=\{y:(x,y)\in W\}$ is measured by $\nu$.   Moreover, because
+$\lambda$ is complete, a set $W\subseteq X\times Y$ belongs to $\Lambda$
+iff $\chi W$ is $\lambda$-virtually measurable iff
+$\int\chi W\,d\lambda$ is defined in $[0,\infty]$, and in this case
+$\lambda W=\int\chi W\,d\lambda$.
+
+\medskip
+
+\quad{\bf (iv)} Finally, we need to observe that, in appropriate
+circumstances, the difference of two members of $\Cal W$ will belong to
+$\Cal W$:  if $W$, $W'\in\Cal W$ and $W\subseteq W'$ and $\lambda
+W'<\infty$, then $W'\setminus W\in\Cal W$.   \Prf\ We are supposing that
+$g(x)=\int\chi W(x,y)\nu(dy)$ and $g'(x)=\int\chi W'(x,y)\nu(dy)$ are
+defined for almost every $x$, and that $\int g\,d\mu=\lambda W$, $\int
+g'd\mu=\lambda W'$.   Because $\lambda W'$ is finite, $g'$ must be
+finite almost everywhere, and $D=\{x:x\in\dom g\cap\dom
+g',\,g'(x)<\infty\}$ is conegligible.   Now, for any $x\in D$, both
+$g(x)$ and $g'(x)$ are finite, so
+
+\Centerline{$y\mapsto\chi(W'\setminus W)(x,y)=\chi W'(x,y)-\chi W(x,y)$}
+
+\noindent is the difference of two integrable functions, and
+
+$$\eqalign{\int\chi(W'\setminus W)(x,y)\nu(dy)
+&=\int\chi W'(x,y)-\chi W(x,y)\nu(dy)\cr
+&=\int\chi W'(x,y)\nu(dy)-\int\chi W(x,y)\nu(dy)
+=g'(x)-g(x).\cr}$$
+
+\noindent Accordingly
+
+\Centerline{$\iint\chi(W'\setminus W)(x,y)\nu(dy)\mu(dx)
+=\int g'(x)-g(x)\mu(dx)
+=\lambda W'-\lambda W
+=\lambda(W'\setminus W)$,}
+
+\noindent and $W'\setminus W$ belongs to $\Cal W$.\ \Qed
+
+(Of course the argument just above can be shortened by a few words if we
+allow ourselves to assume that $\mu$ and $\nu$ are totally finite,
+since then $g(x)$ and $g'(x)$ will be finite whenever they are defined;
+but the key idea, that the difference of integrable functions is
+integrable, is unchanged.)
+
+\medskip
+
+{\bf (b)} Now let us examine the class $\Cal W$, assuming that $\mu$ and
+$\nu$ are totally finite.
+
+\medskip
+
+\quad{\bf (i)} $E\times F\in\Cal W$ for all $E\in\Sigma$, $F\in\Tau$.
+\Prf\ $\lambda(E\times F)=\mu E\cdot\nu F$ (251J),  and
+
+\Centerline{$\int\chi(E\times F)(x,y)\nu(dy)=\nu F\,\chi E(x)$}
+
+\noindent for each $x$, so
+
+$$\eqalign{\iint\chi(E\times F)(x,y)\nu(dy)\mu(dx)
+&=\int(\nu F\,\chi E(x))\mu(dx)
+=\mu E\cdot\nu F\cr
+&=\lambda(E\times F)
+=\int\chi(E\times F)d\lambda. \text{ \Qed}\cr}$$
+
+\medskip
+
+\quad{\bf (ii)} Let $\Cal C$ be $\{E\times F:E\in\Sigma,\,F\in\Tau\}$.
+Then $\Cal C$ is closed under finite intersections (because
+$(E\times F)\cap(E'\times F')=(E\cap E')\times(F\cap F')$)
+and is included in
+$\Cal W$.   In particular, $X\times Y\in\Cal W$.   But this, together
+with (a-iv) and (a-iii-$\beta$) above, means that $\Cal W$ is a Dynkin
+class (definition:  136A), so includes the $\sigma$-algebra of subsets
+of $X\times Y$
+generated by $\Cal C$, by the Monotone Class Theorem (136B);  that is,
+$\Cal W\supseteq\Sigma\tensorhat\Tau$ (definition:  251D).
+
+\medskip
+
+\quad{\bf (iii)} Next, $W\in\Cal W$ whenever $W\subseteq X\times Y$ is
+$\lambda$-negligible.   \Prf\ By 251Ib, there is a
+$V\in\Sigma\tensorhat\Tau$ such that $V\subseteq(X\times Y)\setminus W$
+and $\lambda V=\lambda((X\times Y)\setminus W)$.   Because
+$\lambda(X\times Y)=\mu X\cdot\nu Y$ is finite, $V'=(X\times Y)\setminus
+V$ is $\lambda$-negligible, and we have $W\subseteq
+V'\in\Sigma\tensorhat\Tau$.   Consequently
+
+\Centerline{$0=\lambda V'=\iint\chi V'(x,y)\nu(dy)\mu(dx)$.}
+
+\noindent But this means that
+
+\Centerline{$D=\{x:\int\chi V'(x,y)\nu(dy)$ is defined and equal
+to $0\}$}
+
+\noindent is conegligible.   If $x\in D$, then we must have
+$\chi V'(x,y)=0$ for $\nu$-almost every $y$, that is, $V'[\{x\}]$ is
+negligible;  in which case $W[\{x\}]\subseteq V'[\{x\}]$ also is
+negligible, and $\int\chi W(x,y)\nu(dy)=0$.   And this is true for every
+$x\in D$, so $\int\chi W(x,y)\nu(dy)$ is defined and equal to $0$ for
+almost every $x$, and
+
+\Centerline{$\iint\chi W(x,y)\nu(dy)\mu(dx)=0=\lambda W$,}
+
+\noindent as required.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} It follows that $\Lambda\subseteq\Cal W$.   \Prf\ If
+$W\in\Lambda$, then, by 251Ib again, there is a
+$V\in\Sigma\tensorhat\Tau$ such that $V\subseteq W$ and
+$\lambda V=\lambda W$, so that $\lambda(W\setminus V)=0$.   Now
+$V\in\Cal W$ by
+(ii) and $W\setminus V\in\Cal W$ by (iii), so $W\in\Cal W$ by
+(a-iii-$\alpha$).\ \Qed
+
+\medskip
+
+{\bf (c)} I return to the class $\eusm L$.
+
+\medskip
+
+\quad{\bf (i)} If $f\in\eusm L$ and $g$ is a $[0,\infty]$-valued
+function defined and equal to $f\,\,\lambda$-a.e., then $g\in\eusm L$.
+\Prf\ Set
+
+\Centerline{$W=(X\times Y)\setminus\{(x,y):(x,y)\in\dom f\cap\dom g$,
+$f(x,y)=g(x,y)\}$,}
+
+\noindent so that $\lambda W=0$.   (Remember that $\lambda$ is
+complete.)   By (b), $\iint\chi W(x,y)\nu(dy)\mu(dx)=0$, that is,
+$W[\{x\}]$ is $\nu$-negligible for $\mu$-almost every $x$.   Let $D$ be
+$\{x:x\in X,\,W[\{x\}]$ is $\nu$-negligible$\}$.   Then $D$ is
+$\mu$-conegligible.   If $x\in D$, then
+
+\Centerline{$W[\{x\}]=Y\setminus\{y:(x,y)\in\dom f\cap\dom g$,
+$f(x,y)=g(x,y)\}$}
+
+\noindent is negligible, so that $\int f(x,y)\nu(dy)=\int g(x,y)\nu(dy)$
+if either is defined.   Thus the functions
+\discrcenter{468pt}{$x\mapsto\int f(x,y)\nu(dy)$,
+\ifdim\pagewidth>467pt\quad\fi
+$x\mapsto\int g(x,y)\nu(dy)$ }are equal almost everywhere, and
+
+\Centerline{$\iint g(x,y)\nu(dy)\mu(dx)=\iint
+f(x,y)\nu(dy)\mu(dx)
+=\int fd\lambda=\int g\,d\lambda$,}
+
+\noindent so that $g\in\eusm L$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Now let $f$ be any non-negative function such that
+$\int fd\lambda$ is defined in $[0,\infty]$.  Then $f\in\eusm L$.
+\Prf\ For $k$, $n\in\Bbb N$ set
+
+\Centerline{$W_{nk}=\{(x,y):(x,y)\in\dom f,\,f(x,y)\ge 2^{-n}k\}$.}
+
+\noindent Because $\lambda$ is complete and $f$ is $\lambda$-virtually
+measurable and $\dom f$ is conegligible, every $W_{nk}$ belongs to
+$\Lambda$, so $\chi W_{nk}\in\eusm L$, by (b).   Set
+$f_n=\sum_{k=1}^{4^n}2^{-n}\chi W_{nk}$, so that
+
+$$\eqalign{f_n(x,y)
+&=2^{-n}k\text{ if }k\le 4^n\text{ and }2^{-n}k
+                   \le f(x,y)<2^{-n}(k+1),\cr
+&=2^n\text{ if }f(x,y)\ge 2^n,\cr
+&=0\text{ if }(x,y)\in(X\times Y)\setminus\dom f.\cr}$$
+
+\noindent By (a-i), $f_n\in\eusm L$ for every $n\in\Bbb N$, while
+$\sequencen{f_n}$ is non-decreasing, so $f'=\sup_{n\in\Bbb N}f_n\in\eusm
+L$, by (a-ii).   But $f\eae f'$, so $f\in\eusm L$, by (i) just above.\
+\Qed
+
+\medskip
+
+\quad{\bf (iii)} Finally, let $f$ be any $[-\infty,\infty]$-valued
+function such that $\int fd\lambda$ is defined in $[-\infty,\infty]$.
+Then $\int f^+d\lambda$, $\int f^-d\lambda$ are both defined and at most
+one is infinite.   By (ii), both $f^+$ and $f^-$ belong to $\eusm L$.
+Set $g(x)=\int f^+(x,y)\nu(dy)$, $h(x)=\int f^-(x,y)\nu(dy)$ whenever
+these are defined;  then $\int g\,d\mu=\int f^+d\lambda$ and $\int
+h\,d\mu=\int f^-d\lambda$ are both defined in $[0,\infty]$.
+
+Suppose first that $\int f^-d\lambda$ is finite.   Then $\int h\,d\mu$
+is finite, so $h$ must be finite $\mu$-almost everywhere;  set
+
+\Centerline{$D=\{x:x\in\dom g\cap\dom h,\,h(x)<\infty\}$.}
+
+\noindent For any $x\in D$, $\int f^+(x,y)\nu(dy)$ and
+$\int f^-(x,y)\nu(dy)$ are defined in $[0,\infty]$, and the latter is
+finite;  so
+
+\Centerline{$\int f(x,y)\nu(dy)
+=\int f^+(x,y)\nu(dy)-\int f^-(x,y)\nu(dy)
+=g(x)-h(x)$}
+
+\noindent is defined in $\ocint{-\infty,\infty}$.   Because $D$ is
+conegligible,
+
+$$\eqalign{\iint f(x,y)\nu(dy)\mu(dx)
+&=\int g(x)-h(x)\mu(dx)
+=\int g\,d\mu-\int h\,d\mu\cr
+&=\int f^+d\lambda-\int f^-d\lambda
+=\int fd\lambda,\cr}$$
+
+\noindent as required.
+
+Thus we have the result when $\int f^-d\lambda$ is finite.   Similarly,
+or by applying the argument above to $-f$, we see that
+$\iint f(x,y)\nu(dy)\mu(dx)=\int fd\lambda$
+if $\int f^+d\lambda$ is finite.
+
+Thus the theorem is proved, at least when $\mu$ and $\nu$ are totally
+finite.
+
+\medskip
+
+{\bf (b*)} The only point in the argument above where we needed to know
+anything special about the measures $\mu$ and $\nu$ was in part (b),
+when showing that $\Lambda\subseteq\Cal W$.   I now return to this point
+under the hypotheses of the theorem as stated, that $\nu$ is
+$\sigma$-finite and $\mu$ is either strictly localizable or complete and
+locally determined.
+
+\medskip
+
+\quad{\bf (i)} It will be helpful to note that the completion $\hat\mu$
+of $\mu$ (212C) is identical with its c.l.d.\ version $\tilde\mu$
+(213E).   \Prf\ If $\mu$ is strictly localizable, then
+$\hat\mu=\tilde\mu$ by 213Ha.   If $\mu$ is complete and locally
+determined, then $\hat\mu=\mu=\tilde\mu$ (212D, 213Hf).\ \Qed
+
+\medskip
+
+\quad{\bf (ii)}  Write $\Sigma^f=\{G:G\in\Sigma,\,\mu G<\infty\}$,
+$\Tau^f=\{H:H\in\Tau,\,\nu H<\infty\}$.   For $G\in\Sigma^f$,
+$H\in\Tau^f$ let $\mu_G$, $\nu_H$ and $\lambda_{G\times H}$ be the
+subspace measures on $G$, $H$ and $G\times H$ respectively;  then
+$\lambda_{G\times H}$ is the c.l.d.\ product measure of $\mu_G$ and
+$\nu_H$ (251Q(ii-$\alpha$)).   Now $W\cap(G\times H)\in\Cal W$ for every
+$W\in\Lambda$.   \Prf\ $W\cap(G\times H)$ belongs to the domain of
+$\lambda_{G\times H}$, so by (b) of this proof, applied to the totally
+finite measures $\mu_G$ and $\nu_H$,
+
+$$\eqalignno{\lambda(W\cap(G\times H))
+&=\lambda_{G\times H}(W\cap(G\times H))\cr
+&=\int_G\int_H\chi(W\cap(G\times H))(x,y)\nu_H(dy)\mu_G(dx)\cr
+&=\int_G\int_Y\chi(W\cap(G\times H))(x,y)\nu(dy)\mu_G(dx)\cr
+\displaycause{because $\chi(W\cap(G\times H))(x,y)=0$ if
+$y\in Y\setminus H$, so we can use 131E}
+&=\int_X\int_Y\chi(W\cap(G\times H))(x,y)\nu(dy)\mu(dx)\cr}$$
+
+\noindent by 131E again, because
+$\int_Y\chi(W\cap(G\times H))(x,y)\nu(dy)=0$ if
+$x\in X\setminus G$.   So $W\cap(G\times H)\in\Cal W$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} In fact, $W\in\Cal W$ for every $W\in\Lambda$.   \Prf\
+Remember that we are supposing that $\nu$ is
+$\sigma$-finite.   Let $\sequencen{Y_n}$ be a non-decreasing sequence in
+$\Tau^f$ covering $Y$, and for each $n\in\Bbb N$ set
+$W_n=W\cap(X\times Y_n)$, $g_n(x)=\int\chi W_n(x,y)\nu(dy)$ whenever
+this is defined.   For any $G\in\Sigma^f$,
+
+\Centerline{$\int_Gg_nd\mu
+=\iint\chi(W\cap(G\times Y_n))(x,y)\nu(dy)\mu(dx)$}
+
+\noindent is defined and equal to $\lambda(W\cap(G\times Y_n))$, by
+(ii).   But this means, first, that $G\setminus\dom g_n$ is negligible,
+that is, that $\hat\mu(G\setminus\dom g_n)=0$.   Since this is so
+whenever $\mu G$ is finite, $\tilde\mu(X\setminus\dom g_n)=0$, and
+$g_n$ is defined
+$\tilde\mu$-a.e.;  but $\tilde\mu=\hat\mu$, so $g_n$ is defined
+$\hat\mu$-a.e., that is, $\mu$-a.e.\ (212Eb).   Next, if we set
+$E_{na}=\{x:x\in\dom g_n,\,g_n(x)\ge a\}$ for $a\in\Bbb R$, then
+$E_{na}\cap G\in\hat\Sigma$ whenever $G\in\Sigma^f$, where $\hat\Sigma$
+is the domain of $\hat\mu$;  by the definition in 213D, $E_{na}$ is
+measured by $\tilde\mu=\hat\mu$.   As $a$ is arbitrary, $g_n$ is
+$\mu$-virtually measurable (212Fa).
+
+We can therefore speak of $\int g_nd\mu$.   Now
+
+$$\eqalignno{\iint\chi W_n(x,y)\nu(dy)\mu(dx)
+&=\int g_nd\mu
+=\sup_{G\in\Sigma^f}\int_Gg_n\cr
+\displaycause{213B, because $\mu$ is semi-finite}
+&=\sup_{G\in\Sigma^f}\lambda(W\cap(G\times Y_n))
+=\lambda(W\cap(X\times Y_n))\cr}$$
+
+\noindent by the definition in 251F.   Thus
+$W\cap(X\times Y_n)\in\Cal W$.
+
+This is true for every $n\in\Bbb N$.   Because $\sequencen{Y_n}\uparrow
+Y$, $W\in\Cal W$, by (a-iii-$\beta$).\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} We can therefore return to part (c) of the argument
+above and conclude as before.
+}%end of proof of 252B
+
+\leader{252C}{}\cmmnt{ The theorem above is of course asymmetric, in
+that different hypotheses are imposed on the two factor measures $\mu$
+and $\nu$.   If we want a `symmetric' theorem we have to suppose that
+they are both $\sigma$-finite, as follows.
+
+\medskip
+
+\noindent}{\bf Corollary} Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be two
+$\sigma$-finite measure spaces, and $\lambda$ the c.l.d.\ product
+measure on $X\times Y$.   If $f$ is $\lambda$-integrable, then
+$\iint f(x,y)\nu(dy)\mu(dx)$ and $\iint f(x,y)\mu(dx)\nu(dy)$ are defined, finite and equal.
+
+\proof{ Since $\mu$ and $\nu$ are surely strictly localizable (211Lc),
+we can apply 252B from either side to conclude that
+
+\Centerline{$\iint f(x,y)\nu(dy)\mu(dx)
+=\int f\,d\lambda
+=\iint f(x,y)\mu(dx)\nu(dy)$.}
+}%end of proof of 252C
+
+\leader{252D}{}\cmmnt{ So many applications of Fubini's theorem are to
+indicator functions that I take a few lines to spell out the form
+which 252B takes in this case, as in parts (b)-(b*) of the proof there.
+
+\medskip
+
+\noindent}{\bf Corollary} Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+measure spaces and $\lambda$ the c.l.d.\ product measure on
+$X\times Y$.   Suppose that $\nu$ is $\sigma$-finite and that $\mu$ is
+either strictly localizable or complete and locally determined.
+
+(i) If $W\in\dom\lambda$, then $\int\nu^*W[\{x\}]\mu(dx)$ is defined in
+$[0,\infty]$ and equal to $\lambda W$.
+
+(ii) If $\nu$ is complete, we can write $\int\nu W[\{x\}]\mu(dx)$ in
+place of $\int\nu^*W[\{x\}]\mu(dx)$.
+
+\proof{ The point is just that $\int\chi W(x,y)\nu(dy)=\hat\nu W[\{x\}]$
+whenever either is defined, where $\hat\nu$ is the completion of $\nu$
+(212F).   Now 252B tells us that
+
+\Centerline{$\lambda W=\iint\chi W(x,y)\nu(dy)\mu(dx)
+=\int\hat\nu W[\{x\}]\mu(dx)$.}
+
+\noindent We always have $\hat\nu W[\{x\}]=\nu^*W[\{x\}]$, by the
+definition of $\hat\nu$ (212C);  and if $\nu$ is complete, then
+$\hat\nu=\nu$ so $\lambda W=\int\nu W[\{x\}]\mu(dx)$.
+}%end of proof of 252D
+
+\leader{252E}{Corollary} Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+measure spaces, with c.l.d.\ product $(X\times Y,\Lambda,\lambda)$.
+Suppose that $\nu$ is $\sigma$-finite and that $\mu$ has locally
+determined negligible sets\cmmnt{ (213I)}.   Then if $f$ is a
+$\Lambda$-measurable real-valued function defined on a subset of
+$X\times Y$, $y\mapsto f(x,y)$ is
+$\nu$-virtually measurable for $\mu$-almost every $x\in X$.
+
+\proof{ Let $\tilde f$ be a $\Lambda$-measurable extension of $f$ to a
+real-valued function defined everywhere in $X\times Y$ (121I), and set
+$\tilde f_x(y)=\tilde f(x,y)$ for all $x\in X$, $y\in Y$,
+
+\Centerline{$D=\{x:x\in X,\,\tilde f_x$ is $\nu$-virtually
+measurable$\}$.}
+
+If $G\in\Sigma$ and $\mu G<\infty$, then $G\setminus D$ is negligible.
+\Prf\ Let $\sequencen{Y_n}$ be a non-decreasing sequence of sets
+of finite measure covering $Y$ respectively, and set
+
+$$\eqalign{\tilde f_n(x,y)
+&=\tilde f(x,y)\text{ if }x\in G,\,y\in Y_n
+  \text{ and }|\tilde f(x,y)|\le n,\cr
+&=0\text{ for other }x\in X\times Y.\cr}$$
+
+\noindent Then each $\tilde f_n$ is
+$\lambda$-integrable, being bounded and $\Lambda$-measurable and zero
+off $G\times Y_n$.
+Consequently, setting $\tilde f_{nx}(y)=\tilde f_n(x,y)$,
+
+\Centerline{$\int(\int\tilde f_{nx}d\nu)\mu(dx)$ exists
+$=\int\tilde f_nd\lambda$.}
+
+\noindent But this surely means that $\tilde f_{nx}$ is
+$\nu$-integrable, therefore $\nu$-virtually measurable, for almost
+every $x\in X$.   Set
+
+\Centerline{$D_n=\{x:x\in X,\,\tilde f_{nx}$ is $\nu$-virtually
+measurable$\}$;}
+
+\noindent then every $D_n$ is $\mu$-conegligible, so
+$\bigcap_{n\in\Bbb N}D_n$ is conegligible.   But for any
+$x\in G\cap\bigcap_{n\in\Bbb N}D_n$,
+$\tilde f_x=\lim_{n\to\infty}\tilde f_{nx}$ is $\nu$-virtually
+measurable.   Thus
+$G\setminus D\subseteq X\setminus\bigcap_{n\in\Bbb N}D_n$ is
+negligible.\ \Qed
+
+This is true whenever $\mu G<\infty$.   As $G$ is arbitrary and $\mu$ has
+locally determined negligible sets, $D$ is conegligible.   But, for any
+$x\in D$, $y\mapsto f(x,y)$ is a restriction of $\tilde f_x$ and must be
+$\nu$-virtually measurable.
+}%end of proof of 252E
+
+\leader{252F}{}\cmmnt{ As a further corollary we can get some useful
+information about the c.l.d.\ product measure for arbitrary measure
+spaces.
+
+\medskip
+
+\noindent}{\bf Corollary} Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be two
+measure spaces, $\lambda$ the c.l.d.\ product measure on
+$X\times Y$, and $\Lambda$ its domain.   Let $W\in\Lambda$ be such
+that the vertical section $W[\{x\}]$ is $\nu$-negligible
+for $\mu$-almost every $x\in X$.   Then $\lambda W=0$.
+
+\proof{ Take $E\in\Sigma$, $F\in\Tau$ of finite measure.   Let
+$\lambda_{E\times F}$ be the subspace measure on $E\times F$.   By
+251Q(ii-$\alpha$) again,
+this is just the product of the subspace measures $\mu_E$ and $\nu_F$.
+We know that $W\cap(E\times F)$ is measured by $\lambda_{E\times F}$.
+At the same time, the vertical section $(W\cap(E\times
+F))[\{x\}]=W[\{x\}]\cap F$ is $\nu_F$-negligible for $\mu_E$-almost
+every $x\in E$.   Applying 252B to $\mu_E$ and $\nu_F$ and
+$\chi(W\cap(E\times F))$,
+
+\Centerline{$\lambda(W\cap(E\times F))
+=\lambda_{E\times F}(W\cap(E\times F))
+=\int_E\nu_F(W[\{x\}]\cap F)\mu_E(dx)=0$.}
+
+\noindent But looking at the definition in 251F, we see that this means
+that $\lambda W=0$, as claimed.
+}%end of proof of 252F
+
+\leader{252G}{}\cmmnt{ Theorem 252B and its corollaries depend on the
+factor measures $\mu$ and $\nu$ belonging to restricted classes.   There
+is a partial result which applies to all c.l.d.\ product measures, as
+follows.
+
+\medskip
+
+\noindent}{\bf Tonelli's theorem} Let $(X,\Sigma,\mu)$ and
+$(Y,\Tau,\nu)$ be
+measure spaces, and $(X\times Y,\Lambda,\lambda)$ their c.l.d.\ product.
+Let $f$ be a $\Lambda$-measurable $[-\infty,\infty]$-valued function
+defined on a member of $\Lambda$, and suppose that either
+$\iint|f(x,y)|\mu(dx)\nu(dy)$ or $\iint|f(x,y)|\nu(dy)\mu(dx)$ exists in
+$\Bbb R$.   Then $f$ is $\lambda$-integrable.
+
+\proof{ Because the construction of the product measure is symmetric in
+the two factors, it is enough to consider the case in which $\iint
+|f(x,y)|\nu(dy)\mu(dx)$ is defined and finite, as the same ideas will
+surely deal with the other case also.
+
+\medskip
+
+{\bf (a)} The first step is to check that $f$ is defined and finite
+$\lambda$-a.e.   \Prf\ Set $W=\{(x,y):(x,y)\in\dom f,\,f(x,y)$ is
+finite$\}$.   Then $W\in\Lambda$.   The hypothesis
+
+\Centerline{$\iint|f(x,y)|\nu(dy)\mu(dx)$ is defined and finite}
+
+\noindent includes the assertion
+
+\Centerline{$\int|f(x,y)|\nu(dy)$ is defined and finite for
+$\mu$-almost every $x$,}
+
+\noindent which implies that
+
+\Centerline{for $\mu$-almost every $x$, $f(x,y)$ is defined and finite
+for $\nu$-almost every $y$;}
+
+\noindent that is, that
+
+\Centerline{for $\mu$-almost every $x$, $W[\{x\}]$ is
+$\nu$-conegligible.}
+
+\noindent But by 252F this implies
+that $(X\times Y)\setminus W$ is $\lambda$-negligible, as required.\
+\Qed
+
+\medskip
+
+{\bf (b)} Let $h$ be any non-negative $\lambda$-simple
+function such that $h\le|f|\,\,\lambda$-a.e.   Then
+\ifdim\pagewidth>467pt$\int h$ cannot be greater than
+$\iint|f(x,y)|\nu(dy)\mu(dx)$.
+\else $\int h$ is at most $\iint|f(x,y)|\nu(dy)\mu(dx)$.\fi
+\Prf\ Set
+
+\Centerline{$W=\{(x,y):(x,y)\in\dom f,\,h(x,y)\le|f(x,y)|\}$,
+\quad$h'=h\times\chi W$;}
+
+\noindent then $h'$ is a simple function and $h'\eae h$.   Express $h'$
+as $\sum_{i=0}^na_i\chi W_i$ where $a_i\ge 0$ and $\lambda W_i<\infty$
+for each $i$.
+Let $\epsilon>0$.   For each $i\le n$ there are $E_i\in\Sigma$,
+$F_i\in\Tau$ such that $\mu E_i<\infty$, $\nu F_i<\infty$ and
+$\lambda(W_i\cap(E_i\times F_i))\ge\lambda W_i-\epsilon$.   Set
+$E=\bigcup_{i\le n}E_i$ and $F=\bigcup_{i\le n}F_i$.   Consider the
+subspace measures $\mu_E$ and $\nu_F$ and their product
+$\lambda_{E\times F}$ on $E\times F$;  then $\lambda_{E\times F}$ is the
+subspace measure on $E\times F$ defined from $\lambda$ (251Q(ii-$\alpha$)
+once more).
+Accordingly, applying 252B to the product $\mu_E\times\nu_F$,
+
+\Centerline{$\int_{E\times F}h'\,d\lambda
+=\int_{E\times F}h'\,d\lambda_{E\times F}
+=\int_E\int_Fh'(x,y)\nu_F(dy)\mu_E(dx)$.}
+
+For any $x$, we know that $h'(x,y)\le|f(x,y)|$ whenever $f(x,y)$ is
+defined.   So we can be sure that
+
+\Centerline{$\int_Fh'(x,y)\nu_F(dy)
+=\int h'(x,y)\chi F(y)\nu(dy)
+\le\int|f(x,y)|\nu(dy)$}
+
+\noindent at least whenever $\int_Fh'(x,y)\nu_F(dy)$ and
+$\int|f(x,y)|\nu(dy)$ are both defined, which is the case for almost
+every $x\in E$.   Consequently
+
+$$\eqalign{\int_{E\times F}h'\,d\lambda
+&=\int_E\int_Fh'(x,y)\nu_F(dy)\mu_E(dx)\cr
+&\le\int_E\int|f(x,y)|\nu(dy)\mu(dx)
+\le\iint|f(x,y)|\nu(dy)\mu(dx).\cr}$$
+
+On the other hand,
+
+$$\eqalign{\int h'\,d\lambda-\int_{E\times F}h'\,d\lambda
+&=\sum_{i=0}^na_i\lambda(W_i\setminus(E\times F))\cr
+&\le\sum_{i=0}^na_i\lambda(W_i\setminus(E_i\times F_i))
+\le\epsilon\sum_{i=0}^na_i.\cr}$$
+
+\noindent So
+
+\Centerline{$\int h\,d\lambda
+=\int h'd\lambda
+\le\iint|f(x,y)|\nu(dy)\mu(dx)$$+\epsilon\sum_{i=0}^na_i$.}
+
+\noindent As $\epsilon$ is arbitrary,
+$\int h\,d\lambda
+\le\iint|f(x,y)|\nu(dy)\mu(dx)$, as claimed.\ \Qed
+
+\medskip
+
+{\bf (c)} This is true whenever $h$ is a $\lambda$-simple function
+less than or equal to $|f|\,\,\lambda$-a.e.   But $|f|$ is
+$\Lambda$-measurable and $\lambda$ is semi-finite (251Ic), so this is
+enough to ensure that $|f|$ is $\lambda$-integrable (213B), which
+(because $f$ is supposed to be $\Lambda$-measurable) in
+turn implies that $f$ is $\lambda$-integrable.
+}%end of proof of 252G
+
+\leader{252H}{\bf Corollary} Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+$\sigma$-finite measure spaces, $\lambda$ the c.l.d.\ product measure on
+$X\times Y$, and $\Lambda$ its domain.
+
+(a) Let $f$ be a
+$\Lambda$-measurable $[-\infty,\infty]$-valued function defined on a member of
+$\Lambda$.   Then if one of
+
+\Centerline{$\int_{X\times Y}|f(x,y)|\lambda(d(x,y))$,
+\quad$\int_Y\int_X|f(x,y)|\mu(dx)\nu(dy)$,
+\quad$\int_X\int_Y|f(x,y)|\nu(dy)\mu(dx)$}
+
+\noindent exists in $\Bbb R$, so do the other two, and in this case
+
+\Centerline{$\int_{X\times Y}f(x,y)\lambda(d(x,y))
+=\int_Y\int_Xf(x,y)\mu(dx)\nu(dy)
+=\int_X\int_Yf(x,y)\nu(dy)\mu(dx)$.}
+
+(b)\dvAnew{2013} Let $f$ be a
+$\Lambda$-measurable $[0,\infty]$-valued function defined on a member of
+$\Lambda$.   Then
+
+\Centerline{$\int_{X\times Y}f(x,y)\lambda(d(x,y))
+=\int_Y\int_Xf(x,y)\mu(dx)\nu(dy)
+=\int_X\int_Yf(x,y)\nu(dy)\mu(dx)$}
+
+\noindent in the sense that if one of the integrals is defined in
+$[0,\infty]$ so are the other two, and all three are then equal.
+
+\proof{{\bf (a)(i)} Suppose that $\int|f|d\lambda$ is finite.
+Because both $\mu$ and $\nu$ are $\sigma$-finite, 252B tells us that
+
+\Centerline{$\iint|f(x,y)|\mu(dx)\nu(dy)$,
+\quad$\iint|f(x,y)|\nu(dy)\mu(dx)$}
+
+\noindent both exist and are equal to
+$\int|f|d\lambda$, while
+
+\Centerline{$\iint f(x,y)\mu(dx)\nu(dy)$,
+\quad$\iint f(x,y)\nu(dy)\mu(dx)$}
+
+\noindent both exist and are equal to $\int fd\lambda$.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $\iint|f(x,y)|\nu(dy)\mu(dx)$ exists in
+$\Bbb R$.   Then 252G tells us that $|f|$ is
+$\lambda$-integrable, so we can
+use (i) to complete the argument.   Exchanging the coordinates, the same
+argument applies if $\iint|f(x,y)|\mu(dx)\nu(dy)$ exists in $\Bbb R$.
+
+\medskip
+
+{\bf (b)(i)} If $\int fd\lambda$ is defined, the result is immediate from
+252B.
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $\iint_Xf(x,y)\nu(dy)\mu(dx)$ is defined.
+As in part (a) of the proof of 252G, but this time setting
+$W=\dom f$, we see that $W\in\Lambda$ and that $W[\{x\}]$ is
+$\nu$-conegligible for $\mu$-almost every $x$, so that $W$ is
+$\lambda$-conegligible.   Since $f$ is non-negative, $\Lambda$-measurable
+and defined almost everywhere, $\int fd\lambda$ is defined in $[0,\infty]$
+and we are in case (i).
+}%end of proof of 252H
+
+\leader{252I}{Corollary} Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+measure spaces, $\lambda$ the c.l.d.\ product measure on $X\times
+Y$, and $\Lambda$ its domain.   Take $W\in\Lambda$.   If
+either of the integrals
+
+\Centerline{$\int\mu^*W^{-1}[\{y\}]\nu(dy)$,
+\quad$\int\nu^*W[\{x\}]\mu(dx)$}
+
+\noindent exists and is finite, then $\lambda W<\infty$.
+
+\proof{ Apply 252G with $f=\chi W$, remembering that
+
+\Centerline{$\mu^*W^{-1}[\{y\}]=\int\chi W(x,y)\mu(dx)$,
+\quad$\nu^*W[\{x\}]=\int\chi W(x,y)\nu(dy)$}
+
+\noindent whenever the integrals are defined, as in the proof of 252D.
+}%end of proof of 252I
+
+\cmmnt{
+\leader{252J}{Remarks} 252H is the basic form of Fubini's theorem;  it
+is not a
+coincidence that most authors avoid non-$\sigma$-finite spaces in this
+context.    The next two examples exhibit some of the
+difficulties which can arise if we leave the familiar territory of
+more-or-less Borel measurable  functions on $\sigma$-finite spaces.
+The first is a classic.
+}%end of comment
+
+\leader{252K}{Example} Let $(X,\Sigma,\mu)$ be $[0,1]$ with Lebesgue
+measure, and let $(Y,\Tau,\nu)$ be $[0,1]$ with counting measure.
+\cmmnt{
+
+\spheader 252Ka} Consider the set
+
+\Centerline{$W=\{(t,t):t\in[0,1]\}\subseteq X\times Y$.}
+
+\cmmnt{
+\noindent We observe that $W$ is expressible as
+
+\Centerline{$\bigcap_{n\in\Bbb N}\bigcup_{k=0}^n
+[\Bover{k}{n+1},\Bover{k+1}{n+1}]\times[\Bover{k}{n+1},
+\Bover{k+1}{n+1}]\in\Sigma\tensorhat\Tau$.}
+
+\noindent If we look at the sections
+
+\Centerline{$W^{-1}[\{t\}]=W[\{t\}]=\{t\}$}
+
+\noindent for $t\in [0,1]$, we have
+}
+
+\ifwithproofs
+\Centerline{$\iint\chi W(x,y)\mu(dx)\nu(dy)
+=\int\mu W^{-1}[\{y\}]\nu(dy)=\int 0\,\nu(dy)=0$,}
+
+\Centerline{$\iint\chi W(x,y)\nu(dy)\mu(dx)
+=\int\nu W[\{x\}]\mu(dx)=\int 1\,\mu(dx)=1$,}
+\else
+\Centerline{$\iint\chi W(x,y)\mu(dx)\nu(dy)
+=0$,}
+
+\Centerline{$\iint\chi W(x,y)\nu(dy)\mu(dx)
+=1$,}
+\fi
+
+\noindent so the two repeated integrals differ.
+\cmmnt{It is therefore not
+generally possible to reverse the order of repeated integration, even
+for a non-negative measurable function in which both repeated integrals
+exist and are finite.
+}%end of comment
+
+\cmmnt{
+\spheader 252Kb Because the set $W$ of part (a) actually belongs
+to $\Sigma\tensorhat\Tau$, we know that it is measured by the c.l.d.\
+product measure $\lambda$, and 252F (applied with the coordinates
+reversed) tells us that $\lambda W=0$.
+}%end of comment
+
+\cmmnt{
+\spheader 252Kc It is in fact easy to give a
+full description of $\lambda$.
+
+\medskip
+
+\quad{\bf (i)} The point is that a set $W\subseteq[0,1]\times[0,1]$
+belongs to the domain $\Lambda$ of $\lambda$ iff every horizontal
+section $W^{-1}[\{y\}]$ is Lebesgue measurable.   \prooflet{\Prf\
+($\alpha$) If $W\in\Lambda$, then, for every $b\in[0,1]$,
+$\lambda([0,1]\times\{b\})$ is finite, so $W\cap([0,1]\times\{b\})$ is a
+set of finite measure, and
+
+\Centerline{$\lambda(W\cap([0,1]\times\{b\}))
+=\int\mu(W\cap([0,1]\times\{b\}))^{-1}[\{y\}]\nu(dy)
+=\mu W^{-1}[\{b\}]$}
+
+\noindent by 252D, because $\mu$ is $\sigma$-finite, $\nu$ is both
+strictly localizable and complete and locally determined, and
+
+$$\eqalign{(W\cap([0,1]\times\{b\}))^{-1}[\{y\}]
+&=W^{-1}[\{b\}]\text{ if }y=b,\cr
+&=\emptyset\text{ otherwise.}\cr}$$
+
+\noindent As $b$ is arbitrary, every horizontal section of $W$ is
+measurable.   ($\beta$) If every horizontal section of $W$ is
+measurable, let $F\subseteq[0,1]$ be any set of finite measure for
+$\nu$;  then $F$ is finite, so
+
+\Centerline{$W\cap([0,1]\times F)
+=\bigcup_{y\in F}W^{-1}[\{y\}]\times\{y\}
+\in\Sigma\tensorhat\Tau\subseteq\Lambda$.}
+
+\noindent But it follows that $W$ itself belongs to $\Lambda$, by
+251H.\ \Qed
+}%end of prooflet
+
+\medskip
+
+\quad{\bf (ii)} Now some of the same calculations show that for every
+$W\in\Lambda$,
+
+\Centerline{$\lambda W=\sum_{y\in [0,1]}\mu W^{-1}[\{y\}]$.}
+
+\prooflet{\noindent\Prf\ For any finite $F\subseteq[0,1]$,
+
+$$\eqalign{\lambda(W\cap([0,1]\times F))
+&=\int\mu(W\cap([0,1]\times F))^{-1}[\{y\}]\nu(dy)\cr
+&=\int_F\mu W^{-1}[\{y\}]\nu(dy)
+=\sum_{y\in F}\mu W^{-1}[\{y\}].\cr}$$
+
+\noindent So
+
+\Centerline{$\lambda W=\sup_{F\subseteq[0,1]\text{ is finite}}
+\sum_{y\in F}\mu W^{-1}[\{y\}]=\sum_{y\in [0,1]}\mu W^{-1}[\{y\}]$.
+\Qed}
+}%end of prooflet
+}%end of comment
+
+\cmmnt{
+\leader{252L}{Example} For the second example, I turn to a problem that
+can arise if we neglect to check that a function is measurable as a
+function of two variables.
+
+Let $(X,\Sigma,\mu)=(Y,\Tau,\nu)$ be $\omega_1$, the first uncountable
+ordinal (2A1Fc), with the countable-cocountable measure (211R).   Set
+
+\Centerline{$W=\{(\xi,\eta):\xi\le\eta<\omega_1\}\subseteq X\times Y$.}
+
+\noindent Then all the horizontal sections
+$W^{-1}[\{\eta\}]=\{\xi:\xi\le\eta\}$ are countable, so
+
+\Centerline{$\int\mu W^{-1}[\{\eta\}]\nu(d\eta)
+=\int 0\,\nu(d\eta)
+=0$,}
+
+\noindent while all the vertical sections
+$W[\{\xi\}]=\{\eta:\xi\le\eta<\omega_1\}$ are cocountable, so
+
+\Centerline{$\int\nu W[\{\xi\}]\mu(d\xi)
+=\int 1\,\mu(d\xi)
+=1$.}
+
+\noindent Because the two repeated integrals are different, they cannot
+both be equal to the measure of $W$, and the sole resolution is to say
+that $W$ is not measured by the product measure.
+}%end of comment
+
+\cmmnt{
+\leader{252M}{Remark} A third kind of difficulty in the formula
+
+\Centerline{$\iint f(x,y)dxdy=\iint f(x,y)dydx$}
+
+\noindent can arise even on probability spaces with
+$\Sigma\tensorhat\Tau$-measurable real-valued functions defined
+everywhere if we neglect to check that $f$ is integrable with respect to
+the product measure.   In 252H, we do need the hypothesis that one of
+
+\Centerline{$\int_{X\times Y}|f(x,y)|\lambda(d(x,y))$,
+\quad$\int_Y\int_X|f(x,y)|\mu(dx)\nu(dy)$,
+\quad$\int_X\int_Y|f(x,y)|\nu(dy)\mu(dx)$}
+
+\noindent is finite.   For examples to show this, see 252Xf and 252Xg.
+}%end of comment
+
+\leader{252N}{Integration through ordinate sets I:  Proposition} Let
+$(X,\Sigma,\mu)$ be a complete locally determined measure space, and
+$\lambda$ the c.l.d.\ product measure on $X\times\Bbb R$, where $\Bbb R$
+is given Lebesgue measure;  write $\Lambda$ for the domain of $\lambda$.
+For any
+$[0,\infty]$-valued function $f$ defined on a conegligible subset of
+$X$, write $\Omega_f$, $\Omega'_f$ for the {\bf ordinate sets}
+
+\Centerline{$\Omega_f=\{(x,a):x\in\dom f,\,0\le a\le f(x)\}
+\subseteq X\times\Bbb R$,}
+
+\Centerline{$\Omega'_f=\{(x,a):x\in\dom f,\,0\le a<f(x)\}
+\subseteq X\times\Bbb R$.}
+
+\noindent Then
+
+\Centerline{$\lambda\Omega_f=\lambda\Omega'_f=\int fd\mu$}
+
+\noindent in the sense that if one of these is defined in $[0,\infty]$,
+so are the other two, and they are equal.
+
+\proof{{\bf (a)} If $\Omega_f\in\Lambda$, then
+
+\Centerline{$\int f(x)\mu(dx)
+=\int\nu\{y:(x,y)\in\Omega_f\}\mu(dx)
+=\lambda\Omega_f$}
+
+\noindent by 252D, writing $\mu$ for Lebesgue measure, because $f$ is
+defined almost everywhere.   Similarly, if $\Omega'_f\in\Lambda$,
+
+\Centerline{$\int f(x)\mu(dx)
+=\int\nu\{y:(x,y)\in\Omega'_f\}\mu(dx)
+=\lambda\Omega'_f$.}
+
+\medskip
+
+{\bf (b)} If $\int fd\mu$ is defined, then $f$ is $\mu$-virtually
+measurable, therefore measurable (because $\mu$ is complete);
+again because $\mu$ is complete, $\dom f\in\Sigma$.   So
+
+\Centerline{$\Omega'_f
+=\bigcup_{q\in\Bbb Q,q>0}\{x:x\in\dom f,\,f(x)>q\}\times[0,q]$,}
+
+\Centerline{$\Omega_f
+=\bigcap_{n\ge 1}\bigcup_{q\in\Bbb Q,q>0}
+  \{x:x\in\dom f,\,f(x)\ge q-\Bover1n\}\times[0,q]$}
+
+\noindent belong to $\Lambda$, so that $\lambda\Omega_f$ and
+$\lambda\Omega'_f$ are defined.   Now both are equal to
+$\int fd\mu$, by (a).
+}%end of proof of 252N
+
+\leader{252O}{Integration through ordinate sets II:  Proposition} Let
+$(X,\Sigma,\mu)$ be a measure space, and $f$ a non-negative $\mu$-virtually
+measurable function defined on a conegligible subset of $X$.   Then
+
+\Centerline{$\int fd\mu
+=\int_0^{\infty}\mu^*\{x:x\in\dom f,\,f(x)\ge t\}dt
+=\int_0^{\infty}\mu^*\{x:x\in\dom f,\,f(x)>t\}dt$}
+
+\noindent in $[0,\infty]$, where the integrals $\int\ldots dt$ are taken
+with respect to Lebesgue measure.
+
+\proof{ Completing $\mu$ does not change the integral of $f$ or the outer
+measure $\mu^*$ (212Fb, 212Ea), so we may suppose that $\mu$ is complete,
+in which case $\dom f$ and $f$ will be measurable.
+For $n$, $k\in\Bbb N$ set $E_{nk}=\{x:x\in\dom f,\,f(x)>2^{-n}k\}$,
+$g_n(x)=2^{-n}\sum_{k=1}^{4^n}\chi E_{nk}$.   Then $\sequencen{g_n}$ is
+a non-decreasing sequence of measurable functions converging to $f$ at
+every point of $\dom f$, so $\int fd\mu=\lim_{n\to\infty}\int g_nd\mu$
+and $\mu\{x:f(x)>t\}=\lim_{n\to\infty}\mu\{x:g_n(x)>t\}$ for every
+$t\ge 0$;  consequently
+
+\Centerline{$\int_0^{\infty}\mu\{x:f(x)>t\}dt
+=\lim_{n\to\infty}\int_0^{\infty}\mu\{x:g_n(x)>t\}dt$.}
+
+\noindent On the other hand,
+$\mu\{x:g_n(x)>t\}=\mu E_{nk}$ if $1\le k\le 4^n$ and
+$2^{-n}(k-1)\le t<2^{-n}k$, $0$ if $t\ge 2^n$, so that
+
+\Centerline{$\int_0^{\infty}\mu\{x:g_n(x)>t\}dt$
+$=\sum_{k=1}^{4^n}2^{-n}\mu E_{nk}$
+$=\int g_n\,d\mu$,}
+
+\noindent for every $n\in\Bbb N$.   So
+$\int_0^{\infty}\mu\{x:f(x)>t\}dt=\int fd\mu$.
+
+Now $\mu\{x:f(x)\ge t\}=\mu\{x:f(x)>t\}$ for almost all $t$.
+\Prf\ Set $C=\{t:\mu\{x:f(x)>t\}<\infty\}$, $h(t)=\mu\{x:f(x)>t\}$ for
+$t\in C$.   If $C$ is not empty,
+$h:C\to\coint{0,\infty}$ is monotonic, so is continuous
+almost everywhere in $C$ (222A).   But at any point of
+$C\setminus\{\inf C\}$ at which $h$ is continuous,
+
+\Centerline{$\mu\{x:f(x)\ge t\}=\lim_{s\uparrow t}\mu\{x:f(x)>s\}
+=\mu\{x:f(x)>t\}$.}
+
+\noindent So we have the result, since
+$\mu\{x:f(x)\ge t\}=\mu\{x:f(x)>t\}=\infty$ for any
+$t\in\coint{0,\infty}\setminus C$.\ \Qed
+
+Accordingly $\int_0^{\infty}\mu\{x:f(x)\ge t\}dt$ is also equal to
+$\int fd\mu$.
+}%end of proof of 252O
+
+\leader{*252P}{}\cmmnt{ If we work through the ideas of 252B for
+$\Sigma\tensorhat\Tau$-measurable functions, we get the following, which
+is sometimes useful.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a measure space, and
+$(Y,\Tau,\nu)$ a $\sigma$-finite measure space.   Then for any
+$\Sigma\tensorhat\Tau$-measurable function
+$f:X\times Y\to[0,\infty]$,
+$x\mapsto\int f(x,y)\nu(dy):X\to[0,\infty]$ is $\Sigma$-measurable.
+If $\mu$ is semi-finite,
+$\iint f(x,y)\nu(dy)\mu(dx)\discretionary{}{}{}=\int fd\lambda$,
+where $\lambda$ is the c.l.d.\ product measure on $X\times Y$.
+
+\proof{{\bf (a)} Let $\sequencen{Y_n}$ be a non-decreasing sequence of
+subsets of $Y$ of finite measure with union $Y$.   Set
+
+$$\eqalign{\Cal A
+&=\{W:W\subseteq X\times Y,\,W[\{x\}]\in\Tau\text{ for every }x\in X,\cr
+&\qquad\qquad\qquad\qquad
+x\mapsto\nu(Y_n\cap W[\{x\}])\text{ is }\Sigma\text{-measurable for
+every }n\in\Bbb N\}.\cr}$$
+
+\noindent Then $\Cal A$ is a Dynkin class of subsets of $X\times Y$
+including $\{E\times F:E\in\Sigma,\,F\in\Tau\}$, so includes
+$\Sigma\tensorhat\Tau$, by the Monotone Class Theorem again (136B).
+
+This means that if $W\in\Sigma\tensorhat\Tau$, then
+
+\Centerline{$\mu W[\{x\}]=\sup_{n\in\Bbb N}\nu(Y_n\cap W[\{x\}])$}
+
+\noindent is defined for every $x\in X$ and is a $\Sigma$-measurable
+function of $x$.
+
+\medskip
+
+{\bf (b)} Now, for $n$, $k\in\Bbb N$, set
+
+\Centerline{$W_{nk}=\{(x,y):f(x,y)\ge 2^{-n}k\}$,
+\quad$g_n=\sum_{k=1}^{4^n}2^{-n}\chi W_{nk}$.}
+
+\noindent Then if we set
+
+\Centerline{$h_n(x)
+=\int g_n(x,y)\nu(dy)$$=\sum_{k=1}^{4^n}2^{-n}\nu W_{nk}[\{x\}]$}
+
+\noindent for $n\in\Bbb N$ and $x\in X$, $h_n:X\to[0,\infty]$ is
+$\Sigma$-measurable, and
+
+\Centerline{$\lim_{n\to\infty}h_n(x)
+=\int(\lim_{n\to\infty}g_n(x,y))\nu(dy)=\int f(x,y)\nu(dy)$}
+
+\noindent for every $x$, because $\sequencen{g_n(x,y)}$ is a
+non-decreasing sequence with limit $f(x,y)$ for all $x\in X$, $y\in Y$.
+So $x\mapsto\int f(x,y)\nu(dy)$ is defined everywhere in $X$ and is
+$\Sigma$-measurable.
+
+\medskip
+
+{\bf (c)} If $E\subseteq X$ is measurable and has finite measure, then
+$\int_E\int f(x,y)\nu(dy)\mu(dx)=\int_{E\times Y}fd\lambda$, applying
+252B to the product of the subspace measure $\mu_E$ and $\nu$ (and using
+251Q to check that the product of $\mu_E$ and $\nu$ is the subspace
+measure on $E\times Y$).   Now if $\lambda W$ is defined and finite,
+there must be a non-decreasing sequence $\sequencen{E_n}$ of subsets of
+$X$ of finite measure such that
+$\lambda W=\sup_{n\in\Bbb N}\lambda(W\cap(E_n\times Y))$, so that
+$W\setminus\bigcup_{n\in\Bbb N}(E_n\times Y)$ is negligible, and
+
+$$\eqalignno{\int_Wfd\lambda
+&=\lim_{n\to\infty}\int_{W\cap(E_n\times Y)}fd\lambda\cr
+\displaycause{by B.Levi's theorem applied to
+$\sequencen{f\times\chi(W\cap(E_n\times Y))}$}
+&\le\lim_{n\to\infty}\int_{E_n\times Y}fd\lambda
+=\lim_{n\to\infty}\int_{E_n}\int f(x,y)\nu(dy)\mu(dx)\cr
+&\le\iint f(x,y)\nu(dy)\mu(dx).\cr}$$
+
+\noindent By 213B once more,
+
+\Centerline{$\int fd\lambda
+=\sup_{\lambda W<\infty}\int_Wfd\lambda
+\le\iint f(x,y)\nu(dy)\mu(dx)$.}
+
+\noindent But also, if $\mu$ is semi-finite,
+
+\Centerline{$\iint f(x,y)\nu(dy)\mu(dx)
+=\sup_{\mu E<\infty}\int_E\int f(x,y)\nu(dy)\mu(dx)
+\le\int fd\lambda$,}
+
+\noindent so $\int fd\lambda=\iint f(x,y)\nu(dy)\mu(dx)$, as claimed.
+}%end of proof of 252P
+
+\leader{252Q}{The volume of a ball}\dvro{ The Lebesgue measure of the
+unit ball in $\BbbR^r$ is}
+{ We now have all the essential
+machinery to perform a little calculation which is, I suppose, desirable
+simply as general knowledge:  the volume of the unit ball
+$\{x:\|x\|\le 1\}=\{(\xi_1,\ldots,\xi_r):\sum_{i=1}^r\xi_i^2\le 1\}$ in
+$\BbbR^r$.   In fact, from a theoretical point
+of view, I think we could very nearly just call it $\beta_r$ and leave
+it at that;  but since there is a general formula in terms of
+$\beta_2=\pi$ and factorials, it seems shameful not to present it.   The
+calculation has
+nothing to do with Lebesgue integration, and I could dismiss it as mere
+advanced calculus;  but since only a minority of mathematicians are now
+taught calculus to this level with reasonable rigour before being
+introduced to the Lebesgue integral, I do not doubt that many readers,
+like myself, missed some of the subtleties involved.   I
+therefore take the space to spell the details out in the style used
+elsewhere in this volume, recognising that the machinery employed is a
+good deal more elaborate than is really necessary for this result.
+
+\header{252Qa}{\bf (a)} The first basic fact we need is that, for any
+$n\ge 1$,
+
+$$\eqalign{I_n=\int_{-\pi/2}^{\pi/2}\cos^nt\,dt
+&=\Bover{(2k)!}{(2^kk!)^2}\pi\text{ if }n=2k\text{ is even},\cr
+&=2\Bover{(2^kk!)^2}{(2k+1)!}\text{ if }n=2k+1\text{ is odd}.\cr}$$
+
+\prooflet{\noindent \Prf\  For $n=0$, of course,
+
+\Centerline{$I_0=\int_{-\pi/2}^{\pi/2}1\,dt=\pi
+=\Bover{0!}{(2^00!)^2}\pi$,}
+
+\noindent while for $n=1$ we have
+
+\Centerline{$I_1=\sin\bover{\pi}2-\sin(-\bover{\pi}2)=2
+=2\Bover{(2^00!)^2}{1!}$,}
+
+\noindent using the Fundamental Theorem of Calculus (225L) and the fact
+that $\sin'=\cos$ is bounded.   For the inductive step to $n+1\ge 2$, we
+can use integration by parts (225F):
+
+$$\eqalign{I_{n+1}
+&=\int_{-\pi/2}^{\pi/2}\cos t\cos^nt\,dt\cr
+&=\sin\Bover{\pi}2\cos^n\Bover{\pi}2
+   -\sin(-\Bover{\pi}2)\cos^n(-\Bover{\pi}2)
+   +\int_{-\pi/2}^{\pi/2}\sin t\cdot n\cos^{n-1}t\cdot\sin t\,dt\cr
+&=n\int_{-\pi/2}^{\pi/2}(1-\cos^2t)\cos^{n-1}t\,dt
+=n(I_{n-1}-I_{n+1}),\cr}$$
+
+\noindent   so that $I_{n+1}=\Bover{n}{n+1}I_{n-1}$.
+Now the given formulae follow by an easy induction.\ \Qed}
+
+\spheader 252Qb The next result is that, for any $n\in\Bbb N$
+and any $a\ge 0$,
+
+\Centerline{$\int_{-a}^a(a^2-s^2)^{n/2}ds=I_{n+1}a^{n+1}$.}
+
+\prooflet{\noindent\Prf\ Of course this is an integration by
+substitution;  but the singularity of the integrand at $s=\pm a$
+complicates the issue slightly.   I offer the following argument.   If
+$a=0$ the
+result is trivial;  take $a>0$.   For $-a\le b\le a$, set
+$F(b)=\int_{-a}^b(a^2-s^2)^{n/2}ds$.   Because the integrand is
+continuous, $F'(b)$ exists and is equal to $(a^2-b^2)^{n/2}$ for
+$-a<b<a$ (222H).   Set $G(t)=F(a\sin t)$;  then $G$ is continuous and
+
+\Centerline{$G'(t)=aF'(a\sin t)\cos t=a^{n+1}\cos^{n+1}t$}
+
+\noindent for
+$-\bover{\pi}2<t<\bover{\pi}2$.   Consequently
+
+$$\eqalignno{\int_{-a}^a(a^2-s^2)^{n/2}ds
+&=F(a)-F(-a)
+=G(\Bover{\pi}2)-G(-\Bover{\pi}2)
+=\int_{-\pi/2}^{\pi/2}G'(t)dt\cr
+\noalign{\noindent (by 225L, as before)}
+&=a^{n+1}I_{n+1},\cr}$$
+
+\noindent as required.\ \Qed}
+
+\spheader 252Qc Now at last we are ready for the balls
+$B_r=\{x:x\in\BbbR^r,\,\|x\|\le 1\}$.   Let $\mu_r$ be Lebesgue
+measure on $\BbbR^r$, and set $\beta_r=I_1I_2\ldots I_r$ for $r\ge 1$.
+I claim that, writing
+
+\Centerline{$B_r(a)=\{x:x\in\BbbR^r,\,\|x\|\le a\}$,}
+
+\noindent we have $\mu_r(B_r(a))=\beta_ra^r$ for every $a\ge 0$.
+\prooflet{\Prf\ Induce on $r$.   For $r=1$ we have $\beta_1=2$,
+$B_1(a)=[-a,a]$, so the result is trivial.   For the inductive step to
+$r+1$, we have
+
+$$\eqalignno{\mu_{r+1}B_{r+1}(a)
+&=\int\mu_r\{x:(x,t)\in B_{r+1}(a)\}dt \cr
+\noalign{\noindent (putting 251N and 252D together, and using the fact
+that $B_{r+1}(a)$ is closed, therefore measurable)}
+&=\int_{-a}^a\mu_rB_r(\sqrt{a^2-t^2})dt\cr
+\noalign{\noindent (because $(x,t)\in B_{r+1}(a)$ iff $|t|\le a$ and
+$\|x\|\le\sqrt{a^2-t^2}$)}
+&=\int_{-a}^a\beta_r(a^2-t^2)^{r/2}dt\cr
+\noalign{\noindent (by the inductive hypothesis)}
+&=\beta_ra^{r+1}I_{r+1}\cr
+\noalign{\noindent (by (b) above)}
+&=\beta_{r+1}a^{r+1}\cr}$$
+
+\noindent (by the definition of $\beta_{r+1}$).   Thus the induction
+continues.\ \Qed}
+
+\spheader 252Qd In particular, the $r$-dimensional Lebesgue
+measure of the $r$-dimensional ball $B_r=B_r(1)$ is just
+$\beta_r=I_1\ldots I_r$.   Now an easy induction on $k$ shows that
+}%end of \dvro
+
+$$\eqalign{\beta_r
+&=\Bover{1}{k!}\pi^k\text{ if }r=2k\text{ is even},\cr
+&=\Bover{2^{2k+1}k!}{(2k+1)!}\pi^k\text{ if }r=2k+1\text{ is odd}.\cr}$$
+
+\cmmnt{
+\spheader 252Qe Note that in part (c) of the proof we saw that
+$\{x:x\in\BbbR^r,\,\|x\|\le a\}$ has measure $\beta_ra^r$ for every
+$a\ge 0$.
+
+The formulae here are consistent with the assignation $\beta_0=1$;
+which corresponds to saying that $\BbbR^0=\{\emptyset\}$, that
+$\mu_0\BbbR^0=1$ and that $B_0=\{\emptyset\}$.   Taking $\mu_0\BbbR^0$ to
+be $1$ is itself consistent with the idea that, following 251N, the product
+measure $\mu_0\times\mu_r$ ought to match $\mu_{0+r}$ on $\BbbR^{0+r}$.
+}%end of comment
+
+
+\leader{252R}{Complex-valued functions}\cmmnt{ It is easy to apply the
+results of 252B-252I
+above to complex-valued functions, by considering their real and
+imaginary parts.   Specifically:
+
+\medskip
+
+}{\bf (a)} Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+measure spaces, and $\lambda$ the c.l.d.\ product measure on $X\times
+Y$.   Suppose that $\nu$ is $\sigma$-finite and that $\mu$ is either
+strictly localizable or complete and locally determined.   Let $f$ be a
+$\lambda$-integrable
+complex-valued function.  Then $\iint f(x,y)\nu(dy)\mu(dx)$ is defined
+and equal to $\int fd\lambda$.
+
+\spheader 252Rb Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$
+be measure spaces, $\lambda$ the c.l.d.\ product measure on $X\times
+Y$, and $\Lambda$ its domain.
+Let $f$ be a $\Lambda$-measurable complex-valued function defined on a
+member of $\Lambda$, and suppose that either
+$\iint|f(x,y)|\mu(dx)\nu(dy)$ or $\iint|f(x,y)|\nu(dy)\mu(dx)$ is
+defined and finite.   Then $f$ is $\lambda$-integrable.
+
+\spheader 252Rc Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+$\sigma$-finite measure spaces, $\lambda$ the c.l.d.\ product
+measure on $X\times Y$, and $\Lambda$ its domain.   Let $f$ be a
+$\Lambda$-measurable complex-valued function defined on a member of
+$\Lambda$.   Then if one of
+
+\Centerline{$\int_{X\times Y}|f(x,y)|\lambda(d(x,y))$,
+\quad$\int_Y\int_X|f(x,y)|\mu(dx)\nu(dy)$,
+\quad$\int_X\int_Y|f(x,y)|\nu(dy)\mu(dx)$}
+
+\noindent exists in $\Bbb R$, so do the other two, and in this case
+
+\Centerline{$\int_{X\times Y}f(x,y)\lambda(d(x,y))
+=\int_Y\int_Xf(x,y)\mu(dx)\nu(dy)
+=\int_X\int_Yf(x,y)\nu(dy)\mu(dx)$.}
+
+\exercises{
+\leader{252X}{Basic exercises (a)}
+%\spheader 252Xa
+Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+measure spaces, and
+$\lambda$ the c.l.d.\ product measure on $X\times Y$.   Let $f$ be a
+$\lambda$-integrable real-valued function such that
+$\int_{E\times F}f=0$ whenever $E\in\Sigma$, $F\in\Tau$, $\mu E<\infty$
+and $\nu F<\infty$.   Show that $f=0\,\,\lambda$-a.e.   \Hint{use 251Ie
+to show that $\int_Wf=0$ whenever $\lambda W<\infty$.}
+%252B
+
+\spheader 252Xb Let $f$, $g:\Bbb R\to\Bbb R$ be two
+non-decreasing functions, and $\mu_f$, $\mu_g$ the associated
+Lebesgue-Stieltjes measures (see 114Xa).   Set
+
+\Centerline{$f(x^+)=\lim_{t\downarrow x}f(t)$,
+\quad$f(x^-)=\lim_{t\uparrow x}f(t)$}
+
+\noindent for each $x\in\Bbb R$, and define $g(x^+)$, $g(x^-)$
+similarly.   Show that whenever $a\le b$ in $\Bbb R$,
+
+$$\eqalign{\int_{[a,b]}f(x^-)\mu_g(dx)&+\int_{[a,b]}g(x^+)\mu_f(dx)
+=g(b^+)f(b^+)-g(a^-)f(a^-)\cr
+&=\int_{[a,b]}\Bover12(f(x^-)+f(x^+))\mu_g(dx)
+  +\int_{[a,b]}\Bover12((g(x^-)+g(x^+))\mu_f(dx).\cr}$$
+
+\noindent \Hint{find two expressions for
+$(\mu_f\times\mu_g)\{(x,y):a\le x<y\le b\}$.}
+%252C
+
+\sqheader 252Xc Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+complete locally determined measure spaces, $\lambda$ the c.l.d.\
+product measure on $X\times Y$, and $\Lambda$ its domain.   Suppose that
+$A\subseteq X$ and
+$B\subseteq Y$.   Show that $A\times B\in\Lambda$ iff
+either $\mu A=0$ or $\nu B=0$ or $A\in\Sigma$ and $B\in\Tau$.
+\Hint{if $B$ is not negligible and $A\times B\in\Lambda$, take $H$ such
+that $\nu H<\infty$ and $B\cap H$ is not negligible.   Then
+$W=A\times(B\cap H)$ is measured by $\mu\times\nu_H$, where $\nu_H$ is
+the subspace measure on $H$.   Now apply 252D to $\mu$, $\nu_H$ and $W$
+to see that $A\in\Sigma$.}
+%252D
+
+\sqheader 252Xd Let $(X_1,\Sigma_1,\mu_1)$,
+$(X_2,\Sigma_2,\mu_2)$, $(X_2,\Sigma_3,\mu_3)$ be three $\sigma$-finite
+measure spaces, and $f$ a real-valued function defined almost everywhere
+on $X_1\times X_2\times X_3$ and $\Lambda$-measurable, where $\Lambda$
+is the domain of the product
+measure described in 251W or 251Xg.   Show that if
+$\iiint |f(x_1,x_2,x_3)|dx_1dx_2dx_3$ is defined in $\Bbb R$, then
+$\iiint f(x_1,x_2,x_3)dx_2dx_3dx_1$ and
+$\iiint f(x_1,x_2,x_3)dx_3dx_1dx_2$
+exist and are equal.
+%252H
+
+\spheader 252Xe Give an example of strictly localizable measure spaces
+$(X,\Sigma,\mu)$, $(Y,\Tau,\nu)$ and a $W\in\Sigma\tensorhat\Tau$ such
+that $x\mapsto\nu W[\{x\}]$ is not $\Sigma$-measurable.   \Hint{in
+252Kb, try $Y$ a proper subset of $[0,1]$.}
+%252K
+
+\sqheader 252Xf Set $f(x,y)=\sin(x-y)$ if $0\le y\le x\le y+2\pi$, $0$
+for other $x$, $y\in\BbbR^2$.   Show that $\iint f(x,y)dx\,dy=0$ and
+$\iint f(x,y)dy\,dx=2\pi$, taking all integrals with respect to Lebesgue
+measure.
+%252M
+
+\sqheader 252Xg Set $f(x,y)=\Bover{x^2-y^2}{(x^2+y^2)^2}$ for $x$,
+$y\in\ocint{0,1}$.   Show that
+$\int_0^1\int_0^1f(x,y)dydx=\Bover{\pi}4$,
+\discrversionA{\break}{}$\int_0^1\int_0^1f(x,y)dxdy=-\Bover{\pi}4$.
+%252M
+
+\sqheader 252Xh Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+measure spaces, and $f$ a $\Sigma\tensorhat\Tau$-measurable function
+defined on a subset of $X\times Y$.   Show that $y\mapsto f(x,y)$ is
+$\Tau$-measurable for every $x\in X$.
+%252P
+
+\spheader 252Xi Let $r\ge 1$ be an integer, and write $\beta_r$ for the
+Lebesgue measure of the unit ball in $\BbbR^r$.   Set
+$g_r(t)=r\beta_rt^{r-1}$ for $t\ge 0$, $\phi(x)=\|x\|$ for
+$x\in\BbbR^r$.   (i) Writing $\mu_r$ for Lebesgue measure on
+$\Bbb R^r$, show that $\mu_r\phi^{-1}[E]=\int_Er\beta_rt^{r-1}\mu_1(dt)$
+for every Lebesgue measurable set $E\subseteq\coint{0,\infty}$.   ({\it
+Hint\/}:  start with intervals $E$, noting from 115Xe that
+$\mu_r\{x:\|x\|\le a\}=\beta_ra^r$ for $a\ge 0$, and progress to open
+sets, negligible sets and general measurable sets.)  (ii) Using 235R,
+show that
+
+$$\eqalign{\int e^{-\|x\|^2/2}\mu_r(dx)
+&=r\beta_r\int_0^{\infty}t^{r-1}e^{-t^2/2}\mu_1(dt)
+=2^{(r-2)/2}r\beta_r\Gamma(\Bover{r}2)\cr
+&=2^{r/2}\beta_r\Gamma(1+\Bover{r}2)
+=(\sqrt{2}\Gamma(\Bover12))^r\cr}$$
+
+\noindent where $\Gamma$ is the $\Gamma$-function (225Xh).   (iii) Show
+that
+
+\Centerline{$2\Gamma(\bover12)^2=2\beta_2\Gamma(2)
+=2\beta_2\int_0^{\infty}te^{-t^2/2}dt=2\pi$,}
+
+\noindent and hence that
+$\beta_r=\Bover{\pi^{r/2}}{\Gamma(1+\bover{r}2)}$ and
+$\int_{-\infty}^{\infty}e^{-t^2/2}dt=\sqrt{2\pi}$.
+%252Q
+
+\leader{252Y}{Further exercises (a)}
+%\spheader 252Ya
+Let $(X,\Sigma,\mu)$ be a measure space.   Show that the
+following are equiveridical:  (i) the completion of $\mu$ is locally
+determined;  (ii) the completion of $\mu$ coincides with the c.l.d.\
+version of $\mu$;  (iii) whenever $(Y,\Tau,\nu)$ is a $\sigma$-finite
+measure space and $\lambda$ the c.l.d.\ product measure on $X\times Y$
+and $f$ is a function such that $\int fd\lambda$ is defined in
+$[-\infty,\infty]$, then $\iint f(x,y)\nu(dy)\mu(dx)$ is defined and
+equal to $\int fd\lambda$.
+%252B
+
+\spheader 252Yb Let $(X,\Sigma,\mu)$ be a measure space.   Show that the
+following are equiveridical:  (i) $\mu$ has locally determined
+negligible
+sets;  (ii) whenever $(Y,\Tau,\nu)$ is a $\sigma$-finite measure
+space and $\lambda$ the c.l.d.\ product measure on $X\times Y$, then
+$\iint f(x,y)\nu(dy)\mu(dx)$ is defined and equal to $\int fd\lambda$
+for any $\lambda$-integrable function $f$.
+%252Ya, 252B
+
+\spheader 252Yc Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be measure
+spaces, and $\lambda_0$
+the primitive product measure on $X\times Y$ (251C).   Let $f$ be any
+$\lambda_0$-integrable real-valued function.   Show that
+$\iint f(x,y)\nu(dy)\mu(dx)=\int fd\lambda_0$.   \Hint{show that there
+are sequences $\sequencen{G_n}$, $\sequencen{H_n}$ of sets of finite
+measure such that $f(x,y)$ is defined and equal to $0$ for every
+$(x,y)\in(X\times Y)\setminus\bigcup_{n\in\Bbb N}G_n\times H_n$.}
+%252B
+
+\spheader 252Yd Let $(X,\Sigma,\mu)$ and
+$(Y,\Tau,\nu)$ be
+measure spaces;  let $\lambda_0$ be the primitive product measure on
+$X\times Y$, and $\lambda$ the c.l.d.\ product measure.   Show that  if
+$f$ is a $\lambda_0$-integrable real-valued function, it is
+$\lambda$-integrable, and $\int fd\lambda=\int fd\lambda_0$.
+%252B
+
+\spheader 252Ye\dvAformerly{252Yj}
+Let $(X,\Sigma,\mu)$ be a complete locally determined
+measure space and $a<b$ in
+$\Bbb R$, endowed with Lebesgue measure;  let $\Lambda$ be the domain of
+the c.l.d.\ product measure $\lambda$ on $X\times[a,b]$.   Let
+$f:X\times\ooint{a,b}\to\Bbb R$ be a $\Lambda$-measurable function such
+that $t\mapsto f(x,t):[a,b]\to\Bbb R$ is continuous on $[a,b]$ and
+differentiable on $\ooint{a,b}$ for every $x\in X$.   (i) Show that the
+partial derivative $\Pd{f}{t}$ with respect to the second variable is
+$\Lambda$-measurable.   (ii) Now suppose that $\Pd{f}{t}$ is
+$\lambda$-integrable and that $\int f(x,t_0)\mu(dx)$ is defined and
+finite for some $t_0\in\ooint{a,b}$.   Show that
+$F(t)=\int f(x,t)\mu(dx)$ is defined in $\Bbb R$ for every $t\in[a,b]$,
+that $F$ is absolutely continuous, and that
+$F'(t)=\int\Pd{f}{t}(x,t)\mu(dx)$
+for almost every $t\in\ooint{a,b}$.   ({\it Hint\/}:
+$F(c)=F(a)+\int_{X\times[a,c]}\Pd{f}{t}d\lambda$ for every $c\in[a,b]$.)
+%252C %225L
+
+\spheader 252Yf Show that
+$\Bover{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}=\int_0^1t^{a-1}(1-t)^{b-1}dt$
+for all $a$, $b>0$.   ({\it Hint\/}:  show that
+
+\Centerline{$\int_0^{\infty}t^{a-1}\int_t^{\infty}
+  e^{-x}(x-t)^{b-1}dxdt
+=\int_0^{\infty}e^{-x}\int_0^xt^{a-1}(x-t)^{b-1}dtdx$.)}
+%252C
+
+\spheader 252Yg Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+$\sigma$-finite measure spaces and $\lambda$ the c.l.d.\ product measure
+on $X\times Y$.   Suppose that
+$f\in\eusm L^0(\lambda)$ and that $1<p<\infty$.   Show that
+$(\int|\int f(x,y)dx|^pdy)^{1/p}\le\int(\int|f(x,y)|^pdy)^{1/p}dx$.
+({\it Hint\/}:
+set $q=\bover{p}{p-1}$ and consider the integral
+$\int|f(x,y)g(y)|\lambda(d(x,y))$ for $g\in\eusm L^q(\nu)$, using 244K.)
+%252C
+
+\spheader 252Yh Let $\nu$ be Lebesgue measure on $\coint{0,\infty}$;
+suppose that $f\in\eusm L^p(\nu)$ where $1<p<\infty$.   Set
+$F(y)=\Bover1y\int_0^yf$ for $y>0$.   Show that
+$\|F\|_p\le\Bover{p}{p-1}\|f\|_p$.   ({\it Hint\/}:
+$F(y)=\int_0^1f(xy)dx$;  use 252Yg with $X=[0,1]$,
+$Y=\coint{0,\infty}$.)
+%252Yg, 252C
+
+\spheader 252Yi Show that if $p$ is any non-zero (real) polynomial in
+$r$ variables, then $\{x:x\in\BbbR^r,\,p(x)=0\}$ is Lebesgue negligible.
+%252D
+
+\spheader 252Yj Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be measure
+spaces, with c.l.d.\ product $(X\times Y,\Lambda,\lambda)$.   Let $f$ be
+a non-negative $\Lambda$-measurable real-valued
+function defined on a $\lambda$-conegligible set, and suppose that
+
+\Centerline{$
+\overline{\intop}\bigl(\overline{\intop}f(x,y)\mu(dx)\bigr)
+\nu(dy)$}
+
+\noindent is finite.   Show that $f$ is $\lambda$-integrable.
+%252G
+
+\spheader 252Yk Let $(X,\Sigma,\mu)$ be the unit interval $[0,1]$ with
+Lebesgue measure, and $(Y,\Tau,\nu)$ the interval with counting measure,
+as in 252K;  let $\lambda_0$ be the primitive product measure on
+$[0,1]^2$.   (i) Setting $\Delta=\{(t,t):t\in[0,1]\}$, show that
+$\lambda_0\Delta=\infty$.   (ii) Show that
+$\lambda_0$ is not semi-finite.   (iii) Show that if
+$W\in\dom\lambda_0$, then $\lambda_0W=\sum_{y\in[0,1]}\mu W^{-1}[\{y\}]$
+if there are a countable set $A\subseteq[0,1]$ and a Lebesgue negligible
+set $E\subseteq[0,1]$ such that
+$W\subseteq([0,1]\times A)\cup(E\times[0,1])$, $\infty$ otherwise.
+%252K
+
+\spheader 252Yl Let $(X,\Sigma,\mu)$ be a measure space, and
+$\lambda_0$ the primitive product measure on
+$X\times\Bbb R$, where $\Bbb R$ is given Lebesgue measure;  write
+$\Lambda$ for its domain.   For any
+$[0,\infty]$-valued function $f$ defined on a conegligible subset of
+$X$, write $\Omega_f$, $\Omega'_f$ for the corresponding ordinate sets,
+as in 252N.   Show that if any of $\lambda_0\Omega_f$,
+$\lambda_0\Omega'_f$,
+$\int fd\mu$ is defined and finite, so are the others, and all three are
+equal.
+%252B, 252N
+
+\spheader 252Ym Let $(X,\Sigma,\mu)$ be a complete locally determined
+measure space, and $f$ a non-negative function defined on a conegligible
+subset of $X$.   Write $\Omega_f$, $\Omega'_f$ for the corresponding
+ordinate sets, as in 252N.   Let
+$\lambda$ be the c.l.d.\ product measure on $X\times\Bbb R$, where
+$\Bbb R$ is given Lebesgue measure.   Show that
+$\overline{\int}f\,d\mu=\lambda^*\Omega_f=\lambda^*\Omega'_f$.
+%252N, 252B
+
+\spheader 252Yn Let $(X,\Sigma,\mu)$ be a measure space and
+$f:X\to\coint{0,\infty}$ a function.   Show that
+$\overline{\int}fd\mu=\int_0^{\infty}\mu^*\{x:f(x)\ge t\}dt$.
+%252O
+
+\spheader 252Yo Let $(X,\Sigma,\mu)$ be a complete measure space and
+write $\eusm M^{0,\infty}$ for the set
+$\{f:f\in\eusm L^0(\mu),\,\mu\{x:|f(x)|\ge a\}$ is finite for some
+$a\in\coint{0,\infty}\}$.   (i) Show that for each
+$f\in\eusm M^{0,\infty}$
+there is a non-increasing $f^*:\ooint{0,\infty}\to\Bbb R$ such that
+$\mu_L\{t:f^*(t)\ge\alpha\}=\mu\{x:|f(x)|\ge\alpha\}$ for
+every $\alpha>0$, writing $\mu_L$ for Lebesgue measure.   (ii) Show that
+$\int_E|f|d\mu\le\int_0^{\mu E}f^*d\mu_L$ for every $E\in\Sigma$
+(allowing $\infty$).   ({\it Hint\/}:  $(f\times\chi E)^*\le f^*$.)
+(iii) Show that $\|f^*\|_p=\|f\|_p$ for every $p\in[1,\infty]$,
+$f\in\eusm M^{0,\infty}$.   ({\it
+Hint\/}:  $(|f|^p)^*=(f^*)^p$.)   (iv) Show that if $f$,
+$g\in\eusm M^{0,\infty}$ then
+$\int|f\times g|d\mu\le\int f^*\times g^*d\mu_L$.   ({\it
+Hint\/}:  look at simple functions first.)   (v) Show that if $\mu$ is
+atomless then $\int_0^af^*d\mu_L=\sup_{E\in\Sigma,\mu E\le a}\int_E|f|$
+for every $a\ge 0$.   ({\it Hint\/}:  215D.)   (vi) Show that
+$A\subseteq\eusm L^1(\mu)$ is uniformly integrable iff $\{f^*:f\in A\}$
+is uniformly integrable in $\eusm L^1(\mu_L)$.   ($f^*$ is called the
+{\bf decreasing rearrangement} of $f$.)
+%252O
+
+\spheader 252Yp Let $(X,\Sigma,\mu)$ be a complete locally
+determined measure space, and write $\nu$ for Lebesgue measure on
+$[0,1]$.   Show
+that the c.l.d.\ product measure $\lambda$ on $X\times[0,1]$ is
+localizable iff $\mu$ is localizable.   ({\it Hints\/}: (i) if
+$\Cal E\subseteq\Sigma$, show that $F\in\Sigma$ is an essential supremum
+for $\Cal E$ in $\Sigma$ iff $F\times[0,1]$ is an essential supremum for
+$\{E\times[0,1]:E\in\Cal E\}$ in $\Lambda=\dom\lambda$.   (ii) For
+$W\in\Lambda$, $n\in\Bbb N$, $k<2^n$ set
+
+\Centerline{$W_{nk}
+=\{x:x\in X,\,\nu^*\{t:(x,t)\in W,\,2^{-n}k\le t\le 2^{-n}(k+1)\}
+\ge 2^{-n-1}\}$.}
+
+\noindent Show that if $\Cal W\subseteq\Lambda$ and $F_{nk}$ is an
+essential supremum for $\{W_{nk}:W\in\Cal W\}$ in $\Sigma$ for all $n$,
+$k$, then
+
+\Centerline{$\bigcup_{n\in\Bbb N}\bigcap_{m\ge n}
+\bigcup_{k<2^{m}}F_{mk}\times[2^{-m}k,2^{-m}(k+1)]$}
+
+\noindent is an essential supremum for $\Cal W$ in $\Lambda$.)
+%252O
+
+\spheader 252Yq Let $(X,\Sigma,\mu)$ be the space of Example
+216D, and give Lebesgue measure to $[0,1]$.   Show that the c.l.d.\
+product measure on $X\times [0,1]$ is complete, locally determined,
+atomless and not localizable.
+%252Yp 252O
+
+\spheader 252Yr Let $(X,\Sigma,\mu)$ be a complete locally
+determined measure space and $(Y,\Tau,\nu)$ a semi-finite measure space
+with $\nu Y>0$.   Show that if the c.l.d.\ product measure on
+$X\times Y$ is strictly localizable, then $\mu$ is strictly localizable.
+({\it Hint\/}:  take $F\in\Tau$, $0<\nu F<\infty$.   Let
+$\langle W_i\rangle_{i\in I}$ be a decomposition of $X\times Y$.   For
+$i\in I$, $n\in\Bbb N$
+set $E_{in}=\{x:\nu^*\{y:y\in F,\,(x,y)\in W_i\}\ge 2^{-n}\}$.   Apply
+213Yf to $\{E_{in}:i\in I,\,n\in\Bbb N\}$.)
+%252Yq 252O
+
+\spheader 252Ys Let $(X,\Sigma,\mu)$ be the space of Example
+216E, and give Lebesgue measure to $[0,1]$.   Show that the c.l.d.\
+product measure on $X\times[0,1]$ is complete, locally determined,
+atomless and localizable, but not strictly localizable.
+%252Yr, 252O
+
+\spheader 252Yt Let $(X,\Sigma,\mu)$ be a measure space and $f$ a
+$\mu$-integrable complex-valued function.   For
+$\alpha\in\ocint{-\pi,\pi}$
+set $H_{\alpha}=\{x:x\in\dom f,\,\Real(e^{-i\alpha}f(x))>0\}$.   Show
+that $\int_{-\pi}^{\pi}\Real(e^{-i\alpha}\int_{H_{\alpha}}f)d\alpha
+\discrversionA{\break}{}=2\int|f|$, and hence that there is some
+$\alpha$ such that
+$|\int_{H_{\alpha}}f|\ge\Bover1{\pi}\int|f|$.   (Compare 246F.)
+%246F, 252R
+
+\spheader 252Yu Set $f(t)=t-\ln(t+1)$ for $t>-1$.   (i) Show that
+$\Gamma(a+1)=a^{a+1}e^{-a}\int_{-1}^{\infty}e^{-af(u)}du$ for every
+$a>0$.   \Hint{substitute $u=\bover{t}{a}-1$ in 225Xh(iii).}   (ii) Show
+that there is a $\delta>0$ such that $f(t)\ge\bover13t^2$ for
+$-1\le t\le\delta$.   (iii)
+Setting $\alpha=\bover12f(\delta)$, show that (for $a\ge 1$)
+
+\Centerline{$\sqrt{a}\int_{\delta}^{\infty}e^{-af(t)}dt
+\le\sqrt{a}e^{-a\alpha}\int_0^{\infty}e^{-f(t)/2}dt\to 0$}
+
+\noindent as $a\to\infty$.   (iv) Set $g_a(t)=e^{-af(t/\sqrt{a})}$ if
+$-\sqrt{a}<t\le\delta\sqrt{a}$, $0$ otherwise.   Show that
+$g_a(t)\le e^{-t^2/3}$ for all $a$, $t$ and that
+$\lim_{a\to\infty}g_a(t)=e^{-t^2/2}$ for all $t$, so that
+
+$$\eqalign{\lim_{a\to\infty}\Bover{e^a\Gamma(a+1)}{a^{a+\bover12}}
+&=\lim_{a\to\infty}\sqrt{a}\int_{-1}^{\infty}e^{-af(t)}dt
+=\lim_{a\to\infty}\sqrt{a}\int_{-1}^{\delta}e^{-af(t)}dt\cr
+&=\lim_{a\to\infty}\int_{-\infty}^{\infty}g_a(t)dt
+=\int_{-\infty}^{\infty}e^{-t^2/2}dt=\sqrt{2\pi}.\cr}$$
+
+\noindent (v) Show that $\lim_{n\to\infty}\Bover{n!}{e^{-n}n^n\sqrt{n}}
+=\sqrt{2\pi}$.   (This is {\bf Stirling's formula}.)
+%252+
+
+\spheader 252Yv Let $(X,\Sigma,\mu)$ be a complete locally determined
+measure space and $f$, $g$ two real-valued, $\mu$-virtually measurable
+functions defined almost everywhere in $X$.   (i) Let $\lambda$ be the
+c.l.d.\ product of $\mu$ and Lebesgue measure on $\Bbb R$.
+Setting $\Omega^*_f=\{(x,a):x\in\dom f$, $a\in\Bbb R$, $a\le f(x)\}$ and
+$\Omega^*_g=\{(x,a):x\in\dom g$, $a\in\Bbb R$, $a\le g(x)\}$, show that
+$\lambda(\Omega^*_f\setminus\Omega^*_g)=\int(f-g)^+d\mu$ and
+$\lambda(\Omega^*\symmdiff\Omega^*_g)=\int|f-g|d\mu$.
+(ii) Suppose that $\mu$ is $\sigma$-finite.   Show that
+
+\Centerline{$\int|f-g|d\mu
+=\int_{-\infty}^{\infty}
+\mu(\{x:x\in\dom f\cap\dom g$, $(f(x)-a)(g(x)-a)<0\}da$.}
+
+\noindent(iii) Suppose that $\mu$ is $\sigma$-finite, that $\Tau$ is a
+$\sigma$-subalgebra of $\Sigma$, that $E\in\Sigma$ and that $g:X\to[0,1]$
+is $\Tau$-measurable.   Show that there is an $F\in\Tau$ such that
+$\mu(E\symmdiff F)\le\int|\chi E-g|d\mu$.
+%252N
+}%end of exercises
+
+\endnotes{
+\Notesheader{252} For a volume and a half now I have asked you to accept
+the idea of integrating partially-defined functions, insisting that
+sooner or later they would appear at the core of the subject.   The
+moment has now come.   If we wish to apply Fubini's and Tonelli's
+theorems in the most fundamental of all cases, with both factors equal
+to Lebesgue measure on the unit interval, it is surely natural to
+look at all functions which are integrable on the square for
+two-dimensional Lebesgue measure.   Now two-dimensional Lebesgue measure
+is a complete measure, so, in particular, assigns zero measure to any
+set of the form $\{(x,b):x\in A\}$ or $\{(a,y):y\in A\}$, whether or not
+the set $A$ is measured by one-dimensional measure.   Accordingly, if
+$f$ is a function of two variables which is integrable for
+two-dimensional Lebesgue measure, there is no reason why any particular
+section $x\mapsto f(x,b)$ or $y\mapsto f(a,y)$ should be measurable, let
+alone integrable.   Consequently, even if $f$ itself is defined
+everywhere, the outer integral of $\iint f(x,y)dxdy$ is likely to be
+applied to a function which is not defined for every $y$.
+Let me remark that the problem does not concern `$\infty$';  the
+awkward functions are those with sections so irregular that they cannot
+be assigned an integral at all.
+
+I have seen many approaches to this particular nettle, generally less
+whole-hearted than the one I have determined on for this treatise.
+Part of the
+difficulty is that Fubini's theorem really is at the centre of measure
+theory.   Over large parts of the subject, it is possible to assert that
+a result is non-trivial if and only if it depends on Fubini's theorem.
+I am therefore unwilling to insert any local fix, saying that `in
+this chapter, we shall integrate functions which are not defined
+everywhere';  before long, such a provision would have to be
+interpolated into the preambles to half the best theorems, or an
+explanation offered of why it wasn't necessary in their particular
+contexts.   I suppose that one of the commonest responses is (like
+{\smc Halmos 50}) to restrict attention to
+$\Sigma\tensorhat\Tau$-measurable
+functions, which eliminates measurability problems for the moment
+(252Xh, 252P);   but
+unhappily (or rather, to my mind, happily) there are crucial
+applications in which the functions are not actually
+$\Sigma\tensorhat\Tau$-measurable, but belong to some wider class, and
+this restriction sooner or later leads to undignified contortions as we
+are forced to adapt
+limited results to unforeseen contexts.   Besides, it leaves unsaid the
+really rather important information that if $f$ is a measurable function
+of two variables then (under appropriate conditions) almost all its
+sections are measurable (252E).
+
+In 252B and its corollaries there is a clumsy restriction:  we assume
+that one of the measures is $\sigma$-finite and the other is either
+strictly localizable or complete and locally determined.   The obvious
+question is, whether we need these hypotheses.   From 252K we see that
+the hypothesis `$\sigma$-finite' on the second factor can certainly not
+be abandoned, even when the first factor is a complete probability
+measure.   The requirement `$\mu$ is either strictly localizable or
+complete and locally determined' is in fact fractionally stronger than
+what is needed, as well as disagreeably elaborate.   The `right'
+hypothesis is that the completion of $\mu$ should be locally determined
+(see 252Ya).   The point is that because the
+product of two measures is the same as the product of their c.l.d.\
+versions (251T), no theorem which leads from the product measure to the
+factor measures can distinguish between a measure and its c.l.d.\
+version;  so that, in 252B, we must expect to need $\mu$ and its c.l.d.\
+version to give rise to the same integrals.   The proof of 252B would be
+better focused if the hypothesis was simplified to `$\nu$ is
+$\sigma$-finite and $\mu$ is complete and locally determined'.   But
+this would just transfer part of the argument into the proof of 252C.
+
+We also have to work a little harder in 252B in order to cover functions
+and integrals taking the values $\pm\infty$.   Fubini's theorem is so
+central to measure theory that I believe it is worth taking a bit of
+extra trouble to state the results in maximal generality.   This is
+especially important because we frequently apply it in multiply repeated
+integrals, as in 252Xd, in which we have even less control than usual
+over the intermediate functions to be integrated.
+
+I have expressed all the main results of this section in terms of the
+`c.l.d.'\ product measure.   In the case of $\sigma$-finite spaces, of
+course, which is where the theory works best, we could just as well use
+the `primitive' product measure.   Indeed, Fubini's theorem itself has a
+version in terms of the primitive product measure which is rather more
+elegant than 252B as stated (252Yc), and covers the great majority of
+applications.   (Integrals with respect to the primitive and c.l.d.\
+product measures are of course very closely related;  see 252Yd.)   But
+we do sometimes need to look at
+non-$\sigma$-finite spaces, and in these cases the asymmetric form in
+252B is close to the best we can do.   Using the primitive product
+measure does not help at all with the most substantial obstacle, the
+phenomenon in 252K (see 252Yk).
+
+The pre-calculus concept of an integral as `the area under a curve' is
+given expression in 252N:  the integral of a non-negative function is
+the measure of its ordinate set.   This is unsatisfactory as a
+definition of the integral, not just because of the requirement that the
+base space should be complete and locally determined (which can be dealt
+with by using the primitive product measure, as in 252Yl), but because
+the construction of the product measure involves integration (part (c)
+of the proof of 251E).
+The idea of 252N is to relate the measure of an ordinate set to the
+integral of the measures of its vertical sections.   Curiously, if
+instead we integrate the measures of its {\it horizontal} sections, as
+in 252O, we get a more versatile result.   (Indeed this one does not
+involve the concept of `product measure', and could have appeared at any
+point after \S123.)   Note that the integral
+$\int_0^{\infty}\ldots dt$ here is applied to a monotonic function, so
+may be interpreted as an improper Riemann integral.   If you think you
+know enough about the Riemann integral to
+make this a tempting alternative to the construction in \S122, the
+tricky bit now becomes the proof that the integral is additive.
+
+A different line of argument is to use integration over sections to
+define a product measure.   The difficulty with this approach is that
+unless we take great care we may find ourselves with an asymmetric
+construction.   My own view is that such an asymmetry is acceptable only
+when there is no alternative.   But in Chapter 43 of Volume 4 I will
+describe a couple of examples.
+
+Of the two examples I give here, 252K is supposed to show that when I
+call for $\sigma$-finite spaces they are really necessary, while 252L is
+supposed to show that joint measurability is essential in Tonelli's
+theorem and its corollaries.   The factor spaces in 252K, Lebesgue
+measure and counting measure, are chosen to show that it is only the
+lack of $\sigma$-finiteness that can be the problem;  they are otherwise
+as regular as one can reasonably ask.   In 252L I have used the
+countable-cocountable measure on $\omega_1$, which you may feel is fit
+only for counter-examples;  and the question does arise, whether the
+same phenomenon occurs with Lebesgue measure.   This leads into deep
+water, and I will return to it in Chapter 53 of Volume 5.
+
+I ought perhaps to note explicitly that in Fubini's theorem, we really
+do need to have a function which is integrable for the product measure.
+I include 252Xf and 252Xg to remind you that even in the best-regulated
+circumstances,
+the repeated integrals $\iint f\,dxdy$, $\iint f\,dydx$ may fail to be
+equal if $f$ is not integrable as a function of two variables.
+
+There are many ways to calculate the volume $\beta_r$ of an
+$r$-dimensional ball;  the one I have used in 252Q follows a line that
+would have been natural to me before I ever heard of measure theory.
+In 252Xi I suggest another method.   The idea of
+integration-by-substitution, used in part (b) of the argument for 252Q,
+is there
+supported by an ad hoc argument;  I will present a different, more
+generally applicable, approach in Chapter 26.   Elsewhere (252Xi, 252Yf,
+252Yh, 252Yu) I find myself taking for granted substitutions of the form
+$t\mapsto at$, $t\mapsto a+t$, $t\mapsto t^2$;
+for a systematic justification, see
+\S263.   Of course an enormous number of other formulae of advanced
+calculus are also based on repeated integration of one kind or another,
+and I give a sample handful of such results (252Xb,
+252Ye-252Yh, %252Ye 252Yf 252Yg 252Yh
+252Yu).
+
+}%end of notes
+
+\discrpage
+
+\leaveitout{%\spheader 252Y?
+Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be measure spaces, and
+$\lambda_0$
+the primitive product measure on $X\times Y$.   Let $f$ be a real-valued
+function defined $\lambda_0$-a.e.\ on $X\times Y$.   Show that
+
+\Centerline{$
+\overline{\intop}\bigl(\overline{\intop}f(x,y)\mu(dx)\bigr)\nu(dy)
+\le\overline{\intop}f\,d\lambda_0$.}
+%252B
+}%end of leaveitout
+

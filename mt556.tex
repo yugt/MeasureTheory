@@ -1,0 +1,3617 @@
+\frfilename{mt556.tex}
+\versiondate{3.1.15}
+\copyrightdate{2007}
+
+\def\chaptername{Forcing}
+\def\sectionname{Forcing with Boolean subalgebras}
+
+\newsection{556}
+
+I propose
+now to describe a completely different way in which forcing can be
+used to throw light on problems in measure theory.   Rather than finding
+forcing models of new mathematical universes, we look for models which will
+express structures of the ordinary universe in new ways.   The problems to
+which this approach seems to be most relevant are those centered on
+invariant algebras:  in ergodic theory, fixed-point algebras;  in the
+theory of relative independence, the core $\sigma$-algebras.
+
+Most of the section is taken up with development of basic machinery.
+The strategic plan is straightforward enough:  given a
+specific Boolean algebra
+$\frak C$ which seems to be central to a question in hand, force with
+$\frak C\setminus\{0\}$, and translate the question into a question
+in the forcing language.   In order to do this, we need an efficient scheme
+for automatic translation.   This is what
+556A-556L % 556A 556B 556C 556D 556E 556G 556H 556I 556J 556K 556L
+and 556O are setting up.   The translation has to work both ways, since we
+need to be able to deduce properties of the ground model from properties of
+the forcing model.
+
+There are four actual theorems for which I offer proofs by these methods.
+The first three are 556M
+(a strong law of large numbers), 556N (Dye's theorem on orbit-isomorphic
+measure-preserving transformations) and
+556P (Kawada's theorem on invariant measures).   In each of these,
+the aim is
+to prove a general form of the theorem from the classical special case in
+which the algebra $\frak C$ is trivial.   In the final example 556S
+(I.Farah's description of the Dedekind completion of the asymptotic density
+algebra $\frak Z$), we have a natural subalgebra $\frak C$
+of $\frak Z$ and a structure in the corresponding
+forcing universe to which we can apply Maharam's theorem.
+
+\vleader{60pt}{556A}{Forcing with Boolean subalgebras}
+Let $\frak A$ be a Boolean algebra, not $\{0\}$, and
+$\frak C$ a subalgebra of $\frak A$.   Let $\Bbb P$ be the forcing notion
+$\frak C^+=\frak C\setminus\{0\}$, active downwards.
+
+\spheader 556Aa If $a\in\frak A$, the
+{\bf forcing name for $a$ over $\frak C$} will be the $\Bbb P$-name
+
+\Centerline{$\dot a
+=\{(\check b,p):p\in\frak C^+$, $b\in\frak A$, $p\Bcap b\Bsubseteq a\}$.}
+
+\spheader 556Ab If $\frak B$ is a Boolean subalgebra of $\frak A$ including
+$\frak C$, then the {\bf forcing name for $\frak B$ over $\frak C$}
+will be the
+$\Bbb P$-name $\{(\dot b,1):b\in\frak B\}$, where here
+$1=1_{\frak A}=1_{\frak B}=1_{\frak C}$.
+
+\spheader 556Ac For each of the binary
+operations $\frmedcirc=\Bcap$, $\Bcup$, $\Bsymmdiff$,
+$\Bsetminus$ on $\frak A$, the {\bf forcing name for $\frmedcirc$ over
+$\frak C$} will be the $\Bbb P$-name
+
+\Centerline{$\dot\frmedcirc=\{(((\dot a,\dot b),(a\frmedcirc b)^{\centerdot}),1):
+a$, $b\in\frak A\}$.}
+
+\spheader 556Ad The {\bf forcing name for $\Bsubseteq$ over $\frak C$}
+will be the $\Bbb P$-name
+
+\Centerline{$\dot{\Bsubseteq}=\{((\dot a,\dot b),1):a$, $b\in\frak A$,
+$a\Bsubseteq b\}$.}
+
+\spheader 556Ae Let $\pi:\frak A\to\frak A$ be a ring
+homomorphism such that $\pi c\Bsubseteq c$
+for every $c\in\frak C$.   In this case, I
+will say that the {\bf forcing name for $\pi$ over $\frak C$} is the
+$\Bbb P$-name $\{((\dot a,(\pi a)^{\centerdot}),1):a\in\frak A\}$.
+
+\spheader 556Af Now suppose that $\frak A$ is Dedekind $\sigma$-complete.
+For $u\in L^0(\frak A)$, the {\bf forcing name for $u$ over $\frak C$} will
+be the $\Bbb P$-name $\{((\check\alpha,\Bvalue{u>\alpha}^{\centerdot}),1):
+\alpha\in\Bbb Q\}$.
+
+\medskip
+
+\noindent{\bf Remark}\cmmnt{ We shall need to agree on what it is that
+the formula $L^0(\frak A)$
+abbreviates.}   The primary definition in 364Aa speaks of functions from
+$\Bbb R$ to $\frak A$.   Because $\Bbb R$ is inadequately absolute this is
+not convenient here, and I will move to the alternative version\cmmnt{ in
+364Af}:   a member $u$ of
+$L^0(\frak A)$ is a family $\family{\alpha}{\Bbb Q}{\Bvalue{u>\alpha}}$
+in $\frak A$ such that
+
+\Centerline{$\Bvalue{u>\alpha}
+=\sup_{\beta\in\Bbb Q,\beta>\alpha}\Bvalue{u>\beta}$ for every
+$\alpha\in\Bbb Q$,}
+
+\Centerline{$\inf_{n\in\Bbb N}\Bvalue{u>n}=0$,\quad
+$\sup_{n\in\Bbb N}\Bvalue{u>-n}=1$.}
+
+\vleader{72pt}{556B}{Theorem}
+Let $\frak A$ be a Boolean algebra, not $\{0\}$, and
+$\frak C$ a subalgebra of $\frak A$.   Let $\Bbb P$ be the forcing notion
+$\frak C^+$, active downwards, and
+$\dot\frak A$ the forcing name for $\frak A$ over $\frak C$.
+
+(a) If $p\in\frak C^+$, $a$, $b\in\frak A$ and $\dot a$, $\dot b$ are the
+forcing names of $a$, $b$ over $\frak C$, then
+
+\Centerline{$p\VVdP\,\dot a=\dot b$}
+
+\noindent iff $\upr(p\Bcap(a\Bsymmdiff b),\frak C)=0$, that is,
+for every $q$
+stronger than $p$ there is an $r$ stronger than $q$ such that
+$r\Bcap a=r\Bcap b$.   In particular,
+
+\Centerline{$p\VVdP\,\dot a=\dot b$}
+
+\noindent whenever $p\Bcap a=p\Bcap b$.
+
+(b) Writing $\dot\frmedcirc$ for the forcing name for $\frmedcirc$ over $\frak C$,
+
+\Centerline{$\VVdP\,\dot{\frmedcirc}$ is a binary operation on
+$\dot\frak A$ and $\dot a\,\dot\frmedcirc\,\dot b=(a\frmedcirc b)^{\centerdot}$}
+
+\noindent for each of the binary
+operations $\frmedcirc=\Bcap$, $\Bcup$, $\Bsymmdiff$
+and $\Bsetminus$ and all $a$, $b\in\frak A$.
+
+(c) All the standard identities translate.   For instance,
+
+\Centerline{$\VVdP\,x\dot\Bcap(y\dot\Bsymmdiff z)
+  =(x\dot\Bcap y)\dot\Bsymmdiff(x\dot\Bcap z)$ for all $x$, $y$,
+  $z\in\dot\frak A$.}
+
+(d)
+
+\doubleinset{$\VVdP\,\dot\frak A$, with the operations $\dot\Bsymmdiff$,
+$\dot\Bcap$, $\dot\Bcup$ and $\dot\Bsetminus$, is a Boolean algebra,
+with zero $\dot 0$ and identity $\dot 1$.}
+
+(e)(i) Writing $\dot{\Bsubseteq}$ for the forcing name for $\Bsubseteq$
+over $\frak C$,
+
+\Centerline{$\VVdP\,\dot{\Bsubseteq}$ is the inclusion relation in the
+Boolean algebra $\dot\frak A$.}
+
+\quad(ii) For $a$, $b\in\frak A$ and $p\in\frak C^+$,
+
+\Centerline{$p\VVdP\,\dot a\dot{\Bsubseteq}\dot b$}
+
+\noindent iff $\upr(p\Bcap a\Bsetminus b,\frak C)=0$.
+
+(f) If $\frak B$ is a Boolean subalgebra of $\frak A$ including $\frak C$,
+then
+
+\Centerline{$\VVdP\,\dot\frak B$ is a Boolean subalgebra of $\dot\frak A$.}
+
+\proof{{\bf (a)(i)} Recall that
+$\upr(a,\frak C)=\inf\{c:a\Bsubseteq c\in\frak C\}$ if the infimum is
+defined in $\frak C$ (313S).
+So $\upr(a,\frak C)=0$ iff for every
+non-zero $c\in\frak C$ there is a $c'\in\frak C$ such that $a\Bsubseteq c'$
+and $c\notBsubseteq c'$;  that is, for every non-zero $c\in\frak C$ there
+is a non-zero $c'\in\frak C$ such that $c'\Bsubseteq c\Bsetminus a$.   In
+the present context, we see that for $p\in\frak C^+$ and $a$,
+$b\in\frak A$, $\upr(p\Bcap(a\Bsymmdiff b),\frak C)=0$ iff
+for every $q$ stronger than $p$ there is an $r$ stronger than $q$ such that
+$r\Bcap(a\Bsymmdiff b)=0$.
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $p\Bcap a=p\Bcap b$,
+that $q\in\frak C^+$ is stronger than $p$, and that $\dot x$ is a
+$\Bbb P$-name such that $q\VVdP\,\dot x\in\dot a$.   Then there are an
+$r\in\frak C^+$, a $d\in\frak A$ such that $(\check d,r)\in\dot a$, and an
+$s$ stronger than both $r$ and $q$ such that $s\VVdP\,\dot x=\check d$.
+In this case
+
+\Centerline{$s\Bcap d
+\Bsubseteq p\Bcap r\Bcap d\Bsubseteq p\Bcap a\Bsubseteq b$,}
+
+\noindent so $(\check d,s)\in\dot b$ and
+
+\Centerline{$s\VVdP\,\dot x=\check d\in\dot b$.}
+
+\noindent As $q$ and $\dot x$ are arbitrary,
+
+\Centerline{$p\VVdP\,\dot a$ is a subset of $\dot b$;}
+
+\noindent similarly,
+
+\Centerline{$p\VVdP\,\dot b$ is a subset of $\dot a$ and $\dot b=\dot a$.}
+
+\medskip
+
+\quad{\bf (iii)} If $\upr(p\Bcap(a\Bsymmdiff b),\frak C)=0$, then for every
+$q$ stronger than $p$ there is an $r$ stronger than $q$ such that
+$r\Bcap a=r\Bcap b$ and $r\VVdP\,\dot a=\dot b$, by (ii).
+As $q$ is arbitrary, $p\VVdP\,\dot a=\dot b$.
+
+\medskip
+
+\quad{\bf (iv)} Now suppose that $p\VVdP\,\dot a=\dot b$ and that $q$ is
+stronger than $p$.   Then $(\check a,q)\in\dot a$, so
+$q\VVdP\,\check a\in\dot a=\dot b$.   There must therefore be a
+$(\check d,r)\in\dot b$ and an $s$ stronger than both $r$ and $q$ such
+that $s\VVdP\,\check a=\check d$;  in this case $d=a$,
+$s\Bcap a\Bsubseteq r\Bcap d\Bsubseteq b$ and $s\Bcap a\Bsetminus b=0$.
+
+As $q$ is arbitrary, $\upr(p\Bcap(a\Bsetminus b),\frak C)=0$.   Similarly,
+$\upr(p\Bcap(b\Bsetminus a),\frak C)=0$.   By 313Sb,
+$\upr(p\Bcap(a\Bsymmdiff b),\frak C)=0$.
+
+\medskip
+
+{\bf (b)} Of course
+
+\Centerline{$\VVdP\,\dot{\frmedcirc}
+\subseteq(\dot\frak A\times\dot\frak A)\times\dot\frak A$,}
+
+\noindent just because
+
+\Centerline{$\VVdP\,\dot a\in\dot\frak A$}
+
+\noindent for every $a\in\frak A$.   To see that $\dot\frmedcirc$ is a name for
+a function with domain $\dot A\times\dot A$, use 5A3H.   If
+$(((\dot a_1,\dot b_1),(a_1\frmedcirc b_1)^{\centerdot}),1)$ and
+$(((\dot a_2,\dot b_2),(a_2\frmedcirc b_2)^{\centerdot}),1)$ are two members of
+$\dot\frmedcirc$, and $p\in\frak C^+$ is such that
+
+\Centerline{$p\VVdP\,(\dot a_1,\dot b_1)=(\dot a_2,\dot b_2)$,}
+
+\noindent then
+
+$$\eqalign{\upr(p\Bcap((a_1\frmedcirc b_1)\Bsymmdiff(a_2\frmedcirc b_2)))
+&\Bsubseteq\upr(p\Bcap((a_1\Bsymmdiff a_2)\Bcup(b_1\Bsymmdiff b_2)))\cr
+&=\upr(p\Bcap(a_1\Bsymmdiff a_2))\Bcup\upr(p\Bcap(b_1\Bsymmdiff b_2))
+=0\cr}$$
+
+\noindent by (a) above and 313Sb again.   So
+
+\Centerline{$p\VVdP\,(a_1\frmedcirc b_1)^{\centerdot}
+=(a_2\frmedcirc b_2)^{\centerdot}$}
+
+\noindent by (a) in the other direction.   Thus the condition of
+5A3H(a-ii) is satisfied, and
+
+\Centerline{$\VVdP\,\dot\frmedcirc$ is a function,}
+
+\noindent while of course
+
+\Centerline{$\VVdP\,\dot a\dot\frmedcirc\dot b=(a\frmedcirc b)^{\centerdot}$}
+
+\noindent for all $a$, $b\in\frak A$.   Moreover, setting
+$\dot A=\{((\dot a,\dot b),1):a$, $b\in\frak A\}$, 5A3Hb tells us that
+
+\Centerline{$\VVdP\,\dom\dot\frmedcirc=\dot A=\dot\frak A\times\dot\frak A$,
+so $\dot\frmedcirc$ is a binary operation on $\dot\frak A$.}
+
+\woddheader{556B}{4}{2}{2}{30pt}
+
+{\bf (c)} I work through only the given example.
+Suppose that $p\in\frak C^+$ and that $\dot x$, $\dot y$ and
+$\dot z$ are $\Bbb P$-names such that
+
+\Centerline{$p\VVdP\,\dot x$, $\dot y$, $\dot z\in\dot\frak A$.}
+
+\noindent If $q$ is stronger than $p$, there are an $r$ stronger than
+$q$ and $a$, $b$, $c\in\frak A$ such
+that
+
+\Centerline{$r\VVdP\,\dot x=\dot a$, $\dot y=\dot b$ and $\dot z=\dot c$.}
+
+\noindent Then
+
+\Centerline{$r\VVdP\,\dot y\dot\Bsymmdiff\dot z=\dot b\dot\Bsymmdiff\dot c
+  =(b\Bsymmdiff c)^{\centerdot}$,}
+
+\Centerline{$r\VVdP\,
+  \dot x\dot\Bcap(\dot y\dot\Bsymmdiff\dot z)
+  =(a\Bcap(b\Bsymmdiff c))^{\centerdot}
+  =((a\Bcap b)\Bsymmdiff(a\Bcap c))^{\centerdot}
+  =(\dot x\dot\Bcap\dot y)\dot\Bsymmdiff(\dot x\dot\Bcap\dot z)$.}
+
+\noindent As $q$ is arbitrary,
+
+\Centerline{$p\VVdP\,
+  \dot x\dot\Bcap(\dot y\dot\Bsymmdiff\dot z)
+  =(\dot x\dot\Bcap\dot y)\dot\Bsymmdiff(\dot x\dot\Bcap\dot z)$;}
+
+\noindent as $p$, $\dot x$, $\dot y$ and $\dot z$ are arbitrary,
+
+\Centerline{$\VVdP\,x\dot\Bcap(y\dot\Bsymmdiff z)
+  =(x\dot\Bcap y)\dot\Bsymmdiff(x\dot\Bcap z)$ for all $x$, $y$,
+  $z\in\dot\frak A$.}
+
+\medskip
+
+{\bf (d)} This is now elementary, amounting to repeated use of the
+technique in (c).
+
+\medskip
+
+{\bf (e)(i)} It will be enough to show that
+
+\Centerline{$\VVdP$ for all $x$, $y\in\dot\frak A$,
+$x\dot{\Bsubseteq}y\iff x\dot\Bcap y=x$.}
+
+\noindent\Prf\ Suppose that $p\in\frak C^+$ and that $\dot x$,
+$\dot y$ are $\Bbb P$-names such that
+
+\Centerline{$p\VVdP\,\dot x$, $\dot y\in\dot\frak A$.}
+
+\noindent($\alpha$) Suppose that $p\VVdP\,\dot x\dot{\Bsubseteq}\dot y$.
+If $q$ is stronger than $p$, there are an $r$ stronger than $q$ and $a$,
+$b\in\frak A$ such that $a\Bsubseteq b$ and
+
+\Centerline{$r\VVdP\,\dot x=\dot a$ and $\dot y=\dot b$.}
+
+\noindent Now
+
+\Centerline{$r\VVdP\,\dot x\dot\Bcap\dot y
+=(a\Bcap b)^{\centerdot}=\dot a=\dot x$;}
+
+\noindent as $q$ is arbitrary, $p\VVdP\,\dot x\dot\Bcap\dot y=\dot x$.
+($\beta$) Conversely, suppose that
+$p\VVdP\,\dot x\dot\Bcap\dot y=\dot x$.   If $q$ is stronger than $p$ there
+are $r$ stronger than $q$ and $a$, $b\in\frak A$ such that
+
+\Centerline{$r\VVdP\,\dot x=\dot a$, $\dot y=\dot b$,
+  $(a\Bcap b)^{\centerdot}=\dot a$;}
+
+\noindent now $(((a\Bcap b)^{\centerdot},\dot b),1)\in\dot{\Bsubseteq}$,
+so $\VVdP\,(a\Bcap b)^{\centerdot}\dot{\Bsubseteq}\dot b$ and
+
+\Centerline{$r\VVdP\,\dot x=\dot a
+=(a\Bcap b)^{\centerdot}\dot{\Bsubseteq}\dot b=\dot y$.}
+
+\noindent As $q$ is arbitrary. $p\VVdP\,\dot x\dot{\Bsubseteq}\dot y$.
+
+As $p$, $\dot x$ and $\dot y$ are arbitrary,
+
+\Centerline{$\VVdP$ for $x$, $y\in\dot\frak A$,
+$x\dot{\Bsubseteq}y\iff x\dot\Bcap y=x$.  \Qed}
+
+\medskip
+
+\quad{\bf (ii)} Now, for $a$, $b\in\frak A$ and $p\in\frak C^+$,
+
+$$\eqalign{p\VVdP\,&\dot a\dot{\Bsubseteq}\dot b\cr
+&\text{iff }p\VVdP\,\dot a\dot\Bcap\dot b=\dot a\cr
+&\text{iff }p\VVdP\,(a\Bcap b)^{\centerdot}=\dot a\cr
+&\text{iff }\upr(p\Bcap(a\Bsymmdiff(a\Bcap b)),\frak C)=0\cr
+&\text{iff }\upr(p\Bcap a\Bsetminus b,\frak C)=0.\cr}$$
+
+\medskip
+
+{\bf (f)} This should now be easy.   As $\dot\frak B\subseteq\dot\frak A$,
+$\VVdP\,\dot\frak B\subseteq\dot\frak A$.
+If $p\in\frak C^+$ and $\dot x$, $\dot y$
+are $\Bbb P$-names such that $p\VVdP\,\dot x$, $\dot y\in\dot\frak B$, then
+for every $q$ stronger than $p$ there are $r$ stronger than $q$ and $a$,
+$b\in\frak B$ such that $r\VVdP\,\dot x=\dot a$ and $\dot y=\dot b$.   In
+this case
+
+\Centerline{$r\VVdP\,
+\dot x\dot\Bcap\dot y=(a\Bcap b)^{\centerdot}\in\dot\frak B$,
+$\dot x\dot\Bsymmdiff\dot y=(a\Bsymmdiff b)^{\centerdot}\in\dot\frak B$;}
+
+\noindent as $q$ is arbitrary,
+
+\Centerline{$p\VVdP\,
+\dot x\dot\Bcap\dot y$, $\dot x\dot\Bsymmdiff\dot y\in\dot\frak B$.}
+
+\noindent As $p$, $\dot x$ and $\dot y$ are arbitrary,
+
+\Centerline{$\VVdP\,\dot\frak B$ is a subring of $\dot\frak A$;}
+
+\noindent as we also have
+$\VVdP\,\dot 1\in\dot\frak B$, we get
+
+\Centerline{$\VVdP\,\dot\frak B$ is a subalgebra
+of $\dot\frak A$.}
+}%end of proof of 556B
+
+\leader{556C}{Theorem} Let $\frak A$ be a Boolean algebra, not $\{0\}$, and
+$\frak C$ a subalgebra of $\frak A$.   Let $\Bbb P$ be the forcing notion
+$\frak C^+$, active downwards, $\dot\frak A$ the
+forcing name for $\frak A$ over $\frak C$, and
+$\pi:\frak A\to\frak A$ a ring homomorphism such that
+$\pi c\Bsubseteq c$ for every $c\in\frak C$;  write $\dot\pi$ for
+the forcing name for $\pi$ over $\frak C$.
+
+(a)(i)
+
+\Centerline{$\VVdP\,\dot\pi$ is a ring homomorphism from $\dot\frak A$
+to itself}
+
+\noindent and
+
+\Centerline{$\VVdP\,\dot\pi(\dot a)=(\pi a)^{\centerdot}$}
+
+\noindent for every $a\in\frak A$.
+
+\quad(ii) If $\pi$ is injective, $\VVdP\,\dot\pi$ is injective.
+
+\quad(iii) If $\phi:\frak A\to\frak A$ is another ring homomorphism such
+that $\phi c\Bsubseteq c$ for every $c\in\frak C$, with corresponding
+forcing name $\dot\phi$, then
+
+\Centerline{$\VVdP\,\dot\pi\dot\phi=(\pi\phi)^{\centerdot}$.}
+
+(b) Now suppose that $\pi$ is a Boolean homomorphism.
+
+\quad(i) $\pi c=c$ for every $c\in\frak C$.
+
+\quad(ii) $\VVdP\,\dot\pi$ is a Boolean homomorphism.
+
+\quad(iii) If $\pi$ is surjective, $\VVdP\,\dot\pi$ is surjective.
+
+\quad(iv) If $\pi\in\Aut\frak A$ then
+
+\Centerline{$\VVdP\,\dot\pi$ is a Boolean automorphism and
+$(\dot\pi)^{-1}=(\pi^{-1})^{\centerdot}$.}
+
+\quad(v) If the fixed-point subalgebra of $\pi$ is $\frak C$ exactly, then
+
+\Centerline{$\VVdP$ the fixed-point subalgebra of $\dot\pi$
+is $\{0,1\}$.}
+
+\proof{{\bf (a)(i)}\grheada\
+It will help to note straight away that
+$\pi c=c\Bcap\pi 1$ for every $c\in\frak C$.   \Prf\
+The hypothesis is that
+$\pi c\Bsubseteq c$;  because $\pi$ is a ring homomorphism,
+$\pi c\Bsubseteq\pi 1$, so $\pi c\Bsubseteq c\Bcap\pi 1$.
+Since also
+
+\Centerline{$\pi c=\pi 1\Bsetminus\pi(1\Bsetminus c)
+\Bsupseteq\pi 1\Bsetminus(1\Bsetminus c)
+=c\Bcap\pi 1$,}
+
+\noindent we have equality.\ \QeD\  Consequently
+
+\Centerline{$c\Bcap\pi a=c\Bcap\pi(1\Bcap a)=c\Bcap\pi 1\Bcap\pi a
+=\pi c\Bcap\pi a=\pi(c\Bcap a)$}
+
+\noindent whenever $c\in\frak C$ and $a\in\frak A$.
+
+\medskip
+
+\qquad\grheadb\ $\VVdP\,\dot\pi$ is a function from $\dot\frak A$ to
+itself.   \Prf\ Of course
+$\VVdP\,\dot\pi\subseteq\dot\frak A\times\dot\frak A$.
+Suppose that $p\in\frak C^+$ and that
+$((\dot a,(\pi a)^{\centerdot}),1)$,
+$((\dot b,(\pi b)^{\centerdot}),1)$ are two members of $\dot\pi$ such that
+$p\VVdP\,\dot a=\dot b$.   Then for every $q$ stronger than $p$ there is an
+$r$ stronger than $q$ such that $r\Bcap a=r\Bcap b$ (556Ba), in which case
+
+\Centerline{$r\Bcap\pi a=\pi(r\Bcap a)=\pi(r\Bcap b)=r\Bcap\pi b$.}
+
+\noindent This shows that
+$p\VVdP\,(\pi a)^{\centerdot}=(\pi b)^{\centerdot}$, by 556Ba in the other
+direction.   As $a$ and $b$ are arbitrary, the condition of 5A3H is
+satisfied, with $\dot A$ there exactly equal to $\dot\frak A$ here,
+and
+
+\Centerline{$\VVdP\,\dot\pi$ is a function with domain $\dot\frak A$.
+\text{\Qed}}
+
+If $a\in\frak A$ then $((\dot a,(\pi a)^{\centerdot}),1)\in\dot\pi$ so
+
+\Centerline{$\VVdP\,(\dot a,(\pi a)^{\centerdot})\in\dot\pi$ and
+$\dot\pi(\dot a)=(\pi a)^{\centerdot}$.}
+
+\woddheader{556C}{4}{2}{2}{42pt}
+
+\qquad\grheadc\ $\VVdP\,\dot\pi$ is a ring homomorphism.   \Prf\
+Writing $\frmedcirc$ for either $\Bcap$ or $\Bsymmdiff$,
+
+$$\eqalignno{\VVdP\,\dot\pi(\dot a\,\dot\frmedcirc\,\dot b)
+&=\dot\pi(a\frmedcirc b)^{\centerdot}
+=(\pi(a\frmedcirc b))^{\centerdot}\cr
+&=(\pi a\frmedcirc\pi b)^{\centerdot}
+=(\pi a)^{\centerdot}\,\dot\frmedcirc\,(\pi b)^{\centerdot}
+=(\dot\pi\dot a)\,\dot\frmedcirc\,(\dot\pi\dot b)\cr}$$
+
+\noindent for all $a$, $b\in\frak A$.   If now $p\in\frak C^+$ and
+$\dot x$, $\dot y$ are $\Bbb P$-names such that
+
+\Centerline{$p\VVdP\,\dot x,\,\dot y\in\dot\frak A$,}
+
+\noindent then for any $q$ stronger than $p$ there are $r$ stronger than
+$q$ and $a$, $b\in\frak A$ such that
+
+\Centerline{$r\VVdP\,\dot x=\dot a$ and $\dot y=\dot b$,}
+
+\noindent in which case
+
+\Centerline{$r\VVdP\,\dot\pi(\dot x\,\dot\frmedcirc\,\dot b)
+=\dot\pi(\dot a\,\dot\frmedcirc\,\dot b)
+=\dot\pi(\dot a)\,\dot\frmedcirc\,\dot\pi(\dot b)
+=\dot\pi(\dot x)\,\dot\frmedcirc\,\dot\pi(\dot y)$.}
+
+\noindent As $q$ is arbitrary,
+
+\Centerline{$p\VVdP\,\dot\pi(\dot x\,\dot\frmedcirc\,\dot y)
+=\dot\pi(\dot x)\,\dot\frmedcirc\,\dot\pi(\dot y)$;}
+
+\noindent as $p$, $\dot x$ and $\dot y$ are arbitrary,
+
+\Centerline{$\VVdP\,\dot\pi(x\,\dot\frmedcirc\,y)
+=(\dot\pi x)\,\dot\frmedcirc\,(\dot\pi y)$ for all $x$, $y\in\dot\frak A$.}
+
+\noindent As this is true for both $\dot\frmedcirc=\dot\Bcap$ and
+$\dot\frmedcirc=\dot\Bsymmdiff$,
+
+\Centerline{$\VVdP\,\dot\pi$ is a ring homomorphism.  \Qed}
+
+\medskip
+
+\quad{\bf (ii)}
+Let $p\in\frak C^+$ and a $\Bbb P$-name $\dot x$ be such that
+
+\Centerline{$p\VVdP\,\dot x\in\dot\frak A$ and $\dot\pi\dot x=0$.}
+
+\noindent For any $q$ stronger than $p$, there are an $r$ stronger than $q$
+and an $a\in\frak A$ such that
+
+\Centerline{$r\VVdP\,\dot a=\dot x$, therefore
+$0=\dot\pi\dot a=(\pi a)^{\centerdot}$.}
+
+\noindent By 556Ba, there is an $s$ stronger than $r$ such that
+$s\Bcap\pi a=0$;  since $\pi s\Bsubseteq s$,
+$\pi(s\Bcap a)=0$.   As $\pi$ is injective, $s\Bcap a=0$ and (using 556Ba
+again)
+
+\Centerline{$s\VVdP\,\dot x=\dot a=0$.}
+
+\noindent As $q$ is arbitrary, $p\VVdP\,\dot x=0$;  as $p$ and $\dot x$ are
+arbitrary, $\VVdP\,\dot\pi$ is injective.
+
+\medskip
+
+\quad{\bf (iii)} Suppose that $p\in\frak C^+$ and that
+$\dot x$ is a $\Bbb P$-name such
+that $p\VVdP\,\dot x\in\dot\frak A$.   For any $q$ stronger than $p$,
+there are an $r$ stronger than $q$ and an
+$a\in\frak A$ such that $r\VVdP\,\dot x=\dot a$, so that
+
+\Centerline{$r\VVdP\,\dot\pi(\dot\phi(\dot x))
+=\dot\pi(\dot\phi(\dot a))
+=\dot\pi((\phi a)^{\centerdot})
+=(\pi\phi a)^{\centerdot}
+=(\pi\phi)^{\centerdot}(\dot a)
+=(\pi\phi)^{\centerdot}(\dot x)$.}
+
+\noindent As $q$ is arbitrary,
+
+\Centerline{$p\VVdP\,\dot\pi(\dot\phi(\dot x))
+=(\pi\phi)^{\centerdot}(\dot x)$;}
+
+\noindent as $p$ and $\dot x$ are arbitrary,
+$\VVdP\,\dot\pi\dot\phi=(\pi\phi)^{\centerdot}$.
+
+\medskip
+
+{\bf (b)(i)} I observed in (a-i-$\alpha$) above that $\pi c=c\Bcap\pi 1$
+for every $c\in\frak C$, so if $\pi 1=1$ we shall have $\pi c=c$ for every
+$c\in\frak C$.
+
+\medskip
+
+\quad{\bf (ii)} I pointed out in 556Bd that
+
+\Centerline{$\VVdP\,\dot 1$ is the identity of $\dot\frak A$,}
+
+\noindent and we now have
+
+\Centerline{$\VVdP\,\dot\pi(\dot 1)=(\pi 1)^{\centerdot}=\dot 1$,
+so $\dot\pi$ is a Boolean homomorphism.}
+
+\medskip
+
+\quad{\bf (iii)} Let $p\in\frak C^+$ and a $\Bbb P$-name $\dot x$
+be such that $p\VVdP\,\dot x\in\dot\frak A$.
+For any $q$ stronger than $p$, there are an $r$ stronger than $q$
+and an $a\in\frak A$
+such that $r\VVdP\,\dot a=\dot x$.   Now there is a $b\in\frak A$ such that
+$a=\pi b$, in which case
+
+\Centerline{$r\VVdP\,\dot x=\dot a=\dot\pi\dot b\in\dot\pi[\dot\frak A]$.}
+
+\noindent As $q$ is arbitrary, $p\VVdP\,\dot x\in\dot\pi[\dot\frak A]$;
+as $p$ and $\dot x$ are arbitrary, $\VVdP\,\dot\pi$ is surjective.
+
+\medskip
+
+\quad{\bf (iv)} By (a-iii),
+
+\Centerline{$\VVdP\,\dot\pi(\pi^{-1})^{\centerdot}
+=(\pi^{-1})^{\centerdot}\dot\pi=\dot\iota$}
+
+\noindent where $\iota:\frak A\to\frak A$ is the identity automorphism.
+But
+
+\Centerline{$\VVdP\,\dot\iota$ is the identity on $\dot\frak A$.}
+
+\noindent\Prf\ If $p\in\frak C^+$ and a $\Bbb P$-name $\dot x$ are such
+that
+$p\VVdP\,\dot x\in\dot\frak A$, then for any $q$ stronger than $p$ there
+are an $r$ stronger than $q$ and an $a\in\frak A$ such that
+
+\Centerline{$r\VVdP\,\dot x=\dot a=(\iota a)^{\centerdot}
+=\dot\iota\dot a=\dot\iota\dot x$.}
+
+\noindent As $q$ is arbitrary, $p\VVdP\,\dot\iota\dot x=\dot x$;  as
+$p$ and $\dot x$ are arbitrary, $\VVdP\,\dot\iota$ is the identity.\ \QeD\
+Putting these together,
+
+\Centerline{$\VVdP\,(\pi^{-1})^{\centerdot}$ is the inverse of $\dot\pi$.}
+
+\medskip
+
+\quad{\bf (v)}
+Suppose that $p\in\frak C^+$ and a $\Bbb P$-name $\dot x$ are such that
+
+\Centerline{$p\VVdP\,\dot x\in\dot\frak A$ and $\dot\pi\dot x=\dot x$.}
+
+\noindent For any $q$ stronger than $p$ there are an $r$ stronger than $q$
+and an $a\in\frak A$ such that
+
+\Centerline{$r\VVdP\,\dot a=\dot x=\dot\pi\dot x=\dot\pi\dot a
+=(\pi a)^{\centerdot}$,}
+
+\noindent and an $s$ stronger than $r$ such that
+$s\Bcap a=s\Bcap\pi a$.   Now
+$s\Bcap a=\pi(s\Bcap a)$ and
+$s\Bcap a\in\frak C$.   If $s\Bcap a=0$, set $s'=s$;
+then $s'\VVdP\,\dot x=0$.
+Otherwise, set $s'=s\Bcap a$;  then $s'\VVdP\,\dot x=1$.   Thus in either
+case we have an $s'$ stronger than $q$ such that
+$s'\VVdP\,\dot x\in\{0,1\}$.   As $q$ is arbitrary,
+$p\VVdP\,\dot x\in\{0,1\}$;  as $p$ and $\dot x$ are arbitrary,
+$\VVdP\,\dot\pi$ has fixed-point subalgebra $\{0,1\}$.
+}%end of proof of 556C
+
+\leader{556D}{Regularly embedded \dvrocolon{subalgebras}}\cmmnt{ I am
+trying to set these results out in maximal
+generality, as usual.   However it seems that we need to move almost at
+once to the case in which our subalgebra is regularly embedded, and we
+have more effective versions of 556Ba and 556B(e-ii).
+
+\medskip
+
+\noindent}{\bf Proposition} Let $\frak A$ be a Boolean algebra,
+not $\{0\}$, and   $\frak C$ a regularly embedded subalgebra of $\frak A$.
+Let $\Bbb P$ be the
+forcing notion $\frak C^+$, active downwards, and
+for $a\in\frak A$ let $\dot a$ be the forcing name for $a$ over $\frak C$.
+
+(a) For $p\in\frak C^+$ and $a$, $b\in\frak A$,
+
+\Centerline{$p\VVdP\,\dot a=\dot b$}
+
+\noindent iff $p\Bcap a=p\Bcap b$.
+
+(b) Let $\dot{\Bsubseteq}$ be the forcing name for $\Bsubseteq$ over
+$\frak C$.   Then for $p\in\frak C^+$ and $a$, $b\in\frak A$,
+
+\Centerline{$p\VVdP\,\dot a\dot{\Bsubseteq}\dot b$}
+
+\noindent iff $p\Bcap a\Bsubseteq b$.
+
+\proof{ The point is just that $\upr(a,\frak C)=0$ only when $a=0$, because
+infima in $\frak C$ are also infima in $\frak A$ (313N);  so that
+$\upr(p\Bcap a\Bsetminus b,\frak C)=0$ iff $p\Bcap a\Bsubseteq b$, and
+$\upr(p\Bcap(a\Bsymmdiff b),\frak C)=0$ iff $p\Bcap a=p\Bcap b$.
+}%end of proof of 556D
+
+\leader{556E}{Proposition} Let $\frak A$ be a Boolean algebra,
+not $\{0\}$, $\frak C$ a
+regularly embedded subalgebra of $\frak A$, $\Bbb P$ the forcing notion
+$\frak C^+$, active downwards,
+and $\dot\frak A$ the forcing name for $\frak A$ over
+$\frak C$;  for $a\in\frak A$, write $\dot a$ for the forcing name for $a$
+over $\frak C$.
+
+(a) Let $\dot A$ be a $\Bbb P$-name, and set
+
+\Centerline{$B
+=\{q\Bcap a:q\in\frak C^+$, $a\in\frak A$, $q\VVdP\,\dot a\in\dot A\}$.}
+
+\noindent Then for $d\in\frak A$ and $p\in\frak C^+$,
+
+\Centerline{$p\VVdP\,\dot d$ is an upper bound for
+$\dot A\cap\dot\frak A$}
+
+\noindent iff $p\Bcap b\Bsubseteq d$ for every $b\in B$, and
+
+\Centerline{$p\VVdP\,\dot d=\sup(\dot A\cap\dot\frak A)$}
+
+\noindent iff $p\Bcap d=\sup_{b\in B}p\Bcap b$.
+
+\wheader{556E}{0}{0}{0}{36pt}
+
+(b)(i) If $\familyiI{a_i}$ is a family in $\frak A$ with supremum $a$, then
+
+\Centerline{$\VVdP\,\dot a
+=\sup_{i\in\check I}\dot a_i$.\footnote{See 5A3E for a note on the
+interpretation of formulae of this kind.}}
+
+\quad(ii) If $\familyiI{a_i}$ is a family in $\frak A$ with infimum $a$,
+then
+
+\Centerline{$\VVdP\,\dot a=\inf_{i\in\check I}\dot a_i$.}
+
+
+(c) $\VVdP\,\sat(\dot\frak A)
+\le\sat(\frak A)\var2spcheck$.\footnote{\smallerfonts{Of course I am not
+asserting here that `$\eightVVdash_{\Bbb P}\,\sat(\frak A)\var2spcheck$
+is a cardinal', only that
+`$\eightVVdash_{\Bbb P}\,\sat(\dot\frak A)$ is a cardinal and
+$\sat(\frak A)\var2spcheck$ is an ordinal'.}}
+
+(d) $\VVdP\,\tau(\dot\frak A)\le\tau(\frak A)\var2spcheck$.
+
+\wheader{556E}{0}{0}{0}{36pt}
+\proof{{\bf (a)(i)} \Quer\ Suppose, if possible, that $b\in B$,
+$p\Bcap b\notBsubseteq d$ and
+
+\Centerline{$p\VVdP\,\dot d$ is an upper bound for
+$\dot A\cap\dot\frak A$.}
+
+\noindent Let $q\in\frak C^+$,
+$a\in\frak A$ be such that $b=q\Bcap a$ and $q\VVdP\,\dot a\in\dot A$.
+Then $p\Bcap q\ne 0$, so $p\Bcap q\in\frak C^+$ and
+
+\Centerline{$p\Bcap q\VVdP\,\dot a\in\dot A\cap\dot\frak A$, therefore
+$\dot a\dot{\Bsubseteq}\dot d$.}
+
+\noindent It follows that $p\Bcap q\Bcap a\Bsubseteq d$ (556Db);  but
+this contradicts the choice of $p$ and $b$.\ \Bang
+
+Thus $p\Bcap b\Bsubseteq d$ whenever $b\in B$ and $p\VVdP\,\dot d$ is an
+upper bound for $\dot A\cap\dot\frak A$.
+
+\medskip
+
+\quad{\bf (ii)} Next, suppose that $p\in\frak C^+$ and $d\in\frak A$ are
+such that $p\Bcap b\Bsubseteq d$ for every $b\in B$.
+Suppose that $q$ is stronger than $p$ and that $\dot x$ is a $\Bbb P$-name
+such that $q\VVdP\,\dot x\in\dot A\cap\dot\frak A$.
+If $r$ is stronger than $q$, there
+are an $s$ stronger than $r$ and an $a\in\frak A$ such that
+$s\VVdP\,\dot x=\dot a$.   In this case, $s\Bcap a\in B$ and
+$s\Bcap a=p\Bcap s\Bcap a\Bsubseteq d$, so
+
+\Centerline{$s\VVdP\,\dot x=\dot a
+=(s\Bcap a)^{\centerdot}\dot{\Bsubseteq}\dot d$.}
+
+\noindent As $r$ is arbitrary, $q\VVdP\,\dot x\dot{\Bsubseteq}\dot d$;  as
+$q$ and $\dot x$ are arbitrary,
+
+\Centerline{$p\VVdP\,\dot d$ is an upper bound for $\dot A$.}
+
+\medskip
+
+\quad{\bf (iii)} Putting these together, we see that
+$p\Bcap b\Bsubseteq d$ for every $b\in B$
+iff $p\VVdP\,\dot d$ is an upper bound for $\dot A\cap\dot\frak A$.
+
+\medskip
+
+\quad{\bf (iv)} Now suppose that
+$p\VVdP\,\dot d=\sup(\dot A\cap\dot\frak A)$.   We know that $d$, and
+therefore $p\Bcap d$, is an upper bound of $\{p\Bcap b:b\in B\}$.
+If $e$ is any other upper bound of $\{p\Bcap b:b\in B\}$, then
+
+\Centerline{$p\VVdP\,\dot e$ is an upper bound of $\dot A$, so
+$\dot d\dot{\Bsubseteq}\dot e$}
+
+\noindent and $p\Bcap d\Bsubseteq e$, by 556Db again;  thus
+$p\Bcap d=\sup_{b\in B}p\Bcap b$.
+
+\medskip
+
+\quad{\bf (v)} Finally, suppose that $p\Bcap d=\sup_{b\in B}p\Bcap b$.
+Suppose that $q$ is stronger than $p$ and that $\dot x$ is a
+$\Bbb P$-name such that
+
+\Centerline{$q\VVdP\,\dot x\in\dot\frak A$ is an upper bound of
+$\dot A\cap\dot\frak A$.}
+
+\noindent If $r$ is stronger than $q$, there are a
+$s$ stronger than $r$
+and a $c\in\frak A$ such that $s\VVdP\,\dot x=\dot c$.   In this case, by
+(i), we must have $s\Bcap b\Bsubseteq c$ for every $b\in B$;
+accordingly $s\Bcap d\Bsubseteq c$ (313Ba), so that
+
+\Centerline{$s\VVdP\,\dot d\dot{\Bsubseteq}\dot c=\dot x$.}
+
+\noindent As $r$ is arbitrary,
+
+\Centerline{$q\VVdP\,\dot d\dot{\Bsubseteq}\dot x$;}
+
+\noindent as $q$ and $\dot x$ are arbitrary,
+
+\Centerline{$p\VVdP\,\dot d=\sup(\dot A\cap\dot\frak A)$.}
+
+\medskip
+
+{\bf (b)(i)} Of course
+
+\Centerline{$\VVdP\,\dot a_i\dot{\Bsubseteq}\dot a$}
+
+\noindent for every $i\in I$, so that
+
+\Centerline{$\VVdP\,\dot a$ is an upper bound for
+$\{\dot a_i:i\in\check I\}$.}
+
+\noindent (Formally speaking:  if $p\in\frak C^+$ and $\dot x$ is a
+$\Bbb P$-name such that $p\VVdP\,\dot x\in\{\dot a_i:i\in\check I\}$, then
+for any $q$ stronger than $p$ there are an $r$ stronger than $q$ and an
+$i\in I$ such that $r\VVdP\,\dot x=\dot a_i\dot{\Bsubseteq}\dot a$;  hence
+$p\VVdP\,\dot x\dot{\Bsubseteq}\dot a$.)
+In the other direction, suppose that $p\in\frak C^+$ and that
+$\dot x$ is a $\Bbb P$-name such that
+
+\Centerline{$p\VVdP\,\dot a_i\Bsubseteq\dot x\in\dot\frak A$ for every
+$i\in\check I$.}
+
+\noindent For any $q$ stronger than $p$ there are an $r$ stronger than $q$
+and a $b\in\frak A$ such that $r\VVdP\,\dot x=\dot b$.   Now, for any
+$i\in I$,
+
+\Centerline{$r\VVdP\,\varchecki\in\check I$,
+$\dot a_i\dot{\Bsubseteq}\dot x=\dot b$}
+
+\noindent and therefore $r\Bcap a_i\Bsubseteq b$.   As $i$ is arbitrary,
+$r\Bcap a\Bsubseteq b$ and $r\VVdP\,\dot a\dot{\Bsubseteq}\dot x$.
+As $q$ is arbitrary, $p\VVdP\,\dot a\dot{\Bsubseteq}\dot x$; as $p$ and
+$\dot x$ are arbitrary,
+
+\Centerline{$\VVdP\,\dot a$ is the least upper bound of
+$\{\dot a_i:i\in\check I\}$.}
+
+\medskip
+
+\quad{\bf (ii)} Now
+
+$$\eqalign{\VVdP\,\inf_{i\in\check I}\dot a_i
+&=1\dot\Bsetminus\sup_{i\in\check I}(1\dot\Bsetminus a_i)
+=1\dot\Bsetminus\sup_{i\in\check I}(1\Bsetminus a_i)^{\centerdot}\cr
+&=1\dot\Bsetminus(\sup_{i\in I}(1\Bsetminus a_i))^{\centerdot}
+=(1\Bsetminus(\sup_{i\in I}(1\Bsetminus a_i)))^{\centerdot}
+=(\inf_{i\in I}a_i)^{\centerdot}.\cr}$$
+
+\medskip
+
+{\bf (c)} \Quer\ Otherwise, there are a $p\in\frak C^+$ and a family
+$\ofamily{\xi}{\kappa}{\dot x_{\xi}}$, where $\kappa=\sat(\frak A)$,
+such that
+
+\Centerline{$p\VVdP\,\dot x_{\xi}\in\dot\frak A^+$ for every
+$\xi<\check\kappa$ and $\dot x_{\xi}\dot\Bcap\dot x_{\eta}=0$ whenever
+$\xi<\eta<\check\kappa$.}
+
+\noindent For each $\xi<\kappa$ choose $q_{\xi}$ stronger than $p$ and
+$a_{\xi}\in\frak A$ such that $q_{\xi}\VVdP\,\dot x_{\xi}=\dot a_{\xi}$.
+Then $q_{\xi}\VVdP\,\dot a_{\xi}\ne 0$, so $b_{\xi}=q_{\xi}\Bcap a_{\xi}$
+is non-zero.   As $\sat(\frak A)=\kappa$, there must be $\xi<\eta<\kappa$
+such that $b_{\xi}\Bcap b_{\eta}\ne 0$.   Set $r=q_{\xi}\Bcap q_{\eta}$;
+then $r\in\frak C^+$ is stronger than $p$ and
+
+\Centerline{$r\VVdP\,\dot x_{\xi}\dot\Bcap\dot x_{\eta}
+  =\dot a_{\xi}\dot\Bcap\dot a_{\eta}
+  =(a_{\xi}\Bcap a_{\eta})^{\centerdot}
+  \ne 0$}
+
+\noindent by 556Da, because $r\Bcap a_{\xi}\Bcap a_{\eta}\ne 0$.\ \Bang
+
+\medskip
+
+{\bf (d)} Let $A\subseteq\frak A$ be a set of size $\kappa=\tau(\frak A)$
+which $\tau$-generates $\frak A$.   Let $\dot A$ be the $\Bbb P$-name
+$\{(\dot a,1):a\in A\}$;  then
+
+\Centerline{$\VVdP\,\dot A\,\,\tau$-generates $\dot\frak A$ and
+$\#(\dot A)\le\check\kappa$.}
+
+\noindent\Prf\ (i) Suppose that $p\in\frak C^+$ and $\dot x$, $\dot\frak B$
+are $\Bbb P$-names such that
+
+\Centerline{$p\VVdP\,\dot\frak B$ is an order-closed subalgebra of
+$\dot\frak A$ including $\dot A$, and $\dot x\in\dot\frak A$.}
+
+\noindent Consider
+$\frak D=\{a:a\in\frak A$, $p\VVdP\,\dot a\in\dot\frak B\}$.   Then
+$\frak D$ is a subalgebra of $\frak A$, by 556Bb,
+and is order-closed by (b)
+here;  also $A\subseteq\frak D$, so $\frak D=\frak A$.   Next, for any $q$
+stronger than $p$ there are an $r$ stronger than $q$ and an $a\in\frak A$
+such that $r\VVdP\,\dot x=\dot a$;  since $a\in\frak D$,
+$p\VVdP\,\dot a\in\dot\frak B$ and
+
+\Centerline{$r\VVdP\,\dot x\in\dot\frak B$.}
+
+\noindent As $p$, $\dot x$ and $\dot\frak B$ are arbitrary,
+
+\Centerline{$\VVdP\,\dot A\,\,\tau$-generates $\dot\frak A$.}
+
+\noindent (ii) If $\ofamily{\xi}{\kappa}{a_{\xi}}$ enumerates $A$, then
+
+\Centerline{$\VVdP\,\dot A=\{\dot a_{\xi}:\xi<\check\kappa\}$ and
+$\#(\dot A)\le\#(\check\kappa)\le\check\kappa$.  \Qed}
+
+\noindent Accordingly
+
+\Centerline{$\VVdP\,\tau(\dot\frak A)\le\check\kappa$.}
+}%end of proof of 556E
+
+\leader{556F}{Quotient \dvrocolon{forcing}}\cmmnt{ In 556A-556B I have
+gone to pains to describe names
+$\dot\frak A,\dot\Bsymmdiff,\dot\Bcap,\dot 0,\dot 1$ constituting a Boolean
+algebra.   Of course we also have much simpler names
+$\check\frak A,\check\Bsymmdiff,\check\Bcap,\check 0,\check 1$
+also constituting
+a Boolean algebra in the forcing language, and these must obviously be
+related in some way to the construction here.
+I think the details are worth bringing into the open.
+
+\medskip
+
+\noindent}{\bf Proposition}
+Let $\frak A$ be a Boolean algebra, not $\{0\}$, and
+$\frak C$ a subalgebra of $\frak A$.   Let $\Bbb P$ be the forcing notion
+$\frak C^+$, active downwards, and $\dot\frak A$ the
+forcing name for $\frak A$ over $\frak C$.
+
+(a) Consider the $\Bbb P$-names
+
+\Centerline{$\dot\psi=\{((\check a,\dot a),1):a\in\frak A\}$,
+\quad$\dot{\Cal I}
+=\{(\check a,p):p\in\frak C^+$, $a\in\frak A$, $p\Bcap a=0\}$.}
+
+\noindent Then
+
+\Centerline{$\VVdP\,\dot\psi$ is a Boolean homomorphism from
+$\check\frak A$ onto
+$\dot\frak A$, and its kernel is $\dot{\Cal I}$.}
+
+(b) Now suppose that $\frak C$ is regularly embedded in
+$\frak A$.   Set
+$\dot\Bbb Q=(\dot\frak A^+,\dot{\Bsubseteqshort},\dot 1,\check{\downarrow})$
+and let $\Bbb P*\dot\Bbb Q$ be the iterated forcing notion\cmmnt{ (5A3O)}.
+Then $\RO(\Bbb P*\dot\Bbb Q)$ is isomorphic to the Dedekind
+completion of $\frak A$.
+
+(c) Suppose that $\frak C$ is regularly embedded in $\frak A$ and that
+$\frak B$ is a Boolean algebra such that
+
+\Centerline{$\VVdP\,\dot\frak A\cong\check\frak B$.}
+
+\noindent Then the Dedekind completion $\widehat{\frak A}$ of $\frak A$ is
+isomorphic to the Dedekind completion $\frak C\tensorhat\frak B$ of the
+free product $\frak C\otimes\frak B$ of $\frak C$ and $\frak B$.
+
+\wheader{556F}{0}{0}{0}{36pt}
+
+\proof{{\bf (a)(i)} It is elementary that
+
+\Centerline{$\VVdP\,\dot\psi:\check{\frak A}\to\dot\frak A$ is a
+surjective function}
+
+\noindent just because $\dot\frak A=\{(\dot a,1):a\in\frak A\}$.
+By 556Bb,
+
+\Centerline{$\VVdP\,\dot\psi$ is a ring homomorphism;
+being surjective, it is a Boolean homomorphism.}
+
+\medskip
+
+\quad{\bf (ii)}\grheada\ If $p\in\frak C^+$ and
+$\dot x$ is a $\Bbb P$-name such that $p\VVdP\,\dot x\in\dot{\Cal I}$, then
+there are a $q\in\frak C^+$, an $a\in\frak A$, and an $r$ stronger than
+both $p$ and $q$ such that
+
+\Centerline{$q\Bcap a=0$,
+\quad$r\VVdP\,\dot x=\check a$.}
+
+\noindent In this case, $r\Bcap a=0$ so, by 556Ba,
+
+\Centerline{$r\VVdP\,0=\dot a=\dot\psi(\check a)=\dot\psi(\dot x)$.}
+
+\noindent As $p$ and $\dot x$ are arbitrary,
+
+\Centerline{$\VVdP\,\dot{\Cal I}$ is included in the kernel of $\dot\psi$.}
+
+\medskip
+
+\qquad\grheadb\ If $p\in\frak C^+$ and $\dot x$ is a $\Bbb P$-name such
+that
+
+\Centerline{$p\VVdP\,\dot x\in\check\frak A$ and $\dot\psi(\dot x)=0$,}
+
+\noindent then there are an
+$a\in\frak A$ and a $q$ stronger than $p$ such that
+
+\Centerline{$q\VVdP\,\dot x=\check a$ and
+$\dot a=\dot\psi(\check a)=\dot\psi(\dot x)=0$.}
+
+\noindent Now there is an $r$ stronger than $q$ such that $r\Bcap a=0$, so
+that $(\check a,r)\in\dot\Cal I$ and
+
+\Centerline{$r\VVdP\,\dot x=\check a\in\dot\Cal I$.}
+
+\noindent As $p$ and $\dot x$ are arbitrary,
+
+\Centerline{$\VVdP$ the kernel of $\dot\psi$ is included in $\dot{\Cal I}$,
+so they coincide.}
+
+\medskip
+
+{\bf (b)(i)} In order to use the description of iterated forcing in 5A3O,
+we need to set out an exact $\Bbb P$-name
+for $\dot\frak A^+$.   If we say that $\dot\frak A^+$ abbreviates
+$\{x:x\in\dot\frak A$, $x\ne 0\}$, and use the formulation of
+Comprehension in {\smc Kunen 80}, Theorem 4.2, we get
+
+\Centerline{$\dot\frak A^+
+=\{(\dot x,p):\dot x\in\dom\dot\frak A$, $p\in\frak C^+$,
+$p\VVdP\,\dot x\in\dot\frak A$ and $\dot x\ne 0\}$.}
+
+\noindent Now 556Ab specifies $\dom\dot\frak A$ to be
+$\{\dot a:a\in\frak A\}$, so we get
+
+$$\eqalign{\dot\frak A^+
+&=\{(\dot a,p):a\in\frak A,\,p\in\frak C^+,\,
+   p\VVdP\,\dot a\in\dot\frak A\text{ and }\dot a\ne 0\}\cr
+&=\{(\dot a,p):a\in\frak A,\,p\in\frak C^+,\,
+   p\VVdP\,\dot a\ne 0\},\cr}$$
+
+\Centerline{$\dom\dot\frak A^+
+=\{\dot a:a\in\frak A$, $\notVVdash_{\Bbb P}\,\dot a=0\}
+=\{\dot a:a\in\frak A^+\}$}
+
+\noindent by 556Da.
+
+\medskip
+
+\quad{\bf (ii)} 5A3O now tells us that the underlying set of
+$\Bbb P*\dot\Bbb Q$ is to be
+
+\Centerline{$P
+=\{(p,\dot a):p\in\frak C^+$, $a\in\frak A^+$, $p\VVdP\,\dot a\ne 0\}$.}
+
+\noindent For $p\in\frak C^+$ and $a\in\frak A$,
+
+$$\eqalignno{p\VVdP\,\dot a\ne 0
+&\iff\text{ for every }q\text{ stronger than }p,
+  \,q\notVVdash_{\Bbb P}\,\dot a=0\cr
+&\iff\text{ for every non-zero }q\Bsubseteq p,
+  \,q\Bcap a\ne 0\cr}$$
+
+\noindent (556Da).   So $P$ is just
+
+\Centerline{$\{(p,\dot a):p\in\frak C^+$, $a\in\frak A$, $q\Bcap a\ne 0$
+  whenever $q\in\frak C$ and $0\ne q\Bsubseteq p\}$.}
+
+\noindent Next, for $(p,\dot a)$, $(q,\dot b)\in P$,
+
+$$\eqalign{(p,\dot a)\text{ is stronger than }(q,\dot b)
+&\iff p\Bsubseteq q\text{ and }p\VVdP\,\dot a\dot{\Bsubseteq}\dot b\cr
+&\iff p\Bsubseteq q\text{ and }p\Bcap a\Bsubseteq b\cr}$$
+
+\noindent (556Db).
+
+\medskip
+
+\quad{\bf (iii)} We can define a function $f:P\to\frak A^+$ by setting
+
+\Centerline{$f(p,\dot a)=p\Bcap a$}
+
+\noindent whenever $(p,\dot a)\in P$.   \Prf\ If you look at the definition
+of $\dot a$ in 556A, you will see that $((b,1),1)=(\check b,1)$
+belongs to $\dot a$ iff
+$b\Bsubseteq a$, so that $\dot a=\dot b$ only when $a=b$;  thus $f$ is a
+function from $P$ to $\frak A$.
+And the definition of $P$ ensures that $f(p,\dot a)\ne 0$
+whenever $(p,\dot a)\in P$.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)}\grheada\
+If $(p,\dot a)$ is stronger than $(q,\dot b)$ in $P$, then
+$p\Bsubseteq q$ and $p\Bcap a\Bsubseteq b$, so
+$f(p,\dot a)\Bsubseteq f(q,b)$.
+
+\medskip
+
+\qquad\grheadb\ If $a\in\frak A^+$, then (because $\frak C$ is regularly
+embedded) $C=\{q:a\Bsubseteq q\in\frak C\}$ does not have infimum $0$ in
+$\frak C$;  let $p\in\frak C^+$ be a lower bound for $C$.   Then
+$(p,\dot a)\in P$, and $f(p,\dot a)\Bsubseteq a$.   Thus $f[P]$ is
+order-dense in $\frak A$.
+
+\medskip
+
+\qquad\grheadc\ If $(p,\dot a)$, $(q,\dot b)$ are incompatible in
+$P$, then $f(p,\dot a)\Bcap f(q,\dot b)=0$.   \Prf\Quer\ Otherwise,
+$c=p\Bcap a\Bcap q\Bcap b$ is non-zero.   Let $r\in\frak C^+$ be such that
+$(r,\dot c)\in P$.   Since $r\Bsetminus(p\Bcap q)\VVdP\,\dot c=0$,
+$r\Bsubseteq p\Bcap q$;  since $c\Bsubseteq a\Bcap b$,
+$(r,\dot c)$ is stronger than both $(p,\dot a)$ and
+$(q,\dot b)$, which is supposed to be impossible.\ \Bang\Qed
+
+\medskip
+
+\quad{\bf (v)} Thinking of $\frak A^+$ as an order-dense subset of
+$\widehat{\frak A}$, and of $f$ as a function from $P$ to
+$\widehat{\frak A}^+$, 514Sa tells us that
+
+\Centerline{$\RO(\Bbb P*\dot\Bbb Q)
+=\RO(P)\cong\widehat{\frak A}$,}
+
+\noindent as claimed.
+
+\medskip
+
+{\bf (c)} For free products of Boolean algebras, see \S315;  for Dedekind
+completions, see \S314.   This part can be regarded as a corollary of (b)
+(see 556Ya-556Yb), but can also be approached directly, as follows.
+
+\medskip
+
+\quad{\bf (i)} Let $\dot\theta$ be a $\Bbb P$-name such that
+
+\Centerline{$\VVdP\,\dot\theta:\dot\frak A\to\check\frak B$ is an
+isomorphism.}
+
+\noindent Set
+
+\Centerline{$R=\{(p,b,a):p\in\frak C^+$, $b\in\frak B^+$, $a\in\frak A^+$,
+$a\Bsubseteq p$ and $p\VVdP\,\dot\theta(\dot a)=\check b\}$,}
+
+\noindent and give $R$ the ordering induced by the product partial ordering
+of $\frak C^+\times\frak B^+\times\frak A^+$.
+
+\medskip
+
+\quad{\bf (ii)} $\RO^{\downarrow}(R)\cong\frak C\tensorhat\frak B$.   \Prf\
+Define $f:R\to(\frak C\tensorhat\frak B)^+$ by setting
+$f(p,b,a)=p\otimes b$.
+
+\medskip
+
+\qquad\grheada\ Of course $f(p,b,a)\Bsubseteq f(p',b',a')$ whenever
+$(p,b,a)\le(p',b',a')$.
+
+\medskip
+
+\qquad\grheadb\ If $(p_0,b_0,a_0)$ and $(p_1,b_1,a_1)$ belong to $R$ and
+$f(p_0,b_0,a_0)\Bcap f(p_1,b_1,a_1)\ne 0$, set $p=p_0\Bcap p_1$,
+$b=b_0\Bcap b_1$ and $a=a_0\Bcap a_1$.   Then $p\in\frak C^+$,
+$b\in\frak B^+$, $a\Bsubseteq p$ and
+
+\Centerline{$p\VVdP\,\dot\theta(\dot a)
+=\dot\theta(\dot a_0\dot\Bcap\dot a_1)
+=\dot\theta(\dot a_0)\check\Bcap\dot\theta(\dot a_1)
+=\check b_0\check\Bcap\check b_1
+=\check b$.}
+
+\noindent As $p\VVdP\,\dot\theta(\dot a)\ne\check 0$, $a$ cannot be $0$,
+and $(p,b,a)\in R$;  so $(p_0,b_0,a_0)$ and $(p_1,b_1,a_1)$ are downwards
+compatible in $R$.
+
+\medskip
+
+\qquad\grheadc\ If $d\in(\frak C\tensorhat\frak B)^+$, there are
+$p_0\in\frak C^+$, $b\in\frak B^+$ such that
+$p_0\otimes b\Bsubseteq d$.   Now there is a $\Bbb P$-name $\dot x$ such
+that
+
+\Centerline{$\VVdP\,\dot x\in\dot\frak A$ and
+$\dot\theta(\dot x)=\check b$.}
+
+\noindent Let $p$ stronger than $p_0$ and $a_0\in\frak A$ be such that
+$p\VVdP\,\dot a_0=\dot x$, and set $a=p\Bcap a_0$;  then
+
+\Centerline{$p\VVdP\,\dot a=\dot a_0$ so
+$\dot\theta(\dot a)=\dot\theta(\dot a_0)=\check b$.}
+
+\noindent As in ($\beta$), it follows that $a\ne 0$, so that
+$(p,b,a)\in R$;  now $f(p,b,a)\Bsubseteq d$.   As $d$ is arbitrary,
+$f[R]$ is order-dense in $\frak C\tensorhat\frak B$.
+
+\medskip
+
+\qquad\grheadd\ Thus $f$ satisfies the conditions of 514Sa
+and $\RO^{\downarrow}(R)\cong\frak C\tensorhat\frak B$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} $\RO^{\downarrow}(R)\cong\widehat{\frak A}$.   \Prf\
+Define $g:R\to\widehat{\frak A}^+$ by setting $g(p,b,a)=a$ for
+$(p,b,a)\in R$.
+
+\medskip
+
+\qquad\grheada\ Of course $g(p,b,a)\Bsubseteq g(p',b',a')$ whenever
+$(p,b,a)\le(p',b',a')$ in $R$.
+
+\medskip
+
+\qquad\grheadb\ Suppose that $(p_0,b_0,a_0)$, $(p_1,b_1,a_1)\in R$ and that
+$a=a_0\Bcap a_1\ne 0$.   Set $p=p_0\Bcap p_1$ and $b=b_0\Bcap b_1$.   Then
+$p\Bsupseteq a\ne 0$ and
+
+\Centerline{$p\VVdP\,\dot\theta(\dot a)=\check b$}
+
+\noindent as in (ii-$\beta$).   Since $p\Bcap a\ne 0$,
+$p\notVVdash_{\Bbb P}\,\dot a=\dot 0$ (556Da), so
+$p\notVVdash_{\Bbb P}\,\check b=\check 0$ and $b\ne 0$.   Thus
+$(p,b,a)\in R$ and $(p_0,b_0,a_0)$, $(p_1,b_1,a_1)$ are compatible
+downwards in $R$.
+
+\medskip
+
+\qquad\grheadc\ If $d\in\widehat{\frak A}^+$, there is an $a_0\in\frak A^+$
+such that $a_0\Bsubseteq d$.   In this case,
+$\notVVdash_{\Bbb P}\,\dot a_0=\dot 0$ so
+there is a $p_0\in\frak C^+$
+such that $p_0\VVdP\,\dot a_0\ne\dot 0$.   Now
+$p_0\VVdP\,\dot\theta(\dot a_0)\in\check\frak B$ so there are a $p$
+stronger than $p_0$ and a $b\in\frak B$ such that
+$p\VVdP\,\dot\theta(\dot a_0)=\check b$.   Set $a=p\Bcap a_0$;  then
+
+\Centerline{$p\VVdP\,\dot a=\dot a_0\ne\dot 0$ and
+$\check b=\dot\theta(\dot a)\ne\check 0$.}
+
+\noindent Consequently $a$ and $b$ are both non-zero and $(p,b,a)\in R$,
+while $g(p,b,a)\Bsubseteq d$.
+
+\medskip
+
+\qquad\grheadd\ Thus $g$ satisfies the conditions of 514Sa
+and $\RO^{\downarrow}(R)\cong\widehat{\frak A}$.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} Putting these together, $\frak C\tensorhat\frak B$ and
+$\widehat{\frak A}$ are isomorphic.
+}%end of proof of 556F
+
+\leader{556G}{Proposition} Let $\frak A$ be a
+Dedekind complete Boolean algebra, not $\{0\}$,
+$\frak C$ a regularly embedded
+subalgebra of $\frak A$, $\Bbb P$ the forcing notion
+$\frak C^+$, active downwards,
+and $\dot\frak A$ the forcing name for $\frak A$ over $\frak C$.
+
+(a) Whenever $p\in\frak C^+$ and $\dot x$ is a $\Bbb P$-name such that
+
+\Centerline{$p\VVdP\,\dot x\in\dot\frak A$,}
+
+\noindent there is an $a\in\frak A$ such that
+
+\Centerline{$p\VVdP\,\dot x=\dot a$,}
+
+\noindent where $\dot a$ is the forcing name for $a$ over $\frak C$.
+
+(b) $\VVdP\,\dot\frak A$ is Dedekind complete.
+
+\proof{{\bf (a)} Set
+
+\Centerline{$B=\{q\Bcap b:q\in\frak C^+$ is stronger than $p$, $b\in\frak A$,
+$q\VVdP\,\dot b=\dot x\}$,
+\quad$a=\sup B$.}
+
+\noindent Then 556Ea tells us that
+
+\Centerline{$p\VVdP\,\dot a=\sup\{\dot x\}=\dot x$.}
+
+\medskip
+
+{\bf (b)} Suppose that $p\in\frak C^+$ and that $\dot A$ is a
+$\Bbb P$-name such that $p\VVdP\,\dot A\subseteq\dot\frak A$.   Set
+
+\Centerline{$B=\{q\Bcap a:a\in\frak A$, $q\in\frak C^+$ and
+$q\VVdP\,\dot a\in\dot A\}$,
+\quad$d=\sup B$.}
+
+\noindent Then $p\Bcap d=\sup_{b\in B}p\Bcap b$, so
+$p\VVdP\,\dot d=\sup\dot A$,
+by 556Ea.   As $p$ and $\dot A$ are arbitrary,
+
+\Centerline{$\VVdP\,\dot\frak A$ is Dedekind complete.}
+}%end of proof of 556G
+
+\leader{556H}{$L^0(\frak A)$:  Proposition} Let $\frak A$ be a
+Dedekind complete Boolean algebra, not $\{0\}$,
+$\frak C$ a regularly embedded
+subalgebra of $\frak A$, $\Bbb P$ the forcing notion
+$\frak C^+$, active downwards,
+and $\dot\frak A$ the forcing name for $\frak A$ over
+$\frak C$.   For $a\in\frak A$ let $\dot a$ be the forcing name for $a$
+over $\frak C$.
+
+(a)(i) For every $u\in L^0(\frak A)$,
+
+\Centerline{$\VVdP\,\dot u\in L^0(\dot\frak A)$}
+
+\noindent where $\dot u$ is the forcing name for $u$ over $\frak C$.
+
+\quad(ii) If $u$, $v\in L^0(\frak A)$ and $\VVdP\,\dot u=\dot v$, then
+$u=v$.
+
+(b) For $u$, $v\in L^0(\frak A)$ and $\alpha\in\Bbb R$,
+
+$$\eqalign{\VVdP\,\dot u+\dot v&=(u+v)^{\centerdot},\cr
+-\dot u&=(-u)^{\centerdot}, \cr
+\dot u\vee\dot v&=(u\vee v)^{\centerdot},\cr
+\dot u\times\dot v&=(u\times v)^{\centerdot},\cr
+\check\alpha\dot u&=(\alpha u)^{\centerdot}.\cr}$$
+
+\noindent If $u\le v$, then $\VVdP\,\dot u\le\dot v$.
+
+(c) If $\familyiI{u_i}$ is a family in $L^0(\frak A)$
+with supremum $u\in L^0(\frak A)$, then
+
+\Centerline{$\VVdP\,\dot u=\sup_{i\in\check I}\dot u_i$
+in $L^0(\dot\frak A)$.}
+
+(d) If $p\in\frak C^+$ and $\dot w$ is a
+$\Bbb P$-name such that $p\VVdP\,\dot w\in L^0(\dot\frak A)$, then there is
+a $u\in L^0(\frak A)$ such that
+
+\Centerline{$p\VVdP\,\dot w=\dot u$.}
+
+(e) If $\sequencen{u_n}$ is a sequence in $L^0(\frak A)$, then the
+following are equiveridical:
+
+\quad(i) $\sequencen{u_n}$ is order*-convergent to
+$0$\cmmnt{ (definition: 367A)},
+
+\quad(ii) $\VVdP\,\sequencen{\dot u_n}$ is order*-convergent to $0$.
+
+\proof{{\bf (a)(i)} Examining the definition in 556Af, we see that we have
+
+\Centerline{$\VVdP\,\dot u$ is a function from $\Bbb Q$ to $\dot\frak A$
+and $\dot u(\check\alpha)=\Bvalue{u>\alpha}^{\centerdot}$}
+
+\noindent for every $\alpha\in\Bbb Q$.   Now 556Eb tells us that,
+for every $\alpha\in\Bbb Q$,
+
+$$\eqalignno{\VVdP\,\dot u(\check\alpha)
+&=\Bvalue{u>\alpha}^{\centerdot}
+=(\sup_{\beta\in\Bbb Q,\beta>\alpha}\Bvalue{u>\beta})^{\centerdot}
+=\sup_{\beta\in\Bbb Q,\beta>\check\alpha}\Bvalue{u>\beta}^{\centerdot}
+=\sup_{\beta\in\Bbb Q,\beta>\check\alpha}\dot u(\check\beta),\cr
+0
+&=(\inf_{n\in\Bbb N}\Bvalue{u>n})^{\centerdot}
+=\inf_{n\in\Bbb N}\Bvalue{u>n}^{\centerdot}
+=\inf_{n\in\Bbb N}\dot u(\check n),\cr
+1
+&=(\sup_{n\in\Bbb N}\Bvalue{u>-n})^{\centerdot}
+=\sup_{n\in\Bbb N}\Bvalue{u>-n}^{\centerdot}
+=\sup_{n\in\Bbb N}\dot u(-\check n),\cr}$$
+
+\noindent so
+
+\Centerline{$\VVdP\,\dot u\in L^0(\dot\frak A)$,}
+
+\noindent and I can write $\Bvalue{\dot u>\check\alpha}$ for the
+$\Bbb P$-name $\dot u(\check\alpha)$, so that
+
+\Centerline{$\VVdP\,\Bvalue{\dot u>\check\alpha}
+=\Bvalue{u>\alpha}^{\centerdot}$}
+
+\noindent for every $\alpha\in\Bbb Q$.
+
+\medskip
+
+\quad{\bf (ii)} For any $\alpha\in\Bbb Q$,
+
+\Centerline{$\VVdP\,\Bvalue{u>\alpha}^{\centerdot}
+=\Bvalue{\dot u>\check\alpha}
+=\Bvalue{\dot v>\check\alpha}
+=\Bvalue{u>\alpha}^{\centerdot}$.}
+
+\noindent By 556Da, $\Bvalue{u>\alpha}=\Bvalue{v>\alpha}$.   As $\alpha$ is
+arbitrary, $u=v$.
+
+\medskip
+
+{\bf (b)(i)} Suppose $u$, $v\in L^0(\frak A)$.   By 364D,
+we have
+
+\Centerline{$\Bvalue{u+v>\alpha}
+=\sup_{\beta\in\Bbb Q}\Bvalue{u>\beta}\Bcap\Bvalue{v>\alpha-\beta}$}
+
+\noindent for every $\alpha\in\Bbb Q$.   If $\alpha$, $\beta\in\Bbb Q$,
+
+\Centerline{$\VVdP\,\Bvalue{\dot u>\check\beta}
+   \dot\Bcap\Bvalue{\dot v>\check\alpha-\check\beta}
+=\Bvalue{u>\beta}^{\centerdot}\dot\Bcap\Bvalue{v>\alpha-\beta}^{\centerdot}
+=(\Bvalue{u>\beta}\Bcap\Bvalue{v>\alpha-\beta})^{\centerdot}$.}
+
+\noindent Taking the supremum over $\beta$, as in 556E(b-i),
+
+$$\eqalign{\VVdP\,\Bvalue{\dot u+\dot v>\check\alpha}
+&=\sup_{\beta\in\Bbb Q}\Bvalue{\dot u>\beta}
+  \dot\Bcap\Bvalue{\dot v>\check\alpha-\beta}
+=\sup_{\beta\in\check\Bbb Q}\Bvalue{\dot u>\beta}
+  \dot\Bcap\Bvalue{\dot v>\check\alpha-\beta}\cr
+&=(\sup_{\beta\in\Bbb Q}\Bvalue{u>\beta}
+   \Bcap\Bvalue{v>\alpha-\beta})^{\centerdot}
+=\Bvalue{u+v>\alpha}^{\centerdot}
+=\Bvalue{(u+v)^{\centerdot}>\check\alpha}\cr}$$
+
+\noindent for every $\alpha\in\Bbb Q$, and
+
+\Centerline{$\VVdP\,\dot u+\dot v=(u+v)^{\centerdot}$.}
+
+\medskip
+
+\quad{\bf (ii)} Concerning $u\vee v$, we have
+
+$$\eqalign{\VVdP\,\Bvalue{(u\vee v)^{\centerdot}>\check\alpha}
+&=\Bvalue{u\vee v>\alpha}^{\centerdot}
+=\Bvalue{u>\alpha}^{\centerdot}
+  \dot\Bcup\Bvalue{v>\alpha}^{\centerdot}\cr
+&=\Bvalue{\dot u>\check\alpha}\dot\Bcup\Bvalue{\dot v>\check\alpha}
+=\Bvalue{\dot u\vee\dot v>\check\alpha}\cr}$$
+
+\noindent for every $u$, $v\in L^0(\frak A)$ and $\alpha\in\Bbb Q$, so
+
+\Centerline{$\VVdP\,\dot u\vee\dot v=(u\vee v)^{\centerdot}$;}
+
+\noindent it follows that if $u\ge 0$ then
+$\VVdP\,\dot u=\dot u\vee 0\ge 0$.
+
+\medskip
+
+\quad{\bf (iii)}
+If $u$, $v\in L^0(\frak A)^+$, $\alpha\in\Bbb Q$
+and $\alpha\ge 0$, then, just as in (i),
+
+$$\eqalign{\VVdP\,\Bvalue{\dot u\times\dot v>\check\alpha}
+&=\sup_{\beta\in\Bbb Q,\beta>0}\Bvalue{\dot u>\beta}
+  \dot\Bcap\Bvalue{\dot v>\Bover{\check\alpha}{\beta}}
+=(\sup_{\beta\in\Bbb Q,\beta>0}\Bvalue{u>\beta}
+   \Bcap\Bvalue{v>\Bover{\alpha}{\beta}})^{\centerdot}\cr
+&=\Bvalue{u\times v>\alpha}^{\centerdot}
+=\Bvalue{(u\times v)^{\centerdot}>\check\alpha};\cr}$$
+
+\noindent so $\VVdP\,\dot u\times\dot v=(u\times v)^{\centerdot}$.
+Using the
+distributive law we see that the same is true for all $u$,
+$v\in L^0(\frak A)$.
+
+\wheader{556H}{6}{2}{2}{36pt}
+
+\quad{\bf (iv)} Take $\alpha\in\Bbb R$ and set
+$w=\alpha\chi 1\in L^0(\frak A)$.   If $\beta\in\Bbb Q$ and $\beta<\alpha$,
+then
+
+\Centerline{$\VVdP\,\Bvalue{\check\alpha\chi 1>\check\beta}
+=1=\dot 1=\Bvalue{w>\beta}^{\centerdot}
+=\Bvalue{\dot w>\check\beta}$;}
+
+\noindent while if $\beta\ge\alpha$,
+
+\Centerline{$\VVdP\,\Bvalue{\check\alpha\chi 1>\check\beta}
+=0=\dot 0=\Bvalue{w>\beta}^{\centerdot}
+=\Bvalue{\dot w>\check\beta}$.}
+
+\noindent So
+
+\Centerline{$\VVdP\,\Bvalue{\check\alpha\chi 1>\beta}
+=\Bvalue{\dot w>\beta}\text{ for every }
+  \beta\in\Bbb Q,\text{ and }
+\check\alpha\chi 1=\dot w=(\alpha\chi 1)^{\centerdot}$.}
+
+\noindent Putting this together with (iii), we have
+
+\Centerline{$\VVdP\,\check\alpha\dot u
+=(\check\alpha\chi 1)\times\dot u
+=(\alpha\chi 1)^{\centerdot}\times\dot u
+=(\alpha\chi 1\times u)^{\centerdot}
+=(\alpha u)^{\centerdot}$}
+
+\noindent for every $u\in L^0(\frak A)$.   In particular, taking
+$\alpha=-1$, $\VVdP\,-\dot u=(-u)^{\centerdot}$.
+
+\medskip
+
+\quad{\bf (v)} Finally, if $u\le v$ then $u\vee v=v$, so
+
+\Centerline{$\VVdP\,\dot u\vee\dot v=\dot v$ and $\dot u\le\dot v$.}
+
+\medskip
+
+{\bf (c)(i)} It will help to note that the criterion in
+364L(a-ii)
+
+\inset{if $A\subseteq L^0(\frak A)$ is
+non-empty, then $v\in L^0(\frak A)$ is the supremum of $A$ in
+$L^0(\frak A)$ iff $\Bvalue{v>\alpha}=\sup_{u\in A}\Bvalue{u>\alpha}$ in
+$\frak A$ for every $\alpha\in\Bbb R$}
+
+\noindent can be replaced by
+
+\inset{if $A\subseteq L^0(\frak A)$ is
+non-empty, then $v\in L^0(\frak A)$ is the supremum of $A$ in
+$L^0(\frak A)$ iff $\Bvalue{v>\alpha}=\sup_{u\in A}\Bvalue{u>\alpha}$ in
+$\frak A$ for every $\alpha\in\Bbb Q$.}
+
+\noindent\Prf\ If the weaker condition is satisfied, and $\alpha\in\Bbb R$,
+then
+
+$$\eqalign{\Bvalue{v>\alpha}
+&=\sup_{\beta\in\Bbb Q,\beta\ge\alpha}\Bvalue{v>\beta}
+=\sup_{\beta\in\Bbb Q,\beta\ge\alpha}\sup_{u\in A}\Bvalue{u>\beta}\cr
+&=\sup_{u\in A}\sup_{\beta\in\Bbb Q,\beta\ge\alpha}\Bvalue{u>\beta}
+=\sup_{u\in A}\Bvalue{u>\alpha}.  \text{ \Qed}\cr}$$
+
+\medskip
+
+\quad{\bf (ii)} Now 556E(b-i) tells us that
+
+\Centerline{$\VVdP\,\Bvalue{\dot u>\check\alpha}
+=\sup_{i\in\check I}\Bvalue{\dot u_i>\check\alpha}$}
+
+\noindent for every $\alpha\in\Bbb Q$, so
+
+\Centerline{$\VVdP\,\dot u=\sup_{i\in\check I}\dot u_i$.}
+
+\medskip
+
+{\bf (d)} For each $\alpha\in\Bbb Q$ we have an $a_{\alpha}\in\frak A$ such
+that $p\VVdP\,\dot a_{\alpha}=\Bvalue{\dot w>\check\alpha}$ (556Ga);  since
+$p\VVdP\,\dot a=(a\Bcap p)^{\centerdot}$ for every $a\in\frak A$, we can
+suppose that $a_{\alpha}\Bsubseteq p$ for every $\alpha$.   Now we find
+that if $\alpha\in\Bbb Q$ and
+$b_{\alpha}=\sup_{\beta\in\Bbb Q,\beta>\alpha}a_{\alpha}$, then
+
+\Centerline{$p\VVdP\,\dot b_{\alpha}
+=\sup_{\beta\in\Bbb Q,\beta>\check\alpha}\Bvalue{\dot w>\beta}
+=\dot a_{\alpha}$,}
+
+\noindent so $a_{\alpha}=b_{\alpha}$.   Similarly, if
+$b=\inf_{n\in\Bbb N}a_n$ and $c=\sup_{n\in\Bbb N}a_{-n}$,
+
+$$\eqalign{p\VVdP\,\dot b
+&=\inf_{n\in\Bbb N}\Bvalue{\dot w>n}=0,\cr
+\dot c&=\sup_{n\in\Bbb N}\Bvalue{\dot w>-n}=1\cr}$$
+
+\noindent and $b=0$, $c=p$.   It is now easy to check that
+there is a $u\in L^0(\frak A)$ such that
+
+$$\eqalign{\Bvalue{u>\alpha}
+&=a_{\alpha}\text{ if }\alpha\in\Bbb Q
+  \text{ and }\alpha>0,\cr
+&=a_{\alpha}\Bcup(1\Bsetminus p)
+  \text{ for other }\alpha\in\Bbb Q,\cr}$$
+
+\noindent and that $p\VVdP\,\dot u=\dot w$.
+
+\medskip
+
+{\bf (e)} Recall that
+$\sequencen{u_n}$ order*-converges to $0$ iff $\sequencen{u_n}$ is
+order-bounded and
+$0=\inf_{n\in\Bbb N}\sup_{m\ge n}|u_n|$ (367G);  and we shall have a
+similar formulation in the forcing language.   So if $\sequencen{u_n}$
+order*-converges to $0$, then
+
+\Centerline{$\VVdP\,\sup_{m\ge\check n}|\dot u_m|
+=(\sup_{m\ge n}|u_m|)^{\centerdot}$}
+
+\noindent for every $n\in\Bbb N$, and
+
+\Centerline{$\VVdP\,\inf_{n\in\Bbb N}\sup_{m\ge n}|\dot u_m|
+=(\inf_{n\in\Bbb N}\sup_{m\ge n}|u_m|)^{\centerdot}=0$, so
+$\sequencen{\dot u_n}\to^*0$.}
+
+Conversely, if $\VVdP\,\sequencen{\dot u_n}$ order*-converges to
+$0$, then $\VVdP\,\sequencen{\dot u_n}$ is order-bounded, and there is a
+$\Bbb P$-name $\dot w$ such that
+
+\Centerline{$\VVdP\,\dot w\in L^0(\dot\frak A)$,
+$|\dot u_n|\le\dot w$ for every $n\in\Bbb N$.}
+
+\noindent By (d), there is a $v\in L^0(\frak A)$ such that
+$\VVdP\,\dot w=\dot v$, so that
+
+\Centerline{$\VVdP\,(v\vee|u_n|)^{\centerdot}=\dot w\vee|\dot u_n|=\dot v$
+for every $n\in\Bbb N$}
+
+\noindent and $|u_n|\le v$ for every $n$ (use (a-ii)).
+We can therefore repeat the calculation just above to see that
+
+\Centerline{$\VVdP\,(\inf_{n\in\Bbb N}\sup_{m\ge n}|u_m|)^{\centerdot}
+=\inf_{n\in\Bbb N}\sup_{m\ge n}|\dot u_m|=0$,}
+
+\noindent so that $\inf_{n\in\Bbb N}\sup_{m\ge n}|u_m|=0$ and
+$\sequencen{u_n}$ order*-converges to $0$.
+}%end of proof of 556H
+
+\leader{556I}{Proposition} Let $\frak A$ be a Boolean algebra,
+not $\{0\}$, and $\frak C$ a regularly embedded
+subalgebra of $\frak A$.   Let $\Bbb P$ be the forcing notion
+$\frak C^+$, active downwards, and
+$\pi:\frak A\to\frak A$ a Boolean homomorphism fixing every point of
+$\frak C$;  let $\dot\pi$ be the forcing name for $\pi$ over $\frak C$.
+
+(a) $\pi$ is injective iff $\VVdP\,\dot\pi$ is injective.
+
+(b) If $\pi$ is order-continuous, then
+
+\Centerline{$\VVdP\,\dot\pi$ is order-continuous.}
+
+(c) If $\pi$ has a support $\supp\pi$\cmmnt{ (definition:  381Bb)}, then
+
+\Centerline{$\VVdP\,(\supp\pi)^{\centerdot}$ is the support of $\dot\pi$.}
+
+\proof{{\bf (a)} We saw in 556C(a-ii) that if $\pi$ is injective then
+$\VVdP\,\dot\pi$ is injective.   Now suppose
+that $\pi$ is not injective;  let $a\in\frak A^+$ be such that $\pi a=0$.
+Then $\VVdP\,\dot\pi\dot a=0$.
+$1\Bcap a\ne 0$, so $\notVVdash_{\Bbb P}\,\dot a=0$, by 556Da, and
+
+\Centerline{$\notVVdash_{\Bbb P}\,\dot\pi$ is injective.}
+
+\medskip
+
+{\bf (b)} Take $p\in\frak C^+$ and a $\Bbb P$-name $\dot A$ such that
+
+\Centerline{$p\VVdP\,\dot A\subseteq\dot\frak A$ and $\sup\dot A=1$.}
+
+\noindent Set
+$B=\{q\Bcap a:q\in\frak C^+$, $a\in\frak A$, $q\VVdP\,\dot a\in\dot A\}$.
+Then $\sup_{b\in B}p\Bcap b=p\Bcap 1=p$, by 556Ea.
+Because $\pi$ is order-continuous,
+
+\Centerline{$p\Bcap 1=p
+=\pi p=\sup_{b\in B}\pi(p\Bcap b)=\sup_{b\in B}p\Bcap\pi b$.}
+
+\noindent Consider
+
+\Centerline{$C=\{q\Bcap a:q\in\frak C^+$, $a\in\frak A$,
+$q\VVdP\,\dot a\in\dot\pi[\dot A]\}$.}
+
+\noindent Then $\pi[B]\subseteq C$.   \Prf\ If $q\in\frak C^+$, $a\in\frak A$
+and $q\VVdP\,\dot a\in\dot A$, then
+
+\Centerline{$q\VVdP\,(\pi a)^{\centerdot}
+=\dot\pi\dot a\in\dot\pi[\dot A]$}
+
+\noindent so
+
+\Centerline{$\pi(q\Bcap a)=q\Bcap\pi a\in C$.  \Qed}
+
+\noindent Accordingly
+
+\Centerline{$\{p\Bcap c:c\in C\}\supseteq\{p\Bcap\pi b:b\in B\}$}
+
+\noindent must have supremum $p$, and $p\VVdP\,\sup\dot\pi[\dot A]=1$.
+
+As $p$ and $\dot A$ are arbitrary,
+
+\Centerline{$\VVdP\,\sup\dot\pi[\dot A]=1$ whenever
+$\dot A\subseteq\frak A$ and $\sup\dot A=1$,
+so $\dot\pi$ is order-continuous}
+
+\noindent (313L(b-iii)).
+
+\medskip
+
+{\bf (c)(i)} $\VVdP$ if $x\in\dot\frak A$ and
+$x\dot\Bcap(\supp\pi)^{\centerdot}=0$ then $\dot\pi x=x$.
+\Prf\ Take $p\in\frak C^+$ and a $\Bbb P$-name $\dot x$ such that
+
+\Centerline{$p\VVdP\,\dot x\in\dot\frak A$
+and $\dot x\dot\Bcap(\supp\pi)^{\centerdot}=0$.}
+
+\noindent For any $q$ stronger than $p$ there are an $r$ stronger than $q$
+and an $a\in\frak A$ such that
+
+\Centerline{$r\VVdP\,\dot x=\dot a$, $(a\Bcap\supp\pi)^{\centerdot}=0$;}
+
+\noindent now $r\Bcap a\Bcap\supp\pi=0$ (556Da).   In this case,
+
+\Centerline{$r\VVdP\,\dot\pi\dot x=\dot\pi(r\Bcap a)^{\centerdot}
+=(\pi(r\Bcap a))^{\centerdot}=(r\Bcap a)^{\centerdot}=\dot x$.}
+
+\noindent As $q$ is arbitrary, $p\VVdP\,\dot\pi\dot x=\dot x$;  as $p$ and
+$\dot x$ are arbitrary, we have the result.\ \Qed
+
+Now 381Ei, applied in the forcing language, tells us that
+
+\Centerline{$\VVdP\,(\supp\pi)^{\centerdot}$ supports $\dot\pi$.}
+
+\medskip
+
+\quad{\bf (ii)} $\VVdP$ if $x\in\dot\frak A$ supports $\dot\pi$, then
+$x\dot{\Bsupseteq}(\supp\pi)^{\centerdot}$.
+\Prf\ Take $p\in\frak C^+$ and a $\Bbb P$-name $\dot x$ such that
+
+\Centerline{$p\VVdP\,\dot x\in\dot\frak A$ supports $\dot\pi$.}
+
+\noindent Then for any $q$ stronger than $p$ we have an $r$ stronger than
+$q$ and an $a\in\frak A$ such that $r\VVdP\,\dot x=\dot a$.
+Set $b=a\Bcup(1\Bsetminus r)$;  then
+$r\VVdP\,\dot b=\dot a$ supports $\dot\pi$.   \Quer\ If $b$ does not
+support $\pi$, then there is a non-zero $d\Bsubseteq 1\Bsetminus b$ such
+that $d\Bcap\pi d=0$ (381Ei again).   Since $r\Bcap d=d\ne 0$, there is an
+$s$ stronger than $r$ such that $s\VVdP\,\dot d\ne 0$.   Now
+
+\Centerline{$s\VVdP\,\dot d\dot\Bcap\dot\pi\dot d
+=(d\Bcap\pi d)^{\centerdot}=0$, while $\dot d\dot\Bcap\dot a=0$ and
+$\dot a$ supports $\dot\pi$,}
+
+\noindent which is impossible.\ \Bang
+
+So $b\Bsupseteq\supp\pi$ and
+
+\Centerline{$r\VVdP\,\dot x
+=\dot b\dot{\Bsupseteq}(\supp\pi)^{\centerdot}$.}
+
+\noindent As $q$ is arbitrary,
+
+\Centerline{$p\VVdP\,\dot x\dot{\Bsupseteq}(\supp\pi)^{\centerdot}$;}
+
+\noindent as $p$ and $\dot x$ are arbitrary, we have the result.\ \Qed
+
+Putting this together with (i),
+
+\Centerline{$\VVdP\,(\supp\pi)^{\centerdot}$ is the least element of
+$\dot\frak A$
+supporting $\dot\pi$, and is the support of $\dot\pi$.}
+}%end of proof of 556I
+
+\leader{556J}{Theorem} Let $\frak A$ be a Dedekind complete
+Boolean algebra, not $\{0\}$, and $\frak C$ a regularly embedded
+subalgebra of $\frak A$.   Let $\Bbb P$ be the forcing notion
+$\frak C^+$, active downwards, and $\dot\frak A$ the
+forcing name for $\frak A$ over $\frak C$.
+
+(a) If $\dot\theta$ is a $\Bbb P$-name such that
+
+\Centerline{$\VVdP\,\dot\theta$ is a ring homomorphism from
+$\dot\frak A$ to itself,}
+
+\noindent then there is a unique
+ring homomorphism $\pi:\frak A\to\frak A$ such that $\pi c\Bsubseteq c$ for
+every $c\in\frak C$ and
+
+\Centerline{$\VVdP\,\dot\theta=\dot\pi$,}
+
+\noindent where $\dot\pi$ is the forcing name for $\pi$ over $\frak C$.
+
+(b)(i) If
+
+\Centerline{$\VVdP\,\dot\theta$ is a Boolean homomorphism,}
+
+\noindent then $\pi$ is a Boolean homomorphism, and $\pi c=c$ for every
+$c\in\frak C$.
+
+\quad(ii) If
+
+\Centerline{$\VVdP\,\dot\theta$ is a Boolean automorphism,}
+
+\noindent that $\pi$ is a Boolean automorphism.
+
+\wheader{556J}{0}{0}{0}{48pt}
+
+\proof{{\bf (a)(i)} For each $a\in\frak A$, 556Ga tells us that there is
+a $b\in\frak A$ such that
+
+\Centerline{$\VVdP\,\dot\theta(\dot a)=\dot b$;}
+
+\noindent by 556Da, this defines $b$ uniquely, so we have a
+unique function $\pi:\frak A\to\frak A$ defined by the rule
+
+\Centerline{for every $a\in\frak A$, $\VVdP\,\dot\theta(\dot a)
+=(\pi a)^{\centerdot}$.}
+
+\medskip
+
+\quad{\bf (ii)} Now, for $\frmedcirc=\Bsymmdiff$ or $\frmedcirc=\Bcap$,
+and $a$, $b\in\frak A$,
+
+$$\eqalignno{\VVdP\,(\pi(a\frmedcirc b))^{\centerdot}
+&=\dot\theta((a\frmedcirc b)^{\centerdot})
+=\dot\theta(\dot a\,\dot\frmedcirc\,\dot b)\cr
+&=\dot\theta\dot a\,\dot\frmedcirc\,\dot\theta\dot b
+=(\pi a)^{\centerdot}\,\dot\frmedcirc\,(\pi b)^{\centerdot}
+=(\pi a\frmedcirc\pi b)^{\centerdot}\cr}$$
+
+\noindent and $\pi(a\frmedcirc b)=\pi a\frmedcirc\pi b$.
+So $\pi$ is a ring homomorphism.
+
+\medskip
+
+\quad{\bf (iii)} If $c\in\frak C$ then $\pi c\Bsubseteq c$.
+\Prf\ If $c=1$ this is trivial.   Otherwise,
+
+\Centerline{$1\Bsetminus c\VVdP\,\dot c=0$,
+$(\pi c)^{\centerdot}=\dot\theta 0=0$,}
+
+\noindent so $(1\Bsetminus c)\Bcap\pi c=0$ and $\pi c\Bsubseteq c$.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} We can therefore speak of the forcing name $\dot\pi$
+(556Ae, 556C).
+If $p\in\frak C^+$ and $\dot x$ is a $\Bbb P$-name such that
+$p\VVdP\,\dot x\in\dot\frak A$, let $a\in\frak A$ be such that
+$p\VVdP\,\dot x=\dot a$ (556Ga again);  then
+
+\Centerline{$p\VVdP\,\dot\theta(\dot x)=\dot\theta(\dot a)
+=(\pi a)^{\centerdot}=\dot\pi(\dot a)=\dot\pi(\dot x)$.}
+
+\noindent As $p$ and $\dot x$ are arbitrary,
+
+\Centerline{$\VVdP\,\dot\theta=\dot\pi$.}
+
+\medskip
+
+{\bf (b)(i)} If $\VVdP\,\dot\theta$ is a Boolean homomorphism, then
+
+\Centerline{$\VVdP\,(\pi 1)^{\centerdot}=\dot\theta\dot 1=\dot 1$}
+
+\noindent and $\pi 1=1$.   Now
+
+\Centerline{$\pi c\Bsubseteq c=1\Bsetminus(1\Bsetminus c)
+\Bsubseteq 1\Bsetminus\pi(1\Bsetminus c)
+=\pi 1\Bsetminus(\pi 1\Bsetminus\pi c)
+=\pi c$}
+
+\noindent so $\pi c=c$ for every $c\in\frak C$.
+
+\medskip
+
+\quad{\bf (ii)} If $\VVdP\,\dot\theta$ is a Boolean automorphism, then the same
+arguments tell us that there is a Boolean homomorphism
+$\phi:\frak A\to\frak A$
+such that $\phi c=c$ for every $c\in\frak C$ and
+$\VVdP\,\dot\phi=\dot\theta^{-1}$.   But in this case
+
+\Centerline{$\VVdP\,(\pi\phi)^{\centerdot}=\dot\pi\dot\phi
+=\dot\theta\dot\theta^{-1}=\dot\iota$}
+
+\noindent where $\iota$ is the identity automorphism on $\frak A$;  by the
+uniqueness of the representing homomorphisms of $\frak A$, $\pi\phi=\iota$.
+Similarly, $\phi\pi=\iota$ and $\phi=\pi^{-1}$, so that $\pi$ is an
+automorphism.
+}%end of proof of 556J
+
+\leader{556K}{Theorem} Let $(\frak A,\bar\mu)$ be a probability algebra,
+and $\frak C$ a closed subalgebra of $\frak A$;  let $\Bbb P$ be the
+forcing notion $\frak C^+$,
+active downwards, and $\dot\frak A$ the forcing name for $\frak A$
+over $\frak C$.   We can identify $\frak C$ with the regular open algebra
+$\RO(\Bbb P)$\cmmnt{ (514Sb)}.
+For $u\in L^0(\frak C)$ write $\vec u$ for the
+corresponding $\Bbb P$-name for a real number as described in 5A3L.
+
+(a)(i) For each $a\in\frak A$ there is a
+$u_a\in L^1(\frak C,\bar\mu\restrp\frak C)$ defined by saying that
+$\int_cu_a=\bar\mu(a\Bcap c)$ for every $c\in\frak C$.
+
+\quad(ii) If $p\in\frak C^+$ and $a$, $b\in\frak A$ are such that
+
+\Centerline{$p\VVdP\,\dot a=\dot b$}
+
+\noindent(where $\dot a$, $\dot b$ are the forcing names for $a$, $b$ over
+$\frak C$), then
+
+\Centerline{$p\VVdP\,\vec u_a=\vec u_b$.}
+
+\woddheader{556K}{0}{0}{0}{30pt}
+
+(b) There is a $\Bbb P$-name $\dot{\bar\mu}$ such that
+
+\Centerline{$\VVdP\,(\dot\frak A,\dot{\bar\mu})$ is a probability algebra,}
+
+\noindent and
+
+\Centerline{$\VVdP\,\dot{\bar\mu}\dot a=\vec u_a$}
+
+\noindent whenever $a\in\frak A$ and $\dot a$ is the corresponding
+forcing name over $\frak C$.
+
+(c) If $\pi:\frak A\to\frak A$ is a measure-preserving Boolean
+homomorphism such that $\pi c=c$ for every $c\in\frak C$, and
+$\dot\pi$ the corresponding forcing name over $\frak C$,
+then
+
+\Centerline{$\VVdP\,\dot\pi:\dot\frak A\to\dot\frak A$ is
+measure-preserving.}
+
+(d) If $\dot\phi$ is a $\Bbb P$-name such that
+
+\Centerline{$\VVdP\,\dot\phi:\dot\frak A\to\dot\frak A$ is a
+measure-preserving Boolean automorphism}
+
+\noindent then there is a measure-preserving Boolean automorphism
+$\pi:\frak A\to\frak A$ such that $\pi c=c$ for every $c\in\frak C$ and
+
+\Centerline{$\VVdP\,\dot\phi=\dot\pi$.}
+
+(e) If $v\in L^1(\frak A,\bar\mu)$ and
+$u\in L^1(\frak C,\bar\mu\restrp\frak C)$ is its conditional expectation
+on $\frak C$, then
+
+\Centerline{$\VVdP\,\dot v\in L^1(\dot\frak A,\dot{\bar\mu})$ and
+$\int\dot v\,d\dot{\bar\mu}=\vec u$.}
+
+\proof{{\bf (a)(i)} This is just the Radon-Nikod\'ym theorem (365E).
+
+\medskip
+
+\quad{\bf (ii)} If $p\VVdP\,\dot a=\dot b$, then $p\Bcap a=p\Bcap b$
+(556Da).   Consequently
+
+\Centerline{$\int_cu_a\times\chi p
+=\int_{c\Bcap p}u_a=\bar\mu(c\Bcap p\Bcap a)
+=\bar\mu(c\Bcap p\Bcap b)=\int_cu_b\times\chi p$}
+
+\noindent whenever $c\in\frak C$, and
+$u_a\times\chi p=u_b\times\chi p$;  by 5A3M,
+
+\Centerline{$p\VVdP\,\vec u_a=\vec u_b$.}
+
+\medskip
+
+{\bf (b)(i)} Note first the elementary properties of the conditional
+expectation
+$a\mapsto u_a:\frak A\to L^1(\frak C,\bar\mu\restrp\frak C)$:
+it is additive and positive and
+order-continuous, and $0\le u_a\le\chi 1$ for every $a$.   (To extract
+these facts efficiently from the presentation in \S365, note that
+$u_a=P(\chi a)$, where
+$P:L^1(\frak A,\bar\mu)\to L^1(\frak C,\bar\mu\restrp\frak C)$ is the
+conditional expectation operator of 365Q\formerly{3{}65R}.)   
+In particular,
+
+\Centerline{$\VVdP\,\vec u_a\in[0,1]$}
+
+\noindent for every $a\in\frak A$.   It is also worth observing that
+if $c\in\frak C$ and $a\in\frak A$ then $u_{a\Bcap c}=u_a\times\chi c$
+(see 365Oc\formerly{3{}65Pc}).
+
+\medskip
+
+\quad{\bf (ii)} Now consider the $\Bbb P$-name
+
+\Centerline{$\dot{\bar\mu}=\{((\dot a,\vec u_a),1):a\in\frak A\}$.}
+
+\noindent We have quite a lot to check, of course.   First,
+$\dot{\bar\mu}$ is a name for a function with domain $\dot\frak A$.
+\Prf\ If $((\dot a,\vec u_a),1)$ and $((\dot b,\vec u_b),1)$ are two
+members of $\dot{\bar\mu}$, and $p\in\frak C^+$ is such that
+$p\VVdP\,\dot a=\dot b$, then $p\Bcap a=p\Bcap b$, so
+$p\VVdP\,\vec u_a=\vec u_b$, by (a-ii) above.
+By 5A3H, $\VVdP\,\dot{\bar\mu}$ is a function.   Also
+$\VVdP\,\dom\dot{\bar\mu}=\dot A$, where
+$\dot A=\{(\dot a,1):a\in\frak A\}=\dot\frak A$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} We have
+
+\Centerline{$\VVdP\,\dot{\bar\mu}\dot a=\vec u_a\in[0,1]$}
+
+\noindent for every $a\in\frak A$, so
+
+\Centerline{$\VVdP\,\dot{\bar\mu}$ is a function from $\dot\frak A$ to
+$[0,1]$.}
+
+\noindent Since $u_1=\chi 1$,
+
+\Centerline{$\VVdP\,\dot{\bar\mu} 1=\vec u_1=1$.}
+
+\medskip
+
+\quad{\bf (iv)} Next, $\VVdP\,\dot{\bar\mu}$ is additive.   \Prf\ Suppose that
+$p\in\frak C^+$ and $\dot x$, $\dot y$ are $\Bbb P$-names such that
+
+\Centerline{$p\VVdP\,\dot x$, $\dot y\in\dot\frak A$ are disjoint.}
+
+\noindent By 556Ga there are $a$, $b\in\frak A$ such that
+
+\Centerline{$p\VVdP\,\dot x=\dot a$, $\dot y=\dot b$,
+$(a\Bcap b)^{\centerdot}=\dot x\dot\Bcap\dot y=0$.}
+
+\noindent So $p\Bcap a\Bcap b=0$ and
+
+\Centerline{$\chi p\times u_{a\Bcup b}
+=u_{p\Bcap(a\Bcup b)}
+=u_{p\Bcap a}+u_{p\Bcap b}
+=\chi p\times u_a+\chi p\times u_b
+=\chi p\times(u_a+u_b)$;}
+
+\noindent it follows that
+
+$$\eqalignno{p\VVdP\,\dot{\bar\mu}(\dot x\dot\Bcup\dot y)
+&=\dot{\bar\mu}(\dot a\dot\Bcup\dot b)
+=\dot{\bar\mu}(a\Bcup b)^{\centerdot}
+=\vec u_{a\Bcup b}
+=(u_a+u_b)\sspvec\cr
+\displaycause{5A3M}
+&=\vec u_a+\vec u_b
+=\dot{\bar\mu}\dot x+\dot{\bar\mu}\dot y.\cr}$$
+
+\noindent As $p$, $\dot x$ and $\dot y$ are arbitrary,
+
+\Centerline{$\VVdP\,\dot{\bar\mu}$ is additive.  \Qed}
+
+\medskip
+
+\quad{\bf (v)} Suppose that $p\in\frak C^+$ and that $\dot A$ is a
+$\Bbb P$-name such that
+
+\Centerline{$p\VVdP\,\dot A\subseteq\dot\frak A$ is closed under
+$\dot\Bcup$ and has supremum $1$.}
+
+\noindent Then for every rational number $\alpha<1$ there are an
+$r\in\frak C^+$, stronger than $p$, and a $d\in\frak A$ such that
+
+\Centerline{$r\VVdP\,\dot d\in\dot A$ and $\dot{\bar\mu}\dot d
+\ge\check\alpha$.}
+
+\noindent\Prf\ Set
+
+\Centerline{$B=\{q\Bcap a:q\in\frak C^+$, $a\in\frak A$,
+$q\VVdP\,\dot a\in\dot A\}$,}
+
+\noindent so that $p\Bsubseteq\sup B$ (556Ea).   Because $\bar\mu$ is
+completely additive, there are $b_0,\ldots,b_{n-1}\in B$ such that
+$\bar\mu(p\Bcap\sup_{i<n}b_i)>\alpha\bar\mu p$.   Express each
+$b_i$ as $q_i\Bcap a_i$ where $q_i$ is stronger than $p$ and
+$q_i\VVdP\,\dot a_i\in\dot A$.   For $J\subseteq n$ set
+
+\Centerline{$c_J
+=p\Bcap\inf_{i\in J}q_i\Bsetminus\sup_{i\in n\setminus J}q_i$,
+\quad$d_J=\sup_{i\in J}a_i$;}
+
+\noindent then $\langle c_J\rangle_{J\subseteq n}$ is disjoint and
+
+\Centerline{$p\Bcap\sup_{i<n}b_i
+=\sup_{\emptyset\ne J\subseteq n}c_J\Bcap d_J$.}
+
+\noindent Accordingly
+
+\Centerline{$\sum_{\emptyset\ne J\subseteq n}\bar\mu(c_J\Bcap d_J)
+>\alpha\bar\mu p$}
+
+\noindent and there must be a non-empty $J\subseteq n$ such that
+$c_J\ne 0$ and
+
+\Centerline{$\alpha\bar\mu c_J<\bar\mu(c_J\Bcap d_J)=\int_{c_J}u_{d_J}$.}
+
+\noindent So $r=c_J\Bcap\Bvalue{u_{d_J}\ge\alpha}$ is non-zero.
+Set $d=d_J$;  then
+
+\Centerline{$r\VVdP\,\dot a_i\in\dot A$ for every $i\in\check J$, therefore
+$\dot d=\sup_{i\in\check J}\dot a_i\in\dot A$,}
+
+\noindent and
+
+\Centerline{$r\VVdP\,\dot{\bar\mu}\dot d=\vec u_{d_J}\ge\check\alpha$.
+\Qed}
+
+\medskip
+
+\quad{\bf (vi)} It follows that
+
+\Centerline{$\VVdP\,\dot{\bar\mu}$ is completely additive.}
+
+\noindent\Prf\ Suppose that $p\in\frak C^+$ and that $\dot A$ is a
+$\Bbb P$-name such that
+
+\Centerline{$p\VVdP\,\dot A\subseteq\dot\frak A$ is closed under
+$\dot\Bcup$ and has supremum $1$.}
+
+\noindent Then for every rational $\alpha<1$ and every $q$ stronger than
+$p$ there is an $r$ stronger than $q$ such that
+
+\Centerline{$r\VVdP$ there is an $x\in\dot A$ such that
+$\dot{\bar\mu} x\ge\check\alpha$;}
+
+\noindent as $q$ is arbitrary,
+
+\Centerline{$p\VVdP$ there is an $x\in\dot A$ such that
+$\dot{\bar\mu} x\ge\check\alpha$;}
+
+\noindent as $\alpha$ is arbitrary,
+
+\Centerline{$p\VVdP\,\sup_{x\in\dot A}\dot{\bar\mu} x=1$.}
+
+\noindent As $p$ and $\dot A$ are arbitrary,
+
+\Centerline{$\VVdP\,\sup_{x\in A}\dot{\bar\mu} x=1$ whenever
+$A\subseteq\dot\frak A$ is closed under $\dot\Bcup$ and has supremum $1$.}
+
+\noindent We know that
+
+\Centerline{$\VVdP\,\dot{\bar\mu}$ is additive and $\dot{\bar\mu} 1=1$,}
+
+\noindent so we can turn this over to get
+
+\doubleinset{$\VVdP\,\inf_{x\in A}\dot{\bar\mu} x=0$ whenever
+$A\subseteq\dot\frak A$ is closed under $\dot\Bcap$ and has infimum $0$,
+therefore $\dot{\bar\mu}$ is completely additive.  \Qed}
+
+\medskip
+
+\quad{\bf (vii)} Since we already know that
+
+\Centerline{$\VVdP\,\dot\frak A$ is Dedekind complete}
+
+\noindent (556Gb), we have all the elements needed for
+
+\Centerline{$\VVdP\,(\dot\frak A,\dot{\bar\mu})$ is a probability algebra.}
+
+\medskip
+
+{\bf (c)} The point is that if $a\in\frak A$ then $u_{\pi a}=u_a$.
+\Prf\ For any $c\in\frak C$,
+
+\Centerline{$\int_cu_{\pi a}
+=\bar\mu(c\Bcap\pi a)
+=\bar\mu(\pi(c\Bcap a))
+=\bar\mu(c\Bcap a)
+=\int_cu_a$.  \Qed}
+
+\noindent Now suppose that $p\in\frak C^+$ and $\dot x$ is a
+$\Bbb P$-name such that $p\VVdP\,\dot x\in\dot\frak A$.
+Then there is an $a\in\frak A$ such that $p\VVdP\,\dot a=\dot x$
+(556Ga again), and
+
+\Centerline{$p\VVdP\,\dot{\bar\mu}(\dot\pi\dot x)
+=\dot{\bar\mu}(\dot\pi\dot a)
+=\dot{\bar\mu}(\pi a)^{\centerdot}
+=\vec u_{\pi a}
+=\vec u_a
+=\dot{\bar\mu}\dot x$.}
+
+\noindent As $p$ and $\dot x$ are arbitrary,
+
+\Centerline{$\VVdP\,\dot\pi$ is measure-preserving.}
+
+\medskip
+
+{\bf (d)} By 556J, there is a unique $\pi\in\Aut\frak A$
+such that $\pi c=c$ for every $c\in\frak C$ and
+$\VVdP\,\dot\phi=\dot\pi$.   In this case, for any $a\in\frak A$,
+
+\Centerline{$\VVdP\,\vec u_a
+=\dot{\bar\mu}\dot a
+=\dot{\bar\mu}(\dot\phi\dot a)
+=\dot{\bar\mu}(\dot\pi\dot a)
+=\dot{\bar\mu}(\pi a)^{\centerdot}
+=\vec u_{\pi a}$.}
+
+\noindent So $u_a=u_{\pi a}$ (5A3M again) and
+
+\Centerline{$\bar\mu a=\int u_a=\int u_{\pi a}=\bar\mu(\pi a)$.}
+
+\noindent Thus $\pi$ is measure-preserving.
+
+\medskip
+
+{\bf (e)} Let
+$P:L^1(\frak A,\bar\mu)\to L^1(\frak C,\bar\mu\restrp\frak C)$ be the
+conditional expectation operator, and let $U$ be the set of those
+$v\in L^1(\frak A,\bar\mu)$ such that
+
+\Centerline{$\VVdP\,\dot v\in L^1(\dot\frak A,\dot{\bar\mu})$ and
+$\int\dot v\,d\dot{\bar\mu}=\vec{Pv}$.}
+
+\noindent By (a), $\chi a\in U$ for every $a\in\frak A$;   by 556Hb, $U$
+is closed under addition and rational multiplication;  by 556Hc
+$\sup_{n\in\Bbb N}v_n\in U$ for every non-decreasing sequence
+$\sequencen{v_n}$ in $U$.   So $U=L^1(\frak A,\bar\mu)$, as required.
+}%end of proof of 556K
+
+\leader{556L}{Relatively independent subalgebras} Let $(\frak A,\bar\mu)$
+be a probability algebra and $\frak C$ a closed subalgebra
+of $\frak A$;  let
+$\Bbb P$ be the forcing notion $\frak C^+$, active downwards.
+Let $\dot{\bar\mu}$ be the
+forcing name for $\bar\mu$ described in 556K, so that
+$\VVdP\,(\dot\frak A,\dot{\bar\mu})$ is a probability algebra.
+
+(a) For a
+subalgebra $\frak B$ of $\frak A$ including $\frak C$, let $\dot\frak B$ be
+the forcing name for $\frak B$ over $\frak C$.
+If $\familyiI{\frak B_i}$ is a family of subalgebras of $\frak A$
+including $\frak C$, then $\familyiI{\frak B_i}$ is relatively
+independent over $\frak C$\cmmnt{ (definition:  458La)} iff
+
+\Centerline{$\VVdP\,\family{i}{\check I}{\dot\frak B_i}$ is stochastically
+independent in $\dot\frak A$.}
+
+(b) If $\familyiI{v_i}$ is a family in $L^0(\frak A)$ which is relatively
+independent over $\frak C$, then
+
+\Centerline{$\VVdP\,\family{i}{\check I}{\dot v_i}$ is
+stochastically independent}
+
+\noindent (writing $\dot v_i$ for the forcing name for $v_i$ over
+$\frak C$).
+
+\proof{{\bf (a)(i)} Suppose that $\familyiI{\frak B_i}$ is relatively
+independent over $\frak C$.   Let $p\in\frak C^+$ and $\dot J$,
+$\family{j}{\dot J}{\dot x_j}$ be $\Bbb P$-names such that
+
+\Centerline{$p\VVdP\,\dot J\in[\check I]^{<\omega}$ is non-empty,
+$\dot x_j\in\dot\frak B_j$ for every $j\in\dot J$.}
+
+\noindent Then for every $q$ stronger than $p$ there are
+an $r$ stronger than $q$ and a family $\family{j}{J}{b_j}$ such that $J$ is
+a non-empty
+finite subset of $I$, $b_j\in\frak B_j$ for every $j\in J$, and
+
+\Centerline{$r\VVdP\,\dot J=\check J$ and $\dot x_j=\dot b_j$ for every
+$j\in\check J$.}
+
+\noindent Set $a=\inf_{j\in J}b_j$.
+For each $j\in J$ let
+$u_{b_j}\in L^1(\frak C,\bar\mu\restrp\frak C)$ be the conditional
+expectation of $\chi b_j$ on $\frak C$, as in 556Ka;  then
+$u_a=\prod_{i\in J}u_{b_j}$, because $\familyiI{\frak B_i}$ is relatively
+stochastically independent.   But this means that
+
+$$\eqalign{r\VVdP\,\dot{\bar\mu}(\inf_{j\in\dot J}\dot x_j)
+&=\dot{\bar\mu}(\inf_{j\in\check J}\dot b_j)
+=\dot{\bar\mu}\dot a
+=\vec u_a\cr
+&=\prod_{j\in\check J}\vec u_{b_j}
+=\prod_{j\in\check J}\dot{\bar\mu}\dot b_j
+=\prod_{j\in\dot J}\dot{\bar\mu}\dot x_j.\cr}$$
+
+\noindent As $q$ is arbitrary,
+
+\Centerline{$p\VVdP\,\dot{\bar\mu}(\inf_{j\in\dot J}\dot x_j)
+=\prod_{j\in\dot J}\dot{\bar\mu}\dot x_j;$}
+
+\noindent as $p$ and $\family{j}{\dot J}{\dot x_j}$ are arbitrary,
+
+\Centerline{$\VVdP\,\family{i}{\check I}{\dot\frak B_i}$ is independent.}
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that
+
+\Centerline{$\VVdP\,\family{i}{\check I}{\dot\frak B_i}$ is independent.}
+
+\noindent Take a finite set $J\subseteq I$ and
+$\family{j}{J}{b_j}\in\prod_{j\in J}\frak B_j$.   Again set
+$a=\inf_{j\in J}b_j$ and let $u_{b_j}$ be
+the conditional expectation of $\chi b_j$ on $\frak C$ for each $j$.
+Then
+
+$$\eqalign{\VVdP\,(\prod_{j\in J}u_{b_j})\sspvec
+&=\prod_{j\in\check J}\vec u_{b_j}
+=\prod_{j\in\check J}\dot{\bar\mu}\dot b_j\cr
+&=\dot{\bar\mu}(\inf_{j\in\check J}\dot b_j)
+=\dot{\bar\mu}(\inf_{j\in J}b_j)^{\centerdot}
+=\vec u_a,\cr}$$
+
+\noindent so $\prod_{j\in J}u_{b_j}=u_a$.   As $\family{j}{J}{b_j}$ is
+arbitrary, $\familyiI{\frak B_i}$ is relatively independent over $\frak C$.
+
+\medskip
+
+{\bf (b)} For each $i\in I$, let $\frak A_i$ be the closed subalgebra of
+$\frak A$ generated by $\{\Bvalue{v_i>\alpha}:\alpha\in\Bbb Q\}$, and
+$\frak B_i$ the closed subalgebra of $\frak A$ generated by
+$\frak A_i\cup\frak C$.   Then $\familyiI{\frak B_i}$ is relatively
+independent over $\frak C$ (458Ld), so
+$\VVdP\,\family{i}{\check I}{\dot\frak B_i}$ is independent, by (a) here.
+Now we have
+
+\Centerline{$\VVdP\,\Bvalue{\dot v_i>\alpha}
+=\Bvalue{v_i>\alpha}^{\centerdot}
+\in\dot\frak B_i$}
+
+\noindent whenever $\alpha\in\Bbb Q$ and $i\in I$, so
+
+\Centerline{$\VVdP\,\Bvalue{\dot v_i>\alpha}\in\dot\frak B_i$
+for every $\alpha\in\Bbb Q$ and $i\in\check I$, and
+$\family{i}{\check I}{\dot v_i}$ is independent.}
+}%end of proof of 556L
+
+\leader{556M}{Laws of large numbers}\cmmnt{ As an elementary example
+to show that we can
+use this machinery to extend a classical result, I give the
+following.}   Consider the two statements
+
+\inset{($\ddagger$) Let $(X,\Sigma,\mu)$ be a probability space, $\Tau$ a
+$\sigma$-subalgebra of $\Sigma$, and $\sequencen{f_n}$ a sequence in
+$\eusm L^2(\mu)$ such that $\sequencen{f_n}$ is relatively independent
+over $\Tau$ and $\int_Ff_nd\mu=0$ for every $n\in\Bbb N$ and every
+$F\in\Tau$.   Suppose that $\sequencen{\beta_n}$ is a non-decreasing
+sequence in $\ooint{0,\infty}$, diverging to $\infty$, such that
+$\sum_{n=0}^{\infty}\Bover1{\beta_n^2}\|f_n\|_2^2<\infty$.
+Then $\lim_{n\to\infty}\Bover1{\beta_n}\sum_{i=0}^nf_i=0$ a.e.}
+
+\noindent and
+
+\inset{($\dagger$) Let $(X,\Sigma,\mu)$ be a probability space and
+$\sequencen{f_n}$ an independent sequence in
+$\eusm L^2(\mu)$ such that $\int f_nd\mu=0$ for every $n\in\Bbb N$.
+Suppose that $\sequencen{\beta_n}$ is a non-decreasing
+sequence in $\ooint{0,\infty}$, diverging to $\infty$, such that
+$\sum_{n=0}^{\infty}\Bover1{\beta_n^2}\|f_n\|_2^2<\infty$.
+Then $\lim_{n\to\infty}\Bover1{\beta_n}\sum_{i=0}^nf_i=0$ a.e.}
+
+\noindent\cmmnt{In 273D I presented ($\dagger$) as the basic strong
+law of large
+numbers from which the other standard forms could be derived.
+($\ddagger$) may be found in Volume 4 as an exercise
+(458Yd).   }\dvro{Then if there is a proof of ($\dagger$), there must be
+a proof of ($\ddagger$).}{What I propose to do is to show how
+($\ddagger$) can be deduced\cmmnt{, not exactly from
+($\dagger$), but} from ($\dagger$) in a forcing model\cmmnt{;  relying
+on the
+fundamental theorem of forcing to confirm that if ($\dagger$) is true in
+its ordinary sense, then its interpretation in any forcing language will
+again be true}.}
+
+\proof{{\bf (a)} In order to avoid
+explanations involving names for real numbers, it seems helpful to re-word
+$(\ddagger)$.   Consider the version
+
+\inset{$(\ddagger)_1$ Let $(X,\Sigma,\mu)$ be a probability space, $\Tau$ a
+$\sigma$-subalgebra of $\Sigma$, and $\sequencen{f_n}$ a sequence in
+$\eusm L^2(\mu)$ such that $\sequencen{f_n}$ is relatively independent
+over $\Tau$ and $\int_Ff_nd\mu=0$ for every $n\in\Bbb N$ and every
+$F\in\Tau$.   Suppose that $\sequencen{\beta_n}$ is a non-decreasing
+sequence in $\Bbb Q\cap\ooint{0,\infty}$, diverging to $\infty$, such that
+$\sum_{n=0}^{\infty}\Bover1{\beta_n^2}\|f_n\|_2^2<\infty$.
+Then $\lim_{n\to\infty}\Bover1{\beta_n}\sum_{i=0}^nf_i=0$ a.e.}
+
+\noindent Then $(\ddagger)_1$ implies ($\ddagger$).   \Prf\ Given the
+structure of ($\ddagger$), with general $\beta_n>0$, let
+$\delta_n\in\Bbb Q\cap\ocint{0,\beta_n}$ be such that
+
+\Centerline{$\Bover1{\delta_n^2}\|f_n\|_2^2
+\le\Bover1{\beta_n^2}\|f_n\|_2^2+2^{-n}$}
+
+\noindent for every $n$.   Set $\gamma_n=\sup_{m\le n}\delta_m$ for each
+$n$;  then $\sequencen{\gamma_n}$ is a non-decreasing sequence in
+$\Bbb Q\cap\ooint{0,\infty}$ and
+$\sum_{n=0}^{\infty}\Bover1{\gamma_n^2}\|f_n\|_2^2$ is finite, so
+$(\ddagger)_1$ tells us that
+
+\Centerline{$\lim_{n\to\infty}\Bover1{\beta_n}\sum_{i=0}^nf_i
+=\lim_{n\to\infty}\Bover{\gamma_n}{\beta_n}\cdot\Bover1{\gamma_n}
+\sum_{i=0}^nf_i=0$ a.e.   \Qed}
+
+\medskip
+
+{\bf (b)} Now formulate the assertions $(\ddagger)_1$ and
+($\dagger$) in terms of measure algebras;  we get
+
+\inset{$(\ddagger)'$ Let $(\frak A,\bar\mu)$ be a probability algebra,
+$\frak C$ a closed subalgebra of $\frak A$, and $\sequencen{v_n}$ a
+sequence in $L^2(\frak A,\bar\mu)$ such that $\sequencen{v_n}$ is
+relatively independent over $\frak C$ and $Pv_n=0$ for every
+$n\in\Bbb N$, where
+$P:L^1(\frak A,\bar\mu)\to L^1(\frak C,\bar\mu\restrp\frak C)$
+is the conditional expectation operator.
+Suppose that $\sequencen{\beta_n}$ is a non-decreasing
+sequence in $\Bbb Q\cap\ooint{0,\infty}$, diverging to $\infty$, such that
+$\sum_{n=0}^{\infty}\Bover1{\beta_n^2}\|v_n\|_2^2<\infty$.
+Then $\sequencen{\Bover1{\beta_n}\sum_{i=0}^nv_i}$ is order*-convergent to
+$0$.}
+
+\noindent and
+
+\inset{$(\dagger)'$ Let $(\frak A,\bar\mu)$ be a probability algebra
+and $\sequencen{v_n}$ an
+independent sequence in $L^2(\frak A,\bar\mu)$ such that
+$\int v_nd\bar\mu=0$ for every $n$.
+Suppose that $\sequencen{\beta_n}$ is a non-decreasing
+sequence in $\ooint{0,\infty}$, diverging to $\infty$, such that
+$\sum_{n=0}^{\infty}\Bover1{\beta_n^2}\|v_n\|_2^2<\infty$.
+Then $\sequencen{\Bover1{\beta_n}\sum_{i=0}^nv_i}$ is order*-convergent to
+$0$.}
+
+\noindent (As usual, the conversions are just a matter of applying the
+Loomis-Sikorski theorem, with 367F to translate order*-convergence in $L^0$
+into almost-everywhere convergence of functions.)
+
+\medskip
+
+{\bf (c)} Assuming $(\dagger)'$, take a structure
+$(\frak A,\bar\mu,\frak C,\sequencen{v_n},\sequencen{\beta_n})$ as in
+$(\ddagger)'$, let $\Bbb P$ be the forcing notion $\frak C^+$, active
+downwards, and consider the corresponding forcing names $\dot\frak A$,
+$\dot{\bar\mu}$ and $\sequencen{\dot v_n}$.   Let
+$P:L^1(\frak A,\bar\mu)\to L^1(\frak C,\bar\mu\restrp\frak C)$ be the
+conditional expectation operator.   For each $n\in\Bbb N$,
+
+\Centerline{$\VVdP\,\dot v_n\times\dot v_n
+=(v_n\times v_n)^{\centerdot}\in L^1(\dot\frak A,\dot{\bar\mu})$,
+\quad$\|\dot v_n\|_2^2
+=\int\dot v_n^2d\dot{\bar\mu}=(P(v_n^2))\sspvec$}
+
+\noindent by 556Hb and 556Ke.   Now
+
+\Centerline{$\sum_{n=0}^{\infty}
+  \Bover1{\beta_n}\int P(v_n^2)d(\bar\mu\restrp\frak C)
+\le\sum_{n=0}^{\infty}\Bover1{\beta_n}\|v_n\|_2^2
+<\infty$,}
+
+\noindent so
+
+\Centerline{$v=\sum_{i=n}^{\infty}\Bover1{\beta_n}P(v_n^2)$}
+
+\noindent is defined in $L^0(\frak C)$, and
+
+\Centerline{$\VVdP\,\sum_{n=0}^{\infty}\Bover1{\check\beta_n}
+   \|\dot v_n\|_2^2
+\le\vec v$ is finite.}
+
+\noindent At the same time,
+
+\Centerline{$\VVdP\,\int\dot v_nd\dot{\bar\mu}=\vec{Pv_n}=0$ for
+every $n\in\Bbb N$,}
+
+\noindent and by 556Lb
+
+\Centerline{$\VVdP\,\sequencen{\dot v_n}$ is independent.}
+
+Applying $(\dagger)'$ in the forcing language,
+
+\Centerline{$\VVdP\,
+\sequencen{(\Bover1{\check\beta_n}\sum_{i=0}^nv_i)^{\centerdot}}
+=\sequencen{\Bover1{\check\beta_n}\sum_{i=0}^n\dot v_i}$
+order*-converges to $0$ in $L^0(\dot\frak A)$,}
+
+\noindent so $\sequencen{\Bover1{\beta_n}\sum_{i=0}^nv_i}$ order*-converges
+to $0$ in $L^0(\frak A)$, by 556He.
+
+Thus $(\ddagger)'$ is true, and we're home.
+}%end of proof of 556M
+
+\leader{556N}{Dye's theorem}\cmmnt{ Now for something from Volume 3.}
+Let me state two versions of Dye's theorem\cmmnt{ (388L)}:  the
+`full' version
+
+\inset{($\ddagger$)
+Let $(\frak A,\bar\mu)$ be a probability algebra of countable Maharam type,
+$\frak C$ a closed subalgebra of $\frak A$, and $\pi_1$, $\pi_2$ two
+measure-preserving automorphisms of $\frak A$ with fixed-point algebra
+$\frak C$.   Then there is a measure-preserving automorphism $\phi$ of
+$\frak A$ such that $\phi c=c$ for every $c\in\frak C$ and
+$\pi_1$ and $\phi\pi_2\phi^{-1}$ generate the same
+full subgroups of $\Aut\frak A$.}
+
+\noindent and the `simple' version
+
+\inset{($\dagger$) Let $(\frak A,\bar\mu)$ be a probability algebra of
+countable Maharam type, and $\pi_1$, $\pi_2$ two ergodic
+measure-preserving automorphisms of $\frak A$.
+Then there is a measure-preserving automorphism $\phi$ of
+$\frak A$ such that $\pi_1$ and $\phi\pi_2\phi^{-1}$ generate the same
+full subgroups of $\Aut\frak A$.}
+
+\noindent Here\cmmnt{ also} the machinery of this section provides a
+proof of ($\ddagger$) from ($\dagger$).
+
+\proof{{\bf (a)} Assume ($\dagger$).   Take $(\frak A,\bar\mu)$,
+$\frak C$, $\pi_1$ and $\pi_2$ as in ($\ddagger$).   Let
+$\Bbb P$ be the forcing notion $\frak C^+$, active downwards,
+and let $\dot\frak A$, $\dot\pi_1$ and $\dot\pi_2$ be
+the forcing names for $\frak A$, $\pi_1$ and $\pi_2$ over $\frak C$.
+By 556C(b-iv), 556C(b-v), 556Gb, 556Kb and 556Kc, and using 372Pc,
+
+\doubleinset{$\VVdP$ there is a measure on $\dot\frak A$ with respect to
+which it is a probability measure and $\dot\pi_1$ and $\dot\pi_2$ are
+measure-preserving automorphisms with fixed-point subalgebra $\{0,1\}$,
+so are ergodic, because $\dot\frak A$ is Dedekind complete.}
+
+\noindent By 556Ed,
+
+\Centerline{$\VVdP\,\dot\frak A$ has countable Maharam type.}
+
+\noindent By ($\dagger$), applied in the forcing universe,
+
+\doubleinset{$\VVdP$ there is a measure-preserving automorphism $\theta$ of
+$\dot\frak A$ such that $\dot\pi_1$ and $\theta\dot\pi_2\theta^{-1}$
+generate the same full subgroups of $\Aut\dot\frak A$.}
+
+\noindent Let $\dot\theta$ be a $\Bbb P$-name such that
+
+\doubleinset{$\VVdP\,\dot\theta$ is a measure-preserving automorphism of
+$\dot\frak A$ such that $\dot\pi_1$ and
+$\dot\theta\dot\pi_2\dot\theta^{-1}$
+generate the same full subgroups of $\Aut\dot\frak A$.}
+
+\noindent
+By 556Kd, there is a $\phi\in\Aut_{\bar\mu}\frak A$ such that
+$\phi c=c$ for every $c\in\frak C$ and
+$\VVdP\,\dot\theta=\dot\phi$, so that, setting $\pi_3=\phi\pi_2\phi^{-1}$,
+
+\Centerline{$\VVdP\,\dot\pi_1$ and $\dot\pi_3$ generate the same full
+subgroups of $\Aut\dot\frak A$}
+
+\noindent (using 556C(a-iii) and 556C(b-iv)).
+
+\medskip
+
+{\bf (b)} Since
+
+\Centerline{$\VVdP\,\dot\pi_3$ belongs to the full subgroup of
+$\Aut\dot\frak A$ generated by $\dot\pi_1$,}
+
+\noindent we can apply 381I(c-iv) in the forcing language to get
+
+\Centerline{$\VVdP\,\inf_{n\in\Bbb Z}\supp(\dot\pi_1^n\dot\pi_3)=0$.}
+
+\noindent Now by 556Ic we know that
+
+\Centerline{$\VVdP\,\supp(\dot\pi_1^n\dot\pi_3)
+=(\supp(\pi_1^n\pi_3))^{\centerdot}$}
+
+\noindent for every $n\in\Bbb Z$ (of course we need to check that
+$\VVdP\,\dot\pi_1^n\dot\pi_3=(\pi_1^n\pi_3)^{\centerdot}$;  but this is
+easily deduced from 556C(a-iii),
+an induction on $n$ for $n\ge 0$, and 556C(b-iv)).
+So
+
+$$\eqalignno{\VVdP\,(\inf_{n\in\Bbb Z}\supp(\pi_1^n\pi_3))^{\centerdot}
+&=\inf_{n\in\Bbb Z}(\supp(\pi_1^n\pi_3)^{\centerdot})\cr
+\displaycause{556E(b-ii)}
+&=\inf_{n\in\Bbb Z}\supp(\pi_1^n\pi_3)^{\centerdot}
+=\inf_{n\in\Bbb Z}\supp(\dot\pi_1^n\dot\pi_3)
+=0.\cr}$$
+
+\noindent By 556Da, as usual,
+$\inf_{n\in\Bbb Z}\supp(\pi_1^n\pi_3)=0$;  by 381I(c-iv), in the other
+direction and in the ordinary universe, $\pi_3$ belongs to the full
+subgroup of $\Aut\frak A$ generated by $\pi_1$.   Similarly, $\pi_1$
+belongs to the full subgroup generated by $\pi_3$, so $\pi_1$ and $\pi_3$
+generate the same full subgroups, as required by ($\ddagger$).
+}%end of proof of 556N
+
+\leader{556O}{}\cmmnt{ For the next result, I prepare the ground with a
+note on `full local semigroups' as defined in
+\S395.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $\frak A$ be a Dedekind complete Boolean algebra,
+not $\{0\}$, and $\frak C$ a regularly embedded subalgebra of
+$\frak A$;  let $\Bbb P$ be the forcing notion $\frak C^+$, active
+downwards.   Let $\dot\frak A$
+be the forcing name for $\frak A$ over $\frak C$, and for a ring
+homomorphism $\pi:\frak A\to\frak A$ such that $\pi c\Bsubseteq c$ for
+every $c\in\frak C$ let $\dot\pi$ be the forcing name for
+$\pi$ over $\frak C$.   Let $G$ be a subgroup of $\Aut\frak A$ such that
+every point of $\frak C$ is fixed by every member of $G$,
+and $\dot G$ the $\Bbb P$-name $\{(\dot\pi,1):\pi\in G\}$.
+
+(a) $\VVdP\,\dot G$ is a subgroup of $\Aut\dot\frak A$.
+
+(b) If $\phi:\frak A\to\frak A$ is a ring homomorphism such that
+$\phi c\Bsubseteq c$ for every $c\in\frak C$, and
+
+\Centerline{$\VVdP\,\dot\phi$ belongs to the full local semigroup generated
+by $\dot G$,}
+
+\noindent then $\phi$ belongs to the full local semigroup generated by $G$.
+
+\proof{{\bf (a)(i)} If $p\in\frak C^+$ and $\dot x$ is a $\Bbb P$-name such
+that
+$p\VVdP\,\dot x\in\dot G$, then for every $q$ stronger than $p$ there must
+be an $r$ stronger than $q$ and a $\pi\in G$ such that
+
+\Centerline{$r\VVdP\,\dot x=\dot\pi\in\Aut\dot\frak A$.}
+
+\noindent (556C(b-iv)).
+As $q$ is arbitrary, $p\VVdP\,\dot x\in\Aut\dot\frak A$;  as $p$
+and $\dot x$ are arbitrary,
+
+\Centerline{$\VVdP\,\dot G\subseteq\Aut\dot\frak A$.}
+
+\medskip
+
+\quad{\bf (ii)} Writing $\iota$ for the identity automorphism of $\frak A$,
+
+\Centerline{$\VVdP\,\dot\iota\in\dot G$ is the identity automorphism of
+$\dot\frak A$}
+
+\noindent (see part (b-iv) of the proof of 556C).
+If $p\in\frak C^+$ and $\dot x$, $\dot y$ are $\Bbb P$-names
+such that $p\VVdP\,\dot x$, $\dot y\in\dot G$, then for every $q$ stronger
+than $p$ there are $r$ stronger than $q$ and $\pi_1$, $\pi_2\in G$ such
+that
+
+\Centerline{$r\VVdP\,\dot x=\dot\pi_1$, $\dot y=\dot\pi_2$,
+$\dot x\cdot\dot y=\dot\pi_1\dot\pi_2=(\pi_1\pi_2)^{\centerdot}
+\in\dot G$,
+$\dot x^{-1}=(\dot\pi_1)^{-1}=(\pi_1^{-1})^{\centerdot}\in\dot G$}
+
+\noindent (556C(a-iii), 556C(b-iv)),
+because $\pi_1\pi_2$ and $\pi_1^{-1}$ belong to $G$.   As $q$ is arbitrary,
+
+\Centerline{$p\VVdP\,\dot x\cdot\dot y$ and $\dot x^{-1}$ belong to
+$\dot G$;}
+
+\noindent as $p$, $\dot x$ and $\dot y$ are arbitrary,
+
+\Centerline{$\VVdP\,\dot G$ is a subgroup of $\Aut\dot\frak A$.}
+
+\medskip
+
+{\bf (b)} Take any non-zero $a\in\frak A$.   Then there is a
+$p\in\frak C^+$ such that $p\VVdP\,\dot a\ne 0$ (556Da).   Since
+
+\Centerline{$p\VVdP\,\dot\phi$ belongs to the full local semigroup
+generated by $\dot G$,}
+
+\noindent there must be $\Bbb P$-names $\dot x$, $\dot\theta$ such that
+
+\Centerline{$p\VVdP\,\dot x\in\dot\frak A\setminus\{0\}$,
+$\dot x\dot{\Bsubseteq}\dot a$,
+$\dot\theta\in\dot G$,
+$\dot\theta y=\dot\phi y$ whenever $y\dot{\Bsubseteq}\dot x$}
+
+\noindent (395B(a-ii)).   Now there are a $q$ stronger than $p$ and
+$b\in\frak A$, $\pi\in G$ such that
+
+\Centerline{$q\VVdP\,\dot b=\dot x$, $\dot\pi=\dot\theta$.}
+
+\noindent Since $q\VVdP\,\dot b\ne 0$, $q\Bcap b\ne 0$.   Suppose that
+$d\Bsubseteq q\Bcap b$.   Then
+
+\Centerline{$q\VVdP\,\dot d\dot{\Bsubseteq}\dot x$, so
+$(\pi d)^{\centerdot}=\dot\pi\dot d
+=\dot\theta\dot d=\dot\phi\dot d=(\phi d)^{\centerdot}$}
+
+\noindent and
+
+$$\eqalignno{\pi d
+&=q\Bcap\pi d\cr
+\displaycause{see (a-i-$\alpha$) of the proof of 556C}
+&=q\Bcap\phi d\cr
+\displaycause{556Da, because $\phi d\Bsubseteq\phi q\Bsubseteq q$}
+&=\phi d.\cr}$$
+
+\noindent Thus $\pi$ and $\phi$ agree on the principal ideal
+$\frak A_{q\Bcap b}$, while $q\Bcap b\Bsubseteq a$ is non-zero.   As $a$
+is arbitrary, $\phi$ belongs to the full local semigroup generated by
+$G$, by 395B(a-ii) in the other direction.
+}%end of proof of 556O
+
+\vleader{72pt}{556P}{Kawada's theorem} In the same way as in 556M and 556N,
+we have two versions of 395P:
+
+\inset{($\ddagger$) Let $\frak A$ be a Dedekind complete Boolean
+algebra and $G$ a fully non-paradoxical subgroup of $\Aut\frak A$, with
+fixed-point subalgebra $\frak C$, such that $\frak C$ is a measurable
+algebra.   Then there is a strictly positive $G$-invariant countably
+additive real-valued functional on $\frak A$.}
+
+\noindent and
+
+\inset{($\dagger$) Let $\frak A$ be a Dedekind
+complete Boolean algebra such that $\Aut\frak A$ has a subgroup $G$
+which is ergodic and fully non-paradoxical.
+Then there is a strictly positive $G$-invariant countably
+additive real-valued functional on $\frak A$.}
+
+\noindent Once again,\cmmnt{ I claim that} we can prove ($\ddagger$) from
+($\dagger$).
+
+\proof{{\bf (a)} Take $\frak A$, $G$ and $\frak C$ as in ($\ddagger$).
+If $\frak A=\{0\}$, the result is trivial;  so let us suppose from now on
+that $\frak A\ne\{0\}$.
+Let $\bar\lambda$ be a functional such that $(\frak C,\bar\lambda)$ is a
+probability algebra.
+Let $\Bbb P$ be the forcing notion $\frak C^+$, active downwards,
+and let $\dot\frak A$ be the forcing name for
+$\frak A$ over $\frak C$;  for $\pi\in\Aut\frak A$ let $\dot\pi$ be the
+forcing name for $\pi$ over $\frak C$.   Let $\dot G$ be the
+$\Bbb P$-name $\{(\dot\pi,1):\pi\in G\}$.
+
+\medskip
+
+{\bf (b)} $\VVdP\,\dot G$ is an ergodic subgroup of $\Aut\dot\frak A$.
+\Prf\ I noted in 556Oa that
+
+\Centerline{$\VVdP\,\dot G$ is a subgroup of $\Aut\dot\frak A$.}
+
+\noindent  For its ergodicity, copy the argument of 556C(b-v).
+Suppose that $p\in\frak C^+$ and $\dot x$ is a $\Bbb P$-name
+such that
+
+\Centerline{$p\VVdP\,\dot x\in\dot\frak A$ and $\theta(\dot x)=\dot x$ for
+every $\theta\in\dot G$.}
+
+\noindent For any $q$ stronger than $p$ there are an $r$ stronger than $q$
+and an $a\in\frak A$ such that $r\VVdP\,\dot x=\dot a$.   Take any
+$\pi\in G$.   Then
+
+\Centerline{$r\VVdP\,\dot\pi\in\dot G$, $(\pi a)^{\centerdot}
+=\dot\pi\dot x=\dot x=\dot a$,}
+
+\noindent so
+
+\Centerline{$\pi(r\Bcap a)=r\Bcap\pi a=r\Bcap a$}
+
+\noindent (556Da).   As $\pi$ is arbitrary, $r\Bcap a\in\frak C$.   If
+$r\Bcap a\ne 0$, then $r\Bcap a\VVdP\,\dot a=1$;  if $r\Bcap a=0$, then
+$r\VVdP\,\dot a=0$.   In either case, we have an $s$ stronger than $r$
+such that $s\VVdP\,\dot x\in\{0,1\}$.   As $q$ is arbitrary,
+$p\VVdP\,\dot x\in\{0,1\}$;  as $p$ and $\dot x$ are arbitrary,
+
+\doubleinset{$\VVdP\,\dot G$ has fixed-point subalgebra $\{0,1\}$, so
+is ergodic, because $\dot\frak A$ is Dedekind complete}
+
+\noindent (556Gb, 395Gf).  \Qed
+
+\medskip
+
+{\bf (c)} $\VVdP\,\dot G$ is fully non-paradoxical.
+
+\Prf\ {\bf (i)} \Quer\ Otherwise,
+
+\Centerline{$\notVVdash_{\Bbb P}\,\dot G$ satisfies condition (i) of 395D,}
+
+\noindent and there must be a $p\in\frak C^+$ and $\Bbb P$-names
+$\dot\theta$, $\dot x$ such that
+
+\doubleinset{$p\VVdP\,\dot x\in\dot\frak A\setminus\{1\}$,
+$\dot\theta$ is a Boolean homomorphism from
+$\dot\frak A$ to the principal ideal generated by $\dot x$, and
+$\dot\theta$ belongs to the full local semigroup generated by $\dot G$.}
+
+\noindent In order to apply 556J and 556O as stated
+we need a $\Bbb P$-name $\dot\theta_1$
+such that $\VVdP\,\dot\theta_1$ is a ring homomorphism.
+If $p=1$, take
+$\dot\theta_1=\dot\theta$;  otherwise, take $\dot\theta_1$ such that
+
+\Centerline{$p\VVdP\,\dot\theta_1=\dot\theta$,
+\quad$1\Bsetminus p\VVdP\,\dot\theta_1$ is the identity automorphism.}
+
+\noindent Then
+
+\doubleinset{$\VVdP\,\dot\theta_1:\dot\frak A\to\dot\frak A$ is a ring
+homomorphism belonging to the full local semigroup
+generated by $\dot G$.}
+
+\medskip
+
+\quad{\bf (ii)} By 556J there is a unique ring homomorphism
+$\phi:\frak A\to\frak A$ such that $\phi c\Bsubseteq c$ for every
+$c\in\frak C$ and $\VVdP\,\dot\theta_1=\dot\phi$.   By 556Ob, $\phi$
+belongs to the full local semi-group generated by $G$.   Since $G$ is fully
+non-paradoxical, $\phi 1=1$ and $\VVdP\,\dot\theta_11=\dot\phi 1=1$.
+But $p\VVdP\,\dot\theta_11=\dot x\ne 1$.\ \Bang\Qed
+
+\medskip
+
+{\bf (d)} Applying ($\dagger$) in the forcing language, we see that
+
+\doubleinset{$\VVdP$ there is a strictly positive $\dot G$-invariant
+countably additive functional on $\dot\frak A$, therefore there is a
+there is a strictly positive $\dot G$-invariant
+countably additive functional on $\dot\frak A$ taking values in $[0,1]$.}
+
+\noindent Let $\dot\nu$ be a $\Bbb P$-name such that
+
+\doubleinset{$\VVdP\,\dot\nu$ is a strictly positive $\dot G$-invariant
+$[0,1]$-valued countably additive functional on $\dot\frak A$.}
+
+\noindent For each $a\in\frak A$,
+$\VVdP\,\dot\nu\dot a\in[0,1]$, so there
+is a unique $u_a\in L^0(\frak C)^+$ such that
+
+\Centerline{$\VVdP\,\dot\nu\dot a=\vec u_a$}
+
+\noindent (5A3M once more), and $0\le u_a\le\chi 1$.
+Set $\mu a=\int u_ad\bar\lambda$ for $a\in\frak A$.
+
+\medskip
+
+{\bf (e)} $\mu$ is a strictly positive $G$-invariant
+countably additive functional on $\frak A$.
+
+\medskip
+
+\Prf\ {\bf (i)} If $a$, $b\in\frak A$ are disjoint,
+
+\Centerline{$\VVdP\,\dot a\dot{\Bcap}\dot b=0$, so
+$\vec u_a+\vec u_b=\dot\nu\dot a+\dot\nu\dot b
+=\dot\nu(\dot a\dot\Bcup\dot b)=\dot\nu(a\Bcup b)^{\centerdot}
+=\vec u_{a\Bcup b}$}
+
+\noindent (using 556Bb);  it follows that $u_a+u_b=u_{a\Bcup b}$ and
+$\mu a+\mu b=\mu(a\Bcup b)$.   Thus $\mu$ is additive.
+
+\medskip
+
+\quad{\bf (ii)} If $\sequencen{a_n}$ is a
+non-decreasing family in $\frak A$ with supremum $a$, then, by 556Be and
+556Eb,
+
+\doubleinset{$\VVdP\,\sequencen{\dot a_n}$ is a non-decreasing sequence
+in $\dot\frak A$ with supremum $\dot a$, so
+$\sequencen{\vec u_{a_n}}=\sequencen{\dot\nu\dot a_n}$ is a non-decreasing
+sequence in $[0,1]$ with supremum $\vec u_a=\dot\nu\dot a$.}
+
+\noindent Now $\sequencen{u_{a_n}}$ is a non-decreasing sequence in
+$L^0(\frak C)$ with supremum $u_a$ (5A3Ld), so
+$\mu a=\sup_{n\in\Bbb N}\mu a_n$.   Thus $\mu$ is countably additive.
+
+\wheader{556P}{6}{2}{2}{36pt}
+\quad{\bf (iii)} Because $u_a\ge 0$, $\mu a\ge 0$ for every $a\in\frak A$.
+If $\mu a=0$, then $u_a=0$ so
+
+\Centerline{$\VVdP\,\dot\nu\dot a=\vec u_a=0$, therefore $\dot a=0$,
+because $\dot\nu$ is strictly positive,}
+
+\noindent and $a=0$ (556Da).   Thus $\mu$ is strictly positive.
+
+\medskip
+
+\quad{\bf (iv)} Suppose that $\pi\in G$ and $a\in\frak A$.   Then
+
+\Centerline{$\VVdP\,\dot\pi\in\dot G\text{ and }\dot\nu\text{ is }
+  \dot G\text{-invariant, so }
+\vec u_{\pi a}
+=\dot\nu(\pi a)^{\centerdot}
+=\dot\nu(\dot\pi\dot a)
+=\dot\nu\dot a
+=\vec u_a$.}
+
+\noindent So $u_{\pi a}=u_a$ and $\mu(\pi a)=\mu a$.   Thus $\mu$ is
+$G$-invariant.\ \Qed
+
+Accordingly $\mu$ is a functional as required by ($\ddagger$).
+}%end of proof of 556P
+
+\leader{556Q}{}\cmmnt{ For the final application of the methods of this
+section, I turn to a result of a quite different kind.   Here the structure
+under consideration, the asymptotic density algebra $\frak Z$, is off the
+main line of this treatise, but has some important measure-theoretic
+properties (see \S491);  and it turns out that there is a remarkable
+identification of its Dedekind completion (556S) which can be established
+by applying Maharam's theorem in a suitable forcing universe of the kind
+considered here.   I start with a couple of easy lemmas, one just a
+restatement of ideas from Volume 3, and the other a straightforward
+property of a basic class of forcing notions.
+
+\medskip
+
+\noindent}{\bf Lemma} (a) Let $\frak A$ be a Boolean algebra and
+$\bar\mu:\frak A\to[0,1]$ a strictly positive additive functional such that
+$\bar\mu 1=1$.   Suppose that
+whenever $\sequencen{a_n}$ is a non-increasing sequence in $\frak A$,
+there is an $a\in\frak A$ such that $a\Bsubseteq a_n$ for every $n$ and
+$\bar\mu a=\inf_{n\in\Bbb N}\bar\mu a_n$.   Then $(\frak A,\bar\mu)$ is a
+probability algebra.
+
+(b) Let $(\frak A,\bar\mu)$ be a probability algebra.   Suppose that
+$\kappa\ge\tau(\frak A)$ is an infinite cardinal and that
+$\ofamily{\xi}{\kappa}{e_{\xi}}$
+is a family in $\frak A$ such that
+$\bar\mu(\inf_{\xi\in K}e_{\xi})=2^{-\#(K)}$ for every finite
+$K\subseteq I$.   Then $(\frak A,\bar\mu)$ is isomorphic to the measure
+algebra $(\frak B_{\kappa},\bar\nu_{\kappa})$ of the usual measure on
+$\{0,1\}^{\kappa}$.
+
+\proof{{\bf (a)} Let $A\subseteq\frak A$ be a non-empty
+countable set.   Let $\sequencen{a_n}$ be a sequence running over $A$, and
+set $b_n=\inf_{i\le n}a_i$ for each $n$.
+There is a $b\in\frak A$, a lower
+bound for $\{b_n:n\in\Bbb N\}$ and therefore for $A$, such that
+$\bar\mu b=\inf_{n\in\Bbb N}\bar\mu b_n$.
+If $c\in\frak A$ is any lower bound for $A$, then $b\Bcup c\Bsubseteq b_n$
+for every $n$, so
+
+\Centerline{$\bar\mu b+\bar\mu(c\Bsetminus b)
+=\bar\mu(b\Bcup c)\le\inf_{n\in\Bbb N}\bar\mu b_n=\bar\mu b$,}
+
+\noindent and $\bar\mu(c\Bsetminus b)=0$;
+as $\bar\mu$ is strictly positive,
+$c\Bsubseteq b$.   Thus $b=\inf A$.   As $A$ is
+arbitrary, $\frak A$ is Dedekind $\sigma$-complete.   But this is the only
+clause missing from the definition of `probability algebra'.
+
+\medskip
+
+{\bf (b)} By 331Ja,
+$\tau(\frak A_d)\ge\kappa$ for every non-zero $d\in\frak A$.   So
+$\frak A$ is \Mth, with Maharam type $\kappa$, and
+$(\frak A,\bar\mu)\cong(\frak B_{\kappa},\bar\mu_{\kappa})$ (331I).
+}%end of proof of 556Q
+
+\leader{556R}{Proposition} Let $\Bbb P$ be a countably closed forcing
+notion.   Then, for any set $I$, writing $(\frak B_I,\bar\nu_I)$ for the
+measure algebra of the usual measure on $\{0,1\}^I$,
+
+\Centerline{$\VVdP\,\,(\frak B_{\check I},\bar\nu_{\check I})
+\cong(\check\frak B_I,\check{\bar\nu}_I)$.}
+
+\proof{ If $I$ is finite, this is elementary (and does not rely on $\Bbb P$
+being countably closed), so I shall suppose that $I$ is infinite.
+
+\medskip
+
+{\bf (a)}
+
+\doubleinset{$\VVdP$ if $\sequencen{x_n}$ is a non-increasing sequence in
+$\check\frak B_I$, there is an $x\in\check\frak B_I$ such that
+$x\check{\Bsubseteq}x_n$ for every $n$ and
+$\check{\bar\nu}_I(x)=\inf_{n\in\Bbb N}\check{\bar\nu}_I(x_n)$.}
+
+\noindent\Prf\ Let $p$ be a condition of $\Bbb P$ and
+$\sequencen{\dot x_n}$ a sequence of $\Bbb P$-names such that
+
+\Centerline{$p\VVdP\,\dot x_n\in\check\frak B_I$ and
+$\dot x_{n+1}\check{\Bsubseteq}\dot x_n$}
+
+\noindent for every $n$.   If $q$ is stronger
+than $p$, we can choose $\sequencen{q_n}$, $\sequencen{b_n}$
+inductively so that $q_0=q$ and, for each $n$, $q_{n+1}$ is stronger than
+$q_n$, $b_n\in\frak B_I$ and $q_{n+1}\VVdP\,\dot x_n=\check b_n$.
+In this case,
+
+\Centerline{$q_{n+1}\VVdP\,\check b_{n+1}=\dot x_{n+1}
+  \check{\Bsubseteq}\dot x_n=\check b_n$,}
+
+\noindent so $b_{n+1}\Bsubseteq b_n$ for each $n$.   Setting
+$b=\inf_{n\in\Bbb N}b_n$, $\bar\nu_Ib=\inf_{n\in\Bbb N}\bar\nu_Ib_n$.
+Also, because $\Bbb P$ is countably closed, there is a condition $r$
+stronger than any $q_n$.   So
+
+\Centerline{$r\VVdP\,\check b\check{\Bsubseteq}\check b_n=\dot x_n$
+for every $n\in\Bbb N$,
+$\check{\bar\nu}_I(\check b)
+=\inf_{n\in\Bbb N}\check{\bar\nu}_I(\dot x_n)$.}
+
+\noindent As $q$ is arbitrary,
+
+\doubleinset{$p\VVdP$ there is an $x\in\check\frak B_I$ such that
+$x\check{\Bsubseteq}\dot x_n$ for every $n$ and
+$\check{\bar\nu}_I(x)=\inf_{n\in\Bbb N}\check{\bar\nu}_I(\dot x_n)$.}
+
+\noindent As $p$ and $\sequencen{\dot x_n}$ are arbitrary,
+
+\doubleinset{$\VVdP$ if $\sequencen{x_n}$ is a non-increasing sequence in
+$\check\frak B_I$, there is an $x\in\check\frak B_I$ such that
+$x\check{\Bsubseteq}x_n$ for every $n$ and
+$\check{\bar\nu}_I(x)=\inf_{n\in\Bbb N}\check{\bar\nu}_I(x_n)$.  \Qed}
+
+Since we certainly have
+
+\doubleinset{$\VVdP\,\check\frak B_I$ is a Boolean algebra and
+$\check{\bar\nu}:\check\frak B_I\to[0,1]$ is a strictly positive additive
+functional such that $\check{\bar\nu}_I1=1$,}
+
+\noindent 556Qa, applied in the forcing universe, tells us that
+
+\Centerline{$\VVdP\,(\check\frak B,\check{\bar\nu}_I)$ is a
+probability algebra.}
+
+\medskip
+
+{\bf (b)} Let $\familyiI{e_i}$ be the standard generating family in
+$\frak B_I$.   Then
+$\bar\nu_I(\inf_{i\in K}e_i)=2^{-\#(K)}$ for every finite set
+$K\subseteq I$, so
+
+\Centerline{$\VVdP\,
+\check{\bar\nu}_I(\inf_{i\in K}\check e_i)=2^{-\#(K)}$
+for every finite set $K\subseteq\check I$.}
+
+\noindent Next, if $\frak D$ is the
+subalgebra of $\frak B_I$ generated by $\{e_i:i\in I\}$, then $\frak D$ is
+dense in $\frak B_I$ for the measure metric.   Now
+
+\doubleinset{$\VVdP\,\check\frak D$
+is the subalgebra of $\check\frak B_I$ generated by
+$\{\check e_i:i\in\check I\}$ and $\check\frak D$ is metrically dense in
+$\check\frak B_I$, so $\tau(\check\frak B_I)\le\#(\check I)$.
+By 556Q, $(\check\frak B_I,\check{\bar\nu}_I)
+\cong(\frak B_{\#(\check I)},\bar\nu_{\#(\check I)})
+\cong(\frak B_{\check I},\bar\nu_{\check I})$,}
+
+\noindent as required.
+}%end of proof of 556R
+
+\leader{556S}{Theorem}\cmmnt{ ({\smc Farah 06})} Let
+$\Cal Z$ be the ideal of subsets of $\Bbb N$
+with asymptotic density $0$ and $\frak Z$ the asymptotic density algebra
+$\Cal P\Bbb N/\Cal Z$.   Then the Dedekind completion of
+$\frak Z$ is isomorphic to the Dedekind
+completion of the free product
+$(\Cal P\Bbb N/[\Bbb N]^{<\omega})\otimes\frak B_{\frakc}$.
+
+\proof{{\bf (a)} For $n\in\Bbb N$, set $I_n=\{i:2^n\le i<2^{n+1}\}$, so
+that $\sequencen{I_n}$ is a partition of $\Bbb N\setminus\{0\}$, and
+$\#(I_n)=2^n$ for every $n\in\Bbb N$.   Recall that
+
+\Centerline{$\Cal Z
+=\{J:J\subseteq\Bbb N$, $\lim_{n\to\infty}2^{-n}\#(J\cap I_n)=0\}$}
+
+\noindent (491Ab).   The notation of this proof will be slightly less
+appalling if I write $b_J$ for  $J^{\ssbullet}\in\frak Z$ when
+$J\subseteq\Bbb N$ and $c_K$ for
+$(\bigcup_{n\in K}I_n)^{\ssbullet}$ when $K\subseteq\Bbb N$.
+
+Set
+
+\Centerline{$\frak C=\{c_K:K\subseteq\Bbb N\}$.}
+
+\noindent Because $K\mapsto c_K:\Cal P\Bbb N\to\frak Z$ is a Boolean
+homomorphism, $\frak C$ is a subalgebra of $\frak Z$.   Now
+$\frak C\cong\Cal P\Bbb N/[\Bbb N]^{<\omega}$.   \Prf\
+If $K\subseteq\Bbb N$, then
+
+\Centerline{$c_K=0
+\iff\bigcup_{n\in K}I_n\in\Cal Z
+\iff K$ is finite.}
+
+\noindent So the Boolean homomorphism $K\mapsto c_K$ induces a Boolean
+isomorphism
+$\pi:\Cal P\Bbb N/[\Bbb N]^{<\omega}\to\frak C$ defined by setting
+$\pi(K^{\ssbullet})=c_K$ for every $K\subseteq\Bbb N$.\ \Qed
+
+\woddheader{556S}{0}{0}{0}{36pt}
+
+For $p\in\frak C^+$, set
+
+\Centerline{$\Cal F_p=\{K:K\subseteq\Bbb N$, $p\Bsubseteq c_K\}$,}
+
+\noindent so that $\Cal F_p$ is a filter on $\Bbb N$ containing every
+cofinite set.   Note that if $p\Bsubseteq q$ then $\Cal F_p$ is finer than
+$\Cal F_q$.
+
+\medskip
+
+{\bf (b)} $\frak C$ is regularly embedded in $\frak Z$.   \Prf\ Suppose
+that $A\subseteq\frak C$ has infimum $0$ in $\frak C$, and that
+$b\in\frak Z^+$.   Let $J_0\in\Cal P\Bbb N\setminus\Cal Z$ be such that
+$b=b_{J_0}$.   Then $\limsup_{n\to\infty}2^{-n}\#(J_0\cap I_n)>0$,
+so there is an $\epsilon>0$ such that
+$K=\{n:\#(J_0\cap I_n)\ge 2^n\epsilon\}$ is infinite.   $c_K$ cannot be a
+lower bound of $A$ in $\frak C$, so there is an $L\subseteq\Bbb N$ such
+that $c_L\in A$ and $c_K\notBsubseteq c_L$, that is, $K\setminus L$ is
+infinite.   Set $J=\bigcup_{n\in K\setminus L}J_0\cap I_n$;  then
+$\#(J\cap I_n)\ge 2^n\epsilon$ for infinitely many $n$, so
+$J\notin\Cal Z$ and $0\ne b_J\Bsubseteq b$.   On the other hand,
+$b_J\Bcap c_L=0$.   So $b\notBsubseteq c_L$ and $b$ is not a lower bound of
+$A$ in $\frak Z$.   As $b$ is arbitrary, $A$ has infimum $0$ in $\frak Z$;
+as $A$ is arbitrary, the embedding $\frak C\embedsinto\frak Z$ is
+order-continuous (313L(b-v)), and $\frak C$ is regularly embedded in
+$\frak Z$.\ \Qed.
+
+\medskip
+
+{\bf (c)} Let $\Bbb P$ be the forcing notion $\frak C^+$, active downwards.
+Then $\Bbb P$ is countably closed.   \Prf\ Let $\sequence{m}{p_m}$ be a
+non-increasing sequence in $\frak C^+$.   For each $m\in\Bbb N$, let
+$K_m\subseteq\Bbb N$ be such that $p_m=c_{K_m}$.
+Then $K_{m+1}\setminus K_m$ is finite for each $m$.   Let
+$\sequence{k}{n_k}$ be a strictly increasing sequence such that
+$n_k\in K_m$ whenever $m\le k\in\Bbb N$, and set
+$K=\{n_k:k\in\Bbb N\}$;  then $c_K$ belongs to
+$\frak C^+$, and $c_K\Bsubseteq p_m$ for every $m\in\Bbb N$.\ \Qed
+
+\medskip
+
+{\bf (d)(i)} Let $\dot\frak Z$ be the forcing name for $\frak Z$ over
+$\frak C$, and for $b\in\frak Z$ let $\dot b$ be the forcing name for $b$
+over $\frak C$.   Let $\dot\nu$ be the $\Bbb P$-name
+
+\Centerline{$\{((\dot b_J,\check\alpha),p):
+  p\in\frak C^+,\,J\subseteq\Bbb N,\,
+  \lim_{n\to\Cal F_p}2^{-n}\#(J\cap I_n)$ is defined and equal to
+  $\alpha\}$.}
+
+\medskip
+
+\quad{\bf (ii)} $\VVdP\,\dot\nu$ is a function.   \Prf\
+Suppose that $(J_0,\alpha_0,p_0)$ and
+$(J_1,\alpha_1,p_1)\in\Cal P\Bbb N\times\Bbb R\times\frak C^+$ are such
+that
+
+\Centerline{$\lim_{n\to\Cal F_{p_0}}2^{-n}\#(J_0\cap I_n)=\alpha_0$,
+\quad$\lim_{n\to\Cal F_{p_1}}2^{-n}\#(J_1\cap I_n)=\alpha_1$,}
+
+\noindent and that $p\in\frak C^+$, $p\Bsubseteq p_0\Bcap p_1$ and
+$p\VVdP\,\dot b_{J_0}=\dot b_{J_1}$.
+Then $p\Bcap b_{J_0}=p\Bcap b_{J_1}$ (556Da).
+Express $p$ as $c_K$, where $K\subseteq\Bbb N$;  then
+$\bigcup_{n\in K}I_n\cap(J_0\symmdiff J_1)\in\Cal Z$, so
+$\lim_{n\in K,n\to\infty}2^{-n}\#(I_n\cap(J_0\symmdiff J_1))=0$, that is,
+$\lim_{n\to\Cal F_p}2^{-n}\#(I_n\cap(J_0\symmdiff J_1))=0$.   But this
+means that
+
+\Centerline{$\alpha_0
+=\lim_{n\to\Cal F_p}2^{-n}\#(I_n\cap J_0)
+=\lim_{n\to\Cal F_p}2^{-n}\#(I_n\cap J_1)
+=\alpha_1$,}
+
+\noindent and surely $p\VVdP\,\check\alpha_0=\check\alpha_1$.   Thus the
+condition of 5A3H is satisfied and
+
+\Centerline{$\VVdP\,\dot\nu$ is a function.  \Qed}
+
+\medskip
+
+\quad{\bf (iii)} $\VVdP\,\dom\dot\nu=\dot\frak Z$.   \Prf\ Setting
+
+\Centerline{$\dot A
+=\{(\dot b_J,p):p\in\frak C^+,\,J\subseteq\Bbb N,\,
+  \lim_{n\to\Cal F_p}2^{-n}\#(J\cap I_n)$ is defined$\}$,}
+
+\noindent 5A3H tells us that $\VVdP\,\dom\dot\nu=\dot A$.   Of course
+$\VVdP\,\dot A\subseteq\dot\frak Z$ just because
+$\VVdP\,\dot b_J\in\dot\frak Z$ for every
+$J\subseteq\Bbb N$.   In the other direction, if $p\in\frak C^+$ and
+$\dot x$ is a $\Bbb P$-name such that $p\VVdP\,\dot x\in\dot\frak Z$, there
+are a $q$ stronger than $p$ and a $b\in\frak Z$ such that
+$q\VVdP\,\dot x=\dot b$.   Express $q$ as
+$c_K$ and $b$ as $b_J$ where
+$K\subseteq\Bbb N$ is infinite and $J\subseteq\Bbb N$.   Then there is an
+infinite $L\subseteq K$ such that
+$\lim_{n\in L,n\to\infty}2^{-n}\#(J\cap I_n)$ is defined, that is,
+$(\dot b,r)\in\dot A$, where $r=c_L$.  So
+$r\VVdP\,\dot x=\dot b\in\dot A$.   As $p$ and $\dot x$ are arbitrary,
+
+\Centerline{$\VVdP\,\dot\frak Z\subseteq\dot A$ and
+$\dom\dot\nu=\dot\frak Z$. \Qed}
+
+\medskip
+
+\quad{\bf (iv)} Of course $\lim_{n\to\Cal F_p}2^{-n}\#(J\cap I_n)$, if it
+is defined, must belong to $[0,1]$.   So
+
+\Centerline{$\VVdP\,\dot\nu$ is a function from $\dot\frak Z$ to $[0,1]$.}
+
+\noindent Next, $((\dot 1,\check 1),1)\in\dot\nu$
+(if you can work out how to interpret
+each $1$ in this formula), so $\VVdP\,\dot\nu\dot 1=\check 1=1$.
+
+\medskip
+
+\quad{\bf (v)} $\VVdP\,\dot\nu$ is additive.   \Prf\ Suppose that
+$p\in\frak C^+$ and that $\dot x_0$, $\dot x_1$
+are $\Bbb P$-names such that
+
+\Centerline{$p\VVdP\,\dot x_0$, $\dot x_1\in\dot\frak Z$ are disjoint.}
+
+\noindent If $p_1$ is stronger than $p$ there are $q_0$, $q'_0$, $q_1$,
+$r\in\Bbb P$,
+$J_0$, $J_1\subseteq\Bbb N$ and $\alpha_0$, $\alpha_1\in\Bbb R$ such that
+
+\Centerline{$((\dot b_{J_0},\check\alpha_0),q_0)
+\in\dot\nu$,
+\quad$q'_0$ is stronger than both $q_0$ and $p_1$,
+\quad$q'_0\VVdP\,\dot b_{J_0}=\dot x_0$,}
+
+\Centerline{$((\dot b_{J_1},\check\alpha_1),q_1)
+\in\dot\nu$,
+\quad$r$ is stronger than both $q_1$ and $q'_0$,
+\quad$r\VVdP\,\dot b_{J_1}=\dot x_1$.}
+
+\noindent As $r\VVdP\,(b_{J_0}\Bcap b_{J_1})^{\centerdot}=0$,
+$r\Bcap b_{J_0}\Bcap b_{J_1}=0$.   Express $r$ as
+$c_K$, where $K\in[\Bbb N]^{\omega}$.
+Then $J_0\cap J_1\cap\bigcup_{n\in K}I_n\in\Cal Z$, so
+$\lim_{n\to\Cal F_{r}}2^{-n}\#(J_0\cap J_1\cap I_n)=0$.   At the same
+time,
+
+\Centerline{$\lim_{n\to\Cal F_{r}}2^{-n}\#(J_0\cap I_n)
+=\lim_{n\to\Cal F_{q_0}}2^{-n}\#(J_0\cap I_n)=\alpha_0$,}
+
+\Centerline{$\lim_{n\to\Cal F_{r}}2^{-n}\#(J_1\cap I_n)
+=\lim_{n\to\Cal F_{q_1}}2^{-n}\#(J_1\cap I_n)=\alpha_1$,}
+
+\noindent so
+
+$$\eqalign{\lim_{n\to\Cal F_{r}}&2^{-n}\#((J_0\cup J_1)\cap I_n)\cr
+&=\lim_{n\to\Cal F_{r}}2^{-n}\#(J_0\cap I_n)
+  +\lim_{n\to\Cal F_{r}}2^{-n}\#(J_1\cap I_n)
+  -\lim_{n\to\Cal F_{r}}2^{-n}\#(J_0\cap J_1\cap I_n)\cr
+&=\alpha_0+\alpha_1\cr}$$
+
+\noindent and
+$(((\dot b_{J_0\cup J_1},(\alpha_0+\alpha_1)\var2spcheck),r)\in\dot\nu$.
+Accordingly
+
+\Centerline{$r\VVdP\,\dot\nu(\dot x_0\dot{\Bcup}\dot x_1)
+=\dot\nu(\dot b_{J_0\cup J_1})
+=(\alpha_0+\alpha_1)\var2spcheck
+=\check\alpha_0+\check\alpha_1
+=\dot\nu(\dot x_0)+\dot\nu(\dot x_1)$,}
+
+\noindent while $r\Bsubseteq p_1$.   As $p_1$ is arbitrary,
+
+\Centerline{$p\VVdP\,\dot\nu(\dot x_0\dot{\Bcup}\dot x_1)
+ =\dot\nu(\dot x_0)+\dot\nu(\dot x_1)$.}
+
+\noindent As $p$, $\dot x_0$ and $\dot x_1$ are arbitrary,
+
+\Centerline{$\VVdP\,\dot\nu$ is additive.  \Qed}
+
+\medskip
+
+\quad{\bf (vi)} $\VVdP\,\dot\nu$ is strictly positive.   \Prf\ Let
+$p\in\frak C^+$ and a $\Bbb P$-name $\dot x$ be such that
+$p\VVdP\,\dot x\in\dot\frak Z$ and $\dot x\ne\dot 0$.
+If $q$ is stronger than $p$ there are a $q'$ stronger than $q$ and a
+$J\subseteq\Bbb N$ such that
+$q'\VVdP\,\dot x=\dot b_J$.   Express $q'$ as
+$ c_K$ where $K\in[\Bbb N]^{\omega}$.
+As $q'\VVdP\,\dot b_J\ne\dot 0$,
+$q'\Bcap b_J\ne 0$ and $\bigcup_{n\in K}I_n\cap J\notin\Cal Z$.
+Accordingly $\limsup_{n\in K,n\to\infty}2^{-n}\#(I_n\cap J)>0$ and there is
+an infinite $L\subseteq K$ such that
+$\alpha=\lim_{n\in L,n\to\infty}2^{-n}\#(I_n\cap J)$ is defined and greater
+than $0$.   Set $r=c_L$;  then
+$((\dot b_J,\check\alpha),r)\in\dot\nu$, so
+
+\Centerline{$r\VVdP\,\dot\nu(\dot x)=\dot\nu(\dot b_J)
+=\check\alpha>0$,}
+
+\noindent while $r$ is stronger than $q$.   As $q$ is arbitrary,
+$p\VVdP\,\dot\nu(\dot x)>0$;  as $p$ and $\dot x$ are arbitrary,
+$\VVdP\,\dot\nu$ is strictly positive.\ \Qed
+
+\medskip
+
+\quad{\bf (vii)}
+
+$$\eqalign{\VVdP\,\,&\text{if }\sequence{k}{x_k}
+\text{ is a non-increasing sequence in }\dot\frak Z\cr
+&\mskip20mu\text{ there is an }x\in\dot\frak Z
+\text{ such that }x\dot{\Bsubseteq}x_k\text{ for every }k
+\text{ and }\dot\nu(x)=\inf_{k\in\Bbb N}\dot\nu(x_k).\cr}$$
+
+\noindent\Prf\ Let $p\in\frak C^+$ and a sequence $\sequence{k}{\dot x_k}$
+of $\Bbb P$-names be such that
+
+\Centerline{$p\VVdP\,\sequencen{\dot x_n}$ is a
+non-increasing sequence in $\dot\frak Z$.}
+
+\noindent Let $q$ be stronger than $p$.
+Then we can choose $\sequence{k}{q_k}$,
+$\sequence{k}{q'_k}$, $\sequence{k}{q''_k}$,
+$\sequence{k}{J_k}$ and $\sequence{k}{\alpha_k}$
+inductively so that $q'_0=q$ and
+
+\Centerline{$q''_k$ is stronger than $q'_k$, $J_k\subseteq\Bbb N$ and
+$q''_k\VVdP\,\dot x_k=\dot b_{J_k}$,}
+
+\Centerline{$q_k$ is stronger than $q''_k$, $\alpha_k\in[0,1]$,
+$\lim_{n\to\Cal F_{q_k}}2^{-n}\#(J_k\cap I_n)=\alpha_k$}
+
+\noindent (compare (iii) above),
+
+\Centerline{$q'_{k+1}=q_k$}
+
+\noindent for every $k\in\Bbb N$.
+
+Because $\Bbb P$ is countably closed,
+there is an $r\in\frak C^+$ stronger than every $q_k$.   In this case,
+$((\dot b_{J_k},\check\alpha_k),r)\in\dot\nu$ for every
+$k$, so
+
+\Centerline{$r\VVdP\,\inf_{k\in\Bbb N}\dot\nu(\dot x_k)
+=\inf_{k\in\Bbb N}\check\alpha_k=\check\alpha$}
+
+\noindent where $\alpha=\inf_{k\in\Bbb N}\alpha_k$.
+Express $r$ as $c_K$ where
+$K\subseteq\Bbb N$ is infinite.   For each $k\in\Bbb N$,
+
+\Centerline{$r\VVdP\,\dot b_{J_{k+1}}=\dot x_{k+1}\dot{\Bsubseteq}\dot x_k
+   =\dot b_{J_k}$,}
+
+\noindent so $r\Bcap b_{J_{k+1}}\Bsetminus b_{J_k}=0$ and
+
+\Centerline{$\lim_{n\in K,n\to\infty}2^{-n}\#(I_n\cap J_{k+1}\setminus J_k)
+=0$,}
+
+\noindent while
+
+\Centerline{$\lim_{n\in K,n\to\infty}2^{-n}\#(I_n\cap J_k)
+=\lim_{n\to\Cal F_{q_k}}2^{-n}\#(I_n\cap J_k)
+=\alpha_k\ge\alpha$.}
+
+\noindent We can therefore find a strictly increasing sequence
+$\sequence{k}{n_k}$ in $K$ such that
+
+\Centerline{$2^{-n_k}\#(I_{n_k}\cap J'_k)\ge\alpha-2^{-k}$}
+
+\noindent for every $k$, where $J'_k=\bigcap_{j\le k}J_j$.   Set
+$r'=(\bigcup_{k\in\Bbb N}I_{n_k})^{\ssbullet}$ and
+$J=\bigcup_{k\in\Bbb N}I_{n_k}\cap J'_k$.
+Then $J\setminus J_k$ is finite, so
+$r'\VVdP\,\dot b_J\dot{\Bsubseteq}\dot x_k$ for every
+$k$.   Also $((\dot b_J,\check\alpha),r')\in\dot\nu$, so
+
+\Centerline{$r'\VVdP\,\dot\nu(\dot b_J)
+=\check\alpha=\inf_{k\in\Bbb N}\dot\nu(\dot x_k)$.}
+
+Thus
+
+\Centerline{$r'\VVdP\,\text{ there is a lower bound }x\text{ for }
+\{\dot x_k:k\in\Bbb N\}\text{ such that }
+\dot\nu(x)=\inf_{k\in\Bbb N}\dot\nu(\dot x_k)$.}
+
+\noindent As $q$ is arbitrary,
+
+\Centerline{$p\VVdP\,\text{ there is a lower bound }x\text{ for }
+\{\dot x_k:k\in\Bbb N\}\text{ such that }
+\dot\nu(x)=\inf_{k\in\Bbb N}\dot\nu(\dot x_k)$.}
+
+\noindent As $p$ and $\sequence{k}{\dot x_k}$ are arbitrary,
+
+\doubleinset{$\VVdP$ if $\sequence{k}{x_k}$ is a non-increasing sequence
+in $\dot\frak Z$ there is an $x\in\dot\frak Z$ such that
+$x\dot{\Bsubseteq}x_k$ for every $k$ and
+$\dot\nu(x)=\inf_{k\in\Bbb N}\dot\nu(x_k)$.  \Qed}
+
+\medskip
+
+\quad{\bf (viii)}
+
+\doubleinset{$\VVdP$ there is a family $\family{L}{\Cal P\Bbb N}{x_L}$
+in $\dot\frak A$ such that $\dot\nu(\inf_{L\in\Cal L}x_L)=2^{-\#(\Cal L)}$
+for every finite set $\Cal L\subseteq\Cal P\Bbb N$.}
+
+\noindent\Prf\ Let $\family{L}{\Cal P\Bbb N}{M_L}$ be an almost disjoint
+family of infinite subsets of $\Bbb N$ (5A1Fa).   For each $n\in\Bbb N$,
+let $\ofamily{i}{n}{K_{ni}}$ be a family of subsets of $I_n$ such that
+$\#(\bigcap_{i\in J}K_{ni})=2^{n-\#(J)}$ for every non-empty set
+$J\subseteq n$;  such a family exists because $\#(I_n)=2^n$.   For
+$L\subseteq\Bbb N$, set
+
+\Centerline{$A_L=\bigcup_{n\in\Bbb N,n>\min M_L}K_{n,\max(n\cap M_L)}$,
+\quad$a_L=b_{A_L}\in\frak Z$.}
+
+\noindent If $\Cal L\subseteq\Cal P\Bbb N$ is finite and not empty, let
+$n_0\in\Bbb N$ be such that $M_L\cap M_{L'}\subseteq n_0$ whenever $L$,
+$L'\in\Cal L$ are distinct, and $n_1\ge n_0$ such that
+$M_L\cap n_1\setminus n_0\ne\emptyset$ for every $L\in\Cal L$.
+Then $\max(n\cap M_L)\ne\max(n\cap M_{L'})$ whenever $L$, $L'\in\Cal L$ are
+distinct and $n\ge n_1$.   So
+
+$$\eqalign{\lim_{n\to\infty}2^{-n}\#(I_n\cap\bigcap_{L\in\Cal L}A_L)
+&=\lim_{n\to\infty}
+  2^{-n}\#(I_n\cap\bigcap_{L\in\Cal L}K_{n,\max(n\cap M_L)})\cr
+&=\lim_{n\to\infty}2^{-n}2^{n-\#(\Cal L)}
+=2^{-\#(\Cal L)}.\cr}$$
+
+\noindent Of course the same formula is valid when $\Cal L=\emptyset$.
+
+It follows that
+
+\Centerline{$\VVdP\,\dot\nu(\inf_{L\in\check\Cal L}\dot a_L)
+=2^{-\#(\check\Cal L)}$}
+
+\noindent for every finite $\Cal L\subseteq\Cal P\Bbb N$.   Accordingly
+
+\Centerline{$\VVdP\,\dot\nu(\inf_{L\in\Cal L}\dot a_L)=2^{-\#(\Cal L)}$
+for every finite set $\Cal L\subseteq(\Cal P\Bbb N)\var2spcheck$.}
+
+\noindent But we know also that
+
+\Centerline{$\VVdP\,\Cal P\Bbb N=(\Cal P\Bbb N)\var2spcheck$}
+
+\noindent (5A3Qb).   So the family $\family{L}{\Cal P\Bbb N}{\dot a_L}$ of
+$\Bbb P$-names, when interpreted as a $\Bbb P$-name
+$\family{L}{(\Cal P\Bbb N)\var2spcheck}{\dot a_L}$ as in 5A3Eb, can also be
+regarded as a $\Bbb P$-name for a function defined on the whole power
+set of the set of natural numbers.   If we do this, we get
+
+\Centerline{$\VVdP\,\dot\nu(\inf_{L\in\Cal L}\dot a_L)=2^{-\#(\Cal L)}$
+for every finite set $\Cal L\subseteq\Cal P\Bbb N$,}
+
+\noindent witnessing the truth of the result we seek.\ \Qed
+
+\medskip
+
+\quad{\bf (ix)} $\VVdP\,\#(\dot\frak A)\le\frak c$.   \Prf\ Since
+
+\Centerline{$\dot\frak Z=\{(\dot a,1):a\in\frak Z\}
+=\{(\dot b_J,1):J\in\Cal P\Bbb N\}$}
+
+\noindent (556Ab), we get
+
+\Centerline{$\VVdP\,\dot\frak Z
+=\{\dot b_J:J\in(\Cal P\Bbb N)\var2spcheck\}$,
+so $\#(\dot\frak Z)\le\#((\Cal P\Bbb N)\var2spcheck)
+\le\#(\Cal P\Bbb N)=\frak c$.  \Qed}
+
+\medskip
+
+{\bf (e)} Assembling the facts in (d), we see that
+
+\Centerline{$\VVdP\,(\dot\frak Z,\dot\nu)$ satisfies the conditions of
+556Q with $\kappa=\frak c$, so $\dot\frak Z\cong\frak B_{\frakc}$.}
+
+\noindent But we also have
+
+\Centerline{$\VVdP\,\frak B_{\frakc}$ is isomorphic to
+$\frak B_{\Cal P\Bbb N}=\frak B_{(\Cal P\Bbb N)\var2spcheck}
+\cong(\frak B_{\Cal P\Bbb N})\var2spcheck$}
+
+\noindent by 556R.   As $\frak C$ is regularly embedded in $\frak Z$,
+we can apply 556Fc to see that $\widehat{\frak Z}$
+is isomorphic to the Dedekind completed free product
+$\frak C\tensorhat\frak B_{\Cal P\Bbb N}$ and therefore to
+$(\Cal P\Bbb N/[\Bbb N]^{<\omega})\tensorhat\frak B_{\frakc}$, by (a).
+
+This completes the proof.
+}%end of proof of 556S
+
+\exercises{\leader{556X}{Basic exercises (a)}
+%\spheader 556Xa
+Let $\frak A$ be a Boolean algebra, not $\{0\}$, and
+$\frak C$ a Boolean subalgebra of $\frak A$ which is not regularly
+embedded;  let $\Bbb P$ be the forcing notion $\frak C^+$, active
+downwards, and let $\dot\frak A$ be the forcing
+name for $\frak A$ over $\frak C$.   Show that there is an
+$a\in\frak A\setminus\{0\}$ such that $\VVdP\,\dot a=0$, where $\dot a$ is
+the forcing name for $a$ over $\frak C$.
+%556D
+
+\spheader 556Xb Let $\Bbb P$ be a countably closed forcing notion.
+(i) Show that $\VVdP\,\omega_1=\check\omega_1$.
+(ii) Show that
+$\VVdP\,[\check I]^{\le\omega}=([I]^{\le\omega})\var2spcheck$
+for every set $I$.
+(iii) Let $\frak A$ be a Dedekind $\sigma$-complete Boolean algebra.
+Show that $\VVdP\,\check\frak A$ is Dedekind $\sigma$-complete.
+(iv) Let $(X,\rho)$ be a complete metric space.   Show that
+$\VVdP\,(\check X,\check\rho)$ is a complete metric space.
+%556R
+
+\spheader 556Xc Show that the Dedekind completion $\widehat{\frak Z}$ of
+the asymptotic density algebra is a homogeneous Boolean algebra.
+\Hint{316Q, 316P.}
+%556S   316P:  completion of homog is homog.  316Q:  free product of
+%homog is homog
+
+\leader{556Y}{Further exercises (a)}
+%\spheader 556Ya
+Let $\Bbb P$ be a forcing notion, and $\dot\Bbb Q_1$, $\dot\Bbb Q_2$ two
+$\Bbb P$-names for forcing notions such that
+
+\Centerline{$\VVdP\,\RO(\dot\Bbb Q_1)\cong\RO(\dot\Bbb Q_2)$.}
+
+\noindent Show that
+$\RO(\Bbb P*\dot\Bbb Q_1)\cong\RO(\Bbb P*\dot\Bbb Q_2)$.
+%556F
+
+\spheader 556Yb Let $\Bbb P$ and $\Bbb Q$ be forcing notions.   Show that
+$\RO(\Bbb P*\check\Bbb Q)\cong\RO(\Bbb P)\tensorhat\RO(\Bbb Q)$.
+%556F
+
+\spheader 556Yc
+Give an example of a Dedekind $\sigma$-complete Boolean
+algebra $\frak A$ with an order-closed subalgebra $\frak C$ such that
+
+\Centerline{$\VVdP\,\dot\frak A$ is not Dedekind $\sigma$-complete,}
+
+\noindent where
+$\Bbb P$ is the forcing notion $\frak C^+$, active downwards,
+and $\dot\frak A$ is the forcing name for $\frak A$ over $\frak C$.
+%556G mt55bits
+
+\spheader 556Yd Show that the argument of 556Q is sufficient to take us
+from ($\dagger$) there to Theorem 395N, as well as to 395P.
+%556Q
+
+\spheader 556Ye Show that if the Proper Forcing Axiom is true then
+the asymptotic density algebra $\frak Z$ is not homogeneous.   \Hint{5A6H.}
+%556S
+
+\spheader 556Yf\dvAnew{2015} Let $(\frak A,\bar\mu)$ be a probability
+algebra, $\frak C$ a closed subalgebra and $\Bbb P$ the forcing notion
+$\frak C^+$ active downwards.   Set $q(t)=-t\ln t$ for $t>0$,
+$0$ for $t\le 0$ (cf.\ 385A).
+Let $A$ be a finite partition of unity in $\frak A$, and $\dot A$ the
+$\Bbb P$-name $\{(\dot a,1):a\in A\}$.
+(i) Confirm that the definition of
+$q$ can be interpreted in the forcing universe $V^{\Bbb P}$.
+(ii) Show
+that if $u\in L^0(\frak C)$ then $\VVdP\,(\bar q(u))\sspvec=q(\vec u)$.
+(iii) Set $v=\sum_{a\in A}\bar q(P\chi a)$ where $P$ is the conditional
+expectation associated with $\frak C$ (cf.\ 385D).   Show that
+
+\Centerline{$\VVdP\,\dot A$ is a partition of unity
+in $(\dot{\frak A},\dot{\bar\mu})$ and its entropy is $\vec v$.}
+
+\noindent(iv) Re-examine Lemma 385Ga in the light of this.
+}%end of exercises
+
+\endnotes{
+\Notesheader{556} I did not positively instruct you to do so in the
+introduction to this section, but I expect that most readers will
+have passed rather quickly over the nineteen %\query check
+$^{\centerdot}$-infested pages up to
+556L, and looked at the target theorems from 556M on.   In each of the
+first three we have a pair ($\ddagger$), ($\dagger$) of propositions,
+($\dagger$)
+being the special case of ($\ddagger$) in which an algebra $\Tau$ or
+$\frak C$ is trivial.   If, as I hope, you are already acquainted with at
+least one of the assertions ($\ddagger$), you will know that it can be
+proved by essentially the same methods as the corresponding ($\dagger$),
+but with some non-trivial technical changes.   These technical changes,
+already incorporated in the proofs of 388L/556N and 395P/556P in
+Volume 3, and indicated in \S458 for 458Yd/556M,
+certainly do not amount to nineteen pages of mathematics in total;
+moreover, they explore ideas which are of independent interest.
+So I cannot on this evidence claim that the approach gives quick proofs of
+otherwise inaccessible results.
+
+What I do claim is that the general method gives a way of
+looking at a recurrent phenomenon.   Throughout the theory of
+measure-preserving transformations, ergodic transformations have a special
+place;  and one comes to expect that once one has answered a question for
+ergodic transformations, the general case will be easy to determine.
+Similarly, every theorem about independent random variables ought to have a
+form applying to relatively independent variables.   Indeed there are
+standard techniques for developing such extensions, based on
+disintegrations, as in \S\S458-459.   What I have tried to do here is to
+develop a completely different approach, and in the process to indicate a
+new aspect of the theory of forcing.   I note that the method demands
+preliminary translations into the language of measure algebras,
+which suits my prejudices as already expressed at length in Volume 3.
+
+The message is that everything works.   There are no royal roads in
+mathematics, and to use this one you will have to master some non-trivial
+machinery.   But perhaps just knowing that a machine exists will give
+you the confidence to attack similar problems in your own way.   I offer an
+example in 556Yf.   Note that this depends on the fact that the ordinary
+functions of elementary calculus have definitions which can be interpreted
+in any forcing universe.
+
+The great bulk of the work of this section consists of routine checks that
+natural formulae are in fact valid.   You will see that some simple ideas
+recur repeatedly, but the details demand a certain amount of attention.
+At the very beginning, in finding a forcing name $\dot a$ for an
+element of a Boolean algebra, we have to take care that we are exactly
+following our preferred formulation of what a name `is'.   (If my preferred
+formulation is not yours, you have some work to do, but it should not be
+difficult, and might be enlightening.)   It is not
+surprising that regularly embedded subalgebras have a special status
+(556D);  it is worth taking a moment to think about why it matters so much
+(556Xa).   In 556H, I do not think it is obvious that $\frak A$ must be
+Dedekind complete, rather than just Dedekind $\sigma$-complete,
+to make the ideas work in the straightforward way that they do (556Yc).
+When we come to measure algebras (556K), we need to be sure that we have a
+description of forcing names for real numbers which is compatible with the
+apparatus here.   Again and again, we have sentences with clauses in both
+the forcing language and in ordinary language, and we must keep the pieces
+properly segregated in our minds.
+
+The last fifth of the section (556Q-556S) %556Q 556R 556S
+is quite hard work for the result we get, but I think it is particularly
+instructive, in that it cannot be regarded as a technical extension of a
+simpler and more important
+result.   It is a good example of a theorem proved by a method
+unavoidably dependent on the Forcing Theorem (5A3D), and for which it is
+not at all clear that a proof avoiding forcing can be made manageably
+simple.   Such a proof must exist, but the obvious route to it involves
+teasing out the requisite parts of the proof of Maharam's theorem, and
+translating them into properties of the set
+
+\Centerline{$\{(J,\alpha,K):K\in[\Bbb N]^{\omega}$,
+  $J\subseteq\Bbb N$,
+  $\lim_{n\in K,n\to\infty}2^{-n}\#(J\cap I_n)=\alpha\}$}
+
+\noindent as in part (d) of the proof of 556S, but going very much farther.
+My own experience is that facing up to such challenges is often profitable,
+but for the moment I am happy to present an adaptation of Farah's
+original proof.
+
+An easy corollary of Theorem 556S is that $\widehat{\frak Z}$ is
+homogeneous (556Xc).   This is striking in view of the fact that $\frak Z$
+itself may or may not be homogeneous.   If the continuum hypothesis is
+true, then $\frak Z$ is indeed homogeneous ({\smc Farah 03}); %8.2
+but if
+the Proper Forcing Axiom is true, then $\frak Z$ is {\it not} homogeneous
+(556Ye), even though its completion is.
+}%end of notes
+
+\discrpage
+
+
+
+%}}}}}
+

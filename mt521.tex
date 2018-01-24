@@ -1,0 +1,1904 @@
+\frfilename{mt521.tex}
+\versiondate{3.3.14}
+\copyrightdate{2007}
+
+\def\chaptername{Cardinal functions of measure theory}
+\def\sectionname{Basic theory}
+
+\def\magnitude{\mathop{\text{mag}}}
+
+\newsection{521}
+
+In the first half of this section (down to 521L) I collect facts
+about the cardinal
+functions $\add$, $\cf$, $\non$, $\cov$, $\shr$ and $\shr^+$ when applied
+to the null ideal $\Cal N(\mu)$ of a measure $\mu$, and also the
+$\pi$-weight of a measure.
+In particular I look at their relations with the
+constructions introduced earlier in this treatise:
+measure algebras and function
+spaces (521B), subspace measures (521F), direct sums (521G), \imp\
+functions and image measures (521H), products (521J), perfect measures
+(521K) and compact measures (521L).   The list is long just because I
+have four volumes' worth of miscellaneous concepts to examine;  nearly all
+the individual arguments are elementary.
+
+In the second half of the section, I give
+a handful of easy results which may clarify some
+patterns from earlier volumes.   In 521M-521P %521M 521N 521O 521P
+I look again at `strict localizability' as considered in Chapter 21,
+importing the concept of `magnitude' of a measure space from \S332,
+hoping to throw light on the examples of \S216.
+In 521E I consider the topological densities of measure algebras.
+In 521R-521S I
+explore possibilities for the `countably separated' measure spaces of
+\S\S343-344, examining in particular their Maharam types.   Finally,
+in 521T, I review some measures which arose in \S464 while analyzing the
+$L$-space $\ell^{\infty}(I)^*$.
+
+\leader{521A}{Proposition} Let $(X,\Sigma,\mu)$ be a measure space.
+
+(a) If $\Cal E\subseteq\Sigma$ and $\#(\Cal E)<\add\mu$ then
+$\bigcup\Cal E\in\Sigma$ and
+
+\Centerline{$\mu(\bigcup\Cal E)
+=\sup\{\mu(\bigcup\Cal E_0):\Cal E_0\subseteq\Cal E$ is finite$\}$.}
+
+(b) $\omega_1\le\add\mu\le\add\Cal N(\mu)$.
+
+(c) If $\mu$ is the measure defined by \Caratheodory's method from
+an outer measure $\theta$ on $X$, then $\add\mu=\add\Cal N(\mu)$.
+
+(d) If $\mu$ is complete and locally determined,
+$\add\mu=\add\Cal N(\mu)$.
+
+\proof{{\bf (a)} Induce on $\#(\Cal E)$.   If $\Cal E$ is finite, the
+result is trivial.   For the inductive step to
+$\#(\Cal E)=\kappa\ge\omega$, enumerate $\Cal E$ as
+$\ofamily{\xi}{\kappa}{E_{\xi}}$.   For each $\xi<\kappa$, set
+$H_{\xi}=E_{\xi}\setminus\bigcup_{\eta<\xi}E_{\eta}$ for each
+$\xi<\kappa$.   Then the inductive hypothesis tells us that
+$H_{\xi}\in\Sigma$ for every $\xi$.   Set $E=\bigcup\Cal
+E=\bigcup_{\xi<\kappa}H_{\xi}$;  because
+$\ofamily{\xi}{\kappa}{H_{\xi}}$ is
+disjoint, and $\kappa<\add\mu$, $E\in\Sigma$ and
+
+$$\mu E
+=\sum_{\xi<\kappa}\mu H_{\xi}
+=\sup_{I\subseteq\kappa\text{ is finite}}
+  \mu(\bigcup_{\xi\in I}H_{\xi})
+\le\sup_{\Cal E_0\subseteq\Cal E\text{ is finite}}\mu(\bigcup\Cal E)
+\le\mu E.$$
+
+\medskip
+
+{\bf (b)} By the definition of `measure' (112A), $\mu$ is
+$\omega_1$-additive.   Suppose that $\Cal A\subseteq\Cal N(\mu)$ and
+$\#(\Cal A)<\add\mu$.   For each $A\in\Cal A$, choose a measurable
+negligible $E_A\supseteq A$.   Then (a) tells us that
+$E=\bigcup_{A\in\Cal A}E_A$ has measure zero, so
+$\bigcup\Cal A\subseteq E$ is negligible.   As $\Cal A$ is arbitrary,
+$\add\Cal N(\mu)\ge\add\mu$.
+
+\medskip
+
+{\bf (c)} Now suppose that $\mu$ is defined by \Caratheodory's method
+from $\theta$.
+Let $\familyiI{E_i}$ be a disjoint family in $\Sigma$, where
+$\#(I)<\add\Cal N(\mu)$, with union $E$.
+
+Let $A\subseteq X$ be any set.   Then
+$\theta(A\cap E)=\sum_{i\in I}\theta(A\cap E_i)$.   \Prf\ Of course
+
+$$\eqalignno{\theta(A\cap E)
+&\ge\sup_{J\subseteq I\text{ is finite}}
+  \theta(A\cap\bigcup_{i\in J}E_i)
+=\sup_{J\subseteq I\text{ is finite}}
+  \sum_{i\in J}\theta(A\cap E_i)\cr
+\displaycause{induce on $\#(J)$, using the fact that
+$\theta B=\theta(B\cap E_i)+\theta(B\setminus E_i)$ for every
+$B\subseteq X$ and $i\in J$}
+&=\sum_{i\in I}\theta(A\cap E_i).\cr}$$
+
+\noindent If $\sum_{i\in I}\theta(A\cap E_i)$ is infinite, we can stop.
+Otherwise, recalling that $\Cal N(\mu)=\theta^{-1}[\{0\}]$,
+$J=\{i:A\cap E_i\notin\Cal N(\mu)\}$ is countable,
+and $\bigcup_{i\in I\setminus J}A\cap E_i$ is negligible, because
+$\#(I)<\add\Cal N(\mu)$;  so
+
+\Centerline{$\theta(A\cap E)=\theta(A\cap\bigcup_{i\in J}E_i)
+\le\sum_{i\in J}\theta(A\cap E_i)=\sum_{i\in I}\theta(A\cap E_i)$}
+
+\noindent and we have equality.\  \Qed
+
+It follows that
+$\theta(A\cap E)+\theta(A\setminus E)\le\theta A$.   \Prf\ For any finite
+$J\subseteq I$,
+
+$$\eqalign{\theta(A\setminus E)+\sum_{i\in J}\theta(A\cap E_i)
+&=\theta(A\setminus E)+\theta(A\cap\bigcup_{i\in J}E_i)\cr
+&\le\theta(A\setminus\bigcup_{i\in J}E_i)+\theta(A\cap\bigcup_{i\in J}E_i)
+=\theta A.\cr}$$
+
+\noindent Taking the supremum over $J$, we have the result.\ \Qed
+
+As $A$ is arbitrary, $E\in\Sigma$;  and setting $A=E$, we see that
+$\mu E=\sum_{i\in I}\mu E_i$.   As $\familyiI{E_i}$ is arbitrary,
+$\add\mu\ge\add\Cal N(\mu)$ and the two additivities are equal.
+
+\medskip
+
+{\bf (d)} Now this follows immediately from (c), by 213C.
+}%end of proof of 521A
+
+\leader{521B}{Proposition} Let $(X,\Sigma,\mu)$ be a measure space
+and $(\frak A,\bar\mu)$ its measure algebra.
+
+(a) If $\Cal E\subseteq\Sigma$ and $\#(\Cal E)<\add\mu$, then
+$(\bigcup\Cal E)^{\ssbullet}=\sup_{E\in\Cal E}E^{\ssbullet}$ and
+$(X\cap\bigcap\Cal E)^{\ssbullet}=\inf_{E\in\Cal E}E^{\ssbullet}$
+in $\frak A$.
+
+(b) Suppose that $A\subseteq[-\infty,\infty]^X$ is a non-empty family of
+$\Sigma$-measurable functions with $\#(A)<\add\mu$, and that
+$g(x)=\sup_{f\in A}f(x)$ in $[-\infty,\infty]$ for every $f\in A$.
+Then $g$ is $\Sigma$-measurable.
+
+(c) Write $\eusm L^0$ for the family of $\mu$-virtually measurable
+real-valued functions defined almost everywhere in $X$, and $L^0$ for
+the corresponding space of equivalence classes, as in \S241.   Suppose
+that $A\subseteq\eusm L^0$ is such that $0<\#(A)<\add\mu$ and
+$\{f^{\ssbullet}:f\in A\}$ is bounded above in $L^0$.   Set
+$g(x)=\sup_{f\in A}f(x)$ whenever this is defined in $\Bbb R$;  then
+$g\in\eusm L^0$ and $g^{\ssbullet}=\sup_{f\in A}f^{\ssbullet}$ in $L^0$.
+
+\allowmorestretch{500}{
+(d)(i) If, in (b), $A$ consists of non-negative integrable functions and
+is upwards-directed, then $\int g\,d\mu=\sup_{f\in A}\int fd\mu$.
+}
+
+\quad(ii) If, in (b), $f_1\wedge f_2=0$ a.e.\ for all distinct $f_1$,
+$f_2\in A$, then $\int g\,d\mu=\sum_{f\in A}\int fd\mu$.
+
+\proof{{\bf (a)} As in 521Aa, $\bigcup\Cal E\in\Sigma$, and of course
+$(\bigcup\Cal E)^{\ssbullet}$ is an upper bound for
+$\{E^{\ssbullet}:E\in\Cal E\}$.   If $F\in\Sigma$ and $F^{\ssbullet}$ is an
+upper bound for $\{E^{\ssbullet}:E\in\Cal E\}$, then, applying 521Aa to
+$\{E\setminus F:E\in\Cal E\}$, we see that $\bigcup\Cal E\setminus F$ is
+negligible, so $(\bigcup\Cal E)^{\ssbullet}\Bsubseteq F^{\ssbullet}$.
+Thus $(\bigcup\Cal E)^{\ssbullet}$ is the least upper bound of
+$\{E^{\ssbullet}:E\in\Cal E\}$.
+
+Applying this to $\{X\setminus E:E\in\Cal E\}$ we see that
+$(X\cap\bigcap\Cal E)^{\ssbullet}=\inf_{E\in\Cal E}E^{\ssbullet}$.
+
+\medskip
+
+{\bf (b)} For any $\alpha\in\Bbb R$,
+
+\Centerline{$\{x:g(x)>\alpha\}
+=\bigcup_{f\in A}\{x:f(x)>\alpha\}\in\Sigma$}
+
+\noindent by 521Aa.
+
+\medskip
+
+{\bf (c)} Take any $h\in\eusm L^0$ such that
+$f^{\ssbullet}\le h^{\ssbullet}$ for every $f\in A$.   For each
+$f\in A$, let $E_f$ be a conegligible measurable subset of
+$\{x:x\in\dom f\cap\dom h$, $f(x)\le h(x)\}$ such that $f\restr E_f$ is
+measurable.   Set $E=\bigcap_{f\in A}E_f$;  then $E$ is measurable and
+$g$ is defined everywhere in $E$ and $g\restr E$ is measurable (as in
+(b)).    Also $E$ is conegligible, so
+$g\in\eusm L^0$, and of course $f^{\ssbullet}\le g^{\ssbullet}$ for
+every $f\in A$, while $g^{\ssbullet}\le h^{\ssbullet}$.   But this
+argument works for every $h$ such that $h^{\ssbullet}$ is an upper bound
+for $\{f^{\ssbullet}:f\in A\}$, so $g^{\ssbullet}$ must be actually the
+supremum of $\{f^{\ssbullet}:f\in A\}$.
+
+\medskip
+
+{\bf (d)(i)} If $\sup_{f\in A}\int fd\mu$ is infinite, this is trivial.
+Otherwise, $\{f^{\ssbullet}:f\in A\}$ is bounded above in $L^1$ and
+therefore in $L^0$.   By (c), $g^{\ssbullet}$ is its supremum in $L^0$,
+therefore in $L^1$;  so
+
+\Centerline{$\int g=\int g^{\ssbullet}
+=\sup_{f\in A}\int f^{\ssbullet}=\sup_{f\in A}\int f$,}
+
+\noindent as in 365Df.
+
+\medskip
+
+\quad{\bf (ii)} Apply (i) to $A^*=\{\sup I:I\in[A]^{<\omega}\}$.
+}%end of proof of 521B
+
+\leader{521C}{}\cmmnt{ Just because null ideals are $\sigma$-ideals of
+sets, we can read off some of the elementary properties of their cardinal
+functions from 511J.   But the presence of a measure gives us a new way
+to use shrinking numbers, which will be useful later.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a measure space, and
+$A\subseteq X$.
+
+(a) If $\gamma<\mu^*A$ there is a $B\subseteq A$
+such that $\#(B)<\shr^+\Cal N(\mu)$ and $\mu^*B>\gamma$.
+
+(b) There is a $B\subseteq A$ such that 
+$\#(B)\le\max(\omega,\shr\Cal N(\mu))$ and $\mu^*B=\mu^*A$.
+
+%exercise on  \non^+Cal N(\mu) ?
+% on \omega_1-sat (X,\Sigma,\Cal I) ?
+
+\proof{{\bf (a)} Set $\kappa=\shr^+\Cal N(\mu)$.
+Let $\Cal E$ be the
+family of those measurable subsets of $X$ such that there is a
+$B\in[A\cap E]^{<\kappa}$ with $\mu^*B=\mu E$.   Then $\Cal E$ is
+closed under finite unions (132Ed).   \Quer\ If $\mu^*B\le\gamma$
+for every $B\in[A]^{<\kappa}$, then $\mu E\le\gamma$ for every
+$E\in\Cal E$.   By 215Ab,
+there is a non-decreasing sequence $\sequencen{E_n}$ in $\Cal E$ such
+that $E\setminus\bigcup_{n\in\Bbb N}E_n$ is negligible for every
+$E\in\Cal E$.   Now $\mu(\bigcup_{n\in\Bbb N}E_n)\le\gamma<\mu^*A$
+and $A'=A\setminus\bigcup_{n\in\Bbb N}E_n$ is not negligible.   Let
+$B\in[A']^{<\kappa}$ be a non-negligible set.    Then $\mu^*B\le\gamma$ is
+finite, so $B$ has a measurable envelope $F$ (132Ee),
+which belongs to $\Cal E$;
+but $F\setminus\bigcup_{n\in\Bbb N}E_n\supseteq B$
+is not negligible.\ \BanG\
+So we have a $B\in[A]^{<\kappa}$ with $\mu^*B>\gamma$, as required.
+
+\medskip
+
+{\bf (b)} If $\mu^*A=0$ take $B=\emptyset$.   Otherwise, let
+$\sequencen{\gamma_n}$ be a sequence in $\coint{0,\mu^*A}$ with supremum
+$\mu^*A$.   For each $n\in\Bbb N$, (a) tells us that there is a set
+$B_n\subseteq A$ such that $\#(B_n)\le\shr(\mu)$ and 
+$\mu^*B_n>\gamma_n$;  set $B=\bigcup_{n\in\Bbb N}B_n$.
+}%end of proof of 521C
+
+\leader{521D}{Proposition}\dvAnew{2014}
+Let $(X,\Sigma,\mu)$ be a measure space and
+$(\frak A,\bar\mu)$ its measure algebra.
+
+(a) $\pi(\frak A)\le\pi(\mu)\le\max(\pi(\frak A),\cf\Cal N(\mu))$\cmmnt{
+(definitions:  511Dc, 511Gb)}.
+
+(b) If $\mu X>0$, then $\non\Cal N(\mu)\le\pi(\mu)$.
+
+(c) If $(X,\Sigma,\mu)$
+has locally determined negligible sets\cmmnt{ (definition:
+213I)}, then $\shr\Cal N(\mu)\le\pi(\mu)$.
+
+(d)\dvAformerly{5{}25B} Suppose that
+there is a topology $\frak T$ on $X$ such that
+$(X,\frak T,\Sigma,\mu)$ is a
+quasi-Radon measure space.   Then, writing $\frak A^+$ for
+$\frak A\setminus\{0\}$, the
+partially ordered sets $(\Sigma\setminus\Cal N(\mu),\supseteq)$
+and $(\frak A^+,\Bsupseteqshort)$ are Tukey equivalent and
+$\pi(\mu)=\pi(\frak A)$.
+
+\proof{ Let $\Cal H\subseteq\Sigma\setminus\Cal N(\mu)$ be a
+coinitial set of size $\pi(\mu)$.
+
+\medskip
+
+{\bf (a)(i)} If $a\in\frak A$ is non-zero, there is an
+$E\in\Sigma$ such that $E^{\ssbullet}=a$, and now $E$ is not negligible, so
+there is an $H\in\Cal H$ such that $H\subseteq E$ and
+$0\ne H^{\ssbullet}\Bsubseteq a$.   Thus $\{H^{\ssbullet}:H\in\Cal H\}$ is
+coinitial with $\frak A^+$ and witnesses that
+$\pi(\frak A)\le\#(\Cal H)=\pi(\mu)$.
+
+\medskip
+
+\quad{\bf (ii)} Let $B\subseteq\frak A^+$ be a coinitial set
+of size $\pi(\frak A)$, and $\Cal E$ a cofinal subset of $\Cal N(\mu)$ of
+size $\cf\Cal N(\mu)$.   For $b\in B$, let $F_b\in\Sigma$ be such that
+$F_b^{\ssbullet}=b$, and consider
+$\Cal G=\{F_b\setminus E:b\in B$, $E\in\Cal E\}$.   Then
+$\Cal G\subseteq\Sigma\setminus\Cal N(\mu)$ is coinitial with
+$\Sigma\setminus\Cal N(\mu)$.   \Prf\ If $\mu F>0$, there is a $b\in B$
+such that $b\Bsubseteq F^{\ssbullet}$.   In this case, $F_b\setminus F$ is
+negligible, so there is an $E\in\Cal E$ such that
+$F_b\setminus F\subseteq E$ and $F\supseteq F_b\setminus E\in\Cal G$.\ \Qed
+
+It follows that $\pi(\mu)\le\#(\Cal G)\le\#(B\times\Cal E)$
+is at most the cardinal product
+$\pi(\frak A)\cdot\cf\Cal N(\mu)\le\max(\omega,\pi(\frak A),\cf\Cal N(\mu))$.
+But if $\cf\Cal N(\mu)$ is finite it is $1$, so in fact
+$\pi(\mu)\le\pi(\frak A)\cdot\cf\Cal N(\mu)=\max(\pi(\frak A),\cf\Cal N(\mu))$.
+
+\medskip
+
+{\bf (b)} For each $H\in\Cal H$ choose $x_H\in\Cal H$.   Then
+$A=\{x_H:H\in\Cal H\}$ must meet every non-negligible measurable set,
+so (as $\mu X>0$) cannot itself be negligible.   Thus
+
+\Centerline{$\non\Cal N(\mu)\le\#(A)\le\#(\Cal H)=\pi(\mu)$.}
+
+\medskip
+
+{\bf (c)} Suppose that $B\subseteq X$ is non-negligible.
+Because $(X,\Sigma,\mu)$ has locally determined
+negligible sets there is an $E\in\Sigma$ such that $\mu E>0$ and
+$B\cap E$ is not negligible, and now $B\cap E$ has a measurable envelope
+$F$ say (132Ee again).   Set
+$\Cal H'=\{H:H\in\Cal H$, $B\cap H\ne\emptyset\}$ and for
+$H\in\Cal H'$ choose $x_H\in B\cap H$;  set $A=\{x_H:H\in\Cal H'\}$, so
+that $A\subseteq B$ and $\#(A)\le\pi(\mu)$.
+\Quer\ If $A$ is negligible, then $F\setminus A$ includes a non-negligible
+measurable set so includes a member $H$ of $\Cal H$.   As $\mu H>0$ and
+$F$ is a measurable envelope of $B$, $H$ meets $B$ and belongs to
+$\Cal H'$, and $x_H\in A\cap H$.\ \BanG\  Thus $A$ is not negligible.
+As $B$ is arbitrary, $\shr\Cal N(\mu)\le\pi(\mu)$.
+
+\medskip
+
+{\bf (d)} For $E\in\Sigma\setminus\Cal N(\mu)$ let $F_E$ be a closed
+non-negligible subset of $E$ and set
+$\phi(E)=F_E^{\ssbullet}\in\frak A^+$;  for $a\in\frak A^+$, let
+$\psi(a)$ be a self-supporting measurable set such that
+$\psi(a)^{\ssbullet}=a$ (414F).   Then if $\phi(E)\Bsupseteq a$,
+$\psi(a)\setminus F_E$ is negligible so
+$E\supseteq F_E\supseteq\psi(a)$.   Thus $(\phi,\psi)$ is a Galois-Tukey
+connection and
+$(\Sigma\setminus\Cal N(\mu),\supseteq,\Sigma\setminus\Cal N(\mu))
+\prGT(\frak A^+,\Bsupseteqshort,\frak A^+)$.
+
+Moreover, if $\psi(a)\supseteq E$, then $a\Bsupseteq\phi(E)$, so
+$(\psi,\phi)$ also is a Galois-Tukey connection and
+$(\frak A^+,\Bsupseteqshort,\frak A^+)\prGT
+(\Sigma\setminus\Cal N(\mu),\discretionary{}{}{}\supseteq\nobreak,
+\discretionary{}{}{}\Sigma\setminus\Cal N(\mu))$.
+
+Thus $(\Sigma\setminus\Cal N(\mu),\supseteq,\Sigma\setminus\Cal N(\mu))
+\equivGT(\frak A^+,\Bsupseteqshort,\frak A^+)$, that is,
+$(\Sigma\setminus\Cal N(\mu),\supseteq)
+\equivT(\frak A^+,\Bsupseteqshort)$.   By 513E(e-i), inverted,
+
+\Centerline{$\pi(\mu)=\ci(\Sigma\setminus\Cal N(\mu))
+=\ci(\frak A^+)=\pi(\frak A)$.}
+}%end of proof of 521D
+
+\leader{521E}{}\cmmnt{ It will be useful later in the chapter to be able to
+calculate the topological density of measure-algebra topologies.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(\frak A,\bar\mu)$ be a semi-finite
+measure algebra.
+
+(a) Give $\frak A$ its measure-algebra topology\cmmnt{ (323A)}.
+
+\quad(i) If $\frak B$ is a subalgebra of $\frak A$, it is topologically
+dense iff it $\tau$-generates $\frak A$\cmmnt{, that is, $\frak A$ is the
+order-closed subalgebra of itself generated by $\frak B$}.
+
+\quad(ii) If
+$\frak A$ is finite, then its topological density is $\#(\frak A)$;  if
+$\frak A$ is infinite, its topological density is equal to its Maharam
+type $\tau(\frak A)$.
+
+(b) Let $\frak A^f$ be the set of elements of $\frak A$ with
+finite measure, with its strong measure-algebra
+topology\cmmnt{ (323Ad)}.   Then the
+topological density of $\frak A^f$ is $\#(\frak A^f)=\#(\frak A)$ if
+$\frak A$
+is finite, and $\max(c(\frak A),\tau(\frak A))$ if $\frak A$ is infinite.
+
+\proof{{\bf (a)(i)}\grheada\ Suppose that $\frak B$ is topologically dense.
+Let $\frak C$ be the order-closed subalgebra
+of $\frak A$ generated by $\frak B$.
+If $a\in\frak A^f$ and $c\in\frak A$,
+there is a $b\in\frak C$ such that $b\Bcap a=c\Bcap a$.   \Prf\ For each
+$n\in\Bbb N$, there is an
+$a_n\in\frak B$ such that $\bar\mu(a\Bcap(a_n\Bsymmdiff c))\le 2^{-n}$.
+Set $b=\inf_{n\in\Bbb N}\sup_{m\ge n}a_m\in\frak C$;  then
+$b\cap a=c\Bcap a$ (apply 323F to $\sequencen{a\Bcap a_n}$).\ \Qed
+
+It follows that $\frak A^f\subseteq\frak C$.   \Prf\ If $c\in\frak A^f$,
+then whenever $c\Bsubseteq a\in\frak A^f$ there is a $b_a\in\frak C$
+such that $b_a\Bcap a=c$.   Now (because $\bar\mu$ is semi-finite)
+$c=\inf\{b_a:c\Bsubseteq a\in\frak A^f\}\in\frak C$.\ \Qed
+
+Finally, again because $\bar\mu$ is semi-finite,
+
+\Centerline{$c=\sup\{a:a\in\frak A^f,\,a\Bsubseteq c\}\in\frak C$}
+
+\noindent for every $c\in\frak A$, and $\frak A=\frak C$.  Thus
+$\frak B\,\,\tau$-generates $\frak A$.
+
+\medskip
+
+\qquad\grheadb\ Suppose that $\frak B\,\,\tau$-generates $\frak A$.
+Then the topological closure of $\frak B$ is order-closed (323D(c-i)) and
+a subalgebra (323B), so must be $\frak A$, and $\frak B$ is topologically
+dense.
+
+\medskip
+
+\quad{\bf (ii)}\grheada\
+If $\frak A$ is finite, this is trivial, just because
+the measure-algebra topology is Hausdorff (323Ga).   So let us
+henceforth suppose that $\frak A$ is infinite, so that both
+$\tau(\frak A)$ and the topological density $d_{\frak T}(\frak A)$ of
+$\frak A$ are infinite.
+
+\medskip
+
+\qquad\grheadb\
+Let $A\subseteq\frak A$ be a set with cardinal $\tau(\frak A)$
+which $\tau$-generates $\frak A$, and let $\frak B$ be the subalgebra of
+$\frak A$ generated by $A$.   Then
+$\#(\frak B)=\#(A)=\tau(\frak A)$ (331Gc), and
+$\frak B$ is topologically dense in $\frak A$, by (i);  so
+$d_{\frak T}(\frak A)\le\tau(\frak A)$.
+
+\medskip
+
+\qquad\grheadc\ Let $A\subseteq\frak A$ be a topologically dense set
+with cardinal $d_{\frak T}(\frak A)$, and $\frak B$ the subalgebra of
+$\frak A$ generated by $A$.   Then $\frak B$ is topologically dense, so it
+$\tau$-generates $\frak A$, and
+
+\Centerline{$\tau(\frak A)\le\#(\frak B)=\#(A)=d_{\frak T}(\frak A)$;}
+
+\noindent with ($\beta$), this means that we have equality, as claimed.
+
+\medskip
+
+{\bf (b)(i)} The case of finite $\frak A$ is again trivial;  suppose that
+$\frak A$ is infinite.   Let $\familyiI{a_i}$ be a partition of unity in
+$\frak A$ consisting of non-zero elements of finite measure.
+
+\medskip
+
+\quad{\bf (ii)} The topological density $d_{\text{top}}(\frak A^f)$ 
+is at most $\max(c(\frak A),\tau(\frak A))$.
+\Prf\ For each $i$, the topological density of $\frak A_{a_i}$, with its
+measure-algebra topology, is at most
+$\max(\omega,\tau(\frak A_{a_i}))\le\tau(\frak A)$ ((a) above and 514Ed);
+let $B_i\subseteq\frak A_{a_i}$ be a dense subset of this size or less.   
+Set $B=\bigcup_{i\in I}B_i$, $D=\{\sup B':B'\in[B]^{<\omega}\}$.
+Then the metric closure $\overline{D}$ of $D$ in $\frak A^f$ is closed
+under $\Bcup$ and includes $\frak A_{a_i}$ for every $i$.   If now
+$a\in\frak A^f$, $a=\sup_{i\in I}a\Bcap a_i\in\overline{D}$.   So
+
+\Centerline{$d_{\text{top}}(\frak A^f)\le\#(D)
+\le\max(\omega,\#(I),\tau(\frak A))
+\le\max(c(\frak A),\tau(\frak A))$.  \Qed}
+
+\medskip
+
+\quad{\bf (iii)} $c(\frak A)\le d_{\text{top}}(\frak A^f)$.   \Prf\ Let
+$\family{j}{J}{b_j}$
+be any disjoint family in $\frak A^+$.
+For each $j$, let $b_j'\Bsubseteq b_j$ be a non-zero element of non-zero
+finite measure.   Set
+$G_j=\{a:a\in\frak A^f$, $\bar\mu(a\Bsymmdiff b'_j)<\bar\mu b'_j\}$ for
+$j\in J$.   Then $\family{j}{J}{G_j}$ is a disjoint family of non-empty
+open sets in $\frak A^f$, so $\#(J)\le d_{\text{top}}(\frak A^f)$ (5A4Ba).   As
+$\family{j}{J}{b_j}$ is arbitrary, 
+$c(\frak A)\le d_{\text{top}}(\frak A^f)$.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} $\tau(\frak A)\le d_{\text{top}}(\frak A^f)$.   \Prf\
+Let $A\subseteq\frak A^f$ be a dense set of size 
+$d_{\text{top}}(\frak A^f)$.  Let $\frak B$ be the order-closed
+subalgebra of $\frak A$ generated by $B=A\cup\{a_i:i\in I\}$.   For any
+$i\in I$, set
+$A_i=\{a\Bcap a_i:a\in A\}$.   Now $A_i$ is topologically dense in
+$\frak A_{a_i}$ (use 3A3Eb), so the order-closed subalgebra of
+$\frak A_{a_i}$ it
+generates is the whole of $\frak A_{a_i}$ (323H);  by 314H,
+$\frak A_{a_i}=\{b\Bcap a_i:b\in\frak B\}$.   As
+$a_i\in A\subseteq\frak B$, $\frak B$ includes $\frak A_{a_i}$.   As
+$\sup_{i\in I}a_i=1$, $\frak B=\frak A$.   Thus
+
+\Centerline{$\tau(\frak A)\le\#(B)
+\le\max(\omega,\#(I),d_{\text{top}}(\frak A^f))
+=d_{\text{top}}(\frak A^f)$}
+
+\noindent (using (iii) for the last equality).\ \Qed
+
+\medskip
+
+\quad{\bf (v)} Putting these together, we have the result.
+}%end of proof of 521E
+
+\leader{521F}{Proposition} Let $(X,\Sigma,\mu)$ be a measure space,
+$A$ a subset of $X$ and $\mu_A$ the subspace measure on $A$.
+
+(a) $\Cal N(\mu_A)\prT\Cal N(\mu)$, so
+$\add\Cal N(\mu_A)\ge\add\Cal N(\mu)$ and
+$\cf\Cal N(\mu_A)\le\cf\Cal N(\mu)$.
+
+(b) $(A,\in,\penalty-100\Cal N(\mu_A))\prGT(X,\in,\Cal N(\mu))$, so
+$\non\Cal N(\mu_A)\ge\non\Cal N(\mu)$ and
+$\cov\Cal N(\mu_A)\le\cov\Cal N(\mu)$.
+
+(c) $\add\mu_A\ge\add\mu$.
+
+(d) $\shr\Cal N(\mu_A)\le\shr\Cal N(\mu)$
+and $\shr^+\Cal N(\mu_A)\le\shr^+\Cal N(\mu)$.
+
+(e)\dvAnew{2014} If either $A\in\Sigma$ or $(X,\Sigma,\mu)$
+has locally determined negligible sets, $\pi(\mu_A)\le\pi(\mu)$.
+
+(f)\dvAnew{2014} If $\mu_A$ is semi-finite, then
+$\tau(\mu_A)\le\tau(\mu)$.
+
+\proof{{\bf (a)}
+Because $\Cal N(\mu_A)=\Cal PA\cap\Cal N(\mu)$ (214Cb),
+the embedding $\Cal N(\mu_A)\embedsinto\Cal N(\mu)$ is a
+Tukey function, and $\Cal N(\mu_A)\prT\Cal N(\mu)$.
+By 513Ee, $\add\Cal N(\mu_A)\ge\add\Cal N(\mu)$ and
+$\cf\Cal N(\mu_A)\le\cf\Cal N(\mu)$.
+
+\medskip
+
+{\bf (b)} Next, setting $\phi(x)=x$ for $x\in A$ and $\psi(F)=F\cap A$ for
+$F\in\Cal N(\mu)$, $(\phi,\psi)$ witnesses that
+$(A,\in,\Cal N(\mu_A))\prGT(X,\in,\Cal N(\mu))$.
+By 512D and 512Ed,
+
+\Centerline{$\non\Cal N(\mu_A)=\add(A,\in,\Cal N(\mu_A))
+\ge\add(X,\in,\Cal N(\mu))=\non\Cal N(\mu)$,}
+
+\Centerline{$\cov\Cal N(\mu_A)=\cov(A,\in,\Cal N(\mu_A))
+\le\cov(X,\in,\Cal N(\mu))=\cov\Cal N(\mu)$.}
+
+\medskip
+
+{\bf (c)} If $\ofamily{\xi}{\kappa}{F_{\xi}}$ is a disjoint family in
+$\Sigma_A=\dom\mu_A$, where $\kappa<\add\mu$, then for each $\xi<\kappa$ we
+have an $E_{\xi}\in\Sigma$ such that $F_{\xi}=A\cap E_{\xi}$ and
+$\mu_AF_{\xi}=\mu E_{\xi}$ (214Ca).   Set
+$E'_{\xi}=E_{\xi}\setminus\bigcup_{\eta<\xi}E_{\eta}$ for $\xi<\kappa$;
+then $E'_{\xi}\in\Sigma$ for each $\xi$, and
+$\ofamily{\xi}{\kappa}{E'_{\xi}}$ is disjoint.   Set
+$E=\bigcup_{\xi<\kappa}E'_{\xi}=\bigcup_{\xi<\kappa}E_{\xi}$ and
+$F=A\cap E=\bigcup_{\xi<\kappa}F_{\xi}$.   Then
+
+\Centerline{$\sum_{\xi<\kappa}\mu_AF_{\xi}
+\le\mu_AF
+\le\mu E
+=\sum_{\xi<\kappa}\mu E'_{\xi}
+\le\sum_{\xi<\kappa}\mu E_{\xi}
+=\sum_{\xi<\kappa}\mu_AF_{\xi}$,}
+
+\noindent and we have equality.   As
+$\ofamily{\xi}{\kappa}{F_{\xi}}$ is arbitrary, $\add\mu_A\ge\add\mu$.
+
+\medskip
+
+{\bf (d)}
+If $B\in\Cal PA\setminus\Cal N(\mu_A)$, there is a $C\subseteq B$ such that
+$C\notin\Cal N(\mu)$ and $\#(C)\le\shr\Cal N(\mu)$ (resp.\
+$\#(C)<\shr^+\Cal N(\mu))$;  now
+$C\notin\Cal N(\mu_A)$;  as $B$ is arbitrary,
+$\shr\Cal N(\mu_A)\le\shr\Cal N(\mu)$ (resp.\
+$\shr^+\Cal N(\mu_A)\le\shr^+\Cal N(\mu)$).
+
+\medskip
+
+{\bf (e)} Let $\Cal H\subseteq\Sigma\setminus\Cal N(\mu)$ be a coinitial
+set of size $\pi(\mu)$.   Set
+$\Cal G=\{H\cap A:H\in\Cal H\}\setminus\Cal N(\mu)$.   Then
+$\mu_AG$ is defined and non-zero for every $G\in\Cal G$.
+Now $\Cal G$ is coinitial with $\dom\mu_A\setminus\Cal N(\mu_A)$.
+\Prf\ If
+$\mu_AB>0$, there is an $E\in\Sigma$ such that $B=E\cap A$.   If
+$A\in\Sigma$, then $B\in\Sigma$ and there is an $H\in\Cal H$ such that
+$H\subseteq B$, while of course $H\in\Cal G$.   If $(X,\Sigma,\mu)$ has
+locally determined negligible sets, then, as in the proof of 521Dc,
+there is a non-negligible set $F\in\Sigma$ which is a measurable envelope
+of a subset of $B$.   Now there is an $H\in\Cal H$ included in
+$F\cap E$, in which case $H\cap A$ is included in $B$
+and belongs to $\Cal G$.\ \QeD\   So
+
+\Centerline{$\pi(\mu_A)\le\#(\Cal G)\le\#(\Cal H)=\pi(\mu)$.}
+
+\medskip
+
+{\bf (f)} Writing $\frak A$, $\frak A_A$ for the measure algebras of
+$\mu$ and $\mu_A$, we have a Boolean homomorphism
+$\pi:\frak A\to\frak A_A$ defined by saying that
+$\pi E^{\ssbullet}=(F\cap A)^{\ssbullet}$ for every $E\in\Sigma$.
+(The point is just that $F\cap A\in\Cal N(\mu_A)$ whenever
+$F\in\Cal N(\mu)$.)   Now $\pi$ is order-continuous.   \Prf\ Suppose that
+$C\subseteq\frak A$ is non-empty and downwards-directed and
+$\inf C=0$ in $\frak A$.   \Quer\ If
+$b\in\frak A_A$ is a non-zero lower bound of $\pi[C]$, then, because
+$\nu_A$ is semi-finite, there is a $G\in\dom\mu_A$ such that
+$0<\mu_AG<\infty$ and $G^{\ssbullet}\Bsubseteq b$.   Let $E\in\Sigma$ be
+such that $G=E\cap A$ and $\mu E=\mu_AG$ (214Ca).   Then $E^{\ssbullet}$
+cannot be a lower bound of $C$;  let $a\in C$ be such that
+$E^{\ssbullet}\Bsetminus a\ne 0$.   In this case, there is an $F\in\Sigma$
+such that $F\subseteq E$ and
+$F^{\ssbullet}=E^{\ssbullet}\Bsetminus a$, so that
+$\pi F^{\ssbullet}$ is disjoint from $\pi a\Bsupseteq b$, and
+$F\cap G=(F\cap A)\cap G$ must be negligible.   We know that $\mu F>0$,
+so $\mu(E\setminus F)<\mu E$;  but also $G\setminus(E\setminus F)$ is
+negligible, so
+
+\Centerline{$\mu_AG=\mu^*G\le\mu(E\setminus F)<\mu E=\mu_AG$.  \Bang}
+
+\noindent It follows that $\inf\pi[C]=0$ in $\frak A_A$;  as
+$C$ is arbitrary, $\pi$ is order-continuous.\ \Qed
+
+Now let $B\subseteq\frak A$ be such that $B\,\,\tau$-generates $\frak A$
+and $\#(B)=\tau(\frak A)$.   Writing $\frak B$ for the
+order-closed subalgebra of $\frak A_A$ generated by $\pi[B]$,
+we see that $\pi^{-1}[\frak B]$ is an order-closed subalgebra of
+$\frak A$ including $B$, so must be the whole of $\frak A$, and
+$\frak A_A=\pi[\frak A]=\frak B$.   Accordingly
+
+\Centerline{$\tau(\mu_A)=\tau(\frak A_A)\le\#(\pi[B])
+\le\#(B)=\tau(\frak A)=\tau(\mu)$,}
+
+\noindent as claimed.
+}%end of proof of 521F
+
+\leader{521G}{Proposition} Let $\familyiI{(X_i,\Sigma_i,\mu_i)}$ be a
+non-empty
+family of measure spaces with direct sum $(X,\Sigma,\mu)$.   Then
+
+\Centerline{$\add\Cal N(\mu)=\min_{i\in I}\add\Cal N(\mu_i)$,
+\quad$\add\mu=\min_{i\in I}\add\mu_i$,}
+
+\Centerline{$\cov\Cal N(\mu)=\sup_{i\in I}\cov\Cal N(\mu_i)$,
+\quad$\non\Cal N(\mu)=\min_{i\in I}\non\Cal N(\mu_i)$,}
+
+\Centerline{$\shr\Cal N(\mu)=\sup_{i\in I}\shr\Cal N(\mu_i)$,
+\quad$\shr^+\Cal N(\mu)=\sup_{i\in I}\shr^+\Cal N(\mu_i)$}
+
+\noindent and $\pi(\mu)$ is the cardinal sum
+$\sum_{i\in I}\pi(\mu_i)$\dvAnew{2014}.
+If $I$ is finite, then
+
+\Centerline{$\cf\Cal N(\mu)=\max_{i\in I}\cf\Cal N(\mu_i)$.}
+
+\proof{ Concerning each of
+$\add\Cal N(\mu)$, $\add\mu$, $\cov\Cal N(\mu)$,
+$\non\Cal N(\mu)$, $\shr\Cal N(\mu)$ and $\shr^+\Cal N(\mu)$,
+521F provides an inequality in one direction.   The reverse
+inequalities are equally straightforward, especially if we note that
+$\Cal N(\mu)\cong\prod_{i\in I}\Cal N(\mu_i)$, so that
+512Hc is relevant.
+
+As for $\pi(\mu)$, if for each $i\in I$ we choose a coinitial set
+$\Cal H_i$ of $\Sigma_i\setminus\Cal N(\mu_i)$ of size $\pi(\mu_i)$, then
+
+\Centerline{$\Cal H=\{H\times\{i\}:i\in I$, $H\in\Cal H_i\}$}
+
+\noindent is coinitial with $\Sigma\setminus\Cal N(\mu)$ and witnesses that
+$\pi(\mu)\le\sum_{i\in I}\pi(\mu_i)$.   (As in 214L, I am thinking of
+$X$ as $\bigcup_{i\in I}X_i\times\{i\}$.)   Conversely, if $\Cal H$ is
+coinitial with $\Sigma\setminus\Cal N(\mu)$ and for each $i\in I$ we set
+$\Cal H_i=\{H:H\times\{i\}\in\Cal H\}$, we shall have $\Cal H_i$ coinitial
+with $\Sigma_i\setminus\Cal N(\mu_i)$, so that
+
+\Centerline{$\sum_{i\in I}\pi(\mu_i)\le\sum_{i\in I}\#(\Cal H_i)
+\le\#(\Cal H)=\pi(\mu)$}
+
+\noindent and $\pi(\mu)=\sum_{i\in I}\pi(\mu_i)$.
+}%end of proof of 521G
+
+\leader{521H}{Proposition} Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+measure spaces, and $f:X\to Y$ an \imp\ function.
+
+(a)(i)
+$(X,\in,\Cal N(\mu))\discretionary{}{}{}\prGT(Y,\in,\Cal N(\nu))$, so
+$\non\Cal N(\mu)\ge\non\Cal N(\nu)$ and
+$\cov\Cal N(\mu)\le\cov\Cal N(\nu)$.
+
+\quad(ii)\dvAnew{2014} If there is a topology on $Y$ such that $\nu$ is a
+topological measure
+inner regular with respect to the closed sets, then $\pi(\nu)\le\pi(\mu)$.
+
+\quad(iii)\dvAnew{2014} If $\nu$ is $\sigma$-finite, then
+$\tau(\nu)\le\tau(\mu)$.
+
+(b) If $\nu$ is the image measure $\mu f^{-1}$, then
+$\add\nu\ge\add\mu$.   If, moreover, $\mu$ is complete,
+$\Cal N(\nu)\prT\Cal N(\mu)$, so $\add\Cal N(\mu)\le\add\Cal N(\nu)$ and
+$\cf\Cal N(\mu)\ge\cf\Cal N(\nu)$;  also
+$\shr\Cal N(\mu)\ge\shr\Cal N(\nu)$
+and $\shr^+\Cal N(\mu)\ge\shr^+\Cal N(\nu)$.
+
+\proof{{\bf (a)(i)} Set $\psi(F)=f^{-1}[F]$ for
+$F\in\Cal N(\nu)$.   Then $(f,\psi)$ is a Galois-Tukey connection from
+$(X,\in,\Cal N(\mu))$ to $(Y,\in,\Cal N(\nu))$, so
+
+\Centerline{$\cov\Cal N(\mu)=\cov(X,\in,\Cal N(\mu))
+\le\cov(Y,\in,\Cal N(\nu))=\cov\Cal N(\nu)$,}
+
+\Centerline{$\non\Cal N(\mu)=\add(X,\in,\Cal N(\mu))
+\ge\add(Y,\in,\Cal N(\nu))=\non\Cal N(\nu)$}
+
+\noindent (512D, 512Ed again).
+
+\medskip
+
+\quad{\bf (ii)} Let $\Cal H$ be a coinitial subset of
+$\Sigma\setminus\Cal N(\mu)$ of size $\pi(\mu)$.   Set
+$\Cal G=\{\overline{f[H]}:H\in\Cal H\}$.   Because $\nu$ is a topological
+measure, $\Cal G\subseteq\Tau$;  and if $H\in\Cal H$, then
+
+\Centerline{$\nu\overline{f[H]}=\mu f^{-1}[\overline{f[H]}]
+\ge\mu H>0$,}
+
+\noindent so $\Cal G\subseteq\Tau\setminus\Cal N(\nu)$.   If
+$F\in\Tau\setminus\Cal N(\nu)$, there is a closed set $F'\subseteq F$ such
+that $0<\nu F'=\mu f^{-1}[F']$;  there is an $H\in\Cal H$ such that
+$H\subseteq f^{-1}[F']$;  now $G=\overline{f[H]}$ belongs to $\Cal G$ and
+is included in $F'\subseteq F$.   So $\Cal G$ is coinitial with
+$\Tau\setminus\Cal N(\nu)$ and
+
+\Centerline{$\pi(\nu)\le\#(\Cal G)\le\#(\Cal H)=\pi(\mu)$.}
+
+\medskip
+
+\quad{\bf (iii)} Let $(\frak A,\bar\mu)$ and $(\frak B,\bar\nu)$ be the
+measure algebras of $\mu$, $\nu$ respectively.   Then we have a
+sequentially order-continuous
+measure-preserving Boolean homomorphism $\pi:\frak B\to\frak A$ defined by
+setting $\pi F^{\ssbullet}=f^{-1}[F]^{\ssbullet}$ for every $F\in\dom\nu$
+(324M).   If $\frak A$ is finite then $\frak B$ must be finite with
+$\#(\frak B)\le\#(\frak A)$, and consequently
+$\tau(\frak B)\le\tau(\frak A)$ (331Xc, or otherwise).
+So let us suppose that $\frak A$ is infinite.
+
+Writing $\frak A^f$, $\frak B^f$ for the respective ideals of
+elements of finite measure, $\pi\restr\frak B^f$ is a function from
+$\frak B^f$ to $\frak A^f$ which is an isometry for the measure metrics on
+$\frak B^f$ and $\frak A^f$.   So the topological density 
+$d_{\text{top}}(\frak B^f)$ is
+equal to $d_{\text{top}}(\pi[\frak B^f])$ and less than or equal to 
+$d_{\text{top}}(\frak A^f)$ (5A4B(h-ii)).
+
+\woddheader{521H}{0}{0}{0}{72pt}
+Observe next that $(\frak B,\bar\nu)$ is $\sigma$-finite because $\nu$ is,
+and that $(\frak A,\bar\mu)$ therefore also is (324Kd).   So we get
+
+$$\eqalignno{\tau(\nu)
+&=\tau(\frak B)
+\le\max(\omega,c(\frak B),\tau(\frak B))
+=\max(\omega,d_{\text{top}}(\frak B^f))\cr
+\displaycause{521Eb}
+&\le\max(\omega,d_{\text{top}}(\frak A^f))
+=\max(\omega,c(\frak A),\tau(\frak A))
+=\tau(\frak A)
+=\tau(\mu),\cr}$$
+
+\noindent as required.
+
+\medskip
+
+{\bf (b)} If $\ofamily{\xi}{\kappa}{F_{\xi}}$ is a disjoint family in
+$\Tau$, where $\kappa<\add\mu$, then
+$\ofamily{\xi}{\kappa}{f^{-1}[F_{\xi}]}$ is a disjoint family in $\Sigma$,
+so
+
+$$\nu(\bigcup_{\xi<\kappa}F_{\xi})
+=\mu f^{-1}[\bigcup_{\xi<\kappa}F_{\xi}]
+=\mu(\bigcup_{\xi<\kappa}f^{-1}[F_{\xi}]
+=\sum_{\xi<\kappa}\mu f^{-1}[F_{\xi}]
+=\sum_{\xi<\kappa}\nu F_{\xi}.$$
+
+\noindent
+As $\ofamily{\xi}{\kappa}{F_{\xi}}$ is arbitrary, $\add\nu\ge\add\mu$.
+
+Now suppose that $\mu$ is complete.   In this case, $F\in\Tau$
+whenever $F\subseteq Y$ and $f^{-1}[F]\in\Cal N(\mu)$, so that
+$\Cal N(\nu)$ is precisely
+$\{F:F\subseteq Y,\,f^{-1}[F]\in\Cal N(\mu)\}$.   It is now easy to
+check that $F\mapsto f^{-1}[F]:\Cal N(\nu)\to\Cal N(\mu)$ is a Tukey
+function.   So $\add\Cal N(\nu)\ge\add\Cal N(\mu)$
+and $\cf\Cal N(\nu)\le\cf\Cal N(\mu)$, by 513Ee again.
+
+Take any non-negligible $A\subseteq Y$.   Then
+$f^{-1}[A]\notin\Cal N(\mu)$, so there is a set $B\subseteq f^{-1}[A]$
+such that $\#(B)\le\shr\Cal N(\mu)$ and $B\notin\Cal N(\mu)$.   In this
+case, $f[B]\subseteq A$, $f[B]\notin\Cal N(\nu)$ and
+$\#(f[B])\le\shr\Cal N(\mu)$.   As $A$ is arbitrary,
+$\shr\Cal N(\nu)\le\shr\Cal N(\mu)$.
+The same argument, with $<$ instead of $\le$ at appropriate points, shows
+that $\shr^+\Cal N(\nu)\le\shr^+\Cal N(\mu)$.
+}%end of proof of 521H
+
+\leader{521I}{Corollary} Let $(X,\Sigma,\mu)$ be an atomless strictly
+localizable measure space.   Then $\non\Cal N(\mu)\ge\non\Cal N$ and
+$\cov\Cal N(\mu)\le\cov\Cal N$, where $\Cal N$ is the null ideal of
+Lebesgue measure on $\Bbb R$.
+
+\proof{{\bf (a)} If $\mu X=0$ this is trivial.
+
+\medskip
+
+{\bf (b)} If $0<\mu X<\infty$, let $\nu$ be the completion of the
+normalized measure
+$\Bover1{\mu X}\mu$.   Then $\nu$ is complete and atomless,
+so by 343Cb there is an \imp\ function from $(X,\nu)$ to
+$([0,1],\mu_1)$, where $\mu_1$ is Lebesgue measure on $[0,1]$.
+Also $\Cal N(\nu)=\Cal N(\mu)$.   By 521Ha,
+$\non\Cal N(\nu)\ge\non\Cal N(\mu_1)$ and
+$\cov\Cal N(\nu)\le\cov\Cal N(\mu_1)$.
+Now $([0,1],\Cal N(\mu_1))$ is isomorphic to
+$(\Bbb R,\Cal N)$.   \Prf\ Take a bijection $h:\Bbb R\to[0,1]$
+such that $h(x)=\bover12(1+\tanh x)$ for $x\in\Bbb R\setminus\Bbb Q$;  then
+$h$ is a suitable isomorphism.\ \QeD\
+So $\non\Cal N(\mu)=\non\Cal N(\nu)\ge\non\Cal N$ and
+$\cov\Cal N(\mu)\le\cov\Cal N$.
+
+\medskip
+
+{\bf (c)} If $X$ has infinite measure, let $\familyiI{X_i}$ be a
+decomposition of $X$ into sets of finite measure.   For each $i\in I$
+let $\mu_i$ be the subspace measure on $X_i$.
+Then every $\mu_i$ is atomless, so, putting (b) and 521G together,
+
+\Centerline{$\non\Cal N(\mu)
+=\min_{i\in I}\non\Cal N(\mu_i)\ge\non\Cal N$,}
+
+\Centerline{$\cov\Cal N(\mu)
+=\sup_{i\in I}\cov\Cal N(\mu_i)\le\cov\Cal N$.}
+}%end of proof of 521I
+
+\leader{521J}{}\cmmnt{ For product spaces the situation is more
+complicated, because the product measure introduces `new' negligible sets
+which are not directly definable in terms of the null ideals of the
+factors.   In the next three sections, however, we shall find out
+quite a lot about the cardinal functions of Radon measures,
+and this information, when it comes, can be used to give results about
+general products of probability measures.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $\familyiI{(X_i,\Sigma_i,\mu_i)}$ be a
+non-empty family of probability spaces with product $(X,\Sigma,\mu)$.
+
+(a)
+
+\Centerline{$\non\Cal N(\mu)\ge\sup_{i\in I}\non\Cal N(\mu_i)$,
+\quad$\cov\Cal N(\mu)\le\min_{i\in I}\cov\Cal N(\mu_i)$,}
+
+\Centerline{$\add\mu=\add\Cal N(\mu)\le\min_{i\in I}\add\Cal N(\mu_i)$,
+\quad$\cf\Cal N(\mu)\ge\sup_{i\in I}\cf\Cal N(\mu_i)$,}
+
+\Centerline{$\shr\Cal N(\mu)\ge\sup_{i\in I}\shr\Cal N(\mu_i)$,
+\quad$\shr^+\Cal N(\mu)\ge\sup_{i\in I}\shr^+\Cal N(\mu_i)$,}
+
+\Centerline{$\pi(\mu)\ge\sup_{i\in I}\pi(\mu_i)$\dvAnew{2014}.}
+
+(b) Set $\kappa=\#(\{i:i\in I$, $\Sigma_i\ne\{\emptyset,X_i\}\}$.
+Then $[\kappa]^{\le\omega}\prT\Cal N(\mu)$;  consequently
+$\add\mu=\add\Cal N(\mu)$ is $\omega_1$ if $\kappa$ is uncountable,
+while $\cf\Cal N(\mu)$ is at least $\cff[\kappa]^{\le\omega}$.
+
+(c) Now suppose that $I$ is countable and that
+we have for each $i\in I$ a probability space
+$(Y_i,\Tau_i,\nu_i)$ and an \imp\ function
+$f_i:X_i\to Y_i$ which represents an isomorphism of the measure algebras of
+$\mu_i$ and $\nu_i$.   Let $(Y,\Tau,\nu)$ be the product of
+$\familyiI{(Y_i,\Tau_i,\nu_i)}$.   Then
+
+\Centerline{$\Cal N(\mu)\prT\Cal N(\nu)\times\prod_{i\in I}\Cal N(\mu_i)$.}
+
+\noindent Consequently
+
+\Centerline{$\add\Cal N(\mu)
+\ge\min(\add\Cal N(\nu),\min_{i\in I}\add\Cal N(\mu_i))$,}
+
+\noindent and if $I$ is finite
+
+\Centerline{$\cf\Cal N(\mu)
+\le\max(\cf\Cal N(\nu),\max_{i\in I}\cf\Cal N(\mu_i))$.}
+
+(d) If $I$ is finite, then
+
+\Centerline{$\non\Cal N(\mu)=\max_{i\in I}\non\Cal N(\mu_i)$,
+\quad$\cov\Cal N(\mu)=\min_{i\in I}\cov\Cal N(\mu_i)$.}
+
+\proof{{\bf (a)} Note that $\add\mu=\add\Cal N(\mu)$ by 521Ad.   Now
+with one exception the inequalities are immediate if we
+apply 521H to the canonical maps from $X$ to $X_i$.   The odd one out is
+the last, because we do not have a simple general result concerning the
+$\pi$-weight of an image measure.   But in the present case we can argue as
+follows.   Let $\Cal H\subseteq\Sigma\setminus\Cal N(\mu)$ be a coinitial
+set of size $\pi(\mu)$, and take $i\in I$.   Then we can identify
+$(X,\Sigma,\mu)$ with $(X',\Sigma',\mu')\times(X_i,\Sigma_i,\mu_i)$
+where $(X',\Sigma',\mu')$ is the product of the family
+$\langle(X_j,\Sigma_j,\mu_j)\rangle_{j\in I,j\ne i}$ (254N).
+If $H\in\Cal H$, $\mu(X\setminus H)
+=\int\mu_i^*(X_i\setminus H[\{x'\}])\mu'(dx')$ (252D) is less than
+$1$, so there is an $x'_H\in X'$ such that
+$\mu_i^*(X_i\setminus H[\{x'_H\}])<1$, $(\mu_i)_*H[\{x'_H\}]>0$
+and there is a
+$G_H\in\Sigma_i\setminus\Cal N(\mu_i)$ such that
+$G_H\subseteq H[\{x'_H\}]$.   Set $\Cal G=\{G_H:H\in\Cal H\}$.   If
+$\mu_iF>0$, then $\mu(X'\times F)>0$ and there is
+an $H\in\Cal H$ included in $X'\times F$;  in which case
+$G_H\subseteq H[\{x'_H\}]\subseteq F$.   So $\Cal G$ is coinitial with
+$\Sigma_i\setminus\Cal N(\mu_i)$ and
+
+\Centerline{$\pi(\mu_i)\le\#(\Cal G)\le\#(\Cal H)\le\pi(\mu)$.}
+
+\noindent As $i$ is arbitrary, $\sup_{i\in I}\pi(\mu_i)\le\pi(\mu)$, as
+claimed.
+
+\medskip
+
+{\bf (b)(i)} If $\kappa\le\omega$ then the constant function with value
+$\emptyset$ is a Tukey function from $[\kappa]^{\le\omega}$ to
+$\Cal N(\mu)$.   Otherwise, set
+$J=\{i:i\in I$, $\Sigma_i\ne\{\emptyset,X_i\}\}$ and for $i\in J$ choose
+a non-empty $C_i\in\Sigma_i$ such that $\mu_iC_i\le\bover12$.   Index $J$
+as $\langle i_{\xi n}\rangle_{\xi<\kappa,n\in\Bbb N}$ and for $\xi<\kappa$
+set $E_{\xi}=\{x:x(i_{\xi n})\in C_{i_{\xi n}}$ for every $n\in\Bbb N\}$,
+so that $\mu E_{\xi}=\prod_{n\in\Bbb N}\mu_{i_{\xi n}}C_{i_{\xi n}}=0$.
+Define $\phi:[\kappa]^{\le\omega}\to\Cal N(\mu)$ by setting
+$\phi K=\bigcup_{\xi\in K}E_{\xi}$ for countable $K\subseteq\kappa$.
+Then $\phi$ is a Tukey function.   \Prf\ If $E\in\Cal N(\mu)$, there is a
+negligible $E'\supseteq E$ which is determined by a countable set $I'$ of
+coordinates (254Oc).   Set
+$L=\{\xi:\xi<\kappa$, $i_{\xi n}\in I'$ for some $n\in\Bbb N\}$;  then $L$
+is countable.   If $\xi<\kappa$ and $E_{\xi}\subseteq E'$, $E_{\xi}$ is
+determined by coordinates in $\{i_{\xi n}:n\in\Bbb N\}$;  as neither
+$E_{\xi}$ nor $X\setminus E'$ is empty, this must meet $I'$, and
+$\xi\in L$.   So $\{K:K\in[\kappa]^{\le\omega}$, $\phi K\subseteq E\}$ is
+bounded above by $L\in[\kappa]^{\le\omega}$.   As $E$ is arbitrary, $\phi$
+is a Tukey function.\ \QeD\   Accordingly
+$[\kappa]^{\le\omega}\prT\Cal N(\mu)$.
+
+\medskip
+
+\quad{\bf (ii)} It follows that
+$\add\Cal N(\mu)\le\add[\kappa]^{\le\omega}\le\omega_1$ if $\kappa$ is
+uncountable, and that $\cf\Cal N(\mu)\ge\cff[\kappa]^{\le\omega}$.
+
+\medskip
+
+{\bf (c)(i)} Recall that any \imp\ function $f$ between measure spaces
+induces a measure-preserving Boolean homomorphism
+$F^{\ssbullet}\mapsto(f^{-1}[F])^{\ssbullet}$ between the measure algebras
+(324M).
+For $i\in I$ and $C\in\Sigma_i$ choose $\psi_i(C)\in\Tau_i$ such that
+$(f_i^{-1}[\psi_i(C)])^{\ssbullet}=C^{\ssbullet}$ in the measure algebra of
+$\mu_i$, that is, $C\symmdiff f_i^{-1}[\psi_i(C)]\in\Cal N(\mu_i)$.
+Next, for $E\in\Cal N(\mu)$ and $n\in\Bbb N$, choose a family
+$\langle C_{Enmi}\rangle_{m\in\Bbb N,i\in I}$ such that
+$C_{Enmi}\in\Sigma_i$ for every $m\in\Bbb N$ and $i\in I$,
+$E\subseteq\bigcup_{m\in\Bbb N}\prod_{i\in I}C_{Enmi}$, and
+$\sum_{m\in\Bbb N}\prod_{i\in I}\mu_iC_{Enmi}\le 2^{-n}$;  set
+
+\Centerline{$\phi(E)
+=\bigl(\bigcap_{n\in\Bbb N}\bigcup_{m\in\Bbb N}
+   \prod_{i\in I}\psi_i(C_{Enmi}),
+\familyiI{\bigcup_{m,n\in\Bbb N}
+(C_{Enmi}\setminus f_i^{-1}[\psi_i(C_{Enmi})])}\bigr)$.}
+
+\noindent Because
+
+$$\eqalign{
+\nu(\bigcap_{n\in\Bbb N}\bigcup_{m\in\Bbb N}\prod_{i\in I}\psi_i(C_{Enmi}))
+&\le\inf_{n\in\Bbb N}\sum_{m\in\Bbb N}\prod_{i\in I}
+   \nu_i\psi_i(C_{Enmi})\cr
+&=\inf_{n\in\Bbb N}\sum_{m\in\Bbb N}\prod_{i\in I}
+   \mu_iC_{Enmi}
+=0,\cr}$$
+
+\noindent $\phi$ is a function from $\Cal N(\nu)$ to
+$\Cal N(\nu)\times\prod_{i\in I}\Cal N(\mu_i)$.
+
+Now $\phi$ is a Tukey function.   \Prf\ Suppose that $W\in\Cal N(\nu)$ and
+that $E_i\in\Cal N(\mu_i)$ for every $i\in I$.   Define $f:X\to Y$ by
+setting $f(x)=\familyiI{f_i(x(i))}$ for $x\in X$;
+then $f$ is \imp\ (254H).   So
+$V=f^{-1}[W]\cup\bigcup_{i\in I}\{x:x(i)\in E_i\}$ is negligible.   (This
+is where we need to know that $I$ is countable.)   Suppose that
+$E\in\Cal N(\mu)$ is such that
+$\phi(E)\le(W,\familyiI{E_i})$;  take $x\in E$ such that
+$x(i)\notin E_i$ for every $i\in I$, and $n\in\Bbb N$.   Then there is an
+$m\in\Bbb N$ such that $x\in\prod_{i\in I}C_{Enmi}$.   For each $i\in I$,
+
+\Centerline{$C_{Enmi}\setminus f_i^{-1}[\psi_i(C_{Enmi})]\subseteq E_i$,
+\quad$x(i)\in C_{Enmi}\setminus E_i$,}
+
+\noindent so $f_i(x(i))\in\psi_i(C_{Enmi})$;  thus
+$f(x)\in\prod_{i\in I}\psi_i(C_{Enmi})$.   As $n$ is arbitrary,
+
+\Centerline{$f(x)
+\in\bigcap_{n\in\Bbb N}\bigcup_{m\in\Bbb N}\prod_{i\in I}\psi_i(C_{Enmi})
+\subseteq W$}
+
+\noindent and $x\in V$.   As $x$ is arbitrary, $E\subseteq V$.   As
+$(W,\familyiI{E_i})$ is arbitrary, $\phi$ is a Tukey function.\ \Qed
+
+So $\Cal N(\mu)\prT\Cal N(\nu)\times\prod_{i\in I}\Cal N(\mu_i)$.
+
+\medskip
+
+\quad{\bf (ii)} Accordingly
+
+\Centerline{$\add\Cal N(\mu)
+\ge\add(\Cal N(\nu)\times\prod_{i\in I}\Cal N(\mu_i))
+=\min(\add\Cal N(\nu),\min_{i\in I}\add\Cal N(\mu_i))$}
+
+\noindent and
+
+\Centerline{$\cf\Cal N(\mu)
+\le\cf(\Cal N(\nu)\times\prod_{i\in I}\Cal N(\mu_i))
+=\max(\cf\Cal N(\nu),\max_{i\in I}\cf\Cal N(\mu_i))$}
+
+\noindent if $I$ is finite.
+
+\medskip
+
+{\bf (d)(i)} For each $i\in I$ let $A_i\subseteq X_i$ be a non-negligible
+set of size $\non\Cal N(\mu_i)$.   Then $A=\prod_{i\in I}A_i$ is not
+negligible (251Wm), while
+$\#(A)\le\max(\omega,\max_{i\in I}\non\Cal N(\mu_i))$.   If all the
+$\non\Cal N(\mu_i)$ are finite, then they are all equal to $1$, and $A$ is
+a singleton.   So we must in any case have
+$\#(A)=\max_{i\in I}\non\Cal N(\mu_i)$, and
+$\non\Cal N(\mu)\le\max_{i\in I}\non\Cal N(\mu_i)$.   By (a), we have
+equality.
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $I=\{0,1\}$, and that $\Cal E$ is a cover of
+$X=X_0\times X_1$ by negligible sets.   For each $E\in\Cal E$, set
+$C_E=\{x:x\in X_0$, $E[\{x\}]\notin\Cal N(\mu_1)\}$;  then $C_E$ is
+negligible.   If $\#(\Cal E)<\cov\Cal N(\mu_0)$, then there is an
+$x\in X_0\setminus\bigcup_{E\in\Cal E}C_E$;  in which case
+$\{E[\{x\}]:E\in\Cal E\}$ witnesses that $\cov\Cal N(\mu_1)\le\#(\Cal E)$.
+So $\#(\Cal E)$ must be at least
+$\min(\cov\Cal N(\mu_0),\cov\Cal N(\mu_1))$.   As $\Cal E$ is arbitrary,
+$\cov\Cal N(\mu)\ge\min(\cov\Cal N(\mu_0),\cov\Cal N(\mu_1))$.
+
+Now an induction on $\#(I)$ (using the associative law 254N) shows that
+$\cov\Cal N(\mu)\ge\min_{i\in I}\cov\Cal N(\mu_i)$ whenever $I$ is finite.
+Using (a) again, we have equality here also.
+}%end of proof of 521J
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The simplest applications of (c) here will be when
+the $\mu_i$ are \Mth, so that we can take the $\nu_i$ to be the usual
+measures on powers $\{0,1\}^{\kappa_i}$ of $\{0,1\}$, and $\nu$ will be
+isomorphic to the
+usual measure on $\{0,1\}^{\kappa}$ where $\kappa$ is the cardinal sum
+$\sum_{i\in I}\kappa_i$.   The cardinal functions of these measures are
+dealt with in \S523.   For non-homogeneous $\mu_i$ we shall still be able
+to arrange for the $\nu_i$ to be completion regular Radon measures on
+dyadic spaces, so that the product measure $\nu$ is again a Radon measure
+$Y$ (532F), and (once we have identified its measure algebra -- see 334E,
+334Ya) approachable by the methods of \S524.
+}%end of comment
+
+\leader{521K}{}\cmmnt{ I turn now to `perfect' and `compact' measure
+spaces.    (See \S451 for the basic theory of these.)
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a perfect
+semi-finite measure space which is not purely atomic.   Then
+
+\Centerline{$\add\Cal N(\mu)\le\add\Cal N$,
+\quad$\cf\Cal N(\mu)\ge\cf\Cal N$,}
+
+\Centerline{$\shr\Cal N(\mu)\ge\shr\Cal N$,
+\quad$\shr^+\Cal N(\mu)\ge\shr^+\Cal N$,
+\quad$\pi(\mu)\ge\pi(\mu_L)$\dvAnew{2014}}
+
+\noindent where $\Cal N$ is the null ideal of
+Lebesgue measure on $\Bbb R$ and $\mu_L$ is Lebesgue measure on $\Bbb R$.
+
+\proof{{\bf (a)} Suppose first that $\mu$ is a complete atomless
+probability measure.   Then there is a function $f:X\to[0,1]$ which is
+\imp\ for $\mu$ and Lebesgue measure $\mu_1$ on $[0,1]$ (343Cb again);
+and in fact
+$\mu_1$ is the image measure $\mu f^{-1}$.   \Prf\ By
+451O, $\mu f^{-1}$ is
+a Radon measure;  since it extends $\mu_1$ it must actually be equal to
+$\mu_1$, by 415H.\ \QeD\
+So $\add\Cal N(\mu)\le\add\Cal N(\mu_1)$,
+$\cf\Cal N(\mu)\ge\cf\Cal N(\mu_1)$,
+$\shr\Cal N(\mu)\ge\shr\Cal N(\mu_1)$,
+and $\shr^+\Cal N(\mu)\ge\shr^+\Cal N(\mu_1)$ and $\pi(\mu)\ge\pi(\mu_1)$,
+by 521H.
+As in the proof of 521I, $([0,1],\Cal N(\mu_1))$ is isomorphic to
+$(\Bbb R,\Cal N)$.   Of course $\mu_1$ is not isomorphic to $\mu_L$.
+But $\mu_L$ is isomorphic to a direct sum of countably many copies of
+$\mu_1$, so by 521G we know that $\pi(\mu_L)$ is the cardinal product
+$\omega\cdot\pi(\mu_1)$;  as $\pi(\mu_1)$ is surely infinite, this is
+$\pi(\mu_1)$ again.   So we have the result in the special case.
+
+\medskip
+
+{\bf (b)} Now suppose that $(X,\Sigma,\mu)$ is any semi-finite perfect
+measure space which is not purely atomic.   Then the completion
+$\hat\mu$ of $\mu$ is still a semi-finite perfect measure which is not
+purely atomic (212Gd, 451G(c-i)), and $\Cal N(\mu)=\Cal N(\hat\mu)$
+(212Eb).
+Because $\hat\mu$ is semi-finite and not purely atomic, there is a set
+$E\in\Sigma$ of non-zero finite measure such that the subspace measure
+$\hat\mu_E$ is atomless.   Set $\nu=\Bover1{\mu E}\hat\mu_E$, so that
+$\nu$ is an atomless complete perfect probability measure on $E$, while
+$\Cal N(\nu)=\Cal N(\mu_E)$.   Putting (a) together with 521F, we get
+
+\Centerline{$\add\Cal N(\mu)=\add\Cal N(\hat\mu)
+\le\add\Cal N(\hat\mu_E)=\add\Cal N(\nu)\le\add\Cal N$}
+
+\noindent and similarly for $\cf$, $\shr$ and $\shr^+$.
+}%end of proof of 521K
+
+\leader{521L}{Proposition} (a) Let $(X,\Sigma,\mu)$ be a strictly
+localizable measure space and $(Y,\Tau,\nu)$ a
+locally compact semi-finite
+measure space, and suppose that they have isomorphic measure algebras.
+Then $(X,\in,\Cal N(\mu))\prGT(Y,\in,\Cal N(\nu))$;  consequently
+$\cov\Cal N(\mu)\le\cov\Cal N(\nu)$ and
+$\non\Cal N(\nu)\le\non\Cal N(\mu)$.
+
+(b) Let $(X,\Sigma,\mu)$ be a \Mth\ compact
+probability space with Maharam type $\kappa$.   Then
+$\cov\Cal N(\mu)\penalty-100=\cov\Cal N_{\kappa}$
+and $\non\Cal N(\mu)=\non\Cal N_{\kappa}$, where $\Cal N_{\kappa}$ is the
+null ideal of the usual measure\cmmnt{ $\nu_{\kappa}$} on
+$\{0,1\}^{\kappa}$.
+
+(c) Let $(X,\Sigma,\mu)$ be a compact strictly localizable measure space
+with measure algebra $\frak A$.   Then
+
+\Centerline{$d(\frak A)=\min\{\#(A):A\subseteq X$ has full outer
+measure$\}$.}
+
+\proof{{\bf (a)} This follows immediately from 521Ha, because by 343B
+there is an \imp\ function from $X$ to $Y$.
+
+\medskip
+
+{\bf (b)} The point is that $\nu_{\kappa}$ is a compact measure
+(342Jd, 451Ja), so that we can apply (a) in both directions to see that
+$\cov\Cal N(\mu)=\cov\Cal N_{\kappa}$ and
+$\non\Cal N(\mu)=\non\Cal N_{\kappa}$.
+
+\medskip
+
+{\bf (c)} The case $\mu X=0$ is trivial;  suppose that $\mu X>0$.   Let
+$\Cal K$ be a compact class such that $\mu$ is inner regular with
+respect to $\Cal K$.
+
+\medskip
+
+\quad{\bf (i)} Suppose that $\ofamily{\xi}{d(\frak A)}{C_{\xi}}$ is a
+family of centered sets in $\frak A$ covering $\frak A^+$.
+For each $\xi<d(\frak A)$, set
+$\Cal K_{\xi}=\{K:K\in\Cal K\cap\Sigma$, $K^{\ssbullet}\in C_{\xi}\}$;
+then $\Cal K_{\xi}$ has the finite intersection property so there is a
+point $x_{\xi}\in X\cap\bigcap\Cal K_{\xi}$.   Set
+$A=\{x_{\xi}:\xi<d(\frak A)\}$.   If $K\in\Cal K\cap\Sigma$ and
+$K\cap A=\emptyset$, then $K\notin\bigcup_{\xi<d(\frak A)}\Cal K_{\xi}$
+so $K^{\ssbullet}=0$;  it follows that every measurable subset of
+$X\setminus A$ is negligible and $A$ has full outer measure, while
+$\#(A)\le d(\frak A)$.
+
+\medskip
+
+\quad{\bf (ii)} Let $\hat\mu$ be the completion of $\mu$, $\hat\Sigma$
+its domain and $\theta:\frak A\to\hat\Sigma$ a lifting (341K, 212Gb,
+322Da).   Take any $A\subseteq X$ of full outer measure for $\mu$;  then
+it also has full outer measure for $\hat\mu$ (212Eb).   For $x\in A$,
+set $C_x=\{a:a\in\frak A$, $x\in\theta a\}$;  then $\family{x}{A}{C_x}$
+is a family of centered sets in $\frak A$ with union
+$\frak A^+$, so $d(\frak A)\le\#(A)$.
+}%end of proof of 521L
+
+\leader{521M}{Proposition}\dvArevised{2010}
+Let $(X,\Sigma,\mu)$ be a complete locally
+determined measure space of magnitude at most $\add\mu$.   Then it is
+strictly localizable.
+
+\proof{ Write $\kappa$ for $\add\mu$.
+Let $(\frak A,\bar\mu)$ be the measure algebra of $\mu$.   Then
+there is a partition of unity $D\subseteq\frak A$ consisting of
+elements
+of finite measure;  as $\#(D)\le c(\frak A)\le\kappa$, there is a
+family $\ofamily{\xi}{\kappa}{a_{\xi}}$ running over $D\cup\{0\}$.
+For each $\xi<\kappa$, choose $E_{\xi}\in\Sigma$ such that
+$E_{\xi}^{\ssbullet}=a_{\xi}$, and set
+$F_{\xi}=E_{\xi}\setminus\bigcup_{\eta<\xi}E_{\eta}$.
+Because $E_{\xi}\setminus F_{\xi}=\bigcup_{\eta<\xi}E_{\xi}\cap E_{\eta}$
+is the union of fewer than $\add\mu$ negligible sets, it is negligible, and
+$F_{\xi}\in\Sigma$, with $F_{\xi}^{\ssbullet}=a_{\xi}$.
+Now
+$\ofamily{\xi}{\kappa}{F_{\xi}}$ is a disjoint family of sets of
+finite measure.   If $E\in\Sigma$ and $\mu E>0$, there is some
+$\xi<\kappa$ such that $E^{\ssbullet}\Bcap a_{\xi}\ne 0$, and now
+$\mu(E\cap F_{\xi})>0$.
+Thus $\ofamily{\xi}{\kappa}{F_{\xi}}$ satisfies the condition of
+213Oa, and $\mu$ is strictly localizable.
+}%end of proof of 521M
+
+\leader{521N}{Proposition} Let $(X,\Sigma,\mu)$ be a complete locally
+determined localizable measure space of magnitude at most $\frak c$.
+Then it is strictly localizable.
+
+\proof{ Again let $(\frak A,\bar\mu)$ be the measure algebra of $\mu$,
+and take a partition of unity $D\subseteq\frak A$ consisting of
+elements
+of finite measure;  as $\#(D)\le c(\frak A)\le\frak c$, there is an
+injective function $h:D\to\Cal P\Bbb N$.   This time, because $\frak A$
+is Dedekind complete, we can set $b_n=\sup\{d:d\in D$, $n\in h(d)\}$ for
+each $n\in\Bbb N$.   If $d\in D$, then
+$d=\inf_{n\in h(d)}b_n\Bsetminus\sup_{n\in\Bbb N\setminus h(d)}b_n$.
+So if we choose $E_n\in\Sigma$ such that $E_n^{\ssbullet}=b_n$ for
+each $n$, and set $F_d
+=\bigcap_{n\in h(d)}E_n\setminus\bigcup_{n\in\Bbb N\setminus h(d)}E_n$
+for $d\in D$, $\family{d}{D}{F_d}$ will be a disjoint family in
+$\Sigma$
+and $F_d^{\ssbullet}=d$ for every $d$.   Now $\mu F_d=\bar\mu d$ is
+always finite;  and if $E\in\Sigma$ is non-negligible, there is a
+$d\in D$ such that $0\ne\bar\mu(E^{\ssbullet}\Bcap d)=\mu(E\cap F_d)$.
+Thus $\family{d}{D}{F_d}$ satisfies the condition of 213Oa, and $\mu$
+is strictly localizable.
+}%end of proof of 521N
+
+\leader{521O}{Proposition} (a) If $(X,\Sigma,\mu)$ is a semi-finite
+measure space, its magnitude is at most $\max(\omega,2^{\#(X)})$.
+
+(b) If $(X,\Sigma,\mu)$ is a strictly localizable measure space, its
+magnitude is at most $\max(\omega,\penalty-100\#(X))$.
+
+(c) There is an infinite semi-finite measure space $(X,\Sigma,\mu)$
+with magnitude $2^{\#(X)}$.
+
+\proof{{\bf (a)-(b)} These are elementary.   If $(X,\Sigma,\mu)$ is
+semi-finite, with measure algebra $\frak A$, then
+
+\Centerline{$c(\frak A)\le\#(\frak A)\le\#(\Sigma)
+\le\#(\Cal PX)=2^{\#(X)}$.}
+
+\noindent If $\mu$ is strictly localizable, with decomposition
+$\familyiI{X_i}$, then $\familyiI{X_i^{\ssbullet}}$ is a partition of
+unity in $\frak A$ consisting of elements of finite measure, so
+
+\Centerline{$c(\frak A)
+\le\max(\omega,\#(\{i:i\in I$, $\mu X_i>0\}))\le\max(\omega,\#(X))$}
+
+\noindent by 332E.
+
+\medskip
+
+{\bf (c)} Let $\ofamily{\xi}{\omega_1}{X_{\xi}}$ be a disjoint family
+of sets such that
+$\#(X_{\xi})=\#(\Cal P(\bigcup_{\eta<\xi}X_{\eta}))$ for every
+$\xi<\omega_1$;  for each $\xi$, let
+$h_{\xi}:\Cal P(\bigcup_{\eta<\xi}X_{\eta})\to X_{\xi}$ be an
+injection.
+Set $X=\bigcup_{\xi<\omega_1}X_{\xi}$.   For $A\subseteq X$ define
+$f_A:\omega_1\to X$ by setting
+$f(\xi)=h_{\xi}(A\cap\bigcup_{\eta<\xi}X_{\eta})$ for each $\xi$;  let
+$J_A$ be $f_A[\omega_1]$ and $\mu_A$ the countable-cocountable measure
+on $J_A$.    Observe that $\#(J_A)=\omega_1$ for every $A\subseteq X$,
+and that if $A$, $B\subseteq X$ are distinct then $J_A\cap J_B$ is
+countable.   So if we set $\mu E=\sum_{A\subseteq X}\mu_A(E\cap J_A)$
+whenever $E\subseteq X$ is such that $E\cap J_A$ is countable or
+cocountable in $J_A$ for every $A$, then $\mu$ will be a complete locally
+determined measure on $X$.   Since $\mu J_A=1$ and $\mu(J_A\cap J_B)=0$
+whenever $A$, $B\subseteq X$ are distinct, $\mu$ has magnitude
+$2^{\#(X)}$.
+}%end of proof of 521O
+
+\leader{521P}{Proposition} (a) If $2^{\lambda}<2^{\kappa}$ whenever
+$\frak c\le\lambda<\kappa$ and $\cf\lambda>\omega$, then
+the magnitude\cmmnt{ $\magnitude\mu$} of $\mu$ is at most
+$\max(\omega,\#(X))$ for every localizable measure space $(X,\Sigma,\mu)$.
+
+(b) Suppose that $2^{\frak c}=2^{\frak c^+}$.   Then there is a
+localizable measure space $(Y,\Tau,\nu)$ with $\#(Y)=\frak c$ and
+$\magnitude\nu=\frak c^+$.
+
+\medskip
+
+\noindent{\bf Remark}\cmmnt{ \TeX, for once, is obscure;}
+$2^{\frak c^+}$ here is $\#(\Cal P(\frak c^+))$\cmmnt{, not
+$(2^{\frak c})^+$}.
+
+\proof{{\bf (a)} If $\magnitude\mu\le\omega$ we can stop.   Otherwise,
+set $\kappa=\magnitude\mu$.   Let $(\frak A,\bar\mu)$
+be the measure algebra of $\mu$, so that $\kappa=c(\frak A)$ and there
+is a disjoint family $\ofamily{\xi}{\kappa}{a_{\xi}}$ in
+$\frak A^+$ (332F).   If $\tilde\mu$ is the c.l.d.\
+version of $\mu$, we can identify
+$\frak A$ with the measure algebra of $\tilde\mu$ (322Db).
+
+\medskip
+
+\quad{\bf case 1} If $\kappa\le\frak c$, $\tilde\mu$ is strictly
+localizable (521N), so has a lifting $\theta$ (341K again);  but now
+$\ofamily{\xi}{\kappa}{\theta a_{\xi}}$ is a disjoint family of
+non-empty subsets of $X$, so $\#(X)\ge\kappa$.
+
+\medskip
+
+\quad{\bf case 2} If $\kappa>\frak c$, of course $X$ is uncountable
+(521Oa).   For $\xi<\kappa$, choose $E_{\xi}\in\Sigma$ such that
+$E_{\xi}^{\ssbullet}=a_{\xi}$.
+\Quer\ If $\#(X)<\kappa$, there is a set $Y\subseteq X$ such that
+$\#(Y)$ has uncountable cofinality and $I_Y=\{\xi:\xi<\kappa$,
+$\mu^*(E_{\xi}\cap Y)>0\}$ has cardinal greater than
+$\max(\frak c,\#(X))$.   \Prf\ If $\cf(\#(X))$ is uncountable, take
+$Y=X$.   Otherwise, let $\sequencen{Y_n}$ be an increasing sequence of
+subsets of $X$, with union $X$, such that $\#(Y_n)$ is an uncountable
+successor cardinal less than $\#(X)$ for every $n$.   If $\xi<\kappa$,
+there is some $n$ such that $E_{\xi}\cap Y_n$ is non-negligible, that
+is, $\xi\in I_{Y_n}$.   So the non-decreasing sequence
+$\sequencen{I_{Y_n}}$ has union $\kappa$, and
+there is some $n\in\Bbb N$ such that
+$\#(I_{Y_n})>\max(\frak c,\#(X))$.   Now we can take $Y=Y_n$.\ \Qed
+
+For every $J\subseteq I_Y$, set $b_J=\sup_{\xi\in J}a_\xi$ and let
+$F_J\in\Sigma$ be such that $F_J^{\ssbullet}=b_J$.   If $J$,
+$K\subseteq I_Y$ are distinct, there is a $\xi\in J\symmdiff K$, in
+which case
+$a_\xi\Bsubseteq b_J\Bsymmdiff b_K$, $E_\xi\setminus(F_J\symmdiff F_K)$
+is negligible and $Y\cap(F_J\symmdiff F_K)$ is non-empty.   Thus
+$J\mapsto Y\cap F_J:\Cal PI_Y\to\Cal PY$ is injective, and
+
+\Centerline{$2^{\#(I_Y)}\le 2^{\#(Y)}\le 2^{\#(X)}\le 2^{\#(I_Y)}$.}
+
+\noindent Setting $\lambda=\max(\frak c,\#(Y))$, $\kappa'=\#(I_Y)$ we
+now have $\frak c\le\lambda<\kappa'$, $\cf\lambda>\omega$ and
+$2^{\lambda}=2^{\kappa'}$, which is supposed to be impossible.\ \Bang
+
+So in this case also we have $\#(X)\ge\kappa$.
+
+\medskip
+
+{\bf (b)(i)} Set $I=\Cal P\frak c^+$ and
+$X=\{0,1\}^I\cong\{0,1\}^{2^{\frak c}}$.   Putting 5A4Be and 5A4C(a-ii)
+together, we see that there is a set $Y\subseteq X$, with cardinal
+at most $\frak c^{\omega}=\frak c$, which meets every non-empty
+G$_{\delta}$ subset of $X$.   In particular, if $\Cal K\subseteq I$ is
+countable and $x\in X$ there is a $y\in Y$ such that
+$y\restr\Cal K=x\restr\Cal K$.
+
+\medskip
+
+\quad{\bf (ii)} Let $\mu$ be the complete locally determined
+localizable
+measure on $X$ described in 216E, with $C=\frak c^+$.   Then $Y$ has
+full outer measure in $X$.   \Prf\ (I follow the notation and argument
+of 216E.)   If
+$\mu E>0$, then, by the argument of part (g) of the proof of 216E,
+there are a $\gamma<\frak c^+$ and a $K\in[I]^{\le\omega}$ such that
+$F_{\gamma K}\subseteq E$, where
+$F_{\gamma K}=\{x:x\restr K=x_{\gamma}\restr K\}$.   But $Y$ was
+chosen to meet every such set.   As $E$ is arbitrary, $Y$ has full outer
+measure.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} $\magnitude\mu=\frak c^+$.   \Prf\ In the language of
+216E, we have a family $\ofamily{\gamma}{\frakc^+}{G_{\{\gamma\}}}$ of
+$\mu$-atoms of measure $1$, each pair with negligible intersection,
+and every non-negligible measurable set meets some $G_{\{\gamma\}}$ in a
+non-negligible set.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} Now let $\nu$ be the subspace measure on $Y$.   By
+214Ie, $\nu$ is complete, locally determined and localizable.   By
+322I, we can identify the measure algebras of $\mu$ and $\nu$, so
+$\magnitude\nu=\magnitude\mu=\frak c^+$, while $\#(Y)=\frak c$.
+}%end of proof of 521P
+
+
+\leader{521Q}{Free \dvrocolon{products}}\cmmnt{ We have some simple
+calculations associated with the measure algebra free products of \S325.
+
+\medskip
+
+\noindent}{\bf Proposition} (a) Let $(\frak A,\bar\mu)$ and
+$(\frak B,\bar\nu)$ be semi-finite measure algebras and
+$(\frak C,\bar\lambda)$ their localizable measure algebra free product.
+Then
+
+\Centerline{$c(\frak C)\le\max(\omega,c(\frak A),c(\frak B))$,}
+
+\Centerline{$\tau(\frak C)\le\max(\omega,\tau(\frak A),\tau(\frak B))$.}
+
+\wheader{521Q}{0}{0}{0}{36pt}
+(b) Let $\familyiI{(\frak A_i,\bar\mu_i)}$ be a family of probability
+algebras, and $(\frak C,\bar\lambda)$ their probability algebra free
+product.   Then
+
+\Centerline{$\tau(\frak C)
+\le\max(\omega,\#(I),\sup_{i\in I}\tau(\frak A_i))$.}
+
+\proof{{\bf (a)(i)} Let $A\subseteq\frak A$, $B\subseteq\frak B$ be
+partitions of unity consisting of elements of
+finite measure (322Ea).
+Then $C=\{a\otimes b:a\in A$, $b\in B\}$ is a disjoint family in
+$\frak C$, and
+
+$$\eqalignno{\sup C
+&=\sup\{(a\otimes 1)\Bcap(1\otimes b):a\in A,\,b\in B\}
+=(\sup_{a\in A}a\otimes 1)\Bcap(\sup_{b\in B}1\otimes b)\cr
+\displaycause{313Bc}
+&=(\sup A\otimes 1)\Bcap(1\otimes\sup B)\cr
+\displaycause{325Da}
+&=(1\otimes 1)\Bcap(1\otimes 1)
+=1;\cr}$$
+
+\noindent that is, $C$ is a partition of unity.   As every member of $C$
+has finite measure,
+
+\Centerline{$c(\frak C)
+\le\max(\omega,\#(C))
+=\max(\omega,\#(A),\#(B))
+=\max(\omega,c(\frak A),c(\frak B))$}
+
+\noindent by 332E.
+
+\medskip
+
+\quad{\bf (ii)} As for Maharam types, I am just repeating the result stated
+and proved in 334B.
+
+\medskip
+
+{\bf (b)} This is 334D.
+}%end of proof of 521Q
+
+\leader{521R}{Proposition} If $(X,\Sigma,\mu)$ is any measure space,
+its Maharam type is at most $2^{\#(X)}$.
+
+\proof{ If $\frak A$ is the measure algebra of $\mu$,
+
+\Centerline{$\tau(\frak A)\le\#(\frak A)\le\#(\Sigma)\le\#(\Cal PX)
+=2^{\#(X)}$.}
+
+}%end of proof of 521R
+
+\leader{521S}{Proposition} (a) A countably separated measure space
+has Maharam type at most $2^{\frakc}$.
+
+(b) There is a countably separated quasi-Radon probability space with
+Maharam type $2^{\frakc}$.
+
+(c) A countably separated semi-finite measure space has magnitude at
+most $2^{\frakc}$.
+
+(d) There is a countably separated semi-finite measure space with
+magnitude $2^{\frakc}$.
+
+\proof{ Set $\kappa=2^{\frakc}$.
+
+\medskip
+
+{\bf (a)} If $(X,\Sigma,\mu)$ is countably separated, there is an
+injective function from $X$ to $\Bbb R$ (343E), so $\#(X)\le\frak c$;
+now use 521R.
+
+\medskip
+
+{\bf (b)} As in (b-i) of the proof of 521P, there is a set
+$Y\subseteq X=\{0,1\}^{\kappa}$, with cardinal
+$\frak c$, which meets every non-empty G$_{\delta}$ subset of $X$, and
+therefore has full outer measure for the usual measure
+$\nu_{\kappa}$ of $X$.
+
+In $[0,1]$ let $\family{y}{Y}{C_y}$
+be a disjoint family of sets of full outer measure for Lebesgue
+measure $\mu_1$ on $[0,1]$ (419I), and set
+$C=\{(y,t):y\in Y,\,t\in C_y\}\subseteq Z=X\times[0,1]$.   Now $C$ has
+full outer measure for the product measure $\lambda$ on $Z$.   \Prf\
+Suppose that $W\subseteq Z$ and $\lambda W>0$.   Then
+$\int\mu_1 W[\{x\}]\nu_{\kappa}(dx)>0$ (252D), so
+$\{x:\mu_1W[\{x\}]>0\}$ has non-zero measure and meets $Y$.   Taking
+$y\in Y$ such that $\mu_1W[\{y\}]>0$, $\{y\}\times(C_y\cap W[\{y\}])$
+is a non-empty subset of $C\cap W$.\ \QeD\
+
+The measure algebra $\frak A$ of the subspace measure $\lambda_C$ on $C$
+can therefore be identified with the measure algebra of $\lambda$ (322Jb),
+and has Maharam type $\kappa$.   Because $\family{y}{Y}{C_y}$ is disjoint,
+each horizontal section of $C$ is a singleton and $C$ is separated by the
+measurable sets $C\cap(X\times[0,q])$ for $q\in\Bbb Q\cap[0,1]$.
+Thus $\lambda_C$ is countably separated.
+
+If we give $Z$ the product topology, then $\lambda$ is a Radon measure
+(417T, or otherwise), so $\lambda_C$ is quasi-Radon for the subspace
+topology (415B).
+
+\medskip
+
+{\bf (c)} As in (a), $\#(X)\le\frak c$, so we can use 521Oa.
+
+\medskip
+
+{\bf (d)(i)} The first step is to build a measure space of magnitude
+$2^{\frakc}$ and cardinal $\frak c$, as follows.
+Let $h:\frak c\to([\frak c]^{\le\omega})^2$ be a surjection;
+take its two components to be $h_1$ and $h_2$.   For $D\subseteq\frak c$
+set $F_D=\{\xi:\xi<\frak c$, $h_2(\xi)=D\cap h_1(\xi)\}$.   For
+$I\in[\frak c]^{\le\omega}$ set
+$A_I=\{\xi:\xi<\frak c$, $I\not\subseteq h_1(\xi)\}$, and set
+$\Cal A=\bigcup\{\Cal PA_I:I\in[\frak c]^{\le\omega}\}$;  note that
+$\Cal A$ is a $\sigma$-ideal of subsets of $\frak c$.
+
+If $D\subseteq\frak c$, $F_D\notin\Cal A$.   \Prf\ If
+$I\in[\frak c]^{\le\omega}$, there is a $\xi<\frak c$ such that
+$h(\xi)=(I,I\cap D)$,   Now $\xi\in F_D\setminus A_I$;  as $I$ is
+arbitrary, $F_D\notin\Cal A$.\ \QeD\  So we can define a measure $\nu_D$
+on $\frak c$ by saying that
+
+$$\eqalign{\nu_D(E)
+&=1\text{ if }E\subseteq\frak c\text{ and }F_D\setminus E\in\Cal A,\cr
+&=0\text{ if }E\subseteq\frak c\text{ and }F_D\cap E\in\Cal A,\cr
+&\text{undefined otherwise},\cr}$$
+
+\noindent and $\nu_DF_D=1$.
+
+If $D$, $D'\subseteq\frak c$ are distinct, $F_D\cap F_{D'}\in\Cal A$.
+\Prf\ Take $\eta\in D\symmdiff D'$.   If $\xi\in F_D\cap F_{D'}$, then
+$D\cap h_1(\xi)=h_2(\xi)=D'\cap h_1(\xi)$, so $\eta\notin h_1(\xi)$ and
+$\xi\in A_{\{\eta\}}$.   Thus
+$F_D\cap F_{D'}\subseteq A_{\{\eta\}}\in\Cal A$.\ \Qed
+
+So if we set $\nu=\sum_{D\subseteq\frak c}\nu_D$, as defined in
+234G, $\nu$ is a measure on
+$\frak c$ such that $\nu F_D=1$ and $\nu(F_D\cap F_{D'})=0$ for all
+distinct $D$, $D'\subseteq\frak c$.   Also $\nu$ is semi-finite, because if
+$\nu E>0$ there is a $D\subseteq\frak c$ such that $\nu_DE>0$, in which
+case $\nu(E\cap F_D)=\nu_D(E\cap F_D)=1$.   So $\nu$ is a semi-finite
+measure on $\frak c$ with magnitude $\#(\Cal P\frak c)=2^{\frakc}$.
+Because every $\nu_D$ is complete, so is $\nu$ (234Ha).
+
+\medskip
+
+\quad{\bf (ii)} As in (b),
+let $\ofamily{\xi}{\frak c}{C_{\xi}}$ be a disjoint family of
+subsets of $[0,1]$ all with full outer measure for Lebesgue measure
+$\mu_1$.   Set $Z=\frak c\times[0,1]$ with its c.l.d.\ product measure
+$\lambda=\nu\times\mu_1$, and
+$C=\{(\xi,t):\xi<\frak c$, $t\in C_{\xi}\}\subseteq Z$.   Then
+$C$ has full outer measure, by the argument of (b) above.   So, as in
+(b), the measure algebra $\frak A$ of the subspace measure $\lambda_C$
+on $C$ can be identified with the measure algebra of
+$\lambda$.   The map $E\mapsto C\cap(E\times[0,1])$ induces a
+measure-preserving homomorphism from the measure algebra of $\nu$ to
+$\frak A$, so $\magnitude\lambda_C=c(\frak A)$ is at least $2^{\frakc}$;
+by (c), it is exactly $2^{\frakc}$.
+Also as in (b), $\lambda_C$ is countably separated.
+}%end of proof of 521S
+
+\leader{521T}{}\cmmnt{ In \S464 I looked at the $L$-space $M$ of
+bounded additive functionals on $\Cal PI$ for infinite sets $I$, of
+which $I=\Bbb N$ is of course by far the most important, and found a
+band decomposition of $M$ as
+$M_{\tau}\oplus(M_{\text{m}}\cap M_{\tau}^{\perp})
+\oplus M_{\text{pnm}}$,
+where $M_{\tau}$ consists of  the `completely additive' functionals
+(and may be identified with $\ell^1(I)$), $M_{\text{m}}$ consists of the
+`measurable' functionals (that is, those integrated by the usual
+measure
+on $\Cal PI$), and $M_{\text{pnm}}=M_{\text{m}}^{\perp}$ consists of
+the `purely non-measurable' functionals.
+Any non-negative functional $\theta\in M$ can be identified with a Radon
+measure $\mu_{\theta}$ on the Stone-\v{C}ech compactification $\beta I$
+(464P).   The purely atomic measures on $I$ correspond to members of
+$M_{\tau}$.   Among the others, the general rule is that `simple'
+measures must correspond to functionals in $M_{\text{pnm}}$;  see 464Pa
+and 464Xa.   The next proposition, strengthening 464Qb, shows that
+this rule is followed by Maharam types.
+
+\medskip
+
+\noindent}{\bf Proposition}\dvArevised{2014}
+Let $I$ be a set, and suppose that a
+non-zero $\theta\in(M_{\text{m}}\cap M_{\tau}^{\perp})^+$, as defined
+in \S464, corresponds to the Radon measure $\mu_{\theta}$ on $\beta I$.
+Let $\nu$ be the usual measure on $\Cal PI$.   Then
+the Maharam type of $\mu_{\theta}$ is at least $\cov\Cal N(\nu)$.
+
+\proof{ Of course $I$ has to be infinite, since not every
+additive functional on $\Cal PI$ is completely additive;  so
+$\cov\Cal N(\nu)$ is not $\infty$.   By 464Qc, we know that
+
+\Centerline{$\{(a,b):a$, $b\subseteq I$,
+$\theta a=\Bover12\theta I$,
+$\theta(a\cap b)=\Bover14\theta I\}$}
+
+\noindent is conegligible for the product measure $\nu\times\nu$ on
+$(\Cal PI)^2$.   Set
+
+\Centerline{$A_0=\{a:a\subseteq I$, $\theta a=\Bover12$,
+$\{b:\theta(a\cap b)=\Bover14\theta I\}$ is
+$\nu$-conegligible$\}$;}
+
+\noindent then $A_0$ is $\nu$-conegligible.   Now take a set
+$A\subseteq A_0$ which is maximal subject to the requirement that
+$\theta(a\cap b)=\bover14\theta I$ for all distinct $a$, $b\in A$.   If
+$a$ is any subset of $I$, then either $a\in A$, or $a\notin A_0$, or
+there is a $b\in A\setminus\{a\}$
+such that $\theta(a\cap b)\ne\bover14\theta I$;  so
+$\Cal PI$ is the union of
+
+\Centerline{$(\Cal PI\setminus A_0)
+  \cup\bigcup_{b\in A}\{a:\theta(a\cap b)\ne\Bover14\theta I\}$}
+
+\noindent and $\cov\Cal N(\nu)\le 1+\#(A)$.
+As $\cov\Cal N(\nu)$ is surely
+infinite, it is in fact less than or equal to $\#(A)$.
+
+Now consider the open-and-closed sets $\widehat{a}\subseteq\beta I$ for
+$a\in A$.   If $a$, $b\in A$ are distinct,
+
+\Centerline{$\mu_{\theta}(\widehat{a}\symmdiff\widehat{b})
+=\mu_{\theta}(\widehat{a\symmdiff b})
+=\theta(a\symmdiff b)=\bover12\theta I>0$.}
+
+\noindent So in the measure algebra $\frak A$ of $\mu_{\theta}$,
+$\{\widehat{a}^{\ssbullet}:a\in A\}$ is a discrete set of size
+at least $\cov\Cal N(\nu)$, and the topological density of
+$\frak A$ is at least $\cov\Cal N(\nu)$ (5A4B(h-ii) again).
+By 521E, $\tau(\mu_{\theta})=\tau(\frak A)\ge\cov\Cal N(\nu)$.
+}%end of proof of 521T
+
+\exercises{\leader{521X}{Basic exercises (a)}
+%\spheader 521Xa
+Let $\Cal B(\Bbb R)$ be the Borel $\sigma$-algebra of $\Bbb R$,
+and $\mu$ the restriction of Lebesgue measure to $\Cal B(\Bbb R)$.
+Show that $\add\mu=\omega_1$.   \Hint{if $\frak c=\omega_1$,
+$[\Bbb R]^{\omega_1}\not\subseteq\Cal B(\Bbb R)$;  if $\frak c>\omega_1$,
+$[\Bbb R]^{\omega_1}\cap\Cal B(\Bbb R)=\emptyset$;
+or use 423L and 423P.}
+%521A
+
+\spheader 521Xb Let $(X,\Sigma,\mu)$ be a semi-finite
+locally compact measure
+space.   Show that $\add\mu$ is the least cardinal of any set
+$\Cal E\subseteq\Sigma$ such that $\bigcup\Cal E\notin\Sigma$, or
+$\infty$ if there is no such $\Cal E$.   \Hint{451Q.}
+%521A+
+
+\spheader 521Xc\dvAnew{2010} Let $(X,\Sigma,\mu)$ be a complete locally
+determined measure space, and $\kappa$ a cardinal such that
+$\kappa<\cov\Cal N(\mu_E)$ for every non-negligible measurable set
+$E\subseteq X$, writing $\mu_E$ for the subspace measure.
+Suppose that $A\subseteq X$ is such that both $A$ and
+$X\setminus A$ are expressible as the union of at most $\kappa$ members of
+$\Sigma$.   Show that $A\in\Sigma$.
+%521B+
+
+\sqheader 521Xd\dvAnew{2013}(i) Find a probability space $(X,\Sigma,\mu)$,
+with measure algebra $\frak A$, such that $\pi(\frak A)<\pi(\mu)$.
+%\pi(\frak A)=1$
+(ii) Find a probability space $(X,\Sigma,\mu)$, with null ideal
+$\Cal N(\mu)$, such that $\cf\Cal N(\mu)<\pi(\mu)$.
+%\cf\Cal N=1
+(iii) Find a probability space $(X,\Sigma,\mu)$
+such that $\pi(\mu)<\cf\Cal N(\mu)$.   \Hint{513X(q-iii).}
+%direct sum with $\cf\Cal N(\mu_n)=\pi(\mu_n)=\omega_n$.
+%521D
+
+\spheader 521Xe\dvArevised{2014}
+Let $(X,\Sigma,\mu)$ be a measure space and $\nu$ an
+indefinite-integral measure over $\mu$.   Show that
+$\add\Cal N(\nu)\ge\add\Cal N(\mu)$, $\cf\Cal N(\nu)\le\cf\Cal N(\mu)$,
+$\non\Cal N(\nu)\ge\non\Cal N(\mu)$, $\cov\Cal N(\nu)\le\cov\Cal N(\mu)$,
+$\shr\Cal N(\nu)\le\shr\Cal N(\mu)$,
+$\shr^+\Cal N(\nu)\le\shr^+\Cal N(\mu)$, $\pi(\nu)\le\pi(\mu)$,
+$\tau(\nu)\le\tau(\mu)$.
+%322K 521F
+
+\spheader 521Xf\dvAnew{2013} Let $(X,\Sigma,\mu)$ be a
+semi-finite measure space which is not purely atomic.   Show that
+$\pi(\mu)\ge\pi(\mu_L)$, where $\mu_L$ is Lebesgue measure on $\Bbb R$.
+%521H
+
+\spheader 521Xg Let $(X,\Sigma,\mu)$ be an atomless measure space with
+locally determined negligible sets (definition: 213I).   Show that
+$\non\Cal N(\mu)\ge\non\Cal N$, where $\Cal N$ is the null ideal of
+Lebesgue measure.
+%521I
+
+\spheader 521Xh Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be complete
+locally determined measure spaces, neither of measure $0$,
+and $\mu\times\nu$ the c.l.d.\ product measure on $X\times Y$.   Show that
+
+\Centerline{$\non\Cal N(\mu\times\nu)
+=\max(\non\Cal N(\mu),\non\Cal N(\nu))$,}
+
+\Centerline{$\cov\Cal N(\mu\times\nu)
+\le\min(\cov\Cal N(\mu),\cov\Cal N(\nu))$}
+
+\noindent with equality if either $\mu$ or $\nu$ is strictly localizable,
+
+\Centerline{$\add(\mu\times\nu)=\add\Cal N(\mu\times\nu)
+\le\min(\add\Cal N(\mu),\add\Cal N(\nu))$,}
+
+\Centerline{$\cf\Cal N(\mu\times\nu)
+\ge\max(\cf\Cal N(\mu),\cf\Cal N(\nu))$,}
+
+\Centerline{$\shr\Cal N(\mu\times\nu)
+\ge\max(\shr\Cal N(\mu),\shr\Cal N(\nu))$,}
+
+\Centerline{$\shr^+\Cal N(\mu\times\nu)
+\ge\max(\shr^+\Cal N(\mu),\shr^+\Cal N(\nu))$,}
+
+\Centerline{$\pi(\mu\times\nu)\ge\max(\pi(\mu),\pi(\nu))$.\dvAnew{2013}}
+%521J
+
+\spheader 521Xi Let $(X,\Sigma,\mu)$ be a probability space, and
+$\mu^{\Bbb N}$ the product measure on $X^{\Bbb N}$.
+(i) Show that $X$ has a set of full
+outer measure of size at most $\non\Cal N(\mu^{\Bbb N})$.
+(ii) Show that if $\Cal A\subseteq\Sigma\setminus\Cal N(\mu)$ and
+$\#(\Cal A)<\cov\Cal N(\mu^{\Bbb N})$, then there is a countable set
+which meets every member of $\Cal A$.
+%521J
+
+\spheader 521Xj Show that the direct sum of $\frak c$ or fewer
+countably separated measure spaces is countably separated.
+%521S
+
+\spheader 521Xk Show that $2^{\frak c}<2^{\frak c^+}$ iff every
+countably separated complete locally determined localizable measure
+space is strictly localizable.  \Hint{521P, 521S, 252Yp.}
+%521S 521P mt52bits
+
+\spheader 521Xl Show that if $(X,\Sigma,\mu)$ is a purely atomic
+countably separated semi-finite measure space then its magnitude is at
+most $\max(\omega,\#(X))$ and its Maharam type is countable.
+%521S
+
+\spheader 521Xm Suppose that $2^{\kappa}\le\frak c$ for every
+$\kappa<\frak c$.   Show that there is a countably separated
+semi-finite measure space with magnitude $2^{\frakc}$.
+%521Sd mt52bits
+
+\leader{521Y}{Further exercises (a)}
+%\spheader 521Ya
+Find a probability space $(X,\Sigma,\mu)$, a set $Y$ and
+a function $f:X\to Y$ such that, setting $\nu=\mu f^{-1}$,
+$\add\Cal N(\mu)>\add\Cal N(\nu)$, $\cf\Cal N(\mu)<\cf\Cal N(\nu)$,
+$\shr\Cal N(\mu)<\shr\Cal N(\nu)$ and $\pi(\mu)<\pi(\nu)$.
+%521H  mt52bits
+
+\spheader 521Yb Find a strictly localizable measure space
+$(X,\Sigma,\mu)$, a set $Y$, and a
+function $f:X\to Y$ such that, setting $\nu=\mu f^{-1}$, $\nu$ is
+semi-finite and $\tau(\mu)<\tau(\nu)$.
+%521H mt52bits
+
+\spheader 521Yc Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be localizable
+measure spaces, and suppose that
+\penalty-100$\max(\magnitude(\nu),\discretionary{}{}{}\tau(\nu))\le\frak c$.
+Show that the c.l.d.\
+product measure on $X\times Y$ is localizable.
+%521N mt52bits
+%what if just  \tau(\nu)\le\frak c ?
+
+\spheader 521Yd Show that there is a probability space
+$(X,\Sigma,\mu)$ with Maharam type greater than $\#(X)$.   \Hint{523Ib.}
+%521R
+
+\spheader 521Ye
+Let $\kappa$ be an infinite cardinal.   Let us say that a measure
+space $(X,\Sigma,\mu)$ is {\bf $\kappa$-separated} if there is a family
+$\Cal E\subseteq\Sigma$, with cardinal at most $\kappa$, separating the
+points of $X$.
+(i) Show that there is a disjoint family $\Cal A$ of
+subsets of $\{0,1\}^{\kappa}$, all of full outer measure for the usual
+measure of $\{0,1\}^{\kappa}$, such that $\#(\Cal A)=2^{\kappa}$.
+(ii) Show that every $\kappa$-separated measure space has Maharam type
+at most $2^{2^{\kappa}}$,  %521Sa
+and that there is a $\kappa$-separated quasi-Radon
+probability space with Maharam type $2^{2^{\kappa}}$.   %521Sb
+(iii) Show
+that every semi-finite $\kappa$-separated measure space has magnitude at
+most $2^{2^{\kappa}}$, %521Sc
+and that there is a semi-finite $\kappa$-separated
+measure space with magnitude greater than $2^{\kappa}$.   %521Sd
+(iv) Suppose that $\frak c\le\kappa\le\lambda$ and
+$2^{\kappa}=2^{\lambda}$.   Show that the usual measure on
+$\{0,1\}^{\lambda}$ is $\kappa$-separated.  %mt52bits
+\leaveitout{?? (v) Show that for every
+uncountable cardinal $\kappa$ there is a compact $\kappa$-separated
+Maharam-type-homogeneous Radon
+probability space with Maharam type $\kappa$ which is not isomorphic to
+$\{0,1\}^{\kappa}$ with its usual measure.  See \S344 notes.}
+%521S
+}%end of exercises
+
+\leaveitout{
+%Problem:  which of the following are possible?
+%   \add\Cal N(\mu\times\nu) < \min(\add\Cal N(\mu),\add\Cal N(\nu))
+%   \cf\Cal N(\mu\times\nu) > \max(\cf\Cal N(\mu),\cf\Cal N(\nu))
+%   \shr\Cal N(\mu\times\nu) > \max(\shr\Cal N(\mu),\shr\Cal N(\nu))
+
+\leader{}{Problem} Must there be a family
+$\ofamily{\xi}{\omega_1}{\Cal F_{\xi}}$ of distinct ultrafilters on
+$\Bbb N$ such that $\bigcap_{\xi<\omega_1}\Cal F_{\xi}$ is measurable?
+}%end of leaveitout
+
+\endnotes{\Notesheader{521}
+The cardinal functions of an ideal can be thought of as measures of the
+`complexity' of that ideal.   In a measure space, it is natural to suppose
+that a subspace measure (at least, on a measurable subspace) will be
+`simpler' than the original measure;  in 521F we see that the additivity
+and uniformity tend to
+rise and the covering number, cofinality, shrinking
+number and $\pi$-weight tend to fall.
+Similarly, an image measure ought to be simpler than
+its parent;  but here, while additivity rises and cofinality and shrinking
+number fall, uniformity falls and covering number rises (521H).
+Also there is a trap if the original measure is not complete (521Ya), and
+$\pi$-weight is more complicated (521H(a-ii)).   There is a similar
+problem concerning topological $\pi$-weight, which led to the concept
+of network weight (5A4Ai, 5A4Bc);  and just as network weight matches
+topological weight for compact Hausdorff spaces (5A4C(a-i)), an appropriate
+hypothesis on our measures can make their $\pi$-weights more coherent
+(521H(a-ii)).
+
+Direct sums should not be more complex than their most complex component;
+521G confirms this prejudice except in respect of cofinality.   Since we
+are looking, in effect, at the cofinality of a product of partially ordered
+sets, we can expect at least as many difficulties as are to be found in pcf
+theory (\S5A2).   We should like to be able to bound the complexity of a
+product in terms of the complexities of the factors;  here there seem to be
+some interesting questions, and 521J and 521Xh are, I hope, only a start.
+
+Consider the statement
+
+\Centerline{($\dagger$) `$\magnitude\mu\le\#(X)$ for every localizable
+measure space $(X,\Sigma,\mu)$'.}
+
+\noindent From 521P we see that the generalized continuum hypothesis
+implies ($\dagger$), and also that there are simple models of set
+theory in which ($\dagger$) is false ({\smc Kunen 80}, VIII.4.7;
+{\smc Jech 03}, 15.18).   I do
+not know whether there is a natural combinatorial statement
+equiveridical with ($\dagger$).   If we amend ($\dagger$) to
+
+\Centerline{`$\magnitude\mu\le\#(X)$ for every countably separated
+localizable measure space $(X,\Sigma,\mu)$'}
+
+\noindent we find ourselves with a statement equiveridical with
+`$2^{\frak c}=2^{\frak c^+}$' (cf.\ 521Xk).
+
+I give space to `countably separated' measures because these can be
+identified with the topological measures on subsets of $\Bbb R$, and I
+do not think it is immediately apparent just how complicated these can
+be.   In fact, as shown by the proofs of parts (b) and (d) in 521S,
+most
+of the phenomena which can arise in any measure space with cardinal less
+than or equal to $\frak c$ can appear in countably separated measure
+spaces.   In 521Sb I add `quasi-Radon' to show that the very strong
+restrictions on countably separated Radon probability measures (522Wa)
+depend on their perfectness, not on their $\tau$-additivity.
+
+The constructions in 521Oc and 521Sd both depend on almost-disjoint
+families of sets.   Those described here are elementary.   In many
+models of set theory, we have much more striking results, of which
+521Xm is a simple example.
+
+Some new considerations intrude rather abruptly
+in 521T, but the argument here is both elementary and important, quite
+apart from its use in helping us to understand the classification
+scheme in \S464.
+}%end of notes
+
+\discrpage
+

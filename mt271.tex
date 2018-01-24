@@ -1,0 +1,826 @@
+\frfilename{mt271.tex}
+\versiondate{11.12.08}
+\copyrightdate{1995}
+
+\def\chaptername{Probability theory}
+\def\sectionname{Distributions}
+
+\newsection{271}
+
+I start this chapter with a discussion of `probability
+distributions', the probability measures on $\BbbR^n$ defined by
+families $(X_1,\ldots,X_n)$ of random variables.   I give the basic
+results describing the circumstances under which two distributions are
+equal (271G),  integration with respect to a distribution (271E), and
+probability density functions (271H-271K).   %271H 271I 271J 271K
+
+\medskip
+
+\leader{271A}{Notation }\cmmnt{I have just spent some paragraphs on an
+attempt to describe the essential difference between probability theory
+and measure theory.   But there is a quicker test by which you may
+discover whether your author is a measure theorist or a probabilist:
+open any page, and look for the phrases `measurable function' and
+`random variable', and the formulae `$\int fd\mu$' and `$\Expn(X)$'.
+The first member of each pair will enable you to diagnose `measure' and
+the second `probability', with little danger of error.   So far in
+this treatise I have firmly used measure theorists' terminology, with a
+few individual quirks.   But in a chapter on probability theory I find
+that measure-theoretic notation, while perfectly adequate in a formal
+sense, does such violence to the familiar formulations as to render them
+unnatural.   Moreover, you must surely at some point -- if you have not
+already done so -- become familiar with probabilists' language.   So in
+this chapter I will make a substantial step in that
+direction.   Happily, I think that this can be done without setting up
+any direct conflicts, so that I shall be able, in later volumes, to call
+upon this work in whichever notation then seems appropriate, without
+needing to re-formulate it.
+
+\medskip
+
+}{\bf (a)}\dvro{ Let}{ So let} $(\Omega,\Sigma,\mu)$ be a
+probability space.   \cmmnt{I take
+the opportunity given by a new phrase to make a technical move.}   A
+{\bf real-valued random variable}
+on $\Omega$ will be a member of
+$\eusm L^0(\mu)$\cmmnt{, as defined in 241A;  that is, a real-valued
+function $X$ defined on a conegligible subset of $\Omega$ such that $X$
+is measurable with respect to the completion $\hat\mu$ of $\mu$, or, if
+you prefer,
+such that $X\restr E$ is $\Sigma$-measurable for some conegligible set
+$E\subseteq\Omega$}.\cmmnt{\footnote{For an account of how this
+terminology became standard, see
+{\tt
+http://www.dartmouth.edu/$\sptilde$chance/\penalty-100Doob/\penalty-100conversation.html}.}}
+% http://www.dartmouth.edu/~chance/Doob/conversation.html  % Apr09
+
+\header{271Ab}{\bf (b)} If $X$ is a real-valued random variable on a
+probability space
+$(\Omega,\Sigma,\mu)$, write $\Expn(X)=\int X\,d\mu$ if this is defined in
+$[-\infty,\infty]$\cmmnt{ in the
+sense of Chapter 12 and \S133}.
+In this case I will call $\Expn(X)$ the {\bf mean} or {\bf expectation}
+of $X$.   Thus we may say that
+`$X$ {\bf has a finite expectation}' in place of `$X$ is
+integrable'.   \cmmnt{133A says that
+`$\Expn(X+Y)=\Expn(X)+\Expn(Y)$ whenever $\Expn(X)$
+and $\Expn(Y)$ and their sum are defined in $[-\infty,\infty]$', and
+122P becomes `a real-valued
+random variable $X$ has a finite expectation iff $\Expn(|X|)<\infty$'.}
+
+\header{271Ac}{\bf (c)} If $X$ is a real-valued random variable with
+finite expectation, the {\bf variance} of $X$ is
+
+\Centerline{$\Var(X)=\Expn(X-\Expn(X))^2
+=\Expn(X^2-2\Expn(X)X+\Expn(X)^2)=\Expn(X^2)-(\Expn(X))^2$\dvro{.}{}}
+
+\cmmnt{\noindent (Note that this formula
+shows that $\Expn(X)^2\le\Expn(X^2)$;  compare 244Xd(i).)   $\Var(X)$
+is finite iff $\Expn(X^2)<\infty$, that is, iff $X\in\eusm L^2(\mu)$
+(244A).   In particular, $X+Y$ and $cX$ have finite variance whenever
+$X$ and $Y$ do and $c\in\Bbb R$.}
+
+
+\header{271Ad}{\bf (d)} I shall allow myself to use such formulae as
+
+\Centerline{$\Pr(X>a)$,\quad $\Pr(X-\epsilon\le Y\le X+\delta)$,}
+
+\noindent where $X$ and $Y$ are random variables on the same probability
+space $(\Omega,\Sigma,\mu)$, to mean respectively
+
+\Centerline{$\hat\mu\{\omega:\omega\in\dom X,\,X(\omega)>a\}$,}
+
+\Centerline{$\hat\mu\{\omega:\omega\in\dom X\cap\dom Y,\,
+X(\omega)-\epsilon\le Y(\omega)\le X(\omega)+\delta\}$,}
+
+\noindent writing $\hat\mu$ for the completion of $\mu$\cmmnt{ as
+usual}.   \cmmnt{There
+are two points to note here.   First, $\Pr$ depends on $\hat\mu$, not
+on $\mu$;  in effect, the notation automatically directs us to complete
+the probability space $(\Omega,\Sigma,\mu)$.   I could, of course,
+equally well write
+
+\Centerline{$\Pr(X^2+Y^2>1)
+=\mu^*\{\omega:\omega\in\dom X\cap\dom Y,\,
+X(\omega)^2+Y(\omega)^2>1\}$,}
+
+\noindent taking $\mu^*$ to be the outer measure on $\Omega$ associated
+with $\mu$ (132B).   Secondly,} I will use this notation {\it only for
+predicates corresponding to Borel measurable sets};  that is to
+say, I shall write
+
+\Centerline{$\Pr(\psi(X_1,\ldots,X_n))
+=\hat\mu\{\omega:\omega\in\bigcap_{i\le n}\dom X_i,\,
+\psi(X_1(\omega),\ldots,X_n(\omega))\}$}
+
+\noindent only when the set
+
+\Centerline{$\{(\alpha_1,\ldots,\alpha_n):
+\psi(\alpha_1,\ldots,\alpha_n)\}$}
+
+\noindent is a Borel set in $\BbbR^n$.    \cmmnt{Part of the reason
+for this restriction will appear in the next few paragraphs;
+$\Pr(\psi(X_1,\ldots,X_n))$ must be something calculable from knowledge
+of the joint distribution of $X_1,\ldots,X_n$, as defined in 271C.
+In fact we can safely extend the idea to `universally measurable'
+predicates $\psi$, to be discussed in Volume 4.   But it could happen
+that $\mu$ gave a measure to a set of the form
+$\{\omega:X(\omega)\in A\}$ for some exceedingly irregular set $A$, and
+in such a case it would be prudent to regard this as an accidental
+pathology of the probability space, and to treat it in a rather
+different way.
+
+(I see that I have rather glibly assumed that the formula above defines
+$\Pr(\psi(X_1,\ldots,X_n))$ for every Borel predicate $\psi$.   This is
+a consequence of 271Bb below.)
+}
+
+\leader{271B}{Theorem} Let $(\Omega,\Sigma,\mu)$ be a probability space,
+and $X_1,\ldots,X_n$ real-valued random variables on $\Omega$.    Set
+$\pmb{X}(\omega)=(X_1(\omega),\ldots,X_n(\omega))$ for
+$\omega\in\bigcap_{i\le n}\dom X_i$.
+
+(a) There is a unique Radon measure $\nu$ on $\BbbR^n$ such that
+
+\Centerline{$\nu\ocint{-\infty,a}=\Pr(X_i\le\alpha_i$
+for every $i\le n)$}
+
+\noindent whenever $a=(\alpha_1,\ldots,\alpha_n)
+\in\BbbR^n$\cmmnt{, writing $\ocint{-\infty,a}$ for
+$\prod_{i\le n}\ocint{-\infty,\alpha_i}$};
+
+(b) $\nu\BbbR^n=1$ and $\nu E=\hat\mu(\pmb{X}^{-1}[E])$ whenever $\nu E$
+is defined, where $\hat\mu$ is the
+completion of $\mu$;  in particular, $\nu E=\Pr((X_1,\ldots,X_n)\in E)$
+for every Borel set $E\subseteq\BbbR^n$.
+
+\proof{ Let $\hat\Sigma$ be the domain of $\hat\mu$, and set
+$D=\bigcap_{i\le n}\dom X_i=\dom\pmb{X}$;  then $D$ is conegligible, so
+belongs to $\hat\Sigma$.   Let $\hat\mu_D=\hat\mu\restrp\Cal PD$ be the
+subspace measure on $D$ (131B, 214B), and $\nu_0$ the image measure
+$\hat\mu_D\pmb{X}^{-1}$ (234D);  let $\Tau$ be the domain of $\nu_0$.
+
+Write $\Cal B$ for the algebra of Borel sets in $\BbbR^n$.  Then
+$\Cal B\subseteq\Tau$.   \Prf\ For $i\le n$, $\alpha\in\Bbb R$ set
+$F_{i\alpha}=\{x:x\in\BbbR^n,\,\xi_i\le\alpha\}$,
+$H_{i\alpha}=\{\omega:\omega\in\dom X_i,\,X_i(\omega)\le\alpha\}$.
+$X_i$ is $\hat\Sigma$-measurable and its domain is in $\hat\Sigma$, so
+$H_{i\alpha}\in\hat\Sigma$, and
+$\pmb{X}^{-1}[F_{i\alpha}]=D\cap H_{i\alpha}$ is $\hat\mu_D$-measurable.
+Thus $F_{i\alpha}\in\Tau$.
+As $\Tau$ is a $\sigma$-algebra of subsets of $\BbbR^n$,
+$\Cal B\subseteq\Tau$ (121J).\ \Qed
+
+Accordingly $\nu_0\restr\Cal B$ is a measure on $\BbbR^n$ with domain
+$\Cal B$;  of course $\nu_0\BbbR^n=\hat\mu D=1$.   By 256C, the
+completion $\nu$ of $\nu_0\restr\Cal B$ is a Radon measure on
+$\BbbR^n$, and $\nu\BbbR^n=\nu_0\BbbR^n=1$.
+
+For $E\in\Cal B$,
+
+\Centerline{$\nu E=\nu_0E=\hat\mu_D\pmb{X}^{-1}[E]
+=\hat\mu\pmb{X}^{-1}[E]
+=\Pr((X_1,\ldots,X_n)\in E)$.}
+
+\noindent More generally, if $E\in\dom\nu$, then there are Borel sets
+$E'$, $E''$ such that $E'\subseteq E\subseteq E''$ and
+$\nu(E''\setminus E')=0$, so that
+$\pmb{X}^{-1}[E']\subseteq\pmb{X}^{-1}[E]\subseteq\pmb{X}^{-1}[E'']$ and
+$\hat\mu(\pmb{X}^{-1}[E'']\setminus\pmb{X}^{-1}[E'])=0$.   This means
+that $\pmb{X}^{-1}[E]\in\hat\Sigma$ and
+
+\Centerline{$\hat\mu\pmb{X}^{-1}[E]=\hat\mu\pmb{X}^{-1}[E']=\nu E'=\nu
+E$.}
+
+As for the uniqueness of $\nu$, if $\nuprime$ is any Radon measure on
+$\Bbb
+R^n$ such that
+$\nuprime\ocint{-\infty,a}=\Pr(X_i\le\alpha_i\Forall i\le n)$ for every
+$a\in\BbbR^n$, then surely
+
+\Centerline{$\nuprime\BbbR^n
+=\lim_{k\to\infty}\nuprime\ocint{-\infty,k\tbf{1}}
+=\lim_{k\to\infty}\nu\ocint{-\infty,k\tbf{1}}=1=\nu\BbbR^n$.}
+
+\noindent Also $\Cal I=\{\ocint{-\infty,a}:a\in\BbbR^n\}$ is closed
+under finite intersections, and $\nu$ and $\nuprime$ agree on $\Cal I$.
+By the Monotone Class Theorem (or rather, its corollary 136C), $\nu$ and
+$\nuprime$ agree on the $\sigma$-algebra generated by $\Cal I$, which is
+$\Cal B$ (121J), and are identical (256D).
+}%end of proof of 271B
+
+\leader{271C}{Definition} Let $(\Omega,\Sigma,\mu)$ be a probability
+space and $X_1,\ldots,X_n$ real-valued random variables on $\Omega$.
+By the ({\bf joint}) {\bf distribution} or {\bf law} $\nu_{\pmb{X}}$ of
+the family $\pmb{X}=(X_1,\ldots,X_n)$ I shall mean the Radon probability
+measure $\nu$ of 271B.   \cmmnt{If we think of $\pmb{X}$ as a function
+from $\bigcap_{i\le n}\dom X_i$ to $\BbbR^n$, then
+$\nu_{\pmb{X}}E=\Pr(\pmb{X}\in E)$ for every Borel set
+$E\subseteq\BbbR^n$.}
+
+\leader{271D}{Remarks }\cmmnt{{\bf (a)} The choice of the Radon
+probability
+measure $\nu_{\pmb{X}}$ as `the' distribution of $\pmb{X}$, with the
+insistence that `Radon measures' should be complete, is of course
+somewhat arbitrary.   Apart from the general principle that one should
+always complete measures, these conventions fit better with some of the
+work in Volume 4 and with such results as 272G below.
+
+\spheader 271Db
+Observe that in order to speak of the distribution of a family
+$\pmb{X}=(X_1,\ldots,X_n)$ of random variables, it is essential that all
+the $X_i$ should be based on the same probability space.
+
+\spheader 271Dc I see that the language I have chosen
+allows the
+$X_i$ to have different domains, so that the family $(X_1,\ldots,X_n)$
+may not be exactly identifiable with the corresponding function from
+$\bigcap_{i\le n}\dom X_i$ to $\BbbR^n$.   I hope however that using
+the same symbol $\pmb{X}$ for both will cause no confusion.
+
+\spheader 271Dd It is not useful to think of the whole image
+measure
+$\nu_0=\hat\mu_D\pmb{X}^{-1}$ in the proof of 271B as the distribution
+of $\pmb{X}$, unless it happens to be equal to $\nu=\nu_{\pmb{X}}$.
+The `distribution' of a random variable is exactly that aspect of it
+which can be divorced from any consideration of the underlying space
+$(\Omega,\Sigma,\mu)$, and the point of such results as 271K and 272G is
+that distributions can be calculated from each other, without going back
+to the relatively fluid and uncertain model of a random variable in
+terms of a function on a probability space.
+
+\medskip
+
+}{\bf (e)} %271De
+If $\pmb{X}=(X_1,\ldots,X_n)$ and
+$\pmb{Y}=(Y_1,\ldots,Y_n)$ are such that $X_i\eae Y_i$ for each $i$,
+then\cmmnt{
+
+\Centerline{$\{\omega:\omega\in\bigcap_{i\le n}\dom X_i,
+  \,X_i(\omega)\le\alpha_i\Forall i\le n\}
+\symmdiff\{\omega:\omega\in\bigcap_{i\le n}\dom Y_i,
+  \,Y_i(\omega)\le\alpha_i\Forall i\le n\}$}
+
+\noindent is negligible, so
+
+$$\eqalign{\Pr(X_i\le\alpha_i\Forall i\le n)
+&=\hat\mu\{\omega:\omega\in\bigcap_{i\le n}\dom X_i,
+  \,X_i(\omega)\le\alpha_i\Forall i\le n\}\cr
+&=\Pr(Y_i\le\alpha_i\Forall i\le n)\cr}$$
+
+\noindent for all $\alpha_0,\ldots,\alpha_n\in\Bbb R$,
+and} $\nu_{\pmb{X}}=\nu_{\pmb{Y}}$.   \cmmnt{This means that we can,
+if we wish, think of a distribution as a measure $\nu_{\pmb{u}}$ where
+$\pmb{u}=(u_0,\ldots,u_n)$ is a finite sequence in $L^0(\mu)$.   In the
+present chapter I shall not emphasize this approach, but it will always
+be at the back of my mind.
+}%end of comment
+
+\leader{271E}{Measurable functions of random variables:  Proposition}
+Let $\pmb{X}=(X_1,\ldots,X_n)$ be a family of random variables
+\cmmnt{(as always in such a context, I mean them all to be on the
+same probability space $(\Omega,\Sigma,\mu)$)};  write $\Tau_{\pmb{X}}$
+for the domain of the distribution $\nu_{\pmb{X}}$, and let $h$
+be a $\Tau_{\pmb{X}}$-measurable real-valued function defined
+$\nu_{\pmb{X}}$-a.e.\ on $\BbbR^n$.   Then we have a random
+variable $Y=h(X_1,\ldots,X_n)$ defined by setting
+
+\Centerline{$h(X_1,\ldots,X_n)(\omega)
+=h(X_1(\omega),\ldots,X_n(\omega))$ for every
+$\omega\in\pmb{X}^{-1}[\dom h]$.}
+
+\noindent  The distribution $\nu_Y$ of $Y$ is the measure
+on $\Bbb R$ defined by the formula
+
+\Centerline{$\nu_YF=\nu_{\pmb{X}}h^{-1}[F]$}
+
+\noindent for just those sets $F\subseteq\Bbb R$ such that
+$h^{-1}[F]\in\Tau_{\pmb{X}}$.   Also
+
+\Centerline{$\Expn(Y)=\int h\,d\nu_{\pmb{X}}$}
+
+\noindent in the sense that if one of these exists in
+$[-\infty,\infty]$, so does the other, and they are then equal.
+
+\proof{{\bf (a)(i)} Once again, write $(\Omega,\hat\Sigma,\hat\mu)$ for the
+completion of $(\Omega,\Sigma,\mu)$.   Since
+
+\Centerline{$\Omega\setminus\dom Y
+\subseteq\bigcup_{i\le n}(\Omega\setminus\dom X_i)
+  \cup\pmb{X}^{-1}[\BbbR^n\setminus\dom h]$}
+
+\noindent is negligible (using 271Bb), $\dom Y$ is
+conegligible.   If $a\in\Bbb R$, then
+
+\Centerline{$E=\{x:x\in\dom h,\,h(x)\le a\}\in\Tau_{\pmb{X}},$}
+
+\noindent so
+
+\Centerline{$\{\omega:\omega\in\Omega,\,Y(\omega)\le a\}
+=\pmb{X}^{-1}[E]\in\hat\Sigma$.}
+
+\noindent As $a$ is arbitrary, $Y$ is
+$\hat\Sigma$-measurable, and is a random variable.
+
+\medskip
+
+\quad{\bf (ii)} Let $\tilde h:\BbbR^n\to\Bbb R$ be any extension of $h$
+to the whole of $\BbbR^n$.   Then $\tilde h$ is
+$\Tau_{\pmb{X}}$-measurable, so the ordinary image measure
+$\nu_{\pmb{X}}\tilde h^{-1}$, defined on
+$\{F:\tilde h^{-1}[F]\in\dom\nu_{\pmb{X}}\}$, is a Radon probability
+measure on $\Bbb R$ (256G).   But for any $A\subseteq\Bbb R$,
+
+\Centerline{$\tilde h^{-1}[A]\symmdiff h^{-1}[A]
+\subseteq\BbbR^n\setminus\dom h$}
+
+\noindent is $\nu_{\pmb{X}}$-negligible, so
+$\nu_{\pmb{X}}h^{-1}[F]=\nu_{\pmb{X}}\tilde h^{-1}[F]$ if either is
+defined.
+
+If $F\subseteq\Bbb R$ is a Borel set, then
+
+\Centerline{$\nu_YF=\hat\mu\{\omega:Y(\omega)\in F\}
+=\hat\mu(\pmb{X}^{-1}[h^{-1}[F]])=\nu_{\pmb{X}}(h^{-1}[F])$.}
+
+\noindent So $\nu_Y$ and $\nu_{\pmb{X}}\tilde h^{-1}$ agree on the Borel
+sets and are equal (256D again).
+
+\medskip
+
+{\bf (b)} Now apply Theorem 235E to the measures $\hat\mu$ and
+$\nu_{\pmb{X}}$ and the function $\phi=\pmb{X}$.   We have
+
+\Centerline{$\int\chi(\pmb{X}^{-1}[F])d\hat\mu
+=\hat\mu(\pmb{X}^{-1}[F])=\nu_{\pmb{X}}F$}
+
+\noindent for every $F\in\Tau_{\pmb{X}}$, by 271Bb.   Because $h$ is
+$\nu_{\pmb{X}}$-virtually measurable and defined $\nu_{\pmb{X}}$-a.e.,
+235Eb tells us that
+
+\Centerline{$\int h(\pmb{X})d\mu=\int h(\pmb{X})d\hat\mu
+=\int h\,d\nu_{\pmb{X}}$}
+
+\noindent whenever either side is defined in $[-\infty,\infty]$,
+which is exactly the result we need.
+}%end of proof of 271E
+
+\vleader{72pt}{271F}{Corollary} If $X$ is a single random variable with
+distribution $\nu_{X}$, then
+
+\Centerline{$\Expn(X)=\int_{-\infty}^{\infty}x\,\nu_X(dx)$}
+
+\noindent if either is defined in $[-\infty,\infty]$.   Similarly
+
+\Centerline{$\Expn(X^2)=\int_{-\infty}^{\infty} x^2\,\nu_X(dx)$}
+
+\noindent (whatever $X$ may be).   If $X$, $Y$ are two random
+variables\cmmnt{ (on the same
+probability space!)} then we have
+
+\Centerline{$\Expn(X\times Y)=\int xy\,\nu_{(X,Y)}d(x,y)$}
+
+\noindent if either side is defined in $[-\infty,\infty]$.
+
+\medskip
+
+\noindent{\bf Remark}\dvAnew{2013} If $\nu$ is the distribution of a
+real-valued random variable, that is, a Radon probability measure
+on $\Bbb R$, I will say that the {\bf expectation} $\Expn(\nu)$ of $\nu$ is
+$\int_{-\infty}^{\infty}x\,\nu(dx)$ if this is defined;  if $\nu$ has
+finite expectation, then its {\bf variance} $\Var(\nu)$ will be
+$\int x^2\,\nu(dx)-(\Expn(\nu))^2$.   Thus if $X$ is a real-valued random
+variable with distribution $\nu_X$, $\Expn(X)=\Expn(\nu_X)$ and
+$\Var(X)=\Var(\nu_X)$ whenever these are defined.
+
+\leader{271G}{Distribution functions (a)} If $X$ is a real-valued random
+variable, its {\bf distribution
+function} is the function $F_X:\Bbb R\to[0,1]$ defined by setting
+
+\Centerline{$F_X(a)=\Pr(X\le a)=\nu_X\ocint{-\infty,a}$}
+
+\noindent for every $a\in\Bbb R$.    ({\bf Warning!}  some authors
+prefer $F_X(a)=\Pr(X<a)$.)   \cmmnt{Observe that $F_X$ is
+non-decreasing, that $\lim_{a\to-\infty}F_X(a)=0$, that
+$\lim_{a\to\infty}F_X(a)=1$ and that $\lim_{x\downarrow a}F_X(x)=F_X(a)$
+for every $a\in\Bbb R$.    By 271Ba,} $X$ and $Y$ have the same
+distribution iff $F_X=F_Y$.
+
+\spheader 271Gb
+If $X_1,\ldots,X_n$ are real-valued random variables on the same
+probability space, their {\bf (joint) distribution function} is the
+function $F_{\pmb{X}}:\BbbR^n\to[0,1]$ defined by writing
+
+\Centerline{$F_{\pmb{X}}(a)=\Pr(X_i\le\alpha_i\Forall i\le n)$}
+
+\noindent whenever $a=(\alpha_1,\ldots,\alpha_n)\in\BbbR^n$.   If
+$\pmb{X}$ and $\pmb{Y}$ have the same distribution function, they have
+the same distribution\cmmnt{, by the $n$-dimensional version of
+271B}.
+
+\leader{271H}{Densities} Let $\pmb{X}=(X_1,\ldots,X_n)$ be a family of
+random
+variables, all defined on the same probability space.   A {\bf density
+function}
+for $(X_1,\ldots,X_n)$ is a Radon-Nikod\'ym derivative, with respect to
+Lebesgue measure, for the distribution
+$\nu_{\pmb{X}}$\cmmnt{;  that is, a
+non-negative function $f$, integrable with
+respect to Lebesgue measure $\mu_L$ on $\BbbR^n$, such that
+
+\Centerline{$\int_Efd\mu_L=\nu_{\pmb{X}}E=\Pr(\pmb{X}\in E)$}
+
+\noindent for every Borel set $E\subseteq\BbbR^n$ (256J) -- if there is
+such a function, of course}.
+
+\leader{271I}{Proposition} Let $\pmb{X}=(X_1,\ldots,X_n)$ be a family of
+random variables, all defined on the same probability space.   Write
+$\mu_L$ for Lebesgue measure on $\BbbR^n$.
+
+(a) There is a density function for $\pmb{X}$ iff $\Pr(\pmb{X}\in E)=0$
+for every Borel set $E$ such that $\mu_LE=0$.
+
+(b) A non-negative Lebesgue integrable function $f$ is a density
+function for $\pmb{X}$ iff
+$\int_{\ocint{-\infty,a}}fd\mu_L=\Pr(\pmb{X}\in\ocint{-\infty,a})$ for
+every $a\in\BbbR^n$.
+
+(c) Suppose that $f$ is a density function for $\pmb{X}$, and
+$G=\{x:f(x)>0\}$.
+Then if $h$ is a Lebesgue measurable real-valued function defined almost
+everywhere in $G$,
+
+\Centerline{$\Expn(h(\pmb{X}))=\int h\,d\nu_{\pmb{X}}
+=\int h\times fd\mu_L$}
+
+\noindent if any of the three integrals is defined in
+$[-\infty,\infty]$, interpreting $(h\times f)(x)$ as $0$ if $f(x)=0$ and
+$x\notin\dom h$.
+
+\proof{{\bf (a)} Apply 256J to the Radon probability measure
+$\nu_{\pmb{X}}$.
+
+\medskip
+
+{\bf (b)} Of course the condition is necessary.   If
+it is satisfied, then (by B.Levi's theorem)
+
+\Centerline{$\int fd\mu_L
+=\lim_{k\to\infty}\int_{\ocint{-\infty,k\pmb{1}}}fd\mu_L
+=\lim_{k\to\infty}\nu_{\pmb{X}}\ocint{-\infty,k\pmb{1}}
+=1$.}
+
+\noindent So we have a Radon probability measure $\nu$ defined by
+writing
+
+\Centerline{$\nu E=\int_Efd\mu_L$}
+
+\noindent whenever $E\cap\{x:f(x)>0\}$ is Lebesgue measurable (256E).
+We are supposing that
+$\nu\ocint{-\infty,a}=\nu_{\pmb{X}}\ocint{-\infty,a}$ for every
+$a\in\BbbR^n$;  by 271Ba, as usual, $\nu=\nu_{\pmb{X}}$, so
+
+\Centerline{$\int_Efd\mu_L=\nu E=\nu_{\pmb{X}}E
+=\Pr(\pmb{X}\in E)$}
+
+\noindent for every Borel set $E\subseteq\BbbR^n$, and $f$ is a density
+function for $\pmb{X}$.
+
+\medskip
+
+{\bf (c)} By 256E, $\nu_{\pmb{X}}$ is the indefinite-integral measure
+over $\mu$ associated with $f$.   So, writing
+$G=\{x:f(x)>0\}$, we have
+
+\Centerline{$\int h\,d\nu_{\pmb{X}}=\int h\times fd\mu_L$}
+
+\noindent whenever either is defined in $[-\infty,\infty]$ (235K).
+By 234La, $h$ is
+$\Tau_{\pmb{X}}$-measurable and defined $\nu_{\pmb{X}}$-almost
+everywhere, where $\Tau_{\pmb{X}}=\dom\nu_{\pmb{X}}$, so
+$\Expn(h(\pmb{X}))=\int h\,d\nu_{\pmb{X}}$ by 271E.
+}%end of proof of 271I
+
+\leader{271J}{}\cmmnt{ The machinery developed in \S263 is sufficient
+to give a very general result on the densities of random variables of
+the form $\phi(\pmb{X})$, as follows.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $\pmb{X}=(X_1,\ldots,X_n)$ be a family of
+random variables, and $D\subseteq\BbbR^n$ a Borel set such that
+$\Pr(\pmb{X}\in D)=1$.   Let $\phi:D\to\BbbR^n$ be a
+function which is differentiable relative to its domain everywhere
+in $D$;  for $x\in D$, let $T(x)$ be a derivative of $\phi$ at $x$, and
+set $J(x)=|\det T(x)|$.   Suppose that $J(x)\ne 0$ for each $x\in D$,
+and that $\pmb{X}$ has a density function $f$;  and suppose moreover
+that $\sequence{k}{D_k}$ is a disjoint sequence of Borel sets, with
+union $D$, such that $\phi_k=\phi\restr D_k$ is injective for every $k$.
+Then $\phi(\pmb{X})$ has a density function $g=\sum_{k=0}^{\infty}g_k$
+where
+
+$$\eqalignno{g_k(y)&=\Bover{f(\phi_k^{-1}(y))}{J(\phi_k^{-1}(y))}
+\text{ for }y\in\phi[D_k\cap\dom f],\cr
+&=0\text{ for }y\in\BbbR^n\setminus\phi[D_k].\cr}$$
+
+\proof{ By 262Ia, $\phi$ is continuous, therefore Borel measurable, so
+$\phi(\pmb{X})$ is a random variable.
+
+For the moment, fix $k\in\Bbb N$ and a Borel set $F\subseteq\BbbR^n$.
+By 263D(iii), $\phi[D_k]$ is
+measurable, and by 263D(ii) $\phi[D_k\setminus\dom f]$ is negligible.
+The function $g_k$ is such that $f(x)=J(x)g_k(\phi(x))$ for
+every $x\in D_k\cap\dom f$, so by 263D(v) we have
+
+$$\eqalign{\int_Fg_k\,d\mu
+&=\int_{\phi[D_k]} g_k\times\chi F\,d\mu
+=\int_{D_k} J(x)g_k(\phi(x))\chi F(\phi(x))\mu(dx)\cr
+&=\int_{D_k\cap\phi^{-1}[F]}fd\mu
+=\Pr(\pmb{X}\in D_k\cap\phi^{-1}[F]).\cr}$$
+
+\noindent (The integral
+$\int_{\phi[D_k]} g_k\times\chi F$ is defined because
+$\int_{D_k}J\times(g_k\times\chi F)\phi$ is defined, and the integral
+$\int
+g_k\times\chi F$ is defined because $\phi[D_k]$ is measurable and $g$ is
+zero off $\phi[D_k]$.)
+
+Now sum over $k$.   Every $g_k$ is non-negative, so by B.Levi's theorem
+(123A, 123Xa)
+
+$$\eqalign{\int_Fg\,d\mu
+&=\sum_{k=0}^{\infty}\int_Fg_k\,d\mu
+=\sum_{k=0}^{\infty}\Pr(\pmb{X}\in D_k\cap\phi^{-1}[F])\cr
+&=\Pr(\pmb{X}\in\phi^{-1}[F])
+=\Pr(\phi(\pmb{X})\in F).\cr}$$
+
+\noindent As $F$ is arbitrary, $g$ is a density function for
+$\phi(\pmb{X})$, as
+claimed.
+}%end of proof of 271J
+
+\leader{271K}{}\cmmnt{ The application of the last theorem to ordinary
+transformations is sometimes indirect, so I give an example.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $X$, $Y$ be two random variables with a
+joint density function $f$.   Then $X\times Y$ has a density function
+$h$, where
+
+\Centerline{$h(u)
+=\int_{-\infty}^{\infty}\Bover1{|v|}f(\bover{u}{v},v)dv$}
+
+\noindent whenever this is defined in $\Bbb R$.
+
+\proof{ Set $\phi(x,y)=(xy,y)$ for $x$, $y\in\BbbR^2$.   Then $\phi$ is
+differentiable, with derivative $T(x,y)=\Matrix{y&x\\0&1}$, so
+$J(x,y)=|\det T(x,y)|=|y|$.   Set $D=\{(x,y):y\ne 0\}$;  then $D$ is a
+conegligible Borel set in $\BbbR^2$ and $\phi\restr D$ is injective.
+Now $\phi[D]=D$ and $\phi^{-1}(u,v)=(\bover{u}{v},v)$ for $v\ne 0$.   So
+$\phi(X,Y)=(X\times Y,Y)$ has a density function $g$, where
+
+\Centerline{$g(u,v)=\Bover{f(u/v,v)}{|v|}$ if $v\ne 0$.}
+
+To find a density function for $X\times Y$, we calculate
+
+\Centerline{$\Pr(X\times Y\le a)
+=\int_{\ocint{-\infty,a}\times\Bbb R}g
+=\int_{-\infty}^a\int_{-\infty}^{\infty}g(u,v)dv\,du
+=\int_{-\infty}^ah$}
+
+\noindent by Fubini's theorem (252B, 252C).   In particular, $h$ is
+defined
+and finite almost everywhere;  and by 271Ib it is a density function for
+$X\times Y$.
+}%end of proof of 271K
+
+\leader{*271L}{}\cmmnt{ When a random variable is presented as the
+limit of a sequence of random variables the following can be very
+useful.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $\sequencen{X_n}$ be a sequence of
+real-valued random variables converging in measure to a random variable
+$X$\cmmnt{ (definition:  245A)}.   Writing $F_{X_n}$, $F_X$ for the
+distribution functions of $X_n$, $X$ respectively,
+
+\Centerline{$F_X(a)=\inf_{b>a}\liminf_{n\to\infty}F_{X_n}(b)
+=\inf_{b>a}\limsup_{n\to\infty}F_{X_n}(b)$}
+
+\noindent for every $a\in\Bbb R$.
+
+\proof{ Set $\gamma=\inf_{b>a}\liminf_{n\to\infty}F_{X_n}(b)$,
+$\gamma'=\inf_{b>a}\limsup_{n\to\infty}F_{X_n}(b)$.
+
+\medskip
+
+{\bf (a)} $F_X(a)\le\gamma$.   \Prf\ Take any $b>a$ and $\epsilon>0$.
+Then there is an $n_0\in\Bbb N$ such that
+$\Pr(|X_n-X|\ge b-a)\le\epsilon$ for every $n\ge n_0$ (245F).   Now, for
+$n\ge n_0$,
+
+\Centerline{$F_X(a)
+=\Pr(X\le a)
+\le\Pr(X_n\le b)+\Pr(X_n-X\ge b-a)
+\le F_{X_n}(b)+\epsilon$.}
+
+\noindent So $F_X(a)\le\liminf_{n\to\infty}F_{X_n}(b)+\epsilon$;  as
+$\epsilon$ is arbitrary, $F_X(a)\le\liminf_{n\to\infty}F_{X_n}(b)$;  as
+$b$ is arbitrary, $F_X(a)\le\gamma$.\ \Qed
+
+\medskip
+
+{\bf (b)} $\gamma'\le F_X(a)$.   \Prf\ Let $\epsilon>0$.   Then there is
+a $\delta>0$ such that $F_X(a+2\delta)\le F_X(a)+\epsilon$ (271Ga).
+Next, there is an $n_0\in\Bbb N$ such that
+$\Pr(|X_n-X|\ge\delta)\le\epsilon$ for every $n\ge n_0$.
+In this case, for $n\ge n_0$,
+
+$$\eqalign{F_{X_n}(a+\delta)
+&=\Pr(X_n\le a+\delta)
+\le\Pr(X\le a+2\delta)+\Pr(X-X_n\ge\delta)\cr
+&\le F_X(a+2\delta)+\epsilon
+\le F_X(a)+2\epsilon.\cr}$$
+
+\noindent Accordingly
+
+\Centerline{$\gamma'\le\limsup_{n\to\infty}F_{X_n}(a+\delta)
+\le F_X(a)+2\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, $\gamma'\le F_X(a)$.\ \Qed
+
+\medskip
+
+{\bf (c)} Since of course $\gamma\le\gamma'$, we must have
+$F_X(a)=\gamma=\gamma'$, as claimed.
+}%end of proof of 271L
+
+\exercises{
+\leader{271X}{Basic exercises $\pmb{>}$(a)}
+%\spheader 271Xa
+Let $X$ be a real-valued random variable with finite expectation, and
+$\epsilon>0$.   Show that
+$\Pr(|X-\Expn(X)|\ge\epsilon)\le\Bover1{\epsilon^2}\Var(X)$.
+(This is {\bf Chebyshev's inequality}.)
+%271A
+
+\sqheader 271Xb Let $F:\Bbb R\to[0,1]$ be a non-decreasing
+function such that
+(i) $\lim_{a\to-\infty}F(a)=0$ (ii) $\lim_{a\to\infty}F(a)=1$ (iii)
+$\lim_{x\downarrow a}F(x)=F(a)$ for every $a\in\Bbb R$.   Show that
+there is a unique Radon probability measure $\nu$ in $\Bbb R$ such that
+$F(a)=\nu\ocint{-\infty,a}$ for every
+$a\in\Bbb R$.   \Hint{114Xa.}   Hence show that $F$
+is the distribution function of some random variable.
+%271G
+
+\sqheader 271Xc Let $X$ be a real-valued random variable with a density
+function $f$.   (i) Show
+that $|X|$ has a density function $g_1$ where $g_1(x)=f(x)+f(-x)$
+whenever $x\ge 0$
+and $f(x)$, $f(-x)$ are both defined, $0$ otherwise.   (ii) Show that
+$X^2$ has a density function $g_2$ where
+$g_2(x)=(f(\sqrt{x})+f(-\sqrt{x}))/2\sqrt{x}$ whenever $x>0$ and this is
+defined, $0$ for other $x$.   (iii) Show that if $\Pr(X=0)=0$ then $1/X$
+has a density function $g_3$ where $g_3(x)=\bover1{x^2}f(\bover1x)$
+whenever this is
+defined.   (iv) Show that if $\Pr(X<0)=0$ then $\sqrt{X}$ has a density
+function
+$g_4$ where $g_4(x)=2xf(x^2)$ if $x\ge 0$ and $f(x^2)$ is defined, $0$
+otherwise.
+%271J
+
+\sqheader 271Xd Let $X$ and $Y$ be random variables with a joint density
+function $f:\BbbR^2\to\Bbb R$.   Show that $X+Y$ has a density function
+$h$ where $h(u)=\int f(u-v,v)dv$ for almost every $u$.
+%271K
+
+\spheader 271Xe Let $X$, $Y$ be random variables with a joint density
+function
+$f:\BbbR^2\to\Bbb R$.   Show that $X/Y$ has a density function $h$ where
+$h(u)=\int|v|f(uv,v)dv$ for almost every $u$.
+%271K
+
+\spheader 271Xf Devise an alternative proof of 271K by using Fubini's
+theorem and one-dimensional substitutions to show that
+
+\Centerline{$\int_a^b\int_{-\infty}^{\infty}
+\Bover1{|v|}f(\bover{u}{v},v)dv\,du
+=\int_{\{(u,v):a\le uv\le b\}}f$}
+
+\noindent whenever $a\le b$ in $\Bbb R$.
+%271K
+
+\leader{271Y}{Further exercises (a)}
+%\spheader 271Ya
+Let $\frak T$ be the topology of
+$\BbbR^{\Bbb N}$ and $\Cal B$ the $\sigma$-algebra of Borel sets
+(256Yf).   (i) Let $\Cal I$ be the family of sets of the form
+
+\Centerline{$\{x:x\in\BbbR^{\Bbb N},\,
+x(i)\le \alpha_i\Forall i\le n\}$,}
+
+\noindent where $n\in\Bbb N$ and $\alpha_i\in\Bbb R$
+for each $i\le n$.   Show that $\Cal B$ is the smallest family of
+subsets of $\BbbR^{\Bbb N}$ such that ($\alpha$)
+$\Cal I\subseteq\Cal B$
+($\beta$) $B\setminus A\in\Cal B$ whenever $A$, $B\in\Cal B$ and
+$A\subseteq B$ ($\gamma$) $\bigcup_{k\in\Bbb N}A_k\in\Cal B$ for every
+non-decreasing sequence $\sequence{k}{A_k}$ in $\Cal B$.   (ii) Show
+that if $\mu$, $\mu'$ are two totally finite measures defined on
+$\BbbR^{\Bbb N}$, and
+$\mu F$ and $\mu' F$ are defined and equal for every $F\in\Cal I$, then
+$\mu E$ and $\mu' E$ are defined and equal for every $E\in\Cal B$.
+(iii) Show that if $\Omega$ is a set and $\Sigma$ a $\sigma$-algebra
+of subsets of $\Omega$ and $X:\Omega\to\BbbR^{\Bbb N}$ is a function,
+then $X^{-1}[E]\in\Sigma$ for every $E\in\Cal B$ iff $\pi_iX$ is
+$\Sigma$-measurable for every $i\in \Bbb N$, where $\pi_i(x)=x(i)$ for
+each $x\in\BbbR^{\Bbb N}$, $i\in \Bbb N$.   (iv) Show that if
+$\pmb{X}=\sequence{i}{X_i}$ is a sequence of real-valued random
+variables on a probability space $(\Omega,\Sigma,\mu)$, then there is a
+unique probability measure $\nu_{\pmb{X}}^{\Cal B}$, with domain
+$\Cal B$, such that
+$\nu_{\pmb{X}}^{\Cal B}\{x:x(i)\le\alpha_i\Forall i\le n\}
+=\Pr(X_i\le\alpha_i\Forall i\le n)$ for every
+$\alpha_0,\ldots,\alpha_n\in\Bbb R$.    (v) Under the conditions of
+(iv), show that there is a unique Radon measure $\nu_{\pmb{X}}$ on
+$\BbbR^{\Bbb N}$ (in the sense of 256Yf) such that
+$\nu_{\pmb{X}}\{x:x(i)\le\alpha_i\Forall i\le n\}
+=\Pr(X_i\le\alpha_i\Forall i\le n)$ for every
+$\alpha_0,\ldots,\alpha_n\in\Bbb R$.
+
+\header{271Yb}{\bf (b)} Let $F:\BbbR^2\to[0,1]$ be a function.   Show
+that the following are equiveridical:  (i) $F$ is the distribution
+function
+of some pair $(X_1,X_2)$ of random variables (ii) there is a probability
+measure $\nu$ on $\BbbR^2$ such that $\nu\ocint{-\infty,a}=F(a)$ for
+every $a\in\BbbR^2$ (iii)($\alpha$)
+$F(\alpha_1,\alpha_2)+F(\beta_1,\beta_2)
+\ge F(\alpha_1,\beta_2)+F(\alpha_2,\beta_1)$ whenever
+$\alpha_1\le\beta_1$
+and $\alpha_2\le\beta_2$ ($\beta$) $F(\alpha_1,\alpha_2)
+=\lim_{\xi_1\downarrow\alpha_1,\xi_2\downarrow\alpha_2}F(\xi_1,\xi_2)$
+for every $\alpha_1$, $\alpha_2$ ($\gamma$)
+$\lim_{\alpha\to-\infty}F(\alpha,\beta)
+=\lim_{\alpha\to-\infty}F(\beta,\alpha)=0$ for all $\beta$
+($\delta$) $\lim_{\alpha\to\infty}F(\alpha,\alpha)=1$.
+\Hint{for non-empty half-open intervals $\ocint{a,b}$, set
+$\lambda\ocint{a,b}=F(\alpha_1,\alpha_2)+F(\beta_1,\beta_2)
+  -F(\alpha_1,\beta_2)-F(\alpha_2,\beta_1)$, and
+continue as in 115B-115F.}
+
+\header{271Yc}{\bf (c)} Generalize (b) to higher dimensions, finding a
+suitable formula to stand in place of that in (iii-$\alpha$) of (b).
+
+\spheader 271Yd Let $(\Omega,\Sigma,\mu)$ be a probability space and
+$\Cal F$ a filter on $\eusm L^0(\mu)$ converging to
+$X_0\in\eusm L^0(\mu)$ for the topology of convergence in measure.
+Show that, writing $F_X$ for the distribution function of
+$X\in\eusm L^0(\mu)$,
+
+\Centerline{$F_{X_0}(a)=\inf_{b>a}\liminf_{X\to\Cal F}F_X(b)
+=\inf_{b>a}\limsup_{X\to\Cal F}F_X(b)$}
+
+\noindent for every $a\in\Bbb R$.
+%271L
+
+\spheader 271Ye\dvAnew{2009.} Let $X$, $Y$ be non-negative random variables
+with the same distribution, and $h:\coint{0,\infty}\to\coint{0,\infty}$ a
+non-decreasing function.   Show that
+$\Expn(X\times hY)\le\Expn(Y\times hY)$.
+\Hint{in the language of 252Yo, $(Y\times hY)^*=Y^*\times(hY)^*$.}
+}%end of exercises
+
+\endnotes{
+\Notesheader{271} Most of this section seems to have been taken up with
+technicalities.   This is perhaps unsurprising in view of the fact that
+it is devoted to the relationship between a vector random variable
+$\pmb{X}$ and the associated distribution $\nu_{\pmb{X}}$, and this
+necessarily leads us into the minefield which I attempted to chart in
+\S235.   Indeed, I call on results from \S235 twice;  once in 271E,
+with a $\phi(\omega)=\pmb{X}(\omega)$ and $J(\omega)=1$, and once in
+271I, with $\phi(x)=x$ and $J(x)=f(x)$.
+
+Distribution functions of one-dimensional random variables are easily
+characterized (271Xb);  in higher dimensions we have to work harder
+(271Yb-271Yc).   Distributions, rather than distribution functions, can
+be described for infinite sequences of random variables (271Ya);
+indeed, these ideas can be extended to uncountable families, but this
+requires proper topological measure theory, and belongs in Volume 4.
+
+The statement of 271J is elaborate, not to say cumbersome.  The point is
+that many of the most important transformations $\phi$ are not
+themselves injective, but can easily be dissected into injective
+fragments (see, for instance, 271Xc and 263Xd).   The point of 271K is
+that we frequently wish to apply the ideas here to
+transformations which are singular, and indeed change the dimension of
+the random variable.   I have not given the theorems which make such
+applications routine and suggest rather that you seek out tricks such as
+that used in the proof of 271K, which in any case are necessary if you
+want amenable formulae.   Of course other methods are available (271Xf).
+}%end of notes
+
+\discrpage
+

@@ -1,0 +1,887 @@
+\frfilename{mt233.tex}
+\versiondate{16.6.02}
+\copyrightdate{1994}
+
+\def\chaptername{The Radon-Nikod\'ym theorem}
+\def\sectionname{Conditional expectations}
+
+\newsection{233}
+
+I devote a section to a first look at one of the principal applications
+of the Radon-Nikod\'ym theorem.   It is one of the most
+vital ideas of measure theory, and will appear repeatedly in one form or
+another.   Here I give the definition and most basic properties of
+conditional expectations as they arise in abstract probability theory,
+with notes on convex functions and a version of Jensen's inequality
+(233I-233J).
+
+\leader{233A}{$\sigma$-subalgebras} Let $X$ be a set and $\Sigma$ a
+$\sigma$-algebra of subsets of $X$.   A {\bf $\sigma$-subalgebra} of
+$\Sigma$ is a $\sigma$-algebra $\Tau$ of subsets of $X$ such that
+$\Tau\subseteq\Sigma$.   If $(X,\Sigma,\mu)$ is a measure space and
+$\Tau$ is a $\sigma$-subalgebra of $\Sigma$, then
+$(X,\Tau,\mu\restrp\Tau)$ is again a measure space\cmmnt{;  this is
+immediate from the definition (112A).   Now we have the
+following straightforward lemma.   It is a special case of 235G below,
+but I give a separate proof in case you do not wish as yet
+to embark on the general investigation pursued in \S235}.
+
+\leader{233B}{Lemma} Let $(X,\Sigma,\mu)$ be a measure space and $\Tau$
+a $\sigma$-subalgebra of $\Sigma$.   A real-valued function $f$ defined
+on a subset of $X$
+is $\mu\restrp\Tau$-integrable iff (i) it is $\mu$-integrable (ii)
+$\dom f$ is $\mu\restrp\Tau$-conegligible (iii) $f$ is
+$\mu\restrp\Tau$-virtually measurable;  and in this case
+$\int fd(\mu\restrp\Tau)=\int fd\mu$.
+
+\proof{{\bf (a)}  Note first that if $f$ is a $\mu\restrp\Tau$-simple
+function, that is, is expressible as $\sum_{i=0}^na_i\chi E_i$ where
+$a_i\in\Bbb R$, $E_i\in\Tau$ and $(\mu\restrp\Tau)E_i<\infty$ for each
+$i$, then $f$ is $\mu$-simple and
+
+\Centerline{$\int f d\mu=\sum_{i=0}^na_i\mu E_i
+=\int f d(\mu\restrp\Tau)$.}
+
+\medskip
+
+{\bf (b)} Let $U_{\mu}$ be the set of non-negative
+$\mu$-integrable functions and $U_{\mu\restrp\Tau}$ the set of
+non-negative $\mu\restrp\Tau$-integrable functions.
+
+Suppose $f\in U_{\mu\restrp\Tau}$.   Then there is a
+non-decreasing sequence $\sequencen{f_n}$ of
+$\mu\restrp\Tau$-simple functions such that
+$f(x)=\lim_{n\to\infty}f_n\,\mu\restrp\Tau$-a.e.\ and
+
+\Centerline{$\int fd(\mu\restrp\Tau)
+=\lim_{n\to\infty}\int f_nd(\mu\restrp\Tau)$.}
+
+\noindent  But now
+every $f_n$ is also $\mu$-simple, and
+$\int f_nd\mu=\int f_nd(\mu\restrp\Tau)$ for every $n$,  and
+$f=\lim_{n\to\infty}f_n\,\mu$-a.e.   So $f\in U_{\mu}$ and
+$\int fd\mu=\int fd(\mu\restrp\Tau)$.
+
+\medskip
+
+{\bf (c)} Now suppose that $f$ is
+$\mu\restrp\Tau$-integrable.   Then it is the difference of two members
+of $U_{\mu\restrp\Tau}$, so is $\mu$-integrable, and
+$\int fd\mu=\int fd(\mu\restrp\Tau)$.   Also conditions (ii) and (iii)
+are satisfied,
+according to the conventions established in Volume 1 (122Nc, 122P-122Q).
+
+\medskip
+
+{\bf (d)} Suppose that $f$ satisfies conditions
+(i)-(iii).   Then $|f|\in U_{\mu}$, and  there is a conegligible set
+$E\subseteq\dom f$ such that $E\in\Tau$ and $f\restr E$ is
+$\Tau$-measurable.   Accordingly $|f|\restr E$ is $\Tau$-measurable.
+Now, if $\epsilon>0$, then
+
+\Centerline{$(\mu\restrp\Tau)\{x:x\in E,\,|f|(x)\ge\epsilon\}
+=\mu\{x:x\in E,\,|f|(x)\ge\epsilon\}
+\le{1\over\epsilon}\int|f|d\mu<\infty$;}
+
+\noindent moreover,
+
+$$\eqalign{\sup\{\int g\,d(\mu\restrp\Tau):g&\text{ is a }
+  \mu\restrp\Tau\text{-simple function},
+  \,g\le |f|\,\mu\restrp\Tau\text{-a.e.}\}\cr
+&=\sup\{\int g\,d\mu:g\text{ is a }
+  \mu\restrp\Tau\text{-simple function},
+  \,g\le |f|\,\mu\restrp\Tau\text{-a.e.}\}\cr
+&\le\sup\{\int g\,d\mu:g\text{ is a }
+  \mu\text{-simple function},\,g\le |f|\,\mu\text{-a.e.}\}\cr
+&\le\int |f|d\mu<\infty.\cr}$$
+
+\noindent By the criterion of 122Ja, $|f|\in U_{\mu\restrp\Tau}$.
+Consequently $f$, being $\mu\restrp\Tau$-virtually $\Tau$-measurable,
+is $\mu\restrp\Tau$-integrable, by 122P.   This completes the proof.
+}%end of proof of 233B
+
+\cmmnt{
+\leader{233C}{Remarks (a)} My argument just above is detailed
+to the point of
+pedantry.   I think, however, that while I can be accused of wasting
+paper by writing everything down, every element of the argument is
+necessary to the result.   To be sure, some of the details are needed
+only because I use such a wide notion of `integrable function';  if
+you restrict the notion of `integrability' to measurable functions
+defined on the whole measure space, there are simplifications at this
+stage, to be paid for later when you discover that many of the principal
+applications are to functions defined by formulae which do not apply on
+the whole underlying space.
+
+The essential point which does have to be grasped is that while a
+$\mu\restrp\Tau$-negligible set is always $\mu$-negligible, a
+$\mu$-negligible set need not be $\mu\restrp\Tau$-negligible.
+
+\header{233Cb}{\bf (b)} As the simplest possible example of the problems
+which can arise, I offer the following.   Let $(X,\Sigma,\mu)$ be
+$[0,1]^2$ with Lebesgue measure.   Let $\Tau$ be the set of those
+members of $\Sigma$ expressible as $F\times[0,1]$ for some
+$F\subseteq[0,1]$;  it is easy to see that $\Tau$ is a
+$\sigma$-subalgebra of $\Sigma$.   Consider $f$, $g:X\to[0,1]$ defined
+by saying that
+
+\Centerline{$f(t,u)=1$ if $u>0$, $0$ otherwise,}
+
+\Centerline{$g(t,u)=1$ if $t>0$, $0$ otherwise.}
+
+\noindent Then both $f$ and $g$ are $\mu$-integrable, being constant
+$\mu$-a.e.   But only $g$ is $\mu\restrp\Tau$-integrable, because any
+non-negligible $E\in\Tau$ includes a complete vertical section
+$\{t\}\times[0,1]$, so that $f$ takes both values $0$ and $1$ on $E$.
+If we set
+
+\Centerline{$h(t,u)=1$ if $u>0$, undefined otherwise,}
+
+\noindent then again (on the conventions I use) $h$ is
+$\mu$-integrable but not $\mu\restrp\Tau$-integrable, as there is no
+conegligible member of $\Tau$ included in the domain of $h$.
+
+\header{233Cc}{\bf (c)} If $f$ is defined everywhere in $X$, and
+$\mu\restrp\Tau$ is complete, then of course $f$ is
+$\mu\restrp\Tau$-integrable iff it is $\mu$-integrable and
+$\Tau$-measurable.   But note that in the example just above, which is
+one of the archetypes for this topic, $\mu\restrp\Tau$ is not complete,
+as singleton sets are negligible but not measurable.
+}%end of comment
+
+\leader{233D}{Conditional expectations} Let $(X,\Sigma,\mu)$ be a
+probability
+space\cmmnt{, that is, a measure space with $\mu X=1$}.
+\cmmnt{(Nearly all the ideas here work
+perfectly well for any totally finite measure space, but there seems
+nothing to be gained from the extension, and the traditional phrase
+`conditional expectation' demands a probability space.)}
+Let $\Tau\subseteq\Sigma$ be a $\sigma$-subalgebra.
+\dvro{ If $f$ is a $\mu$-integrable real-valued function, there is a
+$\mu\restrp\Tau$-integrable function $g$ such that $\int_Fg=\int_Ff$ for
+every $F\in\Tau$;  such  a function is {\bf a conditional expectation}
+of $f$ on $\Tau$.}{}
+
+\cmmnt{\header{233Da}{\bf (a)} For any
+$\mu$-integrable real-valued function $f$ defined on a conegligible
+subset of $X$, we have a corresponding indefinite integral
+$\nu_f:\Sigma\to\Bbb R$ given by the formula $\nu_fE=\int_Ef$ for every
+$E\in\Sigma$.   We know that $\nu_f$ is countably additive and truly
+continuous with respect to $\mu$, which in the present context is the
+same as saying that it is absolutely continuous (232Bc-232Bd).   Now
+consider the restrictions $\mu\restrp\Tau$, $\nu_f\restrp\Tau$ of $\mu$
+and $\nu_f$ to the $\sigma$-algebra $\Tau$.   It follows
+directly from the definitions of `countably additive' and
+`absolutely continuous' that
+$\nu_f\restrp\Tau$ is countably additive and absolutely continuous with
+respect to $\mu\restrp\Tau$, therefore truly continuous with respect to
+$\mu\restrp\Tau$.   Consequently, the
+Radon-Nikod\'ym theorem (232E) tells us that there is a
+$\mu\restrp\Tau$-integrable function $g$ such that
+$(\nu_f\restrp\Tau)F=\int_Fg\,d(\mu\restrp\Tau)$ for every $F\in\Tau$.
+}%end of comment
+
+\cmmnt{\header{233Db}{\bf (b)} Let us define {\bf a conditional
+expectation of $f$ on} $\Tau$ to be such a function; that is, a
+$\mu\restrp\Tau$-integrable
+function $g$ such that $\int_Fg\,d(\mu\restrp\Tau)=\int_Ffd\mu$ for
+every $F\in\Tau$.   Looking back at 233B, we see that for such a $g$ we
+have
+
+\Centerline{$\int_Fg\,d(\mu\restrp\Tau)
+=\int g\times\chi F\,d(\mu\restrp\Tau)
+=\int g\times\chi F\, d\mu=\int_Fg\,d\mu$}
+
+\noindent for every $F\in\Tau$;  also, that $g$ is almost everywhere
+equal to a $\Tau$-measurable function defined everywhere in $X$ which is
+also a conditional expectation of $f$ on $\Tau$ (232He).
+}%end of comment
+
+\cmmnt{\header{233Dc}{\bf (c)} I set the word `a' of the phrase
+`a conditional
+expectation' in bold type to emphasize that there is nothing unique
+about the function $g$.   In 242J I will return to this
+point, and describe an object which could properly be called `the'
+conditional expectation of $f$ on $\Tau$.   $g$ is `essentially
+unique' only in the sense that if $g_1$, $g_2$ are both conditional
+expectations of $f$ on $\Tau$ then $g_1=g_2\,\,\mu\restrp\Tau$-a.e.\
+(131Hb).   This does of course
+mean that a very large number of its properties -- for instance, the
+distribution function $G(a)=\hat\mu\{x:g(x)\le a\}$, where $\hat\mu$ is
+the completion of $\mu$ (212C) -- are independent of which $g$ we
+take.
+}%end of comment
+
+\cmmnt{\header{233Dd}{\bf (d)} A word of explanation of the phrase
+`conditional expectation' is in order.   This derives from the standard
+identification of probability with measure, due to Kolmogorov, which I
+will discuss more fully in Chapter 27.   A real-valued random
+variable may be regarded as a measurable, or virtually measurable,
+function $f$ on a probability space $(X,\Sigma,\mu)$;  its
+`expectation' becomes identified with $\int f d\mu$, supposing that this
+exists.   If $F\in\Sigma$ and $\mu F>0$ then the `conditional
+expectation of $f$ given $F$' is ${1\over{\mu F}}\int_Ff$.   If
+$F_0,\ldots,F_n$ is a partition of $X$ into measurable sets of
+non-zero measure, then the function $g$ given by
+
+\Centerline{$g(x)=\Bover1{\mu F_i}\int_{F_i}f$ if $x\in F_i$}
+
+\noindent is a kind of anticipated conditional expectation;  if we are
+one day told that $x\in F_i$, then $g(x)$ will be our subsequent
+estimate of the expectation of $f$.   In the terms of the definition
+above, $g$ is a conditional expectation of $f$ on the finite algebra
+$\Tau$ generated by $\{F_0,\ldots,F_n\}$.   An appropriate intuition for
+general $\sigma$-algebras $\Tau$ is that they consist of the events
+which we shall be able to observe at some stated future time $t_0$,
+while the whole algebra $\Sigma$ consists of all events, including those
+not observable until times later than $t_0$, if ever.
+}%end of comment
+
+\leader{233E}{}\cmmnt{ I list some of the elementary facts concerning
+conditional expectations.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a probability space
+and $\Tau$ a
+$\sigma$-subalgebra of $\Sigma$.   Let $\sequencen{f_n}$ be a sequence
+of $\mu$-integrable real-valued functions, and for each $n$ let $g_n$ be
+a conditional expectation of $f_n$ on
+$\Tau$.   Then
+
+(a) $g_1+g_2$ is a conditional expectation of $f_1+f_2$ on $\Tau$;
+
+(b) for any $c\in\Bbb R$, $cg_0$ is a conditional expectation of
+$cf_0$ on $\Tau$;
+
+(c) if $f_1\leae f_2$ then $g_1\leae g_2$;
+
+(d) if $\sequencen{f_n}$ is non-decreasing a.e.\ and
+$f=\lim_{n\to\infty}f_n$ is $\mu$-integrable, then
+$\lim_{n\to\infty}g_n$ is a conditional expectation of $f$ on $\Tau$;
+
+(e) if $f=\lim_{n\to\infty}f_n$ is defined a.e.\ and there is a
+$\mu$-integrable function $h$ such that $|f_n|\leae h$ for every
+$n$,
+then $\lim_{n\to\infty}g_n$ is a conditional expectation of $f$ on
+$\Tau$;
+
+(f) if $F\in\Tau$ then $g_0\times \chi F$ is a conditional
+expectation of $f_0\times\chi F$ on $\Tau$;
+
+(g) if $h$ is a bounded, $\mu\restrp\Tau$-virtually measurable
+real-valued function
+defined $\mu\restrp\Tau$-almost everywhere in $X$, then $g_0\times h$ is
+a conditional expectation of $f_0\times h$ on $\Tau$;
+
+(h) if $\Upsilon$ is a $\sigma$-subalgebra of $\Tau$, then a function
+$h_0$ is a conditional expectation of $f_0$ on $\Upsilon$ iff it is a
+conditional expectation of $g_0$ on $\Upsilon$.
+
+\proof{{\bf (a)-(b)} We have only to observe that
+
+\Centerline{$\int_Fg_1+g_2d(\mu\restrp\Tau)
+=\int_Fg_1d(\mu\restrp\Tau)+\int_Fg_2d(\mu\restrp\Tau)
+=\int_Ff_1d\mu+\int_Ff_2d\mu=\int_Ff_1+f_2d\mu$,}
+
+\Centerline{$\int_Fcg_0d(\mu\restrp\Tau)
+=c\int_Fg_0d(\mu\restrp\Tau)=c\int_Ff_0d\mu=\int_Fcf_0d\mu$}
+
+\noindent for every $F\in\Tau$.
+
+\medskip
+
+{\bf (c)} If $F\in\Tau$ then
+
+\Centerline{$\int_Fg_1d(\mu\restrp\Tau)=\int_Ff_1d\mu\le\int_Ff_2d
+\mu
+=\int_Fg_2d(\mu\restrp\Tau)$}
+
+\noindent for every $F\in\Tau$;  consequently
+$g_1\le g_2\,\mu\restrp\Tau$-a.e.\ (131Ha).
+
+\medskip
+
+{\bf (d)} By (c), $\sequencen{g_n}$ is non-decreasing
+$\mu\restrp\Tau$-a.e.;   moreover,
+
+\Centerline{$\sup_{n\in\Bbb N}\int g_nd(\mu\restrp\Tau)
+=\sup_{n\in\Bbb N}\int f_nd\mu
+=\int fd\mu<\infty$.}
+
+\noindent By B.Levi's theorem, $g=\lim_{n\to\infty}g_n$ is defined
+$\mu\restrp\Tau$-almost everywhere, and
+
+\Centerline{$\int_Fg\,d(\mu\restrp\Tau)
+=\lim_{n\to\infty}\int_Fg_nd(\mu\restrp\Tau)
+=\lim_{n\to\infty}\int_Ff_nd\mu
+=\int_Ffd\mu$}
+
+\noindent for every $F\in\Tau$, so $g$ is a conditional expectation of
+$f$ on $\Tau$.
+
+\medskip
+
+{\bf (e)} Set $f'_n=\inf_{m\ge n}f_m$, $f''_n=\sup_{m\ge n}f_m$ for each
+$n\in\Bbb N$.   Then we have
+
+\Centerline{$-h\leae f'_n\le f_n\le f''_n\leae h$,}
+
+\noindent and $\sequencen{f'_n}$, $\sequencen{f''_n}$ are
+almost-everywhere-monotonic sequences of functions both converging
+almost everywhere to $f$.   For each $n$, let $g'_n$, $g''_n$ be
+conditional expectations of $f'_n$, $f''_n$ on $\Tau$.   By (iii) and
+(iv), $\sequencen{g'_n}$ and $\sequencen{g''_n}$ are
+almost-everywhere-monotonic sequences converging almost everywhere to
+conditional expectations $g'$, $g''$ of $f$.   Of course
+$g'=g''\,\,\mu\restrp\Tau$-a.e.\ (233Dc).   Also, for each $n$,
+$g'_n\leae g_n\leae g''_n$, so $\sequencen{g_n}$ converges to
+$g'\,\,\mu\restrp\Tau$-a.e., and $g=\lim_{n\to\infty}g_n$ is defined
+almost everywhere and is a conditional expectation of $f$ on $\Tau$.
+
+\medskip
+
+{\bf (f)} For any $H\in\Tau$,
+
+\Centerline{$\int_Hg_0\times\chi F\,d(\mu\restrp\Tau)
+=\int_{H\cap F}g_0d(\mu\restrp\Tau)
+=\int_{H\cap F}f_0d\mu
+=\int_Hf_0\times\chi F\,d\mu$.}
+
+\medskip
+
+{\bf (g)}(i) If $h$ is actually $(\mu\restrp\Tau)$-simple, say
+$h=\sum_{i=0}^na_i\chi F_i$ where $F_i\in\Tau$ for each $i$, then
+
+\Centerline{$\int_Fg_0\times h\,d(\mu\restrp\Tau)
+=\sum_{i=0}^na_i\int_Fg_0\times\chi F_id(\mu\restrp\Tau)
+=\sum_{i=0}^na_i\int_Ff\times\chi F_i\,d\mu
+=\int_Ff\times h\,d\mu$}
+
+\noindent for every $F\in\Tau$.   (ii) For the general case, if
+$h$ is $\mu\restrp\Tau$-virtually measurable and
+$|h(x)|\le M\,\,\mu\restrp\Tau$-almost
+everywhere, then there is a sequence $\sequencen{h_n}$ of
+$\mu\restrp\Tau$-simple functions converging to $h$ almost everywhere,
+and with $|h_n(x)|\le M$ for every $x$, $n$.   Now
+$f_0\times h_n\to f_0\times h$ a.e.\ and $|f_0\times h_n|\leae M|f_0|$
+for each $n$,
+while $g_0\times h_n$ is a conditional expectation of $f_0\times h_n$
+for every $n$, so by (e) we see that $\lim_{n\to\infty}g_0\times h_n$
+will be a conditional expectation of $f_0\times h$;  but this is equal
+almost everywhere to $g_0\times h$.
+
+\medskip
+
+{\bf (h)} We need note only that
+$\int_Hg_0d(\mu\restrp\Tau)=\int_Hf_0d\mu$ for every $H\in\Upsilon$, so
+
+$$\eqalign{\int_Hh_0&d(\mu\restrp\Upsilon)=\int_Hg_0d(\mu\restrp\Tau)
+\text{ for every }H\in\Upsilon\cr
+&\iff\int_Hh_0d(\mu\restrp\Upsilon)=\int_Hf_0d\mu
+\text{ for every }H\in\Upsilon.\cr}$$
+}%end of proof of 233E
+
+\cmmnt{
+\leader{233F}{Remarks} Of course the results above are
+individually nearly trivial (though I think (e) and (g) might give you
+pause for
+thought if they were offered without previous preparation of the
+ground).   Cumulatively they amount to some quite strong properties.
+In \S242 I will restate them in language which is syntactically
+more direct, but relies on a deeper level of abstraction.
+
+As an illustration of the power of conditional
+expectations to surprise us, I offer the next proposition, which depends
+on the concept of `convex' function.
+}%end of comment
+
+\leader{233G}{Convex functions} Recall that a real-valued function
+$\phi$ defined on an interval $I\subseteq\Bbb R$ is {\bf convex} if
+
+\Centerline{$\phi(tb+(1-t)c)\le t\phi(b)+(1-t)\phi(c)$}
+
+\noindent whenever $b$, $c\in I$ and $t\in[0,1]$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Examples} The formulae $|x|$, $x^2$, $e^{\pm x}\pm x$
+define convex functions on $\Bbb R$;  on $\ooint{-1,1}$ we have
+$1/(1-x^2)$; on $\ooint{0,\infty}$ we have $1/x$ and $x\ln x$;  on
+$[0,1]$ we have the function which is zero on $\ooint{0,1}$ and $1$ on
+$\{0,1\}$.
+}%end of comment
+
+\leader{233H}{}\cmmnt{ The general theory of convex functions is both
+extensive and important;  I list a few of their more salient properties
+in 233Xe.
+For the moment the following lemma covers what we need.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $I\subseteq\Bbb R$ be a non-empty open
+interval\cmmnt{ (bounded or unbounded)} and $\phi:I\to\Bbb R$ a convex
+function.
+
+(a) For every $a\in I$ there is a $b\in\Bbb R$ such that
+$\phi(x)\ge\phi(a)+b(x-a)$ for every $x\in I$.
+
+(b) If we take, for each $q\in I\cap\Bbb Q$, a $b_q\in\Bbb R$ such that
+$\phi(x)\ge\phi(q)+b_q(x-q)$ for every $x\in I$, then
+
+\Centerline{$\phi(x)=\sup_{q\in I\cap\Bbb Q}\phi(q)+b_q(x-q)$}
+
+\noindent for every $x\in I$.
+
+(c) $\phi$ is Borel measurable.
+
+\proof{{\bf (a)} If $c$, $c'\in I$ and $c<a<c'$,
+then $a$ is expressible as $dc+(1-d)c'$ for some $d\in\ooint{0,1}$, so
+that $\phi(a)\le d\phi(c)+(1-d)\phi(c')$ and
+
+$$\eqalign{{\Bover{\phi(a)-\phi(c)}{a-c}}
+&\le{\Bover{d\phi(c)+(1-d)\phi(c')-\phi(c)}{dc+(1-d)c'-c}}
+={\Bover{(1-d)(\phi(c')-\phi(c))}{(1-d)(c'-c)}}\cr
+&={\Bover{d(\phi(c')-\phi(c))}{d(c'-c)}}
+={\Bover{\phi(c')-d\phi(c)-(1-d)\phi(c')}{c'-dc-(1-d)c'}}
+\le{\Bover{\phi(c')-\phi(a)}{c'-a}}.\cr}$$
+
+\noindent This means that
+
+\Centerline{$b=\sup_{c<a,c\in I}\Bover{\phi(a)-\phi(c)}{a-c}$}
+
+\noindent is finite, and $b\le\Bover{\phi(c')-\phi(a)}{c'-a}$ whenever
+$a<c'\in I$;  accordingly $\phi(x)\ge\phi(a)+b(x-a)$ for every $x\in I$.
+
+\medskip
+
+{\bf (b)}  By the choice of the $b_q$, $\phi(x)\ge\sup_{q\in\Bbb
+Q}\phi_q(x)$.
+On the other hand, given $x\in I$, fix $y\in I$ such that $x<y$ and let
+$b\in\Bbb R$ be such that $\phi(z)\ge\phi(x)+b(z-x)$ for every $z\in I$.
+If $q\in\Bbb Q$ and $x<q<y$, we have $\phi(y)\ge\phi(q)+b_q(y-q)$, so
+that
+$b_q\le\bover{\phi(y)-\phi(q)}{y-q}$ and
+
+$$\eqalign{\phi(q)+b_q(x-q)
+&=\phi(q)-b_q(q-x)
+\ge\phi(q)-\Bover{\phi(y)-\phi(q)}{y-q}(q-x)\cr
+&=\Bover{y-x}{y-q}\phi(q)-\Bover{q-x}{y-q}\phi(y)
+\ge\Bover{y-x}{y-q}(\phi(x)+b(q-x))-\Bover{q-x}{y-q}\phi(y).\cr}$$
+
+\noindent Now
+
+
+$$\eqalign{\phi(x)
+&=\lim_{q\downarrow x}
+   \Bover{y-x}{y-q}(\phi(x)+b(q-x))-\Bover{q-x}{y-q}\phi(y)\cr
+&\le\sup_{q\in\Bbb Q\cap\ooint{x,y}}
+   \Bover{y-x}{y-q}(\phi(x)+b(q-x))-\Bover{q-x}{y-q}\phi(y)\cr
+&\le\sup_{q\in\Bbb Q\cap\ooint{x,y}}\phi(q)+b_q(x-q)
+\le\sup_{q\in\Bbb Q\cap I}\phi(q)+b_q(x-q).\cr}$$
+
+\medskip
+
+{\bf (c)} Writing $\phi_q(x)=\phi(q)+b_q(x-q)$ for every 
+$q\in\Bbb Q\cap I$, every $\phi_q$ is a Borel measurable function, and 
+$\phi=\sup_{q\in I\cap\Bbb Q}\phi_q$ is the supremum of a countable 
+family of Borel measurable functions, so is Borel measurable.
+}%end of proof of 233H
+
+\leader{233I}{Jensen's inequality} Let $(X,\Sigma,\mu)$ be a measure
+space and $\phi:\Bbb R\to\Bbb R$ a convex function.
+
+(a) Suppose that $f$ and $g$ are real-valued $\mu$-virtually measurable
+functions defined almost everywhere in $X$ and that 
+$g\ge 0$ almost everywhere,
+$\int g=1$ and $g\times f$ is integrable.   Then
+$\phi(\int g\times f)\le\int g\times\phi f$,
+where we may need to interpret the right-hand integral as
+$\infty$.
+
+(b) In particular, if $\mu X=1$ and $f$ is a real-valued function which
+is integrable over $X$, then $\phi(\int f)\le\int\phi f$.
+
+\proof{{\bf (a)} For each $q\in\Bbb Q$ take $b_q$ such that
+$\phi(t)\ge\phi_q(t)=\phi(q)+b_q(t-q)$ for every $t\in\Bbb R$ (233Ha).
+Because $\phi$ is Borel measurable (233Hc), $\phi f$ is $\mu$-virtually
+measurable (121H), so $g\times\phi f$ also is;   since $g\times\phi f$
+is defined almost everywhere and almost everywhere greater than or equal
+to the integrable function $g\times\phi_0f$, $\int g\times\phi f$ is
+defined in $\ocint{-\infty,\infty}$.   Now
+
+$$\eqalign{\phi_q\bigl(\intop g\times f\bigr)
+&=\phi(q)+b_q\int g\times f-b_qq\cr
+&=\int g\times(b_qf+(\phi(q)-b_qq)\chi X)
+=\int g\times\phi_qf
+\le\int g\times\phi f,\cr}$$
+
+\noindent because $\int g=1$ and $g\ge 0$ a.e.   By 233Hb,
+
+\Centerline{$\phi(\intop g\times f)
+=\sup_{q\in\Bbb Q}\phi_q(\intop g\times f)
+\le\int g\times\phi f$.}
+
+\medskip
+
+{\bf (b)} Take $g$ to be the constant function with value $1$.
+}%end of proof of 233I
+
+\leader{233J}{}\cmmnt{ Even the special case 233Ib of Jensen's
+inequality is already very useful.   It can be extended as follows.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $(X,\Sigma,\mu)$ be a
+probability space and $\Tau$ a $\sigma$-subalgebra of $\Sigma$.   Let
+$\phi:\Bbb R\to\Bbb R$ be a convex function and $f$ a $\mu$-integrable
+real-valued function defined almost everywhere in $X$ such that the
+composition $\phi f$ is also
+integrable.   If $g$ and $h$ are conditional expectations on $\Tau$ of
+$f$, $\phi f$ respectively, then $\phi g\leae h$.   Consequently
+$\int\phi g\le\int\phi f$.
+
+\proof{ We use the same ideas as in 233I.   For each $q\in\Bbb Q$ take a
+$b_q\in\Bbb R$ such
+that $\phi(t)\ge\phi_q(t)=\phi(q)+b_q(t-q)$ for every $t\in\Bbb R$, so
+that $\phi(t)=\sup_{q\in\Bbb Q}\phi_q(t)$ for every $t\in\Bbb R$.   Now
+setting
+
+\Centerline{$\psi_q(x)=\phi(q)+b_q(g(x)-q)$}
+
+\noindent for $x\in\dom g$, we see that $\psi_q=\phi_q g$ is a
+conditional expectation of $\phi_q f$, and as
+$\phi_q f\leae\phi f$ we must have $\psi_q\leae h$.   But also 
+$\phi g=\sup_{q\in\Bbb Q}\psi_q$ wherever $g$ is
+defined, so $\phi g\leae h$, as claimed.
+
+It follows at once that $\int\phi g\le\int h=\int\phi f$.
+}%end of proof of 233J
+
+\leader{233K}{}\cmmnt{ I give the following proposition, an
+elaboration of
+233Eg, in a very general form, as its applications can turn up anywhere.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a probability space,
+and $\Tau$ a $\sigma$-subalgebra of $\Sigma$.   Suppose that $f$ is a
+$\mu$-integrable function and $h$ is a $(\mu\restrp\Tau)$-virtually
+measurable real-valued function defined $(\mu\restrp\Tau)$-almost
+everywhere in $X$.   Let $g$, $g_0$ be conditional expectations of $f$
+and $|f|$ on $\Tau$.   Then $f\times h$ is integrable iff $g_0\times h$
+is integrable, and in this case $g\times h$ is a conditional expectation
+of $f\times h$ on $\Tau$.
+
+\proof{{\bf (a)} Suppose that $h$ is a $\mu\restrp\Tau$-simple function.
+Then surely $f\times h$ and $g_0\times h$ are integrable, and $g\times
+h$ is a conditional expectation of $f\times h$ as in 233Eg.
+
+\medskip
+
+{\bf (b)} Now suppose that $f$, $h\ge 0$.   Then $g=g_0\ge 0$ a.e.
+(233Ec).  Let $\tilde h$ be a non-negative
+$\Tau$-measurable function defined everywhere in $X$ such that
+$h\eae\tilde h$.    For each $n\in\Bbb N$ set
+
+$$\eqalign{h_n(x)
+&=2^{-n}k\text{ if }0\le k<4^n
+  \text{ and }2^{-n}k\le\tilde h(x)<2^{-n}(k+1),\cr
+&=2^n\text{ if }\tilde h(x)\ge 2^{-n}.\cr}$$
+
+\noindent Then $h_n$ is a $(\mu\restrp\Tau)$-simple function, so
+$g\times h_n$ is a conditional expectation of $f\times h_n$.
+Both $\sequencen{f\times h_n}$ and $\sequencen{g\times h_n}$ are almost
+everywhere non-decreasing sequences of integrable functions, with limits
+$f\times h$ and $g\times h$ respectively.   By B.Levi's theorem,
+
+$$\eqalignno{f\times h\text{ is integrable}
+&\iff\,f\times\tilde h\text{ is integrable}\cr
+&\iff\,\sup_{n\in\Bbb N}\int f\times h_n<\infty
+\iff\,\sup_{n\in\Bbb N}\int g\times h_n<\infty\cr
+\noalign{\noindent (because $\int g\times h_n=\int f\times h_n$ for each
+$n$)}
+&\iff\,g\times h\text{ is integrable}
+\iff\,g_0\times h\text{ is integrable}.\cr}$$
+
+\noindent Moreover, in this case
+
+$$\eqalign{\int_Ef\times h
+&=\int_Ef\times\tilde h
+=\lim_{n\to\infty}\int_Ef\times h_n\cr
+&=\lim_{n\to\infty}\int_Eg\times h_n
+=\int_Eg\times\tilde h
+=\int_Eg\times h\cr}$$
+
+\noindent for every $E\in\Tau$, while $g\times h$ is
+$(\mu\restrp\Tau)$-virtually measurable, so $g\times h$ is a
+conditional expectation of $f\times h$.
+
+\medskip
+
+{\bf (c)} Finally, consider the general case of integrable $f$ and
+virtually measurable $h$.   Set $f^+=f\vee 0$, $f^-=(-f)\vee 0$,
+so that $f=f^+-f^-$ and $0\le f^+,\,f^-\le|f|$;  similarly, set
+$h^+=h\vee 0$, $h^-=(-h)\vee 0$.   Let $g_1$, $g_2$ be conditional
+expectations of $f^+$, $f^-$ on $\Tau$.   Because $0\le f^+$,
+$f^-\le|f|$, $0\le g_1$, $g_2\leae g_0$,  while $g\eae g_1-g_2$.
+
+We see that
+
+$$\eqalign{f\times h\text{ is integrable}
+&\iff\,|f|\times|h|=|f\times h|\text{ is integrable}\cr
+&\iff\,g_0\times |h|\text{ is integrable}\cr
+&\iff\,g_0\times h\text{ is integrable}.\cr}$$
+
+\noindent And in this case all four of
+$f^+\times h^+,\ldots,f^-\times h^-$ are integrable, so
+
+\Centerline{$(g_1-g_2)\times h
+=g_1\times h^+-g_2\times h^+-g_1\times h^-+g_2\times h^-$}
+
+\noindent is a conditional expectation of
+
+\Centerline{$f^+\times h^+-f^-\times h^+-f^+\times h^-+f^-\times h^- %
+=f\times h$.}
+
+\noindent Since $g\times h\eae(g_1-g_2)\times h$, this also is a
+conditional expectation of $f\times h$, and we're done.
+}%end of proof of 233K
+
+\exercises{
+\leader{233X}{Basic exercises (a)}
+%\spheader 233Xa
+Let $(X,\Sigma,\mu)$ be a probability space and $\Tau$ a
+$\sigma$-subalgebra of $\Sigma$.   Let $\sequencen{f_n}$ be a sequence
+of non-negative $\mu$-integrable functions and suppose that $g_n$ is a
+conditional expectation of $f_n$ on $\Tau$ for each $n$.   Suppose that
+$f=\liminf_{n\to\infty}f_n$ is integrable and has a conditional
+expectation $g$.   Show that $g\leae\liminf_{n\to\infty}g_n$.
+%233E
+
+\spheader 233Xb Let $I\subseteq\Bbb R$ be an interval, and
+$\phi:I\to\Bbb R$ a function.   Show that $\phi$ is convex iff
+$\{x:x\in I,\,\phi(x)+bx\le c\}$ is an interval for every $b$,
+$c\in\Bbb R$.
+%233G
+
+\sqheader 233Xc Let $I\subseteq\Bbb R$ be an open interval and
+$\phi:I\to\Bbb R$ a function.   (i) Show that if $\phi$ is
+differentiable then it is convex iff $\phi'$ is non-decreasing.   (ii)
+Show that if $\phi$ is absolutely continuous on every bounded closed
+subinterval of $I$ then $\phi$ is convex iff
+$\phi'$ is non-decreasing on its domain.
+
+\spheader 233Xd For any $r\ge 1$, a subset $C$ of $\BbbR^r$ is
+{\bf convex} if $tx + (1-t)y\in C$ for all $x$, $y\in C$ and
+$t\in[0,1]$.   If $C\subseteq\BbbR^r$ is convex, then a function
+$\phi:C\to\Bbb R$ is {\bf convex} if
+$\phi(tx+(1-t)y)\le t\phi(x)+(1-t)\phi(y)$ for all $x$, $y\in C$ and
+$t\in[0,1]$.
+
+Let $C\subseteq\BbbR^r$ be a convex set and $\phi:C\to\Bbb R$ a
+function.   Show that the following are equiveridical:   (i) the
+function $\phi$ is convex; (ii) the set
+$\{(x,t):x\in C,\,t\in\Bbb R,\,t\ge\phi(x)\}$ is convex in
+$\BbbR^{r+1}$;  (iii) the set
+$\{x:x\in C,\,\phi(x)+b\dotproduct x\le c\}$ is convex in $\BbbR^r$ for
+every $b\in\BbbR^r$ and $c\in\Bbb R$, writing
+$b\dotproduct x=\sum_{i=1}^r\beta_i\xi_i$ if
+$b=(\beta_1,\ldots,\beta_r)$ and $x=(\xi_1,\ldots,\xi_r)$.
+%233G
+
+\spheader 233Xe Let $I\subseteq\Bbb R$ be an interval
+and $\phi:I\to\Bbb R$ a convex function.
+
+\quad (i) Show that if $a$, $d\in I$ and $a<b\le c<d$ then
+
+\Centerline{$\Bover{\phi(b)-\phi(a)}{b-a}
+\le\Bover{\phi(d)-\phi(c)}{d-c}$.}
+
+\quad (ii) Show that $\phi$ is continuous at every interior point of
+$I$.
+
+\quad (iii) Show that {\it either} $\phi$ is monotonic on $I$ {\it or}
+there is a $c\in I$ such that $\phi(c)=\min_{x\in I}\phi(x)$ and $\phi$
+is non-increasing on $I\cap\ocint{-\infty,c}$, monotonic
+non-decreasing on $I\cap\coint{c,\infty}$.
+
+\quad (iv) Show that $\phi$ is differentiable at all but countably many
+points of $I$, and that its derivative is non-decreasing in
+the sense that $\phi'(x)\le\phi'(y)$ whenever $x$, $y\in\dom\phi'$ and
+$x\le y$.
+
+\quad (v) Show that if $I$ is closed and bounded and $\phi$ is
+continuous then $\phi$ is absolutely continuous.
+
+\quad (vi) Show that if $I$ is closed and bounded and $\psi:I\to\Bbb R$
+is absolutely continuous with a non-decreasing derivative then
+$\psi$ is convex.
+%233H
+
+\spheader 233Xf Show that if $I\subseteq\Bbb R$ is an interval and
+$\phi$, $\psi:I\to\Bbb R$ are convex functions so is $a\phi+b\psi$ for
+any $a$, $b\ge 0$.
+%233H
+
+\spheader 233Xg In the context of 233K, give an example in which
+$g\times h$ is integrable but $f\times h$ is not.  \Hint{take
+$X$, $\mu$, $\Tau$ as in 233Cb, and arrange for $g$ to be $0$.}
+%233K
+
+\spheader 233Xh Let $I\subseteq\Bbb R$ be an interval and $\Phi$ a
+non-empty family of convex real-valued functions on $I$ such that
+$\psi(x)=\sup_{\phi\in\Phi}\phi(x)$ is finite for every $x\in I$.   Show
+that $\psi$ is convex.
+%233H
+
+\leader{233Y}{Further exercises (a)} If $I\subseteq\Bbb R$ is an
+interval, a function $\phi:I\to\Bbb R$ is {\bf mid-convex} if
+$\phi(\bover{x+y}2)\le\bover12(\phi(x)+\phi(y))$ for all $x$, $y\in I$.
+Show that a mid-convex function which is bounded on any non-trivial
+subinterval of $I$ is convex.
+%233G
+
+\spheader 233Yb Generalize 233Xd to arbitrary normed spaces in
+place of $\BbbR^r$.
+%233G
+
+\spheader 233Yc Let $(X,\Sigma,\mu)$ be a probability space and
+$\Tau$ a $\sigma$-subalgebra of $\Sigma$.   Let $\phi$ be a convex
+real-valued function with domain an interval $I\subseteq\Bbb R$, and $f$
+an integrable real-valued function on $X$ such that $f(x)\in I$ for
+almost every $x\in X$ and $\phi f$ is integrable.   Let $g$,
+$h$ be conditional expectations on $\Tau$ of $f$, $\phi f$
+respectively.   Show that $g(x)\in I$ for almost every $x$ and that
+$\phi g\leae h$.
+%233J
+
+\spheader 233Yd(i) Show that if $I\subseteq\Bbb R$ is a bounded
+interval, $E\subseteq I$ is Lebesgue measurable, and
+$\mu E>\bover23\mu I$ where $\mu$ is Lebesgue measure, then for every
+$x\in I$ there are $y$, $z\in E$ such that $z=\bover{x+y}2$.   \Hint{by
+134Ya/263A, $\mu(x+E)+\mu(2E)>\mu(2I)$.}   (ii) Show that if
+$f:[0,1]\to\Bbb R$ is a mid-convex Lebesgue measurable function
+(definition:  233Ya), $a>0$, and $E=\{x:x\in[0,1]$, $a\le f(x)<2a\}$ is
+not negligible, then there is a non-trivial interval $I\subseteq[0,1]$
+such that $f(x)>0$ for every $x\in I$.   \Hint{223B.}   (iii) Suppose
+that $f:[0,1]\to\Bbb R$ is a mid-convex function such that $f\le 0$
+almost everywhere in $[0,1]$.   Show that $f\le 0$ everywhere in
+$\ooint{0,1}$.   \Hint{for every $x\in\ooint{0,1}$,
+$\max(f(x-t),f(x+t))\le 0$ for almost every $t\in[0,\min(x,1-x)]$.}
+(iv) Suppose that $f:[0,1]\to\Bbb R$ is a mid-convex Lebesgue measurable
+function such that $f(0)=f(1)=0$.   Show that $f(x)\le 0$ for every
+$x\in[0,1]$.   \Hint{show that $\{x:f(x)\le 0\}$ is dense in $[0,1]$,
+use (ii) to show that it is conegligible in $[0,1]$ and apply (iii).}
+(v) Show that if $I\subseteq\Bbb R$ is an interval and $f:I\to\Bbb R$ is
+a mid-convex Lebesgue measurable function then it is convex.
+%233Ya 233G not in 2001 edition
+
+\spheader 233Ye Let $(X,\Sigma,\mu)$ be a probability space, $\Tau$ a
+$\sigma$-subalgebra of subsets of $X$, and $f:X\to[0,\infty]$ a
+$\Sigma$-measurable function.   Show that (i) there is a $\Tau$-measurable
+$g:X\to[0,\infty]$ such that $\int_Fg=\int_Ff$ for every $F\in\Tau$
+(ii) any two such functions are equal a.e.
+
+\spheader 233Yf Suppose that $r\ge 1$ and $C\subseteq\BbbR^r\setminus\{0\}$
+is a convex set.   Show that there is a non-zero $b\in\BbbR^r$ 
+such that $\varinnerprod{b}{z}\ge 0$ for every $z\in C$.
+\Hint{if $r=2$, identify $\BbbR^2$ with $\Bbb C$;  reduce to the case in
+which $C$ contains no points which are real and negative;  set
+$\theta=\sup\{\arg z:z\in C\}$ and $b=-ie^{i\theta}$.   Now induce on $r$.}
+%233Xd
+
+\spheader 233Yg Suppose that $r\ge 1$, $C\subseteq\BbbR^r$ is a convex set
+and $\phi:C\to\Bbb R$ is a convex function.   Show that there is a function
+$h:\BbbR^r\to\coint{-\infty,\infty}$ such that
+$\phi(z)=\sup\{h(y)+\varinnerprod{z}{y}:y\in\BbbR^r\}$ for every $z\in C$.
+\Hint{try $h(y)=\inf\{\phi(z)-\varinnerprod{z}{y}:z\in C\}$, and apply
+233Yf to a translate of $\{(z,t):\phi(z)\le t\}$.}
+%233Yf 233Xd 233H
+
+\spheader 233Yh Let $(X,\Sigma,\mu)$ be a probability space, $r\ge 1$ an
+integer and $C\subseteq\BbbR^r$ a convex set.   
+Let $f_1,\ldots,f_r$ be $\mu$-integrable real-valued functions
+and suppose that $\{x:x\in\bigcap_{j\le r}\dom f_j$,
+$(f_1(x),\ldots,f_r(x))\in C\}$ is a conegligible subset of $X$.
+Show that $(\int f_1,\ldots,\int f_r)\in C$.
+\Hint{induce on $r$.}
+%233Yg 233H
+
+\spheader 233Yi Let $(X,\Sigma,\mu)$ be a probability space, $r\ge 1$ an
+integer, $C\subseteq\BbbR^r$ a convex set and $\phi:C\to\BbbR^r$ a convex
+function.   Let $f_1,\ldots,f_r$ be $\mu$-integrable real-valued functions
+and suppose that $\{x:x\in\bigcap_{j\le r}\dom f_j$,
+$(f_1(x),\ldots,f_r(x))\in C\}$ is a conegligible subset of $X$.
+Show that $\phi(\int f_1,\ldots,\int f_r)\le\int\phi(f_1,\ldots,f_r)$.
+%233Yg 233Yh 233H
+
+\spheader 233Yj Let $(X,\Sigma,\mu)$ be a measure space with $\mu X>0$, 
+$r\ge 1$ an
+integer, $C\subseteq\BbbR^r$ a convex set such that $tz\in C$ whenever
+$z\in C$ and $t>0$, and $\phi:C\to\Bbb R$ a convex function.
+Let $f_1,\ldots,f_r$ be $\mu$-integrable real-valued functions
+and suppose that $\{x:x\in\bigcap_{j\le r}\dom f_j$,
+$(f_1(x),\ldots,f_r(x))\in C\}$ is a conegligible subset of $X$.
+Show that $(\int f_1,\ldots,\int f_r)\in C$ and that
+$\phi(\int f_1,\ldots,\int f_r)\le\int\phi(f_1,\ldots,f_r)$.
+\Hint{putting 215B(viii) and 235K below together, show that there are a
+probability measure $\nu$ on $X$ and a function $h:X\to\coint{0,\infty}$
+such that $\int f_jd\mu=\int f_j\times h\,d\nu$ for every $j$.}
+%233Yh 233Yi 233H
+
+}%end of exercises
+
+\endnotes{
+\Notesheader{233} The concept of `conditional expectation' is
+fundamental in probability theory, and will reappear in Chapter 27 in
+its natural context.   I hope that even as an exercise in technique,
+however, it will strike you as worth taking note of.
+
+I introduced 233E as a `list of elementary facts', and they are indeed
+straightforward.   But below the surface there are some remarkable ideas
+waiting for expression.   If you take $\Tau$ to be the trivial algebra
+$\{\emptyset,X\}$, so that the (unique) conditional expectation of an
+integrable function $f$ is the constant function $(\int f)\chi X$, then
+233Ed and 233Ee become versions of B.Levi's theorem and Lebesgue's
+Dominated Convergence Theorem.   (Fatou's Lemma is in 233Xa.)   Even
+233Eg can be thought of as a generalization of the result that
+$\int cf=c\int f$, where the constant $c$ has been replaced by a bounded
+$\Tau$-measurable function.   A recurrent theme in the later parts of
+this treatise will be the search for `conditioned' versions of theorems.
+The proof of 233Ee is a typical example of an argument which has been
+translated from a proof of the original `unconditioned' result.
+
+I suggested that 233I-233J are surprising, and I think
+that most of us find them so, even applied to the list of convex
+functions given in 233G.   But I should remark that in a way 233J has
+very little to
+do with conditional expectations.   The only properties of conditional
+expectations used in the proof are (i) that if $g$ is a conditional
+expectation of $f$, then $a\chi X+bg$ is a conditional expectation of
+$a\chi X+bf$ for all real $a$, $b$ (ii) if $g_1$, $g_2$ are conditional
+expectations of $f_1$, $f_2$ and $f_1\leae f_2$, then $g_1\leae g_2$.   
+See 244Xm below.   Jensen's inequality has an interesting extension to the
+multidimensional case, explored in 
+233Yf-233Yj.   %233Yf 233Yg 233Yh 233Yi 233Yj
+If you have encountered `geometric' forms of the Hahn-Banach theorem (see
+3A5C in Volume 3) you will find 233Yf and 233Yg very natural, and you may
+notice that the finite-dimensional case is slightly different from the
+infinite-dimensional case you have probably been taught.   
+I think that in fact the most
+delicate step is in 233Yh.
+
+Note that 233Ib can be regarded as the special case of 233J in which
+$\Tau=\{\emptyset,X\}$.   In fact 233Ia can be derived from 233Ib
+applied to the measure $\nu$ where $\nu E=\int_Eg$ for every
+$E\in\Sigma$.
+
+Like 233B, 233K seems to have rather a lot of technical detail in the
+argument.   The point of this result is that we can deduce the
+integrability of $f\times h$ from that of $g_0\times h$ (but not from
+the integrability of $g\times h$;  see 233Xg).
+Otherwise it should be routine.
+}%end of notes
+
+\discrpage
+

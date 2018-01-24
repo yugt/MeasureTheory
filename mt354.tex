@@ -1,0 +1,1036 @@
+\frfilename{mt354.tex}
+\versiondate{18.8.08}
+\copyrightdate{2000}
+
+\def\chaptername{Riesz Spaces}
+\def\sectionname{Banach lattices}
+
+\newsection{354}
+
+The next step is a brief discussion of norms on Riesz spaces.   I start
+with the essential definitions (354A, 354D) with the principal
+properties of
+general Riesz norms (354B-354C) and order-continuous norms (354E).   I
+then describe two of the most important classes of Banach lattice:
+$M$-spaces (354F-354L) %354F 354G 354H 354I 354J 354K 354L
+and $L$-spaces (354M-354R), %354M 354N 354O 354P 354Q 354R
+with their elementary
+properties.   For $M$-spaces I give the basic representation theorem
+(354K-354L), and for $L$-spaces I give a note on uniform integrability
+(354P-354R).  %354P 354Q 354R
+
+\leader{354A}{Definitions (a)} If $U$ is a Riesz space, a {\bf Riesz
+norm} or {\bf lattice norm}
+%Deville Godefroy & Zizler
+on $U$ is a norm $\|\,\|$ such that $\|u\|\le\|v\|$ whenever
+$|u|\le|v|$\cmmnt{;  that is, a norm such that $\||u|\|=\|u\|$ for
+every $u$ and $\|u\|\le\|v\|$ whenever $0\le u\le v$}.
+
+\spheader 354Ab A {\bf Banach lattice} is a Riesz space with a Riesz
+norm under which it is complete.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} We have already seen many examples of Banach
+lattices;  I list some in 354Xa below.
+}
+
+\leader{354B}{Lemma} Let $U$ be a Riesz space with a Riesz norm
+$\|\,\|$.
+
+(a) $U$ is Archimedean.
+
+(b) The maps $u\mapsto|u|$ and $u\mapsto u^+$ are uniformly continuous.
+
+(c) For any $u\in U$, the sets $\{v:v\le u\}$ and $\{v:v\ge u\}$ are
+closed;  in particular, the positive cone of $U$ is closed.
+
+(d) Any band in $U$ is closed.
+
+(e) If $V$ is a norm-dense Riesz subspace of $U$, then $V^+=\{v:v\in
+V,\,v\ge 0\}$ is norm-dense in the positive cone $U^+$ of $U$.
+
+\proof{{\bf (a)} If $u$, $v\in U$ are such that $nu\le v$ for every
+$n\in\Bbb N$, then $nu^+\le v^+$ so $n\|u^+\|\le\|v^+\|$ for every $n$,
+and $\|u^+\|=0$, that is, $u^+=0$ and $u\le 0$.   As $u$, $v$ are
+arbitrary, $U$ is Archimedean.
+
+\medskip
+
+{\bf (b)} For any $u$, $v\in U$, $||u|-|v||\le|u-v|$ (352D), so
+$\||u|-|v|\|\le\|u-v\|$;  thus $u\mapsto|u|$ is uniformly continuous.
+Consequently $u\mapsto \bover12(u+|u|)=u^+$ is uniformly continuous.
+
+\medskip
+
+{\bf (c)} Now $\{v:v\le u\}=\{v:(v-u)^+=0\}$ is closed because the
+function $v\mapsto (v-u)^+$ is continuous and $\{0\}$ is closed.
+Similarly $\{v:v\ge u\}=\{v:(u-v)^+=0\}$ is closed.
+
+\medskip
+
+{\bf (d)} If $V\subseteq U$ is a band, then $V=V^{\perp\perp}$ (353Bb),
+that is, $V=\{v:|v|\wedge|w|=0$ for every $w\in V^{\perp}\}$.   Because
+the function $v\mapsto |v|\wedge|w|=\bover12(|v|+|w|-||v|-|w||)$ is
+continuous, all the sets $\{v:|v|\wedge|w|=0\}$ are closed, and so is
+their intersection $V$.
+
+\medskip
+
+{\bf (e)} Observe that $V^+=\{v^+:v\in V\}$ and $U^+=\{u^+:u\in U\}$;
+recall that $u\mapsto u^+$ is continuous, and apply 3A3Eb.
+}%end of proof of 354B
+
+\leader{354C}{Lemma} If $U$ is a Banach lattice and $\sequencen{u_n}$ is
+a sequence in $U$ such that $\sum_{n=0}^{\infty}\|u_n\|<\infty$, then
+$\sup_{n\in\Bbb N}u_n$ is defined in $U$, with
+$\|\sup_{n\in\Bbb N}u_n\|\le\sum_{n=0}^{\infty}\|u_n\|$.
+
+\proof{ Set $v_n=\sup_{i\le n}u_i$ for each $n$.   Then
+
+\Centerline{$0\le v_{n+1}-v_n\le(u_{n+1}-u_n)^+\le|u_{n+1}-u_n|$}
+
+\noindent for each $n\in\Bbb N$, so
+
+\Centerline{$\sum_{n=0}^{\infty}\|v_{n+1}-v_n\|
+\le\sum_{n=0}^{\infty}\|u_{n+1}-u_n\|
+\le\sum_{n=0}^{\infty}\|u_{n+1}\|+\|u_n\|$}
+
+\noindent is finite, and $\sequencen{v_n}$ is Cauchy.   Let $u$ be its
+limit;  because $\sequencen{v_n}$ is non-decreasing, and the sets
+$\{v:v\ge v_n\}$ are all closed, $u\ge v_n$ for each $n\in\Bbb N$.   On
+the other hand, if $v\ge v_n$ for every $n$, then
+
+\Centerline{$(u-v)^+=\lim_{n\to\infty}(v_n-v)^+=0$,}
+
+\noindent and $u\le v$.   So
+
+\Centerline{$u=\sup_{n\in\Bbb N}v_n=\sup_{n\in\Bbb N}u_n$}
+
+\noindent is the required supremum.
+
+To estimate its norm, observe that $|v_n|\le\sum_{i=0}^n|u_i|$ for each
+$n$ (induce on $n$, using the last item in 352D for the inductive step),
+so that
+
+\Centerline{$\|u\|=\lim_{n\to\infty}\|v_n\|
+\le\sum_{i=0}^{\infty}\||u_i|\|=\sum_{i=0}^{\infty}\|u_i\|$.}
+}%end of proof of 354C
+
+\leader{354D}{}\cmmnt{ I come now to the basic properties according to
+which we classify Riesz norms.
+
+\medskip
+
+\noindent}{\bf Definitions (a)} A {\bf Fatou norm} on a Riesz space $U$
+is a Riesz norm on $U$ such that whenever $A\subseteq U^+$ is non-empty
+and upwards-directed and has a least upper bound in $U$, then
+$\|\sup A\|=\sup_{u\in A}\|u\|$.   \cmmnt{(Observe that, once we know
+that $\|\,\|$ is a Riesz norm, we can be sure that $\|u\|\le\|\sup A\|$
+for every $u\in A$, so that all we shall need to check is that
+$\|\sup A\|\le\sup_{u\in A}\|u\|$.)}
+
+\spheader 354Db A Riesz norm on a Riesz space $U$ has the {\bf Levi
+property} if every upwards-directed norm-bounded set is bounded above.
+
+\spheader 354Dc A Riesz norm on a Riesz space $U$ is
+{\bf order-continuous} if $\inf_{u\in A}\|u\|=0$ whenever $A\subseteq U$
+is a non-empty downwards-directed set with infimum $0$.
+
+\leader{354E}{Proposition} Let $U$ be a Riesz space with an
+order-continuous Riesz norm $\|\,\|$.
+
+(a) If $A\subseteq U$ is non-empty and upwards-directed and has a
+supremum, then $\sup A\in\overline{A}$.
+
+(b) $\|\,\|$ is Fatou.
+
+(c) If $A\subseteq U$ is non-empty and upwards-directed and bounded
+above, then for every $\epsilon>0$ there is a $u\in A$ such that
+$\|(v-u)^+\|\le\epsilon$ for every $v\in A$;
+%new 2008
+that is, the filter $\Cal F(A\closeuparrow)$ on $U$ generated by
+$\{\{v:v\in A$, $u\le v\}:u\in A\}$ is a Cauchy filter.
+
+(d) Any non-decreasing order-bounded sequence in $U$ is Cauchy.
+
+(e) If $U$ is a Banach lattice it is Dedekind complete.
+
+(f) Every order-dense Riesz subspace of $U$ is norm-dense.
+
+%new 2008
+(g) Every norm-closed solid linear subspace of $U$ is a band.
+
+\proof{{\bf (a)} Suppose that $A\subseteq U$ is non-empty and
+upwards-directed and has a least upper bound $u_0$.    Then
+$B=\{u_0-u:u\in A\}$ is downwards-directed and has infimum $0$.   So
+$\inf_{u\in A}\|u_0-u\|=0$, and $u_0\in\overline{A}$.
+
+\medskip
+
+{\bf (b)} If, in (a), $A\subseteq U^+$, then we must have
+
+\Centerline{$\|u_0\|\le\inf_{u\in A}\|u\|+\|u-u_0\|
+\le\sup_{u\in A}\|u\|$.}
+
+\noindent As $A$ is arbitary, $\|\,\|$ is a Fatou norm.
+
+\medskip
+
+{\bf (c)} Let $B$ be the set of upper bounds for $A$.   Then $B$ is
+downwards-directed;  because $A$ is upwards-directed,
+$B-A=\{v-u:v\in B,\,u\in A\}$ is downwards-directed.  By 353F,
+$\inf(B-A)=0$.   So
+there are $w\in B$, $u\in A$ such that $\|w-u\|\le\epsilon$.   Now if
+$v\in A$,
+
+\Centerline{$(v-u)^+=(v\vee u)-u\le w-u$,}
+
+\noindent so $\|(v-u)^+\|\le\epsilon$.
+
+In terms of the filter $\Cal F(A\closeuparrow)$, this tells us
+that if $v_0$, $v_1$ belong to $F_u=\{v:v\in A$, $v\ge u\}$ then
+$|v_0-v_1|\le w-u$ so $\|v_0-v_1\|\le\epsilon$ and the diameter of $F_u$ is
+at most $\epsilon$.   As $\epsilon$ is arbitrary,
+$\Cal F(A\closeuparrow)$ is a Cauchy filter.
+
+\medskip
+
+
+{\bf (d)} If $\sequencen{u_n}$ is a non-decreasing order-bounded
+sequence, and $\epsilon>0$, then, applying (c)
+to $\{u_n:n\in\Bbb N\}$, we find
+that there is an $m\in\Bbb N$ such that $\|u_m-u_n\|\le\epsilon$
+whenever $m\ge n$.
+
+\medskip
+
+{\bf (e)} Now suppose that $U$ is a Banach lattice.   Let $A\subseteq U$
+be any non-empty set with an upper bound.   Set
+$B=\{u_0\vee\ldots\vee u_n:u_0,\ldots,u_n\in A\}$, so that $B$ is
+upwards-directed and has the same upper bounds as $A$.
+Let $\Cal F(B\closeuparrow)$ be the filter on $U$ generated by
+$\{B\cap\coint{v,\infty}:v\in B\}$.   By (c), this is a Cauchy filter with
+a limit $u^*$ say.   For every $u\in A$, $\coint{u,\infty}$ is a closed set
+belonging to $\Cal F(B\closeuparrow)$, so contains $u^*$;  thus $u^*$ is an
+upper bound for $A$.   If $w$ is any upper bound for $A$,
+$\ocint{-\infty,w}$ is a closed set belonging to $\Cal F(B\closeuparrow)$,
+so contains $u^*$;  thus $u^*=\sup A$ and $A$ has a supremum.
+
+\medskip
+
+{\bf (f)} If $V$ is an order-dense Riesz subspace of $U$ and $u\in U^+$,
+set $A=\{v:v\in V,\,v\le u\}$.   Then $A$ is upwards-directed and
+has supremum $u$, so $u\in\overline{A}\subseteq\overline{V}$, by (a).
+Thus $U^+\subseteq\overline{V}$;  it follows at once that
+$U=U^+-U^+\subseteq\overline{V}$.
+
+\medskip
+
+{\bf (g)} If $V$ is a norm-closed solid linear subspace of $U$,
+and $A\subseteq V^+$ is a non-empty, upwards-directed subset of $V$ with a
+supremum in $U$, then $\sup A\in\overline{A}\subseteq V$, by (a);  by
+352Ob, $V$ is a band.
+}%end of proof of 354E
+
+\vleader{72pt}{354F}{Lemma} If $U$ is an Archimedean Riesz space with an
+order unit $e$\cmmnt{ (definition:  353L)}, there is a Riesz norm
+$\|\,\|_e$ defined on $U$ by the formula
+
+\Centerline{$\|u\|_e=\min\{\alpha:\alpha\ge 0$, $|u|\le\alpha e\}$}
+
+\noindent for every $u\in U$.
+
+\proof{ This is a routine verification.   Because $e$ is an order-unit,
+$\{\alpha:\alpha\ge 0$, $|u|\le\alpha e\}$ is always non-empty,
+so always has an
+infimum $\alpha_0$ say;  now $|u|-\alpha_0e\le\delta e$ for every
+$\delta>0$, so (because $U$ is Archimedean) $|u|-\alpha_0e\le 0$ and
+$|u|\le\alpha_0e$, so that the minimum is attained.   In particular,
+$\|u\|_e=0$ iff $u=0$.   The subadditivity and homogeneity of $\|\,\|_e$
+are immediate from the facts that $|u+v|\le|u|+|v|$, $|\alpha
+u|=|\alpha||u|$.
+}%end of proof
+
+\leader{354G}{Definitions (a)} If $U$ is an Archimedean Riesz space and
+$e$ an order unit in $U$, the norm $\|\,\|_e$ as defined in 354F is the
+{\bf order-unit norm} on $U$ associated with $e$.
+
+\spheader 354Gb An {\bf $M$-space} is a Banach lattice in which the norm
+is an order-unit norm.
+
+\spheader 354Gc If $U$ is an $M$-space, its {\bf standard order unit} is
+the order unit $e$ such that $\|\,\|_e$ is the norm of $U$.
+\cmmnt{(To see that $e$ is uniquely defined, observe that it is
+$\sup\{u:u\in U,\,\|u\|\le 1\}$.)}
+
+\leader{354H}{Examples (a)} For any set $X$, $\ell^{\infty}(X)$ is an
+$M$-space with standard order unit $\chi X$.   \cmmnt{(As remarked in
+243Xl, the completeness of $\ell^{\infty}(X)$ can be regarded as the
+special case of 243E in which $X$ is given counting measure.)}
+
+\spheader 354Hb For any topological space $X$, the space $C_b(X)$ of
+bounded continuous real-valued functions on $X$ is an $M$-space with
+standard order
+unit $\chi X$.   \cmmnt{(It is a Riesz subspace of $\ell^{\infty}(X)$
+containing the order unit of $\ell^{\infty}(X)$, therefore in its own
+right an Archimedean Riesz space with order unit.   To see that it is
+complete, it is enough to observe that it is closed in
+$\ell^{\infty}(X)$ because a uniform limit of continuous functions is
+continuous (3A3Nb).)}
+
+\spheader 354Hc For any measure space $(X,\Sigma,\mu)$, the space
+$L^{\infty}(\mu)$ is an $M$-space with standard order unit $\chi
+X^{\ssbullet}$.
+
+\leader{354I}{Lemma} Let $U$ be an Archimedean Riesz space with order
+unit $e$, and $V$ a subset of $U$ which is dense for the
+order-unit norm $\|\,\|_e$.   Then for any $u\in U$ there are sequences
+$\sequencen{v_n}$, $\sequencen{w_n}$ in $V$ such that
+$v_n\le v_{n+1}\le u\le w_{n+1}\le w_n$ and $\|w_n-v_n\|_e\le 2^{-n}$
+for every $n$;  so that $u=\sup_{n\in\Bbb N}v_n=\inf_{n\in\Bbb N}w_n$ in
+$U$.
+
+If $V$ is a Riesz subspace of $U$, and $u\ge 0$, we may suppose that
+$v_n\ge 0$ for every $n$.   Consequently $V$ is order-dense in $U$.
+
+\proof{ For each $n\in\Bbb N$,
+take $v_n$, $w_n\in V$ such that
+
+\Centerline{$\|u-\Bover3{2^{n+3}}e-v_n\|_e\le\Bover1{2^{n+3}}$,
+\quad$\|u+\Bover3{2^{n+3}}e-w_n\|_e\le\Bover1{2^{n+3}}$.}
+
+\noindent Then
+
+\Centerline{$u-\Bover1{2^{n+1}}e\le v_n\le u-\Bover1{2^{n+2}}e\le u
+\le u+\Bover1{2^{n+2}}e\le w_n\le u+\Bover1{2^{n+1}}e$.}
+
+\noindent Accordingly $\sequencen{v_n}$ is non-decreasing,
+$\sequencen{w_n}$ is non-increasing and $\|w_n-v_n\|_e\le 2^{-n}$ for
+every $n$.   Because $U$ is Archimedean,
+$\sup_{n\in\Bbb N}v_n=\inf_{n\in\Bbb N}w_n=u$.
+
+If $V$ is a Riesz subspace of $U$, then replacing $v_n$ by $v_n^+$ if
+necessary we may suppose that every $v_n$ is non-negative;  and $V$ is
+order-dense by the definition in 352Na.
+}%end of proof of 354I
+
+\leader{354J}{Proposition} Let $U$ be an Archimedean Riesz space with an
+order unit $e$.   Then $\|\,\|_e$ is Fatou and has the Levi property.
+
+\proof{ This is elementary.   If $A\subseteq U^+$ is non-empty,
+upwards-directed and norm-bounded, then it is bounded above by
+$\alpha e$, where $\alpha=\sup_{u\in A}\|u\|_e$.   This is all that is
+called for in the Levi property.   If
+moreover $\sup A$ is defined, then $\sup A\le\alpha e$ so
+$\|\sup A\|\le\alpha$, as required in the Fatou property.
+}%end of proof of 354J
+
+\leader{354K}{Theorem} Let $U$ be an Archimedean Riesz space with order
+unit $e$.   Then it can be embedded as an
+order-dense and norm-dense Riesz subspace of $C(X)$, where $X$ is a
+compact Hausdorff space, in such a way that $e$ corresponds to $\chi X$
+and $\|\,\|_e$ corresponds to $\|\,\|_{\infty}$;  moreover, this
+embedding is essentially unique.
+
+\proof{ This is nearly word-for-word a repetition of 353M.   The only
+addition is the mention of the norms.   Let $X$ and $T:U\to C(X)$ be
+as in 353M.   Then, for any $u\in U$, $|u|\le\|u\|_ee$, so that
+
+\Centerline{$|Tu|=T|u|\le\|u\|_eTe=\|u\|_e\chi X$,}
+
+\noindent and $\|Tu\|_{\infty}\le\|u\|_e$.   On the other hand, if
+$0<\delta<\|u\|_e$ then $u_1=(|u|-\delta e)^+>0$, so that
+$Tu_1=(|Tu|-\delta\chi X)^+>0$ and $\|Tu\|_{\infty}\ge\delta$;  as
+$\delta$ is arbitrary, $\|Tu\|_{\infty}\ge\|u\|_e$.
+}%end of proof of 354K
+
+\leader{354L}{Corollary} Any $M$-space $U$ is isomorphic,
+as Banach lattice,
+to $C(X)$ for some compact Hausdorff $X$, and the isomorphism is
+essentially unique.
+$X$ can be identified with the set of Riesz homomorphisms $x:U\to\Bbb R$
+such that $x(e)=1$, where $e$ is the standard order unit of $U$,
+with the topology induced by the product topology on $\BbbR^U$.
+
+\proof{ By 354K,
+there are a compact Hausdorff space $X$ and an embedding of $U$ as a
+norm-dense Riesz subspace of $C(X)$ matching $\|\,\|_e$ to
+$\|\,\|_{\infty}$.   Since $U$ is complete under $\|\,\|_e$, its image
+is closed in $C(X)$
+(3A4Ff), and must be the whole of $C(X)$.   The expression is
+unique just in so far as the expression of 353M/354K is unique.
+In particular, we may, if we wish, take $X$ to be the set of normalized
+Riesz homomorphisms from $U$ to $\Bbb R$, as in the proof of 353M.
+}%end of proof of 354L
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The set of uniferent Riesz
+homomorphisms from $U$ to $\Bbb R$ is sometimes called the {\bf
+spectrum} of $U$.
+}%end of comment
+
+\leader{354M}{}\cmmnt{ I come now to a second fundamental class of
+Banach lattices, in a strong sense `dual' to the class of $M$-spaces,
+as will appear in \S356.
+
+\medskip
+
+\noindent}{\bf Definition} An {\bf $L$-space} is a Banach lattice $U$
+such that $\|u+v\|=\|u\|+\|v\|$ whenever $u$, $v\in U^+$.
+
+\medskip
+
+\noindent{\bf Example} If $(X,\Sigma,\mu)$ is any measure space, then
+$L^1(\mu)$, with its norm $\|\,\|_1$, is an
+$L$-space\cmmnt{ (242D, 242F)}.   \cmmnt{In
+particular, taking $\mu$ to be counting measure on $\Bbb N$,} $\ell^1$
+is an $L$-space\cmmnt{ (242Xa)}.
+
+\leader{354N}{Theorem} If $U$ is an $L$-space, then its norm is
+order-continuous and has the Levi property.
+
+\proof{{\bf (a)} Both of these are consequences of the following fact:
+if $A\subseteq U$ is norm-bounded and non-empty and upwards-directed,
+then $\sup A$ is defined in $U$ and belongs to the norm-closure of $A$
+in $U$.   \Prf\ Fix $u_0\in A$;  set $B=\{u-u_0:u\in A$, $u\ge u_0\}$.
+Then $B\subseteq U^+$ is norm-bounded, non-empty and upwards-directed.
+Set $\gamma=\sup_{u\in B}\|u\|$.
+Consider the filter $\Cal F(B\closeuparrow)$
+on $U$ generated by sets of the form $\{v:v\in B$, $v\ge u\}$ for $u\in B$.
+If $\epsilon>0$ there is a $u\in B$ such that $\|u\|\ge\gamma-\epsilon$;
+now if $v$, $v'\in B\cap\coint{u,\infty}$, there is a $w\in B$ such that
+$v\vee v'\le w$, so that
+
+\Centerline{$\|v-v'\|\le\|w-u\|=\|w\|-\|u\|\le\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, $\Cal F(B\closeuparrow)$ is
+Cauchy and has
+a limit $u^*$ say.   If $u\in B$, $\coint{u,\infty}$ is a closed set
+belonging to $\Cal F(B\closeuparrow)$, so contains $u^*$;
+thus $u^*$ is an
+upper bound for $B$.   If $w$ is an upper bound for $B$, then
+$\ocint{-\infty,w}$ is a closed set belonging to $\Cal F(B\closeuparrow)$, so
+contains $u^*$;  thus $u^*$ is the least upper bound of $B$.   And
+$B\in\Cal F(B\closeuparrow)$, so $u^*\in\overline{B}$.
+
+Because $u\mapsto u_0$ is an order-preserving homeomorphism,
+
+\Centerline{$u^*+u_0=\sup\{u:u_0\le u\in A\}=\sup A$}
+
+\noindent and $u^*+u_0\in\overline{A}$, as required.\ \Qed
+
+\medskip
+
+{\bf (b)} This shows immediately that the norm has the Levi property.
+But also it must be order-continuous.   \Prf\ If $A\subseteq U$ is
+non-empty and downwards-directed and has infimum $0$, take any
+$u_0\in A$ and consider $B=\{u_0-u:u\in A,\,u\le u_0\}$.   Then $B$ is
+upwards-directed and has supremum $u_0$, so $u_0\in\overline{B}$ and
+
+\Centerline{$\inf_{u\in A}\|u\|\le\inf_{v\in B}\|u_0-v\|=0$.  \Qed}
+}%end of proof of 354N
+
+\leader{354O}{Proposition} If $U$ is an $L$-space and $V$ is a
+norm-closed Riesz subspace of $U$, then $V$ is an $L$-space in its own
+right.   In particular, any band in $U$ is an $L$-space.
+
+\proof{ For any Riesz subspace $V$ of $U$, we surely have
+$\|u+v\|=\|u|+\|v\|$ whenever $u$, $v\in V^+$;  so if $V$ is
+norm-closed, therefore a Banach lattice, it must be an $L$-space.   But
+in any Banach lattice, a band is norm-closed (354Bd), so a band in an
+$L$-space is again an $L$-space.
+}%end of proof of 354O
+
+\leader{354P}{Uniform integrability
+in \dvrocolon{$L$-spaces}}\cmmnt{ Some of the ideas of \S246 can be
+readily expressed in this abstract context.
+
+\medskip
+
+\noindent}{\bf Definition} Let $U$ be an $L$-space.   A set
+$A\subseteq U$ is {\bf uniformly integrable} if for every $\epsilon>0$
+there is a
+$w\in U^+$ such that $\|(|u|-w)^+\|\le\epsilon$ for every $u\in A$.
+
+\leader{354Q}{}\cmmnt{ Since I have already used the phrase
+`uniformly integrable' based on a different formula, I had better check
+instantly that the two definitions are consistent.
+
+\medskip
+
+\noindent}{\bf Proposition} If $(X,\Sigma,\mu)$ is any measure space,
+then a subset of $L^1=L^1(\mu)$ is uniformly integrable in the sense of
+354P iff it is uniformly integrable in the sense of 246A.
+
+\proof{{\bf (a)} If $A\subseteq L^1$ is uniformly integrable in the
+sense of 246A, then for any $\epsilon>0$ there are $M\ge 0$,
+$E\in\Sigma$ such that $\mu E<\infty$ and
+$\int(|u|-M\chi E^{\ssbullet})^+\le\epsilon$ for every $u\in A$;  now $w=M\chi E^{\ssbullet}$ belongs to $(L^1)^+$ and
+$\|(|u|-w)^+\|\le\epsilon$ for
+every $u\in A$.   As $\epsilon$ is arbitrary, $A$ is uniformly
+integrable in the sense of 354P.
+
+\medskip
+
+{\bf (b)} Now suppose that $A$ is uniformly integrable in the sense of
+354P.   Let $\epsilon>0$.   Then there is a $w\in (L^1)^+$ such that
+$\|(|u|-w)^+\|\le\bover12\epsilon$ for every $u\in A$.   There is a
+simple function $h:X\to\Bbb R$ such that
+$\|w-h^{\ssbullet}\|\le\bover12\epsilon$ (242Mb);  now take
+$E=\{x:h(x)\ne 0\}$, $M=\sup_{x\in X}|h(x)|$ (I pass over the trivial
+case $X=\emptyset$), so that $h\le M\chi E$ and
+
+\Centerline{$(|u|-M\chi E^{\ssbullet})^+
+\le(|u|-w)^++(w-M\chi E^{\ssbullet})^+
+\le(|u|-w)^++(w-h^{\ssbullet})^+$,}
+
+\Centerline{$\int(|u|-M\chi E^{\ssbullet})^+
+\le\|(|u|-w)^+\|+\|w-h^{\ssbullet}\|\le\epsilon$}
+
+\noindent for every $u\in A$.   As $\epsilon$ is arbitrary, $A$ is
+uniformly integrable in the sense of 354P.
+}%end of proof of 354Q
+
+\leader{354R}{}\cmmnt{ I give abstract versions of the easiest results
+from \S246.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $U$ be an $L$-space.
+
+(a) If $A\subseteq U$ is uniformly integrable, then
+
+\quad (i) $A$ is norm-bounded;
+
+\quad (ii) every subset of $A$ is uniformly integrable;
+
+\quad (iii) for any $\alpha\in\Bbb R$, $\alpha A$ is uniformly
+integrable;
+
+\quad (iv) there is a uniformly integrable, solid, convex, norm-closed
+set $C\supseteq A$;
+
+\quad (v) for any other uniformly integrable set $B\subseteq U$, $A\cup
+B$ and $A+B$ are uniformly integrable.
+
+(b) For any set $A\subseteq U$, the following are equiveridical:
+
+\quad (i) $A$ is uniformly integrable;
+
+\quad (ii) $\lim_{n\to\infty}(|u_n|-\sup_{i<n}|u_i|)^+=0$ for every
+sequence $\sequencen{u_n}$ in $A$;
+
+\quad (iii) {\it either} $A$ is empty {\it or} for every $\epsilon>0$
+there are $u_0,\ldots,u_n\in A$ such that
+\ifdim\pagewidth=390pt\penalty-1000\fi
+$\|(|u|-\sup_{i\le n}|u_i|)^+\|\le\epsilon$ for every $u\in A$;
+
+\quad (iv) $A$ is norm-bounded and any disjoint sequence in the solid
+hull of $A$ is norm-convergent to $0$.
+
+(c) If $V\subseteq U$ is a closed Riesz subspace then a subset of $V$ is
+uniformly integrable when regarded as a subset of $V$ iff it is
+uniformly integrable when regarded as a subset of $U$.
+
+\proof{{\bf (a)(i)} There must be a $w\in U^+$ such that
+$\int(|u|-w)^+\le 1$ for every $u\in A$;  now
+
+\Centerline{$|u|\le|u|-w+|w|\le(|u|-w)^++|w|$,
+\quad$\|u\|\le\|(|u|-w)^+\|
++\|w\|\le 1+\|w\|$}
+
+\noindent for every $u\in A$, so $A$ is norm-bounded.
+
+\medskip
+
+\quad{\bf (ii)} This is immediate from the definition.
+
+\medskip
+
+\quad{\bf (iii)} Given $\epsilon>0$, we can find $w\in U^+$ such
+that $|\alpha|\|(|u|-w)^+\|\le\epsilon$ for every
+$u\in A$;  now $\|(|v|-|\alpha|w)^+\|\le\epsilon$ for every
+$v\in\alpha A$.
+
+\medskip
+
+\quad{\bf (iv)} If $A$ is empty, take $C=A$.   Otherwise, try
+
+\Centerline{$C=\{v:v\in U,\,\|(|v|-w)^+\|
+  \le\sup_{u\in A}\|(|u|-w)^+\|$ for every $w\in U^+\}$.}
+
+\noindent Evidently $A\subseteq C$, and $C$ satisfies the definition
+354M because $A$ does.   The functionals
+
+\Centerline{$v\mapsto\|(|v|-w)^+\|:U\to\Bbb R$}
+
+\noindent are all continuous for $\|\,\|$ (because the operators
+$v\mapsto|v|$, $v\mapsto v-w$, $v\mapsto v^+$, $v\mapsto\|v\|$ are
+continuous), so $C$ is closed.   If $|v'|\le|v|$ and $v\in C$, then
+
+\Centerline{$\|(|v'|-w)^+\|\le\|(|v|-w)^+\|
+\le\sup_{u\in A}\|(|u|-w)^+\|$}
+
+\noindent for every $w$, and $v'\in C$.   If $v=\alpha v_1+\beta v_2$
+where  $v_1$, $v_2\in C$, $\alpha\in[0,1]$ and $\beta=1-\alpha$, then
+$|v|\le\alpha|v_1|+\beta|v_2|$, so
+
+\Centerline{$|v|-w\le(\alpha|v_1|-\alpha w)+(\beta|v_2|-\beta w)
+\le(\alpha|v_1|-\alpha w)^++(\beta|v_2|-\beta w)^+$}
+
+\noindent and
+
+\Centerline{$(|v|-w)^+\le\alpha(|v_1|-w)^++\beta(|v_2|-w)^+$}
+
+\noindent for every $w$;  accordingly
+
+$$\eqalign{\|(|v|-w)^+\|
+&\le\alpha\|(|v_1|-w)^+\|+\beta\|(|v_2|-w)^+\|\cr
+&\le(\alpha+\beta)\sup_{u\in A}\|(|u|-w)^+\|
+=\sup_{u\in A}\|(|u|-w)^+\|\cr}$$
+
+\noindent for every $w$, and $v\in C$.
+
+Thus $C$ has all the required properties.
+
+\medskip
+
+\quad{\bf (v)} I show first that $A\cup B$ is uniformly integrable.
+\Prf\ Given $\epsilon>0$, let $w_1$, $w_2\in U^+$ be such that
+
+\Centerline{$\|(|u|-w_1)^+\|\le\epsilon$ for every $u\in A$,
+\quad$\|(|u|-w_2)^+\|\le\epsilon$ for every $u\in B$.}
+
+\noindent Set $w=w_1\vee w_2$;  then
+$\|(|u|-w)^+\|\le\epsilon$ for every $u\in A\cup B$.   As $\epsilon$ is
+arbitrary, $A\cup B$ is uniformly integrable.\ \Qed
+
+Now (iv) tells us that there is a convex uniformly integrable set $C$
+including $A\cup B$, and in this case $A+B\subseteq 2C$, so $A+B$ is
+also uniformly integrable, using (ii) and (iii).
+
+\medskip
+
+{\bf (b)(i)$\Rightarrow$(ii)\&(iv)} Suppose that $A$ is uniformly
+integrable and that $\sequencen{u_n}$ is any sequence in the solid hull
+of $A$.   Set $v_n=\sup_{i\le n}|u_i|$ for $n\in\Bbb N$ and
+
+\Centerline{$v'_0=v_0=|u_0|$,
+\quad$v'_n=v_n-v_{n-1}=(|u_n|-\sup_{i<n}|u_i|)^+$}
+
+\noindent for $n\ge 1$.   Given $\epsilon>0$, there is a $w\in U^+$ such
+that $\|(|u|-w)^+\|\le\epsilon$ for every $u\in A$, and therefore for
+every $u$ in the solid hull of $A$.   Of course
+$\sup_{n\in\Bbb N}\|v_n\wedge w\|\le\|w\|$ is finite, so there is an
+$n\in\Bbb N$ such
+that $\|v_i\wedge w\|\le\epsilon+\|v_n\wedge w\|$ for every
+$i\in\Bbb N$.   But now, for $m>n$,
+
+$$\eqalign{v'_m\le(|u_m|-v_n)^+
+&\le(|u_m|-|u_m|\wedge w)^++((|u_m|\wedge w)-v_n)^+\cr
+&\le(|u_m|-w)^++(v_m\wedge w)-(v_n\wedge w),\cr}$$
+
+\noindent so that
+
+$$\eqalign{\|v'_m\|
+&\le\|(|u_m|-w)^+\|+\|(v_m\wedge w)-(v_n\wedge w)\|\cr
+&=\|(|u_m|-w)^+\|+\|v_m\wedge w\|-\|v_n\wedge w\|
+\le 2\epsilon,\cr}$$
+
+\noindent using the $L$-space property of the norm for the equality in
+the middle.   As $\epsilon$ is arbitrary, $\lim_{n\to\infty}v'_n=0$.
+As $\sequencen{u_n}$ is arbitrary, condition (ii) is satisfied;  but so
+is condition (iv), because we know from (a-i) that $A$ is norm-bounded,
+and if $\sequencen{u_n}$ is disjoint then $v'_n=|u_n|$ for every $n$, so
+that in this case $\lim_{n\to\infty}u_n=0$.
+
+\medskip
+
+\quad{\bf (ii)$\Rightarrow$(iii)$\Rightarrow$(i)} are elementary.
+
+\medskip
+
+\quad{\bf not-(i)$\Rightarrow$not-(iv)} Now suppose that $A$
+is not uniformly integrable.   If it is not norm-bounded, we can stop.
+Otherwise, there is some $\epsilon>0$ such that
+$\sup_{u\in A}\|(|u|-w)^+\|>\epsilon$ for every $w\in U^+$.
+Consequently we shall be able to choose inductively a sequence
+$\sequencen{u_n}$ in $A$ such that
+$\|(|u_n|-2^n\sup_{i<n}|u_i|)^+\|>\epsilon$ for every $n\ge 1$.
+Because $A$ is norm-bounded,
+$\sum_{i=0}^{\infty}2^{-i}\|u_i\|$ is finite, and we can set
+
+\Centerline{$v_n
+=(|u_n|-2^n\sup_{i<n}|u_i|-\sum_{i=n+1}^{\infty}2^{-i}|u_i|)^+$}
+
+\noindent for each $n$.   (The sum $\sum_{i=n+1}^{\infty}2^{-i}|u_i|$ is
+defined because $\langle\sum_{i=n+1}^m2^{-i}|u_i|\rangle_{m\ge n+1}$ is
+a Cauchy sequence.)   We have $v_m\le|u_m|$,
+
+$$\eqalign{v_m\wedge v_n
+&\le(|u_m|-2^{-n}|u_n|)^+\wedge(|u_n|-2^n|u_m|)^+\cr
+&\le(2^n|u_m|-|u_n|)^+\wedge(|u_n|-2^n|u_m|)^+=0\cr}$$
+
+\noindent whenever $m<n$, so $\sequencen{v_n}$ is a disjoint sequence in
+the solid hull of $A$;  while
+
+\Centerline{$\|v_n\|
+\ge\|(|u_n|-2^n\sup_{i<n}|u_i|)^+\|-\sum_{i=n+1}^{\infty}2^{-i}\|u_i\|
+\ge\epsilon-2^{-n}\sup_{u\in A}\|u\|\to\epsilon$}
+
+\noindent as $n\to\infty$, so condition (iv) is not satisfied.
+
+\medskip
+
+{\bf (c)} Now this follows at once, because conditions (b-ii) and (b-iv)
+are satisfied in $V$ iff they are satsified in $U$.
+}%end of proof of 354R
+
+\exercises{\leader{354X}{Basic exercises $\pmb{>}$(a)}
+%\spheader 354Xa
+Work through the proofs that the following are all Banach lattices.  (i)
+$\BbbR^r$ with ($\alpha$) $\|x\|_1=\sum_{i=1}^r|\xi_i|$ ($\beta$)
+$\|x\|_2=\sqrt{\sum_{i=1}^r|\xi_i|^2}$ ($\gamma$)
+$\|x\|_{\infty}=\max_{i\le r}|\xi_i|$, where $x=(\xi_1,\ldots,\xi_r)$.
+(ii) $\ell^p(X)$, for any set $X$ and any $p\in[1,\infty]$ (242Xa,
+243Xl, 244Xn).   (iii) $L^p(\mu)$, for any measure space
+$(X,\Sigma,\mu)$ and any $p\in[1,\infty]$ (242F, 243E, 244G).   (iv)
+$\pmb{c}_0$, the space of sequences convergent to $0$, with the norm
+$\|\,\|_{\infty}$ inherited from $\ell^{\infty}$.
+%354A
+
+\spheader 354Xb Let $\langle U_i\rangle_{i\in I}$ be any family of
+Banach lattices.   Write $U$ for their Riesz space product (352K), and
+in $U$ set
+
+\Centerline{$\|u\|_1=\sum_{i\in I}\|u(i)\|$,
+\quad$V_1=\{u:\|u\|_1<\infty\}$,}
+
+\Centerline{$\|u\|_{\infty}=\sup_{i\in I}\|u(i)\|$ (counting
+$\sup\emptyset$ as $0$),
+\quad$V_{\infty}=\{u:\|u\|_{\infty}<\infty\}$.}
+
+\noindent Show that $V_1$, $V_{\infty}$ are solid linear subspaces of
+$U$ and are Banach lattices under their norms $\|\,\|_1$,
+$\|\,\|_{\infty}$.
+%354A
+
+\spheader 354Xc Let $U$ be a Riesz space with a Riesz norm.   Show that
+the maps $(u,v)\mapsto u\wedge v$, $(u,v)\mapsto u\vee v:U\times U\to U$
+are uniformly continuous.
+%354B
+
+\sqheader 354Xd Let $U$ be a Riesz space with a Riesz norm.   (i) Show
+that any order-bounded set in $U$ is norm-bounded.   (ii) Show that in
+$\BbbR^r$, with any of the standard Riesz norms (354Xa(i)),
+norm-bounded sets are order-bounded.   (iii) Show that in
+$\ell^1(\Bbb N)$ there is a
+sequence converging to $0$ (for the norm) which is not order-bounded.
+(iv) Show that in $\pmb{c}_0$ any sequence converging to $0$ is
+order-bounded, but there is a norm-bounded set which is not
+order-bounded.
+%354B
+
+\spheader 354Xe Let $U$ be a Riesz space with a Riesz norm.   Show that
+it is a Banach lattice iff non-decreasing Cauchy sequences are
+convergent.   \Hint{if $\|u_{n+1}-u_n\|\le 2^{-n}$ for every $n$, show
+that $\sequencen{\sup_{i\le n}u_i}$ is Cauchy, and that
+$\sequencen{u_n}$ converges to $\inf_{n\in\Bbb N}\sup_{m\ge n}u_m$.}
+%354C
+
+\spheader 354Xf Let $U$ be a Riesz space with a Riesz norm.   Show that
+$U$ is a Banach lattice iff every non-decreasing Cauchy sequence
+$\sequencen{u_n}$ in $U^+$ has a least upper bound $u$ with
+$\|u\|=\lim_{n\to\infty}\|u_n\|$.
+%354C, 354Xe
+
+\spheader 354Xg Let $U$ be a Banach lattice.   Suppose that
+$B\subseteq U$ is solid and $\sup_{n\in\Bbb N}u_n\in B$ whenever $\sequencen{u_n}$
+is a non-decreasing sequence in $B$ with a supremum in $U$.   Show that
+$B$ is closed.   \Hint{show first that $u\in B$ whenever there is a
+sequence $\sequencen{u_n}$ in $B\cap U^+$ such that
+$\|u-u_n\|\le 2^{-n}$ for every $n$;  do this by considering
+$v_m=\inf_{n\ge m}u_n$.}
+%354C
+
+\spheader 354Xh Let $U$ be any Riesz space with a Riesz norm.   Show
+that the Banach space completion of $U$ (3A5Jb) has a unique
+partial ordering under which it is a Banach lattice.
+
+\sqheader 354Xi Show that $\pmb{c}_0$ is a Banach lattice with an
+order-continuous norm which does not have the Levi property.
+%354D
+
+\sqheader 354Xj Show that $\ell^{\infty}$, with $\|\,\|_{\infty}$, is a
+Banach lattice with a Fatou norm which has the Levi property but is not
+order-continuous.
+%354D
+
+\spheader 354Xk Let $U$ be a Riesz space with a Fatou norm.   Show that
+if $V\subseteq U$ is a regularly embedded Riesz subspace then the induced norm on $V$ is a Fatou norm.
+%354D
+
+\spheader 354Xl Let $U$ be a Riesz space and $\|\,\|$ a Riesz norm on
+$U$ which is order-continuous in the sense of 354Dc.   Show that its
+restriction to $U^+$ is order-continuous in the sense of 313H.
+%354D
+
+\spheader 354Xm Let $U$ be a Riesz space with an order-continuous norm.
+Show that if $V\subseteq U$ is a regularly embedded Riesz subspace then
+the induced norm on $V$ is order-continuous.
+%354D
+
+\spheader 354Xn Let $U$ be a Dedekind $\sigma$-complete Riesz space with
+a Fatou norm which has the Levi property.   Show that it is a Banach
+lattice.   \Hint{354Xf.}
+%354D
+
+\spheader 354Xo Let $\langle U_i\rangle_{i\in I}$ be any family of
+Banach lattices and let $V_1$, $V_{\infty}$ be the subspaces of
+$U=\prod_{i\in I}U_i$ as described in 354Xb.   (i) Show that $V_1$,
+$V_{\infty}$ have norms which are Fatou, or have the Levi property,
+iff every $U_i$ has.   (ii) Show that the norm of $V_1$ is order-continuous
+iff the norm of every $U_i$ is.    (iii) Show that $V_{\infty}$ is an
+$M$-space iff every $U_i$ is.   (iv) Show that $V_1$ is an $L$-space iff
+every $U_i$ is.
+%354M
+
+\spheader 354Xp Let $U$ be a Banach lattice with an order-continuous
+norm.   (i) Show that a sublattice of
+$U$ is norm-closed iff it is order-closed in the sense of 313Da.   (ii) Show
+that a norm-closed Riesz subspace of $U$
+is itself a Banach lattice with an order-continuous norm.
+%354E
+
+\sqheader 354Xq Let $U$ be an $M$-space and $V$ a norm-closed Riesz
+subspace of $U$ containing the standard order unit of $U$.   (i) Show
+that $V$, with the induced norm, is an $M$-space.   (ii) Deduce that the
+space $\pmb{c}$ of convergent sequences is an $M$-space if given the
+norm $\|\,\|_{\infty}$ inherited from $\ell^{\infty}$.
+%354G
+
+\spheader 354Xr Show that a Banach lattice $U$ is an $M$-space iff
+($\alpha$) its norm is a Fatou norm with the Levi property ($\beta$)
+$\|u\vee v\|=\max(\|u\|,\|v\|)$ for all $u$, $v\in U^+$.
+%354J
+
+\sqheader 354Xs Describe a topological space $X$ such that the space
+$\pmb{c}$ of convergent sequences (354Xq) can be identified with $C(X)$.
+%354K, 354Xq
+
+\spheader 354Xt Let $D\subseteq\Bbb R$ be any non-empty set, and $V$ the
+space of functions $f:D\to\Bbb R$ of bounded variation (\S224).   For
+$f\in V$ set $\|f\|=\sup\{|f(t_0)|+\sum_{i=1}^n|f(t_i)-f(t_{i-1})|:
+t_0\le t_1\le\ldots\le t_n$ in $D\}$ (224Yb).   Let $C$ be the set of
+bounded non-decreasing functions from $D$ to $\coint{0,\infty}$.
+Show that $C$ is the
+positive cone of $V$ for a Riesz space ordering under which $V$ is an
+$L$-space.
+%354M
+
+\leader{354Y}{Further exercises (a)}
+%\spheader 354Ya
+Let $U$ be a Riesz space with a Riesz norm, and $V$ a norm-dense Riesz
+subspace of $U$.   Suppose that the induced norm on $V$ is Fatou, when
+regarded as a norm on the Riesz space $V$.   Show (i) that $V$ is
+order-dense in $U$ (ii) that the norm of $U$ is Fatou.   \Hint{for (i),
+show
+that if $u\in U^+$, $v_n\in V^+$ and $\|u-v_n\|\le 2^{-n-2}\|u\|$ for
+every $n$, then $\|v_0-\inf_{i\le n}v_i\|\le\bover12\|u\|$ for every
+$n$, so that $0$ cannot be $\inf_{n\in\Bbb N}v_n$ in $V$.}
+%354D
+
+\spheader 354Yb
+Let $U$ be a Riesz space with a Riesz norm.   Show that the following
+are equiveridical:  (i) $\lim_{n\to\infty}u_n=0$ whenever $\sequencen{u_n}$
+is a disjoint order-bounded sequence in $U^+$ (ii)
+$\lim_{n\to\infty}u_{n+1}-u_n=0$ for every order-bounded non-decreasing
+sequence $\sequencen{u_n}$ in $U$ (iii) whenever $A\subseteq U^+$ is a
+non-empty downwards-directed set in $U^+$ with infimum $0$,
+$\inf_{u\in A}\sup_{v\in A,v\le u}\|u-v\|=0$.   \Hint{for
+(i)$\Rightarrow$(ii), show by
+induction that $\lim_{n\to\infty}u_n=0$ whenever $\sequencen{u_n}$ is an
+order-bounded sequence such that, for some fixed $k\ge 1$,
+$\inf_{i\in K}u_i=0$ for every $K\subseteq \Bbb N$ of size $k$;
+now show that if $\sequencen{u_n}$ is non-decreasing and $0\le u_n\le u$
+for every $n$, then $\inf_{i\in K}(u_{i+1}-u_i-\bover1ku)^+=0$ whenever
+$K\subseteq\Bbb N$ and $\#(K)=k\ge 1$.   For (iii)$\Rightarrow$(i), set
+$A=\{u:\exists\,n,\,u\ge u_i\Forall i\ge n\}$.   See {\smc Fremlin
+74a}, 24H.}
+%354E
+
+\spheader 354Yc Show that any Riesz space with an order-continuous norm
+has the countable sup property (definition:  241Ye).
+%354E, 354Yb
+
+\spheader 354Yd Let $U$ be a Banach lattice.   Show that the following
+are equiveridical:  (i) the norm on $U$ is order-continuous;  (ii) $U$
+satisfies the conditions of 354Yb;   (iii) every order-bounded monotonic
+sequence in $U$ is Cauchy.
+%354E, 354Yb
+
+\spheader 354Ye Let $U$ be a Riesz space with a Fatou norm.   Show that
+the norm on $U$ is order-continuous iff it satisfies the conditions of
+354Yb.
+%354E, 354Yb
+
+\spheader 354Yf For $f\in C([0,1])$, set $\|f\|_1=\int|f(x)|dx$.   Show
+that $\|\,\|_1$ is a Riesz norm on $C([0,1])$ satisfying the conditions
+of 354Yb, but is not order-continuous.
+%354E, 354Yb
+
+\spheader 354Yg Let $U$ be a Riesz space with a Riesz norm $\|\,\|$.
+Show that $(U,\|\,\|)$ satisfies the conditions of 354Yb iff the norm of
+its completion is order-continuous.
+%354E, 354Yb
+
+\spheader 354Yh Let $U$ be a Riesz space with a Riesz norm, and
+$V\subseteq U$ a norm-dense Riesz subspace such that the induced norm on
+$V$ is order-continuous.   Show that the norm of $U$ is
+order-continuous.   \Hint{use 354Ya.}
+%354E, 354Yb
+
+\spheader 354Yi Let $U$ be an Archimedean Riesz space.   For any
+$e\in U^+$, let $U_e$ be the solid linear subspace of $U$ generated by
+$e$, so that $e$ is an order unit in $U_e$, and let $\|\,\|_e$ be the
+corresponding order-unit norm on $U_e$.   We say that $U$ is {\bf
+uniformly complete} if $U_e$ is complete under $\|\,\|_e$ for every
+$e\in U^+$.   (i) Show that any Banach lattice is uniformly complete.
+(ii) Show that any Dedekind $\sigma$-complete Riesz space is uniformly
+complete (cf.\ 354Xn).   (iii) Show that if $U$ is a uniformly complete
+Riesz space with a Riesz norm which has the Levi property, then $U$ is a
+Banach lattice.   (iv) Show that if $U$ is a Banach lattice then a set
+$A\subseteq U$ is closed, for the norm topology, iff $A\cap U_e$ is
+$\|\,\|_e$-closed for every $e\in U^+$.   (v) Let $V$ be a solid linear
+subspace of $U$.   Show that the quotient Riesz space $U/V$ is
+Archimedean iff $V\cap U_e$ is $\|\,\|_e$-closed for every $e\in U^+$.
+(vi) Show that if $U$ is uniformly complete and $V\subseteq U$ is a
+solid linear subspace such that $U/V$ is Archimedean, then $U/V$ is
+uniformly complete.   (vii) Show that $U$ is Dedekind $\sigma$-complete
+iff it is uniformly complete and has the principal projection property
+(353Xb).   \Hint{for (vii), use 353Yc.}
+%354H, 353Yc
+
+\spheader 354Yj Let $U$ be an Archimedean Riesz space with an order unit,
+endowed with its order-unit norm.   Let $Z$ be the unit ball
+of $U^*$.   Show that for a linear functional $f:U\to\Bbb R$ the
+following are equiveridical:  (i) $f$ is an {\bf extreme point} of $Z$,
+that is, $f\in Z$ and $Z\setminus\{f\}$ is convex (ii) $|f(e)|=1$ and
+one of $f$, $-f$ is a Riesz homomorphism.
+%353M
+
+\spheader 354Yk Let $U$ be a Banach lattice such that
+$\|u+v\|=\|u\|+\|v\|$ whenever $u\wedge v=0$.   Show that $U$ is an
+$L$-space.   \Hint{by 354Yd, the norm is order-continuous, so $U$ is
+Dedekind complete.   If $u$, $v\ge 0$, set $e=u+v$, and represent $U_e$
+as $C(X)$ where $X$ is extremally disconnected (353Yb);  now approximate
+$u$ and $v$ by functions taking only finitely many values to show that
+$\|u+v\|=\|u\|+\|v\|$.}
+%354M
+
+\spheader 354Yl Let $U$ be a uniformly complete Archimedean Riesz space
+(354Yi).   Set $U_{\Bbb C}=U\times U$ with the complex linear structure
+defined
+by identifying $(u,v)\in U\times U$ as $u+iv\in U_{\Bbb C}$, so that
+$u=\Real(u+iv)$, $v=\Imag(u+iv)$ and
+$(\alpha+i\beta)(u+iv)=(\alpha u-\beta v)+i(\alpha v+\beta u)$.   (i)
+Show that for $w\in U_{\Bbb C}$ we can define $|w|\in U$ by setting
+$|w|=\sup_{|\zeta|=1}\Real(\zeta w)$.   (ii) Show that if $U$ is a
+uniformly complete Riesz subspace of $\BbbR^X$ for some set $X$, then we
+can identify $U_{\Bbb C}$ with the linear subspace of $\Bbb C^X$
+generated by $U$.   (iii) Show that
+$|w+w'|\le|w|+|w'|$, $|\gamma w|=|\gamma||w|$ for all $w\in U_{\Bbb C}$,
+$\gamma\in\Bbb C$.   (iv) Show that if $w\in U_{\Bbb C}$ and
+$|w|\le u_1+u_2$, where $u_1$, $u_2\in U^+$, then $w$ is expressible as
+$w_1+w_2$ where $|w_j|\le u_j$ for both $j$.   \Hint{set $e=u_1+u_2$ and
+represent $U_e$ as $C(X)$.}   (v) Show that if $U_0$ is a solid linear
+subspace of $U$, then, for $w\in U_{\Bbb C}$, $|w|\in U_0$ iff $\Real
+w$, $\Imag w$ both belong to $U_0$.   (vi) Show that if $U$ has a Riesz
+norm then we have a norm on $U_{\Bbb C}$ defined by setting
+$\|w\|=\||w|\|$, and that if $U$ is a Banach lattice then $U_{\Bbb C}$
+is a (complex) Banach space.   (vii) Show
+that if $U=L^p(\mu)$, where $(X,\Sigma,\mu)$ is a measure space and
+$p\in[1,\infty]$, then $U_{\Bbb C}$ can be identified with
+$L^p_{\Bbb C}(\mu)$ as
+defined in 242P, 243K and 244P.   (We may call $U_{\Bbb C}$ the {\bf
+complexification} of the Riesz space $U$.)
+
+\spheader 354Ym Let $(X,\Sigma,\mu)$ be a measure space and $V$ a Banach
+lattice.   Write $\eusm L^1_V$ for the space of Bochner integrable
+functions from conegligible subsets of $X$ to $V$, and $L^1_V$ for the
+corresponding set of equivalence classes (253Yf).   (i) Show that
+$L^1_V$ is a Banach lattice under the ordering defined by saying that
+$f^{\ssbullet}\le g^{\ssbullet}$ iff $f(x)\le g(x)$ in $V$ for
+$\mu$-almost every $x\in X$.  (ii) Show that when $V=L^1(\nu)$, for some
+other measure space $(Y,\Tau,\nu)$, then this ordering of $L^1_V$ agrees
+with the ordering of $L^1(\lambda)$ where $\lambda$ is the (c.l.d.)
+product measure on $X\times Y$ and we identify $L^1_V$ with
+$L^1(\lambda)$, as in 253Yi.   (iii) Show that if $V$ has an
+order-continuous norm, so has $L^1_V$.   \Hint{354Yd.}   (iv) Show
+that if $\mu$ is Lebesgue measure on $[0,1]$ and $V=\ell^{\infty}$, then
+$L^1_V$ is not Dedekind $\sigma$-complete.
+}%end of exercises
+
+\endnotes{
+\Notesheader{354} Apart from some of the exercises, the material of this
+section is pretty strictly confined to ideas which will be useful later
+in this volume.   The basic Banach lattices of measure theory are the
+$L^p$ spaces of Chapter 24;  these all have Fatou norms with the Levi
+property (244Yf-244Yg), and for $p<\infty$ their norms are
+order-continuous (244Ye).   In Chapter 36 I will return to these spaces
+in a more abstract context.   Here I am mostly concerned to establish a
+vocabulary in which their various properties, and the relationships
+between these properties, can be expressed.
+
+In normed Riesz spaces we have a very rich mixture of structures, and
+must take particular care over the concepts of `boundedness',
+`convergence' and `density', which have more than one possible
+interpretation.
+In particular, we must scrupulously distinguish between
+`order-bounded' and `norm-bounded' sets.   I have not yet formally
+introduced any of the various concepts of order-convergence (see \S367),
+but I think that even so it is best to get into the habit of reminding
+oneself, when a convergent sequence appears, that it is convergent for
+the norm topology, rather than in any sense related directly to the
+order structure.
+
+I should perhaps warn you that for the study of
+$M$-spaces 354L is not as helpful as it may look.   The trouble is that
+apart from a few special cases (as in 354Xs) the topological space used
+in the representation is actually more complicated and mysterious than
+the $M$-space it is representing.
+
+After the introduction of $M$-spaces, this section becomes a natural
+place for `uniformly complete' spaces (354Yi).   For the moment I
+leave these in the exercises.   But I mention them now because they
+offer a straightforward route towards a theory of `complex Riesz
+spaces' (354Yl).   In large parts of functional analysis it is natural,
+and in some parts it is necessary, to work with normed spaces over
+$\Bbb C$ rather than over $\Bbb R$, and for $L^2$ spaces in particular
+it is useful to have a proper grasp of the complex case.   And while the
+insights offered by the theory of Riesz spaces are not especially
+important in such areas, I think we should always seek connexions
+between different topics.   So it is worth remembering that uniformly
+complete Riesz spaces have complexifications.
+
+I shall have a great deal more to say about $L$-spaces when I come to
+spaces of additive functionals (\S362) and to $L^1$ spaces again (\S365)
+and to linear operators on them (\S371);  and before that, there will be
+something in the next section on their duals, and on $L$-spaces which
+are themselves dual spaces.   For the moment I just give some easy
+results, direct translations of the corresponding facts in \S246, which
+have natural expressions in the language of this section, holding deeper
+ideas over.   In particular, the characterization of uniformly
+integrable sets as relatively weakly compact sets (247C) is valid in
+general $L$-spaces (356Q).
+
+For an extensive treatment of Banach lattices, going very much deeper
+than I have space for in this volume, see {\smc Lindenstrauss \&
+Tzafriri 79}.   For a careful exposition of a great deal of useful
+information, see {\smc Schaefer 74}.
+}%end of comment
+
+\discrpage
+

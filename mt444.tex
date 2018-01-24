@@ -1,0 +1,2515 @@
+\frfilename{mt444.tex}
+\versiondate{23.7.07/4.6.13}
+\copyrightdate{1999}
+
+\def\esssup{\mathop{\text{ess sup}}}
+\def\ssplrarrow{^{\scriptscriptstyle\leftrightarrow}}
+
+\def\chaptername{Topological groups}
+\def\sectionname{Convolutions}
+
+\newsection{444}
+
+In this section, I look again at the ideas of \S\S255 and 257, seeking
+the appropriate generalizations to topological groups other than
+$\Bbb R$.   Following {\smc Hewitt \& Ross 63}, I begin with
+convolutions of measures (444A-444E) %444A 444B 444C 444D 444E
+before proceeding to convolutions of functions
+(444O-444V); %444O 444P 444Q 444R 444T 444U 444S 444V
+in between, I mention the convolution of a function and a measure
+(444G-444M) %444G 444H 444I 444J 444K 444L 444M
+and a general result concerning continuous group actions on
+quasi-Radon measure spaces (444F).
+
+While I continue to give the results in terms of
+real-valued functions, the applications
+of the ideas here in the next section will be to complex-valued functions;
+so you may wish to keep the complex case in mind\cmmnt{ (444Xx)}.
+
+\leader{444A}{Convolution of measures:  Proposition} If $X$ is a
+topological group and $\lambda$ and $\nu$ are two totally finite
+quasi-Radon measures on $X$, we have a quasi-Radon measure $\lambda*\nu$
+on $X$ defined by saying that
+
+$$\eqalign{(\lambda*\nu)(E)
+&=(\lambda\times\nu)\{(x,y):xy\in E\}\cr
+&=\int\nu(x^{-1}E)\lambda(dx)
+=\int\lambda(Ey^{-1})\nu(dy)\cr}$$
+
+\noindent for every $E\in\dom(\lambda*\nu)$, where $\lambda\times\nu$ is
+the quasi-Radon product measure on $X\times X$.
+
+\proof{ Set $\phi(x,y)=xy$ for $x$, $y\in X$.   Then $\phi$ is continuous,
+while $X$, being a topological group, is regular (4A5Ha);  so
+so 418Hb tells us that there is a unique quasi-Radon measure $\lambda*\nu$
+on $X$ such that $\phi$ is \imp\ for $\lambda\times\nu$ and $\lambda*\nu$,
+that is, $(\lambda*\nu)(E)=(\lambda\times\nu)\{(x,y):xy\in E\}$ whenever
+$E$ is measured by $\lambda*\nu$.
+
+As for the other formulae, Fubini's theorem (417Ha) tells us that
+
+$$\eqalign{(\lambda*\nu)(E)
+&=(\lambda\times\nu)\phi^{-1}[E]\cr
+&=\int\nu(\phi^{-1}[E])[\{x\}]\lambda(dx)
+   =\int\nu(x^{-1}E)\lambda(dx)\cr
+&=\int\lambda(\phi^{-1}[E])^{-1}[\{y\}]\nu(dy)
+   =\int\lambda(Ey^{-1})\nu(dy)\cr}$$
+
+\noindent for any $E\in\dom(\lambda*\nu)$.
+}%end of proof of 444A
+
+\leader{444B}{Proposition} If $X$ is a topological group,
+$\lambda_1*(\lambda_2*\lambda_3)=(\lambda_1*\lambda_2)*\lambda_3$ for
+all totally finite quasi-Radon measures $\lambda_1$, $\lambda_2$ and
+$\lambda_3$ on $X$.
+
+\proof{ If $E\subseteq X$ is Borel, then
+
+$$\eqalign{(\lambda_1*(\lambda_2*\lambda_3))(E)
+&=\int(\lambda_2*\lambda_3)(x^{-1}E)\lambda_1(dx)\cr
+&=\int(\lambda_2\times\lambda_3)\{(y,z):xyz\in E\}\lambda_1(dx)\cr
+&=(\lambda_1\times(\lambda_2\times\lambda_3))\{(x,(y,z)):xyz\in E\}\cr
+&=((\lambda_1\times\lambda_2)\times\lambda_3)\{((x,y),z):xyz\in E\}\cr
+&=\int(\lambda_1\times\lambda_2)\{(x,y):xyz\in E\}\lambda_3(dz)\cr
+&=((\lambda_1*\lambda_2)*\lambda_3)(E).\cr}$$
+
+\noindent (For the central identification between
+$\lambda_1\times(\lambda_2\times\lambda_3)$ and
+$(\lambda_1\times\lambda_2)\times\lambda_3$, observe that as both are
+quasi-Radon measures it is enough to check that they agree on sets of
+the type $G_1\times(G_2\times G_3)\cong (G_1\times G_2)\times G_3$ where
+$G_1$, $G_2$ and $G_3$ are open, as in 417J.)
+
+So $\lambda_1*(\lambda_2*\lambda_3)$ and
+$(\lambda_1*\lambda_2)*\lambda_3$ agree on the Borel sets and must be
+identical.
+}%end of proof of 444B
+
+\leader{444C}{Theorem} Let $X$ be a topological group and $\lambda$,
+$\nu$ two totally finite quasi-Radon measures on $X$.
+Then
+
+\Centerline{$\int fd(\lambda*\nu)
+=\int f(xy)(\lambda\times\nu)d(x,y)
+=\iint f(xy)\lambda(dx)\nu(dy)
+=\iint f(xy)\nu(dy)\lambda(dx)$}
+
+\noindent for any $(\lambda*\nu)$-integrable real-valued function $f$.
+In particular, $(\lambda*\nu)(X)=\lambda X\cdot\nu X$.
+
+%what about [-\infty,\infty]-valued functions?  see 447
+
+\proof{ If $f$ is of the form $\chi E$, so that
+
+\Centerline{$\int fd(\lambda*\nu)=(\lambda*\nu)(E)$,
+\quad$\int f(xy)(\lambda\times\nu)d(x,y)
+=(\lambda\times\nu)\{(x,y):xy\in E\}$,}
+
+\Centerline{$\iint f(xy)\lambda(dx)\nu(dy)
+=\int\lambda(Ey^{-1})\nu(dy)$,
+\quad$\iint f(xy)\nu(dy)\lambda(dx)
+=\int\nu(x^{-1}E)\lambda(dx)$}
+
+\noindent this is covered by the result in 444A.   Now it is easy to run
+through the standard progression to the cases of (i) simple functions
+(ii) non-negative Borel measurable functions defined everywhere (iii)
+functions defined, and zero, almost everywhere (iv) non-negative
+integrable functions and (v) arbitrary integrable functions.
+}%end of proof of 444C
+
+\leader{444D}{Proposition} Let $X$ be an abelian topological group.
+Then $\lambda*\nu=\nu*\lambda$ for all totally finite quasi-Radon
+measures $\lambda$, $\mu$ on $X$.
+
+\proof{ For any Borel set $E\subseteq X$,
+
+$$\eqalign{(\lambda*\nu)(E)
+&=(\lambda\times\nu)\{(x,y):xy\in E\}
+=(\nu\times\lambda)\{(y,x):xy\in E\}\cr
+&=(\nu\times\lambda)\{(y,x):yx\in E\}
+=(\nu*\lambda)(E).\cr}$$
+}%end of proof of 444D
+
+\leader{444E}{The Banach algebra of $\tau$-additive
+measures (a)} Let $X$ be a topological group.   \cmmnt{Recall from
+437Ab that we have a band $C_b(X)^{\sim}_{\tau}$ in the $L$-space
+$C_b(X)^{\sim}$
+consisting of those order-bounded linear functionals $f:C_b(X)\to\Bbb R$
+such that $|f|$
+is smooth (equivalently, $f^+$ and $f^-$ are both smooth);  that is,
+such that $|f|$, $f^+$ and $f^-$ can be represented by totally finite
+quasi-Radon measures on $X$.}
+\cmmnt{Because $X$ is completely regular (4A5Ha again),}
+$C_b(X)^{\sim}_{\tau}$ can be identified with
+the band $M_{\tau}$ of signed $\tau$-additive Borel measures on $X$,
+that is, the set of those countably additive functionals $\nu$
+defined on the Borel $\sigma$-algebra of $X$ such that $|\nu|$
+is $\tau$-additive\cmmnt{ (437G)}.
+
+\spheader 444Eb For any $\tau$-additive totally finite Borel measures
+$\lambda$, $\nu$ on $X$ we can define their convolution $\lambda*\nu$ by
+\cmmnt{the formulae of 444A, that is,}
+
+\Centerline{$(\lambda*\nu)(E)
+=\int\nu(x^{-1}E)\lambda(dx)
+=\int\lambda(Ey^{-1})\nu(dy)$}
+
+\noindent for any Borel set $E\subseteq X$\cmmnt{, if we note that the
+completions $\hat\lambda$, $\hat\nu$ of $\lambda$ and $\nu$ are
+quasi-Radon measures (415Cb), so that $\lambda*\nu$, as defined by these
+formulae, is just the restriction of $\hat\lambda*\hat\nu$, as defined
+in 444A, to the Borel $\sigma$-algebra}.   Now\cmmnt{ the formulae
+make it
+obvious that} the map $*$ is bilinear in the sense that
+
+\Centerline{$(\lambda_1+\lambda_2)*\nu=\lambda_1*\nu+\lambda_2*\nu$,}
+
+\Centerline{$\lambda*(\nu_1+\nu_2)=\lambda*\nu_1+\lambda*\nu_2$,}
+
+\Centerline{$(\alpha\lambda)*\nu=\lambda*(\alpha\nu)
+=\alpha(\lambda*\nu)$}
+
+\noindent for all totally finite $\tau$-additive Borel measures
+$\lambda$, $\lambda_1$, $\lambda_2$, $\nu$, $\nu_1$, $\nu_2$ and all
+$\alpha\ge 0$.   Consequently\cmmnt{, regarding elements of $M_{\tau}$
+as functionals on the Borel $\sigma$-algebra,} we have a bilinear operator
+$*:M_{\tau}\times M_{\tau}\to M_{\tau}$ defined by saying that
+
+\Centerline{$(\lambda_1-\lambda_2)*(\nu_1-\nu_2)
+=\lambda_1*\nu_1-\lambda_1*\nu_2-\lambda_2*\nu_1+\lambda_2*\nu_2$}
+
+\noindent for all $\lambda_1$, $\lambda_2$, $\nu_1$, $\nu_2\in
+M_{\tau}^+$.
+
+\spheader 444Ec
+\cmmnt{We see from 444B that} $*$ is associative\cmmnt{ on
+$M_{\tau}^+$, so it will be associative on the whole of $M_{\tau}$}.
+\cmmnt{Observe
+that $*$ is positive in the sense that $\lambda*\nu\ge 0$ if $\lambda$,
+$\nu\ge 0$;  so that}
+\dvro{$|\lambda*\nu|
+\le|\lambda|*|\nu|$}
+{
+$$\eqalign{|\lambda*\nu|
+&=|\lambda^+*\nu^+-\lambda^+*\nu^--\lambda^-*\nu^+
+    +\lambda^-*\nu^-|\cr
+&\le\lambda^+*\nu^++\lambda^+*\nu^-+\lambda^-*\nu^++\lambda^-*\nu^-\cr
+&=|\lambda|*|\nu|\cr}$$
+
+\noindent} for any $\lambda$, $\nu\in M_{\tau}$.
+
+\spheader 444Ed
+If $\lambda$, $\nu\in M_{\tau}^+$ then\cmmnt{ $\|\lambda\|=\lambda X$
+and $\|\nu\|=\nu X$ (362Ba), so}
+
+\dvro{\Centerline{$\|\lambda*\nu\|
+=\|\lambda\|\|\nu\|$.}}
+{\Centerline{$\|\lambda*\nu\|
+=(\lambda*\nu)(X)
+=(\lambda\times\nu)(X\times X)
+=\lambda X\cdot\nu X
+=\|\lambda\|\|\nu\|$.}}
+
+\noindent Generally, for any $\lambda$, $\nu\in M_{\tau}$,
+
+\Centerline{$\|\lambda*\nu\|
+\cmmnt{\mskip5mu =\||\lambda*\nu|\|}
+\le\cmmnt{\||\lambda|*|\nu|\|
+=\||\lambda|\|\||\nu|\|
+=}\|\lambda\|\|\nu\|$.}
+
+\noindent\cmmnt{Thus }$M_{\tau}$ is a Banach algebra under the operation
+$*$\cmmnt{, as well as being an $L$-space}.   If $X$ is abelian
+then $M_{\tau}$ will be a commutative algebra\cmmnt{, by 444D}.
+
+\leader{444F}{}\cmmnt{ In preparation for the next construction I give
+a general result extending ideas already touched on in 443C and 443G.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $X$ be a topological space, $G$ a
+topological group and $\action$ a continuous action of $G$ on $X$.   For
+$A\subseteq X$, $a\in G$ write $a\action A=\{a\action x:x\in A\}$.   Let
+$\nu$ be a   measure on $X$.
+
+(a) If $f:X\to[0,\infty]$ is lower semi-continuous, then
+$a\mapsto\int a\action f\,d\nu:G\to[0,\infty]$ is lower semi-continuous.
+\cmmnt{ (See 4A5Cc for the definition of $a\action f$.)}   In
+particular, if $V\subseteq X$ is open, then
+$a\mapsto\nu(a\action V):G\to[0,\infty]$ is lower semi-continuous.
+
+(b) If $f:X\to\Bbb R$ is continuous, then
+$a\mapsto(a\action f)^{\ssbullet}:G\to L^0$ is continuous, if
+$L^0=L^0(\nu)$ is given the topology of convergence in measure.
+
+(c) If $\nu$ is $\sigma$-finite and $E\subseteq X$ is a Borel set, then
+$a\mapsto(a\action E)^{\ssbullet}:G\to\frak A$ is Borel
+measurable, if
+the measure algebra $\frak A$ of $\nu$ is given its measure-algebra
+topology.
+
+(d) If $\nu$ is $\sigma$-finite and $f:X\to\Bbb R$ is Borel measurable,
+then $a\mapsto (a\action f)^{\ssbullet}:G\to L^0$ is Borel measurable.
+
+(e) If $\nu$ is $\sigma$-finite, then
+
+\quad(i)
+$a\mapsto\nu(a\action E):G\to[0,\infty]$ is Borel measurable for any
+Borel set $E\subseteq X$;
+
+\quad (ii)
+if $f:X\to\Bbb R$ is Borel measurable, then $Q=\{a:\int a\action f\,d\nu$
+is defined in $[-\infty,\infty]\}$ is a Borel set, and
+$a\mapsto\int a\action f\,d\nu:Q\to[-\infty,\infty]$ is Borel measurable.
+
+\proof{{\bf (a)(i)} Note first that if $f:X\to[0,\infty]$ is Borel
+measurable, then, for each $a\in G$, $a\action f$ is the composition of
+$f$ with the continuous function $x\mapsto a^{-1}\action x$, so is Borel
+measurable, and if $f$ is finite-valued then $(a\action f)^{\ssbullet}$
+is defined in $L^0=L^0(\nu)$.
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $f:X\to[0,\infty]$ is lower
+semi-continuous, $\gamma\in\coint{0,\infty}$, $a\in G$ and
+$\int a\action f>\gamma$.   Let
+$\Cal U$ be the set of open neighbourhoods of $a$ in $G$.   For
+$U\in\Cal U$, $x\in X$ set
+
+\Centerline{$\phi_U(x)=\sup\{\inf_{b\in U,y\in V}(b\action f)(y):V$ is
+an open neighbourhood of $x$ in $X\}$.}
+
+\noindent Then $\phi_U$ is lower semi-continuous.   \Prf\ If
+$\phi_U(x)>\alpha$, there is an open neighbourhood $V$ of $x$ such that
+$\inf_{b\in U,y\in V}(b\action f)(y)\penalty-100>\alpha$;
+now $\phi_U(y)>\alpha$ for every $y\in V$.\ \QeD\   If $U'\subseteq U$ then
+$\phi_{U'}\ge\phi_U$,
+so $\{\phi_U:U\in\Cal U\}$ is upwards-directed.   Also
+$\sup_{U\in\Cal U}\phi_U=a\action f$ in $[0,\infty]^X$.   \Prf\ Of
+course $\phi_U(x)\le (a\action f)(x)$ for every $x$.   If $x\in X$ and
+$(a\action f)(x)>\alpha$, then
+$\{y:f(y)>\alpha\}$ is an open set containing $a^{-1}\action x$, so
+(because $\action$ is continuous) there are a $U\in\Cal U$ and an open
+neighbourhood $V$ of $x$ such that $f(b^{-1}\action y)>\alpha$ whenever
+$b\in U$ and $y\in V$;  in which case $\phi_U(x)\ge\alpha$.   As $\alpha$
+is arbitrary, $\sup_{U\in\Cal U}\phi_U(x)=(a\action f)(x)$.\ \Qed
+
+By 414Ba, $\int a\action f\,d\nu=\sup_{U\in\Cal U}\int\phi_Ud\nu$, and
+there is a $U\in\Cal U$ such that $\int\phi_Ud\nu>\gamma$.   Now suppose
+that $b\in U$;  then $\phi_U(x)\le (b\action f)(x)$ for every $x$, so
+$\int b\action f\,d\nu>\gamma$.
+This shows that $\{a:\int a\action f\,d\nu>\gamma\}$ is an open set in
+$G$, so that $a\mapsto\int a\action f\,d\nu$ is lower semi-continuous.
+
+\medskip
+
+\quad{\bf (iii)} If $V\subseteq X$ is open, then $\chi V$ is lower
+semi-continuous, and $\chi(a\action V)=a\action(\chi V)$ for every
+$a\in G$.   So $a\mapsto\nu(a\action V)=\int a\action(\chi V)d\nu$ is
+lower semi-continuous.
+
+Thus (a) is true.
+
+\medskip
+
+{\bf (b)} Take any $a\in G$, $E\in\dom\nu$ such that $\nu E<\infty$ and
+$\epsilon>0$.   Let $\Cal U$ be the family of open neighbourhoods of $a$
+in $G$, and for $U\in\Cal U$ set
+
+\Centerline{$H_U
+=\interior\{x:|(b\action f)(x)-(a\action f)(x)|\le\epsilon$ whenever
+$b\in U\}$.}
+
+\noindent Then $\{H_U:U\in\Cal U\}$ is upwards-directed.   Also,
+it has union $X$.   \Prf\ If $x\in X$ then, because
+$(b,y)\mapsto f(b^{-1}\action y)$ is continuous, there are a
+$U\in\Cal U$ and an open neighbourhood $V$ of $x$ such that
+$|(b\action f)(y)-(a\action f)(x)|\le\bover12\epsilon$ whenever
+$b\in U$ and $y\in V$.
+But now $|(b\action f)(y)-(a\action f)(y)|\le\epsilon$ whenever
+$b\in U$ and
+$y\in V$, so that $H_U$ includes $V$, which contains $x$.\ \Qed
+
+So there is a $U\in\Cal U$ such that
+$\nu(E\setminus H_U)\le\epsilon$ (414Ea).   In this case, for any
+$b\in U$, we must have
+
+\Centerline{$\int_E\min(1,|b\action f-a\action f|)d\nu
+\le\epsilon(1+\nu E)$.}
+
+\noindent As $E$ and $\epsilon$ are arbitrary,
+$b\mapsto (b\action f)^{\ssbullet}$ is continuous at $a$;  as $a$ is
+arbitrary, it is continuous everywhere.   Thus (b) is true.
+
+\medskip
+
+{\bf (c)(i)} Let us start by supposing that $E$ is an open set and that
+$\nu$ is totally finite.   In this case the function
+$a\mapsto\nu(a\action E)$
+is lower semi-continuous, by (a) above, therefore Borel measurable.
+Now let $W\subseteq\frak A$ be an open set, and write
+$H=\{a:a\in G,\,(a\action E)^{\ssbullet}\in W\}$.   For $m$,
+$k\in\Bbb N$ set
+$H_{mk}=\{a:2^{-m}k\le\nu(a\action E)<2^{-m}(k+1)\}$, so that $H_{mk}$
+is Borel, and
+$U_{mk}=G\setminus\overline{H_{mk}\setminus H}$, so that $U_{mk}$ is
+open.   Let $H'$ be $\bigcup_{m,k\in\Bbb N}H_{mk}\cap U_{mk}$;  then
+$H'$ is Borel and $H'\subseteq H$.   In fact $H'=H$.   \Prf\ If
+$a\in H$, then $W$ is an open
+set containing $(a\action E)^{\ssbullet}$.   Let $\delta>0$ be such that
+$a\in W$ whenever
+$\bar\nu(a\Bsymmdiff(a\action E)^{\ssbullet})\le\delta$,
+where $\bar\nu$ is the measure on $\frak A$;
+let $m$, $k\in\Bbb N$ be such that $2^{-m}\le\bover14\delta$ and
+$2^{-m}k\le\nu(a\action E)<2^{-m}(k+1)$.   If we take $\nuprime$ to be
+the indefinite-integral measure over $\nu$ defined by $\chi(a\action E)$,
+then $\nuprime$ is a quasi-Radon measure (415Ob), so (by (a) again)
+$U=\{b:\nuprime(b\action E)>2^{-m}(k-1)\}$ is an open set, and of course
+it
+contains $a$.   If $b\in U\cap H_{mk}$, then
+
+$$\eqalign{\nu((b\action E)\symmdiff(a\action E))
+&=\nu(b\action E)+\nu(a\action E)-2\nu((b\action E)\cap(a\action E))\cr
+&\le 2^{-m}(k+1)+2^{-m}(k+1)-2\cdot 2^{-m}(k-1)
+\le 4\cdot 2^{-m}
+\le\delta,\cr}$$
+
+\noindent so $(b\action E)^{\ssbullet}\in W$ and $b\in H$.   This shows
+that $U\cap(H_{mk}\setminus H)=\emptyset$ and $U\subseteq U_{mk}$ and
+$a\in U\cap H_{mk}\subseteq H'$.   As $a$ is arbitrary, $H=H'$.\ \QeD\
+Thus $H$ is a
+Borel subset of $G$.   As $W$ is arbitrary, the map
+$a\mapsto(a\action E)^{\ssbullet}$ is Borel measurable.
+
+\medskip
+
+\quad{\bf (ii)} To extend this to a general $\sigma$-finite quasi-Radon
+measure $\nu$, still
+supposing that $E$ is open, let $h:X\to\Bbb R$ be a strictly positive
+integrable function (215B(viii)) and $\nuprime$ the corresponding
+indefinite-integral measure.   As in (i), this $\nuprime$ also is a
+quasi-Radon measure.   Since $\nu$
+and $\nuprime$ have the same domains and the same null ideals,
+the Boolean algebra $\frak A$ is still the underlying algebra of the
+measure algebra of $\nuprime$;  by 324H, the topologies on $\frak A$
+induced by the measures $\bar\nu$, $\bar\nuprime$ are the same.   So we
+can apply (i) to the measure $\nuprime$ to see that
+$a\mapsto(a\action E)^{\ssbullet}:G\to\frak A$ is still Borel
+measurable.
+
+\medskip
+
+\quad{\bf (iii)} Next, suppose that $E$ is expressible as
+$\bigcup_{i\le n}V_{2i}\setminus V_{2i+1}$ where each $V_i$ is open.
+Then $a\mapsto(a\action E)^{\ssbullet}$ is Borel measurable.   \Prf\ Set
+$X'=X\times\{0,\ldots,2n+1\}$, with the product topology (giving
+$\{0,\ldots,2n+1\}$ its discrete topology) and define a measure
+$\nuprime$ on $X$ and an action of $G$ on $X'$ by setting
+
+\Centerline{$\nuprime F=\sum_{i=0}^{2n+1}\nu\{x:(x,i)\in F\}$}
+
+\noindent whenever $F\subseteq X'$ is such that
+$\{x:(x,i)\in F\}\in\dom\nu$ for every $i\le 2n+1$,
+
+\Centerline{$a\action(x,i)=(a\action x,i)$}
+
+\noindent whenever $a\in G$, $x\in X$ and $i\le 2n+1$.   Then
+$V=\{(x,i):i\le 2n+1,\,x\in V_i\}$ is an open set in $X'$, while
+$\nuprime$
+is a $\sigma$-finite quasi-Radon measure, as is easily checked;  so, by
+(ii), the map
+$a\mapsto(a\action V)^{\ssbullet}:G\to\frak A'$ is Borel measurable,
+where $\frak A'$ is the measure algebra of $\nuprime$.   On the other
+hand, we can identify $\frak A'$ with the simple power $\frak A^{2n+2}$
+(322Lb), and the map
+
+\Centerline{$\langle c_i\rangle_{i\le 2n+1}
+\mapsto\sup_{i\le n}c_{2i}\Bsetminus c_{2i+1}:\frak A^{2n+2}\to\frak A$}
+
+\noindent is continuous, by 323B.   So the map
+
+\Centerline{$a\mapsto(a\action E)^{\ssbullet}
+=\sup_{i\le n}(a\action V_{2i})^{\ssbullet}
+  \Bsetminus(a\action V_{2i+1})^{\ssbullet}$}
+
+\noindent is the composition of a Borel measurable function with a
+continuous function, and is Borel measurable.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} Now the family $\Cal E$ of all those Borel sets
+$E\subseteq X$ such that $a\mapsto(a\action E)^{\ssbullet}$ is Borel
+measurable is closed under unions and intersections of monotonic
+sequences.   \Prf\ ($\alpha$) If $\sequencen{E_n}$ is a non-decreasing
+sequence in $\Cal E$ with union $E$, then
+
+\Centerline{$(a\action E)^{\ssbullet}
+=\sup_{n\in\Bbb N}(a\action E_n)^{\ssbullet}
+=\lim_{n\to\infty}(a\action E_n)^{\ssbullet}$}
+
+\noindent (323Ea) for every $a\in G$.   So
+$a\mapsto(a\action E)^{\ssbullet}$ is
+the pointwise limit of a sequence of Borel measurable functions into a
+metrizable space (323Gb, because $(\frak A,\bar\nu)$ is
+$\sigma$-finite), and is Borel measurable, by 418Ba.   Thus
+$E\in\Cal E$.   ($\beta$) If $\sequencen{E_n}$ is a non-increasing
+sequence in $\Cal E$ the same argument applies, since this time
+
+\Centerline{$(a\action E)^{\ssbullet}
+=\inf_{n\in\Bbb N}(a\action E_n)^{\ssbullet}
+=\lim_{n\to\infty}(a\action E_n)^{\ssbullet}$}
+
+\noindent (323Eb) for every $a\in G$.\ \Qed
+
+Since $\Cal E$ contains all sets of the form
+$\bigcup_{i\le n}V_i\cap F_i$ where every $V_i$ is open and every $F_i$
+is closed, by (iii), $\Cal E$ must be the whole Borel $\sigma$-algebra,
+by 4A3Cg(ii).
+
+This completes the proof of (c).
+
+\medskip
+
+{\bf (d)(i)} We need the following extension of (c):  if
+$\sequencen{E_n}$ is any sequence of Borel sets in $X$, then
+$a\mapsto\sequencen{(a\action E_n)^{\ssbullet}}:
+  G\mapsto\frak A^{\Bbb N}$ is Borel measurable.   \Prf\ I repeat the
+idea of (c-iii) above.
+On $X'=X\times\Bbb N$ define a measure $\nuprime$ by setting
+
+\Centerline{$\nuprime F=\sum_{n=0}^{\infty}\nu\{x:(x,n)\in F\}$}
+
+\noindent whenever $F\subseteq X'$ is such that
+$\{x:(x,n)\in F\}\in\dom\nu$ for every $n\in\Bbb N$.   As before, it is
+easy to check
+that $\nuprime$ is a $\sigma$-finite quasi-Radon measure, if we give
+$\Bbb N$ its discrete
+topology and $X'$ the product topology.   As before, set
+$a\action(x,n)=(a\action x,n)$ for $a\in G$, $x\in X$ and $n\in\Bbb N$,
+to obtain a continuous action of $G$ on $X'$.   Applying (c) to this
+action, the map $a\mapsto(a\action E)^{\ssbullet}:G\to\frak A'$ is
+Borel measurable, where $\frak A'$ is the measure algebra of $\nuprime$
+and $E=\{(x,n):n\in\Bbb N,\,x\in E_n\}$.   But we can identify $\frak A'$
+(as Boolean algebra) with $\frak A^{\Bbb N}$, by 322L, as before;  so
+that if we re-interpret $a\mapsto(a\action E)^{\ssbullet}:G\to\frak A'$
+as $a\mapsto\sequencen{(a\action E_n)^{\ssbullet}}:G\to\frak A^{\Bbb N}$
+it is still Borel measurable.   (As in (c-ii), this time using
+323L, the measure-algebra topology of $\frak A'$ matches the product
+topology on $\frak A^{\Bbb N}$.)\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $f:X\to[0,1]$ is Borel measurable.
+Define $\sequencen{E_n}$ inductively by the formula
+
+\Centerline{$E_n=\{x:x\in X,\,
+(f-\sum_{i<n}2^{-i-1}\chi E_i)(x)\ge 2^{-n-1}\}$.}
+
+\noindent Then every $E_n$ is a Borel set and
+$f=\sum_{n=0}^{\infty}2^{-n-1}\chi E_n$.   Next, observe that the
+function
+
+\Centerline{$\sequencen{c_n}\mapsto\sum_{n=0}^{\infty}2^{-n-1}\chi c_n:
+\frak A^{\Bbb N}\to L^0$}
+
+\noindent is continuous, because each of the maps
+$c\mapsto 2^{-n-1}\chi c$ is continuous (367R), addition is continuous
+(245Da, 367Ma) and the
+series is uniformly summable.   Accordingly we may think of the map
+$a\mapsto (a\action f)^{\ssbullet}$ as the composition of the continuous
+function
+$\sequencen{c_n}\mapsto\sum_{n=0}^{\infty}2^{-n-1}\chi c_i$ with the
+Borel measurable function
+$a\mapsto\sequencen{(a\action E_n)^{\ssbullet}}$, and it is Borel
+measurable.
+
+\wheader{444F}{4}{2}{2}{30pt}
+
+\quad{\bf (iii)} For general Borel measurable $f:X\to\Bbb R$, set
+$q(t)=\bover12(1+\bover{t}{|t|+1})$, so that $q:\Bbb R\to\ooint{0,1}$ is
+a homeomorphism, and set $p=q^{-1}:\ooint{0,1}\to\Bbb R$.   Then the
+function $\bar p:P\to L^0$ is continuous, where
+$P=\{u:u\in L^0,\,\Bvalue{u\in\ooint{0,1}\,}=1\}$ (367S).   But now
+
+\Centerline{$a\action f=p\frsmallcirc q\frsmallcirc(a\action f)
+=p\frsmallcirc(a\action(q\frsmallcirc f))$}
+
+\noindent for every $a$, so that $a\mapsto (a\action f)^{\ssbullet}$ is
+the composition of the Borel map
+$a\mapsto(a\action(q\frsmallcirc f))^{\ssbullet}$ with the
+continuous map $\bar p$, and is Borel measurable.
+
+\medskip
+
+{\bf (e)(i)} We need only recall that $\bar\nu:\frak A\to\Bbb R$ is
+lower semi-continuous (323Cb), so that (applying (c) above)
+
+\Centerline{$a\mapsto\nu(a\action E)=\bar\nu(a\action E)^{\ssbullet}$}
+
+\noindent is a composition of Borel measurable functions and is Borel
+measurable.   (Of course there are
+much more direct arguments, using fragments of the proof above.)
+
+\medskip
+
+\quad{\bf (ii)} The point is that the maps $u\mapsto u^+$,
+$u\mapsto u^-:L^0\to(L^0)^+$ are continuous (245Db, 367S), while
+$u\mapsto\int u:(L^0)^+\to[0,\infty]$ is lower semi-continuous
+(369Mb), therefore Borel measurable.   Accordingly
+$a\mapsto\int (a\action f)^+=\int((a\action f)^{\ssbullet})^+$ and
+$a\mapsto\int (a\action f)^-$ are Borel measurable functions from $G$ to
+$[0,\infty]$, so that
+
+\Centerline{$Q
+=\{a:\min(\int (a\action f)^+,\int (a\action f)^-)<\infty\}$}
+
+\noindent is a Borel set, and
+
+\Centerline{$a\mapsto\int a\action f
+=\int (a\action f)^+-\int (a\action f)^-:
+Q\to[-\infty,\infty]$}
+
+\noindent is Borel measurable.
+}%end of proof of 444F
+
+\vleader{48pt}{444G}{Corollary} Let $X$ be a topological group and $\nu$ a
+$\sigma$-finite quasi-Radon measure on $X$.
+
+(a) If $f:X\to\Bbb R$ is a Borel measurable function, then
+$\{x:\int f(y^{-1}x)\nu(dy)$ is defined in $[-\infty,\infty]\}$ is a
+Borel set in
+$X$ and $x\mapsto\int f(y^{-1}x)\nu(dy)$ is Borel measurable.
+
+(b) If $f$, $g:X\to\Bbb R$ are Borel measurable functions, then
+$\{x:\int f(xy^{-1})g(y)\nu(dy)$ is defined in $[-\infty,\infty]\}$ is a
+Borel set and $x\mapsto\int f(xy^{-1})g(y)\nu(dy)$ is Borel measurable.
+
+(c) If $\nu$ is totally finite and $f:X\to\Bbb R$ is a bounded
+continuous function, then $x\mapsto\int f(y^{-1}x)\nu(dy):X\to\Bbb R$ is
+continuous.
+
+\proof{{\bf (a)} Set $\Reverse{f}(x)=f(x^{-1})$ for $x\in X$ (4A5C(c-ii));
+then $\Reverse{f}$ is Borel
+measurable.   Let $\action_l$ be the left action of $X$ on itself.
+Then, in the language of 444Fe,
+$Q=\{x:\int x\action_l\Reverse{f}\,d\nu$ is defined in $[-\infty,\infty]\}$
+is a Borel set, and $x\mapsto\int x\action_l\Reverse{f}\,d\nu$ is Borel
+measurable.   But 
+
+\Centerline{$(x\action_l\Reverse{f})(y)
+=\Reverse{f}(x^{-1}y)=f(y^{-1}x)$}
+
+\noindent for all $x$, $y$, so
+$\int x\action_l\Reverse{f}\,d\nu=\int f(y^{-1}x)\nu(dy)$ if either
+integral is defined.
+
+\medskip
+
+{\bf (b)(i)} Set $\Reverse{\nu}E=\nu E^{-1}$ when this is defined, writing
+$E^{-1}=\{x^{-1}:x\in E\}$ for $E\subseteq X$;  that is, $\Reverse{\nu}$ is
+the image measure $\nu\phi^{-1}$, where $\phi(x)=x^{-1}$ for $x\in X$.
+Because $\phi$ is a homeomorphism, $\Reverse{\nu}$ is a quasi-Radon measure.
+By 235J,
+$\int h\,d\Reverse{\nu}=\int h(x^{-1})\nu(dx)$ for any real-valued function
+$h$ for which either integral is defined in $[-\infty,\infty]$.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $f$ and $g$ are non-negative Borel
+measurable functions from $X$ to $\Bbb R$.   
+Then $\Reverse{g}$ also is a non-negative Borel
+measurable function.   We know from 444Fd that
+$x\mapsto (x^{-1}\action_lf)^{\ssbullet}:X\to L^0(\Reverse{\nu})$
+is a Borel measurable function;  now multiplication in $L^0$ is
+continuous (245Dc), so the map
+$x\mapsto((x^{-1}\action_lf)\times\Reverse{g})^{\ssbullet}$
+is Borel measurable;  since integration is lower semi-continuous on
+$(L^0)^+$,
+$x\mapsto\int(x^{-1}\action_lf)\times\Reverse{g}\,d\Reverse{\nu}:
+X\to[0,\infty]$ is Borel measurable.   But
+
+\Centerline{$\int(x^{-1}\action_lf)\times\Reverse{g}\,d\Reverse{\nu}
+=\int f(xy)g(y^{-1})\Reverse{\nu}(dy)
+=\int f(xy^{-1})g(y)\nu(dy)$}
+
+\noindent whenever any of the integrals is defined in
+$[-\infty,\infty]$, so this is the function we needed to know about.
+
+\medskip
+
+\quad{\bf (iii)} For general Borel measurable functions $f$ and $g$, we
+have
+
+$$\eqalign{\int f(xy^{-1})g(y)\nu(dy)
+&=\bigl(\int f^+(xy^{-1})g^+(y)\nu(dy)
++\int f^-(xy^{-1})g^-(y)\nu(dy)\bigr)\cr
+&\qquad\qquad-\bigl(\int f^+(xy^{-1})g^-(y)\nu(dy)
++\int f^-(xy^{-1})g^+(y)\nu(dy)\bigr)\cr}$$
+
+\noindent exactly when the subtraction can be done in
+$[-\infty,\infty]$, so that $x\mapsto\int f(xy^{-1})g(y)\nu(dy)$ is a
+difference of Borel measurable functions and is Borel measurable, with
+Borel measurable domain.
+
+\medskip
+
+{\bf (c)} Continuing the argument of (a), if $f$ is bounded and
+continuous and $\nu$ is
+totally finite then all the functions $x\action_l\Reverse{f}$ are bounded
+and continuous, so $\int x\action_l\Reverse{f}\,d\nu$ is defined and finite
+for every $x$.   Next, the function
+$x\mapsto(x\action_l\Reverse{f})^{\ssbullet}:X\to L^0(\nu)$ is
+continuous for the topology of convergence in measure (444Fb), which
+agrees with the norm topology of $L^1(\nu)$ on $\|\,\|_{\infty}$-bounded
+sets (246Jb).   It follows that
+
+\Centerline{$x\mapsto\int (x\action_l\Reverse{f})^{\ssbullet}
+=\int f(y^{-1}x)\nu(dy)$}
+
+\noindent is continuous.
+}%end of proof of 444G
+
+\leader{444H}{Convolutions of measures and functions}\cmmnt{ I
+introduce some notation which I shall use for the rest of the section.}
+Let $X$ be a topological group.   If $f$ is a real-valued function
+defined on a subset of $X$, and $\nu$ is a measure on $X$, set
+
+\Centerline{$(\nu*f)(x)=\int f(y^{-1}x)\nu(dy)$}
+
+\noindent whenever the integral is defined in $\Bbb R$.
+
+\leader{444I}{Proposition} Let $X$ be a topological group and $\lambda$,
+$\nu$ two totally finite quasi-Radon measures on $X$.
+
+(a) For any Borel measurable function $f:X\to\Bbb R$, $\nu*f$ is a Borel
+measurable function with a Borel domain.
+
+(b) $\nu*f\in C_b(X)$ for every $f\in C_b(X)$.
+
+(c) For any real-valued function $f$ defined on a subset of $X$,
+$(\lambda*(\nu*f))(x)=((\lambda*\nu)*f)(x)$ whenever the right-hand side
+is defined.
+
+\proof{{\bf (a)} This follows at once from 444Ga.
+
+\medskip
+
+{\bf (b)} This is just a restatement of 444Gc.
+
+\medskip
+
+{\bf (c)} If $((\lambda*\nu)*f)(x)$ is defined, then
+
+$$\eqalignno{((\lambda*\nu)*f)(x)
+&=\int f(t^{-1}x)(\lambda*\nu)(dt)
+=\iint f((yz)^{-1}x)\nu(dz)\lambda(dy)\cr
+\displaycause{444C}
+&=\iint f(z^{-1}y^{-1}x)\nu(dz)\lambda(dy)\cr
+&=\int(\nu*f)(y^{-1}x)\lambda(dy)
+=(\lambda*(\nu*f))(x).\cr}$$
+}%end of proof of 444I
+
+\leader{444J}{Convolutions of functions and measures}
+Let $X$ be a topological group carrying Haar measures;  let $\Delta$ be
+its left modular function\cmmnt{ (442I)}.   If $f$ is a real-valued
+function defined on a subset of $X$, and $\nu$ is a measure on $X$, set
+
+\Centerline{$(f*\nu)(x)=\int f(xy^{-1})\Delta(y^{-1})\nu(dy)$}
+
+\noindent whenever the integral is defined in $\Bbb R$.
+\cmmnt{From 444Gb we see that if $\nu$ is a $\sigma$-finite
+quasi-Radon measure and
+$f$ is Borel measurable, then $f*\nu$ is a Borel measurable function
+with a Borel domain.}   If $f$ is
+non-negative and $\nu$-integrable, write $f\nu$ for the corresponding
+indefinite-integral measure over $\nu$\cmmnt{ (234J\formerly{2{}34B})}.
+
+\leader{444K}{Proposition} Let $X$ be a topological group with a left
+Haar measure $\mu$.   Let $\nu$ be a totally finite
+quasi-Radon measure on $X$.   Then for any non-negative $\mu$-integrable
+real-valued function $f$, $f\mu$ is a quasi-Radon measure;  moreover,
+$\nu*f$ and $f*\nu$ are $\mu$-integrable, and we have
+
+\Centerline{$(\nu*f)\mu=\nu*f\mu$,
+\quad$(f*\nu)\mu=f\mu*\nu$.}
+
+\noindent In particular,
+$\int\nu*f\,d\mu=\int f*\nu\,d\mu=\nu X\cdot\int fd\mu$.
+
+\proof{{\bf (a)} $f\mu$ is a quasi-Radon measure by 415Ob.
+
+\medskip
+
+{\bf (b)} Suppose first that $f$ is Borel measurable and
+defined everywhere on $X$, as well as being non-negative and
+$\mu$-integrable.
+
+\medskip
+
+\quad{\bf (i)} Let $E\subseteq X$ be a Borel set such that $\mu E<\infty$.
+The function
+$(x,y)\mapsto f(x^{-1}y)\chi E(y):X\times X\to\coint{0,\infty}$ is Borel
+measurable, so
+
+$$\eqalignno{(\nu*f\mu)(E)
+&=\int(f\mu)(x^{-1}E)\nu(dx)\cr
+\noalign{\noindent (444A)}
+&=\iint f(y)\chi(x^{-1}E)(y)\mu(dy)\nu(dx)\cr
+\noalign{\noindent (by the definition of $f\mu$, 234I\formerly{2{}34A})}
+&=\iint f(x^{-1}y)\chi(x^{-1}E)(x^{-1}y)\mu(dy)\nu(dx)\cr
+\noalign{\noindent (441J)}
+&=\iint f(x^{-1}y)\chi E(y)\mu(dy)\nu(dx)
+=\iint f(x^{-1}y)\chi E(y)\nu(dx)\mu(dy)\cr}$$
+
+\noindent (by Fubini's theorem, 417Ha, because
+$(x,y)\mapsto f(x^{-1}y)\chi E(y)$ is non-negative and Borel measurable
+and zero outside $X\times E$).   So
+$\int f(x^{-1}y)\nu(dx)$ must be finite for $\mu$-almost every $y\in E$.
+Because $\mu$ is complete and locally determined and inner regular with
+respect to the Borel sets of finite measure,
+$(\nu*f)(y)=\int f(x^{-1}y)\nu(dx)$ is defined in $\Bbb R$ for $\mu$-almost
+every $y\in X$.   So we have an indefinite-integral measure $(\nu*f)\mu$.
+Next, we have
+
+$$\eqalign{\infty
+&>\nu X\int fd\mu
+=(\nu*f\mu)(X)
+\ge(\nu*f\mu)(E)\cr
+&=\iint f(x^{-1}y)\chi E(y)\nu(dx)\mu(dy)
+=\iint(\nu*f)(y)\chi E(y)\mu(dy)
+=((\nu*f)\mu)(E)\cr}$$
+
+\noindent for every Borel set $E$ such that $\mu E$ is finite.   Again
+because $\mu$ is inner regular with respect to the Borel sets of finite
+measure, $\nu*f$ is $\mu$-integrable and $(\nu*f)\mu$ is totally finite.
+Since $\nu*f\mu$ and $(\nu*f)(\mu)$ are totally finite quasi-Radon measures
+agreeing on open sets of finite measure for $\mu$, and $\mu$ is locally
+finite (442Aa), 415H(iv) assures us that $\nu*f\mu=(\nu*f)(\mu)$.
+
+\medskip
+
+\quad{\bf (ii)} Now consider $f*\nu$.   This time, if
+$E\subseteq X$ is Borel and $\mu E<\infty$,
+
+$$\eqalignno{(f\mu*\nu)(E)
+&=\int(f\mu)(Ey^{-1})\nu(dy)
+=\iint_{Ey^{-1}}f(x)\mu(dx)\nu(dy)\cr
+&=\int\Delta(y^{-1})\int_Ef(xy^{-1})\mu(dx)\nu(dy)\cr
+\noalign{\noindent (by 442Kc)}
+&=\int_E\int\Delta(y^{-1})f(xy^{-1})\nu(dy)\mu(dx).\cr}$$
+
+\noindent Once again, we see that $\int\Delta(y^{-1})f(xy^{-1})\nu(dy)$ is
+defined for $\mu$-almost every $x\in E$;  as $E$ is arbitrary,
+$(f*\nu)(x)$ is defined in $\Bbb R$ for $\mu$-almost every $x\in X$;
+and 444Gb tells us that $f*\nu$ is Borel measurable.   As before,
+
+\Centerline{$\int_Ef*\nu\,d\mu\le(f\mu*\nu)(X)
+=\int fd\mu\cdot\nu X<\infty$}
+
+\noindent for Borel sets $E$ with $\mu E<\infty$, so that $f*\nu$ is
+$\mu$-integrable;  as before, the quasi-Radon measures $(f*\nu)\mu$ and
+$f\mu*\nu$ agree on open sets of finite $\mu$-measure, so coincide.
+
+\medskip
+
+{\bf (c)} Next, suppose that $f$ is defined and zero $\mu$-a.e.   In
+this case there is a Borel set $E$ such that $\mu E=0$ and $f(x)$ is
+defined and equal to zero for every $x\in X\setminus E$ (443J(b-ii)).
+Set $g=\chi E$.   Then $g\mu$ is the zero measure, so
+$(\nu*g)\mu=\nu*g\mu$, $(g*\nu)\mu=g\mu*\nu$ are all zero;  that is,
+there is some $\mu$-conegligible set $F$ such that
+
+\Centerline{$0=(\nu*g)(x)=\int\chi E(y^{-1}x)\nu(dy)
+=\nu(xE^{-1})$,}
+
+\Centerline{$0=(g*\nu)(x)=\int\chi E(xy^{-1})\Delta(y^{-1})\nu(dy)
+=\int_{E^{-1}x}\Delta(y^{-1})\nu(dy)$}
+
+\noindent for every $x\in F$.   But now, for $x\in F$, we must have
+$\nu(xE^{-1})=\nu(E^{-1}x)=0$ (since $\Delta$ is strictly positive), so
+that
+
+\Centerline{$(\nu*f)(x)=\int f(y^{-1}x)\nu(dy)
+=\int_{xE^{-1}}f(y^{-1}x)\nu(dy)=0$,}
+
+\noindent because if $y\notin xE^{-1}$ then $y^{-1}x\notin E$ and
+$f(y^{-1}x)=0$.   Similarly,
+
+\Centerline{$(f*\nu)(x)=\int f(xy^{-1})\Delta(y^{-1})\nu(dy)
+=\int_{E^{-1}x}f(xy^{-1})\Delta(y^{-1})\nu(dy)=0$.}
+
+\noindent Thus $\nu*f$ and $f*\nu$ are defined, and zero, $\mu$-almost
+everywhere.
+
+\medskip
+
+{\bf (d)} For an arbitrary non-negative $\mu$-integrable function $f$,
+we can express it in the form $g+h$ where $g$ is a non-negative
+$\mu$-integrable Borel measurable function defined everywhere, and $h$
+is zero almost everywhere.   In this case, $\nu*h^+$, $\nu*h^-$,
+$h^+*\nu$ and $h^-*\nu$ are defined, and zero, $\mu$-a.e., so
+$\nu*f\eae\nu*g$ and $f*\nu\eae g*\nu$.   We therefore have
+
+\Centerline{$(\nu*f)\mu=(\nu*g)\mu=\nu*g\mu=\nu*f\mu$,
+\quad$(f*\nu)\mu=(g*\nu)\mu=g\mu*\nu=f\mu*\nu$,}
+
+\noindent as required.
+
+\medskip
+
+{\bf (e)} Finally, we have
+
+\Centerline{$\int\nu*fd\mu=((\nu*f)\mu)(X)=(\nu*f\mu)(X)
+=\nu X\cdot(f\mu)(X)=\nu X\cdot\int fd\mu$,}
+
+\Centerline{$\int f*\nu\,d\mu=((f*\nu)\mu)(X)=(f\mu*\nu)(X)
+=(f\mu)(X)\cdot\nu X=\nu X\cdot\int fd\mu$.}
+}%end of proof of 444K
+
+\leader{444L}{Corollary} Let $X$ be a topological group carrying Haar
+measures.   Suppose that $\nu$ is a non-zero quasi-Radon measure on $X$
+and $E\subseteq X$ is a Haar measurable set such that $\nu(xE)=0$ for every
+$x\in X$.   Then $E$ is Haar negligible.
+
+\proof{ Let $\mu$ be a left Haar measure on $X$.   There is a non-zero
+totally finite quasi-Radon measure $\nuprime$ on $X$ such that
+$\nuprime(xE)=0$
+for every $x\in X$.   \Prf\ Take any $F$ such that $0<\nu F<\infty$, and
+set $\nuprime H=\nu(H\cap F)$ whenever this is defined.\ \QeD\   Let $G$
+be
+any Borel set such that $\mu G<\infty$, and set $f=\chi(G\cap E^{-1})$.
+Then $f$ is $\mu$-integrable, and
+
+\Centerline{$(\nuprime*f)(x)
+=\int\chi(G\cap E^{-1})(y^{-1}x)\nuprime(dy)
+=\nuprime(xG^{-1}\cap xE)=0$}
+
+\noindent for every $x\in X$.   By 444K,
+$\nuprime*f\mu=(\nuprime*f)\mu$ is the zero
+measure, and $(f\mu)(X)=0$, that is, $\mu(G\cap E^{-1})=0$.   As $G$ is
+arbitrary, $\mu E^{-1}=0$ and $E$ is Haar negligible (442H).
+}%end of proof of 444L
+
+\leader{444M}{Proposition} Let $X$ be a topological group and $\mu$ a
+left Haar measure on $X$.   Let $\nu$ be a quasi-Radon
+measure on $X$ and $p\in[1,\infty]$.
+
+(a) Suppose that $\nu X<\infty$.   Then
+we have a bounded positive linear operator
+$u\mapsto\nu*u:L^p(\mu)\to L^p(\mu)$, of norm at most $\nu X$, defined
+by saying that $\nu*f^{\ssbullet}=(\nu*f)^{\ssbullet}$ for every
+$f\in\eusm L^p(\mu)$.
+
+(b) Set $\gamma=\int\Delta(y)^{(1-p)/p}\nu(dy)$ if $p<\infty$,
+$\int\Delta(y)^{-1}\nu(dy)$ if $p=\infty$, where $\Delta$ is the left
+modular function of $X$.   Suppose that $\gamma<\infty$.   Then we have
+a bounded positive linear operator
+$u\mapsto u*\nu:L^p(\mu)\to L^p(\mu)$, of norm at most $\gamma$, defined
+by saying that $f^{\ssbullet}*\nu=(f*\nu)^{\ssbullet}$ for every
+$f\in\eusm L^p(\mu)$.
+
+\proof{ I will write $\eusm L^p$, $L^p$ for $\eusm L^p(\mu)$, $L^p(\mu)$.
+Note that if $f_1$, $f_2\in\eusm L^0(\mu)$ and $f_1=f_2\,\,\mu$-a.e., then
+444L tells us that $\nu*|f_1-f_2|$ and $|f_1-f_2|*\nu$ are both zero
+$\mu$-almost everywhere, so that $\nu*f_1\eae\nu*f_2$ and
+$f_1*\nu\eae f_2*\nu$, in the sense that there is a $\mu$-conegligible set
+$F$ such that $(\nu*f_1)\restr F=(\nu*f_2)\restr F$ and
+$(f_1*\nu)\restr F=(f_2*\nu)\restr F$.   In particular, if we are told that
+$\nu*f_1$ belongs to $\eusm L^p$, and that
+$f_1^{\ssbullet}=f_2^{\ssbullet}$ in $L^0(\mu)$, then we can be sure that
+$\nu*f_2\in\eusm L^p$ and $(\nu*f_2)^{\ssbullet}=(\nu*f_1)^{\ssbullet}$;
+and similarly for $f_1*\nu$, $f_2*\nu$.
+
+\wheader{444M}{6}{2}{2}{48pt}
+
+{\bf (a)} If $\nu X=0$ the result is trivial.   Multiplying $\nu$ by a
+positive scalar does not affect the inequalities we need, so we may suppose
+that $\nu X=1$.   If $f\ge 0$ is $\mu$-integrable, then 444K tells us that
+$\nu*f$ is $\mu$-integrable and that
+
+$$\eqalign{\|\nu*f\|_1&=\int_X(\nu*f)(x)\mu(dx)=((\nu*f)\mu)(X)\cr
+&=(\nu*f\mu)(X)=\nu X\cdot(f\mu)(X)=\|f\|_1,\cr}$$
+
+\noindent using 444C or 444A for the penultimate equality.   Since
+evidently $\nu*(f+g)=\nu*f+\nu*g$, $\nu*(\alpha f)=\alpha\nu*f$ at any
+point where
+the right-hand sides of the equations are defined in $\Bbb R$,
+we have a positive
+linear operator $T_1:L^1\to L^1$ defined by saying that
+$T_1g^{\ssbullet}=(\nu*g)^{\ssbullet}$ for every $\mu$-integrable Borel
+measurable function $g$, with $\|T_1\|=1$.
+
+Similarly, if $h:X\to\Bbb R$ is a bounded Borel measurable function,
+then $\nu*h$ also is a Borel
+measurable function, by 444Ga.   Of course it is bounded, since
+
+\Centerline{$|(\nu*h)(x)|=|\int h(y^{-1}x)\nu(dy)|
+\le\sup_{y\in X}|h(y)|$}
+
+\noindent for every $x$.   So we have a positive linear operator
+$T_{\infty}:L^{\infty}\to L^{\infty}$ defined by saying that
+$T_{\infty}h^{\ssbullet}=(\nu*h)^{\ssbullet}$ for every bounded Borel
+measurable function $h$.   Moreover, if $u\in L^{\infty}$, there is a
+Borel measurable $h$ such that $h^{\ssbullet}=u$ and
+$\sup_{y\in X}|h(y)|=\|u\|_{\infty}$, so that
+
+\Centerline{$\|T_{\infty}u\|_{\infty}
+\le\sup_{x\in X}|(\nu*h)(x)|\le\|u\|_{\infty}$;}
+
+\noindent thus $\|T_{\infty}\|\le 1$.
+
+Since $T_1$ and $T_{\infty}$ agree on $L^1\cap L^{\infty}$, they have a
+common extension to a linear operator
+$T:L^1+L^{\infty}\to L^1+L^{\infty}$.   By 371Gd, $\|Tu\|_p\le\|u\|_p$
+whenever $p\in[1,\infty]$ and $u\in L^p$.   (Strictly speaking, I am
+relying on the standard identifications of $L^1$, $L^{\infty}$ and $L^p$
+with the corresponding subspaces of $L^0(\frak A)$, where
+$(\frak A,\bar\mu)$ is the measure algebra of $\mu$.   Of course the
+argument for 371Gd applies equally well in $L^0(\mu)$.)   Now suppose
+that $f\in\eusm L^p$.   Then it is expressible as $g+h$ where
+$g\in\eusm L^1$ and $h:X\to\Bbb R$ is a bounded Borel measurable
+function, so we shall have
+
+\Centerline{$\nu*f=\nu*g+\nu*h$ wherever the right-hand side is
+defined;}
+
+\noindent accordingly $\nu*f$ is defined $\mu$-a.e.\ and is measurable, and
+
+$$\eqalign{\|\nu*f\|_p
+&=\|(\nu*g)^{\ssbullet}+(\nu*h)^{\ssbullet}\|_p
+=\|T_1g^{\ssbullet}+T_{\infty}h^{\ssbullet}\|_p\cr
+&=\|Tf^{\ssbullet}\|_p
+\le\|f^{\ssbullet}\|_p
+=\|f\|_p,\cr}$$
+
+\noindent as required.
+
+\medskip
+
+{\bf (b)(i)} As in (a), the case $\nu X=0$ is trivial.   Otherwise, because
+$\Delta$ is strictly positive, $\gamma>0$;  again considering a scalar
+multiple of $\nu$ if necessary, we may suppose that $\gamma=1$.   Note that
+$\nu$ is surely $\sigma$-finite.
+
+\medskip
+
+\quad{\bf (ii)} If $p=1$, then $\nu X=\gamma=1$.   If $f\in\eusm L^1$ is
+non-negative, then, by 444K, as in (a) above,
+
+\Centerline{$\|f*\nu\|_1=((f*\nu)\mu)(X)
+=(f\mu*\nu)(X)=(f\mu)(X)\cdot\nu X=\|f\|_1$.}
+
+\noindent For general $\mu$-integrable $f$,
+
+\Centerline{$\|f*\nu\|_1\le\|f^+*\nu\|_1+\|f^-*\nu\|_1
+=\|f^+\|_1+\|f^-\|_1=\|f\|_1$.}
+
+\medskip
+
+\quad{\bf (iii)} If $p=\infty$, then directly from the formula
+$(f*\nu)(x)=\int f(xy^{-1})\Delta(y^{-1})\nu(dy)$ we see that if
+$f:X\to\Bbb R$ is a bounded Borel measurable function then
+
+\Centerline{$|(f*\nu)(x)|
+\le\int\Delta(y)^{-1}\nu(dy)\cdot\sup_{y\in X}|f(y)|
+=\sup_{y\in X}|f(y)|$}
+
+\noindent for every $x$.   Since changing $f$ on a $\mu$-negligible set
+changes $f*\nu$ on a $\mu$-negligible set, we can argue as in (a) above
+to see that $f^{\ssbullet}\mapsto(f*\nu)^{\ssbullet}$ defines a linear
+operator from $L^{\infty}$ to itself of norm at most $1$.
+
+\medskip
+
+\quad{\bf (iv)} Now suppose that $1<p<\infty$.   Set
+$q=\bover{p}{p-1}$, so that $\int\Delta(y^{-1})^{1/q}\nu(dy)=\gamma=1$.
+Suppose for the moment that $f\in\eusm L^p$ is a non-negative Borel
+measurable function, and let $h:X\to\Bbb R$
+be another non-negative Borel measurable function such that
+$\int h^qd\mu\le 1$.   In this case
+
+$$\eqalignno{\int(f*\nu)\times h\,d\mu
+&=\iint h(x)f(xy^{-1})\Delta(y^{-1})\nu(dy)\mu(dx)\cr
+&=\iint h(x)f(xy^{-1})\Delta(y^{-1})\mu(dx)\nu(dy)\cr
+\noalign{\noindent (by 417Ha, because
+$(x,y)\mapsto h(x)f(xy^{-1})\Delta(y^{-1})$ is Borel measurable and
+$\{x:h(x)\ne 0\}$
+is a countable union of sets of finite measure for $\mu$, while $\nu$ is
+$\sigma$-finite)}
+&=\iint h(xy)f(x)\mu(dx)\nu(dy)\cr}$$
+
+\noindent by 442Kc, as usual, at least if the last integral is finite.
+But, for any $y\in X$,
+
+$$\eqalign{\int h(xy)f(x)\mu(dx)
+&\le\|f\|_p\bigl(\int|h(xy)|^q\mu(dx)\bigr)^{1/q}\cr
+&=\|f\|_p\bigl(\Delta(y^{-1})\int|h(x)|^q\mu(dx)\bigr)^{1/q}
+\le\|f\|_p\Delta(y^{-1})^{1/q}.\cr}$$
+
+\noindent So
+
+\Centerline{$\int(f*\nu)\times h\,d\mu
+=\iint h(xy)f(x)\mu(dx)\nu(dy)
+\le\int\|f\|_p\Delta(y^{-1})^{1/q}\nu(dy)
+=\|f\|_p$.}
+
+\noindent Because $\mu$ (being a quasi-Radon measure)
+is semi-finite, this means that
+$f*\nu\in\eusm L^p$ and that $\|f*\nu\|_p\le\|f\|_p$ (366D-366E,
+or 244Xe and 244Fa).
+(Once again, we need to know that every member of $L^q$ can be
+represented by a Borel measurable function;  this is a consequence of
+443J or 412Xd.)
+
+For general Borel measurable $f:X\to\Bbb R$ such that
+$\int|f|^pd\mu<\infty$, we know that from 444G that $f*\nu$ is Borel
+measurable, while
+$|f*\nu|\le|f|*\nu$ (and $f*\nu$ is defined wherever $|f|*\nu$ is
+finite), so that
+
+\Centerline{$\|f*\nu\|_p\le\||f|*\nu\|_p\le\||f|\|_p
+=\|f\|_p$.}
+
+\noindent Finally, if $f\in\eusm L^p$ is arbitrary, then there is a
+Borel measurable $g:X\to\Bbb R$ such that $f\eae g$, so that
+$f*\nu\eae g*\nu$ and
+
+\Centerline{$\|f*\nu\|_p=\|g*\nu\|_p\le\|g\|_p=\|f\|_p$.}
+
+\noindent It follows at once that we have a bounded linear operator
+$f^{\ssbullet}\mapsto(f*\nu)^{\ssbullet}:L^p\to L^p$, of norm at most
+$1=\gamma$.
+}%end of proof of 444M
+
+\leader{444N}{}\cmmnt{ The following lemma on exchanging the order of
+repeated integrals will be fundamental to the formulae in the rest of
+the section.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $X$ be a topological group and $\mu$ a left
+Haar measure on $X$.   Suppose that $f$, $g$,
+$h\in\eusm L^0(\mu)$\cmmnt{ (the space of measurable real-valued
+functions defined $\mu$-a.e.\ in $X$)} are non-negative.   Then, writing
+$\int\ldots d(x,y)$ to denote integration with respect to the
+quasi-Radon product measure $\mu\times\mu$,
+
+\Centerline{$\iint f(x)g(y)h(xy)dxdy=\iint f(x)g(y)h(xy)dydx
+=\int f(x)g(y)h(xy)d(x,y)$}
+
+\noindent in $[0,\infty]$.
+
+\proof{ Following the standard pattern in results of this type, I deal
+with successively more complicated functions $f$, $g$ and $h$.
+Evidently the situation is symmetric, so that it will be enough if I can
+show that $\iint f(x)g(y)h(xy)dxdy=\int f(x)g(y)h(xy)d(x,y)$.
+
+\medskip
+
+{\bf (a)} Suppose first that $f=\chi F$, $g=\chi G$ and $h=\chi H$,
+where $F$, $G$, $H$ are Borel subsets of $X$.   In this case
+
+\Centerline{$\iint f(x)g(y)h(xy)dxdy
+=\sup_{U,V\in\Sigma^f}\int_V\int_Uf(x)g(y)h(xy)dxdy$,}
+
+\noindent where $\Sigma^f$ is the ideal of measurable sets of finite
+measure for $\mu$.   \Prf\ For $y\in X$, $n\in\Bbb N$ and $U\in\Sigma^f$
+write
+
+\Centerline{$q(y)=\int f(x)h(xy)dx=\mu(F\cap Hy^{-1})$,
+\quad$q_U(y)=\int_Uf(x)h(xy)dx=\mu(U\cap F\cap Hy^{-1})$,}
+
+\Centerline{$q^{(n)}(y)=\min(n,q(y))$,
+\quad$q^{(n)}_U(y)=\min(n,q_U(y))$.}
+
+\noindent Then every $q_U$ is continuous, by 443C (with a little help
+from 323Cc), while
+$\sup_{U\in\Sigma^f}q_U(y)=q(y)$ for every $y$, because $\mu$ is
+semi-finite.   Because $\mu$ is $\tau$-additive and effectively locally
+finite,
+$(q^{(n)})^{\ssbullet}=\sup_{U\in\Sigma^f}(q_U^{(n)})^{\ssbullet}$ in
+$L^0(\mu)$ for every $n$ (414Ab);  because $\Sigma^f$ is
+upwards-directed,
+
+$$\eqalign{\int q(y)g(y)dy
+&=\sup_{n\in\Bbb N}\int q^{(n)}(y)g(y)dy\cr
+&=\sup_{n\in\Bbb N,U\in\Sigma^f}\int q^{(n)}_U(y)g(y)dy
+=\sup_{U\in\Sigma^f}\int q_U(y)g(y)dy,\cr}$$
+
+\noindent that is,
+
+\Centerline{$\iint f(x)g(y)h(xy)dxdy
+=\sup_{U\in\Sigma_f}\int\int_Uf(x)g(y)h(xy)dxdy$.}
+
+\noindent On the other hand, for any $U\in\Sigma^f$, we surely have
+
+\Centerline{$\int\int_Uf(x)g(y)h(xy)dxdy
+=\sup_{V\in\Sigma^f}\int_V\int_Uf(x)g(y)h(xy)dxdy$,}
+
+\noindent again because $\mu$ is semi-finite.   Putting these together,
+we have the result.\ \Qed
+
+Looking at the other side of the equation,
+$\int f(x)g(y)h(xy)d(x,y)=(\mu\times\mu)W$, where
+$W=(F\times G)\cap\{(x,y):xy\in H\}$ is a Borel set;  so that
+
+$$\eqalign{\iint f(x)g(y)h(xy)dxdy
+&=\sup_{U,V\in\Sigma^f}(\mu\times\mu)((U\times V)\cap W)\cr
+&=\sup_{U,V\in\Sigma^f}\int_{U\times V}f(x)g(y)h(xy)d(x,y)\cr}$$
+
+\noindent (417C(iii)).   But now we can apply 417Ha to see that, for any
+$U$, $V\in\Sigma^f$,
+
+\Centerline{$\int_{U\times V}f(x)g(y)h(xy)d(x,y)
+=\int_V\int_Uf(x)g(y)h(xy)dxdy$.}
+
+\noindent Taking the supremum over $U$ and $V$, we get
+
+\Centerline{$\int f(x)g(y)h(xy)d(x,y)
+=\iint f(x)g(y)h(xy)dxdy$.}
+
+\medskip
+
+{\bf (b)} Clearly both sides of our equation
+
+\Centerline{$\int f(x)g(y)h(xy)d(x,y)
+=\iint f(x)g(y)h(xy)dxdy$}
+
+\noindent are additive in $f$, $g$ and $h$ separately (subtraction, of
+course, will be another matter, as I am allowing $\infty$ to appear
+without restriction);  and also behave identically if $f$ or $g$ or $h$
+is multiplied by a non-negative scalar.   So the identity will be valid
+if $f$, $g$ and $h$ are all finite sums of non-negative multiples of
+indicator functions of Borel sets.   Moreover, by repeated use of
+B.Levi's theorem, we see that if $\sequencen{f_n}$, $\sequencen{g_n}$
+and $\sequencen{h_n}$ are non-decreasing sequences of such functions
+with suprema $f$, $g$ and $h$, then
+
+$$\eqalign{\int f(x)g(y)h(xy)d(x,y)
+&=\sup_{n\in\Bbb N}\int f_n(x)g_n(y)h_n(xy)d(x,y)\cr
+&=\sup_{n\in\Bbb N}\iint f_n(x)g_n(y)h_n(xy)dxdy
+=\iint f(x)g(y)h(xy)dxdy.\cr}$$
+
+\noindent So the identity is valid for all non-negative Borel functions
+$f$, $g$ and $h$.
+
+\medskip
+
+{\bf (c)} Finally, suppose only that $f$, $g$ and $h$ are non-negative,
+measurable and defined almost everywhere.   In this case, by 443J(b-iv),
+there are Borel measurable functions $f_0$, $g_0$ and $h_0$,
+non-negative, defined everywhere on $X$ and equal almost everywhere to
+$f$, $g$ and $h$ respectively.   Let $E$ be the conegligible set
+
+\Centerline{$\{x:x\in\dom f\cap\dom h\cap\dom g,\,
+f(x)=f_0(x),\,g(x)=g_0(x),\,h(x)=h_0(x)\}$.}
+
+We find that $\int f(x)h(xy)dx=\int f_0(x)h_0(xy)dx$ for every $y\in X$.
+\Prf\ $E\cap Ey^{-1}$ is conegligible (see 443A), and
+$f(x)h(xy)=f_0(x)h_0(xy)$ for every $x\in E\cap Ey^{-1}$.\ \QeD\
+Consequently
+
+\Centerline{$\iint f(x)g(y)h(xy)dxdy
+=\iint f_0(x)g_0(y)h_0(xy)dxdy$.}
+
+Secondly, $f(x)g(y)h(xy)=f_0(x)g_0(y)h_0(xy)\,\,(\mu\times\mu)$-a.e.
+\Prf\ Set $W=\{(x,y):x\in E,\,y\in E,\,xy\in E\}$.   Fubini's theorem,
+applied to $(U\times V)\setminus W$ where $U$, $V\in\Sigma^f$, shows
+that $W$ is conegligible;  but of course
+$f(x)g(y)h(xy)=f_0(x)g_0(y)h_0(xy)$ whenever $(x,y)\in W$.\ \QeD\
+Accordingly
+
+\Centerline{$\int f(x)g(y)h(xy)d(x,y)
+=\int f_0(x)g_0(y)h_0(xy)d(x,y)$.}
+
+Combining this with the result of (b), applied to $f_0$, $g_0$ and
+$h_0$, we see that once again
+
+\Centerline{$\int f(x)g(y)h(xy)d(x,y)
+=\iint f(x)g(y)h(xy)dxdy$,}
+
+\noindent as required.
+}%end of proof of 444N
+
+\leader{444O}{Convolutions of functions:  Theorem} Let $X$ be a
+topological group and $\mu$ a left Haar measure on $X$.   For $f$,
+$g\in\eusm L^0=\eusm L^0(\mu)$,  write
+$(f*g)(x)=\int f(y)g(y^{-1}x)dy$ whenever this is defined in
+$\Bbb R$, taking the integral with respect to $\mu$.
+
+(a) Writing $\Delta$ for the left modular function of $X$,
+
+$$\eqalign{(f*g)(x)
+&=\int f(y)g(y^{-1}x)dy
+=\int f(xy)g(y^{-1})dy\cr
+&=\int\Delta(y^{-1})f(y^{-1})g(yx)dy
+=\int\Delta(y^{-1})f(xy^{-1})g(y)dy\cr}$$
+
+\noindent whenever any of these integrals is defined in $\Bbb R$.
+
+(b) If $f\eae f_1$ and $g\eae g_1$, then $f*g=f_1*g_1$.
+
+(c)(i) $|(f*g)(x)|\le(|f|*|g|)(x)$ whenever either is defined in $\Bbb R$.
+
+\quad(ii)
+
+\Centerline{$((f_1+f_2)*g)(x)=(f_1*g)(x)+(f_2*g)(x)$,}
+
+\Centerline{$(f*(g_1+g_2))(x)=(f*g_1)(x)+(f*g_2)(x)$,}
+
+\Centerline{$((\alpha f)*g)(x)=(f*(\alpha g))(x)=\alpha(f*g)(x)$}
+
+\noindent whenever the right-hand expressions are defined in $\Bbb R$.
+
+(d) If $f$, $g$ and $h$ belong to $\eusm L^0$ and any of
+
+\Centerline{$\int(|f|*|g|)(x)|h|(x)dx$,
+\quad$\iint|f(x)g(y)h(xy)|dxdy$,}
+
+\Centerline{$\iint|f(x)g(y)h(xy)|dydx$,
+\quad$\int|f(x)g(y)h(xy)|d(x,y)$}
+
+\noindent is defined in $\coint{0,\infty}$ (writing $\int\ldots d(x,y)$ for
+integration with respect to the quasi-Radon product measure
+$\mu\times\mu$ on $X\times X$), then
+
+\Centerline{$\int(f*g)(x)h(x)dx$,
+\quad$\iint f(x)g(y)h(xy)dxdy$,}
+
+\Centerline{$\iint f(x)g(y)h(xy)dydx$,
+\quad$\int f(x)g(y)h(xy)d(x,y)$}
+
+\noindent are all defined, finite and equal, provided that in the
+expression $(f*g)(x)h(x)$ we interpret the product as $0$ when $h(x)=0$
+and $(f*g)(x)$ is undefined.
+
+(e) If $f$, $g$ and $h$ belong to $\eusm L^0$, $f*g$ and $g*h$ are
+defined a.e.\ and $x\in X$ is such that either $(|f|*(|g|*|h|))(x)$ or
+$((|f|*|g|)*|h|)(x)$ is defined in $\Bbb R$, then $(f*(g*h))(x)$ and
+$((f*g)*h)(x)$ are defined and equal.
+
+(f) If $a\in X$ and $f$, $g\in\eusm L^0$,
+
+\Centerline{$a\action_l(f*g)=(a\action_lf)*g$,
+\quad$a\action_r(f*g)=f*(a\action_rg)$,}
+
+\Centerline{$(a\action_rf)*g=\Delta(a^{-1})f*(a^{-1}\action_lg)$,}
+
+\Centerline{$\Reverse{f}*\Reverse{g}=(g*f)\ssplrarrow$.}
+
+(g) If $X$ is abelian then $f*g=g*f$ for all $f$ and $g$.
+
+\proof{{\bf (a)} Use 441J and 442Kb to see that the
+four formulae for $f*g$ coincide.
+
+\medskip
+
+{\bf (b)} Setting
+
+\Centerline{$E=\{y:y\in\dom f\cap\dom f_1\cap\dom g\cap\dom g_1$,
+$f(y)=f_1(y)$, $g(y)=g_1(y)\}$,}
+
+\noindent $E$ is conegligible.   If $x\in X$, then
+$f(y)g(y^{-1}x)=f_1(y)g_1(y^{-1}x)$ for every $y\in E\cap xE^{-1}$,
+which is also conegligible, by 443A;  so $(f*g)(x)=(f_1*g_1)(x)$ if
+either is defined.
+
+\medskip
+
+{\bf (c)} These are all elementary.
+
+\medskip
+
+{\bf (d)} First consider non-negative $f$, $g$ and $h$.   The point is
+that, if any of the integrals is defined and finite,
+
+$$\eqalignno{\int(f*g)(x)h(x)dx
+&=\iint\Delta(x^{-1})f(x^{-1})g(xy)h(y)dxdy\cr
+&=\iint\Delta(x^{-1})f(x^{-1})g(xy)h(y)dydx\cr
+\noalign{\noindent (by 444N, recalling that
+$x\mapsto\Delta(x^{-1})f(x^{-1})$ will belong to $\eusm L^0$ if $f$
+does, by 442J and 442H)}
+&=\iint f(x)g(x^{-1}y)h(y)dydx
+=\iint f(x)g(y)h(xy)dydx\cr}$$
+
+\noindent (substituting $xy$ for $y$ in the inner integral, as permitted
+by 441J).   (The `and finite' at the beginning of the last sentence is
+there because I have changed the rules since the last paragraph, and
+$f*g$ is not allowed to take the
+value $\infty$.   So we have to take care that
+
+\Centerline{$\{y:h(y)>0,\,\int f(x)g(x^{-1}y)dx=\infty\}$}
+
+\noindent is negligible.)   Now applying 444N again, we get
+
+$$\eqalign{\int(f*g)(x)h(x)dx
+&=\iint f(x)g(y)h(xy)dxdy\cr
+&=\iint f(x)g(y)h(xy)dydx
+=\int f(x)g(y)h(xy)d(x,y)\cr}$$
+
+\noindent if any of these integrals is finite.
+
+For the general case, the hypothesis on $|f|$, $|g|$ and $|h|$ is
+sufficient to ensure that the four expressions are equal for any
+combination of $f^{\pm}$, $g^{\pm}$ and $h^{\pm}$;  adding and
+subtracting these combinations appropriately, we get the result.
+
+\medskip
+
+{\bf (e)} The point is that, for non-negative $f$, $g$ and $h$,
+
+$$\eqalignno{((f*g)*h)(x)
+&=\int(f*g)(z)h(z^{-1}x)dz
+=\int(f*g)(z)h'(z)dz\cr
+\noalign{\noindent (setting $h'(z)=h(z^{-1}x)$)}
+&=\iint f(y)g(z)h'(yz)dzdy\cr
+\noalign{\noindent (using (d);  to see that $h'$ is measurable,
+refer to 443A as usual)}
+&=\iint f(y)g(z)h(z^{-1}y^{-1}x)dzdy\cr
+&=\int f(y)(g*h)(y^{-1}x)dy
+=(f*(g*h))(x)\cr}$$
+
+\noindent at least as long as one of the expressions here is finite.
+(Note that, as in 255J, we need to suppose that $f*g$ and $g*h$ are
+defined a.e.\ when moving from
+$\int(f*g)(z)h(z^{-1}x)dz$ to $\iint f(y)g(z)h(z^{-1}y^{-1})dydz$ and
+from $\iint f(y)g(z)h(z^{-1}y^{-1}x)dzdy$ to
+$\int f(y)(g*h)(y^{-1}x)dy$, since in part (d) I am more tolerant
+of infinities in the repeated integrals than I was in the definition of
+$f*g$.)   Once again, subject to the inner integrals implicit in the
+formulae $f*(g*h)$ and $(f*g)*h$ being adequately defined, we can
+use addition and subtraction to obtain the result for general $f$, $g$
+and $h$.
+
+\medskip
+
+{\bf (f)} These are immediate from the formulae in (a), using 442K if
+necessary.
+
+\medskip
+
+{\bf (g)} If $X$ is abelian, then $\Delta(y)=1$ for every $y$, so
+
+\Centerline{$(g*f)(x)
+=\int g(y)f(y^{-1}x)dy
+=\int g(y)\Delta(y^{-1})f(xy^{-1})dy
+=(f*g)(x)$}
+
+\noindent if either $(f*g)(x)$ or $(g*f)(x)$ is defined in $\Bbb R$.
+}%end of proof of 444O
+
+\leader{444P}{Proposition} Let $X$ be a topological group and $\mu$ a
+left Haar measure on $X$.
+
+(a) If $f\in\eusm L^1(\mu)^+$ and $g\in\eusm L^0(\mu)$ then
+$f*g$\cmmnt{, as
+defined in 444O,} is equal to $(f\mu)*g$\cmmnt{ as defined in 444H}.
+
+(b) If $f\in\eusm L^0(\mu)$ and $g\in\eusm L^1(\mu)^+$ then
+$f*g=f*(g\mu)$.
+
+\proof{ Again, these are immediate from the formulae above:
+
+\Centerline{$(f*g)(x)
+=\int g(y^{-1}x)f(y)\mu(dy)
+=\int g(y^{-1}x)(f\mu)(dy)
+=(f\mu*g)(x)$,}
+
+\Centerline{$(f*g)(x)
+=\int f(xy^{-1})\Delta(y^{-1})g(y)\mu(dy)
+=\int f(xy^{-1})\Delta(y^{-1})(g\mu)(dy)
+=(f*g\mu)(x)$}
+
+\noindent whenever these are defined, using 235K, as usual, to calculate
+$\int\ldots d(f\mu)$, $\int\ldots d(g\mu)$.   (Note that as we assume throughout
+that $f$ and $g$ are defined $\mu$-almost everywhere, all the functions
+$y\mapsto g(y^{-1}x)$, $y\mapsto f(xy^{-1})$ are also defined
+$\mu$-a.e., by the results set out in 443A.)
+}%end of proof of 444P
+
+\leader{444Q}{Proposition} Let $X$ be a topological group and $\mu$ a
+left Haar measure on $X$.
+
+(a) Let $f$, $g$ be non-negative
+$\mu$-integrable functions.   Then\cmmnt{, defining $f*g$ as in 444O,
+we have}
+$f*g\in\eusm L^1\cmmnt{=\eusm L^1(\mu)}$ and
+
+\Centerline{$(f\mu)*(g\mu)=(f*g)\mu$.}
+
+(b) For any $f$, $g\in\eusm L^1$, $f*g\in\eusm L^1$ and
+
+\Centerline{$\int f*g\,d\mu=\int fd\mu\int g\,d\mu$,
+\quad$\|f*g\|_1\le\|f\|_1\|g\|_1$.}
+
+\proof{{\bf (a)} Putting 444K and 444P together,
+$f\mu*g\mu=(f\mu*g)\mu$, so that $f*g=f\mu*g$ is $\mu$-integrable, and
+
+\Centerline{$(f*g)\mu=(f\mu*g)\mu=f\mu*g\mu$.}
+
+\medskip
+
+{\bf (b)} Taking $h=\chi X$ in 444Od, we get
+$\int f*g\,d\mu=\int fd\mu\int g\,d\mu$.   Now
+
+\Centerline{$\|f*g\|_1=\int|f*g|\le\int|f|*|g|=\int|f|
+\int|g|
+=\|f\|_1\|g\|_1$.}
+
+}%end of proof of 444Q
+
+\leader{444R}{Proposition} Let $X$ be a topological group and $\mu$ a
+left Haar measure on $X$.   Take any $p\in[1,\infty]$.
+
+(a) If $f\in\eusm L^1(\mu)$ and $g\in\eusm L^p(\mu)$, then
+$f*g\in\eusm L^p(\mu)$ and $\|f*g\|_p\le\|f\|_1\|g\|_p$.
+
+(b) $f*\Reverse{g}=(g*\Reverse{f})\ssplrarrow$ for all $f$,
+$g\in\eusm L^0$.   If $X$
+is unimodular then $\|\Reverse{f}\|_p=\|f\|_p$ for every $f\in\eusm L^0$.
+
+(c) Set $q=\infty$ if $p=1$, $p/(p-1)$ if $1<p<\infty$, $1$ if
+$p=\infty$.   If $f\in\eusm L^p(\mu)$ and $g\in\eusm L^q(\mu)$, then
+$f*\Reverse{g}$ is defined everywhere in $X$ and is continuous, and
+$\|f*\Reverse{g}\|_{\infty}\le\|f\|_p\|g\|_q$.   If $X$ is unimodular, then
+$f*g\in C_b(X)$ and $\|f*g\|_{\infty}\le\|f\|_p\|g\|_q$ for every
+$f\in\eusm L^p(\mu)$, $g\in\eusm L^q(\mu)$.
+
+\medskip
+
+\noindent{\bf Remark} In the formulae above, interpret $\|g\|_{\infty}$
+as $\|g^{\ssbullet}\|_{\infty}=\esssup|g|$ for
+$g\in\eusm L^{\infty}=\eusm L^{\infty}(\mu)$,
+and as $\infty$ for $g\in\eusm L^0\setminus\eusm L^{\infty}$.
+\cmmnt{Because $\mu$ is strictly positive, this agrees with the usual
+definition $\|g\|_{\infty}=\sup_{x\in X}|g(x)|$ when $g$ is continuous
+and defined everywhere on $X$.}
+
+\proof{{\bf (a)} If $f\ge 0$, then $f*g=(f\mu)*g$ belongs to
+$\eusm L^p(\mu)$, and
+
+\Centerline{$\|f*g\|_p=\|f\mu*g\|_p\le(f\mu)(X)\|g\|_p=\|f\|_1\|g\|_p$,}
+
+\noindent by 444Pa and 444Ma.   Generally, $f*g\eae f^+*g-f^-*g$ belongs to
+$\eusm L^p(\mu)$ and
+
+\Centerline{$\|f*g\|_p\le\|f^+*g\|_p+\|f^-*g\|_p
+\le(\|f^+\|_1+\|f^-\|_1)\|g\|_p=\|f\|_1\|g\|_p$.}
+
+\medskip
+
+{\bf (b)(i)} By 443A once more, $\Reverse{f}\in\eusm L^0$ whenever
+$f\in\eusm L^0$.   For $x\in X$,
+
+\Centerline{$(f*\Reverse{g})(x)
+=\int f(y)\Reverse{g}(y^{-1}x)dy
+=\int\Reverse{f}(y^{-1})g(x^{-1}y)dy
+=(g*\Reverse{f})(x^{-1})
+=(g*\Reverse{f})\ssplrarrow(x)$}
+
+\noindent if any of these are defined.
+
+\medskip
+
+\quad{\bf (ii)} If $X$ is unimodular, then, for any $f\in\eusm L^0$,
+
+\Centerline{$\|\Reverse{f}\|_p^p
+=\int|f(x^{-1})|^pdx
+=\int\Delta(x^{-1})|f(x)|^pdx
+=\|f\|_p^p$;}
+
+\noindent while $\esssup|\Reverse{f}|=\esssup|f|$ because $E^{-1}$ is
+conegligible whenever $E\subseteq X$ is conegligible.
+
+\medskip
+
+{\bf (c)(i)} For any $x\in X$,
+
+\Centerline{$(f*\Reverse{g})(x)
+=\int f(y)g(x^{-1}y)dy
+=\int f\times(x\action_lg)$}
+
+\noindent in the language of 443G and 444O.   By 443Gb,
+$x\action_lg\in\eusm L^q$, so
+$(f*\Reverse{g})(x)=\int f\times(x\action_lg)$ is defined.
+
+\medskip
+
+\quad{\bf (ii)} If $p>1$, so that $q<\infty$, then
+$x\mapsto(x\action_lg)^{\ssbullet}:X\to L^q$ is continuous (443Gf), so
+
+\Centerline{$x\mapsto(f*\Reverse{g})(x)
+=\int f^{\ssbullet}\times(x\action_lg)^{\ssbullet}$}
+
+\noindent is continuous, because $f^{\ssbullet}\in L^p\cong(L^q)^*$.
+If $p=1$, then
+
+\Centerline{$(f*\Reverse{g})(x)=\int f(xy)g(y)dy
+=\int(x^{-1}\action_lf)\times g$}
+
+\noindent for every $x$;  since
+$x\mapsto(x^{-1}\action_lf)^{\ssbullet}:X\to L^1$ is
+continuous, so is $f*\Reverse{g}$.
+
+\medskip
+
+\quad{\bf (iii)} If $X$ is unimodular then $f*g=f*\Tilde{\Tilde g}$ is
+continuous, because $\Reverse{g}\in\eusm L^q$ by (b), and
+$\|f*g\|_{\infty}\le\|f\|_p\|\Reverse{g}\|_q=\|f\|_p\|g\|_q$.
+}%end of proof of 444R
+
+\leader{444S}{Remarks} Let $X$ be a topological group and $\mu$ a left Haar
+measure on $X$.
+
+\spheader 444Sa From 444Ob and 444Ra we see that we have a
+bilinear operator $(u,v)\mapsto u*v:L^1(\mu)\times L^p(\mu)\to L^p(\mu)$
+defined by saying that $f^{\ssbullet}*g^{\ssbullet}=(f*g)^{\ssbullet}$ for
+every $f\in\eusm L^1(\mu)$ and $g\in\eusm L^p(\mu)$.
+\cmmnt{Indeed, 444Ob tells us that} $*$ can\cmmnt{ actually} be
+regarded as a function from $L^1\times L^p$ to $\eusm L^p$.
+Putting 443Ge together with 444Oe and 444Of, we have
+
+\Centerline{$u*(v*w)=(u*v)*w$,}
+
+\Centerline{$a\action_l(u*w)=(a\action_lu)*w$,
+\quad$a\action_r(u*w)=u*(a\action_rw)$,}
+
+\Centerline{$(a\action_ru)*w=\Delta(a^{-1})u*(a^{-1}\action_lw)$}
+
+\noindent whenever $u$, $v\in L^1$, $w\in L^p$ and $a\in X$.
+
+Similarly, if the group is unimodular, and $\bover1p+\bover1q=1$, the
+map $*:\eusm L^p\times\eusm L^q\to C_b(X)$\cmmnt{ (444Rc)}
+factors through a map from $L^p\times L^q$ to $C_b(X)$.
+
+\spheader 444Sb In particular, $*:L^1\times L^1\to L^1$ is
+associative;  evidently it is bilinear;  and $\|u*v\|_1\le\|u\|_1\|v\|_1$
+for all $u$, $v\in L^1$.   So $L^1$ is a\cmmnt{ normed algebra;
+since $L^1$ is $\|\,\|_1$-complete, it is a} Banach
+algebra.   By 444Qb, $\int u*v=\int u\int v$ for all $u$, $v\in L^1$.
+$L^1$ is commutative if $X$ is abelian\cmmnt{ (444Og)}.
+
+\spheader 444Sc
+Let $\Cal B$ be the Borel $\sigma$-algebra of $X$ and
+$M_{\tau}$ the Banach algebra of signed $\tau$-additive Borel
+measures on $X$, as in 444E.   If, for $f\in\eusm L^1=\eusm L^1(\mu)$
+and $E\in\Cal B$, we
+write $(f\mu\restr\Cal B)(E)=\int_Efd\mu$, then
+$f\mu\restr\Cal B\in M_{\tau}$\cmmnt{;  for $f\ge 0$, this is because the
+indefinite-integral measure $f\mu$ is a quasi-Radon measure, and in general
+it is because $f\mu\restr\Cal B=f^+\mu\restr\Cal B-f^-\mu\restr\Cal B$}.
+For $f$, $g\in\eusm L^1$, we have
+
+\Centerline{$f^{\ssbullet}=g^{\ssbullet}\text{ in }L^1
+\Longrightarrow f\eae g
+\Longrightarrow f\mu\restr\Cal B=g\mu\restr\Cal B$,}
+
+\noindent so we have an operator $T:L^1\to M_{\tau}$ defined by setting
+$T(f^{\ssbullet})=f\mu\restr\Cal B$ for $f\in\eusm L^1$.\cmmnt{   It
+is easy to check that
+
+\Centerline{$(f+g)\mu\restr\Cal B=f\mu\restr\Cal B+g\mu\restr\Cal B$,
+\quad$(\alpha f)\mu\restr\Cal B=\alpha(f\mu\restr\Cal B)$,}
+
+\Centerline{$(|f|\mu\restr\Cal B)(E)=\int_E|f|
+=\sup_{F\in\Cal B,F\subseteq E}\int_Ff-\int_{E\setminus F}f
+=|f\mu\restr\Cal B|(E)$}
+
+\noindent for $f$, $g\in\eusm L^1$, $\alpha\in\Bbb R$ and $E\in\Cal B$, so
+that} $T$ is a Riesz homomorphism;  moreover,\cmmnt{
+
+\Centerline{$\|f\mu\restr\Cal B\|
+=|f\mu\restr\Cal B|(X)
+=(|f|\mu\restr\Cal B)(X)
+=\int|f|d\mu
+=\|f^{\ssbullet}\|_1$}
+
+\noindent for $f\in\eusm L^1$, so that} $T$ is
+norm-preserving.\cmmnt{   Finally, for non-negative $f$, $g\in\eusm L^1$,
+we have
+
+$$\eqalignno{Tf^{\ssbullet}*Tg^{\ssbullet}
+&=(f\mu\restr\Cal B)*(g\mu\restr\Cal B)
+=(f\mu*g\mu)\restr\Cal B\cr
+\displaycause{444Eb, since the completions of $f\mu\restr\Cal B$,
+$g\mu\restr\Cal B$ are the quasi-Radon indefinite-integral measures $f\mu$,
+$g\mu$}
+&=(f*g)\mu\restr\Cal B\cr
+\displaycause{444Qa}
+&=T(f*g)^{\ssbullet}
+=T(f^{\ssbullet}*g^{\ssbullet}).\cr}$$
+
+\noindent Thus $Tu*Tv=T(u*v)$ for non-negative $u$, $v\in L^1$;  by
+linearity,} $Tu*Tv=T(u*v)$ for all $u$, $v\in L^1$, and $T$ is an embedding
+of $L^1$ as a subalgebra of $M_{\tau}$.
+
+\leader{444T}{Proposition} Let $X$ be a topological group and $\mu$ a
+left Haar measure on $X$.   Then for any $p\in\coint{1,\infty}$,
+$f\in\eusm L^p(\mu)$ and $\epsilon>0$ there is a neighbourhood $U$ of
+the identity $e$ in $X$ such that
+$\|\nu*f-f\|_p\le\epsilon$ and $\|f*\nu-f\|_p\le\epsilon$ whenever $\nu$
+is a quasi-Radon measure on $X$ such that $\nu U=\nu X=1$.
+
+\proof{{\bf (a)} To begin with, suppose that $f$ is non-negative,
+continuous and bounded, and that $G=\{x:f(x)>0\}$ has finite measure;
+set $M=\sup_{x\in X}f(x)$.    Write $\Cal U$ for the family of
+neighbourhoods of $e$.   Take $\delta>0$, $\eta\in\ocint{0,1}$ such that
+
+\Centerline{$(2\delta+(1+\delta)^p-1)^{1/p}\|f\|_p\le\epsilon$,}
+
+\Centerline{$(1-\eta)^p\int((f-\eta\chi X)^+)^pd\mu-M^p\eta
+\ge(1-\delta)\int f^pd\mu$,
+\quad$(1-\eta)^{(1-p)/p}\le 1+\delta$.}
+
+For each $U\in\Cal U$, set
+
+\Centerline{$H_U=\interior\{x:f(y)\ge f(x)-\eta$ for every
+$y\in xU^{-1}\cup U^{-1}x\}$.}
+
+\noindent Then $H_U$ is open and for every $x\in X$ there is a $U\in\Cal
+U$ such that $|f(y)-f(x)|\le\bover12\eta$ whenever
+$y\in xUU^{-1}\cup U^{-1}xU$, so that $x\in\interior xU\subseteq H_U$.
+Thus $\{H_U:U\in\Cal U\}$
+is an upwards-directed family of open sets with union $X$, and there is
+a $U\in\Cal U$ such that $\mu(G\setminus H_U)\le\eta$;  moreover,
+because $\Delta$ is continuous, we can suppose that
+$\Delta(y^{-1})\ge 1-\eta$ for every $y\in U$.
+
+Now suppose that $\nu$ is a quasi-Radon measure on $X$ such that
+$\nu U=\nu X=1$.   Then, for any $x\in H_U$,
+
+\Centerline{$(\nu*f)(x)
+=\int f(y^{-1}x)\nu(dy)
+=\int_U f(y^{-1}x)\nu(dy)
+\ge f(x)-\eta$}
+
+\noindent because $x\in H_U$ and $y^{-1}x\in U^{-1}x$ whenever $y\in U$.
+Similarly,
+
+\Centerline{$(f*\nu)(x)
+=\int_U f(xy^{-1})\Delta(y^{-1})\nu(dy)
+\ge (f(x)-\eta)(1-\eta)$}
+
+\noindent for every $x\in H_U$.   Now this means that, setting
+$h_1=\nu*f$, $h_2=f*\nu$ we have
+$(f\wedge h_i)(x)\ge (f(x)-\eta)(1-\eta)$ for every $x\in H_U$ and
+both $i$.   Accordingly
+
+$$\eqalign{\int(f\wedge h_i)^pd\mu
+&\ge(1-\eta)^p\int_{G\cap H_U}((f-\eta\chi X)^+)^pd\mu\cr
+&\ge(1-\eta)^p\int((f-\eta\chi X)^+)^pd\mu-\int_{G\setminus H_U}f^p\cr
+&\ge(1-\eta)^p\int((f-\eta\chi X)^+)^pd\mu-M^p\eta
+\ge (1-\delta)\int f^pd\mu.\cr}$$
+
+Now, just because $f$ and $h_i$ are non-negative, and $p\ge 1$,
+
+\Centerline{$|f-h_i|^p+2(f\wedge h_i)^p\le f^p+h_i^p$.}
+
+\noindent Also, writing
+
+\Centerline{$\gamma=\int\Delta(y)^{(1-p)/p}\nu(dy)
+=\int_U\Delta(y)^{(1-p)/p}\nu(dy)
+\le(1-\eta)^{(1-p)/p}
+\le 1+\delta$,}
+
+\noindent we have
+
+\Centerline{$\|h_1\|_p=\|\nu*f\|_p\le\|f\|_p$,
+\quad $\|h_2\|_p=\|f*\nu\|_p\le\gamma\|f\|_p$}
+
+\noindent (444M), so that $\int h_i^pd\nu\le(1+\delta)^p\int f^pd\mu$
+for both $i$, and
+
+\Centerline{$\int|f-h_i|^pd\mu
+\le\int f^pd\mu+\int h_i^pd\mu-2\int(f\wedge
+h_i)^pd\mu
+\le(2\delta+(1+\delta)^p-1)\int f^pd\mu$}
+
+\noindent for both $i$.   But this means that
+
+\Centerline{$\max(\|f-f*\nu\|_p,\|f-\nu*f\|_p)
+\le(2\delta+(1+\delta)^p-1)^{1/p}\|f\|_p\le\epsilon$.}
+
+\noindent As $\nu$ is arbitrary, we have found a suitable $U$.
+
+\medskip
+
+{\bf (b)} For any continuous bounded function $f$ such that
+$\mu\{x:f(x)\ne 0\}<\infty$, we can find neighbourhoods $U_1$, $U_2$ of
+$e$ such that
+
+\Centerline{$\|f^+-\nu*f^+\|_p\le\bover12\epsilon$,
+\quad$\|f^+-f^+*\nu\|_p\le\bover12\epsilon$}
+
+\noindent whenever $\nu U_1=\nu X=1$,
+
+\Centerline{$\|f^--\nu*f^-\|_p\le\bover12\epsilon$,
+\quad$\|f^--f^-*\nu\|_p\le\bover12\epsilon$}
+
+\noindent whenever $\nu U_2=\nu X=1$.   So we shall have
+
+\Centerline{$\|f-\nu*f\|_p\le\epsilon$,
+\quad$\|f-f*\nu\|_p\le\epsilon$}
+
+\noindent whenever $\nu(U_1\cap U_2)=\nu X=1$.
+
+\medskip
+
+{\bf (c)} For general $f\in\eusm L^p(\mu)$, there is a bounded
+continuous function $g:X\to\Bbb R$ such that $\mu\{x:g(x)\ne 0\}<\infty$
+and $\|f-g\|_p\le\bover14\epsilon$ (415Pa).   Now there is a
+neighbourhood $U_1$ of $e$ such that
+
+\Centerline{$\|g-\nu*g\|_p\le\bover14\epsilon$,
+\quad$\|g-g*\nu\|_p\le\bover14\epsilon$}
+
+\noindent whenever $\nu U_1=\nu X=1$.   There is also a neighbourhood
+$U_2$ of $e$ such that $\Delta(y^{-1})^{(1-p)/p}\le 2$ for every
+$y\in U_2$, so that
+
+\Centerline{$\|g*\nu-f*\nu\|_p\le 2\|g-f\|_p\le\bover12\epsilon$}
+
+\noindent whenever $\nu U_2=\nu X=1$.   Since we have
+
+\Centerline{$\|\nu*g-\nu*f\|_p\le\|g-f\|_p\le\bover14\epsilon$}
+
+\noindent whenever $\nu X=1$, we get $\|f-\nu*f\|_p\le\epsilon$,
+$\|f=f*\nu\|_p\le\epsilon$ whenever $\nu(U_1\cap U_2)=\nu X=1$.
+
+This completes the proof.
+}%end of proof of 444T
+
+\vleader{60pt}{444U}{Corollary} Let $X$ be a topological group and $\mu$ a left
+Haar measure on $X$.   For any Haar measurable $E\subseteq X$ such that
+$0<\mu E<\infty$, and any $f\in\bigcup_{1\le p<\infty}\eusm L^p(\mu)$,
+write
+
+\Centerline{$f_E(x)=\Bover1{\mu E}\int_{xE}fd\mu$,
+\quad$f'_E(x)=\Bover1{\mu(Ex)}\int_{Ex}fd\mu$}
+
+\noindent for $x\in X$.  Then, for any $p\in\coint{1,\infty}$,
+$f\in\eusm L^p$ and
+$\epsilon>0$, there is a neighbourhood $U$ of the identity in $X$ such
+that $\|f_E-f\|_p\le\epsilon$ and $\|f'_E-f\|_p\le\epsilon$ whenever
+$E\subseteq U$ is a non-negligible Haar measurable set.
+
+\proof{ Take $\delta\in\ooint{0,1}$ such that
+$\delta(1-\delta)^{(1-p)/p}\|f\|_p\le\bover12\epsilon$.
+By 444T, there is a neighbourhood $U$ of the identity such that
+$\|f-f*\nu\|_p\le\bover12\epsilon$, $\|f-\nu*f\|_p\le\epsilon$ whenever
+$\nu$ is a quasi-Radon measure on $X$ such that $\nu U=\nu X=1$.
+Shrinking $U$ if necessary, we may suppose also that $U=U^{-1}$, that
+$\mu U<\infty$
+and that $|\Delta(x)-1|\le\delta$ for every $x\in U$, where $\Delta$ is
+the left modular function of $X$.   If $E\subseteq U$ and $\mu E>0$,
+consider the quasi-Radon measures $\nu$, $\nuprime$, $\Reverse{\nu}$ and
+$\Reverse{\nu}'$ on $X$ defined by setting
+
+\Centerline{$\nu F
+ =\Bover1{\mu E^{-1}}\int_{E\cap F}\Delta(x^{-1})\mu(dx)$,
+\quad$\nuprime F=\Bover{\mu(E\cap F)}{\mu E}$,
+\quad$\Reverse{\nu} F=\nu F^{-1}$,
+\quad$\Reverse{\nu}' F=\nuprime F^{-1}$}
+
+\noindent whenever these are defined.   (They are quasi-Radon measures
+because $\nu$ and $\nuprime$ are totally finite indefinite-integral
+measures over $\mu$ and
+the map $x\mapsto x^{-1}$ is a homeomorphism.)   Because
+$E\subseteq U=U^{-1}$, we have
+
+\Centerline{$\Reverse{\nu} U=\nu U^{-1}
+=\Bover1{\mu E^{-1}}\int_E\Delta(x^{-1})\mu(dx)=1=\Reverse{\nu} X$}
+
+\noindent by 442Ka, while
+
+\Centerline{$\Reverse{\nu}' X=\Reverse{\nu}' U=\nuprime U^{-1}=1$.}
+
+\noindent Now consider
+$f*\Reverse{\nu}$ and $\Reverse{\nu}'*f$.   For any $x\in X$,
+
+$$\eqalignno{(f*\Reverse{\nu})(x)
+&=\int f(xy^{-1})\Delta(y^{-1})\Reverse{\nu}(dy)
+=\int f(xy)\Delta(y)\nu(dy)\cr
+\noalign{\noindent (because $\Reverse{\nu}$ is the image of $\nu$ under the
+map $y\mapsto y^{-1}$)}
+&=\Bover1{\mu E^{-1}}\int\chi E(y)\Delta(y^{-1})f(xy)\Delta(y)\mu(dy)\cr
+\noalign{\noindent (noting that $\nu$ is an indefinite-integral measure
+over $\mu$, and using 235K)}
+&=\Bover1{\mu E^{-1}}\int\chi E(x^{-1}y)f(y)\mu(dy)
+=\Bover1{\mu E^{-1}}\int_{xE}f(y)\mu(dy)
+=\Bover{\mu E}{\mu E^{-1}}f_E(x),\cr
+(\Reverse{\nu}'*f)(x)
+&=\int f(y^{-1}x)\Reverse{\nu}'(dy)
+=\int f(yx)\nuprime(dy)\cr
+\noalign{\noindent (because $\Reverse{\nu}'$ is the image of $\nuprime$
+under
+the map $y\mapsto y^{-1}$)}
+&=\Bover1{\mu E}\int\chi E(y)f(yx)\mu(dy)
+=\Bover{\Delta(x^{-1})}{\mu E}\int\chi E(yx^{-1})f(y)\mu(dy)\cr
+\noalign{\noindent (by 442Kc)}
+&=\Bover1{\mu(Ex)}\int_{Ex}f(y)\mu(dy)
+=f'_E(x).\cr}$$
+
+So
+
+\Centerline{$\|f-f_E\|_p
+\le\|f-f*\Reverse{\nu}\|_p
+ +\bigl|\Bover{\mu E^{-1}}{\mu E}-1\bigr|\|f*\Reverse{\nu}\|_p$.}
+
+\noindent Now $\mu E^{-1}=\int_E\Delta(y^{-1})\mu(dy)$, so that
+
+\Centerline{$|\mu E-\mu E^{-1}|\le\int_E|\Delta(y^{-1})-1|\mu(dy)
+\le\delta\mu E$,
+\quad$|\Bover{\mu E^{-1}}{\mu E}-1|\le\delta$;}
+
+\noindent also
+
+\Centerline{$\|f*\Reverse{\nu}\|_p
+\le\|f\|_p\int\Delta(y)^{(1-p)/p}\nu(dy)
+\le\|f\|_p(1-\delta)^{(1-p)/p}$}
+
+\noindent by 444Mb, so
+
+\Centerline{$\bigl|\Bover{\mu E^{-1}}{\mu E}-1\bigr|\|f*\Reverse{\nu}\|_p
+\le\delta(1-\delta)^{(1-p)/p}\|f\|_p\le\Bover12\epsilon$,}
+
+\noindent and $\|f-f_E\|_p\le\epsilon$.
+
+On the other hand,
+
+\Centerline{$\|f-f'_E\|_p=\|f-\Reverse{\nu}'*f\|_p\le\epsilon$;}
+
+\noindent as $E$ is arbitrary, we have found a suitable $U$.
+}%end of proof of 444U
+
+ \leader{444V}{}\cmmnt{ So far I have not emphasized the special
+properties of compact groups.   But of course they are the centre of the
+subject, and for the sake of a fundamental theorem in \S446 I give the
+following result.
+
+\wheader{444V}{4}{2}{2}{72pt}
+
+\noindent}{\bf Theorem} Let $X$ be a compact topological group and $\mu$
+a left Haar measure on $X$.
+
+(a) For any $u$, $v\in L^2=L^2(\mu)$ we can interpret their convolution
+$u*v$ either as a member of the space $C(X)$ of continuous real-valued
+functions on $X$, or as a member of the space $L^2$.
+
+(b) If $w\in L^2$, then $u\mapsto u*w$ is a compact linear operator
+whether regarded as a map from $L^2$ to $C(X)$ or as a map from $L^2$ to
+itself.
+
+(c) If $w\in L^2$ and $w=\Reverse{w}$\cmmnt{ (as defined in 443Af)}, then
+$u\mapsto u*w:L^2\to L^2$ is a self-adjoint operator.
+
+\proof{{\bf (a)} Being compact, $X$ is unimodular (442Ic).   As noted in
+444Sa, $*$ can be regarded as a bilinear operator from $L^2\times L^2$ to
+$C_b(X)=C(X)$.   Because $\mu X$ must be finite, we now have a natural
+map $f\mapsto f^{\ssbullet}$ from $C(X)$ to $L^2$, so that we can think
+of $u*v$ as a member of $L^2$ for $u$, $v\in L^2$.
+
+\medskip
+
+{\bf (b)(i)} Evidently $u\mapsto u*w:L^2\to C(X)$ is linear,
+for any $w\in L^2$.
+
+\medskip
+
+\quad{\bf (ii)} Let $B$ be the unit ball of $L^2$, and give it the
+topology induced by the weak topology $\frak T_s(L^2,L^2)$, so that $B$
+is compact (4A4Ka).   Let $\action_l$ be the left action of $X$ on $L^2$
+as in 443G and 444S.
+
+If $f$, $g\in\eusm L^2$ and $a\in X$, then
+
+\Centerline{$(f*g)(a)
+=\int f(x)g(x^{-1}a)dx
+=\int f(x)\Reverse{g}(a^{-1}x)dx
+=\int f\times a\action_l\Reverse{g}$.}
+
+\noindent (Note that because $X$ is unimodular, $\Reverse{g}$ and
+$a\action_l\Reverse{g}$ are square-integrable whenever $g$ is.)   So
+if $u$, $w\in L^2$ and $a\in X$,
+$(u*w)(a)=\innerprod{u}{a\action_l\Reverse{w}}$.
+It follows that, for any $w\in L^2$, the function
+$(a,u)\mapsto(u*w)(a):X\times B\to\Bbb R$ is continuous.   \Prf\ We know
+that $\action_l:X\times L^2\to L^2$ is continuous when $L^2$ is given
+its norm topology (443Gf).   Now $(u,v)\mapsto\innerprod{u}{v}$ is
+continuous, so $(a,u)\mapsto(u*w)(a)=\innerprod{u}{a\action_l\Reverse{w}}$
+must be continuous.\ \Qed
+
+Because $X$ is compact, this means that $u\mapsto u*w:B\to C(X)$ is
+continuous when $C(X)$ is given its norm topology and $B$ is given the
+weak topology (4A2G(g-ii)).   Because $B$ is compact in the weak
+topology, $\{u*w:u\in B\}$ is compact in $C(X)$.   But this implies that
+$u\mapsto u*w$ is a compact linear operator (definition:  3A5La).
+
+\medskip
+
+\quad{\bf (iii)} Again
+because $X$ is compact, $\mu$ is totally finite, so,
+for $f\in C(X)$, $\|f\|_2\le\|f\|_{\infty}\sqrt{\mu X}$, and the natural
+map $f\mapsto f^{\ssbullet}:C(X)\to L^2$ is a bounded linear operator.
+Consequently the map $u\mapsto(u*w)^{\ssbullet}:L^2\to L^2$ is a compact
+operator, by 4A4La.
+
+\medskip
+
+{\bf (c)} Now suppose that $w=\Reverse{w}$.   In this case
+$\innerprod{u*w}{v}=\innerprod{u}{v*w}$ for all $u$, $v\in L^2$.   \Prf\
+Express $u$, $v$ and $w$ as $f^{\ssbullet}$, $g^{\ssbullet}$ and
+$h^{\ssbullet}$ where $f$, $g$ and $h$ are square-integrable Borel
+measurable functions defined everywhere on $X$.   We have
+
+$$\eqalignno{\innerprod{u*w}{v}
+&=\int(f*h)(x)g(x)dx
+=\iint f(y)h(y^{-1}x)g(x)dydx\cr
+&=\iint f(y)h(y^{-1}x)g(x)dxdy\cr
+\noalign{\noindent (because $(x,y)\mapsto f(y)h(y^{-1}x)g(x)$ is Borel
+measurable, $\mu$ is totally finite and
+\discrversionA{\break}{}$\iint|f(y)h(y^{-1}x)g(x)|dydx
+=\innerprod{|u|*|w|}{|v|}$ is finite)}
+&=\iint f(y)\Reverse{h}(x^{-1}y)g(x)dxdy
+=\int f(y)(g*\Reverse{h})(y)dy\cr
+&=\innerprod{u}{v*\Reverse{w}}
+=\innerprod{u}{v*w}.\text{ \Qed}\cr}$$
+
+\noindent As $u$ and $v$ are arbitrary, this shows that
+$u\mapsto u*w:L^2\to L^2$ is self-adjoint.
+}%end of proof of 444V
+
+\exercises{\leader{444X}{Basic exercises $\pmb{>}$(a)}
+%\spheader 444Xa
+Let $X$ be a Hausdorff topological group.    Show that if $\lambda$ and
+$\nu$ are totally finite Radon measures on $X$ then $\lambda*\nu$ is the
+image measure $(\lambda\times\nu)\phi^{-1}$, where $\phi(x,y)=xy$ for
+$x$, $y\in X$, and in particular is a Radon measure.
+%444A
+
+\sqheader 444Xb Let $X$ be a topological group and $\lambda$, $\nu$ two
+totally finite quasi-Radon measures on $X$.   Writing $\supp\lambda$ for
+the support of $\lambda$, show that
+$\supp(\lambda*\nu)=\overline{(\supp\lambda)(\supp\nu)}$.
+%444A
+
+\spheader 444Xc Let $X$ be a topological group and
+$M^+_{\text{qR}}$ the family of totally finite quasi-Radon measures on
+$X$.   Show that $(\lambda,\nu)\mapsto\lambda*\nu:
+M^+_{\text{qR}}\times M^+_{\text{qR}}\to M^+_{\text{qR}}$ is continuous
+for the narrow topology on $M^+_{\text{qR}}$.   \Hint{437Ma, 437N.}
+%444A
+
+\spheader 444Xd Let $X$ be a Hausdorff topological group.   Show that
+$X$ is abelian iff its Banach algebra of signed $\tau$-additive Borel
+measures is commutative.
+%444E
+
+\spheader 444Xe Let $X$ be a topological group, and $M_{\tau}$ its
+Banach algebra of signed $\tau$-additive Borel measures.   (i) Show that
+we have actions $\action_l$, $\action_r$ of $X$ on $M_{\tau}$ defined by
+writing $(a\action_l\nu)(E)=\nu(aE)$, $(a\action_r\nu)(E)=\nu(Ea^{-1})$.
+(ii) Show that $(a\action_l\lambda)*\nu=a\action_l(\lambda*\nu)$,
+$\lambda*(a\action_r\nu)=a\action_r(\lambda*\nu)$ for all $a\in X$ and
+$\lambda$, $\nu\in M_{\tau}$.
+%444E
+
+\spheader 444Xf Let $X$ be a compact Hausdorff topological group, and $B$ a
+norm-bounded subset of the Banach algebra $M_{\tau}$ of signed
+$\tau$-additive Borel measures on $X$.   Show that
+$(\lambda,\nu)\mapsto\lambda*\nu:B\times B\to M_{\tau}$ is continuous
+for the vague topology on $M_{\tau}$.   \Hint{437Md.}
+%444E 444Xc
+
+\spheader 444Xg Let $X$ be a topological group, and $\nu$ a totally
+finite quasi-Radon measure on $X$.   Show that for any
+Borel sets $E$, $F\subseteq X$, the function
+$(g,h)\mapsto\nu(gE\cap Fh)$ is Borel measurable.   \Hint{for Borel sets
+$W\subseteq X\times X$,
+set $\nuprime W=\nu\{x:(x,x)\in W\}$.   Consider the action of
+$X\times X$ on
+itself defined by writing $(g,h)\action(x,y)=(gx,yh^{-1})$.}
+%444F
+
+\spheader 444Xh Let $X$ be a topological group and $f$ a real-valued
+function defined on a subset of $X$.   (i) Show that
+$a\action_r(\nu*f)=\nu*(a\action_rf)$ (definition:  4A5Cc) whenever
+$a\in X$ and $\nu$ is a
+measure on $X$.   (ii) Show that if $X$ carries Haar measures, then
+$a\action_l(f*\nu)=(a\action_lf)*\nu$ whenever $a\in X$ and $\nu$ is a
+measure on $X$.
+%444J
+
+\spheader 444Xi Let $X$ be a topological group carrying Haar measures,
+$f:X\to\Bbb R$ a bounded continuous function and $\nu$ a totally finite
+quasi-Radon measure on $X$.   Show that $f*\nu$ is continuous.
+%444J 444Fe 444Ib
+
+\spheader 444Xj Let $X$ be a topological group carrying Haar measures,
+$f$ a real-valued function defined on a subset of $X$, and $\lambda$,
+$\nu$ totally finite quasi-Radon measures on $X$.   Show that
+$((f*\nu)*\lambda)(x)=(f*(\nu*\lambda))(x)$ whenever the right-hand side
+is defined.   (See also 444Yj.)
+%444Ic 444J
+
+\spheader 444Xk Let $X$ be an abelian topological group carrying Haar
+measures.   Show that $f*\nu=\nu*f$ for every measure $\nu$ on $X$ and
+every real-valued function $f$ defined on a subset of $X$.
+%444J
+
+\sqheader 444Xl Let $X$ be a topological group and $\mu$ a left Haar
+measure on $X$.   (i) Let $\nu$ be a totally finite quasi-Radon measure
+on $X$ such that $x\mapsto\nu(xF)$ is continuous for every closed set
+$F\subseteq X$.   Show that $\nu$ is truly continuous with respect to
+$\mu$.   \Hint{if $\mu F=0$, apply 444K to $\nu*\chi F^{-1}$ to see that
+$\nu(xF)=0$ for $\mu$-almost every $x$.}
+(ii) Let $\nu$ be a totally finite Radon measure on $X$ such that
+$x\mapsto\nu(xK)$ is continuous for every compact set $K\subseteq X$.
+Show that $\nu$ is truly continuous with respect to $\mu$.
+%444K
+
+\spheader 444Xm Let $X$ be a topological group carrying Haar measures,
+$E\subseteq X$ a Haar negligible set and $\nu$ a $\sigma$-finite
+quasi-Radon measure on $X$.   Show that $\nu(xE)=\nu(Ex)=0$ for
+Haar-a.e.\ $x\in X$.
+%444K
+
+\spheader 444Xn Let $X$ be a topological group carrying Haar measures,
+and $\nu$ a non-zero totally finite quasi-Radon measure on $X$ such that
+$\nu(xE)=0$
+whenever $x\in X$ and $\nu E=0$.   (i) Show that $\nu$ is strictly
+positive, so that $X$ is ccc.
+(ii) Show that a subset of $X$ is $\nu$-negligible iff it is Haar
+negligible.
+%444L
+
+\spheader 444Xo Use the method of part (b) of the proof of 444M to prove
+part (a) there.
+%444M
+
+\sqheader 444Xp Let $X$ be the group $S^1\times S^1$, with the topology
+defined by giving the first coordinate the usual topology of $S^1$ and
+the second coordinate its discrete topology, so that $X$ is a locally
+compact abelian group.   Let $\mu$ be a Haar measure on $X$.   (i) Find
+a Borel measurable function $f:X\times X\to\{0,1\}$ such that
+$\iint f(x,y)\mu(dx)\mu(dy)\ne\iint f(x,y)\mu(dy)\mu(dx)$.   (ii) Let
+$\nu$ be the Radon measure on $X$ defined by setting
+$\nu E=\#(\{s:(s,s^{-1})\in E\})$ if this is finite, $\infty$ otherwise.
+Define $g:X\to\{0,1\}$ by setting $g(s,t)=1$ if $s=t$, $0$ otherwise.
+Show that $\iint g(xy)\nu(dy)\mu(dx)=\infty$,
+$\iint g(xy)\mu(dx)\nu(dy)=0$.   (iii) Find a closed set $F\subseteq X$
+such that $x\mapsto\nu(xF)$ is not Haar measurable.
+%444N  mt44bits
+
+\sqheader 444Xq Let $X$ be a Hausdorff topological group and for
+$a\in X$ write $\delta_a$ for the Dirac measure on $X$ concentrated at $a$.
+(i) Show that $\delta_a*\delta_b=\delta_{ab}$ for all
+$a$, $b\in X$.   (ii) Show that, in the notation of 444Xe,
+$\delta_a*\hat\nu$ is the completion of $a^{-1}\action_l\nu$ and
+$\hat\nu*\delta_a$ is the completion of $a\action_r\nu$ for every
+$a\in X$ and every totally finite $\tau$-additive Borel measure $\nu$ on
+$X$ with completion $\hat\nu$.   (iii) Show that
+$\delta_a*f=a\action_lf$ for every $a\in X$ and every real-valued
+function $f$ defined on a subset of $X$.   (iv) Show that if $X$ carries
+Haar measures, and has left modular function $\Delta$,
+$f*\delta_a=\Delta(a^{-1})a^{-1}\action_rf$ for every $a\in X$ and
+every real-valued function $f$ defined on a subset of $X$.   (v) Use
+these formulae to relate 444Of to 444B.
+%444O
+
+\spheader 444Xr Let $X$ be a topological group and $\mu$ a left Haar
+measure on $X$.   Show that if $f$, $g\in\eusm L^0(X)$ then
+$(f*g)\ssplrarrow=\Reverse{g}*\Reverse{f}$.
+%444O
+
+\spheader 444Xs Let $X$ be a locally compact Hausdorff topological group
+and $\mu$ a left Haar measure on $X$.   Show that if $f$, $g:X\to\Bbb R$
+are continuous functions with compact support, then $f*g$ is a
+continuous function with compact support.
+%444R 444Xb
+
+\spheader 444Xt In 444Rc, show that $f*\Reverse{g}$ is uniformly continuous
+for the bilateral uniformity.   \Hint{in 443Gf, $x\mapsto x\action_lu$
+is uniformly continuous.}
+%444R
+
+\spheader 444Xu Let $X$ be a topological group with a totally finite
+Haar measure $\mu$.   Show that (i)
+$\innerprod{u*w}{v}=\innerprod{u}{v*\Reverse{w}}$ for any $u$, $v$,
+$w\in L^2=L^2(\mu)$, where $\Reverse{w}$ and $u*v$ are defined as in 443Af
+and 444V (ii) the map $u\mapsto u*w:L^2\to L^2$ is a compact linear
+operator for any $w\in L^2$.   \Hint{for (ii), use 443L.}
+%444V
+
+\spheader 444Xv Let $X$ be a topological group with a Haar probability
+measure $\mu$.   Show that $L^2(\mu)$ with convolution is a Banach
+algebra.
+%444V
+
+\sqheader 444Xw(i) Let $X_1$, $X_2$ be topological groups with totally
+finite quasi-Radon measures $\lambda_i$, $\nu_i$ on $X_i$ for each $i$.
+Let $\lambda=\lambda_1\times\lambda_2$, $\nu=\nu_1\times\nu_2$ be the
+quasi-Radon product measure on the topological group
+$X=X_1\times X_2$.   Show that
+$\lambda*\nu=(\lambda_1*\nu_1)\times(\lambda_2*\nu_2)$.
+(ii) Let $\familyiI{X_i}$ be a family of topological groups, and
+$\lambda_i$, $\nu_i$ quasi-Radon probability measures
+on $X_i$ for each $i$.   Let $\lambda=\prod_{i\in I}\lambda_i$,
+$\nu=\prod_{i\in I}\nu_i$ be the
+quasi-Radon product measures on the topological group
+$\prod_{i\in I}X_i$.   Show that
+$\lambda*\nu=\prod_{i\in I}\lambda_i*\nu_i$.
+%444A out of order query
+
+\sqheader 444Xx Show that 444C, 444O, 444P, 444Qb and
+444R-444U %444R 444S 444T 444U
+remain valid if we work with complex-valued, rather than real-valued,
+functions, and with $\eusm L^p_{\Bbb C}$ and $L^p_{\Bbb C}$
+rather than $\eusm L^p$ and $L^p$.
+
+\spheader 444Xy\dvAnew{2010} Let $X$ be a topological group with a left
+Haar measure $\mu$ and left modular function $\Delta$.   Write
+$\pmb{\Delta}\in L^0=L^0(\mu)$ for the equivalence class of the function
+$\Delta$.   For $u\in L^0$ write $u^*$ for
+$\Reverse{u}\times\Reverse{\pmb{\Delta}}$.   Show that (i) $(u^*)^*=u$ for
+every $u\in L^0$ (ii) $u\mapsto u^*:L^0\to L^0$ is a Riesz space
+automorphism (iii) $u^*\in L^1$ for every
+$u\in L^1=L^1(\mu)$ (iv) $u\mapsto u^*:L^1\to L^1$ is an $L$-space
+automorphism (v) $u^**v^*=(v*u)^*$ for all $u$, $v\in L^1$ (v) defining
+$T:L^1\to M_{\tau}$ as in 444Sc, show that $Tu^*=\Reverse{Tu}$
+(that is, $(Tu^*)(E)=(Tu)(E^{-1})$ for Borel sets $E$) for every
+$u\in L^1$.
+
+\leader{444Y}{Further exercises (a)}
+%\spheader 444Ya
+Find a subgroup $X$ of $\{0,1\}^{\Bbb N}$ and
+quasi-Radon probability measures $\lambda$, $\nu$ on $X$ and a set
+$A\subseteq X$ such that $(\lambda*\nu)^*(A)=1$ but
+$(\lambda\times\nu)\{(x,y):x,\,y\in X,\,x+y\in A\}=0$.
+%444A  %mt44bits
+
+\spheader 444Yb Let $X$ be a {\bf topological semigroup}, that is, a
+semigroup with a topology such that multiplication is continuous.
+(i) For totally finite
+$\tau$-additive Borel measures $\lambda$, $\nu$ on $X$, show that there
+is a $\tau$-additive Borel measure $\lambda*\nu$ defined by saying that
+$(\lambda*\nu)(E)=(\lambda\times\nu)\{(x,y):xy\in E\}$ for every Borel
+set $E\subseteq X$.   (ii) Show that in this context
+$(\lambda_1*\lambda_2)*\lambda_3=\lambda_1*(\lambda_2*\lambda_3)$.
+(iii) Show that $\int fd(\lambda*\nu)=\int f(xy)\lambda(dx)\nu(dy)$
+whenever $f$ is $(\lambda*\nu)$-integrable.   (iv) Show that if the
+topology is Hausdorff and $\lambda$ and $\nu$ are tight (that is, inner
+regular with respect to the compact sets) so is $\lambda*\nu$.   (v)
+Show that we have
+a Banach algebra of signed $\tau$-additive Borel measures on $X$, as in
+444E.
+%444E
+
+\spheader 444Yc Let $X$ be a topological group, and write
+$M_{\tau}^{(\Bbb C)}$ for the complexification of the $L$-space
+$M_{\tau}$ of 444E, as described in 354Yl.   Show that
+$M_{\tau}^{(\Bbb C)}$, with the natural extension of the convolution
+operator of 444E, is a complex Banach algebra, and that we still have
+$|\lambda*\nu|\le|\lambda|*|\nu|$ for $\lambda$,
+$\nu\in M_{\tau}^{(\Bbb C)}$.
+%444E
+
+\spheader 444Yd Find a locally compact Hausdorff topological group $X$,
+a Radon probability measure $\nu$ on $X$ and an open set $G\subseteq X$
+such that $\{(xGx^{-1})^{\ssbullet}:x\in X\}$ is not a separable subset
+of the measure algebra of $\nu$.
+%444G  %mt44bits
+
+\spheader 444Ye Let $X$ be a metrizable group.
+We say that a subset $A$ of $X$ is {\bf Haar null}
+%or {\bf shy} watch it:  maybe "shy" demands a shy Borel superset
+if there are a universally Radon-measurable set $E\supseteq A$ and a
+non-zero Radon measure
+$\nu$ on $X$ such that $\nu(xEy)=0$ for every $x$, $y\in X$.   (i) Show
+that the family of Haar null sets is a translation-invariant
+$\sigma$-ideal of subsets of $X$.
+\Hint{if $\sequencen{E_n}$ is a sequence of universally
+Radon-measurable Haar null sets, we can find Radon
+probability measures $\nu_n$ concentrated on compact sets
+near the identity such that
+$\nu_n(xE_ny)=0$ for every $x$, $y$ and $n$;  now construct an infinite
+convolution product $\nu=\nu_0*\nu_1*\ldots$ from the
+probability product of the $\nu_n$ and show that
+$\nu(xE_ny)=0$ for every $x$, $y$ and $n$.}   (ii) Show that if $X$ and $Y$
+are Polish groups, $\phi:X\to Y$ is a surjective continuous
+homomorphism and
+$B\subseteq Y$ is Haar null, then $\phi^{-1}[B]$ is Haar null in $X$.
+(iii) Show that if $X$ is a
+locally compact Polish group then a subset of $X$ is Haar null iff it is
+Haar negligible in the sense of 442H.   (See {\smc Solecki 01}.)
+%444L
+
+\spheader 444Yf Suppose that the continuum hypothesis is true.   Let $\nu$
+be Cantor measure on $\Bbb R$ (256Hc).   Show that there is a set
+$A\subseteq\Bbb R$ such that $\nu(x+A)=0$ for every $x\in\Bbb R$, but
+$A$ is not Haar negligible.
+%444L
+
+\spheader 444Yg Let $X$ be a topological group and $\mu$ a left Haar
+measure on $X$.   Let $\tau$ be a $\Cal T$-invariant extended Fatou norm
+on $L^0(\mu)$ (\S374).   Show that if $\nu$ is any totally finite
+quasi-Radon measure on $X$, then we have a linear operator
+$f^{\ssbullet}\mapsto(\nu*f)^{\ssbullet}$ from $L^{\tau}$ to itself, of
+norm at most $\nu X$.
+%444M
+
+\spheader 444Yh Let $X$ be a topological group with a left Haar measure
+$\mu$, $M_{\tau}$ the Banach algebra of signed $\tau$-additive Borel
+measures on $X$, and $p\in[1,\infty]$.   (i) Show that we have a
+multiplicative linear operator $T$ from $M_{\tau}$ to the Banach algebra
+$\eurm B(L^p(\mu);L^p(\mu))$ defined by writing
+$(T\nu)(f^{\ssbullet})=(\hat\nu*f)^{\ssbullet}$ whenever $\nu$ is a
+totally finite $\tau$-additive Borel measure on $X$ with completion
+$\hat\nu$ and $f\in\eusm L^p(\mu)$.   \Hint{Use 444K and 444B to show
+that $(\lambda*\nu)*f\eae\lambda*(\nu*f)$ for enough $\lambda$, $\nu$
+and $f$.   See also 444Yj.}   (ii) Show that $\|T\nu\|\le\|\nu\|$ for
+every $\nu\in M_{\tau}^+$.
+(iii) Give an example in which $\|T\nu\|<\|\nu\|$.
+%444M
+
+\spheader 444Yi Let $X$ be a unimodular topological group with left Haar
+measure $\mu$.   Suppose that $p$, $q$, $r\in[1,\infty]$ are such that
+$\bover1p+\bover1q=1+\bover1r$, interpreting $\bover1{\infty}$ as $0$.
+Show that if $f\in\eusm L^p(\mu)$ and $g\in\eusm L^q(\mu)$ then
+$f*g\in\eusm L^r(\mu)$ and $\|f*g\|_r\le\|f\|_p\|g\|_q$.   \Hint{255Yl.
+Take care to justify any changes in order of integration.}
+%444O, 444Xt
+
+\spheader 444Yj Let $X$ be a topological group carrying Haar measures.
+Investigate conditions under which the associative laws
+
+\Centerline{$\lambda*(\nu*f)=(\lambda*\nu)*f$,
+\quad$\lambda*(f*\nu)=(\lambda*f)*\nu$,
+\quad$f*(\lambda*\nu)=(f*\lambda)*\nu$,}
+
+\Centerline{$f*(g*\nu)=(f*g)*\nu$,
+\quad$f*(\nu*g)=(f*\nu)*g$,
+\quad$\nu*(f*g)=(\nu*f)*g$}
+
+\noindent will be valid, where $\lambda$ and $\nu$ are quasi-Radon
+measures on $X$ and $f$, $g$ are real-valued functions.   Relate your
+results to 444Xq.
+%444O
+
+\spheader 444Yk Let $X$ be a topological group with a left Haar measure
+$\mu$ and left modular function $\Delta$.   (i) Suppose that
+$f\in\eusm L^0(\mu)$.   Show that the following are equiveridical:
+($\alpha$) $f(yx)=\Delta(y)f(xy)$ for $(\mu\times\mu)$-almost every
+$x$, $y\in X$;
+($\beta$) $(a\action_cf)^{\ssbullet}=\Delta(a^{-1})f^{\ssbullet}$
+for every $a\in X$.
+(ii) Show that in this case $f(x)=0$ for almost every $x$ such that
+$\Delta(x)\ne 1$.
+(iii) Suppose that $f\in\eusm L^1(\mu)$.   Show that the following are
+equiveridical:
+($\alpha$) $f(yx)=\Delta(y)f(xy)$ for $(\mu\times\mu)$-almost every
+$x$, $y\in X$;
+($\beta$) $(f*g)^{\ssbullet}=(g*f)^{\ssbullet}$ for every
+$g\in\eusm L^1(\mu)$.
+%444O
+
+\spheader 444Yl Let $X$ be a topological group and $\mu$ a left Haar
+measure on $X$.   Let $\tau$ be a $\Cal T$-invariant extended Fatou
+norm on $L^0(\mu)$ such that $\tau\restr L^{\tau}$ is an
+order-continuous norm.   For a totally finite quasi-Radon measure $\nu$
+on $X$, let $T_{\nu}:L^{\tau}\to L^{\tau}$ be the corresponding linear
+operator (444Yg).   Show that for any $u\in L^{\tau}$ and $\epsilon>0$
+there is a neighbourhood $U$ of the identity in $X$ such that
+$\tau(T_{\nu}u-u)\le\epsilon$ whenever $\nu U=\nu X=1$.
+%444T
+
+\spheader 444Ym Let $X$ be a topological group with a left Haar measure
+$\mu$.   For $u\in L^2=L^2(\mu)$, set $A_u=\{a\action_lu:a\in X\}$ (443G)
+in $L^2$, and $D=\{v*u:v\in L^1(\mu),\,v\ge 0,\,\int v=1\}$.   (i) Show
+that the closed convex hull of $A_u$ in $L^2$ is the closure of $D$.
+\Hint{($\alpha$) use 444Od to show that if $w\in L^2$ and
+$\innerprod{w'}{w}\ge\gamma$ for every $w'\in A_u$, then
+$\innerprod{w'}{w}\ge\gamma$ for every $w'\in D$ ($\beta$) use 444U to
+show that $A_u\subseteq\overline{D}$.}   (ii) Show that the closed linear
+subspace $W_u$ generated by $A_u$ is the closure of $\{v*u:v\in L^1\}$.
+(iii) Show that if $w\in L^2$ and $w\in A_u^{\perp}$, that is,
+$\innerprod{u'}{w}=0$ for every $u'\in A$, then
+$W_w\subseteq W_u^{\perp}$.
+(iv) Show that if $X$ is $\sigma$-compact, then $W_u$ is
+separable.   \Hint{$A_u$ is $\sigma$-compact, by 443Gf.}   (v) Set
+$C=\{f^{\ssbullet}:f\in\eusm L^2\cap C(X)\}$.   Show that $C\cap W_u$ is
+dense in $W_u$.   \Hint{$v*u\in C$ for many $v$, by 444Rc.}   (vi) Show
+that if $X$ is $\sigma$-compact, then $W_u$ has an orthonormal basis in
+$C$.   (vii) Show that $L^2$ has an orthonormal basis in $C$.   \Hint{if
+$X$ is $\sigma$-compact, take a maximal orthogonal family of subspaces
+$W_u$, find a suitable orthonormal basis of each, and use (iii) to see
+that these assemble to form a basis of $L^2$.   For a general locally
+compact Hausdorff group, start with a $\sigma$-compact open subgroup,
+and then deal with its cosets.   For a general topological group with a
+Haar measure, use 443L.}   (Compare 416Yg.)
+%444S
+
+\spheader 444Yn Let $X$ be a topological group with a left Haar measure
+$\mu$.   Let $\lambda$ be the quasi-Radon product measure on
+$X\times X$.   Let $\eusm U$ be the set of those
+$h\in\eusm L^1(\lambda)$ such
+that $(X\times X)\setminus\{(x,y):(x,y)\in\dom h,\,h(x,y)=0\}$ can be
+covered by a sequence of open sets of finite measure.
+(i) Show that if $h\in\eusm U$, then $(x,y)\mapsto h(y,y^{-1}x)$ belongs
+to $\eusm U$.   \Hint{443Xa.}
+(ii) Show that if
+$h\in\eusm U$, then $(Th)(x)=\int h(y,y^{-1}x)\mu(dy)$ is defined for
+almost every $x\in X$ and $Th$
+is $\mu$-integrable, with $\|Th\|_1\le\|h\|_1$.   \Hint{255Xj.}
+(iii) Show that if $h_1$, $h_2\in\eusm U$ are equal
+$\lambda$-a.e.\ then $Th_1=Th_2\,\,\mu$-a.e.
+(iv) Show that every
+member of $L^1(\lambda)$ can be represented by a member of $\eusm U$.
+\Hint{443Xk.}
+(v) Show that if $f$, $g\in\eusm L^1(\mu)$ and both are
+zero outside some countable union of open sets of finite measure, then
+$T(f\otimes g)=f*g$, where $(f\otimes g)(x,y)=f(x)g(y)$.
+(vi) Show that
+if we set $\tilde T(h^{\ssbullet})=(Th)^{\ssbullet}$ for $h\in\eusm U$,
+then $\tilde T:L^1(\lambda)\to L^1(\mu)$ is the unique continuous linear
+operator such that $\tilde T(u\otimes v)=u*v$ for all $u$,
+$v\in L^1(\mu)$, where $u*v$ is defined in 444S and
+$\otimes:L^1(\mu)\times L^1(\mu)\to L^1(\lambda)$ is the canonical
+bilinear operator (253E).
+%444S
+
+\spheader 444Yo In 444Yn, suppose that $\mu X=1$.   (i) Show that the
+map $\tilde T$ belongs to the
+class $\Cal T_{\bar\lambda,\bar\mu}$ of \S373.   (ii) Show that if
+$p\in[1,\infty]$ then $\|Th\|_p\le\|h\|_p$ whenever
+$h\in\Cal U\cap\eusm L^p(\lambda)$.
+%444Yn, 444S
+
+\spheader 444Yp Rewrite this section in terms of right Haar measures
+instead of left Haar measures.
+%444+
+
+\spheader 444Yq\dvAnew{2010}
+Let $X$ be a topological group and $M_{\text{qR}}^+$ the set of totally
+finite quasi-Radon measures on $X$.   For $\nu\in M_{\text{qR}}^+$,
+define $\Reverse{\nu}\in M_{\text{qR}}^+$ by
+saying that $\Reverse{\nu}(E)=\nu E^{-1}$ whenever $E\subseteq X$ and
+$\nu$ measures $E^{-1}$.   (i) Show that if $\lambda$,
+$\nu\in M_{\text{qR}}^+$ then
+$\Reverse{\lambda}*\Reverse{\nu}=(\nu*\lambda)\ssplrarrow$.
+(ii) Taking $\action_l$, $\action_r$ to be the left and right actions of
+$X$ on itself, and defining corresponding actions of $X$ on
+$M_{\text{qR}}^+$ as in 441Yo, show that
+$a\action_l(\lambda*\nu)=(a\action_l\lambda)*\nu$ and
+$a\action_r(\lambda*\nu)=\lambda*(a\action_r\nu)$ for $\lambda$,
+$\nu\in M_{\text{qR}}^+$ and $a\in X$.
+}%end of exercises
+
+\endnotes{
+\Notesheader{444} The aim of this section and the next is to work
+through ideas from the second half of Chapter 25, and Chapter 28, in
+forms natural in the context of general topological groups.   (It is of
+course possible to go farther;  see 444Yb.   It is the glory and
+confusion of twentieth-century mathematics that it has no firm stopping
+points.)   The move from $\Bbb R$ to an arbitrary topological group is a
+large one, and I think it is worth examining the various aspects of this
+leap as they affect the theorems here.   The most conspicuous change,
+and the one which most greatly affects the forms of the results, is the
+loss of commutativity.   We are forced to re-examine every formula to
+determine exactly which manipulations can still be justified.
+Multiplications must be written the right way round, and inversions
+especially must be watched.   But while there are undoubtedly some
+surprises, we find that in fact (provided we take care over the
+definitions) the most important results survive.   Of course I wrote the
+earlier results out with a view to what I expected to do here, but no
+dramatic manoeuvers are needed to turn the fundamental results 255G,
+255H, 255J, 257B, 257E, 257F into the new versions 444Od, 444Qb, 444Oe,
+444C, 444B, 444Qa.   (The changed order of presentation is an indication
+of the high
+connectivity of the web here, not of any new pattern.)   In fact what
+makes the biggest difference is not commutativity, as such, but
+unimodularity.   In groups which are not unimodular we do have new
+phenomena, as in 444Mb and 444Of,
+and these lead to complications in the proofs of such results as 444U,
+even though the result there is exactly what one would expect.
+
+In this section I ignore right Haar measures entirely.   I do not even
+put them in the exercises.   If you wish to take this theory farther,
+you may some day have to work out the formulae appropriate to
+right Haar measures.   (You can check your results in
+{\smc Hewitt \& Ross 63}, 20.32.)   But for the moment, I think that
+they are likely
+to be just a source of confusion.   There is one point which you may
+have noticed.   The theory of groups is essentially symmetric.   In the
+definition of `group' there is no distinction between left and right.
+In the formulae defining group actions, we do have such a distinction,
+because they must reflect the fact that we write $g\action x$ rather
+than $x\action g$.
+With $\action_l$ and $\action_r$, for instance (444Of), if we want them
+to be actions in the standard sense we have to put
+an \hbox{$^{-1}$} into the definition of $\action_l$ but not into the
+definition of $\action_r$.   But we still expect that, for instance,
+$\lambda*\nu$ and $\nu*\lambda$ will be related in some transparent way.
+However there is an exception to this rule in the definitions of $\nu*f$
+and $f*\nu$ (444H, 444J).   The modular function appears in the latter,
+so in fact the definition applies only in a more restricted class of
+groups.   In abelian groups we assume that $f*\nu$ and $\nu*f$ will be
+equal, and they are (444Xk), but strictly speaking, on the definitions
+here, we can write
+$f*\nu=\nu*f$ only for abelian topological groups carrying Haar
+measures.
+
+From the point of view of the proofs in this section, the principal
+change is that the Haar measures here are no longer assumed to be
+$\sigma$-finite.   I am well aware that non-$\sigma$-finite measures are
+a minority interest, especially in harmonic analysis, but I do think it
+interesting that $\sigma$-finiteness is not relevant to the main
+results, and the techniques required to demonstrate this are very much
+in the spirit of this treatise (see, in particular, the proof of 444N,
+and the repeated applications of 443Jb).
+The basic difficulty is that we can no longer exchange repeated
+integrals, even of non-negative Borel measurable functions, quite
+automatically.   Let me emphasize that the result in 444N is really
+rather special.   If we try to generalize it to other measures or other
+types of function we encounter the usual obstacles (444Xp).
+
+A difficulty of a different kind arises in the proof of 444Fc.   Here I
+wish to show that the function
+$g\mapsto(g\action E)^{\ssbullet}:G\to\frak A$ is Borel measurable for
+every Borel
+measurable set $E$.   The first step is to deal with open sets $E$, and
+it would be nice if we could then apply the Monotone Class Theorem.
+But the difficulty is that even though the map
+$(a,b)\mapsto a\Bsetminus b:\frak A\times\frak A\to\frak A$ is
+continuous, it does not quite follow that the map
+
+\Centerline{$g\mapsto(g\action(E\setminus F))^{\ssbullet}
+=(g\action E)^{\ssbullet}\Bsetminus(g\action F)^{\ssbullet}$}
+
+\noindent is Borel measurable whenever
+$g\mapsto(g\action E)^{\ssbullet}$ and
+$g\mapsto(g\action F)^{\ssbullet}$ are, because the map
+$g\mapsto((g\action E)^{\ssbullet},(g\action F)^{\ssbullet}):
+G\to\frak A\times\frak A$ might conceivably fail to be Borel measurable,
+if the metric space $\frak A$ is not separable, that is, if the Maharam
+type of the measure $\nu$ is uncountable.   Of course the difficulty is
+easily resolved by an extra twist in the argument.
+
+I use different techniques for the two parts of 444M as an excuse to
+recall the ideas of \S371;  in fact part (a) is slightly easier than
+part (b) when proved by the method of the latter (444Xo).
+
+444U is a kind of density theorem.   Compared with the density theorems
+in \S\S223 and 261, it is a `mean' rather than `pointwise' density
+theorem;  if $E$ is concentrated near the identity, then
+$f_E^{\ssbullet}$ approximates $f^{\ssbullet}$ in $L^p$, but there is no
+suggestion that we can be sure that $f_E(x)\bumpeq f(x)$ for any
+particular $x$s unless we know much more about the set $E$.   In fact
+this is to be expected from the form of the results concerning Lebesgue
+measure.   The sets $E$ considered in Volume 2 are generally intervals or
+balls, and even in such a general form as 223Ya we need a notion of
+scalar multiplication separate from the group operation.
+}%end of notes
+
+\discrpage
+

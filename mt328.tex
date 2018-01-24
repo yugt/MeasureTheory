@@ -1,0 +1,830 @@
+\frfilename{mt328.tex}
+\versiondate{2.6.09}
+\copyrightdate{2008}
+
+\def\chaptername{Measure algebras}
+\def\sectionname{Reduced products and other constructions}
+
+\newsection{*328\dvAnew{2008}}
+
+I devote a section to some related constructions.   At the
+end of \S315 %315R 315S
+I mentioned projective and inductive limits of systems of
+Boolean algebras with linking homomorphisms.   In the context of the
+present chapter, we naturally ask whether similar constructions can be
+found for probability algebras.   For projective limits there is no
+difficulty (328I).   For inductive limits the situation is more complex
+(328H).   Some ideas in Volume 5 will
+depend on what I call `reduced products'
+(328A-328F), %328A 328B 328C 328D 328E 328F
+which also provide a route to 328H.   The same methods give a route to
+a useful result relating measure-preserving Boolean homomorphisms on a
+probability algebra to measure-preserving automorphisms on a larger
+probability algebra (328J).
+
+\leader{328A}{Construction}
+Let $\familyiI{(\frak A_i,\bar\mu_i)}$ be a non-empty family of probability
+algebras, and $\Cal F$ an ultrafilter on $I$.
+
+\spheader 328Aa Set
+
+\Centerline{$\Cal J
+=\{\familyiI{a_i}:\familyiI{a_i}\in\prod_{i\in I}\frak A_i$,
+  $\lim_{i\to\Cal F}\bar\mu_ia_i=0\}$.}
+
+\noindent Then $\Cal J$ is an ideal in the simple
+product Boolean algebra $\prod_{i\in I}\frak A_i$.
+\prooflet{\Prf\ If $\familyiI{a_i}$ and $\familyiI{b_i}$ belong to
+$\Cal J$, and $\familyiI{c_i}\in\prod_{i\in I}\frak A_i$ is such that
+$\familyiI{c_i}\Bsubseteq\familyiI{a_i}\Bcup\familyiI{b_i}$, then
+$c_i\Bsubseteq a_i\Bcup b_i$ for every $i$, so
+
+\Centerline{$\lim_{i\to\Cal F}\bar\mu_ic_i
+\le\lim_{i\to\Cal F}\bar\mu_ia_i+\bar\mu_ib_i
+=\lim_{i\to\Cal F}\bar\mu_ia_i+\lim_{i\to\Cal F}\bar\mu_ib_i
+=0$}
+
+\noindent and $\familyiI{c_i}\in\Cal J$.   Of course
+$\familyiI{0_{\frak A_i}}$ belongs to $\Cal J$, so
+$\Cal J\normalsubgroup\prod_{i\in I}\frak A_i$.\ \Qed}
+
+\spheader 328Ab Let $\frak A$ be the
+quotient Boolean algebra $\prod_{i\in I}\frak A_i/\Cal J$.   Then we have a
+functional $\bar\mu:\frak A\to[0,1]$ defined by saying that
+
+\Centerline{$\bar\mu(\familyiI{a_i}^{\ssbullet})
+=\lim_{i\to\Cal F}\bar\mu_ia_i$}
+
+\noindent whenever $\familyiI{a_i}\in\prod_{i\in I}\frak A_i$.
+\prooflet{\Prf\ If $\familyiI{a_i}$,
+$\familyiI{b_i}\in\prod_{i\in I}\frak A_i$ and
+$\familyiI{a_i}^{\ssbullet}=\familyiI{b_i}^{\ssbullet}$, then
+$\familyiI{a_i\Bsymmdiff b_i}\in\Cal J$, so
+
+\Centerline{$|\lim_{i\to\Cal F}\bar\mu_ia_i-\lim_{i\to\Cal F}\bar\mu_ib_i|
+=\lim_{i\to\Cal F}|\bar\mu_ia_i-\bar\mu_ib_i|
+\le\lim_{i\to\Cal F}\bar\mu_i(a_i\Bsymmdiff b_i)
+=0$.  \Qed}}
+
+\leader{328B}{Proposition}
+Let $\familyiI{(\frak A_i,\bar\mu_i)}$ be a non-empty family of probability
+algebras and $\Cal F$ an ultrafilter on $I$, and construct $\frak A$ and
+$\bar\mu$ as in 328A.   Then $(\frak A,\bar\mu)$ is a probability algebra.
+
+\proof{{\bf (a)} If $\familyiI{a_i}$,
+$\familyiI{b_i}\in\prod_{i\in I}\frak A_i$ and
+$\familyiI{a_i}^{\ssbullet}\Bcap\familyiI{b_i}^{\ssbullet}=0$, then
+$\familyiI{a_i\cap b_i}\in\Cal J$, so
+
+$$\eqalign{
+\bar\mu(\familyiI{a_i}^{\ssbullet}\Bcup\familyiI{b_i}^{\ssbullet})
+&=\bar\mu(\familyiI{a_i\Bcup b_i}^{\ssbullet})
+=\lim_{i\to\Cal F}\bar\mu_i(a_i\Bcup b_i)\cr
+&=\lim_{i\to\Cal F}\bar\mu_ia_i+\bar\mu_ib_i-\bar\mu_i(a_i\Bcap b_i)\cr
+&=\lim_{i\to\Cal F}\bar\mu_ia_i
+  +\lim_{i\to\Cal F}\bar\mu_ib_i
+  -\lim_{i\to\Cal F}\bar\mu_i(a_i\Bcap b_i)\cr
+&=\lim_{i\to\Cal F}\bar\mu_ia_i
+  +\lim_{i\to\Cal F}\bar\mu_ib_i
+=\bar\mu(\familyiI{a_i}^{\ssbullet})+\bar\mu(\familyiI{b_i}^{\ssbullet}).
+\cr}$$
+
+\noindent So $\bar\mu$ is additive.
+
+\medskip
+
+{\bf (b)}
+$1_{\frak A}=\familyiI{1_{\frak A_i}}^{\ssbullet}$ so
+
+\Centerline{$\bar\mu 1_{\frak A}
+=\lim_{i\to\Cal F}\bar\mu_i1_{\frak A_i}=1$.}
+
+\medskip
+
+{\bf (c)} If $\familyiI{a_i}\in\prod_{i\in I}\frak A_i$ and
+$\bar\mu(\familyiI{a_i}^{\ssbullet})=0$, then
+$\familyiI{a_i}\in\Cal J$ and $\familyiI{a_i}^{\ssbullet}=0$;  thus
+$\bar\mu$ is strictly positive.
+
+\medskip
+
+{\bf (d)} Suppose that $\sequencen{\tilde a_n}$ is a disjoint sequence in
+$\frak A$.   Express each $\tilde a_n$ as $\familyiI{a_{ni}}^{\ssbullet}$
+where
+$a_{ni}\in\frak A_i$ for each $i$.   Set $b_{ni}=\sup_{m\le n}a_{mi}$ for
+$n\in\Bbb N$ and $i\in I$;  then
+$\familyiI{b_{ni}}^{\ssbullet}=\sup_{m\le n}\tilde a_m$ in $\frak A$.   Set
+
+\Centerline{$\gamma=\sum_{n=0}^{\infty}\bar\mu\tilde a_n
+=\sup_{n\in\Bbb N}\bar\mu(\familyiI{b_{ni}}^{\ssbullet})
+=\sup_{n\in\Bbb N}\lim_{i\to\Cal F}\bar\mu_ib_{ni}$.}
+
+\noindent Set $A_n=\{i:i\in I$, $\bar\mu_ib_{ni}\le\gamma+2^{-n}\}$ for
+each $n\in\Bbb N$;  then $\sequencen{A_n}$ is a non-increasing sequence in
+$\Cal F$, and $A_0=I$.   For $i\in I$ set
+
+$$\eqalign{b_i
+&=b_{ni}\text{ if }i\in A_n\setminus A_{n+1},\cr
+&=\sup_{n\in\Bbb N}b_{ni}\text{ if }i\in\bigcap_{n\in\Bbb N}A_n.\cr}$$
+
+\noindent Consider $\tilde b=\familyiI{b_i}^{\ssbullet}\in\frak A$.
+For each
+$n\in\Bbb N$, $\{i:a_{ni}\Bsubseteq b_i$, $\bar\mu b_i\le\gamma+2^{-n}\}$
+includes $A_n\in\Cal F$, so
+$\tilde a_n\Bsubseteq\tilde b$ for every $n$ and
+$\bar\mu\tilde b\le\gamma$.
+
+If $\tilde c\in\frak A$ is another upper bound for
+$\{\tilde a_n:n\in\Bbb N\}$, then, using (a),
+
+\Centerline{$\gamma=\sup_{n\in\Bbb N}\bar\mu(\sup_{m\le n}\tilde a_m)
+\le\bar\mu(\tilde b\Bcap\tilde c)\le\bar\mu\tilde b\le\gamma$;}
+
+\noindent so $\bar\mu(\tilde b\Bsetminus\tilde c)=0$ and
+$\tilde b\Bsetminus\tilde c=0$, by (c).
+Thus $\tilde b=\sup_{n\in\Bbb N}\tilde a_n$ in $\frak A$, while
+$\bar\mu\tilde b=\sum_{n=0}^{\infty}\bar\mu\tilde a_n$.
+
+\medskip
+
+{\bf (e)} If $\sequencen{\tilde a_n}$ is any sequence in
+$\frak A$, then (iv) tells us that
+$\{\tilde a_n\Bsetminus\sup_{m<n}\tilde a_m:n\in\Bbb N\}$
+has a supremum in $\frak A$, which is also the supremum of
+$\{\tilde a_n:n\in\Bbb N\}$.   So $\frak A$ is Dedekind $\sigma$-complete.
+Now (d) tells us also that $\bar\mu$ is countably additive, so that
+$(\frak A,\bar\mu)$ is a probability algebra.
+}%end of proof of 328B
+
+\leader{328C}{Definition} In the context of 328A/328B,
+I will call $(\frak A,\bar\mu)$ the {\bf probability
+algebra reduced product} of $\familyiI{(\frak A_i,\bar\mu_i)}$
+modulo $\Cal F$;  I will
+sometimes write it as $\prod_{i\in I}(\frak A_i,\bar\mu_i)|\Cal F$.
+\cmmnt{(There are dangers in this notation.   In 351M I will speak of
+`reduced powers' $\BbbR^I|\Cal F$, and the rules will be significantly
+different there.)}
+
+If all the $(\frak A_i,\bar\mu_i)$ are the same, with common value
+$(\frak B,\bar\nu)$, I will write
+$(\frak B,\bar\nu)^I|\Cal F$ for
+$\prod_{i\in I}(\frak A_i,\bar\mu_i)|\Cal F$, and call it the
+{\bf probability algebra reduced power}.
+
+\vleader{108pt}{328D}{Proposition} Let $I$ be a set,
+$\familyiI{(\frak A_i,\bar\mu_i)}$,
+$\familyiI{(\frak B_i,\bar\nu_i)}$ and
+$\familyiI{(\frak C_i,\bar\lambda_i)}$ three families of probability
+algebras, and $\Cal F$ an ultrafilter on $I$;  let
+$(\frak A,\bar\mu)=\prod_{i\in I}(\frak A_i,\bar\mu_i)|\Cal F$,
+$(\frak B,\bar\nu)=\prod_{i\in I}(\frak B_i,\bar\nu_i)|\Cal F$ and
+$(\frak C,\bar\lambda)=\prod_{i\in I}(\frak C_i,\bar\lambda_i)|\Cal F$
+be the corresponding reduced products.
+
+(a) If $\pi_i:\frak A_i\to\frak B_i$ is a measure-preserving Boolean
+homomorphism for each $i\in I$, we have a measure-preserving Boolean
+homomorphism $\pi:\frak A\to\frak B$ given by saying that
+
+\Centerline{$\pi(\familyiI{a_i}^{\ssbullet})
+=\familyiI{\pi_ia_i}^{\ssbullet}$}
+
+\noindent whenever $a_i\in\frak A_i$ for every $i\in I$.
+
+(b) If, in addition, $\phi_i:\frak B_i\to\frak C_i$ is a measure-preserving
+Boolean homomorphism for each $i\in I$, and $\phi:\frak B\to\frak C$ is
+constructed as in (a), then $\phi\pi:\frak A\to\frak C$ corresponds to the
+family $\familyiI{\phi_i\pi_i}$.
+
+\proof{{\bf (a)} Following through the construction in 328A, we have ideals
+
+\Centerline{$\Cal J=\{\familyiI{a_i}:\lim_{i\to\Cal F}\bar\mu_ia_i=0\}
+\normalsubgroup\prod_{i\in I}\frak A_i$,}
+
+\Centerline{$\Cal K=\{\familyiI{b_i}:\lim_{i\to\Cal F}\bar\nu_ib_i=0\}
+\normalsubgroup\prod_{i\in I}\frak B_i$,}
+
+\noindent and a Boolean homomorphism
+$\hat\pi:\prod_{i\in I}\frak A_i\to\prod_{i\in I}\frak B_i$ given by
+the formula $\hat\pi\familyiI{a_i}=\familyiI{\pi_ia_i}$ (use 315Bb).
+Because the
+homomorphisms $\pi_i$ are measure-preserving, $\hat\pi\pmb{a}\in\Cal K$
+whenever $\pmb{a}\in\Cal J$.   Consequently we have a Boolean homomorphism
+$\pi:\prod_{i\in I}\frak A_i/\Cal J\to\prod_{i\in I}\frak B_i/\Cal K$ given
+by setting $\pi\pmb{a}^{\ssbullet}=(\hat\pi\pmb{a})^{\ssbullet}$ whenever
+$\pmb{a}\in\prod_{i\in I}\frak A_i$ (3A2G).   And
+
+\Centerline{$\bar\nu\pi(\familyiI{a_i}^{\ssbullet})
+=\bar\nu(\familyiI{\pi_ia_i}^{\ssbullet})
+=\lim_{i\to\Cal F}\bar\nu_i\pi_ia_i
+=\lim_{i\to\Cal F}\bar\mu_ia_i
+=\bar\mu(\familyiI{a_i}^{\ssbullet})$}
+
+\noindent whenever $\familyiI{a_i}\in\prod_{i\in I}\frak A_i$, so
+$\pi$ is measure-preserving.
+
+\medskip
+
+{\bf (b)} is now just a matter of writing the defining formulae out.
+}%end of proof of 328D
+
+\leader{328E}{Proposition}\dvAformerly{3{}28D}
+Let $I$ be a non-empty set, $\le$ a reflexive
+transitive relation on $I$, and $\Cal F$ an ultrafilter on $I$ such that
+$\{j:j\in I$, $j\ge i\}$ belongs to $\Cal F$ for every $i\in I$.
+Let $\familyiI{(\frak A_i,\bar\mu_i)}$ be a family of probability algebras,
+and suppose
+that we are given a family $\langle\pi_{ji}\rangle_{i\le j}$  such that
+
+\inset{$\pi_{ji}$ is a measure-preserving Boolean
+homomorphism from $\frak A_i$ to $\frak A_j$ whenever $i\le j$ in $I$,
+
+$\pi_{ki}=\pi_{kj}\pi_{ji}$ whenever $i\le j\le k$ in $I$.}
+
+\noindent Let $(\frak A,\bar\mu)$ be the probability algebra reduced
+product $\prod_{i\in I}(\frak A_i,\bar\mu_i)|\Cal F$.
+
+(a) For each $i\in I$ we have a measure-preserving Boolean
+homomorphism $\pi_i:\frak A_i\to\frak A$ defined by saying that
+$\pi_ia=\family{j}{I}{a_j}^{\ssbullet}$ whenever $a_j=\pi_{ji}a$ for every
+$j\ge i$, and $\pi_i=\pi_j\pi_{ji}$ whenever $i\le j$ in $I$.
+
+(b) $\familyiI{a_i}^{\ssbullet}\Bsubseteq\sup_{j\in A}\pi_ja_j$
+whenever $\familyiI{a_i}\in\prod_{i\in I}\frak A_i$ and $A\in\Cal F$.
+
+\proof{{\bf (a)} $\pi_i$ is well-defined because $\{j:j\ge i\}\in\Cal F$.
+It is a measure-preserving Boolean homomorphism because every $\pi_{ji}$
+is.   If $i\le j$ in $I$, $a\in\frak A_i$ and $a_k=\pi_{ki}a$ for every
+$k\ge i$, then $a_k=\pi_{kj}\pi_{ji}a$ for every $k\ge j$, so
+$\pi_j\pi_{ji}a=\family{k}{I}{a_k}^{\ssbullet}=\pi_ia$;  as $a$ is
+arbitrary, $\pi_j\pi_{ji}=\pi_i$.
+
+\medskip
+
+{\bf (b)} Set $c=\sup_{j\in A}\pi_ja_j$ in $\frak A$.
+For any $\epsilon>0$, there is a finite $K\subseteq A$ such that
+$\bar\mu c\le\epsilon+\bar\mu(\sup_{j\in K}\pi_ja_j)$ (321C).
+The set $B=\{k:k\in I$, $j\le k$ for every $j\in K\}$ belongs to $\Cal F$,
+so is not empty;  fix $k\in B$, and set
+$b=\sup_{j\in K}\pi_{kj}a_j\in\frak A_k$,
+
+$$\eqalign{b_i
+&=\pi_{ik}b\text{ if }i\ge k,\cr
+&=0\text{ for other }i\in I.\cr}$$
+
+\noindent Then
+
+\Centerline{$\familyiI{b_i}^{\ssbullet}
+=\pi_kb
+=\pi_k(\sup_{j\in K}\pi_{kj}a_j)
+=\sup_{j\in K}\pi_k\pi_{kj}a_j
+=\sup_{j\in K}\pi_ja_j\Bsubseteq c$.}
+
+\noindent If $i\in A$ and $i\ge k$, then
+
+$$\eqalign{\bar\mu_i(a_i\Bsetminus b_i)
+&=\bar\mu(\pi_ia_i\Bsetminus\pi_ib_i)
+=\bar\mu(\pi_ia_i\Bsetminus\pi_i\pi_{ik}b)\cr
+&=\bar\mu(\pi_ia_i\Bsetminus\pi_kb)
+=\bar\mu(\pi_ia_i\Bsetminus\sup_{j\in K}\pi_ja_j)
+\le\bar\mu(c\Bsetminus\sup_{j\in K}\pi_ja_j)
+\le\epsilon\cr}$$
+
+\noindent by the choice of $K$.   So
+
+$$\eqalign{\bar\mu(\familyiI{a_i}^{\ssbullet}\Bsetminus c)
+&\le\bar\mu(\familyiI{a_i}^{\ssbullet}\Bsetminus\familyiI{b_i}^{\ssbullet})
+=\bar\mu(\familyiI{a_i\Bsetminus b_i}^{\ssbullet})\cr
+&=\lim_{i\to\Cal F}\bar\mu_i(a_i\Bsetminus b_i)
+\le\sup_{i\in A,i\ge k}\bar\mu_i(a_i\Bsetminus b_i)
+\le\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary,
+$\familyiI{a_i}^{\ssbullet}\Bsubseteq c$.
+}%end of proof of 328E
+
+\leader{328F}{Corollary} Suppose that $\sequencen{(\frak A_n,\bar\mu_n)}$
+is a sequence of
+probability algebras, $\phi_n:\frak A_n\to\frak A_{n+1}$ is a
+measure-preserving Boolean homomorphism for each $n$ and $\Cal F$ is a
+non-principal ultrafilter on $\Bbb N$.   Let
+$(\frak A,\bar\mu)$ be the probability algebra reduced product
+$\prod_{n\in\Bbb N}(\frak A_n,\bar\mu_n)|\Cal F$.   Then we have canonical
+measure-preserving Boolean homomorphisms $\pi_n:\frak A_n\to\frak A$ such
+that
+$\sequencen{a_n}^{\ssbullet}\Bsubseteq\sup_{n\in A}\pi_na_n$ whenever
+$\sequencen{a_n}\in\prod_{n\in\Bbb N}\frak A_n$ and $A\in\Cal F$,
+and $\pi_{n+1}\phi_n=\pi_n$ for every $n\in\Bbb N$.
+
+\proof{ Apply 328E with $\pi_{ji}=\phi_{j-1}\ldots\phi_{i+1}\phi_i$
+whenever $i<j$.
+}%end of proof of 328F
+
+\leader{328G}{Corollary}
+Let $(\frak B,\bar\nu)$ be a probability algebra, $I$ a non-empty set, and
+$\Cal F$ an ultrafilter on $I$.   Let $(\frak A,\bar\mu)$ be the
+probability algebra reduced power $(\frak B,\bar\nu)^I|\Cal F$.
+
+(a) We have a measure-preserving Boolean homomorphism
+$\pi:\frak B\to\frak A$ defined by saying that
+$\pi b=\familyiI{b}^{\ssbullet}$ for $b\in\frak B$.
+
+(b)
+
+\Centerline{$\familyiI{b_i}^{\ssbullet}
+\Bsubseteq\sup_{j\in A}\pi b_j=\pi(\sup_{j\in A}b_j)$}
+
+\noindent whenever $A\in\Cal F$ and $\familyiI{b_i}\in\frak B^I$.
+
+\proof{ Apply 328E with $\le\mskip5mu=I\times I$ and
+$\pi_{ji}$ the identity
+operator on $\frak B$ for all $i$, $j\in I$.
+}%end of proof of 328G
+
+\leader{328H}{Proposition} Let $(I,\le)$ be an upwards-directed partially
+ordered set, and $\familyiI{(\frak A_i,\bar\mu_i)}$
+a family of probability algebras;  suppose
+that $\pi_{ji}:\frak A_i\to\frak A_j$ is a measure-preserving
+Boolean homomorphism whenever $i\le j$, and that
+$\pi_{ki}=\pi_{kj}\pi_{ji}$ whenever $i\le j\le k$.
+Then there are a probability algebra $(\frak C,\bar\lambda)$ and a family
+$\familyiI{\pi_i}$ such that
+
+\inset{$\pi_i:\frak A_i\to\frak C$ is a measure-preserving
+Boolean homomorphism for each $i\in I$,
+
+$\pi_i=\pi_j\pi_{ji}$ whenever $i\le j$,
+
+$\{0,1\}\cup\bigcup_{i\in I}\pi_i[\frak A_i]$ is topologically dense in
+$\frak C$,}
+
+\noindent and whenever $(\frak B,\bar\nu)$, $\familyiI{\phi_i}$ are such
+that
+
+\inset{$(\frak B,\bar\nu)$ is a probability algebra,
+
+$\phi_i:\frak A_i\to\frak B$ is a measure-preserving
+Boolean homomorphism for each $i\in I$,
+
+$\phi_i=\phi_j\pi_{ji}$ whenever $i\le j$,}
+
+\noindent then there is a unique measure-preserving Boolean homomorphism
+$\phi:\frak C\to\frak B$ such that $\phi\pi_i=\phi_i$ for every $i\in I$.
+
+\proof{{\bf (a)}
+If $I$ is empty the result is trivial (take $\frak C=\{0,1\}$);  so
+let us suppose henceforth that $I\ne\emptyset$.   In this case,
+
+\Centerline{$\{A:A\subseteq I$, there is some $i\in I$ such that $j\in A$
+whenever $i\le j\}$}
+
+\noindent is a filter on $I$, and is included in an ultrafilter $\Cal F$
+say (2A1O).   Let $(\frak A,\bar\mu)$ be the reduced product
+$\prod_{i\in I}(\frak A_i,\bar\mu_i)|\Cal F$.   Then we have for each
+$i\in I$ a measure-preserving Boolean homomorphism
+$\pi_i:\frak A_i\to\frak A$ such that
+$\pi_i=\pi_j\pi_{ji}$ whenever $i\le j$ (328E).
+If $i\le j$ in $I$, then
+$\pi_i[\frak A_i]\subseteq\pi_j[\frak A_j]$;  because $(I,\le)$
+is upwards-directed,
+$\familyiI{\pi_i[\frak A_i]}$ is an upwards-directed family of
+subalgebras of $\frak A$, and
+$\frak D=\bigcup_{i\in I}\pi_i[\frak A_i]$ is a subalgebra of
+$\frak A$;  let $\frak C$ be its closure (323J).   Set
+$\bar\lambda=\bar\mu\restrp\frak C$, so that $(\frak C,\bar\lambda)$ is a
+probability algebra, and $\pi_i:\frak A_i\to\frak C$ is a
+measure-preserving Boolean homomorphism for each $i\in I$, with
+$\pi_i=\pi_j\pi_{ji}$ whenever $i\le j$.
+
+\medskip
+
+{\bf (b)}
+Now suppose that $\frak B$ and $\familyiI{\phi_i}$ are as declared.
+
+\medskip
+
+\quad{\bf (i)} Set
+
+\Centerline{$\phi'=\{(\pi_ia,\phi_ia):i\in I$, $a\in\frak A_i\}
+\subseteq\frak D\times\frak B$.}
+
+\noindent Then $\phi'$ is (the graph of) a function from $\frak D$ to
+$\frak B$.
+\Prf\ If $c\in\frak D$, there is surely an $i\in I$ such that
+$c\in\pi_i[\frak A_i]$, so that $(c,\phi_ia)\in\phi'$ for some
+$a\in\frak A_i$.
+If $(c,b)$ and $(c,b')$ belong to $\phi'$, there are $i$, $j\in I$ and
+$a\in\frak A_i$, $a'\in\frak A_j$ such that
+
+\Centerline{$\pi_ia=\pi_ja'=c$,
+\quad$\phi_ia=b$,
+\quad$\phi_ja'=b'$.}
+
+\noindent Let $k\in I$ be such that $i\le k$ and $j\le k$;  then
+
+\Centerline{$\pi_k\pi_{ki}a=\pi_ia=c=\pi_ja'=\pi_k\pi_{kj}a'$.}
+
+\noindent As $\pi_k$ is measure-preserving, therefore injective,
+$\pi_{ki}a=\pi_{kj}a'$, and
+
+\Centerline{$b=\phi_ia=\phi_k\pi_{ki}a=\phi_k\pi_{kj}a'=\phi_ja'=b'$.}
+
+\noindent So each element of $\frak D$ is the first member of exactly one
+element of $\phi'$, and $\phi'$ is the graph of a function.\ \QeD\   Of
+course the defining formula for $\phi'$ guarantees that
+$\phi'\pi_i=\phi_i:\frak A_i\to\frak B$ for every $i\in I$.
+
+\medskip
+
+\quad{\bf (ii)} Next, $\phi':\frak D\to\frak B$
+is a measure-preserving Boolean homomorphism.   \Prf\ If
+$c$, $c'\in\frak D$ then there are $i$, $j\in I$ and $a\in\frak A_i$,
+$a'\in\frak A_j$ such that $c=\pi_ia$ and $c'=\pi_ja'$.   Again take
+$k\in I$ such that $i\le k$ and $j\le k$;  then
+
+\Centerline{$c=\pi_k\pi_{ki}a$,
+\quad$c'=\pi_k\pi_{kj}a'$,
+\quad$\phi'c=\phi_k\pi_{ki}a$,
+\quad$\phi'c'=\phi_k\pi_{kj}a'$.}
+
+\noindent In this case, for either of the Boolean operations
+$*=\Bsymmdiff$ or $*=\Bcap$, we have
+
+$$\eqalign{\phi'c*\phi'c'
+&=\phi_k\pi_{ki}a*\phi_k\pi_{kj}a'
+=\phi_k(\pi_{ki}a*\pi_{kj}a')\cr
+&=\phi'\pi_k(\pi_{ki}a*\pi_{kj}a')
+=\phi'(\pi_k\pi_{ki}a*\pi_k\pi_{kj}a')
+=\phi'(c*c').\cr}$$
+
+\noindent As $c$, $c'$ and $*$ are arbitrary,
+$\phi'$ is a ring homomorphism.   Moreover, in the same context,
+
+\Centerline{$\bar\nu\phi'c=\bar\nu\phi_ia=\bar\mu_ia
+=\bar\mu\pi_ia=\bar\lambda c$,}
+
+\noindent so $\phi'$ is measure-preserving.
+It follows that $\phi'1_{\frak C}=1_{\frak B}$,
+and $\phi'$ is a Boolean homomorphism.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)}
+By 324O, there is a unique extension of $\phi'$ to a measure-preserving
+Boolean homomorphism $\phi:\frak C\to\frak B$;  and of course we still have
+$\phi\pi_i=\phi_i$ for every $i\in I$.
+
+\medskip
+
+\quad{\bf (iv)}
+To see that $\phi$ is unique, take any measure-preserving Boolean
+homomorphism $\tilde\phi:\frak C\to\frak B$ such that
+$\tilde\phi\pi_i=\phi_i$ for every $i$.   Then $\tilde\phi$ must agree with
+$\phi$ on $\pi_i[\frak A_i]$ for every $i$, so
+$\tilde\phi\restrp\frak D=\phi\restrp\frak D$;  as $\frak D$ is
+topologically dense in $\frak C$, $\tilde\phi=\phi$ (324O again).
+}%end of proof of 328H
+
+\leader{328I}{}\cmmnt{ For completeness, I spell out the relatively
+elementary construction for projective limits.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(I,\le)$ be a non-empty
+upwards-directed set, and $\familyiI{(\frak A_i,\bar\mu_i)}$
+a family of probability algebras;
+suppose that $\pi_{ij}:\frak A_j\to\frak A_i$ is a measure-preserving
+Boolean homomorphism for $i\le j$ in $I$, and that
+$\pi_{ij}\pi_{jk}=\pi_{ik}$ whenever $i\le j\le k$.
+Then
+there are a probability algebra $(\frak C,\bar\lambda)$ and a family
+$\familyiI{\pi_i}$ such that
+
+\inset{$\pi_i:\frak C\to\frak A_i$ is a measure-preserving
+Boolean homomorphism for each $i\in I$,
+
+$\pi_i=\pi_{ij}\pi_j$ whenever $i\le j$,}
+
+\noindent and whenever $(\frak B,\bar\nu)$, $\familyiI{\phi_i}$
+are such that
+
+\inset{$(\frak B,\bar\nu)$ is a probability algebra,
+
+$\phi_i:\frak B\to\frak A_i$ is a measure-preserving
+Boolean homomorphism for each $i\in I$,
+
+$\phi_i=\pi_{ij}\phi_j$ whenever $i\le j$,}
+
+\noindent then there is a unique measure-preserving Boolean homomorphism
+$\phi:\frak B\to\frak C$ such that $\pi_i\phi=\phi_i$ for every $i\in I$.
+
+\proof{{\bf (a)} Let $\frak C\subseteq\prod_{i\in I}\frak A_i$ be the set
+
+\Centerline{$\{\familyiI{a_i}:\pi_{ij}a(j)=a(i)$ whenever $i\le j$ in
+$I\}$.}
+
+\noindent Because every $\pi_{ij}$ is a Boolean homomorphism, $\frak C$ is
+a subalgebra of $\prod_{i\in I}\frak A_i$;  taking
+$\pi_j(\familyiI{a_i})=a_j$ whenever $\familyiI{a_i}\in\frak C$,
+$\pi_j:\frak C\to\frak A_j$ is a Boolean homomorphism for every $j\in I$,
+and $\pi_i=\pi_{ij}\pi_j$ whenever $i\le j$.
+
+Because every $\pi_{ij}$ is order-continuous, $\frak C$ is an order-closed
+subalgebra of $\prod_{i\in I}\frak A_i$, so is Dedekind complete.
+
+\medskip
+
+{\bf (b)} If $c=\familyiI{a_i}\in\frak C$, then
+
+\Centerline{$\bar\mu_i\pi_ic=\bar\mu_ia_i=\bar\mu_i\pi_{ij}a_j
+=\bar\mu_ja_j=\bar\mu_j\pi_jc$}
+
+\noindent whenever $i\le j$ in $I$;  because $I$ is upwards-directed,
+$\bar\mu_i\pi_ic=\bar\mu_j\pi_jc$ for all $i$, $j\in I$.   So we have a
+functional $\bar\lambda:\frak C\to[0,1]$ defined by setting
+$\bar\lambda c=\bar\mu_i\pi_ic$ whenever $c\in\frak C$ and $i\in I$.
+Note that $1_{\frak C}=\familyiI{1_{\frak A_i}}$, so
+$\bar\lambda 1_{\frak C}=\bar\mu_i1_{\frak A_i}=1$, for any $i\in I$.
+
+If $\sequencen{c_n}$ is a disjoint sequence in $\frak C$ with supremum $c$,
+then express each $c_n$ as $\familyiI{a_{ni}}$;  we must have
+$c=\familyiI{\sup_{n\in\Bbb N}a_{ni}}$, so
+
+\Centerline{$\bar\lambda c
+=\bar\mu_i(\sup_{n\in\Bbb N}a_{ni})
+=\sum_{n=0}^{\infty}\bar\mu_ia_{ni}
+=\sum_{n=0}^{\infty}\bar\lambda c_n$}
+
+\noindent for any $i\in I$.   Thus $\bar\lambda$ is countably additive.
+If $c\in\frak C$ is non-zero, express it as $\familyiI{a_i}$;  there must
+be an $i\in I$ such that $a_i\ne 0$, so that
+$\bar\lambda c=\bar\mu_ia_i>0$.   Thus $\bar\lambda$ is strictly positive,
+and $(\frak C,\bar\lambda)$ is a probability algebra.
+
+\medskip
+
+{\bf (c)} If $(\frak B,\bar\nu)$ is a probability algebra and
+$\familyiI{\phi_i}$ is a family such that $\phi_i:\frak B\to\frak A_i$ is a
+measure-preserving Boolean homomorphism and $\phi_i=\pi_{ij}\phi_j$
+whenever $i\le j$ in $I$, set $\phi b=\familyiI{\phi_ib}$ for
+$b\in\frak B$.   Then $\phi:\frak B\to\prod_{i\in I}\frak A_i$ is a Boolean
+homomorphism;  also
+
+\Centerline{$\pi_{ij}(\phi b)(j)=\pi_{ij}\phi_jb=\phi_ib=(\phi b)(i)$}
+
+\noindent whenever $i\le j$ and $b\in\frak B$, so
+$\phi[\frak B]\subseteq\frak C$, while $\pi_i\phi=\phi_i$ for every
+$i\in I$.   And of course this uniquely determines $\phi$.   To see that
+$\phi$ is measure-preserving, we have only to check that
+
+\Centerline{$\bar\lambda\phi b
+=\bar\mu_i\pi_i\phi b=\bar\mu_i\phi_ib=\bar\nu b$}
+
+\noindent whenever $b\in\frak B$ and $i\in I$.
+}%end of proof of 328I
+
+\leader{328J}{}\cmmnt{ A different application of the method in 328A yields
+the following result on commuting families of Boolean homomorphisms.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $(\frak A,\bar\mu)$ be a probability
+algebra, and $\Phi$
+a family of measure-preserving Boolean homomorphisms from $\frak A$ to
+itself such that $\phi\psi=\psi\phi$ for all $\phi$, $\psi\in\Phi$.   Then
+there are a probability algebra $(\frak C,\bar\lambda)$, a
+measure-preserving Boolean homomorphism $\pi:\frak A\to\frak C$
+and a family $\family{\phi}{\Phi}{\tilde\phi}$ such that
+
+(i) $\tilde\phi:\frak C\to\frak C$ is a measure-preserving Boolean
+automorphism and $\tilde\phi\pi=\pi\phi$ for every $\phi\in\Phi$;
+
+(ii) $(\phi\psi)\ssptilde=\tilde\phi\tilde\psi$ for all $\phi$,
+$\psi\in\Phi$.
+
+\proof{{\bf (a)} Let $\Psi$ be the set of all products
+$\phi_0\phi_1\ldots\phi_n$ where $\phi_i\in\Phi\cup\{\iota\}$ for every
+$i\le n$, $\iota$ here being the identity map from $\frak A$ to itself.
+Then $\Psi$ is a family of measure-preserving Boolean homomorphisms from
+$\frak A$ to itself, and $\phi\psi=\psi\phi\in\Psi$
+for all $\phi$, $\psi\in\Psi$.
+
+\medskip
+
+{\bf (b)} For $\phi$, $\psi\in\Psi$, say that $\phi\le\psi$ if there is a
+$\theta\in\Psi$ such that $\phi\theta=\psi$.   Then $\le$ is a reflexive
+transitive relation on $\Psi$.   Note that if $\phi\le\psi$ in $\Psi$
+then there is exactly one $\theta\in\Psi$ such that $\phi\theta=\psi$,
+because $\phi$ is injective.   So we may define $\pi_{\psi,\phi}\in\Psi$
+by saying that $\phi\pi_{\psi,\phi}=\psi$ whenever $\phi\le\psi$ in
+$\Psi$;  that is,
+$\pi_{\phi\psi,\phi}=\psi$ whenever $\phi$, $\psi\in\Psi$.
+Observe that if $\phi\le\psi\le\theta$ in $\Psi$, then
+
+\Centerline{$\phi\pi_{\psi,\phi}\pi_{\theta,\psi}
+=\psi\pi_{\theta,\psi}=\theta=\phi\pi_{\theta,\phi}$,}
+
+\noindent so
+
+\Centerline{$\pi_{\theta,\phi}=\pi_{\psi,\phi}\pi_{\theta,\psi}
+=\pi_{\theta,\psi}\pi_{\psi,\phi}$.}
+
+\noindent Of course $\iota\le\phi$ for every
+$\phi\in\Psi$.
+
+\medskip
+
+{\bf (c)} If $\phi_1$, $\phi_2\in\Psi$ then $\phi_1\le\phi_1\phi_2$ and
+$\phi_2\le\phi_2\phi_1=\phi_1\phi_2$;  generally, if $D\subseteq\Psi$ is
+finite, there is a $\psi\in\Psi$ such that $\phi\le\psi$ for every
+$\phi\in D$.   Consequently
+
+\Centerline{$\{A:A\subseteq\Psi$, there is some $\phi\in\Psi$
+such that $\psi\in A$ whenever $\phi\le\psi\}$}
+
+\noindent is a filter on $\Psi$, and is included in an ultrafilter
+$\Cal F$ say.   Let $(\frak C_0,\bar\lambda_0)$ be the
+probability algebra reduced power $(\frak A,\bar\mu)^{\Psi}|\Cal F$.
+By 328E, we have for each $\phi\in\Psi$ a measure-preserving Boolean
+homomorphism $\pi_{\phi}:\frak A\to\frak C_0$ defined by saying that
+$\pi_{\phi}a=\family{\psi}{\Psi}{a_{\psi}}^{\ssbullet}$ if
+$a_{\psi}=\pi_{\psi,\phi}a$ whenever $\phi\le\psi$ in $\Psi$, and
+$\pi_{\phi}=\pi_{\psi}\pi_{\psi,\phi}$ whenever $\phi\le\psi$.
+Re-interpreting this in terms of the definitions of $\le$ and
+$\pi_{\psi,\phi}$, we have $\pi_{\phi}=\pi_{\phi\psi}\psi$ whenever
+$\phi$, $\psi\in\Psi$.
+
+\medskip
+
+{\bf (d)} If $\phi$, $\psi$ in $\Psi$, then
+
+\Centerline{$\pi_{\phi}[\frak A]\cup\pi_{\psi}[\frak A]
+=\pi_{\phi\psi}[\psi[\frak A]]\cup\pi_{\psi\phi}[\phi[\frak A]]
+\subseteq\pi_{\phi\psi}[\frak A]\cup\pi_{\psi\phi}[\frak A]
+=\pi_{\phi\psi}[\frak A]$,}
+
+\noindent which is a subalgebra of $\frak C_0$.
+So $\frak D=\bigcup_{\phi\in\Psi}\pi_{\phi}[\frak A]$ is a
+subalgebra of
+$\frak C_0$, and its closure $\frak C$ is a closed subalgebra of
+$\frak C_0$;  set $\bar\lambda=\bar\lambda_0\restrp\frak C$.   Then
+$\pi=\pi_{\iota}:\frak A\to\frak C$ is a measure-preserving Boolean
+homomorphism.
+
+\medskip
+
+{\bf (e)} If $\theta\in\Psi$, we have a measure-preserving Boolean
+homomorphism $\hat\theta:\frak C\to\frak C$ defined by the formula
+
+\Centerline{$\hat\theta(\family{\psi}{\Psi}{a_{\psi}}^{\ssbullet})
+=\family{\psi}{\Psi}{\theta a_{\psi}}^{\ssbullet}$}
+
+\noindent for every family
+$\family{\psi}{\Psi}{a_{\psi}}$ in $\frak A$ (328Da);  and
+%$(\theta\phi)\sphat=\hat\theta\hat\phi$
+%$(\theta\phi)\mskip-3mu\hat{\phantom{x}}=\hat\theta\hat\phi$
+$\widehat{\theta\phi}=\hat\theta\hat\phi$
+for all $\theta$, $\phi\in\Psi$
+(328Db).   Also $\hat\theta\pi_{\phi}=\pi_{\phi}\theta$ for every $\phi$,
+$\theta\in\Psi$.   \Prf\ Let $a\in\frak A$.   Define
+$\family{\psi}{\Psi}{a_{\psi}}$,
+$\family{\psi}{\Psi}{a'_{\psi}}$ by setting
+
+$$\eqalign{a_{\psi}
+&=\pi_{\psi,\phi}a\text{ when }\phi\le\psi,\cr
+&=0\text{ otherwise},\cr
+a'_{\psi}&=\pi_{\psi,\phi}\theta a=\theta\pi_{\psi,\phi}a
+   \text{ when }\phi\le\psi,\cr
+&=0\text{ otherwise}.}$$
+
+\noindent Then
+
+\Centerline{$\pi_{\phi}a=\family{\psi}{\Psi}{a_{\psi}}^{\ssbullet}$,}
+
+\Centerline{$\hat\theta\pi_{\phi}a
+=\family{\psi}{\Psi}{\theta a_{\psi}}^{\ssbullet}
+=\family{\psi}{\Psi}{a'_{\psi}}^{\ssbullet}
+=\pi_{\phi}\theta a$.   \Qed}
+
+\medskip
+
+{\bf (f)} It follows that, for $\theta\in\Psi$,
+
+\Centerline{$\hat\theta[\frak D]
+=\bigcup_{\phi\in\Psi}\hat\theta[\pi_{\phi}[\frak A]]
+=\bigcup_{\phi\in\Psi}\pi_{\phi}[\theta[\frak A]]
+\subseteq\frak D$.}
+
+\noindent But in fact $\hat\theta[\frak D]=\frak D$.   \Prf\ If
+$d\in\frak D$, there are $\phi\in\Psi$ and $a\in\frak A$ such that
+$\pi_{\phi}a=d$.   Now define
+
+$$\eqalign{a_{\psi}
+&=\pi_{\psi,\phi}a\text{ if }\phi\le\psi,\cr
+&=0\text{ for other }\psi\in\Psi,\cr
+a'_{\psi}
+&=\pi_{\psi,\phi\theta}a\text{ if }\phi\theta\le\psi,\cr
+&=0\text{ for other }\psi\in\Psi,\cr
+d'
+&=\pi_{\phi\theta}a=\family{\psi}{\Psi}{a'_{\psi}}^{\ssbullet}.\cr
+}$$
+
+\noindent In this case, if $\phi\theta\le\psi$,
+
+\Centerline{$\phi\theta a'_{\psi}=\psi a$,
+\quad$\phi a_{\psi}=\psi a$}
+
+\noindent so $\theta a'_{\psi}=a_{\psi}$.   Consequently
+
+$$\eqalignno{\hat\theta d'
+&=\hat\theta(\family{\psi}{\Psi}{a'_{\psi}}^{\ssbullet})
+=\family{\psi}{\Psi}{\theta a'_{\psi}}^{\ssbullet}
+=\family{\psi}{\Psi}{a_{\psi}}^{\ssbullet}\cr
+\displaycause{because $\{\psi:\phi\theta\le\psi\}\in\Cal F$}
+&=d,\cr}$$
+
+\noindent and $d=\hat\theta\pi_{\phi\theta}a\in\hat\theta[\frak D]$.\ \Qed
+
+\medskip
+
+{\bf (g)} Since $\hat\theta[\frak C]$ is a closed subalgebra of $\frak C_0$
+(324Kb) in which $\hat\theta[\frak D]=\frak D$ is topologically dense
+(3A3Eb), $\hat\theta[\frak C]=\frak C$.   Setting
+$\tilde\theta=\hat\theta\restrp\frak C$, we see that
+$\tilde\theta:\frak C\to\frak C$ is a surjective measure-preserving Boolean
+homomorphism, so is a Boolean automorphism.   Since
+%$(\phi\theta)\sphat=\hat\phi\hat\theta$,
+%$(\phi\theta)\mskip-3mu\hat{\phantom{x}}=\hat\phi\hat\theta$,
+$\widehat{\phi\theta}=\hat\phi\hat\theta$,
+we have $(\phi\theta)\ssptilde=\tilde\phi\tilde\theta$ for all $\phi$,
+$\theta\in\Psi$.
+
+\medskip
+
+{\bf (h)} Finally, as observed at the beginning of (e),
+
+\Centerline{$\tilde\theta\pi
+=\tilde\theta\pi_{\iota}
+=\hat\theta\pi_{\iota}
+=\pi_{\iota}\theta
+=\pi\theta$}
+
+\noindent for every $\theta\in\Psi$.   So
+$(\frak C,\bar\lambda,\pi,\family{\theta}{\Phi}{\tilde\theta})$
+has the required properties.
+}%end of proof of 328J
+
+\exercises{\leader{328X}{Basic exercises (a)}
+%\spheader 328Xa
+Write out a version of the proof of 328J adapted to the
+case in which $\Phi=\{\phi\}$ is a singleton.   (This is an
+abstract version of a construction known as the `natural extension' of
+an \imp\ function;  see {\smc Petersen 83}, 1.3G.)
+%328J
+
+\spheader 328Xb Let $\nu_{\Bbb N}$ be the usual measure on
+$X=\{0,1\}^{\Bbb N}$, and $(\frak B_{\Bbb N},\bar\nu_{\Bbb N})$
+its measure algebra.
+(i) Find \imp\ functions $f$, $g:X\to X$ such that $gf=g$ but
+$f(x)\ne x$ for every $x\in X$.  \Hint{try
+$g(x)(n)=x(n+1)$.}   (ii) Find measure-preserving Boolean homomorphisms
+$\phi$, $\psi:\frak B_{\Bbb N}\to\frak B_{\Bbb N}$
+such that $\phi\psi=\psi$ but $\phi$ is
+not the identity.   (iii) In 328J, show that the hypothesis that members of
+$\Phi$ commute cannot be omitted.
+%328J
+
+%\leader{328Y}{Further exercises (a)}
+}%end of exercises
+
+\endnotes{
+\Notesheader{328} I have starred this section because it is far from the
+main line of argument of the volume, and most readers should be moving on
+to Maharam's theorem and the Lifting Theorem.   However the results here,
+while natural enough, have some features which demand a little attention,
+and it will be useful to be able to call on exact formulations of the
+ideas.
+
+The proof of 328H begins by taking an ultrafilter on $I$.   This ought to
+ring bells.   It should be clear from the statement of the proposition that
+$(\frak C,\bar\lambda,\familyiI{\pi_i})$ is determined up to isomorphism by
+the properties declared here.   It cannot therefore depend on
+which ultrafilter we pick, and there ought to be a construction not relying
+on this approach (and, we can hope, not demanding any
+application of the axiom of choice).   This is indeed the case, and
+in 392Yd below I will sketch a method which can be adapted to give such a
+proof.   Yet another proof of 328H is proposed in 418Yp in Volume 4.
+
+The same remarks apply to the proof of 328J.   In the result as stated, I
+have not imposed conditions on the structure
+$(\frak C,\bar\lambda,\pi,\family{\phi}{\Phi}{\tilde\phi})$
+sufficient to define it uniquely, but once again
+it is not necessary to employ an ultrafilter, and in fact the filter
+
+\Centerline{$\{A:A\subseteq\Psi$, there is some $\phi\in\Psi$
+such that $\psi\in A$ whenever $\phi\le\psi\}$}
+
+\noindent is already enough, if we take the trouble to move to the right
+subalgebra of $\frak A^{\Psi}$ before taking the quotient algebra.
+}%end of notes
+
+\discrpage

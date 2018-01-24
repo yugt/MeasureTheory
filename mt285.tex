@@ -1,0 +1,1538 @@
+\frfilename{mt285.tex}
+\versiondate{18.9.14}
+\copyrightdate{1994}
+
+\def\chaptername{Fourier analysis}
+\def\sectionname{Characteristic functions}
+
+\newsection{285}
+
+I come now to one of the most effective applications of Fourier
+transforms, the use of `characteristic functions' to analyse
+probability distributions.   It turns out not only that the Fourier
+transform of a probability distribution determines the distribution
+(285M) but that many of the things we want to know about a
+distribution are easily calculated from its
+transform\cmmnt{ (285G, 285Xi)}.    Even more strikingly, pointwise
+convergence of
+Fourier transforms corresponds (for sequences) to convergence for the
+vague topology in
+the space of distributions, so they provide a new and extremely powerful
+method for proving such results as the Central Limit Theorem and
+Poisson's theorem (285Q).
+
+As the applications of the ideas here mostly belong to probability
+theory, I return to probabilists' terminology, as in Chapter 27.
+There will nevertheless be many points at which it is appropriate to
+speak of integrals, and there will often be more than one measure in play;
+so I should say directly that an integral $\int f(x)dx$ will be with
+respect to Lebesgue measure (usually, but not always, one-dimensional),
+as in the rest of this chapter,
+while integrals with respect to other measures will be expressed
+in the forms $\int fd\nu$ or $\int f(x)\nu(dx)$.
+
+\leader{285A}{Definition (a)} Let $\nu$ be a Radon probability measure
+on $\BbbR^r$\cmmnt{ (256A)}.   Then the {\bf characteristic function}
+of $\nu$ is the function $\phi_{\nu}:\BbbR^r\to\Bbb C$ given by the
+formula
+
+\Centerline{$\phi_{\nu}(y)=\int e^{iy\dotproduct x}\nu(dx)$}
+
+\noindent for every $y\in\BbbR^r$, writing
+$y\dotproduct x=\eta_1\xi_1+\ldots+\eta_r\xi_r$ if
+$y=(\eta_1,\ldots,\eta_r)$ and $x=(\xi_1,\ldots,\xi_r)$.
+
+\header{285Ab}{\bf (b)} Let $X_1,\ldots,X_r$ be real-valued random
+variables on the same probability space.   The {\bf characteristic
+function} of $\pmb{X}=(X_1,\ldots,X_r)$ is the characteristic function
+$\phi_{\pmb{X}}=\phi_{\nu_{\pmb{X}}}$ of their joint probability
+distribution $\nu_{\pmb{X}}$ as defined in 271C.
+
+\cmmnt{
+\leader{285B}{Remarks (a)} By one of the ordinary accidents of history,
+the definitions of `characteristic function' and `Fourier
+transform' have evolved independently.   In 283Ba I remarked that the
+definition of the Fourier transform remains unfixed, and that the
+formulae
+
+\Centerline{$\varhatf(y)=\int_{-\infty}^{\infty}e^{iyx}f(x)dx$,}
+
+\Centerline{$\varcheckf(y)
+=\Bover1{2\pi}\int_{-\infty}^{\infty}e^{-iyx}f(x)dx$}
+
+\noindent are sometimes used.   On the other hand, I think that nearly
+all authors agree on the definition of the characteristic function as
+given above.   You may feel therefore that I should have followed their
+lead, and chosen the definition of Fourier transform which best matches
+the definition of characteristic function.   I did not do so largely
+because I wished to emphasise the symmetry between the Fourier transform
+and the inverse Fourier transform, and the correspondence between
+Fourier transforms and Fourier series.   The principal advantage of
+matching the definitions up would be to make the constants in such
+theorems as 283F, 285Xk the same, and would be balanced by the need
+to remember different constants for $\varhatf$ and $\varcheckf$ in such
+results as 283M.
+
+\header{285Bb}{\bf (b)} A secondary reason for not trying too hard to
+make the formulae of this section match directly those of \S\S283-284
+is that the $r$-dimensional case is at the heart of some of the most
+important
+applications of characteristic functions, so that it seems right to
+introduce it from the beginning;  and
+consequently the formulae of this section will necessarily have new
+features compared with those in the body of the work so far.
+}
+
+\leader{285C}{}\cmmnt{ Of course there is a direct way to describe the
+characteristic function of a family $(X_1,\ldots,X_r)$ of random
+variables, as follows.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $X_1,\ldots,X_r$ be real-valued random
+variables on the same probability space, and
+$\nu_{\pmb{X}}$ their joint distribution.   Then their characteristic
+function $\phi_{\nu_{\pmb{X}}}$ is given by
+
+\Centerline{$\phi_{\nu_{\pmb{X}}}(y)=\Expn(e^{iy\dotproduct \pmb{X}})
+=\Expn(e^{i\eta_1X_1}e^{i\eta_2X_2}\ldots e^{i\eta_rX_r})$}
+
+\noindent for every $y=(\eta_1,\ldots,\eta_r)\in\BbbR^r$.
+
+\proof{ Apply 271E to the functions $h_1$, $h_2:\Bbb R^r\to\Bbb R$
+defined by
+
+\Centerline{$h_1(x)=\cos(y\dotproduct x)$,\quad
+$h_2(y)=\sin(y\dotproduct x)$,}
+
+\noindent to see that
+
+$$\eqalign{\phi_{\nu_{\pmb{X}}}(y)
+&=\int h_1(x)\nu_{\pmb{X}}(dx) + i\int h_2(x)\nu_{\pmb{X}}(dx)\cr
+&=\Expn(h_1(\pmb{X})) + i\Expn(h_2(\pmb{X}))
+=\Expn(e^{iy\dotproduct \pmb{X}}).\cr}$$
+}%end of proof of 285C
+
+\vleader{72pt}{285D}{}\cmmnt{ I ought to spell out the correspondence
+between Fourier transforms, as defined in 283A, and characteristic
+functions.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $\nu$ be a Radon probability measure on
+$\Bbb R$.   Write
+
+\Centerline{$\varhat{\nu}(y)
+=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+e^{-iyx}\nu(dx)$}
+
+\noindent for every $y\in\Bbb R$, and $\phi_{\nu}$ for the
+characteristic function of $\nu$.
+
+
+(a) $\varhat{\nu}(y)=\Bover1{\sqrt{2\pi}}\phi_{\nu}(-y)$ for every
+$y\in\Bbb R$.
+
+(b) For any Lebesgue integrable complex-valued function $h$ defined
+almost everywhere in $\Bbb R$,
+
+\Centerline{$\int_{-\infty}^{\infty}\varhat{\nu}(y)h(y)dy
+=\int_{-\infty}^{\infty}\varhat{h}(x)\nu(dx)$.}
+
+(c) For any rapidly decreasing test function $h$ on $\Bbb R$\cmmnt{ (see
+\S284)},
+
+\Centerline{$\int_{-\infty}^{\infty}h(x)\nu(dx)
+=\int_{-\infty}^{\infty}\varcheck{h}(y)\varhat{\nu}(y)dy$.}
+
+(d) If $\nu$ is an indefinite-integral measure over Lebesgue measure,
+with Radon-Nikod\'ym derivative $f$, then $\varhat{\nu}$ is the Fourier
+transform of $f$.
+
+\proof{{\bf (a)} This is immediate from the definitions of
+$\phi_{\nu}$ and $\varhat{\nu}$.
+
+\medskip
+
+{\bf (b)} Because
+
+\Centerline{$\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+|h(y)|\nu(dx)dy=\int_{-\infty}^{\infty}|h(y)|dy<\infty$,}
+
+\noindent we may change the order of integration to see that
+
+$$\eqalign{\int_{-\infty}^{\infty}\varhat{\nu}(y)h(y)dy
+&=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+e^{-iyx}h(y)\nu(dx)dy\cr
+&=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}
+e^{-iyx}h(y)dy\,\nu(dx)
+=\int_{-\infty}^{\infty}\varhat{h}(x)\nu(dx).\cr}$$
+
+\medskip
+
+{\bf (c)} This follows immediately from (b), because $\varcheck{h}$ is
+integrable and $\varcheck{h}\varhat{\phantom{h}}=h$ (284C).
+
+\medskip
+
+{\bf (d)} The point is just that
+
+\Centerline{$\int h\,d\nu=\int h(x)f(x)dx$}
+
+\noindent for every bounded Borel measurable $h:\Bbb R\to\Bbb R$ (235K),
+and therefore for the functions $x\mapsto e^{-iyx}:\Bbb R\to\Bbb C$.
+Now
+
+\Centerline{$\varhat{\nu}(y)
+=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-iyx}\nu(dx)
+=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-iyx}f(x)dx
+=\varhatf(y)$}
+
+\noindent for every $y$.
+}% end of proof of 285D
+
+\leader{285E}{Lemma} Let $X$ be a normal random variable with expectation
+$a$ and variance $\sigma^2$, where $\sigma>0$.   Then the characteristic
+function of $X$ is given by the formula
+
+\Centerline{$\phi(y)=e^{iya}e^{-\sigma^2y^2/2}$.}
+
+\proof{ This is just 283N with the constants changed.   We have
+
+$$\eqalignno{\phi(y)
+&=\Expn(e^{iyX})
+=\Bover1{\sigma\sqrt{2\pi}}\int_{-\infty}^{\infty}
+  e^{iyx}e^{-(x-a)^2/2\sigma^2}dx\cr
+\noalign{\noindent (taking the density function for $X$ given in 274Ad,
+and applying 271Ic)}
+&=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+  e^{iy(\sigma t+a)}e^{-t^2/2}dt\cr
+\noalign{\noindent (substituting $x=\sigma t+a$)}
+&=e^{iya}\sqrt{2\pi}\varhat{\psi}_1(-y\sigma)\cr
+\noalign{\noindent (setting $\psi_1(x)=\bover1{\sqrt{2\pi}}e^{-x^2/2}$,
+as in 283N)}
+&=e^{iya}e^{-\sigma^2y^2/2}.\cr}$$
+}%end of proof of 285E
+
+\leader{285F}{}\cmmnt{ I now give results corresponding to parts of
+283C, with an
+extra refinement concerning independent random variables (285I).
+
+\medskip
+
+\noindent}{\bf Proposition} Let $\nu$ be a Radon probability measure on
+$\BbbR^r$, and $\phi$ its characteristic function.
+
+(a) $\phi(0)=1$.
+
+(b) $\phi:\BbbR^r\to\Bbb C$ is uniformly continuous.
+
+(c) $\phi(-y)=\overline{\phi(y)}$, $|\phi(y)|\le 1$ for every $y\in\Bbb
+R^r$.
+
+(d) If $r=1$ and $\int|x|\nu(dx)<\infty$, then $\phi'(y)$ exists and is
+equal to $i\int xe^{ixy}\nu(dx)$ for every $y\in\Bbb R$.
+
+(e) If $r=1$ and $\int x^2\nu(dx)<\infty$, then $\phi''(y)$ exists and
+is equal to $-\int x^2e^{ixy}\nu(dx)$ for every $y\in\Bbb R$.
+
+\proof{{\bf (a)} $\phi(0)=\int\chi\BbbR^r\,d\nu=\nu(\BbbR^r)=1$.
+
+\medskip
+
+{\bf (b)} Let $\epsilon>0$.   Let $M>0$ be such that
+
+\Centerline{$\nu\{x:\|x\|\ge M\}\le\epsilon$,}
+
+\noindent writing $\|x\|=\sqrt{x\dotproduct x}$ as usual.   Let
+$\delta>0$
+be such that $|e^{ia}-1|\le\epsilon$ whenever $|a|\le\delta$.   Now
+suppose that $y$, $y'\in\BbbR^r$ are such that $\|y-y'\|\le\delta/M$.
+Then whenever $\|x\|\le M$,
+
+\Centerline{$|e^{iy\dotproduct x}-e^{iy'\dotproduct x}|
+=|e^{iy'\dotproduct x}||e^{i(y-y')\dotproduct x}-1|
+=|e^{i(y-y')\dotproduct x}-1|
+\le\epsilon$}
+
+\noindent because
+
+\Centerline{$|(y-y')\dotproduct x|\le\|y-y'\|\|x\|\le\delta$.}
+
+\noindent Consequently, writing $B$ for $\{x:\|x\|\le M\}$,
+
+$$\eqalign{|\phi(y)-\phi(y')|
+&\le\int_B|e^{iy\dotproduct x}-e^{iy'\dotproduct x}|\nu(dx)
+\cr&\qquad\qquad
+  +\int_{\BbbR^r\setminus B}|e^{iy\dotproduct x}|\nu(dx)
+  +\int_{\BbbR^r\setminus B}|e^{iy'\dotproduct x}|\nu(dx)\cr
+&\le\epsilon+\epsilon+\epsilon
+=3\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary, $\phi$ is uniformly continuous.
+
+
+\medskip
+
+{\bf (c)} This is elementary;
+
+\Centerline{$\phi(-y)=\int e^{-iy\dotproduct x}\nu(dx)
+=\overline{\intop e^{iy\dotproduct x}\nu(dx)}=\overline{\phi(y)}$,}
+
+\Centerline{$|\phi(y)|=|\int e^{iy\dotproduct x}\nu(dx)|
+\le\int|e^{iy\dotproduct x}|\nu(dx)
+=1$.}
+
+\medskip
+
+{\bf (d)} The point is that $|\pd{}{y}e^{iyx}|=|x|$ for every $x$,
+$y\in\Bbb R$.   So by 123D (applied, strictly speaking, to the real and
+imaginary parts of the function)
+
+\Centerline{$\phi'(y)
+=\Bover{d}{dy}\int e^{iyx}\nu(dx)
+=\int\Pd{}{y}e^{iyx}\nu(dx)
+=\int ixe^{iyx}\nu(dx)$.}
+
+\medskip
+
+{\bf (e)} Since we now have $|\pd{}{y}xe^{iyx}|=x^2$ for every $x$, $y$,
+we can repeat the argument to get
+
+\Centerline{$\phi''(y)
+=i\Bover{d}{dy}
+     \int xe^{iyx}\nu(dx)
+=i\int
+     \Pd{}{y}xe^{iyx}\nu(dx)
+=-\int
+     x^2e^{iyx}\nu(dx)$.}
+}%end of proof of 285F
+
+\vleader{48pt}{285G}{Corollary} (a) Let $X$ be a real-valued random
+variable
+with finite expectation, and $\phi$ its characteristic function.   Then
+$\phi'(0)=i\Expn(X)$.
+
+(b) Let $X$ be a real-valued random variable with
+finite variance, and $\phi$ its characteristic function.   Then
+$\phi''(0)=-\Expn(X^2)$.
+
+\proof{ We have only to match $X$ to its distribution
+$\nu$, and say that
+
+\Centerline{`$X$ has finite expectation'}
+
+\noindent corresponds to
+
+\Centerline{`$\int |x|\nu(dx)=\Expn(|X|)<\infty$',}
+
+\noindent so that
+
+\Centerline{$\phi'(0)=i\int x\,\nu(dx)=i\Expn(X)$,}
+
+\noindent and that
+
+\Centerline{`$X$ has finite variance'}
+
+\noindent corresponds to
+
+\Centerline{`$\int x^2\nu(dx)=\Expn(X^2)<\infty$',}
+
+\noindent so that
+
+\Centerline{$\phi''(0)=-\int x^2\,\nu(dx)=-\Expn(X^2)$,}
+
+\noindent as in 271E.
+}%end of proof of 285G
+
+\cmmnt{
+\leader{285H}{Remark} Observe that there is no result
+corresponding to 283Cg (`$\lim_{|y|\to\infty}\varhatf(y)
+\ifdim\pagewidth=390pt\penalty-100\fi
+=0$').   If $\nu$ is the Dirac measure on $\Bbb R$ concentrated at $0$,
+that is, the distribution of a random variable
+which is zero almost everywhere, then $\phi(y)=1$ for every $y$.
+}
+
+\leader{285I}{Proposition} Let $X_1,\ldots,X_n$ be independent
+real-valued random variables, with characteristic functions
+$\phi_{1},\ldots,\phi_{n}$.   Let $\phi$ be the characteristic function
+of their sum $X=X_1+\ldots+X_n$.   Then
+
+\Centerline{$\phi(y)=\prod_{j=1}^n\phi_j(y)$}
+
+\noindent for every $y\in\Bbb R$.
+
+\proof{ Let $y\in\Bbb R$.   By 272E, the variables
+
+\Centerline{$Y_j=e^{iyX_j}$}
+
+\noindent are independent, so by 272R
+
+\Centerline{$\phi(y)=\Expn(e^{iyX})=\Expn(e^{iy(X_1+\ldots+X_n)})
+=\Expn(\prod_{j=1}^nY_j)=\prod_{j=1}^n\Expn(Y_j)
+=\prod_{j=1}^n\phi_j(y)$,}
+
+\noindent as required.
+}%end of proof of 285I
+
+\cmmnt{
+\medskip
+
+\noindent{\bf Remark} See also 285R below.
+}
+
+\leader{285J}{}\cmmnt{ There is an inversion theorem for
+characteristic
+functions, corresponding to 283F;  I give it in 285Xk, with an
+$r$-dimensional version in 285Yb.   However, this does not seem to be as
+useful as the following group of results.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $\nu$ be a Radon probability measure on
+$\Bbb R^r$, and $\phi$ its characteristic function.
+Then for $1\le j\le r$ and $a>0$,
+
+\Centerline{$\nu\{x:|\xi_j|\ge a\}
+\le 7a\int_0^{1/a}(1-\Real\phi(te_j))dt$,}
+
+\noindent where $e_j\in\BbbR^r$ is the $j$th unit vector.
+
+\wheader{285J}{0}{0}{0}{84pt}
+
+\proof{ We have
+
+$$\eqalignno{7a\int_0^{1/a}(1-\Real\phi(te_j))dt
+&=7a\int_0^{1/a}
+   \bigl(1-\Real\int_{\Bbb R^r}e^{it\xi_j}\nu(dx)\bigr)dt\cr
+&=7a\int_0^{1/a}\int_{\Bbb R^r}1-\cos(t\xi_j)\nu(dx)dt\cr
+&=7a\int_{\Bbb R^r}\int_0^{1/a}1-\cos(t\xi_j)dt\,\nu(dx)\cr
+\displaycause{because $(x,t)\mapsto 1-\cos(t\xi_j)$ is bounded and
+$\nu\BbbR^r\cdot\Bover1a$ is finite}
+&=7a\int_{\Bbb R^r}
+  \bigl(\bover1a-\bover1{\xi_j}\sin\bover{\xi_j}a\bigr)\nu(dx)\cr
+&\ge7a\int_{|\xi_j|\ge a}
+\bigl(\bover1a-\bover1{\xi_j}\sin\bover{\xi_j}a\bigr)\nu(dx)\cr
+\noalign{\noindent (because $\Bover1{\xi}\sin\Bover{\xi}{a}\le\Bover1a$
+for every $\xi\ne 0$)}
+&\ge\nu\{x:|\xi_j|\ge a\},\cr}$$
+
+\noindent because
+
+\Centerline{$\Bover{\sin\eta}{\eta}\le\Bover{\sin 1}{1}\le\Bover67$ if
+$\eta\ge 1$,}
+
+\noindent so
+
+\Centerline{$a(\Bover1a-\Bover1{\xi_j}\sin\Bover{\xi_j}a)\ge\Bover17$}
+
+\noindent if $|\xi_j|\ge a$.
+}%end of proof of 285J
+
+\cmmnt{
+\leader{285K}{Characteristic functions and the vague topology}
+The time has come to return to ideas mentioned briefly in 274L.   Fix
+$r\ge 1$ and let $P$ be the set of all Radon probability measures on
+$\BbbR^r$.   For any bounded continuous function $h:\BbbR^r\to\Bbb R$,
+define $\rho_h:P\times P\to\Bbb R$ by setting
+
+\Centerline{$\rho_h(\nu,\nuprime)=|\int h\,d\nu-\int h\,d\nuprime|$}
+
+\noindent for $\nu$, $\nuprime\in P$.   Then the vague topology on $P$ is
+the topology generated by the pseudometrics $\rho_h$ (274Ld).
+}
+
+\leader{285L}{Theorem} Let $\nu$, $\sequencen{\nu_n}$ be Radon
+probability measures on $\BbbR^r$, with characteristic functions
+$\phi$, $\sequencen{\phi_n}$.   Then the following are equiveridical:
+
+(i) $\nu=\lim_{n\to\infty}\nu_n$ for the vague topology;
+
+(ii) $\int h\,d\nu=\lim_{n\to\infty}\int h\,d\nu_n$ for every bounded
+continuous $h:\BbbR^r\to\Bbb R$;
+
+(iii) $\lim_{n\to\infty}\phi_n(y)=\phi(y)$ for every $y\in\BbbR^r$.
+
+\proof{{\bf (a)} The equivalence of (i) and (ii) is virtually
+the definition of the vague topology;  we have
+
+$$\eqalignno{\lim_{n\to\infty}
+&\nu_n=\nu\text{ for the vague topology}\cr
+&\iff\,\lim_{n\to\infty}\rho_h(\nu_n,\nu)=0
+\text{ for every bounded continuous }h\cr
+\noalign{\noindent (2A3Mc)}
+&\iff\,\lim_{n\to\infty}|\int h\,d\nu_n-\int h\,d\nu|=0
+   \text{ for every bounded continuous }h.\cr}$$
+
+\medskip
+
+{\bf (b)} Next, (ii) obviously implies (iii), because
+
+\Centerline{$\Real\phi(y)
+=\int h_y\,d\nu
+=\lim_{n\to\infty}h_y\,d\nu_n
+=\lim_{n\to\infty}\Real\phi_n(y)$,}
+
+\noindent setting $h_y(x)=\cos(x\dotproduct y)$ for each $x$, and
+similarly
+
+\Centerline{$\Imag\phi(y)=\lim_{n\to\infty}\Imag\phi_n(y)$}
+
+\noindent for every $y\in\BbbR^r$.
+
+\medskip
+
+{\bf (c)} So we are left to prove that (iii)$\Rightarrow$(ii).   I start
+by showing that, given $\epsilon>0$, there is a closed bounded set $K$
+such that
+
+\Centerline{$\nu_n(\BbbR^r\setminus K)\le\epsilon$ for every
+$n\in\Bbb N$.}
+
+\noindent\Prf\ We know that $\phi(0)=1$ and that $\phi$ is continuous at
+$0$ (285Fb).   Let $a>0$ be so large that whenever $j\le r$ and
+$|t|\le 1/a$ we have
+
+\Centerline{$1-\Real\phi(te_j)\le\Bover{\epsilon}{14r}$,}
+
+\noindent writing $e_j$ for the $j$th unit vector, as in 285J.   Then
+
+\Centerline{$7a\int_0^{1/a}
+(1-\Real\phi(te_j))dt\le\Bover{\epsilon}{2r}$}
+
+\noindent for each $j\le r$.   By Lebesgue's Dominated Convergence
+Theorem (since of course the functions $t\mapsto 1-\Real\phi_n(te_j)$
+are uniformly bounded on $[0,\bover1a]$), there is an $n_0\in\Bbb N$
+such that
+
+\Centerline{$7a\int_0^{1/a}
+(1-\Real\phi_n(te_j))dt\le\Bover{\epsilon}{r}$}
+
+\noindent for every $j\le r$ and $n\ge n_0$.   But 285J tells us that now
+
+\Centerline{$\nu_n\{x:|\xi_j|\ge a\}\le\Bover{\epsilon}{r}$}
+
+\noindent for every $j\le r$, $n\ge n_0$.   On the other hand, there is
+surely a $b\ge a$ such that
+
+\Centerline{$\nu_n\{x:|\xi_j|\ge b\}\le\Bover{\epsilon}{r}$}
+
+\noindent for every $j\le r$, $n<n_0$.   So, setting
+$K=\{x:|\xi_j|\le b\text{ for every }j\le r\}$,
+
+\Centerline{$\nu_n(\BbbR^r\setminus K)\le\epsilon$}
+
+\noindent for every $n\in\Bbb N$, as required.  \Qed
+
+\medskip
+
+{\bf (d)} Now take any bounded continuous $h:\BbbR^r\to\Bbb R$ and
+$\epsilon>0$.   Set $M=1+\sup_{x\in\BbbR^r}|h(x)|$, and let $K$ be a
+bounded closed set such that
+
+\Centerline{$\nu_n(\BbbR^r\setminus K)\le\Bover{\epsilon}M$ for every
+$n\in\Bbb N$, \quad$\nu(\BbbR^r\setminus K)\le\Bover{\epsilon}M$,}
+
+\noindent using (b) just above.   By the
+Stone-Weierstrass theorem (281K) there are $y_0,\ldots,y_m\in\Bbb Q^r$
+and $c_0,\ldots,c_m\in\Bbb C$ such that
+
+\Centerline{$|h(x)-g(x)|\le\epsilon$ for every $x\in K$,}
+
+\Centerline{$|g(x)|\le M$ for every $x\in\BbbR^r$,}
+
+\noindent writing $g(x)=\sum_{k=0}^mc_ke^{iy_k\dotproduct x}$ for
+$x\in\BbbR^r$.   Now
+
+\Centerline{$\lim_{n\to\infty}\int g\,d\nu_n
+=\lim_{n\to\infty}\sum_{k=0}^mc_k\phi_n(y_k)
+=\sum_{k=0}^mc_k\phi(y_k)
+=\int g\,d\nu$.}
+
+\noindent On the other hand, for every $n\in\Bbb N$,
+
+\Centerline{$|\int g\,d\nu_n-\int h\,d\nu_n|
+\le\int_K|g-h|d\nu_n+2M\nu_n(\Bbb R\setminus K)
+\le 3\epsilon$,}
+
+\noindent and similarly $|\int g\,d\nu-\int h\,d\nu|\le 3\epsilon$.
+Consequently
+
+\Centerline{$\limsup_{n\to\infty}|\int h\,d\nu_n-\int h\,d\nu|\le
+6\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary,
+
+\Centerline{$\lim_{n\to\infty}\int h\,d\nu_n=\int h\,d\nu$,}
+
+\noindent and (ii) is true.
+}%end of proof of 285L
+
+
+\vleader{72pt}{285M}{Corollary} (a) Let $\nu$, $\nuprime$ be two Radon
+probability
+measures on $\BbbR^r$ with the same characteristic functions.   Then
+they are equal.
+
+(b) Let $(X_1,\ldots,X_r)$ and $(Y_1,\ldots,Y_r)$ be two families of
+real-valued random variables.   If
+
+\Centerline{$\Expn(e^{i\eta_1X_1+\ldots+i\eta_rX_r})
+=\Expn(e^{i\eta_1Y_1+\ldots+i\eta_rY_r})$}
+
+\noindent for all $\eta_1,\ldots,\eta_r\in\Bbb R$, then
+$(X_1,\ldots,X_r)$ has the same joint distribution as
+$(Y_1,\ldots,Y_r)$.
+
+\proof{{\bf (a)} Applying 285L with $\nu_n=\nuprime$ for every $n$,
+we see that $\int h\,d\nuprime=\int h\,d\nu$ for every bounded continuous
+$h:\BbbR^r\to\Bbb R$.   By 256D(iv), $\nu=\nuprime$.
+
+\medskip
+
+{\bf (b)} Apply (a) with $\nu$, $\nuprime$ the two joint distributions.
+}%end of proof of 285M
+
+\cmmnt{
+\leader{285N}{Remarks} Probably the most important application of this
+theorem is to the standard proof of the Central Limit Theorem.   I
+sketch the ideas in 285Xq and 285Yl-285Yo;  details may be found in most
+serious probability texts;  two on my shelf are {\smc Shiryayev 84},
+\S III.4, and {\smc Feller 66}, \S XV.6.   However, to get the full
+strength of Lindeberg's version of the Central Limit Theorem we have to
+work quite hard, and I therefore propose to illustrate the method with a
+version of Poisson's theorem (285Q) instead.   I begin with two lemmas
+which are very frequently used in results of this kind.
+}
+
+\leader{285O}{Lemma} Let
+$c_0,\ldots,c_n,d_0,\ldots,d_n$ be complex numbers of
+modulus at most $1$.   Then
+
+\Centerline{$|\prod_{k=0}^nc_k-\prod_{k=0}^nd_k|
+\le\sum_{k=0}^n|c_k-d_k|$.}
+
+\proof{ Induce on $n$.   The case $n=0$ is trivial.   For
+the case $n=1$ we have
+
+$$\eqalign{|c_0c_1-d_0d_1|
+&=|c_0(c_1-d_1)+(c_0-d_0)d_1|\cr
+&\le|c_0||c_1-d_1|+|c_0-d_0||d_1|
+\le|c_1-d_1|+|c_0-d_0|,\cr}$$
+
+\noindent which is what we need.   For the inductive step to $n+1$, we
+have
+
+$$\eqalignno{|\prod_{k=0}^{n+1}c_k-\prod_{k=0}^{n+1}d_k|
+&\le|\prod_{k=0}^nc_k-\prod_{k=0}^nd_k|
++|c_{n+1}-d_{n+1}|\cr
+\noalign{\noindent (by the case just done, because
+$c_{n+1}$, $d_{n+1}$, $\prod_{k=0}^nc_k$ and $\prod_{k=0}^nd_k$ all have
+modulus at most $1$)}
+&\le\sum_{k=0}^n|c_k-d_k|+|c_{n+1}-d_{n+1}|\cr
+\noalign{\noindent (by the inductive hypothesis)}
+&=\sum_{k=0}^{n+1}|c_k-d_k|,\cr}$$
+
+\noindent so the induction continues.
+}%end of proof of 285O
+
+\leader{285P}{Lemma} Suppose that $M\ge 0$ and $\epsilon>0$.
+Then there are
+$\eta>0$ and $y_0,\ldots,y_n\in\Bbb R$ such that whenever $X$, $Z$ are
+two real-valued random variables with $\Expn(|X|)\le M$,
+$\Expn(|Z|)\le M$ and
+$|\phi_X(y_j)-\phi_Z(y_j)|\le\eta$ for every $j\le n$, then
+$F_X(a)\le F_Z(a+\epsilon)+\epsilon$ for every $a\in\Bbb R$, where I
+write
+$\phi_X$ for the characteristic function of $X$ and $F_X$ for the
+distribution function of $X$.
+
+\proof{ The case $M=0$ is trivial, as then both $X$ and $Z$ are zero a.e.,
+so I will suppose henceforth that $M>0$.
+Set $\delta=\Bover{\epsilon}7>0$, $b=\Bover{M}{\delta}$.
+
+\medskip
+
+{\bf (a)} Define $h_0:\Bbb R\to[0,1]$ by setting
+$h_0(x)=\med(0,1-\Bover{x}{\delta},1)$ for $x\in\Bbb R$.
+Then $h_0$ is continuous.   Let $m=\lfloor\bover{b}{\delta}\rfloor$ 
+be the integer part of $\bover{b}{\delta}$, and for $-m\le k\le m+1$ set
+$h_k(x)=h_0(x-k\delta)$.
+
+By the Stone-Weierstrass theorem (281K again), there are
+$y_0,\ldots,y_n\in\Bbb R$ and $c_0,\ldots,c_n\in\Bbb C$ such that,
+writing $g_0(x)=\sum_{j=0}^nc_je^{iy_jx}$,
+
+\Centerline{$|h_0(x)-g_0(x)|\le\delta$
+  for every $x\in[-b-(m+1)\delta,b+m\delta]$,}
+
+\Centerline{$|g_0(x)|\le 1$ for every $x\in\Bbb R$.}
+
+\noindent For $-m\le k\le m+1$, set
+
+\Centerline{$g_k(x)=g_0(x-k\delta)
+=\sum_{j=0}^nc_je^{-iy_jk\delta}e^{iy_jx}$.}
+
+\noindent Set $\eta=\delta/(1+\sum_{j=0}^n|c_j|)>0$.
+
+\medskip
+
+{\bf (b)} Now suppose that $X$, $Z$ are random variables such that
+$\Expn(|X|)\le M$, $\Expn(|Z|)\le M$ and
+$|\phi_X(y_j)-\phi_Z(y_j)|\le\eta$ for every $j\le n$.   Then for any
+$k$ we have
+
+\Centerline{$\Expn(g_k(X))
+=\Expn(\sum_{j=0}^nc_je^{-iy_jk\delta}e^{iy_jX})
+=\sum_{j=0}^nc_je^{-iy_jk\delta}\phi_X(y_j)$,}
+
+\noindent and similarly
+
+\Centerline{$\Expn(g_k(Z))
+=\sum_{j=0}^nc_je^{-iy_jk\delta}\phi_Z(y_j)$,}
+
+\noindent so
+
+\Centerline{$|\Expn(g_k(X))-\Expn(g_k(Z))|
+\le\sum_{j=0}^n|c_j||\phi_X(y_j)-\phi_Z(y_j)|
+\le\sum_{j=0}^n|c_j|\eta\le\delta$.}
+
+\noindent Next,
+
+\Centerline{$|h_k(x)-g_k(x)|\le\delta$ for every
+$x\in[-b-(m+1)\delta+k\delta,b+m\delta+k\delta]\supseteq[-b,b]$,}
+
+\Centerline{$|h_k(x)-g_k(x)|\le 2$ for every $x$,}
+
+\Centerline{$\Pr(|X|\ge b)\le\Bover{M}{b}=\delta$,}
+
+\noindent so $\Expn(|h_k(X)-g_k(X)|)\le 3\delta$;  and similarly
+$\Expn(|h_k(Z)-g_k(Z)|)\le 3\delta$.   Putting these together,
+
+\Centerline{$|\Expn(h_k(X))-\Expn(h_k(Z))|\le 7\delta=\epsilon$}
+
+\noindent whenever $-m\le k\le m+1$.
+
+\medskip
+
+{\bf (c)} Now suppose that $-b\le a\le b$.   Then there is a $k$ such
+that $-m\le k\le m+1$ and $a\le k\delta\le a+\delta$.   Since
+
+\Centerline{$\chi\ocint{-\infty,a}
+\le\chi\ocint{-\infty,k\delta}
+\le h_k
+\le\chi\ocint{-\infty,(k+1)\delta}
+\le\chi\ocint{-\infty,a+2\delta}$,}
+
+\noindent we must have
+
+\Centerline{$\Pr(X\le a)\le\Expn(h_k(X))$,}
+
+\Centerline{$\Expn(h_{k}(Z))\le\Pr(Z\le a+2\delta)\le\Pr(Z\le
+a+\epsilon)$.}
+
+\noindent But this means that
+
+\Centerline{$\Pr(X\le a)\le\Expn(h_k(X))\le\Expn(h_k(Z))+\epsilon
+\le\Pr(Z\le a+\epsilon)+\epsilon$}
+
+\noindent whenever $a\in[-b,b]$.
+
+\medskip
+
+{\bf (d)} As for the cases $a\ge b$, $a\le -b$,
+we surely have
+
+\Centerline{$b(1-F_Z(b))=b\Pr(Z>b)\le\Expn(|Z|)\le M$,}
+
+\noindent so if $a\ge b$ then
+
+\Centerline{$F_X(a)\le 1\le F_Z(a)+1-F_Z(b)\le F_Z(a)+\Bover{M}{b}
+=F_Z(a)+\delta\le F_Z(a+\epsilon)+\epsilon$.}
+
+\noindent Similarly,
+
+\Centerline{$bF_X(-b)\le \Expn(|X|)\le M$,}
+
+\noindent so
+
+\Centerline{$F_X(a)\le\delta\le F_Z(a+\epsilon)+\epsilon$}
+
+\noindent  for every $a\le -b$.
+This completes the proof.
+}%end of proof of 285P
+
+\vleader{72pt}{285Q}{Law of Rare Events:  Theorem} For any $M\ge 0$ and
+$\epsilon>0$ there is a $\delta>0$
+such that whenever $X_0,\ldots,X_n$ are independent $\{0,1\}$-valued
+random variables with $\Pr(X_k=1)=p_k\le\delta$ for every $k\le n$ and
+$\sum_{k=0}^np_k=\lambda\le M$, and $X=X_0+\ldots+X_n$, then
+
+\Centerline{$|\Pr(X=m)-\Bover{\lambda^m}{m!}e^{-\lambda}|\le\epsilon$}
+
+\noindent for every $m\in\Bbb N$.
+
+\proof{{\bf (a)} We should begin by calculating some
+characteristic functions.   First, the characteristic function $\phi_k$
+of $X_k$ will be given by
+
+\Centerline{$\phi_k(y)=(1-p_k)e^{iy0}+p_ke^{iy1}=1+p_k(e^{iy}-1)$.}
+
+\noindent Next, if $Z$ is a Poisson random variable with parameter
+$\lambda$ (that is, if $\Pr(Z=m)=\lambda^me^{-\lambda}/m!$ for every
+$m\in\Bbb N$;  all you need to know at this point about the Poisson
+distribution is
+that $\sum_{m=0}^{\infty}\lambda^me^{-\lambda}/m!=1$), then its
+characteristic function $\phi_Z$ is given by
+
+\Centerline{$\phi_Z(y)
+=\sum_{m=0}^{\infty}\Bover{\lambda^m}{m!}e^{-\lambda}e^{iym}
+=e^{-\lambda}\sum_{m=0}^{\infty}\Bover{(\lambda e^{iy})^m}{m!}
+=e^{-\lambda}e^{\lambda e^{iy}}
+=e^{\lambda(e^{iy}-1)}$.}
+
+\medskip
+
+{\bf (b)} Before getting down to $\delta$'s and $\eta$'s, I show how to
+estimate $\phi_X(y)-\phi_Z(y)$.   We know that
+
+\Centerline{$\phi_X(y)=\prod_{k=0}^n\phi_k(y)$}
+
+\noindent (using 285I), while
+
+\Centerline{$\phi_Z(y)=\prod_{k=0}^ne^{p_k(e^{iy}-1)}$.}
+
+\noindent Because $\phi_k(y)$, $e^{p_k(e^{iy}-1)}$ all have modulus at
+most $1$ (we have
+
+\Centerline{$|e^{p_k(e^{iy}-1)}|=e^{-p_k(1-\cos y)}\le 1$,)}
+
+\noindent 285O tells us that
+
+\Centerline{$|\phi_X(y)-\phi_Z(y)|
+\le\sum_{k=0}^n|\phi_k(y)-e^{p_k(e^{iy}-1)}|
+=\sum_{k=0}^n|e^{p_k(e^{iy}-1)}-1-p_k(e^{iy}-1)|$.}
+
+\medskip
+
+{\bf (c)} So we have a little bit of analysis to do.   To estimate
+$|e^z-1-z|$ where $\Real z\le 0$, consider the function
+
+\Centerline{$g(t)=\Real(c(e^{tz}-1-tz))$}
+
+\noindent where $|c|=1$.   We have $g(0)=g'(0)=0$ and
+
+\Centerline{$|g''(t)|=|\Real(c(z^2e^{tz}))|\le|c||z^2||e^{tz}|\le|z|^2$}
+
+\noindent for every $t\ge 0$, so that
+
+\Centerline{$|g(1)|\le\Bover12|z|^2$}
+
+\noindent by the (real-valued) Taylor theorem with remainder, or
+otherwise.   As $c$ is arbitrary,
+
+\Centerline{$|e^{z}-1-z|\le\Bover12|z|^2$}
+
+\noindent whenever $\Real z\le 0$.   In particular,
+
+\Centerline{$|e^{p_k(e^{iy}-1)}-1-p_k(e^{iy}-1)|
+\le\Bover12p_k^2|e^{iy}-1|^2\le 2p_k^2$}
+
+\noindent for each $k$, and
+
+\Centerline{$|\phi_X(y)-\phi_Z(y)|
+\le\sum_{k=0}^n|e^{p_k(e^{iy}-1)}-1-p_k(e^{iy}-1)|
+\le 2\sum_{k=0}^np_k^2$}
+
+\noindent for each $y\in\Bbb R$.
+
+\medskip
+
+{\bf (d)} Now for the detailed estimates.   Given $M\ge 0$ and
+$\epsilon>0$, let $\eta>0$ and $y_0,\ldots,y_l\in\Bbb R$ be such that
+
+\Centerline{$\Pr(X\le a)\le\Pr(Z\le a+\Bover12)+\Bover{\epsilon}2$}
+
+\noindent whenever $X$, $Z$ are real-valued random variables,
+$\Expn(|X|)\le M$, $\Expn(|Z|)\le M$ and
+$|\phi_X(y_j)-\phi_X(y_j)|\le\eta$ for every $j\le l$ (285P).   Take
+$\delta=\bover{\eta}{2M+1}$
+and suppose that $X_0,\ldots,X_n$ are independent
+$\{0,1\}$-valued random variables with $\Pr(X_k=1)=p_k\le\delta$ for
+every $k\le n$, where $\lambda=\sum_{k=0}^np_k$ is less than or equal to
+$M$.   Set $X=X_0+\ldots+X_n$
+and let $Z$ be a Poisson random variable with parameter $\lambda$;  then
+by the arguments of (a)-(c),
+
+\Centerline{$|\phi_X(y)-\phi_Z(y)|\le 2\sum_{k=0}^np_k^2
+\le 2\delta\sum_{k=0}^np_k=2\delta\lambda\le\eta$}
+
+\noindent for every $y\in\Bbb R$.   Also
+
+\Centerline{$\Expn(|X|)=\Expn(X)=\sum_{k=0}^np_k=\lambda\le M$,}
+
+\Centerline{$\Expn(|Z|)=\Expn(Z)
+=\sum_{m=0}^{\infty}m\Bover{\lambda^m}{m!}e^{-\lambda}
+=e^{-\lambda}\sum_{m=1}^{\infty}\Bover{\lambda^m}{(m-1)!}
+=e^{-\lambda}\sum_{m=0}^{\infty}\Bover{\lambda^{m+1}}{m!}
+=\lambda\le M$.}
+
+\noindent So
+
+\Centerline{$\Pr(X\le a)\le\Pr(Z\le a+\Bover12)+\Bover{\epsilon}2$,}
+
+\Centerline{$\Pr(Z\le a)\le\Pr(X\le a+\Bover12)+\Bover{\epsilon}2$}
+
+\noindent for every $a$.   But as both $X$ and $Z$ take all their values
+in $\Bbb N$,
+
+\Centerline{$|\Pr(X\le m)-\Pr(Z\le m)|\le\Bover{\epsilon}2$}
+
+\noindent for every $m\in\Bbb N$, and
+
+\Centerline{$|\Pr(X=m)-\Bover{\lambda^m}{m!}e^{-\lambda}|
+=|\Pr(X=m)-\Pr(Z=m)|
+\le\epsilon$}
+
+\noindent for every $m\in\Bbb N$, as required.
+}%end of proof of 285Q
+
+\leader{285R}{Convolutions}\dvro{ If}{ Recall from 257A that if}
+$\nu$, $\tilde\nu$ are Radon probability measures on $\BbbR^r$ then
+%\tilde\nu  not  \nuprime
+%because we have  \tilde f  for its R-N deriviative
+\dvro{$\phi_{\nu*\tilde\nu}(y)
+=\phi_{\nu}(y)\phi_{\tilde\nu}(y)$
+for every $y\in\BbbR^r$.}{they have a convolution
+$\nu*\tilde\nu$ defined by writing
+
+\Centerline{$(\nu*\tilde\nu)(E)=(\nu\times\tilde\nu)\{(x,y):x+y\in E\}$}
+
+\noindent for every Borel set $E\subseteq\BbbR^r$, which is also a
+Radon probability measure.   We can readily compute the characteristic
+function $\phi_{\nu*\tilde\nu}$ from 257B:  we have
+
+$$\eqalign{\phi_{\nu*\tilde\nu}(y)
+&=\int e^{iy\dotproduct x}(\nu*\tilde\nu)(dx)
+=\int e^{iy\dotproduct (x+x')}\nu(dx)\tilde\nu(dx')\cr
+&=\int e^{iy\dotproduct x}e^{iy\dotproduct x'}\nu(dx)\tilde\nu(dx')
+=\int e^{iy\dotproduct x}\nu(dx)
+  \int e^{iy\dotproduct x'}\tilde\nu(dx')
+=\phi_{\nu}(y)\phi_{\tilde\nu}(y)}$$
+
+\noindent for every $y\in\BbbR^r$.
+(Thus convolution of measures corresponds to pointwise
+multiplication of characteristic functions, just as convolution of
+functions corresponds to pointwise multiplication of Fourier
+transforms.)   Recalling that the sum of independent random variables
+corresponds to convolution of their distributions (272T), this
+gives another way of looking at 285I.   Remember also that if $\nu$,
+$\tilde\nu$ have Radon-Nikod\'ym derivatives $f$, $\tilde f$ with
+respect to Lebesgue
+measure then $f*\tilde f$ is a Radon-Nikod\'ym derivative of
+$\nu*\tilde\nu$ (257F).
+}%end of dvro
+
+\leader{285S}{The vague topology and pointwise
+convergence of characteristic functions}\dvro{ Write}{ In 285L we saw
+that a sequence
+$\sequencen{\nu_n}$ of Radon probability measures on $\BbbR^r$
+converges in the vague topology to a Radon probability measure $\nu$ if
+and only if
+
+\Centerline{$\lim_{n\to\infty}\int e^{iy\dotproduct
+x}\nu_n(dx)=\int
+e^{iy\dotproduct x}\nu(dx)$}
+
+\noindent for every $y\in\BbbR^r$;  that is, iff
+
+\Centerline{$\lim_{n\to\infty}\rho'_y(\nu_n,\nu)=0$ for every $y\in\Bbb
+R^r$,}
+
+\noindent writing}
+
+\Centerline{$\rho'_y(\nu,\nuprime)=|\int e^{iy\dotproduct x}\nu(dx)
+-\int e^{iy\dotproduct x}\nuprime(dx)|$}
+
+\noindent for Radon probability measures $\nu$, $\nuprime$ on $\BbbR^r$ and
+$y\in\BbbR^r$.   \dvro{Write}{It is natural to ask whether the
+pseudometrics
+$\rho'_y$ actually define the vague topology.   Writing} $\frak T$ for
+the vague topology and $\frak S$ for the topology defined by
+$\{\rho'_y:y\in\BbbR^r\}$\cmmnt{, we surely have
+$\frak S\subseteq\frak T$,
+just because every $\rho'_y$ is one of the pseudometrics used in the
+definition of $\frak T$.   Also we know that $\frak S$ and $\frak T$
+give the same convergent sequences, and incidentally that $\frak T$ is
+metrizable (see 285Xt).   But all this does not quite amount to saying
+that the two topologies are the same, and indeed they are not, as the
+next result shows.}%end of comment
+
+\leader{285T}{Proposition} Suppose that $y_0,\ldots,y_n\in\Bbb R$
+and $\eta>0$.   Then there are infinitely many $m\in\Bbb N$ such that
+$|1-e^{iy_km}|\le\eta$ for every $k\le n$.
+
+\proof{ Let $\eta_1,\ldots,\eta_r\in\Bbb R$ be such that
+$1=\eta_0,\eta_1,\ldots,\eta_r$ are linearly independent over $\Bbb Q$
+and every $y_k/2\pi$ is a linear combination of the $\eta_j$ over
+$\Bbb Q$;  say $y_k=2\pi\sum_{j=0}^rq_{kj}\eta_j$ where every
+$q_{kj}\in\Bbb Q$.   Express the $q_{kj}$ as $p_{kj}/p$ where each
+$p_{kj}\in\Bbb Z$
+and $p\in\Bbb N\setminus\{0\}$.   Set
+$M=\max_{k\le n}\sum_{j=0}^r|p_{kj}|$.
+
+Take any $m_0\in\Bbb N$ and let $\delta>0$ be such that
+$|1-e^{2\pi ix}|\le\eta$ whenever $|x|\le2\pi M\delta$.   By Weyl's
+Equidistribution
+Theorem (281N), there are infinitely many $m$ such that
+$\fraction{m\eta_j}\le\delta$ whenever $1\le j\le r$;  in particular,
+there is such an $m\ge m_0$.    Set $m_j=\lfloor m\eta_j\rfloor$, 
+so that $|m\eta_j-m_j|\le\delta$ for $0\le j\le r$.   Then
+
+\Centerline{$|mpy_k-2\pi\sum_{j=0}^rp_{kj}m_j|
+\le2\pi\sum_{j=0}^r|p_{kj}||m\eta_j-m_j|
+\le 2\pi M\delta$,}
+
+\noindent so that
+
+\Centerline{$|1-e^{iy_kmp}|
+=|1-\exp(i(mpy_k-2\pi\sum_{j=0}^rp_{kj}m_j))|
+\le\eta$}
+
+\noindent for every $k\le n$.
+As $mp\ge m_0$ and $m_0$ is arbitrary, this proves the result.
+}%end of proof of 285T
+
+\leader{285U}{Corollary} The topologies $\frak S$ and $\frak T$ on the
+space of Radon probability measures on $\Bbb R$, as described in 285S,
+are different.
+
+\proof{ Let $\delta_x$ be the Dirac measure on $\Bbb R$ concentrated at
+$x$.   By 285T, every
+member of $\frak S$ which contains $\delta_0$ also contains $\delta_m$
+for infinitely many $m\in\Bbb N$.   On the other hand, the set
+
+\Centerline{$G=\{\nu:\int e^{-x^2}\nu(dx)>\Bover12\}$}
+
+\noindent is a member of $\frak T$, containing $\delta_0$, which does
+not contain $\delta_m$ for any integer $m\ne 0$.
+So $G\in\frak T\setminus\frak S$ and $\frak T\ne\frak S$.
+}%end of proof of 285V
+
+
+\exercises{
+\leader{285X}{Basic exercises (a)}
+%\spheader 285Xa
+Let $\nu$ be a Radon probability
+measure on $\BbbR^r$, where $r\ge 1$, and suppose that
+$\int\|x\|\nu(dx)<\infty$.   Show that the characteristic function
+$\phi$ of $\nu$ is differentiable (in the full sense of 262Fa) and
+that $\pd{\phi}{\eta_j}(y)=i\int\xi_je^{iy\dotproduct x}\nu(dx)$ for
+every
+$j\le r$ and $y\in\BbbR^r$, using $\xi_j$, $\eta_j$ to represent the
+coordinates of $x$ and $y$ as usual.
+%285A
+
+\sqheader 285Xb Let $\pmb{X}=(X_1,\ldots,X_r)$ be a family of
+real-valued random variables, with characteristic function
+$\phi_{\pmb{X}}$.   Show that the characteristic function $\phi_{X_j}$
+of $X_j$ is given by
+
+\Centerline{$\phi_{X_j}(y)=\phi_{\pmb{X}}(ye_j)$ for every $y\in\Bbb
+R$,}
+
+\noindent where $e_j$ is the $j$th unit vector of $\BbbR^r$.
+%285A
+
+\sqheader 285Xc Let $X$ be a real-valued random variable and
+$\phi_X$ its characteristic function.   Show that
+
+\Centerline{$\phi_{aX+b}(y)=e^{iyb}\phi_X(ay)$}
+
+\noindent for any $a$, $b$, $y\in\Bbb R$.
+%285A
+
+\spheader 285Xd\dvAnew{2014}
+Let $X$ be a real-valued random variable which is not
+essentially constant, and $\phi$ its characteristic function.   Show that
+$|\phi(y)|<1$ for all but countably many $y\in\Bbb R$.
+\Hint{the support (256Xf) of the distribution of $X$ has distinct
+points $x$, $x'$ and if $e^{iyx}\ne e^{iyx'}$ then $|\phi(y)|<1$.}
+%285D
+
+\spheader 285Xe Let $X$ be a real-valued random variable and
+$\phi$ its characteristic function.
+
+\quad{(i)} Show that for any integrable complex-valued function $h$
+on $\Bbb R$,
+
+\Centerline{$\Expn(\varhat{h}(X))=\Bover1{\sqrt{2\pi}}
+\int_{-\infty}^{\infty}\phi(-y)h(y)dy$,}
+
+\noindent writing $\varhat{h}$ for the Fourier transform of $h$.
+
+\quad{(ii)} Show that for any rapidly decreasing test function $h$,
+
+\Centerline{$\Expn(h(X))
+=\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+  \phi(y)\varhat{h}(y)dy$.}
+%285D
+
+\spheader 285Xf Let $\nu$ be a Radon probability measure on
+$\Bbb R$, and suppose that its characteristic function $\phi$ is
+square-integrable.   Show that $\nu$ is an indefinite-integral measure
+over Lebesgue measure and that its Radon-Nikod\'ym derivatives are also
+square-integrable.   \Hint{use
+284O to find a square-integrable $f$ such that
+$\int f\times h=\bover1{\sqrt{2\pi}}\int\phi\times\varhat{h}$ for every
+rapidly
+decreasing test function $h$, and ideas from the proof of 284G to show
+that $\int_a^bf=\nu\ooint{a,b}$ whenever $a<b$ in $\Bbb R$.}
+%285D 285Xe
+
+\spheader 285Xg\dvAformerly{2{}85Yp} Let $\nu$ be a Radon probability
+measure on $\BbbR^r$ with bounded support (definition: 256Xf).   Show that
+its characteristic function is smooth.
+%285D
+
+\spheader 285Xh Let $X$ be a normal random variable with expectation $a$
+and variance $\sigma^2$.   Show that $\Expn(e^X)=\exp(a+\bover12\sigma^2)$.
+%285E
+
+\sqheader 285Xi Let $\pmb{X}=(X_1,\ldots,X_r)$ be a family of
+real-valued random variables with characteristic function
+$\phi_{\pmb{X}}$.   Suppose that $\phi_{\pmb{X}}$ is expressible in the
+form
+
+\Centerline{$\phi_{\pmb{X}}(y)=\prod_{j=1}^r\phi_j(\eta_j)$}
+
+\noindent for some functions $\phi_1,\ldots,\phi_r$, writing
+$y=(\eta_1,\ldots,\eta_r)$ as usual.   Show that $X_1,\ldots,X_r$ are
+independent.   \Hint{show that the $\phi_j$ must be multiples of the
+characteristic functions of the $X_j$;  now show that the distribution
+of $\pmb{X}$ has the same characteristic function as the product of the
+distributions of the $X_j$.}
+%285I
+
+\spheader 285Xj Let $X_1$, $X_2$ be independent real-valued random
+variables with the same distribution, and $\phi$ the characteristic
+function of $X_1-X_2$.   Show that $\phi(t)=\phi(-t)\ge 0$ for every
+$t\in\Bbb R$.
+%285I
+
+\spheader 285Xk Let $\nu$ be a Radon probability measure on
+$\Bbb R$, with characteristic function $\phi$.   Show that
+
+\Centerline{$\Bover12(\nu[c,d]+\nu\ooint{c,d})
+=\Bover{i}{2\pi}\lim_{a\to\infty}
+  \int_{-a}^a\Bover{e^{-idy}-e^{-icy}}{y}\phi(y)dy$}
+
+\noindent whenever $c<d$ in $\Bbb R$.
+\Hint{use part (a) of the proof of 283F.}
+%285J
+
+\spheader 285Xl Let $X$ be a real-valued random variable and
+$\phi_X$ its characteristic function.   Show that
+
+\Centerline{$\Pr(|X|\ge a)
+\le 7a\int_0^{1/a}(1-\Real(\phi_X(y))dy$}
+
+\noindent for every $a>0$.
+%285J
+
+\spheader 285Xm We say that a set $Q$ of Radon probability
+measures on $\Bbb R$ is {\bf uniformly tight} if for every $\epsilon>0$
+there is
+an $M\ge 0$ such that $\nu(\Bbb R\setminus[-M,M])\le\epsilon$ for every
+$\nu\in Q$.    Show that if $Q$ is any uniformly tight family of Radon
+probability
+measures on $\Bbb R$, and $\epsilon>0$, then there are $\eta>0$ and
+$y_0,\ldots,y_n\in\Bbb R$ such that
+
+\Centerline{$\nu\ocint{-\infty,a}
+\le\nuprime\ocint{-\infty,a+\epsilon}+\epsilon$}
+
+\noindent whenever $\nu$, $\nuprime\in Q$ and
+$|\phi_{\nu}(y_j)-\phi_{\nuprime}(y_j)|\le\eta$ for every $j\le n$, writing
+$\phi_{\nu}$ for the characteristic function of $\nu$.
+%285M
+
+\spheader 285Xn Let $\sequencen{\nu_n}$ be a sequence of Radon
+probability measures on $\Bbb R$, and suppose that it converges for the
+vague topology to a Radon probability measure $\nu$.   Show that
+$\{\nu\}\cup\{\nu_n:n\in\Bbb N\}$ is uniformly tight in the sense of
+285Xm.
+%285M
+
+\sqheader 285Xo Let $\nu$, $\nuprime$ be two totally finite Radon measures
+on $\BbbR^r$ which agree on all closed half-spaces, that is, sets of
+the form $\{x:x\dotproduct y\ge c\}$ for $c\in\Bbb R$, $y\in\BbbR^r$.
+Show that $\nu=\nuprime$.   \Hint{reduce to the case $\nu\BbbR^r=\nuprime\Bbb
+R^r=1$ and use 285M.}
+%285M
+
+\sqheader 285Xp\dvAformerly{2{}85Xm}
+For $\gamma>0$, the {\bf Cauchy distribution} with
+centre $0$ and scale parameter $\gamma$ is the Radon probability measure
+$\nu_{\gamma}$ defined by the formula
+
+\Centerline{$\nu_{\gamma}(E)
+=\Bover{\gamma}{\pi}\int_E\Bover1{\gamma^2+t^2}dt$.}
+
+\noindent (i) Show that if $X$ is a random variable with distribution
+$\nu_{\gamma}$ then $\Pr(X\ge 0)=\Pr(|X|\ge\gamma)=\bover12$.
+(ii) Show that the characteristic function of
+$\nu_{\gamma}$ is $y\mapsto e^{-\gamma|y|}$.   \Hint{283Xq.}   (iii)
+Show that if $X$ and $Y$ are independent random variables with Cauchy
+distributions, both centered at $0$ and with scale parameters $\gamma$,
+$\delta$ respectively, and $\alpha$, $\beta$ are not both $0$, then
+$\alpha X+\beta Y$ has a Cauchy distribution centered at $0$ and with
+scale parameter $|\alpha|\gamma+|\beta|\delta$.   (iv) Show that if $X$
+and $Y$ are independent normally distributed random variables with expectation $0$ then $X/Y$ has a Cauchy distribution.
+%285M
+
+\sqheader 285Xq Let $X_1,X_2,\ldots$ be an independent identically
+distributed sequence of random variables, all with zero expectation and
+variance $1$;  let $\phi$ be their common characteristic function.   For
+each $n\ge 1$, set $S_n=\bover1{\sqrt{n}}(X_1+\ldots+X_n)$.
+
+\quad{(i)} Show that the characteristic function $\phi_n$ of $S_n$
+is given by the formula $\phi_n(y)=(\phi(\Bover{y}{\sqrt{n}}))^{n}$
+for each $n$.
+
+\quad{(ii)} Show that
+$|\phi_n(y)-e^{-y^2/2}|\le n|\phi(\Bover{y}{\sqrt{n}})-e^{-y^2/2n}|$
+for $n\ge 1$ and $y\in\Bbb R$.
+
+\ifdim\pagewidth>467pt\fontdimen3\tenrm=3.33pt\fi
+\quad(iii) Setting $h(y)=\phi(y)-e^{-y^2/2}$, show that
+$h(0)=h'(0)=h''(0)=0$ and therefore that
+$\lim_{n\to\infty} nh(y/\sqrt{n})=0$, so that
+$\lim_{n\to\infty}\phi_n(y)=e^{-y^2/2}$ for every $y\in\Bbb R$.
+\fontdimen3\tenrm=1.67pt
+
+\quad{(iv)} Show that $\lim_{n\to\infty}\Pr(S_n\le a)
+=\Bover1{\sqrt{2\pi}}\int_{-\infty}^ae^{-x^2/2}dx$ for every
+$a\in\Bbb R$.
+%285N
+
+\sqheader 285Xr\dvAformerly{2{}85Xm}
+A random variable $X$ has a {\bf Poisson distribution}
+with parameter $\lambda>0$ if $\Pr(X=n)=e^{-\lambda}\lambda^n/n!$ for
+every $n\in\Bbb N$.    (i) Show that in this case
+$\Expn(X)=\Var(X)=\lambda$.   (ii) Show that if $X$ and $Y$ are
+independent random variables with Poisson distributions then $X+Y$ has a
+Poisson distribution.   (iii) Find a proof of (ii) based on 285Q.
+%285Q
+
+\sqheader 285Xs For $x\in\BbbR^r$, let $\delta_x$ be the Dirac measure
+on $\BbbR^r$ concentrated at $x$.
+Show that $\delta_x*\delta_y=\delta_{x+y}$ for all $x$, $y\in\BbbR^r$.
+%285R
+
+\spheader 285Xt Let $P$ be the set of Radon probability measures
+on $\BbbR^r$.   For $y\in\BbbR^r$, set
+$\rho'_y(\nu,\nuprime)=|\phi_{\nu}(y)-\phi_{\nuprime}(y)|$ for all $\nu$,
+$\nuprime\in P$, writing $\phi_{\nu}$ for the characteristic function of
+$\nu$.   Set $\psi(x)=\bover1{(\sqrt{2\pi})^r}e^{-x\dotproduct x/2}$ for
+$x\in\BbbR^r$.    Show that the vague topology on $P$ is
+defined by the family $\{\rho_{\psi}\}\cup\{\rho'_y:y\in\Bbb Q^r\}$,
+defining $\rho_{\psi}$ as in 285K, and is therefore metrizable.
+\Hint{281K;  cf.\ 285Xm.}
+%285S
+
+\sqheader 285Xu\dvAformerly{2{}85Xr}
+Let $\phi:\BbbR^r\to\Bbb C$ be the
+characteristic function of a Radon probability measure on $\BbbR^r$.
+Show that $\phi(0)=1$ and that
+$\sum_{j=0}^n\sum_{k=0}^nc_j\bar c_k\phi(a_j-a_k)\ge 0$ whenever
+$a_0,\ldots,a_n\in\BbbR^r$ and $c_0,\ldots,c_n\in\Bbb C$.
+(`Bochner's theorem' states that these conditions are
+sufficient, as well as necessary, for $\phi$ to be a characteristic
+function;  see 445N in Volume 4.)
+%285*
+
+\leader{285Y}{Further exercises (a)}
+%\spheader 285Ya
+Let $\nu$ be a Radon probability measure on
+$\BbbR^r$.   Write
+
+\Centerline{$\varhat{\nu}(y)=\Bover1{(\sqrt{2\pi})^r}
+\int e^{-iy\dotproduct x}\nu(dx)$}
+
+\noindent for every $y\in\BbbR^r$.
+
+\quad{(i)} Writing $\phi_{\nu}$ for the characteristic function of
+$\nu$, show that $\varhat{\nu}(y)
+=\Bover1{(\sqrt{2\pi})^r}\phi_{\nu}(-y)$ for every $y\in\BbbR^r$.
+
+\quad{(ii)} Show that
+$\int h(y)\varhat{\nu}(y)dy=\int\varhat h(x)\nu(dx)$
+for any Lebesgue integrable complex-valued function $h$ on
+$\BbbR^r$, defining the Fourier transform $\varhat{h}$ as in 283Wa.
+
+\quad{(iii)} Show that $\int h(x)\nu(dx)
+=\int\varcheck{h}(y)\varhat{\nu}(y)dy$ for any rapidly decreasing test
+function $h$ on $\BbbR^r$.
+
+\quad{(iv)} Show that if $\nu$ is an indefinite-integral measure over
+Lebesgue measure, with Radon-Nikod\'ym derivative $f$, then
+$\varhat{\nu}$ is the Fourier transform of $f$.
+%285D
+
+\spheader 285Yb Let $\nu$ be a Radon probability
+measure on $\BbbR^r$, with characteristic function $\phi$.   Show that
+whenever $c\le d$ in $\BbbR^r$ then
+
+$$\bigl(\bover{i}{2\pi}\bigr)^r\lim_{\alpha_1,\ldots,\alpha_r\to\infty}
+\int_{[-a,a]}\bigl(\prod_{j=1}^r
+\Bover{e^{-i\delta_j\eta_j}-e^{-i\gamma_j\eta_j}}{\eta_j}\bigr)
+\phi(y)dy$$
+
+\noindent exists and lies between $\nu\ooint{c,d}$ and $\nu[c,d]$,
+writing $a=(\alpha_1,\ldots,\alpha_r)$ and
+$\ooint{c,d}=\prod_{j\le r}\ooint{\gamma_j,\delta_j}$ if
+$c=(\gamma_1,\ldots,\gamma_r)$ and $d=(\delta_1,\ldots,\delta_r)$.
+%285Xk, 285J, 283Wc
+
+\spheader 285Yc Let $\sequencen{X_n}$ be an independent identically
+distributed sequence of
+(not-essentially-constant) random variables.   Show that
+$\lim_{n\to\infty}\Pr(|\sum_{k=0}^nX_k|\le\alpha)=0$ for every
+$\alpha\in\Bbb R$.
+%285Xd, 285Xk, 285J
+
+\spheader 285Yd For Radon probability measures $\nu$, $\nuprime$ on
+$\BbbR^r$ set
+
+$$\eqalign{\rho(\nu,\nuprime)=\inf\{\epsilon:\epsilon\ge 0,\,
+\nu\ocint{-\infty,a}\le\nuprime\ocint{-\infty,a+\epsilon\tbf{1}}+\epsilon
+&\le\nu\ocint{-\infty,a+2\epsilon\tbf{1}}+2\epsilon\cr
+&\text{for every }a\in\BbbR^r\},\cr}$$
+
+\noindent writing $\ocint{-\infty,a}
+=\{(\xi_1,\ldots,\xi_r):\xi_j\le\alpha_j$ for every $j\le r\}$
+when $a=(\alpha_1,\ldots,\alpha_r)$, and
+$\tbf{1}=(1,\ldots,1)\in\BbbR^r$.   Show that $\rho$ is a metric on the
+set of Radon probability measures on $\BbbR^r$, and that the topology it
+defines is the vague topology.   (Cf.\ 274Yc.)
+%285K
+
+\spheader 285Ye Let $r\ge 1$ and let $P$ be the set of Radon
+probability measures on $\BbbR^r$.   For $m\in\Bbb N$ let $\rho^*_m$ be
+the pseudometric on $P$ defined by setting
+$\rho^*_m(\nu,\nuprime)=\sup_{\|y\|\le m}|\phi_{\nu}(y)-\phi_{\nuprime}(y)|$
+for $\nu$, $\nuprime\in P$, writing $\phi_{\nu}$ for the
+characteristic function of $\nu$.   Show that $\{\rho^*_m:m\in\Bbb N\}$
+defines the vague topology on $P$.
+%285K
+
+\spheader 285Yf Let $r\ge 1$.   We say that a set $Q$ of Radon
+probability measures on $\BbbR^r$ is {\bf uniformly tight} if for every
+$\epsilon>0$ there is a compact set $K\subseteq\BbbR^r$ such that
+$\nu(\BbbR^r\setminus K)\le\epsilon$ for every $\nu\in Q$.
+Show that if $Q$ is any uniformly tight family of Radon probability
+measures on $\BbbR^r$, and $\epsilon>0$, then there are $\eta>0$,
+$y_0,\ldots,y_n\in\BbbR^r$ such that
+$\nu\ocint{-\infty,a}\le\nuprime\ocint{-\infty,a+\epsilon\tbf{1}}+\epsilon$
+whenever $\nu$, $\nuprime\in Q$ and $a\in\BbbR^r$ and
+$|\phi_{\nu}(y_j)-\phi_{\nuprime}(y_j)|\le\eta$ for every $j\le n$, writing
+$\phi_{\nu}$ for the characteristic function of $\nu$.
+%285M, 285Xm
+
+\spheader 285Yg Show that for any $M\ge 0$ the set of Radon
+probability measures $\nu$ on $\BbbR^r$ such that
+$\int\|x\|\nu(dx)\le M$ is uniformly tight in the sense of 285Yf.
+%285Yf, 285Xm, 285M
+
+\spheader 285Yh Let $C_b(\BbbR^r)$ be the Banach space of
+bounded continuous real-valued functions on $\BbbR^r$.
+
+\quad{(i)} Show that any Radon probability measure $\nu$ on
+$\Bbb R^r$ corresponds to a continuous linear functional
+$h_{\nu}:C_b(\Bbb R^r)\to\Bbb R$, writing $h_{\nu}(f)=\int fd\nu$ for
+$f\in C_b(\Bbb R^r)$.
+
+\quad{(ii)} Show that if $h_{\nu}=h_{\nuprime}$ then $\nu=\nuprime$.
+
+\quad{(iii)} Show that the vague topology on the set of Radon
+probability measures corresponds to the weak* topology on the dual
+$(C_b(\BbbR^r))^*$ of $C_b(\BbbR^r)$.
+%285M mt28bits
+
+\spheader 285Yi Let $r\ge 1$ and let $P$ be the set of Radon
+probability measures on $\BbbR^r$.   For $m\in\Bbb N$ let
+$\tilde\rho^*_m$ be the pseudometric on $P$ defined by setting
+
+\Centerline{$\tilde\rho^*_m(\nu,\nuprime)
+=\int_{\{y:\|y\|\le m\}}|\phi_{\nu}(y)-\phi_{\nuprime}(y)|dy$}
+
+\noindent for $\nu$, $\nuprime\in P$, writing $\phi_{\nu}$ for the
+characteristic function of $\nu$.   Show that
+$\{\tilde\rho^*_m:m\in\Bbb N\}$ defines the vague topology on $P$.
+%285M mt28bits
+
+\spheader 285Yj Let $(\Omega,\Sigma,\mu)$ be a probability space.
+Suppose that $\sequencen{X_n}$ is a sequence of real-valued random
+variables on $\Omega$,
+and $X$ another real-valued random variable on $\Omega$;  let $\phi_{X_n}$,
+$\phi_X$ be the corresponding characteristic functions.   Show that the
+following are equiveridical:
+(i) $\lim_{n\to\infty}\Expn(h(X_n))=\Expn(h(X))$ for every bounded
+continuous function $h:\Bbb R\to\Bbb R$;  (ii)
+$\lim_{n\to\infty}\phi_{X_n}(y)=\phi_X(y)$ for every $y\in\Bbb R$.
+%285Xm 285M
+
+\spheader 285Yk Let $(\Omega,\Sigma,\mu)$ be a probability space, and $P$
+the set of Radon probability measures on $\Bbb R$.   (i) Show that we have
+a function $\psi:L^0(\mu)\to P$ defined by saying that
+$\psi(X^{\ssbullet})$ is the distribution of $X$ whenever $X$ is a
+real-valued random variable on $\Omega$.   (ii) Show that $\psi$ is
+continuous for the topology of convergence in measure on $L^0(\mu)$ and the
+vague topology on $P$.   (Compare 271Yd.)
+%285Yj 285M
+
+\spheader 285Yl Let $X$ be a real-valued random variable with
+finite variance.   Show that for any $\eta\ge 0$,
+
+\Centerline{$|\phi(y)-1-iy\Expn(X)+\Bover12y^2\Expn(X^2)|
+\le\Bover16\eta|y|^3\Expn(X^2)
++y^2\Expn(\psi_{\eta}(X))$,}
+
+\noindent writing $\phi$ for the characteristic function of $X$ and
+$\psi_{\eta}(x)=0$ for $|x|\le\eta$, $x^2$ for $|x|>\eta$.
+%285N
+
+\spheader 285Ym Suppose that $\epsilon\ge\delta>0$ and that
+$X_0,\ldots,X_n$ are independent
+real-valued random variables such that
+
+\Centerline{$\Expn(X_k)=0$ for every $k\le n$,
+\quad$\sum_{k=0}^n\Var(X_k)=1$,
+\quad$\sum_{k=0}^n\Expn(\psi_{\delta}(X_k))\le\delta$}
+
+\noindent (writing $\psi_{\delta}(x)=0$ if $|x|\le\delta$, $x^2$ if
+$|x|>\delta$).   Set $\gamma=\epsilon/\sqrt{\delta^2+\delta}$, and let
+$Z$ be a standard normal random variable.   Show that
+
+\Centerline{$|\phi(y)-e^{-y^2/2}|
+\le\Bover13\epsilon|y|^3+y^2(\delta+\Expn(\psi_{\gamma}(Z)))$}
+
+\noindent for every $y\in\Bbb R$, writing $\phi$ for the characteristic
+function of $X=\sum_{k=0}^nX_k$.
+% mt28bits 285Yl, 285N
+
+\spheader 285Yn Show that for every $\epsilon>0$ there is a
+$\delta>0$ such that whenever $X_0,\ldots,X_n$ are independent
+real-valued random variables such that
+
+\Centerline{$\Expn(X_k)=0$ for every $k\le n$,
+\quad$\sum_{k=0}^n\Var(X_k)=1$,
+\quad$\sum_{k=0}^n\Expn(\psi_{\delta}(X_k))\le\delta$}
+
+\noindent (writing $\psi_{\delta}(x)=0$ if $|x|\le\delta$, $x^2$ if
+$|x|>\delta$), then $|\phi(y)-e^{-y^2/2}|\le\epsilon(y^2+|y^3|)$
+for every $y\in\Bbb R$, writing $\phi$ for the characteristic
+function of $X=X_0+\ldots+X_n$.
+%285Ym, 285N
+
+\spheader 285Yo Use 285Yn to prove Lindeberg's theorem (274F).
+%285Yn, 285N
+
+\spheader 285Yp Let $r\ge 1$ and let $P$ be the set of Radon
+probability measures on $\BbbR^r$.   Show that convolution, regarded as
+a map from $P\times P$ to $P$, is continuous when $P$ is given the vague
+topology.
+%285R \Hint{281Xa and 257B will help.}
+
+\spheader 285Yq Let $\frak S$ be the topology on $\Bbb R$
+defined by $\{\rho'_y:y\in\Bbb R\}$, where
+$\rho'_y(x,x')=|e^{iyx}-e^{iyx'}|$ (compare 285S).   Show that addition
+and subtraction are continuous for $\frak S$ in the sense of 2A5A.
+%285S
+
+\spheader 285Yr\dvAnew{2014} Let $\nu$ be a probability measure on
+$\Bbb R$.   Show that
+$|\phi_{\nu}(y)-\phi_{\nu}(y')|^2\le 2(1-\Real\phi_{\nu}(y-y'))$ for any
+$y$, $y'\in\Bbb R$.
+%|\phi_{\nu}(y)-\phi_{\nu}(y')|^2\le\int|e^{iyx)-e^{iy'x}|^2\nu(dx)
+%285J
+
+\spheader 285Ys\dvAnew{2014} Let $\sequencen{\nu_n}$ be a sequence of
+probability measures on $\Bbb R$.   Set $E=\{y:y\in\Bbb R$,
+$\lim_{n\to\infty}\phi_{\nu_n}(y)=1\}$.   (i) Show that $E-E$ and
+$E+E$ are included in $E$.   (ii) Show that if $E$ is not Lebesgue
+negligible it is the whole of $\Bbb R$.
+%285Yr 285J
+
+\spheader 285Yt\dvAformerly{2{}85Xs}
+Let $\sequencen{X_n}$ be an independent sequence of
+real-valued random variables and set $S_n=\sum_{j=0}^nX_j$ for each
+$n\in\Bbb N$.
+Suppose that the sequence $\sequencen{\nu_{S_n}}$ of distributions is
+convergent for the vague topology to a distribution.
+Show that $\sequencen{S_n}$ converges in measure, therefore a.e.
+%\Hint{285J, 273B, 285Ys.}
+%285I  char fns of  X_n  converge
+%  to  1  whenever char fns of  S_n  don't converge to  0
+}%end of exercises
+
+\endnotes{
+\Notesheader{285} Just as with Fourier transforms, the
+power of methods which use the characteristic functions of distributions
+is based on three points:  (i) the characteristic function of a
+distribution determines the distribution (285M); (ii) the properties of
+interest in a distribution are reflected in accessible properties of its
+characteristic function (285G, 285I, 285J) (iii) these properties of the
+characteristic function are actually {\it different} from the
+corresponding properties of the distribution, and are amenable to
+different kinds of investigation.   Above all, the fact that (for
+sequences!) convergence in the vague topology of distributions
+corresponds to pointwise convergence for characteristic functions (285L)
+provides us with a path to the classic limit theorems, as in 285Q and
+285Xq.   In 285S-285U I show that this result for sequences does not
+correspond immediately to any alternative characterization of the vague
+topology, though it can be adapted in more than one way to give such a
+characterization (see 285Ye-285Yi).
+
+Concerning the Central Limit Theorem there is one conspicuous difference
+between the method suggested here and that of \S274.   The previous
+approach offered at least a theoretical possibility of giving an
+explicit formula for $\delta$ in 274F as a function of $\epsilon$, and
+hence an estimate of the rate of convergence to be expected in the
+Central Limit Theorem.   The arguments in the present chapter, involving
+as they do an entirely
+non-constructive compactness argument in 281A, leave us with no way of
+achieving such an estimate.   But in fact the method of characteristic
+functions, suitably refined, is the basis of the best estimates known,
+such as the Berry-Ess\'een theorem (274Hc).
+
+In 285D I try to show how the characteristic function $\phi_{\nu}$ of a
+Radon probability measure can be related to a `Fourier transform'
+$\varhat{\nu}$ of $\nu$ which corresponds directly to the Fourier
+transforms of functions discussed in \S\S283-284.   If $f$ is a
+non-negative Lebesgue integrable function and we take $\nu$ to be the
+corresponding indefinite-integral measure, then $\varhat{\nu}=\varhatf$.
+Thus the concept
+of `Fourier transform of a measure' is a natural extension of the
+Fourier transform of an integrable function.   Looking at it from the
+other side, the formula of 285Dc shows that $\nu$ can be thought of as
+representing the inverse Fourier transform of $\varhat{\nu}$ in the
+sense of 284H-284I.   Taking $\nu$ to be the measure which assigns a
+mass $1$ to the point $0$, we get the Dirac delta function, with Fourier
+transform the constant function $\chi\Bbb R$.   These ideas can be extended
+without difficulty to handle convolutions of measures (285R).
+
+It is a striking fact that while there is no satisfactory
+characterization of the functions which are Fourier transforms of
+integrable functions, there is a characterization of the characteristic
+functions of probability distributions.   This is `Bochner's
+theorem'.   I give the condition in 285Xu, asking you to prove its
+necessity as an exercise;  we already have three-quarters of the
+machinery to prove its sufficiency, but the last step will have to wait
+for Volume 4.
+}
+
+\discrpage
+

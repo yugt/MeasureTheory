@@ -1,0 +1,1271 @@
+\frfilename{mt561.tex}
+\versiondate{8.9.13}
+\copyrightdate{2006}
+
+\def\chaptername{Choice and determinacy}
+\def\sectionname{Analysis without choice}
+
+\newsection{561}
+
+Elementary courses in analysis
+are often casual about uses of weak forms of choice;  a typical argument
+runs `for every $\epsilon>0$ there is an $a\in A$ such that
+$|a-x|\le\epsilon$, so there is a sequence in $A$ converging to $x$'.
+This is a direct call on the countable axiom of choice:  setting
+$A_n=\{a:a\in A$, $|a-x|\le 2^{-n}\}$, we are told that every $A_n$ is
+non-empty, and conclude that $\prod_{n\in\Bbb N}A_n$ is non-empty.   In the
+present section I will abjure such methods and investigate what can
+still be done with the ideas important in measure theory.
+We have useful partial versions of Tychonoff's theorem (561D), Baire's
+theorem (561E), Stone's theorem (561F) and Kakutani's theorem on the
+representation of $L$-spaces (561H);  moreover, there is a direct
+construction of Haar measures, regarded as linear functionals (561G).
+
+{\it Unless explicitly stated otherwise}, throughout this section (and the
+next four) I am working entirely without any form of the axiom of choice.
+
+\leader{561A}{Set theory without choice}\cmmnt{ In \S\S1A1 and 2A1
+I tried to lay out some of the basic ideas of set theory without
+appealing to the axiom of choice except when this was clearly necessary.}
+The most obvious point is that in the absence of choice
+
+\Centerline{\bf the union of a sequence of countable sets need not be
+countable\dvro{.}{}}
+
+\noindent\cmmnt{(see the note in 1A1G).
+In fact {\smc Feferman \& Levy 63} (see
+{\smc Jech 73}, 10.6) described a
+model of set theory in which $\Bbb R$ is the union of a sequence of
+countable sets.   But not all is lost.   }The elementary arguments of 1A1E
+still give
+
+\Centerline{$\Bbb N\simeq\Bbb Z\simeq\Bbb N\times\Bbb N\simeq\Bbb Q$;}
+
+\cmmnt{\noindent there is no difficulty in extending them to show such
+things as}
+
+\Centerline{$\Bbb N\simeq[\Bbb N]^{<\omega}
+\simeq\bigcup_{n\ge 1}\BbbN^n\simeq\BbbQ^r\times\BbbQ^r$}
+
+\noindent for every integer $r\ge 1$.   The Schr\"oder-Bernstein theorem
+survives\cmmnt{ (the method in 344D is easily translated back into its
+original form as a proof of the ordinary Schr\"oder-Bernstein theorem)}.
+Consequently\cmmnt{ we still have enough bijections to establish}
+
+\Centerline{$\Bbb R\simeq\Cal P\Bbb N\simeq\{0,1\}^{\Bbb N}
+\simeq\Cal P(\Bbb N\times\Bbb N)
+\simeq(\Cal P\Bbb N)^{\Bbb N}\simeq\BbbR^{\Bbb N}\simeq\NN$.}
+
+\noindent\cmmnt{Cantor's theorem
+that }$X\not\simeq\Cal PX$\cmmnt{ is unaffected}, so\cmmnt{ we
+still know that} $\Bbb R$ is not countable.
+
+We can still use transfinite recursion\cmmnt{;  see 2A1B}.
+We still have a class
+$\On$ of von Neumann ordinals such that every well-ordered set is
+isomorphic to exactly one
+ordinal\cmmnt{ (2A1Dg)} and\cmmnt{ therefore} equipollent with
+exactly one initial ordinal\cmmnt{ (2A1Fb)}.
+I will say that a set $X$ is {\bf well-orderable} if there is a
+well-ordering of $X$.   The standard
+arguments for Zermelo's Well-Ordering Theorem\cmmnt{ (2A1K)} now
+tell us that for any set $X$ the following are equiveridical:
+
+\inset{(i) $X$ is well-orderable;
+
+(ii) $X$ is equipollent with some ordinal;
+
+(iii) there is an injective function from $X$ into a well-orderable set;
+
+(iv) there is a choice function for $\Cal PX\setminus\{\emptyset\}$}
+
+\noindent (that is, a function $f$ such that
+$f(A)\in A$ for every non-empty $A\subseteq X$).
+What this means is that if we are given a family $\familyiI{A_i}$
+of non-empty sets, and $X=\bigcup_{i\in I}A_i$ is
+well-orderable\cmmnt{ (e.g., because it is countable)}, then
+$\prod_{i\in I}A_i$ is not empty\cmmnt{
+(it contains $\familyiI{f(A_i)}$ where $f$ is a function as in (iv)
+above)}.
+
+Note\cmmnt{ also} that while we still have a first uncountable ordinal
+$\omega_1$\cmmnt{ (the set of
+countable ordinals)}, it can have countable cofinality\cmmnt{ (561Ya)}.
+The union of a sequence of finite sets need not be
+countable\cmmnt{ ({\smc Jech 73}, \S5.4)};   but the union
+of a sequence of finite subsets of a given totally ordered set {\it is}
+countable\cmmnt{, because we can use the total ordering to simultaneously
+enumerate each of the finite sets in ascending order}.   Consequently, if
+$\gamma:\omega_1\to\Bbb R$ is a monotonic function there is a
+$\xi<\omega_1$ such that $\gamma(\xi+1)=\gamma(\xi)$.
+\prooflet{\Prf\ It is enough to consider the case in which $\gamma$ is
+non-decreasing.   Set
+
+\Centerline{$A_n=\{\xi:\gamma(\xi)+2^{-n}\le\gamma(\xi+1)\le n\}$.}
+
+\noindent Then $A_n$ has at most $2^n\max(0,n-\gamma(0))$ members, so is
+finite;  consequently $\bigcup_{n\in\Bbb N}A_n$ is countable, and there is
+a $\xi\in\omega_1\setminus\bigcup_{n\in\Bbb N}A_n$.   Of course we now find
+that $\gamma(\xi+1)=\gamma(\xi)$.\ \Qed}
+
+\cmmnt{
+\leader{561B}{Real analysis without choice}
+In fact all the standard theorems of elementary
+real and complex analysis are
+essentially unchanged.   The kind of tightening required in some proofs, to
+avoid explicit dependence on the existence of sequences, is similar to the
+adaptations needed when we move to general topological spaces.   For
+instance, we must define `compactness' in terms of open covers;
+compactness and sequential compactness, even for subsets of $\Bbb R$, may
+no longer coincide (561Xc).
+But we do still have the Heine-Borel theorem in the form `a subset of
+$\BbbR^r$ is compact iff it is closed and bounded' (provided, of course,
+that we understand that `closed' is not the same thing as `sequentially
+closed');  see the proof in 2A2F.
+}%end of comment
+
+\leader{561C}{}\cmmnt{ Some new difficulties arise when we move away
+from `concrete' questions like the Prime Number Theorem and start looking
+at general metric spaces, or even general subsets of $\Bbb R$.   For
+instance, a subset of $\Bbb R$, regarded as a topological space, must be
+second-countable but need not be separable.   However we can go a long way
+if we take care.   The following is an elementary example which will be
+useful below.
+
+\medskip
+
+\noindent}{\bf Lemma}\dvArevised{2013}
+Let $\Cal E$ be the set of non-empty closed subsets
+of $\NN$.   Then there is a family $\family{F}{\Cal E}{f_F}$ such that,
+for each $F\in\Cal E$, $f_F$ is a continuous function from $\NN$ to $F$
+and $f_F(\alpha)=\alpha$ for every $\alpha\in F$.
+
+\proof{ For $F\in\Cal E$,
+set $T_F=\{\alpha\restr n:\alpha\in F$, $n\in\Bbb N\}$.
+If $\alpha\in\NN\setminus F$ then, because $F$ is closed,
+there is some $n\in\Bbb N$ such that $\beta\restr n\ne\alpha\restr n$ for
+any $\beta\in F$, that is, $\alpha\restr n\notin T_F$.   For
+$\sigma\in T_F$ define $\beta_{F\sigma}\in\NN$ inductively by saying that
+
+$$\eqalign{\beta_{F\sigma}(n)&=\sigma(n)\text{ if }n<\#(\sigma),\cr
+&=\inf\{i:\text{ there is some }\alpha\text{ such that }
+\beta_{F\sigma}\restr n\subseteq\alpha\in F\text{ and }\alpha(n)=i\}
+\text{ otherwise},\cr}$$
+
+\noindent counting $\inf\emptyset$ as $0$ if necessary.
+We see that in fact $\beta_{F\sigma}\restr n\in T_F$ for
+every $n\in\Bbb N$, so that $\beta_{F\sigma}\in F$.
+
+We can therefore define $f_F:\NN\to\NN$ by setting
+
+$$\eqalign{f_F(\alpha)&=\alpha\text{ if }\alpha\in F,\cr
+&=\beta_{F,\alpha\restr n}\text{ for the largest }n
+\text{ such that }\alpha\restr n\in T_F\text{ otherwise}.\cr}$$
+
+\noindent (Because $F$ is not empty, the empty sequence $\alpha\restr 0$
+belongs to $T_F$ for every $\alpha\in\NN$.)   We see that
+$f_F(\alpha)\in F$ for all $F$ and $\alpha$, and $f_F(\alpha)=\alpha$ if
+$\alpha\in F$.   To see that $f_F$ is always 
+continuous, note that in fact
+if $\alpha\in\NN\setminus F$, and $n$ is the largest integer such that
+$\alpha\restr n$ belongs to $T$, then $f_F(\beta)=f_F(\alpha)$ whenever
+$\beta\restr n+1=\alpha\restr n+1$, so $f_F$ is continuous at $\alpha$.
+While if $\alpha\in F$, $n\in\Bbb N$ and $\beta\restr n=\alpha\restr n$,
+then either $\beta\in F$ so $f_F(\beta)\restr n=f_F(\alpha)\restr n$, or
+$f_F(\beta)=\beta_{F\sigma}$ where
+$\alpha\restr n\subseteq\sigma\subseteq\beta_{F\sigma}$, and again
+$f_F(\beta)\restr n=\beta_{\sigma}\restr n=\alpha\restr n$.   So we have a
+suitable family of functions.
+}%end of proof of 561C
+
+\leader{561D}{Tychonoff's theorem}\cmmnt{ It is a classic
+result ({\smc Kelley 50}) that Tychonoff's theorem, in a general form, is
+actually equivalent to the axiom of choice.   But nevertheless we have
+useful partial results which do not depend on the axiom of choice.   The
+following will help in the proofs of 561F and 563I.
+
+\medskip
+
+\noindent{\bf Theorem}} Let $\familyiI{X_i}$ be a family of compact
+topological spaces such that $I$ is well-orderable.   For each $i\in I$ let
+$\Cal E_i$ be the family of non-empty closed subsets of $X_i$, and suppose
+that there is a choice function for $\bigcup_{i\in I}\Cal E_i$.   Then
+$X=\prod_{i\in I}X_i$ is compact.
+
+\proof{ Since $I$ is well-orderable, we may suppose that $I=\kappa$ for
+some initial ordinal $\kappa$.   Fix a choice function $\psi$ for
+$\bigcup_{\xi<\kappa}\Cal E_i$.
+For $\xi<\kappa$ write $\pi_{\xi}:X\to X_{\xi}$ for the coordinate map.
+If $X$ is empty
+the result is trivial.   Otherwise, let $\Cal F$ be any family of closed
+subsets of $X$ with the finite intersection property.   I
+seek to define a non-decreasing family
+$\langle\Cal F_{\xi}\rangle_{\xi\le\kappa}$ of filters on $X$ such that
+the image filter $\pi_{\xi}[[\Cal F_{\xi+1}]]$ (2A1Ib) is convergent for
+each $\xi<\kappa$.   Start with $\Cal F_0$ the filter generated by
+$\Cal F$.   Given $\Cal F_{\xi}$,
+let $F_{\xi}$ be the set of cluster points of $\pi_{\xi}[[\Cal F_{\xi}]]$;
+because $X_{\xi}$ is compact, this is a non-empty closed subset of
+$X_{\xi}$, and $x_{\xi}=\psi(F_{\xi})$ is defined.   Let
+$\Cal F_{\xi+1}$ be the filter on $X$ generated by
+
+\Centerline{$\Cal F_{\xi}
+\cup\{\pi_{\xi}^{-1}[U]:U$ is a neighbourhood of $x_{\xi}$ in $X_{\xi}\}$.}
+
+\noindent For limit ordinals $\xi\le\kappa$, let $\Cal F_{\xi}$ be the
+filter on $X$ generated by $\bigcup_{\eta<\xi}\Cal F_{\eta}$.
+
+Now $\Cal F_{\kappa}$ is a filter including $\Cal F$ converging to
+$x=\ofamily{\xi}{\kappa}{x_{\xi}}$, and $x$ must belong to $\bigcap\Cal F$.
+As $\Cal F$ is arbitrary, $X$ is compact.
+}%end of proof of 561D
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The point of the condition
+`there is a choice function for $\bigcup_{i\in I}\Cal E_i$'
+is that it is
+satisfied if every $X_i$ is the unit interval $[0,1]$, for instance;
+we could take
+$\psi(E)=\min E$ for non-empty closed sets $E\subseteq[0,1]$.
+You will have no difficulty in devising other examples, using the
+technique of the proof above, or otherwise.   Note that 561C shows that
+there is a choice function for the family $\Cal E$
+of non-empty closed subsets of
+$\NN$, since we can use the function $F\mapsto f_F(\tbf{0})$ where
+$\family{F}{\Cal E}{f_F}$ is the family of functions defined there.
+}
+
+\leader{561E}{Baire's theorem} (a) Let $(X,\rho)$ be a complete metric
+space with a well-orderable dense subset.   Then $X$ is a Baire space.
+
+(b) Let $X$ be a compact Hausdorff space
+with a well-orderable $\pi$-base.   Then $X$ is a Baire space.
+
+\proof{{\bf (a)} Let $D$ be a dense subset of $X$ with a well-ordering
+$\preccurlyeq$.   If $\sequencen{G_n}$ is a sequence of dense
+open subsets of $X$, and $G$ is a non-empty open set, define
+$\sequencen{H_n}$, $\sequencen{x_n}$ and $\sequencen{\epsilon_n}$
+inductively, as follows.   $H_0=G$.   Given $H_n$,
+$x_n$ is to be the $\preccurlyeq$-first point of $H_n$.
+Given $x_n$ and $H_n$, $\epsilon_n$ is to be the first rational number
+in $\ocint{0,2^{-n}}$ such that $B(x_n,\epsilon_n)\subseteq H_n$.
+(I leave it to you to decide which rational numbers come first.)
+Now set $H_{n+1}=\{y:y\in G_n$, $\rho(y,x_n)<\epsilon_n\}$;  continue.
+
+At the end of the induction, $\sequencen{x_n}$ is a Cauchy sequence so has
+a limit $x$ in $X$.   Since $x_n\in H_n\subseteq H_m$ whenever $m\le n$,
+$x\in\overline{H}_{n+2}\subseteq H_{n+1}\subseteq G_n$ for every $n$, and
+$x$ witnesses that $G\cap\bigcap_{n\in\Bbb N}G_n$ is non-empty.
+As $G$ and $\sequencen{G_n}$ are arbitrary, $X$ is a Baire space.
+
+\medskip
+
+{\bf (b)} Let $\Cal U$ be a $\pi$-base for the topology of $X$, not
+containing $\emptyset$, with a
+well-ordering $\preccurlyeq$.   If $\sequencen{G_n}$ is a sequence of dense
+open subsets of $X$, and $G$ is a non-empty open set, define
+$\sequencen{U_n}$ in $\Cal U$ inductively by saying that
+
+\inset{$U_0$ is the
+$\preccurlyeq$-first member of $\Cal U$ included in $G$,
+
+$U_{n+1}$ is the $\preccurlyeq$-first member of $\Cal U$ such that
+$\overline{U}_{n+1}\subseteq U_n\cap G_n$}
+
+\noindent for each $n$.   Then $\bigcap_{n\in\Bbb N}\overline{U}_n$ is
+non-empty and included in $G\cap\bigcap_{n\in\Bbb N}G_n$.
+}%end of proof of 561E
+
+\leader{561F}{Stone's Theorem} Let $\frak A$ be a well-orderable Boolean
+algebra.   Then there is a compact Hausdorff
+Baire space $Z$ such that $\frak A$
+is isomorphic to the algebra of open-and-closed subsets of $Z$.
+
+\proof{ As in 311E, let $Z$ be the set of ring homomorphisms from $\frak A$
+onto $\Bbb Z_2$.   Writing $\Bbb B$ for the set of finite subalgebras of
+$\frak A$, $Z=\bigcap_{\frak B\in\Bbb B}Z_{\frak B}$ where
+
+\Centerline{$Z_{\frak B}
+=\{z:z\in\Bbb Z_2^{\frak A}$, $z\restrp\frak B$ is a Boolean
+homomorphism$\}$.}
+
+\noindent So $Z$ is a closed subset of the compact Hausdorff
+space $\{0,1\}^{\frak A}$, and is compact.   Setting
+$\widehat{a}=\{z:z\in Z$, $z(a)=1\}$, the map $a\mapsto\widehat{a}$ is a
+Boolean homomorphism from $\frak A$ to the algebra $\frak E$ of
+open-and-closed subsets of $Z$.
+If $a\in\frak A\setminus\{0\}$ and $\frak B$ is a finite
+subalgebra of $\frak A$, then the subalgebra $\frak C$ generated by
+$\{a\}\cup\frak B$ is still finite, and there is a Boolean homomorphism
+$w:\frak C\to\Bbb Z_2$ such that $w(a)=1$;  extending $w$ arbitrarily to a
+member of $\{0,1\}^{\frak A}$, we obtain a $z\in Z_{\frak B}$ such that
+$z(a)=1$;  as $\frak B$ is arbitrary, there is a $z\in Z$ such that
+$z(a)=1$.   So the map $a\mapsto\widehat{a}$ is injective.   If
+$G\subseteq Z$ is open and $z\in G$, there must be a finite set
+$A\subseteq\frak A$ such that $G$ includes
+$\{z':z'\in Z$, $z'\restr A=z\restr A\}$;  in this case, setting
+$c=\inf\{a:a\in A$, $z(a)=1\}\Bsetminus\sup\{a:a\in A$, $z(a)=0\}$,
+$z\in\widehat{c}\subseteq G$.   It follows that any member of $\frak E$
+is of the form $\widehat{a}$ for some $a\in\frak A$, so that
+$a\mapsto\widehat{a}$ is an isomorphism between $\frak A$ and $\frak E$.
+
+Because $\frak A$ is well-orderable, $\Bbb Z_2^{\frak A}$ and $Z$ have
+well-orderable bases, and $Z$ is a Baire space, by 561E.
+}%end of proof of 561F
+
+\leader{561G}{Haar\dvrocolon{ measure}}\cmmnt{ Now I come to something
+which demands a rather less sketchy treatment.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $X$ be a completely regular
+locally compact Hausdorff topological group.
+
+(i) There is a non-zero
+left-translation-invariant positive linear functional on $C_k(X)$.
+
+(ii) If $\phi$, $\phi'$ are non-zero
+left-translation-invariant positive linear functionals on $C_k(X)$ then
+each is a scalar multiple of the other.
+%maybe drop "Hausdorff"
+
+\proof{ %{\smc Naimark 70}, VI.27.5 p 361
+{\bf (a)} Write $\Phi$ for $\{g:g\in C_k(X)^+$, $g(e)=\|g\|_{\infty}=1\}$
+where $e$ is the identity of $X$.  For $f\in C_k(X)^+$ and $g\in\Phi$, set
+
+$$\eqalign{\high{f:g}
+&=\inf\{\sum_{i=0}^n\alpha_i:\alpha_0,\ldots,\alpha_n\ge 0\cr
+&\mskip100mu \text{ and there are }a_0,\ldots,a_n\in X\text{ such that }
+f\le\sum_{i=0}^n\alpha_ia_i\action_l g\},\cr}$$
+
+\noindent writing $(a\action_lg)(x)=g(a^{-1}x)$ as in
+4A5Cc\dvAformerly{4{}41Ac}.
+We have to confirm that this infimum is always defined in
+$\coint{0,\infty}$.   \Prf\ Set $K=\overline{\{x:f(x)>0\}}$ and
+$U=\{x:g(x)>\bover12\}$, so that $K$ is compact,
+$U$ is open and $U\ne\emptyset$.
+Then $K\subseteq\bigcup_{a\in X}aU$, so there are $a_0,\ldots,a_n\in X$
+such that $K\subseteq\bigcup_{i\le n}a_iU$.   In this case
+
+\Centerline{$f
+\le\sum_{i=0}^n2\|f\|_{\infty}a_i\action_l g$}
+
+\noindent and $\high{f:g}\le 2(n+1)\|f\|_{\infty}$.\ \QeD\
+
+It is now easy to check that
+
+\Centerline{$\high{a\action_l f:g}=\high{f:g}$,
+\quad$\high{f_1+f_2:g}\le\high{f_1:g}+\high{f_2:g}$,}
+
+\Centerline{$\high{\alpha f:g}=\alpha\high{f:g}$,
+\quad$\|f\|_{\infty}\le\high{f:g}$,
+\quad$\high{f:h}\le\high{f:g}\high{g:h}$}
+
+\noindent whenever $f$, $f_1$, $f_2\in C_k(X)^+$,
+$g$, $h\in\Phi$, $a\in X$
+and $\alpha\in\coint{0,\infty}$.  (Compare part (c) of the proof of 441C.)
+
+\medskip
+
+{\bf (b)} Fix $g_0\in\Phi$, and for $g\in\Phi$ set
+
+$$\psi_g(f)=\bover{\high{f:g}}{\high{g_0:g}}$$
+
+\noindent for $f\in C_k(X)$.   Then
+
+\Centerline{$\psi_g(a\action_l f)=\psi_g(f)$,
+\quad$\psi_g(f_1+f_2)\le\psi_g(f_1)+\psi_g(f_2)$,}
+
+\Centerline{$\psi_g(\alpha f)=\alpha\psi_g(f),
+\quad\psi_g(f)\le\high{f:g_0}$,}
+
+\Centerline{$\psi_g(f)\le\psi_g(h)\high{f:h}$,
+\quad$1\le\psi_g(h)\high{g_0:h}$}
+
+\noindent whenever $f$, $f_1$, $f_2\in C_k(X)^+$, $h\in\Phi$,
+$a\in X$ and $\alpha\ge 0$.   For a neighbourhood $U$ of the identity $e$
+of $X$, write $\Phi_U$ for the set of those $g\in\Phi$ such that
+$g(x)=0$ for every $x\in X\setminus U$;  because $X$ is locally compact and
+completely regular, $\Phi_U\ne\emptyset$.
+
+\medskip
+
+{\bf (c)(i)} If $f_0,\ldots,f_m\in C_k(X)^+$ and $\epsilon>0$, there
+is a neighbourhood $U$ of $e$ such that
+
+\Centerline{$\sum_{j=0}^m\psi_g(f_j)
+\le\psi_g(\sum_{j=0}^mf_j)+\epsilon$}
+
+\noindent whenever $g\in\Phi_U$.
+\Prf\ Set $f=\sum_{j=0}^mf_j$.   Let $K$ be the compact set
+$\overline{\{x:f(x)\ne 0\}}$, and let $\hat f\in C_k(X)$ be
+such that $\chi K\le\hat f$.   Let $\eta>0$ be such that
+
+\Centerline{$(1+(m+1)\eta)(\psi_g(f)+\eta\high{\hat f:g_0})
+\le\psi_g(f)+\epsilon$,}
+
+\noindent and set $f^*=f+\eta\hat f$.
+Then we can express each $f_j$ as
+$f^*\times h_j$ where $h_j\in C_k(X)^+$ and $\sum_{j=0}^mh_j\le\chi X$.
+Let $U$ be a neighbourhood of $e$ such that $|h_j(x)-h_j(y)|\le\eta$
+whenever $x^{-1}y\in U$ and $j\le m$ (compare 4A5Pa).
+
+Take $g\in\Phi_U$.   Let $\alpha_0,\ldots,\alpha_n\ge 0$ and
+$a_0,\ldots,a_n\in X$ be such that $f^*\le\sum_{i=0}^n\alpha_ia_i\action_l g$
+and $\sum_{i=0}^n\alpha_i\le\high{f^*:g}+\eta$.
+Then, for any $x\in X$ and $j\le m$,
+
+\Centerline{$f_j(x)=f^*(x)h_j(x)
+\le\sum_{i=0}^n\alpha_ig(a_i^{-1}x)h_j(x)
+\le\sum_{i=0}^n\alpha_ig(a_i^{-1}x)(h_j(a_i)+\eta)$}
+
+\noindent because if $i$ is such that $g(a_i^{-1}x)\ne 0$ then
+$a_i^{-1}x\in U$ and $h_j(x)\le h_j(a_i)+\eta$.   So
+$\high{f_j:g}\le\sum_{i=0}^n\alpha_i(h_j(a_i)+\eta)$.   Summing over $j$,
+
+\Centerline{$\sum_{j=0}^m\high{f_j:g}
+\le\sum_{i=0}^n\alpha_i(1+(m+1)\eta)$}
+
+\noindent because $\sum_{j=0}^mh_j(a_i)\le 1$ for every $i$.
+As $\alpha_0,\ldots,\alpha_n$ and $a_0,\ldots,a_n$ are arbitrary,
+
+\Centerline{$\sum_{j=0}^m\high{f_j:g}
+\le(1+(m+1)\eta)\high{f^*:g}
+\le(1+(m+1)\eta)(\high{f:g}+\eta\high{\hat f:g})$,}
+
+\noindent and
+
+$$\eqalign{\sum_{j=0}^m\psi_g(f_i)
+&\le(1+(m+1)\eta)(\psi_g(f)+\eta\psi_g(\hat f))\cr
+&\le(1+(m+1)\eta)(\psi_g(f)+\eta\high{\hat f:g_0})
+\le\psi_g(f)+\epsilon\cr}$$
+
+\noindent as required.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} If $f_0,\ldots,f_m\in C_k(X)^+$, $M\ge 0$ and $\epsilon>0$,
+there is a neighbourhood $U$ of $e$ such that
+
+\Centerline{$\sum_{j=0}^m\psi_g(\gamma_jf_j)
+\le\psi_g(\sum_{j=0}^m\gamma_jf_j)+\epsilon$}
+
+\noindent whenever $g\in\Phi_U$ and $\gamma_0,\ldots,\gamma_m\in[0,M]$.
+\Prf\ Let $\eta>0$ be such that
+$\eta(1+\sum_{j=0}^m\high{f_j:\nobreak g_0})\le\epsilon$.
+By (i), applied finitely often,
+there is a neighbourhood $U$ of $e$ such that
+
+\Centerline{$\sum_{j=0}^m\psi_g(\gamma_jf_j)
+\le\psi_g(\sum_{j=0}^m\gamma_jf_j)+\eta$}
+
+\noindent whenever $g\in\Phi_U$ and $\gamma_0,\ldots,\gamma_m\in[0,M]$ are
+multiples of $\eta$.   Now, given arbitrary
+$\gamma_0,\ldots,\gamma_m\in[0,M]$ and $g\in\Phi_U$,
+let $\gamma_0',\ldots,\gamma_m'$ be
+multiples of $\eta$ such that $\gamma_j'\le\gamma_j<\gamma_j'+\eta$ for
+each $j$.   Then
+
+$$\eqalign{\sum_{j=0}^m\psi_g(\gamma_jf_j)
+&\le\sum_{j=0}^m\psi_g(\gamma'_jf_j)+\eta\psi_g(f_j)\cr
+&\le\psi_g(\sum_{j=0}^m\gamma'_jf_j)+\eta+\eta\sum_{j=0}^m\psi_g(f_j)
+\le\psi_g(\sum_{j=0}^m\gamma_jf_j)+\epsilon\cr}$$
+
+\noindent as required.\ \Qed
+
+\medskip
+
+{\bf (d)} (We are coming to the magic bit.)
+Suppose that $f\in C_k(X)^+$, $\epsilon>0$ and that $U$ is a
+neighbourhood of $e$ such that $|f(x)-f(y)|\le\epsilon$ whenever
+$x^{-1}y\in U$.   Then if $g\in\Phi_U$ and $\gamma>\epsilon$ there are
+$\alpha_0,\ldots,\alpha_n\ge 0$ and $a_0,\ldots,a_n\in X$ such that
+$\|f-\sum_{i=0}^n\alpha_ia_i\action_l g\|_{\infty}\le\gamma$.
+\Prf\ For all $x$, $y\in X$ we have
+
+\Centerline{$(f(x)-\epsilon)g(x^{-1}y)
+\le f(y)g(x^{-1}y)\le(f(x)+\epsilon)g(x^{-1}y)$.}
+
+\noindent Let $\eta>0$ be such that
+$\eta(1+\high{f:\Reverse{g}})\le\gamma-\epsilon$,
+where $\Reverse{g}(x)=g(x^{-1})$ for $x\in X$.
+Let $V$ be an open neighbourhood of $e$ such that $|g(x)-g(y)|\le\eta$
+whenever $xy^{-1}\in V$.   Then we have $a_0,\ldots,a_n$ such that
+$\bigcup_{i\le n}a_iV\supseteq\overline{\{x:f(x)\ne 0\}}$, and
+$h_0,\ldots,h_n\in C_k(X)^+$ such that $\sum_{i=0}^nh_i(x)=1$ whenever
+$f(x)>0$, while $h_i(x)=0$ if $i\le n$ and $x\notin a_iV$.
+By (c-ii), there is an $h\in\Phi$ such that
+
+\Centerline{$\sum_{i=0}^n\psi_h(\gamma_if\times h_i)
+\le\psi_h(\sum_{i=0}^n\gamma_if\times h_i)+\eta$}
+
+\noindent whenever $0\le\gamma_i\le\high{g_0:\Reverse{g}}$ for each $i$.
+
+Now, for $i\le n$ and $x$, $y\in X$,
+
+\Centerline{$h_i(y)f(y)(g(a_i^{-1}x)-\eta)
+\le h_i(y)f(y)g(y^{-1}x)
+\le h_i(y)f(y)(g(a_i^{-1}x)+\eta)$.}
+
+\noindent Accordingly
+
+$$\eqalign{(f(x)-\epsilon)(x\action_l\Reverse{g})(y)
+&=(f(x)-\epsilon)g(y^{-1}x)
+\le f(y)g(y^{-1}x)
+=\sum_{i=0}^nh_i(y)f(y)g(y^{-1}x)\cr
+&\le\sum_{i=0}^nh_i(y)f(y)(g(a_i^{-1}x)+\eta)
+=\eta f(y)+\sum_{i=0}^nh_i(y)f(y)g(a_i^{-1}x);\cr}$$
+
+\noindent similarly,
+
+\Centerline{$(f(x)+\epsilon)(x\action_l\Reverse{g})(y)
+\ge\sum_{i=0}^nh_i(y)f(y)g(a_i^{-1}x)-\eta f(y)$.}
+
+Fixing $x$ for the moment, and applying the functional $\psi_h$ to the
+expressions here (regarded as functions of $y$), we get
+
+\Centerline{$(f(x)-\epsilon)\psi_h(\Reverse{g})
+\le\eta\psi_h(f)+\psi_h(\sum_{i=0}^ng(a_i^{-1}x)f\times h_i)$}
+
+\noindent so
+
+$$\eqalign{f(x)-\gamma
+&\le f(x)-\epsilon-\eta\high{f:\Reverse{g}}
+\le f(x)-\epsilon-\eta\Bover{\psi_h(f)}{\psi_h(\Reverse{g})}\cr
+&\le\psi_h(\sum_{i=0}^n
+  \Bover{g(a_i^{-1}x)}{\psi_h(\Reverse{g})}f\times h_i)
+\le\sum_{i=0}^n\Bover{g(a_i^{-1}x)}{\psi_h(\Reverse{g})}\psi_h(f\times h_i)
+=\sum_{i=0}^n\alpha_ig(a_i^{-1}x)\cr}$$
+
+\noindent where $\alpha_i=\Bover{\psi_h(f\times h_i)}{\psi_h(\Reverse{g})}$.
+On the other side,
+
+\Centerline{$(f(x)+\epsilon)\psi_h(\Reverse{g})+\eta\psi_h(f)
+\ge\psi_h(\sum_{i=0}^ng(a_i^{-1}x)f\times h_i)$,}
+
+\noindent so
+
+$$\eqalignno{f(x)+\gamma
+&\ge f(x)+\epsilon+\eta\Bover{\psi_h(f)}{\psi_h(\Reverse{g})}+\eta\cr
+&\ge\psi_h(\sum_{i=0}^n\Bover{g(a_i^{-1}x)}{\psi_h(\Reverse{g})}f\times h_i)
+  +\eta
+\ge\sum_{i=0}^n\Bover{g(a_i^{-1}x)}{\psi_h(\Reverse{g})}\psi_h(f\times h_i)\cr
+\displaycause{because
+$\Bover{g(a_i^{-1}x)}{\psi_h(\Reverse{g})}\le\high{g_0:\Reverse{g}}$ for every $i$}
+&=\sum_{i=0}^n\alpha_ig(a_i^{-1}x).}$$
+
+\noindent All this is valid for every $x\in X$;  so
+
+\Centerline{$\|f-\sum_{i=0}^n\alpha_ia_i\action_l g\|_{\infty}\le\gamma$.
+\Qed}
+
+\medskip
+
+{\bf (e)} For any $f\in C_k(X)^+$ and $\epsilon>0$ there are a
+$\gamma\ge 0$ and a neighbourhood $U$ of $e$ such that
+$|\psi_h(f)-\gamma|\le\epsilon$ for every $h\in\Phi_U$.   \Prf\ Let $V$ be
+a compact neighbourhood of $0$ and $K=\overline{\{x:f(x)+g_0(x)>0\}}$;
+let $f^*\in C_k(X)$ be such that $\chi(KV^{-1}V)\le f^*\le\chi X$.
+Let $\delta$, $\eta>0$ be such that
+
+\Centerline{$\delta(1+2(\delta+\high{f:g_0}))\le\epsilon$,
+\quad$\delta\le\bover12$,
+\quad$\eta(1+\high{f^*:g_0})\le\delta$.}
+
+\noindent By (d), there are $g\in\Phi_V$,
+$\alpha_0,\ldots,\alpha_n,\beta_0,\ldots,\beta_m\ge 0$ and
+$a_0,\ldots,a_n,b_0,\ldots,b_n\in X$ such that
+
+\Centerline{$\|f-\sum_{i=0}^n\alpha_ia_i\action_l g\|_{\infty}\le\eta$,
+\quad$\|g_0-\sum_{j=0}^m\beta_jb_j\action_l g\|_{\infty}\le\eta$.}
+
+\noindent
+We can suppose that all the $a_i$, $b_j$ belong to $KV^{-1}$, since
+$g(a^{-1}x)=0$ if $x\in K$ and $a\notin KV^{-1}$;  consequently
+
+\Centerline{$|f-\sum_{i=0}^n\alpha_ia_i\action_l g|\le\eta f^*$,
+\quad$|g_0-\sum_{j=0}^m\beta_jb_j\action_l g|\le\eta f^*$.}
+
+\noindent Set $\alpha=\sum_{i=0}^n\alpha_i$, $\beta=\sum_{j=0}^m\beta_j$
+and $\gamma=\Bover{\alpha}{\beta}$.   ($\beta$ is non-zero because
+$\|g_0\|_{\infty}=1$ and $\eta\|f^*\|_{\infty}\le\bover12$.)
+
+Let $U\subseteq V$ be a neighbourhood of $e$ such that
+
+\Centerline{$\sum_{i=0}^n\alpha_i\psi_h(a_i\action_l g)
+\le\psi_h(\sum_{i=0}^n\alpha_ia_i\action_l g)+\eta$,}
+
+\Centerline{$\sum_{j=0}^m\beta_j\psi_h(b_j\action_l g)
+\le\psi_h(\sum_{j=0}^m\beta_jb_j\action_l g)+\eta$}
+
+\noindent for every $h\in\Phi_U$  ((c) above).   Take any $h\in\Phi_U$.
+Then
+
+$$\eqalign{|\psi_h(f)-\alpha\psi_h(g)|
+&=|\psi_h(f)-\sum_{i=0}^n\alpha_i\psi_h(a_i\action_l g)|
+\le|\psi_h(f)-\psi_h(\sum_{i=0}^n\alpha_ia_i\action_l g)|+\eta\cr
+&\le\eta\psi_h(f^*)+\eta
+\le\eta\high{f^*:g_0}+\eta;\cr}$$
+
+\noindent similarly,
+
+\Centerline{$|1-\beta\psi_h(g)|
+=|\psi_h(g_0)-\beta\psi_h(g)|\le\eta(\high{f^*:g_0}+1)$.}
+
+\noindent But this means that
+
+$$\eqalign{|\psi_h(f)-\gamma|
+&\le\eta(1+\high{f^*:g_0})+|\alpha\psi_h(g)-\gamma|\cr
+&\le\delta+\gamma|\beta\psi_h(g)-1|
+\le\delta(1+\gamma).\cr}$$
+
+\noindent Consequently
+
+\Centerline{$\gamma\le\Bover{\psi_h(f)+\delta}{1-\delta}
+\le 2(\delta+\high{f:g_0})$,}
+
+\Centerline{$|\psi_h(f)-\gamma|\le\delta(1+2(\delta+\high{f:g_0}))
+\le\epsilon$,}
+
+\noindent as required.\ \Qed
+
+\medskip
+
+{\bf (f)} We are nearly home.   Let $\Cal F$ be the filter on $\Phi$
+generated by $\{\Phi_U:U$ is a neighbourhood of $e\}$.   By (e),
+$\phi(f)=\lim_{h\to\Cal F}\psi_h(f)$ is defined for every $f\in C_k(X)^+$.
+From the formulae in (b) we have
+
+\Centerline{$\phi(a\action_l f)=\phi(f)$,
+\quad$\phi(f_1+f_2)\le\phi(f_1)+\phi(f_2)$,
+\quad$\phi(\alpha f)=\alpha\phi(f)$}
+
+\noindent whenever $f$,
+$f_1$, $f_2\in C_k(X)^+$, $a\in X$ and $\alpha\ge 0$.
+By (c-i), we have $\phi(f_1)+\phi(f_2)\le\phi(f_1+f_2)$ for all $f_1$,
+$f_2\in C_k(X)^+$.   So $\phi$ is additive and extends to an invariant
+positive linear functional on $C_k(X)$ which is non-zero because
+$\phi(g_0)=1$.
+
+\medskip
+
+{\bf (g)} As for uniqueness, we can repeat the arguments in (e).
+Suppose that $\phi'$ is another
+left-translation-invariant positive linear functional on $C_k(X)$ such that
+$\phi'(g_0)=1$, and $f\in C_k(X)^+$.   Let
+$K$ be the closure of ${\{x:f(x)+g_0(x)>0\}}$ and $V$ a compact
+neighbourhood
+of $e$;  let $f^*\in C_k(X^*)$ be such that $\chi(KV^{-1}V)\le f^*$.
+Take $\epsilon>0$.   Let $\delta$, $\eta>0$ be such that
+
+\Centerline{$\delta\le\Bover12$,
+\quad$\delta(1+2(\phi(f)+1))\le\epsilon$,
+\quad$\delta(1+2(\phi'(f)+1))\le\epsilon$,}
+
+\Centerline{$\eta\phi(f^*)\le\delta$,
+\quad$\eta\phi'(f^*)\le\delta$.}
+
+\noindent Then there
+is a neighbourhood $U$ of $e$, included in $V$, such that
+$|f(x)-f(y)|\le\eta$
+and $|g_0(x)-g_0(y)|\le\eta$ whenever $x^{-1}y\in U$.   By (d),
+there are $g\in\Phi_V$,
+$\alpha_0,\ldots,\alpha_n,\beta_0,\ldots,\beta_m\ge 0$ and
+$a_0,\ldots,a_n,b_0,\ldots,b_m\in X$ such that
+
+\Centerline{$|f(x)-\sum_{i=0}^n\alpha_i(a_i\action_l g)(x)|\le\eta$,
+\quad$|g_0(x)-\sum_{j=0}^m\beta_j(b_j\action_l g)(x)|\le\eta$}
+
+\noindent for every $x\in X$;  as in (e), we may suppose that every $a_i$,
+$b_j$ belongs to $KV^{-1}$ so that
+
+\Centerline{$|f-\sum_{i=0}^n\alpha_ia_i\action_l g|\le\eta f^*$,
+\quad$|g_0-\sum_{j=0}^m\beta_jb_j\action_l g|\le\eta f^*$.}
+
+\noindent Consequently, setting $\alpha=\sum_{i=0}^n\alpha_i$,
+$\beta=\sum_{i=0}^n\beta_i$ and $\gamma=\alpha/\beta$,
+
+\Centerline{$|\phi(f)-\alpha\phi(g)|
+=|\phi(f)-\sum_{i=0}^n\alpha_i\phi(a_i\action_l g)|
+\le\eta\phi(f^*)\le\delta$,}
+
+\Centerline{$|1-\beta\phi(g)|
+=|\phi(g_0)-\sum_{j=0}^m\beta_j\phi(b_j\action_l g)|
+\le\eta\phi(f^*)\le\delta$.}
+
+\noindent So
+
+\Centerline{$|\phi(f)-\gamma|
+\le\eta\phi(f^*)+\gamma|\beta\phi(g)-1|
+\le\eta\phi(f^*)(1+\gamma)
+\le\delta(1+\gamma)$}
+
+\noindent and
+
+\Centerline{$\gamma\le\Bover{\phi(f)+\delta}{1-\delta}\le 2(\phi(f)+1)$,}
+
+\Centerline{$|\phi(f)-\gamma|\le\delta(1+2(\phi(f)+\delta))
+\le\epsilon$.}
+
+\noindent Similarly, $|\phi'(f)-\gamma|\le\epsilon$ and
+$|\phi(f)-\phi'(f)|\le 2\epsilon$.   As $\epsilon$ and $f$ are arbitrary,
+$\phi=\phi'$.
+}%end of proof of 561G
+
+\leader{561H}{Kakutani's theorem} (a) Let $U$ be an Archimedean Riesz space
+with a weak order unit.
+Then there are a Dedekind complete Boolean algebra
+$\frak A$ and an order-dense Riesz subspace of $L^0(\frak A)$, containing
+$\chi 1$, which is isomorphic to $U$.
+
+(b) Let $U$ be an $L$-space with a weak order unit $e$.   Then there is a
+totally finite measure algebra $(\frak A,\bar\mu)$ such that $U$ is
+isomorphic, as normed Riesz space, to $L^1(\frak A,\bar\mu)$, and we can
+choose the isomorphism to match $e$ with $\chi 1$.
+
+\proof{ All the required ideas are in Volume 3;  but we have quite a lot of
+checking to do.
+
+\medskip
+
+{\bf (a)(i)} The first step is to observe that, for any Dedekind
+$\sigma$-complete Boolean algebra $\frak A$, the definition of
+$L^0=L^0(\frak A)$ in 364A gives no difficulties, and that the
+formulae of 364D
+can be used to define a Riesz space structure on $L^0$.   \Prf\
+I recall the formulae in question:
+
+\Centerline{$\Bvalue{u>\alpha}=\sup_{\beta>\alpha}\Bvalue{u>\beta}$
+for every $\alpha\in\Bbb R$,}
+
+\Centerline{$\inf_{\alpha\in\Bbb R}\Bvalue{u>\alpha}=0$,
+\quad $\sup_{\alpha\in\Bbb R}\Bvalue{u>\alpha}=1$,}
+
+\Centerline{$\Bvalue{u+v>\alpha}
+=\sup_{q\in\Bbb Q}\Bvalue{u>q}\Bcap\Bvalue{v>\alpha-q}$,}
+
+\noindent whenever $u$, $v\in L^0$ and $\alpha\in\Bbb R$,
+
+\Centerline{$\Bvalue{\gamma u>\alpha}=\Bvalue{u>\bover{\alpha}{\gamma}}$}
+
+\noindent whenever $u\in L^0$, $\gamma\in\ooint{0,\infty}$ and
+$\alpha\in\Bbb R$.
+The distributive laws in 313A-313B are enough to ensure that $u+v$ and
+$\gamma u$, so defined, belong to $L^0$, and also that
+$u+v=v+u$, $u+(v+w)=(u+v)+w$, $\gamma(u+v)=\gamma u+\gamma v$ for $u$, $v$,
+$w\in L^0$ and $\gamma>0$.   Defining $\tbf{0}\in L^0$ by saying that
+
+\Centerline{$\Bvalue{\tbf{0}>\alpha}=1$ if $\alpha<0$, $0$ if
+$\alpha\ge 0$,}
+
+\noindent we can check that $u+0=u$ for every $u$.   Defining $-u\in L^0$
+by saying that
+
+\Centerline{$\Bvalue{-u>\alpha}
+=\sup_{q\in\Bbb Q,q>\alpha}1\Bsetminus\Bvalue{u>-q}$}
+
+\noindent for $u\in L^0$ and $\alpha\in\Bbb R$, we find (again using the
+distributive laws, of course) that $u+(-u)=\tbf{0}$;  we can now define
+$\gamma u$, for $\gamma\le 0$, by saying that $0\cdot u=\tbf{0}$ and
+$\gamma u=(-\gamma)(-u)$ if $\gamma<0$, and we shall have a linear space.
+Turning to the ordering, it is nearly trivial to check that the definition
+
+\Centerline{$u\le v\iff\Bvalue{u>\alpha}\Bsubseteq\Bvalue{v>\alpha}$ for
+every $\alpha\in\Bbb R$}
+
+\noindent gives us a partially ordered linear space.   It is a Riesz space
+because the formula
+
+\Centerline{$\Bvalue{u\vee v>\alpha}
+=\Bvalue{u>\alpha}\Bcup\Bvalue{v>\alpha}$}
+
+\noindent defines a member of $L^0$ which must be $\sup\{u,v\}$ in $L^0$.\
+\Qed
+
+We need to know that if $\frak A$ is Dedekind
+complete, so is $L^0$;  the argument of 364M still applies.
+Note also that $a\mapsto\chi a:\frak A\to L^0$ is
+order-continuous, as in 364Jc.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $U$ is an Archimedean Riesz space with an
+order unit $e$.   Let $\frak A$ be the band algebra of $U$ (353B).
+Then we can argue as in 368E, but with the simplification
+that the maximal disjoint set $C$ in $U^+\setminus\{0\}$ is just $\{e\}$,
+to see that we have an injective Riesz homomorphism $T:U\to L^0(\frak A)$
+defined by taking $\Bvalue{Tu>\alpha}$ to be the band generated by
+$e\wedge(u-\alpha e)^+$ (or, if you prefer, by $(u-\alpha e)^+$, since it
+comes to the same thing).   We shall have $T[U]$ order-dense, as before,
+with $Te=\chi 1$.
+
+\medskip
+
+{\bf (b)(i)} Again, the bit we have to concentrate on is the check that,
+starting from a totally finite measure algebra $(\frak A,\bar\mu)$, we can
+define $L^1(\frak A,\bar\mu)$ as in 365A.
+We have to be a bit careful, because already in Proposition 321C there is
+an appeal to AC$(\omega)$ (see 561Yi(vi));  
+but I think we need to know very little about
+measure algebras to get through the arguments here.   Of course another
+difficulty arises at once in 365A, because I write
+
+\Centerline{$\|u\|_1
+=\int_0^{\infty}\bar\mu\Bvalue{|u|>\alpha}\,d\alpha$,}
+
+\noindent and say that the integration is with respect to `Lebesgue
+measure', which won't do, at least until I redefine Lebesgue integration as
+in \S565.   But we are integrating a monotonic
+function, so the integral can be thought of as an improper Riemann
+integral;  if you like,
+
+\Centerline{$\|u\|_1
+=\lim_{n\to\infty}2^{-n}\sum_{i=1}^{4^n}\bar\mu\Bvalue{|u|>2^{-n}i}
+=\sup_{n\in\Bbb N}2^{-n}\sum_{i=1}^{4^n}\bar\mu\Bvalue{|u|>2^{-n}i}$.}
+
+\noindent Next, we can't use the Loomis-Sikorski theorem to prove 365C, and
+have to go back to first principles.   To see that $\|\,\|_1$ is
+subadditive, and additive on $(L^0)^+$, look first at `simple' non-negative
+$u$, expressed as $u=\sum_{i=0}^n\alpha_i\chi a_i$, and check that
+$\int u=\|u\|_1=\sum_{i=0}^n\alpha_i\bar\mu a_i$;  now confirm that
+every element of $(L^0)^+$ is expressible as the supremum of a
+non-decreasing sequence of such elements, and that $\|\,\|_1$ is
+sequentially order-continuous on the left on $(L^0)^+$.
+(We need 321Be.)
+This is enough to show that $L^1$ is a solid linear subspace of $L^0$ with
+a Riesz norm and a sequentially order-continuous integral.
+(I do {\it not} claim, yet, that $L^1$ is an $L$-space, because
+I do not know, in the absence of countable choice, that every Cauchy
+filter on $L^1$ converges.)
+
+\medskip
+
+\quad{\bf (ii)} Now let $U$ be an $L$-space with a weak order unit $e$.
+As in (a), let $\frak A$ be the band algebra of $U$ and $T:U\to L^0$ an
+injective Riesz homomorphism onto an order-dense Riesz subspace of $L^0$
+with $Te=\chi 1$.   Now $U$ is Dedekind complete (354N, 354Ee).
+Consequently $T[U]$ must be solid in $L^0$ (353K).
+
+\medskip
+
+\quad{\bf (iii)} For $a\in\frak A$, set $\bar\mu a=\|T^{-1}(\chi a)\|$.
+Because the map $a\mapsto T^{-1}\chi a$ is additive and order-continuous
+and injective, $(\frak A,\bar\mu)$ is a measure algebra;  indeed,
+$\bar\mu$ is actually order-continuous.   So we have a space
+$L^1=L^1(\frak A,\bar\mu)$.   Because $\bar\mu$ is order-continuous,
+364L(a-ii) tells us that $\|w\|_1=\sup_{v\in B}\|v\|_1$ whenever
+$B\subseteq L^0$ is a non-empty upwards-directed set in $L^0$
+with supremum $w$ in $L^0$.
+
+Writing $S\subseteq L^0$ for
+the linear span of $\{\chi a:a\in\frak A\}$, we see that
+$\|w\|_1=\|T^{-1}w\|$ for every $w\in S$.   Since $S$ is order-dense in
+$L^0$ it is order-dense in $L^1$, and $T^{-1}[S]$ is order-dense in $U$,
+therefore norm-dense (354Ef).
+
+\medskip
+
+\quad{\bf (iv)}
+$Tu\in L^1$ for every $u\in U^+$.   \Prf\ For $n\in\Bbb N$ set
+$a_n=\Bvalue{Tu>2^n}\Bsetminus\Bvalue{Tu>2^{n+1}}$, $u_n=T^{-1}(\chi a_n)$.
+Set $w_n=\sum_{i=0}^n2^i\chi a_i$ for $n\in\Bbb N$.   Then $w_n\le Tu$
+and $\|w_n\|_1=\|T^{-1}w_n\|\le\|u\|$ for every $n$.   By 364L(a-i),
+$w=\sup_{n\in\Bbb N}w_n$ is defined in $L^0$, and
+$\|w\|_1=\sup_{n\in\Bbb N}\|w_n\|_1$ is finite.   But $Tu\le 2w+\chi 1$, so
+$Tu\in L^1$.\ \QeD\
+
+\medskip
+
+\quad{\bf (v)} If $w\in(L^1)^+$ there is a $v\in U^+$ such that $w=Tv$ and
+$\|v\|=\|w\|_1$.   \Prf\ Consider
+$A=\{u:u\in T^{-1}[S]$, $Tu\le w\}$.   This is upwards-directed and
+norm-bounded, so has a supremum $v$ in $U$ (354N again), and
+$Tv\ge w'$ whenever $w'\in S$ and $w'\le w$.   But $S$ is order-dense in
+$L^0$ so $Tv\ge w$.   Because $T$ is order-continuous, (iii) tells us that
+
+\Centerline{$\|Tv\|_1=\sup_{u\in A}\|Tu\|_1=\sup_{u\in A}\|u\|=\|v\|$,}
+
+\noindent while surely $\|w\|_1\ge\sup_{u\in A}\|Tu\|_1$.   So $Tv=w$.\
+\Qed
+
+\medskip
+
+\quad{\bf (vi)} Putting (iv) and (v) together, we see that $T[U]=L^1$ and
+that $T$ is a normed Riesz space isomorphism, as required.
+}%end of proof of 561H
+
+\vleader{72pt}{561I}{Hilbert spaces:  Proposition}
+Let $U$ be a Hilbert space.
+
+(a) If $C\subseteq U$ is a non-empty closed convex set then for
+any $u\in U$ there is a unique $v\in C$ such that
+$\|u-v\|=\min\{\|u-w\|:w\in C\}$.
+
+(b) Every closed linear subspace of $U$ is the image of an orthogonal
+projection, that is, has an orthogonal complement.
+
+(c) Every member of $U^*$ is of the form
+$u\mapsto\innerprod{u}{v}$ for some $v\in U$.
+
+(d) $U$ is reflexive.
+
+(e) If $C\subseteq U$ is a norm-closed convex set then it is
+weakly closed.
+
+\proof{{\bf (a)} Set $\gamma=\inf\{\|u-w\|:w\in C\}$ and let $\Cal F$ be
+the filter on $U$ generated by sets of the form
+$F_{\epsilon}=\{w:w\in C$, $\|u-w\|\le\gamma+\epsilon\}$ for $\epsilon>0$.
+Then $\Cal F$ is Cauchy.   \Prf\ Suppose that $\epsilon>0$ and $w_1$,
+$w_2\in F_{\epsilon}$.   Then
+
+$$\eqalignno{\|w_1-w_2\|^2
+&=2\|u-w_1\|^2+2\|u-w_2\|^2-\|2u-w_1-w_2\|^2
+\le 4(\gamma+\epsilon)^2-4\gamma^2\cr
+\displaycause{because $\Bover12(w_1+w_2)\in C$}
+&=8\gamma\epsilon+4\epsilon^2.\cr}$$
+
+\noindent So
+
+\Centerline{$\inf_{F\in\Cal F}\diam F=\inf_{\epsilon>0}\diam F_{\epsilon}
+=0$.   \Qed}
+
+We therefore have a limit $v$ of $\Cal F$, which is in $C$ because $C$ is
+closed, and $\|u-v\|=\lim_{w\to\Cal F}\|u-w\|=\gamma$.
+If now $w$ is any other member of $C$, $\|u-\Bover12(v+w)\|\ge\gamma$ so
+$\|u-w\|>\gamma$.
+
+\medskip
+
+{\bf (b)} Let $V$ be a closed linear subspace of $U$.   By (a), we have a
+function $P:U\to V$ such that $Pu$ is the unique closest element of $V$ to
+$u$, that is, $\|u-Pu\|\le\|u-Pu+\alpha v\|$ for every $v\in V$ and
+$\alpha\in\Bbb R$.   It follows that $\innerprod{u-Pu}{v}=0$ for every
+$v\in V$, that is, that $u-Pu\in V^{\perp}$.   As $u$ is arbitrary,
+$U=V+V^{\perp}$;  as $V\cap V^{\perp}=\{0\}$, $P$ must be the projection
+onto $V$ with kernel $V^{\perp}$, and is an orthogonal projection.
+
+\medskip
+
+{\bf (c)} Take $f\in U^*$.   If $f=0$ then $f(u)=\innerprod{u}{0}$ for
+every $u$.   Otherwise, set $C=\{w:f(w)=0\}$.   Then $C$ is a proper closed
+linear subspace of $U$.   Take any $u_0\in U\setminus C$.
+Let $v_0$ be the point of $C$ nearest to $u_0$, and consider $u_1=u_0-v_0$.
+Then $0$ is the point of $C$ nearest to $u_1$, so that
+$\innerprod{u}{u_1}=0$ for every $u\in C$.   Set
+$v=\Bover{f(u_1)}{\|u_1\|^2}u_1$;  then $\innerprod{u}{v}=0$ for every
+$u\in C$, while $f(v)=\innerprod{v}{v}$.   So $f(u)=\innerprod{u}{v}$ for
+every $u\in U$.
+
+\medskip
+
+{\bf (d)} From (c) it follows that we can identify $U^*$ with $U$ and
+therefore $U^{**}$ also becomes identified with $U$.
+
+\medskip
+
+{\bf (e)} If $C$ is empty this is trivial.   Otherwise, take any
+$u\in U\setminus C$.   Let $v$ be the point of $C$ nearest to $U$, and set
+$f(w)=\innerprod{w}{u-v}$ for $w\in U$.   Then $f(w)\le f(v)<f(u)$ for
+every $w\in C$.   So $u$ does not belong to the weak closure of $C$;  as
+$u$ is arbitrary, $C$ is weakly closed.
+}%end of proof of 561I
+
+\exercises{\leader{561X}{Basic exercises (a)}
+%\spheader 561Xa
+Let $X$ be any set.   (i) Show
+that $\ell^p(X)$, for $1\le p\le\infty$, is a Banach space.
+(ii) Show that $\ell^1(X)^*$ can be identified with $\ell^{\infty}(X)$.
+(iii) Show that if $1<p<\infty$ and $\bover1p+\bover1q=1$ then
+$\ell^p(X)^*$ can be identified with $\ell^q(X)$.
+%561B
+
+\spheader 561Xb Let $X$ be any topological space.   Show that $C_b(X)$,
+with $\|\,\|_{\infty}$, is a Banach space.
+%561B
+
+\spheader 561Xc Suppose that there is
+an infinite subset $X$ of $\Bbb R$ with no infinite countable subset
+({\smc Jech 73}, \S10.1).   Show that $X$ is sequentially closed
+but not closed, second-countable but not separable,
+sequentially compact but not compact, sequentially complete
+(that is, every Cauchy sequence converges)
+but not complete.   Show that the topology of $\Bbb R$ is not countably
+tight.
+%561B
+
+\sqheader 561Xd (i) Let $C$ be the set of those
+$R\subseteq\Bbb N\times\Bbb N$ which are total orderings of subsets of
+$\Bbb N$.   Show that $C$ is a closed subset of
+$\Cal P(\Bbb N\times\Bbb N)$ with its usual topology.
+(ii) For $\xi<\omega_1$, let $C_{\xi}$ be the set of those
+$R\in C$ which are well-orderings of order type $\xi$ of subsets of
+$\Bbb N$.   Show that $C_{\xi}$ is a Borel subset of
+$\Cal P(\Bbb N\times\Bbb N)$.   \Hint{induce on $\xi$.}
+(iii) Show that there is an injective function from $\omega_1$ to the
+Borel $\sigma$-algebra $\Cal B(\Bbb R)$ of $\Bbb R$.
+%561B
+
+\spheader 561Xe(i) Show that every non-empty closed subset of $\NN$ has a
+lexicographically-first member.   (ii) Show that if a T$_1$
+topological space $X$ is a continuous image
+of $\NN$, then there is an injection from $X$ to $\Cal P\Bbb N$.
+%561C
+
+\spheader 561Xf Let $X$ be a topological space.
+(i) Show that if $X$ is separable, then
+$X^{\Bbb R}$ is separable.  (ii) Show that if $X$ has a countable network,
+then $X^{\Bbb R}$ has a countable network.
+%561C
+
+\spheader 561Xg(i) Show that a locally compact Hausdorff space is regular.
+(ii) Show that a compact regular space is normal.
+%561D
+
+\spheader 561Xh Let $U$ be a normed space with a well-orderable subset $D$
+such that the linear span of $D$ is dense in $U$.
+(i) Show that if $V$ is a
+linear subspace of $U$ and $f\in V^*$, there is a $g\in U^*$, extending
+$f$, with the same norm as $f$.   (ii) Show that the unit ball
+$B$ of $U^*$ is
+weak*-compact and has a well-orderable base for its topology.   (iii) Show
+that if $K\subseteq B$ is weak*-closed then $K$ has an extreme point.
+%561D
+
+\spheader 561Xi Let $(X,\rho)$ be a separable
+compact metric space, and $G$ the
+isometry group of $X$ with its topology of pointwise convergence (441G).
+Show that $G$ is compact.   \Hint{$X^{\Bbb N}$ is compact.}
+%561D
+
+\spheader 561Xj Let $X$ be a regular topological space and $A$ a subset of
+$X$.   Show that the following are equiveridical:  (i) $A$ is relatively
+compact in $X$;  (ii) $\overline{A}$ is compact;  (iii) every filter on $X$
+containing $A$ has a cluster point.
+%561D
+
+\sqheader 561Xk Let $(X,\frak T)$ be a regular second-countable
+topological space, and write $\frak S$ for the usual topology on
+$\BbbR^{\Bbb N}$.   (i) Show that there are a continuous function
+$f:X\to\BbbR^{\Bbb N}$ and a function $\phi:\frak T\to\frak S$ such that
+$G=f^{-1}[\phi(G)]$ for every $G\in\frak T$.   (ii) Show that if $X$ is
+Hausdorff it is metrizable.
+%561E 561Xl
+
+\sqheader 561Xl Let $X$ be a regular second-countable topological space,
+$\Cal C$ the family of closed subsets of $X$, and $\Cal D$ the set of
+disjoint pairs
+$(F_0,F_1)\in\Cal C\times\Cal C$.   (i) Show that $X$ is
+normal, and that there
+is a function $\psi:\Cal D\to\Cal C$ such that
+$F_0\subseteq\interior\psi(F_0,F_1)$ and $F_1\cap\psi(F_0,F_1)=\emptyset$
+whenever $(F_0,F_1)\in\Cal D$.
+(ii) Show that there is a function $\phi:\Cal D\to C(X)$ such
+$\phi(F_0,F_1)(x)=0$, $\phi(F_0,F_1)(y)=1$ whenever $(F_0,F_1)\in\Cal D$,
+$x\in F_0$ and $y\in F_1$.
+%561E
+
+\spheader 561Xm Let $X$ be a well-orderable discrete abelian group.   Show
+that its dual group, as defined in 445A, is a completely regular compact
+Hausdorff group.
+%561G
+
+\spheader 561Xn Let $U$ be a Riesz space with a Riesz norm.   Let
+$\Delta:U^+\to\coint{0,\infty}$ be such that
+($\alpha$) $\Delta$ is non-decreasing,
+($\beta$) $\Delta(\alpha u)=\alpha\Delta(u)$ whenever
+$u\in U^+$ and $\alpha\ge 0$,
+($\gamma$) $\Delta(u+v)=\Delta(u)+\Delta(v)$ whenever $u\wedge v=0$
+($\delta$) $|\Delta(u)-\Delta(v)|\le\|u-v\|$ for all $u$, $v\in U^+$.
+Show that $\Delta$ has an  to a member of $U^*$.
+%561H
+
+\spheader 561Xo Let $U$ be an $L$-space.
+Show that $\|u\|=\sup\{f(u):f\in U^*$, $\|f\|\le 1\}$ for every $u\in U$.
+%561H
+
+\spheader 561Xp Let $(\frak A,\bar\mu)$ be a measure algebra.   Show that
+$L^1(\frak A,\bar\mu)$ is a Dedekind $\sigma$-complete Riesz space and a
+sequentially complete normed space.
+%561H
+
+\spheader 561Xq Let $\frak A$ be a Boolean algebra.   Show that there are a
+set $X$, an algebra $\Cal E$ of subsets of $X$ and a surjective Boolean
+homomorphism from $\Cal E$ onto $\frak A$.   \Hint{566L.}
+%561H
+
+\spheader 561Xr Let $U$ be a Hilbert space.
+(i) Show that a bounded sequence
+$\sequencen{u_n}$ in $U$ is weakly convergent in $U$ iff
+$\lim_{n\to\infty}\innerprod{u_n}{u_m}$ is defined for every
+$m\in\Bbb N$.
+(ii) Show that the unit ball
+of $U$ is sequentially compact for the weak topology.   (iii)
+Show that if
+$T:U\to U$ is a self-adjoint compact linear operator, then $T[U]$ is
+included in the closed linear span of $\{Tv:v$ is an eigenvector of $T\}$.
+\Hint{reduce to the case in which $U$ is separable, and show that there is
+then a sequence $\sequencen{u_n}$ in the unit ball $B$ of $U$ such that
+$\lim_{n\to\infty}\innerprod{Tu_n}{u_n}=\sup_{u\in B}\innerprod{Tu}{u}$.}
+%561I
+
+\spheader 561Xs\dvAnew{2013} 
+In 561C, show that $(F,\alpha)\mapsto f_F(\alpha):\Cal E\times\NN\to\NN$ is
+continuous if $\Cal E$ is given its Vietoris topology (4A2T) and
+$\NN$ its usual topology.
+%561C out of order query
+
+\leader{561Y}{Further exercises (a)}
+%\spheader 561Ya
+Suppose that there is a sequence $\sequencen{A_n}$ of
+countable sets such that $\bigcup_{n\in\Bbb N}A_n=\Bbb R$.   Show that
+$\cf\omega_1=\omega$.
+%561A
+
+\spheader 561Yb(i) Show that there is a bijection between $\omega_1$ and
+$\Bbb N\times\omega_1$.   (ii) Show that $\omega_2$ is not expressible as the
+union of a sequence of
+countable sets.   (iii) Show that $\Cal P\omega_1$ is not expressible as the
+union of a sequence of
+countable sets.   (iv) Show that $\Cal P(\Cal P\Bbb N)$ is not
+expressible as the union of a sequence of countable sets.
+%561Ya 561A
+
+\spheader 561Yc Suppose there is a countable family of doubleton
+sets with no choice function ({\smc Jech 73}, \S5.5).   Show that
+(i) there is
+a set $I$ such that $\{0,1\}^I$ has an open-and-closed set which is not
+determined by coordinates in any countable subset of $I$ (ii) there is a
+compact metrizable space which is not ccc, therefore not second-countable
+(iii) there is a complete totally bounded metric space which is neither ccc
+nor compact (iv) there is a probability algebra which is not ccc.
+%561D mt56bits
+
+\spheader 561Yd Let $X$ be a metrizable space.   Show that it
+is second-countable iff it has a countable $\pi$-base
+iff it has a countable network.
+%561E
+
+\spheader 561Ye(i) Let $(X,\rho)$ be a complete metric space.
+Show that $X$ has a well-orderable dense subset iff it has a well-orderable
+base iff it has a well-orderable $\pi$-base iff it has a well-orderable
+network iff there is a choice function
+for the family of its non-empty closed subsets.
+(ii) Let $X$ be a locally compact Hausdorff space.
+($\alpha$) Show that if it
+has a well-orderable $\pi$-base then it has a well-orderable dense subset.
+($\beta$) Show that if it has a well-orderable base then
+it is completely regular and there is a choice
+function for the family of its non-empty closed subsets.
+%561E 561D
+
+\spheader 561Yf Let $X$ be a metrizable space.
+Show that every continuous real-valued
+function defined on a closed subset of $X$ has an extension to
+a continuous real-valued function on $X$.
+%561E mt56bits
+
+\spheader 561Yg(i) Show that if $\frak A$ is a Boolean algebra,
+there is an essentially unique Dedekind complete Boolean algebra
+$\widehat{\frak A}$ in which $\frak A$ can
+be embedded as an order-dense subalgebra.   (ii) Show that if $\frak A$ and
+$\frak B$ are two Boolean algebras and $\pi:\frak A\to\frak B$ is an
+order-continuous Boolean homomorphism, $\pi$ has a unique extension to an
+order-continuous Boolean homomorphism from $\widehat{\frak A}$ to
+$\widehat{\frak B}$.   \Hint{take $\widehat{\frak A}$ to be the set of
+pairs $(A,A')$ of subsets of $\frak A$ such that $A$ is the set of lower
+bounds of $A'$ and $A'$ is the set of upper bounds of $A$.}
+%3{}14T 561H
+
+\spheader 561Yh Let $\familyiI{\frak A_i}$ be a family of Boolean algebras.
+(i) Show that there is an essentially unique structure
+$(\frak A,\familyiI{\varepsilon_i})$ such that ($\alpha$) $\frak A$ is a
+Boolean algebra ($\beta$) $\varepsilon_i:\frak A_i\to\frak A$ is a Boolean
+homomorphism for every $i$ ($\gamma$) whenever $\frak B$ is a Boolean
+algebra
+and $\phi_i:\frak A_i\to\frak B$ is a Boolean homomorphism for every $i$,
+there is a unique Boolean homomorphism $\pi:\frak A\to\frak B$ such that
+$\pi\varepsilon_i=\phi_i$ for every $i$.   (ii) Show that if
+$\nu_i:\frak A_i\to\Bbb R$ is additive, with $\nu_i1=1$,
+for every $i\in I$, there is a
+unique additive $\nu:\frak A\to\Bbb R$ such that
+$\nu(\inf_{i\in J}\varepsilon_i(a_i))=\prod_{i\in J}\nu_ia_i$ whenever
+$J\subseteq I$ is finite and $a_i\in\frak A_i$ for $i\in J$.
+%3{}15 561H
+
+\spheader 561Yi Suppose that there is an infinite totally ordered set $I$
+with no countably infinite subset ({\smc Jech 73}, \S10.1).   Let $\Cal E$
+be the algebra of subsets of $\{0,1\}^I$ determined by coordinates in
+finite sets.   (i) Show that the union of any countable family of finite 
+subsets of $I$ is finite.   
+(ii) Show that $\Cal E$ has no countably infinite subset, so
+that every finitely additive real-valued functional on $\Cal E$ is
+countably additive.   (iii) Show that there is no infinite disjoint
+family in $\Cal E$.
+(iv) Show that $\Cal E$ is Dedekind complete.   (v) Show that there
+is a functional $\mu_1$ such that $(\Cal E,\mu_1)$ 
+is a probability algebra and
+$\mu_1$ is order-continuous.   (vi) Show that there is a functional
+$\mu_2$ such that $(\Cal E,\mu_2)$ is a probability algebra and $\mu_2$ is
+not order-continuous.
+%3{}91  56bits
+
+\spheader 561Yj Let $(X,\rho)$ be a complete metric space with a
+well-orderable base.   Show that a subset of $X$ is compact iff it is
+sequentially compact iff it is closed and totally bounded.
+%561Ye 563Ff
+}%end of exercises
+
+\endnotes{
+\Notesheader{561}
+The arguments of this section will I hope give an idea of
+the kind of discipline which will be imposed for the rest of the chapter.
+Apart from anything else, we have to fix on the correct definitions.
+Typically, when defining something like `compactness' or `completeness',
+the definition to use is that which is most useful in the most general
+context;  so that even in metrizable spaces we should prefer filters to
+sequences (cf.\ 561Xc).
+
+We can distinguish two themes in the methods I have used here.   First, in
+the presence of a well-ordering we can hope to adapt the standard attack on
+a problem;  see 561D-561F.  %561D, 561E, 561F.
+Second, if (in the presence of the
+axiom of choice) there is a {\it unique} solution to a problem, then we can
+hope that it is still a unique solution without choice.   This is what
+happens in 561G and also in 561Ia-561Ic.   In 561I we just go through the
+usual arguments with a little more care.   In 561G (taken from
+{\smc Naimark 70}) we need new ideas.   But in the key step, part (d) of
+the proof, the two variables $x$ and $y$ reflect an adaptation of a
+repeated-integration argument as in \S442.   Note that the scope of 561G
+may be limited if we have fewer locally compact groups than we expect.
+
+A regular second-countable Hausdorff space is
+metrizable (561Yf).   But it may not be separable (561Xc).
+We do not have Urysohn's Lemma in its usual form, so cannot be sure that
+a locally compact Hausdorff space is completely regular;  a topological
+group has left, right and bilateral uniformities, but a uniformity need not
+be defined by pseudometrics and a uniform space need not be completely
+regular.   So in such results as 561G we may need an extra `completely
+regular' in the hypotheses.
+
+I give a version of Kakutani's theorem (561H) to show that some of the
+familiar patterns are distorted in possibly unexpected ways, and that
+occasionally it is the more abstract parts of the theory which survive
+best.
+I suppose I ought to remark explicitly that I define `measure algebra'
+exactly as in 321A:  a Dedekind $\sigma$-complete Boolean algebra with a
+strictly positive countably additive $[0,\infty]$-valued functional.
+I do not claim that every $\sigma$-finite measure algebra is
+either localizable or ccc (561Yc),
+nor that every measure algebra can be represented in terms of a measure
+space.   I set up a construction of a normed Riesz space
+$L^1(\frak A,\bar\mu)$, but do not claim that this is an $L$-space.
+However, if we start from an $L$-space $U$
+with a weak order unit, we can build
+a measure on its band algebra and proceed to an $L^1(\frak A,\bar\mu)$
+which is isomorphic to $U$ (and is therefore an $L$-space).
+}%end of notes
+
+
+\discrpage
+

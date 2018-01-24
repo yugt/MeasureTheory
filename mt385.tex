@@ -1,0 +1,1427 @@
+\frfilename{mt385.tex}
+\versiondate{21.10.03}
+\copyrightdate{1997}
+     
+\def\AmuA{\Aut_{\bar\mu}\frak A}
+
+\def\chaptername{Automorphisms}
+\def\sectionname{Entropy}
+     
+\newsection{385}
+     
+Perhaps the most glaring problem associated with the theory of
+measure-preserving homomorphisms and automorphisms is the fact that we
+have no generally effective method of determining when two homomorphisms
+are the same, in the sense that two structures $(\frak A,\bar\mu,\pi)$
+and $(\frak B,\bar\nu,\phi)$ are isomorphic, where $(\frak A,\bar\mu)$
+and $(\frak B,\bar\nu)$ are measure algebras and $\pi:\frak A\to\frak
+A$, $\phi:\frak B\to\frak B$ are Boolean homomorphisms.   Of course the
+first part of the problem is to decide whether $(\frak A,\bar\mu)$ and
+$(\frak B,\bar\nu)$ are isomorphic;  but this is solved (at least for
+localizable algebras) by Maharam's theorem\cmmnt{ (see 332J)}.   The difficulty
+lies in the homomorphisms.   Even when we know that $(\frak A,\bar\mu)$
+and $(\frak B,\bar\nu)$ are both isomorphic to the Lebesgue measure
+algebra, the extraordinary variety of constructions of
+homomorphisms -- corresponding in part to the variety of
+measure spaces with such measure
+algebras, each with its own natural \imp\ functions -- means that the
+question of which are isomorphic to each other is continually being
+raised.   In this section I give the most elementary ideas associated
+with the concept of `entropy', up to the Kolmogorov-Sina\v\i\ theorem
+(385P).   This is an invariant which can be attached to any
+measure-preserving homomorphism on a probability algebra, and therefore
+provides a useful method for distinguishing non-isomorphic
+homomorphisms.
+     
+The main work of the section deals with homomorphisms on measure
+algebras, but as many of the most important ones arise from \imp\
+functions on measure spaces.   I comment on the extra problems arising in the isomorphism problem for such functions (385T-385V).   I should
+remark that some of the lemmas will be repeated in stronger forms in the
+next section.
+     
+\leader{385A}{Notation} %(2002) 3{}84A
+Throughout this section, I will use the letter
+$q$ to denote the function from $\coint{0,\infty}$ to $\Bbb R$
+defined by saying that $q(t)=-t\ln t=t\ln\bover1t$ if $t>0$, $q(0)=0$.
+     
+\def\Caption{The function $q$}
+\picture{mt385a}{100pt}
+     
+\noindent We shall need the following straightforward facts concerning
+$q$.
+     
+\spheader 385Aa $q$ is continuous on $\coint{0,\infty}$ and
+differentiable on $\ooint{0,\infty}$;  $q'(t)=-1-\ln t$ and
+$q''(t)=-\bover1t$ for $t>0$.    \prooflet{Because $q''$ is negative,}
+$q$ is concave\cmmnt{, that is, $-q$ is convex}.   $q$ has a unique
+maximum at $(\bover1e,\bover1e)$.
+     
+\spheader 385Ab \prooflet{If $s\ge 0$ and $t>0$ then $q'(s+t)\le q'(t)$;
+consequently}
+     
+\Centerline{$q(s+t)\cmmnt{\mskip5mu
+=q(s)+\biggerint_0^tq'(s+\tau)d\tau}\le q(s)+q(t)$}
+     
+\noindent for $s$, $t\ge 0$.    \cmmnt{It follows that
+$q(\sum_{i=0}^ns_i)\le\sum_{i=0}^nq(s_i)$ for all $s_0,\ldots,s_n\ge 0$
+and (because $q$ is continuous)}
+$q(\sum_{i=0}^{\infty}s_i)\le\sum_{i=0}^{\infty}q(s_i)$ for every
+non-negative summable series $\sequence{i}{s_i}$.
+     
+\spheader 385Ac If $s$, $t\ge 0$ then $q(st)=sq(t)+tq(s)$;  more
+generally, if $n\ge 1$ and $s_i\ge 0$ for $i\le n$ then
+     
+\Centerline{$q(\prod_{i=0}^ns_i)=\sum_{j=0}^nq(s_j)\prod_{i\ne j}s_i$.}
+     
+\spheader 385Ad The function $t\mapsto q(t)+q(1-t)$ has a unique maximum
+at $(\bover12,\ln 2)$.
+\prooflet{($\bover{d}{dt}(q(t)+q(1-t))=\ln\bover{1-t}{t}$.)}
+\cmmnt{It
+follows that for every $\epsilon>0$ there is a $\delta>0$ such that
+$|t-\bover12|\le\epsilon$ whenever $q(t)+q(1-t)\ge\ln 2-\delta$.}
+     
+\spheader 385Ae If $0\le t\le\bover12$, then $q(1-t)\le q(t)$.
+\prooflet{\Prf\ Set $f(t)=q(t)-q(1-t)$.   Then
+     
+\Centerline{$f''(t)=-\Bover1t+\Bover1{1-t}=\Bover{2t-1}{t(1-t)}\le 0$}
+     
+\noindent for $0<t\le\bover12$, while $f(0)=f(\bover12)=0$, so
+$f(t)\ge 0$ for $0\le t\le\bover12$.\ \Qed}
+     
+\spheader 385Af(i) If $\frak A$ is a Dedekind $\sigma$-complete Boolean
+algebra, I will write $\bar q$ for the function from $L^0(\frak A)^+$
+to $L^0(\frak A)$ defined from $q$\cmmnt{ (364H)}.   Note that
+\cmmnt{because $0\le q(t)\le 1$ for $t\in [0,1]$,}
+$0\le\bar q(u)\le\chi 1$ if $0\le u\le\chi 1$.
+     
+\quad(ii)\cmmnt{ By (b),}
+$\bar q(u+v)\le\bar q(u)+\bar q(v)$ for all $u$, $v\ge 0$ in
+$L^0(\frak A)$.   \prooflet{(Represent $\frak A$ as the measure algebra
+of a measure space, so that $\bar q(f^{\ssbullet})=(qf)^{\ssbullet}$, as
+in 364Ib.)}
+     
+\quad(iii) Similarly, if $u$, $v\in L^0(\frak A)^+$, then
+$\bar q(u\times v)=u\times\bar q(v)+v\times\bar q(u)$.
+     
+\leader{385B}{Lemma} %(2002) 3{}84B
+Let $(\frak A,\bar\mu)$ be a probability algebra,
+$\frak B$ a closed subalgebra of $\frak A$, and
+$P:L^1(\frak A,\bar\mu)\to L^1(\frak A,\bar\mu)$ the corresponding
+conditional expectation operator\cmmnt{ (365R)}.   Then
+$\int\bar q(u)\le q(\int u)$ and $P(\bar q(u))\le\bar q(Pu)$ for every
+$u\in L^{\infty}(\frak A)^+$.
+     
+\proof{ Apply the remarks in 365Rb to $-q$.
+($\bar q(u)\in L^{\infty}\subseteq L^1$ for every $u\in(L^{\infty})^+$
+because $q$ is
+bounded on every bounded interval in $\coint{0,\infty}$.)
+}%end of proof of 385B
+     
+\leader{385C}{Definition} %(2002) 3{}84C
+Let $(\frak A,\bar\mu)$ be a probability algebra.   If $A$ is a
+partition of unity in $\frak A$, its {\bf entropy} is
+$H(A)=\sum_{a\in A}q(\bar\mu a)$\cmmnt{, where $q$ is the function
+defined in 385A}.
+     
+\cmmnt{\medskip
+     
+\noindent{\bf Remarks (a)} In the definition of `partition of unity'
+(311Gc) I allowed $0$ to belong to the family.   In the present context
+this is a mild irritant, and when convenient I shall remove $0$ from the
+partitions of unity considered here (as in 385F below).   But
+because $q(0)=0$, it makes no
+difference;   $H(A)=H(A\setminus\{0\})$ whenever $A$ is a partition of
+unity.   So if you wish you can read `partition of unity' in this
+section to mean `partition of unity not containing $0$', if you are
+willing to make an occasional amendment in a formula.   In important
+cases, in fact, $A$ is of the form $\{a_i:i\in I\}$ or $\{a_i:i\in
+I\}\setminus\{0\}$, where $\langle
+a_i\rangle_{i\in I}$ is an indexed partition of unity, with $a_i\Bcap
+a_j=0$ for $i\ne j$, but no restriction in the number of $i$ with
+$a_i=0$;  in this case, we still have $H(A)=\sum_{i\in I}q(\bar\mu
+a_i)$.
+     
+\medskip
+     
+{\bf (b)} Many authors prefer to use $\log_2$ in place of $\ln$.   This
+makes sense in terms of one of the intuitive approaches to entropy as
+the `information' associated with a partition.   See {\smc Petersen
+83}, \S5.1.
+}%end of comment
+     
+\leader{385D}{Definition} %(2002) 3{}84D
+Let $(\frak A,\bar\mu)$ be a probability
+algebra, $\frak B$ a closed subalgebra of $\frak A$ and $A$ a partition
+of unity in $\frak A$.   Let
+$P:L^1(\frak A,\bar\mu)\to L^1(\frak A,\bar\mu)$ be the conditional 
+expectation operator associated with
+$\frak B$.   Then the {\bf conditional entropy of $A$ on $\frak B$} is
+     
+\Centerline{$H(A|\frak B)=\sum_{a\in A}$$\textfont3=\twelveex\int\bar
+q(P\chi a)$\dvro{.}{,}}
+     
+\noindent\cmmnt{where $\bar q$ is defined as in 385Af.}
+     
+\leader{385E}{Elementary remarks (a)} %(2002) 3{}84E
+In the formula
+     
+\Centerline{$\sum_{a\in A}$$\textfont3=\twelveex \int \bar q(P\chi a)$,}
+     
+\noindent\cmmnt{we have $0\le P(\chi a)\le\chi 1$ for every $a$, so
+$\bar q(P\chi a)\ge 0$ and }every term in the sum is non-negative;
+accordingly $H(A|\frak B)$ is well-defined in $[0,\infty]$.
+     
+\spheader 385Eb $H(A)=H(A|\{0,1\})$\prooflet{, since if
+$\frak B=\{0,1\}$ then $P(\chi a)=\bar\mu a\chi 1$, so that
+$\int\bar q(P\chi a)= q(\bar\mu a)$}.   If
+$A\subseteq\frak B$, $H(A|\frak B)=0$\prooflet{, since
+$P(\chi a)=\chi a$, $\bar q(P\chi a)=0$ for every $a$}.
+     
+\leader{385F}{Definition} %(2002) 3{}84F
+If $\frak A$ is a Boolean algebra and $A$,
+$B\subseteq\frak A$ are partitions of unity, I write $A\vee B$ for the
+partition of unity $\{a\Bcap b:a\in A,\,b\in B\}\setminus\{0\}$.
+\cmmnt{(See 385Xq.)}
+     
+\leader{385G}{Lemma} %(2002) 3{}84G
+Let $(\frak A,\bar\mu)$ be a probability algebra
+and $\frak B$ a closed subalgebra.   Let $A\subseteq\frak A$ be a
+partition of unity.
+     
+(a) If $B$ is another partition of unity in $\frak A$, then
+     
+\Centerline{$H(A|\frak B)\le H(A\vee B|\frak B)
+\le H(A|\frak B)+H(B|\frak B)$.}
+     
+(b) If $\frak B$ is purely atomic and $D$ is the set of its atoms, then
+$H(A\vee D)=H(D)+H(A|\frak B)$.
+     
+(c) If $\frak C\subseteq\frak B$ is a smaller closed subalgebra of
+$\frak A$, then $H(A|\frak C)\ge H(A|\frak B)$.   In particular,
+$H(A)\ge H(A|\frak B)$.
+     
+(d) Suppose that $\sequencen{\frak B_n}$ is a non-decreasing sequence of
+closed subalgebras of $\frak A$ such that
+$\frak B=\overline{\bigcup_{n\in\Bbb N}\frak B_n}$.   If $H(A)<\infty$
+then
+     
+\Centerline{$H(A|\frak B)=\lim_{n\to\infty}H(A|\frak B_n)$.}
+     
+\noindent In particular, if $A\subseteq\frak B$ then
+$\lim_{n\to\infty}H(A|\frak B_n)=0$.
+     
+\proof{ Write $P$ for the conditional expectation operator on 
+$L^1(\frak A,\bar\mu)$ associated with $\frak B$.
+     
+\medskip
+     
+{\bf (a)(i)} If $B$ is infinite, enumerate it as $\sequence{j}{b_j}$;
+if it is finite, enumerate it as $\langle b_j\rangle_{j\le n}$ and set
+$b_j=0$ for $j>n$.   For any $a\in A$,
+     
+\Centerline{$\chi a=\sum_{j=0}^{\infty}\chi(a\Bcap b_j)$,
+\quad$P(\chi a)=\sum_{j=0}^{\infty}P\chi(a\Bcap b_j)$,}
+     
+$$\eqalign{\bar q(P\chi a)
+&=\lim_{n\to\infty}\bar q(\sum_{j=0}^nP\chi(a\Bcap b_j))\cr
+&\le\lim_{n\to\infty}\sum_{j=0}^n\bar q(P\chi(a\Bcap b_j))
+=\sum_{j=0}^{\infty}\bar q(P\chi(a\Bcap b_j))\cr}$$
+     
+\noindent where all the infinite sums are to be regarded as
+order*-limits of the corresponding finite sums (see \S367), and the
+middle inequality is a consequence of 385A(f-ii).   Accordingly
+     
+$$\eqalign{H(A\vee B|\frak B)
+&=\sum_{a\in A,b\in B,a\Bcap b\ne 0}\int\bar q(P\chi(a\Bcap b))\cr
+&=\sum_{a\in A}\sum_{j=0}^{\infty}\int\bar q(P\chi(a\Bcap b_j))
+\ge\sum_{a\in A}\int\bar q(P\chi a)
+=H(A|\frak B).\cr}$$
+     
+\medskip
+     
+\quad{\bf (ii)} Suppose for the moment that $A$ and $B$ are both finite.
+For $a\in\frak A$ set
+$u_a=P(\chi a)$.   If $a$, $b\in\frak A$ we have
+$0\le u_{a\Bcap b}\le u_b$ in $L^0(\frak B)$, so we may choose
+$v_{ab}\in L^0(\frak B)$ such
+that $0\le v_{ab}\le\chi 1$ and $u_{a\Bcap b}=v_{ab}\times u_b$.
+     
+For any $b\in B$, $\sum_{a\in A}u_{a\Bcap b}=u_b$ (because
+$\sum_{a\in A}\chi(a\Bcap b)=\chi b$), so
+$u_b\times\sum_{a\in A}v_{ab}=u_b$.
+Since $\Bvalue{|\bar q(u_b)|>0}\Bsubseteq\Bvalue{u_b>0}$,
+$\bar q(u_b)\times\sum_{a\in A}v_{ab}=\bar q(u_b)$.
+     
+For any $a\in A$,
+     
+$$\eqalignno{\bar q(u_a)
+&=\bar q(\sum_{b\in B}u_{a\Bcap b})
+=\bar q(\sum_{b\in B}u_b\times v_{ab})
+=\bar q(P(\sum_{b\in B}\chi b\times v_{ab}))\cr
+\noalign{\noindent (because $v_{ab}\in L^0(\frak B)$ for every $b$, so
+$P(\chi b\times v_{ab})=P(\chi b)\times v_{ab}$)}
+&\ge P(\bar q(\sum_{b\in B}\chi b\times v_{ab}))\cr
+\displaycause{385B}
+&=P(\sum_{b\in B}\chi b\times\bar q(v_{ab}))\cr
+\noalign{\noindent (because $B$ is disjoint)}
+&=\sum_{b\in B}u_b\times\bar q(v_{ab})\cr}$$
+     
+\noindent (because $\bar q(v_{ab})\in L^0(\frak B)$ for every $b$).
+     
+Putting these together,
+     
+$$\eqalignno{H(A\vee B|\frak B)
+&=\sum_{a\in A,b\in B}\int\bar q(u_{a\Bcap b})
+=\sum_{a\in A,b\in B}\int\bar q(u_b\times v_{ab})\cr
+&=\sum_{a\in A,b\in B}\int u_b\times\bar q(v_{ab})
+   +\sum_{a\in A,b\in B}\int v_{ab}\times\bar q(u_b)\cr
+\displaycause{385A(f-iii)}
+&\le\sum_{a\in A}\int\bar q(u_a)
+   +\sum_{b\in B}\int\bar q(u_b)
+=H(A|\frak B)+H(B|\frak B).\cr}$$
+     
+\medskip
+     
+\quad{\bf (iii)} For general partitions of unity $A$ and $B$, take any
+finite set $C\subseteq A\vee B$.   Then
+$C\subseteq\{a\Bcap b:a\in A_0,\,b\in B_0\}$ where $A_0\subseteq A$ and
+$B_0\subseteq B$ are finite.   Set
+     
+\Centerline{$A'=A_0\cup\{1\Bsetminus\sup A_0\}$,
+\quad$B'=B_0\cup\{1\Bsetminus\sup B_0\}$,}
+     
+\noindent so that $A'$ and $B'$ are finite partitions of unity and
+$C\subseteq A'\vee B'$.   Now
+     
+$$\eqalignno{\sum_{c\in C}\int\bar q(P\chi c)
+&\le\sum_{c\in A'\vee B'}\int\bar q(P\chi c)
+=H(A'\vee B'|\frak B)
+\le H(A'|\frak B)+H(B'|\frak B)\cr
+\displaycause{by (ii)}
+&\le H(A'\vee A|\frak B)+H(B'\vee B|\frak B)\cr
+\displaycause{by (i)}
+&=H(A|\frak B)+H(B|\frak B).\cr}$$
+     
+\noindent As $C$ is arbitrary,
+     
+\Centerline{$H(A\vee B|\frak B)
+=\sum_{c\in A\vee B}$$\textfont3=\twelveex \int\bar q(P\chi c)
+\le H(A|\frak B)+H(B|\frak B)$.}
+     
+\medskip
+     
+{\bf (b)} It follows from 385Ab that
+$\sum_{d\in D}q(\bar\mu(a\Bcap d))\ge q(\bar\mu a)$ for any $a\in A$.
+     
+Now, because $\frak B$ is purely atomic and $D$ is its set of atoms,
+     
+\Centerline{$P(\chi a)
+=\sum_{d\in D}\Bover{\bar\mu(a\Bcap d)}{\bar\mu d}\chi d$,
+\quad$\bar q(P(\chi a))
+=\sum_{d\in D}q(\Bover{\bar\mu(a\Bcap d)}{\bar\mu d})\chi d$}
+     
+\noindent for every $a\in A$,
+     
+\Centerline{$H(A|\frak B)
+=\sum_{a\in A,d\in D}q(\Bover{\bar\mu(a\Bcap d)}{\bar\mu d})\bar\mu d$.}
+     
+\noindent Putting these together,
+     
+$$\eqalignno{H(A\vee D)
+&=\sum_{a\in A,d\in D} q(\bar\mu(a\Bcap d))
+=\sum_{a\in A,d\in D}q(\Bover{\bar\mu(a\Bcap d)}{\bar\mu d})\bar\mu d
+  +\Bover{\bar\mu(a\Bcap d)}{\bar\mu d} q(\bar\mu d)\cr
+\displaycause{385Ac}
+&=H(A|\frak B)+\sum_{d\in D} q(\bar\mu d)
+=H(A|\frak B)+H(D).\cr}$$
+     
+\medskip
+     
+{\bf (c)} Write $P_{\frak C}$ for the conditional expectation operator
+corresponding to $\frak C$.   If $a\in\frak A$,
+     
+\Centerline{$\bar q(P_{\frak C}\chi a)
+=\bar q(P_{\frak C}P\chi a)
+\ge P_{\frak C}\bar q(P\chi a)$}
+     
+\noindent by 385B.   So
+     
+\Centerline{$H(A|\frak C)=\sum_{a\in A}$$\textfont3=\twelveex \int\bar
+q(P_{\frak C}\chi a)
+\ge$$\sum_{a\in A}$$\textfont3=\twelveex \int P_{\frak C}\bar q(P\chi a)
+=$$\sum_{a\in A}$$\textfont3=\twelveex \int \bar q(P\chi a)
+=H(A|\frak B)$.}
+     
+Taking $\frak C=\{0,1\}$, we get $H(A)\ge H(A|\frak B)$.
+     
+\medskip
+     
+{\bf (d)} Let $P_n$ be the conditional expectation operator
+corresponding to $\frak B_n$, for each $n$.   Fix $a\in A$.   Then
+$P(\chi a)$ is the order*-limit of $\sequencen{P_n(\chi a)}$, by
+L\'evy's martingale theorem (367Jb).
+Consequently (because $q$ is continuous)
+$\sequencen{\bar q(P_n\chi a)}$ is order*-convergent to
+$\bar q(P\chi a)$ for every $a\in A$ (367H).   Also,
+because $0\le P_n\chi a\le\chi 1$ for every $n$,
+$0\le\bar q(P_n\chi a)\le\bover1e\chi 1$ for every $n$.   By the
+Dominated Convergence Theorem (367I),
+$\lim_{n\to\infty}\int\bar q(P_n\chi a)=\int\bar q(P\chi a)$.
+     
+By 385B, we also have
+     
+\Centerline{$ 0\le\int\bar q(P_n\chi a)\le q(\int
+P_n(\chi a))
+=q(\int\chi a)=q(\bar\mu a)$}
+     
+\noindent for every $a\in A$ and $n\in\Bbb N$;  since also
+     
+\Centerline{$ 0\le\int\bar q(P\chi a)=q(\bar\mu
+a)$,}
+     
+\noindent we have
+$|\int\bar q(P_n\chi a)-\int\bar q(P\chi a)|\le q(\bar\mu a)$ for every
+$a\in A$, $n\in\Bbb N$.
+     
+Now we are supposing that $H(A)$ is finite.   Given
+$\epsilon>0$, we can find a finite set $I\subseteq A$ such that
+$\sum_{a\in A\setminus I}q(\bar\mu a)\le\epsilon$, and an $n_0\in\Bbb N$
+such that
+     
+\Centerline{$\sum_{a\in I}
+ $$\textfont3=\twelveex |\int\bar q(P_n\chi a)-\int\bar q(P\chi
+a)|\le\epsilon$}
+     
+\noindent for every $n\ge n_0$;  in which case
+     
+\Centerline{$\sum_{a\in A\setminus I}
+ $$\textfont3=\twelveex |\int\bar q(P_n\chi a)-\int\bar q(P\chi a)|
+\le$$\sum_{a\in A\setminus I}q(\bar\mu a)\le\epsilon$}
+     
+\noindent and $|H(A|\frak B_n)-H(A|\frak B)|\le 2\epsilon$ for every
+$n\ge n_0$.   As $\epsilon$ is arbitrary,
+\discrcenter{390pt}{$H(A|\frak B)=\lim_{n\to\infty}H(A|\frak B_n)$.}
+}%end of proof of 385G
+     
+\leader{385H}{Corollary} %(2002) 3{}84H
+Let $(\frak A,\bar\mu)$ be a probability
+algebra and $A$, $B$ two partitions of unity in $\frak A$.   Then
+$H(A)\le H(A\vee B)\le H(A)+H(B)$.
+     
+\proof{ Take $\frak B=\{0,1\}$ in 385Ga.
+}%end of proof of 385H
+     
+\leader{385I}{Lemma} %(2002) 3{}84I
+Let $(\frak A,\bar\mu)$ be a probability algebra,
+and $\pi:\frak A\to\frak A$ a measure-preserving Boolean homomorphism.
+If $A\subseteq \frak A$ is a partition of unity, then $H(\pi[A])=H(A)$.
+     
+\proof{ $\sum_{a\in A} q(\bar\mu\pi a)=\sum_{a\in A} q(\bar\mu a)$.}
+     
+\leader{385J}{Lemma} %(2002) 3{}84J
+Let $(\frak A,\bar\mu)$ be a measure algebra.   Let
+$A$ be the set of its atoms.   Then the following are equiveridical:
+     
+(i) {\it either} $\frak A$ is not purely atomic {\it or}  $\frak A$ is
+purely atomic and $H(A)=\infty$;
+     
+(ii) there is a partition of unity $B\subseteq\frak A$ such that
+$H(B)=\infty$;
+     
+(iii) for every $\gamma\in\Bbb R$ there is a finite partition of unity
+$C\subseteq\frak A$ such that $H(C)\ge\gamma$.
+     
+\proof{{\bf (i)$\Rightarrow$(ii)} We need examine only the case in which
+$\frak A$ is not purely atomic.   Let $a\in\frak A$ be a non-zero
+element such that the principal ideal $\frak A_a$ is atomless.   By 331C
+we can choose inductively a disjoint sequence $\sequencen{a_n}$ such
+that $a_n\Bsubseteq a$ and $\bar\mu a_n=2^{-n-1}\bar\mu a$.   Now, for
+each $n\in\Bbb N$, choose a disjoint set $B_n$ such that
+     
+\Centerline{$\#(B_n)=2^{2^n}$,
+\quad$b\Bsubseteq a_n$ and $\bar\mu b=2^{-2^n}\bar\mu a_n$ for each
+$b\in B_n$.}
+     
+\noindent Set
+     
+\Centerline{$B=\bigcup_{n\in\Bbb N}B_n\cup\{1\Bsetminus a\}$.}
+     
+\noindent Then $B$ is a partition of unity in $\frak A$ and
+     
+$$\eqalign{H(B)
+&\ge\sum_{n=0}^{\infty}\sum_{b\in B_n}q(\bar\mu B_n)
+=\sum_{n=0}^{\infty}2^{2^n}
+  q\bigl(\bover{\bar\mu a}{2^{n+1+2^n}}\bigr)\cr
+&=\sum_{n=0}^{\infty}\bover{\bar\mu a}{2^{n+1}}
+  \ln\bigl(\bover{2^{n+1+2^n}}{\bar\mu a}\bigr)
+\ge\sum_{n=0}^{\infty}\bover{\bar\mu a}{2^{n+1}}2^n\ln 2
+=\infty.\cr}$$
+     
+\medskip
+     
+{\bf (ii)$\Rightarrow$(iii)} Enumerate $B$ as $\sequence{i}{b_i}$.   For
+each $n\in\Bbb N$, $C_n=\{b_i:i\le n\}\cup\{1\Bsetminus\sup_{i\le
+n}b_i\}$ is a finite partition of unity, and
+     
+\Centerline{$\lim_{n\to\infty}H(C_n)
+\ge\lim_{n\to\infty}\sum_{i=0}^nq(\bar\mu b_i)
+=H(B)=\infty$.}
+     
+\medskip
+     
+{\bf (iii)$\Rightarrow$(i)} We need only consider the case in which
+$\frak A$ is purely atomic.   In this case,
+$A\vee C=A$ for every partition of unity $C\subseteq\frak A$, so
+$H(C)\le
+H(A)$ for every $C$ (385H), and $H(A)$ must be infinite.
+}%end of proof of 385J
+     
+\leader{385K}{Definition} %(2002) 3{}84K
+Let $\frak A$ be a Boolean algebra.
+If $\pi:\frak A\to\frak A$ is an order-continuous Boolean homomorphism,
+$A\subseteq\frak A$ is a partition of unity and $n\ge 1$, write
+$D_n(A,\pi)$ for\cmmnt{ the
+partition of unity generated by $\{\pi^ia:a\in A,\,0\le i<n\}$, that
+is,} $\{\inf_{i<n}\pi^ia_i:a_i\in A$ for every $i<n\}\setminus\{0\}$.
+\cmmnt{It will occasionally be convenient to take $D_0(A,\pi)=\{1\}$ (or $\emptyset$ in the trivial case $\frak A=\{0\}$).   Observe that $D_1(A,\pi)=A\setminus\{0\}$ and
+     
+\Centerline{$D_{n+1}(A,\pi)=D_n(A,\pi)\vee\pi^n[A]=A\vee\pi[D_n(A,\pi)]$
+}
+     
+\noindent for every $n\in\Bbb N$.}
+     
+\leader{385L}{Lemma} %(2002) 3{}84L
+Let $(\frak A,\bar\mu)$ be a probability algebra
+and $\pi:\frak A\to\frak A$ a measure-preserving Boolean homomorphism.
+Let $A\subseteq\frak A$ be a partition of unity.   Then
+\discrcenter{390pt}{$\lim_{n\to\infty}\bover1{n}H(D_n(A,\pi))
+=\inf_{n\ge 1}\bover1nH(D_n(A,\pi))$ }is defined in $[0,\infty]$.
+     
+\proof{{\bf (a)} Set $\alpha_0=0$, $\alpha_n=H(D_{n}(A,\pi))$ for
+$n\ge 1$.   Then $\alpha_{m+n}\le \alpha_m+\alpha_n$ for all $m$,
+$n\ge 0$.   \Prf\ If $m$, $n\ge 1$,
+$D_{m+n}(A,\pi)=D_m(A,\pi)\vee\pi^m[D_n(A,\pi)]$.   So 385Ga tells us
+that
+     
+\Centerline{$H(D_{m+n}(A,\pi))\le H(D_m(A,\pi))+H(\pi^m[D_n(A,\pi)])
+= H(D_m(A,\pi))+H(D_n(A,\pi))$}
+     
+\noindent because $\pi$ is measure-preserving.\ \Qed
+     
+\medskip
+     
+{\bf (b)}  If $\alpha_1=\infty$ then of course
+$H(D_n(A,\pi))\ge H(A)=\infty$ for every $n\ge 1$, by 385H, so
+$\inf_{n\ge 1}\bover1nH(D_n(A,\pi))\penalty-100=\infty
+=\lim_{n\to\infty}\bover1nH(D_n(A,\pi))$.   Otherwise,
+$\alpha_n\le n\alpha_1$ is finite for every $n$.   Set $\alpha=\inf_{n\ge 1}\bover1n\alpha_n$.   If $\epsilon>0$
+there is an $m\ge 1$ such that $\bover1m\alpha_m\le\alpha+\epsilon$.
+Set $M=\max_{j<m}\alpha_j$.    Now, for any $n\ge m$, there are
+$k\ge 1$, $j<m$ such that $n=km+j$, so that
+     
+\Centerline{$\alpha_n\le k\alpha_m+\alpha_j$,
+\quad$\Bover1n\alpha_n\le\Bover{k}{n}\alpha_m+\Bover{M}n
+\le\Bover{1}{m}\alpha_m+\Bover{M}n$.}
+     
+\noindent Accordingly
+$\limsup_{n\to\infty}\bover1n\alpha_n\le\alpha+\epsilon$.   As
+$\epsilon$ is arbitrary,
+     
+\Centerline{$\alpha\le\liminf_{n\to\infty}\Bover1n\alpha_n
+\le\limsup_{n\to\infty}\Bover1n\alpha_n\le\alpha$}
+     
+\noindent and $\lim_{n\to\infty}\bover1n\alpha_n=\alpha$ is defined in
+$[0,\infty]$.
+}%end of proof of 385L
+     
+\cmmnt{\medskip
+     
+\noindent{\bf Remark} See also 385Yb and 386Lc below.}
+     
+\leader{385M}{Definition} %(2002) 3{}84M
+Let $(\frak A,\bar\mu)$ be a probability
+algebra, and $\pi:\frak A\to\frak A$ a measure-preserving Boolean
+homomorphism.   For any partition of unity $A\subseteq\frak A$, set
+     
+\Centerline{$h(\pi,A)=\inf_{n\ge 1}\bover1n H(D_n(A,\pi))
+=\lim_{n\to\infty}\bover1nH(D_n(A,\pi))$\dvro{.}{}}
+     
+\noindent\cmmnt{(385L).   }Now the {\bf entropy} of $\pi$ is
+     
+\Centerline{$h(\pi)=\sup\{h(\pi,A):A\subseteq\frak A$ is a finite
+partition of unity$\}$.}
+     
+\medskip
+     
+\noindent{\bf Remarks (a)}\cmmnt{ We always have}
+     
+\Centerline{$h(\pi,A)\le\cmmnt{H(D_1(A,\pi))=}H(A)$.}
+     
+\spheader 385Mb Observe that if $\pi$ is the identity automorphism
+then\cmmnt{ $D_n(A,\pi)=A\setminus\{0\}$ for every $A$ and $n$, so
+that} $h(\pi)=0$.
+     
+\leader{385N}{Lemma} %(2002) 3{}84N
+Let $(\frak A,\bar\mu)$ be a probability algebra
+and $A$, $B$ two partitions of unity in $\frak A$.   Let
+$\pi:\frak A\to\frak A$ be a measure-preserving Boolean homomorphism.   Then $h(\pi,A)\le h(\pi,B)+H(A|\frak B)$, where $\frak B$ is the closed
+subalgebra of $\frak A$ generated by $B$.
+     
+\proof{ We may suppose that $0\notin B$, since removing $0$ from $B$
+changes neither $D_n(B,\pi)$ nor $\frak B$.   For each $n\in\Bbb N$,
+set $A_n=\pi^n[A]$ and $B_n=\pi^n[B]$.   Let $\frak B_n=\pi^n[\frak B]$ be the closed subalgebra of $\frak A$ generated by $B_n$, and
+$\frak B^*_n$
+the closed subalgebra of $\frak A$ generated by $D_n(B,\pi)$.   Then
+$H(A_n|\frak B_n)=H(A|\frak B)$ for each $n$.   \Prf\ The point is that,
+because $\frak B$ is purely atomic and $B$ is its set of atoms,
+     
+\Centerline{$H(A|\frak B)=\sum_{a\in A,b\in B} q(\Bover{\bar\mu(a\Bcap
+b)}{\bar\mu b})\bar\mu b$}
+     
+\noindent as in the proof of 385Gb.   Similarly,
+     
+\Centerline{$H(A_n|\frak B_n)=\sum_{a\in A,b\in
+B} q(\Bover{\bar\mu(\pi^n a\Bcap \pi^n b)}{\bar\mu(\pi^n b)})\bar\mu
+(\pi^n b)=H(A|\frak B)$.  \Qed}
+     
+Accordingly, for any $n\ge 1$,
+     
+$$\eqalignno{H(D_n(A,\pi)|\frak B^*_n)
+&\le\sum_{i=0}^{n-1}H(A_i|\frak B^*_n)\cr
+\noalign{\noindent (by 385Ga)}
+&\le\sum_{i=0}^{n-1}H(A_i|\frak B_i)\cr
+\noalign{\noindent (by 385Gc)}
+&=n H(A|\frak B).\cr}$$
+     
+\noindent Now
+     
+$$\eqalignno{h(\pi,A)
+&=\lim_{n\to\infty}\Bover1n H(D_n(A,\pi))
+\le\limsup_{n\to\infty}\Bover1n H(D_n(A,\pi)\vee D_n(B,\pi))\cr
+\displaycause{385Ga}
+&\le\limsup_{n\to\infty}\Bover1n H(D_n(B,\pi))
+  +\Bover1n H(D_n(A,\pi)|\frak B^*_n)\cr
+\noalign{\noindent (385Gb)}
+&\le h(\pi,B)+H(A|\frak B).\cr}$$
+}%end of proof of 385N
+     
+\leader{385O}{Lemma} %(2002) 3{}84O
+Let $(\frak A,\bar\mu)$ be a probability algebra,
+$\pi:\frak A\to\frak A$ a measure-preserving Boolean homomorphism, and
+$A\subseteq \frak A$ a partition of unity such that $H(A)<\infty$.
+Then $h(\pi,A)\le h(\pi)$.
+     
+\proof{ If $A$ is finite, this is immediate from the definition of
+$h(\pi)$;  so suppose that $A$ is
+infinite.   Enumerate $A$ as $\sequence{i}{a_i}$.   For each
+$n\in\Bbb N$ let $\frak B_n$ be the subalgebra of $\frak A$ generated by
+$a_0,\ldots,a_n$;  set
+$\frak B=\overline{\bigcup_{n\in\Bbb N}\frak B_n}$.   Then
+$A\subseteq\frak B$, so
+     
+\Centerline{$\lim_{n\to\infty}H(A|\frak B_n)=H(A\frak B)=0$}
+     
+\noindent by 385Eb and 385Gd.   Accordingly, using 385N,
+     
+\Centerline{$h(\pi,A)\le h(\pi,B_n)+H(A|\frak B_n)
+\le h(\pi)+H(A|\frak B_n)\to h(\pi)$}
+     
+\noindent as $n\to\infty$, and $h(\pi,A)\le h(\pi)$.
+}%end of proof of 385O
+     
+\leader{385P}{Theorem} %(2002) 3{}84P
+({\smc Kolmogorov 58}, {\smc Sina\v\i\ 59}) Let
+$(\frak A,\bar\mu)$ be a probability algebra, and $\pi:\frak A\to\frak
+A$ a measure-preserving Boolean homomorphism.
+     
+(i) Suppose that $A\subseteq\frak A$ is a partition of unity such that
+$H(A)<\infty$ and the closed subalgebra of $\frak A$ generated by
+$\bigcup_{n\in\Bbb N}\pi^n[A]$ is $\frak A$ itself.   Then
+$h(\pi)=h(\pi,A)$.
+     
+(ii) Suppose that $\pi$ is an automorphism, and that $A\subseteq\frak A$
+is a partition of unity such that $H(A)<\infty$ and the closed
+subalgebra of $\frak A$ generated by $\bigcup_{n\in\Bbb Z}\pi^n[A]$ is
+$\frak A$ itself.   Then $h(\pi)=h(\pi,A)$.
+     
+\proof{ I take the two arguments together.   In both cases, by 385O, we
+have $h(\pi,A)\le h(\pi)$, so I have to show that if $B\subseteq\frak A$
+is any finite partition of unity, then $h(\pi,B)\le h(\pi,A)$.   For
+(i), let $A_n$ be the partition of unity generated by $\bigcup_{0\le
+j<n}\pi^j[A]$;  for (ii), let $A_n$ be the partition of unity generated
+by $\bigcup_{-n\le j<n}\pi^j[A]$.   Then $h(\pi,A_n)=h(\pi,A)$ for every
+$n$.   \Prf\ In case (i), we have
+$D_m(A_n,\pi)=D_{m+n}(A,\pi)$ for every $m$, so that
+     
+$$\eqalign{\lim_{m\to\infty}\Bover1m H(D_m(A_n,\pi))
+&=\lim_{m\to\infty}\Bover1m H(D_{m+n}(A,\pi))\cr
+&=\lim_{m\to\infty}\Bover1m H(D_{m}(A,\pi)).\cr}$$
+     
+\noindent In case (ii), we have
+$D_m(A_n,\pi)=\pi^{-n}[D_{m+2n}(A,\pi)]$ for every $m$, so that
+     
+$$\eqalign{\lim_{m\to\infty}\Bover1m H(D_m(A_n,\pi))
+&=\lim_{m\to\infty}\Bover1m H(D_{m+2n}(A,\pi))\cr
+&=\lim_{m\to\infty}\Bover1m H(D_{m}(A,\pi)). \text{ \Qed}\cr}$$
+     
+Let $\frak A_n$ be the purely atomic closed subalgebra of $\frak A$
+generated by $A_n$;  our hypothesis is that the closed subalgebra
+generated by $\bigcup_{n\in\Bbb N}A_n$ is $\frak A$ itself, that is,
+that $\bigcup_{n\in\Bbb N}\frak A_n$ is dense.   But this means that
+$\lim_{n\to\infty}H(B|\frak A_n)=0$ (385Gd).   Since
+     
+\Centerline{$h(\pi,B)\le h(\pi,A_n)+H(B|\frak A_n)=h(\pi,A)
++H(B|\frak A_n)$}
+     
+\noindent for every $n$ (385N), we have the result.
+}%end of proof of 385P
+     
+\vleader{60pt}{385Q}{Bernoulli shifts} %(2002) 3{}84Q
+Let $(\frak A,\bar\mu)$ be a probability
+algebra, and $\pi:\frak A\to\frak A$ a measure-preserving Boolean
+homomorphism.
+     
+\spheader 385Qa $\pi$ is a {\bf one-sided Bernoulli shift} if there is a 
+closed subalgebra $\frak A_0$ in $\frak A$ such that (i)
+$\sequence{k}{\pi^k[\frak A_0]}$ is stochastically
+independent\cmmnt{ (that is,
+$\bar\mu(\inf_{j\le k}\pi^ja_j)=\prod_{j=0}^k\bar\mu a_j$ for all
+$a_0,\ldots,a_k\in\frak A_0$;  see 325L)} (ii) the closed subalgebra of
+$\frak A$ generated by $\bigcup_{k\in\Bbb N}\pi^k[\frak A_0]$ is $\frak
+A$ itself.   In this case $\frak A_0$ is a {\bf root algebra} for $\pi$.
+     
+\spheader 385Qb $\pi$ is a {\bf two-sided Bernoulli shift} if it is an
+automorphism and there is a closed subalgebra $\frak A_0$ in $\frak A$
+such that (i) $\family{k}{\Bbb Z}{\pi^k[\frak A_0]}$ is independent (ii)
+the closed subalgebra of $\frak A$ generated by
+$\bigcup_{k\in\Bbb Z}\pi^k[\frak A_0]$ is $\frak A$ itself.   In this
+case $\frak A_0$ is a {\bf root algebra} for $\pi$.
+     
+\cmmnt{It is important to be aware that a Bernoulli shift can have
+many, and (in the case of a two-sided shift) very different, root
+algebras;  this is the subject of \S387 below.}
+     
+\leader{385R}{Theorem} %(2002) 3{}84R
+Let $(\frak A,\bar\mu)$ be a probability algebra
+and $\pi:\frak A\to\frak B$ a Bernoulli shift, either one- or two-sided,
+with root algebra $\frak A_0$.
+     
+(i) If $\frak A_0$ is purely atomic, then $h(\pi)=H(A)$, where $A$ is
+the set of atoms of $\frak A_0$.
+     
+(ii) If $\frak A_0$ is not purely atomic, then $h(\pi)=\infty$.
+     
+\proof{{\bf (a)} The point is that for any partition of unity
+$C\subseteq\frak A_0\setminus\{0\}$, $h(\pi,C)=H(C)$.  \Prf\ For any $n\ge 1$,
+$D_n(C,\pi)$ is the partition of unity consisting of elements of the
+form $\inf_{j<n}\pi^jc_j$, where $c_0,\ldots,c_{n-1}\in C$.   So
+     
+$$\eqalignno{H(D_n(C,\pi))
+&=\sum_{c_0,\ldots,c_{n-1}\in C}
+ q(\bar\mu(\inf_{j<n}\pi^jc_j))
+=\sum_{c_0,\ldots,c_{n-1}\in C}
+ q(\prod_{j=0}^{n-1}\bar\mu c_j))\cr
+&=\sum_{c_0,\ldots,c_{n-1}\in C}
+ \sum_{j=0}^{n-1}q(\bar\mu c_j)\prod_{i\ne j}\bar\mu c_i\cr
+\displaycause{385Ac}
+&=\sum_{j=0}^{n-1}\sum_{c\in C} q(\bar\mu c)
+=n H(C).\cr}$$
+     
+\noindent So
+\Centerline{$h(\pi,C)=\lim_{n\to\infty}\Bover1nH(D_n(C,\pi))=H(C)$.
+\Qed}
+     
+\medskip
+     
+{\bf (b)} If $\frak A_0$ is purely atomic and $H(A)<\infty$, the result
+can now be read off from 385P, because the closed subalgebra of $\frak
+A$
+generated by $A$ is $\frak A_0$ and the closed subalgebra of $\frak A$
+generated by $\bigcup_{k\in\Bbb N}\pi^k[A]$ or $\bigcup_{k\in\Bbb
+Z}\pi^k[A]$ is $\frak A$;  so $h(\pi)=h(\pi,A)=H(A)$.
+     
+\medskip
+     
+{\bf (c)} Otherwise, 385J tells us that there are finite partitions of
+unity $C\subseteq\frak A_0$ such that $H(C)$ is arbitrarily large.
+Since $h(\pi)\ge h(\pi,C)=H(C)$ for any such $C$, by (a) and the
+definition of $h(\pi)$, $h(\pi)$ must be infinite, as claimed.
+}%end of proof of 385R
+     
+\leader{385S}{Remarks (a)}\cmmnt{ The %(2002) 3{}84S
+standard construction of a
+Bernoulli shift is from a product space, as follows.}   If
+$(X,\Sigma,\mu_0)$ is any probability space, write $\mu$ for the product
+measure on $X^{\Bbb N}$;  let $(\frak A,\bar\mu)$ be the measure algebra
+of $\mu$, and $\frak A_0\subseteq\frak A$ the set of equivalence classes
+of sets of the form $\{x:x(0)\in E\}$ where $E\in\Sigma$, so that
+$(\frak A_0,\bar\mu\restrp\frak A_0)$ can be identified with the measure
+algebra of
+$\mu_0$.   We have an \imp\ function $f:X^{\Bbb N}\to X^{\Bbb N}$
+defined by setting
+     
+\Centerline{$f(x)(n)=x(n+1)$ for every $x\in X^{\Bbb N}$, $n\in\Bbb N$,}
+     
+\noindent and $f$ induces\cmmnt{, as usual,} a measure-preserving
+homomorphism $\pi:\frak A\to\frak A$.   Now $\pi$ is a one-sided
+Bernoulli shift with root algebra $\frak A_0$.   \prooflet{\Prf\ (i)
+If $a_0,\ldots,a_k\in\frak A_0$, express each $a_j$ as $\{x:x(0)\in
+E_j\}^{\ssbullet}$, where $E_j\in\Sigma$.   Now
+     
+\Centerline{$\pi^ja_j=\{x:(f^j(x))(0)\in E_j\}^{\ssbullet}
+=\{x:x(j)\in E_j\}^{\ssbullet}$}
+     
+\noindent for each $j$, so
+     
+\Centerline{$\bar\mu(\inf_{j\le k}\pi^ja_j)
+=\mu(\bigcap_{j\le k}\{x:x(j)\in E_j\})
+=\prod_{j=0}^k\mu_0 E_j
+=\prod_{j=0}^k\bar\mu a_j$.}
+     
+\noindent Thus $\sequence{k}{\pi^k[\frak A_0]}$ is independent.   (ii)
+The closed subalgebra $\frak A'$ of $\frak A$ generated by
+$\bigcup_{k\in\Bbb N}\pi^k[\frak A_0]$ must contain $\{x:x(k)\in
+E\}^{\ssbullet}$ for every $k\in\Bbb N$, $E\in\Sigma$, so must contain
+$W^{\ssbullet}$ for every $W$ in the $\sigma$-algebra generated by sets
+of the form $\{x:x(k)\in E\}$;  but every set measured by $\mu$ is
+equivalent to such a set $W$.   So $\frak A'=\frak A$.\ \Qed
+}%end of prooflet
+     
+\spheader 385Sb\cmmnt{ The same method gives us two-sided Bernoulli
+shifts.}
+Again let $(X,\Sigma,\mu_0)$ be a probability space, and\cmmnt{ this
+time} write $\mu$ for the product measure on $X^{\Bbb Z}$;
+\cmmnt{again} let $(\frak A,\bar\mu)$ be the measure algebra of $\mu$,
+and $\frak A_0\subseteq\frak A$ the set of equivalence classes of sets
+of the form $\{x:x(0)\in E\}$ where $E\in\Sigma$\cmmnt{, so that
+$(\frak A_0,\bar\mu\restrp\frak A_0)$ can once more be identified with
+the
+measure algebra of $\mu_0$}.   This time, we have a measure space
+automorphism $f:X^{\Bbb Z}\to X^{\Bbb Z}$ defined by setting
+     
+\Centerline{$f(x)(n)=x(n+1)$ for every $x\in X^{\Bbb Z}$, $n\in\Bbb Z$,}
+     
+\noindent and $f$ induces a measure-preserving automorphism
+$\pi:\frak A\to\frak A$.   \cmmnt{The arguments used above show that}
+$\pi$ is a two-sided Bernoulli shift with root algebra $\frak A_0$.
+
+It follows that if $(\frak A,\bar\mu)$ is an atomless
+homogeneous probability algebra it has a two-sided Bernouilli
+shift.   \prooflet{\Prf\ We can identify $(\frak A,\bar\mu)$ 
+with the measure algebra of the usual measure
+on $\{0,1\}^{\kappa\times\Bbb Z}\cong(\{0,1\}^{\kappa})^{\Bbb Z}$, where
+$\kappa$ is the Maharam type of $\frak A$.\ \Qed}
+     
+\spheader 385Sc I remarked above that a Bernoulli shift will normally
+have many root algebras.   But\cmmnt{ it is important to know that},
+up to isomorphism, 
+any probability algebra is the root algebra of just one Bernoulli shift 
+of each type.
+     
+\medskip
+     
+\prooflet{
+\Prf{\bf (i)} Given a probability algebra $(\frak A_0,\bar\mu_0)$ then
+we can identify it with the measure algebra of a probability space
+$(X,\Sigma,\mu_0)$ (321J), and now the constructions of (a) and (b)
+provide Bernoulli shifts with root algebras isomorphic to
+$(\frak A_0,\bar\mu_0)$.
+     
+\medskip
+     
+{\bf (ii)} Let $(\frak A,\bar\mu)$ and $(\frak B,\bar\nu)$ be
+probability algebras with one-sided Bernoulli shifts $\pi$, $\phi$ with
+root algebras $\frak A_0$, $\frak B_0$, and suppose that
+$\theta_0:\frak A_0\to\frak B_0$ is a measure-preserving isomorphism.
+Then $(\frak A,\bar\mu)$ can be identified with the probability algebra
+free product
+of $\sequence{k}{\pi^k[\frak A_0]}$ (325L), while $(\frak B,\bar\nu)$
+can be identified with the probability algebra free product of
+$\sequence{k}{\pi^k[\frak B_0]}$.   For each $k\in\Bbb N$,
+$\phi^k\theta_0(\pi^k)^{-1}$ is a measure-preserving isomorphism between
+$\pi^k[\frak A_0]$ and $\phi^k[\frak B_0]$.   Assembling these, we have
+a measure-preserving isomorphism $\theta:\frak A\to\frak B$ such that
+$\theta a=\phi^k\theta_0(\pi^k)^{-1}a$ whenever $k\in\Bbb N$ and
+$a\in\pi^k[\frak A_0]$, that is, $\theta\pi^ka=\phi^k\theta_0a$ for
+every
+$a\in\frak A_0$, $k\in\Bbb N$.   Of course $\theta$ extends $\theta_0$.
+     
+If we set
+     
+\Centerline{$\frak C=\{a:a\in\frak A,\,\theta\pi a=\phi\theta a\}$,}
+     
+\noindent then $\frak C$ is a closed subalgebra of $\frak A$.   If
+$a\in\frak A_0$ and $k\in\Bbb N$, then
+     
+\Centerline{$\theta\pi(\pi^ka)=\theta\pi^{k+1}a=\phi^{k+1}\theta_0 a
+=\phi(\phi^k\theta_0a)=\phi\theta(\pi^ka)$,}
+     
+\noindent so $\pi^ka\in\frak C$.   Thus $\phi^k[\frak A_0]\subseteq\frak
+C$ for every $k\in\Bbb N$, and $\frak C=\frak A$.
+     
+This means that $\theta:\frak A\to\frak B$ is such that
+$\phi=\theta\pi\theta^{-1}$;  $\theta$ is an isomorphism between the
+structures $(\frak A,\bar\mu,\pi)$ and $(\frak B,\bar\nu,\phi)$
+extending
+the isomorphism $\theta_0$ from $\frak A_0$ to $\frak B_0$.
+     
+\medskip
+     
+\quad{\bf (iii)} Now suppose that $(\frak A,\bar\mu)$ and 
+$(\frak B,\bar\nu)$ are probability algebras with two-sided Bernoulli 
+shifts
+$\pi$, $\phi$ with root algebras $\frak A_0$, $\frak B_0$, and suppose
+that $\theta_0:\frak A_0\to\frak B_0$ is a measure-preserving
+isomorphism.   Repeating (ii) word for word, but changing each $\Bbb N$
+into $\Bbb Z$, we find that $\theta_0$ has an extension to a
+measure-preserving isomorphism $\theta:\frak A\to\frak B$ such that
+$\theta\pi=\phi\theta$, so that once more the structures 
+$(\frak A,\bar\mu,\pi)$ and $(\frak B,\bar\nu,\phi)$ are isomorphic.\ 
+\Qed
+}%end of prooflet
+     
+\spheader 385Sd The classic problem to which the theory of this section
+was directed was the following:  suppose we have two two-sided Bernoulli
+shifts $\pi$ and $\phi$, one based on a root algebra with two atoms of
+measure $\bover12$ and the other on a root algebra with three atoms of
+measure $\bover13$;  are they isomorphic?   The Kolmogorov-Sina\v\i\
+theorem tells us that they are not, because $h(\pi)=\ln 2$ and
+$h(\phi)=\ln 3$ are different.   \cmmnt{The question of which
+Bernoulli shifts
+{\it are} isomorphic is addressed, and (for countably-generated
+algebras) solved, in \S387 below.}
+     
+\spheader 385Se We shall need to know that any Bernoulli shift (either
+one- or two-sided) is ergodic.   In fact, it is mixing.
+\prooflet{\Prf\ Let $(\frak A,\bar\mu)$
+be a probability algebra and $\pi:\frak A\to\frak A$ a Bernoulli shift
+with root algebra $\frak A_0$.   Let $\frak B$ be the subalgebra of
+$\frak A$ generated by $\bigcup_{k\in\Bbb N}\pi^k[\frak A_0]$ (if $\pi$
+is one-sided) or by $\bigcup_{k\in\Bbb Z}\pi^k[\frak A_0]$ (if $\pi$ is
+two-sided).   If $b$, $c\in\frak B$, there is some $n\in\Bbb N$ such
+that both belong to the algebra $\frak B_n$ generated by
+$\bigcup_{j\le n}\pi^j[\frak A_0]$ (if $\pi$ is one-sided) or by
+$\bigcup_{|j|\le
+n}\pi^j[\frak A_0]$ (if $\pi$ is two-sided).   If now $k>2n$, $\pi^kb$
+belongs to the algebra generated by $\bigcup_{j>n}\pi^j[\frak A_0]$.
+But this is independent of $\frak B_n$ (cf.\ 325Xg, 272K), so
+     
+\Centerline{$\bar\mu(c\Bcap\pi^kb)=\bar\mu c\cdot\bar\mu(\pi^k b)
+=\bar\mu c\cdot\bar\mu b$.}
+     
+\noindent And this is true for every $k\ge n$.   Generally, if $b$,
+$c\in\frak A$ and $\epsilon>0$, there are $b'$, $c'\in\frak B$ such that
+$\bar\mu(b\Bsymmdiff b')\le\epsilon$ and
+$\bar\mu(c\Bsymmdiff c')\le\epsilon$, so that
+     
+$$\eqalign{\limsup_{k\to\infty}
+  |\bar\mu(c\Bcap\pi^kb)-\bar\mu c\cdot\bar\mu b|
+&\le\limsup_{k\to\infty}
+  |\bar\mu(c'\Bcap\pi^kb')-\bar\mu c'\cdot\bar\mu b'|\cr
+&\qquad\qquad+\bar\mu(c\Bsymmdiff c')
+  +\bar\mu(\pi^kb\Bsymmdiff\pi^kb')
+  +|\bar\mu c\cdot\bar\mu b-\bar\mu c'\cdot\bar\mu b'|\cr
+&\le 0+\epsilon+\epsilon+|\bar\mu c-\bar\mu c'|
+  +|\bar\mu b-\bar\mu b'|
+\le 4\epsilon.\cr}$$
+     
+\noindent As $\epsilon$, $b$ and $c$ are arbitrary, $\pi$ is mixing.
+By 372Qa, it is ergodic.\ \Qed
+}%end of prooflet
+     
+\spheader 385Sf\cmmnt{ The following elementary remark will be
+useful.}  If $(\frak A,\bar\mu)$ is a probability algebra,
+$\pi:\frak A\to\frak A$ is a measure-preserving automorphism, and
+$\frak A_0\subseteq\frak A$ is a closed subalgebra such that
+$\sequence{k}{\pi^k[\frak A_0]}$ is independent, then
+$\family{k}{\Bbb Z}{\pi^k[\frak A_0]}$ is independent.
+\prooflet{\Prf\ If $J\subseteq\Bbb Z$ is finite and $\family{j}{J}{a_j}$
+is a family in $\frak A_0$, take $n\in\Bbb N$ such that $-n\le j$ for
+every $j\in J$; then
+     
+\Centerline{$\bar\mu(\inf_{j\in J}\pi^ja_j)
+=\bar\mu(\inf_{j\in J}\pi^{n+j}a_j)
+=\prod_{j\in J}\bar\mu a_j$.  \Qed}
+}%end of prooflet
+     
+\spheader 385Sg\dvAnew{2011}
+It is I hope obvious, but perhaps I should 
+\cmmnt{explicitly }say:  if $(\frak A,\bar\mu)$ is a probability algebra, 
+$\phi:\frak A\to\frak A$ is a measure-preserving automorphism, and
+$\pi:\frak A\to\frak A$ is a (one- or two-sided) Bernouilli shift with a
+root algebra $\frak A_0$, then
+$\phi\pi\phi^{-1}$ is a Bernouilli shift and $\phi[\frak A_0]$ is a root
+algebra for $\phi\pi\phi^{-1}$.
+
+\cmmnt{
+\leader{385T}{Isomorphic homomorphisms (a)} %(2002) 3{}84T
+In this
+section I have spoken of `isomorphic homomorphisms' without offering a
+formal definition.   I hope that my intention was indeed obvious, and
+that the next sentence will merely confirm what you have already
+assumed.   If $(\frak A_1,\bar\mu_1)$ and $(\frak A_2,\bar\mu_2)$ are
+measure algebras, and $\pi_1:\frak A_1\to\frak A_2$,
+$\pi_2:\frak A_2\to\frak A_2$ are functions, then I say that
+$(\frak A_1,\bar\mu_1,\pi_1)$ and $(\frak A_2,\bar\mu_2,\pi_2)$ are
+isomorphic if there is a measure-preserving isomorphism
+$\phi:\frak A_1\to\frak A_2$ such that $\pi_2=\phi\pi_1\phi^{-1}$.   In
+this context, using
+Maharam's theorem or otherwise, we can expect to be able to decide
+whether $(\frak A_1,\bar\mu_1)$ and $(\frak A_2,\bar\mu_2)$ are or are
+not isomorphic;  and if they are, we have a good hope of being able to
+describe a measure-preserving isomorphism
+$\theta:\frak A_1\to\frak A_2$.   In this case, of course,
+$(\frak A_2,\bar\mu_2,\pi_2)$ will be
+isomorphic to $(\frak A_1,\bar\mu_1,\pi'_2)$ where
+$\pi'_2=\theta^{-1}\pi_2\theta$.   So now we have to decide whether
+$(\frak A_1,\bar\mu_1,\pi_1)$ is isomorphic to
+$(\frak A_1,\bar\mu_1,\pi'_2)$;  and when $\pi_1$, $\pi_2$ are
+measure-preserving Boolean automorphisms, this is just the question of
+whether $\pi_1$, $\pi'_2$ are conjugate in the group
+$\Aut_{\bar\mu_1}(\frak A_1)$ of measure-preserving automorphisms of
+$\frak A_1$.   Thus the isomorphism problem, as stated here, is very
+close to the classical group-theoretic problem of identifying the
+conjugacy classes in $\Aut_{\bar\mu}(\frak A)$ for a measure algebra
+$(\frak A,\bar\mu)$.   But we also want to look at
+measure-preserving homomorphisms which are not automorphisms, so there
+would be something left even if the conjugacy problem were solved.   (In
+effect, we are studying conjugacy in the semigroup of all
+measure-preserving Boolean homomorphisms, not just in its group of
+invertible elements.)
+     
+The point of the calculation of the entropy of a homomorphism is that it
+is an invariant under this kind of isomorphism;  so that if $\pi_1$,
+$\pi_2$ have different entropies then $(\frak A_1,\bar\mu_1,\pi_1)$ and
+$(\frak A_2,\bar\mu_2,\pi_2)$ cannot be isomorphic.   Of course the
+properties of being `ergodic' or `mixing' (see 372O) are also
+invariant.
+     
+\spheader 385Tb All the main work of this section has been done in terms
+of measure algebras;  part of my purpose in this volume has been to
+insist that this is often the right way to proceed, and to establish a
+language which makes the arguments smooth and natural.   But of course a
+large proportion of the most important homomorphisms arise in the
+context of measure spaces, and I take a moment to discuss such
+applications.   Suppose that we have two quadruples
+$(X_1,\Sigma_1,\mu_1,f_1)$ and $(X_2,\Sigma_2,\mu_2,f_2)$ where, for each $i$, $(X_i,\Sigma_i,\mu_i)$ is a measure space and $f_i:X_i\to X_i$ is an \imp\ function.   Then we have associated structures
+$(\frak A_1,\bar\mu_1,\pi_1)$ and $(\frak A_2,\bar\mu_2,\pi_2)$ where $(\frak A_i,\bar\mu_i)$ is the measure algebra of $(X_i,\Sigma_i,\mu_i)$ and $\pi_i:\frak A_i\to\frak A_i$ is the measure-preserving homomorphism
+defined by the usual formula
+$\pi_iE^{\ssbullet}=f_i^{-1}[E]^{\ssbullet}$.
+Now we can call $(X_1,\Sigma_1,\mu_1,f_1)$ and
+$(X_2,\Sigma_2,\mu_2,f_2)$ isomorphic if there is a measure space
+isomorphism $g:X_1\to X_2$ such that $f_2=gf_1g^{-1}$.   In this case
+$(\frak A_1,\bar\mu_1,\pi_1)$ and $(\frak A_2,\bar\mu_2,\pi_2)$ are
+isomorphic under the obvious isomorphism
+$\phi(E^{\ssbullet})=g[E]^{\ssbullet}$ for every $E\in\Sigma_1$.
+     
+It is not the case that if the $(\frak A_i,\bar\mu_i,\pi_i)$ are
+isomorphic, then the $(X_i,\Sigma_i,\mu_i,f_i)$ are;  in fact we do not
+even need to have an isomorphism of the measure spaces (for instance,
+one could be Lebesgue measure, and the other the Stone space of the
+Lebesgue measure algebra).   Even when $(\frak A_1,\bar\mu_1,\pi_1)$ and
+$(\frak A_2,\bar\mu_2,\pi_2)$ are actually identical, $f_1$ and $f_2$
+need not be isomorphic.   There are two examples in \S343 of a
+probability space $(X,\Sigma,\mu)$ with a measure space automorphism
+$f:X\to X$ such that $f(x)\ne x$ for every $x\in X$ but the
+corresponding automorphism on the measure algebra is the identity
+(343I, 343J);  writing $\iota$ for the identity map from $X$ to itself,
+$(X,\Sigma,\mu,\iota)$ and $(X,\Sigma,\mu,f)$ are non-isomorphic but give 
+rise to the same $(\frak A,\bar\mu,\pi)$.
+     
+\spheader 385Tc Even with Lebesgue measure, we can have a problem in a
+formal sense.   Take $(X,\Sigma,\mu)$ to be $[0,1]$ with Lebesgue
+measure, and set $f(0)=1$, $f(1)=0$, $f(x)=x$ for $x\in\ooint{0,1}$;
+then $f$ is not isomorphic to the identity function on $X$, but induces
+the identity automorphism on the measure algebra.   But in this case we
+can sort things out just by discarding the negligible set $\{0,1\}$, and
+for Lebesgue measure such a procedure is effective in a wide variety of
+situations.   To formalize it I offer the following definition.
+}%end of comment
+     
+\leader{385U}{Definition} %(2002) 3{}84U
+Let $(X_1,\Sigma_1,\mu_1)$ and
+$(X_2,\Sigma_2,\mu_2)$ be measure spaces, and $f_1:X_1\to X_1$,
+$f_2:X_2\to X_2$ two \imp\ functions.   I will say that the structures
+$(X_1,\Sigma_1,\mu_1,f_1)$ and $(X_2,\Sigma_2,\mu_2,f_2)$ are {\bf
+almost isomorphic} if there are conegligible sets $X_i'\subseteq X_i$
+such that $f_i[X'_i]\subseteq X'_i$ for both $i$ and the structures
+$(X'_i,\Sigma'_i,\mu'_i,f'_i)$ are isomorphic\cmmnt{ in the sense of
+385Tb}, where $\Sigma'_i$ is the algebra of relatively measurable
+subsets of $X'_i$, $\mu'_i$ is the subspace measure on $X'_i$ and
+$f'_i=f_i\restr X'_i$.
+     
+\leader{385V}{}\cmmnt{ I %(2002) 3{}84V
+leave the elementary properties of this
+notion to the exercises (385Xn-385Xp), but I spell out the result for
+which the definition is devised.   I phrase it in the language of
+\S\S342-343;  if the terms are not immediately familiar, start by
+imagining that both
+$(X_i,\Sigma_i,\mu_i)$ are measurable subspaces of $\Bbb R$ endowed with
+some Radon measure (342J, 343H), or indeed that both are $[0,1]$
+with Lebesgue measure.
+     
+\medskip
+     
+\noindent}{\bf Proposition} Let $(X_1,\Sigma_1,\mu_1)$ and
+$(X_2,\Sigma_2,\mu_2)$ be perfect, complete, strictly localizable and
+countably separated measure spaces, and $(\frak A_1,\bar\mu_1)$,
+$(\frak A_2,\bar\mu_2)$ their measure algebras.   Suppose that
+$f_1:X_1\to X_1$, $f_2:X_2\to X_2$ are \imp\ functions and that
+$\pi_1:\frak A_1\to\frak A_1$, $\pi_2:\frak A_2\to\frak A_2$ are the
+measure-preserving Boolean
+homomorphisms they induce.   If $(\frak A_1,\bar\mu_1,\pi_1)$ and
+$(\frak A_2,\bar\mu_2,\pi_2)$ are isomorphic, then
+$(X_1,\Sigma_1,\mu_1,f_1)$ and $(X_2,\Sigma_2,\mu_2,f_2)$ are almost
+isomorphic.
+     
+\proof{ Because $(\frak A_1,\bar\mu_1)$ and $(\frak A_2,\bar\mu_2)$ are
+isomorphic, we surely have $\mu_1X_1=\mu_2X_2$.   If both are zero, we
+can take $X'_1=X'_2=\emptyset$ and stop;  so let us suppose that
+$\mu_1X_1>0$.   Let $\phi:\frak A_1\to\frak A_2$ be a measure-preserving
+automorphism such that $\pi_2=\phi\pi_1\phi^{-1}$.   Because both
+$\mu_1$ and $\mu_2$ are complete and strictly localizable and compact
+(343K), there are \imp\ functions $g_1:X_1\to X_2$ and $g_2:X_2\to X_1$
+representing
+$\phi^{-1}$, $\phi$ respectively (343B).   Now $g_1g_2:X_2\to X_2$,
+$g_2g_1:X_1\to X_1$, $f_2g_1:X_1\to X_2$ and $g_1f_1:X_1\to X_2$
+represent, respectively, the identity automorphism on $\frak A_2$, the
+identity automorphism on $\frak A_1$, the homomorphism
+$\phi^{-1}\pi_2=\pi_1\phi^{-1}:\frak A_2\to\frak A_1$ and the
+homomorphism $\pi_1\phi^{-1}$ again.   Next, because
+both $\mu_1$ and $\mu_2$ are countably separated, the sets
+$E_1=\{x:g_2g_1(x)=x\}$, $H=\{x:f_2g_1(x)=g_1f_1(x)\}$ and
+$E_2=\{y:g_1g_2(y)=y\}$ are all conegligible (343F).   As in part (b) of
+the proof of 344I, $g_1\restr E_1$ and $g_2\restr E_2$ are the two
+halves of a bijection, a measure space isomorphism if $E_1$ and $E_2$
+are given their subspace measures.   Set $G_0=E_1\cap H$, and for
+$n\in\Bbb N$ set
+$G_{n+1}=G_n\cap f_1^{-1}[G_n]$.   Then every $G_n$ is conegligible, so
+$X'_1=\bigcap_{n\in\Bbb N}G_n$ is conegligible.   Because $X'_1$ is a
+conegligible subset of $E_1$, $h=g_1\restr X'_1$ is a measure space
+isomorphism between $X'_1$ and $X'_2=g_1[X'_1]$, which is conegligible
+in $X_2$.    Because $f_1[G_{n+1}]\subseteq G_n$ for each $n$,
+$f_1[X'_1]\subseteq X'_1$.   Because $X'_1\subseteq H$,
+$g_1f_1(x)=f_2g_1(x)$ for every $x\in X'_1$.   Next, if $y\in X'_2$,
+$g_2(y)\in X'_1$, so
+     
+\Centerline{$f_2(y)=f_2g_1g_2(y)=g_1f_1g_2(y)\in g_1[f_1[X'_1]]
+\subseteq g_1[X'_1]=X'_2$.}
+     
+\noindent Accordingly we have $f'_2=hf'_1h^{-1}$, where $f'_i=f_i\restr
+X'_i$ for both $i$.
+     
+Thus $h$ is an isomorphism between $(X'_1,f'_1)$ and $(X'_2,f'_2)$, and
+$(X_1,\Sigma_1,\mu_1,f_1)$ and $(X_2,\Sigma_2,\mu_2,f_2)$ are almost
+isomorphic.
+}%end of proof of 385V
+     
+\exercises{\leader{385X}{Basic exercises (a)} 
+%\spheader 385Xa %(2002) 3{}84Xa
+Let $(\frak A,\bar\mu)$ be a probability algebra and $A\subseteq\frak A$
+a partition of unity.   Show that if $\#(A)=n$ then $H(A)\le\ln n$.
+%385C
+     
+\sqheader 385Xb %(2002) 3{}84Xb
+Let $(\frak A,\bar\mu)$ be a probability algebra,
+$\frak B$ a closed subalgebra of $\frak A$ and $A$ a
+partition of unity in $\frak A$, enumerated as $\sequencen{a_n}$.   Set
+$a_n^*=\sup_{i>n}a_i$, $A_n=\{a_0,\ldots,a_n,a_n^*\}$ for each
+$n$.   Show that $H(A_n|\frak B)\le H(A_{n+1}|\frak B)$ for every $n$,
+and that $H(A|\frak B)=\lim_{n\to\infty}H(A_n|\frak B)$.
+%385G
+     
+\spheader 385Xc %(2002) 3{}84Xc
+Let $(\frak A,\bar\mu)$ be a probability algebra,
+$\frak B$ a closed subalgebra of $\frak A$ and $A$ a partition of unity
+in $\frak A$.   Show that $H(A|\frak B)=0$ iff $A\subseteq\frak B$.
+%385G
+     
+\spheader 385Xd %(2002) 3{}84Xd
+Let $(\frak A,\bar\mu)$ be a probability algebra,
+$\frak B$ a closed subalgebra of $\frak A$ and $A$ a partition of unity
+in $\frak A$.   Show that $H(A|\frak B)=H(A)$ iff
+$\bar\mu(a\Bcap b)=\bar\mu a\cdot\bar\mu b$ for every $a\in A$,
+$b\in\frak B$.   \Hint{for
+`only if', start with the case $\frak B=\{0,b,1\Bsetminus b,1\}$ and
+use 385Gc.}
+%385G
+     
+\spheader 385Xe %(2002) 3{}84Xe
+Let $(\frak A,\bar\mu)$ be a probability algebra and
+$A$, $B$ two partitions of unity in $\frak A$.   Show that
+$H(A\vee B)=H(A)+H(B)$ iff $\bar\mu(a\Bcap b)=\bar\mu a\cdot\bar\mu b$
+for all $a\in A$, $b\in B$.   Show that $H(A\vee B)=H(A)$ iff every
+member of $A$ is included in some member of $B$, that is, iff
+$A=A\vee B$.
+%385G
+     
+\spheader 385Xf %(2002) 3{}84Xf
+Let $\langle(\frak A_i,\bar\mu_i)\rangle_{i\in I}$ be a
+family of probability algebras, with probability algebra free product
+$(\frak C,\bar\lambda)$ (325K).   Suppose that
+$\pi_i:\frak A_i\to\frak A_i$ is a measure-preserving Boolean
+homomorphism for each $i\in I$, and
+that $\pi:\frak C\to\frak C$ is the measure-preserving Boolean
+homomorphism they induce.   Show that $h(\pi)=\sum_{i\in I}h(\pi_i)$.
+\Hint{use 385Gb and 385Gd to show that $h(\pi)$ is the supremum of
+$h(\pi,A)$ as $A$ runs over the finite partitions of unity in
+$\bigotimes_{i\in I}\frak A_i$.   Use this to reduce to the case
+$I=\{0,1\}$.   Now show that if $A_i\subseteq\frak A_i$ is a finite
+partition of unity for each $i$, and $A=\{a_0\otimes a_1:a_0\in
+A_0,\,a_1\in A_1\}$, then $H(A)=H(A_0)+H(A_1)$, so that
+$h(\pi,A)=h(\pi_0,A_0)+h(\pi_1,A_1)$.}
+%385M
+     
+\sqheader 385Xg %(2002) 3{}84Xg
+Let $(\frak A,\bar\mu)$ be a probability algebra and
+$\pi:\frak A\to\frak A$ a measure-preserving automorphism.   Show that
+$h(\pi^{-1})=h(\pi)$.
+%385M
+     
+\spheader 385Xh %(2002) 3{}84Xh
+Let $(\frak A,\bar\mu)$ be a probability algebra and
+$\pi:\frak A\to\frak A$ a measure-preserving Boolean homomorphism.
+Show that $h(\pi^k)=k h(\pi)$ for any $k\in\Bbb N$.   \Hint{if
+$A\subseteq\frak A$ is a partition of unity,  $h(\pi^k,A)\le
+h(\pi^k,D_k(A,\pi))=kh(\pi,A)$.}
+%385M
+     
+\sqheader 385Xi %(2002) 3{}84Xi
+Let $(\frak A,\bar\mu)$ be a probability algebra and
+$\pi:\frak A\to\frak A$ a
+measure-preserving Boolean homomorphism.   (i) Suppose there is a
+partition of unity $A\subseteq\frak A$ such that ($\alpha$)
+$\bar\mu(a\Bcap\pi b)=\bar\mu a\cdot\bar\mu b$ for every $a\in A$,
+$b\in\frak A$ ($\beta$) $\frak A$ is the closed subalgebra of itself
+generated by $\bigcup_{n\in\Bbb N}\pi^n[A]$.   Show that $\pi$ is a
+one-sided Bernoulli shift, and that $h(\pi)=H(A)$.   (ii) Suppose that
+$\pi$ is a one-sided Bernoulli shift of finite entropy.   Show that
+there is a partition of unity satisfying ($\alpha$) and ($\beta$).
+%385Q
+     
+\sqheader 385Xj %(2002) 3{}84Xj
+Let $(\frak A,\bar\mu)$ be the measure algebra of
+Lebesgue measure on $\coint{0,1}$.   Fix an integer $k\ge 2$, and define
+$f:\coint{0,1}\to\coint{0,1}$ by setting $f(x)=\fraction{kx}$, the
+fractional part of $kx$, for every $x\in\coint{0,1}$;  let
+$\pi:\frak A\to\frak A$ be the corresponding homomorphism.
+(Cf.\ 372Xt.)   Show
+that $\pi$ is a one-sided Bernoulli shift and that $h(\pi)=\ln k$.
+\Hint{in 385Xi, set $A=\{a_0,\ldots,a_{k-1}\}$ where
+$a_i=\coint{\bover{i}{k},\bover{i+1}k}^{\ssbullet}$ for $i<k$.}
+%385Q, 385Xi
+     
+\sqheader 385Xk %(2002) 3{}84Xk
+Let $(\frak A,\bar\mu)$ be the measure algebra of
+Lebesgue measure on $[0,1]$.   Set $f(x)=2\min(x,1-x)$ for $x\in[0,1]$
+(see 372Xp).   Show that the corresponding homomorphism
+$\pi:\frak A\to\frak A$ is a one-sided Bernoulli shift and that
+$h(\pi)=\ln 2$.
+\Hint{in 385Xi, set $A=\{a,1\Bsetminus a\}$ where
+$a=[0,\bover12]^{\ssbullet}$.}
+%385Q, 385Xi
+     
+\spheader 385Xl %(2002) 3{}84Xl
+Let $(\frak A,\bar\mu)$ be a probability algebra and
+$\pi:\frak A\to\frak A$ a two-sided Bernoulli shift.   Show that
+$\pi^{-1}$ is a two-sided Bernoulli shift and $\pi$ and $\pi^{-1}$ are conjugate in $\AmuA$, so that $\pi$ is a product of two
+involutions in $\Aut_{\bar\mu}(\frak A)$.
+%385Q
+     
+\spheader 385Xm %(2002) 3{}84Xm
+Let $\langle(\frak A_i,\bar\mu_i)\rangle_{i\in I}$ be a
+family of probability algebras, and $(\frak C,\bar\lambda)$ their
+probability algebra free product.   Suppose that for each
+$i\in I$ we have a measure-preserving Boolean homomorphism
+$\pi_i:\frak A_i\to\frak A_i$, and that $\pi:\frak C\to\frak C$ is the
+measure-preserving homomorphism induced by
+$\langle\pi_i\rangle_{i\in I}$ (325Xe).   (i) Show that if every $\pi_i$
+is a one-sided
+Bernoulli shift so is $\pi$.   (ii) Show that if every $\pi_i$ is a
+two-sided Bernoulli shift so is $\pi$.
+%385Q
+     
+\spheader 385Xn %(2002) 3{}84Xn
+Show that the relation `almost isomorphic to' (385U)
+is an equivalence relation.
+%385U
+     
+\spheader 385Xo %(2002) 3{}84Xo
+Show that the concept of `almost isomorphism'
+described in 385U is not changed if we amend the definition to require
+that the subspaces $X'_1$, $X'_2$ should be measurable.
+%385V
+     
+\spheader 385Xp %(2002) 3{}84Xp
+Show that if $(X_1,\Sigma_1,\mu_1,f_1)$ and
+$(X_2,\Sigma_2,\mu_2,f_2)$ are almost isomorphic quadruples as described
+in 385U, then $(\frak A_1,\bar\mu_1,\pi_1)$ and $(\frak
+A_2,\bar\mu_2,\pi_2)$ are isomorphic, where for each
+$i\,\,(\frak A_i,\bar\mu_i)$ is the measure algebra of
+$(X_i,\Sigma_i,\mu_i)$ and
+$\pi_i:\frak A_i\to\frak A_i$ is the measure-preserving Boolean
+homomorphism derived from $f_i:X_i\to X_i$.
+%385V
+     
+\spheader 385Xq %(2002) 3{}84Xq
+Let $(\frak A,\bar\mu)$ be a probability algebra, and
+write $\Cal A$ for the set of partitions of unity in
+$\frak A$ not containing $0$, ordered by saying that $A\le B$ if every
+member
+of $B$ is included in some member of $A$.   (i) Show that $\Cal A$ is a
+Dedekind complete lattice, and can be identified with the lattice of
+purely atomic closed subalgebras of $\frak A$.   Show that for $A$,
+$B\in\Cal A$, $A\vee B$, as defined in 385F, is $\sup\{A,B\}$ in $\Cal
+A$.   (ii) Show that $H(A\vee B)+H(A\wedge B)\le
+H(A)+H(B)$ for all $A$, $B\in\Cal A$, where $\vee$, $\wedge$ are the
+lattice operations on $\Cal A$.   (iii) Set $\Cal A_1=\{A:A\in\Cal
+A,\,H(A)<\infty\}$.   For $A$, $B\in\Cal A_1$ set
+$\rho(A,B)=2 H(A\vee B)-H(A)-H(B)$.   Show that $\rho$ is a metric on
+$\Cal A_1$ (the {\bf entropy metric}).   (iv) Show that if $\pi:\frak
+A\to\frak A$ is a measure-preserving Boolean homomorphism, then
+$|h(\pi,A)-h(\pi,B)|\le\rho(A,B)$ for all $A$, $B\in\Cal A_1$.   (iv)
+Show that the lattice operations $\vee$ and $\wedge$ are
+$\rho$-continuous
+on $\Cal A_1$.   (v) Show that $H:\Cal A_1\to \coint{0,\infty}$ is
+order-continuous.   (vi) Show that if $\frak B$ is any closed subalgebra
+of $\frak A$, then $A\mapsto H(A|\frak B)$ is order-continuous on
+$\Cal A_1$.
+%385+
+     
+\spheader 385Xr %(2002) 3{}84Xr
+Let $(\frak A,\bar\mu)$ be a probability algebra and $\frak B$ a topologically dense subalgebra of $\frak A$.   (i) Show that if
+$\langle a_i\rangle_{i\le n}$ is a partition of unity in $\frak A$ and $\epsilon>0$, there is a partition $\langle b_i\rangle_{i\le n}$ of unity
+in $\frak B$ such that $\bar\mu(a_i\Bsymmdiff b_i)\le\epsilon$ for every $i\le n$.   (ii) Show that if $A$ is a finite partition of unity in
+$\frak A$ and $\epsilon>0$ then there is a finite partition of unity $D\subseteq\frak B$ such that $H(A\vee D)\le H(A)+\epsilon$.   (iii) Show that if
+$\pi:\frak A\to\frak A$ is a measure-preserving Boolean homomorphism, then $h(\pi)=\sup\{h(\pi,D):D\subseteq\frak B$ is a finite partition of unity$\}$.
+\Hint{385N, 385Gb.}
+%385+
+
+\spheader 385Xs Let $(\frak A,\bar\mu)$ be a probability algebra 
+and $\pi:\frak A\to\frak A$ an ergodic measure-preserving Boolean 
+homomorphism.   Show that if $h(\pi)>0$ then $\frak A$ is atomless.
+%385S
+     
+\leader{385Y}{Further exercises (a)}
+%\spheader 385Ya %(2002) 3{}84Ya
+Let $(\frak A,\bar\mu)$ be a probability algebra, and
+write $\frak P$ for the lattice of closed subalgebras of $\frak A$.
+Show that if $A$ is any partition of unity in $\frak A$ of finite
+entropy, then the
+order-preserving function $\frak B\mapsto -H(A|\frak B):
+\frak P\to\ocint{-\infty,0}$ is order-continuous.
+%385G
+     
+\spheader 385Yb %(2002) 3{}84Yb
+Let $(\frak A,\bar\mu)$ be a probability algebra, $A$ a
+partition of unity in $\frak A$ of finite entropy, and
+$\pi:\frak A\to\frak A$ a
+measure-preserving Boolean homomorphism.   Show that
+$h(\pi,A)=\lim_{n\to\infty}H(A|\frak B_n)$, where $\frak B_n$ is the
+closed subalgebra of $\frak A$ generated by
+$\bigcup_{1\le i\le n}\pi^i[A]$.   \Hint{use 385Gb to show that
+$H(A|\frak B_n)=H(D_{n+1}(A,\pi))-H(D_n(A,\pi))$ and observe that
+$\lim_{n\to\infty}H(A|\frak B_n)$ is defined.}
+%385Ya (385G), 385M
+     
+\spheader 385Yc %(2002) 3{}84Yc
+Let $(\frak A,\bar\mu)$ be a probability algebra and
+$\pi:\frak A\to\frak A$ a measure-preserving Boolean homomorphism.
+Suppose that there is a partition of unity $A$ of finite entropy such
+that the closed subalgebra of $\frak A$ generated by $\bigcup_{i\ge
+1}\pi^i[A]$ is $\frak A$.   Show that $h(\pi)=0$.   \Hint{use 385Yb and
+385Pa.}
+%385P, 385Yb (385G)
+     
+\spheader 385Yd %(2002) 3{}84Yd
+Let $\mu$ be Lebesgue measure on $\coint{0,1}$, and take
+any $\alpha\in\ooint{0,1}$.   Let
+$f:\coint{0,1}\to\coint{0,1}$ be the measure space automorphism defined
+by saying that $f(x)$ is to be one of $x+\alpha$, $x+\alpha-1$.   Let
+$(\frak A,\bar\mu)$ be the measure algebra of $(\coint{0,1},\mu)$ and
+$\pi:\frak A\to\frak A$ the measure-preserving automorphism
+corresponding to $f$.   Show that $h(\pi)=0$.   \Hint{if
+$\alpha\in\Bbb Q$, use 385Xh;  otherwise use 385Yc with
+$A=\{a,1\Bsetminus a\}$ where $a=\coint{0,\bover12}^{\ssbullet}$.}
+%385Yc (385G, 385P, 385Yb), 385Xh (385M)
+     
+\spheader 385Ye %(2002) 3{}84Ye
+Set $X=[0,1]\setminus\Bbb Q$, let $\nu$ be the measure
+on $X$ defined by setting $\nu E=\bover1{\ln 2}\int_E\bover{1}{1+x}dx$
+for every Lebesgue measurable set $E\subseteq X$, and for $x\in X$ let
+$f(x)$ be the fractional part $\fraction{\bover1x}$ of $\bover1x$.
+Recall that $f$ is \imp\ for $\nu$ (see 372M).  Let $(\frak A,\bar\nu)$ be the measure algebra of $(X,\nu)$ and $\pi:\frak A\to\frak A$ the
+homomorphism corresponding to $f$.   Show that $h(\pi)=\pi^2/6\ln 2$.
+\Hint{use the Kolmogorov-Sina\v\i\ theorem and 372Yh(v).}
+%385P
+     
+\spheader 385Yf Let $(\frak A,\bar\mu)$ be a probability algebra, and
+$\phi:\frak A\to\frak A$ a one-sided Bernoulli shift.   
+Show that there are a probability algebra $(\frak C,\bar\lambda)$, a
+two-sided Bernouilli shift $\tilde\phi:\frak C\to\frak C$, and a
+measure-preserving Boolean homomorphism $\pi:\frak A\to\frak C$ such that
+$\tilde\phi\pi=\pi\phi$.   \Hint{328J.}
+%385S
+     
+\spheader 385Yg %(2002) 3{}84Yf
+Consider the triplets $(\coint{0,1},\mu_1,f_1)$ and
+$([0,1],\mu_2,f_2)$ where $\mu_1$, $\mu_2$ are Lebesgue measure on
+$\coint{0,1}$, $[0,1]$ respectively, $f_1(x)=\fraction{2x}$ for each
+$x\in\coint{0,1}$, and $f_2(x)=2\min(x,1-x)$ for each $x\in [0,1]$.
+Show that these structures are almost isomorphic in the sense of 385U,
+and give a formula for an almost-isomorphism.
+%385U, 385Xj, 385Xk
+     
+\spheader 385Yh %(2002) 3{}84Yg
+Let $(\frak A,\bar\mu)$ be a probability algebra, and
+$\Cal A_1$ the set of partitions of unity of finite entropy not
+containing $0$, as in 385Xq.   Show that $\Cal A_1$ is complete under
+the entropy metric.   \Hint{show that if $\sequencen{A_n}$ is a
+non-decreasing sequence in $\Cal A_1$ and $\sup_{n\in\Bbb
+N}H(A_n)<\infty$, then the closed subalgebra of $\frak A$ generated by
+$\bigcup_{n\in\Bbb N}A_n$ is purely atomic.}
+%385Xq
+}%end of exercises
+     
+\cmmnt{
+\Notesheader{385} In preparing this section I have been heavily
+influenced by {\smc Petersen 83}.   I have taken almost the shortest
+possible route to Theorem 385P, the original application of the theory,
+ignoring both the many extensions of these ideas and their intuitive
+underpinning in the concept of the quantity of `information' carried
+by a partition.   For both of these I refer you to {\smc Petersen 83}.
+The techniques described there are I think sufficiently powerful to make
+possible the calculation of the entropy of any of the measure-preserving
+homomorphisms which have yet appeared in this treatise.
+     
+Of course the idea of entropy of a partition, or of a homomorphism, can
+be translated into the language of probability spaces and \imp\
+functions;  if $(X,\Sigma,\mu)$ is a probability space, with measure
+algebra $(\frak A,\bar\mu)$, then partitions of unity in $\frak A$
+correspond (subject to decisions on how to treat negligible sets) to
+countable partitions of $X$ into measurable sets, and an \imp\ function
+$f:X\to X$ gives rise to a measure-preserving homomorphism
+$\pi_f:\frak A\to\frak A$;  so we can define the entropy of $f$ to be
+$h(\pi_f)$.   The whole point of the language I have sought to develop
+in this volume is that we can do this when and if we choose;  in
+particular, we are not limited to those homomorphisms which are
+representable by \imp\ functions.   But of course a large proportion of
+the most important examples do arise in this way (see 385Xj, 385Xk).
+The same two examples are instructive from another point of view:  the
+case $k=2$ of 385Xj is (almost) isomorphic to the tent map of 385Xk.
+The similarity is obvious, but exhibiting an actual isomorphism is I
+think another matter (385Yg).
+     
+I must say `almost' isomorphic here because the doubling map on
+$\coint{0,1}$ is everywhere two-to-one, while the tent map is not, so
+they cannot be isomorphic in any exact sense.   This is the problem
+grappled with in 385T-385V.   In some moods I would say that a dislike
+of such contortions is a sign of civilized taste.   Certainly it is part
+of my motivation for working with measure algebras whenever possible.
+But I have to say also that new ideas in this topic arise more often
+than not from actual measure spaces, and that it is absolutely necessary
+to be able to operate in the more concrete context.
+}%end of comment
+     
+\discrpage
+     

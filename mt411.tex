@@ -1,0 +1,700 @@
+\frfilename{mt411.tex}
+\versiondate{31.12.08}
+\copyrightdate{2002}
+
+\def\chaptername{Topologies and measures I}
+\def\sectionname{Definitions}
+
+\newsection{411}
+
+In something of the spirit of \S211, but this time without apologising,
+I start this volume with a list of definitions.   The rest of Chapter 41
+will be devoted to discussing these definitions and relationships
+between them, and integrating the new ideas into the concepts and
+constructions
+of earlier volumes;  I hope that by presenting the terminology now
+I can give you a sense of the directions the following sections will
+take.   I ought to remark immediately that there are many cases in which
+the exact phrasing of a definition is important in ways which may
+not be immediately apparent.
+
+\leader{411A}{}\cmmnt{ I begin with a phrase which will be a useful
+shorthand for the context in which most, but not all, of the theory
+here will be developed.
+
+\medskip
+
+\noindent}{\bf Definition} A {\bf topological measure space} is a
+quadruple $(X,\frak T,\Sigma,\mu)$ where $(X,\Sigma,\mu)$ is a measure
+space and $\frak T$ is a topology on $X$ such that
+$\frak T\subseteq\Sigma$\cmmnt{, that is, every open set (and
+therefore every Borel set) is measurable}.
+
+\leader{411B}{}\cmmnt{ Now I come to what are in my view the two most
+important concepts to master;  jointly they will dominate the chapter.
+
+\medskip
+
+\noindent}{\bf Definition} Let $(X,\Sigma,\mu)$ be a measure space and
+$\Cal K$ a family of sets.   I say that $\mu$ is {\bf inner
+regular with respect to $\Cal K$} if
+
+\Centerline{$\mu E=\sup\{\mu K:K\in\Sigma\cap\Cal K,\,K\subseteq E\}$}
+
+\noindent for every $E\in\Sigma$.   \cmmnt{(Cf.\ 256Ac, 342Aa.)}
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Note that in this definition I do not assume that
+$\Cal K\subseteq\Sigma$, nor even that $\Cal K\subseteq\Cal PX$.   But
+of course $\mu$ will be inner regular with
+respect to $\Cal K$ iff it is inner regular with respect to
+$\Cal K\cap\Sigma$.
+
+It is convenient in this context to interpret $\sup\emptyset$ as $0$, so
+that we have to check the definition only when $\mu E>0$, and need not
+insist that $\emptyset\in\Cal K$.
+}%end of comment
+
+\leader{411C}{Definition} Let $(X,\Sigma,\mu)$ be a measure space and
+$\frak T$ a topology on $X$.   I say that $\mu$ is
+{\bf $\tau$-additive} (the phrase {\bf $\tau$-regular} has also been used)
+if whenever $\Cal G$ is a non-empty upwards-directed family of open sets
+such that $\Cal G\subseteq\Sigma$ and $\bigcup\Cal G\in\Sigma$ then
+$\mu(\bigcup\Cal G)=\sup_{G\in\Cal G}\mu G$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Note that in this definition I do not assume that
+every open set is measurable.   Consequently we cannot take it for
+granted that an extension of a $\tau$-additive measure will be
+$\tau$-additive;  on
+the other hand, the restriction of a $\tau$-additive measure to any
+$\sigma$-subalgebra will be $\tau$-additive.
+
+}%end of comment
+
+\leader{411D}{}\cmmnt{ Complementary to 411B we have the following.
+
+\medskip
+
+\noindent}{\bf Definition} Let $(X,\Sigma,\mu)$ be a measure space and
+$\Cal H$ a family of subsets of $X$.   Then $\mu$ is
+{\bf outer regular with respect to $\Cal H$} if
+
+\Centerline{$\mu E=\inf\{\mu H:H\in\Sigma\cap\Cal H,\,H\supseteq E\}$}
+
+\noindent for every $E\in\Sigma$.
+
+Note that a totally finite measure on a topological space is
+inner regular with respect to the family of
+closed sets iff it is outer regular with
+respect to the family of open sets.
+
+\leader{411E}{}\cmmnt{ I delay discussion of most of the relationships
+between the concepts here to later in the chapter.   But it will be
+useful to have a basic fact set out immediately.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a measure space and
+$\frak T$ a topology on $X$.   If $\mu$ is inner regular with respect to
+the compact sets, it is $\tau$-additive.
+
+\proof{ Let $\Cal G$ be a non-empty upwards-directed family of
+measurable open sets such that $H=\bigcup\Cal G\in\Sigma$.   If
+$\gamma<\mu H$, there is a compact set $K\subseteq H$ such that
+$\mu K\ge\gamma$;  now there must be a $G\in\Cal G$ which includes $K$,
+so that $\mu G\ge\gamma$.  As $\gamma$ is arbitrary,
+$\sup_{G\in\Cal G}\mu G=\mu H$.
+}%end of proof of 411E
+
+\leader{411F}{}\cmmnt{ In order to deal efficiently with measures
+which are not totally finite, I think we need the following ideas.
+
+\medskip
+
+\noindent}{\bf Definitions} Let $(X,\Sigma,\mu)$ be a measure space
+and $\frak T$ a topology on $X$.
+
+\spheader 411Fa I say that $\mu$ is {\bf locally finite} if every point
+of $X$ has a neighbourhood of finite measure\cmmnt{, that is, if the
+open sets of finite outer measure cover $X$}.
+
+\spheader 411Fb I say that $\mu$ is {\bf effectively locally finite} if
+for every non-negligible measurable set $E\subseteq X$ there is
+a measurable open set $G\subseteq X$ such that $\mu G<\infty$ and
+$E\cap G$ is not negligible.
+
+\cmmnt{Note that an effectively locally finite measure
+must measure many open sets, while a locally finite measure need not.
+}%end of comment
+
+\spheader 411Fc \cmmnt{This seems a convenient moment at which to
+introduce the following term.}   A real-valued function $f$ defined on a
+subset of $X$ is {\bf locally integrable} if for every $x\in X$ there
+is an open set $G$ containing $x$ such that $\int_Gf$ is
+defined\cmmnt{ (in the sense of 214D)} and finite.
+
+\leader{411G}{Elementary facts (a)}
+%\spheader 411Ga
+If $\mu$ is a locally finite measure on a topological space $X$, then
+$\mu^*K<\infty$ for every compact set $K\subseteq X$.   \prooflet{\Prf\
+The family $\Cal G$ of open sets of finite outer measure is
+upwards-directed and covers $X$,
+so there must be some $G\in\Cal G$ including
+$K$, in which case $\mu^*K\le\mu^*G$ is finite.\ \Qed}
+
+\spheader 411Gb A measure $\mu$ on $\BbbR^r$ is locally finite
+iff every bounded set has finite outer measure\cmmnt{ (cf.\ 256Ab)}.
+\prooflet{\Prf\ (i) If every bounded set has finite outer measure then,
+in particular, every open ball has finite outer measure, so that $\mu$
+is locally finite.   (ii) If $\mu$ is locally finite and
+$A\subseteq\Bbb R^r$ is bounded, then its closure $\overline{A}$ is
+compact (2A2F), so
+that $\mu^*A\le\mu^*\overline{A}$ is finite, by (a) above.\ \Qed}
+
+\cmmnt{\spheader 411Gc I should perhaps remark immediately that a
+locally finite topological measure need not be effectively locally
+finite (419A), and an effectively locally finite measure need not be
+locally finite (411P).
+}%end of comment
+
+\spheader 411Gd An effectively locally finite measure must be
+semi-finite.
+
+\spheader 411Ge A locally finite measure on a Lindel\"of space
+$X$ is $\sigma$-finite.
+\prooflet{\Prf\ Let $\Cal G$ be the family of open sets of finite
+outer measure.   Because $\mu$ is locally finite, $\Cal G$ is a cover
+of $X$.   Because $X$
+is Lindel\"of, there is a sequence $\sequencen{G_n}$ in $\Cal G$
+covering $X$.   For each $n\in\Bbb N$, there is a measurable set
+$E_n\supseteq G_n$
+of finite measure, and now $\sequencen{E_n}$ is a sequence of sets of
+finite measure covering $X$.\ \Qed}
+
+\spheader 411Gf Let $(X,\frak T,\Sigma,\mu)$ be a topological measure
+space such that $\mu$ is locally
+finite and inner regular with respect to the compact sets.   Then
+$\mu$ is effectively locally finite.   \prooflet{\Prf\ Suppose that
+$\mu E>0$.   Then there is a measurable compact set $K\subseteq E$ such
+that $\mu K>0$.   As in the argument for (a) above, there is an open set
+$G$ of finite measure including $K$, so that $\mu(E\cap G)>0$.\ \Qed}
+
+\spheader 411Gg \cmmnt{Corresponding to (a) above, we have the
+following fact.}   If $\mu$ is a measure on a topological space and
+$f\in\eusm L^0(\mu)$ is locally
+integrable, then $\int_Kfd\mu$ is finite for every compact
+$K\subseteq X$\prooflet{, because $K$ can be covered by a finite family
+of open sets $G$ such that $\int_G|f|d\mu<\infty$}.
+
+\spheader 411Gh If $\mu$ is a locally finite measure on
+a topological space $X$, and $f\in\eusm L^p(\mu)$ for some
+$p\in[1,\infty]$, then $f$ is locally integrable\cmmnt{;  this is
+because $\int_G|f|\le\int_E|f|\le\|f\|_p\|\chi E\|_q$ is finite whenever
+$G\subseteq E$ and $\mu E<\infty$, where $\bover1p+\bover1q=1$, by
+H\"older's inequality (244Eb)}.
+
+\spheader 411Gi If $(X,\frak T)$ is a completely regular space and $\mu$
+is a locally finite topological measure on $X$, then the collection of open
+sets with negligible boundaries is a base for $\frak T$.
+\prooflet{\Prf\ If $x\in G\in\frak T$, let $H\subseteq G$ be an open set
+of finite measure containing $x$, and $f:X\to[0,1]$ a continuous
+function such that $f(x)=1$ and $f(y)=0$ for $y\in X\setminus H$.   Then
+$\{f^{-1}[\{\alpha\}]:0<\alpha<1\}$ is an uncountable disjoint family of
+measurable subsets of $H$, so there must be some $\alpha\in\ooint{0,1}$
+such that $f^{-1}[\{\alpha\}]$ is negligible.   Set
+$U=\{y:f(y)>\alpha\}$;  then $U$ is an open neighbourhood of $x$
+included in $G$ and its boundary
+$\partial U\subseteq f^{-1}[\{\alpha\}]$ is negligible.\ \Qed}
+
+\leader{411H}{}\cmmnt{ Two particularly important combinations of the
+properties above are the following.
+
+\medskip
+
+\noindent}{\bf Definitions (a)} A {\bf quasi-Radon measure space} is a
+topological measure space $(X,\frak T,\Sigma,\mu)$ such that (i)
+$(X,\Sigma,\mu)$ is complete and locally determined (ii) $\mu$ is
+$\tau$-additive, inner regular with respect to the closed sets and
+effectively locally finite.
+
+\spheader 411Hb  A {\bf Radon measure space} is a
+topological measure space $(X,\frak T,\Sigma,\mu)$ such that (i)
+$(X,\Sigma,\mu)$ is
+complete and locally determined (ii) $\frak T$ is Hausdorff (iii) $\mu$
+is locally finite and inner regular with respect to the compact sets.
+
+\leader{411I}{Remarks}\cmmnt{ {\bf (a)} You may like to seek your own
+proof that a Radon measure space is always quasi-Radon, before looking
+it up in \S416 below.
+
+\medskip
+
+{\bf (b)}} Note that a measure on Euclidean space $\BbbR^r$ is a
+Radon measure on the definition above iff it is a Radon measure as
+described in 256Ad.   \prooflet{\Prf\ In 256Ad, I said that a measure
+$\mu$ on $\BbbR^r$ is `Radon' if it is a locally finite complete
+topological
+measure, inner regular with respect to the compact sets.   (The
+definition of `locally
+finite' in 256A was not the same as the one above, but I have already
+covered this point in 411Gb.)   So the only thing to add is that $\mu$
+is necessarily locally determined, because it is $\sigma$-finite
+(256Ba).\ \Qed
+}%end of prooflet
+
+\leader{411J}{}\cmmnt{ The following special types of inner regularity
+are of sufficient importance to have earned separate names.
+
+\medskip
+
+\noindent}{\bf Definitions (a)} If $(X,\frak T)$ is a topological space,
+I will say that a measure $\mu$ on $X$ is {\bf tight} if it is inner
+regular with respect to the closed compact sets.
+
+\spheader 411Jb If $(X,\frak T,\Sigma,\mu)$ is a topological
+measure space, I will say that $\mu$ is {\bf completion regular} if it
+is inner regular with respect to the zero sets\cmmnt{ (definition:
+3A3Qa)}.
+
+\leader{411K}{Borel and Baire measures}
+If $(X,\frak T)$ is a topological space, I will call a measure with
+domain\cmmnt{ (exactly)} the Borel $\sigma$-algebra of
+$X$\cmmnt{ (4A3A)} a {\bf Borel measure}
+on $X$, and a measure with domain\cmmnt{ (exactly)} the Baire
+$\sigma$-algebra of $X$\cmmnt{ (4A3K)} a {\bf Baire measure} on $X$.
+
+\cmmnt{Of course a Borel measure is a topological measure in the
+sense of 411A.   On a metrizable space,
+the Borel and Baire measures coincide (4A3Kb).
+The most important measures in this chapter will be c.l.d.\ versions
+of Borel measures.}
+
+\leader{411L}{}\cmmnt{ When we come to look at functions defined on
+a topological measure space, we shall have to relate ideas of continuity
+and measurability.   Two basic concepts are the following.
+
+\medskip
+
+\noindent}{\bf Definition} Let $X$ be a set, $\Sigma$ a $\sigma$-algebra
+of subsets of $X$ and $(Y,\frak S)$ a topological space.   I will say
+that a function $f:X\to Y$ is {\bf measurable} if $f^{-1}[G]\in\Sigma$
+for every open set $G\subseteq Y$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remarks (a)} Note that a function $f:X\to\Bbb R$ is
+measurable on this definition (when $\Bbb R$ is given its usual
+topology) iff it is measurable according to the familiar definition in
+121C, which
+asks only that sets of the form $\{x:f(x)<\alpha\}$ should be measurable
+(121Ef).
+
+\medskip
+
+{\bf (b)} For any topological space $(Y,\frak S)$, a function $f:X\to Y$
+is measurable iff $f$ is $(\Sigma,\Cal B(Y))$-measurable,
+where $\Cal B(Y)$ is the Borel $\sigma$-algebra of $Y$ (4A3Cb).
+}%end of comment
+
+\leader{411M}{Definition} Let $(X,\Sigma,\mu)$ be a measure space,
+$\frak T$ a topology on $X$, and $(Y,\frak S)$ another topological
+space.   I will say that a function $f:X\to Y$ is
+{\bf almost continuous}\cmmnt{ or {\bf Lusin measurable}} if $\mu$
+is inner regular with respect to the
+family of subsets $A$ of $X$ such that $f\restr A$ is continuous.
+
+\leader{411N}{}\cmmnt{ Finally, I introduce some terminology to
+describe ways in which (sometimes) measures can be located in one part
+of a topological space rather than another.
+
+\medskip
+
+\noindent}{\bf Definitions} Let $(X,\Sigma,\mu)$ be a measure space
+and $\frak T$ a topology on $X$.
+
+\spheader 411Na I will call a set $A\subseteq X$ {\bf self-supporting}
+if $\mu^*(A\cap G)>0$ for every open set $G$ such that $A\cap G$ is
+non-empty.   \cmmnt{(Such sets are sometimes called {\bf of positive
+measure everywhere}.)}
+
+\spheader 411Nb A {\bf support} of $\mu$ is a closed self-supporting
+set $F$ such that $X\setminus F$ is negligible.
+
+\spheader 411Nc\cmmnt{ Note that} $\mu$ can have at most one support.
+\prooflet{\Prf\ If $F_1$, $F_2$ are supports then
+$\mu^*(F_1\setminus F_2)\le\mu^*(X\setminus F_2)=0$ so $F_1\setminus F_2$
+must be empty.
+Similarly, $F_2\setminus F_1=\emptyset$, so $F_1=F_2$.\ \Qed}
+
+\spheader 411Nd If $\mu$ is a $\tau$-additive topological measure it
+has a support.   \prooflet{\Prf\ Let $\Cal G$ be the family
+of negligible open sets, and $F$ the closed set
+$X\setminus\bigcup\Cal G$.   Then $\Cal G$ is an upwards-directed family
+in $\frak T\cap\Sigma$ and $\bigcup\Cal G\in\frak T\cap\Sigma$, so
+
+\Centerline{$\mu(X\setminus F)=\mu(\bigcup\Cal G)
+=\sup_{G\in\Cal G}\mu G=0$.}
+
+\noindent If $G$ is open and $G\cap F\ne\emptyset$ then $G\notin\Cal G$
+so $\mu^*(G\cap F)=\mu(G\cap F)=\mu G>0$;  thus $F$ is self-supporting
+and is the support of $\mu$.\ \Qed}
+
+\spheader 411Ne Let $X$ and $Y$ be topological spaces with topological
+measures $\mu$, $\nu$ respectively and a continuous \imp\ function
+$f:X\to Y$.   Suppose that $\mu$ has a support $E$.   Then
+$\overline{f[E]}$ is the support of $\nu$.   \prooflet{\Prf\ We have
+only to observe that for an open set $H\subseteq Y$
+
+$$\eqalign{\nu H>0
+&\iff\mu f^{-1}[H]>0
+\iff f^{-1}[H]\cap E\ne\emptyset\cr
+&\iff H\cap f[E]\ne\emptyset
+\iff H\cap\overline{f[E]}\ne\emptyset. \text{ \Qed}\cr}$$}
+
+\spheader 411Nf $\mu$ is {\bf strictly positive}\cmmnt{ (with
+respect
+to $\frak T$)} if $\mu^*G>0$ for every non-empty open set
+$G\subseteq X$\cmmnt{, that is, $X$ itself is the support of $\mu$}.
+
+\header{*411Ng}{\bf *(g)} If $(X,\frak T)$ is a topological space, and
+$\mu$ is a strictly positive $\sigma$-finite measure on $X$ such that
+the domain\cmmnt{ $\Sigma$} of $\mu$ includes a
+$\pi$-base\cmmnt{ $\Cal U$} for $\frak T$, then $X$ is ccc.
+\prooflet{\Prf\ Let $\sequencen{E_n}$
+be a sequence of sets of finite measure covering $X$.   Let $\Cal G$ be
+a disjoint family of non-empty open sets.   For each $G\in G$, take
+$U_G\in\Cal U\setminus\{\emptyset\}$ such that $U_G\subseteq G$;  then
+$\mu U_G>0$, so there is an $n(G)$ such that $\mu(E_{n(G)}\cap U_G)>0$.
+Now $\sum_{G\in G,n(G)=k}\mu(E_k\cap U_G)\le\mu E_k$ is finite for every
+$k$, so $\{G:n(G)=k\}$ must be countable and $\Cal G$ is countable.\
+\Qed}
+
+\leader{411O}{Example} Lebesgue measure on $\BbbR^r$ is a Radon
+measure\cmmnt{ (256Ha)};  \cmmnt{in particular,} it is locally
+finite and tight.   It is\cmmnt{ therefore} $\tau$-additive and
+effectively locally finite\cmmnt{ (411E, 411Gf)}.   It is completion
+regular\cmmnt{ (because every compact set is a zero set, see
+4A2Lc)}, outer regular with respect to the open
+sets\cmmnt{ (134Fa)} and strictly positive.
+
+\leader{411P}{Example:  Stone spaces (a)} Let $(Z,\frak T,\Sigma,\mu)$
+be the Stone space of a semi-finite measure algebra
+$(\frak A,\bar\mu)$, so that $(Z,\frak T)$ is a
+zero-dimensional compact Hausdorff space, $(Z,\Sigma,\mu)$ is complete
+and semi-finite, the open-and-closed sets are measurable, the negligible
+sets are the nowhere dense sets, and every measurable set differs by a
+nowhere dense set from an open-and-closed set\cmmnt{ (311I, 321K,
+322Bd, 322Ra\formerly{3{}22Qa})}.
+%311I:  X compact 0-dim
+%321K:  measurable iff (open&closed\symmdiff meager),
+%       negligible iff meager, \mu complete
+%322Bd:  semi-finite
+%322Ra:  meager iff nwd
+
+\spheader 411Pb $\mu$ is inner regular with respect to the
+open-and-closed sets\cmmnt{ (322Ra)};  \cmmnt{in particular,} it
+is completion regular and tight.   Consequently it is
+$\tau$-additive\cmmnt{ (411E)}.
+
+\spheader 411Pc $\mu$ is strictly positive\cmmnt{, because the
+open-and-closed sets form a base for $\frak T$ (311I) and a non-empty
+open-and-closed set has non-zero measure}.   $\mu$ is effectively
+locally finite.   \prooflet{\Prf\ Suppose that $E\in\Sigma$ is not
+negligible.
+There is a measurable set $F\subseteq E$ such that $0<\mu F<\infty$;
+now there is a non-empty open-and-closed
+set $G$ included in $F$, in which case $\mu G<\infty$ and
+$\mu(E\cap G)>0$.\ \Qed}
+
+\wheader{411Pd}{0}{0}{0}{60pt}
+
+\spheader 411Pd The following are equiveridical, that is, if one is true
+so are the others:
+
+\quad (i) $(\frak A,\bar\mu)$ is localizable;
+
+\quad(ii) $\mu$ is strictly localizable;
+
+\quad(iii) $\mu$ is locally determined;
+
+\quad(iv) $\mu$ is a quasi-Radon measure.
+
+\prooflet{\noindent\Prf\ The equivalence of (i)-(iii) is Theorem
+322O\formerly{3{}22N}.
+(iv)$\Rightarrow$(iii) is trivial.   If one, therefore all, of (i)-(iii)
+are true, then $\mu$ is a topological measure, because if
+$G\subseteq Z$ is open, then $\overline{G}$ is open-and-closed, by 314S,
+therefore measurable, and $\overline{G}\setminus G$ is nowhere dense,
+therefore also measurable.   We know already that $\mu$ is complete,
+effectively locally finite and $\tau$-additive, so that if it is also
+locally determined it is a quasi-Radon measure.\ \Qed}
+
+\spheader 411Pe The following are equiveridical:
+
+\quad(i) $\mu$ is a Radon measure;
+
+\quad(ii) $\mu$ is totally finite;
+
+\quad (iii) $\mu$ is locally finite;
+
+\quad (iv) $\mu$ is outer regular with respect to the open sets.
+
+\prooflet{\noindent\Prf\ (ii)$\Rightarrow$(iv) If $\mu$ is totally
+finite and $E\in\Sigma$, then for any $\epsilon>0$ there is a closed
+set $F\subseteq Z\setminus E$ such that
+$\mu F\ge\mu(Z\setminus E)-\epsilon$, and now
+$G=Z\setminus F$ is an open set including $E$ with
+$\mu G\le\mu E+\epsilon$.   (iv)$\Rightarrow$(iii) Suppose that $\mu$
+is outer regular with respect to the
+open sets, and $z\in Z$.   Because $Z$ is Hausdorff, $\{z\}$ is
+closed.   If it is open it is
+measurable, and because $\mu$ is semi-finite it must have finite
+measure.   Otherwise it is nowhere dense, therefore negligible, and
+must be included
+in open sets of arbitrarily small measure.   Thus in both cases $z$
+belongs to an open set of finite measure;  as $z$ is arbitrary, $\mu$
+is locally finite.  (iii)$\Rightarrow$(ii) Because $Z$ is compact, this
+is a consequence of 411Ga.   (i)$\Rightarrow$(iii)
+is part of the definition of `Radon measure'.   Finally,
+(ii)$\Rightarrow$(i), again directly from the definition and the
+facts set out in (a)-(b) above.\ \Qed}
+
+\spheader 411Pf Let $W\subseteq Z$ be the union of all the open
+subsets of $Z$ with finite measure.   \cmmnt{Because $\mu$ is
+effectively locally finite,} $W$ has full outer measure, so
+$(\frak A,\bar\mu)$ can be identified with the measure algebra of the
+subspace measure $\mu_W$\cmmnt{ (322Jb)}.   \cmmnt{By the
+definition of $W$,} $\mu_W$ is locally finite.   If
+$(\frak A,\bar\mu)$ is localizable, then $\mu_W$ is a Radon measure.
+\prooflet{\Prf\ Every open subset of $W$ belongs to $\Sigma$, by (d),
+and therefore to the domain of $\mu_W$, and $\mu_W$ is a topological
+measure.   By 214Ka, $\mu_W$ is complete and locally determined.
+Because $\mu$ is inner regular with respect to the compact sets, so
+is $\mu_W$.\ \Qed}
+
+
+\leader{411Q}{Example:  Dieudonn\'e's measure} Recall that a set
+$E\subseteq\omega_1$ is a Borel set iff either $E$ or its complement
+includes a cofinal closed set\cmmnt{ (4A3J)}.   So we may define
+a Borel measure $\mu$ on $\omega_1$ by saying that $\mu E=1$ if $E$
+includes a cofinal closed set and $\mu E=0$ if $E$ is disjoint from a
+cofinal closed set.   \cmmnt{If $E$ is disjoint from some
+cofinal closed set, so is any subset of $E$, so} $\mu$ is complete.
+\cmmnt{Since} $\mu$\cmmnt{ takes only the values $0$ and $1$, it}
+is a purely atomic probability measure.
+
+$\mu$ is a topological measure;  \cmmnt{being totally finite,} it
+is\cmmnt{ surely} locally finite and effectively locally finite.
+It is inner regular with respect to
+the closed sets\cmmnt{ (because if $\mu E>0$, there is a cofinal
+closed set $F\subseteq E$, and now $F$ is a closed set with
+$\mu F=\mu E$)}, therefore outer regular with respect to the open sets.
+It is not $\tau$-additive\cmmnt{ (because $\xi=\coint{0,\xi}$ is an open
+set of zero measure for every $\xi<\omega_1$, and the union of these
+sets is a measurable open set of measure $1$)}.
+
+$\mu$ is not completion regular\cmmnt{, because the set of countable
+limit ordinals is a closed set (4A1Bb) which does not include
+any uncountable zero set (see 411R below)}.
+
+The only self-supporting subset of $\omega_1$ is the empty
+set\cmmnt{ (because there is a cover of $\omega_1$ by negligible
+open sets)}.   \cmmnt{In particular,} $\mu$ does not have a support.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} There is a measure of this type on any ordinal
+of uncountable cofinality;  see 411Xj.
+}%end of comment
+
+\leader{411R}{Example:  The Baire $\sigma$-algebra of $\omega_1$}
+The Baire $\sigma$-algebra\cmmnt{ $\CalBa(\omega_1)$} of $\omega_1$ is the
+countable-cocountable algebra\cmmnt{ (4A3P)}.   The
+countable-cocountable measure $\mu$ on $\omega_1$
+is\cmmnt{ therefore} a Baire measure\cmmnt{ on the definition of
+411K}.   \cmmnt{Since all sets of
+the form $\ooint{\xi,\omega_1}$ are zero sets,} $\mu$ is inner regular
+with respect to the zero sets and outer regular with respect to the
+cozero sets.   \cmmnt{Since sets of
+the form $\coint{0,\xi}$ ($=\xi$) form a cover of $\omega_1$ by
+measurable open sets of zero measure,} $\mu$ is not $\tau$-additive.
+
+\exercises{
+\leader{411X}{Basic exercises $\pmb{>}$(a)}
+%\spheader 411Xa
+Let $(X,\Sigma,\mu)$ be a totally finite measure space and $\frak T$ a
+topology on $X$.   Show that $\mu$ is inner regular with respect to the
+closed sets iff it is outer regular with respect to the open sets, and
+is inner regular with respect to the zero sets iff it is outer regular
+with respect to the cozero sets.
+%411D used in 457M
+
+\spheader 411Xb Let $\mu$ be a Radon measure on $\BbbR^r$, where
+$r\ge 1$, and $f\in\eusm L^0(\mu)$.   Show that $f$ is locally
+integrable in the sense of 411Fc iff it is locally integrable in the
+sense of 256E, that is, $\int_Efd\nu<\infty$ for every bounded set
+$E\subseteq\BbbR^r$.
+%411F
+
+\spheader 411Xc Let $\mu$ be a measure on a topological space, $\hat\mu$
+its completion and $\tilde\mu$ its c.l.d.\ version.   Show that $\mu$
+is locally finite iff $\hat\mu$ is locally finite, and in this case
+$\tilde\mu$ is locally finite.
+%411G
+
+\sqheader 411Xd Let $\mu$ be an effectively locally finite measure on
+a topological space $X$.   (i) Show that the completion and c.l.d.\
+version of $\mu$ are effectively locally finite.   (ii) Show that if
+$\mu$ is complete and locally determined, then the union of the
+measurable open sets of finite measure is conegligible.   (iii) Show
+that if $X$ is hereditarily Lindel\"of then $\mu$ must be
+$\sigma$-finite.
+%411G
+
+\spheader 411Xe Let $X$ be a topological space and $\mu$ a measure on
+$X$.   Let $U\subseteq L^0(\mu)$ be the set of equivalence classes of
+locally integrable functions in $\eusm L^0(\mu)$.   Show that $U$ is a
+solid linear subspace of $L^0(\mu)$.   Show that if $\mu$ is locally
+finite then $U$ includes $L^p(\mu)$ for every $p\in[1,\infty]$.
+%411G
+
+\spheader 411Xf Let $X$ be a topological space.   (i) Let $\mu$, $\nu$
+be two totally finite Borel measures which agree on the closed sets.
+Show that they are equal.   \Hint{136C.}   (ii) Let $\mu$, $\nu$ be
+two totally finite Baire measures which agree on the zero sets.   Show
+that they are equal.
+%411K
+
+\spheader 411Xg Let $(X,\frak T)$ be a topological space, $\mu$ a
+measure on $X$, and $Y$ a subset of $X$;  let $\frak T_Y$, $\mu_Y$ be
+the subspace
+topology and measure.    Show that if $\mu$ is a topological measure,
+or locally finite, or a Borel measure, so is $\mu_Y$.
+
+\spheader 411Xh Let $\langle (X_i,\Sigma_i,\mu_i)\rangle_{i\in I}$ be
+a family of measure spaces, with direct sum $(X,\Sigma,\mu)$;  suppose
+that we are given a topology $\frak T_i$ on each $X_i$, and let
+$\frak T$ be the disjoint union topology on $X$ (definition:  4A2A).
+Show that $\mu$ is a topological
+measure, or locally finite, or effectively locally finite, or a Borel
+measure, or a Baire measure, or strictly positive, iff every $\mu_i$ is.
+
+\spheader 411Xi Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be two measure
+spaces, with c.l.d.\ product measure $\lambda$ on $X\times Y$.   Suppose
+we are given topologies $\frak T$, $\frak S$ on $X$, $Y$ respectively,
+and give $X\times Y$ the product topology.   Show that $\lambda$ is
+locally finite, or effectively locally finite, if $\mu$ and $\nu$ are.
+
+\spheader 411Xj Let $\alpha$ be any ordinal of uncountable cofinality
+with its order topology (definitions:  3A1Fb, 4A2A).   Show that there is a complete topological
+probability measure $\mu$ on $\alpha$ defined by saying that $\mu E=1$
+if $E$ includes a cofinal closed set in $\alpha$, $0$ if $E$ is
+disjoint from some
+cofinal closed set.   Show that $\mu$ is inner regular with respect to
+the closed sets but is not completion regular.
+%411Q
+
+\spheader 411Xk\dvAnew{2013} Let $\familyiI{(X_i,\frak T_i)}$ be a family
+of topological spaces, and $\mu_i$ a strictly positive probability measure
+on $X_i$ for each $i$.   Show that the product measure on 
+$\prod_{i\in I}X_i$ is strictly positive.
+%411N out of order query
+
+\leader{411Y}{Further exercises (a)}
+%\spheader 411Ya
+Let $r$, $s\ge 1$ be integers.
+Show that a function $f:\BbbR^r\to\BbbR^s$ is measurable
+iff it is almost continuous (where $\BbbR^r$ is endowed with Lebesgue
+measure and its usual topology, of course).   \Hint{256F.}
+%411M
+
+\spheader 411Yb Let $(X,\rho)$ be a metric space, $r\ge 0$, and write
+$\mu_{Hr}$ for $r$-dimensional Hausdorff measure on $X$ (264K,
+471A).   (i) Show that $\mu_{Hr}$ is a topological measure, outer
+regular with respect to the
+Borel sets.  (ii) Show that the c.l.d.\ version $\tilde\mu_{Hr}$ of
+$\mu_{Hr}$ is inner regular with respect to the closed totally bounded
+sets.   (iii) Show that $\tilde\mu_{Hr}$ is completion regular.
+(iv) Show that if $X$ is complete then $\tilde\mu_{Hr}$ is tight.
+%411J
+
+\spheader 411Yc Let $(X,\frak T,\Sigma,\mu)$ be a topological measure
+space.   Set $\Cal E=\{E:E\subseteq X,\,\mu(\partial E)=0\}$, where
+$\partial E$ is the boundary of $A$.   (i) Show that $\Cal E$ is a
+subalgebra of $\Cal PX$, and that every member of $\Cal E$ is measured
+by the completion of $\mu$.   ($\Cal E$ is sometimes called the {\bf
+Jordan algebra} of $(X,\frak T,\Sigma,\mu)$.   Do not confuse with the
+`Jordan algebras' of abstract algebra.)   (ii) Suppose that $\mu$
+is totally finite and inner regular with respect to the
+closed sets, and that $\frak T$ is normal.   Show that
+$\{E^{\ssbullet}:E\in\Cal E\cap\Sigma\}$ is dense in the measure algebra of
+$\mu$ endowed with its usual topology.
+(iii) Suppose that $\mu$ is a quasi-Radon measure
+and $\frak T$ is completely regular.
+Show that $\{E^{\ssbullet}:E\in\Cal E\}$ is dense in the measure
+algebra of $\mu$.   \Hint{414Aa.}
+%411G 411H
+
+\spheader 411Yd\dvAnew{2011}
+Let $(X,\frak T,\Sigma,\mu)$ be a second-countable
+atomless topological probability space with a strictly positive measure, 
+$\Cal E$ the
+Jordan algebra of $\mu$ as defined in 411Yc, $(\frak A,\bar\mu)$ the
+measure algebra of $\mu$ and $\frak E$ the image
+$\{E^{\ssbullet}:E\in\Cal E\}\subseteq\frak A$.   Let $\frak B$ be a
+Boolean algebra and $\nu:\frak B\to[0,1]$ a finitely additive functional.
+Show that $(\frak B,\nu)\cong(\frak E,\bar\mu\restrp\frak E)$ iff
+($\alpha$) 
+$\nu$ is strictly positive and properly atomless in the sense of
+326F\formerly{3{}26Ya}, and $\nu 1=1$ 
+($\beta$) there is a countable subalgebra $\frak B_0$ of $\frak B$
+such that $\nu b=\sup\{\nu c:c\in\frak B_0$, $c\Bsubseteq b\}$ for every
+$b\in\frak B$ 
+($\gamma$) whenever $A$, $B\subseteq\frak B$ are upwards-directed
+sets such that $a\Bcap b=0$ for every $a\in A$ and $b\in B$ and
+$\sup\{\nu(a\Bcup b):a\in A$, $b\in B\}=1$, then $\sup A$ is defined in
+$\frak B$.
+%411Yc 411H
+
+}%end of exercises
+
+\cmmnt{\Notesheader{411} Of course the list above can give only a
+rough idea of the ways in which topologies and measures can interact.
+In particular I have rather arbitrarily given a sort of priority to
+three particular relationships between the domain $\Sigma$ of a measure
+and the topology:  `topological measure space' (in which $\Sigma$
+includes the
+Borel $\sigma$-algebra), `Borel measure' (in which $\Sigma$ is precisely
+the Borel $\sigma$-algebra) and `Baire measure' (in which $\Sigma$ is
+the Baire $\sigma$-algebra).
+
+Abstract topological measure theory is a relatively new subject, and
+there are many technical questions on which different authors take
+different views.   For instance, the phrase `Radon measure' is commonly
+used to mean what I would call a `tight locally finite Borel measure'
+(cf.\ 416F);  and some writers
+enlarge the definition of `topological measure' to include Baire
+measures as defined above.
+
+I give very few examples at this stage, two drawn from the constructions
+of Volumes 1-3 (Lebesgue measure and Stone spaces, 411O-411P) and one
+new one (`Dieudonn\'e's measure', 411Q), with a glance at the
+countable-cocountable measure of $\omega_1$ (411R).   The most glaring
+omission is that of the product measures on $\{0,1\}^I$ and $[0,1]^I$.
+I pass these by at the moment because a proper study of them requires
+rather more preparation than can be slipped into a parenthesis.   (I
+return to them in 416U.)   I have also omitted
+any discussion of `measurable' and `almost continuous' functions, except
+for a reference to a theorem in Volume 2 (411Ya), which will have
+to be repeated and amplified later on (418K).
+There is an obvious complementarity between the notions of `inner' and
+`outer' regularity (411B, 411D), but it works well only for totally
+finite spaces (411Xa);  in other cases it may not be obvious what will
+happen (411O, 411Pe, 412W).
+
+}%end of notes
+
+\discrpage

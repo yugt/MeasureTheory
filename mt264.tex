@@ -1,0 +1,1099 @@
+\frfilename{mt264.tex}
+\versiondate{12.5.03}
+\copyrightdate{1994}
+
+\def\chaptername{Change of variable in the integral}
+\def\sectionname{Hausdorff measures}
+
+\newsection{264}
+
+The next topic I wish to approach is the question of `surface
+measure';  a useful example to bear in mind throughout this section and
+the next is the notion of area for regions on the sphere, but any other
+smoothly curved two-dimensional surface in three-dimensional space will
+serve equally well.   It is I think more than plausible that our
+intuitive concepts of `area' for such surfaces should correspond to
+appropriate measures.   But formalizing this intuition is
+non-trivial, especially if we seek the generality that simple geometric
+ideas lead us to;  I mean, not contenting ourselves with arguments that
+depend on the special nature of the sphere, for instance, to describe
+spherical surface area.   I divide the problem into two parts.   In this
+section I will describe a construction which enables us to define the
+$r$-dimensional measure of an $r$-dimensional surface -- among other
+things -- in $s$-dimensional space.   In the next section I will set out
+the basic theorems making it possible to calculate these measures
+effectively in the leading cases.
+
+\leader{264A}{Definitions} Let $s\ge 1$ be an integer, and $r>0$.
+\cmmnt{(I am primarily concerned with integral $r$,
+but will not insist on this until it becomes necessary, since there are
+some very interesting ideas which involve non-integral `dimension'
+$r$.)}   For any $A\subseteq \BbbR^s$, $\delta>0$ set
+
+$$\eqalign{\theta_{r\delta}A
+=\inf\{\sum_{n=0}^{\infty}(\diam A_n)^r:\sequencen{A_n}
+&\text{ is a sequence of subsets of }\BbbR^s\text{ covering }A,\cr
+&\qquad\qquad\qquad\quad\diam A_n\le\delta\text{ for every }
+  n\in\Bbb N\}.\cr}$$
+
+\noindent   It is convenient in this context to
+say that $\diam\emptyset=0$.
+Now set
+
+\Centerline{$\theta_rA=\sup_{\delta>0}\theta_{r\delta}A$;}
+
+\noindent $\theta_r$ is {\bf $r$-dimensional Hausdorff outer measure} on
+$\BbbR^s$.
+
+\leader{264B}{}\cmmnt{ Of course we must immediately check the
+following:
+
+\medskip
+
+\noindent}{\bf Lemma} $\theta_r$, as defined in 264A, is always an outer
+measure.
+
+\proof{ You should be used to these arguments by now, but there is an
+extra step in this one, so I spell out the details.
+
+\medskip
+
+{\bf (a)} Interpreting the diameter of the empty set as $0$, we have
+$\theta_{r\delta}\emptyset=0$ for every $\delta>0$, so
+$\theta_r\emptyset=0$.
+
+\medskip
+
+{\bf (b)} If $A\subseteq B\subseteq\BbbR^s$, then every sequence
+covering $B$
+also covers $A$, so $\theta_{r\delta}A\le\theta_{r\delta}B$ for every
+$\delta$ and $\theta_rA\le\theta_rB$.
+
+\medskip
+
+{\bf (c)} Let $\sequencen{A_n}$ be a sequence of subsets of $\BbbR^s$
+with union $A$, and take any  $a<\theta_rA$.   Then there is a $\delta>0$
+such that $a\le\theta_{r\delta}A$.   Now
+$\theta_{r\delta}A\le\sum_{n=0}^{\infty}\theta_{r\delta}(A_n)$.   \Prf\
+Let $\epsilon>0$, and for each $n\in\Bbb N$ choose a sequence
+$\sequence{m}{A_{nm}}$ of sets, covering $A_n$, with 
+$\diam A_{nm}\le\delta$ for every $m$ and 
+$\sum_{m=0}^{\infty}(\diam A_{nm})^r\le\theta_{r\delta}A_n+2^{-n}\epsilon$.
+Then $\langle A_{nm}\rangle_{m,n\in\Bbb N}$ is a cover of $A$ by 
+countably many sets of diameter at most $\delta$, so
+
+\Centerline{$\theta_{r\delta}A
+\le\sum_{n=0}^{\infty}\sum_{m=0}^{\infty}(\diam A_{nm})^r
+\le\sum_{n=0}^{\infty}\theta_{r\delta}A_n+2^{-n}\epsilon
+=2\epsilon+\sum_{n=0}^{\infty}\theta_{r\delta}A_n$.}
+
+\noindent As $\epsilon$ is arbitrary, we have the result.\ \Qed
+
+Accordingly
+
+\Centerline{$a\le\theta_{r\delta}A
+\le\sum_{n=0}^{\infty}\theta_{r\delta}A_n
+\le\sum_{n=0}^{\infty}\theta_rA_n$.}
+
+\noindent As $a$ is arbitrary,
+
+\Centerline{$\theta_rA\le\sum_{n=0}^{\infty}\theta_rA_n$;}
+
+\noindent as $\sequencen{A_n}$ is arbitrary, $\theta_r$ is an outer
+measure.
+}%end of proof of 264B
+
+\leader{264C}{Definition} If $s\ge 1$ is an integer, and $r>0$, then
+{\bf Hausdorff $r$-dimensional measure} on $\BbbR^s$ is the measure
+$\mu_{Hr}$ on $\BbbR^s$ defined by \Caratheodory's method from the outer
+measure $\theta_r$ of 264A-264B.
+
+\leader{264D}{Remarks}\cmmnt{ {\bf (a)} It is important to note that
+the sets used in
+the definition of the $\theta_{r\delta}$ need not be balls;  even in
+$\BbbR^2$ not every set $A$ can be covered by a ball of the same
+diameter as $A$.
+
+\header{264Db}}{\bf (b)} In the definitions above I require $r>0$.   It
+is sometimes appropriate to take $\mu_{H0}$ to be counting measure.
+\cmmnt{This
+is nearly the result of applying the formulae above with $r=0$, but
+there can be difficulties if we interpret them over-literally.}
+
+\header{264Dc}{\bf (c)} All Hausdorff measures must be
+complete\cmmnt{, because
+they are defined by \Caratheodory's method (212A)}.   For $r>0$, they
+are atomless\cmmnt{ (264Yg)}.   \cmmnt{In terms of the other
+criteria of \S211,
+however, they are very ill-behaved;  for instance, if $r$, $s$ are
+integers and $1\le r<s$, then $\mu_{Hr}$ on $\BbbR^s$ is not
+semi-finite.   (I will give a proof of this in 439H in Volume 4.)
+Nevertheless, they do have some striking properties which make them
+reasonably tractable.}
+
+\cmmnt{
+\header{264Dd}{\bf (d)} In 264A, note that
+$\theta_{r\delta}A\le\theta_{r\delta'}A$ when $0<\delta'\le\delta$;
+consequently, for instance,
+$\theta_rA=\lim_{n\to\infty}\theta_{r,2^{-n}}A$.   I have allowed
+arbitrary sets $A_n$ in the covers, but it makes no difference if we
+restrict our attention to covers consisting
+of open sets or of closed sets (264Xc).
+}%end of comment
+
+\leader{264E}{Theorem} Let $s\ge 1$ be an integer, and $r\ge 0$;
+let $\mu_{Hr}$ be Hausdorff $r$-dimensional measure on $\BbbR^s$, and
+$\Sigma_{Hr}$ its domain.   Then every Borel subset of $\BbbR^s$ belongs
+to $\Sigma_{Hr}$.
+
+\proof{ This is trivial if $r=0$;  so suppose henceforth that $r>0$.
+
+\medskip
+
+{\bf (a)} The first step is to note that if $A$, $B$ are subsets of
+$\Bbb R^s$
+and $\eta>0$ is such that $\|x-y\|\ge\eta$ for all $x\in A$, $y\in B$,
+then $\theta_r(A\cup B)=\theta_rA+\theta_rB$, where $\theta_r$ is
+$r$-dimensional Hausdorff outer measure on $\BbbR^s$.   \Prf\ Of course
+$\theta_r(A\cup B)\le\theta_rA+\theta_rB$, because $\theta_r$ is an
+outer measure.   For the reverse inequality, we may suppose that
+$\theta_r(A\cup B)<\infty$, so that $\theta_rA$ and $\theta_rB$ are both
+finite.   Let $\epsilon>0$ and let $\delta_1$, $\delta_2>0$ be such that
+
+\Centerline{$\theta_rA+\theta_rB\le
+\theta_{r\delta_1}A+\theta_{r\delta_2}B+\epsilon$.}
+
+\noindent Set $\delta=\min(\delta_1,\delta_2,\bover12\eta)>0$ and let
+$\sequencen{A_n}$ be a sequence of sets of diameter at most $\delta$,
+covering $A\cup B$, and such that
+$\sum_{n=0}^{\infty}(\diam A_n)^r\le\theta_{r\delta}(A\cup B)+\epsilon$.
+Set
+
+\Centerline{$K=\{n:A_n\cap A\ne\emptyset\}$,
+\quad$L=\{n:A_n\cap B\ne\emptyset\}$.}
+
+\noindent Because
+
+\Centerline{$\|x-y\|\ge\eta>\diam A_n$}
+
+\noindent whenever $x\in A$, $y\in B$ and $n\in\Bbb N$, $K\cap
+L=\emptyset$;  and of course $A\subseteq\bigcup_{n\in K}A_k$,
+$B\subseteq\bigcup_{n\in L}A_n$.   Consequently
+
+$$\eqalign{\theta_rA+\theta_rB
+&\le\epsilon+\theta_{r\delta_1}A+\theta_{r\delta_2}B\cr
+&\le\epsilon+\sum_{n\in K}(\diam A_n)^r+\sum_{n\in L}(\diam A_n)^r\cr
+&\le\epsilon+\sum_{n=0}^{\infty}(\diam A_n)^r
+\le2\epsilon+\theta_{r\delta}(A\cup B)
+\le 2\epsilon+\theta_r(A\cup B).\cr}$$
+
+\noindent As $\epsilon$ is arbitrary, $\theta_r(A\cup
+B)\ge\theta_rA+\theta_rB$, as required.\ \Qed
+
+\medskip
+
+{\bf (b)} It follows that
+$\theta_rA=\theta_r(A\cap G)+\theta_r(A\setminus G)$ whenever
+$A\subseteq \BbbR^s$ and $G$ is open.
+\Prf\ As usual, it is enough to consider the case $\theta_rA<\infty$
+and to show that in this case
+$\theta_r(A\cap G)+\theta_r(A\setminus G)\le\theta_rA$.   Set
+
+\Centerline{$A_n=\{x:x\in A,\,\|x-y\|\ge 2^{-n}$ for every
+$y\in A\setminus G\}$,}
+
+\Centerline{$B_0=A_0$,
+\quad$B_n=A_n\setminus A_{n-1}$ for $n>1$.}
+
+\noindent Observe that $A_n\subseteq A_{n+1}$ for every $n$ and
+$\bigcup_{n\in\Bbb N}A_n=\bigcup_{n\in\Bbb N}B_n=A\cap G$.   The point
+is that if $m$, $n\in\Bbb N$ and $n\ge m+2$, and if $x\in B_m$ and
+$y\in B_n$, then there is a $z\in A\setminus G$ such that
+$\|y-z\|<2^{-n+1}\le 2^{-m-1}$, while $\|x-z\|$ must be at least
+$2^{-m}$, so $\|x-y\|\ge\|x-z\|-\|y-z\|\ge 2^{-m-1}$.   It follows
+that for any $k\ge 0$
+
+\Centerline{$\sum_{m=0}^k\theta_rB_{2m}
+=\theta_r(\bigcup_{m\le k}B_{2m})\le\theta_r(A\cap G)<\infty$,}
+
+\Centerline{$\sum_{m=0}^k\theta_rB_{2m+1}
+=\theta_r(\bigcup_{m\le k}B_{2m+1})\le\theta_r(A\cap G)<\infty$,}
+
+\noindent (inducing on $k$, using (a) above for the inductive step).
+Consequently $\sum_{n=0}^{\infty}\theta_rB_n<\infty$.
+
+But now, given $\epsilon>0$, there is an $m$ such that
+$\sum_{n=m}^{\infty}\theta_rB_m\le\epsilon$, so that
+
+$$\eqalignno{\theta_r(A\cap G)+\theta_r(A\setminus G)
+&\le\theta_rA_m+\sum_{n=m}^{\infty}\theta_rB_n+\theta_r(A\setminus G)\cr
+&\le\epsilon+\theta_rA_m+\theta_r(A\setminus G)
+=\epsilon+\theta_r(A_m\cup(A\setminus G))\cr
+\noalign{\noindent (by (a) again, since $\|x-y\|\ge 2^{-m}$ for
+$x\in A_m$, $y\in A\setminus G$)}
+&\le\epsilon+\theta_rA.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary,
+$\theta_r(A\cap G)+\theta_r(A\setminus G)\le\theta_rA$,
+as required.\ \Qed
+
+\medskip
+
+{\bf (c)} Part (b) shows exactly that open sets belong to $\Sigma_{Hr}$.
+It follows at once that the Borel $\sigma$-algebra of $\BbbR^s$ is
+included in $\Sigma_{Hr}$, as claimed.
+}%end of proof of 264E
+
+\leader{264F}{Proposition} Let $s\ge 1$ be an integer, and $r>0$;
+let $\theta_r$ be $r$-dimensional Hausdorff outer measure on $\BbbR^s$,
+and write  $\mu_{Hr}$ for $r$-dimensional Hausdorff measure on
+$\BbbR^s$, $\Sigma_{Hr}$ for its domain.   Then
+
+(a) for every $A\subseteq \BbbR^s$ there is a Borel set $E\supseteq A$
+such that $\mu_{Hr}E=\theta_rA$;
+
+(b) $\theta_r=\mu^*_{Hr}$, the outer measure defined from $\mu_{Hr}$;
+
+(c) if $E\in\Sigma_{Hr}$ is expressible as a countable union of sets of
+finite measure,
+there are Borel sets $E'$, $E''$ such that
+$E'\subseteq E\subseteq E''$ and $\mu_{Hr}(E''\setminus E')=0$.
+
+\proof{{\bf (a)} If $\theta_rA=\infty$ this is trivial -- take
+$E=\BbbR^s$.
+Otherwise, for each $n\in\Bbb N$ choose a sequence
+$\sequence{m}{A_{nm}}$ of sets of diameter at most $2^{-n}$, covering
+$A$, and such that
+$\sum_{m=0}^{\infty}(\diam A_{nm})^r\le\theta_{r,2^{-n}}A+2^{-n}$.   Set
+$F_{nm}=\overline{A}_{nm}$,   $E=\bigcap_{n\in\Bbb N}\bigcup_{m\in\Bbb
+N}F_{nm}$;  then $E$ is a Borel set in $\BbbR^s$.   Of course
+
+\Centerline{$A\subseteq\bigcap_{n\in\Bbb N}\bigcup_{m\in\Bbb N}A_{mn}
+\subseteq\bigcap_{n\in\Bbb N}\bigcup_{m\in\Bbb N}F_{nm}=E$.}
+
+For any $n\in\Bbb N$,
+
+\Centerline{$\diam F_{nm}=\diam A_{nm}\le 2^{-n}$
+for every $m\in\Bbb N$,}
+
+\Centerline{$\sum_{m=0}^{\infty}(\diam F_{nm})^r
+=\sum_{m=0}^{\infty}(\diam A_{nm})^r
+\le\theta_{r,2^{-n}}A+2^{-n}$,}
+
+\noindent so
+
+\Centerline{$\theta_{r,2^{-n}}E\le\theta_{r,2^{-n}}A+2^{-n}$.}
+
+\noindent Letting $n\to\infty$,
+
+\Centerline{$\theta_rE=\lim_{n\to\infty}\theta_{r,2^{-n}}E
+\le\lim_{n\to\infty}\theta_{r,2^{-n}}A+2^{-n}
+=\theta_rA$;}
+
+\noindent of course it follows that $\theta_rA=\theta_rE$, because
+$A\subseteq E$.    Now by 264E we know that $E\in\Sigma_{Hr}$, so we can
+write $\mu_{Hr}E$ in place of $\theta_rE$.
+
+\medskip
+
+{\bf (b)} This follows at once, because we have
+
+\Centerline{$\mu_{Hr}^*A
+=\inf\{\mu_{Hr}E:E\in\Sigma_{Hr},\,A\subseteq E\}
+=\inf\{\theta_rE:E\in\Sigma_{Hr},\,A\subseteq E\}
+\ge\theta_rA$}
+
+\noindent for every $A\subseteq \BbbR^s$.   On the other hand, if
+$A\subseteq\BbbR^s$, we have a Borel set $E\supseteq A$ such that
+$\theta_rA=\mu_{Hr}E$, so that $\mu_{Hr}^*A\le\mu_{Hr}E=\theta_rA$.
+
+\medskip
+
+{\bf (c)(i)} Suppose first that $\mu_{Hr}E<\infty$.   By (a), there are
+Borel sets $E''\supseteq E$, $H\supseteq E''\setminus E$ such that
+$\mu_{Hr}E''=\theta_rE$,
+
+\Centerline{$\mu_{Hr}H=\theta_r(E''\setminus E)
+=\mu_{Hr}(E''\setminus E)
+=\mu_{Hr}E''-\mu_{Hr}E
+=\mu_{Hr}E''-\theta_rE
+=0$.}
+
+\noindent So setting $E'=E''\setminus H$, we obtain a Borel set
+included in $E$, and
+
+\Centerline{$\mu_{Hr}(E''\setminus E')\le\mu_{Hr}H=0$.}
+
+\medskip
+
+\quad{\bf (ii)} For the general case, express $E$ as $\bigcup_{n\in\Bbb
+N}E_n$ where $\mu_{Hr}E_n<\infty$ for each $n$;  take Borel sets $E'_n$,
+$E_n''$ such that $E_n'\subseteq E_n\subseteq E_n''$ and
+$\mu_{Hr}(E_n''\setminus E_n')=0$ for each $n$;  and set
+$E'=\bigcup_{n\in\Bbb N}E'_n$, $E''=\bigcup_{n\in\Bbb N}E_n''$.
+}%end of proof of 264F
+
+\leader{264G}{Lipschitz functions}\dvro{\bf: }{ The definition of
+Hausdorff measure is exactly adapted to the following result,
+corresponding to 262D.
+
+\wheader{264G}{6}{2}{2}{48pt}
+
+\noindent}{\bf Proposition} Let $m$, $s\ge 1$ be integers, and
+$\phi:D\to\BbbR^s$ a $\gamma$-Lipschitz function, where $D$ is a subset
+of $\BbbR^m$.   Then for any $A\subseteq D$ and $r\ge 0$,
+
+\Centerline{$\mu_{Hr}^*(\phi[A])\le\gamma^r\mu_{Hr}^*A$}
+
+\noindent for every $A\subseteq D$, writing $\mu_{Hr}$ for
+$r$-dimensional Hausdorff outer measure on either $\BbbR^m$ or
+$\BbbR^s$.
+
+\proof{{\bf (a)} The case $r=0$ is trivial, since then $\gamma^r=1$ and
+$\mu_{Hr}^*A=\mu_{H0}A=\#(A)$ if $A$ is finite, $\infty$
+otherwise, while $\#(\phi[A])\le\#(A)$.
+
+\medskip
+
+{\bf (b)} If $r>0$, then take any $\delta>0$.   Set
+$\eta=\delta/(1+\gamma)$ and consider $\theta_{r\eta}:\Cal
+P\BbbR^m\to[0,\infty]$, defined as in 264A.   We know from 264Fb
+that
+
+\Centerline{$\mu_{Hr}^*A=\theta_rA\ge\theta_{r\eta}A$,}
+
+\noindent so there is a sequence $\sequencen{A_n}$ of sets, all of
+diameter at most $\eta$, covering $A$, with
+$\sum_{n=0}^{\infty}(\diam A_n)^r\le\mu_{Hr}^*A+\delta$.
+Now $\phi[A]\subseteq\bigcup_{n\in\Bbb N}\phi[A_n\cap D]$ and
+
+\Centerline{$\diam \phi[A_n\cap D]
+\le\gamma\diam A_n\le\gamma\eta\le\delta$}
+
+\noindent for every $n$.   Consequently
+
+\Centerline{$\theta_{r\delta}(\phi[A])\le\sum_{n=0}^{\infty}
+(\diam \phi[A_n])^r
+\le\sum_{n=0}^{\infty}\gamma^r(\diam A_n)^r
+\le\gamma^r(\mu_{Hr}^*A+\delta)$,}
+
+\noindent and
+
+\Centerline{$\mu_{Hr}^*(\phi[A])
+=\lim_{\delta\downarrow 0}\theta_{r\delta}(\phi[A])
+\le\gamma^r\mu_{Hr}^*A$,}
+
+\noindent as claimed.
+}%end of proof of 264G
+
+\leader{264H}{}\cmmnt{ The next step is to relate $r$-dimensional
+Hausdorff
+measure on $\BbbR^r$ to Lebesgue measure on $\BbbR^r$.   The basic
+fact we need is the following, which is even more important for the idea
+in its proof than for the result.
+
+\wheader{264H}{6}{2}{2}{48pt}\noindent}{\bf Theorem}
+%hold this line to get spacing right
+Let $r\ge 1$ be an integer, and $A$ a bounded
+subset of $\BbbR^r$;  write $\mu_r$ for Lebesgue measure on $\BbbR^r$
+and $d=\diam A$.   Then
+
+\Centerline{$\mu_r^*(A)\le\mu_rB(\tbf{0},\Bover{d}2)=2^{-r}\beta_rd^r$,}
+
+\noindent where $B(\tbf{0},\bover{d}2)$ is the ball with centre
+$\tbf{0}$ and
+diameter $d$, so that $B(\tbf{0},1)$ is the unit ball in $\BbbR^r$, and
+has measure
+
+$$\eqalign{\beta_r
+&=\Bover{1}{k!}\pi^k\text{ if }r=2k\text{ is even},\cr
+&=\Bover{2^{2k+1}k!}{(2k+1)!}\pi^k\text{ if }r=2k+1\text{ is odd}.\cr}$$
+
+\proof{{\bf (a)} For the calculation of $\beta_r$, see 252Q or
+252Xi.
+
+\medskip
+
+{\bf (b)} The case $r=1$ is elementary, for in this case $A$ is included
+in an interval of length $\diam A$, so that $\mu_1^*A\le\diam A$.   So
+henceforth let us suppose that $r\ge 2$.
+
+\medskip
+
+{\bf (c)} For $1\le i\le r$ let $S_i:\BbbR^r\to\BbbR^r$ be reflection
+in the $i$th coordinate, so that
+$S_ix=(\xi_1,\ldots,
+\ifdim\pagewidth>467pt\penalty-100\fi
+\xi_{i-1},-\xi_i,\xi_{i+1},
+\ifdim\pagewidth>467pt\penalty-50\fi
+\ldots,
+\ifdim\pagewidth>467pt\penalty-10\fi
+\xi_r)$ for every
+$x=(\xi_1,\ldots,\xi_r)\in \BbbR^r$.   Let us say that a set
+$C\subseteq\BbbR^r$ is {\bf symmetric in coordinates in $J$}, where
+$J\subseteq\{1,\ldots,r\}$, if $S_i[C]=C$ for $i\in J$.   Now the centre
+of the argument is the following fact:  if $C\subseteq\Bbb R$ is a
+bounded set which is symmetric in coordinates in $J$, where $J$ is a
+proper subset of $\{1,\ldots,r\}$, and $j\in\{1,\ldots,r\}\setminus J$,
+then there is a set $D$, symmetric in coordinates in $J\cup\{j\}$,
+such that $\diam D\le\diam C$ and $\mu_r^*C\le\mu^*_rD$.
+
+
+\Prf\ {\bf (i)} Because Lebesgue measure is invariant under permutation
+of coordinates, it is enough to deal with the case $j=r$.   Start by
+writing $F=\overline{C}$, so that $\diam F=\diam C$ and
+$\mu_rF\ge\mu_r^*C$.   Note that because $S_i$ is a homeomorphism for
+every $i$,
+
+\Centerline{$S_i[F]=S_i[\overline{C}]=\overline{S_i[C]}=\overline{C}=F$}
+
+\noindent for $i\in J$, and $F$ is symmetric in coordinates in $J$.
+
+For $y=(\eta_1,\ldots,\eta_{r-1})\in\BbbR^{r-1}$, set
+
+\Centerline{$F_y=\{\xi:(\eta_1,\ldots,\eta_{r-1},\xi)\in F\}$,\quad
+$f(y)=\mu_1F_y$,}
+
+\noindent where $\mu_1$ is Lebesgue measure on $\Bbb R$.
+Set
+
+\Centerline{$D=\{(y,\xi):y\in\BbbR^{r-1},\,|\xi|<\Bover12f(y)\}
+\subseteq\BbbR^r$.}
+
+\medskip
+
+\quad{\bf (ii)} If $H\subseteq\BbbR^r$ is measurable and $H\supseteq D$,
+then, writing $\mu_{r-1}$ for Lebesgue measure on $\BbbR^{r-1}$, we have
+
+$$\eqalignno{\mu_rH
+&=\int\mu_1\{\xi:(y,\xi)\in H\}\mu_{r-1}(dy)\cr
+\noalign{\noindent (using 251N and 252D)}
+&\ge\int\mu_1\{\xi:(y,\xi)\in D\}\mu_{r-1}(dy)
+=\int f(y)\mu_{r-1}(dy)\cr
+&=\int\mu_1\{\xi:(y,\xi)\in F\}\mu_{r-1}(dy)
+=\mu_rF
+\ge\mu^*_rC.\cr}$$
+
+\noindent As $H$ is arbitrary, $\mu_r^*D\ge\mu_r^*C$.
+
+\medskip
+
+\quad{\bf (iii)} The next step is to check that $\diam D\le\diam C$.
+If $x$, $x'\in D$, express them as $(y,\xi_r)$ and $(y',\xi_r')$.
+Because $F$ is a bounded closed set in $\BbbR^r$, $F_y$ and $F_{y'}$ are
+bounded closed subsets of $\Bbb R$.   Also both $f(y)$ and $f(y')$ must
+be
+greater than $0$, so that $F_y$, $F_{y'}$ are both non-empty.
+Consequently
+
+\Centerline{$\alpha=\inf F_y$,\quad $\beta=\sup F_y$,
+\quad$\alpha'=\inf F_{y'}$,
+\quad$\beta'=\sup F_{y'}$}
+
+\noindent are all defined in $\Bbb R$, and $\alpha$, $\beta\in F_y$,
+while
+$\alpha'$ and $\beta'$ belong to $F_{y'}$.   We have
+
+$$\eqalign{|\xi_r-\xi_r'|
+&\le|\xi_r|+|\xi'_r|
+<\Bover12f(y)+\Bover12f(y')\cr
+&=\Bover12(\mu_1F_y+\mu_1F_{y'})
+\le\Bover12(\beta-\alpha+\beta'-\alpha')
+\le\max(\beta'-\alpha,\beta-\alpha').\cr}$$
+
+\noindent So taking $(\xi,\xi')$ to be one of $(\alpha,\beta')$ or
+$(\beta,\alpha')$, we can find $\xi\in F_y$, $\xi'\in F_{y'}$ such that
+$|\xi-\xi'|\ge|\xi_r-\xi'_r|$.   Now $z=(y,\xi)$, $z'=(y',\xi')$ both
+belong to $F$, so
+
+\Centerline{$\|x-x'\|^2=\|y-y'\|^2+|\xi_r-\xi_r'|^2
+\le\|y-y'\|^2+|\xi-\xi'|^2
+=\|z-z'\|^2
+\le(\diam F)^2$,}
+
+\noindent and $\|x-x'\|\le\diam F$.   As $x$ and $x'$ are arbitrary,
+$\diam D\le\diam F=\diam C$, as claimed.
+
+\medskip
+
+\quad{\bf (iv)} Evidently $S_r[D]=D$.   Moreover, if $i\in J$, then
+(interpreting $S_i$ as an operator on $\BbbR^{r-1}$)
+
+\Centerline{$F_{S_i(y)}=F_y$ for every $y\in\BbbR^{r-1}$,}
+
+\noindent so $f(S_i(y))=f(y)$ and, for $\xi\in \Bbb R$,
+$y\in\BbbR^{r-1}$,
+
+\Centerline{$(y,\xi)\in D\,\iff\,|\xi|<\bover12 f(y)\,
+\iff\,|\xi|<\bover12f(S_i(y))
+\,\iff\,(S_i(y),\xi)\in D$,}
+
+\noindent so that $S_i[D]=D$.   Thus $D$ is symmetric in coordinates in
+$J\cup\{r\}$.\ \Qed
+
+\medskip
+
+{\bf (d)} The rest is easy.   Starting from any bounded
+$A\subseteq\BbbR^r$, set $A_0=A$ and construct inductively
+$A_1,\ldots,A_r$ such that
+
+\Centerline{$d=\diam A=\diam A_0\ge\diam A_1\ge\ldots\ge\diam A_r$,}
+
+\Centerline{$\mu_r^*A=\mu_r^*A_0\le\ldots\le\mu_r^*A_r$,}
+
+\Centerline{$A_j$ is symmetric in coordinates in $\{1,\ldots,j\}$ for
+every $j\le r$.}
+
+\noindent At the end, we have $A_r$ symmetric in coordinates in
+$\{1,\ldots,r\}$.   But this means that if $x\in A_r$ then
+
+\Centerline{$-x=S_1S_2\ldots S_rx\in A_r$,}
+
+\noindent so that
+
+\Centerline{$\|x\|=\Bover12\|x-(-x)\|
+\le\Bover12\diam A_r\le\Bover{d}2$.}
+
+\noindent Thus $A_r\subseteq B(\tbf{0},\bover{d}2)$, and
+
+\Centerline{$\mu_r^*A\le\mu_r^*A_r\le\mu_rB(\tbf{0},\Bover{d}2)$,}
+
+\noindent as claimed.
+}%end of proof of 264H
+
+
+\leader{264I}{Theorem} Let $r\ge 1$ be an integer;  let $\mu$ be
+Lebesgue measure on $\BbbR^r$, and let $\mu_{Hr}$ be
+$r$-dimensional Hausdorff measure on $\BbbR^r$.   Then $\mu$ and
+$\mu_{Hr}$ have the same measurable sets and
+
+\Centerline{$\mu E=2^{-r}\beta_r\mu_{Hr}E$}
+
+\noindent for every measurable set $E\subseteq\BbbR^r$, where
+$\beta_r=\mu B(\tbf{0},1)$, so that the normalizing factor is
+
+$$\eqalign{2^{-r}\beta_r
+&=\Bover{1}{2^{2k}k!}\pi^k\text{ if }r=2k\text{ is even},\cr
+&=\Bover{k!}{(2k+1)!}\pi^k\text{ if }r=2k+1\text{ is odd}.\cr}$$
+
+\proof{{\bf (a)} Of course if $B=B(x,\alpha)$ is any ball of radius
+$\alpha$,
+
+\Centerline{$2^{-r}\beta_r(\diam B)^r
+=\beta_r\alpha^r=\mu B$.}
+
+\medskip
+
+{\bf (b)} The point is that $\mu^*=2^{-r}\beta_r\mu_{Hr}^*$.   \Prf\
+Let $A\subseteq\BbbR^r$.
+
+\medskip
+
+\quad{\bf (i)} Let $\delta$, $\epsilon>0$.   By
+261F, there is a sequence $\sequencen{B_n}$ of  balls, all of diameter
+at most $\delta$, such that $A\subseteq\bigcup_{n\in\Bbb N}B_n$ and
+$\sum_{n=0}^{\infty}\mu B_n\le\mu^*A+\epsilon$.   Now, defining
+$\theta_{r\delta}$ as in 264A,
+
+\Centerline{$2^{-r}\beta_r\theta_{r\delta}(A)
+\le 2^{-r}\beta_r\sum_{n=0}^{\infty}(\diam B_n)^r
+=\sum_{n=0}^{\infty}\mu B_n
+\le\mu^*A+\epsilon$.}
+
+\noindent Letting $\delta\downarrow 0$,
+
+\Centerline{$2^{-r}\beta_r\mu^*_{Hr}A\le\mu^*A+\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary,
+$2^{-r}\beta_r\mu_{Hr}^*A\le\mu^*A$.
+
+\medskip
+
+\quad{\bf (ii)} Let $\epsilon>0$.   Then there is a sequence
+$\sequencen{A_n}$ of sets of diameter at most $1$ such that
+$A\subseteq\bigcup_{n\in\Bbb N}A_n$ and $\sum_{n=0}^{\infty}(\diam
+A_n)^r\le\theta_{r1}A+\epsilon$, so that
+
+\Centerline{$\mu^*A\le\sum_{n=0}^{\infty}\mu^*A_n
+\le\sum_{n=0}^{\infty}2^{-r}\beta_r(\diam A_n)^r
+\le 2^{-r}\beta_r(\theta_{r1}A+\epsilon)
+\le 2^{-r}\beta_r(\mu_{Hr}^*A+\epsilon)$}
+
+\noindent by 264H.   As $\epsilon$ is arbitrary,
+$\mu^*A\le 2^{-r}\beta_r\mu_{Hr}^*A$.\ \Qed
+
+\medskip
+
+{\bf (c)} Because $\mu$, $\mu_{Hr}$ are the measures defined from
+their respective outer measures by \Caratheodory's method, it follows
+at once that $\mu=2^{-r}\beta_r\mu_{Hr}$ in the strict sense required.
+}%end of proof of 264I
+
+\leader{*264J}{The Cantor \dvrocolon{set}}\cmmnt{ I remarked in 264A
+that fractional
+`dimensions' $r$ were of interest.   I have no space for these here, and
+they are off the main lines of this volume, but I will give one result
+for its intrinsic interest.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $C$ be the Cantor set in $[0,1]$.   Set
+$r=\ln 2/\ln 3$.   Then the $r$-dimensional Hausdorff measure of $C$ is
+$1$.
+
+\proof{{\bf (a)} Recall that $C=\bigcap_{n\in\Bbb N}C_n$, where each
+$C_n$ consists of $2^n$ closed intervals of length $3^{-n}$, and
+$C_{n+1}$ is obtained from $C_n$ by deleting the middle (open) third of
+each interval of $C_n$.   (See 134G.)    Because $C$ is
+closed, $\mu_{Hr}C$ is defined (264E).   Note that $3^r=2$.
+
+\medskip
+
+{\bf (b)} If $\delta>0$, take $n$ such that $3^{-n}\le\delta$;  then $C$
+can be covered by $2^n$ intervals of diameter $3^{-n}$, so
+
+\Centerline{$\theta_{r\delta}C\le 2^n(3^{-n})^r=1$.}
+
+\noindent Consequently
+
+\Centerline{$\mu_{Hr}C=\mu_{Hr}^*C
+=\lim_{\delta\downarrow 0}\theta_{r\delta}C\le 1$.}
+
+\medskip
+
+{\bf (c)} We need the following elementary fact:  if $\alpha$, $\beta$,
+$\gamma\ge 0$ and $\max(\alpha,\gamma)\le\beta$, then
+$\alpha^r+\gamma^r\le(\alpha+\beta+\gamma)^r$.   \Prf\ Because
+$0<r\le 1$,
+
+\Centerline{$\xi\mapsto(\xi+\eta)^r-\xi^r
+=r\biggerint_0^{\eta}(\xi+\zeta)^{r-1}d\zeta$}
+
+\noindent is non-increasing for every $\eta\ge 0$.
+Consequently
+
+$$\eqalign{(\alpha+\beta+\gamma)^r-\alpha^r-\gamma^r
+&\ge (\beta+\beta+\gamma)^r-\beta^r-\gamma^r\cr
+&\ge(\beta+\beta+\beta)^r-\beta^r-\beta^r
+=\beta^r(3^r-2)
+=0,\cr}$$
+
+\noindent as required.\ \Qed
+
+\medskip
+
+{\bf (d)} Now suppose that $I\subseteq\Bbb R$ is any interval, and
+$m\in\Bbb N$;  write $j_m(I)$ for the number of the intervals composing
+$C_m$ which are included in $I$.   Then $2^{-m}j_m(I)\le(\diam I)^r$.
+\Prf\ If $I$ does not meet $C_m$, this is trivial.   Otherwise, induce
+on
+
+\Centerline{$l=\min\{i:I$ meets only one of the intervals composing
+$C_{m-i}\}$.}
+
+\noindent If $l=0$, so that $I$ meets only one of the intervals
+composing $C_m$, then $j_m(I)\le 1$, and if $j_m(I)=1$ then
+$\diam I\ge 3^{-m}$ so $(\diam I)^r\ge 2^{-m}$;  thus the induction
+starts.   For
+the inductive step to $l>1$, let $J$ be the interval of
+$C_{m-l}$ which meets $I$, and $J'$, $J''$ the two intervals of
+$C_{m-l+1}$ included in $J$, so that $I$ meets both $J'$ and $J''$, and
+
+
+\Centerline{$j_m(I)=j_m(I\cap J)=j_m(I\cap J')+j_m(I\cap J'')$.}
+
+\noindent By the inductive hypothesis,
+
+\Centerline{$(\diam(I\cap J'))^r+(\diam(I\cap J''))^r
+\ge 2^{-m}j_m(I\cap J')+2^{-m}j_m(I\cap J'')
+=2^{-m}j_m(I)$.}
+
+\noindent On the other hand, by (c),
+
+$$\eqalign{(\diam(I\cap J'))^r+(\diam(I\cap J''))^r
+&\le(\diam(I\cap J')+3^{-m+l-1}+\diam(I\cap J''))^r\cr
+&=(\diam(I\cap J))^r
+\le(\diam I)^r\cr}$$
+
+\noindent because $J'$, $J''$ both have diameter at most $3^{-(m-l+1)}$,
+the length of the interval between them.
+Thus the induction continues.\ \Qed
+
+\medskip
+
+{\bf (e)} Now suppose that $\epsilon>0$.   Then there is a sequence
+$\sequencen{A_n}$ of sets, covering $C$, such that
+\discrcenter{468pt}{$\sum_{n=0}^{\infty}(\diam A_n)^r
+<\mu_{Hr}C+\epsilon$.  }Take $\eta_n>0$ such that
+$\sum_{n=0}^{\infty}(\diam A_n+\eta_n)^r\le\mu_{Hr}C+\epsilon$, and for
+each $n$ take an open
+interval $I_n\supseteq A_n$ of length at most $\diam A_n+\eta_n$ and
+with neither endpoint belonging to $C$;  this is possible because $C$
+does not include any non-trivial interval.   Now
+$C\subseteq\bigcup_{n\in\Bbb N}I_n$;  because $C$ is compact, there is a
+$k\in\Bbb N$ such that $C\subseteq\bigcup_{n\le k}I_n$.   Next, there is
+an $m\in\Bbb N$ such that no endpoint of any $I_n$, for $n\le k$,
+belongs to $C_m$.   Consequently each of the intervals composing $C_m$
+must be included in some $I_n$, and
+(in the terminology of (d) above) $\sum_{n=0}^kj_m(I_n)\ge 2^m$.
+Accordingly
+
+\Centerline{$1
+\le\sum_{n=0}^k2^{-m}j_m(I_n)
+\le \sum_{n=0}^k(\diam I_n)^r
+\le \sum_{n=0}^{\infty}(\diam A_n+\eta_n)^r
+\le\mu_{Hr}C+\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, $\mu_{Hr}C\ge 1$, as required.
+}%end of proof of 264J
+
+\leader{*264K}{General metric spaces}\cmmnt{ While this chapter deals
+exclusively with Euclidean spaces, readers familiar with the general
+theory
+of metric spaces may find the nature of the theory clearer if they use
+the language of metric spaces in the basic definitions and results.   I
+therefore repeat the definition here, and spell out the corresponding
+results in the exercises 264Yb-264Yl.
+
+} Let $(X,\rho)$ be a metric space, and $r>0$.   For any $A\subseteq X$,
+$\delta>0$ set
+
+$$\eqalign{\theta_{r\delta}A
+=\inf\{\sum_{n=0}^{\infty}(\diam A_n)^r:\sequencen{A_n}
+&\text{ is a sequence of subsets of }X\text{ covering }A,\cr
+&\qquad\qquad\qquad\quad\diam A_n\le\delta\text{ for every }
+  n\in\Bbb N\},\cr}$$
+
+\noindent interpreting the diameter of the empty set as $0$, and
+$\inf\emptyset$ as $\infty$, so that $\theta_{r\delta}A=\infty$ if $A$
+cannot be covered by a sequence of sets of diameter at most $\delta$.
+Say
+that $\theta_rA=\sup_{\delta>0}\theta_{r\delta}A$ is the
+{\bf $r$-dimensional Hausdorff outer measure} of $A$, and take the
+measure $\mu_{Hr}$ defined by \Caratheodory's method from this outer measure to be {\bf $r$-dimensional Hausdorff measure} on $X$.
+
+\exercises{
+\leader{264X}{Basic exercises $\pmb{>}$(a)}
+%\spheader 264Xa
+Show that all the functions $\theta_{r\delta}$ of 264A are outer
+measures.   Show that in that context, $\theta_{r\delta}(A)=0$ iff
+$\theta_r(A)=0$, for any $\delta>0$ and any $A\subseteq\BbbR^s$.
+
+\spheader 264Xb Let $s\ge 1$ be an integer, and $\theta$ an
+outer measure on $\BbbR^s$ such that $\theta(A\cup B)=\theta A+\theta B$
+whenever $A$, $B$ are non-empty subsets of $\BbbR^s$ and
+$\inf_{x\in A,y\in B}\|x-y\|>0$.   Show that every Borel subset of
+$\BbbR^s$ is measured by the
+measure defined from $\theta$ by \Caratheodory's method.
+
+\sqheader 264Xc Let $s\ge 1$ be an integer and $r>0$;
+define $\theta_{r\delta}$ as in 264A.   Show that for any
+$A\subseteq\BbbR^s$, $\delta>0$,
+
+$$\eqalign{\theta_{r\delta}A
+&=\inf\{\sum_{n=0}^{\infty}(\diam F_n)^r:\sequencen{F_n}
+ \text{ is a sequence of closed subsets of }X\cr
+&\qquad\qquad\qquad\qquad\qquad\qquad\text{ covering }A,\diam
+F_n\le\delta
+  \text{ for every }n\in\Bbb N\}\cr
+&=\inf\{\sum_{n=0}^{\infty}(\diam G_n)^r:\sequencen{G_n}
+  \text{ is a sequence of open subsets of }X\cr
+&\qquad\qquad\qquad\qquad\qquad\qquad\text{ covering }A,\diam
+G_n\le\delta
+  \text{ for every }n\in\Bbb N\}.\cr}$$
+
+\sqheader 264Xd Let $s\ge 1$ be an integer and $r\ge 0$;
+let $\mu_{Hr}$ be $r$-dimensional Hausdorff measure on $\BbbR^s$.
+Show that for every $A\subseteq \BbbR^s$ there is a
+G$_{\delta}$ set (that is, a set expressible as the intersection of a
+sequence of open sets) $H\supseteq A$ such that $\mu_{Hr}H=\mu^*_{Hr}A$.
+({\it Hint\/}:  use 264Xc.)
+
+\sqheader 264Xe Let $s\ge 1$ be an integer, and $0\le r<r'$.   Show that
+if $A\subseteq\BbbR^s$ and the $r$-dimensional
+Hausdorff outer measure $\mu_{Hr}^*A$ of $A$ is finite, then
+$\mu_{Hr'}^*A$ must be zero.
+
+\spheader 264Xf(i) Suppose that $f:[a,b]\to\Bbb R$ has graph
+$\Gamma_f\subseteq\BbbR^2$, where $a\le b$ in $\Bbb R$.   Show that the
+outer measure $\mu_{H1}^*(\Gamma_f)$ of $\Gamma$ for one-dimensional
+Hausdorff measure on $\BbbR^2$ is at most $b-a+\Var_{[a,b]}(f)$.
+\Hint{if $f$ has finite variation, show that
+$\diam(\Gamma_{f\restr\ooint{t,u}})
+\le u-t+\Var_{\ooint{t,u}}(f)$;  then use 224E.}  (ii) Let
+$f:[0,1]\to[0,1]$ be the Cantor function (134H).   Show that
+$\mu_{H1}(\Gamma_f)=2$.   \Hint{264G.}
+%264G
+
+\spheader 264Xg\dvAnew{2009.} In 264A, show that
+
+$$\eqalign{\theta_{r\delta}A
+=\inf\{\sum_{n=0}^{\infty}(\diam A_n)^r:\sequencen{A_n}
+&\text{ is a sequence of convex sets covering }A,\cr
+&\qquad\qquad\qquad\quad\diam A_n\le\delta\text{ for every }
+  n\in\Bbb N\}\cr}$$
+
+\noindent for any $A\subseteq\BbbR^s$.
+%264A
+
+\leader{264Y}{Further exercises (a)}
+%\spheader 264Ya
+Let $\theta_{11}$ be the outer measure on $\BbbR^2$ defined in 264A,
+with
+$r=\delta=1$, and $\mu_{11}$ the measure derived from $\theta_{11}$ by
+\Caratheodory's method, $\Sigma_{11}$ its domain.   Show that any set in
+$\Sigma_{11}$ is either negligible or conegligible.
+
+\spheader 264Yb Let $(X,\rho)$ be a metric space and
+$r\ge 0$.   Show that if $A\subseteq X$ and $\mu_{Hr}^*A<\infty$,
+then $A$ is separable.
+
+\spheader 264Yc Let $(X,\rho)$ be a metric space, and $\theta$ an
+outer measure on $X$ such that $\theta(A\cup B)=\theta A+\theta B$
+whenever $A$, $B$ are non-empty subsets of $X$ and $\inf_{x\in A,y\in
+B}\rho(x,y)>0$.   (Such an outer measure is called a {\bf metric outer
+measure}.)    Show that every open subset of $X$ is measured by the
+measure defined from $\theta$ by \Caratheodory's method.
+
+\spheader 264Yd Let $(X,\rho)$ be a metric space and $r>0$;
+define $\theta_{r\delta}$ as in 264K.    Show that for any
+$A\subseteq X$,
+
+$$\eqalign{\mu_{Hr}^*A
+&=\sup_{\delta>0}\inf\{\sum_{n=0}^{\infty}(\diam F_n)^r:\sequencen{F_n}
+  \text{ is a sequence of closed subsets of }X\cr
+&\qquad\qquad\qquad\qquad\qquad\qquad\text{ covering }A,\,\diam
+F_n\le\delta
+  \text{ for every }n\in\Bbb N\}\cr
+&=\sup_{\delta>0}\inf\{\sum_{n=0}^{\infty}(\diam G_n)^r:\sequencen{G_n}
+  \text{ is a sequence of open subsets of }X\cr
+&\qquad\qquad\qquad\qquad\qquad\qquad\text{ covering }A,\,\diam
+G_n\le\delta
+  \text{ for every }n\in\Bbb N\}.\cr}$$
+\spheader 264Ye Let $(X,\rho)$ be a metric space and $r\ge 0$;
+let $\mu_{Hr}$ be $r$-dimensional Hausdorff measure on $X$.
+Show that for every $A\subseteq X$ there is a
+G$_{\delta}$ set $H\supseteq A$ such that $\mu_{Hr}H=\mu^*_{Hr}A$ is the
+$r$-dimensional Hausdorff outer measure of $A$.
+
+\spheader 264Yf Let $(X,\rho)$ be a metric space and $r\ge 0$;
+let $Y$ be any subset of $X$, and give $Y$ its induced metric $\rho_Y$.
+(i) Show that the $r$-dimensional Hausdorff outer measure
+$\mu^{(Y)*}_{Hr}$ on $Y$ is just the restriction to $\Cal PY$ of the
+outer measure $\mu_{Hr}^*$ on $X$.   (ii) Show that if {\it either}
+$\mu_{Hr}^*Y<\infty$ {\it or} $\mu_{Hr}$ measures $Y$ then
+$r$-dimensional Hausdorff measure $\mu^{(Y)}_{Hr}$ on
+$Y$ is just the subspace measure on $Y$ induced by the measure
+$\mu_{Hr}$ on $X$.
+
+\spheader 264Yg Let $(X,\rho)$ be a metric space
+and $r>0$.   Show that $r$-dimensional Hausdorff measure on $X$ is
+atomless.   ({\it Hint\/}: Let $E\in\dom\mu_{Hr}$.   (i) If
+$E$ is not separable, there is an open set $G$ such that $E\cap G$ and
+$E\setminus G$ are both non-separable, therefore both non-negligible.
+(ii) If there is an $x\in E$ such that $\mu_{Hr}(E\cap B(x,\delta))>0$
+for
+every $\delta>0$, then one of these sets has non-negligible complement
+in
+$E$.    (iii) Otherwise, $\mu_{Hr}E=0$.)
+
+\spheader 264Yh  Let $(X,\rho)$ be a metric space and $r\ge 0$;
+let $\mu_{Hr}$ be
+$r$-dimensional Hausdorff measure on $X$.   Show that if
+$\mu_{Hr}E<\infty$
+then $\mu_{Hr}E=\sup\{\mu_{Hr}F:F\subseteq E$ is closed and totally
+bounded$\}$.   ({\it Hint\/}: given $\epsilon>0$, use 264Yd to find a
+closed totally bounded set $F$ such that $\mu_{Hr}(F\setminus E)=0$
+and $\mu_{Hr}(E\setminus F)\le\epsilon$, and now apply 264Ye to
+$F\setminus E$.)
+
+\spheader 264Yi  Let $(X,\rho)$ be a complete metric space and $r\ge 0$;
+let $\mu_{Hr}$ be
+$r$-dimensional Hausdorff measure on $X$.   Show that if
+$\mu_{Hr}E<\infty$
+then $\mu_{Hr}E=\sup\{\mu_{Hr}F:F\subseteq E$ is compact$\}$.
+
+\spheader 264Yj Let $(X,\rho)$ and $(Y,\sigma)$ be metric spaces.   If
+$D\subseteq X$ and $\phi:D\to Y$ is a function, then $\phi$ is {\bf
+$\gamma$-Lipschitz} if
+$\sigma(\phi(x),\phi(x'))\le\gamma\rho(x,x')$ for every $x$, $x'\in D$.
+(i) Show that in this case, if $r\ge 0$,
+$\mu_{Hr}^*(\phi[A])\le\gamma^r\mu_{Hr}^*A$ for every $A\subseteq D$,
+writing $\mu_{Hr}^*$ for $r$-dimensional Hausdorff outer measure on
+either $X$ or $Y$.   (ii) Show that if $X$ is complete and $\mu_{Hr}E$
+is defined
+and finite, then $\mu_{Hr}(\phi[E])$ is defined.   ({\it Hint\/}:
+264Yi.)
+
+\spheader 264Yk Let $(X,\rho)$ be a metric space, and for $r\ge 0$ let
+$\mu_{Hr}$ be Hausdorff $r$-dimensional measure on $X$.   Show that
+there is a unique $\Delta=\Delta(X)\in[0,\infty]$ such that
+$\mu_{Hr}X=\infty$ if
+$r\in\coint{0,\Delta}$, $0$ if $r\in\ooint{\Delta,\infty}$.
+
+\spheader 264Yl Let $(X,\rho)$ be a metric space and $\phi:I\to X$ a
+continuous function, where $I\subseteq\Bbb R$ is an interval.   Write
+$\mu_{H1}$ for one-dimensional Hausdorff measure on $X$.   Show that
+
+\Centerline{$\mu_{H1}(\phi[I])
+\le\sup\{\sum_{i=1}^n\rho(\phi(t_i),\phi(t_{i-1})):t_0,\ldots,t_n\in
+I,\,t_0\le\ldots\le t_n\}$,}
+
+\noindent the length of the curve $\phi$, with equality if $\phi$ is
+injective.
+
+
+\spheader 264Ym Set $r=\ln 2/\ln 3$, as in 264J, and write
+$\mu_{Hr}$ for $r$-dimensional Hausdorff measure on the Cantor set $C$.
+Let $\lambda$ be the usual measure on $\{0,1\}^{\Bbb N}$ (254J).
+Define $\phi:\{0,1\}^{\Bbb N}\to C$ by setting
+$\phi(x)=\bover23\sum_{n=0}^{\infty}3^{-n}x(n)$ for
+$x\in\{0,1\}^{\Bbb N}$.   Show that $\phi$ is an isomorphism between
+$(\{0,1\}^{\Bbb N},\lambda)$ and $(C,\mu_{Hr})$, so that $\mu_{Hr}$ is the
+subspace measure on $C$ induced by `Cantor measure' as defined in 256Hc.
+
+\spheader 264Yn Set $r=\ln 2/\ln 3$ and write
+$\mu_{Hr}$ for $r$-dimensional Hausdorff measure on the Cantor set $C$.
+Let $f:[0,1]\to[0,1]$ be the Cantor function and let $\mu$ be
+Lebesgue measure on $\Bbb R$.   Show that $\mu f[E]=\mu_{Hr}E$ for every
+$E\in\dom\mu_{Hr}$ and $\mu_{Hr}(C\cap f^{-1}[F])=\mu F$ for every
+Lebesgue measurable set $F\subseteq[0,1]$.
+
+\spheader 264Yo Let $(X,\rho)$ be a metric space and
+$h:\coint{0,\infty}\to\coint{0,\infty}$ a non-decreasing function.   For
+$A\subseteq X$ set
+
+$$\eqalign{\theta_hA
+&=\sup_{\delta>0}\inf\{\sum_{n=0}^{\infty}h(\diam A_n):\sequencen{A_n}
+  \text{ is a sequence of subsets of }X\cr
+&\qquad\qquad\qquad\qquad\qquad\qquad\text{ covering }A,\,\diam
+A_n\le\delta
+  \text{ for every }n\in\Bbb N\},\cr}$$
+
+\noindent interpreting $\diam\emptyset$ as $0$, $\inf\emptyset$ as
+$\infty$ as usual.   Show that $\theta_h$ is an outer measure on $X$.
+State and prove theorems corresponding to 264E and 264F.   Look through
+264X and 264Y for further results which might be generalizable, perhaps
+on the assumption that $h$ is continuous on the right.
+
+\spheader 264Yp Let $(X,\rho)$ be a metric space.   Let us say that if
+$a<b$ in $\Bbb R$ and $f:[a,b]\to X$ is a function, then $f$ is {\bf
+absolutely continuous} if for every $\epsilon>0$ there is a $\delta>0$
+such that $\sum_{i=1}^n\rho(f(a_i),f(b_i))\le\epsilon$ whenever
+$a\le a_0\le b_0\le\ldots\le a_n\le b_n\le b$ and
+$\sum_{i=0}^nb_i-a_i\le\delta$.   Show that $f:[a,b]\to X$ is absolutely
+continuous iff it is continuous and of bounded variation (in the sense
+of 224Ye) and $\mu_{H1}f[A]=0$ whenever $A\subseteq[a,b]$ is Lebesgue
+negligible, where $\mu_{H1}$ is 1-dimensional Hausdorff measure on $X$.
+(Compare 225M.)
+Show that in this case $\mu_{H1}f[\,[a,b]\,]<\infty$.
+%-  mt26bits
+
+\spheader 264Yq Let $s\ge 1$ be an integer, and $r\in\coint{1,\infty}$.   
+For $x$, $y\in\BbbR^s$ set $\rho(x,y)=\|x-y\|^{s/r}$.   (i) Show that 
+$\rho$ is a metric on $\BbbR^s$ inducing the Euclidean topology.   (ii) 
+Let $\mu_{Hr}$ be the associated $r$-dimensional Hausdorff measure.   
+Show that $\mu_{Hr}B(\tbf{0},1)=2^s$.
+%264I out of order query
+}%end of exercises
+
+\endnotes{
+\Notesheader{264} In this section we have come to the next step in
+`geometric measure theory'.  I am taking this very slowly, because there
+are real difficulties in the subject, and for the purposes of this
+volume we do not need to master very much of it.   The idea here is to
+find a definition of $r$-dimensional Lebesgue measure which will be
+`geometric' in the strict sense, that is, dependent only on the metric
+structure of $\BbbR^r$, and therefore applicable to sets which have a
+metric structure but no linear structure.   As has happened before, the
+definition of Hausdorff measure from an outer measure gives no
+problems -- the only new idea in 264A-264C is that of using a supremum
+$\theta_r=\sup_{\delta>0}\theta_{r\delta}$ of outer measures -- and the
+difficult part is proving that our new measure has any useful
+properties.   Concerning the properties of Hausdorff measure, there are
+two essential objectives;  first, to check that these measures, in
+general, share a reasonable proportion of the properties of Lebesgue
+measure;  and second, to justify the term `$r$-dimensional measure' by
+relating Hausdorff $r$-dimensional measure on $\BbbR^r$ to Lebesgue
+measure on $\BbbR^r$.
+
+As for the properties of general Hausdorff measures, we have to go
+rather carefully.   I do not give counter-examples here because they
+involve concepts which belong to Volumes 4 and 5 rather than this
+volume, but I must warn you to expect the worst.   However, we do at
+least have open sets measurable, so that all Borel sets are measurable
+(264E).   The outer measure of a set $A$ can be defined in terms of the
+Borel sets including $A$ (264Fa), though not in general in terms of the
+open sets including $A$;  but the measure of a measurable set  $E$ is
+not necessarily the supremum of the measures of the Borel sets included
+in $E$, unless $E$ has finite measure (264Fc).   We do find that the
+outer measure $\theta_r$ defined in 264A is the outer measure defined
+from $\mu_{Hr}$ (264Fb), so that the phrase
+`$r$-dimensional Hausdorff outer measure' is unambiguous.   A crucial
+property of Lebesgue measure is the fact that the measure of a
+measurable set $E$ is the supremum of the measures of the compact
+subsets
+of $E$;  this is not generally shared by Hausdorff measures, but is
+valid for sets $E$ of finite measure in complete spaces (264Yi).
+Concerning subspaces, there are no problems with the outer measures, and
+for sets of finite measure the subspace measures are also consistent
+(264Yf).   Because Hausdorff measure is defined in metric terms, it
+behaves regularly for Lipschitz maps (264G);  one of the most
+natural classes of functions to consider when studying metric spaces is
+that of $1$-Lipschitz functions, so that (in the language of 264G)
+$\mu_{Hr}^*\phi[A]\le \mu_{Hr}^*A$ for every $A$.
+
+The second essential feature of Hausdorff measure, its relation with
+Lebesgue measure in the appropriate dimension, is Theorem 264I.
+Because both Hausdorff measure and Lebesgue measure are
+translation-invariant, this can be proved by relatively elementary
+means, except for the evaluation of the normalizing constant;  all we
+need to know is that $\mu\coint{0,1}^r=1$ and
+$\mu_{Hr}\coint{0,1}^r$ are both finite and non-zero, and this is
+straightforward.   (The arguments of part (a) of the proof of 261F are
+relevant.)   For the purposes of this chapter, we do not I think have to
+know the value of the constant;  but I cannot leave it unsettled, and
+therefore give Theorem 264H, the {\bf isodiametric inequality}, to show
+that it is just the Lebesgue measure of an $r$-dimensional ball
+of diameter $1$, as one would hope and expect.   The critical step in
+the argument of 264H is in part (c) of the proof.   This is called
+`Steiner symmetrization';  the idea is that given a set $A$, we
+transform
+$A$ through a series of steps, at each stage lowering, or at least not
+increasing, its diameter, and raising, or at least not decreasing, its
+outer measure, progressively making $A$ more symmetric, until at the end
+we have a set which is sufficiently constrained to be amenable.   The
+particular symmetrization operation used in this proof is important
+enough;  but the idea of progressive regularization of an object is one
+of the most powerful methods in measure theory, and you should give all
+your attention to mastering any example you encounter.   In my
+experience, the idea is principally useful when seeking an inequality
+involving disparate quantities -- in the present example, the diameter
+and volume of a set.
+
+Of course it is awkward having two measures on $\BbbR^r$, differing by
+a constant multiple, and for the purposes of the next section it would
+actually have been a little more convenient to follow {\smc Federer 69}
+in using `normalized Hausdorff measure' $2^{-r}\beta_r\mu_{Hr}$.
+(For non-integral $r$, we could take
+$\beta_r=\pi^{r/2}/\Gamma(1+\bover{r}2)$, as suggested in
+252Xi.)   However, I believe this to be a minority position, and
+the striking example of Hausdorff measure on the Cantor set (264J,
+264Ym-264Yn) looks much better in the non-normalized version.
+
+Hausdorff ($\ln 2/\ln 3$)-dimensional measure on the Cantor set is of
+course but one, perhaps the easiest, of a large class of examples.
+Because the Hausdorff
+$r$-dimensional outer measure of a set $A$, regarded as a function of
+$r$, behaves dramatically (falling from $\infty$ to $0$) at a certain
+critical
+value $\Delta(A)$ (see 264Xe, 264Yk), it gives us a metric space
+invariant
+of $A$;  $\Delta(A)$ is the {\bf Hausdorff dimension} of $A$.
+Evidently the Hausdorff dimension of $C$ is $\ln 2/\ln 3$, while that of
+$r$-dimensional Euclidean space is $r$.
+}%end of notes
+
+\discrpage
+
+

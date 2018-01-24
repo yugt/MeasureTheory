@@ -1,0 +1,173 @@
+\input fremtex
+\input mt
+\atUEssex
+
+\def\copyrightdate#1{}
+
+\def\vtmpb#1{}
+\newif\iflulu
+\newif\iflargelogo
+\def\discrpage{\vskip0pt plus\pageheight minus 0pt}
+\def\frnewpage{}
+\def\varfrnewpage{\vskip \pageheight plus 0pt minus\pageheight  
+           \eject  
+           \gdef\topparagraph{}  
+           \gdef\bottomparagraph{}  
+           \baselineskip=12pt
+	   \footmarkcount=0}  
+\def\leftfootline{}
+\def\rightfootline{}
+\def\query{\immediate\write0{query}\advance\nquery by 1}
+\newcount\nquery
+\nquery=0
+
+\def\newsection#1{\wheader{\S#1 {\it intro.}}{24}{12}{2}{100pt}
+   \vskip 0.1pt
+   \noindent{\bf #1 \sectionname}
+   \smallskip
+   \let\headlinesectionname=\sectionname}
+\def\newvolume#1{}
+
+\newdimen\basiclineskip
+\basiclineskip=12pt
+\def\resetbaselineskip{\baselineskip=\basiclineskip}
+\def\advancebaselineskip{\advance\baselineskip by 0.2pt}
+
+\def\mtstyle{\noamslogo
+  \firstpagefalse
+  \resultsonlyfalse
+  \magnification=\magstep0  
+  \overfullrule0pt  
+  \def\pagewidth{468pt}  
+  \def\pageheight{9truein}  
+  \hsize\pagewidth  
+  \vsize\pageheight  
+  \def\folio{\ifnum\pageno<5{}\else\number\pageno\fi} 
+  \lhoffset=-1.2cm
+  \rhoffset=-0.1cm
+  \global\voffset=0.7cm
+  \stylenumber=11}
+\def\mtlulustyle{\noamslogo
+  \firstpagefalse
+  \resultsonlyfalse
+  \magnification=\magstep0  
+  \overfullrule0pt  
+  \def\pageheight{24.01truecm}  
+     %allowing 1.25cm top and bottom, with 0.8 cm for header line
+  \def\pagewidth{18.12truecm}  
+%\def\pageheight{23.5truecm}  
+%\def\pagewidth{17.75truecm}  
+  \hsize\pagewidth  
+  \vsize\pageheight  
+  \def\folio{\ifnum\pageno<5{}\else\number\pageno\fi} 
+%  \lhoffset=-0.17truecm\rhoffset=0.17truecm
+     %gave odd pages 0.8 cm to outer edge of paper, even pages 2.4
+  \lhoffset=-0.97truecm\rhoffset=-0.63truecm
+     %(AWM) even pages now 1 cm closer to edge, with bad resizing (I think)
+     %with good resizing, odd pages about 0.05 cm closer to edge
+%  \lhoffset=-0.67truecm\rhoffset=-0.33truecm
+     %odd pages 1.2 cm to edge, even pages 1.9
+     %used for 5-I, 28.11.08 (I think)
+%  \lhoffset=-0.77truecm\rhoffset=-0.43truecm
+     %used for 5-II, 2.1.09, with bad resizing
+%  \global\voffset=0truecm
+     %gave 0.8 cm space at top, 1.6 cm at bottom
+%  \global\voffset=0.2truecm
+     %0.9 cm at top, 1.5 cm at bottom with good resizing
+     %2.7 cm at top, 1.3 cm at bottom in 5-II on bad resizing
+%  \global\voffset=-0.5cm
+     %to be used with  dvips -t letter -o ...scr ...dvi
+     %with dvipdfm -p letter & ps2pdf14 , used for first version of
+        %3-I, in which print was too low on page;  approx. 0.5cm 
+	%clear at the bottom
+  \global\voffset=-1.0cm
+     %to be used with dvipdfm -p letter & ps2pdf14 
+     %3-I, second attempt
+  \stylenumber=12}
+
+% actual page size   20.6 approx *27.3
+% Trials:
+  %output file.pdf        vol2.t1        
+  %Pagewidth*pageheight 18.12*24.01      
+  %voff, lhoff, rhoff   0.2,-0.97,-0.63  
+  %BoundingBox          596*842          
+  %Lulusaysitis         21.59*27.94   
+  %Adobe (unscaled)                 
+  %problems?          
+  %                   
+%changing BoundingBox led to a Lulu file differing only in creation date
+
+%Lulu.com specifications for "large hardcover" casebound
+%  size 20.955 x 27.31 cm
+%  margins 1.25cm, inside edge 1.5875 cm
+%  allow 0.8cm for topmatter
+%  so pageheight = 24.01 truecm
+%  pagewidth = 18.12 truecm
+%  offset = \pm 0.17 truecm  but see correction above
+
+%Difficulties with Volume 5 due to two misunderstandings:
+%  wrongly calculated pageheight, which should have excluded topmatter;
+%     pageheight 24cm would be more appropriate
+%  the %BoundingBox line at the top of the .ps file should be
+%     0  0  578  777
+%  it looks as though this can be put in by hand, rather than by the
+%    -T  option in  dvips , which behaves erratically;  however 
+%    this may upset Lulu.   The best  -T  option I have found is
+%             -T 8.24in,10.77in
+
+%??Working on Volume 2:  changing the BoundingBox line doesn't seem to
+%change the pdf file created by Lulu.
+
+%Yet another problem.   The contraction imposed by the Lulu program on
+%the incorrect a4 size varies.   This can be observed in the downloadable 
+%pdf file if you look carefully.   Current (I hope) version of 5-I is in
+%incoming/3365665.08k28.pdf and this is the best I have at the moment,
+%though horizontal offsets aren't very good.
+%   The difference is in the  dvips  switches!   the  -t a4  confuses
+%Lulu (in ways which make no sense to me, but no matter).
+%So  dolulutex  is now
+     % rm $1.dvi
+     % rm $1.ps
+     % rm $1.pdf
+     % tex $1
+     % dvips -o $1.ps $1.dvi
+     % dvipdf  $1.dvi $1.pdf
+     % ggv $1.ps &
+
+%The current version of Volume 5 uses
+%  \lhoffset=-0.97truecm \rhoffset=-0.63truecm \global\voffset=0.2truecm
+%  dvips -o *.ps *.dvi
+%in order not to change page numbers
+
+\hyphenation{Dede-kind}
+\hyphenation{Ra-de-ma-cher}
+
+\def\pagereference#1#2{
+  \hfill\hbox{\ifresultsonly#2\qquad \hskip 1truein
+     \else\iflulu#2\else#1\qquad\fi\fi}}
+\long\def\section#1#2#3#4#5#6{\ifresultsonly
+    \hskip1truein\qquad #1 #2\pagereference{#4}{#5}
+  \else\vskip 2pt plus 1pt minus 0pt
+    \vbox{\qquad #1 #2\pagereference{#4}{#5}\par
+    \abstr{#6}
+    }\vskip -1pt plus 1pt minus 0pt
+  \fi}
+\long\def\chapintrosection#1#2#3{\ifresultsonly
+    \hskip1truein\qquad Introduction\pagereference{#2}{#3}
+  \else\vskip 1pt plus 1pt minus 0pt
+    \qquad Introduction\pagereference{#2}{#3}
+    \vskip 1pt plus 1pt minus 0pt
+  \fi}
+\def\abstr#1{\ifresultsonly{}
+   \else{\advance\leftskip by\parindent
+     \advance\rightskip by\parindent
+     \advance\rightskip by\parindent
+     {\advance\leftskip by\parindent
+      \advance\rightskip by\parindent
+     {\advance\leftskip by\parindent
+     {\advance\leftskip by\parindent
+     {\vskip1pt plus 0pt minus0pt
+     \parindent=0pt
+     \smallerfonts #1
+     \vskip1pt plus 0pt minus0pt }}}}}\fi}
+\Loadfourteens

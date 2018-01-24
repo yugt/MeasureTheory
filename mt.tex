@@ -1,0 +1,631 @@
+\immediate\write0{Extract from MEASURE THEORY,
+   by D.H.Fremlin, University of Essex, Colchester.
+   This material is copyright.   It is issued under the terms of the
+   Design Science License as published in
+   http://dsl.org/copyleft/dsl.txt.   This is a development version and the
+   source files are not permanently archived.
+   For further information contact fremdh\@essex.ac.uk}
+
+%hyphenations
+\hyphenation{Archi-me-dean}
+
+%new style
+\def\smallprintersize{\magnification=\magstep0
+     \overfullrule0pt
+     \def\pagewidth{468pt}
+     \def\pageheight{9truein}
+     \hsize\pagewidth
+     \vsize\pageheight
+     \nologo
+     \def\copyrightdate##1{}
+     \def\folio{\ifnum\pageno<0{}\else\number\pageno\fi}
+     \def\mtfootline{}
+     \stylenumber=10
+     \pageno=-1000}
+
+%With-proofs, results-only versions
+\newif\ifwithproofs
+\withproofstrue
+\newif\ifresultsonly
+\resultsonlyfalse
+\def\noproofs{\withproofsfalse}
+\def\resultsonly{\resultsonlytrue\withproofsfalse}
+\long\def\proof#1{\ifwithproofs{\medskip
+
+     \noindent{\bf proof} #1}\else\fi}
+\long\def\prooflet#1{\ifwithproofs{#1}\else\fi}
+%\long\def\Prooflet#1{\prooflet{\Prf\ #1 \Qed\ }}
+\long\def\cmmnt#1{\ifresultsonly\else{#1}\fi}
+  %the "\comment" macro in AMSTeX is a form of
+  %\leaveitout
+\long\def\endnotes#1{\ifresultsonly\else{#1}\fi}
+\long\def\exercises#1{\ifresultsonly\else{#1}\fi}
+\long\def\references#1{\ifresultsonly\else{#1}\fi}
+\long\def\dvro#1#2{\ifresultsonly{#1}\else{#2}\fi}
+
+%Headline assignments
+
+\def\topparagraph{}
+\def\bottomparagraph{}
+\def\newparagraph{}
+\newif\ifpageturned
+
+\newdimen\rhoffset
+\newdimen\lhoffset
+\lhoffset=0cm
+\rhoffset=0cm
+
+\newcount\volumeno
+\volumeno=5
+\newcount\luluvolumeno
+\luluvolumeno=0
+
+\let\plainpagebody=\pagebody
+\def\pagebody{\ifodd\pageno\global\hoffset=\rhoffset
+         \else\global\hoffset=\lhoffset\fi
+     \plainpagebody
+     \turnpage}
+\def\turnpage{
+     \iffirstpage\else{\baselineskip=24pt\line{\mtfootline}}\fi
+%     \immediate\write0{turning page \folio,
+%           top paragraph \topparagraph,   bottom \bottomparagraph,
+%           new \newparagraph, pagetotal \the\pagetotal}
+     \global\pageturnedtrue
+     \global\firstpagefalse
+     \global\let\topparagraph=\bottomparagraph
+     \global\let\bottomparagraph=\newparagraph
+     }
+
+\newdimen\pagetotalplus
+\newdimen\pagetotalminus
+
+%wheader parameters:  #1 new paragraph name
+ % #2#3#4  \vskip parameters if page break not forced (no. of points)
+ % #5  spare height demanded if page break not to be forced
+\long\def\wheader#1#2#3#4#5{\gdef\newparagraph{#1}
+  \pagetotalplus=\the\pagetotal
+  \advance\pagetotalplus by #5
+  \pagetotalminus=\the\pagetotal
+  \advance\pagetotalminus by -\pageshrink
+  %\showthe\pagetotal \showthe\pageshrink \showthe\pagegoal
+  \global\pageturnedfalse
+  \ifdim\pagetotalminus<\pagegoal\ifdim\pagetotalplus>\pagegoal
+%     \immediate\write0{forcing page break}
+     \eject
+     \else\vskip #2pt plus #3pt minus #4pt\fi
+     \else\vskip #2pt plus #3pt minus #4pt\fi
+  \ifpageturned\global\let\topparagraph=\newparagraph
+%     \immediate\write0{paragraph change on turning page}
+     \fi
+%  \immediate\write0{top paragraph \topparagraph, bottom
+%       \bottomparagraph, pagetotal \the\pagetotal}
+  \ifdim\pagetotal>\pagegoal\else\gdef\bottomparagraph{#1}\fi
+%   \immediate\write0{top paragraph \topparagraph, bottom
+%       \bottomparagraph, pagetotal \the\pagetotal}
+  }
+\def\header#1{
+     \wheader{#1}{10}{4}{4}{24pt}}
+\def\leader#1#2{\immediate\write0{#1 #2}
+     \wheader{#1}{14}{7}{5}{24pt}
+     {\bf #1 #2}}
+\def\vleader#1#2#3{\immediate\write0{#2 #3}
+     \wheader{#2}{14}{7}{5}{#1}
+     {\bf #2 #3}}
+\def\Notesheader#1{\immediate\write0{#1 Notes and comments}
+     \wheader{#1 Notes}{16}{8}{5}{48pt}
+     \noindent{\bf #1 Notes and comments}}
+\def\vNotesheader#1#2{\immediate\write0{#2 Notes and comments}
+     \wheader{#2 Notes}{16}{8}{5}{#1}
+     \noindent{\bf #2 Notes and comments}}
+\def\spheader#1#2#3#4#5{\header{#1#2#3#4#5}{\bf (#5)}}
+\def\spstheader#1#2#3#4#5{\header{*#1#2#3#4#5}{\bf (#5)}}
+\def\vspheader#1#2#3#4#5#6{
+     \wheader{#2#3#4#5#6}{10}{4}{4}{#1}{\bf (#6)}}
+\def\sqheader#1#2#3#4#5{\header{#1#2#3#4#5}{$\pmb{>}${\bf (#5)}}}
+\def\errheader#1#2#3{
+     \wheader{#3}{6}{4}{2}{24pt}
+     {\bf p #1 l #2}}
+\long\def\woddheader#1#2#3#4#5{
+   \ifodd\pageno\wheader{#1}{#2}{#3}{#4}{#5}
+   \else\vskip #2pt plus #3pt minus #4pt\fi}
+
+\def\indexmedskip{
+  \pagetotalplus=\the\pagetotal
+  \advance\pagetotalplus by 18 pt
+  \pagetotalminus=\the\pagetotal
+  \advance\pagetotalminus by -\pageshrink
+  \ifdim\pagetotalminus<\pagegoal\ifdim\pagetotalplus>\pagegoal
+      \else\medskip\fi\else\medskip\fi}
+
+\def\indexheader#1{\immediate\write0{#1}\vindexheader{#1}{24}}
+\def\vindexheader#1#2{
+  \gdef\newparagraph{#1}
+  \pagetotalplus=\the\pagetotal
+  \advance\pagetotalplus by #2 pt
+  \pagetotalminus=\the\pagetotal
+  \advance\pagetotalminus by -\pageshrink
+  %\showthe\pagetotal \showthe\pageshrink \showthe\pagegoal
+  \global\pageturnedfalse
+%  \ifdim\pagetotal>\pagegoal
+%      \immediate\write0{warning: pagetotal greater than pagegoal}
+%      \immediate\write0{...   last paragraph reached is #1}
+%      \immediate\write0{...   check for underfull vbox here}
+%      \else\fi
+  \ifdim\pagetotalminus<\pagegoal\ifdim\pagetotalplus>\pagegoal{\eject}
+      \fi\fi
+  \ifdim\pagetotal>\pagegoal\else\gdef\bottomparagraph{#1}\fi
+  \ifpageturned{\global\let\topparagraph=\newparagraph
+%     \immediate\write0{paragraph change on turning page}
+      }\else\fi
+%  \immediate\write0{top paragraph \topparagraph, bottom
+%    \bottomparagraph}
+  }
+
+\def\leftheadline{\rlap{\folio}\hfill{\eightit\chaptername}\hfill
+       \llap{\eightbf\topparagraph}}
+\def\rightheadline{\rlap{\eightbf\bottomparagraph}\hfill
+       {\eightit\headlinesectionname}\hfill\llap{\folio}}
+
+%Footline assignments
+\def\mtfootline{\ifodd\pageno\rightfootline\else\leftfootline\fi}
+\def\rightfootline{\hfill\eightsmc D.H.Fremlin}
+\def\leftfootline{\ifwithproofs{\eightsmc Measure Theory\hfill}
+    \else{\eightsmc Measure Theory \eightit (abridged version)\hfill}
+    \fi}
+
+%Style assignments
+\def\newchapter#1{\gdef\topparagraph{}
+   \gdef\bottomparagraph{Chap.\ #1 {\it intro.}}
+   \gdef\newparagraph{Chap.\ #1 {\it intro.}}
+   \footmarkcount=0
+   \gdef\sectionname{Introduction}
+   \gdef\headlinesectionname{Introduction}
+   \centerline{\bf Chapter #1}
+   \medskip
+   \centerline{\bf \chaptername}
+   \medskip
+   }
+\def\newsection#1{\gdef\bottomparagraph{\S#1 {\it intro.}}
+   \noindent{\bf #1 \sectionname}
+   \smallskip
+   \let\headlinesectionname=\sectionname}
+\def\newvolume#1{\gdef\topparagraph{}
+   \gdef\bottomparagraph{Vol.\ #1 {\it intro.}}
+   \Loadfont{\twelvebf=cmbx12}
+   \def\chaptername{Volume #1}
+   \def\sectionname{\volumename}
+   \def\headlinesectionname{\volumename}
+   \centerline{\twelvebf Volume #1:  \volumename}
+   \bigskip
+   }
+
+%font variations
+\newif\ifvolwp
+\volwpfalse
+\def\tenrmstretch#1{\fontdimen3\tenrm=#1}
+\font\elevenex=cmex10 at 11pt
+
+%contents and introductions
+\newif\iflargelogo
+\def\vtmpb#1{}
+\def\newvolume#1{}
+\def\pagereference#1#2{\hfill\hbox{\ifresultsonly#2\qquad \hskip 1truein
+                                                 \else#1\qquad \fi}}
+\long\def\section#1#2#3#4#5#6{\ifresultsonly
+    \qquad #1 #2\pagereference{#4}{#5}
+  \else\vskip 2pt plus 1pt minus 0pt
+    \vbox{\qquad #1 #2\pagereference{#4}{#5}\par
+    \abstr{#6}
+    }\vskip -1pt plus 1pt minus 0pt
+  \fi}
+\long\def\chapintrosection#1#2#3{\ifresultsonly
+    \qquad Introduction\pagereference{#2}{#3}
+  \else\vskip 1pt plus 1pt minus 0pt
+    \qquad Introduction\pagereference{#2}{#3}
+    \vskip 1pt plus 1pt minus 0pt
+  \fi}
+\def\abstr#1{\ifresultsonly{}
+   \else{\advance\leftskip by\parindent
+     \advance\rightskip by\parindent
+     \advance\leftskip by\parindent
+     \advance\rightskip by\parindent
+     \advance\leftskip by\parindent
+     \advance\rightskip by\parindent
+     \advance\leftskip by\parindent
+     \vskip1pt plus 0pt minus0pt
+     \parindent=0pt
+     \smallerfonts #1%
+     \hbox{\vrule height0pt depth2pt width0pt}
+     \vskip1pt plus 0pt minus0pt}\fi}
+     
+%language variations
+\newif\ifUSEnglish
+\USEnglishfalse
+%\USEnglishtrue
+
+%"Later editions only"
+\newcount\latereditionpage
+\newcount\latereditionmark
+\latereditionpage=-1
+\latereditionmark=0
+\newcount\newpageno
+
+%removing the \write0 instruction altogether disorganizes it!
+\def\Latereditions{\newpageno=\pageno%
+  \ifdim\pagetotal>\pagegoal\advance\newpageno by 1\fi%
+     \divide\newpageno by 2%
+  \immediate\write0{%
+%     "Later editions only";
+%      pagetotal \the\pagetotal, pagegoal \the\pagegoal,
+%      pageno \number\pageno,\par newpageno \number\newpageno,
+%      latereditionpage \number\latereditionpage%
+  }\ifnum\latereditionpage=\newpageno%
+     \ifDHFamspptloaded$^{\number\latereditionmark}$%
+     \else\footnote{Later editions only.}\fi%
+  \else\footnote{Later editions only.}%
+  \global\latereditionpage=\newpageno%
+  \global\latereditionmark=\footmarkcount\fi}%
+%  \immediate\write0{newpageno \number\newpageno,
+%      latereditionpage \number\latereditionpage}
+
+   
+%general definitions
+\def\action{\mathchoice{\lower-.3ex\hbox{$\ssbullet$}}
+                       {\lower-.3ex\hbox{$\ssbullet$}}
+                       {\ssbullet}
+                       {\ssbullet}}  %see also \varaction
+\def\add{\mathop{\text{add}}\nolimits}
+\long\def\allowmorestretch#1#2{
+  \ifdim\pagewidth<#1pt\else
+    \fontdimen3\tenrm=2pt\fontdimen4\tenrm=1.67pt\fi
+  #2
+  \fontdimen3\tenrm=1.67pt\fontdimen4\tenrm=1.11pt}
+\def\am{atom\discretionary{}{-}{}lessly-measurable}
+\def\AmuA{\Aut_{\bar\mu}\mskip-2mu\frak A}
+\def\Atop#1#2{{\scriptstyle #1}\atop{\scriptstyle #2}}
+\def\Aut{\mathop{\text{Aut}}}
+
+\def\Bcap{\Booleanop{\cap}}
+\def\Bcup{\Booleanop{\cup}}
+\def\Booleanop#1{
+   \ifamstexsupported{\mathchoice
+    {\hbox{\hskip.2em\scriptfont2=\eightsy$\scriptstyle#1$\hskip.2em}}
+    {\hbox{\hskip.2em\scriptfont2=\eightsy$\scriptstyle#1$\hskip.2em}}
+    {{\mskip2mu\scriptstyle#1\mskip2mu}}
+    {{\scriptscriptstyle#1}}}
+   \else{\mathchoice{{\scriptstyle#1}}{{\scriptstyle#1}}
+    {{\scriptstyle#1}}{{\scriptscriptstyle#1}}}
+    \fi}
+\def\Bsetminus{\Booleanop{\setminus}}
+\def\Bsubseteq{\hskip.1em\Booleanop{\subseteq}\hskip.1em}
+\def\Bsubset{\Booleanop{\subset}}
+\def\Bsupseteq{\Booleanop{\supseteq}}
+\def\Bsupset{\Booleanop{\supset}}
+\def\Bsymmdiff{\Booleanop{\symmdiff}}
+\def\Bcapshort{\Booleanopshort{\cap}}
+\def\Bcupshort{\Booleanopshort{\cup}}
+\def\Booleanopshort#1{
+   \ifamstexsupported{\mathchoice
+    {\hbox{\scriptfont2=\eightsy$\scriptstyle#1$}}
+    {\hbox{\scriptfont2=\eightsy$\scriptstyle#1$}}
+    {{\scriptstyle#1}}
+    {{\scriptscriptstyle#1}}}
+   \else{\mathchoice{{\scriptstyle#1}}{{\scriptstyle#1}}
+    {{\scriptstyle#1}}{{\scriptscriptstyle#1}}}
+    \fi}
+\def\Bsetminusshort{\Booleanopshort{\setminus}}
+%\def\Bsubseteqshort{\hskip.1em\Booleanopshort{\subseteq}\hskip.1em}
+\def\Bsubseteqshort{\hskip.1em\Booleanopshort{\subseteq}}
+\def\Bsubsetshort{\Booleanopshort{\subset}}
+\def\Bsupseteqshort{\Booleanopshort{\supseteq}}
+\def\Bsymmdiffshort{\Booleanopshort{\symmdiff}}
+
+\def\closeBooleanop#1{
+   \ifamstexsupported{\mathchoice
+    {\hbox{\scriptfont2=\eightsy$\scriptstyle#1$}}
+    {\hbox{\scriptfont2=\eightsy$\scriptstyle#1$}}
+    {{\scriptstyle#1}}
+    {{\scriptscriptstyle#1}}}
+   \else{\mathchoice{{\scriptstyle#1}}{{\scriptstyle#1}}
+    {{\scriptstyle#1}}{{\scriptscriptstyle#1}}}
+    \fi}
+\def\closeBcup{\closeBooleanop{\cup}}
+\def\closeBcap{\closeBooleanop{\cap}}
+\def\closeBsetminus{\closeBooleanop{\setminus}}
+\def\closeBsymmdiff{\closeBooleanop{\symmdiff}}
+
+\def\biggerHeint{\textfont3=\twelveex
+   \raise 0.6pt\hbox to 0pt{\hskip 2.6pt{\sevenrm H}\hss}
+   \intop\nolimits}
+\def\biggerPfint{\textfont3=\twelveex
+   \raise 0.6pt\hbox to 0pt{\hskip 1.3pt{\sevenrm Pf}\hss}
+   \intop\nolimits\hskip 1.2pt}
+\def\bu{\mathop{\text{bu}}}
+\def\Bvalue#1{\mathchoice
+   {\hbox{$[\![#1]\!]$}}
+   {\hbox{$[\![#1]\!]$}}
+   {\hbox{$\scriptstyle[\![#1]\!]$}}
+   {\hbox{$\scriptscriptstyle[\![#1]\!]$}}}
+\def\cadlag{c\`adl\`ag}
+\def\CalBa{\Cal{B}\eurm{a}}
+   %note: neither  \cal  nor  \eusm  has lower case
+\def\CalFr{\Cal F_{\text{Fr}}}
+\def\callal{c\`all\`al}
+\def\CalNwd{\Cal{N}\hskip-1.2pt\eurm{w}\hskip-.8pt\eurm{d}}
+
+\def\CalRbg{\Cal{R}\mskip-1mu\eurm{b}\mskip-1mu\eurm{g}}
+\def\CalSmz{\Cal{S}\mskip-2mu\eurm{mz}}
+\def\CalUn{\Cal{U}\eurm{n}}
+\def\capacity{\mathop{\text{cap}}\nolimits}
+\def\Caratheodory{Cara\-th\'eo\-dory}
+\def\Cdlg{C_{\text{dlg}}}
+\def\cff{\cf\mskip1mu}
+\def\ci{\mathop{\text{ci}}}
+\def\cl{\mathop{\text{cl}}}
+\def\Clll{\hbox{$C$
+  \hskip-4.5pt\raise4pt\hbox{\char'23
+  \hskip-1.7pt\vrule height6.3pt width.5pt depth0pt
+  \hskip.7pt\vrule height6.3pt width.5pt depth0pt
+  \hskip-2.5pt\lower5pt\hbox{\char'23}}}}
+\def\tildeClll{\hbox{$\tilde C$
+  \hskip-4.5pt\raise4pt\hbox{\char'23
+  \hskip-1.7pt\vrule height6.3pt width.5pt depth0pt
+  \hskip.7pt\vrule height6.3pt width.5pt depth0pt
+  \hskip-2.5pt\lower5pt\hbox{\char'23}}}}
+\def\clMsimp{\overline{M}_{\text{simp}}}
+\def\closeuparrow{\mathchar"0222}
+\def\closedownarrow{\mathchar"0223}
+\def\clstar{\text{cl*}}
+\def\cov{\mathop{\text{cov}}}
+\def\covar#1#2{[#1{*\atop{\vrule height 6pt depth 0pt}}#2]}
+\def\covSh{\mathop{\text{cov}}\nolimits_{\text{Sh}}}
+\def\cdownarrow{c\mskip2mu^{\downarrow}}
+\def\cycle#1{(\overleftarrow{#1})}
+\def\ddaggerloc{$(\ddagger)_{\text{loc}}$}
+\def\ddownarrow{d\mskip2mu^{\downarrow}}
+\def\DiniD{\setover{
+  \hbox{\hskip.1em\vrule height-1pt width.5em depth1.4pt\hfil}}D}
+\def\Dinid{\hskip.1em
+  \hbox{\hskip.05em\vrule height-1.3pt width.5em depth1.7pt}\hskip-.65em D}
+\def\discrcenter#1#2{\ifdim\pagewidth>#1{#2}\else{
+
+  \Centerline{#2}
+
+  \noindent}\fi}
+    %note:  in \discrcenter, make sure that #2 ends in a space
+    % (if you want one to appear) and that the continuation
+    % follows without
+    % a space after the final } of #2, so that it will be
+    % truly unindented
+\def\discrpage{\ifnum\stylenumber=1{\frnewpage}  %redefined in mt.tex
+        \else\ifnum\stylenumber=3{\frnewpage}
+        \else\ifnum\stylenumber=5{\frnewpage}
+        \else\wheader{}{18}{14}{2}{72pt}\fi\fi\fi}
+\def\displaycause#1{\noalign{\noindent (#1)}}
+\def\Displaycause#1{\cr\displaycause{#1}&}
+\def\dotproduct{\hskip.1em\tbf{.}\hskip.1em}
+\def\doubleheadrightarrow{\rightarrow\mskip-12mu\rightarrow}
+\long\def\doubleinset#1{\inset{\inset{\parindent=-20pt #1}}}
+\def\duparrow{d\mskip2mu^{\uparrow}}
+\def\dvrocolon#1{\dvro{#1: }{#1}}
+\def\eightVVdash{\mskip5mu\vrule height 6pt depth 2pt width 0.4pt
+  \mskip2mu\vrule height 6pt depth 2pt width 0.4pt
+  \vrule height 2.25pt depth -1.8pt width 3.2pt\mskip2mu}
+\def\embedsinto{\mskip5mu\raise1.5pt\hbox{$\subset$}\mskip-15mu
+   \lower3.5pt\hbox{$\rightarrow$}\mskip5mu}
+\def\energy{\mathop{\text{energy}}\nolimits}
+%\eqalign:  see \S478 for breaks during \eqalign
+\def\equivGT{\equiv_{\text{GT}}}
+\def\equivT{\equiv_{\text{T}}}
+\def\Eta{\text{H}}
+\def\Expn{\Bbb E}
+\long\def\Extract{\oldfootnote{}{
+   \noindent{\eightit
+       \ifresultsonly{Extract from {\eightsmc Measure Theory,}
+          results-only version,
+          by {\eightsmc D.H.Fremlin,}  University of Essex,
+Colchester.}
+       \else\ifwithproofs{Extract from {\eightsmc Measure Theory,}
+          by {\eightsmc D.H.Fremlin,}  University of Essex,
+Colchester.}
+       \else{Extract from {\eightsmc Measure Theory,} abridged version,
+          by {\eightsmc D.H.Fremlin,}  University of Essex,
+Colchester.}
+       \fi\fi
+   This material is copyright.   It is issued under the terms of the
+   Design Science License as published in
+   {\eighttt http://dsl.org/copyleft/dsl.txt}.
+   This is a development version and the
+   source files are not permanently archived, but current versions are
+normally
+   accessible through
+   {\eighttt http://www.essex.ac.uk/maths/people/fremdh/mt.htm}.
+   For further information contact {\eighttt fremdh\@essex.ac.uk}.}
+   }}
+\def\Fn{\mathop{\text{Fn}}\nolimits}
+\def\FN{\mathop{\text{FN}}\nolimits}
+\def\formerly#1{\footnote{Formerly #1.}}
+  %use only once in a chapter, never in same volume as reference
+\def\dvAformerly#1{\discrversionA{\footnote{Formerly #1.}}{}}
+\def\dvAnew#1{\discrversionA{\footnote{New #1.}}{}}
+\def\dvArevised#1{\discrversionA{\footnote{Revised #1.}}{}}
+\def\fraction#1{\mathchoice{\hbox{$<$}#1\hbox{$>$}}
+     {\hbox{$<$}#1\hbox{$>$}}
+     {\hbox{$\scriptstyle<$}#1\hbox{$\scriptstyle>$}}
+     {\hbox{$\scriptscriptstyle<$}#1\hbox{$\scriptscriptstyle>$}}}
+\def\frakmctbl{\frak m_{\text{countable}}}
+\def\frmedcirc{{\raise 2.5pt\hbox{$_{\bigcirc}$}}}
+\def\grad{\mathop{\text{grad}}\nolimits}
+\def\Heint{\mathchoice{\hbox to 0pt{\hskip 3.1pt H\hss}}
+     {\raise 0.6pt\hbox to 0pt{\hskip 1.9pt{\sevenrm H}\hss}}
+     {\raise 0.4pt\hbox to 0pt{\hskip 1.5pt{\fiverm H}\hss}}
+     {\raise 0.4pt\hbox to 0pt{\hskip 1.5pt{\fiverm H}\hss}}
+     \intop\nolimits}
+\def\high#1{\lceil#1\rceil}
+\def\Hint#1{({\it Hint\/}: #1)}
+\def\hL{\mathop{\text{hL}}}
+\def\hp{\mathop{\text{hp}}\nolimits}
+\def\hwtr{hereditarily weakly $\theta$-{\vthsp}refinable}
+\def\iiv{ii_{\pmb{v}}}
+\def\iivu{\iiv(\pmb{u})}
+\def\imp{inverse-{\vthsp}measure-{\vthsp}preserving}
+\def\innerprod#1#2{(#1|#2)}
+\def\intstar{\text{int*}}
+\def\jump{\mathop{\text{jump}}\nolimits}
+\def\Krein{Kre\v{\i}n}
+\def\leRB{\le_{\text{RB}}}
+\def\leRK{\le_{\text{RK}}}
+\def\link{\mathord{\text{link}}}
+\def\locmafp{\widehat{\otimes}_{\text{loc}}}
+\def\Locmafp{\widehat{\bigotimes}^{\text{loc}}}
+\def\low#1{\lfloor#1\rfloor}
+\def\lti{left-\vthsp translation-\vthsp invariant}
+\def\Mah{\mathop{\text{Mah}}}
+\def\Mahcr{\Mah_{\text{cr}}}
+\def\MahcrR{\Mah_{\text{crR}}}
+\def\MahqR{\Mah_{\text{qR}}}
+\def\MahR{\Mah_{\text{R}}}
+\def\MahspcrR{\Mah_{\text{spcrR}}}
+\def\Marik{Ma\v r\'\i k} 
+\def\Mbv{M_{\text{bv}}}
+\def\Mcdlg{M_{\text{cdlg}}}
+\def\med{\mathop{\text{med}}\nolimits}
+\def\Mhsr{\mathop{\text{Mhsr}}\nolimits}
+\def\Mjf{\mathop{M_{\text{j-f}}}\nolimits}
+\def\Mlbv{M_{\text{lbv}}}
+\def\Mlob{M_{\text{lob}}}
+\def\Mns{M_{\text{n-s}}}
+\def\Mob{M_{\text{ob}}}
+\def\Msimp{M_{\text{simp}}}
+\def\Mth{Ma\-ha\-ram-{\vthsp}type-{\vthsp}homogeneous}
+\def\negquad{\hskip-1em\relax}
+\def\NN{\BbbN^{\Bbb N}}
+\def\non{\mathop{\text{non}}}
+\def\notBooleanop#1{
+   \ifamstexsupported{\mathchoice
+{\hbox{\hskip.2em$\not\scriptfont2=\eightsy\scriptstyle#1$\hskip.2em}}
+{\hbox{\hskip.2em$\not\scriptfont2=\eightsy\scriptstyle#1$\hskip.2em}}
+    {{\not\scriptstyle#1}}
+    {{\not\scriptscriptstyle#1}}}
+   \else{\mathchoice{{\not\scriptstyle#1}}{{\not\scriptstyle#1}}
+    {{\not\scriptstyle#1}}{{\not\scriptscriptstyle#1}}}
+    \fi}
+\def\notBsubseteq{\notBooleanop{\subseteq}}
+\def\notBsupseteq{\notBooleanop{\supseteq}}
+\def\notVVdash{\not\mskip4mu\vrule height 7.5pt depth 2.5pt width 0.5pt
+  \mskip2.5mu\vrule height 7.5pt depth 2.5pt width 0.5pt
+  \vrule height 2.75pt depth -2.25pt width 4pt\mskip-2mu}
+\def\nuprime{\nu^{\mskip0.7mu\prime}}
+\def\nw{\mathop{\text{nw}}}
+\def\Osclln{\mathop{\text{Osclln}}\nolimits}
+\def\otp{\mathop{\text{otp}}}
+\def\partstar{\mathchoice{\partial\hbox{*}}
+     {\partial\hbox{*}}
+     {\partial\hbox{\sevenrm *}}
+     {\partial\hbox{\fiverm *}}}
+\def\per{\mathop{\text{per}}}
+\def\Pfint{\mathchoice{\hbox to 0pt{\hskip 3.1pt Pf\hss}}
+     {\raise 0.6pt\hbox to 0pt{\hskip 1.3pt{\sevenrm Pf}\hss}}
+     {\raise 0.4pt\hbox to 0pt{\hskip 1.0pt{\fiverm Pf}\hss}}
+     {\raise 0.4pt\hbox to 0pt{\hskip 1.0pt{\fiverm Pf}\hss}}
+     \intop\nolimits
+     \mathchoice{\hskip 2pt}{\hskip 1.2pt}{\hskip 1pt}{\hskip 1pt}}
+\def\Pou{\mathop{\text{Pou}}\nolimits}
+\def\prforc{\preccurlyeq_{\text{forcing}}}
+\def\prGT{\preccurlyeq_{\text{GT}}}
+\def\prT{\preccurlyeq_{\text{T}}}
+\def\pssqa{power set $\sigma$-quotient algebra}
+\def\qm{quasi-{\vthsp}measurable}
+\def\Reverse#1{\setover
+   {\lower0.4ex\hbox{$\scriptscriptstyle\leftrightarrow$}}{#1}}
+\def\rhoKR{\rho_{\text{KR}}} 
+\def\rhotv{\rho_{\text{tv}}} 
+\def\Rint{\mathchoice{\hbox to 0pt{\hskip 3.1pt R\hss}}
+     {\raise 0.6pt\hbox to 0pt{\hskip 1.9pt{\sevenrm R}\hss}}
+     {\raise 0.4pt\hbox to 0pt{\hskip 1.5pt{\fiverm R}\hss}}
+     {\raise 0.4pt\hbox to 0pt{\hskip 1.5pt{\fiverm R}\hss}}
+     \intop\nolimits}
+\def\RO{\text{RO}}
+\def\rti{right-{\vthsp}translation-{\vthsp}invariant}
+\def\rvm{real-{\vthsp}valued-{\vthsp}measurable}
+\def\sat{\mathop{\text{sat}}}
+\def\sfamilysS#1{\family{\sigma}{\Cal S}{#1_{\sigma}}}
+\def\sfcc{$\sigma$-finite-cc}
+\def\sgn{\mathop{\text{sgn}}}
+\def\shr{\mathop{\text{shr}}\nolimits}
+\def\spread{\mathop{\text{spr}}}
+\def\ssplrarrow{^{\scriptscriptstyle\leftrightarrow}}
+\def\ssptilde{{\raise1.2ex\hbox{$\scriptscriptstyle\sim$}}}
+%\def\sspvec{{\raise1.2ex\hbox{$\scriptscriptstyle\rightarrow$}}}
+\def\sspvec{\mskip3mu\vec{\null}\mskip5mu}
+\def\Sti{\mathop{\text{Sti}}}
+\def\strprime{\,\pmb{\prime}}
+\def\supp{\mathop{\text{supp}}}
+\def\tensorhat{\widehat{\otimes}}
+\def\Tensorhat{\widehat{\bigotimes}}
+\def\tensorhatsigma{\widehat{\otimes}_{\sigma}}
+\def\Tr{\mathop{\text{Tr}}}
+\def\trs{^{\top}\hskip-1pt}
+\def\triplepc#1#2#3{(#1,#2,\hbox{$<$}#3)}
+\def\undphi{\underline{\phi}{}}
+\def\undpsi{\underline{\psi}{}}
+\def\undtheta{\underline{\theta}{}}
+\def\updownarrows{\uparrow\mskip-4mu\downarrow}
+\def\upr{\mathop{\text{upr}}\nolimits}
+\def\ureg{\mathop{\text{ureg}}}
+
+\def\Var{\mathop{\text{Var}}\nolimits}
+
+\def\varaction{\mathchoice{\lower-.2ex\hbox{$\smallcirc$}}
+                       {\lower-.2ex\hbox{$\smallcirc$}}
+                       {\ssbullet}
+                       {\ssbullet}}
+\def\varcheck#1{{\setover
+       {\lower 0.4ex\hbox{$\scriptscriptstyle\vee$}}{#1}}}
+\def\varcheckf{{\setover{\,\lower 0.4ex
+              \hbox{$\scriptscriptstyle\vee$}}{f}}}
+\def\varchecki{\mskip-3mu\text{\it{\accent"14{\hbox{\hskip-3.5pt\i}}}}\mskip2mu}
+\def\varspcheck{^{\scriptscriptstyle\vee}}
+%\def\varspcheck{{\setover{\scriptscriptstyle\vee}{\phantom{g}}}}
+%\def\varspcheckf{{\setover{\lower 0.4ex
+%              \hbox{$\scriptscriptstyle\vee$}}{\phantom{f}}}}
+\def\varhat#1{{\setover{\lower 0.4ex
+              \hbox{$\scriptscriptstyle\wedge$}}{#1}}}
+\def\varhatf{{\setover{\,\lower 0.4ex
+              \hbox{$\scriptscriptstyle\wedge$}}{f}}}
+\def\varinnerprod#1#2{#1\dotproduct#2}
+\def\varsphat{^{\scriptscriptstyle\wedge}}
+%\def\varsphat{{\setover{\scriptscriptstyle\wedge}{\phantom{g}}}}
+%\def\varsphatf{{\setover{\lower 0.4ex
+%              \hbox{$\scriptscriptstyle\wedge$}}{\phantom{f}}}}
+\def\var2spcheck{\mathchoice
+  {\hskip-2pt
+  {\fourteenrm\hbox{\lower2pt\hbox{\v{\null}}}}\hskip-1pt}
+  {\hskip-2pt
+  {\fourteenrm\hbox{\lower2pt\hbox{\v{\null}}}}\hskip-1pt}
+  {\hskip-2.5pt
+  {\fourteenrm\hbox{\lower4pt\hbox{\v{\null}}}}\hskip-1pt}
+  {\hskip-2.5pt
+  {\fourteenrm\hbox{\lower4pt\hbox{\v{\null}}}}\hskip-1pt}}
+\def\VeqL{$V\hbox{$=$}L$}
+\def\VVdash{\mskip5mu\vrule height 7.5pt depth 2.5pt width 0.5pt
+  \mskip2.5mu\vrule height 7.5pt depth 2.5pt width 0.5pt
+  \vrule height 2.75pt depth -2.25pt width 4pt\mskip2mu}
+\def\VVdP{\VVdash_{\Bbb P}}
+\def\wdistr{\mathop{\text{wdistr}}}
+\def\weight{\mathop{\text{wt}}}
+\def\w1lim{\mathop{\text{w1lim}}}
+\def\wsid{weakly $(\sigma,\infty)$-{\vthsp}distributive}
+\def\1lim{\mathop{\text{1lim}}}
+\def\2vm{two-{\vthsp}valued-{\vthsp}measurable}
+
+%Cara\-th\'e\-o\-dory
+
+\def\chaptername{}
+\def\sectionname{}
+\def\headlinesectionname{}
+
+\loadeusm\loadeurm
+\Loadfourteens
+
+%note:  $..\cmmnt{=..}..$  is better as  \cmmnt{\mskip5mu

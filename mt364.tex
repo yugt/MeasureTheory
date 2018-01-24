@@ -1,0 +1,2494 @@
+\frfilename{mt364.tex}
+\versiondate{16.7.11}
+\copyrightdate{1996}
+
+\def\chaptername{Function spaces}
+\def\sectionname{$L^0$}
+
+\def\dottimes{\mskip5mu\dot\times\mskip5mu}
+\def\frdotplus{\mskip5mu\dot+\mskip5mu}
+\def\smalldashint{\vrule height2.6pt width4.3pt depth-2.4pt
+  \mskip-8.5mu\smallint}
+
+\newsection{364}
+
+My next objective is to develop an abstract construction corresponding
+to the $L^0(\mu)$ spaces of \S241.   These generalized $L^0$ spaces
+will form the basis of the work of the rest of this chapter and also the
+next;  partly because their own properties are remarkable, but even
+more because they form a framework for the study of Archimedean Riesz
+spaces in general (see \S368).   There seem to be significant new
+difficulties, and I take the space to describe an approach which
+can be made essentially independent of the route through Stone spaces
+used in the last three sections\cmmnt{ (364Ya)}.   
+I embark directly on a definition in
+the new language (364A), and relate it to the constructions of \S241
+(364B-364D, 364I) and \S\S361-363 (364J).   The ideas of Chapter 27 can
+also be expressed in this language;  I make a start on developing the
+machinery for this in 364F, with the formula `$\Bvalue{u\in E}$',
+`the region in which $u$ belongs to $E$', and some exercises
+(364Xd-364Xf).    Following through
+the questions addressed in \S363, I discuss Dedekind completeness in
+$L^0$ (364L-364M), properties of its multiplication (364N), the
+expression of the original algebra in terms of $L^0$ (364O), the action
+of Boolean homomorphisms on $L^0$ (364P) and product spaces (364R).   In
+364S-364V I describe representations of the $L^0$ space of a regular
+open algebra.
+
+\leader{364A}{The set $L^0(\frak A)$ }{\bf (a) Definition}
+Let $\frak A$ be a Dedekind
+$\sigma$-complete Boolean algebra.   I will write $L^0(\frak A)$ for the
+set of all functions $\alpha\mapsto\Bvalue{u>\alpha}:\Bbb R\to\frak A$
+such that
+
+\inset{($\alpha$) $\Bvalue{u>\alpha}=\sup_{\beta>\alpha}\Bvalue{u>\beta}$
+in $\frak A$ for every $\alpha\in\Bbb R$,
+
+($\beta$) $\inf_{\alpha\in\Bbb R}\Bvalue{u>\alpha}=0$,
+
+($\gamma$) $\sup_{\alpha\in\Bbb R}\Bvalue{u>\alpha}=1$.}
+
+\cmmnt{
+\spheader 364Ab\dvAformerly{3{}64B} My reasons for using the notation
+`$\Bvalue{u>\alpha}$' rather than `$u(\alpha)$' will I hope become
+clear in the next few paragraphs.   For the moment, if you think of
+$\frak A$ as a $\sigma$-algebra of sets and of $L^0(\frak A)$ as the
+family of $\frak A$-measurable real-valued functions, then
+$\Bvalue{u>\alpha}$ corresponds to the set $\{x:u(x)>\alpha\}$ (364Ia).
+
+\spheader 364Ac Some readers will recognise the formula
+`$\Bvalue{\ldots}$' as belonging to the language of forcing, so that
+$\Bvalue{u>\alpha}$ could be read as `the Boolean value of the
+proposition ``$u>\alpha${''}'.   But a vocalisation closer to my
+intention might be `the region where $u>\alpha$'.
+
+\spheader 364Ad Note that condition ($\alpha$) of (a) automatically
+ensures that $\Bvalue{u>\alpha}\Bsubseteq\Bvalue{u>\alpha'}$ whenever
+$\alpha'\le\alpha$ in $\Bbb R$.
+}
+
+\spheader 364Ae In fact it will sometimes be convenient to note that the
+conditions of (a) can be replaced by
+
+\inset{($\alpha'$) $\Bvalue{u>\alpha}
+=\sup_{q\in\Bbb Q,q>\alpha}\Bvalue{u>q}$ for every
+$\alpha\in\Bbb R$,
+
+($\beta'$) $\inf_{n\in\Bbb N}\Bvalue{u>n}=0$,
+
+($\gamma'$) $\sup_{n\in\Bbb N}\Bvalue{u>-n}=1$;}
+
+\noindent the point being that we need look only at suprema and infima
+of countable subsets of $\frak A$.
+
+%\def\spheader#1#2#3#4#5{\header{#1#2#3#4#5}{\bf (#5)}}
+\header{364Af}{\bf *(f)}\dvAnew{2008}
+Indeed, \cmmnt{because the function
+$\alpha\mapsto\Bvalue{u>\alpha}$ is determined by its values on $\Bbb Q$,}
+we have the option of declaring $L^0(\frak A)$ to be the set of functions
+$\alpha\mapsto\Bvalue{u>\alpha}:\Bbb Q\to\frak A$ such that
+
+\inset{($\alpha''$) $\Bvalue{u>q}
+=\sup_{q'\in\Bbb Q,q'>q}\Bvalue{u>q'}$ for every
+$q\in\Bbb Q$,
+
+($\beta'$) $\inf_{n\in\Bbb N}\Bvalue{u>n}=0$,
+
+($\gamma'$) $\sup_{n\in\Bbb N}\Bvalue{u>-n}=1$.}
+
+\cmmnt{\noindent However I shall hold this in reserve until I come to
+forcing constructions in Chapter 55 of Volume 5.}
+
+\cmmnt{
+\spheader 364Ag In order to integrate this construction into the framework
+of the rest of this book, I
+match it with an alternative route to the same object, based on
+$\sigma$-algebras and $\sigma$-ideals of sets, as follows.
+}%end of comment
+
+\leader{364B}{Proposition}\dvAformerly{3{}64C} 
+Let $X$ be a set, $\Sigma$ a
+$\sigma$-algebra of subsets of $X$, and $\Cal I$ a $\sigma$-ideal of
+$\Sigma$.
+
+(a) Write $\eusm L^0=\eusm L^0_{\Sigma}$ for the space of all
+$\Sigma$-measurable functions from $X$ to $\Bbb R$.   Then
+$\eusm L^0$, with its linear structure, ordering and multiplication
+inherited from $\Bbb R^X$, is a Dedekind
+$\sigma$-complete $f$-algebra with multiplicative identity.
+
+(b) Set
+
+\Centerline{$\eusm W=\eusm W_{\Cal I}
+=\{f:f\in\eusm L^0,\,\{x:f(x)\ne 0\}\in\Cal I\}$.}
+
+\noindent Then
+
+\quad (i) $\eusm W$ is a sequentially order-closed solid linear subspace
+and ideal of $\eusm L^0$;
+
+\quad (ii) the quotient space $\eusm L^0/\eusm W$, with its inherited
+linear, order and multiplicative structures, is a Dedekind
+$\sigma$-complete Riesz space and an $f$-algebra with a multiplicative
+identity;
+
+\quad (iii) for $f$, $g\in\eusm L^0$,
+$f^{\ssbullet}\le g^{\ssbullet}$ in $\eusm L^0/\eusm W$ iff
+$\{x:f(x)>g(x)\}\in\Cal I$,
+and $f^{\ssbullet}=g^{\ssbullet}$ in $\eusm L^0/\eusm W$ iff
+$\{x:f(x)\ne g(x)\}\in\Cal I$.
+
+\proof{ (Compare 241A-241H.)  %241A 241B 241C 241D 241E 241H
+
+\medskip
+
+{\bf (a)} The point is just that $\eusm L^0$ is a sequentially
+order-closed Riesz subspace and subalgebra of $\Bbb R^X$.   The facts we
+need to know -- that constant functions belong to $\eusm L^0$, that
+$f+g$, $\alpha f$, $f\times g$,
+$\sup_{n\in\Bbb N}f_n$ belong to $\eusm L^0$ whenever $f$, $g$, $f_n$ do
+and $\{f_n:n\in\Bbb N\}$ is bounded above -- are all covered by
+121E-121F.
+Its multiplicative identity is of course the constant function $\chi X$.
+
+\medskip
+
+{\bf (b)(i)} The necessary verifications are all elementary.
+
+\medskip
+
+\quad{\bf (ii)} Because $\eusm W$ is a solid linear subspace of the
+Riesz space $\eusm L^0$, the quotient inherits a Riesz space structure
+(351J, 352Jb);  because $\eusm W$ is an ideal of the ring
+$(\eusm L^0,+,\times)$, $\eusm L^0/\eusm W$
+inherits a multiplication;  it is a commutative algebra because
+$\eusm L^0$ is;  and has a multiplicative identity
+$e=\chi X^{\ssbullet}$ because $\chi X$ is the identity of $\eusm L^0$.
+
+To check that $\eusm L^0/\eusm W$ is an $f$-algebra it is enough to
+observe that, for any non-negative $f$, $g$ , $h\in\eusm L^0$,
+
+\Centerline{$f^{\ssbullet}\times g^{\ssbullet}
+=(f\times g)^{\ssbullet}\ge 0$,}
+
+\noindent and if $f^{\ssbullet}\wedge g^{\ssbullet}=0$ then
+$\{x:f(x)>0\}\cap\{x:g(x)>0\}\in\Cal I$, so that
+$\{x:f(x)h(x)>0\}\cap\{x:g(x)>0\}\in\Cal I$ and
+
+\Centerline{$(f^{\ssbullet}\times h^{\ssbullet})\wedge g^{\ssbullet}
+=(h^{\ssbullet}\times f^{\ssbullet})\wedge g^{\ssbullet}=0$.}
+
+\noindent Finally, $\eusm L^0/\eusm W$ is
+Dedekind $\sigma$-complete, by 353J(a-iii).
+
+\medskip
+
+\quad{\bf (iii)}
+For $f$, $g\in\eusm L^0$,
+
+\Centerline{$f^{\ssbullet}\le g^{\ssbullet}
+\iff (f-g)^+\in\eusm W
+\iff\{x:f(x)>g(x)\}=\{x:(f-g)^+(x)\ne 0\}\in\Cal I$}
+
+\noindent (using the fact that the canonical map from $\eusm L^0$ to
+$\eusm L^0/\eusm W$ is a Riesz homomorphism, so that
+$((f-g)^+)^{\ssbullet}=(f^{\ssbullet}-g^{\ssbullet})^+$).   Similarly
+
+\Centerline{$f^{\ssbullet}=g^{\ssbullet}
+\iff f-g\in\eusm W
+\iff\{x:f(x)\ne g(x)\}=\{x:(f-g)(x)\ne 0\}\in\Cal I$.}
+}%end of proof of 364B
+
+\vleader{108pt}{364C}{\bf Theorem}\dvAformerly{3{}64D}
+Let $X$ be a set and $\Sigma$ a
+$\sigma$-algebra of subsets of $X$.   Let $\frak A$ be a Dedekind
+$\sigma$-complete Boolean algebra and $\pi:\Sigma\to\frak A$ a
+surjective Boolean homomorphism, with kernel a $\sigma$-ideal $\Cal I$;
+define $\eusm L^0=\eusm L^0_{\Sigma}$ and $\eusm W=\eusm W_{\Cal I}$
+as in 364B, so that
+$U=\eusm L^0/\eusm W$ is a Dedekind $\sigma$-complete $f$-algebra with multiplicative
+identity.
+
+(a) We have a canonical bijection  $T:U\to L^0=L^0(\frak A)$ defined by
+the formula
+
+\Centerline{$\Bvalue{Tf^{\ssbullet}>\alpha}=\pi\{x:f(x)>\alpha\}$}
+
+\noindent for every $f\in\eusm L^0$ and $\alpha\in\Bbb R$.
+
+(b)(i) For any $u$, $v\in U$,
+
+\Centerline{$\Bvalue{T(u+v)>\alpha}
+=\sup_{q\in\Bbb Q}\Bvalue{Tu>q}\Bcap\Bvalue{Tv>\alpha-q}$}
+
+\noindent for every $\alpha\in\Bbb R$.
+
+\quad(ii) For any $u\in U$ and $\gamma>0$,
+
+\Centerline{$\Bvalue{T(\gamma
+u)>\alpha}=\Bvalue{Tu>\bover{\alpha}{\gamma}}$}
+
+\noindent for every $\alpha\in\Bbb R$.
+
+\quad(iii) For any $u$, $v\in U$,
+
+\Centerline{$u\le v\iff\Bvalue{Tu>\alpha}\Bsubseteq\Bvalue{Tv>\alpha}$
+for
+every $\alpha\in\Bbb R$.}
+
+\quad(iv) For any $u$, $v\in U^+$,
+
+\Centerline{$\Bvalue{T(u\times v)>\alpha}
+=\sup_{q\in\Bbb Q,q>0}\Bvalue{Tu>q}\Bcap\Bvalue{Tv>\bover{\alpha}q}$}
+
+\noindent for every $\alpha\ge 0$.
+
+\quad(v) Writing $e=(\chi X)^{\ssbullet}$ for the multiplicative
+identity of $U$, we have
+
+\Centerline{$\Bvalue{Te>\alpha}=1$ if $\alpha<1$, $0$ if $\alpha\ge 1$.}
+
+\proof{{\bf (a)(i)} Given $f\in \eusm L^0$, set
+$\zeta_f(\alpha)=\pi\{x:f(x)>\alpha\}$ for $\alpha\in\Bbb R$.   Then it
+is easy to see that $\zeta_f$ satisfies the conditions
+($\alpha$)$'$-($\gamma$)$'$ of 364Ae, because $\pi$ is sequentially
+order-continuous (313Qb).    Moreover, if $f^{\ssbullet}=g^{\ssbullet}$
+in $U$, then
+
+\Centerline{$\zeta_f(\alpha)\Bsymmdiff \zeta_g(\alpha)
+=\pi(\{x:f(x)>\alpha\}\symmdiff\{x:g(x)>\alpha\})
+=0$}
+
+\noindent for every $\alpha\in\Bbb R$, because
+
+\Centerline{$\{x:f(x)>\alpha\}\symmdiff\{x:g(x)>\alpha\}
+\subseteq\{x:f(x)\ne g(x)\}\in\Cal I$,}
+
+\noindent and $\zeta_f=\zeta_g$.   So we have a well-defined member $Tu$
+of $L^0$ defined by the given formula, for any $u\in U$.
+
+\medskip
+
+\quad{\bf (ii)} Next, given $w\in L^0$, there is a $u\in \eusm L^0/\eusm
+W$ such that $Tu=w$.   \Prf\
+For each $q\in\Bbb Q$, choose $F_q\in\Sigma$ such
+that $\pi F_q=\Bvalue{w>q}$ in $\frak A$.    Note that if $q'\ge q$ then
+
+\Centerline{$\pi(F_{q'}\setminus
+F_q)=\Bvalue{u>q'}\Bsetminus\Bvalue{u>q}=0$,}
+
+
+\noindent so $F_{q'}\setminus F_q\in\Cal I$.   Set
+
+\Centerline{$H=\bigcup_{q\in\Bbb Q}F_q\setminus\bigcap_{n\in\Bbb
+N}\bigcup_{q\in\Bbb Q,q\ge n}F_q\in\Sigma$,}
+
+\noindent and for $x\in X$ set
+
+$$\eqalign{f(x)&=\sup\{q:q\in\Bbb Q,\,x\in F_q\}\text{ if }x\in H,\cr
+&=0\text{ otherwise.}\cr}$$
+
+\noindent ($H$ is chosen just to make the formula here give a finite
+value for every $x$.)   We have
+
+$$\eqalignno{\pi H
+&=\sup_{q\in\Bbb Q}\Bvalue{w>q}\Bsetminus\inf_{n\in\Bbb N}\sup_{q\in\Bbb
+Q,q\ge n}\Bvalue{w>q}\cr
+&=1_{\frak A}\Bsetminus\inf_{n\in\Bbb
+N}\Bvalue{w>n}
+=1_{\frak A}\Bsetminus 0_{\frak A}
+=1_{\frak A},\cr}$$
+
+\noindent so $X\setminus H\in\Cal I$.
+Now, for any $\alpha\in\Bbb R$,
+
+$$\eqalign{\{x:f(x)>\alpha\}
+&=\bigcup_{q\in\Bbb Q,q>\alpha}F_q\cup(X\setminus H)
+  \text{ if }\alpha<0,\cr
+&=\bigcup_{q\in\Bbb Q,q>\alpha}F_q\setminus(X\setminus H)
+\text{ if }\alpha\ge 0,\cr}$$
+
+\noindent and in either case belongs to $\Sigma$;  so that $f\in\eusm
+L^0$ and $f^{\ssbullet}$ is defined in $L^0$.
+Next, for any $\alpha\in\Bbb R$,
+
+$$\eqalign{\Bvalue{Tf^{\ssbullet}>\alpha}
+&=\pi\{x:f(x)>\alpha\}
+=\pi(\bigcup_{q\in\Bbb Q,q>\alpha}F_q)\cr
+&=\sup_{q\in\Bbb Q,q>\alpha}\Bvalue{w>q}
+=\Bvalue{w>\alpha},\cr}$$
+
+\noindent and $Tf^{\ssbullet}=w$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} Thus $T$ is surjective.   To see that it is injective,
+observe that if $f$, $g\in\eusm L^0$, then
+
+$$\eqalign{Tf^{\ssbullet}=Tg^{\ssbullet}
+&\Longrightarrow\Bvalue{Tf^{\ssbullet}>\alpha}
+  =\Bvalue{Tg^{\ssbullet}>\alpha}
+   \text{ for every }\alpha\in\Bbb R\cr
+&\Longrightarrow\pi\{x:f(x)>\alpha\}=\pi\{x:g(x)>\alpha\}
+   \text{ for every }\alpha\in\Bbb R\cr
+&\Longrightarrow\{x:f(x)>\alpha\}\symmdiff\{x:g(x)>\alpha\}\in\Cal I
+   \text{ for every }\alpha\in\Bbb R\cr
+&\Longrightarrow\{x:f(x)\ne g(x)\}
+   =\bigcup_{q\in\Bbb Q}(\{x:f(x)>q\}\symmdiff\{x:g(x)>q\})\in\Cal I\cr
+&\Longrightarrow f^{\ssbullet}=g^{\ssbullet}.\cr}$$
+
+\noindent So we have the claimed bijection.
+
+\medskip
+
+{\bf (b)(i)} Let $f$, $g\in\eusm L^0$ be such that $u=f^{\ssbullet}$ and
+$v=g^{\ssbullet}$, so that $u+v=(f+g)^{\ssbullet}$.
+For any $\alpha\in\Bbb R$,
+
+$$\eqalignno{\Bvalue{T(u+v)>\alpha}
+&=\pi\{x:f(x)+g(x)>\alpha\}\cr
+&=\pi(\bigcup_{q\in\Bbb Q}\{x:f(x)>q\}\cap\{x:g(x)>\alpha-q\})\cr
+&=\sup_{q\in\Bbb Q}\pi\{x:f(x)>q\}\Bcap\pi\{x:g(x)>\alpha-q\}\cr
+\noalign{\noindent (because $\pi$ is a sequentially order-continuous
+Boolean homomorphism)}
+&=\sup_{q\in\Bbb Q}\Bvalue{Tu>q}\Bcap\Bvalue{Tv>\alpha-q}.\cr}$$
+
+\medskip
+
+\quad{\bf (ii)} Let $f\in\eusm L^0$ be such that $f^{\ssbullet}=u$, so
+that $(\gamma f)^{\ssbullet}=\gamma u$.   For any $\alpha\in\Bbb R$,
+
+\Centerline{$\Bvalue{T(\gamma u)>\alpha}
+=\pi\{x:\gamma f(x)>\alpha\}
+=\pi\{x:f(x)>\Bover{\alpha}{\gamma}\}
+=\Bvalue{Tu>\bover{\alpha}{\gamma}}$.}
+
+\medskip
+
+\quad{\bf (iii)} Let $f$, $g\in\eusm L^0$ be such that $f^{\ssbullet}=u$
+and $g^{\ssbullet}=v$.   Then
+
+$$\eqalignno{u\le v
+&\iff\{x:f(x)>g(x)\}\in\Cal I\cr
+\noalign{\noindent (see 364B(b-iii))}
+&\iff\bigcup_{q\in\Bbb Q}\{x:f(x)>q\ge g(x)\}\in\Cal I\cr
+&\iff \{x:f(x)>\alpha\}\setminus\{x:g(x)>\alpha\}\in\Cal I
+   \text{ for every }\alpha\in\Bbb R\cr
+&\iff \pi\{x:f(x)>\alpha\}\Bsetminus\pi\{x:g(x)>\alpha\}=0
+   \text{ for every }\alpha\cr
+&\iff \Bvalue{Tu>\alpha}\Bsubseteq\Bvalue{Tv>\alpha}
+   \text{ for every }\alpha.\cr}$$
+
+\medskip
+
+\quad {\bf (iv)} Now suppose that $u$, $v\ge 0$, so that they can be
+expressed as $f^{\ssbullet}$, $g^{\ssbullet}$ where $f$, $g\ge 0$ in
+$\eusm L^0$ (351J), and $u\times v=(f\times g)^{\ssbullet}$.   If
+$\alpha\ge0$, then
+
+$$\eqalign{\Bvalue{T(u\times v)>\alpha}
+&=\pi(\bigcup_{q\in\Bbb Q,q>0}
+   \{x:f(x)>q\}\cap\{x:g(x)>\Bover{\alpha}q\})\cr
+&=\sup_{q\in\Bbb Q,q>0}
+   \pi\{x:f(x)>q\}\Bcap\pi\{x:g(x)>\Bover{\alpha}q\}\cr
+&=\sup_{q\in\Bbb Q,q>0}
+   \Bvalue{Tu>q}\Bcap\Bvalue{Tv>\bover{\alpha}q}.\cr}$$
+
+\medskip
+
+\quad{\bf (v)} This is trivial, because
+
+$$\eqalign{\Bvalue{T(\chi X)^{\ssbullet}>\alpha}
+&=\pi\{x:(\chi X)(x)>\alpha\}\cr
+&=\pi X=1\text{ if }\alpha<1,\cr
+&=\pi\emptyset=0\text{ if }\alpha\ge 1.\cr}$$
+}%end of proof of 364C
+
+\leader{364D}{Theorem}\dvAformerly{3{}64E}
+Let $\frak A$ be a Dedekind $\sigma$-complete
+Boolean algebra.   Then $L^0=L^0(\frak A)$ has the structure of a
+Dedekind $\sigma$-complete $f$-algebra with multiplicative identity $e$,
+defined by saying
+
+\Centerline{$\Bvalue{u+v>\alpha}
+=\sup_{q\in\Bbb Q}\Bvalue{u>q}\Bcap\Bvalue{v>\alpha-q}$,}
+
+\noindent whenever $u$, $v\in L^0$ and $\alpha\in\Bbb R$,
+
+\Centerline{$\Bvalue{\gamma
+u>\alpha}=\Bvalue{u>\bover{\alpha}{\gamma}}$}
+
+\noindent whenever $u\in L^0$, $\gamma\in\ooint{0,\infty}$ and
+$\alpha\in\Bbb R$,
+
+\Centerline{$u\le v\iff\Bvalue{u>\alpha}\Bsubseteq\Bvalue{v>\alpha}$ for
+every $\alpha\in\Bbb R$,}
+
+\Centerline{$\Bvalue{u\times v>\alpha}
+=\sup_{q\in\Bbb Q,q>0}\Bvalue{u>q}\Bcap\Bvalue{v>\bover{\alpha}q}$}
+
+\noindent whenever $u$, $v\ge 0$ in $L^0$ and $\alpha\ge 0$,
+
+\Centerline{$\Bvalue{e>\alpha}=1$ if $\alpha<1$, $0$ if $\alpha\ge 1$.}
+
+\proof{{\bf (a)} By the Loomis-Sikorski theorem (314M), we can find a
+set $Z$ (the Stone space of $\frak A$), a
+$\sigma$-algebra $\Sigma$ of subsets of $Z$ (the algebra generated by
+the open-and-closed sets and the ideal $\Cal M$ of meager sets) and a
+surjective sequentially order-continuous Boolean homomorphism
+$\pi:\Sigma\to\frak A$ (corresponding to the identification between
+$\frak A$ and the quotient $\Sigma/\Cal M$).   Consequently, defining
+$\eusm L^0=\eusm L^0_{\Sigma}$ and $\eusm W=\eusm W_{\Cal M}$
+as in 364B, we have a bijection between the
+Dedekind $\sigma$-complete $f$-algebra $\eusm L^0/\eusm W$ and $L^0$
+(364Ca).   Of course this endows $L^0$ itself with the structure of a
+Dedekind $\sigma$-complete $f$-algebra;  and 364Cb tells us that the
+description of the algebraic operations above is consistent with this
+structure.
+
+\medskip
+
+{\bf (b)} In fact the $f$-algebra structure is completely defined by
+the description offered.   For while scalar multiplication is not
+described for $\gamma\le 0$, the assertion that $L^0$ is a Riesz space
+implies that $0u=0$ and that $\gamma u=(-\gamma)(-u)$ for $\gamma<0$;
+so if we have formulae to describe $u+v$ and $\gamma u$ for $\gamma>0$,
+this suffices to define the linear structure of $L^0$.   Note that we
+have an element $\underline{0}$ in $L^0$ defined by setting
+
+\Centerline{$\Bvalue{\underline{0}>\alpha}=0$ if $\alpha\ge 0$, $1$ if
+$\alpha<0$,}
+
+\noindent and the formula for $u+v$ shows us that
+
+\Centerline{$\Bvalue{\underline{0}+u>\alpha}
+=\sup_{q\in\Bbb Q}\Bvalue{\underline{0}>q}\Bcap\Bvalue{u>\alpha-q}
+=\sup_{q\in\Bbb Q,q<0}\Bvalue{u>\alpha-q}
+=\Bvalue{u>\alpha}$}
+
+\noindent for every $\alpha$, so that $\underline{0}$ is the zero of
+$L^0$.   As for multiplication, if $L^0$ is to be an $f$-algebra we
+must have
+
+\Centerline{$\Bvalue{u\times v>\alpha}
+\Bsupseteq\Bvalue{\underline{0}>\alpha}=1$}
+
+\noindent whenever $u$, $v\in(L^0)^+$ and $\alpha<0$, because
+$u\times v\ge\underline{0}$.   So the formula offered is sufficient to
+determine $u\times v$ for non-negative $u$ and $v$;  and for others we
+know that
+
+\Centerline{$u\times v=(u^+\times v^+)-(u^+\times v^-)
+-(u^-\times v^+)+(u^-\times v^-)$,}
+
+\noindent so the whole of the multiplication of $L^0$ is defined.
+}%end of proof of 364D
+
+\leader{364E}{}\cmmnt{ The rest of this section will be devoted to
+understanding the structure just established.   I start with a pair of
+elementary facts.
+
+\medskip
+
+\noindent}{\bf Lemma}\dvAformerly{3{}64F} 
+ Let $\frak A$ be a Dedekind $\sigma$-complete
+Boolean algebra.
+
+(a) If $u$, $v\in L^0=L^0(\frak A)$ and $\alpha$, $\beta\in\Bbb R$,
+
+\Centerline{$\Bvalue{u+v>\alpha+\beta}
+\Bsubseteq\Bvalue{u>\alpha}\Bcup\Bvalue{v>\beta}$.}
+
+(b) If $u$, $v\ge 0$ in $L^0$ and $\alpha$, $\beta\ge 0$ in $\Bbb R$,
+
+\Centerline{$\Bvalue{u\times v>\alpha\beta}
+\Bsubseteq\Bvalue{u>\alpha}\Bcup\Bvalue{v>\beta}$.}
+
+\proof{{\bf (a)} For any $q\in\Bbb Q$, either $q\ge\alpha$ and
+$\Bvalue{u>q}\Bsubseteq\Bvalue{u>\alpha}$, or $q\le\alpha$ and
+$\Bvalue{v>\alpha+\beta-q}$\vthsp$\Bsubseteq\Bvalue{v>\beta}$;  thus in
+all cases
+
+\Centerline{$\Bvalue{u>q}\Bcap\Bvalue{v>\alpha+\beta-q}
+\Bsubseteq\Bvalue{u>\alpha}\Bcup\Bvalue{v>\beta}$;}
+
+\noindent taking the supremum over $q$, we have the result.
+
+\medskip
+
+{\bf (b)} The same idea works, replacing $\alpha+\beta-q$ by
+$\alpha\beta/q$ for $q>0$.
+}%end of proof of 364E
+
+\leader{364F}{}\cmmnt{ Yet another description of $L^0$ is sometimes
+appropriate, and leads naturally to an important construction (364H).
+
+\medskip
+
+\noindent}{\bf Proposition}\dvAformerly{3{}64G}
+Let $\frak A$ be a Dedekind
+$\sigma$-complete Boolean algebra.   Then there is a bijection between
+$L^0=L^0(\frak A)$ and the set $\Phi$ of sequentially order-continuous
+Boolean homomorphisms from the algebra $\Cal B$ of Borel subsets of
+$\Bbb R$ to $\frak A$, defined by saying that $u\in L^0$ corresponds to
+$\phi\in\Phi$ iff $\Bvalue{u>\alpha}=\phi(\ooint{\alpha,\infty})$ for
+every $\alpha\in\Bbb R$.
+
+\proof{{\bf (a)} If $\phi\in\Phi$, then the map
+$\alpha\mapsto\phi(\ooint{\alpha,\infty})$ satisfies the conditions of
+364Ae, so corresponds to an element $u_{\phi}$ of $L^0$.
+
+\medskip
+
+{\bf (b)} If $\phi$, $\psi\in \Phi$ and $u_{\phi}=u_{\psi}$, then
+$\phi=\psi$.   \Prf\ Set $\Cal A=\{E:E\in\Cal B,\,\phi(E)=\psi(E)\}$.
+Then $\Cal A$ is a
+$\sigma$-subalgebra of $\Cal B$, because $\phi$ and $\psi$ are both
+sequentially order-continuous Boolean homomorphisms, and contains
+$\ooint{\alpha,\infty}$ for every $\alpha\in\Bbb R$.   Now $\Cal A$
+contains $\ocint{-\infty,\alpha}$ for every $\alpha$, and therefore
+includes $\Cal B$ (121J).   But this means that $\phi=\psi$.\ \Qed
+
+\medskip
+
+{\bf (c)} Thus $\phi\mapsto u_{\phi}$ is injective.   But it is also
+surjective.   \Prf\ As in 364D, take a set $Z$, a $\sigma$-algebra
+$\Sigma$ of subsets of $Z$ and a surjective sequentially
+order-continuous Boolean homomorphism $\pi:\Sigma\to\frak A$;  let
+$T:\eusm L^0_{\Sigma}/\eusm W_{\pi^{-1}[\{0\}]}\to L^0$
+be the bijection described in 364C.   If
+$u\in L^0$, there is an $f\in\eusm L^0_{\Sigma}$ such that
+$Tf^{\ssbullet}=u$.
+Now consider $\phi E=\pi f^{-1}[E]$ for $E\in\Cal B$.   $f^{-1}[E]$
+always belongs to $\Sigma$ (121Ef), so $\phi E$ is always
+well-defined;   $E\mapsto f^{-1}[E]$ and $\pi$ are sequentially
+order-continuous, so $\phi$ also is;  and
+
+\Centerline{$\phi(\ooint{\alpha,\infty})=\pi\{z:f(z)>\alpha\}
+=\Bvalue{u>\alpha}$}
+
+\noindent for every $\alpha$, so $u=u_{\phi}$.\ \Qed
+
+Thus we have the declared bijection.
+}%end of proof of 364F
+
+\leader{364G}{Definition}\dvAformerly{3{}64H} 
+In the context of 364F, I will write
+$\Bvalue{u\in E}$, `the region where $u$ takes values in $E$', for
+$\phi(E)$, where $\phi:\Cal B\to\frak A$ is the homomorphism
+corresponding to $u\in L^0$.   Thus
+$\Bvalue{u>\alpha}=\Bvalue{u\in\ooint{\alpha,\infty}\,}$.
+\cmmnt{In the same spirit} I write $\Bvalue{u\ge\alpha}$ for
+$\Bvalue{u\in\coint{\alpha,\infty}\,}
+=\inf_{\beta<\alpha}\Bvalue{u>\beta}$,
+$\Bvalue{u\ne 0}=\Bvalue{|u|>0}=\Bvalue{u>0}\Bcup\Bvalue{u<0}$
+and so on, so that\cmmnt{ (for instance)}
+$\Bvalue{u=\alpha}=\Bvalue{u\in\{\alpha\}}
+=\Bvalue{u\ge\alpha}\Bsetminus\Bvalue{u>\alpha}$ for $u\in L^0$ and
+$\alpha\in\Bbb R$.
+
+\leader{364H}{Proposition}\dvAformerly{3{}64I} 
+Let $\frak A$ be a Dedekind
+$\sigma$-complete Boolean algebra, $E\subseteq\Bbb R$ a Borel set, and
+$h:E\to\Bbb R$ a Borel measurable function.   Then whenever
+$u\in L^0=L^0(\frak A)$ is such that $\Bvalue{u\in E}=1$, there is an
+element $\bar h(u)$ of $L^0$ defined by saying that
+$\Bvalue{\bar h(u)\in F}=\Bvalue{u\in h^{-1}[F]}$ for every Borel set
+$F\subseteq\Bbb R$.
+
+\proof{ All we have to observe is that
+$F\mapsto \Bvalue{u\in h^{-1}[F]}$ is a sequentially order-continuous
+Boolean homomorphism.   (The condition `$\Bvalue{u\in E}=1$' ensures
+that $\Bvalue{u\in h^{-1}[\Bbb R]}=1$.)
+}%end of proof of 364H
+
+\leader{364I}{Examples}\dvAformerly{3{}64J} \cmmnt{Perhaps I should spell
+out the most
+important contexts in which we apply these ideas, even though they have
+in effect already been mentioned.
+
+\medskip
+
+}{\bf (a)} Let $X$ be a set and $\Sigma$ a $\sigma$-algebra of
+subsets of $X$.   Then we may identify $L^0(\Sigma)$ with the space
+$\eusm L^0=\eusm L^0_{\Sigma}$ of
+$\Sigma$-measurable real-valued functions on $X$.
+\cmmnt{(This is the case $\frak A=\Sigma$ of 364C.)}   For
+$f\in\eusm L^0$,
+$\Bvalue{f\in E}$\cmmnt{ (364G)} is just $f^{-1}[E]$, for any
+Borel set $E\subseteq\Bbb R$;  and if $h$ is a Borel measurable
+function, $\bar h(f)$\cmmnt{ (364H)} is just the composition $hf$, for
+any $f\in\eusm L^0$.
+
+\spheader 364Ib Now suppose that $\Cal I$ is a $\sigma$-ideal of
+$\Sigma$ and that $\frak A=\Sigma/\Cal I$.   Then, as in 364C, we
+identify $L^0(\frak A)$ with a quotient $\eusm L^0/\eusm W_{\Cal I}$.
+For
+$f\in\eusm L^0$, $\Bvalue{f^{\ssbullet}\in E}=f^{-1}[E]^{\ssbullet}$,
+and $\bar h(f^{\ssbullet})=(hf)^{\ssbullet}$, for any Borel set $E$ and
+any Borel measurable function $h:\Bbb R\to\Bbb R$.
+
+\spheader 364Ic In particular, if $(X,\Sigma,\mu)$ is a measure space
+with measure algebra $\frak A$, then $L^0(\frak A)$ becomes identified
+with $L^0(\mu)$ as defined in \S241.
+
+\cmmnt{The same remarks as in 363I apply here;  the space
+$\eusm L^0(\mu)$ of 241A is larger than the space
+$\eusm L^0=\eusm L^0_{\Sigma}$ considered here.
+But for every $f\in\eusm L^0(\mu)$ there is a
+$g\in\eusm L^0_{\Sigma}$ such that $g\eae f$ (241Bk), so that
+$L^0(\mu)\mskip2mu=\mskip2mu\eusm L^0(\mu)/\mskip-4mu\eae$
+can be identified with $\eusm L^0_{\Sigma}/\eusm N$, where $\eusm N$ is
+the set of functions in $\eusm L^0$ which are zero almost
+everywhere (241Yc).
+}
+
+\leader{364J}{Embedding $S$ and $L^{\infty}$ in $L^0$:
+Proposition}\dvAformerly{3{}64K} Let
+$\frak A$ be a Dedekind $\sigma$-complete Boolean algebra.
+
+(a) We have a canonical embedding of $L^{\infty}=L^{\infty}(\frak A)$ as
+an order-dense solid linear subspace of $L^0=L^0(\frak A)$;  it is the
+solid linear subspace generated by the multiplicative identity $e$ of
+$L^0$.   Consequently $S=S(\frak A)$ also is embedded as an order-dense
+Riesz subspace and subalgebra of $L^0$.
+
+(b) This embedding respects the linear, lattice and multiplicative
+structures of $L^{\infty}$ and $S$, and the definition of
+$\Bvalue{u>\delta}$, for $u\in S^+$ and $\delta\ge 0$, given in 361Eg.
+
+(c) For $a\in\frak A$, $\chi a$, when regarded as a member of $L^0$, can
+be described by the formula
+
+$$\eqalign{\Bvalue{\chi a>\alpha}
+&=1\text{ if }\alpha<0,\cr
+&=a\text{ if }0\le\alpha<1,\cr
+&=0\text{ if }1\le\alpha.\cr}$$
+
+\noindent The function $\chi:\frak A\to L^0$ is additive, injective,
+order-continuous and a lattice homomorphism.
+
+(d) For every $u\in (L^0)^+$ there is a non-decreasing sequence
+$\sequencen{u_n}$ in $S$ such that $u_0\ge 0$ and
+$\sup_{n\in\Bbb N}u_n=u$.
+
+\proof{ Let $Z$, $\Sigma$, $\Cal M$,
+$\eusm L^0=\eusm L^0_{\Sigma}$, $\eusm W=\eusm W_{\Cal M}$
+and $\pi$ be as in the
+proof of 364D.   I defined $L^{\infty}$
+to be the space $C(Z)$ of continuous real-valued functions on $Z$
+(363A);  but because $\frak A$ is Dedekind
+$\sigma$-complete, there is an alternative representation as
+$\eusm L^{\infty}/\eusm W\cap\eusm L^{\infty}$, where $\eusm L^{\infty}$
+is the space of bounded $\Sigma$-measurable functions from $Z$ to
+$\Bbb R$ (363Hb).   Put like this, we clearly have an embedding of
+$L^{\infty}\cong\eusm L^{\infty}/\eusm W\cap\eusm L^{\infty}$ in
+$L^0\cong\eusm L^0/\eusm W$;  and this embedding represents
+$L^{\infty}$ as a Riesz subspace and subalgebra of $L^0$, because
+$\eusm L^{\infty}$ is a Riesz subspace and subalgebra of $\eusm L^0$.
+$L^{\infty}$ becomes the solid linear subspace of $L^0$ generated by
+$(\chi Z)^{\ssbullet}=e$, because $\eusm L^{\infty}$ is the solid linear
+subspace of $\eusm L^0$ generated by $\chi Z$.   To see that
+$L^{\infty}$ is order-dense in $L^0$, we have only to note that
+$f=\sup_{n\in\Bbb N}f\wedge n\chi Z$ in $\eusm L^0$ for every
+$f\in\eusm L^0$, and therefore (because the
+map $f\mapsto f^{\ssbullet}$ is sequentially order-continuous)
+$u=\sup_{n\in\Bbb N}u\wedge ne$ in $L^0$ for every $u\in L^0$.
+
+To identify $\chi a$, we have the formula
+$\chi(\pi E)=(\chi E)^{\ssbullet}$, as in 363H(b-iii);  
+but this means that, if $a=\pi E$,
+
+$$\eqalign{\Bvalue{\chi a>\alpha}=\pi\{z:\chi E(z)>\alpha\}
+&=\pi Z=1\text{ if }\alpha<0,\cr
+&=\pi E=a\text{ if }0\le\alpha<1,\cr
+&=\pi\emptyset=0\text{ if }\alpha\ge 1,\cr}$$
+
+\noindent using the formula in 364Ca.   Evidently $\chi$ is injective.
+
+Because $S$ is an order-dense Riesz subspace and subalgebra of
+$L^{\infty}$ (363C), the same embedding represents it as an
+order-dense
+Riesz subspace and subalgebra of $L^0$.   (For `order-dense', use
+352N(c-iii).)   Concerning the formula $\Bvalue{u>\delta}$, suppose that
+$u\in S^+$ and $\delta\ge 0$;  express $u$ as
+$\sum_{j=0}^m\beta_j\chi b_j$, where
+$b_0,\ldots,b_m\in\frak A$ are disjoint and $\beta_j\ge 0$ for every $j$.
+Then we have disjoint sets $F_0,\ldots,F_m\in\Sigma$ such that
+$\pi F_j=b_j$ for every $j$, and $u$ is identified with
+$(\sum_{j=0}^m\beta_j\chi F_j)^{\ssbullet}$.   Using 364Ca, we have
+
+\Centerline{$\Bvalue{u>\delta}
+=\pi\{z:\sum_{j=0}^m\beta_j\chi F_j(z)>\delta\}
+=\pi(\bigcup\{F_j:\beta_j>\delta\})
+=\sup\{b_j:\beta_j>\delta\}$,}
+
+\noindent matching the expression in the proof of 361Eg.   So the new
+interpretation of $\Bvalue{\ldots}$ matches the former definition in the
+special case envisaged in 361E.
+
+Because $\chi:\frak A\to L^{\infty}$ is additive, order-continuous and a
+lattice homomorphism (363D), and the embedding map
+$L^{\infty}\embedsinto L^0$ also is, $\chi:\frak A\to L^0$ has the same
+properties.
+
+Finally, if $u\ge 0$ in $L^0$, we can represent it as $f^{\ssbullet}$
+where $f\ge 0$ in $\eusm L^0$.   For $n\in\Bbb N$ set
+
+$$\eqalign{f_n(z)
+&=2^{-n}k\text{ if }2^{-n}k\le f(z)<2^{-n}(k+1)
+   \text{ where }0\le k<4^n,\cr
+&=0\text{ if }f(z)\ge 2^n;\cr}$$
+
+\noindent then $\sequencen{f_n^{\ssbullet}}$ is a non-decreasing
+sequence in $S^+$ with supremum $u$.
+}%end of proof of 364J
+
+
+\leader{364K}{Corollary} Let $(\frak A,\bar\mu)$ be a measure algebra.
+Then $S(\frak A^f)$ can be embedded as a Riesz subspace of
+$L^0(\frak A)$, which is order-dense iff $(\frak A,\bar\mu)$ is
+semi-finite.
+
+\proof{ (Recall that $\frak A^f$ is the ring $\{a:\bar\mu a<\infty\}$.)
+The embedding $\frak A^f\embedsinto\frak A$ is an injective ring
+homomorphism, so induces an embedding of $S(\frak A^f)$ as a Riesz
+subspace of $S(\frak A)$, by 361J.   Now $S(\frak A^f)$ is order-dense
+in $S(\frak A)$ iff $(\frak A,\bar\mu)$ is semi-finite.   \Prf\ (i) If
+$(\frak A,\bar\mu)$ is semi-finite and $v>0$ in $S(\frak A)$, then $v$
+is expressible as $\sum_{j=0}^n\beta_j\chi b_j$ where $\beta_j\ge 0$ for
+each $j$ and some $\beta_j\chi b_j$ is non-zero;  now there is a
+non-zero $a\in\frak A^f$ such that $a\Bsubseteq b_j$, so that
+$0<\beta_j\chi a\in S(\frak A^f)$ and $\beta_j\chi a\le v$.   As $v$ is
+arbitrary, $S(\frak A^f)$ is quasi-order-dense, therefor order-dense
+(353A).  (ii) If $S(\frak A^f)$ is order-dense in $S(\frak A)$ and
+$b\in\frak A\setminus\{0\}$, there is a $u>0$ in $S(\frak A^f)$ such
+that $u\le\chi b$;  now there are $\alpha>0$,
+$a\in\frak A^f\setminus\{0\}$ such that
+$\alpha\chi a\le u$, in which case $a\Bsubseteq b$.\ \Qed
+
+Now because $S(\frak A^f)\subseteq S(\frak A)$ and $S(\frak A)$ is
+order-dense in $L^0(\frak A)$, we must have
+
+$$\eqalign{S(\frak A^f)\text{ is order-dense in }L^0(\frak A)
+&\iff S(\frak A^f)\text{ is order-dense in }S(\frak A)\cr
+&\iff (\frak A,\bar\mu)\text{ is semi-finite}.\cr}$$
+}%end of proof of 364K
+
+\leader{364L}{Suprema and infima in \dvrocolon{$L^0$}}\cmmnt{ We know
+that any $L^0(\frak A)$ is a Dedekind $\sigma$-complete partially
+ordered set.   There is a useful description of
+suprema for this ordering in (a) of the next result.
+We do not have such a simple formula for
+general infima (though see 364Xm), but facts in (b) are useful.
+
+\medskip
+
+\noindent}{\bf Proposition}\dvAformerly{3{}64M-3{}64N}
+Let $\frak A$ be a Dedekind $\sigma$-complete Boolean algebra, and
+$L^0=L^0(\frak A)$.
+
+(a) Let $A$ be a subset of $L^0$.
+
+\quad(i) $A$ is bounded above in $L^0$ iff there is a sequence
+$\sequencen{c_n}$ in $\frak A$, with infimum $0$, such that
+$\Bvalue{u>n}\Bsubseteq c_n$ for every $u\in A$.
+
+\quad(ii) If $A$ is non-empty, then $A$ has a supremum in $L^0$ iff
+$c_{\alpha}=\sup_{u\in A}\Bvalue{u>\alpha}$ is defined in $\frak A$ for
+every $\alpha\in\Bbb R$ and $\inf_{n\in\Bbb N}c_n=0$;  and in this case
+$c_{\alpha}=\Bvalue{\sup A>\alpha}$ for every $\alpha$.
+
+\quad(iii) If $A$ is non-empty and bounded above, then $A$ has a supremum in
+$L^0$ iff $\sup_{u\in A}\Bvalue{u>\alpha}$ is defined in $\frak A$ for
+every $\alpha\in\Bbb R$.
+
+(b)(i) If $u$, $v\in L^0$, then
+$\Bvalue{u\wedge v>\alpha}=\Bvalue{u>\alpha}\Bcap\Bvalue{v>\alpha}$ for
+every $\alpha\in\Bbb R$.
+
+\quad(ii) If $A$ is a non-empty subset of $(L^0)^+$,
+then $\inf A=0$ in $L^0$ iff $\inf_{u\in A}\Bvalue{u>\alpha}=0$ in
+$\frak A$ for every $\alpha>0$.
+
+\proof{{\bf (a)(i)}\grheada\ If $A$ has an upper bound $u_0$, set
+$c_n=\Bvalue{u_0>n}$ for each $n$;  then $\sequencen{c_n}$ satisfies the
+conditions.
+
+\medskip
+
+\quad\grheadb\ If $\sequencen{c_n}$ satisfies the conditions, set
+
+$$\eqalign{\phi(\alpha)&=1\text{ if }\alpha<0,\cr
+&=\inf_{i\le n}c_i\text{ if }n\in\Bbb N,\,\alpha\in\coint{n,n+1}.\cr}$$
+
+\noindent    Then it is easy to check that $\phi$ satisfies the
+conditions of 364Aa, since $\inf_{n\in\Bbb N}c_n=0$.   So there is a
+$u_0\in L^0$ such that $\phi(\alpha)=\Bvalue{u_0>\alpha}$ for each
+$\alpha$.   Now, given $u\in
+A$ and $\alpha\in\Bbb R$,
+
+$$\eqalign{\Bvalue{u>\alpha}&\Bsubseteq 1=\Bvalue{u_0>\alpha}
+\text{ if }\alpha<0,\cr
+&\Bsubseteq\inf_{i\le n}\Bvalue{u>i}\Bsubseteq\inf_{i\le n}c_i
+=\Bvalue{u_0>\alpha}\text{ if }n\in\Bbb N,\,
+\alpha\in\coint{n,n+1}.\cr}$$
+
+\noindent Thus $u_0$ is an upper bound for $A$ in $L^0$.
+
+\medskip
+
+\quad{\bf (ii)}\grheada\ Suppose that
+$c_{\alpha}=\sup_{u\in A}\Bvalue{u>\alpha}$ is
+defined in $\frak A$ for every $\alpha$, and
+that $\inf_{n\in\Bbb N}c_n=0$.   Then, for any $\alpha$,
+
+\Centerline{$\sup_{q\in\Bbb Q,q>\alpha}c_q
+=\sup_{u\in A,q\in\Bbb Q,q>\alpha}\Bvalue{u>q}
+=\sup_{u\in A}\Bvalue{u>\alpha}
+=c_{\alpha}$.}
+
+\noindent Also, we are supposing that $A$ contains some $u_0$, so that
+
+\Centerline{$\sup_{n\in\Bbb N}c_{-n}
+\Bsupseteq\sup_{n\in\Bbb N}\Bvalue{u_0>-n}
+=1$.}
+
+\noindent Accordingly there is a $u^*\in L^0$ such that
+$\Bvalue{u^*>\alpha}=c_{\alpha}$ for every $\alpha\in\Bbb R$.
+But now, for $v\in L^0$,
+
+$$\eqalign{v\text{ is an upper bound for }A
+&\iff\Bvalue{u>\alpha}\Bsubseteq\Bvalue{v>\alpha}
+\text{ for every }u\in A,\,\alpha\in\Bbb R\cr
+&\iff\Bvalue{u^*>\alpha}\Bsubseteq\Bvalue{v>\alpha}
+\text{ for every }\alpha\cr
+&\iff u^*\le v,\cr}$$
+
+\noindent so that $u^*=\sup A$ in $L^0$.
+
+\medskip
+
+\qquad\grheadb Now suppose that $u^*=\sup A$ is defined in $L^0$.   Of
+course $\Bvalue{u^*>\alpha}$ must be an upper bound for
+$\{\Bvalue{u>\alpha}:u\in A\}$ for every $\alpha$.   \Quer\ Suppose we
+have an $\alpha$ for which it is not the least upper bound, that is,
+there is a $c\Bsubset\Bvalue{u^*>\alpha}$ which is an upper bound for
+$\{\Bvalue{u>\alpha}:u\in A\}$.   Define $\phi:\Bbb R\to\frak A$ by
+setting
+
+$$\eqalign{\phi(\beta)
+&=c\Bcap\Bvalue{u^*>\beta}\text{ if }\beta\ge\alpha,\cr
+&=\Bvalue{u^*>\beta}\text{ if }\beta<\alpha.\cr}$$
+
+\noindent It is easy to see that $\phi$ satisfies the conditions of 364Aa
+(we need the distributive law 313Ba to check that
+$\phi(\beta)=\sup_{\gamma>\beta}\phi(\gamma)$ if $\beta\ge\alpha$), so
+corresponds to a member $v$ of $L^0$.    But we now find that $v$ is an
+upper bound for $A$ (because if $u\in A$ and $\beta\ge\alpha$ then
+
+\Centerline{$\Bvalue{u>\beta}
+\Bsubseteq\Bvalue{u>\alpha}\Bcap\Bvalue{u^*>\beta}
+\Bsubseteq c\Bcap\Bvalue{u^*>\beta}=\Bvalue{v>\beta}$,)}
+
+\noindent that $v\le u^*$ and that $v\ne u^*$ (because
+$\Bvalue{v>\alpha}=c\ne\Bvalue{u^*>\alpha}$);  but this is impossible,
+because $u^*$ is supposed to be the supremum of $A$.\ \BanG\  Thus if
+$u^*=\sup A$ is defined in $L^0$, then
+$\sup_{u\in A}\Bvalue{u>\alpha}=\Bvalue{u^*>\alpha}$
+is defined in $\frak A$ for every $\alpha\in\Bbb R$.   Also, of course,
+
+\Centerline{$\inf_{n\in\Bbb N}\sup_{u\in A}\Bvalue{u>n}
+=\inf_{n\in\Bbb N}\Bvalue{u^*>n}=0$.}
+
+\medskip
+
+\quad{\bf (iii)} This is now easy.   If $A$ has a supremum, then surely it
+satisfies the condition, by (b).   If $A$ satisfies the condition, then
+we have a family $\langle c_{\alpha}\rangle_{\alpha\in\Bbb R}$ as
+required in (b);  but also, by (a) or otherwise, there is a sequence
+$\sequencen{c'_n}$ such that $c_n\Bsubseteq c'_n$ for every $n$ and
+$\inf_{n\in\Bbb N}c'_n=0$, so $\inf_{n\in\Bbb N}c_n$ also is $0$, and
+both conditions in (b) are satisfied, so $A$ has a supremum.
+
+\medskip
+
+{\bf (b)(i)} Take $Z$, $\eusm L^0$ and $\pi$ as in the proof of
+364D.   Express $u$ as $f^{\ssbullet}$, $v$ as $g^{\ssbullet}$ where
+$f$, $g\in\eusm L^0$, so that $u\wedge v=(f\wedge g)^{\ssbullet}$,
+because the canonical map from $\eusm L^0$ to $L^0$ is a Riesz
+homomorphism (351J).   Then
+
+$$\eqalign{\Bvalue{u\wedge v>\alpha}
+&=\pi\{z:\min(f(z),g(z))>\alpha\}
+=\pi(\{z:f(z)>\alpha\}\cap\{z:g(z)>\alpha\})\cr
+&=\pi\{z:f(z)>\alpha\}\Bcap\pi\{z:g(z)>\alpha\}
+=\Bvalue{u>\alpha}\Bcap\Bvalue{v>\alpha}\cr}$$
+
+\noindent for every $\alpha$.
+
+\medskip
+
+\quad{\bf (ii)}\grheada\
+If $\inf_{u\in A}\Bvalue{u>\alpha}=0$ for every $\alpha>0$,
+and $v$ is any lower bound
+for $A$, then $\Bvalue{v>\alpha}$ must be $0$ for every $\alpha>0$, so
+that $\Bvalue{v>0}=0$;  now since $\Bvalue{0>\alpha}=0$ for
+$\alpha\ge 0$, $1$ for $\alpha<0$, $v\le 0$.   As $v$ is arbitrary,
+$\inf A=0$.
+
+\medskip
+
+\qquad\grheadb If $\alpha>0$ is such that $\inf_{u\in A}\Bvalue{u>\alpha}$
+is undefined, or not equal to $0$, let $c\in\frak A$ be such that
+$0\ne c\Bsubseteq\Bvalue{u>\alpha}$ for every $u\in A$, and consider
+$v=\alpha\chi c$.   Then $\Bvalue{v>\beta}=\Bvalue{\chi
+c>\bover{\beta}{\alpha}}$ is $1$ if $\beta<0$, $c$ if $0\le\beta<\alpha$
+and $0$ if $\beta\ge\alpha$.   If $u\in A$ then $\Bvalue{u>\beta}$ is
+$1$ if $\beta<0$ (since $u\ge 0$), at least $\Bvalue{u>\alpha}\Bsupseteq
+c$ if $0\le\beta<\alpha$, and always includes $0$;   so that
+$v\le u$.   As $u$ is arbitrary, $\inf A$ is either undefined in $L^0$
+or not $0$.
+}%end of proof of 364L
+
+\leader{364M}{}\cmmnt{ Now we have a reward for our labour, in that
+the following basic theorem is easy.
+
+\medskip
+
+\noindent}{\bf Theorem}\dvAformerly{3{}64O}
+For a Dedekind $\sigma$-complete Boolean algebra
+$\frak A$, $L^0=L^0(\frak A)$ is Dedekind complete iff $\frak A$ is.
+
+\proof{ The description of suprema in 364L(a-iii) makes it obvious that if
+$\frak A$ is Dedekind complete, so that $\sup_{u\in A}\Bvalue{u>\alpha}$
+is always defined, then $L^0$ must be Dedekind complete.
+On the other hand, if $L^0$ is Dedekind complete, then so is
+$L^{\infty}(\frak A)$ (by 364J and 353J(b-i)), so that $\frak A$ also is
+Dedekind complete, by 363Mb.
+}%end of proof of 364M
+
+\leader{364N}{The multiplication of \dvrocolon{$L^0$}}\cmmnt{ I have
+already observed that $L^0$ is always an $f$-algebra with identity;  in
+particular
+(because $L^0$ is surely Archimedean) the map $u\mapsto u\times v$ is
+order-continuous for every $v\ge 0$ (353Oa), and multiplication is
+commutative (353Ob, or otherwise).   The multiplicative identity is
+$\chi 1$ (364D, 364Jc).  By 353Pb, or otherwise, $u\times v=0$ iff
+$|u|\wedge|v|=0$.   There is one special feature of multiplication in
+$L^0$ which I can mention here.
+
+\medskip
+
+\noindent}{\bf Proposition}\dvAformerly{3{}64P} Let $\frak A$
+be a Dedekind $\sigma$-complete Boolean algebra.
+Then an element $u$ of $L^0=L^0(\frak A)$ has a multiplicative inverse in 
+$L^0$ iff $|u|$ is a weak order unit in $L^0$ iff $\Bvalue{|u|>0}=1$.
+
+\proof{ If $u$ is invertible, then $|u|$ is a weak order unit, by
+353Pc or otherwise.   In this case, setting
+$c=1\Bsetminus\Bvalue{|u|>0}$, we see that
+
+\Centerline{$\Bvalue{|u|\wedge\chi c>0}=\Bvalue{|u|>0}\Bcap c=0$}
+
+\noindent (364L(b-i)), so that $|u|\wedge\chi c\le 0$ and $\chi c=0$, that
+is, $c=0$;  so $\Bvalue{|u|>0}$ must be $1$.   To complete the circuit,
+suppose that $\Bvalue{|u|>0}=1$.   Let $Z$, $\Sigma$,
+$\eusm L^0=\eusm L^0_{\Sigma}$,
+$\pi$, $\Cal M$ be as in the proof of
+364D, and $S:\eusm L^0\to L^0$ the canonical map, so that
+$\Bvalue{Sh>\alpha}=\pi\{z:h(z)>\alpha\}$ for every $h\in\eusm L^0$,
+$\alpha\in\Bbb R$.   Express $u$ as $Sf$ where $f\in\eusm L^0$.   Then
+$\pi\{z:|f(z)|>0\}=\Bvalue{S|f|>0}=1$, so $\{z:f(z)=0\}\in\Cal M$.   Set
+
+\Centerline{$g(z)=\Bover1{f(z)}$ if $f(z)\ne 0$,
+\quad$g(z)=0$ if $f(z)=0$.}
+
+\noindent Then $\{z:f(z)g(z)\ne 1\}\in\Cal M$ so
+
+\Centerline{$u\times Sg=S(f\times g)=S(\chi Z)=\chi 1$}
+
+\noindent and $u$ is invertible.
+}%end of proof of 364N
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The repeated phrase `by 353x or otherwise'
+reflects the fact that the abstract methods there can all be replaced in
+this case by simple direct arguments based on the construction in
+364B-364D.
+}%end of comment
+
+\leader{364O}{Recovering the algebra:  Proposition} Let
+$\frak A$ be a Dedekind $\sigma$-complete Boolean algebra.   For
+$a\in\frak A$
+write $V_a$ for the band in $L^0=L^0(\frak A)$ generated by $\chi a$.
+Then $a\mapsto V_a$ is a Boolean isomorphism between $\frak A$ and the
+algebra of projection bands in $L^0$.
+
+\proof{ I copy from the argument for 363J, itself based on 361K.   If
+$a\in\frak A$ and $w\in L^0$ then $w\times\chi a\in V_a$.
+\Prf\ If $v\in V_a^{\perp}$ then $|\chi a|\wedge|v|=0$, so
+$\chi a\times v=0$, so $(w\times\chi a)\times v=0$, so
+$|w\times\chi a|\wedge|v|=0$;
+thus $w\times\chi a\in V_a^{\perp\perp}$, which is equal to $V_a$
+because $L^0$ is Archimedean (353Ba).\ \QeD\  Now, if
+$a\in\frak A$, $u\in V_a$ and $v\in V_{1\Bsetminus a}$, then
+$|u|\wedge|v|=0$
+because $\chi a\wedge\chi(1\Bsetminus a)=0$;  and if $w\in
+L^{0}(\frak A)$ then
+
+\Centerline{$w=(w\times\chi a)+(w\times\chi(1\Bsetminus a))\in
+V_a+V_{1\Bsetminus a}$.}
+
+\noindent So
+$V_a$ and $V_{1\Bsetminus a}$ are complementary projection bands in
+$L^0$.   Next, if $U\subseteq L^0$ is
+a projection band, then $\chi 1$ is expressible as $u+v=u\vee v$ where
+$u\in U$, $v\in U^{\perp}$.   Setting $a=\Bvalue{u>\bover12}$,
+$a'=\Bvalue{v>\bover12}$ we must have  $a\Bcup a'=1$ and $a\Bcap a'=0$
+(using 364L), so that $a'=1\Bsetminus a$;  also
+$\bover12\chi a\le u$, so that $\chi a\in U$, and
+similarly $\chi(1\Bsetminus a)\in U^{\perp}$.
+In this case $V_a\subseteq U$ and
+$V_{1\Bsetminus a}\subseteq U^{\perp}$, so $U$ must be $V_a$ precisely.
+Thus $a\mapsto V_a$ is surjective.   Finally, just as in 361K,
+$a\Bsubseteq b\iff V_a\subseteq V_b$, so we have a Boolean isomorphism.
+}%end of proof of 364O
+
+\leader{364P}{}\cmmnt{ I come at last to the result corresponding to
+361J and 363F.
+
+\medskip
+
+\noindent}{\bf Theorem}\dvAformerly{3{}64R}
+Let $\frak A$ and $\frak B$ be Dedekind $\sigma$-complete Boolean algebras,
+and $\pi:\frak A\to\frak B$ a sequentially order-continuous Boolean
+homomorphism.
+
+(a) We have a multiplicative sequentially order-continuous Riesz
+homomorphism $T_{\pi}:L^0(\frak A)\to L^0(\frak B)$ defined by the
+formula
+
+\Centerline{$\Bvalue{T_{\pi}u>\alpha}=\pi\Bvalue{u>\alpha}$}
+
+\noindent whenever $\alpha\in\Bbb R$ and $u\in L^0(\frak A)$.
+
+(b) Defining $\chi a\in L^0(\frak A)$ as in 364J,
+$T_{\pi}(\chi a)=\chi(\pi a)$ in $L^0(\frak B)$ for every $a\in\frak A$.
+If we regard $L^{\infty}(\frak A)$ and $L^{\infty}(\frak B)$ as embedded
+in $L^0(\frak A)$ and $L^0(\frak B)$ respectively, then $T_{\pi}$, as
+defined here, agrees on $L^{\infty}(\frak A)$ with $T_{\pi}$ as defined
+in 363F.
+
+(c) $T_{\pi}$ is order-continuous iff $\pi$ is order-continuous,
+injective iff $\pi$ is injective, surjective iff $\pi$ is surjective.
+
+(d) $\Bvalue{T_{\pi}u\in E}=\pi\Bvalue{u\in E}$ for every $u\in
+L^0(\frak A)$ and every Borel set $E\Bsubseteq\Bbb R$;  consequently
+$\bar hT_{\pi}=T_{\pi}\bar h$ for every Borel measurable
+$h:\Bbb R\to\Bbb R$, writing $\bar h$ indifferently for the associated
+maps from $L^0(\frak A)$ to itself and from $L^0(\frak B)$ to
+itself\cmmnt{ (364H)}.
+
+(e) If $\frak C$ is another Dedekind $\sigma$-complete Boolean algebra
+and $\theta:\frak B\to\frak C$ another sequentially order-continuous
+Boolean homomorphism then $T_{\theta\pi}=T_{\theta}T_{\pi}:L^0(\frak
+A)\to L^0(\frak C)$.
+
+\proof{ I write $T$ for $T_{\pi}$.
+
+\medskip
+
+{\bf (a)(i)} To see that $Tu$ is well-defined in $L^0(\frak B)$ for
+every $u\in L^0(\frak A)$, all we need to do is to check that the map
+$\alpha\mapsto\pi\Bvalue{u>\alpha}:\Bbb R\to\frak B$ satisfies the
+conditions of 364Ae, and this is easy, because $\pi$ preserves all
+countable suprema and infima.
+
+\medskip
+
+\quad{\bf (ii)} To see that $T$ is linear and order-preserving and
+multiplicative, we can use the formulae of 364D.  For instance, if $u$,
+$v\in L^0(\frak A)$, then
+
+$$\eqalign{\Bvalue{Tu+Tv>\alpha}
+&=\sup_{q\in\Bbb Q}\Bvalue{Tu>q}\Bcap\Bvalue{Tv>\alpha-q}
+=\sup_{q\in\Bbb Q}\pi\Bvalue{u>q}\Bcap\pi\Bvalue{v>\alpha-q}\cr
+&=\pi(\sup_{q\in\Bbb Q}\Bvalue{u>q}\Bcap\Bvalue{v>\alpha-q})
+=\pi\Bvalue{u+v>\alpha}
+=\Bvalue{T(u+v)>\alpha}\cr}$$
+
+\noindent for every $\alpha\in\Bbb R$, so that $Tu+Tv=T(u+v)$.   In the
+same way,
+
+\Centerline{$T(\gamma u)=\gamma Tu$ whenever $\gamma>0$,}
+
+\Centerline{$Tu\le Tv$ whenever $u\le v$,}
+
+\Centerline{$Tu\times Tv=T(u\times v)$ whenever $u$, $v\ge 0$,}
+
+\noindent so that, using the distributive laws, $T$ is linear and
+multiplicative.
+
+To see that $T$ is a sequentially order-continuous Riesz homomorphism,
+suppose that $A\subseteq L^0(\frak A)$ is a countable non-empty set with
+a supremum $u^*\in L^0(\frak A)$;  then
+$T[A]$ is a non-empty subset of $L^0(\frak B)$ with an upper bound
+$Tu^*$, and
+
+$$\eqalignno{\sup_{u\in A}\Bvalue{Tu>\alpha}
+&=\sup_{u\in A}\pi\Bvalue{u>\alpha}
+=\pi(\sup_{u\in A}\Bvalue{u>\alpha})
+=\pi\Bvalue{u^*>\alpha}\cr
+\noalign{\noindent (using 364La)}
+&=\Bvalue{Tu^*>\alpha}\cr}$$
+
+\noindent for every $\alpha\in\Bbb R$.   So using 364La again,
+$Tu^*=\sup_{u\in A}Tu$.   Now this is true, in particular, for doubleton
+sets $A$, so that $T$ is a Riesz homomorphism;  and also for
+non-decreasing sequences, so that $T$ is sequentially
+order-continuous.
+
+\medskip
+
+{\bf (b)} The identification of $T(\chi a)$ with $\chi(\pi a)$ is
+another almost trivial verification.   It follows that $T$ agrees with
+the map of 363F on $S(\frak A)$, if we think of $S(\frak A)$ as a
+subspace of $L^0(\frak A)$.   Next, if
+$u\in L^{\infty}(\frak A)\subseteq L^0(\frak A)$, and
+$\gamma=\|u\|_{\infty}$, then $|u|\le \gamma\chi 1_{\frak A}$, so that
+$|Tu|\le \gamma\chi 1_{\frak B}$, and
+$Tu\in L^{\infty}(\frak B)$, with $\|Tu\|_{\infty}\le\gamma$.   Thus
+$T\restr L^{\infty}(\frak A)$ has norm at most $1$.   As it agrees with
+the map of 363F on $S(\frak A)$, which is $\|\,\|_{\infty}$-dense in
+$L^{\infty}(\frak A)$ (363C), and both are continuous, they must agree
+on the whole of $L^{\infty}(\frak A)$.
+
+\medskip
+
+{\bf (c)(i)}\grheada\ Suppose that $\pi$ is order-continuous, and that
+$A\subseteq L^0(\frak A)$ is a non-empty set with a supremum
+$u^*\in L^0(\frak A)$.   Then for any $\alpha\in\Bbb R$,
+
+$$\eqalignno{\Bvalue{Tu^*>\alpha}
+&=\pi\Bvalue{u^*>\alpha}
+=\pi(\sup_{u\in A}\Bvalue{u>\alpha})\cr
+\noalign{\noindent (by 364La)}
+&=\sup_{u\in A}\pi\Bvalue{u>\alpha}\cr
+\noalign{\noindent (because $\pi$ is order-continuous)}
+&=\sup_{u\in A}\Bvalue{Tu>\alpha}.\cr}$$
+
+\noindent As $\alpha$ is arbitrary, $Tu^*=\sup T[A]$, by 364La again.
+As $A$ is arbitrary, $T$ is order-continuous (351Ga).
+
+\medskip
+
+\qquad\grheadb\ Now suppose that $T$ is order-continuous and that
+$A\subseteq\frak A$ is a non-empty set with supremum $c$ in $\frak A$.
+Then $\chi c=\sup_{a\in A}\chi a$ (364Jc) so
+
+\Centerline{$\chi(\pi c)=T(\chi c)=\sup_{a\in A}T(\chi a)
+=\sup_{a\in A}\chi(\pi a)$.}
+
+\noindent But now
+
+\Centerline{$\pi c
+=\Bvalue{\chi(\pi c)>0}
+=\sup_{a\in A}\Bvalue{\chi(\pi a)>0}
+=\sup_{a\in A}\pi a$.}
+
+\noindent As $A$ is arbitrary, $\pi$ is order-continuous.
+
+\medskip
+
+\quad{\bf (ii)}\grheada\ If $\pi$ is injective and $u$, $v$ are distinct
+elements of $L^0(\frak A)$, then there must be some $\alpha$ such that
+$\Bvalue{u>\alpha}\ne\Bvalue{v>\alpha}$, in which case
+$\Bvalue{Tu>\alpha}\ne\Bvalue{Tv>\alpha}$ and $Tu\ne Tv$.
+
+\medskip
+
+\qquad\grheadb\ Now suppose that $T$ is injective.   It is easy to see
+that $\chi:\frak A\to L^0(\frak A)$ is injective, so that $T\chi:\frak
+A\to L^0(\frak B)$ is injective;  but this is the same as $\chi\pi$ (by
+(b)), so $\pi$ must also be injective.
+
+\medskip
+
+\quad{\bf (iii)}\grheada\ Suppose that $\pi$ is surjective.   Let
+$\Sigma$ be a $\sigma$-algebra of sets such that there is a sequentially
+order-continuous Boolean surjection $\phi:\Sigma\to\frak A$.   Then
+$\pi\phi:\Sigma\to\frak B$ is surjective.   So given
+$w\in L^0(\frak B)$, there is an $f\in\eusm L^0_{\Sigma}$ such that
+$\Bvalue{w>\alpha}=\pi\phi\{x:f(x)>\alpha\}$ for every $\alpha\in\Bbb R$
+(364C).   But, also by 364C, there is a $u\in L^0(\frak A)$ such that
+$\Bvalue{u>\alpha}=\phi\{x:f(x)>\alpha\}$ for every $\alpha$.   And now
+of course $Tu=w$.   As $w$ is arbitrary, $T$ is surjective.
+
+\medskip
+
+\qquad\grheadb\ If $T$ is surjective, and $b\in\frak B$, there must be
+some $u\in L^0(\frak A)$ such that $Tu=\chi b$.   Now set
+$a=\Bvalue{u>0}$ and see that $\pi a=\Bvalue{\chi b>0}=b$.   As $b$ is
+arbitrary, $\pi$ is surjective.
+
+\medskip
+
+{\bf (d)} The map $E\mapsto\pi\Bvalue{u\in E}$ is a sequentially
+order-continuous Boolean homomorphism, equal to $\Bvalue{Tu\in E}$ when
+$E$ is of the form $\ooint{\alpha,\infty}$;  so by 364F the two are
+equal for all Borel sets $E$.
+
+If $h:\Bbb R\to\Bbb R$ is a Borel measurable function, $u\in L^0(\frak
+A)$ and $E\subseteq\Bbb R$ is a Borel set, then
+
+$$\eqalign{\Bvalue{\bar h(Tu)\in E}
+&=\Bvalue{Tu\in h^{-1}[E]}
+=\pi\Bvalue{u\in h^{-1}[E]}\cr
+&=\pi\Bvalue{\bar h(u)\in E}
+=\Bvalue{T(\bar h(u))\in E}.\cr}$$
+
+\noindent As $E$ and $u$ are arbitrary, $T\bar h=\bar hT$.
+
+\medskip
+
+{\bf (e)} This is immediate from (a).
+}%end of proof of 364P
+
+\leader{364Q}{Proposition}\dvAformerly{3{}64Xr, 3{}72H}
+Let $X$ and $Y$ be sets, $\Sigma$, $\Tau$
+$\sigma$-algebras of subsets of $X$, $Y$ respectively, and $\Cal I$,
+$\Cal J\,\,\sigma$-ideals of $\Sigma$, $\Tau$.   Set
+$\frak A=\Sigma/\Cal I$ and $\frak B=\Tau/\Cal J$.   Suppose that
+$\phi:X\to Y$ is
+a function such that $\phi^{-1}[F]\in\Sigma$ for every $F\in\Tau$ and
+$\phi^{-1}[F]\in\Cal I$ for every $F\in\Cal J$.
+
+(a) There is a
+sequentially order-continuous Boolean homomorphism
+$\pi:\frak B\to\frak A$ defined by saying that
+$\pi F^{\ssbullet}=\phi^{-1}[F]^{\ssbullet}$
+for every $F\in\Tau$.
+
+(b) Let $T_{\pi}:L^0(\frak B)\to L^0(\frak A)$ be the
+Riesz homomorphism corresponding to $\pi$, as defined in 364P.
+If we identify
+$L^0(\frak B)$ with $\eusm L^0_{\Tau}/\eusm W_{\Cal J}$ and
+$L^0(\frak A)$ with $\eusm L^0_{\Sigma}/\eusm W_{\Cal I}$ in the manner
+of 364B-364C, then $T_{\pi}(g^{\ssbullet})=(g\phi)^{\ssbullet}$ for every
+$g\in\eusm L^0_{\Tau}$.
+
+(c) Let $Z$ be a third set, $\Upsilon$ a $\sigma$-algebra of subsets of
+$Z$, $\Cal K$ a $\sigma$-ideal of $\Upsilon$, and $\psi:Y\to Z$ a function
+such that $\psi^{-1}[G]\in\Tau$ for every $G\in\Upsilon$ and
+$\psi^{-1}[G]\in\Cal J$ for every $G\in\Cal K$.   Let
+$\theta:\frak C\to\frak B$ and $T_{\theta}:L^0(\frak C)\to L^0(\frak B)$ be
+the homomorphisms corresponding to $\psi$ as in (a)-(b).   Then
+$\pi\theta:\frak C\to\frak A$ and
+$T_{\pi}T_{\theta}:L^0(\frak C)\to L^0(\frak A)$ correspond to
+$\psi\phi:X\to Y$ in the same way.
+
+(d) Now suppose that $\mu$ and $\nu$ are measures with domains $\Sigma$,
+$\Tau$ and null ideals $\Cal N(\mu)$, $\Cal N(\nu)$ respectively, and that
+$\Cal I=\Sigma\cap\Cal N(\mu)$ and $\Cal J=\Tau\cap\Cal N(\nu)$.   In this
+case, identifying $L^0(\frak A)$, $L^0(\frak B)$ with $L^0(\mu)$ and
+$L^0(\nu)$ as in 364Ic, we have $g\phi\in\eusm L^0(\mu)$ and
+$T_{\pi}(g^{\ssbullet})=(g\phi)^{\ssbullet}$ for every
+$g\in\eusm L^0(\nu)$.
+
+\proof{{\bf (a)} The argument is essentially that of 324A-324B, somewhat
+simplified.   Explicitly:  if $F_1$, $F_2\in\Tau$ and
+$F_1^{\ssbullet}=F_2^{\ssbullet}$, then $F_1\symmdiff F_2\in\Cal J$ so
+$\phi^{-1}[F_1]\symmdiff\phi^{-1}[F_2]=\phi^{-1}[F_1\symmdiff F_2]$ belongs
+to $\Cal I$ and $\phi^{-1}[F_1]^{\ssbullet}=\phi^{-1}[F_2]^{\ssbullet}$.
+So the formula offered defines a map $\pi:\frak B\to\frak A$.
+It is a Boolean homomorphism, because if $F_1$, $F_2\in\Tau$ then
+
+$$\eqalign{\pi F_1^{\ssbullet}\Bsymmdiff\pi F_2^{\ssbullet}
+&=\phi^{-1}[F_1]^{\ssbullet}\Bsymmdiff\phi^{-1}[F_2]^{\ssbullet}
+=(\phi^{-1}[F_1]\symmdiff\phi^{-1}[F_2])^{\ssbullet}\cr
+&=\phi^{-1}[F_1\symmdiff F_2]^{\ssbullet}
+=\pi(F_1\symmdiff F_2)^{\ssbullet}
+=\pi(F_1^{\ssbullet}\Bsymmdiff F_2^{\ssbullet}),\cr}$$
+
+\noindent so $\pi(b_1\Bsymmdiff b_2)=\pi b_1\Bsymmdiff b_2$ for all $b_1$,
+$b_2\in\frak B$.
+Similarly $\pi(b_1\Bcap b_2)=\pi b_1\Bcap b_2$ for all $b_1$,
+$b_2\in\frak B$, and of course
+
+\Centerline{$\pi 1_{\frak B}=\pi Y^{\ssbullet}
+=\phi^{-1}[Y]^{\ssbullet}=X^{\ssbullet}=1_{\frak A}$.}
+
+To see that $\pi$ is sequentially order-continuous, let
+$\sequencen{b_n}$ be a sequence in $\frak B$.  For each $n$ we may
+choose an $F_n\in\Tau$ such that $F_n^{\ssbullet}=b_n$, and set
+$F=\bigcup_{n\in\Bbb N}F_n$.   As the map
+$H\mapsto H^{\ssbullet}:\Tau\to\frak B$ is sequentially order-continuous
+(313Qb), $F^{\ssbullet}=\sup_{n\in\Bbb N}b_n$ in $\frak B$.   Now
+
+$$\eqalign{\pi(\sup_{n\in\Bbb N}b_n)
+&=\pi F^{\ssbullet}
+=\phi^{-1}[F]^{\ssbullet}
+=(\bigcup_{n\in\Bbb N}\phi^{-1}[F_n])^{\ssbullet}\cr
+&=\sup_{n\in\Bbb N}\phi^{-1}[F_n]^{\ssbullet}
+=\sup_{n\in\Bbb N}\pi F_n^{\ssbullet}
+=\sup_{n\in\Bbb N}\pi b_n.\cr}$$
+
+\noindent So $\pi$ is sequentially order-continuous, by 313Lc.
+
+\medskip
+
+{\bf (b)} Now suppose that $g:Y\to\Bbb R$ is $\Tau$-measurable;  write
+$v$ for $g^{\ssbullet}$ in
+$\eusm L^0_{\Tau}/\eusm W_{\Cal J}\cong L^0(\frak B)$.
+Set $f=g\phi$;  then
+
+\Centerline{$\{x:f(x)>\alpha\}=\phi^{-1}[\{y:g(y)>\alpha\}]$}
+
+\noindent belongs to $\Sigma$ for every $\alpha\in\Bbb R$, so
+$f$ is $\Sigma$-measurable and we can speak of
+$u=f^{\ssbullet}$ in
+$\eusm L^0_{\Sigma}/\eusm W_{\Cal I}\cong L^0(\frak A)$.   Now, by 364Ca,
+
+$$\eqalign{\Bvalue{u>\alpha}
+&=\{x:f(x)>\alpha\}^{\ssbullet}
+=\phi^{-1}[\{y:g(y)>\alpha\}]^{\ssbullet}\cr
+&=\pi\{y:g(y)>\alpha\}^{\ssbullet}
+=\pi\Bvalue{v>\alpha}
+=\Bvalue{T_{\pi}v>\alpha}\cr}$$
+
+\noindent for every $\alpha\in\Bbb R$, and
+
+\Centerline{$(g\phi)^{\ssbullet}=f^{\ssbullet}=u=T_{\pi}v=T_{\pi}g^{\ssbullet}$,}
+
+\noindent as claimed.
+
+\medskip
+
+{\bf (c)} Starting from the
+facts that $(\psi\phi)^{-1}[G]=\phi^{-1}[\psi^{-1}[G]]$ for every
+$G\in\Upsilon$ and $h(\psi\phi)=(h\psi)\phi$ for every
+$h\in\eusm L^0_{\Upsilon}$, we just have to run through the formulae.
+
+\medskip
+
+{\bf (d)} If $g\in\eusm L^0(\nu)$, there are a
+$g_0\in\eusm L^0_{\Tau}$ and an $F\in\Cal J$ such that $g(y)$ is defined
+and equal to $g_0(y)$ for every $y\in Y\setminus F$.   In this case,
+$\phi^{-1}[F]\in\Cal I$ and
+$g\phi(x)$ is defined and equal to $g_0\phi(x)$ for every
+$x\in X\setminus\phi^{-1}[F]$, so $g\phi\in\eusm L^0(\mu)$ and
+
+\Centerline{$(g\phi)^{\ssbullet}=(g_0\phi)^{\ssbullet}
+=T_{\pi}(g_0^{\ssbullet})=T_{\pi}(g^{\ssbullet})$}
+
+\noindent by (b).
+}%end of proof of 364Q
+
+\leader{364R}{Products:  Proposition} Let
+$\langle\frak A_i\rangle_{i\in I}$ be a family of Dedekind
+$\sigma$-complete Boolean algebras, with simple product $\frak A$.   If
+$\pi_i:\frak A\to\frak A_i$ is the coordinate map for each $i$, and
+$T_i:L^0(\frak A)\to L^0(\frak A_i)$ the corresponding homomorphism,
+then $u\mapsto Tu=\langle T_iu\rangle_{i\in I}:
+L^0(\frak A)\to\prod_{i\in I}L^0(\frak A_i)$ is a multiplicative
+Riesz space isomorphism,
+so $L^0(\frak A)$ may be identified with the $f$-algebra product
+$\prod_{i\in I}L^0(\frak A_i)$\cmmnt{ (352Wc)}.
+
+\proof{ Because each $\pi_i$ is a surjective order-continuous Boolean
+homomorphism, 364P assures us that there are corresponding surjective
+multiplicative Riesz homomorphisms $T_i$.   So all we need to check is
+that the multiplicative Riesz homomorphism
+$T:L^0(\frak A)\to\prod_{i\in I}L^0(\frak A_i)$ is a bijection.
+
+If $u$, $v\in L^0(\frak A)$ are distinct, there must be some
+$\alpha\in\Bbb R$ such that $\Bvalue{u>\alpha}\ne\Bvalue{v>\alpha}$.
+In this case there must be an $i\in I$ such that
+$\pi_i\Bvalue{u>\alpha}\ne\pi_i\Bvalue{v>\alpha}$, that is,
+$\Bvalue{T_iu>\alpha}\ne\Bvalue{T_iv>\alpha}$.   So $T_iu\ne T_iv$ and
+$Tu\ne Tv$.   As $u$, $v$ are arbitrary, $T$ is injective.
+
+If $w=\langle w_i\rangle_{i\in I}$ is any member of
+$\prod_{i\in I}L^0(\frak A_i)$, then for $\alpha\in\Bbb R$ set
+
+\Centerline{$\phi(\alpha)=\langle\Bvalue{w_i>\alpha}\rangle_{i\in
+I}\in\frak A$.}
+
+\noindent It is easy to check that $\phi$ satisfies the conditions of
+364Aa, because, for instance,
+
+\Centerline{$\sup_{\beta>\alpha}\pi_i\phi(\beta)
+=\sup_{\beta>\alpha}\Bvalue{w_i>\beta}=\Bvalue{w_i>\alpha}
+=\pi_i\phi(\alpha)$}
+
+\noindent for every $i$, so that
+$\sup_{\beta>\alpha}\phi(\beta)=\phi(\alpha)$, for every $\alpha\in\Bbb
+R$;  and the other two conditions are also satisfied because they are
+satisfied coordinate-by-coordinate.   So there is a $u\in L^0(\frak A)$
+such that $\phi(\alpha)=\Bvalue{u>\alpha}$ for every $\alpha$, that is,
+$\pi_i\Bvalue{u>\alpha}=\Bvalue{w_i>\alpha}$ for all $\alpha$, $i$, that
+is, $T_iu=w_i$ for every $i$, that is, $Tu=w$.   As $w$ is arbitrary,
+$T$ is surjective and we are done.
+}%end of proof of 364R
+
+\leader{*364S}{Regular open \dvrocolon{algebras}}\cmmnt{ I noted in
+314P that for every topological space $X$ there is a corresponding
+Dedekind complete Boolean algebra $\RO(X)$ of regular open sets.   We
+have an identification of $L^0(\RO(X))$ as a space of equivalence
+classes of
+functions, different in kind from the representations above, as follows.
+This is hard work (especially if we do it in full generality), but
+instructive.   I start with a temporary definition.
+
+\wheader{*364S}{4}{2}{2}{36pt}
+
+\noindent}{\bf Definition} Let $(X,\frak T)$ be a topological space and
+$f:X\to\Bbb R$ a function.   For $x\in X$ write
+
+\Centerline{$\omega(f,x)
+=\inf_{G\in\frak T,x\in G}\sup_{y,z\in G}|f(y)-f(z)|$}
+
+\noindent (allowing $\infty$).
+
+\leader{*364T}{Theorem} Let $X$ be any topological space, and
+$\RO(X)$ its regular open algebra.   Let $U$ be the set of functions
+$f:X\to\Bbb R$ such that $\{x:\omega(f,x)<\epsilon\}$ is dense in $X$
+for every $\epsilon>0$.  Then $U$ is a Riesz subspace of $\Bbb R^X$,
+closed under multiplication, and we have a surjective multiplicative
+Riesz homomorphism $T:U\to L^0(\RO(X))$ defined by writing
+
+\Centerline{$\Bvalue{Tf>\alpha}
+=\sup_{\beta>\alpha}\interior\overline{\{x:f(x)>\beta\}}$,}
+
+\noindent the supremum being taken in $\RO(X)$, for every
+$\alpha\in\Bbb R$ and $f\in U$.   The kernel of $T$ is
+the set $W$ of functions $f:X\to\Bbb R$ such that
+$\interior\{x:|f(x)|\le\epsilon\}$ is dense for every $\epsilon>0$, so
+$L^0(\RO(X))$ can be identified, as $f$-algebra, with the
+quotient space $U/W$.
+
+\proof{{\bf (a)(i)}\grheada\ The first thing to observe is that for any
+$f\in\Bbb R^X$ and $\epsilon>0$ the set
+
+$$\eqalign{\{x:\omega(f,x)<\epsilon\}
+&=\bigcup\{G:G\subseteq X\text{ is open and non-empty}\cr
+&\qquad\qquad\qquad\qquad
+  \text{ and }\sup_{y,z\in G}|f(y)-f(z)|<\epsilon\}\cr}$$
+
+\noindent is open.
+
+\medskip
+
+\qquad\grheadb\ Next, it is easy to see that
+
+\Centerline{$\omega(f+g,x)\le\omega(f,x)+\omega(g,x)$,}
+
+\Centerline{$\omega(\gamma f,x)=|\gamma|\omega(f,x)$,}
+
+\Centerline{$\omega(|f|,x)\le\omega(f,x)$,}
+
+\noindent for all $f$, $g\in\Bbb R^X$ and $\gamma\in\Bbb R$.
+
+\medskip
+
+\qquad\grheadc\ Thirdly, it is useful to know that if $f\in U$ and
+$G\subseteq X$ is a non-empty open set, then there is a non-empty open
+set $G'\subseteq G$ on which $f$ is bounded.   \Prf\ Take any $x_0\in G$
+such that $\omega(f,x_0)<1$;  then there is a non-empty open set $G'$
+containing $x_0$ such that $|f(y)-f(z)|<1$ for all $y$, $z\in G'$, and
+we may suppose that $G'\subseteq G$.   But now $|f(x)|\le 1+|f(x_0)|$
+for every $x\in G'$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} So if $f$, $g\in U$ and $\gamma\in\Bbb R$ then
+
+\Centerline{$\{x:\omega(f+g,x)<\epsilon\}
+\supseteq\{x:\omega(f,x)<\Bover12\epsilon\}
+   \cap\{x:\omega(g,x)<\Bover12\epsilon\}$}
+
+\noindent is the intersection of two dense open sets and is therefore
+dense, while
+
+\Centerline{$\{x:\omega(\gamma f,x)<\epsilon\}
+\supseteq\{x:\omega(f,x)<\Bover{\epsilon}{1+|\gamma|}\}$,}
+
+\Centerline{$\{x:\omega(|f|,x)<\epsilon\}
+\supseteq\{x:\omega(f,x)<\epsilon\}$}
+
+\noindent are also dense.   As $\epsilon$ is arbitrary, $f+g$,
+$\gamma f$ and $|f|$ all belong to $U$;  as $f$, $g$ and $\gamma$ are arbitrary, $U$ is a Riesz subspace of $\Bbb R^X$.
+
+\medskip
+
+\quad{\bf (iii)} If $f$, $g\in U$ then $f\times g\in U$.   \Prf\ Take
+$\epsilon>0$ and let $G_0$ be a non-empty open subset of $X$.   By the
+last remark in (i) above, there is a non-empty open set
+$G_1\subseteq G_0$ such that $|f|\vee|g|$ is bounded on $G_1$;  say
+$\max(|f(x)|,|g(x)|)\le\gamma$ for every $x\in G_1$.
+
+Set $\delta=\Bover{\epsilon}{2\gamma+1}>0$.   Then there is an
+$x\in G_1$ such that $\omega(f,x)<\delta$ and $\omega(g,x)<\delta$.
+Let $H$, $H'$ be open sets containing $x$ such that $|f(y)-f(z)|\le\delta$
+for all $y$, $z\in H$ and $|g(y)-g(z)|\le\delta$ for all $y$, $z\in H'$.
+Consider $G=G_1\cap H\cap H'$.   This is an open set containing $x$, and
+if $y$, $z\in G$ then
+
+$$\eqalign{|f(y)g(y)-f(z)g(z)|
+&\le|f(y)-f(z)||g(z)|+|f(z)||g(y)-g(z)|\cr
+&\le\delta\gamma+\gamma\delta.\cr}$$
+
+\noindent Accordingly
+
+\Centerline{$\omega(f\times g,x)\le 2\delta\gamma<\epsilon$,}
+
+\noindent while $x\in G_0$.   As $G_0$ is arbitrary,
+$\{x:\omega(f\times g,x)<\epsilon\}$ is dense;  as $\epsilon$ is
+arbitrary, $f\times g\in U$.\ \Qed
+
+Thus $U$ is a subalgebra of $\Bbb R^X$.
+
+\woddheader{*364T}{6}{2}{2}{30pt}
+
+{\bf (b)} Now, for $f\in U$, consider the map $\phi_f:\Bbb R\to\RO(X)$
+defined by setting
+
+\Centerline{$\phi_f(\alpha)
+=\sup_{\beta>\alpha}\interior\overline{\{x:f(x)>\beta\}}$}
+
+\noindent for every $\alpha\in\Bbb R$.   Then $\phi_f$ satisfies the
+conditions of 364Aa.   \Prf\ (See 314P for the calculation of suprema and
+infima in $\RO(X)$.)  (i) If $\alpha\in\Bbb R$ then
+
+$$\eqalign{\phi_f(\alpha)
+&=\sup_{\beta>\alpha}\interior\overline{\{x:f(x)>\beta\}}
+=\sup_{\gamma>\beta>\alpha}\interior\overline{\{x:f(x)>\gamma\}}\cr
+&=\sup_{\beta>\alpha}\sup_{\gamma>\beta}
+   \interior\overline{\{x:f(x)>\gamma\}}
+=\sup_{\beta>\alpha}\phi_f(\beta).\cr}$$
+
+\noindent (ii) If $G_0\subseteq X$ is a non-empty open set, then there
+is a non-empty open set $G_1\subseteq G_0$ such that $f$ is bounded on
+$G_1$;  say $|f(x)|<\gamma$ for every $x\in G_1$.   If $\beta>\gamma$
+then $G_1$ does not meet $\{x:f(x)>\beta\}$, so
+$G_1\cap\interior\overline{\{x:f(x)>\gamma\}}=\emptyset$;  as $\beta$ is
+arbitrary, $G_1\cap\phi_f(\gamma)=\emptyset$ and
+$G_0\not\subseteq\inf_{\alpha\in\Bbb R}\phi_f(\alpha)$.   On the other
+hand, $G_1\subseteq\{x:f(x)>-\gamma\}$, so
+
+\Centerline{$G_1\subseteq\interior\overline{\{x:f(x)>-\gamma\}}
+\subseteq\phi_f(-\gamma)$}
+
+\noindent and $G_0\cap\sup_{\alpha\in\Bbb R}\phi_f(\alpha)\ne\emptyset$.
+As $G_0$ is arbitrary, $\inf_{\alpha\in\Bbb R}\phi_f(\alpha)=\emptyset$
+and $\sup_{\alpha\in\Bbb R}\phi_f(\alpha)=X$.\ \Qed
+
+\medskip
+
+{\bf (c)} Thus we have a map $T:U\to L^0=L^0(\RO(X))$ defined by
+setting $\Bvalue{Tf>\alpha}=\phi_f(\alpha)$ whenever $\alpha\in\Bbb R$ and
+$f\in U$.
+
+It is worth noting that
+
+\Centerline{$\{x:f(x)>\alpha+\omega(f,x)\}
+\subseteq\Bvalue{Tf>\alpha}
+\subseteq\{x:f(x)+\omega(f,x)\ge\alpha\}$}
+
+\noindent for every $f\in U$ and $\alpha\in\Bbb R$.   \Prf\ (i) If
+$f(x)>\alpha+\omega(f,x)$, set
+$\delta=\bover12(f(x)-\alpha-\omega(f,x))>0$.   Then there is an open
+set $G$ containing $x$ such that $|f(y)-f(z)|<\omega(f,x)+\delta$ for
+every $y$, $z\in G$, so that $f(y)>\alpha+\delta$ for every $y\in G$,
+and
+
+\Centerline{$x\in\interior\{y:f(y)>\alpha+\delta\}
+\subseteq\Bvalue{Tf>\alpha}$.}
+
+\noindent (ii) If $f(x)+\omega(f,x)<\alpha$, set
+$\delta=\bover12(\alpha-f(x)-\omega(f,x))>0$;  then there is an open
+neighbourhood $G$ of $x$ such that $|f(y)-f(z)|<\omega(f,x)+\delta$ for
+every $y$, $z\in G$, so that $f(y)<\alpha$ for every $y\in G$.
+Accordingly $G$ does not meet $\{y:f(y)>\beta\}$ nor
+$\overline{\{y:f(y)>\beta\}}$ for any $\beta>\alpha$,
+$G\cap\Bvalue{Tf>\alpha}=\emptyset$ and
+$x\notin\Bvalue{Tf>\alpha}$.\ \Qed
+
+\medskip
+
+{\bf (d)} $T$ is additive.   \Prf\ Let $f$, $g\in U$ and
+$\alpha<\beta\in\Bbb R$.
+Set $\delta=\bover15(\beta-\alpha)>0$,
+$H=\{x:\omega(f,x)<\delta,\,\omega(g,x)<\delta\}$;
+then $H$ is the intersection of two dense open
+sets, so is itself dense and open.
+
+\medskip
+
+\quad{\bf (i)} If $x\in H\cap\Bvalue{T(f+g)>\beta}$, then
+$(f+g)(x)+\omega(f+g,x)\ge\beta$;  but $\omega(f+g,x)\le 2\delta$ (see
+(a-i-$\beta$) above), so $f(x)+g(x)\ge\beta-2\delta>\alpha+2\delta$ and
+there is a $q\in\Bbb Q$ such that
+
+\Centerline{$f(x)>q+\delta\ge q+\omega(f,x)$,
+\quad$g(x)>\alpha-q+\delta\ge\alpha-q+\omega(g,x)$.}
+
+\noindent Accordingly
+
+\Centerline{$x\in\Bvalue{Tf>q}\cap\Bvalue{Tg>\alpha-q}
+\subseteq\Bvalue{Tf+Tg>\alpha}$.}
+
+\noindent Thus
+$H\cap\Bvalue{T(f+g)>\beta}\subseteq\Bvalue{Tf+Tg>\alpha}$.   Because
+$H$ is dense, $\Bvalue{T(f+g)>\beta}\subseteq\Bvalue{Tf+Tg>\alpha}$.
+
+\medskip
+
+\quad{\bf (ii)} If $x\in H$, then
+
+$$\eqalignno{x\in\bigcup_{q\in\Bbb Q}
+&(\Bvalue{Tf>q}\cap\Bvalue{Tg>\beta-q})\cr
+&\Longrightarrow\exists\,q\in\Bbb Q,\,f(x)+\omega(f,x)\ge q,\,
+   g(x)+\omega(g,x)\ge\beta-q\cr
+&\Longrightarrow f(x)+g(x)+2\delta\ge\beta\cr
+&\Longrightarrow (f+g)(x)\ge\alpha+3\delta>\alpha+\omega(f+g,x)\cr
+&\Longrightarrow x\in\Bvalue{T(f+g)>\alpha}.\cr}$$
+
+\noindent Thus
+
+\Centerline{$H\cap\bigcup_{q\in\Bbb
+Q}(\Bvalue{Tf>q}\cap\Bvalue{Tg>\beta-q})
+\subseteq\Bvalue{T(f+g)>\alpha}$.}
+
+\noindent Because $H$ is dense and
+$\bigcup_{q\in\Bbb Q}(\Bvalue{Tf>q}\cap\Bvalue{Tg>\beta-q})$ is open,
+
+$$\eqalign{\Bvalue{Tf+Tg>\beta}
+&=\interior\overline{\bigcup_{q\in\Bbb Q}\Bvalue{Tf>q}
+   \cap\Bvalue{Tg>\beta-q}}\cr
+&\subseteq\interior\overline{\Bvalue{T(f+g)>\alpha}}
+=\Bvalue{T(f+g)>\alpha}.\cr}$$
+
+\medskip
+
+\quad{\bf (iii)} Now let $\beta\downarrow\alpha$;  we have
+
+$$\eqalign{\Bvalue{T(f+g)>\alpha}
+&=\sup_{\beta>\alpha}\Bvalue{T(f+g)>\beta}
+\subseteq\Bvalue{Tf+Tg>\alpha}\cr
+&=\sup_{\beta>\alpha}\Bvalue{Tf+Tg>\beta}
+\subseteq\Bvalue{T(f+g)>\alpha},\cr}$$
+
+\noindent so $\Bvalue{T(f+g)>\alpha}=\Bvalue{Tf+Tg>\alpha}$.   As
+$\alpha$ is arbitrary, $T(f+g)=Tf+Tg$;  as $f$ and $g$ are arbitrary,
+$T$ is additive.\ \Qed
+
+\medskip
+
+{\bf (e)} It is now easy to see that $T$ is linear.   \Prf\ If
+$\gamma>0$, $f\in U$ and $\alpha\in\Bbb R$ then
+
+$$\eqalign{\Bvalue{T(\gamma f)>\alpha}
+&=\sup_{\beta>\alpha}\interior\overline{\{x:\gamma f(x)>\beta\}}
+=\sup_{\beta>\alpha}
+  \interior\overline{\{x:f(x)>\Bover{\beta}{\gamma}\}}\cr
+&=\sup_{\beta>\alpha/\gamma}\interior\overline{\{x:f(x)>\beta\}}
+=\Bvalue{Tf>\Bover{\alpha}{\gamma}}
+=\Bvalue{\gamma Tf>\alpha}.\cr}$$
+
+\noindent As $\alpha$ is arbitrary, $T(\gamma f)=\gamma Tf$;  because we
+already know that $T$ is additive, this is enough to show that $T$ is
+linear.\ \Qed
+
+\medskip
+
+{\bf (f)} In fact $T$ is a Riesz homomorphism.   \Prf\ If $f\in U$ and
+$\alpha\ge 0$ then
+
+$$\eqalign{\Bvalue{T(f^+)>\alpha}
+&=\sup_{\beta>\alpha}\interior\overline{\{x:f^+(x)>\beta\}}
+=\sup_{\beta>\alpha}\interior\overline{\{x:f(x)>\beta\}}\cr
+&=\Bvalue{Tf>\alpha}
+=\Bvalue{(Tf)^+>\alpha}.\cr}$$
+
+\noindent If $\alpha<0$ then
+
+\Centerline{$\Bvalue{T(f^+)>\alpha}
+=\sup_{\beta>\alpha}\interior\overline{\{x:f^+(x)>\beta\}}
+=X=\Bvalue{(Tf)^+>\alpha}$.   \Qed}
+
+\medskip
+
+{\bf (g)} Of course the constant function $\chi X$ belongs to $U$, and
+is its multiplicative identity;  and $T(\chi X)$ is the multiplicative
+identity of $L^0$, because
+
+$$\eqalign{\Bvalue{T(\chi X)>\alpha}
+&=\sup_{\beta>\alpha}\interior\overline{\{x:(\chi X)(x)>\beta\}}\cr
+&=X\text{ if }\alpha<1,\,\emptyset\text{ if }\alpha\ge 1.\cr}$$
+
+\noindent By 353Pd, or otherwise, $T$ is multiplicative.
+
+\medskip
+
+{\bf (h)}  The kernel of $T$ is $W$.   \Prf\ (i) For $f\in U$,
+
+$$\eqalignno{Tf=0
+&\Longrightarrow\Bvalue{T|f|>0}=\Bvalue{|Tf|>0}=\emptyset\cr
+&\Longrightarrow\{x:|f(x)|>\omega(|f|,x)\}=\emptyset\cr
+&\Longrightarrow\interior\{x:|f(x)|\le\epsilon\}
+  \supseteq\{x:\omega(|f|,x)<\epsilon\}
+  \text{ is dense for every }\epsilon>0\cr
+&\Longrightarrow f\in W.\cr}$$
+
+\noindent (ii) If $f\in W$, then, first,
+
+\Centerline{$\{x:\omega(f,x)<\epsilon\}
+\supseteq\interior\{x:|f(x)|\le\Bover13\epsilon\}$}
+
+\noindent is dense for every $\epsilon>0$, so $f\in U$;  and next, for
+any $\beta>0$, $\overline{\{x:|f(x)|>\beta\}}$ does not meet the dense
+open set $\interior\{x:|f(x)|\le\beta\}$, so
+
+\Centerline{$\Bvalue{|Tf|>0}=\Bvalue{T|f|>0}
+=\sup_{\beta>0}\interior\overline{\{x:|f(x)|>\beta\}}=\emptyset$}
+
+\noindent and $Tf=0$.\ \Qed
+
+\medskip
+
+{\bf (i)} Finally, $T$ is surjective.   \Prf\ Take any $u\in L^0$.
+Define $\tilde f:X\to[-\infty,\infty]$ by setting
+$\tilde f(x)=\sup\{\alpha:x\in\Bvalue{u>\alpha}\}$ for each $x$,
+counting $\inf\emptyset$ as $-\infty$.   Then
+
+\Centerline{$\{x:\tilde
+f(x)>\alpha\}=\bigcup_{\beta>\alpha}\Bvalue{u>\beta}$}
+
+\noindent is open, for every $\alpha\in\Bbb R$.   The set
+
+\Centerline{$\{x:\tilde f(x)=\infty\}
+=\bigcap_{\alpha\in\Bbb R}\Bvalue{u>\alpha}$}
+
+\noindent is nowhere dense, because
+$\inf_{\alpha\in\Bbb R}\Bvalue{u>\alpha}=\emptyset$ in $\RO(X)$;  while
+
+\Centerline{$\{x:\tilde f(x)=-\infty\}
+=X\setminus\bigcup_{\alpha\in\Bbb R}\Bvalue{u>\alpha}$}
+
+\noindent also is nowhere dense, because
+$\sup_{\alpha\in\Bbb R}\Bvalue{u>\alpha}=X$ in $\RO(X)$.   Accordingly
+$E=\interior\{x:\tilde f(x)\in\Bbb R\}$ is dense.    Set
+$f(x)=\tilde f(x)$ for $x\in E$, $0$ for $x\in X\setminus E$.
+
+Let $\epsilon>0$.   If $G\subseteq X$ is a non-empty open set, there is
+an $\alpha\in\Bbb R$ such that $G\not\subseteq\Bvalue{u>\alpha}$, so
+$G_1=G\setminus\overline{\Bvalue{u>\alpha}}\ne\emptyset$, and
+$\tilde f(x)\le\alpha$ for every $x\in G_1$.   Set
+
+\Centerline{$\alpha'=\sup_{x\in G_1}\tilde f(x)\le\alpha<\infty$.}
+
+\noindent Because $E$ meets $G_1$, $\alpha'>-\infty$.   Then
+$G_2=G_1\cap\Bvalue{u>\alpha'-\bover12\epsilon}$ is a
+non-empty open subset of $G$ and
+$\alpha'-\bover12\epsilon\le\tilde f(x)\le\alpha'$ for
+every $x\in G_2$.   Accordingly $|f(y)-f(z)|\le\bover12\epsilon$ for all
+$y$, $z\in G_2$, and $\omega(f,x)<\epsilon$ for all $x\in G_2$.
+As $G$ is arbitrary, $\{x:\omega(f,x)<\epsilon\}$ is dense;  as
+$\epsilon$ is arbitrary, $f\in U$.
+
+Take $\alpha<\beta$ in $\Bbb R$, and set
+$\delta=\bover12(\beta-\alpha)$.   Then
+$H=E\cap\{x:\omega(f,x)<\delta\}$ is a dense open set, and
+
+$$\eqalign{H\cap\Bvalue{Tf>\beta}
+&\subseteq H\cap\{x:f(x)+\omega(f,x)\ge\beta\}
+\subseteq E\cap\{x:f(x)>\alpha\}\cr
+&\subseteq\{x:\tilde f(x)>\alpha\}
+\subseteq\Bvalue{u>\alpha}.\cr}$$
+
+\noindent As $H$ is dense,
+$\Bvalue{Tf>\beta}\subseteq\Bvalue{u>\alpha}$.   In the other direction
+
+$$\eqalign{H\cap\Bvalue{u>\beta}
+&\subseteq H\cap\{x:\tilde f(x)\ge\beta\}
+=H\cap\{x:f(x)\ge\beta\}\cr
+&\subseteq\{x:f(x)>\alpha+\omega(f,x)\}
+\subseteq\Bvalue{Tf>\alpha},\cr}$$
+
+\noindent so $\Bvalue{u>\beta}\subseteq\Bvalue{Tf>\alpha}$.   Just as in
+(d) above, this is enough to show that $Tf=u$.   As $u$ is arbitrary,
+$T$ is surjective.\ \Qed
+
+This completes the proof.
+}%end of proof of 364T
+
+\leader{*364U}{Compact spaces} Suppose now that $X$ is a compact
+Hausdorff topological space.
+In this case the space $U$ of 364T is just the space of functions
+$f:X\to\Bbb R$ such that $\{x:f$ is continuous at $x\}$ is dense in $X$.
+\prooflet{\Prf\ It is easy to see that
+
+\Centerline{$\{x:f$ is continuous at
+$x\}=\{x:\omega(f,x)=0\}=\bigcap_{n\in\Bbb N}H_n$}
+
+\noindent where $H_n=\{x:\omega(f,x)<2^{-n}\}$ for
+each $n$.   Each $H_n$ is an open set (see part (a-i-$\alpha$) of the
+proof of 364T), so by Baire's theorem (3A3G) $\bigcap_{n\in\Bbb N}H_n$
+is dense iff every $H_n$ is dense, that is, iff $f\in U$.\ \Qed}
+
+Now $W$, as defined in 364T,
+becomes $\{f:f\in U,\,\{x:f(x)=0\}$ is dense$\}$.   \prooflet{\Prf\ (i) If
+$f\in W$, then $T|f|=0$, so (by the formula in (c) of the proof of 364T)
+$|f(x)|\le\omega(|f|,x)$ for every $x$.   But $\{x:\omega(f,x)=0\}$ is
+dense, because $f\in U$, so $\{x:f(x)=0\}$ also is dense.   (ii) If
+$f\in U$ and $\{x:f(x)=0\}$ is dense, then
+
+\Centerline{$\omega(f,x)
+\ge\inf_{x\in G\text{ is open}}\sup_{y\in G}|f(y)-f(x)|
+\ge|f(x)|$}
+
+\noindent for every $x\in X$.   So for any $\epsilon>0$,
+$\interior\{x:|f(x)|\le\epsilon\}\supseteq\{x:\omega(f,x)<\epsilon\}$ is
+dense, and $f\in W$.\ \Qed}
+
+
+\cmmnt{In the case of extremally disconnected spaces, we can go
+farther.}
+
+\leader{*364V}{Theorem} Let $X$ be a compact Hausdorff extremally
+disconnected space, and $\RO(X)$ its regular open algebra.   Write
+$C^{\infty}=C^{\infty}(X)$ for the space of continuous functions
+$g:X\to[-\infty,\infty]$ such that $\{x:g(x)=\pm\infty\}$ is nowhere
+dense.   Then we have a bijection $S:C^{\infty}\to L^0=L^0(\RO(X))$
+defined by saying that
+
+\Centerline{$\Bvalue{Sg>\alpha}=\overline{\{x:g(x)>\alpha\}}$}
+
+\noindent for every $\alpha\in\Bbb R$.   Addition and multiplication in
+$L^0$ correspond to the operations $\frdotplus$, $\dottimes$ on
+$C^{\infty}$ defined by saying that $g\frdotplus h$, $g\dottimes h$ are
+the unique elements of $C^{\infty}$ agreeing with $g+h$, $g\times h$ on
+$\{x:g(x),\,h(x)$ are both finite$\}$.   Scalar multiplication in $L^0$
+corresponds to the operation
+
+\Centerline{$(\gamma g)(x)=\gamma g(x)$ for $x\in X$, $g\in C^{\infty}$,
+$\gamma\in\Bbb R$}
+
+\noindent on $C^{\infty}$ (counting $0\cdot\infty$ as $0$), while the
+ordering of $L^0$ corresponds to the relation
+
+\Centerline{$g\le h\iff g(x)\le h(x)$ for every $x\in X$.}
+
+\proof{{\bf (a)} For $g\in C^{\infty}$, set $H_g=\{x:g(x)\in\Bbb R\}$,
+so that $H_g$ is a dense open set, and define $Rg:X\to\Bbb R$ by
+setting $(Rg)(x)=g(x)$ if $x\in H_g$, $0$ if $x\in X\setminus H_g$.
+Then $Rg$ is continuous at every point of $H_g$, so belongs to the space
+$U$ of 364T-364U.   Set $Sg=T(Rg)$, where $T:U\to L^0$ is the map
+of 364T.   Then
+
+\Centerline{$\Bvalue{Sg>\alpha}=\overline{\{x:g(x)>\alpha\}}$}
+
+\noindent for every $\alpha\in\Bbb R$.   \Prf\ (i) $\omega(g,x)=0$ for
+every $x\in H_g$, so, if $\beta>\alpha$,
+
+\Centerline{$H_g\cap\Bvalue{Sg>\beta}
+\subseteq\{x:x\in H_g,\,(Rg)(x)\ge\beta\}
+\subseteq\{x:g(x)\ge\beta\}$}
+
+\noindent by the formula in part (c) of the proof of 364T.   As
+$\Bvalue{Sg>\beta}$ is open and $H_g$ is dense,
+
+\Centerline{$\Bvalue{Sg>\beta}
+\subseteq\overline{H_g\cap\Bvalue{Sg>\beta}}\subseteq\{x:g(x)\ge\beta\}
+\subseteq\{x:g(x)>\alpha\}$.}
+
+\noindent Now
+
+\Centerline{$\Bvalue{Sg>\alpha}=\sup_{\beta>\alpha}\Bvalue{Sg>\beta}
+=\interior\overline{\bigcupop_{\beta>\alpha}\Bvalue{Sg>\beta}}
+\subseteq\overline{\{x:g(x)>\alpha\}}$.}
+
+\noindent (ii) In the other direction,
+$H_g\cap\{x:g(x)>\alpha\}\subseteq\Bvalue{Sg>\alpha}$, by the other half
+of the formula in the proof of 364T.   Again because $\{x:g(x)>\alpha\}$
+is open and $H_g$ is dense,
+
+\Centerline{$\overline{\{x:g(x)>\alpha\}}
+\subseteq\overline{\Bvalue{Sg>\alpha}}=\Bvalue{Sg>\alpha}$}
+
+\noindent because $X$ is extremally disconnected (see 314S).\ \Qed
+
+\medskip
+
+{\bf (b)} Thus $S=TR$ defined by the formula offered.
+Now if $g$, $h\in C^{\infty}$ and $g\le h$, we surely have
+$\{x:g(x)>\alpha\}
+\subseteq\{x:h(x)>\alpha\}$ for every $\alpha$, so
+$\Bvalue{Sg>\alpha}\subseteq\Bvalue{Sh>\alpha}$ for every $\alpha$ and
+$Sg\le Sh$.   On the other hand, if $g\not\le h$ then $Sg\not\le Sh$.
+\Prf\ Take $x_0$ such that $g(x_0)>h(x_0)$, and $\alpha\in\Bbb R$ such
+that $g(x_0)>\alpha>h(x_0)$;  set $H=\{x:g(x)>\alpha>h(x)\}$;  this is a
+non-empty open set and $H\subseteq\Bvalue{Sg>\alpha}$.   On the other
+hand, $H\cap\{x:h(x)>\alpha\}=\emptyset$ so
+$H\cap\Bvalue{Sh>\alpha}=\emptyset$.   Thus
+$\Bvalue{Sg>\alpha}\not\subseteq\Bvalue{Sh>\alpha}$ and
+$Sg\not\le Sh$.\ \QeD\   In particular, $S$ is injective.
+
+\medskip
+
+{\bf (c)} $S$ is surjective.   \Prf\ If $u\in L^0$, set
+
+\Centerline{$g(x)
+=\sup\{\alpha:x\in\Bvalue{u>\alpha}\}\in[-\infty,\infty]$}
+
+\noindent for every $x\in X$, taking $\sup\emptyset=-\infty$.   Then,
+for any $\alpha\in\Bbb R$,
+$\{x:g(x)>\alpha\}=\bigcup_{\beta>\alpha}\Bvalue{u>\alpha}$ is open.
+On the other hand,
+
+\Centerline{$\{x:g(x)<\alpha\}
+=\bigcup_{\beta<\alpha}\{x:x\notin\Bvalue{u>\beta}\}$}
+
+\noindent also is open, because all the sets $\Bvalue{u>\beta}$ are
+open-and-closed.   So $g:X\to[-\infty,\infty]$ is continuous.
+Also
+
+\Centerline{$\{x:g(x)>-\infty\}
+=\bigcup_{\alpha\in\Bbb R}\Bvalue{u>\alpha}$,}
+
+\Centerline{$\{x:g(x)<\infty\}
+=\bigcup_{\alpha\in\Bbb R}X\setminus\Bvalue{u>\alpha}$}
+
+\noindent are dense, so $g\in C^{\infty}$.    Now, for
+any $\alpha\in\Bbb R$,
+
+$$\eqalign{\Bvalue{Sg>\alpha}
+&=\overline{\{x:g(x)>\alpha\}}
+=\overline{\bigcup_{\beta>\alpha}\Bvalue{u>\beta}}\cr
+&=\interior\overline{\bigcup_{\beta>\alpha}\Bvalue{u>\beta}}
+=\sup_{\beta>\alpha}\Bvalue{u>\beta}
+=\Bvalue{u>\alpha}.\cr}$$
+
+\noindent So $Sg=u$.   As $u$ is arbitrary, $S$ is surjective.\ \Qed
+
+\medskip
+
+{\bf (d)} Accordingly $S$ is a bijection.   I have already checked (in
+part (b)) that it is an isomorphism of the order structures.   For the
+algebraic operations, observe that if $g$, $h\in C^{\infty}$ then there
+are $f_1$, $f_2\in C^{\infty}$ such that $Sg+Sh=Sf_1$ and $Sg\times
+Sh=Sf_2$, that is,
+
+\Centerline{$T(Rg+Rh)=TRg+TRh=TRf_1$,
+\quad$T(Rg\times Rh)=TRg\times TRh=TRf_2$.}
+
+\noindent   But this means that
+
+\Centerline{$T(Rg+Rh-Rf_1)=T((Rg\times Rh)-Rf_2)=0$,}
+
+\noindent so that $Rg+Rh-Rf_1$, $(Rg\times Rh)-Rf_2$ belong to $W$, as
+defined in 364T-364U, and
+are zero on dense sets (364U).   Since we know also that the set
+$G=\{x:g(x)$, $h(x)$ are both finite$\}$ is a dense open set, while $g$,
+$h$, $f_1$ and $f_2$ are all continuous, we must have
+$f_1(x)=g(x)+h(x)$, $f_2(x)=g(x)h(x)$ for every $x\in G$.   And of
+course this uniquely specifies $f_1$ and $f_2$ as members of
+$C^{\infty}$.
+
+Thus we do have operations $\frdotplus$, $\dottimes$ as
+described, rendering $S$ additive and multiplicative.   As for scalar
+multiplication, it is easy to check that $R(\gamma g)=\gamma Rg$ (at
+least, unless $\gamma=0$, which is trivial), so that
+$S(\gamma g)=\gamma Sg$ for every $g\in C^{\infty}$.
+}%end of proof of 364V
+
+\exercises{\leader{364X}{Basic exercises $\pmb{>}$(a)}
+%\sqheader 364Xa
+Let $\frak A$ be a Dedekind $\sigma$-complete Boolean
+algebra.   For $u$, $v\in L^0=L^0(\frak A)$ set
+$\Bvalue{u<v}=\Bvalue{v>u}=\Bvalue{v-u>0}$,
+$\Bvalue{u\le v}=\Bvalue{v\ge u}=1\Bsetminus\Bvalue{v<u}$,
+$\Bvalue{u=v}=\Bvalue{u\le v}\Bcap\Bvalue{v\le u}$.   (i) Show that
+$(\Bvalue{u<v},\Bvalue{u=v},\Bvalue{u>v})$ is always a partition of
+unity in $\frak A$.   (ii) Show that for any $u$, $u'$, $v$,
+$v'\in L^0$, $\Bvalue{u\le u'}\Bcap\Bvalue{v\le v'}
+\discretionary{}{}{}\Bsubseteq\Bvalue{u+v\le u'+v'}$ and
+$\Bvalue{u=u'}\Bcap\Bvalue{v=v'}\Bsubseteq\Bvalue{u\times v=u'\times v'}$.
+%364F
+
+\spheader 364Xb Let $\frak A$ be a Dedekind $\sigma$-complete Boolean
+algebra.   (i) Show that if $u$, $v\in L^0=L^0(\frak A)$ and $\alpha$,
+$\beta\in\Bbb R$ then $\Bvalue{u+v\ge\alpha+\beta}
+\Bsubseteq\Bvalue{u\ge\alpha}\Bcup\Bvalue{v\ge\beta}$.   (ii) Show that
+if $u$, $v\in(L^0)^+$ and $\alpha$, $\beta\ge 0$ then
+$\Bvalue{u\times v\ge\alpha\beta}
+\Bsubseteq\Bvalue{u\ge\alpha}\Bcup\Bvalue{v\ge\beta}$.
+%364F, 364E
+
+\spheader 364Xc Let $\frak A$ be a Dedekind $\sigma$-complete Boolean
+algebra and $u\in L^0(\frak A)$.   Show that
+$\{\Bvalue{u\in E}:E\subseteq\Bbb R$ is Borel$\}$ is
+the $\sigma$-subalgebra of $\frak A$ generated by
+$\{\Bvalue{u>\alpha}:\alpha\in\Bbb R\}$.
+%364F
+
+\sqheader 364Xd Let $(\frak A,\bar\mu)$ be a probability algebra.   Show
+that for any $u\in L^0(\frak A)$ there is a unique Radon probability
+measure $\nu$ on $\Bbb R$ (the {\bf distribution} of $u$) such that
+$\nu E=\bar\mu\Bvalue{u\in E}$ for every Borel set $E\subseteq\Bbb R$.
+\Hint{271B.}
+%364F
+
+\spheader 364Xe Let $(\frak A,\bar\mu)$ be a probability algebra, and
+$\langle u_i\rangle_{i\in I}$ any family in $L^0(\frak A)$;  for each
+$i\in I$ let $\frak B_i$ be the closed subalgebra of $\frak A$ generated
+by $\{\Bvalue{u_i>\alpha}:\alpha\in\Bbb R\}$.   Show that the following
+are equiveridical:  (i) $\bar\mu(\inf_{i\in J}\Bvalue{u_i>\alpha_i})
+=\prod_{i\in J}\bar\mu\Bvalue{u_i>\alpha_i}$
+whenever $J\subseteq I$ is finite and $\alpha_i\in\Bbb R$ for each
+$i\in J$ (ii) $\langle\frak B_i\rangle_{i\in I}$ is
+stochastically independent in the
+sense of 325L.   (In this case we may call $\langle u_i\rangle_{i\in I}$
+{\bf $\bar\mu$-(stochastically )independent}.)
+%364F
+
+\spheader 364Xf Let $(\frak A,\bar\mu)$ be a probability algebra and
+$u$, $v$ two $\bar\mu$-independent members of $L^0(\frak A)$.
+Show that the distribution of their sum is the convolution of their
+distributions.    \Hint{272T}.
+%364F
+
+\sqheader 364Xg Let $\frak A$ be a Dedekind $\sigma$-complete Boolean
+algebra and $g$, $h:\Bbb R\to\Bbb R$  Borel measurable functions.   (i)
+Show that $\bar g\bar h=\bar{gh}$, where $\bar g$, $\bar h:L^0\to L^0$
+are defined as in 364H.   (ii) Show that
+$\overline{g+h}(u)=\bar g(u)+\bar h(u)$,
+$\overline{g\times h}(u)=\bar g(u)\times\bar h(u)$ for
+every $u\in L^0=L^0(\frak A)$.   (iii) Show that if $\sequencen{h_n}$ is
+a sequence of Borel measurable functions on $\Bbb R$ and
+$\sup_{n\in\Bbb N}h_n=h$, then
+$\sup_{n\in\Bbb N}\bar{h}_n(u)=\bar h(u)$ for
+every $u\in L^0$.   (iv) Show that if $h$ is non-decreasing and
+continuous on the left, then $\bar h(\sup A)=\sup\bar h[A]$ whenever
+$A\subseteq L^0$ is a non-empty set with a supremum in $L^0$.
+%364H
+
+\spheader 364Xh Let $\frak A$ be a Dedekind $\sigma$-complete Boolean
+algebra.   (i) Show that $S(\frak A)$ can be identified ($\alpha$) with
+the set of
+those $u\in L^0=L^0(\frak A)$ such that
+$\{\Bvalue{u>\alpha}:\alpha\in\Bbb R\}$ is finite ($\beta$) with the set
+of those $u\in L^0$ such that $\Bvalue{u\in I}=1$ for some finite
+$I\subseteq\Bbb R$.   (ii) Show that
+$L^{\infty}(\frak A)$ can be identified with the set of those $u\in L^0$
+such that $\Bvalue{u\in[-\alpha,\alpha]}=1$ for some $\alpha\ge 0$, and
+that $\|u\|_{\infty}$ is the smallest such $\alpha$.
+%364J
+
+\spheader 364Xi Show that if $\frak A$ is a Dedekind $\sigma$-complete
+Boolean algebra, and $u\in L^0(\frak A)$, then for any $\alpha\in\Bbb R$
+
+\Centerline{$\Bvalue{u>\alpha}
+=\inf_{\beta>\alpha}
+  \sup\{a:a\in\frak A,\,u\times\chi a\ge\beta\chi a\}$}
+
+\noindent (compare 363Xh).
+%364J
+
+\sqheader 364Xj\dvAnew{2008;  originally 3{}64Xw}
+Let $\frak A$ be a Dedekind $\sigma$-complete Boolean
+algebra and $\nu:\frak A\to\Bbb R$ a non-negative
+finitely additive functional.
+Let $\smalldashint:L^{\infty}(\frak A)\to\Bbb R$
+be the corresponding linear
+functional, as in 363L.   Write $U$ for the set of those
+$u\in L^0(\frak A)$ such that
+$\sup\{\smalldashint v:v\in L^{\infty}(\frak A)$, $v\le|u|\}$ is finite.
+Show that $\smalldashint$ has an
+extension to a non-negative linear functional on $U$.
+%364J
+
+\spheader 364Xk Let $\frak A$ be a Dedekind $\sigma$-complete Boolean
+algebra and $u\ge 0$ in $L^0=L^0(\frak A)$.   Show that
+$u=\sup_{q\in\Bbb Q}q\chi\Bvalue{u>q}$ in $L^0$.
+%364L
+
+\spheader 364Xl(i) Let $\frak A$ be a Dedekind $\sigma$-complete
+Boolean algebra and $A\subseteq L^0(\frak A)$ a non-empty countable set
+with supremum $w$.   Show that
+$\Bvalue{w\in G}\Bsubseteq\sup_{u\in A}\Bvalue{u\in G}$ for every open
+set $G\subseteq\Bbb R$.
+(ii) Let $(\frak A,\bar\mu)$ be a localizable measure algebra and
+$A\subseteq L^0(\frak A)$ a non-empty set with supremum $w$.   Show that
+$\Bvalue{w\in G}\Bsubseteq\sup_{u\in A}\Bvalue{u\in G}$ for every open
+set $G\subseteq\Bbb R$.
+%364L
+
+\spheader 364Xm
+Let $\frak A$ be a Dedekind $\sigma$-complete Boolean algebra and
+$A\subseteq L^0=L^0(\frak A)$ a non-empty set which is bounded below in
+$L^0$.   Suppose that $\phi_0(\alpha)=\inf_{u\in A}\Bvalue{u>\alpha}$ is
+defined in $\frak A$ for every $\alpha\in\Bbb R$.   Show that $v=\inf A$
+is defined in $L^0$, and that
+$\Bvalue{v>\alpha}=\sup_{\beta>\alpha}\phi_0(\beta)$ for every
+$\alpha\in\Bbb R$.
+%364L
+
+\spheader 364Xn Let $(X,\Sigma,\mu)$ be a measure space and
+$f:X\to\coint{0,\infty}$ a function;  set
+$A=\{g^{\ssbullet}:g\in\eusm L^0(\mu),\,g\leae f\}$.   (i) Show that if
+$(X,\Sigma,\mu)$
+either is localizable or has the measurable envelope property
+(213Xl), then $\sup A$ is defined in $L^0(\mu)$.   (ii) Show that if
+$(X,\Sigma,\mu)$ is complete and locally determined and $w=\sup A$ is
+defined in $L^0(\mu)$, then $w\in A$.
+
+\spheader 364Xo Let $\frak A$ be a Dedekind $\sigma$-complete Boolean
+algebra.   Show that if $u$, $v\in L^0=L^0(\frak A)$ then the
+following are equiveridical:  ($\alpha$)
+$\Bvalue{|v|>0}\Bsubseteq\Bvalue{|u|>0}$ ($\beta$) $v$ belongs to the
+band in $L^0$ generated by $u$ ($\gamma$) there is a $w\in L^0$ such
+that $u\times w=v$.
+%364N
+
+\sqheader 364Xp Let $\frak A$ be a Dedekind $\sigma$-complete Boolean
+algebra and $a\in\frak A$;  let $\frak A_a$ be the principal ideal of
+$\frak A$ generated by $a$.   Show that $L^0(\frak A_a)$ can be
+identified, as $f$-algebra, with the band in $L^0(\frak A)$ generated
+by $\chi a$.
+%364O
+
+\spheader 364Xq Let $\frak A$ and $\frak B$ be Dedekind
+$\sigma$-complete Boolean algebras, and $\pi:\frak A\to\frak B$ a
+sequentially order-continuous Boolean homomorphism.   Let
+$T:L^0(\frak A)\to L^0(\frak B)$ be the corresponding Riesz homomorphism
+(364P).   Show that (i) the kernel of $T$ is the sequentially
+order-closed solid linear subspace of $L^0(\frak A)$ generated by
+$\{\chi a:a\in\frak A,\,\pi a=0\}$   (ii) the set of values of $T$
+is the sequentially
+order-closed linear subspace of $L^0(\frak B)$ generated by
+$\{\chi(\pi a):a\in\frak A\}$.
+%364P
+
+\spheader 364Xr Let $\frak A$ and $\frak B$ be Dedekind
+$\sigma$-complete Boolean algebras, and $\pi:\frak A\to\frak B$ a
+sequentially order-continuous Boolean homomorphism, with
+$T:L^0(\frak A)\to L^0(\frak B)$ the associated operator.   Suppose that
+$h$ is a Borel measurable real-valued function defined on a Borel subset
+of $\Bbb R$.   Show that $\bar h(Tu)=T\bar h(u)$ whenever
+$u\in L^0(\frak A)$ and $\bar h(u)$ is defined in the sense of 364H.
+%364P
+
+\spheader 364Xs Let $(\frak A,\bar\mu)$ and $(\frak B,\bar\nu)$ be
+probability algebras, and $\pi:\frak A\to\frak B$ a measure-preserving
+Boolean homomorphism;  let $T:L^0(\frak A)\to L^0(\frak B)$ be the
+corresponding Riesz homomorphism.   Show that if $\familyiI{u_i}$ is a
+family in $L^0(\frak A)$, it is $\bar\mu$-independent iff
+$\familyiI{Tu_i}$ is $\bar\nu$-independent.
+%364P 364Xe
+
+\sqheader 364Xt Let $\frak A$ be a Dedekind $\sigma$-complete Boolean
+algebra and $\frak B$ a $\sigma$-subalgebra of $\frak A$.   Show that
+$L^0(\frak B)$ can be identified with the sequentially order-closed
+Riesz subspace of $L^0(\frak A)$ generated by $\{\chi b:b\in\frak B\}$.
+%364P
+
+\spheader 364Xu Let $\frak A$ be a Dedekind $\sigma$-complete Boolean
+algebra and $\pi:\frak A\to\frak A$ a sequentially order-continuous
+Boolean homomorphism;  let $T_{\pi}:L^0(\frak A)\to L^0(\frak A)$ be the
+corresponding Riesz homomorphism.   Let $\frak C$ be the fixed-point
+subalgebra of $\pi$.   Show that $\{u:u\in L^0(\frak A)$, $T_{\pi}u=u\}$
+can be identified with $L^0(\frak C)$.
+%364P 364Xt
+
+\spheader 364Xv Use the ideas of part (d) of the proof of 364T to show
+that the operator $T$ there is multiplicative, without appealing to
+353P.
+%364T
+
+\spheader 364Xw\dvAnew{2012} Let $\frak A$ be a Dedekind $\sigma$-complete
+Boolean algebra and $\frak B$ an order-closed subalgebra of $\frak A$.
+Show that $L^0(\frak B)$, regarded as a subset of $L^0(\frak A)$,
+is order-closed in $L^0(\frak A)$.
+%364Xt 364P out of order query
+
+\leader{364Y}{Further exercises $\pmb{>}$(a)}%
+%\spheader 364Ya
+(i) Show directly, without using the Loomis-Sikorski theorem or the
+Stone representation,
+that if $\frak A$ is any Dedekind $\sigma$-complete Boolean algebra then
+the formulae of 364D define a group operation $+$ on $L^0(\frak A)$, and
+generally an $f$-algebra structure.   (ii) Defining
+$\chi:\frak A\to L^0(\frak A)$ by the formula in 364Jc, show that
+$S(\frak A)$ and $L^{\infty}(\frak A)$ can be identified with the linear
+span of $\{\chi a:a\in\frak A\}$ and the solid linear subspace of
+$L^0(\frak A)$ generated by $e=\chi 1$.   (iii) Still without using the
+Loomis-Sikorski theorem, explain how to define
+$\bar h:L^0(\frak A)\to L^0(\frak A)$ for continuous functions
+$h:\Bbb R\to\Bbb R$.   (iv) Check that these ideas are sufficient to yield
+364L-364R, %364L 364M 364N 364O 364P 364R
+except that in 364Pd we may have difficulty with arbitrary
+Borel functions $h$.
+%364D, 364J
+
+\spheader 364Yb Let $\frak A$ be a Dedekind $\sigma$-complete Boolean
+algebra and $\pmb{u}=(u_1,\ldots,u_n)$ a member of $L^0(\frak A)^n$.
+Write $\Cal B_n$ for the algebra of Borel sets in $\BbbR^n$.
+(i) Show that there
+is a unique sequentially order-continuous Boolean homomorphism
+$E\mapsto\Bvalue{\pmb{u}\in E}:\Cal B_n\to\frak A$ such that
+$\Bvalue{\pmb{u}\in E}=\inf_{i\le n}\Bvalue{u_i>\alpha_i}$ when
+$E=\prod_{i\le n}\ooint{\alpha_i,\infty}$.
+(ii) Show that for every sequentially order-continuous Boolean
+homomorphism $\phi:\Cal B_n\to\frak A$ there is a unique
+$\pmb{u}\in L^0(\frak A)^n$ such that 
+$\phi E=\Bvalue{\pmb{u}\in E}$ for every $E\in\Cal B_n$.
+%364F
+
+\spheader 364Yc Let $\frak A$ be a Dedekind $\sigma$-complete Boolean
+algebra, $n\ge 1$ and $h:\BbbR^n\to\Bbb R$ a Borel measurable function.
+Show that we have a corresponding function 
+$\bar h:L^0(\frak A)^n\to L^0(\frak A)$ defined by saying that 
+$\Bvalue{\bar h(\pmb{u})\in E}
+=\Bvalue{\pmb{u}\in h^{-1}[E]}$ for every Borel set
+$E\subseteq\Bbb R$ and $\pmb{u}\in L^0(\frak A)^n$.
+%364H
+
+\spheader 364Yd Suppose that $h_1(x,y)=x+y$, $h_2(x,y)=xy$,
+$h_3(x,y)=\max(x,y)$ for all $x$, $y\in\Bbb R$.   Show that, in the
+language of 364Yc, $\bar h_1(u,v)=u+v$, $\bar h_2(u,v)=u\times v$, $\bar
+h_3(u,v)=u\vee v$ for all $u$, $v\in L^0$.
+%364Yc, 364H
+
+\spheader 364Ye Let $\frak A$ be a Dedekind $\sigma$-complete Boolean
+algebra.   Show that $\frak A$ is ccc iff $L^0(\frak A)$ has the
+countable sup property.
+%364J 363Yb
+
+\spheader 364Yf Let $\frak A$ and $\frak B$ be Dedekind
+$\sigma$-complete Boolean algebras, and $T:L^0(\frak A)\to L^0(\frak B)$
+a Riesz homomorphism such that $Te=e'$, where $e$, $e'$
+are the multiplicative identities of $L^0(\frak A)$, $L^0(\frak B)$
+respectively.   Show that there is a unique sequentially
+order-continuous Boolean homomorphism $\pi:\frak A\to\frak B$ such that
+$T=T_{\pi}$ in the sense of 364P.   \Hint{use 353Pd.   Compare
+375A below.}
+%364P
+
+\spheader 364Yg Let $\frak A$ and $\frak B$ be
+Dedekind $\sigma$-complete Boolean algebras
+and $\pi:\frak A\to\frak B$ a sequentially order-continuous ring
+homomorphism.
+(i) Show that we have a multiplicative sequentially order-continuous Riesz
+homomorphism $T_{\pi}:L^0(\frak A)\to L^0(\frak B)$ defined by the
+formula
+
+\Centerline{$\Bvalue{T_{\pi}u>\alpha}=\pi\Bvalue{u>\alpha}$}
+
+\noindent whenever $u\in L^0(\frak A)$ and $\alpha>0$.
+(ii) Show that $T_{\pi}$ is order-continuous iff $\pi$ is order-continuous,
+injective iff $\pi$ is injective, and surjective iff $\pi$ is surjective.
+(iii) Show that if
+$\frak C$ is another Dedekind $\sigma$-complete Boolean algebra
+and $\theta:\frak B\to\frak C$ another sequentially order-continuous
+ring homomorphism then
+$T_{\theta\pi}=T_{\theta}T_{\pi}:L^0(\frak A)\to L^0(\frak C)$.
+%364P out of order
+
+\spheader 364Yh Suppose, in 364T, that $X=\Bbb Q$.   (i) Show that there
+is an $f\in W$ such that $f(q)>0$ for every $q\in\Bbb Q$.   (ii) Show
+that there is a $u\in L^0$ such that no $f\in U$ representing $u$ can be
+continuous at any point of $\Bbb Q$.
+%364T
+
+\spheader 364Yi Let $X$ and $Y$ be topological spaces and $\phi:X\to Y$
+a continuous function such that $\phi^{-1}[M]$ is nowhere dense in $X$
+for every nowhere dense subset $M$ of $Y$.   (Cf.\ 313R.)   (i) Show
+that we have an order-continuous Boolean homomorphism $\pi$ from the
+regular open algebra $\RO(Y)$ of $Y$ to the regular open algebra
+$\RO(X)$ of $X$ defined by the formula
+$\pi G=\interior\overline{\phi^{-1}[G]}$ for every $G\in\RO(Y)$.
+(ii) Show that if $U_X$, $U_Y$
+are the function spaces of 364T  then $g\phi\in U_X$ for every
+$g\in U_Y$.   (iii) Show that if $T_X:U_X\to L^0(\RO(X))$,
+$T_Y:U_Y\to L^0(\RO(Y))$ are the canonical surjections, and $T:L^0(\RO(Y))\to L^0(\RO(X))$ is the homomorphism corresponding to $\pi$, then
+$T(T_Yg)=T_X(g\phi)$ for every $g\in U_Y$.   (iv) Rewrite these ideas
+for the special case in which $X$ is a dense subset of $Y$ and $\phi$ is
+the identity map, showing that in this case $\pi$ and $T$ are
+isomorphisms.
+%364T
+
+\spheader 364Yj Let $X$ be a Baire space, $\RO(X)$ its algebra of
+regular open sets, $\Cal M$ its ideal of meager sets, and
+$\widehat{\Cal B}$ the Baire-property
+$\sigma$-algebra $\{G\symmdiff A:G\subseteq X$ is open, $A\in\Cal M\}$,
+so that $\RO(X)$ can be identified with $\widehat{\Cal B}/\Cal M$
+(314Yd).   (i)
+Repeat the arguments of 364U in this context.  (ii) Show that the space
+$U$ of 364T-364U is a subspace of
+$\eusm L^0=\eusm L^0_{\widehat{\Cal B}}$, and
+that $W=U\cap\eusm W$ where
+$\eusm W=\{f:f\in\Bbb R^X,\,\{x:f(x)\ne 0\}\in\Cal M\}$, so that the
+representations of $L^0(\RO(X))$ as $U/W$,
+$\eusm L^0/\eusm W$ are consistent.
+%364U
+
+\spheader 364Yk Work through the arguments of 364T and 364Yj for the
+case of compact Hausdorff $X$, seeking simplifications based on 364U.
+%364U, 364Yj
+
+\spheader 364Yl Let $X$ be an extremally disconnected compact Hausdorff
+space with regular open algebra $\RO(X)$.   Let $U_0$ be the space of
+real-valued functions $f:X\to\Bbb R$ such that $\interior\{x:f$ is
+continuous at $x\}$ is dense.   Show that $U_0$ is a Riesz subspace of
+the space $U$ of 364T, and that every member of $L^0(\RO(X))$ is
+represented by a member of $U_0$.
+%364V
+
+\spheader 364Ym Let $X$ be a Baire space.   Let $Q$ be the set of all
+continuous real-valued functions defined on subsets of $X$, and $Q^*$
+the set of all members of $Q$ which are maximal in the sense that there
+is no member of $Q$ properly extending them.   (i) Show that the domain
+of any member of $Q^*$ is a dense G$_{\delta}$ set.   (ii) Show that we
+can define addition and multiplication and scalar multiplication on
+$Q^*$ by saying that $f\frdotplus g$, $f\dottimes g$, $\gamma.f$ are to
+be the unique members of $Q^*$ extending the partially-defined functions
+$f+g$, $f\times g$, $\gamma f$, and that these definitions render $Q^*$
+an $f$-algebra if we say that $f\le g$ iff $f(x)\le g(x)$ for every
+$x\in\dom f\cap\dom g$.   (iii) Show that every member of $Q^*$ has an
+extension to a member of $U$, as defined in 364T, and that these
+extensions define an isomorphism between $Q^*$ and $L^0(\RO(X))$, where
+$\RO(X)$ is the regular open algebra of $X$.   (iv) Show that if $X$ is
+compact, Hausdorff and extremally disconnected, then every member of
+$Q^*$ has a unique extension to a member of $C^{\infty}(X)$, as defined
+in 364V.
+%364V
+
+\spheader 364Yn Let $X$ be an extremally disconnected Hausdorff space,
+and $Z$ any compact Hausdorff space.   Show that if $D\subseteq X$ is
+dense and $f:D\to Z$ is continuous, there is a continuous $g:X\to Z$
+extending $f$.
+%364V
+
+\spheader 364Yo\dvAnew{2012}
+Let $(\frak A,\bar\mu)$ be a probability algebra.
+(i) Show that for any $\pmb{u}=(u_1,\ldots,u_n)\in L^0(\frak A)^n$ 
+there is a unique Radon probability measure $\nu$ on
+$\Bbb R^n$ such that 
+$\nu(\prod_{1\le i\le n}\ooint{\alpha,\infty})
+=\bar\mu(\inf_{1\le i\le n}\Bvalue{u_i>\alpha_i})$ for all
+$\alpha_1,\ldots,\alpha_n\in\Bbb R$, and that now 
+$\nu E=\bar\mu\Bvalue{\pmb{u}\in E}$ for every Borel set 
+$E\subseteq\BbbR^n$.   
+I will call $\nu$ the {\bf distribution} of $\pmb{u}$.
+(ii) Show that $(u_1,\ldots,u_n)$ is stochastically
+independent iff $\nu$ is expressible as $\prod_{1\le i\le n}\nu_i$ where
+$\nu_i$ is a Radon probability measure on $\Bbb R$ for each $i$.
+(iii) Write $\frak A_{\pmb{u}}$ for the closed subalgebra
+$\{\Bvalue{\pmb{u}\in E}:E\subseteq\BbbR^n$ is a Borel set$\}$;  check that
+$u_i\in L^0(\frak A_{\pmb{u}})$ for every $i$.
+Suppose that $(\frak B,\bar\nu)$ is another probability algebra and
+that $\pmb{v}=(v_1,\ldots,v_n)\in(L^0(\frak B))^n$.
+Show that the following are equiveridical:  ($\alpha$) there
+is a measure-preserving
+isomorphism $\pi:\frak A_{\pmb{u}}\to\frak B_{\pmb{v}}$ such that
+$T_{\pi}u_i=v_i$ for every $i$ ($\beta$) $\pmb{u}$ and $\pmb{v}$ have the
+same distribution.
+%364Xe 364Yb 364F 364P out of order query
+
+}%end of exercises
+
+\endnotes{
+\Notesheader{364} This has been a long section, and so far all we have
+is a supposedly thorough grasp of the construction of $L^0$ spaces;
+discussion of their properties still lies ahead.   The difficulties seem
+to stem from a variety of causes.   First, $L^0$ spaces have a rich
+structure, being linear ordered spaces with multiplications;
+consequently all the main theorems have to check rather a lot of
+different aspects.   Second, unlike $L^{\infty}$ spaces, they are not
+accessible by means of the theory of normed spaces, so I must expect to
+do more of the work here rather than in an appendix.   But this is in
+fact a crucial difference, because it affects the proof of the central
+theorem 364D.   The point is that a given algebra $\frak A$ will be
+expressible in the form $\Sigma/\Cal I$ for a variety of algebras
+$\Sigma$ of sets.   Consequently any definition of $L^0(\frak A)$ as a
+quotient $\eusm L^0_{\Sigma}/\eusm W_{\Cal I}$
+must include a check that the
+structure produced is independent of the particular pair $\Sigma$,
+$\Cal I$ chosen.
+
+The same question arises with $S(\frak A)$ and $L^{\infty}(\frak A)$.
+But in the case of $S$, I was able to use a general theory of additive
+functions on $\frak A$ (see the proof of 361L), while in the case of
+$L^{\infty}$ I could quote the result for $S$ and a little theory of
+normed spaces (see the proof of 363H).
+The theorems of \S368 will show, among other things, that a
+similar approach (describing $L^0$ as a special kind of extension of $S$
+or $L^{\infty}$) can be made to work in the present situation.
+I have chosen, however, an alternative route using a novel technique.
+The price is the time required to develop skill in the technique, and to
+relate it to the earlier approach (364C, 364D, 364J).   The reward is a
+construction which is based directly on the algebra $\frak A$,
+independent of any representation (364A), and methods of dealing with it
+which are complementary to those of the previous three sections.
+In particular, they can be used in the absence of the full axiom of
+choice (364Ya).
+
+I have deliberately chosen the notation $\Bvalue{u>\alpha}$ from the
+theory of forcing.   I do not propose to try to explain myself here, but
+I remark that much of the labour of this section is a necessary basis
+for understanding real analysis in Boolean-valued models of set theory.
+The idea is that just as a function $f:X\to\Bbb R$ can be described in
+terms of the sets $\{x:f(x)>\alpha\}$, so can an element $u$ of
+$L^0(\frak A)$ be described in terms of the regions $\Bvalue{u>\alpha}$
+of $\frak A$ where in some sense $u$ is greater than $\alpha$.   This
+description is well adapted to discussion of the order struction of
+$L^0(\frak A)$ (see 364L-364M), but rather ill-adapted to discussion of
+its
+linear and multiplicative structures, which leads to a large part of the
+length of the work above.   Once we have succeeded in describing the
+algebraic operations on $L^0$ in terms of the values of
+$\Bvalue{u>\alpha}$, however, as in 364D, the fundamental result on the
+action of Boolean homomorphisms (364P) is elegant and reasonably
+straightforward.
+
+The concept `$\Bvalue{u>\alpha}$' can be dramatically generalized to
+the concept `$\Bvalue{(u_1,\ldots,u_n)\in E}$', where $E$ is a Borel
+subset of $\BbbR^n$ and $u_1,\ldots,u_n\in L^0(\frak A)$ (364G,
+364Yb).   This is supposed to recall the notation $\Pr(X\in E)$,
+already used in Chapter 27.   If, as sometimes seems reasonable, we wish
+to regard a random variable as a member of $L^0(\mu)$ rather than of
+$\eusm L^0(\mu)$, then `$\Bvalue{u\in E}$' is the appropriate
+translation of `$X^{-1}[E]$'.   The reasons why we can reach all Borel
+sets $E$ here,
+but then have to stop, seem to lie fairly deep;  I will return to this
+question in 566O in Volume 5.
+We see that we have
+here another potential definition of $L^0(\frak A)$, as the set of
+sequentially order-continuous Boolean homomorphisms from the Borel
+$\sigma$-algebra of $\Bbb R$ to $\frak A$.   This is suitably
+independent of realizations of $\frak A$, but makes the $f$-algebra
+structure of $L^0$ difficult to elucidate, unless we move to a further
+level of abstraction in the definitions, as in 364Yd.
+
+I take the space to describe the $L^0$ spaces of general regular open
+algebras in detail (364T) partly to offer a demonstration of an
+appropriate technique, and partly to show that we are not limited to
+$\sigma$-algebras of sets and their quotients.   This really is a new
+representation;  for instance, it does not meld in any straightforward
+way with the constructions of 364F-364H.   Of course the most
+important examples are compact Hausdorff spaces, for which alternative
+methods are available (364U-364V, 364Yj, 364Yl, 364Ym);  from the point
+of view of applications, indeed, it is worth working through the details of
+the theory for compact
+Hausdorff spaces (364Yk).   The version in 364V is derived
+from {\smc Vulikh 67}.   But I have starred everything from 364S on,
+because I shall not rely on this work later for anything essential.
+%368G uses 364V
+}%end of comment
+
+\discrpage
+

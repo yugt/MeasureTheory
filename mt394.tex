@@ -1,0 +1,1313 @@
+\frfilename{mt394.tex}
+\versiondate{13.6.11}
+\copyrightdate{2007}
+
+\def\chaptername{Measurable algebras}
+\def\sectionname{Talagrand's example}
+
+\def\sbcc{$\sigma$-bounded-cc}
+\def\sfcc{$\sigma$-finite-cc}
+
+\newsection{394\dvAnew{2007}}
+
+I rewrite the construction in {\smc Talagrand 08} of an
+exhaustive submeasure which is not uniformly exhaustive.
+
+\leader{394A}{}\cmmnt{ I begin with two elementary combinatorial facts.
+
+\medskip
+
+\noindent}{\bf Lemma}  %\Tal{\S2.3}
+Suppose that $\Cal K$ is a non-empty finite family of subsets
+of $\Bbb N$ and $r\in\Bbb N$ is such that $\#(K)\ge r\#(\Cal K)$ for every
+$K\in\Cal K$.   Then we have an enumeration $\ofamily{i}{s}{K_i}$ of 
+$\Cal K$ and a
+non-decreasing family $\langle n_i\rangle_{i\le s}$ such that
+$\#(K_i\cap n_{i+1}\setminus n_i)=r$ for every $i<s$.
+ %T(9.1)2.3
+
+\proof{ Set $s=\#(\Cal K)$.
+Choose $n_i$, $K_i$ inductively, as follows.   Start
+with $n_0=0$.   Given $j<s$,
+$n_j\in\Bbb N$ and $\ofamily{i}{j}{K_i}$ such that
+$\#(K\setminus n_j)\ge r(s-j)$ for every
+$K\in \Cal K_j=\Cal K\setminus\{K_i:i<j\}$,
+set
+
+\Centerline{$n_{j+1}=\min\{n:\#(K\cap n\setminus n_j)\ge r$ for some
+$K\in \Cal K_j\}$}
+
+\noindent and choose $K_j\in \Cal K_j$ such that
+$\#(K_j\cap n_{j+1}\setminus n_j)\ge r$.   Observe that
+$\#(K\cap n_{j+1}\setminus n_j)\le r$ for every $K\in \Cal K_j$, so that
+$\#(K_j\cap n_{j+1}\setminus n_j)$ must in fact be equal to $r$ and
+$\#(K\setminus n_{j+1})\ge r(s-j-1)$ for every $K\in \Cal K_j$;  
+thus the induction proceeds.
+}%end of proof of 394A
+
+\leader{394B}{Lemma}  %\Tal{3.17}
+Suppose that $\ofamily{i}{s}{K_i}$ is a family of finite subsets of 
+$\Bbb N$, all of size at least $r\ge 2$,
+such that $\max K_i<\min K_{i+1}$ for $i\le s-2$.   Let
+$\Cal J$ be a finite subset of
+$([\Bbb N]^{<\omega}\setminus\{\emptyset\})\times\coint{0,\infty}$,
+and set $\gamma=\sum_{(I,w)\in\Cal J}w$.   Then we can find 
+$\ofamily{i}{s}{u_i}$ and $\ofamily{i}{s}{v_i}$ such that
+$u_i$, $v_i$ are successive members of $K_i$ for each $i<s$ and, setting
+$W=\bigcup_{i<s}v_i\setminus u_i$,
+
+$$\sum_{\Atop{(J,w)\in\Cal J}{\#(J\cap W)\ge\bover12\#(J)}}w
+\,\le\,\bover{2\gamma}{r-1}.$$
+
+\proof{ Set $K=\bigcup_{i<s}K_i$ and for
+$n\in K\setminus\{\max K\}$ let $n^+$ be the next member of $K$ above $n$.
+For $z\in Z=\prod_{i<s}(K_i\setminus\{\max K_i\})$ set
+
+\Centerline{$W(z)
+=\bigcup_{i<s}z(i)^+\setminus z(i)$,}
+
+\Centerline{$S(z)
+=\sum_{(J,w)\in\Cal J,\#(J\cap W(z))\ge\bover12\#(J)}w$.}
+
+\noindent Consider the uniform probability measure $\lambda$ on
+$Z$.   For any set $J\subseteq\Bbb N$,
+
+$$\eqalignno{\int\#(J\cap W(z))\lambda(dz)
+&=\sum_{i=0}^{s-1}\int\#(J\cap z(i)^+\setminus z(i))\lambda(dz)\cr
+&=\sum_{i=0}^{s-1}\sum_{n\in K_i\setminus\{\max K_i\}}
+  \Bover1{\#(K_i)-1}\#(J\cap n^+\setminus n)\cr
+&=\sum_{i=0}^{s-1}\Bover{\#(J\cap\max K_i\setminus\min K_i)}{\#(K_i)-1}
+\le\Bover{\#(J)}{r-1}.\cr}$$
+
+\noindent So, writing
+$V_J=\{z:\#(J\cap W(z))\ge\bover12\#(J)\}$, $\lambda V_J\le\Bover2{r-1}$
+for any non-empty $J$.   Now
+
+\Centerline{$\int S(z)\lambda(dz)
+=\sum_{(J,w)\in\Cal J}w\lambda V_J
+\le\Bover2{r-1}\sum_{(J,w)\in\Cal J}w
+=\Bover{2\gamma}{r-1}$,}
+
+\noindent so there must be a $z\in Z$ such that
+$S(z)\le\Bover{2\gamma}{r-1}$,
+and we can take $u_i=z(i)$, $v_i=z(i)^+$ for each $i$.
+}%end of proof of 394B
+
+\leader{394C}{Definitions} \cmmnt{We are now ready to begin work.
+The construction is complex and demands a large volume of special notation.
+
+\medskip
+
+}{\bf (a)}  %\Tal{2.1}
+I shall work throughout with $X=\prod_{n\in\Bbb N}T_n$ where
+$\sequencen{T_n}$ is a sequence of non-empty finite sets
+and $\sup_{n\in\Bbb N}\#(T_n)$ is infinite.
+ %394Ib
+$X$ may be
+regarded as a compact Hausdorff space with the product of the discrete
+topologies on the $T_n$.   For each $n\in\Bbb N$,
+$\frak B_n$ will be the algebra of subsets of $X$ determined by
+coordinates less than $n$  %T(9.1)4/27
+and $\Cal A_n$ the set of its atoms\cmmnt{, that is, 
+the family of sets of the
+form $\{x:z\subseteq x\in X\}$ for some $z\in\prod_{i<n}T_i$}.
+ %T(9.1)4/31
+$\frak B\cmmnt{\mskip5mu=\bigcup_{n\in\Bbb N}\frak B_n}$ will be the 
+algebra of open-and-closed subsets of $X$.  %T(9.1)4/28
+For $n\in\Bbb N$ and $t\in T_n$, $Y_{nt}$ will be
+$\{x:x\in X$, $x(n)=t\}$.
+
+\spheader 394Cb We shall need
+a sequence $\sequence{k}{\alpha_k}$ in $\Bbb R$
+and a sequence $\sequence{k}{N_k}$ in $\Bbb N$.   \cmmnt{It is easy 
+enough to give
+appropriate formulae but perhaps the ideas will be clearer if instead} I
+declare the properties they must have.
+
+\medskip
+
+\quad{\bf (i)}  %\Tal{3.3}
+$\alpha_k>0$ and
+$(2^{k+4})^{\alpha_k}\le 2$
+ %394Fc
+for every $k\in\Bbb N$, $\sequence{k}{\alpha_k}$ is non-increasing,
+ %394E
+and $\sum_{k=0}^{\infty}\alpha_k\le\bover12$.
+ %394Dg
+ %\alpha_k\le 1 394K
+ %4^{\alpha_k}\le 2 394K
+
+\medskip
+
+\quad{\bf (ii)}  %\Tal{4.2, 5.2}
+$N_k\in\Bbb N$ and
+ %394M
+ %394E 
+$2^{-k}(2^{-2k-12}N_k)^{\alpha_k}\ge 2^4$
+ %394Gb
+for every $k\in\Bbb N$.
+
+\spheader 394Cc %\Tal{3.1}
+\cmmnt{Now we come to some of the key ideas.}   For a set
+$\Cal I\subseteq\Cal PX\times\Cal P\Bbb N\times\coint{0,\infty}$,
+define\cmmnt{ its `spread'} $\spread\Cal I$ to be 
+$\bigcup_{(E,I,w)\in\Cal I}E$
+and\cmmnt{ its `weight'} $\weight\Cal I$ to be $\sum_{(E,I,w)\in\Cal I}w$.
+
+\spheader 394Cd %\Tal{3.2}
+For any family
+$\Cal E\subseteq\Cal PX\times\Cal P\Bbb N\times\coint{0,\infty}$ define
+$\phi_{\Cal E}:\frak B\to[0,\infty]$ by setting
+
+\Centerline{$\phi_{\Cal E}E
+=\inf\{\weight\Cal I:\Cal I\subseteq\Cal E$ is finite,
+$E\subseteq\spread\Cal I\}$,}
+
+\noindent counting $\inf\emptyset$ as $\infty$.   \cmmnt{So
+$\phi_{\emptyset}\emptyset=0$ and $\phi_{\emptyset}E=\infty$ for
+$E\in\frak B\setminus\{\emptyset\}$.}
+
+\spheader 394Ce %\Tal{2.8}
+For $D\subseteq X$ and $I\subseteq\Bbb N$ set
+
+\Centerline{$\theta_I(D)
+=\{y:y\in X,\,y\restr I=x\restr I\text{ for some }x\in D\}$.}
+
+\spheader 394Cf{\bf (i)} %\Tal{\S3.4}
+If $m<n$ in $\Bbb N$, $\phi:\frak B\to[0,\infty]$ is
+a function and $E\in\frak B$, then $E$ is
+{\bf $\phi$-thin between $m$ and $n$} if
+$\phi(X\setminus\theta_{n\setminus m}(A\cap E))\ge 1$ for
+every $A\in\Cal A_m$.
+ %T(9.1)11/10
+
+\medskip
+
+\quad{\bf (ii)} If $I\subseteq\Bbb N$,
+$\phi:\frak B\to[0,\infty]$ is a function and $E\in\frak B$, then
+$E$ is {\bf $\phi$-thin along $I$} if it is $\phi$-thin between $m$ and $n$
+whenever $m$, $n\in I$ and $m<n$.
+ %T(9.1)11/17
+
+\spheader 394Cg %\Tal{\S4.0}
+For $k\le p\in\Bbb N$ define $\Cal C_{kp}$
+and $\nu_{kp}$ by downwards induction on $k$\cmmnt{, as follows}.   
+\cmmnt{Start with }$\Cal C_{pp}=\emptyset$ for every $p$.
+\cmmnt{Given $\Cal C_{kp}$, set }$\nu_{kp}=\phi_{\Cal C_{kp}}$.
+Given that $k<p$ and
+$\Cal C_{k+1,p}$
+and $\nu_{k+1,p}=\phi_{\Cal C_{k+1,p}}$ have been defined, set
+
+$$\eqalign{\Cal E_{kp}
+&=\{(E,I,w):E\in\frak B,\,I\subseteq\Bbb N,\,
+1\le\#(I)\le N_k,\cr
+&\mskip150mu
+w\ge 2^{-k}\bigl(\Bover{N_k}{\#(I)}\bigr)^{\alpha_k},\,
+E\text{ is }\nu_{k+1,p}\text{-thin along }I\},\cr
+\Cal C_{kp}&=\Cal E_{kp}\cup\Cal C_{k+1,p}\cr}$$
+
+\noindent and continue.
+
+\spheader 394Ch %\Tal{\S5.0}
+Define $\sequence{k}{c_k}$ by setting
+$c_0=8$, $c_{k+1}=2^{2\alpha_k}c_k$ for every $k$.
+
+
+\leader{394D}{Very elementary facts} \cmmnt{In the hope of aiding
+digestion of
+the definitions here, of which 394Cf and 394Cg are likely to be wholly
+obscure to anyone who has not worked through this proof before, I run
+over some obvious facts which will be used below.
+
+\medskip
+
+}{\bf (a)}  %\Tal{3.2}
+$\phi_{\Cal E}:\frak B\to[0,\infty]$ is a submeasure
+for any $\Cal E\subseteq\Cal PX\times\Cal P\Bbb N\times\coint{0,\infty}$.
+\cmmnt{(Subadditivity and monotonicity are written into the definition.)}
+
+\spheader 394Db
+If $I$, $J\subseteq\Bbb N$ then $\theta_I\theta_J=\theta_{I\cap J}$.
+ %394E
+If $I\subseteq J\subseteq\Bbb N$ then 
+$\theta_I(D)=\theta_I\theta_J(D)\supseteq\theta_J(D)$ for all 
+$D\subseteq X$.
+If $I\subseteq\Bbb N$ then
+$\theta_I(D\cap\theta_I(E))=\theta_I(E\cap\theta_I(D))$ for all $D$,
+$E\subseteq X$.
+ %394E
+For any $I\subseteq\Bbb N$ and any family $\Cal D$ of subsets of $X$,
+$\theta_I(\bigcup\Cal D)=\bigcup_{D\in\Cal D}\theta_I(D)$.
+ %394Fc
+
+For $n\in\Bbb N$ and $D\subseteq X$, $D\in\frak B_n$ iff $\theta_n(D)=D$.
+If $E\in\frak B$ and $I\subseteq\Bbb N$, $\theta_I(E)\in\frak B$.
+ %394L
+If $m\le n$ in $\Bbb N$, $A\in\Cal A_m$ and $A_1\in\Cal A_n$, then
+$A\cap\theta_{n\setminus m}(A_1)\in\Cal A_n$.
+ %394Gd
+If $m\in\Bbb N$ and $A\in\Cal A_m$ then
+$E\mapsto\theta_{\Bbb N\setminus m}(A\cap E):\frak B\to\frak B$ is a
+Boolean homomorphism.
+ %394L
+
+\spheader 394Dc If $m<n$, $\phi:\frak B\to[0,\infty]$ is a
+non-decreasing function,
+$E\in\frak B$ is $\phi$-thin between $m$ and $n$
+and $E'\in\frak B$ is included in $E$,
+then $E'$ is $\phi$-thin between $m$ and $n'$ for
+every $n'\ge n$.
+ %394Gf
+
+\spheader 394Dd\cmmnt{ All the classes} $\Cal E_{kp}$,
+$\Cal C_{kp}$ are closed under increases in the scalar variable and
+decreases in the first variable, that is,
+
+----- if $k<p$, $(E,I,w)\in\Cal E_{kp}$, $E'\in\frak B$, $E'\subseteq E$
+and $w'\ge w$ then $(E',I,w')\in\Cal E_{kp}$,
+
+----- if $k\le p$, $(E,I,w)\in\Cal C_{kp}$, $E'\in\frak B$, $E'\subseteq E$
+and $w'\ge w$ then $(E',I,w')\in\Cal C_{kp}$.
+
+\spheader 394De If $k\le p$\cmmnt{ in $\Bbb N$},
+$\Cal C_{kp}=\bigcup_{k\le l<p}\Cal E_{lp}$.
+
+\spheader 394Df If $k<p$\cmmnt{ in $\Bbb N$}, 
+$\nu_{kp}\le\nu_{k+1,p}$\cmmnt{,
+because $\Cal C_{kp}\supseteq\Cal C_{k+1,p}$}.
+
+\spheader 394Dg $8\le c_k\le 16$ for every
+$k\in\Bbb N$\prooflet{, because
+$\sum_{k=0}^{\infty}2\alpha_k\le 1$}.
+
+\spheader 394Dh If $k<p$\cmmnt{ in $\Bbb N$}, 
+then\cmmnt{ $(X,\{0\},2^{-k}N_k^{\alpha_k})\in\Cal E_{kp}$ 
+so} $\nu_{kp}X\le 2^{-k}N_k^{\alpha_k}$ and $\nu_{kp}$ is totally finite.
+
+\leader{394E}{Lemma}  %\Tal{\S5.2}
+Suppose that $k\le p$, $m<n$,
+$A\in\Cal A_m$, $(E,I,w)\in\Cal C_{kp}$ and $I'=I\cap n\setminus m$
+is non-empty.   If $E'=\theta_{n\setminus m}(E\cap A)$ and
+$w'\ge\bigl(\Bover{\#(I)}{\#(I')}\bigr)^{\alpha_k}w$,
+then $(E',I',w')\in\Cal C_{kp}$.
+ %T(9.1)5.2
+
+\proof{ There is an $l$ such that $k\le l<p$ and
+$(E,I,w)\in\Cal E_{lp}$.   Now
+$E'$ is $\nu_{l+1,p}$-thin along $I'$.   \Prf\
+Suppose that $i$, $j\in I'$ and $i<j$, so that $m\le i<j<n$.
+Take any $A_1\in\Cal A_i$, and set $A_2=A\cap\theta_{n\setminus m}(A_1)$,
+so that $A_2$ also belongs to $\Cal A_i$.   Then, using the list in 394Db,
+
+$$\eqalignno{\theta_{j\setminus i}(E'\cap A_1)
+&=\theta_{j\setminus i}(A_1\cap\theta_{n\setminus m}(E\cap A))\cr
+&=\theta_{j\setminus i}(\theta_{n\setminus m}
+ (A_1\cap\theta_{n\setminus m}(E\cap A)))\cr
+&=\theta_{j\setminus i}(\theta_{n\setminus m}
+ (E\cap A\cap\theta_{n\setminus m}(A_1)))\cr
+&=\theta_{j\setminus i}(\theta_{n\setminus m}(E\cap A_2))
+=\theta_{j\setminus i}(E\cap A_2).\cr}$$
+
+\noindent So
+
+\Centerline{$\nu_{l+1,p}(X\setminus\theta_{j\setminus i}(E'\cap A_1))
+=\nu_{l+1,p}(X\setminus\theta_{j\setminus i}(E\cap A_2))
+\ge 1$}
+
+\noindent because $E$ is $\nu_{l+1,p}$-thin between $i$ and $j$.
+As $i$, $j$ and $A_1$ are arbitrary, $E'$ is
+$\nu_{l+1,p}$-thin along $I'$.\ \Qed
+
+Of course $\#(I')\le\#(I)\le N_l$.   Finally, because
+$\alpha_l\le\alpha_k$, we have
+
+\Centerline{$w'\ge\bigl(\Bover{\#(I)}{\#(I')}\bigr)^{\alpha_k}w
+\ge\bigl(\Bover{\#(I)}{\#(I')}\bigr)^{\alpha_l}
+   \cdot 2^{-l}\bigl(\Bover{N_l}{\#(I)})^{\alpha_l}
+=2^{-l}\bigl(\Bover{N_l}{\#(I')}\bigr)^{\alpha_l}$,}
+
+\noindent and $(E',I',w')\in\Cal E_{lp}\subseteq\Cal C_{kp}$.
+}  %end of proof of 394E
+
+\leader{394F}{Corollary} (a)
+Suppose that $n\in\Bbb N$ and $k\le p$ and that
+$\Cal I\subseteq\Cal C_{kp}$
+is a finite set such that $\#(I\cap n)\ge\bover14\#(I)$
+whenever $(E,I,w)\in\Cal I$.
+Then $\nu_{kp}(\theta_n(\spread\Cal I))\le 2\weight\Cal I$.
+
+(b) Suppose that $m\in\Bbb N$, $k\le p$ and $A\in\Cal A_m$.   Let
+$\Cal I$ be a finite subset of $\Cal C_{kp}$ such that
+$\#(I\setminus m)\ge\bover14\#(I)$ whenever $(E,I,w)\in\Cal I$.   Then
+$\nu_{kp}(\theta_{\Bbb N\setminus m}(A\cap\spread\Cal I))
+\le 2\weight\Cal I$.
+
+(c) Suppose that $m<n$ in $\Bbb N$, $k\le p$ and $A\in\Cal A_m$.   Let
+$\Cal I$ be a finite subset of $\Cal C_{kp}$ such that
+$\#(I\cap n\setminus m)\ge 2^{-k-4}\#(I)$ whenever $(E,I,w)\in\Cal I$.
+Then $\nu_{kp}(\theta_{n\setminus m}(A\cap\spread\Cal I))
+\le 2\weight\Cal I$.
+
+\proof{{\bf (a)} For each $(E,I,w)\in\Cal I$ set
+$E'=\theta_n(E)\in\Cal B_n$, $I'=I\cap n$ and
+
+\Centerline{$w'
+=\bigl(\Bover{\#(I)}{\#(I')}\bigr)^{\alpha_k}w\le 4^{\alpha_k}w
+\le 2w$.}
+
+\noindent By 394E, with $m=0$ and $A=X$, $(E',I',w')\in\Cal C_{kp}$.
+Set $\Cal J=\{(E',I',w'):(E,I,w)\in\Cal I\}$ and $B=\spread\Cal J$.
+Then
+
+\Centerline{$B=\bigcup_{(E,I,w)\in\Cal I}\theta_n(E)
+=\theta_n(\spread\Cal I)$}
+
+\noindent and
+
+\Centerline{$\nu_{kp}B\le\weight\Cal J
+=\sum_{(E,I,w)\in\Cal I}w'
+\le 2\weight\Cal I$,}
+
+\noindent as required.
+
+\medskip
+
+{\bf (b)} This time, take $n>m$ so large that $I\subseteq n$ whenever
+$(E,I,w)\in\Cal I$.   For $(E,I,w)\in\Cal I$, set
+
+\Centerline{$E'=\theta_{n\setminus m}(A\cap E)$,
+\quad$I'=I\setminus m=I\cap n\setminus m$,
+\quad
+$w'=\bigl(\Bover{\#(I)}{\#(I')}\bigr)^{\alpha_k}w\le 2w$.}
+
+\noindent Then 394E tells us that $(E',I',w')\in\Cal C_{kp}$.
+Setting $\Cal J=\{(E',I',w'):(E,I,w)\in\Cal I\}$,
+
+\Centerline{$\theta_{\Bbb N\setminus m}(A\cap\spread\Cal I)
+=\bigcup_{(E,I,w)\in\Cal I}\theta_{\Bbb N\setminus m}(A\cap E)
+\subseteq\bigcup_{(E,I,w)\in\Cal I}E'
+=\spread\Cal J$,}
+
+\noindent so
+
+\Centerline{$\nu_{kp}(\theta_{N\setminus m}(A\cap\spread\Cal I))
+\le\weight\Cal J
+\le 2\weight\Cal I$.}
+
+\medskip
+
+{\bf (c)} For $(E,I,w)\in\Cal I$ set
+
+\Centerline{$E'=\theta_{n\setminus m}(A\cap E)$,
+\quad$I'=I\cap n\setminus m$,
+\quad$w'=\bigl(\Bover{\#(I)}{\#(I')}\bigr)^{\alpha_k}w
+\le(2^{k+4})^{\alpha_k}w\le 2w$.}
+
+\noindent Then $(E',I',w')\in\Cal C_{kp}$.
+Setting $\Cal J=\{(E',I',w'):(E,I,w)\in\Cal I\}$,
+
+\Centerline{$\theta_{n\setminus m}(A\cap\spread\Cal I)
+=\bigcup_{(E,I,w)\in\Cal I}\theta_{n\setminus m}(A\cap E)
+=\bigcup_{(E,I,w)\in\Cal I}E'=\spread\Cal J$,}
+
+\noindent so
+
+\Centerline{$\nu_{kp}(\theta_{n\setminus m}(A\cap\spread\Cal I))
+\le\weight\Cal J
+\le 2\weight\Cal I$.}
+}  %end of proof of 394F
+
+\leader{394G}{}\cmmnt{ We are at the centre of the argument.
+
+\medskip
+
+\noindent}{\bf Lemma}  %\Tal{\S5.1}
+Suppose that $r\in\Bbb N$ and $t\in T_r$.    Then
+$\nu_{kp}Y_{rt}\ge c_k$ whenever $k\le p$ in $\Bbb N$.
+ %T(9.1)5.1
+
+\proof{ Induce on $p-k$.   
+
+\medskip
+
+{\bf (a)} If $k=p$ then
+
+\Centerline{$\Cal C_{pp}=\emptyset$,
+\quad$\nu_{pp}Y_{rt}=\infty$.}
+
+\noindent For the downwards step to $k<p$,
+given that $\nu_{k+1,p}Y_{rt}\ge c_{k+1}$, take a
+finite set $\Cal I\subseteq\Cal C_{kp}$ such that $\weight\Cal I<c_k$.
+The rest of the proof is devoted to showing that
+$Y_{rt}\not\subseteq\spread\Cal I$.
+
+\medskip
+
+{\bf (b)} It will help to get a trivial case out of the way.   If
+$\Cal I\subseteq\Cal C_{k+1,p}$, then we have
+
+\Centerline{$\weight\Cal I<c_k\le c_{k+1}\le\nu_{k+1,p}Y_{rt}$,}
+
+\noindent by the inductive hypothesis,
+so certainly $Y_{rt}\not\subseteq\spread\Cal I$.   Accordingly we may
+suppose henceforth that $\Cal I\not\subseteq\Cal C_{k+1,p}$.
+
+A second elementary point is that $\#(I)\ge 2^{2k+12}$ whenever 
+$(E,I,w)\in\Cal I$.   \Prf\ We have an $l$ such that $k\le l<p$ and
+$(E,I,w)\in\Cal E_{kp}$, so
+
+\Centerline{$2^{-l}\bigl(\Bover{N_l}{\#(I)}\bigr)^{\alpha_l}
+\le w\le c_k\le 2^4$}
+
+\noindent and 
+$\#(I)\ge 2^{2l+12}\ge 2^{2k+12}$, by the choice of $N_l$.\ \Qed
+
+\medskip
+
+{\bf (c)} Express $\Cal I$ as
+$\Cal J\cup\Cal K$ where $\Cal J\subseteq\Cal C_{k+1,p}$ and
+$\Cal K\subseteq\Cal E_{kp}$.
+Set $s=\#(\Cal K)>0$.   For $(E,I,w)\in\Cal K$ we have
+$w\ge 2^{-k}$, so $s\le 2^kc_k\le 2^{k+4}$ (394Dg).
+Consequently $\#(I)\ge 2^{2k+12}\ge 2^{k+8}s$ whenever $(E,I,w)\in\Cal K$.
+By 394A, we can find $m_0<m_1<\ldots<m_s$
+and an enumeration $\ofamily{i}{s}{(E_i,K_i,w_i)}$ of $\Cal K$ such
+that $\#(K_i\cap m_{i+1}\setminus m_i)=2^{k+8}$ for $i<s$.
+
+For each $i<s$, set $u'_i=\sup(K_i\cap(r+1))$ and
+$K'_i=(K_i\setminus\{u'_i\})\cap m_{i+1}\setminus m_i$, so that
+$\#(K'_i)\ge 2^{k+8}-1$.
+By 394B we can find successive members $u_i$, $v_i$ of $K'_i$,
+for $i<s$, such that, setting $W=\bigcup_{i<s}v_i\setminus u_i$,
+
+$$S
+=\sum_{\Atop{(E,I,w)\in\Cal J}{\#(I\cap W)\ge\bover12\#(I)}}w
+\le\Bover{2}{2^{k+8}-2}\sum_{(E,I,w)\in\Cal J}w
+\le\Bover{2}{2^{k+7}}c_k
+\le 2^{-k-2}.$$
+
+\noindent Also $r\notin W$.  \Prf\ If $i<s$ and $u_i\le r$, then 
+$u_i\le u'_i\le r$;  but $u_i\ne u'_i$, so $u_i<u'_i$ and
+$v_i\le u'_i\le r$.\ \Qed
+
+\medskip
+
+{\bf (d)} Set
+
+\Centerline{$\Cal J_1=\{(E,I,w):(E,I,w)\in\Cal J$,
+$\#(I\cap W)\ge\Bover12\#(I)\}$,
+\quad$\Cal J_2=\Cal J\setminus\Cal J_1$;}
+
+\noindent then
+
+\Centerline{$\weight\Cal J_1=S\le 2^{-k-2}\le\Bover14$.}
+
+\noindent For $i<s$ set
+
+\Centerline{$\Cal J_{1i}=\{(E,I,w):(E,I,w)\in\Cal J_1$,
+$\#(I\cap v_i\setminus u_i)\ge 2^{-k-5}\#(I)\}$.}
+
+\noindent Since $s\le 2^{k+4}$, $\Cal J_1=\bigcup_{i<s}\Cal J_{1i}$.
+
+\medskip
+
+{\bf (e)} Suppose that $i<s$ and $A\in\Cal A_{u_i}$.
+Then there is an $A'\in\Cal A_{v_i}$ such that
+$A'\subseteq A\setminus(E_i\cup\spread\Cal J_{1i})$.   \Prf\   Set
+$C=\theta_{v_i\setminus u_i}(A\cap\spread\Cal J_{1i})\in\frak B_{v_i}$.
+By 394Fc, applied to $\Cal C_{k+1,p}$,
+
+\Centerline{$\nu_{k+1,p}C\le 2\weight\Cal J_{1i}\le 2\weight\Cal J_1<1$.}
+
+\noindent As $(E_i,K_i,w_i)\in\Cal E_{kp}$,
+$E_i$ is $\nu_{k+1,p}$-thin between $u_i$ and $v_i$,
+$\nu_{k+1,p}(X\setminus\theta_{v_i\setminus u_i}(A\cap E_i))\ge 1$ and
+$C$ does not include $X\setminus\theta_{v_i\setminus u_i}(A\cap E_i)$.
+Since these sets both belong to $\frak B_{v_i}$
+there is an $A_1\in\Cal A_{v_i}$ disjoint from both $C$ and
+$\theta_{v_i\setminus u_i}(A\cap E_i)$, that is, disjoint from
+$\theta_{v_i\setminus u_i}(A\cap(E_i\cup\spread\Cal J_{1i}))$.
+Now $A'=A\cap\theta_{v_i\setminus u_i}(A_1)$
+belongs to $\Cal A_{v_i}$, is included in $A$
+and is disjoint from $E_i\cup\spread\Cal J_{1i}$.\ \Qed
+
+\medskip
+
+{\bf (f)} We can therefore find a function $\Gamma:X\to X$ such that
+$\Gamma[X]$ is disjoint from $\spread(\Cal K\cup\Cal J_1)$, while
+$\Gamma(x)\restr m$ is determined by $x\restr m$ for every $m\in\Bbb N$.
+\Prf\ By (e) just above, we have for each $i<s$
+a function $q_i:\Cal A_{u_i}\to\Cal A_{v_i}$
+such that $q_i(A)\subseteq A\setminus(E_i\cup\spread\Cal J_{1i})$ for every
+$A\in\Cal A_{u_i}$.   We can re-interpret $q_i$ as a function
+$h_i:\prod_{n<u_i}T_n\to\prod_{n<v_i}T_n$ defined by saying that if
+$A=\{x:x\restr u_i=z\}$ then $q_i(A)=\{x:x\restr v_i=h_i(z)\}$;  note that
+$z=h_i(z)\restr u_i$ for every $z\in\prod_{n<u_i}T_n$.
+Now, for $x\in X$, define $\Gamma(x)(n)$ inductively by saying that
+
+$$\eqalign{\Gamma(x)(n)
+&=x(n)\text{ if }n\in\Bbb N\setminus W,\cr
+&=h_i(\Gamma(x)\restr u_i)(n)\text{ if }i<s\text{ and }u_i\le n<v_i.\cr}$$
+
+\noindent Of course this ensures that $\Gamma(x)\restr m$ is determined by
+$x\restr m$ for every $m$.   If $i<s$, $x\in X$, and $A\in\Cal A_{u_i}$ is
+such that
+$\Gamma(x)\in A$, then $\Gamma(x)\in q_i(A)$, which is disjoint from
+$E_i\cup\spread\Cal J_{1i}$.   Thus $\Gamma[X]$ is disjoint from
+$\bigcup_{i<s}E_i\cup\spread\Cal J_{1i}=\spread(\Cal K\cup\Cal J_1)$.\ \Qed
+
+\medskip
+
+{\bf (g)} Take $(E,I,w)\in\Cal J_2$ and consider
+$\nu_{k+1,p}(\Gamma^{-1}[E])$.   
+
+\medskip
+
+\quad{\bf (i)} There is an $l$ such that $k<l<p$
+and $(E,I,w)\in\Cal E_{lp}$.
+Now if $m$, $n\in I$ are such that $m<n$ and
+$n\setminus m$ is disjoint from $W$, $\Gamma^{-1}[E]$ is
+$\nu_{l+1,p}$-thin between $m$ and $n$.   \Prf\ Take any $A\in\Cal A_m$.
+Because $\Gamma(x)\restr m$ is determined by $x\restr m$,
+we can find an $A'\in\Cal A_m$ such that $\Gamma[A]\subseteq A'$.
+In this case,
+
+\Centerline{$A\cap\Gamma^{-1}[E]
+\subseteq\Gamma^{-1}[\Gamma[A]\cap E]
+\subseteq\Gamma^{-1}[A'\cap E]
+\subseteq\theta_{n\setminus m}(A'\cap E)$}
+
+\noindent because $\Gamma(x)(i)=x(i)$ whenever $x\in X$ and
+$i\in n\setminus m$.   So
+$\theta_{n\setminus m}(A\cap\Gamma^{-1}[E])
+\subseteq\theta_{n\setminus m}(A'\cap E)$ and
+
+\Centerline{$\nu_{l+1,p}
+  (X\setminus\theta_{n\setminus m}(A\cap\Gamma^{-1}[E]))
+\ge\nu_{l+1,p}(X\setminus\theta_{n\setminus m}(A'\cap E))
+\ge 1$}
+
+\noindent because $E$ is $\nu_{l+1,p}$-thin between $m$ and $n$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} As noted in (b), $\#(I)\ge 2^{2k+12}\ge 4s$.
+For each $i<s$ such that $\min I\le u_i$,
+let $u^-_i$ be the largest element of
+$I$ which is less than or equal to $u_i$.
+Set $I'=I\setminus(W\cup\{u^-_i:i<s$, $\min I\le u_i\})$.   Then
+
+\Centerline{$\#(I')\ge\Bover{\#(I)}2-s\ge\Bover{\#(I)}4$.}
+
+\noindent Now $\Gamma^{-1}[E]$ is $\nu_{l+1,p}$-thin along $I'$.   \Prf\
+Suppose
+that $m$, $n\in I'$ and $m<n$.   Let $m^+$ be the least element of $I$ such
+that $m<m^+$.   Then $m^+\le n$.   \Quer\ If
+$W\cap m^+\setminus m\ne\emptyset$,
+there is an $i<s$ such that $m^+\setminus m$ meets $v_i\setminus u_i$, that
+is, $m<v_i$ and $u_i<m^+$.
+Since $m\in I'\subseteq\Bbb N\setminus W$, $m\le u_i$ and $u^-_i$ is
+defined;   now $m\ne u^-_i$ so $m<u^-_i\in I$ and $m^+\le u^-_i\le u_i$.\
+\BanG\ Thus
+$W\cap m^+\setminus m$ is empty and (i) tells us that $\Gamma^{-1}[E]$ is
+$\nu_{l+1,p}$-thin between $m$ and $m^+$, therefore
+$\nu_{l+1,p}$-thin between $m$ and $n$ (394Dc).   As $m$
+and $n$ are arbitrary, $\Gamma^{-1}[E]$ is $\nu_{l+1,p}$-thin
+along $I'$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} If we now set $w'=4^{\alpha_l}w$, we see that
+
+\Centerline{$1\le\#(I')\le\#(I)\le N_l$,
+\quad$w'\ge 2^{-l}4^{\alpha_l}\bigl(\Bover{N_l}{\#(I)}\bigr)^{\alpha_l}
+\ge 2^{-l}\bigl(\Bover{N_l}{\#(I')}\bigr)^{\alpha_l}$,}
+
+\noindent so
+
+\Centerline{$(\Gamma^{-1}[E],I',w')\in\Cal E_{lp}\subseteq\Cal C_{k+1,p}$}
+
+\noindent and
+
+\Centerline{$\nu_{k+1,p}(\Gamma^{-1}[E])\le w'
+\le 4^{\alpha_l}w\le 4^{\alpha_k}w$.}
+
+\medskip
+
+{\bf (h)} We are nearly done.   Applying (g) to each member of $\Cal J_2$,
+
+\Centerline{$\nu_{k+1,p}(\Gamma^{-1}[\spread\Cal J_2])
+\le 4^{\alpha_k}\weight\Cal J_2
+\le 4^{\alpha_k}\weight\Cal I
+<4^{\alpha_k}c_k=c_{k+1}\le\nu_{k+1,p}Y_{rt}$}
+
+\noindent by the inductive hypothesis in its full strength.
+So there is a
+$y\in Y_{rt}\setminus\Gamma^{-1}[\spread\Cal J_2]$.
+With (f), this means that $\Gamma(y)$ does not belong to
+
+\Centerline{$\spread(\Cal K\cup\Cal J_1)\cup\spread(\Cal J_2)
+=\spread\Cal I$.}
+
+\noindent On the other hand, $\Gamma(y)\in Y_{rt}$ because $r\notin W$.
+As $\Cal I$ was arbitrary, $\nu_{kp}Y_{rt}$ must be at least
+$c_k$, which is what we need to know to proceed with the induction.
+}  %end of proof of 394G
+
+\leader{394H}{Definitions}  %\Tal{4.1}
+\cmmnt{ I present the last two
+definitions required.}
+Fix on a non-principal ultrafilter $\Cal F$ on $\Bbb N$.
+For $k\in\Bbb N$, set
+
+\Centerline{$\nu_kE=\lim_{p\to\Cal F}\nu_{kp}E\in[0,\infty]$}
+
+\noindent for every $E\in\frak B$;  \cmmnt{finally, }write $\nu$ for
+$\nu_0$.
+
+\leader{394I}{Proposition} (a) %\Tal{\S6.2}
+For every $k\in\Bbb N$,
+$\nu_k$ is a totally finite submeasure and $\nu_kX\ge 8$.
+
+(b) %\Tal{\S4.1}
+$\nu$ is not uniformly exhaustive.
+
+\proof{{\bf (a)} It follows directly from the definition in
+392A that $\nu_k$, being a limit of
+submeasures, is a submeasure.   By 394Dh,
+$\nu_kX\le 2^{-k}N_k^{\alpha_k}$ is finite.   By 394G and 394Dg,
+
+\Centerline{$\nu_kX=\lim_{p\to\Cal F}\nu_{kp}X\ge c_k\ge 8$.}
+
+\medskip
+
+{\bf (b)} For any $n\in\Bbb N$ and $t\in T_n$, 
+
+\Centerline{$\nu Y_{nt}=\lim_{p\to\Cal F}\nu_{0p}Y_{nt}\ge 8$}
+
+\noindent by 394G.    As $\sup_{n\in\Bbb N}\#(T_n)$ is infinite,
+and $\family{t}{T_n}{Y_{nt}}$ is disjoint for every $n$, $\nu$ is not
+uniformly exhaustive.
+}  %end of proof of 394I
+
+\leader{394J}{Lemma} Suppose that $k\in\Bbb N$, $E\in\frak B$,
+$I\in[\Bbb N]^{<\omega}$ and
+$E$ is $\bover12\nu_k$-thin along $I$.   Then
+
+\Centerline{$\{p:p\ge k$, $E$ is $\nu_{kp}$-thin along $I\}\in\Cal F$.}
+
+\noindent If $k\ge 1$ and $\#(I)=N_{k-1}$, then
+$\nu_{k-1}E\le 2^{-k+1}$.
+
+\proof{ If $m$, $n\in I$, $m<n$ and $A\in\Cal A_m$, then
+$\nu_k(X\setminus\theta_{n\setminus m}(A\cap E))\ge 2$.   So
+
+\Centerline{$U_{An}
+=\{p:p\ge k$, $\nu_{kp}(X\setminus\theta_{n\setminus m}(A\cap E))\ge 1\}$}
+
+\noindent belongs to
+$\Cal F$.   Setting $U=\bigcap_{m<n\text{ in }I,A\in\Cal A_m}U_{An}$,
+$U\in\Cal F$ and $E$ is $\nu_{kp}$-thin along $I$ for every $p\in U$.
+
+If $k\ge 1$ and $\#(I)=N_{k-1}$, then 
+$(E,I,2^{-k+1})\in\Cal E_{k-1,p}$ for every
+$p\in U$, so $\nu_{k-1,p}E\le 2^{-k+1}$ for every $p\in U$ and
+$\nu_{k-1}E\le 2^{-k+1}$.
+}%end of proof of 394J
+
+\vleader{72pt}{394K}{Lemma}  %\Tal{\S6.5}
+Let $m$, $k\in\Bbb N$ and
+let $\sequence{i}{E_i}$ be a sequence in $\frak B$ such that
+
+\inset{every $E_i$ is determined by coordinates in $\Bbb N\setminus m$,
+
+$\nu_k(\bigcup_{i\le n}E_i)<2$ for every $n\in\Bbb N$.}
+
+\noindent Then for every $\eta>0$ there is a $C\in\frak B$, determined by
+coordinates in $\Bbb N\setminus m$, such that $\nu_kC\le 4$ and
+$\nu_k(E_i\setminus C)\le\eta$ for each $i$.
+ %T(9.1)6.5
+
+\proof{{\bf (a)} For each $n>m$, set
+
+\Centerline{$\tilde E_n=\bigcup\{E_i:i\le n$, $E_i\in\frak B_n\}$,}
+
+\noindent so that $\tilde E_n$ is determined by coordinates in
+$n\setminus m$ and $\nu_k\tilde E_n<2$.   Set
+
+\Centerline{$U_n=\{p:p\ge k$, $\nu_{kp}\tilde E_n<2\}
+\in\Cal F$.}
+
+\noindent For $p\in U_n$ we can find a finite
+$\Cal I_{np}\subseteq\Cal C_{kp}$ such that
+$\tilde E_n\subseteq\spread\Cal I_{np}$ and
+$\weight\Cal I_{np}\le 2$.   For $r>m$ set
+
+$$\eqalign{\Cal I_{npr}
+&=\{(E,I,w):(E,I,w)\in\Cal I_{np},\cr
+&\mskip140mu\#(I\cap(r-1)\setminus m)<\Bover12\#(I)
+  \le\#(I\cap r\setminus m)\},\cr}$$
+
+\noindent and set
+
+\Centerline{$\Cal I'_{np}=\{(E,I,w):(E,I,w)\in\Cal I_{np}$,
+$\#(I\cap m)\ge\Bover14\#(I)\}$.}
+
+\noindent Set $B_{np}=\theta_m(\spread\Cal I'_{np})$;  then
+
+\Centerline{$\nu_{kp}B_{np}\le 2\weight\Cal I'_{np}\le 4$,}
+
+\noindent by 394Fa.   Since $\nu_{kp}X\ge c_k\ge 8$
+(394G, 394Dg again), $B_{np}\ne X$ and there is an
+$A_{np}\in\Cal A_m$ disjoint from $\spread\Cal I'_{np}$.   Next, for
+$m<r\le n$ and $p\in U_n$ set
+
+\Centerline{$\Cal J_{npr}
+=\{(\theta_{r\setminus m}(A_{np}\cap E),I\cap r\setminus m,2w):
+(E,I,w)\in\Cal I_{npr}\}$,
+\quad$F_{npr}=\spread\Cal J_{npr}$.}
+
+\noindent By 394E, $\Cal J_{npr}\subseteq\Cal C_{kp}$, so
+$\nu_{kp}F_{npr}\le\weight\Cal J_{npr}\le 2\weight\Cal I_{npr}$.   
+Note that $F_{npr}$ is determined by coordinates in
+$r\setminus m$ and includes $A_{np}\cap\spread\Cal I_{npr}$.
+Now if $m<j\le n$ and $p\in U_n$,
+$\tilde E_j\subseteq\bigcup_{m<r\le j}F_{npr}$.   \Prf\Quer\
+Otherwise, since both sets are determined by coordinates in $j\setminus m$,
+and since $A_{np}\in\Cal A_m$, there is an $A\in\Cal A_j$ with
+
+\Centerline{$A\subseteq A_{np}\cap\tilde E_j
+   \setminus\bigcup_{m<r\le j}F_{npr}
+\subseteq A_{np}\cap\tilde E_j
+   \setminus\bigcup_{m<r\le j}\spread\Cal I_{npr}$.}
+
+\noindent Since $A$ is also disjoint from $\spread\Cal I'_{np}$ and
+$A\subseteq\tilde E_j\subseteq\spread\Cal I_{np}$,
+$A\subseteq\spread\Cal I$, where
+
+$$\eqalign{\Cal I
+&=\Cal I_{np}
+  \setminus(\Cal I'_{np}\cup\bigcup_{m<r\le j}\Cal I_{npr})\cr
+&\subseteq\{(E,I,w):(E,I,w)\in\Cal I_{np},\,
+  \#(I\setminus j)\ge\Bover14\#(I)\}.\cr}$$
+
+\noindent Since $\Cal I\subseteq\Cal C_{kp}$,
+
+$$\eqalignno{8
+&\le\nu_{kp}X
+=\nu_{kp}(\theta_{\Bbb N\setminus j}(A))
+=\nu_{kp}(\theta_{\Bbb N\setminus j}(A\cap\spread\Cal I))
+\le 2\weight\Cal I\cr
+\displaycause{394Fb}
+&\le 4.  \text{ \Bang\Qed}\cr}$$
+
+ %T26/5
+
+\medskip
+
+{\bf (b)} For $r>m$ we can find $F_r\in\frak B$ such that
+
+\inset{$\sum_{r=m+1}^{\infty}\nu_kF_r\le 4$,
+
+$\tilde E_j\subseteq\bigcup_{m<r\le j}F_r$ for every $j>m$,
+
+$F_r$ is determined by coordinates in $r\setminus m$.}
+
+\noindent\Prf\ If $n\ge r>m$, then, because $\frak B_r$ is finite, 
+there is a set $F_{nr}\in\frak B_r$ such that
+$\{p:p\in U_n,\,F_{npr}=F_{nr}\}$ belongs to $\Cal F$.
+Next, if $r>m$ there is an $F_r\in\frak B_r$ such that
+$\{n:n\ge r$, $F_{nr}=F_r\}$ belongs to $\Cal F$.   Now
+
+$$\eqalignno{\nu_kF_r
+&=\lim_{n\to\Cal F}\nu_kF_{nr}\cr
+\displaycause{because 
+$\{n:\nu_kF_{nr}=\nu_kF_r\}\supseteq\{n:F_{nr}=F_r\}\in\Cal F$}
+&=\lim_{n\to\Cal F}\lim_{p\to\Cal F}\nu_{kp}F_{nr}
+=\lim_{n\to\Cal F}\lim_{p\to\Cal F}\nu_{kp}F_{npr}
+\le 2\lim_{n\to\Cal F}\lim_{p\to\Cal F}\weight\Cal I_{npr}.\cr}$$
+
+\noindent So, for $s>m$,
+
+$$\eqalign{\sum_{r=m+1}^s\nu_kF_r
+&\le 2\sum_{r=m+1}^s\lim_{n\to\Cal F}\lim_{p\to\Cal F}
+   \weight\Cal I_{npr}\cr
+&=2\lim_{n\to\Cal F}\lim_{p\to\Cal F}
+   \sum_{r=m+1}^s\weight\Cal I_{npr}
+\le 2\lim_{n\to\Cal F}\lim_{p\to\Cal F}
+   \weight\Cal I_{np}
+\le 4.\cr}$$
+
+\noindent As $s$ is arbitrary, $\sum_{r=m+1}^{\infty}\nu_kF_r\le 4$.
+
+If $n\ge j>m$, then we saw in (a) that
+$\tilde E_j\subseteq\bigcup_{m<r\le j}F_{npr}$ for every
+$p\in U_n$.   Since there are many $p$ such that $F_{nr}=F_{npr}$ whenever
+$m<r\le j$, $\tilde E_j\subseteq\bigcup_{m<r\le j}F_{nr}$.   Now, given
+$j>m$, there are many $n$ such that $F_{nr}=F_r$ whenever $m<r\le j$, so
+$\tilde E_j\subseteq\bigcup_{m<r\le j}F_r$.
+
+Finally, take any $r>m$.   Since $F_{npr}$ is determined by coordinates in
+$r\setminus m$ whenever $n\ge r$ and $p\in U_n$, $F_{nr}$ is determined by
+coordinates in $r\setminus m$ whenever $n\ge r$, and $F_r$ also is
+determined by coordinates in $r\setminus m$.\ \Qed
+
+\medskip
+
+{\bf (c)} Let $r_0\ge m$ be such that
+$\sum_{r=r_0+1}^{\infty}\nu_kF_r\le\eta$.   Set
+$C=\bigcup_{m<r\le r_0}F_r$.   Then
+$C$ is determined by coordinates in $\Bbb N\setminus m$ and
+
+\Centerline{$\nu_kC\le\sum_{r=m+1}^{r_0}\nu_kF_r\le 4$.}
+
+\noindent For any $i\in\Bbb N$, there is some $j>r_0$ such that
+$E_i\subseteq\tilde E_j$, in which case
+
+\Centerline{$E_i\setminus C\subseteq\bigcup_{r_0<r\le j}F_r$}
+
+\noindent and
+
+\Centerline{$\nu_k(E_i\setminus C)
+\le\sum_{r=r_0+1}^j\nu_kF_r\le\eta$,}
+
+\noindent as required.
+}  %end of proof of 394K
+
+\leader{394L}{Lemma}  %\Tal{\S6.6}
+Suppose that $k\in\Bbb N$, $\epsilon>0$, $m\in\Bbb N$,
+$B\in\frak B_m$ and that
+$\sequence{i}{E_i}$ is a disjoint sequence in $\frak B$.   Then there
+are $n>m$ and $B'\in\frak B_n$ such that $B'\subseteq B$, $B'$ is
+$\bover12\nu_k$-thin between $m$ and $n$ and
+$\limsup_{i\to\infty}\nu_k(E_i\cap B\setminus B')\le\epsilon$.
+
+\proof{ Set $\eta=\Bover{\epsilon}{\#(\Cal A_m)}$.    For
+those $A\in\Cal A_m$ included in $B$ define $C'_A\subseteq A$ as follows.
+
+\medskip
+
+\quad{\bf case 1} If there is some $r$ such that
+$\nu_k(\theta_{\Bbb N\setminus m}(A\cap\bigcup_{i\le r}E_i))\ge 2$, set
+$C'_A=A\setminus\bigcup_{i\le r}E_i$, so that
+$\bover12\nu_k(\theta_{\Bbb N\setminus m}(A\setminus C'_A))\ge 1$ and
+$E_i\cap A\setminus C'_A=\emptyset$ for $i>r$.
+
+\medskip
+
+\quad{\bf case 2} If
+$\nu_k(\theta_{\Bbb N\setminus m}(A\cap\bigcup_{i\le r}E_i))<2$
+for every $r$, then by 394K, applied to the sequence
+$\sequence{i}{\theta_{\Bbb N\setminus m}(A\cap E_i)}$,
+ we can find a $C\in\frak B$,
+determined by coordinates in $\Bbb N\setminus m$,
+such that $\nu_kC\le 4$ and
+$\nu_k(\theta_{\Bbb N\setminus m}(A\cap E_i)\setminus C)\le\eta$
+for every $i$.
+Set $C'_A=C\cap A$.   Because $C$ is determined by coordinates in
+$\Bbb N\setminus m$ and $A\in\Cal A_m$,
+$\nu_k(\theta_{\Bbb N\setminus m}(C'_A))=\nu_kC\le 4$.
+Also $E_i\cap A\setminus C'_A
+\subseteq\theta_{\Bbb N\setminus m}(A\cap E_i)\setminus C$
+so $\nu_k(E_i\cap A\setminus C'_A)\le\eta$ for every $i$.
+
+\medskip
+
+Set
+
+\Centerline{$B'=\bigcup\{C'_A:A\in\Cal A_m$, $A\subseteq B\}$.}
+
+\noindent Then $B'\in\frak B$, $B'\subseteq B$ and
+
+$$\eqalign{\limsup_{i\to\infty}\nu_k(E_i\cap B\setminus B')
+&\le\sum_{A\in\Cal A_m,A\subseteq B}\limsup_{i\to\infty}
+  \nu_k(E_i\cap A\setminus C'_A)\cr
+&\le\sum_{A\in\Cal A_m,A\subseteq B}\eta
+\le\epsilon.\cr}$$
+
+Let $n>m$ be such that $C'_A\in\frak B_n$ whenever $A\in\Cal A_m$ and
+$A\subseteq B$.   Then $B'$ is $\bover12\nu_k$-thin between $m$ and $n$.
+\Prf\ Take any $A\in\Cal A_m$ and set
+$\tilde C=\theta_{n\setminus m}(A\cap B')$.
+If $A\not\subseteq B$ then $A\cap B'$ and $\tilde C$
+are empty and $\nu_k(X\setminus\tilde C)\ge 8$ (394Ia).
+Otherwise, $A\cap B'=C'_A\in\frak B_n$ so
+$\tilde C=\theta_{\Bbb N\setminus m}(C'_A)$ is disjoint from
+$\theta_{\Bbb N\setminus m}(A\setminus C'_A)$ (see the last remark in
+394Db).   If $C'_A$ was chosen as in case 1 above,
+
+\Centerline{$\nu_k(X\setminus\tilde C)
+\ge\nu_k(\theta_{\Bbb N\setminus m}(A\setminus C'_A))\ge 2$.}
+
+\noindent
+If $C'_A$ was chosen as in case 2,
+
+\Centerline{$\nu_k(X\setminus\tilde C)
+=\nu_k(X\setminus\theta_{\Bbb N\setminus m}(C'_A))
+\ge\nu_kX-\nu_k(\theta_{\Bbb N\setminus m}(C'_A))
+\ge 8-4$.}
+
+\noindent So in all three cases we
+have $\bover12\nu_k(X\setminus\tilde C)\ge 1$, as required.\ \Qed
+
+Thus we have an appropriate $B'$.
+}  %end of proof of 394L
+
+\leader{394M}{Theorem}  %\Tal{\S6.6}
+$\nu$ is exhaustive.
+
+\proof{ Let $\sequence{i}{E_i}$ be a disjoint sequence in $\frak B$.
+Take any $k\in\Bbb N$ and $\epsilon>0$, and choose $\sequence{j}{B_j}$ and
+$\sequence{j}{n_j}$ inductively, as
+follows.    $B_0=X$ and $n_0=0$.   Given that $B_j\in\frak B_{n_j}$,
+take $n_{j+1}>n_j$ and $B_{j+1}\in\frak B_{n_{j+1}}$ such that
+$B_{j+1}\subseteq B_j$, $B_{j+1}$ is
+$\bover12\nu_{k+1}$-thin between $n_j$ and $n_{j+1}$, and
+$\limsup_{i\to\infty}
+  \nu_{k+1}(E_i\cap B_j\setminus B_{j+1})\le\epsilon$
+(394L).   Continue.   Note that
+$\limsup_{i\to\infty}\nu_{k+1}(E_i\setminus B_j)\le j\epsilon$
+for every $j$.
+
+Set $I=\{n_j:j<N_k\}$ and $B=B_{N_k-1}$.    Then $B$ is
+$\bover12\nu_{k+1}$-thin along $I$ (use 394Dc).   By 394J, 
+$\nu_kB\le 2^{-k}$.
+
+Of course $\nu\le\nu_k\le\nu_{k+1}$ (394Df).   So
+
+\Centerline{$\limsup_{i\to\infty}\nu E_i
+\le\nu_kB+\limsup_{i\to\infty}\nu_{k+1}(E_i\setminus B)
+\le 2^{-k}+(N_k-1)\epsilon$.}
+
+\noindent As $k$, $\epsilon$ and $\sequence{i}{E_i}$ are arbitrary,
+$\nu$ is exhaustive.
+}%end of proof of 394M
+
+\leader{394N}{Remarks (a)} 
+Note that the whole construction is invariant under
+the action of the group $\prod_{n\in\Bbb N}G_n$ where $G_n$ is the group of
+all permutations of $T_n$ for each $n$.   In particular, if we
+give each $T_n$ a group structure and
+$X$ the product group structure, then $\nu$ is translation-invariant.
+
+\spheader 394Nb\cmmnt{ It follows that} $\nu$ is strictly positive.
+\prooflet{\Prf\ For each $n\in\Bbb N$, $\nu$ is constant on $\Cal A_n$, so
+$\nu E\ge\nu X/\#(\Cal A_n)>0$ for every non-empty $E\in\frak B_n$.\ \QeD}   
+
+\spheader 394Nc We can\cmmnt{ therefore} form the metric completion
+$\widehat{\frak B}$ of $\frak B$\cmmnt{, as in 392H}, 
+and $\widehat{\frak B}$ will
+be a Maharam algebra, with a strictly positive Maharam submeasure $\hat\nu$
+continuously extending $\nu$\cmmnt{ (393H)}.   
+\cmmnt{Now} $\widehat{\frak B}$ is not
+measurable.   \prooflet{\Prf\Quer\ Otherwise, let $\bar\mu$ be such that
+$(\widehat{\frak B},\bar\mu)$ is a probability algebra.   Then $\bar\mu$
+and $\hat\nu$ are strictly positive Maharam submeasures on 
+$\widehat{\frak B}$, so $\hat\nu$ is absolutely continuous with respect to
+$\bar\mu$ (393F).   Let $n\ge 1$ be such that $\hat\nu b<8$ whenever
+$\bar\mu b\le 1/\#(T_n)$.   Then there must be a $t\in T_n$ such that
+$\bar\mu Y_{nt}\le 1/\#(T_n)$;  
+but $\hat\nu Y_{nt}=\nu Y_{nt}\ge 8$
+(see the proof of 394Ib).\ \Bang\Qed}
+
+\cmmnt{In fact, $\widehat{\frak B}$ is nowhere measurable (394Ya).}
+
+\leader{*394O}{Control measures}\dvAformerly{3{}93O}\cmmnt{ One 
+of the original
+reasons for studying Maharam submeasures was their connexion with the
+following notion.}
+Let $\frak A$ be a Dedekind
+$\sigma$-complete Boolean algebra and $U$ a Hausdorff linear topological
+space.   \cmmnt{ (The idea is intended to apply, in particular, when
+$\frak A$ is a $\sigma$-algebra of subsets of a set.)}   A function
+$\theta:\frak A\to U$ is a {\bf vector measure} if
+$\sum_{n=0}^{\infty}\theta a_n=\lim_{n\to\infty}\sum_{i=0}^n\theta a_i$
+is defined in $U$ and equal to $\theta(\sup_{n\in\Bbb N}a_n)$ for every
+disjoint sequence $\sequencen{a_n}$ in $\frak A$.
+In this case, a non-negative countably additive
+functional $\mu:\frak A\to\coint{0,\infty}$ is a {\bf control measure}
+for $\theta$ if $\theta a=0$ whenever $\mu a=0$.
+
+%what about an absolute-continuity definition?
+
+\leader{*394P}{Example} There are a metrizable linear topological space
+$U$ and a vector measure $\theta:\Sigma\to U$, where $\Sigma$ is a
+$\sigma$-algebra of sets, such that $\theta$ has no control measure.
+
+\proof{ As in 394Nc, let $\widehat{\frak B}$ be the metric completion of 
+$\frak B$, and $\hat\nu$ the
+continuous extension of $\nu$ to $\widehat{\frak B}$.   Give
+$L^0=L^0(\widehat{\frak B})$ the topology defined from $\hat\nu$ as in 393K, so that
+$L^0$ is a metrizable linear topological space.   By 314M, we can
+identify $\widehat{\frak B}$ with a quotient algebra $\Sigma/\Cal N$ where $\Sigma$
+is a $\sigma$-algebra of subsets of a set $\Omega$
+and $\Cal N$ is a $\sigma$-ideal in $\Sigma$.
+Set $\theta E=\chi E^{\ssbullet}\in L^0$ for $E\in\Sigma$.   Then $\theta$
+is a vector measure.
+\Prf\ If $\sequencen{E_n}$ is a disjoint sequence in $\Sigma$
+with union $E$, set $F_n=\bigcup_{i\le n}E_i$, so that
+$\chi F_n^{\ssbullet}=\sum_{i=0}^n\chi E_i^{\ssbullet}$ for each $n$.
+We have $\hat\nu(E^{\ssbullet}\Bsetminus F_n^{\ssbullet})\to 0$, so that
+
+\Centerline{$\tau(\theta E-\theta F_n)
+=\tau(\chi E^{\ssbullet}-\chi F_n^{\ssbullet}))
+=\min(1,\hat\nu(E^{\ssbullet}\Bsetminus F_n^{\ssbullet}))\to 0$,}
+
+\noindent where $\tau$ is the functional of the proof of 393K, and
+$\theta E=\sum_{i=0}^{\infty}\theta E_i$ in $L^0$.\ \Qed
+
+If $\mu$ is a totally finite measure with domain $\Sigma$, set
+
+\Centerline{$\lambda a=\inf\{\mu E:E\in\Sigma$, $E^{\ssbullet}=a\}$}
+
+\noindent for every $a\in\widehat{\frak B}$.   Note that the infimum is always
+attained.   \Prf\ If $\sequencen{E_n}$ is a sequence in $\Sigma$ such that
+$E_n^{\ssbullet}=a$ for every $n\in\Bbb N$ and
+$\lambda a=\lim_{n\to\infty}\mu E_n$, set $E=\bigcap_{n\in\Bbb N}E_n$;
+then $E^{\ssbullet}=a$ and $\mu E=\lambda a$.\ \QeD\  Next, $\lambda$ is
+countably additive.   \Prf\ If $\sequencen{a_n}$ is a disjoint sequence in
+$\widehat{\frak B}$ with supremum $a$,
+take $E_n\in\Sigma$ such that $E_n^{\ssbullet}=a_n$ and
+$\mu E_n=\lambda a_n$ for each $n$, and $E\in\Sigma$ such that
+$E^{\ssbullet}=a$ and $\mu E=\lambda a$.   Set
+$F_n=E\cap E_n\setminus\bigcup_{i<n}E_i$ for each $n$, and
+$F=\bigcup_{n\in\Bbb N}F_n$.   Then $F_n^{\ssbullet}=a_n$ and
+$F_n\subseteq E_n$, so $\mu F_n=\lambda a_n$ for each $n$;  similarly,
+$F^{\ssbullet}=a$ and $F\subseteq E$, so $\mu F=\lambda a$.   Also
+$\sequencen{F_n}$ is disjoint and has union $F$.   Accordingly
+
+\Centerline{$\lambda a=\mu F=\sum_{n=0}^{\infty}\mu F_n
+=\sum_{n=0}^{\infty}\lambda a_n$.  \Qed}
+
+Since $\widehat{\frak B}$ is not a measurable algebra, $\lambda$ cannot be strictly
+positive, and there is a non-zero $a\in\widehat{\frak B}$ such that $\lambda a=0$.
+Let $E\in\Sigma$ be such that $E^{\ssbullet}=a$ and $\mu E=0$;  then
+$\theta E=\chi a\ne 0$.   So $\mu$ is not a control measure for $\theta$.
+}  %end of proof of 394P
+
+\leader{*394Q}{}\cmmnt{ This is not a book about vector measures, but
+having gone so far I ought to note
+that the generality of the phrase `metrizable linear topological space' in
+394P is essential.   If we look only at normed spaces the situation is very
+different.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $\frak A$ be a Dedekind $\sigma$-complete
+Boolean algebra, $U$ a normed space and $\theta:\frak A\to U$ a vector
+measure.   Then $\theta$ has a control measure.
+
+\proof{{\bf (a)} Since $U$ can certainly be embedded in a Banach space
+$\hat U$ (3A5Jb), and as $\theta$ will still be a vector measure when
+regarded as a map from $\frak A$ to $\hat U$, we may assume from the
+beginning that $U$ itself is complete.
+
+\medskip
+
+{\bf (b)} $\theta$ is bounded (that is, $\sup_{a\in\frak A}\|\theta a\|$
+is finite).   \Prf\Quer\ (Cf.\ 326M.)
+Suppose, if possible, otherwise.   Choose
+$\sequencen{a_n}$ inductively, as follows.   $a_0=1$.   Given that
+$\sup_{a\Bsubseteq a_n}\|\theta a\|=\infty$, choose $b\Bsubseteq a_n$
+such that $\|\theta b\|\ge\|\theta a_n\|+1$.   Then
+$\|\theta(a_n\Bsetminus b)\|\ge 1$.   Also
+
+\Centerline{$\sup_{a\Bsubseteq a_n}\|\theta a\|
+\le\sup_{a\Bsubseteq a_n}\|\theta(a\Bcap b)\|+\|\theta(a\Bsetminus
+b)\|$,}
+
+\noindent so at least one of $\sup_{a\Bsubseteq b}\|\theta a\|$,
+$\sup_{a\Bsubseteq a_n\Bsetminus b}\|\theta a\|$ must be infinite.   We
+may therefore take $a_{n+1}$ to be either $b$ or $a_n\Bsetminus b$ and
+such that $\sup_{a\Bsubseteq a_{n+1}}\|\theta a\|=\infty$.   Observe
+that in either case we shall have $\|\theta(a_n\Bsetminus a_{n+1})\|\ge
+1$.   Continue.
+
+At the end of the induction we shall have a disjoint sequence
+$\sequencen{a_n\Bsetminus a_{n+1}}$ such that
+$\|\theta(a_n\Bsetminus a_{n+1})\|\ge 1$ for every $n$, so that
+$\sum_{n=0}^{\infty}\theta(a_n\Bsetminus a_{n+1})$ cannot be defined in
+$U$;  which is impossible.\ \Bang\Qed
+
+\medskip
+
+{\bf (c)} Accordingly we have a bounded linear operator
+$T:L^{\infty}\to U$, where $L^{\infty}=L^{\infty}(\frak A)$, such that
+$T\chi=\theta$ (363Ea).
+
+Now the key to the proof is the following fact:  if $\sequencen{u_n}$ is
+a disjoint order-bounded sequence in $(L^{\infty})^+$,
+$\sequencen{Tu_n}\to 0$ in $U$.   \Prf\ Let $\gamma$ be such that
+$u_n\le\gamma\chi 1$ for every $n$.   Let $\epsilon>0$, and let $k$ be
+the integer part of $\gamma/\epsilon$.   For $n\in\Bbb N$, $i\le k$ set
+$a_{ni}=\Bvalue{u_n>\epsilon(i+1)}$;   then $\sequencen{a_{ni}}$ is
+disjoint for each $i$, and if we set $v_n=\epsilon\sum_{i=0}^k\chi
+a_{ni}$, we get $v_n\le u_n\le v_n+\epsilon\chi 1$, so
+$\|u_n-v_n\|_{\infty}\le\epsilon$.
+
+Because $\sequencen{a_{ni}}$ is disjoint, 
+$\sum_{n=0}^{\infty}\theta a_{ni}$ is defined in $U$, 
+and $\sequencen{\theta a_{ni}}\to 0$, for each $i\le k$.   Consequently
+
+\Centerline{$Tv_n=\epsilon\sum_{i=0}^k\theta a_{ni}\to 0$}
+
+\noindent as $n\to\infty$.  But
+
+\Centerline{$\|Tu_n-Tv_n\|\le\|T\|\|u_n-v_n\|_{\infty}\le\epsilon\|T\|$}
+
+\noindent for each $n$, so
+$\limsup_{n\to\infty}\|Tu_n\|\le\epsilon\|T\|$.   As $\epsilon$ is
+arbitrary, $\lim_{n\to\infty}\|Tu_n\|=0$.\ \Qed
+
+\medskip
+
+{\bf (d)} Consider the adjoint operator $T':U^*\to (L^{\infty})^*$.
+Recall that $L^{\infty}$ is an $M$-space (363Ba) so that its dual is an
+$L$-space (356N).   Write
+
+\Centerline{$A=\{T'g:g\in U^*,\,\|g\|\le 1\}\subseteq(L^{\infty})^*
+=(L^{\infty})^{\sim}$.}
+
+\noindent If $u\in L^{\infty}$, then
+
+\Centerline{$\sup_{f\in A}|f(u)|=\sup_{\|g\|\le 1}|(T^*g)(u)|
+=\sup_{\|g\|\le 1}|g(Tu)|=\|Tu\|$.}
+
+\noindent Now $A$ is uniformly integrable.   \Prf\ I use the criterion
+of 356O.   Of course $\|f\|\le\|T'\|$ for every $f\in A$, so $A$ is
+norm-bounded.   If $\sequencen{u_n}$ is an order-bounded disjoint
+sequence in $(L^{\infty})^+$, then
+
+\Centerline{$\sup_{f\in A}|f(u_n)|=\|Tu_n\|\to 0$}
+
+\noindent as $n\to\infty$.   So $A$ is uniformly integrable.\ \Qed
+
+\medskip
+
+{\bf (e)} Next, $A\subseteq(L^{\infty})^{\sim}_c$.   \Prf\ If $f\in A$,
+it is of the form $T'g$ for some $g\in U^*$, that is,
+
+\Centerline{$f(\chi a)=(T'g)(\chi a)=gT(\chi a)=g(\theta a)$}
+
+\noindent for every $a\in\frak A$.   If now $\sequencen{a_n}$ is a
+disjoint sequence in $\frak A$ with supremum $a$,
+
+\Centerline{$f(\chi a)
+=g(\theta(\sup_{n\in\Bbb N}a_n))
+=g(\sum_{n=0}^{\infty}\theta a_n)
+=\sum_{n=0}^{\infty}g(\theta a_n)
+=\sum_{n=0}^{\infty}f(\chi a_n)$.}
+
+\noindent So $f\chi$ is countably additive.   By 363K,
+$f\in(L^{\infty})^{\sim}_c$.\ \Qed
+
+\medskip
+
+{\bf (f)} Because $A$ is uniformly integrable, there is for each
+$m\in\Bbb N$ an $f_m\ge 0$ in $(L^{\infty})^*$ such that
+$\|(|f|-f_m)^+\|\le 2^{-m}$ for every $f\in A$;  moreover, we can
+suppose that $f_m$ is of the form $\sup_{i\le k_m}|f_{mi}|$ where every
+$f_{mi}$ belongs to $A$ (354R(b-iii)), so that
+$f_m\in(L^{\infty})^{\sim}_c$ and $\mu_m=f_m\chi$ is countably additive.
+Set
+
+\Centerline{$\mu=\sum_{m=0}^{\infty}\Bover1{2^m(1+\mu_m1)}\mu_m$;}
+
+\noindent  then $\mu:\frak A\to\coint{0,\infty}$ is a non-negative
+countably additive functional.
+
+Now $\mu$ is a control measure for $\theta$.   \Prf\ If $\mu a=0$, then
+$\mu_ma=0$, that is, $f_m(\chi a)=0$, for every $m\in\Bbb N$.   But this
+means that if $g\in U^*$ and $\|g\|\le 1$,
+
+\Centerline{$|g(\theta a)|=|(T'g)(\chi a)|
+\le f_m(\chi a)+\|(|T'g|-f_m)^+\|\le 2^{-m}$}
+
+\noindent for every $m$, by the choice of $f_m$;  so that $g(\theta
+a)=0$.   As $g$ is arbitrary, $\theta a=0$;  as $a$ is arbitrary, $\mu$
+is a control measure for $\theta$.\ \Qed
+}  %end of proof of 394Q
+
+\exercises{
+\leader{394X}{Basic exercises (a)}
+%\spheader 394Xa 
+Show that the metric completion
+$\widehat{\frak B}$ of $\frak B$, as defined in
+394N, has many involutions (definition:  382O).
+%394N
+
+\leader{394Y}{Further exercises (a)}%
+%\spheader 394Ya
+(i) 
+Show that if $r\in\Bbb N$, $k\le p$ and $E\in\frak B_{r+1}$ are such that 
+$\nu_{kp}E<c_k$, then $\nu_{kp}(\theta_r(E))\le\Bover{32}{c_k}\,\nu_{kp}E$.
+%mt39bits 
+(ii) Show that if $E\in\Cal B_r$ then
+$\nu(E\cap Y_{rt})\ge\min(8,\bover14\nu E)$ for every $t\in T_r$.
+(iii) Let $\widehat{\frak B}$ be the metric completion of $\frak B$ and
+$\hat\nu$ the continuous extension of $\nu$ to $\widehat{\frak B}$.
+Show that for every $a\in\frak B$ and
+$n\in\Bbb N$ there is a disjoint family
+$\langle c_i\rangle_{i\le n}$ such that $c_i\Bsubseteq a$ and
+$\hat\nu c_i\ge\min(7,\bover15\hat\nu a)$ for every $i\le n$.
+(iv) Show that the
+only countably additive real-valued functional on $\widehat{\frak B}$ is 
+the zero functional.
+(v) Show that $\widehat{\frak B}$ is nowhere measurable.
+(vi) Show that if $\nu'$ is a uniformly exhaustive submeasure on
+$\frak B$ which is absolutely continuous with respect to $\nu$, then
+$\nu'=0$.  
+%394G 394N 
+}  %end of exercises
+
+\leader{394Z}{Problems (a)}
+Does $\widehat{\frak B}$ have an order-closed subalgebra isomorphic to
+the measure algebra of Lebesgue measure?   In particular, if we take
+$\frak C\subseteq\frak B$ to be the algebra of sets generated by sets of
+the form $\{x:x\in X$, $x(n)=0\}$ for $n\in\Bbb N$, is $\nu\restr\frak C$
+uniformly exhaustive?
+
+\spheader 394Zb Suppose that instead of taking large sets $T_n$, we simply
+set $T_n=\{0,1\}$ for every $n$, but otherwise used the same construction.
+Should we then find that $\nu$ was uniformly exhaustive?
+\cmmnt{(This might be relevant to (a) above.)}
+
+\spheader 394Zc Is the Boolean algebra $\widehat{\frak B}$ homogeneous?
+
+\endnotes{
+\Notesheader{394} `Maharam's problem', or the `control measure problem',
+was for fifty years one of the most vexing questions in abstract measure
+theory.   To begin with, there were reasonable hopes that there was a
+positive answer -- in the language of this book, that every Maharam algebra
+was a measurable algebra.   If this had been the case, there would have
+been consequences all over the theories of topological Boolean algebras,
+topological Riesz spaces and vector measures.   In the 1970s, it began to
+seem too much to ask for.   In 1983 the Kalton-Roberts theorem gave new
+life to the conjecture for a moment, but {\smc Roberts 93} demonstrated a
+major obstacle, which Talagrand (building on some further ideas of I.Farah)
+eventually developed into the construction above.   The ideas which for a
+generation were collected together by their association with the control
+measure problem no longer have this as a unifying principle, and (as after
+any successful revolution) are now more naturally grouped in other ways.
+In the 2004 edition of this volume, maintained in
+{\tt http://www.essex.ac.uk/maths/people/fremlin/mt3.2004}, you can find
+a list of formulations of the control measure problem as it
+then appeared to be.   There is a relic of this era in 394P.
+
+Now that we know for sure that there are non-measurable Maharam algebras,
+it becomes possible to ask questions about their structure.  
+Frustratingly, practically none of these questions has yet been answered
+even for the examples constructed by Talagrand's method.   (I should of
+course note that while I speak of `the' submeasure $\nu$ and `the' Maharam
+algebra $\widehat{\frak B}$, they depend on the sequences
+$\sequencen{\#(T_n)}$,
+$\sequence{k}{\alpha_k}$ and $\sequence{k}{N_k}$ and the filter 
+$\Cal F$, and there is every reason to suppose that $\frak c$
+non-isomorphic examples can be constructed by the formulae set out above,
+without considering elementary variations.)   I will return briefly to
+such questions in Volumes 4 and 5, as I come to further properties of
+measure algebras which can be interpreted in Maharam algebras.
+}  %end of notes
+
+\discrpage
+

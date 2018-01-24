@@ -1,0 +1,1550 @@
+\frfilename{mt464.tex}
+\versiondate{25.5.13}
+\copyrightdate{1999}
+
+\def\chaptername{Pointwise compact sets of measurable functions}
+\def\sectionname{Talagrand's measure}
+
+\newsection{464}
+
+An obvious question arising from 463I and its corollaries is, do we
+really need the
+hypothesis that the measure involved is perfect?   A very remarkable
+construction by M.Talagrand (464D) shows that these results are
+certainly not true of all probability spaces (464E).   Investigating the
+properties of this measure we are led to some surprising facts about
+additive functionals on algebras $\Cal PI$ and the duals of
+$\ell^{\infty}$ spaces (464M, 464R).
+
+\leader{464A}{The usual measure on $\Cal PI$} Recall\cmmnt{ from
+254J and 416U} that for any set $I$ we have a standard measure $\nu$, a
+Radon measure for the usual topology on $\Cal PI$\cmmnt{, defined by
+saying that $\nu\{a:a\subseteq I,\,a\cap J=c\}=2^{-\#(J)}$ whenever
+$J\subseteq I$ is a finite set and $c\subseteq J$, or by copying from
+the usual product measure on $\{0,1\}^I$ by means of the bijection
+$a\mapsto\chi a:\Cal PI\to\{0,1\}^I$}.   \cmmnt{We shall need a couple
+of simple facts about these measures.}
+
+\spheader 464Aa If $\family{j}{J}{I_j}$ is any partition of $I$, then
+$\nu$ can be identified with the product of the family
+$\family{j}{J}{\nu_j}$,
+where $\nu_j$ is the usual measure on $\Cal PI_j$\cmmnt{, and we
+identify $\Cal PI$ with $\prod_{j\in J}\Cal PI_j$ by matching
+$a\subseteq I$ with
+$\family{j}{J}{a\cap I_j}$;  this is the `associative law' 254N}.   It
+follows that if we have any family $\family{j}{J}{A_j}$ of subsets of
+$\Cal PI$, and if for each $j$ the set $A_j$ is `determined by
+coordinates in $I_j$' in the sense that, for $a\subseteq I$, $a\in A_j$
+iff $a\cap I_j\in A_j$, then
+$\nu^*(\bigcap_{j\in J}A_j)=\prod_{j\in J}\nu^*A_j$\cmmnt{ (use
+254Lb)}.
+
+\spheader 464Ab Similarly, if $f_1$, $f_2$ are non-negative real-valued
+functions on $\Cal PI$, and if there are disjoint sets $I_1$,
+$I_2\subseteq I$ such that $f_j(a)=f_j(a\cap I_j)$ for every
+$a\subseteq I$ and both $j$, then the upper integral
+$\overline{\int}f_1+f_2\,d\nu$ is
+$\overline{\int}f_1d\nu+\overline{\int}f_2d\nu$.   \prooflet{\Prf\ We
+may suppose that $I_2=I\setminus I_1$.   For
+each $j$, define $g_j:\Cal PI_j\to\coint{0,\infty}$ by setting
+$g_j=f_j\restrp\Cal PI_j$, so that $f_j(a)=g_j(a\cap I_j)$ for every
+$a\subseteq I$.   Let $\nu_j$ be the usual measure on $\Cal PI_j$, so
+that we can identify $\nu$ with the product measure $\nu_1\times\nu_2$,
+if we identify $\Cal PI$ with $\Cal PI_1\times\Cal PI_2$;  that is, we
+think of a subset of $I$ as a pair $(a_1,a_2)$ where $a_j\subseteq I_j$
+for both $j$.
+
+Now we have
+
+$$\eqalignno{\overline{\int}f_1+f_2\,d\nu
+&=\overline{\int}g_1\,d\nu_1
+   +\overline{\int}g_2\,d\nu_2\cr
+\noalign{\noindent (253K)}
+&=\overline{\int}g_1\,d\nu_1\cdot\overline{\int}\chi(\Cal PI_2)d\nu_2
+   +\overline{\int}\chi(\Cal PI_1)d\nu_1\cdot\overline{\int}g_2\,d\nu_2\cr
+&=\overline{\int}f_1\,d\nu+\overline{\int}f_2\,d\nu\cr}$$
+
+\noindent by 253J, because we can think of $f_1(a_1,a_2)$ as
+$g_1(a_1)\cdot(\chi\Cal PI_2)(a_2)$ for all $a_1$, $a_2$.\ \Qed}
+
+\spheader 464Ac If $A\subseteq\Cal PI$ is such that $b\in A$ whenever
+$a\in A$, $b\subseteq I$ and $a\symmdiff b$ is finite, then $\nu^*A$
+must be either $0$ or $1$\cmmnt{;  this is the zero-one law 254Sa,
+applied to the set
+$\{\chi a:a\in A\}\subseteq\{0,1\}^I$ and the usual measure on
+$\{0,1\}^I$}.
+
+\vleader{72pt}{464B}{Lemma} Let $I$ be any set, and $\nu$ the usual measure on
+$\Cal PI$.
+
+(a)(i) There is a sequence $\sequencen{m(n)}$ in $\Bbb N$ such that
+$\prod_{n=0}^{\infty}1-2^{-m(n)}=\bover12$.
+
+\quad(ii) Given such a sequence, write $X$ for
+$\prod_{n\in\Bbb N}(\Cal PI)^{m(n)}$, and let $\lambda$ be the product
+measure on $X$.   We have a function
+$\phi:X\to\Cal PI$ defined by setting
+
+\Centerline{$\phi(\sequencen{\langle a_{ni}\rangle_{i<m(n)}})
+=\bigcup_{n\in\Bbb N}\bigcap_{i<m(n)}a_{ni}$}
+
+\noindent whenever $\sequencen{\langle a_{ni}\rangle_{i<m(n)}}\in X$.
+Now $\phi$ is \imp\ for $\lambda$ and $\nu$.
+
+(b) The map
+
+\Centerline{$(a,b,c)\mapsto(a\cap b)\cup(a\cap c)\cup(b\cap c):
+(\Cal PI)^3\to\Cal PI$}
+
+\noindent is \imp\ for the product measure on $(\Cal PI)^3$.
+
+\proof{{\bf (a)(i)} Choose $m(n)$ inductively so that, for each $n$ in
+turn, $m(n)$ is minimal subject to the requirement
+$\prod_{k=0}^n1-2^{-m(k)}>\bover12$.
+
+\medskip
+
+\quad{\bf (ii)} If $t\in I$, then
+
+\Centerline{$\{\frak x:\frak x\in X,\,t\notin\phi(\frak x)\}
+=\{\sequencen{\langle a_{ni}\rangle_{i<m(n)}}:
+  t\notin\bigcup_{n\in\Bbb N}\bigcap_{i<m(n)}a_{ni}\}$}
+
+\noindent has measure
+
+\Centerline{$\prod_{n=0}^{\infty}
+\lambda_n\{\ofamily{i}{m(n)}{a_i}:t\notin\bigcap_{i<m(n)}a_i\}$,}
+
+\noindent where $\lambda_n$ is the product measure on $(\Cal PI)^{m(n)}$
+for each $n$.   But this is just
+
+\Centerline{$\prod_{n=0}^{\infty}1-2^{-m(n)}=\Bover12$,}
+
+\noindent by the choice of $\sequencen{m(n)}$.   Accordingly
+$\lambda\{\frak x:t\in\phi(\frak x)\}=\bover12$ for every $t\in I$.
+Next, if we identify $X$ with
+$\Cal P(\{(t,n,i):t\in I$, $n\in\Bbb N$, $i<m(n)\})$, each set
+$E_t=\{\frak x:t\in\phi(\frak x)\}$ is determined by
+coordinates in $J_t=\{(t,n,i):n\in\Bbb N,\,i<m(n)\}$.   Since the sets
+$J_t$ are disjoint, the sets $E_t$, for different $t$, are
+stochastically independent (464Aa), so if $J\subseteq I$ is finite,
+
+\Centerline{$\lambda\{\frak x:J\subseteq\phi(\frak x)\}
+=\prod_{t\in J}\lambda E_t=2^{-\#(J)}=\nu\{a:J\subseteq a\}$.}
+
+This shows that $\lambda\phi^{-1}[F]=\nu F$ whenever $F$ is of the form
+$\{a:J\subseteq a\}$ for some finite $J\subseteq I$.   By the Monotone
+Class Theorem (136C), $\lambda\phi^{-1}[F]=\nu F$ for every $F$
+belonging to the $\sigma$-algebra generated by sets of this form.   But
+this $\sigma$-algebra certainly contains all sets of the form
+$\{a:a\cap J=c\}$ where $J\subseteq I$ is finite and $c\subseteq J$,
+which are the
+sets corresponding to the basic cylinder sets in the product
+$\{0,1\}^I$.   By 254G, $\phi$ is \imp.
+
+\medskip
+
+{\bf (b)} This uses the same idea as (a-ii).   Writing $\nu^3$ for the
+product measure on $(\Cal PI)^3$, then, for any $t\in I$,
+
+$$\eqalign{\nu^3\{(a,b,&c):t\in(a\cap b)\cup(a\cap c)\cup(b\cap c)\}\cr
+&=\nu^3\{(a,b,c):t\in a\cap b\}+\nu^3\{(a,b,c):t\in a\cap c\}\cr
+&\qquad\qquad\qquad+\nu^3\{(a,b,c):t\in b\cap c\}
+  -2\nu^3\{(a,b,c):t\in a\cap b\cap c\}\cr
+&=3\cdot\Bover14-2\cdot\Bover18=\Bover12.\cr}$$
+
+\noindent Once again, these sets are independent for different $t$, and
+this is all we need to know in order to be sure that the map is \imp.
+}%end of proof of 464B
+
+\leader{464C}{Lemma} Let $I$ be any set, and let $\nu$ be the usual
+measure on $\Cal PI$.
+
+(a)\cmmnt{ (see {\smc Sierpi\'nski 45})} If $\Cal F\subseteq\Cal PI$
+is any filter containing every cofinite
+set, then $\nu_*\Cal F=0$ and $\nu^*\Cal F$ is either $0$ or $1$.   If
+$\Cal F$ is a non-principal ultrafilter then $\nu^*\Cal F=1$.
+
+(b)\cmmnt{ ({\smc Talagrand 80}
+\footnote{The date of this paper is misleading, as there was an unusual
+backlog in the journal;  in reality it preceded
+{\smc Fremlin \& Talagrand 79}.})}
+If $\sequencen{\Cal F_n}$ is a sequence of filters on $I$, all of
+outer measure $1$, then $\bigcap_{n\in\Bbb N}\Cal F_n$ also has outer
+measure $1$.
+
+\proof{{\bf (a)} That $\nu^*\Cal F\in\{0,1\}$ is immediate from 464Ac.
+If $\Cal F$ is an ultrafilter, then
+$\Cal PI=\Cal F\cup\{I\setminus a:a\in\Cal F\}$;  but as
+$a\mapsto I\setminus a$ is a measure space
+automorphism of $(\Cal PI,\nu)$,
+$\nu^*\{I\setminus a:a\in\Cal F\}=\nu^*\Cal F$, and both must be at
+least $\bover12$, so $\nu^*\Cal F=1$.   Equally,
+$\nu^*(\Cal PI\setminus\Cal F)=\nu^*\{I\setminus a:a\in\Cal F\}=1$, so
+$\nu_*\Cal F=0$.   Returning to a general filter containing every
+cofinite set, this is included in a non-principal ultrafilter, so also
+has inner measure $0$.
+
+\medskip
+
+{\bf (b)} Let $\sequencen{m(n)}$ be a sequence in $\Bbb N$ such that
+$\prod_{n=0}^{\infty}1-2^{-m(n)}=\bover12$, and let $X$, $\lambda$ and
+$\phi:X\to\Cal PI$ be as in 464Ba.  Consider the set
+$D=\prod_{n\in\Bbb N}\Cal F_n^{m(n)}$ as
+a subset of $X$.   By 254Lb, $\lambda^*D=1$.   If we set
+$\Cal F=\bigcap_{n\in\Bbb N}\Cal F_n$, then we see that whenever
+$\frak x=\sequencen{\langle a_{ni}\rangle_{i<m(n)}}$ belongs to $D$,
+
+\Centerline{$\phi(\frak x)\supseteq\bigcap_{i<m(n)}a_{ni}\in\Cal F_n$}
+
+\noindent for every $n$, so that $\phi(\frak x)\in\Cal F$.   Thus
+$D\subseteq\phi^{-1}[\Cal F]$ and
+
+\Centerline{$\nu^*\Cal F\ge\lambda^*\phi^{-1}[\Cal F]\ge\lambda^*D=1$}
+
+\noindent because $\phi$ is \imp\ (413Eh).
+
+As $\sequencen{\Cal F_n}$ is arbitrary, we have the result.
+}%end of proof of 464C
+
+\leader{464D}{Construction}\cmmnt{ ({\smc Talagrand 80})} Let $I$ be
+any set, and $\nu$ the usual
+Radon measure on $\Cal PI$, with $\Tau$ its domain.   Let $\Sigma$ be
+the set
+
+$$\eqalign{\{E:E\subseteq\Cal PI,
+&\text{ there are a set }F\in\Tau
+   \text{ and a filter }\Cal F\text{ on }I\cr
+&\hskip5em
+ \text{ such that }\nu^*\Cal F=1
+   \text{ and }E\cap\Cal F=F\cap\Cal F\}.\cr}$$
+
+\noindent Then there is a unique extension of $\nu$ to a complete
+probability measure $\mu$, with domain $\Sigma$, defined by saying that
+$\mu E=\nu F$ whenever $E\in\Sigma$, $F\in\Tau$ and there is a filter
+$\Cal F$ on $I$ such that $\nu^*\Cal F=1$ and $E\cap\Cal F=F\cap\Cal F$.
+\prooflet{(By 464C, we can apply 417A with
+
+\Centerline{$\Cal A=\{\Cal PI\setminus\Cal F:\Cal F$ is a filter on $I$
+such that $\nu^*\Cal F=1\}$.)}
+}%end of prooflet
+
+\medskip
+
+\noindent{\bf Definition} This measure $\mu$ is {\bf Talagrand's
+measure} on $\Cal PI$.
+
+\leader{464E}{Example} If $\mu$ is Talagrand's measure on
+$X=\Cal P\Bbb N$, and $\Sigma$ its domain, then there is a set
+$K\subseteq\Bbb R^X$, consisting of $\Sigma$-measurable functions and
+compact for the topology $\frak T_p$ of pointwise convergence, such
+that $K$ is not compact for the topology of convergence in
+measure\cmmnt{, that is, there is a sequence in $K$
+with no subsequence which is convergent almost everywhere, even though
+every cluster point is $\Sigma$-measurable}.
+
+\proof{ Take $K$ to be
+$\{\chi\Cal F:\Cal F$ is an ultrafilter on $\Bbb N\}$.   Then $K$ is
+$\frak T_p$-compact (in fact, is precisely the set of Boolean
+homomorphisms from $\Cal P\Bbb N$ to $\{0,1\}$, identified with the
+Stone space of $\Cal P\Bbb N$ in 311E).   By 464Ca, we see that any
+non-principal ultrafilter $\Cal F$ on $\Bbb N$ belongs to $\Sigma$, and
+$\mu\Cal F=1$.   On the other hand, all the principal ultrafilters
+$\Cal F_n=\{a:n\in a\subseteq\Bbb N\}$ are
+measured by $\nu$ and therefore by $\mu$, and form a stochastically
+independent sequence of sets of measure $\bover12$.   So $K$ consists of
+$\Sigma$-measurable functions;  but the sequence $\sequencen{\chi F_n}$
+has no subsequence which is convergent almost everywhere, and $K$ is not
+relatively compact for the topology of convergence in measure.
+}%end of proof of 464E
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} In this example, a very large number of members of
+$K$ are equal almost everywhere;  indeed, all non-principal ultrafilters
+are equal a.e., and if we look at $\{f^{\ssbullet}:f\in K\}$ in
+$L^0(\mu)$, it is a countable discrete set.   Given that $K$ is a set of
+measurable functions homeomorphic to $\beta\Bbb N$, something like this
+has to happen (see 536D\formerly{5{}36C}
+in Volume 5).   Looking at this from a different angle, if
+we wish to extend the usual measure $\nu$ on $\Cal P\Bbb N$ to measure
+every ultrafilter, there will have to be two distinct ultrafilters
+$\Cal F_1$, $\Cal F_2$ such that $\Cal F_1\symmdiff\Cal F_2$ is negligible for the extended measure.
+}%end of comment
+
+\leader{464F}{The $L$-space $\ell^{\infty}(I)^*$}\cmmnt{ For the next
+step, we shall need to recall some facts from Volume 3.}
+Let $I$ be any set.
+
+\spheader 464Fa \cmmnt{The space} $\ell^{\infty}(I)$\cmmnt{ of
+bounded real-valued
+functions on $I$} is an $M$-space\cmmnt{ (354Ha)}, so\cmmnt{ its
+dual} $\ell^{\infty}(I)^{\sim}=\ell^{\infty}(I)^*$ is an
+$L$-space\cmmnt{ (356N),
+that is, a Banach lattice such that $\|f+g\|=\|f\|+\|g\|$ for all
+non-negative $f$, $g\in\ell^{\infty}(I)^*$}.
+\dvro{We}{Since $\ell^{\infty}(I)$ can be identified with the space
+$L^{\infty}(\Cal PI)$ as described in \S363 (see 363Ha), we} can
+identify $\ell^{\infty}(I)^*$ with the $L$-space $M$ of bounded finitely
+additive functionals on $\Cal PI$\cmmnt{ (363K)}, matching any
+$f\in\ell^{\infty}(I)^*$ with
+the functional $a\mapsto f(\chi a):\Cal PI\to\Bbb R$ in $M$.
+
+\spheader 464Fb\dvro{ Write $M_{\tau}$ for the
+band of completely additive functionals on $\Cal PI$.}{ In \S\S361-363 I
+examined some of the bands in $M$.   The most
+significant ones for our present purposes are the band $M_{\tau}$ of
+completely additive functionals (362Bb) and its complement
+$M_{\tau}^{\perp}$ (352P);  because $M$ is Dedekind complete, we have
+$M=M_{\tau}\oplus M_{\tau}^{\perp}$ (353I).}   \cmmnt{In
+fact} $M_{\tau}$ is just the set of those $\theta\in M$ such that
+$\theta a=\sum_{t\in a}\theta\{t\}$ for every $a\subseteq I$, while
+$M_{\tau}^{\perp}$ is the set of those $\theta\in M$ such that
+$\theta\{t\}=0$ for every $t\in I$.   \prooflet{\Prf\ For any $\theta\in
+M$, we can set $\alpha_t=\theta\{t\}$ for each $t\in I$;  in this
+case,
+
+\Centerline{$|\sum_{t\in J}\alpha_t|=|\theta J|\le\|\theta\|$}
+
+\noindent for every finite set $J\subseteq I$, so
+$\sum_{t\in I}|\alpha_t|$ is finite, and we have a functional $\theta_1$
+defined by setting
+$\theta_1a=\sum_{t\in a}\alpha_t$ for every $a\subseteq I$.   It is easy
+to check that $\theta_1\in M_{\tau}$.   If we write
+$\theta_2=\theta-\theta_1$ then $\theta_2\{t\}=0$ for every $t\in
+I$.   So if $\phi\in M_{\tau}$ and $0\le\phi\le|\theta_2|$, we still
+have $\phi\{t\}=0$ for every $t\in I$, and $\phi a=0$ for every
+finite $a\subseteq I$ and $\phi=0$;  thus $\theta_2\in
+M_{\tau}^{\perp}$.   Now $\theta\in M_{\tau}$ iff $\theta_2=0$, that is,
+iff $\theta=\theta_1$ and $\theta a=\sum_{t\in a}\theta\{t\}$ for every
+$a\subseteq I$;  while $\theta\in M_{\tau}^{\perp}$ iff $\theta_1=0$,
+that is, $\theta\{t\}=0$ for every $t\in I$.\ \Qed
+}%end of prooflet
+
+Observe that if $\theta\in M_{\tau}^{\perp}$ and $a$, $b\subseteq I$ are
+such that $a\symmdiff b$ is finite, then $\theta a=\theta b$\cmmnt{,
+because $\theta(a\setminus b)=\theta(b\setminus a)=0$}.
+
+\spheader 464Fc \cmmnt{It will be useful to have an elementary fact
+out in the open.}   If $\theta\in M^+\setminus\{0\}$, 
+then $\{a:a\subseteq I,\,\theta a=\theta I\}$ is a filter\cmmnt{;  
+this is because $\{a:\theta a=0\}$ is a proper ideal in $\Cal PI$}.
+
+\leader{464G}{}\cmmnt{ We also need a new result not exactly covered
+by those in Chapters 35 and 36.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $\frak A$ be any Boolean algebra.   Write $M$
+for the $L$-space of bounded additive functionals on $\frak A$, and
+$M^+$ for its positive cone\cmmnt{, the set of non-negative additive
+functionals}.   Suppose that $\Delta:M^+\to\coint{0,\infty}$ is a
+functional such that
+
+\inset{($\alpha$) $\Delta$ is non-decreasing,}
+
+\inset{($\beta$) $\Delta(\alpha\theta)=\alpha\Delta(\theta)$ whenever
+$\theta\in M^+$, $\alpha\ge 0$,}
+
+\inset{($\gamma$)
+$\Delta(\theta_1+\theta_2)=\Delta(\theta_1)+\Delta(\theta_2)$ whenever
+$\theta_1$, $\theta_2\in M^+$ are such that, for some $e\subseteq I$,
+$\theta_1(1\setminus e)=\theta_2e=0$,}
+
+\inset{($\delta$) $|\Delta(\theta_1)-\Delta(\theta_2)|
+\le\|\theta_1-\theta_2\|$ for all $\theta_1$, $\theta_2\in M^+$.}
+
+\noindent Then there is a non-negative $h\in M^*$ extending $\Delta$.
+
+\proof{{\bf (a)} If $\theta_1$, $\theta_2\in M^+$ are such that
+$\theta_1\wedge\theta_2=0$ in $M^+$, then
+$\Delta(\theta_1+\theta_2)=\Delta(\theta_1)+\Delta(\theta_2)$.
+\Prf\ Let $\epsilon>0$.   Then there is an $e\in\frak A$ such that
+$\theta_1(1\Bsetminus e)+\theta_2e\le\epsilon$ (362Ba).   Set
+$\theta_1'a=\theta_1(a\Bcap e)$, $\theta_2'(a)=\theta_2(a\Bsetminus e)$
+for $a\in\frak A$;  then $\theta_1'$ and $\theta_2'$ belong to $M^+$ and
+$\theta_1'(1\setminus e)=\theta_2'e=0$, so
+$\Delta(\theta_1'+\theta_2')=\Delta(\theta_1')+\Delta(\theta_2')$, by
+hypothesis ($\gamma$).   On the other hand,
+
+\Centerline{$0\le\theta_1a-\theta_1'a=\theta(a\Bsetminus
+e)\le\theta(1\Bsetminus e)\le\epsilon$}
+
+\noindent for every $a\in\frak A$, so
+$\|\theta_1-\theta_1'\|\le\epsilon$.   Similarly,
+$\|\theta_2-\theta_2'\|\le\epsilon$ and
+$\|(\theta_1+\theta_2)-(\theta_1'-\theta_2')\|\le 2\epsilon$.   But this
+means that we can use the hypothesis ($\delta$) to see that
+
+\Centerline{$|\Delta(\theta_1+\theta_2)
+  -\Delta(\theta_1)-\Delta(\theta_2)|
+\le|\Delta(\theta'_1+\theta'_2)
+  -\Delta(\theta'_1)-\Delta(\theta'_2)|+4\epsilon
+=4\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary,
+$\Delta(\theta_1+\theta_2)=\Delta(\theta_1)+\Delta(\theta_2)$.\ \Qed
+
+\medskip
+
+{\bf (b)} Now recall that $M$, being a Dedekind complete Riesz space,
+can be identified with an order-dense solid linear subspace of
+$L^0(\frak C)$ for some Boolean algebra $\frak C$ (368H).   Inside
+$L^0(\frak C)$ we have the order-dense Riesz subspace $S(\frak C)$
+(364Ja).   Write $S_1$ for $M\cap S(\frak C)$, so that $S_1$ is an
+order-dense Riesz subspace of $M$ (352Nc, 353A).
+
+If $\theta_1$, $\theta_2\in S_1^+=S_1\cap M^+$, then
+$\Delta(\theta_1+\theta_2)=\Delta(\theta_1)+\Delta(\theta_2)$.   \Prf\
+We can express $\theta_1$ as $\sum_{i=0}^m\alpha_i\chi c_i$, where
+$c_0,\ldots,c_m$ are disjoint members of $\frak C$, and $\alpha_i\ge 0$
+for each $i$ (361Ec);  adding a term $0\cdot\chi(1\Bsetminus\sup_{i\le
+m}c_i)$ if necessary, we may suppose that $\sup_{i\le m}c_i=1$.
+Similarly, we can express $\theta_2$ as $\sum_{j=0}^n\beta_j\chi d_j$
+where $d_0,\ldots,d_n\in\frak C$ are disjoint, $\beta_j\ge 0$ for every
+$j$ and $\sup_{j\le n}d_j=1$.   In this case,
+$\theta_1=\sum_{i\le m,j\le n}\alpha_i\chi(c_i\Bcap d_j)$ and
+$\theta_2=\sum_{i\le m,j\le n}\beta_j\chi(c_i\Bcap d_j)$.
+Re-enumerating $\{c_i\Bcap d_j:i\le m,\,j\le n\}$ as $\langle e_i:i\le
+k\}$ we have expressions of $\theta_1$, $\theta_2$ in the form
+$\sum_{i\le k}\gamma_i\chi e_i$, $\sum_{i\le k}\delta_i\chi e_i$, while
+$e_0,\ldots,e_k$ are disjoint.
+
+Setting $\theta_1^{(r)}=\sum_{i=0}^r\gamma_i\chi e_i$ for $r\le k$, we
+see that $\theta_1^{(r)}\wedge\gamma_{r+1}\chi e_{r+1}=0$ for $r<k$, so
+(a) above, together with the hypothesis ($\beta$), tell us that
+
+\Centerline{$\Delta(\theta^{(r+1)}_1)
+=\Delta(\theta^{(r)}_1)+\Delta(\gamma_{r+1}\chi e_{r+1})
+=\Delta(\theta^{(r)}_1)+\gamma_{r+1}\Delta(\chi e_{r+1})$}
+
+\noindent for $r<k$.   Accordingly
+$\Delta(\theta_1)=\sum_{i=0}^k\gamma_i\Delta(\chi e_i)$.   Similarly,
+$\Delta(\theta_2)=\sum_{i=0}^k\delta_i\Delta(\chi e_i)$ and
+
+\Centerline{$\Delta(\theta_1+\theta_2)
+=\sum_{i=0}^k(\gamma_i+\delta_i)\Delta(\chi e_i)
+=\Delta(\theta_1)+\Delta(\theta_2)$,}
+
+\noindent as claimed.\ \Qed
+
+\medskip
+
+{\bf (c)} Consequently,
+$\Delta(\theta_1+\theta_2)=\Delta(\theta_1)+\Delta(\theta_2)$ for all
+$\theta_1$, $\theta_2\in M^+$.   \Prf\ Let $\epsilon>0$.   Because $S_1$
+is order-dense in $M$, and the norm of $M$ is order-continuous (354N),
+$S_1$ is norm-dense (354Ef), and there are $\theta'_1$,
+$\theta'_2\in S_1^+$ such that $\|\theta_j-\theta'_j\|\le\epsilon$ for
+both $j$ (354Be).   But now, just as in (a),
+
+\Centerline{$|\Delta(\theta_1+\theta_2)
+  -\Delta(\theta_1)-\Delta(\theta_2)|
+\le|\Delta(\theta'_1+\theta'_2)
+  -\Delta(\theta'_1)-\Delta(\theta'_2)|+4\epsilon
+=4\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, we have the result.\ \Qed
+
+\medskip
+
+{\bf (d)} Now (c) and the hypothesis ($\beta$) are sufficient to ensure
+that $\Delta$ has an extension to a positive linear functional (355D).
+}%end of proof of 464G
+
+\leader{464H}{}\cmmnt{ The next lemma contains the key ideas needed
+for the rest of the section.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $I$ be any set, and $M$ the $L$-space of
+bounded additive functionals on $\Cal PI$;  let $\nu$ be the usual
+measure on $\Cal PI$.   For $\theta\in M^+$, set
+
+\Centerline{$
+\Delta(\theta)=\overline{\intop}\theta\,d\nu$.}
+
+(a) For every $\theta\in M^+$,
+$\bover12\theta I\le\Delta(\theta)\le\theta I$.
+
+(b) There is a non-negative $h\in M^*$ such that
+$h(\theta)=\Delta(\theta)$ for every $\theta\in M^+$.
+
+(c) If $\theta\in(M_{\tau}^{\perp})^+$, where $M_{\tau}\subseteq M$ is
+the band of completely additive functionals, then
+$\theta\le\Delta(\theta)\,\,\nu$-a.e., and
+$\nu^*\{a:\alpha\le\theta a\le\Delta(\theta)\}=1$ for every
+$\alpha<\Delta(\theta)$.
+
+(d) Suppose that $\theta\in(M_{\tau}^{\perp})^+$ and $\beta$,
+$\gamma\in[0,1]$ are such that $\theta I=1$ and
+$\beta\theta'I\le\Delta(\theta')\le\gamma\theta'I$ whenever
+$\theta'\le\theta$ in $M^+$.   Then, for any $\alpha<\beta$,
+
+\quad(i) for any finite set $K\subseteq\Cal PI$, the set
+
+\Centerline{$\{a:a\subseteq I,\,
+\alpha\theta b\le\theta(a\cap b)\le\gamma\theta b$ for every $b\in K\}$}
+
+\noindent has outer measure $1$ in $\Cal PI$;
+
+\quad(ii) if $\alpha\ge\bover12$, the set
+
+\Centerline{$R=\{(a,b,c):a,\,b,\,c\subseteq I,\,
+\theta((a\cap b)\cup(a\cap c)\cup(b\cap c))
+\ge 2\alpha^2+(1-2\alpha)\gamma^2\}$}
+
+\noindent has outer measure $1$ in $(\Cal PI)^3$;
+
+\quad(iii) if $\alpha\ge\bover12$, then
+$2\alpha^2+(1-2\alpha)\gamma^2\le\gamma$.
+
+(e) Any $\theta\in M^+$ can be expressed as $\theta_1+\theta_2$ where
+$\Delta(\theta_1)=\bover12\theta_1I$ and $\Delta(\theta_2)=\theta_2I$.
+
+(f) Suppose that $0\le\theta'\le\theta$ in $M$.
+
+\quad(i) If $\Delta(\theta)=\bover12\theta I$, then
+$\Delta(\theta')=\bover12\theta'I$.
+
+\quad(ii) If $\Delta(\theta)=\theta I$, then $\Delta(\theta')=\theta'I$.
+
+\proof{{\bf (a)} Of course
+
+\Centerline{$\Delta(\theta)\le\biggerint\theta I\,d\nu=\theta I$.}
+
+\noindent On the other hand, because
+$a\mapsto I\setminus a:\Cal PI\to\Cal PI$ is an automorphism of the
+measure space $(\Cal PI,\nu)$,
+$\overline{\int}f(I\setminus a)\nu(da)=\overline{\int}f(a)\nu(da)$ for
+any real-valued function $f$ (cf.\ 235Xn\Latereditions).   In particular,
+
+\Centerline{$\Delta(\theta)
+=\overline{\intop}\theta(a)\nu(da)
+=\overline{\intop}\theta(I\setminus a)\nu(da)$.}
+
+\noindent So
+
+$$\eqalignno{2\Delta(\theta)
+&=\overline{\int}\theta(a)\nu(da)
+  +\overline{\int}\theta(I\setminus a)\nu(da)
+\ge\overline{\int}\theta(a)+\theta(I\setminus a)\nu(da)\cr
+\noalign{\noindent (133J(b-ii))}
+&=\overline{\int}\theta I\,\nu(da)
+=\theta I,\cr}$$
+
+\noindent and $\Delta(\theta)\ge\bover12\theta I$.
+
+\medskip
+
+{\bf (b)} I use 464G with $\frak A=\Cal PI$.   Examine the conditions
+($\alpha$)-($\delta$) there.
+
+\medskip
+
+\quad\grheada\ Of course $\Delta$ is non-decreasing (133Jc).
+
+\medskip
+
+\quad\grheadb\ $\Delta(\alpha\theta)=\alpha\Delta(\theta)$ for every
+$\theta\in M^+$ and every $\alpha\ge 0$, by 133J(b-iii).
+
+\medskip
+
+\quad\grheadc\ If $\theta_1$, $\theta_2\in M^+$ then
+$\Delta(\theta_1+\theta_2)\le\Delta(\theta_1)+\Delta(\theta_2)$ by
+133J(b-ii), as in (a) above.
+If $\theta_1$, $\theta_2\in M^+$
+and $e\subseteq I$ are such that $\theta_1(I\setminus e)=\theta_2e=0$,
+then $\theta_1a=\theta_1(a\cap e)$, $\theta_2(a)=\theta_2(a\setminus e)$
+for every $a\subseteq I$.   So
+$\Delta(\theta_1+\theta_2)=\Delta(\theta_1)+\Delta(\theta_2)$ by 464Ab.
+
+\medskip
+
+\quad\grheadd\ For every $a\subseteq I$,
+$\theta_2a\le\theta_1a+\|\theta_2-\theta_1\|$, so
+$\Delta(\theta_2)\le\Delta(\theta_1)+\|\theta_2-\theta_1\|$.
+Similarly, $\Delta(\theta_1)
+\le\Delta(\theta_2)+\|\theta_1-\theta_2\|$.   So
+$|\Delta(\theta_1)-\Delta(\theta_2)|\le\|\theta_1-\theta_2\|$, and
+$\Delta$ satisfies condition ($\delta$) of 464G.
+
+\medskip
+
+\quad\grheade\ Accordingly 464G tells us that $\Delta$ has an extension
+to a member of $M^*$.
+
+\medskip
+
+{\bf (c)} If $\theta\in M_{\tau}^{\perp}$, then $\theta a=\theta b$
+whenever $a\symmdiff b$ is finite (464Fb), so all the sets
+$\{a:\theta a>\alpha\}$ have outer measure either $0$ or $1$, by 464Ac.
+But this means that if $f$ is a measurable function
+and $\theta\leae f$ and $\int f=\Delta(\theta)$, as in 133J(a-i),
+$\{a:f(a)\le\Delta(\theta)\}$ has
+positive measure and meets $A=\{a:\theta a>\Delta(\theta)\}$ in a
+negligible set;  so $A$ cannot have full outer measure and is
+negligible.
+
+On the other hand, if $\alpha<\Delta(\theta)$, then $\theta$ cannot be
+dominated a.e.\ by $\alpha\chi(\Cal PI)$, so
+$\{a:\theta a>\alpha\}$ is not negligible and has outer measure $1$.
+Consequently $\nu^*\{a:\alpha<\theta a\le\Delta(\theta)\}=1$. 
+
+\medskip
+
+{\bf (d)(i)} The point is just that for any $b\subseteq I$, the
+functional $\theta_b$, defined by saying that
+$\theta_b(a)=\theta(a\cap b)$ for every $a\subseteq I$, belongs to $M^+$
+and is dominated by
+$\theta$, so that $\beta\theta_bI\le\Delta(\theta_b)\le\gamma\theta_bI$,
+and $\{a:\alpha\theta_bI\le\theta_ba\le\gamma\theta_bI\}$ has outer
+measure $1$, by (c).   (If $\alpha\theta_bI=\Delta(\theta_b)$, this is
+because $\theta_bI=0$, and the result is trivial;  otherwise,
+$\alpha\theta_bI<\Delta(\theta_b)\le\gamma\theta_bI$.)   But this just
+says that, for any $b\subseteq I$,
+
+\Centerline{$\{a:\alpha\theta b\le\theta(a\Bcap b)\le\gamma\theta b\}$}
+
+\noindent has outer measure $1$.
+
+Now, given any finite set $K\subseteq\Cal PI$, let $\Cal B$ be the
+subalgebra of $\Cal PI$ generated by $K$, and $b_0,\ldots,b_n$ the atoms
+of $\Cal B$.   Then all the sets
+
+\Centerline{$A_i=\{a:\alpha\theta b_i\le\theta(a\cap b_i)
+\le\gamma\theta b_i\}$}
+
+\noindent have outer measure $1$;  because each $A_i$ is determined by
+coordinates in $b_i$, and $b_0,\ldots,b_n$ are disjoint,
+$A=\bigcap_{i\le n}A_i$ still has outer measure $1$, by 464Aa.  But if
+$a\in A$ and $b\in K$, then $b=\bigcup_{i\in J}b_i$ for some
+$J\subseteq\{0,\ldots,n\}$ and
+
+$$\eqalign{\alpha\theta b
+&=\sum_{i\in J}\alpha\theta b_i
+\le\sum_{i\in J}\theta(a\cap b_i)\cr
+&=\theta(a\cap b)
+\le\sum_{i\in J}\gamma\theta b_i
+=\gamma\theta b.\cr}$$
+
+\noindent So $\{a:\alpha\theta b\le\theta(a\cap b)\le\gamma\theta b$ for
+every $b\in K\}$ includes $A$ and has outer measure $1$.
+
+\medskip
+
+\quad{\bf (ii)} \Quer\ Suppose, if possible, otherwise;  then
+$\nu^3_*(\Cal PI\setminus R)>0$, where $\nu^3$ is the product measure on
+$(\Cal PI)^3$, and there is a measurable set
+$W\subseteq(\Cal PI)^3\setminus R$ such that $\nu^3W>0$.   For
+$a\subseteq I$, set
+$W_a=\{(b,c):(a,b,c)\in W\}$;  then $\nu^3W=\int\nu^2W_a\nu(da)$, where
+$\nu^2$ is the product measure on $(\Cal PI)^2$, by Fubini's theorem
+(252D).   Set $E=\{a:\nu^2W_a$ is defined and not zero$\}$;  then
+$\nu E>0$.   Since $\{a:\alpha\le\theta a\le\gamma\}$ has outer measure
+$1$, there is an $a\in E$ such that $\alpha\le\theta a\le\gamma$.
+
+For $b\subseteq I$, set $W_{ab}=\{c:(b,c)\in W_a\}=\{c:(a,b,c)\in W\}$.
+Then $0<\nu^2W_a=\int\nu W_{ab}\nu(db)$, so $F=\{b:\nu W_{ab}$ is
+defined and not $0\}$ has non-zero measure.   But also, by (i),
+
+\Centerline{$\{b:\theta b\ge\alpha,\,\theta(a\cap b)\le\gamma\theta
+a\}$}
+
+\noindent has outer measure $1$, so we can find a $b\in F$ such that
+$\theta b\ge\alpha$ and $\theta(a\cap b)\le\gamma\theta a$.
+
+By (i) again,
+
+\Centerline{$\{c:\theta(c\cap(a\symmdiff b))\ge\alpha\theta(a\symmdiff
+b)\}$}
+
+\noindent has outer measure $1$, so meets $W_{ab}$;  accordingly we have
+a $c\subseteq I$ such that $(a,b,c)\in W$ while $\theta(c\cap(a\symmdiff
+b))\ge\alpha\theta(a\symmdiff b)$.
+
+Now calculate, for this triple $(a,b,c)$,
+
+$$\eqalignno{\theta((a\cap b)\cup(a\cap c)\cup(b\cap c))
+&=\theta(a\cap b)+\theta(c\cap(a\symmdiff b))
+\ge\theta(a\cap b)+\alpha\theta(a\symmdiff b)\cr
+\noalign{\noindent (by the choice of $c$)}
+&=\alpha(\theta a+\theta b)+(1-2\alpha)\theta(a\cap b)\cr
+&\ge\alpha(\theta a+\alpha)+(1-2\alpha)\gamma\theta a\cr
+\noalign{\noindent (by the choice of $b$, recalling that
+$1-2\alpha\le 0)$}
+&\ge 2\alpha^2+(1-2\alpha)\gamma^2\cr}$$
+
+\noindent by the choice of $a$.   But this means that $(a,b,c)\in W\cap
+R$, which is supposed to be impossible.\ \Bang
+
+\medskip
+
+\quad{\bf (iii)} Now recall that the map
+$(a,b,c)\mapsto(a\cap b)\cup(a\cap c)\cup(b\cap c)$ is \imp\ (464Bb).
+Since $\theta a\le\Delta(\theta)\le\gamma$ for $\nu$-almost every $a$,
+we must have
+$\theta((a\cap b)\cup(a\cap c)\cup(b\cap c))\le\gamma$ for
+$\nu^3$-almost every $(a,b,c)$.   But as $R$ is not negligible, there
+must be some $(a,b,c)\in R$ such that
+$\theta((a\cap b)\cup(a\cap c)\cup(b\cap c))\le\gamma$, and
+$2\alpha^2+(1-2\alpha)\gamma^2\le\gamma$.
+
+\medskip
+
+{\bf (e)(i)} $M^*$, being the dual of an $L$-space, is an $M$-space
+(356Pb), so can be represented as $C(Z)$ for some compact Hausdorff space
+$Z$ (354L).   The functional $h$ of (b) above therefore corresponds to a
+function $w\in C(Z)$.   Any $\theta\in M^+$ acts on $M^*$ as a positive
+linear functional, so corresponds to a Radon measure $\mu_{\theta}$ on
+$Z$ (436J/436K);  we have
+$\Delta(\theta)=h(\theta)=\int w\,d\mu_{\theta}$.
+The inequalities $\bover12\theta I\le\Delta(\theta)\le\theta I$ become
+$\bover12\mu_{\theta}Z\le\int w\,d\mu_{\theta}\le\mu_{\theta}Z$, because
+the constant function $\chi Z$ corresponds to the standard order unit
+of $M^*$ (356Pb again), so that
+
+\Centerline{$\mu_{\theta}Z=\biggerint\chi Z\,d\mu_{\theta}
+=\|\theta\|=\theta I$}
+
+\noindent for every $\theta\ge 0$.   Since $0\le h(\theta)\le\|\theta\|$
+for every $\theta\ge 0$, $\|w\|_{\infty}=\|h\|\le 1$ and $0\le w\le\chi
+Z$.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $\beta<\gamma$ and that
+$G=\{z:z\in Z,\,\beta<w(z)<\gamma\}$ is non-empty.   In this case there
+is a non-zero $\theta_0\in M^+$ such that
+$\beta\theta'I\le\Delta(\theta')\le\gamma\theta'I$ whenever
+$0\le\theta'\le\theta_0$.
+
+\Prf\grheada\ We have a
+solid linear subspace $V=\{v:v\in C(Z),\,v(z)=0$ for every $z\in G\}$ of
+$C(Z)$.   Consider $U=\{\theta:\theta\in M,\,\innerprod{\theta}{v}=0$
+for every $v\in V\}$, where I write $\innerprod{\,}{\,}$ for the duality
+between $M$ and $C(Z)$ corresponding to the identification of $C(Z)$
+with $M^*$.
+
+\medskip
+
+\qquad\grheadb\ If $\theta\in U\cap M^+$, then
+$\beta\theta I\le\Delta(\theta)\le\gamma\theta I$.   To see this,
+observe that $\int v\,d\mu_{\theta}=\innerprod{\theta}{v}=0$ for every
+$v\in V$, so
+
+$$\eqalignno{\mu_{\theta}(Z\setminus\overline{G})
+&=\sup\{\mu_{\theta}K:K\subseteq Z\setminus\overline{G}\text{ is
+compact}\}\cr
+&=\sup\{\int v\,d\mu_{\theta}:v\in C(Z),\,
+  0\le v\le\chi(Z\setminus\overline{G})\}\cr
+\displaycause{because whenever
+$K\subseteq Z\setminus\overline{G}$ is compact there is a $v\in C(Z)$
+such that $\chi K\le v\le\chi(Z\setminus\overline{G})$, by 4A2F(h-ii)}
+&=0.\cr}$$
+
+\noindent Because $w$ is continuous,
+$\beta\le w(z)\le\gamma$ for every $z\in\overline{G}$;  thus
+$\beta\le w\le\gamma\,\,\mu_{\theta}$-a.e.\ and 
+$\int w\,d\mu_{\theta}$ must belong to
+$[\beta\mu_{\theta}Z,\gamma\mu_{\theta}Z]=[\beta\theta I,\gamma\theta I]$.
+
+\medskip
+
+\qquad\grheadc\ The dual $M^*=M^{\times}$ of $M$ is
+perfect (356Lb), and $C(Z)$ is perfect;  moreover, $M$ is perfect
+(356Pa), so the duality
+$\innerprod{\,}{\,}$ identifies $M$ with $C(Z)^{\times}$.   Now
+$V^{\perp}$, taken in $C(Z)$, contains any continuous function zero on
+$Z\setminus G$, so is not $\{0\}$;  since $V^{\perp}$, like $C(Z)$, must
+be perfect (356La), $(V^{\perp})^{\times}$ is non-trivial.   Take any
+$\psi>0$ in $(V^{\perp})^{\times}$.   Being perfect, $C(Z)$ is Dedekind
+complete (356K), so there is a band projection $P:C(Z)\to V^{\perp}$
+(353I).   Now $\psi P$ is a positive element of $C(Z)^{\times}$
+which is zero on $V$, and must correspond to a non-zero element
+$\theta_0$ of $U\cap M^+$.
+
+\medskip
+
+\qquad\grheadd\ If $0\le\theta'\le\theta_0$ in $M$,
+then, for any $v\in V$,
+
+\Centerline{$|\innerprod{\theta'}{v}|
+\le\innerprod{\theta'}{|v|}
+\le\innerprod{\theta_0}{|v|}
+=0$,}
+
+\noindent because $|v|\in V$.   So $\theta'\in U$ and
+$\beta\theta'I\le\Delta(\theta')\le\gamma\theta'I$, by ($\beta$).   Thus
+$\theta_0$ has the required property.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} It follows at once that $w(z)\ge\bover12$ for every
+$z\in Z$.   \Prf\Quer\ If $w(z_0)<\bover12$, then we can apply (ii) with
+$\beta=-1$, $\gamma\in\ooint{w(z_0),\bover12}$ to see that there is a
+non-zero $\theta\in M^+$ such that $\Delta(\theta)\le\gamma\theta
+I<\bover12\theta I$, which is impossible, by (a).\ \Bang\Qed
+
+\medskip
+
+\quad{\bf (iv)} But we find also that $w(z)\notin\ooint{\bover12,1}$ for
+any $z\in Z$.  \Prf\Quer\ If $w(z_0)=\delta\in\ooint{\bover12,1}$, then
+$2\delta^2+(1-2\delta)\delta^2>\delta$ (because
+$\delta(2\delta-1)(1-\delta)>0$).   We can therefore find $\alpha$,
+$\beta$ and $\gamma$ such that $\bover12\le\alpha<\beta<\delta<\gamma$
+and $2\alpha^2+(1-2\alpha)\gamma^2>\gamma$.   But now
+$\{z:\beta<w(z)<\gamma\}$ is non-empty, so by (ii) there is a non-zero
+$\theta\in M^+$ such that
+$\beta\theta'I\le\Delta(\theta')\le\gamma\theta'I$ whenever
+$0\le\theta'\le\theta$.   Multiplying $\theta$ by a suitable scalar if
+necessary, we can arrange that $\theta I$ should be $1$.   But this is
+impossible, by (d-iii).\ \Bang\Qed
+
+\medskip
+
+\quad{\bf (v)} Thus $w$ takes only the values $\bover12$ and $1$;  let
+$H_1$ and $H_2$ be the corresponding open-and-closed subsets of $Z$.
+
+Take $\theta\in M^+$.   For $u\in C(Z)$, set
+$\phi(u)=\int u\,d\mu_{\theta}$ and
+$\phi_j(u)=\int_{H_j}u\,d\mu_{\theta}$ for each
+$j$.   Then each $\phi_j$ is a positive linear functional on $C(Z)$ and
+$\phi_j\le\phi$.   But $\phi$ is the image of $\theta$ under the
+canonical isomorphism from $M$ to $C(Z)^{\times}\cong M^{\times\times}$,
+and $C(Z)^{\times}$ is solid in $C(Z)^{\sim}$ (356B), so both $\phi_1$
+and $\phi_2$ belong to the image of $M$, and correspond to $\theta_1$,
+$\theta_2\in M$.   For any $u\in C(Z)\cong M^*$,
+
+\Centerline{$\innerprod{\theta_1+\theta_2}{u}
+=\phi_1(u)+\phi_2(u)
+=\innerprod{\theta}{u}$,}
+
+\noindent so $\theta=\theta_1+\theta_2$.   We have
+
+$$\eqalign{\Delta(\theta_j)=\phi_j(w)&=\int_{H_j}w\,d\mu_{\theta}\cr
+&=\Bover12\mu_{\theta}(H_1)=\Bover12\theta_1I\text{ if }j=1,\cr
+&=\mu_{\theta}(H_2)=\theta_2I\text{ if }j=2.\cr}$$
+
+\noindent So we have a suitable decomposition
+$\theta=\theta_1+\theta_2$.
+
+\medskip
+
+{\bf (f)} This is easy.   Set $\theta''=\theta-\theta'$;  then
+
+\Centerline{$\bover12\theta'I\le\Delta(\theta')\le\theta'I$,}
+
+\Centerline{$\bover12\theta''I\le\Delta(\theta'')\le\theta''I$}
+
+\noindent by (a), while
+$\Delta(\theta')+\Delta(\theta'')=\Delta(\theta)$ by (b), and of course
+$\theta'I+\theta''I=\theta I$.   But this means that
+
+\Centerline{$\Delta(\theta')-\bover12\theta'I
+\le\Delta(\theta)-\bover12\theta I$,
+\quad$\theta'I-\Delta(\theta')\le\theta I-\Delta(\theta)$,}
+
+\noindent and the results follow.
+}%end of proof of 464H
+
+\leader{464I}{Measurable and purely non-measurable functionals} As
+before, let $I$ be any set, $\nu$ the usual measure on $\Cal PI$, $\Tau$
+its domain, and
+$M$ the $L$-space of bounded additive functionals on $\Cal PI$.
+\cmmnt{Following {\smc Fremlin \& Talagrand 79},} I say that
+$\theta\in M$ is {\bf measurable} if it is $\Tau$-measurable when
+regarded as a
+real-valued function on $\Cal PI$, and {\bf purely
+non-measurable} if $\{a:a\subseteq I,\,|\theta|(a)=|\theta|(I)\}$ has
+outer measure $1$.   \cmmnt{(Of course the zero functional is both
+measurable and purely non-measurable.)}
+
+\leader{464J}{Examples}\cmmnt{ Before going farther, I had better
+offer some examples of measurable and purely non-measurable
+functionals.}   Let $I$, $\nu$ and $M$ be as in 464I.
+
+\spheader 464Ja Any $\theta\in M_{\tau}$ is measurable\cmmnt{, where
+$M_{\tau}$ is the space of completely additive functionals on $\Cal
+PI$}.   \prooflet{\Prf\ By 464Fb, $\theta$ can be expressed as a sum of
+point masses;  say $\theta a=\sum_{t\in a}\alpha_t$ for some family
+$\family{t}{I}{\alpha_t}$ in $\Bbb R$.   Since $\sum_{t\in I}|\alpha_t|$
+must be finite, $\{t:\alpha_t\ne 0\}$ is countable, and we can express
+$\theta$ as the limit of a sequence of finite sums $\sum_{t\in
+K}\alpha_t\hat t$, where $\hat t(a)=1$ if $t\in a$, $0$ otherwise.   But
+of course every $\hat t$ is a measurable function, so $\sum_{t\in
+K}\alpha_t\hat t$ is measurable for every finite set $K$, and $\theta$
+is measurable.\ \Qed}
+
+\spheader 464Jb\cmmnt{ For a less elementary measurable functional,
+consider the following construction.}   Let $\sequencen{t_n}$ be any
+sequence of distinct points in $I$.
+Then\cmmnt{ $\lim_{n\to\infty}\Bover1n\#(\{i:i<n,\,t_i\in a\})
+=\Bover12$
+for $\nu$-almost every $a\subseteq I$.   \prooflet{\Prf\ Set $f_n(a)=1$
+if $t_n\in a$, $0$ otherwise.   Then $\sequencen{f_n}$ is an independent
+sequence of random variables.   By any of the versions of the Strong Law
+of Large Numbers in \S273 (273D, 273H, 273I),
+$\lim_{n\to\infty}\Bover1n\sum_{i=0}^{n-1}f_i=\Bover12$ a.e., which is
+what was claimed.\ \QeD\ }   So} if we take any non-principal
+ultrafilter $\Cal F$ on $\Bbb N$, and set
+$\theta a=\lim_{n\to\Cal F}\Bover1n\#(\{i:i<n,\,t_i\in a\})$ for
+$a\subseteq I$, $\theta$ will be
+constant $\nu$-almost everywhere, and measurable\cmmnt{;  and it is
+easy to check that $\theta$ is additive}.   \cmmnt{Note that
+$\theta\{t\}=0$
+for every $t$, so} $\theta\in M_{\tau}^{\perp}$\cmmnt{, by 464Fb}.
+
+\spheader 464Jc If $\Cal F$
+is any non-principal ultrafilter on $I$, and we set $\theta a=1$
+for $a\in\Cal F$, $0$ otherwise, then $\theta$ is an additive functional
+which is purely non-measurable\cmmnt{, by 464Ca}.
+
+\cmmnt{For further remarks on where to look for measurable and purely
+non-measurable functionals, see 464P-464Q below.}
+
+\leader{464K}{The space $M_{\text{m}}$:  Lemma} Let $I$ be any set,
+$\nu$ the usual measure on $\Cal PI$, and $M$ the $L$-space of bounded
+additive functionals on $\Cal PI$.
+Write $M_{\text{m}}$ for the set of measurable $\theta\in M$,
+$M_{\tau}$ for the space of completely additive
+functionals on $\Cal PI$ and
+$\Delta(\theta)=\overline{\int}\theta\,d\nu$ for
+$\theta\in M^+$\cmmnt{, as in 464H}.
+
+(a) If $\theta\in M_{\text{m}}\cap M_{\tau}^{\perp}$ and $b\subseteq I$,
+then $\theta(a\cap b)=\bover12\theta b$ for $\nu$-almost every
+$a\subseteq I$.
+
+(b) $|\theta|\in M_{\text{m}}$ for every $\theta\in M_{\text{m}}$.
+
+(c) A functional $\theta\in M^+$ is measurable iff
+$\Delta(\theta)=\bover12\theta I$.
+
+(d) $M_{\text{m}}$ is a solid linear subspace of $M$.
+
+\proof{{\bf (a)(i)} $\theta=\bover12\theta I\,\,\nu$-a.e.   \Prf\ For any
+$\alpha\in\Bbb R$, $A_{\alpha}=\{a:\theta a<\alpha\}$ is measurable;
+but also $a'\in A$ whenever $a\in A$ and $a\symmdiff a'$ is finite, by
+464Fb, so $\nu A$ must be either $1$ or $0$, by 464Ac.   Setting
+$\delta=\sup\{\alpha:\nu A_{\alpha}=0\}$, we see that
+$\nu A_{\delta}=0$,
+$\nu A_{\delta+2^{-n}}=1$ for every $n\in\Bbb N$, so that
+$\theta=\delta$ a.e.   Also, because $a\mapsto I\setminus a$ is a
+measure space automorphism, $\theta(I\setminus a)=\delta$ for almost
+every $a$, so there is some $a$ such that
+$\theta a=\theta(I\setminus  a)=\delta$, and
+$\delta=\bover12\theta I$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} $\theta(a\cap b)=\bover12\theta b$ for almost every $a$.
+\Prf\ We know that $\theta a=\bover12\theta I$ for almost every $a$.
+But $a\mapsto a\symmdiff b:\Cal PI\to\Cal PI$ is \imp, so
+$\theta(a\symmdiff b)=\bover12\theta I$
+for almost every $a$.   This means that $\theta a=\theta(a\symmdiff b)$
+for almost every $a$, and
+
+\Centerline{$\theta(a\cap b)
+=\Bover12(\theta b+\theta a-\theta(a\symmdiff b))=\Bover12\theta b$}
+
+\noindent for almost every $a$.\ \Qed
+
+\medskip
+
+{\bf (b)(i)} If $\theta\in M_{\text{m}}\cap M_{\tau}^{\perp}$, then
+$\theta^+$, taken in $M$, is measurable.  \Prf\ For any
+$n\in\Bbb N$ we can find $b_n\subseteq I$ such that
+$\theta^-b_n+\theta^+(I\setminus b_n)\le 2^{-n}$, so that
+
+\Centerline{$|\theta^+a-\theta(a\cap b_n)|
+=|\theta^+a-\theta^+(a\cap b_n)+\theta^-(a\cap b_n)|
+\le\theta^+(I\setminus b_n)+\theta^-b_n
+\le 2^{-n}$}
+
+\noindent for every $a\subseteq I$.   But as $a\mapsto\theta(a\cap b_n)$ is
+constant a.e.\ for every $n$, by (a), so is $\theta^+$, and
+$\theta^+$ is measurable.\ \Qed
+
+Consequently $|\theta|=2\theta^+-\theta$ is measurable.
+
+\medskip
+
+\quad{\bf (ii)} Now take an arbitrary $\theta\in M_{\text{m}}$.
+Because $M$ is Dedekind complete (354N, 354Ee),
+$M=M_{\tau}+M_{\tau}^{\perp}$ (353I again), and we can express $\theta$ as
+$\theta_1+\theta_2$ where $\theta_1\in M_{\tau}$ and
+$\theta_2\in M_{\tau}^{\perp}$;
+moreover, $|\theta|=|\theta_1|+|\theta_2|$ (352Fb).
+Now $\theta_1$ is measurable, by 464Ja, so $\theta_2=\theta-\theta_1$ is
+measurable;  as $\theta_2\in M_{\tau}^{\perp}$, (i) tells us
+that $|\theta_2|$ is measurable.   On the other hand, $|\theta_1|$
+belongs to $M_{\tau}$ and is measurable, so
+$|\theta|=|\theta_1|+|\theta_2|$ is measurable.
+
+Thus (b) is true.
+
+\medskip
+
+{\bf (c)} Let $f$ be a $\nu$-integrable function such that
+$\theta\leae f$ and $\int fd\nu=\Delta(\theta)$.   Then
+
+\Centerline{$\theta I-f(a)\le\theta I-\theta a=\theta(I\setminus a)$}
+
+\noindent for almost every $a$, so
+
+\Centerline{$
+\theta I-\Delta(\theta)
+=\int\theta I-f(a)\nu(da)
+\le\underline{\intop}\theta(I\setminus a)\nu(da)
+=\underline{\intop}\theta(a)\nu(da)$}
+
+\noindent because $a\mapsto I\setminus a$ is a measure space
+automorphism, as in the proof of 464Ha.   So if
+$\Delta(\theta)=\bover12\theta I$ then
+$\underline{\int}\theta\,d\nu=\overline{\int}\theta\,d\nu$ and $\theta$
+is $\nu$-integrable (133Jd), therefore (because $\nu$ is complete)
+$(\dom\nu)$-measurable.   On the other hand, if $\theta$ is measurable,
+then
+
+\Centerline{$\Delta(\theta)=\biggerint\theta\,d\nu
+=\int\theta(I\setminus a)\nu(da)
+=\theta I-\int\theta\,d\nu=\theta I-\Delta(\theta)$,}
+
+\noindent so surely $\Delta(\theta)=\bover12\theta I$.
+
+\medskip
+
+{\bf (d)} Of course $M_{\text{m}}$ is a linear subspace.   If
+$\theta_0\in M_{\text{m}}$ and $|\theta|\le|\theta_0|$, then
+$|\theta_0|\in M_{\text{m}}$, by (b), so
+$\Delta(|\theta_0|)=\bover12|\theta_0|(I)$, by (c).   Because
+$\theta^+\le|\theta|\le|\theta_0|$, $\Delta(\theta^+)=\bover12\theta^+I$
+(464H(f-i)), and $\theta^+$ is measurable, by (c) in the reverse
+direction.   Similarly, $\theta^-$ is measurable, and
+$\theta=\theta^+-\theta^-$ is measurable.   As $\theta$ and $\theta_0$
+are arbitrary, $M_{\text{m}}$ is solid.
+}%end of proof of 464K
+
+\leader{464L}{The space $M_{\text{pnm}}$:  Lemma} Let $I$ be any set,
+$\nu$ the usual measure on $\Cal PI$, and $M$ the $L$-space of bounded
+additive functionals on $\Cal PI$.   This time,
+write $M_{\text{pnm}}$ for the set of those members of $M$ which are
+purely non-measurable\cmmnt{ in the sense of 464I}.
+
+(a) If $\theta\in M^+$, then $\theta$ is purely non-measurable iff
+$\Delta(\theta)=\theta I$.
+
+(b) $M_{\text{pnm}}$ is a solid linear subspace of $M$.
+
+\proof{{\bf (a)(i)} If $\theta$ is purely non-measurable, and
+$f\ge\theta$ is integrable, then $\{a:f(a)\ge\theta I\}$ is a measurable
+set including $\{a:\theta a=\theta I\}$, so has measure $1$, and $\int
+f\ge\theta I$;  as $f$ is arbitrary, $\Delta(\theta)=\theta I$.
+
+\medskip
+
+\quad{\bf (ii)} If $\Delta(\theta)=\theta I$, then
+$\Delta(\theta')=\theta'I$ whenever $0\le\theta'\le\theta$, by 464Hf.
+But this means that $\theta'$ cannot be measurable whenever
+$0<\theta'\le\theta$, by 464Kc above, so that $\theta'\notin M_{\tau}$
+whenever $0<\theta'\le\theta$, by 464Ja.   Thus $\theta\in
+M_{\tau}^{\perp}$.
+
+By 464Hc, $\nu^*\{a:\alpha\le\theta
+a\le\Delta(\theta)\}=1$ for every $\alpha<\Delta(\theta)$.
+Let $\sequencen{m(n)}$ be a sequence in $\Bbb N$ such that
+$\prod_{n=0}^{\infty}1-2^{-m(n)}=\bover12$, and define $X$, $\lambda$
+and $\phi$ as in 464Ba.   Set $\eta_n=2^{-n}/m(n)>0$ for each $n$.
+Consider the sets
+$A_n=\{a:\theta a\ge(1-\eta_n)\theta I\}$ for each $n\in\Bbb N$.   Then
+$\nu^*A_n=1$ for each $n$, and
+$\lambda^*(\prod_{n\in\Bbb N}A_n^{m(n)})=1$.   Because $\phi$ is \imp,
+$\nu^*(\phi[\prod_{n\in\Bbb N}A_n^{m(n)}])=1$ (413Eh again).   But if
+$\frak x=\sequencen{\langle a_{ni}\rangle_{i<m(n)}}$ belongs to
+$\prod_{n\in\Bbb N}A_n^{m(n)}$, then
+
+\Centerline{$\theta(\bigcap_{i<m(n)}a_{ni})
+\ge\theta I-m(n)\eta_n\theta I=(1-2^{-n})\theta I$}
+
+\noindent for each $n$, and
+
+\Centerline{$\theta(\phi(\frak x))
+\ge\sup_{n\in\Bbb N}\theta(\bigcap_{i<m(n)}a_{ni})=\theta I$.}
+
+\noindent Thus the filter $\{a:\theta a=\theta I\}$ includes
+$\phi[\prod_{n\in\Bbb N}A_n^{m(n)}]$ and has outer measure $1$, so that
+$\theta$ is purely non-measurable.
+
+\medskip
+
+{\bf (b)(i)} If $\theta\in M_{\text{pnm}}$ and $|\theta'|\le|\theta|$,
+then $\Delta(|\theta|)=|\theta|(I)$, by the definition in 464I, so
+$\Delta(|\theta'|)=|\theta'|(I)$, by 464H(f-ii), and
+$\theta'\in M_{\text{pnm}}$, by (a) above.   Thus $M_{\text{pnm}}$ is
+solid.
+
+\medskip
+
+\quad{\bf (ii)} If $\theta_1$, $\theta_2\in M_{\text{pnm}}$, then
+
+\Centerline{$\Delta(|\theta_1|+|\theta_2|)
+=\Delta(|\theta_1|)+\Delta(|\theta_2|)
+=|\theta_1|(I)+|\theta_2|(I)
+=(|\theta_1|+|\theta_2|)(I)$}
+
+\noindent (using 464Hb), and $|\theta_1|+|\theta_2|\in M_{\text{pnm}}$;
+as $|\theta_1+\theta_2|\le|\theta_1|+|\theta_2|$, $\theta_1+\theta_2\in
+M_{\text{pnm}}$.   Thus $M_{\text{pnm}}$ is closed under addition.
+
+\medskip
+
+\quad{\bf (iii)} It follows from (ii) that if $\theta\in M_{\text{pnm}}$
+then $n\theta\in M_{\text{pnm}}$ for every integer $n\ge 1$, and then
+from (i) that $\alpha\theta\in M_{\text{pnm}}$ for every $\alpha\in \Bbb
+R$;  so that $M_{\text{pnm}}$ is closed under scalar multiplication, and
+is a linear subspace.
+}%end of proof of 464L
+
+\leader{464M}{Theorem}\cmmnt{ ({\smc Fremlin \& Talagrand 79})} Let
+$I$ be any set.   Write $M$ for the $L$-space of bounded finitely
+additive functionals on $\Cal PI$,
+and $M_{\text{m}}$, $M_{\text{pnm}}$ for the spaces of measurable and
+purely non-measurable functionals\cmmnt{, as in 464K-464L}.   Then
+$M_{\text{m}}$ and $M_{\text{pnm}}$ are complementary bands in $M$.
+
+\proof{{\bf (a)} We know from 464K and 464L that these are both solid
+linear subspaces of $M$.   Next, $M_{\text{m}}\cap M_{\text{pnm}}=\{0\}$.
+\Prf\ If $\theta$ belongs to the intersection,
+then $\Delta(|\theta|)=\bover12|\theta|(I)=|\theta|(I)$, by 464Kc and
+464La;  so $\theta=0$.\ \Qed
+
+\medskip
+
+{\bf (b)} Now recall that every element of $M^+$ is expressible in the
+form $\theta_1+\theta_2$ where $\theta_1\in M_{\text{m}}^+$ and
+$\theta_2\in M_{\text{pnm}}^+$;  this is 464He, using 464Kc and 464La
+again.   Because $M_{\text{m}}$ and $M_{\text{pnm}}$ are linear
+subspaces, with intersection $\{0\}$,
+$M=M_{\text{m}}\oplus M_{\text{pnm}}$.   Now
+$M_{\text{pnm}}\subseteq M_{\text{m}}^{\perp}$,
+so $M_{\text{m}}+M_{\text{m}}^{\perp}=M$ and
+$M_{\text{m}}=M_{\text{m}}^{\perp\perp}$ is a complemented band (352Ra);
+similarly, $M_{\text{pnm}}$ is a complemented band.   Since
+$(M_{\text{m}}+M_{\text{pnm}})^{\perp}=\{0\}$, $M_{\text{m}}$ and
+$M_{\text{pnm}}$ are complementary bands (see 352S).
+}%end of proof of 464M
+
+\leader{464N}{Corollary}\cmmnt{ ({\smc Fremlin \& Talagrand 79})} Let
+$I$ be any set, and let $\mu$ be Talagrand's measure on $\Cal PI$;
+write $\Sigma$ for its domain.   Then every bounded additive functional
+on $\Cal PI$ is $\Sigma$-measurable.
+
+\proof{ Defining $M$, $M_{\text{m}}$ and $M_{\text{pnm}}$ as in 
+464K-464M, %464K 464L 464M 
+we see that every functional in $M_{\text{m}}$ is
+$\Sigma$-measurable because it is (by definition)
+$(\dom\nu)$-measurable,
+where $\nu$ is the usual measure on $\Cal PI$.   If
+$\theta\in M_{\text{pnm}}^+$, then $\Cal F=\{a:\theta a=\theta I\}$ is a
+non-measurable filter;  but this means that $\mu\Cal F=1$, by the
+construction of $\mu$, so that $\theta=\theta I\,\,\mu$-a.e.   So if
+$\theta$ is any member of $M_{\text{pnm}}$, both $\theta^+$ and
+$\theta^-$ are $\Sigma$-measurable, and $\theta=\theta^+-\theta^-$ also
+is.
+}%end of proof of 464N
+
+\leader{464O}{Remark}\cmmnt{ Note that we have a very simple
+description of the behaviour of additive functionals as seen by the
+measure $\mu$.}   Since $M_{\tau}\subseteq M_{\text{m}}$, we have a
+three-part band decomposition
+$M=M_{\tau}\oplus(M_{\text{m}}\cap M_{\tau}^{\perp})
+\oplus M_{\text{pnm}}$.
+
+(i) Functionals in $M_{\tau}$ are $\Tau$-measurable, where $\Tau$ is the
+domain of $\nu$, therefore
+$\Sigma$-measurable\cmmnt{, just because they can be built up from the
+functionals $a\mapsto\chi a(t)$, as in 464Fb}.
+
+(ii) A functional\cmmnt{ in $M_{\text{m}}$ is $\Tau$-measurable, by
+definition;  but a functional} $\theta$ in
+$M_{\text{m}}\cap M_{\tau}^{\perp}$ is\cmmnt{ actually} constant, with
+value $\bover12\theta I$, $\nu$-almost everywhere\cmmnt{, by 464Ka}.
+\cmmnt{Thus the almost-constant nature of the functionals described in
+464Jb is typical of measurable functionals in $M_{\tau}^{\perp}$.}
+
+(iii) Finally, a functional $\theta\in M_{\text{pnm}}$ is equal to
+$\theta I\,\,\mu$-almost everywhere\cmmnt{;  once again, this follows
+from the definition of `purely non-measurable' and the construction of
+$\mu$ for $\theta\ge 0$, and from the fact that $M_{\text{pnm}}$ is
+solid for other $\theta$}.
+
+(iv) Thus\cmmnt{ we see that} any
+$\theta\in M_{\tau}^{\perp}
+=(M_{\text{m}}\cap M_{\tau}^{\perp})\oplus M_{\text{pnm}}$ is constant
+$\mu$-a.e.   \cmmnt{We also have}
+$\int\theta\,d\mu=\Delta(\theta)$ for every $\theta\ge 0$
+\prooflet{(look at $\theta\in M_{\text{m}}$ and $\theta\in
+M_{\text{pnm}}$ separately, using 464La for the latter)}, so that if
+$h\in M^*$ is the linear functional of 464Hb, then
+$\int\theta\,d\mu=h(\theta)$ for every $\theta\in M$.
+
+\leader{464P}{More on purely non-measurable functionals (a)} We can
+discuss non-negative additive functionals on $\Cal PI$ in terms of the
+Stone-\v Cech compactification $\beta I$ of $I$\cmmnt{, as follows}.
+For any set $A\subseteq\beta I$ set
+$H_A=\{a:a\subseteq I,\,A\subseteq\widehat{a}\}$, where
+$\widehat{a}\subseteq\beta I$ is the
+open-and-closed set corresponding to $a\subseteq I$.   If
+$A\ne\emptyset$, $H_A$ is a filter on $I$.   Write $\Cal A$ for the
+family of those sets $A\subseteq\beta I$ such that $\nu^*H_A=1$,
+where $\nu$ is the usual measure on $\Cal PI$.   Then $\Cal A$ is a
+$\sigma$-ideal.
+\prooflet{\Prf\ Of course $A\in\Cal A$ whenever $A\subseteq B\in\Cal A$,
+since then $H_A\supseteq H_B$.   If $\sequencen{A_n}$ is a sequence in
+$\Cal A$ with union $A$, then $\nu^*(\bigcap_{n\in\Bbb N}H_{A_n})=1$, by
+464C;  but $H_A\supseteq\bigcap_{n\in\Bbb N}H_{A_n}$.\ \QeD\ }   Note
+that if $A\in\Cal A$ then $\overline{A}\in\Cal A$\cmmnt{, because
+$H_A=H_{\overline{A}}$}.   \cmmnt{We see also that} $\{z\}\in\Cal A$
+for every $z\in\beta I\setminus I$\cmmnt{ (since $H_{\{z\}}$ is a
+non-principal ultrafilter, as in 464Jc)}, while $\{t\}\notin\Cal A$ for
+any $t\in I$\cmmnt{ (since $H_{\{t\}}=\{a:t\in a\}$ has measure
+$\bover12$)}.
+
+\dvro{We}{Because $\beta I$ can be identified with the Stone space of
+$\Cal PI$ (4A2I(b-i)), we}
+have a one-to-one correspondence between non-negative additive
+functionals $\theta$ on $\Cal PI$ and Radon measures $\mu_{\theta}$ on
+$\beta I$, defined by
+writing $\mu_{\theta}(\widehat{a})=\theta a$ whenever $a\subseteq I$ and
+$\theta\in M^+$\cmmnt{ (416Qb)}.
+\cmmnt{(This is not the same as the measure $\mu_{\theta}$ of part (e)
+of the proof of 464H, which is on a much larger space.)}
+Now suppose that $\theta$ is a non-negative additive functional on
+$\Cal PI$.   Then $\Cal F_{\theta}=\{a:\theta a=\theta I\}$ is either
+$\Cal PI$ or a filter on $I$.   If we set
+$F_{\theta}=\bigcap\{\widehat{a}:a\in\Cal F_{\theta}\}$, then
+$\Cal F_{\theta}=H_{F_{\theta}}$\cmmnt{ (4A2I(b-iii))}.
+\cmmnt{Since $a\in\Cal F_{\theta}$ iff $\theta a=\theta I$,
+
+$$\eqalign{F_{\theta}
+&=\bigcap\{\widehat{a}:a\in\Cal F_{\theta}\}
+=\bigcap\{\widehat{a}:\theta a=\theta I\}\cr
+&=\bigcap\{\widehat{a}:\mu_{\theta}\widehat{a}=\mu_{\theta}(\beta I)\}
+=\beta I\setminus\bigcup\{\widehat{a}:\mu_{\theta}\widehat{a}=0\}.\cr}$$
+
+\noindent But this is just the support of $\mu_{\theta}$ (411N),
+because $\{\widehat{a}:a\subseteq I\}$ is a base for the topology of
+$\beta I$.
+}%end of comment
+
+\cmmnt{Thus we see that} $\theta\in M^+$ is purely non-measurable iff
+the support\cmmnt{ $F_{\theta}$} of the measure $\mu_{\theta}$ belongs to 
+$\Cal A$.   \cmmnt{If you like, $\theta$ is purely non-measurable iff the
+support of $\mu_{\theta}$ is `small'.}
+
+\spheader 464Pb\cmmnt{ Yet another corollary of 464C is the
+following.}   Since $M$ is a set of real-valued functions on $\Cal PI$,
+it has the corresponding topology $\frak T_p$ of pointwise convergence
+as a subspace of
+$\BbbR^{\Cal PI}$.   Now if $C\subseteq M_{\text{pnm}}$ is countable,
+its $\frak T_p$-closure $\overline{C}$ is included in
+$M_{\text{pnm}}$.   \prooflet{\Prf\ It is enough to consider the case in
+which $C$ is non-empty and $0\notin C$.   For each $\theta\in C$,
+$\Cal F_{|\theta|}=\{a:|\theta|(a)=|\theta|(I)\}$ is a filter with outer
+measure $1$, so $\Cal F=\{a:|\theta|(a)=|\theta|(I)$ for every
+$\theta\in C\}$ also has outer measure $1$, by 464Cb.   Now suppose that
+$\theta_0\in\overline{C}$.   If $a\in\Cal F$, then
+$|\theta|(I\setminus a)=0$ for every $\theta\in C$, that is,
+$\theta b=0$ whenever $\theta\in C$ and $b\subseteq I\setminus a$
+(362Ba).   But this means that
+$\theta_0b=0$ whenever $b\subseteq I\setminus a$, so
+$|\theta_0|(I\setminus a)=0$ and $|\theta_0|(a)=|\theta_0|(I)$.   Thus
+$\Cal F_{|\theta_0|}$ includes $\Cal F$, so has outer measure $1$, and
+$\theta_0$ also is purely non-measurable.\ \Qed}
+
+\spheader 464Pc If $\theta\in M$ is such that $\theta a=0$ for every
+countable set $a\subseteq I$, then $\theta\in M_{\text{pnm}}$.
+\prooflet{\Prf\  $\nu$ is inner regular with respect to the family
+$\Cal W$ of sets
+which are determined by coordinates in countable subsets of $I$, by
+254Ob.   But if $W\in\Cal W$ and $\nu W>0$, let $J\subseteq I$
+be a countable set such that $W$ is determined by coordinates in $J$;
+then $|\theta|(J)=0$, so if $a$ is any member of $W$ we shall have
+$a\cup(I\setminus J)\in W\cap\Cal F_{|\theta|}$.   As $W$ is arbitrary,
+$\nu^*\Cal F_{|\theta|}=1$ and $\theta$ is purely non-measurable.\ \Qed}
+
+In particular, if $\theta\in M_{\sigma}\cap M_{\tau}^{\perp}$, where
+$M_{\sigma}$ is the space of countably additive functionals on
+$\Cal PI$\cmmnt{ (362B)}, then $\theta\in M_{\text{pnm}}$.
+\cmmnt{(For `ordinary' sets $I$, $M_{\sigma}=M_{\tau}$;  see
+438Xa.   But this observation is peripheral to the concerns of the
+present section.)}
+
+In the language of (a) above, we have a closed set in $\beta I$, being
+$F=\beta I\setminus\bigcup\{\widehat{a}:a\in[I]^{\le\omega}\}$;  and if
+$\theta$ is such that the support of $\mu_{\theta}$ is included in $F$,
+then $\theta$ is purely non-measurable.
+
+\leader{464Q}{More on measurable functionals (a)} We know that
+$M_{\text{m}}$ is a band in $M$, and that it includes the band
+$M_{\tau}$.   So it is natural to look at the band
+$M_{\text{m}}\cap M_{\tau}^{\perp}$.
+
+\spheader 464Qb If $\theta$ is any non-zero non-negative
+functional in $M_{\text{m}}\cap M_{\tau}^{\perp}$, we can find a family
+$\langle a_{\xi}\rangle_{\xi<\omega_1}$ in $\Cal PI$ which is
+independent in the sense that $\theta(\bigcap_{\xi\in K}a_{\xi})
+=2^{-\#(K)}\theta I$ for every non-empty finite $K\subseteq I$.
+\prooflet{\Prf\ Choose
+the $a_{\xi}$ inductively, observing that at the inductive step we have
+to satisfy only countably many conditions of the form
+$\theta(a_{\xi}\cap b)=\bover12\theta b$, where $b$ runs over the
+subalgebra generated by $\{a_{\eta}:\eta<\xi\}$, and that each such
+condition is satisfied $\nu$-a.e., by 464Ka;  so that $\nu$-almost
+any $a$ will serve for $a_{\xi}$.\ \Qed}
+
+In terms of the associated measure $\mu_{\theta}$ on $\beta I$, this
+means that $\mu_{\theta}$ has Maharam type at least 
+$\omega_1$\cmmnt{ (use 331Ja)}.
+If $\theta I=1$\cmmnt{, so that $\mu_{\theta}$ is a probability
+measure}, then
+$\langle(\widehat{a}_{\xi})^{\ssbullet}\rangle_{\xi<\omega_1}$ is an
+uncountable stochastically
+independent family in the measure algebra of 
+$\mu_{\theta}$\cmmnt{ (325Xf)},
+
+Turning this round, we see that if $\lambda$ is a Radon measure on
+$\beta I$, of countable Maharam type, and $\lambda I=0$, then the
+corresponding functional on $\Cal PI$ is purely non-measurable.
+
+\cmmnt{[For a stronger result in this direction, see 521S
+in Volume 5.]}
+
+\spheader 464Qc \cmmnt{Another striking property of measurable
+additive functionals is the following.}   If
+$\theta\in M_{\text{m}}\cap M_{\tau}^{\perp}$, and $n\in\Bbb N$, then $\theta(a_0\cap a_1\cap\ldots\cap a_n)=2^{-n-1}\theta I$ for $\nu^{n+1}$-almost every
+$a_0,\ldots,a_n\subseteq I$, where $\nu^{n+1}$ is the product measure on
+$(\Cal PI)^{n+1}$.   \prooflet{\Prf\ For $K\subseteq\{0,\ldots,n\}$
+write $\psi_K(a_0,\ldots,a_n)=I\cap\bigcap_{i\in
+K}a_i\setminus\bigcup_{i\le n,i\notin K}a_i$ for
+$a_0,\ldots,a_n\subseteq I$;  for $\Cal S\subseteq\Cal P\{0,\ldots,n\}$
+write $\phi_{\Cal S}(\frak x)=\bigcup_{K\in\Cal S}\psi_K(\frak x)$ for
+$\frak x\in(\Cal PI)^{n+1}$.   Then, for any $t\in I$,
+
+\Centerline{$\nu^{n+1}\{\frak x:t\in\phi_{\Cal S}(\frak x)\}
+=\sum_{K\in\Cal S}\nu^{n+1}\{\frak x:t\in\phi_K(\frak x)\}
+=2^{-n-1}\#(\Cal S)$.}
+
+\noindent Moreover, for different $t$, these sets are independent.   So
+if $\#(\Cal S)=2^n$, that is, if $\Cal S$ is just half of
+$\Cal P\{0,\ldots,n\}$, then $\phi_{\Cal S}$ will be \imp, by the arguments in 464B.   (In fact 464Bb is the special case $n=2$,
+$\Cal S=\{K:\#(K)\ge 2\}$.)
+
+Accordingly we shall have
+$\theta(\phi_{\Cal S}(\frak x))=\bover12\theta I$ for
+$\nu^{n+1}$-almost every
+$\frak x$ whenever $\Cal S\subseteq\Cal P\{0,\ldots,n\}$ has $2^n$ members,
+as in 464Ka.   Since there are only finitely many
+sets $\Cal S$, the set $E$ is $\nu^{n+1}$-conegligible, where
+
+\Centerline{$E=\{\frak x:\frak x\in(\Cal PI)^{n+1},\,
+  \theta(\phi_{\Cal S}(\frak x))=\Bover12\theta I$ whenever
+  $\Cal S\subseteq\Cal P\{0,\ldots,n\}$ and $\#(\Cal S)=2^n\}$.}
+
+\noindent But given $\frak x=(a_0,\ldots,a_n)\in E$, let
+$K_1,\ldots,K_{2^{n+1}}$ be a listing of $\Cal P\{0,\ldots,n\}$ in such
+an order that
+$\theta(\psi_{K_i}(\frak x))\le\theta(\psi_{K_j}(\frak x))$ whenever $i\le j$, and consider $\Cal S=\{K_1,\ldots,K_{2^n}\}$; since
+
+\Centerline{$\sum_{i=1}^{2^n}\theta(\psi_{K_i}(\frak x))
+=\theta(\phi_{\Cal S}(\frak x))
+=\Bover12\theta I
+=\Bover12\sum_{i=0}^{2^{n+1}}\theta(\psi_{K_i}(\frak x))$,}
+
+\noindent we must have $\theta(\psi_{K_i}(\frak x))=2^{-n-1}\theta I$
+for every $i$.   In particular, $\theta(\psi_{\{0,\ldots,n\}}(\frak
+x))=2^{-n-1}\theta I$, that is,
+$\theta(\bigcap_{i\le n}a_i)=2^{-n-1}\theta I$.   As this is true
+whenever $a_0,\ldots,a_n\in E$, we have the result.\ \Qed
+}%end of prooflet
+
+\leader{464R}{A note on $\ell^{\infty}(I)$}\cmmnt{ As already noted in
+464F, we have, for any set $I$, a natural additive map
+$\chi:\Cal PI\to\ell^{\infty}(I)\cong L^{\infty}(\Cal PI)$, giving rise
+to an isomorphism between the $L$-space $M$ of bounded additive
+functionals on
+$\Cal PI$ and $\ell^{\infty}(I)^*$.}   If we write $\tilde\mu$ for the
+image measure $\mu\chi^{-1}$ on $\ell^{\infty}(I)$, where $\mu$ is
+Talagrand's measure on $\Cal PI$, and $\tilde\Sigma$ for the domain of
+$\tilde\mu$, then\cmmnt{ every member of $\ell^{\infty}(I)^*$ is
+$\tilde\Sigma$-measurable, by 464N.   Thus} $\tilde\Sigma$ includes the
+cylindrical $\sigma$-algebra of $\ell^{\infty}(I)$\cmmnt{ (4A3T)}.
+\cmmnt{We also have a band decomposition $\ell^{\infty}(I)^*
+=\ell^{\infty}(I)^*_{\text{m}}\oplus\ell^{\infty}(I)^*_{\text{pnm}}$
+corresponding to the decomposition
+$M=M_{\text{m}}\oplus M_{\text{pnm}}$ (464M).}
+
+\cmmnt{In this context,} $M_{\tau}$ corresponds to
+$\ell^{\infty}(I)^{\times}$\cmmnt{ (363K, as before)}.   
+\cmmnt{Since we can
+identify $\ell^{\infty}(I)$ with $\ell^1(I)^*=\ell^1(I)^{\times}$
+(243Xl), and $\ell^1(I)$, like any
+$L$-space, is perfect, $\ell^{\infty}(I)^{\times}$ is the canonical
+image of $\ell^1(I)$ in $\ell^{\infty}(I)^*$.}  \dvro{Any}{Because any
+functional in $M_{\tau}^{\perp}$ is $\mu$-almost constant (464O),
+any} functional in $(\ell^{\infty}(I)^{\times})^{\perp}$ will be
+$\tilde\mu$-almost constant.
+
+
+
+\exercises{\leader{464X}{Basic exercises (a)}
+%\spheader 464Xa
+Let $I$ be any set and $\lambda$ a Radon measure on
+$\beta I$.   Show that if the support of $\lambda$ is a separable subset
+of $\beta I\setminus I$, then the corresponding additive functional on
+$\Cal PI$ is purely non-measurable.
+%464P
+
+\spheader 464Xb Let $I$ be any set, and $\tilde\mu$ the image of
+Talagrand's measure on $\ell^{\infty}(I)$, as in 464R.   Show that
+$\tilde\mu$ has a barycenter in $\ell^{\infty}(I)$ iff $I$ is finite.
+%464R
+
+\leader{464Y}{Further exercises (a)}
+%\spheader 464Ya
+Show that there is a sequence $\sequencen{\Cal F_n}$ of distinct
+non-principal ultrafilters on $\Bbb N$ with the following property:  if
+we define $h(a)=\{n:a\in\Cal F_n\}$ for $a\subseteq\Bbb N$, then
+$\{h(a):a\subseteq\Bbb N\}$ is negligible for the usual measure on
+$\Cal P\Bbb N$.
+%464E  %mt46bits
+
+\spheader 464Yb
+Let $\mu$ be Talagrand's measure on $\Cal P\Bbb N$, and
+$\lambda$ the corresponding product measure on
+$X=\Cal P\Bbb N\times\Cal P\Bbb N$.   Define $\Phi:X\to\ell^{\infty}$ by
+setting $\Phi(a,b)=\chi a-\chi b$ for all $a$, $b\subseteq\Bbb N$.
+Show that $\Phi$ is Pettis integrable (463Ya) with indefinite Pettis
+integral $\Theta$ defined by setting $(\Theta E)(n)=\int_Ef_nd\lambda$,
+where $f_n(a,b)=\chi a(n)-\chi b(n)$.   Show that
+$K=\{h\Phi:h\in\ell^{\infty*},\,\|h\|\le 1\}$ contains every $f_n$, and
+in particular is not $\frak T_m$-compact, so the identity map from
+$(K,\frak T_p)$ to $(K,\frak T_m)$ is not continuous.
+%464N
+
+\spheader 464Yc Let $I$ be any set.   Write $\pmb{c}_0(I)$ for the closed
+linear subspace of $\ell^{\infty}(I)$ consisting of those $x\in\Bbb R^I$
+such that $\{t:t\in I$, $|x(t)|\ge\epsilon\}$ is finite for every
+$\epsilon>0$;  that is, $C_0(I)$ if $I$ is given its discrete topology
+(436I).   Show that, in 464R, $M_{\tau}^{\perp}$ can be identified as
+Banach lattice with $(\ell^{\infty}(I)/\pmb{c}_0(I))^*$.
+%464R
+
+\spheader 464Yd\dvAnew{2011}(i) Let $\theta:\Cal P\Bbb N\to\Bbb R$
+be an additive functional which is $\Tau$-measurable in the
+sense of 464I.   Show that
+$\{\theta\{n\}:n\in\Bbb N\}$ is bounded.   
+(ii) Let $\theta:\Cal P\Bbb N\to\Bbb R$ be an additive functional which is
+universally measurable for the usual topology of $\Cal P\Bbb N$.
+Show that $\theta$ is bounded.  
+(iii) Let $\frak A$ be a
+Dedekind $\sigma$-complete Boolean algebra and $\theta:\frak A\to\Bbb R$ an
+additive functional which is universally measurable for the
+order-sequential topology on $\frak A$
+(definition:  393L).   Show that $\theta$ is bounded
+and $\theta^+$ is universally measurable.
+%464J mt46bits
+
+\spheader 464Ye\dvAnew{2011} Show that there is a $\Tau$-measurable
+finitely additive
+functional $\theta:\Cal P\Bbb N\to\Bbb R$ which is not bounded.
+%464Jb 464Ye out of order query
+%query:  Borel measurable => completely additive?
+}%end of exercises
+
+\leader{464Z}{Problem} Let $I$ be an infinite set, and $\tilde\mu$ the
+image on $\ell^{\infty}(I)$ of Talagrand's measure\cmmnt{ (464R)}.
+Is $\tilde\mu$ a topological measure for the
+weak topology of $\ell^{\infty}(I)$?
+
+\endnotes{
+\Notesheader{464} The central idea of this section appears in 464B:  the
+algebraic structure of $\Cal PI$ leads to a variety of \imp\ functions
+$\phi$ from powers $(\Cal PI)^K$ to $\Cal PI$.   The simplest of these
+is the measure space automorphism $a\mapsto I\setminus a$, as used in
+the proofs of 464Ca, 464Ha, 464Ka and 464Kc.   Then we have the map
+$(a,b,c)\mapsto(a\cap b)\cup(a\cap c)\cup(b\cap c)$, as in 464Bb, and
+the generalization of this in the argument of 464Qc;  and, most
+important of all, the map
+$\sequencen{\langle a_{ni}\rangle_{i<m(n)}}
+\mapsto\bigcup_{n\in\Bbb N}\bigcap_{i<m(n)}a_{ni}$ of 464Ba.   In each
+case we can use
+probabilistic intuitions to guide us to appropriate formulae, since the
+events $t\in\phi(\frak x)$ are always independent, so if they have
+probability $\bover12$ for every $t\in I$, the function $\phi$ will be
+\imp.   Of course this depends on the analysis of product measures in
+\S254.   It means also that we must use the `ordinary' product measure
+defined there;  but happily this coincides with the `Radon' product
+measure of \S417 (416U).
+
+Talagrand devised his measure when seeking an example of a pointwise
+compact set of measurable functions which is not compact for the
+topology of convergence in measure, as in 464E.   The remarkable fact
+that it is already, in effect, a measure on the cylindrical
+$\sigma$-algebra of $\ell^{\infty}$ (464R) became apparent later, and
+requires a much more detailed analysis.   An alternative argument not
+explicitly involving the Riesz space structure of the space $M$ of
+bounded additive functionals may be found in
+{\smc Fremlin \& Talagrand 79}.   The proof I give here depends on the surprising fact that, for
+non-negative additive functionals, the upper integral
+$\overline{\int}\,d\nu$ is additive (464Hb), even though the functionals
+may be very far from being measurable.   Once we know this, we can apply
+the theory of Banach lattices to investigate the corresponding linear
+functional on the $L$-space $M$.   There is a further key step in 464Hd.
+We there have a non-negative $\theta\in M_{\tau}^{\perp}$ such that
+$\theta I=1$ and
+$\beta\theta'I\le\overline{\int}\theta'd\nu\le\gamma\theta'I$ whenever
+$0\le\theta'\le\theta$.   It is easy to deduce that
+$\{a:\alpha\theta b\le\theta(a\Bcap b)\le\gamma\theta b$
+for every $b\in K\}$ has outer
+measure $1$ for every finite $K\subseteq\Cal PI$ and $\alpha<\beta$.
+If $\alpha$ and
+$\gamma$ are very close, this means that there will be many families
+$(a,b,c)$ in $\Cal PI$ which, as measured by $\theta$, look like
+independent sets of measure $\gamma$, so that $\theta((a\cap
+b)\cup(a\cap c)\cup(b\cap c))\bumpeq 3\gamma^2-2\gamma^3$.   But since
+we must also have $\theta((a\cap b)\cup(a\cap c)\cup(b\cap c))\le\gamma$
+almost everywhere, we can get information about the possible values of
+$\gamma$.
+
+Once having noted this remarkable dichotomy between `measurable' and
+`purely non-measurable' functionals, it is natural to look for other
+ways in which they differ.   The position seems to be that `simple'
+Radon measures on $\beta I\setminus I$ (e.g., all measures with
+separable support (464Xa) or countable Maharam type (464Qb)) have to
+correspond to purely non-measurable functionals.   Of course the
+simplest possible measures on $\beta I$ are those concentrated on $I$,
+which give rise to functionals which belong to $M_{\tau}$ and are
+therefore measurable;  it is functionals in
+$M_{\text{m}}\cap M_{\tau}^{\perp}$ which have to give rise to
+`complicated' Radon measures.
+
+The fact that every element of $M_{\tau}^{\perp}$ is almost constant for
+Talagrand's measure leads to an interesting Pettis integrable function
+(464Yb).
+The suggestion that Talagrand's measure on $\ell^{\infty}$ might be a
+topological measure for the weak topology (464Z) is a bold one, but no
+more outrageous than the suggestion that it might measure every
+continuous linear functional once seemed.   Talagrand's measure does of
+course measure every Baire set for the weak topology (4A3U).
+I note here that the usual measure on $\{0,1\}^I$, when transferred to
+$\ell^{\infty}(I)$, is actually a Radon measure for the weak*
+topology $\frak T_s(\ell^{\infty},\ell^1)$, because on $\{0,1\}^I$ this
+is just the ordinary topology.
+}%end of notes
+
+\discrpage
+
+

@@ -1,0 +1,1597 @@
+\frfilename{mt381.tex}
+\versiondate{19.7.06}
+\copyrightdate{2003}
+
+\def\End{\mathop{\text{End}}}
+\def\cycleii#1#2#3{\cycle{#1\,_{#2}\,#3}}
+
+\def\chaptername{Automorphisms}
+\def\sectionname{Automorphisms of Boolean algebras}
+
+\newsection{381}
+
+I begin the chapter with a preparatory section of definitions (381B) and
+mostly elementary facts.   A fundamental method of constructing
+automorphisms is in 381C-381D.   The idea of `support' of an
+endomorphism is explored in  381E-381G,   %381E 381G 381F
+a first look at `periodic' and `aperiodic' parts is in 381H, and basic
+facts about `full subgroups' are in 381I-381J.   We start to go deeper
+with the notion of `recurrence', treated in
+381L-381P.  %381L 381M 381N 381P
+I describe how these phenomena appear when we represent an endomorphism
+as a map on the Stone space of an algebra (381Q).   I end by introducing
+a `cycle notation' for certain automorphisms.
+
+\leader{381A}{The group $\Aut\frak A$} For any Boolean algebra
+$\frak A$, I write $\Aut\frak A$ for the set of automorphisms of
+$\frak A$, that is, the set of bijective Boolean homomorphisms
+$\pi:\frak A\to\frak A$.   This is a group\cmmnt{, being a subgroup of
+the group
+of all permutations of $\frak A$ (use 312G)}.   Note that
+every member
+of $\Aut\frak A$ is order-continuous\cmmnt{;  this is because it must
+be an isomorphism of the order structure of $\frak A$ (313Ld)}.
+
+%definitions
+\leader{381B}{}\cmmnt{ The primary aim of this chapter is to study
+automorphisms of probability algebras.   In the context of the present
+section, this means that for a first reading you can take it that all
+algebras are Dedekind complete.   The methods can however be used in
+many other contexts, at the price of complicating some of the statements
+of the lemmas.   It is also interesting, and occasionally important, to
+apply some of the ideas to general Boolean homomorphisms.   In the
+following definitions I try to set out a language to make this possible.
+
+\medskip
+
+\noindent}{\bf Definitions (a)}
+%\spheader 381Ba
+If $\frak A$ is a Boolean algebra and
+$\pi:\frak A\to\frak A$ is a Boolean homomorphism, \cmmnt{I say that}
+$a\in\frak A$ {\bf supports} $\pi$ if $\pi d=d$ for every
+$d\Bsubseteq 1\Bsetminus a$.
+
+\spheader 381Bb Let $\frak A$ be a Boolean algebra and
+$\pi:\frak A\to\frak A$ a Boolean homomorphism.   If
+$\min\{a:a\in\frak A$ supports $\pi\}$ is
+defined in $\frak A$, I will call it the {\bf support} $\supp\pi$ of
+$\pi$.
+
+\spheader 381Bc If $\frak A$ is a Boolean algebra, an automorphism
+$\pi:\frak A\to\frak A$ is
+{\bf periodic}, with {\bf period} $n\ge 1$, if $\frak A\ne\{0\}$,
+$\pi^n$ is the identity operator and $1$ is the support of $\pi^i$
+whenever $1\le i<n$.
+
+\spheader 381Bd If $\frak A$ is a Boolean algebra, a Boolean
+homomorphism $\pi:\frak A\to\frak A$
+is {\bf aperiodic} if the support of $\pi^n$ is $1$ for every $n\ge 1$.
+I remark immediately that if $\pi$ is aperiodic, so is $\pi^n$ for every
+$n\ge 1$\cmmnt{ (see 381Xc)}.   \cmmnt{Note
+that if $\frak A=\{0\}$ then the trivial automorphism of $\frak A$ is
+counted as aperiodic.}
+
+\spheader 381Be If $\frak A$ is a Boolean
+algebra, a subgroup $G$ of $\Aut\frak A$ is {\bf full} if whenever
+$\langle a_i\rangle_{i\in I}$ is a partition of
+unity in $\frak A$, $\langle\pi_i\rangle_{i\in I}$ is a family in
+$G$, and $\pi\in\Aut\frak A$ is such that $\pi d=\pi_id$ whenever
+$i\in I$ and $d\Bsubseteq a_i$, then $\pi\in G$.
+
+\spheader 381Bf If $\frak A$ is a Boolean
+algebra, a subgroup $G$ of $\Aut\frak A$ is {\bf countably full} if
+whenever $\langle a_i\rangle_{i\in I}$ is a countable partition of
+unity in $\frak A$, $\langle\pi_i\rangle_{i\in I}$ is a family in
+$G$, and $\pi\in\Aut\frak A$ is such that $\pi d=\pi_id$ whenever
+$i\in I$ and $d\Bsubseteq a_i$, then $\pi\in G$.
+
+\spheader 381Bg If $\frak A$ is a Boolean algebra, $a\in\frak A$ and
+$\pi:\frak A\to\frak A$ is a Boolean homomorphism, I say that $\pi$ is
+{\bf recurrent on $a$} if for every non-zero $b\Bsubseteq a$ there is a
+$k\ge 1$ such that $a\Bcap\pi^kb\ne 0$.
+If $\pi\in\Aut\frak A$ and $\pi$ and $\pi^{-1}$ are both recurrent on
+$a$, I say that $\pi$ is {\bf doubly recurrent} on $a$.
+
+%piecing automorphisms
+\leader{381C}{}\cmmnt{ Before setting out to explore the concepts just
+listed, I give a fundamental result on piecing automorphisms together
+from fragments.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $\frak A$ be a Boolean algebra, and
+$\langle a_i\rangle_{i\in I}$, $\langle b_i\rangle_{i\in I}$ two
+partitions of unity in $\frak A$.   Assume
+
+\quad{\it either} that $I$ is finite
+
+\quad{\it or} that $I$ is countable and $\frak A$ is Dedekind
+$\sigma$-complete
+
+\quad{\it or} that $\frak A$ is Dedekind complete.
+
+\noindent Suppose that for each $i\in I$ we have an isomorphism
+$\pi_i:\frak A_{a_i}\to\frak A_{b_i}$ between the corresponding
+principal ideals.   Then there is a unique $\pi\in\Aut\frak A$ such that
+$\pi d=\pi_id$ whenever $i\in I$ and $d\Bsubseteq a_i$.
+
+\proof{ By 315F, we may identify $\frak A$ with each of the products
+$\prod_{i\in I}\frak A_{a_i}$, $\prod_{i\in I}\frak A_{b_i}$;   now
+$\pi$ corresponds to the isomorphism between the two products induced by
+the $\pi_i$.
+}%end of proof of 381C
+
+\leader{381D}{Corollary} Let $\frak A$ be a homogeneous Boolean
+algebra,
+and $A$, $B$ two partitions of unity in $\frak A$, neither containing
+$0$.   Let $\theta:A\to B$ be a bijection.   Suppose
+
+\quad{\it either} that $A$, $B$ are finite
+
+\quad{\it or} that $A$, $B$ are countable and $\frak A$ is Dedekind
+$\sigma$-complete
+
+\quad{\it or} that $\frak A$ is Dedekind complete.
+
+\noindent Then there is an automorphism of $\frak A$ extending $\theta$.
+
+\proof{ For every $a\in A$, the principal ideals $\frak A_a$,
+$\frak A_{\theta a}$ are isomorphic to the whole algebra $\frak A$, and
+therefore to each other;  let $\pi_a:\frak A_a\to\frak A_{\theta a}$ be
+an isomorphism.   Now apply 381C.
+}%end of proof of 381D
+
+%supports
+\leader{381E}{Lemma} Let $\frak A$ be a Boolean algebra, and $\pi$,
+$\phi$, $\psi:\frak A\to\frak A$ Boolean homomorphisms of which $\pi$ is
+injective.
+
+(a) If $a\in\frak A$ supports $\phi$ then $\phi a=a$ and
+$\phi d\Bsubseteq a$ for every $d\Bsubseteq a$.
+
+(b) If $a\in\frak A$ supports both $\phi$ and $\psi$ then it supports
+$\phi\psi$.
+
+(c) Let $A$ be the set of elements of $\frak A$
+supporting $\phi$.   Then $A$ is non-empty and closed under $\Bcap$;
+also $b\in A$ whenever $b\Bsupseteq a\in A$.   If $\phi$ is
+order-continuous, then $\inf B\in A$ whenever $B\subseteq A$ has an
+infimum in $\frak A$.
+
+(d) If $a\in\frak A$ supports $\pi\phi$, then $\phi a$ supports
+$\pi\phi$.
+
+(e) If $\pi$ commutes with $\phi$, and $a\in\frak A$ is such that
+$\pi a$ supports $\phi$, then $a$ supports $\phi$.
+
+(f) If $\phi$ is supported by $a$ and $\psi$ is supported by $b$, where
+$a\Bcap b=0$, then $\phi\psi=\psi\phi$.
+
+(g) For any $n\ge 1$ and $a\in\frak A$, $a$ supports $\pi^n$ iff $\pi a$
+supports $\pi^n$.   \cmmnt{Consequently} $\pi(\supp\pi^n)=\supp\pi^n$
+if $\pi^n$ has a support.
+
+(h) If $\pi\in\Aut\frak A$ and $a\in\frak A$ supports $\pi$, then $a$
+supports $\pi^{-1}$.
+
+(i) If $\pi\in\Aut\frak A$ and $a\in\frak A$, then $a$ supports $\pi$
+iff $d\Bsubseteq a$ whenever $d\Bcap\pi d=0$ iff $d\Bcap\pi d\ne 0$
+whenever $0\ne d\Bsubseteq 1\Bsetminus a$.
+
+(j) If $\pi\in\Aut\frak A$ and $a\in\frak A$ supports $\phi$, then
+$\pi a$ supports $\pi\phi\pi^{-1}$.
+
+(k) If $a\in\frak A$ supports $\phi$, and $\pi_1$, $\pi_2\in\Aut\frak A$
+agree on $\frak A_a$, then $\pi_1\phi\pi_1^{-1}=\pi_2\phi\pi_2^{-1}$.
+
+\proof{{\bf (a)} $\phi(1\Bsetminus a)=1\Bsetminus a$, so $\phi a=a$, and
+if $d\Bsubseteq a$ then $\phi d\Bsubseteq\phi a=a$.
+
+\medskip
+
+{\bf (b)} If $d\Bcap a=0$ then $\phi d=d=\psi d$ so $\phi\psi d=d$.
+
+\medskip
+
+{\bf (c)} Of course $1\in A$, because $\phi 0=0$;  and it is also
+obvious that if $b\Bsupseteq a\in A$ then $b\in A$.   If $a$, $b\in A$
+and $d\Bcap a\Bcap b=0$, then
+$\phi d=\phi(d\Bsetminus a)\Bcup\phi(d\Bsetminus b)=d$.
+If $\phi$ is order-continuous, $B\subseteq A$ is
+non-empty and $c=\inf B$ is defined in $\frak A$, then for any
+$d\Bsubseteq 1\Bsetminus c$ we have
+
+\Centerline{$d=d\Bsetminus c=\sup_{b\in B}d\Bsetminus b$,}
+
+\noindent and
+
+\Centerline{$\phi d=\sup_{b\in B}\phi(d\Bsetminus b)
+=\sup_{b\in B}d\Bsetminus b=d$.}
+
+\noindent So in this case $c$ supports $\phi$.
+
+
+\medskip
+
+{\bf (d)} If $d\Bcap\phi a=0$ then
+$\pi d\Bcap a=\pi d\Bcap\pi\phi a=0$, so $\pi\phi\pi d=\pi d$ and
+(because $\pi$ is injective) $\phi\pi d=d$.
+
+\medskip
+
+{\bf (e)} If $d\Bcap a=0$ then $\pi d\Bcap\pi a=0$, so
+$\pi\phi d=\phi\pi d=\pi d$ and $\phi d=d$.
+
+\medskip
+
+{\bf (f)} If $d\Bsubseteq a$ then $\phi d\Bsubseteq a$ and $\psi d=d$ so
+$\psi\phi d=\phi d=\phi\psi d$;  if $d\Bsubseteq b$ then
+$\psi\phi d=\phi\psi d=\psi d$;  and if
+$d\Bsubseteq 1\Bsetminus(a\Bcup b)$ then $\psi\phi d=\phi\psi d=d$.
+
+\medskip
+
+{\bf (g)} Because $\pi$ is injective, so is $\pi^{n-1}$.   So if $a$
+supports $\pi^n=\pi^{n-1}\pi$, so does $\pi a$, by (d).   On the other
+hand, $\pi$ commutes with $\pi^n$, so if $\pi a$ supports $\pi^n$ so
+does $a$, by (e).
+
+If $c=\supp\pi^n$ then $\pi c$ supports $\pi^n$ so $c\Bsubseteq\pi c$.
+Consequently $\pi^ic\Bsubseteq\pi^{i+1}c$ for every $i\in\Bbb N$ and
+$c\Bsubseteq\pi c\Bsubseteq\pi^nc$.   But as $\pi^nc=c$, by (a), $\pi c=c$.
+
+
+\medskip
+
+{\bf (h)} If $d\Bcap a=0$ then $\pi d=d$ so $d=\pi^{-1}d$.
+
+\medskip
+
+{\bf (i)}\grheada\ If $a$ supports $\pi$ and $d\Bcap\pi d=0$, then
+
+\Centerline{$d\Bcap(d\Bsetminus a)
+=d\Bcap\pi(d\Bsetminus a)\Bsubseteq d\Bcap\pi d=0$,}
+
+\noindent so $d\Bsubseteq a$.
+
+\medskip
+
+\quad\grheadb\ If $d\Bsubseteq a$ whenever $d\Bcap\pi d=0$, and
+$0\ne d'\Bsubseteq 1\Bsetminus a$, then of course $d'\Bcap\pi d'\ne 0$.
+
+\medskip
+
+\quad\grheadc\ If $a$ does not support $\pi$, there is a
+$c\Bsubseteq 1\Bsetminus a$ such that $\pi c\ne c$.   So one of
+$c\Bsetminus\pi c$, $\pi c\Bsetminus c$ is non-zero.   If
+$c\Bsetminus\pi c\ne 0$, take this for $d$;  then
+$d\Bsubseteq 1\Bsetminus a$ and
+$\pi d\Bcap d\Bsubseteq\pi c\Bsetminus\pi c=0$.   Otherwise, take
+$d=\pi^{-1}(\pi c\Bsetminus c)$;  then
+$0\ne d\Bsubseteq c\Bsubseteq 1\Bsetminus a$, while
+
+\Centerline{$d\Bcap\pi d
+=(c\Bsetminus\pi^{-1}c)\Bcap(\pi c\Bsetminus c)=0$.}
+
+\medskip
+
+{\bf (j)} If $d\Bcap\pi a=0$ then $\pi^{-1}d\Bcap a=0$ so
+$\phi\pi^{-1}d=\pi^{-1}d$ and $\pi\phi\pi^{-1}d=d$.
+
+\medskip
+
+{\bf (k)}  For $d\Bsubseteq a$, $\pi_2^{-1}\pi_1 d=\pi_2^{-1}\pi_2 d=d$,
+so $\pi_2^{-1}\pi_1$ is supported by $1\Bsetminus a$.   By (f),
+$\phi\pi_2^{-1}\pi_1=\pi_2^{-1}\pi_1\phi$, so
+
+\Centerline{$\pi_1\phi\pi_1^{-1}=\pi_2\pi_2^{-1}\pi_1\phi\pi_1^{-1}
+=\pi_2\phi\pi_2^{-1}\pi_1\pi_1^{-1}=\pi_2\phi\pi_2^{-1}$.}
+}%end of proof of 381E
+
+\leader{381F}{Corollary} If $\frak A$ is a Dedekind complete Boolean
+algebra, then every order-continuous Boolean homomorphism
+$\phi:\frak A\to\frak A$ has a support.
+
+\proof{ By 381Ec, $\inf\{a:a\in\frak A$ supports $\phi\}$ is the support
+of $\phi$.
+}%end of proof of 381F
+
+\leader{381G}{Corollary} Let $\frak A$ be a Boolean algebra, and suppose
+that $\pi\in\Aut\frak A$ has a support $e$.
+
+(a) $\pi e=e$.
+
+(b) $e=\sup\{d:d\in\frak A$, $d\Bcap\pi d=0\}$.
+
+(c) $e$ is the support of $\pi^{-1}$.
+
+(d) For any $\phi\in\Aut\frak A$, $\phi e$ is the support of
+$\phi\pi\phi^{-1}$.
+
+\proof{{\bf (a)} 381Ea.
+
+\medskip
+
+{\bf (b)} 381Ei.
+
+\medskip
+
+{\bf (c)} 381Eh.
+
+\medskip
+
+{\bf (d)} By 381Ej, $\phi e$ supports
+$\phi\pi\phi^{-1}$.   At the same time, if $a\in\frak A$ supports
+$\phi\pi\phi^{-1}$, then $\phi^{-1}a$ supports $\pi$, so
+$e\Bsubseteq\phi^{-1}a$ and $a\Bsupseteq\phi e$.   Thus $\phi e$ is the
+smallest element of $\frak A$ supporting $\phi\pi\phi^{-1}$ and is the
+support of $\phi\pi\phi^{-1}$.
+}%end of proof of 381G
+
+%periodic
+\leader{381H}{Proposition} Let $\frak A$ be a Dedekind
+$\sigma$-complete Boolean
+algebra and $\pi:\frak A\to\frak A$ an injective Boolean homomorphism
+such that $\pi^n$ has a support for every $n\in\Bbb N$.   Then there is
+a partition of unity $\langle c_i\rangle_{1\le i\le\omega}$ in $\frak A$
+such that $\pi c_i\Bsubseteq c_i$ for every $i$,
+$\pi\restrp\frak A_{c_n}$ is
+periodic with period $n$ whenever $n\in\Bbb N\setminus\{0\}$
+and $c_n\ne 0$, and
+$\pi\restrp\frak A_{c_{\omega}}$ is aperiodic.
+
+\proof{ Set
+
+$$\eqalign{c_1&=1\Bsetminus\supp\pi,\cr
+c_n&=\inf_{i<n}\supp\pi^i\Bsetminus\supp\pi^n\text{ for }n\ge 2,\cr
+c_{\omega}&=\inf_{n\in\Bbb N}\supp\pi^n.\cr}$$
+
+\noindent Then $\langle c_i\rangle_{1\le i\le\omega}$ is a partition of
+unity.   By 381Eg, $\pi c_n=c_n$ for every $n$, so
+$\pi c_{\omega}\Bsubseteq c_{\omega}$.   If $d\Bsubseteq c_n$, where
+$1\le n\in\Bbb N$, then $d\Bcap\supp\pi^n=0$ so $\pi^nd=d$.   If
+$1\le i<j\le\omega$ and
+$0\ne a\Bsubseteq c_j$, then $a\Bsubseteq\supp\pi^i$ so there is a
+$d\Bsubseteq a$ such that
+$(\pi\restrp\frak A_{c_n})^id=\pi^id\ne d$;  thus if
+$n\in\Bbb N\setminus\{0\}$ (and
+$c_n\ne 0$) $\pi\restrp\frak A_{c_n}$ is periodic with period $n$, while
+$\pi\restrp\frak A_{c_{\omega}}$ is aperiodic.
+}%end of proof of 381H
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The hypothesis `every $\pi^n$ has a support' will
+be satisfied if $\frak A$ is Dedekind complete and $\pi$ is
+order-continuous (381F).   For other sufficient conditions see
+382E.
+}%end of comment
+
+%(countably) full subgroups
+\leader{381I}{Full and countably full subgroups} If $\frak A$ is a
+Boolean algebra, \cmmnt{it is obvious that} the intersection of any
+family of (countably) full subgroups of $\Aut\frak A$ is again
+(countably) full.   We may therefore speak of the (countably) full
+subgroup of $\frak A$ generated by an element of $\Aut\frak A$.
+
+\medskip
+
+\noindent{\bf Proposition} Let $\frak A$ be a Boolean algebra.
+
+(a)\dvAformerly{3{}81Xe} Let $G$ be a subgroup
+of $\Aut\frak A$.   Let $H$ be the set of those $\pi\in\Aut\frak A$ such
+that for every non-zero $a\in\frak A$ there are a non-zero
+$b\Bsubseteq a$ and a $\phi\in G$ such that $\pi c=\phi c$ for every
+$c\Bsubseteq b$.
+Then $H$ is a full subgroup of $\Aut\frak A$, the smallest full
+subgroup of $\frak A$ including $G$.
+
+(b) Suppose that $\frak A$ is Dedekind $\sigma$-complete and $\pi$,
+$\phi\in\Aut\frak A$.   Then the following are equiveridical:
+
+\inset{(i) $\phi$ belongs to the countably full subgroup of
+$\Aut\frak A$ generated by $\pi$;
+
+(ii) there is a partition of unity $\langle a_n\rangle_{n\in\Bbb Z}$
+in $\frak A$ such that $\phi c=\pi^nc$ whenever $n\in\Bbb Z$ and
+$c\Bsubseteq a_n$.}
+
+(c) Suppose that $\frak A$ is Dedekind complete, and $\pi$,
+$\phi\in\Aut\frak A$.  Then the following are equiveridical:
+
+\inset{(i) $\phi$ belongs to the full subgroup of
+$\Aut\frak A$ generated by $\pi$;
+
+(ii) for every non-zero $a\in\frak A$ there are a non-zero
+$b\Bsubseteq a$ and an $n\in\Bbb Z$ such that $\phi c=\pi^nc$
+for every $c\Bsubseteq b$;
+
+(iii) $\phi$ belongs to the countably full subgroup of $\Aut\frak A$
+generated by $\pi$;
+
+(iv) $\inf_{n\in\Bbb Z}\supp(\pi^n\phi)=0$.}
+
+\proof{{\bf (a)(i)} $\pi_2\pi_1\in H$ for all $\pi_1$, $\pi_2\in H$.
+\Prf\ Let $a\in\frak A$ be non-zero;  then there are a non-zero
+$b\Bsubseteq a$ and a $\phi_1\in G$ such that $\pi_1$ and $\phi_1$ agree on
+the principal ideal $\frak A_b$.   Next, there are a non-zero
+$c\Bsubseteq\pi_1b$ and a $\phi_2\in G$ such that $\pi_2$ and $\phi_2$
+agree on $\frak A_c$.   Set $d=\pi_1^{-1}c$;  then
+$d\in\frak A_a\setminus\{0\}$, and $\phi_2\phi_1$ is a member of $G$
+agreeing with $\pi_2\pi_1$ on $\frak A_d$.   As $a$ is arbitrary,
+$\pi_2\pi_1\in H$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} $\pi^{-1}\in H$ for every $\pi\in H$.  \Prf\ If
+$a\in\frak A\setminus\{0\}$, there are a non-zero $b\Bsubseteq\pi^{-1}a$
+and a $\phi\in G$ such that $\pi$ and $\phi$ agree on $\frak A_b$;  now
+$0\ne\pi b\Bsubseteq a$ and $\pi^{-1}$ and $\phi^{-1}$ agree on
+$\frak A_{\pi b}$.   As $a$ is arbitrary, $\pi^{-1}\in H$.\ \QeD\
+Of course $H\supseteq G$, so $H$ is a subgroup of $\Aut\frak A$.
+
+\medskip
+
+\quad{\bf (iii)} Suppose now that $\familyiI{a_i}$ is a partition of unity
+in $\frak A$, $\familyiI{\pi_i}$ is a family in $H$, and
+$\pi\in\Aut\frak A$ is such that $\pi$ agrees with $\pi_i$ on
+$\frak A_{a_i}$ for every $i\in I$.   Then $\pi\in H$.   \Prf\
+If $a\in\frak A\setminus\{0\}$, there is an $i\in I$ such that
+$b=a\Bcap a_i$ is non-zero;  now $\pi$ agrees with $\pi_i$ on $b$.\ \QeD\
+So $H$ is a full subgroup of $\Aut\frak A$.
+
+\medskip
+
+\quad{\bf (iv)} If $H'$ is any full subgroup of $\Aut\frak A$ including
+$G$, then $H'\supseteq H$.   \Prf\ If $\pi\in H$, then
+$B=\{b:$ there is a $\phi\in G$ agreeing with $\pi$ on $\frak A_b\}$ is an
+order-dense subset of $\frak A$, so there is a partition $\familyiI{a_i}$
+of unity in $\frak A$ such that $a_i\in B$ for every $i$.   For each
+$i\in I$, let $\pi_i\in G$ be such that $\pi$ and $\pi_i$ agree on
+$\frak A_{a_i}$;  then $\familyiI{(a_i,\pi_i)}$ witnesses that $\pi\in H'$.
+As $\pi$ is arbitrary, $H\subseteq H'$.\ \Qed
+
+\medskip
+
+{\bf (b)} (ii)$\Rightarrow$(i) is trivial.   In the other
+direction, let $G$ be the family of all those automorphisms $\psi$ of
+$\frak A$ such that there is a partition of unity
+$\langle a_n\rangle_{n\in\Bbb Z}$
+in $\frak A$ such that $\psi c=\pi^nc$ whenever $n\in\Bbb Z$ and
+$c\Bsubseteq a_n$.   Then $G$ is a countably full subgroup of
+$\Aut\frak A$ containing $\pi$.
+
+\Prf\ Of course $\pi\in G$ (set $a_1=1$, $a_n=0$ for $n\ne 1$).
+
+Take $\psi_1$, $\psi_2\in G$.   Let
+$\langle a_n\rangle_{n\in\Bbb Z}$,
+$\langle a'_n\rangle_{n\in\Bbb Z}$ be partitions of unity
+in $\frak A$ such that $\psi_1c=\pi^nc$ whenever $n\in\Bbb Z$ and
+$c\Bsubseteq a_n$, while $\psi_2c=\pi^nc$ whenever $n\in\Bbb Z$ and
+$c\Bsubseteq a'_n$.   Then
+$\langle a'_n\Bcap\psi_2^{-1}a_m\rangle_{m,n\in\Bbb Z}$ is a partition
+of unity.   If $c\Bsubseteq a'_n\Bcap\psi_2^{-1}a_m$, then
+$\psi_2c=\pi^nc\Bsubseteq a_m$, so $\psi_1\psi_2c=\pi^{m+n}c$.   So if
+we set $b_n=\sup_{i\in\Bbb Z}a'_i\Bcap\psi_2^{-1}a_{n-i}$ for each
+$n\in\Bbb Z$, $\family{n}{\Bbb Z}{b_n}$ is a partition of unity in
+$\frak A$ witnessing that $\psi_1\psi_2\in G$.
+At the same time, $\family{n}{\Bbb Z}{\psi_1a_{-n}}$ is a partition of
+unity witnessing that $\psi_1^{-1}\in G$.   As $\psi_1$ and $\psi_2$ are
+arbitrary, $G$ is a subgroup of $\Aut\frak A$.
+
+Now suppose that $\langle a_i\rangle_{i\in I}$ is a countable partition
+of unity in
+$\frak A$ and that $\psi\in\Aut\frak A$ is such that for every $i\in I$
+there is a $\psi_i\in G$ such that $\psi c=\psi_ic$ for every
+$c\Bsubseteq a_i$.   For each $i\in I$ let $\family{n}{\Bbb Z}{a_{in}}$
+be a partition of unity such that $\psi_ic=\pi^nc$ whenever
+$c\Bsubseteq a_{in}$.   Then
+$\langle a_i\Bcap a_{in}\rangle_{i\in I,n\in\Bbb Z}$ is a partition of
+unity such that $\psi c=\pi^nc$ whenever $c\Bsubseteq c_i\Bcap a_{in}$.
+So setting $b_n=\sup_{i\in I}a_i\Bcap a_{in}$ for each $n\in\Bbb Z$,
+$\family{n}{\Bbb Z}{b_n}$ is a partition of unity witnessing that
+$\psi\in G$.   As $\psi$ is arbitrary, $G$ is countably full.\ \Qed
+
+Accordingly $G$ must include (indeed, must coincide with) the countably
+full subgroup generated by $\pi$, and (i)$\Rightarrow$(ii).
+
+\medskip
+
+{\bf (c)(i)$\Rightarrow$(ii)} is a special case of (a).
+
+\medskip
+
+\quad{\bf (ii)$\Rightarrow$(iii)} For $n\in\Bbb Z$, let $B_n$ be the set
+of those $b\in\frak A$ such that $\phi c=\pi^nc$ for every
+$c\Bsubseteq b$.   Set $b_n=\sup B_n$ for each $n$;  then if
+$c\Bsubseteq b_n$,
+
+\Centerline{$\phi c=\phi(\sup_{b\in B_n}b\Bcap c)
+=\sup_{b\in B_n}\phi(b\Bcap c)=\sup_{b\in B_n}\pi^n(b\Bcap c)
+=\pi^n c$.}
+
+\noindent Set
+
+$$\eqalign{a_n&=b_n\Bsetminus\sup_{0\le i<n}b_i
+\text{ if }n\in\Bbb N,\cr
+&=b_n\Bsetminus\sup_{i>n}b_i
+\text{ if }n\in\Bbb Z\setminus\Bbb N;\cr}$$
+
+\noindent then $\langle a_n\rangle_{n\in\Bbb Z}$ is disjoint,
+
+\Centerline{$\sup_{n\in\Bbb Z}a_n
+=\sup_{n\in\Bbb Z}b_n=\sup(\bigcup_{n\in\Bbb Z}B_n)=1$,}
+
+\noindent and $\phi c=\pi^nc$ for every $c\Bsubseteq a_n$, $n\in\Bbb Z$.
+Thus $\phi$ satisfies condition (ii) of (a) and belongs to the countably
+full subgroup generated by $\pi$.
+
+\medskip
+
+{\bf (iii)$\Rightarrow$(i)} is trivial.
+
+\medskip
+
+{\bf (ii)$\Leftrightarrow$(iv)} The point is that, for $n\in\Bbb Z$ and
+$b\in\frak A$,
+
+$$\eqalign{\phi c=\pi^nc\text{ for every }c\Bsubseteq b
+&\iff\pi^{-n}\phi c=c\text{ for every }c\Bsubseteq b\cr
+&\iff b\Bcap\supp(\pi^{-n}\phi)=0.\cr}$$
+
+\noindent So we have
+
+$$\eqalign{\text{(ii)}
+&\iff\Forall a\in\frak A\setminus\{0\}
+\Exists n\in\Bbb Z,\,b\text{ such that }0\ne b\Bsubseteq a
+\text{ and }b\Bcap\supp(\pi^{-n}\phi)=0\cr
+&\iff\Forall a\in\frak A\setminus\{0\}
+\Exists n\in\Bbb Z,\,a\Bsetminus\supp(\pi^{-n}\phi)\ne 0\cr
+&\iff\inf_{n\in\Bbb Z}\supp(\pi^{-n}\phi)=0,\cr}$$
+
+\noindent as required.
+}%end of proof of 381I
+
+\leader{381J}{Lemma} Let $\frak A$ be a Boolean algebra, and
+$\pi\in\Aut\frak A$.   Suppose that $\phi$ belongs to the full subgroup
+of $\Aut\frak A$ generated by $\pi$.
+
+(a) If $c\in\frak A$ is such that
+$\pi c=c$, then $\phi c=c$.
+
+(b) If $a\in\frak A$ supports $\pi$ then it supports $\phi$.
+
+\proof{{\bf (a)} Let $G$ be the set of all $\psi\in\Aut\frak A$ such
+that $\psi c=c$.   Then $G$ is a subgroup of $\Aut\frak A$ containing
+$\pi$.   Also $G$ is full.   \Prf\ If $\familyiI{a_i}$ is a partition of
+unity in $\frak A$, $\familyiI{\psi_i}$ is a family in $G$, and
+$\psi\in\Aut\frak A$ is such that $\psi d=\psi_id$ whenever
+$d\Bsubseteq a_i$, then
+
+\Centerline{$\psi c=\sup_{i\in I}\psi(c\Bcap a_i)
+=\sup_{i\in I}\psi_i(c\Bcap a_i)=\sup_{i\in I}\psi_ic\Bcap\psi_ia_i
+=\sup_{i\in I}c\Bcap\psi_ia_i=c$.}
+
+\noindent So $\psi\in G$;  as $\psi$ is arbitrary, $G$ is full.\ \QeD\
+So $\phi\in G$ and $\phi c=c$, as claimed.
+
+\medskip
+
+{\bf (b)} If $c\Bcap a=0$ then $\pi c=c$ so $\phi c=c$.
+}%end of proof of 381J
+
+%Boolean endomorphisms
+\leader{381K}{Lemma} Let $\frak A$ be a Dedekind $\sigma$-complete
+Boolean algebra and
+$\pi:\frak A\to\frak A$ a sequentially order-continuous Boolean
+homomorphism.
+
+(a) If $a\in\frak A$ and $a^*=\inf_{k\in\Bbb N}\sup_{i\ge k}\pi^ia$,
+then $\pi a^*=a^*$.
+
+(b) If $a\in\frak A$ is such that
+$a\Bsubseteq\sup_{i\ge 1}\pi^ia$, then
+$\sup_{i\ge k}\pi^ia=\sup_{i\in\Bbb N}\pi^ia$ for every $k\in\Bbb N$.
+
+\proof{{\bf (a)} Because $\pi$ is sequentially order-continuous,
+
+$$\eqalignno{\pi a^*
+&=\inf_{k\in\Bbb N}\sup_{i\ge k}\pi^{i+1}a\cr
+\displaycause{313Lc}
+&=\inf_{k\in\Bbb N}\sup_{i\ge k+1}\pi^ia
+=\inf_{k\ge 1}\sup_{i\ge k}\pi^ia
+=\inf_{k\in\Bbb N}\sup_{i\ge k}\pi^ia
+=a^*.\cr}$$
+
+\medskip
+
+{\bf (b)} Induce on $k$.   For $k=0$ the result is just the hypothesis.
+For the inductive step to $k+1$, because $\pi$ is
+sequentially order-continuous, so is $\pi^k$ (313Ic), so
+
+$$\eqalignno{\sup_{i\ge k+1}\pi^ia
+&=\sup_{i\ge 1}\pi^k\pi^ia
+=\pi^k(\sup_{i\ge 1}\pi^ia)\cr
+&=\pi^k(\sup_{i\in\Bbb N}\pi^ia)
+=\sup_{i\ge k}\pi^ia
+=\sup_{i\in\Bbb N}\pi^ia,\cr}$$
+
+\noindent and the induction continues.
+}%end of proof of 381K
+
+%recurrence
+\vleader{72pt}{381L}{Lemma} Let $\frak A$ be a Dedekind $\sigma$-complete
+Boolean algebra and $\pi\in\Aut\frak A$.
+Then for any $a\in\frak A$, the following are equiveridical:
+
+\inset{(i) $\pi$ is recurrent on $a$;
+
+(ii) $a\Bsubseteq\sup_{n\ge 1}\pi^{-n}a$;
+
+(iii) there is some $k\ge 1$ such that
+$a\Bsubseteq\sup_{n\ge k}\pi^{-n}a$;
+
+(iv) $a\Bsubseteq\sup_{n\ge k}\pi^{-n}a$ for every $k\in\Bbb N$.}
+
+\proof{{\bf (i)$\Rightarrow$(ii)} If (i) is true, set
+$b=a\Bsetminus\sup_{n\ge 1}\pi^{-n}a$.    Then $a\Bcap\pi^nb=0$ for
+every $n\ge 1$, so $b=0$, that is, $a\Bsubseteq\sup_{n\ge 1}\pi^{-n}a$.
+
+\medskip
+
+\quad{\bf (ii)$\Rightarrow$(i)} If (ii) is true and
+$0\ne b\Bsubseteq a$, then there is some $n\ge 1$ such that
+$b\Bcap\pi^{-n}a\ne 0$, that is, $\pi^nb\Bcap a\ne 0$;  as $b$ is
+arbitrary, $\pi$ is recurrent on $a$.
+
+\medskip
+
+\quad{\bf (iv)$\Rightarrow$(ii)$\Leftrightarrow$(iii)} are trivial.
+
+\medskip
+
+\quad{\bf (ii)$\Rightarrow$(iv)} Apply 381Kb to $\pi^{-1}$.
+}%end of proof of 381L
+
+\leader{381M}{}\cmmnt{ It is with the idea of `recurrence' that we
+start to get genuine surprises.   The first fundamental construction is
+that of `induced automorphism' in the following sense.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $\frak A$ be a Dedekind
+$\sigma$-complete Boolean algebra and $a\in\frak A$.   Suppose that
+$\pi\in\Aut\frak A$ is doubly recurrent on $a$.
+Then we have a Boolean automorphism
+$\pi_a:\frak A_a\to\frak A_a$ defined by saying that $\pi_ad=\pi^nd$
+whenever $n\ge 1$ and
+$d\Bsubseteq a\Bcap\pi^{-n}a\Bsetminus\sup_{1\le i<n}\pi^{-i}a$;  I will
+call $\pi_a$ the {\bf induced automorphism} on $\frak A_a$.
+
+\proof{ For $n\ge 1$ set
+
+\Centerline{$d_n=a\Bcap\pi^{-n}a\Bsetminus\sup_{1\le i<n}\pi^{-i}a$.}
+
+\noindent If $1\le m<n$ then
+
+\Centerline{$d_n\Bsubseteq\pi^{-n}a\Bsetminus\pi^{-m}a$,
+\quad$d_m\Bsubseteq\pi^{-m}a$}
+
+\noindent so $d_m\Bcap d_n=0$.   Also
+
+\Centerline{$d_m\Bsubseteq a$,
+\quad$\pi^{n-m}d_n\Bcap a=\pi^{n-m}(d_n\Bcap\pi^{-(n-m)}a)=0$}
+
+\noindent so
+
+\Centerline{$\pi^nd_n\Bcap\pi^md_m=\pi^m(\pi^{n-m}d_n\Bcap d_m)=0$.}
+
+\noindent Finally,
+$\sup_{n\ge 1}d_n=a\Bcap\sup_{n\ge 1}\pi^{-n}a=a$, because $\pi$ is
+recurrent on $a$ (using (a)).
+
+It follows that $\langle d_n\rangle_{n\ge 1}$ is a partition of unity
+in $\frak A_a$.   Since $\langle\pi^nd_n\rangle_{n\ge 1}$ also is a
+disjoint family in $\frak A_a$, and
+
+$$\eqalign{\sup_{n\ge 1}\pi^nd_n
+&=\sup_{n\ge 1}(\pi^na\Bcap a\Bsetminus\sup_{1\le i<n}\pi^{n-i}a)\cr
+&=a\Bcap\sup_{n\ge 1}(\pi^na\Bsetminus\sup_{1\le i<n}\pi^ia)
+=a\Bcap\sup_{n\ge 1}\pi^na
+=a,\cr}$$
+
+\noindent (because $\pi^{-1}$ is recurrent on $a$),
+$\langle\pi^nd_n\rangle_{n\ge 1}$ is another partition of
+unity.   So we have an automorphism
+$\pi_a:\frak A_a\to\frak A_a$ defined by setting $\pi_ad=\pi^nd$ if
+$d\Bsubseteq d_n$ (381C).
+}%end of proof of 381M
+
+\leader{381N}{Lemma} Let $\frak A$ be a Dedekind
+$\sigma$-complete Boolean algebra and $a\in\frak A$.   Suppose that
+$\pi\in\Aut\frak A$ is doubly recurrent on $a$.    Let
+$\pi_a\in\Aut\frak A_a$ be the induced automorphism.
+
+(a) $\pi^{-1}$ is doubly recurrent on $a$, and the induced automorphism
+$(\pi^{-1})_a$ is $(\pi_a)^{-1}$.
+
+(b) For every $n\in\Bbb N$ there is a partition of unity
+$\langle b_i\rangle_{i\ge n}$ in $\frak A_a$ such that $\pi_a^nb=\pi^ib$
+whenever $i\ge n$ and $b\Bsubseteq b_i$.
+
+(c) If $n\ge 1$ and $0\ne b\Bsubseteq a\Bcap\pi^{-n}a$, there are a
+non-zero $b'\Bsubseteq b$ and a $j$ such that $1\le j\le n$ and
+$\pi^nd=\pi_a^jd$ for every $d\Bsubseteq b'$.
+
+(d) Suppose that $m\ge 1$ is such that $a\Bcap\pi^ia=0$ for $1\le i<m$.
+Then for any $n\ge 1$ we have a disjoint family
+$\langle b_{ni}\rangle_{1\le i\le\lfloor n/m\rfloor}$, with supremum
+$a\Bcap\pi^{-n}a$, such that $\pi^nd=\pi_a^id$ whenever
+$1\le i\le\lfloor\bover{n}{m}\rfloor$ and $d\Bsubseteq b_{ni}$.
+
+(e) Suppose that $b\Bsubseteq a$.   Then $\pi$ is doubly recurrent on
+$b$ iff $\pi_a$ is doubly recurrent on $b$, and in this case
+$\pi_b=(\pi_a)_b$, where $(\pi_a)_b$ is the automorphism of $\frak A_b$
+induced by $\pi_a$.
+
+(f) Suppose that $c\in\frak A$ is such that $\pi c=c$.   Then $\pi$ is
+doubly recurrent on $a\Bcap c$, and
+$\pi_{a\Bcap c}=\pi_a\restrp\frak A_{a\Bcap c}$;  in particular,
+$\pi_a(a\Bcap c)=a\Bcap c$.
+
+(g) If $\pi$ is aperiodic, so is $\pi_a$.
+
+(h) Suppose that $a\Bcap\pi a=0$, and that $b\Bsubseteq a$ is such that
+$b\Bcap\pi_ab=0$.   Then $b$, $\pi b$ and $\pi^2b$ are all disjoint.
+
+(i) There is an automorphism $\tilde\pi_a\in\Aut\frak A$ defined by
+setting $\tilde\pi_ad=\pi_ad$ for $d\Bsubseteq a$, $\tilde\pi_ad=d$ for
+$d\Bsubseteq 1\Bsetminus a$, and $\tilde\pi_a$ belongs to the countably
+full subgroup of $\Aut\frak A$ generated by $\pi$.
+
+\proof{ Set $d_n=a\Bcap\pi^{-n}a\Bsetminus\sup_{1\le i<n}\pi^{-i}a$ for
+$n\ge 1$, so that $\langle d_n\rangle_{n\ge 1}$ and
+$\langle\pi^nd_n\rangle_{n\ge 1}$ are partitions of unity in
+$\frak A_a$, and $\pi_ab=\pi^nb$ for $b\Bsubseteq d_n$.
+
+\medskip
+
+{\bf (a)} By the symmetry in the definition of `doubly recurrent',
+$\pi^{-1}$ is doubly recurrent on $a$ iff $\pi$ is.   In this case,
+
+\Centerline{$\pi^nd_n=\pi^na\Bcap a\Bsetminus\sup_{1\le i<n}\pi^{n-i}a
+=a\Bcap\pi^na\Bcap a\Bsetminus\sup_{1\le i<n}\pi^ia$}
+
+\noindent so $(\pi^{-1})_ab=\pi^{-n}b=(\pi_a)^{-1}b$ for every
+$b\Bsubseteq\pi^nd_n$;  as $\sequencen{\pi_nd_n}$ is a partition of
+unity in $\frak A_a$, $(\pi^{-1})_a=(\pi_a)^{-1}$.
+
+\medskip
+
+{\bf (b)} Induce on $n$.   For $n=0$ we can take $b_0=a$ and $b_i=0$ for
+$i>0$.   For the inductive step to $n+1$, let
+$\langle b_i\rangle_{i\ge n}$ be a partition of unity in $\frak A_a$
+such that $\pi_a^nb=\pi^ib$ for $b\Bsubseteq b_i$.   Then
+$\langle\pi_a^{-1}b_i\rangle_{i\ge n}$ and
+$\langle d_k\Bcap\pi_a^{-1}b_i\rangle_{k\ge 1,i\ge n}$ are partitions of
+unity in $\frak A_a$.   If $b\Bsubseteq d_k\Bcap\pi_a^{-1}b_i$, then
+$\pi_ab=\pi^kb\Bsubseteq b_i$, so $\pi_a^{n+1}b=\pi^{k+i}b$.   This
+means that if we set
+$b'_j=\sup_{k\ge 1,i\ge n,k+i=j}d_k\Bcap\pi_a^{-1}b_i$ for $j\ge n+1$,
+$\langle b'_j\rangle_{j\ge n+1}$ will be a partition of unity in
+$\frak A_a$, and $\pi_a^{n+1}b=\pi^jb$ whenever $b\Bsubseteq b_j$.   So
+the induction continues.
+
+\medskip
+
+{\bf (c)} Induce on $n$.   If $b\Bcap\pi^{-i}a=0$ for
+$1\le i<n$ then we can take $b'=b$ and $j=1$.   Otherwise, take the
+first $i\ge 1$ such that $b_1=b\Bcap\pi^{-i}a\ne 0$.
+Then $\pi_ad=\pi^id$ for every $d\Bsubseteq b_1$.   Also
+$\pi^{n-i}\pi^ib_1\Bsubseteq a$, so, by the inductive hypothesis, there
+are a non-zero $c\Bsubseteq\pi^ib_1$ and a $j$ such that $1\le j\le n-i$
+and $\pi^{n-i}d=\pi_a^jd$ for every $d\Bsubseteq c$.   Setting
+$b'=\pi^{-i}c\Bsubseteq b_1$, we have $0\ne b'\Bsubseteq b$ and
+
+\Centerline{$\pi^nd=\pi^{n-i}\pi^id=\pi_a^j\pi_ad=\pi_a^{j+1}d$}
+
+\noindent whenever $d\Bsubseteq b'$.   So the induction continues.
+
+\medskip
+
+{\bf (d)} Again induce on $n$.    If $1\le n<m$ then $a\Bcap\pi^{-n}a=0$
+and the result is trivial.   If $n=m$, then $a\Bcap\pi^{-n}a=d_n$ and
+$\pi_ad=\pi^nd$ for every $d\Bsubseteq d_n$, so we can set $b_{n1}=d_n$.
+For the inductive step to $n>m$, we have
+
+$$\eqalign{a\Bcap\pi^{-n}a
+&=d_n\Bcup\sup_{m\le k<n}(d_k\Bcap\pi^{-n}a)
+=d_n\Bcup\sup_{m\le k<n}(d_k\Bcap\pi^{-k}(a\Bcap\pi^{-(n-k)}a))\cr
+&=d_n\Bcup\sup_{\Atop{m\le k\le n-m}{1\le j\le\lfloor (n-k)/m\rfloor}}
+  (d_k\Bcap\pi^{-k}b_{n-k,j})\cr}$$
+
+\noindent by the inductive hypothesis, while
+$\langle d_k\Bcap\pi^{-k}b_{n-k,j}
+\rangle_{m\le k\le n-m,1\le j\le\lfloor(n-k)/m\rfloor}$ is disjoint.
+Now if $m\le k\le n-m$ and $1\le j\le\lfloor\bover{n-k}m\rfloor$ and
+$d\Bsubseteq d_k\Bcap\pi^{-k}b_{n-k,j}$, we have
+$\pi_ad=\pi^kd\Bsubseteq b_{n-k,j}$, so
+$\pi^nd=\pi^{n-k}\pi_ad=\pi_a^{j+1}d$;  while if $d\Bsubseteq d_n$ then
+$\pi^nd=\pi_ad$.   So we can set
+
+\Centerline{$b_{n1}=d_n$,
+\quad$b_{ni}=\sup_{m\le k\le n-m}d_k\Bcap b_{n-k,i-1}$}
+
+\noindent for $2\le i\le\lfloor\bover{n}{m}\rfloor$, and the induction
+will continue.
+
+
+\medskip
+
+{\bf (e)} Applying (b) and (d) to $\pi$ and $\pi^{-1}$, and using 381L
+and (a), we see that $\pi$ is doubly recurrent on $b$ iff $\pi_a$ is
+doubly recurrent on $b$.
+
+In this case, set $D=\{d:d\in\frak A_b,\,\pi_bd=(\pi_a)_bd\}$.   Then
+$D$ is order-dense in $\frak A_b$.   \Prf\ Take any non-zero
+$c\in\frak A_b$.
+Since $b\Bsubseteq\sup_{n\ge 1}\pi^{-n}b$, there is an $n\ge 1$
+such that $c'=c\Bcap\pi^{-n}b\Bsetminus\sup_{1\le i<n}\pi^{-i}b$ is
+non-zero.   Next, there is a non-zero $d\Bsubseteq c'$ such that for
+every $m\le n$ either $d\Bsubseteq\pi^{-m}a$ or $d\Bcap\pi^{-m}a=0$.
+Enumerate $\{m:m\le n,\,d\Bsubseteq\pi^{-m}a\}$ in ascending order as
+$(m_0,\ldots,m_k)$ (note that as $c'\Bsubseteq a\Bcap\pi^{-n}a$, we
+must have $m_0=0$ and $m_k=n$).   Set $d_i=\pi^{m_i}d$ for $i\le k$, so
+that
+
+\Centerline{$d_0=d$,
+\quad$\pi^{m_{i+1}-m_i}d_i=d_{i+1}\Bsubseteq a$,}
+
+\noindent while
+
+\Centerline{$\pi^jd_i=\pi^{m_i+j}d\Bsubseteq 1\Bsetminus a$}
+
+\noindent for $1\le j<m_{i+1}-m_i$;  that is, $d_{i+1}=\pi_ad_i$ for
+$i<k$.   Thus
+
+\Centerline{$\pi_a^kd=\pi^{m_k}d=\pi^nd\Bsubseteq b$,}
+
+\noindent while
+
+\Centerline{$\pi_a^id=d_i=\pi^{m_i}d
+\Bsubseteq\pi^{m_i}c'\Bsubseteq 1\Bsetminus b$}
+
+\noindent for every $i<k$, and
+
+\Centerline{$(\pi_a)_bd=\pi_a^kd=\pi^nd=\pi_bd$,}
+
+\noindent so that $d\in D$.   As $c$ is arbitrary, $D$ is
+order-dense.\ \Qed
+
+Because $\pi_b$ and $(\pi_a)_b$ are both order-continuous Boolean
+homomorphisms on $\frak A_b$, and every member of $\frak A_b$ is a
+supremum of some subset of $D$ (313K), $\pi_b=(\pi_a)_b$, as required.
+
+\wheader{381N}{4}{2}{2}{24pt}
+
+{\bf (f)} We have
+
+\Centerline{$a\Bcap c
+\Bsubseteq\sup_{n\ge 1}\pi^{-n}a\Bcap c
+=\sup_{n\ge 1}\pi^{-n}a\Bcap\pi^{-n}c
+=\sup_{n\ge 1}\pi^{-n}(a\Bcap c)$,}
+
+\noindent so $\pi$ is recurrent on $a\Bcap c$;  similarly, $\pi^{-1}$ is
+recurrent on $a\Bcap c$.   If $n\ge 1$ and
+
+\Centerline{$d
+\Bsubseteq a\Bcap c\Bcap\pi^{-n}(a\Bcap c)
+  \Bsetminus\sup_{1\le i<n}\pi^{-i}(a\Bcap c)
+=c\Bcap a\Bcap\pi^{-n}a\Bsetminus\sup_{1\le i<n}\pi^{-i}a$,}
+
+\noindent then $\pi_{a\Bcap c}d=\pi^nd=\pi_ad$.   So $\pi_a$ extends
+$\pi_{a\Bcap c}$, as claimed.
+
+\medskip
+
+{\bf (g)} If $0\ne b\Bsubseteq a$, and $n\ge 1$, then (b) tells us that
+there are a non-zero $c\Bsubseteq b$ and an $i\ge n$ such that
+$\pi_a^nd=\pi^id$ for every $d\Bsubseteq c$.   Now we are supposing that
+$\supp\pi^i=1$, so there is a $d\Bsubseteq c$ such that $\pi^id\ne d$,
+that is, $\pi_a^nd\ne d$.   As $b$ is arbitrary, $\supp\pi_a^n=a$;  as
+$n$ is arbitrary, $\pi_a$ is aperiodic.
+
+\medskip
+
+{\bf (h)} Of course $\pi b\Bsubseteq\pi a$ is disjoint from
+$b\Bsubseteq a$;  it follows that $\pi b\Bcap\pi^2b=\pi(b\Bcap\pi b)=0$.
+If $c=b\Bcap\pi^{-2}b$, then
+$c\Bsubseteq a\Bcap\pi^{-2}a\Bsetminus\pi^{-1}a$, so
+
+\Centerline{$\pi^2b\Bcap b=\pi^2c
+=\pi_ac\Bsubseteq\pi_ab$}
+
+\noindent is disjoint from $b$ and must be $0$.   So $b$, $\pi b$ and
+$\pi^2b$ are all disjoint.
+
+\medskip
+
+{\bf (i)} By 381C, the formula defines an automorphism $\tilde\pi_a$.
+Setting $d_0=1\Bsetminus a$, $\sequencen{d_n}$ is a partition of unity
+in $\frak A$ and $\tilde\pi_ad=\pi^nd$ for $d\Bsubseteq d_n$, so
+$\tilde\pi_a$ belongs to the countably full subgroup of $\Aut\frak A$
+generated by $\pi$.
+}%end of proof of 381N
+
+\leader{381O}{Lemma} Let $\frak A$ be a Boolean algebra and
+$\pi:\frak A\to\frak A$ a Boolean homomorphism.   Then the following are
+equiveridical:
+
+(i) $\pi$ is recurrent on every $a\in\frak A$;
+
+(ii) for every non-zero $a\in\frak A$ there is a $k\ge 1$ such that
+$a\Bcap\pi^ka\ne 0$;
+
+(iii) $a=\sup_{k\ge 1}a\Bcap\pi^ka$ for every $a\in\frak A$.
+
+\proof{{\bf (i)$\Rightarrow$(ii)} If (i) is true, and
+$a\in\frak A\setminus\{0\}$, then taking $b=a$ in the definition 381Bg
+we see that there is a $k\ge 1$ such that $a\Bcap\pi^ka\ne 0$.
+
+\medskip
+
+{\bf (ii)$\Rightarrow$(iii)} Suppose (ii) is true.   \Quer\ If
+$a\in\frak A$ is not the supremum of $\{a\Bcap\pi^ka:k\ge 1\}$, let
+$b\Bsubseteq a$ be non-zero and disjoint from $\pi^ka$ for every
+$k\ge 1$.   Then $b\Bcap\pi^kb=0$ for every $k\ge 1$, which is
+impossible.\ \Bang
+
+\medskip
+
+{\bf (iii)$\Rightarrow$(i)} Suppose (iii) is true.   If
+$0\ne b\Bsubseteq a$ then $b=\sup_{k\ge 1}b\Bcap\pi^kb$, so there is
+certainly some $k\ge 1$ such that $b\Bcap\pi^kb\ne 0$, in which case
+$a\Bcap\pi^kb\ne 0$.   As $b$ is arbitrary, $\pi$ is recurrent on $a$;
+as $a$ is arbitrary, (i) is true.
+}%end of proof of 381O
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The condition `recurrent on every $a\in\frak A$'
+looks, and is, very restrictive;  but it is satisfied by the
+homomorphisms we care about most (386A).
+}%end of comment
+
+\leader{381P}{Proposition} Let $\frak A$ be a Boolean algebra and
+$\pi:\frak A\to\frak A$ a Boolean homomorphism which is recurrent on
+every $a\in\frak A$.   Then $\pi$ is aperiodic iff $\frak A$ is
+relatively atomless\cmmnt{ (definition:  331A)} over the fixed-point
+algebra $\frak C=\{c:c\in\frak A$, $\pi c=c\}$.   In particular, if
+$\pi$ is ergodic, it is aperiodic iff $\frak A$ is atomless.
+
+\proof{ It is elementary to check that $\frak C$ is a subalgebra of
+$\frak A$.
+
+\medskip
+
+{\bf (a)} Suppose that $\pi$ is not aperiodic.   Then there is a least
+$n\ge 1$ such that $1$ is not the support of $\pi^n$;  that is, there is
+a non-zero $a\in\frak A$ such that $\pi^nd=d$ for every
+$d\Bsubseteq a$.   Now if $0\ne b\Bsubseteq a$ and $1\le i<n$ there is a
+non-zero $b'\Bsubseteq b$ such that $b'\Bcap\pi^ib'=0$.   \Prf\ We are
+supposing that the support of $\pi^i$ is $1$, so there is a
+$d\Bsubseteq b$ such that $d\ne\pi^id$.   If $d\Bsetminus\pi^id\ne 0$,
+take $b'=d\Bsetminus\pi^id$.   Otherwise, try
+$b'=d\Bsetminus\pi^{n-i}d$;  then
+
+\Centerline{$\pi^ib'=\pi^id\Bsetminus\pi^nd=\pi^id\Bsetminus d\ne 0$,}
+
+\noindent so $b'\ne 0$, while
+$b'\Bcap\pi^ib'\Bsubseteq d\Bsetminus\pi^nd=0$.\ \QeD\
+
+We can therefore find a non-zero $b\Bsubseteq a$ such that
+$b\Bcap\pi^ib=0$ whenever $1\le i<n$.   Now $b$ is a relative atom of
+$\frak A$ over $\frak C$.   \Prf\ If $d\Bsubseteq b$, set
+$c=\sup_{0\le i<n}\pi^id$.   Then $\pi c=\sup_{1\le i\le n}\pi^id=c$,
+so $c\in\frak C$, while $b\Bcap\pi^id=0$ for $1\le i<n$, so
+$d=b\Bcap c$.\ \QeD\  Thus $b$ witnesses that $\frak A$ is
+not relatively atomless over $\frak C$.
+
+\medskip
+
+{\bf (b)(i)} Note that if $a\in\frak A$ and $a\Bsubseteq\pi a$ then
+$a=\pi a$.   \Prf\Quer\ Otherwise, set $b=\pi a\Bsetminus a$.   Then
+$\pi^nb=\pi^{n+1}a\Bsetminus\pi^na$ for every $n$;  also
+$a\Bsubseteq\pi a\Bsubseteq\pi^2a\Bsubseteq\ldots$,
+so $\sequencen{\pi^nb}$ is
+disjoint.   But in this case $\pi$ cannot be recurrent on $b$.\
+\Bang\Qed
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $\frak A$ is not relatively atomless over
+$\frak C$.   Then there is a relative atom $a\in\frak A$;  as $\pi$ is
+recurrent on $a$, there is a first $n\ge 1$ such that
+$a\Bcap\pi^na\ne 0$.   Then $\pi^nb=b$ for every
+$b\Bsubseteq a\Bcap\pi^na$.   \Prf\ Because $a$ is a relative atom over
+$\frak C$, there is a $c\in\frak C$ such that $b=a\Bcap c$.
+Now $\pi^nb=\pi^na\Bcap c\Bsupseteq b$.   Set
+$b_1=\sup_{0\le i<n}\pi^ib$;  then
+$\pi b_1=\sup_{1\le i\le n}\pi^ib\Bsupseteq b_1$.   So $b_1=\pi b_1$, by
+(i), and $\pi^nb\Bsubseteq\sup_{i<n}\pi^ib$.   Next,
+
+\Centerline{$\pi^nb\Bcap\pi^ib=\pi^i(\pi^{n-i}b\Bcap b)
+\Bsubseteq\pi^i(\pi^{n-i}a\Bcap a)=0$}
+
+\noindent for $0<i<n$, so $\pi^nb\Bsubseteq b$ and $\pi^nb=b$.\ \QeD\
+Thus $a\Bcap\pi^na$ witnesses that $\pi$ is not aperiodic.
+
+\medskip
+
+{\bf (c)} Finally, if $\pi$ is ergodic, then $\frak C=\{0,1\}$ (372Pa),
+so that `relatively atomless over $\frak C$' becomes `atomless'.
+}%end of proof of 381P
+
+\leader{381Q}{}\cmmnt{ As far as possible I will express the ideas of
+this chapter in `pure' Boolean algebra terms, without shifting to
+measure spaces or Stone spaces.   However there is a crucial argument in
+\S382 for which the Stone representation is an invaluable aid, and
+anyone studying the subject has to be able to use it.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $\frak A$ be a
+Boolean algebra and $Z$ its Stone space.
+For $a\in\frak A$ let $\widehat{a}$ be the corresponding open-and-closed
+subset of $Z$\cmmnt{;  recall that $\widehat{a}$ can be identified
+with the Stone space of $\frak A_a$ (312T)}.   For a Boolean
+homomorphism $\pi:\frak A\to\frak A$ let $f_{\pi}:Z\to Z$ be the
+continuous function such that
+$\widehat{\pi a}=f_{\pi}^{-1}[\widehat{a}]$ for every
+$a\in\frak A$\cmmnt{ (312Q)}.
+
+(a) If $a$, $b\in\frak A$ and $\phi:\frak A_a\to\frak A_b$ is a Boolean
+homomorphism represented by a continuous function
+$g:\widehat{b}\to\widehat{a}$, then
+$\pi\in\Aut\frak A$ agrees with $\phi$ on $\frak A_a$ iff $f_{\pi}$
+agrees with $g$ on $\widehat{b}$.
+
+(b) If $\pi:\frak A\to\frak A$ is a Boolean homomorphism, then
+$a\in\frak A$ supports $\pi$ iff
+$\widehat{a}\supseteq\{z:f_{\pi}(z)\ne z\}$.
+So $a$ is the support of $\pi$ iff
+$\widehat{a}=\overline{\{z:f_{\pi}(z)\ne z\}}$.
+
+(c) Suppose that $\frak A$ is Dedekind complete and $\pi$,
+$\phi\in\Aut\frak A$.   Let $G$ be the full subgroup of $\Aut\frak A$
+generated by $\pi$.   Then
+
+$$\eqalign{\phi\in G
+&\iff\bigcup_{n\in\Bbb Z}\interior\{x:f_{\phi}(z)=f_{\pi}^n(z)\}
+  \text{ is dense in }Z\cr
+&\iff\{z:f_{\phi}(z)\in\{f_{\pi}^n(z):n\in\Bbb Z\}\}
+\text{ is comeager in }Z.\cr}$$
+
+(d) A Boolean homomorphism $\pi:\frak A\to\frak A$ is recurrent on
+$a\in\frak A$ iff
+$\widehat{a}\subseteq\overline{\bigcup_{n\ge 1}f_{\pi}^n[\widehat{a}]}$.
+
+(e) Suppose that $\frak A$ is Dedekind $\sigma$-complete,
+$\pi\in\Aut\frak A$ is recurrent on $a\in\frak A$, and
+that $\pi_a\in\Aut\frak A_a$ is the induced automorphism\cmmnt{ (381M)}.
+Let $f_{\pi_a}$ be the corresponding
+autohomeomorphism of $\widehat{a}$.   For $k\ge 1$, set
+$G_k=\{z:z\in\widehat{a}$, $f^k(z)\in\widehat{a}$,
+$f^i(z)\notin\widehat{a}$ for $1\le i<k\}$.   Then
+$\bigcup_{k\ge 1}G_k=\widehat{a}\cap\bigcup_{k\ge 1}f^{-k}[\widehat{a}]$
+is a dense open subset of $\widehat{a}$ and $f_{\pi_a}(z)=f_{\pi}^k(z)$
+whenever $k\ge 1$ and $z\in G_k$.
+
+\proof{ Recall that $f_{\pi\phi}=f_{\phi}f_{\pi}$ for all Boolean
+homomorphisms $\pi$, $\phi:\frak A\to\frak A$ (312R).
+
+\medskip
+
+{\bf (a)} The point is that $\{\widehat{d}:d\Bsubseteq a\}$ is a base
+for the Hausdorff topology of of $\widehat{a}$.   So if
+$g\ne f_{\pi}\restr\widehat{b}$, there are a $z\in\widehat{b}$ such that
+$f_{\pi}(z)\ne g(z)$ and a $d\Bsubseteq a$ such that
+$g(z)\in\widehat{d}$ and $f_{\pi}(z)\notin\widehat{d}$.   In this case,
+
+\Centerline{$z\in g^{-1}[\widehat{d}]\setminus f_{\pi}^{-1}[\widehat{d}]
+=\widehat{\phi d}\setminus\widehat{\pi d}$,}
+
+\noindent and $\phi\ne\pi\restrp\frak A_a$.   On the other hand, if
+$g=f_{\pi}\restr\widehat{b}$, then
+
+\Centerline{$\widehat{\pi d}=f_{\pi}^{-1}[\widehat{d}]
+=g^{-1}[\widehat{d}]=\widehat{\phi d}$}
+
+\noindent for every $d\Bsubseteq a$, and $\phi=\pi\restrp\frak A_a$.
+
+\medskip
+
+{\bf (b)}
+
+$$\eqalign{a\in\frak A\text{ supports }\pi
+&\iff\pi\text{ agrees with the identity on }1\Bsetminus a\cr
+&\iff f_{\pi}(z)=z\text{ for every }z\in\widehat{\pi(1\Bsetminus a)}
+=Z\setminus\widehat{a}\cr
+&\iff\widehat{a}\supseteq\{z:f_{\pi}(z)\ne z\}\cr
+&\iff\widehat{a}\supseteq\overline{\{z:f_{\pi}(z)\ne z\}}.\cr}$$
+
+\noindent So the smallest such $a$, if there is one, must have
+$\widehat{a}=\overline{\{z:f_{\pi}(z)\ne z\}}$.
+
+\medskip
+
+{\bf (c)} If $\phi\in G$, let $\family{n}{\Bbb Z}{a_n}$ be a partition
+of unity in $\frak A$ such that $\phi b=\pi^nb$ whenever $n\in\Bbb Z$
+and $b\Bsubseteq a_n$ (381I).   Then $g(z)=f_{\pi}^n(z)$ whenever
+$z\in\widehat{\phi a_n}$ ((a) above).   As $\sup_{n\in\Bbb Z}\phi a_n=1$
+in $\frak A$,
+
+\Centerline{$\bigcup_{n\in\Bbb Z}\interior\{x:f_{\phi}(z)=f_{\pi}^n(z)\}
+\supseteq\bigcup_{n\in\Bbb Z}\widehat{\phi a_n}$}
+
+\noindent is dense (313Ca).
+
+If $\bigcup_{n\in\Bbb Z}\interior\{x:f_{\phi}(z)=f_{\pi}^n(z)\}$ is
+dense, it is a dense open subset of
+$\{z:f_{\phi}(z)\in\{f_{\pi}^n(z):n\in\Bbb Z\}$, so the latter is
+comeager.
+
+If $\{z:f_{\phi}(z)\in\{f_{\pi}^n(z):n\in\Bbb Z\}\}$ is comeager, set
+$F_n=\{z:f_{\phi}(z)=f_{\pi}^n(z)\}$ for each $n$.   Then
+$F_n\setminus\interior F_n$ is nowhere dense for each $n$, and
+$Z\setminus\bigcup_{n\in\Bbb Z}F_n$ is meager, so
+$\bigcup_{n\in\Bbb Z}\interior F_n$ is comeager, therefore dense (by
+Baire's theorem, 3A3G).   If $a\in\frak A$ is non-zero, there are an
+$n\in\Bbb Z$ such that $\widehat{\phi a}\Bcap\interior F_n\ne\emptyset$
+and a $b\in\frak A$ such that
+$\emptyset\ne\widehat{b}\Bsubseteq\widehat{\phi a}\Bcap F_n$, in which
+case $0\ne\phi^{-1}b\Bsubseteq a$ and $\phi c=\pi^nc$ for every
+$c\Bsubseteq b$.   By 381I(c-ii), $\phi\in G$.   So the cycle is
+complete.
+
+\medskip
+
+{\bf (d)}
+
+$$\eqalign{\pi\text{ is recurrent on }a
+&\iff\text{whenever }0\ne b\Bsubseteq a\text{ there is a }k\ge 1\cr
+&\mskip200mu
+  \text{ such that }a\Bcap\pi^kb\ne 0\cr
+&\iff\text{whenever }0\ne b\Bsubseteq a\text{ there is a }k\ge 1\cr
+&\mskip200mu
+  \text{ such that }
+  \widehat{a}\cap(f_{\pi}^k)^{-1}[\widehat{b}]\ne\emptyset\cr
+&\iff\text{whenever }0\ne b\Bsubseteq a\text{ there is a }k\ge 1\cr
+&\mskip200mu
+ \text{ such that }f_{\pi}^k[\widehat{a}]\cap\widehat{b}\ne\emptyset\cr
+&\iff\widehat{a}\Bcap\bigcup_{k\ge 1}f_{\pi}^k[\widehat{a}]
+  \text{ is dense in }\widehat{a}\cr
+&\iff\widehat{a}
+  \Bsubseteq\overline{\bigcup_{k\ge 1}f_{\pi}^k[\widehat{a}]}.\cr}$$
+
+\medskip
+
+{\bf (e)}
+Set $d_k=a\Bcap\pi^{-k}a\Bsetminus\sup_{1\le i<k}\pi^{-i}a$, so that
+$\pi^kd_k=a\Bcap\pi^ka\Bsetminus\sup_{1\le i<k}\pi^ia$.   Since $\pi^k$
+and $\pi_a$ agree on $\frak A_{d_k}$, (a) tells us that $f_{\pi}^k$ and
+$f_{\pi_a}$ agree on
+
+\Centerline{$\widehat{\pi^kd_k}=\widehat{\pi_ad_k}
+=f_{\pi_a}^{-1}[\widehat{d_k}]=G_k$.}
+
+\noindent Because
+$\sup_{k\ge 1}\pi^kd_k=a$, $\bigcup_{k\ge 1}G_k$ is dense in
+$\widehat{a}$.
+}%end of proof of 381Q
+
+%3{8}1G
+\leader{381R}{Cyclic \dvrocolon{automorphisms}}\cmmnt{ I end the
+section by describing a notation which is often useful.
+
+\medskip
+
+\noindent}{\bf Definition} Let $\frak A$ be a Boolean algebra.
+
+\medskip
+
+{\bf (a)} Suppose that $a$, $b$ are disjoint members of $\frak A$ and
+that $\pi\in\Aut\frak A$ is such that $\pi a=b$.   I will write
+$\cycleii{a}{\pi}{b}$ for the member $\psi$ of $\Aut\frak A$ defined by
+setting
+
+$$\eqalign{\psi d&=\pi d\text{ if }d\Bsubseteq a,\cr
+&=\pi^{-1}d\text{ if }d\Bsubseteq b,\cr
+&=d\text{ if }d\Bsubseteq 1\Bsetminus(a\Bcup b).\cr}$$
+
+\noindent Observe that in this case (if $a\ne 0$) $\psi$ is an
+involution, that is, has order $2$ in the group $\Aut\frak A$;
+I will call such a $\psi$ an {\bf exchanging involution}, and say that
+it {\bf exchanges} $a$ with $b$.
+
+\medskip
+
+{\bf (b)} More generally, if $a_1,\ldots,a_n$ are disjoint elements of
+$\frak A$ and $\pi_i\in\Aut\frak A$ are such that $\pi_ia_i=a_{i+1}$ for
+each $i<n$, then I will write
+
+\Centerline{$\cycle{a_1\,_{\pi_1}\,a_2\,_{\pi_2}\,
+\ldots\,_{\pi_{n-1}}\,a_n}$}
+
+\noindent for that $\psi\in\Aut\frak A$ such that
+
+$$\eqalign{\psi d&=\pi_id\text{ if }1\le i<n,\,d\Bsubseteq a_i,\cr
+&=\pi_1^{-1}\pi_2^{-1}\ldots\pi_{n-1}^{-1}d
+  \text{ if }d\Bsubseteq a_n,\cr
+&=d\text{ if }d\Bsubseteq 1\Bsetminus\sup_{i\le n}a_i.\cr}$$
+
+\medskip
+
+{\bf (c)} It will occasionally be convenient to use the same notation
+when each $\pi_i$ is a Boolean isomorphism between the principal ideals
+$\frak A_{a_i}$ and $\frak A_{a_{i+1}}$, rather than an automorphism of
+the whole algebra $\frak A$.
+
+\leaveitout{\spheader 381Rd \cmmnt{A variant of this notation gives us
+a quick way of describing some of the automorphisms constructed by the
+method in 381C.}
+Suppose that $\langle a_i\rangle_{i\in I}$,
+$\langle b_i\rangle_{i\in I}$ are two disjoint families in $\frak A$
+such that $a_i\Bcap b_j=0$ for all $i$, $j\in I$.   Assume
+{\it either} that $I$ is finite
+{\it or} that $I$ is countable and $\frak A$ is Dedekind
+$\sigma$-complete
+{\it or} that $\frak A$ is Dedekind complete.
+Suppose that for each $i\in I$ we have an automorphism
+$\pi_i\in\Aut\frak A$.   Then I write
+$\prod_{i\in I}\cycleii{a_i}{\pi_i}{b_i}$ for the automorphism
+$\pi:\frak A\to\frak A$ such that
+
+$$\eqalign{\pi d
+&=\pi_id\text{ whenever }i\in I
+  \text{ and }d\Bsubseteq a_i\cr
+&=\pi_i^{-1}d\text{ whenever }i\in I
+  \text{ and }d\Bsubseteq b_i\cr
+&=d\text{ whenever }
+  d\Bsubseteq 1\Bsetminus\sup_{i\in I}(a_i\Bcup b_i).\cr}$$
+
+\noindent Of course such a $\pi$ will be an exchanging involution,
+exchanging $\sup_{i\in I}a_i$ with $\sup_{i\in I}b_i$, except in the
+trivial case in which every $a_i$, $b_i$ is zero.
+}%end of leaveitout
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The point of this notation is that we can expect
+to use the standard techniques for manipulating cycles that are (I
+suppose) familiar to you from elementary group theory;  the principal
+change
+is that we have to keep track of the subscripted automorphisms $_{\pi}$.
+The following results are typical.}
+
+%3{8}1H
+\vleader{48pt}{381S}{Lemma} Let $\frak A$ be a Boolean algebra.
+
+(a) If $\psi=\cycleii{a}{\pi}{b}$ is an exchanging involution in
+$\Aut\frak A$, then
+
+\Centerline{$\psi=\cycleii{a}{\psi}{b}
+=\cycleii{b}{\psi}{a}=\cycleii{b}{\pi^{-1}}{a}$}
+
+\noindent has support $a\Bcup b$.
+
+(b) If $\pi=\cycleii{a}{\pi}{b}$ is an exchanging involution in
+$\Aut\frak A$,   then for any $\phi\in\Aut\frak A$,
+
+\Centerline{$\phi\pi\phi^{-1}
+=\cycleii{\phi a}{\phi\pi\phi^{-1}}{\phi b}$}
+
+\noindent is another exchanging involution.
+
+(c) If $\pi=\cycleii{a}{\pi}{b}$ and $\phi=\cycleii{c}{\phi}{d}$ are
+exchanging involutions, and $a$, $b$, $c$, $d$ are all disjoint, then
+$\pi$ and $\phi$ commute, and $\psi=\pi\phi=\phi\pi$ is another
+exchanging involution, being $\cycleii{a\Bcup c}{\psi}{b\Bcup d}$.
+
+(d)\dvAnew{2010} If $G$ is a countably full subgroup of $\Aut\frak A$,
+$a_1,\ldots,a_n\in\frak A$ are disjoint, and $\pi_1,\ldots,\pi_{n-1}\in G$,
+then
+
+\Centerline{$\cycle{a_1\,_{\pi_1}\,a_2\,_{\pi_2}\,
+\ldots\,_{\pi_{n-1}}\,a_n}\in G$.}
+%\Centerline needed for Lulu version
+
+\proof{{\bf (a)} Check the action of $\psi$ on the principal ideals
+$\frak A_a$, $\frak A_b$, $\frak A_{1\Bsetminus(a\Bcup b)}$.
+
+\medskip
+
+{\bf (b)} $\phi a\Bcap\phi b=\phi(a\Bcap b)=0$ and
+
+\Centerline{$\phi\pi\phi^{-1}\phi a=\phi\pi a=\phi b$,}
+
+\noindent so $\psi=\cycleii{\phi a}{\phi\pi\phi^{-1}}{\phi b}$ is
+well-defined.   Now check the action of $\psi$ on the principal ideals
+$\frak A_{\phi a}$, $\frak A_{\phi b}$, $\frak A_{1\Bsetminus\phi(a\Bcup
+b)}$.
+
+\medskip
+
+{\bf (c)} Check the action
+of $\psi$ on each of the principal ideals $\frak A_a,\ldots,\frak A_e$,
+where $e=1\Bsetminus(a\Bcup b\Bcup c\Bcup d)$.
+
+\medskip
+
+{\bf (d)} Immediate from the definitions in 381Rb and 381Be.
+}%end of proof of 381S
+
+%3{8}1I
+\cmmnt{
+\leader{381T}{Remark} I must emphasize that while, after a little
+practice, calculations of this kind become easy and safe, they are
+absolutely dependent on all the cycles present involving only members of
+one list of disjoint elements of $\frak A$.   If, for instance, $a$,
+$b$, $c$ are disjoint, then
+
+\Centerline{$\cycleii{a}{\pi}{b}\cycleii{b}{\phi}{c}
+=\cycle{a\,_{\pi}\,b\,_{\phi}\,c}$.}
+
+\noindent But if $a\Bcap c\ne 0$ then there is no expression for the
+product in this language.    Secondly, of course, we must be scrupulous
+in checking, at every use of the notation
+$\cycle{a_1\,_{\pi_1}\,\ldots\,a_n}$, that $a_1,\ldots,a_n$ are disjoint
+and that $\pi_ia_i=a_{i+1}$ for $i<n$.   Thirdly, a significant problem
+can arise if the automorphisms involved don't match.   Consider for
+instance the product
+
+\Centerline{$\psi=\cycleii{a}{\pi}{b}\cycleii{a}{\phi}{b}$.}
+
+\noindent Then we have $\psi d=\pi^{-1}\phi d$ if $d\Bsubseteq a$,
+$\pi\phi^{-1}d$ if $d\Bsubseteq b$;  $\psi$ is not necessarily
+expressible as a product of `disjoint' cycles.   Clearly there are
+indefinitely complex variations possible on this theme.   A possible
+formal expression of a sufficient condition to avoid these difficulties
+is the following.   Restrict yourself to calculations involving a fixed
+list $a_1,\ldots,a_n$ of disjoint elements of $\frak A$ for which you
+can describe a family of isomorphisms $\phi_{ij}:\frak A_{a_i}\to\frak
+A_{a_j}$ such that $\phi_{ii}$ is always the identity on $\frak
+A_{a_i}$, $\phi_{jk}\phi_{ij}=\phi_{ik}$ for all $i$, $j$, $k$, and
+whenever $a_i\,_{\pi}\,a_j$ appears in a cycle of the calculation, then
+$\pi$ agrees with $\phi_{ij}$ on $\frak A_{a_i}$.   Of course this would
+be intolerably unwieldy if it were really necessary to exhibit all the
+$\phi_{ij}$ every time.   I believe however that it is usually easy
+enough to form a mental picture of the actions of the isomorphisms
+involved sufficiently clear to offer confidence that such $\phi_{ij}$
+are indeed present;  and in cases of doubt, then {\it after} performing
+the formal operations it is always straightforward to check that the
+calculations are valid, by looking at the actions of the automorphisms
+on each relevant principal ideal.
+}%end of comment
+
+\exercises{\leader{381X}{Basic exercises (a)}
+%\spheader 381Xa %3{8}1Xa
+Let $X$ be a set and $\Sigma$ an algebra of
+subsets of $X$ containing all singleton sets.   Show that $\Aut\Sigma$
+can be identified with the group of permutations $f:X\to X$ such that
+$f[E]$ and $f^{-1}[E]$ belong to $\Sigma$ for every $E\in\Sigma$.
+%381A
+
+\spheader 381Xb Let $\frak A$ and $\frak B$ be Boolean algebras, and
+$\langle a_i\rangle_{i\in I}$, $\langle b_i\rangle_{i\in I}$ partitions
+of unity in $\frak A$, $\frak B$ respectively.   Assume
+{\it either} that $I$ is finite {\it or} that $I$ is countable and
+$\frak B$ is Dedekind $\sigma$-complete {\it or} that $\frak B$ is
+Dedekind complete.   Suppose that for each $i\in I$ we have a Boolean
+homomorphism $\pi_i:\frak A_{a_i}\to\frak B_{b_i}$.   (i) Show that
+there is a Boolean homomorphism $\pi:\frak A\to\frak B$ extending every
+$\pi_i$.   (ii) Show that $\pi$ is injective iff every $\pi_i$ is.
+(iii) Show that if {\it either} $I$ is finite {\it or} $I$ is countable
+and $\frak A$ is Dedekind $\sigma$-complete {\it or} $\frak A$ is
+Dedekind complete, then
+$\pi$ is surjective iff every $\pi_i$ is.    (iv) Show that
+$\pi$ is order-continuous, or sequentially order-continuous,
+iff every $\pi_i$ is.
+%381C
+
+\spheader 381Xc Let $\frak A$ be a Boolean algebra.   Show that if
+$\pi\in\Aut\frak A$ and $k\in\Bbb Z\setminus\{0\}$, then $\pi$ is
+aperiodic iff $\pi^k$ is.
+%381H
+
+\spheader 381Xd %3{8}5Xb
+In 381H, show that the family
+$\langle c_i\rangle_{1\le i\le\omega}$ is uniquely determined.
+%381H
+
+\sqheader 381Xe Let $(X,\Sigma,\mu)$ be a countably separated measure
+space (definition:  343D), $\frak A$ its measure algebra, $f:X\to X$
+an \imp\ function and $\pi:\frak A\to\frak A$ the induced homomorphism
+(343A).   (i) Show that the support of $\pi$ is
+$\{x:x\in X$, $f(x)\ne x\}^{\ssbullet}$.    (ii) Show that $\pi$ is
+periodic, with period $n\ge 1$, iff $\mu X>0$,
+$f^n(x)=x$ for almost every $x$ and
+$\{x:f^i(x)=x\}$ is negligible for $1\le i<n$.
+%381H
+
+\spheader 381Xf %3{8}7
+Let $(X,\Sigma,\mu)$ be a localizable measure space,
+with measure algebra $(\frak A,\bar\mu)$.   Suppose that $\pi$ and
+$\phi$ are automorphisms of $\frak A$, and that $\pi$ is represented
+by a measure space automorphism $f:X\to X$.   Show that the
+following are equiveridical:  (i) $\phi$ belongs to the full subgroup of
+$\Aut\frak A$ generated by $\pi$;  (ii) there is a function $g:X\to X$,
+representing $\phi$, such that $g(x)\in\{f^n(x):n\in\Bbb Z\}$ for every
+$x\in X$.   \Hint{for (ii)$\Rightarrow$(i), consider measurable
+envelopes of sets $F\cap g[A_n]$, where $A_n=\{x:g(x)=f^n(x)\}$ and
+$\mu F<\infty$.}
+%381I mt38bits
+
+\spheader 381Xg %3{8}5Xa
+Let $\frak A$ be a Boolean algebra,
+not $\{0\}$, and $\pi:\frak A\to\frak A$ an automorphism with
+fixed-point subalgebra $\frak C$.   Show that
+$\pi$ is periodic, with period $n\ge 1$, iff $\pi\restrp\frak A_c$ has
+order $n$ in the group $\Aut\frak A_c$ whenever
+$c\in\frak C\setminus\{0\}$.
+Show that $\pi$ is aperiodic iff $\pi\restrp\frak A_c$
+has infinite order in the group $\Aut\frak A_c$ whenever
+$c\in\frak C\setminus\{0\}$.
+%381L
+
+\spheader 381Xh\dvAnew{2009}
+Let $\frak A$ be a Dedekind complete Boolean algebra,
+$G$ a subgroup of $\Aut\frak A$ and $\phi\in\Aut\frak A$.   Show that
+$\phi$ belongs to the full subgroup of $\Aut\frak A$ generated by $G$ iff
+$\inf_{\pi\in G}\supp(\pi\phi)=0$.
+%381I
+
+\spheader 381Xi Let $\frak A$ be a Boolean algebra.   Let us say that a
+subgroup $G$ of $\Aut\frak A$ is {\bf finitely full} if whenever
+$\langle a_i\rangle_{i\in I}$ is a finite partition of
+unity in $\frak A$, $\langle\pi_i\rangle_{i\in I}$ is a family in
+$G$, and $\pi\in\Aut\frak A$ is such that $\pi a=\pi_ia_i$ whenever
+$i\in I$ and $a\Bsubseteq a_i$, then $\pi\in G$.   Show that if $\pi$,
+$\phi\in\Aut\frak A$ then $\phi$ belongs to the finitely full subgroup
+of $\Aut\frak A$ generated by $\pi$ iff there are an $n\in\Bbb N$ and a
+partition of unity $\langle a_i\rangle_{-n\le i\le n}$ in $\frak A$ such
+that $\phi d=\pi^id$ whenever $|i|\le n$ and $d\Bsubseteq a_i$.
+%381I
+
+\spheader 381Xj Let $\frak A$ be a Boolean algebra and
+$\pi:\frak A\to\frak A$ a Boolean homomorphism which is recurrent on
+$a\in\frak A$.   Show that for any non-zero $b\Bsubseteq a$ and any
+$n\in\Bbb N$ there is a $k\ge n$ such that $a\Bcap\pi^kb\ne 0$.
+%381L
+
+\spheader 381Xk Let $\frak A$ be a Boolean algebra,
+$\pi:\frak A\to\frak A$ a Boolean homomorphism, and $a\in\frak A$.
+Show that the following are equiveridical:  (i) $\pi$ is recurrent on
+every $b\Bsubseteq a$;
+(ii) for every non-zero $b\Bsubseteq a$ there is an $n\ge 1$ such that
+$b\Bcap\pi^nb\ne 0$;  (iii) $b=\sup_{n\ge 1}b\Bcap\pi^nb$ for every
+$b\Bsubseteq a$.
+%381L
+
+\sqheader 381Xl Let $(X,\Sigma,\mu)$ be a measure space, $\frak A$ its
+measure algebra, $f:X\to X$ a measure space automorphism, and
+$\pi$ the corresponding automorphism of $\frak A$.   (i) Show that if
+$E\in\Sigma$ then $\pi$ is doubly recurrent on $a=E^{\ssbullet}$ iff
+$E\setminus\bigcup_{n\ge 1}f^{-n}[E]$ and
+$E\setminus\bigcup_{n\ge 1}f^n[E]$ are negligible.   (ii) Show that in
+this case there is a measurable $F\subseteq E$ such that $E\setminus F$
+is negligible and $\{n:n\in\Bbb Z$, $f^n(x)\in F\}$ is unbounded above
+and below in $\Bbb Z$ for every $x\in F$.   (iii) For $x\in F$ let
+$k(x)=\min\{n:n\ge 1$, $f^n(x)\in F\}$.   Show that
+$x\mapsto f^{k(x)}(x):F\to F$ represents the induced automorphism
+$\pi_a$ on the principal ideal $\frak A_a$.
+%381M
+
+\spheader 381Xm For a Boolean algebra $\frak A$, a Boolean homomorphism
+$\pi:\frak A\to\frak A$ is {\bf nowhere aperiodic} if
+$\inf\{a:a\in\frak A$, $a$ supports $\pi^n$ for some $n\ge 1\}=0$.
+Show that if $\frak A$ is Dedekind $\sigma$-complete and
+$\pi\in\Aut\frak A$ is nowhere aperiodic and doubly recurrent on
+$a\in\frak A$, then the induced automorphism $\pi_a$ is nowhere
+aperiodic.
+%381N
+
+\spheader 381Xn Let $\frak A$ be a Dedekind $\sigma$-complete Boolean
+algebra, $\pi\in\Aut\frak A$ an automorphism and $\frak C$ the
+fixed-point subalgebra of $\pi$.   Suppose that $\pi$ is doubly
+recurrent on $a\in\frak A$ and that $\pi_a$ is the induced automorphism
+on $\frak A_a$.   Show that the fixed-point subalgebra of $\pi_a$ is
+$\{c\Bcap a:c\in\frak C\}$, so that if $\pi$ is ergodic, so is
+$\pi_a$.
+%381N
+
+\spheader 381Xo Let $\frak A$ be a Boolean algebra with Stone space $Z$,
+and $\pi:\frak A\to\frak A$ a Boolean homomorphism corresponding to
+$f:Z\to Z$.   (i) Show that $\pi$ is periodic, with period $n\ge 1$, iff
+$Z\ne\emptyset$,
+$f^n(z)=z$ for every $z\in Z$ and $\{z:f^i(z)=z\}$ is nowhere dense
+whenever $1\le i<n$.   (ii) Show that $\pi$ is aperiodic iff
+$\{z:f^n(z)=z$, $f^n(w)\ne z$ for every $w\ne z\}$ is nowhere dense for
+every $n\ge 1$.
+%381Q
+
+\spheader 381Xp Let $\frak A$ be a Dedekind $\sigma$-complete Boolean
+algebra, $G$ a subgroup of $\Aut\frak A$ and
+$G^*$ the countably full subgroup
+of $\Aut\frak A$ generated by $G$.   Suppose that every member of $G$ has a
+support.   Show that every member of $G^*$ has a support.
+%381I out of order query
+
+\leader{381Y}{Further exercises (a)}
+%\spheader 381Ya %3{8}5Ya
+(i) Give an example to show that the word `injective' in
+the statement of 381H is essential.   (ii) Give an example to show that, in
+381H, we can have $\pi c_{\omega}\ne c_{\omega}$.
+%381H
+
+\spheader 381Yb %3{8}7Ya
+Let $\frak A$ be a Dedekind complete Boolean algebra and
+$G$ a semigroup of order-continuous Boolean homomorphisms from $\frak A$
+to itself.   Let us say that $G$ is {\bf full} if whenever
+$\phi:\frak A\to\frak A$ is an order-continuous Boolean homomorphism,
+and there is a
+partition of unity $\langle a_i\rangle_{i\in I}$ in $\frak A$ such that
+for every $i\in I$ there is a $\pi_i\in G$ such that $\phi a=\pi_i a$
+for every $a\Bsubseteq a_i$, then $\phi\in G$.   Show that if $\phi$ and
+$\pi$ are order-continuous Boolean homomorphisms from $\frak A$ to
+itself, then the following are equiveridical:  (i) $\phi$ belongs to the
+full semigroup generated by $\pi$;  (ii) for every non-zero
+$a\in\frak A$ there are a non-zero $b\Bsubseteq a$ and an $n\in\Bbb N$
+such that
+$\phi d=\pi^nd$ for every $d\Bsubseteq b$;  (iii) there is a partition
+of unity $\langle a_n\rangle_{n\in\Bbb N}$ in $\frak A$ such that
+$\phi a=\pi^na$ whenever $n\in\Bbb N$ and $a\Bsubseteq a_n$.
+%381I
+
+\spheader 381Yc Give an example of a Dedekind $\sigma$-complete Boolean
+algebra $\Aut\frak A$ and an automorphism $\pi$ of $\frak A$ such
+that the countably full subgroup generated by $\pi$ is not full.
+% \frak A=\Bbb Z\times\omega_1, countable-cocountable algebra
+%381I
+
+\spheader 381Yd Let $\frak A$ be a Dedekind complete Boolean algebra,
+and let $G$ be the countably full subgroup of $\Aut\frak A$ generated by
+a subset $A$ of $\Aut\frak A$.   Show that if {\it either} $A$ is
+countable {\it or} $\frak A$ is ccc, then $G$ is full.
+%381I
+}%end of exercises
+
+\endnotes{
+\Notesheader{381} There are no long individual proofs in this section,
+and in so far as there is any delicacy in the arguments it is as often
+as not because (as in 381E) I am taking facts which are easy to prove
+for automorphisms of Dedekind complete algebras and separating out the
+parts which happen to be true in greater generality.   However the parts
+are numerous enough for the sum to be not entirely predictable.   The
+most important ideas are surely in 381M-381N.
+
+In 381Q I give indications, including the minimum necessary for an
+application in the next section, of how to express the concepts here in
+terms of continuous functions on Stone spaces.   When we come, in \S383
+and onwards, to look specifically at measure algebras, many of our
+homomorphisms will be derived from \imp\ functions, and the results will
+be more effective if we can display them in terms of functions on
+measure spaces.   Some appropriate translations are in
+381Xe-381Xl.  %381Xe 381Xf 381Xl
+But these I will avoid in the proofs of the main theorems because not
+all automorphisms of measure algebras can be represented by
+automorphisms of the measure spaces we start from (343Jc).   Of course
+Lebesgue measure is different, in ways explored in \S344, and classical
+ergodic theory has not needed to make a clear distinction here.   One of
+my purposes in this volume is to set out a framework in which
+transformations of measure {\it spaces} take their proper place as an
+inspiration for the theory rather than a foundation.
+}%end of notes
+
+\discrpage
+

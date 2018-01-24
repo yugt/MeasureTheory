@@ -1,0 +1,1238 @@
+\frfilename{mt253.tex}
+\versiondate{18.4.08}
+
+\def\chaptername{Product measures}
+\def\sectionname{Tensor products}
+
+\newsection{253}
+
+The theorems of the last section show that the integrable functions on a
+product of two measure spaces can be effectively studied in terms of
+integration on each factor space separately.   In this section I present
+a very striking relationship between the $L^1$ space of a product
+measure and the $L^1$ spaces of its factors, which actually determines
+the product $L^1$ up to isomorphism as Banach lattice.   I start with a
+brief note on bilinear operators (253A) and a description of the canonical
+bilinear operator from $L^1(\mu)\times L^1(\nu)$ to $L^1(\mu\times\nu)$
+(253B-253E).   The main theorem of the section is 253F, showing that
+this canonical map is universal for continuous bilinear operators from
+$L^1(\mu)\times L^1(\nu)$ to Banach spaces;  it also determines the
+ordering of $L^1(\mu\times\nu)$ (253G).   I end with a description of a
+fundamental type of conditional expectation operator (253H) and notes
+on products of indefinite-integral measures (253I) and upper integrals
+of special kinds of function (253J, 253K).
+
+\leader{253A}{Bilinear operators}\cmmnt{ Before looking at any of the
+measure theory in this section, I introduce a concept from the theory of
+linear spaces.
+
+\medskip
+
+} {\bf (a)} Let $U$, $V$ and $W$ be linear spaces over
+$\Bbb  R$\cmmnt{ (or, indeed, any field)}.   A map
+$\phi:U\times V\to W$ is {\bf bilinear} if it is linear in each variable
+separately, that is,
+
+\Centerline{$\phi(u_1+u_2,v)=\phi(u_1,v)+\phi(u_2,v)$,}
+
+\Centerline{$\phi(u,v_1+v_2)=\phi(u,v_1)+\phi(u,v_2)$,}
+
+\Centerline{$\phi(\alpha u,v)=\alpha\phi(u,v)=\phi(u,\alpha v)$}
+
+\noindent for all $u$, $u_1$, $u_2\in U$, $v$, $v_1$, $v_2\in V$ and
+scalars $\alpha$.   Observe that such a $\phi$ gives rise to, and in
+turn can be defined by, a linear operator
+$T:U\to\eurm L(V;W)$\cmmnt{, writing
+$\eurm L(V;W)$ for the space of linear operators from $V$ to $W$}, where
+
+\Centerline{$(Tu)(v)=\phi(u,v)$}
+
+\noindent for all $u\in U$, $v\in V$.  \cmmnt{Hence, or otherwise, we
+can see, for instance, that} $\phi(0,v)=\phi(u,0)=0$ whenever $u\in U$ and
+$v\in V$.
+
+If $W'$ is another linear space\cmmnt{ over the same field,} and
+$S:W\to W'$ is a linear operator, then $S\phi:U\times V\to W'$ is
+bilinear.
+
+\spheader 253Ab Now suppose that $U$, $V$ and $W$ are
+normed spaces, and $\phi:U\times V\to W$ a bilinear operator.
+\cmmnt{Then we
+say that} $\phi$ is {\bf bounded} if
+$\sup\{\|\phi(u,v)\|:\|u\|\le 1,\,\|v\|\le 1\}$ is finite, and in this
+case we call this supremum the
+norm $\|\phi\|$ of $\phi$.    \cmmnt{Note that}
+$\|\phi(u,v)\|\le\|\phi\|\|u\|\|v\|$ for all $u\in U$, $v\in
+V$\prooflet{ (because
+
+\Centerline{$\|\phi(u,v)\|=\alpha\beta\|\phi(\alpha^{-1}u,\beta^{-1}v)\|
+\le\alpha\beta\|\phi\|$}
+
+\noindent whenever $\alpha>\|u\|$, $\beta>\|v\|$)}.
+
+If $W'$ is another normed space and $S:W\to W'$ is a bounded linear
+operator, then $S\phi:U\times V\to W'$ is a bounded bilinear operator,
+and $\|S\phi\|\le\|S\|\|\phi\|$.
+
+\leader{253B}{Definition}\cmmnt{ The most important bilinear operators of
+this section are based on the following idea.}   Let $f$ and $g$ be
+real-valued functions.   I will write $f\otimes g$ for the function
+$(x,y)\mapsto f(x)g(y):\dom f\times\dom g\to\Bbb R$.
+
+\leader{253C}{Proposition}
+(a) Let $X$ and $Y$ be sets, and $\Sigma$, $\Tau\,\,\sigma$-algebras of
+subsets of $X$, $Y$ respectively.   If $f$ is a $\Sigma$-measurable
+real-valued function defined on a subset of $X$, and $g$ is a
+$\Tau$-measurable real-valued function defined on a subset of $Y$, then
+$f\otimes g$\cmmnt{, as defined in 253B,} is
+$\Sigma\tensorhat\Tau$-measurable.
+
+(b) Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be measure spaces, and
+$\lambda$ the c.l.d.\ product measure on $X\times Y$.  If
+$f\in\eusm L^0(\mu)$ and $g\in\eusm L^0(\nu)$, then
+$f\otimes g\in\eusm L^0(\lambda)$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Recall from 241A that $\eusm L^0(\mu)$ is the
+space of $\mu$-virtually measurable real-valued functions defined
+on $\mu$-conegligible subsets of $X$.}
+
+\proof{{\bf (a)} The point is that $f\otimes\chi Y$ is
+$\Sigma\tensorhat\Tau$-measurable, because for any $\alpha\in\Bbb R$
+there is an $E\in\Sigma$ such that
+
+\Centerline{$\{x:f(x)\ge\alpha\}=E\cap\dom f$,}
+
+\noindent so that
+
+\Centerline{$\{(x,y):(f\otimes\chi Y)(x,y)\ge\alpha\}
+=(E\cap\dom f)\times Y=(E\times Y)\cap\dom(f\otimes\chi Y)$,}
+
+\noindent and of course $E\times Y\in\Sigma\tensorhat\Tau$.   Similarly,
+$\chi X\otimes g$ is $\Sigma\tensorhat\Tau$-measurable and
+$f\otimes g=(f\otimes\chi Y)\times(\chi X\otimes g)$ is
+$\Sigma\tensorhat\Tau$-measurable.
+
+\medskip
+
+{\bf (b)} Let $E\in\Sigma$, $F\in\Tau$ be conegligible subsets of $X$,
+$Y$ respectively such that $E\subseteq\dom f$, $F\subseteq\dom g$,
+$f\restr E$ is $\Sigma$-measurable and $g\restr F$ is $\Tau$-measurable.
+Write $\Lambda$ for the domain of $\lambda$.   Then
+$\Sigma\tensorhat\Tau\subseteq\Lambda$ (251Ia).   Also $E\times F$ is
+$\lambda$-conegligible, because
+
+$$\eqalign{\lambda((X\times Y)\setminus(E\times F))
+&\le\lambda((X\setminus E)\times Y)+\lambda(X\times(Y\setminus F))\cr
+&=\mu(X\setminus E)\cdot\nu Y+\mu X\cdot\nu(Y\setminus F)
+=0\cr}$$
+
+\noindent (also from 251Ia).   So $\dom(f\otimes g)\supseteq E\times F$
+is conegligible.   Also, by (a),
+$(f\otimes g)\restr(E\times F)
+=(f\restr E)\otimes(g\restr F)$ is $\Sigma\tensorhat\Tau$-measurable,
+therefore $\Lambda$-measurable, and $f\otimes g$ is virtually
+measurable.   Thus $f\otimes g\in\eusm L^0(\lambda)$, as claimed.
+}%end of proof of 253C
+
+\leader{253D}{}\cmmnt{ Now we can apply the ideas of 253B-253C to
+integrable functions.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ and
+$(Y,\Tau,\nu)$ be measure spaces, and write $\lambda$ for the c.l.d.\
+product measure on $X\times Y$.   If $f\in\eusm L^1(\mu)$ and
+$g\in\eusm L^1(\nu)$, then $f\otimes g\in\eusm L^1(\lambda)$ and
+$\int f\otimes g\,d\lambda=\int f\,d\mu\int g\,d\nu$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} I follow \S242 in writing $\eusm L^1(\mu)$ for
+the space of $\mu$-integrable real-valued functions.
+}
+
+\proof{{\bf (a)} Consider first the
+case $f=\chi E$, $g=\chi F$ where $E\in\Sigma$, $F\in\Tau$ have finite
+measure;  then $f\otimes g=\chi(E\times F)$ is $\lambda$-integrable with
+integral
+
+\Centerline{$\lambda(E\times F)=\mu E\cdot\nu F
+=\int f\,d\mu\cdot\int g\,d\nu$,}
+
+\noindent by 251Ia.
+
+\medskip
+
+{\bf (b)}  It follows at once that $f\otimes g$ is $\lambda$-simple,
+with $\int f\otimes g\,d\lambda=\int f\,d\mu\int g\,d\nu$, whenever $f$
+is a $\mu$-simple function and $g$ is a $\nu$-simple function.
+
+\medskip
+
+{\bf (c)} If $f$ and $g$ are non-negative integrable functions, there
+are non-decreasing sequences $\sequencen{f_n}$, $\sequencen{g_n}$ of
+non-negative simple
+functions converging almost everywhere to $f$, $g$ respectively;   now
+note that if $E\subseteq X$, $F\subseteq Y$ are conegligible, $E\times
+F$ is conegligible in $X\times Y$, as remarked in the proof of 253C, so
+the non-decreasing sequence $\sequencen{f_n\times g_n}$ of
+$\lambda$-simple functions converges almost everywhere to $f\otimes g$,
+and
+
+\Centerline{$\int f\otimes g\,d\lambda
+=\lim_{n\to\infty}\int f_n\otimes g_nd\lambda
+=\lim_{n\to\infty}\int f_nd\mu\int g_nd\nu
+=\int f\,d\mu\int g\,d\nu$}
+
+\noindent by B.Levi's theorem.
+
+\medskip
+
+{\bf (d)} Finally, for general $f$ and $g$, we can express them as
+the differences $f^+-f^-$, $g^+-g^-$ of non-negative integrable
+functions, and see that
+
+\Centerline{$\int f\otimes g\,d\lambda
+=\int f^+\otimes g^+-f^+\otimes g^--f^-\otimes g^+
++f^-\otimes g^-d\lambda
+=\int f\,d\mu\int g\,d\nu.$}
+}%end of proof of 253D
+
+\leader{253E}{The canonical map $L^1\times L^1\to L^1$}\cmmnt{ I
+continue the argument from 253D.   Because $E\times F$ is conegligible
+in $X\times Y$ whenever $E$ and $F$ are
+conegligible subsets of $X$ and $Y$,
+$f_1\otimes g_1=f\otimes g\,\,\lambda$-a.e. whenever $f=f_1\,\,\mu$-a.e.
+and $g=g_1\,\,\nu$-a.e.}   We may\cmmnt{ therefore} define
+$u\otimes v\in L^1(\lambda)$, for $u\in L^1(\mu)$ and $v\in L^1(\nu)$,
+by saying that
+$u\otimes v=(f\otimes g)^{\ssbullet}$ whenever $u=f^{\ssbullet}$ and
+$v=g^{\ssbullet}$.   \dvro{The}{
+
+Now if $f$, $f_1$, $f_2\in\eusm L^1(\mu)$, $g$, $g_1$,
+$g_2\in\eusm L^1(\nu)$ and $a\in\Bbb R$,
+
+\Centerline{$(f_1+f_2)\otimes g=(f_1\otimes g)+(f_2\otimes g)$,}
+
+\Centerline{$f\otimes(g_1+g_2)=(f\otimes g_1)+(f\otimes g_2)$,}
+
+\Centerline{$(af)\otimes g=a(f\otimes g)=f\otimes(ag)$.}
+
+\noindent It follows at once that the} map $(u,v)\mapsto u\otimes v$ is
+bilinear.
+
+\cmmnt{Moreover, if $f\in\eusm L^1(\mu)$ and $g\in\eusm L^1(\nu)$,
+$|f|\otimes|g|=|f\otimes g|$, so
+$\int|f\otimes g|d\lambda=\int|f|d\mu\int|g|d\nu$.   Accordingly}
+
+\Centerline{$\|u\otimes v\|_1=\|u\|_1\|v\|_1$}
+
+\noindent for all $u\in L^1(\mu)$, $v\in L^1(\nu)$.   In particular, the
+bilinear operator $\otimes$ is bounded, with norm $1$ (except in the trivial
+case in which one of $L^1(\mu)$, $L^1(\nu)$ is $0$-dimensional).
+
+\leader{253F}{}\cmmnt{ We are now ready for the main theorem of this
+section.
+
+\medskip
+
+\noindent}{\bf Theorem}
+Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be measure spaces, and let
+$\lambda$ be the c.l.d.\ product measure on $X\times Y$.   Let $W$ be
+any Banach space and $\phi:L^1(\mu)\times L^1(\nu)\to W$ a bounded bilinear
+operator.   Then there is a unique bounded linear operator
+$T:L^1(\lambda)\to W$ such that $T(u\otimes v)=\phi(u,v)$ for all
+$u\in L^1(\mu)$ and $v\in L^1(\nu)$, and $\|T\|=\|\phi\|$.
+
+\proof{{\bf (a)} The centre of the argument is the following
+fact:   if $E_0,\ldots,E_n$ are measurable sets of finite measure in
+$X$, $F_0,\ldots,F_n$ are measurable sets of finite measure in $Y$,
+$a_0,\ldots,a_n\in\Bbb R$ and
+$\sum_{i=0}^na_i\chi(E_i\times F_i)=0\,\,\lambda$-a.e., then
+$\sum_{i=0}^na_i\phi(\chi E_i^{\ssbullet},\chi F_i^{\ssbullet})=0$ in $W$.
+\Prf\ We
+can find a disjoint family $\langle G_j\rangle_{j\le m}$ of measurable
+sets of finite measure in $X$ such that each $E_i$ is expressible as a
+union of some subfamily of the $G_j$;  so that $\chi E_i$ is
+expressible in the form $\sum_{j=0}^mb_{ij}\chi G_j$ (see 122Ca).
+Similarly, we
+can find a disjoint family $\langle H_k\rangle_{k\le l}$ of measurable
+sets of finite measure in $Y$ such that each $\chi F_i$ is expressible
+as $\sum_{k=0}^lc_{ik}\chi H_k$.   Now
+
+\Centerline{$\sum_{j=0}^m\sum_{k=0}^l
+\bigl(\sum_{i=0}^na_ib_{ij}c_{ik}\bigr)
+\chi(G_j\times H_k)
+=\sum_{i=0}^na_i\chi(E_i\times F_i)=0\,\,\lambda\text{-a.e.}$}
+
+\noindent Because the $G_j\times H_k$ are disjoint, and
+$\lambda(G_j\times H_k)=\mu G_j\cdot\nu H_k$ for all $j$, $k$, it
+follows that for
+every $j\le m$, $k\le l$ we have either $\mu G_j=0$ or $\nu H_k=0$ or
+$\sum_{i=0}^na_ib_{ij}c_{ik}=0$.   In any of these three cases,
+$\sum_{i=0}^na_ib_{ij}c_{ik}\phi(\chi G_j^{\ssbullet},\chi
+H_k^{\ssbullet})=0$ in $W$.   But this means that
+
+\Centerline{$0=\sum_{j=0}^m\sum_{k=0}^l
+\bigl(\sum_{i=0}^na_ib_{ij}c_{ik}\bigr)
+\phi(\chi G_j^{\ssbullet},\chi H_k^{\ssbullet})
+=\sum_{i=0}^na_i\phi(\chi E_i^{\ssbullet},\chi F_i^{\ssbullet}),$}
+
+\noindent as claimed.\ \Qed
+
+\medskip
+
+{\bf (b)} It follows that if  $E_0,\ldots,E_n$, $E'_0,\ldots,E'_m$  are
+measurable sets of finite measure in $X$, $F_0,\ldots,F_n$,
+$F'_0,\ldots,F'_m$ are measurable sets of finite measure in $Y$,
+$a_0,\ldots,a_n,a'_0,\ldots,a'_m\in\Bbb R$ and
+$\sum_{i=0}^na_i\chi(E_i\times F_i)=\sum_{i=0}^ma'_i\chi(E'_i\times
+F'_i)\,\,\lambda$-a.e., then
+
+\Centerline{$\sum_{i=0}^na_i\phi(\chi
+E_i^{\ssbullet},\chi F_i^{\ssbullet})=\sum_{i=0}^ma'_i\phi(\chi
+{E'_i}^{\ssbullet},\chi {F'_i}^{\ssbullet})$}
+
+\noindent in $W$.   Let $M$ be the linear
+subspace of $L^1(\lambda)$ generated by
+
+\Centerline{$\{\chi(E\times F)^{\ssbullet}:E\in\Sigma,\,\mu E<\infty,\,
+  F\in\Tau,\,\nu F<\infty\};$}
+
+\noindent then we have a unique map $T_0:M\to W$ such that
+
+\Centerline{$T_0(\sum_{i=0}^na_i\chi(E_i\times F_i)^{\ssbullet})
+=\sum_{i=0}^na_i\phi(\chi E_i^{\ssbullet},\chi F_i^{\ssbullet})$}
+
+\noindent whenever $E_0,\ldots,E_n$  are measurable sets of finite
+measure in $X$, $F_0,\ldots,F_n$ are measurable sets of finite measure
+in $Y$ and $a_0,\ldots,a_n\in\Bbb R$.   Of course $T_0$ is linear.
+
+\medskip
+
+{\bf (c)} Some of the same calculations show that
+$\|T_0u\|\le\|\phi\|\|u\|_1$ for every $u\in M$.   \Prf\ If $u\in M$,
+then, by the arguments of (a), we can express $u$ as
+$\sum_{j=0}^m\sum_{k=0}^la_{jk}\chi(G_j\times
+H_k)^{\ssbullet}$, where $\langle G_j\rangle_{j\le m}$ and $\langle
+H_k\rangle_{k\le l}$ are disjoint families of sets of finite measure.
+Now
+
+$$\eqalign{\|T_0u\|
+&=\|\sum_{j=0}^m\sum_{k=0}^la_{jk}\phi(\chi G_j^{\ssbullet},\chi
+  H_k^{\ssbullet})\|
+\le\sum_{j=0}^m\sum_{k=0}^l|a_{jk}|\|\phi(\chi G_j^{\ssbullet},\chi
+  H_k^{\ssbullet})\|\cr
+&\le\sum_{j=0}^m\sum_{k=0}^l|a_{jk}|\|\phi\|\|\chi
+  G_j^{\ssbullet}\|_1\|\chi H_k^{\ssbullet}\|_1
+=\|\phi\|\sum_{j=0}^m\sum_{k=0}^l|a_{jk}|\mu G_j\cdot\nu H_k\cr
+&=\|\phi\|\sum_{j=0}^m\sum_{k=0}^l|a_{jk}|\lambda(G_j\times H_k)
+=\|\phi\|\|u\|_1,\cr}$$
+
+\noindent as claimed.\ \Qed
+
+\medskip
+
+{\bf (d)} The next point is to observe that $M$ is dense in
+$L^1(\lambda)$ for $\|\,\|_1$.   \Prf\ Repeating the ideas above once
+again, we observe that if $E_0,\ldots,E_n$ are sets of finite measure in
+$X$ and $F_0,\ldots,F_n$ are sets of finite measure in $Y$, then
+$\chi(\bigcup_{i\le n}E_i\times F_i)^{\ssbullet}\in M$;  this is
+because,
+expressing each $E_i$ as a union of $G_j$, where the $G_j$ are disjoint,
+we have
+
+\Centerline{$\bigcup_{i\le n}E_i\times F_i=\bigcup_{j\le m}G_j\times
+F'_j,$}
+
+\noindent where $F'_j=\bigcup\{F_i:G_j\subseteq E_i\}$ for each $j$;
+now $\langle G_j\times F'_j\rangle_{j\le m}$ is disjoint, so
+
+\Centerline{$\chi(\bigcup_{j\le m}G_j\times F_j)^{\ssbullet}
+=\sum_{j=0}^m\chi(G_j\times F'_j)^{\ssbullet}\in M.$}
+
+\noindent So 251Ie tells us that whenever $\lambda H<\infty$ and
+$\epsilon>0$ there is a $G$ such that $\lambda(H\symmdiff G)\le\epsilon$
+and $\chi G^{\ssbullet}\in M$;  now
+
+\Centerline{$\|\chi H^{\ssbullet}-\chi
+G^{\ssbullet}\|_1=\lambda(G\symmdiff H)\le\epsilon$,}
+
+\noindent so $\chi H^{\ssbullet}$
+is approximated arbitrarily closely by members of $M$, and belongs to
+the closure $\overline{M}$ of $M$ in $L^1(\lambda)$.   Because $M$ is a
+linear subspace of $L^1(\lambda)$, so is $\overline{M}$ (2A4Cb);
+accordingly $\overline{M}$ contains the equivalence classes of all
+$\lambda$-simple functions;  but these are dense in $L^1(\lambda)$
+(242Mb), so $\overline{M}=L^1(\lambda)$, as claimed.\ \Qed
+
+\medskip
+
+{\bf (e)} Because $W$ is a Banach space, it follows that there is a
+bounded linear operator $T:L^1(\lambda)\to W$ extending $T_0$, with
+$\|T\|=\|T_0\|\le\|\phi\|$ (2A4I).    Now $T(u\otimes v)=\phi(u,v)$ for
+all $u\in L^1(\mu)$, $v\in L^1(\nu)$.   \Prf\ If $u=\chi E^{\ssbullet}$ and
+$v=\chi F^{\ssbullet}$, where $E$, $F$ are measurable sets of finite
+measure, then
+
+\Centerline{$T(u\otimes v)=T(\chi(E\times F)^{\ssbullet})
+=T_0(\chi(E\times F)^{\ssbullet})
+=\phi(\chi E^{\ssbullet},\chi F^{\ssbullet})=\phi(u,v).$}
+
+\noindent Because $\phi$ and $\otimes$ are bilinear and $T$ is linear,
+
+\Centerline{$T(f^{\ssbullet}\otimes g^{\ssbullet})
+=\phi(f^{\ssbullet},g^{\ssbullet})$}
+
+\noindent whenever $f$ and $g$ are simple functions.   Now whenever
+$u\in L^1(\mu)$, $v\in L^1(\nu)$ and $\epsilon>0$, there are simple
+functions $f$, $g$ such that $\|u-f^{\ssbullet}\|_1\le\epsilon$,
+$\|v-g^{\ssbullet}\|_1\le\epsilon$ (242Mb again);  so that
+
+$$\eqalign{\|\phi(u,v)-\phi(f^{\ssbullet},g^{\ssbullet})\|
+&\le\|\phi(u-f^{\ssbullet},v-g^{\ssbullet})\|
++\|\phi(u,g^{\ssbullet}-v)\|
++\|\phi(f^{\ssbullet}-u,v)\|\cr
+&\le\|\phi\|(\epsilon^2+\epsilon\|u\|_1+\epsilon\|v\|_1).}$$
+
+\noindent Similarly
+
+\Centerline{$\|u\otimes v-f^{\ssbullet}\otimes g^{\ssbullet}\|_1
+\le\epsilon(\epsilon+\|u\|_1+\|v\|_1),$}
+
+\noindent so
+
+\Centerline{$\|T(u\otimes v)-T(f^{\ssbullet}\otimes g^{\ssbullet})\|
+\le\epsilon\|T\|(\epsilon+\|u\|_1+\|v\|_1);$}
+
+\noindent because $T(f^{\ssbullet}\otimes g^{\ssbullet})
+=\phi(f^{\ssbullet},g^{\ssbullet})$,
+
+\Centerline{$\|T(u\otimes v)-\phi(u,v)\|
+\le\epsilon(\|T\|+\|\phi\|)(\epsilon+\|u\|_1
++\|v\|_1).$}
+
+\noindent As $\epsilon$ is arbitrary, $T(u\otimes v)=\phi(u,v)$, as
+required.\ \Qed
+
+\medskip
+
+{\bf (f)} The argument of (e) ensured that $\|T\|\le\|\phi\|$.
+Because $\|u\otimes v\|_1\le\|u\|_1\|v\|_1$ for all $u\in L^1(\mu)$ and
+$v\in L^1(\nu)$, $\|\phi(u,v)\|\le\|T\|\|u\|_1\|v\|_1$ for all $u$, $v$,
+and $\|\phi\|\le\|T\|$;  so $\|T\|=\|\phi\|$.
+
+\medskip
+
+{\bf (g)} Thus $T$ has the required properties.   To see that it is
+unique, we have only to observe that any bounded linear operator
+$S:L^1(\lambda)\to W$ such that $S(u\otimes v)=\phi(u,v)$ for all $u\in
+L^1(\mu)$, $v\in L^1(\nu)$ must agree with $T$ on objects of the form
+$\chi(E\times F)^{\ssbullet}$ where $E$ and $F$ are of finite measure,
+and
+therefore on every member of $M$;  because $M$ is dense and both $S$ and
+$T$ are continuous, they agree everywhere in $L^1(\lambda)$.
+}
+
+\leader{253G}{The order structure of \dvrocolon{$L^1$}}\cmmnt{ In
+253F I have treated the $L^1$ spaces exclusively as
+normed linear spaces.   In general, however, the order structure of an
+$L^1$ space  (see 242C) is as important as its norm.   The map
+$\otimes:L^1(\mu)\times L^1(\nu)\to L^1(\lambda)$ respects the order
+structures of the three spaces in the following strong sense.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+measure spaces, and $\lambda$ the c.l.d.\ product measure on $X\times
+Y$.   Then
+
+(a)  $u\otimes v\ge 0$ in
+$L^1(\lambda)$ whenever $u\ge 0$ in $L^1(\mu)$ and $v\ge 0$ in
+$L^1(\nu)$.
+
+(b) The positive cone $\{w:w\ge 0\}$ of
+$L^1(\lambda)$ is precisely the closed
+convex hull $C$ of $\{u\otimes v:u\ge 0,\,v\ge 0\}$ in $L^1(\lambda)$.
+
+*(c) Let $W$ be any Banach lattice, and $T:L^1(\lambda)\to W$ a
+bounded linear operator.   Then
+the following are equiveridical:
+
+\quad(i) $Tw\ge 0$ in $W$ whenever $w\ge 0$ in
+$L^1(\lambda)$;
+
+\quad(ii) $T(u\otimes v)\ge 0$ in $W$ whenever $u\ge 0$ in
+$L^1(\mu)$ and $v\ge 0$ in $L^1(\nu)$.
+
+\proof{{\bf (a)} If $u$, $v\ge 0$ then they are expressible as
+$f^{\ssbullet}$, $g^{\ssbullet}$ where $f\in\eusm L^1(\mu)$,
+$g\in\eusm L^1(\nu)$, $f\ge 0$ and $g\ge 0$.
+Now $f\otimes g\ge 0$ so $u\otimes v=(f\otimes g)^{\ssbullet}\ge 0$.
+
+\medskip
+
+{\bf (b)(i)} Write $L^1(\lambda)^+$ for $\{w:w\in L^1(\lambda),\,w\ge
+0\}$.   Then $L^1(\lambda)^+$ is a closed convex set in $L^1(\lambda)$
+(242De);  by (a), it contains $u\otimes v$ whenever $u\in L^1(\mu)^+$ and
+$v\in L^1(\nu)^+$, so it must include $C$.
+
+\medskip
+
+\quad{\bf (ii)}($\alpha$)
+Of course $0=0\otimes 0\in C$.  ($\beta$) If $u\in M$, as defined in
+the proof of 253F, and $u>0$, then $u$ is expressible as $\sum_{j\le
+m,k\le l}a_{jk}\chi(G_j\times H_k)^{\ssbullet}$, where $G_0,\ldots,G_m$
+and $H_0,\ldots,H_l$ are disjoint sequences of sets of finite measure,
+as in (a) of the proof of 253F.   Now $a_{jk}$ can be negative only if
+$\chi(G_j\times H_k)^{\ssbullet}=0$, so replacing every $a_{jk}$ by
+$\max(0,a_{jk})$  if necessary, we can suppose that $a_{jk}\ge 0$ for
+all $j$, $k$.     Not all the $a_{jk}$ can be zero, so $a=\sum_{j\le
+m,k\le l}a_{jk}>0$, and
+
+\Centerline{$u
+=\sum_{j\le m,k\le l}
+  \Bover{a_{jk}}a\cdot a\chi(G_j\times H_k)^{\ssbullet}
+=\sum_{j\le m,k\le l}\Bover{a_{jk}}a
+  \cdot(a\chi G_j^{\ssbullet})\otimes\chi H_k^{\ssbullet}
+\in C$.}
+
+\noindent ($\gamma$) If $w\in L^1(\lambda)^+$ and $\epsilon>0$, express
+$w$ as $h^{\ssbullet}$ where $h\ge 0$ in $\eusm L^1(\lambda)$.   There
+is a simple function $h_1\ge 0$ such that $h_1\leae h$ and
+$\int h\le\int h_1+\epsilon$.   Express $h_1$ as
+$\sum_{i=0}^na_i\chi H_i$
+where $\lambda H_i<\infty$ and $a_i\ge 0$ for each $i$, and for each
+$i\le n$ choose sets $G_{i0},\ldots,G_{im_i}\in\Sigma$,
+$F_{i0},\ldots,F_{im_i}\in\Tau$, all of finite measure, such that
+$G_{i0},\ldots,G_{im_i}$ are disjoint and
+$\lambda(H_i\symmdiff\bigcup_{j\le m_i}G_{ij}\times
+F_{ij})\le\epsilon/(n+1)(a_i+1)$, as in (d) of the proof of 253F.   Set
+
+\Centerline{$w_0
+=\sum_{i=0}^na_i\sum_{j=0}^{m_i}\chi(G_{ij}\times F_{ij})^{\ssbullet}$.}
+
+\noindent Then $w_0\in C$ because $w_0\in M$ and $w_0\ge 0$.   Also
+
+$$\eqalign{\|w-w_0\|_1
+&\le\|w-h_1^{\ssbullet}\|_1+\|h_1^{\ssbullet}-w_0\|_1\cr
+&\le\int(h-h_1)d\lambda
+  +\sum_{i=0}^na_i\int|\chi H_i-\sum_{j=0}^{m_i}\chi(G_{ij}\times
+  F_{ij})|d\lambda\cr
+&\le\epsilon+\sum_{i=0}^na_i\lambda(H\symmdiff\bigcup_{j\le
+m_i}G_{ij}\times F_{ij})
+\le 2\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary and $C$ is closed, $w\in C$.   As
+$w$ is arbitrary, $L^1(\lambda)^+\subseteq C$ and $C=L^1(\lambda)^+$.
+
+\medskip
+
+{\bf (c)} Part (a) tells us that (i)$\Rightarrow$(ii).   For the reverse
+implication, we need a fragment from the theory of Banach lattices:
+$W^+=\{w:w\in W,\,w\ge 0\}$ is a closed set in $W$.
+\Prf\ If $w$, $w'\in W$, then
+
+\Centerline{$w=(w-w')+w'\le|w-w'|+w'\le|w-w'|+|w'|$,}
+
+\Centerline{$-w=(w'-w)-w'\le|w-w'|-w'\le|w-w'|+|w'|$,}
+
+\Centerline{$|w|\le|w-w'|+|w'|$,
+\quad$|w|-|w'|\le|w-w'|$,}
+
+\noindent because $|w|=w\vee(-w)$ and the order of $W$ is
+translation-invariant (241Ec).   Similarly, $|w'|-|w|\le|w-w'|$ and
+$||w|-|w'||\le|w-w'|$, so $\||w|-|w'|\|\le\|w-w'\|$, by the definition
+of Banach lattice (242G).   Setting $\phi(w)=|w|-w$, we see that
+$\|\phi(w)-\phi(w')\|\le 2\|w-w'\|$ for all $w$, $w'\in W$, so that
+$\phi$ is continuous.
+
+Now, because the order is invariant under multiplication by positive
+scalars,
+
+\Centerline{$w\ge 0\iff 2w\ge 0\iff w\ge-w\iff w=|w|\iff\phi(w)=0$,}
+
+\noindent so $W^+=\{w:\phi(w)=0\}$ is closed.\ \Qed
+
+Now suppose that (ii) is true, and set
+$C_1=\{w:w\in L^1(\lambda),\,Tw\ge 0\}$.   Then $C_1$ contains
+$u\otimes v$ whenever $u$, $v\ge 0$;  but also
+it is convex, because $T$ is linear, and closed, because $T$ is
+continuous and $C_1=T^{-1}[W^+]$.   By (b), $C_1$ includes
+$\{w:w\in L^1(\lambda),\,w\ge 0\}$, as required by (i).
+}%end of proof of 253G
+
+\leader{253H}{Conditional \dvrocolon{expectations}}\cmmnt{ The ideas
+of this section and the preceding one provide us with some of the most
+important examples of conditional expectations.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+complete probability spaces, with c.l.d.\ product
+$(X\times Y,\Lambda,\lambda)$.   Set $\Lambda_1=\{E\times Y:E\in\Sigma\}$.
+Then $\Lambda_1$ is a $\sigma$-subalgebra of $\Lambda$.   Given a
+$\lambda$-integrable real-valued function $f$, set
+
+\Centerline{$g(x,y)=\int f(x,z)\nu(dz)$}
+
+\noindent whenever $x\in X$, $y\in Y$ and the integral is defined in
+$\Bbb R$.   Then $g$ is a conditional expectation of $f$ on $\Lambda_1$.
+
+\proof{ We know that $\Lambda_1\subseteq\Lambda$, by 251Ia, and
+$\Lambda_1$ is a $\sigma$-algebra of sets because $\Sigma$ is.
+Fubini's theorem (252B, 252C)
+tells us that $f_1(x)=\int f(x,z)\nu(dz)$ is defined for almost every
+$x$, and therefore that $g=f_1\otimes\chi Y$ is defined almost everywhere
+in $X\times Y$.   $f_1$ is $\mu$-virtually measurable;  because $\mu$ is
+complete, $f_1$ is $\Sigma$-measurable, so $g$ is $\Lambda_1$-measurable
+(since $\{(x,y):g(x,y)\le\alpha\}=\{x:f_1(x)\le\alpha\}\times Y$ for
+every $\alpha\in\Bbb R$).   Finally, if $W\in\Lambda_1$, then
+$W=E\times Y$ for some $E\in\Sigma$, so
+
+$$\eqalignno{\int_Wg\,d\lambda
+&=\int (f_1\otimes\chi Y)\times(\chi E\otimes\chi Y)d\lambda
+=\int f_1\times\chi E\,d\mu\int\chi Y\,d\nu\cr
+\noalign{\noindent (by 253D)}
+&=\iint\chi E(x)f(x,y)\nu(dy)\mu(dx)
+=\int f\times\chi(E\times Y)d\lambda\cr
+\noalign{\noindent (by Fubini's theorem)}
+&=\int_Wf\,d\lambda.\cr}$$
+
+\noindent So $g$ is a conditional expectation of $f$.
+}%end of proof of 253H
+
+\leader{253I}{}\cmmnt{ This is a convenient moment to set out a
+useful result on products of indefinite-integral measures.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+measure spaces, and $f\in\eusm L^0(\mu)$, $g\in\eusm L^0(\nu)$
+non-negative functions.   Let $\mu'$, $\nuprime$ be the corresponding
+indefinite-integral measures\cmmnt{ (see \S234)}.   Let $\lambda$ be
+the c.l.d.\ product of $\mu$ and $\nu$, and $\lambda'$ the
+indefinite-integral measure defined from $\lambda$ and
+$f\otimes g\in\eusm L^0(\lambda)$\cmmnt{ (253Cb)}.   Then $\lambda'$ is
+the c.l.d.\ product of $\mu'$ and $\nuprime$.
+
+\proof{  Write $\theta$ for the c.l.d.\ product of $\mu'$ and $\nuprime$.
+
+\medskip
+
+{\bf (a)} If we replace $\mu$ by its completion, we do not change $\mu'$
+(234Ke);  at the same time, we do not change $\lambda$, by 251T.
+The same applies to $\nu$.   So it will be enough to prove the result on
+the assumption that $\mu$ and $\nu$ are complete;  in which case $f$ and
+$g$ are measurable and have measurable domains.
+
+Set $F=\{x:x\in\dom f,\,f(x)>0\}$ and $G=\{y:y\in\dom g,\,g(y)>0\}$, so
+that $F\times G=\{w:w\in\dom(f\otimes g),\,(f\otimes g)(w)>0\}$.   Then
+$F$ is $\mu'$-conegligible and $G$ is $\nuprime$-conegligible, so
+$F\times G$ is $\theta$-conegligible as well as
+$\lambda'$-conegligible.   Because both $\theta$ and $\lambda'$ are
+complete (251Ic, 234I), it will be enough to show that the subspace
+measures $\theta_{F\times G}$, $\lambda'_{F\times G}$ on $F\times G$ are
+equal.   But note that $\theta_{F\times G}$ can be identified with the
+product of $\mu_F'$ and $\nu_G'$, where $\mu_F'$ and $\nu_G'$ are the
+subspace measures on $F$, $G$ respectively (251Q(ii-$\alpha$)).   At the
+same time, $\mu_F'$ is the indefinite-integral measure defined from the
+subspace measure $\mu_F$ on $F$ and the function $f\restr F$,
+$\nu_G'$ is the indefinite-integral measure defined from the subspace
+measure $\nu_G$ on $G$ and $g\restr G$, and $\lambda'_{F\times G}$ is
+defined from the subspace measure $\lambda_{F\times G}$ and
+$(f\restr F)\otimes(g\restr G)$.   Finally, by 251Q again,
+$\lambda_{F\times G}$ is the product of $\mu_F$ and $\nu_G$.
+
+What all this means is that it will be enough to deal with the case in
+which $F=X$ and $G=Y$, that is, $f$ and $g$ are everywhere defined and
+strictly positive;  which is what I will suppose from now on.
+
+\medskip
+
+{\bf (b)} In this case $\dom\mu'=\Sigma$ and $\dom\nuprime=\Tau$ (234La).
+Similarly, $\dom\lambda'=\Lambda$ is just the domain of $\lambda$.   Set
+
+\Centerline{$F_n=\{x:x\in X,\,2^{-n}\le f(x)\le 2^n\}$,
+\quad$G_n=\{y:y\in Y,\,2^{-n}\le g(y)\le 2^n\}$}
+
+\noindent for $n\in\Bbb N$.
+
+\medskip
+
+{\bf (c)} Set
+
+\Centerline{$\Cal A=\{W:W\in\dom\theta\cap\dom\lambda'$,
+$\theta(W)=\lambda'(W)\}$.}
+
+\noindent If $\mu'E$ and $\nuprime H$ are defined and finite, then
+$f\times\chi E$ and $g\times\chi H$ are integrable, so
+
+$$\eqalign{\lambda'(E\times H)
+&=\int(f\otimes g)\times\chi(E\times H)d\lambda
+=\int(f\times\chi E)\otimes(g\times\chi H)d\lambda\cr
+&=\int f\times\chi E\,d\mu\cdot\int g\times\chi H\,d\nu
+=\theta(E\times H)\cr}$$
+
+\noindent by 253D and 251Ia, that is, $E\times H\in\Cal A$.   If we now
+look at
+$\Cal A_{EH}=\{W:W\subseteq X\times Y$, $W\cap(E\times H)\in\Cal A\}$,
+then we see that
+
+\inset{$\Cal A_{EH}$ contains $E'\times H'$ for every $E'\in\Sigma$,
+$H'\in\Tau$,}
+
+\inset{if $\sequencen{W_n}$ is a non-decreasing sequence in
+$\Cal A_{EH}$ then $\bigcup_{n\in\Bbb N}W_n\in\Cal A_{EH}$,}
+
+\inset{if $W$, $W'\in\Cal A_{EH}$ and $W\subseteq W'$ then
+$W'\setminus W\in\Cal A_{EH}$.}
+
+\noindent Thus $\Cal A_{EH}$ is a Dynkin class of subsets of
+$X\times Y$, and by the Monotone Class Theorem (136B) includes
+the $\sigma$-algebra generated by
+$\{E'\times H':E'\in\Sigma,\,H'\in\Tau\}$, which is
+$\Sigma\tensorhat\Tau$.
+
+\medskip
+
+{\bf (d)} Now suppose that $W\in\Lambda$.   In this case
+$W\in\dom\theta$ and $\theta W\le\lambda'W$.   \Prf\ Take $n\in\Bbb N$,
+and $E\in\Sigma$, $H\in\Tau$ such that $\mu'E$ and $\nuprime H$ are
+both finite.   Set $E'=E\cap F_n$, $H'=H\cap G_n$ and $W'=W\cap(E'\times
+H')$.   Then $W'\in\Lambda$, while $\mu E'\le 2^n\mu'E$ and $\nu H'\le
+2^n\nuprime H$ are finite.   By 251Ib there is a $V\in\Sigma\tensorhat\Tau$
+such that $V\subseteq W'$ and $\lambda V=\lambda W'$.  Similarly, there
+is a $V'\in\Sigma\tensorhat\Tau$ such that $V'\subseteq(E'\times
+H')\setminus W'$ and $\lambda V'=\lambda((E'\times H')\setminus W')$.
+This means that $\lambda((E'\times H')\setminus(V\cup V'))=0$, so
+$\lambda'((E'\times H')\setminus(V\cup V'))=0$.   But
+$(E'\times H')\setminus(V\cup V')\in\Cal A$, by (c), so $\theta((E'\times H')\setminus(V\cup V'))=0$ and $W'\in\dom\theta$, while
+
+\Centerline{$\theta W'=\theta V=\lambda'V
+\le\lambda'W$.}
+
+Since $E$ and $H$ are arbitrary, $W\cap(F_n\times G_n)\in\dom\theta$
+(251H) and $\theta(W\cap(F_n\times G_n))\le\lambda'W$.   Since
+$\sequencen{F_n}$, $\sequencen{G_n}$ are non-decreasing sequences with
+unions $X$, $Y$ respectively,
+
+\Centerline{$\theta W=\sup_{n\in\Bbb N}\theta(W\cap(F_n\times G_n))
+\le\lambda'W$.  \Qed}
+
+\medskip
+
+{\bf (e)} In the same way, $\lambda'W$ is defined and less than or equal
+to $\theta W$ for every $W\in\dom\theta$.   \Prf\ The arguments are very
+similar, but a refinement seems to be necessary at the last stage.
+Take $n\in\Bbb N$, and $E\in\Sigma$, $H\in\Tau$ such that $\mu E$
+and $\nu H$ are both finite.   Set $E'=E\cap F_n$, $H'=H\cap G_n$ and
+$W'=W\cap(E'\times H')$.   Then $W'\in\dom\theta$, while $\mu'E'\le
+2^n\mu E$ and $\nuprime H'\le 2^n\nu H$ are finite.   This time, there are
+$V$, $V'\in\Sigma\tensorhat\Tau$ such that $V\subseteq W'$,
+$V'\subseteq(E'\times H')\setminus W'$, $\theta V=\theta W'$ and
+$\theta V'=\theta((E'\times H')\setminus W')$.   Accordingly
+
+\Centerline{$\lambda'V+\lambda'V'=\theta V+\theta V'
+=\theta(E'\times H')=\lambda'(E'\times H')$,}
+
+\noindent so that $\lambda'W'$ is defined and equal to $\theta W'$.
+
+What this means is that $W\cap(F_n\times G_n)\cap(E\times H)\in\Cal A$
+whenever $\mu E$ and $\nu H$ are finite.   So
+$W\cap(F_n\times G_n)\in\Lambda$, by 251H;
+as $n$ is arbitrary, $W\in\Lambda$ and $\lambda'W$ is defined.
+
+\Quer\ Suppose, if possible, that $\lambda'W>\theta W$.   Then there is
+some $n\in\Bbb N$ such that $\lambda'(W\cap(F_n\times G_n))>\theta W$.
+Because $\lambda$ is semi-finite, 213B tells us that there is some
+$\lambda$-simple function $h$ such that
+$h\le(f\otimes g)\times\chi(W\cap(F_n\times G_n))$ and
+$\int h\,d\lambda>\theta W$;  setting $V=\{(x,y):h(x,y)>0\}$, we see that $V\subseteq W\cap(F_n\times G_n)$,
+$\lambda V$ is defined and finite and $\lambda'V>\theta W$.   Now there
+must be sets $E\in\Sigma$, $H\in\Tau$ such that $\mu E$ and $\nu F$ are
+both finite and
+$\lambda(V\setminus(E\times H))<4^{-n}(\lambda'V-\theta W)$.   But in this case $V\in\Lambda\subseteq\dom\theta$ (by (d)), so we can apply the argument just above to $V$ and conclude that
+$V\cap(E\times H)=V\cap(F_n\times G_n)\cap(E\times H)$ belongs to
+$\Cal A$.   And now
+
+$$\eqalign{\lambda'V
+&=\lambda'(V\cap(E\times H))+\lambda'(V\setminus(E\times H))\cr
+&\le\theta(V\cap(E\times H))+4^n\lambda(V\setminus(E\times H))
+<\theta V+\lambda'V-\theta W
+\le\lambda'V,\cr}$$
+
+\noindent which is absurd.\ \Bang
+
+So $\lambda'W$ is defined and not greater than $\theta W$.\
+\Qed
+
+\medskip
+
+{\bf (f)} Putting this together with (d), we see that $\lambda'=\theta$,
+as claimed.
+}%end of proof of 253I
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} If $\mu'$ and $\nuprime$ are totally finite, so that
+they are `truly continuous' with respect to $\mu$ and $\nu$ in the sense
+of 232Ab, then $f$ and $g$ are integrable, so $f\otimes g$ is
+$\lambda$-integrable, and $\theta=\lambda'$ is truly continuous with
+respect to $\lambda$.
+
+The proof above can be simplified using fragments of the general theory
+of complete locally determined spaces, which will be given in \S412 %412J
+in Volume 4.}%end of comment
+
+\leader{*253J}{Upper \dvrocolon{integrals}}\cmmnt{ The idea of 253D
+can be repeated in terms of upper integrals, as follows.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+$\sigma$-finite measure spaces, with c.l.d.\ product measure $\lambda$.
+Then for any functions $f$ and $g$, defined on conegligible subsets of
+$X$ and $Y$ respectively, and taking values in $[0,\infty]$,
+
+\Centerline{$\overlineint f\otimes g\,d\lambda
+=\overlineint fd\mu\cdot\overlineint g\,d\nu$.}
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Here $(f\otimes g)(x,y)=f(x)g(y)$ for all
+$x\in\dom f$ and $y\in\dom g$, taking $0\cdot\infty=0$, as in \S135.
+}%end of comment
+
+\proof{{\bf (a)} I show first that
+$\overline{\int}f\otimes g\le\overline{\int}f\overline{\int}g$.   \Prf\
+If $\overline{\int}f=0$, then $f=0$ a.e., so $f\otimes g=0$ a.e.\ and
+the result is immediate.   The same argument applies if
+$\overline{\int}g=0$.   If both $\overline{\int}f$ and
+$\overline{\int}g$ are non-zero, and either is infinite, the result is
+trivial.   So let us suppose that both are finite.   In this case there
+are integrable $f_0$, $g_0$ such that $f\leae f_0$, $g\leae g_0$,
+$\overline{\int}f=\int f_0$ and $\overline{\int}g=\int g_0$ (133Ja/135Ha).
+So $f\otimes g\leae f_0\otimes g_0$, and
+
+\Centerline{$
+\overlineint f\otimes g\le\int f_0\otimes g_0
+=\int f_0\int g_0=\overlineint f\overlineint g$,}
+
+\noindent by 253D.\ \Qed
+
+\medskip
+
+{\bf (b)} For the reverse inequality, we need consider only the case in
+which $\overline{\int}f\otimes g$ is finite, so that there is a
+$\lambda$-integrable function $h$ such that $f\otimes g\leae h$ and
+$\overline{\int}f\otimes g=\int h$.   Set
+
+\Centerline{$f_0(x)=\int h(x,y)\nu(dy)$}
+
+\noindent whenever this is defined in $\Bbb R$, which is almost
+everywhere, by Fubini's theorem (252B-252C).   Then
+$f_0(x)\ge f(x)\overline{\int}g\,d\nu$ for every
+$x\in\dom f_0\cap\dom f$, which is a conegligible set in $X$;  so
+
+\Centerline{$
+\overlineint f\otimes g=\int h\,d\lambda
+=\int f_0d\mu\ge\overlineint f\overlineint g$,}
+
+\noindent as required.
+}%end of proof of 253J
+
+\leader{*253K}{}\cmmnt{ A similar argument applies to upper
+integrals of sums, as follows.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+probability spaces, with c.l.d.\ product measure $\lambda$.   Then for
+any real-valued functions $f$, $g$ defined on conegligible subsets of
+$X$, $Y$ respectively,
+
+\Centerline{$
+\overlineint f(x)+g(y)\,\lambda(d(x,y))
+=\overlineint f(x)\mu(dx)+\overlineint g(y)\nu(dy)$,}
+
+\noindent at least when the right-hand side is defined in
+$[-\infty,\infty]$.
+
+\proof{Set $h(x,y)=f(x)+g(y)$ for $x\in\dom f$ and $y\in\dom g$, so that
+$\dom h$ is $\lambda$-conegligible.
+
+\medskip
+
+{\bf (a)} As in 253J, I start by showing that
+$\overline{\int}h\le\overline{\int}f+\overline{\int}g$.   \Prf\ If
+either $\overline{\int}f$ or $\overline{\int}g$ is $\infty$, this is
+trivial.   Otherwise, take integrable functions $f_0$, $g_0$ such that
+$f\leae f_0$ and $g\leae g_0$.   Set
+$h_0=(f_0\otimes\chi Y)+(\chi X\otimes g_0)$;  then
+$h\le h_0\,\,\lambda$-a.e., so
+
+\Centerline{$
+\overlineint h\,d\lambda\le\int h_0d\lambda
+=\int f_0d\mu+\int g_0d\nu$.}
+
+\noindent As $f_0$, $g_0$ are arbitrary,
+$\overline{\int}h\le\overline{\int}f+\overline{\int}g$.\ \Qed
+
+\medskip
+
+{\bf (b)} For the reverse inequality, suppose that $h\le h_0$ for
+$\lambda$-almost every $(x,y)$, where $h_0$ is $\lambda$-integrable.
+Set $f_0(x)=\int h_0(x,y)\nu(dy)$ whenever this is defined in $\Bbb R$.
+Then $f_0(x)\ge f(x)+\overline{\int}g\,d\nu$ whenever $x\in\dom
+f\cap\dom f_0$, so
+
+\Centerline{$\int h_0\,d\lambda
+=\int f_0d\mu\ge\overlineint fd\mu+\overlineint g\,d\nu$.}
+
+\noindent As $h_0$ is arbitrary,
+$\overline{\int}h\ge\overline{\int}f+\overline{\int}g$, as required.
+}%end of proof of 253K
+
+\leader{253L}{Complex spaces} As usual, the ideas\cmmnt{ of 253F and
+253H} apply essentially unchanged to complex $L^1$ spaces.   Writing
+$L^1_{\Bbb C}(\mu)$, etc., for the complex $L^1$ spaces involved, we
+have the following\cmmnt{ results}.
+Throughout, let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$
+be measure spaces, and $\lambda$ the c.l.d.\ product measure on
+$X\times Y$.
+
+\spheader 253La If $f\in\eusm L^0_{\Bbb C}(\mu)$ and
+$g\in\eusm L^0_{\Bbb C}(\nu)$ then $f\otimes g$, defined by the formula
+$(f\otimes g)(x,y)=f(x)g(y)$ for $x\in\dom f$ and $y\in\dom g$, belongs
+to $\eusm L^0_{\Bbb C}(\lambda)$.
+
+\spheader 253Lb If $f\in\eusm L^1_{\Bbb C}(\mu)$ and
+$g\in\eusm L^1_{\Bbb C}(\nu)$ then
+$f\otimes g\in\eusm L^1_{\Bbb C}(\lambda)$ and
+$\int f\otimes g\,d\lambda=\int fd\mu\int g\,d\nu$.
+
+\spheader 253Lc We have a bilinear operator $(u,v)\mapsto u\otimes v:
+L^1_{\Bbb C}(\mu)\times L^1_{\Bbb C}(\nu)\to L^1_{\Bbb C}(\lambda)$
+defined by writing $f^{\ssbullet}\otimes g^{\ssbullet}=(f\otimes
+g)^{\ssbullet}$ for all $f\in\eusm L^1_{\Bbb C}(\mu)$, $g\in \eusm
+L^1_{\Bbb C}(\nu)$.
+
+\spheader 253Ld If $W$ is any complex Banach space and
+$\phi:L^1_{\Bbb C}(\mu)\times L^1_{\Bbb C}(\nu)\to W$ is any bounded
+bilinear operator, then there is a unique bounded linear operator
+$T:L^1_{\Bbb C}(\lambda)\to W$ such that $T(u\otimes v)=\phi(u,v)$ for
+every $u\in L^1_{\Bbb C}(\mu)$ and $v\in L^1_{\Bbb C}(\nu)$, and
+$\|T\|=\|\phi\|$.
+
+\spheader 253Le If $\mu$ and $\nu$ are complete probability measures,
+and $\Lambda_1=\{E\times Y:E\in\Sigma\}$, then for any $f\in\eusm
+L^1_{\Bbb C}(\lambda)$ we have a conditional expectation $g$ of $f$ on
+$\Lambda_1$ given by setting $g(x,y)=\int f(x,z)\nu(dz)$ whenever this
+is defined.
+
+\exercises{
+\leader{253X}{Basic exercises $\pmb{>}$(a)}
+%\spheader 253Xa
+Let $U$, $V$ and $W$ be linear
+spaces.   Show that the set of
+bilinear operators from $U\times V$ to $W$ has a natural linear structure
+agreeing with those of $\eurm L(U;\eurm L(V;W))$ and $\eurm L(V;\eurm
+L(U;W))$, writing $\eurm L(U;W)$
+for the linear space of linear operators from $U$ to $W$.
+
+\sqheader 253Xb Let $U$, $V$ and $W$ be normed spaces.   (i)
+Show that for a
+bilinear operator $\phi:U\times V\to W$ the following are equiveridical:
+($\alpha$) $\phi$ is bounded in the sense of 253Ab;  ($\beta$) $\phi$ is
+continuous;  ($\gamma$) $\phi$ is continuous at some point of $U\times
+V$.   (ii) Show that the space of bounded bilinear operators from $U\times V$
+to $W$ is a linear subspace of the space of all bilinear operators from
+$U\times V$ to $W$, and that the functional $\|\,\|$ defined in 253Ab is
+a norm, agreeing with the norms of $\eurm B(U;\eurm B(V;W))$ and $\eurm
+B(V;\eurm B(U;W))$, writing $\eurm B(U;W)$ for the normed space of
+bounded linear operators from $U$ to $W$.
+
+\spheader 253Xc Let
+$(X_1,\Sigma_1,\mu_1),\ldots,(X_n,\Sigma_n,\mu_n)$ be
+measure spaces, and $\lambda$ the c.l.d.\ product measure on
+$X_1\times\ldots\times X_n$, as described in 251W.   Let $W$ be a
+Banach space, and suppose that
+$\phi:L^1(\mu_1)\times\ldots\times L^1(\mu_n)\to W$ is {\bf multilinear}
+(that is, linear in each variable
+separately) and {\bf bounded} (that is,
+$\|\phi\|=\sup\{\phi(u_1,\ldots,u_n):
+\|u_i\|_1\le 1\Forall i\le n\}<\infty$).   Show that there is a unique
+bounded linear operator
+$T:L^1(\lambda)\to W$ such that $T\otimes=\phi$, where
+$\otimes:L^1(\mu_1)\times\ldots\times L^1(\mu_n)\to L^1(\lambda)$ is a
+canonical multilinear operator (to be defined).
+
+\spheader 253Xd Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be measure
+spaces, and $\lambda$ the c.l.d.\ product measure on $X\times Y$.   Show
+that if $A\subseteq L^1(\mu)$ and $B\subseteq L^1(\nu)$ are both
+uniformly integrable, then $\{u\otimes v:u\in A,\,v\in B\}$ is uniformly
+integrable in $L^1(\lambda)$.
+
+\sqheader 253Xe Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be measure
+spaces and $\lambda$ the c.l.d.\ product measure on $X\times Y$.
+Show that
+
+\quad (i) we have a bilinear operator
+$(u,v)\mapsto u\otimes v:L^0(\mu)\times L^0(\nu)\to L^0(\lambda)$
+given by setting
+$f^{\ssbullet}\otimes g^{\ssbullet}=(f\otimes g)^{\ssbullet}$ for all
+$f\in\eusm L^0(\mu)$ and $g\in \eusm L^0(\nu)$;
+
+\quad (ii) if $1\le p\le\infty$ then $u\otimes v\in L^p(\lambda)$ and
+$\|u\otimes v\|_p=\|u\|_p\|v\|_p$ for all $u\in L^p(\mu)$ and
+$v\in L^p(\nu)$;
+
+\quad (iii) if $u$, $u'\in L^2(\mu)$ and $v$, $v'\in L^2(\nu)$ then the
+inner product $\innerprod{u\otimes v}{u'\otimes v'}$, taken in
+$L^2(\lambda)$, is just $\innerprod{u}{u'}\innerprod{v}{v'}$;
+
+\quad (iv) the map
+$(u,v)\mapsto u\otimes v:L^0(\mu)\times L^0(\nu)\to L^0(\lambda)$
+is continuous if $L^0(\mu)$, $L^0(\nu)$ and $L^0(\lambda)$
+are all given their topologies of convergence in measure.
+
+\spheader 253Xf In 253Xe, assume that $\mu$ and $\nu$ are semi-finite.
+Show that if $u_0,\ldots,u_n$ are linearly independent members of
+$L^0(\mu)$ and $v_0,\ldots,v_n\in L^0(\nu)$ are not all $0$, then
+$\sum_{i=0}^nu_i\otimes v_i\ne 0$ in $L^0(\lambda)$.   ({\it Hint\/}:
+start by finding sets $E\in\Sigma$, $F\in\Tau$ of finite measure such
+that $u_0\times\chi E^{\ssbullet},\ldots,u_n\times\chi E^{\ssbullet}$
+are linearly independent and
+$v_0\times\chi F^{\ssbullet},\ldots,v_n\times\chi F^{\ssbullet}$
+are not all $0$.)
+
+\spheader 253Xg In 253Xe, assume that $\mu$ and $\nu$ are semi-finite.
+If $U$, $V$ are linear subspaces of $L^0(\mu)$ and $L^0(\nu)$
+respectively, write $U\otimes V$ for the linear subspace of
+$L^0(\lambda)$ generated by $\{u\otimes v:u\in U,\,v\in V\}$.
+Show that if $W$ is any linear space and $\phi:U\times V\to W$ is a
+bilinear operator, there is a unique linear operator $T:U\otimes V\to W$
+such that $T(u\otimes v)=\phi(u,v)$ for all $u\in U$, $v\in V$.
+({\it Hint\/}: start by showing that if $u_0,\ldots,u_n\in U$ and
+$v_0,\ldots,v_n\in V$ are such that $\sum_{i=0}^nu_i\otimes v_i=0$, then
+$\sum_{i=0}^n\phi(u_i,v_i)=0$ -- do this by expressing the $u_i$ as
+linear combinations of some linearly independent family and applying
+253Xf.)
+
+\sqheader 253Xh Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be complete
+probability spaces, with c.l.d.\ product measure $\lambda$.   Suppose
+that $p\in[1,\infty]$ and that $f\in\eusm L^p(\lambda)$.   Set
+$g(x)=\int f(x,y)\nu(dy)$ whenever this is defined.   Show that
+$g\in\eusm L^p(\mu)$ and that $\|g\|_p\le\|f\|_p$.   ({\it Hint\/}:  253H,
+244M.)
+
+\spheader 253Xi Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be measure
+spaces, with c.l.d.\ product measure $\lambda$, and
+$p\in\coint{1,\infty}$.   Show that $\{w:w\in L^p(\lambda),\,w\ge 0\}$
+is the closed convex hull in $L^p(\lambda)$ of
+$\{u\otimes v:u\in L^p(\mu),\,v\in L^p(\nu),\,u\ge 0,\,v\ge 0\}$
+(see 253Xe(ii) above).
+
+\leader{253Y}{Further exercises (a)}
+%\spheader 253Ya
+Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be measure spaces, and
+$\lambda_0$ the primitive product measure on $X\times Y$.  Show that if
+$f\in\eusm L^0(\mu)$ and $g\in\eusm L^0(\nu)$, then
+$f\otimes g\in\eusm L^0(\lambda_0)$.
+%253C
+
+\spheader 253Yb Let $(X,\Sigma,\mu)$ and
+$(Y,\Tau,\nu)$ be measure spaces, and $\lambda_0$ the primitive
+product measure on $X\times Y$.   Show that if $f\in\eusm L^1(\mu)$ and
+$g\in\eusm L^1(\nu)$, then $f\otimes g\in\eusm L^1(\lambda_0)$ and
+$\int f\otimes g\,d\lambda_0=\int f\,d\mu\int g\,d\nu$.
+%253Ya, 253C
+
+\spheader 253Yc Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+measure spaces, and $\lambda_0$, $\lambda$ the primitive and c.l.d.\
+product measures on $X\times Y$.   Show that the embedding 
+$\eusm L^1(\lambda_0)\embedsinto\eusm L^1(\lambda)$
+induces a Banach lattice isomorphism between $L^1(\lambda_0)$ and
+$L^1(\lambda)$.
+%253D
+
+\spheader 253Yd Let $(X,\Sigma,\mu)$, $(Y,\Tau,\nu)$ be strictly
+localizable measure spaces, with c.l.d.\ product measure $\lambda$.
+Show that $L^{\infty}(\lambda)$ can be identified with $L^1(\lambda)^*$.
+Show that under this identification
+$\{w:w\in L^{\infty}(\lambda),\,w\ge 0\}$ is the weak*-closed convex hull of
+$\{u\otimes v:u\in L^{\infty}(\mu),\,v\in L^{\infty}(\nu),
+\,u\ge 0,\,v\ge 0\}$.
+%253G, 253Xe
+
+\spheader 253Ye Find a version of 253J valid when one of $\mu$, $\nu$
+is not $\sigma$-finite.
+%253J
+
+\spheader 253Yf Let $(X,\Sigma,\mu)$ be any measure space and $V$ any
+Banach space.   Write $\eusm L^1_V=\eusm L^1_V(\mu)$ for the set of
+functions $f$
+such that ($\alpha$) $\dom f$ is a conegligible subset of $X$ ($\beta$)
+$f$ takes values in $V$ ($\gamma$) there is a conegligible set
+$D\subseteq\dom
+f$ such that $f[D]$ is separable and $D\cap f^{-1}[G]\in\Sigma$ for
+every open set $G\subseteq V$ ($\delta$) the integral
+$\int\|f(x)\|\mu(dx)$ is finite.   (These are the {\bf Bochner
+integrable} functions from $X$ to
+$V$.)   For $f$, $g\in\eusm L^1_V$ write $f\sim g$ if
+$f=g\,\,\mu$-a.e.;  let $L^1_V$ be the set of equivalence classes
+in $\eusm L^1_V$ under $\sim$.   Show that
+
+\quad (i) $f+g$, $cf\in\eusm L^1_V$ for all $f$, 
+$g\in\eusm L^1_V$, $c\in\Bbb R$;
+
+\quad (ii) $L^1_V$ has a natural linear space structure, defined by
+writing $f^{\ssbullet}+g^{\ssbullet}=(f+g)^{\ssbullet}$,
+$cf^{\ssbullet}=(cf)^{\ssbullet}$ for $f$, $g\in\eusm L^1_V$ and
+$c\in\Bbb R$;
+
+\quad (iii) $L^1_V$ has a norm $\|\,\|$, defined by writing
+$\|f^{\ssbullet}\|=\int\|f(x)\|\mu(dx)$ for $f\in\eusm L^1_V$;
+
+\quad (iv) $L^1_V$ is a Banach space under this norm;
+
+\quad (v) there is a natural map
+$\otimes:\eusm L^1\times V\to\eusm L^1_V$ defined by writing
+$(f\otimes v)(x)=f(x)v$ when $f\in\eusm L^1=\eusm L^1_{\Bbb R}(\mu)$,
+$v\in V$ and $x\in\dom f$;
+
+\quad (vi) there is a canonical bilinear operator
+$\otimes:L^1\times V\to L^1_V$ defined by writing
+$f^{\ssbullet}\otimes v=(f\otimes v)^{\ssbullet}$ for $f\in\eusm L^1$ and
+$v\in V$;
+
+\quad (vii) whenever $W$ is a Banach space and 
+$\phi:L^1\times V\to W$ is a bounded bilinear operator, 
+there is a unique bounded
+linear operator $T:L^1_V\to W$ such that $T(u\otimes v)=\phi(u,v)$
+for all $u\in L^1$ and $v\in V$, and $\|T\|=\|\phi\|$.   
+%new 2008
+(When $W=V$ and
+$\phi(u,v)=(\int u)v$ for $u\in L^1$ and $v\in V$, $Tf^{\ssbullet}$ 
+is called the {\bf Bochner integral} of $f$.)
+
+%253+
+
+\spheader 253Yg Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+measure spaces, and
+$\lambda_0$ the primitive product measure on $X\times Y$.   If $f$ is a
+$\lambda_0$-integrable function, write $f_x(y)=f(x,y)$ whenever this is
+defined.   Show that we have a map $x\mapsto f_x^{\ssbullet}$ from a
+conegligible subset
+$D_0$ of $X$ to $L^1(\nu)$.   Show that this map is a Bochner integrable
+function, as defined in 253Yf, 
+%new 2008
+and that its Bochner integral is $\int fd\lambda_0$.
+%253Yf, 253+
+
+\spheader 253Yh Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+measure spaces, and
+suppose that $\phi$ is a function from $X$ to a separable subset of
+$L^1(\nu)$ which is measurable in the sense that $\phi^{-1}[G]\in\Sigma$
+for every open $G\subseteq L^1(\nu)$.   Show that
+there is a $\Lambda$-measurable function $f$ from $X\times Y$ to $\Bbb
+R$, where $\Lambda$ is the domain of the c.l.d.\ product measure on
+$X\times Y$, such that $\phi(x)=f_x^{\ssbullet}$ for every $x\in X$,
+writing $f_x(y)=f(x,y)$ for $x\in X$, $y\in Y$.
+%253+
+
+\spheader 253Yi Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be measure
+spaces, and $\lambda$ the c.l.d.\ product measure on $X\times Y$.   Show
+that 253Yg provides a canonical identification between $L^1(\lambda)$
+and $L^1_{L^1(\nu)}(\mu)$.
+%253Yg, 253Yi, 253+
+
+\spheader 253Yj Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be complete
+locally determined measure spaces, with c.l.d.\ product measure
+$\lambda$.   (i) Suppose that $K\in\eusm L^2(\lambda)$,
+$f\in\eusm L^2(\mu)$.   Show that $h(y)=\int K(x,y)f(x)dx$ is defined for almost
+all $y\in Y$ and that $h\in\eusm L^2(\nu)$.   ({\it Hint\/}:  to see
+that $h$ is defined a.e., consider $\int_{E\times F}K(x,y)f(x)d(x,y)$
+for $\mu E$, $\nu F<\infty$;  to see that $h\in\eusm L^2$ consider
+$\int h\times g$ where $g\in\eusm L^2(\nu)$.)   (ii) Show that the map
+$f\mapsto h$ corresponds to a bounded linear operator
+$T_K:L^2(\mu)\to L^2(\nu)$.   (iii) Show that the map $K\mapsto T_K$
+corresponds to a bounded linear operator, of norm at most $1$, from
+$L^2(\lambda)$ to $\eurm B(L^2(\mu);L^2(\nu))$.
+%253+
+
+\spheader 253Yk Suppose that $p$, $q\in[1,\infty]$ and that
+$\bover1p+\bover1q=1$, interpreting $\bover1{\infty}$ as $0$ as usual.
+Let $(X,\Sigma,\mu)$, $(Y,\Tau,\nu)$ be complete locally determined
+measure spaces with c.l.d.\ product measure $\lambda$.    Show that the
+ideas of 253Yj can be used to define a bounded linear operator, of norm
+at most $1$, from $L^p(\lambda)$ to $\eurm B(L^q(\mu);L^p(\nu))$.
+%253Yj, 253+
+
+\spheader 253Yl In 253Xc, suppose that $W$ is a Banach lattice.   Show
+that the following are equiveridical:  (i) $Tu\ge 0$ whenever
+$u\in L^1(\lambda)$;  (ii) $\phi(u_1,\ldots,u_n)\ge 0$ whenever
+$u_i\ge 0$ in $L^1(\mu_i)$ for each $i\le n$.
+%253G, 253Xc
+}%end of exercises
+
+\endnotes{
+\Notesheader{253} Throughout the main arguments of this section, I have
+written the results in terms of the c.l.d.\ product measure;  of course
+the isomorphism noted in 253Yc means that they could just as well have
+been expressed in terms of the primitive product measure.   The
+more restricted notion of integrability with respect to the primitive
+product measure is indeed the one appropriate for the ideas of 253Yg.
+
+Theorem 253F is a `universal mapping theorem';
+it asserts that every bounded bilinear operator on $L^1(\mu)\times
+L^1(\nu)$ factors through $\otimes:L^1(\mu)\times L^1(\nu)\to
+L^1(\lambda)$, at least if the range space is a Banach space.   It is
+easy to see that this property defines the pair $(L^1(\lambda),\otimes)$
+up to Banach space isomorphism, in the following sense:  if $V$ is a
+Banach space, and $\psi:L^1(\mu)\times L^1(\nu)\to V$ is a bounded
+bilinear operator such that for every bounded bilinear operator $\phi$ from
+$L^1(\mu)\times L^1(\nu)$ to any Banach space $W$ there is a unique
+bounded linear operator $T:V\to W$ such that $T\psi = \phi$ and
+$\|T\|=\|\phi\|$, then there is an isometric Banach space isomorphism
+$S:L^1(\lambda)\to V$ such that $S\otimes=\psi$.    There is of course a
+general theory of bilinear operators between Banach spaces;  in the language
+of this theory, $L^1(\lambda)$ is, or is isomorphic to, the
+`projective tensor product' of $L^1(\mu)$ and $L^1(\nu)$.   For an
+introduction to
+this subject, see {\smc Defant \& Floret 93}, \S I.3, or 
+{\smc Semadeni 71}, \S20.   
+I should perhaps emphasise, for the sake of those who
+have not encountered tensor products before, that this theorem is
+special to $L^1$ spaces.   While some of the same ideas can be applied
+to other function spaces (see 253Xe-253Xg), there is no other class to
+which 253F applies.
+
+There is also a theory of tensor products of Banach lattices, for which
+I do not think we are quite ready (it needs general ideas about ordered
+linear spaces for which I mean to wait until Chapter 35 in the next volume).   However
+253G shows that the ordering, and therefore the Banach lattice
+structure, of
+$L^1(\lambda)$ is determined by the ordering of $L^1(\mu)$ and
+$L^1(\nu)$ and the map
+$\otimes:L^1(\mu)\times L^1(\nu)\to L^1(\lambda)$.
+
+The conditional expectation operators described in 253H are of very
+great importance, largely because in this special context we have a
+realization of the conditional expectation operator as a function $P_0$
+from $\eusm L^1(\lambda)$ to $\eusm L^1(\lambda\restr\Lambda_1)$, not
+just as a function from
+$L^1(\lambda)$ to $L^1(\lambda\restr\Lambda_1)$, as in 242J.
+As described here, $P_0(f+f')$ need not be equal, in the strict sense,
+to $P_0f+P_0f'$;  it can have a larger domain.   In applications,
+however, one might be willing to restrict attention to the linear space
+$\eusm U$  of bounded $\Sigma\tensorhat\Tau$-measurable functions
+defined everywhere on $X\times Y$, so that $P_0$ becomes an operator
+from $\eusm U$ to itself (see 252P).
+}%end of notes
+
+\discrpage
+

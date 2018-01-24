@@ -1,0 +1,902 @@
+\frfilename{mt392.tex}
+\versiondate{11.2.08}
+\copyrightdate{2008}
+
+\def\chaptername{Measurable algebras}
+\def\sectionname{Submeasures}
+
+\newsection{392}
+
+In \S391 I looked at what we can deduce if a Boolean algebra carries a
+strictly positive finitely additive functional.   There are important
+contexts in which we find ourselves with subadditive, rather than
+additive, functionals, and these are what I wish to investigate here.
+It turns out that, once we have found the right hypotheses, such
+functionals can also provide a criterion for measurability of an algebra
+(392G below).   The argument runs through a new idea, using a result in
+finite combinatorics (392D).
+
+At the end of the section I include notes on metrics associated with
+submeasures (392H) and on products of submeasures (392K).
+
+\leader{392A}{Definition}\dvArevised{2007}
+Let $\frak A$ be a Boolean algebra.   A
+{\bf submeasure} on $\frak A$ is a functional
+$\nu:\frak A\to[0,\infty]$ such that
+
+\inset{$\nu 0 = 0$,
+
+$\nu a\le\nu b$ whenever $a\Bsubseteq b$,
+
+$\nu(a\Bcup b)\le\nu a+\nu b$ for all $a$, $b\in\frak A$.}
+
+\leader{392B}{}\cmmnt{ The following list mostly repeats
+ideas we have already used in the context of measures;  but (b) and (c)
+are new, and will be the basis of this section.
+
+\medskip
+
+\noindent}{\bf Definitions} Let $\frak A$ be a Boolean algebra and
+$\nu:\frak A\to[0,\infty]$ a submeasure.
+
+(a) $\nu$ is {\bf strictly positive} if $\nu a>0$ for every $a\ne 0$.
+
+(b) $\nu$ is {\bf exhaustive} if $\lim_{n\to\infty}\nu a_n=0$ for every
+disjoint sequence $\sequencen{a_n}$ in $\frak A$.
+
+(c) $\nu$ is {\bf uniformly exhaustive} if for every $\epsilon>0$ there
+is an $n\in\Bbb N$ such that there is no disjoint family
+$a_0,\ldots,a_n$ with $\nu a_i\ge\epsilon$ for every $i\le n$.
+
+(d) $\nu$ is {\bf totally finite} if $\nu 1<\infty$.
+
+(e) $\nu$ is {\bf unital} if $\nu 1=1$.
+
+(f) $\nu$ is {\bf atomless} if whenever $a\in\frak A$ and $\nu a>0$ there
+is a $b\Bsubseteq a$ such that $\nu b>0$ and $\nu(a\Bsetminus b)>0$.
+%G\lowcy\'nski 08 differs
+
+(g)\dvAformerly{393D} If $\nuprime$ is another submeasure on $\frak A$, then $\nuprime$ is
+{\bf absolutely continuous} with respect to $\nu$ if for every
+$\epsilon>0$ there is a
+$\delta>0$ such that $\nuprime a\le\epsilon$ whenever $\nu a\le\delta$.
+
+\leader{392C}{Proposition} Let $\frak A$ be a Boolean algebra.
+
+(a) If there is an exhaustive strictly positive submeasure on $\frak A$,
+then $\frak A$ is ccc.
+
+(b) A uniformly exhaustive submeasure on $\frak A$ is exhaustive.
+
+(c) Any non-negative additive functional on $\frak A$ is a uniformly
+exhaustive submeasure.
+
+\proof{ These are all elementary.   If $\nu:\frak A\to[0,\infty]$
+is an exhaustive strictly positive submeasure, and
+$\langle a_i\rangle_{i\in I}$ is a disjoint family in
+$\frak A\setminus\{0\}$,
+then $\{i:\nu a_i\ge 2^{-n}\}$ must be finite for each $n$, so $I$ is
+countable.   (Cf.\ 322G.)   If $\nu:\frak A\to[0,\infty]$ is a
+uniformly exhaustive submeasure and $\sequencen{a_n}$ is disjoint in
+$\frak A$, then $\{i:\nu a_i\ge 2^{-n}\}$ is finite for each $n$, so
+$\lim_{i\to\infty}\nu a_i=0$.   If $\nu:\frak A\to\coint{0,\infty}$ is a
+non-negative additive functional, it is a submeasure, by
+326Ba and 326Bf.   If $\epsilon>0$, then take
+$n\ge\bover1{\epsilon}\nu 1$;  if $a_0,\ldots,a_n$ are disjoint, then
+$\sum_{i=0}^n\nu a_i\le\nu 1$, so $\min_{i\le n}\nu a_i<\epsilon$.
+}%end of proof of 392C
+
+\leader{392D}{Lemma} Suppose that $k$, $l$, $m\in\Bbb N$ are such that
+$3\le k\le l\le m$ and $18mk\le l^2$.   Let $L$, $M$ be sets of sizes
+$l$, $m$
+respectively.   Then there is a set $R\subseteq M\times L$ such that (i)
+each vertical section of $R$ has just three members (ii)
+$\#(R[E])\ge\#(E)$ whenever $E\in[M]^{\le k}$;  so that for every
+$E\in[M]^{\le k}$ there is an injective function $f:E\to L$ such that
+$(x,f(x))\in R$ for every $x\in E$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Recall} that $[M]^{\le k}=\{I:I\subseteq M,\,\#(I)\le k\}$,
+$[M]^k=\{I:I\subseteq M,\,\#(I)=k\}$
+(3A1J).}%end of comment
+
+\proof{{\bf (a)} We need to know that $n!\ge 3^{-n}n^n$ for every
+$n\in\Bbb N$;  this is immediate from the inequality
+
+\Centerline{$\sum_{i=2}^n\ln i\ge\int_1^n\ln x\,dx=n\ln n-n+1$ for every
+$n\ge 2$.}
+
+\wheader{392D}{4}{2}{2}{36pt}
+
+{\bf (b)} Let $\Omega$ be the set of those $R\subseteq M\times L$ such
+that each vertical section of $R$ has just three members, so that
+
+\Centerline{$\#(\Omega)=\#([L]^3)^m
+=\bigl(\Bover{l!}{3!(l-3)!}\bigr)^m$.}
+
+\noindent Let us regard $\Omega$ as a probability space with the
+uniform probability.
+
+If $F\in[L]^n$, where $3\le n\le k$, and $x\in M$, then
+
+$$\eqalignno{\Pr(R[\{x\}]\subseteq F)
+&=\Bover{\#([F]^3)}{\#([L]^3)}\cr
+\noalign{\noindent (because $R[\{x\}]$ is a random member of $[L]^3$)}
+&=\Bover{n(n-1)(n-2)}{l(l-1)(l-2)}\le\Bover{n^3}{l^3}\cr}$$
+
+\noindent as $n<l$.   So if $E\in[M]^{n}$ and $F\in[L]^n$, then
+
+$$\eqalignno{\Pr(R[E]\subseteq F)
+&=\prod_{x\in E}\Pr(R[\{x\}]\subseteq F)\cr
+\noalign{\noindent (because the sets $R[\{x\}]$ are chosen
+independently)}
+&\le\Bover{n^{3n}}{l^{3n}}.\cr}$$
+
+Accordingly
+
+$$\eqalignno{\Pr(&\text{there is an }E\subseteq M
+  \text{ such that }\#(R[E])<\#(E)\le k)\cr
+&\le\Pr(\text{there is a non-empty }E\subseteq M
+  \text{ such that }\#(R[E])\le\#(E)\le k)\cr
+&=\Pr(\text{there is an }E\subseteq M
+  \text{ such that }3\le\#(R[E])\le\#(E)\le k)\cr
+\noalign{\noindent (because if $E\ne\emptyset$ then $\#(R[E])\ge 3$)}
+&\le\sum_{n=3}^{k}\sum_{E\in[M]^{n}}\sum_{F\in[L]^n}
+  \Pr(R[E]\subseteq F)
+\le\sum_{n=3}^{k}\#([M]^{n})\#([L]^n)\Bover{n^{3n}}{l^{3n}}\cr
+&=\sum_{n=3}^{k}\Bover{m!}{n!(m-n)!}\Bover{l!}{n!(l-n)!}
+  \Bover{n^{3n}}{l^{3n}}
+\le\sum_{n=3}^{k}\Bover{m^{n}l^nn^{3n}}{n!n!l^{3n}}
+\le\sum_{n=3}^k\Bover{m^nn^n3^{2n}}{l^{2n}}\cr
+\noalign{\noindent (using (a))}
+&=\sum_{n=3}^k\bigl(\Bover{9mn}{l^2}\bigr)^n
+\le\sum_{n=3}^k\Bover1{2^n}
+<1.\cr}$$
+
+\noindent There must therefore be some $R\in\Omega$ such that
+$\#(R[E])\ge\#(E)$ whenever $E\subseteq M$ and $\#(E)\le k$.
+
+\medskip
+
+{\bf (c)} If now $E\in [M]^{\le k}$,
+the restriction $R_E=R\cap(E\times L)$ has the property that
+$\#(R_E[I])\ge\#(I)$ for every $I\subseteq E$.   By Hall's Marriage
+Lemma (3A1K) there is an injective function $f:E\to L$ such that
+$(x,f(x))\in R_E\subseteq R$ for every $x\in E$.
+}%end of proof of 392D
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Of course this argument can be widely generalized;
+see references in {\smc Kalton \& Roberts 83}.
+}%end of comment
+
+\leader{392E}{Lemma} Let $\frak A$ be a Boolean algebra and
+$\nu:\frak A\to[0,\infty]$ a uniformly exhaustive submeasure.
+Then for any
+$\epsilon\in\ocint{0,\nu 1}$ the set $A=\{a:\nu a\ge\epsilon\}$ has
+intersection number greater than $0$.
+
+\proof{{\bf (a)} To begin with (down to the end of (d) below), suppose that
+$\nu 1=1$.
+Because $\nu$ is uniformly exhaustive, there is an $r\ge 1$ such
+that whenever $\langle c_i\rangle_{i\in I}$ is a disjoint family in
+$\frak A$ then $\#(\{i:\nu c_i>\bover15\epsilon\})\le r$, so that
+$\sum_{i\in I}\nu c_i\le r+\bover15\epsilon\#(I)$.   Set
+$\delta=\epsilon/5r$, $\eta=\bover1{74}\delta^2$, so that
+
+\Centerline{$\delta-\eta\ge\bover1{18}(\delta-\eta)^2
+\ge\bover1{18}(\delta^2-2\eta)=4\eta$.}
+
+\medskip
+
+{\bf (b)} Let $\familyiI{a_i}$ be a non-empty finite family in $A$.
+Let $m$ be any multiple of $\#(I)$ greater than or equal to $1/\eta$.
+Then there are integers $k$, $l$ such that
+
+\Centerline{$3\eta\le\Bover{k}{m}\le 4\eta
+\le\Bover1{18}(\delta-\eta)^2$,
+\quad$\delta-\eta\le\Bover{l}{m}\le\delta$,}
+
+\noindent in which case
+
+\Centerline{$3\le k\le l\le m$,
+\quad$18mk\le m^2(\delta-\eta)^2\le l^2$.}
+
+\medskip
+
+{\bf (c)} Take a set $M$ of the form $I\times S$ where $\#(S)=m/\#(I)$,
+so that $\#(M)=m$.   For $x=(i,s)\in M$ set $d_x=a_i$.   Let $L$ be a
+set with $l$ members.   By 392D, there is a set $R\subseteq M\times L$
+such that every vertical section of $R$ has just three members and
+whenever $E\in[M]^{\le k}$ there is an injective function $f_E:E\to L$
+such that $(x,f_E(x))\in R$ for every $x\in E$.
+
+For $E\subseteq M$ set
+
+\Centerline{$b_E
+=\inf_{x\in E}d_x\Bsetminus\sup_{x\in M\setminus E}d_x$,}
+
+\noindent so that $\langle b_E\rangle_{E\subseteq M}$ is a partition of
+unity in $\frak A$.   For $x\in M$ and $j\in L$ set
+
+\Centerline{$c_{xj}=\sup\{b_E:x\in E\in[M]^{\le k},\,f_E(x)=j\}$.}
+
+\noindent If $x$, $y$ are distinct members of $M$ and $j\in L$ then
+
+\Centerline{$c_{xj}\Bcap c_{yj}
+=\sup\{b_E:x$, $y\in E\in[M]^{\le k},\,f_E(x)=f_E(y)=j\}=0$,}
+
+\noindent because every $f_E$ is injective.   Set
+
+\Centerline{$m_j=\#(\{x:x\in M,\,c_{xj}\ne 0\})$}
+
+\noindent for each $j\in L$.   Note that $c_{xj}=0$ if $(x,j)\notin R$,
+so $\sum_{j\in L}m_j\le\#(R)=3m$.
+
+We have
+
+\Centerline{$\sum_{x\in M}\nu c_{xj}\le r+\Bover15\epsilon m_j$}
+
+\noindent for each $j$, by the choice of $r$;  so
+
+$$\eqalign{\sum_{x\in M,j\in L}\nu c_{xj}
+&\le rl+\Bover15\epsilon\sum_{j\in L}m_j
+\le rl+\Bover35m\epsilon\cr
+&\le (r\delta+\Bover35\epsilon)m
+=\Bover45\epsilon m
+<\epsilon m\cr}$$
+
+\noindent by the choice of $l$ and $\delta$.   There must therefore be
+some $x\in M$ such that
+
+\Centerline{$\nu(\sup_{j\in L}c_{xj})
+\le\sum_{j\in L}\nu c_{xj}
+<\epsilon\le\nu d_x$,}
+
+\noindent and $d_x$ cannot be included in
+
+\Centerline{$\sup_{j\in L}c_{xj}=\sup\{b_E:x\in E\in[M]^{\le k}\}$.}
+
+\noindent But as $\sup\{b_E:x\in E\subseteq M\}$ is just $d_x$, there
+must be an $E\subseteq M$, of cardinal greater than $k$, such that
+$b_E\ne 0$.
+
+Recall now that $M=I\times S$, and that
+
+\Centerline{$k\ge 3\eta m=3\eta\#(I)\#(S)$.}
+
+\noindent The set
+$J=\{i:\,\Exists s$, $(i,s)\in E\}$ must therefore have more than
+$3\eta\#(I)$ members,
+since $E\subseteq J\times S$.   But also $d_{(i,s)}=a_i$ for each
+$(i,s)\in E$, so that $\inf_{i\in J}a_i\Bsupseteq b_E\ne 0$.
+
+\medskip
+
+{\bf (d)} As $\familyiI{a_i}$ is arbitrary, the intersection number of
+$A$ is at least $3\eta>0$.
+
+\medskip
+
+{\bf (e)} This completes the proof in the case in which $\nu 1=1$.   If
+$\nu 1=0$ the result is vacuous.   If $\nu 1>0$, set
+$\nu'a=\Bover{\min(\nu a,1)}{\min(\nu 1,1)}$ for each $a$;  then
+it is easy to check that $\nu'$ is a uniformly
+exhaustive submeasure with $\nu'1=1$, and
+
+\Centerline{$\{a:\nu a\ge\epsilon\}
+\subseteq\{a:\nu'a\ge\Bover{\min(\epsilon,1)}{\min(\nu 1,1)}\}$}
+
+\noindent has non-zero intersection number for any
+$\epsilon\in\ocint{0,\nu 1}$.
+So the result is true in the generality stated.
+}%end of proof of 392E
+
+\leader{392F}{Theorem} Let $\frak A$ be a Boolean algebra with a
+strictly positive uniformly exhaustive submeasure.   Then $\frak A$
+is chargeable\cmmnt{, that is, has
+a strictly positive finitely additive functional}.
+
+\proof{ If $\frak A=\{0\}$ this is trivial.   Otherwise, let
+$\nu:\frak A\to[0,\infty]$ be a strictly positive uniformly
+exhaustive
+submeasure.   For each $n$, $A_n=\{a:\nu a\ge\min(2^{-n},\nu 1)\}$ has
+intersection number greater than $0$, and
+$\bigcup_{n\in\Bbb N}A_n=\frak A\setminus\{0\}$ because $\nu$ is
+strictly positive;  so $\frak A$ has a
+strictly positive finitely additive functional, by Kelley's theorem
+(391J).
+}%end of proof of 392F
+
+\leader{392G}{Corollary} Let $\frak A$ be a Boolean algebra.   Then it is
+measurable iff it is \wsid\ and Dedekind $\sigma$-complete and has a
+strictly positive uniformly exhaustive submeasure.
+
+\proof{ Put 391D and 392F together.
+}%end of proof of 392G
+
+\leader{392H}{}\dvAformerly{3{}93B}\cmmnt{ This completes the main work of
+this section.
+However it will be convenient later to have some more facts available
+which belong to the same group of ideas.
+
+\medskip
+
+\noindent}{\bf Metrics from submeasures:  Proposition} Let
+$\frak A$ be a Boolean algebra and $\nu$ a
+strictly positive totally finite submeasure on $\frak A$.
+
+(a) We have a metric $\rho$ on $\frak A$ defined by the formula
+
+\Centerline{$\rho(a,b)=\nu(a\Bsymmdiff b)$}
+
+\noindent for all $a$, $b\in\frak A$.
+
+(b) The Boolean operations $\Bcup$, $\Bcap$, $\Bsymmdiff$, $\Bsetminus$
+and the function $\nu:\frak A\to\Bbb R$ are all uniformly continuous
+for $\rho$.
+
+(c) The metric space completion $(\widehat{\frak A},\hat\rho)$ of
+$(\frak A,\rho)$ is a Boolean algebra under the natural continuous
+extensions of the Boolean operations, and $\nu$ has a unique continuous
+extension $\hat\nu$ to $\widehat{\frak A}$ which is again a strictly
+positive submeasure.
+
+(d) If $\nu$ is additive, then $(\widehat{\frak A},\hat\nu)$ is a
+totally finite measure algebra.
+
+\proof{{\bf (a)-(b)} This is just a generalization of 323A-323B;
+essentially the same formulae can be used.   For the triangle inequality
+for $\rho$, we have
+$a\Bsymmdiff c\Bsubseteq(a\Bsymmdiff b)\Bcup(b\Bsymmdiff c)$, so
+
+\Centerline{$\rho(a,c)
+=\nu(a\Bsymmdiff c)
+\le\nu(a\Bsymmdiff b)+\nu(b\Bsymmdiff c)
+=\rho(a,b)+\rho(b,c)$.}
+
+\noindent For the uniform continuity of the Boolean operations, we have
+
+\Centerline{$(b*c)\Bsymmdiff(b'*c')
+\Bsubseteq (b\Bsymmdiff b')\cup(c\Bsymmdiff c')$}
+
+\noindent so that
+
+\Centerline{$\rho(b*c,b'*c')\le\rho(b,b')+\rho(c,c')$}
+
+\noindent for each of the operations $*=\Bcup$, $\Bcap$, $\Bsetminus$
+and $\Bsymmdiff$ and all $b$, $c$, $b'$, $c'\in\frak A$.
+For the uniform continuity of the function $\nu$ itself, we have
+
+\Centerline{$\nu b\le\nu c+\nu(b\Bsetminus c)\le\nu c+\rho(b,c)$,}
+
+\noindent so that $|\nu b-\nu c|\le\rho(b,c)$.
+
+\medskip
+
+{\bf (c)} $\frak A\times\frak A$ is a dense subset of
+$\widehat{\frak A}\times\widehat{\frak A}$, so the Boolean operations on
+$\frak A$,
+regarded as uniformly continuous functions from $\frak A\times\frak A$
+to $\frak A\subseteq\widehat{\frak A}$, have unique extensions to
+continuous binary operations on $\widehat{\frak A}$ (3A4G).   If we look at
+
+\Centerline{$A=\{(a,b,c):a\Bsymmdiff(b\Bsymmdiff c)
+=(a\Bsymmdiff b)\Bsymmdiff c\}$,}
+
+\noindent this is a closed subset of
+$\widehat{\frak A}\times\widehat{\frak A}\times\widehat{\frak A}$,
+because the maps
+$(a,b,c)\mapsto a\Bsymmdiff(b\Bsymmdiff c)$,
+$(a,b,c)\mapsto(a\Bsymmdiff b)\Bsymmdiff c$ are continuous and the topology of $\widehat{\frak A}$
+is Hausdorff;  since $A$ includes the dense set
+$\frak A\times\frak A\times\frak A$, it is the whole of
+$\widehat{\frak A}\times\widehat{\frak A}\times\widehat{\frak A}$, that is,
+$a\Bsymmdiff(b\Bsymmdiff c)=(a\Bsymmdiff b)\Bsymmdiff c$ for all $a$,
+$b$, $c\in\widehat{\frak A}$.   All the other identities we need to show
+that $\widehat{\frak A}$ is a Boolean algebra can be confirmed by the
+same method.   Of course $\frak A$ is now a subalgebra of
+$\widehat{\frak A}$.
+
+Because $\nu:\frak A\to\coint{0,\infty}$ is uniformly continuous, it has
+a unique continuous extension
+$\hat\nu:\widehat{\frak A}\to\coint{0,\infty}$.   We have
+
+\Centerline{$\hat\nu 0=0$,
+\quad$\hat\nu a\le\hat\nu(a\Bcup b)\le\hat\nu a+\hat\nu b$,
+\quad$\hat\nu a=\hat\rho(a,0)$}
+
+\noindent for every $a$, $b\in\frak A$ and therefore for every
+$a$, $b\in\widehat{\frak A}$, so $\hat\nu$ is a submeasure on
+$\widehat{\frak A}$, and
+
+\Centerline{$\hat\nu a=0\Longrightarrow\hat\rho(a,0)=0
+\Longrightarrow a=0$,}
+
+\noindent so $\hat\nu$ is strictly positive.
+
+\medskip
+
+{\bf (d)} We have $\nu(a\Bcup b)+\nu(a\Bcap b)=\nu a+\nu b$ for all $a$,
+$b\in\frak A$;  because all the operations are continuous,
+$\hat\nu(a\Bcup b)+\hat\nu(a\Bcap b)=\hat\nu a+\hat\nu b$ for all $a$,
+$b\in\widehat{\frak A}$.   In particular, since $\hat\nu 0=0$,
+$\hat\nu$ is additive.
+Next, if $\sequencen{a_n}$ is a non-decreasing sequence in
+$\widehat{\frak A}$,
+$\hat\rho(a_m\Bsymmdiff a_n)=|\hat\nu a_m-\hat\nu a_n|$ for all $m$, $n\in\Bbb N$,
+and $\sequencen{a_n}$ is $\hat\rho$-Cauchy, therefore convergent to some
+$a\in\widehat{\frak A}$.
+Since
+
+\Centerline{$a\Bcap a_n=\lim_{m\to\infty}a_m\Bcap a_n=a_n$}
+
+\noindent for each $n$,
+$a\Bsupseteq a_n$ for every $n$.   If $b\in\widehat{\frak A}$ is any upper
+bound for $\{a_n:n\in\Bbb N\}$, then
+
+\Centerline{$b\Bcap a=\lim_{n\to\infty}b\Bcap a_n
+=\lim_{n\to\infty}a_n=a$}
+
+\noindent and $b\Bsupseteq a$;  thus $a$ is the least upper bound
+of $\{a_n:n\in\Bbb N\}$.
+
+So, first, if $\sequencen{b_n}$ is any sequence in $\widehat{\frak A}$, and
+we set $a_n=\sup_{i\le n}b_i$ for each $n$, $\sup_{n\in\Bbb N}a_n$ is
+defined and must be equal to $\sup_{n\in\Bbb N}b_n$;  accordingly $\widehat{\frak A}$
+is Dedekind $\sigma$-complete.   Next, if $\sequencen{b_n}$ is a disjoint
+sequence in $\widehat{\frak A}$, and again we set $a_n=\sup_{i\le n}b_i$ for each $n$,
+$a=\sup_{n\in\Bbb N}a_n=\sup_{n\in\Bbb N}b_n$, we shall have
+
+\Centerline{$\hat\nu a
+=\lim_{n\to\infty}\hat\nu a_n
+=\lim_{n\to\infty}\sum_{i=0}^n\hat\nu b_i
+=\sum_{n=0}^{\infty}\hat\nu b_n$;}
+
+\noindent which means that $\hat\nu$ is countably additive, and
+$(\widehat{\frak A},\hat\nu)$ is a measure algebra.
+}%end of proof of 392H
+
+\leader{392I}{Corollary} Let $\frak A$ be a Boolean algebra and $\nu$ a
+non-negative additive functional on $\frak A$.   Then there are a totally
+finite measure algebra $(\frak C,\bar\mu)$ and a Boolean homomorphism
+$\pi:\frak A\to\frak C$ such that $\nu a=\bar\mu(\pi a)$ for every
+$a\in\frak A$.
+
+\proof{ Set $I=\{a:\nu a=0\}$;  then $I\normalsubgroup\frak A$, so we can
+form the quotient algebra $\frak B=\frak A/I$ (312L);  let
+$\pi:\frak A\to\frak B$ be the canonical map.   As in part (b) of the proof
+of 321H, we have an additive functional $\mu:\frak B\to\coint{0,\infty}$
+such that $\mu(\pi a)=\nu a$ for every $a\in\frak A$, and (as in 321H)
+$\mu$ is strictly positive.   Take
+$(\frak C,\bar\mu)$ to be $(\widehat{\frak B},\hat\mu)$ as in 392Hd, so
+that $(\frak C,\bar\mu)$ is a totally finite measure algebra.   If we now
+think of $\pi$ as a map from $\frak A$ to $\frak C$, it will still be a
+Boolean homomorphism, and
+
+\Centerline{$\nu a=\mu(\pi a)=\bar\mu(\pi a)$}
+
+\noindent for every $a\in\frak A$.
+}%end of proof of 392I
+
+\leader{392J}{Proposition}\dvAnew{2008}
+Let $\frak A$ be a Boolean algebra, $\nu$
+an exhaustive submeasure on $\frak A$, and $\sequencen{a_n}$ a sequence in
+$\frak A$ such that $\inf_{n\in\Bbb N}\nu a_n>0$.   Then there is an
+infinite $I\subseteq\Bbb N$ such that $\nu(\inf_{i\in I\cap n}a_i)>0$ for
+every $n\in\Bbb N$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} In the formula $I\cap n$ I am identifying $n$ with
+the set of its predecessors, as in 3A1H.
+}
+
+\proof{ For finite $J\subseteq\Bbb N$ set $b_J=\inf_{i\in J}a_i$.   Let
+$\Cal J$ be the family of those $J\in[\Bbb N]^{<\omega}$ such that
+$\limsup_{n\to\infty}\nu(a_n\Bcap b_J)>0$.
+
+\Quer\ Suppose, if possible, that there is no strictly increasing sequence
+in $\Cal J$.   Then $\Cal J$ must have a maximal element $J$ say.
+Set $a'_n=a_n\Bcap b_J$ for $n\in\Bbb N$ and
+$\delta=\limsup_{n\to\infty}\nu a'_n>0$.   For any $n\in\Bbb N\setminus J$,
+$J\cup\{n\}\notin\Cal J$ so
+
+\Centerline{$\lim_{m\to\infty}a'_m\Bcap a'_n
+=\lim_{m\to\infty}a_m\Bcap b_{J\cup\{n\}}=0$.}
+
+\noindent We can therefore choose inductively a sequence $\sequencen{k_n}$
+such that
+
+\Centerline{$k_n>\sup J$,
+\quad$\nu a'_{k_n}\ge\Bover34\delta$,
+\quad$\nu(a'_{k_n}\Bcap a'_{k_i})\le 2^{-i-2}\delta$
+for every $i<n$}
+
+\noindent for each $n\in\Bbb N$.   Now set
+$b_n=a_{k_n}\Bsetminus\sup_{i<n}a_{k_i}$ for each $n$.   Then
+$\sequencen{b_n}$ is disjoint.   Also
+
+\Centerline{$\Bover34\delta
+\le\nu a_{k_n}
+\le\nu b_n+\sum_{i=0}^{n-1}\nu(a_{k_n}\Bcap a_{k_i})
+\le\nu b_n+\sum_{i=0}^{n-1}2^{-i-2}\delta
+\le\nu b_n+\Bover12\delta$}
+
+\noindent and $\nu b_n\ge\bover14\delta$ for every $n$;  which is
+impossible.\ \Bang
+
+There must therefore be a strictly increasing sequence $\sequencen{J_n}$ in
+$\Cal J$.   Set $I=\bigcup_{n\in\Bbb N}J_n$.   If $n\in\Bbb N$, there is an
+$m\in\Bbb N$ such that $I\cap n\subseteq J_m$ and
+$\nu(\inf_{i\in I\cap n}a_i)\ge\nu b_{J_m}>0$.   So we have an appropriate
+$I$.
+}%end of proof of 392J
+
+\leader{*392K}{Products of submeasures}\dvAnew{2008} \cmmnt{There seems
+to be no fully satisfying general construction for
+products of submeasures.   However the
+following method has some interesting features.
+
+\medskip
+
+}{\bf (a)} Let $\frak A$ and $\frak B$ be Boolean algebras with
+submeasures $\mu$, $\nu$ respectively.   On the free product
+$\frak A\otimes\frak B$\cmmnt{ (\S315)}, we have a
+functional $\mu\ltimes\nu$ defined by saying that whenever
+$c\in\frak A\otimes\frak B$ is of the form
+$\sup_{i\in I}a_i\otimes b_i$ where $\familyiI{a_i}$ is a finite
+partition of unity in $\frak A$, then
+
+$$\eqalign{(\mu\ltimes\nu)(c)
+&=\min_{J\subseteq I}
+  \max(\{\mu(\sup_{i\in J}a_i)\}\cup\{\nu b_i:i\in I\setminus J\})\cr
+&=\min\{\epsilon:\epsilon\in[0,\infty],
+  \,\mu(\sup\{a_i:i\in I,\,\nu b_i>\epsilon\})
+\le\epsilon\}.\cr}$$
+
+\prooflet{\noindent\Prf\ Every $c\in\frak A\otimes\frak B$ 
+can be expressed in
+this form (315Oa).   Of course this can be done in
+many different ways.   But if
+$c=\sup_{j\in J}a'_j\otimes b'_j$ is another expression of the same
+kind, then $b_i=b'_j$ whenever $a_i\Bcap a'_j\ne 0$.   So
+
+$$\eqalign{\sup\{a_i:i\in I,\,\nu b_i>\epsilon\}
+&=\sup\{a_i\Bcap a'_j:i\in I,\,j\in J,\,a_i\Bcap a'_j\ne 0,\,
+  \nu b_i>\epsilon\}\cr
+&=\sup\{a_i\Bcap a'_j:i\in I,\,j\in J,\,a_i\Bcap a'_j\ne 0,\,
+  \nu b'_j>\epsilon\}\cr
+&=\sup\{a'_j:j\in J,\,\nu b'_j>\epsilon\}\cr}$$
+
+\noindent for any $\epsilon$, and the two calculations for $\mu\ltimes\nu$
+give the same result.\ \Qed}
+
+\cmmnt{Note that }$(\mu\ltimes\nu)(a\otimes b)=\min(\mu a,\nu b)$ for all
+$a\in\frak A$ and $b\in\frak B$.
+
+\spheader 392Kb In the context of (a), $\mu\ltimes\nu$ is a submeasure.
+
+\prooflet{\Prf\ By definition, $(\mu\ltimes\nu)c\ge 0$ for every
+$c\in\frak A\otimes\frak B$;  and if $c=0$ then $c=1\otimes 0$ and
+$(\mu\ltimes\nu)c=0$.
+
+If $c$, $c'$ are two members of $\frak A\otimes\frak B$, express them
+in the forms
+$c=\sup_{i\in I}a_i\otimes b_i$ and $c'=\sup_{j\in J}a'_j\otimes
+b'_j$ where $\familyiI{a_i}$ and
+$\family{j}{J}{a'_j}$ are partitions of unity in $\frak A$.   Set
+$K=\{(i,j):a_i\Bcap a'_j\ne 0\}\subseteq I\times J$,
+$a''_{ij}=a_i\Bcap a'_j$ for $(i,j)\in K$;  then $\langle
+a''_{ij}\rangle_{(i,j)\in K}$ is a partition of unity in $\frak A$,
+$c=\sup_{(i,j)\in K}a''_{ij}\otimes b_i$ and
+$c'=\sup_{(i,j)\in K}a''_{ij}\otimes b'_j$.   Set
+$\alpha=(\mu\ltimes\nu)c$, $\beta=(\mu\ltimes\nu)c'$,
+$L=\{(i,j):(i,j)\in K$, $\nu b_i>\alpha\}$, $L'=\{(i,j):(i,j)\in K$,
+$\nu b'_j>\beta\}$,
+$e=\sup\{a_{ij}:(i,j)\in L\}$ and $e'=\sup\{a_{ij}:(i,j)\in L'\}$;
+then $\mu e\le\alpha$ and
+$\mu e'\le\beta$.   So $\mu(e\Bcup e')\le\alpha+\beta$;  but
+$e\Bcup e'=\sup_{(i,j)\in L\cup L'}a''_{ij}$ and
+
+\Centerline{$\nu(b_i\Bcup b'_j)\le\nu b_i+\nu b'_j\le\alpha+\beta$}
+
+\noindent for all $(i,j)\in K\setminus(L\cup L')$.   So
+$(\mu\ltimes\nu)(c\Bcup c')\le\alpha+\beta$.
+
+If $c\Bsubseteq c'$, then $b_i\Bsubseteq b'_j$ for every $(i,j)\in
+K$.   So $\nu b_i\le\beta$ for every $(i,j)\in K\setminus L'$ and
+$(\mu\ltimes\nu)c\le\beta$.
+
+Thus $\mu\ltimes\nu$ is subadditive and order-preserving and is a
+submeasure.\ \Qed}
+
+\spheader 392Kc I note that only in exceptional cases will $\mu\ltimes\nu$
+be matched with $\nu\ltimes\mu$ by the canonical isomorphism between
+$\frak A\otimes\frak B$ and $\frak B\otimes\frak A$;  this product is
+not `commutative'.   \cmmnt{(See 392Yc.)}
+It is however `associative', in the following sense.
+Let $(\frak A_1,\mu_1)$, $(\frak A_2,\mu_2)$, $(\frak A_3,\mu_3)$ be
+Boolean algebras endowed with submeasures.   Set
+
+\Centerline{$\lambda_{12}=\mu_1\ltimes\mu_2$,
+\quad$\lambda_{(12)3}=\lambda_{12}\ltimes\mu_3$,
+\quad$\lambda_{23}=\mu_2\ltimes\mu_3$,
+\quad$\lambda_{1(23)}=\mu_1\ltimes\lambda_{23}$.}
+
+\noindent Then the canonical isomorphisms between
+$(\frak A_1\otimes\frak A_2)\otimes\frak A_3$,
+$\frak A_1\otimes\frak A_2\otimes\frak A_3$
+and $\frak A_1\otimes(\frak A_2\otimes\frak A_3)$\cmmnt{ (315L)}
+identify $\lambda_{(12)3}$ with $\lambda_{1(23)}$.
+
+\prooflet{\Prf\ Take any $d\in\frak A_1\otimes\frak A_2\otimes\frak A_3$.
+Express $d$ as
+$\sup_{i\in I}a_i\otimes e_i$ where $\familyiI{a_i}$ is a partition
+of unity in $\frak A_1$ and $e_i\in\frak A_2\otimes\frak A_3$ for
+each $i$;  express each $e_i$ as
+$\sup_{j\in J_i}b_{ij}\otimes c_{ij}$ where $\family{j}{J_i}{b_{ij}}$
+is a partition of unity in $\frak A_2$ and $c_{ij}\in\frak A_3$ for
+$i\in I$, $j\in J_i$.   In this case,
+$\langle a_i\otimes b_{ij}\rangle_{i\in I,j\in J_i}$ is a partition
+of unity in $\frak A_1\otimes\frak A_2$ and
+$d=\sup_{i\in I,j\in J_i}a_i\otimes b_{ij}\otimes c_{ij}$.
+
+Let $\epsilon>0$.   For $i\in I$, set $J'_i=\{j:j\in J_i$,
+$\mu_3c_{ij}>\epsilon\}$,
+$e'_i=\sup_{j\in J'_i}b_{ij}$.   Then
+$\lambda_{23}(\sup_{j\in J_i}b_{ij}\otimes c_{ij})\le\epsilon$ iff
+$\mu_2e'_i\le\epsilon$.
+Set $I'=\{i:\mu_2e'_i>\epsilon\}$;  then
+$\lambda_{1(23)}d\le\epsilon$ iff
+$\mu_1(\sup_{i\in I'}a_i)\le\epsilon$.   From the other direction, set
+$f=\sup\{a_i\otimes b_{ij}:i\in I$, $j\in J'_i\}$;  then
+$\lambda_{(12)3}d\le\epsilon$ iff $\lambda_{12}f\le\epsilon$.   But
+$f=\sup_{i\in I}a_i\otimes e'_i$, so
+$\lambda_{12}f\le\epsilon$ iff $\mu_1(\sup_{i\in I'}a_i)\le\epsilon$.
+
+As $\epsilon$ and $d$ are arbitrary,
+$\lambda_{(12)3}=\lambda_{1(23)}$, as claimed.\ \Qed}
+
+\spheader 392Kd If $\mu$, $\mu'$ are submeasures on $\frak A$,
+$\nu$ and $\nuprime$ are submeasures on $\frak B$,
+$\mu$ is absolutely continuous
+with respect to $\mu'$ and $\nu$ is
+absolutely continuous with respect to $\nuprime$, then
+$\mu\ltimes\nu$ is absolutely continuous with respect to
+$\mu'\otimes\nuprime$.   \prooflet{\Prf\ For any $\epsilon>0$ there is a
+$\delta>0$ such that
+$\mu a\le\epsilon$ whenever $\mu'a\le\delta$ and $\nu b\le\epsilon$
+whenever $\nuprime b\le\delta$.   If now $c\in\frak A\otimes\frak B$ and
+$(\mu'\ltimes\nuprime)(c)\le\delta$, we have an expression
+$c=\sup_{i\in I}a_i\otimes b_i$ and a set $J\subseteq I$ such that
+$\familyiI{a_i}$ is a partition of unity,
+$\mu'(\sup_{i\in J}a_i)\le\delta$ and $\nuprime b_i\le\delta$ for every
+$i\in I\setminus J$;  so $\mu(\sup_{i\in J}a_i)\le\epsilon$,
+$\nu b_i\le\epsilon$ for every
+$i\in I\setminus J$ and $(\mu\ltimes\nu)(c)\le\epsilon$.\ \Qed}
+
+\spheader 392Ke If $\mu$ and $\nu$ are exhaustive, so is
+$\mu\ltimes\nu$.   \prooflet{\Prf\ Let $\sequencen{c_n}$ be a sequence in
+$\frak A\otimes\frak B$ such that $(\mu\ltimes\nu)c_n>\epsilon>0$ for
+every $n$.   For each $n$, express $c_n$ as
+$\sup_{i\in I_n}a_{ni}\otimes b_{ni}$ where $\family{i}{I_n}{a_{ni}}$
+is a partition of unity;  set $I'_n=\{i:i\in I_n$,
+$\nu b_{ni}>\epsilon\}$,
+$a_n=\sup_{i\in I'_n}a_{ni}$;  then
+$\mu a_n>\epsilon$.   By 392J,
+there is an infinite $J\subseteq\Bbb N$ such that
+$\inf_{i\in J\cap n}a_i\ne 0$ for every $n\in\Bbb N$.
+Let $Z$ be the Stone space of $\frak A$, and write $\widehat{a}\subseteq Z$
+for the open-and-closed set corresponding to $a\in\frak A$;  then
+there is a $z\in\bigcap_{n\in J}\widehat{a}_n$.   For every $n\in J$
+there is an $i_n\in I'_n$ such
+that $z\in\widehat{a}_{n,i_n}$.   But now observe that
+$\nu b_{n,i_n}>\epsilon$ for every $n\in J$, so there must be distinct
+$m$, $n\in J$ such that
+$b_{m,i_m}\Bcap b_{n,i_n}\ne 0$;  as $a_{m,i_m}\Bcap a_{n,i_n}$ is
+also non-zero, $c_m\Bcap c_n\ne 0$.
+As $\sequencen{c_n}$ is arbitrary, $\mu\ltimes\nu$ is exhaustive.\ \Qed}
+
+\spheader 392Kf We can extend the construction to infinite products, as
+follows.   Let $I$ be a totally ordered set and
+$\familyiI{(\frak A_i,\mu_i)}$ a family of Boolean
+algebras endowed with unital submeasures.   For a finite set
+$J=\{i_0,\ldots,i_n\}$ where $i_0<\ldots<i_n$ in $I$, let $\lambda_J$
+be the product submeasure
+$(.(\mu_{i_0}\ltimes\mu_{i_1})\ltimes\ldots)\ltimes\mu_{i_n}$ on
+$\frak C_J=\bigotimes_{j\in J}\frak A_j$;  for definiteness, on
+$\frak C_{\emptyset}=\{0,1\}$
+take $\lambda_{\emptyset}$ to be the unital submeasure, while
+$\frak C_{\{i\}}=\frak A_i$ and $\lambda_{\{i\}}=\mu_i$ for each $i\in I$.
+Using (c) repeatedly, we see that if $J$, $K\in[I]^{<\omega}$ and
+$j<k$ for every $j\in J$,
+$k\in K$, then the identification of $\frak C_{J\cup K}$ with
+$\frak C_J\otimes\frak C_K$\cmmnt{ (315L)} matches $\lambda_{J\cup K}$
+with $\lambda_J\ltimes\lambda_K$.
+Moreover, if $K\in[I]^{<\omega}$ and $J$ is any subset of $K$\cmmnt{ (not
+necessarily an initial segment)} and
+$\varepsilon_{JK}:\frak C_J\to\frak C_K$ is the canonical embedding
+corresponding to the identification of $\frak C_K$ with
+$\frak C_J\otimes\frak C_{K\setminus J}$, then
+$\lambda_J=\lambda_K\varepsilon_{JK}$;  this also is an easy
+induction on $\#(K)$.   What this means is that for any subset $M$ of
+$I$ we have a submeasure $\lambda_M$ on
+$\frak C_M=\bigcup\{\varepsilon_{JM}\frak C_J:J\in[M]^{<\omega}\}$,
+being the unique functional such that
+$\lambda_M\varepsilon_{JM}=\lambda_J$ for every
+$J\in[M]^{<\omega}$.   Finally, if
+$L$, $M$ are subsets of $I$ with $l<m$ for every $l\in L$ and
+$m\in M$, then $\lambda_{L\cup M}$ can be identified with
+$\lambda_L\ltimes\lambda_M$.
+
+\spheader 392Kg I should perhaps have remarked already that if $\mu$ and
+$\nu$, in (a), are additive and unital,
+then we have an additive function $\lambda'$ on $\frak A\otimes\frak B$
+such that
+$\lambda'(a\otimes b)=\mu a\cdot\nu b$ for every $a\in\frak A$ and
+$b\in\frak B$\cmmnt{ (326E)}.   Now, setting $\lambda=\mu\ltimes\nu$,
+each of $\lambda$, $\lambda'$ is absolutely continuous with respect to the
+other.   \prooflet{\Prf\ If $c\in\frak A\otimes\frak B$, express $c$ as
+$\sup_{i\in I}a_i\otimes b_i$ where
+$\familyiI{a_i}$ is a finite partition of unity.
+Then $\mu(\sup\{a_i:\nu b_i>\lambda c\})\le\lambda c$, so
+$\lambda'c=\sum_{i\in I}\mu a_i\cdot\nu b_i$ is at most $2\lambda c$.
+On the other hand,
+$\mu(\sup\{a_i:\nu b_i>\sqrt{\lambda'c}\})\le\sqrt{\lambda'c}$, so
+$\lambda c\le\sqrt{\lambda'c}$.\ \Qed}
+
+\exercises{
+\leader{392X}{Basic exercises (a)}
+%\spheader 392Xa
+Show that the first two clauses of the definition 392A can be replaced
+by `$\nu a\le\nu(a\Bcup b)\le\nu a+\nu b$ whenever $a\Bcap b=0$'.
+%392A
+
+\spheader 392Xb Let $\frak A$ be any Boolean algebra and $\nu$ a
+finite-valued submeasure on $\frak A$.   (i) Show that
+$\nu$ is order-continuous iff whenever
+$A\subseteq\frak A$ is non-empty, downwards-directed and has infimum
+$0$, then $\inf_{a\in A}\nu a=0$.   (ii) Show that in this case
+$\nu$ is exhaustive.   \Hint{if $\sequencen{a_n}$ is disjoint, then
+$\bigcup_{n\in\Bbb N}\{b:b\Bsupseteq a_i$ for every $i\ge n\}$ has
+infimum $0$.}
+%392C
+
+\spheader 392Xc Let $\frak A$ be a Boolean algebra and $\mu$, $\nu$ two
+strictly positive submeasures on $\frak A$, each of which is absolutely
+continuous with respect to the other.   Show that they induce uniformly
+equivalent metrics on $\frak A$ (392H), so that both give the same metric
+completion of $\frak A$.
+%392H
+
+\spheader 392Xd Let $\frak A$, $\frak B$ be Boolean algebras with
+uniformly exhaustive submeasures $\mu$, $\nu$ respectively.
+Show that $\mu\ltimes\nu$ is uniformly exhaustive.
+%392K
+
+\leader{392Y}{Further exercises (a)}
+%\spheader 392Ya
+Let $\frak A$ be a Boolean algebra and
+$\lambda:\frak A\to[0,1]$ a functional such that $\lambda 0=0$
+and $\lambda a\le\lambda(a\Bcup b)\le 2\max(\lambda a,\lambda b)$ for all
+$a$, $b\in\frak A$.   Show that there is a submeasure $\nu$ on $\frak A$
+such that $\bover12\lambda\le\nu\le\lambda$.
+%\Hint{consider first the
+%case in which every non-zero value of $\lambda$ is of the form $2^{-k}$.}
+%392A
+
+\spheader 392Yb (T.Jech)
+Show that a Boolean algebra $\frak A$ is chargeable
+iff there are sequences $\sequencen{A_n}$ and
+$\sequencen{k_n}$ such that
+($\alpha$) $\bigcup_{n\in\Bbb N}A_n=\frak A\setminus\{0\}$
+($\beta$) whenever $a$, $b\in\frak A$, $n\in\Bbb N$
+and $a\Bcup b\in A_n$ then at least
+one of $a$, $b$ belongs to $A_{n+1}$ ($\gamma$) if $n\in\Bbb N$ then
+$k_n\in\Bbb N$ and if $a_0,\ldots,a_{k_n}\in\frak A$ are disjoint
+then some $a_j$ does not belong to $A_n$.
+%\Hint{392Ya.}
+%392F 392Ya
+
+\spheader 392Yc I will say that a submeasure $\nu$ on a Boolean algebra
+$\frak A$ is {\bf properly atomless} if for every $\epsilon>0$ there is a
+finite partition $A$ of unity in $\frak A$ such that $\nu a\le\epsilon$ for
+every $a\in A$.   (Compare 326F.)
+(i) Show that if $\frak A$ and $\frak B$ are Boolean algebras
+with submeasures $\mu$, $\nu$ respectively, we have a functional
+$\mu\rtimes\nu:\frak A\otimes\frak B\to[0,\infty]$ defined by saying that
+
+\Centerline{$(\mu\rtimes\nu)(\sup_{i\in I}a_i\otimes b_i)
+=\min_{J\subseteq I}
+  \max(\{\nu(\sup_{i\in J}b_i)\}\cup\{\mu a_i:i\in I\setminus J\})$}
+
+\noindent whenever $\familyiI{b_i}$ is a finite partition of unity in
+$\frak B$ and $a_i\in\frak A$ for each $i\in I$.   (ii) Show that if
+$\mu$ is a non-zero properly atomless submeasure,
+$\nu$ is a submeasure, and
+$\mu\ltimes\nu$ is absolutely continuous with respect to $\mu\rtimes\nu$,
+then $\nu$ is uniformly exhaustive.
+%392K
+
+\spheader 392Yd (See 328H.)
+Let $(I,\le)$ be a non-empty upwards-directed partially
+ordered set, and $\familyiI{(\frak A_i,\bar\mu_i)}$
+a family of probability algebras;  suppose
+that $\pi_{ji}:\frak A_i\to\frak A_j$ is a measure-preserving
+Boolean homomorphism whenever $i\le j$, and that
+$\pi_{ki}=\pi_{kj}\pi_{ji}$ whenever $i\le j\le k$.
+(i) Let $\Cal F$ be the filter
+
+\Centerline{$\{A:A\subseteq I$, there is some $i\in I$ such that $j\in A$
+whenever $i\le j\}$,}
+
+\noindent and set
+$\nu\familyiI{a_i}=\limsup_{i\to\Cal F}\bar\mu_ia_i$ for
+$\familyiI{a_i}\in\prod_{i\in I}\frak A_i$.   Show that $\nu$ is a
+submeasure on $\frak A=\prod_{i\in I}\frak A_i$.   (ii) Let $\Cal J$ be the
+ideal $\{d:\nu d=0\}$ of $\frak A$, and $\frak D$ the quotient algebra
+$\frak A/\Cal J$.   Show that we have a strictly positive
+unital submeasure
+$\bar\nu$ on $\frak D$ such that $\bar\nu d^{\ssbullet}=\nu d$ for every
+$d\in\frak A$, and that $\frak D$ is complete under the metric defined by
+$\bar\nu$.   (iii) Show that for each $i\in I$ we have a Boolean
+homomorphism $\pi_i:\frak A_i\to\frak D$ defined by setting
+$\pi_ia=\family{j}{I}{a_j}^{\ssbullet}$, where $a_j=\pi_{ji}a$ if
+$j\ge i$, $0_{\frak A_j}$ otherwise, and that $\bar\nu\pi_i=\bar\mu_i$.
+Show that $\pi_i=\pi_j\phi_{ji}$ whenever $i\le j$.
+(iv) Show that
+$\frak D_0=\bigcup_{i\in I}\pi_i[\frak A_i]$ is a subalgebra of $\frak D$,
+and that $\bar\nu\restrp\frak D_0$ is additive.   (v) Let $\frak C$ be the
+closure of $\frak D_0$ in $\frak D$, and set
+$\bar\lambda=\bar\nu\restrp\frak C$.   Show that $(\frak C,\bar\lambda)$ is
+a probability algebra.
+(vi) Now suppose that $(\frak B,\bar\nu)$ is a probability algebra, and
+that for each $i\in I$ we are given a measure-preserving
+Boolean homomorphism $\phi_i:\frak A_i\to\frak B$ such that
+$\phi_i=\phi_j\pi_{ji}$ whenever $i\le j$.   Show that
+there is a unique measure-preserving Boolean homomorphism
+$\phi:\frak C\to\frak B$ such that $\phi\pi_i=\phi_i$ for every $i\in I$.
+%328H 392H out of order query
+
+\spheader 392Ye Let $\frak A$ be a Boolean algebra and
+$\nu:\frak A\to[0,\infty]$ a submeasure.   Show that
+the following are equiveridical:   (i) $\nu$ is uniformly exhaustive;
+(ii) whenever
+$\sequencen{a_n}$ is a sequence in $\frak A$ such that
+$\inf_{n\in\Bbb N}\nu a_n>0$, there is a set
+$I\subseteq\Bbb N$, not of zero asymptotic density, such that
+$a_i\Bcap a_j\ne 0$ for all $i$, $j\in I$;  (iii)
+whenever $\sequencen{a_n}$ is a sequence in $\frak A$ such that
+$\inf_{n\in\Bbb N}\nu a_n>0$, there is a set
+$I\subseteq\Bbb N$, not of zero asymptotic density, such that
+$\nu(\inf_{i\in I,i\le n}a_i)>0$ for every $n\in\Bbb N$.
+%392J out of order query
+}%end of exercises
+
+\cmmnt{\Notesheader{392} Much of the first part of this section is a
+matter of generalizing earlier arguments.   Thus 392C ought by now to be
+very easy, while 392Xb recalls the elementary theory of $\tau$-additive
+functionals.
+
+The new ideas are in the combinatorics of 392D-392E.
+I have cast 392D in the form of an argument in probability theory.   Of
+course there is nothing here but simple counting, since the probability
+measure simply puts the same mass on each point of $\Omega$, and every
+statement of the form `$\Pr(R\,\ldots)\le\ldots$' is just a matter of
+counting the elements $R$ of $\Omega$ with the given property.   But I
+think many of us find that the probabilistic language makes the
+calculations more natural;  in particular, we can use intuitions
+associated with the notion of independence of events.   Indeed I
+strongly recommend the method.   It has been used to very great effect
+in the last sixty years in a wide variety of combinatorial
+problems.
+392F and 392G together constitute the {\bf Kalton-Roberts theorem}
+({\smc Kalton \& Roberts 83}).
+
+}%end of notes
+
+\discrpage
+

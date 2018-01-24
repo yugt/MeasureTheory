@@ -1,0 +1,3478 @@
+\frfilename{mt4a2.tex}
+\versiondate{21.4.13}
+\copyrightdate{2002}
+
+\def\Cech{{\smc \v{C}ech 66}}
+\def\Csaszar{{\smc Cs\'asz\'ar 78}}
+\def\Engelking{{\smc Engelking 89}}
+\def\Gaal{{\smc Gaal 64}}
+\def\Kuratowski{{\smc Kuratowski 66}}
+\def\Kechris{{\smc Kechris 95}}
+
+\def\glitem#1{{\it #1}\enskip}
+
+\def\chaptername{Appendix}
+\def\sectionname{General topology}
+
+\newsection{4A2}
+
+Even more than in previous volumes, naturally enough, the work of this
+volume depends on results from general topology.   We have now reached
+the point where some of the facts I rely on are becoming hard
+to find as explicitly stated theorems in standard textbooks.   I find
+myself therefore writing out rather a lot of proofs.   You should not
+suppose that the results to which I attach proofs, rather than
+references, are particularly deep;  on the contrary, in many cases I am
+merely spelling out solutions to classic exercises.
+
+The style of `general' topology, as it has evolved over the last hundred
+years, is to develop a language capable of squeezing the utmost from
+every step of argument.   While this does sometimes lead to absurdly
+obscure formulations, it remains a natural, and often profitable,
+response to the remarkably dense network of related ideas in this area.
+I therefore follow the spirit of the subject in giving the results I
+need in the full generality achievable within the terminology I use.
+For the convenience of anyone coming to the theory for the first time,
+I repeat some of them in the forms in which they are actually applied.
+I should remark, however, that in some cases materially stronger results
+can be proved with little extra effort;  as always, this appendix is to
+be thought of not as a substitute for a thorough study of the subject,
+but as a guide connecting standard approaches to the general theory with
+the special needs of this volume.
+
+\vleader{72pt}{4A2A}{Definitions}\cmmnt{ I begin the section with a
+glossary
+of terms not defined elsewhere.
+
+\medskip}
+
+\glitem{Baire space} A topological space $X$ is a {\bf Baire space} if
+$\bigcap_{n\in\Bbb N}G_n$ is dense in $X$ whenever $\sequencen{G_n}$ is a
+sequence of dense open subsets of $X$.
+
+\glitem{Base of neighbourhoods} If $X$ is a topological space and
+$x\in X$,
+a {\bf base of neighbourhoods} of $x$ is a family $\Cal V$ of
+neighbourhoods of $x$ such that
+every neighbourhood of $x$ includes some member of $\Cal V$.
+%Engelking 1.1
+
+\glitem{boundary} If $X$ is a topological space and $A\subseteq X$, the
+{\bf boundary} of $A$ is
+$\partial A=\overline{A}\setminus\interior A
+=\overline{A}\cap\overline{X\setminus A}$.
+%Engelking 1.3
+
+\glitem{\cadlag}\dvAnew{2008} If $X$ is a Hausdorff space, a function
+$f:\coint{0,\infty}\to X$ is {\bf c\`adl\`ag}  (`continue \`a
+droit, limite \`a gauche') (or {\bf RCLL}
+(`right continuous, left limits'), an {\bf $\pmb{R}$-function},)
+%Rogers & Williams 94
+%also  corlol  (continuous on right, limits on left)
+if $\lim_{s\downarrow t}f(s)=f(t)$
+for every $t\ge 0$ and $\lim_{s\uparrow t}f(s)$ is defined in
+$X$ for every $t>0$.
+
+\glitem{\callal}\dvAnew{2008}  If $X$ is a Hausdorff space, a function
+$f:\coint{0,\infty}\to X$ is {\bf\callal}  (`continue \`a l'une,
+limite \`a l'autre') if $f(0)=\lim_{s\downarrow 0}f(s)$ and, for every
+$t>0$, $\lim_{s\downarrow t}f(s)$ and $\lim_{s\uparrow t}f(s)$
+are defined in $X$, and at least one of them is equal to $f(t)$.
+
+\glitem{\v{C}ech-complete} A completely regular Hausdorff topological
+space
+$X$ is {\bf \v{C}ech-complete} if it is homeomorphic to a G$_{\delta}$
+subset of a compact Hausdorff space.
+%4@34 %4@35
+%Engelking 3.9
+
+   %>component
+
+\glitem{closed interval} Let $X$ be a totally ordered set.   A {\bf
+closed interval} in $X$ is an interval of one of the forms $\emptyset$,
+$[x,y]$,
+$\ocint{-\infty,y}$, $\coint{x,\infty}$ or $X=\ooint{-\infty,\infty}$
+where $x$, $y\in X$\cmmnt{ (see the definition of `interval' below)}.
+
+\glitem{coarser topology} If $\frak S$ and $\frak T$ are two topologies
+on a set $X$, we say that $\frak S$ is {\bf coarser} than $\frak T$ if
+$\frak S\subseteq\frak T$.   (Equality allowed.)
+
+\glitem{compact support} Let $X$ be a topological space and
+$f:X\to\Bbb R$
+a function.   I say that $f$ has {\bf compact support} if
+$\overline{\{x:x\in X,\,f(x)\ne 0\}}$ is compact in $X$.
+
+\glitem{countably compact} A topological space $X$ is {\bf countably
+compact} if every countable open cover of $X$ has a finite subcover.
+\cmmnt{({\bf Warning!} some authors reserve the term for Hausdorff
+spaces.)}
+%Engelking 3.10
+A subset of a topological space is countably compact if it is countably
+compact in its subspace topology.
+
+\glitem{countably paracompact} A topological space $X$ is {\bf countably
+paracompact} if given any countable open cover $\Cal G$ of $X$ there is
+a locally finite family $\Cal H$ of open sets which refines $\Cal G$ and
+covers $X$.
+\cmmnt{({\bf Warning!} some authors reserve the term for Hausdorff
+spaces.)}
+%Engelking 5.2
+
+\glitem{countably tight} A topological space $X$ is {\bf countably
+tight}
+(or has {\bf countable tightness}) if whenever $A\subseteq X$ and
+$x\in\overline{A}$ there is a countable set $B\subseteq A$ such that
+$x\in\overline{B}$.
+%4@25
+%Engelking 1.7.13
+
+\leaveitout{\glitem{development} If $X$ is a topological space, a
+{\bf development} for the topology of $X$ is a sequence
+$\sequencen{\Cal G_n}$ of open covers of $X$ such that whenever
+$H\subseteq X$ is open and $x\in H$, there is an $n\in\Bbb N$ such that
+$\bigcup\{G:x\in G\in\Cal G_n\}\subseteq H\}$.
+}%end of leaveitout
+
+\glitem{direct sum, disjoint union} Let $\familyiI{(X_i,\frak T_i)}$ be
+a family of topological spaces, and set
+$X=\{(x,i):i\in I$, $x\in X_i\}$.
+The {\bf disjoint union topology} on $X$ is $\frak T=\{G:G\subseteq X$,
+$\{x:(x,i)\in G\}\in\frak T_i$ for every $i\in I\}$;  $(X,\frak T)$ is
+the {\bf (direct) sum} of $\familyiI{(X_i,\frak T_i)}$.
+
+If $X$ is a set, $\familyiI{X_i}$ a partition of $X$, and
+$\frak T_i$ a topology on $X_i$ for every $i\in I$, then the {\bf
+disjoint union topology} on $X$ is
+$\{G:G\subseteq X$, $G\cap X_i\in\frak T_i$ for every $i\in I\}$.
+%Engelking \S2.2)
+%4@14
+
+\glitem{dyadic} A Hausdorff space is {\bf dyadic} if it is a continuous
+image of $\{0,1\}^I$ for some set $I$.
+%Engelking exercises
+
+\glitem{equicontinuous} If $X$ is a topological space, $(Y,\Cal W)$ a
+uniform space, and $F$ a set of functions from $X$ to $Y$, then $F$ is {\bf
+equicontinuous} if for every $x\in X$ and $W\in\Cal W$ the set
+$\{y:(f(x),f(y))\in W$ for every $f\in F\}$ is a neighbourhood of $x$.
+%Kelley
+
+\glitem{finer topology} If $\frak S$ and $\frak T$ are two topologies on
+a set $X$, we say that $\frak S$ is {\bf finer} than $\frak T$ if
+$\frak S\supseteq\frak T$.   (Equality allowed.)
+
+\glitem{first-countable} A topological space $X$ is
+{\bf first-countable} if every point has a countable base of
+neighbourhoods.
+%4@39
+%Engelking 1.1
+
+\glitem{half-open} Let $X$ be a totally ordered set.   A {\bf half-open
+interval} in $X$ is a set of one of the forms $\coint{x,y}$,
+$\ocint{x,y}$ where $x$, $y\in X$ and $x<y$\cmmnt{ (see the definition
+of `interval' below)}.
+%this excludes \emptyset
+
+\glitem{hereditarily Lindel\"of} A topological space is {\bf
+hereditarily Lindel\"of} if every subspace is Lindel\"of.
+%4@39, %4@33, %4@25
+
+\glitem{hereditarily metacompact} A topological space is {\bf
+hereditarily metacompact} if every subspace is metacompact.
+%4@38
+
+\glitem{indiscrete} If $X$ is any set, the {\bf indiscrete} topology on
+$X$ is the topology $\{\emptyset,X\}$.
+%4@77
+
+\glitem{interval} Let $(P,\le)$ be a partially ordered set.
+An {\bf interval} in $P$ is a set of one of the forms
+$[p,q]=\{r:p\le r\le q\}$, $\coint{p,q}=\{r:p\le r<q\}$,
+$\ocint{p,q}=\{r:p<r\le q\}$, $\ooint{p,q}=\{r:p<r<q\}$,
+$\coint{p,\infty}=\{r:p\le r\}$,
+$\ocint{-\infty,q}=\{r:r\le q\}$, $\ooint{p,\infty}=\{r:p<r\}$,
+$\ooint{-\infty,q}=\{r:r<q\}$, $\ooint{-\infty,\infty}=P$, where $p$,
+$q\in P$.   \cmmnt{Note that every interval is
+order-convex, but even in a totally ordered set not every order-convex set
+need be an interval in this sense;  an interval always has end-points, if
+we allow $\pm\infty$.}
+
+\glitem{irreducible} If $X$ and $Y$ are topological spaces, a continuous
+surjection $f:X\to Y$ is {\bf irreducible} if $f[F]\ne Y$ for any closed
+proper subset $F$ of $X$.
+%Engelking 3.1.C
+%what one actually seems to need is that $\overline{f[F]}\ne Y$ for
+%closed $F\subset X$
+
+\glitem{isolated} If $X$ is a topological space, a family
+$\Cal A$ of subsets of $X$ is {\bf isolated}
+%or `relatively open'
+if $A\cap\overline{\bigcup(\Cal A\setminus\{A\})}$ is empty for every
+$A\in\Cal A$\cmmnt{;  that is, if $\Cal A$ is disjoint and every
+member of $\Cal A$ is a relatively open set in $\bigcup\Cal A$}.
+
+\glitem{Lindel\"of} A topological space is {\bf Lindel\"of} if every
+open
+cover has a countable subcover.    \cmmnt{({\bf Warning!} some authors
+reserve the term for regular spaces.)}
+%4@12
+%Engelking 3.8 requires `regular'
+
+\glitem{Lipschitz} If $(X,\rho)$ and $(Y,\sigma)$ are metric spaces, a
+function $f:X\to Y$ is {\bf $\gamma$-Lipschitz}, where $\gamma\ge 0$, if
+$\sigma(f(x),f(y))\le\gamma\rho(x,y)$ for all $x$, $y\in X$.   $f:X\to Y$
+is {\bf Lipschitz} if it is $\gamma$-Lipschitz for some $\gamma\ge 0$.
+%4@71
+
+\glitem{locally finite} If $X$ is a topological space, a family $\Cal A$
+of
+subsets of $X$ is {\bf locally finite} if for every $x\in X$ there is an
+open set which contains $x$ and meets only finitely many members of
+$\Cal A$.
+%4@A2
+%Engelking 1.1 (for indexed families)
+
+\glitem{lower semi-continuous} If $X$ is a topological space and $T$ a
+totally ordered set, a function $f:X\to T$ is
+{\bf lower semi-continuous} if $\{x:f(x)>t\}$ is open for every
+$t\in T$.  \cmmnt{(Cf.\ 225H, 3A3Cf.)}
+%Engelking 1.7.14 (for real-valued functions)
+
+%\glitem{manifold} If $r\ge 1$ is an integer, an {\bf $r$-dimensional
+%manifold} is a Hausdorff space $X$ such that every point of $X$ belongs
+%to an open set homeomorphic to the open ball
+%$\{x:\|x\|<1\}\subseteq\BbbR^r$.
+
+\glitem{metacompact} A topological space is
+{\bf metacompact} if every open
+cover has a point-finite refinement which is an open cover.
+\cmmnt{({\bf Warning!} some authors reserve the term for Hausdorff
+spaces.)}
+%Engelking 5.3
+
+\leaveitout{
+\glitem{monotonically normal} Let $(X,\frak T)$ be a
+topological space
+and $Q$ the set of disjoint pairs $(E,F)$ of closed sets in $X$.   $X$ is
+{\bf monotonically normal} if there is a function $W:Q\to\frak T$ such that
+($\alpha$) $E\subseteq W(E,F)$ and $F\cap\overline{W(E,F)}=\emptyset$ for
+all $(E,F)\in Q$ ($\beta$) if $(E,F)$ and $(E',F')\in Q$, $E\subseteq E'$
+and $F'\subseteq F$ then $W(E,F)\subseteq W(E',F')$.
+}%end of leaveitout
+
+\leaveitout{\glitem{Moore space} A {\bf Moore space} is a regular
+Hausdorff space with a development.
+}
+
+\glitem{neighbourhood} If $X$ is a topological space and $x\in X$, a
+{\bf
+neighbourhood} of $x$ is any subset of $X$ including an open set which
+contains $x$.
+%Engelking 1.1
+%4@A2
+
+\glitem{network} Let $(X,\frak T)$ be a topological space.   A
+{\bf network} for $\frak T$ is a family $\Cal E\subseteq\Cal PX$ such
+that whenever $x\in G\in\frak T$ there is an $E\in\Cal E$ such that
+$x\in E\subseteq G$.
+%Engelking 3.1
+
+\glitem{normal} A topological space $X$ is {\bf normal} if for any
+disjoint
+closed sets $E$, $F\subseteq X$ there are disjoint open sets $G$, $H$
+such that $E\subseteq G$ and $F\subseteq H$.   \cmmnt{({\bf Warning!}
+some authors reserve the term for Hausdorff spaces.)}
+
+\glitem{open interval} Let $X$ be a totally ordered set.   An
+{\bf open interval} in $X$ is a set of one of the the forms
+$\ooint{x,y}$, $\ooint{x,\infty}$, $\ooint{-\infty,x}$ or
+$\ooint{-\infty,\infty}=X$ where $x$, $y\in X$\cmmnt{ (see
+the definition of `interval' above)}.
+
+\glitem{open map} If $(X,\frak T)$ and $(Y,\frak S)$ are topological
+spaces, a function $f:X\to Y$ is {\bf open} if $f[G]\in\frak S$ for
+every $G\in\frak T$.
+
+\glitem{order-convex} Let $(P,\le)$ be a partially ordered set.   A
+subset $C$ of $P$ is {\bf order-convex} if
+$[p,q]=\{r:p\le r\le q\}$ is included in $C$ whenever $p$, $q\in C$.
+
+\glitem{order topology}  Let $(X,\le)$ be a totally ordered set.   Its
+{\bf order topology} is that generated by intervals of the form
+$\ooint{x,\infty}\cmmnt{\mskip5mu =\{y:y>x\}}$,
+$\ooint{-\infty,x}\cmmnt{\mskip5mu =\{y:y<x\}}$ as $x$ runs over $X$.
+%Engelking 1.7.4
+
+\glitem{paracompact} A topological space is {\bf paracompact} if every
+open cover has a locally finite refinement which is an
+open cover.   \cmmnt{({\bf Warning!}  some authors reserve the term
+for Hausdorff spaces.)}
+%Engelking 5.1
+
+\glitem{perfect} A topological space is {\bf perfect} if
+it is compact and has no isolated points.
+
+\glitem{perfectly normal} A topological space is {\bf perfectly normal}
+if it is normal and every closed set is a G$_{\delta}$ set.
+\cmmnt{({\bf
+Warning!} remember that some authors reserve the term `normal' for
+Hausdorff spaces.)}
+
+\glitem{point-countable, point-finite} A family $\Cal A$ of sets is
+{\bf point-countable} if no
+point belongs to more than countably many members of $\Cal A$.
+%4@A2
+Similarly, an indexed family $\familyiI{A_i}$ of sets is
+{\bf point-finite} if $\{i:x\in A_i\}$ is finite for every $x$.
+%4@38
+
+\glitem{Polish} A topological space $X$ is {\bf Polish} if it is
+separable
+and its topology can be defined from a metric under which $X$ is
+complete.
+
+\glitem{pseudometrizable} A topological space $(X,\frak T)$ is
+{\bf pseudometrizable} if $\frak T$ is defined by a single
+pseudometric\cmmnt{ (2A3F)}.
+
+\glitem{refine(ment)} If $\Cal A$ is a family of sets, a {\bf
+refinement}
+of $\Cal A$ is a family $\Cal B$ of sets such that every member of
+$\Cal B$ is included in some member of $\Cal A$;  in this case I say
+that $\Cal B$ {\bf refines} $\Cal A$.   \cmmnt{({\bf Warning!} I do
+not suppose that $\bigcup\Cal B=\bigcup\Cal A$.)}
+%4@A2
+
+\glitem{relatively countably compact} If $X$ is a topological space, a
+subset $A$ of $X$ is {\bf relatively countably compact} if every
+sequence in $A$ has a cluster point in $X$.   \cmmnt{({\bf Warning!}
+This is {\it not} the same as supposing that $A$ is included in a
+countably compact subset of $X$.)}
+
+\glitem{scattered} A topological space $X$ is {\bf scattered} if every
+non-empty subset of $X$ has an isolated point (in its subspace
+topology).
+
+\glitem{second-countable} A topological space is
+{\bf second-countable} if the topology has a
+countable base\cmmnt{, that is, if its weight is at most $\omega$}.
+%Engelking 1.1
+%4@13
+
+\glitem{semi-continuous} {\it see} lower semi-continuous, upper
+semi-continuous.
+
+\glitem{sequential} A topological space is {\bf sequential} if every
+sequentially closed set in $X$ is closed.
+%Engelking 1.6
+
+\glitem{sequentially closed} If $X$ is a topological space, a subset $A$
+of
+$X$ is {\bf sequentially closed} if $x\in A$ whenever $\sequencen{x_n}$
+is a sequence in $A$ converging to $x\in X$.
+
+\glitem{sequentially compact} A topological space is
+{\bf sequentially compact} if every sequence has a convergent sequence.
+A subset of a
+topological space is sequentially compact if it is sequentially compact
+in its subspace topology.   \cmmnt{({\bf Warning!} some authors
+reserve the term for Hausdorff spaces.)}
+%4@16 %4@25
+
+\glitem{sequentially continuous} If $X$ and $Y$ are topological spaces,
+a function $f:X\to Y$ is {\bf sequentially continuous} if
+$\sequencen{f(x_n)}\to f(x)$ in $Y$ whenever $\sequencen{x_n}\to x$ in
+$X$.
+
+\glitem{subbase} If $(X,\frak T)$ is a topological space, a {\bf
+subbase}
+for $\frak T$ is a family $\Cal U\subseteq\frak T$ which generates
+$\frak T$, in the sense that $\frak T$ is the coarsest topology on $X$
+including $\Cal U$.   \cmmnt{({\bf Warning!} most authors reserve the
+term for families $\Cal U$ with union $X$.)}
+
+\glitem{totally bounded} If $(X,\Cal W)$ is a uniform space, a subset
+$A$ of $X$ is {\bf totally bounded} if for every $W\in\Cal W$ there is a
+finite set $I\subseteq X$ such that $A\subseteq W[I]$.   If $(X,\rho)$
+is a metric space, a subset of $X$ is totally bounded if it is totally
+bounded for the associated uniformity\cmmnt{ (3A4B)}.
+
+\glitem{uniform convergence} If $X$ is a set, $(Y,\sigma)$ is a metric
+space and $\Cal A$ is a family
+of subsets of $X$ then the {\bf topology of uniform convergence} on
+members of $\Cal A$ is the topology on $Y^X$ generated by the
+pseudometrics $(f,g)\mapsto\min(1,\sup_{x\in A}\sigma(f(x),g(x)))$ as
+$A$ runs over
+$\Cal A\setminus\{\emptyset\}$.   \cmmnt{(It is elementary to
+verify that the formula here defines a pseudometric.)}
+
+\glitem{upper semi-continuous} If $X$ is a topological space and $T$ is a
+totally ordered set, a function
+$f:X\to T$ is {\bf upper semi-continuous} if $\{x:f(x)<t\}$ is
+open for every $t\in T$.
+%Engelking 1.7.14
+
+\glitem{weakly $\alpha$-favourable} A topological space $(X,\frak T)$ is
+{\bf weakly $\alpha$-favourable} if there is a function
+$\sigma:\bigcup_{n\in\Bbb N}(\frak T\setminus\{\emptyset\})^{n+1}
+\to\frak T\setminus\{\emptyset\}$ such that (i)
+$\sigma(G_0,\ldots,G_n)\subseteq G_n$ whenever $G_0,\ldots,G_n$ are
+non-empty open sets (ii) whenever
+$\sequencen{G_n}$ is a sequence in $\frak T\setminus\{\emptyset\}$ such
+that $G_{n+1}\subseteq\sigma(G_0,\ldots,G_n)$ for every $n$, then
+$\bigcap_{n\in\Bbb N}G_n$ is non-empty.
+%Kechris uses `Choquet space'
+
+\glitem{weight} If $X$ is a topological space, its {\bf weight} $w(X)$
+is the smallest cardinal of any base for the topology.
+%4@25
+%Engelking 1.1
+
+\glitem{$C_b$} If $X$ is a topological space, $C_b(X)$ is the space of
+bounded continuous real-valued functions defined on $X$.
+
+\glitem{F$_{\sigma}$} If $X$ is a topological space, an {\bf
+F$_{\sigma}$}
+set in $X$ is one expressible as the union of a sequence of closed sets.
+%4@22
+%Engelking 1.3
+
+\glitem{G$_{\delta}$} If $X$ is a topological space, a {\bf
+G$_{\delta}$}
+set in $X$ is one expressible as the intersection of a
+sequence of open sets.
+%Engelking 1.3
+
+\glitem{K$_{\sigma}$} If $X$ is a topological space, a
+{\bf K$_{\sigma}$} set in $X$ is one expressible as the union of a
+sequence of compact sets.
+%4{}59
+
+%\glitem{lim sup} If $\family{i}{I}{A_i}$ is a non-empty family of sets
+%in a topological space and $\Cal F$ is a filter on $I$,
+%I write $\limsup_{i\to\Cal F}A_i$ for
+%$\bigcap_{J\in\Cal F}\overline{\bigcup_{i\in J}A_i}$.
+
+$\Cal PX$ If $X$ is any set, the {\bf usual topology} on $\Cal PX$ is
+that generated by the sets $\{a:a\subseteq X$, $a\cap J=K\}$ where
+$J\subseteq X$ is finite and $K\subseteq J$.
+
+\glitem{T$_0$} If $(X,\frak T)$ is a topological space, we say that it
+is
+{\bf T$_0$} if for any two distinct points of $X$ there is an open set
+containing one but not the other.
+%Engelking 1.5
+
+\glitem{T$_1$} If $(X,\frak T)$ is a topological space, we say that it
+is
+{\bf T$_1$} if singleton sets are closed.
+
+\glitem{$\pi$-base} If $(X,\frak T)$ is a topological space, a
+{\bf $\pi$-base} for $\frak T$ is a set $\Cal U\subseteq\frak T$ such
+that every non-empty open set includes a non-empty member of $\Cal U$.
+
+\glitem{$\sigma$-compact} A topological space $X$ is
+{\bf $\sigma$-compact}
+if there is a sequence of compact subsets of $X$ covering $X$.
+
+\glitem{$\sigma$-disjoint} A family of sets is
+{\bf $\sigma$-disjoint} if it is expressible as
+$\bigcup_{n\in\Bbb N}\Cal A_n$ where every $\Cal A_n$ is disjoint.
+
+\glitem{$\sigma$-isolated} If $X$ is a topological space, a
+family of subsets of $X$ is {\bf $\sigma$-isolated} if it is expressible
+as $\bigcup_{n\in\Bbb N}\Cal A_n$ where every $\Cal A_n$ is an isolated
+family.
+
+\glitem{$\sigma$-metrically-discrete} If $(X,\rho)$ is a metric space, a
+family of subsets of $X$ is {\bf $\sigma$-metrically-discrete}
+if it is expressible as $\bigcup_{n\in\Bbb N}\Cal A_n$ where
+$\rho(x,y)\ge 2^{-n}$ whenever $n\in\Bbb N$, $A$ and $B$ are distinct
+members of $\Cal A_n$, $x\in A$ and $y\in B$.
+
+\leader{4A2B}{Elementary facts about general topological spaces}
+{\bf (a) Bases and networks} (i) Let $(X,\frak T)$ be a topological
+space and $\Cal U$ a subbase for $\frak T$.   Then
+$\{X\}\cup\{U_0\cap U_1\cap\ldots\cap U_n:U_0,\ldots,U_n\in\Cal U\}$ is
+a base for $\frak T$.   \prooflet{(For this is a base for a topology, by
+3A3Mc.)}
+
+\quad (ii) Let $X$ and $Y$ be topological spaces, and $\Cal V$ a subbase
+for the topology of $Y$.   Then a function $f:X\to Y$ is continuous iff
+$f^{-1}[V]$ is open for every $V\in\Cal V$.   \prooflet{(\Engelking,
+1.4.1(ii)).}
+%4@18 %4@17 %4@23
+
+\quad (iii) If $X$ and $Y$ are topological spaces, $\Cal E$ is a network
+for the topology of $Y$, and $f:X\to Y$ is a function such that
+$f^{-1}[E]$ is open for every $E\in\Cal E$, then $f$ is continuous.
+\prooflet{(The topology generated by $\Cal E$ includes the given
+topology on $Y$.)}
+
+\quad (iv) If $X$ is a topological space and $\Cal U$ is a subbase for
+the topology of $X$, then a filter $\Cal F$ on $X$ converges to $x\in X$
+iff $\{U:x\in U\in\Cal U\}\subseteq\Cal F$.   \prooflet{(If the
+condition is satisfied, $\Cal F\cup\{A:A\subseteq X,\,x\notin A\}$ is a
+topology on $X$ including $\Cal U$.)}
+%4@39
+
+\quad (v) If $X$ and $Y$ are topological spaces with subbases
+$\Cal U$, $\Cal V$ respectively, then
+$\{U\times Y:U\in\Cal U\}\cup\{X\times V:V\in\Cal V\}$ is a subbase for
+the product topology of $X\times Y$.   \prooflet{(\Kuratowski, \S15.I.)}
+
+%A base for a topology $\frak T$ is just a network for
+%$\frak T$ consisting of members of $\frak T$.
+
+\quad (vi) If $\Cal U$ is a (sub-\nobreak)base for a topology on $X$,
+and $Y\subseteq X$, then
+$\{Y\cap U:U\in\Cal U\}$ is a (sub-\nobreak)base for the subspace
+topology of $Y$.   \prooflet{(\Csaszar, 2.3.13(e)-(f).)}
+
+\quad (vii) If $X$ is a topological space, $\Cal E$ is a network for the
+topology of $X$, and $Y$ is a subset of $X$, then
+$\{E\cap Y:E\in\Cal E\}$ is a network for the topology of $Y$.
+
+\quad (viii) If $X$ is a topological space and $\Cal A$ is a
+($\sigma$-\nobreak)isolated family of subsets of $X$, then
+$\{A\cap Y:A\in\Cal A'\}$ is ($\sigma$-\nobreak)isolated whenever
+$Y\subseteq X$ and $\Cal A'\subseteq\Cal A$.
+
+\quad (ix) If a topological space $X$ has a $\sigma$-isolated
+network, so has every subspace of $X$.
+
+%partitions into open sets
+\spheader 4A2Bb
+If $\familyiI{H_i}$ is a partition of a topological space $X$ into open
+sets and $F_i\subseteq H_i$ is closed\cmmnt{ (either in $X$ or in
+$H_i$)} for each $i\in I$, then $F=\bigcup_{i\in I}F_i$ is closed in
+$X$.
+\prooflet{($X\setminus F=\bigcup_{i\in I}(H_i\setminus F_i)$.)}
+%4@43
+
+%filters
+\spheader 4A2Bc If $X$ is a topological space, $A\subseteq X$ and
+$x\in X$,
+then $x\in\overline{A}$ iff there is an ultrafilter on $X$, containing
+$A$, which converges to $x$.
+\prooflet{($\{A\}\cup\{G:x\in G\subseteq X$, $G$ is open$\}$ has the
+finite intersection property;  use 4A1Ia.)}
+%4@22
+
+%semi-continuity
+\spheader 4A2Bd {\bf Semi-continuity} Let $X$ be a topological space.
+
+\quad(i) A function $f:X\to\Bbb R$ is lower semi-continuous iff $-f$ is
+upper semi-continuous.
+\cmmnt{(\Cech, 18D.8.)}
+A function $f:X\to\Bbb R$ is lower semi-continuous iff
+$\Omega=\{(x,\alpha):x\in X$, $\alpha\ge f(x)\}$ is closed in
+$X\times\Bbb R$.
+%\query not \Cech not \Engelking
+\prooflet{(If $f$ is lower semi-continuous and
+$\alpha<\beta<f(x)$ then $\{y:f(y)>\beta\}\times\ooint{-\infty,\beta}$ is a
+neighbourhood of $(x,\alpha)$;  so $\Omega$ is closed.   If $\Omega$ is
+closed then for any $\gamma\in\Bbb R$ the set
+$\{x:f(x)>\gamma\}=\{x:(x,\gamma)\notin\Omega\}$ is open;  so $f$ is lower
+semi-continuous.)}
+
+\quad(ii) If $T$ is a totally ordered set, $f:X\to T$ is lower
+semi-continuous, $Y$ is another topological space,
+and $g:Y\to X$ is continuous, then $fg:Y\to T$ is lower
+semi-continuous.
+\prooflet{($\{y:(fg)(y)>t\}=g^{-1}[\{x:f(x)>t\}]$.)}
+%4@43, 4@44
+In particular, if $f:X\to T$ is lower semi-continuous and
+$Y\subseteq X$, then $f\restr Y$ is lower semi-continuous.
+Similarly, if $f:X\to T$ is upper semi-continuous
+and $g:Y\to X$ is continuous, then $fg:Y\to T$ is upper
+semi-continuous.
+
+\quad(iii) If $f$, $g:X\to\ocint{-\infty,\infty}$ are lower
+semi-continuous so is $f+g:X\to\ocint{-\infty,\infty}$.
+\cmmnt{(\Cech, 18D.8.)}
+%\prooflet{($\{x:(f+g)(x)>\alpha\}
+%=\bigcup_{\beta\in\Bbb R}
+%\{x:f(x)>\beta\}\cap\{x:g(x)>\alpha-\beta\}$.)}
+
+\quad(iv) If $f$, $g:X\to[0,\infty]$ are lower semi-continuous so
+is $f\times g:X\to[0,\infty]$.
+\cmmnt{(\Cech, 18D.8.)}
+%\prooflet{($\{x:(f\times g)(x)>\alpha\}
+%=\bigcup_{\beta>0}\{x:f(x)>\beta\}\cap\{x:g(x)>\Bover{\alpha}{\beta}\}$
+%if $\alpha>0$.)}
+%4@43
+
+\quad(v) If $\Phi$ is any non-empty set of lower semi-continuous
+functions from $X$ to $[-\infty,\infty]$, then
+$x\mapsto\sup_{f\in\Phi}f(x):X\to[-\infty,\infty]$ is lower
+semi-continuous.
+
+\quad(vi) $f:X\to\Bbb R$ is continuous iff $f$ is both upper
+semi-continuous and lower semi-continuous iff $f$ and $-f$ are both
+lower semi-continuous.
+
+\quad(vii)\dvAnew{2008}
+If $f:X\to[-\infty,\infty]$ is lower semi-continuous, and
+$\Cal F$ is a filter on $X$ converging to $y\in X$, then
+$f(y)\le\liminf_{x\to\Cal F}f(x)$.
+%\prooflet{\query.} %not Engelking
+%4{}94C
+
+\quad(viii)\dvAnew{2008}
+If $X$ is compact and not empty, and $f:X\to[-\infty,\infty]$ is lower
+semi-continuous then $K=\{x:f(x)=\inf_{y\in X}f(y)\}$ is non-empty and
+compact.
+\prooflet{\Prf\ Setting $\gamma=\inf_{y\in X}f(y)\in[-\infty,\infty]$,
+$\{\{x:f(x)\le\alpha\}:\alpha>\gamma\}$ is a downwards-directed family of
+non-empty closed sets, so its intersection $K$ is a non-empty closed set.\
+\Qed}
+
+\quad(ix)\dvAnew{2008}
+If $f$, $g:X\to[0,\infty]$ are lower semi-continuous and
+$f+g$ is continuous at $x\in X$ and finite there,
+then $f$ and $g$ are continuous at $x$.
+\prooflet{\Prf\ If $\epsilon>0$ there is a neighbourhood $G$ of $x$ such
+that $(f+g)(y)\le(f+g)(x)+\epsilon$ for every $y\in G$ and
+$g(y)\ge g(x)-\epsilon$ for every $y\in G$, so that
+$f(y)\le f(x)+2\epsilon$ for every $y\in G$.\ \Qed}
+
+% If $f:X\to[-\infty,\infty]$ is lower semi-continuous and
+% $\Cal F$ is a convergent ultrafilter on $X$ then
+% $f(\lim\Cal F)\le\lim f[[\Cal F]]
+% If $f$, $g$ are lower semi-continuous so are $f\vee g$, $f\wedge g$
+
+%separability
+\spheader 4A2Be {\bf Separable spaces} (i)
+If $\familyiI{A_i}$ is a countable family of separable subsets of a
+topological space $X$ then $\bigcup_{i\in I}A_i$
+and $\overline{\bigcup_{i\in I}A_i}$ are separable.
+\prooflet{(If $D_i\subseteq A_i$ is countable and dense for each $i$,
+$\bigcup_{i\in I}D_i$ is countable and dense in both
+$\bigcup_{i\in I}A_i$ and its closure.)}
+%4@18 tacitly
+
+\quad (ii) If $\familyiI{X_i}$ is a family of separable topological
+spaces and $\#(I)\le\frak c$, then $\prod_{i\in I}X_i$ is separable.
+\prooflet{(\Engelking, 2.3.16.)}
+
+\quad (iii) A continuous image of a separable topological space is
+separable.   \prooflet{(\Engelking, 1.4.11.)}
+
+\spheader 4A2Bf {\bf Open maps} (i) Let $\familyiI{X_i}$ be any family of
+topological
+spaces, with product $X$.   If $J\subseteq I$ is any set, and we write
+$X_J$ for $\prod_{i\in J}X_i$, then the canonical map
+$x\mapsto x\restr J:X\to X_J$ is open.
+\prooflet{(\Engelking, p.\ 79.)}
+%4@15
+
+\quad(ii) Let $X$ and $Y$ be topological spaces and $f:X\to Y$ a
+continuous open map.   Then
+$\interior{f^{-1}[B]}=f^{-1}[\interior B]$ and
+$\overline{f^{-1}[B]}=f^{-1}[\overline{B}]$ for every $B\subseteq Y$.
+\prooflet{\Prf\ Because $f$ is continuous, $f^{-1}[\interior B]$ is an
+open set included in
+$f^{-1}[B]$, so is included in $\interior f^{-1}[B]$.   Because $f$ is
+open, $f[\interior f^{-1}[B]]$ is an open set included in
+$f[f^{-1}[B]]\subseteq B$, so
+$f[\interior f^{-1}[B]]\subseteq\interior B$, that is,
+$\interior f^{-1}[B]\subseteq f^{-1}[\interior B]$.
+Now apply this to $Y\setminus B$ and take complements.\ \Qed}
+
+\dvAnew{2013}
+It follows that $f^{-1}[B]$ is nowhere dense in $X$ whenever $B\subseteq Y$
+is nowhere dense in $Y$.   \prooflet{($\interior\overline{f^{-1}[B]}
+=\interior f^{-1}[\overline{B}]=f^{-1}[\interior\overline{B}]=\emptyset$.)}
+If $f$ is surjective and $B\subseteq Y$, then
+$B$ is nowhere dense in $Y$ iff $f^{-1}[B]$ is nowhere dense in $X$.
+\prooflet{(For $\interior\overline{f^{-1}[B]}
+=f^{-1}[\interior\overline{B}]$ is empty iff $\interior\overline{B}$ is
+empty.)}
+%4@43
+
+\quad(iii)\dvAnew{2008}
+Let $X$ and $Y$ be topological spaces and $f:X\to Y$ a
+continuous open map.   Then $H\mapsto f^{-1}[H]$ is an order-continuous
+Boolean homomorphism from the regular open algebra of $Y$ to the regular
+open algebra of $X$.   \prooflet{\Prf\ If $H\subseteq Y$ is a regular
+open set,
+
+\Centerline{$\interior\overline{f^{-1}[H]}=\interior f^{-1}[\overline{H}]
+=f^{-1}[\interior\overline{H}]=f^{-1}[H]$}
+
+\noindent by (ii), so $f^{-1}[H]$ is a regular open set in $X$.   If
+$F\subseteq Y$ is nowhere dense, then
+$f^{-1}[F]$ is nowhere dense in $X$, as noted in (ii) above.   By 314Ra,
+$H\mapsto f^{-1}[H]=\interior\overline{f^{-1}[H]}$ is an order-continuous
+Boolean
+homomorphism from $\RO(Y)$ to $\RO(X)$.\ \QeD}   If $f$ is surjective, then
+the homomorphism is injective\prooflet{ (because
+$f^{-1}[H]\ne\emptyset$ whenever
+$H\ne\emptyset$)}, and for $H\subseteq Y$, $H$ is a regular
+open set in $Y$ iff $f^{-1}[H]$ is a regular open set in $X$\prooflet{
+(because in this case $f^{-1}[H]=f^{-1}[\interior\overline{H}]$)}.
+% 5{}27
+
+\quad(iv)\dvAnew{2012}
+If $X_0$, $Y_0$, $X_1$, $Y_1$ are topological spaces,
+and $f_i:X_i\to Y_i$ is an open map for each $i$, then
+$(x_0,x_1)\mapsto(f_0(x_0),f_1(x_1)):X_0\times X_1\to Y_0\times Y_1$ is
+open.   \prooflet{(\Engelking, 2.3.29.)}
+
+%product spaces
+\spheader 4A2Bg Let $\familyiI{X_i}$ be a family of topological spaces
+with product $X$.
+
+\quad(i) If $A\subseteq X$ is determined by coordinates in
+$J\subseteq I$\cmmnt{ in the sense of 254M}, then $\overline{A}$ and
+$\interior A$ are also determined by coordinates in $J$.
+\prooflet{\Prf\ Let
+$\pi:X\to\prod_{i\in J}X_i$ be the canonical map.   Then
+$A=\pi^{-1}[\pi[A]]$, so (f) tells us that
+$\interior A=\pi^{-1}[\interior\pi[A]]$ and
+$\overline{A}=\pi^{-1}[\overline{\pi[A]}]$;  but these are both
+determined by coordinates in $J$.\ \Qed}
+
+\quad(ii) If $F\subseteq X$ is closed, there is a smallest set
+$J^*\subseteq I$ such that $F$ is determined by coordinates in
+$J^*$.
+
+\prooflet{\Prf\ Let $\Cal J$ be the family of all those sets
+$J\subseteq I$ such that $F$ is determined by coordinates in $\Cal J$.
+If $J_1$, $J_2\in\Cal J$, then $J_1\cap J_2\in\Cal J$ (254Ta).
+Set $J^*=\bigcap\Cal J$.   \Quer\ Suppose, if possible, that $F$ is not
+determined by coordinates in $J^*$.   Then there are $x\in F$,
+$y\in X\setminus F$ such that $x\restr J^*=y\restr J^*$.   Because
+$X\setminus F$ is open, there is a finite set $K\subseteq I$ such that
+$z\notin F$ whenever $z\in X$ and $z\restr K=y\restr K$.   Because
+$\Cal J$ is closed under finite intersections, there is a $J\in\Cal J$
+such that $K\cap J=K\cap J^*$.   Define $z\in X$ by setting $z(i)=x(i)$
+for $i\in J$, $z(i)=y(i)$ for $i\in I\setminus J$.   Then
+$z\restr J=x\restr J$, so $z\in F$, but $z\restr K=y\restr K$, so
+$z\notin F$.\ \Bang
+
+Thus $J^*\in\Cal J$ and is the required smallest member of $\Cal J$.\
+\Qed}%end of prooflet
+
+%locally finite families
+\spheader 4A2Bh Let $X$ be a topological space.
+
+\quad(i) If $\Cal E$ is a locally finite family of closed subsets of
+$X$, then $\bigcup\Cal E'$ is closed for every $\Cal E'\subseteq\Cal E$.
+\prooflet{(\Engelking, 1.1.11.)}
+
+\quad(ii) If $\familyiI{f_i}$ is a
+family in $C(X)$ such that $\familyiI{\{x:f_i(x)\ne 0\}}$ is locally
+finite, then we have a continuous function $f:X\to\Bbb R$ defined by
+setting $f(x)=\sum_{i\in I}f_i(x)$ for every $x\in X$.
+\prooflet{\Prf\ For any $x$, $\{i:f_i(x)\ne 0\}$ is finite, so $f$
+is well-defined.   If $x_0\in X$ and $\epsilon>0$, there is a
+neighbourhood $V$ of $x_0$ such that
+$J=\{i:i\in I,\,f_i(x)\ne 0$ for some $x\in V\}$ is finite;  now there
+is a neighbourhood $W$ of $x_0$,
+included in $V$, such that
+$\sum_{i\in J}|f_i(x)-\sum_{i\in J}f_i(x_0)|<\epsilon$ for every
+$x\in W$, so that $|f(x)-f(x_0)|<\epsilon$ for every $x\in W$.   As
+$x_0$ and $\epsilon$ are arbitrary, $f$ is continuous.\ \Qed}
+
+%boundary
+\spheader 4A2Bi Let $X$ be a topological space and $A$, $B$
+two subsets of $X$.   Then the boundary $\partial(A*B)$ is included in
+$\partial A\cup\partial B$, where $*$ is
+any of $\cup$, $\cap$, $\setminus$, $\symmdiff$.  \prooflet{(Generally,
+if $F\subseteq X$, $\{A:\partial A\subseteq F\}
+=\{A:\overline{A}\setminus F\subseteq\interior A\}$ is a subalgebra of
+$\Cal PX$.)}
+
+%\leaveitout{\spheader 4A2Bi
+%\quad(i) If $G\subseteq X$ is open then
+%$G\cap\partial B\subseteq\partial(G\cap B)$.
+%\prooflet{($G\cap\overline{B}\subseteq\overline{G\cap B}$,
+%$G\cap\overline{X\setminus B}\subseteq\overline{G\setminus B}$.)}
+
+%\quad(ii) \quad(iii) $A\cap\partial B\subseteq\partial
+%A\cup\partial(A\cap B)$.
+%4@74?
+%}%end of leaveitout
+
+%dense subspaces
+\spheader 4A2Bj\dvAnew{2009}
+Let $X$ be a topological space and $D$ a dense subset of
+$X$, endowed with its subspace topology.
+
+\quad(i) A set $A\subseteq D$ is nowhere dense in $D$ iff it is nowhere
+dense in $X$.   \prooflet{\Prf\
+
+$$\eqalignno{A\text{ is nowhere dense in }X
+&\iff X\setminus\overline{A}\text{ is dense in }X\cr
+\displaycause{writing $\overline{A}$ for the closure of $A$ in $X$}
+&\iff D\setminus\overline{A}\text{ is dense in }X\cr
+\displaycause{3A3Ea}
+&\iff D\setminus\overline{A}\text{ is dense in }D\cr
+&\iff D\setminus(D\cap\overline{A})\text{ is dense in }D\cr
+&\iff A\text{ is nowhere dense in }D\cr}$$
+
+\noindent because $D\cap\overline{A}=\overline{A}^{(D)}$
+is the closure of $A$ in $D$.\ \Qed}
+
+\quad(ii) A set $G\subseteq D$ is a regular open set in $D$ iff it is
+expressible as $D\cap H$ for some regular open set $H\subseteq X$.
+\prooflet{\Prf\ ($\alpha$) If $G$ is a regular open subset of $D$, set
+$H=\interior\overline{G}$, taking both the closure and the interior in $X$.
+Then $H$ is a regular open set in $X$.   Now $D\cap H$ is a relatively open
+subset of $D$ included in $D\cap\overline{G}=\overline{G}^{(D)}$, so
+$D\cap H\subseteq\interior_D\overline{G}^{(D)}=G$.   In the other
+direction, $\overline{G}\cup\overline{D\setminus G}=\overline{D}=X$,
+so $\overline{G}\supseteq X\setminus\overline{D\setminus G}$ and
+$H\supseteq X\setminus\overline{D\setminus G}\supseteq G$.   So
+$G=H\cap D$ is of the required form.   ($\beta$) If $H\subseteq X$ is a
+regular open set such that $G=D\cap H$,
+set $V=X\setminus\overline{H}$;  then $H=X\setminus\overline{V}$.
+Now
+
+\Centerline{$\overline{V\cap D}^{(D)}
+=D\cap\overline{V\cap D}=D\cap\overline{V}=D\setminus H=D\setminus G$,}
+
+\noindent so
+$G=D\setminus\overline{V\cap D}^{(D)}$ is the complement of the closure of
+an open set in $D$, and is a regular open set in $D$.\ \Qed}
+
+%Moore spaces
+%\leaveitout{\spheader 4A2B? If $X$ has a development, it has a
+%$\sigma$-isolated network.   \prooflet{({\smc Fremlin 84}, A4O.)}
+%}%end of leaveitout
+
+\leader{4A2C}{G$_{\delta}$, F$_{\sigma}$, zero and cozero sets} Let
+$X$ be a topological space.
+
+\spheader 4A2Ca(i) The union of two G$_{\delta}$ sets in $X$ is a
+G$_{\delta}$ set.
+\prooflet{(\Engelking, p.\ 26;  \Kuratowski, \S5.V.)}
+%4@41
+
+\quad (ii) The intersection of countably many G$_{\delta}$ sets is a
+G$_{\delta}$ set.
+\prooflet{(\Engelking, p.\ 26;  \Kuratowski, \S5.V.)}
+%4@41 %4@24
+
+\quad (iii) If $Y$ is another topological space, $f:X\to Y$ is
+continuous and $E\subseteq Y$ is G$_{\delta}$ in $Y$,
+then $f^{-1}[E]$ is G$_{\delta}$ in $X$.
+\prooflet{($f^{-1}[\bigcap_{n\in\Bbb N}H_n]
+=\bigcap_{n\in\Bbb N}f^{-1}[H_n]$.)}
+%4@39
+
+\quad (iv) If $Y$ is a G$_{\delta}$ set in $X$ and $Z\subseteq Y$ is a
+G$_{\delta}$ set for the subspace topology of $Y$, then $Z$ is a
+G$_{\delta}$ set in $X$.
+\prooflet{(\Kuratowski, \S5.V.)}
+%4@19 %4@39
+
+\quad (v) A set $E\subseteq X$ is an F$_{\sigma}$ set iff $X\setminus E$
+is a G$_{\delta}$ set.
+\cmmnt{(\Kuratowski, \S5.V.)}
+%\prooflet{($\bigcup_{n\in\Bbb N}F_n
+%=X\setminus\bigcap_{n\in\Bbb N}X\setminus F_n$.)}
+
+\spheader 4A2Cb(i) A zero set is closed.   A cozero set is open.
+
+\quad (ii) The union of two zero sets is a zero set.
+\prooflet{(\Csaszar, 4.2.36.)}
+%4@12 %4@19
+The intersection of two cozero sets is a cozero set.
+%4@22
+
+\quad (iii) The intersection of a sequence of zero sets is a zero set.
+\prooflet{(If $f_n:X\to\Bbb R$ is continuous for each $n$,
+$x\mapsto\sum_{n=0}^{\infty}\min(2^{-n},|f_n(x)|)$ is continuous.)}
+%4@12
+The union of a sequence of cozero sets is a cozero set.
+%4@22
+
+\quad (iv) If $Y$ is another topological space, $f:X\to Y$ is continuous
+and $L\subseteq Y$ is a zero set, then $f^{-1}[L]$ is a zero set.
+If $f:X\to Y$ is continuous and $H\subseteq Y$ is a cozero set, then
+$f^{-1}[H]$ is a cozero set.
+\prooflet{(\Cech, 28B.3.)}
+%4@43
+If $K\subseteq X$ and $L\subseteq Y$ are zero sets then $K\times L$ is a
+zero set in $X\times Y$.
+\prooflet{($K\times L=\pi_1^{-1}[K]\cap\pi_2^{-1}[L]$.)}
+
+\quad (v) If $H\subseteq X$ is a (co-\nobreak)zero set and
+$Y\subseteq X$, then $H\cap Y$ is a (co-\nobreak)zero set in $Y$.
+\prooflet{(Use (iv).)}
+%4@12 4@43
+
+\quad (vi) A cozero set is the union of
+a non-decreasing sequence of zero sets.
+\prooflet{(If $f:X\to\Bbb R$ is continuous,
+$X\setminus f^{-1}[\{0\}])=\bigcup_{n\in\Bbb N}g_n^{-1}[\{0\}]$, where
+$g_n(x)=\max(0,2^{-n}-|f(x)|)$.)}
+%4@12 %4@21
+In particular, a cozero set is an F$_{\sigma}$ set;  \cmmnt{taking
+complements,} a zero set is a G$_{\delta}$ set.
+%4@19
+
+\quad (vii) If $\Cal G$ is a partition of $X$ into open sets, and
+$H\subseteq X$ is such that $H\cap G$ is a cozero set in $G$ for every
+$G\in\Cal G$, then $H$ is a cozero set in $X$.
+\prooflet{(If $f_G:G\to\Bbb R$ is continuous for every $G\in\Cal G$,
+then $f:X\to\Bbb R$ is continuous, where $f(x)=f_G(x)$ for
+$x\in G\in\Cal G$.)}
+Similarly, if $F\subseteq X$ is such that $F\cap G$ is a zero set in $G$
+for every $G\in\Cal G$, then $F$ is a zero set in $X$.
+%4@43
+
+\vleader{72pt}{4A2D}{Weight} Let $X$ be a topological space.
+
+\spheader 4A2Da(i)
+$w(Y)\le w(X)$ for every subspace $Y$ of $X$\prooflet{ (4A2B(a-vi))}.
+%4@25
+
+\quad(ii) If $X=\prod_{i\in I}X_i$ then
+$w(X)\le\max(\omega,\#(I),\sup_{i\in I}w(X_i))$.
+\prooflet{(\Engelking, 2.3.13.)}
+
+\spheader 4A2Db A disjoint family\cmmnt{ $\Cal G$} of non-empty open
+sets in $X$ has cardinal at most $w(X)$.
+\prooflet{(If $\Cal U$ is a base for the topology of $X$, then every
+non-empty member of $\Cal G$ includes a
+non-empty member of $\Cal U$, so we have an injective function from
+$\Cal G$ to $\Cal U$.)}
+%4@25 %4@38
+
+\spheader 4A2Dc A point-countable family\cmmnt{ $\Cal G$} of open sets
+in $X$ has cardinal at most $\max(\omega,w(X))$.
+\prooflet{\Prf\ If $X=\emptyset$, this is trivial.   Otherwise, let
+$\Cal U$ be a base for the topology of $X$ with $\#(\Cal U)=w(X)>0$.
+Choose a function $f:\Cal G\to\Cal U$ such that
+$\emptyset\ne f(G)\subseteq G$ whenever
+$G\in\Cal G\setminus\{\emptyset\}$.   Then $\Cal G_U=\{G:f(G)=U\}$ is
+countable for every $U\in\Cal U$, so there is an injection
+$h_U:\Cal G_U\to\Bbb N$;  now
+$G\mapsto(f(G),h_{f(G)}(G)):\Cal G\to\Cal U\times\Bbb N$ is injective,
+so $\#(\Cal G)\le\#(\Cal U\times\Bbb N)=\max(\omega,w(X))$.\ \Qed}
+%4@25
+
+\spheader 4A2Dd If $X$ is a dyadic Hausdorff
+space then $X$ is a continuous image of $\{0,1\}^{w(X)}$.
+\prooflet{\Prf\ There are a set $I$
+and a continuous surjection $f:\{0,1\}^I\to X$;
+because any power of $\{0,1\}$ is compact, so is $X$.   If $w(X)$ is
+finite, $\#(X)=w(X)\le\#(\{0,1\}^{w(X)})$ and the result is trivial;  so
+we may suppose that $w(X)$ is infinite.    Let $\Cal U$ be
+a base for the topology of $X$ with cardinality
+$w(X)$.   Set $Z=\{0,1\}^I$ and let $\Cal E$ be the
+algebra of subsets of $Z$ determined by coordinates in finite sets, so
+that $\Cal E$ is an algebra of subsets of $Z$ and is a base for the
+topology of $Z$.
+For each pair $U$, $V$ of members of $\Cal U$ such that
+$\overline{U}\subseteq V$, $f^{-1}[V]\subseteq Z$ is open;  the
+set $\{E:E\in\Cal E$, $E\subseteq f^{-1}[V]\}$ is upwards-directed and
+covers the compact set $f^{-1}[\overline{U}]$, so there
+is an $E_{UV}\in\Cal E$ such that
+$f^{-1}[\overline{U}]\subseteq E_{UV}\subseteq f^{-1}[V]$.   Let
+$J\subseteq I$ be a set of cardinal at most $\max(\omega,w(X))$ such
+that every $E_{UV}$ is determined by coordinates in $J$.   Fix any
+$w\in\{0,1\}^{I\setminus J}$ and define $g:\{0,1\}^J\to X$ by setting
+$g(z)=f(z,w)$ for every $z\in\{0,1\}^J$, identifying $Z$ with
+$\{0,1\}^J\times\{0,1\}^{I\setminus J}$.   Then $g$ is continuous.
+\Quer\ If $g$ is not surjective, set
+$H=X\setminus g[\{0,1\}^J]$.   Take $x\in H$;  take $V\in\Cal U$ such
+that $x\in V\subseteq H$;  take an open set $G$ such that
+$x\in G\subseteq\overline{G}\subseteq V$
+(this must be possible because $X$, being compact and Hausdorff, is
+regular);  take $U\in\Cal U$ such that $x\in U\subseteq G$, so that
+$x\in U\subseteq\overline{U}\subseteq V$.
+Because $f$ is surjective, there is a
+$(u,v)\in\{0,1\}^J\times\{0,1\}^{I\setminus J}$
+such that $f(u,v)=x$.   Now $(u,v)\in f^{-1}[U]\subseteq E_{UV}$;  as
+$E_{UV}$ is determined by coordinates in $J$,
+$(u,w)\in E_{UV}\subseteq f^{-1}[V]$ and $g(u)=f(u,w)\in V$;  but $V$ is
+supposed to be
+disjoint from $g[\{0,1\}^J]$.\ \BanG\  So $g$ is surjective, and $X$ is
+a continuous image of $\{0,1\}^J$.   Since
+$\#(J)\le\max(\omega,w(X))=w(X)$, $\{0,1\}^J$ and
+$X$ are continuous images of $\{0,1\}^{w(X)}$.\ \Qed}
+
+\spheader 4A2De If $X$ is a dyadic
+Hausdorff space then $X$ is separable iff it is
+a continuous image of $\{0,1\}^{\frak c}$.
+\prooflet{\Prf\ $\{0,1\}^{\frak c}$ is separable (4A2B(e-ii)), so any
+continuous image of it is separable.   If $X$ is a separable dyadic
+Hausdorff space, let $A\subseteq X$ be a countable
+dense set.   If $G$, $G'\subseteq X$ are distinct regular open sets,
+then $G\cap A\ne G\cap A'$.   Thus $X$ has at most $\frak c$ regular
+open sets;  since $X$ is compact
+and Hausdorff, therefore regular, its regular open sets form a base
+(4A2F(b-ii)), and $w(X)\le\frak c$.   By (d), $X$ is a continuous image of
+$\{0,1\}^{\max(\omega,w(X))}$ which is
+in turn a continuous image of $\{0,1\}^{\frak c}$.\ \Qed}
+
+\leader{4A2E}{The countable chain condition (a)}(i) Let $\familyiI{X_i}$
+be a family of topological spaces.   If $\prod_{i\in J}X_i$ is ccc
+for every finite $J\subseteq I$, then $\prod_{i\in I}X_i$ is ccc.
+\prooflet{({\smc Kunen 80}, II.1.9;  {\smc Fremlin 84}, 12I.)}
+
+\quad(ii) A separable topological space is ccc.   \prooflet{(If $D$ is a
+countable dense set and $\Cal G$ is a disjoint family of non-empty open
+sets, we have a surjection from a subset of $D$ onto $\Cal G$.)}
+
+\quad(iii) The product of any family of separable topological spaces is
+ccc.   \prooflet{\Prf\ By 4A2B(e-ii) and (ii) here, the product of
+finitely many separable spaces is separable, therefore ccc;  so we can
+apply (i).\ \Qed}
+
+\spheader 4A2Eb Let $\familyiI{X_i}$ be a family of topological
+spaces, and suppose that $X=\prod_{i\in I}X_i$ is ccc.   For
+$J\subseteq I$ and $x\in X$ set
+$X_J=\prod_{i\in J}X_i$, $\pi_J(x)=x\restr J$.
+
+\quad(i) If $G\subseteq X$ is open, there is an open set $W\subseteq G$
+determined by coordinates in a countable subset of $I$ such that
+$G\subseteq\overline{W}$.
+\prooflet{\Prf\ Let $\Cal W$ be the family of subsets of $X$ determined
+by coordinates in countable sets.   Then $\Cal W$ is a $\sigma$-algebra
+(254Mb) including the standard base
+$\Cal U$ for the topology of $X$.   Let $\Cal U_0$ be a maximal disjoint
+family in $\{U:U\in\Cal U,\,U\subseteq G\}$.   Then $\Cal U_0$ is
+countable, so $W=\bigcup\Cal U_0$ belongs to $\Cal W$.   No member of
+$\Cal U$ can be included in $G\setminus W$, so $G\setminus\overline{W}$
+must be empty, and we have a suitable set.\ \QeD}   So
+$\overline{G}=\overline{W}$
+and $\interior\overline{G}$ are
+determined by coordinates in a countable set\prooflet{ (4A2B(g-i))};
+in particular, if $G$ is a regular open set, then it is determined by
+coordinates in a countable set.
+
+\quad(ii) If $f:X\to\Bbb R$ is continuous, there are a countable set
+$J\subseteq I$ and a continuous function $g:X_J\to\Bbb R$ such that
+$f=g\pi_J$.   \prooflet{\Prf\ For each
+$q\in\Bbb Q$, set $F_q=\overline{\{x:f(x)<q\}}$.   By (i), $F_q$ is
+determined by coordinates in a countable set.   Because
+$\Bbb Q$ is countable, there is a countable $J\subseteq I$ such that
+every $F_q$ is determined by coordinates in $J$.   Also
+$\{x:f(x)<\alpha\}=\bigcup_{q\in\Bbb Q,q<\alpha}F_q$ is determined by
+coordinates in $J$ for every $\alpha\in\Bbb R$, so $f(x)=f(y)$ whenever
+$x\restr J=y\restr J$, and there is a $g:X_J\to\Bbb R$ such that
+$f=g\pi_J$.   Now if $H\subseteq\Bbb R$ is
+open, $g^{-1}[H]=\pi_J[f^{-1}[H]]$ is open (4A2B(f-i)),
+so $g$ is continuous.\ \Qed}
+
+\quad(iii)\dvAnew{2013}
+If $A\subseteq X$ is nowhere dense there is a countable set
+$J\subseteq I$ such that $\pi_J^{-1}[\pi_J[A]]$ is nowhere dense.
+\prooflet{\Prf\
+By (ii), there are a countable set $J$ and an open set
+$W\subseteq X\setminus\overline{A}$ such that $W$ is determined by
+coordinates in $J$ and $X\setminus\overline{A}\subseteq\overline{W}$;
+now $W$ is dense in $X$ and $\pi_J^{-1}[\pi_J[A]]\subseteq X\setminus W$ is
+nowhere dense.\ \Qed}
+
+\leader{4A2F}{Separation axioms (a) Hausdorff spaces}
+(i) A Hausdorff space is T$_1$.
+\cmmnt{(\Cech, 27A.1.)}
+Any subspace of a Hausdorff space is Hausdorff.
+\prooflet{(\Engelking, 2.1.6;  \Cech, 27A.3;  \Kuratowski, \S5.VIII;
+\Csaszar, 2.5.21.)}
+%4@15 %4@16 %4@23
+
+\quad (ii) If $X$ is a Hausdorff space and $\sequencen{x_n}$ is a
+sequence in $X$,
+then a point $x$ of $X$ is a cluster point of $\sequencen{x_n}$ iff
+there is a non-principal ultrafilter $\Cal F$ on $\Bbb N$ such that
+$x=\lim_{n\to\Cal F}x_n$.   \prooflet{(If $x$ is a cluster point of
+$\sequencen{x_n}$, apply 4A1Ia to
+$\{\{n:n\ge n_0,\,x_n\in G\}:n_0\in\Bbb N$, $G\subseteq X$ is open,
+$x\in G\}$.)}
+
+
+\quad(iii) A topological space $X$ is Hausdorff iff $\{(x,x):x\in X\}$ is
+closed in $X\times X$.
+%Engelking ex 2.3.C
+\prooflet{(\Cech\ 27A.7;  \Kuratowski, I.15.IV.)}
+%If $I$ is a set, $\Cal F$ is a filter on $I$, $X$ and $Y$ are Hausdorff
+%spaces, $f:I\to X$ is a function, $g:X\to Y$ is a continuous function,
+%and $\lim_{i\to\Cal F}f(i)=x$, then $\lim_{i\to\Cal F}gf(i)=g(x)$.
+
+%If $\family{j}{J}{X_j}$ is a family of Hausdorff spaces, $I$ is a set,
+%$\Cal F$ is a filter on $I$, and $f:I\to X$ is a function, then
+%$\lim_{i\to\Cal F}f(i)=x$ iff $\lim_{i\to\Cal F}f(i)(j)=x(j)$ for every
+%$j\in J$.   \cmmnt{(Cf.\ 3{}A3Ic.)}
+
+\spheader 4A2Fb {\bf Regular spaces}
+(i) A regular T$_1$ space is Hausdorff.
+\prooflet{(\Cech, 27B.7;  \Gaal, p.\ 81.)}
+%4@39
+Any subspace of a regular space is regular.
+\cmmnt{(\Engelking, 2.1.6;  \Kuratowski, \S14.I.)}
+
+\quad(ii) If $X$ is a regular topological space, the regular open subsets
+of $X$ form a base for the topology.   \prooflet{\Prf\ If $G$ is open and
+$x\in G$, there is an open set $H$ such that
+$x\in H\subseteq\overline{H}\subseteq G$;  now $\interior\overline{H}$ is a
+regular open set containing $x$ and included in $G$.\ \Qed}
+
+\spheader 4A2Fc {\bf Completely regular spaces}
+In a completely regular space, the cozero sets form a base
+for the topology.
+\prooflet{(\Cech, 28B.5.)}
+%4@22
+
+\spheader 4A2Fd {\bf Normal spaces} (i) {\bf Urysohn's Lemma}  If
+$X$ is normal and $E$, $F$ are disjoint closed
+subsets of $X$, then there is a continuous function $f:X\to[0,1]$ such
+that $f(x)=0$ for $x\in E$ and $f(x)=1$ for $x\in F$.
+\prooflet{(\Engelking, 1.5.11;  \Kuratowski, \S14.IV.)}
+%4@33
+
+\quad (ii) A regular normal space is completely regular.
+%4@A2Jb
+
+\quad (iii) A normal T$_1$ space is Hausdorff
+\prooflet{(\Gaal, p.\ 86)}
+%4@39
+and completely regular
+\prooflet{(\Csaszar, 4.2.5;  \Gaal, p.\ 110)}.
+%4@26
+
+\quad (iv) If $X$ is normal and $E$, $F$ are disjoint closed sets in $X$
+there is a zero set including $E$ and disjoint from $F$.
+\prooflet{(Take a continuous function $f$ which is zero on $E$ and $1$
+on $F$, and set $Z=\{x:f(x)=0\}$.)}
+%4@36
+
+\quad (v) In a normal space a closed G$_{\delta}$ set is a zero set.
+\prooflet{(\Engelking, 1.5.12.)}
+%4@33
+
+\quad (vi) If $X$ is a normal space and $\familyiI{G_i}$ is a
+point-finite cover of $X$ by open sets, there is a family
+$\familyiI{H_i}$ of open
+sets, still covering $X$, such that $\overline{H}_i\subseteq G_i$ for
+every $i$.
+\prooflet{(\Engelking, 1.5.18;  \Cech, 29C.1;  \Gaal, p.\ 89.)}
+%for (vii)
+
+\quad (vii) If $X$ is a normal space and $\familyiI{G_i}$ is a
+point-finite cover of $X$ by open sets, there is a family
+$\familyiI{H'_i}$ of cozero
+sets, still covering $X$, such that $H'_i\subseteq G_i$ for every $i$.
+\prooflet{(Take $\familyiI{H_i}$ from (vi), and apply (iv) to the
+disjoint closed sets $X\setminus G_i$, $\overline{H}_i$ to find a
+suitable cozero set $H'_i$ for each $i$.)}
+%4@26
+
+\quad (viii) If $X$ is a normal space and $\familyiI{G_i}$ is a
+locally finite cover of $X$ by open sets, there is a family
+$\familyiI{g_i}$ of continuous functions from $X$ to $[0,1]$ such that
+$g_i\le\chi G_i$ for every $i\in I$ and $\sum_{i\in I}g_i(x)=1$ for
+every $x\in X$.   \prooflet{(\Engelking, proof of 5.1.9.)}
+%4@15
+
+\quad (ix) {\bf Tietze's theorem}\dvAformerly{4{}A2F(d-viii)} Let 
+$X$ be a normal space, $F$ a
+closed subset of $X$ and $f:F\to\Bbb R$ a continuous function.   Then
+there is a continuous function $g:X\to\Bbb R$ extending $f$.
+\prooflet{(\Engelking, 2.1.8;  \Kuratowski, \S14.IV;  \Gaal, p.\ 203.)}
+It follows that if $F\subseteq X$ is closed and $f:F\to[0,1]^I$ is a
+continuous function from $F$ to any power of the unit interval, there is
+a continuous function from $X$ to $[0,1]^I$ extending $f$.
+\prooflet{ (Extend each of the functionals $x\mapsto f(x)(i)$ for
+$i\in I$.)}
+
+\spheader 4A2Fe {\bf Paracompact spaces} A Hausdorff paracompact space
+is regular.
+\prooflet{(\Engelking, 5.1.5.)}
+A regular paracompact
+space is normal.
+\prooflet{(\Engelking, 5.1.5;  \Gaal, p.\ 160.)}
+
+%4@36
+\spheader 4A2Ff {\bf Countably paracompact spaces} A normal space $X$ is
+countably paracompact iff whenever $\sequencen{F_n}$
+is a non-increasing
+sequence of closed subsets of $X$ with empty intersection, there is
+a sequence $\sequencen{G_n}$ of open sets, also with empty intersection,
+such that $F_n\subseteq G_n$ for every $n\in\Bbb N$.
+\prooflet{(\Engelking, 5.2.2;  \Csaszar, 8.3.56(f).)}
+%4@26
+
+\spheader 4A2Fg {\bf Metacompact spaces} (i) A paracompact space is
+metacompact.
+
+\quad (ii) A closed subspace of a metacompact space is metacompact.
+%4@26
+
+\quad (iii) A normal metacompact space is countably paracompact.
+\prooflet{(\Engelking, 5.2.6;  \Csaszar, 8.3.56(c).)}
+%4@26
+
+\spheader 4A2Fh {\bf Separating compact sets} (i) If $X$ is a Hausdorff
+space and $K$ and $L$ are disjoint compact subsets of $X$, there are
+disjoint open sets $G$, $H\subseteq X$ such that $K\subseteq G$ and
+$L\subseteq H$.
+\prooflet{(\Csaszar, 5.3.18.)}
+%4@22 %4@16
+If $\Tau$ is an algebra of subsets of $X$ including a subbase for the
+topology of $X$, there is an open $V\in\Tau$ such that
+$K\subseteq V\subseteq X\setminus L$.   \prooflet{\Prf\ By 4A2B(a-i),
+$\Tau$ includes a base for the topology of $X$.   So
+$\Cal E=\{U:U\in\Tau$ is open, $U\subseteq G\}$ has union $G$ and there
+must be a finite $\Cal E_0\subseteq\Cal E$ covering $K$;  set
+$V=\bigcup\Cal E_0$.\ \Qed}
+
+\quad(ii) If $X$ is a regular space, $F\subseteq X$ is closed, and
+$K\subseteq X\setminus F$ is compact, there are disjoint open sets $G$,
+$H\subseteq X$ such that $K\subseteq G$ and $F\subseteq H$.
+\prooflet{(\Engelking, 3.1.6.)}
+%4@22
+
+\quad(iii) If $X$ is a completely regular space,
+$G\subseteq X$ is open and $K\subseteq G$ is compact, there is a
+continuous function $f:X\to[0,1]$ such that $f(x)=1$ for $x\in K$ and
+$f(x)=0$ for $x\in X\setminus G$.
+\prooflet{\Prf\ For each $x\in K$ there is a continuous function
+$f_x:X\to[0,1]$ such that $f_x(x)=1$ and $f_x(y)=0$ for
+$y\in X\setminus G$.   Set $H_x=\{y:f_x(y)>\bover12\}$.   Then
+$\bigcup_{x\in K}H_x\supseteq K$, so there is a finite set
+$I\subseteq K$ such that $K\subseteq\bigcup_{x\in I}H_x$.   Set
+$f(y)=\min(1,2\sum_{x\in I}f_x(y))$ for $y\in X$.\ \Qed}
+%for (iv), (v)
+
+\quad (iv) If $X$ is a completely regular Hausdorff space and $K$ and
+$L$ are disjoint compact subsets of $X$, there are disjoint cozero sets
+$G$, $H\subseteq X$ such that $K\subseteq G$ and $L\subseteq H$.
+\prooflet{\Prf\ By (i), there are disjoint open sets $G'$, $H'$ such
+that $K\subseteq G'$ and $L\subseteq H'$.   By (iii), there is a
+continuous function $f:X\to[0,1]$ such that $f(x)=1$ for $x\in K$ and
+$f(x)=0$ for $x\in X\setminus G'$;  set $G=\{x:f(x)\ne 0\}$, so that $G$
+is a cozero set and $K\subseteq G\subseteq G'$.   Similarly there is a
+cozero set $H$ including $L$ and included in $H'$.\ \Qed}
+%4@22
+
+\quad (v) If $X$ is a completely regular space and $K\subseteq X$ is a
+compact G$_{\delta}$ set, then $K$ is a zero set.
+\prooflet{\Prf\ Let $\sequencen{G_n}$ be a sequence of open sets with
+intersection $K$.   For each $n\in\Bbb N$ there is a continuous function
+$f_n:X\to[0,1]$ such that $f_n(x)=1$ for $x\in K$ and $f_n(x)=0$ for
+$x\in X\setminus G_n$, by (iii).   Now
+$K=\bigcap_{n\in\Bbb N}\{x:1-f_n(x)=0\}$ is a zero set, by 4A2C(b-iii).\
+\Qed}
+%4@19 %4@43
+
+\quad (vi) If $\sequencen{X_n}$ is a sequence of topological spaces with
+product $X$, $K\subseteq X$ is compact, $F\subseteq X$ is closed and
+$K\cap F=\emptyset$, there is some $n\in\Bbb N$ such that
+$x\restr n\ne y\restr n$ for any $x\in F$ and $y\in K$.
+
+\prooflet{\Prf\ For $n\in\Bbb N$ and $x\in X$ set $\pi_n(x)=x\restr n$;
+set $F_n=\overline{\pi_n^{-1}[\pi_n[F]]}$.   Since
+$\sequencen{\pi_n^{-1}[\pi_n[F]]}$ is non-increasing, so is
+$\sequencen{F_n}$.   If $x\in K$, there is an open set $G\subseteq X$,
+determined by coordinates in a finite set, such that
+$x\in G\subseteq X\setminus F$;  in this case there is an $n\in\Bbb N$ such
+that $\pi_n^{-1}[\pi_n[G]]=G$ is disjoint from $F$, so that
+$\pi_n[G]\cap\pi_n[F]=\emptyset$, $G$ does not meet
+$\pi_n^{-1}[\pi_n[F]]$ and $x\notin F_n$.   As $x$ is arbitrary,
+$\sequencen{K\cap F_n}$ is a non-increasing sequence of relatively closed
+subsets of $K$ with empty intersection;  as $K$ is compact, there is an
+$n$ such that $K\cap F_n=\emptyset$, so that
+$K\cap\pi_n^{-1}[\pi_n[F]]=\emptyset$ and $x\restr n\ne y\restr n$
+whenever $x\in F$ and $y\in K$.\ \Qed}
+
+\quad(vii) If $X$ is a compact Hausdorff space, $f:X\to\Bbb R$ is
+continuous, and $\Cal U$ is a subbase for $\frak T$, then there is a
+countable set
+$\Cal U_0\subseteq\Cal U$ such that $f(x)=f(y)$ whenever
+$\{U:x\in U\in\Cal U_0\}=\{U:y\in U\in\Cal U_0\}$.   \prooflet{(Apply (i) to
+sets of the form $K=\{x:f(x)\le\alpha\}$, $L=\{x:f(x)\ge\beta\}$.)}
+%4@91Xi
+
+\spheader 4A2Fi {\bf Perfectly normal spaces} A topological space $X$ is
+perfectly normal iff every closed set is a zero set.
+\prooflet{(\Engelking, 1.4.9.)}
+
+Consequently, every open set in a perfectly normal space is a cozero set
+(and\cmmnt{, of course,} an F$_{\sigma}$ set).
+
+\spheader 4A2Fj {\bf Covers of compact sets} Let $X$ be a Hausdorff space,
+$K$ a compact subset of $X$, and $\familyiI{G_i}$ a family of open subsets
+of $X$ covering $K$.   Then there are a finite set $J\subseteq I$ and a
+family $\family{i}{J}{K_i}$ of compact sets such that
+$K=\bigcup_{i\in J}K_i$ and $K_i\subseteq G_i$ for every $i\in J$.
+\prooflet{\Prf\ (i) Suppose first that $I=\{i,j\}$ has just two members.
+Then $K\setminus G_j$ and $K\setminus G_i$ are disjoint compact sets.
+By (h-i), there are disjoint open sets $H_i$, $H_j$ such that
+$K\setminus G_j\subseteq H_i$ and $K\setminus G_i\subseteq H_j$;  setting
+$K_i=K\setminus H_j$ and $K_j=K\setminus H_i$ we have a suitable pair
+$K_i$, $K_j$.   (ii) Inducing on $\#(I)$ we get the result for finite $I$.
+(iii) In general, there is certainly a finite $J\subseteq I$ such that
+$K\subseteq\bigcup_{i\in J}G_i$, and we can apply the result to
+$\family{i}{J}{G_i}$.\ \Qed}
+
+\leaveitout{
+\spheader 4A2F? {\bf Monotonically normal spaces} (i)
+A monotonically normal space is normal, so a
+T$_1$ monotonically normal space is regular and Hausdorff.
+
+\quad(ii) Let $(X,\frak T)$ be a regular space and $R$ the set of pairs
+$(x,G)$ such that $x\in G\in\frak T$.   $(X,\frak T)$ is monotonically
+normal iff there is a function $W:R\to\frak T$ such that ($\dagger$)
+$x\in W(x,G)\subseteq G$ whenever $(x,G)\in R$ ($\ddagger$) if $(x,G)\in R$
+and $G\subseteq H\in\frak T$ then $W(x,G)\subseteq W(x,H)$
+(*) if $x$,
+$y\in X$ and $\overline{\{x\}}\ne\overline{\{y\}}$ then
+$W(x,X\setminus\overline{\{y\}})$ and $W(y,X\setminus\overline{\{x\}})$ are
+disjoint.   \Prf\ Let $Q$ be the set of disjoint pairs of closed subsets of
+$X$.   ($\alpha$) Suppose that $(X,\frak T)$ is monotonically normal.   Let
+$W_1:Q\to\frak T$ be a function as in the definition in 4A2A.   If
+$(x,G)\in R$, then (because $X$ is regular) $\overline{\{x\}}$ is disjoint
+from $X\setminus G$;  set
+
+\Centerline{$W(x,G)
+=W_1(\overline{\{x\}},X\setminus G)
+ \setminus\overline{W(X\setminus G,\overline{\{x\}})}$.}
+
+\noindent It is easy to check that this function $W$ satisfies the
+conditions ($\dagger$), ($\ddagger$) and (*) here.   ($\beta$) Suppose that
+$W:R\to\frak T$ satisfies the conditions here.   For disjoint closed sets
+$E$, $F\subseteq X$ set $W_1(E,F)=\bigcup_{x\in E}W(x,X\setminus F)$.
+Then $W_1$ witnesses that $X$ is monotonically normal, because
+$W_1(E,F)$ will be disjoint from $W(y,E)$ for every $y\in F$.\ \Qed
+
+Note that if $W$ is any function satisfying ($\dagger$), ($\ddagger$) and
+(*), and $(x,G)$, $(y,H)\in R$ are such that
+$W(x,G)\cap W(y,H)\ne\emptyset$, then either $x\in H$ or $y\in G$.
+
+\quad(iii) If $X$ is a regular monotonically normal space, every subspace
+of $X$ is monotonically normal.
+\Prf\ Let $W$ be a function as in (ii), and
+$Y$ a subspace of $X$.   Then $Y$ is regular.
+If $y\in Y$ and $H$ is a relatively open subset of $Y$, write $\tilde H$
+for $\bigcup\{G:G\subseteq X$ is open, $G\cap Y\subseteq H\}$ and
+$W'(y,H)=Y\cap W(y,\tilde H)$.   Then $W'$ satisfies the conditions
+($\dagger$), ($\ddagger$) and (*) of (ii), so $Y$ is monotonically
+normal.\ \Qed
+
+\quad(iv) A regular monotonically normal space is countably paracompact.
+\Prf\ (See {\smc Rudin 84}.) Let $X$ be a regular monotonically normal
+space and $W$ a function as in (ii) above.   Let $\sequencen{F_n}$ be a
+non-decreasing sequence of closed sets in $X$ with empty intersection and
+$F_0=X$.   For $x\in F_n\setminus F_{n+1}$ define $\sequence{k}{V_k(x)}$ by
+setting $V_0(x)=W(x,X\setminus F_{n+1})$ and $V_{k+1}(x)=W(x,V_k(x))$ for
+every $k$.   Let $P$ be the set of all families $\family{n}{I}{p_n}$ where
+$I\subseteq\Bbb N$ is infinite and
+$p_m\in F_m\cap V_{n-m}(p_n)\setminus F_{n+1}$ whenever $m$, $n\in K$ and
+$m<n$;  for $\tbf{p}=\family{n}{I}{p_n}\in P$ set
+
+\Centerline{$S_{\tbf{p}}
+=\bigcup_{m\in\Bbb N}F_m\cap\bigcap_{n\in I,n>m}V_{n-m}(p_n)
+  \setminus F_{m+1}$.}
+
+\noindent Let $\preccurlyeq$ be a well-ordering of $P$.   For
+$x\in F_m\setminus F_{m+1}$, set
+
+$$\eqalignno{U(x)&=V_m(x)\cr
+\noalign{\noindent if $x\notin\bigcup_{\tbf{p}\in P}S_{\tbf{p}}$}
+&=V_m(x)\setminus\bigcup_{n\in I\cap m}\overline{V_0(p_n)}\cr}$$
+
+\noindent if $\tbf{p}=\family{n}{I}{p_n}$ is the $\preccurlyeq$-first
+member of $P$ such that $x\in S_{\tbf{p}}$.   Note that in this case
+$\overline{V_0(p_n)}$ is disjoint from $F_m$ and does not contain $x$ for
+every $n\in I\cap m$, so
+$U(x)$ contains $x$.   Set $U'(x)=W(x,U(x))$ for every $x\in X$, and
+$G_n=\bigcup_{x\in F_n}U'(x)$;  then
+$G_n$ is an open set including $F_n$ for each $n$.
+
+\Quer\ Suppose, if possible, that $\bigcap_{n\in\Bbb N}G_n$ is not empty;
+take $z$ in the intersection.   For each $n$, there is an $x\in F_n$ such
+that $z\in U'(x)$, so
+$J=\{n:z\in\bigcup_{x\in F_n\setminus F_{n+1}}U'(x)\}$
+is infinite;  for each $n\in J$, choose $q_n\in F_n\setminus F_{n+1}$ such
+that $z\in U'(q_n)$.
+
+If $m$, $n\in J$ and $m<n$, then $U'(q_m)\cap U'(q_n)$ is not empty, so
+$W(q_m,U(q_m))\subseteq W(q_m,V_0(q_m))$ meets
+$W(q_n,U(q_n))$.   But $q_n\in F_n$ so
+$q_n\notin V_0(q_m)$;  it follows that $q_m$ must belong to
+$U(q_n)\subseteq V_n(q_n)$.
+(See the last sentence in (ii) above.)     As $m$ and $n$ are arbitrary,
+$\tbf{q}=\family{n}{J}{q_n}$ belongs to $P$, and of course every $q_n$
+belongs to $S_{\tbf{q}}$.
+
+Let $\tbf{p}=\family{n}{I}{p_n}$ be the
+$\preccurlyeq$-first member of $P$ such that $S_{\tbf{p}}$ contains any
+$q_n$;   let $j\in J$ be such that $q_j\in S_{\tbf{p}}$.   If $j<m<n$,
+$m\in J$ and $n\in I$, then $V_{m-j}(q_m)\cap V_{n-j}(p_n)$ contains $q_j$
+so is not empty, and either $p_n\in V_{m-j-1}(q_m)$ or
+$q_m\in V_{n-j-1}(p_n)$;  the former is impossible because
+$p_n\in F_{m+1}$, so $q_m\in V_{n-m}(p_n)$.   As $n$ is arbitrary,
+$q_m\in S_{\tbf{p}}$, and $\tbf{p}$ must be
+the $\preccurlyeq$-least member of
+$P$ such that $q_m\in S_{\tbf{p}}$.   And this is true for every $m\in J$
+such that $m>j$.
+
+Now take $n\in I$ and $m\in J$ such that $j<n<m$.   We have
+$q_j\in V_{n-j}(p_n)\cap U(q_m)$.   But $U(q_m)$ is
+disjoint from $V_0(p_n)$, so this is impossible.\ \Bang
+
+Thus $\bigcap_{n\in\Bbb N}G_n$ is empty.   As $\sequencen{F_n}$ is
+arbitrary, $X$ is countably paracompact.\ \Qed
+}%end of leaveitout
+
+\leader{4A2G}{Compact and locally compact spaces (a)} In any topological
+space, the union of two compact subsets is compact.
+
+\spheader 4A2Gb A compact Hausdorff space is normal.
+\prooflet{(\Engelking, 3.1.9;  \Csaszar, 5.3.23;  \Gaal, p.\ 139.)}
+%4@33 %4@16 %4@46
+
+\spheader 4A2Gc(i) If $X$ is a compact Hausdorff space,
+%normal will do
+$Y\subseteq X$
+is a zero set and $Z\subseteq Y$ is a zero set in $Y$, then $Z$ is a
+zero set in $X$.
+\prooflet{(By 4A2C(b-vi) and
+4A2C(a-iv), $Z$ is a G$_{\delta}$ set in $X$;  now use 4A2F(d-v).)}
+%4@19
+
+\quad(ii) Let $X$ and $Y$ be compact Hausdorff spaces,
+$f:X\to Y$ a
+continuous open map and $Z\subseteq X$ a zero set in $X$.   Then $f[Z]$
+is a zero set in $Y$.   \prooflet{\Prf\ Let $g:X\to\Bbb R$ be a
+continuous function such that $Z=g^{-1}[\{0\}]$.   Set
+$G_n=\{x:x\in X$, $|g(x)|<2^{-n}\}$ for each $n\in\Bbb N$.   If
+$y\in\bigcap_{n\in\Bbb N}f[G_n]$, then $f^{-1}[\{y\}]$ is a compact set
+meeting all the closed sets $\overline{G}_n$, so meets their
+intersection, which is $Z$.   Thus $f[Z]=\bigcap_{n\in\Bbb N}f[G_n]$ is
+a G$_{\delta}$ set.   By 4A2F(d-v), it is a zero set.\ \Qed}
+
+\spheader 4A2Gd If $X$ is a Hausdorff space, $\Cal V$ is a
+downwards-directed family
+of compact neighbourhoods of a point $x$ of $X$ and
+$\bigcap\Cal V=\{x\}$, then $\Cal V$ is a base of neighbourhoods of $x$.
+\prooflet{\Prf\ Let $G$ be any open set containing $x$.   Fix any
+$V_0\in\Cal V$.   Note that because $X$ is Hausdorff, every member of
+$\Cal V$ is closed (3A3Dc).   So $\{V_0\cap V\setminus G:V\in\Cal V\}$
+is a family of (relatively) closed subsets of $V_0$ with empty
+intersection, cannot have the finite intersection property (3A3Da),
+and there is a $V\in\Cal V$ such that $V_0\cap V\setminus G=\emptyset$.
+Now there is a $V'\in\Cal V$ such that $V'\subseteq V_0\cap V$ and
+$V'\subseteq G$.   As $G$ is arbitrary, $\Cal V$ is a base of
+neighbourhoods of $x$.\ \Qed}
+%4@47? %4@46
+
+%continuous r-v functions
+\spheader 4A2Ge Let $(X,\frak T)$ be a locally compact Hausdorff space.
+
+\quad(i) If $K\subseteq X$ is a compact set and
+$G\supseteq K$ is open, then there is a continuous $f:X\to[0,1]$ with
+compact support such that $\chi K\le f\le\chi G$.
+\prooflet{(Let $\Cal V$ be the family of relatively compact open subsets
+of $X$.   Then $\Cal V$ is upwards-directed and covers $X$, so there is
+a $V\in\Cal V$ including $K$.   By 3A3Bb, $\frak T$ is completely
+regular;  now 4A2F(h-iii) tells us that there is a continuous
+$f:X\to[0,1]$ such that $\chi K\le f\le\chi(G\cap V)$, so that $f$ has
+compact support.)}
+%4@34
+
+\quad (ii) $\frak T$ is the coarsest topology on $X$ such that every
+$\frak T$-continuous real-valued function with compact support is
+continuous.
+\prooflet{\Prf\ Let $\Phi$ be the set of continuous functions of compact
+support for $\frak T$.   If $\frak S$ is a topology on $X$ such that
+every member of $\Phi$ is continuous, and $x\in G\in\frak T$, then there
+is an $f\in\Phi$ such that $f(x)=1$ and $f(y)=0$ for
+$y\in X\setminus G$, by (i).   Now $f$ is $\frak S$-continuous, by
+hypothesis, so
+$H=\{y:f(y)>\bover12\}$ belongs to $\frak S$ and $x\in H\subseteq G$.
+As $x$ is arbitrary, $G=\interior_{\frak S}G$ belongs to $\frak S$;  as
+$G$ is arbitrary, $\frak T\subseteq\frak S$.\ \Qed}
+%4@34
+
+%countably compact spaces
+\spheader 4A2Gf(i) A topological space $X$ is countably compact iff
+every sequence in $X$ has a cluster point in $X$\cmmnt{, that is, $X$
+is relatively countably compact in itself.}
+\prooflet{(\Engelking, 3.10.3;  \Csaszar, 5.3.31(e);  \Gaal, p.\ 129.)}
+%4@16 %4@25
+
+\quad (ii) If $X$ is a countably compact topological space and
+$\sequencen{F_n}$ is a sequence of
+closed sets such that $\bigcap_{i\le n}F_i\ne\emptyset$ for every
+$n\in\Bbb N$, then $\bigcap_{n\in\Bbb N}F_n\ne\emptyset$.
+\prooflet{(\Engelking, 3.10.3;  \Csaszar, 5.3.31(c).)}
+%4@35
+
+\quad (iii) In any topological space, a relatively compact set is
+relatively countably compact\prooflet{ (2A3Ob)}.
+
+\quad (iv) Let $X$ and $Y$ be topological spaces and $f:X\to Y$ a
+continuous function.   If $A\subseteq X$ is relatively countably compact
+in $X$, then $f[A]$ is relatively countably compact in $Y$.
+\prooflet{\Prf\ Let $\sequencen{y_n}$ be a sequence in $f[A]$.   Then
+there is a sequence $\sequencen{x_n}$ in $A$ such that $f(x_n)=y_n$ for
+every $n\in\Bbb N$.   Because $A$ is relatively countably compact,
+$\sequencen{x_n}$ has a cluster point $x\in X$.   If $n_0\in\Bbb N$ and
+$H$ is an open set containing $f(x)$, there is an $n\ge n_0$ such that
+$x_n\in f^{-1}[H]$, so that $y_n\in H$.   Thus $f(x)$ is a cluster point
+of $\sequencen{y_n}$;  as $\sequencen{y_n}$ is arbitrary, $f[A]$ is
+relatively countably compact.\ \Qed}
+
+\quad (v) A relatively countably compact set in $\Bbb R$ must be
+bounded.
+\prooflet{(If $A\subseteq\Bbb R$ is unbounded there is a sequence
+$\sequencen{x_n}$ in $A$ such that $|x_n|\ge n$ for every $n$.)}
+So if $X$ is a topological space, $A\subseteq X$ is relatively countably
+compact and $f:X\to\Bbb R$ is continuous, then $f[A]$ is bounded.
+
+\quad (vi) If $X$ and $Y$ are topological spaces and $f:X\to Y$ is
+continuous, then $f[A]$ is countably compact whenever $A\subseteq X$ is
+countably compact.
+\prooflet{(\Engelking, 3.10.5.)}
+
+%uniform convergence
+\spheader 4A2Gg(i) Let $X$ and $Y$ be topological spaces and
+$\phi:X\times Y\to\Bbb R$ a continuous function.   Define
+$\theta:X\to C(Y)$ by setting $\theta(x)(y)=\phi(x,y)$ for $x\in X$,
+$y\in Y$.   Then $\theta$ is continuous if we give $C(Y)$ the topology
+of uniform convergence on compact subsets of $Y$.
+\prooflet{(As noted in \Engelking, pp.\ 157-158, the topology of uniform
+convergence on compact sets is the `compact-open' topology of $C(Y)$,
+as defined in 441Yh, so
+the result here is covered by \Engelking, 3.4.1.)}
+
+\quad (ii) In particular, if $Y$ is compact then $\theta$ is continuous
+if we give $C(Y)$ its usual norm topology.
+%4@44
+
+%convergent sequences
+\spheader 4A2Gh(i) Suppose that $X$ is a compact space such that there
+are no non-trivial convergent sequences in $X$\cmmnt{, that is, no
+convergent sequences which are not eventually constant}.   If
+$\sequencen{F_n}$ is a non-increasing sequence of infinite closed
+subsets of $X$, then $F=\bigcap_{n\in\Bbb N}F_n$ is infinite.
+\prooflet{\Prf\ Because $X$ is compact, $F$ cannot be empty (3A3Da).
+Choose a sequence $\sequencen{x_n}$ such that
+$x_n\in F_n\setminus\{x_i:i<n\}$ for each $n\in\Bbb N$.    If
+$G\supseteq F$ is an open set, then
+$\bigcap_{n\in\Bbb N}F_n\setminus G=\emptyset$, so there must be some
+$n\in\Bbb N$ such that $F_n\subseteq G$, and $x_i\in G$ for $i\ge n$.
+\Quer\ If $F=\{y_0,\ldots,y_k\}$, let $l\le k$ be the first point such
+that whenever $G\supseteq\{y_0,\ldots,y_l\}$ is open, then
+$\{i:x_i\notin G\}$ is finite.   Then there is an open set
+$G'\supseteq\{y_j:j<l\}$ such that $I=\{i:x_i\notin G'\}$ is infinite.
+But if $H$ is any open set containing $y_l$, then $\{i:x_i\notin G'\cup
+H\}$ is finite, so $\{i:i\in I,\,x_i\notin H\}$ is finite.   Thus if we
+re-enumerate $\familyiI{x_i}$ as $\sequencen{x'_n}$, $\sequencen{x'_n}$
+converges to $y_l$ and is a non-trivial convergent sequence.\ \BanG\
+Thus $F$ is infinite, as claimed.\ \Qed}
+
+
+\quad (ii) If $X$ is an infinite scattered compact Hausdorff space it
+has a non-trivial convergent sequence.
+\prooflet{\Prf\ Let $\sequencen{x_n}$ be any sequence of distinct points
+in $X$.   Set $F_n=\overline{\{x_i:i\ge n\}}$ for each $n$, so that
+$F=\bigcap_{n\in\Bbb N}F_n$ is a non-empty set.   Because $X$ is
+scattered, $F$ has an isolated point $z$ say;  let $G$ be an open set
+such that $F\cap G=\{z\}$, and $H$ an open set such that
+$z\in H\subseteq\overline{H}\subseteq G$ (3A3Bb).   In this case,
+$I=\{i:x_i\in H\}$ must be infinite;
+re-enumerate $\familyiI{x_i}$ as $\sequencen{x'_n}$.   \Quer\ If
+$\sequencen{x'_n}$ does not converge to $z$, there is an open set $H'$
+containing $z$ such that $\{n:x'_n\notin H'\}$ is infinite, that is,
+$\{i:i\in I,\,x_i\notin H'\}$ is infinite.   In this case,
+$F_n\cap\overline{H}\setminus H'$ is non-empty for every $n\in\Bbb N$,
+but $F\cap\overline{H}\setminus H'=\emptyset$, which is impossible.\
+\BanG\   Thus $\sequencen{x'_n}$ is a non-trivial convergent sequence in
+$X$.\ \Qed}
+
+
+\quad (iii) If $X$ is an extremally disconnected Hausdorff
+space\cmmnt{ (definition: 3A3Af)}, it has no non-trivial convergent
+sequence.   \prooflet{\Prf\Quer\ Suppose, if possible, that there is a
+sequence $\sequencen{x_n}$ converging to $x\in X$ such that
+$\{n:x_n\ne x\}$ is infinite.   Choose
+$\sequence{i}{n_i}$ and $\sequence{i}{G_i}$ inductively, as follows.
+Given that $x\notin\overline{G}_j$ for $j<i$, there is an $n_i$ such
+that $x_{n_i}\ne x$ and $x_{n_i}\notin\overline{G}_j$ for every $j<i$;
+now let $G_i$ be an open set such that $x_{n_i}\in G_i$ and
+$x\notin\overline{G}_i$, and continue.
+
+Since all the $n_i$ must be distinct, $\sequence{i}{x_{n_i}}\to x$.
+But consider
+
+\Centerline{$G
+=\bigcup_{i\in\Bbb N}G_{2i}\setminus\bigcup_{j<2i}\overline{G}_j$,
+\quad$H
+=\bigcup_{i\in\Bbb N}G_{2i+1}\setminus\bigcup_{j\le 2i}\overline{G}_j$.}
+
+\noindent Then $G$ and $H$ are disjoint open sets and $x_{n_{2i}}\in G$,
+$x_{n_{2i+1}}\in H$ for every $i$.   So
+$x\in\overline{G}\cap\overline{H}$.   But $\overline{G}$ is open
+(because $X$ is extremally disconnected), and is disjoint from $H$, and
+now $\overline{H}$ is disjoint from $\overline{G}$;  so they cannot both
+contain $x$.\ \Bang\Qed}
+
+\spheader 4A2Gi(i) If $X$ and $Y$ are compact Hausdorff spaces and
+$f:X\to Y$ is a continuous surjection then there is a closed set
+$K\subseteq X$ such that $f[K]=Y$ and $f\restr K$ is irreducible.
+\prooflet{\Prf\
+Let $\Cal E$ be the family of closed sets $F\subseteq X$
+such that $f[F]=Y$.   If $\Cal F\subseteq\Cal E$ is non-empty and
+downwards-directed, then for any $y\in Y$ the family
+$\{F\cap f^{-1}[\{y\}]:F\in\Cal F\}$ is a downwards-directed family of
+non-empty closed sets, so (because $X$ is compact) has non-empty
+intersection;  this shows that $\bigcap\Cal F\in\Cal E$.   By Zorn's
+Lemma, $\Cal E$ has a minimal element $K$ say.   Now $f[K]=Y$ but
+$f[F]\ne Y$ for any closed proper subset of $K$,
+so $f\restr K$ is irreducible.\ \Qed}
+
+\quad(ii) If $X$ and $Y$ are compact Hausdorff spaces and $f:X\to Y$ is an
+irreducible continuous surjection, then ($\alpha$) if $\Cal U$ is a
+$\pi$-base for the topology of $Y$ then $\{f^{-1}[U]:U\in\Cal U\}$ is a
+$\pi$-base for the topology of $X$ ($\beta$) if $Y$ has a countable
+$\pi$-base so does $X$ ($\gamma$) if $x$ is an isolated point in $X$ then
+$f(x)$ is an isolated point in $Y$ ($\delta$) if $Y$ has no isolated
+points, nor does $X$.
+\prooflet{\Prf\ ($\alpha$) If $G\subseteq X$ is a non-empty open set then
+$f[X\setminus G]\ne Y$.   As $f[X\setminus G]$ is closed, there is a
+non-empty $U\in\Cal U$ disjoint from $f[X\setminus G]$.   Now $f^{-1}[U]$
+is a non-empty subset of $G$.   ($\beta$) Follows at once from
+($\alpha$).   ($\gamma$) By ($\alpha$), with $\Cal U$ the family of all
+open subsets of $Y$, there is a non-empty open set $U\subseteq Y$ such that
+$f^{-1}[U]\subseteq\{x\}$, that is, $U=\{f(x)\}$.   ($\delta$) Follows at
+once from ($\gamma$).\ \Qed}
+
+\spheader 4A2Gj(i) Let $X$ be a non-empty compact Hausdorff space
+without isolated points.   Then there are a closed set $F\subseteq X$
+and a continuous surjection $f:F\to\{0,1\}^{\Bbb N}$.
+\prooflet{\Prf\ For $\sigma\in\bigcup_{n\in\Bbb N}\{0,1\}^n$ choose
+closed sets $V_{\sigma}\subseteq X$ inductively, as follows.
+$V_{\emptyset}=X$.   Given that $V_{\sigma}$ is a closed set with
+non-empty interior, there are distinct points $x$,
+$y\in\interior V_{\sigma}$ (because $X$ has no isolated points);  let
+$G$, $H$ be disjoint open subsets of $X$ such that $x\in G$ and
+$y\in H$;  and let $V_{\sigma^{\smallfrown}\fraction{0}}$ and
+$V_{\sigma^{\smallfrown}\fraction{1}}$ be closed sets such that
+
+\Centerline{$x\in\interior V_{\sigma^{\smallfrown}\fraction{0}}
+\subseteq G\cap\interior V_{\sigma}$,
+\quad$y\in\interior V_{\sigma^{\smallfrown}\fraction{1}}
+\subseteq H\cap\interior V_{\sigma}$.}
+
+\noindent (This is possible because $X$ is regular.)   The construction
+ensures that $V_{\tau}\subseteq V_{\sigma}$ whenever $\tau\in\{0,1\}^n$
+extends $\sigma\in\{0,1\}^m$, and that
+$V_{\tau}\cap V_{\sigma}=\emptyset$ whenever $\tau$,
+$\sigma\in\{0,1\}^n$ are different.   Set
+$F=\bigcap_{n\in\Bbb N}\bigcup_{\sigma\in\{0,1\}^n}V_{\sigma}$;  then
+$F$ is a closed subset of $X$ and we have a continuous function
+$f:F\to\{0,1\}^{\Bbb N}$ defined by saying that $f(x)(i)=\sigma(i)$
+whenever $n\in\Bbb N$, $\sigma\in\{0,1\}^n$, $i<n$ and
+$x\in V_{\sigma}$.   Finally, $f$ is surjective, because if
+$z\in\{0,1\}^{\Bbb N}$ then $\sequencen{V_{z\restr n}}$ is a
+non-increasing sequence of closed sets in the compact space $X$, so has
+non-empty intersection $V$ say, and $f(x)=z$ for any $x\in V$.\ \Qed}
+%for (ii) and (iii)
+
+\quad (ii) If $X$ is a non-empty compact Hausdorff space without
+isolated points, then $\#(X)\ge\frak c$.
+\prooflet{(Use (i).)}
+%4@19
+
+\quad (iii) If $X$ is a compact Hausdorff space which is not scattered,
+it has an infinite closed subset with a
+countable $\pi$-base and no isolated points.
+\prooflet{\Prf\ Because $X$ is not scattered, it has a non-empty subset
+$A$ without isolated points.   Then $\overline{A}$ is compact and has no
+isolated points;  by (i), there are a closed set
+$F_0\subseteq\overline{A}$ and a continuous surjection
+$f:F_0\to\{0,1\}^{\Bbb N}$.   By (i-i) above, there is a closed
+$F\subseteq F_0$ such that $f[F]=\{0,1\}^{\Bbb N}$ and $f\restr F$ is
+surjective.   Of course $F$ is infinite;  by (i-ii), it has a countable
+$\pi$-base and no isolated points.\ \Qed}
+
+
+\quad (iv) Let $X$ be a compact Hausdorff space.   Then there is a
+continuous surjection from $X$ onto $[0,1]$ iff $X$ is not scattered.
+\prooflet{\Prf\ ($\alpha$) Suppose that $f:X\to[0,1]$ is a continuous
+surjection.   By (i-i) again, there is a closed set $F\subseteq X$ such
+that $f[F]=[0,1]$ and $f\restr F$ is irreducible;  by (i-ii) $F$ has no
+isolated points.   So $X$ is not scattered.   ($\beta$)
+If $X$ is not scattered, let $A\subseteq X$ be a
+non-empty set with no isolated points.   Then $\overline{A}$ is a
+non-empty compact subset of $X$ with no isolated points, so there is a
+continuous surjection $g:\overline{A}\to\{0,1\}^{\Bbb N}$ ((i) of this
+subparagraph).
+Now there is a continuous surjection $h:\{0,1\}^{\Bbb N}\to[0,1]$ (e.g.,
+set $h(y)=\sum_{n=0}^{\infty}2^{-n-1}y(n)$ for $y\in\{0,1\}^{\Bbb N}$),
+so we have a continuous surjection $hg:\overline{A}\to[0,1]$.   By
+Tietze's theorem (4A2F(d-ix)), there is a continuous function
+$f_0:X\to\Bbb R$ extending $hg$;  setting $f(x)=\med(0,f_0(x),1)$
+for $x\in X$, we have a continuous surjection $f:X\to[0,1]$.\ \Qed
+}%end of prooflet
+
+\quad(v) A Hausdorff continuous image of a scattered compact Hausdorff
+space is scattered.   \prooflet{(Immediate from (iv).)}
+
+\quad(vi) If $X$ is an uncountable first-countable compact Hausdorff
+space, it is not scattered.   \prooflet{\Prf\ Let $\Cal G$ be the family
+of countable open subsets of $X$, and $G^*$ its union.  No finite subset
+of $\Cal G$ can cover $X$, so $X\setminus G^*$ is
+non-empty.   \Quer\ If $x$ is an isolated point of $X\setminus G^*$,
+then $\{x\}\cup G^*$ is a neighbourhood of $x$;  let $\sequencen{U_n}$
+run over a base of open neighbourhoods of $x$ with
+$\overline{U}_0\subseteq\{x\}\cup G^*$.   For each $n\in\Bbb N$,
+$F_n=\overline{U}_0\setminus U_n$ is a compact set included in $G^*$, so
+is covered by finitely many members of $\Cal G$, and is countable.   But
+this means that $U_0=\{x\}\cup\bigcup_{n\in\Bbb N}U_0\setminus U_n$ is
+countable, and $x\in G^*$.\ \BanG\  Thus $X\setminus G^*$ is a non-empty
+set with no isolated points, and $X$ is not scattered.\ \Qed
+
+}%end of prooflet
+It follows that there is a continuous surjection from $X$ onto
+$[0,1]$\prooflet{, by (iv)}.
+%4@39
+
+\spheader 4A2Gk A locally compact Hausdorff space is \v{C}ech-complete.
+\prooflet{(\Engelking, p.\ 196.)}
+
+\spheader 4A2Gl If $X$ is a topological space, $f:X\to\Bbb R$ is lower
+semi-continuous, and $K\subseteq X$ is compact and not empty, then there
+is an $x_0\in K$ such that $f(x_0)=\inf_{x\in K}f(x)$.
+\prooflet{(\Gaal, p.\ 209 Theorem 3.)}
+Similarly, if $g:X\to\Bbb R$ is upper
+semi-continuous, there is an $x_1\in K$ such that
+$g(x_1)=\sup_{x\in K}g(x)$.
+%4@84 %4@75
+
+\spheader 4A2Gm\dvAnew{2012}
+If $X$ is a Hausdorff space, $Y$ is a compact space and
+$F\subseteq X\times Y$ is closed, then its projection
+$\{x:(x,y)\in F\}$ is a closed subset of $X$.   \prooflet{(\Engelking,
+3.1.16.)}
+
+\spheader 4A2Gn\dvAnew{2012}
+If $X$ is a locally compact topological space,
+$Y$ is a topological space and $f:X\to Y$ is a continuous open surjection,
+then $Y$ is locally compact.   \prooflet{(\Engelking, 3.3.15.)}
+
+\leader{4A2H}{Lindel\"of spaces (a)}
+If $X$ is a topological space, then a subset $Y$ of $X$ is
+Lindel\"of\cmmnt{ (in its subspace topology)} iff for
+every family $\Cal G$ of open subsets of $X$ covering $Y$ there is a
+countable subfamily of $\Cal G$ still covering $Y$.
+%4@22
+
+\spheader 4A2Hb(i) A regular Lindel\"of space $X$ is
+paracompact, therefore normal and completely regular.
+\prooflet{(\Engelking, 3.8.11 \& 5.1.2.)}
+%4@15 %4@22 %4@26 %4@39?
+
+\quad(ii) If $X$ is a Lindel\"of space and $\Cal A$ is a locally finite
+family of subsets of $X$ then $\Cal A$ is countable.   \prooflet{\Prf\
+The family $\Cal G$ of open sets meeting only finitely many members of
+$\Cal A$ is an open cover of $X$.   If $\Cal G_0\subseteq\Cal G$ is a
+countable cover of $X$ then $\{A:A\in\Cal A,\,A$ meets some member of
+$\Cal G_0\}=\Cal A\setminus\{\emptyset\}$ is countable.\ \Qed}
+
+%hereditarily Lindelof spaces
+\spheader 4A2Hc(i) A topological space $X$ is hereditarily Lindel\"of
+iff for any family $\Cal G$ of open
+subsets of $X$ there is a countable family $\Cal G_0\subseteq\Cal G$
+such that $\bigcup\Cal G_0=\bigcup\Cal G$.
+\prooflet{\Prf\ ($\alpha$) If $X$ is hereditarily Lindel\"of and
+$\Cal G$
+is a family of open subsets of $X$, then $\Cal G$ is an open cover of
+$\bigcup\Cal G$, so has a countable subcover.   ($\beta$) If $X$ is not
+hereditarily Lindel\"of, let $Y\subseteq X$ be a non-Lindel\"of
+subspace, and $\Cal H$ a cover of $Y$ by relatively open sets which has
+no countable subcover;  setting
+$\Cal G=\{G:G\subseteq X$ is open, $G\cap Y\in\Cal H\}$, there can be no
+countable $\Cal G_0\subseteq\Cal G$ with union $\bigcup\Cal G$.\ \Qed}
+%4@39
+
+\quad(ii) Let $X$ be a regular hereditarily Lindel\"of space.   Then
+$X$ is perfectly normal.
+\prooflet{\Prf\ Let $F\subseteq X$ be closed.   Let $\Cal G$ be the
+family of open sets $G\subseteq X$ such that
+$\overline{G}\cap F=\emptyset$;  because $X$ is regular,
+$\bigcup\Cal G=X\setminus F$;  because $X$ is hereditarily Lindel\"of,
+there is a sequence $\sequencen{G_n}$ in $G$ such that
+$X\setminus F=\bigcup_{n\in\Bbb N}G_n$.   This means that
+$F=\bigcap_{n\in\Bbb N}X\setminus\overline{G_n}$ is a G$_{\delta}$ set.
+But $X$ is normal ((b) above), so is perfectly normal.\ \Qed}
+%4@35
+
+\spheader 4A2Hd Any $\sigma$-compact topological space is Lindel\"of.
+\prooflet{(\Engelking, 3.8.5.)}
+
+\leader{4A2I}{Stone-\v{C}ech compactifications (a)}
+Let $X$ be a completely regular Hausdorff space.
+Then there is a compact Hausdorff space $\beta X$, the
+{\bf Stone-\v{C}ech compactification} of $X$, in which $X$ can be
+embedded as a dense subspace.
+%4@16 %4@22
+If $Y$ is another compact Hausdorff space, then every continuous
+function from $X$ to $Y$ has a unique continuous extension to a
+continuous function from $\beta X$ to $Y$.
+\prooflet{(\Engelking, 3.6.1;  \Csaszar, 6.4d;  \Cech, 41D.5.)}
+%4@18
+
+\spheader 4A2Ib Let $I$ be any set, and write $\beta I$ for its
+Stone-\v{C}ech compactification when $I$ is given its discrete topology.
+Let $Z$ be the Stone space of the Boolean algebra $\Cal PI$.
+
+\quad (i) There is a canonical homeomorphism $\phi:\beta I\to Z$ defined by
+saying that $\phi(i)(a)=\chi a(i)$ for every $i\in I$ and $a\subseteq I$.
+\prooflet{\Prf\ Recall that $Z$ is the set of ring homomorphisms from
+$\Cal PI$ onto $\Bbb Z_2$ (311E).   If $i\in I$, let $\hat{i}$ be the
+corresponding member of $Z$ defined by setting $\hat{i}(a)=\chi a(i)$
+for every $a\subseteq I$.   Then $Z$ is compact and Hausdorff (311I), and
+$i\mapsto\hat{i}:I\to Z$ is continuous, so has a unique extension to
+a continuous function $\phi:\beta I\to Z$.
+
+If $G\subseteq Z$ is open and not empty, it includes a set of the form
+$\widehat{a}=\{\theta:\theta\in Z,\,\theta(a)=1\}$ where $a\subseteq I$
+is not empty;  if $i$ is any member of $a$,
+$\hat{i}\in\widehat{a}\subseteq G$ so
+$G\cap\phi[\beta I]\ne\emptyset$.   This shows that $\phi[\beta I]$ is
+dense in $Z$;  as $\beta I$ is compact, $\phi[\beta I]$ is compact,
+therefore closed, and is equal to $Z$.   Thus $\phi$ is surjective.
+
+If $t$, $u$ are distinct points of $\beta I$, there is an open subset
+$H$ of $\beta I$ such that $t\in H$ and $u\notin\overline{H}$.   Set
+$a=H\cap I$.   Then $t\in\overline{a}$, the closure of $a$ regarded as a
+subset of $\beta I$, so $\phi(t)\in\overline{\phi[a]}$ (3A3Cd).   But
+$\phi[a]=\{\hat{i}:i\in a\}\subseteq\widehat{a}$, which is
+open-and-closed, so $\phi(t)\in\widehat{a}$.   Similarly, setting
+$b=I\setminus\overline{H}$, $\phi(u)\in\widehat{b}$;  since
+$\widehat{a}\cap\widehat{b}=\widehat{a\cap b}$ is empty,
+$\phi(t)\ne\phi(u)$.   This shows that $\phi$ is injective, therefore a
+homeomorphism between $\beta I$ and $Z$ (3A3Dd).\ \Qed}\cmmnt{
+
+Note that if $z:\Cal PI\to\Bbb Z_2$ is a Boolean homomorphism, then
+$\{J:z(J)=1\}$ is an ultrafilter on $I$;  and conversely, if $\Cal F$ is an
+ultrafilter on $I$, we have a Boolean homomorphism $z:\Cal PI\to\Bbb Z_2$
+such that $\Cal F=z^{-1}[\{1\}]$.}
+\dvro{We}{So we} can identify $\beta I$ with the
+set of ultrafilters on $I$.   Under this identification, the canonical
+embedding of $I$ in $\beta I$ corresponds to matching each member of $I$
+with the corresponding principal ultrafilter on $I$.
+
+\quad (ii) $C(\beta I)$ is isomorphic, as Banach lattice, to
+$\ell^{\infty}(I)$.
+\prooflet{\Prf\ By 363Ha, we
+can identify $\ell^{\infty}(I)$, as Banach lattice, with
+$L^{\infty}(\Cal PI)=C(Z)$.   But (i) tells us that we have a canonical
+identification between $C(Z)$ and $C(\beta I)$.\ \Qed}
+
+\quad (iii) We have a one-to-one correspondence between filters $\Cal F$
+on $I$ and non-empty closed sets $F\subseteq\beta I$, got by matching
+$\Cal F$ with $\bigcap\{\widehat{a}:a\in\Cal F\}$, or $F$ with
+$\{a:a\subseteq I,\,F\subseteq\widehat{a}\}$, where
+$\widehat{a}\subseteq\beta I$ is the open-and-closed set corresponding
+to $a\subseteq I$.
+\prooflet{\Prf\ The identification of $\beta I$ with $Z$
+means that we can regard the map
+$a\mapsto\widehat{a}$ as a Boolean isomorphism between $\Cal PI$ and the
+algebra of open-and-closed subsets of $\beta I$ (311I).   For any filter
+$\Cal F$ on $I$, set $H(\Cal F)=\bigcap\{\widehat{a}:a\in\Cal F\}$;
+because $\{\widehat{a}:a\in\Cal F\}$ is a downwards-directed family of
+non-empty closed sets in the compact Hausdorff space $\beta I$,
+$H(\Cal F)$ is a non-empty closed set.   If $F\subseteq\beta I$ is a
+non-empty closed set, then it is elementary to check that
+$\Cal H(F)=\{a:F\subseteq\widehat{a}\}$ is a filter on $I$, and
+evidently $H(\Cal H(F))\supseteq F$.   But if $t\in\beta I\setminus F$,
+then (because $\{\widehat{a}:a\subseteq I\}$ is a base for the topology
+of $\beta I$, see 311I again) there is an $a\subseteq I$ such that
+$t\in\widehat{a}$ and $F\cap\widehat{a}=\emptyset$, that is,
+$F\subseteq\widehat{I\setminus a}$;  so
+$\widehat{I\setminus a}\in\Cal H(F)$ and
+$H(\Cal H(F))\subseteq\widehat{I\setminus a}$ and
+$t\notin H(\Cal H(F))$.   Thus $H(\Cal H(F))=F$ for every non-empty
+closed set $F\subseteq\beta I$.
+
+If $\Cal F_1$ and $\Cal F_2$ are filters on $I$ and
+$a\in\Cal F_1\setminus\Cal F_2$, then
+$\{\widehat{b\setminus a}:b\in\Cal F_2\}$ is a downwards-directed family
+of non-empty closed sets in $\beta I$, so has non-empty intersection;
+if $t\in\widehat{b\setminus a}=\widehat{b}\setminus\widehat{a}$ for
+every $b\in\Cal F_2$, then $t\in H(\Cal F_2)\setminus H(\Cal F_1)$.
+This shows that $\Cal F\mapsto H(\Cal F)$ is injective.   It follows
+that $\Cal F\mapsto H(\Cal F)$, $F\mapsto\Cal H(F)$ are the two halves
+of a bijection, as claimed.\ \Qed}
+
+\quad (iv) $\beta I$ is extremally disconnected.
+\prooflet{(Because $\Cal PI$ is Dedekind complete, $Z$
+is extremally disconnected (314S).)}
+
+\quad(v) There are no non-trivial convergent sequences in
+$\beta I$.
+\prooflet{(4A2G(h-iii).   Compare \Engelking, 3.6.15.)}
+
+
+\vleader{48pt}{4A2J}{Uniform spaces}\cmmnt{ (See \S3A4.)}  Let
+$(X,\Cal W)$ be a uniform space;  give $X$ the associated topology
+$\frak T$\cmmnt{ (3A4Ab)}.
+
+\spheader 4A2Ja $\Cal W$ is generated by a family of pseudometrics.
+\prooflet{(\Engelking, 8.1.10;  {\smc Bourbaki 66}, IX.1.4;  \Csaszar,
+4.2.32.)}   More precisely:  if $\sequencen{W_n}$ is any sequence in
+$\Cal W$, there is a pseudometric $\rho$ on $X$ such that ($\alpha$)
+$\{(x,y):\rho(x,y)\le\epsilon\}\in\Cal W$ for every $\epsilon>0$
+($\beta$) whenever $n\in\Bbb N$ and $\rho(x,y)<2^{-n}$ then
+$(x,y)\in W_n$\prooflet{ (\Engelking, 8.1.10)}.
+
+It follows that $\frak T$ is completely regular, therefore
+regular\prooflet{ (3A3Be)}.
+$\frak T$ is defined by the bounded uniformly continuous functions, in
+the sense that it is the coarsest topology\cmmnt{ $\frak S$} on $X$
+such that these are all continuous.   \prooflet{\Prf\ Let $\Rho$ be the
+family of
+pseudometrics compatible with $\Cal W$ in the sense of ($\alpha$) just
+above.   If $x\in G\in\frak T$, there is a $\rho\in\Rho$ such that
+$\{y:\rho(x,y)<1\}\subseteq G$;  setting $f(y)=\rho(x,y)$, we see that
+$f$ is uniformly continuous, therefore $\frak S$-continuous, and that
+$x\in\interior_{\frak S}G$.   As $x$ is arbitrary, $G\in\frak S$;  as
+$G$ is arbitrary, $\frak T\subseteq\frak S$;  but of course
+$\frak S\subseteq\frak T$ just because uniformly continuous functions
+are continuous.\ \Qed}
+%4@49
+
+\spheader 4A2Jb\dvAnew{2011}
+If $\Cal W$ is countably generated and $\frak T$ is
+Hausdorff, there is a metric $\rho$ on $X$ defining $\Cal W$ and
+$\frak T$.  \prooflet{({\smc Engelking 89}, 8.1.21.)}
+%Bourbaki Gen Top \query
+
+\spheader 4A2Jc
+%If $W\in\Cal W$, the interior of $W$\cmmnt{ (for the product topology
+%on $X\times X$)} belongs to $\Cal W$.
+%\prooflet{(\Engelking, 8.1.12.)}
+If $W\in\Cal W$ and $x\in X$ then $x\in\interior W[\{x\}]$.
+\prooflet{(\Engelking, 8.1.3.)}   If $A\subseteq X$ then
+$\overline{A}=\bigcap_{W\in\Cal W}W[A]$.   \prooflet{(\Engelking,
+8.1.4.)}
+%4@A2Lc
+
+\spheader 4A2Jd Any subset of a totally bounded set in $X$ is totally
+bounded.
+\prooflet{(\Engelking, 8.3.2;  \Csaszar, 3.2.70.)}
+The closure of a totally bounded set is totally bounded.
+\prooflet{\Prf\ If $A$ is totally bounded and $W\in\Cal W$, take
+$W'\in\Cal W$ such that $W'\frsmallcirc W'\subseteq W$.   Then there is
+a finite set
+$I\subseteq X$ such that $A\subseteq W'[I]$.   In this case
+
+\Centerline{$\overline{A}\subseteq W'[A]
+\subseteq W'[W'[I]]=(W'\frsmallcirc W')[I]\subseteq W[I]$}
+
+\noindent by (b).   As $W$ is arbitrary, $\overline{A}$ is totally
+bounded.\ \Qed}
+
+\spheader 4A2Je A subset of $X$ is compact iff it is
+complete\cmmnt{ (definition: 3A4F)} (for its subspace uniformity) and
+totally bounded.
+\prooflet{(\Engelking, 8.3.16;  \Cech, 41A.8;  \Csaszar, 5.2.22;  \Gaal,
+pp.\ 278-279.)}
+%4@43  %4@33 %4@25
+So if $X$ is complete, every closed totally bounded subset of $X$ is
+compact, and the totally bounded sets are just the relatively compact
+sets.
+\prooflet{(A closed subspace of a complete space is complete.)}
+%4@41 %4@48 %4@A4
+
+\spheader 4A2Jf If $f:X\to\Bbb R$ is a continuous function with compact
+support, it is uniformly continuous.
+\prooflet{\Prf\ Set $K=\overline{\{x:f(x)\ne 0\}}$.
+Let $\epsilon>0$.   For each $x\in X$, there is a $W_x\in\Cal W$ such
+that $|f(y)-f(x)|\le\bover12\epsilon$ whenever $y\in W_x[\{x\}]$.   Let
+$W'_x\in\Cal W$ be such that $W'_x\frsmallcirc W'_x\subseteq W_x$.   Set
+$G_x=\interior W'_x[\{x\}]$;  then $x\in G_x$, by (b).   Because $K$ is
+compact, there is a finite set $I\subseteq K$ such that
+$K\subseteq\bigcup_{x\in I}G_x$.   Set
+$W=(X\times X)\cap\bigcap_{x\in I}W'_x\in\Cal W$.   Take any
+$(y,z)\in W\cap W^{-1}$.   If neither $y$ nor $z$ belongs to $K$, then
+of course $|f(y)-f(z)|\le\epsilon$.   If $y\in K$, let $x\in I$ be such
+that $y\in G_x$.   Then
+
+\Centerline{$y\in W'_x[\{x\}]\subseteq W_x[\{x\}]$,
+\quad$z\in W[W'_x[\{x\}]]\subseteq W'_x[W'_x[\{x\}]]
+\subseteq W_x[\{x\}]$,}
+
+\noindent so
+
+\Centerline{$|f(y)-f(z)|\le|f(y)-f(x)|+|f(z)-f(x)|\le\epsilon$.}
+
+\noindent The same idea works if $z\in K$.   So $|f(y)-f(z)|\le\epsilon$
+for all $y$, $z\in W\cap W^{-1}$;  as $\epsilon$ is arbitrary, $f$ is
+uniformly continuous.\ \Qed}
+%4@A4
+
+\spheader 4A2Jg\dvAformerly{4{}A2Jf}(i) 
+If $(Y,\frak S)$ is a completely regular space,
+there is a uniformity on $Y$ compatible with $\frak S$.
+\prooflet{(\Engelking, 8.1.20.)}
+
+\quad(ii) If $(Y,\frak S)$ is a compact
+Hausdorff space, there is exactly one
+uniformity on $Y$ compatible with $\frak S$;  it is induced by the set
+of all those pseudometrics on $Y$ which are continuous as functions from
+$Y\times Y$ to $\Bbb R$.
+\prooflet{(\Engelking, 8.3.13;  \Gaal, p.\ 304.)}
+
+\quad(iii) If $(Y,\frak S)$ is a compact Hausdorff space and $\Cal V$ is
+the uniformity on $Y$ compatible with $\frak S$, then any continuous
+function from $Y$ to $X$ is uniformly continuous.
+%not Engelking, Kuratowski
+\prooflet{(\Gaal, p.\ 305 Theorem 8.)}
+
+\spheader 4A2Jh The set $U$ of uniformly continuous real-valued
+functions on $X$ is a Riesz subspace of $\BbbR^X$ containing the
+constant functions.   If a sequence in $U$ converges uniformly, the
+limit function again belongs to $U$.
+%not Kuratowski, Engelking
+\prooflet{(\Csaszar, 3.2.64;  \Gaal, p.\ 237 Lemma 4.)}
+
+\spheader 4A2Ji Let $(Y,\Cal V)$ be another uniform space.   If $\Cal F$
+is a Cauchy filter on $X$ and $f:X\to Y$ is a uniformly continuous
+function, then $f[[\Cal F]]$ is a Cauchy filter on $Y$.
+\prooflet{(\Csaszar, 5.1.2.)}
+%not Engelking ;  not \Gaal
+
+\vleader{48pt}{4A2K}{First-countable, sequential and countably tight
+spaces (a)}
+%\spheader 4A2Ka
+Let $X$ be a countably tight topological space.   If
+$\ofamily{\xi}{\zeta}{F_{\xi}}$ is a non-decreasing family of closed
+subsets of $X$ indexed by an ordinal $\zeta$, then
+$E=\bigcup_{\xi<\zeta}F_{\xi}$ is an F$_{\sigma}$ set, and is
+closed unless $\cf\zeta=\omega$.
+\prooflet{\Prf\ If $\cf\zeta=0$, that is, $\zeta=0$, then $E=\emptyset$
+is closed.   If $\cf\zeta=1$, that is, $\zeta=\xi+1$ for some ordinal
+$\xi$, then $E=F_{\xi}$ is closed.   If $\cf\zeta=\omega$, there is a
+sequence $\sequencen{\xi_n}$ in $\zeta$ with supremum $\zeta$, so that
+$E=\bigcup_{n\in\Bbb N}F_{\xi_n}$ is F$_{\sigma}$.   If
+$\cf\zeta>\omega$, take $x\in\overline{E}$.   Then there is a sequence
+$\sequencen{x_n}$ in $E$ such that $x\in\overline{\{x_n:n\in\Bbb N\}}$.
+For each $n$ there is a $\xi_n<\zeta$ such that $x_n\in F_{\xi_n}$, and
+now $\xi=\sup_{n\in\Bbb N}\xi_n<\zeta$ and
+$x\in\overline{F}_{\xi}=F_{\xi}\subseteq E$.   As
+$x$ is arbitrary, $E$ is closed.\ \Qed}
+
+\spheader 4A2Kb If $X$ is countably tight, any subspace of $X$ is
+countably tight\prooflet{, just because if $A\subseteq Y\subseteq X$
+then the closure of $A$ in $Y$ is the intersection of $Y$ with the
+closure of $A$ in $X$}.   If $X$ is compact and countably tight, then
+any Hausdorff continuous image of $X$ is countably tight.
+\prooflet{ \Prf\ Let $f:X\to Y$ be a continuous surjection, where $Y$ is
+Hausdorff, $B$ a subset of $Y$ and $y\in\overline{B}$.   Set
+$A=f^{-1}[B]$.   Then $\overline{A}$ is compact, so $f[\overline{A}]$ is
+compact, therefore closed;  because $f$ is surjective,
+$y\in\overline{f[A]}\subseteq f[\overline{A}]$, and there is an
+$x\in\overline{A}$ such that $f(x)=y$.   Now there is a countable set
+$A_0\subseteq A$ such that $x\in\overline{A}_0$, in which case
+
+\Centerline{$y=f(x)\in f[\overline{A}_0]\subseteq\overline{f[A_0]}$,}
+
+\noindent while $f[A_0]$ is a countable subset of $B$.\ \Qed}
+
+\spheader 4A2Kc If $X$ is a sequential space, it is countably tight.
+\prooflet{\Prf\ Suppose that $A\subseteq X$ and $x\in\overline{A}$.
+Set $B=\bigcup\{\overline{C}:C\subseteq A$ is countable$\}$.   If
+$\sequencen{y_n}$ is a sequence in $B$ converging to $y\in X$, then for
+each $n\in\Bbb N$ we can find a countable set $C_n\subseteq A$ such that
+$y_n\in\overline{C}_n$, and now $C=\bigcup_{n\in\Bbb N}C_n$ is a
+countable subset of $A$ such that $y\in\overline{C}\subseteq B$.   So
+$B$ is sequentially closed, therefore closed, and $x\in B$.   As $A$ and
+$x$ are arbitrary, $X$ is countably tight.\ \Qed}
+
+\spheader 4A2Kd If $X$ is a sequential space, $Y$ is a topological space
+and $f:X\to Y$ is sequentially continuous, then $f$ is continuous.
+\prooflet{(\Engelking, 1.6.15.)}
+%4@36
+
+\spheader 4A2Ke First-countable spaces are sequential.
+\prooflet{(\Engelking, 1.6.14.)}
+%4@A2N
+
+%any subspace of a first-countable space is first-countable
+
+\spheader 4A2Kf Let $X$ be a locally compact Hausdorff space in which
+every singleton set is G$_{\delta}$.   Then $X$ is first-countable.
+\prooflet{\Prf\ If $\{x\}=\bigcap_{n\in\Bbb N}G_n$ where each $G_n$ is
+open, then for each $n\in\Bbb N$ we can find a compact set $F_n$ such
+that $x\in\interior F_n\subseteq G_n$.   By 4A2Gd,
+$\{\bigcap_{i\le n}F_i:n\in\Bbb N\}$ is a base of neighbourhoods of
+$x$.\ \Qed}
+%4@39
+
+\leader{4A2L}{(Pseudo-\nobreak)metrizable spaces}
+\cmmnt{`Pseudometrizable'
+spaces, as such, hardly appear in this volume, for the usual reasons;
+they surface briefly in \S463.   It is perhaps worth noting, however,
+that all the ideas, and very nearly all the results, in this paragraph
+apply equally well to pseudometrics and pseudometrizable topologies.
+If $X$ is a set and $\rho$ is a pseudometric on $X$,
+set $U(x,\delta)=\{y:\rho(x,y)<\delta\}$ for $x\in X$ and $\delta>0$.}
+
+\spheader 4A2La Any subspace of a (pseudo-\nobreak)metrizable space is
+(pseudo-)\discretionary{}{}{}metrizable\cmmnt{ (2A3J)}.
+A topological space is metrizable iff it is pseudometrizable and
+Hausdorff\prooflet{ (2A3L)}.
+
+\spheader 4A2Lb Metrizable spaces are
+paracompact\prooflet{ (\Engelking, 5.1.3;  \Csaszar, 8.3.16;  \Cech,
+30C.2; \Gaal, p.\ 155)},
+%4@26
+therefore hereditarily metacompact\cmmnt{ ((a) above and 4A2F(g-i))}.
+%4@25 4@38
+
+\spheader 4A2Lc A metrizable space is
+perfectly normal\prooflet{ (\Engelking, 4.1.13;  \Csaszar, 8.4.5.)},
+so every closed set is a zero set and every open set is a cozero set (in
+particular, is F$_{\sigma}$).
+%4@23 %4@11, %4@12
+\leaveitout{A metrizable space is monotonically normal.    \Prf\ If
+$(X,\rho)$ is a metric space, then for disjoint closed sets $E$,
+$F\subseteq X$ set $W(E,F)=\{x:\rho(x,E)<\rho(x,F)\}$, writing
+$\rho(x,E)=\inf_{y\in E}\rho(x,y)$ (with $\rho(x,\emptyset)=\infty$).
+Now $W$ satisfies the conditions of the definition in 4A2A.\ \Qed
+}%end of leaveitout
+
+\spheader 4A2Ld If $X$ is a pseudometrizable space, it is
+first-countable.
+\prooflet{(If $\rho$ is a pseudometric defining the topology of $X$, and
+$x$ is any point of $X$, then $\{\{y:\rho(y,x)<2^{-n}\}:n\in\Bbb N\}$ is
+a base of neighbourhoods of $x$.)}   So $X$ is sequential and countably
+tight\prooflet{ (4A2Ke, 4A2Kc)}, and if $Y$ is another topological space
+and $f:X\to Y$ is sequentially continuous, then $f$ is
+continuous\prooflet{ (4A2Kd)}.
+
+\spheader 4A2Le {\bf Relative compactness} Let $X$ be a
+pseudometrizable space and $A$ a subset of $X$.   Then the following are
+equiveridical:  ($\alpha$) $A$ is relatively compact;  ($\beta$) $A$ is
+relatively countably compact;  ($\gamma$) every sequence in $A$ has a
+subsequence with a limit in $X$.
+\prooflet{\Prf\ Fix a pseudometric $\rho$ defining the topology of $X$.
+($\alpha$)$\Rightarrow$($\beta$) by 4A2G(f-iii).   If $\sequencen{x_n}$
+is a sequence in $A$ with a cluster point $x\in X$, then we can choose
+$\sequence{i}{n_i}$ inductively such that $\rho(x_{n_i},x)\le 2^{-i}$
+and $n_{i+1}>n_i$ for every $i$;  now $\sequence{i}{x_{n_i}}\to x$;  it
+follows that ($\beta$)$\Rightarrow$($\gamma$).   Now assume that
+($\alpha$) is false.   Then there is an ultrafilter $\Cal F$ on $X$
+containing $A$ which has no limit in $X$ (3A3Be, 3A3De).   If $\Cal F$
+is a Cauchy
+filter, choose $F_n\in\Cal F$ such that $\rho(x,y)\le 2^{-n}$ whenever
+$x$, $y\in F_n$, and $x_n\in A\cap\bigcap_{i\le n}F_i$ for each $n$;
+then it is easy to see that $\sequencen{x_n}$ is a sequence in $A$ with
+no convergent subsequence.   If $\Cal F$ is not a Cauchy filter, let
+$\epsilon>0$ be such that there is no $F\in\Cal F$ such that
+$\rho(x,y)\le\epsilon$ for every $x$, $y\in F$.
+Then $X\setminus U(x,\bover12\epsilon)\in\Cal F$ for every $x\in X$, so we can choose
+$\sequencen{x_n}$ inductively such that
+$x_n\in A\setminus\bigcup_{i<n}U(x_i,\bover12\epsilon)$ for every
+$n\in\Bbb N$, and again we have a sequence $\sequencen{x_n}$ in $A$ with
+no convergent subsequence in $X$.   Thus
+not-($\alpha$)$\Rightarrow$ not-($\gamma$) and the proof is complete.\
+\Qed}
+
+\spheader 4A2Lf {\bf Compactness} If $X$ is a pseudometrizable space,
+it is compact iff it is countably compact iff it is sequentially
+compact.
+\prooflet{((e) above, using 4A2G(f-i).   Compare \Engelking, 4.1.17, and
+\Csaszar, 5.3.33 \& 5.3.47.)}
+
+\spheader 4A2Lg(i) If $(X,\rho)$ is a metric space, its topology has a
+base which is $\sigma$-metrically-discrete.
+\prooflet{\Prf\ Enumerate $X$ as $\ofamily{\xi}{\kappa}{x_{\xi}}$ where
+$\kappa$ is a cardinal.   Let $\sequencen{(q_n,q'_n)}$ be a sequence
+running over $\{(q,q'):q,\,q'\in\Bbb Q,\,0<q<q'\}$ in such a way that
+$q'_n-q_n\ge 2^{-n}$ for every $n\in\Bbb N$.   For $n\in\Bbb N$,
+$\xi<\kappa$ set $G_{n\xi}
+=\{x:\rho(x,x_{\xi})<q_n,\,\inf_{\eta<\xi}\rho(x,x_{\eta})>q'_n\}$
+(interpreting $\inf\emptyset$ as $\infty$).   Then
+$\Cal U=\langle G_{n\xi}\rangle_{\xi<\kappa,n\in\Bbb N}$ is a
+$\sigma$-metrically-discrete family of open sets.   If $G\subseteq X$ is
+open and $x\in G$,
+let $\epsilon>0$ be such that $U(x,2\epsilon)\subseteq G$.   Let
+$\xi<\kappa$ be minimal such that $\rho(x,x_{\xi})<\epsilon$, and let
+$n\in\Bbb N$ be such that $\rho(x,x_{\xi})<q_n<q'_n<\epsilon$;  then
+$x\in G_{n\xi}\subseteq G$.   As $x$ and $G$ are arbitrary, $\Cal U$ is
+a base for the topology of $X$.\ \Qed}
+
+\quad (ii) Consequently, any metrizable space has a
+$\sigma$-disjoint base.
+\cmmnt{(Compare \Engelking, 4.4.3;  \Csaszar, 8.4.5;
+\Kuratowski, \S21.XVII.)}
+%4@17 %4@25
+
+\spheader 4A2Lh The product of a countable family of metrizable spaces
+is metrizable.
+\prooflet{(\Engelking, 4.2.2; \Csaszar, 7.3.27.)}
+
+\spheader 4A2Li Let $X$ be a metrizable space and $\kappa\ge\omega$ a
+cardinal.   Then $w(X)\le\kappa$ iff $X$ has a dense subset of cardinal
+at most $\kappa$.
+\prooflet{(\Engelking, 4.1.15.)}
+
+\spheader 4A2Lj If $(X,\rho)$ is any metric space, then the balls
+$B(x,\delta)=\{y:\rho(y,x)\le\delta\}$ are all closed
+sets\cmmnt{ (cf.\ 1A2G)}.
+In particular, in a normed space $(X,\|\,\|)$, the balls
+$B(x,\delta)=\{y:\|y-x\|\le\delta\}$ are closed.
+%4@46
+
+\leader{4A2M}{Complete metric spaces (a)}
+%\spheader 4A2Ma
+{\bf Baire's theorem for complete metric spaces} Every
+complete metric space is a Baire space.
+\prooflet{(\Engelking, 4.3.36 \& 3.9.4;  \Kechris, 8.4;
+\Csaszar, 9.2.1 \& 9.2.8;  \Gaal, p.\ 287.)}
+So a non-empty complete metric space is not
+meager\cmmnt{ (cf.\ 3A3Ha)}.
+%4@41
+
+\spheader 4A2Mb Let $\familyiI{(X_i,\rho_i)}$ be a countable family of
+complete metric spaces.   Then there is a complete metric on
+$X=\prod_{i\in I}X_i$ which defines the product topology on $X$.
+\prooflet{(\Engelking, 4.3.12;  \Kuratowski, \S33.III.)}
+
+\spheader 4A2Mc Let $(X,\rho)$ be a complete metric space, and
+$E\subseteq X$ a G$_{\delta}$ set.   Then there is a complete metric on
+$E$ which defines the subspace topology of $E$.
+\prooflet{(\Engelking, 4.3.23;  \Kuratowski, \S33.VI;  \Kechris, 3.11.)}
+
+\spheader 4A2Md Let $(X,\rho)$ be a complete metric space.   Then it is
+\v{C}ech-complete.   \prooflet{(\Engelking, 4.3.26.)}
+
+\spheader 4A2Me A non-empty complete metric space without isolated
+points is uncountable.  %surely has cardinal \frakc
+%4@39S
+\prooflet{(If $x$ is not isolated, $\{x\}$ is nowhere dense.)}
+%not Kechris not Engelking I think
+
+\leader{4A2N}{Countable networks:  Proposition} (a) If $X$ is a
+topological space with a
+countable network, any subspace of $X$ has a countable network.
+
+(b) Let $X$ be a space with a countable network.    Then $X$ is
+hereditarily Lindel\"of.   If it is regular, it is perfectly normal.
+%4@35
+
+(c) If $X$ is a topological space, and $\sequencen{A_n}$ is a sequence
+of subsets of $X$ each of which has a countable network (for its
+subspace topology), then $A=\bigcup_{n\in\Bbb N}A_n$ has a countable
+network.
+
+(d) A continuous image of a space with a countable network has a
+countable network.
+
+(e) Let $\familyiI{X_i}$ be a countable family of topological spaces
+with countable networks, with product $X$.   Then $X$ has a countable
+network.
+
+(f) If $X$ is a Hausdorff space with a countable network, there is a
+countable family $\Cal G$ of open sets such that whenever $x$, $y$ are
+distinct points in $X$ there are disjoint $G$, $H\in\Cal G$ such that
+$x\in G$ and $y\in H$.
+%4@23 %4@33
+
+(g) If $X$ is a regular topological space with a countable network, it
+has a countable network consisting of closed sets.
+
+(h) A compact Hausdorff space with a countable network
+is second-countable.
+
+(i) If a topological space $X$ has a countable network, then any dense
+set in $X$ includes a countable dense set;  in particular, $X$ is
+separable.
+
+(j) If a topological space $X$ has a countable network, then $C(X)$,
+with the topology of pointwise convergence inherited from the product
+topology of $\Bbb R^X$, has a countable network.
+
+\proof{{\bf (a)} If $\Cal E$ is a countable network for the topology of
+$X$, and $Y\subseteq X$, then $\{Y\cap E:E\in\Cal E\}$ is a countable
+network for the topology of $Y$.
+
+\medskip
+
+{\bf (b)} By \Engelking, 3.8.12 $X$ is Lindel\"of.
+Since any subspace of $X$ has a countable network ((a) above), it also
+is Lindel\"of, and $X$ is hereditarily Lindel\"of.
+By 4A2H(c-ii), if $X$ is regular, it is perfectly normal.
+
+\medskip
+
+{\bf (c)} If $\Cal E_n$ is a countable network for the topology of $A_n$
+for each $n$, then $\bigcup_{n\in\Bbb N}\Cal E_n$ is a countable network
+for the topology of $A$.
+
+\medskip
+
+{\bf (d)} Let $X$ be a topological space with a countable network
+$\Cal E$, and $Y$ a continuous image of $X$.   Let $f:X\to Y$ be a
+continuous
+surjection.   Then $\{f[E]:E\in\Cal E\}$ is a network for the topology
+of $Y$.   \Prf\ If $H\subseteq Y$ is open and $y\in H$, then $f^{-1}[H]$
+is an open subset of $X$ and there is an $x\in X$ such that $f(x)=y$.
+Now there must be an $E\in\Cal E$ such that $x\in E\subseteq f^{-1}[H]$,
+so that $y\in f[E]\subseteq H$.\ \QeD\   But $\{f[E]:E\in\Cal E\}$ is
+countable, so $Y$ has a countable network.
+
+\medskip
+
+{\bf (e)} For each $i\in I$ let $\Cal E_i$ be a countable network for
+the topology of $X_i$.   For each finite $J\subseteq I$, let $\Cal C_J$
+be the family of sets expressible as $\prod_{i\in I}E_i$ where
+$E_i\in\Cal E_i$ for each $i\in J$ and $E_i=X_i$ for $i\in
+I\setminus J$; then $\Cal C_J$ is countable because $\Cal
+E_i$ is countable for
+each $i\in J$.  Because the family $[I]^{<\omega}$ of finite subsets of
+$I$ is countable (3A1Cd), $\Cal E=\bigcup\{\Cal C_J:J\in[I]^{<\omega}\}$
+is countable.   But $\Cal E$ is a network for the topology of $X$.
+\Prf\ If $G\subseteq X$ is open and $x\in G$, then there is a family
+$\familyiI{G_i}$ such that every $G_i\subseteq X_i$ is open,
+$J=\{i:G_i\ne X_i\}$ is finite, and $x\in\prod_{i\in I}G_i$.   For $i\in
+J$, there is an $E_i\in\Cal E_i$ such that $x(i)\in E_i\subseteq G_i$;
+set $E_i=X_i$ for $i\in I\setminus J$.   Then
+
+\Centerline{$E=\prod_{i\in I}E_i\in\Cal C_J\subseteq\Cal E$}
+
+\noindent and $x\in E\subseteq G$.\ \Qed
+
+So $\Cal E$ is a countable network for the topology of $X$.
+
+\medskip
+
+{\bf (f)} By (b) and (e), $X\times X$ is hereditarily Lindel\"of.   In
+particular, $W=\{(x,y):x\ne y\}$ is Lindel\"of.   Set
+
+\Centerline{$\Cal V=\{G\times H:G$, $H\subseteq X$ are open, $G\cap
+H=\emptyset\}$.}
+
+\noindent Because $X$ is Hausdorff, $\Cal V$ is a cover of $W$.   So
+there is a countable $\Cal V_0\subseteq\Cal V$ covering $W$.   Set
+
+\Centerline{$\Cal G=\{G:G\times H\in\Cal V_0\}\cup\{H:G\times H\in\Cal
+V_0\}$.}
+
+\noindent Then $\Cal G$ is a countable family of open sets separating
+the points of $X$.
+
+\medskip
+
+{\bf (g)} Let $\Cal E$ be a countable network
+for the topology of $X$.   Set $\Cal E'=\{\overline{E}:E\in\Cal E\}$.
+If $G\subseteq X$ is open and $x\in G$, then (because the topology is
+regular) there is an open set $H$ such that
+$x\in H\subseteq\overline{H}\subseteq G$.   Now there is an $E\in\Cal E$
+such that $x\in E\subseteq H$, in
+which case $\overline{E}\in\Cal E'$ and $x\in\overline{E}\subseteq G$.
+So $\Cal E'$ is a countable network for $X$ consisting of closed
+sets.
+
+\medskip
+
+{\bf (h)} \Engelking, 3.1.19.
+
+\medskip
+
+{\bf (i)} Let $D\subseteq X$ be dense, and $\Cal E$ a countable network
+for the topology of $X$.   Let $D'\subseteq D$ be a countable set such
+that $D'\cap E\ne\emptyset$ whenever $E\in\Cal E$ and
+$D\cap E\ne\emptyset$.   If $G\subseteq X$ is open and not empty, there
+is an $x\in D\cap G$;  now there is an $E\in\Cal E$ such that
+$x\in E\subseteq G$, and as $x\in D\cap E$ there must be an
+$x'\in D'\cap E$, so that $x'\in D'\cap G$.   As $G$ is arbitrary, $D'$
+is dense in $X$.
+
+Taking $D=X$, we see that $X$ has a countable dense subset.
+
+\medskip
+
+{\bf (j)} Let $\Cal E$ be a countable network for the topology of $X$
+and $\Cal U$ a countable base for the topology of
+$\Bbb R$\cmmnt{ (4A2Ua)}.   For
+$E\in\Cal E$ and $U\in\Cal U$ set
+$H(E,U)=\{f:f\in C(X),\,E\subseteq f^{-1}[U]\}$.   Then the set of
+finite intersections of sets of the form $H(E,U)$ is a countable network
+for the topology of pointwise convergence on $C(X)$.
+(Compare 4A2Oe.)
+}%end of proof of 4A2N
+
+\leader{4A2O}{Second-countable spaces (a)} Let $(X,\frak T)$ be a
+topological space and $\Cal U$ a countable subbase for $\frak T$.
+Then $\frak T$ is second-countable.
+\prooflet{
+($\{X\}\cup\{U_0\cap U_1\cap\ldots\cap U_n:U_0,\ldots,U_n\in\Cal U\}$ is
+countable and is a base for $\frak T$,
+by 4A2B(a-i).)}
+%4@24
+
+\spheader 4A2Ob Any base of a second-countable space includes a
+countable base.
+\prooflet{(\Csaszar, 2.4.17.)}
+
+\spheader 4A2Oc A second-countable space has a countable
+network\cmmnt{ (because a base is also a network)}, so is separable
+and hereditarily Lindel\"of\cmmnt{ (\Engelking, 1.3.8 \& 3.8.1, 4A2Nb,
+4A2Ni)}.
+
+\spheader 4A2Od The product of a countable family of second-countable
+spaces is second-countable.
+\prooflet{(\Engelking, 2.3.14.)}
+
+\spheader 4A2Oe If $X$ is a second-countable space then $C(X)$, with the
+topology of uniform convergence on compact sets, has a
+countable network.   \prooflet{\Prf\ (See \Engelking, Ex.\ 3.4H.)
+Let $\Cal U$ be a countable base for the topology of $X$
+and $\Cal V$ a countable base for the topology of
+$\Bbb R$\cmmnt{ (4A2Ua)}.   For $U\in\Cal U$, $V\in\Cal V$ set
+$H(U,V)=\{f:f\in C(X)$, $U\subseteq f^{-1}[V]\}$.   Then the set of
+finite intersections of sets of the form $H(U,V)$ is a countable network
+for the topology of uniform convergence on compact subsets of
+$X$.\ \Qed}
+
+\leader{4A2P}{Separable metrizable spaces (a)}(i) A metrizable space is
+second-countable iff it is separable.
+\prooflet{(\Engelking, 4.1.16;  \Csaszar, 2.4.16;  \Gaal\ p.\ 120.)}
+
+\quad(ii) A compact metrizable space is separable\prooflet{ (\Engelking,
+4.1.18;
+\Csaszar, 5.3.35; \Kuratowski, \S21.IX)}, so is second-countable and has
+a countable network.
+
+\quad(iii)
+Any base of a separable metrizable space includes a countable
+base\cmmnt{ (4A2Ob)},
+%4@17 %4@14 %4@27
+which is also a countable network,
+%4@17
+so the space is hereditarily Lindel\"of\cmmnt{ (4A2Nb)}.
+
+\quad(iv)
+Any subspace of a separable metrizable space is separable and
+metrizable\cmmnt{ (4A2La, 4A2Na, 4A2Ni)}.
+
+\quad(v)
+A countable product of separable metrizable spaces is separable and
+metrizable\cmmnt{ (4A2B(e-ii), 4A2Lh)}.
+%4@15 %4@33 %4@25 %4@24 %4@18
+
+\spheader 4A2Pb A topological space is separable and metrizable iff it
+is second-countable, regular and Hausdorff.
+\prooflet{(\Engelking, 4.2.9;  \Csaszar, 7.1.57;
+\Kuratowski, \S22.II.)}
+%4@19
+
+\spheader 4A2Pc A Hausdorff continuous image of a compact metrizable space
+is metrizable.
+\prooflet{(It is a compact Hausdorff space, by 2A3N(b-ii), with a
+countable network, by 4A2Nd, so is metrizable, by 4A2Nh.)}
+
+\spheader 4A2Pd A metrizable space is separable iff it is ccc iff it is
+Lindel\"of.
+\prooflet{(\Engelking, 4.1.16.)}
+%4@18
+
+\spheader 4A2Pe If $X$ is a compact metrizable space, then $C(X)$ is
+separable under its usual norm topology defined from the norm
+$\|\,\,\|_{\infty}$.
+\prooflet{(4A2Oe, or \Engelking, 3.4.16.)}
+
+\vleader{48pt}{4A2Q}{Polish spaces:  Proposition}
+(a) A countable discrete space is Polish.
+
+(b) A compact metrizable space is Polish.
+%4@35
+
+(c) The product of a countable family of Polish spaces is Polish.
+%4@24
+
+(d) A G$_{\delta}$ subset of a Polish space is Polish\cmmnt{ in its
+subspace topology};  in particular, a set which is either open or closed
+is Polish.
+%4@24
+
+(e) The disjoint union of countably many Polish spaces is Polish.
+%for (g)
+
+(f) If $X$ is any set and $\sequencen{\frak T_n}$ is a sequence of
+Polish topologies on $X$ such that $\frak T_m\cap\frak T_n$ is Hausdorff
+for all $m$, $n\in\Bbb N$, then the
+topology\cmmnt{ $\frak T_{\infty}$}
+generated by $\bigcup_{n\in\Bbb N}\frak T_n$ is Polish.
+%4@23 4@A3
+
+(g) If $X$ is a Polish space, it is homeomorphic to a G$_{\delta}$ set
+in a compact metrizable space.
+
+(h) If $X$ is a locally compact Hausdorff space, it is Polish iff it has a
+countable network iff it is metrizable and $\sigma$-compact.
+
+\proof{{\bf (a)} Any set $X$ is complete under the discrete
+metric $\rho$ defined by setting $\rho(x,y)=1$ whenever $x$, $y\in X$
+are distinct.   This defines the discrete topology, and if $X$ is
+countable it is separable, therefore Polish.
+
+\medskip
+
+{\bf (b)} By 4A2P(a-ii), it is separable;  by 4A2Je, any metric defining
+the topology is complete.
+
+\medskip
+
+{\bf (c)} If $\familyiI{X_i}$ is a countable family of Polish spaces
+with product $X$, then surely $X$ is separable (4A2B(e-ii));  and 4A2Mb
+tells us that its topology is defined by a complete metric.
+
+\medskip
+
+{\bf (d)} If $X$ is Polish and $E$ is a G$_{\delta}$ set in $X$, then
+$E$ is separable, by 4A2P(a-iv),
+and its topology is defined by a complete metric, by 4A2Mc.   So $E$ is
+Polish.   Any open set is of course a G$_{\delta}$ set, and any closed
+set is a G$_{\delta}$ set by 4A2Lc.
+
+\medskip
+
+{\bf (e)} Let $\familyiI{X_i}$ be a countable disjoint family of Polish
+spaces, and $X=\bigcup_{i\in I}X_i$.   For each $i\in I$ let $\rho_i$ be
+a complete metric on $X_i$ defining the topology of $X_i$.   Define
+$\rho:X\times X\to\coint{0,\infty}$ by setting
+$\rho(x,y)=\min(1,\rho_i(x,y))$ if $i\in I$ and $x$, $y\in X_i$,
+$\rho(x,y)=1$ otherwise.   It is easy to check that $\rho$ is a complete
+metric on $X$ defining the disjoint union topology on $X$.   $X$ is
+separable, by 4A2B(e-i), therefore Polish.
+
+\medskip
+
+{\bf (f)} This result is in \Kechris, 13.3;  but I spell out the proof
+because it is an essential element of some measure-theoretic arguments.
+On $X^{\Bbb N}$ take the product topology $\frak T$ of the topologies
+$\frak T_n$.   This is Polish, by (c).   Consider the diagonal
+$\Delta=\{x:x\in X^{\Bbb N}$, $x(m)=x(n)$ for all $m$, $n\in\Bbb N\}$.
+This is closed in $X^{\Bbb N}$.   \Prf\ If
+$x\in X^{\Bbb N}\setminus\Delta$, let $m$, $n\in\Bbb N$ be such that
+$x(m)\ne x(n)$.   Because $\frak T_m\cap\frak T_n$ is Hausdorff, there
+are disjoint $G$, $H\in\frak T_m\cap\frak T_n$ such that $x(m)\in G$ and
+$x(n)\in H$.   Now $\{y:y\in X^{\Bbb N}$, $y(m)\in G$, $y(n)\in H\}$ is
+an open set in $X^{\Bbb N}$ containing $x$ and disjoint from $\Delta$.
+As $x$ is arbitrary, $\Delta$ is closed.\ \Qed
+
+By (d), $\Delta$, with its subspace topology, is a Polish space.   Let
+$f:X\to\Delta$ be the natural bijection, setting $f(t)=x$ if $x(n)=t$
+for every $n$, and let $\frak S$ be the topology on $X$ which makes $f$
+a homeomorphism.   The topology on $\Delta$ is generated by
+$\{\{x:x\in\Delta$, $x(n)\in G\}:n\in\Bbb N$, $G\in\frak T_n\}$, so
+$\frak S$ is generated by
+$\{\{t:t\in X$, $t\in G\}:n\in\Bbb N$, $G\in\frak T_n\}
+=\bigcup_{n\in\Bbb N}\frak T_n$.   Thus $\frak S=\frak T_{\infty}$ and
+$\frak T_{\infty}$ is Polish.
+
+\medskip
+
+{\bf (g)} \Kechris, 4.14.
+
+\medskip
+
+{\bf (h)} If $X$ is Polish, then it is separable,
+therefore Lindel\"of (4A2P(a-iii)).   Since the family
+$\Cal G$ of relatively compact open subsets of $X$ covers $X$, there is a
+countable $\Cal G_0\subseteq\Cal G$ covering $X$, and
+$\{\overline{G}:G\in\Cal G_0\}$ witnesses that $X$ is $\sigma$-compact.
+Also, of course, $X$ is metrizable.
+
+If $X$ is metrizable and $\sigma$-compact, let $\sequencen{K_n}$ be a
+sequence of compact sets covering $X$;  each $K_n$ has a countable network
+(4A2P(a-ii)), so $X=\bigcup_{n\in\Bbb N}K_n$ has a countable network
+(4A2Nc).
+
+If $X$ has a countable network, let $Z=X\cup\{\infty\}$ be its one-point
+compactification (3A3O).   This is compact and Hausdorff and has a
+countable network, by 4A2Nc again, so is second-countable (4A2Nh)
+and metrizable (4A2Pb) and Polish ((b) above).
+So $X$ also, being an open set in $Z$, is Polish ((d) above).
+}%end of proof of 4A2Q
+
+\leader{4A2R}{Order topologies} Let $(X,\le)$ be a totally ordered set
+and $\frak T$ its order topology.
+
+(a) The set $\Cal U$ of open intervals in $X$\cmmnt{ (definition:
+4A2A)} is a base for $\frak T$.
+
+(b) $[x,y]$,
+$\coint{x,\infty}$ and $\ocint{-\infty,x}$ are closed sets for all $x$,
+$y\in X$.
+
+(c) $\frak T$ is Hausdorff,
+%and monotonically normal, therefore
+normal and countably paracompact.
+%4@39
+
+(d) If $A\subseteq X$ then $\overline{A}$ is the set of
+elements of $X$ expressible as either suprema or infima of
+non-empty subsets of $A$.
+
+(e) A subset of $X$ is closed iff it is order-closed.
+
+(f) If $\sequencen{x_n}$ is a non-decreasing sequence in $X$
+with supremum $x$, then $x=\lim_{n\to\infty}x_n$.
+%4@16 %4@A2U
+
+(g) A set $K\subseteq X$ is compact iff $\sup A$ and
+$\inf A$ are defined in
+$X$ and belong to $K$ for every non-empty $A\subseteq K$.
+
+(h) $X$ is Dedekind complete iff $[x,y]$ is compact for
+all $x$, $y\in X$.
+
+(i) $X$ is compact iff it is either empty or Dedekind complete
+with greatest and least elements.
+
+(j) Any open set $G\subseteq X$ is
+expressible as a union of disjoint open order-convex sets;  if
+$X$ is Dedekind complete, these will be open intervals.
+%4@16  5@37
+
+(k) If $X$ is well-ordered it is locally compact.
+
+(l) In $X\times X$, $\{(x,y):x<y\}$ is open and $\{(x,y):x\le y\}$ is
+closed.
+%4@39
+
+(m) If $F\subseteq X$ and {\it either} $F$ is order-convex {\it or} $F$
+is compact {\it or} $X$ is Dedekind complete and $F$ is closed, then
+the subspace topology on $F$ is induced by the inherited order of $F$.
+%4@19 5@33  also if  X  is Ded cpletion of  F
+
+(n) If $X$ is ccc it is hereditarily Lindel\"of, therefore perfectly
+normal.
+
+(o) If $Y$ is another totally ordered set with its order topology, an
+order-preserving function from $X$ to $Y$ is continuous iff it is
+order-continuous.
+%4@16
+
+\proof{{\bf (a)} Put the definition of `order topology' (4A2A) together
+with 4A2B(a-i).
+
+\medskip
+
+{\bf (b)} Their complements are either $X$, or members of $\Cal U$, or
+unions of two members of $\Cal U$.
+
+\medskip
+
+{\bf (c)} Fix a well-ordering $\preccurlyeq$ of $X$.
+
+\medskip
+
+\quad{\bf (i)} If $x<y\in X$,
+define $U_{xy}$, $U_{yx}$ as follows:  if $\ooint{x,y}$ is empty,
+$U_{xy}=\ocint{-\infty,x}=\ooint{-\infty,y}$ and
+$U_{yx}=\coint{y,\infty}=\ooint{x,\infty}$;  otherwise, let $z$ be the
+$\preccurlyeq$-least member of $\ooint{x,y}$ and set
+$U_{xy}=\ooint{-\infty,z}$, $U_{yx}=\ooint{z,\infty}$.
+
+This construction ensures that if $x$, $y$ are any distinct points of
+$X$, $U_{xy}$ and $U_{yx}$ are disjoint open sets containing $x$, $y$
+respectively, so $\frak T$ is Hausdorff.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $F\subseteq X$ is closed and that
+$x\in X\setminus F$.
+Then $V_{xF}=\interior(X\cap\bigcap_{y\in F}U_{xy})$ contains $x$.
+\Prf\ There are $u$, $v\in X\cup\{-\infty,\infty\}$ such that
+$x\in\ooint{u,v}\subseteq X\setminus F$.   If $\ooint{u,x}=\emptyset$,
+set $u'=u$;  otherwise, let $u'$ be the $\preccurlyeq$-least member of
+$\ooint{u,x}$.   Similarly,
+if $\ooint{x,v}=\emptyset$, set $v'=v$;  otherwise, let $v'$ be the
+$\preccurlyeq$-least member of $\ooint{x,v}$.   Then $u'<x<v'$.   Now
+suppose that
+$y\in F$ and $y>x$.   If $\ooint{x,v}=\emptyset$, then
+$U_{xy}\supseteq\ocint{-\infty,x}=\ooint{-\infty,v'}$.   Otherwise,
+$v'\in\ooint{x,v}\subseteq\ooint{x,y}$, so $U_{xy}=\ooint{-\infty,z}$
+where $z$ is the $\preccurlyeq$-least member of $\ooint{x,y}$.   But
+this means that $z\preccurlyeq v'$ and either $z=v'$ or
+$z\notin\ooint{x,v}$;  in either case, $v'\le z$ and
+$\ooint{-\infty,v'}\subseteq U_{xy}$.
+
+Similarly, $\ooint{u',\infty}\subseteq U_{xy}$ whenever $y\in F$ and
+$y<x$.   So $x\in\ooint{u',v'}\subseteq V_{xF}$.\ \Qed
+
+\medskip
+
+\leaveitout{
+\quad{\bf (iii)} It follows that $X$ is regular.   \Prf\
+If $F\subseteq X$ is open and $x\in X\setminus F$, then
+$V_{xF}$ is an open set containing $x$.   But $\bigcup_{y\in F}U_{yx}$ is
+an open set including $F$ and disjoint from $V_{xF}$.   So $x$ and $F$ can
+be separated by open sets.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} For open $G\subseteq X$ and $x\in G$, set
+$W(x,G)=V_{x,X\setminus G}$.   Then $W(x,G)$ is an open set containing $x$
+and included in $G$.   If $x\in G\subseteq H$ then
+
+\Centerline{$W(x,G)=\interior(X\cap\bigcap_{y\in X\setminus G}U_{xy})
+\subseteq\interior(X\cap\bigcap_{y\in X\setminus H}U_{xy})
+=W(x,H)$.}
+
+\noindent If $x$, $y\in X$ are distinct then
+$W(x,X\setminus\{y\})\subseteq U_{xy}$ is
+disjoint from $W(y,X\setminus\{x\})\subseteq U_{yx}$.   So all the
+conditions of 4A2F(?-ii) are satisfied and $X$ is monotonically normal.
+By 4A2F?, it is normal and countably paracompact.
+}%end of leaveitout
+
+\quad{\bf (iii)} Let $E$ and $F$ be disjoint closed sets.   Set
+$G=\bigcup_{x\in E}V_{xF}$, $H=\bigcup_{y\in F}V_{yE}$.   Then $G$ and
+$H$ are open sets including $E$, $F$ respectively.   If $x\in E$ and
+$y\in F$, then $V_{xF}\cap V_{yE}\subseteq U_{xy}\cap U_{yx}=\emptyset$,
+so $G\cap H=\emptyset$.   As $E$ and $F$ are arbitrary, $\frak T$ is
+normal.
+
+\medskip
+
+\quad{\bf (iv)} Let $\sequencen{F_n}$ be a non-increasing sequence of
+closed sets with empty intersection.   Let $\Cal I$ be the family of
+open intervals $I\subseteq X$ such that $I\cap F_n=\emptyset$ for some
+$n$.   Because the $F_n$ are closed and have empty intersection,
+$\Cal I$ covers $X$.   If $I$, $I'\in\Cal I$ are not
+disjoint, $I\cup I'\in\Cal I$;  so we have an equivalence relation
+$\sim$ on $X$ defined by saying that $x\sim y$ if there is some
+$I\in\Cal I$ containing both $x$ and $y$.   The corresponding
+equivalence classes are open and therefore closed, and are order-convex.
+Let $\Cal G$ be the set of equivalence classes for $\sim$.
+
+For each $G\in\Cal G$, fix $x_G\in G$.   Set
+$G^+=G\cap\coint{x_G,\infty}$.   Then we have a
+non-decreasing sequence $\sequencen{G^+_n}$ of closed sets, with union
+$G^+$, such that $G^+_n\cap F_n=\emptyset$ for each $n$.
+\Prf\ If there is some $m\in\Bbb N$ such that
+$G^+\cap F_m=\emptyset$, set $G^+_n=\emptyset$ if
+$G^+\cap F_n\ne\emptyset$, $G^+$ if $G^+\cap F_n=\emptyset$.   Otherwise,
+given $x\in G^+$ and $n\in\Bbb N$, there is some $m$ such that $[x_G,x]$
+does not meet $F_m$, and an $x'\in G^+\cap F_{\max(m,n)}$, so that
+$x'\in F_n$ and $x'>x$.   We can therefore choose a strictly increasing
+sequence $\sequence{k}{x_k}$ such that $x_0=x_G$ and
+$x_{k+1}\in G^+\cap F_k$ for each $k$.
+If $x$ is any upper bound of $\{x_k:k\in\Bbb N\}$ then $x\not\sim x_G$,
+so $G^+=\bigcup_{k\in\Bbb N}[x_G,x_k]$.   Now, for each $n$, there is a
+least $k(n)$ such that $[x_G,x_{k(n)}]\cap F_n\ne\emptyset$;  set
+$G^+_n=\emptyset$ if $k(n)=0$, $[x_G,x_{k(n-1)}]$ otherwise.
+As $F_{n+1}\subseteq F_n$, $k(n+1)\ge k(n)$
+for each $n$.   Since each $[x_G,x_k]$ is disjoint from some
+$F_n$, and therefore from all but finitely many $F_n$,
+$\lim_{n\to\infty}k(n)=\infty$ and $G^+=\bigcup_{n\in\Bbb N}G^+_n$.\ \Qed
+
+Similarly, $G^-=G\cap\ocint{-\infty,x_G}$ can be expressed as the union
+of a non-decreasing sequence $\sequencen{G^-_n}$ of closed sets such that
+$G^-_n\cap F_n=\emptyset$ for every $n$.   Now set
+$F'_n=\bigcup_{G\in\Cal G}G^+_n\cup G^-_n$ for each $n$.   Because every
+$G^+_n$ and $G^-_n$ is closed, and every $G$ is open-and-closed, $F'_n$
+is closed.   So $\sequencen{F'_n}$ is a non-decreasing sequence of closed
+sets with union $X$, and $F'_n$ is disjoint from $F_n$ for each $n$.
+Accordingly $\sequencen{X\setminus F'_n}$ is a non-increasing sequence of
+open sets with empty intersection enveloping the $F_n$.   As
+$\sequencen{F_n}$ is arbitrary, $\frak T$ is countably paracompact (4A2Ff).
+%should check Rudin 84 for the `monotonically normal' case, the
+%proof may be more useful
+%not sure about that, but if there is any other reason to talk about
+%monotonically normal spaces then this would be the right thing to do
+
+\medskip
+
+{\bf (d)} Let $B$ be the set of such suprema and infima.   For
+$x\in X$ set $A_x=A\cap\ocint{-\infty,x}$, $A'_x=A\cap\coint{x,\infty}$.
+Then $x\in B$ iff either $x=\sup A_x$ or $x=\inf A'_x$, so
+
+$$\eqalign{x\notin B
+&\iff x\ne\sup A_x\text{ and }x\ne\inf A'_x\cr
+&\iff\text{ there are }u<x,\,v>x\text{ such that }
+  A_x\subseteq\ocint{-\infty,u}
+  \text{ and }A'_x\subseteq\coint{v,\infty}\cr
+&\iff\text{ there are }u,\,v\text{ such that }
+  x\in\ooint{u,v}\subseteq X\setminus A\cr
+&\iff x\notin\overline{A}.\cr}$$
+
+\noindent Thus $B=\overline{A}$, as claimed.
+
+\medskip
+
+{\bf (e)} Because $X$ is totally ordered, all its subsets are both
+upwards-directed and downwards-directed;  so we have only to join
+the definition in 313Da to (d) above.
+
+\medskip
+
+{\bf (f)} If $x\in\ooint{u,v}$ then there is some $n\in\Bbb N$ such
+that $x_n\ge u$, and now $x_i\in\ooint{u,v}$ for every $i\ge n$.
+
+\medskip
+
+{\bf (g)(i)} If $K$ is compact and $A\subseteq K$ is non-empty,
+let $B$ be the set of upper bounds for $A$ in $X\cup\{-\infty,\infty\}$,
+and set
+$\Cal G=\{\ooint{-\infty,a}:a\in A\}\cup\{\ooint{b,\infty}:b\in B\}$.
+Then no finite subfamily of $\Cal G$ can cover $K$;  and if
+$c\in K\setminus\bigcup\Cal G$ then $c=\sup A$.   Similarly, any
+non-empty subset of $K$ has an infimum in $X$ which belongs to $K$.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $K$ satisfies the condition.   By (d)
+above, it
+is closed.   If it is empty it is certainly compact.   Otherwise,
+$a_0=\inf K$ and $b_0=\sup K$ are defined in $X$ and belong to $K$.
+Let $\Cal G$ be an open cover of $K$.   Set
+
+\Centerline{$A=\{x:x\in X$,
+$K\cap[a_0,x]$ is not covered by any finite
+$\Cal G_0\subseteq\Cal G\}$.}
+
+\noindent Note that $A$ is bounded below by $a_0$.   \Quer\ If
+$b_0\in A$, then $c=\inf A$ is defined and belongs to $[a_0,b_0]$,
+because $X$ is Dedekind complete.   If $c\notin K$ then
+there are $u$, $v$ such that $c\in\ooint{u,v}\subseteq X\setminus K$;
+if $c\in K$ then there are $u$, $v$ such that
+$c\in\ooint{u,v}\subseteq G$ for some $G\in\Cal G$.   In either case,
+$u\notin A$, so that
+$K\cap\coint{a_0,v}\subseteq(K\cap[a_0,u])\cup\ooint{u,v}$
+is covered by a finite subset of $\Cal G$, and $A$ does not meet
+$\coint{a_0,v}$, that is, $A\subseteq\coint{v,\infty}$ and $v$ is a
+lower bound of $A$.\ \BanG\   Thus $b_0\notin A$, and $K=K\cap[a_0,b_0]$
+is covered by a finite subset of $\Cal G$.   As $\Cal G$ is arbitrary,
+$K$ is compact.
+
+\medskip
+
+{\bf (h)} Use (g).
+
+\medskip
+
+{\bf (i)} Use (h).
+
+\medskip
+
+{\bf (j)} (Compare 2A2I.)
+For $x$, $y\in G$ write $x\sim y$ if either $x\le y$ and
+$[x,y]\subseteq G$ or $y\le x$ and $[y,x]\subseteq G$.   It is easy to
+check that $\sim$ is an equivalence relation on $G$.   Let $\Cal C$ be
+the set of equivalence classes under $\sim$.   Then $\Cal C$ is a
+partition of $G$ into order-convex sets.
+Now every $C\in\Cal C$ is open.   \Prf\ If $x\in C\in\Cal C$ then
+there are $u$, $v\in X\cup\{-\infty,\infty\}$ such that
+$x\in\ooint{u,v}\subseteq G$;  now $\ooint{u,v}\subseteq C$.\ \QeD\   So we
+have our partition of $G$ into disjoint open order-convex sets.
+
+If $X$ is Dedekind complete, then every member of $\Cal C$ is an open
+interval.   \Prf\ Take $C\in\Cal C$.   Set
+
+\Centerline{$A=\{u:u\in X\cup\{-\infty\},\,u<x$ for every $x\in C\}$,}
+
+\Centerline{$B=\{v:v\in X\cup\{\infty\},\,x<v$ for every $x\in C\}$,}
+
+\Centerline{$a=\sup A$,\quad$b=\inf B$;}
+
+\noindent these are defined because $X$ is Dedekind complete.   If
+$a<x<b$, there are $y$, $z\in C$ such that $y\le x\le z$, so that
+$[y,x]\subseteq[y,z]\subseteq G$ and $y\sim x$ and $x\in C$;  thus
+$\ooint{a,b}\subseteq C$.   If $x\in C$, there is an open interval
+$\ooint{u,v}$ containing $x$ and included in $G$;  now
+$\ooint{u,v}\subseteq C$, so $a\le u<x<v\le b$
+and $x\in\ooint{a,b}$.   Thus $C=\ooint{a,b}$ is an open interval.\
+\Qed
+
+\medskip
+
+{\bf (k)} Use (h).
+
+\medskip
+
+{\bf (l)} Write $W$ for $\{(x,y):x<y\}$.   If $x<y$, then either there
+is a $z$ such that $x<z<y$, in which case
+$\ooint{-\infty,z}\times\ooint{z,\infty}$ is an open set containing
+$(x,y)$ and included in $W$, or $\ooint{x,y}=\emptyset$,
+so $\ooint{-\infty,y}\times\ooint{x,\infty}$ is an open set containing
+$(x,y)$ and included in $W$.   Thus $W$ is open.
+
+Now $\{(x,y):x\le y\}=(X\times X)\setminus\{(x,y):y<x\}$ is closed.
+
+\medskip
+
+{\bf (m)} The subspace topology $\frak T_F$ on $F$ is generated by sets
+of the form $F\cap\ooint{-\infty,x}$, $F\cap\ooint{x,\infty}$ where
+$x\in X$ (4A2B(a-vi)), while the order topology $\frak S$ on $F$ is
+generated by sets of the form $F\cap\ooint{-\infty,x}$,
+$F\cap\ooint{x,\infty}$ where $x\in F$.   So
+$\frak S\subseteq\frak T_F$.
+
+Now suppose that one of the three conditions is satisfied, and that
+$x\in X$.   If $x\in F$, or $F\cap\ooint{-\infty,x}$ is either $F$ or
+$\emptyset$, then of course
+$F\cap\ooint{-\infty,x}\in\frak S$.   Otherwise, $F$ meets both
+$\ooint{-\infty,x}$ and $\coint{x,\infty}$ and does not contain $x$, so
+is not order-convex.   In this case
+$x'=\inf(F\cap\coint{x,\infty})$ is defined and belongs to $F$.   \Prf\
+If $F$ is compact, this is covered by (g).   If $X$ is Dedekind complete
+and $F$ is closed, then $x'$ is defined, and belongs to $F$ by (e).\
+\QeD\   Now $F\cap\ooint{-\infty,x}=F\cap\ooint{-\infty,x'}\in\frak S$.
+
+Similarly, $F\cap\ooint{x,\infty}\in\frak S$ for every $x\in X$.   But
+this means that $\frak T_F\subseteq\frak S$, so the two topologies are
+equal, as stated.
+
+\medskip
+
+{\bf (n)(i)} Let $\Cal G$ be a family of open subsets of $X$ with
+union $H$.   Set
+
+\Centerline{$\Cal A=\{A:A\subseteq\bigcup\Cal G_0$ for some countable
+$\Cal G_0\subseteq\Cal G\}$.}
+
+\noindent   (I seek to show that
+$H\in\Cal A$.)   Of course $\bigcup\Cal A_0\in\Cal A$ for every
+countable subset $\Cal A_0$ of $\Cal A$.
+
+\medskip
+
+\quad{\bf (ii)} Let $\Cal C$ be the family of order-convex members
+of $\Cal A$, and $\Cal C^*$ the family
+of maximal members of $\Cal C$.   If $C\in\Cal C$ is not included in any
+member of $\Cal C^*$, then there is a $C'\in\Cal C$ such that
+$C\subseteq C'$ and $\interior(C'\setminus C)\ne\emptyset$.   \Prf\
+Since no member of $\Cal C$ including $C$ can be maximal, we can find
+$C'\in\Cal C$ such that $C\subseteq C'$ and $\#(C'\setminus C)\ge 5$.
+Because $C$ is order-convex, every point of $X\setminus C$ is either a
+lower bound or an upper bound of $C$, and there must be three points
+$x<y<z$ of $C'\setminus C$ on the same side of $C$.   In this case,
+
+\Centerline{$y\in\ooint{x,z}
+\subseteq\interior(C'\setminus C)$,}
+
+\noindent so we have an appropriate $C'$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} In fact, every member of $\Cal C$ is included in a
+member of
+$\Cal C^*$.   \Prf\Quer\ Suppose, if possible, otherwise.   Then we can
+choose a strictly increasing family $\ofamily{\xi}{\omega_1}{C_{\xi}}$
+in $\Cal C$  inductively, as follows.   Start from any non-empty
+$C_0\in\Cal C$ not included in any member of $\Cal C^*$.   Given that
+$C_0\subseteq C_{\xi}\in\Cal C$, then $C_{\xi}$ cannot be included in
+any member of $\Cal C^*$, so by ($\beta$) above there is a
+$C_{\xi+1}\in\Cal C$ such that
+$\interior(C_{\xi+1}\setminus C_{\xi})$ is non-empty.   Given
+$\ofamily{\eta}{\xi}{C_{\eta}}$ where $\xi<\omega_1$ is a non-zero
+countable limit ordinal, set $C_{\xi}=\bigcup_{\eta<\xi}C_{\eta}$;  then
+$C_{\xi}$ is order-convex, because $\{C_{\eta}:\eta<\xi\}$ is
+upwards-directed, and belongs to $\Cal A$, because $\Cal A$ is closed
+under countable unions, so $C_{\xi}\in\Cal C$ and the induction
+proceeds.
+
+Now, however,
+$\ofamily{\xi}{\omega_1}{\interior(C_{\xi+1}\setminus C_{\xi})}$ is an
+uncountable disjoint family of non-empty open sets, and $X$ is not ccc.\
+\Bang\Qed
+
+\medskip
+
+\quad{\bf (iv)} Since $C\cup C'$ is order-convex whenever $C$,
+$C'\in\Cal C$ and $C\cap C'\ne\emptyset$, $\Cal C^*$ is a disjoint
+family.   Moreover, if $x\in H$, there is some open interval containing
+$x$ and belonging to $\Cal C$, so $x\in\interior C$ for some
+$C\in\Cal C^*$;  this shows that $\Cal C^*$ is an open cover of $H$.
+Because $X$ is ccc, $\Cal C^*$ is countable, so
+$H=\bigcup\Cal C^*\in\Cal A$.   Thus there is some countable
+$\Cal G_0\subseteq\Cal G$ with union $H$;  as $\Cal G$ is arbitrary, $X$
+is hereditarily Lindel\"of, by 4A2H(c-i).
+
+\medskip
+
+\quad{\bf (v)} By 4A2H(c-ii), $X$ is perfectly normal.
+
+\medskip
+
+{\bf (o)(i)} Suppose that $f$ is continuous.   If $A\subseteq X$
+is a non-empty set with supremum $x$ in $X$, then $x\in\overline{A}$, by
+(d), so $f(x)\in\overline{f[A]}$ (3A3Cc) and $f(x)$ is less than or
+equal to any upper bound of $f[A]$;  but $f(x)$ is an upper bound of
+$f[A]$, because $f$ is order-preserving, so $f(x)=\sup f[A]$.
+Similarly, $f(\inf A)=\inf f[A]$ whenever $A$ is non-empty and has an
+infimum, so $f$ is order-continuous.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $f$ is order-continuous.   Take any
+$y\in Y$ and consider $A=f^{-1}[\,\ooint{-\infty,y}\,]$,
+$B=X\setminus A$.   If
+$x\in A$ then $f(x)$ cannot be $\inf f[B]$ so $x$ cannot be $\inf B$ and
+there is an $x'\in X$ such that $x<x'\le z$ for every $z\in B$;  in
+which case
+$x\in\ooint{-\infty,x'}\subseteq A$.   So $A$ is open.   Similarly,
+$f^{-1}[\,\ooint{y,\infty}\,]$ is open.   By 4A2B(a-ii), $f$ is
+continuous.
+}%end of proof of 4A2R
+
+\vleader{48pt}{4A2S}{Order topologies on ordinals (a)}
+Let $\zeta$ be an ordinal with its order topology.
+
+\quad(i) $\zeta$ is locally compact\cmmnt{ (4A2Rk)};  all the sets
+$[0,\eta]=\ooint{-\infty,\eta+1}$, for $\eta<\zeta$, are open and
+compact\cmmnt{ (4A2Rh)}.
+If $\zeta$ is a successor ordinal, it is compact\cmmnt{, being of the
+form $[0,\eta]$ where $\zeta=\eta+1$}.
+%4@35
+
+\quad(ii) For any $A\subseteq\zeta$,
+$\overline{A}=\{\sup B:\emptyset\ne B\subseteq A,\,\sup B<\zeta\}$.
+\prooflet{(4A2Rd, because $\inf B\in B\subseteq A$ for every non-empty
+$B\subseteq A$.)}
+
+\quad (iii) If $\xi\le\zeta$, then the subspace topology on
+$\xi$ induced by the order topology of $\zeta$ is the order topology of
+$\xi$.  \prooflet{(4A2Rm.)}
+
+\spheader 4A2Sb Give $\omega_1$ its order topology.
+
+\quad(i) $\omega_1$ is first-countable.   \prooflet{\Prf\ If
+$\xi<\omega_1$ is either zero or a successor ordinal, then $\{\xi\}$ is
+open so $\{\{\xi\}\}$ is a base of neighbourhoods of $\xi$.   If $\xi$
+is a non-zero limit ordinal, there is a sequence $\sequencen{\xi_n}$ in
+$\xi$ with supremum $\xi$, and $\{\ocint{\xi_n,\xi}:n\in\Bbb N\}$ is a
+base of neighbourhoods of $\xi$.\ \Qed}
+%4@25
+
+\quad(ii) Singleton subsets of $\omega_1$ are zero sets.
+\prooflet{(Assemble 4A2F(d-v), 4A2Rc and (i) above.)}
+%4@19
+
+\quad(iii) If $f:\omega_1\to\Bbb R$ is continuous, there is a
+$\xi<\omega_1$ such
+that $f(\eta)=f(\xi)$ for every $\eta\ge\xi$.
+\prooflet{\Prf\Quer\ Otherwise, we may define a strictly increasing
+family $\langle\zeta_{\xi}\rangle_{\xi<\omega_1}$ in $\omega_1$ by
+saying that $\zeta_0=0$,
+
+\Centerline{$\zeta_{\xi+1}=\min\{\eta:\eta>\zeta_{\xi},\,f(\eta)\ne
+f(\zeta_{\xi})\}$}
+
+\noindent for every $\xi<\omega_1$,
+
+\Centerline{$\zeta_{\xi}=\sup\{\zeta_{\eta}:\eta<\xi\}$}
+
+\noindent for non-zero countable limit ordinals $\xi$.   Now
+
+\Centerline{$\omega_1
+=\bigcup_{k\in\Bbb N}\{\xi:|f(\zeta_{\xi+1})-f(\zeta_{\xi})|
+\ge 2^{-k}\}$,}
+
+\noindent so there is a $k\in\Bbb N$ such that
+$A=\{\xi:|f(\zeta_{\xi+1})-f(\zeta_{\xi})|\ge 2^{-k}\}$ is infinite.
+Take a strictly increasing sequence $\langle\xi_n\rangle_{n\in\Bbb N}$
+in $A$ and set
+$\xi=\sup_{n\in\Bbb N}\xi_n=\sup_{n\in\Bbb N}(\xi_n+1)$.   Then
+$\sequencen{\zeta_{\xi_n}}$ and
+$\sequencen{\zeta_{\xi_n+1}}$ are strictly increasing sequences with
+supremum $\zeta_{\xi}$, so both converge to $\zeta_{\xi}$ in the order
+topology of $\omega_1$ (4A2Rf), and
+
+\Centerline{$f(\zeta_{\xi})
+=\lim_{n\to\infty}f(\zeta_{\xi_n})
+=\lim_{n\to\infty}f(\zeta_{\xi_n+1})$.}
+
+\noindent But this means that
+
+\Centerline{$\lim_{n\to\infty}f(\zeta_{\xi_n})-f(\zeta_{\xi_n+1})=0$,}
+
+\noindent which is impossible, because
+$|f(\zeta_{\xi_n})-f(\zeta_{\xi_n+1})|\ge 2^{-k}$ for every
+$n$.\ \Bang\Qed}%end of prooflet
+
+\leader{4A2T}{Topologies on spaces of subsets}\cmmnt{ In \S\S446, 476 and
+479 it will be useful to be able to discuss topologies on spaces of closed
+sets.   In fact everything we really need can be expressed in terms of Fell
+topologies ((a-ii) here), but it may help if I put these in the context of
+two other constructions, Vietoris topologies and Hausdorff metrics (see (a)
+and (g) below), which
+may be more familiar to some readers.}    Let $X$ be a topological
+space, and $\Cal C=\Cal C_X$ the family of closed subsets of $X$.
+
+\spheader 4A2Ta(i) The {\bf Vietoris topology} on $\Cal C$ is the
+topology generated by sets of the forms
+
+\Centerline{$\{F:F\in\Cal C,\,F\cap G\ne\emptyset\}$,
+\quad$\{F:F\in\Cal C,\,F\subseteq G\}$}
+
+\noindent where $G\subseteq X$ is open.
+%4@41Xr 4@76A 5@26I
+%Engelking 2.7.20  Kuratowski I.17 ("exponential topology")
+
+\quad(ii) The {\bf Fell topology} on
+$\Cal C$ is the topology generated by sets of the forms
+
+\Centerline{$\{F:F\in\Cal C,\,F\cap G\ne\emptyset\}$,
+\quad$\{F:F\in\Cal C,\,F\cap K=\emptyset\}$}
+
+\noindent where $G\subseteq X$ is open and $K\subseteq X$ is compact.
+If $X$ is Hausdorff then the Fell topology is coarser than the
+Vietoris topology.
+If $X$ is compact and Hausdorff the two topologies agree.
+%5@26I
+
+\quad(iii) Suppose $X$ is metrizable, and
+that $\rho$ is a metric on $X$ inducing its
+topology.   For a non-empty subset $A$ of $X$, write
+$\rho(x,A)=\inf_{y\in A}\rho(x,y)$ for every $x\in X$.
+Note that\cmmnt{ $\rho(x,A)\le\rho(x,y)+\rho(y,A)$ for all $x$,
+$y\in X$, so that} $x\mapsto\rho(x,A):X\to\Bbb R$ is $1$-Lipschitz.
+
+For $E$, $F\in\Cal C\setminus\{\emptyset\}$, set
+
+\Centerline{$\tilde\rho(E,F)
+=\min(1,\max(\sup_{x\in E}\rho(x,F),\sup_{y\in F}\rho(y,E)))$.}
+
+\noindent\cmmnt{If $E$, $F\in\Cal C\setminus\{\emptyset\}$ and $z\in X$, then
+$\rho(z,F)\le\rho(z,E)+\sup_{x\in E}\rho(x,F)$;  from this it
+is easy to
+see that }$\tilde\rho$ is a metric on $\Cal C\setminus\{\emptyset\}$,
+the {\bf Hausdorff metric}.   \cmmnt{Observe that}
+$\tilde\rho(\{x\},\{y\})=\min(1,\rho(x,y))$ for all $x$, $y\in X$.
+%4@76A
+
+\cmmnt{\medskip
+
+\noindent{\bf Remarks} The formula I give for $\tilde\rho$ has a somewhat
+arbitrary feature `$\min(1,\ldots)$'.
+Any number strictly greater than $0$ can be used in place of `$1$' here.
+Many authors prefer to limit themselves to the family of non-empty closed
+sets of finite diameter, rather than the whole of
+$\Cal C\setminus\{\emptyset\}$;
+this makes it more more natural to omit the truncation, and work with
+$(E,F)\mapsto\max(\sup_{x\in E}\rho(x,F),\sup_{y\in F}\rho(y,E))$.
+All such variations produce uniformly equivalent metrics.
+A more radical approach redefines `metric' to allow functions which take
+the value $\infty$;  but this seems a step too far.
+
+Given that I am truncating my Hausdorff metrics by the value $1$,
+there would be no extra problems if I defined $\tilde\rho(\emptyset,E)=1$
+for every non-empty closed set $E$;
+but I think I am following the majority in regarding Hausdorff distance
+as defined only for non-empty sets.
+}%end of comment
+
+\spheader 4A2Tb(i) The Fell topology is T$_1$.
+\prooflet{\Prf\ If $F\subseteq X$ is closed and $x\in X$, then
+$\{E:E\in\Cal C$, $E\cap(X\setminus F)=\emptyset\}$ and
+$\{E:E\in\Cal C$, $E\cap\{x\}\ne\emptyset\}$ are complements of open sets,
+so are closed.   Now if $F\in\Cal C$ then
+
+\Centerline{$\{F\}=\{E:E\subseteq F\}\cap\bigcap_{x\in F}\{E:x\in E\}$}
+
+\noindent is closed.\ \Qed}
+
+\quad(ii) The map $(E,F)\mapsto E\cup F:\Cal C\times\Cal C\to\Cal C$
+is continuous for the Fell topology.
+%5@26I
+\prooflet{\Prf\ If $G\subseteq X$ is open and $K\subseteq X$ is compact,
+then
+
+\Centerline{$\{(E,F):(E\cup F)\cap G\ne\emptyset\}
+=\{(E,F):E\cap G\ne\emptyset$ or $F\cap G\ne\emptyset\}$,}
+
+\Centerline{$\{(E,F):(E\cup F)\cap K=\emptyset\}
+=\{E:E\cap K=\emptyset\}\times\{F:F\cap K=\emptyset\}$}
+
+\noindent are open in the product topology.   So the result follows by
+4A2B(a-ii).\ \Qed}
+
+%Similarly, $(E,F)\mapsto E\cup F:\Cal C\times\Cal C\to\Cal C$
+%is continuous for the Vietoris topology.}
+
+\quad(iii) $\Cal C$ is compact in the Fell topology.
+\prooflet{\Prf\ Let $\frak F$ be an ultrafilter on $\Cal C$.
+Set $F_0=\bigcap_{\Cal E\in\frak F}\overline{\bigcup\Cal E}$.
+($\alpha$) If $G\subseteq X$ is open and $G\cap F_0\ne\emptyset$, set
+$\Cal E=\{F:F\in\Cal C,\,F\cap G=\emptyset\}$.   Then
+$\overline{\bigcup\Cal E}$ does not meet $G$, so does not include $F_0$,
+and $\Cal E\notin\frak F$.   Accordingly
+$\{F:F\cap G\ne\emptyset\}=\Cal C\setminus\Cal E$ belongs to $\frak F$.
+($\beta$) If $K\subseteq X$ is compact and $F_0\cap K=\emptyset$, then
+$\{K\cap\overline{\bigcup\Cal E}:\Cal E\in\frak F\}$ is a
+downwards-directed family of relatively closed subsets of $K$ with empty
+intersection so must contain the empty set, and there is an
+$\Cal E\in\frak F$ such that $K\cap F=\emptyset$ for every $F\in\Cal E$,
+that is, $\{F:F\cap K=\emptyset\}$ belongs to $\frak F$.   ($\gamma$) By
+4A2B(a-iv), $\frak F\to F_0$.   As $\frak F$ is arbitrary, $\Cal C$ is
+compact.\ \Qed}
+%4@76F 4@76G
+
+\spheader 4A2Tc If $X$ is Hausdorff,
+$x\mapsto\{x\}$ is continuous for the Fell topology on $\Cal C$.
+\prooflet{\Prf\ If $G\subseteq X$ is open, then
+$\{x:\{x\}\cap G\ne\emptyset\}=G$ is open.   If $K\subseteq X$ is compact,
+then $\{x:\{x\}\cap K=\emptyset\}=X\setminus K$ is open (3A3Dc).\ \Qed}
+
+\spheader 4A2Td If $X$ and another topological space $Y$ are regular,
+and $\Cal C_Y$, $\Cal C_{X\times Y}$ are the families of closed subsets
+of $Y$ and $X\times Y$ respectively, then
+$(E,F)\mapsto E\times F:\Cal C_X\times\Cal C_Y\to\Cal C_{X\times Y}$ is
+continuous when each space is given its Fell topology.
+%4@46G 4@76G 4@76K
+\prooflet{\Prf\
+(i) Suppose that $W\subseteq X\times Y$ is open, and consider $\Cal V_W
+=\{(E,F):E\in\Cal C_X$, $F\in\Cal C_Y$, $(E\times F)\cap W\ne\emptyset\}$.
+If $(E_0,F_0)\in\Cal V_W$, take $(x_0,y_0)\in (E_0\times F_0)\cap W$.   Let
+$G\subseteq X$ and $H\subseteq Y$ be open sets such that
+$(x_0,y_0)\in G\times H\subseteq W$.   Then $\{(E,F):E\in\Cal C_X$,
+$F\in\Cal C_Y$, $E\cap G\ne\emptyset$, $F\cap H\ne\emptyset\}$ is an open
+set in $\Cal C_X\times\Cal C_Y$ containing $(E_0,F_0)$ and included in
+$\Cal V_W$.   As $(E_0,F_0)$ is arbitrary, $\Cal V_W$ is open in
+$\Cal C_X\times\Cal C_Y$.   (ii) Suppose that $K\subseteq X\times Y$ is
+compact, and consider $\Cal W_K
+=\{(E,F):E\in\Cal C_X$, $F\in\Cal C_Y$, $(E\times F)\cap K=\emptyset\}$.
+If $(E_0,F_0)\in\Cal W_K$, then set $K_1=K\cap(E_0\times Y)$ and
+$K_2=K\cap(X\times F_0)$.   These are disjoint closed subsets of $K$, so
+there are disjoint open subsets $U_1$, $U_2$ of $X\times Y$ including
+$K_1$, $K_2$ respectively (4A2F(h-ii)).   Now $K'_1=K\setminus U_1$ and
+$K'_2=K\setminus U_2$ are compact subsets of $K$ with union $K$.
+
+Let $\pi_1$, $\pi_2$ be the projections from $X\times Y$
+onto $X$, $Y$ respectively;  then
+$\{(E,F):E\in\Cal C_X$, $E\cap\pi_1[K'_1]=F\cap\pi_2[K'_2]=\emptyset\}$
+is an open set in $\Cal C_X\times\Cal C_Y$ containing $(E_0,F_0)$ and
+included in $\Cal W_K$.   As $(E_0,F_0)$ is arbitrary, $\Cal W_K$ is open.
+(iii) Putting these together with 4A2B(a-ii), we see that
+$(E,F)\mapsto E\times F$ is continuous.\ \Qed}
+
+\spheader 4A2Te Suppose that $X$ is locally compact and Hausdorff.
+
+\quad(i) The
+set $\{(E,F):E$, $F\in\Cal C$, $E\subseteq F\}$ is closed in
+$\Cal C\times\Cal C$ for the product topology defined from the Fell
+topology on $\Cal C$.
+\prooflet{\Prf\ Suppose that $E_0$, $F_0\in\Cal C$ and
+$E_0\not\subseteq F_0$.   Take $x\in E_0\setminus F_0$.
+Because $X$ is locally compact and Hausdorff,
+there is a relatively compact open set $G$ such that $x\in G$ and
+$\overline{G}\cap F_0=\emptyset$.   Now
+$\Cal V=\{E:E\cap G\ne\emptyset\}$ and
+$\Cal W=\{F:F\cap\overline{G}=\emptyset\}$ are open sets in $\Cal C$
+containing $E_0$, $F_0$ respectively, and $E\not\subseteq F$ for every
+$E\in\Cal V$ and $F\in\Cal W$.   This shows that
+$\{(E,F):E\not\subseteq F\}$ is open, so that its complement is closed.\
+\Qed}
+%4@46G
+\cmmnt{
+
+It follows that }$\{(x,F):x\in F\}\cmmnt{=\{(x,F):\{x\}\subseteq F\}}$ is
+closed in $X\times\Cal C$ when $\Cal C$ is given its
+Fell topology\cmmnt{, since $x\mapsto\{x\}$ is continuous,
+by (c) above}.
+%4@46
+
+\quad(ii) The Fell topology on $\Cal C$ is Hausdorff.
+%4@95N 4@95O
+\prooflet{\Prf\ The set
+
+\Centerline{$\{(E,E):E\in\Cal C\}
+=\{(E,F):E\subseteq F$ and $F\subseteq E\}$}
+
+\noindent is closed in $\Cal C\times\Cal C$, by (i).   So 4A2F(a-iii)
+applies.\ \Qed}\cmmnt{
+
+}  It follows that if $\familyiI{F_i}$ is a family in $\Cal C$,
+and $\Cal F$
+is an ultrafilter on $I$, then we have a well-defined limit
+$\lim_{i\to\Cal F}F_i$ defined in $\Cal C$ for the Fell
+topology\cmmnt{, because $\Cal C$ is compact ((b-iii) above)}.
+%4@46G 4@46O
+
+\quad(iii) If $\Cal L\subseteq\Cal C$ is compact, then $\bigcup\Cal L$ is a
+closed subset of $X$.   \prooflet{\Prf\ Take
+$x\in X\setminus\bigcup\Cal L$.   For every $C\in\Cal L$, there is a
+relatively compact open set $G$ containing $x$ such that
+$C\cap\overline{G}$ is empty;  now finitely many such open sets $G$ must
+suffice for every $C\in\Cal L$, and the intersection of these $G$ is a
+neighbourhood of $x$ not meeting $\bigcup\Cal L$.\ \QeD\   (Compare
+4A2Gm.)}
+
+
+\spheader 4A2Tf Suppose that $X$ is metrizable, locally compact and
+separable.   Then the Fell topology on $\Cal C$ is metrizable.
+%5@26I
+\prooflet{\Prf\ $X$ is second-countable (4A2P(a-i));
+let $\Cal U$ be a countable base for the topology of $X$ consisting of
+relatively compact open sets (4A2Ob) and closed under finite unions.
+Let $\Bbb V$ be the set of open sets in $\Cal C$ expressible in the form
+
+\Centerline{$\{F:F\cap U\ne\emptyset$ for every $U\in\Cal U_0$,
+$F\cap\overline{V}=\emptyset\}$}
+
+\noindent where $\Cal U_0\subseteq\Cal U$ is finite and $V\in\Cal U$.
+Then $\Bbb V$ is countable.   If $\Cal V\subseteq\Cal C$ is open and
+$F_0\in\Cal V$, then there are a finite family $\Cal G$ of open sets in $X$
+and a compact $K\subseteq X$ such that
+
+\Centerline{$F_0\in\{F:F\cap G\ne\emptyset$ for every $G\in\Cal G$,
+$F\cap K=\emptyset\}\subseteq\Cal V$.}
+
+\noindent For each $G\in\Cal G$ there is a $U_G\in\Cal U$ such that
+$U_G\subseteq G$ and $F\cap U_G\ne\emptyset$.   Next, each point of $K$
+belongs to a member of $\Cal U$ with closure disjoint from $F_0$, so
+(because $K$ is compact and
+$\Cal U$ is closed under finite unions) there is a $V\in\Cal U$
+such that $K\subseteq V$ and $F_0\cap\overline{V}=\emptyset$.   Now
+
+\Centerline{$\Cal V'=\{F:F\cap U_G\ne\emptyset$ for every $G\in\Cal G$,
+$F\cap\overline{V}=\emptyset\}$}
+
+\noindent belongs to $\Bbb V$, contains $F_0$ and is included in $\Cal V$.
+This shows that $\Bbb V$ is a base for the Fell topology, and the Fell
+topology is second-countable.   Since we already know that it is compact
+and Hausdorff, therefore regular, it is metrizable (4A2Pb).\ \Qed}
+
+\spheader 4A2Tg Suppose that $X$ is metrizable, and
+that $\rho$ is a metric
+inducing the topology of $X$;  let $\tilde\rho$ be the corresponding
+Hausdorff metric on $\Cal C\setminus\{\emptyset\}$.
+
+\quad(i) The topology $\frak S_{\tilde\rho}$ defined by
+$\tilde\rho$ is finer than the Fell topology $\frak S_F$
+on $\Cal C\setminus\{\emptyset\}$.
+\prooflet{\Prf\ Let $G\subseteq X$ be open, and consider the set
+$\Cal V_G=\{F:F\in\Cal C$, $F\cap G\ne\emptyset\}$.   If $E\in\Cal V_G$,
+take $x\in E\cap G$ and $\epsilon>0$ such that $U(x,\epsilon)\subseteq G$;  then
+$\{F:\tilde\rho(F,E)<\epsilon\}\subseteq\Cal V_G$.   As $E$ is arbitrary,
+$\Cal V_G$ is $\frak S_{\tilde\rho}$-open.   Next, suppose that
+$K\subseteq X$ is compact, and consider the set
+$\Cal W_K=\{F:F\in\Cal C\setminus\{\emptyset\}$, $F\cap K=\emptyset\}$.
+If $E\in\Cal W_K$, the function $x\mapsto\rho(x,E):K\to\ooint{0,\infty}$
+is continuous, so has a non-zero lower bound $\epsilon$ say;  now
+$\{F:\tilde\rho(F,E)<\epsilon\}\subseteq\Cal W_K$.   As $E$ is arbitrary,
+$\Cal W_K$ is $\frak S_{\tilde\rho}$-open.   So $\frak S_{\tilde\rho}$ is
+finer than the topology $\frak S_F$ generated by the sets $\Cal V_G$ and
+$\Cal W_K$.\ \Qed}
+
+\quad(ii) If $X$ is compact, then $\frak S_{\tilde\rho}$ and
+$\frak S_F$ are the same, and both are compact.
+\prooflet{\Prf\ Suppose that $E\in\Cal V\in\frak S_{\tilde\rho}$.
+Let $\epsilon\in\ooint{0,1}$ be such that
+$F\in\Cal V$ whenever $F\in\Cal C\setminus\{\emptyset\}$ and
+$\tilde\rho(E,F)<2\epsilon$.
+Because $X$ is compact, $E$ is $\rho$-totally bounded (4A2Je) and there is
+a finite set $I\subseteq E$ such that
+$E\subseteq\bigcup_{x\in I}U(x,\epsilon)$.   Because $x\mapsto\rho(x,E)$ is
+continuous, $K=\{x:\rho(x,E)\ge\epsilon\}$ is closed, therefore compact;
+now
+
+\Centerline{$\Cal W=\{F:F\in\Cal C$, $F\cap K=\emptyset$,
+$F\cap U(x,\epsilon)\ne\emptyset$ for every $x\in I\}$}
+
+\noindent is a neighbourhood of $E$ for $\frak S_F$ included in
+$\Cal V$.   Thus $\Cal V$ is a neighbourhood of $E$ for
+$\frak S_F$;  as $E$ and $\Cal V$ are arbitrary, $\frak S_F$ is finer than
+$\frak S_{\tilde\rho}$.   So the two topologies are equal.
+
+Observe finally that $\{\emptyset\}=\{F:F\in\Cal C$, $F\cap X=\emptyset\}$
+is open for the Fell topology on $\Cal C$, so
+$\Cal C\setminus\{\emptyset\}$ is closed, therefore compact, by (b-iii).
+So $\frak S_{\tilde\rho}=\frak S_F$ is compact.\ \Qed}
+
+\leader{4A2U}{Old friends (a)}
+$\Bbb R$, with its usual topology, is metrizable\cmmnt{ (2A3Ff)} and
+separable\cmmnt{ (the countable set $\Bbb Q$ is dense)}, so is
+second-countable\cmmnt{ (4A2P(a-i))}.
+Every subset of $\Bbb R$ is separable\cmmnt{ (4A2P(a-iv))};
+\cmmnt{in particular,}
+every dense subset of $\Bbb R$ has a countable subset which is still
+dense.
+%4@18 %4@33 %4@25 %4@39
+
+\spheader 4A2Ub $\BbbN^{\Bbb N}$ is Polish in its usual
+topology\cmmnt{ (4A2Qc)},
+%4@23
+so has a countable network\cmmnt{ (4A2P(a-iii) or 4A2Ne)},
+%4@A3
+and is hereditarily Lindel\"of\cmmnt{ (4A2Nb or 4A2Pd)}.
+%4@22
+Moreover, it is homeomorphic to
+$[0,1]\setminus\Bbb Q$\prooflet{ (\Kuratowski, \S36.II;  \Kechris, 7.7)}.
+%4@39
+
+\spheader 4A2Uc The map
+$x\mapsto\bover23\sum_{j=0}^{\infty}3^{-j}x(j)$\cmmnt{ (cf.\ 134Gb)}
+is a homeomorphism between $\{0,1\}^{\Bbb N}$ and the Cantor set
+$C\subseteq[0,1]$.   \prooflet{(It is a continuous bijection.)}
+%4@39
+
+\spheader 4A2Ud If $I$ is any set, then the map
+$A\mapsto\chi A:\Cal PI\to\{0,1\}^I$ is a homeomorphism\cmmnt{ (for
+the usual topologies on $\Cal PI$ and $\{0,1\}^I$, as described in 4A2A
+and 3A3K)}.   So $\Cal PI$ is zero-dimensional, compact\cmmnt{ (3A3K)}
+and Hausdorff.   If $I$ is countable, then $\Cal PI$ is metrizable,
+therefore Polish\cmmnt{ (4A2Qb)}.
+
+\spheader 4A2Ue Give the space $C(\coint{0,\infty})$ the topology
+$\frak T_c$ of uniform convergence on compact sets.
+
+\medskip
+
+\quad{\bf (i)} $C(\coint{0,\infty})$ is a Polish locally convex
+linear topological space.   \prooflet{\Prf\ $\frak T_c$ is determined by
+the seminorms $f\mapsto\sup_{t\le n}|f(t)|$ for $n\in\Bbb N$, so it is a
+metrizable linear space topology.   By 4A2Oe, it has a countable network,
+so is separable.   Any function which is continuous on
+every set $[0,n]$ is continuous on $\coint{0,\infty}$, so
+$C(\coint{0,\infty})$ is complete under the metric
+$(f,g)\mapsto\sum_{n=0}^{\infty}\min(2^{-n},\sup_{t\le n}|f(t)-g(t)|)$;  as
+this metric defines $\frak T_c$, $\frak T_c$ is Polish.\ \Qed}
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $A\subseteq C(\coint{0,\infty})$ is such that
+$\{f(0):f\in A\}$ is bounded and for every $a\ge 0$
+and $\epsilon>0$ there is
+a $\delta>0$ such that $|f(s)-f(t)|\le\epsilon$ whenever
+$f\in A$, $s$, $t\in[0,a]$
+and $|s-t|\le\delta$.   Then $A$ is relatively compact for $\frak T_c$.
+\prooflet{
+\Prf\ Note first that $\{f(a):f\in A\}$ is bounded for every $a\ge 0$,
+since if $\delta>0$ is such that $|f(s)-f(t)|\le 1$ whenever $f\in A$,
+$s$, $t\in[0,a]$ and $|s-t|\le\delta$, then
+$|f(a)|\le|f(0)|+\lceil\Bover{a}{\delta}\rceil$ for every $f\in A$.   So if
+$\Cal F$ is an ultrafilter on $C(\coint{0,\infty})$ containing $A$,
+$g(a)=\lim_{f\to\Cal F}f(a)$ is defined for every $a\ge 0$.   If $a\ge 0$
+and $\epsilon>0$, let $\delta\in\ocint{0,1}$ be such that
+$|f(s)-f(t)|\le\epsilon$ whenever $f\in A$,
+$s$, $t\in[0,a+1]$ and $|s-t|\le\delta$;
+then $|g(s)-g(a)|\le\epsilon$ whenever $|s-a|\le\delta$;  as $a$ and
+$\epsilon$ are arbitrary, $g\in C(\coint{0,\infty})$.   If $a\ge 0$ and
+$\epsilon>0$, let $\delta>0$ be such that
+$|f(s)-f(t)|\le\bover13\epsilon$ whenever $f\in A$, $s$, $t\in[0,a]$
+and $|s-t|\le\delta$.   Then
+
+\Centerline{$A'
+=\{f:f\in A$, $|f(i\delta)-g(i\delta)|\le\Bover13\epsilon$ for every
+$i\le\lceil\Bover{a}{\delta}\rceil\}$}
+
+\noindent belongs to $\Cal F$.   Now $|f(t)-g(t)|\le\epsilon$ for every
+$f\in A'$ and $t\in[0,a]$.   As $a$ and $\epsilon$ are arbitrary,
+$\Cal F\to g$ for $\frak T_c$.   As $\Cal F$ is arbitrary, $A$ is
+relatively compact (3A3De).\ \Qed}
+
+\discrpage
+

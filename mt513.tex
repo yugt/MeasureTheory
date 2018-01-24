@@ -1,0 +1,1360 @@
+\frfilename{mt513.tex}
+\versiondate{23.2.14}
+\copyrightdate{2004}
+
+\def\chaptername{Cardinal functions}
+\def\sectionname{Partially ordered sets}
+
+\newsection{513}
+
+In \S\S511-512 I have given long
+lists of definitions.   It is time I filled in details of
+the most elementary relationships between the various concepts
+introduced.   Here I treat some of those which can be expressed in the
+language of partially ordered sets.   I begin with notes on cofinality
+and saturation, with the Erd\H{o}s-Tarski theorem (513B).
+In this context, Galois-Tukey connections take on particularly direct
+forms (513D-513E);  for directed sets, we have an alternative definition
+of Tukey equivalence (513F).   The majority of the cardinal functions
+defined so far on partially ordered sets are determined by their cofinal
+structure (513G, 513If\cmmnt{;  see also 516Ga below}).
+
+In the last third of the section
+(513K-513O), %513K 513L 513M 513N 513O
+I discuss Tukey functions between directed sets with a special kind of
+topological structure, which I call `metrizably compactly based';  the
+point is
+that for Polish metrizably compactly based directed sets, if there is
+any Tukey function between them, there must be one
+which is measurable in an appropriate sense (513O).
+
+\leader{513A}{}\cmmnt{ It will help to have an elementary lemma on
+maximal antichains.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $P$ be a partially ordered set.
+
+(a) If $Q\subseteq P$ is cofinal and $A\subseteq Q$ is an up-antichain,
+there is a maximal up-antichain $A'$ in $P$ such that
+$A\subseteq A'\subseteq Q$.   In particular, $Q$ includes a maximal
+up-antichain.
+
+(b) If $A\subseteq P$ is a maximal up-antichain,
+$Q=\bigcup_{q\in A}\coint{q,\infty}$ is cofinal with $P$.
+
+\proof{{\bf (a)} Let $A'\subseteq Q$ be maximal subject to being an
+up-antichain in $P$ including $A$.   Then for any $p\in P\setminus A'$,
+there are a $q\in Q$ such that $p\le q$, and an $r\in A'$ such that
+
+\Centerline{$\emptyset\ne\coint{r,\infty}\cap\coint{q,\infty}
+\subseteq\coint{r,\infty}\cap\coint{p,\infty}$,}
+
+\noindent so $A'\cup\{p\}$ is not an up-antichain.   But this means that
+$A'$ is a maximal up-antichain in $P$.
+
+Starting from $A=\emptyset$, we see that $Q$ includes a maximal
+up-antichain.
+
+\medskip
+
+{\bf (b)} If $p\in P$, then either $p\in A\subseteq Q$, or $A\cup\{p\}$
+is not an up-antichain, so that there is some $q\in A$ such that
+
+\Centerline{$\emptyset\ne\coint{p,\infty}\cap\coint{q,\infty}
+\subseteq Q\cap\coint{p,\infty}$.}
+}%end of proof of 513A
+
+\leader{513B}{Theorem} Let $P$ be a partially ordered set.
+
+(a) $\bu P\le\cf P\le\#(P)$.
+
+(b) $\sat^{\uparrow}(P)$ is either finite or a regular uncountable
+cardinal.
+
+(c) $c^{\uparrow}(P)$ is the predecessor of $\sat^{\uparrow}(P)$ if
+$\sat^{\uparrow}(P)$ is a successor cardinal, and otherwise is equal to
+$\sat^{\uparrow}(P)$.
+
+\proof{{\bf (a)} To see that $\cf P\le\#(P)$ all we have to note is that
+$P$ is a cofinal subset of itself.   To see that $\bu P\le\cf P$, set
+$\kappa=\cf P$ and let $\ofamily{\xi}{\kappa}{p_{\xi}}$ enumerate a
+cofinal subset of $P$.   Set
+
+\Centerline{$A
+=\{\xi:\xi<\kappa,\,p_{\xi}\not\le p_{\eta}$ for any $\eta<\xi\}$,
+\quad$Q=\{p_{\xi}:\xi\in A\}$.}
+
+\noindent If $p\in P$ there is a least $\xi<\kappa$ such that
+$p\le p_{\xi}$, and now $\xi\in A$;  so $Q$ is cofinal with $P$.   If
+$p\in P$, there is some $\xi\in A$ such that $p\le p_{\xi}$, and now
+$\{q:q\in Q$, $q\le p$, $p\not\le q\}\subseteq\{p_{\eta}:\eta<\xi\}$
+has cardinal less than $\kappa$, so that $Q$ witnesses that
+$\bu P\le\kappa$.
+
+\medskip
+
+{\bf (b)(i)} Set $\kappa=\sat^{\uparrow}(P)$.
+For $p\in P$, set $\theta(p)=\sat^{\uparrow}(\coint{p,\infty})$.   Note
+that if $p\in P$ and $B\subseteq P$ is any up-antichain, then
+$B_p=\{q:q\in B$, $\coint{q,\infty}\cap\coint{p,\infty}\ne\emptyset\}$
+has less than $\theta(p)$ members.   \Prf\ For $q\in B_p$, choose
+$q'\in\coint{q,\infty}\cap\coint{p,\infty}$.   Because $B$ is an
+up-antichain, $\{q':q\in B_p\}$ is an up-antichain and $q\mapsto q'$ is
+injective;  so $\#(B_p)=\#(\{q':q\in B_p\})<\theta(p)$.\ \Qed
+
+If $p\le q$ in $P$, any up-antichain in $\coint{q,\infty}$ is also an
+up-antichain in $\coint{p,\infty}$, so $\theta(q)\le\theta(p)$.   It
+follows that $Q=\{p:p\in P,\,\theta(q)=\theta(p)$ for every $q\ge p\}$
+is cofinal with $P$.   Let $A\subseteq Q$ be a maximal up-antichain
+(513Aa);  then $\#(A)<\kappa$.
+
+\medskip
+
+\quad{\bf (ii)} \Quer\ Suppose, if possible, that $\kappa=\omega$.
+
+\medskip
+
+\qquad{\bf case 1} Suppose there is a $p\in A$ such that
+$\theta(p)=\omega$.   Then we can choose $\sequencen{p_n}$,
+$\sequencen{q_n}$ inductively, as follows.   $p_0=p$.   Given that
+$p_n\in Q$ and $\theta(p_n)=\omega$, there must be $p_{n+1}$,
+$q_n\in\coint{p_n,\infty}$ such that
+$\coint{p_{n+1},\infty}\cap\coint{q_n,\infty}=\emptyset$;  now
+$p_{n+1}\in Q$ and $\theta(p_{n+1})=\omega$.   Continue.   At the end of
+the induction, $\{q_n:n\in\Bbb N\}$ is an infinite up-antichain in $P$,
+which is impossible.
+
+\medskip
+
+\qquad{\bf case 2} Suppose that $\theta(p)<\omega$ for every $p\in A$.
+Then $n=\sum_{p\in A}\theta(p)$ is finite.   Let $B\subseteq P$ be any
+up-antichain.   For each $p\in A$, set
+$B_p=\{q:q\in B,\,\coint{q,\infty}\cap\coint{p,\infty}\ne\emptyset\}$;
+as noted in (i), $\#(B_p)<\theta(p)$ for every $p\in A$, so
+$\#(\bigcup_{p\in A}B_p)\le n$.   But
+$B=\bigcup_{p\in A}B_p$, because $A$ is a maximal up-antichain, so
+$\#(B)\le n$.   As $B$ is arbitrary,
+$\sat^{\uparrow}(P)\le n+1<\omega$.\ \Bang
+
+Thus $\kappa\ne\omega$.
+
+\medskip
+
+\quad{\bf (iii)} \Quer\ Suppose, if possible, that $\kappa$
+is a singular infinite cardinal.   Set $\lambda=\cf\kappa$ and let
+$\ofamily{\xi}{\lambda}{\kappa_{\xi}}$ be a strictly increasing family
+of cardinals with supremum $\kappa$.
+
+\medskip
+
+\qquad{\bf case 1} Suppose there is a $p\in Q$ such that
+$\theta(p)=\kappa$.   Then, because $\lambda<\kappa$, there is an
+up-antichain $B\subseteq\coint{p,\infty}$ with cardinal $\lambda$;
+enumerate $B$ as $\ofamily{\xi}{\lambda}{p_{\xi}}$.   For each
+$\xi<\lambda$, $\theta(p_{\xi})>\kappa_{\xi}$, so there is an
+up-antichain $C_{\xi}\subseteq\coint{p_{\xi},\infty}$ with cardinal
+$\kappa_{\xi}$.   Now $C=\bigcup_{\xi<\lambda}C_{\xi}$ is an
+up-antichain in $P$ with cardinal $\kappa$, which is supposed to be
+impossible.
+
+\medskip
+
+\qquad{\bf case 2} Suppose that $\theta(p)<\kappa$ for every $p\in Q$.
+
+\medskip
+
+\qquad\quad{\bf case 2a} Suppose that $\sup_{p\in A}\theta(p)<\kappa$.
+Then there is an up-antichain $C\subseteq P$ such that
+$\#(C)$ is greater than
+$\max(\omega,\#(A),\sup_{p\in A}\theta(p))$.   For each $p\in A$ set
+$C_p=\{q:q\in C,\,\coint{q,\infty}\cap\coint{p,\infty}\ne\emptyset\}$,
+so that $\#(C_p)<\theta(p)$.   It follows that
+$C\ne\bigcup_{p\in A}C_p$.   But if
+$q\in C\setminus\bigcup_{p\in A}C_p$, there is a $q'\in Q$ such that
+$q'\ge q$, and now $A\cup\{q'\}$ is an up-antichain in $Q$ strictly
+including  $A$, which is impossible.
+
+\medskip
+
+\qquad\quad{\bf case 2b} Suppose that $\sup_{p\in A}\theta(p)=\kappa$.
+Then we can choose inductively a family
+$\ofamily{\xi}{\lambda}{p_{\xi}}$ in $A$ such that
+$\theta(p_{\xi})>\max(\kappa_{\xi},\sup_{\eta<\xi}\theta(p_{\eta}))$ for
+each $\xi$;  the point being that when we come to choose $p_{\xi}$,
+$\ofamily{\eta}{\xi}{\theta(p_{\eta})}$ is a family of fewer than
+$\cf\kappa$ cardinals less than $\kappa$, so has supremum less than
+$\kappa$.   Now all the $p_{\xi}$ must be distinct.   For each $\xi$,
+let $B_{\xi}\subseteq\coint{p_{\xi},\infty}$ be an up-antichain of size
+$\kappa_{\xi}$;  then $\bigcup_{\xi<\lambda}B_{\xi}$ is an up-antichain
+in $P$ of size $\kappa$, which is impossible.\ \Bang
+
+Thus $\kappa$ cannot be a singular infinite cardinal.
+
+\medskip
+
+{\bf (c)} All we need to know is that
+$c^{\uparrow}(P)=\sup\{\kappa:\kappa<\sat^{\uparrow}(P)\}$.
+}%end of proof of 513B
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} (b) is sometimes called the {\bf Erd\H{o}s-Tarski
+theorem}.}
+
+\leader{513C}{Cofinalities of cardinal
+\dvrocolon{functions}}\cmmnt{ We can say a little about the possible
+cofinalities of the cardinals which have appeared so far.
+
+\medskip
+
+\noindent}{\bf Proposition} (a) Let $P$ be a partially ordered set with
+no greatest member.
+
+\quad(i) If $\add P$ is greater than $2$\cmmnt{ (that is, $P$ is
+upwards-directed)}, it is a regular infinite cardinal, and there is a
+family $\ofamily{\xi}{\add P}{p_{\xi}}$ in $P$ such that
+$p_{\eta}<p_{\xi}$ whenever $\eta<\xi<\add P$, but
+$\{p_{\xi}:\xi<\add P\}$ has no upper bound in $P$.
+
+\quad(ii) If $\cf P$ is infinite, its cofinality is at least $\add P$.
+
+(b) Let $\Cal I$ be an ideal of subsets of a set $X$ such that
+$\bigcup\Cal I=X\notin\Cal I$.
+
+\quad(i) $\cf(\add\Cal I)=\add\Cal I\le\cf(\cf\Cal I)$.
+
+\quad(ii) $\cf(\non\Cal I)\ge\add\Cal I$.
+
+\quad(iii) If $\cov\Cal I=\cf\Cal I$ then $\cf(\cf\Cal I)\ge\non\Cal I$.
+
+\proof{{\bf (a)(i)} By 511Hd, $\add P\ge\omega$;  by 511He,
+$\add P<\infty$, so $\add P$ is an infinite cardinal.   Let
+$\ofamily{\xi}{\add P}{q_{\xi}}$ be a family in $P$ with no upper bound
+in $P$.   Choose $\ofamily{\xi}{\add P}{p_{\xi}}$ inductively, as follows.   Given $p_{\xi}$, where $\xi<\add P$, there is a
+$p'_{\xi}\in P$ such that $p'_{\xi}\not\le p_{\xi}$;  let $p_{\xi+1}$ be an upper bound of $\{p_{\xi},p'_{\xi},q_{\xi}\}$.   
+For a limit ordinal
+$\xi<\add P$, let $p_{\xi}$ be an upper bound of $\{p_{\eta}:\eta<\xi\}$.   This will ensure that $p_{\eta}<p_{\xi}$ whenever $\xi<\eta<\add P$ and that $\{p_{\xi}:\xi<\add P\}$ has no upper bound, since such a bound would have to be a bound for
+$\{q_{\xi}:\xi<\add P\}$.
+
+\Quer\ If $\add P$ is singular, express it as
+$\sup_{\xi<\lambda}\kappa_{\xi}$, where $\lambda<\add P$ and
+$\kappa_{\xi}<\add P$ for each $\xi<\lambda$.   Then for
+each $\xi<\lambda$, $\{p_{\eta}:\eta<\kappa_{\xi}\}$ has an upper bound
+$r_{\xi}$ in $P$;  but now $\{r_{\xi}:\xi<\lambda\}$ has an upper bound
+in $P$, which is also an upper bound of $\{p_{\eta}:\eta<\add P\}$.\
+\BanG\   Thus $\add P$ is regular.
+
+\medskip
+
+\quad{\bf (ii)} \Quer\ If $\cf(\cf P)<\add P$, express $\cf P$ as
+$\sup_{\xi<\lambda}\kappa_{\xi}$ where $\lambda<\add P$ and
+$\kappa_{\xi}<\cf P$ for each $\xi<\lambda$.   Let
+$\ofamily{\eta}{\cf P}{p_{\eta}}$ enumerate a cofinal subset of $P$.
+Then $\{p_{\eta}:\eta<\kappa_{\xi}\}$ is never cofinal with $P$, so
+there is for each $\xi<\lambda$ a $q_{\xi}\in P$ such that
+$q_{\xi}\not\le p_{\eta}$ for every $\eta<\kappa_{\xi}$.   But now there
+is a $q\in P$ which is an upper bound for $\{q_{\xi}:\xi<\lambda\}$, and
+$q\not\le p_{\eta}$ for any $\eta<\cf P$.\ \Bang
+
+\medskip
+
+{\bf (b)(i)} Because $\bigcup\Cal I=X\notin\Cal I$, $\cf\Cal I$ and
+$\add\Cal I$ are both infinite, so this is just a special case of (a).
+
+\medskip
+
+\quad{\bf (ii)} \Quer\ If $\cf(\non\Cal I)<\add\Cal I$, express
+$\non\Cal I$ as $\sup_{\xi<\lambda}\kappa_{\xi}$ where
+$\lambda<\add\Cal I$ and
+$\kappa_{\xi}<\non\Cal I$ for each $\xi<\lambda$.    Let
+$\ofamily{\eta}{\non\Cal I}{x_{\eta}}$ enumerate a subset of $X$ not
+belonging to $\Cal I$.   Then $I_{\xi}=\{x_{\eta}:\eta<\kappa_{\xi}\}$
+belongs to $\Cal I$ for each $\xi<\lambda$;  but this means that
+$\bigcup_{\xi<\lambda}I_{\xi}=\{x_{\eta}:\eta<\non\Cal I\}$ belongs to
+$\Cal I$.\ \Bang
+
+\medskip
+
+\quad{\bf (iii)} Set $\cf(\cf\Cal I)=\kappa$.   Let
+$\ofamily{\xi}{\kappa}{\Cal A_{\xi}}$ be a family of subsets of
+$\Cal I$, all with cardinal less than $\cf\Cal I=\cov\Cal I$, such that
+$\bigcup_{\xi<\kappa}\Cal A_{\xi}$ is cofinal with $\Cal I$.   Because
+$\#(\Cal A_{\xi})<\cov\Cal I$, there is an
+$x_{\xi}\in X\setminus\bigcup\Cal A_{\xi}$ for each $\xi<\kappa$.   Now
+$\{x_{\xi}:\xi<\kappa\}$  is not included in any member of
+$\Cal A_{\xi}$ for any $\xi$, so cannot belong to $\Cal I$ and witnesses
+that $\non\Cal I\le\kappa$.
+}%end of proof of 513C
+
+\leader{513D}{}\cmmnt{ Galois-Tukey connections between partial orders
+have some distinctive features which make a special language
+appropriate.
+
+\medskip
+
+\noindent}{\bf Definition} Let $P$ and $Q$ be pre-ordered sets.
+A function $\phi:P\to Q$ is a {\bf Tukey function} if $\phi^{-1}[B]$ is
+bounded above in $P$ whenever $B\subseteq Q$ is bounded above in $Q$.
+A function $\psi:Q\to P$ is a {\bf dual Tukey function} (also called
+`cofinal function', `convergent function') if $\psi[B]$ is
+cofinal with $P$ whenever $B\subseteq Q$ is cofinal with $Q$.
+
+If $P$ and $Q$ are pre-ordered sets, I
+will write `$P\prT Q$' if $(P,\le,P)\prGT(Q,\le,Q)$, and `$P\equivT Q$'
+if $(P,\le,P)\equivGT(Q,\le,Q)$;  in the latter case I say that $P$ and
+$Q$ are {\bf Tukey equivalent}.   It follows immediately from 512C that
+$\prT$ is reflexive and transitive, and of course $P\equivT Q$ iff
+$P\prT Q$ and $Q\prT P$.
+
+\leader{513E}{Theorem} Let $P$ and $Q$ be pre-ordered sets.
+
+(a) If $(\phi,\psi)$ is a Galois-Tukey connection from $(P,\le,P)$ to
+$(Q,\le,Q)$ then $\phi:P\to Q$ is a Tukey function and $\psi:Q\to P$ is
+a dual Tukey function.
+
+(b)(i) A function $\phi:P\to Q$ is a Tukey function iff there is a
+function $\psi:Q\to P$ such that $(\phi,\psi)$ is a Galois-Tukey
+connection from $(P,\le,P)$ to $(Q,\le,Q)$.
+
+\quad(ii) A function $\psi:Q\to P$ is a dual Tukey function iff there is
+a function $\phi:P\to Q$ such that $(\phi,\psi)$ is a Galois-Tukey
+connection from $(P,\le,P)$ to $(Q,\le,Q)$.
+
+\quad(iii) If $\psi:Q\to P$ is order-preserving and $\psi[Q]$ is cofinal
+with $P$, then $\psi$ is a dual Tukey function.
+
+(c) The following are equiveridical, that is, if one is true so are the
+others:
+
+\quad(i) $P\prT Q$;
+
+\quad(ii) there is a Tukey function $\phi:P\to Q$;
+
+\quad(iii) there is a dual Tukey function $\psi:Q\to P$.
+
+\wheader{513E}{0}{0}{0}{48pt}
+(d)(i) Let $f:P\to Q$ be such that $f[P]$ is cofinal with $Q$ and, for $p$,
+$p'\in P$, $f(p)\le f(p')$ iff $p\le p'$.   Then $P\equivT Q$.
+
+\quad(ii) Suppose that $A\subseteq P$ is cofinal with $P$.   Then
+$A\equivT P$
+
+\quad(iii) For $p$, $q\in P$ say that $p\equiv q$ if $p\le q$ and
+$q\le p$;  let $\tilde P$ be the partially ordered set of equivalence
+classes in $P$ under the equivalence relation $\equiv$\cmmnt{ (511A,
+511Ha)}.   Then $P\equivT\tilde P$.
+
+\wheader{513E}{0}{0}{0}{36pt}
+(e) Suppose now that $P\prT Q$.   Then
+
+\quad (i) $\cf P\le\cf Q$;
+
+\quad (ii) $\add P\ge\add Q$;
+
+\quad (iii) $\sat^{\uparrow}(P)\le\sat^{\uparrow}(Q)$,
+$c^{\uparrow}(P)\le c^{\uparrow}(Q)$;
+
+\quad (iv)
+$\link_{<\kappa}^{\uparrow}(P)\le\link_{<\kappa}^{\uparrow}(Q)$ for any
+cardinal $\kappa$;
+
+\quad (v) $\link^{\uparrow}(P)\le\link^{\uparrow}(Q)$,
+$\duparrow(P)\le\duparrow(Q)$.
+
+(f) If $P$ and $Q$ are Tukey equivalent, then $\cf P=\cf Q$ and
+$\add P=\add Q$.
+
+(g) If $\familyiI{P_i}$ and $\familyiI{Q_i}$ are families of pre-ordered
+ordered sets such that $P_i\prT Q_i$ for every $i$, then
+$\prod_{i\in I}P_i\prT\prod_{i\in I}Q_i$.
+
+(h) If $0<\kappa<\add P$ then
+$P\equivT P^{\kappa}$.   In particular, if $P$ is upwards-directed then
+$P\equivT P\times P$.
+
+\proof{{\bf (a)} To say that $(\phi,\psi)$ is a Galois-Tukey connection
+from $(P,\le,P)$ to $(Q,\le,Q)$ means just that $p\le\psi(q)$ whenever
+$\phi(p)\le q$.   Now if $B\subseteq Q$ has an upper bound $q$,
+$\psi(q)$ is an upper bound for $\phi^{-1}[B]$;  as $B$ is arbitrary,
+$\phi$ is a Tukey function.   Similarly, if
+$B\subseteq Q$ is cofinal, then for any $p\in P$ there is a $q\in B$
+such that $\phi(p)\le q$ and $p\le\psi(q)$, so $\psi[B]$ is cofinal with
+$P$.   As $B$ is arbitrary, $\psi$ is a dual Tukey function.
+
+\medskip
+
+{\bf (b)(i)} If $\phi:P\to Q$ is a Tukey function, then for each
+$q\in Q$ set $A_q=\{p:p\in P,\,\phi(p)\le q\}$.
+$A_q$ must be bounded above in $P$;  take $\psi(q)$ to be any upper
+bound for $A_q$ in $P$.   Then we see that $p\le\psi(q)$ whenever
+$\phi(p)\le q$, so that $(\phi,\psi)$ is a Galois-Tukey connection from
+$(P,\le,P)$ to $(Q,\le,Q)$.   Together with (a), this proves (i).
+
+\medskip
+
+\quad{\bf (ii)} If $\psi:Q\to P$ is a dual Tukey function, then for each
+$p\in P$ set $B_p=\{q:q\in Q,\,\psi(q)\not\ge p\}$.   Then $\psi[B_p]$
+is not cofinal with $P$, so $B_p$ cannot be cofinal with $Q$, and there
+must be a $\phi(p)\in P$ such that $\phi(p)\not\le q$ for any
+$q\in B_p$.   Turning
+this round, if $\phi(p)\le q$ then $q\notin B_p$ and $p\le\psi(q)$;  so
+$(\phi,\psi)$ is a Galois-Tukey connection from $(P,\le,P)$ to
+$(Q,\le,Q)$.   Together with (a), this proves (ii).
+
+\medskip
+
+\quad{\bf (iii)} Because $\psi[Q]$ is cofinal with $P$, we have a
+function $\phi:P\to Q$ such that $p\le\psi\phi(p)$ for every $p\in P$.
+Now, for any $p\in P$ and $q\in Q$,
+
+\Centerline{$\phi(p)\le q\Longrightarrow p\le\psi\phi(p)\le\psi(q)$,}
+
+\noindent so $(\phi,\psi)$ is a Galois-Tukey connection and $\psi$ is a
+dual Tukey function.
+
+\medskip
+
+{\bf (c)} This follows immediately from (a) and (b).
+
+\medskip
+
+{\bf (d)(i)} $f$ is a Tukey function.   \Prf\ If $A\subseteq P$ and $f[A]$
+is bounded above in $Q$, let $q$ be an upper bound for $f[A]$.   Because
+$f[P]$ is cofinal with $Q$, there is a $p_0\in P$ such that $q\le f(p_0)$.
+If now $p\in A$, we have $f(p)\le q\le f(p_0)$ so $p\le p_0$;  thus $A$ is
+bounded above in $P$.   As $A$ is arbitrary, $f$ is a Tukey function.\
+\QeD\   So $P\prT Q$.
+
+$f$ is a dual Tukey function.   \Prf\ If $A\subseteq P$ is cofinal with
+$P$, and $q\in Q$, there are a $p\in P$ such that $q\le f(p)$, and a
+$p'\in A$ such that $p\le p'$;  in which case
+
+\Centerline{$q\le f(p)\le f(p')\in f[A]$.}
+
+\noindent Thus $f[A]$ is cofinal with $Q$;  as $A$ is arbitrary, $f$ is a
+dual Tukey function.\ \QeD\  So $Q\prT P$ and $P\equivT Q$.
+
+\medskip
+
+\quad{\bf (ii)} Apply (i) to the identity map from $A$ to $P$.
+
+\medskip
+
+\quad{\bf (iii)} Apply (i) to the canonical map from $P$ to $\tilde P$.
+
+\medskip
+
+{\bf (e)} This is just a restatement of the results in 512D, using the
+identifications listed in 512Ea.   The only omission concerns
+cellularities, for which I have not set out a formal definition in the
+context of supported relations;  but if $A\subseteq P$ is an
+up-antichain and $\phi:P\to Q$ is a Tukey function, then
+$\{\phi(a),\phi(a')\}$ can have no upper bound in $Q$ for any distinct
+$a$, $a'\in A$, so $\phi[A]$ is an up-antichain in $Q$ with the same
+cardinality as $A$, and $\#(A)\le c^{\uparrow}(Q)$.   As $A$ is
+arbitrary, $c^{\uparrow}(P)\le c^{\uparrow}(Q)$ and
+$\sat^{\uparrow}(P)\le\sat^{\uparrow}(Q)$.
+
+\medskip
+
+{\bf (f)} follows at once from (e).
+
+\medskip
+
+{\bf (g)} This is a special case of 512H.
+
+\medskip
+
+{\bf (h)} Let $Q\subseteq P^{\kappa}$ be the set of constant functions.
+Because $\kappa\ge 1$, $Q$ is isomorphic to $P$;  because
+$\kappa<\add P$, $Q$ is cofinal with $P^{\kappa}$;  so
+$P\cong Q\equivGT P^{\kappa}$.
+}%end of proof of 513E
+
+\leader{513F}{Theorem}\cmmnt{ ({\smc Tukey 40})} Suppose that $P$ and
+$Q$ are upwards-directed partially ordered sets.   Then $P$ and $Q$ are
+Tukey equivalent iff there is a partially ordered set $R$
+such that $P$ and $Q$ are both isomorphic, as partially ordered sets, to
+cofinal subsets of $R$.
+
+\proof{{\bf (a)} Suppose that $P$ and $Q$ are Tukey equivalent.   Then
+there are Tukey functions $\phi:P\to Q$ and $\psi:Q\to P$.   Set
+$S=(P\times\{0\})\cup(Q\times\{1\})$, with a relation $\le$ defined by
+saying that
+
+\inset{$(p,0)\le(q,1)$ iff ($\alpha$) there is a $p'\ge p$ in $P$ such
+that $\phi(p')\le q$ in $Q$ ($\beta$) $q'\le q$ in $Q$ whenever
+$q'\in Q$ and $\psi(q')\le p$ in $P$,
+
+$(q,1)\le(p,0)$ iff ($\alpha$) there is a $q'\ge q$ in $Q$ such that
+$\psi(q')\le p$ in $P$ ($\beta$) $p'\le p$ in $P$ whenever $p'\in P$ and
+$\phi(p')\le q$ in $Q$,
+
+$(p',0)\le(p,0)$ iff $p'\le p$ in $P$,
+
+$(q',1)\le (q,1)$ iff $q'\le q$ in $Q$.}
+
+\noindent Of course $\le$ is reflexive.   To see that it is transitive,
+observe that if $(p,0)\le(q,1)\le(\tilde p,0)$ then there is a
+$p'\ge p$ such that $\phi(p')\le q$, and now $p'\le\tilde p$, so
+$(p,0)\le(\tilde p,0)$.   Similarly, $(q,1)\le(\tilde q,1)$ whenever
+$(q,1)\le(p,0)\le(\tilde q,1)$.   The other cases to check are equally
+easy.   It is {\it not} necessarily the case that $\le$ is
+antisymmetric, since it is possible to have $(p,0)\le(q,1)\le(p,0)$;
+but we have an equivalence relation $\cong$ on $S$ defined by saying
+that $s\cong t$ if $s\le t$ and $t\le s$, and a natural partial order on
+the set $R$ of equivalence classes defined by saying that
+$s^{\ssbullet}\le t^{\ssbullet}$ iff $s\le t$.
+
+The map $p\mapsto(p,0)^{\ssbullet}:P\to R$ is an order-isomorphism
+between $P$ and its image $\tilde P\subseteq R$.   Now for any $q\in Q$
+there is a $p\in P$ such that $(q,1)\le (p,0)$.   \Prf\ Since $\phi$ is
+a Tukey function, $A=\{p':\phi(p')\le q\}$ must be bounded above in $P$;
+let $p_0$ be an upper bound for $A$.   Now because $P$ is
+upwards-directed,
+there is a $p\in P$ such that $p_0\le p$ and $\psi(q)\le p$, and in this
+case $(q,1)\le (p,0)$.\ \QeD\   This is what we need to see that
+$\tilde P$ is cofinal with $R$.   Similarly, $Q$ is order-isomorphic to
+its canonical image in $R$, and this too is cofinal with $R$.
+So both $P$ and $Q$ are isomorphic to cofinal subsets of $R$.
+
+\medskip
+
+{\bf (b)} Conversely, if $P$ and $Q$ are both isomorphic to cofinal
+subsets of a partially ordered set $R$, then $P$, $R$ and $Q$ are all
+Tukey equivalent, by 513Ed.
+}%end of proof of 513F
+
+\leader{513G}{}\cmmnt{ We shall repeatedly want to use some elementary
+facts about cofinal subsets.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $P$ be a pre-ordered set and $Q$ a
+cofinal subset of $P$.   Then
+
+(a) $\add Q=\add P$;
+
+(b) $\cf Q=\cf P$;
+
+(c) $\sat^{\uparrow}(Q)=\sat^{\uparrow}(P)$,
+$c^{\uparrow}(Q)=c^{\uparrow}(P)$;
+
+(d) $\link_{<\kappa}^{\uparrow}(Q)=\link_{<\kappa}^{\uparrow}(P)$ for
+any cardinal $\kappa$;  in particular,
+$\link^{\uparrow}(Q)=\link^{\uparrow}(P)$ and
+$\duparrow(Q)=\duparrow(P)$;
+
+(e) $\bu Q=\bu P$.
+
+\proof{ All except (e) are consequences of 513Ed and 513Ee.
+As for bursting numbers, every cofinal subset of $Q$ is also cofinal
+with $P$, so $\bu P\le\bu Q$.   For the reverse inequality, let $Q_1$ be
+a cofinal subset of $P$ such that
+$\#(\{q:q\in Q_1$, $q\le p$, $p\not\le q\})<\bu P$
+for every $p\in p$.   Let $\phi:Q_1\to Q$ be any function such that
+$\phi(q)\ge q$ for every $q\in Q_1$, so that $\phi[Q_1]$ is cofinal with
+$Q$.   If $q\in Q$, then
+
+\Centerline{$\{q':q'\in\phi[Q_1]$, $q'\le q$, $q\not\le q'\}
+\subseteq\{\phi(q''):q''\in Q_1$, $q''\le q$, $q\not\le q''\}$}
+
+\noindent has cardinal less than $\bu P$, and $\phi[Q_1]$ witnesses
+that $\bu Q\le\bu P$.
+}%end of proof of 513G
+
+\leader{513H}{Definition} Let $P$ be a partially ordered set.   Its
+{\bf $\sigma$-additivity} $\add_{\omega}P$ is the smallest cardinal of
+any subset $A$ of $P$ such
+that $A\not\subseteq\bigcup_{q\in D}\ocint{-\infty,q}$ for any countable
+set $D\subseteq P$.   If there is no such set\cmmnt{, that is, if
+$\cf P\le\omega$}, I write $\add_{\omega}P=\infty$.
+
+\leader{513I}{Proposition} Let $P$ be a partially ordered set.   As in
+512F, write $p\le^{\strprime}A$, for $p\in P$ and $A\subseteq P$, if
+there is a $q\in A$ such that $p\le q$.
+
+(a) $\add_{\omega}P=\add(P,\le^{\strprime},[P]^{\le\omega})$.
+
+(b) $\max(\omega_1,\add P)\le\add_{\omega}(P)$.
+
+(c) If $\add_{\omega}P$ is an infinite cardinal, it is regular.
+
+(d) If $2\le\kappa\le\add P$,
+then $(P,\le^{\strprime},[P]^{<\kappa})\equivGT(P,\le,P)$.   So if
+$\add P>\omega$, $\add_{\omega}(P)=\add P$.
+
+(e) If $Q$ is another partially ordered set and
+$(P,\le^{\strprime},[P]^{\le\omega})
+\prGT(Q,\le^{\strprime},[Q]^{\le\omega})$\cmmnt{ (in particular, if
+$P\prT Q$)} then $\add_{\omega}P\ge\add_{\omega}Q$.
+
+(f) If $Q\subseteq P$ is cofinal with $P$, then
+$\add_{\omega}Q=\add_{\omega}P$.
+
+(g) If $\kappa\le\cf P$ then
+$\add(P,\le^{\strprime},[P]^{<\kappa})\le\cf P$.
+So if $\cf P>\omega$ then $\add_{\omega}P\le\cf P$.
+
+(h) If $\cf(\cf P)>\omega$ then $\cf(\cf P)\ge\add_{\omega}P$.
+
+\proof{{\bf (a)} All we have to do is to disentangle the definitions in
+512Ba, 512F and 513H.
+
+\medskip
+
+{\bf (b)} is immediate from the definition of $\add_{\omega}$.
+
+\medskip
+
+{\bf (c)} \Quer\ Suppose, if possible, that $\add_{\omega}P=\kappa$
+where $\kappa>\max(\omega,\cf\kappa)$.   Express $\kappa$ as
+$\sup_{\xi<\lambda}\kappa_{\xi}$ where $\kappa_{\xi}<\kappa$ for every
+$\xi<\lambda=\cf\kappa$.   Let $A\subseteq P$ be a set with cardinal
+$\kappa$ such that $A\not\subseteq\bigcup_{q\in D}\ocint{-\infty,q}$ for
+any countable set $D\subseteq P$.   Express $A$ as
+$\bigcup_{\xi<\lambda}A_{\xi}$ where $\#(A_{\xi})=\kappa_{\xi}$ for each
+$\xi<\lambda$.   For each $\xi<\lambda$, there is a countable set
+$D_{\xi}\subseteq P$ such that
+$A_{\xi}\subseteq\bigcup_{q\in D_{\xi}}\ocint{-\infty,q}$.   Set
+$B=\bigcup_{\xi<\lambda}D_{\xi}$;  then $\#(B)\le\lambda<\kappa$, so
+there is a countable set $D\subseteq P$ such that
+$B\subseteq\bigcup_{q\in D}\ocint{-\infty,q}$.   But now
+$A\subseteq\bigcup_{q\in D}\ocint{-\infty,q}$.\ \Bang
+
+\medskip
+
+{\bf (d)} By 512Gc, $(P,\le^{\strprime},[P]^{<\kappa})\prGT(P,\le,P)$.
+In the other direction, because $\kappa\le\add P$, we have a function
+$\psi:[P]^{<\kappa}\to P$ such that $I\subseteq\ocint{-\infty,\psi(I)}$
+for every $I\in[P]^{<\kappa}$;  so if we set $\phi(p)=p$ for $p\in P$,
+$(\phi,\psi)$ will be a Galois-Tukey connection from $(P,\le,P)$ to
+$(P,\le^{\strprime},[P]^{<\kappa})$, and
+$(P,\le,P)\prGT(P,\le^{\strprime},[P]^{<\kappa})$.
+
+Now if $\add P>\omega$,
+
+\Centerline{$\add_{\omega}P=\add(P,\le^{\strprime},[P]^{\le\omega})
+=\add(P,\le,P)=\add P$.}
+
+\medskip
+
+{\bf (e)} Use (a) with 512Db and 512Gb.
+
+\medskip
+
+{\bf (f)} Use (e) and 513Ed.
+
+\medskip
+
+{\bf (g)} Let $Q\subseteq P$ be a cofinal subset of $P$ with cardinal
+$\cf P$.   If $A\subseteq P$ is such that every member of $Q$ is
+dominated by a member of $A$, then $A$ also is cofinal, so
+$\#(A)\ge\kappa$;  thus $Q$ witnesses that
+$\add(P,\le^{\strprime},[P]^{<\kappa})\le\cf P$.   Putting
+$\kappa=\omega_1$
+we see that if $\cf P>\omega$ then $\add_{\omega}P\le\cf P$.
+
+\medskip
+
+{\bf (h)} \Quer\ If
+$\omega<\cf(\cf P)=\lambda<\add_{\omega}P$ let
+$Q\subseteq P$ be a cofinal set of size $\cf P$ and express $Q$ as
+$\bigcup_{\xi<\lambda}Q_{\xi}$ where $\#(Q_{\xi})<\cf P$ and
+$Q_{\xi}\subseteq Q_{\eta}$ whenever $\xi\le\eta<\lambda$.   For each
+$\xi<\lambda$, $Q_{\xi}$ cannot be cofinal with $P$, so there is a
+$p_{\xi}\in P$ such that $p_{\xi}\not\le q$ for any $q\in Q_{\xi}$.
+Now $A=\{p_{\xi}:\xi<\lambda\}$ has cardinal less than $\add_{\omega}P$,
+so there is a countable set $D\subseteq P$ such that
+$A\subseteq\bigcup_{r\in D}\ocint{-\infty,r}$.   For each $r\in D$ there
+is a $q_r\in Q$ such that $r\le q_r$;  let $\xi_r<\lambda$ be such that
+$q_r\in Q_{\xi_r}$.   Because $\lambda$ is uncountable and regular
+(being the cofinality of a cardinal), $\zeta=\sup_{r\in D}\xi_r$ is less
+than $\lambda$, and $q_r\in Q_{\zeta}$ for every $r\in D$.   But now
+there is an $r\in D$ such that $p_{\zeta}\le r\le q_r\in Q_{\zeta}$,
+contrary to the choice of $p_{\zeta}$.\ \Bang
+}%end of proof of 513I
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The point of (b) and (d) here is that there are
+significant cases in which $\add P<\omega_1<\add_{\omega}P$.
+}%end of comment
+
+\leader{*513J}{Cofinalities
+of \dvrocolon{products}}\dvAformerly{5{}11I}\cmmnt{ It is easy to find
+the additivity of a product of partially ordered sets (511Hg).
+Calculating the cofinality of a
+product of partially ordered sets is surprisingly difficult, and there
+are some extraordinary results in this area.   (See
+{\smc Burke \& Magidor 90};  there is a taster in 542J below.)
+Here I will give just one special fact which will be useful.
+
+\medskip
+
+\noindent}{\bf Proposition} Suppose that the generalized continuum
+hypothesis is true.    Let $\familyiI{P_i}$ be a family of
+non-empty partially ordered sets with product $P$.  Set
+
+\Centerline{$\kappa=\#(\{i:i\in I$, $\cf P_i>1\})$,
+\quad$\lambda=\sup_{i\in I}\cf P_i$.}
+
+\noindent Then
+
+(i) if $\kappa$ and $\lambda$ are both finite,
+$\cf P$ is the cardinal product $\prod_{i\in I}\cf P_i$;
+
+(ii) if $\lambda>\kappa$ and there is some $\gamma<\lambda$ such that
+$\cf\lambda>\#(\{i:i\in I$, $\cf P_i>\gamma\})$, then
+$\cf P=\lambda$;
+
+(iii) otherwise, $\cf P=\max(\kappa^+,\lambda^+)$.
+
+% all except (a) work for supported relations
+
+\proof{{\bf (a)} For each $i\in I$, let $Q_i\subseteq P_i$ be a cofinal
+set of size $\cf P_i$.   Then $Q=\prod_{i\in I}Q_i$ is cofinal with
+$P=\prod_{i\in I}P_i$, so $\cf P\le\#(Q)$.   If $\lambda<\omega$, then
+every $Q_i$ must be just the set of maximal elements of $P_i$, so $Q$ is
+the set of maximal elements of $P$, and $\cf P=\#(Q)$.   This deals with
+case (i).
+
+\medskip
+
+{\bf (b)} $\cf P>\kappa$.   \Prf\ Set $J=\{i:i\in I$, $\cf P_i>1\}$.
+If $\family{i}{J}{p_i}$ is any family in
+$P$, then we can choose $q\in P$ such that $q(i)\not\le p_i(i)$ for
+every $i\in J$;
+accordingly $\{p_i:i\in J\}$ cannot be cofinal with $P$.\ \QeD\  So if
+$\max(\omega,\lambda)\le\kappa$,
+
+$$\eqalignno{\cf P
+&\ge\kappa^+
+=2^{\kappa}\cr
+\displaycause{because we are assuming the generalized continuum
+hypothesis}
+&=2^{\max(\kappa,\lambda)}
+\ge\#(\Cal P\{(i,q):i\in J,\,q\in Q_i\})
+\ge\#(\prod_{i\in J}Q_i)
+=\#(Q)\cr
+\displaycause{because $\#(Q_i)=1$ for $i\in I\setminus J$}
+&\ge\cf P,\cr}$$
+
+\noindent and $\cf P=\kappa^+=\max(\kappa^+,\lambda^+)$, as required by
+(iii).
+
+\medskip
+
+{\bf (c)} Note that $\cf P\ge\lambda$, because if
+$R\subseteq P$ is cofinal with $P$ then $\{p(i):p\in R\}$ is cofinal
+with $P_i$ for each $i$.   So if $\kappa$ is finite and $\lambda$ is
+infinite,
+
+\Centerline{$\lambda\le\cf P\le\#(Q)
+\le\max(\omega,\sup_{i\in J}\#(Q_i))=\lambda$}
+
+\noindent and $\cf P=\lambda$, as required by (ii).
+
+\medskip
+
+{\bf (d)} If $\lambda$ is infinite and $\kappa<\cf\lambda$ then every
+function from $\kappa$ to
+$\lambda$ is bounded above in $\lambda$.   So
+
+$$\eqalignno{\lambda
+&\le\cf P\le\#(Q)\le\#(\lambda^{\kappa})\cr
+\displaycause{where $\lambda^{\kappa}$, for once, denotes the set of
+functions from $\kappa$ to $\lambda$}
+&=\#(\bigcup_{\zeta<\lambda}\zeta^{\kappa})
+\le\max(\omega,\lambda,\sup_{\zeta<\lambda}\#(\zeta^{\kappa}))
+\le\max(\omega,\lambda,\sup_{\zeta<\lambda}2^{\max(\zeta,\kappa)})
+=\lambda,\cr}$$
+
+\noindent again using GCH.   Thus in this case also we have
+$\cf P=\lambda$, as required by (ii).
+
+\medskip
+
+{\bf (e)} So we are left with the case in which
+$\cf\lambda=\theta\le\kappa<\lambda$.   Let
+$\ofamily{\eta}{\theta}{\lambda_{\eta}}$ be a family of cardinals less
+than $\lambda$ with supremum $\lambda$.
+
+\medskip
+
+\quad\grheada\ Suppose that we are in case (iii), that is,
+$\#(\{i:i\in I$, $\cf P_i>\gamma\})\ge\theta$ for every
+$\gamma<\lambda$.   Then $\cf P>\lambda$.   \Prf\ We can choose
+$\ofamily{\eta}{\theta}{i(\eta)}$ inductively in $I$ so that
+$\cf P_{i(\eta)}>\lambda_{\eta}$ and $i(\eta)\ne i(\xi)$ when
+$\xi<\eta<\theta$.   If $\ofamily{\xi}{\lambda}{p_{\xi}}$ is any family
+in $P$, we can find $q\in P$ such that
+$q(i(\eta))\not\le p_{\xi}(i(\eta))$ for any $\eta<\theta$ and
+$\xi<\lambda_{\eta}$, so that $q\not\le p_{\xi}$ for any $\xi<\lambda$.
+As $\ofamily{\xi}{\lambda}{p_{\xi}}$ is arbitrary, $\cf P>\lambda$.\
+\QeD\  Now
+
+\Centerline{$\cf P\le\#(Q)\le\#(\lambda^{\kappa})
+\le 2^{\max(\kappa,\lambda)}=\lambda^+\le\cf P$,}
+
+\noindent so $\cf P=\lambda^+=\max(\kappa^+,\lambda^+)$, as required.
+
+\medskip
+
+\quad\grheadb\  Otherwise, we are in case (ii), and there is a cardinal
+$\gamma<\lambda$ such that
+$\#(K)<\theta$, where $K=\{i:i\in I$, $\cf P_i>\gamma\}$.   Then
+$\sup_{i\in K}\cf P_i=\lambda$, so (d) tells us that
+$\cf(\prod_{i\in K}P_i)=\lambda$.   On the other hand,
+
+\Centerline{$\#(\prod_{i\in I\setminus K}\cf P_i)
+\le 2^{\max(\gamma,\kappa)}\le\lambda$.}
+
+\noindent Since we can identify $P$ with the product of
+$\prod_{i\in K}P_i$ and $\prod_{i\in I\setminus K}P_i$,
+$\cf P\le\#(\lambda\times\lambda)=\lambda$.   But we noted in
+(c) that $\cf P\ge\lambda$, so $\cf P=\lambda$, as required.
+This completes the proof.
+}%end of proof of 513J
+
+\leader{*513K}{}\dvAformerly{5{}13J}\cmmnt{ I remarked in the notes to
+\S512 that
+Galois-Tukey correspondences are not required to have any special
+properties, and of course the same is true of Tukey functions.   But it
+is also the case that the `natural' Tukey functions arising in Chapter
+52 can in many cases be derived from Borel functions between Polish
+spaces.   I now present some ideas taken from {\smc Solecki \&
+Todor\v{c}evi\'c 04} which may be regarded as a partial explanation of
+the phenomenon.
+
+\medskip
+
+\noindent}{\bf Definition} I will say that a {\bf metrizably compactly
+based directed set} is a partially ordered set $P$ endowed with a
+metrizable topology such that
+
+(i) $p\vee q=\sup\{p,q\}$ is defined for all $p$, $q\in P$, and
+$\vee:P\times P\to P$ is continuous;
+
+(ii) $\{p:p\le q\}$ is compact for every $q\in P$;
+
+(iii) every convergent sequence in $P$ has a subsequence which is bounded
+above.
+
+\noindent In this context, I will say that $P$ is `separable' or
+`analytic' if it is separable, or analytic, in the topological sense.
+
+\cmmnt{I leave it to you to check that many significant partially
+ordered sets are compactly based in the sense defined here
+(513Xj-513Xn, %513Xj 513Xk 513Xl 513Xm 513Xn
+513Yg).
+}%end of comment
+
+\leader{*513L}{Proposition}\dvAformerly{5{}13K} Let $P$ be a metrizably
+compactly based directed set.
+
+(a) The ordering of $P$ is a closed subset of $P\times P$.
+
+(b) $P$ is Dedekind complete.
+
+(c)(i) A non-decreasing sequence in $P$ has an upper bound iff it is
+topologically convergent, and in this case its supremum is its limit.
+
+\quad(ii) A non-increasing sequence in $P$ converges topologically
+to its infimum.
+
+(d) If $p\in P$ and $\sequence{i}{p_i}$ is a sequence in $P$, then
+$\sequence{i}{p_i}$ is topologically convergent to $p$ iff for every
+$I\in[\Bbb N]^{\omega}$ there is a $J\in[I]^{\omega}$ such that
+$p=\inf_{n\in\Bbb N}\sup_{i\in J\setminus n}p_i$.
+
+(e) Suppose that $p\in P$ and a double sequence
+$\langle p_{ni}\rangle_{n,i\in\Bbb N}$ in $P$ are such that
+$\lim_{i\to\infty}p_{ni}=p_n$ is defined in $P$ and less than or equal
+to $p$ for each $n$.   Then there is a $q\in P$ such that
+$\{i:p_{ni}\le q\}$ is infinite for every $n\in\Bbb N$.
+
+\proof{ Let $\rho$ be a metric on $P$ inducing its topology.
+
+\medskip
+
+{\bf (a)} We have only to observe that
+$\{(p,q):p\le q\}=\{(p,q):p\vee q=q\}$.
+
+\medskip
+
+{\bf (b)} Suppose that $A\subseteq P$ is non-empty and bounded above.
+Let $B$ be the set of upper bounds of $A$.   Then
+$\Cal E=\{[p,q]:p\in A$, $q\in B\}$ is a non-empty family of compact
+sets with the finite intersection property, because any non-empty finite
+subset of $A$ has a least upper bound.   So there is a
+$q_0\in\bigcap\Cal E$ and now $q_0$ must be the supremum of $A$.
+
+\medskip
+
+{\bf (c)(i)} Suppose that $\sequence{i}{p_i}$ is a non-decreasing
+sequence in $P$.   ($\alpha$) If it has a topological limit $p$, then
+
+\Centerline{$p\vee p_j=\lim_{i\to\infty}p_i\vee p_j
+=\lim_{i\to\infty}p_i=p$}
+
+\noindent for each $j$, so $p$ is an upper bound for
+$\{p_i:i\in\Bbb N\}$;  while if $q$ is an upper bound for
+$\{p_i:i\in\Bbb N\}$ then $p\le q$ by (a).   Thus
+$p=\sup_{i\in\Bbb N}p_i$.   ($\beta$) If $\{p_i:i\in\Bbb N\}$ is bounded
+above, then it has a least upper bound $p$, by (b).   Now
+$\ocint{-\infty,p}$ is compact, therefore sequentially compact, and
+every subsequence of $\sequence{i}{p_i}$ has a convergent
+sub-subsequence;  by ($\alpha$), the limit of this sub-subsequence is
+always its supremum, which must be $p$;  so $\sequence{i}{p_i}$ itself
+converges to $p$.
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $\sequence{i}{p_i}$ is a non-increasing
+sequence in $P$.   Then it lies in the compact set $\ocint{-\infty,p_0}$
+so has a convergent subsequence $\sequence{i}{p'_i}$ with limit $p$ say.
+As in (i) just above,
+
+\Centerline{$p\vee p'_j=\lim_{i\to\infty}p'_i\vee p'_j
+=\lim_{i\to\infty}p'_j=p'_j$}
+
+\noindent for each $j$, so $p$ is a lower bound for
+$\{p'_i:i\in\Bbb N\}$;  while if $q$ is a lower bound for
+$\{p'_i:i\in\Bbb N\}$ then $q\le p$ by (a).   Thus
+$p=\inf_{i\in\Bbb N}p'_i=\inf_{i\in\Bbb N}p_i$.   What this shows is
+that $\inf_{i\in\Bbb N}p_i$ is the only cluster point of
+$\sequence{i}{p_i}$ and is therefore its topological limit.
+
+\medskip
+
+{\bf (d)(i)} Suppose that $p=\lim_{i\to\infty}p_i$.
+Note first that if $q\in P$ then
+
+\Centerline{$\limsup_{i\to\infty}\rho(q\vee p_i,p)
+\le\lim_{i\to\infty}\rho(q\vee p_i,q\vee p)+\rho(q\vee p,p)
+=\rho(q\vee p,p)$,}
+
+\Centerline{$\limsup_{i\to\infty}\rho(p\vee q\vee p_i,p)
+\le\rho((p\vee q)\vee p,p)=\rho(q\vee p,p)$}
+
+\noindent because $\vee$ is continuous.   Now let $I\subseteq\Bbb N$ be
+infinite.   By 513K(iii), there is an infinite $I'\subseteq I$ such that
+$\{p_i:i\in I'\}$ is bounded above.
+We can choose inductively a strictly increasing
+sequence $\sequencen{i_n}$ in $I'$ such that
+
+\Centerline{$\rho(\sup_{j\le n\le k}p_{i_n},p)<2^{-j}$,
+\quad$\rho(p\vee\sup_{j\le n\le k}p_{i_n},p)<2^{-j}$}
+
+\noindent whenever $j\le k$ in $\Bbb N$.   Set $J=\{i_n:n\in\Bbb N\}$;
+then $\rho(\sup_{j\in J,m\le j\le k}p_j,p)<2^{-m}$ whenever
+$m\le k\in\Bbb N$ and $[m,k]$ meets $J$.   For each $m$,
+$q_m=\sup_{j\in J\setminus m}p_j$ is
+defined in $P$, by (b) above;  moreover, (c-i) tells us that
+$q_m=\lim_{k\to\infty}\sup_{j\in J,m\le j\le k}p_j$ so
+
+\Centerline{$\rho(q_m,p)
+=\lim_{k\to\infty}\rho(\sup_{j\in J,m\le j\le k}p_j,p)\le 2^{-m}$.}
+
+\noindent But this means that $p$ is the topological limit of the
+non-increasing sequence $\sequence{m}{q_m}$ and must be
+$\inf_{m\in\Bbb N}q_m$.  Thus $\sequence{i}{p_i}$ satisfies the
+condition proposed.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that for every $I\in[\Bbb N]^{\omega}$ there
+is a $J\in[I]^{\omega}$ such that
+$p=\inf_{n\in\Bbb N}\sup_{i\in J\setminus n}p_i$.
+Then any convergent subsequence of $\sequence{i}{p_i}$ has limit $p$.
+\Prf\ Suppose the subsequence is $\sequencen{p_{i_n}}$ where
+$\sequencen{i_n}$ is strictly increasing.   Set $I=\{i_n:n\in\Bbb N\}$.
+Then we must have an infinite $J\subseteq\Bbb N$ such that
+$p=\inf_{m\in\Bbb N}\sup_{k\in J\setminus m}p_{i_k}$.   Now (i) tells us
+that we also have an infinite $K\subseteq J$ such that the limit $p'$ of
+$\sequence{n}{p_{i_n}}$ is
+$\inf_{m\in\Bbb N}\sup_{k\in K\setminus m}p_{i_k}$.   Since
+$\sup_{k\in K\setminus m}p_{i_k}\le\sup_{k\in J\setminus m}p_{i_k}$ for
+every $m$, $p'\le p$.   On the other hand, we also have an infinite
+$L\subseteq K$ such that
+$p=\inf_{m\in\Bbb N}\sup_{k\in L\setminus m}p_{i_k}$;  so that
+$p\le p'$ and $p=p'$.\ \Qed
+
+Since the condition tells us also that every subsequence of
+$\sequence{i}{p_i}$ has a sub-subsequence which is bounded above, and
+therefore has a convergent sub-sub-subsequence, $p$ is
+actually the limit of $\sequence{i}{p_i}$.
+
+\medskip
+
+{\bf (e)} Note first that if $\sequence{i}{q_i}$ is a sequence in $P$
+converging to $q^*\in P$, and $\epsilon>0$, there is a $q'\in P$ such
+that $\rho(q',q^*)\le\epsilon$ and $\{i:q_i\le q'\}$ is infinite.
+\Prf\  By (d), there is an infinite $J\subseteq\Bbb N$ such that
+$q^*=\inf_{n\in\Bbb N}\sup_{i\in J\setminus n}q_i$;  by (c-ii), we can
+take $q'=\sup_{i\in J\setminus n}q_i$ for some $n$.\ \Qed
+
+For $m$, $i\in\Bbb N$, set $q_{mi}=p\vee\sup_{n\le m}p_{ni}$.
+Then $\lim_{i\to\infty}q_{mi}=p\vee\sup_{n\le m}p_n=p$ for each
+$m$.   We can therefore find, for each $m\in\Bbb N$, a $q_m\in P$ such
+that $\rho(q_m,p)\le 2^{-m}$ and $\{i:q_{mi}\le q_m\}$ is infinite.   As
+$\sequence{m}{q_m}\to p$, there is a
+$q\in P$ such that $\{m:q_m\le q\}$ is infinite.   Now, for any
+$n\in\Bbb N$, there is an $m\ge n$ such that $q_m\le q$, so that
+
+\Centerline{$\{i:p_{ni}\le q\}\supseteq\{i:q_{mi}\le q_m\}$}
+
+\noindent is infinite.
+}%end of proof of 513L
+
+\leader{*513M}{Proposition}\dvAformerly{5{}13L} Let $P$ be a separable
+metrizably compactly based directed set, and give the set
+$\Cal C$ of closed subsets of $P$ its Vietoris topology.
+Let $\Cal K_b\subseteq\Cal C$ be the family of non-empty compact subsets
+of $P$ which are bounded above in $P$.   Then
+$K\mapsto\sup K:\Cal K_b\to P$ is Borel measurable.
+
+\proof{ Writing $\Cal K$ for the family of non-empty compact subsets of
+$P$, we have a sequence $\sequencen{f_n}$ of Borel measurable functions
+from $\Cal K$ to $P$ such that $K=\overline{\{f_n(K):n\in\Bbb N\}}$ for
+every $K\in\Cal K$ (5A4Dc).
+Set $g_n(K)=\sup_{i\le n}f_i(K)$ for each
+$K\in\Cal K$ and $n\in\Bbb N$;   because $P$ is separable, every
+$g_n$ is Borel measurable (put 418Bd and 418Ac together).   For
+$K\in\Cal K_b$, $\sequencen{g_n(K)}$ is a non-decreasing bounded
+sequence, so converges to $g(K)\in P$, by 513L(c-i);  now
+$g:\Cal K_b\to P$ is Borel measurable (418Ba).   Since
+$\{q:q\le g(K)\}$ is a closed set including $\{f_i(K):i\in\Bbb N\}$, it
+includes $K$, and $g(K)$ is an upper bound for $K$;  because
+$g(K)=\sup_{i\in\Bbb N}f_i(K)$, $g(K)=\sup K$.   So we have the result.
+}%end of proof of 513M
+
+\leader{*513N}{Lemma}\dvAformerly{5{}13M} Let $P$ and $Q$ be non-empty
+metrizably compactly based directed sets
+of which $P$ is separable, and $\phi:P\to Q$ a Tukey function.   Set
+
+\Centerline{$R=\overline{\{(q,p):p\in P,\,q\in Q,\,\phi(p)\le q\}}$.}
+
+\noindent Then
+
+(a) $R[\,\ocint{-\infty,q}\,]$ is bounded above in $P$ for every
+$q\in Q$;
+
+(b) $R\subseteq Q\times P$ is usco-compact.
+
+\proof{{\bf (a)} Because $P$ is non-empty, we need consider only the case
+in which $R[\,\ocint{-\infty,q}\,]$ is non-empty.
+Let $\sequencen{p_n}$ be a sequence running over a
+dense subset of $R[\,\ocint{-\infty,q}\,]$.   For each $n\in\Bbb N$ we
+have sequences $\sequence{i}{p_{ni}}$ in $P$ and $\sequencen{q_{ni}}$ in
+$Q$ such that $\phi(p_{ni})\le q_{ni}$, $\lim_{i\to\infty}p_{ni}=p_n$
+and $\lim_{i\to\infty}q_{ni}=q_n\le q$.   By 513Le, there is a $q'\in Q$
+such that $I_n=\{i:q_{ni}\le q'\}$ is infinite for every $n\in\Bbb N$.
+Because $\phi$ is a Tukey function, there is a $p'\in P$ such that
+$p_{ni}\le p'$ whenever $n\in\Bbb N$ and $i\in I_n$.   But now
+$\{p:p\le p'\}$ is closed, so it contains every $p_n$ and $p'$ is an upper
+bound for $R[\,\ocint{-\infty,q}\,]$.
+
+\medskip
+
+{\bf (b)} In particular, for any $q\in Q$, $R[\{q\}]$ is bounded above
+in $P$, therefore relatively compact;  since $R$ is closed, every
+$R[\{q\}]$ is closed and therefore compact.   Now suppose that
+$F\subseteq P$ is closed and that $\sequencen{q_n}$ is a sequence in
+$R^{-1}[F]$ converging to $q\in Q$.   Then there is a $q^*\in Q$ such
+that $J=\{n:q_n\le q^*\}$ is infinite.   For $n\in J$, let $p_n\in F$ be
+such that $(q_n,p_n)\in R$.   Then $\{p_n:n\in J\}$ is included in the
+order-bounded set $R^{-1}[\,\ocint{-\infty,q^*}\,]$, so is relatively
+compact, and $\sequencen{p_n}$ has a cluster point $p$ say.   Of course
+$p\in F$;  also $(q,p)$ is a cluster point of $\sequencen{(q_n,p_n)}$,
+so belongs to $\overline{R}=R$, and $q\in R^{-1}[F]$.   As $q$ is
+arbitrary, $R^{-1}[F]$ is closed;  as $F$ is arbitrary, $R$ is
+usco-compact.
+}%end of proof of 513N
+
+\leader{*513O}{Theorem}\dvAformerly{5{}13N}\cmmnt{ ({\smc Solecki \&
+Todor\v{c}evi\'c
+04})} Let $P$ and $Q$ be metrizably compactly based directed sets such
+that $P\prT Q$.   Let $\Sigma$ be the $\sigma$-algebra of subsets of $P$
+generated by the Souslin-F sets.
+
+(a) If $P$ is separable, there is a Borel measurable dual Tukey function
+$\psi:Q\to P$.
+
+(b) If $P$ is separable and $Q$ is analytic,
+there is a $\Sigma$-measurable Tukey function $\phi:P\to Q$.
+
+\proof{ If either $P$ or $Q$ is empty, so is the other, and the result
+is trivial;  suppose that they are non-empty.
+
+\medskip
+
+{\bf (a)} Let $\phi_0:P\to Q$ be a Tukey function, and set
+$R=\overline{\{(q,p):p\in P,\,q\in Q,\,\phi_0(p)\le q\}}$, so that $R$
+is usco-compact (513N).
+Let $\Cal C$ be the set of closed subsets of $P$ with its Vietoris
+topology;  then $q\mapsto R[\{q\}]$ is Borel measurable (5A4Db).   Since
+$\emptyset$ is an isolated point of $\Cal C$,
+$Q_0=\{y:R[\{y\}]\ne\emptyset\}$ is a Borel set in $Q$.   If $q\in Q_0$,
+then $R[\{q\}]$ is a non-empty compact subset of $P$ which is bounded
+above (513Na), so 513M tells us that $q\mapsto\sup R[\{q\}]:Q_0\to P$ is
+Borel measurable.   Fix any $p_0\in P$ and set $\psi(q)=\sup R[\{q\}]$
+if $q\in Q_0$, $p_0$ if $q\in Q\setminus Q_0$.   Then $\psi$ is Borel
+measurable.   If $p\in P$, $q\in Q$ and $\phi_0(p)\le q$, then
+$(q,p)\in R$, $p\in R[\{q\}]$ and $p\le\psi(q)$;  thus $(\phi_0,\psi)$
+is a Galois-Tukey connection and $\psi$ is a dual Tukey function.
+
+\medskip
+
+{\bf (b)} $R\subseteq Q\times P$ is a closed set (422Da) and $R[Q]=P$.
+Because $P$ and $Q$ are separable and metrizable, $R$ can be obtained by
+Souslin's operation from products of closed sets.
+By the von Neumann-Jankow selection theorem (423M), there is a
+$\Sigma$-measurable $\phi:P\to Q$ such that $(\phi(p),p)\in R$ for every
+$p\in P$.   If $q\in Q$, then
+$\{p:\phi(p)\le q\}\subseteq R[\,\ocint{-\infty,q}\,]$ is bounded above
+in $P$, so $\phi$ is a Tukey function.
+}%end of proof of 513O
+
+\leader{513P}{}\dvAformerly{5{}13O}\cmmnt{ The last result in this
+section is entirely
+unconnected with the rest, and is a standard trick;  but it will be useful
+later and contains an implicit challenge (513Yj).
+
+\medskip
+
+\noindent}{\bf Lemma} Let $P$ and $Q$ be
+non-empty partially ordered sets, and
+suppose that (i) every non-decreasing sequence in $P$ has an upper bound in
+$P$ (ii) there is no strictly increasing family
+$\ofamily{\xi}{\omega_1}{q_{\xi}}$ in $Q$.   Let $f:P\to Q$ be an
+order-preserving function.   Then there is a $p\in P$ such that
+$f(p')=f(p)$ whenever $p'\in P$ and $p'\ge p$.
+
+\proof{ \Quer\ Otherwise, we can choose $\ofamily{\xi}{\omega_1}{p_{\xi}}$
+inductively so that
+
+\inset{$p_0\in P$,
+
+$p_{\xi+1}\ge p_{\xi}$ and $f(p_{\xi+1})>f(p_{\xi})$ for every
+$\xi<\omega_1$,
+
+$p_{\xi}$ is an upper bound for $\{p_{\eta}:\eta<\xi\}$ for
+every non-zero limit ordinal $\xi<\omega_1$.}
+
+\noindent But now $\ofamily{\xi}{\omega_1}{f(p_{\xi})}$ is strictly
+increasing, which is impossible.\ \Bang
+}%end of proof of 513P
+
+\exercises{\leader{513X}{Basic exercises (a)}
+%\spheader 513Xa
+Let $P$ be a partially ordered set, and $\Cal A$ the
+family of subsets of $P$ which are not cofinal with $P$.   Show that
+$(\Cal A,\not\ni,P)\prGT(P,\le,P)$.   Explain the relation of this fact to
+511Xj, 513C(a-ii) and 513Xb.
+%513C
+
+\spheader 513Xb Let $P$ be a partially ordered set such that
+$\bu P\ge\omega$.   Show that $\cf(\bu P)\ge\add P$.
+%513C
+
+\spheader 513Xc
+Let $P$, $Q$ and $R$ be partially ordered sets.   (i)
+Show that if $\phi_1:P\to Q$ and $\phi_2:Q\to R$ are Tukey functions,
+then $\phi_2\phi_1:P\to R$ is a Tukey function.
+(ii) Show that if $\psi_1:P\to Q$ and $\psi_2:Q\to R$ are dual Tukey
+functions, then $\psi_2\psi_1:P\to R$ is a dual Tukey function.
+%513D
+
+\spheader 513Xd Let $P$ and $Q$ be partially ordered sets, and
+$g:Q\to P$ a function.   Show that $g$ is a dual Tukey function iff for
+every $p_0\in P$ there is a $q_0\in Q$ such that $g(q)\ge p_0$ for every
+$q\ge q_0$.
+%513D
+
+\spheader 513Xe(i) Show that if $P$, $Q$ are partially ordered sets,
+$P$ is Dedekind complete and $P\prT Q$, there is an order-preserving
+dual Tukey function from $Q$ to $P$.
+(ii) Set $P=[\{0,1,2\}]^{\le 2}$ and $Q=[\{0,1,2\}]^2$.   Show
+that there is no order-preserving Tukey function from $P$ to $Q$.
+%513E
+
+\spheader 513Xf Suppose that $P$ is a partially ordered set and
+$\add P=\cf P=\kappa\ge\omega$.    Show that $P\equivT\kappa$.
+%513E
+
+\spheader 513Xg Prove (a)-(d) of 513G directly, without mentioning Tukey
+functions or Galois-Tukey connections.
+%513G
+
+\sqheader 513Xh(i) Show that if $P$ and $Q$ are two partially ordered
+sets such that $\sat^{\uparrow}(P)=\#(P)^+=\#(Q)^+=\sat^{\uparrow}(Q)$
+then $P$ and $Q$ are Tukey equivalent.   \Hint{if $B\subseteq Q$ is an
+up-antichain, any injective function $\phi:P\to B$ is a Tukey function
+from $P$ to $Q$.}   (ii) Give an example of such a pair $P$, $Q$ such
+that $\frak m(P)\ne\frak m(Q)$ and $\bu P\ne\bu Q$.
+%513G
+
+\spheader 513Xi Let $P$, $Q_1$, $Q_2$ be partially ordered sets such
+that $(P,\le,P)\prGT(Q_1,\le,Q_1)\ltimes(Q_2,\le\nobreak,Q_2)$ (definition:
+512I).   Show that
+$\add_{\omega}P\ge\min(\add_{\omega}Q_1,\add_{\omega}Q_2)$.
+%513H
+
+\spheader 513Xj Show that $\BbbN^{\Bbb N}$, with its usual ordering and
+topology, is a metrizably compactly based directed set.
+%513K
+
+\spheader 513Xk Let $X$ be a set, $1\le p<\infty$ and $P$ the positive cone
+$(\ell^p(X))^+$ of the Banach lattice $\ell^p(X)$, with the topology
+induced by the norm of $\ell^p(X)$.   Show that $P$ is a metrizably
+compactly based directed set.
+%513K
+
+\spheader 513Xl Let $\Cal Z$ be the ideal of subsets of $\Bbb N$ with
+asymptotic density zero, with its natural ordering and the topology
+induced by the metric
+$(a,b)\mapsto\sup_{n\ge 1}\Bover1n\#((a\Bsymmdiff b)\cap n)$.   Show
+that $\Cal Z$ is a metrizably compactly based directed set.
+%513K
+
+\spheader 513Xm Let $X$ be a metrizable space, and
+$\Cal F$ the set of nowhere dense compact subsets of $X$.   Show that
+$\Cal F$, with its natural ordering and its Vietoris topology, is a
+metrizably compactly based directed set.   \Hint{use a Hausdorff metric.}
+%513K
+
+\spheader 513Xn Let $X$ be a metrizable space, $\Cal K$ the family
+of compact subsets of $X$, and $\Cal I$ a $\sigma$-ideal of subsets of
+$X$.   Show that $\Cal K\cap\Cal I$, with the natural partial order and
+the Vietoris topology, is a metrizably compactly based directed set.
+%513K
+
+\spheader 513Xo Let $\familyiI{P_i}$ be a countable family of metrizably
+compactly based directed sets, with product $P$.
+Show that $P$ is metrizably compactly based.
+%513K
+
+\spheader 513Xp Let $P$ be a metrizably compactly based directed set.
+(i) Show that $P$ is a lattice iff it has a least element.   (ii) Show
+that if we adjoin a least element $-\infty$ to $P$ as an isolated point,
+$P\cup\{-\infty\}$ is a metrizably compactly based directed set.
+%513L
+
+\spheader 513Xq\dvAnew{2014}
+Let $\familyiI{P_i}$ be a family of partially ordered
+sets, and $P$ their product.
+(i) Show that $\cf P$ is at most the cardinal
+product $\prod_{i\in I}\cf P_i$, with equality if $I$ is finite.
+(ii) Show that if $P\ne\emptyset$ then $\sup_{i\in I}\cf P_i\le\cf P$.
+(iii) Show that if $P\ne\emptyset$ and for every $i\in I$ there is a
+$j\in I$ such that $\cf P_i<\cf P_j$, then $\sup_{i\in I}\cf P_i<\cf P$.
+%513J out of order query
+
+\leader{513Y}{Further exercises (a)}
+%\spheader 513Ya
+Show that for a cardinal $\kappa$, there is a partially ordered set $P$
+such that $c^{\uparrow}(P)=\sat^{\uparrow}(P)=\kappa$ iff $\kappa$ is 
+weakly inaccessible.   \Hint{for such a $\kappa$, take $X$ to be a product of
+discrete spaces, one of each cardinality less than $\kappa$, and
+$P$ the family of proper closed subsets of $X$.}
+%513B
+
+\spheader 513Yb Show that for any cardinal $\kappa>0$ there is a
+supported relation $(A,R,B)$ such that $\sat(A,R,B)=\kappa$.
+%513B
+
+\spheader 513Yc For a non-empty upwards-directed set $P$, a topological
+space $X$ and $A\subseteq X$, write $\text{cl}_{P}(A)$ for the set of
+points $x\in X$ for which there is a function $f:P\to A$ such that
+$x\in\overline{f[C]}$ for every cofinal set $C\subseteq P$;
+equivalently, $f[[\Cal F^{\uparrow}(P)]]\to x$, where
+$\Cal F^{\uparrow}(P)$ is the filter on $P$ generated by sets of the
+form $\coint{p,\infty}$ as $p$ runs over $P$.   Now let $P$ and $Q$ be
+upwards-directed sets.   Show that $P\prT Q$ iff
+$\text{cl}_P(A)\subseteq\text{cl}_Q(A)$ for any subset $A$ of any
+topological space.
+%513D
+
+\spheader 513Yd For partially ordered sets $P$ and $Q$, say that
+$P\approx Q$ if there is a partially ordered set $R$ into which both $P$
+and $Q$ can be embedded as cofinal subsets.
+(i) Show that $P\approx Q$ iff there is a Galois-Tukey connection
+$(\phi,\psi)$ from $(P,\le,P)$ to $(Q,\le,Q)$ such that $(\psi,\phi)$
+is a Galois-Tukey connection from $(Q,\le,Q)$ to $(P,\le,P)$.
+(ii) Show that if $P$, $R$ and
+$R'$ are partially ordered sets such that $P$ can be embedded as a cofinal
+subset into both $R$ and $R'$, then $R\approx R'$.   (iii) Show that
+$\approx$ is an equivalence relation on the class of partially ordered
+sets.   (iv) Show that if $\Cal P$ is a set of partially ordered sets,
+and $P\approx P'$ for all $P$, $P'\in\Cal P$, then there is a partially
+ordered set $R$ such that every member of $\Cal P$ can be embedded into $R$
+as a cofinal set.   (v) Give an example of partially ordered sets $P$
+and $Q$ such that $P\equivT Q$ but $P\not\approx Q$.
+%513F mt51bits "co-cofinal sets"
+
+\spheader 513Ye For a cardinal $\kappa$ and a supported relation
+$(A,R,B)$ set
+$\add_{<\kappa}(A,R,B)=\add(A,R^{\strprime},[B]^{<\kappa})$.   Which of
+the ideas of 513I can be extended to the general context?
+%513H
+
+\spheader 513Yf\dvAformerly{5{}12Yb}
+Show that there are two families
+$\familyiI{(A_i,R_i,B_i)}$ and
+$\familyiI{(C_i,S_i,D_i)}$ of supported relations, with simple products
+$(A,R,B)$ and $(C,S,D)$ respectively, such that
+$\cov(A_i,R_i,B_i)=\cov(C_i,S_i,D_i)$ for each $i$, but
+$\cov(A,R,B)\ne\cov(C,S,D)$.   \Hint{examine the proof of 513J.}
+%512H 513J mt51bits query out of order
+
+\spheader 513Yg Let $X$ be a set and $U$ a solid linear subspace of
+$\BbbR^X$ with an order-continuous norm under which it is a Banach
+lattice.   Show that its positive cone, with its norm topology, is a
+metrizably compactly based directed set.
+%513Xk 513K
+
+\spheader 513Yh Explore possible definitions of `compactly based'
+partially ordered set which do not require the topology to be
+metrizable.
+%513L
+
+\spheader 513Yi Let $P$ be an analytic metrizably compactly based
+directed set.
+Show that $P$ is Polish.   \Hint{{\smc Solecki \& Todor\v{c}evi\'c
+04}.} %Theorem 4.1 show G_{\delta} in completion
+%513O
+
+\spheader 513Yj For partially ordered sets $P$ and $Q$, say that
+$Q\maltese P$ if for every order-preserving $f:P\to Q$ there is a
+$p\in P$ such that $f(p')=f(p)$ for every $p'\ge p$.   Explore the
+properties of the relation $\maltese$.
+%513P
+
+}%end of exercises
+
+\endnotes{
+\Notesheader{513} Most of the first part of this section consists of
+elementary verifications;  an exception is the Erd\H{o}s-Tarski theorem
+on the cellularity and saturation of a partially ordered set
+(513Bb-513Bc), which can equally well be regarded as a theorem about
+topological spaces or Boolean algebras (see 514Da and 514Nc).   As usual,
+I have presented the ideas of the last two sections in an ahistorical
+manner;  the original objective of {\smc Tukey 40} was to classify
+directed sets from the point of view of net-convergence (513Yc).
+
+I have starred 513K-513O %513K 513L 513M 513N 513O
+because I do not expect to rely on them in the rest of this work.
+Nevertheless I think that they give a useful support to the ideas here,
+particularly in the context of \S526, where these `compactly based'
+partial orders appear naturally.   Note that 513Ld tells us that if a
+directed set $P$ is metrizably compactly based, there is a unique
+witnessing topology;  every topological property of $P$ must be a
+reflection of a property of the ordering.
+}%end of notes
+
+\discrpage
+
+

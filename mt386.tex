@@ -1,0 +1,1135 @@
+\frfilename{mt386.tex}
+\versiondate{17.11.03}
+\copyrightdate{2003}
+     
+\def\barln{\mathop{\bar{\text{ln}}}}
+     
+\def\chaptername{Automorphisms}
+\def\sectionname{More about entropy}
+     
+\newsection{386}
+     
+In preparation for the next two sections, I present a number of basic
+facts concerning measure-preserving homomorphisms and entropy.
+Compared with the work to follow, they are mostly fairly elementary, but
+the Halmos-Rokhlin-Kakutani lemma (386C) and the
+Shannon-McMillan-Breiman
+theorem (386E), in their full strengths, go farther than one might
+expect.
+     
+\leader{386A}{}\cmmnt{ %3{8}5D
+I start by returning to the notion of `recurrence' from
+381L-381P, %381L 381M 381N 381P
+in its original home.
+     
+\medskip
+     
+\noindent}{\bf Theorem} Let $(\frak A,\bar\mu)$ be a totally finite
+measure algebra and $\pi:\frak A\to\frak A$ a measure-preserving
+Boolean homomorphism.   Then $\pi$ is recurrent on every $a\in\frak A$.
+     
+\proof{ If $a\in\frak A$ is non-zero, then
+$\sum_{k=0}^{\infty}\bar\mu(\pi^ka)=\infty>\mu 1$, so there are $i<j$ such that $0\ne\pi^ia\Bcap\pi^ja=\pi^i(a\Bcap\pi^{j-i}a)$ and
+$a\Bcap\pi^{j-i}a\ne 0$.   Thus (ii) of 381O is satisfied;  by 381O,
+$\pi$ is recurrent on every $a\in\frak A$.
+}%end of proof of 386A
+     
+\leader{386B}{Corollary} %3{8}5D
+Let $(\frak A,\bar\mu)$ be a totally finite measure algebra and
+$\pi:\frak A\to\frak A$ a measure-preserving Boolean homomorphism.   Let
+$\frak C$ be its fixed-point subalgebra $\{c:c\in\frak A$, $\pi c=c\}$.
+Then
+     
+\Centerline{$\sup_{k\ge n}\pi^ka=\upr(a,\frak C)
+\cmmnt{\mskip5mu=\inf\{c:a\Bsubseteq c\in\frak C\}\in\frak C}$}
+     
+\noindent for any $a\in\frak A$ and $n\in\Bbb N$.
+     
+\proof{ By 386A and 381O, $a\Bsubseteq\sup_{k\ge 1}\pi^ka$.   Set
+$a^*=\sup_{k\in\Bbb N}\pi^ka$;  by 381Kb, $a^*=\sup_{k\ge n}\pi^ka$ for
+every $n$;  by 381Ka, $a^*\in\frak C$.   Also, of course,
+$a^*\Bsubseteq c$ whenever $a\Bsubseteq c\in\frak C$, so
+$a^*=\upr(a,\frak C)$.
+}%end of proof of 386B
+     
+\leader{386C}{The Halmos-Rokhlin-Kakutani lemma} Let %3{8}5E
+$(\frak A,\bar\mu)$
+be a totally finite measure algebra and $\pi:\frak A\to\frak A$ a
+measure-preserving Boolean homomorphism, with fixed-point subalgebra
+$\frak C$.   Then the following are equiveridical:
+     
+(i) $\pi$ is aperiodic;
+     
+(ii) $\frak A$ is relatively atomless over
+$\frak C$\cmmnt{ (definition: 331A)};
+     
+(iii) whenever $n\ge 1$ and $0\le\gamma<\bover1n$
+there is an $a\in\frak A$ such
+that $a$, $\pi a$, $\pi^2a,\ldots,\pi^{n-1}a$ are disjoint and
+$\bar\mu(a\Bcap c)=\gamma\bar\mu c$ for every $c\in\frak C$;
+     
+(iv) whenever $n\ge 1$, $0\le\gamma<\bover1n$ and $B\subseteq\frak A$ is
+finite, there is an $a\in\frak A$ such
+that $a$, $\pi a$, $\pi^2a,\ldots,\pi^{n-1}a$ are disjoint and
+$\bar\mu(a\Bcap b)=\gamma\bar\mu b$ for every $b\in B$.
+     
+\proof{ Note that $\frak C$ is (order-\nobreak)closed because $\pi$
+is (order-\nobreak)continuous (324Kb).
+     
+\medskip
+     
+{\bf (i)$\Rightarrow$(ii)} Put 386A and 381P together.
+     
+\medskip
+     
+{\bf (ii)$\Rightarrow$(iii)} Set $\delta=\bover1n(\bover1n-\gamma)>0$.
+By 331B, there is a $d\in\frak A$ such that
+$\bar\mu(c\Bcap d)=\delta\bar\mu c$ for
+every $c\in\frak C$.   Set $d_k=\pi^kd\Bsetminus\sup_{i<k}\pi^id$ for
+$k\in\Bbb N$.   Note that
+     
+\Centerline{$d_{j+k}=\pi^{j+k}d\Bsetminus\sup_{i<j+k}\pi^id
+\Bsubseteq\pi^{j+k}d\Bsetminus\sup_{i<k}\pi^{j+i}d
+=\pi^jd_k$}
+     
+\noindent whenever $j$, $k\in\Bbb N$.   Next,
+$\pi^id_j\Bcap d_k\Bsubseteq\sup_{m\le i}d_m$ for any $i$, $j$,
+$k\in\Bbb N$ such that
+$i+j\ne k$.   \Prf\ ($\alpha$)
+If $k\le i$ this is obvious.   ($\beta$) If $i<k<i+j$ then
+     
+\Centerline{$\pi^id_j\Bcap d_k
+\Bsubseteq\pi^id_j\Bcap\pi^id_{k-i}=\pi^i(d_j\Bcap d_{k-i})=0$.}
+     
+\noindent ($\gamma$) If $i+j<k$, then
+     
+\Centerline{$\pi^id_j\Bcap d_k\Bsubseteq\pi^{i+j}d\Bcap d_k=0$. \Qed}
+     
+Setting $c^*=\sup_{i\in\Bbb N}d_i=\sup_{i\in\Bbb N}\pi^id$, we have
+$c^*\in\frak C$, by 386B, so that
+$\bar\mu(d\Bsetminus c^*)=\delta\bar\mu(1\Bsetminus c^*)$;  but as
+$d\Bsubseteq c^*$, $c^*=1$.
+     
+Set $a^*=\sup_{m\in\Bbb N}d_{mn}$ (the $mn$ here is a product, not a
+double subscript!), $d^*=\sup_{i<n}d_i=\sup_{i<n}\pi^id$.   Then
+     
+\Centerline{$\bar\mu(c\Bcap d^*)
+\le\sum_{i=0}^{n-1}\bar\mu(c\Bcap\pi^id)
+=\sum_{i=0}^{n-1}\bar\mu\pi^i(c\Bcap d)
+=n\bar\mu(c\Bcap d)
+=n\delta\bar\mu c$}
+     
+\noindent for every $c\in\frak C$.
+Next, $\pi^id_{mn}\Bsupseteq d_{mn+i}$ for all $m$ and $i$, so
+     
+\Centerline{$\sup_{i<n}\pi^ia^*=\sup_{i\in\Bbb N}d_i=1$.}
+     
+\noindent Consequently
+     
+\Centerline{$\bar\mu c
+\le\sum_{i=0}^{n-1}\bar\mu(c\Bcap\pi^ia^*)
+=n\bar\mu(c\Bcap a^*)$,}
+     
+\Centerline{$\bar\mu(c\Bcap a^*\Bsetminus d^*)
+\ge\bar\mu(c\Bcap a^*)-\bar\mu(c\Bcap d^*)
+\ge(\bover1n-n\delta)\bar\mu c=\gamma\bar\mu c$}
+     
+\noindent for every $c\in\frak C$.
+     
+By 331B again (applied to the principal ideal of $\frak A$ generated by
+$a^*\Bsetminus d^*)$ there is an $a\Bsubseteq a^*\Bsetminus d^*$ such
+that $\bar\mu(a\Bcap c)=\gamma\bar\mu c$ for every $c\in\frak C$.   For
+$0<i<n$,
+     
+\Centerline{$\pi^ia^*\Bcap a^*
+=\sup_{k,l\in\Bbb N}\pi^id_{kn}\Bcap d_{ln}\Bsubseteq\sup_{m\le i}d_m
+\Bsubseteq d^*$,}
+     
+\noindent so $\pi^ia\Bcap a=0$;  accordingly $a$,
+$\pi a,\ldots,\pi^{n-1}a$ are all disjoint and (iii) is satisfied.
+     
+\medskip
+     
+{\bf (iii)$\Rightarrow$(iv)} Note that $\frak A$ is certainly atomless,
+since for every $k\ge 1$ we can find a $c\in\frak A$ such that
+$c,\pi c,\ldots,\pi^{k-1}c$ are disjoint and
+$\bar\mu c=\bover{\bar\mu 1}{k+1}$,
+so that we have a partition of unity consisting of sets of measure
+$\bover{\bar\mu 1}{k+1}$.   Let
+$B'$ be the set of atoms of the (finite) subalgebra of
+$\frak A$ generated by $B$, and $m=\#(B')$.   Let
+$\delta>0$ and $r$, $k\in\Bbb N$  be such that
+     
+\Centerline{$3\delta\le(1-n\gamma)\bar\mu b$ for every $b\in B'$,
+\quad$m(\bar\mu 1)^2<r\delta^2$,
+\quad$k\delta\ge\bar\mu 1$.}
+     
+\noindent By (iii), there is a $c\in\frak A$ such that
+$c,\pi c,\ldots,\pi^{nr(k+1)-1}c$ are disjoint and
+$\bar\mu(\sup_{i<nr(k+1)}\pi^ic)
+\ifdim\pagewidth=390pt\penalty-100\fi
+=1-\delta$.   For $j<r$, set
+$e_j=\sup_{l\le k,i<n}\pi^{n(k+1)j+nl+i}c$,
+$d_j=\sup_{l<k}\pi^{n(k+1)j+nl}c$.   Observe that
+$d_j$, $\pi d_j,\ldots,\pi^{n-1}d_j$ are disjoint, and that $\pi^id_j\Bsubseteq e_j$
+for $i<2n$.   Set $e=\sup_{j<r}e_j=\sup_{i<nr(k+1)}\pi^ic$, so that
+$\bar\mu e=1-\delta$.
+     
+Suppose we choose $d\in\frak A$ by the following random process.   Take
+$s(0),\ldots,s(r-1)$ independently in $\{0,\ldots,n-1\}$, so that
+$\Pr(s(j)=l)=\bover1n$ for each $l<n$, and set
+$d=\sup_{j<r}\pi^{s(j)}d_j$.   Because we certainly have
+$\pi^i\pi^{s(j)}d_j\Bsubseteq e_j$ whenever $i<n$,
+$d$, $\pi d,\ldots,\pi^{n-1}d$ will be disjoint.   Now for any $b\in\frak A$,
+     
+\Centerline{$\Pr\bigl(\bar\mu(d\Bcap b)
+  \le\Bover1n(\bar\mu b-3\delta)\bigr)
+<\Bover1m$.}
+     
+\noindent\Prf\ We can express the random variable $\bar\mu(d\Bcap b)$ as
+$X=\sum_{j=0}^{r-1}X_j$, where $X_j=\bar\mu(\pi^{s(j)}d_j\Bcap b)$.
+Then the $X_j$ are independent random variables.   For each $j$, $X_j$
+takes values between $0$ and
+$\bar\mu d_j=k\bar\mu c\le\Bover{\bar\mu 1}{nr}$, and
+has expectation $\bover1n\bar\mu(e'_j\Bcap b)$, where
+     
+\Centerline{$e'_j=\sup_{i<n}\pi^id_j
+=\sup_{l<k,i<n}\pi^{n(k+1)j+nl+i}c$.}
+     
+\noindent So $X$ has expectation $\bover1n\bar\mu(e'\Bcap b)$ where
+$e'=\sup_{j<r}e'_j$.   Now
+     
+\Centerline{$e_j\Bsetminus e'_j
+=\sup_{i<n}\pi^{n(k+1)j+nk+i}c$}
+     
+\noindent has measure $n\bar\mu c\le\Bover{n\bar\mu 1}{nr(k+1)}$ for
+each $j$, so $\bar\mu(e\Bsetminus e')\le\Bover{\bar\mu 1}{k+1}$ and
+$\bar\mu(1\Bsetminus e')\le 2\delta$;  thus
+$\Expn(X)\ge\bover1n(\bar\mu b-2\delta)$, while
+     
+\Centerline{$\Var(X)=\sum_{j=0}^{r-1}\Var(X_j)
+\le r\bigl(\Bover{\bar\mu 1}{nr}\bigr)^2
+=\Bover{(\bar\mu 1)^2}{n^2r}$.}
+     
+\noindent But this means that
+     
+\Centerline{$\Bover{(\bar\mu 1)^2}{n^2r}
+\ge\bigl(\Bover{\delta}n\bigr)^2
+  \Pr\bigl(X\le\Bover1n(\bar\mu b-3\delta)\bigr)$,}
+     
+\noindent and
+     
+\Centerline{$\Pr\bigl(X\le\Bover1n(\bar\mu b-3\delta)\bigr)
+\le\Bover{(\bar\mu 1)^2}{r\delta^2}
+<\Bover1m$}
+     
+\noindent by the choice of $r$.\ \Qed
+     
+This is true for every $b\in B'$, while $\#(B')=m$.   There must
+therefore be some choice of $s(0),\ldots,s(r-1)$ such that,
+taking $d^*=\sup_{j<r}\pi^{s(j)}d_j$,
+     
+\Centerline{$\bar\mu(d^*\Bcap b)\ge\Bover1n(\bar\mu b-3\delta)
+\ge\gamma\bar\mu b$}
+     
+\noindent for every $b\in B'$, while $d^*,\pi
+d^*,\ldots,\pi^{n-1}d^*$ are
+disjoint.   Because $\frak A$ is atomless, there is a $d\Bsubseteq d^*$
+such that $\bar\mu(d\Bcap b)=\gamma\bar\mu b$ for every $b\in B'$.
+Since every member of $B$ is a disjoint union of members of $B'$,
+$\bar\mu(d\Bcap b)=\gamma\bar\mu b$ for every $b\in B$.
+     
+\medskip
+     
+{\bf(iv)$\Rightarrow$(i)} If $a\in\frak A\setminus\{0,1\}$ and $n\ge 1$
+then (iv) tells us that there is a $b\in\frak A$ such that $b$,
+$\pi b,\ldots,\pi^nb$ are all disjoint and
+$\bar\mu(1\Bsetminus\sup_{i\le n}\pi^ib)<\bar\mu a$.   Now there must
+be some $i<n$ such that $d=\pi^ib\Bcap a\ne 0$, in which case
+     
+\Centerline{$d\Bcap\pi^nd\Bsubseteq\pi^ib\Bcap\pi^{i+n}b
+=\pi^i(b\Bcap\pi^nb)=0$,}
+     
+\noindent and $\pi^nd\ne d$.   As $n$ and $a$ are arbitrary, $\pi$ is
+aperiodic.
+}%end of proof of 386C
+     
+\leader{386D}{Corollary} %3{8}5F
+An ergodic measure-preserving Boolean
+homomorphism on an atomless totally finite measure algebra is aperiodic.
+     
+\proof{ By 372P, this is (ii)$\Rightarrow$(i) of 386C in the case
+$\frak C=\{0,1\}$ (compare 381P).
+}%end of proof of 386D
+     
+\leader{386E}{}\cmmnt{ I %3{8}5G
+turn now to a celebrated result which is a
+kind of strong law of large numbers.
+     
+\medskip
+     
+\noindent}{\bf The Shannon-McMillan-Breiman theorem} Let
+$(\frak A,\bar\mu)$ be a probability algebra, $\pi:\frak A\to\frak A$ a
+measure-preserving Boolean homomorphism and $A\subseteq\frak A$ a
+partition of unity of finite entropy.   For each $n\ge 1$, set
+     
+\Centerline{$w_n
+=\Bover1n\sum_{d\in D_n(A,\pi)}\ln(\Bover1{\bar\mu d})\chi d$,}
+     
+\noindent where $D_n(A,\pi)$ is the partition of unity generated by
+$\{\pi^ia:a\in A,\,i<n\}$\cmmnt{, as in 385K}.   Then
+$\sequencen{w_n}$ is norm-convergent in 
+$\cmmnt{L^1=}L^1(\frak A,\bar\mu)$ to
+$w$ say;  moreover, $\sequencen{w_n}$ is order*-convergent to
+$w$\cmmnt{ (definition: 367A)}.   If $T:L^0(\frak A)\to L^0(\frak A)$
+is the Riesz homomorphism defined by $\pi$\cmmnt{, so that
+$T(\chi a)=\chi(\pi a)$ for every $a\in\frak A$ (364P)}, then $Tw=w$.
+     
+\proof{ ({\smc Petersen 83}) We may suppose that $0\notin A$.
+     
+\medskip
+     
+{\bf (a)} For each $n\in\Bbb N$, let $\frak B_n$ be the subalgebra of
+$\frak A$ generated by
+$\{\pi^ia:a\in A,\,1\le i\le n\}$, $B_n$ the set of its atoms, and $P_n$
+the corresponding conditional
+expectation operator on $L^1$ (365R).   Let $\frak B$ be
+the closed subalgebra of $\frak A$ generated by
+$\bigcup_{n\in\Bbb N}\frak B_n$, and $P$ the corresponding conditional
+expectation operator.   Observe that
+$B_n=\pi[D_n(A,\pi)]$ and that, in the
+language of 385F, $D_{n+1}(A,\pi)=A\vee B_n$.   Let $\frak C$ be the
+fixed-point subalgebra of $\pi$ and $Q$ the associated
+conditional expectation.
+Set $L^0=L^0(\frak A)$, and let $\barln$ be the function from
+$\{v:\Bvalue{v>0}=1\}$ to $L^0$ corresponding to
+$\ln:\ooint{0,\infty}\to\Bbb R$ (364H).
+     
+\medskip
+     
+{\bf (b)} It will save a moment later if I note a simple fact here:
+if $v\in L^1$, then $\langle\bover1nT^nv\rangle_{n\ge 1}$ is
+order*-convergent and $\|\,\|_1$-convergent to $0$.   \Prf\ We know
+from the ergodic theorem (372G) that $\sequencen{\tilde v_n}$ is
+order*-convergent and $\|\,\,\|_1$-convergent
+to $Qv$, where $\tilde v_n=\bover1{n+1}\sum_{i=0}^nT^iv$.   Now
+$\bover1nT^nv=\bover{n+1}n\tilde v_n-\tilde v_{n-1}$ is
+order*-convergent and $\|\,\|_1$-convergent to
+$Qv-Qv=0$ (using 367C for `order*-convergent').\ \Qed
+     
+\medskip
+     
+{\bf (c)} Set
+     
+\Centerline{$v_n=\sum_{a\in A}P_n(\chi a)\times\chi a
+=\sum_{a\in A,b\in B_n}\Bover{\bar\mu(a\Bcap b)}{\bar\mu b}
+  \chi(a\Bcap
+b)$.}
+     
+\noindent By L\'evy's martingale theorem (275I, 367Jb),
+     
+\Centerline{$\sequencen{v_n\times\chi a}
+=\sequencen{P_n(\chi a)\times\chi a}$}
+     
+\noindent is order*-convergent to $P(\chi a)\times\chi a$
+for every $a\in A$;  consequently $\sequencen{v_n}$
+order*-converges to $v=\sum_{a\in A}P(\chi a)\times\chi a$.   It
+follows that $\sequencen{\barln v_n}$ order*-converges to $\barln v$.
+\Prf\ The point is that, for any $a\in A$ and $n\in\Bbb N$,
+$a\Bsubseteq\Bvalue{P_n(\chi a)>0}$, so that $\Bvalue{v_n>0}=1$ for
+every $n$, and $\barln v_n$ is defined.   Similarly, $\barln v$ is
+defined, and $\sequencen{\barln v_n}$ order*-converges to $\barln v$
+by 367H.\ \QeD\  As $0\le v_n\le\chi 1$ for every $n$,
+$\sequencen{v_n}\to v$ for $\|\,\|_1$, by the Dominated Convergence
+Theorem (367I).
+     
+Next, $\sequencen{\barln v_n}$ is order-bounded in $L^1$.   \Prf\ Of
+course $\barln v_n\le 0$ for every $n$, because
+$P_n(\chi a)\le P_n(\chi 1)\le\chi 1$ for each $a$, so $v_n\le\chi 1$.
+To see that
+$\{\barln v_n:n\in\Bbb N\}$ is bounded below in $L^1$, we use an idea
+from the fundamental martingale inequality 275D.   Set
+$v_*=\inf_{n\in\Bbb N}v_n$.   For $\alpha>0$, $a\in A$ and $n\in\Bbb N$
+set
+     
+\Centerline{$b_{an}(\alpha)
+=\Bvalue{P_n(\chi a)<\alpha}
+\Bcap\inf_{i<n}\Bvalue{P_i(\chi a)\ge\alpha}$,}
+     
+\noindent so that
+     
+\Centerline{$\Bvalue{v_*<\alpha}=\sup_{a\in A,n\in\Bbb N}a\Bcap
+b_{an}(\alpha)$.}
+     
+\noindent Now $b_{an}(\alpha)\in\frak B_n$, so
+     
+\Centerline{$\bar\mu(a\Bcap b_{an}(\alpha))
+=\int_{b_{an}(\alpha)}\chi a
+=\int_{b_{an}(\alpha)}P_n(\chi a)
+\le\alpha\bar\mu(b_{an}(\alpha))$,}
+     
+\noindent and
+     
+$$\eqalign{\bar\mu(a\Bcap\Bvalue{v_*<\alpha})
+&\le\min(\bar\mu a,\sum_{n=0}^{\infty}\bar\mu(a\Bcap b_{an}(\alpha)))\cr
+&\le\min(\bar\mu a,\alpha\sum_{n=0}^{\infty}\bar\mu b_{an}(\alpha))
+\le\min(\bar\mu a,\alpha).\cr}$$
+     
+\noindent Letting $\alpha\downarrow 0$,
+$\bar\mu(a\Bcap\Bvalue{v_*=0})=0$ for every $a\in A$, so
+$\Bvalue{v_*>0}=1$, and $\barln v_*$ is defined.   Moreover,
+     
+\Centerline{$\bar\mu(a\Bcap\Bvalue{-\barln v_*>-\ln\alpha})
+=\bar\mu(a\Bcap\Bvalue{v_*<\alpha})\le\min(\bar\mu a,\alpha)$}
+     
+\noindent for every $a\in A$, $\alpha>0$;  that is,
+     
+\Centerline{$\bar\mu(a\Bcap\Bvalue{-\barln v_*>\beta})
+\le\min(\bar\mu a,e^{-\beta})$}
+     
+\noindent for every $a\in A$ and $\beta\in\Bbb R$.   Accordingly
+     
+$$\eqalign{\int(-\barln v_*)
+&=\int_0^{\infty}\bar\mu\Bvalue{-\barln v_*>\beta}d\beta
+=\sum_{a\in A}\int_0^{\infty}
+  \bar\mu(a\Bcap\Bvalue{-\barln v_*>\beta})d\beta\cr
+&\le\sum_{a\in A}\int_0^{\infty}\min(\bar\mu a,e^{-\beta})d\beta\cr
+&=\sum_{a\in A}\bigl(\int_0^{\ln(1/\bar\mu a)}\bar\mu a\,d\beta
+  +\int_{\ln(1/\bar\mu a)}^{\infty}e^{-\beta}d\beta\bigr)\cr
+&=\sum_{a\in A}\bigl(\ln(\Bover1{\bar\mu a})\bar\mu a
+  +e^{\ln\bar\mu a}\bigr)\cr
+&=\sum_{a\in A}\ln(\Bover1{\bar\mu a})\bar\mu a
+  +\sum_{a\in A}\bar\mu a
+=H(A)+1<\infty\cr}$$
+     
+\noindent because $A$ has finite entropy.   But this means that
+$\barln v_*$ belongs to $L^1$, and of course it is a lower bound for
+$\{\barln v_n:n\in\Bbb N\}$.\ \QeD\
+     
+By 367I again, $\barln v\in L^1$ and $\sequencen{\barln v_n}\to\barln v$
+for $\|\,\|_1$.
+     
+\wheader{386E}{4}{2}{2}{60pt}
+     
+{\bf (d)} Fix $n\in\Bbb N$ for the moment.   For each $d\in
+D_{n+1}(A,\pi)$ let $d'$ be the unique element of $B_n$ such that
+$d\Bsubseteq d'$.   Then
+     
+$$\eqalign{(n+1)w_{n+1}
+&=\sum_{d\in D_{n+1}(A,\pi)}\ln(\Bover1{\bar\mu d'})\chi d
+  -\sum_{d\in D_{n+1}(A,\pi)}
+     \ln(\Bover{\bar\mu d}{\bar\mu d'})\chi d\cr
+&=\sum_{b\in B_n}\ln(\Bover1{\bar\mu b})\chi b
+  -\sum_{\Atop{\Atop{a\in A}{b\in B_n}}{a\Bcap b\ne 0}}
+     \ln(\Bover{\bar\mu(a\Bcap b)}{\bar\mu b})\chi(a\Bcap b)\cr
+&=\sum_{d\in D_n(A,\pi)}\ln(\Bover1{\bar\mu(\pi d)})\chi(\pi d)
+  -\barln v_n
+=T(nw_n)-\barln v_n.\cr}$$
+     
+\noindent Inducing on $n$, starting from
+     
+\Centerline{$w_1=\sum_{a\in A}\ln(\Bover1{\bar\mu a})\chi a
+=-\barln v_0$,}
+     
+\noindent we get
+     
+\Centerline{$nw_n=\sum_{i=0}^{n-1}T^i(-\barln v_{n-i-1})$,
+\quad$w_n=\Bover1n\sum_{i=0}^{n-1}T^i(-\barln v_{n-i-1})$}
+     
+\noindent for every $n\ge 1$.
+     
+\medskip
+     
+{\bf (e)} Set $w'_n=\bover1n\sum_{i=0}^{n-1}T^i(-\barln v)$ for
+$n\ge 1$.   By the Ergodic Theorem,
+$\langle w'_n\rangle_{n\ge 1}$ is order*-convergent and
+$\|\,\|_1$-convergent to $w=Q(-\barln v)$, and $Tw=w$.   To estimate
+$w_n-w'_n$, set $u_n^*=\sup_{k\ge n}|\barln v_k-\barln v|$ for each
+$n\in\Bbb N$.   Then $\sequencen{u^*_n}$ is a non-increasing sequence,
+$u_0^*\in L^1$ (by (c) above), and $\inf_{n\in\Bbb N}u_n^*=0$ because
+$\sequencen{\barln v_n}$ order*-converges to $\barln v$.   Now,
+whenever $n>m\in\Bbb N$,
+     
+$$\eqalign{|w_n-w'_n|
+&\le\Bover1n\sum_{i=0}^{n-1}T^i|\barln v-\barln v_{n-i-1}|\cr
+&=\Bover1n\bigl(\sum_{i=0}^{n-m-1}T^i|\barln v-\barln v_{n-i-1}|
+  +\sum_{i=n-m}^{n-1}T^i|\barln v-\barln v_{n-i-1}|\bigr)\cr
+&\le\Bover1n\bigl(\sum_{i=0}^{n-m-1}T^iu_m^*
+  +\sum_{j=0}^{m-1}T^{n-1-j}|\barln v-\barln v_j|\bigr)\cr
+&\le\Bover1{n-m}\bigl(\sum_{i=0}^{n-m-1}T^iu_m^*
+  +\sum_{j=0}^{m-1}T^{n-1-j}u_0^*\bigr)\cr
+&=\Bover1{n-m}\sum_{i=0}^{n-m-1}T^iu_m^*
+  +\Bover1{n-m}T^{n-m}\sum_{j=0}^{m-1}T^{m-1-j}u_0^*\cr
+&=\Bover1{n-m}\sum_{i=0}^{n-m-1}T^iu_m^*
+  +\Bover1{n-m}T^{n-m}\tilde u_m,\cr}$$
+     
+\noindent setting $\tilde u_m=\sum_{j=0}^{m-1}T^{m-1-j}u_0^*$.
+     
+Holding $m$ fixed and letting $n\to\infty$, we know that
+     
+\Centerline{$\Bover1{n-m}\sum_{i=0}^{n-m-1}T^iu_m^*$}
+     
+\noindent is order*-convergent and $\|\,\,\|_1$-convergent to
+$Qu_m^*$.   As for the other term,
+$\bover1{n-m}T^{n-m}\tilde u_m$ is order*-convergent and
+$\|\,\|_1$-convergent to $0$, by
+(b).   What this means is that
+     
+\Centerline{$\limsup_{n\to\infty}|w_n-w'_n|
+\le Qu_m^*$,}
+     
+\Centerline{$\limsup_{n\to\infty}\|w_n-w'_n\|_1
+\le\|Qu_m^*\|_1$}
+     
+\noindent for every $m\in\Bbb N$.   Since $\sequence{m}{Qu_m^*}$ is
+surely a non-decreasing sequence with infimum $0$,
+     
+\Centerline{$\limsup_{n\to\infty}|w_n-w'_n|=0$,
+\quad$\limsup_{n\to\infty}\|w_n-w'_n\|_1=0$.}
+     
+\noindent Since $w'_n$ is order*-convergent and
+$\|\,\,\|_1$-convergent to $w$, so is $w_n$.
+}%end of proof of 386E
+     
+\leader{386F}{Corollary} %3{8}5H
+If, in 386E, $\pi$ is ergodic, then
+$\sequencen{w_n}$ is order*-convergent and
+$\|\,\,\|_1$-convergent to $h(\pi,A)\chi 1$.
+     
+\proof{ Because the limit $w$ in 386E has $Tw=w$, it must be of the form
+$\gamma\chi 1$, because $\pi$ is ergodic (372Q(a-ii)).   
+Now $\gamma=\int w$ must be
+     
+$$\eqalignno{\lim_{n\to\infty}\int w_n
+&=\lim_{n\to\infty}\Bover1n\sum_{d\in
+  D_n(A,\pi)}\ln(\Bover1{\bar\mu d})\bar\mu d
+=\lim_{n\to\infty}\Bover1n\sum_{d\in
+  D_n(A,\pi)}q(\bar\mu d)\cr
+\displaycause{where $q$ is the function of 385A}
+&=\lim_{n\to\infty}\Bover1nH(D_n(A,\pi))
+=h(\pi,A).\cr}$$
+}%end of proof of 386F
+     
+\leader{386G}{Definition} %3{8}5I
+Set $p(t)=t\ln t$ for $t>0$, $p(0)=0$;  for
+any Dedekind $\sigma$-complete Boolean algebra $\frak A$, let
+$\bar p:L^0(\frak A)^+\to L^0(\frak A)$ be the corresponding
+function\cmmnt{, as in 364H}.   \cmmnt{(Thus $p=-q$ where $q$ is the
+function of 385A.)}
+     
+\leader{386H}{Lemma}\cmmnt{ ({\smc Csisz\'ar 67}, %3{8}5J
+{\smc Kullback 67})} Let $(\frak A,\bar\mu)$ be a probability algebra,
+and $u$ a member of $L^1(\frak A,\bar\mu)^+$ such that $\int u=1$.  Then
+     
+\Centerline{$(\int|u-\chi 1|)^2\le 2\int\bar p(u)$.}
+     
+\proof{ Set $a=\Bvalue{u<1}$, $\alpha=\bar\mu a$, $\beta=\int_au$,
+$b=1\Bsetminus a$.   Then $\bar\mu b=1-\alpha$ and $\int_bu=1-\beta$.
+Surely $\beta\le\alpha<1$.   If $\alpha=0$ then $u=\chi 1$ and the
+result is trivial;  so let us suppose that $0<\alpha<1$.   Because the
+function $p$ is convex,
+     
+\Centerline{$\int_a\bar p(u)
+\ge\bar\mu a\cdot p(\Bover1{\bar\mu a}\int_au)
+=\alpha p(\Bover{\beta}{\alpha})=p(\beta)-\beta\ln\alpha$,}
+     
+\noindent (using 233Ib/365Rb for the inequality), and similarly
+     
+\Centerline{$\int_b\bar p(u)
+\ge p(1-\beta)-(1-\beta)\ln(1-\alpha)$.}
+     
+\noindent Also
+     
+\Centerline{$\int|u-\chi 1|
+=\int_a(\chi 1-u)+\int_b(u-\chi 1)
+=\alpha-\beta+(1-\beta)-(1-\alpha)
+=2(\alpha-\beta)$,}
+     
+\noindent so
+     
+$$\eqalign{\int\bar p(u)-\Bover12(\int|u-\chi 1|)^2
+&\ge p(\beta)-\beta\ln\alpha
++p(1-\beta)-(1-\beta)\ln(1-\alpha)-2(\alpha-\beta)^2\cr
+&=\phi(\beta)\cr}$$
+     
+\noindent say.   Now $\phi$
+is continuous on $[0,1]$ and arbitrarily often differentiable on
+$\ooint{0,1}$,
+     
+\Centerline{$\phi(\alpha)=0$,}
+     
+\Centerline{$\phi'(t)=\ln t-\ln\alpha-\ln(1-t)+\ln(1-\alpha)
++4(\alpha-t)$ for $t\in\ooint{0,1}$,}
+     
+\Centerline{$\phi'(\alpha)=0$,}
+     
+\Centerline{$\phi''(t)=\Bover1t+\Bover1{1-t}-4\ge 0$ for
+$t\in\ooint{0,1}$.}
+     
+\noindent So $\phi(t)\ge 0$ for $t\in[0,1]$ and, in particular,
+$\phi(\beta)\ge 0$;  but this means that
+     
+\Centerline{$\int\bar p(u)-\Bover12(\int|u-\chi 1|)^2
+\ge 0$,}
+     
+\noindent that is, $(\int|u-\chi 1|)^2\le 2\int\bar p(u)$, as claimed.
+}%end of proof of 386H
+     
+\leader{386I}{Corollary} %3{8}5K
+Whenever $(\frak A,\bar\mu)$ is a probability
+algebra and $A$, $B$ are partitions of unity of finite entropy,
+     
+$$\sum_{a\in A,b\in B}|\bar\mu(a\Bcap b)-\bar\mu a\cdot\bar\mu b|
+\le\sqrt{2(H(A)+H(B)-H(A\vee B))}.$$
+     
+\proof{ Replacing $A$, $B$ by $A\setminus\{0\}$ and $B\setminus\{0\}$ if
+necessary, we may suppose that neither $A$ nor $B$ contains $\{0\}$.
+Let $(\frak C,\bar\lambda)$ be the probability algebra free product of
+$(\frak A,\bar\mu)$ with itself (325E, 325K).   Set
+     
+\Centerline{$u=\sum_{a\in A,b\in B}
+\Bover{\bar\mu(a\Bcap b)}{\bar\mu a\cdot\bar\mu b}\chi(a\otimes b)
+\in L^0(\frak C)$;}
+     
+\noindent then $u$ is non-negative and integrable and
+$\int u=\sum_{a\in A,b\in B}\bar\mu(a\Bcap b)=1$.   Now
+     
+$$\eqalign{\int\bar p(u)
+&=\sum_{a\in A,b\in B}
+  \bar\mu(a\Bcap b)
+  \ln\Bover{\bar\mu(a\Bcap b)}{\bar\mu a\cdot\bar\mu b}\cr
+&=-H(A\vee B)
+  -\sum_{a\in A,b\in B}\bar\mu(a\Bcap b)\ln\bar\mu a
+  -\sum_{a\in A,b\in B}\bar\mu(a\Bcap b)\ln\bar\mu b\cr
+&=-H(A\vee B)
+  -\sum_{a\in A}\bar\mu a\ln\bar\mu a
+  -\sum_{b\in B}\bar\mu b\ln\bar\mu b\cr
+&=H(A)+H(B)
+  -H(A\vee B).\cr}$$
+     
+\noindent On the other hand,
+     
+\Centerline{$\int|u-\chi 1|
+=\sum_{a\in A,b\in B}\bar\mu a\cdot\bar\mu b
+   |\Bover{\bar\mu(a\Bcap b)}{\bar\mu a\cdot\bar\mu b}-1|
+=\sum_{a\in A,b\in B}|\bar\mu(a\Bcap b)-\bar\mu a\cdot\bar\mu b|$.}
+     
+\noindent So what we are seeking to prove is that
+     
+\Centerline{$\int|u-\chi 1|
+\le\sqrt{2\intop\bar p(u)}$,}
+     
+\noindent which is 386H.
+}%end of proof of 386I
+     
+\leader{386J}{}\cmmnt{ The %3{8}5L
+next six lemmas are notes on more or
+less elementary facts which will be used at various points in the next
+section.   The first two are nearly trivial.
+     
+\medskip
+     
+\noindent}{\bf Lemma} Let $(\frak A,\bar\mu)$ be a probability algebra
+and $\familyiI{a_i}$, $\familyiI{b_i}$ two partitions of unity in
+$\frak A$.   Then
+     
+\Centerline{$\bar\mu(\sup_{i\in I}a_i\Bcap b_i)
+=1-\Bover12\sum_{i\in I}\bar\mu(a_i\Bsymmdiff b_i)$.}
+     
+\proof{
+     
+$$\eqalign{\bar\mu(\sup_{i\in I}a_i\Bcap b_i)
+=\sum_{i\in I}\bar\mu(a_i\Bcap b_i)
+&=\sum_{i\in I}\Bover12(\bar\mu a_i+\bar\mu b_i
+   -\bar\mu(a_i\Bsymmdiff b_i))\cr
+&=1-\Bover12\sum_{i\in I}\bar\mu(a_i\Bsymmdiff b_i).\cr}$$
+     
+}%end of proof of 386J
+     
+\leader{386K}{Lemma} %3{8}5M
+Let $(\frak A,\bar\mu)$ be a totally finite measure
+algebra, $\sequence{k}{B_k}$ a non-decreasing sequence of subsets of
+$\frak A$ such that $0\in B_0$, and $\familyiI{c_i}$ a partition of
+unity in $\frak A$ such that $c_i\in\overline{\bigcup_{k\in\Bbb N}B_k}$
+for every $i\in I$.   Then
+     
+\Centerline{$\lim_{k\to\infty}\sup_{i\in I}\rho(c_i,B_k)=0$\dvro{.}{,}}
+     
+\cmmnt{\noindent writing
+$\rho(c,B)=\inf_{b\in B}\bar\mu(c\Bsymmdiff b)$ for $c\in\frak A$ and
+non-empty $B\subseteq\frak A$, as in 3A4I.}
+     
+\proof{ Let $\epsilon>0$.   Then
+$J=\{j:j\in I,\,\bar\mu c_j\ge\epsilon\}$ is finite.   For each
+$j\in J$, $\lim_{k\to\infty}\rho(c_i,B_k)=0$, by 3A4I, while
+     
+\Centerline{$\rho(c_i,B_k)\le\bar\mu(c_i\Bsymmdiff 0)
+=\bar\mu c_i\le\epsilon$}
+     
+\noindent for every $i\in I\setminus J$.   So
+     
+\Centerline{$\limsup_{k\to\infty}\sup_{i\in I}\rho(c_i,B_k)
+\le\max(\epsilon,\limsup_{k\to\infty}\sup_{i\in J}\rho(c_i,B_k))
+=\epsilon$.}
+     
+\noindent As $\epsilon$ is arbitrary, we have the result.
+}%end of proof of 386K
+     
+\leader{386L}{Lemma} %3{8}5N
+Let $(\frak A,\bar\mu)$ be a probability algebra,
+and $\pi:\frak A\to\frak A$ a measure-preserving Boolean homomorphism.
+Let $A$, $B$ and $C$ be partitions of unity in $\frak A$.
+     
+(a) $H(A\vee B\vee C)+H(C)\le H(B\vee C)+H(A\vee C)$.
+     
+(b) $h(\pi,A)\le h(\pi,A\vee B)\le h(\pi,A)+h(\pi,B)\le h(\pi,A)+H(B)$.
+     
+(c) If $H(A)<\infty$,
+     
+$$\eqalign{h(\pi, A)
+&=\inf_{n\in\Bbb N}H(D_{n+1}(A,\pi))-H(D_n(A,\pi))\cr
+&=\lim_{n\to\infty}H(D_{n+1}(A,\pi))-H(D_n(A,\pi)).\cr}$$
+     
+(d) If $H(A)<\infty$ and $\frak B$ is any closed subalgebra of $\frak A$
+such that $\pi[\frak B]\subseteq\frak B$, then
+$h(\pi,A)\le h(\pi\restrp\frak B)+H(A|\frak B)$.
+     
+\proof{{\bf (a)} Let $\frak C$ be the closed subalgebra of $\frak A$
+generated by $C$, so that $\frak C$ is purely atomic and $C$ is the set
+of its atoms.   Then
+     
+$$\eqalign{H(A\vee B\vee C)+H(C)
+&=H(A\vee B|\frak C)+2H(C)\cr
+&\le H(A|\frak C)+H(B|\frak C)+2H(C)
+=H(A\vee C)+H(B\vee C)\cr}$$
+     
+\noindent by 385Gb and 385Ga.
+     
+\medskip
+     
+{\bf (b)} We need only observe that
+$D_n(A\vee B,\pi)=D_n(A,\pi)\vee D_n(B,\pi)$ for every $n\in\Bbb N$,
+being the partition of unity
+generated by $\{\pi^ia:i<n,\,a\in A\}\cup\{\pi^ib:i<n,\,b\in B\}$.
+Consequently
+     
+$$\eqalign{h(\pi,A)
+&=\lim_{n\to\infty}\Bover1nH(D_n(A,\pi))
+\le\lim_{n\to\infty}\Bover1nH(D_n(A,\pi)\vee D_n(B,\pi))\cr
+&=\lim_{n\to\infty}\Bover1nH(D_n(A\vee B,\pi))
+=h(\pi,A\vee B)\cr
+&\le\lim_{n\to\infty}\Bover1n(H(D_n(A,\pi)+H(D_n(B,\pi)))
+=h(\pi,A)+h(\pi,B)\cr
+&\le h(\pi,A)+H(B)\cr}$$
+     
+\noindent as remarked in 385M.
+     
+\medskip
+     
+{\bf (c)} Set $\gamma_n=H(D_{n+1}(A,\pi))-H(D_n(A,\pi))$ for each
+$n\in\Bbb N$.   By 385H, $\gamma_n\ge 0$.   From (a) we see that
+     
+$$\eqalign{\gamma_{n+1}
+&=H(A\vee\pi[D_{n+1}(A,\pi)])-H(A\vee\pi[D_{n}(A,\pi)])\cr
+&\le H(\pi[D_{n+1}(A,\pi)])-H(\pi[D_n(A,\pi])
+=\gamma_n\cr}$$
+     
+\noindent for every $n\in\Bbb N$.   So
+$\lim_{n\to\infty}\gamma_n=\inf_{n\in\Bbb N}\gamma_n$;  write $\gamma$
+for the common value.   Now
+     
+\Centerline{$h(\pi,A)=\lim_{n\to\infty}\Bover1nH(D_n(A,\pi))
+=\lim_{n\to\infty}\Bover1n\sum_{i=0}^{n-1}\gamma_i=\gamma$}
+     
+\noindent (273Ca).
+     
+\medskip
+     
+{\bf (d)} Let $P:L^1_{\bar\mu}\to L^1_{\bar\mu}$ be the conditional
+expectation operator corresponding to $\frak B$.   Let
+$\sequence{k}{b_k}$ be a sequence running over
+$\{\Bvalue{P(\chi a)>q}:a\in A,\,q\in\Bbb Q\}$, so that $b_k\in\frak B$
+for every $k$,
+and for each $k\in\Bbb N$ let $\frak B_k\subseteq\frak B$ be the
+subalgebra generated by $\{b_i:i\le k\}$;  let $P_k$ be the conditional
+expectation operator corresponding to $\frak B_k$.   Writing
+$\frak B_{\infty}\subseteq\frak B$ for
+$\overline{\bigcup_{k\in\Bbb N}\frak B_k}$, and $P_{\infty}$ for the
+corresponding conditional expectation
+operator, then $P(\chi a)\in L^0(\frak B_{\infty})$, so
+$P_{\infty}(\chi a)=P(\chi a)$, for every $a\in A$.   So
+     
+\Centerline{$H(A|\frak B)
+=\sum_{a\in A}\int\bar q(P\chi a)
+=H(A|\frak B_{\infty})=\lim_{k\to\infty}H(A|\frak B_k)$,}
+     
+\noindent by 385Gd.
+     
+For each $k$, let $B_k$ be the set of atoms of $\frak B_k$.   Then
+     
+\Centerline{$h(\pi,A)\le h(\pi,B_k)+H(A|\frak B_k)
+\le h(\pi\restrp\frak B)+H(A|\frak B_k)$}
+     
+\noindent by 385N and the definition of $h(\pi\restrp\frak B)$.   So
+     
+\Centerline{$h(\pi,A)
+\le h(\pi\restrp\frak B)+\lim_{k\to\infty}H(A|\frak B_k)
+=h(\pi\restrp\frak B)+H(A|\frak B)$.}
+}%end of proof of 386L
+     
+\vleader{72pt}{386M}{Lemma} %3{8}5O
+Let $(\frak A,\bar\mu)$ be a probability algebra
+and $\frak B$ a closed subalgebra.
+     
+(a) There is a function $h:\frak A\to\frak B$ such that
+$\bar\mu(a\Bsymmdiff h(a))=\rho(a,\frak B)$ for every $a\in\frak A$ and
+$h(a)\Bcap h(a')=0$ whenever $a\Bcap a'=0$.
+     
+(b) If $A$ is a partition of unity in $\frak A$, then
+$H(A|\frak B)\le\sum_{a\in A}q(\rho(a,\frak B))$\cmmnt{, where $q$ is
+the function of 385A}.
+     
+(c) If $\frak B$ is atomless and $\sequence{i}{a_i}$ is a partition of
+unity in $\frak A$,  then there is a partition of unity
+$\sequence{i}{b_i}$ in $\frak B$ such that $\bar\mu b_i=\bar\mu a_i$ and
+$\bar\mu(b_i\Bsymmdiff a_i)\le 2\rho(a_i,\frak B)$ for every
+$i\in\Bbb N$.
+     
+\proof{{\bf (a)} Let $P:L^1_{\bar\mu}\to L^1_{\bar\mu}$ be the
+conditional expectation operator associated with $\frak B$.   For any
+$b\in\frak B$,
+     
+$$\eqalign{\int|P(\chi a)-\chi b|
+&=\int_{1\Bsetminus b}P(\chi a)+\bar\mu b-\int_bP(\chi a)
+=\int_{1\Bsetminus b}\chi a+\bar\mu b-\int_b\chi a\cr
+&=\bar\mu(a\Bsetminus b)+\bar\mu b-\bar\mu(a\Bcap b)
+=\bar\mu(a\Bsymmdiff b).\cr}$$
+     
+If $a\in\frak A$ set $h(a)=\Bvalue{P(\chi a)>\bover12}$.   Then
+$|P(\chi a)-\chi h(a)|\le|P(\chi a)-\chi b|$ for any $b\in\frak B$, so
+     
+$$\eqalign{\rho(a,\frak B)
+&=\inf_{b\in\frak B}\bar\mu(a\Bsymmdiff b)
+=\inf_{b\in\frak B}\int|P(\chi a)-\chi b|\cr
+&=\int|P(\chi a)-\chi h(a)|
+=\bar\mu(a\Bsymmdiff h(a)).\cr}$$
+     
+If $a\Bcap a'=0$, then
+     
+\Centerline{$P(\chi a)+P(\chi a')=P\chi(a\Bcup a')\le\chi 1$,}
+     
+\noindent so
+     
+\Centerline{$h(a)\Bcap h(a')
+=\Bvalue{P(\chi a)>\bover12}\Bcap\Bvalue{P(\chi a')>\bover12}
+\Bsubseteq\Bvalue{P(\chi a)+P(\chi a')>1}=0$,}
+     
+\noindent by 364Ea.
+     
+\medskip
+     
+{\bf (b)} By 385Ae, $q(t)\le q(1-t)$
+whenever $\bover12\le t\le 1$.  Consequently
+$q(t)\le q(\min(t,1-t))$ for every $t\in[0,1]$, and
+$\bar q(u)\le\bar q(u\wedge(\chi 1-u))$ whenever $u\in L^0(\frak A)$ and
+$0\le u\le\chi 1$.   Fix $a\in A$ for the moment.   We have
+     
+\Centerline{$\bar q(P(\chi a))
+\le\bar q(P(\chi a)\wedge(\chi 1-P(\chi a))
+=\bar q(|P(\chi a)-\chi h(a)|)$.}
+     
+\noindent Consequently
+     
+$$\eqalignno{\int\bar q(P\chi a)
+&\le\int\bar q(|P(\chi a)-\chi h(a)|)
+\le q\bigl(\int|P(\chi a)-\chi h(a)|\bigr)\cr
+\noalign{\noindent (because $q$ is concave)}
+&=q(\rho(a,\frak B)).\cr}$$
+     
+\noindent Summing over $a$,
+     
+\Centerline{$H(A|\frak B)
+=\sum_{a\in A}\int\bar q(P\chi a)
+\le\sum_{a\in A}q(\rho(a,\frak B))$.}
+     
+\medskip
+     
+{\bf (c)} Set $b'_i=h(a_i)$ for each $i\in\Bbb N$.
+Then $\sequence{i}{b'_i}$ is disjoint.   Next,
+for each $i\in\Bbb N$, take $b''_i\in\frak B$ such that
+$b''_i\Bsubseteq b'_i$ and
+$\bar\mu b''_i=\min(\bar\mu a_i,\bar\mu b'_i)$;  then
+$\sequence{i}{b''_i}$ is disjoint and $\bar\mu b''_i\le\bar\mu a_i$ for
+every $i$.   We can therefore find a partition of unity
+$\sequence{i}{b_i}$ such that $b_i\Bsupseteq b''_i$ and
+$\bar\mu b_i=\bar\mu a_i$ for every $i$.   (Use 331C to choose
+$\sequence{i}{d_i}$ inductively so that
+$d_i\Bsubseteq 1\Bsetminus(\sup_{j<i}d_j\Bcup\sup_{j\in\Bbb N}b''_j)$
+and $\bar\mu d_i=\bar\mu a_i-\bar\mu b''_i$ for each $i$, and set
+$b_i=b''_i\Bcup d_i$.)
+     
+Take any $i\in\Bbb N$.   If $\bar\mu b'_i>\bar\mu a_i$, then
+     
+$$\eqalign{\bar\mu(a_i\Bsymmdiff b_i)
+&=\bar\mu(a_i\Bsymmdiff b''_i)
+\le\bar\mu(a_i\Bsymmdiff b'_i)+\bar\mu(b'_i\Bsymmdiff b''_i)\cr
+&=\bar\mu(a_i\Bsymmdiff b'_i)+\bar\mu b'_i-\bar\mu a_i
+\le 2\bar\mu(a_i\Bsymmdiff b'_i)
+=2\rho(a_i,\frak B).\cr}$$
+     
+\noindent If $\bar\mu b'_i\le\bar\mu a_i$, then
+     
+$$\eqalign{\bar\mu(a_i\Bsymmdiff b_i)
+&\le\bar\mu(a_i\Bsymmdiff b'_i)+\bar\mu(b'_i\Bsymmdiff b_i)\cr
+&=\bar\mu(a_i\Bsymmdiff b'_i)+\bar\mu a_i-\bar\mu b'_i
+\le 2\bar\mu(a_i\Bsymmdiff b'_i)
+=2\rho(a_i,\frak B).\cr}$$
+}%end of proof of 386M
+     
+\leader{386N}{Lemma} %3{8}5P
+Let $(\frak A,\bar\mu)$ be a probability algebra
+and $\pi:\frak A\to\frak A$ a measure-preserving automorphism.   Suppose
+that $B\subseteq\frak A$.   For $k\in\Bbb N$, let $\frak B_k$ be the
+closed subalgebra of $\frak A$ generated by
+$\{\pi^jb:b\in B,\,|j|\le k\}$, and
+let $\frak B$ be the closed subalgebra of $\frak A$ generated by
+$\{\pi^jb:b\in B,\,j\in\Bbb Z\}$.   
+     
+(a) $\frak B$ is the topological closure
+$\overline{\bigcup_{k\in\Bbb N}\frak B_k}$.
+     
+(b) $\pi[\frak B]=\frak B$.
+     
+(c) If $\frak C$ is any closed subalgebra of $\frak A$ such that
+$\pi[\frak C]=\frak C$, and $a\in\frak B_k$, then
+     
+\Centerline{$\rho(a,\frak C)\le(2k+1)\sum_{b\in B}\rho(b,\frak C)$.}
+     
+\proof{{\bf (a)} Because $\sequence{k}{\frak B_k}$ is non-decreasing,
+$\bigcup_{k\in\Bbb N}\frak B_k$ is a subalgebra of $\frak A$, so its
+closure also is (323J), and must be $\frak B$.
+     
+\medskip
+     
+{\bf (b)} Of course $\pi^{-1}[\frak B_{k+1}]$ is a closed subalgebra of
+$\frak A$ containing $\pi^jb$ whenever $|j|\le k$ and $b\in B$, so
+includes $\frak B_k$;  thus
+$\pi[\frak B_k]\subseteq\frak B_{k+1}\subseteq\frak B$ for every $k$,
+and
+     
+\Centerline{$\pi[\frak B]
+=\pi[\overline{\bigcupop_{k\in\Bbb N}\frak B_k}]
+\subseteq\overline{\bigcupop_{k\in\Bbb N}\pi[\frak B_k]}
+\subseteq\overline{\frak B}
+\subseteq\frak B$}
+     
+\noindent because $\pi$ is continuous (324Kb).
+Similarly, $\pi^{-1}[\frak B]\subseteq\frak B$ and
+$\pi[\frak B]=\frak B$.
+     
+\medskip
+     
+{\bf (c)} For each $b\in B$, choose $c_b\in\frak C$ such that
+$\bar\mu(b\Bsymmdiff c_b)=\rho(c_b,\frak C)$ (386Ma).   Set
+     
+\Centerline{$e=\sup_{|j|\le k}\sup_{b\in B}\pi^j(b\Bsymmdiff c_b)$;}
+     
+\noindent then
+     
+\Centerline{$\bar\mu e\le(2k+1)\sum_{b\in B}\bar\mu(b\Bsymmdiff c_b)
+=(2k+1)\sum_{b\in B}\rho(b,\frak C)$.}
+     
+\noindent Now
+     
+\Centerline{$\frak B'=\{d:d\in\frak A,\Exists c\in\frak C$ such that
+$d\Bsetminus e=c\Bsetminus e\}$}
+     
+\noindent is a subalgebra of $\frak A$.   By 314F(a-i), applied to the
+order-continuous homomorphism
+$c\mapsto c\Bsetminus e:\frak C\to\frak A_{1\Bsetminus e}$,
+$\{c\Bsetminus e:c\in\frak C\}$ is an order-closed subalgebra of the
+principal ideal $\frak A_{1\Bsetminus e}$;  by 313Id, applied to the
+order-continuous function
+$d\mapsto d\Bsetminus e:\frak A\to\frak A_{1\Bsetminus e}$, $\frak B'$
+is order-closed.   If $b\in B$ and $|j|\le k$,
+then $\pi^jb\Bsymmdiff\pi^jc_b\Bsubseteq e$, so $\pi^jb\in\frak B'$;
+accordingly $\frak B'\supseteq\frak B_k$.   Now $a\in\frak B_k$, so
+there is a $c\in\frak C$ such that $a\Bsymmdiff c\Bsubseteq e$, and
+     
+\Centerline{$\rho(a,\frak C)\le\bar\mu(a\Bsymmdiff c)\le\bar\mu e
+\le(2k+1)\sum_{b\in B}\rho(b,\frak C)$,}
+     
+\noindent as claimed.
+}%end of proof of 386N
+     
+\leader{386O}{Lemma} %3{8}5Q
+Let $(\frak A,\bar\mu)$ be a probability algebra
+and suppose {\it either} that $\frak A$ is not purely atomic {\it or}
+that it is purely atomic and $H(D_0)=\infty$, where $D_0$ is the set of
+atoms of
+$\frak A$.   Then whenever $A\subseteq\frak A$ is a partition of unity
+and $H(A)\le\gamma\le\infty$, there is a partition of unity $B$,
+refining $A$, such that $H(B)=\gamma$.
+     
+\proof{{\bf (a)} By 385J, there is a partition of unity $D_1$ such
+that $H(D_1)=\infty$.    Set $D=D_1\vee A$;  then we still have
+$H(D)=\infty$.
+Enumerate $D$ as $\sequence{i}{d_i}$.   Choose $\sequence{k}{B_k}$
+inductively, as follows.  $B_0=A$.   Given that $B_k$ is a partition of
+unity, then if $H(B_k\vee\{d_k,1\Bsetminus d_k\})\le\gamma$, set
+$B_{k+1}=B_k\vee\{d_k,1\Bsetminus d_k\}$;  otherwise set $B_{k+1}=B_k$.
+     
+Let $\frak B$ be the closed subalgebra of $\frak A$ generated by
+$\bigcup_{k\in\Bbb N}B_k$.   Note that, for each $d\in D$,
+     
+\Centerline{$\{c:c\in\frak A,\,d\Bsubseteq c$ or $d\Bcap c=0\}$}
+     
+\noindent is a closed subalgebra of $\frak A$ including every $B_k$, so
+includes $\frak B$.   If $b\in\frak B\setminus\{0\}$, there is surely
+some $d\in D$ such that $b\Bcap d\ne 0$, so $b\Bsupseteq d$;  thus
+$\frak B$ must be purely atomic.   Let $B$ be the set of atoms of
+$\frak B$.   Because $A=B_0\subseteq\frak B$, $B$ refines $A$.
+     
+\medskip
+     
+{\bf (b)} $H(B)\le\gamma$.   \Prf\ For each $k\in\Bbb N$, let
+$\frak B_k$ be the closed subalgebra of $\frak A$ generated by $B_k$, so
+that $\frak B=\overline{\bigcup_{k\in\Bbb N}\frak B_k}$.   Suppose that
+$b_0,\ldots,b_n$ are distinct members of $B$.   Then for each
+$k\in\Bbb N$ we can find disjoint $b_{0k},\ldots,b_{nk}\in\frak B_k$
+such that $\bar\mu(b_{ik}\Bsymmdiff b_i)\le\rho(b_i,\frak B_k)$ for
+every $i\le n$ (386Ma).   Accordingly
+$\bar\mu b_i=\lim_{k\to\infty}\bar\mu b_{ik}$ for each $i$, and
+     
+\Centerline{$\sum_{i=0}^nq(\bar\mu b_i)
+=\lim_{k\to\infty}\sum_{i=0}^nq(\bar\mu b_{ik})
+\le\sup_{k\in\Bbb N}H(B_k)\le\gamma$.}
+     
+\noindent As $b_0,\ldots,b_n$ are arbitrary, $H(B)\le\gamma$.\ \Qed
+     
+\medskip
+     
+{\bf (c)} $H(B)\ge\gamma$.   \Prf\Quer\ Suppose otherwise.   We know
+that
+     
+\Centerline{$\lim_{k\to\infty}H(\{d_k,1\Bsetminus d_k\})
+=\lim_{k\to\infty}q(\bar\mu d_k)+q(1-\bar\mu d_k)=0$.}
+     
+\noindent Let $m\in\Bbb N$ be such that $H(B)+H(\{d_k,1\Bsetminus
+d_k\})\le\gamma$ for every $k\ge m$.   Because $B$ refines $B_k$, we
+must
+have
+     
+\Centerline{$H(B_k\vee\{d_k,1\Bsetminus d_k\})
+\le H(B_k)+H(\{d_k,1\Bsetminus d_k\})\le\gamma$,}
+     
+\noindent so that $B_{k+1}=B_k\vee\{d_k,1\Bsetminus d_k\}$ for every
+$k\ge m$.   But this means that $d_k\in B$ for every $k\ge m$, so that
+     
+\Centerline{$\gamma>H(B)\ge\sum_{k=m}^{\infty}q(\bar\mu d_k)=\infty$,}
+     
+\noindent which is impossible.\ \Bang\Qed
+     
+Thus $B$ has the required properties.
+}%end of proof of 386O
+     
+\exercises{
+\leader{386X}{Basic exercises (a)}
+%\spheader 386Xa
+Let $(\frak A,\bar\mu)$ be a totally finite
+measure algebra and $\pi:\frak A\to\frak A$ a measure-preserving Boolean
+homomorphism with fixed-point subalgebra $\frak C$.
+Take any $a\in\frak A$ and
+set $a_n=\pi^na\Bsetminus\penalty-100\sup_{1\le i<n}\pi^ia$ for $n\ge 1$.
+Show that $\sum_{n=1}^{\infty}n\bar\mu(a\Bcap a_n)=\bar\mu(\upr(a,\frak C))$.
+\Hint{for $0\le j<k$ set
+$a_{jk}=\pi^j(a\Bcap a_{k-j})$.   Show that if $r\in\Bbb N$, then $\langle a_{jk}\rangle_{j\le r<k}$ is disjoint.}
+     
+\spheader 386Xb
+Let $(X,\Sigma,\mu)$ be a totally finite measure space
+and $f:X\to X$ an inverse-measure-preserving function.   Take
+$E\in\Sigma$ and set $F=\{x:\,\exists\,n\ge 1,\,f^n(x)\in E\}$.   (i)
+Show that $E\setminus F$ is negligible.   (ii) For $x\in E\cap F$ set
+$k_x=\min\{n:n\ge 1,\,f^n(x)\in E\}$.   Show that
+$\int_Ek_x\mu(dx)=\mu F$.   (This is a simple form of the {\bf
+Recurrence Theorem}.)
+%386Xa
+     
+\spheader 386Xc %3{8}5Xd
+Let $(\frak A,\bar\mu)$ be a totally finite measure
+algebra, $\sequence{k}{B_k}$ a non-decreasing sequence of subsets of
+$\frak A$ such that $0\in B_0$, and $\familyiI{c_i}$ a partition of
+unity in $\frak A$.   Show that
+     
+\Centerline{$\lim_{k\to\infty}\sum_{i\in I}\rho(c_i,B_k)
+=\sum_{i\in I}\rho(c_i,B)$}
+     
+\noindent where $B=\overline{\bigcup_{k\in\Bbb N}B_k}$.
+%386K
+     
+\sqheader 386Xd %3{8}5Xe
+Let $(\frak A,\bar\mu)$ be a probability algebra,
+$\pi:\frak A\to\frak A$ a measure-preserving Boolean homomorphism and
+$A$ a partition of unity in $\frak A$.
+Show that $h(\pi,D_n(A,\pi))=h(\pi,A)=h(\pi,\pi[A])$ for any $n\ge 1$.
+%386L
+     
+\spheader 386Xe %3{8}5Xf
+Let $(\frak A,\bar\mu)$ be a totally finite measure
+algebra and
+$\pi:\frak A\to\frak A$ a measure-preserving Boolean homomorphism.
+Suppose that
+$B\subseteq\frak A$.   For $k\in\Bbb N$, let $\frak B_k$ be the closed
+subalgebra of $\frak A$ generated by $\{\pi^jb:b\in B,\,j\le k\}$, and
+let $\frak B$ be the closed subalgebra of $\frak A$ generated by
+$\{\pi^jb:b\in B,\,j\in\Bbb N\}$.   Show that
+     
+\Centerline{$\frak B=\overline{\bigcupop_{k\in\Bbb N}\frak B_k}$,
+\quad$\pi[\frak B]\subseteq\frak B$,}
+     
+\noindent and that if $\frak C$ is any subalgebra of $\frak A$
+such that $\pi[\frak C]\Bsubseteq\frak C$, and $a\in\frak B_k$, then
+$\rho(a,\frak C)\le(k+1)\sum_{b\in B}\rho(b,\frak C)$.
+%386N
+
+\spheader 386Xf Prove 332L without using Maharam's theorem.
+%386A query out of order
+     
+\leader{386Y}{Further exercises (a)}
+%\spheader 386Ya %3{8}5Yb
+Let $(\frak A,\bar\mu)$ be a totally finite measure algebra and
+$\pi:\frak A\to\frak A$ an aperiodic
+measure-preserving Boolean homomorphism.   Set $\frak C=\{c:\pi c=c\}$.
+Show that whenever $n\ge 1$, $0\le\gamma<\bover1n$ and
+$B\subseteq\frak A$ is finite, there is an $a\in\frak A$ such
+that $a$, $\pi a$, $\pi^2a,\ldots,\pi^{n-1}a$ are disjoint and
+$\bar\mu(a\Bcap b\Bcap c)=\gamma\bar\mu(b\Bcap c)$ for every $b\in B$,
+$c\in\frak C$.
+%386C
+     
+\spheader 386Yb %3{8}5Yc
+Let $(\frak A,\bar\mu)$ be a probability algebra, and
+$\pi:\frak A\to\frak A$ a measure-preserving Boolean homomorphism.   Let
+$\frak P$ be the set of all closed subalgebras of $\frak A$ which are
+invariant under $\pi$, ordered by inclusion.   Show that
+$\frak B\mapsto h(\pi\restrp\frak{B}):\frak P\to[0,\infty]$ is
+order-preserving and
+{\bf order-continuous on the left}, in the sense that if 
+$\frak Q\subseteq\frak P$ is non-empty and upwards-directed then
+$h(\pi\restr\sup\frak Q)=\sup_{\frak B\in\frak Q}h(\pi\restrp\frak{B})$.
+%386L
+}%end of exercises
+     
+\endnotes{\Notesheader{386} I have taken the trouble to give sharp forms
+of the Halmos-Rokhlin-Kakutani lemma (386C) and the Czisz\'ar-Kullback
+inequality (386H);  while it is possible to get through the principal
+results of the next two sections with rather less, the formulae become
+better focused if we have the exact expressions available.   Of course
+one can always go farther still (386Ya).   Ornstein's theorem in \S387
+(though not Sina\v\i's, as stated there) can be deduced from the special
+case of the Shannon-McMillan-Breiman theorem (386E) in which the
+homomorphism $\pi$ is a Bernoulli shift.
+}%end of notes
+     
+\discrpage
+     

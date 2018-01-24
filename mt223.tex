@@ -1,0 +1,420 @@
+\frfilename{mt223.tex}
+\versiondate{9.9.04}
+\copyrightdate{1995}
+     
+\def\chaptername{The Fundamental Theorem of Calculus}
+\def\sectionname{Lebesgue's density theorems}
+\def\undpsi{\underline{\psi}}
+     
+\newsection{223}
+     
+I now turn to a group of results which may be thought of as corollaries
+of Theorem 222E, but which also have a vigorous life of their own,
+including the possibility of significant generalizations which will be
+treated in Chapter 26.   The idea is that any measurable function $f$ on
+$\Bbb R$ is almost everywhere `continuous' in a variety of very weak
+senses;  for almost every $x$, the value $f(x)$ is determined by the
+behaviour of $f$ near $x$, in the sense that $f(y)\bumpeq f(x)$ for
+`most' $y$ near $x$.    I should perhaps say that while I recommend this
+work as a preparation for Chapter 26, and I also rely on it in Chapter
+28, I shall not refer to it again in the present chapter, so that
+readers in a hurry to characterize indefinite integrals may proceed
+directly to \S224.
+     
+\leader{223A}{Lebesgue's Density Theorem:  integral form} Let  $I$ be an
+interval in $\Bbb R$, and let $f$ be a real-valued function which is
+integrable over $I$.   Then
+     
+$$\eqalign{f(x)
+&=\lim_{h\downarrow 0}\Bover1{h}\int_{x}^{x+h}f
+=\lim_{h\downarrow 0}\Bover1h\int_{x-h}^xf
+=\lim_{h\downarrow 0}\Bover1{2h}\int_{x-h}^{x+h}f\cr}$$
+     
+\noindent for almost every $x\in I$.
+     
+     
+\proof{ Setting $F(x)=\int_{I\cap\ooint{-\infty,x}}f$, we
+know from 222G that
+     
+$$\eqalign{f(x)=F'(x)
+&=\lim_{h\downarrow 0}\Bover1{h}(F(x+h)-F(x))
+   =\lim_{h\downarrow 0}\Bover1{h}\int_{x}^{x+h}f\cr
+&=\lim_{h\downarrow 0}\Bover1h(F(x)-F(x-h))
+   =\lim_{h\downarrow 0}\Bover1h\int_{x-h}^xf\cr
+&=\lim_{h\downarrow 0}\Bover1{2h}(F(x+h)-F(x-h))
+   =\lim_{h\downarrow 0}\Bover1{2h}\int_{x-h}^{x+h}f\cr}$$
+     
+\noindent for almost every $x\in I$.
+}%end of proof of 223A
+     
+\leader{223B}{Corollary} Let $E\subseteq\Bbb R$ be a measurable set.
+Then
+     
+\Centerline{$\lim_{h\downarrow 0}\Bover1{2h}\mu(E\cap[x-h,x+h])=1$ for
+almost every $x\in E$,}
+     
+\Centerline{$\lim_{h\downarrow 0}\Bover1{2h}\mu(E\cap[x-h,x+h])=0$ for
+almost every $x\in \Bbb R\setminus E$.}
+     
+     
+\proof{ Take $n\in \Bbb N$.   Applying 223A to
+$f=\chi(E\cap[-n,n])$, we see that
+     
+\Centerline{$\lim_{h\downarrow 0}\Bover1{2h}\int_{x-h}^{x+h}f
+=\lim_{h\downarrow 0}\Bover1{2h}\mu(E\cap[x-h,x+h])$}
+     
+\noindent whenever $x\in\ooint{-n,n}$ and either limit exists, so that
+     
+\Centerline{$\lim_{h\downarrow 0}\Bover1{2h}\mu(E\cap[x-h,x+h])=1$ for
+almost every $x\in E\cap[-n,n]$,}
+     
+\Centerline{$\lim_{h\downarrow 0}\Bover1{2h}\mu(E\cap[x-h,x+h])=0$ for
+almost every $x\in [-n,n]\setminus E$.}
+     
+\noindent As $n$ is arbitrary, we have the result.
+}%end of proof of 223B
+     
+\cmmnt{\medskip
+     
+\noindent{\bf Remark} For a measurable set $E\subseteq\Bbb R$, a point
+$x$ such that $\lim_{h\downarrow 0}\Bover1{2h}\mu(E\cap[x-h,x+h])=1$ is
+sometimes called a {\bf density point} of $E$.
+}%end of comment
+     
+\leader{223C}{Corollary} Let $f$ be a measurable real-valued function
+defined almost everywhere in $\Bbb R$.   Then for almost every
+$x\in\Bbb R$,
+     
+\Centerline{$\lim_{h\downarrow 0}\Bover1{2h}\mu\{y:y\in\dom f,\,|y-x|\le
+h,\,|f(y)-f(x)|\le\epsilon\}=1$,}
+     
+\Centerline{$\lim_{h\downarrow 0}\Bover1{2h}\mu\{y:y\in\dom f,\,|y-x|\le
+h,\,|f(y)-f(x)|\ge\epsilon\}=0$}
+     
+\noindent for every $\epsilon>0$.
+     
+\proof{ For $q$, $q'\in\Bbb Q$, set
+     
+\Centerline{$D_{qq'}=\{x:x\in\dom f,\,q\le f(x)<q'\}$,}
+     
+\noindent so that $D_{qq'}$ is measurable,
+     
+\Centerline{$C_{qq'}=\{x:x\in D_{qq'},\,\lim_{h\downarrow 0}
+\Bover1{2h}\mu(D_{qq'}\cap [x-h,x+h])=1\}$,}
+     
+     
+\noindent so that $D_{qq'}\setminus C_{qq'}$ is negligible, by 223B;
+now
+set
+     
+\Centerline{$C=\dom f\setminus\bigcup_{q,q'\in\Bbb Q}(D_{qq'}\setminus
+C_{qq'})$,}
+     
+\noindent so that $C$ is conegligible.   If $x\in C$ and
+$\epsilon>0$, then there are $q$, $q'\in \Bbb Q$ such that
+$f(x)-\epsilon\le q\le f(x)<q'\le f(x)+\epsilon$, so that $x$ belongs to
+$D_{qq'}$ and therefore to $C_{qq'}$, and now
+     
+$$\eqalign{\liminf_{h\downarrow 0}\Bover1{2h}
+&\mu\{y:y\in \dom f\cap [x-h,x+h],\,|f(y)-f(x)|\le\epsilon\}\cr
+&\ge\liminf_{h\downarrow 0}
+\Bover1{2h}\mu(D_{qq'}\cap [x-h,x+h])
+=1,\cr}$$
+     
+\noindent so
+     
+\Centerline{$\lim_{h\downarrow 0}
+\Bover1{2h}\mu\{y:y\in \dom f\cap [x-h,x+h],\,|f(y)-f(x)|\le\epsilon\}
+=1$.}
+     
+It follows at once that
+     
+\Centerline{$\lim_{h\downarrow 0}
+\Bover1{2h}\mu\{y:y\in \dom f\cap [x-h,x+h],\,|f(y)-f(x)|>\epsilon\}
+=0$}
+     
+\noindent for almost every $x$;  but since $\epsilon$ is arbitrary, this
+is also true of $\bover12\epsilon$, so in fact
+     
+\Centerline{$\lim_{h\downarrow 0}
+\Bover1{2h}\mu\{y:y\in \dom f\cap [x-h,x+h],\,|f(y)-f(x)|\ge\epsilon\}
+=0$}
+     
+\noindent for almost every $x$.
+}%end of proof of 223C
+     
+\leader{223D}{Theorem} Let $I$ be an interval in $\Bbb R$, and let $f$
+be a real-valued function which is integrable over $I$.   Then
+     
+\Centerline{$\lim_{h\downarrow 0}\Bover1{2h}
+\int_{x-h}^{x+h}|f(y)-f(x)|dy=0$}
+     
+\noindent for almost every $x\in I$.
+     
+\proof{{\bf (a)} Suppose first that $I$ is a bounded open
+interval $\ooint{a,b}$.   For each $q\in\Bbb Q$, set $g_q(x)=|f(x)-q|$
+for $x\in I\cap\dom f$;  then $g$ is integrable over $I$, and
+     
+\Centerline{$\lim_{h\downarrow 0}\Bover1{2h}
+\int_{x-h}^{x+h}g_q=g_q(x)$}
+     
+\noindent for almost every $x\in I$, by 223A.   Setting
+     
+\Centerline{$E_q=\{x:x\in I\cap\dom f,\,\lim_{h\downarrow 0}
+\Bover1{2h}\int_{x-h}^{x+h}g_q=g_q(x)\}$,}
+     
+\noindent we have $I\setminus E_q$ negligible, so $I\setminus E$ is
+negligible, where $E=\bigcap_{q\in\Bbb Q}E_q$.   Now
+     
+\Centerline{$\lim_{h\downarrow 0}\Bover1{2h}
+\int_{x-h}^{x+h}|f(y)-f(x)|dy=0$}
+     
+\noindent for every $x\in E$.   \Prf\ Take $x\in E$ and $\epsilon>0$.
+Then there is a $q\in\Bbb Q$ such that $|f(x)-q|\le\epsilon$, so that
+     
+\Centerline{$|f(y)-f(x)|\le|f(y)-q|+\epsilon=g_q(y)+\epsilon$}
+     
+\noindent for every $y\in I\cap\dom f$, and
+
+$$\eqalign{\limsup_{h\downarrow 0}\Bover1{2h}
+\int_{x-h}^{x+h}|f(y)-f(x)|dy
+&\le\limsup_{h\downarrow 0}\Bover1{2h}
+\int_{x-h}^{x+h}g_q(y)+\epsilon\,dy\cr
+&=\epsilon+g_q(x)
+\le 2\epsilon.\cr}$$
+     
+\noindent As $\epsilon$ is arbitrary,
+     
+\Centerline{$\lim_{h\downarrow 0}\Bover1{2h}
+\int_{x-h}^{x+h}|f(y)-f(x)|dy=0$,}
+     
+\noindent as required.\ \Qed
+     
+\medskip
+     
+{\bf (b)}  If $I$ is an unbounded open interval, apply (a) to the
+intervals $I_n=I\cap\ooint{-n,n}$ to see that the limit is zero almost
+everywhere in every $I_n$, and therefore on $I$.   If $I$ is an
+arbitrary interval, note that it differs by at most two points from an
+open interval, and that since we are looking only for something to
+happen almost everywhere we can ignore these points.
+}%end of proof of 223D
+     
+\medskip
+     
+\noindent{\bf Remark} The set
+     
+\Centerline{$\{x:x\in\dom f,\,\lim_{h\downarrow 0}\Bover1{2h}
+\int_{x-h}^{x+h}|f(y)-f(x)|dy=0\}$}
+     
+\noindent is sometimes called the {\bf Lebesgue set} of $f$.
+     
+\leader{223E}{Complex-valued functions}\cmmnt{ I have expressed
+the results above in terms of real-valued functions, this being the most
+natural vehicle for the ideas.   However there are applications of great
+importance in which the functions involved are complex-valued, so I
+spell out the relevant statements here.   In all cases the proof is
+elementary, being nothing more than applying the corresponding result
+(223A, 223C or 223D) to the real and imaginary parts of the function
+$f$.}
+     
+\header{223Ea}{\bf (a)} Let  $I$ be an interval in $\Bbb R$, and let $f$
+be a complex-valued function which is integrable over $I$.   Then
+     
+$$\eqalign{f(x)
+=\lim_{h\downarrow 0}\Bover1{h}\int_{x}^{x+h}f
+=\lim_{h\downarrow 0}\Bover1h\int_{x-h}^xf
+=\lim_{h\downarrow 0}\Bover1{2h}\int_{x-h}^{x+h}f\cr}$$
+     
+\noindent for almost every $x\in I$.
+     
+\header{223Eb}{\bf (b)} Let $f$ be a measurable complex-valued function
+defined almost everywhere in $\Bbb R$.   Then for almost every
+$x\in\Bbb R$,
+     
+\Centerline{$\lim_{h\downarrow 0}\Bover1{2h}\mu\{y:y\in\dom f,\,|y-x|\le
+h,\,|f(y)-f(x)|\ge\epsilon\}=0$}
+     
+\noindent for every $\epsilon>0$.
+     
+\header{223Ec}{\bf (c)} Let $I$ be an interval in $\Bbb R$, and let $f$
+be a complex-valued function which is integrable over $I$.   Then
+     
+\Centerline{$\lim_{h\downarrow 0}\Bover1{2h}
+\int_{x-h}^{x+h}|f(y)-f(x)|dy=0$}
+     
+\noindent for almost every $x\in I$.
+     
+\exercises{
+\leader{223X}{Basic exercises $\pmb{>}$(a)} Let $E\subseteq[0,1]$ be a 
+measurable set for which there is an $\alpha>0$ such that
+$\mu(E\cap[a,b])\ge\alpha(b-a)$ whenever $0\le a\le b\le 1$.
+Show that $\mu E=1$.
+%223B     
+     
+\spheader 223Xb Let $A\subseteq\Bbb R$ be any set.   Show that
+$\lim_{h\downarrow 0}\Bover1{2h}\mu^*(A\cap[x-h,x+h])=1$ for
+almost every $x\in A$.  \Hint{apply 223B to a measurable envelope
+$E$ of $A$.}
+%223B
+     
+\spheader 223Xc Let $E$, $F\subseteq\Bbb R$ be measurable sets, and
+$x\in\Bbb R$ a point which is a density point of both.   Show that $x$
+is a density point of $E\cap F$.
+%223B
+     
+\spheader 223Xd Let $E\subseteq\Bbb R$ be a non-negligible measurable
+set.   Show that for any $n\in\Bbb N$ there is a $\delta>0$ such that
+$\bigcap_{i\le n}E+x_i$ is non-empty whenever $x_0,\ldots,x_n\in\Bbb R$
+are such that $|x_i-x_j|\le\delta$ for all $i$, $j\le n$.   \Hint{find a
+non-trivial interval $I$ such that $\mu(E\cap I)>\bover{n}{n+1}\mu I$.}
+%223B
+     
+\spheader 223Xe Let $f$ be any real-valued function defined almost
+everywhere in $\Bbb R$.   Show that $\lim_{h\downarrow
+0}\Bover1{2h}\mu^*\{y:y\in\dom f,\,|y-x|\le
+h,\,|f(y)-f(x)|\le\epsilon\}=1$ for almost every $x\in\Bbb R$.
+\Hint{use the argument of 223C, but with 223Xb in place of 223B.}
+%223C
+     
+\sqheader 223Xf Let $I$ be an interval in $\Bbb R$, and let $f$
+be a real-valued function which is integrable over $I$.   Show that
+$\lim_{h\downarrow 0}\bover1{h}
+\int_{x}^{x+h}|f(y)-f(x)|dy=0$ for almost every $x\in I$.
+%223D
+     
+\spheader 223Xg Let $E$, $F\subseteq\Bbb R$ be
+measurable sets, and suppose that $F$ is bounded and of non-zero
+measure.   Let $x\in\Bbb R$ be such that
+$\lim_{h\downarrow 0}\Bover1{2h}\mu(E\cap[x-h,x+h])=1$.   Show that
+$\lim_{h\downarrow 0}\Bover{\mu(E\cap(x+hF))}{h\,\mu F}=1$.
+({\it Hint:\/} it helps to know that $\mu(hF)=h\mu F$
+(134Ya, 263A).   Show that if $F\subseteq[-M,M]$, then
+     
+\Centerline{$\Bover1{2hM}\mu(E\cap[x-hM,x+hM])
+\le 1-\Bover{\mu F}{2M}
+  \bigl(1-\Bover{\mu(E\cap(x+hF))}{h\,\mu F}\bigr)$.)}
+     
+\noindent (Compare 223Ya.)
+%223B
+     
+\spheader 223Xh Let $f$ be a real-valued function which is integrable
+over $\Bbb R$, and $E$ be the Lebesgue set of $f$.   Show that
+$\lim_{h\downarrow 0}\bover1{2h}\int_{x-h}^{x+h}|f(t)-c|dt=|f(x)-c|$ 
+for every $x\in E$ and $c\in\Bbb R$.
+%223D
+     
+\spheader 223Xi Let $f$ be an integrable real-valued function defined
+almost everywhere in $\Bbb R$.   Let $x\in\dom f$ be such that
+$\lim_{n\to\infty}\Bover{n}2\int^{x+1/n}_{x-1/n}|f(y)-f(x)|=0$.   Show
+that $x$ belongs to the Lebesgue set of $f$.
+%223D
+     
+\spheader 223Xj Let $f$ be an integrable real-valued function defined
+almost everywhere in $\Bbb R$, and $x$ any point of the Lebesgue set of
+$f$.   Show
+that for every $\epsilon>0$ there is a $\delta>0$ such that whenever $I$
+is a non-trivial interval and $x\in I\subseteq[x-\delta,x+\delta]$, then
+$|f(x)-\Bover1{\mu I}\int_If|\le\epsilon$.
+%223D
+     
+\leader{223Y}{Further exercises (a)} Let $E$, $F\subseteq\Bbb R$ be
+measurable sets, and suppose that $0<\mu F<\infty$.   Let $x\in\Bbb R$
+be such that $\lim_{h\downarrow 0}\Bover1{2h}\mu(E\cap[x-h,x+h])=1$.
+Show that
+     
+\Centerline{$\lim_{h\downarrow 0}\Bover{\mu(E\cap(x+hF))}{h\,\mu F}=1$.}
+     
+\noindent \Hint{apply 223Xg to sets of the form $F\cap[-M,M]$.}
+%223Xg 223B
+     
+\header{223Yb}{\bf (b)} Let $\frak T$ be the family of measurable sets
+$G\subseteq\Bbb R$ such that every point of $G$ is a density point of
+$G$.   {(i)} Show that $\frak T$ is a topology on $\Bbb R$.   ({\it
+Hint\/}: take $\Cal G\subseteq\frak T$.   By 215B(iv) there is a
+countable
+$\Cal G_0\subseteq\Cal G$ such that $\mu(G\setminus\bigcup\Cal G_0)=0$
+for every $G\in\Cal G$.   Show that
+     
+\Centerline{$\bigcup\Cal G\subseteq\{x:\limsup_{h\downarrow 0}
+  \Bover1{2h}\mu(\bigcup\Cal G_0\cap[x-h,x+h])>0\}$,}
+     
+\noindent so that $\mu(\bigcup\Cal G\setminus\bigcup\Cal G_0)=0$.)   {(ii)} Show that a function
+$f:\Bbb R\to\Bbb R$ is measurable iff it is $\frak T$-continuous at
+almost every $x\in\Bbb R$.   ($\frak T$ is the {\bf density topology} on
+$\Bbb R$.   See 414P in Volume 4.)
+%223B
+     
+\spheader 223Yc Show that if $f:[a,b]\to\Bbb R$ is bounded and
+continuous for the density topology on $\Bbb R$, then
+$f(x)=\bover{d}{dx}\int_a^xf$ for every $x\in\ooint{a,b}$.
+%223Yb 223B
+     
+\spheader 223Yd Show that a function $f:\Bbb R\to\Bbb R$ is continuous
+for the density topology at $x\in\Bbb R$ iff 
+$\lim_{h\downarrow 0}\bover1{2h}
+  \mu^*\{y:y\in[x-h,x+h],\,|f(y)-f(x)|\ge\epsilon\}=0$ for
+every $\epsilon>0$.
+%223Yb 223B
+     
+\spheader 223Ye A set $A\subseteq\Bbb R$ is {\bf porous} at a point
+$x\in\Bbb R$ if $\limsup_{y\to x}\Bover{\rho(y,A)}{|y-x|}>0$, where
+$\rho(y,A)=\inf_{a\in A}|y-a|$.   (Take $\rho(y,\emptyset)=\infty$.)
+Show that if $A$ is porous at every $x\in A$ then $A$ is negligible.
+%223B
+     
+\spheader 223Yf For a measurable set $E\subseteq\Bbb R$ write
+$\intstar E$ for the set of its density points.   Show that if $E$, 
+$F\subseteq\Bbb R$ are measurable then (i)
+$\intstar(E\cap F)=\intstar E\cap\intstar F$ 
+(ii) $\intstar E\subseteq\intstar F$
+iff $\mu(E\setminus F)=0$ (iii) $\mu(E\symmdiff\intstar E)=0$ (iv)
+$\intstar(\intstar E)=\intstar E$ (v) for
+every compact set $K\subseteq\intstar E$ there is a compact set
+$L\subseteq K\cup E$ such that $K\subseteq\intstar L$.
+%223B
+     
+\spheader 223Yg Let $f$ be an integrable real-valued function defined
+almost everywhere in $\Bbb R$, and $x$ any point of the Lebesgue set of
+$f$.   Show that for every $\epsilon>0$ there is a $\delta>0$ such that
+$|f(x)\int g-\int f\times g|\le\epsilon\int g$ whenever
+$g:\Bbb R\to\coint{0,\infty}$ is such that $g$ is non-decreasing on
+$\ocint{-\infty,x}$, non-increasing on $\coint{x,\infty}$ and zero
+outside $[x-\delta,x+\delta]$.   \Hint{express $g$ as a limit almost
+everywhere of functions of the form
+$\Bover{g(x)}{n+1}\sum_{i=0}^n\chi\ooint{a_i,b_i}$, where
+$x-\delta\le a_0\le\ldots\le a_n\le x\le b_n\le\ldots\le b_0
+\le x+\delta$.}
+%223D
+
+\spheader 223Yh For each integrable real-valued function $f$ defined almost
+everywhere in $\Bbb R$, let $E_f$ be the Lebesgue set of $f$.   Show that
+$E_f\cap E_g\subseteq E_{f+g}$, $E_f\subseteq E_{|f|}$ for all integrable
+$f$, $g$.
+%223D
+
+\spheader 223Yi\dvAnew{2014} 
+Let $E\subseteq\Bbb R$ be a non-negligible measurable set. 
+Show that $0$ belongs to the interior of $E-E=\{x-y:x$, $y\in E\}$.
+%223B
+}%end of exercises
+     
+\endnotes{
+\Notesheader{223} The results of this section can be
+thought of as saying that a measurable function is in some sense 
+`almost continuous';  indeed, 223Yb is an attempt to make this notion
+precise.   For an integrable function we have stronger results, of which
+the furthest-reaching seems to be 223D/223Ec.
+     
+There are $r$-dimensional versions of all these theorems, using balls
+centered on $x$ in place of intervals $[x-h,x+h]$;  I give these in
+261C-261E.   %261C 261D 261E
+A new idea is needed for the $r$-dimensional version of
+Lebesgue's density theorem (261C), but the rest of the
+generalization is straightforward.   A less natural, and less important,
+extension, also in \S261, involves functions defined on
+non-measurable sets (compare 223Xb-223Xe).
+}%end of comment
+     
+\discrpage
+

@@ -1,0 +1,1621 @@
+\frfilename{mt526.tex}
+\versiondate{24.1.14}
+\copyrightdate{2009}
+
+\def\chaptername{Cardinal functions of measure theory}
+\def\sectionname{Asymptotic density zero}
+
+\newsection{526}
+
+In \S491, I devoted some paragraphs to the ideal $\Cal Z$ of subsets
+of $\Bbb N$ with asymptotic density zero, as part of an investigation
+into equidistributed sequences
+in topological measure spaces.   Here I return to $\Cal Z$ to examine
+its place in the Tukey ordering of partially ordered sets.   We find
+that it lies strictly between
+$\NN$ and $\ell^1$ (526B, 526J, 526L)
+but in some sense is closer to $\ell^1$
+(526Ga).   On the way, I mention the ideal $\CalNwd$
+of nowhere dense subsets of $\NN$
+(526H-526L) %526H 526I 526J 526K 526L
+and ideals of sets with negligible closures
+(526I-526M). %526I 526J 526K 526L 526M
+
+\leader{526A}{Proposition} For $I\subseteq\Bbb N$, set
+$\nu I=\sup_{n\ge 1}\bover1n\#(I\cap n)$.
+
+(a) $\nu$ is a strictly positive submeasure\cmmnt{ (definition:
+392A)} on $\Cal P\Bbb N$.   We have a
+metric $\rho$ on $\Cal P\Bbb N$
+defined by setting $\rho(I,J)=\nu(I\symmdiff J)$ for all $I$,
+$J\subseteq\Bbb N$, under which the Boolean operations $\cup$, $\cap$,
+$\symmdiff$ and $\setminus$ and upper asymptotic density
+$d^*:\Cal P\Bbb N\to[0,1]$ are uniformly continuous and
+$\Cal P\Bbb N$ is complete.
+
+(b) $\Cal Z$ is a separable closed subset of $\Cal P\Bbb N$.
+
+(c) If $\Cal I\subseteq\Cal Z$ is such that $\sum_{I\in\Cal I}\nu I$ is
+finite, then $\bigcup\Cal I\in\Cal Z$.
+
+(d) With the subspace topology, $(\Cal Z,\subseteq)$
+is a metrizably compactly based directed set\cmmnt{ (definition:  513K)}.
+
+\proof{{\bf (a)} It is elementary to check that $\nu$ is a strictly
+positive submeasure.   By 392H,
+$\rho$ is a metric under which the Boolean operations are
+uniformly continuous.   Since
+
+\Centerline{$|d^*(I)-d^*(J)|\le d^*(I\symmdiff J)\le\nu(I\symmdiff J)$}
+
+\noindent for all $I$, $J\subseteq\Bbb N$, $d^*$ is uniformly
+continuous.
+Let $\sequence{j}{I_j}$ be a sequence in $\Cal P\Bbb N$ such that
+$\rho(I_j,I_{j+1})\le 2^{-j}$ for every $j\in\Bbb N$.   Set
+$I=\bigcap_{m\in\Bbb N}\bigcup_{j\ge m}I_j$.   For any $m\in\Bbb N$ and
+$n\ge 1$,
+
+\Centerline{$\Bover1n\#(n\cap(I_m\symmdiff I))
+\le\Bover1n\sum_{j=m}^{\infty}\#(n\cap(I_j\symmdiff I_{j+1}))
+\le\sum_{j=m}^{\infty}\rho(I_j,I_{j+1})\le 2^{-m+1}$,}
+
+\noindent so $\rho(I_m,I)\le 2^{-m+1}$.   Thus $\sequence{j}{I_j}$ is
+convergent to $I$;  as $\sequence{j}{I_j}$ is arbitrary, $\Cal P\Bbb N$
+is complete (cf.\ 2A4E).
+
+\medskip
+
+{\bf (b)} $\Cal Z$ is a closed subset of $\Cal P\Bbb N$.   \Prf\ If $I$
+belongs to the closure $\overline{\Cal Z}$ of $\Cal Z$, and
+$\epsilon>0$, let $J\in\Cal Z$ be such that
+$\rho(I,J)\le\bover12\epsilon$, and let $m\ge 1$ be such that
+$\bover1n\#(J\cap n)\le\bover12\epsilon$ for every $n\ge m$;  then
+$\bover1n\#(I\cap n)\le\epsilon$ for every $n\ge m$.   As $\epsilon$ is
+arbitrary, $I\in\Cal Z$;  as $I$ is arbitrary, $\Cal Z$ is closed.\ \Qed
+
+$\Cal Z$ is separable because $[\Bbb N]^{<\omega}$ is a
+countable dense set.   (If $I\in\Cal Z$ and $n\in\Bbb N$,
+$\rho(a,a\cap n)\le\sup_{m>n}\bover1m\#(m\cap I)$.)
+
+\medskip
+
+{\bf (c)} Let $\epsilon>0$.   Then there is a finite
+$\Cal I_0\subseteq\Cal I$ such that
+$\sum_{I\in\Cal I\setminus\Cal I_0}\nu I\le\epsilon$.   Set
+$J=\bigcup\Cal I$,
+$J_0=\bigcup\Cal I_0$;  then $J_0\in\Cal Z$ so there is an
+$n_0\in\Bbb N$ such
+that $\#(J_0\cap n)\le n\epsilon$ for every $n\ge n_0$.
+If $n\ge n_0$, then
+
+\Centerline{$\#(J\cap n)
+\le\#(J_0\cap n)+\sum_{I\in\Cal I\setminus\Cal I_0}\#(I\cap n)
+\le n\epsilon+\sum_{I\in\Cal I\setminus\Cal I_0}n\nu I
+\le 2n\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, $J\in\Cal Z$.
+
+\medskip
+
+{\bf (d)} $\Cal Z$ is closed under $\cup$, so is a directed set under
+$\subseteq$, and $\cup:\Cal Z\times\Cal Z\to\Cal Z$ is continuous.   If
+$a\in\Cal Z$, then on $\{b:b\subseteq a\}$ the topology $\frak T_{\rho}$
+induced by $\rho$ agrees with the usual compact Hausdorff topology
+$\frak S$ of $\Cal P\Bbb N\cong\{0,1\}^{\Bbb N}$.   \Prf\ If $n\in\Bbb N$
+and $\rho(b,c)<\bover1{n+1}$, then $b\cap n=c\cap n$;  so $\frak T_{\rho}$
+is finer than $\frak S$ on $\Cal P\Bbb N$.   If $\epsilon>0$, there is an
+$m\in\Bbb N$ such that $\#(a\cap n)\le n\epsilon$ whenever $n\ge m$;  now
+$\rho(b,c)\le\epsilon$ whenever $b$, $c\subseteq a$ and $b\cap m=c\cap m$.
+So $\frak S$ is finer than $\frak T_{\rho}$ on $\{b:b\subseteq a\}$.\ \QeD\
+Since $\{b:b\subseteq a\}$ is $\frak S$-compact, it is
+$\frak T_{\rho}$-compact.
+
+Now suppose that $\sequencen{a_n}$ is a sequence in $\Cal Z$ with
+$\frak T_{\rho}$-limit $a$.   Then it has a subsequence
+$\sequence{k}{a_{n_k}}$ such that $\rho(a,a_{n_k})\le 2^{-k}$ for every
+$k$.   Set $b=\bigcup_{k\in\Bbb N}a_{n_k}$.   Then, given $\epsilon>0$,
+let $r$, $m\in\Bbb N$ be such that $2^{-r}\le\epsilon$ and
+$\#(n\cap(a\cup\bigcup_{k\le r}a_{n_k}))\le n\epsilon$ for every $n\ge m$;
+then
+
+$$\eqalign{\#(n\cap b)
+&\le\#(n\cap(a\cup\bigcup_{k\le r}a_{n_k}))
+  +\sum_{k=r+1}^{\infty}\#(n\cap a_{n_k}\setminus a)\cr
+&\le n\epsilon+\sum_{k=r+1}^{\infty}2^{-k}n
+\le 2n\epsilon\cr}$$
+
+\noindent for every $n\ge m$.   So $b\in\Cal Z$ and
+$\{a_{n_k}:k\in\Bbb N\}$ is bounded above in $\Cal Z$.
+}%end of proof of 526A
+
+\leader{526B}{Proposition}\cmmnt{ ({\smc Fremlin 91})}
+$\BbbN^{\Bbb N}\prT\Cal Z\prT\ell^1$.
+
+\proof{{\bf (a)} For $\alpha\in\BbbN^{\Bbb N}$, set
+
+\Centerline{$\phi(\alpha)=\{2^ni:n\in\Bbb N$, $i\le\alpha(n)\}$.}
+
+\noindent Then $\phi(\alpha)\in\Cal Z$, because if $k\in\Bbb N$ then
+
+\Centerline{$\#(m\cap\phi(\alpha))
+  \le\sum_{n=0}^k\alpha(n)+\lceil 2^{-k}m\rceil$}
+
+\noindent for every $m$.   Also $\phi:\BbbN^{\Bbb N}\to\Cal Z$
+is a Tukey function, because if $\phi(\alpha)\subseteq a\in\Cal Z$ then
+$\alpha(n)\le\min\{i:2^ni\notin a\}$ for every $n\in\Bbb N$.   So
+$\NN\prT\Cal Z$.
+
+\medskip
+
+{\bf (b)} Give $\Cal Z$ the metric $\rho$ of 526A.
+Then $\Cal Z$ is complete and separable and
+the lattice operation $\cup$ is uniformly continuous (526Aa).   By 524C,
+$(\Cal Z,\subseteq^{\strprime},[\Cal Z]^{<\omega})
+\prGT(\ell^1(\omega),\le,\ell^1(\omega))$.   Since $\Cal Z$
+is upwards-directed, $(\Cal Z,\subseteq,\penalty-100\Cal Z)
+\equivGT(\Cal Z,\subseteq^{\strprime},[\Cal Z]^{<\omega})$ (513Id) and
+$(\Cal Z,\subseteq,\Cal Z)\prGT(\ell^1,\le,\ell^1)$, that is,
+$\Cal Z\prT\ell^1$.
+}%end of proof of 526B
+
+\leader{526C}{}\cmmnt{ The next three lemmas are steps on the way to
+Theorem 526F.   I give them in much more generality than is required by
+that theorem because a couple of them will be useful later,
+and I think they are interesting in themselves.   But if
+you are reading this primarily for the sake of 526F, you might save time by
+looking ahead to the proof there and working backwards, extracting
+arguments adequate for the special case of 526E which is actually required.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $\sequencen{(\frak A_n,\bar\mu_n)}$ be a
+sequence of purely atomic probability algebras, and
+$\frak A=\prod_{n\in\Bbb N}\frak A_n$ the simple product algebra.   Then
+there is an order-continuous Boolean homomorphism
+$\pi:\frak A\to\Cal P\Bbb N$ such that
+$\limsup_{n\to\infty}\bar\mu_na(n)$ is the upper asymptotic density
+$d^*(\pi a)$ for every $a\in\frak A$;
+consequently, $\lim_{n\to\infty}\bar\mu_na(n)$ is the asymptotic density
+$d(\pi a)$ of $\pi a$ if either is defined.
+
+\proof{{\bf (a)} For each $n\in\Bbb N$, let $C_n$ be the set of atoms of
+$\frak A_n$, and choose rational numbers $\alpha_n(c)$ such that
+$\alpha_n(c)\le\bar\mu_nc$ for each $c\in C_n$, $\sum_{c\in
+C_n}\alpha_n(c)>1-2^{-n}$, and $\{c:c\in C_n$, $\alpha_n(c)>0\}$ is
+finite.   Express $\alpha_n(c)$ as
+$r_n(c)/s_n$ for each $c\in C_n$, where $r_n(c)\in\Bbb N$ and
+$s_n\in\Bbb N\setminus\{0\}$;
+let $\family{c}{C_n}{I_n(c)}$ be a disjoint family of subsets of
+$\Bbb N$ with $\#(I_n(c))=r_n(c)$ for each $c$, and set
+$J_n=\bigcup_{c\in C_n}I_n(c)$;
+let $\pi_n:\frak A_n\to\Cal PJ_n$ be the Boolean
+homomorphism such that $\pi_n(c)=I_n(c)$ for each
+$c\in C_n$.   Then
+
+\Centerline{$(1-2^{-n})s_n<s_n\sum_{c\in C_n}\alpha_n(c)=\sum_{c\in
+C_n}r_n(c)=\#(J_n)\le s_n$.}
+
+\noindent Note that $\#(J_n)>0$.   Also
+
+$$\eqalign{\#(J_n)(\bar\mu_nd-2^{-n})
+&\le\#(J_n)\sum_{c\in C_n,c\subseteq d}\alpha_n(c)\cr
+&\le s_n\sum_{c\in C_n,c\subseteq d}\alpha_n(c)
+=\sum_{c\in C_n,c\subseteq d}r_n(c)
+=\#(\pi_nd)\cr}$$
+
+\noindent and
+
+\Centerline{$(1-2^{-n})\#(\pi_nd)=(1-2^{-n})s_n\sum_{c\in
+C_n,c\Bsubseteq d}\alpha_n(c)\le\#(J_n)\cdot\bar\mu_nd$}
+
+\noindent for every $d\in\frak A_n$.   So, for $a\in\frak A$,
+
+\Centerline{$\limsup_{n\to\infty}\bar\mu_na(n)
+=\limsup_{n\to\infty}\Bover{\#(\pi_na(n))}{\#(J_n)}$.}
+
+\medskip
+
+{\bf (b)} Let $\sequencen{m_n}$ be a sequence in $\Bbb N$ such that
+
+\Centerline{$m_n\#(J_n)\ge 2^n\max(\#(J_{n+1}),\sum_{i<n}m_i\#(J_i))$}
+
+\noindent for every $n$.   Set $n_k=n$ if
+$\sum_{i<n}m_i\le k<\sum_{i\le n}m_i$ where $n\in\Bbb N$;  then
+$\lim_{k\to\infty}n_k=\infty$.   Set $l_k=\sum_{i<k}\#(J_{n_i})$, so
+that $l_{k+1}-l_k=\#(J_{n_k})$ for each $k$, and let
+$\phi_k:\Cal PJ_{n_k}\to\Cal P(l_{k+1}\setminus l_k)$ be a Boolean
+isomorphism;  set
+
+\Centerline{$\pi a=\bigcup_{k\in\Bbb N}\phi_k\pi_{n_k}a(n_k)$}
+
+\noindent for $a\in\frak A$, so that $\pi:\frak A\to\Cal P\Bbb N$ is an
+order-continuous Boolean isomorphism.
+
+\medskip
+
+{\bf (c)} Let $a\in\frak A$, and set
+
+\Centerline{$\gamma=\limsup_{n\to\infty}\bar\mu_na(n)
+=\limsup_{n\to\infty}\Bover{\#(\pi_na(n))}{\#(J_n)}$,}
+
+\Centerline{$\gamma'=\limsup_{l\to\infty}\Bover1l\#(l\cap\pi a)$.}
+
+\noindent Then $\gamma\le\gamma'$.   \Prf\ Setting
+$l'_n=\sum_{i<n}m_i\#(J_i)$, we have $\#(l'_{n+1}\cap\pi a)\ge
+m_n\#(\pi_na(n))$, while
+$l'_{n+1}=l'_n+m_n\#(J_n)\le(1+2^{-n})m_n\#(J_n)$ for each $n$;  but
+this means that
+
+$$\gamma'\ge\limsup_{n\to\infty}\bover1{l'_{n+1}}\#(l'_{n+1}\cap\pi a)
+\ge\limsup_{n\to\infty}\bover{m_n\#(\pi_na(n))}{(1+2^{-n})m_n\#(J_n)}
+=\gamma. \text{ \Qed}$$
+
+\noindent Also $\gamma'\le\gamma$.   \Prf\ Let $\epsilon>0$.   Let
+$n^*\ge 1$ be such that $2^{-n^*}\le\epsilon$ and
+$\#(\pi_na(n))\le(\gamma+\epsilon)\#(J_n)$ for every $n\ge n^*$.
+Suppose that $l\ge l'_{n^*+1}$.   Then $l$ is of the form
+$l'_{n+1}+j\#(J_{n+1})+i$ where $n\ge n^*$, $j<m_{n+1}$ and
+$i<\#(J_{n+1})$.   Now $l'_{n+1}=l'_n+m_n\#(J_n)$, so
+
+$$\eqalign{\#(l'_{n+1}\cap\pi a)
+&\le l'_n+m_n\#(\pi_na(n))
+\le l'_n+m_n\#(J_n)(\gamma+\epsilon)\cr
+&\le m_n\#(J_n)(\gamma+\epsilon+2^{-n})
+\le m_n\#(J_n)(\gamma+2\epsilon)\cr}$$
+
+\noindent by the choice of $m_n$.   Accordingly
+
+$$\eqalignno{\#(l\cap\pi a)
+&\le m_n\#(J_n)(\gamma+2\epsilon)+(j+1)\#(\pi_{n+1}a(n+1))\cr
+&\le m_n\#(J_n)(\gamma+2\epsilon)+j(\gamma+\epsilon)\#(J_{n+1})
+  +\#(J_{n+1})\cr
+&\le (\gamma+2\epsilon)l+\#(J_{n+1})
+\le (\gamma+2\epsilon)l+2^{-n}m_n\#(J_n)\cr
+\displaycause{by the choice of $m_n$}
+&\le (\gamma+3\epsilon)l.\cr}$$
+
+\noindent As this is true for any $l\ge l'_{n^*+1}$,
+$\gamma'\le\gamma+3\epsilon$;  as $\epsilon$ is arbitrary,
+$\gamma'\le\gamma$.\ \Qed
+
+\medskip
+
+{\bf (d)} Thus
+
+\Centerline{$\limsup_{n\to\infty}\bar\mu_na(n)
+=\limsup_{n\to\infty}\Bover1n\#(n\cap\pi a)$}
+
+\noindent for every $a\in\frak A$.   But as $\pi$ is a Boolean
+homomorphism, it follows at once that
+
+\Centerline{$\liminf_{n\to\infty}\bar\mu_na(n)
+=\liminf_{n\to\infty}\Bover1n\#(n\cap\pi a)$}
+
+\noindent for every $a$, so that the limits are equal if either is
+defined.
+}%end of proof of 526C
+
+\leader{526D}{Lemma} Let $(\frak A,\bar\mu)$ be a semi-finite measure
+algebra, and $\kappa\ge\max(\omega,c(\frak A),\tau(\frak A))$ a cardinal.
+Let $(\frak B_{\kappa},\bar\nu_{\kappa})$ be the measure algebra of the
+usual measure on $\{0,1\}^{\kappa}$, and $\gamma>0$.   Then there is a
+function $\theta:\frak A\to\frak B_{\kappa}$ such that
+
+(i) $\theta(\sup A)=\sup\theta[A]$ for every non-empty $A\subseteq\frak A$ such
+that $\sup A$ is defined in $\frak A$;
+
+(ii) $\bar\nu_{\kappa}\theta(a)=1-e^{-\gamma\bar\mu a}$ for every
+$a\in\frak A$, interpreting $e^{-\infty}$ as $0$;
+
+(iii) if $\familyiI{a_i}$ is a disjoint family in $\frak A$, and
+$\frak C_i$ is the closed subalgebra of $\frak B_{\kappa}$ generated by
+$\{\theta(a):a\Bsubseteq a_i\}$ for each $i$, then $\familyiI{\frak C_i}$ is
+stochastically independent.
+
+\proof{{\bf (a)} By 495J, we have exactly this result for some
+probability algebra $(\frak B,\bar\lambda)$ in place of
+$(\frak B_{\kappa},\bar\nu_{\kappa})$.
+Set $\frak A^f=\{a:a\in\frak A$, $\bar\mu a<\infty\}$, and
+give $\frak A^f$ its measure metric $\rho$ (323Ad).   Then
+$\theta\restrp\frak A^f$ is uniformly continuous for $\rho$ and the measure
+metric $\sigma$ of $\frak B$.   \Prf\ If $\epsilon>0$, there is a
+$\delta>0$ such that $|e^{-\gamma s}-e^{-\gamma t}|\le\bover12\epsilon$
+whenever $s$, $t\in\coint{0,\infty}$ and $|s-t|\le\delta$.   Now if $a$,
+$a'\in\frak A$ and $\bar\mu(a\Bsymmdiff a')\le\delta$, set
+$b=a\Bcap a'$;  then $\theta(b)\Bsubseteq\theta(a)$ and
+$\bar\mu a-\bar\mu b\le\delta$, so
+
+\Centerline{$\sigma(\theta(a),\theta(b))
+=\bar\lambda(\theta(a)\Bsetminus\theta(b))
+=\bar\lambda\theta(a)-\bar\lambda\theta(b)
+=e^{-\gamma\bar\mu b}-e^{-\gamma\bar\mu a}\le\Bover12\epsilon$.}
+
+\noindent Similarly, $\sigma(\theta(a'),\theta(b))\le\bover12\epsilon$ so
+$\sigma(\theta(a),\theta(a'))\le\epsilon$.
+As $\epsilon$ is arbitrary, this gives the result.\ \Qed
+
+\medskip
+
+{\bf (b)} By 521Eb, there is a set $B\subseteq\frak A^f$, of
+cardinal at most $\kappa$, which is dense for $\rho$.   Accordingly
+$\theta[B]$ is dense in $f[\frak A^f]$ for $\sigma$.
+Taking $\frak D$ to be
+the closed subalgebra of $\frak B$ generated by $\theta[B]$,
+$\tau(\frak D)\le\kappa$ and $\theta[\frak A^f]\subseteq\frak D$.
+But if $a\in\frak A\setminus\frak A^f$ then $\theta(a)=1$, so
+$\theta[\frak A]\subseteq\frak D$.   Now there is a measure-preserving
+Boolean homomorphism $\phi:\frak D\to\frak B_{\kappa}$ (332N), and
+$\phi\theta:\frak A\to\frak B_{\kappa}$ has the properties we need.
+}%end of proof of 526D
+
+\vleader{48pt}{526E}{Lemma} Let $\sequencen{(\frak A_n,\bar\mu_n)}$ be a
+sequence of finite probability algebras and $\sequencen{\gamma_n}$ a
+sequence in $\ooint{0,\infty}$.   Write $P$ for the set
+
+\Centerline{$\{p:p\in\prod_{n\in\Bbb N}\frak A_n$,
+$\lim_{n\to\infty}\gamma_n\bar\mu_np(n)=0\}$,}
+
+\noindent with the ordering inherited from the product partial order on
+$\prod_{n\in\Bbb N}\frak A_n$.   Then $P\prT\Cal Z$.
+
+\proof{{\bf (a)} By 526D, we can find for each $n$ a probability
+algebra $(\frak B_n,\bar\nu_n)$ and a function
+$\theta_n:\frak A_n\to\frak B_n$ such that, for all $a$, $a'\in\frak A_n$,
+
+\Centerline{$\theta_n(a\Bcup a')=\theta_n(a)\Bcup\theta_n(a')$,}
+
+\Centerline{$\bar\nu_n\theta_n(a)=1-\exp(-\gamma_n\bar\mu a)$.}
+
+\noindent We may suppose that $\frak B_n$ is generated by
+$\theta_n[\frak A_n]$, so is itself finite.   Set
+$\frak A=\prod_{n\in\Bbb N}\frak A_n$,
+$\frak B=\prod_{n\in\Bbb N}\frak B_n$,
+$\theta(p)=\sequencen{\theta_n(p(n))}$ for
+$p\in\frak A$;  then $\theta(\sup A)=\sup\theta[A]$ for
+any non-empty subset $A$ of $\frak A$.   Set
+
+\Centerline{$Q=\{q:q\in\prod_{n\in\Bbb N}\frak B_n$,
+$\lim_{n\to\infty}\bar\nu_nq(n)=0\}$.}
+
+\noindent Then $\theta\restr P$ is a Tukey function from $P$ to $Q$.
+\Prf\ $P=f^{-1}[Q]$, because $\lim_{n\to\infty}\gamma_n\xi_n=0$ iff
+$\lim_{n\to\infty}1-e^{-\gamma_n\xi_n}=0$.
+So $\theta\restr P$ is a function from $P$ to $Q$.   If $q\in Q$,
+$A=\{p:p\in\frak A$, $\theta(p)\Bsubseteq q\}$ has a supremum
+$p_0\in\frak A$;  now $\theta(p_0)=\sup\theta[A]\Bsubseteq q$, so
+$\theta(p_0)\in Q$
+and $p_0\in P$ is an upper bound for $A$ in $P$.\ \Qed
+
+\medskip
+
+{\bf (b)} By 526C, we have an order-continuous Boolean homomorphism
+$\pi:\frak B\to\Cal P\Bbb N$ such that $\pi(q)\in\Cal Z$
+iff $q\in Q$.   Now $\pi\restr Q$ is a Tukey function from $Q$ to
+$\Cal Z$.   \Prf\ If $d\in\Cal Z$, set
+$B=\{q:q\in\frak B$, $\pi(q)\subseteq d\}$.   Because $\pi$ is an
+order-continuous Boolean homomorphism, $B$ contains its supremum, and
+$B$ is bounded above in $Q$.\ \Qed
+
+\medskip
+
+{\bf (c)} Thus $\pi\theta\restr P:P\to\Cal Z$ is a Tukey function and
+$P\prT\Cal Z$.
+}%end of proof of 526E
+
+\leader{526F}{Theorem}
+$(\ell^1,\le,\ell^1)\prGT(\NN,\le,\NN)\ltimes(\Cal Z,\subseteq,\Cal Z)$.
+
+\proof{{\bf (a)} Let $Q\subseteq\NN$ be the set of strictly increasing
+sequences $\alpha$ such that $\alpha(0)>0$.   For $\alpha\in Q$, set
+
+$$\eqalign{P_{\alpha}
+&=\{x:x\in\ell^1,\,\|x\|_{\infty}\le \alpha(0),\,
+  \lim_{n\to\infty}2^n\sum_{i=\alpha(n)}^{\infty}x(i)^+=0\}\cr
+&=\{x:x\in\ell^{\infty},\,\|x\|_{\infty}\le \alpha(0),\,
+  \lim_{n\to\infty}2^n\sum_{i=\alpha(n)}^{\alpha(n+1)-1}x(i)^+=0\}\cr}$$
+
+\noindent because
+
+$$2^n\sum_{i=\alpha(n)}^{\infty}x(i)^+
+=\sum_{m=n}^{\infty}2^{n-m}2^m
+\sum_{i=\alpha(m)}^{\alpha(m+1)-1}x(i)^+
+\le 2\sup_{m\ge n}2^m\sum_{i=\alpha(m)}^{\alpha(m+1)-1}x(i)^+$$
+
+\noindent for every $n$ and $x$.
+
+The point is that $P_{\alpha}\prT\Cal Z$.   \Prf\ For each $n\in\Bbb N$
+set $k_n=2^{2n}(\alpha(n+1)-\alpha(n))$,
+
+\Centerline{$V_n=(\alpha(n+1)\setminus \alpha(n))\times
+k_n\alpha(0)\subseteq\Bbb N\times\Bbb N$,
+\quad$\frak A_n=\Cal PV_n$,}
+
+\noindent and let $\bar\mu_n$ be the uniform probability measure on
+$\frak A_n$, so that $\bar\mu_nd=\#(d)/\#(V_n)$ for $d\subseteq V_n$.
+For $n\in\Bbb N$ and $x\in\ell^{\infty}$ set
+
+\Centerline{$f_n(x)=\{(i,j):\alpha(n)\le i<\alpha(n+1)$,
+$j<k_n\min(\alpha(0),x(i))\}\subseteq V_n$.}
+
+\noindent Then
+
+\Centerline{$|\#(f_n(x))
+  -k_n\sum_{\alpha(n)\le i<\alpha(n+1)}\min(\alpha(0),x(i)^+)|
+\le\alpha(n+1)-\alpha(n)$,}
+
+\noindent so if $\|x\|_{\infty}\le \alpha(0)$ then
+
+$$\eqalign{\bigl|2^n\alpha(0)(\alpha(n+1)-\alpha(n))\bar\mu f_n(x)
+  -2^n\sum_{i=\alpha(n)}^{\alpha(n+1)-1}x(i)^+\bigr|
+&\le 2^n(\alpha(n+1)-\alpha(n))/k_n\cr
+&=2^{-n}.\cr}$$
+
+\noindent Accordingly
+
+\Centerline{$P_{\alpha}=\{x:x\in\ell^{\infty}$,
+$\|x\|_{\infty}\le\alpha(0)$,
+$\lim_{n\to\infty}2^n(\alpha(n+1)-\alpha(n))\bar\mu_nf_n(x)
+=0\}$.}
+
+Let $\frak A=\prod_{n\in\Bbb N}\frak A_n$ be the simple product of the
+Boolean algebras $\frak A_n$, and $I$ the ideal
+
+\Centerline{$\{a:a\in\frak A$,
+$\lim_{n\to\infty}
+ 2^n(\alpha(n+1)-\alpha(n))\bar\mu_na(n)=0\}$}
+
+\noindent of $\frak A$.
+For $x\in\ell^{\infty}$, set $f(x)=\sequencen{f_n(x)}$.
+Observe that $f:\ell^{\infty}\to\frak A$ is supremum-preserving in the
+sense that $f(\sup A)=\sup f[A]$ for any non-empty bounded subset $A$ of
+$\ell^{\infty}$.
+
+The last formula for $P_{\alpha}$ shows that $f(x)\in I$ for every
+$x\in P_{\alpha}$.   But if $a\in I$,
+$A=\{x:x\in P_{\alpha}$, $f(x)\Bsubseteq a\}$ is upwards-directed and
+has a supremum $x_0\in\ell^{\infty}$, with $\|x_0\|_{\infty}\le
+\alpha(0)$.   Now $f(x_0)=\sup_{x\in A}f(x)\Bsubseteq a$, so $x_0\in
+P_{\alpha}$ and is an
+upper bound for $A$ in $P_{\alpha}$.   Thus $f\restr P_{\alpha}$ is a
+Tukey function from $P_{\alpha}$ to $I$, and $P_{\alpha}\prT I$.
+By 526E, $I\prT\Cal Z$, so $P_{\alpha}\prT\Cal Z$.\ \Qed
+
+Thus $(P_{\alpha},\le,P_{\alpha})\prGT(\Cal Z,\subseteq,\Cal Z)$;  it
+follows at once that
+$(P_{\alpha},\le,\ell^1)\prGT(\Cal Z,\subseteq,\Cal Z)$.
+
+\medskip
+
+{\bf (b)} Now, for $\alpha\in\NN$, take $\tilde P_\alpha=P_{\beta}$ where
+$\beta(n)=1+n+\max_{i\le n}\alpha(i)$ for $n\in\Bbb N$.   Then
+$\tilde P_{\alpha}\subseteq\tilde P_{\alpha'}$ whenever
+$\alpha\le\alpha'$ in
+$\NN$, $\bigcup_{\alpha\in\NN}\tilde P_\alpha=\ell^1$ and
+$(\tilde P_\alpha,\le,\ell^1)\prGT(\Cal Z,\subseteq,\Cal Z)$ for every
+$\alpha$;  so
+$(\ell^1,\le,\ell^1)\prGT(\NN,\le,\NN)\ltimes(\Cal Z,\subseteq,\Cal Z)$,
+by 512K.
+}%end of proof of 526F
+
+\leader{526G}{Corollary} Let $\Cal N$ be the ideal of Lebesgue
+negligible subsets of $\Bbb R$.
+
+(a) $\add_{\omega}\Cal Z=\add\Cal N=\add_{\omega}\ell^1$ and
+$\cf\Cal Z=\cf\Cal N=\cf\ell^1$.
+
+(b) If $\Cal A\subseteq\Cal Z$ and $\#(\Cal A)<\add\Cal N$, there is a
+$J\in\Cal Z$ such that $I\setminus J$ is finite for every $I\in\Cal A$.
+
+%note:  this works for all analytic P-ideals, see {\smc Farah 00},
+%5.6.3.
+
+\proof{{\bf (a)(i)} Putting 526B and 513Ie together, we see that
+
+\Centerline{$\add_{\omega}\BbbN^{\Bbb N}\ge\add_{\omega}\Cal Z
+\ge\add_{\omega}\ell^1$,}
+
+\noindent that is,
+
+\Centerline{$\frak b\ge\add_{\omega}\Cal Z\ge\add\Cal N$}
+
+\noindent (522A, 524I).   Next, we can deduce from 526F that
+$\add_{\omega}\ell^1
+\ge\min(\add_{\omega}\BbbN^{\Bbb N},\add_{\omega}\Cal Z)$.   \Prf\ Let
+$(\phi,\psi)$ be a Galois-Tukey connection from
+$(\ell^1,\le,\ell^1)$ to
+
+\Centerline{$(\NN,\le,\NN)\ltimes(\Cal Z,\subseteq,\Cal Z)
+=(\NN\times\Cal Z^{\NN},T,\NN\times\Cal Z)$,}
+
+\noindent where
+
+\Centerline{$T=\{((p,f),(q,a)):p\le q$ in $\NN$, $f(q)\subseteq a\in\Cal
+Z\}$.}
+
+\noindent We can interpret $\phi$ as a pair $(\phi_1,\phi_2)$ where
+$\phi_1$ is a function from $\ell^1$ to $\NN$ and $\phi_2$ is a function
+from $\ell^1\times\NN$ to $\Cal Z$, and saying that $(\phi,\psi)$ is a
+Galois-Tukey connection means just that
+
+\Centerline{if $\phi_1(x)\le q$ and $\phi_2(x,q)\subseteq a$ then
+$x\le\psi(q,a)$.}
+
+Now suppose that $A\subseteq\ell^1$ and
+$\#(A)<\min(\add_{\omega}\NN,\add_{\omega}\Cal Z)$.
+Then there is a sequence
+$\sequencen{q_n}$ in $\NN$ such that for every $x\in A$ there is an
+$n\in\Bbb N$ such that $\phi_1(x)\le q_n$.   Next, for each $n\in\Bbb N$
+there is a sequence
+$\sequence{m}{a_{nm}}$ in $\Cal Z$ such that for every $x\in A$ there is
+an $m\in\Bbb N$ such that $\phi_2(x,q_n)\subseteq a_{nm}$.   In this
+case, $B=\{\psi(q_n,a_{nm}):m$, $n\in\Bbb N\}$ is a countable subset of
+$\Cal Z$, and for every $x\in A$ there are $m$, $n\in\Bbb N$ such that
+$\phi_1(x)\le q_n$ and $\phi_2(x,q_n)\subseteq a_{nm}$, so that
+$x\le\psi(q_n,a_{nm})\in B$.   As $A$ is arbitrary,
+$\add_{\omega}\ell^1\ge\min(\add_{\omega}\NN,\add_{\omega}\Cal Z)$.\
+\Qed
+
+Thus we have
+$\add\Cal N\ge\min(\frak b,\add_{\omega}\Cal Z)=\add_{\omega}\Cal Z$,
+and $\add_{\omega}\Cal Z=\add\Cal N$.   And we know from 524I, with
+$\kappa=\omega$ there, that $\add\Cal N=\add_{\omega}\ell^1$
+
+
+\medskip
+
+\quad{\bf (ii)} On the other hand, 524I, 526F, 512Da and 512Jb tell us
+that
+
+$$\eqalign{\cf\Cal N
+&=\cf\ell^1
+=\cov(\ell^1,\subseteq,\ell^1)
+\le\cov((\NN,\le,\NN)\ltimes(\Cal Z,\subseteq,\Cal Z))\cr
+&=\max(\cov(\NN,\le,\NN),\cov(\Cal Z,\subseteq,\Cal Z))
+=\max(\frak d,\cf\Cal Z).\cr}$$
+
+\noindent But from 526B we see that $\frak d\le\cf\Cal Z\le\cf\ell^1$,
+so $\cf\Cal Z=\cf\Cal N$, while 524I tells us that $\cf\Cal N=\cf\ell^1$.
+
+\medskip
+
+{\bf (b)} By (a), there is a countable set $\Cal D\subseteq\Cal Z$ such
+that every member of $\Cal A$ is included in a member of $\Cal D$.   By
+491Ae, there is a $J\in\Cal Z$ such that
+$I\setminus J$ is finite for every $I\in\Cal D$;  this $J$ serves.
+}%end of proof of 526G
+
+\leader{526H}{}\cmmnt{ I turn now to ideals of nowhere dense sets.
+
+\medskip
+
+\noindent}{\bf Proposition}
+Let $\CalNwd$ be the ideal of nowhere dense subsets
+of $\NN$ and $\Cal M$ the ideal of meager subsets of $\NN$.
+
+(a) $\CalNwd$ is isomorphic, as partially ordered set, to
+$(\CalNwd)^{\Bbb N}$.
+
+(b) $(\CalNwd,\subseteq^{\strprime},[\CalNwd]^{\le\omega})
+\equivGT(\Cal M,\subseteq,\Cal M)$.
+
+(c) $\CalNwd\prT\ell^1$.
+
+(d) Let $X$ be a set and $\Cal V$ a countable family of subsets of $X$.
+Set
+
+\Centerline{$\Cal D=\{D:D\subseteq X$, for every $V\in\Cal V$ there is a
+$V'\in\Cal V$ such that $V'\subseteq V\setminus D\}$.}
+
+\noindent Then $\Cal D\prT\CalNwd$.
+
+(e) If $X$ is any non-empty Polish space without isolated points, and
+$\CalNwd(X)$ is the ideal of nowhere dense subsets of $X$, then
+$\CalNwd\equivT\CalNwd(X)$.
+
+(f) If $X$ is a compact metrizable space and
+$\Cal C_{\text{nwd}}$ is the family of closed nowhere dense
+subsets of $X$ with the Fell\cmmnt{ (or Vietoris)}
+topology\cmmnt{ (4A2T)},
+then $(\Cal C_{\text{nwd}},\subseteq)$ is a metrizably compactly based
+directed set.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Recall that if $R$ is any relation then
+$R^{\strprime}$ is the relation
+$\{(x,B):(x,y)\in R$ for some $y\in B\}$;  see 512F-512G.
+}%end of comment
+
+\proof{ Enumerate $S=\bigcup_{n\in\Bbb N}\BbbN^n$
+as $\sequencen{\sigma_n}$.
+For $\sigma\in S$ write
+$I_{\sigma}=\{\alpha:\sigma\subseteq\alpha\in\NN\}$.
+
+\medskip
+
+{\bf (a)} Define $\phi:\CalNwd\to\CalNwd^{\Bbb N}$ by setting
+$\phi(F)(n)=\{\alpha:\fraction{n}^{\smallfrown}\alpha\in F\}$, where
+$\fraction{n}^{\smallfrown}\alpha=(n,\alpha(0),\alpha(1),\ldots)$
+for $n\in\Bbb N$ and $\alpha\in\NN$.   Then $\phi$ is an isomorphism
+between $\CalNwd$ and $\CalNwd^{\Bbb N}$.
+
+\medskip
+
+{\bf (b)(i)} Choose $\phi:\Cal M\to\CalNwd^{\Bbb N}$ such that
+$M\subseteq\bigcup_{n\in\Bbb N}\phi(M)(n)$ for every $M\in\Cal M$.
+Then $\phi$ is a Tukey function so
+$\Cal M\prT\CalNwd^{\Bbb N}\cong\CalNwd$, that is,
+$(\Cal M,\subseteq,\Cal M)\prGT(\CalNwd,\subseteq,\CalNwd)$.   By 513Id
+and 512Gb,
+
+\Centerline{$(\Cal M,\subseteq,\Cal M)
+\equivGT(\Cal M,\subseteq^{\strprime},[\Cal M]^{\le\omega})
+\prGT(\CalNwd,\subseteq^{\strprime},[\CalNwd]^{\le\omega})$.}
+
+\woddheader{526H}{4}{2}{2}{42pt}
+
+\quad{\bf (ii)} For $n\in\Bbb N$ and $\tau\in\BbbN^n$, define
+$g_{\tau}:\NN\to\NN$ by saying that
+$g_{\tau}(\alpha)=\tau^{\smallfrown}\alpha$, that is,
+
+$$\eqalign{g_{\tau}(\alpha)(i)
+&=\tau(i)\text{ if }i<n,\cr
+&=\alpha(i-n)\text{ otherwise}.\cr}$$
+
+\noindent Note that $g_{\tau}$ is a homeomorphism between
+$\NN$ and $I_{\tau}$, so that $g_{\tau}[F]$ and $g_{\tau}^{-1}[F]$ are
+nowhere dense whenever $F$ is.
+
+Now for any $F\in\CalNwd$ we can find a $\phi(F)\in\CalNwd$ such that
+$F\subseteq\phi(F)$ and for every $\sigma\in S$ either
+$I_{\sigma}\cap\phi(F)=\emptyset$
+or there is a $\tau\in S$, extending $\sigma$, such that
+$g_{\tau}[F]\subseteq\phi(F)$.   \Prf\ Choose $\sequencen{\tau_n}$,
+$\sequencen{\upsilon_n}$ inductively,
+as follows.  Given that $I_{\upsilon_i}\cap(F\cup
+g_{\tau_j}[F])=\emptyset$ for all $i$, $j<n$, set
+$E=I_{\sigma_n}\cap(F\cup\bigcup_{j<n}g_{\tau_j}[F])$.   If
+$E=\emptyset$ set $\upsilon_n=\sigma_n$ and $\tau_n=\emptyset$, so that
+$g_{\tau_n}[F]=F$.
+If $E$ is not empty, it is still nowhere dense, so we can find
+$\upsilon_n\supseteq\sigma_n$ such that
+$I_{\upsilon_n}\cap E=\emptyset$.   In this case,
+$\bigcup_{i\le n}I_{\upsilon_i}$ is a closed set not including
+$I_{\sigma_n}$, so we can find a $\tau_n\supseteq\sigma_n$ such that
+$I_{\tau_n}\cap\bigcup_{i\le n}I_{\upsilon_i}=\emptyset$,
+and $I_{\upsilon_i}\cap g_{\tau_n}[F]=\emptyset$ for $i\le n$.
+Thus in both cases we shall have
+$\bigcup_{i\le n}I_{\upsilon_i}\cap(F\cup\bigcup_{j\le n}g_{\tau_j}[F])
+=\emptyset$,
+and the induction proceeds.
+
+Set $\phi(F)=\overline{F\cup\bigcup_{j\in\Bbb N}g_{\tau_j}[F]}$.
+Because $\upsilon_i\supseteq\sigma_i$ and $\phi(F)\cap I_{\upsilon_i}$ is
+empty for every $i\in\Bbb N$, $\phi(F)\in\CalNwd$.
+If $\sigma\in S$ is such that $\phi(F)$ meets $I_{\sigma}$, there is
+an $n\in\Bbb N$ such that $\sigma=\sigma_n$;  now we cannot have
+$\upsilon_n=\sigma_n$ so we must have
+$\tau_n\supseteq\sigma_n$ and $g_{\tau_n}[F]\subseteq\phi(F)$.   Thus we
+have found an suitable set $\phi(F)$.\ \Qed
+
+For each $M\in\Cal M$ let $\Cal E_M$ be a non-empty countable family of
+closed nowhere dense sets covering $M$, and set
+$\psi(M)=\{g_{\tau}^{-1}[E]:E\in\Cal E_M$, $\tau\in S\}$.
+Then $(\phi,\psi)$ is a Galois-Tukey connection from
+$(\CalNwd,\subseteq^{\strprime},[\CalNwd]^{\le\omega})$ to
+$(\Cal M,\subseteq,\Cal M)$.   \Prf\ Suppose that $F\in\CalNwd$ and
+$M\in\Cal M$ are such that $\phi(F)\subseteq M$.
+If $F=\emptyset$ then certainly there is an $F'\in\psi(M)$ covering $F$.
+Otherwise, $\phi(F)$ is a non-empty closed set included in the union of
+the countable set $\Cal E_M$ of closed sets.   By Baire's theorem, there
+must be a $\sigma\in S$ and an $E\in\Cal E_M$ such that
+$\emptyset\ne\phi(F)\cap I_{\sigma}\subseteq E$.
+In this case, there is a $\tau\supseteq\sigma$ such that
+$g_{\tau}[F]\subseteq\phi(F)$, so that
+$g_{\tau}[F]\subseteq E$ and $F\subseteq g_{\tau}^{-1}[E]\in\psi(M)$ and
+$F\subseteq^{\strprime}\psi(M)$.   As $F$ and $M$ are arbitrary,
+$(\phi,\psi)$ is a Galois-Tukey connection.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} Thus we have
+
+\Centerline{$(\Cal M,\subseteq,\Cal M)
+\prGT(\CalNwd,\subseteq^{\strprime},[\CalNwd]^{\le\omega})
+\prGT(\Cal M,\subseteq,\Cal M)$}
+
+\noindent and $(\Cal M,\subseteq,\Cal M)
+\equivGT(\CalNwd,\subseteq^{\strprime},[\CalNwd]^{\le\omega})$.
+
+\medskip
+
+{\bf (c)} We can use the idea of 522O.   Let $\sequencen{U_n}$ enumerate
+a base for the topology of $\NN$ not containing $\emptyset$.
+By 522N, there is for each
+$n\in\Bbb N$ a countable family $\Cal V_n$
+of open subsets of $U_n$ such that $\bigcap\Cal V\ne\emptyset$ for every
+$\Cal V\in[\Cal V_n]^{\le 2^n}$ and every dense open subset of $U_n$
+includes some member of $\Cal V_n$.   Enumerate $\Cal V_n$
+as $\sequence{m}{U_{nm}}$.
+
+For each $F\in\CalNwd$ let $f_F:\Bbb N\to\Bbb N$ be such that
+$F\cap U_{n,f_F(n)}=\emptyset$ for every $n\in\Bbb N$, and for $n$,
+$i\in\Bbb N$ set
+
+$$\eqalign{\phi(F)(2^n(2i+1)-1)
+&=2^{-n}\text{ if }f_F(n)=i,\cr
+&=0\text{ otherwise}.\cr}$$
+
+\noindent Then
+$\sum_{i=0}^{\infty}\phi(F)(i)=2$ for each $F$, so
+we have a function $\phi:\CalNwd\to\ell^1$.
+
+Suppose that $x\in\ell^1$.   Set
+$\Cal A=\{F:F\in\CalNwd$, $\phi(F)\le x\}$ and $E=\bigcup\Cal A$.
+The set
+
+\Centerline{$K=\{n:\#(\{i:x(2^n(2i+1)-1)\ge 2^{-n}\})\ge 2^n\}$}
+
+\noindent is finite;   set $k=\sup(\{0\}\cup K)$.   If $n>k$,
+then $\#(\{f_F(n):F\in\Cal A\})<2^n$, so
+$\bigcap_{F\in\Cal A}U_{n,f_F(n)}$ is a non-empty open subset
+of $U_n$ disjoint from $\bigcup_{F\in\Cal A}F=E$.   Thus
+$\{n:U_n\subseteq\overline{E}\}\subseteq\{0,\ldots,k\}$ is finite,
+and therefore in fact is empty, that is, $E\in\CalNwd$.
+
+As $x$ is arbitrary, $\phi:\CalNwd\to\ell^1$ is a Tukey function, and
+witnesses that $\CalNwd\prT\ell^1$.
+
+\medskip
+
+{\bf (d)} If $\Cal V=\emptyset$ then $\Cal D=\Cal PX$ has a greatest
+element and the result is trivial (any function from $\Cal D$ to
+$\CalNwd$ will be a Tukey function).   Otherwise,
+choose a function $h:S\to\Cal V\cup\{X\}$ such that $h(\emptyset)=X$
+and $\sequence{i}{h(\sigma^{\smallfrown}\fraction{i})}$ runs over
+$\{V:h(\sigma)\supseteq V\in\Cal V\}$ for every $\sigma\in S$.
+Note that $h(\tau)\subseteq h(\sigma)$ whenever $\tau\supseteq\sigma$,
+and that $\{h(\tau):\sigma\subseteq\tau\in\BbbN^n\}=\{V:V\in\Cal V$,
+$V\subseteq h(\sigma)\}$ whenever $m\in\Bbb N$, $\sigma\in\BbbN^m$ and
+$n>m$.
+For each $D\in\Cal D$ we can choose a sequence $\sequencen{\tau_{Dn}}$
+in $S$ such that $\tau_{Dn}\supseteq\sigma_n$ and $D\cap h(\tau_{Dn})$
+is empty and $\#(\tau_{Dn})\ge n$ for
+every $n\in\Bbb N$.
+Set $\phi(D)=\NN\setminus\bigcup_{n\in\Bbb N}I_{\tau_{Dn}}$, so that
+$\phi(D)\in\CalNwd$.
+
+Take any $F\in\CalNwd$, and set $D_0=\bigcup\{D:D\in\Cal D$,
+$\phi(D)\subseteq F\}$.   Then $D_0\in\Cal D$.   \Prf\ Let $V\in\Cal V$.
+Let $\upsilon\in\BbbN^1$ be such that
+$h(\upsilon)=V$.   Take $\tau\supseteq\upsilon$ such that $F\cap
+I_{\tau}=\emptyset$.   \Quer\ If $D_0\cap h(\tau)\ne\emptyset$, then
+there is a $D\in\Cal D$ such that $\phi(D)\subseteq F$
+and $D\cap h(\tau)\ne\emptyset$.   $I_{\tau}\cap\phi(D)$ is empty, that
+is, $I_{\tau}\subseteq\bigcup_{n\in\Bbb N}I_{\tau_{Dn}}$;  because
+$\#(\tau_{Dn})\ge n$ for every $n$, this can happen only because there
+is some $n\in\Bbb N$ such that $\tau_{Dn}\subseteq\tau$.   But this
+means that $D\cap h(\tau)\subseteq D\cap h(\tau_{Dn})=\emptyset$, which
+is impossible.\ \BanG\  Thus $D_0\cap h(\tau)$ is
+empty, and $h(\tau)$ is a member of $\Cal V$ included in
+$V\setminus D_0$.   As $V$ is arbitrary, $D_0\in\Cal V$.\ \Qed
+
+As $F$ is arbitrary, $\phi$ is a Tukey function and $\Cal D\prT\CalNwd$,
+as claimed.
+
+\medskip
+
+{\bf (e)(i)} Taking $\Cal V$ to be a countable base for the topology of $X$
+not containing $\emptyset$, we have
+
+\Centerline{$\CalNwd(X)=\{F:F\subseteq X$, for every $V\in\Cal V$ there is a
+$V'\in\Cal V$ such that $V'\subseteq V\setminus F\}$,}
+
+\noindent so (d) tells us that $\CalNwd(X)\prT\CalNwd$.
+
+\medskip
+
+\quad{\bf (ii)} $X$ has a dense subset $Y$ which is
+homeomorphic to $\NN$ (5A4Ie).   Let $\CalNwd(Y)$ be the family of nowhere
+dense subsets of $Y$.   For $F\in\CalNwd(Y)$ let $\phi(F)$ be its closure in
+$X$.   Then $\phi$ is a Tukey function from $\CalNwd(Y)$ to $\CalNwd(X)$, so
+$\CalNwd\cong\CalNwd(Y)\prT\CalNwd(X)$.
+
+\medskip
+
+{\bf (f)} By 4A2Tg,
+the Fell topology on the family $\Cal C$ of all closed subsets of $X$
+is compact and metrizable.   $E\cup F\in\Cal C_{\text{nwd}}$ for all $E$,
+$F\in\Cal C_{\text{nwd}}$, and
+$\cup:\Cal C_{\text{nwd}}\times\Cal C_{\text{nwd}}\to\Cal C_{\text{nwd}}$
+is continuous (4A2T(b-ii)).   If $F\in\Cal C_{\text{nwd}}$, the set
+$\{E:E\in\Cal C_{\text{nwd}}$, $E\subseteq F\}
+=\{E:E\in\Cal C$, $E\cup F=F\}$ is closed in $\Cal C$, therefore compact.
+Now suppose that $\sequence{k}{E_k}$ is a sequence in $\Cal C_{\text{nwd}}$
+converging to $E\in\Cal C_{\text{nwd}}$.   If $X=\emptyset$ then of course
+$\{E_k:k\in\Bbb N\}$ is bounded above in $\Cal C_{\text{nwd}}$.
+Otherwise, let $\sequencen{U_n}$ run over a base for the topology of $X$
+not containing $\emptyset$, and choose $\sequencen{k_n}$, $\sequencen{V_n}$
+inductively, as follows.   Given $k_i\in\Bbb N$ for $i<n$, let
+$V_n\subseteq U_n$ be a non-empty open set such that
+$\overline{V}_n\cap(E\cup\bigcup_{i<n}E_{k_i})=\emptyset$;  given that
+$E\cap\overline{V}_i=\emptyset$ for $i\le n$, choose $k_n\ge n$ such that
+$E_{k_n}\cap\bigcup_{i\le n}\overline{V}_i$ is empty.   (This is possible
+because $\bigcup_{i\le n}\overline{V}_i$ is compact, so the family of
+sets disjoint from it is open in the Fell topology.)   Continue.   At
+the end of the induction, $G=\bigcup_{n\in\Bbb N}V_n$ is a dense open set
+disjoint from $\bigcup_{n\in\Bbb N}E_{k_n}$, so $X\setminus G$ is an upper
+bound for $\{E_{k_n}:n\in\Bbb N\}$ in $\Cal C_{\text{nwd}}$.   Thus all the
+conditions of 513K are satisfied, and $\Cal C_{\text{nwd}}$ is metrizably
+compactly based.
+}%end of proof of 526H
+
+\leader{526I}{}\cmmnt{ A related type of ideal is the following.   I
+express the result in more general form because it has some measure
+theory in it.
+
+\medskip
+
+\noindent}{\bf Proposition}\cmmnt{ ({\smc Fremlin 91})} Let $X$ be a
+second-countable topological space and $\mu$ a $\sigma$-finite
+topological measure on $X$.
+Let $\Cal E$ be the ideal of subsets of $X$ with negligible closures.
+Then, writing $\CalNwd$ for the ideal of nowhere dense subsets of $\NN$,
+$\Cal E\prT\CalNwd$ and $\Cal E\prT\Cal Z$.
+
+\proof{{\bf (a)} If $\mu X=0$ then $\Cal E$ has a greatest element and
+the result is trivial.
+Otherwise, there is a probability measure on $X$ with the same
+measurable sets and the same
+negligible sets as $\mu$ (215B(vii));  so we may suppose that $\mu$
+itself is a probability measure.   Let $\Cal U$ be a countable base for
+the topology of $X$,
+containing $X$ and closed under finite unions.
+
+\medskip
+
+{\bf (b)} For $k\in\Bbb N$ let $\Cal V_k$ be the countable set
+$\{V:V\in\Cal U$, $\mu V>1-2^{-k}\}$.   Set
+
+\Centerline{$\Cal E_k=\{E:E\subseteq X$, for every $V\in\Cal V_k$ there
+is a $U\in\Cal V_k$ such that $U\subseteq V\setminus E\}$.}
+
+\noindent Then $\Cal E=\bigcap_{k\in\Bbb N}\Cal E_k$.   \Prf\ Because
+$X\in\Cal V_k$, $\mu\overline{E}\le 2^{-k}$ for every $E\in\Cal E_k$, so
+$\bigcap_{k\in\Bbb N}\Cal E_k\subseteq\Cal E$.
+On the other hand, if $E\in\Cal E$ and $k\in\Bbb N$ and $V\in\Cal V_k$,
+then $\mu(V\setminus\overline{E})>1-2^{-k}$ and
+$\Cal U'=\{U:U\in\Cal U$, $U\subseteq V\setminus E\}$ has union
+$V\setminus\overline{E}$.   As $\Cal U'$ is countable, there is a finite
+$\Cal U'_1\subseteq\Cal U'$ such that $U=\bigcup\Cal U'_1$ has measure
+greater than $1-2^{-k}$, so that
+$U\in\Cal V_k$ and $U\subseteq V\setminus E$.   As $V$ is arbitrary,
+$E\in\Cal V_k$;  as $E$ and $k$ are arbitrary,
+$\Cal E\subseteq\bigcap_{k\in\Bbb N}\Cal E_k$.\ \QeD
+
+This means that the map $E\mapsto(E,E,E,\ldots)$ is a Tukey function
+from $\Cal E$ to $\prod_{k\in\Bbb N}\Cal E_k$, so that
+$\Cal E\prT\prod_{k\in\Bbb N}\Cal E_k$.   At the same time,
+$\Cal E_k\prT\CalNwd$ for every $k$, by 526Hd.   So
+$\Cal E\prT\CalNwd^{\Bbb N}\cong\CalNwd$ (513Eg, 526Ha).
+
+\medskip
+
+{\bf (c)} Let $\frak A$ be the countable subalgebra of $\Cal PX$
+generated by $\Cal U$.   Then there is a Boolean homomorphism
+$\pi:\frak A\to\Cal P\Bbb N$ such that $d(\pi E)$ is defined
+and equal to $\mu E$ for every $E\in\frak A$.   \Prf\ This is easy to
+prove directly (see 491Xu), but we can also argue as follows.
+Let $\sequencen{\frak A_n}$ be a non-decreasing
+sequence of finite subalgebras
+of $\frak A$ with union $\frak A$.   By 526C, we have a Boolean
+homomorphism $\pi':\prod_{n\in\Bbb N}\frak A_n\to\Cal P\Bbb N$ such that
+$d(\pi'\sequencen{E_n})=\lim_{n\to\infty}\mu E_n$ whenever
+$E_n\in\frak A_n$ for every $n$ and the limit on the right is defined.
+For each $n\in\Bbb N$ let $\pi_n:\frak A\to\frak A_n$ be a Boolean
+homomorphism extending the identity
+homomorphism on $\frak A_n$ (314K, or otherwise);  set
+$\pi E=\pi'\sequencen{\pi_nE}$ for $E\in\frak A$;  this works.\ \Qed
+
+Let $\sequencen{V_n}$ be a sequence running over the closed sets
+belonging to $\frak A$.
+Let $\sequencen{k_n}$ be a strictly increasing sequence in $\Bbb
+N\setminus\{0\}$ such that $\Bover1{k_n}\#(k_n\cap\pi E)\ge\mu E-2^{-n}$
+whenever $E$ belongs to the subalgebra $\frak B_n$ of
+$\frak A$ generated by $\{V_i:i\le n\}$.   Define
+$\phi:\Cal E\to\Cal P\Bbb N$ by setting
+
+\Centerline{$\phi(E)
+=\bigcap\{k_i\cup\pi V_i:i\in\Bbb N$, $E\subseteq V_i\}$.}
+
+\noindent Then $\phi$ is a Tukey function from $\Cal E$ to $\Cal Z$.
+
+\medskip
+
+\Prf\ {\bf (i)} If $E\in\Cal E$ and $\epsilon>0$ there is a $U\in\Cal U$
+such that $U\subseteq X\setminus E$ and $\mu U\ge 1-\epsilon$.
+Let $i\in\Bbb N$ be such that $X\setminus U=V_i$;  then
+$\phi(E)\subseteq k_i\cup\pi V_i$, so
+
+\Centerline{$d^*(\phi(E))\le d^*(\pi V_i)=\mu V_i\le\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, $\phi(E)\in\Cal Z$.   Thus $\phi$
+is a function from $\Cal E$ to $\Cal Z$.
+
+\medskip
+
+\quad{\bf (ii)} Take any $\Cal A\subseteq\Cal E$, and set
+$F=\overline{\bigcup\Cal A}$, $a=\bigcup_{E\in\Cal E}\phi(E)$.
+If $n\in\Bbb N$ and $i\in k_n\setminus a$, then $i\notin\phi(E)$ for
+every $E\in\Cal A$, so for every $E\in\Cal A$ there is a $j<n$ such
+that $E\subseteq V_j$ and $i\notin\pi V_j$.
+Set $F_{ni}=\bigcup\{V_j:j<n$, $i\notin\pi V_j\}$, so that $i\notin\pi
+F_{ni}$, while $\bigcup\Cal A\subseteq F_{ni}$ and $F\subseteq F_{ni}$.
+Set $F_n=\Bbb N\cap\bigcap_{i\in k_n\setminus a}F_{ni}$,
+so that $F\subseteq F_n$
+and no member of $k_n\setminus a$ belongs fo $\pi F_n$, that is,
+$k_n\cap\pi F_n\subseteq a$.   Note that
+$F_n\in\frak B_n$.   So we have
+
+\Centerline{$\Bover1{k_n}\#(k_n\cap a)\ge\Bover1{k_n}\#(k_n\cap\pi
+F_n)\ge\mu F_n-2^{-n}\ge\mu F-2^{-n}$.}
+
+\noindent This means that $d^*(a)\ge\mu F$.   So if $\{\phi(E):E\in\Cal
+A\}$ is bounded above in $\Cal Z$, $\Cal A$ must be bounded above in
+$\Cal E$;  that is, $\phi$ is a
+Tukey function.\ \Qed
+
+Thus $\Cal E\prT\Cal Z$ also.
+}%end of proof of 526I
+
+\leader{526J}{Proposition} Let $\Cal E_{\text{Leb}}$ be the ideal of
+subsets of $\Bbb R$ whose closures are Lebesgue negligible.
+Then $\NN\prT\Cal E_{\text{Leb}}$ but $\Cal E_{\text{Leb}}\not\prT\NN$;
+consequently $\Cal Z\not\prT\NN$, $\CalNwd\not\prT\NN$ and
+$\ell^1\not\prT\NN$.
+
+\proof{{\bf (a)} Enumerate $\Bbb Q\cap[0,1]$ as $\sequence{i}{q_i}$.
+Define $\phi:\NN\to\Cal E_{\text{Leb}}$ by setting
+$\phi(f)(n)=\{n+q_i:n\in\Bbb N$, $i\le f(n)\}$.   Then it is
+easy to see that $\phi$ is a Tukey function, because if $F\subseteq\NN$
+and $\{f(n):f\in F\}$ is unbounded, then $\bigcup_{f\in F}\phi(f)$ is
+dense in $[n,n+1]$ so
+does not belong to $\Cal E_{\text{Leb}}$.
+
+\medskip
+
+{\bf (b)} Let $\psi:\Cal E_{\text{Leb}}\to\NN$ be any function.   Let
+$\mu$ be Lebesgue measure on $\Bbb R$, and choose $\sequencen{f(n)}$
+inductively in $\Bbb N$ such that
+$\mu^*\{t:t\in[0,1]$, $\psi(\{t\})(i)\le f(i)$ for every $i\le
+n\}>\bover12$ for every $n$.   Set
+
+\Centerline{$A_n=\{t:t\in[0,1]$, $\psi(\{t\})(i)\le f(i)$ for every
+$i\le n\}$,
+\quad$F=\bigcap_{n\in\Bbb N}\overline{A_n}$}
+
+\noindent so that $\mu F\ge\bover12$.   Let $\sequencen{U_n}$ enumerate
+the set of open intervals of $\Bbb R$, meeting $F$,
+with rational endpoints,
+and for each $n\in\Bbb N$ choose $t_n\in A_n\cap U_n$.   Then
+$\psi(\{t_n\})(i)\le f(i)$ whenever $n\ge i$, so
+$\{\psi(\{t_n\}):n\in\Bbb N\}$ is bounded above in $\NN$;
+but $\overline{\{t_n:n\in\Bbb N\}}$ includes $F$, so
+$\{\{t_n\}:n\in\Bbb N\}$ is not bounded above in $\Cal E_{\text{Leb}}$.
+Thus $\psi$ cannot be a Tukey function.
+
+\medskip
+
+{\bf (c)} Accordingly $\Cal E_{\text{Leb}}\not\prT\NN$;  since
+$\Cal E_{\text{Leb}}\prT\Cal Z\prT\ell^1$ and
+$\Cal E_{\text{Leb}}\prT\CalNwd$ (526I, 526B), $\Cal Z\not\prT\NN$,
+$\CalNwd\not\prT\NN$ and $\ell^1\not\prT\NN$.
+}%end of proof of 526J
+
+\leader{526K}{Proposition} Let $\CalNwd$ be the ideal of nowhere dense
+subsets of $\NN$.   Then
+$\Cal Z\not\prT\CalNwd$, so $\Cal Z\not\prT\Cal E_{\text{Leb}}$
+and $\ell^1\not\prT\CalNwd$.
+
+\proof{ Let $\phi:\Cal Z\to\CalNwd$ be any function.
+Let $\sequencen{U_n}$ enumerate a base for the topology of $\NN$ which
+contains $\emptyset$ and is closed under finite
+unions.   For each $n\in\Bbb N$, set
+
+\Centerline{$a_n=\{i:i\in\Bbb N$, $\phi(a)\cap U_n\ne\emptyset$ whenever
+$i\in a\in\Cal Z\}$.}
+
+Set
+
+\Centerline{$a=\{\min(a_n\setminus n^2):n\in\Bbb N$, $a_n\not\subseteq
+n^2\}$}
+
+\noindent (interpreting $n^2$ in the formula above as a member of
+$\Bbb N$ rather than as a subset of $\BbbN^2$).
+Then $a\in\Cal Z$ and $a\cap a_n\ne\emptyset$ whenever $a_n$ is
+infinite.   Set
+$K=\{n:n\in\Bbb N$, $\phi(a)\cap U_n=\emptyset\}$, so that $K$ is infinite
+and $\bigcup_{n\in K}U_n=\NN\setminus\overline{\phi(a)}$ is dense, while
+$a_n$ is finite for every $n\in K$
+(since otherwise there is an $i\in a\cap a_n$, and $\phi(a)\cap U_n$
+will not be empty).   For $n\in\Bbb N$, $\bigcup_{m\in K\cap n}U_m$
+belongs to $\Cal U$;  let
+$r(n)\in\Bbb N$ be such that $U_{r(n)}=\bigcup_{m\in K\cap n}U_m$.
+Then $r(n)\in K$ for every $n$, so $a_{r(n)}$ is always finite.
+Take a strictly increasing sequence $\sequencen{k_n}$ in $K$ such that
+$a_{r(n)}\subseteq k_n$ for every $n$.   For $i<k_0$, set
+$b_i=\{i\}$;  for
+$k_n\le i<k_{n+1}$, choose $b_i\in\Cal Z$ such that $i\in b_i$ and
+$\phi(b_i)\cap U_{r(n)}$ is empty (such exists because
+$i\notin a_{r(n)}$).
+
+Examine $E=\bigcup_{i\in\Bbb N}\phi(b_i)\subseteq\NN$.   If $m\in K$
+then $U_m\subseteq U_{r(n)}$ for every $n>m$ so
+$U_m\cap\phi(b_i)=\emptyset$ for every $i\ge k_{m+1}$ and
+$U_m\cap E=\bigcup_{i<k_{m+1}}U_m\cap\phi(b_i)$ is nowhere dense.   As
+$\bigcup_{m\in K}U_m$ is a dense open set, $E$ is nowhere dense.   On
+the other hand,
+$\bigcup_{i\in\Bbb N}b_i=\Bbb N$.   So $\{b:b\in\Cal Z$,
+$\phi(b)\subseteq E\}$ is not bounded above in $\Cal Z$, and $\phi$
+cannot be a Tukey function.   As $\phi$ is arbitrary,
+$\Cal Z\not\prT\CalNwd$.
+
+Because $\Cal E_{\text{Leb}}\prT\CalNwd$ (526I) and $\Cal Z\prT\ell^1$
+(526B), it follows that $\Cal Z\not\prT\Cal E_{\text{Leb}}$
+and $\ell^1\not\prT\CalNwd$.
+}%end of proof of 526K
+
+\leader{526L}{Proposition}\cmmnt{ ({\smc M\'atrai p09})}
+$\CalNwd\not\prT\Cal Z$, so $\CalNwd\not\prT\Cal E_{\text{Leb}}$
+and $\ell^1\not\prT\Cal Z$.
+%M\'atrai 29.6.09
+
+\proof{{\bf (a)(i)} Fix a non-empty
+zero-dimensional compact metrizable space $X$ without isolated
+points, and write $\CalNwd(X)$ for the ideal of nowhere dense subsets of
+$X$;  the bulk of the argument here will be a proof that
+$\CalNwd(X)\not\prT\Cal Z$.
+Let $\Cal V$ be the family of non-empty open-and-closed subsets of $X$.
+For $V\in\Cal V$ write
+$\CalNwd(V)=\CalNwd(X)\cap\Cal PV$ for the family of nowhere
+dense subsets of $V$.
+As in 526A, set
+$\nu I=\sup_{n\ge 1}\Bover1n\#(I\cap n)$ for $I\subseteq\Bbb N$.
+Take any function $f:\CalNwd(X)\to\Cal Z$.
+
+\medskip
+
+\quad{\bf (ii)} Let $Q$ be the set of pairs $\sigma=(m_{\sigma},I_{\sigma})$
+where $I_{\sigma}\subseteq m_{\sigma}\in\Bbb N$;  for $\sigma$, $\tau\in Q$,
+say that $\sigma\le\tau$ if either $\sigma=\tau$ or
+$2m_{\sigma}\le m_{\tau}$ and $I_{\sigma}=m_{\sigma}\cap I_{\tau}$.   Then
+$(Q,\le)$ is a partially ordered set.   For
+$\sigma\in Q$ and $\epsilon>0$, let $D(\sigma,\epsilon)$ be the set
+of those $E\subseteq X$ for which there is an
+$F\in\CalNwd(X)$, including $E$, such that
+$f(F)\cap m_{\sigma}\subseteq I_{\sigma}$ and
+$\nu(f(F)\setminus I_{\sigma})\le\epsilon$.
+
+\medskip
+
+\quad{\bf (iii)} If $\sigma\in Q$, $\epsilon>0$ and $k\ge 2m_{\sigma}$,
+then
+
+\Centerline{$D(\sigma,\epsilon)
+\subseteq\bigcup\{D(\tau,\epsilon):\sigma\le\tau\in Q$,
+$m_{\tau}=k$, $\nu(I_{\tau}\setminus I_{\sigma})\le\epsilon\}$.}
+
+\noindent\Prf\ If $E\in D(\sigma,\epsilon)$, let $F\in\CalNwd(X)$ be such
+that $E\subseteq F$, $f(F)\cap m_{\sigma}\subseteq I_{\sigma}$ and
+$\nu(f(F)\setminus I_{\sigma})\le\epsilon$.   Set
+$\tau=(k,I_{\sigma}\cup(k\cap f(F))$;  then $\sigma\le\tau$ and $F$
+witnesses that $E\in D(\tau,\epsilon)$, while
+$\nu(I_{\tau}\setminus I_{\sigma})\le\epsilon$.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} If $\sigma\in Q$ and $\epsilon$, $\delta>0$, then
+
+\Centerline{$D(\sigma,\epsilon)
+  \subseteq\bigcup\{D(\tau,\delta):\sigma\le\tau\in Q$,
+$\nu(I_{\tau}\setminus I_{\sigma})\le\epsilon\}$.}
+
+\noindent\Prf\ If $E\in D(\sigma,\epsilon)$, let
+$F\in\CalNwd(X)$ be
+such that $E\subseteq F$, $F\cap m_{\sigma}\subseteq I_{\sigma}$ and
+$\nu(f(F)\setminus I_{\sigma})\le\epsilon$.   As
+$f(F)\in\Cal Z$, there is a $k\ge 2m_{\sigma}$ such that
+$\nu(f(F)\setminus k)\le\delta$.   Set
+$\tau=(k,I_{\sigma}\cup(k\cap f(F))$;  then
+$F$ witnesses that $E\in D(\tau,\delta)$, while
+$\nu(I_{\tau}\setminus I_{\sigma})\le\epsilon$.\ \Qed
+
+\medskip
+
+\quad{\bf (v)} Suppose that $n\ge 1$ and that
+$\langle\sigma_j\rangle_{j\le n}$, $\langle\tau_j\rangle_{j\le n}$ are
+finite sequences in $Q$ such
+that $m_{\tau_j}\le m_{\sigma_j}$ for $j\le n$ and
+$\sigma_j\le\tau_{j+1}$ for $j<n$.    Then
+$\nu(\bigcup_{j<n}I_{\tau_{j+1}}\setminus I_{\sigma_j})
+\le 3\max_{j<n}\nu(I_{\tau_{j+1}}\setminus I_{\sigma_j})$.
+\Prf\ Note first that we certainly have
+$m_{\sigma_j}\le m_{\tau_{j+1}}\le m_{\sigma_{j+1}}$ for every $j<n$.
+Set $K=\bigcup_{j<n}I_{\tau_{j+1}}\setminus I_{\sigma_j}$ and
+$\epsilon=\max_{j<n}\nu(I_{\tau_{j+1}}\setminus I_{\sigma_j})$.
+If $m\in\Bbb N$, set $J=\{j:j<n$, $\sigma_j\ne\tau_{j+1}$,
+$m_{\sigma_j}\le m\}$,
+$J'=\{j:j\in J$, $m_{\tau_{j+1}}\le m\}$.   Then
+
+$$\eqalignno{\#(m\cap K)
+&\le\sum_{j\in J}\#(m\cap I_{\tau_{j+1}}\setminus I_{\sigma_j})\cr
+\displaycause{because if $j<n$ and $m\le m_{\sigma_j}$, then
+$m\cap I_{\tau_{j+1}}\setminus I_{\sigma_j}=\emptyset$}
+&\le\epsilon m+\sum_{j\in J'}\#(I_{\tau_{j+1}}\setminus I_{\sigma_j})\cr
+\displaycause{because $\#(J\setminus J')\le 1$}
+&\le\epsilon(m+\sum_{j\in J'}m_{\tau_{j+1}})
+\le\epsilon(m+2m)\cr
+\displaycause{because
+$2m_{\tau_{j+1}}\le 2m_{\sigma_{j+1}}
+\le 2m_{\sigma_{j'}}\le m_{\tau_{j'+1}}\le m$
+whenever $j$, $j'$ are successive members of
+$J'$}
+&=3\epsilon m.\cr}$$
+
+\noindent As $m$ is arbitrary, $\nu K\le 3\epsilon$.\ \Qed
+
+\medskip
+
+{\bf (b)(i)} Suppose that $V\in\Cal V$ and that
+$\Cal C_0,\ldots,\Cal C_n\subseteq\CalNwd(X)$ are such that
+every nowhere dense subset of $V$ is included in some member of
+$\bigcup_{i\le n}\Cal C_i$.   Then there is an $i\le n$ such that every
+nowhere dense subset of $V$ is included in some member of $\Cal C_i$.
+\Prf\Quer\ Otherwise, for each $i\le n$ we can find a nowhere dense
+subset $E_i$ of $V$ not included in any member of $\Cal C_i$;  now
+$E=\bigcup_{i\le n}E_i$ is a nowhere dense subset of $V$ not included in
+any member of $\bigcup_{i\le n}\Cal C_i$.\  \Bang\Qed
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $V\in\Cal V$ and that $\sequencen{\Cal C_n}$
+is a sequence of subsets of $\CalNwd(X)$ such that
+every nowhere dense subset of $V$ is included in some member of
+$\bigcup_{n\in\Bbb N}\Cal C_n$.   Then for any $E\in\CalNwd(V)$ there are
+a $U\in\Cal V$ and an $n\in\Bbb N$ such that $E\subseteq U$ and every
+nowhere dense subset of $U$ is included in some member of $\Cal C_n$.
+\Prf\ As $V\ne\emptyset$ we can suppose that $E\ne\emptyset$.
+Let $\sequencen{U_n}$ be a non-increasing sequence in $\Cal V$ such
+that $U_0=V$ and $\bigcap_{n\in\Bbb N}U_n=\overline{E}$.   \Quer\ If, for
+every $n\in\Bbb N$, there is an $E_n\in\CalNwd(U_n)$ not included in any
+member of $\Cal C_n$, consider $F=\bigcup_{n\in\Bbb N}E_n$;  then
+$F\in\CalNwd(V)$ but $F$ is not included in any member of any $\Cal C_n$.\
+\Bang\  So some $U_n$ will serve.\ \Qed
+
+\medskip
+
+{\bf (c)} (The key.)  Suppose that $V\in\Cal V$, $\sigma\in Q$
+and $\epsilon>0$ are such that $\CalNwd(V)\subseteq D(\sigma,\epsilon)$.
+Let $\sequencen{\epsilon_n}$ be a sequence in $\ooint{0,\infty}$.
+Then there are an
+$n\in\Bbb N$, $U_0,\ldots,U_n\in\Cal V$ and $\tau\in Q$ such
+that
+
+\Centerline{$\sigma\le\tau$,
+\quad$\nu(I_{\tau}\setminus I_{\sigma})\le 8\epsilon$,}
+
+\Centerline{$V\subseteq\bigcup_{j\le n}U_j$,
+\quad$\CalNwd(U_j)\subseteq D(\tau,\epsilon_j)$ for every $j\le n$.}
+
+\noindent\Prf\ It is enough to consider the case in which
+$\sum_{n=0}^{\infty}\epsilon_n\le\epsilon$.
+Let $\sequencen{x_n}$ run over a dense subset of $V$.
+Choose $\sequencen{\sigma_n}$, $\sequencen{k_n}$,
+$\langle U_n\rangle_{n\ge 1}$ and $\langle\tau_n\rangle_{n\ge 1}$
+inductively, as follows.   Start with
+$\sigma_0=\sigma$, $k_0=m_{\sigma_0}$.
+Given that $\CalNwd(V)\subseteq D(\sigma_n,\epsilon)$,
+we know from (a-iv) that
+
+\Centerline{$\CalNwd(V)\subseteq D(\sigma_n,\epsilon)
+\subseteq\bigcup\{D(\tau,\epsilon_{n+1}):\sigma_n\le\tau\in Q$,
+   $\nu(I_{\tau}\setminus I_{\sigma_n})\le\epsilon\}$,}
+
+\noindent so by (b-ii) we can find a $U_{n+1}\in\Cal V$ and a
+$\tau_{n+1}\ge\sigma_n$ such that $x_n\in U_{n+1}$,
+$\nu(I_{\tau_{n+1}}\setminus I_{\sigma_n})\le\epsilon$ and
+$\CalNwd(U_{n+1})\subseteq D(\tau_{n+1},\epsilon_{n+1})$.
+Next, taking $k_{n+1}=\max(m_{\tau_{n+1}},2m_{\sigma_n})$,
+(a-iii) tells us that
+
+\Centerline{$\CalNwd(V)\subseteq D(\sigma_n,\epsilon)
+\subseteq\bigcup\{D(\tau,\epsilon):\sigma_n\le\tau\in Q$,
+  $m_{\tau}=k_{n+1}$, $\nu(I_{\tau}\setminus I_{\sigma_n})\le\epsilon\}$,}
+
+\noindent so from (b-i) we see that there is a $\sigma_{n+1}\in Q$ such
+that $\CalNwd(V)\subseteq D(\sigma_{n+1},\epsilon)$,
+$m_{\sigma_{n+1}}=k_{n+1}$, $\sigma_n\le\sigma_{n+1}$ and
+$\nu(I_{\sigma_{n+1}}\setminus I_{\sigma_n})\le\epsilon$.   Continue.
+
+At the end of the induction, set $E=V\setminus\bigcup_{n\in\Bbb N}U_{n+1}$.
+Because $\{x_n:n\in\Bbb N\}$ is dense in $V$, so is
+$\bigcup_{n\in\Bbb N}U_{n+1}$, and $E\in\CalNwd(V)$.   By (a-iv) and
+(b-ii) again, there are a $U_0\in\Cal V$ and a $\tau_0\ge\sigma$ such
+that $E\subseteq U_0$, $\CalNwd(U_0)\subseteq D(\tau_0,\epsilon_0)$ and
+$\nu(I_{\tau_0}\setminus I_{\sigma})\le\epsilon$.   Now
+$V\subseteq\bigcup_{n\in\Bbb N}U_n$;  since $V$ is compact, there is an
+$n\in\Bbb N$ such that $V\subseteq\bigcup_{j\le n}U_j$.
+
+I have still to define $\tau$.   Set $k=2\max(k_n,m_{\tau_0})$.   For each
+$j\le n$, (a-iii) and (b-i), as before, show us that there is an
+$\upsilon_j\in Q$ such that $\tau_j\le\upsilon_j$,
+$m_{\upsilon_j}=k$,
+$\nu(I_{\upsilon_j}\setminus I_{\tau_j})\le\epsilon_j$ and
+$\CalNwd(U_j)\subseteq D(\upsilon_j,\epsilon_j)$.
+Try setting $\tau=(k,\bigcup_{j\le n}I_{\upsilon_j})$.
+Then surely $\CalNwd(U_j)\subseteq D(\tau,\epsilon_j)$ for each $j$.
+To estimate $\nu(I_{\tau}\setminus I_{\sigma})$, set
+$K=\bigcup_{j<n}I_{\tau_{j+1}}\setminus I_{\sigma_j}$,
+$K'=\bigcup_{j<n}I_{\sigma_{j+1}}\setminus I_{\sigma_j}$.   By (a-v),
+$\nu K$ and $\nu K'$ are both at most $3\epsilon$.   Now
+
+$$\eqalign{I_{\tau}\setminus I_{\sigma}
+&\subseteq\bigcup_{j\le n}(I_{\upsilon_j}\setminus I_{\tau_j})
+   \cup(I_{\tau_0}\setminus I_{\sigma})\cr
+&\mskip100mu
+   \cup\bigcup_{j<n}(I_{\tau_{j+1}}\setminus I_{\sigma_j})
+   \cup\bigcup_{j\le n}(I_{\sigma_j}\setminus I_{\sigma})\cr
+&=\bigcup_{j\le n}(I_{\upsilon_j}\setminus I_{\tau_j})
+   \cup(I_{\tau_0}\setminus I_{\sigma})
+   \cup K\cup K',\cr}$$
+
+\noindent and
+
+$$\eqalign{\nu(I_{\tau}\setminus I_{\sigma})
+&\le\sum_{j=0}^n\nu(I_{\upsilon_j}\setminus I_{\tau_j})
+  +\nu(I_{\tau_0}\setminus I_{\sigma})
+  +\nu K+\nu K'\cr
+&\le 7\epsilon+\sum_{j=0}^n\epsilon_j
+\le 8\epsilon,\cr}$$
+
+\noindent as required.\ \Qed
+
+\medskip
+
+{\bf (d)} Now we can find $T\subseteq S=\bigcup_{n\in\Bbb N}\BbbN^n$,
+$\family{t}{T}{\delta_t}$,
+$\family{t}{T}{\sigma_t}$, $\family{t}{T}{\tau_t}$ and
+$\family{t}{T}{V_t}$ such that
+
+\inset{$T$ is a tree (that is, $t\restr k\in T$ whenever $t\in T$ and
+$k\in\Bbb N$),
+
+$\delta_t>0$ for every $t\in T$, $\sum_{t\in T}\delta_t<\infty$,
+
+$\sigma_t\in Q$, $\tau_t\in Q$, $\sigma_t\le\tau_t$
+for every $t\in T$,
+
+$\sigma_t=\tau_{t\restr n}$ whenever $n\in\Bbb N$ and
+$t\in T\cap\BbbN^{n+1}$,
+
+$\nu(I_{\tau_t}\setminus I_{\sigma_t})\le\delta_t$ for every
+$t\in T$,
+
+$V_t\in\Cal V$, $\CalNwd(V_t)\subseteq D(\sigma_t,\delta_t)$ for every
+$t\in T$,
+
+$\bigcup\{V_t:t\in T\cap\BbbN^n\}=X$ for every $n\in\Bbb N$.}
+
+\noindent\Prf\ Begin by choosing strictly positive $\delta_t$, for
+$t\in S$, such that $\delta_{\emptyset}=1$
+and $\sum_{t\in S}\delta_t$ is finite.
+Now choose $T_n\subseteq\BbbN^n$ and
+$\family{t}{T_n}{\sigma_t}$, $\family{t}{T_n}{V_t}$
+inductively, as follows.
+Start with $T_0=\{\emptyset\}$,
+$\sigma_{\emptyset}=(0,\emptyset)$ and $V_{\emptyset}=X$.
+Then
+
+\Centerline{$\CalNwd(V_{\emptyset})=\CalNwd(X)=D((0,\emptyset),1)
+=D(\sigma_{\emptyset},\delta_{\emptyset})$,}
+
+\noindent so the process starts.
+Given that $T_n$, $\family{t}{T_n}{\sigma_t}$ and
+$\family{t}{T_n}{V_t}$
+have been defined, then for each $t\in T_n$ use (c) to find $n_t\in\Bbb N$,
+$\langle V_{t^{\smallfrown}\fraction{i}}\rangle_{i\le n_t}
+\in\Cal V^{n_t+1}$
+and $\tau_t\in Q$ such that $\sigma_t\le\tau_t$,
+$\nu(I_{\tau_t}\setminus I_{\sigma_t})\le\delta_t$,
+$V_t\subseteq\bigcup_{i\le n_t}V_{t^{\smallfrown}\fraction{i}}$
+and
+$\CalNwd(V_{t^{\smallfrown}\fraction{i}})
+\subseteq D({\tau_t},\delta_{t^{\smallfrown}\fraction{i}})$ for every
+$i\le n_t$.   Set
+$T_{n+1}=\{t^{\smallfrown}\fraction{i}:t\in T_n$, $i\le n_t\}$ and
+$\sigma_t=\tau_{t\restr n}$ for every $t\in T_{n+1}$, and continue.
+At the end of the construction, set $T=\bigcup_{n\in\Bbb N}T_n$.\ \Qed
+
+\medskip
+
+{\bf (e)} Let $\sequencen{y_n}$ run over a dense subset of $X$.   For
+$n\in\Bbb N$, take $t_n\in T\cap\BbbN^n$ such that
+$y_n\in V_{t_n}$.   Since
+$\CalNwd(V_{t_n})\subseteq D(\sigma_{t_n},\delta_{t_n})$, we can
+choose an $F_n\in\CalNwd(X)$, containing $y_n$, such that
+$\nu(f(F_n)\setminus I_{\sigma_{t_n}})\le\delta_{t_n}$.
+Now $\{f(F_n):n\in\Bbb N\}$ is bounded above in $\Cal Z$.   \Prf\ Set
+$K=\bigcup_{t\in T}I_{\sigma_t}$.   As $I_{\sigma_{\emptyset}}=\emptyset$,
+\Centerline{$K
+=\bigcup_{n\in\Bbb N}\bigcup_{t\in T\cap\BbbN^{n+1}}
+  I_{\sigma_t}\setminus I_{\sigma_{t\restr n}}
+=\bigcup_{t\in T}I_{\tau_t}\setminus I_{\sigma_t}$;}
+
+\noindent as $\sum_{t\in T}\nu(I_{\tau_t}\setminus I_{\sigma_t})$ is
+finite, $K\in\Cal Z$ (526Ac).   Next,
+
+\Centerline{$\bigcup_{n\in\Bbb N}f(F_n)\setminus K
+\subseteq\bigcup_{n\in\Bbb N}f(F_n)\setminus I_{\sigma_{t_n}}$;}
+
+\noindent as
+
+\Centerline{$\sum_{n=0}^{\infty}\nu(f(F_n)\setminus I_{\sigma_{t_n}})
+\le\sum_{n=0}^{\infty}\delta_{t_n}$}
+
+\noindent is finite, $\bigcup_{n\in\Bbb N}f(F_n)\setminus K\in\Cal Z$,
+so $\bigcup_{n\in\Bbb N}f(F_n)$ also belongs to $\Cal Z$, and is an upper
+bound for $\{f(F_n):n\in\Bbb N\}$.\ \Qed
+
+\medskip
+
+{\bf (f)}
+On the other hand, $\{F_n:n\in\Bbb N\}$ is certainly not bounded above in
+$\CalNwd(X)$, since $\bigcup_{n\in\Bbb N}F_n$ includes the dense set
+$\{y_n:n\in\Bbb N\}$.   So $f$ cannot be a Tukey function.
+Since $f$ is arbitrary, $\CalNwd(X)\not\prT\Cal Z$.
+
+\medskip
+
+{\bf (g)} Since $\CalNwd(X)\equivT\CalNwd$ (526He), it follows that
+$\CalNwd\not\prT\Cal Z$.
+Since $\NN\prT\Cal E_{\text{Leb}}\penalty-100\prT\Cal Z$ (526I, 526J)
+and $\CalNwd\prT\ell^1$ (526Hc),
+we see that
+$\CalNwd\not\prT\Cal E_{\text{Leb}}$ and
+$\ell^1\not\prT\Cal Z$.
+}%end of proof of 526L
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} A somewhat stronger result is in
+{\smc Solecki \& Todor\v{c}evi\'c 10}.}
+
+\leader{526M}{}\cmmnt{ Having introduced ideals of sets with
+negligible closures, I add a simple result which will be useful later.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $X$ be a second-countable topological
+space and $\mu$ a $\sigma$-finite topological measure on $X$.
+Let $\Cal E$ be the ideal of subsets of $X$ with negligible closures,
+$\Cal N(\mu)$ the null ideal of $\mu$, and $\Cal M$ the ideal of
+meager subsets of $\NN$.   Then
+
+\Centerline{$(\Cal E,\subseteq,\Cal N(\mu))\prGT(\Cal M,\not\ni,\NN)$;}
+
+\noindent consequently $\add(\Cal E,\subseteq,\Cal N(\mu))\ge\frakmctbl$.
+
+\proof{{\bf (a)} Suppose first that $\mu$ is a probability measure.
+Let $\Cal U$ be a countable base for the topology of $X$, containing
+$\emptyset$ and closed under finite unions.   For each $n\in\Bbb N$,
+let $\sequence{i}{U_{ni}}$ run over
+$\{U:U\in\Cal U$, $\mu U\ge 1-2^{-n}\}$.   For $f\in\NN$, set
+
+\Centerline{$\psi(f)
+=\bigcap_{n\in\Bbb N}\bigcup_{i\ge n}X\setminus U_{i,f(i)}
+\in\Cal N(\mu)$.}
+
+\noindent For $E\in\Cal E$, set
+
+\Centerline{$\phi(E)=\{f:f\in\NN$, $E\not\subseteq\psi(f)\}$.}
+
+\noindent Then $\phi(E)\in\Cal M$.   \Prf\ Since
+$X\setminus\overline{E}$ is a conegligible open set, we can find for
+each $i\in\Bbb N$ a $g(i)\in\Bbb N$ such that
+$E\cap U_{i,g(i)}=\emptyset$.   Now
+
+\Centerline{$M
+=\bigcup_{n\in\Bbb N}\bigcap_{i\ge n}\{f:f\in\NN$, $f(i)\ne g(i)\}$}
+
+\noindent belongs to $\Cal M$.   If $f\in\phi(E)$, there is an
+$x\in E\setminus\psi(f)$, so that $x\in\bigcap_{i\ge n}U_{i,f(i)}$ for
+some $n$;   now if $i\ge n$, we have
+$x\in U_{i,f(i)}\setminus U_{i,g(i)}$, so $f(i)\ne g(i)$;  thus
+$f\in M$.   Accordingly $\phi(E)\subseteq M\in\Cal M$.\ \Qed
+
+Now $(\phi,\psi)$ is a Galois-Tukey connection from
+$(\Cal E,\subseteq,\Cal N(\mu))$ to $(\Cal M,\not\ni,\NN)$, and
+$(\Cal E,\subseteq,\penalty-100\Cal N(\mu))\prGT(\Cal M,\not\ni,\NN)$.
+
+\medskip
+
+{\bf (b)} If $\mu X=0$, then of course
+$(\Cal E,\subseteq,\Cal N(\mu))\prGT(\Cal M,\not\ni,\NN)$ (take
+$\phi(E)=\emptyset$ for every $E\in\Cal E$, $\psi(f)=X$ for every
+$f\in\NN$).   Otherwise, there is a probability measure $\nu$ on $X$
+with the same domain and the same null ideal as $\mu$, so (a) tells us
+that $(\Cal E,\subseteq,\Cal N(\mu))\prGT(\Cal M,\not\ni,\NN)$.
+
+\medskip
+
+{\bf (c)} Accordingly
+
+\Centerline{$\add(\Cal E,\subseteq,\Cal N(\mu))
+\ge\add(\Cal M,\not\ni,\NN)=\cov\Cal M$}
+
+\noindent (512Db).    But, writing $\Cal M(\Bbb R)$ for the ideal of
+meager subsets of $\Bbb R$, $\cov\Cal M=\cov\Cal M(\Bbb R)=\frakmctbl$,
+by 522Wb and 522Sa.
+}%end of proof of 526M
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} If $X=\Bbb R$ and $\mu$ is Lebesgue measure, then
+$\add(\Cal E,\subseteq,\Cal N(\mu))=\frakmctbl$ and
+$\cov(\Cal E,\subseteq,\Cal N(\mu))=\non\Cal M$;   see
+{\smc Bartoszy\'nski \& Shelah 92} or
+{\smc Bartoszy\'nski \& Judah 95}, 2.6.14.
+}%end of comment
+
+\exercises{\leader{526X}{Basic exercises (a)}
+%\spheader 526Xa
+Let $\nu:\Cal P\Bbb N\to[0,1]$ be the submeasure
+described in 526A.   Show that
+$d^*(I)=\lim_{n\to\infty}\nu(I\setminus n)$ for every
+$I\subseteq\Bbb N$.
+%526A
+
+\spheader 526Xb
+For $I$, $J\subseteq\Bbb N$ say that $I\subseteq^*J$ if $I\setminus J$
+is finite.
+Show that $(\Cal Z,\subseteq^*,\Cal Z)
+\equivGT(\Cal
+Z,\discretionary{}{}{}\subseteq^{\strprime},\discretionary{}{}{}[\Cal
+Z]^{\le\omega})$.
+%526B
+
+\spheader 526Xc Let $\CalNwd$ be the ideal of nowhere dense subsets of
+$\NN$ and $\Cal M$ the ideal of meager subsets of $\NN$.   Show that
+$\add_{\omega}\CalNwd=\add\Cal M$,
+$\non\CalNwd=\non\Cal M$, $\cov\CalNwd=\frakmctbl$ and
+$\cf\CalNwd=\cf\Cal M$.
+%526H
+
+\spheader 526Xd Let $X$ be a topological space with a countable
+$\pi$-base, and $\CalNwd(X)$ the ideal of nowhere dense subsets of $X$.
+Show that $\CalNwd(X)\prT\CalNwd$,
+where $\CalNwd$ is the ideal of nowhere dense subsets of $\NN$.
+%526H
+
+\spheader 526Xe In 526Hf, show that
+$\Cal C_{\text{nwd}}$ is a G$_{\delta}$ subset of the family $\Cal C$
+of all closed subsets of $X$ with its Fell topology, so is a Polish
+space in the subspace topology.
+%526H
+
+\spheader 526Xf Let $\Cal C_{\text{Leb}}$ be the family of closed
+Lebesgue negligible subsets of $[0,1]$.   Show that $\Cal C_{\text{Leb}}$
+with its Fell topology
+is a Polish space and a metrizably compactly based directed set.
+%526I
+
+\spheader 526Xg Let $\Cal E_{\text{Leb}}$ be the ideal of subsets of
+$\Bbb R$ with
+negligible closures.   (i) Show that it is Tukey equivalent to the
+partially ordered
+set $\Cal C_{\text{Leb}}$ of 526Xf.   (ii) Show that it is isomorphic to
+$\Cal E_{\text{Leb}}^{\Bbb N}$.   (iii) Show that if we write
+$\Cal E_{\sigma}$ for the
+$\sigma$-ideal of subsets of $\Bbb R$ generated by
+$\Cal E_{\text{Leb}}$, then
+$(\Cal E_{\text{Leb}},\subseteq^{\strprime},
+[\Cal E_{\text{Leb}}]^{\le\omega})
+\equivGT(\Cal E_{\sigma},\subseteq,\Cal E_{\sigma})$.
+(iv) Show that $\add_{\omega}\Cal E_{\text{Leb}}=\add\Cal E_{\sigma}$
+and $\cf\Cal E_{\text{Leb}}=\cf\Cal E_{\sigma}$.
+
+\leader{526Y}{Further exercises (a)}
+%\spheader 526Ya
+Let $X$ be a locally compact separable
+metrizable space.   Let $\Cal C_{\text{nwd}}$ be the
+family of closed nowhere dense sets in $X$ with its Fell topology.   Show
+that $\Cal C_{\text{nwd}}$ is a metrizably compactly based directed set.
+%526H
+
+\spheader 526Yb Let $\frak Z$ be the asymptotic density
+algebra $\Cal P\Bbb N/\Cal Z$
+and define $\bar d^*:\frak Z\to[0,1]$ by setting
+$\bar d^*(I^{\ssbullet})=d^*(I)$ for every $I\subseteq\Bbb N$, as in
+491I.   Show that if $A\subseteq\frak Z$ is non-empty, downwards-directed
+and has infimum $0$, and $\#(A)<\frak p$, then
+$\inf_{a\in A}\bar d^*(a)=0$.   (Compare 491Id.)
+%n99527
+
+\spheader 526Yc Show that $\wdistr(\frak Z)=\omega_1$.
+%n99527, 3C
+
+\spheader 526Yd Show that
+$\frak m(\frak Z)\ge\frak m_{\sigma\text{-linked}}$.
+%n99527, 3D
+
+\spheader 526Ye Show that $\FN(\Cal P\Bbb N)\le\FN(\frak Z)
+\le\max(\FN^*(\Cal P\Bbb N),(\cf\Cal N)^+)$.
+%n99527, 3E
+
+\spheader 526Yf Show that $\tau(\frak Z)\ge\frak p$.
+%n99527, 3A
+}%end of exercises
+
+\endnotes{
+\Notesheader{526} The `positive' results of this section are
+straightforward enough, except perhaps for 526F.   As elsewhere in this
+chapter, I am attempting to
+describe a framework which will accommodate the many arguments which
+have been found effective in discussing the cardinal functions of these
+partially ordered sets.
+I note that in this section I use the symbol $\Cal M$ to represent the
+ideal of meager subsets of $\NN$, rather than the ideal of meager
+subsets of $\Bbb R$, as
+elsewhere in the chapter.   If you miss this point, however, none of the
+formulae here are dangerous, because the two ideals are Tukey
+equivalent, and indeed isomorphic (522Wb).
+
+When we come to `negative' results, we have problems of a new kind.
+The special character of Tukey functions is that they need not be of any
+particular type.   They are not asked to be order-preserving, and
+even if we have partially ordered sets with natural Polish
+topologies (as in 526A, 526Xe and 526Xf, for instance),
+Tukey functions between them are not
+required to be Borel functions.   This means that
+in order to show that there is {\it no} Tukey function between a given
+pair of partially ordered sets, we have had to consider arbitrary
+functions, or seek to calculate suitable
+invariants which we know to be related to the Tukey ordering, like
+precaliber triples (516C), and show that they are incompatible with the
+existence of a Tukey function.   For a discussion of a class of invariants
+giving very sharp distinctions, see {\smc M\'atrai p09}, \S3.
+
+Putting 526B and 526H-526L %526Hc, 526I, 526J, 526K, 526L
+together, we find that we have a complete description of the Tukey ordering
+on the set $\{\NN,\Cal E_{\text{Leb}},\CalNwd,\Cal Z,\ell^1\}$, given by
+the diagram
+
+\def\tmphrule{\hskip0.4em\raise
+2.5pt\hbox{\leaders\hrule\hskip1.7em\hfil}\hskip0.4em}
+\def\tmpstrut{\vrule height10.5pt depth5.5pt width0pt}
+
+$$\vbox{\offinterlineskip
+\halign{\hfil#\hfil&\hfil#\hfil&\hfil#\hfil&\hfil#\hfil
+  &\hfil#\hfil&\hfil#\hfil&\hfil#\hfil
+  &\hfil#\hfil&\hfil#\hfil&\hfil#\hfil&\hfil#\hfil\cr
+&\tmpstrut&\tmpstrut&$\CalNwd$&\tmphrule&$\ell^1$\cr
+&\tmpstrut&\tmpstrut&\vrule&&\vrule\cr
+&\tmpstrut$\NN$&\tmphrule&$\Cal E_{\text{Leb}}$&\tmphrule
+  &$\Cal Z$\cr
+}}$$
+
+\noindent if we interpret this in the same way as for Cicho\'n's diagram
+(522B).   Moreover, this is exact, in that no two of the five are
+Tukey equivalent, and $\Cal Z$ and $\CalNwd$ are Tukey incomparable.
+Note that all five of these partially ordered sets
+are either themselves metrizably compactly
+based directed sets (526A, 513Xj, 513Xl) or are Tukey equivalent to
+metrizably compactly based directed sets (526He-526Hf, 526Xf-526Xg).
+
+In 526Yb-526Yf %526Yb 526Yc 526Yd 526Ye 526Yf
+I list miscellaneous facts about the asymptotic density algebra.   A
+remarkable description of its Dedekind completion is in 556S below.
+}%end of notes
+
+\discrpage
+

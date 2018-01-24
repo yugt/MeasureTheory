@@ -1,0 +1,1358 @@
+\frfilename{mt262.tex}
+\versiondate{11.8.15}
+\copyrightdate{1995}
+
+\def\dist{\mathop{\text{dist}}}
+
+\def\chaptername{Change of variable in the integral}
+\def\sectionname{Lipschitz and differentiable functions}
+
+\newsection{262}
+
+In preparation for the main work of this chapter in \S263, I devote a
+section to two important classes of functions between Euclidean spaces.
+What we really need is the essentially elementary material down to 262I,
+together with the technical lemma 262M and its corollaries.   Theorem
+262Q is not relied on in this volume, though I believe that it makes the
+patterns which will develop more natural and comprehensible.
+
+As in \S261, $r$ (and here also $s$) will be a strictly positive integer,
+and `measurable', `negligible', `integrable' will refer to Lebesgue measure
+unless otherwise stated.
+
+\leader{262A}{Lipschitz functions} Suppose that
+$\phi:D\to\BbbR^s$ is a function, where $D\subseteq\BbbR^r$.   
+\cmmnt{We say that }$\phi$ is {\bf $\gamma$-Lipschitz}, where
+$\gamma\in\coint{0,\infty}$, if
+
+\Centerline{$\|\phi(x)-\phi(y)\|\le \gamma \|x-y\|$}
+
+\noindent for all $x$, $y\in D$, writing
+$\|x\|=\sqrt{\xi_1^2+\ldots+\xi_r^2}$ if
+$x=(\xi_1,\ldots,\xi_r)\in\BbbR^r$,
+$\|z\|=\sqrt{\zeta_1^2+\ldots+\zeta_s^2}$ if
+$z=(\zeta_1,\ldots,\zeta_s)\in\BbbR^s$.   In this case, $\gamma$ is
+{\bf a Lipschitz constant for $\phi$}.
+
+A {\bf Lipschitz function} is a function $\phi$ which is
+$\gamma$-Lipschitz for some $\gamma\ge 0$.
+\cmmnt{Note that in this case $\phi$ has a least
+Lipschitz constant (since if $A$ is the set of Lipschitz constants for
+$\phi$, and $\gamma_0=\inf A$, then $\gamma_0$ is a Lipschitz constant
+for $\phi$).}
+\dvAnew{2015}Evidently a Lipschitz function is (uniformly) continuous.
+
+\leader{262B}{}\cmmnt{ We need the following easy facts.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $D\subseteq\BbbR^r$ be a set and
+$\phi:D\to\BbbR^s$ a function.
+
+(a)  $\phi$ is Lipschitz iff $\phi_i:D\to\Bbb R$
+is Lipschitz for every $i$, writing
+$\phi(x)=(\phi_1(x),\ldots,\phi_s(x))$ for every $x\in
+D=\dom\phi\subseteq\BbbR^r$.
+
+(b) In this case, there is a Lipschitz function
+$\tilde\phi:\BbbR^r\to\BbbR^s$ extending $\phi$.
+
+(c) If $r=s=1$ and $D=[a,b]$ is an interval,
+then $\phi$ is Lipschitz iff it is absolutely continuous and has a
+bounded derivative.
+
+\proof{{\bf (a)} For any $x$, $y\in D$ and $i\le s$,
+
+\Centerline{$|\phi_i(x)-\phi_i(y)|\le\|\phi(x)-\phi(y)\|
+\le\sqrt{s}\sup_{j\le s}|\phi_j(x)-\phi_j(y)|$,}
+
+\noindent so any Lipschitz constant for $\phi$ will be a Lipschitz
+constant for every $\phi_i$, and if $\gamma_j$ is a Lipschitz constant
+for $\phi_j$ for each $j$, then $\sqrt{s}\sup_{j\le s}\gamma_j$ will be
+a Lipschitz constant for $\phi$.
+
+\medskip
+
+{\bf (b)} By (a), it is
+enough to consider the case $s=1$, for if every $\phi_i$ has a Lipschitz
+extension $\tilde\phi_i$, we can set
+$\tilde\phi(x)=(\tilde\phi_1(x),\ldots,\tilde\phi_s(x))$ for every $x$
+to obtain a Lipschitz extension of $\phi$.
+Taking $s=1$, then, note that the case $D=\emptyset$ is trivial;  so
+suppose that $D\ne\emptyset$.   Let $\gamma$ be a Lipschitz constant for
+$\phi$, and write
+
+\Centerline{$\tilde\phi(z)=\sup_{y\in D}\phi(y)-\gamma\|y-z\|$}
+
+\noindent for every $z\in\BbbR^r$.   If $x\in D$, then, for any
+$z\in\BbbR^r$ and $y\in D$,
+
+\Centerline{$\phi(y)-\gamma\|y-z\|
+\le\phi(x)+\gamma\|y-x\|-\gamma\|y-z\|
+\le\phi(x)+\gamma\|z-x\|$,}
+
+\noindent so that $\tilde\phi(z)\le\phi(x)+\gamma\|z-x\|$;  this shows,
+in particular, that $\tilde\phi(z)<\infty$.   Also, if $z\in D$, we must
+have
+
+\Centerline{$\phi(z)-\gamma\|z-z\|\le\tilde\phi(z)
+\le\phi(z)+\gamma\|z-z\|$,}
+
+\noindent so that $\tilde\phi$ extends $\phi$.   Finally, if $w$,
+$z\in\BbbR^r$ and $y\in D$,
+
+\Centerline{$\phi(y)-\gamma\|y-w\|
+\le\phi(y)-\gamma\|y-z\|+\gamma\|w-z\|
+\le\tilde\phi(z)+\gamma\|w-z\|$;}
+
+\noindent and taking the supremum over $y\in D$,
+
+\Centerline{$\tilde\phi(w)\le\tilde\phi(z)+\gamma\|w-z\|$.}
+
+\noindent As $w$ and $z$ are arbitrary, $\tilde\phi$ is Lipschitz.
+
+\medskip
+
+{\bf (c)(i)} Suppose that $\phi$ is $\gamma$-Lipschitz.  If $\epsilon>0$
+and
+$a\le a_1\le b_1\le\ldots\le a_n\le b_n\le b$ and
+$\sum_{i=1}^nb_i-a_i\le\epsilon/(1+\gamma)$, then
+
+\Centerline{$\sum_{i=1}^n|\phi(b_i)-\phi(a_i)|
+\le\sum_{i=1}^n\gamma|b_i-a_i|
+\le\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, $\phi$ is absolutely continuous.
+If $x\in[a,b]$ and $\phi'(x)$ is defined, then
+
+\Centerline{$|\phi'(x)|
+=\lim_{y\to x}\Bover{|\phi(y)-\phi(x)|}{|y-x|}\le\gamma$,}
+
+\noindent so $\phi'$ is bounded.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $\phi$ is absolutely continuous and
+that $|\phi'(x)|\le\gamma$ for every $x\in\dom\phi'$, where
+$\gamma\ge 0$.   Then whenever $a\le x\le y\le b$,
+
+\Centerline{$|\phi(y)-\phi(x)|=|\int_x^y\phi'|\le\int_x^y|\phi'|
+\le\gamma(y-x)$}
+
+\noindent (using 225E for the first equality).   As $x$ and $y$ are
+arbitrary, $\phi$ is $\gamma$-Lipschitz.
+}%end of proof of 262B
+
+\cmmnt{
+\leader{262C}{Remark} The argument for (b) above shows that if
+$\phi:D\to\Bbb R$ is a Lipschitz function, where
+$D\subseteq\Bbb R^r$, then $\phi$ has an extension to $\BbbR^r$ with the same Lipschitz
+constants.   In fact it is the case that if $\phi:D\to\BbbR^s$ is a
+Lipschitz function, then $\phi$ has
+an extension to $\tilde\phi:\BbbR^r\to\BbbR^s$ with the same Lipschitz
+constants;  this is `Kirszbraun's theorem' ({\smc Kirszbraun 34}, or
+{\smc Federer 69}, 2.10.43).
+}%end of comment
+
+\leader{262D}{Proposition} If $\phi:D\to\BbbR^r$ is a $\gamma$-Lipschitz
+function, where $D\subseteq\BbbR^r$, then
+$\mu^*\phi[A]\le\gamma^r\mu^*A$ for every $A\subseteq D$, where $\mu$ is
+Lebesgue measure on $\BbbR^r$.   In particular,
+$\phi[D\cap A]$ is negligible for every negligible set $A\subseteq\BbbR^r$.
+
+\proof{ Let $\epsilon>0$.   By 261F, there is a sequence
+$\sequencen{B_n}=\sequencen{B(x_n,\delta_n)}$ of closed balls in
+$\Bbb R^r$, covering $A$, such that
+$\sum_{n=0}^{\infty}\mu B_n\le\mu^* A+\epsilon$ and
+$\sum_{n\in\Bbb N\setminus K}\mu B_n\le\epsilon$, where
+$K=\{n:n\in\Bbb N,\,x_n\in A\}$.   Set
+
+\Centerline{$L=\{n:n\in\Bbb N\setminus K,\,B_n\cap D\ne\emptyset\}$,}
+
+\noindent and for $n\in L$ choose $y_n\in D\cap B_n$.   Now set
+
+$$\eqalign{B'_n
+&=B(\phi(x_n),\gamma\delta_n)\text{ if }n\in K,\cr
+&=B(\phi(y_n),2\gamma\delta_n)\text{ if }n\in L,\cr
+&=\emptyset\text{ if }n\in\Bbb N\setminus(K\cup L).\cr}$$
+
+\noindent Then $\phi[B_n\cap D]\subseteq B'_n$ for every $n$, so
+$\phi[D\cap A]\subseteq\bigcup_{n\in\Bbb N}B'_n$, and
+
+$$\eqalign{\mu^*\phi[A\cap D]
+&\le\sum_{n=0}^{\infty}\mu B'_n
+=\gamma^r\sum_{n\in K}\mu B_n+2^r\gamma^r\sum_{n\in L}\mu B_n\cr
+&\le\gamma^r(\mu^*A+\epsilon)+2^r\gamma^r\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary, $\mu^*\phi[A\cap
+D]\le\gamma^r\mu^*A$, as claimed.
+}%end of proof of 262D
+
+\vleader{72pt}{262E}{Corollary} Let $\phi:D\to\BbbR^r$ be an injective
+Lipschitz function, where $D\subseteq\BbbR^r$, and $f$ a measurable
+function from a subset of $\BbbR^r$ to $\Bbb R$.
+
+(a) If $\phi^{-1}$ is defined almost everywhere in a subset $H$ of
+$\BbbR^r$ and $f$ is defined almost everywhere in $\BbbR^r$, then
+$f\phi^{-1}$ is defined almost everywhere in $H$.
+
+(b) If $E\subseteq D$ is Lebesgue measurable then $\phi[E]$ is
+measurable.
+
+(c) If $D$ is measurable then $f\phi^{-1}$ is measurable.
+
+\proof{ Set
+
+\Centerline{$C=\dom(f\phi^{-1})
+=\{y:y\in\phi[D],\,\phi^{-1}(y)\in\dom f\}=\phi[D\cap\dom f]$.}
+
+\medskip
+
+{\bf (a)} Because $f$ is defined almost everywhere,
+$\phi[D\setminus\dom f]$
+is negligible.   But now
+
+\Centerline{$C=\phi[D]\setminus \phi[D\setminus\dom f]
+=\dom\phi^{-1}\setminus\phi[D\setminus\dom f]$,}
+
+\noindent so
+
+\Centerline{$H\setminus C
+\subseteq(H\setminus\dom\phi^{-1})\cup\phi[D\setminus\dom f]$}
+
+\noindent is negligible.
+
+\medskip
+
+{\bf (b)} Now suppose that $E\subseteq D$ and that $E$ is measurable.
+Let $\sequencen{F_n}$ be a sequence of closed bounded
+subsets of $E$ such that $\mu(E\setminus\bigcup_{n\in\Bbb N}F_n)=0$
+(134Fb).   Because $\phi$ is Lipschitz, it is continuous, so
+$\phi[F_n]$ is compact, therefore closed, therefore measurable for every
+$n$ (2A2E, 115G);  also $\phi[E\setminus\bigcup_{n\in\Bbb N}F_n]$
+is negligible, by 262D, therefore measurable.   So
+
+\Centerline{$\phi[E]
+=\phi[E\setminus\bigcup_{n\in\Bbb N}F_n]
+  \cup\bigcup_{n\in\Bbb N}\phi[F_n]
+$}
+
+\noindent is measurable.
+
+\medskip
+
+{\bf (c)} For any $a\in\Bbb R$, take a measurable set
+$E\subseteq\BbbR^r$
+such that $\{x:f(x)\ge a\}=E\cap\dom f$.   Then
+
+\Centerline{$\{y:y\in C,\,f\phi^{-1}(y)\ge a\}
+=C\cap\phi[D\cap E]$.}
+
+\noindent But $\phi[D\cap E]$ is measurable, by (b), so
+$\{y:f\phi^{-1}(y)\ge a\}$ is relatively measurable in $C$.   As $a$ is
+arbitrary, $f\phi^{-1}$ is measurable.
+}%end of proof of 262E
+
+\leader{262F}{\dvrocolon{Differentiability}}\cmmnt{ I come now to the
+class of functions whose properties will take up most of the rest of the
+chapter.
+
+\medskip
+
+\noindent}{\bf Definitions}  Suppose that $\phi$ is a
+function from a subset $D=\dom\phi$ of $\BbbR^r$ to $\BbbR^s$.
+
+\spheader 262Fa $\phi$  is {\bf differentiable} at $x\in D$ if there is a
+real $s\times r$ matrix $T$ such that
+
+\Centerline{$\lim_{y\to x}
+\Bover{\|\phi(y)-\phi(x)-T(y-x)\|}{\|y-x\|}=0$;}
+
+\noindent in this case we may write $T=\phi'(x)$.
+
+\spheader 262Fb I will say that $\phi$ is {\bf differentiable relative to
+its domain} at
+$x$, and that $T$ is {\bf a} derivative of $\phi$ at $x$, if
+$x\in D$ and for every $\epsilon>0$ there is a $\delta>0$ such that
+$\|\phi(y)-\phi(x)-T(y-x)\|\le\epsilon\|y-x\|$ for every
+$y\in B(x,\delta)\cap D$.
+
+\cmmnt{
+\vleader{72pt}{262G}{Remarks (a)} The standard definition in 262Fa,
+involving an all-sided limit
+`$\lim_{y\to x}$', implicitly requires $\phi$ to be defined on some
+non-trivial ball centered on $x$, so that we can calculate
+$\phi(y)-\phi(x)-T(y-x)$ for all $y$ sufficiently near $x$.   It has the
+advantage that the derivative $T=\phi'(x)$ is uniquely defined (because
+if $\lim_{z\to \tbf{0}}\Bover{\|T_1z-T_2z\|}{\|z\|}=0$ then
+
+\Centerline{$\Bover{\|(T_1-T_2)z\|}{\|z\|}=\lim_{\alpha\to
+0}\Bover{\|T_1(\alpha
+z)-T_2(\alpha z)\|}{\|\alpha z\|}=0$}
+
+\noindent for every non-zero $z$, so $T_1-T_2$ must be the zero matrix).
+For our purposes here, there is some advantage in relaxing this slightly
+to the form
+in 262Fb, so that we do not need to pay special attention to the
+boundary of $\dom\phi$.   In particular we find that if
+$T$ is a derivative of $\phi:D\to\BbbR^s$
+relative to its domain at $x$, and $x\in D'\subseteq D$, then
+$T$ is a derivative of $\phi\restr D'$,
+relative to its domain, at $x$.
+
+\header{262Gb}{\bf (b)} If you have not seen this concept of
+`differentiability'
+before, but have some familiarity with partial differentiation, it is
+necessary to emphasize that the concept of `differentiable' function
+(at least in the strict sense demanded by 262Fa) is strictly
+stronger than the concept of `partially differentiable' function.
+For purposes of computation, the most useful method of finding true
+derivatives is through 262Id below.   For a simple
+example of a function with a full set of partial derivatives, which is
+not everywhere differentiable, consider $\phi:\BbbR^2\to\Bbb R$ defined
+by
+
+$$\eqalign{\phi(\xi_1,\xi_2)
+&={{\xi_1\xi_2}\over{\xi_1^2+\xi_2^2}}
+ \text{ if }\xi_1^2+\xi_2^2\ne 0,\cr
+&=0\text{ if }\xi_1=\xi_2=0.\cr}$$
+
+\noindent Then $\phi$ is not even continuous at $\tbf{0}$, although
+both partial derivatives $\pd{\phi}{\xi_j}$ are defined everywhere.
+
+\header{262Gc}{\bf (c)} In the definition above, I speak of a derivative
+as being a
+matrix.   Properly speaking,  the derivative of a function defined on a
+subset of $\BbbR^r$ and taking values in $\BbbR^s$ should be thought
+of as a bounded linear operator from $\BbbR^r$ to $\BbbR^s$;   the
+formulation in terms of matrices is acceptable just because there is a
+natural one-to-one correspondence between $s\times r$ real matrices and
+linear operators from $\BbbR^r$ to $\BbbR^s$, and all these linear
+operators are
+bounded.   I use the `matrix' description because it makes certain
+calculations more direct;  in particular, the relationship between
+$\phi'$ and the partial derivatives of $\phi$ (262Ic), and the notion of
+the determinant $\det\phi'(x)$, used throughout \S\S263 and 265.
+}%end of comment
+
+\leader{262H}{The norm of a matrix} Some of the calculations below will
+rely on the notion of `norm' of a matrix.   The one I
+will use\cmmnt{ (in fact, for our purposes here, any norm would do)}
+is the `operator norm', defined by saying
+
+\Centerline{$\|T\|=\sup\{\|Tx\|:x\in\BbbR^r,\,\|x\|\le 1\}$}
+
+\noindent for any $s\times r$ matrix $T$.   \cmmnt{For the basic facts
+concerning these norms, see 2A4F-2A4G.   The following will also be
+useful.}
+
+\header{262Ha}{\bf (a)} If\cmmnt{ all the coefficients of $T$ are
+small, so is $\|T\|$;  in fact,
+if} $T=\langle\tau_{ij}\rangle_{i\le s,j\le r}$\cmmnt{, and
+$\|x\|\le 1$,} then
+\cmmnt{$|\xi_j|\le 1$ for each $j$, so
+
+\Centerline{$\|Tx\|
+=\bigl(\sum_{i=1}^s(\sum_{j=1}^r\tau_{ij}\xi_j)^2\bigr)^{1/2}
+\le \bigl(\sum_{i=1}^s(\sum_{j=1}^r|\tau_{ij}|)^2\bigr)^{1/2}
+\le r\sqrt{s}\max_{i\le s,j\le r}|\tau_{ij}|$,}
+
+\noindent and} $\|T\|\le r\sqrt{s}\max_{i\le s,j\le r}|\tau_{ij}|$.
+\cmmnt{(This is a singularly crude inequality.   A better one is in
+262Yb.   But it tells us, in particular, that $\|T\|$ is always finite.)
+}
+
+\header{262Hb}{\bf (b)}\dvro{ $|\tau_{ij}|\le\|T\|$ for all $i$, $j$.}
+{ If $\|T\|$ is small, so are all the coefficients of $T$;  in fact,
+writing $e_j$ for the $j$th unit vector of $\BbbR^r$, then the $i$th
+coordinate of $Te_j$ is $\tau_{ij}$, so
+$|\tau_{ij}|\le\|Te_j\|\le\|T\|$.}
+
+\leader{262I}{Lemma} Let $\phi:D\to\BbbR^s$ be a function, where
+$D\subseteq\BbbR^r$.   For $i\le s$ let $\phi_i:D\to\Bbb R$ be its $i$th
+coordinate, so that $\phi(x)=(\phi_1(x),\ldots,\phi_s(x))$ for $x\in D$.
+
+(a) If $\phi$ is differentiable relative to its domain
+at $x\in D$, then $\phi$ is continuous at $x$.
+
+(b) If $x\in D$, then $\phi$ is differentiable relative to its domain at
+$x$ iff each $\phi_i$ is differentiable relative to its domain at $x$.
+
+(c) If $\phi$ is differentiable at $x\in D$, then all the partial
+derivatives $\pd{\phi_i}{\xi_j}$ of $\phi$ are defined at $x$, and the
+derivative of $\phi$ at $x$ is the matrix
+$\langle\pd{\phi_i}{\xi_j}(x)\rangle_{i\le s,j\le r}$.
+
+(d) If all the partial derivatives $\pd{\phi_i}{\xi_j}$, for $i\le s$
+and $j\le r$, are defined in a neighbourhood of $x\in D$ and are continuous at $x$, then $\phi$ is differentiable at $x$.
+
+\proof{{\bf (a)} Let $T$ be a derivative of $\phi$ at $x$.   Applying
+the definition 262Fb with
+$\epsilon=1$, we see that there is a $\delta>0$ such that
+\Centerline{$\|\phi(y)-\phi(x)-T(y-x)\|\le\|y-x\|$}
+
+\noindent whenever $y\in D$ and $\|y-x\|\le\delta$.   Now
+
+\Centerline{$\|\phi(y)-\phi(x)\|\le\|T(y-x)\|+\|y-x\|
+\le(1+\|T\|)\|y-x\|$}
+
+\noindent whenever $y\in D$ and $\|y-x\|\le\delta$, so $\phi$ is
+continuous at $x$.
+
+\medskip
+
+{\bf (b)(i)} If $\phi$ is differentiable relative to its domain at
+$x\in D$, let $T$ be a
+derivative of $\phi$ at $x$.   For $i\le s$ let $T_i$ be
+the $1\times r$ matrix consisting of the $i$th row of $T$.    Let
+$\epsilon>0$.  Then we have a $\delta>0$ such that
+
+$$\eqalign{|\phi_i(y)-\phi_i(x)-T_i(y-x)|
+&\le\|\phi(y)-\phi(x)-T(y-x)\|\cr
+&\le\epsilon\|y-x\|\cr}$$
+
+\noindent whenever $y\in D$ and $\|y-x\|\le\delta$, so that $T_i$ is a
+derivative of $\phi_i$ at $x$.
+
+\medskip
+
+\quad{\bf (ii)} If each $\phi_i$ is differentiable relative to its
+domain at
+$x$, with corresponding derivatives $T_i$, let $T$ be the $s\times r$
+matrix with rows $T_1,\ldots,T_s$.   Given $\epsilon>0$, there is for
+each $i\le s$ a $\delta_i>0$ such that
+
+\Centerline{$|\phi_i(y)-\phi_i(x)-T_iy|\le\epsilon\|y-x\|$ whenever
+$y\in D$, $\|y-x\|\le\delta_i$;}
+
+\noindent set $\delta=\min_{i\le s}\delta_i>0$;  then if $y\in D$ and
+$\|y-x\|\le\delta$, we shall have
+
+\Centerline{$\|\phi(y)-\phi(x)-T(y-x)\|^2
+=\sum_{i=1}^s|\phi_i(y)-\phi_i(x)-T_i(y-x)|^2
+\le s\epsilon^2\|y-x\|^2$,}
+
+\noindent so that
+
+\Centerline{$\|\phi(y)-\phi(x)-T(y-x)\|
+\le\epsilon\sqrt{s}\|y-x\|$.}
+
+\noindent As $\epsilon$ is arbitrary, $T$ is a derivative of $\phi$ at
+$x$.
+
+\medskip
+
+{\bf (c)} Set $T=\phi'(x)$.   We have
+
+\Centerline{$\lim_{y\to x}\Bover{\|\phi(y)-\phi(x)-T(y-x)\|}{\|y-x\|}
+=0$;}
+
+\noindent fix $j\le r$, and consider $y=x+\eta e_j$, where
+$e_j=(0,\ldots,0,1,0,\ldots,0)$ is the $j$th unit vector in $\BbbR^r$.
+Then we must have
+
+\Centerline{$\lim_{\eta\to 0}\Bover{\|\phi(x+\eta e_j)-\phi(x)-\eta
+T(e_j)\|}{|\eta|}
+=0$.}
+
+\noindent Looking at the $i$th coordinate of
+$\phi(x+\eta e_j)-\phi(x)-\eta T(e_j)$, we have
+
+
+\Centerline{$|\phi_i(x+\eta e_j)-\phi_i(x)-\tau_{ij}\eta|
+\le\|\phi(x+\eta e_j)-\phi(x)-\eta T(e_j)\|$,}
+
+\noindent where $\tau_{ij}$ is the
+$(i,j)$th coefficient of $T$;  so that
+
+\Centerline{$\lim_{\eta\to 0}
+\Bover{|\phi_i(x+\eta e_j)-\phi_i(x)-\tau_{ij}\eta|}{|\eta|}
+=0$.}
+
+\noindent  But this just says that the partial derivative
+$\pd{\phi_i}{\xi_j}(x)$ exists and is equal to $\tau_{ij}$, as claimed.
+
+\medskip
+
+{\bf (d)} Now suppose that the partial derivatives $\pd{\phi_i}{\xi_j}$
+are defined near $x$ and continuous at $x$.   Let $\epsilon>0$.   Let
+$\delta>0$ be such that
+
+\Centerline{$|\pd{\phi_i}{\xi_j}(y)-\tau_{ij}|\le\epsilon$}
+
+\noindent whenever $\|y-x\|\le\delta$, writing
+$\tau_{ij}=\pd{\phi_i}{\xi_j}(x)$.   Now suppose that
+$\|y-x\|\le\delta$.   Set
+
+\Centerline{$y=(\eta_1,\ldots,\eta_r)$,
+\quad$x=(\xi_1,\ldots,\xi_r)$,}
+
+\Centerline{$y_j=(\eta_1,\ldots,\eta_j,\xi_{j+1},\ldots,\xi_r)$ for
+$0\le
+j\le r$,}
+
+\noindent so that $y_0=x$, $y_r=y$ and the line segment between
+$y_{j-1}$ and $y_{j}$ lies wholly within $\delta$ of $x$ whenever
+$1\le j\le r$, since if $z=(\zeta_1,\ldots,\zeta_r)$
+lies on this segment then $\zeta_i$ lies
+between $\xi_i$ and $\eta_i$ for every $i$.   By the ordinary mean value
+theorem for differentiable real functions, applied to the function
+
+\Centerline{$t\mapsto
+\phi_i(\eta_1,\ldots,\eta_{j-1},t,\xi_{j+1},\ldots,\xi_r)$,}
+
+\noindent there is for each $i\le s$, $j\le r$ a point $z_{ij}$ on the
+line segment between $y_{j-1}$ and $y_j$ such that
+
+\Centerline{$\phi_i(y_j)-\phi_i(y_{j-1})
+=(\eta_j-\xi_j)\pd{\phi_i}{\xi_j}(z_{ij})$.}
+
+\noindent But
+
+\Centerline{$|\pd{\phi_i}{\xi_j}(z_{ij})-\tau_{ij}|\le\epsilon$,}
+\noindent so
+
+\Centerline{$|\phi_i(y_j)-\phi_i(y_{j-1})
+-\tau_{ij}(\eta_j-\xi_j)|\le\epsilon|\eta_j-\xi_j|\le\epsilon\|y-x\|$.}
+
+\noindent Summing over $j$,
+
+\Centerline{$|\phi_i(y)-\phi_i(x)-\sum_{j=1}^r\tau_{ij}(\eta_j-\xi_j)|
+\le r\epsilon\|y-x\|$}
+
+\noindent for each $i$.   Summing the squares and taking the square
+root,
+
+\Centerline{$\|\phi(y)-\phi(x)-T(y-x)\|\le \epsilon r\sqrt{s}\|y-x\|$,}
+
+\noindent where $T=\langle\tau_{ij}\rangle_{i\le s,j\le r}$.   And this
+is true
+whenever $\|y-x\|\le\delta$.   As $\epsilon$ is arbitrary, $\phi'(x)=T$
+is defined.
+}%end of proof of 262I
+
+\cmmnt{
+\leader{262J}{Remark} I am not sure if I ought to apologize for the
+notation $\pd{}{\xi_j}$.   In such formulae as
+$(\eta_j-\xi_j)\pd{\phi_i}{\xi_j}(z_{ij})$ above, the two appearances of
+$\xi_j$ clash most violently.   But I do not think that any person of
+good will is likely to be misled, provided that the labels $\xi_j$ (or
+whatever symbols are used to represent the variables involved) are
+adequately described when the domain of $\phi$ is first introduced (and
+always remembering that in partial differentiation, we are not only
+moving one variable -- a $\xi_j$ in the present context -- but holding
+fixed some further list of variables, not listed in the notation).   I
+believe that the traditional notation $\pd{}{\xi_j}$ has survived for
+solid reasons, and I should like to offer a welcome to those who are
+more comfortable with it than with any of the many alternatives which
+have been proposed, but have never taken root.
+}%end of comment
+
+\cmmnt{
+\leader{262K}{The Cantor function revisited} It is salutary to
+re-examine the examples of 134H-134I in the light of the present
+considerations.   Let $f:[0,1]\to[0,1]$ be the Cantor function (134H)
+and set $g(x)=\bover12(x+f(x))$ for $x\in [0,1]$.   Then
+$g:[0,1]\to[0,1]$ is a homeomorphism (134I);  set
+$\phi=g^{-1}:[0,1]\to[0,1]$.   We see that if $0\le x\le y\le 1$ then
+$g(y)-g(x)\ge\bover12(y-x)$;  equivalently, $\phi(y)-\phi(x)\le 2(y-x)$
+whenever $0\le x\le y\le 1$, so that $\phi$ is a Lipschitz function,
+therefore absolutely continuous (262Bc).   If
+$D=\{x:\phi'(x)$ is defined$\}$, then
+$[0,1]\setminus D$ is negligible (225Cb), so
+$[0,1]\setminus\phi[D]=\phi[\,[0,1]\setminus D]$ is negligible (262Da).
+I noted in 134I that there is a measurable function $h:[0,1]\to\Bbb R$
+such that the composition $h\phi$ is not measurable;  now
+$h(\phi\restr D)=(h\phi)\restr D$ cannot be measurable, even though
+$\phi\restr D$ is differentiable.
+}%end of comment
+
+\leader{262L}{}\cmmnt{ It will be convenient to be able to call on the
+following straightforward result.
+
+\medskip
+
+\noindent}{\bf Lemma} Suppose that $D\subseteq\BbbR^r$ and $x\in\BbbR^r$
+are such that
+$\lim_{\delta\downarrow 0}
+ \Bover{\mu^*(D\cap B(x,\delta))}{\mu B(x,\delta)}=1$.   Then
+$\lim_{z\to\tbf{0}}\Bover{\rho(x+z,D)}{\|z\|}=0$, where
+$\rho(x+z,D)=\inf_{y\in D}\|x+z-y\|$.
+
+\proof{ Let $\epsilon>0$.  Let $\delta_0>0$ be such that
+
+\Centerline{$\mu^*(D\cap B(x,\delta))
+>(1-(\Bover{\epsilon}{1+\epsilon})^r)\mu B(x,\delta)$}
+
+\noindent whenever $0<\delta\le\delta_0$.   Take any $z$ such that
+$0<\|z\|\le\delta_0/(1+\epsilon)$.   \Quer\ Suppose, if possible, that
+$\rho(x+z,D)>\epsilon\|z\|$.   Then $B(x+z,\epsilon\|z\|)\subseteq
+B(x,(1+\epsilon)\|z\|)\setminus D$, so
+
+$$\eqalign{\mu^*(D\cap B(x,(1+\epsilon)\|z\|))
+&\le\mu B(x,(1+\epsilon)\|z\|)-\mu B(x+z,\epsilon\|z\|)\cr
+&=(1-(\Bover{\epsilon}{1+\epsilon})^r)\mu B(x,(1+\epsilon)\|z\|),\cr}$$
+
+\noindent which is impossible, as $(1+\epsilon)\|z\|\le\delta_0$.\
+\BanG\   Thus $\rho(x+z,D)\le\epsilon\|z\|$.   As $\epsilon$ is
+arbitrary, this proves the result.
+}%end of proof of 262L
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} There is a word for this;  see 261Yg.}
+
+\leader{262M}{}\cmmnt{ I come now to the first result connecting
+Lipschitz functions with differentiable functions.   I approach it
+through a substantial lemma which will be the foundation of \S263.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $\phi$ be a
+function from a subset $D$ of $\BbbR^r$ to $\BbbR^s$ which is
+differentiable at
+each point of its domain.   For each $x\in D$ let $T(x)$ be a derivative
+of $\phi$.   Let $M_{sr}$ be the set of $s\times r$ matrices and
+$\zeta:A\to\ooint{0,\infty}$ a strictly positive function, where
+$A\subseteq M_{sr}$ is a non-empty set containing $T(x)$ for every
+$x\in D$.   Then we
+can find sequences $\sequencen{D_n}$, $\sequencen{T_n}$ such that
+
+(i) $\sequencen{D_n}$ is a partition of $D$ into sets which are
+relatively measurable in $D$\cmmnt{, that is, are intersections of $D$ with measurable subsets of $\BbbR^r$};
+
+(ii) $T_n\in A$ for every $n$;
+
+(iii) $\|\phi(x)-\phi(y)-T_n(x-y)\|\le\zeta(T_n)\|x-y\|$ for every
+$n\in\Bbb N$ and $x$, $y\in D_n$;
+
+(iv) $\|T(x)-T_n\|\le\zeta(T_n)$ for every $x\in D_n$.
+
+\proof{{\bf (a)} The first step is to note that there is a sequence
+$\sequencen{S_n}$ in $A$ such that
+
+\Centerline{$A
+\subseteq\bigcup_{n\in\Bbb N}\{T:T\in M_{sr},\,\|T-S_n\|<\zeta(S_n)\}$.}
+
+\noindent\Prf\ (Of course this is a standard result about
+separable metric
+spaces.) Write $Q$ for the set of matrices in $M_{sr}$ with rational
+coefficients;  then there is a natural bijection between $Q$ and
+$\Bbb Q^{sr}$, so $Q$ and $Q\times\Bbb N$ are countable.   Enumerate
+$Q\times\Bbb N$ as $\sequencen{(R_n,k_n)}$.   For each $n\in\Bbb N$,
+choose $S_n\in A$ by the rule
+
+\quad --- if there is an $S\in A$ such that $\{T:\|T-R_n\|\le
+2^{-k_n}\}\subseteq\{T:\|T-S\|<\zeta(S)\}$, take such an $S$ for $S_n$;
+
+\quad --- otherwise, take $S_n$ to be any member of $A$.
+
+\noindent I claim that this works.   For let $S\in A$.   Then
+$\zeta(S)>0$;  take $k\in\Bbb N$ such that $2^{-k}<\zeta(S)$.   Take
+$R^*\in Q$ such that $\|R^*-S\|<\min(\zeta(S)-2^{-k},2^{-k})$;  this
+is possible because $\|R-S\|$ will be small whenever all the
+coefficients
+of $R$ are close enough to the corresponding coefficients of $S$
+(262Ha), and we can find rational numbers to achieve this.   Let
+$n\in\Bbb N$ be such that $R^*=R_n$ and $k=k_n$.   Then
+
+\Centerline{$\{T:\|T-R_n\|\le 2^{-k_n}\}
+\subseteq\{T:\|T-S\|<\zeta(S)\}$}
+
+\noindent (because $\|T-S\|\le\|T-R_n\|+\|R_n-S\|$), so we must have
+chosen $S_n$ by the first part of the rule above, and
+
+\Centerline{$S\in\{T:\|T-R_n\|\le 2^{-k_n}\}
+\subseteq\{T:\|T-S_n\|<\zeta(S_n)\}$.}
+
+\noindent As $S$ is arbitrary, this proves the result.\ \Qed
+
+\medskip
+
+{\bf (b)} Enumerate $\Bbb Q^r\times\Bbb Q^r\times\Bbb N$ as
+$\sequencen{(q_n,q'_n,m_n)}$.   For each $n\in\Bbb N$, set
+
+$$\eqalign{H_n&=\{x:x\in[q_n,q'_n]\cap D,\,
+\|\phi(y)-\phi(x)-S_{m_n}(y-x)\|\le\zeta(S_{m_n})\|y-x\|\cr
+&\mskip370mu
+    \text{for every }y\in[q_n,q'_n]\cap D\}\cr
+&=[q_n,q'_n]\cap D\cap\bigcap_{y\in[q_n,q'_n]\cap D}
+       \{x:x\in D,\cr
+&\mskip270mu
+    \|\phi(y)-\phi(x)-S_{m_n}(y-x)\|\le\zeta(S_{m_n})\|y-x\|\}.\cr}$$
+
+\noindent Because $\phi$ is continuous, $H_n=D\cap\overline{H}_n$,
+writing $\overline{H}_n$ for the closure of $H_n$, so $H_n$ is
+relatively measurable in $D$.
+Note that if $x$, $y\in H_n$, then $y\in D\cap[q_n,q'_n]$, so that
+
+\Centerline{$\|\phi(y)-\phi(x)-S_{m_n}(y-x)\|\le\zeta(S_{m_n})\|y-x\|$.}
+
+
+Set
+
+\Centerline{$H_n'=\{x:x\in H_n,\,\|T(x)-S_{m_n}\|\le\zeta(S_{m_n})\}$.}
+
+\medskip
+
+{\bf (c)} $D=\bigcup_{n\in\Bbb N}H'_n$.   \Prf\ Let $x\in D$.   Then
+$T(x)\in A$, so there is a $k\in\Bbb N$ such that
+$\|T(x)-S_k\|<\zeta(S_k)$.   Let $\delta>0$ be such that
+
+\Centerline{$\|\phi(y)-\phi(x)-T(x)(x-y)\|
+\le(\zeta(S_k)-\|T(x)-S_k\|)\|x-y\|$}
+
+\noindent whenever $y\in D$ and $\|y-x\|\le\delta$.   Then
+
+$$\eqalign{\|\phi(y)-\phi(x)-S_k(x-y)\|
+&\le(\zeta(S_k)-\|T(x)-S_k\|)\|x-y\|+\|T(x)-S_k\|\|x-y\|\cr
+&\le\zeta(S_k)\|x-y\|\cr}$$
+
+\noindent whenever $y\in D\cap B(x,\delta)$.   Let $q$, $q'\in\Bbb Q^r$
+be such that $x\in[q,q']\subseteq B(x,\delta)$.   Let $n$ be such that
+$q=q_n$, $q'=q'_n$ and $k=m_n$.   Then $x\in H'_n$.\ \Qed
+
+\medskip
+
+{\bf (d)} Write
+
+\Centerline{$C_n=\{x:x\in H_n,\,\lim_{\delta\downarrow 0}
+\Bover{\mu^*(H_n\cap B(x,\delta))}{\mu B(x,\delta)}=1\}$.}
+
+\noindent Then $C_n\subseteq H'_n$.
+
+\medskip
+
+\Prf\ {\bf (i)} Take $x\in C_n$, and set $\tilde T=T(x)-S_{m_n}$.   I
+have
+to show that $\|\tilde T\|\le\zeta(S_{m_n})$.   Take $\epsilon>0$.   Let
+$\delta_0>0$ be such that
+
+\Centerline{$\|\phi(y)-\phi(x)-T(x)(y-x)\|\le\epsilon\|y-x\|$}
+
+\noindent whenever $y\in D$ and $\|y-x\|\le\delta_0$.   Since
+
+\Centerline{$\|\phi(y)-\phi(x)-S_{m_n}(y-x)\|\le\zeta(S_{m_n})\|y-x\|$}
+
+\noindent whenever $y\in H_n$, we have
+
+\Centerline{$\|\tilde T(y-x)\|\le(\epsilon+\zeta(S_{m_n}))\|y-x\|$}
+
+\noindent whenever $y\in H_n$ and $\|y-x\|\le\delta_0$.
+
+\medskip
+
+\quad{\bf (ii)} By 262L, there is a $\delta_1>0$ such that
+$(1+2\epsilon)\delta_1\le\delta_0$ and $\rho(x+z,H_n)\le\epsilon\|z\|$
+whenever $0<\|z\|\le\delta_1$.   So if $\|z\|\le\delta_1$ there is a
+$y\in
+H_n$ such that $\|x+z-y\|\le 2\epsilon\|z\|$.   (If $z=0$ we can take
+$y=x$.)   Now $\|x-y\|\le (1+2\epsilon)\|z\|\le\delta_0$, so
+
+$$\eqalign{\|\tilde Tz\|
+&\le\|\tilde T(y-x)\|+\|\tilde T(x+z-y)\|\cr
+&\le(\epsilon+\zeta(S_{m_n}))\|y-x\|+\|\tilde T\|\|x+z-y\|\cr
+&\le(\epsilon+\zeta(S_{m_n}))\|z\|
+    +(\epsilon+\zeta(S_{m_n})+\|\tilde T\|)\|x+z-y\|\cr
+&\le(\epsilon+\zeta(S_{m_n})+2\epsilon^2+2\epsilon\zeta(S_{m_n})
+    +2\epsilon\|\tilde T\|)\|z\|.\cr}$$
+
+\noindent And this is true whenever $0<\|z\|\le\delta_1$.
+But multiplying this inequality by
+suitable positive scalars we see that
+
+\Centerline{$\|\tilde Tz\|
+\le\bigl(\epsilon+\zeta(S_{m_n})+2\epsilon^2+2\epsilon\zeta(S_{m_n})
++2\epsilon\|\tilde T\|\bigr)\|z\|$}
+
+\noindent for all $z\in\BbbR^r$, and
+
+\Centerline{$\|\tilde T\|
+\le\epsilon+\zeta(S_{m_n})+2\epsilon^2+2\epsilon\zeta(S_{m_n})
+  +2\epsilon\|\tilde T\|$.}
+
+\noindent As $\epsilon$ is
+arbitrary, $\|\tilde T\|\le\zeta(S_{m_n})$, as claimed.\ \Qed
+
+\medskip
+
+{\bf (e)} By 261Da, $H_n\setminus C_n$ is negligible for every $n$, so
+$H_n\setminus H'_n$ is negligible, and
+
+\Centerline{$H'_n=D\cap(\overline{H}_n\setminus(H_n\setminus H'_n))$}
+
+\noindent is relatively measurable in $D$.   Set
+
+\Centerline{$D_n=H'_n\setminus\bigcup_{k<n}H'_k$,
+\quad$T_n=S_{m_n}$}
+
+\noindent for each $n$;  these serve.
+}%end of proof of 262M
+
+
+\leader{262N}{Corollary} Let $\phi$ be a function from a subset $D$ of
+$\Bbb R^r$ to $\BbbR^s$, and suppose that $\phi$ is differentiable relative to
+its domain at each point of $D$.   Then $D$ can be expressed as the
+union of
+a disjoint sequence $\sequencen{D_n}$ of relatively measurable subsets
+of $D$ such that $\phi\restr D_n$ is Lipschitz for each $n\in\Bbb N$.
+
+\proof{ In 262M, take $\zeta(T)=1$ for every $T\in A=M_{sr}$.   If $x$,
+$y\in D_n$ then
+
+$$\eqalign{\|\phi(x)-\phi(y)\|
+&\le\|\phi(x)-\phi(y)-T_n(x-y)\|+\|T_n(x-y)\|\cr
+&\le\|x-y\|+\|T_n\|\|x-y\|,\cr}$$
+
+\noindent so $\phi\restr D_n$ is $(1+\|T_n\|)$-Lipschitz.
+}%end of proof of 262N
+
+\leader{262O}{Corollary} Suppose that $\phi$ is an injective function
+from a measurable subset $D$ of $\BbbR^r$ to $\BbbR^r$, and that
+$\phi$ is differentiable relative to its domain at every point of $D$.
+
+(a) If $A\subseteq D$ is negligible, $\phi[A]$ is negligible.
+
+(b) If $E\subseteq D$ is measurable, then $\phi[E]$ is
+measurable.
+
+(c) If $D$ is measurable and $f$ is a measurable function defined on a
+subset of $\BbbR^r$, then $f\phi^{-1}$ is measurable.
+
+(d) If $H\subseteq\BbbR^r$ and $\phi^{-1}$ is defined almost everywhere
+in $H$, and if $f$ is a function defined almost everywhere in
+$\Bbb R^r$, then $f\phi^{-1}$ is defined almost everywhere in $H$.
+
+\proof{ Take a sequence $\sequencen{D_n}$ as in 262N,
+and apply 262E to $\phi\restr D_n$ for each $n$.
+}%end of proof of 262O
+
+\leader{262P}{Corollary} Let $\phi$ be a function from a a subset $D$ of
+$\BbbR^r$ to $\BbbR^s$, and suppose that $\phi$ is differentiable
+relative to its domain, with a derivative $T(x)$, at each point $x\in
+D$.   Then the function $x\mapsto T(x)$ is measurable in the sense that
+$\tau_{ij}:D\to\Bbb R$ is measurable for all $i\le s$ and $j\le r$,
+where $\tau_{ij}(x)$ is the
+$(i,j)$th coefficient of the matrix $T(x)$ for all $i$, $j$ and $x$.
+
+\proof{ For each $k\in\Bbb N$, apply 262M with $\zeta(T)=2^{-k}$ for
+each $T\in A=M_{sr}$, obtaining sequences $\sequencen{D_{kn}}$ of
+relatively measurable subsets of $D$ and $\sequencen{T_{kn}}$ in
+$M_{sr}$.   Let
+$\tau^{(kn)}_{ij}$ be the $(i,j)$th coefficient of $T_{kn}$.   Then we
+have functions $f_{ijk}:D\to\Bbb R$ defined by setting
+
+\Centerline{$f_{ijk}(x)=\tau^{(kn)}_{ij}$ if $x\in D_{kn}$.}
+
+\noindent Because the $D_{kn}$ are relatively measurable, the $f_{ijk}$
+are
+measurable functions.   For $x\in D_{kn}$,
+\Centerline{$|\tau_{ij}(x)-f_{ijk}(x)|\le\|T(x)-T_n\|\le 2^{-k}$,}
+
+\noindent so $|\tau_{ij}(x)-f_{ijk}(x)|\le 2^{-k}$ for every $x\in D$,
+and
+
+\Centerline{$\tau_{ij}=\lim_{k\to\infty}f_{ijk}$}
+
+\noindent is measurable, as claimed.
+}%end of proof of 262P
+
+\leader{*262Q}{}\cmmnt{ This concludes the part of the section
+which is essential for the rest of the chapter.   However the main
+results of \S263
+will I think be better understood if you are aware of the fact that any
+Lipschitz function is differentiable (relative to its domain) almost
+everywhere in its domain.   I devote the next couple of pages to a proof
+of this fact, which apart from its intrinsic interest is a useful
+exercise.
+
+\medskip
+
+\noindent}{\bf Rademacher's theorem} Let $\phi$ be a Lipschitz function
+from a subset
+of $\BbbR^r$ to $\BbbR^s$.   Then $\phi$ is
+differentiable relative to its domain almost everywhere in its domain.
+
+\proof{{\bf (a)} By 262Ba and 262Ib, it will be enough to
+deal with the
+case $s=1$.   By 262Bb, there is a Lipschitz function
+$\tilde\phi:\BbbR^r\to\Bbb R$ extending $\phi$;  now $\phi$ is
+differentiable with respect to its domain at any point of $\dom\phi$ at
+which $\tilde \phi$ is differentiable, so it will be enough if I can
+show that $\tilde\phi$ is differentiable almost everywhere.   To make
+the notation more agreeable to the eye, I will suppose that $\phi$
+itself was defined everywhere in $\BbbR^r$.   Let $\gamma$ be a
+Lipschitz constant for $\phi$.
+
+The proof proceeds by induction on $r$.   If $r=1$, we have a Lipschitz
+function $\phi:\Bbb R\to\Bbb R$;  now $\phi$ is absolutely
+continuous in any bounded interval (262Bc), therefore differentiable
+almost everywhere (225Cb).   Thus the
+induction starts.   The rest of the proof is devoted to the inductive
+step to $r>1$.
+
+\medskip
+
+{\bf (b)} The first step is to show that all the partial derivatives
+$\pd{\phi}{\xi_j}$ are defined almost everywhere and are Borel
+measurable.
+\Prf\ Take $j\le r$.   For $q\in\Bbb Q\setminus\{0\}$ set
+
+\Centerline{$\Delta_q(x)=\Bover{1}{q}(\phi(x+qe_j)-\phi(x))$,}
+
+\noindent writing $e_j$ for the $j$th unit vector of $\BbbR^r$.
+Because $\phi$ is continuous, so is $\Delta_q$, so that $\Delta_q$ is a
+Borel
+measurable function for each $q$.   Next, for any $x\in\Bbb
+R^r$,
+
+\Centerline{$D^+(x)=\limsup_{\delta\to 0}\Bover1{\delta}
+(\phi(x+\delta e_j)-\phi(x))
+=\lim_{n\to\infty}\sup_{q\in\Bbb Q,0<|q|\le 2^{-n}}\Delta_q(x)$,}
+
+\noindent so that the set on which $D^+(x)$ is defined in $\Bbb R$ is
+Borel and
+$D^+$ is a Borel measurable function.
+Similarly,
+
+\Centerline{$D^-(x)=\liminf_{\delta\to 0}\Bover1{\delta}
+(\phi(x+\delta e_j)-\phi(x))$}
+
+\noindent is a Borel measurable function with Borel domain.   So
+
+\Centerline{$E=\{x:\pd{\phi}{\xi_j}(x)\text{ exists in }\Bbb R\}
+=\{x:D^+(x)=D^-(x)\in\Bbb R\}$}
+
+\noindent is a Borel set, and $\pd{\phi}{\xi_j}$ is a Borel measurable
+function.
+
+On the other hand, if we identify $\BbbR^r$ with
+$\BbbR^J\times\Bbb R$, taking $J$ to be
+$\{1,\ldots,j-1,j+1,\ldots,r\}$, then we can think of
+Lebesgue measure $\mu$
+on $\BbbR^r$ as being the product of Lebesgue measure $\mu_J$ on
+$\BbbR^J$ with Lebesgue measure $\mu_1$ on $\Bbb R$ (251N).   Now for
+every $y\in\BbbR^J$ we have a function $\phi_y:\Bbb R\to\Bbb R$ defined
+by writing
+
+\Centerline{$\phi_y(\sigma)=\phi(y,\sigma)$,}
+
+\noindent and $E$ becomes
+
+\Centerline{$\{(y,\sigma):\phi_y'(\sigma)$ is defined$\}$,}
+
+\noindent so that all the sections
+
+\Centerline{$\{\sigma:(y,\sigma)\in E\}$}
+
+\noindent are conegligible subsets of $\Bbb R$, because every
+$\phi_y$ is Lipschitz, therefore differentiable almost everywhere, as
+remarked in part (a) of the proof.   Since we know that $E$ is
+measurable, it must be conegligible, by Fubini's theorem (apply 252D or
+252F to the complement of $E$).
+Thus $\pd{\phi}{\xi_j}$ is defined almost everywhere, as claimed.\ \Qed
+
+Write
+
+\Centerline{$H=\{x:x\in\BbbR^r,\,\pd{\phi}{\xi_j}(x)
+\text{ exists for every }j\le r\}$,}
+
+\noindent so that $H$ is a conegligible Borel set in $\BbbR^r$.
+
+\medskip
+
+{\bf (c)} For the rest of this proof, I fix on the natural
+identification of $\BbbR^r$ with $\BbbR^{r-1}\times\Bbb R$,
+identifying $(\xi_1,\ldots,\xi_r)$ with
+$((\xi_1,\ldots,\xi_{r-1}),\xi_r)$.
+For $x\in H$, let $T(x)$ be the $1\times r$ matrix
+$(\pd{\phi}{\xi_1}(x),\ldots,\pd{\phi}{\xi_r}(x))$.
+
+\medskip
+
+{\bf (d)} Set
+
+\Centerline{$H_1=\{x:x\in H,\,\lim_{u\to\tbf{0}\text{ in }\BbbR^{r-1}}
+\Bover{|\phi(x+(u,0))-\phi(x)-T(x)(u,0)|}{\|u\|}=0\}$.}
+
+\noindent I claim that $H_1$ is conegligible in $\BbbR^r$.
+\Prf\ This is really the same idea as in (b).   For $x\in H$, $x\in H_1$
+iff
+
+\inset{for every $\epsilon>0$ there is a $\delta>0$ such that
+
+\Centerline{$|\phi(x+(u,0))-\phi(x)-T(x)(u,0)|\le\epsilon\|u\|$}
+
+\noindent whenever $\|u\|\le\delta$,}
+
+\noindent that is, iff
+
+\inset{for every $m\in\Bbb N$ there is an $n\in\Bbb N$ such that
+
+\Centerline{$|\phi(x+(u,0))-\phi(x)-T(x)(u,0)|\le 2^{-m}\|u\|$}
+
+\noindent whenever $u\in\Bbb Q^{r-1}$ and $\|u\|\le 2^{-n}$.}
+
+\noindent But for any particular $m\in\Bbb N$ and $u\in\Bbb Q^{r-1}$ the
+set
+
+\Centerline{$\{x:|\phi(x+(u,0))-\phi(x)-T(x)(u,0)|\le 2^{-m}\|u\|\}$}
+
+\noindent is measurable, indeed Borel, because all the functions
+$x\mapsto\phi(x+(u,0))$, $x\mapsto\phi(x)$, $x\mapsto T(x)(u,0)$ are
+Borel measurable.   So $H_1$ is of the form
+
+\Centerline{$\bigcap_{m\in\Bbb N}\bigcup_{n\in\Bbb N}
+\bigcap_{u\in\Bbb Q^{r-1},\|u\|\le 2^{-n}}E_{mnu}$}
+
+\noindent where every $E_{mnu}$ is a measurable set, and $H_1$ is
+therefore measurable.
+
+Now however observe that for any $\sigma\in\Bbb R$, the function
+
+\Centerline{$v\mapsto\phi_{\sigma}(v)=\phi(v,\sigma):
+\BbbR^{r-1}\to\Bbb R$}
+
+\noindent is Lipschitz, therefore (by the inductive hypothesis)
+differentiable almost everywhere in $\BbbR^{r-1}$;  and that
+$(v,\sigma)\in H_1$ iff $(v,\sigma)\in H$ and $\phi_{\sigma}'(v)$ is
+defined.   Consequently
+$\{v:(v,\sigma)\in H_1\}$ is conegligible whenever
+$\{v:(v,\sigma)\in H\}$
+is, that is, for almost every $\sigma\in \Bbb R$;  so that $H_1$, being
+measurable, must be conegligible.\ \Qed
+
+\medskip
+
+{\bf (e)} Now, for $q$, $q'\in\Bbb Q$ and $n\in\Bbb N$, set
+
+\Centerline{$F(q,q',n)
+=\{x:x\in\BbbR^r$,
+  $q\le\Bover{\phi(x+(\tbf{0},\eta))-\phi(x)}{\eta}\le q'$
+  whenever $0<|\eta|\le 2^{-n}\}$,}
+
+\Centerline{$F_*(q,q',n)
+=\{x:x\in F(q,q',n),\,\lim_{\delta\downarrow 0}
+ \Bover{\mu^*(F(q,q',n)\cap B(x,\delta))}{\mu B(x,\delta)}=1\}$.}
+
+\noindent By 261Da, $F(q,q',n)\setminus F_*(q,q',n)$ is negligible for
+all $q$, $q'$, $n$, so that
+
+\Centerline{$H_2
+=H_1\setminus\bigcup_{q,q'\in\Bbb Q,n\in\Bbb N}
+  (F(q,q',n)\setminus F_*(q,q',n))$}
+
+\noindent is conegligible.
+
+\medskip
+
+{\bf (f)} I claim that $\phi$ is differentiable at every point of $H_2$.
+\Prf\ Take $x=(u,\sigma)\in H_2$.   Then $\alpha=\Pd{\phi}{\xi_r}(x)$
+and $T=T(x)$ are defined.   Let $\gamma$ be a Lipschitz constant for
+$\phi$.
+
+Take $\epsilon>0$;  take $q$, $q'\in\Bbb Q$ such that
+$\alpha-\epsilon\le q<\alpha<q'\le\alpha+\epsilon$.   There must be an
+$n\in\Bbb N$ such that $x\in F(q,q',n)$;  consequently
+$x\in F_*(q,q',n)$,
+by the definition of $H_2$.   By 262L, there is a $\delta_0>0$ such that
+$\rho(x+z,F(q,q',n))\le\epsilon\|z\|$ whenever $\|z\|\le\delta_0$.
+Next, there is a $\delta_1>0$ such that
+$|\phi(x+(v,0))-\phi(x)-T(v,0)|\le\epsilon\|v\|$ whenever
+$v\in\BbbR^{r-1}$ and $\|v\|\le\delta_1$.   Set
+
+\Centerline{$\delta=\min(\delta_0,\delta_1,2^{-n})/(1+2\epsilon)>0$.}
+
+Suppose that $z=(v,\tau)\in\BbbR^r$ and that $\|z\|\le\delta$.   Because
+$\|z\|\le\delta_0$ there is an $x'=(u',\sigma')\in F(q,q',n)$ such that
+$\|x+z-x'\|\le2\epsilon\|z\|$;  set $x^*=(u',\sigma)$.   Now
+
+\Centerline{$\max(\|u-u'\|,|\sigma-\sigma'|)\le
+\|x-x'\|\le(1+2\epsilon)\|z\|\le\min(\delta_1,2^{-n})$}
+
+\noindent and $x^*=x+(u'-u,0)$, so
+
+\Centerline{$|\phi(x^*)-\phi(x)-T(x^*-x)|
+\le\epsilon\|u'-u\|\le\epsilon(1+2\epsilon)\|z\|$.}
+
+\noindent But also
+
+\Centerline{$|\phi(x')-\phi(x^*)-T(x'-x^*)|
+=|\phi(x')-\phi(x^*)-\alpha(\sigma'-\sigma)|
+\le\epsilon|\sigma'-\sigma|\le\epsilon(1+ 2\epsilon)\|z\|$,}
+
+\noindent because $x'\in F(q,q',n)$ and $|\sigma-\sigma'|\le 2^{-n}$,
+so that (if $x'\ne x^*$)
+
+\Centerline{$\alpha-\epsilon\le q
+\le\Bover{\phi(x^*)-\phi(x')}{\sigma-\sigma'}\le q'\le\alpha+\epsilon$}
+
+\noindent and
+
+\Centerline{$\bigl|\Bover{\phi(x')-\phi(x^*)}
+{\sigma'-\sigma}-\alpha\bigr|\le\epsilon$.}
+\noindent Finally,
+
+\Centerline{$|\phi(x+z)-\phi(x')|
+\le\gamma\|x+z-x'\|\le2\gamma\epsilon\|z\|$,}
+
+\Centerline{$|Tz-T(x'-x)|\le\|T\|\|x+z-x'\|\le2\epsilon\|T\|\|z\|$.}
+
+Putting all these together,
+
+$$\eqalign{|\phi(x+z)-\phi x-Tz|
+&\le|\phi(x+z)-\phi(x')|
++|T(x'-x)-Tz|\cr
+&\qquad
++|\phi(x')-\phi(x^*)-T(x'-x^*)|
++|\phi(x^*)-\phi(x)-T(x^*-x)|\cr
+&\le2\gamma\epsilon\|z\|
++2\epsilon\|T\|\|z\|
++\epsilon(1+2\epsilon)\|z\|
++\epsilon(1+2\epsilon)\|z\|\cr
+&=\epsilon(2\gamma+2\|T\|+2+4\epsilon)\|z\|.\cr}$$
+
+\noindent And this is true whenever $\|z\|\le\delta$.   As $\epsilon$ is
+arbitrary, $\phi$ is differentiable at $x$.\ \Qed
+
+Thus $\{x:\phi$ is differentiable at $x\}$ includes $H_2$ and is
+conegligible;  and the induction continues.
+}%end of proof of 262Q
+
+\exercises{
+\leader{262X}{Basic exercises (a)} Let $\phi$ and $\psi$ be Lipschitz
+functions from subsets of $\BbbR^r$ to $\BbbR^s$.   Show that
+$\phi+\psi$ is a Lipschitz function from $\dom\phi\cap\dom\psi$ to
+$\Bbb R^s$.
+%262A
+
+\header{262Xb}{\bf (b)} Let $\phi$ be a Lipschitz function from a subset
+of $\BbbR^r$ to $\BbbR^s$, and $c\in\Bbb R$.   Show that $c\phi$ is a
+Lipschitz function.
+%262A
+
+\header{262Xc}{\bf (c)} Suppose $\phi:D\to\BbbR^s$ and
+$\psi:E\to\BbbR^q$ are Lipschitz functions,
+where $D\subseteq\BbbR^r$ and $E\subseteq\BbbR^s$.   Show that the
+composition $\psi\phi:D\cap\phi^{-1}[E]\to\BbbR^q$ is Lipschitz.
+%262A
+
+\header{262Xd}{\bf (d)} Suppose $\phi$, $\psi$ are functions from
+subsets of $\BbbR^r$ to $\BbbR^s$, and suppose that
+$x\in\dom\phi\cap\dom\psi$ is such that each function is differentiable
+relative to its domain at $x$, with derivatives $S$, $T$ there.   Show
+that $\phi+\psi$ is differentiable relative to its domain at $x$, and
+that $S+T$ is a derivative of $\phi+\psi$ at $x$.
+%262F
+
+\header{262Xe}{\bf (e)} Suppose that $\phi$ is a function from a subset
+of $\BbbR^r$ to $\BbbR^s$, and is differentiable relative to its
+domain at $x\in\dom\phi$.   Show that $c\phi$ is differentiable relative
+to its domain at $x$ for every $c\in\Bbb R$.
+%262F
+
+\sqheader 262Xf Suppose $\phi:D\to\BbbR^s$ and
+$\psi:E\to\Bbb R^q$ are functions,
+where $D\subseteq\BbbR^r$ and $E\subseteq\BbbR^s$;  suppose that
+$\phi$ is differentiable relative to its domain at
+$x\in D\cap\phi^{-1}[E]$, with an
+$s\times r$ matrix $T$ a derivative there, and that $\psi$ is
+differentiable
+relative to its domain at $\phi(x)$, with a $q\times s$ matrix  $S$
+a derivative there.   Show that the composition $\psi\phi$ is
+differentiable relative to its
+domain at $x$, and that the $q\times r$ matrix $ST$ is a derivative of
+$\psi\phi$ at $x$.
+%262F
+
+\sqheader 262Xg Let $\phi:\BbbR^r\to\BbbR^s$ be a linear
+operator, with associated matrix $T$.   Show that $\phi$ is
+differentiable everywhere, with $\phi'(x)=T$ for every $x$.
+%262F
+
+\spheader 262Xh Let $G\subseteq\BbbR^r$ be a convex open set,
+and $\phi:G\to\BbbR^s$ a function such that all the partial derivatives
+$\pd{\phi_i}{\xi_j}$ are defined everywhere in $G$.   Show that $\phi$
+is Lipschitz iff all the partial derivatives are bounded on $G$.
+%262I
+
+\spheader 262Xi Let $\phi:\BbbR^r\to\BbbR^s$ be a function.   Show that
+$\phi$ is differentiable at $x\in\BbbR^r$ iff for every $m\in\Bbb N$
+there are an $n\in\Bbb N$ and an $r\times s$ matrix $T$ with rational
+coefficients
+such that $\|\phi(y)-\phi(x)-T(y-x)\|\le 2^{-m}\|y-x\|$ whenever
+$\|y-x\|\le 2^{-n}$.
+%262I
+
+\spheader 262Xj Suppose that $f$ is a real-valued function which is
+integrable over $\BbbR^r$, and that $g:\BbbR^r\to\Bbb R$ is a bounded
+differentiable function such that the partial derivative $\Pd{g}{\xi_j}$
+is bounded, where $j\le r$.   Let $f*g$ be
+the convolution of $f$ and $g$ (255E, 255L).
+Show that $\Pd{}{\xi_j}(f*g)$
+is defined everywhere and equal to $f*\Pd{g}{\xi_j}$.   \Hint{255Xd.}
+%262+
+
+\spheader 262Xk Let $(X,\Sigma,\mu)$ be a measure space,
+$G\subseteq\BbbR^r$ an open set, and $f:X\times G\to\Bbb R$ a function.
+Suppose that
+
+\inset{(i) for every $x\in X$, $t\mapsto f(x,t):G\to\Bbb R$ is
+differentiable;
+
+(ii) there is an integrable function $g$ on $X$ such that
+$|\pd{f}{\tau_j}(x,t)|\le g(x)$ whenever $x\in X$, $t\in G$ and
+$j\le r$;
+
+(iii) $\int|f(x,t)|\mu(dx)$ exists in $\Bbb R$ for every $t\in G$.}
+
+\noindent Show that $t\mapsto\int f(x,t)\mu(dx):G\to\Bbb R$ is
+differentiable.  \Hint{show first that, for a suitable $M$,
+$|f(x,t)-f(x,t')|\le M|g(x)|\|t-t'\|$ for every  $t$, $t'\in G$ and
+$x\in X$.}
+%262+
+
+\spheader 262Xl\dvAnew{2015} Let $f:[a,b]\to\Bbb R$ 
+be an absolutely continuous
+function, where $a\le b$, and $g:f[\,[a,b]\,]\to\Bbb R$ a Lipschitz
+function.   Show that $gf$ is absolutely continuous.
+%262Bc out of order query
+
+\leader{262Y}{Further exercises (a)}
+%\spheader 262Ya
+Let $L$ be the space of all Lipschitz functions from
+$\BbbR^r$ to $\BbbR^s$, and for $\phi\in L$ set
+
+\Centerline{$\|\phi\|
+=\|\phi(0)\|+\min\{\gamma:\gamma\in\coint{0,\infty}$,
+$\|\phi(y)-\phi(x)\|\le\gamma\|y-x\|$ for every $x$, $y\in\BbbR^r\}$.}
+
+\noindent Show that $(L,\|\,\,\|)$ is a Banach space.
+%262A
+
+\spheader 262Yb Show that if
+$T=\langle\tau_{ij}\rangle_{i\le s,j\le r}$ is an $s\times r$ matrix
+then the operator norm $\|T\|$, as defined in 262H, is at most
+$\sqrt{\sum_{i=1}^s\sum_{j=1}^r\tau_{ij}^2}$.
+%262H
+
+\spheader 262Yc Let $\phi:D\to\Bbb R$ be any function, where
+$D\subseteq\BbbR^r$.   Show that $H=\{x:x\in D,\,\phi$ is differentiable
+relative to its domain at $x\}$ is relatively measurable in $D$, and
+that $\pd{\phi}{\xi_j}\restr H$ is measurable for every $j\le r$.
+%262I
+
+\spheader 262Yd\dvAnew{2015}
+Let $\phi:D\to\Bbb R$ be a function, where
+$D\subseteq\BbbR^r$.
+(i) Show that if $\phi$ is measurable then all its partial derivatives
+are measurable.
+(ii) Show that if $\phi$ is Borel
+measurable then all its partial derivatives are Borel measurable.
+%262Yc 262I 225Yg
+
+\spheader 262Ye A function $\phi:\BbbR^r\to\Bbb R$ is {\bf smooth} if
+all its partial derivatives
+$\Bover{\partial\ldots\partial\phi}
+{\partial\xi_i\partial\xi_j\ldots\partial\xi_l}$ are defined everywhere
+in $\BbbR^r$ and are
+continuous.   Show that if $f$ is integrable over $\BbbR^r$ and
+$\phi:\BbbR^r\to\Bbb R$ is smooth and has bounded support then the
+convolution $f*\phi$ is smooth.   \Hint{262Xj, 262Xk.}
+%262Xk 262+
+
+\spheader 262Yf For $\delta>0$ set
+$\tilde\phi_{\delta}(x) =e^{1/(\delta^2-\|x\|^2)}$ if $\|x\|<\delta$,
+$0$ if $\|x\|\ge\delta$;  set
+$\alpha_{\delta}=\int\tilde\phi_{\delta}(x)dx$,
+$\phi_{\delta}(x)=\alpha_{\delta}^{-1}\tilde\phi_{\delta}(x)$ for every
+$x$.  (i) Show that $\phi_{\delta}:\BbbR^r\to\Bbb R$ is smooth and has
+bounded support.   (ii) Show that if $f$ is integrable over $\BbbR^r$
+then $\lim_{\delta\downarrow 0}\int|f(x)-(f*\phi_{\delta})(x)|dx=0$.
+\Hint{start with continuous functions $f$ with bounded support, and use
+242O.}
+%262Ye 262+
+
+\spheader 262Yg Show that if
+$f$ is integrable over $\BbbR^r$ and $\epsilon>0$ there is a smooth
+function $h$ with bounded support such that $\int|f-h|\le\epsilon$.
+\Hint{{\it either} reduce to the case in which $f$ has bounded support
+and use 262Yf {\it or} adapt the method of 242Xi.}
+%262Yf 262+
+
+\spheader 262Yh Suppose that $f$ is a real function which is integrable
+over every bounded subset of $\BbbR^r$.   (i) Show that $f\times\phi$ is
+integrable whenever $\phi:\BbbR^r\to\Bbb R$ is a smooth function with
+bounded support.   (ii) Show that if $\int f\times\phi=0$ for every
+smooth function with bounded support then $f=0$ a.e.   ({\it Hint\/}:
+show that
+$\int_{B(x,\delta)}f=0$ for every $x\in\BbbR^r$ and $\delta>0$, and use
+261C.   Alternatively show that $\int_Ef=0$ first for $E=[b,c]$, then
+for open sets $E$, then for arbitrary measurable sets $E$.)
+%262Ye 262+
+
+\spheader 262Yi Let $f$ be integrable over $\BbbR^r$, and for $\delta>0$
+let $\phi_{\delta}:\BbbR^r\to\Bbb R$ be the function of 262Yf.   Show
+that $\lim_{\delta\downarrow 0}(f*\phi_{\delta})(x)=f(x)$ for every $x$
+in the Lebesgue set of $f$.   ({\it Hint\/}:  261Ye.)
+%262Yf 262+
+
+}%end of exercises
+
+\endnotes{
+\Notesheader{262} The emphasis of this section has turned out to be on
+the connexions between the concepts of `Lipschitz function' and
+`differentiable function'.   It is the delight of classical real
+analysis
+that such intimate relationships arise between concepts which belong to
+different categories.   `Lipschitz functions' clearly belong to the
+theory of metric spaces (I will return to this in \S264), while
+`differentiable functions' belong to the theory of differentiable
+manifolds, which is outside the scope of this volume.
+I have written this section out carefully just in case there are readers
+who have so far missed the theory of differentiable mappings between
+multi-dimensional Euclidean spaces;  but it also gives me a chance to
+work through the notion of `function differentiable relative to its
+domain', which will make it possible in the next section to ride
+smoothly past a variety of problems arising at boundaries.   The
+difficulties I am concerned with arise in the first place with such
+functions as the polar-coordinate transformation
+
+\Centerline{$(\rho,\theta)\mapsto (\rho\cos\theta,\rho\sin\theta):
+\{(0,0)\}\cup(\ooint{0,\infty}\times\ocint{-\pi,\pi})\to\BbbR^2$.}
+
+\noindent In order to make this a bijection we have to do something
+rather arbitrary, and the domain of the transformation cannot be an open
+set.   On the definitions I am using, this function is differentiable
+relative to its domain at every point of its domain, and we can apply
+such results as 262O uninhibitedly.   You will observe that in this case
+the non-interior points of the domain form a negligible set
+$\{(0,0)\}\cup(\ooint{0,\infty}\times\{\pi\})$, so we can expect to be
+able to ignore them;
+and for most of the geometrically straightforward transformations that
+the theory is applied to, judicious excision of negligible sets will
+reduce problems to the case of honestly differentiable functions with
+open domains.   But while open-domain theory will deal with a large
+proportion of the most important examples, there is a danger that you
+would be left with real misapprehensions concerning the scope of these
+methods.
+
+The essence of differentiability is that a differentiable function
+$\phi$ is
+approximable, near any given point of its domain, by an affine function.
+The idea of 262M is to describe a widely effective method of dissecting
+$D=\dom\phi$ into countably many pieces on each of which $\phi$ is
+well controlled.   This will be applied in \S\S263 and 265 to investigate
+the measure of $\phi[D]$;  but we already have several straightforward
+consequences (262N-262P).
+
+I have offered a number of results suggesting that (on the definitions I
+have chosen) a derivative can be expected to share at least some
+`descriptive' properties
+with the original function;  see 222Yd, 225J, 225Yg, 262Yc, 262Yd.
+For partial derivatives, there are complications concerning their domains
+(419Yd, 431Yd) which do not arise with full derivatives (225J, 262Yc).
+}%end of notes
+
+\discrpage
+

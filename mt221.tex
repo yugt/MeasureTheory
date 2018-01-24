@@ -1,0 +1,299 @@
+\frfilename{mt221.tex}
+\versiondate{2.6.03}
+\copyrightdate{1995}
+
+\def\chaptername{The Fundamental Theorem of Calculus}
+\def\sectionname{Vitali's theorem in $\Bbb R$}
+
+\newsection{221}
+\def\headlinesectionname{Vitali's theorem in $\eightBbb R$}
+
+I give the first theorem of this chapter a section to itself.   It
+occupies a position between measure theory and geometry (it is,
+indeed, one of the fundamental results of `geometric measure
+theory'), and its proof involves both the measure and the geometry of
+the real line.
+
+\leader{221A}{Vitali's theorem} Let $A$ be a bounded subset of $\Bbb R$
+and $\Cal I$ a family of non-singleton closed
+intervals in $\Bbb R$ such that every point of
+$A$ belongs to arbitrarily short members of $\Cal I$.   Then there is a
+countable set $\Cal I_0\subseteq\Cal I$ such that (i) $\Cal I_0$ is
+disjoint, that is,
+$I\cap I'=\emptyset$ for all distinct $I$, $I'\in\Cal I_0$ (ii)
+$\mu(A\setminus\bigcup\Cal I_0)=0$, where $\mu$ is Lebesgue measure on
+$\Bbb R$.
+
+\proof{{\bf (a)} If there is a finite disjoint
+set $\Cal I_0\subseteq\Cal I$
+such that $A\subseteq\bigcup\Cal I_0$ (including the
+possibility that $A=\Cal I_0=\emptyset$), we can stop.   So let us
+suppose henceforth that there is no such $\Cal I_0$.
+
+Let $\mu\sp*$ be Lebesgue outer
+measure on $\Bbb R$.   Suppose that $|x|<M$ for every $x\in A$, and set
+
+\Centerline{$\Cal I'=\{I:I\in\Cal I,\,I\subseteq[-M,M]\}$.}
+
+\medskip
+
+{\bf (b)} In this case, if $\Cal I_0$ is any finite disjoint subset of
+$\Cal I'$, there is a $J\in\Cal I'$ which is disjoint from any member of
+$\Cal I_0$.   \Prf\ Take $x\in A\setminus\bigcup\Cal I_0$.   Now there
+is a $\delta>0$ such that
+$[x-\delta,x+\delta]$ does not meet any member of $\Cal I_0$, and as
+$|x|<M$ we can suppose that $[x-\delta,x+\delta]\subseteq[-M,M]$.   Let
+$J$ be a member of $\Cal I$, containing $x$, and of length at most
+$\delta$;  then $J\in\Cal I'$ and $J\cap\bigcup\Cal I_0=\emptyset$.\
+\Qed
+
+\medskip
+
+
+{\bf (c)} We can now choose a sequence $\sequencen{\gamma_n}$ of real
+numbers and a disjoint sequence $\sequencen{I_n}$ in $\Cal I'$
+inductively, as follows.   Given $\langle I_j\rangle_{j<n}$ (if $n=0$,
+this is the empty sequence, with no members), with $I_j\in\Cal I'$ for
+each $j<n$, and $I_j\cap I_k=\emptyset$ for $j<k<n$, set
+
+\Centerline{$\Cal J_n=\{I:I\in\Cal I',\,I\cap I_j=\emptyset$ for every
+$j<n\}$.}
+
+\noindent   We know from (b) that $\Cal J_n\ne\emptyset$.   Set
+
+\Centerline{$\gamma_n=\sup\{\mu I:I\in\Cal J_n\}$;}
+
+\noindent then $0<\gamma_n\le 2M$.   We may therefore choose a set
+$I_n\in\Cal J_n$ such that $\mu I_n\ge{1\over 2}\gamma_n$, and this
+continues the induction.
+
+\medskip
+
+{\bf (e)} Because the $I_n$ are disjoint Lebesgue measurable subsets of
+$[-M,M]$, we have
+
+\Centerline{$\sum_{n=0}^{\infty}\gamma_n
+\le 2\sum_{n=0}^{\infty}\mu I_n\le 4M<\infty$,}
+
+\noindent and $\lim_{n\to\infty}\gamma_n=0$.   Now define $I'_n$ to be
+the closed
+interval with the same midpoint as $I_n$ but five times the length, so
+that it projects past each end of $I_n$ by at least $\gamma_n$.   I
+claim that, for any $n$,
+
+\Centerline{$A\subseteq\bigcup_{j<n}{I}_j\cup\bigcup_{j\ge n}I_j'$.}
+
+\noindent\Prf\Quer\ Suppose, if possible, otherwise.   Take
+any $x$ belonging to
+$A\setminus(\bigcup_{j<n}{I}_j\cup\bigcup_{j\ge n}I'_j)$.   Let
+$\delta>0$ be such that
+
+
+\Centerline{$[x-\delta,x+\delta]
+\subseteq[-M,M]\setminus\bigcup_{j<n}I_j$,}
+
+\noindent and let $J\in\Cal I$ be such that
+
+\Centerline{$x\in J\subseteq[x-\delta,x+\delta]$.}
+
+\noindent   Then
+
+\Centerline{$\mu J>0=\lim_{m\to\infty}\gamma_m$;}
+
+\noindent  let $m$ be the least integer
+greater than or equal to $n$ such that $\gamma_m<\mu J$.   In this case
+$J$ cannot belong to $\Cal J_m$, so there must be some $k<m$ such that
+$J\cap I_k\ne\emptyset$, because certainly $J\in\Cal I'$.   By the
+choice of $\delta$, $k$ cannot be less than $n$, so $n\le k<m$, and
+$\gamma_k\ge\mu J$.   In this case, the distance from $x$ to the nearest
+endpoint of $I_k$ is at most $\mu J\le \gamma_k$.   But the ends of
+$I'_k$ project beyond the ends of $I_k$ by at least $\gamma_k$, so $x\in
+I'_k$;  which contradicts the choice of $x$. \Bang \Qed
+
+\medskip
+
+{\bf (f)} It follows that
+
+\Centerline{$\mu\sp*(A\setminus\bigcup_{j<n}I_j)
+\le\mu(\bigcup_{j\ge n}I'_j)\le\sum_{j=n}^{\infty}\mu I'_j
+\le 5\sum_{j=n}^{\infty}\mu I_j$.}
+
+\noindent As
+
+\Centerline{$\sum_{j=0}^{\infty}\mu I_j\le 2M<\infty$,}
+
+\noindent we must have
+
+\Centerline{$\lim_{n\to\infty}\mu\sp*(A\setminus\bigcup_{j<n}I_j)=0,$}
+
+\noindent and
+
+\Centerline{$\mu(A\setminus\bigcup_{j\in\Bbb N}I_j)
+=\mu\sp*(A\setminus\bigcup_{j\in\Bbb N}I_j)
+\le\inf_{n\in\Bbb N}\mu^*(A\setminus\bigcup_{j<n}I_j)
+=0$.}
+
+Thus in this case we may set $\Cal I_0=\{I_n:n\in\Bbb N\}$ to obtain
+a countable disjoint family in $\Cal I$ with
+$\mu(A\setminus\bigcup\Cal I_0)=0$.
+}%end of proof of 221A
+
+\cmmnt{
+\leader{221B}{Remarks (a)} I have expressed this theorem in the form 
+`there is a countable set $\Cal I_0\subseteq\Cal I$ such that $\ldots$'
+in an
+attempt to find a concise way of expressing the three possibilities
+
+\inset{(i) $A=\Cal I=\emptyset$, so that we must take
+$\Cal I_0=\emptyset$;}
+
+\inset{(ii) there are disjoint $I_0,\ldots,I_n\in\Cal I$ such that
+$A\subseteq I_0\cup\ldots\cup I_n$, so that we can take
+$\Cal I_0=\{I_0,\ldots,I_n\}$;}
+
+\inset{(iii) there is a disjoint sequence $\sequencen{I_n}$ in $\Cal I$
+such that $\mu(A\setminus\bigcup_{n\in\Bbb N}I_n)=0$, so that we can
+take $\Cal I_0=\{I_n:n\in\Bbb N\}$.}
+
+\noindent Of course many applications, like the proof of 221A itself,
+will use forms of these three alternatives.
+
+\header{221Bb}{\bf (b)} The actual theorem here, as stated, will be used
+in the next section.   But quite as important as the statement of the
+theorem is the principle of its proof.   The $I_n$ are chosen
+`greedily', that
+is, when we come to choose $I_n$ we look at the family $\Cal J_n$ of
+possible intervals, given the choices $I_0,\ldots,I_{n-1}$ already made,
+and choose an $I_n\in\Cal J_n$ which is `about' as big as it could be.
+The supremum of the possibilities for $\mu I_n$ is $\gamma_n$;  but
+since we do
+not know that there is any $I\in\Cal J_n$ such that $\mu I=\gamma_n$, we
+must settle for a little less.   I follow the standard formula in taking
+$\mu I_n\ge\bover12\gamma_n$, but of course I could have taken
+$\mu I_n\ge\bover{99}{100}\gamma_n$, or $\mu I_n\ge(1-2^{-n})\gamma_n$,
+if that had helped later on.
+The remarkable thing is that this works;  we can choose the $I_n$
+without foresight and without considering their interrelationships (for
+that matter, without examining the set $A$) beyond the minimal
+requirement that $I_n\cap I_j=\emptyset$ for $j<n$, and even this
+arbitrary and casual procedure yields a suitable sequence.
+
+\header{221Bc}{\bf (c)} I have stated the theorem in terms of bounded
+sets $A$ and closed intervals, which is adequate for our needs, but very
+small changes in the proof suffice to deal with arbitrary
+(non-singleton) intervals, and another refinement handles unbounded sets
+$A$.   (See 221Ya.)
+}%end of comment
+
+\exercises{
+\leader{221X}{Basic exercises (a)} Let $\alpha\in\ooint{0,1}$.
+Suppose, in
+part (c) of the proof of 221A, we take $\mu I_n\ge\alpha\gamma_n$ for
+each $n\in\Bbb N$, rather than $\mu I_n\ge\bover12\gamma_n$.   What will
+be the appropriate constant to take in place of $5$ in defining the sets
+$I_j'$ of part (e)?
+
+\leader{221Y}{Further exercises (a)}
+Let $A$ be a subset of $\Bbb R$ and $\Cal I$ a family of non-singleton
+intervals in $\Bbb R$ such that every point of $A$ belongs to
+arbitrarily short members of $\Cal I$.   Show that there is a
+countable disjoint set $\Cal I_0\subseteq\Cal I$ such that $A\setminus
+\bigcup\Cal I_0$ is Lebesgue negligible.   \Hint{apply 221A to the
+sets $A\cap\ooint{n,n+1}$, $\{\overline{I}:I\in\Cal
+I,\,\overline{I}\subseteq\ooint{n,n+1}\}$, writing $\overline{I}$ for
+the closed interval with the same endpoints as $I$.}
+
+\header{221Yb}{\bf (b)} Let $\Cal J$ be any family of non-singleton
+intervals in $\Bbb R$.   Show that $\bigcup\Cal J$ is Lebesgue
+measurable.
+\Hint{apply (a) to $A=\bigcup\Cal J$ and the family $\Cal I$ of
+non-singleton subintervals of members of $\Cal J$.}
+
+\header{221Yc}{\bf (c)} Let $(X,\rho)$ be a metric space, $A$ a subset
+of $X$, and $\Cal I$ a family of closed balls of non-zero radius in $X$
+such that every point of $A$ belongs to arbitrarily small members of
+$\Cal I$.
+(I say here that a set is a `closed ball of non-zero radius' if it is
+expressible in the form $B(x,\delta)=\{y:\rho(y,x)\le\delta\}$ where
+$x\in X$ and $\delta>0$.   Of course it is possible for such a ball to
+be a singleton $\{x\}$.)   Show that either $A$ can be covered by a
+finite disjoint family in $\Cal I$ or there is a disjoint sequence
+$\sequencen{B(x_n,\delta_n)}$ in $\Cal I$ such that
+
+\Centerline{$A\subseteq\bigcup_{m\le n}B(x_m,\delta_m)
+  \cup\bigcup_{m>n}B(x_m,5\delta_m)$ for every $n\in\Bbb N$}
+
+\noindent or there is a disjoint sequence $\sequencen{B(x_n,\delta_n)}$
+in $\Cal I$ such that $\inf_{n\in\Bbb N}\delta_n>0$.
+
+\spheader 221Yd Give an example of a family $\Cal I$ of open intervals
+such that every point of $\Bbb R$ belongs to arbitrarily small members
+of $\Cal I$, but if $\sequencen{I_n}$ is any disjoint sequence in
+$\Cal I$, and for
+each $n\in\Bbb N$ we write $I'_n$ for the closed interval with the same
+centre as $I_n$ and ten times the length, then there is an $n$ such that
+$\ooint{0,1}\not\subseteq\bigcup_{m<n}I_m\cup\bigcup_{m\ge n}I'_m$.
+%mt22bits
+
+\spheader 221Ye(i) Show that if $\Cal I$ is a {\it finite} family of
+intervals in $\Bbb R$ there are $\Cal I_0$, $\Cal I_1\subseteq\Cal I$
+such that $\bigcup(\Cal I_0\cup\Cal I_1)=\bigcup\Cal I$ and both
+$\Cal I_0$ and $\Cal I_1$ are disjoint families.   \Hint{induce on
+$\#(\Cal I)$.}   (ii) Suppose that $\Cal I$ is a family of non-singleton
+intervals, of length at most $1$, covering a bounded set
+$A\subseteq\Bbb R$, and that $\epsilon>0$.   Show that there is a
+disjoint subfamily $\Cal I_0$ of $\Cal I$ such that
+$\mu^*(A\setminus\bigcup\Cal I_0)\le\bover12\mu^*A+\epsilon$.
+\Hint{replacing each member of $\Cal I$ by a slightly longer one with
+rational endpoints, reduce to the case in which $\Cal I$ is countable
+and thence to the case in which $\Cal I$ is finite;  now use (i).}
+(iii) Use (ii) to prove Vitali's theorem.   (I learnt this argument from
+J.Aldaz.)
+%221A
+}%end of exercises
+
+\endnotes{
+\Notesheader{221} I have headed this section `Vitali's theorem in
+$\Bbb R$' because there is an $r$-dimensional version, which will appear
+in Chapter 26 below.
+There is an anomaly in the position of this theorem.   It is an
+indispensable element of the proofs of some of the most important
+theorems in measure theory;  on the other hand, the ideas involved in
+its own proof
+are not used elsewhere in the elementary theory.   I have therefore
+myself sometimes omitted the proof when teaching this material, and
+would not
+reproach any student who left it to one side for the moment.   At some
+stage, of course, any measure theorist must master the method, not just
+for the sake of completeness, but in order to gain an intuition for
+possible
+variations.   I must emphasize that it is the {\it principle} of the
+proof, rather than its details, which is important, because there are
+innumerable
+forms of `Vitali's theorem'.   (I offer some variations in the exercises
+here and in \S261 below, and there are many others which are important
+in more advanced work;  one will appear in \S472 in Volume 4.)   This
+principle is, I suppose, that
+
+\inset{(i) we choose the $I_n$ greedily, according to some more or less
+natural criterion applicable to each $I_n$ as we come to choose it,
+without attempting to look ahead;}
+
+\inset{(ii) we prove that their sizes tend to zero, even though we
+seemed to do nothing to ensure that they would (but note the shift from
+$\Cal I$ to
+$\Cal I'$ in part (a) of the proof of 221A, which is exactly what is
+needed to make this step work);}
+
+\inset{(iii) we check that for a suitable definition of $I_n'$,
+enlarging $I_n$, we shall have
+$A\subseteq\bigcup_{m<n}I_m\cup\bigcup_{m\ge n}I'_m$
+for every $n$, while $\sum_{n=0}^{\infty}\mu I'_n<\infty$.}
+
+\noindent In a way, we have to count ourselves lucky every time this
+works.   The reason for studying as many variations as possible of a
+technique of this kind is to learn to guess when we might be lucky.
+}%end of comment
+
+\discrpage
+

@@ -1,0 +1,1829 @@
+\frfilename{mt282.tex}
+\versiondate{24.9.09}
+\copyrightdate{1996}
+
+\def\chaptername{Fourier analysis}
+\def\sectionname{Fourier series}
+\def\Var{\mathop{\text{Var}}}
+
+\newsection{282}
+
+Out of the enormous theory of Fourier series, I extract a few results
+which may at least provide a basis for further study.   I give the
+definitions of Fourier and Fej\'er sums (282A), with five of the most
+important results concerning their convergence (282G, 282H, 282J, 282L,
+282O).   On the way I include the Riemann-Lebesgue lemma (282E).   I end
+by mentioning convolutions (282Q).
+
+\vleader{48pt}{282A}{Definition} Let $f$ be an integrable complex-valued
+function defined almost everywhere in $\ocint{-\pi,\pi}$.
+
+\header{282Aa}{\bf (a)} The {\bf
+Fourier coefficients} of $f$ are the complex numbers
+
+$$c_k=\Bover1{2\pi}\int_{-\pi}^{\pi}f(x)e^{-ikx}dx$$
+
+\noindent for $k\in\Bbb Z$.
+
+\header{282Ab}{\bf (b)} The {\bf Fourier sums} of $f$ are the functions
+
+$$s_n(x)=\sum_{k=-n}^nc_ke^{ikx}$$
+
+\noindent for $x\in\ocint{-\pi,\pi}$, $n\in\Bbb N$.
+
+\header{282Ac}{\bf (c)} The {\bf Fourier
+series} of $f$ is the series $\sum_{k=-\infty}^{\infty}c_ke^{ikx}$,
+or\cmmnt{ (because
+we ordinarily consider the symmetric partial sums $s_n$)} the series
+$c_0+\sum_{k=1}^{\infty}(c_ke^{ikx}+c_{-k}e^{-ikx})$.
+
+\header{282Ad}{\bf (d)} The {\bf Fej\'er sums} of $f$ are the functions
+
+$$\sigma_m=\Bover1{m+1}\sum_{n=0}^ms_n$$
+
+\noindent for $m\in\Bbb N$.
+
+\header{282Ae}{\bf (e)}\cmmnt{ It will be convenient to have a further
+phrase available.}   If $f$ is
+any function with $\dom f\subseteq\ocint{-\pi,\pi}$, its {\bf periodic
+extension} is the function $\tilde f$, with domain
+$\bigcup_{k\in\Bbb Z}(\dom f+2k\pi)$, such that $\tilde f(x)=f(x-2k\pi)$
+whenever $k\in\Bbb Z$ and $x\in\dom f+2k\pi$.
+
+\cmmnt{
+\leader{282B}{Remarks} I have made two more or less arbitrary choices
+here.
+
+\header{282Ba}{\bf (a)} I have chosen to express Fourier series in their
+`complex' form rather than
+their `real' form.   From the point of view of pure measure theory
+(and, indeed, from the point of view of the nineteenth-century origins
+of the subject) there are gains in elegance from directing attention to
+real functions $f$ and looking at the real coefficients
+
+$$a_k=\Bover1{\pi}\int_{-\pi}^{\pi}f(x)\cos kx\,dx\text{ for }k\in\Bbb
+N,$$
+
+$$b_k=\Bover1{\pi}\int_{-\pi}^{\pi}f(x)\sin kx\,dx\text{ for }k\ge
+1.$$
+
+\noindent If we do this we have
+
+\Centerline{$c_0=\Bover12a_0$,}
+
+\noindent and for $k\ge 1$ we have
+
+\Centerline{$c_k=\Bover12(a_k-ib_k)$,\quad $c_{-k}=\Bover12(a_k+ib_k)$,
+\quad
+$a_k=c_k+c_{-k}$,\quad $b_k=i(c_k-c_{-k})$,}
+
+\noindent so that the Fourier sums become
+
+$$s_n(x)=\Bover12a_0+\sum_{k=1}^na_k\cos kx+b_k\sin kx.$$
+
+\noindent The advantage of this is that real functions $f$ correspond to
+real coefficients $a_k$, $b_k$, so that it is obvious that if $f$ is
+real-valued so are its Fourier and Fej\'er sums.   The disadvantages are
+that we have to
+use a variety of trigonometric equalities which are rather more
+complicated than the properties of the complex exponential function
+which they reflect, and that we are farther away from the natural
+generalizations to locally compact abelian groups.   So both electrical
+engineers and harmonic analysts tend to prefer the coefficients $c_k$.
+
+\header{282Bb}{\bf (b)} I have taken the functions $f$ to be defined on
+the interval $\ocint{-\pi,\pi}$ rather than on the circle
+$S^1=\{z:z\in\Bbb C,\,|z|=1\}$.   There would be advantages in elegance
+of language in using $S^1$, though I do not recall often seeing the
+formula
+
+\Centerline{$c_k=\int z^kf(z)dz$}
+
+\noindent which is the natural translation of
+$c_k=\bover1{2\pi}\int e^{ikx}f(x)dx$ under the substitution $x=\arg z$,
+$dx=2\pi\nu(dz)$.   However, applications of the theory tend to deal
+with periodic functions on the real line, so I work with
+$\ocint{-\pi,\pi}$, and accept the fact that its group operation
+$+_{2\pi}$, writing
+$x+_{2\pi}y$ for whichever of $x+y$, $x+y+2\pi$, $x+y-2\pi$ belongs to
+$\ocint{-\pi,\pi}$, is less familiar than multiplication on
+$S^1$.
+
+\header{282Bc}{\bf (c)} The remarks in (b) are supposed to remind you of
+\S255.
+
+\header{282Bd}{\bf (d)} Observe that if $f\eae g$ then $f$ and $g$ have
+the same Fourier coefficients, Fourier sums and Fej\'er sums.   This
+means that we could, if we wished, regard the $c_k$, $s_n$ and
+$\sigma_m$ as associated with a member of $L_{\Bbb C}^1$, the space of
+equivalence classes of integrable functions (\S242), rather than as
+associated with a particular function $f$.   Since however the $s_n$ and
+$\sigma_m$ appear as actual functions, and since many of the questions
+we are interested in refer to their values at particular points, it is
+more natural to express the theory in terms of integrable functions $f$
+rather than in terms of members of $L_{\Bbb C}^1$.
+}%end of comment
+
+\leader{282C}{The problems (a)} Under what conditions, and in what
+senses, do the Fourier and Fej\'er sums $s_n$ and $\sigma_m$ of a
+function $f$ converge to $f$?
+
+\header{282Cb}{\bf (b)} How do the properties of the double-ended
+sequence $\langle c_k\rangle_{k\in\Bbb Z}$ reflect the properties of
+$f$, and vice versa?
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The theory of Fourier series has been one of the
+leading topics of analysis for nearly two hundred years, and innumerable
+further problems have contributed greatly to our understanding.   (For
+instance:  can one characterize those sequences $\langle
+c_k\rangle_{k\in\Bbb Z}$ which are the Fourier coefficients of some
+integrable
+function?)   But in this outline I will concentrate on the question (a)
+above, with one and a half results (282K, 282Rb) addressing (b), which
+will give us more than enough material to work on.
+
+While most people would feel that the Fourier sums are somehow closer to
+what we really want to know, it turns out that the Fej\'er sums are
+easier to analyse, and there are advantages in dealing with them first.
+So while you may wish to look ahead to the statements of 282J, 282L and
+282O for an idea of where we are going, the first half of this section
+will be largely about Fej\'er sums.   Note that in any case in which we
+know that the Fourier sums converge (which is quite common;  see, for
+instance, the examples in 282Xh and 282Xo), then if we know that the
+Fej\'er sums converge to $f$, we can deduce that the Fourier sums also
+do, by 273Ca.
+
+The first step is a basic lemma showing that both the Fourier and
+Fej\'er sums of a function $f$ can be thought of as convolutions of $f$
+with kernels describable in terms of familiar functions.
+}%end of comment
+
+\leader{282D}{Lemma} Let $f$ be a complex-valued function which is
+integrable over $\ocint{-\pi,\pi}$, and
+
+\Centerline{$c_k=\bover1{2\pi}\int_{-\pi}^{\pi}f(x)e^{-ikx}dx$,
+\quad$s_n(x)=\sum_{k=-n}^nc_ke^{ikx}$,
+\quad$\sigma_m(x)=\bover1{m+1}\sum_{n=0}^ms_n(x)$}
+
+\noindent its Fourier coefficients, Fourier sums and Fej\'er sums.
+Write $\tilde f$ for the periodic extension of $f$\cmmnt{ (282Ae)}.   For
+$m\in\Bbb N$, write
+
+$$\psi_m(t)=\Bover{1-\cos(m+1)t}{2\pi(m+1)(1-\cos t)}$$
+
+\noindent for $0<|t|\le\pi$.   \cmmnt{(If you like, you can set
+$\psi_m(0)=\bover{m+1}{2\pi}$ to make $\psi_m$ continuous on
+$[-\pi,\pi]$.)}
+
+(a) For each $n\in\Bbb N$, $x\in\ocint{-\pi,\pi}$,
+
+$$\eqalign{s_n(x)
+&=\Bover1{2\pi}\int_{-\pi}^{\pi}f(t)
+\Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})(x-t)}
+  {\sin{1\over 2}(x-t)}dt\cr
+&=\Bover1{2\pi}\int_{-\pi}^{\pi}\tilde f(x+t)
+\Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})t}{\sin{1\over 2}t}dt\cr
+&=\Bover1{2\pi}\int_{-\pi}^{\pi}f(x-_{2\pi}t)
+\Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})t}{\sin{1\over 2}t}dt,\cr}$$
+
+\noindent writing $x-_{2\pi}t$ for whichever of $x-t$, $x-t-2\pi$,
+$x-t+2\pi$ belongs to $\ocint{-\pi,\pi}$.
+
+(b) For each $m\in\Bbb N$, $x\in\ocint{-\pi,\pi}$,
+
+$$\eqalign{\sigma_m(x)
+&=\int_{-\pi}^{\pi}\tilde f(x+t)\psi_m(t)dt\cr
+&=\int_{0}^{\pi}(\tilde f(x+t)+\tilde f(x-t))\psi_m(t)dt\cr
+&=\int_{-\pi}^{\pi}f(x-_{2\pi}t)\psi_m(t)dt.\cr}$$
+
+(c) For any $n\in\Bbb N$,
+
+$$\Bover1{2\pi}\int_{-\pi}^{0}
+  \Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})t}{\sin{1\over 2}t}dt
+=\Bover1{2\pi}\int_{0}^{\pi}
+\Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})t}{\sin{1\over 2}t}dt
+=\Bover12,
+\quad\Bover1{2\pi}\int_{-\pi}^{\pi}
+\Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})t}{\sin{1\over 2}t}dt
+=1.$$
+
+(d) For any $m\in\Bbb N$,
+
+\quad (i) $0\le\psi_m(t)\le\Bover{m+1}{2\pi}$ for every $t$;
+
+\quad (ii) for any $\delta>0$, $\lim_{m\to\infty}\psi_m(t)=0$ uniformly
+on $\{t:\delta\le|t|\le\pi\}$;
+
+\quad (iii) $\int_{-\pi}^0\psi_m=\int_0^{\pi}\psi_m=\Bover12$,
+\quad $\int_{-\pi}^{\pi}\psi_m=1$.
+
+
+\proof{ Really all that these amount to is summing geometric series.
+
+\medskip
+
+{\bf (a)} For (a), we have
+
+$$\eqalign{\sum_{k=-n}^ne^{-ikt}
+&=\bover{e^{int}-e^{-i(n+1)t}}{1-e^{-it}}\cr
+&=\bover{e^{i(n+{1\over 2})t}-e^{-i(n+{1\over 2})t}}
+{e^{{1\over 2}it}-e^{-{1\over 2}it}}
+=\bover{\sin(n+{1\over 2}\pushbottom{3.5pt})t}{\sin{1\over 2}t}.\cr}$$
+
+\noindent So
+
+$$\eqalign{s_n(x)
+&=\sum_{k=-n}^nc_ke^{ikx}
+=\Bover1{2\pi}\int_{-\pi}^{\pi}f(t)
+  \bigl(\sum_{k=-n}^ne^{ik(x-t)}\bigr)dt\cr
+&=\Bover1{2\pi}\int_{-\pi}^{\pi}f(t)
+  \Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})(x-t)}
+     {\sin{1\over 2}(x-t)}dt
+=\Bover1{2\pi}\int_{-\pi}^{\pi}\tilde f(t)
+  \Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})(x-t)}
+     {\sin{1\over 2}(x-t)}dt\cr
+&=\Bover1{2\pi}\int_{-\pi-x}^{\pi-x}\tilde f(x+t)
+  \Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})t}{\sin{1\over 2}t}dt
+=\Bover1{2\pi}\int_{-\pi}^{\pi}\tilde f(x+t)
+  \Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})t}{\sin{1\over 2}t}dt\cr}$$
+
+\noindent because $\tilde f$ and $t\mapsto
+\bover{\sin(n+{1\over 2})t}{\sin{1\over 2}t}$ are periodic with period
+$2\pi$, so that the integral from $-\pi-x$ to $-\pi$ must be the same as
+the integral from $\pi-x$ to $\pi$.
+
+For the expression in terms of $f(x-_{2\pi}t)$, we have
+
+$$\eqalignno{s_n(x)
+&=\Bover1{2\pi}\int_{-\pi}^{\pi}\tilde f(x+t)
+\Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})t}{\sin{1\over 2}t}dt
+=\Bover1{2\pi}\int_{-\pi}^{\pi}\tilde f(x-t)
+\Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})(-t)}
+   {\sin{1\over 2}(-t)}dt\cr
+\noalign{\noindent (substituting $-t$ for $t$)}
+&=\Bover1{2\pi}\int_{-\pi}^{\pi}f(x-_{2\pi}t)
+\Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})t}{\sin{1\over 2}t}dt\cr}$$
+
+\noindent because (for $x$, $t\in\ocint{-\pi,\pi}$)
+$f(x-_{2\pi}t)=\tilde f(x-t)$ whenever
+either is defined, and $\sin$ is an odd function.
+
+\medskip
+
+{\bf (b)} In the same way, we have
+
+$$\eqalign{\sum_{n=0}^m\sin(n+\Bover12)t
+&=\Imag\bigl(\sum_{n=0}^me^{i(n+{1\over 2})t}\bigr)
+=\Imag\bigl(e^{{1\over 2}it}\sum_{n=0}^me^{int}\bigr)\cr
+&=\Imag\bigl(e^{{1\over 2}it}\bover{1-e^{i(m+1)t}}{1-e^{it}}\bigr)
+=\Imag\bigl(\bover{1-e^{i(m+1)t}}{e^{-{1\over 2}it}
+   -e^{{1\over2}it}}\bigr)\cr
+&=\Imag\bigl(\bover{1-e^{i(m+1)t}}{-2i\sin{1\over 2}t}\bigr)
+=\Imag\bigl(\bover{i(1-e^{i(m+1)t})}{2\sin{1\over 2}t}\bigr)\cr
+&=\bover{1-\cos(m+1)t}{2\sin{1\over 2}t}.\cr}$$
+
+\noindent So
+
+\Centerline{$\sum_{n=0}^m
+  \Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})t}{\sin{1\over 2}t}
+=\Bover{1-\cos(m+1)t}{2\sin^2{1\over 2}t}
+=\Bover{1-\cos(m+1)t}{1-\cos t}
+=2\pi(m+1)\psi_m(t)$.}
+
+\noindent Accordingly,
+
+$$\eqalignno{\sigma_m(x)
+&={\Bover1{m+1}}\sum_{n=0}^ms_n(x)\cr
+&={\Bover1{m+1}}\sum_{n=0}^m{\Bover1{2\pi}}\int_{-\pi}^{\pi}
+   \tilde f(x+t){\Bover{\sin(n+{1\over
+2}\pushbottom{3.5pt})t}{\sin{1\over 2}t}}dt\cr
+&={\Bover1{2\pi}}\int_{-\pi}^{\pi}
+   \tilde f(x+t)\bigl({\Bover1{m+1}}\sum_{n=0}^m
+   {\Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})t}{\sin{1\over 2}t}}
+     \bigr)dt\cr
+&=\int_{-\pi}^{\pi}\tilde f(x+t)\psi_m(t)dt
+=\int_{-\pi}^{\pi}f(x-_{2\pi}t)\psi_m(t)dt\cr}$$
+
+\noindent as in (a), because $\cos$ and $\psi_m$ are even functions.
+For the same reason,
+
+$$\int_{0}^{\pi}\tilde f(x-t)\psi_m(t)dt
+=\int_{-\pi}^{0}\tilde f(x+t)\psi_m(t)dt,$$
+
+\noindent so
+
+$$\sigma_m(x)=\int_0^{\pi}(\tilde f(x+t)+\tilde f(x-t))\psi_m(t)dt.$$
+
+
+\medskip
+
+{\bf (c)} We need only look at where the formula
+$\bover{\sin(n+{1\over 2})t}{\sin{1\over 2}t}$ came from to see that
+
+$$\eqalign{\Bover1{2\pi}\int_I
+  \Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})t}{\sin{1\over 2}t}dt
+&=\Bover1{2\pi}\int_I\sum_{k=-n}^ne^{ikt}dt\cr
+&=\Bover1{2\pi}\int_I(1+2\sum_{k=1}^n\cos kt)dt
+=\Bover12\cr}$$
+
+\noindent for both $I=[-\pi,0]$ and $I=[0,\pi]$, because
+$\int_I\cos kt\,dt=0$ for every $k\ne 0$.
+
+\medskip
+
+{\bf (d)(i)} $\psi_m(t)\ge 0$ for every $t$ because
+$1-\cos(m+1)t$, $1-\cos t$ are always greater than or equal to $0$.
+For the upper bound, we have, using the constructions in (a) and (b),
+
+$$\bigl|\Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})t}
+   {\sin{1\over 2}t}\bigr|
+=\bigl|\sum_{k=-n}^ne^{ikt}\bigr|
+\le 2n+1$$
+
+\noindent for every $n$, so
+
+$$\eqalign{\psi_m(t)
+&=\Bover1{2\pi(m+1)}\sum_{n=0}^m\Bover{\sin(n+{1\over
+2}\pushbottom{3.5pt})t}{\sin{1\over 2}t}\cr
+&\le\Bover1{2\pi(m+1)}\sum_{n=0}^m\,2n+1
+=\Bover{m+1}{2\pi}.\cr}$$
+
+\medskip
+
+\quad{\bf (ii)} If $\delta\le|t|\le\pi$,
+
+\Centerline{$\psi_m(t)\le\Bover1{\pi(m+1)(1-\cos t)}
+\le\Bover1{\pi(m+1)(1-\cos\delta)}\to 0$}
+
+\noindent as $m\to\infty$.
+
+\medskip
+
+\quad{\bf (iii)} also follows from the construction in (b), because
+
+$$\int_I\psi_m
+={\Bover1{2\pi(m+1)}}\sum_{n=0}^m
+  \int_I\Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})t}{\sin{1\over 2}t}dt
+={\Bover1{m+1}}\sum_{n=0}^m\Bover12
+=\Bover12$$
+
+\noindent for both $I=[-\pi,0]$ and $I=[0,\pi]$, using (c).
+}%end of proof of 282D
+
+\cmmnt{\medskip
+
+\noindent{\bf Remarks} For a discussion of substitution in integrals, if
+you feel any need to justify the manipulations in part (a) of the proof,
+see 263J.
+
+The functions
+
+\Centerline{$t\mapsto\Bover{\sin(n+{1\over
+2}\pushbottom{3.5pt})t}{\sin{1\over 2}t}$,
+\quad $t\mapsto \Bover{1-\cos(m+1)t}{(m+1)(1-\cos t)}$}
+
+\noindent are called respectively the {\bf Dirichlet kernel} and the
+{\bf Fej\'er kernel}.
+
+I give the formulae in terms of $f(x-_{2\pi}t)$ in (a) and (b) in order
+to provide a link with the work of 255O.
+}
+
+\leader{282E}{}\cmmnt{ The next step is a vital lemma, with a suitably
+distinguished name which (you will be glad to know) reflects its
+importance rather than its difficulty.
+
+\medskip
+
+\noindent}{\bf The Riemann-Lebesgue lemma} Let $f$ be a
+complex-valued function which is integrable over $\Bbb R$.   Then
+
+\Centerline{$\lim_{y\to\infty}\int f(x)e^{-iyx}dx
+=\lim_{y\to-\infty}\int f(x)e^{-iyx}dx
+=0$.}
+
+\proof{{\bf (a)} Consider first the case in which $f=\chi\ooint{a,b}$,
+where $a<b$.   Then
+
+\Centerline{$|\int f(x)e^{-iyx}dx|
+=|\int_a^{b}e^{-iyx}dx|
+=|\Bover1{-iy}(e^{-iyb}-e^{-iya})|
+\le\Bover2{|y|}$}
+
+\noindent if $y\ne 0$.   So in this case the result is obvious.
+
+\medskip
+
+{\bf (b)} It follows at once that the result is true if $f$ is a
+step-function with bounded support, that is, if there are $a_0\le
+a_1\ldots\le a_n$ such that
+$f$ is constant on every interval
+$\ooint{a_{j-1},a_j}$ and zero outside $[a_0,a_n]$.
+
+\medskip
+
+{\bf (c)} Now, for a given integrable $f$ and $\epsilon>0$, there is
+a step-function $g$ such that $\int|f-g|\le\epsilon$
+(242Oa).   So
+
+\Centerline{$|\int f(x)e^{-iyx}dx-\int g(x)e^{-iyx}dx|
+\le\int|f(x)-g(x)|dx\le\epsilon$}
+
+\noindent for every $y$, and
+
+\Centerline{$\limsup_{y\to\infty}|\int f(x)e^{-iyx}dx|\le\epsilon$,}
+
+\Centerline{$\limsup_{y\to-\infty}|\int f(x)e^{-iyx}dx|\le\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, we have the result.
+}%end of proof of 282E
+
+\leader{282F}{Corollary} (a) Let $f$ be a complex-valued
+function which is integrable over $\ocint{-\pi,\pi}$, and
+$\langle c_k\rangle_{k\in\Bbb Z}$
+its sequence of Fourier coefficients.   Then
+$\lim_{k\to\infty}c_k=\lim_{k\to-\infty}c_k=0$.
+
+(b) Let $f$ be a complex-valued function which is integrable over
+$\Bbb R$.   Then
+\penalty -100
+$\lim_{y\to\infty}\int f(x)\sin yx\,dx=0$.
+
+\wheader{282F}{6}{2}{2}{36pt}
+
+\proof{{\bf (a)} We need only identify
+
+$$c_k=\Bover1{2\pi}\int_{-\pi}^{\pi}f(x)e^{-ikx}dx$$
+
+\noindent with $\int g(x)e^{-ikx}dx$, where $g(x)=f(x)/2\pi$ for
+$x\in\dom f$ and $0$ for $|x|>\pi$.
+
+\medskip
+
+{\bf (b)} This is just because
+
+\Centerline{$\int f(x)\sin yx\,dx
+=\Bover1{2i}(\int f(x)e^{iyx}dx-\int f(x)e^{-iyx}dx)$.}
+}%end of proof of 282F
+
+\leader{282G}{}\cmmnt{ We are now ready for theorems on the
+convergence of Fej\'er sums.
+I start with an easy one, almost a warming-up exercise.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $f:\ocint{-\pi,\pi}\to\Bbb C$ be a
+continuous function such that $\lim_{t\downarrow-\pi}f(t)=f(\pi)$.
+Then its sequence $\sequence{m}{\sigma_m}$ of
+Fej\'er sums converges uniformly to $f$ on $\ocint{-\pi,\pi}$.
+
+\proof{   The conditions on $f$ amount just to saying that
+its periodic extension $\tilde f$ is defined and continuous everywhere
+on $\Bbb R$.   Consequently it is bounded and uniformly continuous on
+any bounded interval, in particular, on the interval $[-2\pi,2\pi]$.
+Set
+$K=\sup_{|t|\le 2\pi}|\tilde f(t)|=\sup_{t\in\ocint{-\pi,\pi}}|f(t)|$.
+Write
+
+\Centerline{$\psi_m(t)=\Bover{1-\cos(m+1)t}{2\pi(m+1)(1-\cos t)}$}
+
+\noindent for $m\in\Bbb N$,  $0<|t|\le\pi$, as in 282D.
+
+Given $\epsilon>0$ we can find a $\delta\in\ocint{0,\pi}$ such that
+$|\tilde f(x+t)-\tilde f(x)|\le\epsilon$ whenever $x\in[-\pi,\pi]$ and
+$|t|\le\delta$.   Next, we can find an $m_0\in\Bbb N$ such that
+$M_m\le\bover{\epsilon}{4\pi K}$ for every $m\ge m_0$, where
+$M_m=\sup_{\delta\le|t|\le\pi}\psi_m(t)$ (282D(d-ii)).   Now suppose
+that $m\ge m_0$ and $x\in\ocint{-\pi,\pi}$.   Set
+$g(t)=\tilde f(x+t)-f(x)$ for $|t|\le\pi$.   Then $|g(t)|\le 2K$ for all
+$t\in[-\pi,\pi]$ and $|g(t)|\le\epsilon$ if $|t|\le\delta$, so
+
+$$\eqalign{\bigl|\int_{-\pi}^{\pi}g\times\psi_m\bigr|
+&\le\int_{-\pi}^{-\delta}|g|\times\psi_m
+  +\int_{-\delta}^{\delta}|g|\times\psi_m
+  +\int_{\delta}^{\pi}|g|\times\psi_m\cr
+&\le 2M_mK(\pi-\delta)
+  +\epsilon\int_{-\delta}^{\delta}\psi_m
+  +2M_mK(\pi-\delta)\cr
+&\le 4\pi M_mK+\epsilon
+\le 2\epsilon.\cr}$$
+
+\noindent Consequently, using 282Db and 282D(d-iii),
+
+$$|\sigma_m(x)-f(x)|
+=|\int_{-\pi}^{\pi}(\tilde f(x+t)-f(x))\psi_m(t)dt|
+\le 2\epsilon$$
+
+\noindent for every $m\ge m_0$;  and this is true for every
+$x\in\ocint{-\pi,\pi}$.   As $\epsilon$ is arbitrary,
+$\sequence{m}{\sigma_m}$ converges to $f$ uniformly on
+$\ocint{-\pi,\pi}$.
+}%end of proof of 282G
+
+\leader{282H}{}\cmmnt{ I come now to a theorem describing the
+behaviour of the
+Fej\'er sums of general functions $f$.   The hypothesis of the theorem
+may take a little bit of digesting;  you can get an idea of its intended
+scope by glancing at Corollary 282I.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $f$ be a complex-valued function which is
+integrable over $\ocint{-\pi,\pi}$, and $\sequence{m}{\sigma_m}$ its
+sequence of Fej\'er sums.
+Suppose that $x\in\ocint{-\pi,\pi}$ and $c\in\Bbb C$ are such that
+
+$$\lim_{\delta\downarrow
+0}\Bover1{\delta}\int_0^{\delta}|\tilde f(x+t)+\tilde f(x-t)-2c|dt=0,$$
+
+\noindent writing $\tilde f$ for the periodic extension of $f$\cmmnt{, as
+usual};  then $\lim_{m\to\infty}\sigma_m(x)=c$.
+
+\proof{ Set $\phi(t)=|\tilde f(x+t)+\tilde f(x-t)-2c|$ when
+this is defined, which is almost everywhere, and
+$\Phi(t)=\int_0^t\phi$, which is defined for every $t\ge 0$,
+because $\tilde f$ is integrable over $\ocint{-\pi,\pi}$ and therefore
+over every bounded interval.
+
+As in 282D, set
+
+\Centerline{$\psi_m(t)=\Bover{1-\cos(m+1)t}{2\pi(m+1)(1-\cos t)}$}
+
+\noindent for $m\in\Bbb N$, $0<|t|\le\pi$.    We have
+
+$$|\sigma_m(x)-c|
+=|\int_0^{\pi}(\tilde f(x+t)+\tilde f(x-t)-2c)\psi_m(t)dt|
+\le\int_0^{\pi}\phi(t)\psi_m$$
+
+\noindent by (b) and (d) of 282D.
+
+Let $\epsilon>0$.   By hypothesis, $\lim_{t\downarrow 0}\Phi(t)/t=0$;
+let $\delta\in\ocint{0,\pi}$ be such that $\Phi(t)\le\epsilon t$ for
+every $t\in[0,\delta]$.   Take any $m\ge \pi/\delta$.   I break the
+integral $\int_0^{\pi}\phi\times\psi_m$ up into three parts.
+
+\medskip
+
+{\bf (i)} For the integral from $0$ to $1/m$, we have
+
+$$\int_0^{1/m}\phi\times\psi_m
+\le\int_0^{1/m}\Bover{m+1}{2\pi}\phi
+=\Bover{m+1}{2\pi}\Phi(\Bover1m)
+\le\Bover{\epsilon(m+1)}{2\pi m}
+\le\epsilon,$$
+
+\noindent because $\psi_m(t)\le\bover{m+1}{2\pi}$ for every $t$
+(282D(d-i)).
+
+\medskip
+
+{\bf (ii)} For the integral from $1/m$ to $\delta$, we have
+
+$$\eqalignno{\int_{1/m}^{\delta}\phi\times\psi_m
+&\le\bover1{2\pi(m+1)}\int_{1/m}^{\delta}\phi(t)\bover{1}{1-\cos t}dt
+\le\bover{\pi}{4(m+1)}\int_{1/m}^{\delta}\bover{\phi(t)}{t^2}dt\cr
+\noalign{\noindent (because $1-\cos t\ge\Bover{2t^2}{\pi^2}$ for
+$|t|\le\pi$)}
+&=\bover{\pi}{4(m+1)}\bigl(\bover{\Phi(\delta)}{\delta^2}
+-\bover{\Phi({1\over m})}{({1\over m})^2}
++\int_{1/m}^{\delta}\bover{2\Phi(t)}{t^3}dt\bigr)\cr
+\noalign{\noindent (integrating by parts -- see 225F)}
+&\le\bover{\pi}{4(m+1)}\bigl(\bover{\epsilon}{\delta}
++\int_{1/m}^{\delta}\bover{2\epsilon}{t^2}dt\bigr)\cr
+\noalign{\noindent (because $\Phi(t)\le\epsilon t$ for $0\le
+t\le\delta$)}
+&\le\bover{\pi}{4(m+1)}\bigl(\bover{\epsilon}{\delta}
+   +2\epsilon m\bigr)
+\le\bover{\pi\epsilon}{4(m+1)\delta}+\bover{\pi\epsilon}2
+\le\bover{\epsilon}4+\bover{\pi\epsilon}2
+\le 2\epsilon.\cr}$$
+
+\medskip
+
+{\bf (iii)} For the integral from $\delta$ to $\pi$, we have
+
+$$\int_{\delta}^{\pi}\phi\times\psi_m
+\le\int_{\delta}^{\pi}\Bover1{\pi(m+1)(1-\cos\delta)}\phi
+\to 0\text{ as }m\to\infty$$
+
+\noindent because $\phi$ is integrable over $[-\pi,\pi]$.   There must
+therefore be an $m_0\in\Bbb N$ such that
+
+$$\int_{\delta}^{\pi}\phi\times\psi_m\le\epsilon$$
+
+\noindent for every $m\ge m_0$.
+
+\medskip
+
+Putting these together, we see that
+
+$$\int_0^{\pi}\phi\times\psi_m
+\le\epsilon+2\epsilon
++\epsilon= 4\epsilon$$
+
+\noindent for every $m\ge \max(m_0,\bover{\pi}{\delta})$.   As
+$\epsilon$ is arbitrary,
+$\lim_{m\to\infty}\sigma_m(x)=c$, as claimed.
+}%end of proof of 282H
+
+\leader{282I}{Corollary} Let $f$ be a complex-valued
+function which is integrable over $\ocint{-\pi,\pi}$, and
+$\sequence{m}{\sigma_m}$ its
+sequence of Fej\'er sums.
+
+(a) $f(x)=\lim_{m\to\infty}\sigma_m(x)$ for almost every
+$x\in\ocint{-\pi,\pi}$.
+
+(b) $\lim_{m\to\infty}\int_{-\pi}^{\pi}|f-\sigma_m|=0$.
+
+(c) If $g$ is another integrable function with the same Fourier
+coefficients, then $f\eae g$.
+
+(d) If $x\in\ooint{-\pi,\pi}$ is such that
+$a=\lim_{t\in\dom f,t\uparrow
+x}f(t)$ and $b=\lim_{t\in\dom f,t\downarrow x}f(t)$ are both defined in
+$\Bbb C$, then
+
+\Centerline{$\lim_{m\to\infty}\sigma_m(x)=\Bover12(a+b)$.}
+
+(e) If $a=\lim_{t\in\dom f,t\uparrow \pi}f(t)$ and $b=\lim_{t\in\dom
+f,t\downarrow -\pi}f(t)$ are both defined in $\Bbb C$, then
+
+\Centerline{$\lim_{m\to\infty}\sigma_m(\pi)=\Bover12(a+b)$.}
+
+(f) If $f$ is defined and continuous at $x\in\ooint{-\pi,\pi}$, then
+
+\Centerline{$\lim_{m\to\infty}\sigma_m(x)=f(x)$.}
+
+(g) If $\tilde f$, the periodic extension of $f$, is defined and
+continuous at $\pi$, then
+
+\Centerline{$\lim_{m\to\infty}\sigma_m(\pi)=f(\pi)$.}
+
+\proof{{\bf (a)} We have only to recall that by 223D
+
+$$\eqalign{\limsup_{\delta\downarrow 0}\Bover1{\delta}\int_0^{\delta}
+&|f(x+t)+f(x-t)-2f(x)|dt\cr
+&\le\limsup_{\delta\downarrow 0}
+\Bover1{\delta}\bigl(\int_0^{\delta}|f(x+t)-f(x)|dt
++\int_0^{\delta}|f(x-t)-f(x)|dt\bigr)\cr
+&=\limsup_{\delta\downarrow 0}
+\Bover1{\delta}\int_{-\delta}^{\delta}|f(x+t)-f(x)|dt
+=0\cr}$$
+
+\noindent for almost every $x\in\ooint{-\pi,\pi}$.
+
+\medskip
+
+{\bf (b)} Next observe that, in the language of 255O,
+
+\Centerline{$\sigma_m=f*\psi_m$,}
+
+\noindent by the last formula in 282Db.   Consequently, by 255Od,
+
+\Centerline{$\|\sigma_m\|_1\le\|f\|_1\|\psi_m\|_1$,}
+
+\noindent writing $\|\sigma_m\|_1=\int_{-\pi}^{\pi}|\sigma_m|$.
+But this means that we have
+
+\Centerline{$f(x)
+=\lim_{m\to\infty}\sigma_m(x)$ for almost every $x$,
+\quad$\limsup_{m\to\infty}\|\sigma_m\|_1\le\|f\|_1$;}
+
+\noindent and it follows from 245H that
+$\lim_{m\to\infty}\|f-\sigma_m\|_1=0$.
+
+\medskip
+
+{\bf (c)} If $g$ has the same Fourier coefficients as $f$, then it has
+the same Fourier and Fej\'er sums, so we have
+
+\Centerline{$g(x)=\lim_{m\to\infty}\sigma_m(x)=f(x)$}
+
+\noindent almost everywhere.
+
+\medskip
+
+{\bf (d)-(e)} Both of these amount to considering $x\in\ocint{-\pi,\pi}$
+such that
+
+\Centerline{$\lim_{t\in\dom\tilde f,t\uparrow x}\tilde f(t)=a$,\quad
+$\lim_{t\in\dom\tilde f,t\downarrow x}\tilde f(t)=b$.}
+
+\noindent Setting $c={1\over 2}(a+b)$,
+$\phi(t)=|\tilde f(x+t)+\tilde f(x-t)-2c|$ whenever this is defined, we
+have $\lim_{t\in\dom\phi,t\downarrow 0}\phi(t)=0$, so surely
+$\lim_{\delta\downarrow 0}\bover1{\delta}\int_0^{\delta}\phi=0$, and the
+theorem applies.
+
+\medskip
+
+{\bf (f)-(g)} are special cases of (d) and (e).
+}%end of proof of 282I
+
+\leader{282J}{}\cmmnt{ I now turn to conditions for the convergence of
+Fourier sums.    Probably the easiest result -- one which
+is both striking and satisfying -- is the following.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $f$ be a complex-valued function which is
+square-integrable over $\ocint{-\pi,\pi}$.   Let
+$\langle c_k\rangle_{k\in\Bbb Z}$ be its Fourier coefficients and
+$\sequencen{s_n}$ its Fourier sums\cmmnt{ (282A)}.   Then
+
+(i) $\sum_{k=-\infty}^{\infty}|c_k|^2
+=\Bover1{2\pi}\int_{-\pi}^{\pi}|f|^2$,
+
+(ii) $\lim_{n\to\infty}\int_{-\pi}^{\pi}|f-s_n|^2=0$.
+
+\proof{{\bf (a)} I recall some notation from 244N/244P.   Let
+$\eusm L_{\Bbb C}^2$
+be the space of square-integrable complex-valued functions on
+$\ocint{-\pi,\pi}$.   For $g$, $h\in\eusm L_{\Bbb C}^2$, write
+
+$$(g|h)=\int_{-\pi}^{\pi}g\times\bar h,\quad
+\|g\|_2=\sqrt{(g|g)}.$$
+
+\noindent Recall that $\|g+h\|_2\le\|g\|_2+\|h\|_2$ for all $g$,
+$h\in\eusm L_{\Bbb C}^2$ (244Fb/244Pb).   For $k\in\Bbb Z$,
+$x\in \ocint{-\pi,\pi}$ set $e_k(x)=e^{ikx}$, so that
+
+$$(f|e_k)=\int_{-\pi}^{\pi}f(x)e^{-ikx}dx=2\pi c_k.$$
+
+\noindent Moreover, if $|k|\le n$,
+
+$$(s_n|e_k)=\sum_{j=-n}^nc_j\int_{-\pi}^{\pi}e^{ijx}e^{-ikx}dx
+=2\pi c_k,$$
+
+\noindent because
+
+$$\eqalign{\int_{-\pi}^{\pi}e^{ijx}e^{-ikx}dx&=2\pi\text{ if }j=k,\cr
+&=0\text{ if }j\ne k.\cr}$$
+
+\noindent  So
+
+\Centerline{$(f-s_n|e_k)=0$ whenever $|k|\le n$;}
+
+\noindent in particular,
+
+$$(f-s_n|s_n)=\sum_{k=-n}^n\bar c_k(f-s_n|e_k)=0$$
+
+\noindent for every $n\in\Bbb N$.
+
+\medskip
+
+{\bf (b)} Fix $\epsilon>0$.   The next element of the proof is the fact
+that there are $m\in\Bbb N$, $a_{-m},\ldots,a_m\in\Bbb C$ such that
+$\|f-h\|_2\le\epsilon$, where $h=\sum_{k=-m}^ma_ke_k$.   \Prf\ By
+244Hb/244Pb we know that there is a continuous function
+$g:[-\pi,\pi]\to\Bbb C$ such that $\|f-g\|_2\le{{\epsilon}\over 3}$.
+Next, modifying $g$ on a suitably short interval
+$\ocint{\pi-\delta,\pi}$, we can find a continuous function
+$g_1:[-\pi,\pi]\to\Bbb C$ such that $\|g-g_1\|_2\le{{\epsilon}\over 3}$
+and $g_1(-\pi)=g_1(\pi)$.
+(Set $M=\sup_{x\in[-\pi,\pi]}|g(x)|$, take $\delta\in\ocint{0,2\pi}$
+such that $(2M)^2\delta\le(\epsilon/3)^2$, and set
+$g_1(\pi-t\delta)=tg(\pi-\delta)+(1-t)g(-\pi)$ for $t\in[0,1]$.)
+Either by
+the Stone-Weierstrass theorem (281J), or by 282G above, there are
+$a_{-m},\ldots,a_m$ such
+that $|g_1(x)-\sum_{k=-m}^ma_ke^{ikx}|\le\Bover{\epsilon}{3\sqrt{2\pi}}$
+for every $x\in[-\pi,\pi]$;  setting $h=\sum_{k=-m}^ma_ke_k$, we have
+$\|g_1-h\|_2\le\bover13\epsilon$, so that
+
+\Centerline{$\|f-h\|_2\le\|f-g\|_2+\|g-g_1\|_2+\|g_1-h\|_2
+\le\epsilon$.   \Qed}
+
+\medskip
+
+{\bf (c)} Now take any $n\ge m$.   Then $s_n-h$ is a linear combination
+of  $e_{-n},\ldots,e_n$, so $(f-s_n|s_n-h)=0$.   Consequently
+
+$$\eqalign{\epsilon^2
+&\ge(f-h|f-h)\cr
+&=(f-s_n|f-s_n)+(f-s_n|s_n-h)+(s_n-h|f-s_n)+(s_n-h|s_n-h)\cr
+&=\|f-s_n\|_2^2+\|s_n-h\|_2^2
+\ge\|f-s_n\|_2^2.\cr}$$
+
+\noindent Thus $\|f-s_n\|_2\le\epsilon$ for every $n\ge m$.   As
+$\epsilon$ is arbitrary, $\lim_{n\to\infty}\|f-s_n\|_2^2=0$, which
+proves (ii).
+
+\medskip
+
+{\bf (d)} As for (i), we have
+
+$$\sum_{k=-n}^n|c_k|^2=\Bover1{2\pi}\sum_{k=-n}^n\bar c_k(s_n|e_k)
+=\Bover1{2\pi}(s_n|s_n)=\Bover1{2\pi}\|s_n\|_2^2.$$
+
+\noindent But of course
+
+\Centerline{$\bigl|\|s_n\|_2-\|f\|_2\bigr|\le\|s_n-f\|_2\to 0$}
+
+\noindent as $n\to\infty$, so
+
+$$\sum_{k=-\infty}^{\infty}|c_k|^2
+=\Bover1{2\pi}\lim_{n\to\infty}\|s_n\|_2^2=\Bover1{2\pi}\|f\|_2^2
+=\Bover1{2\pi}\int_{-\pi}^{\pi}|f|^2,$$
+
+\noindent as required.
+}%end of proof of 282J
+
+\leader{282K}{Corollary} Let $L_{\Bbb C}^2$ be the Hilbert space of
+equivalence classes of square-integrable complex-valued functions on
+$\ocint{-\pi,\pi}$, with the inner product
+
+$$(f^{\ssbullet}|g^{\ssbullet})
+=\int_{-\pi}^{\pi}f\times\bar g$$
+
+\noindent and norm
+
+$$\|f^{\ssbullet}\|_2
+=\bigl(\int_{-\pi}^{\pi}|f|^2\bigr)^{1/2},$$
+
+\noindent writing $f^{\ssbullet}\in L_{\Bbb C}^2$ for the equivalence
+class of a
+square-integrable function $f$.   Let $\ell_{\Bbb C}^2(\Bbb Z)$ be the
+Hilbert space of
+square-summable double-ended complex sequences, with the inner product
+
+$$(\pmb{c}|\pmb{d})=\sum_{k=-\infty}^{\infty}c_k\bar d_k$$
+
+\noindent and norm
+
+$$\|\pmb{c}\|_2
+=\bigl(\sum_{k=-\infty}^{\infty}|c_k|^2\bigr)^{1/2}$$
+
+\noindent for $\pmb{c}=\langle c_k\rangle_{k\in\Bbb Z}$,
+$\pmb{d}=\langle d_k\rangle_{k\in\Bbb Z}$ in $\ell_{\Bbb C}^2(\Bbb Z)$.
+Then we have an inner-product-space isomorphism
+$S:L_{\Bbb C}^2\to\ell_{\Bbb C}^2(\Bbb Z)$
+defined by saying that
+
+\Centerline{$S(f^{\ssbullet})(k)
+=\Bover1{\sqrt{2\pi}}\int_{-\pi}^{\pi}f(x)e^{-ikx}dx$}
+
+\noindent for every square-integrable function $f$ and every
+$k\in\Bbb Z$.
+
+\proof{{\bf (a)} As in 282J, write $\eusm L_{\Bbb C}^2$ for the space of
+square-integrable functions.   If $f$, $g\in\eusm L_{\Bbb C}^2$ and
+$f^{\ssbullet}=g^{\ssbullet}$, then $f\eae g$, so
+
+\Centerline{$\Bover1{\sqrt{2\pi}}\int_{-\pi}^{\pi}f(x)e^{-ikx}dx
+=\Bover1{\sqrt{2\pi}}\int_{-\pi}^{\pi}g(x)e^{-ikx}dx$}
+
+\noindent for every $k\in\Bbb N$.    Thus $S$ is well-defined.
+
+\medskip
+
+{\bf (b)}  $S$ is linear.   \Prf\ This is elementary.   If $f$,
+$g\in\eusm L_{\Bbb C}^2$ and $c\in\Bbb C$,
+
+$$\eqalign{S(f^{\ssbullet}+g^{\ssbullet})(k)
+&=\Bover1{\sqrt{2\pi}}\int_{-\pi}^{\pi}(f(x)+g(x))e^{-ikx}dx\cr
+&=\Bover1{\sqrt{2\pi}}\int_{-\pi}^{\pi}f(x)e^{-ikx}dx
+  +\Bover1{\sqrt{2\pi}}\int_{-\pi}^{\pi}g(x)e^{-ikx}dx\cr
+&=S(f^{\ssbullet})(k)+S(g^{\ssbullet})(k)\cr}$$
+
+\noindent for every $k\in\Bbb Z$, so that
+$S(f^{\ssbullet}+g^{\ssbullet})=S(f^{\ssbullet})+S(g^{\ssbullet})$.
+Similarly,
+
+\Centerline{$S(cf^{\ssbullet})(k)
+=\Bover1{\sqrt{2\pi}}\int_{-\pi}^{\pi}cf(x)e^{-ikx}dx
+=\Bover{c}{\sqrt{2\pi}}\int_{-\pi}^{\pi}f(x)e^{-ikx}dx
+=cS(f^{\ssbullet})(k)$}
+
+\noindent for every $k\in\Bbb Z$, so that
+$S(cf^{\ssbullet})=cS(f^{\ssbullet})$.   \Qed
+
+\medskip
+
+{\bf (c)} If $f\in\eusm L_{\Bbb C}^2$ has Fourier coefficients $c_k$,
+then
+$S(f^{\ssbullet})=\langle c_k\sqrt{ 2\pi}\rangle_{k\in\Bbb Z}$, so by 282J(i)
+
+$$\|S(f^{\ssbullet})\|^2_2
+=2\pi\sum_{k=-\infty}^{\infty}|c_k|^2
+=\int_{-\pi}^{\pi}|f|^2
+=\|f^{\ssbullet}\|_2^2.$$
+
+\noindent Thus $Su\in\ell_{\Bbb C}^2(\Bbb Z)$ and $\|Su\|_2=\|u\|_2$ for
+every $u\in L_{\Bbb C}^2$.   Because $S$ is linear and norm-preserving,
+it is surely injective.
+
+\medskip
+
+{\bf (d)}  It now follows that $(Sv|Su)=(v|u)$ for every $u$, $v\in
+L_{\Bbb C}^2$.   \Prf\ (This is of course a standard fact about Hilbert
+spaces.)   We know that for any $t\in\Bbb R$
+
+$$\eqalign{\|u\|_2^2+2\Real(e^{it}(v|u))+\|v\|_2^2
+&=(u|u)+e^{it}(v|u)+e^{-it}(u|v)+(v|v)\cr
+&=(u+e^{it}v|u+e^{it}v)\cr
+&=\|u+e^{it}v\|_2^2
+=\|S(u+e^{it}v)\|_2^2\cr
+&=\|Su\|_2^2+2\Real(e^{it}(Sv|Su))+\|Sv\|_2^2\cr
+&=\|u\|_2^2+2\Real(e^{it}(Sv|Su))+\|v\|_2^2,\cr}$$
+
+\noindent so that $\Real(e^{it}(Sv|Su))=\Real(e^{it}(v|u))$.   As $t$ is
+arbitrary, $(Sv|Su)=(v|u)$.   \Qed
+
+\medskip
+
+{\bf (e)}    Finally, $S$ is surjective.   \Prf\ Let
+$\pmb{c}=\langle c_k\rangle_{k\in\Bbb Z}$ be any member of
+$\ell_{\Bbb C}^2(\Bbb Z)$.   Set
+$c^{(n)}_k=c_k$ if $|k|\le n$, $0$ otherwise, and
+$\pmb{c}^{(n)}=\langle c^{(n)}_k\rangle_{k\in\Bbb N}$.   Consider
+
+$$s_n=\sum_{k=-n}^nc_ke_k,\quad u_n=s_n^{\ssbullet}$$
+
+\noindent where I write $e_k(x)=\bover1{\sqrt{2\pi}}e^{ikx}$ for
+$x\in\ocint{-\pi,\pi}$.   Then $Su_n=\pmb{c}^{(n)}$, by the same
+calculations as in part (a) of the proof of 282J.   Now
+
+\Centerline{$\|\pmb{c}^{(n)}-\pmb{c}\|_2=\sqrt{\sumop_{|k|>n}|c_k|^2}
+\to 0$}
+
+\noindent as $n\to\infty$, so
+
+\Centerline{$\|u_m-u_n\|_2=\|\pmb{c}^{(m)}-\pmb{c}^{(n)}\|_2
+\to 0$}
+
+\noindent as $m$, $n\to\infty$, and $\sequencen{u_n}$ is a Cauchy
+sequence in $L_{\Bbb C}^2$.   Because $L_{\Bbb C}^2$ is complete
+(244G/244Pb), $\sequencen{u_n}$ has a limit $u\in L_{\Bbb C}^2$, and now
+
+\Centerline{$Su=\lim_{n\to\infty}Su_n=\lim_{n\to\infty}\pmb{c}^{(n)}
+=\pmb{c}$.   \Qed}
+
+Thus $S:L_{\Bbb C}^2\to\ell_{\Bbb C}^2(\Bbb Z)$ is an
+inner-product-space isomorphism.
+}%end of proof of 282K
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} In the language of Hilbert spaces, all that is
+happening here is that $\langle e_k^{\ssbullet}\rangle_{k\in\Bbb Z}$ is
+a `Hilbert space basis' or `complete orthonormal sequence' in
+$L_{\Bbb C}^2$, which is matched by $S$ with the standard basis of
+$\ell^2_{\Bbb C}(\Bbb Z)$.   The only step which calls on non-trivial
+real analysis, as
+opposed to the general theory of Hilbert spaces, is the check that the
+linear subspace generated by $\{e_k^{\ssbullet}:k\in\Bbb Z\}$ is dense;
+this is part (b) of the proof of 282J.
+
+Observe that while $S:L^2\to\ell^2$ is readily described, its inverse is
+more of a problem.   If $\pmb{c}\in\ell^2$, we should like to say that
+$S^{-1}\pmb{c}$ is the equivalence class of $f$, where
+$f(x)=\bover1{\sqrt{2\pi}}\sum_{k=-\infty}^{\infty}c_ke^{ikx}$ for every
+$x$.   This works very well if $\{k:c_k\ne 0\}$ is finite, but for the
+general case it is less clear how to interpret the sum.   It is in fact
+the case that if $\pmb{c}\in\ell^2$ then
+
+\Centerline{$g(x)
+=\Bover1{\sqrt{2\pi}}\lim_{n\to\infty}\sum_{k=-n}^nc_ke^{ikx}$}
+
+\noindent is defined for almost every $x\in\ocint{-\pi,\pi}$, and that
+$S^{-1}\pmb{c}=g^{\ssbullet}$ in $L^2$;  this is, in effect,  Carleson's
+theorem (286V).   A proof of Carleson's theorem is out of our reach for
+the moment.   What is covered by the results of this section is that
+
+\Centerline{$h(x)
+=\Bover1{\sqrt{2\pi}}\lim_{m\to\infty}\Bover1{m+1}\sum_{n=0}^m
+\sum_{k=-n}^nc_ke^{ikx}$}
+
+\noindent is defined for almost every $x\in\ocint{-\pi,\pi}$, and that
+$h^{\ssbullet}=S^{-1}\pmb{c}$.   (The point is that we know from the
+result just proved that there is {\it some} square-integrable $f$ such
+that $\pmb{c}$ is the sequence of Fourier coefficients of $f$;  now
+282Ia declares that the Fej\'er sums of $f$ converge to $f$ almost
+everywhere, that is, that $h\eae\bover1{\sqrt{2\pi}}f$.)
+}%end of comment
+
+\leader{282L}{}\cmmnt{ The next result is the easiest, and one of the
+most useful, theorems concerning pointwise convergence of Fourier sums.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $f$ be a complex-valued function which is
+integrable over $\ocint{-\pi,\pi}$, and $\sequencen{s_n}$ its
+sequence of Fourier sums.
+
+(i) If $f$ is differentiable at $x\in\ooint{-\pi,\pi}$, then
+$f(x)=\lim_{n\to\infty}s_n(x)$.
+
+(ii) If the periodic extension $\tilde f$ of $f$ is differentiable at
+$\pi$, then $f(\pi)=\lim_{n\to\infty}s_n(\pi)$.
+
+\wheader{282L}{0}{0}{0}{60pt}
+
+\proof{{\bf (a)} Take $x\in\ocint{-\pi,\pi}$ such that $\tilde
+f$ is differentiable at $x$;  of course this covers both parts.    We
+have
+
+$$s_n(x)=\Bover1{2\pi}\int_{-\pi}^{\pi}
+\Bover{\tilde f(x+t)}{\sin{1\over 2}t}\sin(n+\Bover12)t\,dt$$
+
+\noindent for each $n$, by 282Da.
+
+\medskip
+
+{\bf (b)} Next,
+
+$$\int_{-\pi}^{\pi}\Bover{\tilde f(x+t)-\tilde f(x)}{t}dt$$
+
+\noindent exists in $\Bbb C$, because there is surely some
+$\delta\in\ocint{0,\pi}$
+such that $(\tilde f(x+t)-\tilde f(x))/t$ is bounded on
+$\{t:0<|t|\le\delta\}$, while
+
+$$\int_{-\pi}^{-\delta}
+\Bover{\tilde f(x+t)-\tilde f(x)}{t}dt,
+\quad\int_{\delta}^{\pi}\Bover{\tilde f(x+t)-\tilde f(x)}{t}dt$$
+
+\noindent exist because $1/t$ is bounded on those intervals.   It
+follows that
+
+$$\int_{-\pi}^{\pi}
+\Bover{\tilde f(x+t)-\tilde f(x)}{\sin{1\over 2}t}dt$$
+
+\noindent exists, because $|t|\le\pi|\sin{1\over 2}t|$ if
+$|t|\le\pi$.   So by the Riemann-Lebesgue lemma (282Fb),
+
+$$\lim_{n\to\infty}\int_{-\pi}^{\pi}
+\Bover{\tilde f(x+t)-\tilde f(x)}{\sin{1\over 2}t}\sin(n+\Bover12)t\,dt
+=0.$$
+
+\medskip
+
+{\bf (c)} Because
+
+$$\Bover1{2\pi}\int_{-\pi}^{\pi}\tilde f(x)
+  \Bover{\sin(n+{1\over 2}\pushbottom{3.5pt})t}{\sin{1\over 2}t}dt
+=\tilde f(x)$$
+
+\noindent for every $n$ (282Dc),
+
+$$s_n(x)
+=\tilde f(x)+\Bover{1}{2\pi}\int_{-\pi}^{\pi}
+  \Bover{\tilde f(x+t)-\tilde f(x)}{\sin{1\over 2}t}
+  \sin(n+\Bover12)t\,dt
+\to\tilde f(x)$$
+
+\noindent as $n\to\infty$, as required.
+}%end of proof of 282L
+
+\leader{282M}{Lemma} Suppose that $f$ is a complex-valued
+function, defined almost everywhere and of bounded variation on
+$\ocint{-\pi,\pi}$.   Then $\sup_{k\in\Bbb Z}|kc_k|<\infty$, where $c_k$
+is the $k$th Fourier coefficient of $f$, as in 282A.
+
+\proof{ Set
+
+\Centerline{$M
+=\lim_{x\in\dom f,x\uparrow \pi}|f(x)|+\Var_{\ooint{-\pi,\pi}}(f)$.}
+
+\noindent By 224J,
+
+$$\eqalign{|kc_k|
+&=\Bover{1}{2\pi}\bigl|\int_{-\pi}^{\pi}kf(t)e^{-ikt}dt\bigr|
+\le\Bover1{2\pi}M
+   \sup_{c\in[-\pi,\pi]}\bigl|\int_{-\pi}^cke^{-ikt}dt\bigr|\cr
+&=\Bover{M}{2\pi}\sup_{c\in[-\pi,\pi]}|e^{-ikc}-e^{ik\pi}|
+\le\Bover{M}{\pi}\cr}$$
+
+\noindent for every $k$.
+}%end of proof of 282M
+
+\leader{282N}{}\cmmnt{ I give another lemma, extracting the technical
+part of
+the proof of the next theorem.   (Its most natural application is in
+282Xn.)
+
+\medskip
+
+\noindent}{\bf Lemma} Let $\sequence{k}{d_k}$ be a complex sequence, and
+set $t_n=\sum_{k=0}^nd_k$, $\tau_m=\bover1{m+1}\sum_{n=0}^mt_n$ for $n$,
+$m\in\Bbb N$.   Suppose that $\sup_{k\in\Bbb N}|kd_k|=M<\infty$.   Then
+for any $j\ge 1$ and any $c\in\Bbb C$,
+
+\Centerline{$|t_n-c|\le\Bover{M}{j}+(2j+3)\sup_{m\ge n-n/j}|\tau_m-c|$}
+
+\noindent for every $n\ge j^2$.
+
+\proof{{\bf (a)} The first point to note is that for any $n$,
+$n'\in\Bbb N$,
+
+\Centerline{$|t_n-t_{n'}|\le\Bover{M|n-n'|}{1+\min(n,n')}$.}
+
+\noindent\Prf\ If $n=n'$ this is trivial.   Suppose that $n'<n$.   Then
+
+$$|t_n-t_{n'}|
+=|\sum_{k=n'+1}^{n}d_k|
+\le\sum_{k=n'+1}^n\Bover{M}{k}
+\le\Bover{M(n-n')}{n'+1}
+=\Bover{M|n-n'|}{1+\min(n',n)}.$$
+
+\noindent Of course the case $n<n'$ is identical.   \Qed
+
+
+\medskip
+
+{\bf (b)} Now take any $n\ge j^2$.
+Set $\eta=\sup_{m\ge n-n/j}|\tau_m-c|$.   Let $m\ge j$ be such that
+$jm\le n<j(m+1)$;  then $n<jm+m$;  also
+
+\Centerline{$n(1-\bover1{j})\le m(j+1)(1-{1\over j})\le mj$.}
+
+\noindent    Set
+
+$$\tau^*=\Bover1m\sum_{n'=jm+1}^{jm+m}t_{n'}
+=\Bover{jm+m+1}{m}\tau_{jm+m}-\Bover{jm+1}{m}\tau_{jm}.$$
+
+\noindent Then
+
+$$\eqalign{|\tau^*-c|
+&=|\Bover{jm+m+1}{m}\tau_{jm+m}-\Bover{jm+1}{m}\tau_{jm}-c|\cr
+&=|\Bover{jm+m+1}{m}(\tau_{jm+m}-c)
+   -\Bover{jm+1}{m}(\tau_{jm}-c)|\cr
+&\le\Bover{jm+m+1}{m}\eta+\Bover{jm+1}{m}\eta
+\le(2j+3)\eta.\cr}$$
+
+\noindent On the other hand,
+
+$$\eqalign{|\tau^*-t_n|
+&=\bigl|\Bover1m\sum_{n'=jm+1}^{jm+m}(t_{n'}-t_n)\bigr|
+\le\Bover1m\sum_{n'=jm+1}^{jm+m}\Bover{M|n-n'|}{1+\min(n,n')}\cr
+&\le\Bover1m\sum_{n'=jm+1}^{jm+m}\Bover{Mm}{1+jm}
+=\Bover{Mm}{1+jm}
+\le\Bover{M}{j}.\cr}$$
+
+\noindent Putting these together, we have
+
+\Centerline{$|t_n-c|\le|t_n-\tau^*|+|\tau^*-c|
+\le\Bover{M}{j}+(2j+3)\eta
+=\Bover{M}{j}+(2j+3)\sup_{m\ge n-n/j}|\tau_m-c|$,}
+
+\noindent as required.
+}%end of proof of 282N
+
+\leader{282O}{Theorem} Let $f$ be a complex-valued function of bounded
+variation, defined almost everywhere in $\ocint{-\pi,\pi}$, and let
+$\sequencen{s_n}$ be its sequence of Fourier sums.
+
+(i) If $x\in\ooint{-\pi,\pi}$, then
+
+\Centerline{$\lim_{n\to\infty}s_n(x)
+=\Bover12(\lim_{t\in\dom f,t\uparrow x}f(t)
+  +\lim_{t\in\dom f,t\downarrow x}f(t))$.}
+
+(ii) $\lim_{n\to\infty}s_n(\pi)
+=\Bover12(\lim_{t\in\dom f,t\uparrow\pi}f(t)
+  +\lim_{t\in\dom f,t\downarrow-\pi}f(t))$.
+
+(iii) If $f$ is defined throughout $\ocint{-\pi,\pi}$, is continuous,
+and $\lim_{t\downarrow -\pi}f(t)=f(\pi)$, then $s_n(x)\to f(x)$
+uniformly on $\ocint{-\pi,\pi}$.
+
+\proof{{\bf (a)} Note first that 224F shows that the limits
+$\lim_{t\in\dom f,t\downarrow x}f(t)$,
+$\lim_{t\in\dom f,t\uparrow x}f(t)$ required in the formulae above
+always exist.   We know also from 282M that $M=
+\penalty-100
+\sup_{k\in\Bbb Z}|kc_k|<\infty$, where $c_k$ is the $k$th
+Fourier coefficient of $f$.
+
+Take any $x\in\ocint{-\pi,\pi}$, and set
+
+\Centerline{$c=\bover12(\lim_{t\in\dom f,t\uparrow x}\tilde
+f(t)+\lim_{t\in\dom\tilde f,t\downarrow x}\tilde f(t))$,}
+
+\noindent writing $\tilde f$ for the periodic extension of $f$, as
+usual.   We know from 282Id-282Ie that
+$c=\lim_{m\to\infty}\sigma_m(x)$, writing $\sigma_m$ for the Fej\'er
+sums of $f$.   Let $\epsilon>0$.   Take any $j\ge\max(2,2M/\epsilon)$, and
+$m_0\ge 1$ such that
+$|\sigma_m(x)-c|\le\epsilon/(2j+3)$ for every $m\ge m_0$.
+
+Now if $n\ge\max(j^2,2m_0)$, apply Lemma 282N with
+
+\Centerline{$d_0=c_0$,
+\quad$d_k=c_ke^{ikx}+c_{-k}e^{-ikx}$ for $k\ge 1$,}
+
+\noindent so that $t_n=s_n(x)$, $\tau_m=\sigma_m(x)$ and $|kd_k|\le 2M$
+for every $k$, $n$, $m\in\Bbb N$.   We have $n-n/j\ge{1\over 2}n\ge
+m_0$, so
+
+\Centerline{$\eta=\sup_{m\ge n-n/j}|\tau_m-c|
+\le\sup_{m\ge m_0}|\tau_m-c|\le\Bover{\epsilon}{2j+3}$.}
+
+\noindent So 282N tells us that
+
+\Centerline{$|s_n(x)-c|=|t_n-c|\le
+\Bover{2M}{j}+(2j+3)\sup_{m\ge n-n/j}|\tau_m-c|\le\epsilon+(2j+3)\eta
+\le 2\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, $\lim_{n\to\infty}s_n(x)=c$, as
+required.
+
+\medskip
+
+{\bf (b)} This proves (i) and (ii) of this theorem.
+Finally, for (iii), observe that under these conditions $\sigma_m(x)\to
+f(x)$ uniformly as $m\to\infty$, by 282G.   So given $\epsilon>0$
+we choose $j\ge \max(2,2M/\epsilon)$ and $m_0\in\Bbb N$ such
+that $|\sigma_m(x)-f(x)|\le\epsilon/(2j+3)$ whenever $m\ge m_0$ and
+$x\in\ocint{-\pi,\pi}$.   By the same calculation as before,
+
+\Centerline{$|s_n(x)-f(x)|\le 2\epsilon$}
+
+\noindent for every $n\ge\max(j^2,2m_0)$ and every
+$x\in\ocint{-\pi,\pi}$.   As $\epsilon$ is arbitrary,
+$\lim_{n\to\infty}s_n(x)=f(x)$ uniformly for $x\in\ocint{-\pi,\pi}$.
+}%end of proof of 282O
+
+\leader{282P}{Corollary} Let $f$ be a complex-valued
+function which is integrable over $\ocint{-\pi,\pi}$, and
+$\sequencen{s_n}$ its sequence of
+Fourier sums.
+
+(i) Suppose that $x\in\ooint{-\pi,\pi}$ is such that $f$ is of bounded
+variation on some neighbourhood of $x$.   Then
+
+\Centerline{$\lim_{n\to\infty}s_n(x)=\Bover12(\lim_{t\in\dom f,t\uparrow
+x}f(t)+\lim_{t\in\dom f,t\downarrow x}f(t))$.}
+
+(ii) If there is a $\delta>0$ such that $f$ is of bounded variation on
+both $\ocint{-\pi,-\pi+\delta}$ and $[\pi-\delta,\pi]$, then
+
+\Centerline{$\lim_{n\to\infty}s_n(\pi)
+=\Bover12(\lim_{t\in\dom f,t\uparrow \pi}f(t)
+  +\lim_{t\in\dom f,t\downarrow-\pi}f(t))$.}
+
+\proof{ In case (i), take $\delta>0$ such that $f$ is of
+bounded variation on $[x-\delta,x+\delta]$ and set $f_1(t)=f(t)$ if
+$x\in\dom f\cap[x-\delta,x+\delta]$, $0$ for other
+$t\in\ocint{-\pi,\pi}$;   in case (ii), set $f_1(t)=f(t)$ if $t\in\dom
+f$ and $|t|\ge\pi-\delta$, $0$ for other $t\in\ocint{-\pi,\pi}$, and say
+that $x=\pi$.   In either case, $f_1$ is of bounded variation, so by
+282O the Fourier sums $\sequencen{s'_n}$ of $f_1$ converge at
+$x$ to the value given by the formulae above.   But now observe that,
+writing $\tilde f$ and $\tilde f_1$ for the periodic extensions of $f$
+and $f_1$, $\tilde f-\tilde f_1=0$ on a neighbourhood of $x$, so
+
+$$\int_{-\pi}^{\pi}
+  \Bover{\tilde f(x+t)-\tilde f_1(x+t)}{\sin{1\over 2}t}dt$$
+
+\noindent exists in $\Bbb C$, and by 282Fb
+
+$$\lim_{n\to\infty}\int_{-\pi}^{\pi}
+ \bover{\tilde f(x+t)-\tilde f_1(x+t)}{\sin{1\over 2}t}
+\sin(n+\Bover12)t\,dt=0,$$
+
+\noindent that is, $\lim_{n\to\infty}s_n(x)-s'_n(x)=0$.   So
+$\sequencen{s_n}$ also converges to the right limit.
+}%end of proof of 282P
+
+\leader{282Q}{}\cmmnt{ I cannot leave this section without mentioning
+one of the most important facts about Fourier series, even though I have
+no space here to discuss its consequences.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $f$ and $g$ be complex-valued
+functions which are integrable over $\ocint{-\pi,\pi}$, and
+$\langle c_k\rangle_{k\in\Bbb N}$,
+$\langle d_k\rangle_{k\in\Bbb N}$ their Fourier coefficients.   Let
+$f*g$ be their convolution, defined by the formula
+
+$$(f*g)(x)=\int_{-\pi}^{\pi}f(x-_{2\pi}t)g(t)dt
+=\int_{-\pi}^{\pi}\tilde f(x-t)g(t)dt,$$
+
+\noindent\cmmnt{as in 255O,} writing $\tilde f$ for the periodic
+extension of $f$.   Then the Fourier coefficients of $f*g$
+are $\langle 2\pi c_kd_k\rangle_{k\in\Bbb Z}$.
+
+\proof{ By 255O(c-i),
+
+$$\eqalign{\Bover1{2\pi}\int_{-\pi}^{\pi}(f*g)(x)e^{-ikx}dx
+&=\Bover1{2\pi}\int_{-\pi}^{\pi}\int_{-\pi}^{\pi}
+e^{-ik(t+u)}f(t)g(u)dtdu\cr
+&=\Bover1{2\pi}\int_{-\pi}^{\pi}e^{-ikt}f(t)dt\int_{-\pi}^{\pi}
+e^{-iku}g(u)du
+=2\pi c_kd_k.\cr}$$
+}%end of proof of 282Q
+
+\leader{*282R}{}\cmmnt{ In my hurry to get to the theorems on
+convergence of Fej\'er and Fourier sums, I have rather neglected the
+elementary manipulations which are essential when applying the theory.
+One basic result is the following.
+
+\medskip
+
+\noindent}{\bf Proposition} (a) Let $f:[-\pi,\pi]\to\Bbb C$ be an
+absolutely continuous function such that $f(-\pi)=f(\pi)$, and
+$\family{k}{\Bbb Z}{c_k}$ its sequence of Fourier coefficients.   Then
+the Fourier coefficients of $f'$ are $\family{k}{\Bbb Z}{ikc_k}$.
+
+(b)\discrversionA{\footnote{Corrected and refined 2009.}}{}
+Let $f:\Bbb R\to\Bbb C$ be a differentiable function such that $f'$
+is absolutely continuous on $[-\pi,\pi]$, and $f(\pi)=f(-\pi)$.
+If $\family{k}{\Bbb Z}{c_k}$ are the Fourier coefficients of
+$f\restr\ocint{-\pi,\pi}$, then
+$\sum_{k=-\infty}^{\infty}|c_k|$ is finite.
+
+\proof{{\bf (a)} By 225Cb, $f'$ is integrable over $[-\pi,\pi]$;  by
+225E, $f$ is an indefinite integral of $f'$.   So 225F tells us that
+
+\Centerline{$\int_{-\pi}^{\pi}f'(x)e^{-ikx}dx
+=f(\pi)e^{-ik\pi}-f(-\pi)e^{ik\pi}+ik\int_{-\pi}^{\pi}f(x)e^{-ikx}dx
+=ikc_k$}
+
+\noindent for every $k\in\Bbb Z$.
+
+\medskip
+
+{\bf (b)(i)} Suppose first that $f'(\pi)=f'(-\pi)$.
+By (a), applied twice, the Fourier coefficients of $f''$ are
+$\family{k}{\Bbb Z}{-k^2c_k}$, so $\sup_{k\in\Bbb Z}k^2|c_k|$ is finite;
+because $\sum_{k=1}^{\infty}\Bover1{k^2}<\infty$,
+$\sum_{k=-\infty}^{\infty}|c_k|<\infty$.
+
+\medskip
+
+\quad{\bf (ii)} Next, suppose that $f(x)=x^2$ for every $x$.   Then, for
+$k\ne 0$,
+
+$$\eqalign{c_k
+&=\Bover1{2\pi}\int x^2e^{-ikx}dx
+=\Bover1{2\pi}\bigl(-\Bover1{ik}(\pi^2e^{-ik\pi}-\pi^2e^{ik\pi})
+   +\int_{-\pi}^{\pi}\Bover{2x}{ik}e^{-ikx}dx\bigr)\cr
+&=\Bover1{ik\pi}\bigl(-\Bover1{ik}(\pi e^{-ik\pi}+\pi e^{ik\pi})
+   +\Bover1{ik}\int_{-\pi}^{\pi}e^{ikx}dx\bigr)
+=\Bover{2}{k^2}(-1)^k,\cr}$$
+
+\noindent so
+$\sum_{k\in\Bbb Z}|c_k|\le|c_0|+4\sum_{k=1}^{\infty}\Bover1{k^2}$
+is finite.
+
+\medskip
+
+\quad{\bf (iii)} In general, we can express $f$ as $f_1+cf_2$ where
+$f_2(x)=x^2$ for every $x$, $c=\Bover1{4\pi}(f'(\pi)-f'(-\pi))$, and
+$f_1$ satisfies the conditions of (i);  so that
+$\family{k}{\Bbb Z}{c_k}$ is the sum of two summable sequences and is
+itself summable.
+}%end of proof of 282R
+
+\exercises{
+\leader{282X}{Basic exercises $\pmb{>}$(a)}
+%\spheader 282Xa
+Suppose that $\langle c_k\rangle_{k\in\Bbb N}$
+is an absolutely summable double-ended sequence of complex numbers.
+Show that $f(x)=\sum_{k=-\infty}^{\infty}c_ke^{ikx}$ exists for every
+$x\in\Bbb R$, that $f$ is continuous and periodic, and that its Fourier
+coefficients are the $c_k$.
+%282A
+
+\spheader 282Xc Set $\phi_n(t)=\bover2t\sin(n+\bover12t)$ for $t\ne 0$.
+(This is sometimes called the {\bf modified Dirichlet kernel}.)
+Show that for any integrable function $f$ on $\ocint{-\pi,\pi}$, with
+Fourier sums $\sequencen{s_n}$ and periodic extension $\tilde f$,
+
+\Centerline{$\lim_{n\to\infty}|s_n(x)-\bover1{2\pi}
+  \int_{-\pi}^{\pi}\phi_n(t)\tilde f(x+t)dt|
+=0$}
+
+\noindent for every $x\in\ocint{-\pi,\pi}$.   \Hint{show that
+$\bover2t-\bover{1}{\sin{1\over 2}t}$ is bounded, and use 282E.}
+%282E
+
+\spheader 282Xd Give a proof of 282Ib from 242O, 255O and 282G.
+%282I
+
+\spheader 282Xe Give another proof of 282Ic, based on 222D, 281J and an
+idea in the proof of 242O instead of on 282H.
+%282I
+
+\spheader 282Xf Use the idea of 255Ya to shorten one of the steps in the
+proof of 282H, taking
+\discrcenter{468pt}{$g_m(t)
+=\min(\bover{m+1}{2\pi},\bover{\pi}{4(m+1)t^2})$ }for $|t|\le\delta$, so
+that $g_m\ge\psi_m$ on $[-\delta,\delta]$.
+%282H
+
+\sqheader 282Xg(i) Let $f$ be a real square-integrable function
+on $\ocint{-\pi,\pi}$, and $\sequence{k}{a_k}$,
+$\langle b_k\rangle_{k\ge 1}$ its real Fourier coefficients (282Ba).
+Show that
+$\bover12a_0^2+\sum_{k=1}^{\infty}(a_k^2+b_k^2)
+=\bover1{\pi}\int_{-\pi}^{\pi}|f|^2$.  (ii) Show that
+$f\mapsto(\sqrt{\bover{\pi}2}a_0,\sqrt{\pi}a_1,
+\ifdim\pagewidth>467pt\penalty-100\fi
+\sqrt{\pi}b_1,\ldots)$
+defines an inner-product-space isomorphism between the real Hilbert
+space $L^2_{\Bbb R}$ of equivalence classes of real square-integrable
+functions on $\ocint{-\pi,\pi}$ and the real Hilbert space
+$\ell^2_{\Bbb R}$ of square-summable sequences.
+%282K
+
+\spheader 282Xh Show that
+$\bover{\pi}4=1-\bover13+\bover15-\bover17+\ldots$.   \Hint{find the
+Fourier series of $f$ where $f(x)=x/|x|$, and compute the sum of the
+series at $\bover{\pi}2$.   Of course there are other methods, e.g.,
+examining the Taylor series for $\arctan\bover{\pi}4$.}
+%282L
+
+\spheader 282Xi Let $f$ be an integrable complex-valued function
+on $\ocint{-\pi,\pi}$, and $\sequencen{s_n}$ its sequence of Fourier
+sums.   Suppose that $x\in\ooint{-\pi,\pi}$, $a\in\Bbb C$ are such that
+$\biggerint_{-\pi}^{\pi}\Bover{f(t)-a}{t-x}dt$ exists and is finite.
+Show that $\lim_{n\to\infty}s_n(x)=a$.
+Explain how this generalizes 282L.   What modification is appropriate to
+obtain a limit $\lim_{n\to\infty}s_n(\pi)$?
+%282L
+
+\spheader 282Xj Suppose that $\alpha>0$, $K\ge 0$ and
+$f:\ooint{-\pi,\pi}\to\Bbb C$ are such that
+$|f(x)-f(y)|\le K|x-y|^{\alpha}$ for all $x$, $y\in\ooint{-\pi,\pi}$.
+(Such functions are called {\bf H\"older continuous}.)
+Show that the Fourier sums of $f$ converge to $f$ everywhere in
+$\ooint{-\pi,\pi}$.   \Hint{use 282Xi.}  (Compare 282Yb.)
+%282Xi 282L
+
+\spheader 282Xk In 282L, show that it is enough if $\tilde f$ is
+differentiable with respect to its domain at $x$ or $\pi$ (see 262Fb),
+rather than differentiable in the strict sense.
+%282L
+
+\spheader 282Xl Show that $\lim_{a\to\infty}\int_0^a\bover{\sin t}tdt$
+exists and is finite.   \Hint{use 224J to estimate
+$\int_a^b\bover{\sin t}tdt$ for $0<a\le b$.}
+%
+
+\spheader 282Xm Show that
+$\int_0^{\infty}\bover{|\sin t|}tdt=\infty$.   \Hint{show that
+$\sup_{a\ge 0}|\int_1^a\bover{\cos 2t}tdt|<\infty$, and therefore that
+$\sup_{a\ge 0}\int_1^a\bover{\sin^2t}{t}dt\penalty-100=\infty$.}
+%282Xl
+
+\sqheader 282Xn Let $\sequence{k}{d_k}$ be a sequence in $\Bbb C$ such
+that $\sup_{k\in\Bbb N}|kd_k|<\infty$ and
+
+\Centerline{$\lim_{m\to\infty}\Bover1{m+1}\sum_{n=0}^m\sum_{k=0}^nd_k
+=c\in\Bbb C$.}
+
+\noindent Show that $c=\sum_{k=0}^{\infty}d_k$.   \Hint{282N.}
+%282N
+
+\sqheader 282Xo Show that
+$\sum_{n=1}^{\infty}\bover1{n^2}=\bover{\pi^2}6$.   \Hint{(b-ii) of the
+proof of 282R.}
+%282Q
+
+\spheader 282Xp Let $f$ be an integrable
+complex-valued function on $\ocint{-\pi,\pi}$, and $\sequencen{s_n}$ its
+sequence of Fourier sums.    Suppose that $x\in\ooint{-\pi,\pi}$ is such
+that
+
+(i) there is an $a\in\Bbb C$ such that
+
+\inset{{\it either}
+$\int_{-\pi}^x\Bover{a-f(t)}{x-t}dt$ exists in $\Bbb C$}
+
+\inset{{\it or} there is some $\delta>0$ such that $f$ is of bounded
+variation on $[x-\delta,x]$, and $a=\lim_{t\in\dom f,t\uparrow x}f(t)$}
+
+(ii) there is a $b\in\Bbb C$ such that
+
+\inset{{\it either}
+$\int_x^{\pi}\Bover{f(t)-b}{t-x}dt$ exists in $\Bbb C$}
+
+\inset{{\it or} there is some $\delta>0$ such that $f$ is of bounded
+variation on $[x,x+\delta]$, and $b=\lim_{t\in\dom f,t\downarrow
+x}f(t)$.}
+
+\noindent Show that $\lim_{n\to\infty}s_n(x)={1\over 2}(a+b)$.
+What modification is appropriate to obtain a limit
+$\lim_{n\to\infty}s_n(\pi)$?
+%282Xi, 282O
+
+\sqheader 282Xq Let $f$, $g$ be integrable complex-valued
+functions on $\ocint{-\pi,\pi}$, and
+$\pmb{c}=\langle c_k\rangle_{k\in\Bbb Z}$,
+$\pmb{d}=\langle d_k\rangle_{k\in\Bbb Z}$
+their sequences of Fourier coefficients.   Suppose that {\it either}
+$\sum_{k=-\infty}^{\infty}|c_k|<\infty$ {\it or}
+$\sum_{k=-\infty}^{\infty}|c_k|^2+|d_k|^2<\infty$.   Show that the
+sequence of
+Fourier coefficients of $f\times g$ is just the convolution
+$\pmb{c}*\pmb{d}$ of $\pmb{c}$ and $\pmb{d}$ (255Xk).
+%282Q
+
+\spheader 282Xr In 282Ra, what happens if $f(\pi)\ne f(-\pi)$?
+%282R
+
+\spheader 282Xs  Suppose that $\langle c_k\rangle_{k\in\Bbb N}$
+is a double-ended sequence of complex numbers such that
+$\sum_{k=-\infty}^{\infty}|kc_k|<\infty$.   Show that
+$f(x)=\sum_{k=-\infty}^{\infty}c_ke^{ikx}$ exists for every
+$x\in\Bbb R$ and that $f$ is differentiable everywhere.
+%282R
+
+\spheader 282Xt Let $\langle c_k\rangle_{k\in\Bbb Z}$ be a
+double-ended sequence of complex numbers such that
+$\sup_{k\in\Bbb Z}|kc_k|<\infty$.   Show that there is a
+square-integrable function $f$
+on $\ocint{-\pi,\pi}$ such that the $c_k$ are the
+Fourier coefficients of $f$, that $f$ is the limit almost everywhere of
+its Fourier sums, and that $f*f*f$ is differentiable.   \Hint{use
+282K to show that there is an $f$, and 282Xn to show that its Fourier
+sums converge wherever its Fej\'er sums do;  use 282Q and 282Xs to
+show that $f*f*f$ is differentiable.}
+%282Xs, 282Q
+
+\leader{282Y}{Further exercises (a)}
+%\spheader 282Ya
+Let $f$ be a non-negative integrable function on
+$\ocint{-\pi,\pi}$, with Fourier coefficients
+$\langle c_k\rangle_{k\in\Bbb Z}$.   Show that
+
+\Centerline{$\sum_{j=0}^n\sum_{k=0}^na_j\bar a_kc_{j-k}\ge 0$}
+
+\noindent for all complex numbers $a_0,\ldots,a_n$.   (See also 285Xu
+below.)
+%282A
+
+\spheader 282Yb Let $f:\ocint{-\pi,\pi}\to\Bbb C$, $K\ge 0$, $\alpha>0$
+be such that $|f(x)-f(y)|\le K|x-y|^{\alpha}$ for all $x$,
+$y\in\ocint{-\pi,\pi}$.   Let $c_k$, $s_n$ be the Fourier coefficients
+and sums of $f$.   (i) Show that
+$\sup_{k\in\Bbb Z}|k|^{\alpha}|c_k|<\infty$.   \Hint{show that
+$c_k=\bover1{4\pi}\int_{-\pi}^{\pi}(f(x)-\tilde f(x+\bover{\pi}k))
+e^{-ikx}dx$.}   (ii) Show that if $f(\pi)=\lim_{x\downarrow-\pi}f(x)$
+then $s_n\to f$ uniformly.   (Compare 282Xj.)
+%282E
+
+\spheader 282Yc Let $f$ be a measurable
+complex-valued function on $\ocint{-\pi,\pi}$, and suppose that
+$p\in\coint{1,\infty}$ is such that
+$\int_{-\pi}^{\pi}|f|^p<\infty$.   Let
+$\sequence{m}{\sigma_m}$ be the sequence of Fej\'er sums of $f$.   Show
+that $\lim_{m\to\infty}\int_{-\pi}^{\pi}|f-\sigma_m|^p=0$.
+\Hint{use 245Xl, 255Yk and the ideas in 282Ib.}
+%282I
+
+\spheader 282Yd Construct a continuous function
+$h:[-\pi,\pi]\to\Bbb R$ such that $h(\pi)=h(-\pi)$ but the Fourier sums
+of $h$ are unbounded at $0$, as follows.   Set
+$\alpha(m,n)=\int_0^{\pi}
+\bover{\sin(m+{1\over2})t\sin(n+{1\over 2})t}{\sin{1\over 2}t}dt$.
+Show that $\lim_{n\to\infty}\alpha(m,n)=0$
+for every $m$, but $\lim_{n\to\infty}\alpha(n,n)=\infty$.   Set
+$h_0(x)=\sum_{k=0}^{\infty}\delta_k\sin(m_k+{1\over 2})x$ for
+$0\le x\le\pi$, $0$ for $-\pi\le x\le 0$, where
+$\delta_k>0$, $m_k\in\Bbb N$ are such that
+($\alpha$) $\delta_k\le 2^{-k}$, $\delta_k|\alpha(m_k,m_n)|\le 2^{-k}$
+for every $n<k$ (choosing $\delta_k$) ($\beta$)
+$\delta_k\alpha(m_k,m_k)\ge k$, $\delta_n|\alpha(m_k,m_n)|\le 2^{-n}$
+for every $n<k$ (choosing
+$m_k$).   Now modify $h_0$ on $\coint{-\pi,0}$ by adding a function of
+bounded variation.
+%282*
+
+\spheader 282Ye(i) Show that $\lim_{n\to\infty}\int_{-\pi}^{\pi}
+|\bover{\sin(n+{1\over2})t}{\sin{1\over 2}t}|dt=\infty$.  \Hint{282Xm.}
+(ii) Show that for any $\delta>0$ there are $n\in\Bbb N$, $f\ge 0$ such
+that $\int_{-\pi}^{\pi}f\le\delta$, $\int_{-\pi}^{\pi}|s_n|\ge 1$, where
+$s_n$ is the $n$th Fourier sum of $f$.   \Hint{take $n$ such that
+$\Bover1{2\pi}\int_{-\pi}^{\pi}
+|\bover{\sin(n+{1\over2})t}{\sin{1\over 2}t}|dt>\Bover1{\delta}$ and set
+$f(x)=\Bover{\delta}{\eta}$ for $0\le x\le\eta$, $0$ otherwise, where
+$\eta$ is small.}   (iii) Show that there is an integrable function
+$f:\ocint{-\pi,\pi}\to\Bbb R$ such that $\sup_{n\in\Bbb N}\|s_n\|_1$ is
+infinite, where $\sequencen{s_n}$ is the sequence of Fourier sums of
+$f$.   \Hint{it helps to know the `Uniform Boundedness Theorem' of
+functional analysis, but $f$ can also be constructed bare-handed by the
+method of 282Yd.}
+%282*
+
+\spheader 282Yf Let $u:[-\pi,\pi]\to\Bbb R$ be an absolutely continuous
+function such that $u(\pi)=u(-\pi)$ and $\int_{-\pi}^{\pi}u=0$.   Show
+that $\|u\|_2\le\|u'\|_2$.   (This is {\bf Wirtinger's inequality}.)
+%282J
+
+\spheader 282Yg For $0\le r<1$, $t\in\Bbb R$ set
+$A_r(t)=\Bover{1-r^2}{1-2r\cos t+r^2}$.
+($A_r$ is the {\bf Poisson kernel};  see 478Xl\Latereditions\ in
+Volume 4.)
+(i) Show that $\Bover1{2\pi}\int_{-\pi}^{\pi}A_r=1$.
+(ii) For a real function $f$ which is
+integrable over $\ocint{-\pi,\pi}$, with real Fourier coefficients
+$a_k$, $b_k$ (282Ba), set
+$S_r(x)=\Bover12a_0+\sum_{k=1}^{\infty}r^k(a_k\cos kx+b_k\sin kx)$ for
+$x\in\ocint{-\pi,\pi}$, $r\in\coint{0,1}$.   Show that
+$S_r(x)=\Bover1{2\pi}\int_{-\pi}^{\pi}A_r(x-t)f(t)dt$ for every
+$x\in\ocint{-\pi,\pi}$.   \Hint{$A_r(t)=1+2\sum_{n=1}^{\infty}r^n\cos nt$.}
+(iii) Show that $\lim_{r\uparrow 1}S_r(x)=f(x)$ for every
+$x\in\ooint{-\pi,\pi}$ which is in the Lebesgue set of $f$.
+\Hint{223Yg.}  (iv) Show that
+$\lim_{r\uparrow 1}\int_{-\pi}^{\pi}|S_r-f|=0$.   (v) Show that if $f$ is
+defined everywhere on $\ocint{-\pi,\pi}$, is continuous, and
+$f(\pi)=\lim_{x\downarrow-\pi}f(x)$, then
+$\lim_{r\uparrow 1}\sup_{x\in\ocint{-\pi,\pi}}|S_r(x)-f(x)|=0$.
+%282+
+}%end of exercises
+
+\endnotes{
+\Notesheader{282} This has been a long section with a
+potentially confusing collection of results, so perhaps I should
+recapitulate.   Associated with any integrable function on
+$\ocint{-\pi,\pi}$ we have the corresponding Fourier sums, being the
+symmetric partial sums $\sum_{k=-n}^nc_ke^{ikx}$ of the complex series
+$\sum_{k=-\infty}^{\infty}c_ke^{ikx}$, or, equally, the partial sums
+${1\over 2}a_0+\sum_{k=1}^na_k\cos kx+b_k\sin kx$ of the real series
+${1\over 2}a_0+\sum_{k=1}^{\infty}a_k\cos kx+b_k\sin kx$.   The Fourier
+coefficients $c_k$, $a_k$, $b_k$ are the only natural ones, because
+if the series is to converge with any regularity at all then
+
+\Centerline{$\Bover1{2\pi}\int_{-\pi}^{\pi}
+\bigl(\sum_{k=-\infty}^{\infty}c_ke^{ikx}\bigr)e^{-ilx}dx$}
+
+\noindent ought to be simultaneously
+
+\Centerline{$\sum_{k=-\infty}^{\infty}\Bover1{2\pi}\int_{-\pi}^{\pi}
+c_ke^{ikx}e^{-ilx}dx=c_l$}
+
+\noindent and
+
+\Centerline{$\Bover1{2\pi}\int_{-\pi}^{\pi}f(x)e^{-ilx}dx$.}
+
+\noindent (Compare the calculations in 282J.)   The effect of taking
+Fej\'er sums $\sigma_m(x)$ rather than the Fourier sums $s_n(x)$ is to
+smooth the sequence out;   recall that if $\lim_{n\to\infty}s_n(x)=c$
+then $\lim_{m\to\infty}\sigma_m(x)=c$, by 273Ca in the last chapter.
+
+Most of the work above is concerned with the question of when Fourier or
+Fej\'er sums converge, in some sense, to the original function $f$.   As
+has happened before, in \S245 and elsewhere, we have more than
+one kind of convergence to consider.   {\it Norm} convergence, for
+$\|\,\|_1$ or $\|\,\|_2$ or $\|\,\|_{\infty}$, is the simplest;  the
+three theorems 282G, 282Ib and 282J at least are
+relatively straightforward.   (I have given 282Ib as a corollary of
+282Ia;  but there is an easier proof from 282G.   See 282Xd.)
+Respectively, we have
+
+\inset{if $f$ is continuous (and matches at $\pm\pi$, that is,
+$f(\pi)=\lim_{t\downarrow-\pi}f(t)$) then $\sigma_m\to
+f$ uniformly, that is, for $\|\,\|_{\infty}$ (282G);}
+
+\inset{if $f$ is any integrable function, then $\sigma_m\to f$ for
+$\|\,\|_1$ (282Ib);}
+
+\inset{if $f$ is a square-integrable function, then $s_n\to f$ for
+$\|\,\|_2$ (282J);}
+
+\inset{if $f$ is continuous and of bounded
+variation (and matches at $\pm\pi$), then $s_n\to f$ uniformly (282O).}
+
+\noindent There are some similar results for other $\|\,\|_p$ (282Yc);
+but note that the Fourier sums need not converge for $\|\,\|_1$ (282Ye).
+
+{\it Pointwise} convergence is harder.   The results I give are
+
+\inset{if $f$ is any integrable function, then $\sigma_m\to f$ almost
+everywhere (282Ia);}
+
+\noindent this relies on some careful calculations in 282H, and also on
+the deep result 223D.   Next we have the results which look at the
+average of the limits of $f$ from the two sides.   Suppose I write
+
+\Centerline{$f^{\pm}(x)=\Bover12(\lim_{t\uparrow
+x}f(t)+\lim_{t\downarrow x}f(t))$}
+
+\noindent whenever this is defined, taking $f^{\pm}(\pi)
+=\bover12(\lim_{t\uparrow\pi}f(t)+\lim_{t\downarrow-\pi}f(t))$.   Then
+we have
+
+\inset{if $f$ is any integrable function, $\sigma_m\to f^{\pm}$ wherever
+$f^{\pm}$ is defined (282I);}
+
+\inset{if $f$ is of bounded variation, $s_n\to f^{\pm}$ everywhere
+(282O).}
+
+\noindent Of course these apply at any point at which $f$ is continuous,
+in which case $f(x)=f^{\pm}(x)$.
+Yet another result of this type is
+
+\inset{if $f$ is any integrable function, $s_n\to f$ at any point at
+which $f$ is differentiable (282L);}
+
+\noindent in fact, this can be usefully extended for very little extra
+labour (282Xi, 282Xp).
+
+I cannot leave this list without mentioning the theorem I have {\it not}
+given.   This is {\bf Carleson's theorem}:
+
+\inset{if $f$ is square-integrable, $s_n\to f$ almost everywhere}
+
+\noindent ({\smc Carleson 66}).   I will come to this in \S286.   There
+is an elementary special case in 282Xt.   The result is in fact valid
+for many other $f$ (see the notes to \S286).
+
+The next glaring lacuna in the exposition here is the absence of any
+examples to show how far these results are best possible.   There is no
+suggestion, indeed, that there are any natural necessary and sufficient
+conditions for
+
+\inset{$s_n\to f$ at every point.}
+
+\noindent Nevertheless, we have to make an effort to find a continuous
+function
+for which this is not so, and the construction of an example by du
+Bois-Reymond ({\smc Bois-Reymond 1876}) was an important moment in
+the history of analysis, not least because it forced mathematicians to
+realise that some comfortable assumptions about  the classification of
+functions -- essentially, that functions are either `good' or so bad
+that one needn't trouble with them -- were false.  The example is
+instructive but I have had to omit it for lack of space;  I give an
+outline of a possible method in 282Yd.   (You can find a detailed
+construction in {\smc K\"orner 88}, chapter 18, and a proof that such a
+function exists in {\smc Dudley 89}, 7.4.3.)    If you allow general
+integrable functions, then you can do much better, or perhaps I should
+say much worse;  there is an integrable $f$ such that $\sup_{n\in\Bbb
+N}|s_n(x)|=\infty$ for every $x\in\ocint{-\pi,\pi}$
+({\smc Kolmogorov 1926};  see {\smc Zygmund 59}, $\S\S$VIII.3-4).
+
+In 282C I mentioned two types of problem.   The first -- when is a
+Fourier
+series summable? -- has at least been treated at length, even though I
+cannot pretend to have given more than a sample of what is known.   The
+second -- how do properties of the $c_k$ reflect properties of $f$? -- I
+have hardly touched on.   I do give what seem to me to be the three most
+important results in this area.   The first is
+
+\inset{if $f$ and $g$ have the same Fourier coefficients, they are equal
+almost everywhere (282Ic).}
+
+\noindent This at least tells us that we ought in principle to be able
+to learn almost anything about $f$ by looking at its Fourier series.
+(For instance, 282Ya describes a necessary and sufficient condition for
+$f$ to be non-negative almost everywhere.)   The second is
+
+\inset{$f$ is square-integrable iff
+$\sum_{k=-\infty}^{\infty}|c_k|^2<\infty$;}
+
+\noindent in fact,
+
+\inset{$\sum_{k=-\infty}^{\infty}|c_k|^2
+=\Bover1{2\pi}\int_{\pi}^{\pi}|f|^2$
+(282J).}
+
+\noindent Of course this is fundamental, since it shows that Fourier
+coefficients provide a natural Hilbert space isomorphism between $L^2$
+and $\ell^2$ (282K).   I should perhaps remark that while the real
+Hilbert spaces $L^2_{\Bbb R}$, $\ell^2_{\Bbb R}$ are isomorphic as inner
+product spaces (282Xg), they are certianly not isomorphic as Banach
+lattices;  for instance, $\ell^2_{\Bbb R}$ has `atomic' elements
+$\pmb{c}$ such that if $0\le\pmb{d}\le\pmb{c}$ then $\pmb{d}$ is a
+multiple of $\pmb{c}$, while $L^2_{\Bbb R}$ does not.   Perhaps even
+more important is
+
+\inset{the Fourier coefficients of a convolution $f*g$ are just a scalar
+multiple of the
+products of the Fourier coefficients of $f$ and $g$ (282Q);}
+
+\noindent  but to use this effectively we need to study the Banach
+algebra structure of $L^1$, and I have no choice but to abandon this
+path immediately.   (It will form a conspicuous part of Chapter 44 in
+Volume 4.)   282Xt gives an elementary
+consequence, and 282Xq a very partial description of the
+relationship between a product $f\times g$ of two functions and the
+convolution product of their sequences of Fourier coefficients.
+
+The Fej\'er sums considered in this section are one way of working
+around the convergence difficulties associated with Fourier sums.   When we
+come to look at Fourier transforms in the next two sections we shall need
+some further manoeuvres.   A different type of smoothing is
+obtained by using the Poisson kernel in place of the Dirichlet or Fej\'er
+kernel (282Yg).
+
+I end these notes with a remark on the number $2\pi$.   This enters
+nearly every formula involving Fourier series, but could I think be
+removed totally from the present section, at least, by re-normalizing
+the measure of $\ocint{-\pi,\pi}$.   If instead of Lebesgue measure
+$\mu$ we took the measure $\nu=\bover1{2\pi}\mu$ throughout, then every
+$2\pi$ would disappear.   (Compare the remark in 282Bb concerning the
+possibility of doing integrals over $S^1$.)   But I think most of us
+would prefer to remember the location of a $2\pi$ in every formula than
+to deal with an unfamiliar measure.
+}%end of notes
+
+\discrpage
+

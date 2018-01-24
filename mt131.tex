@@ -1,0 +1,294 @@
+\frfilename{mt131.tex}
+\versiondate{18.3.05}
+\copyrightdate{1995}
+
+\def\chaptername{Complements}
+\def\sectionname{Measurable subspaces}
+
+\newsection{131}
+
+Very commonly we wish to integrate a
+function over a subset of a measure space;  for instance, to form an
+integral $\int_a^bf(x)dx$, where $a<b$ in $\Bbb R$.   As often as not,
+we wish to do this when the function is partly or wholly undefined
+outside the subset, as in such expressions as $\int_0^1\ln x\,dx$.   The
+natural framework in which to perform such operations is that of
+`subspace measures'.   If $(X,\Sigma,\mu)$ is a measure space and
+$H\in\Sigma$, there is a natural subspace measure $\mu_H$ on $H$,
+which I describe in this section.
+I begin with the definition of this subspace measure (131A-131C), with a
+description of integration with respect to it (131E-131H);   this
+gives a solid foundation for the concept of `integration over a
+(measurable) subset' (131D).
+
+\leader{131A}{Proposition} Let $(X,\Sigma,\mu)$ be a measure space, and
+$H\in\Sigma$.   Set $\Sigma_H=\{E:E\in\Sigma,\,E\subseteq H\}$ and let
+$\mu_H$ be the restriction of $\mu$ to $\Sigma_H$.   Then
+$(H,\Sigma_H,\mu_H)$ is a measure space.
+
+\proof{ Of course $\Sigma_H$ is just $\{E\cap H:E\in\Sigma\}$, and I
+have noted already (in 121A) that this is a $\sigma$-algebra of subsets
+of $H$.   It is now obvious that $\mu_H$ satisfies (iii) of 112A, so
+that $(H,\Sigma_H,\mu_H)$ is a measure space.
+}%end of proof of 131A
+
+\leader{131B}{Definition} If $(X,\Sigma,\mu)$ is any measure space and
+$H\in\Sigma$, then $\mu_H$, as defined in 131A, is the {\bf
+subspace measure} on $H$.
+
+When $X=\BbbR^r$, where $r\ge 1$, and $\mu$ is Lebesgue measure on
+$\BbbR^r$, I will call a subspace measure $\mu_H$ {\bf Lebesgue measure on}
+$H$.
+
+\cmmnt{It is worth noting the following elementary facts.}
+
+\leader{131C}{Lemma} Let $(X,\Sigma,\mu)$ be a measure space,
+$H\in\Sigma$, and $\mu_H$ the subspace measure on $H$, with domain
+$\Sigma_H$. Then
+
+(a) for any $A\subseteq H$, $A$ is $\mu_H$-negligible iff it is
+$\mu$-negligible;
+
+(b) if $G\in\Sigma_H$ then $(\mu_H)_G$, the subspace measure on $G$ when
+$G$ is regarded as a measurable subset of $H$, is identical to $\mu_G$,
+the subspace measure on $G$ when $G$ is regarded as a measurable subset
+of $X$.
+
+\leader{131D}{Integration over subsets:  Definition} Let
+$(X,\Sigma,\mu)$ be a measure
+space, $H\in\Sigma$ and $f$ a real-valued function defined on a
+subset of $X$.   By $\int_H f$ (or $\int_H f(x)\mu(dx)$, etc.) I shall
+mean $\int(f\restr H)d\mu_H$, if this exists\cmmnt{, following the definitions of
+131A-131B and 122M, and taking
+$\dom(f\restr H)=H\cap\dom f$, $(f\restr H)(x)=f(x)$ for
+$x\in H\cap\dom f$}.
+
+
+\leader{131E}{Proposition} Let $(X,\Sigma,\mu)$ be a measure space,
+$H\in\Sigma$, and $f$ a
+real-valued function defined on a subset $\dom f$ of $H$.   Set
+$\tilde f(x)=f(x)$ if $x\in\dom f$, $0$ if $x\in X\setminus H$.   Then $\int fd\mu_H=\int \tilde fd\mu$ if either is defined in $\Bbb R$.
+
+\proof{{\bf (a)} If $f$ is $\mu_H$-simple, it is expressible as
+$\sum_{i=0}^na_i\chi E_i$, where $E_0,\ldots,E_n\in\Sigma_H$,
+$a_0,\ldots,a_n\in\Bbb R$ and $\mu_H E_i<\infty$ for each $i$.   Now
+$\tilde f$ also is equal to $\sum_{i=0}^na_i\chi E_i$ if this is now
+interpreted as a function from $X$ to $\Bbb R$.   So
+
+\Centerline{$\sum_{i=0}^na_i\mu_HE_i
+=\sum_{i=0}^na_i\mu E_i=\int\tilde fd\mu$.}
+
+\medskip
+
+{\bf (b)} If $f$ is a non-negative $\mu_H$-integrable function,
+there is a non-decreasing sequence $\sequencen{f_n}$ of non-negative
+$\mu_H$-simple functions converging to $f\,\,\mu_H$-almost everywhere;
+now $\sequencen{\tilde f_n}$ is a non-decreasing sequence of
+$\mu$-simple functions converging to $\tilde f\,\,\mu$-a.e.\ (131Ca), and
+
+\Centerline{$ \sup_{n\in\Bbb N}\int \tilde f_nd\mu
+=\sup_{n\in\Bbb N}\int f_nd\mu_H
+=\int fd\mu_H<\infty$,}
+
+\noindent so $\int\tilde fd\mu$ exists and is equal to $\int fd\mu_H$.
+
+\medskip
+
+{\bf (c)} If $f$ is $\mu_H$-integrable, it is expressible as $f_1-f_2$
+where $f_1$ and $f_2$ are
+non-negative $\mu_H$-integrable functions, so that
+$\tilde f=\tilde f_1-\tilde f_2$ and
+
+\Centerline{$ \int\tilde fd\mu=\int\tilde f_1d\mu-\int\tilde f_2d\mu=\int
+f_1d\mu_H-\int f_2d\mu_H=\int fd\mu_H$.}
+
+\medskip
+
+{\bf (d)} Now suppose that $\tilde f$ is $\mu$-integrable.   In this
+case there is a $\mu$-conegligible $E\in\Sigma$ such that
+$E\subseteq\dom\tilde f$ and $\tilde f\restr E$ is
+$\Sigma$-measurable (122P).   Of course $\mu(H\setminus E)=0$ so
+$E\cap H$ is $\mu_H$-conegligible;  also, for any $a\in\Bbb R$,
+
+\Centerline{$\{x:x\in E\cap H,\,f(x)\ge a\}
+=H\cap\{x:x\in E,\,\tilde f(x)\ge a\}\in\Sigma_H$,}
+
+\noindent so $f\restr E\cap H$ is $\Sigma_H$-measurable, and $f$ is
+$\mu_H$-virtually measurable and defined $\mu_H$-a.e.   Next, for
+$\epsilon>0$,
+
+\Centerline{$\mu_H\{x:x\in E\cap H,\,|f(x)|\ge\epsilon\}
+=\mu\{x:x\in E,\,|\tilde f(x)|\ge\epsilon\}<\infty$,}
+
+\noindent while if $g$ is a $\mu_H$-simple function and
+$g\le|f|\,\,\mu_H$-a.e.\ then $\tilde g\le|\tilde f|\,\,\mu$-a.e.\ and
+
+\Centerline{$\int g\,d\mu_H=\int\tilde g\,d\mu
+\le\int|\tilde  f|d\mu<\infty$.}
+
+\noindent By the criteria of 122J and 122P, $f$ is
+$\mu_H$-integrable, so that again we have
+$\int fd\mu_H=\int\tilde fd\mu$.
+}%end of proof of 131E
+
+
+\leader{131F}{Corollary} Let $(X,\Sigma,\mu)$ be a measure space and
+$f$ a real-valued function defined on a subset $\dom f$ of $X$.
+
+(a) If $H\in\Sigma$ and $f$ is defined almost everywhere in $X$, then
+$f\restr H$ is $\mu_H$-integrable iff $f\times\chi H$ is
+$\mu$-integrable, and in this case $\int_Hf=\int f\times\chi H$.
+
+(b) If $f$ is $\mu$-integrable, then $f\ge 0$ a.e.\ iff $\int_Hf\ge 0$
+for every $H\in\Sigma$.
+
+(c) If $f$ is $\mu$-integrable, then $f=0$ a.e.\ iff $\int_Hf=0$ for
+every $H\in\Sigma$.
+
+\proof{{\bf (a)} Because $\dom f$ is $\mu$-conegligible,
+$(f\restr H)\ssptilde$, as defined in 131E, is equal to
+$f\times\chi H\,\,\mu$-a.e., so that, by 131E,
+
+\Centerline{$ \int_Hfd\mu
+=\int(f\restr H)\ssptilde d\mu
+=\int(f\times\chi H)d\mu$}
+
+\noindent if any one of the integrals exists.
+
+\medskip
+
+{\bf (b)(i)} If $f\ge 0\,\,\mu$-a.e., then for any $H\in\Sigma$ we
+must have $f\restr H\ge 0\,\,\mu_H$-a.e., so $\int_Hf=\int(f\restr
+H)d\mu_H\ge 0$.
+
+\medskip
+
+\quad{\bf (ii)} If $\int_Hf\ge 0$ for every $H\in\Sigma$, let
+$E\in\Sigma$ be a conegligible subset of $\dom f$ such that $f\restr E$
+is measurable.
+Set $F=\{x:x\in E,\,f(x)<0\}$.   Then $\int_Ff\ge 0$;  by 122Rc, it
+follows that $f\restr F=0\,\,\mu_F$-a.e., which is possible only if
+$\mu F=0$, in which case $f\ge 0\,\,\mu$-a.e.
+
+\medskip
+
+{\bf (c)} Apply (b) to $f$ and to $-f$ to see that $f\le 0\le f$ a.e.
+}%end of proof of 131F
+
+\leader{131G}{Corollary} Let $(X,\Sigma,\mu)$ be a measure space and
+$H\in\Sigma$ a conegligible set.   If $f$ is any real-valued function
+defined on a subset of $X$, $\int_Hf=\int f$ if either is defined.
+
+\proof{ In the language of 131E, $f=(f\restr H)\ssptilde\,\,\mu$-almost
+everywhere, so that
+
+\Centerline{$\int f=\int(f\restr H)\ssptilde=\int_Hf$}
+
+\noindent if any of the integrals is defined.
+}%end of proof of 131G
+
+\leader{131H}{Corollary} Let $(X,\Sigma,\mu)$ be a measure space and $f$,
+$g$ two $\mu$-integrable real-valued functions.
+
+(a) If $\int_Hf\ge\int_Hg$ for every $H\in\Sigma$ then $f\ge g$ a.e.
+
+(b) If $\int_Hf=\int_Hg$ for every $H\in\Sigma$ then $f=g$ a.e.
+
+\proof{ Apply 131Fb-131Fc to $f-g$.
+}%end of proof of 131H
+
+\exercises{
+\leader{131X}{Basic exercises $\pmb{>}$(a)}
+%\spheader 131Xa
+Let $(X,\Sigma,\mu)$ be a measure space, and $f$ a
+real-valued function which is integrable over $X$.   For $E\in\Sigma$
+set $\nu E=\int_Ef$.   (i) Show that if $E$, $F$ are disjoint members of
+$\Sigma$ then $\nu(E\cup F)=\nu E+\nu F$.   \Hint{131E.}
+(ii) Show that if $\sequencen{E_n}$ is a disjoint sequence in $\Sigma$
+then $\nu(\bigcup_{n\in\Bbb N}E_n)=\sum_{n=0}^{\infty}\nu E_n$.
+\Hint{123C.} (iii) Show that if $f$ is non-negative then $(X,\Sigma,\nu)$
+is a measure space.
+
+\sqheader 131Xb Let $\mu$ be Lebesgue measure on $\Bbb R$.   (i) Show that whenever $a\le b$ in $\Bbb R$ and $f$ is a real-valued function with $\dom f\subseteq\Bbb R$, then
+
+\Centerline{$fd\mu=\int_{\coint{a,b}}fd\mu
+=\int_{\ocint{a,b}}fd\mu=\int_{[a,b]}fd\mu$}
+
+\noindent if any of these is defined.   \Hint{apply 131E to four different
+versions of $\tilde f$.}   Write $\int_a^bfd\mu$ for the common value.
+(ii) Show that if $a\le b\le c$ in $\Bbb R$ then, for any real-valued
+function $f$, $\int_a^cfd\mu=\int_a^bfd\mu+\int_b^cfd\mu$ if either side
+is defined.   (iii) Show that if $f$ is integrable over $\Bbb R$, then
+$(a,b)\mapsto\int_a^bfd\mu$ is continuous.   \Hint{{\it Either} consider
+simple functions $f$ first {\it or} consider
+$\lim_{n\to\infty}\int_{a_n}^bfd\mu$ for monotonic sequences
+$\sequencen{a_n}$.}
+
+\spheader 131Xc Let $g:\Bbb R\to\Bbb R$ be a non-decreasing
+function and $\mu_g$ the associated Lebesgue-Stieltjes measure (114Xa).
+(i) Show that if $a\le b\le c$ in $\Bbb R$ then, for any real-valued
+function $f$,
+$\int_{\coint{a,c}}fd\mu_g
+=\int_{\coint{a,b}}fd\mu_g+\int_{\coint{b,c}}fd\mu_g$ if
+either side is defined.   (ii) Show that if $f$ is $\mu_g$-integrable
+over $\Bbb R$, then $(a,b)\mapsto\int_{\coint{a,b}}fd\mu_g$ is continuous
+on $\{(a,b):a\le b,\,g$ is continuous at both $a$ and $b\}$.
+
+\leader{131Y}{Further exercises (a)}
+%\spheader 131Ya
+Let $(X,\Sigma,\mu)$ be a measure
+space and $E\in\Sigma$ a measurable set of finite measure.   Let
+$\sequencen{f_n}$ be a sequence of measurable real-valued functions, with
+measurable domains\footnote{I am grateful to P.Wallace Thompson for
+pointing out that this clause, or something with similar effect, is
+necessary.}, such that
+$f=\lim_{n\to\infty}f_n$ is defined almost everywhere in $E$ (following
+the conventions of 121Fa).   Show that for every $\epsilon>0$ there
+is a measurable set $F\subseteq E$ such that
+$\mu(E\setminus F)\le\epsilon$ and $\sequencen{f_n}$ converges uniformly
+to $f$ on $F$.   (This is {\bf Egorov's theorem}.)
+
+}%end of exercises
+
+\endnotes{
+\Notesheader{131} If you want a quick definition of $\int_Hf$ for
+measurable $H$, the simplest seems to be that of 131E, which enables
+you to avoid the concept of `subspace measure' entirely.   I think
+however that we really do need to be able to speak of `Lebesgue
+measure on $[0,1]$', for instance, meaning the subspace measure
+$\mu_{[0,1]}$ where $\mu$ is Lebesgue measure on $\Bbb R$.
+
+This section has a certain amount of detailed technical analysis.   The
+point is that from 131A on we generally have at least two measures in
+play, and the ordinary language of measure theory -- words like
+`measurable' and `integrable'
+-- becomes untrustworthy in such contexts, since it omits the crucial
+declarations of which $\sigma$-algebras or measures are under
+consideration.   Consequently I have to use less elegant and more
+explicit terminology.   I hope however that once you have worked
+carefully through such results as 131F you will feel that the pattern
+formed is reasonably coherent.   The general rule is that for {\it
+measurable} subspaces there are no serious surprises (131Cb, 131Fa).
+
+I ought to remark that there is also a standard definition of subspace
+measure on {\it non-measurable} subsets of a measure space.   I have
+given the definition already in 113Yb;  for the theory of integration,
+extending the results above, I will wait until \S214.   There are
+significant extra difficulties and the extra generality is not often
+needed in elementary applications.
+
+Let me call your attention to 131Fb-131Fc and 131Xa-131Xc;   these are
+first steps to understanding `indefinite integrals', the functionals
+$E\mapsto\int_Ef:\Sigma\to\Bbb R$ where $f$ is an integrable function.   I will return to these in Chapters 22 and 23.
+}%end of notes
+
+
+
+\discrpage
+
+
+
+
+
+
+

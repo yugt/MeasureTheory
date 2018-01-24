@@ -1,0 +1,717 @@
+\frfilename{mt226.tex}
+\versiondate{16.11.13}
+\copyrightdate{2000}
+
+\def\chaptername{The Fundamental Theorem of Calculus}
+\def\sectionname{The Lebesgue decomposition of a function of bounded
+variation}
+
+\newsection{226}
+
+I end this chapter with some notes on a method of analysing a general
+function of bounded variation which may help to give a picture of what
+such functions can be, though (apart from 226A)
+it is hardly needed in this volume.
+
+\leader{226A}{Sums over arbitrary index sets} \cmmnt{To get a full
+picture of this
+fragment of real analysis, a bit of preparation will be
+helpful.   This concerns the notion of a sum over an arbitrary
+index set, which I have rather been skirting around so far.
+
+\header{226Aa}}{\bf (a)} If $I$ is any set and
+$\langle a_i\rangle_{i\in I}$ any family in $[0,\infty]$, we set
+
+\Centerline{$\sum_{i\in I}a_i
+=\sup\{\sum_{i\in K}a_i:K\text{ is a finite subset of }I\}$,}
+
+\noindent with the convention that $\sum_{i\in\emptyset}a_i=0$.
+\cmmnt{(See 112Bd, 222Ba.)}   For general $a_i\in[-\infty,\infty]$, we
+can set
+
+\Centerline{$\sum_{i\in I}a_i=\sum_{i\in I}a_i^+-\sum_{i\in I}a_i^-$}
+
+\noindent if this is defined in $[-\infty,\infty]$\cmmnt{, that is, at
+least one of $\sum_{i\in I}a_i^+$, $\sum_{i\in I}a_i^-$ is finite},
+where $a^+=\max(a,0)$ and $a^-=\max(-a,0)$ for each $a$.   If
+$\sum_{i\in I}a_i$ is defined and finite, we say
+that $\familyiI{a_i}$ is {\bf summable}.
+
+\header{226Ab}{\bf (b)}\cmmnt{ Since this is a book on measure theory,
+I will immediately describe the relationship between this kind of
+summability
+and an appropriate notion of integration.}   For any set $I$, we have
+the corresponding `counting measure' $\mu$ on $I$\cmmnt{ (112Bd)}.
+Every\cmmnt{ subset
+of $I$ is measurable, so every} family $\langle a_i\rangle_{i\in I}$ of
+real numbers is a measurable real-valued function on $I$.
+A\cmmnt{ subset of $I$ has finite measure iff it is finite;
+so a} real-valued
+function $f$ on $I$ is `simple' if $K=\{i:f(i)\ne 0\}$ is finite.
+\cmmnt{In this case,
+
+\Centerline{$\int fd\mu=\sum_{i\in K}f(i)=\sum_{i\in I}f(i)$}
+
+\noindent as defined in part (a).  The measure $\mu$ is semi-finite
+(211Nc) so a non-negative function $f$ is integrable iff
+$\int f=\sup_{\mu K<\infty}\int_Kf$ is finite (213B);   but of course
+this supremum is precisely
+
+\Centerline{$\sup\{\sum_{i\in K}f(i):K\subseteq I\text{ is finite}\}
+=\sum_{i\in I}f(i)$.}
+
+
+\noindent}%end of comment
+Now a general function $f:I\to\Bbb R$ is integrable\cmmnt{ iff it is
+measurable and $\int|f|d\mu<\infty$, that is,} iff
+$\sum_{i\in I}|f(i)|<\infty$, and in this case
+
+\dvro{\Centerline{$\int fd\mu=\sum_{i\in I}f(i)$,}}
+{\Centerline{$\int fd\mu
+=\int f^+d\mu-\int f^-d\mu
+=\sum_{i\in I}f(i)^+-\sum_{i\in I}f(i)^-
+=\sum_{i\in I}f(i)$,}}
+
+\noindent\cmmnt{writing $f^{\pm}(i)=f(i)^{\pm}$ for each $i$.  }Thus
+we have
+
+\Centerline{$\sum_{i\in I}a_i=\int_Ia_i\mu(di)$,}
+
+\noindent and the standard rules under which we allow $\infty$ as the
+value of an integral\cmmnt{ (133A, 135F)} match\cmmnt{ well with} the
+interpretations in (a) above.
+
+\header{226Ac}{\bf (c)}\cmmnt{ Accordingly, and unsurprisingly, the
+operation
+of summation is a linear operation on the linear space of summable
+families of real numbers.
+
+}  I observe here that this notion of summability is `absolute';  a
+family $\langle a_i\rangle_{i\in I}$ is summable iff it is absolutely
+summable.   \cmmnt{This is necessary because it must also be
+`unconditional';  we have no structure on an arbitrary set $I$ to guide
+us to take the sum in any particular order.   See 226Xa.   In
+particular, I distinguish between `$\sum_{n\in\Bbb N}a_n$', which in
+this book will always be interpreted as in 226A above, and
+`$\sum_{n=0}^{\infty}a_n$' which (if it makes a difference) should be
+interpreted as $\lim_{m\to\infty}\sum_{n=0}^ma_n$.   So, for instance,
+$\sum_{n=0}^{\infty}\Bover{(-1)^n}{n+1}=\ln 2$, while
+$\sum_{n\in\Bbb N}\Bover{(-1)^n}{n+1}$ is undefined.   Of course
+$\sum_{n=0}^{\infty}a_n=\sum_{n\in\Bbb N}a_n$ whenever the latter is
+defined in $[-\infty,\infty]$.}
+
+\header{226Ad}{\bf (d)}\cmmnt{ There is another, and very important,
+approach
+to the sum described here.}   If $\langle a_i\rangle_{i\in I}$ is an
+(absolutely) summable family of real numbers, then for every
+$\epsilon>0$ there is a finite $K\subseteq I$ such that
+$\sum_{i\in I\setminus K}|a_i|\le\epsilon$.   \prooflet{\Prf\ This is
+nothing but a
+special case of 225A;  there is a set $K$ with $\mu K<\infty$ such that
+$\int_{I\setminus K}|a_i|\mu(di)\le\epsilon$, but
+
+\Centerline{$\int_{I\setminus K}|a_i|\mu(di)
+=\sum_{i\in I\setminus K}|a_i|$.   \Qed}
+
+\noindent}\cmmnt{(Of course there are `direct' proofs of this
+result from
+the definition in (a), not mentioning measures or integrals.   But
+I think you will see that they rely on the same idea as that in the
+proof of 225A.)  }Consequently, for any family
+$\langle a_i\rangle_{i\in I}$ of real numbers and any $s\in\Bbb R$, the
+following are equiveridical:
+
+\inset{(i) $\sum_{i\in I}a_i=s$;}
+
+\inset{(ii) for every $\epsilon>0$ there is a finite $K\subseteq I$ such
+that $|s-\sum_{i\in J}a_i|\le\epsilon$ whenever $J$ is finite and
+$K\subseteq J\subseteq I$.}
+
+\noindent\prooflet{\Prf\ {\bf (i)$\Rightarrow$(ii)} Take $K$ such that
+$\sum_{i\in
+I\setminus K}|a_i|\le\epsilon$.   If $K\subseteq J\subseteq I$, then
+
+\Centerline{$|s-\sum_{i\in J}a_i|=|\sum_{i\in I\setminus J}a_i|
+\le\sum_{i\in I\setminus K}|a_i|\le\epsilon$.}
+
+{\bf (ii)$\Rightarrow$(i)} Let $\epsilon>0$, and let $K\subseteq I$ be
+as described in (ii).   If $J\subseteq I\setminus K$ is any finite set,
+then set $J_1=\{i:i\in J,\,a_i\ge 0\}$, $J_2=J\setminus J_1$.   We have
+
+$$\eqalign{\sum_{i\in J}|a_i|
+&=|\sum_{i\in J_1\cup K}a_i-\sum_{i\in J_2\cup K}a_i|\cr
+&\le|s-\sum_{i\in J_1\cup K}a_i|+|s-\sum_{i\in J_2\cup K}a_i|
+\le 2\epsilon.\cr}$$
+
+\noindent As $J$ is arbitrary, $\sum_{i\in I\setminus K}|a_i|\le
+2\epsilon$ and
+
+\Centerline{$\sum_{i\in I}|a_i|\le\sum_{i\in K}|a_i|+2\epsilon<\infty$.}
+
+\noindent Accordingly $\sum_{i\in I}a_i$ is well-defined in $\Bbb R$.
+Also
+
+\Centerline{$|s-\sum_{i\in I}a_i|
+\le|s-\sum_{i\in K}a_i|+|\sum_{i\in I\setminus K}a_i|
+\le\epsilon+\sum_{i\in I\setminus K}|a_i|
+\le 3\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, $\sum_{i\in I}a_i=s$, as required.
+\Qed}
+
+\cmmnt{In this way, we express $\sum_{i\in I}a_i$ directly as a limit;
+we could write it as
+
+\Centerline{$\sum_{i\in I}a_i=\lim_{K\uparrow I}\sum_{i\in K}a_i$,}
+
+\noindent on the understanding that we look at finite sets $K$ in the
+right-hand formula.
+}%end of comment
+
+\header{226Ae}{\bf (e)}\cmmnt{ Yet another approach is through the
+following
+fact.}   If $\sum_{i\in I}|a_i|<\infty$, then\cmmnt{ for any
+$\delta>0$ the
+set $\{i:|a_i|\ge\delta\}$ is finite, indeed can have at most
+${1\over{\delta}}\sum_{i\in I}|a_i|$ members;  consequently}
+
+\Centerline{$J=\{i:a_i\ne 0\}
+=\bigcup_{n\in\Bbb N}\{i:|a_i|\ge 2^{-n}\}$}
+
+\noindent is countable\cmmnt{ (1A1F)}.   If $J$ is finite,
+then\cmmnt{ of course} $\sum_{i\in I}a_i=\sum_{i\in J}a_i$ reduces to a finite sum.   Otherwise, we can
+enumerate $J$ as $\sequencen{j_n}$, and we shall have
+
+\Centerline{$\sum_{i\in I}a_i=\sum_{i\in
+J}a_i=\lim_{n\to\infty}\sum_{k=0}^na_{j_k}=\sum_{n=0}^{\infty}a_{j_n}$
+\dvro{.}{}}
+
+\noindent\cmmnt{(using (d) to reduce the sum $\sum_{i\in J}a_i$ to a
+limit of
+finite sums).  }Conversely, if $\langle a_i\rangle_{i\in I}$ is such
+that there is a countably infinite $J\subseteq\{i:a_i\ne 0\}$ enumerated
+as $\sequencen{j_n}$, and if $\sum_{n=0}^{\infty}|a_{j_n}|<\infty$, then
+$\sum_{i\in I}a_i$ will be $\sum_{n=0}^{\infty}a_{j_n}$.
+
+\spheader 226Af
+%new 2008
+\cmmnt{It will be useful later to have a fragment of general theory.}
+Let $I$ and
+$J$ be sets and $\langle a_{ij}\rangle_{i\in I,j\in J}$ a family in
+$[0,\infty]$.   Then
+
+\Centerline{$\sum_{(i,j)\in I\times J}a_{ij}
+=\sum_{i\in I}(\sum_{j\in J}a_{ij})
+=\sum_{j\in J}(\sum_{i\in I}a_{ij})$.}
+
+\prooflet{\noindent\Prf\ (i) If
+$\sum_{(i,j)\in I\times J}a_{ij}>u$, then there is a finite set
+$M\subseteq I\times J$ such that
+$\sum_{(i,j)\in M}a_{ij}>u$.   Now $K=\{i:(i,j)\in M\}$ and
+$L=\{j:(i,j)\in M\}$ are finite, so
+
+$$\eqalignno{\sum_{i\in I}\sum_{j\in J}a_{ij}
+&\ge\sum_{i\in K}\sum_{j\in J}a_{ij}
+\ge\sum_{i\in K}\sum_{j\in L}a_{ij}\cr
+\displaycause{because $\sum_{j\in J}a_{ij}\ge\sum_{j\in L}a_{ij}$ for every
+$i$}
+&=\sum_{(i,j)\in K\times L}a_{ij}
+\ge\sum_{(i,j)\in M}a_{ij}
+>u.\cr}$$
+
+\noindent As $u$ is arbitrary,
+$\sum_{i\in I}\sum_{j\in J}a_{ij}\ge\sum_{(i,j)\in I\times J}a_{ij}$.
+(ii) If $\sum_{i\in I}\sum_{j\in J}a_{ij}>u\ge 0$, there is a
+non-empty finite
+set $K\subseteq I$ such that $\sum_{i\in K}\sum_{j\in J}a_{ij}>u$.
+Let $\epsilon\in\ooint{0,1}$ be such that
+$\sum_{i\in K}\sum_{j\in J}a_{ij}>u+\epsilon$, and set
+$\delta=\Bover{\epsilon}{\#(K)}$.   For each $i\in K$ set
+$\gamma_i=\min(u+1,\sum_{j\in J}a_{ij})-\delta$;
+then
+
+\Centerline{$\epsilon+\sum_{i\in K}\gamma_i
+=\sum_{i\in K}\min(u+1,\sum_{j\in J}a_{ij})
+\ge\min(u+1,\sum_{i\in K}\sum_{j\in J}a_{ij})
+>u+\epsilon$,}
+
+\noindent so $\sum_{i\in K}\gamma_i>u$.   For each $i\in K$,
+$\gamma_i<\sum_{j\in J}a_{ij}$, so there is a finite
+$L_i\subseteq J$ such that $\sum_{j\in L_i}a_{ij}\ge\gamma_i$.
+Set $M=\{(i,j):i\in K$, $j\in L_i\}$, so that $M$ is a finite subset of
+$I\times J$;  then
+
+\Centerline{$\sum_{(i,j)\in I\times J}a_{ij}
+\ge\sum_{(i,j)\in M}a_{ij}
+=\sum_{i\in K}\sum_{j\in L_i}a_{ij}
+\ge\sum_{i\in K}\gamma_i
+>u$.}
+
+\noindent As $u$ is arbitrary,
+$\sum_{(i,j)\in I\times J}a_{ij}\ge\sum_{i\in I}\sum_{j\in J}a_{ij}$ and
+these two sums are equal.   (iii) Similarly,
+$\sum_{(i,j)\in I\times J}a_{ij}=\sum_{j\in J}\sum_{i\in I}a_{ij}$.\ \Qed}
+
+\leader{226B}{Saltus functions}\cmmnt{ Now we are ready for a special
+type of
+function of bounded variation on $\Bbb R$.}   Suppose that $a<b$ in
+$\Bbb R$.
+
+\header{226Ba}{\bf (a)} A (real) {\bf saltus function} on $[a,b]$ is
+a function $F:[a,b]\to\Bbb R$ expressible in the form
+
+\Centerline{$F(x)=\sum_{t\in\coint{a,x}}u_t+\sum_{t\in[a,x]}v_t$}
+
+\noindent for $x\in [a,b]$, where $\langle
+u_t\rangle_{t\in\coint{a,b}}$,
+$\langle v_t\rangle_{t\in[a,b]}$ are real-valued families such that
+$\sum_{t\in\coint{a,b}}|u_t|$ and
+$\sum_{t\in[a,b]}|v_t|$ are finite.
+
+\header{226Bb}{\bf (b)} For any function $F:[a,b]\to\Bbb R$ we can write
+
+\Centerline{$F(x^+)=\lim_{y\downarrow x}F(y)$ if $x\in\coint{a,b}$ and
+the limit exists,}
+
+\Centerline{$F(x^-)=\lim_{y\uparrow x}F(y)$ if $x\in\ocint{a,b}$ and the
+limit exists.}
+
+\noindent\cmmnt{(I hope that this will not lead to confusion with the
+alternative interpretation of $x^+$ as $\max(x,0)$.)  }Observe that if
+$F$ is a saltus function, as defined in (b),
+with associated families $\langle u_t\rangle_{t\in\coint{a,b}}$ and
+$\langle v_t\rangle_{t\in[a,b]}$, then $v_a=F(a)$, $v_x=F(x)-F(x^-)$ for
+$x\in\ocint{a,b}$ and $u_x=F(x^+)-F(x)$ for $x\in\coint{a,b}$.
+\prooflet{\Prf\ Let
+$\epsilon>0$.   As remarked in 226Ad, there is a finite
+$K\subseteq[a,b]$ such that
+
+\Centerline{$\sum_{t\in\coint{a,b}\setminus
+K}|u_t|+\sum_{t\in[a,b]\setminus K}|v_t|\le\epsilon$.}
+
+\noindent Given $x\in[a,b]$, let $\delta>0$ be such that
+$[x-\delta,x+\delta]$ contains no point of $K$ except perhaps $x$.
+In this case, if $\max(a,x-\delta)\le y<x$, we must have
+
+$$\eqalign{|F(y)-(F(x)-v_x)|
+&=|\sum_{t\in\coint{y,x}}u_t+\sum_{t\in\ooint{y,x}}v_t|\cr
+&\le\sum_{t\in\coint{a,b}\setminus K}|u_t|
+  +\sum_{t\in[a,b]\setminus K}|v_t|
+\le\epsilon,\cr}$$
+
+\noindent while if $x<y\le\min(b,x+\delta)$ we shall have
+
+$$\eqalign{|F(y)-(F(x)+u_x)|
+&=|\sum_{t\in\ooint{x,y}}u_t+\sum_{t\in\ocint{x,y}}v_t|\cr
+&\le\sum_{t\in\coint{a,b}\setminus K}|u_t|
+  +\sum_{t\in[a,b]\setminus K}|v_t|
+\le\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary, we get $F(x^-)=F(x)-v_x$ (if
+$x>a$) and $F(x^+)=F(x)+u_x$ (if $x<b$).   \Qed}
+
+\cmmnt{It follows that }$F$ is continuous at $x\in\ooint{a,b}$ 
+iff $u_x=v_x=0$,
+while $F$ is continuous at $a$ iff $u_a=0$ and $F$ is continuous at $b$
+iff $v_b=0$.   In particular, $\{x:x\in[a,b],\,F\text{ is not continuous
+at }x\}$ is countable\cmmnt{ (see 226Ae)}.
+
+\header{226Bc}{\bf (c)} If $F$ is a saltus function defined on $[a,b]$,
+with associated families $\langle u_t\rangle_{t\in\coint{a,b}}$ and
+$\langle v_t\rangle_{t\in[a,b]}$, then $F$ is of bounded variation on
+$[a,b]$, and
+
+\Centerline{$\Var_{[a,b]}(F)
+\le\sum_{t\in\coint{a,b}}|u_t|+\sum_{t\in\ocint{a,b}}|v_t|$.}
+
+\noindent\prooflet{\Prf\ If $a\le x<y\le b$, then
+
+\Centerline{$F(y)-F(x)=u_x+\sum_{t\in\ooint{x,y}}(u_t+v_t)+v_y$,}
+
+\noindent so
+
+\Centerline{$|F(y)-F(x)|
+\le\sum_{t\in\coint{x,y}}|u_t|+\sum_{t\in\ocint{x,y}}|v_t|$.}
+
+\noindent If $a\le a_0\le a_1\le\ldots\le a_n\le b$, then
+
+$$\eqalign{\sum_{i=1}^n|F(a_i)-F(a_{i-1})|
+&\le\sum_{i=1}^n\bigl(\sum_{t\in\coint{a_{i-1},a_i}}|u_t|
+   +\sum_{t\in\ocint{a_{i-1},a_i}}|v_t|\bigr)\cr
+&\le\sum_{t\in\coint{a,b}}|u_t|+\sum_{t\in\ocint{a,b}}|v_t|.\cr}$$
+
+\noindent Consequently
+
+\Centerline{$\Var_{[a,b]}(F)
+\le\sum_{t\in\coint{a,b}}|u_t|+\sum_{t\in\ocint{a,b}}|v_t|<\infty$. \Qed}}
+
+\header{226Bd}{\bf (d)} The inequality in (c) is actually an equality.
+\prooflet{To see this, note first that if $a\le x<y\le b$, then
+$\Var_{[x,y]}(F)\ge|u_x|+|v_y|$.   \Prf\ I noted in (b) that
+$u_x=\lim_{t\downarrow x}F(t)-F(x)$ and
+$v_y=F(y)-\lim_{t\uparrow y}F(t)$.
+So, given $\epsilon>0$, we can find $t_1$, $t_2$ such that
+$x<t_1\le t_2<y$ and
+
+\Centerline{$|F(t_1)-F(x)|\ge|u_x|-\epsilon$,
+\quad$|F(y)-F(t_2)|\ge|v_y|-\epsilon$.}
+
+\noindent Now
+
+\Centerline{$\Var_{[x,y]}(F)
+\ge|F(t_1)-F(x)|+|F(t_2)-F(t_1)|+|F(y)-F(t_2)|
+\ge|u_x|+|v_y|-2\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, we have the result.   \Qed
+
+Now, given $a\le t_0<t_1<\ldots<t_n\le b$, we must have
+
+$$\eqalignno{\Var_{[a,b]}(F)
+&\ge\sum_{i=1}^n\Var_{[t_{i-1},t_i]}(F)\cr
+\noalign{\noindent(using 224Cc)}
+&\ge\sum_{i=1}^n|u_{t_{i-1}}|+|v_{t_i}|.\cr}$$
+
+\noindent As $t_0,\ldots,t_n$ are arbitrary,
+
+\Centerline{$\Var_{[a,b]}(F)
+\ge\sum_{t\in\coint{a,b}}|u_t|+\sum_{t\in\ocint{a,b}}|v_t|$,}
+
+\noindent as required.}
+
+\header{226Be}{\bf (e)} Because a saltus function is of bounded
+variation\cmmnt{ ((c) above)}, it is differentiable almost
+everywhere\cmmnt{ (224I)}.
+In fact its derivative is zero almost everywhere.   \prooflet{\Prf\ Let
+$F:[a,b]\to\Bbb R$ be a saltus function, with associated families
+$\langle u_t\rangle_{t\in\coint{a,b}}$, $\langle
+v_t\rangle_{t\in[a,b]}$.
+Let $\epsilon>0$.   Let $K\subseteq[a,b]$ be a finite set such that
+
+\Centerline{$\sum_{t\in\coint{a,b}\setminus
+K}|u_t|+\sum_{t\in[a,b]\setminus K}|v_t|\le\epsilon$.}
+
+\noindent Set
+
+$$\eqalign{u'_t
+&=u_t\text{ if }t\in\coint{a,b}\cap K,\cr
+&=0\text{ if }t\in\coint{a,b}\setminus K,\cr
+v'_t&=v_t\text{ if }t\in K,\cr
+&=0\text{ if }t\in[a,b]\setminus K,\cr
+u''_t&=u_t-u'_t\text{ for }t\in\coint{a,b},\cr
+v''_t&=v_t-v'_t\text{ for }t\in[a,b].\cr}$$
+
+\noindent Let $G$, $H$ be the saltus functions corresponding to
+$\langle u'_t\rangle_{t\in\coint{a,b}}$,
+$\langle v'_t\rangle_{t\in[a,b]}$ and
+$\langle u''_t\rangle_{t\in\coint{a,b}}$
+$\langle v''_t\rangle_{t\in[a,b]}$, so that $F=G+H$.   Then $G'(t)=0$
+for every $t\in\ooint{a,b}\setminus K$, since $\ooint{a,b}\setminus K$
+comprises a finite number of open intervals on each of which $G$ is
+constant.   So $G'=0$ a.e.\ and $F'\eae H'$.   On the other hand,
+
+\Centerline{$\int_a^b|H'|\le\Var_{[a,b]}(H)
+=\sum_{t\in\coint{a,b}\setminus K}|u_t|
+  +\sum_{t\in\ocint{a,b}\setminus K}|v_t|
+\le\epsilon$,}
+
+\noindent using 224I and (d) above.   So
+
+\Centerline{$\int_a^b|F'|=\int_a^b|H'|\le\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, $\int_a^b|F'|=0$ and $F'=0$ a.e.,
+as claimed.   \Qed}
+
+\leader{226C}{The Lebesgue decomposition of a function of bounded
+variation}  Take $a$, $b\in\Bbb R$ with $a<b$.
+
+\header{226Ca}{\bf (a)} If $F:[a,b]\to\Bbb R$ is non-decreasing, set
+$v_a=0$, $v_t=F(t)-F(t^-)$ for $t\in\ocint{a,b}$, $u_t=F(t^+)-F(t)$ for
+$t\in\coint{a,b}$\cmmnt{, defining $F(t^+)$, $F(t^-)$ as in 226Bb}.
+Then all the $v_t$, $u_t$ are
+non-negative, and\cmmnt{ if $a<t_0<t_1<\ldots<t_n< b$, then
+
+\Centerline{$\sum_{i=0}^n(u_{t_i}+v_{t_i})
+=\sum_{i=0}^n(F(t_i^+)-F(t_i^-))\le F(b)-F(a)$.}
+
+\noindent   Accordingly}
+$\sum_{t\in\coint{a,b}}u_t$ and $\sum_{t\in[a,b]}v_t$ are both finite.
+Let $F_p$ be the corresponding saltus function\cmmnt{, as defined in
+226Ba, so that
+
+\Centerline{$F_p(x)
+=F(a^+)-F(a)+\sum_{t\in\ooint{a,x}}(F(t^+)-F(t^-))+F(x)
+-F(x^-)$}
+
+\noindent if $a<x\le b$}.   \cmmnt{If $a\le x<y\le b$ then
+
+$$\eqalign{F_p(y)-F_p(x)
+&=F(x^+)-F(x)+\sum_{t\in\ooint{x,y}}(F(t^+)-F(t^-))+F(y)-F(y^-)\cr
+&\le F(y)-F(x)\cr}$$
+
+\noindent because if $x=t_0<t_1<\ldots<t_n<t_{n+1}=y$ then
+
+$$\eqalign{F(x^+)-F(x)
+&+\sum_{i=1}^{n}(F(t_i^+)-F(t_i^-))+F(y)-F(y^-)\cr
+&=F(y)-F(x)-\sum_{i=1}^{n+1}(F(t_i^-)-F(t_{i-1}^+))
+\le F(y)-F(x).\cr}$$
+
+\noindent Accordingly both }$F_p$ and $F_c=F-F_p$ are
+non-decreasing.   \cmmnt{Also, because
+
+\Centerline{$F_p(a)=0=v_a$,}
+
+\Centerline{$F_p(t)-F_p(t^-)=v_t=F(t)-F(t^-)$ for
+$t\in\ocint{a,b}$,}
+
+\Centerline{$F_p(t^+)-F_p(t)=u_t=F(t^+)-F(t)$ for
+$t\in\coint{a,b}$,}
+
+\noindent we shall have
+
+\Centerline{$F_c(a)=F(a)$,}
+
+\Centerline{$F_c(t)=F_c(t^-)$ for
+$t\in\ocint{a,b}$,}
+
+\Centerline{$F_c(t)=F_c(t^+)$ for $t\in\coint{a,b}$,}
+
+\noindent and }$F_c$ is continuous.
+
+Clearly this expression of $F=F_p+F_c$ as the sum of a saltus function
+and a continuous function is unique, except that we can freely add a
+constant to one if we subtract it from the other.
+
+\header{226Cb}{\bf (b)}\cmmnt{ Still taking $F:[a,b]\to\Bbb R$ to be
+non-decreasing, we know that $F'$ is integrable (222C);
+moreover,
+$F'\eae F'_c$, by 226Be.}   Set $F_{ac}(x)=F(a)+\int_a^xF'$
+for each $x\in[a,b]$.   \cmmnt{We have
+
+\Centerline{$F_{ac}(y)-F_{ac}(x)=\int_x^yF_c'\le F_c(y)-F_c(x)$}
+
+\noindent for $a\le x\le y\le b$ (222C again), so} $F_{cs}=F_c-F_{ac}$
+is still non-decreasing;  \cmmnt{$F_{ac}$ is continuous (225A), 
+so }$F_{cs}$ is
+continuous;  \cmmnt{$F_{ac}'\eae F'\eae F_c'$ (222E), 
+so }$F_{cs}'=0$ a.e.
+
+Again, the expression of $F_c=F_{ac}+F_{cs}$ as the sum of an absolutely
+continuous function and a function with zero derivative almost
+everywhere is unique, except for the possibility of moving a constant
+from one to the other\cmmnt{, because two absolutely continuous
+functions whose
+derivatives are equal almost everywhere must differ by a constant
+(225D)}.
+
+\header{226Cc}{\bf (c)} Putting\cmmnt{ all} these together:  if
+$F:[a,b]\to\Bbb R$ is any
+non-decreasing function, it is expressible as $F_p+F_{ac}+F_{cs}$, where
+$F_p$ is a saltus function, $F_{ac}$ is absolutely continuous, and
+$F_{cs}$ is continuous and differentiable, with zero derivative, almost
+everywhere;  all three components are non-decreasing;  and the
+expression is unique if we say that $F_{ac}(a)=F(a)$ and
+$F_p(a)=F_{cs}(a)=0$.
+
+The Cantor function $f:[0,1]\to[0,1]$\cmmnt{ (134H)} is continuous and
+$f'=0$ a.e.\cmmnt{ (134Hb)}, so $f_p=f_{ac}=0$ and $f=f_{cs}$.
+Setting $g(x)=\bover12(x+f(x))$ for $x\in[0,1]$\cmmnt{, as in 134I},
+we get $g_p(x)=0$, $g_{ac}(x)={x\over 2}$ and
+$g_{cs}(x)={1\over 2}f(x)$.
+
+\header{226Cd}{\bf (d)} Now suppose that $F:[a,b]\to\Bbb R$ is of
+bounded variation.
+Then it is expressible as a difference $G-H$ of
+non-decreasing functions\cmmnt{ (224D)}.   So writing $F_p=G_p-H_p$,
+etc., we can express $F$ as a sum $F_p+F_{cs}+F_{ac}$, where $F_p$ is a
+saltus function, $F_{ac}$ is absolutely continuous, $F_{cs}$ is
+continuous, $F_{cs}'=0$ a.e., $F_{ac}(a)=F(a)$ and $F_{cs}(a)=F_{p}(a)=0$.
+Under these conditions the expression is unique\dvro{.}{, because (for
+instance) $F_p(t^+)-F_p(t)=F(t^+)-F(t)$ for $t\in\coint{a,b}$, while
+$F_{ac}'\eae(F-F_p)'\eae F'$.}
+
+This is a {\bf Lebesgue decomposition} of the function $F$.
+\cmmnt{(I have to say `a' Lebesgue decomposition because of course
+the assignments $F_{ac}(a)=F(a)$, $F_{p}(a)=F_{cs}(a)=0$ are arbitrary.)}   I will call $F_p$ the {\bf saltus part} of $F$.
+
+\leader{226D}{Complex functions} \cmmnt{The modifications needed to
+deal with complex functions are elementary.
+
+\medskip
+
+}{\bf (a)} If $I$ is any set and
+$\langle a_j\rangle_{j\in I}$ is a family of complex numbers, then the
+following are equiveridical:
+
+\inset{(i) $\sum_{j\in I}|a_j|<\infty$;}
+
+\inset{(ii) there is an $s\in\Bbb C$ such that for every $\epsilon>0$
+there is a finite $K\subseteq I$ such that
+$|s-\sum_{j\in J}a_j|\le\epsilon$ whenever $J$ is finite and
+$K\subseteq J\subseteq I$.}
+
+\noindent In this case
+
+\Centerline{$s=\sum_{j\in I}\Real(a_j)+i\sum_{j\in
+I}\Imag(a_j)=\int_Ia_j\mu(dj)$,}
+
+\noindent where $\mu$ is counting measure on $I$, and we write
+$s=\sum_{j\in I}a_j$.
+
+\header{226Db}{\bf (b)} If $a<b$ in $\Bbb R$, a complex {\bf saltus
+function} on $[a,b]$ is a function $F:[a,b]\to\Bbb C$ expressible in the
+form
+
+\Centerline{$F(x)=\sum_{t\in\coint{a,x}}u_t+\sum_{t\in[a,x]}v_t$}
+
+\noindent for $x\in [a,b]$, where $\langle
+u_t\rangle_{t\in\coint{a,b}}$,
+$\langle v_t\rangle_{t\in[a,b]}$ are complex-valued families such that
+$\sum_{t\in\coint{a,b}}|u_t|$ and
+$\sum_{t\in[a,b]}|v_t|$ are finite\cmmnt{;  that is, if the real and
+imaginary parts of $F$ are saltus functions}.   In this case $F$ is
+continuous except at countably many points and differentiable, with zero
+derivative, almost everywhere in $[a,b]$, and
+
+\Centerline{$u_x=\lim_{t\downarrow x}F(t)-F(x)$ for every
+$x\in\coint{a,b}$,}
+
+\Centerline{$v_x=\lim_{t\uparrow x}F(x)-F(t)$ for every
+$x\in\ocint{a,b}$\dvro{.}{}}
+
+\noindent\cmmnt{(apply the results of 226B to the real and imaginary
+parts of $F$).   }$F$ is of bounded variation, and its variation is
+
+\Centerline{$\Var_{[a,b]}(F)
+=\sum_{t\in\coint{a,b}}|u_t|+\sum_{t\in\ocint{a,b}}|v_t|$\dvro{.}{}}
+
+\cmmnt{\noindent (repeat the arguments of 226Bc-d).}
+
+\header{226Dc}{\bf (c)} If $F:[a,b]\to\Bbb C$ is a function of bounded
+variation, where $a<b$ in $\Bbb R$, it is uniquely expressible as
+$F=F_p+F_{cs}+F_{ac}$, where $F_p$ is a saltus function, $F_{ac}$ is
+absolutely continuous, $F_{cs}$ is continuous and has zero derivative
+almost everywhere, and $F_{ac}(a)=F(a)$, $F_p(a)=F_{cs}(a)=0$.
+\cmmnt{(Apply
+226C to the real and imaginary parts of $F$.)}
+
+\leader{226E}{}\cmmnt{ As an elementary exercise in the language of
+226A, I interpolate a version of a theorem of B.Levi
+%Levi 1906
+which is sometimes useful.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a measure space, $I$
+a {\it countable} set, and $\familyiI{f_i}$ a family of $\mu$-integrable
+real- or complex-valued functions such that $\sum_{i\in I}\int|f_i|d\mu$
+is finite.   Then
+$f(x)=\sum_{i\in I}f_i(x)$ is defined almost everywhere and
+$\int fd\mu=\sum_{i\in I}\int f_id\mu$.
+
+\proof{ If $I$ is finite this is elementary.   Otherwise, since there
+must be a bijection between $I$ and $\Bbb N$, we may take it that
+$I=\Bbb N$.   Setting $g_n=\sum_{i=0}^n|f_i|$ for each $n$, we have a
+non-decreasing sequence $\sequencen{g_n}$ of integrable functions such
+that $\int g_n\le\sum_{i\in\Bbb N}\int|f_i|$ for every $n$, so that
+$g=\sup_{n\in\Bbb N}g_n$ is integrable, by B.Levi's theorem as stated in
+123A.   In particular, $g$ is finite almost everywhere.   Now if
+$x\in X$ is such that $g(x)$ is defined and finite,
+$\sum_{i\in J}|f_i(x)|\le g(x)$ for every finite $J\subseteq\Bbb N$, so
+$\sum_{i\in\Bbb N}|f_i(x)|$ and $\sum_{i\in\Bbb N}f_i(x)$ are defined.
+In this case, of course,
+$\sum_{i\in\Bbb N}f_i(x)=\lim_{n\to\infty}\sum_{i=0}^nf_i(x)$.   But
+$|\sum_{i=0}^nf_i|\leae g$ for each $n$, so Lebesgue's Dominated
+Convergence Theorem tells us that
+
+\Centerline{$\int\sum_{i\in\Bbb N}f_i
+=\lim_{n\to\infty}\int\sum_{i=0}^nf_i
+=\lim_{n\to\infty}\sum_{i=0}^n\int f_i
+=\sum_{i\in\Bbb N}\int f_i$.}
+}%end of proof of 226E
+
+\exercises{
+\leader{226X}{Basic exercises $\pmb{>}$(a)}
+%\sqheader 226Xa
+Suppose that $I$ and $J$ are sets and that
+$\familyiI{a_i}$ is a summable family of real numbers.   (i) Show that
+if $f:J\to I$ is injective then $\family{j}{J}{a_{f(j)}}$ is summable.
+(ii) Show that if $g:I\to J$ is any function, then
+$\sum_{j\in J}\sum_{i\in g^{-1}[\{j\}]}a_i$ is defined and equal to
+$\sum_{i\in I}a_i$.
+%226A
+
+\sqheader 226Xb A {\bf step-function} on an
+interval $[a,b]$ is a function $F$
+such that, for suitable $t_0,\ldots,t_n$ with $a=t_0\le\ldots\le t_n=b$,
+$F$ is constant on each interval $\ooint{t_{i-1},t_i}$.   Show that
+$F:[a,b]\to\Bbb R$ is a saltus function iff for every $\epsilon>0$ there
+is a step-function $G:[a,b]\to\Bbb R$ such that
+$\Var_{[a,b]}(F-G)\le\epsilon$.
+%226B
+
+\spheader 226Xc Let $F$, $G$ be real-valued functions of bounded
+variation defined on an interval $[a,b]\subseteq\Bbb R$.   Show that, in
+the language of 226C,
+
+\Centerline{$(F+G)_p=F_p+G_p$,\quad $(F+G)_c=F_c+G_c$,}
+
+\Centerline{$(F+G)_{cs}=F_{cs}+G_{cs}$,
+\quad$(F+G)_{ac}=F_{ac}+G_{ac}$.}
+%226C
+
+\sqheader 226Xd Let $F$ be a real-valued function of bounded
+variation on an interval $[a,b]\subseteq\Bbb R$.   Show that, in the
+language of 226C,
+
+\Centerline{$\Var_{[a,b]}(F)
+=\Var_{[a,b]}(F_p)+\Var_{[a,b]}(F_c)
+=\Var_{[a,b]}(F_p)+\Var_{[a,b]}(F_{cs})+\Var_{[a,b]}(F_{ac})$.}
+%226C
+
+\spheader 226Xe Let $F$ be a real-valued function of bounded
+variation on an interval $[a,b]\subseteq\Bbb R$.   Show that $F$ is
+absolutely continuous iff $\Var_{[a,b]}(F)=\int_a^b|F'|$.
+%226Xd
+
+\spheader 226Xf Consider the function $g$ of 134I/226Cc.   Show
+that $g^{-1}:[0,1]\to[0,1]$ is differentiable almost everywhere in
+$[0,1]$, and find $\mu\{x:(g^{-1})'(x)\le a\}$ for each $a\in\Bbb R$.
+%226C
+
+\leader{226Y}{Further exercises (a)}
+%\spheader 226Ya
+Show that a set $I$ is countable iff there is a summable
+family $\familyiI{a_i}$ of non-zero real numbers.
+%226A
+
+\spheader 226Yb
+Explain modifications which might be appropriate in the description
+of the Lebesgue decomposition of a function of bounded variation
+if we wish to consider functions on open or
+half-open intervals, including unbounded intervals.
+%226C
+
+\spheader 226Yc Suppose that $F:[a,b]\to\Bbb R$ is a function of bounded
+variation, and set $h(y)=\#(F^{-1}[\{y\}])$ for $y\in\Bbb R$.   Show
+that $\int h=\Var_{[a,b]}(F_c)$, where $F_c$ is the `continuous part'
+of $F$ as defined in 226Ca/226Cd.
+%226C
+
+\spheader 226Yd Suppose that $a<b$ in $\Bbb R$, and that
+$F:[a,b]\to\Bbb R$ is a function of bounded variation;  let $F_p$ be its saltus part.   Show that
+$|F(b)-F(a)|\le\mu F[\,[a,b]\,]+\Var_{[a,b]}F_p$, where $\mu$ is Lebesgue measure on $\Bbb R$.
+%226C
+}%end of exercises
+
+
+\endnotes{
+\Notesheader{226} In 232I and 232Yb below I will revisit these ideas,
+linking them to a decomposition of the Lebesgue-Stieltjes measure
+corresponding to a non-decreasing real function, and thence to more
+general measures.   All this work is peripheral to the main concerns of
+this volume, but I think it is illuminating, and certainly it is part of
+the basic knowledge assumed of anyone working in real analysis.
+}%end of notes
+
+\frnewpage
+

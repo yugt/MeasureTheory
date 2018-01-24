@@ -1,0 +1,186 @@
+\frfilename{mt2a6.tex} 
+\versiondate{10.11.14} 
+\copyrightdate{1994} 
+ 
+\def\chaptername{Appendix} 
+\def\sectionname{Factorization of matrices} 
+ 
+\newsection{2A6} 
+ 
+I spend a couple of pages on the linear algebra of $\BbbR^r$ required for 
+Chapter 26.  I give 
+only one proof, because this is material which can be found in any textbook 
+of elementary linear algebra;  but I think it may be helpful to run 
+through the basic ideas in the language which I use for this treatise. 
+ 
+\leader{2A6A}{Determinants}\cmmnt{ We need to know the 
+following things about determinants.} 
+ 
+\inset{(i) Every $r\times r$ real matrix $T$ has a real determinant 
+$\det T$.} 
+ 
+\inset{(ii) For any $r\times r$ matrices $S$ and $T$,  
+$\det ST=\det S\det T$.} 
+ 
+\inset{(iii) If $T$ is a diagonal matrix, its determinant is just the 
+product of its diagonal entries.} 
+ 
+\inset{(iv) For any $r\times r$ matrix $T$, $\det T\trs=\det T$,  
+where $T\trs$ is the transpose of $T$.} 
+ 
+\inset{(v) $\det T$ is a continuous function of the coefficients of 
+$T$.} 
+ 
+\cmmnt{\noindent There are so many routes through this topic that I avoid
+even a definition of `determinant';  I invite you to check your memory, or 
+your favourite text, to confirm that you are indeed happy with the facts 
+above. 
+}%end of comment 
+ 
+\leader{2A6B}{Orthonormal families} For $x=(\xi_1,\ldots,\xi_r)$, 
+$y=(\eta_1,\ldots,\eta_r)\in\BbbR^r$, write $x\dotproduct 
+y=\sum_{i=1}^r\xi_i\eta_i$; \cmmnt{of course} $\|x\|$\cmmnt{, as 
+defined in 1A2A,} is $\sqrt{x\dotproduct x}$. 
+\cmmnt{Recall that} $x_1,\ldots,x_k$ are {\bf orthonormal} if 
+$x_i\dotproduct 
+x_j=0$ for $i\ne j$, $1$ for $i=j$.   \cmmnt{The results we need here 
+are:} 
+ 
+\inset{(i) If $x_1,\ldots,x_k$ are orthonormal vectors in $\BbbR^r$, 
+where $k<r$, then there are vectors $x_{k+1},\ldots,x_r$ in $\BbbR^r$ such 
+that $x_1,\ldots,x_r$ are orthonormal.} 
+ 
+\inset{(ii) An $r\times r$ matrix $P$ is {\bf orthogonal} if $P\trs P$ is 
+the identity matrix;  equivalently, if the columns of $P$ are 
+orthonormal.} 
+ 
+\inset{(iii) For an orthogonal matrix $P$, $\det P$ must be 
+$\pm 1$\cmmnt{ (put (ii)-(iv) of 2A6A together)}.} 
+\inset{(iv) If $P$ is orthogonal, then $Px\dotproduct 
+Py\cmmnt{\mskip5mu =P\trs Px\dotproduct 
+y}=x\dotproduct y$ for all $x$, $y\in\BbbR^r$.} 
+ 
+\inset{(v) If $P$ is orthogonal, so is $P\trs=P^{-1}$.} 
+ 
+\inset{(vi) If $P$ and $Q$ are orthogonal, so is $PQ$.} 
+ 
+\leader{2A6C}{}\cmmnt{ I now give a proposition which is not always 
+included in 
+elementary presentations.   Of course there are many approaches to this; 
+I offer a direct one. 
+ 
+\medskip 
+ 
+\noindent}{\bf Proposition} Let $T$ be any real $r\times r$ matrix. 
+Then $T$ is expressible as $PDQ$ where $P$ and $Q$ are orthogonal 
+matrices and $D$ is a diagonal matrix with non-negative coefficients. 
+ 
+\proof{ I induce on $r$. 
+ 
+\medskip 
+ 
+{\bf (a)} If $r=1$, then $T=(\tau_{11})$.   Set $D=(|\tau_{11}|)$, 
+$P=(1)$ and $Q=(1)$ if $\tau_{11}\ge 0$, $(-1)$ otherwise. 
+ 
+\medskip 
+ 
+{\bf (b)(i)} For the inductive step to $r+1\ge 2$, consider the unit 
+ball $B=\{x:x\in\BbbR^{r+1},\,\|x\|\le 1\}$.   This is a closed bounded 
+set in $\BbbR^{r+1}$, so is compact (2A2F).   The maps  
+$x\mapsto Tx:\BbbR^{r+1}\to\BbbR^{r+1}$ and  
+$x\mapsto\|x\|:\BbbR^{r+1}\to\Bbb R$ are continuous, so the function  
+$x\mapsto\|Tx\|:B\to\Bbb R$ is 
+bounded and attains its bounds (2A2G), and there is a $u\in B$ such 
+that $\|Tu\|\ge\|Tx\|$ for every $x\in B$.   Observe that $\|Tu\|$ must 
+be the norm $\|T\|$ of $T$ as defined in 262H.   Set 
+$\delta=\|T\|=\|Tu\|$.   If $\delta=0$, then $T$ must be the zero 
+matrix, and the result is trivial;  so let us suppose that $\delta>0$.    
+In this case $\|u\|$ must be exactly $1$, since otherwise we should have 
+$u=\|u\|u'$ where $\|u'\|=1$ and $\|Tu'\|>\|Tu\|$. 
+ 
+\medskip 
+ 
+\quad{\bf (ii)} If $x\in\BbbR^{r+1}$ and $x\dotproduct u=0$, then 
+$Tx\dotproduct Tu=0$.   \Prf\Quer\ If not, set  
+$\gamma=Tx\dotproduct Tu\ne 0$.   Consider $y=u+\eta\gamma x$ for small 
+$\eta>0$.   We have 
+ 
+\Centerline{$\|y\|^2=y\dotproduct y 
+=u\dotproduct u+2\eta\gamma u\dotproduct x+\eta^2\gamma^2 x\dotproduct x 
+=\|u\|^2+\eta^2\gamma^2\|x\|^2 
+=1+\eta^2\gamma^2\|x\|^2$,} 
+ 
+\noindent while 
+ 
+\Centerline{$\|Ty\|^2=Ty\dotproduct Ty 
+=Tu\dotproduct Tu+2\eta\gamma Tu\dotproduct Tx 
+  +\eta^2\gamma^2 Tx\dotproduct Tx 
+=\delta^2+2\eta\gamma^2+\eta^2\gamma^2\|Tx\|^2$.} 
+ 
+\noindent But also 
+$\|Ty\|^2\le\delta^2\|y\|^2$ (2A4Fb), so 
+ 
+\Centerline{$\delta^2+2\eta\gamma^2+\eta^2\gamma^2\|Tx\|^2 
+\le\delta^2(1+\eta^2\gamma^2\|x\|^2)$} 
+ 
+\noindent and 
+ 
+\Centerline{$2\eta\gamma^2 
+\le\delta^2\eta^2\gamma^2\|x\|^2-\eta^2\gamma^2\|Tx\|^2$,} 
+ 
+\noindent that is, 
+ 
+\Centerline{$2\le\eta(\delta^2\|x\|^2-\|Tx\|^2)$.} 
+ 
+\noindent But this surely cannot be true for all $\eta>0$, so we have a 
+contradiction.\ \Bang\Qed 
+ 
+\medskip 
+ 
+\quad{\bf (iii)} Set $v=\delta^{-1}Tu$, so that $\|v\|=1$.   Let 
+$u_1,\ldots,u_{r+1}$ be orthonormal vectors such that $u_{r+1}=u$, and 
+let $Q_0$ be the orthogonal $(r+1)\times(r+1)$ matrix with columns 
+$u_1,\ldots,u_{r+1}$;  then, writing $e_1,\ldots,e_{r+1}$ for the 
+standard orthonormal basis of $\BbbR^{r+1}$, we have $Q_0e_i=u_i$ for 
+each $i$, and $Q_0e_{r+1}=u$.   Similarly, there is an orthogonal matrix 
+$P_0$ such that $P_0e_{r+1}=v$. 
+ 
+Set $T_1=P_0^{-1}TQ_0$.   Then 
+ 
+\Centerline{$T_1e_{r+1}=P_0^{-1}Tu=\delta P_0^{-1}v=\delta e_{r+1}$,} 
+ 
+\noindent while if $x\dotproduct e_{r+1}=0$ then  
+$Q_0x\dotproduct u=0$ (2A6B(iv)), so that 
+ 
+\Centerline{$T_1x\dotproduct e_{r+1}=P_0T_1x\dotproduct P_0e_{r+1} 
+=TQ_0x\dotproduct v=0$,} 
+ 
+\noindent by (ii).   This means that $T_1$ must be of the form 
+ 
+$$\Matrix{S&0\\0&\delta},$$ 
+ 
+\noindent where $S$ is an $r\times r$ matrix. 
+ 
+\medskip 
+ 
+\quad{\bf (iv)} By the inductive hypothesis, $S$ is expressible as 
+$\tilde P\tilde D\tilde Q$, where $\tilde P$ and $\tilde Q$ are 
+orthogonal $r\times r$ matrices and $\tilde D$ is a diagonal $r\times r$ 
+matrix with non-negative coefficients.   Set 
+ 
+$$P_1=\Matrix{\tilde P&0\\0&1},\quad Q_1=\Matrix{\tilde Q&0\\0&1},\quad 
+D=\Matrix{\tilde D&0\\0&\delta}.$$ 
+ 
+\noindent Then $P_1$ and $Q_1$ are orthogonal and $D$ is diagonal, with 
+non-negative coefficients, and $P_1DQ_1=T_1$.   Now set 
+ 
+\Centerline{$P=P_0P_1$,\quad $Q=Q_1Q_0^{-1}$,} 
+\noindent so that $P$ and $Q$ are orthogonal (2A6B(v)-(vi)) and 
+ 
+\Centerline{$PDQ=P_0P_1DQ_1Q_0^{-1}=P_0T_1Q_0^{-1}=T$.} 
+ 
+\noindent Thus the induction proceeds. 
+}%end of proof of 2A6C 
+ 
+\frnewpage 
+ 

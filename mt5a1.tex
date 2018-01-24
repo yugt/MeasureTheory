@@ -1,0 +1,1168 @@
+\frfilename{mt5a1.tex}
+\versiondate{23.2.11}
+\copyrightdate{2006}
+
+\def\chaptername{Appendix}
+\def\sectionname{Set theory}
+
+\long\def\doubleinset#1{\inset{\inset{\parindent=-20pt #1}}}
+\def\Glsquare{{Gl}$\Square$}
+\def\Sing{\mathop{\text{Sing}}}
+\def\VVdash{\mskip5mu\vrule height 7.5pt depth 2.5pt width 0.5pt
+  \mskip2.5mu\vrule height 7.5pt depth 2.5pt width 0.5pt
+  \vrule height 2.75pt depth -2.25pt width 4pt\mskip2mu}
+\def\VVdP{\VVdash_{\Bbb P}}
+
+\def\JechM{{\smc Jech 03}} %........
+\def\Jech{{\smc Jech 78}} %.....
+%{\smc Devlin 84}} %..... serious problems according to ARDM
+%{\smc Kanamori 03} %....
+\def\Kunen{{\smc Kunen 80}} %...
+%\def\DS{{\smc Drake \& Singh 96}} %...
+
+\newsection{5A1}
+
+As usual, I begin with set theory, continuing from \S\S2A1 and 4A1.
+I start with definitions and
+elementary remarks filling some minor gaps in the deliberately sketchy
+accounts in the earlier volumes (5A1A).   I give a relatively solid
+paragraph on cardinal arithmetic (5A1E), including an account of
+cofinalities of ideals $[\kappa]^{\le\lambda}$.
+5A1G-5A1J %5{}A1G 5A1H 5A1I 5A1J
+are devoted to infinitary combinatorics, with the Erd\H{o}s-Rado theorem
+and Hajnal's Free Set Theorem.   5A1K-5A1O %5{}A1K 5A1L 5A1M 5A1N 5A1O
+deal with the existence of `transversals' of various kinds in spaces of
+functions, that is, large sets of functions which are well separated on
+some combinatorial criterion.
+
+\leader{5A1A}{Order types (a)} If $X$ is a well-ordered set, its
+{\bf order type}
+$\otp X$ is the ordinal order-isomorphic to $X$\cmmnt{ (2A1Dg)}.
+
+If $S$ is a set of ordinals, an ordinal-valued function $f$ with
+domain $S$ is {\bf regressive} if $f(\xi)<\xi$ for every
+$\xi\in S$\cmmnt{ (cf.\ 4A1Cc)}.
+
+\spheader 5A1Ab The non-stationary ideal on a
+cardinal $\kappa$ of uncountable cofinality
+is $(\cf\kappa)$-additive\prooflet{, because the intersection of fewer than
+$\cf\kappa$ closed cofinal sets is a closed cofinal set (4A1Bd)}.
+
+\spheader 5A1Ac If $\kappa$ is a cardinal,
+$\lambda<\cf\kappa$ is an infinite regular cardinal and $C\subseteq\kappa$
+is a closed cofinal set, then
+$S=\{\xi:\xi<\kappa$, $\cf(\xi\cap C)=\lambda\}$ is stationary in $\kappa$.
+\prooflet{\Prf\
+If $C'\subseteq\kappa$ is a closed cofinal set, let
+$\ofamily{\xi}{\otp(C\cap C')}{\gamma_{\xi}}$ be the increasing
+enumeration of $C\cap C'$.
+Then $\otp(C\cap C')\ge\cf\kappa>\lambda$, so $\gamma_{\lambda}$ is
+defined and belongs to $S\cap C'$.\ \Qed}
+
+\spheader 5A1Ad If $\alpha$ is an ordinal, there is a closed cofinal set
+$C\subseteq\alpha$ such that $\otp C=\cf\alpha$.   \prooflet{\Prf\ Set
+$\kappa=\cf\alpha$ and let $\ofamily{\xi}{\kappa}{\alpha_{\xi}}$ enumerate
+a cofinal subset of $\alpha$.   Set
+$\gamma_{\xi}=\sup_{\eta<\xi}\alpha_{\eta}$ for $\xi<\kappa$;  then
+$C=\{\gamma_{\xi}:\xi<\kappa\}$ is a closed cofinal set in $\alpha$.
+Let $\ofamily{\xi}{\otp C}{\gamma'_{\xi}}$ be the increasing enumeration of
+$C$;  then an induction on $\xi$ shows that $\gamma_{\xi}\le\gamma'_{\xi}$
+for $\xi<\min(\kappa,\otp C)$, so that $\otp C\le\kappa$.   As $C$ is
+cofinal with $\alpha$, $\#(C)\ge\kappa$ so $\otp C\ge\kappa$.\ \Qed}
+%5{}A2B
+
+\spheader 5A1Ae If $\alpha$ is an ordinal and $C\subseteq\alpha$ has
+closure $\overline{C}$ for the order topology of $\alpha$, then
+$\#(\overline{C})=\#(C)$.   \prooflet{\Prf\ If $C$ is finite this is
+trivial.   Otherwise, for any $\beta\in\overline{C}\setminus\{\sup C\}$
+set $f(\beta)=\min(C\setminus\beta)$.  If $\beta$,
+$\beta'\in\overline{C}$
+and $\beta<\beta'<\sup C$ there must be a $\gamma\in C$ such that
+$\beta\le\gamma<\beta'$ and $f(\beta)\le\gamma<f(\beta')$ (4A2S(a-ii));
+thus $f$ is injective.   So
+
+\Centerline{$\#(\overline{C})
+=\#(\overline{C}\setminus\{\sup C\})\le\#(C)\le\#(\overline{C})$.  \Qed}}
+
+\vleader{72pt}{5A1B}{Ordinal arithmetic (a)}
+For ordinals $\xi$, $\eta$ their
+{\bf ordinal sum} $\xi+\eta$ is defined inductively by saying that
+
+\inset{$\xi+0=\xi$,
+
+$\xi+(\eta+1)=(\xi+\eta)+1$,
+
+$\xi+\eta=\sup_{\zeta<\eta}\xi+\zeta$ for non-zero limit ordinals
+$\eta$\dvro{.}{}}
+
+\cmmnt{\noindent(\Kunen, I.7.18;  \Jech, p.\ 18;
+\JechM, 2.18).}
+
+\spheader 5A1Bb For ordinals
+$\xi$, $\eta$ their {\bf ordinal product} $\xi\cdot\eta$ is defined
+inductively by saying
+
+\inset{$\xi\cdot 0=0$,
+
+$\xi\cdot(\eta+1)$ is the ordinal sum $\xi\cdot\eta+\xi$,
+
+$\xi\cdot\eta=\sup_{\zeta<\eta}\xi\cdot\zeta$ for non-zero limit ordinals
+$\eta$\dvro{.}{}}
+
+\noindent\cmmnt{(\Kunen, I.7.20;  \Jech, p.\ 19;
+\JechM, 2.19). }\cmmnt{Note that }$0\cdot\eta=0$ and
+$1\cdot\eta=\eta$ for every
+$\eta$, and that $\sup_{\zeta\in A}\xi\cdot\zeta=\xi\cdot(\sup A)$ for
+every $\xi$ and every
+non-empty set $A$ of ordinals.   Ordinal multiplication is
+associative\cmmnt{ (\Kunen, I.7.20;  \JechM, 2.21)}.
+
+\spheader 5A1Bc For ordinals $\xi$, $\eta$ the {\bf ordinal power}
+$\xi^{\eta}$ is defined inductively by saying that
+
+\inset{$\xi^0=1$,
+
+$\xi^{\eta+1}$ is the ordinal product $\xi^{\eta}\cdot\xi$,
+
+$\xi^{\eta}=\sup_{\zeta<\eta}\xi^{\zeta}$ for non-zero limit ordinals
+$\eta$\dvro{.}{}}
+
+\noindent\cmmnt{(\Kunen, I.9.5;  \JechM, 2.20).
+{\bf Warning!}  If $\xi$ and $\eta$
+happen to be cardinals, this is quite different from the `cardinal power'
+of 5A1E below.
+
+}If $\xi$, $\eta$ are ordinals, $\eta\ne 0$ and $\eta$ is greater than or
+equal to the ordinal product $\xi\cdot\eta$, then $\eta$ is at least the
+ordinal power $\xi^{\omega}$.   \cmmnt{\Prf\ Note first that as
+multiplication is
+associative, we can induce on $n$ to show that $\xi\cdot\xi^n=\xi^{n+1}$
+for every $n$.   Now we are supposing that
+$\eta\ge 1=\xi^0$.   If $n\in\Bbb N$ and $\eta\ge\xi^n$, then
+
+\Centerline{$\eta\ge\xi\cdot\eta\ge\xi\cdot\xi^n=\xi^{n+1}$.}
+
+\noindent So $\eta\ge\xi^n$ for every $n$ and $\eta\ge\xi^{\omega}$.\ \Qed}
+
+\leader{5A1C}{Well-founded sets (a)} A partially ordered set $P$ is {\bf
+well-founded} if every non-empty $A\subseteq P$ has a minimal
+element\cmmnt{, that
+is, a $p\in A$ such that $q\not<p$ for every $q\in A$}.
+
+\spheader 5A1Cb If $P$ is a well-founded partially ordered set,
+we have a rank function $r:P\to\On$ defined by saying that
+
+\Centerline{$r(p)=\sup\{r(q)+1:q<p\}$}
+
+\noindent for every $p\in P$\cmmnt{ (\Kunen, III.5.7;
+\Jech, p.\ 21;  \JechM, 2.27)}.
+
+\spheader 5A1Cc A partially ordered set $P$ is well-founded iff there is no
+sequence $\sequencen{p_n}$ in $P$ such that $p_{n+1}<p_n$ for every
+$n\in\Bbb N$.   \prooflet{(If $A\subseteq P$ is non-empty and has no
+minimal element, we can choose inductively a strictly decreasing sequence
+in $A$.)}
+
+\leader{5A1D}{Trees }\cmmnt{In \S421 I introduced trees of sequences.
+For this volume a more abstract approach is useful.
+
+\medskip
+
+}{\bf (a)} A {\bf tree} is a partially
+ordered set $T$ such that $\{s:s\in T$, $s\le t\}$ is well-ordered for
+every $t\in T$\cmmnt{;  alternatively, a well-founded partially ordered
+set such that $\{s:s\in T$, $s\le t\}$ is totally ordered for
+every $t\in T$}.   In particular, $T$ has
+a rank function $r:T\to\On$ defined by saying that
+
+\Centerline{$r(t)=\otp\{s:s<t\}=\inf\{\xi:r(s)<\xi$ whenever $s<t\}$}
+
+\noindent for every $t\in T$\cmmnt{ (5A1C)}.
+\cmmnt{ (Try to avoid using this terminology
+in the same sentence as that of 421Ne and 562A.)}
+
+The {\bf levels} of $T$ are now the sets $\{t:r(t)=\xi\}$ for $\xi\in\On$.
+The {\bf height} of $T$ is the least
+ordinal $\zeta$ such that $r(t)<\zeta$ for
+every $t\in T$.   A {\bf branch} of $T$ is a maximal totally ordered
+subset.   A tree is {\bf well-pruned} if it has at most one minimal element
+and whenever $s$, $t\in T$ and $r(s)<r(t)$, there is an $s'\ge s$ such that
+$r(s')=r(t)$.
+If $T$ is a tree, a {\bf subtree} of $T$ is a set
+$T'\subseteq T$ such that $s\in T'$ whenever $s\le t\in T'$;  in this
+case, the rank function of $T'$ is the restriction to $T'$ of the rank
+function of $T$.
+
+\spheader 5A1Db{\bf (i)} Let $T$ be a tree in which every level is
+finite.   Then
+$T$ has a branch meeting every level.   \prooflet{\Prf\ If $T$ is empty,
+this is trivial.   Otherwise, let $r$ be the rank function of $T$,
+and $\zeta>0$ the height of
+$T$;  let $\Cal F$ an ultrafilter on $T$ containing $\{t:r(t)\ge\xi\}$ for
+every $\xi<\zeta$.   Set $C=\{t:\coint{t,\infty}\in\Cal F\}$.
+Any two elements of $C$ are upwards-compatible, so $C$ is totally ordered,
+and $C$ meets every level of $T$;  so $C$ is a branch of the kind we seek.\
+\Qed}
+
+\medskip
+
+\quad{\bf (ii)} Let $(T,\preccurlyeq')$ be a tree of height $\omega_1$ in
+which every level is countable.    Then there is an ordering
+$\preccurlyeq$ of $\omega_1$, included in the usual ordering $\le$ of
+$\omega_1$, such that $(T,\preccurlyeq')$ is
+isomorphic to $(\omega_1,\preccurlyeq)$.   \prooflet{\Prf\ Let
+$\ofamily{\xi}{\omega_1}{T_{\xi}}$ be the levels of $T$.   Let
+$\le'_{\xi}$ be a well-ordering of $T_{\xi}$ for each
+$\xi<\omega_1$, and define $\le'$ on $T$ by saying that
+$s\le't$ if either $r(s)<r(t)$ or $r(s)=r(t)=\xi$ and
+$s\le'_{\xi}t$;  then $\le'$ is a well-ordering of $T$
+of order type $\omega_1$.   Now the order-isomorphism between
+$(T,\le')$ and $(\omega_1,\le)$ copies $\preccurlyeq'$ onto a tree ordering
+of $\omega_1$, isomorphic to $\preccurlyeq'$, and included in the usual
+ordering.\ \Qed}
+
+\spheader 5A1Dc An {\bf Aronszajn tree} is a tree $T$ of height $\omega_1$
+in which every branch and every level is countable.
+An Aronszajn tree $T$ is {\bf special} if it is expressible as
+$\bigcup_{n\in\Bbb N}A_n$ where no two elements of any $A_n$ are
+comparable\cmmnt{, that is, every $A_n$ is an up-antichain}.
+
+\spheader 5A1Dd(i) A {\bf Souslin tree} is a tree $T$ of height $\omega_1$
+in which every branch and every up-antichain is countable.
+
+\quad(ii) Every Souslin tree is a non-special Aronszajn tree.
+
+\quad(iii) If $T$ is a Souslin tree,
+it has a subtree which is a well-pruned
+Souslin tree.   \prooflet{(\Kunen, II.5.11;  \Jech,
+p.\ 218;  \JechM, 9.13.)}
+
+\quad(iv) {\bf Souslin's hypothesis} is the assertion
+
+\Centerline{(SH)\quad There are no Souslin trees.}
+
+\leader{5A1E}{Cardinal arithmetic (a)(i)} An infinite cardinal which is
+not regular\cmmnt{ (4A1Aa)} is {\bf singular}.
+A cardinal $\kappa$ is a {\bf successor cardinal} if it is of the form
+$\lambda^+$\cmmnt{ (2A1Fc)};  otherwise it is a {\bf limit cardinal}.
+$\kappa$ is a
+{\bf strong limit cardinal} if it is uncountable and $2^{\lambda}<\kappa$
+for every $\lambda<\kappa$.   It 
+is {\bf weakly inaccessible} if it is a regular uncountable limit
+cardinal;  it is {\bf strongly inaccessible} if moreover it is a strong
+limit cardinal.
+
+\medskip
+
+\quad{\bf (ii)} If $\kappa$ is a cardinal,
+define $\kappa^{(+\xi)}$, for ordinals $\xi$, by setting
+
+\Centerline{$\kappa^{(+0)}=\kappa$,
+\quad$\kappa^{(+\xi)}=\sup_{\eta<\xi}(\kappa^{(+\eta)})^+$ if $\xi>0$,}
+
+\noindent that is, $\kappa^{(+\xi)}=\omega_{\zeta+\xi}$ if
+$\kappa=\omega_{\zeta}$.
+
+\medskip
+
+\spheader 5A1Eb{\bf (i)} If $\familyiI{\kappa_i}$ is a
+family of cardinals, its {\bf cardinal sum} is
+$\#(\{(i,\xi):i\in I$, $\xi<\kappa_i\})$, which is at most
+$\max(\omega,\#(I),\sup_{i\in I}\kappa_i)$.
+
+\medskip
+
+\quad{\bf (ii)} For cardinals $\kappa$ and $\lambda$,
+the {\bf cardinal product} $\kappa\cdot\lambda$ is
+$\#(\kappa\times\lambda)\le\max(\omega,\kappa,\lambda)$.
+%5{}12I
+
+\medskip
+
+\quad{\bf (iii)} If $\kappa$ and
+$\lambda$ are cardinals there are two natural interpretations
+of the formula $\kappa^{\lambda}$:  (i) the set of functions from $\lambda$
+to $\kappa$ (ii) the cardinal of this set.   In this volume the latter will
+be the usual one, but I will try to signal this by using the phrase {\bf
+cardinal power}.   \cmmnt{Of course}
+$2^{\lambda}$ is always the cardinal power;
+the corresponding set of functions will be denoted
+by $\{0,1\}^{\lambda}$.   \cmmnt{We could also think of $\kappa$ and
+$\lambda$ as ordinals, and look at the ordinal power $\kappa^{\lambda}$ as
+described in 5A1Bc;  but I think I do this exactly three times, 
+all at the end of \S539.}
+
+\spheader 5A1Ec{\bf (i)} The cardinal power
+$\kappa^{\lambda}$ is at most $2^{\max(\omega,\kappa,\lambda)}$ for any
+cardinals $\kappa$ and $\lambda$.
+\prooflet{(The
+set of functions from $\lambda$ to $\kappa$ is a subset
+of $\Cal P(\lambda\times\kappa)$.)}
+
+\medskip
+
+\quad{\bf (ii)} $\frak c^{\omega}\cmmnt{=\#(((\{0,1\})^{\Bbb N})^{\Bbb N})
+=\#(\{0,1\}^{\Bbb N\times\Bbb N})=\#(\{0,1\}^{\Bbb N})}=\frak c$.
+
+%5{}21N
+
+\spheader 5A1Ed $\cf 2^{\kappa}>\kappa$ for every infinite cardinal
+$\kappa$.  \prooflet{(\JechM, 5.11;  \Jech, p.\ 46;
+{\smc Erd\H{o}s Hajnal M\'at\'e \& Rado 84}, 6.9;  \Kunen, 10.41;  %\DS, 7.4.6(5);
+{\smc Just \& Weese 97}, 11.2.24.   Compare (e-v) below.)}
+%5{}22U
+
+\spheader 5A1Ee{\bf (i)} If $\kappa$ and $\lambda$ are infinite cardinals,
+then
+
+$$\eqalign{\cff[\kappa]^{\le\lambda}
+&=1\text{ if }\lambda\ge\kappa,\cr
+&\ge\kappa\text{ if }\lambda<\kappa.\cr}$$
+
+\medskip
+
+\quad{\bf (ii)} Let $\kappa$, $\lambda$ and $\theta$ be infinite
+cardinals such that $\theta\le\lambda\le\kappa$.   Then
+$\cff[\kappa]^{\le\theta}
+\le\max(\cff[\kappa]^{\le\lambda},\cff[\lambda]^{\le\theta})$.
+\prooflet{\Prf\ Let $\Cal A\subseteq[\kappa]^{\lambda}$ be a cofinal set
+of size $\cff[\kappa]^{\lambda}=\cff[\kappa]^{\le\lambda}$.   Then
+$[\kappa]^{\le\theta}=\bigcup_{A\in\Cal A}[A]^{\le\theta}$, so
+
+\Centerline{$\cff[\kappa]^{\le\theta}
+\le\max(\#(\Cal A),\sup_{A\in\Cal A}\cff[A]^{\le\theta})
+\le\max(\cff[\kappa]^{\le\lambda},\cff[\lambda]^{\le\theta})$.  \Qed}}
+
+\medskip
+
+\quad{\bf (iii)} Let $\kappa$ and $\lambda$ be infinite cardinals.   Then
+the cardinal power $\kappa^{\lambda}$ is
+$\max(2^{\lambda},\cff[\kappa]^{\le\lambda})$.   \prooflet{\Prf\
+$\kappa^{\lambda}\ge 2^{\lambda}$ because $\kappa\ge 2$;
+$\kappa^{\lambda}\ge\#([\kappa]^{\le\lambda})\ge\cff[\kappa]^{\le\lambda}$
+because $f\mapsto f[\lambda]$ is a surjection from the family
+$F$ of functions from $\lambda$ to $\kappa$ onto
+$[\kappa]^{\le\lambda}\setminus\{\emptyset\}$.   In the other direction, if
+$\kappa\le\lambda$ then $F\subseteq\Cal P(\lambda\times\kappa)$ so
+
+\Centerline{$\kappa^{\lambda}
+=\#(F)\le 2^{\lambda}=\max(2^{\lambda},\cff[\kappa]^{\le\lambda})$.}
+
+\noindent
+If $\lambda<\kappa$ let $\Cal A\subseteq[\kappa]^{\le\lambda}$ be a cofinal
+family with cardinal $\cff[\kappa]^{\le\lambda}$;  then
+$F=\bigcup_{A\in\Cal A}A^{\lambda}$ so
+
+\Centerline{$\#(F)\le\max(\#(\Cal A),\sup_{A\in\Cal A}\#(A^{\lambda}))
+=\max(\cff[\kappa]^{\le\lambda},2^{\lambda})$.  \Qed}}
+
+\medskip
+
+\quad{\bf (iv)} If $\lambda$ is an infinite cardinal and
+$\lambda\le\kappa<\lambda^{(+\omega)}$, then
+$\cff[\kappa]^{\le\omega}=\max(\kappa,\cff[\lambda]^{\le\omega})$.
+\prooflet{\Prf\
+Induce on $n$ to see that
+
+$$\eqalign{\cff([\lambda^{(+n+1)}]^{\le\omega})
+&=\cff(\bigcup_{\xi<\lambda^{(+n+1)}}[\xi]^{\le\omega})
+\le\max(\lambda^{(+n+1)},\sup_{\xi<\lambda^{(+n+1)}}\cff[\xi]^{\le\omega})
+  \cr
+&\le\max(\lambda^{(+n+1)},\lambda^{(+n)},\cff[\lambda]^{\le\omega})
+=\max(\lambda^{(+n+1)},\cff[\lambda]^{\le\omega}).
+\text{ \Qed}\cr}$$
+
+\noindent}Consequently the cardinal power $\kappa^{\omega}$ is
+$\cmmnt{\max(\frak c,\kappa,\cff[\lambda]^{\le\omega})
+=}\max(\kappa,\lambda^{\omega})$.
+
+In particular, if $\omega_1\le\kappa<\omega_{\omega}$
+then $\cff[\kappa]^{\le\omega}=\kappa$ and
+$\kappa^{\omega}=\max(\frak c,\kappa)$.   \cmmnt{Similarly,}
+$(\frak c^+)^{\omega}\cmmnt{\mskip5mu
+  =\max(\frak c^+,\frak c)}=\frak c^+$,
+$(\frak c^{++})^{\omega}=\frak c^{++}$.
+%5{}22T 5{}23J
+
+\medskip
+
+\quad{\bf (v)} If $\kappa$ is a singular infinite cardinal,
+then $\cf([\kappa]^{\le\cf\kappa})>\kappa$.
+\prooflet{\Prf\ Set $\lambda=\cf\kappa$, and
+let $\ofamily{\xi}{\lambda}{\kappa_{\xi}}$
+be a strictly increasing
+family of cardinals with supremum $\kappa$.   If
+$\ofamily{\eta}{\kappa}{A_{\eta}}$ is a family in $[\kappa]^{\le\lambda}$,
+then for each $\xi<\lambda$ take
+$\alpha_{\xi}\in\kappa\setminus\bigcup_{\eta<\kappa_{\xi}}A_{\eta}$;
+set $A=\{\alpha_{\xi}:\xi<\lambda\}\in[\kappa]^{\le\lambda}$;  then
+$A\not\subseteq A_{\eta}$ for every $\eta<\kappa$.\ \Qed}
+%5{}24P
+
+\spheader 5A1Ef If $\lambda$ is a regular uncountable
+cardinal, $\theta\ge 2$ is a cardinal and
+$\kappa=\sup_{\delta<\lambda}\theta^{\delta}$, where
+$\theta^{\delta}$ is the cardinal power, then
+
+\Centerline{$\#([\kappa]^{<\lambda})
+\cmmnt{\mskip5mu=\sup_{\delta<\lambda}\kappa^\delta}=\kappa$.}
+
+\prooflet{\noindent\Prf\ Of course
+$\kappa\le\#([\kappa]^{<\lambda})$ because $\lambda\ge 2$, while
+
+\Centerline{$\#([\kappa]^{<\lambda})
+=\#(\bigcup_{\delta<\lambda}[\kappa]^{\delta})
+\le\max(\lambda,\omega,\sup_{\delta<\lambda}\#([\kappa]^{\delta}))
+\le\sup_{\delta<\lambda}\kappa^{\delta}$}
+
+\noindent because $\lambda\le\sup_{\delta<\lambda}2^{\delta}\le\kappa$.
+If $\delta<\lambda$ then, because $\lambda$ is regular,
+
+\Centerline{$\kappa^{\delta}
+=(\sup_{\zeta<\lambda}\theta^{\zeta})^{\delta}
+=\sup_{\zeta<\lambda}(\theta^{\zeta})^{\delta}
+\le\sup_{\zeta<\lambda}\theta^{\max(\omega,\zeta,\delta)}
+\le\kappa$.  \Qed}}
+%5{}14D 5{}15H
+
+In particular, if $\kappa$ is strongly inaccessible then 
+$\kappa^{\delta}\le\kappa$ for every $\delta<\kappa$.   \prooflet{(Take
+$\lambda=\kappa$ and $\theta=2$.)}
+
+\spheader 5A1Eg Let $X$, $Y$ and $Z$ be sets, with $\#(X)\le 2^{\#(Z)}$
+and $0<\#(Y)\le\#(Z)$.
+Then there is a function $f:X\times Z^{\Bbb N}\to Y$ such that
+whenever $\sequencen{x_n}$ is a sequence of distinct elements
+of $X$ and $\sequencen{y_n}$ is a sequence in $Y$ there is
+a $z\in Z^{\Bbb N}$ such that $f(x_n,z)=y_n$ for every
+$n\in\Bbb N$.  \prooflet{\Prf\ We can suppose that $X\subseteq\Cal PZ$ and
+$Y\subseteq Z$;  moreover, the case of finite $X$ is trivial, so we can
+suppose that $Z$ is infinite.   For each countably infinite set
+$I\subseteq Z$, (c-ii) above tells us that there is a surjection
+$g_I:I^{\Bbb N}\to(\Cal PI)^{\Bbb N}\times I^{\Bbb N}$.
+Now let $f:X\times Z^{\Bbb N}\to Y$ be such that
+
+\inset{\noindent
+whenever $z\in Z^{\Bbb N}$ is such that $I=z[\Bbb N]$ is
+infinite, $g_I(z)=(\sequencen{a_n},\sequencen{y_n})$ and $x\in X$ is such
+that there is just one $n$ for which $a_n=x\cap I$, then $f(x,z)=y_n$.}
+
+\noindent In this case, if $\sequencen{x_n}$ is a sequence of distinct
+members of $X$ and $\sequencen{y_n}$ is a sequence in $Y$, let $I$ be a
+countably infinite subset of $Z$ containing every $y_n$ and such that
+$x_m\cap I\ne x_n\cap I$ for $m<n$;  let $z\in I^{\Bbb N}$ be such that
+$g_I(z)=(\sequencen{x_n\cap I},\sequencen{y_n})$;  we shall have
+$f(x_n,z)=y_n$ for every $n$.\ \Qed}
+%5{}25M
+
+\spheader 5A1Eh If $\kappa$ is an infinite cardinal, then
+$2^{\kappa}$ is at most the cardinal power
+$(\sup_{\lambda<\kappa}2^{\lambda})^{\cf\kappa}$.   \prooflet{\Prf\
+Let $\ofamily{\xi}{\cf\kappa}{\alpha_{\xi}}$ be a family in $\kappa$ with
+supremum $\kappa$.   Set $D=\bigcup_{\alpha<\kappa}\Cal P\alpha$;  then
+
+\Centerline{$\#(D)\le\max(\kappa,\sup_{\alpha<\kappa}2^{\#(\alpha)})
+=\sup_{\lambda<\kappa}2^{\lambda}$.}
+
+\noindent Let $F$ be the set of functions from $\cf\kappa$ to $D$;  we
+have an injection $A\mapsto\ofamily{\xi}{\cf\kappa}{A\cap\alpha_{\xi}}$
+from $\Cal P\kappa$ to $F$, so $2^{\kappa}\le\#(F)$.\ \Qed}
+
+If $\omega\le\lambda<\kappa$ and
+$2^{\theta}=2^{\lambda}$ for $\lambda\le\theta<\kappa$ but
+$2^{\kappa}>2^{\lambda}$ then $\kappa$ is regular.   \prooflet{\Prf\
+$2^{\kappa}\le(2^{\lambda})^{\cf\kappa}=2^{\max(\lambda,\cf\kappa)}$.\
+\Qed}
+
+\leader{5A1F}{Three fairly simple facts} (a) There is a family
+$\langle a_I\rangle_{I\subseteq\Bbb N}$ of infinite subsets of $\Bbb N$
+such that $a_I\cap a_J$ is finite whenever $I$, $J\subseteq\Bbb N$
+are distinct.
+
+(b) Let $X$ be a set,
+$f:[X]^{<\omega}\to[X]^{\le\omega}$ a function, and $Y\subseteq X$.
+Then there is a $Z\subseteq X$ such that $Y\subseteq Z$,
+$f(I)\subseteq Z$ for every $I\in[Z]^{<\omega}$, and
+$\#(Z)\le\max(\omega,\#(Y))$.
+
+(c) Let $\kappa\ge\frak c$ be a cardinal and
+$\Cal A$ a family of countable subsets of $\kappa$ such that $\#(\Cal A)$
+is less than the cardinal power $\kappa^{\omega}$.   Then there is a
+countably infinite $K\subseteq\kappa$ such that $I\cap K$ is finite for
+every $I\in\Cal A$.
+
+\proof{{\bf (a)} For each $n\in\Bbb N$, set
+$K_n=\{i:2^n\le i<2^{n+1}\}$, and let $f_n:\Cal Pn\to K_n$ be a bijection;
+set $a_I=\{f_n(I\cap n):n\in\Bbb N\}$.   (Or apply 5A1Mc below with
+$\kappa=\omega$.)
+
+\medskip
+
+{\bf (b)} Define $\sequencen{Z_n}$ inductively
+by setting $Z_0=Y$ and
+$Z_{n+1}=Z_n\cup\bigcup\{f(I):I\in[Z_n]^{<\omega}\}$
+for each $n$.   Then $\#(Z_n)\le\max(\omega,\#(Y))$ for each $n$, so
+setting $Z=\bigcup_{n\in\Bbb N}Z_n$ we still have
+$\#(Z)\le\max(\omega,\#(Y))$, while $f(I)\subseteq Z$ for every
+$I\in[Z]^{<\omega}$.
+
+\medskip
+
+{\bf (c)} If $\#(\Cal A)<\kappa$ this is trivial, as we can take
+$K\subseteq\kappa\setminus\bigcup\Cal A$.   Otherwise, let
+$\lambda\le\kappa$ be the least cardinal such that
+$\#(\Cal A)<\lambda^{\omega}$.   Then $\cf\lambda=\omega$.   \Prf\Quer\
+Otherwise,
+
+\Centerline{$\lambda^{\omega}
+=\max(\lambda,\sup_{\theta<\lambda}\theta^{\omega})
+\le\#(\Cal A)$.  \Bang\Qed}
+
+\noindent Let $\sequencen{\lambda_n}$ be a strictly increasing sequence of
+cardinals with supremum $\lambda$, starting from $\lambda_0=0$ and
+$\lambda_1=\omega$ (of course $\lambda>\omega$ because
+$\#(\Cal A)\ge\frak c$).   For $n\in\Bbb N$ let
+$\phi_n:[n\times\lambda_n]^{<\omega}\to\lambda_{n+1}\setminus\lambda_n$ be
+an injective function.   For $f:\Bbb N\to\lambda$ define
+$C_f\subseteq\lambda$ by setting
+
+\Centerline{$C_f=\{\phi_n(f\cap(n\times\lambda_n)):n\in\Bbb N\}$.}
+
+\noindent If $f$, $g\in\lambda^{\Bbb N}$ are distinct, then there are an
+$i\in\Bbb N$ such that $f(i)\ne g(i)$ and an $m>i$ such that both $f(i)$
+and $g(i)$ are less than $\lambda_m$, so that
+$f\cap(n\times\lambda_n)\ne g\cap(n\times\lambda_n)$ for every $n\ge m$ and
+$C_f\cap C_g$ is finite.   It follows that for any $I\in\Cal A$ the set
+$B_I=\{f:f\in\lambda^{\Bbb N}$, $C_f\cap I$ is infinite$\}$ has cardinal at
+most $\frak c$.   Since
+$\frak c\le\#(\Cal A)<\lambda^{\omega}$, there must be an
+$f\in\lambda^{\Bbb N}$ such that $C_f\cap I$ is finite for every
+$I\in\Cal A$, and we can set $K=C_f$.
+}%end of proof of 5A1F
+
+\leader{5A1G}{Partition calculus (a) The Erd\H{o}s-Rado theorem}
+Let $\kappa$ be an infinite cardinal.   Set $\kappa_1=\kappa$,
+$\kappa_{n+1}=2^{\kappa_n}$ for $n\ge 1$.   If $n\ge 1$,
+$\#(B)\le\kappa$,
+$\#(A)>\kappa_n$ and
+$f:[A]^n\to B$ is a function, there is a
+$C\in[A]^{\kappa^+}$ such that $f$ is constant on $[C]^n$.
+\prooflet{({\smc Erd\H{o}s Hajnal M\'at\'e \& Rado 84}, 16.5;
+{\smc Kanamori 03}, 7.3;  {\smc Just \& Weese 97}, 15.13.)}
+
+\spheader 5A1Gb Let $\kappa$ be a cardinal of uncountable cofinality, and
+$Q\subseteq[\kappa]^2$.   Then {\it either} there is a stationary
+$A\subseteq\kappa$ such that $[A]^2\subseteq Q$ {\it or} there
+is an infinite closed $B\subseteq\kappa$ such that
+$[B]^2\cap Q=\emptyset$.
+\prooflet{\Prf\ (Cf.\ {\smc Erd\H{o}s Hajnal M\'at\'e \& Rado 84}, 11.3.)   Let $C\subseteq\kappa$ be a closed
+cofinal set with $\otp(C)=\cf\kappa$ (5A1Ad).
+Let $S_0$ be $\{\alpha:\alpha\in C$, $\cf\alpha=\omega\}$, so that
+$S_0$ is stationary (5A1Ac).   For each $\alpha\in S_0$ let
+$\sequencen{f_{\alpha}(n)}$
+be a strictly increasing sequence in $\alpha$ with supremum $\alpha$.
+Set
+
+\Centerline{$\Cal I_{\alpha}
+=\{I:I\subseteq\alpha\cap C$, $[I\cup\{\alpha\}]^2\cap Q=\emptyset$,
+$\#(I\cap f_{\alpha}(n))\le n$ for every $n\in\Bbb N\}$.}
+
+\noindent Let $I_{\alpha}$ be a maximal member of $\Cal I_{\alpha}$.
+If there is any $\alpha$ such that $I_{\alpha}$ is infinite, we have the
+second alternative, witnessed by $B=I_{\alpha}\cup\{\alpha\}$,
+and we can stop.   Otherwise, there is an $n\in\Bbb N$
+such that $S_1=\{\alpha:\alpha\in S_0$,
+$I_{\alpha}\subseteq f_{\alpha}(n)\}$ is stationary.   As
+$f_{\alpha}(n)<\alpha$ for every $\alpha\in S_1$, the Pressing-Down
+Lemma (4A1Cc) tells us that there is a $\gamma<\kappa$ such that
+$S_2=\{\alpha:\alpha\in S_1$, $f_{\alpha}(n)=\gamma\}$ is stationary.
+Because
+
+\Centerline{$\#([\gamma\cap C]^{<\omega})\le\max(\omega,\#(\gamma\cap C))
+<\cf\kappa$,}
+
+\noindent there is an $I\subseteq\gamma\cap C$
+such that $A=\{\alpha:\alpha\in S_2$, $I_{\alpha}=I\}$ is stationary.
+
+\Quer\ Suppose, if possible, that $[A]^2\not\subseteq Q$.  Take
+$\alpha$, $\beta\in A$ such that $\alpha<\beta$ and
+$\{\alpha,\beta\}\notin Q$.   We know that
+$[I\cup\{\alpha\}]^2$ and $[I\cup\{\beta\}]^2$ are both disjoint from $Q$.
+So $[J\cup\{\beta\}]^2$ is disjoint from $Q$, where $J=I\cup\{\alpha\}$.
+If $m\le n$,
+
+\Centerline{$f_{\beta}(m)\le f_{\beta}(n)=\gamma
+=f_{\alpha}(n)<\alpha$,}
+
+\noindent so
+$\#(J\cap f_{\beta}(m))=\#(I_{\beta}\cap f_{\beta}(m))\le m$;
+while if $m>n$ then
+$\#(J\cap f_{\beta}(m))\le\#(I_{\beta}\cap f_{\beta}(n))+1\le m$.
+So $J\in\Cal I_{\beta}$;  but $J$ properly includes $I_{\beta}$, so this is
+impossible.\ \Bang
+
+Thus $[A]^2\subseteq Q$ and we have the first alternative.\ \Qed}
+%5{}31S
+
+\leader{5A1H}{$\Delta$-systems and free sets:  Proposition}
+Let $\kappa$ and $\lambda$ be infinite cardinals
+and $\ofamily{\xi}{\kappa}{I_{\xi}}$ a family of
+sets of size less than $\lambda$.
+
+(a) If $\cf\kappa>\lambda$, there are a
+$\Gamma\in[\kappa]^{\kappa}$ and a set $J$ of
+cardinal less than $\kappa$ such that $I_{\xi}\cap I_{\eta}\subseteq J$
+for all distinct $\xi$, $\eta\in\Gamma$.
+%5{}25J \family{\xi}{\Gamma}{I_{\xi}} is a Delta-nebula with
+%  root-cover  J
+
+(b) If $\kappa>\lambda$ is regular and
+the cardinal power $\theta^{\delta}$ is less than $\kappa$ for every
+$\theta<\kappa$ and $\delta<\lambda$, then
+there is a $\Gamma'\in[\kappa]^{\kappa}$ such
+that $\family{\xi}{\Gamma'}{I_{\xi}}$ is a $\Delta$-system.
+%5{}25N
+
+(c) If $\kappa>\lambda$ there is a $\Gamma''\in[\kappa]^{\kappa}$ such
+that $\eta\notin I_{\xi}$ for any distinct $\xi$, $\eta\in\Gamma''$.
+%5{}31K
+
+\proof{{\bf (a)} \Quer\ Otherwise, choose
+$\ofamily{\alpha}{\lambda}{\Gamma_{\alpha}}$ and
+$\ofamily{\alpha}{\lambda}{J_{\alpha}}$ as follows.
+$J_{\alpha}=\bigcup_{\beta<\alpha}\bigcup_{\xi\in\Gamma_{\beta}}I_{\xi}$.
+Given $J_{\alpha}$, let $\Gamma_{\alpha}\subseteq\kappa$ be maximal subject
+to the requirement that $I_{\xi}\cap I_{\eta}\subseteq J_{\alpha}$ for all
+distinct $\xi$, $\eta\in\Gamma_{\alpha}$.   Then we see by induction that
+$\#(J_{\alpha})<\kappa$ so $\#(\Gamma_{\alpha})<\kappa$ for every
+$\alpha<\lambda$;  because $\cf\kappa>\lambda$,
+$\bigcup_{\alpha<\lambda}\Gamma_{\alpha}$ cannot be the whole of $\kappa$.
+
+Take any $\xi\in\kappa\setminus\bigcup_{\alpha<\lambda}\Gamma_{\alpha}$.
+As $\#(I_{\xi})<\lambda$, there must be an $\alpha<\lambda$ such that
+$I_{\xi}\cap J_{\alpha}=I_{\xi}\cap J_{\alpha+1}$.
+As $\xi\notin\Gamma_{\alpha}$,
+there is an $\eta\in\Gamma_{\alpha}$ such that
+$I_{\xi}\cap I_{\eta}\not\subseteq J_{\alpha}$;  but now
+$I_{\xi}\cap I_{\eta}\setminus J_{\alpha}
+\subseteq I_{\xi}\cap J_{\alpha+1}\setminus J_{\alpha}$.\ \Bang
+
+\medskip
+
+{\bf (b)} Let $J$ and $\Gamma$ be as in (a).   Because $\cf\kappa>\lambda$,
+there must be some cardinal $\delta<\lambda$ such that
+$\Gamma_1=\{\xi:\xi\in\Gamma$, $\#(I_{\xi}\cap J)\le\delta\}$ has cardinal
+$\kappa$.   Now
+$\#([J]^{\le\delta})\le\#(J)^{\delta}<\cf\kappa$, so there must be a
+$K\subseteq J$ such that
+$\Gamma'=\{\xi:\xi\in\Gamma_1$, $I_{\xi}\cap J=K\}$
+has cardinal $\kappa$;  and $\family{\xi}{\Gamma'}{I_{\xi}}$ is a
+$\Delta$-system with root $K$.
+
+\medskip
+
+{\bf (c)} It is enough to consider the case in which $\xi\in I_{\xi}$ for
+every $\xi<\kappa$.
+
+\medskip
+
+\quad{\bf (i)} If $\cf\kappa>\lambda$,
+take $\Gamma$ and $J$ from (a).   Then we can choose
+$\ofamily{\delta}{\kappa}{\xi_{\delta}}$ inductively so that
+
+\Centerline{$\xi_{\delta}
+\in\Gamma\setminus(J\cup\bigcup_{\beta<\delta}I_{\xi_{\beta}})$}
+
+\noindent for every $\delta<\kappa$;  and $\{\xi_{\delta}:\delta<\kappa\}$
+will serve for $\Gamma''$.
+
+\medskip
+
+\quad{\bf (ii)} If $\cf\kappa=\theta\le\lambda$, let
+$\ofamily{\alpha}{\theta}{\kappa_{\alpha}}$ be a strictly increasing family
+of regular cardinals with supremum $\kappa$, starting from
+$\kappa_0\ge\lambda^{++}$.   For each $\alpha<\theta$, (i) tells us that there is
+an $A_{\alpha}\in[\kappa_{\alpha}]^{\kappa_{\alpha}}$ such that
+$\eta\notin I_{\xi}$ for any distinct $\xi$, $\eta\in A_{\alpha}$.   Set
+
+\Centerline{$B_{\alpha}
+=A_{\alpha}\setminus\bigcup_{\beta<\alpha}
+  (B_{\beta}\cup\bigcup_{\xi\in A_{\beta}}I_{\xi})$;}
+
+\noindent then $\#(B_{\alpha})=\kappa_{\alpha}$
+for each $\alpha<\theta$.   Choose
+$\langle C_{\alpha\gamma}\rangle_{\alpha<\theta,\gamma<\lambda^+}$ and
+$\ofamily{\alpha}{\theta}{\zeta_{\alpha}}$
+inductively, as follows.   Given that
+$\langle C_{\beta\gamma}\rangle_{\beta<\alpha,\gamma<\lambda^+}$ is
+disjoint, then for each $\xi\in B_{\alpha}$ there is a $\zeta<\lambda^+$ such
+that $I_{\xi}\cap\bigcup_{\beta<\alpha}C_{\beta\gamma}$ is empty for every
+$\gamma\ge\zeta$;  because $\lambda^+<\cf\kappa_{\alpha}$, there is a
+$\zeta_{\alpha}<\lambda^+$ such that
+
+\Centerline{$B'_{\alpha}=\{\xi:\xi\in B_{\alpha}$,
+$I_{\xi}\cap C_{\beta\gamma}=\emptyset$ whenever $\beta<\alpha$ and
+$\zeta_{\alpha}\le\gamma<\lambda^+\}$}
+
+\noindent has cardinal $\kappa_{\alpha}$.   Let
+$\ofamily{\gamma}{\lambda^+}{C_{\alpha\gamma}}$ be a partition of
+$B'_{\alpha}$ into sets of size $\kappa_{\alpha}$, and continue.
+
+At the end of the induction, $\gamma=\sup_{\alpha<\theta}\zeta_{\alpha}$ is
+less than $\lambda^+$.   Set
+$\Gamma''=\bigcup_{\alpha<\theta}C_{\alpha\gamma}$.   Then
+$\#(\Gamma'')=\kappa$.   If $\xi$, $\eta$ are
+distinct members of $\Gamma''$, let $\alpha$, $\beta<\theta$ be such that
+$\xi\in C_{\alpha\gamma}$ and $\eta\in C_{\beta\gamma}$.   If
+$\alpha<\beta$ then $\xi\in A_{\alpha}$ and $\eta\in B_{\beta}$ so
+$\eta\notin I_{\xi}$.   If $\alpha=\beta$ then both $\xi$ and $\eta$ belong
+to $A_{\alpha}$ so $\eta\notin I_{\xi}$.   If $\beta<\alpha$ then
+$\eta\in C_{\beta\gamma}$ while $\gamma\ge\zeta_{\alpha}$ and
+$\xi\in B'_{\alpha}$, so $\eta\notin I_{\xi}$.   So $\Gamma''$ will serve.
+}%end of proof of 5A1H
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} (c) above is Hajnal's Free Set Theorem.}
+
+\leader{5A1I}{Remarks}{\bf (a)}\cmmnt{ I spell out the applications of
+these results which are used in this volume.}
+Let $\kappa$ be an infinite cardinal and
+$\ofamily{\xi}{\kappa}{I_{\xi}}$ a family of countable sets.
+
+\quad(i) If $\cf\kappa\ge\omega_2$, there are a
+$\Gamma\in[\kappa]^{\kappa}$ and a set $J$ with cardinal less than $\kappa$
+such that $I_{\xi}\cap I_{\eta}\subseteq J$ for all distinct $\xi$,
+$\eta\in\Gamma$.
+
+\quad(ii) If $\kappa$ is infinite and regular and
+the cardinal power $\lambda^{\omega}$ is less than $\kappa$ for every
+$\lambda<\kappa$, there is a $\Gamma'\in[\kappa]^{\kappa}$ such
+that $\family{\xi}{\Gamma'}{I_{\xi}}$ is a $\Delta$-system.
+\prooflet{(Of course $\kappa$ cannot be $\omega_1$, so we can apply 5A1Hc
+with $\lambda=\omega_1$.)}
+%5{}25N
+
+\quad(iii) If $\kappa\ge\omega_2$ there is a $\Gamma''\in[\kappa]^{\kappa}$ such
+that $\eta\notin I_{\xi}$ for any distinct $\xi$, $\eta\in\Gamma''$.
+%5{}31K
+
+\spheader 5A1Ib\cmmnt{ If, in 5A1Hc,
+we are willing to settle for a weaker result,
+there is an easier proof which generalizes to more complex systems.}
+Let $\lambda$ be an infinite cardinal.   Then there is a $\kappa_0$ such
+that for every cardinal $\kappa\ge\kappa_0$, every $n\in\Bbb N$
+and every function $f:[\kappa]^n\to[\kappa]^{<\lambda}$ there is an
+$A\in[\kappa]^{\lambda^+}$ such that $\xi\notin f(I)$ whenever
+$I\in[A]^n$ and $\xi\in A\setminus I$.
+\prooflet{\Prf\ By the Erd\H{o}s-Rado theorem (5A1Ga),
+there is a $\kappa_0$ such that for every $\kappa\ge\kappa_0$, $n\ge 1$ and
+function $g:[\kappa]^n\to\Bbb N$ there is an $A\in[\kappa]^{\lambda^+}$
+such that $g$ is constant on $[A]^n$.   Now, given $n\in\Bbb N$,
+$\kappa\ge\kappa_0$
+and $f:[\kappa]^n\to[\kappa]^{<\lambda}$, define $g:[\kappa]^{n+1}\to\Bbb N$
+by saying that if $J=\{\xi_0,\ldots,\xi_n\}$ with
+$\xi_0<\xi_1<\ldots<\xi_n$, then
+$g(J)=\min(\{n+1\}\cup\{j:j\le n$, $\xi_j\in f(J\setminus\{\xi_j\})\}$.
+Let $A\in[\kappa]^{\lambda^+}$ be such that $g$ is constant on
+$[A]^{n+1}$.   We can suppose that $A$ has order type $\lambda^+$.
+\Quer\ Suppose that the constant value of $g$ in $[A]^{n+1}$ is $j\le n$.
+Let $B$ be the set of the first $\lambda$ members of $A$, $I_0$ the set of
+the first $j$ members of $A$ and $I_1$ the set of the first $n-j$ members
+of $A\setminus B$.   Then we have $g(I_0\cup\{\xi\}\cup I_1)=j$ for every
+$\xi\in B\setminus I_0$, so that
+$B\setminus I_0\subseteq f(I_0\cup I_1)$;  but
+$\#(f(I_0\cup I_1))<\lambda$.\ \BanG\
+So the constant value of $g$ on $[A]^{n+1}$ is $n+1$, and $A$ satisfies the
+required condition.\ \Qed}
+
+\spheader 5A1Ic\cmmnt{ In the same complex of ideas,
+we have an elementary
+fact about the case $\lambda<\kappa=\omega$.}   If $n\in\Bbb N$ and
+$\sequence{i}{K_i}$ is a sequence in $[\Bbb N]^{\le n}$,
+there is an infinite
+$\Gamma\subseteq\Bbb N$ such that $\family{i}{\Gamma}{K_i}$ is a
+$\Delta$-system.   \prooflet{\Prf\
+Let $K\subseteq\Bbb N$ be a maximal set such that
+$I=\{i:K\subseteq K_i\}$ is infinite;  then
+$\{i:i\in I$, $K_i\cap L\ne\emptyset\}$ is finite for every finite
+$L\subseteq\Bbb N\setminus K$, so we can choose $\Gamma$ inductively
+by saying that
+$\Gamma=\{i:i\in I$, $K_i\cap K_j=K$ whenever $j\in\Gamma\cap i\}$.\ \Qed}
+
+\leader{5A1J}{Lemma} Suppose that $\theta$, $\lambda$ and $\kappa$
+are cardinals, with $\theta<\lambda<\cf\kappa$, and that $S$
+is a stationary subset of
+$\kappa$.   Let $\langle I_{\xi}\rangle_{\xi\in S}$ be a family in
+$[\lambda]^{\le\theta}$.
+Then there is a set $M\subseteq\lambda$ such that
+$\cf(\#(M))\le\theta$
+and $\{\xi:\xi\in S,\,I_{\xi}\subseteq M\}$ is stationary in $\kappa$.
+%5{}43 5A1M
+
+\proof{ For $M\subseteq\lambda$, set
+$S_M=\{\xi:\xi\in S,\,I_{\xi}\subseteq M\}$.
+Let $M\subseteq\lambda$ be a set of minimal cardinality such
+that $S_M$ is stationary in $\kappa$.   Set $\delta=\#(M)$.  \Quer\  If
+$\cf\delta>\theta$, enumerate $M$ as
+$\langle\alpha_{\eta}\rangle_{\eta<\delta}$. For each $\xi\in S_M$,
+set $\beta_{\xi}=\sup\{\eta:\alpha_{\eta}\in I_{\xi}\}$;
+because $\#(I_{\xi})\le\theta<\cf\delta$,
+$\beta_{\xi}<\delta$.   Because $\delta\le\lambda<\cf\kappa$,
+there is a $\beta<\delta$ such that
+$S'=\{\xi:\xi\in S_M$, $\beta_{\xi}=\beta\}$ is stationary in $\kappa$
+(5A1Ab).   Consider $M'=\{\alpha_{\eta}:\eta\le\beta\}$;  then
+$\#(M')<\#(M)$  but $S_{M'}\supseteq S'$ so is stationary in
+$\kappa$, contrary to the choice of $M$.\ \Bang
+
+Thus $M$ and $S=S_M$ will serve.
+}%end of proof of 5A1J
+
+\leader{5A1K}{Lemma} Let $\familyiI{X_i}$ be a non-empty family of
+infinite sets, with product $X$.   Then there is a
+set $Y\subseteq X$, with $\#(Y)=\#(X)$, such that for every finite
+$L\subseteq Y$ there is an $i\in I$ such that
+$x(i)\ne y(i)$ for any distinct $x$, $y\in L$.
+%5{}15G  sort of transversals
+
+\proof{ Set $\kappa=\#(X)$.
+
+\medskip
+
+{\bf (a)} We can well-order $I$ in such a way that
+$\#(X_i)\le\#(X_j)$ whenever $i\le j$ in $I$.   It will therefore be
+enough to deal with the case in which $I=\delta$ is an ordinal and
+$\#(X_{\alpha})\le\#(X_{\beta})$ whenever $\alpha\le\beta<\delta$.
+I proceed by induction on $\delta$.
+
+\medskip
+
+{\bf (b)} If $\delta$ is finite then
+$\kappa=\max_{\alpha<\delta}\#(X_{\alpha})$ and the result is trivial,
+since we can take the $x_{\xi}$ to be all different at a single
+coordinate.
+
+\medskip
+
+{\bf (c)} Suppose there is a $\gamma<\delta$ such that
+$\#(\delta\setminus\gamma)<\#(\delta)$.  Then, in particular, the order
+type of $\delta\setminus\gamma$ is less than the order type of
+$\delta$.   Set $I_0=\gamma$, $I_1=\delta\setminus\gamma$ and
+$Y_j=\prod_{\alpha\in I_j}X_{\alpha}$ for both $j$.   Then
+$X\cong Y_0\times Y_1$, so $\kappa=\max(\#(Y_0),\#(Y_1))$;  say
+$\kappa=\#(Y_j)$.   By the inductive hypothesis, there is a family
+$\ofamily{\xi}{\kappa}{y_{\xi}}$ in $Y_j$ such that for any
+$L\in[\kappa]^{<\omega}$ there is an $\alpha\in I_j$ such that
+$\xi\mapsto y_{\xi}(\alpha):L\to X_{\alpha}$ is injective.   Taking
+$x_{\xi}$ to be any member of $X$ extending $y_{\xi}$, for each
+$\xi<\kappa$, we have a suitable family
+$\ofamily{\xi}{\kappa}{x_{\xi}}$
+in $X$, and the induction proceeds.
+
+\medskip
+
+{\bf (d)} Suppose that $\delta$ is infinite and that
+$\#(\delta\setminus\gamma)=\#(\delta)=\lambda$ for every
+$\gamma<\delta$.   Enumerate $[\delta]^{<\omega}$ as
+$\ofamily{\zeta}{\lambda}{J_{\zeta}}$, and choose
+$\ofamily{\zeta}{\lambda}{\alpha_{\zeta}}$ such that
+
+\Centerline{$J_{\zeta}
+\subseteq\alpha_{\zeta}\in\delta\setminus\{\alpha_{\eta}:\eta<\zeta\}$}
+
+\noindent for each $\alpha<\lambda$.   We have
+
+\Centerline{$\#(X_{\alpha_{\zeta}})
+\ge\max(\omega,\sup_{\beta\in J_{\zeta}}\#(X_{\beta}))
+\ge\#(\prod_{\beta\in J_{\zeta}}X_{\beta})$,}
+
+\noindent so there is an injective function
+$f_{\zeta}:\prod_{\beta\in J_{\zeta}}X_{\beta}\to X_{\alpha_{\zeta}}$
+for each $\zeta<\lambda$.
+Let $\ofamily{\xi}{\kappa}{z_{\xi}}$ be any enumeration of $X$.
+Because all the $\alpha_{\zeta}$ are distinct, we can find
+$x_{\xi}\in X$, for each $\xi<\kappa$, such that
+$x_{\xi}(\alpha_{\zeta})=f_{\zeta}(z_{\xi}\restr J_{\zeta})$ for every
+$\zeta$.   Now if $L\in[\kappa]^{<\omega}$ there must be a
+$\zeta<\lambda$ such that
+$z_{\xi}\restr J_{\zeta}\ne z_{\eta}\restr J_{\zeta}$
+for any distinct $\xi$, $\eta\in L$;  so that
+$\xi\mapsto x_{\xi}(\alpha_{\zeta})$ is injective on $L$.   Thus
+$\ofamily{\xi}{\kappa}{x_{\xi}}$ is a suitable family in $X$ and the
+induction proceeds in this case also.
+}%end of proof of 5A1K
+
+\leader{5A1L}{Definitions (a)} Let $X$ and $Y$ be sets and
+$\Cal I$ an ideal of subsets of $X$.   Write
+$\Tr_{\Cal I}(X;Y)$ for the {\bf transversal number}
+
+\Centerline{$\sup\{\#(F):F\subseteq Y^X$,
+$\{x:f(x)=g(x)\}\in\Cal I$ for all distinct $f,\,g\in F\}$.}
+
+\spheader 5A1Lb Let $\kappa$ be a cardinal.  Write
+$\Tr(\kappa)$ for
+
+\Centerline{$\Tr_{[\kappa]^{<\kappa}}(\kappa;\kappa)
+=\sup\{\#(F):F\subseteq\kappa^{\kappa}$,
+$\#(f\cap g)<\kappa\text{ for all distinct }f,\,g\in F\}$.}
+
+\leader{5A1M}{Lemma} (a) For any infinite cardinal $\kappa$,
+
+\Centerline{$\kappa^+\le\Tr(\kappa)\le 2^{\kappa}$.}
+
+(b) For any infinite cardinal $\kappa$,
+
+\Centerline{$\max(\Tr(\kappa),\sup_{\delta<\kappa}2^{\delta})
+\ge\min(2^{\kappa},\kappa^{(+\omega)})$.}
+
+(c) If $\kappa$ is such that $2^{\delta}\le\kappa$ for
+every $\delta<\kappa$, then $\Tr(\kappa)=2^{\kappa}$, and in fact there is
+an $F\subseteq\kappa^{\kappa}$ such that $\#(F)=2^{\kappa}$ and
+$\#(f\cap g)<\kappa\text{ for all distinct }f,\,g\in F$.
+
+(d) If $X$ and $Y$ are sets and $\Cal I$ is a maximal proper
+ideal of $\Cal PX$, then there is
+an $F\subseteq Y^X$ such that $\#(F)=\Tr_{\Cal I}(X;Y)$ and
+$\{x:f(x)=g(x)\}\in\Cal I$ for all distinct $f,\,g\in F$.
+
+\proof{{\bf (a)} We can build inductively a family
+$\langle f_{\alpha}\rangle_{\alpha<\kappa^+}$ in $\kappa^{\kappa}$, as
+follows. Given $\langle f_{\alpha}\rangle_{\alpha<\beta}$, where
+$\beta<\kappa^+$, let $\theta:\beta\to\kappa$ be any injection.
+Now choose $f_{\beta}:\kappa\to\kappa$ so that
+
+\Centerline{$f_{\beta}(\xi)\ne f_{\alpha}(\xi)$
+whenever $\alpha<\beta$ and $\theta(\alpha)\le\xi$.}
+
+\noindent This will mean that if $\alpha<\beta$, then
+
+\Centerline{$\{\xi:f_{\alpha}(\xi)=f_{\beta}(\xi)\}
+\subseteq\theta(\alpha)$}
+
+\noindent has cardinal less than $\kappa$.   So at the
+end of the induction, $F=\{f_{\alpha}:\alpha<\kappa^+\}$
+will witness that $\Tr(\kappa)\ge\kappa^+$.   On the other hand,
+$\Tr(\kappa)\le\#(\kappa^{\kappa})=2^{\kappa}$.
+
+\medskip
+
+{\bf (b)}\Quer\ If not, then take
+$\lambda=\max(\Tr(\kappa),\sup_{\delta<\kappa}2^{\delta})
+<\min(2^{\kappa},\kappa^{(+\omega)})$.
+For each $\xi<\kappa$ take an
+injective function $\phi_{\xi}:\Cal P\xi\to\lambda$.
+Because $\lambda<2^{\kappa}$, we have an injective function
+$h:\lambda^+\to\Cal P\kappa$.   For $\alpha<\lambda^+$ set
+$g_{\alpha}(\xi)=\phi_{\xi}(h(\alpha)\cap\xi)$
+for every $\xi<\kappa$;  then
+$\langle g_{\alpha}\rangle_{\alpha<\lambda^+}$
+is a family in $\lambda^{\kappa}$ such that
+$\#(g_{\alpha}\cap g_{\beta})<\kappa$ whenever $\alpha\ne\beta$.
+
+Apply 5A1J with $S=\lambda^+$,
+$I_{\alpha}=g_{\alpha}[\kappa]$ to see that there is a set
+$M\subseteq\lambda$ with $\cf(\#(M))\le\kappa$ and
+$S_1=\{\alpha:\alpha<\lambda^+$, $g_{\alpha}[\kappa]\subseteq M\}$
+stationary in $\lambda^+$.   Because
+$\lambda<\kappa^{(+\omega)}$, we must have $\#(M)\le\kappa$.   If
+$f:M\to\kappa$ is any injection,
+$\langle fg_{\alpha}\rangle_{\alpha\in S}$ will witness
+that $\Tr(\kappa)\ge\#(S_1)=\lambda^+$;  which is impossible.\ \Bang
+
+\wheader{5A1M}{4}{2}{2}{36pt}
+
+{\bf (c)} For each $\xi<\kappa$, let $\phi_{\xi}:\Cal P\xi\to\kappa$
+be injective.   For $A\subseteq\kappa$, define
+$f_A\in\kappa^{\kappa}$ by writing
+
+\Centerline{$f_A(\xi)=\phi_{\xi}(A\cap\xi)$ for every $\xi<\kappa$.}
+
+\noindent Then $F=\{f_A:A\subseteq\kappa\}$ has the required property, and
+$\Tr(\kappa)\ge 2^{\kappa}$;  by (a), we have equality.
+
+\medskip
+
+{\bf (d)} Take any maximal set $F\subseteq Y^X$ such that
+$\{x:f(x)=f'(x)\}\in\Cal I$ for all distinct $f$, $f'\in F$.   Then
+$\#(F)=\Tr_{\Cal I}(X;Y)$.   \Prf\ Of course $\#(F)\le\Tr_{\Cal I}(X;Y)$.
+Suppose that $G\subseteq Y^X$ is such that
+$\{x:g(x)=g'(x)\}\in\Cal I$ for all distinct $g$, $g'\in G$.   For each
+$g\in G$, there must be an $f_g\in F$ such that
+$\{x:g(x)=f_g(x)\}\notin\Cal I$;  because $\Cal I$ is maximal,
+$\{x:g(x)\ne f_g(x)\}\in\Cal I$.   If $g$, $h\in G$ are distinct,
+then
+
+\Centerline{$\{x:f_g(x)=g_h(x)\}
+\subseteq\{x:f_g(x)\ne g(x)\}\cup\{x:g(x)=h(x)\}\cup\{x:h(x)\ne f_h(x)\}
+\in\Cal I$}
+
+\noindent so $f_g\ne f_h$.   Thus we have an injective function from $G$ to
+$F$ and $\#(G)\le\#(F)$.   As $G$ is arbitrary,
+$\Tr_{\Cal I}(X;Y)\le\#(F)$ and we have equality.\ \Qed
+}%end of proof of 5A1M
+%5{}42 %5{}38Xk
+
+\leader{5A1N}{Almost-square-sequences:  Lemma}
+Let $\kappa$, $\lambda$ be regular infinite cardinals, with
+$\lambda>\max(\omega_1,\kappa)$.
+Then we can find a stationary set $S\subseteq\lambda^+$ and a family
+$\langle C_{\alpha}\rangle_{\alpha\in S}$ of sets such that
+
+(i) for each $\alpha\in S$, $C_{\alpha}$ is a closed cofinal set in
+$\alpha$ of order type $\kappa$;
+
+(ii) if $\alpha$, $\beta\in S$ and $\gamma$ is a limit
+point of both $C_{\alpha}$ and $C_{\beta}$ then
+$C_{\alpha}\cap\gamma=C_{\beta}\cap\gamma$.
+
+\proof{{\bf (a)} For each $\gamma<\lambda^+$ fix an injection
+$f_{\gamma}:\gamma\to\lambda$.   Let $S_0$ be the set of ordinals
+$\alpha<\lambda^+$ of cofinality $\kappa$;  then $S_0$ is stationary
+in $\lambda^+$ (5A1Ac).   For each $\alpha\in S_0$ choose a non-decreasing
+family $\langle N_{\alpha\delta}\rangle_{\delta<\lambda}$ of subsets of
+$\lambda^+$ such that
+
+\inset{($\alpha$) $N_{\alpha0}$ is a cofinal subset of
+$\alpha$ with cardinal $\kappa$;
+
+($\beta$) if $\delta<\lambda$ then
+
+\Centerline{$N_{\alpha,\delta+1}
+=\bigcup\{f_{\gamma}[N_{\alpha\delta}]\cup f_{\gamma}^{-1}[\delta]:
+    \gamma\in N_{\alpha\delta}\}
+  \cup\overline{N}_{\alpha\delta}\cup\delta$}
+
+\noindent (taking the closure $\overline{N}_{\alpha\delta}$ in the
+order topology of $\lambda^+$);
+
+($\gamma$) if $\delta<\lambda$ is a non-zero limit
+ordinal then
+$N_{\alpha\delta}=\bigcup_{\delta'<\delta}N_{\alpha\delta'}$.}
+
+\noindent Then
+$\#(N_{\alpha\delta})\le\max(\kappa,\#(\delta))<\lambda$
+for each $\delta<\lambda$ (using 5A1Ae).   Because $\lambda$ is regular,
+$\sup(N_{\alpha\delta}\cap\lambda)<\lambda$ for every $\delta$.
+It follows that
+$\{\delta:\delta<\lambda$, $N_{\alpha\delta}\cap\lambda=\delta\}$ is a
+closed cofinal set in $\lambda$, and in particular
+contains an ordinal of cofinality $\omega_1$,
+for every $\alpha\in S_0$.   Let $\delta<\lambda$ be
+such that $\cf\delta=\omega_1$ and
+
+\Centerline{$S_1=\{\alpha:\alpha\in S_0$,
+$N_{\alpha\delta}\cap\lambda=\delta\}$}
+
+\noindent is stationary in $\lambda^+$.   For $\alpha\in S_1$, set
+$C^*_{\alpha}=\alpha\cap\overline{N}_{\alpha\delta}$;
+then $C^*_{\alpha}$ is a closed cofinal set in $\alpha$ and
+$\#(C^*_{\alpha})<\lambda$ so $\otp(C^*_{\alpha})<\lambda$.   Let
+$\zeta<\lambda$ be such that
+
+\Centerline{$S=\{\alpha:\alpha\in S_1$, $\otp(C^*_{\alpha})=\zeta\}$}
+
+\noindent is stationary in $\lambda^+$.   Observe that
+as $\cf C^*_{\alpha}=\cf\alpha=\kappa$ for each $\alpha\in S$,
+$\cf\zeta=\kappa$.
+
+\medskip
+
+{\bf (b)} Take any closed cofinal set $C\subseteq\zeta$ of order
+type $\kappa$ and for each $\alpha\in S$ let $C_{\alpha}$ be the image
+of $C$ in $C^*_{\alpha}$ under the order-isomorphism between
+$\zeta$ and $C^*_{\alpha}$.   Then $C_{\alpha}$ will be a closed
+cofinal subset of $\alpha$ of order type $\kappa$.
+
+I claim that if $\alpha$, $\beta\in S$ and $\gamma$
+is a common limit point of $C_{\alpha}$, $C_{\beta}$ then
+$C_{\alpha}\cap\gamma=C_{\beta}\cap\gamma$.
+
+\Prf\ {\bf case 1} Suppose $\kappa=\omega$.   In this case the only
+limit point of $C_{\alpha}$
+will be $\alpha$ itself, and similarly for $\beta$, so that in this
+case
+we have $\alpha=\beta$ and there is nothing more to do.
+
+{\bf case 2} Suppose $\cf\gamma=\omega<\kappa$.
+Then $\gamma$ is a limit point of
+$C_{\alpha}\subseteq C^*_{\alpha}\subseteq\overline{N}_{\alpha\delta}$, so
+there is an increasing sequence in $N_{\alpha\delta}$ with supremum
+$\gamma$;  as
+$N_{\alpha\delta}=\bigcup_{\delta'<\delta}N_{\alpha\delta'}$ and
+$\cf\delta=\omega_1$, this sequence lies entirely within
+$N_{\alpha\delta'}$ for some $\delta'<\delta$, and
+$\gamma\in\overline{N}_{\alpha\delta'}\subseteq N_{\alpha,\delta'+1}$.
+Now, for $\delta'+1\le\xi<\delta$, $N_{\alpha,\xi+1}
+\supseteq f_{\gamma}^{-1}[\xi]\cup f_{\gamma}[N_{\alpha\xi}]$;
+consequently
+
+\Centerline{$N_{\alpha\delta}\cap\gamma
+=f_{\gamma}^{-1}[N_{\alpha\delta}\cap\lambda]
+=f_{\gamma}^{-1}[\delta]$.}
+
+\noindent Similarly,
+$N_{\beta\delta}\cap\gamma=f_{\gamma}^{-1}[\delta]$.   Now
+
+\Centerline{$C^*_{\alpha}\cap\gamma
+=\overline{N}_{\alpha\delta}\cap\gamma
+=\overline{f_{\gamma}^{-1}[\delta]}\cap\gamma
+=C^*_{\beta}\cap\gamma$.}
+
+\noindent Accordingly the increasing enumerations of $C^*_{\alpha}$ and
+$C^*_{\beta}$ must agree on
+$C^*_{\alpha}\cap\gamma=C^*_{\beta}\cap\gamma$, and
+$C_{\alpha}\cap\gamma=C_{\beta}\cap\gamma$.
+
+{\bf case 3} Suppose that $\cf\gamma>\omega$ and $\kappa>\omega$.
+Because $\gamma=\sup(C_{\alpha}\cap\gamma)=\sup(C_{\beta}\cap\gamma)$,
+
+\Centerline{$D
+=\{\gamma':\gamma'<\gamma$ is a limit point of both $C_{\alpha}$ and
+$C_{\beta}$, $\cf\gamma'=\omega\}$}
+
+\noindent is cofinal with $\gamma$, and
+
+\Centerline{$C_{\alpha}\cap\gamma
+=\bigcup_{\gamma'\in D}C_{\alpha}\cap\gamma'=C_{\beta}\cap\gamma$,}
+
+\noindent using case 2.\ \Qed
+
+Thus $S$ and $\langle C_{\alpha}\rangle_{\alpha\in S}$ have
+the required properties.
+}%end of proof of 5A1N
+%5{}A1O
+
+\leader{5A1O}{Corollary} Let $\kappa$, $\lambda$ be regular infinite
+cardinals with $\lambda>\max(\omega_1,\kappa)$.
+Then we can find a stationary subset $S$ of $\lambda^+$ and a family
+$\langle g_{\alpha}\rangle_{\alpha\in S}$ of functions
+from $\kappa$ to $\lambda^+$ such that, for all distinct $\alpha$,
+$\beta\in S$,
+
+(i) $g_{\alpha}[\kappa]\subseteq\alpha$,
+
+(ii) $\#(g_{\alpha}\cap g_{\beta})<\kappa$,
+
+(iii) if $\theta<\kappa$ is a limit ordinal and
+$g_{\alpha}(\theta)=g_{\beta}(\theta)$ then
+$g_{\alpha}\restr\theta=g_{\beta}\restr\theta$.
+
+\proof{ Take $\langle C_{\alpha}\rangle_{\alpha\in S}$ from
+5A1N above and let $g_{\alpha}$ be the increasing
+enumeration of $C_{\alpha}$.
+}%end of proof of 5A1O
+%5{}43E
+
+%\exercises{\leader{5A1X}{Basic exercises (a)}
+
+%\leader{5A1Y}{Further exercises (a)}
+
+%}%end of exercises
+
+%\endnotes{
+%\Notesheader{5A1}
+
+%}%end of notes
+
+\discrpage
+

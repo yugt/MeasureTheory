@@ -1,0 +1,1321 @@
+\frfilename{mt234.tex}
+\versiondate{11.4.09}
+\copyrightdate{2008}
+
+\def\chaptername{The Radon-Nikod\'ym theorem}
+\def\sectionname{Operations on measures}
+
+\newsection{234}
+
+I take a few pages to describe some standard constructions.   The ideas are
+straightforward, but a number of details need to be worked
+out if they are to be securely integrated into the general framework I
+employ.   The first step is to formally introduce \imp\ functions
+(234A-234B), the most important class of transformations between measure
+spaces.   For construction of new measures, we have the notions of
+image measure (234C-234E), %234C 234D 234E
+sum of measures (234G-234H) and indefinite-integral measure
+(234I-234O).  %234I 234J 234K 234L 234M 234N 234O
+Finally I mention a way of ordering the measures on a given set
+(234P-234Q).
+
+
+\leader{234A}{Inverse-measure-preserving
+functions}\dvAformerly{2{}35G}\cmmnt{ It is high
+time that I introduced the nearest thing in measure theory to a
+`morphism'.}   If $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ are measure
+spaces, a function $\phi:X\to Y$ is {\bf \imp} if
+$\phi^{-1}[F]\in\Sigma$ and $\mu(\phi^{-1}[F])=\nu F$ for every
+$F\in\Tau$.
+
+\leader{234B}{Proposition} Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+measure spaces, and $\phi:X\to Y$ an \imp\ function.
+
+
+(a)\dvAformerly{2{}35Hc} If $\hat\mu$, $\hat\nu$ are the completions of 
+$\mu$, $\nu$
+respectively, $\phi$ is also \imp\ for $\hat\mu$ and $\hat\nu$.
+
+(b)\dvAformerly{2{}35Xe} $\mu$ is a probability measure iff $\nu$ is a probability measure.
+
+(c)\dvAformerly{2{}35Xe}
+ $\mu$ is totally finite iff $\nu$ is totally finite.
+
+(d)\dvAformerly{2{}35Xe}(i)
+If $\nu$ is $\sigma$-finite, then $\mu$ is $\sigma$-finite.
+
+\quad(ii) If $\nu$ is semi-finite and $\mu$ is $\sigma$-finite, then $\nu$
+is $\sigma$-finite.
+
+(e)\dvAformerly{2{}35Xe}(i)
+If $\nu$ is $\sigma$-finite and atomless, then $\mu$ is atomless.
+
+\quad(ii) If $\nu$ is semi-finite and $\mu$ is purely atomic, then
+$\nu$ is purely atomic.
+
+(f)\dvAnew{2008}(i) $\mu^*\phi^{-1}[B]\le\nu^*B$ for
+every $B\subseteq Y$.
+
+\quad(ii) $\mu^*A\le\nu^*\phi[A]$ for every $A\subseteq X$.
+
+(g)\dvAformerly{2{}35Hc}
+ If $(Z,\Lambda,\lambda)$ is another measure space, and
+$\psi:Y\to Z$ is \imp,  then $\psi\phi:X\to Z$ is \imp.
+
+\proof{{\bf (a)} If $\hat\nu$ measures $F$, there are $F'$, $F''\in\Tau$
+such that $F'\subseteq F\subseteq F''$ and $\nu(F''\setminus F')=0$.
+Now
+
+\Centerline{$\phi^{-1}[F']\subseteq\phi^{-1}[F]\subseteq\phi^{-1}[F'']$,
+\quad$\mu(\phi^{-1}[F'']\setminus\phi^{-1}[F'])=\nu(F''\setminus F')=0$,}
+
+\noindent so $\hat\mu$ measures $\phi^{-1}[F]$ and
+
+\Centerline{$\hat\mu(\phi^{-1}[F])=\mu\phi^{-1}[F']=\nu F'=\hat\nu F$.}
+
+\noindent As $F$ is arbitrary, $\phi$ is \imp\ for $\hat\mu$ and $\hat\nu$.
+
+\medskip
+
+{\bf (b)-(c)} are surely obvious.
+
+\medskip
+
+{\bf (d)(i)} If $\sequencen{F_n}$ is a cover of $Y$ by sets of finite
+measure for $\nu$, then $\sequencen{\phi^{-1}[F_n]}$ is a cover of $X$ by
+sets of finite measure for $\mu$.
+
+\medskip
+
+\quad{\bf (ii)} Let $\Cal F\subseteq\Tau$ be a disjoint family of
+non-$\nu$-negligible sets.   Then $\family{F}{\Cal F}{\phi^{-1}[F]}$ is a
+disjoint family of non-$\mu$-negligible sets.   By 215B(iii), $\Cal F$ is
+countable.   By 215B(iii) in the opposite direction, $\nu$ is
+$\sigma$-finite.
+
+\medskip
+
+{\bf (e)(i)} Suppose that $E\in\Sigma$ and $\mu E>0$.   Let
+$\sequencen{F_n}$ be a cover of $Y$ by sets of finite measure for $\nu$.
+Because $\nu$ is atomless, we can find, for each $n$, a
+finite partition $\family{i}{I_n}{F_{ni}}$
+of $F_n$ such that $\nu F_{ni}<\mu E$ for every $i\in I_n$ (use 215D
+repeatedly).   Now
+$X=\bigcup_{n\in\Bbb N,i\in I_n}\phi^{-1}[F_{ni}]$, so there are
+$n\in\Bbb N$ and $i\in I_n$ with
+
+\Centerline{$0<\mu(E\cap\phi^{-1}[F_{ni})
+\le\mu\phi^{-1}[F_{ni}]=\nu F_{ni}<\mu E$,}
+
+\noindent and $E$ is not a $\mu$-atom.   As $E$ is arbitrary, $\mu$ is
+atomless.
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $F\in\Tau$ and $\nu F>0$.   Because $\nu$ is
+semi-finite, there is an $F_1\subseteq F$ such that $0<\nu F_1<\infty$.
+Now $\mu\phi^{-1}[F_1]>0$;  because $\mu$ is purely atomic, there is a
+$\mu$-atom $E\subseteq\phi^{-1}[F_1]$.
+
+Let $\Cal G$ be the set of those $G\in\Tau$ such that $G\subseteq F_1$ and
+$\mu(E\cap\phi^{-1}[G])=0$.   Then the union of any sequence in $\Cal G$
+belongs to $\Cal G$, so by 215Ac there is an $H\in\Cal G$ such that
+$\nu(G\setminus H)=0$ whenever $G\in\Cal G$.   Consider $F_1\setminus H$.
+We have
+
+\Centerline{$\nu(F_1\setminus H)
+=\mu(\phi^{-1}[F_1]\setminus\phi^{-1}[H])
+\ge\mu(E\setminus\phi^{-1}[H])
+=\mu E>0$.}
+
+\noindent If $G\in\Tau$ and $G\subseteq F_1\setminus H$,
+then one of $E\cap\phi^{-1}[G]$, $E\setminus\phi^{-1}[G]$ is
+$\mu$-negligible.
+In the former case, $G\in\Cal G$ and $G=G\setminus H$ is $\nu$-negligible.
+In the
+latter case, $F_1\setminus G\in\Cal G$ and $(F_1\setminus H)\setminus G$ is
+$\nu$-negligible.   As $G$ is arbitrary, $F_1\setminus H$ is a $\nu$-atom
+included in $F$;  as $F$ is arbitrary, $\nu$ is purely atomic.
+
+\medskip
+
+{\bf (f)(i)} Let $F\in\Tau$ be such that $B\subseteq F$ and $\nu^*B=\nu F$
+(132Aa);  then $\phi^{-1}[B]\subseteq\phi^{-1}[F]$ so
+
+\Centerline{$\mu^*\phi^{-1}[B]\le\mu\phi^{-1}[F]=\nu F=\nu^*B$.}
+
+\medskip
+
+\quad{\bf (ii)} $\mu^*A\le\mu^*(\phi^{-1}[\phi[A]])\le\nu^*\phi[A]$ by (i).
+
+\medskip
+
+{\bf (g)} For any $W\in\Lambda$,
+
+\Centerline{$\mu(\psi\phi)^{-1}[W]=\mu\phi^{-1}[\psi^{-1}[W]]
+=\nu\psi^{-1}[W]=\lambda W$.}
+}%end of proof of 234B
+
+
+\leader{234C}{Image \dvrocolon{measures}}\dvAformerly{1{}12E}\cmmnt{ The
+following
+construction is one of the commonest ways in which new measure spaces
+appear.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a measure space, $Y$
+any set, and $\phi:X\to Y$ a function.   Set
+
+\Centerline{$\Tau=\{F:F\subseteq Y,\,\phi^{-1}[F]\in\Sigma\}$,
+\quad$\nu F=\mu(\phi^{-1}[F])$ for every $F\in\Tau$.}
+
+\noindent Then $(Y,\Tau,\nu)$ is a measure space.
+
+\proof{{\bf (a)} $\emptyset=\phi^{-1}[\emptyset]\in\Sigma$ so
+$\emptyset\in\Tau$.
+
+\medskip
+
+{\bf (b)} If $F\in\Tau$, then $\phi^{-1}[F]\in\Sigma$, so
+$X\setminus\phi^{-1}[F]\in\Sigma$;  but
+$X\setminus\phi^{-1}[F]=\phi^{-1}[Y\setminus F]$, so $Y\setminus
+F\in\Tau$.
+
+\medskip
+
+{\bf (c)} If $\sequencen{F_n}$ is a sequence in $\Tau$,
+then $\phi^{-1}[F_n]\in\Sigma$ for every $n$, so
+$\bigcup_{n\in\Bbb N}\phi^{-1}[F_n]\in\Sigma$;  but
+$\phi^{-1}[\bigcup_{n\in\Bbb N}F_n]=\bigcup_{n\in\Bbb N}\phi^{-1}[F_n]$,
+so $\bigcup_{n\in\Bbb N}F_n\in\Tau$.
+
+Thus $\Tau$ is a $\sigma$-algebra.
+
+\medskip
+
+{\bf (d)} $\nu\emptyset=\mu\phi^{-1}[\emptyset]=\mu\emptyset=0$.
+
+\medskip
+
+{\bf (e)} If $\sequencen{F_n}$ is a disjoint sequence in $\Tau$, then
+$\sequencen{\phi^{-1}[F_n]}$ is a disjoint sequence in $\Sigma$, so
+
+\Centerline{$\nu(\bigcup_{n\in\Bbb N}F_n)
+=\mu\phi^{-1}[\bigcup_{n\in\Bbb N}F_n]
+=\mu(\bigcup_{n\in\Bbb N}\phi^{-1}[F_n])
+=\sum_{n=0}^{\infty}\mu\phi^{-1}[F_n]
+=\sum_{n=0}^{\infty}\nu F_n$.}
+
+\noindent So $\nu$ is a measure.
+
+}%end of proof of 234C
+
+\leader{234D}{Definition}\dvAformerly{1{}12F}
+ In the context of 234C, $\nu$ is called
+the {\bf image measure}\cmmnt{ or {\bf push-forward measure}};  
+I will denote it $\mu\phi^{-1}$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} I ought perhaps to say that this construction does
+not always produce exactly the `right' measure on $Y$;  there are
+circumstances in which some modification of the measure $\mu\phi^{-1}$
+described here is more useful.   But I will note these explicitly when
+they occur;  when I use the unadorned phrase `image measure' I shall
+mean the measure constructed above.
+}%end of comment
+
+\leader{234E}{Proposition} Let $(X,\Sigma,\mu)$ be a measure space, $Y$ a
+set and $\phi:X\to Y$ a function;  let $\mu\phi^{-1}$ be the image measure
+on $Y$.
+
+(a) $\phi$ is \imp\ for $\mu$ and $\mu\phi^{-1}$.
+
+(b)\dvAformerly{2{}12Bd} If $\mu$ is complete, so is $\mu\phi^{-1}$.
+
+(c)\dvAformerly{1{}12Xd} If $Z$ is another set, and $\psi:Y\to Z$ a function,
+then the image measures $\mu(\psi\phi)^{-1}$ and $(\mu\phi^{-1})\psi^{-1}$
+on $Z$ are the same.
+
+\proof{{\bf (a)} Immediate from the definitions.
+
+\medskip
+
+{\bf (b)} Write $\nu$ for $\mu\phi^{-1}$ and $\Tau$ for its domain.   If
+$\nu^*B=0$, then $\mu^*\phi^{-1}[B]=0$, by 234B(f-i);  as $\mu$ is
+complete, $\phi^{-1}[B]\in\Sigma$, so $B\in\Tau$.   As $B$ is arbitrary,
+$\nu$ is complete.
+
+\medskip
+
+{\bf (c)} For $G\subseteq Z$ and $u\in[0,\infty]$,
+
+$$\eqalign{(\mu(\psi\phi)^{-1})(G)&\text{ is defined and equal to }u\cr
+&\iff\mu((\psi\phi)^{-1}[G])\text{ is defined and equal to }u\cr
+&\iff\mu(\phi^{-1}[\psi^{-1}[G]])\text{ is defined and equal to }u\cr
+&\iff(\mu\phi^{-1})(\psi^{-1}[G]))\text{ is defined and equal to }u\cr
+&\iff((\mu\phi^{-1})\psi^{-1})(G)\text{ is defined and equal to }u.\cr}$$
+
+}%end of proof of 234E
+
+
+\leader{*234F}{}\dvAformerly{1{}32G}\cmmnt{ In the opposite direction, the
+following construction of a pull-back measure is sometimes useful.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $X$ be a set, $(Y,\Tau,\nu)$ a measure
+space, and
+$\phi:X\to Y$ a function such that $\phi [X]$ has full outer measure in $Y$.
+Then there is a measure $\mu$ on $X$, with domain
+$\Sigma=\{\phi^{-1}[F]:F\in\Tau\}$, such that $\phi$ is \imp\ for $\mu$ and
+$\nu$.
+
+\proof{ The check that $\Sigma$ is a $\sigma$-algebra of subsets of
+$X$ is straightforward;  all we need to know is that
+$\phi^{-1}[\emptyset]=\emptyset$,
+$X\setminus\phi^{-1}[F]=\phi^{-1}[Y\setminus F]$ for every $F\subseteq Y$,
+and that
+$\phi^{-1}[\bigcup_{n\in\Bbb N}F_n]=\bigcup_{n\in\Bbb N}\phi^{-1}[F_n]$ for
+every sequence $\sequencen{F_n}$ of subsets of $Y$.   The key fact is
+that if $F_1$, $F_2\in\Tau$ and $\phi^{-1}[F_1]=\phi^{-1}[F_2]$,
+then $\phi[X]$ does not meet $F_1\symmdiff F_2$;  because $\phi[X]$ has full
+outer measure, $F_1\symmdiff F_2$ is $\nu$-negligible and
+$\nu F_1=\nu F_2$.   Accordingly the formula $\mu\phi^{-1}[F]=\nu F$
+does define a function $\mu:\Sigma\to[0,\infty]$.   Now
+
+\Centerline{$\mu\emptyset=\mu\phi^{-1}[\emptyset]=\nu\emptyset=0$.}
+
+\noindent Next, if $\sequencen{E_n}$ is a disjoint sequence in $\Sigma$,
+choose $F_n\in\Tau$ such that $E_n=\phi^{-1}[F_n]$ for each $n\in\Bbb N$.
+The sequence $\sequencen{F_n}$ need not be disjoint, but if we set
+$F'_n=F_n\setminus\bigcup_{i<n}F_i$ for each $n\in\Bbb N$, then
+$\sequencen{F'_n}$ is disjoint and
+
+\Centerline{$E_n=E_n\setminus\bigcup_{i<n}E_i=\phi^{-1}[F'_n]$}
+
+\noindent for each $n$;  so
+
+\Centerline{$\mu(\bigcup_{n\in\Bbb N}E_n)
+=\nu(\bigcup_{n\in\Bbb N}F'_n)
+=\sum_{n=0}^{\infty}\nu F'_n
+=\sum_{n=0}^{\infty}\mu E_n$.}
+
+\noindent As $\sequencen{E_n}$ is arbitrary, $\mu$ is a measure on
+$X$, as required.
+}%end of proof of 234F
+
+
+\leader{234G}{Sums of \dvrocolon{measures}}\dvAformerly{1{}12Ya;  
+1{}12Xe for sum of two measures}\cmmnt{ I come now to a quite
+different way of building measures.   The idea is an obvious one, but the
+technical details, in the general case I wish to examine, need watching.
+
+\medskip
+
+\noindent}{\bf Proposition}
+Let $X$ be a set, and $\familyiI{\mu_i}$ a family of measures on $X$.
+For each $i\in I$, let $\Sigma_i$ be the
+domain of $\mu_i$.   Set $\Sigma=\Cal PX\cap\bigcap_{i\in I}\Sigma_i$ and
+define $\mu:\Sigma\to[0,\infty]$ by setting $\mu E=\sum_{i\in I}\mu_iE$ for
+every $E\in\Sigma$.   Then $\mu$ is a measure on $X$.
+
+\proof{ $\Sigma$ is a $\sigma$-algebra of subsets of $X$ because every
+$\Sigma_i$ is.   (Apply 111Ga with
+$\frak S=\{\Sigma_i:i\in I\}\cup\{\Cal PX\}$.)
+Of course $\mu$ takes values in $[0,\infty]$ (226A).
+$\mu\emptyset=0$ because $\mu_i\emptyset=0$ for every $i$.   If
+$\sequencen{E_n}$ is a disjoint sequence in $\Sigma$ with union $E$, then
+
+$$\eqalignno{\mu E
+&=\sum_{i\in I}\mu_iE
+=\sum_{i\in I}\sum_{n=0}^{\infty}\mu_iE_n
+=\sum_{n=0}^{\infty}\sum_{i\in I}\mu_iE_n\cr
+\displaycause{226Af}
+&=\sum_{n=0}^{\infty}\mu E_n.\cr}$$
+
+\noindent So $\mu$ is a measure.
+}%end of proof of 234G
+
+\medskip
+
+\noindent{\bf Remark} In this context, I will call $\mu$ the {\bf sum} of
+the family $\familyiI{\mu_i}$.
+
+\leader{234H}{Proposition}\dvAnew{2008}
+ Let $X$ be a set and $\familyiI{\mu_i}$ a family
+of complete measures on $X$ with sum $\mu$.
+
+(a) $\mu$ is complete.
+
+(b)(i) A subset of $X$ is $\mu$-negligible iff it is $\mu_i$-negligible for
+every $i\in I$.
+
+\quad(ii) A subset of $X$ is $\mu$-conegligible iff it is
+$\mu_i$-conegligible for every $i\in I$.
+
+(c)\dvAformerly{2{}12Xh, for sum of two measures}
+ Let $f$ be a function from a subset of $X$ to $[-\infty,\infty]$.
+Then $\int fd\mu$ is defined in $[-\infty,\infty]$ iff $\int fd\mu_i$ is
+defined in $[-\infty,\infty]$ for every $i$ and one of
+$\sum_{i\in I}f^+d\mu_i$, $\sum_{i\in I}f^-d\mu_i$ is finite, and in this
+case $\int fd\mu=\sum_{i\in I}\int fd\mu_i$.
+
+\proof{ Write $\Sigma_i=\dom\mu_i$ for $i\in I$,
+$\Sigma=\Cal PX\cap\bigcap_{i\in I}\Sigma_i=\dom\mu$.
+
+\medskip
+
+{\bf (a)} If $E\subseteq F\in\Sigma$ and $\mu F=0$, then $\mu_iF=0$ for
+every $i\in I$;  because $\mu_i$ is complete, $E_i\in\Sigma_i$ for
+every $i\in I$, and $E\in\Sigma$.
+
+\medskip
+
+{\bf (b)} This now follows at once, since a set $A\subseteq X$ is
+$\mu$-negligible iff $\mu A=0$.
+
+\medskip
+
+{\bf (c)(i)} Note first that (b-ii) tells us that, under either hypothesis,
+$\dom f$ is conegligible both for $\mu$ and for every $\mu_i$, so that
+if we extend $f$ to $X$ by giving it the value $0$ on $X\setminus\dom f$
+then neither $\int fd\mu$ nor $\sum_{i\in I}\int fd\mu_i$ is affected.   So
+let us assume from now on that $f$ is defined everywhere on $X$.   Now it
+is plain that
+either hypothesis ensures that $f$ is $\Sigma$-measurable, that is, is
+$\Sigma_i$-measurable for every $i\in I$.
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $f$ is non-negative.
+For $n\in\Bbb N$ set
+$f_n(x)=\sum_{k=1}^{4^n}2^{-n}\chi\{x:f(x)\ge 2^{-n}k\}$, so that
+$\sequencen{f_n}$ is a non-decreasing sequence with supremum $f$.  We have
+
+$$\eqalign{\int f_nd\mu
+&=\sum_{k=1}^{4^n}2^{-n}\mu\{x:f(x)\ge 2^{-n}k\}
+=\sum_{k=1}^{4^n}\sum_{i\in I}2^{-n}\mu_i\{x:f(x)\ge 2^{-n}k\}\cr
+&=\sum_{i\in I}\sum_{k=1}^{4^n}2^{-n}\mu_i\{x:f(x)\ge 2^{-n}k\}
+=\sum_{i\in I}\int f_nd\mu_i\cr}$$
+
+\noindent for every $n$, so
+
+$$\eqalign{\int fd\mu
+&=\sup_{n\in\Bbb N}\int f_nd\mu
+=\sup_{n\in\Bbb N}\sup_{J\subseteq I\text{ is finite}}
+   \sum_{i\in J}\int f_nd\mu_i
+=\sup_{J\subseteq I\text{ is finite}}\sup_{n\in\Bbb N}
+   \sum_{i\in J}\int f_nd\mu_i\cr
+&=\sup_{J\subseteq I\text{ is finite}}
+   \lim_{n\to\infty}\sum_{i\in J}\int f_nd\mu_i
+=\sup_{J\subseteq I\text{ is finite}}
+   \sum_{i\in J}\lim_{n\to\infty}\int f_nd\mu_i
+=\sum_{i\in I}\int fd\mu_i.\cr}$$
+
+\medskip
+
+\quad{\bf (iii)} Generally,
+
+$$\eqalign{\int fd\mu&\text{ is defined in }[\infty,\infty]\cr
+&\iff\int f^+d\mu\text{ and }\int f^-d\mu
+  \text{ are defined and at most one is infinite}\cr
+&\iff\sum_{i\in I}\int f^+d\mu_i\text{ and }\sum_{i\in I}\int f^-d\mu_i
+  \text{ are defined and at most one is infinite}\cr
+&\iff\int fd\mu_i\text{ is defined for every }i
+  \text{ and at most one of }\sum_{i\in I}\int f^+d\mu_i,\cr
+&\mskip400mu
+  \sum_{i\in I}\int f^-d\mu_i\text{ is infinite},\cr}$$
+
+\noindent and in this case
+
+\Centerline{$\int fd\mu
+=\int f^+d\mu-\int f^-d\mu
+=\sum_{i\in I}\int f^+d\mu_i-\sum_{i\in I}\int f^-d\mu_i
+=\sum_{i\in I}\int fd\mu_i$.}
+}%end of proof of 234H
+
+\leader{234I}{Indefinite-integral
+\dvrocolon{measures}}\dvAformerly{2{}34A}\cmmnt{ Extending an
+idea already used in 232D, we are led to the following construction;  once
+again, we need to take care over the formal details if we want
+to get full value from it.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $(X,\Sigma,\mu)$ be a measure
+space, and $f$ a non-negative $\mu$-virtually measurable real-valued
+function defined on a conegligible subset of $X$.   Write
+$\nu F=\int f\times\chi F\,d\mu$ whenever $F\subseteq X$ is such that
+the integral is
+defined in $[0,\infty]$\cmmnt{ according to the conventions of 133A}.
+Then $\nu$ is a complete measure on $X$, and its domain includes
+$\Sigma$.
+%the trouble with taking [0,\infty]-valued functions is that if
+%I allow  f=\infty  on a non-negligible set then  \nu  becomes
+%non-semi-finite for a silly reason
+
+\proof{{\bf (a)} Write $\Tau$ for the domain of $\nu$, that is, the
+family of sets $F\subseteq X$ such that $\int f\times\chi F\,d\mu$ is
+defined in
+$[0,\infty]$, that is, $f\times\chi F$ is $\mu$-virtually measurable
+(133A).   Then $\Tau$ is a $\sigma$-algebra of subsets of $X$.   \Prf\
+For each $F\in\Tau$ let $H_F\subseteq X$ be a $\mu$-conegligible set
+such that $f\times\chi F\restr H_F$ is $\Sigma$-measurable.   Because
+$f$ itself is $\mu$-virtually measurable, $X\in\Tau$.   If $F\in\Tau$,
+then
+
+\Centerline{$f\times\chi(X\setminus F)\restr(H_X\cap H_F)
+=f\restr(H_X\cap H_F)-(f\times\chi F)\restr(H_X\cap H_F)$}
+
+\noindent is $\Sigma$-measurable, while $H_X\cap H_F$ is
+$\mu$-conegligible, so $X\setminus F\in\Tau$.   If $\sequencen{F_n}$ is
+a sequence in $\Tau$ with union $F$, set
+$H=\bigcap_{n\in\Bbb N}H_{F_n}$;
+then $H$ is conegligible, $f\times\chi F_n\restr H$ is $\Sigma$-measurable
+for every $n\in\Bbb N$, and
+$f\times\chi F=\sup_{n\in\Bbb N}f\times\chi F_n$, so
+$f\times\chi F\restr H$ is $\Sigma$-measurable, and $F\in\Tau$.   Thus
+$\Tau$ is a $\sigma$-algebra.   If $F\in\Sigma$, then
+$f\times\chi F\restr H_X$ is $\Sigma$-measurable, so $F\in\Tau$.\ \Qed
+
+\medskip
+
+{\bf (b)} Next, $\nu$ is a measure.   \Prf\ Of course
+$\nu F\in[0,\infty]$
+for every $F\in\Tau$.   $f\times\chi\emptyset=0$ wherever it is defined,
+so $\nu\emptyset=0$.   If $\sequencen{F_n}$ is a disjoint sequence in
+$\Tau$ with union $F$, then
+$f\times\chi F=\sum_{n=0}^{\infty}f\times\chi F_n$.
+If $\nu F_m=\infty$ for some $m$, then we surely have
+$\nu F=\infty=\sum_{n=0}^{\infty}\nu F_n$.   If $\nu F_m<\infty$ for
+each $m$ but $\sum_{n=0}^{\infty}\nu F_n=\infty$, then
+
+\Centerline{$\int f\times\chi(\bigcup_{n\le m}F_n)
+=\sum_{n=0}^m\int f\times\chi F_n\to\infty$}
+
+\noindent as $m\to\infty$, so again
+$\nu F=\infty=\sum_{n=0}^{\infty}\nu F_n$.   If
+$\sum_{n=0}^{\infty}\nu F_n<\infty$ then by B.Levi's theorem
+
+\Centerline{$\nu F=\int\sum_{n=0}^{\infty}f\times\chi F_n
+=\sum_{n=0}^{\infty}\int f\times\chi F_n
+=\sum_{n=0}^{\infty}\nu F_n$.
+\Qed}
+
+\medskip
+
+{\bf (c)} Finally, $\nu$ is complete.   \Prf\ If $A\subseteq F\in\Tau$
+and $\nu F=0$, then $f\times\chi F=0$ a.e., so $f\times\chi A=0$ a.e.\
+and $\nu A$ is defined and equal to zero.\ \Qed
+}%end of proof of 234I
+
+\leader{234J}{Definition}\dvAformerly{2{}34B}
+Let $(X,\Sigma,\mu)$ be a measure space, and
+$\nu$ another measure on $X$ with domain $\Tau$.   I will call $\nu$ an
+{\bf indefinite-integral measure} over $\mu$, or sometimes a {\bf
+completed indefinite-integral measure}, if it can be obtained by the
+method of 234I
+from some non-negative virtually measurable function $f$ defined almost
+everywhere on $X$.   In this case, $f$ is a Radon-Nikod\'ym derivative 
+of $\nu$ with respect to $\mu$ in the sense of 232Hf.
+\cmmnt{As in 232Hf, the phrase {\bf density function} is also used in
+this context.}
+
+\leader{234K}{Remarks}\dvAformerly{2{}34C}
+Let $(X,\Sigma,\mu)$ be a measure space, and $f$
+a $\mu$-virtually measurable non-negative real-valued function defined
+almost everywhere
+on $X$;  let $\nu$ be the associated indefinite-integral measure.
+
+\spheader 234Ka\cmmnt{ There is a $\Sigma$-measurable function
+$g:X\to\coint{0,\infty}$ such that $f=g\,\,\mu$-a.e.   \Prf\ Let
+$H\subseteq\dom f$ be a measurable conegligible set such that
+$f\restr H$ is measurable, and set $g(x)=f(x)$ for $x\in H$, $g(x)=0$
+for $x\in X\setminus H$.\ \QeD\    In
+this case, $\int f\times\chi E\,d\mu=\int g\times\chi E\,d\mu$ if either
+is defined.   So $g$ is a Radon-Nikod\'ym derivative of $\nu$, and}
+$\nu$ has a
+Radon-Nikod\'ym derivative which is $\Sigma$-measurable and defined
+everywhere.
+
+%includes old 2{}34Ce
+\spheader 234Kb If $E$ is $\mu$-negligible, 
+then\cmmnt{ $f\times\chi E=0\,\,\mu$-a.e., so} $\nu E=0$.   
+\cmmnt{Many authors are prepared to say `$\nu$ is
+absolutely continuous with respect to $\mu$' in this context.   But if
+$\nu$ is not totally finite, it need not be
+absolutely continuous in the
+$\epsilon$-$\delta$ sense of 232Aa (234Xh), and
+further difficulties can arise if $\mu$ or $\nu$ is not $\sigma$-finite
+(see 234Yk, 234Ym).
+}%end of comment
+
+\cmmnt{\spheader 234Kc I have defined `indefinite-integral measure' in
+such a way as to produce a complete measure.   In my view this is what
+makes best sense in most applications.   There are occasions on which it
+seems more appropriate to use the measure $\nu_0:\Sigma\to[0,\infty]$
+defined by
+setting $\nu_0 E=\int_Efd\mu=\int f\times\chi E\,d\mu$ for $E\in\Sigma$.
+I suppose I would call this the {\bf uncompleted indefinite-integral
+measure} over $\mu$ defined by $f$.   ($\nu$ is always the
+completion of $\nu_0$;  see 234Lb.)
+}%end of comment
+
+\spheader 234Kd\cmmnt{ Note the way in which I formulated the
+definition of $\nu$:  `$\nu E=\int f\times\chi E\,d\mu$ if the integral
+is defined',
+rather than `$\nu E=\int_Efd\mu$'.   The point is that the longer
+formula gives a rule for deciding what the domain of $\nu$ must be.   Of
+course it is the case that} $\nu E=\int_Efd\mu$ for every
+$E\in\dom\nu$\cmmnt{ (apply 214F to $f\times\chi E$)}.
+
+\spheader 234Ke\dvAnew{2008}
+\cmmnt{Because }$\mu$ and its completion define the 
+same\cmmnt{ virtually measurable functions, the same null ideals and the same
+integrals\cmmnt{ (212Eb, 212F)},
+they define the same} indefinite-integral measures.
+
+\leader{234L}{The domain of an indefinite-integral
+\dvrocolon{measure}}\dvAformerly{2{}34D}\cmmnt{ It is sometimes useful
+to have an explicit description of the domain of a measure constructed
+in this way.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a measure space, $f$
+a non-negative $\mu$-virtually measurable function defined almost
+everywhere
+in $X$, and $\nu$ the associated indefinite-integral measure.   Set
+$G=\{x:x\in\dom f$, $f(x)>0\}$, and let $\hat\Sigma$ be the domain of the
+completion $\hat\mu$ of $\mu$.
+
+(a) The domain $\Tau$ of $\nu$ is
+$\{E:E\subseteq X,\,E\cap G\in\hat\Sigma\}$;  \cmmnt{in particular,}
+$\Tau\supseteq\hat\Sigma\supseteq\Sigma$.
+
+(b) $\nu$ is the completion of its restriction to $\Sigma$.
+
+(c) A set $A\subseteq X$ is $\nu$-negligible iff $A\cap G$ is
+$\mu$-negligible.
+
+(d) In particular, if $\mu$\cmmnt{ itself} is complete, then
+$\Tau=\{E:E\subseteq X,\,E\cap G\in\Sigma\}$ and $\nu A=0$ iff
+$\mu(A\cap G)=0$.
+
+\proof{{\bf (a)(i)} If $E\in\Tau$, then $f\times\chi E$ is virtually
+measurable, so there is a conegligible measurable set $H\subseteq\dom f$
+such that $f\times\chi E\restr H$ is measurable.   Now $E\cap G\cap
+H=\{x:x\in H,\,(f\times\chi E)(x)>0\}$ must belong to $\Sigma$, while
+$E\cap G\setminus H$ is negligible, so belongs to $\hat\Sigma$, and
+$E\cap G\in\hat\Sigma$.
+
+\medskip
+
+\quad{\bf (ii)} If $E\cap G\in\hat\Sigma$, let $F_1$, $F_2\in\Sigma$ be
+such that $F_1\subseteq E\cap G\subseteq F_2$ and $F_2\setminus F_1$ is
+negligible.   Let $H\subseteq\dom f$ be a conegligible set such that
+$f\restr H$ is measurable.   Then $H'=H\setminus(F_2\setminus F_1)$ is
+conegligible and $f\times\chi E\restr H'=f\times\chi F_1\restr H'$ is
+measurable, so $f\times\chi E$ is virtually measurable and $E\in\Tau$.
+
+\medskip
+
+{\bf (b)} Thus the given formula does indeed describe $\Tau$.   If
+$E\in\Tau$, let $F_1$, $F_2\in\Sigma$ be such that
+$F_1\subseteq E\cap G\subseteq F_2$ and $\mu(F_2\setminus F_1)=0$.
+Because $G$ itself also
+belongs to $\hat\Sigma$, there are $G_1$, $G_2\in\Sigma$ such that
+$G_1\subseteq G\subseteq G_2$ and $\mu(G_2\setminus G_1)=0$.   Set
+$F_2'=F_2\cup(X\setminus G_1)$.   Then $F_2'\in\Sigma$ and
+$F_1\subseteq E\subseteq F'_2$.   But
+$(F'_2\setminus F_1)\cap G
+\subseteq(G_2\setminus G_1)\cup(F_2\setminus F_1)$ is $\mu$-negligible, so
+$\nu(F'_2\setminus F_1)=0$.
+
+This shows that if $\nuprime$ is the completion of $\nu\restr\Sigma$
+and $\Tau'$ is its domain, then $\Tau\subseteq\Tau'$.   But as
+$\nu$ is complete, it surely extends $\nuprime$, so $\nu=\nuprime$, as
+claimed.
+
+\medskip
+
+{\bf (c)} Now take any $A\subseteq X$.   Because $\nu$ is complete,
+
+$$\eqalign{A\text{ is }\nu\text{-negligible}
+&\iff\nu A=0\cr
+&\iff\int f\times\chi A\,d\mu=0\cr
+&\iff f\times\chi A=0\,\,\mu\text{-a.e.}\cr
+&\iff A\cap G\text{ is }\mu\text{-negligible.}\cr}$$
+
+\medskip
+
+{\bf (d)} This is just a restatement of (a) and (c) when $\mu=\hat\mu$.
+}%end of proof of 234L
+
+\leader{234M}{Corollary}\dvAformerly{2{}34E}
+ If $(X,\Sigma,\mu)$ is a complete measure
+space and $G\in\Sigma$, then the indefinite-integral measure over $\mu$
+defined by $\chi G$ is just the measure $\mu\LLcorner G$ defined by
+setting
+
+\Centerline{$(\mu\LLcorner G)(F)=\mu(F\cap G)$ whenever $F\subseteq X$
+and $F\cap G\in\Sigma$.}
+
+\proof{ 234Ld.
+}%end of proof of 234M
+
+\leader{*234N}{}\cmmnt{ The next two results will not be relied on in
+this
+volume, but I include them for future reference, and to give an idea of
+the scope of these ideas.
+
+\medskip
+
+\noindent}{\bf Proposition}\dvAformerly{2{}34F}
+Let $(X,\Sigma,\mu)$ be a measure space, and
+$\nu$ an indefinite-integral measure over $\mu$.
+
+(a) If $\mu$ is semi-finite, so is $\nu$.
+
+(b) If $\mu$ is complete and locally determined, so is $\nu$.
+
+(c) If $\mu$ is localizable, so is $\nu$.
+
+(d) If $\mu$ is strictly localizable, so is $\nu$.
+
+(e) If $\mu$ is $\sigma$-finite, so is $\nu$.
+
+(f) If $\mu$ is atomless, so is $\nu$.
+
+\proof{ By 234Ka, we may express $\nu$ as the indefinite integral of a
+$\Sigma$-measurable function $f:X\to\coint{0,\infty}$.   Let $\Tau$ be
+the domain of $\nu$, and $\hat\Sigma$ the domain of the completion
+$\hat\mu$ of
+$\mu$;  set $G=\{x:x\in X,\,f(x)>0\}\in\Sigma$.
+
+\medskip
+
+{\bf (a)} Suppose that $E\in\Tau$ and that $\nu E=\infty$.   Then
+$E\cap G$ cannot be $\mu$-negligible.
+Because $\mu$ is semi-finite, there is a non-negligible $F\in\Sigma$
+such that $F\subseteq E\cap G$ and $\mu F<\infty$.   Now
+$F=\bigcup_{n\in\Bbb N}\{x:x\in F$, $2^{-n}\le f(x)\le n\}$, so there
+is an $n\in\Bbb N$ such
+that $F'=\{x:x\in F$, $2^{-n}\le f(x)\le n\}$ is non-negligible.
+Because $f$ is measurable, $F'\in\Sigma\subseteq\Tau$ and
+$2^{-n}\mu F'\le\nu F'\le n\mu F'$.   Thus we have found an
+$F'\subseteq E$ such
+that $0<\nu F'<\infty$.   As $E$ is arbitrary, $\nu$ is semi-finite.
+
+\medskip
+
+{\bf (b)} We already know that $\nu$ is complete (234Lb) and semi-finite.   Now
+suppose that $E\subseteq X$ is such that $E\cap F\in\Tau$, that is,
+$E\cap F\cap G\in\Sigma$ (234Ld), whenever $F\in\Tau$ and $\nu F<\infty$.   Then
+$E\cap G\cap F\in\Sigma$ whenever
+$F\in\Sigma$ and $\mu F<\infty$.   \Prf\ Set
+$F_n=\{x:x\in F\cap G,\,f(x)\le n\}$.   Then
+$\nu F_n\le n\mu F<\infty$, so $E\cap G\cap F_n\in\Sigma$ for every $n$.
+But this means that
+$E\cap G\cap F=\bigcup_{n\in\Bbb N}E\cap G\cap F_n\in\Sigma$.\ \QeD\   
+Because $\mu$ is locally determined, $E\cap G\in\Sigma$ and $E\in\Tau$.   
+As $E$ is arbitrary, $\nu$ is locally determined.
+
+\medskip
+
+{\bf (c)} Let $\Cal F\subseteq\Tau$ be any set.   Set
+$\Cal E=\{F\cap G:F\in\Cal F\}$, so that $\Cal E\subseteq\hat\Sigma$.   By
+212Ga, $\hat\mu$
+is localizable, so $\Cal E$ has an essential supremum $H\in\hat\Sigma$.
+But now, for any $H'\in\Tau$,
+$H'\cup(X\setminus G)=(H'\cap G)\cup(X\setminus G)$ belongs to
+$\hat\Sigma$, so
+
+$$\eqalign{\nu(F\setminus H')&=0\text{ for every }F\in\Cal F\cr
+&\iff\hat\mu(F\cap G\setminus H')=0\text{ for every }F\in\Cal F\cr
+&\iff\hat\mu(E\setminus H')=0\text{ for every }E\in\Cal E\cr
+&\iff\hat\mu(E\setminus(H'\cup(X\setminus G)))=0
+  \text{ for every }E\in\Cal E\cr
+&\iff\hat\mu(H\setminus((H'\cup(X\setminus G)))=0\cr
+&\iff\hat\mu(H\cap G\setminus H')=0\cr
+&\iff\nu(H\setminus H')=0.\cr}$$
+
+\noindent Thus $H$ is also an essential supremum of $\Cal F$ in $\Tau$.
+As $\Cal F$ is arbitrary, $\nu$ is localizable.
+
+\medskip
+
+{\bf (d)} Let
+$\langle X_i\rangle_{i\in I}$ be a decomposition of $X$ for $\mu$;
+then it is also a decomposition for $\hat\mu$ (212Gb).
+Set $F_0=X\setminus G$, $F_n=\{x:x\in G,\,n-1<f(x)\le n\}$ for $n\ge 1$.
+Then $\langle X_i\cap F_n\rangle_{i\in I,n\in\Bbb N}$ is a decomposition
+for $\nu$.   \Prf\ (i) $\langle X_i\rangle_{i\in I}$ and
+$\langle F_n\rangle_{n\in\Bbb N}$ are partitions of $X$ into members of $\Sigma\subseteq\Tau$, so
+$\langle X_i\cap F_n\rangle_{i\in I,n\in\Bbb N}$ also is.
+(ii)  $\nu(X_i\cap F_0)=0$,
+$\nu(X_i\cap F_n)\le n\mu X_i<\infty$ for $i\in I$, $n\ge 1$.
+(iii) If $E\subseteq X$ and $E\cap X_i\cap F_n\in\Tau$ for every
+$i\in I$ and $n\in\Bbb N$ then
+$E\cap X_i\cap G=\bigcup_{n\in\Bbb N}E\cap X_i\cap F_n\cap G$ belongs to
+$\hat\Sigma$ for every $i$, so $E\cap G\in\hat\Sigma$ and
+$E\in\Tau$.
+(iv) If $E\in\Tau$, then of course
+
+\Centerline{$\sum_{i\in I,n\in\Bbb N}\nu(E\cap X_i\cap F_n)
+=\sup_{J\subseteq I\times\Bbb N\text{ is finite}}
+  \sum_{(i,n)\in J}\nu(E\cap X_i\cap F_n)\le\nu E$.}
+
+\noindent So if $\sum_{i\in I,n\in\Bbb N}\nu(E\cap X_i\cap F_n)=\infty$
+it is surely equal to $\nu E$.   If the sum is finite, then
+$K=\{i:i\in I,\,\nu(E\cap X_i)>0\}$ must be countable.   But for
+$i\in I\setminus K$,
+$\int_{E\cap X_i}fd\mu=0$, so $f=0\,\,\mu$-a.e.\ on $E\cap X_i$, that
+is, $\hat\mu(E\cap G\cap X_i)=0$.   Because
+$\langle X_i\rangle_{i\in I}$ is a decomposition for $\hat\mu$,
+$\hat\mu(E\cap G\cap\bigcup_{i\in I\setminus K}X_i)=0$ and
+$\nu(E\cap\bigcup_{i\in I\setminus K}X_i)=0$.   But this
+means that
+
+\Centerline{$\nu E=\sum_{i\in K}\nu(E\cap X_i)
+=\sum_{i\in K,n\in\Bbb N}\nu(E\cap X_i\cap F_n)
+=\sum_{i\in I,n\in\Bbb N}\nu(E\cap X_i\cap F_n)$.}
+
+\noindent As $E$ is arbitrary,
+$\langle X_i\cap F_n\rangle_{i\in I,n\in\Bbb N}$ is a decomposition for
+$\nu$.\ \QeD\   So $\nu$ is strictly localizable.
+
+\medskip
+
+{\bf (e)} If $\mu$ is $\sigma$-finite, then in (d) we can take $I$ to be
+countable, so that $I\times\Bbb N$ also is countable, and $\nu$ will be
+$\sigma$-finite.
+
+\medskip
+
+{\bf (f)} If $\mu$ is atomless, so is $\hat\mu$ (212Gd).   If $E\in\Tau$
+and $\nu E>0$, then $\hat\mu(E\cap G)>0$, so there is an $F\in\hat\Sigma$
+such that $F\subseteq E\cap G$ and
+neither $F$ nor $E\cap G\setminus F$ is $\hat\mu$-negligible.   But in this case both $\nu F=\int_Ffd\mu$ and
+$\nu(E\setminus F)=\int_{E\setminus F}fd\mu$ must be greater than $0$
+(122Rc).   As $E$ is arbitrary, $\nu$ is atomless.
+}%end of proof of 234N
+
+\leader{*234O}{}\cmmnt{ For localizable measures, there is a
+straightforward description of the associated indefinite-integral
+measures.
+
+\medskip
+
+\noindent}{\bf Theorem}\dvAformerly{2{}34G}
+ Let $(X,\Sigma,\mu)$ be a localizable measure
+space.   Then a measure $\nu$, with domain $\Tau\supseteq\Sigma$, is an
+indefinite-integral measure over $\mu$ iff ($\alpha$) $\nu$ is
+semi-finite
+and zero on $\mu$-negligible sets ($\beta$) $\nu$ is the completion of
+its restriction to $\Sigma$ ($\gamma$) whenever $\nu E>0$ there is an
+$F\subseteq E$ such that $F\in\Sigma$, $\mu F<\infty$ and $\nu F>0$.
+
+\proof{{\bf (a)} If $\nu$ is an indefinite-integral measure over $\nu$,
+then by 234Na, 234Kb and 234Lb it is semi-finite, zero on
+$\mu$-negligible sets and the completion of its restriction to $\Sigma$.
+Now suppose that $E\in\Tau$ and $\nu E>0$.   Then there is an
+$E_0\in\Sigma$
+such that $E_0\subseteq E$ and $\nu E_0=\nu E$, by 234Lb.   If
+$f:X\to\Bbb R$ is a $\Sigma$-measurable
+Radon-Nikod\'ym derivative of $\nu$ (234Ka), and $G=\{x:f(x)>0\}$, then
+$\mu(G\cap E_0)>0$;  because $\mu$ is semi-finite, there is an
+$F\in\Sigma$ such that
+$F\subseteq G\cap E_0$ and $0<\mu F<\infty$, in which case $\nu F>0$.
+
+\medskip
+
+{\bf (b)} So now suppose that $\nu$ satisfies the conditions.
+
+\medskip
+
+\quad{\bf (i)} Set $\Cal E=\{E:E\in\Sigma,\,\nu E<\infty\}$.   For
+each $E\in\Cal E$, consider $\nu_E:\Sigma\to\Bbb R$, setting
+$\nu_EG=\nu(G\cap E)$ for every $G\in\Sigma$.   Then $\nu_E$ is
+countably additive and truly continuous with respect to $\mu$.   \Prf\
+$\nu_E$ is countably additive, just as in 231De.   Because $\nu$ is zero
+on $\mu$-negligible sets, $\nu_E$ must
+be absolutely continuous with respect to $\mu$, by 232Ba.   Since
+$\nu_E$ clearly satisfies condition ($\gamma$) of 232Bb,
+it must be truly continuous.\ \Qed
+
+By 232E, there is a $\mu$-integrable function $f_E$ such that
+$\nu_EG=\int_Gf_Ed\mu$ for every $G\in\Sigma$, and we may suppose that
+$f_E$ is $\Sigma$-measurable (232He).   Because $\nu_E$ is non-negative, $f_E\ge
+0\,\,\mu$-almost everywhere.
+
+\medskip
+
+\quad{\bf (ii)} If $E$, $F\in\Cal E$ then $f_E=f_F\,\,\mu$-a.e. on
+$E\cap F$, because
+
+\Centerline{$\int_Gf_Ed\mu=\nu G=\int_Gf_Fd\mu$}
+
+\noindent whenever $G\in\Sigma$ and $G\subseteq E\cap F$.   Because
+$(X,\Sigma,\mu)$ is localizable, there is a measurable $f:X\to\Bbb R$
+such that $f_E=f\,\,\mu$-a.e.\ on $E$ for every $E\in\Cal E$ (213N).
+Because every $f_E$ is non-negative almost everywhere, we may suppose
+that
+$f$ is non-negative, since surely $f_E=f\vee\tbf{0}\,\,\mu$-a.e. on $E$
+for
+every $E\in\Cal E$.
+
+\medskip
+
+\quad{\bf (iii)} Let $\nuprime$ be the indefinite-integral measure
+defined by $f$.   If $E\in\Cal E$ then
+
+\Centerline{$\nu E=\int_Ef_Ed\mu=\int_Efd\mu=\nuprime E$.}
+\noindent For $E\in\Sigma\setminus\Cal E$, we have
+
+\Centerline{$\nuprime E
+\ge\sup\{\nuprime F:F\in\Cal E,\,F\subseteq E\}
+=\sup\{\nu F:F\in\Cal E,\,F\subseteq E\}=\nu E=\infty$}
+
+\noindent because $\nu$ is semi-finite.   Thus $\nuprime$ and $\nu$
+agree on $\Sigma$.  But since each is the completion of its restriction
+to $\Sigma$, they must be equal.
+}%end of proof of 234O
+
+\leader{234P}{Ordering \dvrocolon{measures}}\cmmnt{ There are many ways in
+which one measure can dominate another.   Here I will describe one of the
+simplest.
+
+\medskip
+
+\noindent}{\bf Definition}\dvAnew{2008}
+Let $\mu$, $\nu$ be two measures on a set $X$.
+I will say that $\mu\le\nu$ if $\mu E$ is defined, and $\mu E\le\nu E$,
+whenever $\nu$ measures $E$.
+
+\leader{234Q}{Proposition}\dvAnew{2008}
+Let $X$ be a set, and write $\Mu$ for the set of
+all measures on $X$.
+
+(a) Defining $\le$ as in 234P, $(\Mu,\le)$ is a partially ordered set.
+
+(b) If $\mu$, $\nu\in\Mu$, then $\mu\le\nu$ iff there is a $\lambda\in\Mu$
+such that $\mu+\lambda=\nu$.
+
+(c) If $\mu\le\nu$ in $\Mu$ and $f$ is a $[-\infty,\infty]$-valued
+function,
+defined on a subset of $X$, such that $\int fd\nu$ is defined in
+$[-\infty,\infty]$, then $\int fd\mu$ is defined;  if $f$ is non-negative,
+$\int fd\mu\le\int fd\nu$.
+
+\proof{{\bf (a)} Of course $\mu\le\mu$ for every $\mu\in\Mu$.
+If $\mu\le\nu$ and $\nu\le\lambda$ in $\Mu$, then
+$\dom\lambda\subseteq\dom\nu\subseteq\dom\mu$, and
+$\mu E\le\nu E\le\lambda E$ whenever $\lambda$ measures $E$.
+If $\mu\le\nu$ and $\nu\le\mu$ then
+$\dom\mu\subseteq\dom\nu\subseteq\dom\mu$ and $\mu E\le\nu E\le\mu E$ for
+every $E$ in their common domain, so $\mu=\nu$.
+
+\medskip
+
+{\bf (b)(i)}
+If $\mu+\lambda=\nu$, then the definitions in 234G and 234P make
+it plain that $\mu\le\nu$.
+
+\medskip
+
+\quad{\bf (ii)}\grheada\ In the reverse direction, if $\mu\le\nu$,
+write $\Tau$ for the domain of $\nu$.
+Define $\lambda:\Tau\to[0,\infty]$ by setting
+
+\Centerline{$\lambda G
+=\sup\{\nu F-\mu F:F\in\Tau,\,F\subseteq G,\,\mu F<\infty\}$}
+
+\noindent for $G\in\Tau$.
+Then $\lambda\in\Mu$.   \Prf\ Of course $\dom\lambda=\Tau$ is a
+$\sigma$-algebra, and $\lambda\emptyset=0$.   Suppose that
+$\sequencen{G_n}$ is a
+disjoint sequence in $\Tau$ with union $G$.
+If $F\in\Tau$, $F\subseteq G$ and $\mu F<\infty$, then
+
+$$\eqalign{\nu F-\mu F
+&=\sum_{n=0}^{\infty}\nu(F\cap G_n)-\sum_{n=0}^{\infty}\mu(F\cap G_n)\cr
+&=\sum_{n=0}^{\infty}\nu(F\cap G_n)-\mu(F\cap G_n)
+\le\sum_{n=0}^{\infty}\lambda G_n;\cr}$$
+
+\noindent as $F$ is arbitrary,
+$\lambda G\le\sum_{n=0}^{\infty}\lambda G_n$.   If
+$\gamma<\sum_{n=0}^{\infty}\lambda G_n$, there are an $m\in\Bbb N$ such
+that $\gamma<\sum_{n=0}^m\lambda G_n$, and $F_0,\ldots,F_m$ such that
+$F_n\in\Tau$, $F_n\subseteq G_n$ and $\mu F_n<\infty$ for every $n\le m$,
+while $\sum_{n=0}^m\nu F_n-\mu F_n\ge\gamma$.   Set
+$F=\bigcup_{n\le m}F_n$;  then $F\in\Tau$, $F\subseteq G$ and
+$\mu F<\infty$, so
+
+\Centerline{$\lambda G\ge\nu F-\mu F
+=\sum_{n=0}^m\nu F_n-\mu F_n\ge\gamma$.}
+
+\noindent As $\gamma$ is arbitrary,
+$\lambda G\ge\sum_{n=0}^{\infty}\lambda G_n$;  as $\sequencen{G_n}$ is
+arbitrary, $\lambda$ is countably additive.\ \Qed
+
+\medskip
+
+\qquad\grheadb\ Now $\mu+\lambda=\nu$.   \Prf\ The domain of $\mu+\lambda$
+is $\dom\mu\cap\dom\lambda=\Tau=\dom\nu$.    Take $G\in\Tau$.   If
+$\mu G=\infty$, then $\nu G=\infty=(\mu+\lambda)G$.   Otherwise,
+
+\Centerline{$(\mu+\lambda)G\ge\mu G+\nu G-\mu G=\nu G$.}
+
+\noindent So if $\nu G=\infty$ we shall certainly have
+$\nu G=(\mu+\lambda)G$.   Finally, if $\nu G<\infty$ then
+
+$$\eqalign{(\mu+\lambda)G
+&=\mu G+\sup\{\nu F-\mu F:F\in\Tau,\,F\subseteq G\}\cr
+&=\sup\{\nu F+\mu(G\setminus F):F\in\Tau,\,F\subseteq G\}\cr
+&\le\sup\{\nu F+\nu(G\setminus F):F\in\Tau,\,F\subseteq G\}
+=\nu G,\cr}$$
+
+\noindent so again we have equality.\ \Qed
+
+Thus we have an appropriate expression of $\nu$ as a sum of measures.
+
+\medskip
+
+{\bf (c)(i)} If $f$ is non-negative, put (b) and 234Hc together.
+
+\medskip
+
+\quad{\bf (ii)} In general, if $\int fd\nu$ is defined, so are both
+$\int f^+d\nu$ and $\int f^-d\nu$, and at most one is infinite;
+so $\int f^+d\mu$ and $\int f^-d\mu$ are defined
+and at most one is infinite.
+}%end of proof of 234Q
+
+\exercises{
+\leader{234X}{Basic exercises (a)}
+%\spheader 234Xa
+\dvAformerly{1{}32Xk, 2{}14Xp}
+Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be measure spaces, and
+$\phi:X\to Y$ an \imp\ function.   Let $A\subseteq X$ be a set of full
+outer measure in $X$.   Show that
+$\phi[A]$ has full outer measure in $Y$, and
+that $\phi\restr A$ is \imp\ for the subspace measures on $A$ and
+$\phi[A]$.
+%234B
+
+\spheader 234Xb\dvAformerly{1{}12Xg}
+Let $(X,\Sigma,\mu)$ be a measure space, $Y$ a set and
+$\phi:X\to Y$ a function.   Show that if $\mu$ is point-supported, so is
+the image measure $\mu\phi^{-1}$.
+%234D
+
+\spheader 234Xc\dvAnew{2008}
+Give an example of a probability space $(X,\Sigma,\mu)$, a
+set $Y$, and a function $\phi:X\to Y$ such that the completion of the image
+measure $\mu\phi^{-1}$ is not the image of the completion of $\mu$.
+\Hint{$\#(X)=3$.}
+%234E
+
+\spheader 234Xd\dvAnew{2008}
+ Let $X$, $Y$ be sets, $\phi:X\to Y$ a function
+and $\familyiI{\mu_i}$ a family of
+measures on $X$ with sum $\mu$.   Writing $\mu_i\phi^{-1}$,
+$\mu\phi^{-1}$ for the image measures on $Y$, show that
+$\mu\phi^{-1}=\sum_{i\in I}\mu_i\phi^{-1}$.
+%234G
+
+\spheader 234Xe\dvAnew{2008}
+Let $X$ be a set.
+(i) Show that if $\familyiI{\mu_i}$ is a countable family of
+$\sigma$-finite measures on $X$, and $\mu=\sum_{i\in I}\mu_i$ is
+semi-finite, then $\mu$ is $\sigma$-finite.
+(ii) Show that if $\familyiI{\mu_i}$ is a family of purely atomic measures
+on $X$, and $\mu=\sum_{i\in I}\mu_i$ is semi-finite, then $\mu$ is purely
+atomic.
+(iii) Show that if $\familyiI{\mu_i}$ is any family of point-supported
+measures on $X$, then $\sum_{i\in I}\mu_i$ is point-supported.
+%234G
+
+\sqheader 234Xf\dvAnew{2008;  see 1{}12Xe}
+Let $X$ be a set, and write $\Mu$ for the set of all measures on $X$.   For
+$\mu\in\Mu$ and $\alpha\in\coint{0,\infty}$, define $\alpha\mu$ by saying
+that if $\alpha>0$ then
+$(\alpha\mu)(E)=\alpha\mu E$ for $E\in\dom\mu$, while if $\alpha=0$ then
+$(\alpha\mu)(E)=0$ for every $E\subseteq X$.   (i) Show that
+$\alpha\mu\in\Mu$ for all $\alpha\in\coint{0,\infty}$ and $\mu\in\Mu$.
+(ii) Show that $(\alpha+\beta)\mu=\alpha\mu+\beta\mu$,
+$\alpha(\beta\mu)=(\alpha\beta)\mu$, $\alpha(\mu+\nu)=\alpha\mu+\alpha\nu$
+for all $\alpha$, $\beta\in\coint{0,\infty}$ and $\mu$, $\nu\in\Mu$.
+%234G
+
+\spheader 234Xg\dvAformerly{2{}12Xj}
+ Let $X$ be a set, and $\familyiI{\mu_i}$ a family of
+complete measures on $X$ with sum $\mu$.
+Show that a $[-\infty,\infty]$-valued
+function $f$ defined on a subset of $X$ is $\mu$-integrable iff it is
+$\mu_i$-integrable for every $i\in I$ and $\sum_{i\in I}\int|f|d\mu_i$ is
+finite.
+%234H
+
+\spheader 234Xh\dvAformerly{2{}34Xa}
+Let $\mu$ be Lebesgue measure on $[0,1]$, and set $f(x)=\bover1x$ for
+$x>0$. Let $\nu$ be the associated indefinite-integral measure.   Show
+that the
+domain of $\nu$ is equal to the domain of $\mu$.   Show that for every
+$\delta\in\ocint{0,\bover12}$ there is a measurable set $E$ such that
+$\mu E=\delta$ but $\nu E=\bover1{\delta}$.
+%234K
+
+\spheader 234Xi\dvAnew{2008}
+ Let $(X,\Sigma,\mu)$ be a measure space.   (i) Show that if
+$\nu_1$ and $\nu_2$ are indefinite-integral measures over $\mu$, so is
+$\nu_1+\nu_2$.   (ii) Show that if $\familyiI{\nu_i}$ is a countable family
+of indefinite-integral measures over $\mu$, and $\nu=\sum_{i\in I}\nu_i$ is
+semi-finite, then $\nu$ is an indefinite-integral measure over $\mu$.
+%234L
+
+\spheader 234Xj\dvAformerly{2{}34Xb}
+ Let $(X,\Sigma,\mu)$ be a measure space, and $\nu$ an
+indefinite-integral measure over $\mu$.   Show that if $\mu$ is purely
+atomic, so is $\nu$.
+%234N
+
+\spheader 234Xk\dvAformerly{2{}34Xc}
+ Let $\mu$ be a point-supported measure.   Show that any
+indefinite-integral measure over $\mu$ is point-supported.
+%234N
+
+\spheader 234Xl\dvAnew{2008}
+ Let $X$ be a set, and $\Mu$ the set of measures on $X$,
+with the partial ordering defined in 234P.   Show that (i) $\Mu$ has
+greatest and least members (to be described);
+(ii) if $\familyiI{\mu_i}$
+and $\familyiI{\nu_i}$ are families in $\Mu$ such that $\mu_i\le\nu_i$ for
+every $i$, then $\sum_{i\in I}\mu_i\le\sum_{i\in I}\nu_i$;   (iii) if we
+define scalar multiplication as in 234Xf, then
+$\alpha\mu\le\mu$ whenever $\mu\in\Mu$ and $\alpha\in[0,1]$;   (iv) writing
+$\hat\mu$ for the completion of $\mu$, $\hat\mu\le\mu$ and
+$\hat\mu\le\hat\nu$ whenever $\mu$, $\nu\in\Mu$ and $\mu\le\nu$;  (v)
+writing $\tilde\mu$ for the c.l.d.\ version of $\mu$, $\tilde\mu\le\mu$ for
+every $\mu\in\Mu$;  (vi) whenever $A\subseteq\Mu$ is upwards-directed, it
+has a least upper bound in $\Mu$.
+%234Q
+
+\spheader 234Xm\dvAnew{2008}
+ Write out an elementary direct proof of 234Qc not depending
+on 234Qb.
+%234Q
+
+\spheader 234Xn\dvAformerly{211Xd(v)} Let $(X,\Sigma,\mu)$ and
+$(Y,\Tau,\nu)$ be measure spaces and $\phi:X\to Y$ an \imp\ function.
+Show that if $\mu$ is $\sigma$-finite and purely atomic then
+$\nu$ is purely atomic.
+
+\leader{234Y}{Further exercises (a)}
+%\spheader 234Ya
+\dvAformerly{2{}35Ya}
+Write $\nu$ for Lebesgue measure on
+$Y=[0,1]$, and $\Tau$ for its domain.    Let $A\subseteq[0,1]$ be a set
+such that $\nu^*A=\nu^*([0,1]\setminus A)=1$, and set
+$X=[0,1]\cup\{x+1:x\in A\}\cup\{x+2:x\in[0,1]\setminus A\}$.   Let
+$\mu_{LX}$ be the subspace measure induced on $X$ by Lebesgue measure,
+and set $\mu E=\bover13\mu_{LX}E$ for $E\in\Sigma=\dom\mu_{LX}$.
+Define $\phi:X\to Y$ by writing $\phi(x)=x$ if $x\in[0,1]$,
+$\phi(x)=x-1$ if $x\in X\cap\ocint{1,2}$ and $\phi(x)=x-2$ if
+$x\in X\cap\ocint{2,3}$.   Show that $\nu$ is the image measure
+$\mu\phi^{-1}$, but that $\nu^*A>\mu^*\phi^{-1}[A]$.
+%234B
+
+\spheader 234Yb\dvAnew{2008}
+Look for interesting examples of probability spaces
+$(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ for which there are functions
+$\phi:X\to Y$ such that $\phi[E]\in\Tau$ and $\nu\phi[E]=\mu E$ for every
+$E\in\Sigma$.   \Hint{254K, 343J.}
+%234B
+
+\spheader 234Yc\dvAnew{2008}
+Let $\mu$ be
+two-dimensional Lebesgue measure on the unit square $[0,1]^2$, and let
+$\phi:[0,1]^2\to[0,1]$ be the projection onto the first coordinate, so that
+$\phi(\xi_1,\xi_2)=\xi_1$ for $\xi_1$, $\xi_2\in[0,1]$.   Show that the
+image measure $\mu\phi^{-1}$ is Lebesgue
+one-dimensional measure on $[0,1]$.
+%234E
+
+\spheader 234Yd\dvAformerly{1{}32Yf}
+In 234F, show that the image measure $\mu\phi^{-1}$
+extends $\nu$, and is equal to $\nu$ if and only if $F\in\Tau$ for
+every $F\subseteq Y\setminus\phi[X]$.
+%234F
+
+\spheader 234Ye\dvAnew{2008}
+ Let $(Y,\Tau,\nu)$ be a complete measure space, $X$ a set
+and $\phi:X\to Y$ a surjection.   Set
+
+\Centerline{$\Sigma=\{E:E\subseteq X$, $\phi[E]\in\Tau$,
+$\nu(\phi[E]\cap\phi[X\setminus E])=0\}$,
+\quad$\mu E=\nu\phi[E]$ for $E\in\Tau$.}
+
+\noindent Show that $\mu$ is the
+completion of the measure constructed by the process of 234F.
+%234F
+
+\spheader 234Yf\dvAnew{2008}
+Let $X$ be a set, and $\Mu$ the set of measures on $X$.
+Show that $\Mu$, with addition as defined for two measures by the formulae
+of 234G, is a commutative semigroup with identity;  describe the identity.
+%234G
+
+\spheader 234Yg\dvAnew{2008}
+Give an example of a set $X$, probability measures
+$\mu_1$, $\mu_2$ on $X$ and a set $A\subseteq X$ such that $A$ is
+both $\mu_1$-negligible and $\mu_2$-negligible, but is not
+$\mu$-negligible, where $\mu=\mu_1+\mu_2$.
+%234G 
+
+\spheader 234Yh\dvAformerly{2{}14Ya}
+In 214O, show that if we set
+$\nu E=\sup_{I\in\Cal I}\mu^*(E\cap I)$ for every $E\in\Sigma$, then
+$\nu$ is a measure, while $\mu=\nu+\lambda$.
+%234H
+
+\spheader 234Yi\dvAformerly{2{}34Yd}
+ Let $(X,\Sigma,\mu)$ be an atomless semi-finite measure
+space and
+$\nu$ an indefinite-integral measure over $\mu$.   Show that the
+following are equiveridical:  (i) for every $\epsilon>0$ there is a
+$\delta>0$ such that $\nu E\le\epsilon$ whenever $\mu E\le\delta$ (ii)
+$\nu$ has a Radon-Nikod\'ym derivative expressible as the sum of a
+bounded function and an integrable function.
+%234K
+
+\spheader 234Yj\dvAformerly{2{}34Yf}
+ Let $(X,\Sigma,\mu)$ be a measure space and $\nu$ an
+indefinite-integral measure over $\mu$, with Radon-Nikod\'ym derivative
+$f$.   Show that the c.l.d.\ version of $\nu$ is the indefinite-integral
+measure defined by $f$ over the c.l.d.\ version of $\mu$.
+%234N
+
+\spheader 234Yk\dvAformerly{2{}34Ya}
+Let $(X,\Sigma,\mu)$ be a semi-finite measure space which is not
+localizable.   Show that there is a measure $\nu:\Sigma\to[0,\infty]$
+such that $\nu E\le\mu E$ for every $E\in\Sigma$ but there is no
+measurable
+function $f$ such that $\nu E=\int_Efd\mu$ for every $E\in\Sigma$.
+%234O
+
+\spheader 234Yl\dvAformerly{2{}34Yb}
+Let $(X,\Sigma,\mu)$ be a localizable measure space with
+locally determined negligible sets.   Show that a measure $\nu$,
+with domain $\Tau\supseteq\Sigma$, is an indefinite-integral measure
+over $\mu$ iff ($\alpha$) $\nu$ is complete and semi-finite and zero on
+$\mu$-negligible sets
+($\beta$) whenever $\nu E>0$ there is an $F\subseteq E$ such that
+$F\in\Sigma$ and $\mu F<\infty$ and $\nu F>0$.
+%234O
+
+\spheader 234Ym\dvAformerly{2{}34Yc}
+ Give an example of a localizable measure space
+$(X,\Sigma,\mu)$ and a complete semi-finite measure $\nu$ on $X$,
+defined on
+a $\sigma$-algebra $\Tau\supseteq\Sigma$, zero on $\mu$-negligible sets,
+and such that whenever $\nu E>0$ there
+is an $F\subseteq E$ such that $F\in\Sigma$ and $\mu F<\infty$ and
+$\nu F>0$, but $\nu$ is not an indefinite-integral measure over $\mu$.
+\Hint{216Yb.}
+%234O 23bits
+
+\spheader 234Yn\dvAformerly{2{}34Ye}
+ Let $(X,\Sigma,\mu)$ be a localizable measure space, and
+$\nu$ a complete localizable measure on $X$, with domain
+$\Tau\supseteq\Sigma$, which is the completion of its restriction to
+$\Sigma$.   Show that if we set
+$\nu_1F=\sup\{\nu(F\cap E):E\in\Sigma$, $\mu E<\infty\}$ for every
+$F\in\Tau$, then $\nu_1$ is an indefinite-integral measure over $\mu$,
+and there is an $H\in\Sigma$ such that $\nu_1F=\nu(F\cap H)$ for every
+$F\in\Tau$.
+%234O
+
+\spheader 234Yo\dvAnew{2008}
+Let $X$ be a set, and $\Mu_{\text{sf}}$ the set of
+semi-finite measures
+on $X$.   For $\mu$, $\nu\in\Mu_{\text{sf}}$ say that $\mu\preccurlyeq\nu$
+if $\dom\nu\subseteq\dom\mu$, $\mu F\le\nu F$ for every $F\in\dom\nu$, and
+whenever $E\in\dom\mu$ and $\mu E>0$ there is an $F\in\dom\nu$ such that
+$F\subseteq E$ and $0<\mu F<\infty$.   (i) Show that
+$(\Mu_{\text{sf}},\preccurlyeq)$ is a
+partially ordered set.   (ii) Show that if $A\subseteq\Mu_{\text{sf}}$
+is a non-empty
+set with an upper bound in $\Mu_{\text{sf}}$, then it has a least upper
+bound $\lambda$
+defined by saying that $\dom\lambda=\bigcap_{\mu\in A}\dom\mu$ and, for
+$E\in\dom\lambda$,
+
+$$\eqalign{\lambda E
+&=\sup\{\sum_{i=0}^n\mu_iF_i:\mu_0,\ldots,\mu_n\in A,\,
+   \langle F_i\rangle_{i\le n}\text{ is a partition of }E,\cr
+&\mskip200mu
+   F_i\in\dom\lambda\text{ for every }i\le n\}\cr
+&=\sup\{\sum_{i=0}^n\mu_iF_i:\mu_0,\ldots,\mu_n\in A,\,
+   F_0,\ldots,F_n\text{ are disjoint},\cr
+&\mskip200mu
+   F_i\in\dom\mu_i\text{ and }F_i\subseteq E\text{ for every }i\le n\}.
+   \cr}$$
+
+\noindent(iii) Suppose that $\mu$, $\nu\in\Mu_{\text{sf}}$ have completions $\hat\mu$,
+$\hat\nu$ and c.l.d.\ versions $\tilde\mu$, $\tilde\nu$.
+Show that $\tilde\mu\preccurlyeq\hat\mu\preccurlyeq\mu$.   Show that if
+$\mu\preccurlyeq\nu$ then
+$\hat\mu\preccurlyeq\hat\nu$ and $\tilde\mu\preccurlyeq\tilde\nu$.
+%234P
+}%end of exercises
+
+\endnotes{\Notesheader{234}
+One of the striking features of measure theory, compared with other
+comparably abstract branches of pure mathematics, is the relative
+unimportance of any notion of `morphism'.   The theory of groups, for
+instance, is dominated by the concept of `homomorphism', and general
+topology gives a similar place to `continuous function'.   In my view,
+the nearest equivalent in measure theory is the idea of
+`\imp\ function' (234A).   I mean in Volumes 3 and
+4 to explore this concept more thoroughly.   In this volume I will
+content myself with signalling such functions when they arise, and with
+the basic facts listed in 234B.
+
+Naturally linked with the idea of \imp\ function is the construction of
+`image measures' (234C).   These appear everywhere in the subject, starting
+with the not-quite-elementary 234Yc.   They are of such importance that it
+is natural to explore variations, as in 234F and 234Yb, but in my view none
+are of comparable significance.
+
+Nearly half the section is taken up with `indefinite-integral measures'.
+I have taken this part very carefully
+because the ideas I wish to express here, in so far as they extend the
+work of \S232, rely critically on the details of the formulation in 234I,
+and it is easy to make a false step once we have left the relatively
+sheltered context of complete $\sigma$-finite measures.   I believe that
+if we take a little trouble at this point we can develop a theory
+(234K-234N) %234K 234L 234M 234N
+which will
+offer a smooth path to later applications;  to see what I have in mind,
+you can refer to the entries under
+`indefinite-integral measure' in the index.   For the moment I mention
+only a kind of Radon-Nikod\'ym theorem for localizable measures (234O).
+
+The partial ordering described in 234P-234Q is only one of many which can
+be considered, and for some purposes it seems unsatisfactory.   The most
+important examples will appear in Chapter 41 of Volume 4, and have a
+variety of special features for which it might be worth setting out further
+abstractions.   However the version here has the merit of simplicity and
+supports at least some of the relevant ideas (234Xl).   For an alternative
+notion, see 234Yo.
+
+}%end of notes
+
+%look for ideas to add to \S412
+
+\discrpage
+

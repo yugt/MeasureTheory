@@ -1,0 +1,712 @@
+\frfilename{mt212.tex}
+\versiondate{10.9.04}
+
+\def\chaptername{Taxonomy of measure spaces}
+\def\sectionname{Complete spaces}
+
+\newsection{212}
+
+In the next two sections of this chapter I give brief accounts of the
+theory of measure spaces possessing certain of the properties described
+in \S211.   I begin with `completeness'.   I give the elementary
+facts about complete measure spaces in 212A-212B;  then I turn to the notion of
+`completion' of a measure (212C) and its relationships with the other
+concepts of measure theory introduced so far (212D-212G).
+
+\leader{212A}{Proposition} Any measure space constructed
+by \Caratheodory's method is complete.
+
+\proof{ Recall that `\Caratheodory's method' starts from an arbitrary
+outer measure $\theta:\Cal PX\to[0,\infty]$ and sets
+
+\Centerline{$\Sigma=\{E:E\subseteq X,\,\theta A
+=\theta(A\cap E)+\theta(A\setminus E)$ for every $A\subseteq X\}$,
+\quad$\mu=\theta\restr\Sigma$}
+
+\noindent (113C).    In this case, if $B\subseteq E\in\Sigma$ and
+$\mu E=0$, then $\theta B=\theta E=0$ (113A(ii)), so for any
+$A\subseteq X$ we have
+
+\Centerline{$\theta(A\cap B)+\theta(A\setminus B)
+=\theta(A\setminus B)\le\theta A
+\le\theta(A\cap B)+\theta(A\setminus B)$,}
+
+\noindent and $B\in\Sigma$.
+}%end of proof of 212A
+
+\leader{212B}{Proposition} (a) If $(X,\Sigma,\mu)$ is a complete measure
+space, then any conegligible subset of $X$ is measurable.
+
+(b) Let $(X,\Sigma,\mu)$ be a complete measure space, and $f$ a
+$[-\infty,\infty]$-valued function defined on a subset of $X$.   If $f$ is
+virtually measurable\cmmnt{ (that is, there is a
+conegligible set $E\subseteq X$ such that $f\restr E$ is measurable)},
+then $f$ is measurable.
+
+(c) Let $(X,\Sigma,\mu)$ be a complete measure space, and $f$ a
+real-valued function defined on a conegligible subset of $X$.   Then the
+following are equiveridical, that is, if one is true so are the others:
+
+\quad (i) $f$ is integrable;
+
+\quad(ii) $f$ is measurable and $|f|$ is integrable;
+
+\quad(iii) $f$ is measurable and there is an integrable function $g$
+such that $|f|\leae g$.
+
+\proof{{\bf (a)} If $E$ is conegligible, then $X\setminus E$ is
+negligible, therefore measurable, and $E$ is measurable.
+
+\medskip
+
+{\bf (b)} Let $a\in\Bbb R$.   Then there is an $H\in\Sigma$ such that
+
+
+\Centerline{$\{x:(f\restr E)(x)\le a\}=H\cap\dom(f\restr E)
+=H\cap E\cap\dom f$.}
+
+\noindent Now $F=\{x:x\in\dom f\setminus E,\,f(x)\le a\}$ is a subset of
+the negligible set $X\setminus E$, so is measurable, and
+
+\Centerline{$\{x:f(x)\le a\}=(F\cup H)\cap\dom f\in\Sigma_{\dom f}$,}
+
+\noindent writing $\Sigma_D=\{D\cap E:E\in\Sigma\}$, as in 121A.   As
+$a$ is arbitrary, $f$ is measurable (135E).
+
+\medskip
+
+{\bf (c)(i)$\Rightarrow$(ii)} If $f$ is integrable, then by 122P $f$ is
+virtually measurable and by 122Re $|f|$ is integrable.   By (b) here,
+$f$ is measurable, so (ii) is true.
+
+\medskip
+
+\quad{\bf (ii)$\Rightarrow$(iii)} is trivial.
+
+\medskip
+
+\quad{\bf (iii)$\Rightarrow$(i)} If $f$ is measurable and $g$ is integrable
+and $|f|\leae g$, then $f$ is virtually measurable, $|g|$ is integrable and
+$|f|\leae|g|$, so 122P tells us that $f$ is integrable.
+}%end of proof of 212B
+
+\leader{212C}{The completion of a measure} Let $(X,\Sigma,\mu)$ be any
+measure space.
+
+\header{212Ca}{\bf (a)} Let $\hat\Sigma$ be the family of those sets
+$E\subseteq X$ such that there are $E'$, $E''\in\Sigma$ with
+$E'\subseteq E\subseteq E''$ and $\mu(E''\setminus E')=0$.   Then
+$\hat\Sigma$ is a $\sigma$-algebra of subsets of $X$.   \prooflet{\Prf\
+{(i)} Of course $\emptyset$ belongs to
+$\hat\Sigma$, because we can take $E'=E''=\emptyset$.  {(ii)} If
+$E\in\hat\Sigma$, take $E'$, $E''\in\Sigma$ such that
+$E'\subseteq E\subseteq E''$ and $\mu(E''\setminus E')=0$.
+Then
+
+\Centerline{$X\setminus E''\subseteq X\setminus E
+\subseteq X\setminus E'$,
+\quad $\mu((X\setminus E')\setminus(X\setminus E''))
+=\mu(E''\setminus E')=0$,}
+
+\noindent so $X\setminus E\in\hat\Sigma$. {(iii)} If
+$\sequencen{E_n}$ is a sequence in
+$\hat\Sigma$, then for each $n$ choose $E'_n$, $E_n''\in\Sigma$ such
+that $E'_n\subseteq E_n\subseteq E_n''$ and
+$\mu(E_n''\setminus E'_n)=0$.   Set
+
+\Centerline{$E=\bigcup_{n\in\Bbb N}E_n$,
+\quad$E'=\bigcup_{n\in\Bbb N}E'_n$,
+\quad$E''=\bigcup_{n\in\Bbb N}E_n''$;}
+
+\noindent  then $E'\subseteq E\subseteq E''$ and
+$E''\setminus E'\subseteq\bigcup_{n\in\Bbb N}(E_n''\setminus E'_n)$ is
+negligible, so $E\in\hat\Sigma$.  \Qed}
+
+\spheader 212Cb For $E\in\hat\Sigma$, set
+
+\Centerline{$\hat\mu E=\mu^*E
+=\min\{\mu F:E\subseteq F\in\Sigma\}$\dvro{.}{}}
+
+\cmmnt{
+\noindent (132A).   It is worth remarking at once that if $E\in\hat\Sigma$,
+$E'$, $E''\in\Sigma$, $E'\subseteq E\subseteq E''$ and
+$\mu(E''\setminus  E')=0$, then $\mu E'=\hat\mu E=\mu E''$;  this is
+because
+
+\Centerline{$\mu E'=\mu^*E'\le\mu^*E\le\mu^*E''=\mu E''
+=\mu E'+\mu(E''\setminus E)=\mu E'$}
+
+\noindent (recalling from 132A, or noting now, that $\mu^*A\le\mu^*B$
+whenever $A\subseteq B\subseteq X$, and that $\mu^*$ agrees with $\mu$
+on $\Sigma$).
+}%end of comment
+
+\header{212Cc}{\bf (c)}\cmmnt{ We now find that}
+$(X,\hat\Sigma,\hat\mu)$ is a
+measure space.   \prooflet{\Prf\ (i) Of course $\hat\mu$, like $\mu$,
+takes values in $[0,\infty]$.   (ii)  $\hat\mu\emptyset=\mu\emptyset=0$.
+(iii)  Let $\sequencen{E_n}$ be a disjoint sequence in
+$\hat\Sigma$, with union $E$.  For each $n\in\Bbb N$ choose $E_n'$,
+$E_n''\in\Sigma$ such that $E_n'\subseteq E_n\subseteq E_n''$ and
+$\mu(E_n''\setminus E_n')=0$.    Set $E'=\bigcup_{n\in\Bbb N}E_n'$,
+$E''=\bigcup_{n\in\Bbb N}E_n''$.   Then (as in (a-iii) above)
+$E'\subseteq E\subseteq E''$ and $\mu(E''\setminus E')=0$, so
+
+\Centerline{$\hat\mu E=\mu E'=\sum_{n=0}^{\infty}\mu E_n'
+=\sum_{n=0}^{\infty}\hat\mu E_n$}
+
+\noindent because $\sequencen{E_n'}$, like $\sequencen{E_n}$, is
+disjoint. \Qed}
+
+\header{212Cd}{\bf (d)}\cmmnt{ The measure space}
+$(X,\hat\Sigma,\hat\mu)$
+is called the {\bf completion} of the measure space $(X,\Sigma,\mu)$;
+\cmmnt{equally,} I will call $\hat\mu$ the {\bf completion} of $\mu$,
+and occasionally\cmmnt{ (if it seems plain which null ideal is
+under consideration)} I will call $\hat\Sigma$ the completion of
+$\Sigma$.   Members of $\hat\Sigma$ are sometimes called
+{\bf $\mu$-measurable}.
+
+\leader{212D}{}\cmmnt{There is something I had better check at once.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be any measure space.
+Then $(X,\hat\Sigma,\hat\mu)$, as defined in 212C, is a complete measure
+space and $\hat\mu$ is an extension of $\mu$;  and
+$(X,\hat\Sigma,\hat\mu)=(X,\Sigma,\mu)$ iff $(X,\Sigma,\mu)$ is
+complete.
+
+\proof{{\bf (a)} Suppose that $A\subseteq E\in\hat\Sigma$ and
+$\hat\mu E=0$.   Then (by 212Cb) there is an $E''\in\Sigma$ such that
+$E\subseteq E''$ and $\mu E''=0$.   Accordingly we have
+
+\Centerline{$\emptyset\subseteq A\subseteq E''$,\quad
+$\mu(E''\setminus\emptyset)=0$,}
+
+\noindent so $A\in\hat\Sigma$.   As $A$ is arbitrary, $\hat\mu$ is
+complete.
+
+\medskip
+
+{\bf (b)} If $E\in\Sigma$, then of course $E\in\hat\Sigma$, because
+$E\subseteq E\subseteq E$ and $\mu(E\setminus E)=0$;  and $\hat\mu
+E=\mu^*E=\mu E$.   Thus $\Sigma\subseteq\hat\Sigma$ and $\hat\mu$
+extends $\mu$.
+
+\medskip
+
+{\bf (c)} If $\mu=\hat\mu$ then of course
+$\mu$ must be complete.   If $\mu$ is complete,
+and $E\in\hat\Sigma$, then there are $E'$, $E''\in\Sigma$ such that
+$E'\subseteq E\subseteq E''$ and $\mu(E''\setminus E')=0$.   But now
+$E\setminus E'\subseteq E''\setminus E'$, so (because $(X,\Sigma,\mu)$
+is complete) $E\setminus E'\in\Sigma$ and $E=E'\cup(E\setminus
+E')\in\Sigma$.   As $E$ is arbitrary, $\hat\Sigma\subseteq\Sigma$ and
+$\hat\Sigma=\Sigma$ and $\mu=\hat\mu$.
+}%end of proof of 212D
+
+\vleader{72pt}{212E}{}\cmmnt{The importance of this construction is such that
+it is worth spelling out some further elementary properties.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a measure space, and
+$(X,\hat\Sigma,\hat\mu)$ its completion.
+
+(a) The outer measures $\hat\mu^*$, $\mu^*$ defined from $\hat\mu$ and
+$\mu$ coincide.
+
+(b) $\mu$, $\hat\mu$ give rise to the same negligible and conegligible
+sets and the same sets of full outer measure.
+
+(c) $\hat\mu$ is the only measure with domain $\hat\Sigma$ which agrees
+with $\mu$ on $\Sigma$.
+
+(d) A subset of $X$ belongs to $\hat\Sigma$ iff it is expressible as
+$F\symmdiff A$ where $F\in\Sigma$ and $A$ is $\mu$-negligible.
+
+\proof{{\bf (a)} Take any $A\subseteq X$.   (i) If
+$A\subseteq F\in\Sigma$, then $F\in\hat\Sigma$ and $\mu F=\hat\mu F$, so
+
+\Centerline{$\hat\mu^*A\le\hat\mu F=\mu F$;}
+
+\noindent as $F$ is arbitrary, $\hat\mu^*A\le\mu^*A$.   (ii) If
+$A\subseteq E\in\hat\Sigma$, there is an $E''\in\Sigma$ such that
+$E\subseteq E''$ and $\mu E''=\hat\mu E$, so
+
+\Centerline{$\mu^*A\le\mu E''=\hat\mu E$;}
+
+\noindent as $E$ is arbitrary, $\mu^*A\le\hat\mu^*A$.
+
+\medskip
+{\bf (b)} Now, for $A\subseteq X$,
+
+\Centerline{$A$ is $\mu$-negligible$\,\iff\mu^*A=0
+\iff\hat\mu^*A=0\iff A$ is $\hat\mu$-negligible,}
+
+$$\eqalign{A\text{ is }\mu&\text{-conegligible}
+\,\iff\,\mu^*(X\setminus A)=0\cr
+&\iff\,\hat\mu^*(X\setminus A)=0
+\iff A\text{ is }\hat\mu\text{-conegligible}.\cr}$$
+
+\noindent If $A$ has full outer measure for $\mu$, $F\in\hat\Sigma$ and $F\cap A=\emptyset$, then there is an $F'\in\Sigma$ such that $F'\subseteq F$ and $\mu F'=\hat\mu F$;  as $F'\cap A=\emptyset$,
+$F'$ is $\mu$-negligible and $F$ is $\hat\mu$-negligible;  as $F$ is arbitrary, $A$ has full outer measure for $\hat\mu$.   In the other direction, of course, if $A$ has full outer measure for
+$\hat\mu$ then
+
+\Centerline{$\mu^*(F\cap A)=\hat\mu^*(F\cap A)=\hat\mu F=\mu F$}
+
+\noindent for every $F\in\Sigma$, so $A$ has full outer measure for $\mu$.
+
+\medskip
+
+{\bf (c)} If $\tilde\mu$ is any measure with domain $\hat\Sigma$
+extending $\mu$, we must have
+
+\Centerline{$\mu E'\le\tilde\mu E\le\mu E''$,
+\quad $\mu E'=\hat\mu E=\mu E''$,}
+
+\noindent so $\tilde\mu E=\hat\mu E$, whenever $E'$, $E''\in\Sigma$,
+$E'\subseteq E\subseteq E''$ and $\mu(E''\setminus E')=0$.
+
+\medskip
+
+{\bf (d)(i)} If $E\in\hat\Sigma$, take $E'$, $E''\in\Sigma$ such that
+$E'\subseteq E\subseteq E''$ and $\mu(E''\setminus E')=0$.   Then
+$E\setminus E'\subseteq E''\setminus E'$, so $E\setminus E'$ is
+$\mu$-negligible, and $E=E'\symmdiff(E\setminus E')$ is the symmetric
+difference of a member of $\Sigma$ and a negligible set.
+
+\medskip
+
+\quad{\bf (ii)} If $E=F\symmdiff A$, where $F\in\Sigma$ and
+$A$ is $\mu$-negligible, take $G\in\Sigma$ such that $\mu G=0$ and
+$A\subseteq G$;  then $F\setminus G\subseteq E\subseteq F\cup G$ and
+$\mu((F\cup G)\setminus(F\setminus G))=\mu G=0$, so $E\in\hat\Sigma$.
+}%end of proof of 212E
+
+\vleader{60pt}{212F}{}\cmmnt{Now let us consider integration with respect to
+the completion of a measure.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a measure space and
+$(X,\hat\Sigma,\hat\mu)$ its completion.
+
+(a) A $[-\infty,\infty]$-valued function $f$ defined on a subset of $X$
+is $\hat\Sigma$-measurable iff it is $\mu$-virtually measurable.
+
+(b) Let $f$ be a $[-\infty,\infty]$-valued function defined on a subset
+of $X$.   Then
+$\int fd\mu=\int fd\hat\mu$ if either is defined in $[-\infty,\infty]$;
+in particular, $f$ is $\mu$-integrable iff it is $\hat\mu$-integrable.
+
+\proof{{\bf (a)(i)}  Suppose that $f$ is a $[-\infty,\infty]$-valued
+$\hat\Sigma$-measurable function.    For $q\in\Bbb Q$ let
+$E_q\in\hat\Sigma$ be such that $\{x:f(x)\le q\}=\dom f\cap E_q$, and
+choose $E_q'$, $E_q''\in\Sigma$ such that
+$E_q'\subseteq E_q\subseteq E_q''$ and $\mu(E_q''\setminus E_q')=0$.
+Set $H=X\setminus\bigcup_{q\in\Bbb Q}(E_q''\setminus E_q')$;  then $H$
+is $\mu$-conegligible.   For $a\in\Bbb R$ set
+
+\Centerline{$G_a=\bigcup_{q\in\Bbb Q,q<a}E_q'\in\Sigma$;}
+
+\noindent  then
+
+\Centerline{$\{x:x\in\dom(f\restr H),\,(f\restr H)(x)<a\}
+=G_a\cap\dom(f\restr H)$.}
+
+\noindent This shows that $f\restr H$ is
+$\Sigma$-measurable, so that $f$ is $\mu$-virtually measurable.
+
+\medskip
+
+\quad{\bf (ii)} If $f$ is $\mu$-virtually measurable, then there is a
+$\mu$-conegligible set $H\subseteq X$ such that $f\restr H$ is
+$\Sigma$-measurable.   Since $\Sigma\subseteq\hat\Sigma$, $f\restr H$ is
+also $\hat\Sigma$-measurable.   And $H$ is $\hat\mu$-conegligible, by
+212Eb.   But this means that $f$ is $\hat\mu$-virtually measurable,
+therefore $\hat\Sigma$-measurable, by 212Bb.
+
+\medskip
+
+{\bf (b)(i)}  Let $f:D\to[-\infty,\infty]$ be a function, where
+$D\subseteq X$.
+If either of $\int fd\mu$, $\int fd\hat\mu$ is defined in
+$[-\infty,\infty]$, then $f$ is virtually measurable, and defined almost
+everywhere, for one of the appropriate measures, and therefore for both
+(putting (a) above together with 212Bb).
+
+\medskip
+
+\quad{\bf (ii)} Now suppose that $f$ is non-negative and
+integrable either with respect to $\mu$ or with respect to $\hat\mu$.
+Let $E\in\Sigma$ be a conegligible set included in $\dom f$ such
+that $f\restr E$ is $\Sigma$-measurable.    For $n\in\Bbb N$, $k\ge 1$ set
+
+\Centerline{$E_{nk}=\{x:x\in E$, $f(x)\ge 2^{-n}k\}$;}
+
+\noindent then each $E_{nk}$ belongs to $\Sigma$ and is of finite
+measure for both $\mu$ and $\hat\mu$.   (If $f$ is $\mu$-integrable,
+
+\Centerline{$\hat\mu E_{nk}=\mu E_{nk}\le 2^n\int fd\mu$;}
+
+\noindent if $f$ is $\hat\mu$-integrable,
+
+\Centerline{$\mu E_{nk}=\hat\mu E_{nk}\le 2^n\int fd\hat\mu$.)}
+
+\noindent So
+
+\Centerline{$f_n=\sum_{k=1}^{4^n}2^{-n}\chi E_{nk}$}
+
+\noindent is both $\mu$-simple and $\hat\mu$-simple, and
+$\int f_nd\mu=\int f_nd\hat\mu$.   Observe that, for $x\in E$,
+
+$$\eqalign{f_n(x)
+&=2^{-n}k\text{ if }k<4^n\text{ and }2^{-n}k\le f(x)<2^{-n}(k+1),\cr
+&=2^n\text{ if }f(x)\ge 2^n.\cr}$$
+
+\noindent Thus $\sequencen{f_n}$ is a non-decreasing
+sequence of functions converging to $f$ at every point of $E$, that is,
+both $\mu$-almost everywhere and $\hat\mu$-almost everywhere.   So we
+have, for any $c\in\Bbb R$,
+
+$$\eqalign{\int fd\mu=c
+&\iff\lim_{n\to\infty}\int f_nd\mu=c\cr
+&\iff\lim_{n\to\infty}\int f_nd\hat\mu=c
+\iff\int fd\hat\mu=c.\cr}$$
+
+\medskip
+
+\quad{\bf (iii)} As for infinite integrals, recall that for a non-negative
+function I write `$\int f=\infty$' just when $f$ is defined almost
+everywhere, is virtually measurable, and is not integrable.   So (i) and
+(ii) together show that $\int fd\mu=\int fd\hat\mu$ whenever $f$ is
+non-negative and either integral is defined in $[0,\infty]$.
+
+\medskip
+
+\quad{\bf (iv)} Since both $\mu$, $\hat\mu$ agree that $\int f$ is to be
+interpreted as $\int f^+-\int f^-$ just when this can be defined in
+$[-\infty,\infty]$, writing $f^+(x)=\max(f(x),0)$,
+$f^-(x)=\max(-f(x),0)$
+for $x\in\dom f$, the result for general real-valued $f$ follows at
+once.
+}%end of proof of 212F
+
+\leader{212G}{}\cmmnt{I turn now to the question of the effect of the
+construction on the properties listed in
+211B-211K. %211B 211C 211D 211E 211F 211G 211H 211I 211J 211K
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a measure space, and
+$(X,\hat\Sigma,\hat\mu)$ its completion.
+
+(a) $(X,\hat\Sigma,\hat\mu)$ is a probability space, or totally finite,
+or $\sigma$-finite, or semi-finite, or localizable,  iff
+$(X,\Sigma,\mu)$ is.
+
+(b) $(X,\hat\Sigma,\hat\mu)$ is strictly localizable if $(X,\Sigma,\mu)$
+is, and any decomposition of $X$ for $\mu$ is a decomposition for
+$\hat\mu$.
+
+(c) A set $H\in\hat\Sigma$ is an atom for $\hat\mu$ iff there is an
+$E\in\Sigma$ such that $E$ is an atom for $\mu$ and $\hat\mu(H\symmdiff
+E)=0$.
+
+(d) $(X,\hat\Sigma,\hat\mu)$ is atomless or purely atomic iff
+$(X,\Sigma,\mu)$ is.
+
+\proof{{\bf (a)(i)} Because $\hat\mu X=\mu X$,
+$(X,\hat\Sigma,\hat\mu)$ is a
+probability space, or totally finite, iff $(X,\Sigma,\mu)$ is.
+
+\medskip
+
+\quad{\bf (ii)}\grheada\ If $(X,\Sigma,\mu)$ is $\sigma$-finite,
+there is a sequence $\sequencen{E_n}$, covering $X$, with $\mu
+E_n<\infty$
+for each $n$.   Now $\hat\mu E_n<\infty$ for each $n$, so
+$(X,\hat\Sigma,\hat\mu)$ is $\sigma$-finite.
+
+\medskip
+
+\qquad\grheadb\ If $(X,\hat\Sigma,\hat\mu)$ is $\sigma$-finite,
+there is a sequence $\sequencen{E_n}$, covering $X$, with
+$\hat\mu E_n<\infty$ for each $n$.   Now we can find, for each $n$, an
+$E_n''\in\Sigma$ such that $\mu E_n''<\infty$ and $E_n\subseteq E_n''$;
+so that $\sequencen{E_n''}$ witnesses that $(X,\Sigma,\mu)$ is
+$\sigma$-finite.
+
+\medskip
+
+\quad{\bf (iii)}\grheada\ If $(X,\Sigma,\mu)$ is semi-finite and
+$\hat\mu E=\infty$, then there is an $E'\in\Sigma$ such
+that $E'\subseteq E$ and $\mu E'=\infty$.  Next, there is an
+$F\in\Sigma$
+such that $F\subseteq E'$ and $0<\mu F<\infty$.   Of course we now have
+$F\in\hat\Sigma$, $F\subseteq E$ and $0<\hat\mu F<\infty$.   As $E$ is
+arbitrary, $(X,\hat\Sigma,\mu)$ is semi-finite.
+
+\medskip
+
+\qquad\grheadb\ If $(X,\hat\Sigma,\hat\mu)$ is semi-finite
+and $\mu E=\infty$, then $\hat\mu E=\infty$, so there is an $F\subseteq
+E$
+such that $0<\hat\mu F<\infty$.   Next, there is an $F'\in\Sigma$ such
+that $F'\subseteq F$ and $\mu F'=\hat\mu F$.   Of course we now have
+$F'\subseteq E$ and $0<\mu F'<\infty$.   As $E$ is arbitrary,
+$(X,\Sigma,\mu)$ is semi-finite.
+
+\medskip
+
+\quad{\bf (iv)}\grheada\ If $(X,\Sigma,\mu)$ is localizable and
+$\Cal E\subseteq \hat\Sigma$, then set
+
+\Centerline{$\Cal F=\{F:F\in\Sigma,\,\exists\enskip
+E\in\Cal E,\, F\subseteq E\}$.}
+
+\noindent Let $H$ be an essential supremum of
+$\Cal F$ in $\Sigma$, as in 211G.
+
+If $E\in\Cal E$, there is an $E'\in\Sigma$ such that $E'\subseteq E$ and
+$E\setminus E'$ is negligible;  now $E'\in\Cal F$, so
+
+\Centerline{$\hat\mu(E\setminus H)
+\le\hat\mu(E\setminus E')+\mu(E'\setminus H)=0$.}
+
+\noindent If $G\in\hat\Sigma$ and
+$\hat\mu(E\setminus G)=0$ for every $E\in\Cal E$, let $G''\in\Sigma$ be
+such that $G\subseteq G''$ and $\hat\mu(G''\setminus G)=0$;  then, for
+any $F\in\Cal F$, there is an
+$E\in\Cal E$ including $F$, so that
+
+\Centerline{$\mu(F\setminus G'')\le\hat\mu(E\setminus G)=0.$}
+
+\noindent As $F$ is arbitrary, $\mu(H\setminus G'')=0$ and
+$\hat\mu(H\setminus G)=0$.   This shows that $H$ is an essential
+supremum of $\Cal E$ in $\hat\Sigma$.   As $\Cal E$ is arbitrary,
+$(X,\hat\Sigma,\hat\mu)$ is localizable.
+
+\medskip
+
+\qquad\grheadb\ Suppose that $(X,\hat\Sigma,\hat\mu)$ is
+localizable and that $\Cal E\subseteq\Sigma$.   Working in
+$(X,\hat\Sigma,\hat\mu)$, let $H$ be an essential supremum for $\Cal E$
+in $\hat\Sigma$.   Let $H'\in\Sigma$ be such that $H'\subseteq H$ and
+$\hat\mu(H\setminus H')=0$.   Then
+
+\Centerline{$\mu(E\setminus H')
+\le\hat\mu(E\setminus H)+\hat\mu(H\setminus H')=0$}
+
+\noindent for every $E\in\Cal E$;  while if $G\in\Sigma$ and
+$\mu(E\setminus G)=0$ for every $E\in\Cal E$, we must have
+
+\Centerline{$\mu(H'\setminus G)\le\hat\mu(H\setminus G)=0$.}
+
+\noindent   Thus $H'$ is an essential supremum of $\Cal E$ in $\Sigma$.
+As $\Cal E$ is arbitrary, $(X,\Sigma,\mu)$ is localizable.
+
+\medskip
+
+{\bf (b)} Let $\langle X_i\rangle_{i\in I}$ be a decomposition of $X$
+for $\mu$, as in 211E.    Of course it is a partition of $X$ into
+sets of finite $\hat\mu$-measure.   If $H\subseteq X$ and
+$H\cap X_i\in\hat\Sigma$ for every $i$, choose for each $i\in I$ sets $E_i'$, $E_i''\in\Sigma$ such that
+
+\Centerline{$E_i'\subseteq H\cap X_i\subseteq E_i''$,\quad
+$\mu(E_i''\setminus E_i')=0$.}
+
+\noindent   Set $E'=\bigcup_{i\in I}E_i'$,
+$E''=\bigcup_{i\in I}(E_i''\cap X_i)$.   Then $E'\cap X_i=E_i'$,
+$E''\cap X_i=E_i''\cap X_i$ for
+each $i$, so $E'$ and $E''$ belong to $\Sigma$.   Also
+
+\Centerline{$\mu(E''\setminus E')
+=\sum_{i\in I}\mu(E_i''\cap X_i\setminus E_i')=0$.}
+
+\noindent As $E'\subseteq H\subseteq E''$, $H\in\hat\Sigma$ and
+
+\Centerline{$\hat\mu H=\mu E'
+=\sum_{i\in I}\mu E'_i=\sum_{i\in I}\hat\mu(H\cap X_i)$.}
+
+\noindent As $H$ is arbitrary, $\langle X_i\rangle_{i\in I}$
+is a decomposition of $X$ for $\hat\mu$.
+
+Accordingly, $(X,\hat\Sigma,\hat\mu)$ is strictly localizable if such a
+decomposition exists, which is so if $(X,\Sigma,\mu)$ is strictly
+localizable.
+
+\medskip
+
+{\bf (c)-(d)(i)} Suppose that $E\in\hat\Sigma$ is an atom for $\hat\mu$.
+Let $E'\in\Sigma$ be such that $E'\subseteq E$ and
+$\hat\mu(E\setminus E')=0$.   Then $\mu E'=\hat\mu E>0$.   If $F\in\Sigma$ and $F\subseteq E'$, then $F\subseteq E$, so either
+$\mu F=\hat\mu F=0$ or $\mu(E'\setminus F)=\hat\mu(E\setminus F)=0$.   As
+$F$ is arbitrary, $E'$ is an atom for $\mu$, and
+$\hat\mu(E\symmdiff E')=\hat\mu(E\setminus E')=0$.
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $E\in\Sigma$ is an atom for $\mu$, and that
+$H\in\hat\Sigma$ is such that $\hat\mu(H\symmdiff E)=0$.   Then
+$\hat\mu H=\mu E>0$.   If $F\in\hat\Sigma$ and $F\subseteq H$, let
+$F'\subseteq F$ be such that $F'\in\Sigma$ and
+$\hat\mu(F\setminus F')=0$.   Then
+$E\cap F'\subseteq E$ and $\hat\mu(F\symmdiff(E\cap F'))=0$, so either
+$\hat\mu F=\mu(E\cap F')=0$ or
+$\hat\mu(H\setminus F)=\mu(E\setminus F')=0$.   As $F$ is arbitrary, $H$
+is an atom for $\hat\mu$.
+
+\medskip
+
+\quad{\bf (iii)} It follows at once that $(X,\hat\Sigma,\hat\mu)$ is
+atomless iff $(X,\Sigma,\mu)$ is.
+
+\medskip
+
+\quad{\bf (iv)}\grheada\ On the other hand, if $(X,\Sigma,\mu)$
+is purely atomic and $\hat\mu H>0$, there is an $E\in\Sigma$ such that
+$E\subseteq H$ and $\mu E>0$, and an atom $F$ for $\mu$ such that
+$F\subseteq E$;  but $F$ is also an atom for $\hat\mu$.   As $H$ is
+arbitrary, $(X,\hat\Sigma,\hat\mu)$ is purely atomic.
+
+\medskip
+
+\qquad\grheadb\ And if $(X,\hat\Sigma,\hat\mu)$ is purely
+atomic and $\mu E>0$, then there is an $H\subseteq E$ which is an atom
+for
+$\hat\mu$;  now let $F\in\Sigma$ be such that $F\subseteq H$ and
+$\hat\mu(H\setminus F)=0$, so that $F$ is an atom for $\mu$ and
+$F\subseteq E$.   As $E$ is arbitary, $(X,\Sigma,\mu)$ is purely atomic.
+}%end of proof of 212G
+
+\exercises{
+\leader{212X}{Basic exercises $\pmb{>}$(a)} 
+%\spheader 212Xa
+Let $(X,\Sigma,\mu)$ be a
+complete measure space.   Suppose that $A\subseteq E\in\Sigma$ and that
+$\mu^*A+\mu^*(E\setminus A)=\mu E<\infty$.   Show that $A\in\Sigma$.
+
+\sqheader 212Xb Let $\mu$ and $\nu$ be two measures on a set $X$, with
+completions $\hat\mu$ and $\hat\nu$.   Show that the following are
+equiveridical:  (i) the outer measures $\mu^*$, $\nu^*$ defined from $\mu$
+and $\nu$ coincide;  (ii) $\hat\mu E=\hat\nu E$ whenever either is
+defined and finite;   (iii) $\int fd\mu=\int fd\nu$ whenever $f$ is a
+real-valued function such that either integral is defined and finite.
+\Hint{for (i)$\Rightarrow$(ii), if $\hat\mu E<\infty$, take a measurable
+envelope $F$ of $E$ for $\nu$ and calculate
+$\nu^*E+\nu^*(F\setminus E)$.}
+
+\spheader 212Xc Let $\mu$ be the restriction of Lebesgue measure
+to the Borel $\sigma$-algebra of $\Bbb R$, as in 211P.   Show that its
+completion is Lebesgue measure itself.   \Hint{134F.}
+
+\spheader 212Xd Repeat 212Xc for (i) Lebesgue measure on
+$\BbbR^r$ (ii) Lebesgue-Stieltjes measures on $\Bbb R$ (114Xa).
+
+\spheader 212Xe
+Let $X$ be a set and $\Sigma$ a $\sigma$-algebra
+of subsets of $X$.   Let $\Cal I$ be a $\sigma$-ideal of subsets of $X$
+(112Db).
+(i) Show that $\Sigma_1=\{E\symmdiff A:E\in\Sigma,\,A\in\Cal I\}$ is a
+$\sigma$-algebra of subsets of $X$.
+(ii) Let $\Sigma_2$ be the family of sets $E\subseteq X$ such
+that there are $E'$, $E''\in\Sigma$ with $E'\subseteq E\subseteq E''$
+and $E''\setminus E'\in\Cal I$.   Show that $\Sigma_2$ is a
+$\sigma$-algebra of subsets of $X$ and that $\Sigma_2\subseteq\Sigma_1$.
+(iii) Show that $\Sigma_2=\Sigma_1$ iff every member of
+$\Cal I$ is included in a member of $\Sigma\cap\Cal I$.
+
+\spheader 212Xf
+Let $(X,\Sigma,\mu)$ be a measure space, $Y$ any set and
+$\phi:X\to Y$ a function.   Set $\theta B=\mu^*\phi^{-1}[B]$ for every
+$B\subseteq Y$.   (i) Show that $\theta$ is an outer measure on $Y$.
+(ii) Let $\nu$ be the measure defined from $\theta$ by \Caratheodory's
+method, and $\Tau$ its domain.   Show that if $C\subseteq Y$ and
+$\phi^{-1}[C]\in\Sigma$ then $C\in\Tau$.   (iii) Suppose that
+$(X,\Sigma,\mu)$ is complete
+and totally finite.   Show that $\nu$ is the image measure
+$\mu\phi^{-1}$.
+
+\spheader 212Xg
+Let $g$, $h$ be two non-decreasing functions from
+$\Bbb R$ to itself, and $\mu_g$, $\mu_h$ the associated
+Lebesgue-Stieltjes
+measures.   Show that a real-valued function $f$ defined on a subset of
+$\Bbb R$ is $\mu_{g+h}$-integrable iff it is both
+$\mu_g$-integrable and $\mu_h$-integrable, and that then
+$\int fd\mu_{g+h}=\int fd\mu_g+\int fd\mu_h$.   \Hint{114Yb}.
+
+\spheader 212Xh Let $(X,\Sigma,\mu)$ be a measure 
+space, and $\Cal I$ a
+$\sigma$-ideal of subsets of $X$;  set
+$\Sigma_1=\{E\symmdiff A:E\in\Sigma,\,A\in\Cal I\}$, as in 212Xe.
+Show that if every member of $\Sigma\cap\Cal I$
+is $\mu$-negligible, then there is a unique extension of $\mu$ to a
+measure $\mu_1$ with domain $\Sigma_1$ such that $\mu_1A=0$ for every
+$A\in\Cal I$.
+%212C
+
+\spheader 212Xi\dvAnew{2009}
+Let $(X,\Sigma,\mu)$ be a complete measure space such that
+$\mu X>0$, $Y$ a set, $f:X\to Y$ a function and $\mu f^{-1}$ the image
+measure on $Y$.   Show that if $\Cal F$ is the filter of
+$\mu$-conegligible subsets of $X$, then the image filter $f[[\Cal F]]$
+(2A1Ib) is the filter of $\mu f^{-1}$-conegligible subsets of $Y$.
+
+\spheader 212Xj\dvAnew{2010}
+Let $(X,\Sigma,\mu)$ be a complete measure space and $f:X\to\Bbb R$ a
+function such that $\overline{\int}fd\mu<\infty$.   Show that there is a
+measurable function $g:X\to\Bbb R$ such that $f(x)\le g(x)$ for every 
+$x\in X$ and $\int g\,d\mu=\overline{\int}fd\mu$.
+
+\leader{212Y}{Further exercises (a)}
+%\spheader 212Ya
+Let $X$ be a set and $\phi$ an inner measure on $X$,
+that is, a functional from $\Cal PX$ to $[0,\infty]$ such that
+
+\inset{$\phi\emptyset=0$,}
+\inset{$\phi(A\cup B)\ge\phi A+\phi B$ if $A\cap B=\emptyset$,}
+
+\inset{$\phi(\bigcap_{n\in\Bbb N}A_n)=\lim_{n\to\infty}\phi A_n$
+whenever $\sequencen{A_n}$ is a non-increasing sequence of subsets of
+$X$ and $\phi A_0<\infty$,}
+
+\inset{if $\phi A=\infty$, $a\in\Bbb R$ there is a $B\subseteq A$ such
+that $a\le\phi B<\infty$.}
+
+\noindent Let $\mu$ be the measure defined from $\phi$, that is,
+$\mu=\phi\restr\Sigma$, where
+
+\Centerline{$\Sigma=\{E:\phi(A)
+  =\phi(A\cap E)+\phi(A\setminus E)\Forall A\subseteq X\}$}
+
+\noindent (113Yg).   Show that $\mu$ must be complete.
+}%end of exercises
+
+\endnotes{
+\Notesheader{212} The process of completion is so natural, and so
+universally applicable,
+and so convenient, that over large parts of measure theory it is
+reasonable to use only complete measure spaces.   Indeed many authors so
+phrase their definitions that, explicitly or implicitly, only complete
+measure spaces are considered.   In this treatise I avoid taking quite
+such a large step, even though it would simplify the statements of many
+of the theorems in this volume (for instance).   I did take the trouble, in Volume 1, to give a definition of `integrable function' which, in effect, looks at integrability with respect to the
+completion of a measure (212Fb).   There are non-complete
+measure spaces which are worthy of study (for example, the restriction
+of Lebesgue measure to the Borel $\sigma$-algebra of $\Bbb R$ -- see
+211P), and some
+interesting questions to be dealt with in Volumes 3 and 5 apply to
+them.   At the cost of rather a lot of verbal manoeuvres, therefore, I
+prefer to write theorems out in a form in which they can be applied to
+arbitrary measure spaces, without assuming completeness.   But it would
+be reasonable, and indeed would sharpen your technique, if you regularly
+sought the alternative formulations which become natural if you are
+interested only in complete spaces.
+}
+
+\discrpage
+
+

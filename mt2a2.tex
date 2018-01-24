@@ -1,0 +1,404 @@
+\frfilename{mt2a2.tex} 
+\versiondate{30.11.09} 
+\copyrightdate{2000} 
+ 
+\def\chaptername{Appendix} 
+\def\sectionname{The topology of Euclidean space} 
+ 
+\newsection{2A2} 
+ 
+In the appendix to Volume 1\cmmnt{ (\S1A2)} I 
+discussed open and closed sets in $\BbbR^r$;  the 
+chief aim there was to support the idea of `Borel set', which is 
+vital in the theory of Lebesgue measure, but of course they are also 
+fundamental to the study of continuous functions, and indeed to all 
+aspects of real analysis. 
+I give here a very brief introduction to the further elementary facts 
+about closed and compact sets and continuous functions which we need for 
+this volume.   Much of this material can be derived from the 
+generalizations in \S2A3, but nevertheless I sketch the proofs, since 
+for the greater 
+part of the volume (most of the exceptions are in Chapter 24) Euclidean 
+space is sufficient for our needs. 
+ 
+\leader{2A2A}{Closures:  Definition} For any $r\ge 1$ and any 
+$A\subseteq\BbbR^r$, the {\bf closure} of $A$, $\overline{A}$, is the 
+intersection of all the closed subsets of $\BbbR^r$ including $A$. 
+This is\cmmnt{ itself closed (being the intersection of a non-empty 
+family of closed sets, see 1A2Fd), so is} the smallest closed set 
+including $A$.   \cmmnt{In particular, }$A$ is closed iff $\overline{A}=A$. 
+ 
+\leader{2A2B}{Lemma} Let $A\subseteq\BbbR^r$ be any set.   Then for 
+$x\in\BbbR^r$ the following are equiveridical: 
+ 
+(i) $x\in\overline{A}$\cmmnt{, the closure of $A$}; 
+ 
+(ii) $B(x,\delta)\cap A\ne\emptyset$ for every $\delta>0$, where 
+$B(x,\delta)=\{y:\|y-x\|\le\delta\}$; 
+ 
+(iii) there is a sequence $\sequencen{x_n}$ in $A$ such that 
+$\lim_{n\to\infty}\|x_n-x\|=0$. 
+ 
+\proof{{\bf (a)(i)$\Rightarrow$(ii)} Suppose that $x\in\overline{A}$ and 
+$\delta>0$.   Then $U(x,\delta)=\{y:\|y-x\|<\delta\}$ is an open set 
+(1A2D), so $F=\BbbR^r\setminus U(x,\delta)$ is closed, while  
+$x\notin F$.   Now 
+ 
+\Centerline{$x\in\overline{A}\setminus F 
+\Longrightarrow\overline{A}\not\subseteq F 
+\Longrightarrow A\not\subseteq F 
+\Longrightarrow A\cap U(x,\delta)\ne\emptyset 
+\Longrightarrow A\cap B(x,\delta)\ne\emptyset$.} 
+ 
+\noindent As $\delta$ is arbitrary, (ii) is true. 
+ 
+\medskip 
+ 
+{\bf (b)(ii)$\Rightarrow$(iii)} If (ii) is true, then for each $n\in\Bbb 
+N$ we can find an $x_n\in A$ such that $\|x_n-x\|\le 2^{-n}$, and now 
+$\lim_{n\to\infty}\|x_n-x\|=0$. 
+ 
+\medskip 
+ 
+{\bf (c)(iii)$\Rightarrow$(i)} Assume (iii).   \Quer\ Suppose, if 
+possible, that $x\notin\overline{A}$.   Then $x$ belongs to the open set 
+$\BbbR^r\setminus\overline{A}$ and there is a $\delta>0$ such that 
+$U(x,\delta)\subseteq\BbbR^r\setminus\overline{A}$.   But now there 
+is an $n$ such that $\|x_n-x\|<\delta$, in which case $x_n\in 
+U(x,\delta)\cap A\subseteq U(x,\delta)\cap\overline{A}$.   \Bang 
+}%end of proof of 2A2B 
+ 
+\leader{2A2C}{Continuous functions (a)} \cmmnt{I begin with a 
+characterization of continuous functions 
+in terms of open sets.}   If $r$, $s\ge 1$, $D\subseteq\BbbR^r$ and 
+$\phi:D\to\BbbR^s$ is a function, we say that $\phi$ is {\bf 
+continuous} if for every $x\in D$ and $\epsilon>0$ there is a $\delta>0$ 
+such that $\|\phi(y)-\phi(x)\|\le\epsilon$ whenever $y\in D$ and 
+$\|y-x\|\le\delta$.   \cmmnt{Now }$\phi$ is continuous 
+iff for every open set 
+$G\subseteq\BbbR^s$ there is an open set $H\subseteq\BbbR^r$ such that 
+$\phi^{-1}[G]=D\cap H$. 
+ 
+\prooflet{\Prf\ {\bf (i)} Suppose that $\phi$ is continuous and that 
+$G\subseteq\BbbR^s$ is open.   Set 
+ 
+\Centerline{$H=\bigcup\{U:U\subseteq\BbbR^r\text{ is open},\,\phi[U\cap 
+D]\subseteq G\}$.} 
+ 
+\noindent Then $H$ is a union of open sets, therefore open (1A2Bd), and 
+$H\cap D\subseteq\phi^{-1}[G]$.   If $x\in\phi^{-1}[G]$, then 
+$\phi(x)\in G$, so there is an $\epsilon>0$ such that 
+$U(\phi(x),\epsilon)\subseteq G$;  now there is a $\delta>0$ such 
+that $\|\phi(y)-\phi(x)\|\le\bover12\epsilon$ whenever $y\in D$ and 
+$\|y-x\|\le\delta$, so that 
+ 
+\Centerline{$\phi[U(x,\delta)\cap D]
+\subseteq U(\phi(x),\epsilon)\subseteq G$} 
+ 
+\noindent and 
+ 
+\Centerline{$x\in U(x,\delta)\subseteq H$.} 
+ 
+\noindent As $x$ is arbitrary, $\phi^{-1}[G]=H\cap D$.   As $G$ is 
+arbitrary, $\phi$ satisfies the condition. 
+ 
+\quad{\bf (ii)} Now suppose that $\phi$ satisfies the condition.   Take 
+$x\in D$ and $\epsilon>0$.   Then $U(\phi(x),\epsilon)$ is open, 
+so 
+there is an open $H\subseteq\BbbR^r$ such that 
+$H\cap D=\phi^{-1}[U(\phi(x),\epsilon)]$;  we see that $x\in H$, so 
+there is a $\delta>0$ such that $U(x,\delta)\subseteq H$;  now if 
+$y\in 
+D$ and $\|y-x\|\le\bover12\delta$ then $y\in D\cap H$, $\phi(y)\in 
+U(\phi(x),\epsilon)$ and $\|\phi(y)-\phi(x)\|\le\epsilon$.   As $x$ and 
+$\epsilon$ are arbitrary, $\phi$ is continuous.   \Qed} 
+ 
+\header{2A2Cb}{\bf (b)} Using the $\epsilon$-$\delta$ definition of 
+continuity, it is 
+easy to see that a function $\phi$ from a subset $D$ of $\BbbR^r$ to 
+$\BbbR^s$ is continuous iff all its components $\phi_i$ are continuous, 
+writing $\phi(x)=(\phi_1(x),\ldots,\phi_s(x))$ for $x\in D$. 
+\prooflet{\Prf\ 
+{\bf (i)} If $\phi$ is continuous, $i\le s$, $x\in D$ and $\epsilon>0$, 
+then there is a $\delta>0$ such that 
+ 
+\Centerline{$|\phi_i(y)-\phi_i(x)|\le\|\phi(y)-\phi(x)\|\le\epsilon$} 
+ 
+\noindent whenever $y\in D$ and $\|y-x\|\le\delta$.   {\bf (ii)} If 
+every $\phi_i$ is continuous, $x\in D$ and $\epsilon>0$, then there are 
+$\delta_i>0$ such that $|\phi_i(y)-\phi_i(x)|\le\epsilon/\sqrt{s}$ 
+whenever $y\in D$ and $\|y-x\|\le\delta_i$;  setting  
+$\delta=\min_{1\le i\le r}\delta_i>0$, we have  
+$\|\phi(y)-\phi(x)\|\le\epsilon$ whenever $y\in D$ and  
+$\|y-x\|\le\delta$.  \Qed} 
+
+\spheader 2A2Cc\dvAnew{2015}\cmmnt{ At one or two points, 
+we shall encounter the 
+following strengthening of the notion of `continuous function'.}    
+If $r$, $s\ge 1$, $D\subseteq\BbbR^r$ and 
+$\phi:D\to\BbbR^s$ is a function, we say that $\phi$ is 
+{\bf uniformly continuous} if for every $\epsilon>0$ there is a $\delta>0$ 
+such that $\|\phi(y)-\phi(x)\|\le\epsilon$ whenever $x$, $y\in D$ and 
+$\|y-x\|\le\delta$.    A uniformly continuous function is\cmmnt{ of course}
+continuous.
+
+\leader{2A2D}{Compactness in $\BbbR^r$: Definition} A subset $F$ of 
+$\BbbR^r$ is called {\bf compact} if whenever 
+$\Cal G$ is a family of open sets covering $F$ then there is a finite 
+subset $\Cal G_0$ of $\Cal G$ still covering $F$. 
+ 
+\leader{2A2E}{Elementary properties of compact sets} Take any $r\ge 1$, and
+subsets $D$, $F$, $G$ and $K$ of $\BbbR^r$. 
+ 
+\header{2A2Ea}{\bf (a)} If $K$ is compact and 
+$F$ is closed, then $K\cap F$ is 
+compact.   \prooflet{\Prf\ Let $\Cal G$ be an open cover of $F\cap K$. 
+Then $\Cal G\cup\{\BbbR^r\setminus F\}$ is an open cover of $K$, so has a finite subcover $\Cal G_0$ say.   Now  
+$\Cal G_0\setminus\{\BbbR^r\setminus F\}$ is a finite subset of $\Cal G$ covering $K\cap F$.   As $\Cal G$ is arbitrary, $K\cap F$ is compact. 
+\Qed} 
+ 
+\header{2A2Eb}{\bf (b)} If $s\ge 1$, $\phi:D\to\BbbR^s$ is a 
+continuous function, $K$ is compact and $K\subseteq D$, then $\phi[K]$ is 
+compact. 
+\prooflet{\Prf\ Let $\Cal V$ be an open cover of $\phi[K]$.   Let 
+$\Cal H$ be 
+ 
+\Centerline{$\{H:H\subseteq\BbbR^r\text{ is open},\,\exists\enskip 
+V\in\Cal V,\,\phi^{-1}[V]=D\cap H\}$.} 
+ 
+\noindent If $x\in K$, then $\phi(x)\in\phi[K]$ so there is a 
+$V\in\Cal V$ such that $\phi(x)\in V$;  now there is an $H\in\Cal H$ such 
+that $D\cap H\phi^{-1}[V]$ contains $x$ (2A2Ca);  as $x$ is arbitrary, 
+$K\subseteq\bigcup\Cal H$.   Let $\Cal H_0$ be a finite subset of $H$ 
+covering $K$.   For each 
+$H\in\Cal H_0$, let $V_H\in\Cal V$ be such that 
+$\phi^{-1}[V_H]=D\cap H$;  then $\{V_H:H\in\Cal H_0\}$ is a finite subset 
+of $\Cal V$ covering 
+$\phi[K]$.   As $\Cal V$ is arbitrary, $\phi[K]$ is compact.   \Qed} 
+ 
+\spheader 2A2Ec If $K$ is compact, it is closed. 
+\prooflet{\Prf\ Write $H=\BbbR^r\setminus K$.   Take any $x\in H$. 
+Then $G_n=\BbbR^r\setminus B(x,2^{-n})$ is open for every $n\in\Bbb N$ 
+(1A2G).   Also 
+ 
+\Centerline{$\bigcup_{n\in\Bbb N}G_n=\{y:y\in\BbbR^r,\,\|y-x\|>0\}
+=\Bbb R^r\setminus\{x\}\supseteq K$.} 
+ 
+\noindent So there is some finite set 
+$\Cal G_0\subseteq\{G_n:n\in\Bbb N\}$ which covers $K$.   
+There must be an $n$ such that $\Cal G_0\subseteq\{G_i:i\le n\}$, so that 
+ 
+\Centerline{$K\subseteq\bigcup\Cal G_0\subseteq\bigcup_{i\le n}G_i=G_n$,} 
+ 
+\noindent and $B(x,2^{-n})\subseteq H$.   As $x$ is arbitrary, $H$ is 
+open and $K$ is closed.  \Qed} 
+ 
+\spheader 2A2Ed If $K$ is compact and $G$ is open and $K\subseteq G$, 
+then there is a $\delta>0$ such that $K+B(\tbf{0},\delta)\subseteq G$. 
+\prooflet{\Prf\ If $K=\emptyset$, this is trivial, as then 
+ 
+\Centerline{$K+B(\tbf{0},1)=\{x+y:x\in K,\,y\in B(\tbf{0},1)\}=\emptyset$.} 
+ 
+\noindent  Otherwise, set 
+ 
+\Centerline{$\Cal G
+=\{U(x,\delta):x\in \Bbb R^r,\,\delta>0,\,U(x,2\delta)\subseteq G\}$.} 
+ 
+\noindent Then $\Cal G$ is a family of open sets and 
+$\bigcup\Cal G=G$ (because $G$ is open), 
+so $\Cal G$ is an open cover of $K$ and has 
+a finite subcover $\Cal G_0$.   Express $\Cal G_0$ as 
+$\{U(x_0,\delta_0),\ldots,U(x_n,\delta_n)\}$ where 
+$U(x_i,2\delta_i)\subseteq G$ for each $i$.   Set 
+$\delta=\min_{i\le n}\delta_i>0$.   If $x\in K$ and 
+$y\in B(\tbf{0},\delta)$, then there 
+is an $i\le n$ such that $x\in U(x_i,\delta_i)$;  now 
+ 
+\Centerline{$\|(x+y)-x_i\|\le\|x-x_i\|+\|y\|<\delta_i+\delta
+\le 2\delta_i$,} 
+ 
+\noindent so $x+y\in U(x_i,2\delta_i)\subseteq G$.   As $x$ and $y$ 
+are arbitrary, $K+B(\tbf{0},\delta)\subseteq G$.   \Qed} 
+ 
+\cmmnt{ 
+\medskip 
+ 
+\noindent{\bf Remark} This result is a simple form of the {\bf Lebesgue 
+covering lemma}. 
+} 
+ 
+\leader{2A2F}{}\cmmnt{ The value of the concept of `compactness' is 
+greatly 
+increased by the fact that there is an effective characterization of the 
+compact subsets of $\BbbR^r$. 
+ 
+\medskip 
+ 
+\noindent}{\bf Theorem} For any $r\ge 1$, a subset $K$ of $\BbbR^r$ is 
+compact iff it is closed and bounded. 
+ 
+\proof{{\bf (a)} Suppose that $K$ is compact.   By 2A2Ec, it is closed. 
+To see that it is bounded, consider $\Cal G=\{U(\tbf{0},n):n\in\Bbb 
+N\}$.   $\Cal 
+G$ consists entirely of open sets, and $\bigcup\Cal G=\Bbb 
+R^r\supseteq K$, so there is a finite $\Cal G_0\subseteq\Cal G$ covering 
+$K$. There must be an $n$ such that $\Cal G_0\subseteq\{G_i:i\le n\}$, 
+so that 
+ 
+\Centerline{$K\subseteq\bigcup\Cal G_0\subseteq\bigcup_{i\le 
+n}U(\tbf{0},i)=U(\tbf{0},n)$,} 
+ 
+\noindent and $K$ is bounded. 
+ 
+\medskip 
+ 
+{\bf (b)} Thus we are left with the converse;  I have to show that a 
+closed bounded set is compact.   The main part of the argument is a 
+proof by induction on $r$ that the closed interval $[-\tbf{n},\tbf{n}]$ 
+is compact for all $n\in\Bbb N$, writing $\tbf{n}=(n,\ldots,n)\in\Bbb 
+R^r$. 
+ 
+\medskip 
+ 
+\quad{\bf (i)} If $r=1$ and $n\in\Bbb N$ and $\Cal G$ is a family of 
+open sets in $\Bbb R$ covering $[-n,n]$, set 
+ 
+\Centerline{$A=\{x:x\in[-n,n],\text{ there is a finite }\Cal 
+G_0\subseteq\Cal G\text{ such that }[-n,x]\subseteq\bigcup\Cal G_0\}$.} 
+ 
+\noindent Then 
+ $-n\in A$, because if $-n\in G\in\Cal G$ then 
+$[-n,-n]\subseteq\bigcup\{G\}$, and $A$ is bounded above by $n$, so 
+$c=\sup A$ exists and belongs to $[-n,n]$. 
+ 
+Next, $c\in[-n,n]\subseteq\bigcup\Cal G$, so there is a $G\in\Cal G$ 
+containing $c$.   Let $\delta>0$ be such that $U(c,\delta)\subseteq 
+G$. 
+There is an $x\in A$ such that $x\ge c-\delta$.   Let $\Cal G_0$ be a 
+finite subset of $\Cal G$ covering $[-n,x]$.  Then $\Cal G_1=\Cal 
+G_0\cup\{G\}$ is a finite subset of $\Cal G$ covering $[-n,c+{1\over 
+2}\delta]$. 
+But $c+{1\over2}\delta\notin A$ so $c+{1\over2}\delta>n$ and $\Cal G_1$ 
+is a finite subset of $\Cal G$ covering $[-n,n]$.   As $\Cal G$ is 
+arbitrary, $[-n,n]$ is compact and the induction starts. 
+ 
+\medskip 
+ 
+\quad{\bf (ii)} For the inductive step to $r+1$, regard the closed 
+interval $F=[-\tbf{n},\tbf{n}]$, taken in $\BbbR^{r+1}$, as the product 
+of the closed interval $E=[-\tbf{n},\tbf{n}]$, taken in $\BbbR^r$, with 
+the closed interval $[-n,n]\subseteq\Bbb R$;  by the inductive 
+hypothesis, both $E$ and $[-n,n]$ are compact.   Let $\Cal G$ be a 
+family of open subsets of $\BbbR^{r+1}$ covering $F$.   Write $\Cal H$ 
+for the family of open subsets $H$ of $\BbbR^r$ such that 
+$H\times[-n,n]$ is covered by a finite subfamily of $\Cal G$.   Then 
+$E\subseteq\bigcup\Cal H$.   \Prf\ Take $x\in E$.   Set 
+ 
+\Centerline{$\Cal U_x=\{U:U\subseteq\Bbb R\text{ is 
+open},\,\exists\enskip G\in\Cal G,\text{ open }H\subseteq\BbbR^r,\, 
+x\in H\text{ and }H\times U\subseteq G\}$.} 
+ 
+\noindent Then $\Cal U_x$ is a family of open subsets of $\Bbb R$.   If 
+$\xi\in[-n,n]$, there is a $G\in\Cal G$ containing $(x,\xi)$;  there is 
+a $\delta>0$ such that $U((x,\xi),\delta)\subseteq G$;  now 
+$U(x,\bover12\delta)$ and $U(\xi,\bover12\delta)$ are open sets in 
+$\BbbR^r$, $\Bbb R$ respectively and 
+ 
+\Centerline{$U(x,\bover12\delta)\times U(\xi,\bover12\delta)
+\subseteq U((x,\xi),\delta)\subseteq G$,} 
+ 
+\noindent so $U(\xi,\bover12\delta)\in\Cal U_x$.   As $\xi$ is 
+arbitrary, $\Cal U_x$ is an open cover of $[-n,n]$ in $\Bbb R$.   By 
+(i), it has a finite subcover $U_0,\ldots,U_k$ say.   For each $j\le k$ 
+we can find $H_j$, $G_j$ such that $H_j$ is an open subset of $\BbbR^r$ 
+containing $x$ and $H_j\times U_j\subseteq G_j\in\Cal G$.   Now set 
+$H=\bigcap_{j\le k}H_j$.  This is an open subset of $\BbbR^r$ 
+containing $x$, and $H\times[-n,n]\subseteq\bigcup_{j\le n}G_j$ is 
+covered by a finite subfamily of $\Cal G$.   So $x\in H\in\Cal H$.   As 
+$x$ is arbitrary, $\Cal H$ covers $E$.   \Qed 
+ 
+\medskip 
+ 
+\quad{\bf (iii)} Now the inductive hypothesis tells us that $E$ is 
+compact, so there is a finite subfamily $\Cal H_0$ of $\Cal H$ covering 
+$E$.   For each $H\in\Cal H_0$ let $\Cal G_H$ be a finite subfamily of 
+$\Cal G$ covering $H\times[-n,n]$.   Then $\bigcup_{H\in\Cal H_0}\Cal 
+G_H$ is a finite subfamily of $\Cal G$ covering $E\times[-n,n]=F$.   As 
+$\Cal G$ is arbitrary, $F$ is compact and the induction proceeds. 
+ 
+\medskip 
+ 
+\quad{\bf (iv)} Thus the interval $[-\tbf{n},\tbf{n}]$ is compact in 
+$\BbbR^r$ for every $r$, $n$.   Now suppose that $K$ is a closed 
+bounded set in $\BbbR^r$.   Then there is an $n\in\Bbb N$ such that 
+$K\subseteq[-\tbf{n},\tbf{n}]$, that is, $K=K\cap[-\tbf{n},\tbf{n}]$. 
+As $K$ is closed and $[-\tbf{n},\tbf{n}]$ is compact, $K$ is compact, by 
+2A2Ea. 
+ 
+This completes the proof. 
+}%end of proof of 2A2F 
+ 
+\leader{2A2G}{Corollary} If $\phi:D\to\Bbb R$ is continuous, where 
+$D\subseteq\BbbR^r$, and $K\subseteq D$ is a non-empty compact set, 
+then $\phi$ is bounded and attains its bounds on $K$. 
+ 
+\proof{ By 2A2Eb, $\phi[K]$ is compact; by 2A2F it is closed and 
+bounded.   To say that $\phi[K]$ is bounded is just to say that $\phi$ 
+is bounded on $K$.   Because $\phi[K]$ is a non-empty bounded set, it 
+has an infimum $a$ and a supremum $b$;  now both belong to 
+$\overline{\phi[K]}$ (by the criterion 2A2B(ii), or otherwise);  because 
+$\phi[K]$ is closed, both belong to $\phi[K]$, that is, $\phi$ attains 
+its bounds. 
+}%end of proof of 2A2G 
+ 
+\leader{2A2H}{Lim sup and lim inf revisited} In \S1A3 I briefly 
+discussed $\limsup_{n\to\infty}a_n$, $\liminf_{n\to\infty}a_n$ for real 
+sequences $\sequencen{a_n}$.   In this volume we need the notion of 
+$\limsup_{\delta\downarrow 0}f(\delta)$,  
+$\liminf_{\delta\downarrow 0}f(\delta)$ for real functions $f$.   I say 
+that $\limsup_{\delta\downarrow 0}f(\delta)=u\in[-\infty,\infty]$ if 
+(i) for every 
+$v>u$ there is an $\eta>0$ such that $f(\delta)$ is defined and less than 
+or equal to $v$ for every $\delta\in\ocint{0,\eta}$ 
+(ii) for every $v<u$ and $\eta>0$ there is a $\delta\in\ocint{0,\eta}$ 
+such that $f(\delta)$ is 
+defined and greater than or equal to $v$.   Similarly, 
+$\liminf_{\delta\downarrow 0}f(\delta)=u\in[-\infty,\infty]$ if (i) for 
+every $v<u$ there is an $\eta>0$ such that $f(\delta)$ is defined and  
+greater than 
+or equal to $v$ for every $\delta\in\ocint{0,\eta}$ (ii) for every 
+$v>u$ and $\eta>0$ there is an $\delta\in\ocint{0,\eta}$ such that  
+$f(\delta)$ is defined and less than or equal to $v$. 
+ 
+\leader{2A2I}{}\cmmnt{ In the one-dimensional case, we have a particularly simple description of the open sets. 
+ 
+\medskip 
+ 
+\noindent}{\bf Proposition} If $G\subseteq\Bbb R$ is any open set, it is 
+expressible as the union of a countable disjoint family of open 
+intervals. 
+ 
+\proof{ For $x$, $y\in G$ write $x\sim y$ if either $x\le y$ and 
+$[x,y]\subseteq G$ or $y\le x$ and $[y,x]\subseteq G$.   It is easy to 
+check that $\sim$ is an equivalence relation on $G$.   Let $\Cal C$ be 
+the set of equivalence classes under $\sim$.   Then $\Cal C$ is a 
+partition of $G$.   Now every $C\in\Cal C$ is an open interval. 
+\Prf\ Set $a=\inf C$, $b=\sup C$ (allowing $a=-\infty$ and/or $b=\infty$ 
+if $C$ is unbounded).   If $a<x<b$, there are $y$, $z\in C$ such that 
+$y\le x\le z$, so that $[y,x]\subseteq[y,z]\subseteq G$ and $y\sim x$ 
+and $x\in C$;  thus $\ooint{a,b}\subseteq C$.   If $x\in C$, there is an 
+open interval $I$ containing $x$ and included in $G$;  since $x\sim y$ 
+for every $y\in I$, $I\subseteq C$;  so 
+ 
+\Centerline{$a\le\inf I<x<\sup I\le b$} 
+ 
+\noindent and $x\in\ooint{a,b}$.   Thus $C=\ooint{a,b}$ is an open 
+interval.\ \Qed 
+ 
+To see that $\Cal C$ is countable, observe that every member of $\Cal C$ 
+contains a member of $\Bbb Q$, so that we have a surjective function 
+from a subset of $\Bbb Q$ onto $\Cal C$, and $\Cal C$ is countable (1A1E). 
+}%end of proof of 2A2I 
+ 
+\discrpage 
+ 

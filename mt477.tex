@@ -1,0 +1,2702 @@
+\frfilename{mt477.tex}
+\versiondate{4.1.08/2.1.10}
+\copyrightdate{2008}
+
+\def\hp{\mathop{\text{hp}}\nolimits}
+
+\def\chaptername{Geometric measure theory}
+\def\sectionname{Brownian motion}
+
+\newsection{477}
+
+I presented \S455 with an extraordinary omission:  the leading example of a
+L\'evy process, and the inspiration for the whole project, was
+relegated to an anonymous example (455Xg).   In this section I will take
+the subject up again.   The theorem that the sum of independent normally
+distributed random variables is again normally distributed (274B), when
+translated into the language of this volume, tells us that we have a family
+$\langle\lambda_t\rangle_{t>0}$ of centered normal distributions such that
+$\lambda_{s+t}=\lambda_s*\lambda_t$ for all $s$, $t>0$.   Consequently we
+have a corresponding example of a L\'evy process on $\Bbb R$, and this is
+the process which we call `Brownian motion' (477A).   This is special in
+innumerable ways, but one of them is central:  we can represent it in such
+a way that sample paths are continuous (477B), that is, as a Radon measure
+on the space of continuous paths starting at $0$.   In this form, it also
+appears as a limit, for the narrow topology, of interpolations of
+random walks (477C).
+
+For the geometric ideas of \S479, we need Brownian motion in three
+dimensions;  the $r$-dimensional theory of 477D-477G gives no new
+difficulties.   The simplest expression of Brownian motion in $\BbbR^r$ is
+just to take a product measure (477Da), but in order to apply the results
+of \S455, and match the construction with the ideas of \S456, a fair bit of
+explanation is necessary.   The geometric properties of Brownian motion
+begin with the invariant transformations of 477E.   As for all L\'evy
+processes, we have a strong Markov property, and Theorem 455U translates
+easily into the new formulation (477G), as does the theory of hitting
+times (477I).   I conclude with a classic result on maximal values
+which will be useful later (477J), and with proofs that
+almost all Brownian paths are nowhere differentiable (477K) and have
+zero two-dimensional Hausdorff measure (477L).
+
+\leader{477A}{Brownian motion:  Theorem} There are a probability space
+$(\Omega,\Sigma,\mu)$ and a family $\langle X_t\rangle_{t\ge 0}$ of
+real-valued random variables on $\Omega$ such that
+
+(i) $X_0=0$ almost everywhere;
+
+(ii) whenever $0\le s<t$ then $X_t-X_s$ is normally
+distributed with expectation $0$ and variance $t-s$;
+
+(iii) $\langle X_t\rangle_{t\ge 0}$ has independent increments.
+
+\ifwithproofs\medskip
+
+\noindent{\bf First proof} In 455P, take $U=\Bbb R$ and
+$\lambda_t$, for $t>0$, to be the distribution of a normal random
+variable with expectation $0$ and variance $t$;  that is, the distribution
+with probability density function
+$x\mapsto\Bover1{\sqrt{2\pi t}}e^{-x^2/2t}$.   By 272T\formerly{2{}72S},
+$\lambda_{s+t}=\lambda_s*\lambda_t$ for all $s$, $t>0$.
+If $\epsilon>0$, then
+
+\def\shortstrut{\hbox{\vrule height7.5pt depth2.5pt width0pt}}
+
+\Centerline{$\lim_{t\downarrow 0}\lambda_t\ooint{-\epsilon,\epsilon}
+=\lim_{t\downarrow 0}
+\lambda_1\bigl]-\Bover{\epsilon}{\sqrt t},\Bover{\epsilon}{\sqrt t}\bigr[
+=1$,}
+
+\noindent so $\langle\lambda_t\rangle_{t>0}$ satisfies the conditions of
+455P.   Accordingly we have a probability measure $\hat\mu$ on
+$\Omega=\BbbR^{\coint{0,\infty}}$ for which, setting
+$X_t(\omega)=\omega(t)$, $\langle X_t\rangle_{t\ge 0}$ has the required
+properties, as noted in 455Q-455R.
+
+\medskip
+
+\noindent{\bf Second proof} Let $\mu_L$ be Lebesgue measure on $\Bbb R$,
+and for $t\ge 0$ set $u_t=\chi[0,t]^{\ssbullet}$ in $L^2(\mu_L)$, so that
+$\innerprod{u_s}{u_t}=\min(s,t)$ for $s$, $t\ge 0$.   By 456C, there is a
+centered Gaussian distribution $\mu$ on $\BbbR^{\coint{0,\infty}}$ with
+covariance matrix $\langle\min(s,t)\rangle_{s,t\ge 0}$.   Set
+$X_t(x)=x(t)$ for $x\in\BbbR^{\coint{0,\infty}}$.   Then $X_0$ has
+expectation and variance both $0$, that is, $X_0=0$ a.e.   If
+$0\le s<t$, then $X_t-X_s$ is a linear combination of $X_s$ and $X_t$, so
+is normally distributed with expectation $0$, and its variance is
+
+\Centerline{$\Expn(X_t-X_s)^2
+=\Expn(X_t)^2-2\Expn(X_t\times X_s)+\Expn(X_s)^2
+=t-2s+s=t-s$.}
+
+\noindent If $0\le t_0<\ldots<t_n$ and $Y_i=X_{t_{i+1}}-X_{t_i}$ for
+$i<n$, then $\langle Y_i\rangle_{i<n}$ has a centered Gaussian
+distribution, by 456Ba.   Also, if $i<j<n$, then
+
+$$\eqalign{\Expn(Y_i\times Y_j)
+&=\Expn(X_{t_{i+1}}\times X_{t_{j+1}})
+  -\Expn(X_{t_{i+1}}\times X_{t_j})
+  -\Expn(X_{t_i}\times X_{t_{j+1}})
+  +\Expn(X_{t_i}\times X_{t_j})\cr
+&=t_{i+1}-t_{i+1}-t_i+t_i
+=0.\cr}$$
+
+\noindent So 456E assures us that $\langle Y_i\rangle_{i<n}$ is
+independent.
+
+Thus $\langle X_t\rangle_{t\ge 0}$ satisfies the conditions required.
+\else\fi %end of proof of 477A
+
+\leader{477B}{}\cmmnt{ These constructions of Brownian motion are
+sufficient to show that there is a process, satisfying the defining
+conditions (i)-(iii), which can be studied with the tools of measure
+theory.   From 455H we see that we have a Radon measure on the space
+of \callal\ functions representing the process, and from 455P that we
+have the option of moving to the \cadlag\ functions, with a corresponding
+description of the strong Markov property in terms of \imp\ functions, as
+in 455U.   But there is no hint yet of the most important property of
+Brownian motion, that `sample paths are continuous'.   With some simple
+inequalities from Chapter 27 and the ideas of 454Q-454S, %454Q 454R 454S
+we can find a proof of this, as follows.
+
+\medskip
+
+\noindent}{\bf Theorem} Let
+$\langle X_t\rangle_{t\ge 0}$ be as in 477A, and $\hat\mu$ the
+distribution of the process $\langle X_t\rangle_{t\ge 0}$.
+Let $C(\coint{0,\infty})_0$ be
+the set of continuous functions
+$\omega:\coint{0,\infty}\to\Bbb R$ such that $\omega(0)=0$.
+Then $C(\coint{0,\infty})_0$ has full outer measure for
+$\hat\mu$, and the subspace measure $\mu_W$ on $C(\coint{0,\infty})_0$
+induced by $\hat\mu$
+is a Radon measure when $C(\coint{0,\infty})_0$ is given the topology
+$\frak T_c$ of uniform convergence on compact sets.
+
+\proof{{\bf (a)} The main part of the argument here (down to
+the end of (e)) is devoted to showing that
+$\hat\mu^*C(\coint{0,\infty})=1$;
+the result will then follow easily from 454Sb.
+
+\medskip
+
+{\bf (b)} \Quer\ Suppose, if possible, that
+$\hat\mu^*C(\coint{0,\infty})<1$.
+Then there is a non-negligible Baire set
+$H\subseteq\BbbR^{\coint{0,\infty}}\setminus C(\coint{0,\infty})$.
+There is a countable set $D\subseteq\coint{0,\infty}$ such that $H$ is
+determined by coordinates in $D$ (4A3Nb);  we may suppose that $D$
+includes $\Bbb Q\cap\coint{0,\infty}$.
+
+\medskip
+
+{\bf (c)} (The key.)  Let $q$, $q'$ be rational numbers such that
+$0\le q<q'$, and $\epsilon>0$.   Then
+
+\Centerline{$\Pr(\sup_{t\in D\cap[q,q']}|X_t-X_q|>\epsilon)
+\le\Bover{18\sqrt{q'-q}}{\epsilon\sqrt{2\pi}}
+   e^{-\epsilon^2/18(q'-q)}$.}
+
+\noindent\Prf\ If $q=t_0<t_1<\ldots<t_n=q'$, set
+$Y_i=X_{t_i}-X_{t_{i-1}}$ for $1\le i\le n$, so that
+$X_{t_m}-X_q=\sum_{i=1}^mY_i$ for $1\le m\le n$, and $Y_1,\ldots,Y_n$
+are independent.   By Etemadi's lemma (272V\formerly{2{}72U}),
+
+$$\eqalignno{\Pr(\sup_{i\le n}|X_{t_i}-X_q|>\epsilon)
+&\le 3\max_{i\le n}\Pr(|X_{t_i}-X_q|>\Bover13\epsilon)\cr
+&=3\max_{1\le i\le n}\Pr(\Bover1{\sqrt{t_i-q}}|X_{t_i}-X_q|
+                         >\Bover{\epsilon}{3\sqrt{t_i-q}})\cr
+&=6\max_{1\le i\le n}\Bover1{\sqrt{2\pi}}
+  \int_{\epsilon/3\sqrt{t_i-q}}^{\infty}e^{-x^2/2}dx\cr
+\displaycause{because $\Bover1{\sqrt{t_i-q}}(X_{t_i}-X_q)$ is
+standard normal}
+&=\Bover6{\sqrt{2\pi}}
+  \int_{\epsilon/3\sqrt{q'-q}}^{\infty}e^{-x^2/2}dx\cr
+&\le\Bover{18\sqrt{q'-q}}{\epsilon\sqrt{2\pi}}
+   e^{-\epsilon^2/18(q'-q)}\cr}$$
+
+\noindent by 274Ma.   Thus if $I\subseteq[q,q']$ is any finite set
+containing $q$ and $q'$,
+
+\Centerline{$\Pr(\sup_{t\in I}|X_t-X_q|>\epsilon)
+\le\Bover{18\sqrt{q'-q}}{\epsilon\sqrt{2\pi}}
+   e^{-\epsilon^2/18(q'-q)}$.}
+
+\noindent Taking $\sequencen{I_n}$ to be a non-decreasing sequence of
+finite sets with union $D\cap[q,q']$, starting from $I_0=\{q,q'\}$, we
+get
+
+$$\eqalign{\Pr(\sup_{t\in D\cap[q,q']}|X_t-X_q|>\epsilon)
+&=\lim_{n\to\infty}\Pr(\sup_{t\in I_n}|X_t-X_q|>\epsilon)\cr
+&\le\Bover{18\sqrt{q'-q}}{\epsilon\sqrt{2\pi}}
+   e^{-\epsilon^2/18(q'-q)},\cr}$$
+
+\noindent as required.\ \Qed
+
+\medskip
+
+{\bf (d)} If $\epsilon>0$ and $n\ge 1$, then
+
+$$\eqalign{\Pr(\text{there are }t,\,u\in D\cap[0,n]&\text{ such that }
+|t-u|\le\Bover1{n^2}\text{ and }|X_t-X_u|>3\epsilon)\cr
+&\le\Bover{18n^2}{\epsilon\sqrt{2\pi}}e^{-n^2\epsilon^2/18}.\cr}$$
+
+\noindent\Prf\ Divide $[0,n]$ into $n^3$ intervals $[q_i,q_{i+1}]$ of
+length $1/n^2$.   For each of these,
+
+\Centerline{$\Pr(\sup_{t\in D\cap[q_i,q_{i+1}]}|X_t-X_{q_i}|>\epsilon)
+\le\Bover{18}{n\epsilon\sqrt{2\pi}}e^{-n^2\epsilon^2/18}$.}
+
+\noindent So
+
+\Centerline{$\Pr(\text{there are }i<n^3,\,t\in D\cap[q_i,q_{i+1}]
+\text{ such that }|X_t-X_{q_i}|>\epsilon)$}
+
+\noindent is at most
+$\Bover{18n^2}{\epsilon\sqrt{2\pi}}e^{-n^2\epsilon^2/18}$.
+
+But if
+$t$, $u\in[0,n]$ and $|t-u|\le 1/n^2$ and $|X_t-X_u|>3\epsilon$,
+there must be an $i<n^3$ such that both $t$ and $u$ belong to
+$[q_i,q_{i+2}]$, so that either there is a $t'\in D\cap[q_i,q_{i+1}]$
+such that $|X_{t'}-X_{q_i}|>\epsilon$ or there is a
+$t'\in D\cap[q_{i+1},q_{i+2}]$ such that
+$|X_{t'}-X_{q_{i+1}}|>\epsilon$.   So
+
+$$\eqalign{\Pr(&\text{there are }t,\,u\in D\cap[0,n]\text{ such that }
+|t-u|\le\Bover1{n^2}\text{ and }|X_t-X_u|> 3\epsilon)\cr
+&\quad\le\Pr(\text{there are }i<n^3,\,t\in D\cap[q_i,q_{i+1}]
+\text{ such that }\text{ and }|X_t-X_{q_i}|>\epsilon)\cr
+&\quad\le\Bover{18n^2}{\epsilon\sqrt{2\pi}}e^{-n^2\epsilon^2/18},\cr}$$
+
+\noindent as required.\ \Qed
+
+\medskip
+
+{\bf (e)} So if we take $G_{\epsilon n}$ to be the Baire set
+
+$$\eqalign{\{\omega:\omega\in\BbbR^{\coint{0,\infty}},
+  \text{ there are }t,\,
+  u\in D\cap[0,n]&\text{ such that }|t-u|\le\Bover1{n^2}\cr
+&\text{ and }|\omega(t)-\omega(u)|> 3\epsilon\},\cr}$$
+
+\noindent we have
+
+\Centerline{$\hat\mu G_{\epsilon n}
+\le\Bover{18n^2}{\epsilon\sqrt{2\pi}}e^{-n^2\epsilon^2/18}$,}
+
+\ifdim\pagewidth>467pt\fontdimen3\tenrm=2pt\fi
+\ifdim\pagewidth>467pt\fontdimen4\tenrm=1.67pt\fi
+\noindent and $\lim_{n\to\infty}\hat\mu G_{\epsilon n}=0$.   We can
+therefore find a strictly increasing sequence $\sequence{k}{n_k}$
+in $\Bbb N$ such that $\sum_{k=1}^{\infty}\hat\mu(G_{1/k,n_k})<\hat\mu H$,
+so that there is
+an $\omega\in H\setminus\bigcup_{k\ge 1}G_{1/k,n_k}$.
+\fontdimen3\tenrm=1.67pt
+\fontdimen4\tenrm=1.11pt
+
+What this means is that if $k\ge 1$ and $t$, $u\in D\cap[0,n_k]$ are
+such that $|t-u|\le\Bover1{n_k^2}$, then
+$|\omega(t)-\omega(u)|\le\Bover3k$.   Since
+$n_k\to\infty$ as $k\to\infty$, there is a continuous function
+$\omega':\coint{0,\infty}\to\Bbb R$ such
+that $\omega'\restr D=\omega\restr D$.
+But $H$ is determined by coordinates in
+$D$, so $\omega'$ belongs to $H\cap C(\coint{0,\infty})$,
+which is supposed to be empty.\ \Bang
+
+\medskip
+
+{\bf (f)} Thus $\hat\mu^*C(\coint{0,\infty})=1$.
+Since $\hat\mu\{\omega:\omega(0)=0\}=1$,
+$C(\coint{0,\infty})\setminus C(\coint{0,\infty})_0$
+is $\hat\mu$-negligible and
+$C(\coint{0,\infty})_0$ is of full outer measure for $\hat\mu$.
+By 454Sb, the subspace
+measure $\hat\mu_C$ on $C(\coint{0,\infty})$ induced by $\hat\mu$ is a
+Radon measure for $\frak T_c$;  now $C(\coint{0,\infty})_0$ is
+$\hat\mu_C$-conegligible.   The subspace measure $\mu_W$ on
+$C(\coint{0,\infty})_0$ induced by $\hat\mu$ is also the subspace measure
+induced by $\hat\mu_C$, so is a Radon measure for the topology on
+$C(\coint{0,\infty})_0$ induced by $\frak T_c$.
+}%end of proof of 477B
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} We can put this together with the ideas of 455H.
+Following the First Proof of 477A, and using 455Pc, we see that
+there is a unique Radon
+measure $\tilde\mu$ on $\BbbR^{\coint{0,\infty}}$ (for the topology
+$\frak T_p$ of
+pointwise convergence) extending $\hat\mu$.   The identity map
+$\iota:C(\coint{0,\infty})_0\to\BbbR^{\coint{0,\infty}}$ is continuous for
+$\frak T_c$ and $\frak T_p$, so the image measure $\mu_W\iota^{-1}$ is a
+Radon measure on $\BbbR^{\coint{0,\infty}}$ (418I).   If
+$E\subseteq\BbbR^{\coint{0,\infty}}$ is a Baire set, then
+
+\Centerline{$\mu_W\iota^{-1}[E]=\mu_W(E\cap C(\coint{0,\infty})_0)
+=\hat\mu E$,}
+
+\noindent so $\mu_W\iota^{-1}$ agrees with $\tilde\mu$ on Baire sets,
+and the two must be equal.
+Now $C(\coint{0,\infty})_0$ is $\tilde\mu$-conegligible,
+just because its complement has empty inverse image under $\iota$.
+So $\mu_W$ is also the subspace measure on $C(\coint{0,\infty})_0$
+induced by $\tilde\mu$.
+
+Equally, since of course $C(\coint{0,\infty})_0$ is a subspace of the set
+$\Cdlg$ of \cadlag\ functions from $\coint{0,\infty}$ to $\Bbb R$,
+$\mu_W$ is the subspace measure induced by the measure $\ddot\mu$ of
+Theorem 455O.
+}%end of comment
+
+\leader{*477C}{}\cmmnt{ I star the next theorem because it is very hard
+work and will not be relied on later.
+Nevertheless I think the statement, at
+least, should be part of your general picture of Brownian motion.
+
+\medskip
+
+\noindent}{\bf Theorem} For $\alpha>0$, define
+$f_{\alpha}:\BbbR^{\Bbb N}\to\Omega=C(\coint{0,\infty})_0$ by setting
+$f_{\alpha}(z)(t)
+=\sqrt\alpha(\sum_{i<n}z(i)+\Bover1{\alpha}(t-n\alpha)z(n))$
+when $z\in\BbbR^{\Bbb N}$, $n\in\Bbb N$ and
+$n\alpha\le t\le(n+1)\alpha$.   Give $\Omega$ its topology $\frak T_c$ of
+uniform convergence on compact sets, and $\BbbR^{\Bbb N}$ its product
+topology;  then $f_{\alpha}$ is continuous.
+For a Radon probability measure $\nu$ on $\Bbb R$,
+let $\mu_{\nu\alpha}$ be the image Radon measure
+$\nu^{\Bbb N}f_{\alpha}^{-1}$ on $\Omega$, where $\nu^{\Bbb N}$ is the
+product measure on $\BbbR^{\Bbb N}$.   Let $\mu_W$ be the Radon measure of
+477B, and $U$ a neighbourhood of $\mu_W$ in the space
+$P_{\text{R}}(\Omega)$ of Radon probability measures on $\Omega$
+for the narrow topology\cmmnt{ (437Jd)}.   Then there is a
+$\delta>0$ such
+that $\mu_{\nu\alpha}\in U$ whenever $\alpha\in\ocint{0,\delta}$ and $\nu$
+is a Radon probability measure on $\Bbb R$ with mean $0=\int x\,\nu(dx)$
+and variance $1=\int x^2\nu(dx)$ and
+
+%\vskip2pt
+
+\hfill$\biggerint_{\{x:|x|\ge\delta/\sqrt{\alpha}\}}x^2\nu(dx)\le\delta$.
+\hfill($\dagger$)
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} The idea is that, for a given $\alpha$ and $\nu$, we
+consider a random walk with independent identically distributed steps,
+with expectation 0 and variance $\alpha$, at time intervals of $\alpha$,
+and then interpolate to get a continuous function on $\coint{0,\infty}$;
+and that if the step-lengths are small the result should look like Brownian
+motion.   Moreover, this ought not to depend on the distribution $\nu$;
+but in order to apply the Central Limit Theorem in a sufficiently uniform
+way, we need the extra regularity condition ($\dagger$).
+On first reading you may well prefer to fix on a
+particular distribution $\nu$ with mean $0$ and expectation $1$ (e.g., the
+distribution which gives measure $\bover12$ to each of $\{1\}$ and
+$\{-1\}$), so that ($\dagger$) is satisfied whenever $\alpha$ is small
+enough compared with $\delta$.}
+
+\proof{ For $\delta>0$ I will write $Q(\delta)$ for the set
+of pairs $(\nu,\alpha)$ such that $\nu$ is a
+Radon probability measure on $\Bbb R$ with mean $0$ and variance $1$,
+$0<\alpha\le\delta$ and
+$\int_{\{x:|x|\ge\delta/\sqrt{\alpha}\}}x^2\nu(dx)\le\delta$.
+Note that $Q(\delta')\subseteq Q(\delta)$ when $\delta'\le\delta$.
+
+\medskip
+
+{\bf (a)(i)} If $\gamma$, $\epsilon>0$ there is a $\delta>0$ such
+that whenever $(\nu,\alpha)\in Q(\delta)$, $s$, $t\ge 0$
+are multiples of $\alpha$
+such that $t-s\ge\gamma$, and $I\subseteq\Bbb R$ is an interval (open,
+closed or half-open), then
+
+\Centerline{$
+|\mu_{\nu\alpha}\{\omega:\omega\in\Omega,\,\omega(t)-\omega(s)\in I\}
+-\Bover1{\sqrt{2\pi(t-s)}}\int_Ie^{-x^2/2(t-s)}dx|\le\epsilon$.}
+
+\noindent\Prf\ For $\delta>0$, $x\in\Bbb R$ set
+$\psi_{\delta}(x)=x^2$ if $|x|>\delta$, $0$ if $|x|\le\delta$.
+Let $\eta>0$ be such that whenever $Y_1,\ldots,Y_k$ are
+independent random variables with finite variance and zero expectation,
+$\sum_{i=1}^k\Var(Y_i)=1$ and
+$\sum_{i=1}^k\Expn(\psi_{\eta}(Y_i))\le\eta$, then
+
+\Centerline{$|\Pr(\sum_{i=1}^kY_i\le\beta)
+  -\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\beta}e^{-x^2/2}dx|
+\le\Bover{\epsilon}2$}
+
+\noindent for every $\beta\in\Bbb R$ (274F);  observe that in this case
+
+$$\eqalignno{|\Pr(\sum_{i=1}^k&Y_i<\beta)
+  -\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\beta}e^{-x^2/2}dx|\cr
+&=\lim_{\beta'\uparrow\beta}|\Pr(\sum_{i=1}^kY_i\le\beta')
+  -\Bover1{\sqrt{2\pi}}\int_{-\infty}^{\beta'}e^{-x^2/2}dx|
+\le\Bover{\epsilon}2\cr}$$
+
+\noindent for every $\beta\in\Bbb R$, so that
+
+\Centerline{$|\Pr(\sum_{i=1}^kY_i\in J)
+  -\Bover1{\sqrt{2\pi}}\int_Je^{-x^2/2}dx|
+\le\epsilon$}
+
+\noindent for every interval $J\subseteq\Bbb R$.
+
+Set $\delta=\min(\eta,\eta\sqrt{\gamma})$.
+If $I\subseteq\Bbb R$ is an interval,
+$(\nu,\alpha)\in Q(\delta)$ and $s$, $t$ are multiples of $\alpha$ such
+that $t-s\ge\gamma$, set $j=\Bover{s}{\alpha}$,
+$k=\Bover{t-s}{\alpha}$ and $J=\sqrt{t-s}I=\sqrt{\bover{k}{\alpha}}I$.
+Then
+
+$$\eqalign{\mu_{\nu\alpha}\{\omega:\omega(t)-\omega(s)\in I\}
+&=\nu^{\Bbb N}\{z:f_{\alpha}(z)(t)-f_{\alpha}(z)(s)\in I\}\cr
+&=\nu^{\Bbb N}\{z:\sqrt{\alpha}\sum_{i=j}^{j+k-1}z(i)\in I\}
+=\Pr(\sum_{i=0}^{k-1}Y_i\in J)\cr}$$
+
+\noindent where $Y_i(z)=\Bover1{\sqrt{k}}z(j+i)$.   For each $i$,
+the mean and variance of $Y_i$ are $0$ and $\bover1k$, because the mean
+and expectation of $\nu$ are $0$ and $1$.   Next,
+
+$$\eqalign{\sum_{i=0}^{k-1}\Expn(\psi_{\eta}(Y_i))
+&=k\int_{\{x:|x|>\eta\sqrt{k}\}}\Bover1kx^2\nu(dx)
+\le\int_{\{x:|x|>\eta\sqrt{\gamma/\alpha}\}}x^2\nu(dx)\cr
+&\le\int_{\{x:|x|>\delta/\sqrt{\alpha}\}}x^2\nu(dx)
+\le\delta
+\le\eta,\cr}$$
+
+\noindent so by the choice of $\eta$,
+
+$$\eqalign{
+&|\mu_{\nu\alpha}\{\omega:\omega\in\Omega,\,\omega(t)-\omega(s)\in I\}
+  -\Bover1{\sqrt{2\pi(t-s)}}\int_Ie^{-x^2/2(t-s)}dx|\cr
+&\mskip230mu
+=|\Pr(\sum_{i=0}^{k-1}Y_i\in J)
+  -\Bover1{\sqrt{2\pi}}\int_Je^{-x^2/2}dx|
+\le\epsilon.  \text{ \Qed}\cr}$$
+
+\medskip
+
+\quad{\bf (ii)} If $\gamma$, $\epsilon>0$, there is a $\delta>0$
+such that
+
+\Centerline{$\mu_{\nu\alpha}
+  \{\omega:\diam(\omega[\,[\beta,\beta+\gamma]\,])
+>12\epsilon\}
+\le\Bover{3\sqrt{\gamma}}{\epsilon}e^{-\epsilon^2/2\gamma}$}
+
+\noindent whenever $(\nu,\alpha)\in Q(\delta)$ and
+$\beta\ge 0$.   \Prf\ Let $\eta>0$ be such that
+
+\Centerline{$6(\eta+\Bover{\sqrt{\gamma+\eta}}{\epsilon\sqrt{2\pi}}
+   e^{-\epsilon^2/2(\gamma+\eta)})
+\le\Bover{3\sqrt{\gamma}}{\epsilon}e^{-\epsilon^2/2\gamma}$,}
+
+\noindent and let $\delta_0>0$ be such that
+
+\Centerline{$
+|\mu_{\nu\alpha}\{\omega:\omega\in\Omega,\,\omega(t)-\omega(s)\in I\}
+-\Bover1{\sqrt{2\pi(t-s)}}\int_Ie^{-x^2/2(t-s)}dx|\le\eta$}
+
+\noindent whenever $I\subseteq\Bbb R$ is an interval,
+$(\nu,\alpha)\in Q(\delta_0)$
+and $s$ and $t$ are
+multiples of $\alpha$ such that $t-s\ge\bover14\gamma$.
+Set $\delta=\min(\bover14\gamma,\bover12\eta,\delta_0)$.
+
+Fix $(\nu,\alpha)\in Q(\delta)$.   Applying the last formula with
+$I=[-\epsilon,\epsilon]$ and then taking complements,
+
+$$\eqalign{\mu_{\nu\alpha}\{\omega:|\omega(t)-\omega(s)|>\epsilon\}
+&\le\eta+\Bover{2}{\sqrt{2\pi(t-s)}}
+  \int_{\epsilon}^{\infty}e^{-x^2/2(t-s)}dx\cr
+&=\eta+\Bover{2}{\sqrt{2\pi}}
+  \int_{\epsilon/\sqrt{t-s}}^{\infty}e^{-x^2/2}dx\cr
+&\le\eta+\Bover{2}{\sqrt{2\pi}}
+  \int_{\epsilon/\sqrt{\gamma+\eta}}^{\infty}e^{-x^2/2}dx
+\le\eta
+  +\Bover{\sqrt{\gamma+\eta}}
+  {\epsilon}e^{-\epsilon^2/2(\gamma+\eta)}\cr}$$
+
+\noindent whenever $s$, $t$ are multiples of $\alpha$ such that
+$\bover14\gamma\le t-s\le\gamma+\eta$, using
+274Ma for the last step, as in part (c) of the proof of 477B.
+Now if $s$, $t$ are multiples of $\alpha$ such
+that $s\le t\le\gamma+\eta$, either $t-s\ge\bover14\gamma$ and
+
+\Centerline{$\mu_{\nu\alpha}\{\omega:|\omega(t)-\omega(s)|>2\epsilon\}
+\le\eta+\Bover{\sqrt{\gamma+\eta}}
+  {\epsilon}e^{-\epsilon^2/2(\gamma+\eta)}$,}
+
+\noindent or $t\le s+\bover14\gamma$ and
+there is a multiple $u$ of $\alpha$ such that
+$t+\bover14\gamma\le u\le t+\bover12\gamma$, in which case
+
+$$\eqalign{\mu_{\nu\alpha}\{\omega:|\omega(t)-\omega(s)|>2\epsilon\}
+&\le\mu_{\nu\alpha}\{\omega:|\omega(u)-\omega(s)|>\epsilon\}
+  +\mu_{\nu\alpha}\{\omega:|\omega(u)-\omega(t)|>\epsilon\}\cr
+&\le 2(\eta+\Bover{\sqrt{\gamma+\eta}}
+  {\epsilon}e^{-\epsilon^2/2(\gamma+\eta)}).\cr}$$
+
+Let $j$, $k$ be such that $\beta-\bover12\eta<j\alpha\le\beta$ and
+$\beta+\gamma\le k\alpha<\beta+\gamma+\bover12\eta$.
+We have
+
+$$\eqalignno{
+\mu_{\nu\alpha}\{\omega&:\diam(\omega[\,[\beta,\beta+\gamma]\,])
+  >12\epsilon\}\cr
+&=\nu^{\Bbb N}\{z:\diam(f_{\alpha}(z)[\,[\beta,\beta+\gamma]\,])
+   >12\epsilon\}\cr
+&\le\nu^{\Bbb N}\{z:\sup_{t\in[\beta,\beta+\gamma]}
+   |f_{\alpha}(z)(t)-f_{\alpha}(z)(j\alpha)|
+   >6\epsilon\}\cr
+&\le\nu^{\Bbb N}\{z:\text{there is an }l\text{ such that }j<l\le k
+  \text{ and }
+  |f_{\alpha}(z)(l\alpha)-f_{\alpha}(z)(j\alpha)|>6\epsilon\}\cr
+\displaycause{because $f_{\alpha}(z)$ is linear between its
+determining values at multiples of $\alpha$}
+&=\nu^{\Bbb N}\{z:\text{there is an }l\text{ such that }j<l\le k
+  \text{ and }
+  |\sum_{i=j}^{l-1}z(i)|>\Bover{6\epsilon}{\sqrt{\alpha}}\}\cr
+&\le 3\sup_{j<l\le k}
+  \nu^{\Bbb N}\{z:|\sum_{i=j}^{l-1}z(i)|
+  >\Bover{2\epsilon}{\sqrt{\alpha}}\}\cr
+\displaycause{Etemadi's lemma, 272V}
+&=3\sup_{j<l\le k}
+  \mu_{\nu\alpha}\{\omega:|\omega(l\alpha)-\omega(j\alpha)|
+  >2\epsilon\}\cr
+&\le 6(\eta+\Bover{\sqrt{\gamma+\eta}}{\epsilon}
+  e^{-\epsilon^2/2(\gamma+\eta)})
+\le\Bover{3\sqrt{\gamma}}{\epsilon}e^{-\epsilon^2/2\gamma},\cr}$$
+
+\noindent as required.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)}
+If $\gamma$, $\epsilon>0$ there is a $\delta>0$ such that
+
+\Centerline{$\mu_{\nu\alpha}\{\omega:\text{there are }s,\,t\in[0,\gamma]
+   \text{ such that }|t-s|\le\delta
+   \text{ and }|\omega(t)-\omega(s)|>\epsilon\}\le\epsilon$}
+
+\noindent whenever $(\nu,\alpha)\in Q(\delta)$.
+\Prf\ Set $\eta=\epsilon/12$, and let $k\ge 1$ be such that
+$\Bover{6\gamma k}{\eta}e^{-k^2\eta^2/2}\le\epsilon$;  set
+$m=\lfloor 2k^2\gamma\rfloor$.
+By (ii), there is a $\delta\in\ocint{0,\bover1{2k^2}}$
+such that
+
+\Centerline{$\mu_{\nu\alpha}\{\omega:
+  \diam(\omega[\,[\beta,\beta+\Bover1{k^2}]\,])>12\eta\}
+\le\Bover{3}{k\eta}e^{-k^2\eta^2/2}$}
+
+\noindent whenever $(\nu,\alpha)\in Q(\delta)$ and
+$\beta\ge 0$.   Now, for such $\nu$ and $\alpha$,
+
+$$\eqalign{&\mu_{\nu\alpha}\{\omega:\text{there are }s,\,t\in[0,\gamma]
+   \text{ such that }|t-s|\le\delta
+   \text{ and }|\omega(t)-\omega(s)|>\epsilon\}\cr
+&\mskip150mu
+\le\mu_{\nu\alpha}(\bigcup_{i<m}
+  \{\omega:\diam(\omega[\,[\Bover{i}{2k^2},\Bover{i+2}{2k^2}]\,]>12\eta\})
+  \cr
+&\mskip150mu
+\le\Bover{3m}{k\eta}e^{-k^2\eta^2/2}
+\le\Bover{6\gamma k}{\eta}e^{-k^2\eta^2/2}
+\le\epsilon,\cr}$$
+
+\noindent as required.\ \Qed
+
+\medskip
+
+{\bf (b)} Suppose that $0=t_0<t_1<\ldots<t_n$ and that $E_0,\ldots,E_{n-1}$
+are intervals in $\Bbb R$;  set
+$E=\{\omega:\omega\in\Omega$, $\omega(t_{i+1})-\omega(t_i)\in E_i$ for
+$i<n\}$.   Then for every $\epsilon>0$ there is a $\delta>0$ such
+that $\mu_WE\le 3\epsilon+\mu_{\nu\alpha}E$ whenever
+$(\nu,\alpha)\in Q(\delta)$.   \Prf\ Of course
+
+\Centerline{$\mu_WE
+=\prod_{i<n}\Bover1{\sqrt{2\pi(t_{i+1}-t_i)}}
+  \int_{E_i}e^{-x^2/2(t_{i+1}-t_i)}dx$.}
+
+\noindent For $\eta>0$ and $i<n$, let $F_{i\eta}$ be the interval
+$\{x:[x-2\eta,x+2\eta]\subseteq E_i\}$.
+Set $\gamma=\bover12\min_{i<n}(t_{i+1}-t_i)$;  let
+$\eta\in\ocint{0,\gamma}$ be such that
+
+\Centerline{$\prod_{i<n}\Bover1{\sqrt{2\pi\gamma_i}}
+  \int_{F_{i\eta}}e^{-x^2/2\gamma_i}dx
+\ge\mu_WE-\epsilon$}
+
+\noindent whenever $|\gamma_i-(t_{i+1}-t_i)|\le\eta$ for every $i<n$.
+Next, by (a-i) and (a-iii), there is a $\delta\in\ocint{0,\bover12\eta}$
+such that
+
+$$\eqalign{\prod_{i<n}\Bover1{\sqrt{2\pi(s_{i+1}-s_i)}}
+   &\int_{F_{i\eta}}e^{-x^2/2(s_{i+1}-s_i)}dx\cr
+&\le\epsilon+\prod_{i<n}\mu_{\nu\alpha}\{\omega:
+    \omega(s_{i+1})-\omega(s_i)\in F_{i\eta}\},\cr}$$
+
+$$\eqalign{\mu_{\nu\alpha}\{\omega:
+  \text{there are }&s,\,t\in[0,t_n+\eta]\cr
+&\text{ such that }|s-t|\le\delta
+  \text{ and }|\omega(s)-\omega(t)|>\eta\}
+\le\epsilon\cr}$$
+
+\noindent whenever $(\nu,\alpha)\in Q(\delta)$ and
+$s_0,\ldots,s_n$ are multiples of $\alpha$ such that
+$s_{i+1}-s_i\ge\gamma$ for every $i\le n$.   Take any
+$(\nu,\alpha)\in Q(\delta)$,
+and for each $i\le n$ let $s_i$ be a multiple of $\alpha$ such
+that $t_i\le s_i\le t_i+\alpha$.   Then
+
+$$\eqalign{\{\omega:
+   \omega&(s_{i+1})-\omega(s_i)\in F_{i\eta}\text{ for every }i<n\}
+\setminus E\cr
+&=\bigcup_{i<n}\{\omega:\omega(s_{i+1})-\omega(s_i)\in F_{i\eta},\,
+\omega(t_{i+1})-\omega(t_i)\notin E_i\}\cr
+&\subseteq\bigcup_{i<n}\{\omega:
+|(\omega(s_{i+1})-\omega(s_i))-(\omega(t_{i+1}-\omega(t_i))|>2\eta\}\cr
+&\subseteq\bigcup_{i\le n}\{\omega:|\omega(s_i)-\omega(t_i)|>\eta\}\cr
+&\subseteq\{\omega:\text{there are }s,\,t\in[0,t_n+\eta]\cr
+&\mskip100mu\text{ such that }
+|s-t|\le\delta\text{ and }|\omega(s_i)-\omega(t_i)|>\eta\},\cr}$$
+
+\noindent so
+
+\Centerline{$\mu_{\nu\alpha}\{\omega:
+  \omega(s_{i+1})-\omega(s_i)\in F_{i\eta}$ for every $i<n\}
+\le\epsilon+\mu_{\nu\alpha}E$.}
+
+\noindent Next, if $s_i=k_i\alpha$ for each $i$,
+
+$$\eqalignno{\mu_{\nu\alpha}\{\omega:\omega&(s_{i+1})-\omega(s_i)
+  \in F_{i\eta}\text{ for every }i<n\}\cr
+&=\nu^{\Bbb N}\{z:f_{\alpha}(z)(s_{i+1})-f_{\alpha}(z)(s_i)
+  \in F_{i\eta}
+  \text{ for every }i<n\}\cr
+&=\nu^{\Bbb N}\{z:\sqrt{\alpha}\sum_{j=k_i}^{k_{i+1}-1}z(j)\in F_{i\eta}
+  \text{ for every }i<n\}\cr
+&=\prod_{i<n}\nu^{\Bbb N}\{z:\sqrt{\alpha}\sum_{j=k_i}^{k_{i-1}}z(j)
+  \in F_{i\eta}\}\cr
+&=\prod_{i<n}\mu_{\nu\alpha}\{\omega:\omega(s_{i+1})-\omega(s_i)
+  \in F_{i\eta}\}.\cr}$$
+
+\noindent So
+
+$$\eqalignno{\mu_WE
+&\le\epsilon+\prod_{i<n}\Bover1{\sqrt{2\pi(s_{i+1}-s_i)}}
+   \int_{F_{i\eta}}e^{-x^2/2(s_{i+1}-s_i)}dx\cr
+\displaycause{because $|(s_{i+1}-s_i)-(t_{i+1}-t_i)|\le\alpha\le\eta$
+for $i<n$}
+&\le 2\epsilon
+  +\prod_{i<n}\mu_{\nu\alpha}\{\omega:\omega(s_{i+1})-\omega(s_i)
+      \in F_{i\eta}\}\cr
+\displaycause{because $s_{i+1}-s_i\ge\gamma$ for every $i<n$}
+&=2\epsilon+\mu_{\nu\alpha}\{\omega:\omega(s_{i+1})-\omega(s_i)
+  \in F_{i\eta}\text{ for every }i<n\}\cr
+&\le 3\epsilon+\mu_{\nu\alpha}E,\cr}$$
+
+\noindent as required.\ \Qed
+
+\medskip
+
+{\bf (c)(i)} For $k\in\Bbb N$ let $\delta_k>0$ be such that
+$\mu_{\nu\alpha}G_k\le 2^{-k}$ whenever $(\nu,\alpha)\in Q(\delta_k)$,
+where
+
+\Centerline{$G_k=\{\omega:$ there are $s$, $t\in[0,k]$ such that
+   $|t-s|\le\delta_k$ and $|\omega(t)-\omega(s)|>2^{-k}\}$;}
+
+\noindent such exists by (a-iii) above.   For $k$, $n\in\Bbb N$ set
+$H_{kn}=\bigcup_{i\le n}G_{k+i}$.   If $k\in\Bbb N$ and
+$\sequencen{\omega'_n}$ is a sequence such that
+$\omega'_n\in\Omega\setminus H_{kn}$ for every $n\in\Bbb N$,
+$\{\omega'_n:n\in\Bbb N\}$ is relatively compact in $\Omega$.   \Prf\
+If $\gamma\ge 0$ and $\epsilon>0$, there is an $n\in\Bbb N$
+such that $2^{-k-n}\le\epsilon$ and $k+n\ge\gamma$;  now for $m\ge n$,
+$\omega'_m\notin G_{k+n}$ so
+$|\omega'_m(t)-\omega'_m(s)|\le\epsilon$ whenever
+$s$, $t\in[0,\gamma]$ and $|s-t|\le\delta_{k+n}$.   Of course there is a
+$\delta\in\ocint{0,\delta_{k+n}}$ such that
+$|\omega'_m(s)-\omega'_m(t)|\le\epsilon$ whenever $m<k+n$ and $s$,
+$t\in[0,\gamma]$ are such that $|s-t|\le\delta$.   Since $\omega'_n(0)=0$
+for every $n$, the conditions of
+4A2U(e-ii) are satisfied, and $\{\omega'_n:n\in\Bbb N\}$ is relatively
+compact in $C(\coint{0,\infty})$, therefore in its closed subset $\Omega$.\
+\Qed
+
+Now if we have a compact set
+$K\subseteq\Omega$, an open set $G\subseteq\Omega$ including $K$, and
+$k\in\Bbb N$, there are an $n\in\Bbb N$ and a finite set
+$I\subseteq\coint{0,\infty}$ such that $\omega'\in G\cup H_{kn}$ whenever
+$\omega\in K$, $\omega'\in\Omega$ and $|\omega'(s)-\omega(s)|\le 2^{-n}$
+for every $s\in I$.   \Prf\Quer\ Otherwise, let $\sequence{i}{q_i}$
+enumerate $\Bbb Q\cap\coint{0,\infty}$.   For each $n\in\Bbb N$ we have
+$\omega_n\in K$ and $\omega'_n\in\Omega\setminus(G\cup H_{kn})$ such that
+$|\omega'_n(q_i)-\omega_n(q_i)|\le 2^{-n}$ for every $i\le n$.
+Since the topology $\frak T_c$ on $\Omega$ is metrizable (4A2U(e-i)),
+and both
+$\{\omega_n:n\in\Bbb N\}$ and $\{\omega'_n:n\in\Bbb N\}$ are relatively
+compact, there is a strictly increasing sequence $\sequence{i}{n_i}$ such
+that $\omega=\lim_{i\to\infty}\omega_{n_i}$ and
+$\omega'=\lim_{i\to\infty}\omega'_{n_i}$ are both defined (use 4A2Lf
+twice).   Since $|\omega'(q)-\omega(q)|
+=\lim_{i\to\infty}|\omega'_{n_i}(q)-\omega_{n_i}(q)|$ is zero for
+every $q\in\Bbb Q\cap\coint{0,\infty}$, $\omega=\omega'$;  but
+$\omega\in K$ and $\omega'\notin G$, so this is impossible.\ \Bang\Qed
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $G\subseteq\Omega$ is open and
+$\gamma<\mu_WE$.   Then there is a $\delta>0$ such that
+$\mu_{\nu\alpha}G>\gamma$ whenever $(\nu,\alpha)\in Q_{\delta}$.
+\Prf\ Let $K\subseteq G$ be a compact set such that
+$\mu_WK>\gamma$.   Let $k\in\Bbb N$, $\epsilon>0$ be such that
+$\mu_WK\ge\gamma+\epsilon+2^{-k+1}$.
+By (i), there are an $n\in\Bbb N$ and
+a finite set $I\subseteq\coint{0,\infty}$ such that
+$\omega'\in G\cup H_{kn}$ whenever $\omega'\in\Omega$, $\omega\in K$ and
+$|\omega'(t)-\omega(t)|\le 2^{-n}$ for every $t\in I$;  of course we can
+suppose that $0\in I$ and that $\#(I)\ge 2$.   Enumerate $I$ in increasing
+order as $\langle t_i\rangle_{i\le m}$.   For $z\in\BbbZ^m$, set
+
+\Centerline{$E_z
+=\{\omega:\omega\in\Omega$,
+ $\lfloor 2^nm(\omega(t_{i+1}-\omega(t_i))\rfloor=z(i)$ for every $i<m\}$;}
+
+\noindent set $D=\{z:z\in\BbbZ^m$, $E_z\cap K\ne\emptyset\}$ and
+$F=\bigcup_{z\in D}E_z$.   If $z\in D$ and $\omega'\in E_z$, there is
+an $\omega\in K\cap E_z$, in which case
+
+\Centerline{$|(\omega'(t_{i+1})-\omega'(t_i))-(\omega(t_{i+1}-\omega(t_i))|
+\le\Bover{2^{-n}}m$ for every $i<m$,}
+
+\Centerline{$|\omega'(t_i)-\omega(t_i)|\le 2^{-n}$ for every $i\le m$}
+
+\noindent and $\omega'\in G\cup H_{kn}$.   Thus $F\subseteq G\cup H_{kn}$.
+As $K$ is compact, $\{\omega(t_i):\omega\in K\}$ is bounded for every $i$
+and $D$ is finite.
+By (b) there is a $\delta>0$ such that $\delta\le\delta_{k+i}$
+for every $i\le n$ and
+
+\Centerline{$\mu_WE_z\le\Bover{\epsilon}{1+\#(D)}+\mu_{\nu\alpha}E_z$}
+
+\noindent whenever $z\in D$ and $(\nu,\alpha)\in Q(\delta)$.
+Now, for such $\nu$ and $\alpha$,
+
+$$\eqalignno{\epsilon+2^{-k+1}+\gamma
+&\le\mu_WK
+\le\mu_WF
+=\sum_{z\in D}\mu_WE_z
+\le\epsilon+\sum_{z\in D}\mu_{\nu\alpha}E_z\cr
+&=\epsilon+\mu_{\nu\alpha}F
+\le\epsilon+\mu_{\nu\alpha}G+\sum_{i=0}^n\mu_{\nu\alpha}G_{k+i}\cr
+&\le\epsilon+\mu_{\nu\alpha}G+\sum_{i=0}^n2^{-k-i}
+<\epsilon+2^{-k+1}+\mu_{\nu\alpha}G\cr}$$
+
+\noindent and $\mu_{\nu\alpha}G>\gamma$, as required.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} So if $U$ is a neighbourhood of $\mu_W$ for the narrow
+topology on $P_{\text{R}}(\Omega)$,
+there is a $\delta>0$ such that $\mu_{\nu\alpha}\in U$
+whenever $(\nu,\alpha)\in Q(\delta)$.   \Prf\ There are
+open sets $G_0,\ldots,G_n$ and $\gamma_0,\ldots,\gamma_n$ such that
+$\gamma_i<\mu_WG_i$ for each $i<n$ and $U$ includes
+$\{\mu:\mu\in P_{\text{R}}(\Omega)$, $\mu G_i>\gamma_i$ for every $i<n\}$.
+But from (ii) we see that for each $i\le n$ there will be a
+$\delta'_i>0$ such that $\mu_{\nu\alpha}G_i>\gamma_i$ for every
+$i$ whenever $(\nu,\alpha)\in Q(\delta'_i)$;  so setting
+$\delta=\min_{i\le n}\delta'_i$ we get the result.\ \Qed
+
+And this is just the conclusion declared in the
+statement of the theorem, rephrased in the
+language developed in the course of the proof.
+}%end of proof of 477C
+
+\leader{477D}{Multidimensional Brownian motion}\cmmnt{ In \S\S478-479
+we shall need the theory of Brownian motion in
+$r$-dimensional space.   I sketch the relevant details.}
+Fix an integer $r\ge 1$.
+
+\spheader 477Da Let $\mu_{W1}$ be the Radon probability
+measure on $\Omega_1=C(\coint{0,\infty})_0$ described
+in 477B;  I will call it {\bf one-dimensional Wiener measure}.
+We can identify the power $\Omega_1^r$ with
+$\Omega=C(\coint{0,\infty};\BbbR^r)_0$, the space of continuous functions
+$\omega:\coint{0,\infty}\to\BbbR^r$ such that $\omega(0)=0$,
+with the topology of uniform convergence on compact sets;  note that
+$\Omega_1$ is Polish\cmmnt{ (4A2U(e-i))}, so $\Omega_1^r$ also is.
+Because $\Omega_1$ is separable and metrizable, the c.l.d.\
+product measure $\mu_{W1}^r$ measures every Borel
+set\cmmnt{ (4A3Dc, 4A3E)}, while it is inner regular with respect to
+the compact sets\cmmnt{ (412Sb)}, so
+it is a Radon measure.   I will say that
+$\mu_W=\mu_{W1}^r$, interpreted as a measure on
+$C(\coint{0,\infty};\BbbR^r)_0$, is {\bf $r$-dimensional Wiener measure}.
+
+\cmmnt{As observed in 477B,}
+$\mu_{W1}$ is the subspace measure on $\Omega_1$ induced by the
+distribution $\hat\mu$ of the process
+$\langle X_t\rangle_{t\ge 0}$ in 477A.   \cmmnt{So }$\mu_W$ here,
+regarded as a
+measure on $C(\coint{0,\infty})_0^r$, is the subspace measure induced by
+$\hat\mu^r$ on
+$(\BbbR^{\coint{0,\infty}})^r
+  \cong\BbbR^{\coint{0,\infty}\times r}$\cmmnt{ (254La)}.
+
+\spheader 477Db For $\omega\in\Omega$, $t\ge 0$ and $i<r$,
+set $X_t^{(i)}(\omega)=\omega(t)(i)$.   Then
+$\langle X_t^{(i)}\rangle_{t\ge 0,i<r}$ is a centered
+Gaussian process, with covariance matrix
+
+$$\eqalign{\Expn(X_s^{(i)}\times X_t^{(j)})
+&=0\text{ if }i\ne j,\cr
+&=\min(s,t)\text{ if }i=j.\cr}$$
+
+\prooflet{\noindent\Prf\ Taking $\mu$, $\hat\mu$ and $\hat\mu^r$ as in (a),
+$\hat\mu^r$, like $\hat\mu$, is a centered Gaussian
+distribution (456Be);  but it is easy to check from the formula in 454J(i)
+that $\hat\mu^r$ can be identified with the distribution of the family
+$\langle X_t^{(i)}\rangle_{t\ge 0,i<r}$.   So
+$\langle X_t^{(i)}\rangle_{t\ge 0,i<r}$ is a centered Gaussian process.
+As for the covariance matrix, if $i\ne j$ then $X_s^{(i)}$ and $X_t^{(j)}$
+are determined by different factors in the product $\Omega=\Omega_1^r$,
+so must be independent;  while if $i=j$ then $(X^{(i)}_s,X^{(i)}_t)$ have
+the same joint distribution as $(X_s,X_t)$ in 477A.\ \Qed}
+
+\spheader 477Dc\cmmnt{ We shall need a variety of characterizations of
+the Radon measure $\mu_W$.
+
+\medskip
+
+\quad}{\bf (i)} $\mu_W$ is the only Radon probability measure on $\Omega$
+such that the process $\langle X_t^{(i)}\rangle_{t\ge 0,i<r}$ described in
+(b) is a Gaussian process with the covariance matrix there.
+\prooflet{\Prf\ Suppose $\nu$ is another measure with these properties.
+The distribution of $\langle X_t^{(i)}\rangle_{t\ge 0,i<r}$ (with respect
+to $\nu$) must be a centered Gaussian process on
+$\BbbR^{r\times\coint{0,\infty}}\cong(\BbbR^{\coint{0,\infty}})^r$, and
+because it has the same covariance matrix it must be equal to $\hat\mu^r$,
+by 456Bb.   But this says just that $\langle X_t^{(i)}\rangle_{t\ge 0,i<r}$
+has the same joint distribution with respect to $\mu_W$ and $\nu$.   By
+454N, $\nu=\mu_W$.\ \Qed}
+
+\medskip
+
+\quad{\bf (ii)}
+Another way of looking at the family
+$\langle X^{(i)}_t\rangle_{i<r,t\ge 0}$ is to write $X_t(\omega)=\omega(t)$
+for $t\ge 0$, so that $\langle X_t\rangle_{t\ge 0}$ is now a family of
+$\BbbR^r$-valued random variables defined on $\Omega$.
+We can describe its distribution in terms matching those of 455Q and 477A,
+which become
+
+\inset{(i) $X_0=0$ everywhere\cmmnt{ (on $\Omega$, that is)};
+
+(ii) whenever $0\le s<t$ then $\Bover1{\sqrt{t-s}}(X_t-X_s)$
+has the standard Gaussian distribution $\mu_G^r$\cmmnt{ (that is,
+$\omega\mapsto\Bover1{\sqrt{t-s}}(\omega(t)-\omega(s))$ is \imp\ for
+$\mu_W$ and $\mu_G^r$)};
+
+(iii) whenever $0\le t_1<\ldots<t_n$, then $X_{t_2}-X_{t_1},\ldots,
+X_{t_n}-X_{t_{n-1}}$ are independent\cmmnt{ (that is, taking $\Tau_i$ to
+be the $\sigma$-algebra
+$\{\{\omega:\omega(t_{i+1})-\omega(t_i)\in E\}:E\subseteq\BbbR^r$
+is a Borel set$\}$, $\Tau_1,\ldots,\Tau_{n-1}$ are independent)}.
+}
+
+\noindent Note that
+these properties also determine the Radon measure $\mu_W$.
+\prooflet{\Prf\ Once again, suppose $\nu$ is a Radon probability measure on
+$\Omega$ for which (ii) and (iii) are true.   We wish to show that $\mu_W$
+and $\nu$ give the same distribution to
+$\langle X^{(i)}_t\rangle_{i<r,t\ge 0}$.   If $0=t_0<t_1<\ldots<t_n$, we
+know that $\mu_W$ and $\nu$ give the same distribution to each of the
+differences $Y_j=X_{t_{j+1}}-X_{t_j}$ (or, if you prefer, to each of the
+families $\ofamily{i}{r}{Y^{(i)}_j}$, where
+$Y^{(i)}_j=X^{(i)}_{t_{j+1}}-X^{(i)}_{t_j}$);  moreover,
+if $\Sigma_j$ is the $\sigma$-algebra generated by $\{Y^{(i)}_j:i<r\}$ for
+each $j$, then $\mu_W$ and $\nu$ agree that $\ofamily{j}{n}{\Sigma_j}$ is
+independent.   So $\mu_WE=\nu E$ whenever $E$ is of the form
+$\bigcap_{j<n}E_j$ where $E_j\in\Sigma_j$ for each $j<n$.   By the Monotone
+Class Theorem, $\mu_W$ and $\nu$ agree on the $\sigma$-algebra
+$\Sigma$ generated by
+sets of this type, which is the $\sigma$-algebra generated by
+$\{Y^{(i)}_j:i<r$, $j<n\}$.   But as $X_{t_j}=\sum_{i<j}Y_i$ for every
+$j\le n$, every $X^{(i)}_{t_j}$ is $\Sigma$-measurable, and $\mu_W$ and
+$\nu$ give the same distribution to
+$\langle X^{(i)}_{t_j}\rangle_{i<r,j\le n}$.  As this is true whenever
+$0=t_0<\ldots<t_n$, $\mu_W$ and $\nu$ give the same distribution to the
+whole family $\langle X^{(i)}_t\rangle_{i<r,t\ge 0}$, and must be equal.\
+\Qed}
+
+\cmmnt{
+\spheader 477Dd In order to apply Theorem 455U, we need to go a little
+deeper, in order to relate the product-measure definition of $\mu_W$ to the
+construction in 455P.   I will use the ideas of part (b) of the proof of
+455R.   Consider the process $\langle X^{(i)}_t\rangle_{t\ge 0,i<r}$
+and the associated distribution $\hat\mu^r$ on
+$(\BbbR^{\coint{0,\infty}})^r\cong(\BbbR^r)^{\coint{0,\infty}}$.
+Setting $X_t=\ofamily{i}{r}{X^{(i)}_t}$, $\langle X_t\rangle_{t\ge 0}$ is
+an $\BbbR^r$-valued process satisfying the conditions of 455Q with
+$U=\BbbR^r$.   \Prf\ $X_0=0$ a.e.\  because every $X^{(i)}_0$ is zero a.e.
+If $0\le s<t$ then $X_t-X_s=\ofamily{i}{r}{X^{(i)}_t-X^{(i)}_s}$ has the
+same distribution as $X_{t-s}$ because $X^{(i)}_t-X^{(i)}_s$ has the same
+distribution as $X^{(i)}_{t-s}$ for each $i$ and
+$\ofamily{i}{r}{X^{(i)}_t-X^{(i)}_s}$,
+$\ofamily{i}{r}{X^{(i)}_{t-s}}$ are both independent.   If
+$0\le t_0<t_1<\ldots<t_n$ then
+$\langle X^{(i)}_{t_{j+1}}-X^{(i)}_{t_j}\rangle_{i<r,j<n}$ is independent
+so $\ofamily{j}{n}{X_{t_{j+1}}-X_{t_j}}$ is independent (using 272K, or
+otherwise).   Finally, when $t\downarrow 0$,
+$X_t\to 0$ in measure because $X^{(i)}_t\to 0$ in
+measure for each $i$.\ \Qed
+
+For $t>0$, let $\lambda_t$ be the distribution of
+$X_t$.   Then $\lambda_t$ is the centered Gaussian distribution
+on $\BbbR^r$ with
+covariance matrix $\langle\sigma_{ij}\rangle_{i,j<r}$ where
+$\sigma_{ij}=t$
+if $i=j$ and $0$ if $i\ne j$ (456Ba, with $T(\omega)=\omega(t)$ for
+$\omega\in\BbbR^{\coint{0,\infty}\times r}
+\cong(\BbbR^r)^{\coint{0,\infty}}$).
+By 455R, the process of 455P can be applied to
+$\langle\lambda_t\rangle_{t>0}$ to give us a measure
+$\hat\nu$ on $(\BbbR^r)^{\coint{0,\infty}}$,
+the completion of a Baire measure, such that
+
+$$\eqalign{\hat\nu\{\omega:\omega(t_i)\in F_i\text{ for every }i\le n\}
+&=\Pr(X_{t_i}\in F_i\text{ for every }i\le n)\cr
+&=\hat\mu^r\{\omega:\omega(t_i)\in F_i\text{ for every }i\le n\}\cr}$$
+
+\noindent whenever $F_0,\ldots,F_n\subseteq\BbbR^r$ are Borel sets and
+$t_0,\ldots,t_n\in\coint{0,\infty}$.
+Since sets of this kind generate the Baire $\sigma$-algebra of
+$(\BbbR^r)^{\coint{0,\infty}}$,
+$\hat\nu$ must be equal to $\hat\mu^r$, that is, $\hat\mu^r$
+is the result of applying 455P to $\langle\lambda_t\rangle_{t>0}$.
+
+By 455H, $\hat\nu$
+has a unique extension to a measure $\tilde\nu$ on
+$(\BbbR^r)^{\coint{0,\infty}}$ which is a Radon measure for the product
+topology.   But if we write
+$\iota:C(\coint{0,\infty};\BbbR^r)_0\to(\BbbR^r)^{\coint{0,\infty}}$ for
+the identity map, the image measure $\mu_W\iota^{-1}$ is a Radon measure on
+$(\BbbR^r)^{\coint{0,\infty}}$ for the
+product topology and extends $\hat\mu^r$, so must be equal to $\tilde\nu$.
+Thus $\tilde\nu C(\coint{0,\infty};\BbbR^r)_0=1$.
+Of course $C(\coint{0,\infty};\BbbR^r)_0$ is included in the space of
+\callal\ functions from $\coint{0,\infty}$ to $\BbbR^r$, so that we have a
+strengthening of the results in \S455.   Similarly, writing $\ddot\nu$ for
+the subspace measure induced by $\hat\nu$ or $\hat\mu^r$
+on the space $\Cdlg$ of \cadlag\ functions from
+$\coint{0,\infty}$ to $\BbbR^r$, $\mu_W$ is the subspace measure
+on $C(\coint{0,\infty};\BbbR^r)_0$ induced by $\ddot\nu$.
+
+By 4A3Wa, every Baire subset of $\Cdlg$ is the intersection of $\Cdlg$ with
+a Baire subset of $(\BbbR^r)^{\coint{0,\infty}}$, and is therefore measured
+by $\ddot\nu$.   In particular,
+$C(\coint{0,\infty};\BbbR^r)$ and $C(\coint{0,\infty};\BbbR^r)_0$ are
+measured by $\ddot\nu$ (4A3Wd).
+}%end of comment
+
+\leader{477E}{Invariant transformations of Wiener measure:  Proposition}
+Let $r\ge 1$ be an integer, and $\mu_W$ Wiener measure on
+$\Omega=C(\coint{0,\infty};\BbbR^r)_0$.
+Let $\hat\mu^r$ be the product measure on
+$(\BbbR^{\coint{0,\infty}})^r$ as described in 477D.
+
+(a) Suppose that
+$f:(\BbbR^{\coint{0,\infty}})^r\to(\BbbR^{\coint{0,\infty}})^r$
+is \imp\ for $\hat\mu^r$, and that $\Omega_0\subseteq\Omega$ is a
+$\mu_W$-conegligible set such that $f[\Omega_0]\subseteq\Omega_0$.
+Then $f\restr\Omega_0$ is \imp\ for the subspace measure induced by
+$\mu_W$ on $\Omega_0$.
+
+(b) Suppose that
+$\hat T:\BbbR^{r\times\coint{0,\infty}}\to\BbbR^{r\times\coint{0,\infty}}$
+is a linear operator such that, for $i$, $j<r$ and $s$, $t\ge 0$,
+
+$$\eqalign{\int(\hat T\omega)(i,s)(\hat T\omega)(j,t)\hat\mu^r(d\omega)
+&=\min(s,t)\text{ if }i=j,\cr
+&=0\text{ if }i\ne j.\cr}$$
+
+\noindent Then, identifying $\BbbR^{r\times\coint{0,\infty}}$
+with $(\BbbR^{\coint{0,\infty}})^r$,
+$\hat T$ is \imp\ for $\hat\mu^r$.
+
+(c) Suppose that $t\ge 0$.   Define $S_t:\Omega\to\Omega$ by setting
+$(S_t\omega)(s)=\omega(s+t)-\omega(s)$ for $s\ge 0$ and $\omega\in\Omega$.
+Then $S_t$ is \imp\ for $\mu_W$.
+
+(d) Let $T:\BbbR^r\to\BbbR^r$ be an orthogonal
+transformation.   Define $\tilde T:\Omega\to\Omega$ by setting
+$(\tilde T\omega)(t)=T(\omega(t))$ for $t\ge 0$ and $\omega\in\Omega$.
+Then $\tilde T$ is an automorphism of $(\Omega,\mu_W)$.
+
+(e) Suppose that $\alpha>0$.   Define $U_{\alpha}:\Omega\to\Omega$ by
+setting $U_{\alpha}(\omega)(t)=\Bover1{\sqrt{\alpha}}\omega(\alpha t)$ for
+$t\ge 0$ and $\omega\in\Omega$.   Then $U_{\alpha}$ is an automorphism of
+$(\Omega,\mu_W)$.
+
+(f) Set
+
+\Centerline{$\Omega_0=\{\omega:\omega\in\Omega$,
+$\lim_{t\to\infty}\Bover1t\omega(t)=0\}$,}
+
+\noindent and define $R:\Omega_0\to\Omega_0$ by setting
+
+$$\eqalign{(R\omega)(t)
+&=t\omega(\Bover1t)\text{ if }t>0,\cr
+&=0\text{ if }t=0.\cr}$$
+
+\noindent Then $\Omega_0$ is $\mu_W$-conegligible and $R$ is an
+automorphism of $\Omega_0$ with its subspace measure.
+
+(g) Suppose that $1\le r'\le r$, and that $\mu_W^{(r')}$ is Wiener measure
+on $C(\coint{0,\infty};\BbbR^{r'})_0$.   Define
+$P:\Omega\to C(\coint{0,\infty};\BbbR^{r'})_0$ by setting
+$(P\omega)(t)(i)=\omega(t)(i)$ for $t\ge 0$, $i<r'$ and $\omega\in\Omega$.
+Then $\mu_W^{(r')}$ is the image measure $\mu_WP^{-1}$.
+
+\proof{ The following arguments will unscrupulously identify
+$C(\coint{0,\infty};\BbbR^r)_0$ with $C(\coint{0,\infty})_0^r$, and
+$\BbbR^{r\times\coint{0,\infty}}$ with $(\BbbR^r)^{\coint{0,\infty}}$ and
+$(\BbbR^{\coint{0,\infty}})^r$.
+
+\medskip
+
+{\bf (a)} Because $\mu_W$ is the subspace measure on $\Omega$ induced by
+$\hat\mu^r$ (477Da), the subspace measure $\nu$
+on $\Omega_0$ induced by $\mu_W$
+is also the subspace measure on $\Omega_0$ induced by $\hat\mu^r$ (214Ce).
+If $E\subseteq\Omega_0$ is measured by $\nu$, there is an
+$F\in\dom\hat\mu^r$ such that $E=F\cap\Omega_0$, and now
+
+\Centerline{$\nu E=\hat\mu^rF=\hat\mu^rf^{-1}[F]=\nu(\Omega_0\cap f^{-1}[F])
+=\nu(f\restr\Omega_0)^{-1}[E]$.}
+
+\noindent As $E$ is arbitrary, $f\restr\Omega_0$ is \imp\ for $\nu$.
+
+\medskip
+
+{\bf (b)} By 456Ba, $\hat\mu^r\hat T^{-1}$ is a centered Gaussian
+distribution on $\BbbR^{r\times\coint{0,\infty}}$.   The hypothesis
+asserts that its covariance matrix is the same as that of $\hat\mu^r$
+(477Db), so that $\hat\mu^r=\hat\mu^r\hat T^{-1}$ (456Bb), that is,
+$\hat T$ is \imp\ for $\hat\mu^r$.
+
+\medskip
+
+{\bf (c)} Define $\hat S_t:\BbbR^{r\times\coint{0,\infty}}
+  \to\BbbR^{r\times\coint{0,\infty}}$ by setting
+$(\hat S_t\omega)(i,s)=\omega(i,s+t)-\omega(i,s)$, this time for
+$\omega\in\BbbR^{r\times\coint{0,\infty}}$, $i<r$ and $s\ge 0$.
+Then $\hat S_t$ is linear, and for $s$, $u\in\coint{0,\infty}$, $i$, $j<r$
+
+$$\eqalign{\int(\hat S_t\omega)&(i,s)(\hat S_t\omega)(j,u)
+   \mu^r(d\omega)\cr
+&=\int(\omega(i,s+t)-\omega(t))(\omega(j,u+t)-\omega(j,t))\hat\mu^r(d\omega)
+   \cr
+&=0\text{ if }i\ne j,\cr
+&=\min(s+t,u+t)-\min(s+t,t)\cr
+&\mskip100mu-\min(t,u+t)+\min(t,t)
+=\min(s,u)\text{ if }i=j.\cr}$$
+
+\noindent By (b), $\hat S_t$ is \imp\ for $\hat\mu^r$.   Now
+$\hat S_t[\Omega]\subseteq\Omega$, so $S_t=\hat S_t\restr\Omega$ is \imp\
+for $\mu W$, by (a).
+
+\medskip
+
+{\bf (d)} If we define
+$\hat T:(\BbbR^r)^{\coint{0,\infty}}\to(\BbbR^r)^{\coint{0,\infty}}$
+by setting
+$(\hat T)(\omega)(t)=T(\omega(t))$ for $x\in(\BbbR^r)^{\coint{0,\infty}}$ and
+$t\ge 0$, then $\hat T$ is linear.   Suppose that $T$ is defined by the
+matrix $\langle\alpha_{ij}\rangle_{i,j<r}$.
+For $\omega\in\BbbR^{r\times\coint{0,\infty}}$, $t\in\coint{0,\infty}$
+and $i<r$,
+
+\Centerline{$(\hat T\omega)(i,t)
+=\sum_{k=0}^{r-1}\alpha_{ik}\omega(k,t)$.}
+
+\noindent So, for $i$, $j<r$ and $s$, $t\ge 0$,
+
+$$\eqalign{\int(\hat T\omega)(i,s)(\hat T\omega)(j,t)\hat\mu^r(d\omega)
+&=\sum_{k=0}^{r-1}\sum_{l=0}^{r-1}\alpha_{ik}\alpha_{jl}
+  \int\omega(k,s)\omega(l,t)\hat\mu^r(d\omega)\cr
+&=\sum_{k=0}^{r-1}\alpha_{ik}\alpha_{jk}\min(s,t)\cr
+&=\min(s,t)\text{ if }i=j,\cr
+&=0\text{ if }i\ne j.\cr}$$
+
+\noindent So $\hat T$ is $\hat\mu^r$-\imp.   If we think of $\hat T$ as
+operating on $(\BbbR^r)^{\coint{0,\infty}}$, then $\hat T(\omega)=T\omega$
+is continuous for every $\omega\in C(\coint{0,\infty};\BbbR^r)$, so
+$\hat T[\Omega]\subseteq\Omega$ and $\tilde T=\hat T\restr\Omega$ is
+$\mu_W$-\imp.
+
+Now the same argument applies to $T^{-1}$, so
+$\tilde T^{-1}=(T^{-1})\sptilde$ also is \imp, and $\tilde T$ is an
+automorphism of $(\Omega,\mu_W)$.
+
+\medskip
+
+{\bf (e)} This time, we have
+$\hat U_{\alpha}:\BbbR^{r\times\coint{0,\infty}}
+\to\BbbR^{r\times\coint{0,\infty}}$ defined by the formula
+$(\hat U_{\alpha}\omega)(i,t)=\Bover1{\sqrt{\alpha}}\omega(i,\alpha t)$
+for $i<r$, $t\ge 0$ and $\omega\in\BbbR^{r\times\coint{0,\infty}}$.
+Once again, $\hat U_{\alpha}$ is linear.   This time,
+
+
+$$\eqalign{\int(\hat U_{\alpha}\omega)(i,s)(\hat U_{\alpha}\omega)(j,t)
+  \hat\mu^r(d\omega)
+&=\Bover1{\alpha}\int\omega(i,\alpha s)\omega(j,\alpha t)\hat\mu^r(d\omega)
+   \cr
+&=0\text{ if }i\ne j,\cr
+&=\Bover1{\alpha}\min(\alpha s,\alpha t)=\min(s,t)\text{ if }i=j.\cr}$$
+
+\noindent As before, it follows that $\hat U_{\alpha}$ is $\hat\mu^r$-\imp,
+so that $U_{\alpha}=\hat U_{\alpha}\restr\Omega$ is $\mu_W$-\imp.
+In the same way as in
+(d),  $U_{\alpha}^{-1}=U_{1/\alpha}$ is $\mu_W$-\imp, so
+$U_{\alpha}$ is an automorphism of $(\Omega,\mu_W)$.
+
+\medskip
+
+{\bf (f)} Define
+$\hat R:\BbbR^{r\times\coint{0,\infty}}\to\BbbR^{r\times\coint{0,\infty}}$
+by setting
+
+$$\eqalign{\hat R(\omega)(i,t)
+&=t\omega(i,\Bover1t)\text{ if }i<r\text{ and }t>0,\cr
+&=\omega(i,0)\text{ if }i<r\text{ and }t=0.\cr}$$
+
+\noindent Then, if $i$, $j<r$ and $s$, $t>0$,
+
+$$\eqalign{\int(\hat R\omega)(i,s)(\hat R\omega)(j,t)\hat\mu^r(d\omega)
+&=st\int\omega(i,\Bover1s)\omega(j,\Bover1t)\hat\mu^r(d\omega)\cr
+&=0\text{ if }i\ne j,\cr
+&=st\min(\Bover1s,\Bover1t)=\min(s,t)\text{ if }i=j.\cr}$$
+
+\noindent If $s=0$, then
+$(\hat R\omega)(i,s)=\omega(i,s)=0$ for almost every $\omega$, so
+that $\int(\hat R\omega)(i,s)(\hat R\omega)(j,t)\hat\mu^r(d\omega)=0$;
+and similarly if $t=0$.
+So $\hat R$ is $\hat\mu^r$-\imp.
+
+At this point I think we need a new argument.   Consider the set
+
+\Centerline{$E
+=\{\omega:\omega\in(\BbbR^r)^{\coint{0,\infty}}$,
+$\lim_{q\in\Bbb Q,q\downarrow 0}\omega(q)=0\}$.}
+
+\noindent Then $E$ is a Baire set in
+$(\BbbR^r)^{\coint{0,\infty}}\cong\BbbR^{r\times\coint{0,\infty}}$.
+Since $E\supseteq\Omega$, $\hat\mu^rE=1$.   Consequently
+$\hat\mu^r\hat R^{-1}[E]=1$.   But, for
+$\omega\in(\BbbR^r)^{\coint{0,\infty}}$,
+
+\Centerline{$\omega\in\hat R^{-1}[E]
+\iff 0
+=\lim_{q\in\Bbb Q,q\downarrow 0}(\hat R\omega)(q)
+=\lim_{q\in\Bbb Q,q\downarrow 0}q\omega(\Bover1q)
+=\lim_{q\in\Bbb Q,q\to\infty}\Bover1q\omega(q)$.}
+
+\noindent So
+
+$$\eqalignno{\Omega_0
+&=\{\omega:\omega\in\Omega,\,\lim_{t\to\infty}\Bover1t\omega(t)=0\}
+=\{\omega:\omega\in\Omega,\,
+  \lim_{q\in\Bbb Q,q\to\infty}\Bover1q\omega(q)=0\}\cr
+\displaycause{because every member of $\Omega$ is continuous}
+&=\Omega\cap\hat R^{-1}[E]\cr}$$
+
+\noindent is $\mu_W$-conegligible.   Next, for $\omega\in\Omega_0$,
+$\hat R\omega$ is continuous on $\ooint{0,\infty}$ and
+
+$$\eqalign{0
+&=\omega(0)
+=\lim_{t\to\infty}\Bover1t\omega(t)=\lim_{t\downarrow 0}\omega(t)\cr
+&=(\hat R\omega)(0)
+=\lim_{t\to\infty}(\hat R\omega)(\Bover1t)
+=\lim_{t\downarrow 0}t(\hat R\omega)(\Bover1t)\cr
+&=\lim_{t\downarrow 0}(\hat R\omega)(t)
+=\lim_{t\to\infty}\Bover1t(\hat R\omega)(t),\cr}$$
+
+\noindent so $\hat R\omega\in\Omega_0$.   By (a), $R=\hat R\restr\Omega_0$
+is \imp\ for the subspace measure $\nu=(\mu_W)_{\Omega_0}$;
+being an involution, it is an automorphism of $(\Omega_0,\nu)$.
+
+\medskip
+
+{\bf (g)} If we identify $\mu_W$ and $\mu_W^{(r')}$ with
+$\mu_{W1}^r$ and $\mu_{W1}^{r'}$, as in 477Da, this is elementary.
+}%end of proof of 477E
+
+\leader{477F}{Proposition} Let $r\ge 1$ be an integer.   Then
+Wiener measure on $\Omega=C(\coint{0,\infty};\BbbR^r)_0$ is strictly
+positive for the topology $\frak T_c$ of uniform convergence on compact
+sets.
+
+\proof{{\bf (a)} Let $\Cal I$ be a partition of $\coint{0,\infty}$ into
+bounded intervals (open, closed or half-open).   As usual, set
+$X_t(\omega)=\omega(t)$ for $t\in\coint{0,\infty}$ and
+$\omega\in(\BbbR^r)^{\coint{0,\infty}}$.   Define
+$\langle Y_t\rangle_{t\ge 0}$, $\langle Z_t\rangle_{t\ge 0}$ as follows.
+If $t\in I\in\Cal I$, $a=\inf I$ and $b=\sup I$, then
+
+$$\eqalign{Y_t
+&=X_a+\Bover{t-a}{b-a}(X_b-X_a)\text{ if }a<b,\cr
+&=X_a=X_t=X_b\text{ if }a=b,\cr
+Z_t&=X_t-Y_t.\cr}$$
+
+\medskip
+
+\quad{\bf (i)} With respect to the centered Gaussian distribution
+$\hat\mu^r$ on
+$(\BbbR^{\coint{0,\infty}})^r\cong(\BbbR^r)^{\coint{0,\infty}}$,
+$(\langle Y_t\rangle_{t\ge 0},\langle Z_t\rangle_{t\ge 0})$
+is a centered Gaussian process.   \Prf\ The map
+$\omega\mapsto(\langle Y_t(\omega)\rangle_{t\ge 0},
+\langle Z_t(\omega)\rangle_{t\ge 0})$ is linear and continuous, so we can
+apply 456Ba (strictly speaking, we apply this to the family
+$(\langle Y^{(i)}_t(\omega)\rangle_{i<r,t\ge 0},
+\langle Z^{(i)}_t(\omega)\rangle_{i<r,t\ge 0})$ regarded as linear operators
+from $\BbbR^{r\times\coint{0,\infty}}$ to its square).\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} If $s$, $t\in\coint{0,\infty}$ then
+$\Expn(Y_s\times Y_t)=\Expn(X_s\times Y_t)$.   \Prf\ Let $I$, $J$ be the
+members of $\Cal I$ containing $s$, $t$ respectively;  set $a=\min I$,
+$b=\max I$, $c=\min J$ and $d=\max J$.
+
+\qquad{\bf case 1} If $a=b$ then $Y_s=X_s$ and we can stop.
+
+\qquad{\bf case 2} If $a<b\le c$, then
+
+\Centerline{$\Expn(X_a\times X_c)=\Expn(X_a\times X_d)=a$,
+\quad$\Expn(X_a\times Y_t)=a$,}
+
+\Centerline{$\Expn(X_b\times X_c)=\Expn(X_b\times X_d)=b$,
+\quad$\Expn(X_b\times Y_t)=b$,}
+
+\Centerline{$\Expn(X_s\times X_c)=\Expn(X_s\times X_d)=s$,
+\quad$\Expn(X_s\times Y_t)=s$,}
+
+\Centerline{$\Expn(Y_s\times Y_t)
+=a+\Bover{s-a}{b-a}(b-a)=s=\Expn(X_s\times Y_t)$.}
+
+\qquad{\bf case 3} If $d\le a<b$, then
+
+\Centerline{$c=\Expn(X_s\times X_c)
+=\Expn(X_a\times X_c)=\Expn(X_b\times X_c)=\Expn(Y_s\times X_c)$,}
+
+\Centerline{$d=\Expn(X_s\times X_d)
+=\Expn(X_a\times X_d)=\Expn(X_b\times X_d)=\Expn(Y_s\times X_d)$;}
+
+\noindent since $Y_t$ is a convex combination of $X_c$ and $X_d$,
+$\Expn(Y_s\times Y_t)=\Expn(X_s\times Y_t)$.
+
+\qquad{\bf case 4} If $a=c<b=d$, then
+
+\Centerline{$\Expn(X_a\times Y_t)
+=\Expn(X_a\times X_a)+\Bover{t-a}{b-a}\,\Expn(X_a\times(X_b-X_a))=a$,}
+
+\Centerline{$\Expn(X_b\times Y_t)
+=\Expn(X_b\times X_a)+\Bover{t-a}{b-a}\,\Expn(X_b\times(X_b-X_a))
+=a+\Bover{t-a}{b-a}(b-a)=t$,}
+
+\Centerline{$\Expn(X_s\times Y_t)
+=\Expn(X_s\times X_a)+\Bover{t-a}{b-a}\,\Expn(X_s\times(X_b-X_a))
+=a+\Bover{t-a}{b-a}(s-a)$,}
+
+$$\eqalign{\Expn(Y_s\times Y_t)
+&=\Expn(X_a\times Y_t)+\Bover{s-a}{b-a}\,\Expn((X_b-X_a)\times Y_t)\cr
+&=a+\Bover{s-a}{b-a}(t-a)=\Expn(X_s\times Y_t).  \text{ \Qed}\cr}$$
+
+\medskip
+
+\quad{\bf (iii)} Accordingly $\Expn(Z_s\times Y_t)=0$ for all $s$,
+$t\ge 0$.   It follows that if $\Sigma_1$, $\Sigma_2$ are the
+$\sigma$-algebras of subsets of $(\BbbR^r)^{\coint{0,\infty}}$ defined by
+$\{Y_t:t\ge 0\}$ and $\{Z_t:t\ge 0\}$ respectively, $\Sigma_1$ and
+$\Sigma_2$ are $\hat\mu^r$-independent (456Eb).
+
+\medskip
+
+{\bf (b)} Observe next that if
+$x_1,\ldots,x_n\in\BbbR^r$, $0<t_1\le\ldots\le t_n$ and $\delta>0$, then
+$\hat\mu^r\{\omega:\|\omega(t_i)-x_i\|\le\delta$
+for $1\le i\le n\}$ is greater than $0$.   \Prf\ Set $x_0=0$ in
+$\BbbR^r$ and $t_0=0$.   For each $i<n$, the distribution of
+$\Bover1{\sqrt{t_{i+1}-t_i}}(X_{t_{i+1}}-X_{t_i})$ is the standard Gaussian
+distribution $\mu_G^r$
+on $\BbbR^r$, which has strictly positive probability density
+function with respect to Lebesgue measure.   So
+
+$$\eqalign{\Pr(\|(X_{t_{i+1}}-X_{t_i})-(x_{i+1}-x_i)\|\le\Bover1n\delta)
+&=\mu_G^r\{x:\|\sqrt{t_{i+1}-t_i}x-x_{i+1}+x_i\|\le\Bover1n\delta\}\cr
+&>0.\cr}$$
+
+\noindent Next, $X_{t_1}-X_{t_0},\ldots,X_{t_n}-X_{t_{n-1}}$ are
+independent, so
+
+$$\eqalign{0
+&<\prod_{i<n}\Pr(\|(X_{t_{i+1}}-X_{t_i})-(x_{i+1}-x_i)\|\le\Bover1n\delta)
+  \cr
+&=\Pr(\|(X_{t_{i+1}}-X_{t_i})-(x_{i+1}-x_i)\|\le\Bover1n\delta
+   \text{ for every }i<n)\cr
+&\le\Pr(\|X_{t_i}-x_i\|\le\delta\text{ for every }i\le n).
+   \text{ \Qed}\cr}$$
+
+\medskip
+
+{\bf (c)} Let $G\subseteq\Omega$ be a non-empty $\frak T_c$-open set.
+Then there are
+$\omega_0\in\Omega$, $m\in\Bbb N$ and $\delta>0$ such that $G$ includes
+
+\Centerline{$V=\{\omega:\omega\in\Omega$,
+$\|\omega(t)-\omega_0(t)\|\le 6\delta$ for every $t\in[0,m]\}$.}
+
+\noindent For $n\in\Bbb N$, let $F_n$ be
+
+$$\eqalign{\{\omega:\omega&\in(\BbbR^r)^{\coint{0,\infty}},
+\|\omega(q)-\omega(q')\|\le\delta\cr
+&\mskip50mu
+\text{ whenever }q,\,q'\in\Bbb Q\cap[0,m]\text{ and }
+  |q-q'|\le 2^{-n}\}.\cr}$$
+
+\noindent Then $\Omega\subseteq\bigcup_{n\in\Bbb N}F_n$ so there is an
+$n\ge 0$ such that $\omega_0\in F_n$ and
+$\hat\mu^rF_n>0$.   Let $\Cal I$ be
+$\{\coint{2^{-n}k,2^{-n}(k+1)}:k\in\Bbb N\}$, and let
+$\langle Y_t\rangle_{t\ge 0}$, $\langle Z_t\rangle_{t\ge 0}$ be the
+families of random variables defined from $\Cal I$ by the method of (a)
+above, with corresponding independent $\sigma$-algebras $\Sigma_1$,
+$\Sigma_2$.   If $\omega\in F_n$, then $\|Z_t(\omega)\|\le\delta$
+for every $t\in\Bbb Q\cap[0,m]$.
+\Prf\ If $t\in\coint{a,b}\in\Cal I$, then
+$b-a=2^{-n}$ so $\|X_t(\omega)-X_a(\omega)\|$,
+$\|X_t(\omega)-X_b(\omega)\|$ and therefore
+$\|Z_t(\omega)\|=\|X_t(\omega)-Y_t(\omega)\|$ are all at most $\delta$.\
+\QeD\  Set
+
+\Centerline{$F=\{\omega:\omega\in(\BbbR^r)^{\coint{0,\infty}}$,
+$\|Z_t(\omega)\|\le\delta$ for every
+$t\in\Bbb Q\cap[0,m]\}$;}
+
+\noindent then $F\in\Sigma_2$ and $\hat\mu^rF>0$.
+
+Next, set
+
+\Centerline{$E=\{\omega:\omega\in(\BbbR^r)^{\coint{0,\infty}}$,
+$\|\omega(2^{-n}k)-\omega_0(2^{-n}k)\|\le\delta$ for $1\le k\le 2^nm\}$.}
+
+\noindent By (b), $\hat\mu^rE>0$.   But since
+$Y_{2^{-n}k}(\omega)=X_{2^{-n}k}(\omega)=\omega(2^{-n}k)$ whenever
+$k\le 2^nm$, $E\in\Sigma_1$.    Accordingly
+$\hat\mu^r(E\cap F)=\hat\mu^rE\cdot\hat\mu^rF>0$.   But
+$E\cap F\cap\Omega\subseteq V$.   \Prf\ If $\omega\in E\cap F\cap\Omega$,
+then $t\mapsto X_t(\omega)$, $t\mapsto Y_t(\omega)$ and
+$t\mapsto Z_t(\omega)$ are all continuous, so $\|Z_t(\omega)\|\le\delta$
+for every $t\in[0,m]$.
+If $t\in[0,m]$, let $k<2^nm$ be such that
+$2^{-n}k\le t\le 2^{-n}(k+1)$.   Then
+
+$$\eqalign{\|\omega(t)-\omega_0(t)\|
+&\le\|\omega(t)-\omega(2^{-n}k)\|
+   +\|\omega(2^{-n}k)-\omega_0(2^{-n}k)\|
+   +\|\omega_0(2^{-n}k)-\omega_0(t)\|\cr
+&\le\|Z_t(\omega)\|+\|Y_t(\omega)-Y_{2^{-n}k}(\omega)\|
+   +2\delta\cr
+&\le\delta+\|\omega(2^{-n}(k+1))-\omega(2^{-n}k)\|
+   +2\delta\cr
+&\le\|\omega(2^{-n}(k+1))-\omega_0(2^{-n}(k+1))\|
+   +\|\omega_0(2^{-n}(k+1))-\omega_0(2^{-n}k)\|\cr
+&\mskip200mu
+   +\|\omega_0(2^{-n}k)-\omega(2^{-n}k)\|
+   +3\delta\cr
+&\le 6\delta.\cr}$$
+
+\noindent As $t$ is arbitrary, $\omega\in V$.\ \Qed
+
+Accordingly
+
+\Centerline{$\mu_WG
+\ge\mu_W(E\cap F\cap\Omega)=\hat\mu^r(E\cap F)>0$.}
+
+\noindent As $G$ is arbitrary, $\mu_W$ is strictly positive.
+}%end of proof of 477F
+
+
+\leader{477G}{The strong Markov \dvrocolon{property}}\cmmnt{ With the
+identification in 477Dd, we are ready for
+one of the most important properties of Brownian motion.
+
+\medskip
+
+\noindent}{\bf Theorem} Suppose that $r\ge 1$,
+$\mu_W$ is Wiener measure on $\Omega=C(\coint{0,\infty};\BbbR^r)_0$ and
+$\Sigma$ is its domain.   For $t\ge 0$ let $\Sigma_t$ be
+
+\Centerline{$\{F:F\in\Sigma$, $\omega'\in F$ whenever $\omega\in F$,
+$\omega'\in\Omega$ and $\omega'\restr[0,t]=\omega\restr[0,t]\}$,}
+
+\Centerline{$\Sigma^+_t=\bigcap_{s>t}\Sigma_s$,}
+
+\noindent and let
+$\tau:\Omega\to[0,\infty]$ be a stopping time adapted to the family
+$\langle\Sigma^+_t\rangle_{t\ge 0}$.
+Define $\phi_{\tau}:\Omega\times\Omega\to\Omega$ by saying that
+
+$$\eqalign{\phi_{\tau}(\omega,\omega')(t)
+&=\omega(t)\text{ if }t\le\tau(\omega),\cr
+&=\omega(\tau(\omega))+\omega'(t-\tau(\omega))
+   \text{ if }t\ge\tau(\omega).\cr}$$
+
+\noindent Then $\phi_{\tau}$ is \imp\ for $\mu_W\times\mu_W$ and $\mu_W$.
+
+\proof{{\bf (a)}
+At this point I apply the general theory of \S455 in something like
+its full strength.   As in 477Dd, let
+$\langle\lambda_t\rangle_{t>0}$ be the
+standard family of Gaussian distributions on $\BbbR^r$, $\ddot\nu$
+the corresponding measure on the space $\Cdlg$ of \cadlag\ functions from
+$\coint{0,\infty}$ to $\BbbR^r$, and $\ddot\Sigma$ its domain;  then
+$\ddot\nu\Omega=1$ and $\mu_W$ is the subspace measure on
+$\Omega$ induced by $\ddot\nu$.   As in 455U, let $\ddot\Sigma_t$ be
+
+\Centerline{$\{F:F\in\ddot\Sigma$, $\omega'\in F$ whenever $\omega\in F$,
+   $\omega'\in\Cdlg$ and $\omega'\restr[0,t]=\omega\restr[0,t]\}$,}
+
+\noindent and $\ddot\Sigma^+_t=\bigcap_{s>t}\ddot\Sigma_s$, for $t>0$.
+
+\medskip
+
+{\bf (b)} For $\omega\in\Cdlg$ set
+
+\Centerline{$\ddot\tau(\omega)
+=\inf\{t:$ there is an $\omega'\in\Omega$ such that
+$\omega'\restr[0,t]=\omega\restr[0,t]$ and $\tau(\omega')\le t\}$,}
+
+\noindent counting $\inf\emptyset$ as $\infty$.   Then $\ddot\tau$ is a
+stopping time adapted to $\langle\ddot\Sigma^+_t\rangle_{t\ge 0}$.
+\Prf\ For $t\ge 0$, set
+
+\Centerline{$F_t=\{\omega:\omega\in\Omega$, $\tau(\omega)<t\}\in\Sigma_t$}
+
+\noindent (455Lb), and
+
+\Centerline{$F'_t=\{\omega:\omega\in\Cdlg$, there is an $\omega'\in F_t$
+such that $\omega\restr[0,t]=\omega'\restr[0,t]\}$.}
+
+\noindent Since $F_t\in\Sigma_t$, $F'_t\cap\Omega=F_t$;  as $\Omega$ is
+$\ddot\nu$-conegligible and $\ddot\nu$ is complete, $F'_t\in\ddot\Sigma$;
+now of course $F'_t\in\ddot\Sigma_t$.   If $\omega\in F'_t$, let
+$\omega'\in F_t$ be such that $\omega\restr[0,t]=\omega'\restr[0,t]$;  then
+$\omega'$ witnesses that $\ddot\tau(\omega)\le\tau(\omega')<t$.   If
+$\omega\in\Cdlg$ and $\ddot\tau(\omega)<t$, let $q<t$ and
+$\omega'\in\Omega$ be such that $q$ is rational,
+$\omega\restr[0,q]=\omega'\restr[0,q]$ and
+$\tau(\omega')<q$;  then
+
+\Centerline{$\omega\in F'_q\in\ddot\Sigma_q\subseteq\ddot\Sigma_t$.}
+
+\noindent This shows that
+
+\Centerline{$\{\omega:\omega\in\Cdlg$, $\ddot\tau(\omega)<t\}
+=\bigcup_{q\in[0,t]\cap\Bbb Q}F'_q
+\in\ddot\Sigma_t$.}
+
+\noindent By 455Lb in the other direction, $\ddot\tau$ is a stopping time
+adapted to $\langle\ddot\Sigma^+_t\rangle_{t\ge 0}$.\ \Qed
+
+\medskip
+
+{\bf (c)} By 455U, $\ddot\phi:\Cdlg\times\Cdlg\to\Cdlg$ is \imp\ for
+$\ddot\nu\times\ddot\nu$ and $\ddot\nu$, where
+
+$$\eqalign{\ddot\phi(\omega,\omega')(t)
+&=\omega(t)\text{ if }t<\ddot\tau(\omega),\cr
+&=\omega(\ddot\tau(\omega))+\omega'(t-\ddot\tau(\omega))
+   \text{ if }t\ge\ddot\tau(\omega).\cr}$$
+
+\noindent Now $\phi_{\tau}=\ddot\phi\restr\Omega\times\Omega$
+and $\mu_W\times\mu_W$ is the subspace measure on
+$\Omega\times\Omega$ induced by $\ddot\nu\times\ddot\nu$ (251Q),
+so $\phi_{\tau}$ also is \imp.
+}%end of proof of 477G
+
+%see mt47bits, 477M \query
+
+\leader{477H}{Some families of \dvrocolon{$\sigma$-algebras}}\cmmnt{ The
+$\sigma$-algebras considered in Theorem 477G can be looked at in other ways
+which are sometimes useful.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $r\ge 1$
+be an integer, $\mu_W\,\,r$-dimensional Wiener measure on
+$\Omega=C(\coint{0,\infty};\BbbR^r)_0$ and $\Sigma$ its domain.   Set
+$X^{(i)}_t(\omega)=\omega(t)(i)$ for $t\ge 0$ and $i<r$.   For
+$I\subseteq\coint{0,\infty}$, let $\Tau_I$ be the $\sigma$-algebra
+of subsets of $\Omega$
+generated by $\{X^{(i)}_s-X^{(i)}_t:s$, $t\in I$, $i<r\}$, and
+$\hat\Tau_I$ the $\sigma$-algebra
+$\{E\symmdiff F:E\in\Tau_I$, $\mu_WF=0\}$.
+
+(a) $\Tau_{\coint{0,\infty}}$ is the Borel $\sigma$-algebra of $\Omega$
+either for the topology of pointwise convergence inherited from
+$(\BbbR^r)^{\coint{0,\infty}}$ or $\BbbR^{r\times\coint{0,\infty}}$, or for
+the topology of uniform convergence on compact sets.
+
+(b) If $\Cal I$ is a family of subsets of $\coint{0,\infty}$ such that
+for all distinct $I$, $J\in\Cal I$ either $\sup I\le\inf J$ or
+$\sup J\le\inf I$ (counting $\inf\emptyset$ as $\infty$ and $\sup\emptyset$
+as $0$), then $\family{I}{\Cal I}{\hat\Tau_I}$ is an
+independent family of $\sigma$-algebras.
+
+(c) For $t\ge 0$, let $\Sigma_t$ be
+the $\sigma$-algebra of sets $F\in\Sigma$
+such that $\omega'\in F$ whenever $\omega\in F$, $\omega'\in\Omega$ and
+$\omega'\restr[0,t]=\omega\restr[0,t]$, and
+$\Sigma^+_t=\bigcap_{s>t}\Sigma_s$.   Write $\hat\Tau_{[0,t]}^+$ for
+$\bigcap_{s>t}\hat\Tau_{[0,s]}$.   Then, for any $t\ge 0$,
+
+%\Centerline{$\Tau_{[0,t]}\subseteq\Sigma_t\subseteq\Sigma^+_t
+%\subseteq\hat\Tau_{[0,t]}^+=\hat\Tau_{[0,t]}$.}
+
+\Centerline{$\Tau_{[0,t]}\subseteq\Sigma_t\subseteq\Sigma^+_t
+\subseteq\hat\Tau_{[0,t]}^+=\hat\Tau_{[0,t]}=\hat\Tau_{\coint{0,t}}$.}
+
+(d) On the tail $\sigma$-algebra
+$\bigcap_{t\ge 0}\hat\Tau_{\coint{t,\infty}}$, $\mu_W$
+takes only the values $0$ and $1$.
+
+\proof{{\bf (a)} Write $\Cal B(\Omega,\frak T_p)$,
+$\Cal B(\Omega,\frak T_c)$ for the Borel algebras under the topologies
+$\frak T_p$, $\frak T_c$ of pointwise convergence and uniform convergence
+on compact sets.   Then
+$\Tau_{\coint{0,\infty}}\subseteq\Cal B(\Omega,\frak T_p)$ because the
+functionals $X^{(i)}_t$ are all $\frak T_p$-continuous, and
+$\Cal B(\Omega,\frak T_p)\subseteq\Cal B(\Omega,\frak T_c)$ because
+$\frak T_p\subseteq\frak T_c$.
+
+Now $\Tau_{\coint{0,\infty}}$ includes a base for $\frak T_c$.
+\Prf\ Suppose that $\omega\in\Omega$,
+$n\in\Bbb N$ and
+$V=\{\omega':\omega'\in\Omega,\,
+  \sup_{t\in[0,n]}\|\omega'(t)-\omega(t)\|<2^{-n}\}$.   Then
+(because every member of $\Omega$ is continuous)
+
+\Centerline{$V=\bigcup_{m\in\Bbb N}\bigcap_{q\in\Bbb Q\cap[0,n]}
+  \{\omega':\sum_{i=0}^{r-1}|X^{(i)}_q(\omega')-X^{(i)}_q(\omega)|^2
+  \le 2^{-2n}-2^{-m}\}$}
+
+\noindent belongs to $\Tau_{\coint{0,\infty}}$;  but such sets form a base
+for $\frak T_c$.\ \QeD\
+
+Since $\frak T_c$ is separable and metrizable,
+$\Cal B(\Omega,\frak T_c)\subseteq\Tau_{\coint{0,\infty}}$ (4A3Da).
+
+\medskip
+
+{\bf (b)(i)} Suppose to begin with that $\Cal I$ is finite and
+every member of $\Cal I$ is finite.
+If we enumerate $\{0\}\cup\bigcup\Cal I$ in ascending order as
+$\langle t_j\rangle_{j\le n}$,
+$\langle X^{(i)}_{t_{j+1}}-X^{(i)}_{t_j}\rangle_{j<n,i<r}$ is an
+independent family of real-valued random variables.   Taking
+$J_I=\{t_j:j<n$, $t_j\in I$, $t_{j+1}\in I\}$ for $I\in\Cal I$,
+$\{X^{(i)}_{t_{j+1}}-X^{(i)}_{t_j}:j\in J_I\}$ generates $\Tau_I$ for each
+$I\in\Cal I$, because of the separation property of the members of
+$\Cal I$, and $\family{I}{\Cal I}{J_I}$ is disjoint.   By 272K,
+$\family{I}{\Cal I}{\Tau_I}$ is independent.
+
+\medskip
+
+\quad{\bf (ii)} Now suppose only that $\Cal I$ is finite and not empty.
+For $I\in\Cal I$,
+set $\Tau'_I=\bigcup_{J\subseteq I\text{ is finite}}\Tau_J$ for
+$I\in\Cal I$;  then $\Tau'_I$ is an algebra of sets, and $\Tau_I$ is the
+$\sigma$-algebra generated by $\Tau'_I$.   If $E_I\in\Tau'_I$ for
+$I\in\Cal I$, there are $J_I\in[I]^{<\omega}$ such that $E_I\in\Tau_{J_I}$
+for $I\in\Cal I$, so
+$\mu_W(\bigcap_{I\in\Cal I}E_I)=\prod_{I\in\Cal I}\mu_W(E_I)$, by
+($\alpha$).   Inducing on $n$, and using the Monotone Class Theorem
+for the inductive step, we see that
+$\mu_W(\bigcap_{I\in\Cal I}E_I)=\prod_{I\in\Cal I}\mu_W(E_I)$
+whenever $E_I\in\Tau_I$ for every $I\in\Cal I$ and
+$\#(\{I:E_I\notin\Tau'_I\})\le n$.   At the end of the induction, with
+$n=\#(\Cal I)$, we have
+$\mu_W(\bigcap_{I\in\Cal I}E_I)=\prod_{I\in\Cal I}\mu_W(E_I)$
+whenever $E_I\in\Tau_I$ for every $I\in\Cal I$;  that is,
+$\family{I}{\Cal I}{\Tau_I}$ is independent.
+
+\medskip
+
+\quad{\bf (iii)} Thus $\family{I}{\Cal J}{\Tau_I}$ is independent for every
+non-empty finite $\Cal J\subseteq\Cal I$, and $\family{I}{\Cal I}{\Tau_I}$
+is independent (272Bb).
+
+\medskip
+
+{\bf (c)(i)} If $s$, $s'\le t$ and $i<r$
+then $X^{(i)}_s$, $X^{(i)}_{s'}$ and $X^{(i)}_s-X^{(i)}_{s'}$ are
+$\Sigma_t$-measurable, so $\Tau_{[0,t]}\subseteq\Sigma_t$.
+Of course $\Sigma_t\subseteq\Sigma^+_t$.
+
+\medskip
+
+\quad{\bf (ii)} $\Sigma_t\subseteq\hat\Tau_{[0,t]}$.   \Prf\ Suppose that
+$F\in\Sigma_t$.   Set $D=[0,t]\cap(\Bbb Q\cup\{t\})$, and set
+$g(\omega)=\omega\restr D$ for $\omega\in\Omega$;  then
+$g:\Omega\to(\BbbR^r)^D$ is continuous (when $\Omega$ is given the topology
+of pointwise convergence inherited from $(\BbbR^r)^{\coint{0,\infty}}$,
+for definiteness), and $F=g^{-1}[g[F]]$.   Now the Borel $\sigma$-algebra
+of $(\BbbR^r)^D\cong\BbbR^{r\times D}$ is the $\sigma$-algebra generated
+by the functionals $\omega\mapsto\omega(t)(i):(\BbbR^r)^D\to\Bbb R$ for
+$t\in D$ and $i<r$ (4A3D(c-i)), and for such $t$ and $i$,
+$\omega\mapsto g(\omega)(t)(i)=X_t^{(i)}(\omega)$ is
+$\Tau_{[0,t]}$-measurable;  so $g$ is $\Tau_{[0,t]}$-measurable.   Now
+there is a sequence $\sequencen{K_n}$ of compact subsets of $F$ such that
+$\sup_{n\in\Bbb N}\mu_WK_n=\mu_WF$.    In this case,
+$g[K_n]\subseteq(\BbbR^r)^D$ is compact and $K'_n=g^{-1}[g[K_n]]$ belongs
+to $\Tau_{[0,t]}$, for each $n$.   So $F'=\bigcup_{n\in\Bbb N}K'_n$ belongs
+to $\Tau_{[0,t]}$, and $\mu_W(F\setminus F')=0$.
+
+Similarly, applying the same argument to $\Omega\setminus F$, we have an
+$F''\in\Tau_{[0,t]}$ such that $F''\supseteq F$ and
+$\mu_W(F''\setminus F)=0$.   So $F\in\hat\Tau_{[0,t]}$.\ \Qed
+
+Consequently $\Sigma_t^+\subseteq\hat\Tau_{[0,t]}^+$.
+
+\medskip
+
+\quad{\bf (iii)}\grheada\
+Let $\Cal A$ be the family of those sets $G\in\Sigma$
+such that $\chi G$ has a conditional expectation on
+$\hat\Tau_{[0,t]}^+$ which is $\Tau_{[0,t]}$-measurable.
+Then $\Cal A$ is a Dynkin class (definition:  136A).
+If $E\in\Tau_{[0,t]}$ and $F\in\Tau_{\coint{s,\infty}}$ where $s>t$,
+then $(\mu_WF)\chi\Omega$ is a conditional
+expectation of $\chi F$ on $\hat\Tau_{[0,t]}^+$, because
+$\hat\Tau_{[0,t]}^+\subseteq\hat\Tau_{[0,s]}$ and
+$\Tau_{\coint{s,\infty}}$ are independent.   As
+$E\in\hat\Tau_{[0,t]}^+$,
+$(\mu_WF)\chi E$ is a conditional expectation of $\chi(E\cap F)$ on
+$\hat\Tau_{[0,t]}^+$ (233Eg), and $E\cap F\in\Cal A$.   Since
+$\Cal E=\{E\cap F:E\in\Sigma_t$,
+$F\in\bigcup_{s>t}\Tau_{\coint{s,\infty}}\}$ is closed
+under finite intersections, the Monotone Class Theorem, in the form 136B,
+shows that $\Cal A$ includes the $\sigma$-algebra $\Tau$ generated by
+$\Cal E$;  note that $\Tau$ includes
+$\Tau_{[0,t]}\cup\Tau_{\coint{s,\infty}}$ whenever
+$s>t$.   Now $X^{(i)}_u-X^{(i)}_s$ is $\Tau$-measurable whenever
+$0\le s\le u$.   \Prf\ If $u\le t$, $X^{(i)}_u-X^{(i)}_s$ is
+$\Tau_{[0,t]}$-measurable, therefore $\Tau$-measurable;  if $t<s$,
+$X^{(i)}_u-X^{(i)}_s$ is
+$\Tau_{\coint{s,\infty}}$-measurable, therefore $\Tau$-measurable.
+If $s\le t<u$,
+let $\sequencen{t_n}$ be a sequence in $\ocint{t,u}$ with
+limit $t$.   Then
+
+\Centerline{$X^{(i)}_u-X^{(i)}_s
+=\lim_{n\to\infty}(X^{(i)}_u-X^{(i)}_{t_n})+(X^{(i)}_t-X^{(i)}_s)$}
+
+\noindent is $\Tau$-measurable.\ \Qed
+
+\medskip
+
+\qquad\grheadb\ This means that $\Tau$ includes $\Tau_{\coint{0,\infty}}$.
+It follows that $\Cal A=\Sigma$, because for any $G\in\Sigma$ there is a
+$G'\in\Tau_{\coint{0,\infty}}$ such that $G\symmdiff G'$ is negligible,
+and now $\chi G$ and $\chi G'$ have the same conditional expectations.
+So $\hat\Tau_{[0,t]}^+=\hat\Tau_{[0,t]}$.   \Prf\ Of course
+$\hat\Tau_{[0,t]}^+\supseteq\hat\Tau_{[0,t]}$.
+If $H\in\hat\Tau_{[0,t]}^+$ there is a $\Tau_{[0,t]}$-measurable function
+$g$ which is a conditional expectation of
+$\chi H$ on $\hat\Tau_{[0,t]}^+$.   But in this case $g\eae\chi H$,
+so, setting $E=\{\omega:g(\omega)=1\}\in\Tau_{[0,t]}$, $E\symmdiff H$ is
+negligible and $H\in\hat\Tau_{[0,t]}$.   Thus
+$\hat\Tau_{[0,t]}^+\subseteq\hat\Tau_{[0,t]}$.\ \Qed
+
+\medskip
+
+\qquad\grheadc\ Observe next that $X^{(i)}_t$ is
+$\Tau_{\coint{0,t}}$-measurable for $i<r$.    \Prf\ If $t=0$ then
+$X^{(i)}_t$ is the constant function with value $0$.
+Otherwise, there is a strictly
+increasing sequence $\sequencen{s_n}$ in $\coint{0,t}$ with limit $t$, so
+that $X^{(i)}_t=\lim_{n\to\infty}X^{(i)}_{s_n}$ is the limit of a sequence
+of $\Tau_{\coint{0,t}}$-measurable functions and is itself
+$\Tau_{\coint{0,t}}$-measurable.\ \QeD\   But this means that
+$\Tau_{[0,t]}=\Tau_{\coint{0,t}}$, so
+$\hat\Tau_{[0,t]}^+\subseteq\hat\Tau_{[0,t]}=\hat\Tau_{\coint{0,t}}$.
+In the other direction, of course
+$\Tau_{\coint{0,t}}\subseteq\Tau_{[0,t]}^+$ and
+$\hat\Tau_{\coint{0,t}}\subseteq\hat\Tau_{[0,t]}^+$, so we have equality.
+
+\medskip
+
+{\bf (d)} Set $\Tau'=\bigcup_{t\ge 0}\Tau_{[0,t]}$.
+If $E\in\bigcap_{t\ge 0}\hat\Tau_{\coint{t,\infty}}$, then
+$\mu_W(E\cap F)=\mu_WE\cdot\mu_WF$ for every $F\in\Tau'$.   By the
+Monotone Class Theorem again, $\mu_W(E\cap F)=\mu_WE\cdot\mu_WF$ for every
+$F$ in the $\sigma$-algebra
+generated by $\Tau'$, which is $\Cal B(\Omega)$, by (a).
+Now $\mu_W\LLcorner E$ (definition:  234M\formerly{2{}34E}) and
+$(\mu_WE)\mu_W$
+are Radon measures on $\Omega$ (416S) which agree on $\Cal B(\Omega)$, so
+must be identical.   In particular,
+
+\Centerline{$\mu_WE=(\mu_W\LLcorner E)(E)=(\mu_WE)^2$}
+
+\noindent and $\mu_WE$ must be either $0$ or $1$.
+}%end of proof of 477H
+
+\leader{477I}{Hitting times}\cmmnt{ In 455M I introduced `hitting times'.
+I give a paragraph now to these in the special case of Brownian motion;
+such stopping times will dominate
+the applications of the theory in \S\S478-479.} Take $r\ge 1$, and let
+$\mu_W$ be Wiener measure on $\Omega=C(\coint{0,\infty};\BbbR^r)_0$ and
+$\Sigma$ its domain;
+for $t\ge 0$ define $\Sigma^+_t$ and $\Tau_{[0,t]}$ as in 477G and 477H.
+Give $\Omega$ its topology of uniform convergence on compact sets.
+
+\spheader 477Ia Suppose that $A\subseteq\BbbR^r$.
+For $\omega\in\Omega$ set
+$\tau(\omega)=\inf\{t:t\in\coint{0,\infty}$, $\omega(t)\in A\}$, counting
+$\inf\emptyset$ as $\infty$.
+I will call $\tau$ the {\bf Brownian hitting time}
+to $A$, or the {\bf Brownian exit time} from $\BbbR^r\setminus A$.
+I will say that the {\bf Brownian hitting probability} of $A$, or
+the {\bf Brownian exit probability} of $\BbbR^r\setminus A$, is
+$\hp(A)=\mu_W\{\omega:\tau(\omega)<\infty\}$ if this is defined.
+More generally, I will write
+
+\Centerline{$\hp^*(A)=\mu_W^*\{\omega:\tau(\omega)<\infty\}
+=\mu_W^*\{\omega:\omega^{-1}[A]\ne\emptyset\}$,}
+
+\noindent the {\bf outer Brownian hitting probability},
+for any $A\subseteq\BbbR^r$.
+
+\spheader 477Ib If $A\subseteq\BbbR^r$ is analytic,
+the Brownian hitting time to $A$
+is a stopping time adapted to the family
+$\langle\Sigma^+_t\rangle_{t\ge 0}$.   \prooflet{\Prf\ Let $\Cdlg$ be the
+space of \cadlag\ functions from $\coint{0,\infty}$ to $\BbbR^r$, and
+define $\ddot\Sigma$ as in the proof
+of 477G;  let $\ddot\tau$ be the hitting time on $\Cdlg$ defined by $A$.
+By 455Ma, $\ddot\tau$ is $\ddot\Sigma$-measurable, so
+$\tau=\ddot\tau\restr\Omega$ is $\Sigma$-measurable.   Now (as in 455Mb)
+$\{\omega:\tau(\omega)<t\}\in\Sigma_t$ for every $t$, so
+$\tau$ is adapted to $\langle\Sigma^+_t\rangle_{t\ge 0}$.\ \Qed}
+
+In particular, there is a well-defined Brownian hitting probability of $A$.
+
+\spheader 477Ic Let $F\subseteq\BbbR^r$ be a closed set, and $\tau$ the
+Brownian hitting time to $F$.
+
+\medskip
+
+\quad{\bf (i)} If $\tau(\omega)<\infty$, then
+
+\Centerline{$\tau(\omega)
+=\inf\omega^{-1}[F]=\min\omega^{-1}[F]$}
+
+\noindent because $\omega$ is continuous.   If $0\notin F$ and
+$\tau(\omega)<\infty$, then
+$\omega(\tau(\omega))\in\partial F$.
+
+\medskip
+
+\quad{\bf (ii)} $\tau$ is lower semi-continuous.
+\prooflet{\Prf\ For any $t\in\coint{0,\infty}$,
+
+\Centerline{$\{\omega:\tau(\omega)>t\}
+=\{\omega:\omega(s)\notin F$ for every $s\le t\}$}
+
+\noindent is open in $\Omega$.\ \QeD}
+
+\medskip
+
+\quad{\bf (iii)} $\tau$ is adapted to $\langle\Tau_{[0,t]}\rangle_{t\ge 0}$.
+\prooflet{\Prf\
+Let $\sequencen{G_n}$ be a non-increasing sequence of open sets including
+$F$ such that $F=\bigcap_{n\in\Bbb N}\overline{G}_n$.
+Then, for $\omega\in\Omega$ and $t>0$,
+
+$$\eqalignno{\tau(\omega)\le t
+&\iff\omega[\,[0,t]\,]\cap F\ne\emptyset\cr
+\displaycause{because $\omega$ is continuous}
+&\iff\omega[\,[0,t]\,]\cap G_n\ne\emptyset\text{ for every }n\in\Bbb N\cr
+\displaycause{because $\omega[\,[0,t]\,]$ is compact}
+&\iff\text{ for every }n\in\Bbb N\text{ there is a rational }q\le t
+  \text{ such that }\omega(q)\in G_n.\cr}$$
+
+\noindent So
+
+\Centerline{$\{\omega:\tau(\omega)\le t\}
+=\bigcap_{n\in\Bbb N}\bigcup_{q\in\Bbb Q\cap[0,t]}
+   \{\omega:\omega(q)\in G_n\}\in\Tau_{[0,t]}$.}
+
+\noindent Of course $\{\omega:\tau(\omega)=0\}$ is either $\Omega$ (if
+$0\in F$) or $\emptyset$ (if $0\notin F$), so belongs to
+$\Tau_{[0,0]}$.\ \Qed}
+
+In the language of 477G, we have $\Tau_{[0,t]}\subseteq\Sigma_t$ for every
+$t\ge 0$\cmmnt{ (477Hc)}, so $\tau$ must also be adapted to
+$\langle\Sigma_t\rangle_{t\ge 0}$.
+
+\spheader 477Id If $A\subseteq\BbbR^r$ is any set, then
+
+\Centerline{$\hp^*(A)
+=\min\{\hp(B):B\supseteq A$ is an analytic set$\}
+=\min\{\hp(E):E\supseteq A$ is a G$_{\delta}$ set$\}$.}
+
+\prooflet{\noindent\Prf\ Of course
+
+$$\eqalign{\hp^*(A)
+&\le\inf\{\hp(B):B\supseteq A\text{ is an analytic set}\}\cr
+&=\min\{\hp(B):B\supseteq A\text{ is an analytic set}\}\cr
+&\le\inf\{\hp(E):E\supseteq A\text{ is a G}_{\delta}\text{ set}\}
+=\min\{\hp(E):E\supseteq A\text{ is a G}_{\delta}\text{ set}\}\cr}$$
+
+\noindent just because $\hp^*$ is an order-preserving function.   If
+$\gamma>\hp^*(A)$, there is a compact $K\subseteq\Omega$ such that
+$\omega^{-1}[A]=\emptyset$ for every $\omega\in K$ and
+$\mu_WK\ge 1-\gamma$.   Now
+$F=\{\omega(t):\omega\in K$, $t\in\coint{0,\infty}\}$ is a K$_{\sigma}$ set
+not meeting $A$, so $E=\BbbR^r\setminus F$ is a G$_{\delta}$ set including
+$A$.   Since $\omega^{-1}[E]$ is empty for every $\omega\in K$,
+$\hp(E)\le\mu_W(\Omega\setminus K)\le\gamma$.   As $\gamma$ is arbitrary,
+
+\Centerline{$\inf\{\hp(E):E\supseteq A$ is a G$_{\delta}$ set$\}
+\le\hp^*(A)$}
+
+\noindent and we have equality throughout.\ \Qed}
+
+\spheader 477Ie If $A\subseteq\BbbR^r$ is analytic, then
+$\hp(A)=\sup\{\hp(K):K\subseteq A$ is compact$\}$.   \prooflet{\Prf\
+Suppose that $\gamma<\hp(A)$.
+Set $E=\{(\omega,t):\omega\in\Omega$, $t\ge 0$, $\omega(t)\in A\}$.
+Then $E$ is analytic and $\hp(A)=\mu_W\pi_1[E]$, where
+$\pi_1(\omega,t)=\omega$ for $(\omega,t)\in E$.   Let $\lambda$ be the
+subspace measure $(\mu_W)_{\pi_1[E]}$.   By 433D, there is a Radon measure
+$\lambda'$ on $E$ such that $\lambda=\lambda'\pi_1^{-1}$.
+Then $\lambda'E=\hp(A)>\gamma$, so there is a compact set
+$L\subseteq E$ such that $\lambda'L\ge\gamma$.   Set
+$K=\{\omega(t):(\omega,t)\in L\}$;  then $K\subseteq\BbbR^r$ is compact,
+and
+
+\Centerline{$\hp(K)=\mu_W\{\omega:\omega(t)\in K$ for some $t\ge 0\}
+\ge\mu_W\pi_1[L]\ge\lambda'L\ge\gamma$.}
+
+\noindent As $\gamma$ is arbitrary,
+$\hp(A)\le\sup\{\hp(K):K\subseteq A$ is compact$\}$;  the reverse
+inequality is trivial.\ \Qed}
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} 477Id-477Ie are characteristic of Choquet capacities
+(432J-432L);  see 478Xe below.}
+
+\leader{477J}{}\cmmnt{ As an example of the use of 477G, I give
+a classical result on one-dimensional Brownian motion.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $\mu_W$ be Wiener measure
+on $\Omega=C(\coint{0,\infty})_0$.   Set
+$X_t(\omega)=\omega(t)$ for $\omega\in\Omega$.
+Then
+
+\Centerline{$\Pr(\max_{s\le t}X_s\ge\alpha)
+=2\Pr(X_t\ge\alpha)
+=\Bover2{\sqrt{2\pi}}\int_{\alpha/\sqrt t}^{\infty}e^{-u^2/2}du$}
+
+\noindent whenever $t>0$ and $\alpha\ge 0$.
+
+\proof{ Let $\tau$ be the Brownian hitting time to
+$F=\{x:x\in\Bbb R$, $x\ge\alpha\}$;  because $F$ is closed,
+$\tau$ is a stopping time adapted to
+$\langle\Sigma_t\rangle_{t\ge 0}$, as in 477Ic.   Let
+$\phi_{\tau}:\Omega\times\Omega\to\Omega$ be the corresponding \imp\
+function as in 477G, and set $E=\{\omega:\tau(\omega)<t\}$.
+Note that as $\omega(\tau(\omega))=\alpha$ whenever $\tau(\omega)$ is
+finite, $\Pr(\tau=t)\le\Pr(X_t=\alpha)=0$, and
+
+\Centerline{$\mu_WE=\Pr(\tau\le t)=\Pr(\max_{s\le t}X_s\ge\alpha)$.}
+
+\noindent Now
+
+$$\eqalignno{\Pr(X_t\ge\alpha)
+&=\mu_W\{\omega:\omega(t)\ge\alpha\}
+=\mu_W^2\{(\omega,\omega'):\phi_{\tau}(\omega,\omega')(t)\ge\alpha\}\cr
+&=\mu_W^2\{(\omega,\omega'):\tau(\omega)\le t,\,
+   \phi_{\tau}(\omega,\omega')(t)\ge\alpha\}\cr
+\displaycause{because if $\tau(\omega)>t$ then
+$\phi_{\tau}(\omega,\omega')(t)=\omega(t)<\alpha$}
+&=\mu_W^2\{(\omega,\omega'):\tau(\omega)<t,\,
+   \phi_{\tau}(\omega,\omega')(t)\ge\alpha\}\cr
+\displaycause{because $\{\omega:\tau(\omega)=t\}$ is negligible}
+&=\mu_W^2\{(\omega,\omega'):\tau(\omega)<t,\,
+   \omega(\tau(\omega))+\omega'(t-\tau(\omega))\ge\alpha\}\cr
+&=\mu_W^2\{(\omega,\omega'):\tau(\omega)<t,\,
+   \omega'(t-\tau(\omega))\ge 0\}\cr
+&=\int_E\mu_W\{\omega':\omega'(t-\tau(\omega))\ge 0\}\mu_W(d\omega)\cr
+&=\Bover12\mu_WE
+=\Bover12\Pr(\max_{s\le t}X_s\ge\alpha).\cr}$$
+
+To compute the value, observe that $X_t$ has the same distribution as
+$\sqrt tZ$ where $Z$ is a standard normal random variable, so that
+
+\Centerline{$\Pr(X_t\ge\alpha)
+=\Pr(Z\ge\bover{\alpha}{\sqrt t})
+=\Bover1{\sqrt{2\pi}}\int_{\alpha/\sqrt{t}}^{\infty}e^{-u^2/2}du$.}
+}%end of proof of 477J
+
+\leader{477K}{Typical Brownian \dvrocolon{paths}}\cmmnt{ A vast amount is
+known concerning the nature of `typical' members of
+$\Omega$;   that is to say, a great many
+interesting $\mu_W$-conegligible sets have been found.   Here I will
+give only a couple of basic results;  the first because it is essential to any
+picture of Brownian motion, and the second because it is relevant to a
+question in \S479.   Others are in 478M, 478Yi and 479R.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $\mu_W$
+be\cmmnt{ one-dimensional} Wiener
+measure on $\Omega=C(\coint{0,\infty})_0$.
+Then $\mu_W$-almost every element of $\Omega$ is nowhere differentiable.
+
+\proof{ Note first that if $\eta>0$ and $Z$ is a standard normal random
+variable, then $\Pr(|Z|\le\eta)\le\eta$, because
+the maximum value of the probability density function of $Z$
+is $\Bover1{\sqrt{2\pi}}\le\Bover12$.   For $m$, $n$, $k\in\Bbb N$, set
+
+\Centerline{$F_m=\{\omega:\omega\in\Omega$ and
+there is a $t\in\coint{0,m}$ such that
+$\limsup_{s\downarrow 0}\Bover{|\omega(s)-\omega(t)|}{s-t}<m\}$,}
+
+$$\eqalign{E_{mnk}
+&=\{\omega:\omega\in\Omega,\,
+        |\omega(2^{-n}(k+2))-\omega(2^{-n}(k+1))|\le 3\cdot 2^{-n}m,\cr
+&\mskip200mu
+        |\omega(2^{-n}(k+3))-\omega(2^{-n}(k+2))|\le 5\cdot 2^{-n}m,\cr
+&\mskip200mu
+        |\omega(2^{-n}(k+4))-\omega(2^{-n}(k+3))|\le 7\cdot 2^{-n}m\},\cr}$$
+	
+\Centerline{$E_{mn}=\bigcup_{k<2^nm}E_{mnk}$.}
+
+\noindent Now we can estimate the measure of $E_{mnk}$, because for any
+$\alpha$, $t\ge 0$, $2^{n/2}(X_{t+2^{-n}}-X_t)$ has a standard normal
+distribution (taking $X_t(\omega)=\omega(t)$, as usual), so
+
+\Centerline{$\Pr(|X_{t+2^{-n}}-X_t|\le\alpha)\le 2^{n/2}\alpha$;}
+
+\noindent since $E_{mnk}$ is the intersection of three independent sets of
+this type,
+
+\Centerline{$\mu_WE_{mnk}
+\le 2^{n/2}\cdot 3\cdot 2^{-n}m\cdot2^{n/2}\cdot 5
+   \cdot 2^{-n}m\cdot2^{n/2}\cdot 7\cdot 2^{-n}m
+=105\,m^32^{-3n/2}$.}
+
+\noindent Accordingly
+
+\Centerline{$\mu_WE_{mn}\le\sum_{k<2^nm}\mu_WE_{mnk}\le 105\,m^42^{-n/2}$.}
+
+Next, observe that
+$F_m\subseteq\bigcup_{l\in\Bbb N}\bigcap_{n\ge l}E_{mn}$.   \Prf\
+If $\omega\in F_m$, let $t\in\coint{0,m}$ be such that
+$\limsup_{s\downarrow 0}\Bover{|\omega(s)-\omega(t)|}{s-t}<m$,
+and $l\in\Bbb N$ such that
+$|\omega(s)-\omega(t)|\le m(s-t)$ whenever $t<s\le t+4\cdot 2^{-l}$.
+Take any $n\ge l$.   Then there is a $k<2^nm$ such that
+$2^{-n}k\le t<2^{-n}(k+1)$.   In this case,
+
+\Centerline{$|\omega(2^{-n}(k+j))-\omega(t)|\le 2^{-n}jm$}
+
+\noindent for $1\le j\le 4$,
+
+\Centerline{$|\omega(2^{-n}(k+j+1))-\omega(2^{-n}(k+j))|\le (2j+1)2^{-n}m$}
+
+\noindent for $1\le j\le 3$, and $\omega\in E_{mnk}\subseteq E_{mn}$.\ \Qed
+
+Since
+
+\Centerline{$\mu_W(\bigcup_{l\in\Bbb N}\bigcap_{n\ge l}E_{mn})
+\le\liminf_{n\to\infty}\mu_WE_{mn}=0$,}
+
+\noindent $F_m$ is negligible.   So $F=\bigcup_{m\in\Bbb N}F_m$ is
+negligible.   But $F$ includes any member of $\omega$ which is
+differentiable at any point of $\ooint{0,\infty}$, and more.   So almost
+every path is nowhere differentiable.
+}%end of proof of 477K
+
+\leader{477L}{Theorem} Let $r\ge 1$ be an integer,
+and $\mu_W$ Wiener measure on $\Omega=C(\coint{0,\infty};\BbbR^r)_0$;
+for $s>0$ let $\mu_{Hs}$ be $s$-dimensional Hausdorff measure on
+$\BbbR^r$.
+
+(a)\cmmnt{ ({\smc Taylor 53})}
+$\{\omega(t):t\in\coint{0,\infty}\}$ is $\mu_{H2}$-negligible
+for $\mu_W$-almost every $\omega$.
+
+(b) Now suppose that $r\ge 2$.   For
+$\omega\in\Omega$, let $F_{\omega}$ be the compact set
+$\{\omega(t):t\in[0,1]\}$.
+Then for $\mu_W$-almost every $\omega\in\Omega$,
+$\mu_{Hs}F_{\omega}=\infty$ for every $s\in\ooint{0,2}$.
+
+\proof{{\bf (a)(i)} For $0\le s\le t$ and $\omega\in\Omega$ set
+$K_{st}(\omega)=\{\omega(u):s\le u\le t\}$ and
+$d_{st}(\omega)=\diam K_{st}(\omega)$.   Note that
+$d_{st}:\Omega\to\coint{0,\infty}$ is continuous
+(for the topology of uniform convergence on compact sets, of course).
+
+\medskip
+
+\qquad\grheada\ If $0\le s\le t$ then $\Expn(d_{st}^2)\le 8r(t-s)$.
+\Prf\ As $\langle X_{u+s}-X_s\rangle_{u\ge 0}$ and
+$\langle X_u\rangle_{u\ge 0}$ have the same distribution, $d_{st}$ has
+the same distribution as $d_{0,t-s}$, and we may suppose that $s=0$.
+[If you prefer:  if $S_s:\Omega\to\Omega$ is the shift operator of 477Ec,
+$K_{st}(\omega)=\omega(s)+K_{0,t-s}(S_s\omega)$, so
+$d_{st}(\omega)=d_{0,t-s}(S_s\omega)$, while $S_s$ is \imp.]
+In this case,
+
+\Centerline{$d_{0t}(\omega)^2
+\le 4\max_{s\in[0,t]}\|\omega(s)\|^2
+\le 4\sum_{j=0}^{r-1}\max_{s\in[0,t]}\omega(s)(j)^2$.}
+
+\noindent For each $j<r$,
+
+$$\eqalignno{\int\max_{s\in[0,t]}\omega(s)(j)^2\mu_W(d\omega)
+&=\int_0^{\infty}\mu_W\{\omega:
+   \max_{s\in[0,t]}\omega(s)(j)^2\ge\beta\}d\beta\cr
+&\le\int_0^{\infty}\mu_W\{\omega:\max_{s\in[0,t]}\omega(s)(j)
+   \ge\sqrt\beta\}\cr
+&\mskip100mu
+   +\mu_W\{\omega:\min_{s\in[0,t]}\omega(s)(j)
+      \le-\sqrt\beta\}
+   d\beta\cr
+&=2\int_0^{\infty}\mu_W\{\omega:\max_{s\in[0,t]}\omega(s)(j)
+   \ge\sqrt\beta\}d\beta\cr
+\displaycause{because $\mu_W$ is invariant under reflections
+in $\BbbR^r$, see 477Ed}
+&=4\int_0^{\infty}\mu_W\{\omega:\omega(t)(j)\ge\sqrt\beta\}d\beta\cr
+\displaycause{by 477J, applied to the $j$th coordinate projection of
+$\Omega$ onto $C(\coint{0,\infty})_0$, which is \imp, by 477Da or
+477Ed and 477Eg}
+&=2\int_0^{\infty}\mu_W\{\omega:\omega(t)(j)^2\ge\beta\}d\beta\cr
+\displaycause{again because $\mu_W$ is symmetric}
+&=2\int_{\Omega}\omega(t)(j)^2\mu_W(d\omega)
+=2\Expn(tZ^2)\cr
+\displaycause{where $Z$ is a standard normal random variable}
+&=2t.\cr}$$
+
+\noindent Summing,
+
+\Centerline{$\Expn(d_{0t}^2)
+\le 4\sum_{j=0}^{r-1}\int_{\Omega}\max_{s\in[0,t]}\omega(s)(j)^2
+    \mu_W(d\omega)
+\le 8rt$.  \Qed}
+
+\medskip
+
+\qquad\grheadb\ For any $\epsilon>0$, $\Pr(d_{01}\le\epsilon)>0$.   \Prf\
+$\{\omega:d_{01}(\omega)\le\epsilon\}$ is a neighbourhood of $0$ for the
+topology of uniform convergence on compact sets, so has non-zero measure,
+by 477F.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)}
+For a non-empty finite set $I\subseteq\coint{0,\infty}$ and
+$\omega\in\Omega$ set
+
+\Centerline{$g_I(\omega)
+=\sum_{j=0}^{n-1}d_{t_{j-1},t_j}(\omega)^2$}
+
+\noindent where $\langle t_j\rangle_{j\le n}$ enumerates $I$ in increasing
+order.   For $0\le s\le t$ and $\omega\in\Omega$ set
+
+\Centerline{$h_{st}(\omega)
+=\inf_{\{s,t\}\subseteq I\subseteq[s,t]\text{ is finite}}g_I(\omega)$;}
+
+\noindent then $h_{st}$ is $\Tau_{[s,t]}$-measurable, in the language of
+477H.   \Prf\ The point is that
+$I\mapsto g_I(\omega)$ is a continuous function of the members of $I$,
+at least if we restrict attention to sets $I$ of a fixed size.
+So if $D$ is any countable dense subset of $[s,t]$ containing $s$ and $t$,
+
+\Centerline{$h_{st}
+=\inf_{\{s,t\}\subseteq I\subseteq D\text{ is finite}}g_I$.}
+
+\noindent On the other hand, if $I\subseteq D$ is enumerated as
+$\langle t_i\rangle_{i\le n}$,
+
+\Centerline{$g_I(\omega)
+=\sum_{i=0}^{n-1}\max_{u,u'\in D\cap[t_i,t_{i+1}]}
+  \|\omega(u)-\omega(u')\|^2$,}
+
+\noindent so $g_I$ is $\Tau_{[s,t]}$-measurable.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} We need the following facts about the $h_{st}$.
+
+\medskip
+
+\qquad\grheada\ If $0\le s\le t$, then the distribution of $h_{st}$ is the
+same as the distribution of $h_{0,t-s}$, again because
+$\langle X_{s+u}-X_s\rangle_{u\ge 0}$ has the same distribution as
+$\langle X_u\rangle_{u\ge 0}$.   [In the language suggested in the proof of
+(i-$\alpha$),
+we have $g_{s+I}(\omega)=g_I(S_s(\omega))$ for any $\omega\in\Omega$
+and non-empty finite $I\subseteq\coint{0,\infty}$, so
+$h_{st}(\omega)=h_{0,t-s}(S_s\omega)$.]
+
+\medskip
+
+\qquad\grheadb\ $h_{0t}$ has finite expectation.   \Prf\
+$h_{0t}\le g_{\{0,t\}}=d_{0t}^2$, so we can use (i).\ \Qed
+
+\medskip
+
+\qquad\grheadc\ $h_{su}\le h_{st}+h_{tu}$ if $s\le t\le u$.   \Prf\ If
+$\{s,t\}\subseteq I\subseteq[s,t]$ and $\{t,u\}\subseteq J\subseteq[t,u]$
+then $\{s,u\}\subseteq I\cup J\subseteq[s,u]$ and
+$g_{I\cup J}=g_I+g_J$.\ \QeD\
+
+\medskip
+
+\qquad\grheadd\ If $s\le t\le u$ then $h_{st}$ and $h_{tu}$ are
+independent, because
+$\Tau_{[s,t]}$ and $\Tau_{[t,u]}$ are independent (477H(b-i)).
+
+\medskip
+
+\qquad\grheade\ The
+distribution of $h_{0t}$ is the same as the distribution of $th_{01}$
+whenever $t\ge 0$.
+\Prf\ The case $t=0$ is trivial.   For $t>0$, define
+$U_t:\Omega\to\Omega$ by saying that
+$U_t(\omega)(s)=\Bover1{\sqrt{t}}\omega(ts)$, as in 477Ee.   Then
+
+\Centerline{$K_{su}(U_t(\omega))=\Bover1{\sqrt{t}}K_{ts,tu}(\omega)$,
+\quad$d_{su}(U_t(\omega))=\Bover1{\sqrt{t}}d_{ts,tu}(\omega)$,}
+
+\Centerline{$g_I(U_t(\omega))=\Bover1tg_{tI}(\omega)$,
+\quad$h_{su}(U_t(\omega))=\Bover1th_{ts,tu}(\omega)$,}
+
+\noindent whenever $s\le u$, $\{s,u\}\subseteq I\subseteq[s,u]$
+and $\omega\in\Omega$, and
+
+$$\eqalignno{\mu_W\{\omega:th_{01}(\omega)\ge\alpha\}
+&=\mu_W\{\omega:th_{01}(U_t(\omega))\ge\alpha\}\cr
+\displaycause{because $U_t$ is an automorphism of $(\Omega,\mu_W)$}
+&=\mu_W\{\omega:h_{0t}(\omega)\ge\alpha\}\cr}$$
+
+\noindent for every $\alpha\in\Bbb R$.\ \Qed
+
+\medskip
+
+\qquad{\bf($\pmb{\zeta}$)} Consequently
+
+\Centerline{$\Expn(h_{st})=\Expn(h_{0,t-s})=(t-s)\Expn(h_{01})$}
+
+\noindent whenever $s\le t$, and
+
+\Centerline{$\Expn(h_{st})+\Expn(h_{tu})=\Expn(h_{su})$}
+
+\noindent whenever $s\le t\le u$.   Since $h_{st}+h_{tu}\ge h_{su}$, by
+(iii), we must have $h_{st}+h_{tu}\eae h_{su}$.
+
+\medskip
+
+\qquad{\bf($\pmb{\eta}$)} For any $\eta>0$, $\Pr(h_{01}\le 4\eta^2)>0$.
+\Prf\ By
+(i-$\beta$),
+ $\Pr(d_{01}\le 2\eta)>0$, and $h_{01}\le g_{\{0,1\}}=d_{01}^2$.\ \Qed
+
+\medskip
+
+\quad{\bf (iv)} For $t\ge 0$ let $\phi_t$ be the characteristic function of
+$h_{0t}$, that is, $\phi_t(\alpha)=\Expn(\exp(i\alpha h_{0t}))$ for
+$\alpha\in\Bbb R$ (285Ab).   Working through the facts listed above, we see
+that
+
+$$\eqalignno{\phi_t(1)
+&=\Expn(\exp(ih_{0t}))
+=\Expn(\exp(ith_{01}))\cr
+\displaycause{by (iii-$\epsilon$)}
+&=\phi_1(t),\cr
+\phi_1(s)\phi_1(t)
+&=\phi_s(1)\phi_t(1)
+=\Expn(\exp(ih_{0s}))\Expn(\exp(ih_{0t}))\cr
+&=\Expn(\exp(ih_{0s}))\Expn(\exp(ih_{s,s+t}))\cr
+\displaycause{by (iii-$\alpha$)}
+&=\Expn(\exp(ih_{0s})\exp(ih_{s,s+t}))\cr
+\displaycause{because $h_{0s}$ and $h_{s,s+t}$ are independent, by (c-iv)}
+&=\Expn(\exp(i(h_{0s}+h_{s,s+t})))
+=\Expn(ih_{0,s+t})\cr
+\displaycause{by (iii-$\zeta$)}
+&=\phi_1(s+t),\cr}$$
+
+\noindent for all $s$, $t\ge 0$;  while $\phi_1$ is differentiable, because
+$h_{01}$ has finite expectation ((iii-$\alpha$) above and 285Fd).
+It follows that there is a
+$\gamma\in\Bbb R$ such that $\phi_1(t)=e^{i\gamma t}$ for every
+$t\in\Bbb R$.   \Prf\ Set $\gamma=\Bover1i\phi_1'(0)=\Expn(h_{01})$
+(285Fd) and $\psi(t)=e^{-i\gamma t}\phi_1(t)$ for $t\in\Bbb R$.
+If $t>0$, then
+
+\Centerline{$\phi'_1(t)
+=\lim_{s\downarrow 0}\Bover1s(\phi_1(t+s)-\phi_1(t))
+=\phi_1(t)\lim_{s\downarrow 0}\Bover1s(\phi_1(s)-1)
+=i\phi_1(t)\gamma$}
+
+\noindent and $\psi'(t)=0$.
+Since $\psi$ is continuous on $\coint{0,\infty}$ (285Fb), it must be
+constant, and $\phi_1(t)=e^{i\gamma t}\psi(0)=e^{i\gamma t}$ for every
+$t\ge 0$.   As for negative $t$, we have
+
+\Centerline{$\phi_1(t)=\overline{\phi_1(-t)}=\overline{e^{-i\gamma t}}
+=e^{i\gamma t}$}
+
+\noindent for $t\le 0$, by 285Fc.\ \Qed
+
+\medskip
+
+\quad{\bf (v)}
+Thus we see that $h_{01}$ has the same characteristic function
+as the distribution concentrated at $\gamma$, and this must therefore be
+the distribution of $h_{01}$ (285M);
+that is, $h_{01}\eae\gamma$.   Now (iii-$\eta$) tells us that $\gamma=0$.
+
+Since $h_{0t}$ has the same distribution as $th_{01}$, $h_{0t}\eae 0$ for
+every $t\ge 0$.   But now observe that if $t\ge 0$, $\omega\in\Omega$ and
+$h_{0t}(\omega)=0$, then for any $\eta>0$
+there is a finite $I\subseteq[0,t]$, containing
+$0$ and $t$, such that $g_I(\omega)\le\eta^2$.
+This means that $K_{0t}(\omega)$ can be covered by finitely many
+sets $K_{t_j,t_{j+1}}(\omega)$ with
+$\sum_{j=0}^{n-1}\diam K_{t_j,t_{j+1}}(\omega)^2\le\eta^2$.   All the
+diameters here must of course be less than or equal to $\eta$.   As
+$\eta$ is arbitrary, $\mu_{H2}K_{0t}(\omega)=0$.
+
+For each $t\ge 0$, this is true for almost every $\omega$.   But this means
+that, for almost every $\omega$, $\mu_{H2}K_{0n}(\omega)=0$ for every $n$,
+and $\mu_{H2}\{\omega(t):t\ge 0\}=0$, as claimed.
+
+\medskip
+
+{\bf (b)(i)} To begin with, take a fixed $s\in\ooint{0,2}$.
+Let $\mu_{L1}$ be Lebesgue measure on $[0,1]$.
+For each $\omega\in\Omega$, let $\zeta_{\omega}$ be the image
+measure $\mu_{L1}(\omega\restr[0,1])^{-1}$ on $F_{\omega}$.   Then
+
+$$\eqalignno{\int_{\Omega}\int_{F_{\omega}}\int_{F_{\omega}}
+   &\Bover1{\|x-y\|^s}\zeta_{\omega}(dx)\zeta_{\omega}(dy)
+    \mu_W(d\omega)\cr
+&=\int_{\Omega}\int_0^1\int_0^1
+   \Bover1{\|\omega(t)-\omega(u)\|^s}dt\,du\,\mu_W(d\omega)\cr
+&=\int_0^1\int_0^1\int_{\Omega}
+   \Bover1{\|\omega(t)-\omega(u)\|^s}\mu_W(d\omega)\,dt\,du\cr
+\displaycause{of course
+$(\omega,t,u)\mapsto\Bover1{\|\omega(t)-\omega(u)\|^s}$ is continuous and
+non-negative, so there is no difficulty with the change in order of
+integration}
+&=2\int_0^1\int_u^1\int_{\Omega}
+   \Bover1{\|\omega(t)-\omega(u)\|^s}\mu_W(d\omega)\,dt\,du\cr
+&=2\int_0^1\int_u^1\int_{\Omega}
+   \Bover1{\|\omega(t-u)\|^s}\mu_W(d\omega)\,dt\,du\cr
+\displaycause{because $X_t-X_u$ has the same distribution as $X_{t-u}$, as
+in (a-i-$\alpha$)}
+&=2\int_0^1\int_0^{1-u}\int_{\Omega}
+   \Bover1{\|\omega(t)\|^s}\mu_W(d\omega)\,dt\,du
+\le 2\int_0^1\int_{\Omega}
+   \Bover1{\|\omega(t)\|^s}\mu_W(d\omega)\,dt\cr
+&=2\int_0^1\int_{\BbbR^r}\Bover1{(\sqrt{2\pi t})^r}
+   \Bover1{\|x\|^s}e^{-\|x\|^2/2t}\mu(dx)\,dt\cr
+\displaycause{here $\mu$ is Lebesgue measure on $\BbbR^r$}
+&=\Bover2{(\sqrt{2\pi})^r}\int_0^1\Bover1{t^{r/2}}\int_0^{\infty}
+   \Bover1{\alpha^s}\cdot r\beta_r\alpha^{r-1}e^{-\alpha^2/2t}
+   d\alpha\,dt\cr
+&=\Bover{2r\beta_r}{(\sqrt{2\pi})^r}\int_0^1\Bover1{t^{r/2}}
+   \int_0^{\infty}
+   \Bover{(\beta\sqrt t)^{r-1}}{(\beta\sqrt t)^s}e^{-\beta^2/2}
+   \sqrt{t}d\beta\,dt\cr
+&=\Bover{2r\beta_r}{(\sqrt{2\pi})^r}\int_0^1
+   \Bover1{t^{s/2}}dt
+   \int_0^{\infty}\beta^{r-s-1}e^{-\beta^2/2}d\beta
+<\infty\cr}$$
+
+\noindent because $\Bover{s}2<1$ and $r-s>0$.
+So $\biggerint_{F_{\omega}}\biggerint_{F_{\omega}}
+   \Bover1{\|x-y\|^s}\zeta_{\omega}(dx)\zeta_{\omega}(dy)$
+is finite for almost every
+$\omega$.   Since $\zeta_{\omega}$ is always a probability measure
+with support included in $F_{\omega}$,
+$\mu_{Hs}F_{\omega}=\infty$ for all such $\omega$ (471Tb).
+
+\medskip
+
+\quad{\bf (ii)} Setting $s_n=2-2^{-n}$ for each $n$, we see that, for almost
+every $\omega\in\Omega$, $\mu_{Hs_n}F_{\omega}=\infty$ for every $n$.
+But for
+any such $\omega$, $\mu_{Hs}F_{\omega}=\infty$ for every $s\in\ooint{0,2}$,
+by 471L.
+}%end of proof of 477L
+
+\exercises{\leader{477X}{Basic exercises (a)}
+%\spheader 477Xa
+Use 272Yc\formerly{2{}72Ye} to simplify the formulae in the proof of 477B.
+%477B
+
+\spheader 477Xb Let $\mu_W$ be Wiener measure on
+$\Omega=C(\coint{0,\infty})_0$,
+and set $X_t(\omega)=\omega(t)$ for $t\ge 0$ and $\omega\in\Omega$.
+Let $f$ be a real-valued tempered function on $\Bbb R$ (definition:
+284D).   For $x\in\Bbb R$ and $0<t<b$, let
+$\nu_x^{(t,b)}$ be the distribution of a normally distributed random
+variable with mean $x$ and variance $b-t$, so that
+$g(x,t)=\int f(y)\nu_x^{(t,b)}(dy)$ can be regarded as
+the expectation of $f(X_b)$ given that $X_t=x$.   (i) Show that
+$g$ satisfies the {\bf backwards heat equation}
+$2\Bover{\partial g}{\partial t}+\Bover{\partial^2g}{\partial x^2}=0$.
+(ii) Interpret this in terms of the disintegration
+$\nu_x^{(t,b)}=\int\nu_z^{(u,b)}\nu_x^{(t,u)}(dz)$ as $u\downarrow t$.
+%477B
+
+\spheader 477Xc(i) Show that the measure $\hat\mu^r$ of 477Da can be
+constructed directly by applying 455A with
+$(X_t,\Cal B_t)=(\BbbR^r,\Cal B(\BbbR^r))$ for every $t\ge 0$ and suitable
+Gaussian distributions $\nu_x^{(s,t)}$ on $\BbbR^r$.   (ii) Show that the
+measure $\hat\mu^r$ can be constructed by applying 455A to
+$T=r\times\coint{0,\infty}$ with its lexicographic ordering and suitable
+Gaussian distributions $\nu_x^{(s,t)}$ on $\Bbb R$.
+%477D
+
+\spheader 477Xd Let $r\ge 1$ be an integer.
+(i) Show that there is a centered Gaussian process
+$\langle Y_t\rangle_{t\in[0,1]}=\langle Y^{(i)}_t\rangle_{t\in[0,1],i<r}$
+such that
+$\Expn(Y^{(i)}_s\times Y^{(j)}_t)=0$ if $i\ne j$, $\min(s,t)-st$ otherwise.
+(ii) Show that if $\langle X_t\rangle_{t\ge 0}$ is ordinary $r$-dimensional
+Brownian motion, then $\family{t}{[0,1]}{Y_t}$ has the same distribution as
+$\family{t}{[0,1]}{X_t-tX_1}$.
+(iii) Show that the process $\family{t}{[0,1]}{Y_t}$
+(the {\bf Brownian bridge})
+can be represented by a Radon probability
+measure $\mu_{\text{bridge}}$ on the space $C([0,1];\BbbR^r)_{00}$ of
+continuous functions from $[0,1]$ to $\BbbR^r$ taking the value $0$ at both
+ends of the interval.   (iv) For
+$\omega\in C([0,1];\BbbR^r)_{00}$ define
+$\Reverse{\omega}\in C([0,1];\BbbR^r)_{00}$ by setting
+$\Reverse{\omega}(t)=\omega(1-t)$ for $t\in[0,1]$.   Show that
+$\omega\mapsto\Reverse{\omega}$ is an automorphism of
+$(C([0,1];\BbbR^r)_{00},\mu_{\text{bridge}})$.
+%477D
+
+\spheader 477Xe Let $(\Omega,\Sigma,\mu)$ be a complete
+probability space and
+$\langle X_t\rangle_{t\ge 0}$ a family of real-valued random variables on
+$\Omega$ with independent increments.   For $I\subseteq\coint{0,\infty}$
+let $\Tau_I$ be the $\sigma$-algebra generated by
+$\{X_s-X_t:s$, $t\in I\}$.
+Let $\Cal I$ be a family of subsets of $\coint{0,\infty}$ such that
+for all distinct $I$, $J\in\Cal I$ either $\sup I\le\inf J$ or
+$\sup J\le\inf I$.   Show that $\family{I}{\Cal I}{\Tau_I}$ is an
+independent family of $\sigma$-algebras.
+%477H
+
+\spheader 477Xf Suppose that $H\subseteq\BbbR^r$ is an F$_{\sigma}$ set
+and that $\tau:\Omega\to[0,\infty]$ is the Brownian hitting time to $H$,
+as defined in 477I.   Show that $\tau$ is Borel measurable.
+%477I
+
+\spheader 477Xg Let $\mu_W$ be one-dimensional Wiener measure, and $\tau$
+the hitting time to $\{1\}$.   Show that the distribution of
+$\tau$ has probability density function
+$x\mapsto\Bover1{x\sqrt{2\pi x}}e^{-1/2x}$ for $x>0$.
+%477J
+
+\spheader 477Xh Let $\mu_W$ be one-dimensional Wiener measure on
+$\Omega=C(\coint{0,\infty})_0$.   Show that, for $\mu_W$-almost every
+$\omega\in\Omega$, the total variation $\Var_{[s,t]}(\omega)$ is infinite
+whenever $0\le s<t$.
+%477K
+
+\leader{477Y}{Further exercises (a)}
+%\spheader 477Ya
+Write $D_n$ for
+$\{2^{-n}i:i\in\Bbb N\}$ and $D=\bigcup_{n\in\Bbb N}D_n$,
+the set of dyadic rationals in
+$\coint{0,\infty}$.   For $d\in D$ define $f_d\in C(\coint{0,\infty})$
+as follows.   If $n\in\Bbb N$, $f_n(t)=0$ if $t\le n$, $t-n$ if
+$n\le t\le n+1$, $1$ if $t\ge n+1$.   If $d=2^{-n}k$ where $n\ge 1$ and
+$k\in\Bbb N$ is
+odd, $f_d(t)=\max(0,\Bover1{\sqrt{2^{n+1}}}(1-2^n|t-d|))$ for $t\ge 0$.
+Now let $\family{d}D{Z_d}$ be an independent family of standard normal
+distributions, and set $\omega_n(t)=\sum_{d\in D_n}f_d(t)Z_d$ for $t\ge 0$,
+so that each $\omega_n$ is a random continuous function on
+$\coint{0,\infty}$.   Show that for any $n\in\Bbb N$ and $\epsilon>0$,
+
+\Centerline{$\Pr(\sup_{t\in[0,n]}|\omega_{n+1}(t)-\omega_n(t)|\ge\epsilon)
+\le 2^nn\cdot\Bover{2}{\sqrt{2\pi}}
+  \biggerint_{2\epsilon\sqrt{2^n}}^{\infty}e^{-x^2/2}dx$,}
+
+\noindent and hence that $\sequencen{\omega_n}$ converges almost surely to a
+continuous function.   Explain how to interpret this as a
+construction of Wiener measure on $\Omega=C(\coint{0,\infty})_0$,
+as the image measure $\mu_G^Dg^{-1}$ where $g:\BbbR^D\to\Omega$ is almost
+continuous (for the topology $\frak T_c$ on $\Omega$) and $\mu_G^D$ is the
+product of copies of the standard normal distribution $\mu_G$.
+%477B
+
+\spheader 477Yb\dvAformerly{4{}56Ye}
+Fix $p\in\ooint{0,1}\setminus\{\bover12\}$.   (i) For $\alpha\in\Bbb R$ set
+$h_{\alpha}(t)=|t-\alpha|^{p-\bover12}-|t|^{p-\bover12}$ when
+this is defined.   Show that $h_{\alpha}\in\eusm L^2(\mu_L)$,
+where $\mu_L$ is Lebesgue measure,
+and that $\|h_{\alpha}\|^2_2=|\alpha|^{2p}\|h_1\|^2_2$ and
+$\|h_{\alpha}-h_{\beta}\|_2=\|h_{\alpha-\beta}\|_2$ for all $\alpha$,
+$\beta\in\Bbb R$.
+(ii) Show that there is a centered Gaussian process
+$\family{\alpha}{\Bbb R}{X_{\alpha}}$ such that
+$\Expn(X_{\alpha}\times X_{\beta})
+=|\alpha|^{2p}+|\beta|^{2p}-|\alpha-\beta|^{2p}$ for all $\alpha$,
+$\beta\in\Bbb R$.
+(iii) Show that such a process can be represented by a Radon measure on
+$C(\Bbb R)$.   \Hint{477Ya.}   (This is {\bf fractional Brownian motion}.)
+%477B
+
+\spheader 477Yc Let $\mu_W$ be Wiener measure on
+$\Omega=C(\coint{0,\infty};\BbbR^r)_0$, where $r\ge 1$,
+and set $X_t(\omega)=\omega(t)$ for $t\ge 0$ and $\omega\in\Omega$.
+Let $f$ be a real-valued tempered function on $\BbbR^r$ (definition:
+284Wa).   For $x\in\BbbR^r$ and $0<t<b$, let
+$\nu_x^{(t,b)}$ be the distribution of $x+X_{b-t}$, so that
+$g(x,t)=\int f(y)\nu_x^{(t,b)}(dy)$ can be regarded as
+the expectation of $f(X_b)$ given that $X_t=x$.   Show that
+$g$ satisfies the backwards heat equation
+$2\Bover{\partial g}{\partial t}+\sum_{i=0}^{r-1}\Pdd{g}{\xi_i}=0$.
+%477Xb 477B
+
+\spheader 477Yd Let $r\ge 1$ be an integer,
+and $\nu$ a Radon probability measure on $\BbbR^r$ such that
+$x\mapsto\varinnerprod{a}{x}$ has expectation $0$ and variance
+$\|a\|^2$ for every $a\in\BbbR^r$.
+Let $\Omega$ be $C(\coint{0,\infty};\BbbR^r)_0$, and
+for $\alpha>0$ define $f_{\alpha}:(\BbbR^r)^{\Bbb N}\to\Omega$ by setting
+$f_{\alpha}(x)(t)
+=\sqrt{\alpha}(\sum_{i<n}z(i)+\Bover1{\alpha}(t-n\alpha)z(n))$ when
+$z\in(\BbbR^r)^{\Bbb N}$, $n\in\Bbb N$ and $n\alpha\le t\le(n+1)\alpha$;
+let $\mu_{\alpha}$ be the image Radon measure $\nu^{\Bbb N}f_{\alpha}^{-1}$
+on $\Omega$.   Show that Wiener measure $\mu_W$ is the limit
+$\lim_{\alpha\downarrow 0}\mu_{\alpha}$ for the narrow topology.
+%477C calculate characteristic function of X_t
+
+\spheader 477Ye Let $\mu_W$ be Wiener measure on $C(\coint{0,\infty})_0$,
+and $\gamma>\bover12$.   Show that
+$\lim_{t\to\infty}\Bover1{t^{\gamma}}\omega(t)
+=\lim_{t\downarrow 0}\Bover1{t^{1-\gamma}}\omega(t)=0$
+for $\mu_W$-almost every $\omega$.
+%477E
+
+
+\spheader 477Yf Write out a proof of 477G which works directly from the
+Gaussian-distribution
+characterization of Wiener measure, without appealing to results from
+\S455 other than 455L.   (I think you will need to start with stopping
+times taking finitely and countably many values, as in 455C;  but
+you will find great simplifications.)
+%477G
+
+\spheader 477Yg Let $\hat\mu$ be the Gaussian distribution on
+$\BbbR^{\coint{0,\infty}}$ corresponding to Brownian motion, as in
+477A.   For $t\ge 0$ let
+$\Sigma_t$ be the family of Baire subsets of $\BbbR^{\coint{0,\infty}}$
+determined by coordinates in $[0,t]$, and
+$\Sigma^+_t=\bigcap_{s>t}\Sigma_s$.
+For $\omega\in\BbbR^{\coint{0,\infty}}$ set
+$\tau(\omega)=\inf\{q:q\in\Bbb Q$, $\omega(q)\ge 1\}$, counting
+$\inf\emptyset$ as $\infty$.   Show that $\tau$ is a stopping time adapted
+to $\langle\Sigma^+_t\rangle_{t\ge 0}$.
+For $\omega$, $\omega'\in\BbbR^{\coint{0,\infty}}$
+define $\phi_{\tau}(\omega,\omega')\in\BbbR^{\coint{0,\infty}}$ by setting
+$\phi_{\tau}(\omega,\omega')(t)=\omega(t)$ if $t\le\tau(\omega)$,
+$\omega(\tau(\omega))+\omega'(t-\tau(\omega))$ if $t>\tau(\omega)$.
+Show that $\phi_{\tau}$ is not \imp\ for the product measure
+$\hat\mu^2$ and $\hat\mu$.    \Hint{show that
+$\{\omega:\tau(\omega)\in D\}$ is negligible for every countable set $D$.}
+%477G
+
+\spheader 477Yh Let $\mu_W$ be one-dimensional Wiener measure
+on $\Omega=C(\coint{0,\infty})_0$.   (i) Show
+by induction on $k$ that $\Pr($there are $t_0<t_1<\ldots<t_k\le t$ such
+that $X_{t_j}=(-1)^j$ for every $j\le k)
+=\Pr($there is an $s\le t$ such that
+$X_s=2k+1)$ for any $t\ge 0$.   \Hint{477J.}  (ii) For $\omega\in\Omega$,
+$k\in\Bbb N$ define $\tau_k(\omega)$ by saying that
+$\tau_0(\omega)=\inf\{t:|\omega(t)|=1\}$,
+$\tau_{k+1}(\omega)=\inf\{t:t>\tau_k(\omega)$,
+$\omega(t)=-\omega(\tau_k(\omega))\}$.   Show that $\tau_k$ is a stopping
+time adapted to the family $\langle\Sigma_t\rangle_{t\ge 0}$ of 477H,
+and is finite $\mu_W$-a.e.   (iii) Set
+$E_k=\{\omega:\tau_k(\omega)\le 1<\tau_{k+1}(\omega)\}$,
+$p_k=\mu_WE_k$, $F_k=\{\omega:$ there is an $s\le 1$ such that
+$\omega(s)=2k+1\}$, $q_k=\mu_WF_k$.   Show that
+
+\Centerline{$q_k
+=\Bover12p_k+\sum_{j=k+1}^{\infty}p_j
+=\Bover2{\sqrt{2\pi}}\int_{2k+1}^{\infty}e^{-x^2/2}dx$.}
+
+\noindent (iv) Show that
+$\Pr(\tau_0\le 1)=\sum_{k=0}^{\infty}p_k=2\sum_{k=0}^{\infty}(-1)^kq_k$.
+%477J
+
+\spheader 477Yi Let $\mu_W$ be Wiener measure on
+$\Omega=C(\coint{0,\infty};\BbbR^r)_0$, where $r\ge 1$.
+Show that, for $\mu_W$-almost every $\omega\in\Omega$,
+$\{\Bover{\omega(t)}{\|\omega(t)\|}:t\ge t_0$, $\omega(t)\ne 0\}$
+is dense in $\partial B(\tbf{0},1)$ for every $t_0\ge 0$.
+%477I mt47bits out of order query
+
+\spheader 477Yj(i) Show that, for any $r\ge 1$,
+the topology $\frak T_c$ of uniform
+convergence on compact sets is a complete linear space topology on
+$\Omega=C(\coint{0,\infty};\BbbR^r)_0$.   (ii) Show that Wiener measure on
+$\Omega$ is a centered Gaussian measure in the sense of 466N.
+\Hint{466Ye.}
+%477D out of order query
+}%end of exercises
+
+\endnotes{
+\Notesheader{477} The `first proof' of 477A calls on a result which is
+twenty-five %checked 2010
+pages into \S455, and you will probably be glad to be assured
+that all it really needs is 455A, fragments from the proof
+of 455P, and part (a) of the proof of 455R.
+So it is not enormously harder than the `second proof', based on the
+elementary theory of Gaussian processes.
+
+With this theorem, we have two routes to the first target:  setting up a
+measure space with a family of random variables representing Brownian
+motion.   I repeat that this is a secondary issue.   Brownian
+motion begins with
+the family of joint distributions of finite indexed sets
+$(X_{t_0},\ldots,X_{t_n})$ satisfying the properties listed in 477A.
+It is one of the triumphs of Kolmogorov's theory of probability that these
+distributions can be represented by a family of
+real-valued functions on a set with a countably additive measure;  but they
+would still be of the highest importance if they could not.   In order to
+show that it can be done, we
+can use either the time-dependent approach based on conditional
+expectations, as in 455A, 455P and the `first proof' of 477A, or the
+timeless Gaussian-distribution approach through 456C, as in the `second
+proof' of 477A.   Both, of course, depend on Kolmogorov's theorem 454D.
+They have different advantages, and it will be very useful to be able
+to call on the intuitions of both.   The `first proof' leads us naturally
+into the theory of L\'evy processes, in which other families of
+distributions replace normal distributions.
+
+To get to the continuity of
+sample paths, we need to do quite a bit more, and the proof of 477B is one
+way of filling the gap.   At this point it becomes tempting to abandon both
+proofs of 477A and start again with the method of 477Ya, the
+`L\'evy-Ciesielski' construction, {\it not} using
+Kolmogorov's theorem.   But if we do this, we shall have to devise a new
+argument to prove the strong Markov property 477G, rather than quoting
+455U.   Of course the special properties of Gaussian processes mean that a
+direct proof of 477G is still quite a bit easier than the general results
+of \S455 (477Yf).   I make no claim that one
+approach is `better' than another;  they all throw light on the result.
+
+What I here call `Wiener measure' (477B) is a particular realization of
+Brownian motion.
+It is so convincing that it is tempting to regard it as `the' real basis
+of Brownian motion.   I do not mean to assert this in any way which
+will bind me in future.   But (as a measure theorist, rather than a
+probabilist) I think that the specific measures of 477B and 477D
+are worth as much attention as any.
+One reason for not insisting that the space
+$C(\coint{0,\infty})_0$ is the only right place to start is that we may at
+any moment wish to move to something smaller, as in 477Ef.   The approach
+here gives a very direct language in which to express
+theorems of the form `almost
+every Brownian path is $\ldots$' (477K, 477L), and every such theorem
+carries an implicit suggestion that we could move to a conegligible set
+and a subspace measure.
+
+In 477C I sketch an alternative characterization of one-dimensional Wiener
+measure.   Five pages seem to be rather a lot for a proof of
+something which surely has to be true, if we can get the hypotheses right;
+but I do not see a genuinely
+shorter route, and I think in fact that the indigestibility of the argument
+as presented is due to compression more than to pedantry.
+At least I have tried to put the key step into part (a-i) of the proof.
+We have to use the Central Limit Theorem;  we have to use a
+finite-approximation version of it, rather than a limit version;  the ideas
+of this proof do not demand Lindeberg's formulation, but this is what we
+have to hand in Volume 2;  and if we are going to consider interpolations
+for general random walks, we need something to force a sufficient degree
+of equicontinuity, and ($\dagger$) is what comes naturally from the result
+in 274F.   It is surely obvious that I have been half-hearted in the
+generality of the theorem as given.   There can be no reason for insisting
+on steps being at uniform time intervals, or on stationary processes, or
+even on variances being exactly correct, provided that everything averages
+out nicely in the limit.   The idea does require that steps be
+independent, but after that we just need hypotheses adequate for the
+application of the Central Limit Theorem.
+
+Clearly we can also look for $r$-dimensional versions of the theorem.   I
+have not done so because they would inevitably demand vector-valued
+versions of the Central Limit Theorem, and while a combination of
+the ideas of
+\S\S274 and 456 would take us a long way, it would not belong to this
+section.   However I give 477Yd as an example which can be dealt with
+without much general theory.
+
+Already in the elementary results
+477Eb-477Eg % 477Eb 477Ec 477Ed 477Ee 477Ef 477Eg
+we see that Wiener measure is a remarkable construction.
+It is a general principle that the more symmetries an object has, the more
+important it is;  this one has a surprising symmetry (477Ef), which is even
+better.   I take it as confirmation that we have a good representation,
+that all these symmetries can be represented by actual \imp\ functions,
+rather than leaving them as manipulations of distributions.
+
+477F is a natural result, and a further confirmation that in
+$C(\coint{0,\infty};\BbbR^r)_0$ we have got hold
+of an appropriate space of functions.   The proof I give depends on an
+aspect of the structure developed in 477Ya.
+
+The next really important result is the `strong Markov property' (477G).
+This is clearly a central property of Brownian motion.   It may not
+be quite so clear what the formulation here is trying to say.   As in 477E,
+I am expressing the result in terms of an \imp\ function.   This makes no
+sense unless we have a probability space $\Omega$ in which we can put two
+elements $\omega$, $\omega'$ together to form a third;  so we are more or
+less forced to look at a space of paths.   But not all spaces of paths will
+do.   For an indication of what can happen if we work with
+the wrong realization, see 477Yg.
+
+In 477H we have two kinds of zero-one law.   One, 477Hd, is explicit; the
+tail $\sigma$-algebra $\bigcap_{t\ge 0}\hat\Tau_{\coint{t,\infty}}$ behaves
+like the tail of an independent sequence of  $\sigma$-algebras (272O).
+But the formula `$\bigcap_{s>t}\Sigma_s\subseteq\hat\Tau_{[0,t]}$' in
+477Hc can
+be thought of as a relative zero-one law.   There are many events (e.g.,
+$\{\omega:\liminf_{s\downarrow t}\bover1{s-t}\omega(s)\ge 0\}$)
+which belong to $\bigcap_{s>t}\Sigma_s$ and not to $\Tau_{[0,t]}$ or
+$\Sigma_t$, but all collapse to events in $\Tau_{[0,t]}$
+if we rearrange them on appropriate negligible sets.   This is really a
+special case of 455T.
+
+The formulae in the first application of the strong Markov property (477J)
+demand a bit of concentrated attention, but
+I think that the key step at the end of the proof (moving from $\mu_W^2$ to
+$\int\ldots d\mu_W$) faithfully represents the intuition:  once we have
+reached the level $\alpha$, we have an even chance of rising farther.
+For the discrete case, 272Yc is a version of the same idea.
+From the distribution of the
+hitting time to $\{\alpha\}$ we can deduce the distribution of the
+hitting time to $\{-1,1\}$ (477Yh);   but I do not know of a corresponding
+exact result for the hitting time to the unit circle for two-dimensional
+Brownian motion.
+
+I expect you have been shown a continuous
+function which is nowhere differentiable.   In 477K we see that
+`almost every'
+function is of this type.   What a hundred and fifty years ago seemed to be
+an exotic counter-example now presents itself as a representative of the
+typical case.
+The very crude estimates in the proof of 477K are supposed to furnish a
+straightforward proof of the result, without asking for anything which
+might lead to refinements.   Of course there is much more to be said,
+starting with 477Xh.   In 477L we have an interesting result which will
+be useful in \S479, when
+I return to geometric properties of Brownian paths.
+
+
+}%end of notes
+
+\discrpage
+

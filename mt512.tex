@@ -1,0 +1,728 @@
+\frfilename{mt512.tex}
+\versiondate{27.11.13}
+\copyrightdate{2002}
+
+\def\chaptername{Cardinal functions}
+\def\sectionname{Galois-Tukey connections}
+
+\def\Vojtas{Vojt\'a\v{s} 93}
+
+\newsection{512}
+
+One of the most powerful methods of relating the cardinals associated
+with two partially ordered sets $P$ and $Q$ is to identify a `Tukey
+function' from one to the other (513D).   It turns out that the idea can
+be usefully generalized to other relational structures through the
+concept of `Galois-Tukey connection' (512A).   In this section I give
+the elementary theory of these connections and their effect on simple
+cardinal functions.
+
+\leader{512A}{Definitions (a)} A {\bf supported relation} is a triple
+$(A,R,B)$ where $A$ and $B$ are sets and $R$ is a subset of $A\times B$.
+
+\cmmnt{It will be convenient, and I think not dangerous, to abuse
+notation by writing $(A,\in,B)$ or $(A,\subseteq,B)$ to mean $(A,R,B)$
+where $R$ is $\{(a,b):a\in A,\,b\in B,\,a\in b\}$ or
+$\{(a,b):a\in A,\,b\in B,\,a\subseteq b\}$.}
+
+\spheader 512Ab If $(A,R,B)$ is a supported relation, its {\bf dual} is
+the supported relation $(A,R,B)^{\perp}=(B,S,A)$ where
+
+\Centerline{$S=(B\times A)\setminus R^{-1}
+=\{(b,a):a\in A,\,b\in B,\,(a,b)\notin R\}$.}
+
+\spheader 512Ac If $(A,R,B)$ and $(C,S,D)$ are supported relations, a
+{\bf Galois-Tukey connection} from $(A,R,B)$ to $(C,S,D)$ is a pair
+$(\phi,\psi)$ such that $\phi:A\to C$ and $\psi:D\to B$ are functions
+and $(a,\psi(d))\in R$ whenever $(\phi(a),d)\in S$.
+
+\leaveitout{alternatively: 
+$S\frsmallcirc\phi\subseteq\psi^{-1}\frsmallcirc R$}
+
+\spheader 512Ad \cmmnt{({\smc Vojt\'a\v{s} 93})} If $(A,R,B)$ and
+$(C,S,D)$ are supported relations, I write $(A,R,B)\prGT(C,S,D)$ if
+there is a Galois-Tukey connection from $(A,R,B)$ to $(C,S,D)$, and
+$(A,R,B)\equivGT(C,S,D)$ if $(A,R,B)\prGT(C,S,D)$ and
+$(C,S,D)\prGT(A,R,B)$.
+
+\leader{512B}{Definitions (a)} If $(A,R,B)$ is a
+supported relation, its {\bf covering number} 
+$\cov(A,R,B)$\cmmnt{ (sometimes called {\bf norm} $\|(A,R,B)\|$)} is 
+the least cardinal of any set $C\subseteq B$ such
+that $A\subseteq R^{-1}[C]$;  or $\infty$ if $A\not\subseteq R^{-1}[B]$.
+Its {\bf additivity} is $\add(A,R,B)=\cov(A,R,B)^{\perp}$, that is, the
+smallest cardinal of any subset $C\subseteq A$ such that
+$C\not\subseteq R^{-1}[\{b\}]$ for any $b\in B$;  or $\infty$ if there
+is no such $C$.
+
+\cmmnt{Note that $\add(A,R,B)=0$ iff $B=\emptyset$, and that
+$\add(A,R,B)=1$ iff $B\ne\emptyset$ and $\cov(A,R,B)=\infty$.}
+
+\spheader 512Bb If $(A,R,B)$ is a supported relation, its {\bf
+saturation} $\sat(A,R,B)$ is the least cardinal $\kappa$ such that
+whenever $\ofamily{\xi}{\kappa}{a_{\xi}}$ is a family in $A$ then there
+are distinct $\xi$, $\eta<\kappa$ and a $b\in B$ such that $(a_{\xi},b)$
+and $(a_{\eta},b)$ both belong to $R$;  if there is no such
+$\kappa$\cmmnt{ (that is, if $\cov(A,R,B)=\infty$)} I write
+$\sat(A,R,B)=\infty$.
+
+\spheader 512Bc If $(A,R,B)$ is a supported relation and $\kappa$ is a
+cardinal, say that a subset $A'$ of $A$ is
+{\bf $\hbox{$<$}\kappa$-linked} if for
+every $I\in[A']^{<\kappa}$ there is a $b\in B$ such that
+$I\subseteq R^{-1}[\{b\}]$, and {\bf $\kappa$-linked} if it is
+$\hbox{$<$}\kappa^+$-linked\cmmnt{, that is, for every
+$I\in[A']^{\le\kappa}$
+there is a $b\in B$ such that $I\subseteq R^{-1}[\{b\}]$}.   Now the
+{\bf $\hbox{$<$}\kappa$-linking number} $\link_{<\kappa}(A,R,B)$ of
+$(A,R,B)$ is the
+least cardinal of any cover of $A$ by $\hbox{$<$}\kappa$-linked sets, if
+there is such a cover, and otherwise is $\infty$;  and the
+{\bf $\kappa$-linking number} $\link_{\kappa}(A,R,B)$ of $(A,R,B)$ is
+$\link_{<\kappa^+}(A,R,B)$\cmmnt{, that is, the least cardinal of any
+cover of $A$ by $\kappa$-linked sets}.
+
+If $\kappa\le\lambda$, then\cmmnt{ every $\hbox{$<$}\lambda$-linked
+set is $\hbox{$<$}\kappa$-linked,
+so} $\link_{<\kappa}(A,R,B)\le\link_{<\lambda}(A,R,B)$.
+\cmmnt{Note also that} $\link_{\kappa}(A,R,B)$ is equal to
+$\cov(A,R,B)$ for every $\kappa\ge\#(A)$, so that
+$\link_{<\theta}(A,R,B)\le\cov(A,R,B)$ for every $\theta$.
+
+\leader{512C}{}\cmmnt{ There are two things which should be done at
+once:  to plainly state enough of the elementary theory to show at least
+that the definitions here lead to a coherent structure;  and to give
+examples.   I begin with the theory, which really is elementary.
+
+\medskip
+
+}\noindent{\bf Theorem} Let $(A,R,B)$, $(C,S,D)$ and $(E,T,F)$ be
+supported relations.
+
+(a) $(A,R,B)^{\perp\perp}=(A,R,B)$.
+
+(b) If $(\phi,\psi)$ is a Galois-Tukey connection from $(A,R,B)$ to
+$(C,S,D)$ and $(\phi',\psi')$ is a Galois-Tukey connection from
+$(C,S,D)$ to $(E,T,F)$, then $(\phi'\phi,\psi\psi')$ is a Galois-Tukey
+connection from $(A,R,B)$ to $(E,T,F)$.
+
+(c) If $(\phi,\psi)$ is a Galois-Tukey connection from $(A,R,B)$ to
+$(C,S,D)$, then $(\psi,\phi)$ is a Galois-Tukey connection from
+$(C,S,D)^{\perp}$ to $(A,R,B)^{\perp}$.
+
+(d) $(A,R,B)\prGT(A,R,B)$.
+
+(e) If $(A,R,B)\prGT(C,S,D)$ and $(C,S,D)\prGT(E,T,F)$ then
+$(A,R,B)\prGT(E,T,F)$.
+
+(f) $\equivGT$ is an equivalence relation on the class of supported
+relations.
+
+(g) If $(A,R,B)\prGT(C,S,D)$ then $(C,S,D)^{\perp}\prGT(A,R,B)^{\perp}$.
+So if $(A,R,B)\equivGT(C,S,D)$ then
+$(A,R,B)^{\perp}\equivGT(C,S,D)^{\perp}$.
+
+\proof{(a)-(c) are immediate from the definitions.   (d) is trivial
+because the identity functions from $A$ and $B$ to themselves form a
+Galois-Tukey connection from $(A,R,B)$ to itself.   (e) follows from
+(b), and (g) from (c).   (f) is immediate from (d) and (e) and the
+symmetry of the definition of $\equivGT$.
+}%end of proof of 512C
+
+\leader{512D}{Theorem} Let $(A,R,B)$ and $(C,S,D)$ be supported
+relations such that $(A,R,B)\prGT(C,S,D)$.   Then
+
+(a) $\cov(A,R,B)\le\cov(C,S,D)$;
+
+(b) $\add(C,S,D)\le\add(A,R,B)$;
+%formerly 512Da
+
+(c) $\sat(A,R,B)\le\sat(C,S,D)$;
+
+(d) $\link_{<\kappa}(A,R,B)\le\link_{<\kappa}(C,S,D)$
+for every cardinal $\kappa$.
+%formerly 512Dc
+
+\proof{ Let $(\phi,\psi)$ be a Galois-Tukey connection from $(A,R,B)$ to
+$(C,S,D)$.   If $D_0\subseteq D$
+is such that $C=S^{-1}[D_0]$, then $A=R^{-1}[\psi[D_0]]$;  this shows
+that $\cov(A,R,B)\le\cov(C,S,D)$.
+If $\kappa=\sat(C,S,D)$ and $\ofamily{\xi}{\kappa}{a_{\xi}}$ is any
+family in $A$, then there are a $d\in D$ and distinct $\xi$,
+$\eta<\kappa$ such that $(\phi(a_{\xi}),d)\in S$ and
+$(\phi(a_{\eta}),d)\in S$, in which case $(a_{\xi},\psi(d))$ and
+$(a_{\eta},\psi(d))$ both belong to $R$;  so $\sat(A,R,B)\le\kappa$.
+If $\Cal C$ is a cover of $C$ by
+$\hbox{$<$}\kappa$-linked sets, then $\{\phi^{-1}[C']:C'\in\Cal C\}$ is
+a cover of $A$ by $\hbox{$<$}\kappa$-linked sets;  this shows that
+$\link_{<\kappa}(A,R,B)\le\link_{<\kappa}(C,S,D)$.
+
+Finally,
+$(C,S,D)^{\perp}\prGT(A,R,B)^{\perp}$, by 512Cc, so
+
+\Centerline{$\add(C,S,D)=\cov(C,S,D)^{\perp}\le\cov(A,R,B)^{\perp}
+=\add(A,R,B)$.}
+}%end of proof of 512D
+
+\leader{512E}{Examples} \cmmnt{ Of course `supported relations' appear
+everywhere in mathematics.   They are important to us here because
+covering numbers, saturation and linking numbers, as defined above,
+correspond to
+important cardinal functions as defined in \S511, and because surprising
+Galois-Tukey connections exist, as we shall see in Chapter 52.   The
+simplest examples are the following.
+
+\medskip
+
+}{\bf (a)} Let $(P,\le)$ be a pre-ordered set.   Then $(P,\le,P)$
+and $(P,\ge,P)$ are supported relations, with duals $(P,\not\ge,P)$ and
+$(P,\not\le,P)$.   $\cov(P,\le,P)=\cf P$, $\cov(P,\ge,P)=\ci P$,
+$\add(P,\le,P)=\add P$ and $\sat(P,\le,P)=\sat^{\uparrow}(P)$.
+\cmmnt{For any cardinal $\kappa$, a subset of $P$ is
+upwards-$\hbox{$<$}\kappa$-linked
+in the sense of 511Bf iff it is $\hbox{$<$}\kappa$-linked in $(P,\le,P)$
+in the sense of
+512Bc.   So} $\link_{<\kappa}^{\uparrow}(P)=\link_{<\kappa}(P,\le,P)$.
+In particular, $\duparrow(P)=\link_{<\omega}(P,\le,P)$ (511Bg).
+
+\spheader 512Eb\dvArevised{2011}
+Let $(X,\frak T)$ be a topological space.   Then
+
+\Centerline{$\pi(X)=\cov(\frak T\setminus\{\emptyset\},\supseteq,
+\frak T\setminus\{\emptyset\})$,}
+
+\Centerline{$d(X)=\cov(\frak T\setminus\{\emptyset\},\ni,X)
+=\add(X,\notin,\frak T\setminus\{\emptyset\})$,}
+
+\Centerline{$\sat(X)
+=\sat(\frak T\setminus\{\emptyset\},\supseteq,
+  \frak T\setminus\{\emptyset\})
+=\sat(\frak T\setminus\{\emptyset\},\ni,X)$,}
+
+\Centerline{$n(X)=\cov(X,\in,\CalNwd(X))
+=\cov(X,\CalNwd(X))$}
+
+\noindent where $\CalNwd(X)$ is the ideal of nowhere dense subsets of $X$.
+Note that if $\Cal M(X)$ is the ideal of meager subsets of $X$, then
+$\cov(X,\Cal M(X))=n(X)$ unless $n(X)=\omega$, in which case
+$\cov(X,\Cal M(X))=1$.
+
+\spheader 512Ec Let $\frak A$ be a Boolean algebra.   Write
+$\frak A^+$ for $\frak A\setminus\{0\}$ and $\frak A^-$ for
+$\frak A\setminus\{1\}$.   Then
+
+\Centerline{$\pi(\frak A)=\cov(\frak A^+,\Bsupseteqshort,\frak A^+)
+=\cov(\frak A^-,\Bsubseteqshort,\frak A^-)$,}
+
+\Centerline{$\sat(\frak A)=\sat(\frak A^+,\Bsupseteqshort,\frak A^+)
+=\sat(\frak A^-,\Bsubseteqshort,\frak A^-)$,}
+
+\Centerline{$d(\frak A)
+=\link_{<\omega}(\frak A^+,\Bsupseteqshort,\frak A^+)
+=\link_{<\omega}(\frak A^-,\Bsubseteqshort,\frak A^-)$,}
+
+\Centerline{$\link(\frak A)=\link_2(\frak A^+,\Bsupseteqshort,\frak A^+)
+=\link_2(\frak A^-,\Bsubseteqshort,\frak A^-)$}
+
+\noindent and generally
+
+\Centerline{$\link_{<\kappa}(\frak A)
+=\link_{<\kappa}(\frak A^+,\Bsupseteqshort,\frak A^+)
+=\link_{<\kappa}(\frak A^-,\Bsubseteqshort,\frak A^-)$,}
+
+\Centerline{$\link_{\kappa}(\frak A)
+=\link_{\kappa}(\frak A^+,\Bsupseteqshort,\frak A^+)
+=\link_{\kappa}(\frak A^-,\Bsubseteqshort,\frak A^-)$}
+
+\noindent for every cardinal $\kappa$.
+
+\spheader 512Ed Let $X$ be a set and $\Cal I$ an ideal of subsets of
+$X$.   Then the dual of $(X,\in,\Cal I)$ is $(\Cal I,\not\ni,X)$;
+$\cov(X,\in,\Cal I)=\cov\Cal I$ and $\add(X,\in,\Cal I)=\non\Cal I$.
+
+\spheader 512Ee For a Boolean algebra $\frak A$, write
+$\Pou(\frak A)$ for the set of partitions of unity in $\frak A$.
+For $C$, $D\in\Pou(\frak A)$, say that $C\sqsubseteq^* D$
+if every element of $D$ meets only finitely many members of $C$.
+\cmmnt{Then} $\sqsubseteq^*$ is a pre-order on $\Pou(\frak A)$.
+\cmmnt{Translating the definition 511Df into this language, we see that}
+$\wdistr(\frak A)=\add\Pou(\frak A)$.
+
+\leader{512F}{}\cmmnt{ I now turn to some constructions
+involving supported relations and Galois-Tukey connections which will be
+useful later.
+
+\medskip
+
+\noindent}{\bf Dominating sets} For any supported relation $(A,R,B)$ and
+any cardinal $\kappa$, we can form a corresponding supported relation
+$(A,R^{\strprime},[B]^{<\kappa})$, where
+
+\Centerline{$R^{\strprime}=\{(a,I):I\in[B]^{<\kappa}$, 
+$a\in R^{-1}[I]\}$.}
+
+%call $R^{\strprime}$ the `right extension' of $R$, or something?
+%a name would be useful \query
+
+\noindent\cmmnt{The most important cases to us will be $\kappa=\omega$
+and $\kappa=\omega_1$.   When $\kappa$ is a successor cardinal
+I will normally write $(A,R^{\strprime},[B]^{\le\lambda})$ rather than
+$(A,R^{\strprime},[B]^{<\lambda^+})$.   Purists may wish to revise the
+definition of $R^{\strprime}$ so that it is no longer a proper class.}
+
+\leader{512G}{Proposition} Let $(A,R,B)$ and $(C,S,D)$ be supported
+relations and $\kappa$, $\lambda$ cardinals.
+
+(a) $(A,R,B)$ is isomorphic to $(A,R^{\strprime},[B]^1)$.
+
+(b) If $(A,R,B)\prGT(C,S,D)$ and $\lambda\le\kappa$ then
+$(A,R^{\strprime},[B]^{<\kappa})\prGT(C,S^{\strprime},[D]^{<\lambda})$.
+
+(c) In particular, $(A,R^{\strprime},[B]^{<\kappa})\prGT(A,R,B)$ if
+$\kappa\ge 2$.
+
+(d) If $\cf\kappa\ge\lambda$ and
+$(A,R^{\strprime},[B]^{<\kappa})\prGT(C,S,D)$ then
+$(A,R^{\strprime},[B]^{<\kappa})\prGT(C,S^{\strprime},[D]^{<\lambda})$.
+
+(e)(i) If $\cov(A,R,B)=\infty$ then
+$\add(A,R^{\strprime},[B]^{<\kappa})\le 1$.
+
+\quad(ii) If $\cov(A,R,B)<\infty$ then
+$\add(A,R^{\strprime},[B]^{<\kappa})\ge\kappa$.
+
+(f) $\cov(A,R,B)
+\le\max(\omega,\kappa,\cov(A,R^{\strprime},[B]^{\le\kappa}))$;  if
+$\kappa\ge 1$ and $\cov(A,R,B)>\max(\kappa,\omega)$ then
+$\cov(A,R,B)\penalty-100=\cov(A,R^{\strprime},[B]^{\le\kappa})$.
+
+\proof{{\bf (a)} is trivial.
+
+\medskip
+
+{\bf (b)} If $(\phi,\psi)$ is a Galois-Tukey connection from $(A,R,B)$
+to $(C,S,D)$, then $(\phi,\psi')$ is a Galois-Tukey connection from
+$(A,R^{\strprime},[B]^{<\kappa})$ to $(C,S^{\strprime},[D]^{<\lambda})$,
+where $\psi'(J)=\psi[J]$ for every $J\in[D]^{<\lambda}$.
+
+\medskip
+
+{\bf (c)} Setting $\phi(a)=a$ for $a\in A$ and $\psi(b)=\{b\}$ for
+$b\in B$, $(\psi,\phi)$ is a Galois-Tukey connection from
+$(A,R^{\strprime},[B]^{<\kappa})$ to $(A,R,B)$.
+
+\medskip
+
+{\bf (d)} Let $(\phi,\psi)$ be a Galois-Tukey connection from
+$(A,R^{\strprime},[B]^{<\kappa})$
+to $(C,S,D)$.   Set $\psi'(I)=\bigcup_{d\in I}\psi(d)$ for
+$I\in[D]^{<\lambda}$;  then $(\phi,\psi')$ is a
+Galois-Tukey connection from $(A,R^{\strprime},[B]^{<\kappa})$ to
+$(C,S^{\strprime},[D]^{<\lambda})$.
+
+\medskip
+
+{\bf (e)(i)} There is an $a\in A\setminus R^{-1}[B]$;  now
+$(a,I)\notin R^{\strprime}$ for any $I\in[B]^{<\kappa}$, so
+$\add(A,R^{\strprime},[B]^{<\kappa})\le 1$.
+
+\medskip
+
+\quad{\bf (ii)} For every $a\in A$ there is a $b_a\in B$ such that
+$(a,b_a)\in R$.   If $A'\subseteq A$ and $\#(A')<\kappa$, then
+$I=\{b_a:a\in A'\}$ belongs to $[B]^{<\kappa}$, and
+$(a,I)\in R^{\strprime}$ for every $a\in A'$;  as $A'$ is arbitrary,
+$\add(A,R^{\strprime},[B]^{<\kappa})\ge\kappa$.
+
+\medskip
+
+{\bf (f)} If $\lambda=\cov(A,R^{\strprime},[B]^{\le\kappa})$ is not
+$\infty$, let
+$\Cal D\subseteq[B]^{\le\kappa}$ be a set of size $\lambda$ such that
+$A=(R^{\strprime})^{-1}[\Cal D]$, and set $D=\bigcup\Cal D$;  then
+$A\subseteq R^{-1}[D]$, so
+$\cov(A,R,B)\le\#(D)\le\max(\omega,\kappa,\lambda)$.
+
+If $\kappa\ge 1$, then
+$\cov(A,R^{\strprime},[B]^{\le\kappa})\le\cov(A,R,B)$, by (c) and 512Da,
+so if the latter is greater than $\max(\kappa,\omega)$ they are equal1111.
+}%end of proof of 512G
+
+\leader{512H}{Simple products (a)} If $\familyiI{(A_i,R_i,B_i)}$ is any
+family of supported relations, its
+{\bf simple product} is $(\prod_{i\in I}A_i,T,\prod_{i\in I}B_i)$ where
+$T=\{(a,b):(a(i),b(i))\in R_i$ for every $i\in I\}$.
+
+\spheader 512Hb Let $\familyiI{(A_i,R_i,B_i)}$ and
+$\familyiI{(C_i,S_i,D_i)}$ be two families of supported relations, with
+simple products $(A,R,B)$ and $(C,S,D)$.   If
+$(A_i,R_i,B_i)\prGT(C_i,S_i,D_i)$ for every $i$, then
+$(A,R,B)\prGT(C,S,D)$.   \prooflet{\Prf\ For each $i$, let
+$(\phi_i,\psi_i)$ be a Galois-Tukey connection from $(A_i,R_i,B_i)$ to
+$(C_i,S_i,D_i)$.   Define $\phi:A\to C$ and $\psi:D\to B$ by setting
+$\phi(\familyiI{a_i})=\familyiI{\phi_i(a_i)}$,
+$\psi(\familyiI{d_i})=\familyiI{\psi_i(d_i)}$ for $\familyiI{a_i}\in A$,
+$\familyiI{d_i}\in D$;  then
+
+$$\eqalign{(\phi(\familyiI{a_i}),\familyiI{d_i})\in S
+&\Longrightarrow (\phi_i(a_i),d_i)\in S_i\text{ for every }i\in I\cr
+&\Longrightarrow (a_i,\psi_i(d_i))\in R_i\text{ for every }i\in I\cr
+&\Longrightarrow (\familyiI{a_i},\psi(\familyiI{d_i}))\in R.\cr}$$
+
+\noindent So $(\phi,\psi)$ is a Galois-Tukey connection and
+$(A,R,B)\prGT(C,S,D)$.\ \Qed}%end of prooflet
+
+\spheader 512Hc Let $\familyiI{(A_i,R_i,B_i)}$ be a family of supported
+relations with simple product $(A,R,B)$.   Suppose that no $A_i$ is
+empty.   Then $\add(A,R,B)=\min_{i\in I}\add(A_i,R_i,B_i)$, interpreting
+$\min\emptyset$ as $\infty$ if $I=\emptyset$.   \prooflet{\Prf\ Set
+$\kappa=\add(A,R,B)$ and
+$\kappa'=\min_{i\in I}\add(A_i,R_i,B_i)$.   If $I=\emptyset$ then
+$A=B=\{\emptyset\}$ and $R=\{(\emptyset,\emptyset)\}$ so
+$\add(A,R,B)=\infty$.    Otherwise, if $C\subseteq A$ and
+$\#(C)<\kappa'$, then, for each $i$,
+$\#(\{c(i):c\in C\})<\add(A_i,R_i,B_i)$, so there is a $b_i\in B_i$ such
+that $(c(i),b_i)\in R_i$ for every $c\in C$;  now
+$(c,\familyiI{b_i})\in R$ for every $c\in C$;  as $C$ is arbitrary,
+$\kappa\ge\kappa'$.   In the other direction, if $i\in I$ and
+$C'\in[A_i]^{<\kappa}$, then (because no $A_j$ is empty) there is a
+$C\in[A]^{<\kappa}$ such that $C'=\{c(i):c\in C\}$.   Now there is a
+$b\in B$ such that $(c,b)\in R$ for every $c\in C$, so that
+$(c',b(i))\in R_i$ for every $c'\in C'$.  As $i$ and $C'$ are arbitrary,
+$\kappa'\le\kappa$.\ \Qed}
+
+\spheader 512Hd Suppose that $(A,R,B)$ and $(C,S,D)$ are supported
+relations with simple product $(A\times C,T,B\times D)$.   Let $\kappa$
+be an infinite cardinal and define $(A,R^{\strprime},[B]^{<\kappa})$,
+$(C,S^{\strprime},[D]^{<\kappa})$ and
+$(A\times C,T^{\strprime},[B\times D]^{<\kappa})$ as in 512F.   Then
+
+\Centerline{$(A,R^{\strprime},[B]^{<\kappa})
+  \times(C,S^{\strprime},[D]^{<\kappa})
+\equivGT(A\times C,T^{\strprime},[B\times D]^{<\kappa})$.}
+
+\prooflet{\noindent\Prf\ Express
+$(A,R^{\strprime},[B]^{<\kappa})\times(C,S^{\strprime},[D]^{<\kappa})$
+as $(A\times C,\tilde T,[B]^{<\kappa}\times[D]^{<\kappa})$.
+
+\medskip
+
+\quad{\bf (i)} Set
+$\phi(a,c)=(a,c)$ for all $a\in A$, $c\in C$, and for
+$I\in[B\times D]^{<\kappa}$ set
+
+\Centerline{$\psi(I)
+=(\pi_1[I],\pi_2[I])\in[B]^{<\kappa}\times[D]^{<\kappa}$,}
+
+\noindent where $\pi_1(b,d)=b$ and $\pi_2(b,d)=d$ for $b\in B$,
+$d\in D$.   If $a\in A$, $c\in C$ and $I\in[B\times D]^{<\kappa}$ are
+such that $(\phi(a,c),I)\in T^{\strprime}$, then there must be a
+$(b,d)\in I$ such that $((a,c),(b,d))\in T$, that is, $(a,b)\in R$ and
+$(c,d)\in S$;  now $b\in\pi_1[I]$ and $d\in\pi_2[I]$, so
+$(a,\pi_1[I])\in R^{\strprime}$ and $(c,\pi_2[I])\in S^{\strprime}$ and
+
+\Centerline{$((a,c),\psi(I))
+=((a,c),(\pi_1[I],\pi_2[I]))\in\tilde T$.}
+
+\noindent As $a$, $c$ and $I$ are arbitrary, $(\phi,\psi)$ is a
+Galois-Tukey connection and
+
+\Centerline{$(A,R^{\strprime},[B]^{<\kappa})
+  \times(C,S^{\strprime},[D]^{<\kappa})
+\prGT(A\times C,T^{\strprime},[B\times D]^{<\kappa})$.}
+
+\medskip
+
+\quad{\bf (ii)} In the other direction, given
+$(J,K)\in[B]^{<\kappa}\times[D]^{<\kappa}$ set
+$\psi'(J,K)=J\times K\in[B\times D]^{<\kappa}$.   (This is where we need
+to suppose that $\kappa$ is infinite.)   If now
+$(\phi(a,c),(J,K))\in\tilde T$, that is,
+$(a,J)\in R^{\strprime}$ and $(c,K)\in S^{\strprime}$, there are
+$b\in J$ and $d\in K$ such that $(a,b)\in R$ and $(c,d)\in S$, so that
+$((a,c),(b,d))\in T$ and $((a,c),\psi'(J,K))\in T^{\strprime}$.
+As $a$, $c$, $J$ and $K$ are arbitrary, $(\phi,\psi')$ is a
+Galois-Tukey connection and
+
+\Centerline{$(A\times C,T^{\strprime},[B\times D]^{<\kappa})
+\prGT(A,R^{\strprime},[B]^{<\kappa})
+\times(C,S^{\strprime},[D]^{<\kappa})$.\ \Qed}
+}%end of prooflet
+
+\spheader 512He If $\familyiI{(P_i,\le_i)}$ is a family of
+pre-ordered sets, with product $(P,\le)$\cmmnt{ (511A)},
+then $(P,\le\nobreak,P)$ is just
+\penalty-100$\prod_{i\in I}(P_i,\le_i\nobreak,P_i)$ in the sense here.
+
+\vleader{72pt}{512I}{Sequential compositions}
+Let $(A,R,B)$ and $(C,S,D)$ be supported relations.   Their {\bf
+sequential composition} $(A,R,B)\ltimes(C,S,D)$ is
+$(A\times C^B,T,B\times D)$, where
+
+\Centerline{$T
+=\{((a,f),(b,d)):(a,b)\in R,\,f\in C^B,\,(f(b),d)\in S\}$.}
+
+\noindent Their {\bf dual sequential composition}
+$(A,R,B)\rtimes(C,S,D)$ is $(A\times C,\tilde T,B\times D^A)$ where
+
+$$\eqalign{\tilde T
+&=\{((a,c),(b,g)):a\in A,\,b\in B,\,c\in C,\,g\in D^A\cr
+&\mskip150mu
+  \text{and either }(a,b)\in R\text{ or }(c,g(a))\in S\}.\cr}$$
+
+\leader{512J}{Proposition} Let $(A,R,B)$ and $(C,S,D)$ be supported
+relations.
+
+(a)
+$(A,R,B)\rtimes(C,S,D)=((A,R,B)^{\perp}\ltimes(C,S,D)^{\perp})^{\perp}$.
+
+(b) $\cov((A,R,B)\ltimes(C,S,D))$ is the cardinal product
+$\cov(A,R,B)\cdot\cov(C,S,D)$ unless
+$B=C=\emptyset\ne A$, if we use the interpretations
+
+\Centerline{$0\cdot\infty=\infty\cdot 0=0$,
+\quad$\kappa\cdot\infty=\infty\cdot\kappa=\infty\cdot\infty=\infty$ for
+every cardinal $\kappa\ge 1$.}
+
+(c) $\add((A,R,B)\ltimes(C,S,D))=\min(\add(A,R,B),\add(C,S,D))$ unless
+$A\times C=\emptyset\ne B\times D$.
+
+\proof{{\bf (a)} is just a matter of disentangling the
+definitions.
+
+\medskip
+
+{\bf (b)} Define $T\subseteq (A\times C^B)\times(B\times D)$ as in 512I.
+
+\medskip
+
+\quad{\bf (i)}
+Suppose first that neither $A$ nor $C$ is empty, that
+$A\subseteq R^{-1}[B]$ and that $C\subseteq S^{-1}[D]$.   If
+$B_0\subseteq B$ and $D_0\subseteq D$ are such that
+$A\subseteq R^{-1}[B_0]$ and $C\subseteq S^{-1}[D_0]$, then for any
+$a\in A$ and $f\in C^B$ there are $b\in B_0$ and $d\in D_0$ such that
+$(a,b)\in R$ and $(f(b),d)\in S$, so that
+$(a,f)\in T^{-1}[B_0\times D_0]$.   So
+$\cov((A,R,B)\ltimes(C,S,D))\le\cov(A,R,B)\cdot\cov(C,S,D)$.
+
+On the other hand, if $H\subseteq B\times D$ is such that
+$A\times C^B\subseteq T^{-1}[H]$, set
+$B_0=\{b:C\subseteq S^{-1}[H[\{b\}]]\}$.   Then
+$\#(H[\{b\}])\ge\cov(C,S,D)$ for $b\in B_0$.   Also
+$A\subseteq R^{-1}[B_0]$.   \Prf\Quer\ Otherwise, take
+$a\in A\setminus R^{-1}[B_0]$.   For $b\in B\setminus B_0$, choose
+$f(b)\in C\setminus S^{-1}[H[\{b\}]]$;  for $b\in B_0$,
+take $f(b)$ to be any member of $C$.   There is supposed to be a
+member
+$(b,d)$ of $H$ such that $((a,f),(b,d))\in T$, that is, $(a,b)\in R$ and
+$(f(b),d)\in S$.   But now $b\notin B_0$, by the choice of $a$, and
+$(f(b),d)\notin S$, by the choice of $f$;  so we have a
+contradiction.\
+\Bang\Qed
+
+So $\#(B_0)\ge\cov(A,R,B)$ and $\#(H)\ge\cov(A,R,B)\cdot\cov(C,S,D)$;
+as $H$ is arbitrary,
+$\cov((A,R,B)\ltimes(C,S,D))\ge\cov(A,R,B)\cdot\cov(C,S,D)$.
+
+\medskip
+
+\quad{\bf (ii)}
+If $A=\emptyset$ then $A\times C^B=\emptyset$ so $\cov(A,R,B)$ and
+$\cov((A,R,B)\ltimes(C,S,D))$ are both zero.   If $C=\emptyset$ and
+$B\ne\emptyset$ then $\cov(C,S,D)=\cov((A,R,B)\ltimes(C,S,D))=0$.
+If $A$ and $C$ are non-empty and $A\not\subseteq R^{-1}[B]$, then
+$A\times C^B\not\subseteq T^{-1}[B\times D]$, so
+$\cov(A,R,B)=\cov((A,R,B)\ltimes\cov(C,S,D))=\infty$, while
+$\cov(C,S,D)\ge 1$.   If $A$ and $C$ are non-empty and
+$A\subseteq R^{-1}[B]$ and $C\not\subseteq S^{-1}[D]$, then
+$B\ne\emptyset$;  if we take $c\in C\setminus S^{-1}[D]$ and any member
+$a$ of $A$, and set $f(b)=c$ for every $b\in B$, then
+$(a,f)\notin T^{-1}[B\times D]$, so
+$\cov((A,R,B)\ltimes(C,S,D))=\cov(C,S,D)=\infty$, while
+$\cov(A,R,B)\ge 1$.   So with the single exception of
+$B=C=\emptyset\ne A$ (in which case the empty function belongs to $C^B$,
+so that $\cov((A,R,B)\ltimes(C,S,D))=\infty$, while $\cov(C,S,D)=0$) we
+have $\cov((A,R,B)\ltimes(C,S,D))=\cov(A,R,B)\cdot\cov(C,S,D)$.
+
+\medskip
+
+{\bf (c)} Assume throughout that either $A\times C\ne\emptyset$ (so that
+$A\times C^B\ne\emptyset$) or that $B\times D=\emptyset$.
+
+\medskip
+
+\quad{\bf (i)} $\add((A,R,B)\ltimes(C,S,D))\le\add(A,R,B)$.   \Prf\ If
+$\add(A,R,B)=\infty$ the result is trivial.   If $B\times D=\emptyset$
+then $\add((A,R,B)\ltimes(C,S,D))=0\le\add(A,R,B)$.   Otherwise, our
+hypothesis ensures that $C$ is not empty;  take
+$A_0\subseteq A$ such that $\#(A_0)=\add(A,R,B)$ and
+$A_0\not\subseteq R^{-1}[\{b\}]$ for any $b\in B$, take any $b_0\in B$
+and any $f_0\in C^B$;  then there is no $(b,d)\in B\times D$ such that
+$((a,f_0(b_0)),(b,d))\in T$ for every $a\in A_0$, so
+$\add((A,R,B)\ltimes(C,S,D))\le\#(A_0)=\add(A,R,B)$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} $\add((A,R,B)\ltimes(C,S,D))\le\add(C,S,D)$.   \Prf\
+Again, if $\add(C,S,D)=\infty$ or $B\times D=\emptyset$ the result is
+immediate.   Otherwise, $A\ne\emptyset$.   Take
+$C_0\subseteq C$ such that $\#(C_0)=\add(C,S,D)$ and there is no
+$d\in D$ such that $C_0\subseteq S^{-1}[\{d\}]$, for
+$c\in C_0$ set $f_c(b)=c$ for every $b\in B$, and fix any $a_0\in A$;
+then there is no $(b,d)\in B\times D$ such that
+$((a_0,f_c),(b,d))\in T$ for every $c\in C_0$, so
+$\add((A,R,B)\ltimes(C,S,D))\le\#(C_0)=\add(C,S,D)$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)}
+$\add((A,R,B)\ltimes(C,S,D))\ge\min(\add(A,R,B),\add(C,S,D))$.
+\Prf\ If
+$H\subseteq A\times C^B$ and $\#(H)$ is less than
+$\min(\add(A,R,B),\add(C,S,D))$, set
+$A_0=\{a:(a,f)\in H\}$ and $F=\{f:(a,f)\in H\}$.
+Then there are a $b\in B$ such that $(a,b)\in R$ for any $a\in A_0$,
+and a $d\in D$ such that $(f(b),d)\in S$ for any $f\in F$, so that
+$((a,f),(b,d))\in T$ for any $(a,f)\in H$.   As $H$ is arbitrary,
+$\add((A,R,B)\ltimes(C,S,D))\ge\min(\add(A,R,B),\add(C,S,D))$.\ \Qed
+}%end of proof of 512J
+
+\leader{512K}{}\cmmnt{ The following fact will be used in \S526.
+%526F
+
+\medskip
+
+\noindent}{\bf Lemma} Suppose that $(A,R,B)$ and $(C,S,D)$ are supported
+relations, and $P$ is a partially ordered set.   Suppose that
+$\family{p}{P}{A_p}$ is a family of subsets of $A$ such that
+
+\Centerline{$(A_p,R,B)\prGT(C,S,D)$ for every $p\in P$,}
+
+\Centerline{$A_p\subseteq A_q$ whenever $p\le q$ in $P$,
+\quad$\bigcup_{p\in P}A_p=A$.}
+
+\noindent Then $(A,R,B)\prGT(P,\le,P)\ltimes(C,S,D)$.
+
+\proof{ If $C=\emptyset$ the result is trivial, since every $A_p$ is
+empty and $B$ can be empty only if $D$ is.   So we may suppose that
+$C\ne\emptyset$.   For each $p\in P$, let $(\phi_p,\psi_p)$ be a
+Galois-Tukey
+connection from $(A_p,R,B)$ to $(C,S,D)$.   For $a\in A$, let
+$r(a)\in P$ be such that $a\in A_{r(a)}$, and set $f_a(p)=\phi_p(a)$
+whenever $p\in P$ and $a\in A_p$;  for other $p\in P$ take $f_a(p)$ to
+be any member of $C$.   Set $\phi(a)=(r(a),f_a)$ for $a\in A$.   For
+$q\in P$, $d\in D$ set $\psi(q,d)=\psi_q(d)\in B$.   Now $(\phi,\psi)$
+is a Galois-Tukey connection from $(A,R,B)$ to
+$(P,\le,P)\ltimes(C,S,D)$.
+\Prf\ Suppose that $a\in A$ and $(q,d)\in P\times D$ are such that
+$r(a)\le q$ and $(f_a(q),d)\in S$.   Then $a\in A_{r(a)}\subseteq A_q$
+so $f_a(q)=\phi_q(a)$.   Because $(\phi_q,\psi_q)$ is a Galois-Tukey
+connection, $(a,\psi(q,d))=(a,\psi_q(d))\in R$.\ \Qed
+
+So we have the result.
+}%end of proof of 512K
+
+\exercises{\leader{512X}{Basic exercises (a)}%
+%\spheader 512Xa
+(i) Suppose that $A\subseteq A'$, $B'\subseteq B$ and
+that $R$ is any relation.   Show that $(A,R,B)\prGT(A',R,B')$.
+(ii) Show that $(\emptyset,\emptyset,\{\emptyset\})\prGT(A,R,B)
+\prGT(\{\emptyset\},\emptyset,\emptyset)$ for every supported relation
+$(A,R,B)$.
+%512A
+
+\spheader 512Xb Let $(A,R,B)$ be any supported relation.   Show that
+$\sat(A,R,B)\le(\link_2(A,R,B))^+$.
+%512B
+
+\spheader 512Xc\dvAformerly{5{}14Xa}
+Let $(X,\frak T)$ be a topological space and
+$(Y,\frak T_Y)$ an open subspace.    Show that
+$(\frak T_Y\setminus\{\emptyset\},\supseteq,
+  \frak T_Y\setminus\{\emptyset\})
+\prGT(\frak T\setminus\{\emptyset\},\supseteq,
+  \frak T\setminus\{\emptyset\})$.
+%5A4B 512E
+
+\spheader 512Xd Let $(X,\frak T)$ and $(Y,\frak S)$ be topological spaces.
+(i) Show that if $Y$ is a continuous image of $X$,
+$(\frak S\setminus\{\emptyset\},\penalty-50\ni\nobreak,Y)\penalty-100
+   \prGT(\frak T\setminus\{\emptyset\},\ni,X)$.
+(ii) Show that if $X$ and $Y$ are compact and Hausdorff and
+there is an irreducible continuous surjection from $X$ onto $Y$, then
+$(\frak T\setminus\{\emptyset\},\ni,X)\equivGT
+(\frak S\setminus\{\emptyset\},\ni,Y)$ and
+$(\frak T\setminus\{\emptyset\},\supseteq,\frak T\setminus\{\emptyset\})
+\equivGT
+(\frak S\setminus\{\emptyset\},\supseteq,\frak S\setminus\{\emptyset\})$,
+so $d(X)=d(Y)$ and $\pi(X)=\pi(Y)$.
+%512E 512Xc
+
+\spheader 512Xe Let $\familyiI{(A_i,R_i,B_i)}$ be a family of supported
+relations with simple product $(A,R,B)$.   Show that $(A,R,B)^{\perp}$
+can be naturally identified with the simple product of
+$\familyiI{(A_i,R_i,B_i)^{\perp}}$.
+%512H
+
+\spheader 512Xf Let $(A,R,B)$ be a supported relation and $\kappa>0$ a
+cardinal.   Show that
+$(A,R^{\strprime},[B]^{\le\kappa})\prGT(A,R,B)^{\kappa}$,
+where $(A,R,B)^{\kappa}$ is the simple product of $\kappa$ copies of
+$(A,R,B)$ and $R^{\strprime}=\{(a,J):a\in R^{-1}[J]\}$ as
+usual.
+%512H
+
+\spheader 512Xg Let $(A,R,B)$ and $(C,S,D)$ be supported relations, and
+$(A\times C,T,B\times D)$ their simple product.   (i) Show that if
+$C\ne\emptyset$, then
+$(A,R,B)\prGT(A\times C,T,B\times D)$.   (ii) Show that
+$(A\times C,T,B\times D)\prGT(A,R,B)\ltimes(C,S,D)$.
+(iii) Show that (using the conventions of 512Jb)
+$\cov(A\times C,T,B\times D)=\cov(A,R,B)\cdot\cov(C,S,D)$.
+%512I
+
+\spheader 512Xh Let $(A_0,R_0,B_0)$, $(A_1,R_1,B_1)$, $(C_0,S_0,D_0)$
+and $(C_1,S_1,D_1)$ be supported relations such
+that \ifdim\pagewidth>467pt\break\fi
+$(A_0,R_0,B_0)\prGT(A_1,R_1,B_1)$ and
+$(C_0,S_0,D_0)\prGT(C_1,S_1,D_1)$.   Show that
+
+\Centerline{$(A_0,R_0,B_0)\ltimes(C_0,S_0,D_0)
+\prGT(A_1,R_1,B_1)\ltimes(C_1,S_1,D_1)$,}
+
+\Centerline{$(A_0,R_0,B_0)\rtimes(C_0,S_0,D_0)
+\prGT(A_1,R_1,B_1)\rtimes(C_1,S_1,D_1)$.}
+%512J
+}%end of exercises
+
+\endnotes{
+\Notesheader{512} Much of this section is cluttered by
+the repeated names $(A,R,B)$ of `supported relations'.   In fact these
+could probably be dispensed with.   While I am reluctant to alter the
+general convention I use in this book, that a `relation' is neither more
+nor less than a class of ordered pairs, it is clear that in all
+significant cases our supported relation $(A,R,B)$ will be such that
+$A=\{a:(a,b)\in R\}$ and $B=\{b:(a,b)\in R\}$, so that $A$ and $B$ can
+be recovered from the set $R$.   But this would make impossible the very
+useful convention that `$(X,\in,\Cal A)$' is to be interpreted as
+`$(X,\{(x,A):A\in\Cal A,\,x\in X\cap A\},\Cal A)$', and since nearly
+every mathematical argument in this context demands names for the
+domains and codomains of the relations, it seems easier to write these
+in each time.
+
+An important feature of the theory here is that while it is very common
+for our relations to be reasonably well-behaved by some
+criterion (for instance, we may have Polish spaces $A$ and
+$B$ and a coanalytic set $R\subseteq A\times B$), the functions in a
+Galois-Tukey connection are not required to have any properties beyond
+those declared in the definition.   Of course the most important
+Galois-Tukey
+connections are those which are `natural' in some sense, and are
+constructed in a way which does not involve totally unscrupulous use
+of the axiom of choice.
+I will return to this question in the next section.
+}%end of notes
+
+\discrpage
+

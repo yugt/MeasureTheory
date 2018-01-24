@@ -1,0 +1,1407 @@
+\frfilename{mt5a2.tex}
+\versiondate{6.6.11}
+\copyrightdate{2007}
+
+\def\chaptername{Appendix}
+\def\sectionname{Pcf theory}
+
+\newsection{5A2}
+
+In \S\S542-543 I call on some results from Shelah's pcf theory.   As
+I have still not found any satisfactory textbook for this material, I copy out
+part of the appendix of {\smc Fremlin 93}, itself drawn largely from
+{\smc Burke \& Magidor 90}.
+
+\leader{5A2A}{Reduced products}\cmmnt{ We need the following
+elementary generalization of the construction in 351M.}   Let
+$\familyiI{P_i}$ be a family of partially ordered sets with product
+$P$.
+
+\spheader 5A2Aa Let $\Cal F$ be a filter on $I$.   We have an equivalence
+relation $\equiv_{\Cal F}$ on $P$, given by saying that
+$f\equiv_{\Cal F}g$ if $\{i:f(i)=g(i)\}\in \Cal F$.   I write
+$P|\Cal F$
+for the set of equivalence classes under this relation, the
+{\bf partial order reduced product} of $\langle P_i\rangle_{i\in I}$ modulo
+$\Cal F$.   Now $P|\Cal F$ is again a partially ordered set, writing
+
+\Centerline{$f^{\bullet}\le g^{\bullet}
+\iff f\le_{\Cal F}g\iff\{i:f(i)\le g(i)\}\in\Cal F$.}
+
+\noindent Observe that if every $P_i$ is totally ordered and $\Cal F$
+is an ultrafilter, then $P|\Cal F$ is totally ordered.
+
+\spheader 5A2Ab Suppose that $P_i\ne\emptyset$ for every $i\in I$.
+For any filter $\Cal F$ on $I$ we have
+
+%$$\eqalign{\min_{i\in I}\add P_i
+%&=\add P
+%\le\sup_{F\in\Cal F}\add(\prod_{i\in F}P_i)\cr
+%&=\sup_{F\in\Cal F}\min_{i\in F}\add P_i
+%\le\add(P|\Cal F),\cr}$$
+
+\Centerline{$\min_{i\in I}\add P_i=\add P
+\le\sup_{F\in\Cal F}\add(\prod_{i\in F}P_i)
+=\sup_{F\in\Cal F}\min_{i\in F}\add P_i
+\le\add(P|\Cal F)$,}
+
+\Centerline{$\cf(P|\Cal F)
+\le\min_{F\in\Cal F}\cf(\prod_{i\in F}P_i)\le\cf P$.}
+
+\noindent\prooflet{\Prf\ By 511Hg,
+$\add(\prod_{i\in F}P_i)=\min_{i\in F}\add P_i$ for any $F\in\Cal F$,
+and in
+particular when $F=I$.   For $p\in P|\Cal F$ choose $f_p\in P$ such that
+$f_p^{\ssbullet}=p$.   If $F\in\Cal F$ then $p\mapsto f_p\restr F$ is a
+Tukey function from $P|\Cal F$ to $\prod_{i\in F}P_i$, so
+$P|\Cal F\prT\prod_{i\in F}P_i$ and 513Ee tells us that
+$\add(\prod_{i\in F}P_i)\le\add(P|\Cal F)$ and
+$\cf(P|\Cal F)\le\cf(\prod_{i\in F}P_i)$.   Also $f\mapsto f\restr F$ is a
+dual Tukey function from $P$ to $\prod_{i\in F}P_i$, so
+$\prod_{i\in F}P_i\prT P$ and $\cf(\prod_{i\in I}P_i)\le\cf P$.\ \Qed}
+
+\spheader 5A2Ac Note that if $\Cal F$, $\Cal G$ are filters on $I$
+and $\Cal F\subseteq\Cal G$, then $\add(P|\Cal F)\le\add(P|\Cal G)$
+and $\cf(P|\Cal F)\ge\cf(P|\Cal G)$.   \prooflet{\Prf\ If
+$f\le_{\Cal F}g$ then $f\le_{\Cal G}g$.   So we have a canonical surjective
+order-preserving map $\psi:P|\Cal F\to P|\Cal G$ given by saying that
+$\psi(\pi_{\Cal F}(f))=\pi_{\Cal G}(f)$ for every $f\in P$, where
+$\pi_{\Cal F}(f)$, $\pi_{\Cal G}(f)$ are the equivalence classes of $f$ in
+$P|\Cal F$ and $P|\Cal G$ respectively.   By
+513E(b-iii), $\psi$ is a dual Tukey function, so
+$P|\Cal G\prT P|\Cal F$ and we can use 513Ee again.\ \Qed}
+%5{}42D
+
+\leader{5A2B}{Theorem} %RVMC A1I
+Let $\lambda>0$ be a cardinal and
+$\langle\theta_{\zeta}\rangle_{\zeta<\lambda}$ a family of regular
+infinite cardinals, all greater than $\lambda$.   Set
+$P=\prod_{\zeta<\lambda}\theta_{\zeta}$.
+For any filter $\Cal F$ on $\lambda$, let $P|\Cal F$ be the corresponding
+reduced product and $\pi_{\Cal F}:P\to P|\Cal F$
+the canonical map.   For any cardinal $\delta$ set
+
+\Centerline{$\frak F_{\delta}=\{\Cal F:\Cal F$ is an ultrafilter on
+$\lambda$, $\cf(P|\Cal F)=\delta\},$}
+
+\Centerline{$\frak F^*_{\delta}
+=\bigcup_{\delta'\ge\delta}\frak F_{\delta'}$;}
+
+\noindent if $\frak F^*_{\delta}\ne\emptyset$, let $\Cal G_{\delta}$
+be the filter $\bigcap\frak F^*_{\delta}$.   Now
+
+(a) if $\frak F^*_{\delta}\ne\emptyset$, then
+$\add(P|\Cal G_{\delta})\ge\delta$;
+
+(b) for every $\delta$ there is a set
+$F\in[P]^{\le\delta}$ such that $\pi_{\Cal F}[F]$ is
+cofinal with $P|\Cal F$ for every $F\in\frak F_{\delta}$;
+
+(c) $\frak F_{\cf P}\ne\emptyset$.
+
+\proof{ The case of finite $\lambda$ is trivial throughout,
+as then
+
+\Centerline{$\cf P=\max_{\zeta<\lambda}\theta_{\zeta}$,}
+
+\Centerline{$\frak F_{\delta}
+=\{\Cal F:$ there is a $\zeta<\lambda$ such that
+$\{\zeta\}\in\Cal F$ and $\theta_{\zeta}=\delta\}$,}
+
+\Centerline{$\frak F^*_{\delta}
+=\{\Cal F:\{\zeta:\theta_{\zeta}\ge\delta\}\in\Cal F\}$,}
+
+\Centerline{$\Cal G_{\delta}
+=\{G:\{\zeta:\theta_{\zeta}\ge\delta\}\subseteq G\subseteq\lambda\}$.}
+
+\noindent So henceforth let us take it that $\lambda$ is infinite.
+
+If $\Cal F$ is an ultrafilter on $\lambda$, then
+$P|\Cal F$ is a non-empty totally ordered set with no
+greatest member, so its additivity and cofinality are the same;
+thus
+
+\Centerline{$\frak F_{\delta}=\{\Cal F:\Cal F$ is an ultrafilter on
+$\lambda$, $\add(P|\Cal F)=\delta\}$}
+
+\noindent for every $\delta$, and
+
+\Centerline{$\min_{\zeta\in F}\theta_{\zeta}
+\le\delta\le\cf(\prod_{\zeta\in F}\theta_{\zeta})$}
+
+\noindent whenever $F\in\Cal F\in\frak F_{\delta}$, by 5A2Ab.
+
+Write
+$L=\{\zeta:\zeta<\lambda$, $\theta_{\zeta}=\lambda^+\}$,
+$M=\lambda\setminus L$.   If $\Cal F$ is an ultrafilter on $\lambda$
+and $L\in\Cal F$, then
+$\cf(\prod_{\zeta\in L}\theta_{\zeta})=\lambda^+$, because the set of
+constant functions is cofinal with $\prod_{\zeta\in L}\theta_{\zeta}$,
+so $\cf(P|\Cal F)$ must be $\lambda^+$;  otherwise, $M\in\Cal F$ and
+$\cf(P|\Cal F)>\lambda^+$.
+
+\medskip
+
+{\bf (a)} Set $\delta'=\add(P|\Cal G_{\delta})$.
+
+\medskip
+
+\quad{\bf (i)} $\delta'$ is a regular infinite cardinal (513C(a-i)) and
+
+\Centerline{$\delta'\ge\min_{\zeta<\lambda}\theta_{\zeta}
+>\lambda$}
+
+\noindent by 5A2Ab again.
+If $\delta=\lambda^+$ then of course $\delta'\ge\delta$;  so
+suppose that $\delta>\lambda^+$.   In this case $L\notin\Cal F$ for
+any $\Cal F\in\frak F^*_{\delta}$, so
+$M\in\Cal G_{\delta}$ and
+$\delta'\ge\min_{\zeta\in M}\theta_{\zeta}>\lambda^+$.
+
+\medskip
+
+\quad{\bf (ii)} \Quer\ If $\delta'<\delta$ then (translating 513C(a-i)
+into a statement about the pre-order
+$\le_{\Cal G_{\delta}}$) there is a family
+$\langle f_{\alpha}\rangle_{\alpha<\delta'}$ in $P$ such that
+$f_{\alpha}\le_{\Cal G_{\delta}}f_{\beta}$ whenever
+$\alpha\le\beta<\delta'$ but
+there is no $f\in P$ such that $f_{\alpha}\le_{\Cal G_{\delta}}f$
+for every $\alpha<\delta'$.   Choose $h_{\xi}\in P$,
+$\alpha_{\xi}<\delta'$
+inductively, for $\xi<\lambda^+$, as follows.  $h_0=f_0$.
+Given $h_{\xi}$, set
+
+\Centerline{$B_{\xi\alpha}
+=\{\zeta:\zeta\in M,\,h_{\xi}(\zeta)\ge f_{\alpha}(\zeta)\}$}
+
+\noindent for each $\alpha<\delta'$;  let
+$\alpha_{\xi}<\delta'$ be such that
+$f_{\alpha_{\xi}}\not\le_{\Cal G_{\delta}}h_{\xi}$,
+so that $B_{\xi\alpha}\notin\Cal G_{\delta}$ when
+$\alpha_{\xi}\le\alpha<\delta'$.   Choose
+$\Cal F_{\xi}\in\frak F^*_{\delta}$ such that
+$B_{\xi,\alpha_{\xi}}\notin\Cal F_{\xi}$.
+Now, because $\cf(P|\Cal F_{\xi})\ge\delta>\delta'$, there
+is an $h_{\xi+1}\in P$ such that $f_{\alpha}\le_{\Cal F_{\xi}}h_{\xi+1}$
+for every $\alpha<\delta'$;  we may take $h_{\xi+1}\ge h_{\xi}$.
+
+For non-zero limit ordinals $\xi<\lambda^+$ take
+$h_{\xi}(\zeta)=\sup_{\eta<\xi}h_{\eta}(\zeta)$ for every
+$\zeta<\lambda$.
+
+Set $\alpha=\sup_{\xi<\lambda^+}\alpha_{\xi}<\delta'$.   Then
+$\langle B_{\xi\alpha}\rangle_{\xi<\lambda^+}$ is a non-decreasing
+family in $\Cal P\lambda$.   So there must be a $\xi<\lambda^+$ such
+that $B_{\xi\alpha}=B_{\xi+1,\alpha}$.
+
+By the choice of $h_{\xi+1}$, $B_{\xi+1,\alpha}\in\Cal F_{\xi}$.
+So $B_{\xi\alpha}\in\Cal F_{\xi}$ and
+$f_{\alpha}\le_{\Cal F_{\xi}}h_{\xi}$.   Because $\alpha\ge\alpha_{\xi}$,
+$f_{\alpha_{\xi}}\le_{\Cal G_{\delta}}f_{\alpha}$, so
+
+\Centerline{$f_{\alpha_{\xi}}\le_{\Cal F_{\xi}}f_{\alpha}
+\le_{\Cal F_{\xi}}h_{\xi}$}
+
+\noindent and $B_{\xi,\alpha_{\xi}}\in\Cal F_{\xi}$;  contrary to the
+choice of $\Cal F_{\xi}$.\ \Bang
+
+\medskip
+
+{\bf (b)(i)}
+If $\frak F_{\delta}=\emptyset$, we can take $F=\emptyset$;  so
+suppose that $\frak F_{\delta}$ is non-empty.
+As in (a-i) above, we must have
+$\delta\ge\min_{\zeta<\lambda}\theta_{\zeta}>\lambda$, and the case
+$\delta=\lambda^+$ is again elementary.   \Prf\ Take $F$ to be the set
+of constant functions with values less than $\lambda^+$.   If
+$\Cal F\in\frak F_{\delta}$ then $M\notin\Cal F$ and $L\in\Cal F$.
+So for any $h\in P$ we have $\alpha=\sup_{\zeta\in L}h(\zeta)<\lambda^+$,
+and there is an $f\in F$ such that $f(\zeta)=\alpha$ for every
+$\zeta$, in which case $h\le_{\Cal F}f$;  thus $\pi_{\Cal F}[F]$ is cofinal
+with $P|\Cal F$, as required.\ \Qed
+
+So suppose from now on
+that $\delta>\lambda^+$, so that $M\in\Cal F$ for every
+$\Cal F\in\frak F_{\delta}$.   Of course $\delta$, being the
+cofinality of a non-empty totally ordered set
+with no greatest member, is regular (511He-511Hf, 513C(a-i)).
+
+\medskip
+
+\quad{\bf (ii)} \Quer\ Suppose, if possible, that there is no $F$ of the
+required type.   In this case, we can find families
+$\langle f_{\xi\alpha}\rangle_{\xi<\lambda^+,\alpha<\delta}$ in $P$ and
+$\langle\Cal F_{\xi}\rangle_{\xi<\lambda^+}$ in $\frak F_{\delta}$ such
+that
+
+\inset{($\alpha$) $f_{\eta\alpha}\le_{\Cal F_{\xi}}f_{\xi 0}$ whenever
+$\alpha<\delta$, $\eta<\xi<\lambda^+$;
+
+($\beta$) $\{\pi_{\Cal F_{\xi}}(f_{\xi\alpha}):\alpha<\delta\}$
+is cofinal with $P|\Cal F_{\xi}$ for every $\xi<\lambda^+$;
+
+($\gamma$) $f_{\eta\alpha}\le f_{\xi\alpha}$ whenever
+$\alpha<\delta$, $\eta\le\xi<\lambda^+$;
+
+($\delta$) if $\xi<\lambda^+$, $\alpha<\delta$ and
+$\cf\alpha=\lambda^+$ then
+
+\Centerline{$f_{\xi\alpha}(\zeta)
+=\min\{\sup_{\beta\in C}f_{\xi\beta}(\zeta):C
+  \text{ is a closed cofinal set in }\alpha\}$}
+
+\noindent for every $\zeta\in M$;
+
+($\epsilon$) $f_{\xi\beta}\le_{\Cal F_{\xi}}f_{\xi\alpha}$
+whenever $\xi<\lambda^+$, $\beta\le\alpha<\delta$.}
+
+\noindent\Prf\ Construct
+$\langle f_{\xi\alpha}\rangle_{\xi<\lambda^+,\alpha<\delta}$ inductively,
+taking $\lambda^+\times\delta$ with its lexicographic well-ordering (that
+is, $(\xi,\alpha)\le(\eta,\beta)$ if either $\xi<\eta$ or $\xi=\eta$ and
+$\alpha<\beta$).   Given that
+$\langle f_{\eta\beta}\rangle_{(\eta,\beta)<(\xi,\alpha)}$ satisfies the
+inductive hypothesis so far, proceed according to the nature of $\alpha$,
+as follows.
+
+{\it Zero} If $\alpha=0$, then, because $\#(\xi\times\delta)\le\delta$, the
+counter-hypothesis tells us that there is an
+$\Cal F_{\xi}\in\frak F_{\delta}$ such that
+$\{\pi_{\Cal F_{\xi}}(f_{\eta\beta}):\eta<\xi$, $\beta<\delta\}$ is
+not cofinal with $P|\Cal F_{\xi}$.
+Accordingly we can find $f_{\xi 0}\in P$ such that
+
+\Centerline{$f_{\eta\alpha}\le_{\Cal F_{\xi}}f_{\xi 0}$ whenever
+$\eta<\xi$ and $\alpha<\delta$,}
+
+\noindent and because $\add P\ge\delta>\#(\xi)$, we can also insist that
+
+\Centerline{$f_{\eta 0}\le f_{\xi 0}$ whenever $\eta<\xi$.}
+
+\noindent Now take a family
+$\langle g_{\xi\beta}\rangle_{\beta<\delta}$ in $P$ such that
+$\{\pi_{\Cal F_{\xi}}(g_{\xi\beta}):\beta<\delta\}$ is cofinal with
+$P|\Cal F_{\xi}$.
+
+{\it Successor}  If $\alpha=\beta+1$ is a successor ordinal, set
+
+\Centerline{$f_{\xi\alpha}(\zeta)
+=\max(f_{\xi\beta}(\zeta),g_{\xi\beta}(\zeta),
+    \sup_{\eta<\xi}f_{\eta\alpha}(\zeta))$ for every $\zeta<\lambda$;}
+
+\noindent this is acceptable because $\cf\theta_{\zeta}>\lambda$ for every
+$\zeta$.
+
+{\it Cofinality $\lambda^+$} If
+$\cf\alpha=\lambda^+$, set
+
+$$\eqalign{f_{\xi\alpha}(\zeta)
+&=\sup_{\eta<\xi}f_{\eta\alpha}(\zeta)\text{ if }\zeta\in L,\cr
+&=\min\{\sup_{\beta\in C}f_{\xi\beta}(\zeta):
+  C\text{ is a closed cofinal set in }\alpha\}
+  \text{ if }\zeta\in M.\cr}$$
+
+\noindent This time, note that if $\zeta\in M$, then
+$f_{\xi\alpha}(\zeta)<\theta_{\zeta}$ because
+there is a closed cofinal set in $\alpha$ with cardinal
+$\lambda^+<\theta_{\zeta}$.
+
+{\it Otherwise} If $\alpha$ is a non-zero
+limit ordinal and $\cf\alpha\ne\lambda^+$, choose $f_{\xi\alpha}$ such that
+
+\Centerline{$f_{\eta\alpha}\le f_{\xi\alpha}$ for every $\eta<\xi$,}
+
+\Centerline{$f_{\xi\beta}\le_{\Cal F_{\xi}}f_{\xi\alpha}$ for every
+$\beta<\alpha$;}
+
+\noindent this is possible because $\add P$ and $\add(P|\Cal F_{\xi})$ are
+both at least $\lambda^+>\max(\#(\xi),\#(\alpha))$.
+
+Now let us work through the list of conditions to be satisfied.
+
+($\alpha$) is written into the case $\alpha=0$ of the induction.
+
+($\beta$) Because $g_{\xi\alpha}\le f_{\xi,\alpha+1}$ for every $\alpha$
+and $\{\pi_{\Cal F_{\xi}}(g_{\xi\alpha}):\alpha<\delta\}$ is cofinal with
+$P|\Cal F_{\xi}$,
+$\{\pi_{\Cal F_{\xi}}(f_{\xi\alpha}):\alpha<\delta\}$ is cofinal with
+$P|\Cal F_{\xi}$.
+
+($\gamma$) The construction ensures that we shall have
+$f_{\eta\alpha}(\zeta)\le f_{\xi\alpha}(\zeta)$ in all the required cases
+except possibly when $\cf\alpha=\lambda^+$ and $\zeta\in M$.   But in this
+case, taking $\eta<\xi$ and a closed cofinal set $C\subseteq\alpha$
+such that $f_{\xi\alpha}(\zeta)=\sup_{\beta\in C}f_{\xi\beta}(\zeta)$, the
+inductive hypothesis will assure us that
+
+\Centerline{$f_{\eta\alpha}(\zeta)
+\le\sup_{\beta\in C}f_{\eta\beta}(\zeta)
+\le\sup_{\beta\in C}f_{\xi\beta}(\zeta)=f_{\xi\alpha}(\zeta)$,}
+
+\noindent so there is no problem.
+
+($\delta$) is written into the formula for the inductive step when
+$\cf\alpha=\lambda^+$.
+
+($\epsilon$) We certainly have $f_{\xi\alpha}\le f_{\xi,\alpha+1}$, so
+$f_{\xi\alpha}\le_{\Cal F_{\xi}}f_{\xi,\alpha+1}$, for
+every $\alpha$.   If $\cf\alpha=\lambda^+$, then
+because the intersection of
+fewer than $\cf\alpha$ closed cofinal subsets of $\alpha$ is again a
+closed cofinal set in $\alpha$ (4A1Bd), there
+will be a closed cofinal set $C\subseteq\alpha$ such that
+$f_{\xi\alpha}(\zeta)=\sup_{\beta\in C}f_{\xi\beta}(\zeta)$ for every
+$\zeta\in M$.   So $f_{\xi\beta}\le_{\Cal F_{\xi}}f_{\xi\alpha}$ for every
+$\beta\in C$;  by the inductive hypothesis,
+$f_{\xi\beta}\le_{\Cal F_{\xi}}f_{\xi\alpha}$ for every
+$\beta<\alpha$.   For other limit ordinals $\alpha$, we have
+$f_{\xi\beta}\le_{\Cal F_{\xi}}f_{\xi\alpha}$ for every
+$\beta<\alpha$ directly from the choice of $f_{\xi\alpha}$.
+
+So the procedure works.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} The next step is to find a non-decreasing family
+$\langle h_{\eta}\rangle_{\eta<\lambda^+}$ in $P$ and a strictly
+increasing family
+$\langle\gamma(\eta)\rangle_{\eta<\lambda^+}$ in $\delta$ such that
+
+\inset{$\gamma(\eta)=\sup_{\eta'<\eta}\gamma(\eta')$ whenever
+$\eta<\lambda^+$ is a limit ordinal (so $\gamma(0)=0$);
+
+$f_{\xi,\gamma(\eta)}(\zeta)<h_{\eta}(\zeta)$ whenever
+$\xi$, $\eta<\lambda^+$ and $\zeta\in M$ (choosing $h_{\eta}$);
+
+$h_{\eta}\le_{\Cal F_{\xi}}f_{\xi,\gamma(\eta+1)}$ whenever
+$\xi$, $\eta<\lambda^+$ (choosing $\gamma(\eta+1)$).}
+
+\noindent Set $h(\zeta)=\sup_{\eta<\lambda^+}h_{\eta}(\zeta)$
+for $\zeta\in M$, $h(\zeta)=0$ for $\zeta\in L$,
+$\alpha=\sup_{\eta<\lambda^+}\gamma(\eta)<\delta$ (because
+$\delta=\cf\delta>\lambda^+$);  then $\cf\alpha=\lambda^+$ and
+$\{\gamma(\eta):\eta<\lambda^+\}$ is a closed cofinal set in
+$\alpha$.   Thus
+
+\Centerline{$f_{\xi\alpha}(\zeta)
+\le\sup_{\eta<\lambda^+}f_{\xi,\gamma(\eta)}(\zeta)\le h(\zeta)$}
+
+\noindent for every $\xi<\lambda^+$ and $\zeta\in M$, by (ii-$\delta$).
+So if we set
+
+\Centerline{$A_{\xi}=\{\zeta:\zeta\in M,\,
+f_{\xi\alpha}(\zeta)=h(\zeta)\}$}
+
+\noindent for each $\xi<\lambda^+$, we shall have
+$A_{\eta}\subseteq A_{\xi}$ whenever
+$\eta\le\xi<\lambda^+$, by (ii-$\gamma$).
+
+\medskip
+
+\quad{\bf (iv)} As $\#(M)\le\lambda$, there must be some
+$\xi<\lambda^+$ such that $A_{\xi}=A_{\xi+1}$.   Let
+$C\subseteq\alpha$ be a closed cofinal set such that
+
+\Centerline{$f_{\xi+1,\alpha}(\zeta)
+=\sup_{\beta\in C}f_{\xi+1,\beta}(\zeta)$}
+
+\noindent for every $\zeta\in M$.
+Set $C'=\gamma^{-1}[C]$.   Then $C'$ is a closed cofinal subset of
+$\lambda^+$.   \Prf\ It is closed because $\gamma:\lambda^+\to\alpha$ is
+order-continuous, therefore continuous (4A2Ro).   Next, $\gamma[\lambda^+]$
+is closed and cofinal in
+$\alpha$, while $\cf\alpha=\lambda^+$ is uncountable, so
+$C\cap\gamma[\lambda^+]$ is cofinal with $\alpha$ and $\gamma[\lambda^+]$
+(4A1Bd again), and $C'$ is cofinal with $\lambda^+$.\ \QeD\
+
+For each $\eta\in C'$ write $\eta'$ for the next member of $C'$
+greater than $\eta$;  then
+
+\Centerline{$h_{\eta}\le_{\Cal F_{\xi+1}}f_{\xi+1,\gamma(\eta+1)}
+\le_{\Cal F_{\xi+1}}f_{\xi+1,\gamma(\eta')}$,}
+
+\Centerline{$f_{\xi\alpha}\le_{\Cal F_{\xi+1}}f_{\xi+1,0}
+=f_{\xi+1,\gamma(0)}$}
+
+\noindent so there is a $\zeta_{\eta}\in M$ such that
+
+\Centerline{$h_{\eta}(\zeta_{\eta})
+\le f_{\xi+1,\gamma(\eta')}(\zeta_{\eta})$,
+\quad$f_{\xi\alpha}(\zeta_{\eta})\le f_{\xi+1,\gamma(0)}(\zeta_{\eta})
+<h_0(\zeta_{\eta})\le h(\zeta_{\eta})$.}
+
+\noindent Let $\zeta\in M$ be such that
+
+\Centerline{$B=\{\eta:\eta\in C',\,\zeta_{\eta}=\zeta\}$}
+
+\noindent is cofinal with $\lambda^+$.
+Then $f_{\xi\alpha}(\zeta)<h(\zeta)$ so
+$\zeta\notin A_{\xi}$.   On the other hand,
+
+\Centerline{$f_{\xi+1,\alpha}(\zeta)
+=\sup_{\beta\in C}f_{\xi+1,\beta}(\zeta)
+\ge\sup_{\eta\in B}f_{\xi+1,\gamma(\eta')}(\zeta)
+\ge\sup_{\eta\in B}h_{\eta}(\zeta)=h(\zeta)$}
+
+\noindent because $\ofamily{\eta}{\lambda^+}{h_{\eta}}$ is non-decreasing.
+So $\zeta\in A_{\xi+1}$;  which is impossible.\ \Bang
+
+This contradiction completes the proof of (b).
+
+\medskip
+
+{\bf (c)(i)} Set $\Delta=\{\delta:\frak F_{\delta}\ne\emptyset\}$,
+$\Cal G=\bigcup_{\delta\in\Delta}\Cal G_{\delta}$.   Since
+$\Cal G_{\delta}\subseteq\Cal G_{\delta'}$ for $\delta\le\delta'$ in
+$\Delta$,
+$\Cal G$ is a filter on $\lambda$ and there is an ultrafilter
+$\Cal H$ on $\lambda$ including $\Cal G$.   For any
+$\delta\in\Delta$, $\Cal H\supseteq\Cal G_{\delta}$, so
+
+\Centerline{$\cf(P|\Cal H)=\add(P|\Cal H)
+\ge\add(P|\Cal G_{\delta})\ge\delta$,}
+
+\noindent using 5A2Ac and (a) above.   Consequently
+$\delta^*=\cf(P|\Cal H)$ is the greatest element of $\Delta$.
+
+\medskip
+
+\quad{\bf (ii)} For each $\delta\le\delta^*$ choose a set
+$F_{\delta}\in[P]^{\le\delta}$ such that $\pi_{\Cal F}[F_{\delta}]$ is
+cofinal with
+$P|\Cal F$ for every $\Cal F\in\frak F_{\delta}$ (using (b) above).
+Set $F=\bigcup_{\delta\in\Delta}F_{\delta}$ and
+
+\Centerline{$G=\{\sup I:I\in[F]^{<\omega}\}\subseteq P$.}
+
+\noindent Then $\#(G)\le\delta^*$.   I claim that $G$ is cofinal with
+$P$.   \Prf\Quer\ Suppose otherwise;  take $h\in P$ such
+that $h\not\le g$ for every $g\in G$.   Write
+
+\Centerline{$A_g=\{\zeta:h(\zeta)>g(\zeta)\}$}
+
+\noindent for each $g\in G$.   Because $G$ is upwards-directed,
+$\{A_g:g\in G\}$ is a filter base, and there is an ultrafilter $\Cal
+F$
+on $\lambda$ containing every $A_g$.   Now there is a
+$\delta\in\Delta$
+such that $\Cal F\in\frak F_{\delta}$, so that
+$\pi_{\Cal F}[F_{\delta}]$
+is cofinal with $P|\Cal F$, and there is an $f\in F_{\delta}$
+such that $h\le_{\Cal F}f$.   But in this
+case $A=\{\zeta:h(\zeta)\le f(\zeta)\}$
+and $A_f=\lambda\setminus A$ both belong to $\Cal F$.\ \Bang\Qed
+
+\medskip
+
+\quad{\bf (iii)}
+Accordingly $\cf P\le\#(G)\le\delta^*$.   But also of course
+$\delta^*=\cf(P|\Cal H)\le\cf P$,
+so $\delta^*=\cf P$.   Now we
+have $\Cal H\in\frak F_{\delta^*}=\frak F_{\cf P}$.
+}%end of proof of 5A2B
+
+\leader{5A2C}{Theorem} Let $\lambda>0$ be a cardinal and
+$\langle\theta_{\zeta}\rangle_{\zeta<\lambda}$ a family of regular
+infinite cardinals, all greater than $\lambda$.   Set
+$P=\prod_{\zeta<\lambda}\theta_{\zeta}$.
+Let $\Cal F$ be an ultrafilter on $\lambda$
+and $\kappa$ a regular
+infinite cardinal with $\lambda<\kappa\le\cf(P|\Cal F)$.
+Then there is a
+family $\langle\theta'_{\zeta}\rangle_{\zeta<\lambda}$ of regular
+infinite cardinals such that $\lambda<\theta'_{\zeta}\le\theta_{\zeta}$ for
+every $\zeta<\lambda$ and $\cf(P'|\Cal F)=\kappa$, where
+$P'=\prod_{\zeta<\lambda}\theta'_{\zeta}$.
+
+\proof{{\bf (a)}
+If $\lambda$ is finite, there is a $\zeta<\lambda$ such that
+$\{\zeta\}\in\Cal F$, $\cf(P|\Cal F_{\zeta})=\theta_{\zeta}$ and we just
+have to take $\theta'_{\zeta}=\kappa$;   
+if $\kappa=\lambda^+$ we may take $\theta'_{\zeta}=\lambda^+$ for
+every $\zeta$;  if $\kappa=\cf(P|\Cal F)$ we may take
+$\theta'_{\zeta}=\theta_{\zeta}$;  so let us assume that
+$\omega_1\le\lambda^+<\kappa<\cf(P|\Cal F)$.   In this case
+$M=\{\zeta:\zeta<\lambda$, $\theta_{\zeta}>\lambda^+\}$ must belong
+to $\Cal F$.
+
+\medskip
+
+{\bf (b)} For each ordinal $\gamma<\kappa$ choose a
+relatively closed cofinal set $C_{\gamma}\subseteq\gamma$ with
+$\text{otp}(C_{\gamma})=\cf\gamma$.
+Choose families $\langle f_{\alpha}\rangle_{\alpha<\kappa}$,
+$\langle g_{\alpha\gamma}\rangle_{\alpha,\gamma<\kappa}$ in $P$
+inductively, as follows.
+Given $\langle f_{\beta}\rangle_{\beta<\alpha}$, where
+$\alpha<\kappa$,
+and $\gamma<\kappa$, define $g_{\alpha\gamma}\in P$ by setting
+
+$$\eqalign{g_{\alpha\gamma}(\zeta)
+&=\sup\{f_{\beta}(\zeta):\beta\in C_{\gamma}\cap\alpha\}+1
+\text{ if this is less than }\theta_{\zeta},\cr
+&=0\text{ otherwise}.\cr}$$
+
+\noindent Now choose $f_{\alpha}\in P$ such that
+
+\Centerline{$f_{\beta}\le_{\Cal F}f_{\alpha}\enskip\forall\enskip
+\beta<\alpha$,
+\quad$g_{\alpha\gamma}\le_{\Cal F}f_{\alpha}\enskip\forall\enskip
+\gamma<\kappa$;}
+
+\noindent this is possible because $\kappa<\cf(P|\Cal F)$.
+Observe that if $\alpha=\beta+1$ then $C_{\alpha}=\{\beta\}$ so that
+$g_{\alpha\alpha}=f_{\beta}+1$ and
+$f_{\alpha}\not\le_{\Cal F}f_{\beta}$.   Continue.
+
+\wheader{5A2C}{6}{2}{2}{36pt}
+
+{\bf (c)} Suppose that for each $\zeta<\lambda$ we are given a set
+$S_{\zeta}\subseteq \theta_{\zeta}$ with $\#(S_{\zeta})\le\lambda$.
+Then there is an $\alpha<\kappa$ such that
+
+\Centerline{for every $h\in\prod_{\zeta<\lambda}S_{\zeta}$,
+if $f_{\alpha}\le_{\Cal F}h$ then
+$f_{\beta}\le_{\Cal F}h$ for every $\beta<\kappa$.}
+
+\noindent\Prf\Quer\ If not, then (because $\kappa$ is regular) we can
+find a family $\langle h_{\xi}\rangle_{\xi<\kappa}$ in
+$\prod_{\zeta<\lambda}S_{\zeta}$ and a strictly increasing family
+$\langle\phi(\xi)\rangle_{\xi<\kappa}$ in $\kappa$ such that
+
+\Centerline{$f_{\phi(\xi)}\le_{\Cal F}h_{\xi}
+\le_{\Cal F}f_{\phi(\xi+1)}$ for all $\xi<\kappa$,}
+
+\Centerline{$\phi(\xi)=\sup_{\eta<\xi}\phi(\eta)$ for limit ordinals
+$\xi<\kappa$.}
+
+\noindent Set
+
+\Centerline{$C=\{\xi:\xi<\kappa,\,\phi(\xi)=\xi\}$,}
+
+\noindent so that $C$ is a closed cofinal set in $\kappa$.   Let
+$\alpha\in C$ be such that $\alpha=\sup(C\cap\alpha)$ and
+$\cf\alpha=\lambda^+$.
+Then (because $\lambda^+\ge\omega_1$) $C\cap C_{\alpha}$ is cofinal
+with $\alpha$.
+
+For $\beta\in C\cap C_{\alpha}$ and $\zeta<\lambda$ we have
+
+\Centerline{$\#(C_{\alpha}\cap\beta)
+\le\text{otp}(C_{\alpha}\cap\beta)<\text{otp}(C_{\alpha})
+=\lambda^+\le \theta_{\zeta}$,}
+
+\noindent so
+
+\Centerline{$\theta_{\zeta}
+>\sup_{\xi\in C_{\alpha}\cap\beta}f_{\xi}(\zeta)+1
+=g_{\beta\alpha}(\zeta)$.}
+
+\noindent Now
+
+\Centerline{$g_{\beta\alpha}\le_{\Cal F}f_{\beta}
+=f_{\phi(\beta)}\le_{\Cal F}h_{\beta}\le_{\Cal F}f_{\phi(\beta+1)}
+\le_{\Cal F}f_{\beta'}$,}
+
+\noindent where $\beta'$ is the next member of $C\cap C_{\alpha}$
+greater than $\beta$.
+So there is a $\zeta_{\beta}<\lambda$ such that
+
+\Centerline{$g_{\beta\alpha}(\zeta_{\beta})
+\le h_{\beta}(\zeta_{\beta})\le f_{\beta'}(\zeta_{\beta})$.}
+
+\noindent Because $\lambda<\cf\alpha$ there is a $\zeta<\lambda$
+such that
+
+\Centerline{$B=\{\beta:\beta\in C\cap C_{\alpha},\,
+\zeta_{\beta}=\zeta\}$}
+
+\noindent is cofinal with $\alpha$.   But now observe that if
+$\beta$, $\gamma\in B$ and $\beta'<\gamma$ then
+$\beta'\in C\cap C_{\alpha}\cap\gamma$ so
+
+\Centerline{$h_{\beta}(\zeta)\le f_{\beta'}(\zeta)<g_{\gamma\alpha}
+(\zeta)\le h_{\gamma}(\zeta).$}
+
+\noindent It follows that
+
+\Centerline{$\lambda^+=\#(B)
+=\#(\{h_{\beta}(\zeta):\beta\in B\})\le\#(S_{\zeta})
+\le\lambda$,}
+
+\noindent which is absurd.\ \Bang\Qed
+
+\medskip
+
+{\bf (d)} Consequently
+$E=\{f_{\alpha}^{\ssbullet}:\alpha<\kappa\}$
+has a least upper bound in $P|\Cal F$.   \Prf\Quer\
+If not, choose a family
+$\langle h_{\xi}\rangle_{\xi<\lambda^+}$ in $P$ inductively,
+as follows.   Because $\kappa<\cf(P|\Cal F)$, there is an
+$h_0\in P$ such that
+$f_{\alpha}\le_{\Cal F}h_0$ for every $\alpha<\kappa$.   Given
+$h_{\xi}$
+such that $h_{\xi}^{\bullet}$ is an upper bound
+for $E$, then $h_{\xi}^{\bullet}$ cannot be the least upper bound of
+$E$, so there is an $h_{\xi+1}\in P$ such that $h_{\xi+1}^{\bullet}$
+is an upper bound of $E$ strictly less than $h_{\xi}^{\bullet}$.
+For non-zero limit ordinals $\xi<\lambda^+$, set
+
+\Centerline{$S_{\xi\zeta}=\{h_{\eta}(\zeta):\eta<\xi\}
+\subseteq\theta_{\zeta}$}
+
+\noindent for each $\zeta<\lambda$.   By (c) above, there is an
+$\alpha_{\xi}<\kappa$ such that
+
+\Centerline{for every $h\in\prod_{\zeta<\lambda}S_{\xi\zeta}$
+either $f_{\alpha_{\xi}}\not\le_{\Cal F}h$ or
+$f_{\alpha}\le_{\Cal F}h\enskip\forall\enskip\alpha<\kappa$.}
+
+\noindent Set
+
+\Centerline{$h_{\xi}(\zeta)=\min(\{\eta:\eta\in S_{\xi\zeta},\,
+f_{\alpha_{\xi}}(\zeta)\le\eta\}\cup\{h_0(\zeta)\})\in S_{\xi\zeta}$}
+
+\noindent for each $\zeta<\lambda$.   Then
+$f_{\alpha_{\xi}}\le_{\Cal F}h_{\xi}$ (because
+$f_{\alpha_{\xi}}(\zeta)\le h_{\xi}(\zeta)$ whenever
+$f_{\alpha_{\xi}}(\zeta)\le h_0(\zeta)$) and
+$h_{\xi}\in\prod_{\zeta<\lambda}S_{\xi\zeta}$, so
+$f_{\alpha}\le_{\Cal F}h_{\xi}$ for every $\alpha<\kappa$ and
+$h_{\xi}^{\bullet}$ is an upper bound for $E$.   Also, if
+$\eta<\xi$, then $h_{\xi}(\zeta)\le h_{\eta}(\zeta)$ whenever
+$f_{\alpha_{\xi}}(\zeta)\le h_{\eta}(\zeta)$, so $h_{\xi}\le_{\Cal F}
+h_{\eta}$.   Continue.
+
+Having got the family $\langle h_{\xi}\rangle_{\xi<\lambda^+}$, set
+
+\Centerline{$S_{\zeta}=\bigcup_{\xi<\lambda^+}S_{\xi\zeta}
+=\{h_{\xi}(\zeta):\xi<\lambda^+\}\subseteq\theta_{\zeta}$}
+
+\noindent for each $\zeta<\lambda$.   For each $\alpha<\kappa$,
+$\zeta<\lambda$ set
+
+\Centerline{$g_{\alpha}(\zeta)=\min(\{\eta:f_{\alpha}(\zeta)
+\le\eta\in S_{\zeta}\}\cup\{h_0(\zeta)\})\in S_{\zeta}$.}
+
+\noindent Then, by the same arguments as above,
+
+\Centerline{$f_{\alpha}\le_{\Cal F}g_{\alpha}
+\le_{\Cal F}h_{\xi}$ for every $\alpha<\kappa$,
+$\xi<\lambda^+$.}
+
+For each $\alpha<\kappa$ there is a non-zero limit ordinal $\xi<\lambda^+$
+such that $g_{\alpha}(\zeta)\in S_{\xi\zeta}$ for every
+$\zeta<\lambda$, because $\ofamily{\xi}{\lambda^+}{S_{\xi\zeta}}$ is
+non-decreasing for each $\zeta$.
+Because $\lambda^+<\kappa$ there is a non-zero
+limit ordinal $\xi<\lambda^+$ such that
+
+\Centerline{$A
+=\{\alpha:g_{\alpha}(\zeta)\in S_{\xi\zeta}
+   \enskip\forall\enskip\zeta<\lambda\}$}
+
+\noindent is cofinal with $\kappa$.   In particular, there is an
+$\alpha\in A$ such that $\alpha\ge\alpha_{\xi}$.   In this case
+
+\Centerline{$f_{\alpha_{\xi}}\le_{\Cal F}f_{\alpha}
+\le_{\Cal F}g_{\alpha}\le_{\Cal F}h_{\xi+1}
+\le_{\Cal F}h_{\xi}\not\le_{\Cal F}h_{\xi+1}$,}
+
+\noindent so there is a $\zeta<\lambda$ such that
+
+\Centerline{$f_{\alpha_{\xi}}(\zeta)\le f_{\alpha}(\zeta)
+\le g_{\alpha}(\zeta)\le h_{\xi+1}(\zeta)<h_{\xi}(\zeta)$.}
+
+\noindent But now observe that
+
+\Centerline{$f_{\alpha_{\xi}}(\zeta)\le g_{\alpha}(\zeta)
+\in S_{\xi\zeta}$}
+
+\noindent so $h_{\xi}(\zeta)\le g_{\alpha}(\zeta)<h_{\xi}(\zeta)$,
+which is absurd.\ \Bang\Qed
+
+\medskip
+
+{\bf (e)} Let $g\in P$ be such that $g^{\bullet}=\sup E$ in
+$P|\Cal F$
+and $g(\zeta)>0$ for every $\zeta<\lambda$.  For each $\zeta<\lambda$
+set $\hat\theta_{\zeta}=\cf g(\zeta)<\theta_{\zeta}$
+and choose a cofinal set $D_{\zeta}\subseteq g(\zeta)$ of order type
+$\hat\theta_{\zeta}$.   For $\alpha<\kappa$ and $\zeta<\lambda$ set
+
+\Centerline{$\hat g_{\alpha}(\zeta)
+=\min\{\eta:f_{\alpha}(\zeta)\le\eta\in D_{\zeta}\}$}
+
+\noindent if $f_{\alpha}(\zeta)<g(\zeta)$,  $\min D_{\zeta}$
+otherwise.   Then $\hat g_{\alpha}\le_{\Cal F}\hat g_{\beta}$
+whenever $\alpha\le\beta<\kappa$.
+Also if $h\in Q =\prod_{\zeta<\lambda}D_{\zeta}$ then
+$h^{\bullet}<g^{\bullet}$ so there is an $\alpha<\kappa$ such that
+$h^{\bullet}\le f_{\alpha}^{\bullet}\le\hat g_{\alpha}^{\bullet}$.
+Thus $\{\hat g_{\alpha}^{\bullet}:\alpha<\kappa\}$ is cofinal with
+$\{h^{\bullet}:h\in Q\}$.
+
+\medskip
+
+{\bf (f)}
+Because each $D_{\zeta}$ is order-isomorphic to $\hat\theta_{\zeta}$,
+we can identify $Q$ with
+$\hat P=\prod_{\zeta<\lambda}\hat\theta_{\zeta}$,
+and see that $\cf(\hat P|\Cal F)=\cf\{h^{\ssbullet}:h\in Q\}$
+is either $1$ or $\kappa$.
+But of course the former is impossible, because it could be so only
+if $\{\zeta:g(\zeta)\text{ is a successor ordinal}\}$ belonged to
+$\Cal F$,
+and in this case there would have to be an $\alpha<\kappa$ such
+that $g\le_{\Cal F}f_{\alpha}$;  but we saw in (b) above that
+$f_{\alpha+1}\not\le_{\Cal F}f_{\alpha}$.
+
+Accordingly $\cf(\hat P|\Cal F)=\kappa$.
+
+\medskip
+
+{\bf (g)} It may be that some of the $\hat\theta_{\zeta}$ are
+less than or equal to $\lambda$.   But taking
+$I=\{\zeta:\hat\theta_{\zeta}\le\lambda\}$, we have $I\notin\Cal F$.
+\Prf\Quer\  If $I\in\Cal F$,
+then for each $\zeta\in I$ set $S_{\zeta}=D_{\zeta}$ and for
+$\zeta\in\lambda\setminus I$ set $S_{\zeta}=\{0\}$.   By (c), there
+is an $\alpha<\kappa$ such that
+
+\Centerline{for every $h\in\prod_{\zeta<\lambda}S_{\zeta}$,
+if $f_{\alpha}\le_{\Cal F}h$ then
+$f_{\beta}\le_{\Cal F}h\enskip\forall\enskip\beta<\kappa$.}
+
+\noindent But as $f_{\alpha+1}\le_{\Cal F}g$, and $I\in\Cal F$, there
+must be an $h\in\prod_{\zeta<\lambda}S_{\zeta}$ such that
+$f_{\alpha}\le_{\Cal F}h$, and now $g\le_{\Cal F}h$ because
+$g^{\bullet}$ is the
+least upper bound of $E$;  but $h(\zeta)<g(\zeta)$ for every
+$\zeta\in I$, so this is impossible.\ \Bang\Qed
+
+So $\{\zeta:\hat\theta_{\zeta}>\lambda\}\in\Cal F$.   But this means
+that if we set
+
+$$\eqalign{\theta'_{\zeta}
+&=\hat\theta_{\zeta}\text{ when }\hat\theta_{\zeta}>\lambda,\cr
+&=\theta_{\zeta}\text{ when }\hat\theta_{\zeta}\le\lambda\cr}$$
+
+\noindent and $P'=\prod_{\zeta<\lambda}\theta'_{\zeta}$,
+then $P'|\Cal F\cong\hat P|\Cal F$ so $\cf(P'|\Cal F)=\kappa$, as
+required.
+}%end of proof of 5A2C
+%5{}42D
+
+\leader{5A2D}{Definitions (a)} Let $\alpha$, $\beta$, $\gamma$ and
+$\delta$ be cardinals.   \cmmnt{Following {\smc Shelah 92} and
+{\smc Shelah 94},} I write
+
+\Centerline{$\covSh(\alpha,\beta,\gamma,\delta)$}
+
+\noindent for the least cardinal of any family
+$\Cal E\subseteq[\alpha]^{<\beta}$ such that for every
+$A\in[\alpha]^{<\gamma}$ there is a $\Cal D\in[\Cal E]^{<\delta}$ with
+$A\subseteq\bigcup\Cal D$.
+In the trivial cases in which there is no such family
+$\Cal E$ I write $\covSh(\alpha,\beta,\gamma,\delta)=\infty$.
+
+\medskip
+
+{\bf (b)} For cardinals $\alpha$, $\gamma$
+write $\Theta(\alpha,\gamma)$ for the supremum of all cofinalities
+
+\Centerline{$\cf(\prod_{\zeta<\lambda}\theta_{\zeta})$}
+
+\noindent for families $\langle\theta_{\zeta}\rangle_{\zeta<\lambda}$
+such that $\lambda<\gamma$ is a cardinal, every
+$\theta_{\zeta}$ is a regular infinite cardinal, and
+$\lambda<\theta_{\zeta}<\alpha$ for every $\zeta<\lambda$.
+\cmmnt{(This carries some of the same information as the cardinal
+pp$_{\kappa}(\alpha)$ of {\smc Shelah 94}, p.\ 41.)}
+%5{}23M 5{}42D
+
+\medskip
+
+\wheader{5A2D}{0}{0}{0}{60pt}
+\noindent{\bf Remarks\cmmnt{ (i)}}\cmmnt{ Immediately from the definitions,
+we see that}
+
+\Centerline{$\covSh(\alpha,\beta',\gamma,\delta')
+\le\covSh(\alpha',\beta,\gamma',\delta)$,
+\quad$\Theta(\alpha,\gamma)\le\Theta(\alpha',\gamma')$}
+
+\noindent whenever $\alpha\le\alpha'$, $\beta\le\beta'$,
+$\gamma\le\gamma'$ and $\delta\le\delta'$.
+
+\cmmnt{\medskip
+
+{\bf (ii)} The definition of $\Theta$ demands a moment's thought in
+trivial cases.   If $\gamma=0$ there is no $\lambda<\gamma$, so we are
+taking the supremum of an empty set of cofinalities, and
+$\Theta(\alpha,0)=0$ for every $\alpha$.   If $\gamma>0$
+then we are allowed $\lambda=0$ and
+$\prod_{\zeta<\lambda}\theta_{\zeta}=\{\emptyset\}$, so
+$\Theta(\alpha,\gamma)\ge 1$ for every $\alpha$.   If $\gamma>1$ we are
+allowed $\lambda=1$, so $\Theta(\alpha^+,\gamma)\ge\alpha$ for every
+infinite $\alpha$.
+}%end of comment
+
+%if $\gamma>1$ and $\alpha$ an uncountable limit cardinal, then
+%$\Theta(\alpha,\gamma)\ge\alpha$ (5{}42Dd)
+
+\vleader{48pt}{5A2E}{Lemma} %RVMC 7Q
+Let $\alpha$, $\beta$, $\gamma$, $\gamma'$ and
+$\delta$ be cardinals.
+
+(a) If $\gamma\le\gamma'\le\beta$ and $\delta\ge 2$ then
+
+\Centerline{$\covSh(\alpha,\beta,\gamma,\delta)
+\le\cff[\alpha]^{<\gamma'}\le\#([\alpha]^{<\gamma'})$.}
+
+(b) If either $\omega\le\gamma\le\cf\alpha$ or
+$\omega\le\cf\alpha<\cf\delta$ then
+
+\Centerline{$\covSh(\alpha,\beta,\gamma,\delta)
+\le\max(\alpha,
+  \sup_{\theta<\alpha}\covSh(\theta,\beta,\gamma,\delta))$.}
+
+\proof{{\bf (a)}
+If $\Cal E$ is a cofinal subset of $[\alpha]^{<\gamma'}$ of
+cardinal $\cff[\alpha]^{<\gamma'}$, then $\Cal E$ witnesses that
+$\covSh(\alpha,\gamma',\gamma',\delta)\le\cff[\alpha]^{<\gamma}$.   Now
+
+\Centerline{$\covSh(\alpha,\beta,\gamma,\delta)
+\le\covSh(\alpha,\gamma',\gamma',\delta)\le\cff[\alpha]^{<\gamma'}$.}
+
+\medskip
+
+{\bf (b)} Set $\kappa
+=\max(\alpha,\sup_{\theta<\alpha}\covSh(\theta,\beta,\gamma,\delta))$
+and $\lambda=\cf\alpha$.   Let $\ofamily{\xi}{\lambda}{\zeta_{\xi}}$
+enumerate a cofinal subset of $\alpha$.   For each $\xi<\lambda$, let
+$\Cal E_{\xi}\subseteq[\zeta_{\xi}]^{<\beta}$ be a set of size at most
+$\kappa$ such that for every $A\in[\zeta_{\xi}]^{<\gamma}$ there is a
+$\Cal D\in[\Cal E_{\xi}]^{<\delta}$ such that
+$A\subseteq\bigcup\Cal D$.   Set
+$\Cal E=\bigcup_{\xi<\lambda}\Cal E_{\xi}$, so that
+$\Cal E\subseteq[\alpha]^{<\beta}$ has cardinal at most $\kappa$.
+Take $A\in[\alpha]^{<\gamma}$.
+
+If $\omega\le\gamma\le\lambda$ then $\sup A<\alpha$ and there is a
+$\xi<\lambda$ such that $A\subseteq\zeta_{\xi}$.   Now there is a
+$\Cal D\in[\Cal E_{\xi}]^{<\delta}\subseteq[\Cal E]^{<\delta}$ such
+that $A\subseteq\bigcup\Cal D$.
+
+If $\omega\le\lambda<\cf\delta$, then for each $\xi<\lambda$ there is
+a $\Cal D_{\xi}\in[\Cal E_{\xi}]^{<\delta}$ such that
+$A\cap\zeta_{\xi}\subseteq\bigcup\Cal D_{\xi}$.   Set
+$\Cal D=\bigcup_{\xi<\lambda}\Cal D_{\xi}$;  because
+$\lambda<\cf\delta$, $\Cal D\in[\Cal E]^{<\delta}$, while
+
+\Centerline{$A=\bigcup_{\xi<\lambda}A\cap\zeta_{\xi}
+\subseteq\bigcup\Cal D$.}
+
+Thus in either case $\Cal E$ witnesses that
+$\covSh(\alpha,\beta,\gamma,\delta)\le\kappa$.
+}%end of proof of 5A2E
+%5{}41S 5{}42D 5{}42E
+
+\leader{5A2F}{Lemma} Let $\alpha$, $\gamma$ be cardinals.   If
+$\alpha\le 2^{\gamma}$, then $\Theta(\alpha,\gamma)\le 2^{\gamma}$.
+
+\proof{ If $\gamma\le\omega$ then
+$\Theta(\alpha,\gamma)\le\max(1,\alpha)\le 2^{\gamma}$.
+If $\gamma>\omega$,
+$\lambda<\gamma$ and $\theta_{\zeta}<2^{\gamma}$ for every
+$\zeta<\lambda$, then
+
+\Centerline{$\#(\prod_{\zeta<\lambda}\theta_{\zeta})
+\le(2^{\gamma})^{\gamma}=2^{\gamma}$.}
+}%end of proof of 5A2F
+
+\leader{5A2G}{Theorem} %RVCM A1K
+For any cardinals $\alpha$ and $\gamma$,
+
+\Centerline{$\covSh(\alpha,\gamma,\gamma,\omega_1)
+\le\max(\omega,\alpha,\Theta(\alpha,\gamma))$.}
+
+\proof{{\bf (a)} To begin with (down to the end of (f) below) let us
+suppose that we have
+$\alpha\ge\gamma=\gamma_0^+>\cf\alpha>\omega$, and set
+$\kappa=\max(\alpha,\Theta(\alpha,\gamma))$.
+
+Take a family $\Cal E\subseteq[\alpha]^{\le\gamma_0}$ such that
+
+\inset{(i) $\Cal E$ contains all singleton subsets of $\alpha$;
+
+(ii) $\Cal E$ contains a cofinal subset of $\alpha$;
+
+(iii) If $E\in\Cal E$ then $\{\xi:\xi+1\in E\}\in\Cal E$;
+
+(iv) if $E\in\Cal E$ then
+there is an $F\in\Cal E$ such that $\sup(F\cap\xi)=\xi$ whenever
+$\xi\in E$ and $\omega\le\cf\xi\le\gamma_0$;
+
+(v) if $E\in\Cal E$ then $\{\xi:\xi\in E,\,
+\cf\xi>\gamma_0\}\in\Cal E$;
+
+(vi) if $E\in\Cal E$ and $\cf(\prod_{\eta\in E}\eta)\le\kappa$,
+then $\{g:g\in\prod_{\eta\in E}\eta,\,g[E]\in\Cal E\}$ is cofinal with
+$\prod_{\eta\in E}\eta$;
+
+(vii) $\#(\Cal E)\le\kappa$.}
+
+\noindent To see that this can be done, observe that whenever
+$E\in[\alpha]^{\le\gamma_0}$ there is an $F\in[\alpha]^{\le\gamma_0}$
+such that $\sup(F\cap\xi)=\xi$ whenever $\xi\in E$ and
+$\omega\le\cf\xi\le\gamma_0$;  thus condition (iv) can be
+achieved, like conditions
+(iii) and (v), by ensuring that $\Cal E$ is closed under suitable
+functions
+from $[\alpha]^{\le\gamma_0}$ to itself;  while condition (vi)
+requires that for each $E\in\Cal E$ we have  an appropriate
+family of size at most $\kappa$ included in $\Cal E$.
+
+Write $\Cal J$ for the $\sigma$-ideal of $\Cal P\alpha$ generated by
+$\Cal E$.   Note that if $A\in\Cal J$ then $\{\xi:\xi+1\in A\}$ belongs to
+$\Cal J$, by (iii).
+
+\medskip
+
+{\bf (b)} \Quer\ If
+$\covSh(\alpha,\gamma,\gamma,\omega_1)>\kappa$, there must be a set
+in $[\alpha]^{\le\gamma_0}$
+not covered by any sequence from $\Cal E$, that is, not belonging to
+$\Cal J$;  that is, there is a
+function $f:\gamma_0\to\alpha$ such that $f[\gamma_0]\notin\Cal J$.
+Accordingly $\Cal I=\{f^{-1}[E]:E\in\Cal J\}$
+is a proper $\sigma$-ideal of $\Cal P\gamma_0$.
+By condition (a-i), $\Cal I$ contains all singletons in
+$\Cal P\gamma_0$.
+
+Let $H$ be the set of all functions $h:\gamma_0\to\alpha$ such that
+$f(\xi)\le h(\xi)$ for every $\xi<\gamma_0$ and
+$h[\gamma_0]\in\Cal J$.   Because
+$\Cal E$ contains a cofinal set $C\subseteq\alpha$ (condition (a-ii)),
+we can find an
+$h\in H$;  just take $h:\gamma_0\to C$ such that $f(\xi)\le h(\xi)$
+for every $\xi$.
+
+\medskip
+
+{\bf (c)} Because $\Cal I$ is a proper
+$\sigma$-ideal, there cannot be any sequence
+$\langle h_n\rangle_{n\in\Bbb N}$ in $H$ such that
+$\{\xi:h_{n+1}(\xi)\ge h_n(\xi)\}\in\Cal I$ for every $n\in\Bbb N$.
+Consequently there is an $h^*\in H$ such that
+
+\Centerline{$\{\xi:h(\xi)\ge h^*(\xi)\}\notin\Cal I$ for every $h\in H$.}
+
+\noindent We know that $h^*[\gamma_0]\in\Cal J$;  let
+$\langle E_n\rangle_{n\in\Bbb N}$ be a sequence in $\Cal E$ covering
+$h^*[\gamma_0]$.
+For $\xi<\gamma_0$ write $\theta_{\xi}=\cf h^*(\xi)$, so that
+each $\theta_{\xi}$ is 0 or
+1 or a regular infinite cardinal less than $\alpha$.   Set
+
+\Centerline{$I=\{\xi:\xi<\gamma_0$, $f(\xi)=h^*(\xi)\}$,}
+
+\Centerline{$I'=\{\xi:\xi<\gamma_0,\,f(\xi)<h^*(\xi),\,
+\theta_{\xi}=1\}$,}
+
+\Centerline{$I_n=\{\xi:\xi<\gamma_0$,
+$f(\xi)<h^*(\xi)$, $\omega\le\theta_{\xi}\le\gamma_0$,
+$h^*(\xi)\in E_n\}$ for $n\in\Bbb N$,}
+
+\Centerline{$J_n=\{\xi:\xi<\gamma_0$, $f(\xi)<h^*(\xi)$,
+$\gamma_0<\theta_{\xi}$, $h^*(\xi)\in E_n\}$ for $n\in\Bbb N$.}
+
+\noindent Note that if $\theta_{\xi}=0$ then $h^*(\xi)=0=f(\xi)$, so
+$I$, $I'$, $\sequencen{I_n}$ and $\sequencen{J_n}$ constitute a cover
+of $\gamma_0$.
+
+\medskip
+
+{\bf (d)} For each $n\in\Bbb N$ set
+$G_n=\{\eta:\eta\in E_n$, $\cf\eta>\gamma_0\}\in\Cal E$;  note that
+$h^*(\xi)\in G_n$ for $\xi\in J_n$.   Then
+$\cf(\prod_{\eta\in G_n}\eta)\le\Theta(\alpha,\gamma)$.   \Prf\
+For $\eta\in G_n$ set $\theta'_{\eta}=\cf\eta$;  then $\theta'_{\eta}$
+is a regular cardinal and $\#(G_n)\le\gamma_0<\theta'_{\eta}<\alpha$
+for each $\eta\in G_n$.   If for each $\eta\in G_n$ we choose a
+cofinal set $C_{\eta}\subseteq\eta$ of order type $\theta'_{\eta}$,
+then
+
+\Centerline{$\cf(\prod_{\eta\in G_n}\eta)
+=\cf(\prod_{\eta\in G_n}C_{\eta})
+=\cf(\prod_{\eta\in G_n}\theta'_{\eta})
+\le\Theta(\alpha,\gamma)$}
+
+\noindent by the definition of $\Theta(\alpha,\gamma)$.\ \Qed
+
+Consequently, by (a-vi),
+
+\Centerline{$\{g:g\in\prod_{\eta\in G_n}\eta,\,g[G_n]\in\Cal E\}$}
+
+\noindent is cofinal with $\prod_{\eta\in G_n}\eta$.
+
+\medskip
+
+{\bf (e)} Define $h:\gamma_0\to\alpha$ as follows.
+
+\quad(i) If $\xi\in I$ set $h(\xi)=h^*(\xi)$.
+
+\quad(ii) If $\xi\in I'$ let $h(\xi)$ be the predecessor of
+$h^*(\xi)$.
+
+\quad(iii) For each $n\in\Bbb N$ take $F_n\in\Cal E$
+such that $\eta=\sup(F_n\cap\eta)$ whenever $\eta\in E_n$ and
+$\omega\le\cf\eta\le\gamma_0$.   If
+$\xi\in I_n\setminus\bigcup_{m<n}I_m$, take $h(\xi)\in F_n$ such that
+$f(\xi)<h(\xi)<h^*(\xi)$.
+
+\quad(iv) For each $n\in\Bbb N$ and $\eta\in G_n$ set
+
+\Centerline{$g^*(\eta)=\sup\{f(\xi):\xi<\gamma_0,\,h^*(\xi)=\eta\}$.}
+
+\noindent Then $g^*(\eta)<\eta$, because $\gamma_0<\cf\eta$.   By
+(d), there is a $g_n\in\prod_{\eta\in G_n}\eta$ such that
+$g_n[G_n]\in\Cal E$
+and $g^*(\eta)<g_n(\eta)$ for every $\eta\in G_n$.   So for
+$\xi\in J_n\setminus\bigcup_{m<n}J_m$ we may set
+$h(\xi)=g_n(h^*(\xi))$
+and see that
+
+\Centerline{$f(\xi)\le g^*h^*(\xi)<g_nh^*(\xi)=h(\xi)<h^*(\xi)$,}
+
+\noindent while $h(\xi)\in g_n[G_n]$.
+
+\medskip
+
+{\bf (f)} Now we see that
+
+\Centerline{$h[\gamma_0]\subseteq h^*[\gamma_0]\cup\{\eta:\eta+1\in
+h^*[\gamma_0]\}\cup\bigcup_{n\in\Bbb N}F_n\cup\bigcup_{n\in\Bbb N}
+g_n[G_n]\in\Cal J$,}
+
+\noindent while $f(\xi)\le h(\xi)$ for every $\xi<\gamma_0$, so
+$h\in H$.   Consequently
+
+\Centerline{$I=\{\xi:h(\xi)\ge h^*(\xi)\}\notin\Cal I$.}
+
+\noindent But also
+
+\Centerline{$f[I]\subseteq h^*[\gamma_0]\in\Cal J$,}
+
+\noindent so $I\in\Cal I$, which is absurd.  \Bang
+
+\medskip
+
+{\bf (g)} Thus the special case described in (a) is dealt with, and we
+may return to the general case.   I proceed by induction on $\alpha$
+for fixed $\gamma$.
+
+\medskip
+
+\quad{\bf (i)} To start the induction, observe that
+if either $\alpha\le\omega$ or $\gamma\le\omega$ or $\alpha<\gamma$,
+then
+
+\Centerline{$\covSh(\alpha,\gamma,\gamma,\omega_1)
+\le\cff[\alpha]^{<\gamma}\le\max(\alpha,\omega)$.}
+
+\medskip
+
+\quad{\bf (ii)} For the inductive step to $\alpha$ when {\it either}
+$\cf\alpha\ge\gamma\ge\omega$ {\it or} $\cf\alpha=\omega$,
+5A2Eb tells us that
+
+$$\eqalign{\covSh(\alpha,\gamma,\gamma,\omega_1)
+&\le\max(\alpha,
+  \sup_{\alpha'<\alpha}\covSh(\alpha',\gamma,\gamma,\omega_1))\cr
+&\le\max(\omega,\alpha,\sup_{\alpha'<\alpha}\Theta(\alpha',\gamma))
+\le\max(\omega,\alpha,\Theta(\alpha,\gamma))\cr}$$
+
+\noindent by the inductive hypothesis.
+
+\medskip
+
+\quad{\bf (iii)} For the inductive step to $\alpha$ when
+$\omega<\cf\alpha<\gamma\le\alpha$, observe that
+
+\Centerline{$[\alpha]^{<\gamma}
+=\bigcup_{\delta<\gamma}[\alpha]^{\le\delta}$.}
+
+\noindent For each $\delta<\gamma$ we have a set
+$\Cal E_{\delta}\subseteq [\alpha]^{\le\delta}$ such that
+$\#(\Cal E_{\delta})
+\le\covSh(\alpha,\delta^+,\delta^+,\omega_1)$ and every member of
+$[\alpha]^{\le\delta}$
+can be covered by a sequence from $\Cal E_{\delta}$.   Set
+$\Cal E=\bigcup_{\cf\alpha\le\delta<\gamma}\Cal E_{\delta}$;  then
+$\Cal E\subseteq[\alpha]^{<\gamma}$ and every member of
+$[\alpha]^{<\gamma}$ can be covered by a sequence from $\Cal E$.
+So
+
+$$\eqalignno{\covSh(\alpha,\gamma,\gamma,\omega_1)
+&\le\#(\Cal E)
+\le\max(\gamma,\sup_{\cf\alpha\le\delta<\gamma}
+  \covSh(\alpha,\delta^+,\delta^+,\omega_1))\cr
+&\le\max(\gamma,\alpha,
+  \sup_{\cf\alpha\le\delta<\gamma}\Theta(\alpha,\delta^+))\cr
+\displaycause{by (a)-(f) above}
+&\le\max(\alpha,\Theta(\alpha,\gamma)).\cr}$$
+
+This completes the proof.
+
+\medskip
+
+\noindent{\bf Remark} This is taken from {\smc Shelah 94}, Theorem
+II.5.4,
+where a stronger result is proved, giving an exact description of
+many of the numbers
+$\covSh(\alpha,\beta,\gamma,\delta)$ in terms of cofinalities of
+reduced products $\prod_{\zeta<\lambda}\theta_{\zeta}|\Cal F$.
+}%end of proof of 5A2G
+%5{}42D 5{}42E
+
+\leader{5A2H}{Lemma} %RVMC A1L
+Let $\gamma$ be an infinite regular cardinal and
+$\alpha\ge\Theta(\gamma,\gamma)$ a cardinal.   Then
+$\Theta(\Theta(\alpha,\gamma),\gamma)\le\Theta(\alpha,\gamma)$.
+
+%do we really need \gamma to be regular?
+
+\proof{{\bf (a)} The case $\gamma=\omega$ is elementary, since
+$\Theta(\alpha,\omega)\le\alpha$ for every cardinal $\alpha$.   So we may
+suppose that $\gamma$ is uncountable.   If $\Theta(\alpha,\gamma)\le\alpha$
+the result is immediate;  so we may suppose that
+$\alpha<\Theta(\alpha,\gamma)$, in which case
+$\Theta(\gamma,\gamma)<\Theta(\alpha,\gamma)$ and $\gamma<\alpha$.
+
+\medskip
+
+{\bf (b)} \Quer\ Suppose, if possible, that
+$\Theta(\alpha,\gamma)<\Theta(\Theta(\alpha,\gamma),\gamma)$.
+There must be a family $\langle\theta_{\zeta}\rangle_{\zeta<\lambda}$
+of regular infinite cardinals such that $\lambda<\gamma$,
+$\lambda<\theta_{\zeta}<\Theta(\alpha,\gamma)$ for every
+$\zeta<\lambda$,
+and $\cf(\prod_{\zeta<\lambda}\theta_{\zeta})>\Theta(\alpha,\gamma)$.
+As $\Theta(\alpha,\gamma)\ge 1$, $\lambda\ne 0$.
+By 5A2Bc, there is an ultrafilter $\Cal F$ on $\lambda$ such that
+$\cf(\prod_{\zeta<\lambda}\theta_{\zeta}|\Cal F)>\Theta(\alpha,\gamma)$.
+Set $L=\{\zeta:\zeta<\lambda,\,\theta_{\zeta}<\alpha\}$;  then
+$\cf(\prod_{\zeta\in L}\theta_{\zeta})\le\Theta(\alpha,\gamma)$,
+so $L\notin\Cal F$ and $M=\lambda\setminus L\in\Cal F$.   Let $\Cal
+F'$ be the induced ultrafilter on $M$, so that
+$\prod_{\zeta<\lambda}\theta_{\zeta}|\Cal F
+\cong\prod_{\zeta\in M}\theta_{\zeta}|\Cal F'$, and
+$\cf(\prod_{\zeta\in M}\theta_{\zeta}|\Cal
+F')>\Theta(\alpha,\gamma)$.   For each $\zeta\in M$, we have
+$\theta_{\zeta}<\Theta(\alpha,\gamma)$, so there must be a family
+$\langle\theta_{\zeta\eta}\rangle_{\eta<\lambda_{\zeta}}$ of regular
+infinite cardinals with $\lambda_{\zeta}<\gamma$,
+$\lambda_{\zeta}<\theta_{\zeta\eta}<\alpha$ for every
+$\eta<\lambda_{\zeta}$ and
+$\theta_{\zeta}\le\cf(\prod_{\eta<\lambda_{\zeta}}\theta_{\zeta\eta})$.
+Again by 5A2Bc, %RVMC A1Ic
+there is an ultrafilter $\Cal F_{\zeta}$ on $\lambda_{\zeta}$ such
+that $\theta_{\zeta}
+\le\cf(\prod_{\eta<\lambda_{\zeta}}\theta_{\zeta\eta}|\Cal F_{\zeta})$.
+Because
+
+\Centerline{$\lambda_{\zeta}<\gamma\le\alpha\le\theta_{\zeta}$,}
+
+\noindent 5A2C tells us that there
+is a family $\langle\theta'_{\zeta\eta}\rangle_{\eta<\lambda_{\zeta}}$
+of regular infinite cardinals such that
+$\lambda_{\zeta}<\theta'_{\zeta\eta}\le \theta_{\zeta\eta}$ for every
+$\eta$ and $\theta_{\zeta}
+=\cf(\prod_{\eta<\lambda_{\zeta}}\theta'_{\zeta\eta}|\Cal F_{\zeta})$.
+
+\woddheader{5A2H}{4}{2}{2}{66pt}
+{\bf (c)} Set
+
+\Centerline{$I=\{(\zeta,\eta):\zeta\in M,\,\eta<\lambda_{\zeta}\}$,}
+
+\Centerline{$\Cal H
+=\{H:H\subseteq I,\,
+  \{\zeta:\{\eta:(\zeta,\eta)\in H\}\in\Cal F_{\zeta}\}
+\in\Cal F'\}$,}
+
+\Centerline{$P=\prod_{(\zeta,\eta)\in I}\theta'_{\zeta\eta}$.}
+
+\noindent Then $\Cal H$ is an ultrafilter on $I$, and
+$\cf(P|\Cal H)\ge\cf(\prod_{\zeta\in M}\theta_{\zeta}|\Cal F')$.
+\Prf\ Let $F\subseteq P$ be a set with cardinal $\cf(P|\Cal H)$ such
+that
+$\{f^{\bullet}:f\in F\}$ is cofinal with $P|\Cal H$.   For
+$f\in P$ and $\zeta\in M$, define
+$f_{\zeta}\in\prod_{\eta<\lambda_{\zeta}}\theta'_{\zeta\eta}$
+by setting $f_{\zeta}(\eta)=f(\zeta,\eta)$ for each
+$\eta<\lambda_{\zeta}$, and let $f_{\zeta}^{\bullet}$ be the image of
+$f_{\zeta}$ in
+$\prod_{\eta<\lambda_{\zeta}}\theta'_{\zeta\eta}|\Cal F_{\zeta}$.
+For each $\zeta\in M$ let
+$\langle u_{\zeta\xi}\rangle_{\xi<\theta_{\zeta}}$ be a strictly
+increasing cofinal family in the totally ordered set
+$\prod_{\eta<\lambda_{\zeta}}\theta'_{\zeta\eta}|\Cal F_{\zeta}$.
+Now, for $f\in F$, take a function
+$g_{f}\in\prod_{\zeta\in M}\theta_{\zeta}$
+such that $f_{\zeta}^{\bullet}\le u_{\zeta,g_f(\zeta)}$ for every
+$\zeta\in M$.
+
+If $g\in\prod_{\zeta\in M}\theta_{\zeta}$, then we can find an $h\in
+P$
+such that $h_{\zeta}^{\bullet}=u_{\zeta,g(\zeta)}$ for each
+$\zeta\in M$.   Let $f\in F$ be such that $h\le_{\Cal H}f$.
+Then
+
+\Centerline{$\{\zeta:g(\zeta)\le g_f(\zeta)\}
+\supseteq\{\zeta:h_{\zeta}^{\bullet}\le f_{\zeta}^{\bullet}\}
+\in\Cal F'$,}
+
+\noindent so $g\le_{\Cal F'}g_f$.
+Accordingly $\{g_f:f\in F\}$ is cofinal with
+$\prod_{\zeta\in M}\theta_{\zeta}|\Cal F'$ and
+$\cf(\prod_{\zeta\in M}\theta_{\zeta}|\Cal F')\le\#(F)=\cf(P|\Cal
+H)$, as
+claimed.\ \Qed
+
+\medskip
+
+{\bf (d)} Thus $\cf(P|\Cal H)>\Theta(\alpha,\gamma)$.   Set
+$J=\{(\zeta,\eta):(\zeta,\eta)\in I,\,\theta'_{\zeta\eta}\ge\gamma\}$.
+Because $\gamma$ is regular, $\#(J)\le\#(I)<\gamma$, so
+$\cf(\prod_{(\zeta,\eta)\in J}\theta'_{\zeta\eta})
+\le\Theta(\alpha,\gamma)$, and $J\notin\Cal H$.   It follows that
+$K=I\setminus J\in\Cal H$.   Set
+$M'=\{\zeta:\zeta\in M,\,\{\eta:(\zeta,\eta)\in K\}\in\Cal F_{\zeta}\}
+\in\Cal F'$.
+
+If $\zeta\in M'$, then $F=\{\eta:\eta<\lambda_{\zeta}$,
+$\theta'_{\zeta\eta}<\gamma\}$ belongs to $\Cal F_{\zeta}$, so
+
+\Centerline{$\theta_{\zeta}\le\cf(\prod_{\eta\in F}\theta'_{\zeta\eta})
+\le\Theta(\gamma,\gamma)\le\alpha\le\theta_{\zeta}$}
+
+\noindent by the definition of $M$.
+So in fact $\theta_{\zeta}=\alpha$ for $\zeta\in M'$ and we have
+
+\Centerline{$\Theta(\alpha,\gamma)
+<\cf(\prod_{\zeta\in M}\theta_{\zeta}|\Cal F')
+\le\cf(\prod_{\zeta\in M'}\theta_{\zeta})
+=\cf(\prod_{\zeta<\delta}\alpha)$,}
+
+\noindent where $\delta=\#(M')$, while at the same time $\alpha$
+is infinite and regular.
+
+But if $\alpha$ is infinite and regular and $\delta<\alpha$,
+
+\Centerline{$\cf(\prod_{\zeta<\delta}\alpha)\le\alpha$,}
+
+\noindent so $\Theta(\alpha,\gamma)<\alpha$;  which is impossible.\ \Bang
+
+This contradiction completes the proof.
+}%end of proof of 5A2H
+
+\leader{5A2I}{Lemma} %RVMC A1M
+Let $\alpha$ and $\gamma$ be cardinals.   Set
+$\delta=\sup_{\alpha'<\alpha}\Theta(\alpha',\gamma)$.
+
+(a) If $\cf\alpha\ge\gamma$ then
+$\Theta(\alpha,\gamma)\le\max(\alpha,\delta)$.
+
+(b) If $\cf\alpha<\gamma$ then
+$\Theta(\alpha,\gamma)\le\max(\alpha,\delta^{\cf\alpha})$, where
+$\delta^{\cf\alpha}$ is the cardinal power.
+%5{}42
+
+\proof{ Let $\langle\theta_{\zeta}\rangle_{\zeta<\lambda}$
+be a family of regular infinite
+cardinals with $\lambda<\theta_{\zeta}<\alpha$
+for each $\zeta$ and $\lambda<\gamma$.
+
+\medskip
+
+{\bf case 1} If $\alpha'=\sup_{\zeta<\lambda}\theta_{\zeta}$ is less than
+$\alpha$, set
+
+\Centerline{$I=\{\zeta:\zeta<\lambda,\,\theta_{\zeta}<\alpha'\}$,}
+
+\Centerline{$J=\{\zeta:\zeta<\lambda,\,\theta_{\zeta}=\alpha'\}$.}
+
+\noindent Then
+
+\Centerline{$\cf(\prod_{\zeta\in I}\theta_{\zeta})
+\le\Theta(\alpha',\gamma)\le\delta$,
+\quad$\cf(\prod_{\zeta\in J}\theta_{\zeta})
+\le\max(1,\alpha')\le\alpha$.}
+
+\noindent If $\lambda=0$ then
+$\cf(\prod_{\zeta<\lambda}\theta_{\zeta})=1\le\alpha$;  if $\lambda>0$ then
+$\alpha$ is infinite and
+
+\Centerline{$\cf(\prod_{\zeta<\lambda}\theta_{\zeta})
+\le\max(\omega,\cf(\prod_{\zeta\in I}\theta_{\zeta}),
+   \cf(\prod_{\zeta\in J}\theta_{\zeta}))
+\le\max(\alpha,\delta)$.}
+
+This is enough to deal with (a).
+
+\medskip
+
+{\bf case 2} If $\alpha'=\alpha=0$ then $\lambda=0=\delta$, so
+
+\Centerline{$\cf(\prod_{\zeta<\lambda}\theta_{\zeta})=1
+=\delta^{\cf\alpha}$.}
+
+\noindent So (b) is true if $\alpha=0$.
+
+\medskip
+
+{\bf case 3} If $\alpha'=\alpha>0$ and $\cf\alpha<\gamma$, then
+$\lambda>0$ and $\alpha$ is a supremum of strictly smaller infinite
+cardinals, so must be uncountable.   Let
+$\langle\alpha_{\xi}\rangle_{\xi<\cf\alpha}$ be a strictly increasing
+family of cardinals with supremum $\alpha$, starting from
+$\alpha_0=0$ and $\alpha_1=\omega$ and with
+$\alpha_{\xi}=\sup_{\eta<\xi}\alpha_{\eta}$ for non-zero limit ordinals
+$\xi<\cf\alpha$.   Set
+
+\Centerline{$P_{\xi}
+=\prod_{\zeta<\lambda,\alpha_{\xi}\le\theta_{\zeta}<\alpha_{\xi+1}}
+   \theta_{\zeta}$}
+
+\noindent for each $\xi<\cf\alpha$.   Then
+
+\Centerline{$\cf P_{\xi}\le\Theta(\alpha_{\xi+1},\gamma)\le\delta$}
+
+\noindent for each $\xi<\cf\alpha$, so
+
+\Centerline{$\cf(\prod_{\zeta<\lambda}\theta_{\zeta})
+=\cf(\prod_{\xi<\cf\alpha}P_{\xi})\le\delta^{\cf\alpha}$.}
+
+\noindent Putting this together with case 1, we have a proof of (b) when
+$\alpha>0$.
+}%end of proof of 5A2I
+
+\leaveitout{\exercises{\leader{5A2X}{Basic exercises (a)}
+
+\leader{5A2Y}{Further exercises (a)}
+
+}%end of exercises
+
+\endnotes{
+\Notesheader{5A2}
+
+}%end of notes
+}%end of leaveitout
+
+\discrpage
+
+

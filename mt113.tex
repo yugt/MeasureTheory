@@ -1,0 +1,443 @@
+\frfilename{mt113.tex}
+\versiondate{6.4.05}
+\copyrightdate{1999}
+
+\def\chaptername{Measure spaces}
+\def\sectionname{Outer measures and \Caratheodory's construction}
+
+\newsection{113}
+
+I introduce the most important method of constructing measures.
+
+\leader{113A}{Outer \dvrocolon{measures}}\cmmnt{ I come now to the
+third basic definition of this chapter.
+
+\medskip
+
+\noindent}{\bf Definition} Let $X$ be a set.   An {\bf outer measure} on
+$X$ is a function $\theta:\Cal PX\to[0,\infty]$ such that
+
+\qquad(i) $\theta \emptyset=0$,
+
+\qquad(ii) if $A\subseteq B\subseteq X$ then $\theta A\le\theta B$,
+
+\qquad(iii) for every sequence $\langle A_n\rangle_{n\in\Bbb N}$ of
+subsets of $X$,
+$\theta(\bigcup_{n\in\Bbb N}A_n)\le\sum_{n=0}^{\infty}\theta A_n$.
+
+\cmmnt{
+\leader{113B}{Remarks (a)} For comments on the use of
+`$\infty$', see 112B.
+
+\header{113Bb}{\bf (b)} Yet again, the most important outer measures
+must wait until
+\S\S114-115.   The idea of the `outer' measure of a set $A$ is
+that it should be some kind of upper bound for the possible measure of
+$A$.   If we are lucky, it may actually be the measure of $A$;  but this
+is likely to be true only for sets with adequately smooth boundaries.
+
+\header{113Bc}{\bf (c)} Putting (i) and (iii) of the definition
+together, we see that
+if $\theta$ is an outer measure on $X$, and $A$, $B$ are two subsets of
+$X$, then $\theta(A\cup B)\le\theta A+\theta B$;  compare 112Ca and 112Cc.
+}%end of comment
+
+\leader{113C}{\Caratheodory's Method:  Theorem} Let $X$ be a set and
+$\theta$ an outer measure on $X$.   Set
+
+\Centerline{$\Sigma=\{E:E\subseteq X,\,
+\theta A=\theta(A\cap E)+\theta(A\setminus E)$ for every $A\subseteq X\}$.}
+
+\noindent Then $\Sigma$ is a $\sigma$-algebra of subsets of $X$.
+Define $\mu:\Sigma\to[0,\infty]$ by writing $\mu E=\theta E$ for
+$E\in\Sigma$;  then $(X,\Sigma,\mu)$ is a measure space.
+
+\proof{{\bf (a)} The first step is to note that for any $E$,
+$A\subseteq X$ we have
+$\theta(A\cap E)+\theta(A\setminus E)\ge\theta A$, by 113Bc;  so that
+
+\Centerline{$\Sigma=\{E:E\subseteq X,\,
+\theta A\ge\theta(A\cap E)+\theta(A\setminus E)$
+for every $A\subseteq X\}$.}
+
+
+\medskip
+
+{\bf (b)} Evidently $\emptyset\in\Sigma$, because
+
+\Centerline{$\theta(A\cap\emptyset)+\theta(A\setminus\emptyset)
+=\theta\emptyset+\theta A=\theta A$}
+
+\noindent for every $A\subseteq X$.   If $E\in\Sigma$, then
+$X\setminus E\in\Sigma$, because
+
+\Centerline{$\theta(A\cap(X\setminus E))+\theta(A\setminus(X\setminus E))
+=\theta(A\setminus E)+\theta(A\cap E)=\theta A$}
+
+\noindent for every $A\subseteq X$.
+
+\medskip
+
+{\bf (c)} Now suppose that $E$, $F\in\Sigma$ and $A\subseteq X$.   Then
+
+\ifdim\pagewidth<391pt
+\startsideshiftedpicture
+\hskip-20pt
+\sideshiftedpicture{mt113c1}{-15pt}{90.05pt}{100.68pt}
+\sideshiftedpicture{mt113c2}{-15pt}{90.05pt}{100.68pt}
+\sideshiftedpicture{mt113c3}{-15pt}{90.05pt}{100.68pt}
+\sideshiftedpicture{mt113c4}{-15pt}{90.05pt}{100.68pt}
+\else
+\startsideshiftedpicture
+\hskip10pt
+\sideshiftedpicture{mt113c1}{0pt}{97.05pt}{100.68pt}
+\sideshiftedpicture{mt113c2}{0pt}{97.05pt}{100.68pt}
+\sideshiftedpicture{mt113c3}{0pt}{97.05pt}{100.68pt}
+\sideshiftedpicture{mt113c4}{0pt}{97.05pt}{100.68pt}
+\fi
+
+\ifdim\pagewidth=390pt\vskip-15pt\fi
+\ifdim\pagewidth>467pt\vskip-10pt\fi
+
+$$\eqalignno{\theta(A\cap(&E\cup F))+\theta(A\setminus(E\cup F))
+    &\text{diagram (i)}\cr
+&=\theta(A\cap(E\cup F)\cap E)+\theta(A\cap(E\cup F)\setminus E)
+  +\theta(A\setminus(E\cup F))
+    &\text{diag.\ (ii)}\cr
+\noalign{\noindent (because $E\in\Sigma$ and
+$A\cap(E\cup F)\subseteq X)$}
+&=\theta(A\cap E)+\theta((A\setminus E)\cap F)
+  +\theta((A\setminus E)\setminus F)\cr
+&=\theta(A\cap E)+\theta(A\setminus E)
+    &\text{diag.\ (iii)}\cr
+\noalign{\noindent (because $F\in\Sigma$)}
+&=\theta A
+    &\text{diag.\ (iv)}\cr}$$
+
+\noindent (again because $E\in\Sigma$).   Because $A$ is arbitrary,
+$E\cup F\in\Sigma$.
+
+\medskip
+
+{\bf (d)} Thus $\Sigma$ is closed under simple unions and complements,
+and contains $\emptyset$.
+%Observe that it follows that
+%$E\setminus F=X\setminus(F\cup(X\setminus E))$ belongs to $\Sigma$ whenever $E$,
+%$F\in\Sigma$.
+Now suppose that $\langle E_n\rangle_{n\in\Bbb N}$ is a
+sequence in $\Sigma$, with $E=\bigcup_{n\in\Bbb N}E_n$.   Set
+
+\Centerline{$G_n=\bigcup_{m\le n}E_m$;}
+
+\noindent then $G_n\in\Sigma$ for each $n$, by induction on $n$.   Set
+
+\Centerline{$F_0=G_0=E_0$,\quad
+$F_n=G_n\setminus G_{n-1}=E_n\setminus G_{n-1}$ for $n\ge 1$;}
+
+\noindent  then
+%every $F_n$ belongs to $\Sigma$, and
+$E=\bigcup_{n\in\Bbb N}F_n=\bigcup_{n\in\Bbb N}G_n$.
+
+Take any $n\ge 1$ and any $A\subseteq X$.   Then
+
+$$\eqalign{\theta(A\cap G_n)
+&=\theta(A\cap G_n\cap G_{n-1})+\theta(A\cap G_n\setminus G_{n-1})\cr
+&=\theta(A\cap G_{n-1})+\theta(A\cap F_n).\cr}$$
+
+\noindent An induction on $n$ shows that $\theta(A\cap
+G_n)=\sum_{m=0}^n\theta(A\cap F_m)$ for every $n\ge 0$.
+
+Suppose that $A\subseteq X$.   Then $A\cap
+E=\bigcup_{n\in\Bbb N}A\cap F_n$, so
+
+$$\eqalign{\theta(A\cap E)
+&\le\sum_{n=0}^{\infty}\theta(A\cap F_n)\cr
+&=\lim_{n\to\infty}\sum_{m=0}^n\theta(A\cap F_m)
+=\lim_{n\to\infty}\theta(A\cap G_n).}$$
+
+\noindent On the other hand,
+
+$$\eqalign{\theta(A\setminus E)
+&=\theta(A\setminus\bigcup_{n\in\Bbb N}G_n)\cr
+&\le\inf_{n\in\Bbb N}\theta(A\setminus G_n)
+=\lim_{n\to\infty}\theta(A\setminus G_n),}$$
+
+\noindent using 113A(ii) to see that
+$\langle\theta(A\setminus G_n)\rangle_{n\in\Bbb N}$ is non-increasing
+and that $\theta(A\setminus E)\le \theta(A\setminus G_n)$ for every $n$.
+Accordingly
+
+$$\eqalign{\theta(A\cap E)+\theta(A\setminus E)
+&\le\lim_{n\to\infty}\theta(A\cap G_n)
++\lim_{n\to\infty}\theta(A\setminus G_n)\cr
+&=\lim_{n\to\infty}(\theta(A\cap G_n)+\theta(A\setminus G_n))
+=\theta A\cr}$$
+
+\noindent because every $G_n$ belongs to $\Sigma$, so $\theta(A\cap
+G_n)+\theta(A\setminus G_n)=\theta A$ for every $n$.   But $A$ is
+arbitrary, so $E\in\Sigma$, by the remark in (a) above.
+
+Because $\langle E_n\rangle_{n\in\Bbb N}$ is arbitrary,
+condition (iii) of 111A is satisfied, and $\Sigma$ is a $\sigma$-algebra
+of subsets of $X$.
+
+\medskip
+
+{\bf (e)} Now let us turn to $\mu$, the restriction of $\theta$ to
+$\Sigma$, and
+Definition 112A.   Of course $\mu\emptyset=\theta\emptyset=0$.   So let
+$\langle E_n\rangle_{n\in\Bbb N}$ be any disjoint sequence in $\Sigma$.
+Set $G_n=\bigcup_{m\le n}E_m$ for each $n$, as in (d), and
+
+\Centerline{$E=\bigcup_{n\in\Bbb N}E_n=\bigcup_{n\in\Bbb N}G_n$.}
+
+\noindent As in (d),
+
+$$\eqalign{\mu G_{n+1}
+=\theta G_{n+1}
+&=\theta(G_{n+1}\cap E_{n+1})+\theta(G_{n+1}\setminus E_{n+1})\cr
+&=\theta E_{n+1}+\theta G_n
+=\mu E_{n+1}+\mu G_n\cr}$$
+
+\noindent for each $n$, so $\mu G_n=\sum_{m=0}^n\mu E_m$ for every $n$.
+
+Now
+
+\Centerline{$\mu E
+=\theta E
+\le\sum_{n=0}^{\infty}\theta E_n
+=\sum_{n=0}^{\infty}\mu E_n$.}
+
+\noindent But also
+
+\Centerline{$\mu E=\theta E\ge\theta G_n=\mu G_n=\sum_{m=0}^n\mu E_m$}
+
+\noindent for each $n$, so $\mu E\ge\sum_{n=0}^{\infty}\mu E_n$.
+
+Accordingly $\mu E=\sum_{n=0}^{\infty}\mu E_n$.   As
+$\langle E_n\rangle_{n\in\Bbb N}$ is arbitrary, 112A(iii-$\beta$) is
+satisfied and $(X,\Sigma,\mu)$ is a measure space.
+}%end of proof of 113C
+
+\leader{113D}{Remark} Note\cmmnt{ from (a) in the proof above} that in
+this construction
+
+\cmmnt{\Centerline{$\Sigma=\{E:E\subseteq X,\,\theta(A\cap
+E)+\theta(A\setminus
+E)\le\theta A$ for every $A\subseteq X\}$\dvro{,}{.}}
+
+\noindent Since $\theta(A\cap E)+\theta(A\setminus E)$ is
+necessarily less than or equal to $\theta A$ when $\theta A=\infty$,}
+
+\Centerline{$\Sigma=\{E:E\subseteq X,\,\theta(A\cap E)+\theta(A\setminus
+E)\le\theta A$ whenever $A\subseteq X$ and $\theta A<\infty\}$.}
+
+\exercises{
+\leader{113X}{Basic exercises $\pmb{>}$(a)}
+%\spheader 113Xa
+Let $X$ be a set and $\theta$ an outer measure on $X$, and let
+$\mu$ be the measure on $X$ defined from $\theta$ by \Caratheodory's
+method.   Show that if $\theta A=0$, then $\mu$ measures $A$, so that a
+set $A\subseteq X$ is $\mu$-negligible iff $\theta A=0$, and $\mu$ is `complete' in
+the sense of 112Df.
+
+\spheader 113Xb Let $X$ be a set.
+{(i)} Show that if $\theta_1$, $\theta_2$ are outer measures on $X$, so is
+$\theta_1+\theta_2$, setting
+$(\theta_1+\theta_2)(A)=\theta_1A+\theta_2A$ for every $A\subseteq X$.
+{(ii)} Show that if
+$\langle\theta_i\rangle_{i\in I}$ is any non-empty family of
+outer measures on $X$, so is $\theta=\sup_{i\in I}\theta_i$, setting
+$\theta A=\sup_{i\in I}\theta_iA$ for every $A\subseteq X$.   {(iii)}
+Show that if $\theta_1$, $\theta_2$ are outer measures on $X$ so is
+$\theta_1\wedge\theta_2$, setting
+
+\Centerline{$(\theta_1\wedge\theta_2)(A)
+=\inf\{\theta_1B+\theta_2(A\setminus B):B\subseteq A\}$}
+
+\noindent for every $A\subseteq X$.
+
+\sqheader 113Xc Let $X$ and $Y$ be sets, $\theta$ an outer
+measure on $X$, and $f:X\to Y$ a function.   Show that the functional
+$B\mapsto\theta(f^{-1}[B]):\Cal PY\to[0,\infty]$ is an outer measure on
+$Y$.
+
+\sqheader 113Xd Let $X$ be a set and $\theta$ an outer measure
+on $X$;  let $Y$ be any subset of $X$.   {(i)} Show that
+$\theta\restrp\Cal PY$, the restriction of $\theta$ to subsets of $Y$, is
+an outer measure on $Y$.   {(ii)} Show that if $E\subseteq X$ is
+measured by the measure on $X$ defined from $\theta$ by
+\Caratheodory's method, then $E\cap Y$ is measured by the measure on
+$Y$ defined from $\theta\restrp\Cal PY$.
+
+\sqheader 113Xe Let $X$ and $Y$ be sets, $\theta$ an outer
+measure on $Y$, and $f:X\to Y$ a function.   Show that the functional
+$A\mapsto\theta(f[A]):\Cal PX\to[0,\infty]$ is an outer measure.
+
+\spheader 113Xf Let $X$ and $Y$ be sets, $\theta$ an outer
+measure on $X$, and $R\subseteq X\times Y$ a relation.   Show that
+the map $B\mapsto\theta(R^{-1}[B]):\Cal PY\to[0,\infty]$ is an outer
+measure on $Y$, where $R^{-1}[B]=\{x:\exists\,y\in B,\,(x,y)\in R\}$
+(1A1Bc).   Explain how this is a common generalization of (c),
+(d-i) and (e) above, and how it can be proved by putting them together.
+
+\spheader 113Xg Let $X$ be a set and $\theta$ an outer measure
+on $X$.   Suppose that $E\subseteq X$ is measured by the measure on
+$X$ defined from $\theta$ by \Caratheodory's method.   Show that
+$\theta(E\cap A)+\theta(E\cup A)=\theta E+\theta A$ for every
+$A\subseteq X$.
+
+\spheader 113Xh Let $X$ be a set and $\theta:\Cal PX\to[0,\infty]$ a functional such that $\theta\emptyset=0$, $\theta A\le\theta B$ whenever $A\subseteq B\subseteq X$, and $\theta(A\cup B)\le\theta A+\theta B$ whenever $A$, $B\subseteq X$.   Set
+
+\Centerline{$\Sigma=\{E:E\subseteq X,\,
+\theta A=\theta(A\cap E)+\theta(A\setminus E)$ for every
+$A\subseteq X\}$.}
+
+\noindent Show that $\emptyset$, $X\setminus E$ and $E\cup F$ belong to
+$\Sigma$ for all $E$,
+$F\in\Sigma$, so that $E\setminus F$, $E\cap F\in\Sigma$ for all $E$,
+$F\in\Sigma$.   Show that $\theta(E\cup F)=\theta E+\theta F$ whenever
+$E$, $F\in\Sigma$ and $E\cap F=\emptyset$.
+
+\leader{113Y}{Further exercises (a)}
+%\spheader 113Ya
+Let $(X,\Sigma,\mu)$ be a measure space.   For $A\subseteq X$
+set $\mu^*A=\inf\{\mu E:E\in\Sigma,\,A\subseteq E\}$.   Show that for
+every $A\subseteq X$ the infimum is attained, that is, there is an
+$E\in\Sigma$ such that $A\subseteq E$ and $\mu E=\mu^*A$.   Show that
+$\mu^*$ is an outer measure on $X$.
+
+\spheader 113Yb Let $(X,\Sigma,\mu)$ be a measure space and $D$
+any subset of
+$X$.   Show that $\Sigma_D=\{E\cap D:E\in\Sigma\}$ is a $\sigma$-algebra
+of subsets of $D$.   Set $\mu_D=\mu^*\restr \Sigma_D$, the function with
+domain $\Sigma_D$ such that $\mu_DB=\mu^*B$ for every $B\in\Sigma_D$,
+where $\mu^*$ is defined as in (a) above;  show that
+$(D,\Sigma_D,\mu_D)$ is a measure space.   ($\mu_D$ is the {\bf subspace
+measure} on $D$.)
+
+\spheader 113Yc Let $(X,\Sigma,\mu)$ be a measure space and let
+$\mu^*$ be the
+associated outer measure on $X$, as in 113Ya.   Let $\check\mu$ be the
+measure on $X$ constructed by \Caratheodory's method from $\mu^*$, and
+$\check\Sigma$ its domain.   Show that $\Sigma\subseteq\check\Sigma$ and
+that $\check\mu$ extends $\mu$.
+
+\spheader 113Yd Let $X$ be a set and
+$\tau:\Cal PX\to[0,\infty]$ any function such that $\tau\emptyset=0$.
+For $A\subseteq X$ set
+
+$$\eqalign{\theta A
+=\inf\{\sum_{j=0}\sp{\infty}\tau C_j:\langle C_j\rangle_{j\in\Bbb N}
+\text{ is a sequence of }&\text{subsets of }X\cr
+&\text{such that }
+A\subseteq\bigcup_{j\in\Bbb N}C_j\}.\cr}$$
+
+\noindent Show that $\theta$ is an outer measure on $X$.   \Hint{you
+will need 111F(b-ii) or something equivalent.}
+
+\spheader 113Ye Let $X$ be a set and $\theta_1$, $\theta_2$ two
+outer measures on $X$.   Show that $\theta_1\wedge\theta_2$, as
+described in 113Xb(iii), is the outer measure derived by the process of
+113Yd from the functional $\tau C=\min(\theta_1C,\theta_2C)$.
+
+\spheader 113Yf Let $X$ be a set and
+$\langle\theta_i\rangle_{i\in I}$ any non-empty family of outer measures
+on $X$.   Set $\tau C=\inf_{i\in I}\theta_iC$ for each 
+$C\subseteq X$.   Show that the outer measure derived from $\tau$ by the
+process of 113Yd is the largest outer measure $\theta$ such that
+$\theta A\le\theta_iA$ whenever $A\subseteq X$ and $i\in I$.
+
+\spheader 113Yg Let $X$ be a set and $\phi:\Cal PX\to[0,\infty]$
+a functional such that
+
+\inset{$\phi\emptyset=0$;
+
+$\phi(A\cup B)\ge\phi A+\phi B$ for all disjoint $A$, $B\subseteq X$;
+
+if $\sequencen{A_n}$ is a non-increasing sequence of subsets of
+$X$ and $\phi A_0<\infty$ then
+$\phi(\bigcap_{n\in\Bbb N}A_n)=\lim_{n\to\infty}\phi A_n$;
+
+if $\phi A=\infty$ and $a\in\Bbb R$ there is a $B\subseteq A$ such
+that $a\le\phi B<\infty$.}
+
+\noindent Set
+
+\Centerline{$\Sigma=\{E:E\subseteq X,\,\phi(A\cap E)+\phi(A\setminus
+E)=\phi A$ for every $A\subseteq X\}$.}
+
+\noindent Show that $(X,\Sigma,\phi\restr\Sigma)$ is a measure space.
+
+\spheader 113Yh Let $(X,\Sigma,\mu)$ be a measure space and for
+$A\subseteq X$ set
+$\mu_*A=\sup\{\mu E:E\in\Sigma$, $E\subseteq A$, $\mu E<\infty\}$.
+Show that $\mu_*:\Cal PX\to[0,\infty]$ satisfies the
+conditions of
+113Yg, and that if $\mu X<\infty$ then the measure defined from $\mu_*$
+by the method of 113Yg extends $\mu$.
+
+\spheader 113Yi Let $X$ be a set and $\Cal A$ an {\bf algebra}
+of subsets of $X$, that is, a family of subsets of $X$ such that
+
+\inset{$\emptyset\in\Cal A$,
+
+$X\setminus E\in\Cal A$ for every $E\in\Cal A$,
+
+$E\cup F\in\Cal A$ whenever $E$, $F\in\Cal A$.}
+
+\noindent Let $\phi:\Cal A\to[0,\infty]$ be a function such that
+
+\inset{$\phi\emptyset=0$,
+
+$\phi(E\cup F)=\phi E+\phi F$ whenever $E$, $F\in\Cal A$
+and $E\cap F=\emptyset$,
+
+$\phi E=\lim_{n\to\infty}\phi E_n$ whenever
+$\sequencen{E_n}$ is a non-decreasing sequence in $\Cal A$ with union
+$E$.}
+
+\noindent Show that there is a measure $\mu$ on $X$ extending $\phi$.
+\Hint{set $\phi A=\infty$ for $A\in\Cal PX\setminus\Cal A$;
+define $\theta$ from $\phi$ as in 113Yd, and $\mu$ from $\theta$.}
+
+\spheader 113Yj (T.de Pauw) Let $X$ be a set, $\Tau$ a
+$\sigma$-algebra of subsets of $X$, and $\theta$ an outer measure on
+$X$.   Set
+$\Sigma=\{E:E\in\Tau,\,\theta A=\theta(A\cap E)+\theta(A\setminus E)$
+for every $A\in\Tau\}$.   Show that $\Sigma$ is
+a $\sigma$-algebra of subsets of $X$ and that $\theta\restr\Sigma$ is a
+measure.
+
+\spheader 113Yk\dvAnew{2010} Let $X$, $\tau:\Cal PX\to[0,\infty]$ and
+$\theta$ be as in 113Yd;  let $\mu$ be the measure defined by
+\Caratheodory's method from $\theta$, and $\Sigma$ the domain of $\mu$.  
+Suppose that $E\subseteq X$ is such that 
+$\theta(C\cap E)+\theta(C\setminus E)\le\tau C$ whenever $C\subseteq X$
+is such that $0<\tau C<\infty$.   Show that $E\in\Sigma$.
+}%end of exercises
+
+\endnotes{
+\Notesheader{113} We are proceeding by the easiest stages I can devise
+to the construction of a non-trivial measure space, that is, Lebesgue
+measure on $\Bbb R$.   There are many constructions of Lebesgue measure,
+but in my view \Caratheodory's method (113C) is the right one to begin
+with, because it is the most powerful and versatile single technique for
+constructing measures.   It is, of course, abstract -- it deals with
+arbitrary outer measures on arbitrary sets;  but I really think that the
+Lebesgue theory, intertwined as it is with the rich structure of Euclidean
+space, is harder than the abstract theory of measure.
+We do at least have here a serious theorem for you to get your
+teeth into, mastery of which should be both satisfying and useful.   I
+must say that I think it very remarkable that such a direct construction
+should be effective.    Looking at the proof, it is perhaps worth while
+distinguishing between the `algebraic' or `finite' parts ((a)-(c)) and
+the parts involving sequences of sets ((d)-(e));   the former amount to
+a proof of 113Xh.   Outer measures of various kinds appear throughout
+measure theory, and I sketch a few of the relevant constructions in
+113X-113Y.
+}%end of notes
+
+
+\discrpage
+

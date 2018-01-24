@@ -1,0 +1,1233 @@
+\frfilename{mt436.tex} 
+\versiondate{9.5.11} 
+\copyrightdate{2002} 
+      
+\def\chaptername{Topologies and measures II} 
+\def\sectionname{Representation of linear functionals} 
+      
+\newsection{436} 
+      
+I began this treatise with the three steps which make measure theory, as 
+we know it, possible:  a construction of Lebesgue measure, a 
+definition of an integral from a measure, and a proof of the 
+convergence theorems.   I used what I am sure is the best route: 
+Lebesgue measure from Lebesgue 
+outer measure, and integrable functions from simple functions.   But of 
+course there are many other paths to the same ends, and some of them 
+show us slightly different aspects of the subject.   In this section I 
+come -- rather later than many authors would -- to an account of a 
+procedure for constructing measures from integrals. 
+      
+I start with three fundamental theorems, the first and third being the 
+most important.   A positive linear functional on a truncated Riesz 
+space of functions is an integral iff it is sequentially smooth (436D); 
+a smooth linear functional corresponds to a quasi-Radon measure (436H); 
+and if $X$ is a compact Hausdorff space, any positive linear functional 
+on $C(X)$ corresponds to a Radon measure (436J-436K). 
+      
+\leader{436A}{Definition} Let $X$ be a set, $U$ a Riesz subspace of 
+$\Bbb R^X$, and $f:U\to\Bbb R$ a positive linear functional.   I say 
+that $f$ is {\bf sequentially smooth} if whenever $\sequencen{u_n}$ is a 
+non-increasing sequence in $U$ such that $\lim_{n\to\infty}u_n(x)=0$ for 
+every $x\in X$, then $\lim_{n\to\infty}f(u_n)=0$. 
+      
+If $(X,\Sigma,\mu)$ is a measure space and $U$ is a Riesz subspace of 
+the space of real-valued $\mu$-integrable functions defined everywhere 
+on $X$, then $\int\,d\mu:U\to\Bbb R$ is sequentially smooth\cmmnt{, by 
+Fatou's Lemma or Lebesgue's Dominated Convergence Theorem}. 
+      
+\cmmnt{\medskip 
+      
+\noindent{\bf Remark} It is essential to distinguish between 
+`sequentially smooth', as defined here, and `sequentially 
+order-continuous', as in 313Hb or 355G.   In the context here, a 
+positive linear operator $f:U\to\Bbb R$ is sequentially order-continuous 
+if $\lim_{n\to\infty}f(u_n)=0$ whenever $\sequencen{u_n}$ is a 
+non-increasing sequence in $U$ such that $0$ is the greatest lower bound 
+for $\{u_n:n\in\Bbb N\}$ in $U$;  while $f$ is sequentially smooth if 
+$\lim_{n\to\infty}f(u_n)=0$ whenever $\sequencen{u_n}$ is a 
+non-increasing sequence in $U$ such that $0$ is the greatest lower bound 
+for $\{u_n:n\in\Bbb N\}$ in $\Bbb R^X$.   So there can be sequentially 
+smooth functionals which are not sequentially order-continuous, as in 
+436Xi.   A sequentially order-continuous positive linear functional is 
+of course sequentially smooth. 
+}%end of comment 
+      
+\leader{436B}{Definition} Let $X$ be a set.   I will say that a Riesz 
+subspace $U$ of $\Bbb R^X$ is {\bf truncated} (or satisfies {\bf Stone's 
+condition}) if $u\wedge\chi X\in U$ for every $u\in U$. 
+      
+In this case, $u\wedge\gamma\chi X\in U$ for every $\gamma\ge 0$ and 
+$u\in U$\cmmnt{ (being $-u^-$ if $\gamma=0$, 
+$\gamma(\gamma^{-1}u\wedge\chi X)$ otherwise)}. 
+      
+\leader{436C}{Lemma} Let $X$ be a set and $U$ a truncated Riesz subspace 
+of $\Bbb R^X$.   Write $\Cal K$ for the family of sets of the form 
+$\{x:x\in X,\,u(x)\ge 1\}$ as $u$ runs over $U$.   Let $f:U\to\Bbb R$ be 
+a sequentially smooth positive linear functional, and $\mu$ a measure on 
+$X$ such 
+that $\mu K$ is defined and equal to $\inf\{f(u):\chi K\le u\in U\}$ for 
+every $K\in\Cal K$.   Then $\int u\,d\mu$ exists and is equal to $f(u)$ 
+for every $u\in U$. 
+      
+\proof{ It is enough to deal with the case $u\ge 0$, since $U=U^+-U^+$ 
+and both $f$ and $\int$ are linear.   Note that if $v\in U$, 
+$K\in\Cal K$ and $v\le\chi K$, then $v\le w$ whenever 
+$\chi K\le w\in U$, so $f(v)\le\mu K$.   For $k$, $n\in\Bbb N$ set 
+      
+\Centerline{$K_{nk}=\{x:u(x)\ge  2^{-n}k\}$, 
+\quad$u_{nk}=u\wedge 2^{-n}k\chi X$.} 
+      
+\noindent Then, for $k\ge 1$, 
+      
+\Centerline{$K_{nk}=\{x:\Bover{2^n}{k}u\ge 1\}\in\Cal K$,} 
+      
+\Centerline{$2^n(u_{n,k+1}-u_{nk})\le\chi K_{nk} 
+\le 2^n(u_{nk}-u_{n,k-1})$.} 
+      
+\noindent So 
+      
+\Centerline{$2^nf(u_{n,k+1}-u_{nk})\le\mu K_{nk} 
+\le 2^nf(u_{nk}-u_{n,k-1})$,} 
+      
+\noindent and 
+      
+\Centerline{$f(u_{n,4^n+1}-u_{n1})\le\sum_{k=1}^{4^n}2^{-n}\mu K_{nk} 
+\le f(u_{n,4^n}\le f(u)$.} 
+      
+\noindent But setting $w_n=u_{n,4^n+1}-u_{n1}$, $\sequencen{w_n}$ is a 
+non-decreasing sequence of functions in $U$ and $\sup_{n\in\Bbb 
+N}w_n(x)=u(x)$ for every $x$, so 
+$\lim_{n\to\infty}f(u-w_n)=0$ and $\lim_{n\to\infty}f(w_n)=f(u)$. 
+Also, setting $v_n=\sum_{k=1}^{4^n}2^{-n}\chi K_{nk}$, we have 
+$w_n\le v_n\le u$ and $f(w_n)\le\int v_n\le f(u)$ for each $n$, so 
+      
+\Centerline{$\biggerint u=\lim_{n\to\infty}\int v_n=f(u)$} 
+      
+\noindent by B.Levi's theorem. 
+}%end of proof of 436C 
+      
+\leader{436D}{Theorem} Let $X$ be a set and $U$ a truncated Riesz 
+subspace of $\Bbb R^X$.   Let $f:U\to\Bbb R$ be a positive linear 
+functional.   Then the following are equiveridical: 
+      
+(i) $f$ is sequentially smooth; 
+      
+(ii) there is a measure $\mu$ on $X$ such that $\int u\,d\mu$ is defined 
+and equal to $f(u)$ for every $u\in U$. 
+      
+\proof{ I remarked in 436A that (ii)$\Rightarrow$(i) is a 
+consequence of Fatou's Lemma.   So the argument here is devoted to 
+proving that (i)$\Rightarrow$(ii). 
+      
+\medskip 
+      
+{\bf (a)} Let $\Cal K$ be the family of sets $K\subseteq X$ such that 
+$\chi K=\inf_{n\in\Bbb N}u_n$ for some sequence $\sequencen{u_n}$ in 
+$U$, taking the infimum in $\Bbb R^X$, so that 
+$(\inf_{n\in\Bbb N}u_n)(x)=\inf_{n\in\Bbb N}u_n(x)$ for every $x\in X$. 
+Then $\Cal K$ 
+is closed under finite unions and countable intersections.   \Prf\ (i) 
+If $K$, $K'\in\Cal K$ take sequences $\sequencen{u_n}$, 
+$\sequencen{u'_n}$ in $U$ such that $\chi K=\inf_{n\in\Bbb N}u_n$ and 
+$\chi K'=\inf_{n\in\Bbb N}u'_n$; then 
+$\chi(K\cup K')=\inf_{m,n\in\Bbb N}u_m\vee u'_n$, so 
+$K\cup K'\in\Cal K$.   (ii) If $\sequencen{K_n}$ is a sequence in 
+$\Cal K$, then for each $n\in\Bbb N$ we can choose a sequence 
+$\sequence{i}{u_{ni}}$ in $U$ such 
+that $\chi K_n=\inf_{i\in\Bbb N}u_{ni}$;  now 
+$\chi(\bigcap_{n\in\Bbb N}K_n)=\inf_{n,i\in\Bbb N}u_{ni}$, so 
+$\bigcap_{n\in\Bbb N}K_n\in\Cal K$.\ \Qed 
+      
+Note that $\emptyset\in\Cal K$ because $0\in U$. 
+      
+\medskip 
+{\bf (b)} We need to know that if $u\in U$ then $K=\{x:u(x)\ge 1\}$ 
+belongs to $\Cal K$.   \Prf\ Set 
+      
+\Centerline{$u_n=2^n((u\wedge\chi X)-(u\wedge(1-2^{-n})\chi X))$.} 
+      
+\noindent Because $U$ is truncated, every $u_n$ belongs to $U$, and it 
+is easy to 
+check that $\inf_{n\in\Bbb N}u_n=\chi K$.\ \QeD\  It follows that 
+      
+\Centerline{$\{x:u(x)\ge\alpha\}=\{x:\Bover1\alpha u(x)\ge 1\} 
+\in\Cal K$} 
+      
+\noindent whenever $u\in U$ and $\alpha>0$. 
+      
+\medskip 
+      
+{\bf (c)} For $K\in\Cal K$, set 
+$\phi_0K=\inf\{f(u):u\in U,\,u\ge\chi K\}$.   Then $\phi_0$ satisfies 
+the conditions of 413I.   \Prf\  I have 
+already checked ($\dagger$) and ($\ddagger$) of 413I. 
+      
+\medskip 
+      
+\quad\grheada\ Fix $K$, $L\in\Cal K$ with $L\subseteq K$.   Set 
+$\gamma=\sup\{\phi_0K':K'\in\Cal K,\,K'\subseteq K\setminus L\}$. 
+      
+\medskip 
+      
+\qquad{\bf (i)} Suppose that $K'\in\Cal K$ is included in $K\setminus L$,  
+and $\epsilon>0$.   Let $\sequencen{u_n}$, $\sequencen{u'_n}$ be 
+sequences in $U$ such that $\chi L=\inf_{n\in\Bbb N}u_n$ and  
+$\chi K'=\inf_{n\in\Bbb N}u'_n$, and let $u\in U$ be such that $u\ge\chi K$ 
+and $f(u)\le\phi_0K+\epsilon$.   Set $v_n=u\wedge\inf_{i\le n}u_i$, 
+$v'_n=u\wedge\inf_{i\le n}u'_i$ for each $n$.   Then 
+$\sequencen{v_n\wedge v'_n}$ is a non-increasing sequence in $U$ with  
+infimum $\chi L\wedge\chi K'=0$, so there is an $n$ such that  
+$f(v_n\wedge v'_n)\le\epsilon$.   In this case 
+      
+$$\eqalign{\phi_0L+\phi_0K' 
+&\le f(v_n)+f(v'_n) 
+=f(v_n+v'_n)\cr 
+&=f(v_n\vee v'_n)+f(v_n\wedge v'_n) 
+\le f(u)+\epsilon 
+\le\phi_0K+2\epsilon.\cr}$$ 
+      
+\noindent As $\epsilon$ is arbitrary, $\phi_0L+\phi_0K'\le \phi_0K$. 
+As $K'$ is arbitrary, $\phi_0L+\gamma\le\phi_0K$. 
+      
+\medskip 
+      
+\qquad{\bf (ii)} Next, given $\epsilon\in\ooint{0,1}$, there are $u$, 
+$v\in U$ such that $u\ge\chi K$, $v\ge\chi L$ and 
+$f(v)\le\phi_0L+\epsilon$.   Consider 
+      
+\Centerline{$K'=\{x:x\in K,\,\min(1,u(x))-v(x)\ge\epsilon\} 
+\subseteq K\setminus L$.} 
+      
+\noindent By (b), $K'\in\Cal K$.   If $w\in U$ and 
+$w\ge\chi K'$, then $v(x)+w(x)\ge 1-\epsilon$ for every $x\in K$, so 
+      
+\Centerline{$\phi_0K 
+\le\Bover1{1-\epsilon}f(v+w) 
+\le\Bover1{1-\epsilon}(\phi_0L+\epsilon+f(w))$.} 
+      
+\noindent As $w$ is arbitrary, 
+      
+\Centerline{$(1-\epsilon)\phi_0K\le\phi_0 
+L+\epsilon+\phi_0K'\le\phi_0L+\epsilon+\gamma$.} 
+      
+\noindent As $\epsilon$ is arbitrary, $\phi_0K\le\phi_0L+\gamma$ and we 
+have equality, as required by ($\alpha$) in 413I. 
+      
+\medskip 
+      
+\quad\grheadb\ Now suppose that $\sequencen{K_n}$ is a non-increasing 
+sequence in $\Cal K$ with empty intersection.   For each $n\in\Bbb N$ 
+let $\sequence{i}{u_{ni}}$ be a sequence in $U$ with infimum $\chi K_n$ 
+in $\Bbb R^X$.   Set $v_n=\inf_{i,j\le n}u_{ji}$ for each $n$;  then 
+$\sequencen{v_n}$ is a non-increasing sequence in $U$ with infimum 
+$\inf_{n\in\Bbb N}\chi K_n=0$, so $\inf_{n\in\Bbb N}f(v_n)=0$.   But 
+      
+\Centerline{$v_n\ge\inf_{j\le n}\chi K_j=\chi K_n$, 
+\quad$\phi_0K_n\le f(v_n)$} 
+      
+\noindent for every $n$, so $\inf_{n\in\Bbb N}\phi_0K_n=0$, as required 
+by ($\beta$) of 413I.\ \Qed 
+      
+\medskip 
+      
+{\bf (d)} By 413I, there is a complete locally determined measure $\mu$ 
+on $X$, inner regular with respect to $\Cal K$, extending $\phi_0$. 
+By 436C, $f(u)=\int u\,d\mu$ for every $u\in U$, as required. 
+}%end of proof of 436D 
+      
+\leader{436E}{Proposition} Let $X$ be any topological space, 
+and $C_b=C_b(X)$ the space of bounded continuous 
+real-valued functions on 
+$X$.   Then there is a one-to-one correspondence between totally finite 
+Baire measures $\mu$ on $X$ and sequentially smooth positive linear 
+functionals $f:C_b\to\Bbb R$, given by the formulae 
+      
+\Centerline{$f(u)=\biggerint u\,d\mu$ for every $u\in C_b$,} 
+      
+\Centerline{$\mu Z=\inf\{f(u):\chi Z\le u\in C_b\}$ for every zero 
+set 
+$Z\subseteq X$.} 
+      
+\proof{{\bf (a)} If $\mu$ is a totally finite Baire measure on $X$, then 
+every continuous bounded real-valued function is integrable, and 
+$f=\int d\mu$ is a sequentially smooth positive linear operator on 
+$C_b$, by Fatou's Lemma, as usual. 
+      
+\medskip 
+      
+{\bf (b)} If $f:C_b\to\Bbb R$ is a sequentially smooth positive 
+linear 
+operator, then 436D tells us that there is a measure $\mu_0$ on $X$ such 
+that $\int u\,d\mu_0$ is defined and equal to $f(u)$ for every $u\in 
+C_b$.   By the construction in 436D, or otherwise, we may suppose 
+that 
+$\mu_0$ is complete, so that every $u\in C_b$ is 
+$\Sigma$-measurable, where $\Sigma$ is the domain of $\mu_0$.   It 
+follows by the definition of the Baire $\sigma$-algebra $\CalBa$ of 
+$X$ (4A3K) that $\CalBa\subseteq\Sigma$, so that 
+$\mu=\mu_0\restr\Sigma$ is a Baire measure;  of course we still have 
+$f(u)=\int u\,d\mu$ for every $u\in C_b$.   Also, if $Z\subseteq X$ 
+is a 
+zero set, $\mu Z=\inf\{f(u):\chi Z\le u\in C_b\}$.   \Prf\  Express 
+$Z$ 
+as $\{x:v(x)=0\}$ where $v:X\to[0,1]$ is continuous.   Set 
+      
+\Centerline{$u_n=(\chi X-2^nv)^+$} 
+      
+\noindent for $n\in\Bbb N$;  then $\sequencen{u_n}$ is a non-increasing 
+sequence in $C_b$ and $\sequencen{u_n(x)}\to(\chi Z)(x)$ for every 
+$x\in X$, so 
+      
+$$\eqalign{\mu Z 
+&\le\inf\{\int u\,d\mu:\chi Z\le u\in C_b\} 
+=\inf\{f(u):\chi Z\le u\in C_b\}\cr 
+&\le\inf_{n\in\Bbb N}f(u_n) 
+=\lim_{n\to\infty}\int u_nd\mu 
+=\mu Z.\text{ \Qed}\cr}$$ 
+      
+\medskip 
+      
+{\bf (c)} The argument of (b) shows that if two totally finite Baire 
+measures give the same integrals to every member of $C_b$, then they 
+must agree on all zero sets.   By the Monotone Class Theorem (136C) they 
+agree on the $\sigma$-algebra generated by the zero sets, that is, 
+$\CalBa$, and are therefore equal.   Thus the operator 
+$\mu\mapsto\int d\mu$ from the set of totally finite Baire measures on 
+$X$ to the set of sequentially smooth positive linear operators on 
+$C_b$ 
+is a bijection, and if $f=\int d\mu$ then $\mu Z=\inf\{f(u):\chi Z\le 
+u\in C_b\}$ for every zero set $Z$, as required. 
+}%end of proof of 436E 
+      
+\leader{436F}{}\cmmnt{ Corresponding to 434R, we have the 
+following construction for product Baire measures, applicable to a 
+slightly larger class of spaces. 
+      
+\medskip 
+      
+\noindent}{\bf Proposition} Let $X$ be a sequential space, $Y$ a 
+topological space, and $\mu$, $\nu$ totally finite Baire measures on 
+$X$, $Y$ respectively.   Then there is a Baire measure $\lambda$ on 
+$X\times Y$ such that 
+      
+\Centerline{$\lambda W=\biggerint\nu W[\{x\}]\mu(dx)$, 
+\quad$\int fd\lambda=\biggeriint f(x,y)\nu(dy)\mu(dx)$} 
+      
+\noindent for every Baire set $W\subseteq X\times Y$ and every bounded 
+continuous function $f:X\times Y\to\Bbb R$. 
+      
+\proof{{\bf (a)} $\phi(f)=\iint f(x,y)dydx$ is defined in $\Bbb R$ for 
+every bounded continuous function $f:X\times Y\to\Bbb R$.   \Prf\ For 
+each $x\in X$, $g(x)=\int f(x,y)dy$ is defined because $y\mapsto f(x,y)$ 
+is continuous.    If $\sequencen{x_n}$ is any sequence in $X$ converging 
+to $x\in X$, then 
+      
+\Centerline{$g(x)=\biggerint f(x,y)dy=\int\lim_{n\to\infty}f(x_n,y)dy 
+=\lim_{n\to\infty}\int f(x_n,y)dy=\lim_{n\to\infty}g(x_n)$} 
+      
+\noindent by Lebesgue's Dominated Convergence Theorem.   So $g$ is 
+sequentially continuous;  because $X$ is sequential, $g$ is continuous 
+(4A2Kd).   So $\iint f(x,y)dydx=\int g(x)dx$ is defined in 
+$\Bbb R$.\ \Qed 
+      
+\medskip 
+      
+{\bf (b)} Of course $\phi$ is a positive linear functional on 
+$C_b(X\times Y)$, and B.Levi's theorem shows that it is sequentially 
+smooth.   By 436E, there is a Baire measure $\lambda$ on 
+$X\times Y$ such that $\int fd\lambda=\phi(f)$ for every 
+$f\in C_b(X\times Y)$. 
+      
+\medskip 
+      
+{\bf (c)} If $W\subseteq X\times Y$ is a zero set, there is a 
+non-increasing sequence $\sequencen{f_n}$ in $C_b(X\times Y)$ such that 
+$\chi W=\inf_{n\in\Bbb N}f_n$.   So B.Levi's theorem tells us that 
+      
+\Centerline{$\biggerint\nu W[\{x\}]dx 
+=\lim_{n\to\infty}\int f_n(x,y)dydx 
+=\lim_{n\to\infty}\int f_nd\lambda 
+=\lambda W$.} 
+      
+\noindent Now the Monotone Class Theorem (136B) tells us that 
+      
+\Centerline{$\{W:W\subseteq X\times Y$ is Baire, $\int\nu W[\{x\}]dx$ 
+exists $=\lambda W\}$} 
+      
+\noindent includes the $\sigma$-algebra generated by the zero sets, that 
+is, contains every Baire set in $X\times Y$.   So $\lambda$ has the 
+required properties. 
+}%end of proof of 436F 
+      
+\leader{436G}{Definition} Let $X$ be a set, $U$ a Riesz subspace of 
+$\Bbb R^X$, and $f:U\to\Bbb R$ a positive linear functional.   I say 
+that $f$ is {\bf smooth} if whenever $A$ is a non-empty 
+downwards-directed family in 
+$U$ such that $\inf_{u\in A}u(x)=0$ for every $x\in X$, then 
+$\inf_{u\in A}f(u)=0$. 
+      
+Of course a smooth functional is sequentially smooth.   If 
+$(X,\frak T,\Sigma,\mu)$ is an effectively locally finite 
+$\tau$-additive 
+topological measure space and $U$ is a Riesz subspace of $\Bbb R^X$ 
+consisting of integrable continuous functions, then 
+$\int\,d\mu:U\to\Bbb R$ is 
+smooth\cmmnt{, by 414Bb}.   \cmmnt{Corresponding to the remark in 
+436A, note that an order-continuous positive linear functional must 
+be smooth, but that a smooth positive linear functional need not be 
+order-continuous.} 
+      
+\leader{436H}{Theorem} Let $X$ be a set and $U$ a truncated Riesz 
+subspace of $\Bbb R^X$.   Let $f:U\to\Bbb R$ be a positive linear 
+functional.   Then the following are equiveridical: 
+      
+(i) $f$ is smooth; 
+      
+(ii) there are a topology $\frak T$ and a measure $\mu$ on $X$ such that 
+$\mu$ is a quasi-Radon measure with respect to $\frak T$, 
+$U\subseteq C(X)$ and $\int u\,d\mu$ is defined and equal to $f(u)$ for 
+every $u\in U$; 
+      
+(iii) writing $\frak S$ for the coarsest topology on $X$ for which every 
+member of $U$ is continuous, there is a 
+measure $\mu$ on $X$ such that $\mu$ is a quasi-Radon measure with 
+respect to $\frak S$, 
+and $\int u\,d\mu$ is defined and equal to $f(u)$ for every $u\in U$. 
+      
+\proof{ As remarked in 436G, in a fractionally more general context, 
+(ii)$\Rightarrow$(i) is a 
+consequence of 414B.   Of course (iii)$\Rightarrow$(ii).   So the 
+argument here is devoted to proving that 
+(i)$\Rightarrow$(iii).   Except for part (b) it is a simple adaptation 
+of 
+the method of 436D. 
+      
+\medskip 
+      
+{\bf (a)} Let $\Cal K$ be the family of sets $K\subseteq X$ such that 
+$\chi K=\inf A$ in $\Bbb R^X$ for some non-empty set $A\subseteq U$. 
+Then $\Cal K$ is closed under finite unions. 
+\Prf\ If $K$, $K'\in\Cal K$ take $A$, $A'\subseteq U$ such that 
+$\chi K=\inf A$, $\chi K'=A'$;  then 
+$\chi(K\cup K')=\inf\{u\vee u':u\in A,\,u'\in A'\}$, so 
+$K\cup K'\in\Cal K$.\ \Qed 
+      
+Note that $\emptyset\in\Cal K$ because $0\in U$. 
+      
+As in part (b) of the proof of 436D, $\{x:u(x)\ge\alpha\}\in\Cal K$ 
+whenever $\alpha>0$ and $u\in U$. 
+      
+\medskip 
+      
+{\bf (b)} Every member of 
+$\Cal K$ is closed for $\frak S$, being of the form 
+$\{x:u(x)\ge 1$ for every $u\in A\}$ for some $A\subseteq U$.   We need 
+to know that if $K\in\Cal K$ and $G\in\frak S$, then 
+$K\setminus G\in\Cal K$.   \Prf\ Take a 
+non-empty set $B\subseteq U$ such that $\chi K=\inf B$. 
+Because $\Cal K$ is closed under 
+finite unions and arbitrary intersections, 
+$\frak S_K=\{G:G\subseteq X,\,K\setminus G\in\Cal K\}$ is a topology on 
+$X$.  (i) If $u\in U$ and $G=\{x:u(x)>0\}$, then 
+$\chi(K\setminus G)=\inf\{(v-ku)^+:v\in B,\,k\in\Bbb N\}$ so 
+$K\setminus G\in\Cal K$ and $G\in\frak S_K$. 
+(ii) If $u\in U$ and $\alpha>0$, then 
+$\{x:u(x)>\alpha\}=\{x:(u-u\wedge\alpha\chi X)(x)>0\}$ belongs to 
+$\frak S_K$, by (i). (iii) If $u\in U$ and $\alpha>0$, set 
+$G=\{x:u(x)<\alpha\}$.   Then 
+      
+\Centerline{$K\setminus G 
+=K\cap\{x:u(x)\ge\alpha\}\in\Cal K$,} 
+      
+\noindent so $G\in\frak S_K$. 
+(iv) Thus every member of $U^+$ is $\frak S_K$-continuous (2A3Bc), so 
+every member of $U$ is $\frak S_K$-continuous (2A3Be), and 
+$\frak S\subseteq\frak S_K$, that is, 
+$K\setminus G\in\Cal K$ for every $G\in\frak S$.\ \Qed 
+      
+\medskip 
+      
+{\bf (c)} For $K\in\Cal K$, set 
+$\phi_0K=\inf\{f(u):u\in U,\,u\ge\chi K\}$.   Then $\phi_0$ satisfies 
+the conditions of 415K.   \Prf\  I have 
+already checked ($\dagger$) and ($\ddagger$) of 415K. 
+      
+\medskip 
+      
+\quad\grheada\ Fix $K$, $L\in\Cal K$ with $L\subseteq K$.   Set 
+$\gamma=\sup\{\phi_0K':K'\in\Cal K,\,K'\subseteq K\setminus L\}$. 
+      
+\medskip 
+      
+\qquad{\bf (i)} Suppose that $K'\in\Cal K$ is included in $K\setminus L$ 
+and $\epsilon>0$.   Set $A=\{u:\chi L\le u\in U\}$, $A'=\{u:\chi K'\le 
+u\in 
+U\}$, so that $\chi L=\inf A$ and $\chi K'=\inf A'$, and let $v\in U$ be 
+such that $v\ge\chi K$ and $f(v)\le\phi_0K+\epsilon$.   Then $\{u\wedge 
+u':u\in A,\,u'\in A'\}$ is a downwards-directed family with infimum $0$ 
+in 
+$\Bbb R^X$, so (because $f$ is smooth) there are $u\in A$, $u'\in A'$ 
+such 
+that $f(u\wedge u')\le\epsilon$.   In this case 
+      
+\Centerline{$\phi_0L+\phi_0K' 
+\le f(v\wedge u)+f(v\wedge u') 
+=f(v\wedge(u\vee u'))+f(v\wedge u\wedge u') 
+\le\phi_0K+2\epsilon$.} 
+      
+\noindent As $\epsilon$ is arbitrary, $\phi_0L+\phi_0K'\le \phi_0K$. 
+As 
+$K'$ is arbitrary, $\phi_0L+\gamma\le\phi_0K$. 
+      
+\medskip 
+      
+\qquad{\bf (ii)} Next, given $\epsilon\in\ooint{0,1}$, there are $u$, 
+$v\in 
+U$ such that $u\ge\chi K$, $v\ge\chi L$ and $f(v)\le\phi_0L+\epsilon$. 
+Consider 
+      
+\Centerline{$K'=\{x:x\in K,\,\min(1,u(x))-v(x)\ge\epsilon\}$.} 
+      
+\noindent By the last remark in (a), $K'\in\Cal K$.   If $w\in U$ and 
+$w\ge\chi K'$, then $v(x)+w(x)\ge 1-\epsilon$ for every $x\in K$, so 
+      
+\Centerline{$\phi_0K 
+\le\Bover1{1-\epsilon}f(v+w) 
+\le\Bover1{1-\epsilon}(\phi_0L+\epsilon+f(w))$.} 
+      
+\noindent As $w$ is arbitrary, 
+      
+\Centerline{$(1-\epsilon)\phi_0K\le\phi_0 
+L+\epsilon+\phi_0K'\le\phi_0L+\epsilon+\gamma$.} 
+      
+\noindent As $\epsilon$ is arbitrary, $\phi_0K\le\phi_0L+\gamma$ and we 
+have equality, as required by ($\alpha$) in 415K. 
+      
+\medskip 
+      
+\quad\grheadb\ Now suppose that $\Cal K'$ is a non-empty 
+downwards-directed subset of $\Cal K$ with empty intersection.   Set 
+      
+\Centerline{$A=\bigcup_{K\in\Cal K'}\{u:\chi K\le u\in U\}$.} 
+      
+\noindent Then $A$ is a downwards-directed subset of $U$ and $\inf A=0$ 
+in $\Bbb R^X$.   Because $f$ is smooth, 
+      
+\Centerline{$0=\inf_{u\in A}f(u)=\inf_{K\in\Cal K'}\phi_0K$.} 
+      
+\noindent Thus ($\beta$) of 415K is satisfied. 
+      
+\medskip 
+      
+\quad\grheadc\ If $K\in\Cal K$ and $\phi_0K>0$, take $u\in U$ such that 
+$u\ge\chi K$, and consider $G=\{x:u(x)>\bover12\}$.   Then 
+$K\subseteq G$, while $G\subseteq\{x:2u(x)\ge 1\}$, so 
+      
+\Centerline{$\sup\{\phi_0K':K'\in\Cal K,\,K'\subseteq G\} 
+\le 2f(u)<\infty$.} 
+      
+\noindent Thus $\phi_0$ satisfies ($\gamma$) of 415K.\ \Qed 
+      
+\medskip 
+      
+{\bf (d)} By 415K, there is a quasi-Radon measure $\mu$ on $X$ extending 
+$\phi_0$.   By 436C, $f(u)=\int u\,d\mu$ for every $u\in U$. 
+}%end of proof of 436H 
+      
+\medskip 
+      
+\noindent{\bf Remark}\cmmnt{ It is worth noting explicitly that} $\mu$, as 
+constructed here, is inner regular with respect to the family $\Cal K$ 
+of sets 
+$K\subseteq X$ such that $\chi K=\inf A$ for some set $A\subseteq U$. 
+      
+\leader{436I}{Lemma} Let $X$ be a topological space.   Let $C_0=C_0(X)$ 
+be the space of continuous functions $u:X\to\Bbb R$ which `vanish at 
+infinity' in the sense that $\{x:|u(x)|\ge\epsilon\}$ is compact for 
+every $\epsilon>0$. 
+      
+(a) $C_0$ is a norm-closed solid linear subspace of $C_b=C_b(X)$, so is 
+a Banach lattice in its own right. 
+      
+(b) $C_0^*=C_0^{\sim}$ is an $L$-space\cmmnt{ (definition: 354M)}. 
+      
+(c) If $A\subseteq C_0$ is a non-empty downwards-directed set such 
+that $\inf_{u\in A}u(x)=0$ for every $x\in X$, then 
+$\inf_{u\in A}\|u\|_{\infty}=0$. 
+      
+\proof{{\bf (a)(i)} If $u\in C_0$, then $K=\{x:|u(x)|\ge 1\}$ is 
+compact, so $\|u\|_{\infty}\le\sup(\{1\}\cup\{|u(x)|:x\in K\})$ is 
+finite, and $u\in C_b$. 
+      
+\medskip 
+      
+\quad{\bf (ii)} If $u$, $v\in C_0$ and $\alpha\in\Bbb R$ and 
+$w\in C_b$ and $|w|\le|u|$, then for any $\epsilon>0$ 
+      
+\Centerline{$\{x:|u(x)+v(x)|\ge\epsilon\} 
+\subseteq\{x:|u(x)|\ge\Bover12\epsilon\} 
+\cup\{x:|v(x)|\ge\Bover12\epsilon\}$,} 
+      
+\Centerline{$\{x:|\alpha u(x)|\ge\epsilon\} 
+\subseteq\{x:|u(x)|\ge\Bover{\epsilon}{1+|\alpha|}\}$,} 
+      
+\Centerline{$\{x:|w(x)|\ge\epsilon\} 
+\subseteq\{x:|u(x)|\ge\epsilon\}$} 
+      
+\noindent are closed relatively compact sets, so are compact, and $u+v$, 
+$\alpha u$, $w$ belong to $C_0$.   Thus $C_0$ is a solid linear 
+subspace 
+of $C_b$. 
+      
+\medskip 
+      
+\quad{\bf (iii)} If $\sequencen{u_n}$ is a sequence in $C_0$ which 
+$\|\,\|_{\infty}$-converges to $u\in C_b$, then for any $\epsilon>0$ 
+there is an $n\in\Bbb N$ such that 
+$\|u-u_n\|_{\infty}\le\bover12\epsilon$, so that 
+      
+\Centerline{$\{x:|u(x)|\ge\epsilon\} 
+\subseteq\{x:|u_n(x)|\ge\Bover12\epsilon\}$} 
+      
+\noindent is compact, and $u\in C_0$.   Thus $C_0$ is norm-closed 
+in 
+$C_b$. 
+      
+\medskip 
+      
+\quad{\bf (iv)} Being a norm-closed Riesz subspace of a Banach lattice, 
+$C_0$ is itself a Banach lattice. 
+      
+\medskip 
+      
+{\bf (b)} By 356Dc, $C_0^*=C_0^{\sim}$ is a Banach lattice.   Now 
+$\|f+g\|=\|f\|+\|g\|$ for all non-negative $f$, $g\in C_0^*$.   \Prf\ 
+Of course $\|f+g\|\le\|f\|+\|g\|$.   On the other hand, for any 
+$\epsilon>0$ there are $u$, $v\in C_0$ such that $\|u\|_{\infty}\le 
+1$, 
+$\|v\|_{\infty}\le 1$ and 
+$|f(u)|\ge\|f\|-\epsilon$, $|g(v)|\ge\|g\|-\epsilon$.   Set 
+$w=|u|\vee|v|$;  then $w\in C_0$ and 
+      
+\Centerline{$\|w\|_{\infty} 
+=\max(\|u\|_{\infty},\|v\|_{\infty})\le 1$.} 
+      
+\noindent So 
+      
+\Centerline{$\|f+g\|\ge(f+g)(w) 
+\ge f(|u|)+g(|v|)\ge|f(u)|+|g(v)|\ge\|f\|+\|g\|-2\epsilon$.} 
+      
+\noindent As $\epsilon$ is arbitrary, $\|f+g\|\ge\|f\|+\|g\|$.\ \Qed 
+      
+So $C_0^*$ is an $L$-space. 
+      
+\medskip 
+      
+{\bf (c)} Let $\epsilon>0$.   For $u\in A$ set 
+$K_u=\{x:u(x)\ge\epsilon\}$.   Then $\{K_u:u\in A\}$ is a 
+downwards-directed family of closed compact sets with empty 
+intersection, so there must be some $u\in A$ such that $K_u=\emptyset$, 
+and $\|u\|_{\infty}\le\epsilon$.   As $\epsilon$ is arbitrary, we have 
+the result. 
+}%end of proof of 436I 
+      
+\cmmnt{\medskip 
+      
+\noindent{\bf Remark} (c) is a version of {\bf Dini's theorem}. 
+} 
+      
+\vleader{48pt}{436J}{Riesz Representation Theorem (first form)} Let 
+$(X,\frak T)$ be a locally compact Hausdorff space, and $C_k=C_k(X)$ the 
+space of continuous real-valued functions on $X$ with compact 
+support.   If $f:C_k\to\Bbb R$ is any positive linear functional, 
+there is a unique Radon measure $\mu$ on $X$ such that 
+$f(u)=\int u\,d\mu$ for every $u\in C_k$. 
+      
+\proof{{\bf (a)} The point is that $f$ is smooth.   \Prf\ Suppose that 
+$A\subseteq C_k$ is non-empty and downwards-directed and that 
+$\inf A=0$ 
+in $\Bbb R^X$.   Fix $u_0\in A$ and set $K=\overline{\{x:u_0(x)>0\}}$, 
+so that $K$ is compact.   Because $X$ is locally compact, there is an 
+open relatively compact set $G\supseteq K$.   Now there is a continuous 
+function $u_1:X\to[0,1]$ such that $u_1(x)=1$ for $x\in K$ and 
+$u_1(x)=0$ for $x\in X\setminus G$ (4A2F(h-iii)).   Because $G$ is 
+relatively compact, $u_1\in C_k$. 
+      
+Take any $\epsilon>0$.   By 436Ic, 
+there is a $v\in A$ such that $\|v\|_{\infty}\le\epsilon$.   Now there 
+is a $v'\in A$ such that $v'\le v\wedge u_0$, so that $v'(x)\le\epsilon$ 
+for every $x\in K$ and $v'(x)=0$ for $x\notin K$.   In this case 
+$v'\le\epsilon u_1$, and 
+      
+\Centerline{$\inf_{u\in A}f(u)\le f(v')\le\epsilon f(u_1)$.} 
+      
+\noindent As $\epsilon$ is arbitrary, $\inf_{u\in A}f(u)=0$;  as $A$ is 
+arbitrary, $f$ is smooth.\ \Qed 
+      
+\medskip 
+      
+{\bf (b)} Note that because $\frak T$ is locally compact, it is the 
+coarsest topology on $X$ for which every function in $C_k$ is 
+continuous (4A2G(e-ii)).   Also $C_k$ is a truncated Riesz subspace 
+of $\BbbR^X$. 
+So 436H tells us that there is a quasi-Radon measure $\mu$ 
+on $X$ such that $f(u)=\int u\,d\mu$ for every $u\in C_k$. 
+And $\mu$ is locally finite.   \Prf\ If $x_0\in X$, then (as in (a) 
+above) there is a $u_1\in C_k^+$ such that $u_1(x_0)=1$;  now 
+$G=\{x:u_1(x)>\bover12\}$ is an open set containing $x_0$, and 
+$\mu G\le 2f(u_1)$ is finite.\ \Qed 
+      
+By 416G, or otherwise, $\mu$ is a Radon measure. 
+      
+\medskip 
+      
+{\bf (c)} By 416E(b-v), $\mu$ is unique. 
+}%end of proof of 436J 
+      
+\leader{436K}{Riesz Representation Theorem (second form)} Let 
+$(X,\frak T)$ be a locally compact Hausdorff space.   If 
+$f:C_0(X)\to\Bbb R$ is any positive linear functional, 
+there is a unique totally finite Radon measure $\mu$ on $X$ such that 
+$f(u)=\int u\,d\mu$ for every $u\in C_0=C_0(X)$. 
+      
+\proof{{\bf (a)} As noted in 436Ib, $C_0^*=C_0^{\sim}$, so $f$ is 
+$\|\,\|_{\infty}$-continuous.   $C_k(X)$ is a linear subspace of 
+$C_0$, and $f\restr C_k(X)$ is a positive linear functional;  so by 
+436J 
+there is a unique Radon measure $\mu$ on $X$ such that 
+$f(u)=\int u\,d\mu$ for every $u\in C_k(X)$.   Now $\mu$ is totally 
+finite.   \Prf\ By 414Ab, 
+      
+\Centerline{$\mu X=\sup\{f(u):u\in C_k(X),\,0\le u\le\chi X\} 
+\le\|f\|<\infty$.  \Qed} 
+      
+\medskip 
+      
+{\bf (b)} Accordingly $\int u\,d\mu$ is defined for every $u\in C_b(X)$, 
+and in particular for every $u\in C_0$.   Next, $C_k=C_k(X)$ is 
+norm-dense in 
+$C_0$.   \Prf\ If $u\in C_0^+$, then $u_n=(u-2^{-n}\chi X)^+$ 
+belongs to 
+$C_k$ and $\|u-u_n\|_{\infty}\le 2^{-n}$ for every $n\in\Bbb N$, so 
+$u\in\overline{C}_k$;  accordingly $C_0=C_0^+-C_0^+$ is 
+included in 
+$\overline{C}_k$.\ \QeD\   Since $\int\,d\mu$, regarded as a linear 
+functional on $C_0$, is positive, therefore continuous, and agrees 
+with $f$ on $C_k$, it must be identical to $f$.   Thus 
+$f(u)=\int u\,d\mu$ for every $u\in C_0$. 
+      
+\medskip 
+      
+{\bf (c)} Because there is only one Radon measure giving the right 
+integrals to members of $C_k$ (436J), $\mu$ is unique. 
+}%end of proof of 436K 
+      
+\leader{*436L}{}\cmmnt{ The results here, by opening a path between 
+measure theory and the study of linear functionals on spaces of 
+continuous functions, provide an enormously powerful tool for the 
+analysis of dual spaces $C(X)^*$ and their relatives.   I will explore 
+some of these ideas in the next section.   Here I will give only a 
+sample pair of facts to show how measure theory can tell us things about 
+Banach lattices which seem difficult to reach by other methods. 
+      
+\medskip 
+      
+\noindent}{\bf Proposition} Let $X$ be a topological space;  write 
+$C_b$ for $C_b(X)$.   Suppose that $U$ is a 
+norm-closed linear subspace of $C_b^*$ such that the functional 
+$u\mapsto f(u\times v):C_b\to\Bbb R$ belongs to $U$ whenever $f\in U$ 
+and $v\in C_b$.   Then $U$ is a band in the $L$-space $C_b^*$. 
+      
+\proof{{\bf (a)} Let $e=\chi X$ be the standard order unit of 
+$C_b$, and if 
+$f\in C_b^*$ and $u$, $v\in C_b$ write $f_v(u)$ for 
+$f(u\times v)$.   By 356Na, $C_b^*=C_b^{\sim}$ is an $L$-space. 
+      
+\medskip 
+      
+{\bf (b)} I show first that $U$ is a Riesz subspace of $C_b^{\sim}$. 
+\Prf\ If $f\in U$ and $\epsilon>0$, there is a $v\in C_b$ such that 
+$|v|\le e$ and $f(v)\ge|f|(e)-\epsilon$ (356B).   Now $f_v\le|f|$ and 
+      
+\Centerline{$\||f|-f_v\|=(|f|-f_v)(e)\le\epsilon$} 
+      
+\noindent (356Nb), while 
+$f_v\in U$.   As $\epsilon$ is arbitrary, $|f|\in\overline{U}=U$;  as 
+$f$ is arbitrary, $U$ is a Riesz subspace of $C_b^*$ (352Ic).\ \Qed 
+      
+\medskip 
+      
+{\bf (c)} Now suppose that $X$ is a compact Hausdorff space.   Then $U$ 
+is a solid linear subspace of $C_b^{\sim}=C(X)^{\sim}$.   \Prf\ 
+Suppose that $f\in U$ and that $0\le g\le f$.   Let $\epsilon>0$.   By 
+either 436J or 436K, there are Radon measures $\mu$, $\nu$ on $X$ such 
+that $f(u)=\int u\,d\mu$ and $g(u)=\int u\,d\nu$ for every 
+$u\in C(X)$.   By 416Ea, $\nu\le\mu$ in the sense of 234P, 
+so $\nu$ is an indefinite-integral measure over 
+$\mu$ (415Oa, or otherwise);  let $w:X\to[0,1]$ be such that 
+$\int_Ew\,d\mu=\nu E$ for every $E\in\dom\nu$.    There is a continuous 
+function $v:X\to\Bbb R$ such that $\int|w-v|d\mu\le\epsilon$ 
+(416I), and now 
+      
+$$\eqalignno{|g(u)-f_v(u)| 
+&=|\int u\,d\nu-\int u\times v\,d\mu| 
+=|\int u\times(w-v)d\mu|\cr 
+\displaycause{235K} 
+&\le\|u\|_{\infty}\int|w-v|d\mu 
+\le\epsilon\|u\|_{\infty}\cr}$$ 
+      
+\noindent for every $u\in C(X)$, so $\|g-f_v\|\le\epsilon$, while 
+$f_v\in U$.   As $\epsilon$ is arbitrary, $g\in U$;  as $f$ and $g$ are 
+arbitrary (and $U$ is a Riesz subspace of $C(X)^*$), $U$ is a solid 
+linear subspace of $C(X)^*$.\ \Qed 
+      
+Since every norm-closed solid linear subspace of an $L$-space is a band 
+(354Eg), it follows that (provided $X$ is a compact Hausdorff space) 
+$U$ is actually a band. 
+      
+\medskip 
+      
+{\bf (d)} For the general case, let $Z$ be the set of all Riesz 
+homomorphisms $z:C_b\to\Bbb R$ such that $z(e)=1$.   Then $Z$ is a 
+weak*-closed subset of the unit ball of $C_b^*$ so is a compact 
+Hausdorff space.   We have a 
+Banach lattice isomorphism $T:C_b\to C(Z)$ given by the formula 
+$(Tu)(z)=z(u)$ for $u\in C_b$, $z\in Z$ (see the proofs of 353M and 
+354K).   But note also that $T$ is multiplicative (353Pd), and 
+$T':C(Z)^*\to C_b^*$ is a Banach lattice isomorphism.   Let 
+$V$ be $(T')^{-1}[U]\subseteq C(Z)^*$;   
+then $V$ is a closed linear subspace 
+of $C(Z)^*$.   If $g\in V$ and $v$, $w\in C(Z)$, then 
+      
+\Centerline{$g(v\times w)=(T'g)(T^{-1}v\times T^{-1}w)$,} 
+      
+\noindent so $g_w$, defined in $C(Z)^*$ by the convention of 
+(a) above, is just $(T')^{-1}((T'g)_{T^{-1}w})$, and belongs to $V$. 
+By (b), $V$ is a band in $C(Z)^*$ so $U$ is a band in $C_b^*$, as 
+required. 
+}%end of proof of 436L 
+      
+\leader{*436M}{Corollary} Let $\frak A$ be a Boolean algebra, and 
+$M(\frak A)$ the $L$-space of bounded finitely additive functionals on 
+$\frak A$\cmmnt{ (362B)}.   Let $U\subseteq M(\frak A)$ be a norm-closed linear 
+subspace such that $a\mapsto\nu(a\Bcap b)$ belongs to $U$ whenever 
+$\nu\in U$ and $b\in\frak A$.   Then $U$ is a band in $M(\frak A)$. 
+ 
+\proof{{\bf (a)} 
+Let $Z$ be the Stone space of $\frak A$, so that $C(Z)$ is the 
+$M$-space $L^{\infty}(\frak A)$ (363A), and we have an $L$-space 
+isomorphism $T:M(\frak A)\to C(Z)^*$ defined by saying that  
+$(T\nu)(\chi\widehat{a})=\nu a$ whenever $\nu\in M(\frak A)$, $a\in\frak A$ 
+and $\widehat{a}$ is the open-and-closed subset of $Z$ corresponding to 
+$a$ (363K).   Now $V=T[U]$ is a norm-closed linear subspace of $C(Z)^*$.
+ 
+\medskip 
+ 
+{\bf (b)} $V$ satisfies the condition of 436L.   \Prf\ Suppose that  
+$f\in V$ and $v\in C(Z)$;  set $f_v(u)=f(u\times v)$ for $u\in C(Z)$, and 
+$\nu=T^{-1}f\in U$.    
+(i) If $v$ is of the form $\chi\widehat{b}$, 
+where $b\in\frak A$, then $\nu_b\in U$, where 
+$\nu a=\nu(a\Bcap b)$ for $a\in\frak A$.   Now $T\nu_b\in V$ and 
+ 
+\Centerline{$(T\nu_b)(\chi\widehat{a})=\nu_ba=\nu(a\Bcap b) 
+=f(\chi(\widehat{a\Bcap b}))=f(\chi\widehat{a}\times\chi\widehat{b}) 
+=f_v(\chi\widehat{a})$} 
+ 
+\noindent for every $a\in\frak A$, so $f_v=T\nu_b$ belongs to $U$. 
+(ii) If $v$ is of the form $\sum_{i=0}^n\alpha_i\chi\widehat{b}_i$, where 
+$b_0,\ldots,b_n\in\frak A$ and $\alpha_0,\ldots,\alpha_n\in\Bbb R$, then 
+$f_v=\sum_{i=0}^n\alpha_if_{v_i}$, where $v_i=\chi\widehat{b}_i$ for each 
+$i$;   as $f_{v_i}\in V$ for each $i$, $f_v\in V$, because $V$ is a linear 
+subspace.  (iii) In general, given 
+$v\in C(Z)=L^{\infty}(\frak A)$ and $\epsilon>0$, there is a  
+$w\in C(Z)$, expressible in the form of (ii), such that 
+$\|v-w\|_{\infty}\le\epsilon$ (363C).   In this case $f_w\in V$, by (ii), 
+while 
+ 
+\Centerline{$|f_v(u)-f_w(u)| 
+=|f(u\times(v-w))|\le\|f\|\|u\|_{\infty}\epsilon$} 
+ 
+\noindent for every $u\in C(Z)$, and $\|f_v-f_w\|\le\epsilon\|f\|$.   As 
+$\epsilon$ is arbitrary and $V$ is closed, $f_v\in V$.\ \Qed 
+ 
+\medskip 
+ 
+{\bf (c)} By 436L, $V$ is a band in $C(Z)^*$;  as $T$ is a Riesz space 
+isomorphism, $U$ is a band in $M(\frak A)$. 
+}%end of proof of 436M 
+      
+\exercises{\leader{436X}{Basic exercises $\pmb{>}$(a)} 
+%\spheader 436Xa 
+Let $(X,\Sigma,\mu_0)$ be a measure space, and $U$ the set of 
+$\mu_0$-integrable $\Sigma$-measurable real-valued functions defined 
+everywhere on $X$.   For $u\in U$ set $f(u)=\int u\,d\mu_0$.   Show that 
+$U$ and $f$ satisfy the conditions of 436D, and that the measure $\mu$ 
+constructed from $f$ by the procedure there is just the c.l.d.\ version 
+of $\mu_0$. 
+%436D 
+      
+\spheader 436Xb Let $\mu$ and $\nu$ be two complete locally determined 
+measures on a set $X$, and suppose that $\int f\,d\mu=\int f\,d\nu$ for 
+every function $f:X\to\Bbb R$ for which either integral is defined in 
+$\Bbb R$.   Show that $\mu=\nu$. 
+%436D 
+      
+\sqheader 436Xc Let $X$ be a set, $U$ a truncated Riesz subspace of 
+$\Bbb R^X$, and $f:U\to\Bbb R$ a sequentially smooth positive linear 
+functional.   For $A\subseteq X$ set 
+      
+$$\eqalign{\theta A 
+&=\inf\{\sup_{n\in\Bbb N}f(u_n): 
+  \sequencen{u_n}\text{ is a non-decreasing sequence in }U^+,\cr 
+&\qquad\qquad\qquad\qquad\qquad\qquad\qquad 
+  \lim_{n\to\infty}u_n(x)=1\text{ for every }x\in A\},\cr}$$ 
+      
+\noindent taking $\inf\emptyset=\infty$ if need be.   Show that $\theta$ 
+is an outer measure on $X$.   Let $\mu_0$ be the measure defined from 
+$\theta$ by \Caratheodory's method.   Show that $f(u)=\int u\,d\mu_0$ 
+for every $u\in U$.   Show that the measure $\mu$ constructed in 436D is 
+the c.l.d.\ version of $\mu_0$. 
+%436D 
+      
+\spheader 436Xd Let $X$ be a set and $U$ a truncated Riesz subspace of 
+$\Bbb R^X$.   Let $\tau:U\to\coint{0,\infty}$ be a seminorm such that 
+(i) $\tau(u)\le\tau(v)$ whenever $|u|\le|v|$ (ii) 
+$\lim_{n\to\infty}\tau(u_n)=0$ whenever $\sequencen{u_n}$ is a 
+non-increasing sequence in $U$ and $\lim_{n\to\infty}u_n(x)=0$ for every 
+$x\in X$.   Show that for any $u_0\in U^+$ there is a measure $\mu$ on 
+$x$ such that $\int u\,d\mu$ is defined, and less than or equal to 
+$\tau(u)$, for every $u\in U$, and $\int u_0d\mu=\tau(u_0)$.   \Hint{put 
+the Hahn-Banach theorem together with 436D.} 
+%436D 
+      
+\spheader 436Xe\dvArevised{2010}(i) 
+Let $X$ be any topological space.   Show that every 
+positive linear functional on $C(X)$ is sequentially smooth (compare 
+375A), so corresponds to a totally finite Baire measure on $X$. 
+(ii) Let $X$ be a regular Lindel\"of space.   Show that every positive 
+linear functional on $C(X)$ is smooth, so corresponds to a totally finite 
+quasi-Radon measure on $X$.   (iii) Let $X$ be a K-analytic 
+Hausdorff space.   Show that every positive linear functional on $C(X)$ 
+corresponds to at least one totally finite Radon measure on $X$. 
+%436E 
+      
+\spheader 436Xf Let $X$ be a completely regular space.   Show that it is 
+measure-compact iff every sequentially smooth positive linear functional 
+on $C_b(X)$ is smooth.   \Hint{436Xj.} 
+%4{}35D 436E 
+      
+\spheader 436Xg A completely regular topological space 
+$X$ is called {\bf realcompact} 
+if every Riesz homomorphism from $C(X)$ to $\Bbb R$ is of the form 
+$u\mapsto\alpha u(x)$ for some $x\in X$ and $\alpha\ge 0$.    
+(i) Show that, for any topological space $X$, any Riesz 
+homomorphism from $C(X)$ to $\Bbb R$ is representable by a Baire measure 
+on $X$ which takes at most two values.  (ii) Show that 
+a completely regular space $X$ is realcompact iff every $\{0,1\}$-valued 
+Baire measure on $X$ is of the form $E\mapsto\chi E(x)$.   (iii) Show 
+that a completely regular space $X$ is realcompact iff every purely 
+atomic totally finite Baire measure on $X$ is $\tau$-additive.   (iii) 
+Show that a measure-compact completely regular space is realcompact. 
+(iv) Show that the discrete topology on $[0,1]$ is realcompact. 
+\Hint{if $\nu$ is a Baire measure taking only the values $0$ and $1$, 
+set $x_0=\sup\{x:\nu[x,1]=1\}$.}   (v) Show that any product of 
+realcompact completely regular spaces is realcompact.   (vi) Show that 
+a Souslin-F subset of a realcompact completely regular space is 
+realcompact.   (For realcompact spaces which are not measure-compact, 
+see 439Xn.) 
+%refers to 439K, 439L, 439P, 439Q 
+%4{}35D 436E 
+      
+\spheader 436Xh In 436F, suppose that $\mu$ and $\nu$ are 
+$\tau$-additive.   Let $\tilde\mu$ and $\tilde\nu$ be the corresponding 
+quasi-Radon measures (415N), and $\tilde\lambda$ the quasi-Radon product 
+of $\tilde\mu$ and $\tilde\nu$ (417N).   Show that $\lambda$ is the 
+restriction of $\tilde\lambda$ to the Baire $\sigma$-algebra of 
+$X\times Y$. 
+%436F 
+      
+\sqheader 436Xi For $u\in C([0,1])$ let $f(u)$ be the Lebesgue integral 
+of $u$.   Show that $f$ is smooth (therefore sequentially smooth) but 
+not sequentially order-continuous (therefore not order-continuous). 
+\Hint{enumerate $\Bbb Q\cap[0,1]$ as $\sequencen{q_n}$, and set 
+$u_n(x)=\min_{i\le n}2^{i+2}|x-q_i|$ for $n\in\Bbb N$, $x\in[0,1]$; 
+show that $\inf_{n\in\Bbb N}u_n=0$ in $C([0,1])$ but 
+$\lim_{n\to\infty}f(u_n)>0$.} 
+%436G 
+      
+\spheader 436Xj In 436E, show that $\mu$ is $\tau$-additive iff $f$ is 
+smooth. 
+%436G 
+      
+\spheader 436Xk Suppose that $X$ is a set, $U$ is a truncated Riesz 
+subspace of $\Bbb R^X$ and $f:U\to\Bbb R$ is a smooth positive linear 
+functional.   For $A\subseteq X$ set 
+      
+$$\eqalign{\theta A=\inf\{\sup_{u\in B}f(u):B\text{ is} 
+&\text{ an upwards-directed family in }U^+\cr 
+&\text{ such that }\sup_{u\in B}u(x)=1\text{ for every }x\in A\},\cr}$$ 
+      
+\noindent taking $\inf\emptyset=\infty$ if need be.   Show that $\theta$ 
+is an outer measure on $X$.   Let $\mu_0$ be the measure defined from 
+$\theta$ by \Caratheodory's method.   Show that $f(u)=\int u\,d\mu_0$ 
+for every $u\in U$.   Show that the measure $\mu$ constructed in 436H is 
+the c.l.d.\ version of $\mu_0$. 
+%436H 
+      
+\spheader 436Xl Let $X$ be a completely regular topological space and 
+$f$ a smooth positive linear functional on $C_b(X)$.   Show that there 
+is a unique totally finite quasi-Radon measure $\mu$ on $X$ such that 
+$f(u)=\int u\,d\mu$ for every $u\in C_b(X)$. 
+%436H 
+      
+\sqheader 436Xm For $u\in C([0,1])$ let $f(u)$ be the Riemann integral 
+of $u$ (134K).   Show that the Radon measure on $[0,1]$ constructed by 
+the method of 436J is just Lebesgue measure on $[0,1]$.   Explain how to 
+construct Lebesgue measure on $\Bbb R$ from an appropriate version of 
+the Riemann integral on $\Bbb R$. 
+%436J 
+      
+\spheader 436Xn Let $X$ be a topological space.   Let 
+$f:C_b(X)\to\Bbb R$ be a linear functional.   (i) Show that the 
+following are equiveridical:  ($\alpha$) $f$ is {\bf tight},  
+that is, for every $\epsilon>0$ there is a closed compact 
+$K\subseteq X$ such that $|f(u)|\le\epsilon$ whenever 
+$0\le u\le\chi(X\setminus K)$ ($\beta$) there is a tight totally finite 
+Borel measure  
+$\mu$ on $X$ such that $|f(u)|\le\int|u|\,d\mu$ for every $u\in C_b(X)$.   
+\Hint{show that a positive tight functional is smooth.} 
+(ii)\dvAnew{2009}  
+Show that the set of tight functionals on $C_b(X)$ is a band in 
+$C_b(X)^{\sim}$. 
+%436J 
+      
+\sqheader 436Xo Let $(X,\frak T,\Sigma,\mu)$ and 
+$(Y,\frak S,\Tau,\nu)$ be locally compact Radon measure spaces.   (i) 
+Show that the 
+function $x\mapsto\int w(x,y)\nu(dy)$ belongs to $C_k(X)$ for every 
+$w\in C_k(X\times Y)$, so we have a 
+positive linear functional $h:C_k(X\times Y)\to\Bbb R$ defined by 
+setting 
+      
+\Centerline{$h(w)=\biggeriint w(x,y)\nu(dy)\mu(dx)$} 
+      
+\noindent for $w\in C_k(X\times Y)$.   (ii) Show that the corresponding 
+Radon measure on $X\times Y$ is just the product Radon 
+measure as defined in 417P/417R. 
+      
+\sqheader 436Xp Let $\frak A$ be a Boolean algebra and $Z$ its Stone 
+space;  identify $L^{\infty}(\frak A)$ with $C(Z)$, as in 363A.   Let 
+$\nu$ be a non-negative finitely additive functional on $\frak A$,  $f$ 
+the corresponding positive linear functional on $L^{\infty}(\frak A)$ 
+(363K), and $\mu$ the corresponding Radon measure on $Z$ (416Qb).   Show 
+that $f(u)=\int u\,d\mu$ for every $u\in L^{\infty}(\frak A)$. 
+%436J/436K 
+      
+\spheader 436Xq Let $X$ be a locally compact Hausdorff space.   Show 
+that a sequence $\sequencen{u_n}$ in $C_0(X)$ converges to $0$ for the 
+weak topology on $C_0(X)$ iff $\sup_{n\in\Bbb N}\|u_n\|_{\infty}$ is 
+finite and $\lim_{n\to\infty}f_n(x)=0$ for every $x\in X$. 
+%436K 
+      
+\spheader 436Xr Let $X$ be a non-empty compact Hausdorff space, and 
+$\phi:X\to X$ a continuous function.   Show that there is a Radon 
+probability measure $\mu$ on $X$ such that 
+$\phi$ is \imp\ for $\mu$.   \Hint{let $\Cal F$ be a non-principal 
+ultrafilter on $X$, $x_0$ any point of $X$, and define $\mu$ by the 
+formula 
+$\int ud\mu=\lim_{n\to\Cal F}\Bover1{n+1}\sum_{k=0}^nu(\phi^k(x_0))$ for 
+every $u\in C(X)$.   Use 416E(b-v) to show that $\mu\phi^{-1}=\mu$.} 
+ 
+\spheader 436Xs Let $X$ be a locally compact Hausdorff space.    
+(i) Write $M^{\infty+}_{\text{R}}$ for the set of all Radon measures on 
+$X$.   For $\mu\in M^{\infty+}_{\text{R}}$, let $S\mu$ be the  
+corresponding 
+functional on $C_k(X)$, defined by setting $(S\mu)(u)=\int u\,d\mu$ for 
+every $u\in C_k(X)$.   Show that 
+$S(\mu+\nu)=S\mu+S\nu$ and $S(\alpha\mu)=\alpha S\mu$ 
+whenever $\mu$, $\nu\in M^{\infty+}_{\text{R}}$ and 
+$\alpha\ge 0$, where addition and scalar multiplication of measures 
+are defined as in 234G and 234Xf. 
+(ii) Write $M^+_{\text{R}}$ for the set of totally finite Radon measures on 
+$X$.   For $\mu\in M^+_{\text{R}}$, let $T\mu$ be the  
+corresponding 
+functional on $C_b(X)$, defined by setting $(T\mu)(u)=\int u\,d\mu$ for 
+every $u\in C_b(X)$.   Show that 
+$T(\mu+\nu)=T\mu+T\nu$ and $T(\alpha\mu)=\alpha T\mu$ 
+whenever $\mu$, $\nu\in M^+_{\text{R}}$ and $\alpha\ge 0$. 
+%436I 436J out of order query 
+ 
+      
+\leader{436Y}{Further exercises (a)} 
+%\spheader 436Ya 
+Let $X$ be a set, $U$ a Riesz subspace of $\Bbb R^X$, and $f:U\to\Bbb R$ 
+a sequentially smooth positive linear functional.   (i) Write 
+$U_{\sigma}$ for the set of functions from $X$ to $[0,\infty]$ 
+expressible as the 
+supremum of a non-decreasing sequence $\sequencen{u_n}$ in $U^+$ such 
+that $\sup_{n\in\Bbb N}f(u_n)<\infty$.   Show that there is a functional 
+$f_{\sigma}:U_{\sigma}\to\coint{0,\infty}$ such that 
+$f_{\sigma}(u)=\sup_{n\in\Bbb N}f(u_n)$ whenever $\sequencen{u_n}$ is a 
+non-decreasing sequence in $U^+$ with supremum $u\in U_{\sigma}$. 
+(Compare 122I.)   (ii) Show that $u+v\in U_{\sigma}$ and 
+$f_{\sigma}(u+v)=f_{\sigma}(u)+f_{\sigma}(v)$ for all $u$, $v\in 
+U_{\sigma}$.   (iii) Suppose that $u$, $v\in U_{\sigma}$, $u\le v$ and 
+$u(x)=v(x)$ whenever $v(x)$ is finite.   Show that 
+$f_{\sigma}(u)=f_{\sigma}(v)$.   \Hint{take non-decreasing sequences 
+$\sequencen{u_n}$, $\sequencen{v_n}$ with suprema $u$, $v$.   Consider 
+$\sequencen{f(v_k-u_n-\delta v_n)^+}$ where $k\in\Bbb N$, $\delta>0$.} 
+(iv) Let $V$ be the set of functions $v:X\to\Bbb R$ such that there are 
+$u_1$, $u_2\in U_{\sigma}$ such that $v(x)=u_1(x)-u_2(x)$ whenever 
+$u_1(x)$, $u_2(x)$ are both finite.   Show that $V$ is a linear subspace 
+of $\Bbb R^X$ and that there is a linear functional $g:V\to\Bbb R$ 
+defined by setting $g(v)=f_{\sigma}(u_1)-f_{\sigma}(u_2)$ whenever 
+$v=u_1-u_2$ in the sense of the last sentence.   (v) Show that $V$ is a 
+Riesz subspace of $\Bbb R^X$.   (vi) Show that if $\sequencen{v_n}$ is a 
+non-decreasing sequence in $V$ and $\gamma=\sup_{n\in\Bbb N}g(v_n)$ is 
+finite, then there is a $v\in V$ such that $g(v)=\sup_{n\in\Bbb 
+N}g(v\wedge v_n)=\gamma$.   (This is a version of 
+the {\bf Daniell integral}.) 
+%436D 
+      
+\spheader 436Yb Develop further the theory of 436Ya, finding a version 
+of Lebesgue's Dominated Convergence Theorem, a concept of `negligible' 
+subset of $X$, and an $L$-space of equivalence classes of `integrable' 
+functions. 
+%436Ya, 436D 
+      
+\spheader 436Yc Let $X$ be a countably compact topological space. 
+Show that every positive linear functional on $C_b(X)$ is sequentially 
+smooth, so corresponds to a totally finite Baire measure on $X$. 
+%436Xe 436E 
+      
+\spheader 436Yd Let $X$ be a sequential space, $Y$ a topological space, 
+$\mu$ a semi-finite Baire measure on $X$ and $\nu$ a $\sigma$-finite 
+Baire measure on $Y$.   Let $\tilde\mu$ be the c.l.d.\ version of $\mu$. 
+Show that there is a semi-finite Baire measure $\lambda$ on $X\times Y$ 
+such that 
+      
+\Centerline{$\lambda W=\biggerint\nu W[\{x\}]\tilde\mu(dx)$, 
+\quad$\int fd\lambda=\biggeriint f(x,y)\nu(dy)\tilde\mu(dx)$} 
+      
+\noindent for every Baire set $W\subseteq X\times Y$ and every 
+non-negative continuous function $f:X\times Y\to\Bbb R$.   Show that the 
+c.l.d.\ version of $\lambda$ extends the c.l.d.\ product measure of 
+$\mu$ and $\nu$. 
+%436F 
+      
+\spheader 436Ye Let $X_0,\ldots,X_n$ be sequential spaces and $\mu_i$ a 
+totally finite Baire measure on $X_i$ for each $i$.   (i) Show that if 
+$f:X_0\times\ldots\times X_n\to\Bbb R$ is a bounded separately 
+continuous function, then 
+      
+\Centerline{$\phi(f)=\biggerint\ldots\int 
+f(x_0,\ldots,x_n)\mu_n(dx_n)\ldots\mu_0(dx_0)$} 
+      
+\noindent is defined, so that we have a corresponding Baire product 
+measure on $X_0\times\ldots\times X_n$.   (ii) Show that this product is 
+associative. 
+%436F 
+      
+\spheader 436Yf Let $X$ and $Y$ be compact Hausdorff spaces.   (i) Show 
+that there is a unique bilinear operator 
+$\phi:C(X)^*\times C(Y)^*\to C(X\times Y)^*$ which is separately 
+continuous for the weak* topologies and such that 
+$\phi(\delta_x,\delta_y)=\delta_{(x,y)}$ for all $x\in X$ and $y\in Y$, 
+setting $\delta_x(f)=f(x)$ for $f\in C(X)$ and $x\in X$.   (ii) Show 
+that if $\mu$ and $\nu$ are Radon measures on $X$, $Y$ respectively with 
+Radon measure product $\lambda$, then 
+$\phi(\int d\mu,\int d\nu)=\int d\lambda$.   (iii) Show that 
+$\|\phi\|\le 1$ (definition:  253Ab). 
+%436Xo, 436J 
+ 
+\spheader 436Yg Let $X$ be any topological space.   (i) Let $C_k$ be the 
+set of continuous functions $u:X\to\Bbb R$ such that 
+$\overline{\{x:u(x)\ne 0\}}$ is compact, and $f:C_k\to\Bbb R$ a positive 
+linear functional.   Show that there is a tight quasi-Radon measure $\mu$  
+on $X$ such that $f(u)=\int u\,d\mu$ for every $u\in C_k$. 
+(ii) Let $\tilde C_k$ be the 
+set of continuous functions $u:X\to\Bbb R$ such that 
+$\{x:u(x)\ne 0\}$ is relatively compact, and $f:\tilde C_k\to\Bbb R$ a  
+positive 
+linear functional.   Show that there is a tight quasi-Radon measure $\mu$  
+on $X$ such that $f(u)=\int u\,d\mu$ for every $u\in C_k$. 
+%436J
+}%end of exercises 
+      
+\endnotes{ 
+\Notesheader{436} 
+From the beginning, integration has been at the centre of measure 
+theory.   My own view -- implicit in the arrangement of this treatise, 
+from Chapter 
+11 onward -- is that `measure' and `integration' are not quite the same 
+thing.   I freely acknowledge that my treatment of `integration' is 
+distorted by my presentation of it as part of measure theory;  on the 
+other side of the argument, I hold that regarding `measure' as a concept 
+subsidiary to `integral', as many authors do, seriously interferes with 
+the development of truly penetrating intuitions for the former.   But it 
+is undoubtedly true that every complete locally determined measure can 
+be derived from its associated integral (436Xb).   Moreover, it is 
+clearly of the highest importance that we should be able to recognise 
+integrals when we see them;  I mean, given a linear functional on a 
+linear space of functions, then if it can be expressed as an integral 
+with respect to a 
+measure this is something we need to know at once.   And thirdly, 
+investigation of linear functionals frequently leads us to measures of 
+great importance and interest. 
+      
+Concerning the conditions in 436D, an integral must surely be `positive' 
+(because measures in this treatise are always non-negative) and 
+`sequentially smooth' (because measures are supposed to be countably 
+additive).   But it is not clear that we are forced to restrict our 
+attention to Riesz subspaces of $\Bbb R^X$, and even less clear that 
+they have to be `truncated'.   In 439I below I give an example to show 
+that this last condition is essential for 436D and 436H as stated. 
+However it is not necessary for large parts of the theory.   In many 
+cases, if $U\subseteq\Bbb R^X$ is a Riesz subspace which is not 
+truncated, we can take an element $e\in U^+$ and look at 
+$Y=\{x:e(x)>0\}$, 
+$V_e=\{u:u(x)=0$ for every $x\in X\setminus Y\}\cong W_e$, where 
+$W_e=\{u/e:u\in V_e\}$ is a truncated Riesz subspace of $\BbbR^Y$. 
+But there are applications in 
+which this approach is unsatisfactory and a more radical revision of the 
+basic theory of integration, as in 436Ya, is useful. 
+      
+I have based the arguments of this section on the inner measure 
+constructions of \S413.   Of course it is also possible to approach them 
+by means of outer measures (436Xc, 436Xk). 
+      
+I emphasize the exercise 436Xo because it is prominent in `Bourbakist' 
+versions of the 
+theory of Radon measures, in which (following {\smc Bourbaki 65} rather 
+than {\smc Bourbaki 69}) Radon measures are regarded as linear 
+functionals on spaces of continuous functions.   By 436J, this is a 
+reasonably effective approach as long as we are interested only in 
+locally compact spaces, and there are parts of the theory of topological 
+groups (notably the duality theory of \S445 below) in which it even has 
+advantages.   The construction of 436Xo shows that we can find a direct 
+approach to the tensor product of linear functionals which does not 
+require any attempt to measure sets rather than integrate functions. 
+I trust that the prejudices I am 
+expressing will not be taken as too sweeping a disparagement of 
+such methods.   Practically all correct arguments in mathematics (and 
+not a few incorrect ones) are valuable in some way, suggesting new 
+possibilities for investigation.   In particular, one of the challenges 
+of measure theory (not faced in this treatise) is that of devising 
+effective theories of vector-valued measures.   Typically this is much 
+easier with Riemann-type integrals, and any techniques for working 
+directly with these should be noted. 
+      
+436L revisits ideas from Chapter 35, and the result would be easier to 
+find if it were in \S356.   I include it here as an example of the way 
+in which familiar material from measure theory (in particular, the 
+Radon-Nikod\'ym theorem) can be drafted to serve functional analysis. 
+I should perhaps remark that there are alternative routes which do not 
+use measure theory explicitly, and while longer are (in my view) more 
+illuminating. 
+}%end of notes 
+      
+\discrpage 
+      
+      

@@ -1,0 +1,1607 @@
+\frfilename{mt567.tex}
+\versiondate{31.10.14}
+\copyrightdate{2006}
+
+\def\Game{\mathop{\text{Game}}\nolimits}
+\def\StrI{\mathop{\text{Str}}\nolimits_{\text{I}}}
+\def\StrII{\mathop{\text{Str}}\nolimits_{\text{II}}}
+\def\WO{\mathop{\text{WO}}}
+
+\def\chaptername{Choice and determinacy}
+\def\sectionname{Determinacy}
+
+\newsection{567}
+
+So far, this chapter has been looking at set theories which are weaker than
+the standard theory ZFC, and checking which of the principal results of
+measure theory can still be proved.   I now turn to an axiom which directly
+contradicts the axiom of choice, and leads to a very different world.
+This is AD, the `axiom of determinacy', defined in terms of strategies for
+infinite games (567A-567C).  %567A 567B 567C
+The first step is to confirm that we automatically have a weak version of
+countable choice which is enough to make Lebesgue measure well-behaved
+(567D-567E).   Next, in separable metrizable spaces all
+subsets are universally measurable and have the Baire property (567G).
+Consequently (at least when we can use AC($\omega$)) linear operators
+between Banach spaces are bounded (567H), additive functionals on
+$\sigma$-complete Boolean algebras are countably additive (567J), and
+many $L$-spaces are reflexive (567K).   In a different direction, we
+find that $\omega_1$ is \2vm\ (567L) and that there are many surjections
+from $\Bbb R$ onto ordinals (567M).
+
+At the end of the section I include two celebrated results in ZFC
+(567N, 567O) which depend on some of the same ideas.
+
+\leader{567A}{Infinite games} \cmmnt{ I return to
+an idea introduced in \S451. %451V
+
+\medskip
+
+}{\bf (a)} Let $X$ be a non-empty set and $A$ a subset of
+$X^{\Bbb N}$.   In the corresponding infinite game $\Game(X,A)$, players I
+and II choose members of $X$ alternately, so that I chooses
+$x(0),x(2),\ldots$ and II chooses $x(1),x(3),\ldots$;  a {\bf play} of the
+game is an element of $X^{\Bbb N}$;  player I wins the play $x$ if
+$x\in A$, otherwise II wins.   A {\bf strategy} for I is a function
+$\sigma:\bigcup_{n\in\Bbb N}X^n\to X$;  a play $x\in X^{\Bbb N}$ is {\bf
+consistent} with $\sigma$ if
+$x(2n)=\sigma(\ofamily{i}{n}{x(2i+1)})$ for every $n$\cmmnt{, that is,
+if I uses the function $\sigma$ to decide his move from the previous
+moves by his opponent};
+$\sigma$ is a {\bf winning strategy} if every play consistent with $\sigma$
+belongs to $A$\cmmnt{, that is, if I wins whenever he follows the
+strategy $\sigma$}.   Similarly, a strategy for II is a function
+$\tau:\bigcup_{n\ge 1}X^n\to X$;  a play $x$ is consistent with $\tau$ if
+$x(2n+1)=\tau(\langle x(2i)\rangle_{i\le n})$ for every $n$;  and $\tau$
+is a winning strategy for II if
+$x\notin A$ whenever $x\in X^{\Bbb N}$ and $x$ is consistent with $\tau$.
+
+\spheader 567Ab A set $A\subseteq X^{\Bbb N}$ is {\bf determined} if
+either I or II has a winning strategy in $\Game(X,A)$.
+\cmmnt{Note that we need to know the set $X$ as well as the set $A$ to
+specify the game in question.}
+
+\spheader 567Ac It will sometimes be convenient to describe games with
+`rules', so that the players are required to choose points in subsets
+of $X$ (determined by the moves so far) at each move.   Such a description
+can be regarded as specifying $A$ in the form $(A'\cup G)\setminus H$,
+where $G$ is the set of plays in which II is the first to break a rule, $H$
+is the set of plays in which I is the first to break a rule, and $A'$ is
+the set of plays in which both obey the rules and I wins.
+
+\spheader 567Ad Not infrequently the `rules' will specify different sets
+for the moves of the two players, so that I always chooses a point in
+$X_1$ and II always chooses a point in $X_2$;
+setting $X=X_1\cup X_2$ we can reduce this
+to the formalization above.
+
+\leader{567B}{Theorem} Let $X$ be a non-empty well-orderable set.
+Give $X$ its discrete topology and $X^{\Bbb N}$ the product topology.
+If $F\subseteq X^{\Bbb N}$ is closed then $\Game(X,F)$ is determined.
+
+\proof{{\bf (a)} Fix a well-ordering $\preccurlyeq$ of $X$.
+Define $\family{\xi}{\On}{W_{\xi}}$ by setting
+
+\Centerline{$W_0
+=\{w:w\in\bigcup_{n\in\Bbb N}X^{2n+1}$, $w\not\subseteq x$ for any
+$x\in F\}$,}
+
+$$\eqalign{W_{\xi}
+&=\{w:w\in\bigcup_{n\in\Bbb N}X^{2n+1}
+  \text{, there is some }t\in X\text{ such that}\cr
+&\mskip200mu w^{\smallfrown}\fraction{t}^{\smallfrown}\fraction{u}
+   \in\bigcup_{\eta<\xi}W_{\eta}
+\text{ for  every }u\in X\}\cr}$$
+
+\noindent if $\xi>0$.  (As in 562A, I write $\fraction{t}\in X^1$ for the
+one-term sequence with value $t$, and $^{\smallfrown}$ for concatenation of
+sequences.)   If $w\in W_0$ then of course
+$w^{\smallfrown}\fraction{t}^{\smallfrown}\fraction{u}\in W_0$ for
+all $t$, $u\in X$;  so $W_0\subseteq W_1$, and of course
+that $W_{\xi}\subseteq W_{\xi'}$ whenever $1\le\xi\le\xi'$ in $\On$.
+There is therefore an ordinal $\zeta$ such that $W_{\zeta+1}=W_{\zeta}$;
+write $W$ for $W_{\zeta}$.
+
+For $w\in W$, let $r(w)\le\zeta$ be the least ordinal such that
+$w\in W_{r(w)}$.   If $r(w)>0$ then there is some $t\in X$ such that
+such that
+$w^{\smallfrown}\fraction{t}^{\smallfrown}\fraction{u}
+\in\bigcup_{\eta<r(w)}W_{\eta}$, that
+is, $r(w^{\smallfrown}\fraction{t}^{\smallfrown}\fraction{u})<r(w)$, for
+every $u\in X$.
+
+Let
+$V$ be the set of those $v\in\bigcup_{n\in\Bbb N}X^{2n}$ such that there is
+a $u\in X$ such that $v^{\smallfrown}\fraction{u}\notin W$.
+Observe that if $w\in\bigcup_{n\in\Bbb N}X^{2n+1}\setminus W$ then
+$w\notin W_{\zeta+1}$ so $w^{\smallfrown}\fraction{t}\in V$ for every
+$t\in X$.
+
+\medskip
+
+{\bf (b)} Suppose that $\emptyset\in V$.   Define
+$\sigma:\bigcup_{n\in\Bbb N}X^n\to X$ inductively by saying that
+
+\inset{$\sigma(\emptyset)$ is the $\preccurlyeq$-least member
+$t$ of $X$ such
+that the one-element sequence $\emptyset^{\smallfrown}\fraction{t}$
+does not belong to $W$,
+
+if $v\in X^{n+1}$ and
+$w=(\sigma(v\restr 0),v(0),\sigma(v\restr 1),v(1),\ldots,
+\sigma(v\restr n),v(n))\in V$,
+take $\sigma(v)$ to be the $\preccurlyeq$-least member $t$ of $X$ such that
+$w^{\smallfrown}\fraction{t}\notin W$,
+
+for other $v\in X^{n+1}$ take $\sigma(v)$ to be the $\preccurlyeq$-least
+member of $X$.}
+
+\noindent Then $\sigma$ is a winning strategy for I.   \Prf\ If
+$x$ is a play consistent with $\sigma$, then an induction on $n$ shows that
+$x\restr 2n\in V$ and $x\restr 2n+1\notin W$ for every $n$.   In
+particular, $x\restr 2n+1\notin W_0$, that is, there is a member of $F$
+extending $x\restr 2n+1$, for every $n$.   As $F$ is closed, $x\in F$ and I
+wins the play $x$.\ \Qed
+
+\medskip
+
+{\bf (c)} Suppose that $\emptyset\notin V$, that is, $w\in W$ for every
+$w\in X^1$.   Define
+$\tau:\bigcup_{n\ge 1}X^n\to X$ inductively by saying
+
+\inset{if $v\in X^n$ and
+$w=(v(0),\tau(v\restr 1),v(1),\tau(v\restr 2),\ldots,v(n-1))$ belongs to
+$W\setminus W_0$,
+then $\tau(v)$ is the $\preccurlyeq$-least $t\in X$ such that
+$r(w^{\smallfrown}\fraction{t}^{\smallfrown}\fraction{u})<r(w)$
+for every $u\in X$,
+
+for other $v\in X^n$, $\tau(v)$ is the $\preccurlyeq$-least member of $X$.}
+
+\noindent Then $\tau$ is a winning strategy for II.   \Prf\ Let $x$ be a
+play consistent with $\tau$.   Then an induction on $n$ tells us that
+
+\Centerline{$x\restr 2n+1\in W$,
+\quad if $x\restr 2n+1\notin W_0$ then $r(x\restr 2n+3)<r(x\restr 2n+1)$}
+
+\noindent for every $n\in\Bbb N$.  Since $\sequencen{r(x\restr 2n+1)}$
+cannot be strictly decreasing, there is some $n\in\Bbb N$ such that
+$x\restr 2n+1\in W_0$ and $x\notin F$.   Thus II wins the play $x$.\ \Qed
+
+\medskip
+
+{\bf (d)} Putting (b) and (c) together we see that $F$ is determined.
+}%end of proof of 567B
+
+\vleader{36pt}{567C}{The axiom of determinacy (a)}
+The standard `axiom of determinacy' is the statement
+
+\Centerline{(AD)\quad Every subset of $\BbbN^{\Bbb N}$ is determined.}
+
+\noindent Evidently it will follow that every subset of $X^{\Bbb N}$ is
+determined for any countable set $X$.  \cmmnt{(If $X\subseteq\Bbb N$,
+a game on $X$ can be regarded as a game on $\Bbb N$ in which there is a
+rule that the players must always choose points in $X$.   See also 567Xc.)}
+
+\spheader 567Cb At the same time, it will be useful to consider a weak form
+of the axiom of countable choice:   for any set $X$, write
+AC($X;\omega$) for the statement
+
+\Centerline{$\prod_{n\in\Bbb N}A_n\ne\emptyset$ whenever $\sequencen{A_n}$
+is a sequence of non-empty subsets of $X$.}
+
+\leader{567D}{Theorem}\cmmnt{ ({\smc Mycielski 64})}
+AD implies AC($\Bbb R;\omega$).
+
+\proof{ Since we know that $\Bbb R$ is equipollent with $\NN$, we can look
+at AC($\NN;\omega$).
+Let $\sequencen{A_n}$ be a sequence of non-empty subsets of $\NN$.   Set
+
+\Centerline{$A
+=\{x:x\in\BbbN^{\Bbb N}$, $\sequencen{x(2n+1)}\notin A_{x(0)}\}$.}
+
+\noindent Then I has no winning strategy in $\Game(\Bbb N,A)$,
+because if $\sigma$
+is a strategy for I in $\Game(\Bbb N,A)$ set $k=\sigma(\emptyset)$;
+there is a
+point $y\in A_k$, and II need only play $x(2n+1)=y(n)$ for each $n$.
+
+So II has a winning strategy $\tau$ say.   Define
+$g:\Bbb N\to\BbbN^{\Bbb N}$ by saying that
+$g(n)(i)=\tau(e_{ni})$ for $n$, $i\in\Bbb N$,
+where $e_{ni}\in\BbbN^{i+1}$, $e_{ni}(0)=n$,
+$e_{ni}(j)=0$ for $1\le j\le i$.   If now $n\in\Bbb N$,
+I plays $(n,0,0,\ldots)$ and
+II follows the strategy $\tau$, the resulting play
+$(n,g(n)(0),0,g(n)(1),0,\ldots)$ must not belong to $A$ so $g(n)\in A_n$.
+}%end of proof of 567D
+
+\leader{567E}{Consequences of AC($\Bbb R;\omega$)} Suppose that
+AC($\Bbb R;\omega$) is true.
+
+\spheader 567Ea If a set $X$ is the image of a subset $Y$ of $\Bbb R$
+under a function $f$, then AC($X;\omega$) is true.   \prooflet{\Prf\ If
+$\sequencen{A_n}$ is a sequence of non-empty subsets of $X$, then
+there is an $x\in\prod_{n\in\Bbb N}f^{-1}[A_n]$, and
+$\sequencen{f(x(n))}\in\prod_{n\in\Bbb N}A_n$.\ \Qed}
+
+\spheader 567Eb In particular, taking
+$S^*=\bigcup_{n\ge 1}\BbbN^n$\cmmnt{ as
+in \S562}, AC($\Cal PS^*;\omega$) is true.   It follows that (in any
+second-countable space $X$) every sequence of
+codable Borel sets is codable and the family of codable Borel sets is a
+$\sigma$-algebra, coinciding with the Borel $\sigma$-algebra $\Cal B(X)$
+on its
+ordinary definition.   Moreover, since $\Cal B(X)$ is an image of
+$\Cal PS^*$, we have AC($\Cal B(X);\omega$)\cmmnt{,
+countable choice for collections
+of Borel sets}.  Similarly, the family of codable Borel functions
+becomes the ordinary family of Borel-measurable functions, and we have
+countable choice for sets of Borel real-valued functions on $X$.
+
+\spheader 567Ec Consequently the results of \S562-565 give us
+large parts of the elementary theory of Borel measures on
+second-countable spaces.   At the same time, if $X$ is second-countable,
+the union of a sequence of meager subsets of $X$ is
+meager\cmmnt{ (because we have
+countable choice for sequences of nowhere dense closed sets)}, so the
+Baire-property algebra of $X$ is a $\sigma$-algebra.
+
+\spheader 567Ed We also find that the supremum of a sequence
+of countable
+ordinals is again countable.   \prooflet{\Prf\ Let $\sequencen{\xi_n}$
+be a sequence in $\omega_1$.   Using
+AC($\Bbb R;\omega)$), we can choose for each $n\in\Bbb N$ a subset
+$\preccurlyeq_n$ of $\Bbb N\times\Bbb N$ which is a well-ordering
+of $\Bbb N$ with order type $\max(\omega,\xi_n)$.   Now we have a
+well-ordering $\preccurlyeq$ of $\Bbb N^2$ defined by saying that
+$(i,j)\preccurlyeq(i',j')$ if $i<i'$ or $i=i'$ and $j\preccurlyeq_ij'$.
+In this case, the order type $\xi$ of $\preccurlyeq$ will be greater than
+or equal to
+every $\xi_n$, so that $\sup_{n\in\Bbb N}\xi_n\le\xi$ is
+countable.\ \Qed}
+
+\leader{567F}{Lemma}\cmmnt{ (see {\smc Mycielski \& \'Swierczkowski 64})}
+[AC($\Bbb R;\omega$)] Suppose that
+$A\subseteq\{0,1\}^{\Bbb N}$ is a continuous image of a subset $B$ of
+$\{0,1\}^{\Bbb N}$ such that $(h^{-1}[B]\cap F)\cup H\subseteq\NN$
+is determined
+whenever $h:\BbbN^{\Bbb N}\to\{0,1\}^{\Bbb N}$ is continuous,
+$F\subseteq\BbbN^{\Bbb N}$ is closed and $H\subseteq\BbbN^{\Bbb N}$ is
+open.
+
+(a) $A$ is universally measurable.
+
+(b) $A$ has the Baire property in $\{0,1\}^{\Bbb N}$.
+
+\proof{ Fix a continuous surjection $f:B\to A$.   Let $\Cal E$ be the
+countable algebra
+of subsets of $\{0,1\}^{\Bbb N}$ determined by coordinates in finite
+sets, that is to say, the algebra of open-and-closed subsets of
+$\{0,1\}^{\Bbb N}$ (311Xh).
+
+\medskip
+
+{\bf (a)(i)} Let $\mu$ be a Borel probability measure on
+$\{0,1\}^{\Bbb N}$ and $\hat\mu$ its completion.
+If $Z\subseteq\{0,1\}^{\Bbb N}$ is closed and not
+negligible, then at least one of $Z\cap A$, $Z\setminus A$
+has non-zero inner measure.
+
+\Prf\ Let $\sequencen{E_n}$ enumerate
+$\Cal E$.   Set $\epsilon_n=2^{-2n-2}\mu Z$ for $n\in\Bbb N$.
+In $(\{0,1\}\times\Cal E)^{\Bbb N}$ consider the
+game in which the players choose $(k_0,K_0),(k_1,K_1),\ldots$ such that
+$K_0=Z$ and for each $n\in\Bbb N$
+
+\Centerline{$k_n\in\{0,1\}$,
+\quad$K_n\in\Cal E$,
+\quad$\mu K_{2n+1}\le\epsilon_n$.}
+
+\noindent I wins if $y=\sequencen{k_{2n}}$ belongs to $B$ and
+$f(y)\notin\bigcup_{n\in\Bbb N}K_{2n+1}$.   Observe that when $y\in B$,
+$f(y)\in\bigcup_{n\in\Bbb N}K_{2n+1}$ iff there is an $m\in\Bbb N$
+such that $f(w)\in\bigcup_{i<m}K_{2i+1}$ whenever $w\in B$ and
+$w\restr m=y\restr m$;  so  I
+wins iff $y\in B$ and at every stage $((k_0,K_0),\ldots,(k_{2m},K_{2m}))$
+there is a $w\in B$ such that $w(i)=k_{2i}$ for $i<m$ and
+$f(w)\notin\bigcup_{i<m}K_{2i+1}$.   So the payoff set $D$
+of plays $\sequencen{(k_n,K_n)}$ won by I is of the form
+$(h^{-1}[B]\cap F)\cup H$ where
+$h:(\{0,1\}\times\Cal E)^{\Bbb N}\to\{0,1\}^{\Bbb N}$ is
+continuous, $F\subseteq (\{0,1\}\times\Cal E)^{\Bbb N}$ is closed and
+$H\subseteq(\{0,1\}\times\Cal E)^{\Bbb N}$ is open.
+(Here $H$ is
+the set of plays which are won because II is the first to break a rule.)
+Consequently $D$ is determined.
+
+\medskip
+
+\qquad{\bf case 1} Suppose that I has a winning strategy $\sigma$.
+For each play $\sequencen{(k_n,K_n)}$ consistent with $\sigma$,
+$f(\sequencen{k_{2n}})$ is defined and belongs to $A$.
+Since the set of plays consistent with $\sigma$ is a closed subset of
+$(\{0,1\}\times\Cal E)^{\Bbb N}$, the set $C$ of points obtainable in this
+way is an analytic subset of $Z$, therefore measured by $\hat\mu$ (563I).
+\Quer\ If $\hat\mu C=0$, then there is an open set $G\supseteq C$ such that
+$\mu G<\epsilon_0$ (563Fd).   In this case, II can play in such a way that
+
+\Centerline{$K_{2n+1}\subseteq G$,
+\quad$\mu(G\setminus\bigcup_{i\le n}K_{2i+1})<\epsilon_{n+1}$,}
+
+\Centerline{if
+$E_n\subseteq G$ then $E_n\subseteq\bigcup_{i\le n}K_{2i+1}$}
+
+\noindent for every $n$.   But now, taking I's responses under $\sigma$,
+we have a play of $\Game(\{0,1\}\times\Cal E,D)$
+in which $\bigcup_{n\in\Bbb N}K_{2n+1}=G$
+includes $C$, so contains $f(\sequencen{k_n})$, and is won by II;  which is
+supposed to be impossible.\ \Bang
+
+So in this case $\mu_*A\ge\mu C>0$.
+
+\medskip
+
+\qquad{\bf case 2} Suppose that II has a winning strategy $\tau$.
+For each $n\in\Bbb N$ and $u\in\{0,1\}^n$, let $L(u)$ be the second
+component of
+$\tau(\ofamily{i}{n}{(u(i),\emptyset)})$;  set
+$G=\bigcup_{n\in\Bbb N}\bigcup_{u\in\{0,1\}^n}L(u)$, so that
+$\mu G\le\sum_{n=0}^{\infty}2^n\epsilon_n<\mu Z$.   If we take any
+$y\in B$, then we have a play $\sequencen{(k_n,K_n)}$
+of $\Game(\{0,1\}\times\Cal E,D)$,
+consistent with $\tau$, in which $k_{2n}=y(n)$ and $K_{2n}=\emptyset$ for
+each $n$.   Since II wins this play, $f(y)$ must belong to
+
+\Centerline{$\bigcup_{n\in\Bbb N}K_{2n+1}
+=\bigcup_{n\in\Bbb N}L(y\restr n)\subseteq G$.}
+
+\noindent As $y$ is arbitrary, $A\subseteq G$
+and $\mu_*(Z\setminus A)\ge\mu(Z\setminus G)>0$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Write $\Cal K$ for the family of compact sets
+$K\subseteq\{0,1\}^{\Bbb N}$ such that $A\cap K$ is Borel.
+If $E\subseteq\{0,1\}^{\Bbb N}$ and $\mu E>0$, there is a
+$K\in\Cal K$ such that $K\subseteq E$ and $\mu K>0$.   \Prf\ There is a
+closed $Z\subseteq E$ such that $\mu Z>0$ (563Fd again).   By (i),
+at least one of $\mu_*(Z\cap A)$,
+$\mu_*(Z\setminus A)$ is non-zero, and there is a compact
+set $K$ of non-zero measure which is included in one of $Z\cap A$,
+$Z\setminus A$.   But now $K\in\Cal K$.\ \Qed
+
+Now (because we have countable choice for subsets of $\Cal K$)
+there is a
+sequence $\sequencen{K_n}$ in $\Cal K$ such that
+$\sup_{n\in\Bbb N}\mu K_n=\sup_{K\in\Cal K}\mu K$;  setting
+$E=\{0,1\}^{\Bbb N}\setminus\bigcup_{n\in\Bbb N}K_n$, $E$ must be
+negligible, while $A\setminus E$ is a Borel set;  so $A$ is measured by
+$\hat\mu$.   As $\mu$ is arbitrary, $A$ is universally measurable.
+
+\medskip
+
+{\bf (b)(i)} If $V\in\Cal E\setminus\{\emptyset\}$ then
+either $V\cap A$ is meager or there is a
+$V'\in\Cal E\setminus\{\emptyset\}$ such that $V'\subseteq V$
+and $V'\setminus A$ is meager.   \Prf\ Set
+$\Cal U=\{E:E\in\Cal E\setminus\{\emptyset\}$, $E\subseteq V\}$
+and let $\preccurlyeq$ be a
+well-ordering of $\Cal U$ (in order type $\omega$, if you like).
+Consider the game on $\{0,1\}\times\Cal U$
+in which the players choose $(k_0,U_0),(k_1,U_1),\ldots$ such that,
+for each $n\in\Bbb N$,
+
+\Centerline{$k_n\in\{0,1\}$,
+\quad$U_n\in\Cal U$,
+\quad$U_{n+1}\subseteq U_n$.}
+
+\noindent I wins if $y=\sequencen{k_{2n}}$ belongs to $B$ and
+$f(y)\in\bigcap_{n\in\Bbb N}U_n$.   Because the $U_n$ are all
+open-and-closed,
+this game is determined for the same reasons as the game of (a).
+
+\medskip
+
+\qquad{\bf case 1} Suppose that I has a winning strategy $\sigma$;
+say that $\sigma_2(w)\in\Cal U$ is the second component of $\sigma(w)$ for each
+$w\in\bigcup_{n\in\Bbb N}(\{0,1\}\times\Cal U)^n$.   For each $n\in\Bbb N$
+let $\Cal U_n$ be the set of those $U\in\Cal U$ such that
+$v\restr n=v'\restr n$ for all $v$, $v'\in U$.   Let
+$(k',V')=\sigma(\emptyset)$ be
+I's first move when following $\sigma$.   Let $Q$ be the set of
+positions in the game consistent with $\sigma$ and with II to move,
+that is, finite sequences
+
+\Centerline{$q=\langle(k_i,U_i)\rangle_{i\le 2n}
+\in(\{0,1\}\times\Cal U)^{2n+1}$}
+
+\noindent such that
+$(k_{2m},U_{2m})=\sigma(\langle(k_{2i+1},U_{2i+1})\rangle_{i<m})$
+for every $m\le n$ and $\langle U_i\rangle_{i\le 2n}$ is non-increasing.
+For such a $q$, set $V_q=U_{2n}$ and
+
+\Centerline{$W_q
+=\bigcup\{\sigma_2({\langle(k_{2i+1},U_{2i+1})\rangle_{i<n}}
+   ^{\smallfrown}\fraction{(k,U)}):
+k\in\{0,1\}$, $U\in\Cal U_n$, $U\subseteq V_q\}$.}
+
+\noindent Then $W_q$ is an open subset of $V_q$;  but also it is dense in
+$V_q$, because if $W\subseteq V_q$ is open and not empty there is a
+$U\in\Cal U_n$ included in $W$ and
+$\sigma_2({\langle(k_{2i+1},U_{2i+1})\rangle_{i<n}}^{\smallfrown}
+  \fraction{(k,U)})$
+is a non-empty subset of $U$.    $Q$ is countable, so
+$E=\bigcap_{q\in Q}W_q\cup(\{0,1\}^{\Bbb N}\setminus\overline{V}_q)$ is
+comeager in $\{0,1\}^{\Bbb N}$.
+
+\Quer\ If $V'\setminus A$ is not meager, there is an
+$x\in E\cap V'\setminus A$.
+Define $\sequencen{(k_n,U_n)}$ inductively,
+as follows.   $(k_0,U_0)=(k',V')$.   Given that
+$q=\langle(k_i,U_i)\rangle_{i\le 2n}$ belongs to $Q$ and $x\in V_q$,
+then $x\in W_q$ so there are $k\in\{0,1\}$, $U\in\Cal U_n$ such that $x
+\in\sigma_2({\langle(k_{2i+1},U_{2i+1})\rangle_{i<n}}^{\smallfrown}
+  \fraction{(k,U)})$;
+take the
+lexicographically first such pair $(k,U)$ for $(k_{2n+1},U_{2n+1})$,
+and set
+$(k_{2n+2},U_{2n+2})=\sigma(\langle(k_{2i+1},U_{2i+1})\rangle_{i\le n})$.
+Then $q'=\langle(k_i,U_i)\rangle_{i\le 2n+2}$ belongs to $Q$
+and $V_{q'}=U_{2n+2}=\sigma_2(\langle(k_{2i+1},U_{2i+1})\rangle_{i\le n})$
+contains $x$, so the induction can continue.
+
+At the end of this induction, $\sequencen{(k_n,U_n)}$ will be a play of the
+game consistent with $\sigma$ in which the only point of
+$\bigcap_{n\in\Bbb N}U_n$ is $x$ and does not belong to $A$.
+So either $y=\sequencen{k_{2n}}$ does not belong to $B$ or
+$f(y)\notin\bigcap_{n\in\Bbb N}U_n$;  in either case, II wins the play;
+which is supposed to be impossible.\ \Bang
+
+So in this case $V'\setminus A$ is meager.
+
+\medskip
+
+\qquad{\bf case 2} Suppose that II has a winning strategy $\tau$;
+say that $\tau_2(w)$ is the second component of $\tau(w)$ for each
+$w\in\bigcup_{n\ge 1}(\{0,1\}\times\Cal U)^n$.
+Let $Q$ be the set of objects
+
+\Centerline{$q=(\ofamily{i}{2n}{(k_i,U_i)},k)$}
+
+\noindent such that $\ofamily{i}{2n}{(k_i,U_i)}$ is a finite sequence in
+$\{0,1\}\times\Cal U$ consistent with $\tau$ (allowing the empty string
+when $n=0$) and $k\in\{0,1\}$.   For such a $q$, set $V_q=U_{2n-1}$ (if
+$n>0$) or $V_q=V$ (if $n=0$);  set
+
+\Centerline{$W_q
+=\bigcup\{\tau_2({\ofamily{i}{n}{(k_{2i},U_{2i})}}^{\smallfrown}
+  \fraction{(k,U)}):
+U\in\Cal U$, $U\subseteq V_q\}$,}
+
+\noindent so that $W_q$ is a dense subset of $V_q$.   $Q$ is countable, so
+$E=\bigcap_{q\in Q}W_q\cup(\{0,1\}^{\Bbb N}\setminus\overline{V}_q)$ is
+comeager.
+
+\Quer\ If there is an $x$ in $A\cap V\cap E$, let
+$y\in B$ be such that $f(y)=x$, and define
+$\sequencen{(k_n,U_n)}$ as follows.   Given that
+$q=(\ofamily{i}{2n}{(k_i,U_i)},y(n))$ belongs to $Q$ and $x\in V_q$,
+then $x\in W_q$ so there is a $U\in\Cal U$ such that
+$x\in\tau_2({\ofamily{i}{n}{(k_{2i},U_{2i})}}^{\smallfrown}
+  \penalty-100\fraction{(y(n),U)})$;
+take the
+$\preccurlyeq$-first such $U$ for $U_{2n}$, set $k_{2n}=y(n)$ and
+$(k_{2n+1},U_{2n+1})=\tau(\langle(k_{2i},U_{2i})\rangle_{i\le n})$,
+so that $q'=(\langle(k_i,U_i)\rangle_{i\le 2n+1},\penalty-100y(n+1))$
+belongs to $Q$ and
+$V_{q'}=U_{2n+1}=\tau_2(\langle(k_{2i},U_{2i})\rangle_{i\le n})$
+contains $x$.
+
+At the end of this induction, $\sequencen{(k_n,U_n)}$ will be a play of the
+game consistent with $\tau$ in which
+$f(\sequencen{k_{2n}})=x\in\bigcap_{n\in\Bbb N}U_n$, so that I wins, which
+is supposed to be impossible.\ \Bang
+
+Thus in this case $A\cap V$ must be meager.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Now let $G$ be the union of those $V\in\Cal E$
+such that $V\setminus A$ is meager;  then
+$G\setminus A$ is meager.   (This is where we need AC($\Bbb R;\omega$).)
+If $V\in\Cal E$ and $V\subseteq\{0,1\}^{\Bbb N}\setminus G$,
+then $V'\setminus A$ is non-meager for every whenever
+$V\in\Cal E\setminus\{\emptyset\}$ and $V'\subseteq V$,
+so $V\cap A$ is meager;  accordingly $G'\cap A$ is meager, where
+$G'=\{0,1\}^{\Bbb N}\setminus\overline{G}$.   But this means that
+$G\symmdiff A
+\subseteq(G\setminus A)\cup(G'\cap A)\cup(\overline{G}\setminus G)$ is
+meager and $A$ has the Baire property.
+}%end of proof of 567F
+
+\leader{567G}{Theorem} [AD] In any Hausdorff
+second-countable space, every subset is
+universally measurable and has the Baire property.
+
+\proof{
+Let $X$ be a Hausdorff second-countable space, $\sequencen{U_n}$ a sequence
+running over a base for the topology of $X$, and $A\subseteq X$.
+
+\medskip
+
+{\bf (a)} Define
+$g:X\to\{0,1\}^{\Bbb N}$ by setting $g(x)=\sequencen{\chi U_n(x)}$ for
+$x\in X$;  then $g$ is injective and Borel measurable.
+If $\mu$ is a Borel probability measure on $X$, we have a Borel
+probability measure $\nu=\mu g^{-1}\restr\Cal B(\{0,1\}^{\Bbb N})$
+on $\{0,1\}^{\Bbb N}$.   By 567Fa, $g[A]$ is measured by the completion
+$\hat\nu$ of $\nu$;   let $F$, $H\subseteq\{0,1\}^{\Bbb N}$ be Borel sets
+such that $\nu H=0$ and $g[A]\symmdiff F\subseteq H$;  then
+$A\symmdiff g^{-1}[F]\subseteq g^{-1}[H]$ is $\mu$-negligible, so $A$ is
+measured by $\hat\mu$.   As $\mu$ is arbitrary, $A$ is universally
+measurable.
+
+\medskip
+
+{\bf (b)} Set
+$G=\bigcup\{U_n:n\in\Bbb N$, $U_n\cap A$ has the Baire property$\}$,
+so that $G\cap A$ has the Baire property.   (Remember that as we have a
+bijection between $X$ and a subset of $\Bbb R$, we have
+countable choice for subsets of $X$, so that the ideal of meager subsets
+of $X$
+is a $\sigma$-ideal and the Baire-property algebra is a $\sigma$-algebra.)
+Set
+$V=X\setminus(\bigcup_{n\in\Bbb N}\partial U_n\cup\overline{G})$;  then
+$G\cup V$ is comeager in $X$, and $A\setminus V$ has the Baire
+property.   If $V$ is empty, we can stop.   Otherwise, let $\Cal V$
+be the countable algebra of subsets of $V$ generated by
+$\{V\cap U_n:n\in\Bbb N\}$.   Since $A\cap U$ does not have the Baire
+property (in $X$) for any non-empty relatively open subset $U$ of $V$,
+$V$ has no isolated points and $\Cal V$ is atomless.   So $\Cal V$ is
+isomorphic to the algebra of open-and-closed subsets of $\{0,1\}^{\Bbb N}$
+(316M) and there is a Boolean-independent sequence
+$\sequencen{V_n}$ in $\Cal V$ generating $\Cal V$.   Define
+$h:V\to\{0,1\}^{\Bbb N}$ by setting $h(x)=\sequencen{\chi V_n(x)}$ for
+$x\in V$.   Then $h[V]$ is dense in $\{0,1\}^{\Bbb N}$ and $h^{-1}[H]$ is
+dense in $V$ for every dense open set $H\subseteq\{0,1\}^{\Bbb N}$;
+consequently $h^{-1}[M]$ is meager in $V$ and in $X$ whenever
+$M\subseteq\{0,1\}^{\Bbb N}$ is either nowhere dense or meager.
+By 567Fb, $h[A]$ has the Baire property in $\{0,1\}^{\Bbb N}$;  express it
+as $H\symmdiff M$ where $H$ is open and $M$ is meager;  then
+$A\cap V=h^{-1}[h[A]]=h^{-1}[H]\symmdiff h^{-1}[M]$ has the
+Baire property in $X$, so $A$ has the Baire property in $X$, as required.
+}%end of proof of 567G
+
+\leader{567H}{Theorem} (a) [AD] Let $X$ be a Polish group and $Y$ a
+topological group which is either separable or Lindel\"of.
+Then every group homomorphism from $X$ to $Y$ is continuous.
+
+(b) [AD+AC($\omega$)] Let $X$ be an abelian
+topological group which is complete under a metric defining its topology,
+and $Y$ a topological group which is either separable or Lindel\"of.
+Then every group homomorphism from $X$ to $Y$ is continuous.
+
+(c) [AD+AC($\omega$)]
+Let $X$ be a complete metrizable linear topological space,
+$Y$ a linear topological space and $T:X\to Y$ a linear operator.
+Then $T$ is continuous.   In particular, every linear operator between
+Banach spaces is a bounded operator.
+
+\proof{{\bf (a)(i)} Let $f:X\to Y$ be a homomorphism, and
+$V$ a neighbourhood of the identity in $Y$.
+Let $W$ be an open neighbourhood of the identity in $Y$
+such that $W^{-1}W\subseteq V$.   Then there is countable family $\Cal H$
+of left translates of $W$ which covers $Y$.   \Prf\ If $Y$ is
+separable, let $D$ be a countable dense subset of $Y$, and set
+$\Cal H=\{yW:y\in D\}$.   If $Y$ is Lindel\"of, we have only to note that
+$\{yW:y\in Y\}$ is an open cover of $Y$, so has a countable subcover.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Since $X$ is a Baire space (561Ea),
+and the ideal of meager subsets of $X$ is a $\sigma$-ideal (see
+part (b) of the proof of 567G), and $\{f^{-1}[H]:H\in\Cal H\}$ is a
+countable cover of $X$, there is an $H\in\Cal H$ such that
+$E=f^{-1}[H]$ is non-meager.
+Now $E^{-1}E$ is a neighbourhood of the
+identity in $X$.   \Prf\ By 567G, $E$ has the Baire property;  let
+$G$ be a non-empty open set in $X$ such that $G\setminus E$ is meager.
+Set $U=\{x:Gx\cap G\ne\emptyset\}$;  then $U$ is a neighbourhood of the
+identity in $X$.   If $x\in U$, then
+
+\Centerline{$Gx\cap G
+\subseteq(Ex\cap E)\cup(Gx\setminus Ex)\cup(G\setminus E)
+=(Ex\cap E)\cup(G\setminus E)x\cup(G\setminus E)$.}
+
+\noindent Since $Gx\cap G$ is non-meager, while $G\setminus E$ and
+$(G\setminus E)x$ are meager, $Ex\cap E\ne\emptyset$ and $x\in E^{-1}E$.
+Thus $E^{-1}E\supseteq U$ is a neighbourhood of the identity.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} Let $y\in Y$ be such that $H=yW$.
+If $x$, $z\in E$, $y^{-1}f(x)$ and $y^{-1}f(z)$ both belong to
+$W$, so
+
+\Centerline{$f(x^{-1}z)=f(x)^{-1}f(z)\in W^{-1}yy^{-1}W=W^{-1}W
+\subseteq V$.}
+
+\noindent Thus $f^{-1}[V]\supseteq E^{-1}E$ is a neighbourhood of the
+identity in $X$.   As $V$ is arbitrary, $f$ is continuous at the identity,
+therefore continuous.
+
+\medskip
+
+{\bf (b)} \Quer\ Otherwise, there is a neighbourhood $V$ of the identity
+$e_Y$ of $Y$ such that $f^{-1}[V]$ is not a neighbourhood of the identity
+$e_X$ of $X$.   Let $\rho$ be a metric on $X$, defining its topology, under
+which $X$ is complete.   Then for each $n\in\Bbb N$ we can choose an
+$x_n\in X$ such that $\rho(x_n,e_X)\le 2^{-n}$ and $f(x_n)\notin V$.
+(This is where we need AC($\omega$).)   For finite $J\subseteq\Bbb N$
+set $u_J=\prod_{n\in J}x_n$, starting from $u_{\emptyset}=e_X$.
+We can define an infinite $I\subseteq\Bbb N$ inductively by saying that
+
+\Centerline{$I=\{n:$ whenever $J\subseteq I\cap n$
+then $\rho(u_J,u_Jx_n)\le 2^{-\#(I\cap n)}\}$.}
+
+\noindent This will ensure
+that $v_K=\lim_{n\to\infty}u_{K\cap n}$ is defined for every
+$K\subseteq I$.   Note that $v_{K\cup\{m\}}=v_Kx_m$ whenever $m\in I$ and
+$K\subseteq I\setminus\{m\}$
+(this is where we need to know that $X$ is abelian).
+
+Give $\Cal PI$ its usual topology.
+Let $W$ be a neighbourhood of $e_Y$ such that $W^{-1}W\subseteq V$.
+By the argument of (a) above, applied to the map
+$K\mapsto f(v_K):\Cal PI\to Y$,
+there is a $y\in Y$ such that $E=\{K:K\subseteq I$, $f(v_K)\in yW\}$
+is non-meager in $\Cal PI$.   Looking at the topological group
+$(\Cal PI,\symmdiff)$, we see that there is a neighbourhood $U$ of
+$\emptyset$ in $\Cal PI$ included in $\{K\symmdiff L:K$, $L\in E\}$.
+Taking any sufficiently large $n\in I$, we have $\{n\}\in U$, so there must
+be a $K\in E$ such that $n\notin K$ and $K\cup\{n\}\in E$.
+In this case $f(v_K)\in yW$, $f(v_{K\cup\{n\}})\in yW$ and
+
+\Centerline{$f(x_n)=f(v_K^{-1}v_{K\cup\{n\}})
+=f(v_K)^{-1}f(v_{K\cup\{n\}})\in W^{-1}W\subseteq V$,}
+
+\noindent which is impossible.\ \Bang
+
+\medskip
+
+{\bf (c)} \Quer\ Otherwise, there is a neighbourhood $V$ of $0$ in $Y$ such
+that $T^{-1}[V]$ is not a neighbourhood of $0$ in $X$;  we can suppose that
+$\alpha y\in V$ whenever $y\in V$ and $|\alpha|\le 1$.
+Let $\rho$ be a metric on $X$, defining its topology, under
+which $X$ is complete.   Let $W$ be a neighbourhood of $0$ in $Y$ such that
+$W-W\in V$.   Then for each $n\in\Bbb N$ we can choose an
+$x_n\in X\setminus nT^{-1}[V]$ such that
+$\rho(x_n,0)\le 2^{-n}$.   Define $I\in[\Bbb N]^{\omega}$ and
+$\langle v_K\rangle_{K\subseteq I}$ as in (b), but using additive notation
+rather than multiplicative.   This time we are not
+supposing that $Y$ is separable.   However, there must be an $m\in\Bbb N$
+such that $E=\{K:T(v_K)\in mW\}$ is non-meager.   As before, we can find
+$n\in I\setminus m$ and $K\in E$ such that
+$n\notin L$ and $K\cup\{n\}\in E$.   So the calculation gives
+
+\Centerline{$Tx_n=Tv_{K\cup\{n\}}-Tv_K\in mW-mW
+\subseteq mV\subseteq nV$,}
+
+\noindent again contrary to the choice of $x_n$.\ \Bang
+}%end of proof of 567H
+
+\leader{567I}{Proposition} [AC($\Bbb R;\omega$)] Let $\widehat{\Cal B}$ be
+the Baire-property algebra of $\Cal P\Bbb N$.   Then every
+$\widehat{\Cal B}$-measurable real-valued additive functional on
+$\Cal P\Bbb N$ is of the form $a\mapsto\sum_{n\in a}\gamma_n$ for some
+$\sequencen{\gamma_n}\in\ell^1$.
+
+\proof{ As noted in 567Ec, $\widehat{\Cal B}$ is a $\sigma$-algebra of
+subsets of $\Cal P\Bbb N$.
+
+\medskip
+
+{\bf (a)(i)} If $G\subseteq\Cal P\Bbb N$ is a dense open set and
+$m\in\Bbb N$, there are an $m'>m$ and an $L\subseteq m'\setminus m$ such
+that $\{a:a\subseteq\Bbb N$, $a\cap m'\setminus m=L\}\subseteq G$.   \Prf\
+The set $H=\{b:b\subseteq\Bbb N\setminus m$, $I\cup b\in G$ for every
+$I\subseteq m\}$ is a dense open subset of $\Cal P(\Bbb N\setminus m)$, so
+there are an $m'>m$ and an $L\subseteq m'\setminus m$ such that
+$H\supseteq\{b:b\subseteq\Bbb N\setminus m$, $b\cap m'\setminus m=L\}$;
+this pair $m'$, $L$ works.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} If $G\subseteq\Cal P\Bbb N$ is comeager, there are a
+strictly increasing sequence $\sequencen{m_n}$ in $\Bbb N$ and sets
+$L_n\subseteq m_{n+1}\setminus m_n$, for $n\in\Bbb N$, such that
+
+\Centerline{$G
+\supseteq\{a:a\subseteq\Bbb N$, $a\cap m_{n+1}\setminus m_n=L_n$ for
+infinitely many $n\}$.}
+
+\noindent\Prf\ Let $\sequencen{G_n}$ be a non-increasing sequence of dense
+open sets such that $G\supseteq\bigcap_{n\in\Bbb N}G_n$, and choose
+$\sequencen{m_n}$, $\sequencen{L_n}$ inductively such that $m_n<m_{n+1}$,
+$L_n\subseteq m_{n+1}\setminus m_n$ and
+$\{a:a\subseteq\Bbb N$, $a\cap m_{n+1}\setminus m_n=L_n\}\subseteq G_n$ for
+every $n$.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} If $G\subseteq\Cal P\Bbb N$ is comeager, and
+$a\subseteq\Bbb N$, then there are $b_0$, $b'_0$, $b_1$, $b'_1\in G$ such
+that
+
+\Centerline{$b_0\subseteq b'_0$,
+\quad$b_1\subseteq b'_1$,
+\quad$(b'_0\setminus b_0)\cap(b'_1\setminus b_1)=\emptyset$,
+\quad$(b'_0\setminus b_0)\cup(b'_1\setminus b_1)=a$.}
+
+\noindent\Prf\ Let $\sequencen{m_n}$ and $\sequencen{L_n}$ be as in (ii).
+Set
+
+\Centerline{$b_0=\bigcup_{n\in\Bbb N}L_{2n}$,
+\quad
+$b'_0=b_0\cup(a\cap m_0)
+\cup\bigcup_{n\in\Bbb N}a\cap m_{2n+2}\setminus m_{2n+1}$,}
+
+\Centerline{$b_1=\bigcup_{n\in\Bbb N}L_{2n+1}$,
+\quad$b'_1=b_1\cup\bigcup_{n\in\Bbb N}a\cap m_{2n+1}\setminus m_{2n}$.\
+\Qed}
+
+\noindent So if $\nu:\Cal P\Bbb N\to\Bbb R$ is additive,
+$\sup_{a\subseteq\Bbb N}|\nu a|\le 4\sup_{b\in G}|\nu b|$.
+
+\medskip
+
+\quad{\bf (iv)} If $G\subseteq\Cal P\Bbb N$ is comeager, there is a
+disjoint sequence $\sequencen{a_n}$ in $G$.   \Prf\ Take
+$\sequencen{m_n}$ and $\sequencen{L_n}$ as in (ii), and set
+$a_n=\bigcup_{i\in\Bbb N}L_{2^n(2i+1)}$ for each $n$.\ \Qed
+
+\medskip
+
+{\bf (b)} If $\nu:\Cal P\Bbb N\to\Bbb R$ is additive and
+$\widehat{\Cal B}$-measurable,
+it is bounded.   \Prf\ Let $M\in\Bbb N$ be such that
+$E=\{a:|\nu a|\le M\}$ is non-meager.   Then there are an $m\in\Bbb N$ and
+$J\subseteq m$ such that $V_{mJ}\setminus E$ is meager, where
+$V_{mJ}=\{a:a\cap m=J\}$.   For $K\subseteq m$, $a\subseteq\Bbb N$
+set $\phi_K(a)=a\symmdiff K$;  then $\phi_K$ is an autohomeomorphism of
+$\Cal P\Bbb N$, so $\phi_K[V_{mJ}\setminus E]$ is meager.   Let $G$ be the
+comeager set
+$\Cal P\Bbb N\setminus\bigcup_{K\subseteq m}\phi_K[V_{mJ}\setminus E]$.
+Set $\delta=\sum_{i<m}|\nu\{i\}|$;  then
+$|\nu\phi_K(a)-\nu a|\le\delta$ whenever $K\subseteq m$
+and $a\subseteq\Bbb N$.   If $b\in G$, set $K=(b\cap m)\symmdiff J$;  then
+$\phi_K(b)\in V_{mJ}\setminus(V_{mJ}\setminus E)\subseteq E$, so
+$|\nu b|\le M+\delta$.   So (a-iii) tells us that $|\nu a|\le 4(M+\delta)$
+for every $a\subseteq\Bbb N$, and $\nu$ is bounded.\ \Qed
+
+\medskip
+
+{\bf (c)} If $\nu:\Cal P\Bbb N\to\Bbb R$ is
+additive and $\widehat{\Cal B}$-measurable
+and $\nu\{n\}=0$ for every $n\in\Bbb N$, then $E=\{a:\nu a\ge\epsilon\}$ is
+meager for every $\epsilon>0$.
+\Prf\Quer\ Otherwise, let $m\in\Bbb N$ and $J\subseteq m$ be such that
+$V_{mJ}\setminus E$ is meager.   Let $G$ be the comeager set
+$\Cal P\Bbb N\setminus\bigcup_{K\subseteq m}\phi_K[V_{mJ}\setminus E]$, as
+in (b).   This time, $\nu a=\nu\phi_K(a)$ whenever $K\subseteq m$ and
+$a\subseteq\Bbb N$, so $\nu a\ge\epsilon$ for every $a\in G$.   But
+(a-iv) tells us that there is a disjoint sequence
+$\sequencen{a_n}$ in $G$, and now
+$\sup_{n\in\Bbb N}\nu(\bigcup_{i\le n}a_i)=\infty$, contradicting (b).\
+\Bang\Qed
+
+\medskip
+
+{\bf (d)} If $\nu:\Cal P\Bbb N\to\Bbb R$ is additive and
+$\widehat{\Cal B}$-measurable
+and $\nu\{n\}=0$ for every $n\in\Bbb N$, then $\nu=0$.   \Prf\ By (c),
+applied to $\nu$ and $-\nu$, $G=\{a:\nu a=0\}$ is comeager.   By (a-iii),
+$\nu$ must be identically zero.\ \Qed
+
+\medskip
+
+{\bf (e)} Now suppose that $\nu$ is any additive
+$\widehat{\Cal B}$-measurable functional.   Set $\gamma_n=\nu\{n\}$ for
+each $n$.   By (b), $\sequencen{\gamma_n}\in\ell^1$.   Setting
+$\nu'a=\nu a-\sum_{n\in a}\gamma_n$ for $a\subseteq\Bbb N$, $\nu'$ is still
+additive and $\widehat{\Cal B}$-measurable, and $\nu'\{n\}=0$ for every
+$n$, so (d) tells us that $\nu'=0$ and
+$\nu a=\sum_{n\in a}\gamma_n$ for every $a$, as required.
+}%end of proof of 567I
+
+\leader{567J}{Proposition} [AD] A finitely additive functional on a
+Dedekind $\sigma$-complete Boolean algebra is countably additive.
+
+\proof{ Let $\frak A$ be a Dedekind $\sigma$-complete Boolean algebra,
+$\nu$ a finitely additive functional on $\frak A$ and $\sequencen{a_n}$ a
+disjoint sequence in $\frak A$ with supremum $a$.   Set
+$\lambda c=\nu(\sup_{n\in c}a_n)$ for $c\subseteq\Bbb N$.
+Then $\lambda$ is an
+additive functional on $\Cal P\Bbb N$.   By 567G, it is
+$\widehat{\Cal B}(\Cal P\Bbb N)$-measurable;  by 567I,
+
+\Centerline{$\nu a=\lambda\Bbb N=\sum_{n=0}^{\infty}\lambda\{n\}
+=\sum_{n=0}^{\infty}\nu a_n$.}
+}%end of proof of 567J
+
+\leader{567K}{Theorem} [AD+AC($\omega$)] If $U$ is an $L$-space with a weak
+order unit, it is reflexive.
+
+\proof{ By 561Hb, $U$ is isomorphic to $L^1(\frak A,\bar\mu)$ for
+some totally finite measure algebra $(\frak A,\bar\mu)$;  now $U^*$ can be
+identified with $L^{\infty}(\frak A)$.   Next, $L^{\infty}(\frak A)^*$ can
+be identified with the space of bounded finitely additive functionals on
+$\frak A$, as in 363K;  by 567J, these are all countably additive.
+Because we have countable choice, $\frak A$ is ccc (566M),
+so countably additive functionals are completely additive and correspond
+to members of $L^1$, as in 365Ea.   Thus the canonical embedding of $U$ in
+$U^{**}$ is surjective.
+}%end of proof of 567K
+
+\leader{567L}{Theorem}\cmmnt{ (R.M.Solovay)} [AD] $\omega_1$ is \2vm.
+
+\medskip
+
+\noindent{\bf Remark}\cmmnt{ The definition in 541M speaks of
+`regular uncountable
+cardinals'.}   In the present context I will use the formulation
+`an initial ordinal $\kappa$ is
+\2vm\ if there is a proper $\kappa$-additive
+$2$-saturated ideal $\Cal I$
+of $\Cal P\kappa$ containing singletons', where here
+`$\kappa$-additive' means that $\bigcup_{\eta<\xi}J_{\eta}\in\Cal I$
+whenever $\xi<\kappa$ and $\ofamily{\eta}{\xi}{J_{\eta}}$ is a family in
+$\Cal I$.
+
+\proof{{\bf (a)} Let $\StrI$ be the set of strategies for player I in games
+of the form $\Gamma(\Bbb N,.)$, that is, $\StrI$ is the set of functions
+from $\bigcup_{n\in\Bbb N}\BbbN^n$ to $\Bbb N$;  for $\sigma\in\StrI$ and
+$x\in\NN$, let $\sigma*x\in\NN$ be the play in which I follows the strategy
+$\sigma$ and II plays the sequence  $x$, that is,
+
+\Centerline{$(\sigma*x)(2n)=\sigma(x\restr n)$,
+\quad$(\sigma*x)(2n+1)=x(n)$}
+
+\noindent  for $n\in\Bbb N$.
+Similarly, let $\StrII$ be the set of functions from
+$\bigcup_{n\ge 1}\BbbN^n$ to $\Bbb N$
+and for $\tau\in\StrII$, $x\in\NN$, $n\in\Bbb N$ set
+
+\Centerline{$(\tau*x)(2n)=x(n)$,
+\quad$(\tau*x)(2n+1)=\tau(x\restr(n+1))$.}
+
+We can find bijections $g:\NN\to\StrI\cup\StrII$ and
+$h:\NN\to\WO(\Bbb N)$, where $\WO(\Bbb N)\subseteq\Cal P(\BbbN^2)$ is the
+set of well-orderings of $\Bbb N$.   \Prf\ Since
+$S=\bigcup_{n\in\Bbb N}\BbbN^n$ and $S^*=\bigcup_{n\ge 1}\BbbN^n$ are
+countably infinite, $\StrI=\BbbN^{S}$ and $\StrII=\BbbN^{S^*}$ are
+equipollent with $\NN$.    As $\Cal P(\BbbN^2)\sim\Cal P\Bbb N\sim\NN$,
+there is an injection from $\WO(\Bbb N)$ to $\NN$.   In the reverse
+direction, there are an injection from $\NN$ to the set $F$ of permutations
+of $\Bbb N$, and an injection from $F$ to $\WO(\Bbb N)$;  so
+the Schroeder-Bernstein theorem tells us that $\WO(\Bbb N)\sim\NN$.\ \Qed
+
+Define $f:\WO(\Bbb N)\to\omega_1$ by
+saying that $f(\preccurlyeq)=\otp(\Bbb N,\preccurlyeq)$ for
+$\preccurlyeq\mskip5mu\in\WO(\Bbb N)$.
+
+\medskip
+
+{\bf (b)} For $x\in\NN$ let $L_x\subseteq\NN$ be the smallest set such that
+
+\inset{$x\in L_x$,
+
+whenever $y$, $z\in L_x$ then $g(y)*z\in L_x$,
+
+whenever $y\in L_x$ then $\sequencen{y(2n)}$ and
+$\sequencen{y(2^k(2n+1))}$ belong to $L_x$ for every $k\in\Bbb N$.}
+
+\noindent Observe that $L_x$ is countable and that $L_y\subseteq L_x$
+whenever $y\in L_x$.   For $x\in\NN$, set $C_x=\{y:y\in\NN$, $x\in L_y\}$.
+
+\medskip
+
+{\bf (c)} For any sequence $\sequencen{x_n}$ in $\NN$ there is an
+$x\in\NN$ such that $C_x\subseteq\bigcap_{n\in\Bbb N}C_{x_n}$.   \Prf\ Set
+$x(0)=0$ and $x(2^k(2n+1))=x_k(n)$ for $k$, $n\in\Bbb N$.
+Then $x_k\in L_x$
+for every $k$.   So if $y\in C_x$ and $n\in\Bbb N$, we have
+$x_n\in L_x\subseteq L_y$ and $y\in C_{x_n}$.\ \Qed
+
+Let $\Cal F$ be the filter on $\NN$ generated by $\{C_x:x\in\NN\}$;  then
+(because AC($\Bbb R;\omega$) is true)
+$\Cal F$ is closed under countable intersections.
+
+\medskip
+
+{\bf (d)} Suppose that $A\subseteq\NN$ is such that whenever $x\in A$ and
+$L_y=L_x$ then $y\in A$.
+
+\medskip
+
+\quad{\bf (i)} If I has a winning strategy in $\Game(\Bbb N,A)$ then
+$A\in\Cal F$.   \Prf\ Let $\sigma\in\StrI$ be a winning strategy for I, and
+consider $x=g^{-1}(\sigma)\in\NN$.   Suppose that $y\in\NN$ and
+$x\in L_y$, and consider $z=\sigma*y\in A$.   As $z=g(x)*y$ belongs to
+$L_y$, $L_z\subseteq L_y$;  on the other hand,
+$y(n)=z(2n+1)$ for every $n$, so $y\in L_z$ and $L_y\subseteq L_z$.
+So $L_y=L_z$ and $y\in A$.
+As $y$ is arbitrary, $C_x\subseteq A$ and $A\in\Cal F$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} If II has a winning strategy in $\Game(\Bbb N,A)$ then
+$\NN\setminus A\in\Cal F$.   \Prf\ Let $\tau\in\StrII$ be a winning
+strategy for II, and
+consider $x=g^{-1}(\tau)\in\NN$.   Suppose that $y\in\NN$ and
+$x\in L_y$, and consider $z=\tau*y\in\NN\setminus A$.   As before,
+$L_z\subseteq L_y$;  this time,
+$y(n)=z(2n)$ for every $n$ so $y\in L_z$ and $L_y\subseteq L_z$.
+So $y\notin A$.   As $y$ is arbitrary, $C_x\subseteq\NN\setminus A$ and
+$\NN\setminus A\in\Cal F$.\ \Qed
+
+\medskip
+
+{\bf (e)} For $x\in\NN$ set $\phi(x)=\sup_{y\in L_x}f(h(y))$;  because
+$L_x$ is countable, $\phi(x)<\omega_1$ (567Ed).   Let $\Cal G$ be the image
+filter $\phi[[\Cal F]]$.   Because $\Cal F$ is closed under countable
+intersections, so is $\Cal G$.   If $B\subseteq\omega_1$ then $\phi^{-1}[B]$
+satisfies the condition of (d), so that one of $\phi^{-1}[B]$,
+$\NN\setminus\phi^{-1}[B]$ belongs to $\Cal F$ and one of $B$,
+$\omega_1\setminus B$ belongs to $\Cal G$;  as $B$ is arbitrary, $\Cal G$
+is an ultrafilter.
+
+\medskip
+
+{\bf (f)} Finally, $\Cal G$ does not contain any singletons.   \Prf\ If
+$\xi<\omega_1$, there is an $x\in\NN$ such that $f(h(x))=\xi+1$.   Now
+$C_x\in\Cal F$ so $\phi[C_x]\in\Cal G$.   If $y\in C_x$ then $x\in L_y$ so
+$\xi+1\le\phi(y)$;  accordingly $\xi\notin\phi[C_x]$ and
+$\{\xi\}\notin\Cal G$.\ \QeD\   So $\Cal G$ (or, if you like, the ideal
+$\{\omega_1\setminus B:B\in\Cal G\}$) witnesses that $\omega_1$ is \2vm.
+}%end of proof of 567L
+
+\leader{567M}{Theorem}\cmmnt{ ({\smc Moschovakis 70})}
+[AD] Let $\alpha$ be an
+ordinal such that there is a surjection from $\Cal P\Bbb N$ onto $\alpha$.
+Then there is a surjection from $\Cal P\Bbb N$ onto $\Cal P\alpha$.
+
+\proof{ The formulae will run slightly more smoothly if we work with
+surjections
+from $\NN$ rather than from $\Cal P\Bbb N$;  of course this makes no
+difference to the result.
+
+\medskip
+
+{\bf (a)}  We may suppose that $\alpha$ is uncountable.
+Let $f:\NN\to\alpha$ be a surjection.   I seek to define
+inductively a family $\langle g_{\xi}\rangle_{\xi\le\alpha}$ such that
+$g_{\xi}$ is a surjection from $\NN$ onto $\Cal P\xi$ for every
+$\xi\le\alpha$.
+As in the proof of 567L, let
+$\StrI$ be the set of functions from $\bigcup_{n\in\Bbb N}\BbbN^n$ to
+$\Bbb N$, and
+$\StrII$ the set of functions from $\bigcup_{n\ge 1}\BbbN^n$ to
+$\Bbb N$;  fix a surjection $h:\NN\to\StrI\cup\StrII$.
+For $\sigma\in\StrI$, $\tau\in\StrII$ and $x\in\NN$ let $\sigma*x$,
+$\tau*x$ be the plays in games on $\Bbb N$ as described in the proof of
+567L.
+
+\medskip
+
+{\bf (b)} Start by setting $g_n(x)=n\cap x[\Bbb N]$ for $x\in\NN$ and
+$n\in\Bbb N$.
+
+\medskip
+
+{\bf (c)} For the inductive step to a non-zero limit
+ordinal $\xi\le\alpha$, given $\ofamily{\eta}{\xi}{g_{\eta}}$, then for
+$x\in\NN$ set
+
+\Centerline{$\eta_x=f(\sequencen{x(4n)})$,
+\quad$\zeta_x=f(\sequencen{x(4n+1)})$,}
+
+$$\eqalign{E_x
+&=g_{\eta_x}(\sequencen{x(4n+2)})\text{ if }\eta_x<\xi,\cr
+&=\emptyset\text{ otherwise},\cr
+F_x
+&=g_{\zeta_x}(\sequencen{x(4n+3)})\text{ if }\zeta_x<\xi,\cr
+&=\emptyset\text{ otherwise}.\cr}$$
+
+\noindent Next, for $D\subseteq\xi$, set
+
+$$\eqalign{A_D
+&=\{x:x\in\NN,\,\eta_x<\xi,\,E_x=D\cap\eta_x\cr
+&\mskip70mu
+\text{ and either }\zeta_x\le\eta_x\text{ or }\zeta_x\ge\xi
+\text{ or }F_x\ne D\cap\zeta_x\}.\cr}$$
+
+\noindent (The idea is that the players are competing to see who can
+capture the largest initial segment of $D$ with the pair $(\eta_x,E_x)$
+determined by I's moves or the pair $(\zeta_x,F_x)$ determined by
+II's moves;  for definiteness, if neither correctly defines an
+initial segment, then II wins, while if they seize the same
+segment $(\eta_x,E_x)=(\zeta_x,F_x)$, then I wins.)   Finally, define
+$g:\StrI\cup\StrII\to\Cal P\xi$ by setting
+
+\Centerline{$g(\sigma)=\bigcup\{D:\sigma$ is a winning strategy for I in
+$\Game(\Bbb N,A_D)\}$ if $\sigma\in\StrI$,}
+
+\Centerline{$g(\tau)=\bigcup\{D:\tau$ is a winning strategy for II in
+$\Game(\Bbb N,A_D)\}$ if $\tau\in\StrII$.}
+
+We find that $g$ is a surjection onto $\Cal P\xi$.   \Prf\ Take any
+$D\subseteq\xi$.
+
+\medskip
+
+\quad{\bf case 1}
+Suppose that I has a winning strategy $\sigma$ in $\Game(\Bbb N,A_D)$.
+Then $D\subseteq g(\sigma)$.   \Quer\ If $D\ne g(\sigma)$, there is a $D'$,
+distinct from $D$, such that $\sigma$ is a winning strategy for I in
+$\Game(\Bbb N,D')$.   Let $\zeta<\xi$ be such that
+$D\cap\zeta\ne D'\cap\zeta$.   Then there is
+a $z\in\NN$ such that $f(\sequencen{z(2n)})=\zeta$ and
+$g_{\zeta}(\sequencen{z(2n+1)})=D\cap\zeta$.   In this case, taking
+$x=\sigma*z$, we have $x(4n+1)=z(2n)$ and $x(4n+3)=z(2n+1)$ for every $n$,
+so $\zeta_x=\zeta$ and $F_x=D\cap\zeta$.   Since $x\in A_D$,
+we have $\eta_x<\xi$, $E_x=D\cap\eta_x$ and $\zeta\le\eta_x$.
+But also $x\in A_{D'}$, so $E_x=D'\cap\eta_x$ and $D\cap\zeta=D'\cap\zeta$,
+contrary to the choice of $\zeta$.\ \BanG\   Thus $D=g(\sigma)$.
+
+\medskip
+
+\quad{\bf case 2}
+Suppose that II has a winning strategy $\tau$ in $\Game(\Bbb N,A_D)$.
+Then $D\subseteq g(\tau)$.   \Quer\ If $D\ne g(\tau)$, there is a $D'$,
+distinct from $D$, such that $\tau$ is a winning strategy for II in
+$\Game(\Bbb N,D')$.   Let $\zeta<\xi$ be such that
+$D\cap\zeta\ne D'\cap\zeta$.   Again, there is
+a $z\in\NN$ such that $f(\sequencen{z(2n)})=\zeta$ and
+$g_{\zeta}(\sequencen{z(2n+1)})=D\cap\zeta$.   This time, taking
+$x=\tau*z$, we have $x(4n)=z(2n)$ and $x(4n+2)=z(2n+1)$ for every $n$,
+so $\eta_x=\zeta$ and $E_x=D\cap\eta_x$.   Since $x\notin A_D$, we must
+have $\eta_x<\zeta_x<\xi$ and $F_x=D\cap\zeta_x$;  since also
+$x\notin A_{D'}$, $F_x=D'\cap\zeta_x$;  so that
+$D\cap\zeta=F_x\cap\zeta=D'\cap\zeta$, which is impossible.\ \BanG\
+Thus $D=g(\tau)$.
+
+\medskip
+
+Thus in either case $D\in g[\StrI\cup\StrII]$.   As $D$ is arbitrary,
+$g[\StrI\cup\StrII]=\Cal P\xi$.\ \Qed\
+
+Setting $g_{\xi}=gh$, the induction proceeds.
+
+\medskip
+
+{\bf (d)} For the inductive step to $\xi+1$ where $\omega\le\xi<\alpha$,
+set
+
+\Centerline{$h_{\xi}(0)=\xi$,
+$h_{\xi}(n)=n-1$ for $n\in\omega\setminus\{0\}$,
+$h_{\xi}(\eta)=\eta$ if $\omega\le\eta<\xi$,}
+
+\Centerline{$g_{\xi+1}(x)=h_{\xi}[g_{\xi}(x)]$ for $x\in\NN$.}
+
+\medskip
+
+{\bf (e)} At the end of the induction, $g_{\alpha}$
+is the required surjection onto $\Cal P\alpha$.
+%Kanamori 28.15
+}%end of proof of 567M
+
+\leader{567N}{Theorem}\cmmnt{ ({\smc Martin 70})} [AC]
+Assume that there is a \2vm\
+cardinal.   Then every coanalytic subset of $\BbbN^{\Bbb N}$ is determined.
+
+\proof{ Let $A\subseteq\NN$ be a coanalytic set.
+
+\medskip
+
+{\bf (a)} Set $S^*=\bigcup_{n\ge 1}\BbbN^n$.   For $\upsilon$,
+$\upsilon'\in S^*$ say that $\upsilon\preccurlyeq\upsilon'$ if either
+$\upsilon$ extends $\upsilon'$ or there is an
+$n<\min(\#(\upsilon),\#(\upsilon'))$ such that
+$\upsilon\restr n=\upsilon'\restr n$ and $\upsilon(n)<\upsilon'(n)$.   Then
+$\preccurlyeq$ is a total order, and its restriction to $\BbbN^n$ is the
+lexicographic well-ordering for each $n\ge 1$.
+
+For $w\in\bigcup_{n\in\Bbb N}\BbbN^n$, set
+$I_w=\{x:w\subseteq x\in\NN\}$.   Fix an enumeration
+$\sequence{i}{\upsilon_i}$ of $S^*$ such that
+$\#(\upsilon_i)\le i+1$ for every $i\in\Bbb N$.
+
+\medskip
+
+{\bf (b)} $A'=\NN\setminus A$ is Souslin-F (423Eb);  express it as
+
+\Centerline{$A'=\bigcup_{y\in\NN}\bigcap_{n\ge 1}F_{y\restr n}$}
+
+\noindent where $F_{\upsilon}$ is closed for every $\upsilon\in S^*$.
+Replacing $F_{\upsilon}$ by
+$\bigcap_{1\le i\le\#(\upsilon)}F_{\upsilon\restr i}$ if necessary, we may
+suppose that $F_{\upsilon}\subseteq F_{\upsilon'}$ whenever
+$\upsilon\supseteq\upsilon'$, as in 421Cf\Latereditions.
+
+For $x\in\NN$, set
+
+\Centerline{$T_x=\{\upsilon:\upsilon\in S^*$,
+$I_{x\restr\#(\upsilon)}\cap F_{\upsilon}\ne 0\}$,}
+
+\noindent and define a relation $\preccurlyeq_x$ on $S^*$ by saying that
+
+$$\eqalign{\upsilon\preccurlyeq_x\upsilon'\iff
+&\text{ either }\upsilon,\,\upsilon'\in T_x
+   \text{ and }\upsilon\preccurlyeq\upsilon'\cr
+&\text{ or }\upsilon\in T_x\text{ and }\upsilon'\notin T_x\cr
+&\text{ or }\upsilon,\,\upsilon'\notin T_x\text{ and }i\le j
+  \text{ where }\upsilon=\upsilon_i,\,\upsilon'=\upsilon_j.\cr}$$
+
+\noindent Then $\preccurlyeq_x$ is a total ordering, since it copies the
+total ordering $\preccurlyeq$ on $T_x$ and the
+well-ordering induced by the
+enumeration $\sequence{i}{\upsilon_i}$ on $S^*\setminus T_x$, and puts one
+below the other.
+
+Note that if $n\in\Bbb N$, $x$, $y\in\NN$ are such that
+$x\restr n=y\restr n$, and $i<n$,
+then $x\restr\#(\upsilon_i)=y\restr\#(\upsilon_i)$,
+so $\upsilon_i\in T_x$ iff $\upsilon_i\in T_y$.   Consequently, for $i$,
+$j<n$, $\upsilon_i\preccurlyeq_x\upsilon_j$ iff
+$\upsilon_i\preccurlyeq_y\upsilon_j$.   It follows that for every
+$w\in\BbbN^n$ we have a total ordering $\preccurlyeq'_w$ of $n$
+defined by saying that $i\preccurlyeq'_wj$ iff
+$\upsilon_i\preccurlyeq_x\upsilon_j$ whenever $x\in I_w$.
+
+\medskip
+
+{\bf (c)} If $x\in\NN$ and $\preccurlyeq_x$ is not a well-ordering, then
+$x\notin A$.   \Prf\ Let $D\subseteq S^*$ be a non-empty set with no
+$\preccurlyeq_x$-least member.   Then $D\cap T_x$ is an initial segment of
+$D$.   Since $S^*\setminus T_x$ is certainly
+well-ordered by $\preccurlyeq_x$, $D\cap T_x\ne\emptyset$.
+Define $\sequencen{D_n}$, $\sequencen{y(n)}$ as follows.   $D_0=D\cap T_x$.
+Given that $D_n$ is a non-empty
+initial segment of $D$ and that $\upsilon\supseteq y\restr n$ for every
+$\upsilon\in D_n$, then $y\restr n$ cannot be the least member of $D$, so
+$D_n\ne\{y\restr n\}$;  set
+$y(n)=\min\{\upsilon(n):\upsilon\in D_n\setminus\{y\restr n\}\}$,
+
+\Centerline{$D_{n+1}
+=\{\upsilon:\upsilon\in D_n\setminus\{y\restr n\}$, $\upsilon(n)=y(n)\}$.}
+
+\noindent Because
+$\preccurlyeq_x$ agrees with $\preccurlyeq$ on $T_x$, $D_{n+1}$ is a
+non-empty initial segment of $D$, and the induction continues.
+
+If $m$, $n\in\Bbb N$, then there is an $\upsilon\in T_x$ such that
+$\upsilon\supseteq y\restr\max(m,n)$, and
+
+\Centerline{$I_{x\restr m}\cap F_{y\restr n}
+\supseteq I_{x\restr\#(\upsilon)}\cap F_{\upsilon}\ne\emptyset$.}
+
+\noindent As $m$ is arbitrary and
+$F_{y\restr n}$ is closed, $x\in F_{y\restr n}$;  as
+$n$ is arbitrary, $x\in A'$ and $x\notin A$.\ \Qed
+
+\medskip
+
+{\bf (d)} Let $\kappa$ be a \2vm\ cardinal, and give $\Bbb N\times\kappa$
+its discrete topology.
+In $(\Bbb N\times\kappa)^{\Bbb N}$ consider the set
+$F$ of sequences $\sequencen{(x(n),\xi(n))}$ such that
+
+\Centerline{whenever $i$, $j\in\Bbb N$,
+$\upsilon_i\subset\upsilon_j$ and $x\in F_{\upsilon_j}$, then
+$\xi(2j)<\xi(2i)$.}
+
+\noindent Then $F$ is closed
+for the product topology;  by 567B, $F$ is determined.
+
+\medskip
+
+{\bf (e)} Suppose I has a winning strategy $\sigma$ in the game
+$\Game(\Bbb N\times\kappa,F)$.
+Then I has a winning strategy in $\Game(\Bbb N,A)$.   \Prf\ For
+$\ofamily{i}{n}{k_i}\in\Bbb N^n$ take
+$\sigma'(\ofamily{i}{n}{k_i})$ to be the first component of
+$\sigma(\ofamily{i}{n}{(k_i,0)})$.   If $x$ is any play of
+$\Game(\Bbb N,A)$ consistent with $\sigma'$, then for each $n$ set
+$\xi(2n+1)=0$ and let $\xi(2n)$ be the second component of
+$\sigma(\ofamily{i}{n}{(x(2i+1),0)})$.   Then
+$\sequencen{(x(n),\xi(n))}$ is a play of $\Game(\Bbb N\times\kappa,F)$
+consistent with $\sigma$, so is won by I.   \Quer\ If $x\notin A$,
+let $y\in\NN$ be such that $x\in F_{y\restr n}$ for every $n\in\Bbb N$.
+Set $I=\{i:i\in\Bbb N$, $y\supseteq\upsilon_i\}$;  then $I$ is infinite,
+and there is an infinite $J\subseteq I$ such that
+$\upsilon_i\subset\upsilon_j$ whenever $i$, $j\in J$ and $i<j$, while
+$x\in F_{\upsilon_j}$ for every $j\in J$.
+But now we see that $\xi(2j)<\xi(2i)$ whenever $i<j$ in
+$J$, which is impossible.\ \Bang
+
+Thus $x\in A$;  as $x$ was arbitrary, $\sigma'$ is a winning strategy for I
+in $\Game(\Bbb N,A)$.\ \Qed
+
+\medskip
+
+{\bf (f)} Suppose II has a winning strategy $\tau$ in
+$\Game(\Bbb N\times\kappa,F)$.   Then II has a winning strategy in
+$\Game(\Bbb N,A)$.   \Prf\ Fix a normal $\kappa$-additive ultrafilter
+$\Cal F$
+on $\kappa$ (541Ma).   For $w=(k_0,\ldots,k_{2n})\in\Bbb N^{2n+1}$
+consider the
+function $f_w:[\kappa]^{n+1}\to\Bbb N$ defined by saying that
+$f_w(J)$ is to be the first component of
+$\tau(\langle(k_{2i},\xi_i)\rangle_{i\le n})$
+where $(\xi_0,\ldots,\xi_n)$ is
+that enumeration of $J$ such that, for $i$, $j\le n$, $\xi_i\le\xi_j$ iff
+$i\preccurlyeq'_wj$.   Then for each $m\in\Bbb N$ there is a
+$C_{wm}\in\Cal F$ such that either $f_w(J)\le m$
+for every $J\in[C_{wm}]^{n+1}$
+or $f_w(J)>m$ for every $J\in[C_{wm}]^{n+1}$ (4A1L).  Setting
+$C=\bigcap_{m,n\in\Bbb N}\bigcap_{w\in\BbbN^{2n+1}}C_{ w m}$,
+$C\in\Cal F$ and every $f_w$ is constant on $[C]^{n+1}$.
+Let $\rho(w)$ be the constant value of $f_w\restr[C]^{n+1}$.
+
+Define $\tau':\bigcup_{n\ge 1}\BbbN^n\to\Bbb N$ inductively, saying that
+$\tau'(k_0,\ldots,k_n)=\rho(w)$
+whenever $ w(2i)=k_i$ for $i\le n$ and
+$ w(2i+1)=\tau'(k_0,\ldots,k_i)$ for $i<n$.
+Suppose that $x$ is a play of $\Game(\Bbb N,A)$ consistent with
+$\tau'$.   \Quer\ If $x\in A$, then
+$\preccurlyeq_x$ is a well-ordering, by (c).   The order type of
+$(S^*,\preccurlyeq_x)$ is countable, so is surely less than
+$\otp(C)=\kappa$, and we have a function $\theta:S^*\to C$ such that
+$\theta(\upsilon)\le\theta(\upsilon')$ iff
+$\upsilon\preccurlyeq_x\upsilon'$.
+
+Define $\sequencen{\xi(n)}$ by saying that
+
+$$\eqalign{\xi(n)&=\theta(\upsilon_j)\text{ if }n=2j
+  \text{ is even },\cr
+&=\text{ the second component of }
+  \tau((x(0),\xi(0)),(x(2),\xi(2)),\ldots,(x(2j),\xi(2j)))\cr
+&\mskip200mu\text{ if }n=2j+1\text{ is odd}.\cr}$$
+
+\noindent For $i$, $j\le n\in\Bbb N$, setting
+$ w=x\restr 2n+1$,
+we have $\xi(2i)$, $\xi(2j)\in C$ and
+
+\Centerline{$\xi(2i)\le\xi(2j)
+\iff\theta(\upsilon_i)\le\theta(\upsilon_j)
+\iff\upsilon_i\preccurlyeq_x\upsilon_j
+\iff i\preccurlyeq'_wj$.}
+
+\noindent So
+
+\Centerline{$x(2n+1)=\rho(w)=f_w(\{\xi(2i):i\le n\})$}
+
+\noindent is the first component of
+$\tau((x(0),\xi(0)),\ldots,\penalty-100(x(2n),\xi(2n)))$;  thus
+$\sequencen{(x(n),\xi(n))}$ is a play of $\Game(\Bbb N\times\kappa,F)$
+consistent with $\tau$, and is won by II.   There must therefore be
+$i$, $j\in\Bbb N$ such that $\upsilon_i\subset\upsilon_j$,
+$x\in F_{\upsilon_j}$ and and
+$\xi(2i)\le\xi(2j)$.   Now $\upsilon_j\in T_x$ and
+$\upsilon_i\preccurlyeq_x\upsilon_j$, so
+$\upsilon_i\preccurlyeq\upsilon_j$;  which is impossible.\ \Bang
+
+So $x\notin A$;  as $x$ is arbitrary, $\tau'$ is a winning strategy for
+II in $\Game(\Bbb N,A)$.\ \Qed
+
+\medskip
+
+{\bf (g)} Putting (d), (e) and (f) together, we see that $A$ is determined.
+}%end of proof of 567N
+
+\leader{567O}{Corollary}\dvArevised{2010} [AC]
+If there is a \2vm\ cardinal, then every 
+PCA\cmmnt{ ($=\pmb{\Sigma}^1_2$)} subset of any Polish space is 
+universally measurable.
+
+\proof{{\bf (a)} Let $A\subseteq\{0,1\}^{\Bbb N}$ be PCA.   Then
+there is a coanalytic subset $B$ of $\NN\times\{0,1\}^{\Bbb N}$
+such that $A$ is the projection of $B$.   Of course this means that there
+is a coanalytic subset $B'$ of $\{0,1\}^{\Bbb N}$ such that
+$A$ is a continuous image of
+$B'$, since $\NN\times\{0,1\}^{\Bbb N}$ is homeomorphic to a G$_{\delta}$
+subset of $\{0,1\}^{\Bbb N}$, and any homeomorphism must carry $B$ to a
+coanalytic subset of $\{0,1\}^{\Bbb N}$, by 423Rc.
+Now $(h^{-1}[B']\cap F)\cup H$ is coanalytic whenever
+$h:\NN\to\{0,1\}^{\Bbb N}$ is continuous, $F\subseteq\NN$ is closed and
+$H\subseteq\NN$ is open;  by 567N, $(\Bbb N,(h^{-1}[B']\cap F)\cup H)$ is
+always determined;  by 567F, $A$ is measured by the usual measure $\nu$ on
+$\{0,1\}^{\Bbb N}$.
+
+\medskip
+
+{\bf (b)} Now suppose that $X$ is a Polish space,
+$A\subseteq X$ is a PCA set and $\mu$ is a
+Borel probability measure on $X$ with completion $\hat\mu$.
+Then there is a Borel measurable function $f:\{0,1\}^{\Bbb N}\to X$
+such that $\hat\mu$ is the image measure $\nu f^{-1}$.
+\Prf\ Let $(\frak A,\bar\mu)$ and $(\frak B,\bar\nu)$ be the measure
+algebras of $\mu$, $\nu$ respectively.   Then $\frak A$ has Maharam type at
+most $w(X)=\omega$ (531Aa), so there is a measure-preserving Boolean
+homomorphism $\pi:\frak A\to\frak B$ (332N).   Now $\hat\mu$ is
+a Radon measure (433Cb), so there is a function
+$f_0:\{0,1\}^{\Bbb N}\to X$ such that $f_0^{-1}[E]$ is measured by
+$\nu$, and $\nu f_0^{-1}[E]=\hat\mu E$, whenever $E$ is measured by
+$\hat\mu$
+(416Wb).   In this case, $f_0$ is almost continuous (433E) and there is a
+sequence $\sequencen{K_n}$ of compact subsets of $\{0,1\}^{\Bbb N}$ such
+that $\lim_{n\to\infty}\nu K_n=1$ and $f_0\restr K_n$ is continuous for
+every $n$.   Fix any $x_0\in X$ and set $f(z)=f_0(z)$ for
+$z\in\bigcup_{n\in\Bbb N}K_n$, $x$ for
+other $z\in\{0,1\}^{\Bbb N}$;  then $f$ is Borel measurable and equal
+$\nu$-a.e.\ to $f_0$, so $f$ also is \imp\ for $\nu$ and $\hat\mu$.
+Finally, because $f$ likewise is almost continuous, the image measure
+$\nu f^{-1}$ on $X$ is a Radon measure (418I), and must be exactly
+$\hat\mu$ (416Eb).\ \Qed
+
+Since $f^{-1}[A]$ is PCA (423Rd), $\nu$ measures $f^{-1}[A]$ and $\hat\mu$
+measures $A$.   As $\mu$ is arbitrary, $A$ is universally measurable.
+}%end of proof of 567O
+
+\exercises{\leader{567X}{Basic exercises (a)}
+%\spheader 567Xa
+Let $X$ be a non-empty well-orderable set, with its discrete topology,
+and $G\subseteq X^{\Bbb N}$ an open set.   Show that $G$ is determined.
+%567B
+
+\spheader 567Xb [AC($\Bbb R;\omega$)] Let $A\subseteq\NN$ be such that
+$\{x:\fraction{n}^{\smallfrown}x\in A\}$ is determined for every
+$n\in\Bbb N$.   Show that $\NN\setminus A$ is determined.
+%567B
+
+\spheader 567Xc Show that AD is true iff every subset of $\{0,1\}^{\Bbb N}$
+is determined.   \Hint{For $x\in\{0,1\}^{\Bbb N}$ set
+$I_x=\{n:x(2n)=1\}$, $J_x=\{n:x(2n+1)=1\}$;  set
+$C_{\text{I}}=\{x:\sup I_x>\sup J_x\}$,
+$D=\{x:I_x$ and $J_x$ are both infinite$\}$.   Define $f:D\to\NN$ by
+setting $f(x)(0)=\min I_x$, $f(x)(2n+1)=\min\{k:f(x)(2n)+k\in J_x\}$,
+$f(x)(2n+2)=\min\{k:f(x)(2n+1)+k+1\in I_x\}$.   Show that if
+$A\subseteq\NN$ and $C_{\text{I}}\cup f^{-1}[A]$ is determined, then
+$A$ is determined.}
+%567C
+
+\spheader 567Xd [AC($\Bbb R;\omega$)] (i) Show that the intersection of a
+sequence of closed cofinal subsets of $\omega_1$ is cofinal.   (ii) Show
+that we have a unique topological probability measure on $\omega_1$ which
+is zero on singletons and inner regular with respect to the closed sets.
+%567E
+
+\spheader 567Xe [AD] Show that if $f:[0,1]^2\to\Bbb R$ is a bounded
+function, then $\iint f(x,y)dxdy$ and $\iint f(x,y)dydx$ are defined and
+equal, where the integrations are with respect to Lebesgue measure on
+$[0,1]$.
+%567G
+
+\spheader 567Xf [AD] Let $\mu$ be a Radon measure on a Polish space $X$,
+and $\Cal E$ a well-ordered family of subsets of $X$.   Show that
+$\mu(\bigcup\Cal E)=\sup_{E\in\Cal E}\mu E$.   \Hint{567Xe.}
+%567Xe 567G
+
+\spheader 567Xg [AD+AC($\omega$)]
+Show that there are no interesting Sierpi\'nski sets, in the
+sense that every atomless probability space has an uncountable negligible
+subset.
+%567G
+
+\spheader 567Xh [AD] Show that every semi-finite measure space is
+perfect.
+%567G
+
+\spheader 567Xi [AD] Show that if $X$ is a separable Banach space and $Y$
+is a normed space then every linear operator from $X$ to $Y$ is bounded.
+%567H
+
+\spheader 567Xj\dvAnew{2011}
+[DC] Let $I$ be a set, and $\widehat{\Cal B}$ the Baire-property algebra of
+$\Cal PI$ with its usual topology.   Show that every
+$\widehat{\Cal B}$-measurable real-valued
+finitely additive functional on $\Cal PI$ is completely additive.
+\Hint{remember to prove that $\Cal PI$ is a Baire space.}
+%567I out of order query
+
+\spheader 567Xk [AD] (i) Show that there is no non-principal ultrafilter on
+$\Bbb N$.   (ii) Show that $\{0,1\}^{\Bbb R}$ is not compact.
+%567J
+
+\spheader 567Xl [AD] Show that there is no linear
+lifting for Lebesgue measure on $\Bbb R$.   \Hint{567J.}
+%567J
+
+\spheader 567Xm [AD] (i) Show that $\ell^1(\Bbb R)$ is not reflexive.
+(ii) Show that $\ell^1(\omega_1)$ is not reflexive.
+%567G 567L
+
+\spheader 567Xn [AD] (i) Show that there is no injective function from
+$\omega_1$ to $\Bbb R$.   (ii) Show that there is no family
+$\ofamily{\xi}{\omega_1}{f_{\xi}}$ such that $f_{\xi}$ is an injective
+function from $\xi$ to $\Bbb N$ for every $\xi<\omega_1$.   (iii) Show that
+there is no function $f:\omega_1\times\Bbb N\to\omega_1$ such that
+$\{f(\xi,n):n\in\Bbb N\}$ is a cofinal subset
+of $\xi$ for every non-zero limit ordinal $\xi<\omega_1$.   \Hint{567L.}
+%567L
+
+\spheader 567Xo (i) Show that there is a set $A\subseteq\omega_1^{\Bbb N}$
+such that $\Game(\omega_1,A)$ is not determined.   \Hint{Set II the task of
+enumerating $x(0)$;  see 567D and 567Xn.}
+(ii) Show that there is a set $A\subseteq(\Cal P\Bbb R)^{\Bbb N}$
+such that $\Game(\Cal P\Bbb R,A)$ is not determined.
+%567Xn 567L Mycielski 64? Kanamori 03, 27.12
+
+\spheader 567Xp [AD] Show that there is a surjective function from
+$\Bbb R$ to $\Cal B(\Bbb R)$, but no injective function from
+$\Cal B(\Bbb R)$ to $\Bbb R$.   \Hint{567E, 561Xd.}
+%567Xn, 567L
+
+\spheader 567Xq [AC] Show that if there is a \2vm\ cardinal and
+$A\subseteq\NN$ is analytic then $A$ is determined.
+%567N
+
+\spheader 567Xr [AC] Suppose that there is a \2vm\ cardinal.   Show
+that every PCA subset of $\Bbb R$ has the Baire property.
+%567O
+
+\leader{567Y}{Further exercises (a)}
+%\spheader 567Ya
+Let $X$ be a non-empty
+set and $A\subseteq X^{\Bbb N}$.   A
+{\bf quasi-strategy for I} in $\Game(X,A)$ is a function
+$\sigma:\bigcup_{n\in\Bbb N}X^n\to\Cal PX\setminus\{\emptyset\}$;  it
+is a winning quasi-strategy if $x\in A$ whenever $x\in X^{\Bbb N}$ and
+$x(2n)\in\sigma(\ofamily{i}{n}{x(2i+1)})$ for every $n$.   Similarly, a
+winning quasi-strategy for II is a function
+$\tau:\bigcup_{n\ge 1}X^n\to\Cal PX\setminus\{\emptyset\}$ such that
+$x\notin A$ whenever $x\in X^{\Bbb N}$ and
+$x(2n+1)\in\tau(\ofamily{i}{n}{x(2i)})$ for every $n$.
+(i) Show that if $X$ is any non-empty discrete space
+and $F\subseteq X^{\Bbb N}$ is closed then at least one player has a
+winning quasi-strategy in $\Game(X,F)$.
+(ii) Show that DC is true iff there is no game $\Game(X,A)$ such that
+both players have winning quasi-strategies.
+%567B mt56bits
+
+\spheader 567Yb [AD] Show that every uncountable subset of $\Bbb R$ has a
+non-empty perfect subset.
+({\it Hint\/}:  Let $A\subseteq\{0,1\}^{\Bbb N}$.
+Enumerate $\bigcup_{n\in\Bbb N}\{0,1\}^n$ as
+$\sequence{j}{\upsilon_j}$.   For $x\in\NN$ set
+
+\Centerline{$f(x)
+={\upsilon_{x(0)}}^{\smallfrown}\fraction{\min(1,x(1))}^{\smallfrown}
+  {\upsilon_{x(2)}}^{\smallfrown}\fraction{\min(1,x(3))}^{\smallfrown}
+  \ldots$.}
+
+\noindent Consider $\Game(\Bbb N,f^{-1}[A])$.)
+%567G Kanamori 03, 27.5
+
+\spheader 567Yc\dvAnew{2010} [AD]
+Let $X$ be an analytic Hausdorff space, and
+$c:\Cal PX\to[0,\infty]$ a submodular Choquet capacity.   Show that
+$c(A)=\sup\{c(K):K\subseteq A$ is compact$\}$  for every
+$A\subseteq X$.  (Cf.\ 479Yj.)
+%567G out of order query
+%mt56bits
+
+\spheader 567Yd\dvAnew{2011}
+[AC($\Bbb R;\omega$)] Let $\frak A$ be a Dedekind $\sigma$-complete Boolean
+algebra, and $\nu:\frak A\to\Bbb R$ an additive functional which is Borel
+measurable for the order-sequential topology on $\frak A$.   Show that
+$\nu$ is countably additive.
+%567J out of order query
+
+\spheader 567Ye Let $\Theta$ be the least ordinal such that there
+is no surjection from $\Cal P\Bbb N$ onto $\Theta$.
+(i) [AC($\omega$)] Show that $\cf\Theta>\omega$.
+(ii) [AD] Show that $\Theta=\omega_{\Theta}$.
+%use method of 567M to build a family
+%$\ofamily{\xi}{\Theta}{f_{\xi}}$ such that
+%$f_{\xi}:\Cal P\Bbb N\to\omega_{\xi}$ is surjective for every
+%$\xi<\theta$.
+%any chance of  \cf\Theta>\omega  with  AD  bu not  AC(\omega) ? query
+%567M
+
+\spheader 567Yf
+[AC] Suppose that there is a \2vm\ cardinal.   Show that
+every uncountable PCA subset of $\Bbb R$ has a non-empty perfect subset.
+%567O 567Yb Kanamori 27.14
+}%end of exercises
+
+\endnotes{
+\Notesheader{567} The consequences of the axiom of determinacy are so
+striking that the question of its consistency is particularly pressing.
+In fact W.H.Woodin has determined
+its consistency strength, in terms of large cardinals
+({\smc Kanamori 03}, 32.16, or {\smc Jech 03}, 33.27), and
+this is less than that of the existence of a supercompact cardinal;  so it
+seems safe enough.
+
+%\query what about AD+DC?
+
+In ZFC, 567B is most naturally thought of as a basic special case of
+Martin's theorem that
+every Borel subset of $X^{\Bbb N}$, for any discrete space $X$,
+is determined ({\smc Martin 75}, or {\smc Kechris 95}, 20.5).
+The idea of the proof is that if II has no winning strategy, then all I has
+to do is to avoid positions from which II can win.   But for a proof in ZF
+we need more than this.   It would not be enough to show that for every
+first move by I, there is a winning strategy for II from the resulting
+position;  we should
+need to show that these can be pieced together as a single
+function $\tau:\bigcup_{n\ge 1}X^n\to X$.   Turning this round, AD must
+imply a weak form of the axiom of choice (567D;  see also 567Xo).
+In the particular case
+of 567B, we have a basic set $W_0$ of winning positions for II with a
+trivial family $\family{w}{W_0}{\tau_w}$ of strategies.   (Starting
+from a position in
+$W_0$, II can simply play the $\preccurlyeq$-least point of $X$ to get
+a position from which I cannot avoid $W_0$.)
+From these we can work backwards to construct a
+family $\family{w}{W}{\tau_w}$ of
+strategies, where $W=\bigcup_{\xi\in\On}W_{\xi}$;  so that if
+$\fraction{u}\in W$ for every $u\in X$, we can assemble these into a
+winning strategy for II in $\Game(X,F)$.
+
+The central result of the section is I suppose 567G.   From the point of
+view of a real analyst like myself, as opposed to a logician or set
+theorist, this is the door into a different world, explored in
+567H-567K, %567H 567J 567K
+567Xe-567Xm %567Xe 567Xf 567Xg 567Xi 567Xl 567Xk 567Xm
+and 567Yb.
+In 567I we have a result which is already interesting in ZFC.   Recall that
+in ZFC there are non-trivial
+additive functionals on $\Cal P\Bbb N$ which are measurable
+in the sense of \S464 (464Jb);
+none of them can be Baire-property-measurable.
+
+I have not talked about `automatic continuity' in this book.   If you have
+seen anything of this subject you will recognise the three parts of
+567H as versions of standard results on homomorphisms which are
+measurable in some sense.   I do not know whether the hypothesis `abelian'
+is necessary in 567Hb.
+If you like, 567J can also be thought of as an
+automatic-continuity result.
+
+You will see that 567H-567J %567H 567I 567J
+depend on 567Gb rather than on 567Ga;  that is, on category rather than on
+measure.   It is not clear how much can be proved if we assume, as an
+axiom, that every subset of $\Bbb R$ is Lebesgue measurable (together with
+AC($\omega$) at least, of course), rather than that every subset of
+$\Bbb R$ has the Baire property.
+
+In 567L far more is true, at least with AD+DC;  $\omega_2$, as
+well as $\omega_1$,
+is \2vm, and the filter on $\omega_1$ generated by the closed
+cofinal sets is an ultrafilter ({\smc Kanamori 03}, \S28, or
+{\smc Jech 03}, Theorem 33.12).
+I am not sure what we should think of as a `\rvm\ cardinal' in this
+context.   In the language of 566Xl, AD implies that $\Bbb R$ is not
+measure-free, and Lebesgue measure is $\kappa$-additive for every initial
+ordinal $\kappa$ (567Xf).
+For further combinatorial consequences of AD, see {\smc Kanamori 03}.
+Note that AD implies CH in the form `every uncountable subset of $\Bbb R$
+is equipollent with $\Bbb R$' (567Yb).   But the relationship of $\Bbb R$
+with $\omega_1$ is quite different.   ZF is enough to build a surjection
+from $\Bbb R$ onto $\omega_1$.   AD implies that there is no injection
+from $\omega_1$ into $\Bbb R$ (567Xn) but that
+there are surjections from $\Bbb R$ onto much larger initial ordinals
+(567M, 567Ye).
+
+In 567N-567O I return to the world of ZFC;  they are in this section
+because they depend on 567B and 567F.   Once again, much more is known
+about determinacy compatible with AC, and
+may be found in {\smc Kanamori 03} or {\smc Jech 03}.
+
+}%end of notes
+
+\discrpage

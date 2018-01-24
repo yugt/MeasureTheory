@@ -1,0 +1,586 @@
+\frfilename{mt111.tex}
+\versiondate{26.1.05}
+\copyrightdate{1994}
+
+\def\chaptername{Measure spaces}
+\def\sectionname{$\sigma$-algebras}
+
+\newsection{111}
+
+In the introduction to this chapter I remarked that a measure space is
+`a set in which some (not, as a rule, all) subsets may be assigned a
+measure'.   All ordinary concepts of `length' or `area' or `volume'
+apply only to reasonably regular sets.   Modern measure theory
+is remarkably powerful in that an extraordinary variety of sets are
+regular enough to be measured;  but we must still expect some
+limitation, and when studying any measure a proper understanding of the
+class of sets which it measures will be central to our work.   The basic
+definition here is that of `$\sigma$-algebra of sets';  all measures
+in the standard theory are defined on such collections.   I
+therefore begin with a statement of the definition, and a brief
+discussion of the properties, of these classes.
+
+
+\leader{111A}{Definition} Let $X$ be a set.   A {\bf $\sigma$-algebra of
+subsets of $X$}\cmmnt{ (sometimes called a {\bf $\sigma$-field})} is a
+family $\Sigma$ of subsets of $X$ such that
+
+\qquad(i) $\emptyset\in\Sigma$;
+
+\qquad(ii) for every $E\in\Sigma$, its complement $X\setminus E$ in $X$
+belongs to $\Sigma$;
+
+\qquad(iii) for every sequence $\langle E_n\rangle_{n\in\Bbb N}$ in
+$\Sigma$, its union $\bigcup_{n\in\Bbb N}E_n$ belongs to $\Sigma$.
+
+
+\cmmnt{
+\leader{111B}{Remarks (a)} Almost any new subject in pure
+mathematics is
+likely to begin with definitions.   At this point there is no substitute
+for rote learning.   These definitions encapsulate years, sometimes
+centuries, of thought by many people;  you cannot expect that they will
+always correspond to familiar ideas.
+
+
+\header{111Bb}{\bf (b)} Nevertheless, you should always seek immediately
+to find ways
+of making new definitions more concrete by finding examples within your
+previous mathematical experience.   In the case of `$\sigma$-algebra',
+the really important examples, to be described below, are going to be
+essentially new -- supposing, that is, that you need to read this
+chapter at all.   However, two examples should be immediately accessible
+to you, and you should bear these in mind henceforth:
+
+\qquad(i) for any $X$, $\Sigma=\{\emptyset,X\}$ is a $\sigma$-algebra of
+subsets of $X$;
+
+\qquad(ii) for any $X$, $\Cal PX$, the set of all subsets of $X$, is a
+$\sigma$-algebra of subsets of $X$.
+
+\noindent These are of course the smallest and largest $\sigma$-algebras
+of subsets of $X$, and while we shall spend little time with them, both
+are in
+fact significant.
+
+
+\header{111Bc}{\bf *(c)} The phrase {\bf measurable space} is often
+used to mean a pair $(X,\Sigma)$, where $X$ is a set and $\Sigma$ is a
+$\sigma$-algebra of subsets of $X$;  but I myself prefer to avoid this
+terminology, unless greatly pressed for time, as in fact many of the
+most interesting examples of such
+objects have no useful measures associated with them.
+}%end of comment
+
+\cmmnt{
+\leader{111C}{Infinite unions and intersections} If you have not
+seen infinite unions before, it is worth
+pausing over the formula $\bigcup_{n\in\Bbb N}E_n$.   This is the set of
+points belonging to one or more of the sets $E_n$;  we may write it as
+
+$$\eqalign{\bigcup_{n\in\Bbb N}E_n
+&=\{x:\exists\enskip n\in\Bbb N,\,x\in E_n\}\cr
+&=E_0\cup E_1\cup E_2\cup\ldots.\cr}$$
+
+\noindent (I write $\Bbb N$ for the set of natural numbers
+$\{0,1,2,3,\ldots\}$.)   In the same way,
+
+$$\eqalign{\bigcap_{n\in\Bbb N}E_n
+&=\{x:x\in E_n\Forall n\in\Bbb N\}\cr
+&=E_0\cap E_1\cap E_2\cap\ldots.\cr}$$
+
+\noindent It is characteristic of the elementary theory of measure
+spaces that it demands greater facility with the set-operations $\cup$,
+$\cap$, $\setminus$ (`set difference':  $E\setminus F=\{x:x\in
+E,\,x\notin F\}$), $\symmdiff$ (`symmetric difference':  $E\symmdiff
+F=(E\setminus F)\cup(F\setminus E)=(E\cup F)\setminus(E\cap F)$) than
+you have probably needed before, with the added complication of infinite
+unions and intersections.   I strongly advise spending at least a little
+time with Exercise 111Xa at some point.
+}%end of comment
+
+\leader{111D}{Elementary properties of $\sigma$-algebras} If $\Sigma$ is
+a $\sigma$-algebra of subsets of $X$, then it
+has the following properties.
+
+\header{111Da}{\bf (a)} $E\cup F\in\Sigma$ for all $E$, $F\in\Sigma$.
+\prooflet{\Prf\ For
+if $E$, $F\in\Sigma$, set $E_0=E$, $E_n=F$ for $n\ge 1$;  then
+$\langle E_n\rangle_{n\in\Bbb N}$ is a sequence in $\Sigma$ and $E\cup
+F=\bigcup_{n\in\Bbb N}E_n\in\Sigma$.\ \Qed}
+
+
+\header{111Db}{\bf (b)} $E\cap F\in\Sigma$ for all $E$, $F\in\Sigma$.
+\prooflet{\Prf\ By
+(ii) of the definition in 111A, $X\setminus E$ and $X\setminus
+F\in\Sigma$;  by (a) of this paragraph, $(X\setminus E)\cup(X\setminus
+F)\in\Sigma$;  by 111A(ii) again, $X\setminus((X\setminus
+E)\cup(X\setminus F))\in\Sigma$;  but this is just $E\cap F$.\ \Qed}
+
+
+\header{111Dc}{\bf (c)} $E\setminus F\in\Sigma$ for all $E$,
+$F\in\Sigma$.
+\prooflet{\Prf\ $E\setminus F=E\cap(X\setminus F)$.\ \Qed}
+
+
+\header{111Dd}{\bf (d)} Now suppose that
+$\langle E_n\rangle_{n\in\Bbb N}$ is a
+sequence in $\Sigma$, and consider
+
+$$\eqalign{\bigcap_{n\in\Bbb N}E_n
+&=\{x:x\in E_n\Forall n\in\Bbb N\}\cr
+&=E_0\cap E_1\cap E_2\cap\ldots\cr
+&=X\setminus\bigcup_{n\in\Bbb N}(X\setminus E_n);\cr}$$
+
+\noindent this also belongs to $\Sigma$.
+
+
+\cmmnt{
+\leader{111E}{More on infinite unions and
+intersections (a)} So far I
+have considered infinite unions and intersections only in the context of
+sequences $\langle
+E_n\rangle_{n\in\Bbb N}$ indexed by the set $\Bbb N$ of natural numbers
+itself.   Many others will arise more or less naturally in the pages
+ahead.   Consider, for instance, sets of the form
+
+\Centerline{$\bigcup_{n\ge 4}E_n=E_4\cup E_5\cup E_6\cup\ldots$,}
+
+\Centerline{$\bigcup_{n\in\Bbb Z}E_n
+=\{x:\exists\enskip n\in\Bbb Z,\,x\in E_n\}
+=\ldots\cup E_{-2}\cup E_{-1}\cup E_0\cup E_1\cup E_2\cup\ldots$,}
+
+\Centerline{$\bigcup_{q\in\Bbb Q}E_q
+=\{x:\exists\enskip q\in\Bbb Q,\,x\in E_q\}$,}
+
+\noindent where I write $\Bbb Z$ for the set of all integers and
+$\Bbb Q$
+for the set of rational numbers.   If every $E_n$, $E_q$ belongs to a
+$\sigma$-algebra $\Sigma$, so will these unions.   On the other hand,
+
+\Centerline{$\bigcup_{t\in[0,1]}E_t
+=\{x:\exists\enskip t\in [0,1],\,x\in E_t\}$}
+
+\noindent may fail to belong to a $\sigma$-algebra containing every
+$E_t$, and it is of the greatest importance to develop an intuition for
+those index sets, like $\Bbb N$, $\Bbb Z$ and $\Bbb Q$, which are `safe'
+in this context, and those which are not.
+
+\spheader 111Eb I rather hope that you
+have seen enough of Cantor's theory of infinite sets to make the
+following remarks a restatement of familiar material;  but if not, I
+hope that they can stand as a first, and very partial, introduction to
+these ideas.   The point about the first three examples is that we
+can re-index the families of sets involved as simple sequences of sets.
+For the first one,
+this is elementary;  write $E'_n=E_{n+4}$ for $n\in\Bbb N$, and see that
+$\bigcup_{n\ge 4}E_n=\bigcup_{n\in\Bbb N}E'_n\in\Sigma$.
+For the other
+two, we need to know something about the sets $\Bbb Z$ and
+$\Bbb Q$.   We can find sequences $\langle k_n\rangle_{n\in\Bbb N}$ of
+integers, and $\langle q_n\rangle_{n\in\Bbb N}$ of rational numbers,
+such that every integer appears (at least once) as a $k_n$, and
+every rational number appears (at least once) as a $q_n$;  that is, the
+functions $n\mapsto k_n:\Bbb N\to\Bbb Z$ and
+$n\mapsto q_n:\Bbb N\to\Bbb Q$ are surjective.   \prooflet{\Prf\ There are many ways of doing this;  one is to set
+
+$$\eqalign{k_n&=\Bover{n}2\text{ for even }n,\cr
+&=-\Bover{n+1}2\text{ for odd }n,\cr
+q_n&=\Bover{n-m^3-m^2}{m+1}
+  \text{ if }m\in\Bbb N\text{ and }m^3\le n<(m+1)^3.\cr}$$
+
+\noindent (You should check carefully that these formulae do indeed do
+what I claim they do.) \QeD}
+Now, to deal with $\bigcup_{n\in\Bbb Z}E_n$, we can set
+
+\Centerline{$E'_n=E_{k_n}\in\Sigma$}
+
+\noindent for $n\in\Bbb N$, so that
+
+\Centerline{$\bigcup_{n\in\Bbb Z}E_n=\bigcup_{n\in\Bbb N}E_{k_n}
+=\bigcup_{n\in\Bbb N}E'_n\in\Sigma$,}
+
+\noindent while for the other case we have
+
+\Centerline{$\bigcup_{q\in\Bbb Q}E_q
+=\bigcup_{n\in\Bbb N}E_{q_n}\in\Sigma$.}
+
+Note that the first case $\bigcup_{n\ge 4}E_n$ can be thought of
+as an
+application of the same principle;  the map $n\mapsto n+4$ is a
+surjection from $\Bbb N$ onto $\{4,5,6,7,\ldots\}$.
+}%end of comment
+
+\vleader{48pt}{111F}{Countable sets (a)}\cmmnt{ The common feature of the
+sets
+$\{n:n\ge 4\}$, $\Bbb Z$ and
+$\Bbb Q$ which makes this procedure possible is that they are `countable'.
+For our purposes here, the most natural definition of
+countability is the following:} \dvro{A}{a} set $K$ is {\bf countable} if
+either it is empty or there is a surjection from $\Bbb N$ onto $K$.   In
+this case, if $\Sigma$ is a $\sigma$-algebra of sets and
+$\langle  E_k\rangle_{k\in K}$ is a family in $\Sigma$ indexed by $K$, then
+$\bigcup_{k\in K}E_k\in\Sigma$.   \prooflet{\Prf\ For if
+$n\mapsto k_n:\Bbb N\to K$ is a surjection, then $E'_n=E_{k_n}\in\Sigma$ for every
+$n\in\Bbb N$, and $\bigcup_{k\in K}E_k=\bigcup_{n\in\Bbb N}E'_n\in\Sigma$.   This
+leaves out the case $K=\emptyset$;  but in this case the natural
+interpretation of $\bigcup_{k\in K}E_k$ is
+
+\Centerline{$\{x:\exists\enskip k\in \emptyset,\,x\in E_k\}$}
+
+\noindent which is itself $\emptyset$, and therefore belongs to $\Sigma$
+by clause (i) of 111A.\ \QeD}   \cmmnt{(In a sense this treatment of
+$\emptyset$
+is a conventional matter;
+but there are various contexts in which we shall wish to discuss
+$\bigcup_{k\in K}E_k$ without checking whether $K$ actually has any
+members, and we need to be clear about what we will do in such cases.)}
+
+\header{111Fb}{\bf (b)}\cmmnt{ There is an extensive, and enormously
+important, theory concerning countable sets.   The only fragments which
+I think we must have explicit at this point are the following.
+(In \S1A1 I add a few words to link this presentation to conventional
+approaches.)
+
+\medskip
+
+\quad}{\bf (i)}  If $K$ is countable and
+$L\subseteq K$, then $L$ is countable.   \prooflet{\Prf\ If
+$L=\emptyset$, this is
+immediate.   Otherwise, take any $l^*\in L$, and a surjection
+$n\mapsto k_n:\Bbb N\to K$ (of course $K$ also is not empty, as $l^*\in K$);  set
+$l_n=k_n$ if $k_n\in L$, $l^*$ otherwise;  then $n\mapsto l_n:\Bbb N\to
+L$ is a surjection.\ \Qed}
+
+\medskip
+
+\quad{\bf (ii)} The Cartesian product $\Bbb N\times\Bbb N=\{(m,n):m$,
+$n\in\Bbb N\}$ is countable.   \prooflet{\Prf\ For each $n\in\Bbb N$,
+let $k_n$,
+$l_n\in\Bbb N$ be such that $n+1=2^{k_n}(2l_n+1)$;  that is, $k_n$ is
+the power of $2$ in the prime factorisation of $n+1$, and $2l_n+1$ is
+the (necessarily odd) number $(n+1)/2^{k_n}$.   Now
+$n\mapsto(k_n,l_n)$ is a
+surjection from $\Bbb N$ to $\Bbb N\times\Bbb N$.\ \Qed}\
+\cmmnt{It will be
+important to us later to know that $n\mapsto(k_n,l_n)$ is actually a
+bijection, as is readily checked.}
+
+\medskip
+
+\quad{\bf (iii)} It follows that if $K$ and $L$ are countable sets, so
+is $K\times L$.   \prooflet{\Prf\ If either $K$ or $L$ is empty, so is
+$K\times
+L$, so in this case $K\times L$ is certainly countable.   Otherwise, let
+$\phi:\Bbb N\to K$ and $\psi:\Bbb N\to L$ be surjections;  then we have
+a surjection $\theta:\Bbb N\times\Bbb N\to K\times L$ defined by setting
+$\theta(m,n)=(\phi(m),\psi(n))$ for all $m$, $n\in\Bbb N$.   Now we know
+from (ii) just above that there is also a surjection
+$\chi:\Bbb N\to\Bbb N\times\Bbb N$, so that
+$\theta\chi:\Bbb N\to K\times L$ is a
+surjection, and $K\times L$ must be countable.\ \Qed}
+
+\medskip
+
+\quad{\bf (iv)}\dvro{ If}{ An induction on $r$ now shows
+us that if} $K_1$, $K_2,\ldots,K_r$ are countable sets, so is
+$K_1\times\ldots\times K_r$.   In particular,\cmmnt{ such sets as}
+$\Bbb Q^r\times\Bbb Q^r$ will be countable, for any integer $r\ge 1$.
+
+
+\header{111Fc}{\bf (c)}\dvro{ If}{ Putting 111Dd above together with
+these
+ideas, we see that if} $\Sigma$ is a $\sigma$-algebra of sets, $K$ is a
+non-empty countable
+set, and $\langle E_k\rangle_{k\in K}$ is a family in $\Sigma$, then
+
+\Centerline{$\bigcap_{k\in K}E_k=\{x:x\in E_k\Forall k\in
+K\}$}
+
+\noindent belongs to $\Sigma$.   \prooflet{\Prf\ Let
+$n\mapsto k_n:\Bbb N\to K$ be
+a surjection;  then
+$\bigcap_{k\in K}E_k=\bigcap_{n\in\Bbb N}E_{k_n}\in\Sigma$, as in 111Dd.\ \Qed}
+
+\cmmnt{Note that there is a difficulty with the notion of
+$\bigcap_{k\in
+K}E_k$ if $K=\emptyset$;  the natural interpretation of this formula is
+to read it as the universal class.   So ordinarily, when there is any
+possibility that $K$ might be empty, one needs some such formulation as
+$X\cap\bigcap_{k\in K}E_k$.
+}%end of comment
+
+\cmmnt{\header{111Fd}{\bf (d)} As an example of the way in which these
+ideas will be used, consider the
+following.   Suppose that $X$ is a set, $\Sigma$ is a $\sigma$-algebra
+of subsets of $X$, and $\langle E_{qn}\rangle_{q\in\Bbb Q,n\in\Bbb N}$
+is a family in $\Sigma$.   Then
+
+\Centerline{$E
+=\bigcap_{q\in\Bbb Q,q<\sqrt{2}}\bigcup_{m\in\Bbb N}\bigcap_{n\ge m}E_{qn}
+=\bigcap_{q\in\Bbb Q,q<\sqrt{2}}(\bigcup_{m\in\Bbb N}(\bigcap_{n\ge m}E_{qn}))
+\in\Sigma$.}
+
+\noindent\vthsp\prooflet{\Prf\ Set
+$F_{qm}=\bigcap_{n\ge m}E_{qn}=\bigcap_{n\in\Bbb N}E_{q,m+n}$ for $q\in\Bbb Q$
+and $m\in\Bbb N$;
+then every $F_{qm}$ belongs to $\Sigma$, by 111Dd or (c) above.   Set
+$G_q=\bigcup_{m\in\Bbb N}F_{qm}$ for $q\in\Bbb Q$;  then every $G_q$
+belongs to $\Sigma$, by 111A(iii).   Set
+$K=\{q:q\in\Bbb Q,\,q<\sqrt{2}\}$;
+then $K$ is countable, by 111E and (b-i) of this paragraph.   So
+$\bigcap_{q\in K}G_q$ belongs to $\Sigma$, by (c).   But
+$E=\bigcap_{q\in K}G_q$.\ \Qed}
+}%end of comment
+
+\cmmnt{\header{111Fe}{\bf (e)} And one final remark, which I give
+without proof
+here -- though many proofs will be implicit in the work below, and I
+spell one out in 1A1Ha --
+
+\medskip
+
+\centerline{\bf The set $\Bbb R$ of real numbers is not countable.}
+
+\medskip
+
+\noindent So you must resist any temptation to look for a list $a_0$,
+$a_1,\ldots$ running over the whole set of real numbers.
+}%end of comment
+
+\leader{111G}{Borel sets }\cmmnt{I can describe here one type of
+non-trivial
+$\sigma$-algebra;  the formulation is rather abstract, but the technique
+is important
+and the terminology is part of the basic vocabulary of measure theory.
+
+\medskip
+
+}{\bf (a)} Let $X$ be a set, and let $\frak S$ be any
+non-empty family of
+$\sigma$-algebras of subsets of $X$.   \cmmnt{(Thus a {\it member} of
+$\frak S$ is itself a {\it family} of sets;
+$\frak S\subseteq\Cal P(\Cal PX)$.)}   Then
+
+\Centerline{$\bigcap\frak S=\{E:E\in\Sigma$ for every $\Sigma\in\frak
+S\}$,}
+
+\noindent the intersection of all the $\sigma$-algebras belonging to
+$\frak S$, is a $\sigma$-algebra of subsets of $X$.   \prooflet{\Prf\
+(i) By hypothesis, $\frak S$ is not empty;  take $\Sigma_0\in\frak S$;
+then $\bigcap\frak S\subseteq\Sigma_0\subseteq\Cal PX$, so every member
+of $\bigcap\frak S$ is a subset of $X$.   (ii) $\emptyset\in\Sigma$ for
+every $\Sigma\in\frak S$,
+so $\emptyset\in\bigcap\frak S$.   (iii) If
+$E\in\bigcap\frak S$ then $E\in\Sigma$ for every $\Sigma\in\frak S$, so
+$X\setminus E\in\Sigma$ for every $\Sigma\in\frak S$ and $X\setminus
+E\in\bigcap\frak S$.   (iv) Let $\langle E_n\rangle_{n\in\Bbb N}$ be any
+sequence in $\bigcap\frak S$.   Then for every $\Sigma\in\frak S$,
+$\langle E_n\rangle_{n\in\Bbb N}$ is a sequence in $\Sigma$, so
+$\bigcup_{n\in\Bbb N}E_n\in\Sigma$;  as $\Sigma$ is arbitrary,
+$\bigcup_{n\in\Bbb N}E_n\in\bigcap\frak S$.\ \Qed}
+
+\header{111Gb}{\bf (b)} Now let $\Cal A$ be any family of subsets of
+$X$.   Consider
+
+\Centerline{$\frak S=\{\Sigma:\Sigma$ is a $\sigma$-algebra of subsets
+of $X$, $\Cal A\subseteq\Sigma\}$.}
+
+\noindent\cmmnt{By definition, $\frak S$ is a family of
+$\sigma$-algebras of
+subsets of $X$;  also, it is not empty, because $\Cal PX\in\frak S$.
+So} $\Sigma_{\Cal A}=\bigcap\frak S$ is a $\sigma$-algebra of subsets of
+$X$\cmmnt{.   Because $\Cal A\subseteq\Sigma$ for every
+$\Sigma\in\frak S$, $\Cal A\subseteq\Sigma_{\Cal A}$;  thus
+$\Sigma_{\Cal A}$ itself
+belongs to $\frak S$};  it is the smallest $\sigma$-algebra of subsets
+of $X$ including $\Cal A$.
+
+We say that $\Sigma_{\Cal A}$ is the $\sigma$-algebra of subsets of $X$
+{\bf generated by} $\Cal A$.
+
+\medskip
+
+\noindent{\bf Examples (i)} For any $X$, the $\sigma$-algebra of subsets
+of $X$ generated by $\emptyset$ is $\{\emptyset,X\}$.
+
+\medskip
+
+\quad{\bf (ii)} The
+$\sigma$-algebra of subsets of $\Bbb N$ generated by
+$\{\{n\}:n\in\Bbb N\}$ is $\Cal P\Bbb N$.
+
+\header{111Gc}{\bf (c)(i)} We say that a set $G\subseteq\Bbb R$ is {\bf
+open} if for
+every $x\in G$ there is a $\delta>0$ such that the open interval
+$\ooint{x-\delta,x+\delta}$ is included in $G$.
+
+\medskip
+
+\quad{\bf (ii)} Similarly, for any $r\ge 1$, we say that a set
+$G\subseteq\BbbR^r$ is {\bf open} in $\BbbR^r$ if for every $x\in G$
+there is a $\delta>0$ such that $\{y:\|y-x\|<\delta\}\subseteq G$,
+where for $z=(\zeta_1,\ldots,\zeta_r)\in\BbbR^r$ I write
+$\|z\|=\sqrt{\sum_{i=1}^r|\zeta_i|^2}$\cmmnt{;  thus $\|y-x\|$ is just
+the ordinary Euclidean distance from $y$ to $x$}.
+
+\header{111Gd}{\bf (d)} Now the {\bf Borel sets} of $\Bbb R$, or of
+$\BbbR^r$, are
+just the members of the $\sigma$-algebra of subsets of $\Bbb R$ or
+$\BbbR^r$ generated by the family of open sets of $\Bbb R$ or $\BbbR^r$;
+the $\sigma$-algebra itself is called the {\bf Borel $\sigma$-algebra}
+in each case.
+
+\cmmnt{\header{111Ge}{\bf (e)} Some readers will rightly feel that the
+development here gives
+very little idea of what a Borel set is `really' like.   (Open sets are
+much easier;  see 111Ye.)   In fact the
+importance of the concept derives largely from the fact that there are
+alternative, more explicit, and in a sense more concrete, ways of
+describing Borel sets.   I shall return to this topic in Chapter 42 in Volume 4.
+}%end of comment
+
+\exercises{
+\leader{111X}{Basic exercises $\pmb{>}$(a)} Practise the algebra of
+infinite unions and
+intersections until you can confidently interpret such formulae as
+
+\Centerline{$E\cap(\bigcup_{n\in\Bbb N}F_n)$,
+  \qquad$\bigcup_{n\in\Bbb N}(E_n\setminus F)$,
+  \qquad$E\cup(\bigcap_{n\in\Bbb N}F_n)$,}
+
+\Centerline{$\bigcup_{n\in\Bbb N}(E\setminus F_n)$,
+  \qquad$E\setminus(\bigcup_{n\in\Bbb N}F_n)$,
+  \qquad$\bigcap_{n\in\Bbb N}(E_n\setminus F)$,}
+
+\Centerline{$E\setminus(\bigcap_{n\in\Bbb N}F_n)$,
+  \qquad$\bigcap_{n\in\Bbb N}(E\cup F_n)$,
+  \qquad$(\bigcup_{n\in\Bbb N}E_n)\setminus F$,}
+
+\Centerline{$\bigcup_{n\in\Bbb N}(E\cap F_n)$,
+  \qquad$(\bigcap_{n\in\Bbb N}E_n)\setminus F$,
+  \qquad$\bigcap_{n\in\Bbb N}(E\setminus F_n)$,}
+
+\Centerline{$(\bigcup_{n\in\Bbb N}E_n)\cap(\bigcup_{n\in\Bbb N}F_n)$,
+  \qquad$\bigcap_{m,n\in\Bbb N}(E_m\setminus F_n)$,
+  \qquad$(\bigcap_{n\in\Bbb N}E_n)\cup(\bigcap_{n\in\Bbb N}F_n)$,}
+
+\Centerline{$\bigcap_{m,n\in\Bbb N}(E_m\cup F_n)$,
+  \qquad$(\bigcap_{n\in\Bbb N}E_n)\setminus(\bigcup_{n\in\Bbb N}F_n)$,
+  \qquad$\bigcup_{m,n\in\Bbb N}(E_m\cap F_n)$,}
+
+\noindent and, in particular, can identify the nine pairs into which
+these formulae naturally fall.
+
+\sqheader 111Xb In $\Bbb R$, show that all `open intervals'
+$\ooint{a,b}$, $\ooint{-\infty,b}$, $\ooint{a,\infty}$ are open sets,
+and that all intervals (bounded or unbounded, open, closed or half-open)
+are Borel sets.
+
+\sqheader 111Xc Let $X$ and $Y$ be sets and $\Sigma$ a
+$\sigma$-algebra of subsets of $X$.   Let $\phi:X\to Y$ be a function.
+Show that $\{F:F\subseteq Y,\,\phi^{-1}[F]\in\Sigma\}$ is a
+$\sigma$-algebra of subsets of $Y$.   (See 1A1B for the notation here.)
+
+\sqheader 111Xd Let $X$ and $Y$ be sets and $\Tau$ a
+$\sigma$-algebra of subsets of $Y$.   Let $\phi:X\to Y$ be a function.
+Show that $\{\phi^{-1}[F]:F\in\Tau\}$ is a
+$\sigma$-algebra of subsets of $X$.
+
+\spheader 111Xe Let $X$ be a set, $\Cal A$ a family of subsets of $X$,
+and $\Sigma$ the $\sigma$-algebra of subsets of $X$ generated by $\Cal
+A$.   Suppose that $Y$ is another set and $\phi:Y\to X$ a function.   Show
+that $\{\phi^{-1}[E]:E\in\Sigma\}$ is the $\sigma$-algebra of subsets of
+$Y$ generated by $\{\phi^{-1}[A]:A\in\Cal A\}$.
+
+\spheader 111Xf Let $X$ be a set, $\Cal A$ a family of subsets of $X$,
+and $\Sigma$ the $\sigma$-algebra of subsets of $X$ generated by $\Cal
+A$.   Suppose that $Y\subseteq X$.   Show that $\{E\cap Y:E\in\Sigma\}$
+is the $\sigma$-algebra of subsets of $Y$ generated by 
+$\{A\cap Y:A\in\Cal A\}$.
+
+\leader{111Y}{Further exercises (a)} In $\BbbR^r$, where $r\ge 1$, show
+that $G+a=\{x+a:x\in G\}$ is open whenever $G\subseteq\BbbR^r$ is open
+and $a\in\BbbR^r$.   Hence show that $E+a$ is a Borel set whenever
+$E\subseteq\BbbR^r$ is a Borel set and $a\in\BbbR^r$.    \Hint{show that
+$\{E:E+a\text{ is a Borel set}\}$ is a $\sigma$-algebra
+containing all open sets.}
+
+\header{111Yb}{\bf (b)} Let $X$ be a set, $\Sigma$ a $\sigma$-algebra of
+subsets of $X$ and $A$ any subset of $X$.   Show that $\{(E\cap
+A)\cup(F\setminus A):E,\,F\in\Sigma\}$ is a $\sigma$-algebra of subsets
+of $X$, the $\sigma$-algebra generated by $\Sigma\cup\{A\}$.
+
+\header{111Yc}{\bf (c)} Let $G\subseteq\BbbR^2$ be an open set.   Show
+that all the horizontal and vertical sections
+
+\Centerline{$\{\xi:(\xi,\eta)\in G\}$,
+\quad$\{\xi:(\eta,\xi)\in G\}$}
+
+\noindent of $G$ are open subsets of $\Bbb R$.
+
+\header{111Yd}{\bf (d)} Let $E\subseteq\BbbR^2$ be a Borel set.   Show
+that all the horizontal and vertical sections
+
+\Centerline{$\{\xi:(\xi,\eta)\in E\}$,
+\quad$\{\xi:(\eta,\xi)\in E\}$}
+
+\noindent of $E$ are Borel subsets of $\Bbb R$.   \Hint{show
+that the family of subsets of $\BbbR^2$ whose sections are all Borel
+sets is a $\sigma$-algebra of subsets of $\BbbR^2$ containing all the
+open sets.}
+
+\spheader 111Ye Let $G\subseteq\Bbb R$ be an open set.   Show that $G$
+is uniquely expressible as the union of a countable (possibly empty)
+family $\Cal I$ of open intervals (the `components' of $G$) no two of
+which have any point in common.   \Hint{for $x$,
+$y\in G$ say that $x\sim y$ if every point between $x$ and $y$ belongs
+to $G$.   Show that $\sim$ is an equivalence relation.   Let $\Cal I$ be
+the set of equivalence classes.}
+}%end of exercises
+
+\endnotes{
+\Notesheader{111} I suppose that the most important concept in this
+section is the one introduced tangentially in 111E-111F, the idea of
+`countable' set.   While it is possible to avoid much of the formal
+theory of infinite sets for the time being, I do not think it is
+possible to make sense of this chapter without a firm notion of the
+difference between `finite' and `infinite', and some intuitions
+concerning `countability'.   In particular, you must remember that
+infinite sets are not, in general, countable, and that $\sigma$-algebras
+are not, in general, closed under arbitrary unions.
+
+The next thing to be sure of is that you can cope with the set-theoretic
+manipulations here, so that such formulae as
+$\bigcap_{n\in\Bbb N}E_n=X\setminus\bigcup_{n\in\Bbb N}(X\setminus E_n)$ (111Dd) are, if
+not yet transparent, at least not alarming.   A large proportion of
+the volume will be expressed in this language, and reasonable fluency is
+essential.
+
+Finally, for those who are looking for an actual idea to work on
+straight away, I offer the concept of $\sigma$-algebra `generated' by a
+collection $\Cal A$ (111G).   The point of the definition here is that
+it involves consideration of a family $\frak S\in\Cal P(\Cal P(\Cal PX))$,
+even though both $\Cal A$ and $\Sigma_{\Cal A}$ are subsets of
+$\Cal PX$;  we need to work a layer or two up in the hierarchy of power sets.
+You may have seen, for instance, the concept of `linear subspace $U$
+generated by vectors $u_1,\ldots,u_n$'.   This can be defined as the
+intersection of all the linear subspaces containing the vectors
+$u_1,\ldots,u_n$, which is the method corresponding to that of 111Ga-b;
+but it also has an `internal' definition, as the set of vectors
+expressible as $\alpha_1u_1+\ldots+\alpha_nu_n$ for scalars $\alpha_i$.
+For $\sigma$-algebras, however, there is no such simple `internal'
+definition available (though there is a great deal to be said in this
+direction which I think we are not yet ready for;  some ideas may be
+found in \S136).   This is primarily
+because of (iii) in the definition 111A;  a $\sigma$-algebra must be
+closed under an infinitary operation, that is, the operation of union
+applied to infinite sequences of sets.   By contrast, a linear subspace
+of a vector space need be closed only under the finitary operations of
+scalar multiplication and addition, each involving at most two vectors
+at a time.
+}%end of notes
+
+\discrpage
+
+

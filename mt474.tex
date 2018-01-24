@@ -1,0 +1,2225 @@
+\frfilename{mt474.tex}
+\versiondate{17.11.12}
+\copyrightdate{2001}
+
+\def\varinnerprod#1#2{#1\dotproduct#2}
+
+\def\chaptername{Geometric measure theory}
+\def\sectionname{The distributional perimeter}
+
+\newsection{474}
+
+The next step is a dramatic excursion, defining (for appropriate sets
+$E$) a perimeter {\it measure} for which a version of the Divergence
+Theorem is true (474E).   I begin the section with elementary notes on
+the divergence of a vector field
+(474B-474C).   I then define `locally finite perimeter' (474D),
+`perimeter measure' and `outward normal' (474F) and `reduced boundary'
+(474G).   The definitions rely on the Riesz representation theorem, and
+we have to work very hard to relate them to any geometrically natural
+idea of `boundary'.   Even half-spaces (474I) demand some attention.
+From Poincar\'e's inequality\cmmnt{ (473K)} we can prove isoperimetric
+inequalities for perimeter measures (474L).   With some effort we can
+locate the reduced boundary as a subset of the topological
+boundary\cmmnt{ (474Xc)}, and obtain asymptotic inequalities on the
+perimeter measures of small balls (474N).   With much more effort we can
+find a geometric description of outward normal functions in terms of
+`Federer exterior normals' (474R), and get a tight asymptotic
+description of the perimeter measures of small balls (474S).   I end
+with the Compactness Theorem for sets of bounded perimeter (474T).
+
+%taken from {\smc Evans \& Gariepy 92}
+
+\cmmnt{
+\leader{474A}{Notation} I had better repeat some of the notation from
+\S473.   $r\ge 2$ is a fixed integer.   $\mu$ is Lebesgue measure on
+$\BbbR^r$, and $\beta_r=\mu B(\tbf{0},1)$ is the volume of the unit
+ball.   $S_{r-1}=\partial B(\tbf{0},1)$ is the unit sphere.   $\nu$ is
+normalized $(r-1)$-dimensional Hausdorff measure on $\BbbR^r$.
+We shall sometimes need to look at Lebesgue measure on $\BbbR^{r-1}$,
+which I will denote $\mu_{r-1}$.   As in \S473, I will use Greek letters
+to represent coordinates, so that $x=(\xi_1,\ldots,\xi_r)$ for
+$x\in\BbbR^r$, etc., and $\beta_r$ will be the $r$-dimensional volume of
+the unit ball in $\BbbR^r$.
+
+$\eusm D$ is the set of smooth functions $f:\BbbR^r\to\Bbb R$ with
+compact support;
+$\eusm D_r$ the set of smooth functions $\phi:\BbbR^r\to\BbbR^r$ with
+compact support, that is, the set of functions
+$\phi=(\phi_1,\ldots,\phi_r):\BbbR^r\to\BbbR^r$ such that
+$\phi_i\in\eusm D$ for every $i$.
+
+I continue to use the sequence $\sequencen{\tilde h_n}$ from 473E;
+these functions all belong to $\eusm D$, are non-negative everywhere and
+zero outside $B(\tbf{0},\bover1{n+1})$, are even, and have integral $1$.
+}%end of comment
+
+\leader{474B}{The divergence of a vector field (a)} For a function
+$\phi$ from a subset of $\BbbR^r$ to $\BbbR^r$, write
+$\diverg\phi=\sum_{i=1}^r\pd{\phi_i}{\xi_i}$, where
+$\phi=(\phi_1,\ldots,\phi_r)$;  for definiteness, let us take the domain
+of $\diverg\phi$ to be the set of points at which $\phi$ is
+differentiable\cmmnt{ (in the strict sense of 262Fa)}.   \cmmnt{Note
+that} $\diverg\phi\in\eusm D$ for every $\phi\in\eusm D_r$.
+\cmmnt{We need the following elementary facts.}
+
+\spheader 474Bb  If $f:\BbbR^r\to\Bbb R$ and $\phi:\BbbR^r\to\BbbR^r$
+are functions, then
+$\diverg(f\times\phi)=\varinnerprod{\phi}{\grad f}+f\times\diverg\phi$
+at any point at which $f$ and $\phi$ are both differentiable.
+\prooflet{(Use 473Bc;  compare 473Bd.)}
+
+\spheader 474Bc If $\phi:\BbbR^r\to\BbbR^r$ is a Lipschitz function with
+compact support, then $\int\diverg\phi\,d\mu=0$.
+\prooflet{\Prf\ $\diverg\phi$ is defined almost everywhere (by
+Rademacher's theorem, 262Q), measurable (473Be), bounded (473Cc) and
+with compact support, so
+
+\Centerline{$\int\diverg\phi\,d\mu
+=\sum_{i=1}^r\int\Pd{\phi_i}{\xi_i}d\mu$}
+
+\noindent is defined in $\Bbb R$.   For each $i\le r$,
+Fubini's theorem tells us that we can replace integration with respect
+to $\mu$ by a repeated integral, in which the inner integral is
+
+\Centerline{$\int_{-\infty}^{\infty}
+\Pd{\phi_i}{\xi_i}(\xi_1,\ldots,\xi_r)d\xi_i
+=0$}
+
+\noindent because $\phi_i(\xi_1,\ldots,\xi_r)=0$ whenever $|\xi_i|$ is
+large enough.   So $\int\Pd{\phi_i}{\xi_i}d\mu$ also is zero.   Summing
+over $i$, we have the result.\ \Qed}
+
+\spheader 474Bd If $\phi:\BbbR^r\to\BbbR^r$ and $f:\BbbR^r\to\Bbb R$ are
+Lipschitz functions, one of which has compact support, then
+$f\times\phi$ is Lipschitz.   \prooflet{\Prf\
+Take $n\in\Bbb N$ such that
+$f(x)\phi(x)=\tbf{0}$ for $\|x\|>n$, and $\gamma\ge 0$ such that
+$|f(x)-f(y)|\le\gamma\|x-y\|$ and $\|\phi(x)-\phi(y)\|\le\gamma\|x-y\|$ for
+all $x$, $y\in\BbbR^r$, while also
+$|f(x)|\le\gamma$ whenever $\|x\|\le n+1$ and
+$\|\phi(x)\|\le\gamma$ whenever $\|x\|\le n+1$.   If $x$, $y\in\BbbR^r$
+then
+
+\inset{----- if $\|x\|\le n+1$ and $\|y\|\le n+1$,
+
+\Centerline{$\|f(x)\phi(x)-f(y)\phi(y)\|
+\le|f(x)|\|\phi(x)-\phi(y)\|+\|\phi(y)\||f(x)-f(y)|
+\le 2\gamma^2\|x-y\|$;}
+
+----- if $\|x\|\le n$ and $\|y\|>n+1$,
+
+\Centerline{$|f(x)\phi(x)-f(y)\phi(y)\|
+=|f(x)|\|\phi(x)\|\le\gamma^2
+\le\gamma^2\|x-y\|$;}
+
+----- if $\|x\|>n$ and $\|y\|>n$, $|f(x)\phi(x)-f(y)\phi(y)\|=0$.}
+
+\noindent So $2\gamma^2$ is a Lipschitz constant for $f\times\phi$.\ \Qed}
+
+It follows that
+
+\Centerline{$\int\varinnerprod{\phi}{\grad f}\,d\mu
+  +\int f\times\diverg\phi\,d\mu=0$.}
+
+\prooflet{\noindent\Prf\ $f$ and $\phi$ and $f\times\phi$
+are all differentiable almost everywhere.   So
+
+\Centerline{$\int\varinnerprod{\phi}{\grad f}\,d\mu
+  +\int f\times\diverg\phi\,d\mu
+=\int\diverg(f\times\phi)d\mu
+=0$}
+
+\noindent by (b) and (c) above.\ \Qed}
+
+\spheader 474Be If $f\in\eusm L^{\infty}(\mu)$, $g\in\eusm L^1(\mu)$ is
+even\cmmnt{ (that is, $g(-x)$ is defined and equal to $g(x)$ for
+every $x\in\dom g$),} and $\phi:\BbbR^r\to\BbbR^r$ is a Lipschitz
+function with compact support, then
+$\int(f*g)\times\diverg\phi=\int f\times\diverg(g*\phi)$\cmmnt{, where
+$g*\phi=(g*\phi_1,\ldots,g*\phi_r)$}.   \prooflet{\Prf\ For each $i$,
+
+$$\eqalignno{\int(f*g)\times\Pd{\phi_i}{\xi_i}d\mu
+&=\iint f(x)g(y)\Pd{\phi_i}{\xi_i}(x+y)\mu(dy)\mu(dx)\cr
+\displaycause{255G/444Od}
+&=\iint f(x)g(-y)\Pd{\phi_i}{\xi_i}(x+y)\mu(dy)\mu(dx)\cr
+\displaycause{because $g$ is even}
+&=\int f\times(g*\Pd{\phi_i}{\xi_i})d\mu
+=\int f\times\Pd{}{\xi_i}(g*\phi_i)d\mu\cr}$$
+
+\noindent as in 473Dd.   Now take the sum over $i$ of both sides.\
+\Qed}
+
+\leader{474C}{Invariance under isometries:  Proposition} Suppose that
+$T:\BbbR^r\to\BbbR^r$ is an isometry, and that $\phi$ is a function
+from a subset of $\BbbR^r$ to $\BbbR^r$.   Then
+
+\Centerline{$\diverg(T^{-1}\phi T)=(\diverg\phi)T$.}
+
+\proof{ Set $z=T(\tbf{0})$.   By 4A4Jb, the isometry $x\mapsto T(x)-z$
+is linear and preserves inner products, so there is an orthogonal matrix
+$S$ such that $T(x)=z+S(x)$ for every $x\in\BbbR^r$.   Now suppose that
+$x\in\BbbR^r$ is such that $(\diverg\phi)(T(x))$ is defined.   Then
+$T(y)-T(x)-S(y-x)=0$ for every $y$, so $T$ is differentiable at $x$,
+with derivative $S$, and $\phi T$ is differentiable at $x$, with
+derivative $DS$, where $D$ is the derivative of $\phi$ at $T(x)$, by
+473Bc.   Also $T^{-1}(y)=S^{-1}(y-z)$ for every $y$, so $T^{-1}$ is
+differentiable at $\phi(T(x))$ with derivative $S^{-1}$, and $T^{-1}\phi
+T$ is differentiable at $x$, with derivative $S^{-1}DS$.   Now if $D$ is
+$\langle\delta_{ij}\rangle_{1\le i,j\le r}$ and $S$ is
+$\langle\sigma_{ij}\rangle_{1\le i,j\le r}$ and $S^{-1}DS$ is
+$\langle\tau_{ij}\rangle_{1\le i,j\le r}$, then $S^{-1}$ is the
+transpose $\langle\sigma_{ji}\rangle_{1\le i,j\le r}$ of $S$, because
+$S$ is orthogonal, so
+
+$$\eqalign{\diverg(T^{-1}\phi T)(x)
+&=\sum_{i=1}^r\tau_{ii}
+=\sum_{i=1}^r\sum_{j=1}^r\sigma_{ji}\sum_{k=1}^r
+  \delta_{jk}\sigma_{ki}\cr
+&=\sum_{j=1}^r\sum_{k=1}^r\delta_{jk}
+  \sum_{i=1}^r\sigma_{ji}\sigma_{ki}
+=\sum_{j=1}^r\delta_{jj}
+=\diverg\phi(T(x))\cr}$$
+
+\noindent because $\sum_{i=1}^r\sigma_{ji}\sigma_{jk}=1$ if $j=k$ and
+$0$ otherwise.   If $\diverg(T^{-1}\phi T)(x)$ is defined, then (because
+$T^{-1}$ also is an isometry)
+
+\Centerline{$(\diverg\phi)(T(x))=\diverg(TT^{-1}\phi TT^{-1})(T(x))
+=\diverg(T^{-1}\phi T)(T^{-1}T(x))=\diverg(T^{-1}\phi T)(x)$.}
+
+\noindent So the functions $\diverg(T^{-1}\phi T)$ and $(\diverg\phi)T$
+are identical.
+}%end of proof of 474C
+
+\leader{474D}{Locally finite perimeter:  Definition} Let
+$E\subseteq\BbbR^r$ be a Lebesgue measurable set.    Its {\bf perimeter}
+$\per E$ is
+
+\Centerline{$\sup\{|\int_E\diverg\phi\,d\mu|:
+  \phi:\BbbR^r\to B(\tbf{0},1)$ is a Lipschitz function with compact
+support$\}$}
+
+\noindent (allowing $\infty$).   A set $E\subseteq\BbbR^r$
+has {\bf locally finite perimeter} if it is Lebesgue measurable and
+
+\Centerline{$\sup\{|\int_E\diverg\phi\,d\mu|:
+  \phi:\BbbR^r\to\BbbR^r$ is a Lipschitz function,
+  $\|\phi\|\le\chi B(\tbf{0},n)\}$}
+
+\noindent is finite for every $n\in\Bbb N$.   Of course a Lebesgue
+measurable set with finite perimeter also has locally finite perimiter.
+%Cacciopoli set = finite perimeter (Tamanini & Giacomelli)
+
+\leader{474E}{Theorem} Suppose that $E\subseteq\BbbR^r$ has locally
+finite perimeter.
+
+(i) There are a Radon measure $\lambda^{\partial}_E$ on $\BbbR^r$ and a
+Borel measurable function $\psi:\BbbR^r\to S_{r-1}$ such that
+
+\Centerline{$\int_E\diverg\phi\,d\mu
+=\int\varinnerprod{\phi}{\psi}\,d\lambda^{\partial}_E$}
+
+\noindent for every Lipschitz function $\phi:\BbbR^r\to\BbbR^r$ with
+compact support.
+
+(ii) This formula uniquely determines $\lambda^{\partial}_E$, which can
+also be defined by saying that
+
+\Centerline{$\lambda^{\partial}_E(G)
+=\sup\{|\int_E\diverg\phi\,d\mu|:
+  \phi:\BbbR^r\to\BbbR^r$ is Lipschitz, $\|\phi\|\le\chi G\}$}
+
+\noindent whenever $G\subseteq\BbbR^r$ is open.
+
+(iii) If $\hat\psi$ is another function defined
+$\lambda^{\partial}_E$-a.e.\ and satisfying the formula in (i),
+then $\hat\psi$ and $\psi$ are equal
+$\lambda^{\partial}_E$-almost everywhere.
+
+\proof{{\bf (a)(i)} For each $l\in\Bbb N$, set
+
+\Centerline{$\gamma_l=\sup\{|\int_E\diverg\phi\,d\mu|:
+  \phi:\BbbR^r\to\BbbR^r$ is Lipschitz,
+$\|\phi\|\le\chi B(\tbf{0},l)\}$.}
+
+\noindent If $f:\BbbR^r\to\Bbb R$ is a Lipschitz function and
+$f(x)=0$ for $\|x\|\ge l$, then
+$|\int_E\Pd{f}{\xi_i}d\mu|\le\gamma_l\|f\|_{\infty}$ for every $i\le r$.
+\Prf\ It is enough
+to consider the case $\|f\|_{\infty}=1$, since the result is trivial if
+$\|f\|_{\infty}=0$, and otherwise we can look at an appropriate scalar
+multiple of $f$.   In this case, set $\phi(x)=f(x)e_i$ for every $x$, where
+$e_i$ is
+the unit vector $(0,\ldots,0,1,0,\ldots,0)$ with a $1$ in the $i$th place.
+Then $\phi$ is Lipschitz and $\|\phi\|=|f|\le\chi B(\tbf{0},l)$, so
+
+\Centerline{$|\int_E\Pd{f}{\xi_i}d\mu|
+=|\int_E\diverg\phi\,d\mu|\le\gamma_l$.\ \Qed}
+
+\medskip
+
+\quad{\bf (ii)}
+Write $C_k$ for the space of continuous functions with compact
+support from $\BbbR^r$ to $\Bbb R$.   By 473Dc and 473De,
+$f*\tilde h_n\in\eusm D$ for every $f\in C_k$ and $n\in\Bbb N$.
+Now the point is that
+
+\Centerline{$L_i(f)
+=\lim_{n\to\infty}\int_E\Pd{}{\xi_i}(f*\tilde h_n)d\mu$}
+
+\noindent is defined whenever $f\in C_k$ and $i\le r$.   \Prf\ Applying
+473Ed, we see that
+$\|f-f*\tilde h_n\|_{\infty}\to 0$ as $n\to\infty$.   Let $l$ be such that
+$f(x)=0$ for $\|x\|\ge l$.   Then
+$\|(f*\tilde h_m)-(f*\tilde h_n)\|_{\infty}\to 0$ as $m$,
+$n\to\infty$, while all the $f*\tilde h_m$ are zero outside
+$B(\tbf{0},l+1)$ (473Dc), so that
+
+\Centerline{$\bigl|\int_E\Pd{}{\xi_i}(f*\tilde h_m)d\mu
+  -\int_E\Pd{}{\xi_i}(f*\tilde h_n)d\mu\bigr|
+\le\gamma_{l+1}\|(f*\tilde h_m)-(f*\tilde h_n)\|_{\infty}
+\to 0$}
+
+\noindent as $m$, $n\to\infty$.   Thus
+$\sequencen{\int_E\Pd{}{\xi_i}(f*\tilde h_n)d\mu}$ is a Cauchy sequence
+and must have a limit.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} If $f\in C_k$ is Lipschitz and zero outside
+$B(\tbf{0},l)$, then
+
+\Centerline{$|\int_E\Pd{f}{\xi_i}d\mu
+  -\int_E\Pd{}{\xi_i}(f*\tilde h_n)d\mu|
+\le\gamma_{l+1}\|f-f*\tilde h_n\|_{\infty}\to 0$}
+
+\noindent as $n\to\infty$, and
+$L_i(f)=\int_E\Pd{f}{\xi_i}d\mu$.   Consequently
+$|L_i(f)|\le\gamma_l\|f\|_{\infty}$.
+
+\medskip
+
+{\bf (b)} Because all the functionals
+$f\mapsto\int_E\Pd{}{\xi_i}(f*\tilde h_n)d\mu$ are linear, $L_i$ is
+linear.   Moreover, by the last remark in (a-iii), it is order-bounded when
+regarded as a linear functional on the Riesz space $C_k$, so is
+expressible as a difference $L_i^+-L_i^-$ of positive linear functionals
+(356B).
+
+By the Riesz Representation Theorem (436J), we have Radon measures
+$\lambda_i^+$, $\lambda_i^-$ on $\BbbR^r$ such that
+$L_i^+(f)=\int fd\lambda_i^+$, $L_i^-(f)=\int fd\lambda_i^-$ for every
+$f\in C_k$.   Let $\hat\lambda$ be the sum
+$\sum_{i=1}^r\lambda_i^++\lambda_i^-$, so
+that $\hat\lambda$ is a Radon measure (416De) and every $\lambda_i^+$,
+$\lambda_i^-$ is an indefinite-integral measure over $\hat\lambda$
+(416Sb).
+
+For each $i\le r$, let $g_i^+$, $g_i^-$ be Radon-Nikod\'ym derivatives
+of $\lambda_i^+$, $\lambda_i^-$ with respect to $\hat\lambda$.
+Adjusting them on a $\hat\lambda$-negligible set if necessary, we may
+suppose that they are all bounded non-negative Borel measurable
+functions from $\BbbR^r$ to $\Bbb R$.   (Recall from 256C that
+$\hat\lambda$ must be the completion of its restriction to the Borel
+$\sigma$-algebra.)   Set $g_i=g_i^+-g_i^-$ for each $i$.   Then
+
+$$\eqalign{\int_E\Pd{f}{\xi_i}d\mu
+&=L_i^+(f)-L_i^-(f)
+=\int fd\lambda_i^+-\int fd\lambda_i^-\cr
+&=\int f\times g_i^+d\hat\lambda-\int f\times g_i^-d\hat\lambda
+=\int f\times g_id\hat\lambda\cr}$$
+
+\noindent for every Lipschitz function $f$ with compact support (235K).
+Set $g=\sqrt{\sum_{i=1}^rg_i^2}$.   For $i\le r$, set
+$\psi_i(x)=\Bover{g_i(x)}{g(x)}$ when $g(x)\ne 0$, $\Bover1{\sqrt{r}}$
+when $g(x)=0$, so that
+$\psi=(\psi_1,\ldots,\psi_r):\BbbR^r\to S_{r-1}$ is Borel measurable.
+Let $\lambda^{\partial}_E$ be the indefinite-integral measure over
+$\hat\lambda$
+defined by $g$;  then $\lambda^{\partial}_E$ is a Radon measure on
+$\BbbR^r$ (256E/416Sa).
+
+\medskip
+
+{\bf (c)} Now take any Lipschitz function $\phi:\BbbR^r\to\BbbR^r$ with
+compact support.   Express it as
+$(\phi_1,\ldots,\phi_r)$ where $\phi_i:\BbbR^r\to\Bbb R$ is a Lipschitz
+function with compact support for each $i$.   Then
+
+$$\eqalignno{\int_E\diverg\phi\,d\mu
+&=\sum_{i=1}^r\int_E\Pd{\phi_i}{\xi_i}d\mu
+=\sum_{i=1}^rL_i(\phi_i)\cr
+&=\sum_{i=1}^rL_i^+(\phi_i)-\sum_{i=1}^rL_i^-(\phi_i)
+=\sum_{i=1}^r\int\phi_id\hat\lambda^+_i
+  -\sum_{i=1}^r\int\phi_id\hat\lambda^-_i\cr
+&=\sum_{i=1}^r\int\phi_i\times g^+_id\hat\lambda
+  -\sum_{i=1}^r\int\phi_i\times g^-_id\hat\lambda\cr
+\displaycause{by 235K again}
+&=\sum_{i=1}^r\int\phi_i\times g_id\hat\lambda
+=\sum_{i=1}^r\int\phi_i\times\psi_id\lambda^{\partial}_E\cr
+\displaycause{235K once more, because $\psi_i\times g=g_i$}
+&=\int\varinnerprod{\phi}{\psi}\,d\lambda^{\partial}_E.\cr}$$
+
+\noindent So we have $\lambda^{\partial}_E$ and $\psi$ satisfying (i).
+
+\medskip
+
+{\bf (d)} Now suppose that $G\subseteq\BbbR^r$ is open.   If
+$\phi:\BbbR^r\to\BbbR^r$ is a Lipschitz function with compact support
+and $\|\phi\|\le\chi G$, then
+
+\Centerline{$|\int_E\diverg\phi\,d\mu|
+=|\int\varinnerprod{\phi}{\psi}\,d\lambda^{\partial}_E|
+\le\int\|\phi\|d\lambda^{\partial}_E
+\le\lambda^{\partial}_E(G)$.}
+
+\noindent On the other hand, if $\gamma<\lambda^{\partial}_E(G)$, let
+$G_0\subseteq G$ be a bounded open set such that
+$\gamma<\lambda^{\partial}_E(G_0)$, and set
+$\epsilon=\bover13(\lambda^{\partial}_E(G_0)-\gamma)$.   Let
+$K\subseteq G_0$ be a compact set such that
+$\lambda^{\partial}_E(G_0\setminus K)\le\epsilon$.   Let $\delta>0$ be
+such that $\|x-y\|\ge 2\delta$ whenever $y\in K$ and
+$x\in\BbbR^r\setminus G_0$, and set
+$H=\{x:\inf_{y\in K}\|x-y\|<\delta\}$.
+Now there are $f_1,\ldots,f_r\in C_k$ such that
+
+\Centerline{$\sum_{i=1}^rf_i^2\le\chi H$,
+\quad$\int\sum_{i=1}^r
+  f_i\times\psi_id\lambda^{\partial}_E
+\ge\gamma$.}
+
+\noindent\Prf\ For each $i\le r$, we can find a sequence
+$\sequence{m}{g_{mi}}$ in $C_k$ such that
+$\int|g_{mi}-(\psi_i\times\chi K)|d\lambda^{\partial}_E\le 2^{-m}$ for
+every $m\in\Bbb N$ (416I);
+multiplying the $g_{mi}$ by a function which takes the value $1$ on $K$
+and $0$ outside $H$ if necessary, we can suppose that $g_{mi}(x)=0$ for
+$x\notin H$.   Set
+
+\Centerline{$f_{mi}
+=\Bover{g_{mi}}{\max(1,\sqrt{\sumop_{j=1}^rg_{mj}^2})}\in C_k$}
+
+\noindent for each $m$ and $i$.   Now
+$\lim_{m\to\infty}f_{mi}(x)=\psi_i(x)$ for every $i\le r$ whenever
+$\lim_{m\to\infty}g_{mi}(x)=\psi_i(x)$ for every $i\le r$, which is the
+case for $\lambda^{\partial}_E$-almost every $x\in K$.   Also
+$\sum_{i=1}^rf_{mi}^2\le\chi H$ for every $m$, so
+$|\sum_{i=1}^rf_{mi}\times\psi_i|\le\chi H$ for every $m$, while
+
+\Centerline{$\lim_{m\to\infty}\sum_{i=1}^r\int_K
+  f_{mi}\times\psi_id\lambda^{\partial}_E
+=\sum_{i=1}^r\int_K\psi_i^2d\lambda^{\partial}_E
+=\lambda^{\partial}_E(K)$.}
+
+\noindent At the same time,
+
+\Centerline{$|\sum_{i=1}^r\int_{\Bbb R^r\setminus K}
+  f_{mi}\times\psi_id\lambda^{\partial}_E|
+\le\lambda^{\partial}_E(H\setminus K)\le\epsilon$}
+
+\noindent for every $m$, so
+
+\Centerline{$\sum_{i=1}^r\int f_{mi}\times\psi_id\lambda^{\partial}_E
+\ge\lambda^{\partial}_E(G_0)-3\epsilon=\gamma$}
+
+\noindent for all $m$ large enough, and we may take $f_i=f_{mi}$ for
+such an $m$.\ \Qed
+
+Now, for $n\in\Bbb N$, set
+
+\Centerline{$\phi_n=(f_1*\tilde h_n,\ldots,f_r*\tilde h_n)
+\in\eusm D_r$.}
+
+\noindent For all $n$ large enough, we shall have
+$\|x-y\|\ge\Bover1{n+1}$ for every $x\in\BbbR^r\setminus G_0$ and
+$y\in H$, so that $\phi_n(x)=0$ if $x\notin G_0$.   By 473Dg,
+
+\Centerline{$\|\phi_n(x)\|
+\le\sup_{y\in\Bbb R}\sqrt{\sumop_{i=1}^rf_i(y)^2}\le 1$}
+
+\noindent for every $x$ and $n$, so that $\|\phi_n\|\le\chi G_0$ for all
+$n$ large enough.   Next,
+$\lim_{n\to\infty}\phi_n(x)=(f_1(x),\ldots,
+\ifdim\pagewidth=390pt\penalty-100\fi
+f_r(x))$ for every $x\in\BbbR^r$ (473Ed), so
+
+\Centerline{$\int_E\diverg\phi_nd\mu
+=\int\varinnerprod{\phi_n}{\psi}\,d\lambda^{\partial}_E
+\to\int\sum_{i=1}^rf_i\times\psi_id\lambda^{\partial}_E
+\ge\gamma$}
+
+\noindent as $n\to\infty$, by Lebesgue's Dominated Convergence Theorem.
+As $\gamma$ is arbitrary,
+
+$$\eqalign{\lambda^{\partial}_E(G)
+&\le\sup\{\int_E\diverg\phi\,d\mu:
+  \phi\in\eusm D_r,\,\|\phi\|\le\chi G\}\cr
+&\le\sup\{\int_E\diverg\phi\,d\mu:
+  \phi\text{ is Lipschitz},\,\|\phi\|\le\chi G\}\cr}$$
+
+\noindent and we have equality.
+
+\medskip
+
+{\bf (e)} Thus $\lambda^{\partial}_E$ must satisfy (ii).   By 416Eb, it
+is uniquely defined.   Now suppose that $\hat\psi$ is another function
+from a $\lambda^{\partial}_E$-conegligible set to $\BbbR^r$ and
+satisfies (i).   Then
+
+\Centerline{$\int\varinnerprod{\phi}{\psi}\,d\lambda^{\partial}_E
+=\int\varinnerprod{\phi}{\hat\psi}\,d\lambda^{\partial}_E$}
+
+\noindent for every Lipschitz function $\phi:\BbbR^r\to\BbbR^r$ with
+compact support.   Take any $i\le r$ and any compact set
+$K\subseteq\BbbR^r$.   For $m\in\Bbb N$, set
+$f_m(x)=\max(0,1-2^m\inf_{y\in K}\|y-x\|)$ for $x\in\BbbR^r$, so that
+$\sequence{m}{f_m}$ is a sequence of Lipschitz functions with compact
+support and $\lim_{m\to\infty}f_m=\chi K$.   Set
+
+\Centerline{$\phi_{m}=(0,\ldots,f_m,\ldots,0)$,}
+
+\noindent where the non-zero term is in the $i$th position.   Then
+
+$$\eqalignno{\int_K\psi_id\lambda^{\partial}_E
+&=\lim_{m\to\infty}\int f_m\times\psi_id\lambda^{\partial}_E
+=\lim_{m\to\infty}
+ \int\varinnerprod{\phi_{m}}{\psi}\,d\lambda^{\partial}_E\cr
+&=\lim_{m\to\infty}
+  \int\varinnerprod{\phi_{m}}{\hat\psi}\,d\lambda^{\partial}_E
+=\int_K\hat\psi_id\lambda^{\partial}_E.\cr}$$
+
+\noindent By the Monotone Class Theorem (136C), or otherwise,
+$\int_F\hat\psi_id\lambda^{\partial}_E
+=\int_F\psi_id\lambda^{\partial}_E$ for every bounded Borel set $F$, so
+that $\hat\psi_i=\psi_i\,\,\lambda^{\partial}_E$-a.e.;  as $i$ is
+arbitrary, $\psi=\hat\psi\,\,\lambda^{\partial}_E$-a.e.   This completes
+the proof.
+}%end of proof of 474E
+
+\medskip
+
+\leader{474F}{Definitions} In the context of 474E, I will call
+$\lambda^{\partial}_E$ the {\bf perimeter measure} of $E$, and if $\psi$
+is a function from a $\lambda^{\partial}_E$-conegligible subset of
+$\BbbR^r$ to $S_{r-1}$ which has the property in (i) of the theorem, I
+will call it an {\bf outward-normal} function for $E$.
+
+\cmmnt{The words `perimeter' and `outward normal' are intended to
+suggest geometric interpretations;  much of this section and the next
+will be devoted to validating this suggestion.}
+
+Observe that if $E$ has locally finite perimeter, then
+$\per E=\lambda^{\partial}_E(\BbbR^r)$.   The definitions in 474D-474E also
+make it clear that if $E$, $F\subseteq\Bbb R$ are Lebesgue measurable and
+$\mu(E\symmdiff F)=0$, then $\per E=\per F$ and $E$ has locally finite
+perimeter iff $F$ has;  and in this case
+$\lambda^{\partial}_E=\lambda^{\partial}_F$ and an outward-normal function
+for $E$ is an outward-normal function for $F$.
+
+\leader{474G}{The reduced boundary} Let $E\subseteq\BbbR^r$ be a set
+with locally finite
+perimeter;  let $\lambda^{\partial}_E$ be its perimeter measure and
+$\psi$ an outward-normal function for $E$.   The {\bf reduced boundary}
+$\partial^{\$}E$ is the set of those $y\in\BbbR^r$ such that, for some
+$z\in S_{r-1}$,
+
+\Centerline{$\lim_{\delta\downarrow 0}
+\Bover1{\lambda^{\partial}_EB(y,\delta)}
+\int_{B(y,\delta)}\|\psi(x)-z\|\,\lambda^{\partial}_E(dx)=0$.}
+
+\noindent\cmmnt{(When requiring that the limit be defined, I mean to
+insist that $\lambda^{\partial}_EB(y,\delta)$ should be non-zero for
+every $\delta>0$, that is, that $y$ belongs to the support of
+$\lambda^{\partial}_E$.  {\bf Warning!}  Some authors use the phrase
+`reduced boundary' for a slightly larger set.)  }Note that, writing
+$\psi=(\psi_1,\ldots,\psi_r)$ and $z=(\zeta_1,\ldots,\zeta_r)$, we must
+have
+
+\Centerline{$\zeta_i
+=\lim_{\delta\downarrow 0}\Bover1{\lambda^{\partial}_EB(y,\delta)}
+  \int_{B(y,\delta)}\psi_id\lambda^{\partial}_E$,}
+
+\noindent so that $z$ is uniquely defined;  call it $\psi_E(y)$.
+\cmmnt{Of course }$\partial^{\$}E$ and $\psi_E$ are determined
+entirely by the set $E$\cmmnt{, because
+$\lambda^{\partial}_E$ is uniquely determined and $\psi$ is determined
+up to a $\lambda^{\partial}_E$-negligible set (474E)}.
+
+\cmmnt{By Besicovitch's Density Theorem (472Db),}
+
+\Centerline{$\lim_{\delta\downarrow 0}
+  \Bover1{\lambda^{\partial}_EB(x,\delta)}
+  \int_{B(x,\delta)}|\psi_i(x)-\psi_i(y)|\lambda^{\partial}_E(dx)
+=0$}
+
+\noindent for every $i\le r$, for $\lambda^{\partial}_E$-almost every
+$y\in\BbbR^r$;  and for any such $y$, $\psi_E(y)$ is defined and equal
+to $\psi(y)$.   \cmmnt{Thus} $\partial^{\$}E$ is
+$\lambda^{\partial}_E$-conegligible and $\psi_E$ is an outward-normal
+function for $E$.   I will call $\psi_E:\partial^{\$}E\to S_{r-1}$ the
+{\bf canonical outward-normal function} of $E$.
+
+Once again, we see that if $E$, $F\subseteq\BbbR^r$ are sets with locally
+finite perimeter and $E\symmdiff F$ is Lebesgue negligible, then
+they have the same reduced boundary and the same canonical outward-normal
+function.
+
+\leader{474H}{Invariance under isometries:  Proposition} Let
+$E\subseteq\BbbR^r$ be a set with locally finite perimeter.   Let
+$\lambda^{\partial}_E$ be its perimeter measure, and $\psi_E$ its canonical
+outward-normal function.   If $T:\BbbR^r\to\BbbR^r$ is any
+isometry, then $T[E]$ has locally finite perimeter,
+$\lambda^{\partial}_{T[E]}$ is the image measure
+$\lambda^{\partial}_ET^{-1}$,
+the reduced boundary $\partial^{\$}T[E]$ is $T[\partial^{\$}E]$,
+and the canonical
+outward-normal function of $T[E]$ is $S\psi_ET^{-1}$,
+where $S$ is the derivative of $T$.
+
+\proof{{\bf (a)} As noted in 474C, the derivative of $T$ is constant,
+and is an orthogonal matrix.    Suppose that $n\in\Bbb N$.
+Let $\phi:\BbbR^r\to\BbbR^r$ be a Lipschitz function such that
+$\|\phi\|\le\chi B(\tbf{0},n)$.   Then
+
+$$\eqalignno{|\int_{T[E]}\diverg\phi\,d\mu|
+&=|\int_E(\diverg\phi)T\,d\mu|\cr
+\displaycause{263D, because $|\det S|=1$}
+&=|\int_E\diverg(T^{-1}\phi T)d\mu|\cr
+\displaycause{474C}
+&=|\int_E\diverg(S^{-1}\phi T)d\mu|\cr
+\displaycause{because $S^{-1}\phi T$ and $T^{-1}\phi T$ differ by a
+constant, and must have the same derivative}
+&\le\lambda^{\partial}_E(T^{-1}[B(\tbf{0},n)])\cr}$$
+
+\noindent because $S^{-1}\phi T$ is a Lipschitz function and
+
+\Centerline{$\|S^{-1}\phi T\|=\|\phi T\|\le\chi T^{-1}[B(\tbf{0},n)]$.}
+
+\noindent Since $T^{-1}[B(\tbf{0},n)]$ is bounded,
+$\lambda^{\partial}_E(T^{-1}[B(\tbf{0},n)])$ is finite
+for every $n$, and $T[E]$ has locally finite perimeter.
+
+\medskip
+
+{\bf (b)} We can therefore speak of its perimeter measure
+$\lambda^{\partial}_{T[E]}$.   Let $G\subseteq\BbbR^r$ be an open set.
+If $\phi:\BbbR^r\to\BbbR^r$ is a Lipschitz function and
+$\|\phi\|\le\chi T[G]$, then
+
+\Centerline{$|\int_{T[E]}\diverg\phi\,d\mu|
+=|\int_E\diverg(S^{-1}\phi T)d\mu|
+\le\lambda^{\partial}_E(G)$}
+
+\noindent because $S^{-1}\phi T$ is a Lipschitz function dominated by
+$\chi G$.   As $\phi$ is arbitrary,
+$\lambda^{\partial}_{T[E]}(T[G])\le\lambda^{\partial}_E(G)$.   Applying
+the same argument in reverse, with $T^{-1}$ in the place of $T$, we see
+that $\lambda^{\partial}_E(G)\le\lambda^{\partial}_{T[E]}(T[G])$, so the
+two are equal.   This means that the Radon measures
+$\lambda^{\partial}_{T[E]}$ and $\lambda^{\partial}_ET^{-1}$ (418I)
+agree on open sets, and must be identical (416Eb again).
+
+\medskip
+
+{\bf (c)} Now consider $S\psi_ET^{-1}$.   Since $\psi_E$ is defined
+$\lambda^{\partial}_E$-almost everywhere and takes values in $S_{r-1}$,
+$\psi_E T^{-1}$ and $S\psi_E T^{-1}$ are defined
+$\lambda^{\partial}_{T[E]}$-almost everywhere and take values in
+$S_{r-1}$.   If $\phi:\BbbR^r\to\BbbR^r$ is a Lipschitz function with
+compact support,
+
+$$\eqalignno{\int_{T[E]}\diverg\phi\,d\mu
+&=\int_E(\diverg\phi)T\,d\mu
+=\int_E\diverg(T^{-1}\phi T)d\mu\cr
+&=\int_E\diverg(S^{-1}\phi T)d\mu
+=\int\varinnerprod{(S^{-1}\phi T)}{\psi_E}\,d\lambda^{\partial}_E\cr
+&=\int\varinnerprod{(\phi T)}{(S\psi_E)}d\lambda^{\partial}_E\cr
+\displaycause{because $S$ is orthogonal}
+&=\int\varinnerprod{\phi}{(S\psi_E T^{-1})}
+  d(\lambda^{\partial}_ET^{-1})\cr
+\displaycause{235G}
+&=\int\varinnerprod{\phi}{(S\psi_E T^{-1})}
+  d\lambda^{\partial}_{T[E]}.\cr}$$
+
+\noindent Accordingly $S\psi_ET^{-1}$ is an outward-normal function for
+$T[E]$.    Write $\psi_{T[E]}$ for the canonical outward-normal function
+of $T[E]$.
+
+\medskip
+
+{\bf (d)} Take $y\in\Bbb R$ and consider
+
+$$\eqalign{\Bover1{\lambda^{\partial}_{T[E]}B(y,\delta)}
+   &\int_{B(y,\delta)}\|S\psi_ET^{-1}(x)-S\psi_ET^{-1}(y)\|
+   \lambda^{\partial}_{T[E]}(dx)\cr
+&=\Bover1{\lambda^{\partial}_EB(T^{-1}(y),\delta)}
+   \int_{B(T^{-1}(y),\delta)}\|S\psi_E(x)-S\psi_ET^{-1}(y)\|
+   \lambda^{\partial}_E(dx)\cr
+&=\Bover1{\lambda^{\partial}_EB(T^{-1}(y),\delta)}
+   \int_{B(T^{-1}(y),\delta)}\|\psi_E(x)-\psi_ET^{-1}(y)\|
+   \lambda^{\partial}_E(dx)\cr}$$
+
+\noindent for any $\delta>0$ for which
+
+\Centerline{$\lambda^{\partial}_{T[E]}B(y,\delta)
+=\lambda^{\partial}_ET^{-1}[B(y,\delta)]
+=\lambda^{\partial}_EB(T^{-1}(y),\delta)$}
+
+\noindent is non-zero.   We see that
+
+\Centerline{$\lim_{\delta\downarrow 0}
+   \Bover1{\lambda^{\partial}_{T[E]}B(y,\delta)}
+   \int_{B(y,\delta)}\|S\psi_ET^{-1}(x)-S\psi_ET^{-1}(y)\|
+   \lambda^{\partial}_{T[E]}(dx)$}
+
+\noindent is defined and equal to $0$ whenever
+
+\Centerline{$\Bover1{\lambda^{\partial}_EB(T^{-1}(y),\delta)}
+   \int_{B(T^{-1}(y),\delta)}\|\psi_E(x)-\psi_ET^{-1}(y)\|
+   \lambda^{\partial}_E(dx)$}
+
+\noindent is defined and equal to $0$, that is,
+$T^{-1}(y)\in\partial^{\$}E$.   In this case,
+$y\in\partial^{\$}T[E]$ and $S\psi_ET^{-1}(y)=\psi_{T[E]}(y)$.
+So $\partial^{\$}T[E]\supseteq T[\partial^{\$}E]$
+and $S\psi_ET^{-1}$ extends $\psi_{T[E]}$.
+
+Applying the argument to $T^{-1}$, we see that
+$S^{-1}\psi_{T[E]}T$ extends $\psi_E$, that is,
+$\psi_{T[E]}$ extends $S\psi_ET^{-1}$.   So
+$S\psi_ET^{-1}$ is exactly the canonical outward-normal function of
+$T[E]$, and its domain $T[\partial^{\$}E]$ is $\partial^{\$}T[E]$.
+}%end of proof of 474H
+
+\leader{474I}{\dvrocolon{Half-spaces}}\cmmnt{ It will be useful, and
+perhaps instructive, to check the most elementary special case.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $H\subseteq\BbbR^r$ be a half-space
+$\{x:\varinnerprod{x}{v}\le\alpha\}$, where $v\in S^{r-1}$.   Then $H$
+has locally finite perimeter;  its perimeter measure
+$\lambda^{\partial}_H$ is defined by saying
+
+\Centerline{$\lambda^{\partial}_H(F)=\nu(F\cap\partial H)$}
+
+\noindent whenever $F\subseteq\BbbR^r$ is such that $\nu$ measures
+$F\cap\partial H$, and the constant function with value $v$ is an
+outward-normal function for $H$.
+
+\proof{{\bf (a)} Suppose, to begin with, that $v$ is the unit vector
+$(0,\ldots,0,1)$ and that $\alpha=0$, so that $H=\{x:\xi_r\le 0\}$.   Let
+$\phi:\BbbR^r\to\BbbR^r$ be a Lipschitz function with compact support.
+Then for any $i<r$
+
+\Centerline{$\int_{H}\Pd{\phi_i}{\xi_i}\mu(dx)=0$}
+
+\noindent because we can regard this as a multiple integral in which the
+inner integral is with respect to $\xi_i$ and is therefore always zero.
+On the other hand, integrating with respect to the $r$th coordinate
+first,
+
+$$\eqalignno{\int_H\Pd{\phi_r}{\xi_r}\mu(dx)
+&=\int_{\Bbb R^{r-1}}\int_{-\infty}^0
+  \Pd{\phi_r}{\xi_r}(z,t)dt\,\mu_{r-1}(dz)\cr
+&=\int_{\Bbb R^{r-1}}\phi_r(z,0)\mu_{r-1}(dz)
+=\int_{\partial H}\phi_r(x)\nu(dx)\cr
+\displaycause{identifying $\nu$ on $\BbbR^{r-1}\times\{0\}$ with
+$\mu_{r-1}$ on $\BbbR^{r-1}$}
+&=\int_{\partial H}\varinnerprod{\phi}{v}\,d\nu
+=\int\varinnerprod{\phi}{v}\,d\lambda\cr}$$
+
+\noindent where $\lambda$ is the indefinite-integral measure over $\nu$
+defined by the function $\chi(\partial H)$.   Note that (by 234La)
+$\lambda$ can also be regarded as $\nu_{\partial H}\iota^{-1}$, where
+$\nu_{\partial H}$ is the subspace measure on $\partial H$ and
+$\iota:\partial H\to\BbbR^r$ is the identity map.   Now
+$\nu_{\partial H}$ can be identified with Lebesgue measure on
+$\BbbR^{r-1}$, by 265B or otherwise, so in particular is a Radon
+measure, and $\lambda$ also is a Radon measure, by 418I again or otherwise.
+
+This means that $\lambda$ and the constant function with value $v$
+satisfy the conditions of 474E, and must be the perimeter measure of $H$
+and an outward-normal function.
+
+\medskip
+
+{\bf (b)} For the general case, let $S$ be an orthogonal matrix such
+that $S(0,\ldots,0,1)=v$, and set $T(x)=S(x)+\alpha v$ for every $x$, so
+that $H=T[\{x:\xi_r\le 0\}]$.   By 474H, the perimeter measure of $H$ is
+$\lambda T^{-1}$ and the constant function with value $v$ is an
+outward-normal function for $H$.   Now the Radon measure
+$\lambda^{\partial}_H=\lambda T^{-1}$ is defined by saying that
+
+\Centerline{$\lambda^{\partial}_HF
+=\lambda T^{-1}[F]
+=\nu(T^{-1}[F]\cap\{x:\xi_r=0\})
+=\nu(F\cap T[\{x:\xi_r=0\}])
+=\nu(F\cap\partial H)$}
+
+\noindent whenever $\nu(F\cap\partial H)$ is defined, because $\nu$
+(being a scalar multiple of a Hausdorff measure) must be invariant under
+the isometry $T$.
+}%end of proof of 474I
+
+\leader{474J}{Lemma} Let $E\subseteq\BbbR^r$ be a set with locally
+finite perimeter.   Let $\lambda^{\partial}_E$ be the perimeter measure
+of $E$, and $\psi_E$ its canonical outward-normal function.   Then
+$\BbbR^r\setminus E$ also has locally finite perimeter;  its perimeter
+measure is $\lambda^{\partial}_E$, its reduced boundary is
+$\partial^{\$}E$, and its canonical outward-normal function is
+$-\psi_E$.
+
+\proof{ Of course $\BbbR^r\setminus E$ is Lebesgue measurable.
+By 474Bc,
+
+\Centerline{$\int_{\Bbb R^r\setminus E}\diverg\phi\,d\mu
+=-\int_E\diverg\phi\,d\mu
+=\int\varinnerprod{\phi}{(-\psi_E)}\,d\lambda^{\partial}_E$}
+
+\noindent for every Lipschitz function $\phi:\BbbR^r\to\BbbR^r$ with
+compact support.   The uniqueness assertions in 474E tell us that
+$\BbbR^r\setminus E$ has locally
+finite perimeter, that its perimeter measure is $\lambda^{\partial}_E$,
+and that $-\psi_E$ is an outward-normal function for
+$\BbbR^r\setminus E$.   Referring to the definition of `reduced
+boundary' in 474G, we see at once that
+$\partial^{\$}(\BbbR^r\setminus E)=\partial^{\$}E$ and that
+$\psi_{\Bbb R^r\setminus E}=-\psi_E$.
+}%end of proof of 474J
+
+\leader{474K}{Lemma} Let $E\subseteq\BbbR^r$ be a set with locally
+finite perimeter;  let $\lambda^{\partial}_E$ be its perimeter measure,
+and $\psi$ an outward-normal function for $E$.   Let
+$\phi:\BbbR^r\to\BbbR^r$ be a Lipschitz function with compact support,
+and $g\in\eusm D$ an even function.   Then
+
+\Centerline{$\int\varinnerprod{\phi}{\grad(g*\chi E)}d\mu
+  +\int\varinnerprod{(g*\phi)}{\psi}\,d\lambda^{\partial}_E
+=0$.}
+
+\proof{
+
+$$\eqalignno{\int\varinnerprod{\phi}{\grad(g*\chi E)}d\mu
+&=-\int(g*\chi E)\times\diverg\phi\,d\mu\cr
+\displaycause{474Bd, using 473Dd to see that $g*\chi E$ is
+Lipschitz}
+&=-\int\chi E\times\diverg(g*\phi)d\mu\cr
+\displaycause{474Be}
+&=-\int\varinnerprod{(g*\phi)}{\psi}\,d\lambda^{\partial}_E\cr}$$
+
+\noindent (because $g*\phi$ is smooth and has compact support, so is
+Lipschitz), as required.
+}%end of proof of 474K
+
+\leader{474L}{Two isoperimetric inequalities:  Theorem} Let
+$E\subseteq\BbbR^r$ be a set with locally finite perimeter, and
+$\lambda^{\partial}_E$ its perimeter measure.
+
+(a) If $E$ is bounded, then $(\mu E)^{(r-1)/r}\le\per E$.
+
+(b) If $B\subseteq\BbbR^r$ is a closed ball, then
+
+\Centerline{$\min(\mu(B\cap E),\mu(B\setminus E))^{(r-1)/r}
+\le 2c\lambda^{\partial}_E(\interior B)$,}
+
+\noindent where $c=2^{r+4}\sqrt r(1+2^{r+1})$.
+
+\proof{{\bf (a)} Let $\epsilon>0$.   By 473Ef, there is an $n\in\Bbb N$
+such that
+$\|f-\chi E\|_{r/(r-1)}\le\epsilon$, where $f=\chi E*\tilde h_n$.   Note
+that $f$ is smooth (473De again) and has compact support, because $E$ is
+bounded.   Let $\eta>0$ be such that
+
+\Centerline{$\int\|\grad f\|d\mu
+\le\int\Bover{\|\grad f\|^2}{\sqrt{\eta+\|\grad f\|^2}}
+  \,d\mu+\epsilon$,}
+
+\noindent and set $\phi=\Bover{\grad f}{\sqrt{\eta+\|\grad f\|^2}}$.
+Then $\phi\in\eusm D_r$ and $\|\phi(x)\|\le 1$ for every $x\in\BbbR^r$.
+Now we can estimate
+
+$$\eqalignno{\int\|\grad f\|d\mu
+&\le\int\varinnerprod{\phi}{\grad f}\,d\mu+\epsilon\cr
+&=-\int\varinnerprod{(\tilde h_n*\phi)}{\psi}\,d\lambda^{\partial}_E
+  +\epsilon\cr
+\displaycause{where $\psi$ is an outward-normal function for $E$, by
+474K}
+&\le\int\|\tilde h_n*\phi\|d\lambda^{\partial}_E+\epsilon
+\le\per E+\epsilon\cr}$$
+
+\noindent because $\|(\tilde h_n*\phi)(x)\|\le 1$ for every
+$x\in\BbbR^r$, by 473Dg.   Accordingly
+
+$$\eqalignno{(\mu E)^{(r-1)/r}
+&=\|\chi E\|_{r/(r-1)}
+\le\|f\|_{r/(r-1)}+\epsilon
+\le\int\|\grad f\|d\mu+\epsilon\cr
+\displaycause{473H}
+&\le\per E+2\epsilon.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary, we have the result.
+
+\medskip
+
+{\bf (b)(i)} Set
+$\alpha=\min(\mu(B\cap E),\mu(B\setminus E))$.   If $\alpha=0$, the
+result is trivial;  so suppose that $\alpha>0$.   Take
+any $\epsilon\in\ocint{0,\alpha}$.   Let $B_1$ be a closed ball, with
+the same centre as $B$ and strictly smaller non-zero radius, such that
+$\mu(B\setminus B_1)\le\epsilon$;  then
+$\alpha-\epsilon\le\min(\mu(B_1\cap E),\mu(B_1\setminus E))$.   For
+$f\in\eusm L^{r/(r-1)}(\mu)$ set
+
+\Centerline{$\gamma_0(f)=\Bover1{\mu B_1}\int_{B_1}fd\mu$,
+\quad$\gamma_1(f)=\|(f\times\chi B_1)-\gamma_0(f)\chi B_1\|_{r/(r-1)}$;}
+
+\noindent then both $\gamma_0$ and $\gamma_1$ are continuous functions
+on $\eusm L^{r/(r-1)}(\mu)$ if we give it its usual pseudometric
+$(f,g)\mapsto\|f-g\|_{r/(r-1)}$.   Now
+$\gamma_1(\chi(E\cap B))\ge\bover12(\alpha-\epsilon)^{(r-1)/r}$.   \Prf\
+We have
+
+\Centerline{$\gamma_0(\chi(E\cap B))=\Bover{\mu(B_1\cap E)}{\mu B_1}$,}
+
+$$\eqalign{\gamma_1(\chi(E\cap B))^{r/(r-1)}
+&=\int_{B_1}|\chi(E\cap B)
+  -\gamma_0(\chi(E\cap B))|^{r/(r-1)}\cr
+&=\mu(B_1\cap E)\bigl(1-\Bover{\mu(B_1\cap E)}{\mu B_1}\bigr)^{r/(r-1)}
+   +\mu(B_1\setminus E)
+     \bigl(\Bover{\mu(B_1\cap E)}{\mu B_1}\bigr)^{r/(r-1)}\cr
+&=\mu(B_1\cap E)
+    \bigl(\Bover{\mu(B_1\setminus E)}{\mu B_1}\bigr)^{r/(r-1)}
+   +\mu(B_1\setminus E)
+    \bigl(\Bover{\mu(B_1\cap E)}{\mu B_1}\bigr)^{r/(r-1)}.\cr}$$
+
+\noindent Either $\mu(B_1\cap E)\ge\bover12\mu B_1$ or
+$\mu(B_1\setminus E)\ge\bover12\mu B_1$;  suppose the former.   Then
+
+\Centerline{$\gamma_1(\chi(E\cap B))^{r/(r-1)}
+\ge\Bover1{2^{r/(r-1)}}\mu(B_1\setminus E)
+\ge\Bover1{2^{r/(r-1)}}(\alpha-\epsilon)$}
+
+\noindent and
+$\gamma_1(\chi(E\cap B))\ge\Bover12(\alpha-\epsilon)^{(r-1)/r}$.
+Exchanging $B_1\cap E$ and $B_1\setminus E$ we have the same result if
+$\mu(B_1\cap E)\ge\bover12\mu B_1$.\ \Qed
+
+\medskip
+
+\quad{\bf (ii)} Express $B$ as $B(y,\delta)$ and $B_1$ as
+$B(y,\delta_1)$.   Take $n_0\ge\Bover2{\delta-\delta_1}$.  Because
+$\gamma_1$ is
+$\|\,\|_{r/(r-1)}$-continuous, there is an $n\ge n_0$ such that
+$\gamma_1(f)\ge\bover12(\alpha-\epsilon)^{(r-1)/r}-\epsilon$, where
+$f=\tilde h_n*\chi(E\cap B)$ (473Ef);  as in part (a) of the proof,
+$f\in\eusm D$.   Let $\eta>0$ be such that
+
+\Centerline{$\int_{B_1}
+  \Bover{\|\grad f\|^2}{\sqrt{\eta+\|\grad f\|^2}}d\mu
+\ge\int_{B_1}\|\grad f\|d\mu-\epsilon$.}
+
+\noindent Let $m\ge n_0$ be such that
+$\int\varinnerprod{\phi}{\grad f}\,d\mu
+\ge\int_{B_1}\|\grad f\|d\mu-2\epsilon$, where
+
+\Centerline{$\phi=\tilde h_m
+  *(\Bover{\grad f}{\sqrt{\eta+\|\grad f\|^2}}\times\chi B_1)$.}
+
+\noindent Note that $\phi(x)=0$ if
+$\|x-y\|\ge\bover12(\delta+\delta_1)$, so that $(\tilde h_n*\phi)(x)=0$
+if $x\notin\interior B$.   By 473Dg, $\|\phi(x)\|\le 1$ for every $x$
+and $\|(\tilde h_n*\phi)(x)\|\le 1$ for every $x$, so
+$\|\tilde h_n*\phi\|\le\chi(\interior B)$.
+
+Now we have
+
+$$\eqalignno{\int\varinnerprod{\phi}{\grad f}\,d\mu
+&=\int\varinnerprod{\phi}{\grad(\tilde h_n*\chi(E\cap B))}\,d\mu\cr
+&=-\int(\tilde h_n*\chi(E\cap B))\times\diverg\phi\,d\mu\cr
+\displaycause{474Bd}
+&=-\int_{E\cap B}\diverg(\tilde h_n*\phi)d\mu\cr
+\displaycause{474Be}
+&=-\int_E\diverg(\tilde h_n*\phi)d\mu
+\le\lambda^{\partial}_E(\interior B)\cr}$$
+
+\noindent (474E).
+
+\medskip
+
+\quad{\bf (iii)} Accordingly
+
+$$\eqalignno{\Bover12(\alpha-\epsilon)^{(r-1)/r}-\epsilon
+&\le\gamma_1(f)
+\le c\int_{B_1}\|\grad f\|d\mu\cr
+\displaycause{473K}
+&\le c\bigl(\int\varinnerprod{\phi}{\grad f}\,d\mu+2\epsilon\bigr)
+\le c(\lambda^{\partial}_E(\interior B)+2\epsilon).\cr}$$
+
+\noindent As $\epsilon$ is arbitrary,
+$\alpha^{(r-1)/r}\le 2c\lambda^{\partial}_E(\interior B)$, as claimed.
+}%end of proof of 474L
+
+\leader{474M}{Lemma} Suppose that $E\subseteq\BbbR^r$ has locally finite
+perimeter, with perimeter measure $\lambda^{\partial}_E$ and an
+outward-normal function $\psi$.
+Then for any $y\in\BbbR^r$ and any Lipschitz function
+$\phi:\BbbR^r\to\BbbR^r$,
+
+\Centerline{$\int_{E\cap B(y,\delta)}\diverg\phi\,d\mu
+=\int_{B(y,\delta)}\varinnerprod{\phi}{\psi}\,d\lambda^{\partial}_E
++\int_{E\cap\partial B(y,\delta)}
+  \varinnerprod{\phi(x)}{\Bover1{\delta}(x-y)}\,\nu(dx)$}
+
+\noindent for almost every $\delta>0$.
+
+\proof{{\bf (a)} For $t>0$, set
+
+\Centerline{$w(t)
+=\int_{E\cap\partial B(y,t)}\varinnerprod{\phi(x)}
+  {\Bover1t(x-y)}\,\nu(dx)$}
+
+\noindent when this is defined.   By 265G, applied to functions of the
+form
+
+$$x\mapsto
+\oldcases{\varinnerprod{\phi(x)}{\Bover{x-y}{\|x-y\|}}
+  &if $x\in E$ and $0<\|x-y\|\le\alpha$\cr
+0&otherwise,\cr}$$
+
+\noindent $w$ is defined almost everywhere in $\ooint{0,\infty}$ and is
+measurable (for Lebesgue measure on $\Bbb R$).
+
+Let $\delta>0$ be any point in the Lebesgue set of $w$ (223D).   Then
+
+\Centerline{$\lim_{t\downarrow 0}\Bover1t\int_{\delta}^{\delta+t}
+  |w(s)-w(\delta)|ds
+\le 2\lim_{t\downarrow 0}\Bover1{2t}\int_{\delta-t}^{\delta+t}
+  |w(s)-w(\delta)|
+=0$.}
+
+\noindent Let $\epsilon>0$.   Then there is an $\eta>0$ such that
+
+\Centerline{$\Bover1{\eta}\int_{\delta}^{\delta+\eta}
+  |w(s)-w(\delta)|ds
+  \le\epsilon$,
+\quad$\int_{B(y,\delta+\eta)\setminus B(y,\delta)}
+  \|\phi\|d\lambda^{\partial}_E\le\epsilon$,}
+
+\Centerline{$\int_{B(y,\delta+\eta)\setminus B(y,\delta)}
+  \|\diverg\phi\|d\mu
+\le\epsilon$.}
+
+\medskip
+
+{\bf (b)} Set
+
+$$\eqalign{g(x)&=1\text{ if }\|x-y\|\le\delta,\cr
+&=1-\Bover1{\eta}(\|x-y\|-\delta)
+  \text{ if }\delta\le\|x-y\|\le\delta+\eta,\cr
+&=0\text{ if }\|x-y\|\ge\delta+\eta.\cr}$$
+
+\noindent Then $g$ is continuous, and $\grad g(x)=\tbf{0}$ if
+$\|x-y\|<\delta$
+or $\|x-y\|>\delta+\eta$;  while if $\delta<\|x-y\|<\delta+\eta$,
+$\grad g(x)=-\Bover{x-y}{\eta\|x-y\|}$.   This means that
+
+$$\eqalign{\int_E\varinnerprod{\phi}{\grad g}\,d\mu
+&=-\Bover1{\eta}\int_{\delta}^{\delta+\eta}\int_{E\cap\partial B(y,t)}
+  \varinnerprod{\Bover1t(x-y)}{\phi(x)}\,\nu(dx)dt\cr
+&=-\Bover1{\eta}\int_{\delta}^{\delta+\eta}w(t)dt.\cr}$$
+
+\noindent By the choice of $\eta$,
+
+\Centerline{$|\int_E\varinnerprod{\phi}{\grad g}\,d\mu+w(\delta)|
+\le\epsilon$.}
+
+\medskip
+
+{\bf (c)} By 474E and 474Bb we have
+
+$$\eqalignno{\int\varinnerprod{(g\times\phi)}{\psi}
+  \,d\lambda^{\partial}_E
+&=\int_E\diverg(g\times\phi)d\mu\cr
+\displaycause{of course $g\times\phi$ is Lipschitz, by 473Ca and 262Ba}
+&=\int_E\varinnerprod{\phi}{\grad g}\,d\mu
+   +\int_Eg\times\diverg\phi\,d\mu.\cr}$$
+
+\noindent Next, by the choice of $\eta$,
+
+\Centerline{$|\int\varinnerprod{((g\times\phi)}{\psi}\,
+  d\lambda^{\partial}_E-\int_{B(y,\delta)}\varinnerprod{\phi}{\psi}
+  \,d\lambda^{\partial}_E|
+\le\int_{B(y,\delta+\eta)\setminus B(y,\delta)}
+  \|\phi\|d\lambda^{\partial}_E
+\le\epsilon$,}
+
+\noindent while
+
+\Centerline{$|\int_E\varinnerprod{\phi}{\grad g}\,d\mu
++\int_{E\cap\partial B(y,\delta)}
+    \varinnerprod{\phi(x)}{\Bover1{\delta}(x-y)}\nu(dx)|
+=|\int_E\varinnerprod{\phi}{\grad g}\,d\mu+w(\delta)|
+\le\epsilon$}
+
+\noindent and
+
+$$\eqalign{\bigl|\int_Eg\times\diverg\phi\,d\mu
+  &-\int_{E\cap B(y,\delta)}\diverg\phi\,d\mu\bigr|\cr
+&\le\int_{B(y,\delta+\eta)\setminus B(y,\delta)}\|\diverg\phi\|d\mu
+\le\epsilon.\cr}$$
+
+\noindent Putting these together, we have
+
+\Centerline{$|\int_{E\cap B(y,\delta)}\diverg\phi\,d\mu
+-\int_{B(y,\delta)}\varinnerprod{\phi}{\psi}\,d\lambda^{\partial}_E
+-\int_{E\cap\partial B(y,\delta)}
+  \varinnerprod{\phi(x)}{\Bover1{\delta}(x-y)}\nu(dx)|
+\le 3\epsilon$.}
+
+\noindent As $\epsilon$ is arbitrary, this gives the result.
+}%end of proof of 474M
+
+\vleader{60pt}{474N}{Lemma} Let $E\subseteq\BbbR^r$ be a set with locally
+finite perimeter, and $\lambda^{\partial}_E$ its perimeter measure.
+Then, for any $y\in\partial^{\$}E$,
+
+\quad(i) $\liminf_{\delta\downarrow 0}
+  \Bover{\mu(B(y,\delta)\cap E)}{\delta^r}
+\ge\Bover1{(3r)^r}$;
+
+\quad(ii) $\liminf_{\delta\downarrow 0}
+  \Bover{\mu(B(y,\delta)\setminus E)}{\delta^r}
+\ge\Bover1{(3r)^r}$;
+
+\quad(iii) $\liminf_{\delta\downarrow 0}
+  \Bover{\lambda^{\partial}_EB(y,\delta)}{\delta^{r-1}}
+\ge\Bover1{2c(3r)^{r-1}}$,
+
+\noindent where $c=2^{r+4}\sqrt r(1+2^{r+1})$;
+
+\quad(iv) $\limsup_{\delta\downarrow 0}
+  \Bover{\lambda^{\partial}_EB(y,\delta)}{\delta^{r-1}}
+\le 4\pi\beta_{r-2}$.
+
+\proof{{\bf (a)} Let $\psi_E$ be the canonical outward-normal function
+of $E$ (474G).   Take $y\in\partial^{\$}E$.   Set
+
+\Centerline{$\Phi=\{\phi:\phi$ is a Lipschitz function from
+$\BbbR^r$ to $B(\tbf{0},1)\}$.}
+
+\noindent Because the space $L^1(\mu)$ is separable in its usual (norm)
+topology (244I), so is
+$\{(\diverg\phi\times\chi B(y,1))^{\ssbullet}:\phi\in\Phi\}$
+(4A2P(a-iv)), and there must be
+a countable set $\Phi_0\subseteq\Phi$ such that
+
+\inset{whenever $\phi\in\Phi$ and $m\in\Bbb N$ there is a
+$\hat\phi\in\Phi_0$ such that
+\discrcenter{390pt}
+{$\int_{B(y,1)}|\diverg\phi-\diverg\hat\phi|d\mu\le 2^{-m}$.}}
+
+\noindent Now, for each $\phi\in\Phi_0$,
+
+$$\eqalign{|\int_{E\cap B(y,\delta)}\diverg\phi\,d\mu|
+&=|\int_{B(y,\delta)}\varinnerprod{\phi}{\psi_E}\,d\lambda^{\partial}_E
++\int_{E\cap\partial B(y,\delta)}
+  \varinnerprod{\phi(x)}{\Bover1{\delta}(x-y)}\nu(dx)|\cr
+&\le\lambda^{\partial}_EB(y,\delta)
++\nu(E\cap\partial B(y,\delta))\cr}$$
+
+\noindent for almost every $\delta>0$, by 474M.   But this means that,
+for almost every $\delta\in\ocint{0,1}$,
+
+$$\eqalign{\per(E\cap B(y,\delta))
+&=\sup_{\phi\in\Phi}|\int_{E\cap B(y,\delta)}\diverg\phi\,d\mu|\cr
+&=\sup_{\phi\in\Phi_0}|\int_{E\cap B(y,\delta)}\diverg\phi\,d\mu|
+\le\lambda^{\partial}_EB(y,\delta)
+  +\nu(E\cap\partial B(y,\delta)).\cr}$$
+
+\medskip
+
+{\bf (b)} It follows that, for some $\delta_0>0$,
+
+\Centerline{$\per(E\cap B(y,\delta))
+\le 3\nu(E\cap\partial B(y,\delta))$}
+
+\noindent for almost every $\delta\in\ocint{0,\delta_0}$.   \Prf\
+Applying 474M with $\phi(x)=\psi_E(y)$ for every $x$, we have
+
+\Centerline{$0
+=\int_{B(y,\delta)}\varinnerprod{\psi_E(y)}{\psi_E(x)}
+     \lambda^{\partial}_E(dx)
+  +\int_{E\cap\partial B(y,\delta)}
+    \varinnerprod{\psi_E(y)}{\Bover1{\delta}(x-y)}\nu(dx)$}
+
+\noindent for almost every $\delta\in[0,1]$.   But by the definition of
+$\psi_E(y)$,
+
+\Centerline{$\lim_{\delta\downarrow 0}
+  \Bover1{\lambda^{\partial}_EB(y,\delta)}\int_{B(y,\delta)}
+     \varinnerprod{\psi_E(y)}{\psi_E}\,d\lambda^{\partial}_E
+=\lim_{\delta\downarrow 0}
+  \Bover1{\lambda^{\partial}_EB(y,\delta)}\int_{B(y,\delta)}
+     \varinnerprod{\psi_E(y)}{\psi_E(y)}\,d\lambda^{\partial}_E
+=1$.}
+
+\noindent So there is some $\delta_0>0$ such that, for almost every
+$\delta\in\ocint{0,\delta_0}$,
+
+$$\eqalignno{\lambda^{\partial}_EB(y,\delta)
+&\le 2\int_{B(y,\delta)}
+  \varinnerprod{\psi_E(y)}{\psi_E}\,d\lambda^{\partial}_E\cr
+&=-2\int_{E\cap\partial B(y,\delta)}
+   \varinnerprod{\psi_E(y)}{\Bover1{\delta}(x-y)}\nu(dx)
+\le 2\nu(E\cap\partial B(y,\delta)).&(\dagger)\cr}$$
+
+\noindent But this means that, for almost every such $\delta$,
+
+\Centerline{$\per(E\cap B(y,\delta))
+\le\lambda^{\partial}_EB(y,\delta)
+  +\nu(E\cap\partial B(y,\delta))
+\le 3\nu(E\cap\partial B(y,\delta))$.   \Qed}
+
+\medskip
+
+{\bf (c)} Set $g(t)=\mu(E\cap B(y,t))$ for $t\ge 0$.   By 265G,
+$g(t)=\int_0^{t}\nu(E\cap\partial B(y,s))ds$ for every $t$, so $g$ is
+absolutely continuous on $[0,1]$ and $g'(t)=\nu(E\cap\partial B(y,t))$
+for almost every $t$.   Now we can estimate
+
+$$\eqalignno{g(t)^{(r-1)/r}
+&=\mu(E\cap B(y,t))^{(r-1)/r}
+\le\per(E\cap B(y,t))\cr
+\displaycause{474La}
+&\le 3\nu(E\cap\partial B(y,t))
+=3g'(t)\cr}$$
+
+\noindent for almost every $t\in[0,\delta_0]$.   So
+
+\Centerline{$\Bover{d}{dt}\bigl(g(t)^{1/r}\bigr)
+=\Bover1rg(t)^{(1-r)/r}g'(t)\ge\Bover1{3r}$}
+
+\noindent for almost every $t\in[0,\delta_0]$;  since
+$t\mapsto g(t)^{1/r}$ is non-decreasing, $g(t)^{1/r}\ge\Bover{t}{3r}$
+(222C) and $g(t)\ge(3r)^{-r}t^r$ for every $t\in[0,\delta_0]$.
+
+\medskip
+
+{\bf (d)} Accordingly
+
+\Centerline{$\liminf_{\delta\downarrow 0}
+  \Bover{\mu(B(y,\delta)\cap E)}{\delta^r}
+\ge\inf_{0<\delta\le\delta_0}
+  \Bover{\mu(B(y,\delta)\cap E)}{\delta^r}
+\ge\Bover1{(3r)^r}$.}
+
+\noindent This proves (i).
+
+\medskip
+
+{\bf (e)} Because
+$\lambda^{\partial}_{\Bbb R^r\setminus E}=\lambda^{\partial}_E$ and
+$-\psi_E$ is the canonical outward-normal function of
+$\BbbR^r\setminus E$ (474J), $y$ also belongs to
+$\partial^{\$}(\BbbR^r\setminus E)$, so
+the second formula of this lemma follows from the first.
+
+\medskip
+
+{\bf (f)} By 474Lb,
+
+\Centerline{$\lambda^{\partial}_EB(y,\delta)
+\ge\Bover1{2c}\min\bigl(\mu(B(y,\delta)\cap E),
+  \mu(B(y,\delta)\setminus E)\bigr)^{(r-1)/r}$}
+
+\noindent for every $\delta\ge 0$.   So
+
+$$\eqalign{\liminf_{\delta\downarrow 0}
+  \bover{\lambda^{\partial}_EB(y,\delta)}{\delta^{r-1}}
+&\ge\Bover1{2c}\liminf_{\delta\downarrow 0}
+  \min\bigl(\bover{\mu(B(y,\delta)\cap E)}{\delta^r},
+  \bover{\mu(B(y,\delta)\setminus E)}{\delta^r}\bigr)^{(r-1)/r}\cr
+&\ge\Bover1{2c}\min\bigl(\liminf_{\delta\downarrow 0}
+  \bover{\mu(B(y,\delta)\cap E)}{\delta^r},
+  \liminf_{\delta\downarrow 0}\bover{\mu(B(y,\delta)\setminus E)}{\delta^r}
+  \bigr)^{(r-1)/r}\cr
+&\ge\Bover1{2c}\bigl(\Bover1{(3r)^r}\bigr)^{(r-1)/r}
+=\Bover1{2c(3r)^{r-1}}.\cr}$$
+
+\noindent Thus (iii) is true.
+
+\medskip
+
+{\bf (g)} Returning to the inequality ($\dagger$) in the proof of (b)
+above, we have a $\delta_0>0$ such that
+
+\Centerline{$\lambda^{\partial}_EB(y,\delta)
+\le 2\nu(E\cap\partial B(y,\delta))
+\le 2\nu(\partial B(y,\delta))=4\pi\beta_{r-2}\delta^{r-1}$}
+
+\noindent (265F) for almost every $\delta\in\ocint{0,\delta_0}$.   But this means that, for any $\delta\in\coint{0,\delta_0}$,
+
+\Centerline{$\lambda^{\partial}_EB(y,\delta)
+\le\inf_{t>\delta}\lambda^{\partial}_EB(y,t)
+\le\inf_{t>\delta}4\pi\beta_{r-2}t^{r-1}
+=4\pi\beta_{r-2}\delta^{r-1}$,}
+
+\noindent and (iv) is true.
+}%end of proof of 474N
+
+\leader{474O}{Definition} Let $A\subseteq\BbbR^r$ be any set, and
+$y\in\BbbR^r$.   A {\bf Federer exterior normal to
+$A$ at $y$} is a $v\in S_{r-1}$ such that,
+
+\Centerline{$\lim_{\delta\downarrow 0}
+  \Bover{\mu^*((H\symmdiff A)\cap B(y,\delta))}{\mu B(y,\delta)}=0$,}
+
+\noindent where $H$ is the half-space
+$\{x:\varinnerprod{(x-y)}{v}\le 0\}$.
+
+\leader{474P}{Lemma} If $A\subseteq\BbbR^r$ and $y\in\BbbR^r$, there can
+be at most one Federer exterior normal to $A$ at $y$.
+
+\proof{ Suppose that $v$, $v'\in S_{r-1}$ are two Federer exterior
+normals to $E$ at $y$.   Set
+
+\Centerline{$H=\{x:\varinnerprod{(x-y)}{v}\le 0\}$,
+\quad$H'=\{x:\varinnerprod{(x-y)}{v'}\le 0\}$.}
+
+
+\noindent Then
+
+\Centerline{$\lim_{\delta\downarrow 0}
+  \Bover{\mu((H\symmdiff H')\cap B(y,\delta))}{\mu B(y,\delta)}
+\le\lim_{\delta\downarrow 0}
+  \Bover{\mu^*((H\symmdiff A)\cap B(y,\delta))}{\mu B(y,\delta)}
+ +\lim_{\delta\downarrow 0}
+  \Bover{\mu^*((H'\symmdiff A)\cap B(y,\delta))}{\mu B(y,\delta)}
+=0$.}
+
+\noindent But for any $\delta>0$,
+
+\Centerline{$(H\symmdiff H')\cap B(y,\delta)
+=y+\delta((H_0\symmdiff H'_0)\cap B(\tbf{0},1))$,}
+
+\noindent where
+
+\Centerline{$H_0=\{x:\varinnerprod{x}{v}\le 0\}$,
+\quad$H'_0=\{x:\varinnerprod{x}{v'}\le 0\}$.}
+
+\noindent So
+
+\Centerline{$0
+=\lim_{\delta\downarrow 0}
+  \Bover{\mu((H\symmdiff H')\cap B(y,\delta))}{\mu B(y,\delta)}
+=\Bover{\mu((H_0\symmdiff H_0')\cap B(\tbf{0},1))}{\mu B(\tbf{0},1)}
+=\Bover{\mu((H_0\symmdiff H_0')\cap B(\tbf{0},n))}{\mu B(\tbf{0},n)}$}
+
+\noindent for every $n\ge 1$, and $\mu(H_0\symmdiff H_0')=0$.   Since
+$\mu$ is strictly positive, and $H_0$ and $H_0'$ are both the closures
+of their interiors, they must be identical;  and it follows that $v=v'$.
+}%end of proof of 474P
+
+\leader{474Q}{Lemma}\dvAnew{2012} Set $c'=2^{r+3}\sqrt{r-1}(1+2^r)$.
+Suppose that $c^*$, $\epsilon$ and $\delta$ are such that
+
+\Centerline{$c^*\ge 0$,
+\quad$\delta>0$,\quad$0<\epsilon<\Bover1{\sqrt{2}}$,
+\quad$c^*\epsilon^3<\bover14\beta_{r-1}$,
+\quad$4c'\epsilon\le\bover18\beta_{r-1}$.}
+
+\noindent Set
+$V_{\delta}=\{z:z\in\BbbR^{r-1}$, $\|z\|\le\delta\}$ and
+$C_{\delta}=V_{\delta}\times[-\delta,\delta]$, regarded as a cylinder
+in $\BbbR^r$.   Let $f\in\eusm D$ be such that
+
+\Centerline{$\int_{C_{\delta}}
+  \|\grad_{r-1}f\|+\max(\Pd{f}{\xi_r},0)d\mu
+\le c^*\epsilon^3\delta^{r-1}$,}
+
+\noindent where $\grad_{r-1}f
+=(\Pd{f}{\xi_1},\ldots,\Pd{f}{\xi_{r-1}},0)$.  Set
+
+\Centerline{$F=\{x:x\in C_{\delta}$, $f(x)\ge\Bover34\}$,
+\quad$F'=\{x:x\in C_{\delta}$, $f(x)\le\Bover14\}$.}
+
+\noindent and for $\gamma\in\Bbb R$ set
+$H_{\gamma}=\{x:x\in\BbbR^r$, $\xi_r\le\gamma\}$.   Then there is a
+$\gamma\in\Bbb R$ such that
+
+\Centerline{$\mu(F\symmdiff(H_{\gamma}\cap C_{\delta}))
+\le 9\mu(C_{\delta}\setminus(F\cup F'))
+   +(c^*\beta_{r-1}+16c')\epsilon\delta^r$.}
+
+\proof{{\bf (a)} For $t\in[-\delta,\delta]$ set
+
+\Centerline{$f_t(z)=f(z,t)$ for $z\in\BbbR^{r-1}$,}
+
+\Centerline{$F_t=\{z:z\in V_{\delta}$, $f_t(z)\ge\Bover34\},$
+\quad$F'_t=\{z:z\in V_{\delta}$, $f_t(z)\le\Bover14\}$;}
+
+\noindent set
+
+\Centerline{$\gamma
+=\sup\bigl(\{-\delta\}\cup\{t:t\in[-\delta,\delta]$,
+  $\mu_{r-1}F_t\ge\Bover34\mu_{r-1}V_{\delta}\}\bigr)$,}
+
+\Centerline{$G
+=\{t:t\in[-\delta,\delta]$,
+  $\int_{V_{\delta}}\|\grad f_t\|d\mu_{r-1}\ge\epsilon^2\delta^{r-2}\}$.}
+
+\noindent Note that $(\grad_{r-1}f)(z,t)=((\grad f_t)(z),0)$, so we
+have
+
+\Centerline{$\int_{-\delta}^{\delta}\int_{V_{\delta}}
+   \|\grad f_t\|d\mu_{r-1}dt
+=\int_{C_{\delta}}\|\grad_{r-1}f\|d\mu
+\le c^*\epsilon^3\delta^{r-1}$}
+
+\noindent and $\mu_1G\le c^*\epsilon\delta$, where $\mu_1$ is Lebesgue
+measure on $\Bbb R$.
+
+\medskip
+
+{\bf (b)} If $t\in[-\delta,\delta]\setminus G$, then
+
+\Centerline{$\min(\mu_{r-1}F'_t,\mu_{r-1}F_t)
+\le 4c'\epsilon\delta^{r-1}$.}
+
+\noindent\Prf\ If $r>2$,
+
+$$\eqalignno{\min\bigl(\mu_{r-1}F'_t,
+  \mu_{r-1}F_t)\bigr)^{(r-2)/(r-1)}
+&\le 4c'\int_{V_{\delta}}\|\grad f_t\|d\mu_{r-1}\cr
+\displaycause{473L}
+&\le 4c'\epsilon^2\delta^{r-2}\cr}$$
+
+\noindent because $t\notin G$, so that
+
+$$\eqalign{\min(\mu_{r-1}F't,\mu_{r-1}F_t)
+&\le (4c'\epsilon^2)^{(r-1)/(r-2)}\delta^{r-1}\cr
+&\le 4c'\epsilon\delta^{r-1}\cr}$$
+
+\noindent because $4c'\ge 1$ and $\Bover{2(r-1)}{r-2}\ge 1$ and
+$\epsilon\le 1$.   If $r=2$, then
+
+\Centerline{$\int_{V_{\delta}}\|\grad f_t\|d\mu_{r-1}
+\le\epsilon^2<\Bover12$,}
+
+\noindent so at least one of $F'_t$,
+$F_t$ is empty, as noted in 473M, and
+$\min(\mu_{r-1}F'_t,\mu_{r-1}F_t)=0$.\ \Qed
+
+\medskip
+
+{\bf (c)} If $-\delta\le s<t\le\delta$, then
+
+\Centerline{$\int_{-\delta}^{\delta}
+  \max(\Pd{f}{\xi_r}(z,\xi),0)d\xi
+\ge\int_{s}^{t}\Pd{f}{\xi_r}(z,\xi)d\xi
+=f(z,t)-f(z,s)\ge\Bover12$}
+
+\noindent for every $z\in F'_s\cap F_t$.   Accordingly
+
+\Centerline{$\Bover12\mu_{r-1}(F'_s\cap F_t)
+\le\int_{C_{\delta}}\max(\Pd{f}{\xi_r},0)d\mu
+\le c^*\epsilon^3\delta^{r-1}
+<\Bover14\beta_{r-1}\delta^{r-1}
+=\Bover14\mu_{r-1}V_{\delta}$}
+
+\noindent and $\mu_{r-1}(F'_s\cap F_t)<\bover12\mu_{r-1}V_{\delta}$.
+It follows that if $-\delta\le s<\gamma$, so that there is a $t>s$ such
+that $\mu_{r-1}F_t\ge\bover34\mu_{r-1}V_{\delta}$, then
+$\mu_{r-1}F'_s<\bover34\mu_{r-1}V_{\delta}$.
+
+\medskip
+
+{\bf (d)} Now
+
+\Centerline{$\mu((F\symmdiff(H_{\gamma}\cap C_{\delta}))
+\le 9\mu(C_{\delta}\setminus(F\cup F'))
+   +\epsilon\delta^r(c^*\beta_{r-1}+16c')$.}
+
+\noindent\Prf\ Set
+
+\Centerline{$\tilde G
+=\{t:-\delta\le t\le\delta$,
+  $\mu_{r-1}(F_t\cup F'_t)
+    \le\Bover78\mu_{r-1}V_{\delta}\}$,}
+
+\Centerline{$\hat G=\{t:-\delta\le t\le\delta$,
+  $\mu_{r-1}F_t
+    \le 4c'\epsilon\delta^{r-1}\}$,}
+
+\Centerline{$\hat G'=\{t:-\delta\le t\le\delta$,
+  $\mu_{r-1}F'_t
+    \le 4c'\epsilon\delta^{r-1}\}$.}
+
+\noindent Then
+
+\Centerline{$\Bover18\mu_{r-1}V_{\delta}\cdot\mu_1\tilde G
+\le\mu(C_{\delta}\setminus(F\cup F'))$,}
+
+\Centerline{$\mu(F\cap(V_{\delta}\times\hat G))
+\le 8c'\epsilon\delta^r$,}
+
+\Centerline{$\mu(F'\cap(V_{\delta}\times\hat G'))
+\le 8c'\epsilon\delta^r$.}
+
+\noindent So if we set
+
+$$\eqalign{W
+=(C_{\delta}\setminus(F\cup F'))
+  &\cup(V_{\delta}
+    \times(\tilde G\cup G\cup\{\gamma\}))\cr
+&\cup(F\cap(V_{\delta}\times\hat G))
+  \cup(F'\cap(V_{\delta}\times\hat G')),\cr}$$
+
+\noindent we shall have
+
+$$\eqalign{\mu W
+&\le\mu(C_{\delta}\setminus(F\cup F'))
+   +\mu_1\tilde G\cdot\mu_{r-1}V_{\delta}
+   +\mu_1G\cdot\mu_{r-1}V_{\delta}
+   +16c'\epsilon\delta^r\cr
+&\le 9\mu(C_{\delta}\setminus(F\cup F'))
+   +c^*\epsilon\delta\mu_{r-1}V_{\delta}
+   +16c'\epsilon\delta^r\cr
+&=9\mu(C_{\delta}\setminus(F\cup F'))
+   +\epsilon\delta^r(c^*\beta_{r-1}+16c')\cr
+}$$
+
+\noindent (using the estimate of $\mu_1G$ in (a)).
+
+\Quer\ Suppose, if possible, that there is a point
+$(z,t)\in(F\symmdiff(H_{\gamma}\cap C_{\delta}))\setminus W$.
+Since $t\notin G$, (b) tells us that
+
+\Centerline{$\min(\mu_{r-1}F'_t,\mu_{r-1}F_t)
+\le 4c'\epsilon\delta^{r-1}
+\le\Bover18\mu_{r-1}V_{\delta}$.}
+
+\noindent So
+$t\in\hat G\cup\hat G'$.    Also, since $t\notin\tilde G$,
+$\mu_{r-1}F_t+\mu_{r-1}F'_t\ge\Bover78\mu_{r-1}V_{\delta}$;  so
+(since $t\ne\gamma$) either
+$\mu_{r-1}F_t\ge\Bover34\mu_{r-1}V_{\delta}$ and
+$t<\gamma$, or
+$\mu_{r-1}F'_t\ge\Bover34\mu_{r-1}V_{\delta}$ and
+$t>\gamma$ (by (c)).   Now
+
+$$\eqalignno{t<\gamma
+&\Longrightarrow\mu_{r-1}F_t
+  \ge\Bover34\mu_{r-1}V_{\delta}\cr
+&\Longrightarrow\mu_{r-1}F'_t
+   \le 4c'\epsilon\delta^{r-1}\cr
+&\Longrightarrow t\in\hat G'\cr
+&\Longrightarrow (z,t)\notin F'\cr
+\displaycause{because $(z,t)\notin F'\cap(V_{\delta}\times\hat G')$}
+&\Longrightarrow (z,t)\in F\cr
+\displaycause{because $(z,t)\notin C_{\delta}\setminus(F\cup F')$}
+&\Longrightarrow (z,t)\in F\cap H_{\gamma},\cr}$$
+
+\noindent which is impossible.   And similarly
+
+$$\eqalignno{t>\gamma
+&\Longrightarrow\mu_{r-1}F'
+  \ge\Bover34\mu_{r-1}V_{\delta}\cr
+&\Longrightarrow\mu_{r-1}F_t
+   \le 4c'\epsilon\delta^{r-1}\cr
+&\Longrightarrow t\in\hat G\cr
+&\Longrightarrow (z,t)\notin F\cr
+&\Longrightarrow (z,t)\notin F\cup H_{\gamma},\cr}$$
+
+\noindent which is equally impossible.\ \Bang
+
+Thus
+$F\symmdiff(H_{\gamma}\cap C_{\delta})\subseteq W$
+has measure at most
+
+\Centerline{$9\mu(C_{\delta}\setminus(F\cup F'))
+   +\epsilon\delta^r(c^*\beta_{r-1}+16c')$,}
+
+\noindent as claimed.\ \Qed
+}%end of proof of 474Q
+
+\leader{474R}{Theorem} Let $E\subseteq\BbbR^r$ be a set with locally
+finite perimeter, $\psi_E$
+its canonical outward-normal function, and $y$
+any point of its reduced boundary $\partial^{\$}E$.   Then $\psi_E(y)$
+is the Federer exterior normal to $E$ at $y$.
+
+\proof{ Write $\lambda^{\partial}_E$ for the perimeter measure of $E$, as
+usual.
+
+\medskip
+
+{\bf (a)} To begin with (down to the end of (c-ii) below) suppose
+that $y=\tbf{0}$ and that $\psi_E(y)=(0,\ldots,0,1)=v$ say.    Set
+
+\Centerline{$c=2^{r+4}\sqrt r(1+2^{r+1})$,
+\quad$c'=2^{r+3}\sqrt{r-1}(1+2^r)$,}
+
+\Centerline{$c_1=1+\max\bigl(4\pi\beta_{r-2},
+   2c(3r)^{r-1}\bigr)$,}
+
+\noindent (counting $\beta_0$ as $1$, if $r=2$),
+
+\Centerline{$c^*=\sqrt2(2\sqrt2)^{r-1}c_1$,
+\quad$c_1^*=10+\Bover12(c^*+\Bover{16c'}{\beta_{r-1}})$.}
+
+\noindent As in 474Q, set
+
+\Centerline{$V_{\delta}=\{z:z\in\BbbR^{r-1}$, $\|z\|\le\delta\}$,
+\quad$C_{\delta}=V_{\delta}\times[-\delta,\delta]$.
+\quad$H_{\gamma}=\{x:\xi_r\le\gamma\}$}
+
+\noindent for $\delta>0$ and $\gamma\in\Bbb R$, and
+$\grad_{r-1}f=(\Pd{f}{\xi_1},\ldots,\Pd{f}{\xi_{r-1}},0)$ for
+$f\in\eusm D$.
+
+\medskip
+
+{\bf (b)(i)} Take any $\epsilon>0$ such that
+
+\Centerline{$\epsilon<\Bover1{\sqrt 2}$,
+\quad$c^*\epsilon^3<\Bover14\beta_{r-1}$,
+\quad$2^{r+1}c'\epsilon<\Bover18\beta_{r-1}$.}
+
+\noindent Then there is a $\delta_0\in\ocint{0,1}$ such that
+
+\Centerline{$\Bover1{\lambda^{\partial}_EB(\tbf{0},\delta)}
+  \int_{B(\tbf{0},\delta)}\|\psi_E(x)-v\|\lambda^{\partial}_E(dx)
+\le\epsilon^3$,}
+
+\Centerline{$\Bover1{c_1}\delta^{r-1}
+\le\lambda^{\partial}_EB(\tbf{0},\delta)
+\le c_1\delta^{r-1}$}
+
+\noindent for every $\delta\in\ocint{0,2\delta_0\sqrt2}$ (using
+474N(iii) and 474N(iv) for the inequalities bounding
+$\lambda^{\partial}_EB(\tbf{0},\delta)$).
+
+\medskip
+
+\quad{\bf (ii)} Suppose that $0<\delta\le\delta_0$.
+Note first that
+
+$$\eqalignno{\int_{C_{2\delta}}\|v-\psi_E\|d\lambda^{\partial}_E
+&\le\int_{B(\tbf{0},2\delta\sqrt2)}\|v-\psi_E\|d\lambda^{\partial}_E
+\le\epsilon^3\lambda^{\partial}_EB(\tbf{0},2\delta\sqrt2)\cr
+&\le c_1\epsilon^3(2\delta\sqrt2)^{r-1}
+=\Bover{c^*}{\sqrt2}\epsilon^3\delta^{r-1}.\cr}$$
+
+\medskip
+
+\quad{\bf (iii)}
+$\lim_{n\to\infty}\tilde h_n*\chi E\eae\chi E$ (473Ee), so there is an
+$n\ge\bover1{\delta}$ such that
+$\int_{C_{\delta}}|\tilde h_n*\chi E-\chi E|d\mu
+\le\bover14\epsilon\mu C_{\delta}$.   Setting
+
+\Centerline{$f=\tilde h_n*\chi E$,
+\quad$F=\{x:x\in C_{\delta}$, $f(x)\ge\bover34\}$,
+\quad$F'=\{x:x\in C_{\delta}$, $f(x)\le\bover14\}$,}
+
+\noindent we have $f\in\eusm D$ (473De once more) and
+
+\Centerline{$\mu(C_{\delta}\Bsetminus(F\cup F'))\le\epsilon\mu C_{\delta}$,
+\quad$\mu(F\symmdiff(E\cap C_{\delta}))\le\epsilon\mu C_{\delta}$.}
+
+\medskip
+
+\quad{\bf (iv)}
+
+\Centerline{$\int_{C_{\delta}}
+  \|\grad_{r-1}f\|+\max(\Pd{f}{\xi_r},0)d\mu
+\le c^*\epsilon^3\delta^{r-1}$.}
+
+\noindent\Prf\Quer\ Suppose, if possible, otherwise.   Note that because
+$\mu C_{\delta}=2\beta_{r-1}\delta^r$,
+$\lim_{\delta'\uparrow\delta}\mu C_{\delta'}=\mu C_{\delta}$, so there
+is some $\delta'<\delta$ such that
+
+\Centerline{$\int_{C_{\delta'}}
+  \|\grad_{r-1}f\|+\max(\Pd{f}{\xi_r},0)d\mu
+>c^*\epsilon^3\delta^{r-1}$.}
+
+\noindent For $1\le i\le r$ and $x\in\BbbR^r$, set
+
+$$\eqalignno{\theta_i(x)
+&=\bover{\pd{f}{\xi_i}(x)}{\|\grad_{r-1}f(x)\|}
+  \text{ if }i<r,\,x\in C_{\delta'}
+  \text{ and }\grad_{r-1}(x)\ne 0,\cr
+&=1\text{ if }i=r,\,x\in C_{\delta'}
+  \text{ and }\Pd{f}{\xi_r}(x)\ge 0,\cr
+&=0\text{ otherwise}.\cr}$$
+
+\noindent Then all the $\theta_i$ are
+$\mu$-integrable.   Setting $\theta=(\theta_1,\ldots,\theta_r)$,
+
+\Centerline{$\int\varinnerprod{\theta}{\grad f}d\mu
+=\int_{C_{\delta'}}
+  \|\grad_{r-1}f\|+\max(\Pd{f}{\xi_r},0)d\mu
+>c^*\epsilon^3\delta^{r-1}$.}
+
+\noindent By 473Ef,
+$\sequence{k}{\|\theta_i-\theta_i*\tilde h_k\|_1}\to 0$ for each $i$;
+since $\grad f$ is bounded,
+
+\Centerline{$\int
+  \varinnerprod{(\tilde h_k*\theta)}{\grad f}\,d\mu
+>c^*\epsilon^3\delta^{r-1}$}
+
+\noindent for any $k$ large enough.  If we ensure also that
+$\Bover1{k+1}\le\delta-\delta'$, and set $\phi=\tilde h_k*\theta$, we
+shall get a function $\phi\in\eusm D$, with
+$\|\phi(x)\|\le\sqrt2\chi C_{\delta}$ for every $x$ (by 473Dc and 473Dg),
+such that
+
+\Centerline{$\int\varinnerprod{\phi}{\grad f}d\mu
+>c^*\epsilon^3\delta^{r-1}$.}
+
+\noindent Moreover, referring to the definition of $*$ in 473Dd and
+473Dg,
+
+\Centerline{$\varinnerprod{(\tilde h_n*\phi)(x)}{v}
+=(\tilde h_n*(\tilde h_k*\theta_r))(x)\ge 0$}
+
+\noindent for every $x$, because $\tilde h_n$, $\tilde h_k$ and
+$\theta_r$ are all non-negative.
+
+Now
+
+$$\eqalignno{c^*\epsilon^3\delta^{r-1}
+&<\int\varinnerprod{\phi}{\grad f}d\mu
+=\int\varinnerprod{\phi}{\grad(\tilde h_n*\chi E)}d\mu\cr
+&=-\int\varinnerprod{(\tilde h_n*\phi)}{\psi_E}
+  \,d\lambda^{\partial}_E\cr
+\displaycause{474K}
+&\le\int\varinnerprod{(\tilde h_n*\phi)}{(v-\psi_E)}
+  \,d\lambda^{\partial}_E
+\le\sqrt{2}\int_{C_{2\delta}}\|v-\psi_E\|\,d\lambda^{\partial}_E\cr
+\displaycause{because $\|(\tilde h_n*\phi)(x)\|\le\sqrt2$ for every $x$,
+by 473Dg again, and $(\tilde h_n*\phi)(x)=0$ if
+$x\notin C_{\delta}+C_{1/(n+1)}\subseteq C_{2\delta}$}
+&\le c^*\epsilon^3\delta^{r-1};\cr}$$
+
+\noindent which is absurd.\ \Bang\Qed
+
+\medskip
+
+\quad{\bf (v)} By 474Q, there is a $\gamma\in\Bbb R$ such that
+
+$$\eqalign{\mu(F\symmdiff(H_{\gamma}\cap C_{\delta}))
+&\le 9\mu(C_{\delta}\setminus(F\cup F'))
+   +(c^*\beta_{r-1}+16c')\epsilon\delta^r\cr
+&\le 9\epsilon\mu C_{\delta}
+   +\Bover1{2\beta_{r-1}}(c^*\beta_{r-1}+16c')\epsilon\mu C_{\delta}
+=(c_1^*-1)\epsilon\mu C_{\delta},\cr}$$
+
+\noindent and
+
+\Centerline{$\mu((E\symmdiff H_{\gamma})\cap C_{\delta})
+\le\mu(F\symmdiff(E\cap C_{\delta}))
+    +\mu(F\symmdiff(H_{\gamma}\cap C_{\delta}))
+\le c_1^*\epsilon\mu C_{\delta}$.}
+
+\medskip
+
+\quad{\bf (vi)} As $\epsilon$ is arbitrary, we see that
+
+\Centerline{$\lim_{\delta\downarrow 0}\inf_{\gamma\in\Bbb R}
+   \Bover1{\mu C_{\delta}}
+   \mu((E\symmdiff H_{\gamma})\cap C_{\delta})=0$.}
+
+\medskip
+
+{\bf (c)} Again take $\epsilon\in\ocint{0,1}$.
+
+\medskip
+
+\quad{\bf (i)} By (b) above and 474N(i)-(ii) there is a
+$\delta_1>0$ such that whenever $0<\delta\le\delta_1$ then
+
+\Centerline{$\mu(B(\tbf{0},\delta)\cap E)
+\ge\Bover1{2(3r)^r\beta_r}\mu B(\tbf{0},\delta)$,}
+
+\Centerline{$\mu(B(\tbf{0},\delta)\setminus E)
+\ge\Bover1{2(3r)^r\beta_r}\mu B(\tbf{0},\delta)$}
+
+\noindent and there is a $\gamma\in\Bbb R$ such that
+
+\Centerline{$\mu((E\symmdiff H_{\gamma})\cap C_{\delta})
+<\min(\epsilon,\Bover{\epsilon^r}{4\beta_{r-1}(3r)^r})\mu C_{\delta}$.}
+
+\noindent In this case, $|\gamma|\le\epsilon\delta$.
+\Prf\Quer\ Suppose, if possible, that $\gamma<-\epsilon\delta$.
+Then
+
+$$\eqalign{\mu(B(\tbf{0},\epsilon\delta)\cap E)
+&\le\mu(E\cap C_{\delta}\setminus H_{\gamma})\cr
+&<\Bover{\epsilon^r}{4\beta_{r-1}(3r)^r}\mu C_{\delta}
+=\Bover1{2\beta_r(3r)^r}\mu B(\tbf{0},\epsilon\delta)\cr}$$
+
+\noindent which is impossible.\ \BanG\  In the same way,
+\Quer\ if $\gamma>\epsilon\delta$,
+
+$$\eqalign{\mu(B(\tbf{0},\epsilon\delta)\setminus E)
+&\le\mu((C_{\delta}\setminus H_{\gamma})\setminus E)\cr
+&<\Bover{\epsilon^r}{4\beta_{r-1}(3r)^r}\mu C_{\delta}
+=\Bover1{2\beta_r(3r)^r}\mu B(\tbf{0},\epsilon\delta).
+\text{ \Bang}\Qed\cr}$$
+
+\medskip
+
+\quad{\bf (ii)} It follows that
+
+$$\eqalign{\mu((E\symmdiff H_0)\cap C_{\delta})
+&\le\mu((E\symmdiff H_{\gamma})\cap C_{\delta})
+   +\mu((H_{\gamma}\symmdiff H_0)\cap C_{\delta})\cr
+&\le\epsilon\mu C_{\delta}+\epsilon\delta\mu_{r-1}V_{\delta}
+=\Bover32\epsilon\mu C_{\delta}.\cr}$$
+
+\noindent As $\epsilon$ is arbitrary,
+
+\Centerline{$\lim_{\delta\downarrow 0}
+  \Bover{\mu((E\symmdiff H_0)\cap C_{\delta})}{\mu C_{\delta}}
+=0$,}
+
+\noindent and
+
+\Centerline{$\lim_{\delta\downarrow 0}
+  \Bover{\mu((E\symmdiff H_0)\cap B_{\delta})}{\mu B_{\delta}}
+\le\Bover{2\beta_{r-1}}{\beta_r}\lim_{\delta\downarrow 0}
+  \Bover{\mu((E\symmdiff H_0)\cap C_{\delta})}{\mu C_{\delta}}
+=0$.}
+
+\medskip
+
+{\bf (d)} Thus $v$ is a Federer exterior normal to $E$ at $\tbf{0}$ if
+$\psi_E(\tbf{0})=v$.   For the general case, let $S$ be an orthogonal
+matrix such that
+$S\psi_E(y)=v$, and set $T(x)=S(x-y)$ for every $x$.   
+The point is of course that
+
+\Centerline{$\tbf{0}=T(y)\in T[\partial^{\$}E]=\partial^{\$}T[E]$,
+\quad$v=S\psi_ET^{-1}(\tbf{0})=\psi_{T[E]}(\tbf{0})$}
+
+\noindent (474H).   So if we set
+
+\Centerline{$H
+=\{x:\varinnerprod{(x-y)}{\psi_E(y)}\le 0\}
+=\{x:\varinnerprod{T(x)}{v}\le 0\}
+=T^{-1}[H_0]$,}
+
+\noindent then
+
+\Centerline{$\Bover{\mu((H\symmdiff E)\cap B(y,\delta))}
+   {\mu B(y,\delta)}
+=\Bover{\mu((H_0\symmdiff T[E])\cap B(\tbf{0},\delta))}
+   {\mu B(\tbf{0},\delta)}
+\to 0$}
+
+\noindent as $\delta\downarrow 0$, and $\psi_E(y)$ is a Federer exterior
+normal to $E$ at $y$, as required.
+}%end of proof of 474R
+
+\leader{474S}{Corollary} Let $E\subseteq\BbbR^r$ be a set with locally
+finite perimeter, and $\lambda^{\partial}_E$ its perimeter measure.
+Let $y$ be any point of the reduced boundary of $E$.   Then
+
+\Centerline{$\lim_{\delta\downarrow 0}
+\Bover{\lambda^{\partial}_EB(y,\delta)}{\beta_{r-1}\delta^{r-1}}=1$.}
+
+\proof{{\bf (a)} Set $v=\psi_E(y)$ and
+$H=\{x:\varinnerprod{(x-y)}{v}\le 0\}$, as in 474R.   Now
+
+\Centerline{$\int_{H\cap\partial B(y,\delta)}
+  \varinnerprod{v}{\Bover1{\delta}(x-y)}\nu(dx)
+=-\beta_{r-1}\delta^{r-1}$}
+
+\noindent for almost every $\delta>0$.   \Prf\ Set $\phi(x)=v$ for every
+$x\in\BbbR^r$.   By 474I, $\phi$ is an outward-normal function for $H$,
+so 474M tells us that, for almost every $\delta>0$,
+
+$$\eqalignno{\int_{H\cap\partial B(y,\delta)}
+  \varinnerprod{v}{\Bover1{\delta}(x-y)}\,\nu(dx)
+&=\int_{H\cap B(y,\delta)}\diverg\phi\,d\mu
+   -\int_{B(y,\delta)}\varinnerprod{v}{v}\,d\lambda^{\partial}_H\cr
+&=-\lambda^{\partial}_HB(y,\delta)
+=-\nu(B(y,\delta)\cap\partial H)\cr
+\displaycause{using the identification of $\lambda^{\partial}_H$ in
+474I}
+&=-\beta_{r-1}\delta^{r-1}\cr}$$
+
+\noindent(identifying $\nu$ on the hyperplane $\partial H$ with Lebesgue
+measure on $\BbbR^{r-1}$, as usual).\ \Qed
+
+\medskip
+
+{\bf (b)} Now, given $\epsilon>0$, there is a $\delta_0>0$ such that
+whenever $0<\delta\le\delta_0$ there is an $\eta$ such that
+$\delta\le\eta\le\delta(1+\epsilon)$ and
+$|\lambda^{\partial}_EB(y,\eta)-\beta_{r-1}\eta^{r-1}|
+\le\epsilon\eta^{r-1}$.   \Prf\ Let $\zeta>0$ be such that
+
+\Centerline{$\zeta(1+\Bover{5\pi}{r}\beta_{r-2})(1+\epsilon)^r
+\le\epsilon^2$.}
+
+\noindent By 474N(iv) and 474R and the definition of $\psi_E$, there is
+a $\delta_0>0$ such that
+
+\Centerline{$\lambda^{\partial}_EB(y,\delta)
+\le 5\pi\beta_{r-2}\delta^{r-1}$,}
+
+\Centerline{$\mu((E\symmdiff H)\cap B(y,\delta))\le\zeta\delta^r$,}
+
+\Centerline{$\int_{B(y,\delta)}
+  \|\psi_E(x)-v\|\lambda^{\partial}_E(dx)
+\le\zeta\lambda^{\partial}_EB(y,\delta)$}
+
+\noindent whenever $0<\delta\le(1+\epsilon)\delta_0$.   Take
+$0<\delta\le\delta_0$.   Then, for almost every $\eta>0$, we have
+
+\Centerline{$\int_{B(y,\eta)}
+  \varinnerprod{v}{\psi_E(x)}\,\lambda^{\partial}_E(dx)
+  +\int_{E\cap\partial B(y,\eta)}
+    \varinnerprod{v}{\Bover1{\eta}(x-y)}\,\nu(dx)
+=0$}
+
+\noindent by 474M, applied with $\phi$ the constant function with value
+$v$.   Putting this together
+with (a), we see that, for almost every
+$\eta\in\ocint{0,(1+\epsilon)\delta_0}$,
+
+$$\eqalignno{|\lambda^{\partial}_EB(y,\eta)&-\beta_{r-1}\eta^{r-1}|
+=|\int_{B(y,\eta)}\varinnerprod{v}{v}\,d\lambda^{\partial}_E
+   -\beta_{r-1}\eta^{r-1}|\cr
+&\le|\int_{B(y,\eta)}\varinnerprod{v}{(v-\psi_E)}\,d\lambda^{\partial}_E|
+   +|\int_{B(y,\eta)}\varinnerprod{v}{\psi_E}\,d\lambda^{\partial}_E
+       -\beta_{r-1}\eta^{r-1}|\cr
+&\le\int_{B(y,\eta)}\|\psi_E-v\|d\lambda^{\partial}_E\cr
+&\hskip3em
+   +|\int_{B(y,\eta)}
+      \varinnerprod{v}{\psi_E(x)}\,\lambda^{\partial}_E(dx)
+     +\int_{H\cap\partial B(y,\eta)}
+       \varinnerprod{v}{\Bover1{\eta}(x-y)}\,\nu(dx)|\cr
+\displaycause{using (a) above}
+&\le\zeta\lambda^{\partial}_EB(y,\eta)\cr
+&\hskip3em
+   +|\int_{H\cap\partial B(y,\eta)}
+       \varinnerprod{v}{\Bover1{\eta}(x-y)}\,\nu(dx)
+      -\int_{E\cap\partial B(y,\eta)}
+       \varinnerprod{v}{\Bover1{\eta}(x-y)}\,\nu(dx)|\cr
+&\le 5\pi\beta_{r-2}\zeta\eta^{r-1}
+   +\nu((E\symmdiff H)\cap\partial B(y,\eta)).\cr}$$
+
+\woddheader{474S}{0}{0}{0}{30pt}
+
+Integrating with respect to $\eta$, we have
+
+$$\eqalignno{\int_0^{\delta(1+\epsilon)}
+  |\lambda^{\partial}_EB(y,\eta)-\beta_{r-1}\eta^{r-1}|d\eta
+&\le \Bover{5\pi}{r}\beta_{r-2}\zeta\delta^r(1+\epsilon)^r
+   +\mu((E\symmdiff H)\cap B(y,\delta(1+\epsilon)))\cr
+\displaycause{using 265G, as usual}
+&\le \Bover{5\pi}{r}\beta_{r-2}\zeta\delta^r(1+\epsilon)^r
+   +\zeta\delta^r(1+\epsilon)^r
+\le\epsilon^2\delta^r\cr}$$
+
+\noindent by the choice of $\zeta$.   But this means that there must be
+some $\eta\in[\delta,\delta(1+\epsilon)]$ such that
+
+\Centerline{$|\lambda^{\partial}_EB(y,\eta)-\beta_{r-1}\eta^{r-1}|
+\le\epsilon\delta^{r-1}
+\le\epsilon\eta^{r-1}$. \Qed}
+
+\medskip
+
+{\bf (c)} Now we see that
+
+\Centerline{$\lambda^{\partial}_EB(y,\delta)
+\le\lambda^{\partial}_EB(y,\eta)
+\le(\beta_{r-1}+\epsilon)\eta^{r-1}
+\le(\beta_{r-1}+\epsilon)(1+\epsilon)^{r-1}\delta^{r-1}$.}
+
+\noindent But by the same argument we have an
+$\hat\eta\in[\Bover{\delta}{1+\epsilon},\delta]$ such that
+$|\lambda^{\partial}_EB(y,\hat\eta)-\beta_{r-1}\hat\eta^{r-1}|
+\le\epsilon\hat\eta^{r-1}$, so that
+
+\Centerline{$\lambda^{\partial}_EB(y,\delta)
+\ge\lambda^{\partial}_EB(y,\hat\eta)
+\ge(\beta_{r-1}-\epsilon)\hat\eta^{r-1}
+\ge(\beta_{r-1}-\epsilon)(1+\epsilon)^{1-r}\delta^{r-1}$.}
+
+Thus, for every $\delta\in\ocint{0,\delta_0}$,
+
+\Centerline{$(\beta_{r-1}-\epsilon)(1+\epsilon)^{1-r}\delta^{r-1}
+\le\lambda^{\partial}_EB(y,\delta)
+\le(\beta_{r-1}+\epsilon)(1+\epsilon)^{r-1}\delta^{r-1}$.}
+
+\noindent As $\epsilon$ is arbitrary,
+
+\Centerline{$\lim_{\delta\downarrow 0}
+  \Bover{\lambda^{\partial}_EB(y,\delta)}{\delta^{r-1}}
+=\beta_{r-1}$,}
+
+\noindent as claimed.
+}%end of proof of 474S
+
+\leader{474T}{The Compactness Theorem} Let $\Sigma$ be the algebra of
+Lebesgue measurable subsets of $\BbbR^r$, and give it the topology
+$\frak T_m$ of convergence in measure defined by the pseudometrics
+$\rho_H(E,F)=\mu((E\symmdiff F)\cap H)$ for measurable sets $H$ of
+finite measure\cmmnt{ (cf.\ \S\S245 and 323)}.   Then
+
+(a) $\per:\Sigma\to[0,\infty]$ is lower semi-continuous;
+
+(b) for any $\gamma<\infty$, $\{E:E\in\Sigma$, $\per E\le\gamma\}$ is
+compact.
+
+\proof{{\bf (a)} Let $\sequencen{E_n}$ be any $\frak T_m$-convergent
+sequence in $\Sigma$ with limit $E\in\Sigma$.   If
+$\phi:\BbbR^r\to B(\tbf{0},1)$ is a Lipschitz function with compact
+support, then $\diverg\phi$ is integrable, so
+$F\mapsto\int_F\diverg\phi\,d\mu$ is truly continuous (225A), and
+
+\Centerline{$|\int_E\diverg\phi\,d\mu|
+=\lim_{n\to\infty}|\int_{E_n}\diverg\phi\,d\mu|
+\le\sup_{n\in\Bbb N}\per E_n$.}
+
+\noindent As $\phi$ is arbitrary, $\per E\le\sup_{n\in\Bbb N}\per E_n$.
+This means that $\{E:\per E\le\gamma\}$ is sequentially closed,
+therefore closed (4A2Ld), for any $\gamma$, and $\per$ is lower
+semi-continuous.
+
+\medskip
+
+%\allowmorestretch{468}{
+{\bf (b)} Let us say that a
+`dyadic cube' is a set expressible in the form
+$\prod_{1\le i\le r}\coint{2^{-n}k_i,2^{-n}(k_i+1)}$ where $n$,
+$k_1,\ldots,k_r\in\Bbb Z$.   Set $\Cal A=\{E:\per E\le\gamma\}$.   
+%}
+
+\medskip
+
+\quad{\bf (i)} For $E\in\Cal A$, $n\in\Bbb N$ and
+$\epsilon\in\ocint{0,1}$ let $G(E,n,\epsilon)$ be the union of all the
+dyadic cubes $D$ with side length $2^{-n}$ such that
+$\epsilon\mu D\le\mu(E\cap D)\le(1-\epsilon)\mu D$.   Then
+$\mu G(E,n,\epsilon)\le\Bover{c_1}{2^n\epsilon}\gamma$, where
+$c_1=2^{r+5}(1+2^{r+1})(1+\sqrt r)^{r+1}$.
+
+\Prf\ Express $G(E,n,\epsilon)$ as a disjoint union
+$\bigcup_{i\in I}D_i$ where each $D_i$ is a dyadic cube of side length
+$2^{-n}$ and
+$\min(\mu(D_i\cap E),\mu(D_i\setminus E))\ge\epsilon\mu D_i$.   Let
+$x_i$ be the centre of $D_i$ and $B_i$ the ball
+$B(x_i,2^{-n-1}\sqrt r)$, so that $D_i\subseteq B_i$ and
+$\mu B_i=\beta_r(\bover12\sqrt r)^r\mu D_i$.   For any $x\in\BbbR^r$,
+the ball $B(x,2^{-n-1}\sqrt r)$ is included in a closed cube with side
+length $2^{-n}\sqrt r$, so can contain at the very most $(1+\sqrt r)^r$
+different $x_i$, because different $x_i$ differ by at least $2^{-n}$ in
+some coordinate.   Turning this round,
+$\sum_{i\in I}\chi B_i\le(1+\sqrt r)^r\chi(\BbbR^r)$.
+
+Set $c=2^{r+4}\sqrt r(1+2^{r+1})$.   Then, for each $i\in I$,
+
+$$\eqalignno{2c\lambda^{\partial}_EB_i
+&\ge\min(\mu(B_i\cap E),\mu(B_i\setminus E))^{(r-1)/r}\cr
+\displaycause{474Lb}
+&\ge\min(\mu(D_i\cap E),\mu(D_i\setminus E))^{(r-1)/r}
+\ge(\epsilon\mu D_i)^{(r-1)/r}
+\ge 2^{-n(r-1)}\epsilon.\cr}$$
+
+\noindent So
+
+$$\eqalignno{\mu G(E,n,\epsilon)
+&=2^{-nr}\#(I)
+\le\Bover{2c}{2^n\epsilon}\sum_{i\in I}\lambda^{\partial}_EB_i\cr
+&\le\Bover{2c(1+\sqrt r)^r}{2^n\epsilon}
+  \lambda^{\partial}_E(\BbbR^r)
+\le\Bover{c_1}{2^n\epsilon}\gamma.
+  \text{ \Qed}\cr}$$
+
+\medskip
+
+\quad{\bf (ii)} Now let $\sequencen{E_n}$ be any sequence in $\Cal A$.
+Then we can find a subsequence $\sequencen{E'_n}$ such that whenever
+$n\in\Bbb N$, $D$ is a dyadic cube of side length $2^{-n}$ meeting
+$B(\tbf{0},n)$, and $i$, $j\ge n$, then
+$|\mu(D\cap E'_i)-\mu(D\cap E'_j)|\le\Bover1{(n+1)^{r+2}}\mu D$.   Now
+
+\Centerline{$\mu((E'_n\symmdiff E'_{n+1})\cap B(\tbf{0},n))
+\le\Bover{3\beta_r(n+\sqrt r)^r}{(n+1)^{r+2}}
+   +2^{-n}(n+1)^{r+1}c_1\gamma$}
+
+\noindent whenever $n\ge 1$.   \Prf\ Let $\Cal E$ be
+the set of dyadic cubes of side length $2^{-n}$ meeting $B(\tbf{0},n)$;
+then every member of $\Cal E$ is included in
+$B(\tbf{0},n+2^{-n}\sqrt r)$, so
+$\mu(\bigcup\Cal E)\le\beta_r(n+\sqrt r)^r$.   Let $\Cal E_1$ be the
+collection of those dyadic cubes of side length $2^{-n}$ included in
+$G(E'_n,n,\Bover1{(n+1)^{r+2}})$.   If $D\in\Cal E\setminus\Cal E_1$,
+either $\mu(E'_n\cap D)\le\Bover1{(n+1)^{r+2}}\mu D$ and
+$\mu(E'_{n+1}\cap D)\le\Bover2{(n+1)^{r+2}}\mu D$ and
+$\mu((E'_n\symmdiff E'_{n+1})\cap D)\le\Bover3{(n+1)^{r+2}}\mu D$, or
+$\mu(D\setminus E'_n)\le\Bover1{(n+1)^{r+2}}\mu D$ and
+$\mu(D\setminus E'_{n+1})\le\Bover2{(n+1)^{r+2}}\mu D$ and
+$\mu((E'_n\symmdiff E'_{n+1})\cap D)\le\Bover3{(n+1)^{r+2}}\mu D$.
+So
+
+$$\eqalign{\mu((E'_n\symmdiff E'_{n+1})\cap B(\tbf{0},n))
+&\le\sum_{D\in\Cal E}\mu((E'_n\symmdiff E'_{n+1})\cap D)\cr
+&\le\sum_{D\in\Cal E\setminus\Cal E_1}
+   \mu((E'_n\symmdiff E'_{n+1})\cap D)
+   +\mu(\bigcup\Cal E_1)\cr
+&\le\Bover3{(n+1)^{r+2}}\mu(\bigcup\Cal E)
+   +\mu G(E'_n,n,\Bover1{(n+1)^{r+2}})\cr
+&\le\Bover{3\beta_r(n+\sqrt r)^r}{(n+1)^{r+2}}
+   +2^{-n}(n+1)^{r+2}c_1\gamma,
+\cr}$$
+
+\noindent as claimed.\ \Qed
+
+\medskip
+
+\quad{\bf (iii)} This means that
+$\sum_{i=0}^{\infty}\mu((E'_i\symmdiff E'_{i+1})\cap B(\tbf{0},n))$ is
+finite for each $n\in\Bbb N$, so that if we set
+$E=\bigcup_{i\in\Bbb N}\bigcap_{j\ge i}E'_j$, then
+
+\Centerline{$\mu((E\symmdiff E'_i)\cap B(\tbf{0},n))
+\le\sum_{j=i}^{\infty}\mu((E'_j\symmdiff E'_{j+1})\cap B(\tbf{0},n))
+\to 0$}
+
+\noindent as $i\to\infty$ for every $n\in\Bbb N$.   It follows that
+$\lim_{i\to\infty}\rho_H(E,E'_i)=0$ whenever $\mu H<\infty$ (see the
+proofs of 245Eb and 323Gb).   Thus we have a subsequence
+$\sequence{i}{E'_i}$ of the original sequence $\sequence{i}{E_i}$ which
+is convergent for the topology $\frak T_m$ of convergence in measure.
+By (a), its limit belongs to $\Cal A$.   But since $\frak T_m$ is
+pseudometrizable (245Eb/323Gb), this is enough to show that $A$ is
+compact for $\frak T_m$ (4A2Lf).
+}%end of proof of 474T
+
+\exercises{\leader{474X}{Basic exercises (a)}
+%\spheader 474Xa
+Show that for any $E\subseteq\BbbR^r$ with locally
+finite perimeter, its reduced boundary is a Borel set and its canonical
+outward-normal function is Borel measurable.
+%474G 472Xd
+
+\sqheader 474Xb Show that if $E\subseteq\Bbb R^r$ has finite perimeter
+then either $E$ or its complement has finite measure.
+%474L
+
+\spheader 474Xc(i) Show that if $E\subseteq\BbbR^r$ has locally finite
+perimeter, then $\partial^{\$}E\subseteq\partial E$.
+\Hint{474N(i)-(ii).}   (ii) Show that if $H\subseteq\BbbR^r$ is a
+half-space, as in 474I, then $\partial^{\$}E=\partial E$.
+%474N 474H
+
+\spheader 474Xd Let $E\subseteq\BbbR^r$ be a set with locally finite
+perimeter, and $y\in\partial^{\$}E$.   Show that
+$\lim_{\delta\downarrow 0}
+\Bover{\mu(E\cap B(y,\delta))}{\mu B(y,\delta)}=\Bover12$.
+%474R
+
+\spheader 474Xe In the proof of 474S, use 265E to show that
+
+\Centerline{$\int_{H\cap\partial B(y,\delta)}
+  \varinnerprod{v}{\Bover1{\delta}(x-y)}\nu(dx)
+=-\beta_{r-1}\delta^{r-1}$}
+
+\noindent for {\it every} $\delta>0$.
+%474S
+
+
+\leader{474Y}{Further exercises (a)}
+%\spheader 474Ya
+In 474E, explain how to interpret the pair $(\psi,\lambda^{\partial}_E)$
+as a vector measure (definition: 394O\formerly{3{}93O})
+$\theta_E:\Cal B\to\BbbR^r$,
+where $\Cal B$ is the Borel $\sigma$-algebra of $\BbbR^r$,
+in such a way that we
+have $\int_E\diverg\phi\,d\mu=\int\varinnerprod{\phi}{d\theta_E}$
+for Lipschitz functions $\phi$ with compact support.
+}%end of exercises
+
+\endnotes{
+\Notesheader{474} When we come to the Divergence Theorem itself in the
+next section, it will be nothing but a repetition of Theorem 474E with
+the perimeter measure and the outward-normal function properly
+identified.   The idea of the indirect approach here is to start by
+defining the pair $(\psi_E,\lambda^{\partial}_E)$ as a kind of
+`distributional derivative' of the set $E$.   I take the space to match
+the details with the language of the rest of this treatise, but really
+474E amounts to nothing more than the Riesz representation theorem;
+since the functional $\phi\mapsto\int_E\diverg\phi\,d\mu$ is linear, and
+we restrict attention to sets $E$ for which it is continuous in an
+appropriate sense (and can therefore be extended to arbitrary continuous
+functions $\phi$ with compact support), it must be representable by a
+(vector) measure, as in 474Ya.   For the process to be interesting, we
+have to be able to identify at least some of the appropriate sets $E$
+with their perimeter measures and outward-normal functions.
+Half-spaces are straightforward enough (474I), and 474R tells us what
+the outward-normal functions have to be;  but for a proper description
+of the family of sets with locally finite perimeter we must wait until
+the next section.   I see no quick way to show from the results here
+that (for instance) the union of two sets with finite perimeter again
+has finite perimeter.   And I notice that I have not even shown that balls
+have finite perimeters.   After 475M things should be much clearer.
+
+I have tried to find the shortest path to the Divergence Theorem itself,
+and have not attempted to give `best' results in the intermediate
+material.   In particular, in the isoperimetric inequality 474La, I show
+only that the measure of a set $E$ is controlled by the magnitude of its
+perimeter measure.   Simple scaling arguments show that if there is any
+such control, then it must be of the form
+$\gamma(\mu E)^{(r-1)/r}\le\per E$;  the
+identification of the best constant $\gamma$ as $r\beta_r^{1/r}$, giving
+equality for balls, is the real prize, to which I shall come in 476H.
+Similarly, there is a dramatic jump from the crude estimates in 474N
+to the exact limits in 474Xd and 474S.
+When we say that a set $E$ has a Federer exterior normal at a point $y$,
+we are clearly saying that there is an `approximate' tangent plane at that
+point, as measured by ordinary volume $\mu$.
+474S strengthens this by saying that, when measured by the
+perimeter measure, the boundary of $E$ looks like a hyperplane through $y$
+with normalised $(r-1)$-dimensional measure.   In 475G below we shall
+come to a partial explanation of this.
+
+The laborious arguments of 474C and 
+474H are doing no more than establish the
+geometric invariance of the concepts here, which ought, one would think, to
+be obvious.   The trouble is that I have given
+definitions of inner product and divergence and Lebesgue measure
+in terms of the standard coordinate system of $\BbbR^r$.
+If these were not invariant under isometries they would be far less
+interesting.   But even if we are confident that there must be a result
+corresponding to 474H, I think a little thought is required to identify the
+exact formulae involved in the transformation.
+
+I leave the Compactness Theorem (474T) to the end of the section because
+it is off the line I have chosen to the Divergence Theorem (though it
+can be used to make the proof of 474R more transparent;
+see {\smc Evans \& Gariepy 92}, 5.7.2).
+I have expressed 474T in terms of the topology of convergence in measure
+on the algebra of Lebesgue measurable sets.   But since the perimeter of
+a measurable set $E$ is not altered if we change $E$ by a negligible
+set (474F),
+`perimeter' can equally well be regarded as a function defined on
+the measure algebra, in which case 474T becomes a theorem about the
+usual topology of the measure algebra of Lebesgue measure, as described
+in \S323.
+}%end of notes
+
+\discrpage
+

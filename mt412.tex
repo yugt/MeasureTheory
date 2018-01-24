@@ -1,0 +1,1438 @@
+\frfilename{mt412.tex}
+\versiondate{31.1.05}
+\copyrightdate{2000}
+
+\def\chaptername{Topologies and measures I}
+\def\sectionname{Inner regularity}
+
+\newsection{412}
+
+As will become apparent as the chapter progresses, the concepts
+introduced in \S411 are synergic;  their most interesting manifestations
+are in combinations of various kinds.   Any linear account of their
+properties will be more than usually like a space-filling curve.   But I
+have to start somewhere, and enough results can be expressed in terms of
+inner regularity, more or less by itself, to be a useful beginning.
+
+After a handful of elementary basic facts (412A) and a list of standard
+applications (412B), I give some useful sufficient conditions for inner
+regularity of topological and Baire measures (412D, 412E, 412G), based
+on an important
+general construction (412C).   The rest of the section amounts to a
+review of ideas from Volume 2 and Chapter 32 in the light of the new
+concept here.   I touch on completions (412H), c.l.d.\ versions and
+complete locally determined spaces (412H, 412J, 412L), strictly
+localizable spaces (412I), \imp\ functions (412K, 412M), measure
+algebras (412N), subspaces (412O, 412P), indefinite-integral measures
+(412Q) and product measures (412R-412V),
+  %412R 412S 412T 412U 412V
+with a brief mention of outer regularity (412W);  most of the hard work
+has already been done in Chapters 21 and 25.
+
+\leader{412A}{}\cmmnt{ I begin by repeating a lemma from Chapter
+34, with some further straightforward facts.
+
+\medskip
+
+\noindent}{\bf Lemma} (a) Let $(X,\Sigma,\mu)$ be a measure space and
+$\Cal K$ a family of sets such that
+
+\inset{whenever $E\in\Sigma$ and $\mu E>0$ there is a
+$K\in\Cal K\cap\Sigma$ such that $K\subseteq E$ and $\mu K>0$.}
+
+\noindent Then whenever $E\in\Sigma$ there is a countable disjoint
+family $\familyiI{K_i}$ in $\Cal K\cap\Sigma$ such that $K_i\subseteq E$
+for every $i$ and $\sum_{i\in I}\mu K_i=\mu E$.   If moreover
+
+\inset{($\dagger$) $K\cup K'\in\Cal K$ whenever $K$, $K'$ are disjoint
+members of $\Cal K$,}
+
+\noindent then $\mu$ is inner regular with respect to $\Cal K$.   If
+$\bigcup_{i\in I}K_i\in\Cal K$ for every countable disjoint family
+$\familyiI{K_i}$ in $\Cal K$, then for every $E\in\Sigma$ there is a
+$K\in\Cal K\cap\Sigma$ such that $K\subseteq E$ and $\mu K=\mu E$.
+
+(b) Let $(X,\Sigma,\mu)$ be a measure space, $\Tau$ a
+$\sigma$-subalgebra of $\Sigma$, and $\Cal K$ a family of sets.   If
+$\mu$ is inner regular with respect to $\Tau$ and $\mu\restrp\Tau$ is
+inner regular with respect to $\Cal K$, then $\mu$ is inner regular with
+respect to $\Cal K$.
+
+(c) Let $(X,\Sigma,\mu)$ be a semi-finite measure space and
+$\sequencen{\Cal K_n}$ a sequence of families of sets such that
+$\mu$ is inner regular with respect to $\Cal K_n$ and
+
+\inset{($\ddagger$) if $\sequence{i}{K_i}$ is a
+non-increasing sequence in $\Cal K_n$, then
+$\bigcap_{i\in\Bbb N}K_i\in\Cal K_n$}
+
+\noindent for every $n\in\Bbb N$.   Then $\mu$ is inner regular with
+respect to $\bigcap_{n\in\Bbb N}\Cal K_n$.
+
+\proof{{\bf (a)} This is 342B-342C.
+
+\medskip
+
+{\bf (b)} If $E\in\Sigma$ and $\gamma<\mu E$, there are an $F\in\Tau$
+such that $F\subseteq E$ and $\mu F>\gamma$, and a $K\in\Cal K\cap\Tau$
+such that $K\subseteq F$ and $\mu K\ge\gamma$.
+
+\medskip
+
+{\bf (c)} Suppose that $E\in\Sigma$ and that $0\le\gamma<\mu E$.
+Because $\mu$ is semi-finite, there is an $F\in\Sigma$ such that
+$F\subseteq E$ and $\gamma<\mu F<\infty$ (213A).   Choose
+$\sequence{i}{K_i}$ inductively, as
+follows.   Start with $K_0=F$.   Given that $K_i\in\Sigma$ and
+$\gamma<\mu
+K_i$, then let $n_i\in\Bbb N$ be such that $2^{-n_i}(i+1)$ is an odd
+integer, and choose $K_{i+1}\in\Cal K_{n_i}$ such that
+$K_{i+1}\subseteq K_i$ and $\mu K_{i+1}>\gamma$;
+this will be possible because $\mu$ is
+inner regular with respect to $\Cal K_{n_i}$.   Consider
+$K=\bigcap_{i\in\Bbb N}K_i$.   Then $K\subseteq E$ and
+$\mu K=\lim_{i\to\infty}\mu K_i\ge\gamma$.   But also
+
+\Centerline{$K=\bigcap_{j\in\Bbb N}K_{2^n(2j+1)}\in\Cal K_n$}
+
+\noindent because $\sequence{j}{K_{2^n(2j+1)}}$ is a non-increasing
+sequence in $\Cal K_n$, for each $n$.   So
+$K\in\bigcap_{n\in\Bbb N}\Cal K_n$.   As
+$E$ and $\gamma$ are arbitrary, $\mu$ is inner regular with respect to
+$\bigcap_{n\in\Bbb N}\Cal K_n$.
+}%end of proof of 412A
+
+\vleader{60pt}{412B}{Corollary} Let $(X,\Sigma,\mu)$ be a measure space and
+$\frak T$ a topology on $X$.   Suppose that $\Cal K$ is
+
+\inset{{\it either} the family of Borel subsets of $X$}
+
+\inset{{\it or} the family of closed subsets of $X$}
+
+\inset{{\it or} the family of compact subsets of $X$}
+
+\inset{{\it or} the family of zero sets in $X$,}
+
+\noindent and suppose that whenever $E\in\Sigma$ and $\mu E>0$ there is
+a $K\in\Cal K\cap\Sigma$ such that $K\subseteq E$ and $\mu K>0$.   Then
+$\mu$ is inner regular with respect to $\Cal K$.
+
+\proof{ In every case, $\Cal K$ satisfies the condition ($\dagger$) of
+412Aa.
+}%end of proof of 412B
+
+\leader{412C}{}\cmmnt{ The next lemma provides a particularly useful
+method of proving that measures are inner regular with respect to
+`well-behaved' families of sets.
+
+\medskip
+
+\noindent}{\bf Lemma} Let $(X,\Sigma,\mu)$ be a semi-finite measure
+space, and suppose that $\Cal A\subseteq\Sigma$ is such that
+
+\inset{$\emptyset\in\Cal A\subseteq\Sigma$,
+
+$X\setminus A\in\Cal A$ for every $A\in\Cal A$.}
+
+\noindent Let $\Tau$ be the $\sigma$-subalgebra of $\Sigma$ generated by 
+$\Cal A$.
+Let $\Cal K$ be a family of subsets of $X$ such that
+
+\inset{($\dagger$) $K\cup K'\in\Cal K$ whenever $K$, $K'\in\Cal K$,
+
+($\ddagger$) $\bigcap_{n\in\Bbb N}K_n\in\Cal K$ for every
+sequence $\sequencen{K_n}$ in $\Cal K$,
+
+whenever $A\in\Cal A$, $F\in\Sigma$ and $\mu(A\cap F)>0$, there
+is a $K\in\Cal K\cap\Tau$ such that $K\subseteq A$ and
+$\mu(K\cap F)>0$.}
+
+\noindent Then $\mu\restrp\Tau$ is inner regular with respect to $\Cal K$.
+
+\proof{{\bf (a)} Write $\frak A$ for the measure algebra of
+$(X,\Sigma,\mu)$, and
+$\Cal L=\Cal K\cap\Tau$, so that $\Cal L$ also is closed under finite
+unions and countable intersections.   Set
+
+\Centerline{$\Cal H
+=\{E:E\in\Sigma,\,\sup_{L\in\Cal L,L\subseteq E}L^{\ssbullet}
+    =E^{\ssbullet}\}$ in $\frak A$,}
+
+\Centerline{$\Tau'=\{E:E\in\Cal H,\,X\setminus E\in\Cal H\}$,}
+
+\noindent so that the last two conditions tell us that
+$\Cal A\subseteq\Tau'$.
+
+\medskip
+
+{\bf (b)} The intersection of any sequence in $\Cal H$ belongs to
+$\Cal H$.   \Prf\ Let $\sequencen{H_n}$ be a sequence in $\Cal H$ with
+intersection $H$.   Write $A_n$ for
+$\{L^{\ssbullet}:L\in\Cal L,\,L\subseteq H_n\}
+\subseteq\frak A$ for each $n\in\Bbb N$.   Since $\mu$ is semi-finite,
+$\frak A$ is \wsid\ (322F).   As $A_n$ is upwards-directed and
+$\sup A_n=H_n^{\ssbullet}$ for each $n\in\Bbb N$,
+
+$$\eqalignno{H^{\ssbullet}
+&=\inf_{n\in\Bbb N}H_n^{\ssbullet}\cr
+\displaycause{because $F\mapsto F^{\ssbullet}:\Sigma\to\frak A$ is
+sequentially order-continuous, by 321H}
+&=\inf_{n\in\Bbb N}\sup A_n
+=\sup\{\inf_{n\in\Bbb N}a_n:a_n\in A_n\text{ for every }n\in\Bbb N\}\cr
+\displaycause{316H(iv)}
+&=\sup\{(\bigcap_{n\in\Bbb N}L_n)^{\ssbullet}:L_n\in\Cal L,
+  \,L_n\subseteq H_n\text{ for every }n\in\Bbb N\}\cr
+&\Bsubseteq\{L^{\ssbullet}:L\in\Cal L,\,L\subseteq H\}\cr
+\displaycause{by ($\ddagger$)}
+&\Bsubseteq H^{\ssbullet},\cr}$$
+
+\noindent and $H\in\Cal H$.\ \Qed
+
+\medskip
+
+{\bf (c)} The union of any sequence in $\Cal H$ belongs to $\Cal H$.
+\Prf\ If $\sequencen{H_n}$ is a sequence in $\Cal H$
+with union $H$ then
+
+\Centerline{$\sup_{L\in\Cal L,L\subseteq H}L^{\ssbullet}
+\Bsupseteq\sup_{n\in\Bbb N}\sup_{L\in\Cal L,L\subseteq E_n}
+  L^{\ssbullet}
+=\sup_{n\in\Bbb N}H_n^{\ssbullet}
+=H^{\ssbullet}$,}
+
+\noindent so $H\in\Cal H$.\ \Qed
+
+\medskip
+
+{\bf (d)} $\Tau'$ is a $\sigma$-subalgebra of $\Sigma$.
+\Prf\ (i) $\emptyset$ and $X$ belong to $\Cal A\subseteq\Cal H$, so
+$\emptyset\in\Tau'$.
+(ii) Obviously $X\setminus E\in\Tau'$ whenever $E\in\Tau'$.
+(iii) If $\sequencen{E_n}$ is a sequence in $\Tau'$ with union $E$ then
+$E\in\Cal H$, by (c);  but also
+$X\setminus E=\bigcap_{n\in\Bbb N}(X\setminus E_n)$ belongs to $\Cal H$,
+by (b).   So $E\in\Tau'$.\ \Qed
+
+\medskip
+
+{\bf (e)} Accordingly $\Tau\subseteq\Tau'$, and
+$E^{\ssbullet}=\sup_{L\in\Cal L,L\subseteq E}L^{\ssbullet}$ for every
+$E\in\Tau$.   It follows at once that if $E\in\Tau$ and $\mu E>0$, there
+must be an $L\in\Cal L$ such that $L\subseteq E$ and $\mu L>0$;  since
+($\dagger$) is true, and $\Cal L\subseteq\Tau$, we can apply 412Aa to
+see that $\mu\restrp\Tau$ is inner regular with respect to $\Cal L$,
+therefore with respect to $\Cal K$.
+}%end of proof of 412C
+
+\leader{412D}{}\cmmnt{ As corollaries of the last lemma I give
+two-and-a-half basic theorems.
+
+\medskip
+
+\noindent}{\bf Theorem} Let $(X,\frak T)$ be a topological space and
+$\mu$ a semi-finite Baire measure on $X$.   Then $\mu$ is inner regular
+with respect to the zero sets.
+
+\proof{ Write $\Sigma$ for the Baire $\sigma$-algebra of $X$, the domain
+of $\mu$, $\Cal K$ for the family of zero sets, and $\Cal A$ for
+$\Cal K\cup\{X\setminus K:K\in\Cal K\}$.   Since the union of two zero
+sets is a zero set (4A2C(b-ii)), the intersection of a sequence of zero
+sets is a zero set (4A2C(b-iii)), and the complement of a zero set is
+the union of a sequence of zero sets (4A2C(b-vi)), the conditions of
+412C are satisfied;  and as the $\sigma$-algebra generated by $\Cal A$
+is just $\Sigma$, $\mu$ is inner regular with respect to $\Cal K$.
+}%end of proof of 412D
+
+\leader{412E}{Theorem} Let $(X,\frak T)$ be a perfectly normal
+topological space\cmmnt{ (e.g., any metrizable space)}.   Then any
+semi-finite Borel measure on $X$ is inner regular with respect to the
+closed sets.
+
+\proof{ Because the Baire and Borel $\sigma$-algebras are the same
+(4A3Kb), this is a special case of 412D.
+}%end of proof of 412E
+
+\leader{412F}{Lemma} Let $(X,\Sigma,\mu)$ be a measure space and
+$\frak T$ a topology on $X$ such that $\mu$ is effectively locally
+finite with respect to $\frak T$.   Then
+
+\Centerline{$\mu E=\sup\{\mu(E\cap G):G$ is a measurable open set of
+finite measure$\}$}
+
+\noindent for every $E\in\Sigma$.
+
+\proof{ Apply 412Aa with $\Cal K$ the family of subsets of measurable
+open sets of finite measure.
+}%end of proof of 412F
+
+\vleader{72pt}{412G}{Theorem} Let $(X,\Sigma,\mu)$ be a measure space
+with a
+topology $\frak T$ such that $\mu$ is effectively locally finite with
+respect to $\frak T$ and $\Sigma$ is the $\sigma$-algebra generated by
+$\frak T\cap\Sigma$.   If
+
+\Centerline{$\mu G=\sup\{\mu F:F\in\Sigma$ is closed, $F\subseteq G\}$}
+
+\noindent for every measurable open set $G$ of finite measure, then
+$\mu$ is inner regular with respect to the closed sets.
+
+\proof{ In
+412C, take $\Cal K$ to be the family of measurable closed subsets of
+$X$, and $\Cal A$ to be the family of measurable sets which are
+{\it either} open {\it or} closed.   If $G\in\Sigma\cap\frak T$,
+$F\in\Sigma$ and $\mu(G\cap F)>0$, then there is an open set $H$ of
+finite measure such that
+$\mu(H\cap G\cap F)>0$, because $\mu$ is effectively locally finite;
+now there is a $K\in\Cal K$ such that $K\subseteq H\cap G$ and
+$\mu K>\mu(H\cap G)-\mu(H\cap G\cap F)$, so that $\mu(K\cap F)>0$.
+This is the only non-trivial item in the list of hypotheses in 412C, so
+we can conclude that $\mu\restrp\Tau$ is inner regular with respect to
+$\Cal K$, where $\Tau$ is the $\sigma$-algebra generated by $\Cal A$;
+but of course this is just $\Sigma$.
+}%end of proof of 412G
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} There is a similar result in 416F(iii) below.
+}%end of comment
+
+\leader{412H}{Proposition} Let $(X,\Sigma,\mu)$ be a measure space and
+$\Cal K$ a family of sets.
+
+(a) If $\mu$ is inner regular with respect to
+$\Cal K$, so are its completion $\hat\mu$\cmmnt{ (212C)} and
+c.l.d.\ version $\tilde\mu$\cmmnt{ (213E)}.
+
+(b) Now suppose that
+
+\inset{($\ddagger$) $\bigcap_{n\in\Bbb N}K_n\in\Cal K$ whenever
+$\sequencen{K_n}$ is a non-increasing sequence in $\Cal K$.}
+
+\noindent If {\it either} $\hat\mu$ is inner regular with respect to
+$\Cal K$ {\it or} $\mu$ is semi-finite and $\tilde\mu$ is inner
+regular with respect to $\Cal K$, then $\mu$ is inner regular with
+respect to $\Cal K$.
+
+\proof{{\bf (a)} If $F$ belongs to the domain of $\hat\mu$, then there
+is an $E\in\Sigma$ such that $E\subseteq F$ and
+$\hat\mu(F\setminus E)=0$.
+So if $0\le\gamma<\hat\mu F=\mu E$, there is a $K\in\Cal K\cap\Sigma$
+such that $K\subseteq E\subseteq F$ and $\hat\mu K=\mu K\ge\gamma$.
+
+If $H$ belongs to the domain of $\tilde\mu$ and
+$0\le\gamma<\tilde\mu H$, there is an $E\in\Sigma$ such that
+$\mu E<\infty$ and $\hat\mu(E\cap H)>\gamma$ (213D).   Now there is a
+$K\in\Cal K\cap\Sigma$ such that
+$K\subseteq E\cap H$ and $\mu K\ge\gamma$.   As $\mu K<\infty$,
+$\tilde\mu K=\mu K\ge\gamma$.
+
+\medskip
+
+{\bf (b)} Write $\check\mu$ for whichever of $\hat\mu$, $\tilde\mu$ is
+supposed to be inner regular with respect to $\Cal K$.   Then
+$\check\mu$ is inner regular with respect to $\Sigma$ (212Ca, 213Fc), so
+is inner regular with respect to $\Cal K\cap\Sigma$ (412Ab).   Also
+$\check\mu$ extends $\mu$ (212D, 213Hc).
+Take $E\in\Sigma$ and $\gamma<\mu E=\check\mu E$.   Then there is a
+$K\in\Cal K\cap\Sigma$ such that $K\subseteq E$ and
+$\gamma<\check\mu K=\mu K$.   As $E$ and $\gamma$ are arbitrary, $\mu$
+is inner regular with respect to $\Cal K$.
+}%end of proof of 412H
+
+\leader{412I}{Lemma} Let $(X,\Sigma,\mu)$ be a strictly localizable
+measure space and $\Cal K$ a family of sets such that whenever
+$E\in\Sigma$ and $\mu E>0$ there is a $K\in\Cal K\cap\Sigma$ such that
+$K\subseteq E$ and $\mu K>0$.
+
+(a) There is a decomposition $\familyiI{X_i}$ of $X$ such that at most
+one $X_i$ does not belong to $\Cal K$, and that exceptional one, if any,
+is negligible.
+
+(b) There is a disjoint family $\Cal L\subseteq\Cal K\cap\Sigma$ such
+that $\mu^*A=\sum_{L\in\Cal L}\mu^*(A\cap L)$ for every $A\subseteq X$.
+
+(c) If $\mu$ is $\sigma$-finite then the family $\familyiI{X_i}$ of (a)
+and the set $\Cal L$ of (b) can be taken to be countable.
+
+\proof{{\bf (a)} Let $\family{j}{J}{E_j}$ be any decomposition of $X$.
+For each $j\in J$, let $\Cal K_j$ be a maximal disjoint subset of
+
+\Centerline{$\{K:K\in\Cal K\cap\Sigma,\,K\subseteq E_j,\,\mu K>0\}$.}
+
+\noindent Because $\mu E_j<\infty$, $\Cal K_j$ must be countable.   Set
+$E_j'=E_j\setminus\bigcup\Cal K_j$.   By the maximality of $\Cal K_j$,
+$E'_j$ cannot include any non-negligible set in $\Cal K\cap\Sigma$;  but
+this means that $\mu E'_j=0$.   Set $X'=\bigcup_{j\in J}E'_j$.   Then
+
+\Centerline{$\mu X'=\sum_{j\in J}\mu(X'\cap E_j)
+=\sum_{j\in J}\mu E'_j=0$.}
+
+Note that if $j$, $j'\in J$ are distinct, $K\in\Cal K_j$ and
+$K'\in\Cal K_{j'}$, then $K\cap K'=\emptyset$;  thus
+$\Cal L=\bigcup_{j\in J}\Cal K_j$ is disjoint.
+Let $\familyiI{X_i}$ be any indexing of $\{X'\}\cup\Cal L$.   This is a
+partition (that is, disjoint cover) of $X$ into sets of finite measure.
+If $E\subseteq X$ and
+$E\cap X_i\in\Sigma$ for every $i\in I$, then for every $j\in J$
+
+\Centerline{$E\cap E_j
+=(E\cap X'\cap E_j)\cup\bigcup_{K\in\Cal K_j}E\cap K$}
+
+\noindent belongs to $\Sigma$, so that $E\in\Sigma$ and
+
+\Centerline{$\mu E=\sum_{j\in J}\mu(E\cap E_j)
+=\sum_{j\in J}\sum_{K\in\Cal K_j}\mu(E\cap K)
+=\sum_{i\in I}\mu(E\cap X_i)$.}
+
+\noindent Thus $\familyiI{X_i}$ is a decomposition of $X$, and it is of
+the right type because every $X_i$ but one belongs to
+$\Cal L\subseteq\Cal K$.
+
+\medskip
+\wheader{412I}{0}{0}{0}{36pt}
+
+{\bf (b)} If now $A\subseteq X$ is any set,
+
+\Centerline{$\mu^*A=\mu_AA=\sum_{i\in I}\mu_A(A\cap X_i)
+=\sum_{i\in I}\mu^*(A\cap X_i)$}
+
+\noindent by 214Ia, writing $\mu_A$ for the subspace measure on $A$.
+So we have
+
+\Centerline{$\mu^*A=\mu^*(A\cap X')+\sum_{L\in\Cal L}\mu^*(A\cap L)
+=\sum_{L\in\Cal L}\mu^*(A\cap L)$,}
+
+\noindent while $\Cal L\subseteq\Cal K$ is disjoint.
+
+\medskip
+
+{\bf (c)} If $\mu$ is $\sigma$-finite we can take $J$ to be countable,
+so that $I$ and $\Cal L$ will also be countable.
+}%end of proof of 412I
+
+\leader{412J}{Proposition} Let $(X,\Sigma,\mu)$ be a complete locally
+determined measure space, and $\Cal K$ a family of sets such that $\mu$
+is inner regular with respect to $\Cal K$.
+
+(a) If $E\subseteq X$ is such that $E\cap K\in\Sigma$ for every
+$K\in\Cal K\cap\Sigma$, then $E\in\Sigma$.
+
+(b) If $E\subseteq X$ is such that $E\cap K$ is negligible for every
+$K\in\Cal K\cap\Sigma$, then $E$ is negligible.
+
+(c) For any $A\subseteq X$,
+$\mu^*A=\sup_{K\in\Cal K\cap\Sigma}\mu^*(A\cap K)$.
+
+(d) Let $f$ be a non-negative $[0,\infty]$-valued function defined on a
+subset of $X$.   If $\int_Kf$ is defined in $[0,\infty]$ for every
+$K\in\Cal K$, then $\int f$ is defined and equal to
+$\sup_{K\in\Cal K}\int_Kf$.
+
+(e) If $f$ is a $\mu$-integrable function and $\epsilon>0$, there is a
+$K\in\Cal K$ such that $\int_{X\setminus K}|f|\le\epsilon$.
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} In (c), we must interpret $\sup\emptyset$ as $0$
+if $\Cal K\cap\Sigma=\emptyset$.
+}
+
+\proof{{\bf (a)} If $F\in\Sigma$ and $\mu F<\infty$, then $E\cap
+F\in\Sigma$.   \Prf\ If $\mu F=0$, this is trivial, because $\mu$ is
+complete and $E\cap F$ is negligible.   Otherwise, there is a sequence
+$\sequencen{K_n}$ in $\Cal K\cap\Sigma$ such that $K_n\subseteq F$ for
+each $n$ and $\sup_{n\in\Bbb N}\mu K_n=\mu F$.   Now
+$E\cap F\setminus\bigcup_{n\in\Bbb N}K_n$ is negligible, therefore
+measurable,
+while $E\cap K_n$ is measurable for every $n\in\Bbb N$, by hypothesis;
+so $E\cap F$ is measurable.\ \QeD\   As $\mu$ is locally determined,
+$E\in\Sigma$, as claimed.
+
+\medskip
+
+{\bf (b)} By (a), $E\in\Sigma$;  and because $\mu$ is inner regular with
+respect to $\Cal K$, $\mu E$ must be $0$.
+
+\medskip
+
+{\bf (c)} Let $\mu_A$ be the subspace measure on $A$.   Because $\mu$ is
+complete and locally determined, $\mu_A$ is semi-finite (214Id).   So if
+$0\le\gamma<\mu^*A=\mu_AA$, there is an $H\subseteq A$ such that
+$\mu_AH$ is defined, finite and greater than $\gamma$.   Let
+$E\in\Sigma$ be a
+measurable envelope of $H$ (132Ee), so that $\mu E=\mu^*H>\gamma$.
+Then there is a $K\in\Cal K\cap\Sigma$ such that $K\subseteq E$ and
+$\mu K\ge\gamma$.   In this case
+
+\Centerline{$\mu^*(A\cap K)\ge\mu^*(H\cap K)=\mu(E\cap K)
+=\mu K\ge\gamma$.}
+
+\noindent As $\gamma$ is arbitrary,
+
+\Centerline{$\mu^*A\le\sup_{K\in\Cal K\cap\Sigma}\mu^*(A\cap K)$;}
+
+\noindent but the reverse inequality is trivial, so we have the result.
+
+\medskip
+
+{\bf (d)} Applying (b) with $E=X\setminus\dom f$, we see that $f$ is
+defined almost everywhere in $X$.   Applying (a) with
+$E=\{x:x\in\dom f,\,f(x)\ge\alpha\}$ for each $\alpha\in\Bbb R$, we see
+that $f$ is measurable.   So $\int f$ is defined in $[0,\infty]$, and of
+course $\int f\ge\sup_{K\in\Cal K}\int_Kf$.   If $\gamma<\int f$, there
+is a non-negative simple function $g$ such that $g\leae f$ and
+$\int g>\gamma$;   taking $E=\{x:g(x)>0\}$, there is a $K\in\Cal K$ such
+that $K\subseteq E$ and
+$\mu(E\setminus K)\|g\|_{\infty}\le\int g-\gamma$, so that
+$\int_Kf\ge\int_Kg\ge\gamma$.   As $\gamma$ is arbitrary,
+$\int f=\sup_{K\in\Cal K}\int_Kf$.
+
+\medskip
+
+{\bf (e)} By (d), there is a $K\in\Cal K$ such that
+$\int_K|f|\ge\int|f|-\epsilon$.
+}%end of proof of 412J
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} See also 413F below.
+}%end of comment
+
+\leader{412K}{Proposition} Let $(X,\Sigma,\mu)$ be a complete locally
+determined measure space, $(Y,\Tau,\nu)$ a measure space and
+$f:X\to Y$ a function.   Suppose that $\Cal K\subseteq\Tau$ is such
+that
+
+\inset{(i) $\nu$ is inner regular with respect to $\Cal K$;
+
+(ii) $f^{-1}[K]\in\Sigma$ and $\mu f^{-1}[K]=\nu K$ for every
+$K\in\Cal K$;
+
+(iii) whenever $E\in\Sigma$ and $\mu E>0$ there is a $K\in\Cal K$
+such that $\nu K<\infty$ and $\mu(E\cap f^{-1}[K])>0$.}
+
+\noindent Then $f$ is \imp\ for $\mu$ and $\nu$.
+
+\proof{{\bf (a)} If $F\in\Tau$, $E\in\Sigma$ and $\mu E<\infty$, then
+$E\cap f^{-1}[F]\in\Sigma$.   \Prf\ Let $H_1$, $H_2\in\Sigma$ be
+measurable envelopes for $E\cap f^{-1}[F]$ and $E\setminus f^{-1}[F]$
+respectively.   \Quer\ If $\mu(H_1\cap H_2)>0$, there is a
+$K\in\Cal K$ such that $\nu K$ is finite and $\mu(H_1\cap H_2\cap
+f^{-1}[K])>0$.   Because $\nu$ is inner regular with respect to
+$\Cal K$, there are $K_1$, $K_2\in\Cal K$ such that $K_1\subseteq
+K\cap F$, $K_2\subseteq K\setminus F$ and
+
+$$\eqalign{\nu K_1+\nu K_2
+&>\nu(K\cap F)+\nu(K\setminus F)-\mu(H_1\cap H_2\cap f^{-1}[K]) \cr
+&=\nu K-\mu(H_1\cap H_2\cap f^{-1}[K]).\cr}$$
+
+\noindent Now
+
+\Centerline{$\mu(H_1\cap f^{-1}[K_2])
+=\mu^*(E\cap f^{-1}[F]\cap f^{-1}[K_2])=0$,}
+
+\Centerline{$\mu(H_2\cap f^{-1}[K_1])
+=\mu^*(E\cap f^{-1}[K_1]\setminus f^{-1}[F])=0$,}
+
+\noindent so
+$\mu(H_1\cap H_2\cap f^{-1}[K_1\cup K_2])=0$ and
+
+$$\eqalign{\mu(H_1\cap H_2\cap f^{-1}[K])
+&\le\mu(f^{-1}[K]\setminus f^{-1}[K_1\cup K_2])\cr
+&=\mu f^{-1}[K]-\mu f^{-1}[K_1]-\mu f^{-1}[K_2]\cr
+&=\nu K-\nu K_1-\nu K_2
+<\mu(H_1\cap H_2\cap f^{-1}[K]),\cr}$$
+
+\noindent which is absurd.\ \Bang
+
+Now $(E\cap H_1)\setminus(E\cap f^{-1}[F])\subseteq H_1\cap H_2$ is
+negligible, therefore measurable (because $\mu$ is complete), and
+$E\cap f^{-1}[F]\in\Sigma$, as claimed.\ \Qed
+
+\medskip
+
+{\bf (b)} It follows (because $\mu$ is locally determined) that
+$f^{-1}[F]\in\Sigma$ for every $F\in\Tau$.
+
+\medskip
+
+{\bf (c)} If $F\in\Tau$ and $\nu F=0$ then $\mu f^{-1}[F]=0$.
+\Prf\Quer\ Otherwise, there is a $K\in\Cal K$ such that $\nu
+K<\infty$ and
+
+\Centerline{$0<\mu(f^{-1}[F]\cap f^{-1}[K])=\mu f^{-1}[F\cap K]$.}
+
+\noindent  Let $K'\in\Cal K$ be such that $K'\subseteq K\setminus F$
+and $\nu K'>\nu K-\mu f^{-1}[F\cap K]$.   Then
+$f^{-1}[K']\cap f^{-1}[F\cap K]=\emptyset$, so
+
+\Centerline{$\nu K
+=\mu f^{-1}[K]
+\ge\mu f^{-1}[K']+\mu f^{-1}[F\cap K]
+>\nu K'+\nu K-\nu K'=\nu K$,}
+
+\noindent which is absurd.\ \Bang\Qed
+
+\medskip
+
+{\bf (d)} Finally, $\mu f^{-1}[F]=\nu F$ for every $F\in\Tau$.
+\Prf\ Let $\familyiI{K_i}$ be a countable disjoint family in $\Cal K$
+such that $K_i\subseteq F$ for every $i$ and
+$\sum_{i\in I}\nu K_i=\nu F$ (412Aa).   Set
+$F'=F\setminus\bigcup_{i\in I}K_i$.
+Then
+
+\Centerline{$\mu f^{-1}[F]
+=\mu f^{-1}[F']
+ +\sum_{i\in I}\mu f^{-1}[K_i]
+=\mu f^{-1}[F']
+ +\sum_{i\in I}\nu K_i
+=\mu f^{-1}[F']+\nu F$.}
+
+\noindent If $\nu F=\infty$ then surely $\mu f^{-1}[F]=\infty=\nu F$.
+Otherwise, $\nu F'=0$ so $\mu f^{-1}[F']=0$ (by (c)) and again
+$\mu f^{-1}[F]=\nu F$.\ \Qed
+
+Thus $f$ is \imp.
+}%end of proof of 412K
+
+\leader{412L}{Corollary} Let $X$ be a set and $\Cal K$ a family of
+subsets of $X$.   Suppose
+that $\mu$ and $\nu$ are two complete locally determined measures on $X$,
+with domains including $\Cal K$, agreeing on $\Cal K$, and both inner
+regular with respect to $\Cal K$.   Then they are
+identical\cmmnt{ (and, in particular, have the same domain)}.
+
+\proof{ Apply 412K with $X=Y$ and $f$ the identity function to see that
+$\mu$ extends $\nu$;  similarly, $\nu$ extends $\mu$ and the two
+measures are the same.
+}%end of proof of 412L
+
+\leader{412M}{Corollary} Let $(X,\Sigma,\mu)$ be a complete probability
+space, $(Y,\Tau,\nu)$ a probability space and $f:X\to Y$ a function.
+Suppose that whenever $F\in\Tau$ and $\nu F>0$ there is a $K\in\Tau$
+such that $K\subseteq F$, $\nu K>0$, $f^{-1}[K]\in\Sigma$ and
+$\mu f^{-1}[K]\ge\nu K$.   Then $f$ is \imp.
+
+\proof{ Set
+$\Cal K^*=\{K:K\in\Tau,\,f^{-1}[K]\in\Sigma,\,\mu f^{-1}[K]\ge\nu K\}$.
+Then $\Cal K^*$ is closed under countable
+disjoint unions and includes $\Cal K$, so for every $F\in\Tau$ there is
+a $K\in\Cal K^*$ such that $K\subseteq F$ and $\nu K=\nu F$, by 412Aa.
+But this means that $\mu f^{-1}[K]=\nu K$ for every $K\in\Cal K^*$.
+\Prf\ There is a $K'\in\Cal K^*$ such that $K'\subseteq Y\setminus K$
+and $\nu K'=1-\nu K$;  but in this case
+
+\Centerline{$\mu f^{-1}[K']+\mu f^{-1}[K]\le 1=\nu K'+\nu K$,}
+
+\noindent so $\mu f^{-1}[K]$ must be equal to $\nu K$.\ \QeD\  Moreover,
+there is a $K^*\in\Cal K^*$ such that $\nu K^*=\nu Y=1$, so
+$\mu f^{-1}[K^*]=\mu X=1$ and
+$\mu(E\cap f^{-1}[K^*])>0$ whenever $\mu E>0$.   Applying 412K to
+$\Cal K^*$ we have the result.
+}%end of proof of 412M
+
+\vleader{48pt}{412N}{Lemma} Let $(X,\Sigma,\mu)$ be a measure space and
+$\Cal K$ a family of subsets of $X$ such that $\mu$ is inner regular
+with respect to $\Cal K$.   Then
+
+\Centerline{$E^{\ssbullet}
+=\sup\{K^{\ssbullet}:K\in\Cal K\cap\Sigma,\,K\subseteq E\}$}
+
+\noindent in the measure algebra $\frak A$ of $\mu$, for every
+$E\in\Sigma$.
+In particular, $\{K^{\ssbullet}:K\in\Cal K\cap\Sigma\}$ is order-dense
+in $\frak A$;  and if $\Cal K$ is closed under finite unions, then
+$\{K^{\ssbullet}:K\in\Cal K\cap\Sigma\}$ is topologically dense in
+$\frak A$ for the measure-algebra topology.
+
+\proof{ \Quer\ If $E^{\ssbullet}
+\ne\sup\{K^{\ssbullet}:K\in\Cal K\cap\Sigma,\,K\subseteq E\}$, there is
+a non-zero $a\in\frak A$ such
+that $a\Bsubseteq E^{\ssbullet}\Bsetminus K^{\ssbullet}$ whenever
+$K\in\Cal K\cap\Sigma$ and $K\subseteq E$.   Express $a$ as
+$F^{\ssbullet}$ where
+$F\subseteq E$.   Then $\mu F>0$, so there is a $K\in\Cal K\cap\Sigma$
+such that $K\subseteq F$ and $\mu K>0$.   But in this case
+$0\ne K^{\ssbullet}\Bsubseteq a$, while $K\subseteq E$.\ \BanG\
+
+It follows at once that $D=\{K^{\ssbullet}:K\in\Cal K\cap\Sigma\}$ is
+order-dense.   If $\Cal K$ is closed under finite unions, and
+$a\in\frak A$, then $D_a=\{d:d\in D$, $d\Bsubseteq a\}$ is
+upwards-directed and has supremum $a$, so
+$a\in\overline{D}_a\subseteq\overline{D}$ (323D(a-ii)).
+
+}%end of proof of 412N
+
+\leader{412O}{Lemma} Let $(X,\Sigma,\mu)$ be a measure space and
+$\Cal K$ a family of subsets of $X$ such that $\mu$ is inner regular
+with respect to $\Cal K$.
+
+(a) If $E\in\Sigma$, then the subspace measure
+$\mu_E$\cmmnt{ (131B)} is inner regular with respect to $\Cal K$.
+
+(b) Let $Y\subseteq X$ be any set such that the
+subspace measure $\mu_Y$\cmmnt{ (214B)} is semi-finite.   Then
+$\mu_Y$ is inner regular with respect to
+$\Cal K_Y=\{K\cap Y:K\in\Cal K\}$.
+
+\proof{{\bf (a)} This is elementary.
+
+\medskip
+
+{\bf (b)} Suppose that $F$ belongs to the domain $\Sigma_Y$ of
+$\mu_Y$ and
+$0\le\gamma<\mu_YF$.   Because $\mu_Y$ is semi-finite there is an
+$F'\in\Sigma_Y$ such that $F'\subseteq F$ and $\gamma<\mu_YF'<\infty$.
+Let $G\in\Sigma$ be such that $F'=G\cap Y$, and let $E\subseteq G$
+be a measurable envelope for $F'$ with respect to $\mu$, so that
+
+\Centerline{$\mu E=\mu^*F'=\mu_YF'>\gamma$.}
+
+\noindent There is a $K\in\Cal K\cap\Sigma$ such that $K\subseteq E$ and
+$\mu K\ge\gamma$, in which case $K\cap Y\in\Cal K_Y\cap\Sigma_Y$ and
+
+\Centerline{$\mu_Y(K\cap Y)=\mu^*(K\cap Y)=\mu^*(K\cap F')
+=\mu(K\cap E)=\mu K\ge\gamma$.}
+
+\noindent As $F$ and $\gamma$ are arbitrary, $\mu_Y$ is inner regular
+with respect to $\Cal K_Y$.
+}%end of proof of 412O
+
+\cmmnt{\medskip
+
+\noindent{\bf Remark} Recall from 214Ic that if $(X,\Sigma,\mu)$ has
+locally determined negligible sets (in particular, is either strictly
+localizable or complete and locally
+determined), then all its subspaces are semi-finite.
+}%end of comment
+
+\leader{412P}{Proposition} Let $(X,\Sigma,\mu)$ be a measure space,
+$\frak T$ a topology on $X$ and $Y$ a subset of $X$;  write $\frak T_Y$
+for the subspace topology of $Y$ and $\mu_Y$ for the subspace measure on
+$Y$.   Suppose that {\it either} $Y\in\Sigma$ {\it or}
+$\mu_Y$ is semi-finite.
+
+(a) If $\mu$ is a topological measure, so is $\mu_Y$.
+
+(b) If $\mu$ is inner regular with respect to the Borel sets, so is
+$\mu_Y$.
+
+(c) If $\mu$ is inner regular with respect to the closed sets, so is
+$\mu_Y$.
+
+(d) If $\mu$ is inner regular with respect to the zero sets, so is
+$\mu_Y$.
+
+(e) If $\mu$ is effectively locally finite, so is $\mu_Y$.
+
+\proof{(a) is an immediate consequence of the definitions of `subspace
+measure', `subspace topology' and `topological measure'.   The other
+parts follow directly from 412O if we recall that
+
+(i) a subset of $Y$ is Borel for $\frak T_Y$ whenever it is expressible
+as $Y\cap E$ for some Borel set $E\subseteq X$ (4A3Ca);
+
+(ii) a subset of $Y$ is closed in $Y$ whenever it is expressible as
+$Y\cap F$ for some closed set $F\subseteq X$;
+
+(iii) a subset of $Y$ is a zero set in $Y$ whenever it is expressible as
+$Y\cap F$ for some zero set $F\subseteq X$ (4A2C(b-v));
+
+(iv) $\mu$ is effectively locally finite iff it is inner regular with
+respect to subsets of open sets of finite measure.
+}%end of proof of 412P
+
+\leader{412Q}{Proposition} Let $(X,\Sigma,\mu)$ be a measure space, and
+$\nu$ an indefinite-integral measure over $\mu$\cmmnt{ (definition:
+234J\formerly{2{}34B})}.   If $\mu$ is inner regular with respect to a family $\Cal K$ of
+sets, so is $\nu$.
+
+\proof{ Because $\mu$ and its completion $\hat\mu$ give the same
+integrals, $\nu$ is an indefinite-integral measure over $\hat\mu$
+(234Ke);  and
+as $\hat\mu$ is still inner regular with respect to $\Cal K$ (412Ha), we
+may suppose that $\mu$ itself is complete.   Let $f$ be a
+Radon-Nikod\'ym derivative of $\nu$ with respect to $\mu$;  by
+234Ka\formerly{2{}34C}, we
+may suppose that $f:X\to\coint{0,\infty}$ is $\Sigma$-measurable.
+
+Suppose that $F\in\dom\nu$ and that
+$\gamma<\nu F$.   Set $G=\{x:f(x)>0\}$, so that $F\cap G\in\Sigma$
+(234La\formerly{2{}34D}).   For $n\in\Bbb N$, set
+$H_n=\{x:x\in F,\,2^{-n}\le f(x)\le 2^n\}$, so that $H_n\in\Sigma$ and
+
+\Centerline{$\nu F
+=\int f\times\chi F d\mu
+=\lim_{n\to\infty}\int f\times\chi H_nd\mu$.}
+
+\noindent Let $n\in\Bbb N$ be such that
+$\int f\times\chi H_nd\mu>\gamma$.
+
+If $\mu H_n=\infty$, there is a $K\in\Cal K$ such that $K\subseteq H_n$
+and $\mu K\ge 2^n\gamma$, so that
+$\nu K\ge\gamma$.   If $\mu H_n$ is finite, there is a
+$K\in\Cal K$ such that
+$2^n(\mu H_n-\mu K)\le\int f\times\chi H_nd\mu-\gamma$, so that
+$\int f\times\chi(H_n\setminus K)d\mu+\gamma\le\int f\times\chi H_nd\mu$ and
+$\nu K=\int f\times\chi K\,d\mu\ge\gamma$.
+Thus in either case we have a $K\in\Cal K$ such that $K\subseteq F$ and
+$\nu K\ge\gamma$;  as $F$ and $\gamma$ are arbitrary, $\nu$ is inner
+regular with respect to $\Cal K$.
+}%end of proof of 412Q
+
+\leader{412R}{Lemma} Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be measure
+spaces, with c.l.d.\ product
+$(X\times Y,\Lambda,\lambda)$\cmmnt{ (251F)}.   Suppose that
+$\Cal K\subseteq\Cal PX$, $\Cal L\subseteq\Cal PY$ and
+$\Cal M\subseteq\Cal P(X\times Y)$ are such that
+
+\quad(i) $\mu$ is inner regular with respect to $\Cal K$;
+
+\quad(ii) $\nu$ is inner regular with respect to $\Cal L$;
+
+\quad(iii) $K\times L\in\Cal M$ for all $K\in\Cal K$, $L\in\Cal L$;
+
+\quad(iv) $M\cup M'\in\Cal M$ whenever $M$, $M'\in\Cal M$;
+
+\quad(v) $\bigcap_{n\in\Bbb N}M_n\in\Cal M$ for every sequence
+$\sequencen{M_n}$ in $\Cal M$.
+
+\noindent Then $\lambda$ is inner regular with respect to $\Cal M$.
+
+\proof{ Write
+$\Cal A=\{E\times F:E\in\Sigma\}\cup\{X\times F:F\in\Tau\}$.   Then the
+$\sigma$-algebra of subsets of $X\times Y$ generated by $\Cal A$ is
+$\Sigma\tensorhat\Tau$.   If
+$V\in\Cal A$, $W\in\Lambda$ and $\lambda(W\cap V)>0$, there is an
+$M\in\Cal M\cap(\Sigma\tensorhat\Tau)$ such that $M\subseteq W$ and
+$\lambda(M\cap V)>0$.   \Prf\ Suppose that $V=E\times Y$ where
+$E\in\Sigma$.   There must be $E_0\in\Sigma$ and $F_0\in\Tau$, both of
+finite measure, such that $\lambda(W\cap V\cap(E_0\times F_0))>0$
+(251F).   Now there are $K\in\Cal K\cap\Sigma$ and $L\in\Cal L\cap\Tau$
+such that $K\subseteq E\cap E_0$, $L\subseteq F\cap F_0$ and
+
+\Centerline{$\mu((E\cap E_0)\setminus K)\cdot\nu F_0
++\mu E_0\cdot\nu((F\cap F_0)\setminus L)
+<\lambda(W\cap V\cap(E_0\times F_0))$;}
+
+\noindent but this means that
+$M=K\times L$ is included in $V$ and $\mu(W\cap M)>0$, while
+$M\in\Cal M\cap(\Sigma\tensorhat\Tau)$.   Reversing the
+roles of the coordinates, the same argument deals with the case in which
+$V=X\times F$ for some $F\in\Tau$.\ \Qed
+
+By 412C, $\lambda\restr\Sigma\tensorhat\Tau$ is inner regular
+with respect to $\Cal M$.   But $\lambda$ is inner regular with respect
+to $\Sigma\tensorhat\Tau$ (251Ib) so is also inner regular
+with respect to $\Cal M$ (412Ab).
+}%end of proof of 412R
+
+\leader{412S}{Proposition} Let $(X,\Sigma,\mu)$ and $(Y,\Tau,\nu)$ be
+measure spaces, with c.l.d.\ product
+$(X\times Y,\Lambda,\lambda)$.   Let $\frak T$, $\frak S$ be topologies
+on $X$ and $Y$ respectively, and give $X\times Y$ the product topology.
+
+(a) If $\mu$ and $\nu$ are inner regular with respect to the closed
+sets, so is $\lambda$.
+
+(b) If $\mu$ and $\nu$ are tight\cmmnt{ (that is, inner regular with
+respect to the closed compact sets)}, so is $\lambda$.
+
+(c) If $\mu$ and $\nu$ are inner regular with respect to the zero sets,
+so is $\lambda$.
+
+(d) If $\mu$ and $\nu$ are inner regular with respect to the Borel sets,
+so is $\lambda$.
+
+(e) If $\mu$ and $\nu$ are effectively locally finite, so is $\lambda$.
+
+\proof{ We have only to read the conditions (i)-(v) of 412R carefully
+and check that they apply in each case.   (In part (e), recall that
+`effectively locally finite' is the same thing as `inner regular with
+respect to the subsets of open sets of finite measure'.)
+}%end of proof of 412S
+
+\leader{412T}{Lemma} Let $\langle(X_i,\Sigma_i,\mu_i)\rangle_{i\in I}$
+be a family of probability spaces, with product probability space
+$(X,\Lambda,\lambda)$\cmmnt{ (\S254)}.   Suppose that
+$\Cal K_i\subseteq\Cal PX_i$, $\Cal M\subseteq\Cal PX$ are such that
+
+\quad (i) $\mu_i$ is inner regular with respect to $\Cal K_i$ for each
+$i\in I$;
+
+\quad (ii) $\pi_i^{-1}[K]\in\Cal M$ for every $i\in I$ and $K\in\Cal K_i$,
+writing $\pi_i(x)=x(i)$ for $x\in X$;
+
+\quad (iii) $M\cup M'\in\Cal M$ whenever $M$, $M'\in\Cal M$;
+
+\quad (iv) $\bigcap_{n\in\Bbb N}M_n\in\Cal M$ for every sequence
+$\sequencen{M_n}$ in $\Cal M$.
+
+\noindent Then $\lambda$ is inner regular with respect to $\Cal M$.
+
+\proof{ (Compare 412R.)
+Write $\Cal A=\{\pi_i^{-1}[E]:i\in I,\,E\in\Sigma_i\}$.   If
+$V\in\Cal A$, $W\in\Lambda$ and $\lambda(W\cap V)>0$, express $V$ as
+$\pi_i^{-1}[E]$, where $i\in I$ and $E\in\Sigma_i$, and take
+$K\in\Cal K_i$ such that $K\subseteq E$ and
+$\mu_i(E\setminus K)<\lambda(W\cap V)$;  then $M=\pi_i^{-1}[K]$ belongs
+to $\Cal M\cap\Cal A$, is included in $V$, and meets $W$ in a
+non-negligible set.   So the conditions of 412C are met.
+
+It follows that $\lambda_0=\lambda\restr\Tensorhat_{i\in I}\Sigma_i$ is
+inner regular with respect to $\Cal M$.   But $\lambda$ is the
+completion of $\lambda_0$ (254Fd, 254Ff), so is also inner regular with
+respect to $\Cal M$ (412Ha).
+}%end of proof of 412T
+
+\leader{412U}{Proposition} Let
+$\langle(X_i,\Sigma_i,\mu_i)\rangle_{i\in I}$ be a family of probability
+spaces, with product probability space
+$(X,\Lambda,\lambda)$.   Suppose that we are given a topology
+$\frak T_i$ on each $X_i$, and let $\frak T$ be the product topology on
+$X$.
+
+(a) If every $\mu_i$ is inner regular with respect to the closed sets,
+so is $\lambda$.
+
+(b) If every $\mu_i$ is inner regular with respect to the zero sets, so
+is $\lambda$.
+
+(c) If every $\mu_i$ is inner regular with respect to the Borel sets, so
+is $\lambda$.
+
+\proof{ This follows from 412T just as 412S follows from 412R.
+}%end of proof of 412U
+
+\leader{412V}{Corollary} Let
+$\langle(X_i,\Sigma_i,\mu_i)\rangle_{i\in I}$ be a family of probability
+spaces, with product probability space
+$(X,\Lambda,\lambda)$.   Suppose that we are given a Hausdorff topology
+$\frak T_i$ on each $X_i$, and let $\frak T$ be the product topology on
+$X$.   Suppose that every $\mu_i$ is tight, and that $X_i$ is compact
+for all but countably many $i\in I$.   Then $\lambda$ is tight.
+
+\proof{ By 412Ua, $\lambda$ is inner regular with respect to the closed
+sets.   If $W\in\Lambda$ and $\gamma<\lambda W$, let $V\subseteq W$ be a
+measurable closed set such that $\lambda V>\gamma$.   Let $J$
+be the set of those $i\in I$ such that $X_i$ is not compact;  we are
+supposing that $J$ is countable.   Let $\family{i}{J}{\epsilon_i}$ be a
+family of strictly positive real numbers such that
+$\sum_{i\in J}\epsilon_j\le\lambda V-\gamma$ (4A1P).   For each
+$i\in J$, let $K_i\subseteq X_i$ be a compact measurable set such that
+$\mu_i(X_i\setminus K_i)\le\epsilon_i$;  and for
+$i\in I\setminus J$, set $K_i=X_i$.   Then
+$K=\prod_{i\in I}K_i$ is a compact measurable subset of $X$, and
+
+\Centerline{$\lambda(X\setminus K)
+\le\sum_{i\in J}\mu(X_i\setminus K_i)\le\lambda V-\gamma$,}
+
+\noindent so $\lambda(K\cap V)\ge\gamma$;  while $K\cap V$ is a compact
+measurable subset of $W$.   As $W$ and $\gamma$ are arbitrary, $\lambda$
+is tight.
+}%end of proof of 412V
+
+\leader{*412W}{Outer \dvrocolon{regularity}}\cmmnt{ I have already
+mentioned the complementary notion of `outer regularity' (411D).   In
+this book it will not be given much prominence.   It is however a useful
+tool when dealing with Lebesgue measure (see, for instance, the proof of
+225K), for reasons which the next proposition will make clear.
+
+\medskip
+
+\noindent}{\bf Proposition} Let $(X,\Sigma,\mu)$ be a measure space and
+$\frak T$ a topology on $X$.
+
+(a) Suppose that $\mu$ is outer regular with respect to the open sets.
+Then for any integrable function $f:X\to[0,\infty]$ and $\epsilon>0$,
+there is a lower semi-continuous measurable function
+$g:X\to[0,\infty]$ such that $f\le g$ and $\int g\le\epsilon+\int f$.
+
+(b) Now suppose that there is a sequence of measurable open sets of
+finite measure covering $X$.   Then the following are equiveridical:
+
+\quad(i) $\mu$ is inner regular with respect to the closed sets;
+
+\quad(ii) $\mu$ is outer regular with respect to the open sets;
+
+\quad(iii) for any measurable set $E\subseteq X$ and $\epsilon>0$, there
+are a measurable closed set $F\subseteq E$ and a measurable open set
+$H\supseteq E$ such that $\mu(H\setminus F)\le\epsilon$;
+
+\quad(iv) for every measurable function $f:X\to\coint{0,\infty}$ and
+$\epsilon>0$, there is a lower semi-continuous measurable function
+$g:X\to[0,\infty]$ such that $f\le g$ and $\int g-f\le\epsilon$;
+
+\quad(v) for every measurable function $f:X\to\Bbb R$ and $\epsilon>0$,
+there is a lower semi-continuous measurable function
+$g:X\to\ocint{-\infty,\infty}$ such that $f\le g$ and
+$\mu\{x:g(x)\ge f(x)+\epsilon\}\le\epsilon$.
+
+\proof{{\bf (a)} Let $\eta\in\ocint{0,1}$ be such that
+$\eta(7+\int fd\mu)\le\epsilon$.
+For $n\in\Bbb Z$, set $E_n=\{x:(1+\eta)^n\le f(x)<(1+\eta)^{n+1}\}$, and
+let $E'_n\in\Sigma$ be a measurable envelope of $E_n$;  let
+$G_n\supseteq E'_n$ be a measurable open set such that
+$\mu G_n\le 3^{-|n|}\eta+\mu E'_n$.   Set
+$g=\sum_{n=-\infty}^{\infty}(1+\eta)^{n+1}\chi G_n$.   Then $g$ is lower
+semi-continuous (4A2B(d-iii), 4A2B(d-v)), $f\le g$ and
+
+$$\eqalign{\int gd\mu
+&=\sum_{n=-\infty}^{\infty}(1+\eta)^{n+1}\mu G_n\cr
+&\le(1+\eta)\sum_{n=-\infty}^{\infty}(1+\eta)^n\mu E'_n
+   +\sum_{n=-\infty}^{\infty}(1+\eta)^{n+1}3^{-|n|}\eta\cr
+&\le(1+\eta)\int fd\mu+7\eta
+\le\int fd\mu+\epsilon,\cr}$$
+
+\noindent as required.
+
+\medskip
+
+{\bf (b)} Let $\sequencen{G_n}$ be a sequence of open sets of finite
+measure covering $X$;  replacing it by $\sequencen{\bigcup_{i<n}G_i}$ if
+necessary, we may suppose that $\sequencen{G_n}$ is non-decreasing and
+that $G_0=\emptyset$.
+
+\medskip
+
+\quad{\bf (i)$\Rightarrow$(iii)} Suppose that $\mu$ is inner regular
+with respect to the closed sets, and that $E\in\Sigma$, $\epsilon>0$.
+For each $n\in\Bbb N$ let $F_n\subseteq G_n\setminus E$ be a measurable
+closed set such that $\mu F_n\ge\mu(G_n\setminus E)-2^{-n-2}\epsilon$.
+Then $H=\bigcup_{n\in\Bbb N}(G_n\setminus F_n)$ is a measurable open set
+including $E$ and $\mu(H\setminus E)\le\bover12\epsilon$.   Applying the
+same argument to $X\setminus E$, we get a closed set $F\subseteq E$ such
+that $\mu(E\setminus F)\le\bover12\epsilon$, so that
+$\mu(H\setminus F)\le\epsilon$.
+
+\medskip
+
+\quad{\bf (ii)$\Rightarrow$(iii)} The same idea works.   Suppose that
+$\mu$ is outer regular with respect to the open sets, and that
+$E\in\Sigma$, $\epsilon>0$.    For each $n\in\Bbb N$, let
+$H_n\supseteq G_n\cap E$ be an open set such that
+$\mu(H_n\setminus E)\le 2^{-n-2}\epsilon$;  then
+$H=\bigcup_{n\in\Bbb N}H_n$ is a measurable open set including $E$, and
+$\mu(H\setminus E)\le\bover12\epsilon$.   Now repeat the argument on
+$X\setminus E$ to find a measurable closed set $F\subseteq E$ such that
+$\mu(E\setminus F)\le\bover12\epsilon$.
+
+\medskip
+
+\quad{\bf (iii)$\Rightarrow$(iv)} Assume (iii), and let
+$f:X\to\coint{0,\infty}$ be a measurable function, $\epsilon>0$.   Set
+$\eta_n=2^{-n}\epsilon/(16+4\mu G_n)$ for each $n\in\Bbb N$.   For
+$k\in\Bbb N$ set
+$E_k=\bigcup_{n\in\Bbb N}\{x:x\in G_n,\,k\eta_n\le f(x)<(k+1)\eta_n\}$,
+and choose an open set $H_k\supseteq E_k$ such that
+$\mu(H_k\setminus E_k)\le 2^{-k}$.    Set
+
+\Centerline{$g=\sup_{k,n\in\Bbb N}(k+1)\eta_n\chi(G_n\cap H_k)$.}
+
+\noindent Then $g:X\to[0,\infty]$ is lower semi-continuous (4A2B(d-v)
+again).   Since
+
+\Centerline{$\sup_{k,n\in\Bbb N}k\eta_n\chi(G_n\cap E_k)
+\le f\le\sup_{k,n\in\Bbb N}(k+1)\eta_n\chi(G_n\cap E_k)$,}
+
+\noindent $f\le g$ and
+
+\Centerline{$g-f
+\le\sup_{k,n\in\Bbb N}(k+1)\eta_n\chi(G_n\cap H_k\setminus E_k)
+  +\sup_{k,n\in\Bbb N}\eta_n\chi(G_n\cap E_k)$}
+
+\noindent has integral at most
+
+\Centerline{$\sum_{k=0}^{\infty}\sum_{n=0}^{\infty}(k+1)\eta_n2^{-k}
+  +\sum_{n=0}^{\infty}\eta_n\mu G_n
+\le\epsilon$.}
+
+\medskip
+
+\quad{\bf (i)$\Rightarrow$(v)} Assume (i), and suppose that
+$f:X\to\Bbb R$ is
+measurable and $\epsilon>0$.   For each $n\in\Bbb N$, let
+$\alpha_n\ge 0$ be such that $\mu E_n<2^{-n-1}\epsilon$, where
+$E_n=\{x:x\in G_{n+1}\setminus G_n,\,f(x)\le -\alpha_n\}$.   Let
+$F_n\subseteq(G_{n+1}\setminus G_n)\setminus E_n$ be a measurable closed
+set such that
+$\mu((G_{n+1}\setminus G_n)\setminus F_n)\le 2^{-n-2}\epsilon$.
+Because $\sequencen{F_n}$ is disjoint,
+$h=\sum_{n=0}^{\infty}\alpha_n\chi F_n$ is defined as a function from
+$X$ to $\Bbb R$.   $\{F_n:n\in\Bbb N\}$ is locally finite, so
+$\{x:h(x)\ge\alpha\}=\bigcup_{n\in\Bbb N,\alpha_n\ge\alpha}F_n$ is
+closed for every $\alpha>0$ (4A2B(h-i)), and $h$ is upper
+semi-continuous.   Now $f_1=f+h$ is a measurable function.   Since
+(i)$\Rightarrow$(iii)$\Rightarrow$(iv), there is a measurable lower
+semi-continuous function $g_1:X\to[0,\infty]$ such that
+$f_1^+\le g_1$ and $\int g_1-f_1^+\le\bover12\epsilon^2$, where
+$f_1^+=\max(0,f_1)$.   But if we now set
+$g=g_1-h$, $g$ is lower semi-continuous, $f\le g$ and
+
+$$\eqalign{\{x:f(x)+\epsilon\le g(x)\}
+&\subseteq\{x:f_1^+(x)+\epsilon\le g_1(x)\}
+  \cup\{x:f_1(x)<0\}\cr
+&\subseteq\{x:f_1^+(x)+\epsilon\le g_1(x)\}
+  \cup\bigcup_{n\in\Bbb N}(G_{n+1}\setminus G_n)\setminus F_n\cr}$$
+
+\noindent has measure at most $\epsilon$, as required.
+
+\medskip
+
+\quad{\bf (iv)$\Rightarrow$(ii)} and {\bf (v)$\Rightarrow$(ii)} Suppose
+that either (iv) or (v) is true, and that $E\in\Sigma$, $\epsilon>0$.
+Then there is a measurable lower semi-continuous function
+$g:X\to\ocint{0,\infty}$ such that $\chi E\le g$ and
+$\mu\{x:\chi E(x)+\bover12\le g(x)\}\le\epsilon$, since this is
+certainly true if $\int g-\chi E\le\bover12\epsilon$.   Set
+$G=\{x:g(x)>\bover12\}$;  then $E\subseteq G$ and
+$\mu(G\setminus E)\le\epsilon$.
+
+\medskip
+
+\quad{\bf (iii)$\Rightarrow$(i)} is trivial.   Assembling these
+fragments, the proof is complete.
+}%end of proof of 412W
+
+
+\exercises{
+\leader{412X}{Basic exercises (a)}
+%\spheader 412Xa
+Let $(X,\Sigma,\mu)$ be a measure space and $\frak T$ a
+topology on $X$ such that $\mu$ is inner regular with respect to the
+closed sets {\it and} with respect to the compact sets.   Show that $\mu$
+is tight.
+%412A
+
+\spheader 412Xb Explain how 213A is a special case of 412Aa.
+%412A
+
+\spheader 412Xc Let $X$ be a set and $\Cal K$ a family of sets.
+Suppose that $\mu$ and $\nu$ are two semi-finite measures on $X$
+with the same domain and the same null ideal.   Show that if one is
+inner regular with respect to $\Cal K$, so is the other.    \Hint{show that if
+$\nu F<\infty$ then $\nu F=\sup\{\nu E:E\subseteq F$, $\mu E<\infty\}$.}
+%412A
+
+\sqheader 412Xd Let $(X,\Sigma,\mu)$ be a measure space, and $\Sigma_0$
+a $\sigma$-subalgebra of $\Sigma$ such that $\mu$ is inner regular with
+respect to $\Sigma_0$.   Show that if $1\le p<\infty$ then every member
+of $L^p(\mu)$ is of the form $f^{\ssbullet}$ for some
+$\Sigma_0$-measurable $f:X\to\Bbb R$.
+%412Xb, 412A
+
+\sqheader 412Xe Let $(X,\Sigma,\mu)$ be a semi-finite measure space and
+$\Cal A\subseteq\Sigma$ an algebra of sets such that the
+$\sigma$-algebra generated by $\Cal A$ is $\Sigma$.   Write $\Cal K$ for
+$\{\bigcap_{n\in\Bbb N}E_n:E_n\in\Cal A$ for every $n\in\Bbb N\}$.
+Show that $\mu$ is inner regular with respect to $\Cal K$.
+%412C
+
+\spheader 412Xf Let $(X,\frak T,\Sigma,\mu)$ be an effectively locally
+finite Hausdorff topological measure space such that $\mu$ is inner
+regular with respect to the Borel sets.   Suppose that
+$\mu G=\sup\{\mu K:K\subseteq G$ is compact$\}$ for every open set
+$G\subseteq X$.   Show that $\mu$ is tight.
+%412G
+
+\spheader 412Xg Let $(X,\frak T)$ be a topological space such that every
+open set is an F$_{\sigma}$ set.   Show that any effectively locally
+finite Borel measure on $X$ is inner regular with respect to the closed
+sets.
+%412G
+
+\spheader 412Xh Let $(X,\frak T)$ be a normal topological space and
+$\mu$ a topological measure on $X$ which is inner regular with respect
+to the closed sets.   Show that
+$\mu G=\max\{\mu H:H\subseteq G$ is a cozero set$\}$ for every open set
+$G\subseteq X$.   Show that if $\mu$ is totally finite, then
+$\mu F=\min\{\mu H:H\supseteq F$ is a zero set$\}$ for every closed set
+$F\subseteq X$.
+%412G
+
+\spheader 412Xi Let $(X,\Sigma,\mu)$ be a complete locally determined
+measure space, and suppose that $\mu$ is inner regular with respect to a
+family $\Cal K$ of sets.   Let $\Sigma_0$ be the $\sigma$-algebra of
+subsets of
+$X$ generated by $\Cal K\cap\Sigma$.   (i) Show that $\mu$ is the
+c.l.d.\ version of $\mu\restr\Sigma_0$.   \Hint{412J-412L.}   (ii) Show
+that if $\mu$ is
+$\sigma$-finite, it is the completion of $\mu\restr\Sigma_0$.
+%412L
+
+\sqheader 412Xj(i) Let $(X,\Sigma,\mu)$ be a $\sigma$-finite
+measure space and $\Tau$ a $\sigma$-subalgebra of $\Sigma$.   Show that
+if $\mu$ is inner regular
+with respect to $\Tau$ then the completion of $\mu\restr\Tau$ extends
+$\mu$, so that $\mu$ and $\mu\restr\Tau$ have the same negligible sets.
+(ii) Show that if $\mu$ is a $\sigma$-finite topological measure which
+is inner regular
+with respect to the Borel sets, then every $\mu$-negligible set is
+included in a $\mu$-negligible Borel set.
+%412Xi 412L
+
+\spheader 412Xk Devise a direct proof of 412L, not using 412K, by (i)
+showing that $\mu^*(A\cap K)=\nu^*(A\cap K)$ whenever $A\subseteq X$ and
+$K\in\Cal K$ (ii) showing that $\mu^*=\nu^*$ (iii) quoting 213C.
+%412L
+
+\spheader 412Xl Let $(X,\Sigma,\mu)$ be a complete locally determined
+measure space, $Y$ a set and $f:X\to Y$ a function.   Show that the
+following are equiveridical:  (i) $\mu$ is inner regular with respect to
+$\{f^{-1}[B]:B\subseteq Y\}$ (ii) $f^{-1}[f[E]]\setminus E$ is
+negligible for every $E\in\Sigma$.
+%412M
+
+\spheader 412Xm Let $\familyiI{(X_i,\Sigma_i,\mu_i)}$ be a family of
+measure spaces, with direct sum $(X,\Sigma,\mu)$.   Suppose that for
+each $i\in I$ we are given a topology $\frak T_i$ on $X_i$, and let
+$\frak T$ be
+the corresponding disjoint union topology on $X$.   Show that (i) $\mu$
+is inner regular with respect to the closed sets iff every $\mu_i$ is
+(ii) $\mu$ is inner regular with respect to the compact sets iff every
+$\mu_i$ is (iii) $\mu$ is inner regular with respect to the zero sets
+iff every $\mu_i$ is (iv) $\mu$ is inner regular with respect to the
+Borel sets iff every $\mu_i$ is.
+%412P
+
+\spheader 412Xn Use 412L and 412Q to shorten the proof of 253I.
+%412Q
+
+\spheader 412Xo Let $\familyiI{X_i}$ be a family of sets, and
+suppose that we are given, for each $i\in I$, a $\sigma$-algebra
+$\Sigma_i$ of subsets of $X_i$ and a topology $\frak T_i$ on $X_i$.
+Let $\frak T$ be the product topology on $X=\prod_{i\in I}X_i$, and
+$\Sigma=\Tensorhat_{i\in I}\Sigma_i$.   Let $\mu$ be a totally finite
+measure with domain
+$\Sigma$, and set $\mu_i=\mu\pi_i^{-1}$ for each $i\in I$, where
+$\pi_i(x)=x(i)$ for $i\in I$, $x\in X$.   (i) Show that $\mu$ is
+inner regular with respect to the family $\Cal K$ of sets expressible as
+$X\setminus\bigcup_{n\in\Bbb N}\prod_{i\in I}E_{ni}$ where
+$E_{ni}\in\Sigma_i$ for every $n$, $i$ and $\{i:E_{ni}\ne X_i\}$ is
+finite for each $n$.
+(ii) Show that if every $\mu_i$ is inner regular with respect to the
+closed sets, so is $\mu$.
+(iii) Show that if every $\mu_i$ is inner regular with respect to the
+zero sets, so is $\mu$.
+(iv) Show that if every $\mu_i$ is inner regular with respect to the
+Borel sets, so is $\mu$.
+(v) Show that if every $\mu_i$ is tight, and all but countably many of
+the $X_i$ are compact, then $\mu$ is tight.
+%412V
+
+\spheader 412Xp Let $(X,\Sigma,\mu)$ be a measure space and $\frak T$ a
+Lindel\"of topology on $X$ such that $\mu$ is locally finite.   (i) Show
+that $\mu$ is
+$\sigma$-finite.   (ii) Show that $\mu$ is inner regular with respect to
+the closed sets iff it is outer regular with respect to the open sets.
+%412W
+
+\spheader 412Xq Let $X$ be a topological space and $\mu$ a measure on
+$X$ which is outer regular with respect to the open sets.   Show that
+for any $Y\subseteq X$ the subspace measure on $Y$ is outer regular with
+respect to the open sets.
+%412W
+
+\spheader 412Xr Let $X$ be a topological space and $\mu$ a measure on
+$X$ which is outer regular with respect to the open sets.   Show that if
+$f:X\to\Bbb R$ is integrable and $\epsilon>0$ then there is a lower
+semi-continuous $g:X\to\ocint{-\infty,\infty}$ such that $f\le g$ and
+$\int g-f\le\epsilon$.
+%412W
+
+\sqheader 412Xs Let $X$ be a topological space and $\mu$ a measure on $X$ which is
+effectively locally finite and inner regular with respect to the closed sets.
+(i) Show that if $\mu E<\infty$ and $\epsilon>0$ there is a measurable open set $G$
+such that $\mu(E\symmdiff G)\le\epsilon$.   (ii) Show that if $f$ is a
+non-negative integrable function and $\epsilon>0$ there is a measurable lower
+semi-continuous function $g:X\to\coint{0,\infty}$ such that $\int|f-g|\le\epsilon$.
+(iii) Show that if $f$ is an integrable
+real-valued function there are measurable lower semi-continuous functions
+$g_1$, $g_2:X\to[0,\infty]$ such that $f\eae g_1-g_2$ and
+$\int g_1+g_2\le\int|f|+\epsilon$.   (iv) Now suppose that $\mu$ is $\sigma$-finite.
+Show that for every measurable $f:X\to\Bbb R$ there are measurable lower
+semi-continuous functions $g_1$, $g_2:X\to[0,\infty]$ such that $f\eae g_1-g_2$.
+%412W
+
+\spheader 412Xt Let $(X,\Sigma,\mu)$ be a semi-finite measure space and
+$\sequencen{f_n}$ a sequence in $\eusm L^0(\mu)$ which converges almost
+everywhere to $f\in\eusm L^0(\mu)$.   Show that $\mu$ is inner regular
+with respect to
+$\{E:\sequencen{f_n\restr E}$ is uniformly convergent$\}$.
+(Cf.\ 215Yb.)
+%412-
+
+\spheader 412Xu In 216E, give $\{0,1\}^I$ its usual compact Hausdorff
+topology.   Show that the measure $\mu$ described there is inner regular
+with respect to the zero sets.
+%412-
+
+\spheader 412Xv Let $\familyiI{\mu_i}$ be a family of measures on a set
+$X$, with sum $\mu$ (234G\formerly{1{}12Ya}).   Suppose that $\Cal K$ is a
+family of sets such that every $\mu_i$ is inner regular with respect to
+$\Cal K$.   Show that if {\it either} $\Cal K\subseteq\dom\mu$ {\it or}
+$\bigcap_{n\in\Bbb N}K_n\in\Cal K$ for every non-increasing sequence
+$\sequencen{K_n}$ in $\Cal K$, then $\mu$ is inner regular with respect to
+$\Cal K$.
+%412A
+
+\spheader 412Xw Let $\mu$, $\nu$ be c.l.d.\ measures on a set $X$, both
+inner regular with respect to a family 
+$\Cal K\subseteq\dom\mu\cap\dom\nu$.   Suppose that 
+$\mu K\le\nu K<\infty$ for every $K\in\Cal K$.   Show that $\mu\le\nu$ in
+the sense of 234P.
+%412L
+
+\spheader 412Xx\dvAnew{2010}
+Let $X$ be a topological space, and $\mu$ a tight topological 
+measure on $X$.   Suppose that $\Cal F$ is a 
+non-empty downwards-directed family of
+closed compact subsets of $X$ with intersection $F_0$, and that 
+$\gamma=\inf_{F\in\Cal F}\mu F$ is finite.   Show that $\mu F_0=\gamma$.
+%412A
+
+\leader{412Y}{Further exercises (a)}
+%\spheader 412Ya
+Let $\Cal K$ be the family of subsets of $\Bbb R$ which are homeomorphic
+to the Cantor set.   Show that Lebesgue measure is inner regular with
+respect to $\Cal K$.   \Hint{show that if
+$F\subseteq\Bbb R\setminus\Bbb Q$ is an uncountable compact set, then
+$\{x:[x-\delta,x+\delta]\cap F$ is uncountable for every $\delta>0\}$
+belongs to $\Cal K$.}
+%-%
+
+\spheader 412Yb(i) Show that if $X$ is a perfectly normal space
+then any semi-finite topological measure on $X$ which is inner
+regular with respect to the Borel sets is inner regular
+with respect to the closed sets.   (ii) Show that any subspace of a
+perfectly normal space is perfectly normal.  (iii) Show
+that $\omega_1$, with its order topology, is completely regular, normal
+and Hausdorff, but
+not perfectly normal.   (iv) Show that $[0,1]^I$ is perfectly normal iff
+$I$ is countable.
+%412E
+
+\spheader 412Yc Let $(X,\Sigma,\mu)$ be a measure space, and suppose
+that $\mu$ is inner regular with respect to
+$\Cal K$.   Write $\Sigma^f$ for $\{E:E\in\Sigma$, $\mu E<\infty\}$.    Show that
+$\{E^{\ssbullet}:E\in\Cal K\cap\Sigma^f\}$ is dense in
+$\{E^{\ssbullet}:E\in\Sigma^f\}$ for the strong measure-algebra
+topology.
+%412N
+
+\spheader 412Yd Let $(X,\Sigma,\mu)$ be $[0,1]$ with Lebesgue measure,
+and $Y=[0,1]$ with counting measure $\nu$;  give $X$ its usual topology
+and $Y$ its discrete topology, and let $\lambda$ be the c.l.d.\ product
+measure on $X\times Y$.   (i) Show that $\mu$, $\nu$ and $\lambda$ are
+all tight (for the appropriate
+topologies) and therefore completion regular.
+(ii) Let $\lambda_0$ be the primitive product measure on
+$X\times Y$ (definition:  251C).   Show that $\lambda_0$ is not tight.
+\Hint{252Yk.}
+{\it Remark\/}:  it is undecidable in ZFC whether $\lambda_0$ is inner
+regular with respect to the closed sets.
+%412S %mt41bits
+
+\spheader 412Ye Give an example of a Hausdorff topological measure space
+$(X,\frak T,\Sigma,\mu)$ such that $\mu$ is complete, strictly
+localizable and outer regular with respect to the open sets, but not
+inner regular with respect to the closed sets.
+%412W
+}%end of exercises
+
+\endnotes{\Notesheader{412} In this volume we are returning to
+considerations which have been left on one side for almost the whole of
+Volume 3 -- the exceptions being in Chapter 34, where I looked at
+realization of homomorphisms of measure algebras by functions between
+measure spaces, and was necessarily dragged into an investigation of
+measure spaces which had enough points to be adequate codomains (343B).
+The idea of `inner regularity' is to distinguish families $\Cal K$ of
+sets which will be large enough to describe the measure entirely, but
+whose members will be of recognisable types.   For an example of this
+principle see 412Ya.   Of course we cannot always find a single type of
+set adequate to fill a suitable family $\Cal K$, though this happens
+oftener than one might expect, but it is surely easier to think about an
+arbitrary zero set (for instance) than an arbitrary measurable set, and
+whenever a measure is inner regular with respect to a recognisable class
+it is worth knowing about it.
+
+I have tried to use the symbols $\dagger$ and $\ddagger$ (412A, 412C)
+consistently enough for them to act as a guide to some of the ideas
+which will be used repeatedly in this chapter.   Note the emphasis on
+disjoint unions and countable intersections;  I mentioned
+similar conditions in 136Xi-136Xj.
+You will recognise 412Aa as an exhaustion principle;  note that it is
+enough to use disjoint unions, as in 313K.   In the examples of this
+section this disjointness is not important.   Of course inner regularity
+has implications for the measure algebra (412N), but it is important to
+recognise that `$\mu$ is inner regular with respect to $\Cal K$' is
+saying much more than `$\{K^{\ssbullet}:K\in\Cal K\}$ is order-dense in
+the measure algebra';  the latter formulation tells us only that
+whenever
+$\mu E>0$ there is a $K\in\Cal K$ such that $K\setminus E$ is negligible
+and $\mu K>0$, while the former tells us that we can take $K$ to be
+actually a subset of $E$.
+
+412D, 412E and 412G are all of great importance.   412D looks striking,
+but of course the reason it works is just that the Baire
+$\sigma$-algebra
+is very small.   In 412E the Baire and Borel
+$\sigma$-algebras coincide, so it is nothing but a special case of 412D;
+but as metric spaces are particularly important it is worth having it
+spelt out explicitly.   In 412D and 412E the hypothesis `semi-finite' is
+sufficient, while in 412G we need `effectively locally finite';  this is
+because in both 412D and 412E the open sets we are looking at are
+countable unions of measurable closed sets.   There are interesting
+non-metrizable spaces in
+which the same thing happens (412Yb).   As you know, I am strongly
+biased in favour of complete and locally determined measures, and
+the Baire and Borel measures dealt with in these three results are
+rarely complete;  but they can still be applied to completions and
+c.l.d.\ versions of these measures, using 412Ab or 412H.
+
+412O-412V are essentially routine.   For subspace measures, the only
+problem we need to come to terms with is the fact that subspaces of
+semi-finite measure spaces need not be semi-finite (216Xa).   For
+product measures the point is that the c.l.d.\ product of two measure
+spaces, and the product of any family of probability spaces, as I
+defined them in Chapter 25, are inner regular with respect to the
+$\sigma$-algebra
+of sets generated by the cylinder sets.   This is not in general true of
+the `primitive' product measure (412Yd), which is one of my reasons for
+being prejudiced against it.   I should perhaps warn you of a trap in
+the language I use here.   I say that if the factor measures are inner
+regular with respect to the closed sets, so is the c.l.d.\ product
+measure.   But I
+do not say that all closed sets in the product are measured by the
+product measure, even if closed sets in the factors are measured by
+the factor measures.   So the path is open for a different product
+measure to exist, still inner regular with respect to the closed sets;
+and indeed I
+shall be going down that path in \S417.   The uniqueness result in
+412L specifically refers to complete locally determined measures defined
+on all sets of the family $\Cal K$.
+
+There is one special difficulty in 412V:  in order to ensure that there
+are enough compact measurable sets in $X=\prod_{i\in I}X_i$, we need to
+know that all but countably many of the $X_i$ are actually compact.
+When we come to look more closely at products of Radon probability
+spaces we shall need to consider this point again (417Q, 417Xq).
+
+In fact some of the ideas of 412U-412V are not restricted to the product
+measures considered there.   Other measures on the product space will
+have inner regularity properties if their images on the factors, their
+`marginals' in the language of probability theory, are inner regular;
+see 412Xo.   I will return to this in \S454.
+
+This section is almost exclusively concerned with {\it inner}
+regularity.   The complementary notion of {\it outer} regularity is not
+much use except in $\sigma$-finite spaces (415Xh), and not always then
+(416Yd).   In totally finite spaces, of course, and some others, any
+version of inner regularity corresponds to a version of outer
+regularity, as in 412Wb(i)-(ii);  and when we have something as strong
+as 412Wb(iii) available it is worth knowing about it.
+}%end of notes
+
+\discrpage
+
